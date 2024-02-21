@@ -1,7 +1,6 @@
-/*
-Package for the system tray application, responsible for basic functionality
-Function(s): OnReady, OnQuit, ChangeScanInterval, ScanNow, GetScanCounter, GetScanTicker
-*/
+// Package tray implements the basic functionality of the system tray application
+//
+// Function(s): OnReady, OnQuit, ChangeScanInterval, ScanNow, GetScanCounter, GetScanTicker
 package tray
 
 import (
@@ -22,7 +21,7 @@ import (
 var scanCounter int
 var scanTicker *time.Ticker
 
-// Handles all actions that should be handled during the application run-time
+// OnReady handles all actions that should be handled during the application run-time
 //
 // Parameters: _
 //
@@ -77,7 +76,7 @@ func OnReady() {
 	}
 }
 
-// Handles all actions that should happen when the application exits/terminates
+// OnQuit handles all actions that should happen when the application exits/terminates
 //
 // Parameters: _
 //
@@ -85,7 +84,7 @@ func OnReady() {
 func OnQuit() {
 }
 
-// Provides the user with a dialog window to set the (new) scan interval
+// ChangeScanInterval provides the user with a dialog window to set the (new) scan interval
 //
 // Parameters: optional string testinput, used in systemtray_test.go
 //
@@ -118,7 +117,7 @@ func ChangeScanInterval(testInput ...string) {
 	fmt.Printf("Scan interval changed to %d hours\n", interval)
 }
 
-// Performs one scan iteration (without checking if it is scheduled)
+// ScanNow performs one scan iteration (without checking if it is scheduled)
 //
 // Parameters: _
 //
@@ -133,7 +132,7 @@ func ScanNow() {
 	}
 }
 
-// Returns the scanCounter, for use in systemtray_test.go
+// GetScanCounter returns the scanCounter, for use in systemtray_test.go
 //
 // Parameters: _
 //
@@ -142,7 +141,7 @@ func GetScanCounter() int {
 	return scanCounter
 }
 
-// Returns the scanTicker, for use in systemtray_test.go
+// GetScanTicker returns the scanTicker, for use in systemtray_test.go
 //
 // Parameters: _
 //

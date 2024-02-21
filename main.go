@@ -1,7 +1,6 @@
-/*
-Main application package
-Function(s): main
-*/
+// Package main contains the entry point of the application.
+//
+// Function(s): main
 package main
 
 import (

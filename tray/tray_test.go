@@ -1,7 +1,7 @@
-/*
-Testing package for the tray.go file, responsible for the basic system tray functionality
-Function(s): TestChangeScanInterval, TestScanNow, TestOnQuit
-*/
+// Package tray_test is the testing package for the tray.go file, responsible for unit-testing the basic system tray functionality
+//
+// Function(s): TestChangeScanInterval, TestScanNow, TestOnQuit
+
 package tray_test
 
 import (

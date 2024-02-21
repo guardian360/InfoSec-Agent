@@ -1,7 +1,6 @@
-/*
-Package which is responsible for the icon that appears in the system tray
-Functions: _
-*/
+// Package icon is responsible for the icon that appears in the system tray
+// Functions: _
+
 package icon
 
 // System tray icon data needs to be in []byte format, converted from an .ico file for Windows, .png for other Operating Systems.
