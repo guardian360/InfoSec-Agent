@@ -5,11 +5,12 @@
 package tray_test
 
 import (
-	"SystemTray/tray"
 	"io"
 	"os"
 	"testing"
 	"time"
+
+	"InfoSec-Agent/tray"
 
 	"github.com/getlantern/systray"
 )

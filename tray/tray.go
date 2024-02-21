@@ -11,7 +11,7 @@ import (
 	"syscall"
 	"time"
 
-	"SystemTray/icon"
+	"InfoSec-Agent/icon"
 
 	"github.com/getlantern/systray"
 	"github.com/ncruces/zenity"
