@@ -86,7 +86,7 @@ func OnQuit() {
 
 // ChangeScanInterval provides the user with a dialog window to set the (new) scan interval
 //
-// Parameters: optional string testinput, used in systemtray_test.go
+// Parameters: optional string testInput, used in tray_test.go
 //
 // Returns: _
 func ChangeScanInterval(testInput ...string) {
@@ -132,7 +132,7 @@ func ScanNow() {
 	}
 }
 
-// GetScanCounter returns the scanCounter, for use in systemtray_test.go
+// GetScanCounter returns the scanCounter, for use in tray_test.go
 //
 // Parameters: _
 //
@@ -141,7 +141,7 @@ func GetScanCounter() int {
 	return scanCounter
 }
 
-// GetScanTicker returns the scanTicker, for use in systemtray_test.go
+// GetScanTicker returns the scanTicker, for use in tray_test.go
 //
 // Parameters: _
 //
