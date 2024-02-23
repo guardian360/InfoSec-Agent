@@ -67,7 +67,7 @@ body {
 
 /* Navigation menu */
 #left-nav {
-    height: 100%;
+    height: 100vh;
     width: 200px;
     background-color: #4E869B;
     float:left;
