@@ -1,0 +1,55 @@
+@import url(color-palette.css);
+
+/* dashboard css */
+.dashboard-data {
+    width: 100%;
+}
+
+.data-column {
+    height: 500px;
+    float: left;
+}
+
+@media screen and (max-width: 600px) {
+    .data-column {
+      width: 100%;
+    }
+}
+
+/** FIRST ROW CSS **/
+
+/* risk counters css*/
+
+.risk-counters {
+    margin: auto;
+    border: 3px solid lightblue;
+    padding: 10px;
+    width: 25%;
+}
+
+.risk-counter {
+    margin: auto;
+    background-color: var(--accentV1);
+    padding: 10px;
+    margin: 10px;
+    width: 90%;
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.risk-counter p {
+    background-color: azure;
+}
+
+/* pie chart css */
+
+.piechart {
+    width: 50%;
+    background-color: blueviolet;
+}
+
+.issue-buttons {
+    width: 25%;
+}
+

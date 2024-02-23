@@ -11,8 +11,8 @@ func runLocalhost() {
 	http.HandleFunc("/home/", homeHandler)
 
 	// make sure http is able to use static files (i.e. css and js)
-	http.Handle("/Resources/App/Static/", http.StripPrefix("/Resources/App/Static/",
-		http.FileServer(http.Dir("./Resources/App/Static"))))
+	http.Handle("/Resources/App/", http.StripPrefix("/Resources/App/",
+		http.FileServer(http.Dir("./Resources/App"))))
 }
 
 type Page struct {

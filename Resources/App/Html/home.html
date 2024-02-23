@@ -1,15 +1,48 @@
 <html lang="en-US">
     <head>
-      <meta charset="UTF-8" />
-      <link rel="stylesheet" type="text/css" href="/Resources/App/Static/Css/home.css">     
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <link rel="stylesheet" type="text/css" href="/Resources/App/Static/Css/home.css"> 
+      <link rel="stylesheet" type="text/css" href="/Resources/App/Static/Css/dashboard.css"> 
+      <!-- <link rel="import" href="./navbar.html"> -->
+      <!-- <script src="/Resources/App/Static/Js/home.js"></script>     -->
+      <script src="/Resources/App/Static/Js/vertical-navbar.js" type="text/javascript" defer></script>
     </head>
     <body>
-        <h1>
-            Home {{.Title}}
-        </h1>  
-        <canvas id="myChart" style="width:100%;max-width:800px"></canvas>
-        <script type="module" src="/Resources/App/Static/Js/home.js"></script>   
-        <div><input type="submit" value="Save"></div>
-        
+        <vertical-navbar></vertical-navbar>
+        <div class="dashboard-data">
+            <div class="data-column risk-counters">
+                <div class="security-status">
+                    <p>Security status:</p>
+                    <p>Critical</p>
+                </div>
+                <div class="risk-counter high-risk">
+                    <p>High risk issues</p>
+                    <p>4</p>
+                </div>
+                <div class="risk-counter medium-risk">
+                    <p>Medium risk issues</p>
+                    <p>4</p>
+                </div>
+                <div class="risk-counter low-risk">
+                    <p>Low risk issues</p>
+                    <p>4</p>
+                </div>
+                <div class="risk-counter no-risk">
+                    <p>Safe issues</p>
+                    <p>4</p>
+                </div>
+            </div>
+            <div class="data-column piechart"></div>
+            <div class="data-column issue-buttons"></div>
+        </div>
+        <div class="row">
+        </div>
+        <div class="row">
+            <div class="column"></div>
+            <div class="column"></div>
+            <div class="column"></div>
+          </div>
     </body>
 </html>
