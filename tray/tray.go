@@ -25,6 +25,12 @@ var scanTicker *time.Ticker
 var lang = 3
 var localizer *i18n.Localizer
 
+type MenuItem struct {
+	menuTitle   string
+	menuTooltip string
+	sysMenuItem *systray.MenuItem
+}
+
 // OnReady handles all actions that should be handled during the application run-time
 //
 // Parameters: _
@@ -32,6 +38,7 @@ var localizer *i18n.Localizer
 // Returns: _
 func OnReady() {
 	localizer = localization.Localizers[lang]
+	var menuItems []MenuItem
 	// Icon data can be found in the "icon" package
 	systray.SetIcon(icon.Data)
 
@@ -41,8 +48,9 @@ func OnReady() {
 
 	//mGoogleBrowser := systray.AddMenuItem("Google in Browser", "Opens Google in a normal browser")
 	mGoogleBrowser := systray.AddMenuItem(localizer.MustLocalize(&i18n.LocalizeConfig{
-		MessageID: "Google",
+		MessageID: "GoogleTitle",
 	}), "Opens Google in a normal browser")
+	menuItems = append(menuItems, MenuItem{menuTitle: "GoogleTitle", menuTooltip: "GoogleTooltip", sysMenuItem: mGoogleBrowser})
 
 	systray.AddSeparator()
 	///////////////////////
@@ -78,6 +86,7 @@ func OnReady() {
 			ScanNow()
 		case <-mChangeLang.ClickedCh:
 			changeLang()
+			refreshMenu(menuItems)
 		case <-mQuit.ClickedCh:
 			systray.Quit()
 		case <-sigc:
@@ -193,6 +202,13 @@ func changeLang() {
 	localizer = localization.Localizers[lang]
 }
 
-func refreshMenu(items []systray.MenuItem) {
-
+func refreshMenu(items []MenuItem) {
+	for _, item := range items {
+		item.sysMenuItem.SetTitle(localizer.MustLocalize(&i18n.LocalizeConfig{
+			MessageID: item.menuTitle,
+		}))
+		item.sysMenuItem.SetTooltip(localizer.MustLocalize(&i18n.LocalizeConfig{
+			MessageID: item.menuTooltip,
+		}))
+	}
 }
