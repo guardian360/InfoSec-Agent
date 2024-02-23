@@ -22,8 +22,8 @@ import (
 
 var scanCounter int
 var scanTicker *time.Ticker
-var lang = 1
-var localizer *i18n.Localizer
+var lang = 1                  // Default language is British English
+var localizer *i18n.Localizer // Localizer for the current language
 
 type MenuItem struct {
 	menuTitle   string

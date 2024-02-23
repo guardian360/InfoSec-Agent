@@ -1,12 +1,12 @@
 {
-  "GoogleTitle": "Google in Browser",
-  "GoogleTooltip": "Opens Google in a normal browser",
-  "ScanIntervalTitle": "Change Scan Interval",
-  "ScanIntervalTooltip": "Change the interval for scanning",
-  "ScanNowTitle": "Scan now",
-  "ScanNowTooltip": "Scan your device now",
-  "ChangeLangTitle": "Change Language",
-  "ChangeLangTooltip": "Change the language of the application",
-  "QuitTitle": "Quit",
-  "QuitTooltip": "Quit example tray application"
+  "GoogleTitle": "Google en Navegador",
+  "GoogleTooltip": "Abrir Google en Navegador",
+  "ScanIntervalTitle": "Cambiar intervalo de escaneo",
+  "ScanIntervalTooltip": "Cambiar intervalo de escaneo",
+  "ScanNowTitle": "Escanear ahora",
+  "ScanNowTooltip": "Escanea tu dispositivo ahora",
+  "ChangeLangTitle": "Cambiar idioma",
+  "ChangeLangTooltip": "Cambiar idioma de la aplicación",
+  "QuitTitle": "Terminar aplicación",
+  "QuitTooltip": "Terminar aplicación"
 }
