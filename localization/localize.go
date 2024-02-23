@@ -13,13 +13,13 @@ func Init() { //3
 	bundle = i18n.NewBundle(language.BritishEnglish)
 
 	bundle.RegisterUnmarshalFunc("json", json.Unmarshal)
-	bundle.MustLoadMessageFile("localization/localizations_src/de/tray.json")
+	bundle.MustLoadMessageFile("localization/localizations_src/de/active.de.json")
 	bundle.MustLoadMessageFile("localization/localizations_src/en-GB/active.en-GB.json")
-	bundle.MustLoadMessageFile("localization/localizations_src/en-US/tray.json")
+	bundle.MustLoadMessageFile("localization/localizations_src/en-US/active.en-US.json")
 	bundle.MustLoadMessageFile("localization/localizations_src/es/active.es.json")
-	bundle.MustLoadMessageFile("localization/localizations_src/fr/tray.json")
-	bundle.MustLoadMessageFile("localization/localizations_src/nl/tray.json")
-	bundle.MustLoadMessageFile("localization/localizations_src/pt/tray.json")
+	bundle.MustLoadMessageFile("localization/localizations_src/fr/active.fr.json")
+	bundle.MustLoadMessageFile("localization/localizations_src/nl/active.nl.json")
+	bundle.MustLoadMessageFile("localization/localizations_src/pt/active.pt.json")
 
 	// Localizes for each language
 	Localizers[0] = i18n.NewLocalizer(bundle, language.German.String())
