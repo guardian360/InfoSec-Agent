@@ -62,24 +62,30 @@ func OnReady() {
 	}), localizer.MustLocalize(&i18n.LocalizeConfig{
 		MessageID: "ScanIntervalTooltip",
 	}))
+	menuItems = append(menuItems, MenuItem{menuTitle: "ScanIntervalTitle", menuTooltip: "ScanIntervalTooltip", sysMenuItem: mChangeScanInterval})
 
 	mScanNow := systray.AddMenuItem(localizer.MustLocalize(&i18n.LocalizeConfig{
 		MessageID: "ScanNowTitle",
 	}), localizer.MustLocalize(&i18n.LocalizeConfig{
 		MessageID: "ScanNowTooltip",
 	}))
+	menuItems = append(menuItems, MenuItem{menuTitle: "ScanNowTitle", menuTooltip: "ScanNowTooltip", sysMenuItem: mScanNow})
+
 	systray.AddSeparator()
 	mChangeLang := systray.AddMenuItem(localizer.MustLocalize(&i18n.LocalizeConfig{
 		MessageID: "ChangeLangTitle",
 	}), localizer.MustLocalize(&i18n.LocalizeConfig{
 		MessageID: "ChangeLangTooltip",
 	}))
+	menuItems = append(menuItems, MenuItem{menuTitle: "ChangeLangTitle", menuTooltip: "ChangeLangTooltip", sysMenuItem: mChangeLang})
+
 	systray.AddSeparator()
 	mQuit := systray.AddMenuItem(localizer.MustLocalize(&i18n.LocalizeConfig{
 		MessageID: "QuitTitle",
 	}), localizer.MustLocalize(&i18n.LocalizeConfig{
 		MessageID: "QuitTooltip",
 	}))
+	menuItems = append(menuItems, MenuItem{menuTitle: "QuitTitle", menuTooltip: "QuitTooltip", sysMenuItem: mScanNow})
 
 	// Set up a channel to receive OS signals, used for termination
 	// Can be used to notify the application about system termination signals,
