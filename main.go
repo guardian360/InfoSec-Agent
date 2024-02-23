@@ -5,7 +5,6 @@ package main
 
 import (
 	"InfoSec-Agent/tray"
-
 	"github.com/getlantern/systray"
 )
 
