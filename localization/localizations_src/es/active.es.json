@@ -1,4 +1,12 @@
 {
-  "GoogleTitle" : "Google en Navegador",
-  "GoogleTooltip" : "ll"
+  "GoogleTitle": "Google in Browser",
+  "GoogleTooltip": "Opens Google in a normal browser",
+  "ScanIntervalTitle": "",
+  "ScanIntervalTooltip": "",
+  "ScanNowTitle": "",
+  "ScanNowTooltip": "",
+  "ChangeLangTitle": "",
+  "ChangeLangTooltip": "",
+  "QuitTitle": "",
+  "QuitTooltip": ""
 }

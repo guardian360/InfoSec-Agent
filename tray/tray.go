@@ -22,7 +22,7 @@ import (
 
 var scanCounter int
 var scanTicker *time.Ticker
-var lang = 3
+var lang = 1
 var localizer *i18n.Localizer
 
 type MenuItem struct {
@@ -41,6 +41,7 @@ func OnReady() {
 	var menuItems []MenuItem
 	// Icon data can be found in the "icon" package
 	systray.SetIcon(icon.Data)
+	systray.SetTooltip("InfoSec Agent")
 
 	// Generate the menu for the system tray application
 
@@ -49,17 +50,36 @@ func OnReady() {
 	//mGoogleBrowser := systray.AddMenuItem("Google in Browser", "Opens Google in a normal browser")
 	mGoogleBrowser := systray.AddMenuItem(localizer.MustLocalize(&i18n.LocalizeConfig{
 		MessageID: "GoogleTitle",
-	}), "Opens Google in a normal browser")
+	}), localizer.MustLocalize(&i18n.LocalizeConfig{
+		MessageID: "GoogleTooltip",
+	}))
 	menuItems = append(menuItems, MenuItem{menuTitle: "GoogleTitle", menuTooltip: "GoogleTooltip", sysMenuItem: mGoogleBrowser})
 
 	systray.AddSeparator()
 	///////////////////////
-	mChangeScanInterval := systray.AddMenuItem("Change Scan Interval", "Change the interval for scanning")
-	mScanNow := systray.AddMenuItem("Scan now", "Scan your device now")
+	mChangeScanInterval := systray.AddMenuItem(localizer.MustLocalize(&i18n.LocalizeConfig{
+		MessageID: "ScanIntervalTitle",
+	}), localizer.MustLocalize(&i18n.LocalizeConfig{
+		MessageID: "ScanIntervalTooltip",
+	}))
+
+	mScanNow := systray.AddMenuItem(localizer.MustLocalize(&i18n.LocalizeConfig{
+		MessageID: "ScanNowTitle",
+	}), localizer.MustLocalize(&i18n.LocalizeConfig{
+		MessageID: "ScanNowTooltip",
+	}))
 	systray.AddSeparator()
-	mChangeLang := systray.AddMenuItem("Change Language", "Change the language of the application")
+	mChangeLang := systray.AddMenuItem(localizer.MustLocalize(&i18n.LocalizeConfig{
+		MessageID: "ChangeLangTitle",
+	}), localizer.MustLocalize(&i18n.LocalizeConfig{
+		MessageID: "ChangeLangTooltip",
+	}))
 	systray.AddSeparator()
-	mQuit := systray.AddMenuItem("Quit", "Quit example tray application")
+	mQuit := systray.AddMenuItem(localizer.MustLocalize(&i18n.LocalizeConfig{
+		MessageID: "QuitTitle",
+	}), localizer.MustLocalize(&i18n.LocalizeConfig{
+		MessageID: "QuitTooltip",
+	}))
 
 	// Set up a channel to receive OS signals, used for termination
 	// Can be used to notify the application about system termination signals,
