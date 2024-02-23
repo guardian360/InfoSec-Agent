@@ -11,6 +11,7 @@ func runLocalhost() {
 	http.HandleFunc("/home/", homeHandler)
 	http.HandleFunc("/dashboard/", dashboardHandler)
 	http.HandleFunc("/issues/", issuesHandler)
+	http.HandleFunc("/settings/", settingsHandler)
 
 	// make sure http is able to use static files (i.e. css and js)
 	http.Handle("/Resources/App/", http.StripPrefix("/Resources/App/",
@@ -61,4 +62,13 @@ func issuesHandler(w http.ResponseWriter, r *http.Request) {
 		p = &Page{Title: title}
 	}
 	renderTemplate(w, "Resources/App/Html/issues", p)
+}
+
+func settingsHandler(w http.ResponseWriter, r *http.Request) {
+	title := r.URL.Path[len("/settings/"):]
+	p, err := loadPage(title)
+	if err != nil {
+		p = &Page{Title: title}
+	}
+	renderTemplate(w, "Resources/App/Html/settings", p)
 }
