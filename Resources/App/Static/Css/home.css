@@ -73,8 +73,9 @@ body {
 
 /* Navigation menu */
 #left-nav {
+    padding-top: 10px;
     height: 100vh;
-    width: 200px;
+    width: 240px;
     background-color: #4E869B;
     float:left;
 }
@@ -90,16 +91,21 @@ body {
     color: #f0f0f0;
 }
 #left-nav p {
-    padding: 10px;
+    width: 100%;
     color: #d4d4d4;
     line-height: 100%;
     margin: 0;
     font-size: 1em;
+    float:left;
 }
 #left-nav span {
+    float:left;
     vertical-align: bottom;
-    padding-right: 10px;
+    padding: 10px;
+}
+#left-nav .material-symbols-outlined {
+    padding-left: 20px;
 }
 #left-nav .nav-item {
-    margin-bottom:2px;
+    padding-top: 15px;
 }
