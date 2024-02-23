@@ -1,0 +1,12 @@
+{
+  "GoogleTitle": "Google no navegador",
+  "GoogleTooltip": "Abre o Google em um navegador normal",
+  "ScanIntervalTitle": "Intervalo de varredura",
+  "ScanIntervalTooltip": "Defina o intervalo de varredura",
+  "ScanNowTitle": "Varredura agora",
+  "ScanNowTooltip": "Varre agora",
+  "ChangeLangTitle": "Mudar idioma",
+  "ChangeLangTooltip": "Muda o idioma do aplicativo",
+  "QuitTitle": "Sair",
+  "QuitTooltip": "Fecha o aplicativo"
+}

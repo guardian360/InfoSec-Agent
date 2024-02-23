@@ -1,0 +1,12 @@
+{
+  "GoogleTitle": "Google en Navegador",
+  "GoogleTooltip": "Abrir Google en Navegador",
+  "ScanIntervalTitle": "Cambiar intervalo de escaneo",
+  "ScanIntervalTooltip": "Cambiar intervalo de escaneo",
+  "ScanNowTitle": "Escanear ahora",
+  "ScanNowTooltip": "Escanea tu dispositivo ahora",
+  "ChangeLangTitle": "Cambiar idioma",
+  "ChangeLangTooltip": "Cambiar idioma de la aplicación",
+  "QuitTitle": "Terminar aplicación",
+  "QuitTooltip": "Terminar aplicación"
+}

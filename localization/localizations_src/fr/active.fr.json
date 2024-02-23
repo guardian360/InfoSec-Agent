@@ -1,0 +1,12 @@
+{
+  "GoogleTitle": "Google dans le navigateur",
+  "GoogleTooltip": "Ouvrir Google dans le navigateur",
+  "ScanIntervalTitle": "Modifier l'intervalle d'analyse",
+  "ScanIntervalTooltip": "Modifier l'intervalle d'analyse de l'application",
+  "ScanNowTitle": "Analyser maintenant",
+  "ScanNowTooltip": "Lancer une analyse immédiate de l'application",
+  "ChangeLangTitle": "Changer la langue",
+  "ChangeLangTooltip": "Changer la langue de l'application",
+  "QuitTitle": "Quitter l'application",
+  "QuitTooltip": "Quitter l'application"
+}

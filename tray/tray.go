@@ -4,7 +4,9 @@
 package tray
 
 import (
+	"InfoSec-Agent/localization"
 	"fmt"
+	"github.com/nicksnyder/go-i18n/v2/i18n"
 	"os"
 	"os/signal"
 	"strconv"
@@ -20,6 +22,14 @@ import (
 
 var scanCounter int
 var scanTicker *time.Ticker
+var lang = 1                  // Default language is British English
+var localizer *i18n.Localizer // Localizer for the current language
+
+type MenuItem struct {
+	menuTitle   string
+	menuTooltip string
+	sysMenuItem *systray.MenuItem
+}
 
 // OnReady handles all actions that should be handled during the application run-time
 //
@@ -27,19 +37,55 @@ var scanTicker *time.Ticker
 //
 // Returns: _
 func OnReady() {
+	localizer = localization.Localizers[lang]
+	var menuItems []MenuItem
 	// Icon data can be found in the "icon" package
 	systray.SetIcon(icon.Data)
+	systray.SetTooltip("InfoSec Agent")
 
 	// Generate the menu for the system tray application
 
 	// Example menu item //
-	mGoogleBrowser := systray.AddMenuItem("Google in Browser", "Opens Google in a normal browser")
+
+	//mGoogleBrowser := systray.AddMenuItem("Google in Browser", "Opens Google in a normal browser")
+	mGoogleBrowser := systray.AddMenuItem(localizer.MustLocalize(&i18n.LocalizeConfig{
+		MessageID: "GoogleTitle",
+	}), localizer.MustLocalize(&i18n.LocalizeConfig{
+		MessageID: "GoogleTooltip",
+	}))
+	menuItems = append(menuItems, MenuItem{menuTitle: "GoogleTitle", menuTooltip: "GoogleTooltip", sysMenuItem: mGoogleBrowser})
+
 	systray.AddSeparator()
 	///////////////////////
-	mChangeScanInterval := systray.AddMenuItem("Change Scan Interval", "Change the interval for scanning")
-	mScanNow := systray.AddMenuItem("Scan now", "Scan your device now")
+	mChangeScanInterval := systray.AddMenuItem(localizer.MustLocalize(&i18n.LocalizeConfig{
+		MessageID: "ScanIntervalTitle",
+	}), localizer.MustLocalize(&i18n.LocalizeConfig{
+		MessageID: "ScanIntervalTooltip",
+	}))
+	menuItems = append(menuItems, MenuItem{menuTitle: "ScanIntervalTitle", menuTooltip: "ScanIntervalTooltip", sysMenuItem: mChangeScanInterval})
+
+	mScanNow := systray.AddMenuItem(localizer.MustLocalize(&i18n.LocalizeConfig{
+		MessageID: "ScanNowTitle",
+	}), localizer.MustLocalize(&i18n.LocalizeConfig{
+		MessageID: "ScanNowTooltip",
+	}))
+	menuItems = append(menuItems, MenuItem{menuTitle: "ScanNowTitle", menuTooltip: "ScanNowTooltip", sysMenuItem: mScanNow})
+
 	systray.AddSeparator()
-	mQuit := systray.AddMenuItem("Quit", "Quit example tray application")
+	mChangeLang := systray.AddMenuItem(localizer.MustLocalize(&i18n.LocalizeConfig{
+		MessageID: "ChangeLangTitle",
+	}), localizer.MustLocalize(&i18n.LocalizeConfig{
+		MessageID: "ChangeLangTooltip",
+	}))
+	menuItems = append(menuItems, MenuItem{menuTitle: "ChangeLangTitle", menuTooltip: "ChangeLangTooltip", sysMenuItem: mChangeLang})
+
+	systray.AddSeparator()
+	mQuit := systray.AddMenuItem(localizer.MustLocalize(&i18n.LocalizeConfig{
+		MessageID: "QuitTitle",
+	}), localizer.MustLocalize(&i18n.LocalizeConfig{
+		MessageID: "QuitTooltip",
+	}))
+	menuItems = append(menuItems, MenuItem{menuTitle: "QuitTitle", menuTooltip: "QuitTooltip", sysMenuItem: mScanNow})
 
 	// Set up a channel to receive OS signals, used for termination
 	// Can be used to notify the application about system termination signals,
@@ -64,6 +110,9 @@ func OnReady() {
 			ChangeScanInterval()
 		case <-mScanNow.ClickedCh:
 			ScanNow()
+		case <-mChangeLang.ClickedCh:
+			changeLang()
+			refreshMenu(menuItems)
 		case <-mQuit.ClickedCh:
 			systray.Quit()
 		case <-sigc:
@@ -73,6 +122,7 @@ func OnReady() {
 			scanCounter++
 			fmt.Println("Scan:", scanCounter)
 		}
+
 	}
 }
 
@@ -148,4 +198,54 @@ func GetScanCounter() int {
 // Returns: scanTicker (*time.Ticker)
 func GetScanTicker() *time.Ticker {
 	return scanTicker
+}
+
+// changeLang provides the user with a dialog window to change the language of the application
+//
+// Parameters: _
+//
+// Returns: _
+func changeLang() {
+	res, err := zenity.List("Choose a language", []string{"German", "British English", "American English",
+		"Spanish", "French", "Dutch", "Portuguese"}, zenity.Title("Change Language"),
+		zenity.DefaultItems("British English"))
+	if err != nil {
+		fmt.Println("Error creating dialog:", err)
+		return
+	}
+
+	// Assign each language to an index for the localization package
+	switch res {
+	case "German":
+		lang = 0
+	case "British English":
+		lang = 1
+	case "American English":
+		lang = 2
+	case "Spanish":
+		lang = 3
+	case "French":
+		lang = 4
+	case "Dutch":
+		lang = 5
+	case "Portuguese":
+		lang = 6
+	}
+	localizer = localization.Localizers[lang]
+}
+
+// refreshMenu updates the menu items with the current language
+//
+// Parameters: items ([]MenuItem)
+//
+// Returns: _
+func refreshMenu(items []MenuItem) {
+	for _, item := range items {
+		item.sysMenuItem.SetTitle(localizer.MustLocalize(&i18n.LocalizeConfig{
+			MessageID: item.menuTitle,
+		}))
+		item.sysMenuItem.SetTooltip(localizer.MustLocalize(&i18n.LocalizeConfig{
+			MessageID: item.menuTooltip,
+		}))
+	}
 }

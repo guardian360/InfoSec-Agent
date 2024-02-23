@@ -5,6 +5,7 @@
 package tray_test
 
 import (
+	"InfoSec-Agent/localization"
 	"io"
 	"os"
 	"testing"
@@ -18,6 +19,10 @@ import (
 // Setup for the tests
 func TestMain(m *testing.M) {
 	// Initialize systray
+
+	go localization.Init("../")
+	time.Sleep(100 * time.Millisecond)
+
 	go systray.Run(tray.OnReady, tray.OnQuit)
 
 	// Wait for the system tray application to initialize
@@ -65,7 +70,10 @@ func TestChangeScanInterval(t *testing.T) {
 		time.Sleep(100 * time.Millisecond)
 
 		// Restore standard output
-		w.Close()
+		err := w.Close()
+		if err != nil {
+			t.Errorf("Error closing pipe: %v", err)
+		}
 		os.Stdout = oldStdout
 		capturedOutput, _ := io.ReadAll(r)
 

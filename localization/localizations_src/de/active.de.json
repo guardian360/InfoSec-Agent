@@ -1,0 +1,12 @@
+{
+  "GoogleTitle": "Google im Browser",
+  "GoogleTooltip": "Öffnet Google in einem normalen Browser",
+  "ScanIntervalTitle": "Scanintervall ändern",
+  "ScanIntervalTooltip": "Change the interval for scanning",
+  "ScanNowTitle": "Ändern Sie das Scanintervall",
+  "ScanNowTooltip": "Scannen Sie jetzt Ihr Gerät",
+  "ChangeLangTitle": "Sprache ändern",
+  "ChangeLangTooltip": "Ändern Sie die Sprache der Anwendung",
+  "QuitTitle": "Beenden",
+  "QuitTooltip": "Beenden Sie die Anwendung"
+}
