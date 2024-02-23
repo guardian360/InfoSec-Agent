@@ -6,7 +6,7 @@ import (
 	"golang.org/x/text/language"
 )
 
-var Localizers []*i18n.Localizer
+var Localizers [7]*i18n.Localizer
 var bundle *i18n.Bundle
 
 func Init() { //3

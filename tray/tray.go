@@ -4,7 +4,9 @@
 package tray
 
 import (
+	"InfoSec-Agent/localization"
 	"fmt"
+	"github.com/nicksnyder/go-i18n/v2/i18n"
 	"os"
 	"os/signal"
 	"strconv"
@@ -20,6 +22,8 @@ import (
 
 var scanCounter int
 var scanTicker *time.Ticker
+var lang = 1
+var localizer = localization.Localizers[lang]
 
 // OnReady handles all actions that should be handled during the application run-time
 //
@@ -34,11 +38,17 @@ func OnReady() {
 
 	// Example menu item //
 
-	mGoogleBrowser := systray.AddMenuItem("Google in Browser", "Opens Google in a normal browser")
+	//mGoogleBrowser := systray.AddMenuItem("Google in Browser", "Opens Google in a normal browser")
+	mGoogleBrowser := systray.AddMenuItem(localizer.MustLocalize(&i18n.LocalizeConfig{
+		MessageID: "Google",
+	}), "Opens Google in a normal browser")
+
 	systray.AddSeparator()
 	///////////////////////
 	mChangeScanInterval := systray.AddMenuItem("Change Scan Interval", "Change the interval for scanning")
 	mScanNow := systray.AddMenuItem("Scan now", "Scan your device now")
+	systray.AddSeparator()
+	mChangeLang := systray.AddMenuItem("Change Language", "Change the language of the application")
 	systray.AddSeparator()
 	mQuit := systray.AddMenuItem("Quit", "Quit example tray application")
 
@@ -65,6 +75,8 @@ func OnReady() {
 			ChangeScanInterval()
 		case <-mScanNow.ClickedCh:
 			ScanNow()
+		case <-mChangeLang.ClickedCh:
+			changeLang()
 		case <-mQuit.ClickedCh:
 			systray.Quit()
 		case <-sigc:
@@ -149,4 +161,32 @@ func GetScanCounter() int {
 // Returns: scanTicker (*time.Ticker)
 func GetScanTicker() *time.Ticker {
 	return scanTicker
+}
+
+func changeLang() {
+	res, err := zenity.List("Choose a language", []string{"German", "British English", "American English",
+		"Spanish", "French", "Dutch", "Portuguese"}, zenity.Title("Change Language"),
+		zenity.DefaultItems("British English"))
+	if err != nil {
+		fmt.Println("Error creating dialog:", err)
+		return
+	}
+
+	switch res {
+	case "German":
+		lang = 0
+	case "British English":
+		lang = 1
+	case "American English":
+		lang = 2
+	case "Spanish":
+		lang = 3
+	case "French":
+		lang = 4
+	case "Dutch":
+		lang = 5
+	case "Portuguese":
+		lang = 6
+	}
+	localizer = localization.Localizers[lang]
 }
