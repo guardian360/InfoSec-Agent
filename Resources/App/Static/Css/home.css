@@ -1,3 +1,111 @@
-h1 {
-    color: red;
+body {
+    font-family: "DM Sans", sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+/* Header */
+#header {
+    background-color: #DFEEF1;
+    height: 60px;
+}
+#header-logo {
+    height: 100%;
+    width: 49%;
+    display: inline-flex;
+    float:left;
+}
+.logo-name {
+    height: 100%;
+    width: auto;
+    display: inline-flex;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    color: #333;
+    padding: 0;
+    margin: 0;
+}
+.logo-name img {
+    height: 60%;
+    margin-left: 20px;
+    margin-top:12px;
+}
+#header-name {
+    margin-left: 20px;
+    line-height: 60px;
+}
+#header-name h1 {
+    font-size: 1.2rem;
+    font-weight:900;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+}
+#header-settings {
+    height: 100%;
+    width: 49%;
+    display: inline-flex;
+    float:left;
+    font-size: 1.2em;
+    font-weight: 100;
+}
+#header-settings a {
+    margin-left: auto;
+    height: 100%;
+    color: #333;
+    text-decoration: none;
+}
+#header-settings p {
+    float:left;
+    margin-top:17px;
+    margin-bottom:auto;
+    color: #333;
+}
+#header-settings p:hover {
+    color: #646464;
+}
+#header-settings span {
+    vertical-align: middle;
+    padding-right: 10px;
+}
+
+
+/* Navigation menu */
+#left-nav {
+    padding-top: 10px;
+    height: 100vh;
+    width: 240px;
+    background-color: #4E869B;
+    float:left;
+}
+#left-nav a {
+    height: auto;
+    width: 100%;
+    line-height: 100%;
+    text-decoration: none;
+    float: left;
+}
+#left-nav p:hover {
+    background-color: #427385;
+    color: #f0f0f0;
+}
+#left-nav p {
+    width: 100%;
+    color: #d4d4d4;
+    line-height: 100%;
+    margin: 0;
+    font-size: 1em;
+    float:left;
+}
+#left-nav span {
+    float:left;
+    vertical-align: bottom;
+    padding: 10px;
+}
+#left-nav .material-symbols-outlined {
+    padding-left: 20px;
+}
+#left-nav .nav-item {
+    padding-top: 15px;
 }
