@@ -4,11 +4,17 @@ body {
     margin: 0;
 }
 
+/* Header */
 #header {
     background-color: #DFEEF1;
     height: 60px;
 }
-
+#header-logo {
+    height: 100%;
+    width: 49%;
+    display: inline-flex;
+    float:left;
+}
 .logo-name {
     height: 100%;
     width: auto;
@@ -20,43 +26,64 @@ body {
     padding: 0;
     margin: 0;
 }
-
 .logo-name img {
     height: 100%;
 }
-
 #header-name {
     margin-left: 20px;
     line-height: 60px;
 }
-
 #header-name h1 {
     margin: 0;
     padding: 0;
     vertical-align: middle;
 }
+#header-settings {
+    height: 100%;
+    width: 49%;
+    display: inline-flex;
+    float:left;
+}
+#header-settings a {
+    margin-left: auto;
+    margin-right: 20px;
+    height: 100%;
+    color: #333;
+    line-height: 100%;
+    text-decoration: none;
+}
+#heading-settings p {
+    padding: 20px;
+    margin: 20px;
+    color: #333;
+    line-height: 100%;
+    margin: 0;
+    font-size: 1.2em;
+}
+#header-settings p:hover {
+    color: #515151;
+}
 
+
+/* Navigation menu */
 #left-nav {
     height: 100%;
     width: 200px;
     background-color: #4E869B;
     float:left;
 }
-
 #left-nav a {
     height: 100%;
-    color: #333;
+    color: #fff;
     line-height: 100%;
     text-decoration: none;
 }
-
 #left-nav p:hover {
     background-color: #427385;
 }
-
 #left-nav p {
     padding: 20px;
-    color: #333;
+    color: #fff;
     line-height: 100%;
     margin: 0;
     font-size: 1.2em;
