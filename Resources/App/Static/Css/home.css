@@ -1,3 +1,5 @@
+@import url(color-palette.css);
+
 body {
     font-family: "DM Sans", sans-serif;
     padding: 0;
@@ -8,6 +10,9 @@ body {
 #header {
     background-color: #DFEEF1;
     height: 60px;
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 #header-logo {
     height: 100%;
@@ -73,7 +78,7 @@ body {
 
 /* Navigation menu */
 #left-nav {
-    padding-top: 10px;
+    padding-top: 60px;
     height: 100vh;
     width: 240px;
     background-color: #4E869B;
