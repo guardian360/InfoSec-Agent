@@ -33,6 +33,7 @@ func OnReady() {
 	// Generate the menu for the system tray application
 
 	// Example menu item //
+
 	mGoogleBrowser := systray.AddMenuItem("Google in Browser", "Opens Google in a normal browser")
 	systray.AddSeparator()
 	///////////////////////

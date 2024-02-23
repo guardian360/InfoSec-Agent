@@ -4,6 +4,7 @@
 package main
 
 import (
+	"InfoSec-Agent/localization"
 	"InfoSec-Agent/tray"
 	"github.com/getlantern/systray"
 )
@@ -14,5 +15,6 @@ import (
 //
 // Returns: _
 func main() {
+	localization.Init()
 	systray.Run(tray.OnReady, tray.OnQuit)
 }
