@@ -15,6 +15,6 @@ import (
 //
 // Returns: _
 func main() {
-	localization.Init()
+	localization.Init("")
 	systray.Run(tray.OnReady, tray.OnQuit)
 }
