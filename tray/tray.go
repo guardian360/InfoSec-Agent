@@ -194,6 +194,11 @@ func GetScanTicker() *time.Ticker {
 	return scanTicker
 }
 
+// changeLang provides the user with a dialog window to change the language of the application
+//
+// Parameters: _
+//
+// Returns: _
 func changeLang() {
 	res, err := zenity.List("Choose a language", []string{"German", "British English", "American English",
 		"Spanish", "French", "Dutch", "Portuguese"}, zenity.Title("Change Language"),
@@ -203,6 +208,7 @@ func changeLang() {
 		return
 	}
 
+	// Assign each language to an index for the localization package
 	switch res {
 	case "German":
 		lang = 0
@@ -222,6 +228,11 @@ func changeLang() {
 	localizer = localization.Localizers[lang]
 }
 
+// refreshMenu updates the menu items with the current language
+//
+// Parameters: items ([]MenuItem)
+//
+// Returns: _
 func refreshMenu(items []MenuItem) {
 	for _, item := range items {
 		item.sysMenuItem.SetTitle(localizer.MustLocalize(&i18n.LocalizeConfig{

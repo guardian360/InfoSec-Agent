@@ -65,7 +65,10 @@ func TestChangeScanInterval(t *testing.T) {
 		time.Sleep(100 * time.Millisecond)
 
 		// Restore standard output
-		w.Close()
+		err := w.Close()
+		if err != nil {
+			t.Errorf("Error closing pipe: %v", err)
+		}
 		os.Stdout = oldStdout
 		capturedOutput, _ := io.ReadAll(r)
 
