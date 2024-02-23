@@ -9,10 +9,12 @@ import (
 func runLocalhost() {
 	// place pages here, using http.HandleFunc
 	http.HandleFunc("/home/", homeHandler)
+	http.HandleFunc("/dashboard/", dashboardHandler)
+	http.HandleFunc("/issues/", issuesHandler)
 
 	// make sure http is able to use static files (i.e. css and js)
-	http.Handle("/Resources/App/Static/", http.StripPrefix("/Resources/App/Static/",
-		http.FileServer(http.Dir("./Resources/App/Static"))))
+	http.Handle("/Resources/App/", http.StripPrefix("/Resources/App/",
+		http.FileServer(http.Dir("./Resources/App"))))
 }
 
 type Page struct {
@@ -41,4 +43,22 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 		p = &Page{Title: title}
 	}
 	renderTemplate(w, "Resources/App/Html/home", p)
+}
+
+func dashboardHandler(w http.ResponseWriter, r *http.Request) {
+	title := r.URL.Path[len("/dashboard/"):]
+	p, err := loadPage(title)
+	if err != nil {
+		p = &Page{Title: title}
+	}
+	renderTemplate(w, "Resources/App/Html/dashboard", p)
+}
+
+func issuesHandler(w http.ResponseWriter, r *http.Request) {
+	title := r.URL.Path[len("/issues/"):]
+	p, err := loadPage(title)
+	if err != nil {
+		p = &Page{Title: title}
+	}
+	renderTemplate(w, "Resources/App/Html/issues", p)
 }
