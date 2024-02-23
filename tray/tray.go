@@ -22,8 +22,8 @@ import (
 
 var scanCounter int
 var scanTicker *time.Ticker
-var lang = 1
-var localizer = localization.Localizers[lang]
+var lang = 3
+var localizer *i18n.Localizer
 
 // OnReady handles all actions that should be handled during the application run-time
 //
@@ -31,6 +31,7 @@ var localizer = localization.Localizers[lang]
 //
 // Returns: _
 func OnReady() {
+	localizer = localization.Localizers[lang]
 	// Icon data can be found in the "icon" package
 	systray.SetIcon(icon.Data)
 
@@ -86,6 +87,7 @@ func OnReady() {
 			scanCounter++
 			fmt.Println("Scan:", scanCounter)
 		}
+
 	}
 }
 
@@ -189,4 +191,8 @@ func changeLang() {
 		lang = 6
 	}
 	localizer = localization.Localizers[lang]
+}
+
+func refreshMenu(items []systray.MenuItem) {
+
 }
