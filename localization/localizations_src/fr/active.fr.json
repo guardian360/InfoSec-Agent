@@ -5,8 +5,8 @@
   "ScanIntervalTooltip": "Modifier l'intervalle d'analyse de l'application",
   "ScanNowTitle": "Analyser maintenant",
   "ScanNowTooltip": "Lancer une analyse immédiate de l'application",
-  "ChangeLangTitle": "Changer la langue",
-  "ChangeLangTooltip": "Changer la langue de l'application",
+  "ChangeLanguageTitle": "Changer la langue",
+  "ChangeLanguageTooltip": "Changer la langue de l'application",
   "QuitTitle": "Quitter l'application",
   "QuitTooltip": "Quitter l'application"
 }

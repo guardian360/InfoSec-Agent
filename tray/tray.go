@@ -54,8 +54,8 @@ func OnReady() {
 	menuItems = append(menuItems, MenuItem{menuTitle: "ScanNowTitle", menuTooltip: "ScanNowTooltip", sysMenuItem: mScanNow})
 
 	systray.AddSeparator()
-	mChangeLang := systray.AddMenuItem(localization.Localize(language, "ChangeLangTitle"), localization.Localize(language, "ChangeLangTooltip"))
-	menuItems = append(menuItems, MenuItem{menuTitle: "ChangeLangTitle", menuTooltip: "ChangeLangTooltip", sysMenuItem: mChangeLang})
+	mChangeLanguage := systray.AddMenuItem(localization.Localize(language, "ChangeLanguageTitle"), localization.Localize(language, "ChangeLanguageTooltip"))
+	menuItems = append(menuItems, MenuItem{menuTitle: "ChangeLanguageTitle", menuTooltip: "ChangeLanguageTooltip", sysMenuItem: mChangeLanguage})
 
 	systray.AddSeparator()
 	mQuit := systray.AddMenuItem(localization.Localize(language, "QuitTitle"), localization.Localize(language, "QuitTooltip"))
@@ -84,8 +84,8 @@ func OnReady() {
 			ChangeScanInterval()
 		case <-mScanNow.ClickedCh:
 			ScanNow()
-		case <-mChangeLang.ClickedCh:
-			changeLang()
+		case <-mChangeLanguage.ClickedCh:
+			changeLanguage()
 			refreshMenu(menuItems)
 		case <-mQuit.ClickedCh:
 			systray.Quit()
@@ -174,12 +174,12 @@ func GetScanTicker() *time.Ticker {
 	return scanTicker
 }
 
-// changeLang provides the user with a dialog window to change the language of the application
+// changeLanguage provides the user with a dialog window to change the language of the application
 //
 // Parameters: _
 //
 // Returns: _
-func changeLang() {
+func changeLanguage() {
 	res, err := zenity.List("Choose a language", []string{"German", "British English", "American English",
 		"Spanish", "French", "Dutch", "Portuguese"}, zenity.Title("Change Language"),
 		zenity.DefaultItems("British English"))

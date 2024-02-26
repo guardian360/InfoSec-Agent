@@ -5,8 +5,8 @@
   "ScanIntervalTooltip": "Defina o intervalo de varredura",
   "ScanNowTitle": "Varredura agora",
   "ScanNowTooltip": "Varre agora",
-  "ChangeLangTitle": "Mudar idioma",
-  "ChangeLangTooltip": "Muda o idioma do aplicativo",
+  "ChangeLanguageTitle": "Mudar idioma",
+  "ChangeLanguageTooltip": "Muda o idioma do aplicativo",
   "QuitTitle": "Sair",
   "QuitTooltip": "Fecha o aplicativo"
 }
