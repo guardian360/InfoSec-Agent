@@ -1,60 +1,13 @@
 <!DOCTYPE html>
 <html lang="en-US">
     <head>
-        <meta charset="UTF-8">
-        <meta content="width=device-width, initial-scale=1" name="viewport" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" type="text/css" href="/Resources/App/Static/Css/home.css"> 
-        <link rel="stylesheet" type="text/css" href="/Resources/App/Static/Css/dashboard.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/> 
-        
-        <script src="/Resources/App/Static/Js/vertical-navbar.js" type="text/javascript" defer></script>
-        <script src="/Resources/App/Static/Js/piechart.js" type="text/javascript" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+      <meta charset="UTF-8" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+      <link rel="stylesheet" type="text/css" href="/Resources/App/Static/Css/home.css">  
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+      <script src="/Resources/App/Static/Js/vertical-navbar.js" type="text/javascript" defer></script> 
     </head>
     <body>
-      <vertical-navbar></vertical-navbar>
-        <div class="dashboard-data">
-            <div class="data-column risk-counters">
-                <div class="security-status">
-                    <p>Security status</p>
-                    <p>Critical</p>
-                </div>
-                <div class="risk-counter high-risk">
-                    <p>High risk issues</p>
-                    <p>4</p>
-                </div>
-                <div class="risk-counter medium-risk">
-                    <p>Medium risk issues</p>
-                    <p>4</p>
-                </div>
-                <div class="risk-counter low-risk">
-                    <p>Low risk issues</p>
-                    <p>4</p>
-                </div>
-                <div class="risk-counter no-risk">
-                    <p>Safe issues</p>
-                    <p>4</p>
-                </div>
-            </div>
-            <div class="data-column piechart">
-                <canvas id="pieChart"></canvas>
-            </div>
-            <div class="data-column issue-buttons">
-                <H2>You have some issues you can fix. 
-                    To start resolving a issue either navigate to the issues page, or pick a suggested issue below
-                </H2>
-                <a class="issue-button">Suggested Issue</a>
-                <a class="issue-button">Quick Fix</a>
-            </div>
-        </div>
-        <div class="row">
-        </div>
-        <div class="row">
-            <div class="column"></div>
-            <div class="column"></div>
-            <div class="column"></div>
-          </div>
+        <vertical-navbar></vertical-navbar>
     </body>
 </html>
