@@ -6,7 +6,6 @@ package tray
 import (
 	"InfoSec-Agent/localization"
 	"fmt"
-	"github.com/nicksnyder/go-i18n/v2/i18n"
 	"os"
 	"os/signal"
 	"strconv"
@@ -22,8 +21,7 @@ import (
 
 var scanCounter int
 var scanTicker *time.Ticker
-var lang = 1                  // Default language is British English
-var localizer *i18n.Localizer // Localizer for the current language
+var language = 1 // Default language is British English
 
 type MenuItem struct {
 	menuTitle   string
@@ -37,7 +35,6 @@ type MenuItem struct {
 //
 // Returns: _
 func OnReady() {
-	localizer = localization.Localizers[lang]
 	var menuItems []MenuItem
 	// Icon data can be found in the "icon" package
 	systray.SetIcon(icon.Data)
@@ -46,46 +43,23 @@ func OnReady() {
 	// Generate the menu for the system tray application
 
 	// Example menu item //
-
-	//mGoogleBrowser := systray.AddMenuItem("Google in Browser", "Opens Google in a normal browser")
-	mGoogleBrowser := systray.AddMenuItem(localizer.MustLocalize(&i18n.LocalizeConfig{
-		MessageID: "GoogleTitle",
-	}), localizer.MustLocalize(&i18n.LocalizeConfig{
-		MessageID: "GoogleTooltip",
-	}))
+	mGoogleBrowser := systray.AddMenuItem(localization.Localize(language, "GoogleTitle"), localization.Localize(language, "GoogleTooltip"))
 	menuItems = append(menuItems, MenuItem{menuTitle: "GoogleTitle", menuTooltip: "GoogleTooltip", sysMenuItem: mGoogleBrowser})
 
 	systray.AddSeparator()
-	///////////////////////
-	mChangeScanInterval := systray.AddMenuItem(localizer.MustLocalize(&i18n.LocalizeConfig{
-		MessageID: "ScanIntervalTitle",
-	}), localizer.MustLocalize(&i18n.LocalizeConfig{
-		MessageID: "ScanIntervalTooltip",
-	}))
+	mChangeScanInterval := systray.AddMenuItem(localization.Localize(language, "ScanIntervalTitle"), localization.Localize(language, "ScanIntervalTooltip"))
 	menuItems = append(menuItems, MenuItem{menuTitle: "ScanIntervalTitle", menuTooltip: "ScanIntervalTooltip", sysMenuItem: mChangeScanInterval})
 
-	mScanNow := systray.AddMenuItem(localizer.MustLocalize(&i18n.LocalizeConfig{
-		MessageID: "ScanNowTitle",
-	}), localizer.MustLocalize(&i18n.LocalizeConfig{
-		MessageID: "ScanNowTooltip",
-	}))
+	mScanNow := systray.AddMenuItem(localization.Localize(language, "ScanNowTitle"), localization.Localize(language, "ScanNowTooltip"))
 	menuItems = append(menuItems, MenuItem{menuTitle: "ScanNowTitle", menuTooltip: "ScanNowTooltip", sysMenuItem: mScanNow})
 
 	systray.AddSeparator()
-	mChangeLang := systray.AddMenuItem(localizer.MustLocalize(&i18n.LocalizeConfig{
-		MessageID: "ChangeLangTitle",
-	}), localizer.MustLocalize(&i18n.LocalizeConfig{
-		MessageID: "ChangeLangTooltip",
-	}))
+	mChangeLang := systray.AddMenuItem(localization.Localize(language, "ChangeLangTitle"), localization.Localize(language, "ChangeLangTooltip"))
 	menuItems = append(menuItems, MenuItem{menuTitle: "ChangeLangTitle", menuTooltip: "ChangeLangTooltip", sysMenuItem: mChangeLang})
 
 	systray.AddSeparator()
-	mQuit := systray.AddMenuItem(localizer.MustLocalize(&i18n.LocalizeConfig{
-		MessageID: "QuitTitle",
-	}), localizer.MustLocalize(&i18n.LocalizeConfig{
-		MessageID: "QuitTooltip",
-	}))
-	menuItems = append(menuItems, MenuItem{menuTitle: "QuitTitle", menuTooltip: "QuitTooltip", sysMenuItem: mScanNow})
+	mQuit := systray.AddMenuItem(localization.Localize(language, "QuitTitle"), localization.Localize(language, "QuitTooltip"))
+	menuItems = append(menuItems, MenuItem{menuTitle: "QuitTitle", menuTooltip: "QuitTooltip", sysMenuItem: mQuit})
 
 	// Set up a channel to receive OS signals, used for termination
 	// Can be used to notify the application about system termination signals,
@@ -217,21 +191,22 @@ func changeLang() {
 	// Assign each language to an index for the localization package
 	switch res {
 	case "German":
-		lang = 0
+		language = 0
 	case "British English":
-		lang = 1
+		language = 1
 	case "American English":
-		lang = 2
+		language = 2
 	case "Spanish":
-		lang = 3
+		language = 3
 	case "French":
-		lang = 4
+		language = 4
 	case "Dutch":
-		lang = 5
+		language = 5
 	case "Portuguese":
-		lang = 6
+		language = 6
+	default:
+		language = 1
 	}
-	localizer = localization.Localizers[lang]
 }
 
 // refreshMenu updates the menu items with the current language
@@ -241,11 +216,7 @@ func changeLang() {
 // Returns: _
 func refreshMenu(items []MenuItem) {
 	for _, item := range items {
-		item.sysMenuItem.SetTitle(localizer.MustLocalize(&i18n.LocalizeConfig{
-			MessageID: item.menuTitle,
-		}))
-		item.sysMenuItem.SetTooltip(localizer.MustLocalize(&i18n.LocalizeConfig{
-			MessageID: item.menuTooltip,
-		}))
+		item.sysMenuItem.SetTitle(localization.Localize(language, item.menuTitle))
+		item.sysMenuItem.SetTooltip(localization.Localize(language, item.menuTooltip))
 	}
 }
