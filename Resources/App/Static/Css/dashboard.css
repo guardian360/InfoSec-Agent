@@ -1,0 +1,134 @@
+@import url(color-palette.css);
+
+/* dashboard css */
+.dashboard-data {
+    width: 100%;
+    display:flex;
+    flex-wrap:wrap;
+}
+
+.data-column {
+    height: 500px;
+}
+
+/** FIRST ROW CSS **/
+
+/* risk counters css*/
+
+.risk-counters {
+    padding-left: 10px;
+    padding-right: 10px;
+    flex: 1; /* ratio between columns: 1:2:1 */
+}
+
+.risk-counter {
+    padding: 5px;
+    margin-top: 10px;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.high-risk {
+    background-color: var(--highRiskColor);
+    border-radius: 15px 15px 0px 0px;
+}
+
+.medium-risk {
+    background-color: var(--mediumRiskColor);
+}
+
+.low-risk {
+    background-color: var(--lowRiskColor);
+}
+
+.no-risk {
+    background-color: var(--noRiskColor);
+    border-radius: 0px 0px 15px 15px;
+}
+
+.risk-counter p {
+    background-color: azure;
+    margin: 10px;
+    padding: 10px;
+    vertical-align: middle;
+    font-size: 20px;
+    border-radius: 10px 10px 10px 10px;
+}
+
+.security-status {
+    background-color: var(--secundaryLight500);
+    border: 3px solid var(--primaryDark500);
+    padding: 5px;
+    margin-top: 10px;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 15px 15px 15px 15px;
+}
+
+.security-status p {
+    background-color: var(--primaryDark500);
+    margin: 10px;
+    padding: 17.5px;
+    vertical-align: middle;
+    border-radius: 15px 15px 15px 15px;
+    /* font */
+    font-size: 25px;
+    color: var(--secundaryLight500); 
+}
+
+/* pie chart css */
+
+.piechart {
+    flex: 2; /* ratio between columns: 1:2:1 */
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 15px 15px 15px 15px;
+    background-color: var(--accentV2Light900);
+}
+
+.piechart canvas {
+    width:0.5vw;
+    max-width:100%;
+    max-height:500px
+}
+
+/* issue buttons css */
+
+.issue-buttons {
+    flex: 1; /* ratio between columns: 1:2:1 */
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.issue-button {
+    background-color: var(--secundaryLight500);
+    border: 3px solid var(--primaryDark500);
+    padding: 10px;
+    margin: 10px;
+    height: 40px;
+    border-radius: 15px 15px 15px 15px;
+    text-align: center;
+    display: block;
+    /* font */
+    font-size: 25px;
+    color: var(--secundaryLight500);  
+}
+
+
+
+/* Screen size adjustments */
+
+@media only screen and (max-width: 600px) {
+    .data-column {
+      width: 100%;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .piechart canvas {
+        width: 100px;
+        max-width: 700px;
+    }
+}
