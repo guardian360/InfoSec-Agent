@@ -1,20 +1,19 @@
 <html lang="en-US">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <link rel="stylesheet" type="text/css" href="/Resources/App/Static/Css/home.css"> 
-      <link rel="stylesheet" type="text/css" href="/Resources/App/Static/Css/dashboard.css"> 
-      <!-- <link rel="import" href="./navbar.html"> -->
-      <!-- <script src="/Resources/App/Static/Js/home.js"></script>     -->
-      <script src="/Resources/App/Static/Js/vertical-navbar.js" type="text/javascript" defer></script>
+        <link rel="stylesheet" type="text/css" href="/Resources/App/Static/Css/home.css"> 
+        <link rel="stylesheet" type="text/css" href="/Resources/App/Static/Css/dashboard.css"> 
+
+        <script src="/Resources/App/Static/Js/piechart.js" type="text/javascript" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     </head>
     <body>
-        <vertical-navbar></vertical-navbar>
         <div class="dashboard-data">
             <div class="data-column risk-counters">
                 <div class="security-status">
-                    <p>Security status:</p>
+                    <p>Security status</p>
                     <p>Critical</p>
                 </div>
                 <div class="risk-counter high-risk">
@@ -34,8 +33,16 @@
                     <p>4</p>
                 </div>
             </div>
-            <div class="data-column piechart"></div>
-            <div class="data-column issue-buttons"></div>
+            <div class="data-column piechart">
+                <canvas id="pieChart"></canvas>
+            </div>
+            <div class="data-column issue-buttons">
+                <H2>You have some issues you can fix. 
+                    To start resolving a issue either navigate to the issues page, or pick a suggested issue below
+                </H2>
+                <a class="issue-button">Suggested Issue</a>
+                <a class="issue-button">Quick Fix</a>
+            </div>
         </div>
         <div class="row">
         </div>
