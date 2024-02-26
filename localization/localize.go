@@ -39,3 +39,7 @@ func Init(path string) { //3
 func Localize(language int, MessageID string) string {
 	return localizers[language].MustLocalize(&i18n.LocalizeConfig{MessageID: MessageID}) // Is it confusing to have field MessageID and parameter MessageID?
 }
+
+func Localizers() [7]*i18n.Localizer {
+	return localizers
+}

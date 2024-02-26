@@ -85,7 +85,7 @@ func OnReady() {
 		case <-mScanNow.ClickedCh:
 			ScanNow()
 		case <-mChangeLanguage.ClickedCh:
-			changeLanguage()
+			ChangeLanguage()
 			refreshMenu(menuItems)
 		case <-mQuit.ClickedCh:
 			systray.Quit()
@@ -174,18 +174,24 @@ func GetScanTicker() *time.Ticker {
 	return scanTicker
 }
 
-// changeLanguage provides the user with a dialog window to change the language of the application
+// ChangeLanguage provides the user with a dialog window to change the language of the application
 //
 // Parameters: _
 //
 // Returns: _
-func changeLanguage() {
-	res, err := zenity.List("Choose a language", []string{"German", "British English", "American English",
-		"Spanish", "French", "Dutch", "Portuguese"}, zenity.Title("Change Language"),
-		zenity.DefaultItems("British English"))
-	if err != nil {
-		fmt.Println("Error creating dialog:", err)
-		return
+func ChangeLanguage(testInput ...string) {
+	var res string
+	if len(testInput) > 0 {
+		res = testInput[0]
+	} else {
+		var err error
+		res, err = zenity.List("Choose a language", []string{"German", "British English", "American English",
+			"Spanish", "French", "Dutch", "Portuguese"}, zenity.Title("Change Language"),
+			zenity.DefaultItems("British English"))
+		if err != nil {
+			fmt.Println("Error creating dialog:", err)
+			return
+		}
 	}
 
 	// Assign each language to an index for the localization package
@@ -219,4 +225,8 @@ func refreshMenu(items []MenuItem) {
 		item.sysMenuItem.SetTitle(localization.Localize(language, item.menuTitle))
 		item.sysMenuItem.SetTooltip(localization.Localize(language, item.menuTooltip))
 	}
+}
+
+func Language() int {
+	return language
 }
