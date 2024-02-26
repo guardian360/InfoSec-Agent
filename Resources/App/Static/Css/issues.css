@@ -1,0 +1,25 @@
+#issues-table {
+    float: left;
+    margin-top: 60px;
+    /* font-family: Arial, Helvetica, sans-serif; */
+    /* border-collapse: collapse; */
+    width: 400px;
+
+}
+
+#issues-table td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#issues-table tr:nth-child(even){background-color: #f2f2f2;}
+
+#issues-table tr:hover {background-color: #ddd;}
+
+#issues-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+}
