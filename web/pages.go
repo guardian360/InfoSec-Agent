@@ -39,6 +39,15 @@ func renderTemplate(w http.ResponseWriter, tmpl string, p *Page) {
 	t.Execute(w, p)
 }
 
+// func standardHandler(page string, w http.ResponseWriter, r *http.Request) {
+// 	title := r.URL.Path[len("/"+page+"/"):]
+// 	p, err := loadPage(title)
+// 	if err != nil {
+// 		p = &Page{Title: title}
+// 	}
+// 	renderTemplate(w, ("Resources/App/Html/" + page), p)
+// }
+
 func homeHandler(w http.ResponseWriter, r *http.Request) {
 	title := r.URL.Path[len("/home/"):]
 	p, err := loadPage(title)
