@@ -1,3 +1,8 @@
+/* 
+Color palette able to be used throughout pages
+Should later on be able to be changed by user, with help of js
+*/
+
 :root {
     --hue: 200;
     --hueComplement: calc(var(--hue) + 180);
@@ -21,3 +26,4 @@
     --lowRiskColor: #eee8aa;
     --noRiskColor: #7fffd4;
 }
+

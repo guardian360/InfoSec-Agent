@@ -9,6 +9,11 @@ import (
 func runLocalhost() {
 	// place pages here, using http.HandleFunc
 	http.HandleFunc("/home/", homeHandler)
+	http.HandleFunc("/dashboard/", dashboardHandler)
+	http.HandleFunc("/issues/", issuesHandler)
+	http.HandleFunc("/settings/", settingsHandler)
+	http.HandleFunc("/integration/", integrationHandler)
+	http.HandleFunc("/about/", aboutHandler)
 
 	// make sure http is able to use static files (i.e. css and js)
 	http.Handle("/Resources/App/", http.StripPrefix("/Resources/App/",
@@ -34,6 +39,15 @@ func renderTemplate(w http.ResponseWriter, tmpl string, p *Page) {
 	t.Execute(w, p)
 }
 
+// func standardHandler(page string, w http.ResponseWriter, r *http.Request) {
+// 	title := r.URL.Path[len("/"+page+"/"):]
+// 	p, err := loadPage(title)
+// 	if err != nil {
+// 		p = &Page{Title: title}
+// 	}
+// 	renderTemplate(w, ("Resources/App/Html/" + page), p)
+// }
+
 func homeHandler(w http.ResponseWriter, r *http.Request) {
 	title := r.URL.Path[len("/home/"):]
 	p, err := loadPage(title)
@@ -41,4 +55,49 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 		p = &Page{Title: title}
 	}
 	renderTemplate(w, "Resources/App/Html/home", p)
+}
+
+func dashboardHandler(w http.ResponseWriter, r *http.Request) {
+	title := r.URL.Path[len("/dashboard/"):]
+	p, err := loadPage(title)
+	if err != nil {
+		p = &Page{Title: title}
+	}
+	renderTemplate(w, "Resources/App/Html/dashboard", p)
+}
+
+func issuesHandler(w http.ResponseWriter, r *http.Request) {
+	title := r.URL.Path[len("/issues/"):]
+	p, err := loadPage(title)
+	if err != nil {
+		p = &Page{Title: title}
+	}
+	renderTemplate(w, "Resources/App/Html/issues", p)
+}
+
+func settingsHandler(w http.ResponseWriter, r *http.Request) {
+	title := r.URL.Path[len("/settings/"):]
+	p, err := loadPage(title)
+	if err != nil {
+		p = &Page{Title: title}
+	}
+	renderTemplate(w, "Resources/App/Html/settings", p)
+}
+
+func integrationHandler(w http.ResponseWriter, r *http.Request) {
+	title := r.URL.Path[len("/integration/"):]
+	p, err := loadPage(title)
+	if err != nil {
+		p = &Page{Title: title}
+	}
+	renderTemplate(w, "Resources/App/Html/integration", p)
+}
+
+func aboutHandler(w http.ResponseWriter, r *http.Request) {
+	title := r.URL.Path[len("/about/"):]
+	p, err := loadPage(title)
+	if err != nil {
+		p = &Page{Title: title}
+	}
+	renderTemplate(w, "Resources/App/Html/about", p)
 }
