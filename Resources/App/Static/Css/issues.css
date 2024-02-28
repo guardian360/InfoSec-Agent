@@ -2,14 +2,12 @@
 
 #issues-table {
     float: left;
-    /* font-family: Arial, Helvetica, sans-serif; */
-    /* border-collapse: collapse; */
     width: 70%;
     margin: 20px;
     margin-top: 60px;
 }
 
-#issues-table td, #customers th {
+#issues-table td, #issues-table th {
     border: 1px solid #ddd;
     padding: 8px;
 }
@@ -19,9 +17,20 @@
 #issues-table tr:hover {background-color: var(--light-blue);}
 
 #issues-table th {
-    padding-top: 12px;
-    padding-bottom: 12px;
     text-align: left;
     background-color: white;
     color: var(--dark-text);
+}
+
+span {
+    float: left;
+}
+.table-header {
+    margin-top: 2px;
+}
+.material-symbols-outlined {
+    float: right;
+}
+.material-symbols-outlined:hover {
+    cursor: pointer;
 }
