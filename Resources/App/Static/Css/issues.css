@@ -1,10 +1,12 @@
+@import url(color-palette.css);
+
 #issues-table {
     float: left;
-    margin-top: 60px;
     /* font-family: Arial, Helvetica, sans-serif; */
     /* border-collapse: collapse; */
-    width: 400px;
-
+    width: 70%;
+    margin: 20px;
+    margin-top: 60px;
 }
 
 #issues-table td, #customers th {
@@ -12,14 +14,14 @@
     padding: 8px;
 }
 
-#issues-table tr:nth-child(even){background-color: #f2f2f2;}
+#issues-table tr:nth-child(even){background-color: var(--light-blue);}
 
-#issues-table tr:hover {background-color: #ddd;}
+#issues-table tr:hover {background-color: var(--light-blue);}
 
 #issues-table th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #04AA6D;
-    color: white;
+    background-color: white;
+    color: var(--dark-text);
 }
