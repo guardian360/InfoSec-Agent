@@ -13,16 +13,13 @@ for (let i = 0; i < issues.length; i++) {
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
     var cell3 = row.insertCell(2);
-    cell1.innerHTML = `<a href="/home/">` + issues[i].issue + `</a>`;
+    cell1.innerHTML = `<a href="/home/" class="issue-link">` + issues[i].issue + `</a>`;
     cell2.innerHTML = issues[i].type;
-    switch (issues[i].risklevel) {
-        case 0: cell3.innerHTML = "safe";
-        case 1: cell3.innerHTML = "low";
-        case 2: cell3.innerHTML = "medium";
-        case 3: cell3.innerHTML = "high";
-    }
-
-    cell3.innerHTML = issues[i].risklevel;
+    if (issues[i].risklevel == 0) cell3.innerHTML = "safe";
+    else if (issues[i].risklevel == 1) cell3.innerHTML = "low";
+    else if (issues[i].risklevel == 2) cell3.innerHTML = "medium";
+    else if (issues[i].risklevel == 3) cell3.innerHTML = "high";
+    else cell3.innerHTML = "unknown";
 }
 
 // Sort the table 
