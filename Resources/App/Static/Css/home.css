@@ -120,3 +120,7 @@ body {
 #left-nav .nav-item {
     padding-top: 15px;
 }
+
+#left-nav .active {
+    background-color: #427385;
+}

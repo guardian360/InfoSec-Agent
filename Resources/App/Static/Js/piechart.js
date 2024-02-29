@@ -4,7 +4,7 @@ const lowRiskColor = getComputedStyle(document.documentElement).getPropertyValue
 const noRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--noRiskColor');
 
 var xValues = ["No risk", "Low risk", "Medium risk", "High risk"];
-var yValues = [4,4,4,4];
+var yValues = [allNoRisks.slice(-1)[0], allLowRisks.slice(-1)[0], allMediumRisks.slice(-1)[0], allHighRisks.slice(-1)[0]];
 var barColors = [
     noRiskColor,
   lowRiskColor,
