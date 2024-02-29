@@ -28,4 +28,8 @@ Should later on be able to be changed by user, with help of js
     --dark-text-hover: #646464;
     --light-text: #d4d4d4;
     --light-text-hover: #f0f0f0;
-  }
+    --highRiskColor: #ff4500;
+    --mediumRiskColor: #ffa500;
+    --lowRiskColor: #eee8aa;
+    --noRiskColor: #7fffd4;
+}
