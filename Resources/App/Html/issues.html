@@ -4,10 +4,21 @@
       <meta charset="UTF-8" />
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
       <link rel="stylesheet" type="text/css" href="/Resources/App/Static/Css/home.css">  
+      <link rel="stylesheet" type="text/css" href="/Resources/App/Static/Css/issues.css">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
       <script src="/Resources/App/Static/Js/vertical-navbar.js" type="text/javascript" defer></script> 
+      <script src="/Resources/App/Static/Js/issues-table.js" type="text/javascript" defer></script> 
     </head>
     <body>
-        <vertical-navbar></vertical-navbar>
+      <vertical-navbar></vertical-navbar>
+      <div>
+        <table id="issues-table">
+          <tr>
+            <th id="issue-column"><span class="table-header">Issue</span><span class="material-symbols-outlined" id="sort-on-issue">swap_vert</span></th>
+            <th id="type-column"><span class="table-header">Type</span><span class="material-symbols-outlined" id="sort-on-type">swap_vert</span></th>
+            <th id="risk-column"><span class="table-header">Risk level</span><span class="material-symbols-outlined" id="sort-on-risk">swap_vert</span></th>
+          </tr>
+        </table>
+      </div>
     </body>
 </html>

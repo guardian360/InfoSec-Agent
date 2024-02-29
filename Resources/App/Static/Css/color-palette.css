@@ -21,9 +21,15 @@ Should later on be able to be changed by user, with help of js
     --accentV2: hsl(var(--hueLeftAnalogous) 40% 40%);
     --accentV2Light900: hsl(var(--hueLeftAnalogous) 40% 90%);
 
+    --light-blue: #DFEEF1;
+    --blue: #4E869B;
+    --blue-hover: #427385;
+    --dark-text: #333;
+    --dark-text-hover: #646464;
+    --light-text: #d4d4d4;
+    --light-text-hover: #f0f0f0;
     --highRiskColor: #ff4500;
     --mediumRiskColor: #ffa500;
     --lowRiskColor: #eee8aa;
     --noRiskColor: #7fffd4;
 }
-

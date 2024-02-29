@@ -14,7 +14,7 @@ body {
 
 /* Header */
 #header {
-    background-color: #DFEEF1;
+    background-color: var(--light-blue);
     height: 60px;
     position: fixed;
     top: 0;
@@ -64,17 +64,17 @@ body {
 #header-settings a {
     margin-left: auto;
     height: 100%;
-    color: #333;
+    color: var(--dark-text);
     text-decoration: none;
 }
 #header-settings p {
     float:left;
     margin-top:17px;
     margin-bottom:auto;
-    color: #333;
+    color: var(--dark-text);
 }
 #header-settings p:hover {
-    color: #646464;
+    color: var(--dark-text-hover);
 }
 #header-settings span {
     vertical-align: middle;
@@ -87,7 +87,7 @@ body {
     /* padding-top: 60px; */
     height: 100vh;
     width: 240px;
-    background-color: #4E869B;
+    background-color: var(--blue);
     float:left;
 }
 #left-nav a {
@@ -98,12 +98,12 @@ body {
     float: left;
 }
 #left-nav p:hover {
-    background-color: #427385;
-    color: #f0f0f0;
+    background-color: var(--blue-hover);
+    color: var(--light-text-hover);
 }
 #left-nav p {
     width: 100%;
-    color: #d4d4d4;
+    color: var(--light-text);
     line-height: 100%;
     margin: 0;
     font-size: 1em;

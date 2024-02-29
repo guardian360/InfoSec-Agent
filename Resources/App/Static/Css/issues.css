@@ -1,0 +1,39 @@
+@import url(color-palette.css);
+
+#issues-table {
+    float: left;
+    width: 70%;
+    margin-left: 20px;
+    margin-top: 80px;
+}
+
+#issues-table td, #issues-table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#issues-table tr:nth-child(even){background-color: var(--light-blue);}
+
+#issues-table th {
+    text-align: left;
+    background-color: white;
+    color: var(--dark-text);
+}
+
+span {
+    float: left;
+}
+.table-header {
+    margin-top: 2px;
+}
+.material-symbols-outlined {
+    float: right;
+}
+.material-symbols-outlined:hover {
+    cursor: pointer;
+}
+.issue-link {
+    text-decoration: none;
+    color: var(--dark-text);
+}
+.issue-link:hover {color: var(--dark-text-hover)}
