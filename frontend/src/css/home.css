@@ -84,7 +84,7 @@ body {
 
 /* Navigation menu */
 #left-nav {
-    /* padding-top: 60px; */
+    padding-top: 60px;
     height: 100vh;
     width: 240px;
     background-color: var(--blue);
