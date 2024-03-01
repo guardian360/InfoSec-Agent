@@ -1,9 +1,11 @@
 @import url(color-palette.css);
 
+/* Issue table */
 #issues-table {
     float: left;
     margin-left: 20px;
     margin-top: 80px;
+    width: 95%;
 }
 
 #issues-table td, #issues-table th {
@@ -36,3 +38,8 @@ span {
     color: var(--dark-text);
 }
 .issue-link:hover {color: var(--dark-text-hover)}
+
+/* Issue pages */
+#issue-name {
+    
+}

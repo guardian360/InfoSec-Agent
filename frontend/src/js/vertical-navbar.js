@@ -7,7 +7,7 @@ class Navbar extends HTMLElement {
     this.innerHTML = `
     <div id="header">
       <div id="header-logo">
-          <a href="/home/" class="logo-name">
+          <a href="./index.html" class="logo-name">
               <img src="./src/assets/images/logoTeamA-transformed.png" alt="logo"></img>
               <div id="header-name">
                   <h1>Little Brother</h1>
