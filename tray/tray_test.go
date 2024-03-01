@@ -6,6 +6,7 @@ package tray_test
 
 import (
 	"InfoSec-Agent/localization"
+	"github.com/nicksnyder/go-i18n/v2/i18n"
 	"io"
 	"os"
 	"testing"
@@ -131,5 +132,37 @@ func TestOnQuit(t *testing.T) {
 		// OnQuit completed
 	case <-time.After(1 * time.Second):
 		t.Error("OnQuit did not complete within the timeout")
+	}
+}
+
+// TestTranslation tests the localization package, ensuring that strings are translated correctly
+func TestTranslation(t *testing.T) {
+	var localizer = localization.Localizers()[0]
+	s1 := localizer.MustLocalize(&i18n.LocalizeConfig{
+		MessageID: "ScanIntervalTitle",
+	})
+	// Change the language, then check if the translation is different
+	localizer = localization.Localizers()[1]
+	s2 := localizer.MustLocalize(&i18n.LocalizeConfig{
+		MessageID: "ScanIntervalTitle",
+	})
+	if s1 == s2 {
+		t.Errorf("Translations are the same")
+	}
+}
+
+// TestChangeLang tests the tray.ChangeLang function on valid and invalid inputs
+func TestChangeLang(t *testing.T) {
+	// Check for supported language, should return its index
+	testInput := "German"
+	tray.ChangeLanguage(testInput)
+	if tray.Language() != 0 {
+		t.Errorf("Expected language index 0, got %d", tray.Language())
+	}
+	// Check for unsupported language, should default to standard (British-English)
+	testInput = "Italian"
+	tray.ChangeLanguage(testInput)
+	if tray.Language() != 1 {
+		t.Errorf("Expected language index 1, got %d", tray.Language())
 	}
 }

@@ -5,8 +5,8 @@
   "ScanIntervalTooltip": "Change the interval for scanning",
   "ScanNowTitle": "Ändern Sie das Scanintervall",
   "ScanNowTooltip": "Scannen Sie jetzt Ihr Gerät",
-  "ChangeLangTitle": "Sprache ändern",
-  "ChangeLangTooltip": "Ändern Sie die Sprache der Anwendung",
+  "ChangeLanguageTitle": "Sprache ändern",
+  "ChangeLanguageTooltip": "Ändern Sie die Sprache der Anwendung",
   "QuitTitle": "Beenden",
   "QuitTooltip": "Beenden Sie die Anwendung"
 }

@@ -5,8 +5,8 @@
   "ScanIntervalTooltip": "Verander de scan interval van de applicatie",
   "ScanNowTitle": "Scan nu",
   "ScanNowTooltip": "Scan je device nu",
-  "ChangeLangTitle": "Verander taal",
-  "ChangeLangTooltip": "Verander de taal van de applicatie",
+  "ChangeLanguageTitle": "Verander taal",
+  "ChangeLanguageTooltip": "Verander de taal van de applicatie",
   "QuitTitle": "Beëindig applicatie",
   "QuitTooltip": "Beëindig de applicatie"
 }

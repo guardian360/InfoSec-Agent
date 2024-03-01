@@ -5,8 +5,8 @@
   "ScanIntervalTooltip": "Change the interval for scanning",
   "ScanNowTitle": "Scan now",
   "ScanNowTooltip": "Scan your device now",
-  "ChangeLangTitle": "Change Language",
-  "ChangeLangTooltip": "Change the language of the application",
+  "ChangeLanguageTitle": "Change Language",
+  "ChangeLanguageTooltip": "Change the language of the application",
   "QuitTitle": "Quit",
   "QuitTooltip": "Quit example tray application"
 }
