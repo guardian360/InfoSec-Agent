@@ -7,10 +7,13 @@ require (
 	github.com/ncruces/zenity v0.10.11
 	github.com/nicksnyder/go-i18n/v2 v2.4.0
 	github.com/skratchdot/open-golang v0.0.0-20200116055534-eef842397966
+	github.com/stretchr/testify v1.6.1
+	golang.org/x/text v0.14.0
 )
 
 require (
 	github.com/akavel/rsrc v0.10.2 // indirect
+	github.com/davecgh/go-spew v1.1.0 // indirect
 	github.com/dchest/jsmin v0.0.0-20220218165748-59f39799265f // indirect
 	github.com/getlantern/context v0.0.0-20190109183933-c447772a6520 // indirect
 	github.com/getlantern/errors v0.0.0-20190325191628-abdb3e3e36f7 // indirect
@@ -21,8 +24,9 @@ require (
 	github.com/go-stack/stack v1.8.0 // indirect
 	github.com/josephspurrier/goversioninfo v1.4.0 // indirect
 	github.com/oxtoacart/bpool v0.0.0-20190530202638-03653db5a59c // indirect
+	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/randall77/makefat v0.0.0-20210315173500-7ddd0e42c844 // indirect
 	golang.org/x/image v0.15.0 // indirect
 	golang.org/x/sys v0.16.0 // indirect
-	golang.org/x/text v0.14.0 // indirect
+	gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c // indirect
 )
