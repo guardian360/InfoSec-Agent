@@ -8,7 +8,6 @@ body {
 }
 
 .page-contents {
-  margin-top: 60px;
   margin-left: 240px;
 }
 
@@ -17,6 +16,7 @@ body {
     background-color: var(--light-blue);
     height: 60px;
     position: fixed;
+    z-index: 10;
     top: 0;
     width: 100%;
 }
@@ -89,6 +89,8 @@ body {
     width: 240px;
     background-color: var(--blue);
     float:left;
+    position: fixed;
+    z-index: 1;
 }
 #left-nav a {
     height: auto;

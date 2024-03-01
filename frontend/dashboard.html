@@ -117,9 +117,8 @@
         </div>
         <div class="graph-row">
             <div class="graph-column issues-graph-buttons">
-                <H2>In this graph you are able to see your the distribution of different issues we have found over the past 5 times we ran a check.
+                <H2>In this graph you are able to see the distribution of different issues we have found over the past 5 times we ran a check.
                 </H2>
-                <a class="issue-button">Change interval<input type="number" value="5" id="graph-interval" onchange="ChangeGraph()"></a>
                 <div class="dropdown">
                     <button class="dropbtn" onclick="GraphDropdown()">Select Risks</button>
                     <div class="dropdown-selector" id="myDropdown">
@@ -127,16 +126,17 @@
                             <label for="select-high-risk"> High risks</label><br>
                         </p>
                         <p><input type="checkbox" checked="true" value="true" id="select-medium-risk" onchange="ToggleMediumRisks()">
-                            <label for="select-high-risk"> Medium risks</label>
+                            <label for="select-medium-risk"> Medium risks</label>
                         </p>
                         <p><input type="checkbox" checked="true" value="true" id="select-low-risk" onchange="ToggleLowRisks()">
-                            <label for="select-high-risk"> Low risks</label>
+                            <label for="select-low-risk"> Low risks</label>
                         </p>
                         <p><input type="checkbox" checked="true" value="true" id="select-no-risk" onchange="ToggleNoRisks()">
-                            <label for="select-high-risk"> Safe</label>
+                            <label for="select-no-risk"> Safe</label>
                         </p>
                     </div>
                 </div>
+                <a class="interval-button"><p>Change interval</p><input type="number" value="5" id="graph-interval" onchange="ChangeGraph()"></a>
             </div>
             <div class="graph-column issues-graph">
                 <canvas id="graph"></canvas>
