@@ -3,11 +3,36 @@
     <head>
       <meta charset="UTF-8" />
       <link rel="stylesheet" type="text/css" href="./src/css/home.css">  
+      <link rel="stylesheet" type="text/css" href="./src/css/settings.css">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
       <script src="./src/js/vertical-navbar.js" type="text/javascript" defer></script>
+      <script src="./src/js/settings.js" type="text/javascript" defer></script>
     </head>
     <body>
         <vertical-navbar></vertical-navbar>
+        <div class="setting" id="dark-mode">
+          <span class="setting-description">Dark mode</span>
+          <label class="switch">
+            <input type="checkbox" id="dark-mode-switch" onclick="toggleDarkMode()">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <hr class="solid">
+        <div class="setting">
+          <span class="setting-description">Other setting</span>
+          <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <hr class="solid">
+        <div class="setting">
+          <span class="setting-description">Other setting</span>
+          <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+          </label>
+        </div>
     </body>
 </html>
