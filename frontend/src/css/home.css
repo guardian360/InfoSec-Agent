@@ -1,14 +1,13 @@
 @import url(color-palette.css);
 
 body {
-    background-color: var(--primary);
+    background-color: var(--background-color);
     font-family: "DM Sans", sans-serif;
     padding: 0;
     margin: 0;
 }
 
 .page-contents {
-  margin-top: 60px;
   margin-left: 240px;
 }
 
@@ -17,6 +16,7 @@ body {
     background-color: var(--light-blue);
     height: 60px;
     position: fixed;
+    z-index: 10;
     top: 0;
     width: 100%;
 }
@@ -84,11 +84,13 @@ body {
 
 /* Navigation menu */
 #left-nav {
-    /* padding-top: 60px; */
+    padding-top: 60px;
     height: 100vh;
     width: 240px;
     background-color: var(--blue);
     float:left;
+    position: fixed;
+    z-index: 1;
 }
 #left-nav a {
     height: auto;

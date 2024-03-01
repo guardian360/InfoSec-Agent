@@ -5,6 +5,7 @@
     width: auto;
     display:flex;
     flex-wrap:wrap;
+    padding-top: 60px;
 }
 
 .data-column {
@@ -172,10 +173,11 @@
     width: auto;
     display:flex;
     flex-wrap:wrap;
+    margin-top: 20px;
 }
 
 .issues-graph canvas {
-    width:100%;
+    width:100px;
     max-width:1500px;
     height:500px;
 }
@@ -192,23 +194,43 @@
     padding-right: 10px;
 }
 
+.interval-button {
+    cursor: pointer;
+    font-size: 16px;  
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: var(--accentV2);
+    font-family: inherit;
+    margin: 0;
+    min-width: 160px;
+    float: left;
+    margin-top: 10px;
+    text-align: center;
+}
+
+#graph-interval {
+    width: 100px;
+}
+
 .dropdown .dropbtn {
     cursor: pointer;
-  font-size: 16px;  
-  border: none;
-  outline: none;
-  color: white;
-  padding: 14px 16px;
-  background-color: var(--accentV2);
-  font-family: inherit;
-  margin: 0;
+    font-size: 16px;  
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: var(--accentV2);
+    font-family: inherit;
+    min-width: 192px;
 }
 
 .dropdown-selector {
     display: none;
     position: absolute;
     background-color: var(--accentV2);
-    min-width: 160px;
+    min-width: 192px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
   }
@@ -239,13 +261,20 @@
         width: 100px;
         max-width: 1000px;
     }
-    
-    .security-areas {
-        overflow-x: scroll;
+
+    .issues-graph canvas {
+        width: 100px;
+        max-width: 500px;
     }
 
     .security-area .material-symbols-outlined {
         font-size: 50px;
         display: block;
+    }
+}
+
+@media only screen and (max-width: 1250px) {
+    .security-areas {
+        overflow-x: scroll;
     }
 }
