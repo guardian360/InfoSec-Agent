@@ -1,7 +1,7 @@
 @import url(color-palette.css);
 
 body {
-    background-color: var(--primary);
+    background-color: var(--background-color);
     font-family: "DM Sans", sans-serif;
     padding: 0;
     margin: 0;

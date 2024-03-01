@@ -10,10 +10,11 @@
     color: var(--dark-text);
 }
 #dark-mode {
-    margin-top: 60px;
+    margin-top: 70px;
 }
 .setting-description {
     float:left;
+    width: 100px;
 }
 hr.solid {
     border-top: 1px solid var(--dark-text);
@@ -30,6 +31,7 @@ hr.solid {
     height: 22px; /*34*/
     float: right;
     margin-right: 0;
+    margin-left: 440px;
   }
   
   /* Hide default HTML checkbox */
