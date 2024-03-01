@@ -20,6 +20,10 @@
 # Go workspace file
 go.work
 
+# JetBrains project files
+.idea
+
+# Wails
 build/bin
 node_modules
 frontend/dist
