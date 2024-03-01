@@ -6,7 +6,6 @@
     padding: 20px;
     display: flex;
     float:left;
-    width: 65%;
     color: var(--dark-text);
 }
 #dark-mode {
