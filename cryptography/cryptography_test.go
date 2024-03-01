@@ -20,4 +20,17 @@ func TestEncryptDecrypt(t *testing.T) {
 	decrypted, err := DecryptMessage(key, encrypted)
 	require.Nil(t, err)
 	require.Equal(t, message, decrypted)
+
+	// Test encryption with an invalid key,
+	// key is invalid because it is not 16, 24, or 32 bytes long
+	key = []byte("0123456789abcde")
+	_, err = EncryptMessage(key, message)
+	require.NotNil(t, err)
+
+	// Test decryption with an invalid message,
+	// message is invalid because it is not a base64 string
+	_, err = DecryptMessage(key, "invalid")
+	require.NotNil(t, err)
+	// Test decryption with an invalid key,
+	_, err = DecryptMessage(key, encrypted)
 }

@@ -22,9 +22,10 @@ import (
 var scanCounter int
 var scanTicker *time.Ticker
 var language = 1 // Default language is British English
+var menuItems []MenuItem
 
 type MenuItem struct {
-	menuTitle   string
+	MenuTitle   string
 	menuTooltip string
 	sysMenuItem *systray.MenuItem
 }
@@ -35,7 +36,6 @@ type MenuItem struct {
 //
 // Returns: _
 func OnReady() {
-	var menuItems []MenuItem
 	// Icon data can be found in the "icon" package
 	systray.SetIcon(icon.Data)
 	systray.SetTooltip("InfoSec Agent")
@@ -44,22 +44,22 @@ func OnReady() {
 
 	// Example menu item //
 	mGoogleBrowser := systray.AddMenuItem(localization.Localize(language, "GoogleTitle"), localization.Localize(language, "GoogleTooltip"))
-	menuItems = append(menuItems, MenuItem{menuTitle: "GoogleTitle", menuTooltip: "GoogleTooltip", sysMenuItem: mGoogleBrowser})
+	menuItems = append(menuItems, MenuItem{MenuTitle: "GoogleTitle", menuTooltip: "GoogleTooltip", sysMenuItem: mGoogleBrowser})
 
 	systray.AddSeparator()
 	mChangeScanInterval := systray.AddMenuItem(localization.Localize(language, "ScanIntervalTitle"), localization.Localize(language, "ScanIntervalTooltip"))
-	menuItems = append(menuItems, MenuItem{menuTitle: "ScanIntervalTitle", menuTooltip: "ScanIntervalTooltip", sysMenuItem: mChangeScanInterval})
+	menuItems = append(menuItems, MenuItem{MenuTitle: "ScanIntervalTitle", menuTooltip: "ScanIntervalTooltip", sysMenuItem: mChangeScanInterval})
 
 	mScanNow := systray.AddMenuItem(localization.Localize(language, "ScanNowTitle"), localization.Localize(language, "ScanNowTooltip"))
-	menuItems = append(menuItems, MenuItem{menuTitle: "ScanNowTitle", menuTooltip: "ScanNowTooltip", sysMenuItem: mScanNow})
+	menuItems = append(menuItems, MenuItem{MenuTitle: "ScanNowTitle", menuTooltip: "ScanNowTooltip", sysMenuItem: mScanNow})
 
 	systray.AddSeparator()
 	mChangeLanguage := systray.AddMenuItem(localization.Localize(language, "ChangeLanguageTitle"), localization.Localize(language, "ChangeLanguageTooltip"))
-	menuItems = append(menuItems, MenuItem{menuTitle: "ChangeLanguageTitle", menuTooltip: "ChangeLanguageTooltip", sysMenuItem: mChangeLanguage})
+	menuItems = append(menuItems, MenuItem{MenuTitle: "ChangeLanguageTitle", menuTooltip: "ChangeLanguageTooltip", sysMenuItem: mChangeLanguage})
 
 	systray.AddSeparator()
 	mQuit := systray.AddMenuItem(localization.Localize(language, "QuitTitle"), localization.Localize(language, "QuitTooltip"))
-	menuItems = append(menuItems, MenuItem{menuTitle: "QuitTitle", menuTooltip: "QuitTooltip", sysMenuItem: mQuit})
+	menuItems = append(menuItems, MenuItem{MenuTitle: "QuitTitle", menuTooltip: "QuitTooltip", sysMenuItem: mQuit})
 
 	// Set up a channel to receive OS signals, used for termination
 	// Can be used to notify the application about system termination signals,
@@ -86,7 +86,7 @@ func OnReady() {
 			ScanNow()
 		case <-mChangeLanguage.ClickedCh:
 			ChangeLanguage()
-			refreshMenu(menuItems)
+			RefreshMenu(menuItems)
 		case <-mQuit.ClickedCh:
 			systray.Quit()
 		case <-sigc:
@@ -156,24 +156,6 @@ func ScanNow() {
 	}
 }
 
-// GetScanCounter returns the scanCounter, for use in tray_test.go
-//
-// Parameters: _
-//
-// Returns: scanCounter (int)
-func GetScanCounter() int {
-	return scanCounter
-}
-
-// GetScanTicker returns the scanTicker, for use in tray_test.go
-//
-// Parameters: _
-//
-// Returns: scanTicker (*time.Ticker)
-func GetScanTicker() *time.Ticker {
-	return scanTicker
-}
-
 // ChangeLanguage provides the user with a dialog window to change the language of the application
 //
 // Parameters: _
@@ -215,18 +197,48 @@ func ChangeLanguage(testInput ...string) {
 	}
 }
 
-// refreshMenu updates the menu items with the current language
+// RefreshMenu updates the menu items with the current language
 //
 // Parameters: items ([]MenuItem)
 //
 // Returns: _
-func refreshMenu(items []MenuItem) {
+func RefreshMenu(items []MenuItem) {
 	for _, item := range items {
-		item.sysMenuItem.SetTitle(localization.Localize(language, item.menuTitle))
+		item.sysMenuItem.SetTitle(localization.Localize(language, item.MenuTitle))
 		item.sysMenuItem.SetTooltip(localization.Localize(language, item.menuTooltip))
 	}
 }
 
+// ScanCounter returns the scanCounter, for use in tray_test.go
+//
+// Parameters: _
+//
+// Returns: scanCounter (int)
+func ScanCounter() int {
+	return scanCounter
+}
+
+// ScanTicker returns the scanTicker, for use in tray_test.go
+//
+// Parameters: _
+//
+// Returns: scanTicker (*time.Ticker)
+func ScanTicker() *time.Ticker {
+	return scanTicker
+}
+
+// Language returns the language variable, for use in tray_test.go
+//
+// Parameters: _
+//
+// Returns: language index (int)
 func Language() int {
 	return language
 }
+
+// MenuItems returns the list of system tray menu items, for use in tray_test.go
+//
+// Parameters: _
+//
+// Returns: menuItems ([]MenuItem)
+func MenuItems() []MenuItem { return menuItems }

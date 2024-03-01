@@ -7,6 +7,7 @@ package tray_test
 import (
 	"InfoSec-Agent/localization"
 	"github.com/nicksnyder/go-i18n/v2/i18n"
+	"github.com/stretchr/testify/require"
 	"io"
 	"os"
 	"testing"
@@ -79,9 +80,7 @@ func TestChangeScanInterval(t *testing.T) {
 		capturedOutput, _ := io.ReadAll(r)
 
 		// Assert that the printed message matches the expected message
-		if string(capturedOutput) != tc.expectedMessage {
-			t.Errorf("Unexpected message: got %q, want %q", string(capturedOutput), tc.expectedMessage)
-		}
+		require.Equal(t, string(capturedOutput), tc.expectedMessage)
 	}
 }
 
@@ -94,7 +93,7 @@ func TestScanNow(t *testing.T) {
 
 	// Listen for ticker advancement
 	go func() {
-		<-tray.GetScanTicker().C
+		<-tray.ScanTicker().C
 		tickerAdvanced <- struct{}{}
 	}()
 
@@ -102,11 +101,9 @@ func TestScanNow(t *testing.T) {
 	tray.ScanNow()
 
 	// Assert that scanCounter was incremented
-	finalScanCounter := tray.GetScanCounter()
+	finalScanCounter := tray.ScanCounter()
 	expectedScanCounter := initialScanCounter + 1
-	if finalScanCounter != expectedScanCounter {
-		t.Errorf("Scan counter mismatch: got %d, want %d", finalScanCounter, expectedScanCounter)
-	}
+	require.Equal(t, finalScanCounter, expectedScanCounter)
 }
 
 // Test the OnQuit function
@@ -146,23 +143,41 @@ func TestTranslation(t *testing.T) {
 	s2 := localizer.MustLocalize(&i18n.LocalizeConfig{
 		MessageID: "ScanIntervalTitle",
 	})
-	if s1 == s2 {
-		t.Errorf("Translations are the same")
-	}
+	require.NotEqual(t, s1, s2)
 }
 
 // TestChangeLang tests the tray.ChangeLang function on valid and invalid inputs
 func TestChangeLang(t *testing.T) {
-	// Check for supported language, should return its index
-	testInput := "German"
-	tray.ChangeLanguage(testInput)
-	if tray.Language() != 0 {
-		t.Errorf("Expected language index 0, got %d", tray.Language())
+	testCases := []struct {
+		input         string
+		expectedIndex int
+	}{
+		// Valid input
+		{"German", 0},
+		{"British English", 1},
+		{"American English", 2},
+		{"Spanish", 3},
+		{"French", 4},
+		{"Dutch", 5},
+		{"Portuguese", 6},
+		// Invalid input, should return the default index (British English)
+		{"Italian", 1},
 	}
-	// Check for unsupported language, should default to standard (British-English)
-	testInput = "Italian"
-	tray.ChangeLanguage(testInput)
-	if tray.Language() != 1 {
-		t.Errorf("Expected language index 1, got %d", tray.Language())
+
+	for _, tc := range testCases {
+		tray.ChangeLanguage(tc.input)
+		require.Equal(t, tc.expectedIndex, tray.Language())
 	}
+}
+
+func TestRefreshMenu(t *testing.T) {
+	value1 := tray.MenuItems()[0].MenuTitle
+	translation1 := localization.Localize(tray.Language(), value1)
+	tray.ChangeLanguage("Spanish")
+	// Refresh the menu, then check if the translation is different
+	tray.RefreshMenu(tray.MenuItems())
+	value2 := tray.MenuItems()[0].MenuTitle
+	translation2 := localization.Localize(tray.Language(), value2)
+
+	require.NotEqual(t, translation1, translation2)
 }
