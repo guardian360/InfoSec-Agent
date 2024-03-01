@@ -1,3 +1,7 @@
+import "../css/home.css";
+import "../css/dashboard.css";
+import "../css/color-palette.css";
+
 // creates labels on x-axis, for now just numbers.
 function getData() {
     var labels = [];

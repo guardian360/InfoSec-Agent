@@ -1,3 +1,15 @@
+import "../css/home.css";
+import "../css/color-palette.css";
+
+// import "../../dashboard.html";
+// import "../../issues.html";
+// import "../../issue.html";
+// import "../../about.html";
+// import "../../integration.html";
+// import "../../settings.html";
+
+import logo from '../assets/images/logoTeamA-transformed.png';
+
 class Navbar extends HTMLElement {
   constructor() {
     super();
@@ -8,7 +20,7 @@ class Navbar extends HTMLElement {
     <div id="header">
       <div id="header-logo">
           <a href="./index.html" class="logo-name">
-              <img src="./src/assets/images/logoTeamA-transformed.png" alt="logo"></img>
+              <img id="logo" alt="logo"></img>
               <div id="header-name">
                   <h1>Little Brother</h1>
               </div>
@@ -38,5 +50,6 @@ class Navbar extends HTMLElement {
     `;
   }
 }
-
 customElements.define('vertical-navbar', Navbar);
+
+document.getElementById('logo').src = logo;

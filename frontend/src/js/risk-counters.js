@@ -1,3 +1,7 @@
+import "../css/home.css";
+import "../css/dashboard.css";
+import "../css/color-palette.css";
+
 // this file should contain code to put the correct count for each risk assessment.
 
 var allHighRisks = [1,2,3,4,5,6,5];

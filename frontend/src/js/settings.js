@@ -1,3 +1,7 @@
+import "../css/home.css";
+import "../css/settings.css";
+import "../css/color-palette.css";
+
 function toggleDarkMode() {
     console.log("toggle dark mode");
     var darkModeSwitch = document.getElementById("dark-mode-switch");

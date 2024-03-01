@@ -1,3 +1,7 @@
+import "../css/home.css";
+import "../css/issues.css";
+import "../css/color-palette.css";
+
 var issues = []; // retrieve issues and fill issue table
 
 // dummy info
