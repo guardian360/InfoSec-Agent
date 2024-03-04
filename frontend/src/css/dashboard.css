@@ -25,7 +25,7 @@
 .risk-counter {
     padding: 5px;
     margin-top: 10px;
-    height: 60px;
+    height: auto;
     display: flex;
     justify-content: space-between;
 }
@@ -60,7 +60,7 @@
 .security-status {
     background-color: var(--secundaryLight500);
     border: 3px solid var(--primaryDark500);
-    padding: 5px;
+    padding: 10px;
     margin-top: 10px;
     height: 80px;
     display: flex;
@@ -68,12 +68,21 @@
     border-radius: 15px 15px 15px 15px;
 }
 
+.security-status div,
+.risk-counter div {
+    display: grid;
+	align-items: center;
+}
+
 .security-status p {
     background-color: var(--primaryDark500);
-    margin: 10px;
-    padding: 17.5px;
-    vertical-align: middle;
+    margin: 0px;
+    padding: 10px;
+    text-align: center;
     border-radius: 15px 15px 15px 15px;
+    display: table-cell;
+    border: none;
+    outline: none;
     /* font */
     font-size: 20px;
     color: var(--secundaryLight500); 
@@ -91,9 +100,9 @@
 }
 
 .piechart canvas {
-    width:0.5vw;
+    width:100px;
     max-width:100%;
-    max-height:500px
+    height:500px;
 }
 
 /* issue buttons css */
@@ -107,12 +116,12 @@
 .issue-button {
     background-color: var(--secundaryLight500);
     border: 3px solid var(--primaryDark500);
-    padding: 10px;
+    padding: opx;
     margin: 10px;
-    height: 40px;
     border-radius: 15px 15px 15px 15px;
     text-align: center;
-    display: block;
+    display: grid;
+	align-items: center;
     /* font */
     font-size: 25px;
     color: var(--secondaryLight500);  
@@ -130,8 +139,6 @@
 }
 
 .security-areas {
-    padding-left: 15px;
-    padding-right: 15px;
     border-radius: 15px 15px 15px 15px;
     background-color: var(--accentV1Light900);
     margin-top: 10px;
@@ -147,8 +154,7 @@
     border-radius: 15px 15px 15px 15px;
     padding-left: 20px;
     padding-right: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin: 15px 10px;
 }
 
 .security-area p {
@@ -178,7 +184,7 @@
 
 .issues-graph canvas {
     width:100px;
-    max-width:1500px;
+    max-width:100%;
     height:500px;
 }
 
@@ -200,7 +206,7 @@
     border: none;
     outline: none;
     color: white;
-    padding: 14px 16px;
+    padding: 10px 16px;
     background-color: var(--accentV2);
     font-family: inherit;
     margin: 0;
@@ -231,13 +237,13 @@
     position: absolute;
     background-color: var(--accentV2);
     min-width: 192px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 36px 0px rgba(0,0,0,0.2);
     z-index: 1;
   }
   
   .dropdown-selector p {
     float: none;
-    color: black;
+    color: white;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
@@ -257,23 +263,18 @@
 }
 
 @media only screen and (max-width: 1000px) {
-    .piechart canvas {
-        width: 100px;
-        max-width: 1000px;
-    }
-
-    .issues-graph canvas {
-        width: 100px;
-        max-width: 500px;
-    }
 
     .security-area .material-symbols-outlined {
         font-size: 50px;
         display: block;
     }
+
+    .dashboard-data {
+        display: block;
+    }
 }
 
-@media only screen and (max-width: 1250px) {
+@media only screen and (max-width: 1300px) {
     .security-areas {
         overflow-x: scroll;
     }
