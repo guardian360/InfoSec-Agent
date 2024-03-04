@@ -13,7 +13,7 @@ for (let i = 0; i < issues.length; i++) {
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
     var cell3 = row.insertCell(2);
-    cell1.innerHTML = `<a href="/home/" class="issue-link">` + issues[i].issue + `</a>`;
+    cell1.innerHTML = `<a href="/issue.html" class="issue-link">` + issues[i].issue + `</a>`;
     cell2.innerHTML = issues[i].type;
     if (issues[i].risklevel == 0) cell3.innerHTML = "safe";
     else if (issues[i].risklevel == 1) cell3.innerHTML = "low";

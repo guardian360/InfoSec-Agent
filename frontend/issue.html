@@ -3,23 +3,21 @@
     <head>
       <meta charset="UTF-8" />
       <link rel="stylesheet" type="text/css" href="./src/css/home.css">  
+      <link rel="stylesheet" type="text/css" href="./src/css/issues.css">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
       <script src="./src/js/vertical-navbar.js" type="text/javascript" defer></script>
-      <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-      <script>
-        $(function(){
-            $('a').each(function(){
-                if ($(this).prop('href') == window.location.href) {
-                    $(this).addClass('active'); $(this).parents('li').addClass('active');
-                }
-            });
-        });
-    </script>
+      <script src="./src/js/issues-table.js" type="text/javascript" defer></script>
     </head>
     <body>
-        <vertical-navbar></vertical-navbar>
-        <div class="page-contents">
+      <vertical-navbar></vertical-navbar>
+      <div class="page-contents">
+        <h1 id="issue-name">Test</h1>
+        <div id="issue-information">
+            <h2>Information</h2>
+            <h2>Prevention</h2>
+            <h2>Solution</h2>
         </div>
+      </div>
     </body>
 </html>
