@@ -7,7 +7,8 @@
     display: flex;
     float: left;
     color: var(--dark-text);
-    width: 95%;
+    width: 70%;
+    margin-left: 240px;
 }
 #dark-mode {
     margin-top: 70px;
@@ -19,8 +20,8 @@
 hr.solid {
     border-top: 1px solid var(--dark-text);
     float: left;
-    margin-left: 20px;
-    width: 94%;
+    margin-left: 260px;
+    width: 70%;
 }
 
 /* The switch - the box around the slider */

@@ -6,6 +6,7 @@
     display:flex;
     flex-wrap:wrap;
     padding-top: 60px;
+    padding-left: 240px;
 }
 
 .data-column {
@@ -123,6 +124,7 @@
 
 .second-row {
     padding: 10px;
+    padding-left: 240px;
     border-radius: 15px 15px 15px 15px;
     background-color: var(--accentV2Light900);
     margin-top: 10px;
@@ -170,6 +172,7 @@
 /* THIRD ROW CSS */
 
 .graph-row {
+    padding-left:240px;
     width: auto;
     display:flex;
     flex-wrap:wrap;

@@ -26,7 +26,7 @@ body {
     display: inline-flex;
     float:left;
 }
-.logo-name {
+#logo-button {
     height: 100%;
     width: auto;
     display: inline-flex;
@@ -37,7 +37,10 @@ body {
     padding: 0;
     margin: 0;
 }
-.logo-name img {
+#logo-button:hover {
+    cursor: pointer;
+}
+#logo-button img {
     height: 60%;
     margin-left: 20px;
     margin-top:12px;
@@ -67,6 +70,12 @@ body {
     color: var(--dark-text);
     text-decoration: none;
 }
+#header-settings .nav-link {
+    margin-left: auto;
+    height: 100%;
+    color: var(--dark-text);
+    text-decoration: none;
+}
 #header-settings p {
     float:left;
     margin-top:17px;
@@ -75,6 +84,7 @@ body {
 }
 #header-settings p:hover {
     color: var(--dark-text-hover);
+    cursor: pointer;
 }
 #header-settings span {
     vertical-align: middle;
@@ -99,9 +109,17 @@ body {
     text-decoration: none;
     float: left;
 }
+#left-nav .nav-link {
+    height: auto;
+    width: 100%;
+    line-height: 100%;
+    text-decoration: none;
+    float: left;
+}
 #left-nav p:hover {
     background-color: var(--blue-hover);
     color: var(--light-text-hover);
+    cursor: pointer;
 }
 #left-nav p {
     width: 100%;
@@ -126,3 +144,5 @@ body {
 #left-nav .active {
     background-color: #427385;
 }
+
+
