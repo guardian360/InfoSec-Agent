@@ -188,4 +188,11 @@ body {
     flex-wrap: wrap;
     max-width: 60%;
     padding-top: 60px;
+    margin-left: 240px;
+}
+#title-medals{
+    margin-left: 240px;
+}
+.container{
+    margin-left: 240px;
 }

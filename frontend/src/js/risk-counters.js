@@ -1,7 +1,3 @@
-
-import "../css/home.css";
-import "../css/dashboard.css";
-import "../css/color-palette.css";
 var highRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--highRiskColor');
 var mediumRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--mediumRiskColor');
 var lowRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--lowRiskColor');
