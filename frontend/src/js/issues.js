@@ -47,13 +47,15 @@ function openIssuesPage() {
     
         var swap = true;
         var count = 0;
+        var rows;
+        var swapTheseRows;
         while (swap) {
             swap = false;
             rows = table.rows;
-            for (i = 1; i < (rows.length-1); i++) {
+            for (var i = 1; i < (rows.length-1); i++) {
                 swapTheseRows = false;
-                elem1 = rows[i].getElementsByTagName("td")[column];
-                elem2 = rows[i+1].getElementsByTagName("td")[column];
+                let elem1 = rows[i].getElementsByTagName("td")[column];
+                let elem2 = rows[i+1].getElementsByTagName("td")[column];
             
                 if (direction == 0 && elem1.innerHTML.toLowerCase() > elem2.innerHTML.toLowerCase()) {
                     swapTheseRows = true;
