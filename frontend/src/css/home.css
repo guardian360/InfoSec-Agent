@@ -11,6 +11,7 @@ body {
   margin-left: 240px;
 }
 
+
 /* Header */
 #header {
     background-color: var(--light-blue);
@@ -146,3 +147,45 @@ body {
 }
 
 
+
+/* Medals main */
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 75%
+}
+
+#title-medals{
+
+    padding: 10px;
+    border-radius: 15px 15px 15px 15px;
+    background-color: var(--accentV2Light900);
+    margin-top: 20px;
+    text-align: center;
+    width:70%;
+}
+.medal-layout{
+    flex-basis: 25%;
+    text-align: center;
+    margin: 0 10px 20px;
+    height: 80%;
+}
+
+.medal-layout img{
+    max-width: 100%
+}
+
+#medal-name{
+    color: blue;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Data home */
+.container-data{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 60%;
+    padding-top: 60px;
+}

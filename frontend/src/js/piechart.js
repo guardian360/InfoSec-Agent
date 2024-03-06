@@ -1,11 +1,12 @@
+
 import "../css/home.css";
 import "../css/dashboard.css";
 import "../css/color-palette.css";
 
-const highRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--highRiskColor');
-const mediumRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--mediumRiskColor');
-const lowRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--lowRiskColor');
-const noRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--noRiskColor');
+var highRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--highRiskColor');
+var mediumRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--mediumRiskColor');
+var lowRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--lowRiskColor');
+var noRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--noRiskColor');
 
 var xValues = ["No risk", "Low risk", "Medium risk", "High risk"];
 var yValues = [allNoRisks.slice(-1)[0], allLowRisks.slice(-1)[0], allMediumRisks.slice(-1)[0], allHighRisks.slice(-1)[0]];

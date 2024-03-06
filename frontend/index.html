@@ -4,23 +4,23 @@
       <meta charset="UTF-8" />
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+
       
       <script src="./src/js/vertical-navbar.js" type="module" defer></script>
       <script src="./src/js/home.js" type="module" defer></script>
       <script src="./src/js/settings.js" type="module" defer></script>
       <script src="./src/js/dashboard.js" type="module" defer></script>
       <script src="./src/js/issues.js" type="module" defer></script>
+  
+      <link rel="stylesheet" type="text/css" href="./src/css/home.css"> 
+      <link rel="stylesheet" type="text/css" href="./src/css/dashboard.css">
+
+      <script src="./src/js/risk-counters.js" type="text/javascript" defer></script>
+      <script src="./src/js/piechart.js" type="text/javascript" defer></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
       <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-      <script>
-        $(function(){
-            $('a').each(function(){
-                if ($(this).prop('href') == window.location.href) {
-                    $(this).addClass('active'); $(this).parents('li').addClass('active');
-                }
-            });
-        });
-    </script> 
+
     </head>
     <body>
         <!-- <vertical-navbar></vertical-navbar> -->
@@ -71,6 +71,44 @@
             </a>
           </div>
         <div id="page-contents">
+      
+        <div class="page-contents">
+            <div class="container-data">       
+                <div class="data-column risk-counters">     
+                    <div class="data-column piechart">
+                        <canvas id="pieChart"></canvas>
+                    </div>
+                </div>
+                <div class="data-column issue-buttons">
+                    <H2>You have some issues you can fix. 
+                        To start resolving a issue either navigate to the issues page, or pick a suggested issue below
+                    </H2>
+                    <a class="issue-button">Suggested Issue</a>
+                    <a class="issue-button">Quick Fix</a>
+                </div>
+            </div>
+            <h2 id="title-medals">Medals</h2>
+            <div class="container">  
+                <div class="medal-layout">
+                    <img src="src/assets/images/img_medal1.jpg" alt="Photo of medal">
+                    <p id="medal-name"> Medal 1</p>
+                    <p> 01-03-2024</p>
+                </div>
+                <div class="medal-layout">
+                    <img src="src/assets/images/img_medal1.jpg" alt="Photo of medal">
+                    <p id="medal-name"> Medal 2</p>
+                    <p> 01-03-2024</p>
+                </div>
+                <div class="medal-layout">
+                    <img src="src/assets/images/img_medal1.jpg" alt="Photo of medal">
+                    <p id="medal-name"> Medal 3</p>
+                    <p> 01-03-2024</p>
+                </div><div class="medal-layout">
+                    <img src="src/assets/images/img_medal1.jpg" alt="Photo of medal">
+                    <p id="medal-name"> Medal 1</p>
+                    <p> 01-03-2024</p>
+                </div>
+            </div>
         </div>
     </body>
 </html>
