@@ -1,3 +1,14 @@
+import "../css/home.css";
+import "../css/color-palette.css";
+
+// import dashboard from "../../dashboard.html";
+// import issues from "../../issues.html";
+// import about from "../../about.html";
+// import integration from "../../integration.html";
+// import settings from "../../settings.html";
+
+import logo from '../assets/images/logoTeamA-transformed.png';
+
 class Navbar extends HTMLElement {
   constructor() {
     super();
@@ -8,35 +19,36 @@ class Navbar extends HTMLElement {
     <div id="header">
       <div id="header-logo">
           <a href="./index.html" class="logo-name">
-              <img src="./src/assets/images/logoTeamA-transformed.png" alt="logo"></img>
+              <img id="logo" alt="logo"></img>
               <div id="header-name">
                   <h1>Little Brother</h1>
               </div>
           </a>
       </div>
       <div id="header-settings">
-          <a href="./settings.html"><p><span class="material-symbols-outlined">settings</span><span>Settings</span></p></a>
+          <a class="nav-link" href="./settings.html"><p><span class="material-symbols-outlined">settings</span><span>Settings</span></p></a>
       </div>
     </div> 
     <div id="left-nav">
-        <a href="./index.html">
+        <a class="nav-link" href="./index.html">
             <p><span class="material-symbols-outlined">home</span><span class="nav-item">Home</span></p>
         </a>
-        <a href="./dashboard.html">
+        <a class="nav-link" href="./dashboard.html">
             <p><span class="material-symbols-outlined">monitoring</span><span class="nav-item">Dashboard</span></p>
         </a>
-        <a href="./issues.html">
+        <a class="nav-link" href="./issues.html">
             <p><span class="material-symbols-outlined">security</span><span class="nav-item">Issues</span></p>
         </a>
-        <a href="./integration.html">
+        <a class="nav-link" href="./integration.html">
             <p><span class="material-symbols-outlined">integration_instructions</span><span class="nav-item">Integration</span></p>
         </a>
-        <a href="./about.html">
+        <a class="nav-link" href="./about.html">
             <p><span class="material-symbols-outlined">info</span><span class="nav-item">About</span></p>
         </a>
     </div>
     `;
   }
 }
-
 customElements.define('vertical-navbar', Navbar);
+
+document.getElementById('logo').src = logo;

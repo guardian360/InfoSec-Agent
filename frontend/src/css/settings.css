@@ -7,7 +7,8 @@
     display: flex;
     float: left;
     color: var(--dark-text);
-    width: 95%;
+    width: 70%;
+    margin-left: 240px;
 }
 #dark-mode {
     margin-top: 70px;
@@ -19,8 +20,8 @@
 hr.solid {
     border-top: 1px solid var(--dark-text);
     float: left;
-    margin-left: 20px;
-    width: 94%;
+    margin-left: 260px;
+    width: 70%;
 }
 
 /* The switch - the box around the slider */
@@ -57,10 +58,10 @@ hr.solid {
   .slider:before {
     position: absolute;
     content: "";
-    height: 18px; /*26*/
-    width: 18px;
+    height: 17px; /*26*/
+    width: 17px;
     left: 2.5px; /*4*/
-    bottom: 2px;
+    bottom: 2.5px;
     background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
@@ -75,9 +76,9 @@ hr.solid {
   }
   
   input:checked + .slider:before {
-    -webkit-transform: translateX(17.5px);
-    -ms-transform: translateX(17.5px);
-    transform: translateX(17.5px);
+    -webkit-transform: translateX(17px);
+    -ms-transform: translateX(17px);
+    transform: translateX(17px);
   }
   
   /* Rounded sliders */

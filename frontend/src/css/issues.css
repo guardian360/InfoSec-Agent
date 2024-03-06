@@ -5,7 +5,8 @@
     float: left;
     margin-left: 20px;
     margin-top: 80px;
-    width: 95%;
+    width: 70%;
+    margin-left: 260px;
 }
 
 #issues-table td, #issues-table th {
@@ -40,6 +41,4 @@ span {
 .issue-link:hover {color: var(--dark-text-hover)}
 
 /* Issue pages */
-#issue-name {
-    
-}
+
