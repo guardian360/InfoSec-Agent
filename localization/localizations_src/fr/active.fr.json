@@ -1,6 +1,6 @@
 {
-  "GoogleTitle": "Google dans le navigateur",
-  "GoogleTooltip": "Ouvrir Google dans le navigateur",
+  "ReportingPageTitle": "Page de rapport",
+  "ReportingPageTooltip": "Ouvrir la page de rapport",
   "ScanIntervalTitle": "Modifier l'intervalle d'analyse",
   "ScanIntervalTooltip": "Modifier l'intervalle d'analyse de l'application",
   "ScanNowTitle": "Analyser maintenant",
