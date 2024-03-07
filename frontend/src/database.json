@@ -1,0 +1,47 @@
+[
+    {
+        "Name": "Windows defender",
+        "Type": "Security",
+        "Risk": "High",
+        "Information": "Windows Defender continuously monitors your system for any suspicious activity, including malware, viruses, and other forms of malicious software. By having it enabled, you have an active defense against potential threats that could compromise your privacy or security. It also receives regular updates from Microsoft to stay up-to-date with the latest security threats and vulnerabilities. By keeping it enabled, you ensure that your computer is protected against newly emerging threats that could exploit known security weaknesses.",
+        "Solution": 
+        [
+            "Open the Windows Security app.", 
+            "Select Virus & threat protection.", 
+            "Under Virus & threat protection settings, select Manage settings.", 
+            "Flip the switch under Real-time protection to turn it on."
+        ]
+    },
+    {
+        "Name": "Extra windows password protection",
+        "Type": "Security",
+        "Risk": "High",
+        "Information": "Passwordless or 2FA adds an extra layer of security beyond just a password. It requires users to provide additional proof of identity, such as a fingerprint, face recognition, or a physical security key, along with their password. This significantly reduces the likelihood of unauthorized access, even if a password is compromised.",
+        "Solution": 
+        [   
+            "Go to Start > Settings > Accounts > Sign-in options.", 
+            "Now you can set up one of the available login methods by following the steps described."
+        ]
+    },
+    {
+        "Name": "Password manager",
+        "Type": "Security",
+        "Risk": "High",
+        "Information": "Using a password manager offers several benefits for individuals and organizations, primarily revolving around enhancing security, convenience, and overall password management practices. Here are some key reasons why you should consider using a password manager. Stronger Passwords: Password managers can generate complex, unique passwords for each of your accounts. These passwords are typically long, random, and difficult to crack, significantly improving the security of your online accounts compared to using weak or reused passwords. Elimination of Password Reuse: One of the most common security pitfalls is reusing passwords across multiple accounts. Password managers allow you to generate and store unique passwords for each account, reducing the risk of unauthorized access if one account is compromised. Convenience: Password managers streamline the process of logging into websites and online services by automatically filling in login credentials for you. This saves time and effort, especially when managing numerous accounts across various platforms. Secure Storage: Password managers encrypt and store your passwords in a secure vault, protecting them from unauthorized access. Many password managers also offer additional security features such as two-factor authentication (2FA) and biometric authentication to further enhance protection.",
+        "Solution": 
+        [   
+            "Go to Start > Settings > Accounts > Sign-in options.", 
+            "Now you can set up one of the available login methods by following the steps described."
+        ]
+    },
+    {
+        "Name": "Camera/microphone access",
+        "Type": "Privacy",
+        "Risk": "Low",
+        "Information": "Being aware of which applications have access to your camera and microphone helps prevent unauthorized access. Malicious software or even legitimate applications with poorly implemented security features could potentially access your camera and microphone without your knowledge or consent. By knowing which applications have access, you can identify and block any unauthorized attempts.",
+        "Solution": 
+        [   "select Start > Settings > Privacy & security", 
+            "Here you can select camera or microphone to see which applications have access, and you can revoke access for certain applications"
+        ]
+    }
+]
