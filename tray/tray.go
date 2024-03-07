@@ -1,6 +1,7 @@
 // Package tray implements the basic functionality of the system tray application
 //
-// Function(s): OnReady, OnQuit, ChangeScanInterval, ScanNow, GetScanCounter, GetScanTicker
+// Function(s): OnReady, OnQuit, openReportingPage, ChangeScanInterval, ScanNow, ChangeLanguage,
+// RefreshMenu, ScanCounter, ScanTicker, Language, MenuItems
 package tray
 
 import (
@@ -16,7 +17,6 @@ import (
 
 	"github.com/getlantern/systray"
 	"github.com/ncruces/zenity"
-	"github.com/skratchdot/open-golang/open"
 )
 
 var scanCounter int
@@ -42,9 +42,8 @@ func OnReady() {
 
 	// Generate the menu for the system tray application
 
-	// Example menu item //
-	mGoogleBrowser := systray.AddMenuItem(localization.Localize(language, "GoogleTitle"), localization.Localize(language, "GoogleTooltip"))
-	menuItems = append(menuItems, MenuItem{MenuTitle: "GoogleTitle", menuTooltip: "GoogleTooltip", sysMenuItem: mGoogleBrowser})
+	mReportingPage := systray.AddMenuItem(localization.Localize(language, "ReportingPageTitle"), localization.Localize(language, "ReportingPageTooltip"))
+	menuItems = append(menuItems, MenuItem{MenuTitle: "ReportingPageTitle", menuTooltip: "ReportingPageTooltip", sysMenuItem: mReportingPage})
 
 	systray.AddSeparator()
 	mChangeScanInterval := systray.AddMenuItem(localization.Localize(language, "ScanIntervalTitle"), localization.Localize(language, "ScanIntervalTooltip"))
@@ -69,17 +68,13 @@ func OnReady() {
 
 	scanCounter = 0
 	// Set a ticker to run a scan at a set interval (default = 1 week)
-	// Possible future bug: if NewTicker is set to low amount (10 seconds) then calling ScanNow crashes program
 	scanTicker = time.NewTicker(7 * 24 * time.Hour)
 
 	// Iterate over each menu option/signal
 	for {
 		select {
-		case <-mGoogleBrowser.ClickedCh:
-			err := open.Run("https://www.google.com")
-			if err != nil {
-				fmt.Println(err)
-			}
+		case <-mReportingPage.ClickedCh:
+			openReportingPage()
 		case <-mChangeScanInterval.ClickedCh:
 			ChangeScanInterval()
 		case <-mScanNow.ClickedCh:
@@ -106,6 +101,20 @@ func OnReady() {
 //
 // Returns: _
 func OnQuit() {
+}
+
+// openReportingPage opens the reporting page using a Wails application
+//
+// Parameters: _
+//
+// Returns: _
+func openReportingPage() {
+	// Placeholder for future implementation, opens the reporting page by running the Wails executable
+
+	// Build the executable with the following command:
+	// //go build -tags desktop,production -ldflags "-w -s -H windowsgui" -o reporting-page.exe
+	// Run the executable with the following command:
+	//exec.Command("reporting-page.exe").Start()
 }
 
 // ChangeScanInterval provides the user with a dialog window to set the (new) scan interval

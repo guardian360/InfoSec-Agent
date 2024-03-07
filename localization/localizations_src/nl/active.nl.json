@@ -1,6 +1,6 @@
 {
-  "GoogleTitle": "Google in Browser",
-  "GoogleTooltip": "Google in browser openen",
+  "ReportingPageTitle": "Rapportagepagina",
+  "ReportingPageTooltip": "Open de rapportagepagina",
   "ScanIntervalTitle": "Verander scan interval",
   "ScanIntervalTooltip": "Verander de scan interval van de applicatie",
   "ScanNowTitle": "Scan nu",

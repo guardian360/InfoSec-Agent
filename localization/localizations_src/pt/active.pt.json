@@ -1,6 +1,6 @@
 {
-  "GoogleTitle": "Google no navegador",
-  "GoogleTooltip": "Abre o Google em um navegador normal",
+  "ReportingPageTitle": "Página de relatórios",
+  "ReportingPageTooltip": "Abra a página de relatórios",
   "ScanIntervalTitle": "Intervalo de varredura",
   "ScanIntervalTooltip": "Defina o intervalo de varredura",
   "ScanNowTitle": "Varredura agora",

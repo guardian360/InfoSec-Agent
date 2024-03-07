@@ -1,6 +1,6 @@
 {
-  "GoogleTitle": "Google in Browser",
-  "GoogleTooltip": "Opens Google in a normal browser",
+  "ReportingPageTitle": "Reporting page",
+  "ReportingPageTooltip": "Open the reporting page",
   "ScanIntervalTitle": "Change Scan Interval",
   "ScanIntervalTooltip": "Change the interval for scanning",
   "ScanNowTitle": "Scan now",
