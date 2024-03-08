@@ -7,11 +7,14 @@ import (
 	"strings"
 )
 
-func OpenPorts() {
+func OpenPorts() Check {
 	re := regexp.MustCompile("  +")
 
 	// Get pids and names of all processes
-	output, _ := exec.Command("tasklist").Output()
+	output, err := exec.Command("tasklist").Output()
+	if err != nil {
+		return newCheckErrorf("OpenPorts", "error running tasklist", err)
+	}
 	tasklist := strings.Split(string(output), "\r\n")
 
 	// Map of pids to process names
@@ -23,10 +26,13 @@ func OpenPorts() {
 	}
 
 	// Get all open ports
-	cmd := exec.Command("netstat", "-ano")
-	output, _ = cmd.Output()
+	output, err = exec.Command("netstat", "-ano").Output()
+	if err != nil {
+		return newCheckErrorf("OpenPorts", "error running netstat", err)
+	}
 	netstat := strings.Split(string(output), "\n")
 
+	result := newCheckResult("OpenPorts")
 	for _, line := range netstat[4 : len(netstat)-1] {
 		words := strings.Fields(line)
 
@@ -51,7 +57,9 @@ func OpenPorts() {
 		// Print process name from pid
 		name, ok := pids[pid]
 		if ok {
-			fmt.Println("port:", port, "\tprocess:", name)
+			result.Result = append(result.Result, fmt.Sprintf("port: %s, process: %s", port, name))
 		}
 	}
+
+	return result
 }

@@ -28,6 +28,7 @@ func Scan() {
 	appointments := checks.Permission("appointments")
 	contacts := checks.Permission("contacts")
 	passwordManager := checks.PasswordManager()
+	ports := checks.OpenPorts()
 
 	// Combine results
 	checkResults := []checks.Check{
@@ -50,6 +51,7 @@ func Scan() {
 		appointments,
 		contacts,
 		passwordManager,
+		ports,
 	}
 
 	// Serialize check results to JSON
