@@ -42,5 +42,6 @@ function openHomePage() {
     `;
 }
 
+document.onload = openHomePage();
 document.getElementById("logo-button").addEventListener("click", () => openHomePage());
 document.getElementById("home-button").addEventListener("click", () => openHomePage());
