@@ -17,6 +17,7 @@ func Scan() {
 	startup := checks.Startup()
 	windowsOutdated := checks.WindowsOutdated()
 	loginMethod := checks.LoginMethod()
+	lastPasswordChange := checks.LastPasswordChange()
 
 	// Combine results
 	checkResults := []checks.Check{
@@ -28,6 +29,7 @@ func Scan() {
 		startup,
 		windowsOutdated,
 		loginMethod,
+		lastPasswordChange,
 	}
 
 	// Serialize check results to JSON

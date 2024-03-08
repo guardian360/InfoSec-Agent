@@ -2,8 +2,6 @@ package checks
 
 import (
 	"fmt"
-	"github.com/getlantern/errors"
-
 	"golang.org/x/sys/windows/registry"
 )
 
@@ -14,7 +12,7 @@ func Startup() Check {
 	lmKey2, err3 := openRegistryKey(registry.LOCAL_MACHINE, `SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run32`)
 
 	if err1 != nil || err2 != nil || err3 != nil {
-		return newCheckError("Startup", errors.New("error opening registry keys"))
+		return newCheckError("Startup", fmt.Errorf("error opening registry keys"))
 	}
 
 	defer cuKey.Close()
@@ -27,7 +25,7 @@ func Startup() Check {
 	lm2ValueNames, err3 := lmKey2.ReadValueNames(0)
 
 	if err1 != nil || err2 != nil || err3 != nil {
-		return newCheckError("Startup", errors.New("error reading value names"))
+		return newCheckError("Startup", fmt.Errorf("error reading value names"))
 	}
 
 	output := make([]string, 0)

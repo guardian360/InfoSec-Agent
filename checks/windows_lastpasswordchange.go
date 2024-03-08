@@ -9,11 +9,10 @@ import (
 	"time"
 )
 
-func LastPasswordChange() {
+func LastPasswordChange() Check {
 	username, err := getCurrentUsername()
 	if err != nil {
-		println("error retrieving username")
-		return
+		return newCheckErrorf("LastPasswordChange", "error retrieving username", err)
 	}
 
 	cmd := exec.Command("net", "user", username)
@@ -37,20 +36,17 @@ func LastPasswordChange() {
 	}
 
 	if err != nil {
-		println("error parsing date")
-		return
+		return newCheckError("LastPasswordChange", fmt.Errorf("error parsing date"))
 	}
 
-	fmt.Println(date)
 	currentTime := time.Now() //get current time
 	difference := currentTime.Sub(date)
 	// Define the duration for half a year
 	halfYear := 365 / 2 * 24 * time.Hour
 	if difference > halfYear {
-		println("On", match, "the password was changed for the last time, this is more than half a year ago so you should change it again")
-	} else {
-		println("You changed your password recently on", match)
+		return newCheckResult("LastPasswordChange", fmt.Sprintf("Password last changed on %s", match), "password was changed more than half a year ago so you should change it again")
 	}
+	return newCheckResult("LastPasswordChange", fmt.Sprintf("You changed your password recently on %s", match))
 }
 
 func getCurrentUsername() (string, error) {
