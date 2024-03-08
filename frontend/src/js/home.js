@@ -1,6 +1,8 @@
 import "../css/home.css";
 import "../css/color-palette.css";
 
+import * as piechart from "./piechart";
+
 function openHomePage() {
     document.getElementById("page-contents").innerHTML = `
     <div class="container-data">       
@@ -40,7 +42,24 @@ function openHomePage() {
         </div>
     </div>
     `;
+
+    CreatePieChart();
 }
 
 document.getElementById("logo-button").addEventListener("click", () => openHomePage());
 document.getElementById("home-button").addEventListener("click", () => openHomePage());
+
+//#region PieChart
+
+// Reusable snippit for other files
+let pieChart;
+function CreatePieChart() {
+    pieChart = new Chart("pieChart", {
+        type: "doughnut",
+        data: piechart.GetData()
+        ,
+        options: piechart.GetOptions()
+      });
+}
+
+//#endregion

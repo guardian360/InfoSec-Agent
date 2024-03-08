@@ -1,36 +1,38 @@
-// creates labels on x-axis, for now just numbers.
-function getData() {
+import * as rc from "./risk-counters"
+
+// Create the data portion for a graph using the different levels of risks
+export function GetData(graphShowAmount, graphShowHighRisks, graphShowMediumRisks, graphShowLowRisks, graphShowNoRisks) {
     var labels = [];
-    for (var i = 1; i <= Math.min(allNoRisks.length, graphShowAmount); i++) {
+    for (var i = 1; i <= Math.min(rc.allNoRisks.length, graphShowAmount); i++) {
         labels.push(i);
     }
     
     var noRiskData = {
         label: 'Safe issues',
-        data: allNoRisks.slice(Math.max(allNoRisks.length - graphShowAmount, 0)),
-        backgroundColor: noRiskColor,
+        data: rc.allNoRisks.slice(Math.max(rc.allNoRisks.length - graphShowAmount, 0)),
+        backgroundColor: rc.noRiskColor,
     }
     
     var lowRiskData = {
         label: 'Low risk issues',
-        data: allLowRisks.slice(Math.max(allLowRisks.length - graphShowAmount, 0)),
-        backgroundColor: lowRiskColor,
+        data: rc.allLowRisks.slice(Math.max(rc.allLowRisks.length - graphShowAmount, 0)),
+        backgroundColor: rc.lowRiskColor,
     }
     
     var mediumRiskData = {
         label: 'Medium risk issues',
-        data: allMediumRisks.slice(Math.max(allMediumRisks.length - graphShowAmount, 0)),
-        backgroundColor: mediumRiskColor,
+        data: rc.allMediumRisks.slice(Math.max(rc.allMediumRisks.length - graphShowAmount, 0)),
+        backgroundColor: rc.mediumRiskColor,
     }
     
     var highRiskData = {
         label: 'High risk issues',
-        data: allHighRisks.slice(Math.max(allHighRisks.length - graphShowAmount, 0)),
-        backgroundColor: highRiskColor,
+        data: rc.allHighRisks.slice(Math.max(rc.allHighRisks.length - graphShowAmount, 0)),
+        backgroundColor: rc.highRiskColor,
     }
     
     var datasets = [];
-    console.log(graphShowLowRisks);
+   
     if (graphShowNoRisks) {
         datasets.push(noRiskData)
     }
@@ -44,84 +46,31 @@ function getData() {
         datasets.push(highRiskData)
     }
 
-    var data = {
+    return {
         labels: labels,
         datasets: datasets
       };
-    
-    return data;
 }
 
-var barChart = new Chart("graph", {
-
-    type: 'bar',
-    // The data for our dataset
-    data: getData(),
-
-    // Configuration options go here
-    options: {
-        scales: {
-            xAxes: [{
-              stacked: true
-            }],
-            yAxes: [{
-              stacked: true
-            }]
-          },
-        legend: {
-            display: false,
-        },
-        maintainAspectRatio: false,
-        categoryPercentage: 1,
-    }
-});
-
-function ChangeGraph() {
-    graphShowAmount = document.getElementById('graph-interval').value;
-    barChart.data = getData();
-    barChart.update();
+// Create the options for a bar chart
+export function GetOptions() {
+    return {
+                scales: {
+                    xAxes: [{
+                      stacked: true
+                    }],
+                    yAxes: [{
+                      stacked: true
+                    }]
+                  },
+                legend: {
+                    display: false,
+                },
+                maintainAspectRatio: false,
+                categoryPercentage: 1,
+            }
 }
-
-function ToggleHighRisks() {
-    if (graphShowHighRisks) {
-        graphShowHighRisks = false;
-    } else {
-        graphShowHighRisks = true;
-    }
-    ChangeGraph();
-}
-
-function ToggleMediumRisks() {
-    if (graphShowMediumRisks) {
-        graphShowMediumRisks = false;
-    } else {
-        graphShowMediumRisks = true;
-    }
-    ChangeGraph();
-}
-
-function ToggleLowRisks() {
-    if (graphShowLowRisks) {
-        graphShowLowRisks = false;
-    } else {
-        graphShowLowRisks = true;
-    }
-    ChangeGraph();
-}
-
-function ToggleNoRisks() {
-    if (graphShowNoRisks) {
-        graphShowNoRisks = false;
-    } else {
-        graphShowNoRisks = true;
-    }
-    ChangeGraph();
-}
-
-function GraphDropdown() {
-    document.getElementById("myDropdown").classList.toggle("show");
-  }
-  
+ 
 // Close the dropdown if the user clicks outside of it
 // window.onclick = function(e) {
 //   if (!e.target.matches('.dropbtn')) {
