@@ -3,10 +3,10 @@ package checks
 import "fmt"
 
 type Check struct {
-	Id       string
-	Result   []string
-	Error    error `json:"-"` // Don't serialize error field to JSON
-	ErrorMSG string
+	Id       string   `json:"id"`
+	Result   []string `json:"result,omitempty"`
+	Error    error    `json:"-"` // Don't serialize error field to JSON
+	ErrorMSG string   `json:"error,omitempty"`
 }
 
 func newCheckResult(id string, result ...string) Check {
