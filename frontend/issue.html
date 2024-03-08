@@ -14,16 +14,20 @@
     <body>
       <vertical-navbar></vertical-navbar>
       <div class="page-contents">
-        <h1 id="issue-name"></h1>
-        <div id="back-button">Go back</div>
+        <h1 id="issue-name">${currentIssue.Name}</h1>
         <div id="issue-information">
             <h2>Information</h2>
-            <p></p>
-            <h2>Prevention</h2>
-            <p></p>
+            <p>${currentIssue.Information}</p>
             <h2>Solution</h2>
-            <p></p>
+            <div id="issue-solution">
+                <p id="solution-text">${currentIssue.Solution[solutionStepCounter]}</p>
+                <div id="solution-buttons">
+                    <div id="previous-button">&laquo; Previous step</div>
+                    <div id="next-button">Next step &raquo;</div>
+                </div>
+            </div>
         </div>
+        <div id="back-button">Back to issues overview</div>
       </div>
     </body>
 </html>
