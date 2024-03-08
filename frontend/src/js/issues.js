@@ -1,42 +1,39 @@
 import "../css/home.css";
 import "../css/issues.css";
 import "../css/color-palette.css";
+import data from "../database.json"; //get data from database
+
+
 
 function openIssuesPage() {
     document.getElementById("page-contents").innerHTML = `
     <table id="issues-table">
-      <tr>
-        <th id="issue-column"><span class="table-header">Issue</span><span class="material-symbols-outlined" id="sort-on-issue">swap_vert</span></th>
-        <th id="type-column"><span class="table-header">Type</span><span class="material-symbols-outlined" id="sort-on-type">swap_vert</span></th>
-        <th id="risk-column"><span class="table-header">Risk level</span><span class="material-symbols-outlined" id="sort-on-risk">swap_vert</span></th>
-      </tr>
+        <thead>
+            <tr>
+                <th id="issue-column"><span class="table-header">Name</span><span class="material-symbols-outlined" id="sort-on-issue">swap_vert</span></th>
+                <th id="type-column"><span class="table-header">Type</span><span class="material-symbols-outlined" id="sort-on-type">swap_vert</span></th>
+                <th id="risk-column"><span class="table-header">Risk level</span><span class="material-symbols-outlined" id="sort-on-risk">swap_vert</span></th>
+                <th id="risk-column"><span class="table-header">Information</span></th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
     </table>
     <script src="./src/js/issues-table.js" type="module" defer></script>
     `;
 
-    var issues = []; // retrieve issues and fill issue table
-
-    // dummy info
-    issues = [
-        { issue: "Windows defender disabled", type: "Security", risklevel: 3 },
-        { issue: "Windows password", type: "Privacy", risklevel: 1 }
-    ];
-
     // Fill the table with issues
-    for (let i = 0; i < issues.length; i++) {
-        var table = document.getElementById("issues-table");
-        var row = table.insertRow(i+1);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        var cell3 = row.insertCell(2);
-        cell1.innerHTML = `<a href="/issue.html" class="issue-link">` + issues[i].issue + `</a>`;
-        cell2.innerHTML = issues[i].type;
-        if (issues[i].risklevel == 0) cell3.innerHTML = "safe";
-        else if (issues[i].risklevel == 1) cell3.innerHTML = "low";
-        else if (issues[i].risklevel == 2) cell3.innerHTML = "medium";
-        else if (issues[i].risklevel == 3) cell3.innerHTML = "high";
-        else cell3.innerHTML = "unknown";
+    for (let i = 0; i < data.length; i++) {
+
+        const body = document.querySelector('tbody')
+        var row = `<tr>
+        <td>${data[i].Name}</td>
+        <td>${data[i].Type}</td>
+        <td>${data[i].Risk}</td>
+        <td>${data[i].Information}</td>`
+        body.innerHTML += row;
     }
+
 
     // Sort the table 
     function sortTable(column) {
