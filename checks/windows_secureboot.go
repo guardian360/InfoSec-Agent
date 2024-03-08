@@ -1,17 +1,15 @@
 package checks
 
 import (
-	"fmt"
 	"golang.org/x/sys/windows/registry"
 )
 
 // SecureBoot checks if windows secure boot is enabled or disabled
-func SecureBoot() {
-
+func SecureBoot() Check {
 	windowsSecureBoot, err := registry.OpenKey(registry.LOCAL_MACHINE, `SYSTEM\CurrentControlSet\Control\SecureBoot\State`, registry.READ)
+
 	if err != nil {
-		fmt.Println("Error opening registry key:", err)
-		return
+		return newCheckError("SecureBoot", err)
 	}
 	defer func(windowsSecureBoot registry.Key) {
 		err := windowsSecureBoot.Close()
@@ -21,12 +19,13 @@ func SecureBoot() {
 	}(windowsSecureBoot)
 	secureBootStatus, _, err := windowsSecureBoot.GetIntegerValue("UEFISecureBootEnabled")
 	if err != nil {
-		fmt.Println("Error reading registry key:", err)
-		return
+		return newCheckError("SecureBoot", err)
 	}
+
+	// Output successful result
 	if secureBootStatus == 1 {
-		fmt.Println("Secure boot is enabled")
-	} else {
-		fmt.Println("Secure boot is disabled")
+		return newCheckResult("SecureBoot", []string{"Secure boot is enabled"})
 	}
+
+	return newCheckResult("SecureBoot", []string{"Secure boot is disabled"})
 }
