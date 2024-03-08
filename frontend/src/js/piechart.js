@@ -1,31 +1,32 @@
-var highRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--highRiskColor');
-var mediumRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--mediumRiskColor');
-var lowRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--lowRiskColor');
-var noRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--noRiskColor');
+import * as rc from "./risk-counters"
 
-var xValues = ["No risk", "Low risk", "Medium risk", "High risk"];
-var yValues = [allNoRisks.slice(-1)[0], allLowRisks.slice(-1)[0], allMediumRisks.slice(-1)[0], allHighRisks.slice(-1)[0]];
-var barColors = [
-    noRiskColor,
-  lowRiskColor,
-  mediumRiskColor,
-  highRiskColor
-];
+// Create the data portion for a piechart using the different levels of risks
+export function GetData() {
+  var xValues = ["No risk", "Low risk", "Medium risk", "High risk"];
+  var yValues = [rc.allNoRisks.slice(-1)[0], rc.allLowRisks.slice(-1)[0], rc.allMediumRisks.slice(-1)[0], rc.allHighRisks.slice(-1)[0]];
+  var barColors = [
+      rc.noRiskColor,
+    rc.lowRiskColor,
+    rc.mediumRiskColor,
+    rc.highRiskColor
+  ];
 
-new Chart("pieChart", {
-    type: "doughnut",
-    data: {
-      labels: xValues,
-      datasets: [{
-        backgroundColor: barColors,
-        data: yValues
-      }]
-    },
-    options: {
-      maintainAspectRatio: false,
-      title: {
-        display: true,
-        text: "Security Risks Overview"
-      }
+  return {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  }
+}
+
+// Create the options for a pie chart
+export function GetOptions() {
+  return {
+    maintainAspectRatio: false,
+    title: {
+      display: true,
+      text: "Security Risks Overview"
     }
-  });
+  }
+}
