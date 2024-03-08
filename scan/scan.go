@@ -16,6 +16,7 @@ func Scan() {
 	sharing := checks.NetworkSharing()
 	startup := checks.Startup()
 	windowsOutdated := checks.WindowsOutdated()
+	loginMethod := checks.LoginMethod()
 
 	// Combine results
 	checkResults := []checks.Check{
@@ -26,6 +27,7 @@ func Scan() {
 		sharing,
 		startup,
 		windowsOutdated,
+		loginMethod,
 	}
 
 	// Serialize check results to JSON
