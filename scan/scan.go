@@ -22,6 +22,11 @@ func Scan() {
 	uac := checks.UACCheck()
 	remoteDesktop := checks.RemoteDesktopCheck()
 	bluetooth := checks.Bluetooth()
+	location := checks.Permission("location")
+	microphone := checks.Permission("microphone")
+	webcam := checks.Permission("webcam")
+	appointments := checks.Permission("appointments")
+	contacts := checks.Permission("contacts")
 
 	// Combine results
 	checkResults := []checks.Check{
@@ -38,6 +43,11 @@ func Scan() {
 		uac,
 		remoteDesktop,
 		bluetooth,
+		location,
+		microphone,
+		webcam,
+		appointments,
+		contacts,
 	}
 
 	// Serialize check results to JSON

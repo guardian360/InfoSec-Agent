@@ -1,31 +1,27 @@
 package checks
 
 import (
-	"fmt"
 	"strings"
 
 	"golang.org/x/sys/windows/registry"
 )
 
-func permissioncheck(permission string) {
+func Permission(permission string) Check {
 	key, err := registry.OpenKey(registry.CURRENT_USER, `Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\`+permission, registry.READ)
 	if err != nil {
-		fmt.Println("Error opening registry key:", err)
-		return
+		return newCheckErrorf(permission, "error opening registry key", err)
 	}
 	defer key.Close()
 
 	// Get the names of all subkeys (which represent applications)
 	applicationNames, err := key.ReadSubKeyNames(-1)
 	if err != nil {
-		fmt.Println("Error reading subkey names:", err)
-		return
+		return newCheckErrorf(permission, "error reading subkey names", err)
 	}
 
 	var results []string
 
 	// Iterate through the application names and print them
-	fmt.Println("Applications with " + permission + " permissions:")
 	for _, appName := range applicationNames {
 		if appName == "NonPackaged" {
 			key, err = registry.OpenKey(registry.CURRENT_USER, `Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\`+permission+`\NonPackaged`, registry.READ)
@@ -47,14 +43,12 @@ func permissioncheck(permission string) {
 		}
 	}
 	filteredResults := removeDuplicateStr(results)
-	for _, s := range filteredResults {
-		println(s)
-	}
+	return newCheckResult(permission, filteredResults...)
 }
 
 func removeDuplicateStr(strSlice []string) []string {
 	allKeys := make(map[string]bool)
-	list := []string{}
+	var list []string
 	for _, item := range strSlice {
 		if _, value := allKeys[item]; !value {
 			allKeys[item] = true
