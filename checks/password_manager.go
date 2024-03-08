@@ -1,12 +1,11 @@
 package checks
 
 import (
-	"fmt"
-	"io/ioutil"
+	"os"
 	"strings"
 )
 
-func Passwordmanager() {
+func PasswordManager() Check {
 	// List of known password manager registry keys
 	passwordManagerNames := []string{
 		`LastPass`,
@@ -25,39 +24,36 @@ func Passwordmanager() {
 	programFilesx86 := "C:\\Program Files (x86)"
 	programs, err := listInstalledPrograms(programFiles)
 	if err != nil {
-		fmt.Println("Error listing installed programs in Program Files:", err)
-		return
+		return newCheckErrorf("PasswordManager", "error listing installed programs in Program Files", err)
 	}
+
 	for _, program := range programs {
 		for _, passwordmanager := range passwordManagerNames {
 			if strings.Contains(strings.ToLower(program), strings.ToLower(passwordmanager)) {
-				fmt.Printf("Password manager %s found\n", passwordmanager)
-				return
+				return newCheckResult("PasswordManager", passwordmanager)
 			}
 		}
 	}
 
 	programs, err = listInstalledPrograms(programFilesx86)
 	if err != nil {
-		fmt.Println("Error listing installed programs in Program Files (x86):", err)
-		return
+		return newCheckErrorf("PasswordManager", "error listing installed programs in Program Files (x86)", err)
 	}
 	for _, program := range programs {
 		for _, passwordmanager := range passwordManagerNames {
 			if strings.Contains(strings.ToLower(program), passwordmanager) {
-				fmt.Printf("Password manager %s found\n", strings.ToLower(passwordmanager))
-				return
+				return newCheckResult("PasswordManager", passwordmanager)
 			}
 		}
 	}
 
-	fmt.Printf("Password manager not found")
+	return newCheckResult("PasswordManager", "No password manager found")
 }
 
 func listInstalledPrograms(directory string) ([]string, error) {
 	var programs []string
 
-	files, err := ioutil.ReadDir(directory)
+	files, err := os.ReadDir(directory)
 	if err != nil {
 		return nil, err
 	}

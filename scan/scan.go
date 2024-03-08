@@ -27,6 +27,7 @@ func Scan() {
 	webcam := checks.Permission("webcam")
 	appointments := checks.Permission("appointments")
 	contacts := checks.Permission("contacts")
+	passwordManager := checks.PasswordManager()
 
 	// Combine results
 	checkResults := []checks.Check{
@@ -48,6 +49,7 @@ func Scan() {
 		webcam,
 		appointments,
 		contacts,
+		passwordManager,
 	}
 
 	// Serialize check results to JSON
