@@ -19,6 +19,7 @@ func Scan() {
 	loginMethod := checks.LoginMethod()
 	lastPasswordChange := checks.LastPasswordChange()
 	windowsDefender := checks.WindowsDefender()
+	uac := checks.UACCheck()
 
 	// Combine results
 	checkResults := []checks.Check{
@@ -32,6 +33,7 @@ func Scan() {
 		loginMethod,
 		lastPasswordChange,
 		windowsDefender,
+		uac,
 	}
 
 	// Serialize check results to JSON
