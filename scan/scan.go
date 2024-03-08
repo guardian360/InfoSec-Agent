@@ -19,7 +19,7 @@ func Scan() {
 	}
 
 	// Serialize check results to JSON
-	jsonData, err := json.Marshal(checkResults)
+	jsonData, err := json.MarshalIndent(checkResults, "", "  ")
 	if err != nil {
 		fmt.Println("Error marshalling JSON:", err)
 		return
