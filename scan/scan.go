@@ -20,6 +20,7 @@ func Scan() {
 	lastPasswordChange := checks.LastPasswordChange()
 	windowsDefender := checks.WindowsDefender()
 	uac := checks.UACCheck()
+	remoteDesktop := checks.RemoteDesktopCheck()
 
 	// Combine results
 	checkResults := []checks.Check{
@@ -34,6 +35,7 @@ func Scan() {
 		lastPasswordChange,
 		windowsDefender,
 		uac,
+		remoteDesktop,
 	}
 
 	// Serialize check results to JSON
