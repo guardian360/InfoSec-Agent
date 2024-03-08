@@ -11,11 +11,13 @@ func Scan() {
 	// Run all checks
 	smb := checks.SmbCheck()
 	secureBoot := checks.SecureBoot()
+	guest := checks.GuestAccount()
 
 	// Combine results
 	checkResults := []checks.Check{
 		smb,
 		secureBoot,
+		guest,
 	}
 
 	// Serialize check results to JSON

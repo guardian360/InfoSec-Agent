@@ -6,12 +6,11 @@ import (
 	"strings"
 )
 
-func GuestAccount() {
+func GuestAccount() Check {
 	// Get localgroup name using GetWmiObject
 	output, err := exec.Command("powershell", "Get-WmiObject", "Win32_Group", "|", "Select-Object", "SID,Name").Output()
 	if err != nil {
-		fmt.Println("Error executing command:", err)
-		return
+		return newCheckErrorf("Guest account", "error executing command Get-WmiObject", err)
 	}
 	outputString := strings.Split(string(output), "\r\n")
 	found := false
@@ -25,15 +24,13 @@ func GuestAccount() {
 		}
 	}
 	if !found {
-		fmt.Println("Guest group not found")
-		return
+		return newCheckResult("Guest account", "Guest group not found")
 	}
 
 	// Get local group members using net localgroup command
 	output, err = exec.Command("net", "localgroup", guestGroup).Output()
 	if err != nil {
-		fmt.Println("Error executing command:", err)
-		return
+		return newCheckErrorf("Guest account", "error executing command net localgroup", err)
 	}
 	outputString = strings.Split(string(output), "\r\n")
 	guestUser := ""
@@ -43,20 +40,18 @@ func GuestAccount() {
 		}
 	}
 	if guestUser == "" {
-		fmt.Println("Guest account not found")
-		return
+		return newCheckResult("Guest account", "Guest account not found")
 	}
 	// Retrieve current username
 	currentUser, err := getCurrentUsername()
 	if err != nil {
-		fmt.Println("Error retrieving current username:", err)
-		return
+		return newCheckErrorf("Guest account", "error retrieving current username", err)
 	}
 	// Retrieve the word for yes from the currentUser language
 	output, err = exec.Command("net", "user", currentUser).Output()
 	if err != nil {
 		fmt.Println("Error executing command:", err)
-		return
+		return newCheckErrorf("Guest account", "error executing command net user", err)
 	}
 	outputString = strings.Split(string(output), "\r\n")
 	line := strings.Split(outputString[5], " ")
@@ -64,13 +59,12 @@ func GuestAccount() {
 	// Get all users using net user command
 	output, err = exec.Command("net", "user", guestUser).Output()
 	if err != nil {
-		fmt.Println("Error executing command:", err)
-		return
+		return newCheckErrorf("Guest account", "error executing command net user", err)
 	}
 	outputString = strings.Split(string(output), "\r\n")
 	if strings.Contains(outputString[5], yesWord) {
-		fmt.Println("Guest account is active")
-		return
+		return newCheckResult("Guest account", "Guest account is active")
 	}
-	fmt.Println("Guest account is not active")
+
+	return newCheckResult("Guest account", "Guest account is not active")
 }
