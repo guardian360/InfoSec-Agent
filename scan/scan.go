@@ -21,6 +21,7 @@ func Scan() {
 	windowsDefender := checks.WindowsDefender()
 	uac := checks.UACCheck()
 	remoteDesktop := checks.RemoteDesktopCheck()
+	bluetooth := checks.Bluetooth()
 
 	// Combine results
 	checkResults := []checks.Check{
@@ -36,6 +37,7 @@ func Scan() {
 		windowsDefender,
 		uac,
 		remoteDesktop,
+		bluetooth,
 	}
 
 	// Serialize check results to JSON
