@@ -27,7 +27,7 @@ func Scan() {
 	fmt.Println(string(jsonData))
 
 	// Write JSON data to a file
-	file, err := os.Create("output.json")
+	file, err := os.Create("checks.json")
 	if err != nil {
 		fmt.Println("Error creating file:", err)
 		return

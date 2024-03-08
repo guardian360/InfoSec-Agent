@@ -19,7 +19,7 @@ func SmbCheck() Check {
 		return newCheckError("smb", err)
 	}
 
-	return newCheckResult("smb", []string{smb1, smb2})
+	return newCheckResult("smb", smb1, smb2)
 }
 
 // Check whether specified SMB protocol is enabled

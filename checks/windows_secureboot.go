@@ -24,8 +24,8 @@ func SecureBoot() Check {
 
 	// Output successful result
 	if secureBootStatus == 1 {
-		return newCheckResult("SecureBoot", []string{"Secure boot is enabled"})
+		return newCheckResult("SecureBoot", "Secure boot is enabled")
 	}
 
-	return newCheckResult("SecureBoot", []string{"Secure boot is disabled"})
+	return newCheckResult("SecureBoot", "Secure boot is disabled")
 }
