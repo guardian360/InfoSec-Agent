@@ -1,7 +1,6 @@
 package checks
 
 import (
-	"fmt"
 	"os/exec"
 	"strings"
 )
@@ -50,7 +49,6 @@ func GuestAccount() Check {
 	// Retrieve the word for yes from the currentUser language
 	output, err = exec.Command("net", "user", currentUser).Output()
 	if err != nil {
-		fmt.Println("Error executing command:", err)
 		return newCheckErrorf("Guest account", "error executing command net user", err)
 	}
 	outputString = strings.Split(string(output), "\r\n")
