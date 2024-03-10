@@ -54,41 +54,56 @@ export function fillTable(tbody, issues) {
         }
     });
 
+    // Add links to issue information pages
     const issueLinks = document.querySelectorAll(".issue-link");
     issueLinks.forEach((link, index) => {
         link.addEventListener("click", () => openIssuePage(issues[index].Id));
     });
 
-    document.getElementById("sort-on-issue").addEventListener("click", () => sortTable(0));
-    document.getElementById("sort-on-type").addEventListener("click", () => sortTable(1));
-    document.getElementById("sort-on-risk").addEventListener("click", () => sortTable(2));
+    // Add buttons to sort on columns
+    document.getElementById("sort-on-issue").addEventListener("click", () => sortTable(tbody, 0));
+    document.getElementById("sort-on-type").addEventListener("click", () => sortTable(tbody, 1));
+    document.getElementById("sort-on-risk").addEventListener("click", () => sortTable(tbody, 2));
 }
 
 // Sort the table
-function sortTable(column) {
+export function sortTable(tbody, column) {
     console.log("you clicked on column header " + column);
 
-    const table = document.getElementById("issues-table");
+    const table = tbody.closest("table");
     let direction = table.getAttribute("data-sort-direction");
     direction = direction === "ascending" ? "descending" : "ascending";
 
-    const rows = Array.from(table.rows).slice(1); // Exclude header row
+    const rows = Array.from(tbody.rows);
     rows.sort((a, b) => {
-        const textA = a.cells[column].textContent.toLowerCase();
-        const textB = b.cells[column].textContent.toLowerCase();
-        if (direction === "ascending") {
-            return textA.localeCompare(textB);
+        if (column === 2) {
+            // Custom sorting for the last column
+            const order = { "high": 1, "medium": 2, "low": 3, "acceptable": 4 };
+            const textA = a.cells[column].textContent.toLowerCase();
+            const textB = b.cells[column].textContent.toLowerCase();
+            if (direction === "ascending") {
+                return order[textA] - order[textB];
+            } else {
+                return order[textB] - order[textA];
+            }
         } else {
-            return textB.localeCompare(textA);
+            // Alphabetical sorting for other columns
+            const textA = a.cells[column].textContent.toLowerCase();
+            const textB = b.cells[column].textContent.toLowerCase();
+            if (direction === "ascending") {
+                return textA.localeCompare(textB);
+            } else {
+                return textB.localeCompare(textA);
+            }
         }
     });
 
-    while (table.rows.length > 1) {
-        table.deleteRow(1); // Delete all rows except header
+    while (tbody.rows.length > 0) {
+        tbody.deleteRow(0);
     }
 
     rows.forEach(row => {
-        table.appendChild(row);
+        tbody.appendChild(row);
     });
 
     table.setAttribute("data-sort-direction", direction);
