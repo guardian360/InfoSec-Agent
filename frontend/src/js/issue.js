@@ -1,5 +1,5 @@
-import data from "../database.json"; //get data from database
-import "../css/issues.css";
+import data from "../database.json" assert { type: "json" };
+// import "../css/issues.css";
 import { openIssuesPage } from "./issues.js";
 
 

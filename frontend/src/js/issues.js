@@ -1,7 +1,7 @@
-import "../css/home.css";
-import "../css/issues.css";
-import "../css/color-palette.css";
-import data from "../database.json"; //get data from database
+// import "../css/home.css";
+// import "../css/issues.css";
+// import "../css/color-palette.css";
+import data from "../database.json" assert { type: "json" };
 import { openIssuePage } from "./issue.js";
 
 export function openIssuesPage() {
@@ -36,7 +36,11 @@ export function openIssuesPage() {
     ];
 
     const tbody = pageContents.querySelector('tbody');
+    fillTable(tbody, issues);
+}
 
+// Fill the table
+export function fillTable(tbody, issues) {
     issues.forEach(issue => {
         const currentIssue = data.find(element => element.Name === issue.Id);
         if (currentIssue) {

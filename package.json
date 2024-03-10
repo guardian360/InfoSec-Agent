@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "jsdom": "^24.0.0",
+    "unit.js": "^2.1.1"
+  },
+  "devDependencies": {
+    "ignore-styles": "^5.0.1"
+  }
+}
