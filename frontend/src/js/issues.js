@@ -1,6 +1,3 @@
-// import "../css/home.css";
-// import "../css/issues.css";
-// import "../css/color-palette.css";
 import data from "../database.json" assert { type: "json" };
 import { openIssuePage } from "./issue.js";
 

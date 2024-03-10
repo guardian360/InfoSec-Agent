@@ -1,31 +1,33 @@
 import data from "../database.json" assert { type: "json" };
-// import "../css/issues.css";
 import { openIssuesPage } from "./issues.js";
 
+let solutionStepCounter = 0;
 
-var solutionStepCounter = 0;
+function updateSolutionStep(solution, stepCounter) {
+    const solutionStep = document.getElementById("solution-text");
+    solutionStep.innerHTML = solution[stepCounter];
+}
+
 function nextSolutionStep(solution) {
     if (solutionStepCounter < solution.length - 1) {
         solutionStepCounter++;
+        updateSolutionStep(solution, solutionStepCounter);
     }
-
-    var solutionStep = document.getElementById("solution-text");
-    solutionStep.innerHTML = `${solution[solutionStepCounter]}`;
 }
-function previousSolutionStep(solution){
-    if (solutionStepCounter > 0){
-        solutionStepCounter--;
-    }
 
-    var solutionStep = document.getElementById("solution-text");
-    solutionStep.innerHTML = `${solution[solutionStepCounter]}`;
+function previousSolutionStep(solution) {
+    if (solutionStepCounter > 0) {
+        solutionStepCounter--;
+        updateSolutionStep(solution, solutionStepCounter);
+    }
 }
 
 export function openIssuePage(issueId) {
     console.log("opened issue page: " + issueId);
 
-    const currentIssue = data.find((element) => element.Name = issueId);
-    document.getElementById("page-contents").innerHTML = `
+    const currentIssue = data.find((element) => element.Name === issueId);
+    const pageContents = document.getElementById("page-contents");
+    pageContents.innerHTML = `
         <h1 id="issue-name">${currentIssue.Name}</h1>
         <div id="issue-information">
             <h2>Information</h2>
@@ -44,6 +46,5 @@ export function openIssuePage(issueId) {
 
     document.getElementById("next-button").addEventListener("click", () => nextSolutionStep(currentIssue.Solution));
     document.getElementById("previous-button").addEventListener("click", () => previousSolutionStep(currentIssue.Solution));
-
     document.getElementById("back-button").addEventListener("click", () => openIssuesPage());
 }
