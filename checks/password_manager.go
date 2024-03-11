@@ -35,7 +35,8 @@ func PasswordManager() Check {
 	// List all programs found within the 'Program Files' folder
 	programs, err := listInstalledPrograms(programFiles)
 	if err != nil {
-		return newCheckErrorf("PasswordManager", "error listing installed programs in Program Files", err)
+		return newCheckErrorf("PasswordManager",
+			"error listing installed programs in Program Files", err)
 	}
 
 	// Check if any of the listed programs are password managers
@@ -50,7 +51,8 @@ func PasswordManager() Check {
 	// Check for a password manager within the 'Program Files (x86)' folder
 	programs, err = listInstalledPrograms(programFilesx86)
 	if err != nil {
-		return newCheckErrorf("PasswordManager", "error listing installed programs in Program Files (x86)", err)
+		return newCheckErrorf("PasswordManager",
+			"error listing installed programs in Program Files (x86)", err)
 	}
 	for _, program := range programs {
 		for _, passwordmanager := range passwordManagerNames {

@@ -11,9 +11,14 @@ import (
 )
 
 // GuestAccount checks if the Windows guest account is active
+//
+// Parameters: _
+//
+// Returns: If the guest account is active or not
 func GuestAccount() Check {
 	// Get localgroup name using GetWmiObject
-	output, err := exec.Command("powershell", "Get-WmiObject", "Win32_Group", "|", "Select-Object", "SID,Name").Output()
+	output, err := exec.Command("powershell",
+		"Get-WmiObject", "Win32_Group", "|", "Select-Object", "SID,Name").Output()
 	if err != nil {
 		return newCheckErrorf("Guest account", "error executing command Get-WmiObject", err)
 	}
@@ -74,7 +79,8 @@ func GuestAccount() Check {
 
 	// Check if the guest account is active based on the presence of the word 'yes' in the user's language
 	if strings.Contains(outputString[5], yesWord) {
-		return newCheckResult("Guest account", "Guest account is active")
+		return newCheckResult("Guest account",
+			"Guest account is active")
 	}
 
 	return newCheckResult("Guest account", "Guest account is not active")

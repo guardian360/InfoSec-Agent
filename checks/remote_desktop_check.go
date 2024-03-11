@@ -16,7 +16,8 @@ import (
 // Returns: If Remote Desktop is enabled or not
 func RemoteDesktopCheck() Check {
 	// Open the registry key for Terminal Server settings
-	key, err := registry.OpenKey(registry.LOCAL_MACHINE, `System\CurrentControlSet\Control\Terminal Server`, registry.QUERY_VALUE)
+	key, err := registry.OpenKey(registry.LOCAL_MACHINE, `System\CurrentControlSet\Control\Terminal Server`,
+		registry.QUERY_VALUE)
 	if err != nil {
 		return newCheckErrorf("RemoteDesktop", "error opening registry key", err)
 	}

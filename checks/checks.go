@@ -7,7 +7,7 @@ package checks
 
 import "fmt"
 
-// Check is a struct that holds the result of a  security/privacy check.
+// Check is a struct that holds the result of a security/privacy check.
 //
 // Each check returns an Id, a Result, and an Error.
 //

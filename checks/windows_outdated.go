@@ -45,7 +45,9 @@ func WindowsOutdated() Check {
 			result.Result = append(result.Result, "There are updates available for Windows 10.")
 		}
 	default:
-		result.Result = append(result.Result, "You are using a Windows version which does not have support anymore. Consider updating to Windows 10 or Windows 11.")
+		result.Result = append(result.Result,
+			"You are using a Windows version which does not have support anymore. "+
+				"Consider updating to Windows 10 or Windows 11.")
 	}
 
 	return result

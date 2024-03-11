@@ -25,7 +25,8 @@ func WindowsDefender() Check {
 	defer windowsDefenderKey.Close()
 
 	// Open the Windows Defender real-time protection registry key, representing the periodic scan
-	realTimeKey, err := registry.OpenKey(registry.LOCAL_MACHINE, `SOFTWARE\Microsoft\Windows Defender\Real-Time Protection`, registry.READ)
+	realTimeKey, err := registry.OpenKey(registry.LOCAL_MACHINE,
+		`SOFTWARE\Microsoft\Windows Defender\Real-Time Protection`, registry.READ)
 	if err != nil {
 		return newCheckErrorf("WindowsDefender", "error opening registry key", err)
 	}

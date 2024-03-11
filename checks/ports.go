@@ -68,7 +68,7 @@ func OpenPorts() Check {
 			pid = words[3]
 		}
 
-		// Print process name from pid
+		// Return the process name from the pid
 		name, ok := pids[pid]
 		if ok {
 			result.Result = append(result.Result, fmt.Sprintf("port: %s, process: %s", port, name))

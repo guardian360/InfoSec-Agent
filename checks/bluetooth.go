@@ -20,7 +20,8 @@ import (
 // Returns: A list of bluetooth devices
 func Bluetooth() Check {
 	// Open the registry key for bluetooth devices
-	key, err := registry.OpenKey(registry.LOCAL_MACHINE, `SYSTEM\CurrentControlSet\Services\BTHPORT\Parameters\Devices`, registry.READ)
+	key, err := registry.OpenKey(registry.LOCAL_MACHINE,
+		`SYSTEM\CurrentControlSet\Services\BTHPORT\Parameters\Devices`, registry.READ)
 	if err != nil {
 		return newCheckErrorf("Bluetooth", "error opening registry key", err)
 	}

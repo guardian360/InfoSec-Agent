@@ -18,7 +18,8 @@ import (
 // Returns: A list of applications that have the given permission
 func Permission(permission string) Check {
 	// Open the registry key for the given permission
-	key, err := registry.OpenKey(registry.CURRENT_USER, `Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\`+permission, registry.READ)
+	key, err := registry.OpenKey(registry.CURRENT_USER,
+		`Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\`+permission, registry.READ)
 	if err != nil {
 		return newCheckErrorf(permission, "error opening registry key", err)
 	}
@@ -37,7 +38,9 @@ func Permission(permission string) Check {
 	for _, appName := range applicationNames {
 		// The registry key for packaged/non-packaged applications is different, so they get handled separately
 		if appName == "NonPackaged" {
-			key, err = registry.OpenKey(registry.CURRENT_USER, `Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\`+permission+`\NonPackaged`, registry.READ)
+			key, err = registry.OpenKey(registry.CURRENT_USER,
+				`Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\`+permission+`\NonPackaged`,
+				registry.READ)
 			nonPackagedApplicationNames, err := key.ReadSubKeyNames(-1)
 			v, vint, err := key.GetStringValue("Value")
 
@@ -49,7 +52,9 @@ func Permission(permission string) Check {
 				}
 			}
 		} else {
-			key, err = registry.OpenKey(registry.CURRENT_USER, `Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\`+permission+`\`+appName, registry.READ)
+			key, err = registry.OpenKey(registry.CURRENT_USER,
+				`Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\`+permission+`\`+appName,
+				registry.READ)
 			v, vint, err := key.GetStringValue("Value")
 
 			// Check if the application has the specified permission
