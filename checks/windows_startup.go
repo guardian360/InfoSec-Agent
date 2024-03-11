@@ -1,3 +1,8 @@
+// Package checks implements different security/privacy checks
+//
+// Exported function(s): PasswordManager, WindowsDefender, LastPasswordChange, LoginMethod, Permission, Bluetooth,
+// OpenPorts, WindowsOutdated, SecureBoot, SmbCheck, Startup, GuestAccount, UACCheck, RemoteDesktopCheck,
+// ExternalDevices, NetworkSharing
 package checks
 
 import (
@@ -5,11 +10,20 @@ import (
 	"golang.org/x/sys/windows/registry"
 )
 
+// Startup checks the registry for startup programs
+//
+// Parameters: _
+//
+// Returns: A list of start-up programs
 func Startup() Check {
-	// Open the relevant key so we can get the startup data entries out of them
-	cuKey, err1 := openRegistryKey(registry.CURRENT_USER, `SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run`)
-	lmKey, err2 := openRegistryKey(registry.LOCAL_MACHINE, `SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run`)
-	lmKey2, err3 := openRegistryKey(registry.LOCAL_MACHINE, `SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run32`)
+	// Start-up programs can be found in different locations within the registry
+	// Both the current user and local machine registry keys are checked
+	cuKey, err1 := openRegistryKey(registry.CURRENT_USER,
+		`SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run`)
+	lmKey, err2 := openRegistryKey(registry.LOCAL_MACHINE,
+		`SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run`)
+	lmKey2, err3 := openRegistryKey(registry.LOCAL_MACHINE,
+		`SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run32`)
 
 	if err1 != nil || err2 != nil || err3 != nil {
 		return newCheckError("Startup", fmt.Errorf("error opening registry keys"))
@@ -36,7 +50,12 @@ func Startup() Check {
 	return newCheckResult("Startup", output...)
 }
 
-// Simple function to open registry keys and handle errors
+// openRegistryKey opens registry keys and handles associated errors
+//
+// Parameters: k (registry.Key) represents the registry key to open,
+// path (string) represents the path to the registry key
+//
+// Returns: The opened registry key
 func openRegistryKey(k registry.Key, path string) (registry.Key, error) {
 	key, err := registry.OpenKey(k, path, registry.READ)
 
@@ -47,15 +66,21 @@ func openRegistryKey(k registry.Key, path string) (registry.Key, error) {
 	return key, nil
 }
 
-// Print the values of the entries inside the corresponding registry key
+// findEntries returns the values of the entries inside the corresponding registry key
+//
+// Parameters: entries ([]string) represents the entries to check in the registry key,
+// key (registry.Key) represents the registry key in which to look
+//
+// Returns: A slice of the values of the entries inside the registry key
 func findEntries(entries []string, key registry.Key) []string {
 	elements := make([]string, 0)
 
 	for _, element := range entries {
 		val, _, _ := key.GetBinaryValue(element)
 
-		// We check the binary values to make sure we only print the programs ENABLED to startup
-		// For example: in registry it lists all startup programs, but also the ones that are disabled on startup.
+		// Check the binary values to make sure we only return the programs that are ENABLED on startup
+		// This is because the registry lists all programs that are related to the start-up,
+		// including those that are disabled
 		if val[4] == 0 && val[5] == 0 && val[6] == 0 {
 			elements = append(elements, element)
 		}
