@@ -23,7 +23,7 @@ func Bluetooth() Check {
 	key, err := registry.OpenKey(registry.LOCAL_MACHINE,
 		`SYSTEM\CurrentControlSet\Services\BTHPORT\Parameters\Devices`, registry.READ)
 	if err != nil {
-		return newCheckErrorf("Bluetooth", "error opening registry key", err)
+		return NewCheckErrorf("Bluetooth", "error opening registry key", err)
 	}
 	// Close the key after we have received all relevant information
 	defer key.Close()
@@ -31,14 +31,14 @@ func Bluetooth() Check {
 	// Get the names of all sub keys (which represent bluetooth devices)
 	deviceNames, err := key.ReadSubKeyNames(-1)
 	if err != nil {
-		return newCheckErrorf("Bluetooth", "error reading sub key names", err)
+		return NewCheckErrorf("Bluetooth", "error reading sub key names", err)
 	}
 
 	if len(deviceNames) == 0 {
-		return newCheckResult("Bluetooth", "No Bluetooth devices found")
+		return NewCheckResult("Bluetooth", "No Bluetooth devices found")
 	}
 
-	result := newCheckResult("Bluetooth")
+	result := NewCheckResult("Bluetooth")
 	// Open each device sub key within the registry
 	for _, deviceName := range deviceNames {
 		deviceKey, err := registry.OpenKey(key, deviceName, registry.READ)

@@ -19,7 +19,7 @@ func LoginMethod() Check {
 	key, err := registry.OpenKey(registry.LOCAL_MACHINE,
 		`SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\UserTile`, registry.QUERY_VALUE)
 	if err != nil {
-		return newCheckErrorf("LoginMethod", "error opening registry key", err)
+		return NewCheckErrorf("LoginMethod", "error opening registry key", err)
 	}
 	// Close the key after we have received all relevant information
 	defer key.Close()
@@ -27,16 +27,16 @@ func LoginMethod() Check {
 	// Read the info of the key
 	keyInfo, err := key.Stat()
 	if err != nil {
-		return newCheckErrorf("LoginMethod", "error getting key info", err)
+		return NewCheckErrorf("LoginMethod", "error getting key info", err)
 	}
 
 	// Read the value names, which correspond to different log-in methods
 	names, err := key.ReadValueNames(int(keyInfo.ValueCount))
 	if err != nil {
-		return newCheckErrorf("LoginMethod", "error reading value names", err)
+		return NewCheckErrorf("LoginMethod", "error reading value names", err)
 	}
 
-	result := newCheckResult("LoginMethod")
+	result := NewCheckResult("LoginMethod")
 
 	// Each log-in method corresponds to a unique GUID
 	// Check whether the GUID is present in the registry key, and if it is, that log-in method is enabled

@@ -1,12 +1,12 @@
 package checks
 
 import (
+	"InfoSec-Agent/checks"
 	"InfoSec-Agent/utils"
 	"database/sql"
 	"os"
 	"path/filepath"
 	"time"
-	"InfoSec-Agent/checks"
 
 	_ "modernc.org/sqlite"
 )
@@ -42,7 +42,7 @@ func CookieFirefox() checks.Check {
 		var creationTime int64
 		// Scan the row into variables
 		if err := rows.Scan(&name, &host, &creationTime); err != nil {
-			return  newCheckError("CookieFirefox", err)
+			return newCheckError("CookieFirefox", err)
 		}
 		// Print the row
 		timeofCreation := time.UnixMicro(creationTime)
