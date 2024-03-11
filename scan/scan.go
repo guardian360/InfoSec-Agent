@@ -3,6 +3,7 @@ package scan
 import (
 	"InfoSec-Agent/checks"
 	chromechecks "InfoSec-Agent/checks/browsers/chrome"
+	checks "InfoSec-Agent/checks/browsers/firefox"
 	firefoxchecks "InfoSec-Agent/checks/browsers/firefox"
 	"encoding/json"
 	"fmt"
@@ -36,6 +37,7 @@ func Scan() {
 	remoteDesktop := checks.RemoteDesktopCheck()
 	devices := checks.ExternalDevices()
 	sharing := checks.NetworkSharing()
+	cookieff := checks.CookieFirefox()
 
 	// Combine results
 	checkResults := []checks.Check{
@@ -59,6 +61,7 @@ func Scan() {
 		remoteDesktop,
 		devices,
 		sharing,
+		cookieff,
 	}
 
 	// Serialize check results to JSON
