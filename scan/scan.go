@@ -1,3 +1,6 @@
+// Package scan collects all different privacy/security checks and provides a function that runs them all.
+//
+// Exported function(s): Scan
 package scan
 
 import (
@@ -6,6 +9,11 @@ import (
 	"fmt"
 )
 
+// Scan runs all security/privacy checks and serializes the results to JSON.
+//
+// Parameters: _
+//
+// Returns: checks.json file containing the results of all security/privacy checks
 func Scan() {
 	// Run all checks
 	passwordManager := checks.PasswordManager()
