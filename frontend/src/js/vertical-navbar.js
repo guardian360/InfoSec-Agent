@@ -1,12 +1,3 @@
-import "../css/home.css";
-import "../css/color-palette.css";
-
-// import dashboard from "../../dashboard.html";
-// import issues from "../../issues.html";
-// import about from "../../about.html";
-// import integration from "../../integration.html";
-// import settings from "../../settings.html";
-
 import logo from '../assets/images/logoTeamA-transformed.png';
 
 class Navbar extends HTMLElement {

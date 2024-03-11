@@ -1,11 +1,3 @@
-import "../css/home.css";
-import "../css/dashboard.css";
-import "../css/color-palette.css";
-
-// import "./graph"
-// import "./piechart"
-// import "./risk-counters"
-
 function openDashboardPage() {
     document.getElementById("page-contents").innerHTML = `
     <div class="dashboard-data">

@@ -1,6 +1,3 @@
-import "../css/home.css";
-import "../css/color-palette.css";
-
 function openHomePage() {
     document.getElementById("page-contents").innerHTML = `
     <div class="container-data">       
