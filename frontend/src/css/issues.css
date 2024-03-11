@@ -21,16 +21,16 @@
     color: var(--dark-text);
 }
 
-span {
+.issue-column span {
     float: left;
 }
 .table-header {
     margin-top: 2px;
 }
-.material-symbols-outlined {
+.issue-column .material-symbols-outlined {
     float: right;
 }
-.material-symbols-outlined:hover {
+.issue-column .material-symbols-outlined:hover {
     cursor: pointer;
 }
 .issue-link {
