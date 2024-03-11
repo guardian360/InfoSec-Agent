@@ -1,3 +1,8 @@
+// Package checks implements different security/privacy checks
+//
+// Exported function(s): PasswordManager, WindowsDefender, LastPasswordChange, LoginMethod, Permission, Bluetooth,
+// OpenPorts, WindowsOutdated, SecureBoot, SmbCheck, Startup, GuestAccount, UACCheck, RemoteDesktopCheck,
+// ExternalDevices, NetworkSharing
 package checks
 
 import (
@@ -5,9 +10,15 @@ import (
 	"strings"
 )
 
-// TODO: Improve formatting of output, Check more classes
+// TODO: Improve formatting of output, check more classes
+
+// ExternalDevices checks for external devices connected to the system
+//
+// Parameters: _
+//
+// Returns: list of external devices
 func ExternalDevices() Check {
-	// All the classes you want to check within the Get-PnpDevice command
+	// All the classes you want to check with the Get-PnpDevice command
 	classesToCheck := [2]string{"Mouse", "Camera"}
 	outputs := make([]string, 0)
 	for _, s := range classesToCheck {
@@ -23,9 +34,15 @@ func ExternalDevices() Check {
 	return newCheckResult("externaldevices", outputs...)
 }
 
-// Run the command for a specific class within the Get-PnpDevice and print its results
+// checkDeviceClass runs a specific class within the Get-PnpDevice command
+//
+// Parameters: deviceClass (string) representing the class to check with the Get-PnpDevice command
+//
+// Returns: list of devices of the given class
 func checkDeviceClass(deviceClass string) ([]string, error) {
-	output, err := exec.Command("powershell", "-Command", "Get-PnpDevice -Class", deviceClass, " | Where-Object -Property Status -eq 'OK' | Select-Object FriendlyName").Output()
+	// Run the Get-PnpDevice command with the given class
+	output, err := exec.Command("powershell", "-Command", "Get-PnpDevice -Class", deviceClass, " "+
+		"| Where-Object -Property Status -eq 'OK' | Select-Object FriendlyName").Output()
 
 	if err != nil {
 		return nil, err

@@ -1,29 +1,47 @@
+// Package checks implements different security/privacy checks
+//
+// Exported function(s): PasswordManager, WindowsDefender, LastPasswordChange, LoginMethod, Permission, Bluetooth,
+// OpenPorts, WindowsOutdated, SecureBoot, SmbCheck, Startup, GuestAccount, UACCheck, RemoteDesktopCheck,
+// ExternalDevices, NetworkSharing
 package checks
 
 import (
-	"fmt"
 	"golang.org/x/sys/windows/registry"
 )
 
+// LoginMethod checks which login method(s) the user has enabled
+//
+// Parameters: _
+//
+// Returns: List of login methods enabled
 func LoginMethod() Check {
-	key, err := registry.OpenKey(registry.LOCAL_MACHINE, `SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\UserTile`, registry.QUERY_VALUE)
+	// Open the registry key related to log-in methods
+	key, err := registry.OpenKey(registry.LOCAL_MACHINE,
+		`SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\UserTile`, registry.QUERY_VALUE)
 	if err != nil {
 		return newCheckErrorf("LoginMethod", "error opening registry key", err)
 	}
+	// Close the key after we have received all relevant information
 	defer key.Close()
 
+	// Read the info of the key
 	keyInfo, err := key.Stat()
 	if err != nil {
 		return newCheckErrorf("LoginMethod", "error getting key info", err)
 	}
 
+	// Read the value names, which correspond to different log-in methods
 	names, err := key.ReadValueNames(int(keyInfo.ValueCount))
 	if err != nil {
 		return newCheckErrorf("LoginMethod", "error reading value names", err)
 	}
 
 	result := newCheckResult("LoginMethod")
+
+	// Each log-in method corresponds to a unique GUID
+	// Check whether the GUID is present in the registry key, and if it is, that log-in method is enabled
 	for _, element := range names {
+		//TODO: Error handling, checkKey can return -1 but it is not handled
 		if checkKey(key, element) == "{D6886603-9D2F-4EB2-B667-1971041FA96B}" {
 			result.Result = append(result.Result, "PIN")
 		} else if checkKey(key, element) == "{2135F72A-90B5-4ED3-A7F1-8BB705AC276A}" {
@@ -42,12 +60,17 @@ func LoginMethod() Check {
 	return result
 }
 
+// checkKey checks the value of a certain element within a registry key
+//
+// Parameters: key (registry.Key) representing the registry key to be checked,
+// el (string) representing the element to be checked
+//
+// Returns: The value of the element within the registry key
 func checkKey(key registry.Key, el string) string {
 	val, _, err := key.GetStringValue(el)
 	if err == nil {
 		return val
 	} else {
-		fmt.Printf("Not able to check")
 		return "-1"
 	}
 }
