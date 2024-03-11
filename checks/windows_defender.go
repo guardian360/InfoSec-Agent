@@ -21,6 +21,7 @@ func WindowsDefender() Check {
 	if err != nil {
 		return newCheckErrorf("WindowsDefender", "error opening registry key", err)
 	}
+	// Close the key after we have received all relevant information
 	defer windowsDefenderKey.Close()
 
 	// Open the Windows Defender real-time protection registry key, representing the periodic scan
@@ -28,6 +29,7 @@ func WindowsDefender() Check {
 	if err != nil {
 		return newCheckErrorf("WindowsDefender", "error opening registry key", err)
 	}
+	// Close the key after we have received all relevant information
 	defer realTimeKey.Close()
 
 	// Read the value of the registry keys

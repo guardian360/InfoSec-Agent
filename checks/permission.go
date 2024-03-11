@@ -22,6 +22,7 @@ func Permission(permission string) Check {
 	if err != nil {
 		return newCheckErrorf(permission, "error opening registry key", err)
 	}
+	// Close the key after we have received all relevant information
 	defer key.Close()
 
 	// Get the names of all sub-keys (which represent applications)

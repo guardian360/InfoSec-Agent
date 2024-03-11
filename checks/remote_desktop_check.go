@@ -20,6 +20,7 @@ func RemoteDesktopCheck() Check {
 	if err != nil {
 		return newCheckErrorf("RemoteDesktop", "error opening registry key", err)
 	}
+	// Close the key after we have received all relevant information
 	defer key.Close()
 
 	// Read the value of fDenyTSConnections, which contains the information if Remote Desktop is enabled or not

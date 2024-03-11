@@ -29,6 +29,7 @@ func Startup() Check {
 		return newCheckError("Startup", fmt.Errorf("error opening registry keys"))
 	}
 
+	// Close the keys after we have received all relevant information
 	defer cuKey.Close()
 	defer lmKey.Close()
 	defer lmKey2.Close()

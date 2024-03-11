@@ -21,6 +21,7 @@ func LoginMethod() Check {
 	if err != nil {
 		return newCheckErrorf("LoginMethod", "error opening registry key", err)
 	}
+	// Close the key after we have received all relevant information
 	defer key.Close()
 
 	// Read the info of the key
