@@ -1,20 +1,19 @@
+// Package scan collects all different privacy/security checks and provides a function that runs them all.
+//
+// Exported function(s): Scan
 package scan
 
 import (
 	"InfoSec-Agent/checks"
-	chromechecks "InfoSec-Agent/checks/browsers/chrome"
-	checks "InfoSec-Agent/checks/browsers/firefox"
-	firefoxchecks "InfoSec-Agent/checks/browsers/firefox"
 	"encoding/json"
 	"fmt"
 )
 
-func ScanBrowser() {
-	chromechecks.ExtensionsChrome()
-	firefoxchecks.ExtensionFirefox()
-	chromechecks.ChromeHistory()
-}
-
+// Scan runs all security/privacy checks and serializes the results to JSON.
+//
+// Parameters: _
+//
+// Returns: checks.json file containing the results of all security/privacy checks
 func Scan() {
 	// Run all checks
 	passwordManager := checks.PasswordManager()
@@ -37,7 +36,6 @@ func Scan() {
 	remoteDesktop := checks.RemoteDesktopCheck()
 	devices := checks.ExternalDevices()
 	sharing := checks.NetworkSharing()
-	cookieff := checks.CookieFirefox()
 
 	// Combine results
 	checkResults := []checks.Check{
@@ -61,7 +59,6 @@ func Scan() {
 		remoteDesktop,
 		devices,
 		sharing,
-		cookieff,
 	}
 
 	// Serialize check results to JSON
