@@ -2,9 +2,17 @@ package scan
 
 import (
 	"InfoSec-Agent/checks"
+	chromechecks "InfoSec-Agent/checks/browsers/chrome"
+	firefoxchecks "InfoSec-Agent/checks/browsers/firefox"
 	"encoding/json"
 	"fmt"
 )
+
+func ScanBrowser() {
+	chromechecks.ExtensionsChrome()
+	firefoxchecks.ExtensionFirefox()
+	chromechecks.ChromeHistory()
+}
 
 func Scan() {
 	// Run all checks

@@ -7,6 +7,7 @@ import (
 	"InfoSec-Agent/localization"
 	"InfoSec-Agent/scan"
 	"InfoSec-Agent/tray"
+
 	"github.com/getlantern/systray"
 )
 
