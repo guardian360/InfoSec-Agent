@@ -1,6 +1,3 @@
-import "../css/home.css";
-import "../css/color-palette.css";
-
 import * as piechart from "./piechart";
 
 function openHomePage() {
@@ -46,6 +43,7 @@ function openHomePage() {
     CreatePieChart();
 }
 
+document.onload = openHomePage();
 document.getElementById("logo-button").addEventListener("click", () => openHomePage());
 document.getElementById("home-button").addEventListener("click", () => openHomePage());
 

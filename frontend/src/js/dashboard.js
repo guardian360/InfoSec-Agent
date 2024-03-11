@@ -1,7 +1,3 @@
-import "../css/home.css";
-import "../css/dashboard.css";
-import "../css/color-palette.css";
-
 import * as rc from "./risk-counters";
 import * as graph from "./graph";
 import * as piechart from "./piechart";

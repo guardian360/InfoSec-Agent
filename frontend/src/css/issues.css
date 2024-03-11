@@ -3,7 +3,6 @@
 /* Issue table */
 #issues-table {
     float: left;
-    margin-left: 20px;
     margin-top: 80px;
     width: 70%;
     margin-left: 260px;
@@ -38,7 +37,57 @@
     text-decoration: none;
     color: var(--dark-text);
 }
-.issue-link:hover {color: var(--dark-text-hover)}
+.issue-link:hover {
+    color: var(--dark-text-hover);
+    cursor: pointer;
+}
 
 /* Issue pages */
+h1 {
+    float: left;
+    margin-top: 80px;
+    margin-left: 260px;
+    margin-right: 20px;
+}
 
+#issue-information {
+    float: left;
+    margin-left: 260px;
+    margin-right: 20px;
+}
+
+#back-button {
+    float: left;
+    margin-left: 260px;
+    margin-right: 20px;
+}
+#back-button:hover {
+    color: var(--dark-text-hover);
+    cursor:pointer;
+}
+
+#issue-solution {
+    float: left;
+    width: 70%;
+}
+#solution-text {
+    /* float:left; */
+}
+#solution-buttons {
+    display: flex;
+}
+.step-button {
+    color: var(--dark-text);
+}
+.step-button:hover {
+    color: var(--dark-text-hover);
+    cursor:pointer;
+}
+#next-button {
+    float: right;
+    width: 49%;
+}
+#previous-button {
+    float: left;
+    width: 49%;
+}

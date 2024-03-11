@@ -13,7 +13,7 @@
         ]
     },
     {
-        "Name": "Extra windows password protection",
+        "Name": "Windows password protection",
         "Type": "Security",
         "Risk": "High",
         "Information": "Passwordless or 2FA adds an extra layer of security beyond just a password. It requires users to provide additional proof of identity, such as a fingerprint, face recognition, or a physical security key, along with their password. This significantly reduces the likelihood of unauthorized access, even if a password is compromised.",
@@ -35,7 +35,7 @@
         ]
     },
     {
-        "Name": "Camera/microphone access",
+        "Name": "Camera and microphone access",
         "Type": "Privacy",
         "Risk": "Low",
         "Information": "Being aware of which applications have access to your camera and microphone helps prevent unauthorized access. Malicious software or even legitimate applications with poorly implemented security features could potentially access your camera and microphone without your knowledge or consent. By knowing which applications have access, you can identify and block any unauthorized attempts.",
