@@ -1,3 +1,8 @@
+// Package checks implements different security/privacy checks
+//
+// Exported function(s): PasswordManager, WindowsDefender, LastPasswordChange, LoginMethod, Permission, Bluetooth,
+// OpenPorts, WindowsOutdated, SecureBoot, SmbCheck, Startup, GuestAccount, UACCheck, RemoteDesktopCheck,
+// ExternalDevices, NetworkSharing
 package checks
 
 import (
@@ -6,7 +11,11 @@ import (
 	"strings"
 )
 
-// SmbCheck checks whether SMB1 and SMB2 are enabled
+// SmbCheck checks whether SMB1 (Server Message Block) and SMB2 are enabled
+//
+// Parameters: _
+//
+// Returns: If SMB1 and SMB2 are enabled or not
 func SmbCheck() Check {
 	smb1, err := smbEnabled("SMB1")
 
@@ -22,9 +31,13 @@ func SmbCheck() Check {
 	return newCheckResult("smb", smb1, smb2)
 }
 
-// Check whether specified SMB protocol is enabled
+// smbEnabled checks whether the specified SMB protocol is enabled
+//
+// Parameters: smb (string) represents the SMB protocol to check
+//
+// Returns: If the specified SMB protocol is enabled or not
 func smbEnabled(smb string) (string, error) {
-	// Format command
+	// Get the status of the specified SMB protocol
 	command := fmt.Sprintf("Get-SmbServerConfiguration | Select-Object Enable%sProtocol", smb)
 
 	output, err := exec.Command("powershell", command).Output()
