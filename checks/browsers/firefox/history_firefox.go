@@ -1,17 +1,18 @@
-package checks
+package firefox
 
 import (
+	"InfoSec-Agent/checks"
 	utils "InfoSec-Agent/utils"
 	"database/sql"
-	"fmt"
 	"os"
 	"path/filepath"
+	"regexp"
 	"time"
 
 	_ "modernc.org/sqlite"
 )
 
-func history_firefox() ([]string, error) {
+func HistoryFirefox() checks.Check {
 	var output []string
 	ffdirectory, _ := utils.FirefoxFolder()
 
@@ -20,44 +21,34 @@ func history_firefox() ([]string, error) {
 
 	copyError := utils.CopyFile(ffdirectory[0]+"\\places.sqlite", tempHistoryDbff)
 	if copyError != nil {
-		return nil, copyError
+		return checks.NewCheckError("HistoryFirefox", copyError)
 	}
 	//OpenDatabase
 	db, err := sql.Open("sqlite", tempHistoryDbff)
 	if err != nil {
-		fmt.Println(err)
-		return nil, err
+		return checks.NewCheckError("HistoryFirefox", err)
 	}
 	defer db.Close()
 
 	last30Days := time.Now().AddDate(0, 0, -30).UnixMicro()
 
+	// Get the phishing domains from up-to-date github list
+	phishingDomainList := utils.GetPhisingDomains()	
+
 	// Execute a query
-	rows, err := db.Query("SELECT url, title, visit_count, last_visit_date FROM moz_places WHERE last_visit_date >= ? ORDER BY last_visit_date DESC", last30Days)
+	rows, err := db.Query("SELECT url, last_visit_date FROM moz_places WHERE last_visit_date >= ? ORDER BY last_visit_date DESC", last30Days)
 	if err != nil {
-		fmt.Println(err)
-		return nil, err
+		return checks.NewCheckError("HistoryFirefox", err)
 	}
 	defer rows.Close()
 
 	// Iterate over the rows
 	for rows.Next() {
 		var url string
-		var title sql.NullString
-		var visitCount int
 		var lastVisitDate sql.NullInt64
 		// Scan the row into variables
-		if err := rows.Scan(&url, &title, &visitCount, &lastVisitDate); err != nil {
-			fmt.Println(err)
-			return nil, err
-		}
-
-		// Check if the title is NULL
-		var titleStr string
-		if title.Valid {
-			titleStr = title.String
-		} else {
-			titleStr = "<NULL>"
+		if err := rows.Scan(&url, &lastVisitDate); err != nil {
+			return checks.NewCheckError("HistoryFirefox", err)
 		}
 		var timeString = ""
 		// Check if the lastVisitDate is NULL
@@ -75,9 +66,17 @@ func history_firefox() ([]string, error) {
 			timeString = time.String()
 		}
 
-		fmt.Println(url, timeString)
-		output = append(output, url, titleStr, string(visitCount), timeString)
+		//We only want to print the url to map against untrustworthy domains so we use the following regex to extract the domain
+		re := regexp.MustCompile(`(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+\.[^:\/\n?]+)`)
+		matches := re.FindStringSubmatch(url)
+
+		for _, scamDomain := range phishingDomainList {
+			if len(matches) > 1 && matches[1] == scamDomain {
+				domain := matches[1]
+				output = append(output, domain+timeString)
+			}
+		}
 	}
 	os.Remove(tempHistoryDbff)
-	return output, nil
+	return checks.NewCheckResult("HistoryFirefox", output...)
 }

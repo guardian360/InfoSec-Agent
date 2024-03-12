@@ -1,4 +1,4 @@
-package checks
+package firefox
 
 import (
 	"InfoSec-Agent/checks"
@@ -20,19 +20,19 @@ func CookieFirefox() checks.Check {
 
 	copyError := utils.CopyFile(ffdirectory[0]+"\\cookies.sqlite", tempCookieDbff)
 	if copyError != nil {
-		return checks.newCheckErrorf("CookieFirefox", "Unable to make a copy of the file", copyError)
+		return checks.NewCheckErrorf("CookieFirefox", "Unable to make a copy of the file", copyError)
 	}
 
 	//OpenDatabase
 	db, err := sql.Open("sqlite", tempCookieDbff)
 	if err != nil {
-		return newCheckError("CookieFirefox", err)
+		return checks.NewCheckError("CookieFirefox", err)
 	}
 	defer db.Close()
 	// Execute a query
 	rows, err := db.Query("SELECT name, host, creationTime FROM moz_cookies")
 	if err != nil {
-		return newCheckError("CookieFirefox", err)
+		return checks.NewCheckError("CookieFirefox", err)
 	}
 	defer rows.Close()
 
@@ -42,7 +42,7 @@ func CookieFirefox() checks.Check {
 		var creationTime int64
 		// Scan the row into variables
 		if err := rows.Scan(&name, &host, &creationTime); err != nil {
-			return newCheckError("CookieFirefox", err)
+			return checks.NewCheckError("CookieFirefox", err)
 		}
 		// Print the row
 		timeofCreation := time.UnixMicro(creationTime)
@@ -50,5 +50,5 @@ func CookieFirefox() checks.Check {
 		output = append(output, name, host, timeString)
 	}
 	os.Remove(tempCookieDbff)
-	return newCheckResult("CookieFirefox", output...)
+	return checks.NewCheckResult("CookieFirefox", output...)
 }

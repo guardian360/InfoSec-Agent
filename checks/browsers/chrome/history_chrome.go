@@ -10,7 +10,7 @@ import (
 	"regexp"
 	"time"
 
-	_ "github.com/mattn/go-sqlite3"
+	_ "modernc.org/sqlite"
 )
 
 func ChromeHistory() {
@@ -32,7 +32,7 @@ func ChromeHistory() {
 	}
 
 	// Open the Chrome history database
-	db, err := sql.Open("sqlite3", tempHistoryDb)
+	db, err := sql.Open("sqlite", tempHistoryDb)
 	if err != nil {
 		log.Fatal(err)
 	}
