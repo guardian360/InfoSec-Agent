@@ -1,24 +1,26 @@
-package checks
+package chrome
 
 import (
+	"InfoSec-Agent/checks"
 	utils "InfoSec-Agent/utils"
 	"database/sql"
 	"os"
 	"path/filepath"
 	"regexp"
+	"strings"
 	"time"
 
 	_ "modernc.org/sqlite"
 )
 
-func ChromeHistory() check.check {
+func HistoryChrome() checks.Check {
 	// List of the results, this will contain a list of domains which are known to be phishing domains.
 	var results []string
 
 	// Get the user's home directory
 	user, err := os.UserHomeDir()
 	if err != nil {
-		check.NewCheckErrorf("HistoryChrome", "Error: ", err)
+		return checks.NewCheckErrorf("HistoryChrome", "Error: ", err)
 	}
 
 	//Copy the database so we don't have problems with locked files
@@ -26,13 +28,13 @@ func ChromeHistory() check.check {
 	// Copy the database to a temporary location
 	copyError := utils.CopyFile(user+"/AppData/Local/Google/Chrome/User Data/Default/History", tempHistoryDb)
 	if copyError != nil {
-		check.NewCheckError("HistoryChrome", copyError)
+		return checks.NewCheckError("HistoryChrome", copyError)
 	}
 
 	// Open the Chrome history database
 	db, err := sql.Open("sqlite", tempHistoryDb)
 	if err != nil {
-		check.NewCheckError("HistoryChrome", err)
+		return checks.NewCheckError("HistoryChrome", err)
 	}
 	defer db.Close()
 
@@ -41,7 +43,7 @@ func ChromeHistory() check.check {
 	// Query the urls table we limit the results to 50 for the time being
 	rows, err := db.Query("SELECT url, title, visit_count, last_visit_time FROM urls WHERE last_visit_time > ? ORDER BY last_visit_time DESC", oneWeekAgo)
 	if err != nil {
-		check.NewCheckError("HistoryChrome", err)
+		return checks.NewCheckError("HistoryChrome", err)
 	}
 	defer rows.Close()
 
@@ -53,7 +55,7 @@ func ChromeHistory() check.check {
 		var visitCount, lastVisitTime int
 		err = rows.Scan(&url, &title, &visitCount, &lastVisitTime)
 		if err != nil {
-			check.NewCheckError("HistoryChrome", err)
+			return checks.NewCheckError("HistoryChrome", err)
 		}
 		//We only want to print the url to map against untrustworthy domains so we use the following regex to extract the domain
 		re := regexp.MustCompile(`(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+\.[^:\/\n?]+)`)
@@ -69,16 +71,14 @@ func ChromeHistory() check.check {
 
 	// Check for errors from iterating over rows
 	if err = rows.Err(); err != nil {
-		check.NewCheckError("HistoryChrome", err)
+		return checks.NewCheckError("HistoryChrome", err)
 	}
 	defer os.Remove(tempHistoryDb) // Clean up the temporary file when done
 
 	// Print the results
 	if len(results) > 0 {
-		for _, result := range results {
-			check.NewCheckResult("HistoryChrome", result)
-		}
+		return checks.NewCheckResult("HistoryChrome", strings.Join(results, "\n"))
 	} else {
-		check.NewCheckResult("HistoryChrome", "No phishing domains found in the last week")
+		return checks.NewCheckResult("HistoryChrome", "No phishing domains found in the last week")
 	}
 }
