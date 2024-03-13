@@ -4,12 +4,7 @@ import * as rc from "./risk-counters"
 export function GetData() {
   var xValues = ["No risk", "Low risk", "Medium risk", "High risk"];
   var yValues = [rc.allNoRisks.slice(-1)[0], rc.allLowRisks.slice(-1)[0], rc.allMediumRisks.slice(-1)[0], rc.allHighRisks.slice(-1)[0]];
-  var barColors = [
-      rc.noRiskColor,
-    rc.lowRiskColor,
-    rc.mediumRiskColor,
-    rc.highRiskColor
-  ];
+  var barColors = [rc.noRiskColor, rc.lowRiskColor, rc.mediumRiskColor, rc.highRiskColor];
 
   return {
     labels: xValues,

@@ -1,6 +1,7 @@
 import data from "../database.json" assert { type: "json" };
 import { openIssuePage } from "./issue.js";
 
+// Load the content of the issues page
 export function openIssuesPage() {
     const pageContents = document.getElementById("page-contents");
     pageContents.innerHTML = `
@@ -18,8 +19,7 @@ export function openIssuesPage() {
     `;
 
     var issues = []; // retrieve issues from tray application
-    // dummy info
-    issues = [
+    issues = [ // dummy info
         { 
             "Id": "Windows defender", 
             "Result": ["Windows defender is disabled"],
