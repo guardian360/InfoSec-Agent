@@ -6,6 +6,7 @@ package tray
 
 import (
 	"InfoSec-Agent/localization"
+	"InfoSec-Agent/scan"
 	"fmt"
 	"os"
 	"os/signal"
@@ -90,6 +91,7 @@ func OnReady() {
 		case <-scanTicker.C:
 			scanCounter++
 			fmt.Println("Scan:", scanCounter)
+			ScanNow()
 		}
 
 	}
@@ -156,12 +158,32 @@ func ChangeScanInterval(testInput ...string) {
 //
 // Returns: _
 func ScanNow() {
+	// scanCounter is not concretely used at the moment
+	// might be useful in the future
 	scanCounter++
 	fmt.Println("Scanning now. Scan:", scanCounter)
-	// Manually advance the ticker by sending a signal to its channel
-	select {
-	case <-scanTicker.C:
-	default:
+
+	// Display a progress dialog while the scan is running
+	dialog, err := zenity.Progress(
+		zenity.Title("Security/Privacy Scan"))
+	if err != nil {
+		fmt.Println("Error creating dialog:", err)
+		return
+	}
+	// Defer closing the dialog until the scan completes
+	defer func(dialog zenity.ProgressDialog) {
+		err := dialog.Close()
+		if err != nil {
+			fmt.Println("Error closing dialog:", err)
+		}
+	}(dialog)
+
+	scan.Scan(dialog)
+
+	err = dialog.Complete()
+	if err != nil {
+		fmt.Println("Error completing dialog:", err)
+		return
 	}
 }
 
