@@ -1,7 +1,8 @@
-package checks
+package chrome
 
 import (
 	"InfoSec-Agent/checks"
+	"errors"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -11,18 +12,18 @@ import (
 	"strings"
 )
 
-func ExtensionsChrome() check.check {
+func ExtensionsChrome() checks.Check {
 	var extensionIds []string
 	var extensionNames []string
 	user, err := os.UserHomeDir()
 	if err != nil {
-		check.NewCheckErrorf("ExtensionsChrome", "Error: ", err)
+		checks.NewCheckErrorf("ExtensionsChrome", "Error: ", err)
 	}
 
 	extensionsDir := filepath.Join(user, "AppData", "Local", "Google", "Chrome", "User Data", "Default", "Extensions")
 	files, err := ioutil.ReadDir(extensionsDir)
 	if err != nil {
-		check.NewCheckErrorf("ExtensionsChrome", "Error: ", err)
+		checks.NewCheckErrorf("ExtensionsChrome", "Error: ", err)
 	}
 
 	//Adds the extnesion ID to the extensionIds array
@@ -43,25 +44,25 @@ func ExtensionsChrome() check.check {
 		}
 	}
 	if adblockerInstalled(extensionNames) {
-		checks.NewCheckResult("ExtensionsChrome", "Adblocker installed")
+		return checks.NewCheckResult("ExtensionsChrome", "Adblocker installed")
 	} else {
-		checks.NewCheckError("ExtensionsChrome", "No adblocker installed")
+		return checks.NewCheckErrorf("ExtensionsChrome", "No adblocker installed", errors.New("No adblocker installed"))
 	}
 }
 
-func getExtensionName(extensionID string) check.Check {
+func getExtensionName(extensionID string) (string, error) {
 	client := &http.Client{}
 	url := fmt.Sprintf("https://chromewebstore.google.com/detail/%s", extensionID)
 	req, err := http.NewRequest("GET", url, nil)
 	req.Header.Add("User-Agent", "Mozilla/5.0")
 	resp, err := client.Do(req)
 	if err != nil {
-		check.NewCheckErrorf("ExtensionsChrome", "Error: ", err)
+		return "", err
 	}
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
-		check.NewCheckErrorf("ExtensionsChrome", "Failed to get extension name, status code: %d", resp.StatusCode)
+		return "", fmt.Errorf("HTTP request failed with status code: %d", resp.StatusCode)
 	}
 
 	return resp.Request.URL.String(), nil
