@@ -1,6 +1,7 @@
 package checks
 
 import (
+	"InfoSec-Agent/checks"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -10,18 +11,18 @@ import (
 	"strings"
 )
 
-func ExtensionsChrome() {
+func ExtensionsChrome() check.check {
 	var extensionIds []string
 	var extensionNames []string
 	user, err := os.UserHomeDir()
 	if err != nil {
-		log.Fatal(err)
+		check.NewCheckErrorf("ExtensionsChrome", "Error: ", err)
 	}
 
 	extensionsDir := filepath.Join(user, "AppData", "Local", "Google", "Chrome", "User Data", "Default", "Extensions")
 	files, err := ioutil.ReadDir(extensionsDir)
 	if err != nil {
-		log.Fatal(err)
+		check.NewCheckErrorf("ExtensionsChrome", "Error: ", err)
 	}
 
 	//Adds the extnesion ID to the extensionIds array
@@ -42,25 +43,25 @@ func ExtensionsChrome() {
 		}
 	}
 	if adblockerInstalled(extensionNames) {
-		fmt.Println("Adblocker installed")
+		checks.NewCheckResult("ExtensionsChrome", "Adblocker installed")
 	} else {
-		fmt.Println("No adblocker installed")
+		checks.NewCheckError("ExtensionsChrome", "No adblocker installed")
 	}
 }
 
-func getExtensionName(extensionID string) (string, error) {
+func getExtensionName(extensionID string) check.Check {
 	client := &http.Client{}
 	url := fmt.Sprintf("https://chromewebstore.google.com/detail/%s", extensionID)
 	req, err := http.NewRequest("GET", url, nil)
 	req.Header.Add("User-Agent", "Mozilla/5.0")
 	resp, err := client.Do(req)
 	if err != nil {
-		return "", err
+		check.NewCheckErrorf("ExtensionsChrome", "Error: ", err)
 	}
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
-		return "", fmt.Errorf("HTTP request failed with status code: %d", resp.StatusCode)
+		check.NewCheckErrorf("ExtensionsChrome", "Failed to get extension name, status code: %d", resp.StatusCode)
 	}
 
 	return resp.Request.URL.String(), nil
@@ -75,6 +76,14 @@ func adblockerInstalled(extensionNames []string) bool {
 		"adkrig",
 		"adblokker",
 		"advertentieblokkering",
+		"ad lock",
+		"adlock",
+		"privacy badger",
+		"ublock",
+		"adguard",
+		"adaware",
+		"adaware adblock",
+		"ghostery",
 	}
 	for _, extensionName := range extensionNames {
 		for _, adblockerName := range adblockerNames {
