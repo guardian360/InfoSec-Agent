@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+      <meta charset="UTF-8" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+
+      <link rel="stylesheet" href="./src/css/color-palette.css">
+      <link rel="stylesheet" href="./src/css/home.css">
+      <link rel="stylesheet" href="./src/css/settings.css">
+      <link rel="stylesheet" href="./src/css/dashboard.css">
+      <link rel="stylesheet" href="./src/css/issues.css">
+
+      <script src="./src/js/vertical-navbar.js" type="module" defer></script>
+      <script src="./src/js/home.js" type="module" defer></script>
+      <script src="./src/js/settings.js" type="module" defer></script>
+      <script src="./src/js/dashboard.js" type="module" defer></script>
+      <script src="./src/js/issues.js" type="module" defer></script>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+      <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    </head>
+    <body>
+        <div id="header">
+            <div id="header-logo">
+                <div id="logo-button" class="logo-name">
+                    <img id="logo" alt="logo"></img>
+                    <div id="header-name">
+                        <h1>Little Brother</h1>
+                    </div>
+                </div>
+            </div>
+            <div id="header-settings">
+                <span id="settings-button" class="nav-link"><p><span class="material-symbols-outlined">settings</span><span>Settings</span></p></span>
+            </div>
+          </div> 
+          <div id="left-nav">
+            <div id="home-button" class="nav-link">
+                <p><span class="material-symbols-outlined">home</span><span class="nav-item">Home</span></p>
+            </div>
+            <div id="dashboard-button" class="nav-link">
+                <p><span class="material-symbols-outlined">monitoring</span><span class="nav-item">Dashboard</span></p>
+            </div>
+            <div id="issues-button" class="nav-link">
+                <p><span class="material-symbols-outlined">security</span><span class="nav-item">Issues</span></p>
+            </div>
+            <div id="integration-button" class="nav-link">
+                <p><span class="material-symbols-outlined">integration_instructions</span><span class="nav-item">Integration</span></p>
+            </div>
+            <a id="about-button" class="nav-link">
+                <p><span class="material-symbols-outlined">info</span><span class="nav-item">About</span></p>
+            </a>
+          </div>
+        <div id="page-contents">
+        <div class="page-contents">
+        </div>
+    </body>
+</html>
