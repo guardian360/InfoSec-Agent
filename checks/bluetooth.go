@@ -7,11 +7,9 @@ package checks
 
 import (
 	"fmt"
+	"golang.org/x/sys/windows/registry"
 	"os/exec"
 	"strings"
-	"syscall"
-
-	"golang.org/x/sys/windows/registry"
 )
 
 // Bluetooth checks for bluetooth devices which are / have been connected to the system
@@ -62,9 +60,7 @@ func Bluetooth() Check {
 	// Check for currently connected bluetooth devices
 	bt := "null"
 
-	cmd := exec.Command("ipconfig")
-	cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
-	output, _ := cmd.Output()
+	output, _ := exec.Command("ipconfig").Output()
 
 	//re := regexp.MustCompile(":")
 	lines := strings.Split(string(output), "\r\n")

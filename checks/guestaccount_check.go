@@ -8,7 +8,6 @@ package checks
 import (
 	"os/exec"
 	"strings"
-	"syscall"
 )
 
 // GuestAccount checks if the Windows guest account is active
@@ -18,10 +17,8 @@ import (
 // Returns: If the guest account is active or not
 func GuestAccount() Check {
 	// Get localgroup name using GetWmiObject
-	cmd := exec.Command("powershell",
-		"Get-WmiObject", "Win32_Group", "|", "Select-Object", "SID,Name")
-	cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
-	output, err := cmd.Output()
+	output, err := exec.Command("powershell",
+		"Get-WmiObject", "Win32_Group", "|", "Select-Object", "SID,Name").Output()
 
 	if err != nil {
 		return newCheckErrorf("Guest account", "error executing command Get-WmiObject", err)
@@ -43,9 +40,7 @@ func GuestAccount() Check {
 	}
 
 	// Get local group members using net localgroup command
-	cmd = exec.Command("net", "localgroup", guestGroup)
-	cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
-	output, err = cmd.Output()
+	output, err = exec.Command("net", "localgroup", guestGroup).Output()
 
 	if err != nil {
 		return newCheckErrorf("Guest account", "error executing command net localgroup", err)
@@ -69,9 +64,7 @@ func GuestAccount() Check {
 	}
 
 	// Retrieve the word for 'yes' from the currentUser language
-	cmd = exec.Command("net", "user", currentUser)
-	cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
-	output, err = cmd.Output()
+	output, err = exec.Command("net", "user", currentUser).Output()
 
 	if err != nil {
 		return newCheckErrorf("Guest account", "error executing command net user", err)
@@ -81,9 +74,7 @@ func GuestAccount() Check {
 	yesWord := line[len(line)-1]
 
 	// Get all users using net user command
-	cmd = exec.Command("net", "user", guestUser)
-	cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
-	output, err = cmd.Output()
+	output, err = exec.Command("net", "user", guestUser).Output()
 
 	if err != nil {
 		return newCheckErrorf("Guest account", "error executing command net user", err)

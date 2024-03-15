@@ -9,7 +9,6 @@ import (
 	"fmt"
 	"os/exec"
 	"strings"
-	"syscall"
 )
 
 // SmbCheck checks whether SMB1 (Server Message Block) and SMB2 are enabled
@@ -41,9 +40,7 @@ func smbEnabled(smb string) (string, error) {
 	// Get the status of the specified SMB protocol
 	command := fmt.Sprintf("Get-SmbServerConfiguration | Select-Object Enable%sProtocol", smb)
 
-	cmd := exec.Command("powershell", command)
-	cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
-	output, err := cmd.Output()
+	output, err := exec.Command("powershell", command).Output()
 
 	if err != nil {
 		return "", err
