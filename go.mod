@@ -14,6 +14,7 @@ require (
 require (
 	github.com/akavel/rsrc v0.10.2 // indirect
 	github.com/andrewarchi/browser v0.0.0-20210602185959-ae587407e71c // indirect
+	github.com/blang/semver v3.5.1+incompatible // indirect
 	github.com/davecgh/go-spew v1.1.0 // indirect
 	github.com/dchest/jsmin v0.0.0-20220218165748-59f39799265f // indirect
 	github.com/dustin/go-humanize v1.0.1 // indirect
@@ -35,6 +36,7 @@ require (
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/randall77/makefat v0.0.0-20210315173500-7ddd0e42c844 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
+	github.com/tebeka/selenium v0.9.9 // indirect
 	golang.org/x/image v0.15.0 // indirect
 	golang.org/x/sys v0.16.0 // indirect
 	gopkg.in/ini.v1 v1.62.0 // indirect

@@ -5,7 +5,7 @@ package scan
 
 import (
 	"InfoSec-Agent/checks"
-	"InfoSec-Agent/checks/browsers/chrome"
+	chrome "InfoSec-Agent/checks/browsers/chromium"
 	"InfoSec-Agent/checks/browsers/firefox"
 	"encoding/json"
 	"fmt"
@@ -18,60 +18,64 @@ import (
 // Returns: checks.json file containing the results of all security/privacy checks
 func Scan() {
 	// Run all checks
-	passwordManager := checks.PasswordManager()
-	windowsDefender := checks.WindowsDefender()
-	lastPasswordChange := checks.LastPasswordChange()
-	loginMethod := checks.LoginMethod()
-	location := checks.Permission("location")
-	microphone := checks.Permission("microphone")
-	webcam := checks.Permission("webcam")
-	appointments := checks.Permission("appointments")
-	contacts := checks.Permission("contacts")
-	bluetooth := checks.Bluetooth()
-	ports := checks.OpenPorts()
-	windowsOutdated := checks.WindowsOutdated()
-	secureBoot := checks.SecureBoot()
-	smb := checks.SmbCheck()
-	startup := checks.Startup()
-	guest := checks.GuestAccount()
-	uac := checks.UACCheck()
-	remoteDesktop := checks.RemoteDesktopCheck()
-	devices := checks.ExternalDevices()
-	sharing := checks.NetworkSharing()
+	// passwordManager := checks.PasswordManager()
+	// windowsDefender := checks.WindowsDefender()
+	// lastPasswordChange := checks.LastPasswordChange()
+	// loginMethod := checks.LoginMethod()
+	// location := checks.Permission("location")
+	// microphone := checks.Permission("microphone")
+	// webcam := checks.Permission("webcam")
+	// appointments := checks.Permission("appointments")
+	// contacts := checks.Permission("contacts")
+	// bluetooth := checks.Bluetooth()
+	// ports := checks.OpenPorts()
+	// windowsOutdated := checks.WindowsOutdated()
+	// secureBoot := checks.SecureBoot()
+	// smb := checks.SmbCheck()
+	// startup := checks.Startup()
+	// guest := checks.GuestAccount()
+	// uac := checks.UACCheck()
+	// remoteDesktop := checks.RemoteDesktopCheck()
+	// devices := checks.ExternalDevices()
+	// sharing := checks.NetworkSharing()
 	//cookieFF := firefox.CookieFirefox()
 	extensionFF, adblockFF := firefox.ExtensionFirefox()
 	historyFF := firefox.HistoryFirefox()
-	historyChrome := chrome.HistoryChrome()
-	extensionChrome := chrome.ExtensionsChrome()
+	historyChromium := chrome.HistoryChromium("Chrome")
+	historyEdge := chrome.HistoryChromium("Edge")
+	extensionChrome := chrome.ExtensionsChromium("Chrome")
+	extensionEdge := chrome.ExtensionsChromium("Edge")
 
 	// Combine results
 	checkResults := []checks.Check{
-		passwordManager,
-		windowsDefender,
-		lastPasswordChange,
-		loginMethod,
-		location,
-		microphone,
-		webcam,
-		appointments,
-		contacts,
-		bluetooth,
-		ports,
-		windowsOutdated,
-		secureBoot,
-		smb,
-		startup,
-		guest,
-		uac,
-		remoteDesktop,
-		devices,
-		sharing,
+		// passwordManager,
+		// windowsDefender,
+		// lastPasswordChange,
+		// loginMethod,
+		// location,
+		// microphone,
+		// webcam,
+		// appointments,
+		// contacts,
+		// bluetooth,
+		// ports,
+		// windowsOutdated,
+		// secureBoot,
+		// smb,
+		// startup,
+		// guest,
+		// uac,
+		// remoteDesktop,
+		// devices,
+		// sharing,
 		//cookieFF,
 		extensionFF,
 		adblockFF,
 		historyFF,
 		extensionChrome,
-		historyChrome,
+		extensionEdge,
+		historyChromium,
+		historyEdge,
 	}
 
 	// Serialize check results to JSON
