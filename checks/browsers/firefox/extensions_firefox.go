@@ -27,9 +27,9 @@ func ExtensionFirefox() (checks.Check, checks.Check) {
 	if err != nil {
 		return checks.NewCheckError("ExtensionsFirefox", err), checks.NewCheckError("AdblockerFirefox", err)
 	} // Can add more data to the output for extension data.
-	
+
 	for _, addon := range extensions.Addons { // Name of addon, type of addon, creator, active or not
-		output = append(output, addon.DefaultLocale.Name+addon.Type+addon.DefaultLocale.Creator+fmt.Sprintf("%t", addon.Active))
+		output = append(output, addon.DefaultLocale.Name+","+addon.Type+","+addon.DefaultLocale.Creator+","+fmt.Sprintf("%t", addon.Active))
 		if adblockerFirefox(addon.DefaultLocale.Name) {
 			addBlocker = true
 		}
