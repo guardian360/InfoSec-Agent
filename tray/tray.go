@@ -14,6 +14,7 @@ import (
 
 	"fmt"
 	"os"
+	"os/exec"
 	"os/signal"
 	"strconv"
 	"syscall"
@@ -24,6 +25,8 @@ var scanCounter int
 var scanTicker *time.Ticker
 var language = 1 // Default language is British English
 var menuItems []MenuItem
+var rpPage = false
+var mQuit *systray.MenuItem
 
 type MenuItem struct {
 	MenuTitle   string
@@ -58,7 +61,7 @@ func OnReady() {
 	menuItems = append(menuItems, MenuItem{MenuTitle: "ChangeLanguageTitle", menuTooltip: "ChangeLanguageTooltip", sysMenuItem: mChangeLanguage})
 
 	systray.AddSeparator()
-	mQuit := systray.AddMenuItem(localization.Localize(language, "QuitTitle"), localization.Localize(language, "QuitTooltip"))
+	mQuit = systray.AddMenuItem(localization.Localize(language, "QuitTitle"), localization.Localize(language, "QuitTooltip"))
 	menuItems = append(menuItems, MenuItem{MenuTitle: "QuitTitle", menuTooltip: "QuitTooltip", sysMenuItem: mQuit})
 
 	// Set up a channel to receive OS signals, used for termination
@@ -111,12 +114,68 @@ func OnQuit() {
 //
 // Returns: _
 func openReportingPage() {
-	// Placeholder for future implementation, opens the reporting page by running the Wails executable
+	if rpPage {
+		fmt.Println("Reporting page is already running")
+		return
+	}
 
-	// Build the executable with the following command:
-	// //go build -tags desktop,production -ldflags "-w -s -H windowsgui" -o reporting-page.exe
-	// Run the executable with the following command:
-	//exec.Command("reporting-page.exe").Start()
+	// Get the current working directory
+	//TODO: In a release version, there (should be) no need to build the application, just run it
+	//Consideration: Wails can also send (termination) signals to the back-end, might be worth investigating
+	originalDir, err := os.Getwd()
+	if err != nil {
+		fmt.Println("Error getting current directory:", err)
+		return
+	}
+
+	// Change directory to reporting-page folder
+	err = os.Chdir("reporting-page")
+	if err != nil {
+		fmt.Println("Error changing directory:", err)
+		return
+	}
+
+	// Restore the original working directory
+	defer func() {
+		err := os.Chdir(originalDir)
+		if err != nil {
+			fmt.Println("Error changing directory:", err)
+		}
+		rpPage = false
+	}()
+
+	// Build reporting-page executable
+	buildCmd := exec.Command("wails", "build")
+
+	buildCmd.Stdout = os.Stdout
+	buildCmd.Stderr = os.Stderr
+	if err := buildCmd.Run(); err != nil {
+		fmt.Println("Error building reporting-page:", err)
+		return
+	}
+
+	// Set up the reporting-page executable
+	runCmd := exec.Command("build/bin/reporting-page")
+	runCmd.Stdout = os.Stdout
+	runCmd.Stderr = os.Stderr
+
+	// Set up a listener for the quit function from the system tray
+	go func() {
+		<-mQuit.ClickedCh
+		if err := runCmd.Process.Kill(); err != nil {
+			fmt.Println("Error interrupting reporting-page process:", err)
+		}
+		rpPage = false
+		systray.Quit()
+	}()
+
+	rpPage = true
+	// Run the reporting page executable
+	if err := runCmd.Run(); err != nil {
+		fmt.Println("Error running reporting-page:", err)
+		rpPage = false
+		return
+	}
 }
 
 // ChangeScanInterval provides the user with a dialog window to set the (new) scan interval
