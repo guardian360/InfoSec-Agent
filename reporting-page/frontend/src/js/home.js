@@ -55,7 +55,6 @@ document.getElementById("home-button").addEventListener("click", () => openHomeP
 function scanNow() {
     ScanNow()
     .then((result) => {
-        LogPrint("Scan complete: " + result);
     })
     .catch((err) => {
         console.error(err);
