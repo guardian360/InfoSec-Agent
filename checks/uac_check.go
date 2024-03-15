@@ -19,6 +19,7 @@ func UACCheck() Check {
 	// The UAC level can be retrieved as a property from the ConsentPromptBehaviorAdmin
 	key, err := exec.Command("powershell", "(Get-ItemProperty -Path 'HKLM:\\SOFTWARE\\Microsoft\\Windows"+
 		"\\CurrentVersion\\Policies\\System').ConsentPromptBehaviorAdmin").Output()
+
 	if err != nil {
 		return newCheckErrorf("UAC", "error retrieving UAC", err)
 	}

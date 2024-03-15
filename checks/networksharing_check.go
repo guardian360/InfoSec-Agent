@@ -19,6 +19,7 @@ func NetworkSharing() Check {
 	// Execute a powershell command to get the network adapter binding status
 	output, err := exec.Command("powershell", "Get-NetAdapterBinding | Where-Object "+
 		"{$_.ComponentID -eq 'ms_server'} | Select-Object Enabled").Output()
+
 	if err != nil {
 		return newCheckErrorf("NetworkSharing",
 			"error executing command Get-NetAdapterBinding", err)

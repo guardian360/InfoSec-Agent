@@ -1,4 +1,6 @@
 import * as piechart from "./piechart";
+import {ScanNow} from '../../wailsjs/go/main/Tray';
+import {LogPrint, WindowSetAlwaysOnTop} from '../../wailsjs/runtime/runtime';
 
 function openHomePage() {
     document.getElementById("page-contents").innerHTML = `
@@ -14,6 +16,7 @@ function openHomePage() {
             </H2>
             <a class="issue-button">Suggested Issue</a>
             <a class="issue-button">Quick Fix</a>
+            <a class="issue-button" id="scan-button">Scan Now</a>
         </div>
     </div>
     <h2 id="title-medals">Medals</h2>
@@ -41,10 +44,22 @@ function openHomePage() {
     `;
 
     CreatePieChart();
+
+    document.getElementById("scan-button").addEventListener("click", () => scanNow());
 }
 
 document.getElementById("logo-button").addEventListener("click", () => openHomePage());
 document.getElementById("home-button").addEventListener("click", () => openHomePage());
+
+
+function scanNow() {
+    ScanNow()
+    .then((result) => {
+    })
+    .catch((err) => {
+        console.error(err);
+    });
+}
 
 //#region PieChart
 

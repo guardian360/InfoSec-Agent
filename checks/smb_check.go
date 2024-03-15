@@ -41,6 +41,7 @@ func smbEnabled(smb string) (string, error) {
 	command := fmt.Sprintf("Get-SmbServerConfiguration | Select-Object Enable%sProtocol", smb)
 
 	output, err := exec.Command("powershell", command).Output()
+
 	if err != nil {
 		return "", err
 	}

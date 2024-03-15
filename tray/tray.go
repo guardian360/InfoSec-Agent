@@ -145,7 +145,7 @@ func openReportingPage() {
 	}()
 
 	// Build reporting-page executable
-	buildCmd := exec.Command("wails", "build")
+	buildCmd := exec.Command("wails", "build", "-windowsconsole")
 
 	buildCmd.Stdout = os.Stdout
 	buildCmd.Stderr = os.Stderr

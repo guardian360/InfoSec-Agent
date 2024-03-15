@@ -23,6 +23,7 @@ func OpenPorts() Check {
 
 	// Get process ids (pids) and names of all processes
 	output, err := exec.Command("tasklist").Output()
+
 	if err != nil {
 		return newCheckErrorf("OpenPorts", "error running tasklist", err)
 	}
@@ -40,6 +41,7 @@ func OpenPorts() Check {
 
 	// Get all open ports
 	output, err = exec.Command("netstat", "-ano").Output()
+
 	if err != nil {
 		return newCheckErrorf("OpenPorts", "error running netstat", err)
 	}
