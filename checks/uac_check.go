@@ -8,6 +8,7 @@ package checks
 import (
 	"os/exec"
 	"strings"
+	"syscall"
 )
 
 // UACCheck checks the User Account Control (UAC) level
@@ -17,8 +18,10 @@ import (
 // Returns: The level that the UAC is enabled at
 func UACCheck() Check {
 	// The UAC level can be retrieved as a property from the ConsentPromptBehaviorAdmin
-	key, err := exec.Command("powershell", "(Get-ItemProperty -Path 'HKLM:\\SOFTWARE\\Microsoft\\Windows"+
-		"\\CurrentVersion\\Policies\\System').ConsentPromptBehaviorAdmin").Output()
+	cmd := exec.Command("powershell", "(Get-ItemProperty -Path 'HKLM:\\SOFTWARE\\Microsoft\\Windows"+
+		"\\CurrentVersion\\Policies\\System').ConsentPromptBehaviorAdmin")
+	cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
+	key, err := cmd.Output()
 	if err != nil {
 		return newCheckErrorf("UAC", "error retrieving UAC", err)
 	}
