@@ -1,11 +1,10 @@
-package chrome
+package chromium
 
 import (
-	"InfoSec-Agent/checks"
 	"encoding/json"
 	"errors"
 	"fmt"
-	"io/ioutil"
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"log"
 	"net/http"
 	"os"
@@ -32,12 +31,12 @@ func ExtensionsChromium(browser string) checks.Check {
 	}
 
 	extensionsDir := filepath.Join(user, "AppData", "Local", browserPath, "User Data", "Default", "Extensions")
-	files, err := ioutil.ReadDir(extensionsDir)
+	files, err := os.ReadDir(extensionsDir)
 	if err != nil {
 		checks.NewCheckErrorf(returnBrowserName, "Error: ", err)
 	}
 
-	//Adds the extnesion ID to the extensionIds array
+	//Adds the extension ID to the extensionIds array
 	fmt.Println("Installed", browser, "extensions:")
 	for _, f := range files {
 		if f.IsDir() {

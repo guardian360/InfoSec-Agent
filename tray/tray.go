@@ -5,24 +5,28 @@
 package tray
 
 import (
-	"InfoSec-Agent/localization"
+	"github.com/InfoSec-Agent/InfoSec-Agent/icon"
+	"github.com/InfoSec-Agent/InfoSec-Agent/localization"
+	"github.com/InfoSec-Agent/InfoSec-Agent/scan"
+
+	"github.com/getlantern/systray"
+	"github.com/ncruces/zenity"
+
 	"fmt"
 	"os"
+	"os/exec"
 	"os/signal"
 	"strconv"
 	"syscall"
 	"time"
-
-	"InfoSec-Agent/icon"
-
-	"github.com/getlantern/systray"
-	"github.com/ncruces/zenity"
 )
 
 var scanCounter int
 var scanTicker *time.Ticker
 var language = 1 // Default language is British English
 var menuItems []MenuItem
+var rpPage = false
+var mQuit *systray.MenuItem
 
 type MenuItem struct {
 	MenuTitle   string
@@ -57,7 +61,7 @@ func OnReady() {
 	menuItems = append(menuItems, MenuItem{MenuTitle: "ChangeLanguageTitle", menuTooltip: "ChangeLanguageTooltip", sysMenuItem: mChangeLanguage})
 
 	systray.AddSeparator()
-	mQuit := systray.AddMenuItem(localization.Localize(language, "QuitTitle"), localization.Localize(language, "QuitTooltip"))
+	mQuit = systray.AddMenuItem(localization.Localize(language, "QuitTitle"), localization.Localize(language, "QuitTooltip"))
 	menuItems = append(menuItems, MenuItem{MenuTitle: "QuitTitle", menuTooltip: "QuitTooltip", sysMenuItem: mQuit})
 
 	// Set up a channel to receive OS signals, used for termination
@@ -90,6 +94,7 @@ func OnReady() {
 		case <-scanTicker.C:
 			scanCounter++
 			fmt.Println("Scan:", scanCounter)
+			ScanNow()
 		}
 
 	}
@@ -109,12 +114,68 @@ func OnQuit() {
 //
 // Returns: _
 func openReportingPage() {
-	// Placeholder for future implementation, opens the reporting page by running the Wails executable
+	if rpPage {
+		fmt.Println("Reporting page is already running")
+		return
+	}
 
-	// Build the executable with the following command:
-	// //go build -tags desktop,production -ldflags "-w -s -H windowsgui" -o reporting-page.exe
-	// Run the executable with the following command:
-	//exec.Command("reporting-page.exe").Start()
+	// Get the current working directory
+	//TODO: In a release version, there (should be) no need to build the application, just run it
+	//Consideration: Wails can also send (termination) signals to the back-end, might be worth investigating
+	originalDir, err := os.Getwd()
+	if err != nil {
+		fmt.Println("Error getting current directory:", err)
+		return
+	}
+
+	// Change directory to reporting-page folder
+	err = os.Chdir("reporting-page")
+	if err != nil {
+		fmt.Println("Error changing directory:", err)
+		return
+	}
+
+	// Restore the original working directory
+	defer func() {
+		err := os.Chdir(originalDir)
+		if err != nil {
+			fmt.Println("Error changing directory:", err)
+		}
+		rpPage = false
+	}()
+
+	// Build reporting-page executable
+	buildCmd := exec.Command("wails", "build", "-windowsconsole")
+
+	buildCmd.Stdout = os.Stdout
+	buildCmd.Stderr = os.Stderr
+	if err := buildCmd.Run(); err != nil {
+		fmt.Println("Error building reporting-page:", err)
+		return
+	}
+
+	// Set up the reporting-page executable
+	runCmd := exec.Command("build/bin/reporting-page")
+	runCmd.Stdout = os.Stdout
+	runCmd.Stderr = os.Stderr
+
+	// Set up a listener for the quit function from the system tray
+	go func() {
+		<-mQuit.ClickedCh
+		if err := runCmd.Process.Kill(); err != nil {
+			fmt.Println("Error interrupting reporting-page process:", err)
+		}
+		rpPage = false
+		systray.Quit()
+	}()
+
+	rpPage = true
+	// Run the reporting page executable
+	if err := runCmd.Run(); err != nil {
+		fmt.Println("Error running reporting-page:", err)
+		rpPage = false
+		return
+	}
 }
 
 // ChangeScanInterval provides the user with a dialog window to set the (new) scan interval
@@ -156,12 +217,32 @@ func ChangeScanInterval(testInput ...string) {
 //
 // Returns: _
 func ScanNow() {
+	// scanCounter is not concretely used at the moment
+	// might be useful in the future
 	scanCounter++
 	fmt.Println("Scanning now. Scan:", scanCounter)
-	// Manually advance the ticker by sending a signal to its channel
-	select {
-	case <-scanTicker.C:
-	default:
+
+	// Display a progress dialog while the scan is running
+	dialog, err := zenity.Progress(
+		zenity.Title("Security/Privacy Scan"))
+	if err != nil {
+		fmt.Println("Error creating dialog:", err)
+		return
+	}
+	// Defer closing the dialog until the scan completes
+	defer func(dialog zenity.ProgressDialog) {
+		err := dialog.Close()
+		if err != nil {
+			fmt.Println("Error closing dialog:", err)
+		}
+	}(dialog)
+
+	scan.Scan(dialog)
+
+	err = dialog.Complete()
+	if err != nil {
+		fmt.Println("Error completing dialog:", err)
+		return
 	}
 }
 

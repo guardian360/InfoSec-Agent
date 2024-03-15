@@ -1,9 +1,9 @@
 package firefox
 
 import (
-	"InfoSec-Agent/checks"
-	"InfoSec-Agent/utils"
 	"database/sql"
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
+	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"os"
 	"path/filepath"
 	"time"
@@ -13,7 +13,10 @@ import (
 
 func CookieFirefox() checks.Check {
 	var output []string
-	ffdirectory, _ := utils.FirefoxFolder()
+	ffdirectory, err := utils.FirefoxFolder()
+	if err != nil {
+		return checks.NewCheckErrorf("CookieFirefox", "No firefox directory found", err)
+	}
 
 	//Copy the database so we don't have problems with locked files
 	tempCookieDbff := filepath.Join(os.TempDir(), "tempCookieDbff.sqlite")

@@ -1,13 +1,12 @@
 package firefox
 
 import (
-	"InfoSec-Agent/checks"
-	utils "InfoSec-Agent/utils"
 	"encoding/json"
 	"fmt"
-	"os"
-
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
+	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"github.com/andrewarchi/browser/firefox"
+	"os"
 )
 
 func PasswordFirefox() checks.Check {

@@ -1,9 +1,9 @@
 package firefox
 
 import (
-	"InfoSec-Agent/checks"
-	utils "InfoSec-Agent/utils"
 	"database/sql"
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
+	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -14,7 +14,10 @@ import (
 
 func HistoryFirefox() checks.Check {
 	var output []string
-	ffdirectory, _ := utils.FirefoxFolder()
+	ffdirectory, err := utils.FirefoxFolder()
+	if err != nil {
+		return checks.NewCheckErrorf("HistoryFirefox", "No firefox directory found", err)
+	}
 
 	//Copy the database so we don't have problems with locked files
 	tempHistoryDbff := filepath.Join(os.TempDir(), "tempHistoryDb.sqlite")
@@ -33,7 +36,7 @@ func HistoryFirefox() checks.Check {
 	last30Days := time.Now().AddDate(0, 0, -30).UnixMicro()
 
 	// Get the phishing domains from up-to-date github list
-	phishingDomainList := utils.GetPhisingDomains()	
+	phishingDomainList := utils.GetPhisingDomains()
 
 	// Execute a query
 	rows, err := db.Query("SELECT url, last_visit_date FROM moz_places WHERE last_visit_date >= ? ORDER BY last_visit_date DESC", last30Days)

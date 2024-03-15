@@ -3,18 +3,20 @@ package firefox
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
+	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"os"
 	"strings"
-
-	"InfoSec-Agent/checks"
-	utils "InfoSec-Agent/utils"
 
 	"github.com/andrewarchi/browser/firefox"
 )
 
 func ExtensionFirefox() (checks.Check, checks.Check) {
-	ffdirectory, _ := utils.FirefoxFolder() //returns the path to the firefox profile directory
-	addBlocker := false                     //Variable used for checking if addblocker is used
+	ffdirectory, err := utils.FirefoxFolder() //returns the path to the firefox profile directory
+	if err != nil {
+		return checks.NewCheckErrorf("ExtensionsFirefox", "No firefox directory found", err), checks.NewCheckErrorf("AdblockerFirefox", "No firefox directory found", err)
+	}
+	addBlocker := false //Variable used for checking if addblocker is used
 	var output []string
 	content, err := os.Open(ffdirectory[0] + "\\extensions.json") //reads the extensions.json file or returns an error
 	if err != nil {

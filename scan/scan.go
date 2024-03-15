@@ -4,78 +4,72 @@
 package scan
 
 import (
-	"InfoSec-Agent/checks"
-	chrome "InfoSec-Agent/checks/browsers/chromium"
-	"InfoSec-Agent/checks/browsers/firefox"
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/chromium"
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/firefox"
+
 	"encoding/json"
 	"fmt"
+	"github.com/ncruces/zenity"
 )
 
 // Scan runs all security/privacy checks and serializes the results to JSON.
 //
-// Parameters: _
+// Parameters: dialog (zenity.ProgressDialog)
+// represents the progress dialog window which is displayed while the scan is running
 //
 // Returns: checks.json file containing the results of all security/privacy checks
-func Scan() {
-	// Run all checks
-	// passwordManager := checks.PasswordManager()
-	// windowsDefender := checks.WindowsDefender()
-	// lastPasswordChange := checks.LastPasswordChange()
-	// loginMethod := checks.LoginMethod()
-	// location := checks.Permission("location")
-	// microphone := checks.Permission("microphone")
-	// webcam := checks.Permission("webcam")
-	// appointments := checks.Permission("appointments")
-	// contacts := checks.Permission("contacts")
-	// bluetooth := checks.Bluetooth()
-	// ports := checks.OpenPorts()
-	// windowsOutdated := checks.WindowsOutdated()
-	// secureBoot := checks.SecureBoot()
-	// smb := checks.SmbCheck()
-	// startup := checks.Startup()
-	// guest := checks.GuestAccount()
-	// uac := checks.UACCheck()
-	// remoteDesktop := checks.RemoteDesktopCheck()
-	// devices := checks.ExternalDevices()
-	// sharing := checks.NetworkSharing()
-	//cookieFF := firefox.CookieFirefox()
-	extensionFF, adblockFF := firefox.ExtensionFirefox()
-	historyFF := firefox.HistoryFirefox()
-	historyChromium := chrome.HistoryChromium("Chrome")
-	historyEdge := chrome.HistoryChromium("Edge")
-	extensionChrome := chrome.ExtensionsChromium("Chrome")
-	extensionEdge := chrome.ExtensionsChromium("Edge")
+func Scan(dialog zenity.ProgressDialog) {
 
-	// Combine results
-	checkResults := []checks.Check{
-		// passwordManager,
-		// windowsDefender,
-		// lastPasswordChange,
-		// loginMethod,
-		// location,
-		// microphone,
-		// webcam,
-		// appointments,
-		// contacts,
-		// bluetooth,
-		// ports,
-		// windowsOutdated,
-		// secureBoot,
-		// smb,
-		// startup,
-		// guest,
-		// uac,
-		// remoteDesktop,
-		// devices,
-		// sharing,
-		//cookieFF,
-		extensionFF,
-		adblockFF,
-		historyFF,
-		extensionChrome,
-		extensionEdge,
-		historyChromium,
-		historyEdge,
+	// Define all security/privacy checks that Scan() should execute
+	securityChecks := []func() checks.Check{
+		checks.PasswordManager,
+		checks.WindowsDefender,
+		checks.LastPasswordChange,
+		checks.LoginMethod,
+		func() checks.Check { return checks.Permission("location") },
+		func() checks.Check { return checks.Permission("microphone") },
+		func() checks.Check { return checks.Permission("webcam") },
+		func() checks.Check { return checks.Permission("appointments") },
+		func() checks.Check { return checks.Permission("contacts") },
+		checks.Bluetooth,
+		checks.OpenPorts,
+		checks.WindowsOutdated,
+		checks.SecureBoot,
+		checks.SmbCheck,
+		checks.Startup,
+		checks.GuestAccount,
+		checks.UACCheck,
+		checks.RemoteDesktopCheck,
+		checks.ExternalDevices,
+		checks.NetworkSharing,
+		func() checks.Check { return chromium.HistoryChromium("Chrome") },
+		func() checks.Check { return chromium.ExtensionsChromium("Chrome") },
+		func() checks.Check { c, _ := firefox.ExtensionFirefox(); return c },
+		func() checks.Check { _, c := firefox.ExtensionFirefox(); return c },
+	}
+	totalChecks := len(securityChecks)
+
+	var checkResults []checks.Check
+	// Run all security/privacy checks
+	for i, check := range securityChecks {
+		// Display the currently running check in the progress dialog
+		err := dialog.Text(fmt.Sprintf("Running check %d of %d", i+1, totalChecks))
+		if err != nil {
+			fmt.Println("Error setting progress text:", err)
+			return
+		}
+
+		result := check()
+		checkResults = append(checkResults, result)
+
+		// Update the progress bar within the progress dialog
+		progress := float64(i+1) / float64(totalChecks) * 100
+		err = dialog.Value(int(progress))
+		if err != nil {
+			fmt.Println("Error setting progress value:", err)
+			return
+		}
 	}
 
 	// Serialize check results to JSON

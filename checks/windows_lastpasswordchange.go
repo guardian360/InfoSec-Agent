@@ -26,8 +26,7 @@ func LastPasswordChange() Check {
 		return NewCheckErrorf("LastPasswordChange", "error retrieving username", err)
 	}
 
-	cmd := exec.Command("net", "user", username)
-	output, _ := cmd.CombinedOutput()
+	output, _ := exec.Command("net", "user", username).Output()
 	lines := strings.Split(string(output), "\n")
 	// Define the regex pattern for the date
 	datePattern := `\b(\d{1,2}(-|/)\d{1,2}(-|/)\d{4})\b`

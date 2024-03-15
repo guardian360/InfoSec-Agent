@@ -1,9 +1,9 @@
-package chrome
+package chromium
 
 import (
-	"InfoSec-Agent/checks"
-	utils "InfoSec-Agent/utils"
 	"database/sql"
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
+	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"os"
 	"path/filepath"
 	"regexp"
