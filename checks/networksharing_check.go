@@ -8,7 +8,6 @@ package checks
 import (
 	"os/exec"
 	"strings"
-	"syscall"
 )
 
 // NetworkSharing checks if network sharing is enabled or disabled
@@ -18,10 +17,8 @@ import (
 // Returns: If network sharing is enabled or not
 func NetworkSharing() Check {
 	// Execute a powershell command to get the network adapter binding status
-	cmd := exec.Command("powershell", "Get-NetAdapterBinding | Where-Object "+
-		"{$_.ComponentID -eq 'ms_server'} | Select-Object Enabled")
-	cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
-	output, err := cmd.Output()
+	output, err := exec.Command("powershell", "Get-NetAdapterBinding | Where-Object "+
+		"{$_.ComponentID -eq 'ms_server'} | Select-Object Enabled").Output()
 
 	if err != nil {
 		return newCheckErrorf("NetworkSharing",
