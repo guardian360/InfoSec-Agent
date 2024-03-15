@@ -1,0 +1,123 @@
+@import url(color-palette.css);
+
+/* Issue table */
+#issues-table {
+    float: left;
+    margin-top: 80px;
+    width: 70%;
+    margin-left: 260px;
+}
+
+#issues-table td, #issues-table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#issues-table tr:nth-child(even){background-color: var(--light-blue);}
+
+#issues-table th {
+    text-align: left;
+    background-color: white;
+    color: var(--dark-text);
+}
+
+.issue-column span {
+    float: left;
+}
+.table-header {
+    margin-top: 2px;
+}
+#issues-table .material-symbols-outlined {
+    float: right;
+}
+#issues-table .material-symbols-outlined:hover {
+    cursor: pointer;
+}
+.issue-link {
+    text-decoration: none;
+    color: var(--dark-text);
+}
+.issue-link:hover {
+    color: var(--dark-text-hover);
+    cursor: pointer;
+}
+
+/* Issue pages */
+h1 {
+    float: left;
+    margin-top: 80px;
+    margin-left: 260px;
+    margin-right: 20px;
+}
+
+#issue-information {
+    float: left;
+    margin-left: 260px;
+    margin-right: 20px;
+}
+
+#back-button {
+    float: left;
+    margin-left: 260px;
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+#back-button:hover {
+    color: var(--dark-text-hover);
+    cursor:pointer;
+}
+
+#issue-solution {
+    background-color: var(--light-blue);
+    float: left;
+    width: 100%;
+    border-radius: 10px;
+}
+#solution-text {
+    margin: 20px;
+}
+#step-screenshot {
+    /* display: block; */
+    margin-left: auto;
+    margin-right: auto;
+}
+#solution-buttons {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    width:100%;
+    margin: 10px;
+}
+#button-box {
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 320px;
+}
+.step-button {
+    color: var(--dark-text);
+}
+.step-button:hover {
+    color: var(--dark-text-hover);
+    cursor:pointer;
+}
+#next-button {
+    float: right;
+    width: 130px;
+    background-color: var(--blue);
+    color: #fff;
+    margin-left: auto; 
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+}
+#previous-button {
+    float: left;
+    width: 130px;
+    background-color: var(--blue);
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+}
