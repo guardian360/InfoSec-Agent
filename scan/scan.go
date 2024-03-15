@@ -4,7 +4,8 @@
 package scan
 
 import (
-	"InfoSec-Agent/checks"
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
+
 	"encoding/json"
 	"fmt"
 	"github.com/ncruces/zenity"
