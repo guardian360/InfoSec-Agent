@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"os/exec"
 	"strings"
+	"syscall"
 
 	"golang.org/x/sys/windows/registry"
 )
@@ -60,7 +61,11 @@ func Bluetooth() Check {
 
 	// Check for currently connected bluetooth devices
 	bt := "null"
-	output, _ := exec.Command("ipconfig").Output()
+
+	cmd := exec.Command("ipconfig")
+	cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
+	output, _ := cmd.Output()
+
 	//re := regexp.MustCompile(":")
 	lines := strings.Split(string(output), "\r\n")
 	for _, i := range lines[len(lines)-3:] {
