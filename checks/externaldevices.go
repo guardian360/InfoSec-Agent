@@ -8,6 +8,7 @@ package checks
 import (
 	"os/exec"
 	"strings"
+	"syscall"
 )
 
 // TODO: Improve formatting of output, check more classes
@@ -41,8 +42,10 @@ func ExternalDevices() Check {
 // Returns: list of devices of the given class
 func checkDeviceClass(deviceClass string) ([]string, error) {
 	// Run the Get-PnpDevice command with the given class
-	output, err := exec.Command("powershell", "-Command", "Get-PnpDevice -Class", deviceClass, " "+
-		"| Where-Object -Property Status -eq 'OK' | Select-Object FriendlyName").Output()
+	cmd := exec.Command("powershell", "-Command", "Get-PnpDevice -Class", deviceClass, " "+
+		"| Where-Object -Property Status -eq 'OK' | Select-Object FriendlyName")
+	cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
+	output, err := cmd.Output()
 
 	if err != nil {
 		return nil, err

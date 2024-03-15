@@ -10,6 +10,7 @@ import (
 	"os/exec"
 	"regexp"
 	"strings"
+	"syscall"
 )
 
 // OpenPorts checks for open ports and the processes that are using them
@@ -22,7 +23,10 @@ func OpenPorts() Check {
 	re := regexp.MustCompile("  +")
 
 	// Get process ids (pids) and names of all processes
-	output, err := exec.Command("tasklist").Output()
+	cmd := exec.Command("tasklist")
+	cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
+	output, err := cmd.Output()
+
 	if err != nil {
 		return newCheckErrorf("OpenPorts", "error running tasklist", err)
 	}
@@ -39,7 +43,10 @@ func OpenPorts() Check {
 	}
 
 	// Get all open ports
-	output, err = exec.Command("netstat", "-ano").Output()
+	cmd = exec.Command("netstat", "-ano")
+	cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
+	output, err = cmd.Output()
+
 	if err != nil {
 		return newCheckErrorf("OpenPorts", "error running netstat", err)
 	}

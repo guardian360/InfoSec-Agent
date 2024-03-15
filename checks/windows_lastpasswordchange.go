@@ -11,6 +11,7 @@ import (
 	"os/user"
 	"regexp"
 	"strings"
+	"syscall"
 	"time"
 )
 
@@ -27,6 +28,7 @@ func LastPasswordChange() Check {
 	}
 
 	cmd := exec.Command("net", "user", username)
+	cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
 	output, _ := cmd.CombinedOutput()
 	lines := strings.Split(string(output), "\n")
 	// Define the regex pattern for the date
