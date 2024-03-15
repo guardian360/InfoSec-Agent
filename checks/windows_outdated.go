@@ -26,7 +26,7 @@ func WindowsOutdated() Check {
 	versionData := windows.RtlGetVersion()
 
 	// Prepare the result
-	result := newCheckResult("Windows Version", fmt.Sprintf("%d.%d.%d",
+	result := NewCheckResult("Windows Version", fmt.Sprintf("%d.%d.%d",
 		versionData.MajorVersion, versionData.MinorVersion, versionData.BuildNumber))
 
 	// Depending on the major Windows version (10 or 11), act accordingly

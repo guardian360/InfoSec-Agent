@@ -21,7 +21,7 @@ func NetworkSharing() Check {
 		"{$_.ComponentID -eq 'ms_server'} | Select-Object Enabled").Output()
 
 	if err != nil {
-		return newCheckErrorf("NetworkSharing",
+		return NewCheckErrorf("NetworkSharing",
 			"error executing command Get-NetAdapterBinding", err)
 	}
 
@@ -38,10 +38,10 @@ func NetworkSharing() Check {
 
 	// Check the status of network sharing based on the number of enabled network adapters
 	if counter == total {
-		return newCheckResult("NetworkSharing", "Network sharing is enabled")
+		return NewCheckResult("NetworkSharing", "Network sharing is enabled")
 	}
 	if counter > 0 && counter < total {
-		return newCheckResult("NetworkSharing", "Network sharing is partially enabled")
+		return NewCheckResult("NetworkSharing", "Network sharing is partially enabled")
 	}
-	return newCheckResult("NetworkSharing", "Network sharing is disabled")
+	return NewCheckResult("NetworkSharing", "Network sharing is disabled")
 }

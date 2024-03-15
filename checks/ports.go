@@ -25,7 +25,7 @@ func OpenPorts() Check {
 	output, err := exec.Command("tasklist").Output()
 
 	if err != nil {
-		return newCheckErrorf("OpenPorts", "error running tasklist", err)
+		return NewCheckErrorf("OpenPorts", "error running tasklist", err)
 	}
 	tasklist := strings.Split(string(output), "\r\n")
 
@@ -43,11 +43,11 @@ func OpenPorts() Check {
 	output, err = exec.Command("netstat", "-ano").Output()
 
 	if err != nil {
-		return newCheckErrorf("OpenPorts", "error running netstat", err)
+		return NewCheckErrorf("OpenPorts", "error running netstat", err)
 	}
 	netstat := strings.Split(string(output), "\n")
 
-	result := newCheckResult("OpenPorts")
+	result := NewCheckResult("OpenPorts")
 	for _, line := range netstat[4 : len(netstat)-1] {
 		words := strings.Fields(line)
 

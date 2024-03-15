@@ -20,15 +20,15 @@ func SmbCheck() Check {
 	smb1, err := smbEnabled("SMB1")
 
 	if err != nil {
-		return newCheckError("smb", err)
+		return NewCheckError("smb", err)
 	}
 	smb2, err := smbEnabled("SMB2")
 
 	if err != nil {
-		return newCheckError("smb", err)
+		return NewCheckError("smb", err)
 	}
 
-	return newCheckResult("smb", smb1, smb2)
+	return NewCheckResult("smb", smb1, smb2)
 }
 
 // smbEnabled checks whether the specified SMB protocol is enabled

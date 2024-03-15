@@ -26,7 +26,7 @@ func Startup() Check {
 		`SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run32`)
 
 	if err1 != nil || err2 != nil || err3 != nil {
-		return newCheckError("Startup", fmt.Errorf("error opening registry keys"))
+		return NewCheckError("Startup", fmt.Errorf("error opening registry keys"))
 	}
 
 	// Close the keys after we have received all relevant information
@@ -40,7 +40,7 @@ func Startup() Check {
 	lm2ValueNames, err3 := lmKey2.ReadValueNames(0)
 
 	if err1 != nil || err2 != nil || err3 != nil {
-		return newCheckError("Startup", fmt.Errorf("error reading value names"))
+		return NewCheckError("Startup", fmt.Errorf("error reading value names"))
 	}
 
 	output := make([]string, 0)
@@ -48,7 +48,7 @@ func Startup() Check {
 	output = append(output, findEntries(lmValueNames, lmKey)...)
 	output = append(output, findEntries(lm2ValueNames, lmKey2)...)
 
-	return newCheckResult("Startup", output...)
+	return NewCheckResult("Startup", output...)
 }
 
 // openRegistryKey opens registry keys and handles associated errors
