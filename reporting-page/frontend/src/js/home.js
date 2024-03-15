@@ -1,4 +1,5 @@
 import * as piechart from "./piechart";
+import {ScanNow} from '../../wailsjs/go/main/Tray';
 
 function openHomePage() {
     document.getElementById("page-contents").innerHTML = `
@@ -41,6 +42,14 @@ function openHomePage() {
     `;
 
     CreatePieChart();
+
+    ScanNow()
+    .then((result) => {
+        document.getElementById("page-contents").innerHTML = result;
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 }
 
 document.getElementById("logo-button").addEventListener("click", () => openHomePage());
