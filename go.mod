@@ -1,4 +1,4 @@
-module InfoSec-Agent
+module github.com/InfoSec-Agent/InfoSec-Agent
 
 go 1.22.0
 
@@ -6,7 +6,6 @@ require (
 	github.com/getlantern/systray v1.2.2
 	github.com/ncruces/zenity v0.10.11
 	github.com/nicksnyder/go-i18n/v2 v2.4.0
-	github.com/skratchdot/open-golang v0.0.0-20200116055534-eef842397966
 	github.com/stretchr/testify v1.6.1
 	golang.org/x/text v0.14.0
 )
@@ -27,6 +26,6 @@ require (
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/randall77/makefat v0.0.0-20210315173500-7ddd0e42c844 // indirect
 	golang.org/x/image v0.15.0 // indirect
-	golang.org/x/sys v0.16.0 // indirect
+	golang.org/x/sys v0.18.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )

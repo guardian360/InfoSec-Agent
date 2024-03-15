@@ -5,8 +5,13 @@
 package tray
 
 import (
-	"InfoSec-Agent/localization"
-	"InfoSec-Agent/scan"
+	"github.com/InfoSec-Agent/InfoSec-Agent/icon"
+	"github.com/InfoSec-Agent/InfoSec-Agent/localization"
+	"github.com/InfoSec-Agent/InfoSec-Agent/scan"
+
+	"github.com/getlantern/systray"
+	"github.com/ncruces/zenity"
+
 	"fmt"
 	"os"
 	"os/exec"
@@ -14,11 +19,6 @@ import (
 	"strconv"
 	"syscall"
 	"time"
-
-	"InfoSec-Agent/icon"
-
-	"github.com/getlantern/systray"
-	"github.com/ncruces/zenity"
 )
 
 var scanCounter int

@@ -4,8 +4,8 @@
 package main
 
 import (
-	"InfoSec-Agent/localization"
-	"InfoSec-Agent/tray"
+	"github.com/InfoSec-Agent/InfoSec-Agent/localization"
+	"github.com/InfoSec-Agent/InfoSec-Agent/tray"
 	"github.com/getlantern/systray"
 )
 
