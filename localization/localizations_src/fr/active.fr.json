@@ -1,19 +1,31 @@
 {
-  "ReportingPageTitle": "Page de rapport",
-  "ReportingPageTooltip": "Ouvrir la page de rapport",
-  "ScanIntervalTitle": "Modifier l'intervalle d'analyse",
-  "ScanIntervalTooltip": "Modifier l'intervalle d'analyse de l'application",
-  "ScanNowTitle": "Analyser maintenant",
-  "ScanNowTooltip": "Lancer une analyse immédiate de l'application",
-  "ChangeLanguageTitle": "Changer la langue",
-  "ChangeLanguageTooltip": "Changer la langue de l'application",
-  "QuitTitle": "Quitter l'application",
-  "QuitTooltip": "Quitter l'application",
-  "NavigationSettings": "Paramètres",
-  "NavigationHome": "Accueil",
-  "NavigationSecurityDashboard": "Tableau de bord de sécurité",
-  "NavigationPrivacyDashboard": "Tableau de bord de confidentialité",
-  "NavigationIssues": "Problèmes",
-  "NavigationIntegration": "Intégration",
-  "NavigationAbout": "À propos"
+  "Tray": 
+  {
+    "ReportingPageTitle": "Page de rapport",
+    "ReportingPageTooltip": "Ouvrir la page de rapport",
+    "ScanIntervalTitle": "Modifier l'intervalle de balayage",
+    "ScanIntervalTooltip": "Modifier l'intervalle de balayage",
+    "ScanNowTitle": "Balayer maintenant",
+    "ScanNowTooltip": "Balayer votre appareil maintenant",
+    "ChangeLanguageTitle": "Changer la langue",
+    "ChangeLanguageTooltip": "Changer la langue de l'application",
+    "QuitTitle": "Quitter",
+    "QuitTooltip": "Quitter l'application de la barre d'état exemple"
+  },
+  "Navigation": 
+  {
+    "Settings": "Paramètres",
+    "Home": "Accueil",
+    "SecurityDashboard": "Tableau de bord de sécurité",
+    "PrivacyDashboard": "Tableau de bord de confidentialité",
+    "Issues": "Problèmes",
+    "Integration": "Intégration",
+    "About": "À propos"
+  },
+  "Issues":
+  {
+    "Name": "Nom",
+    "Type": "Type",
+    "Risk": "Niveau de risque"
+  }
 }

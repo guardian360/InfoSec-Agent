@@ -1,19 +1,31 @@
 {
-  "ReportingPageTitle": "Página de relatórios",
-  "ReportingPageTooltip": "Abra a página de relatórios",
-  "ScanIntervalTitle": "Intervalo de varredura",
-  "ScanIntervalTooltip": "Defina o intervalo de varredura",
-  "ScanNowTitle": "Varredura agora",
-  "ScanNowTooltip": "Varre agora",
-  "ChangeLanguageTitle": "Mudar idioma",
-  "ChangeLanguageTooltip": "Muda o idioma do aplicativo",
-  "QuitTitle": "Sair",
-  "QuitTooltip": "Fecha o aplicativo",
-  "NavigationSettings": "Configurações",
-  "NavigationHome": "Início",
-  "NavigationSecurityDashboard": "Painel de Segurança",
-  "NavigationPrivacyDashboard": "Painel de Privacidade",
-  "NavigationIssues": "Questões",
-  "NavigationIntegration": "Integração",
-  "NavigationAbout": "Sobre"
+  "Tray": 
+  {
+    "ReportingPageTitle": "Página de relatório",
+    "ReportingPageTooltip": "Abrir a página de relatório",
+    "ScanIntervalTitle": "Alterar intervalo de varredura",
+    "ScanIntervalTooltip": "Alterar o intervalo de varredura",
+    "ScanNowTitle": "Varredura agora",
+    "ScanNowTooltip": "Varredura do seu dispositivo agora",
+    "ChangeLanguageTitle": "Alterar idioma",
+    "ChangeLanguageTooltip": "Alterar o idioma do aplicativo",
+    "QuitTitle": "Sair",
+    "QuitTooltip": "Sair do aplicativo de exemplo da bandeja"
+  },
+  "Navigation": 
+  {
+    "Settings": "Configurações",
+    "Home": "Página inicial",
+    "SecurityDashboard": "Painel de segurança",
+    "PrivacyDashboard": "Painel de privacidade",
+    "Issues": "Problemas",
+    "Integration": "Integração",
+    "About": "Sobre"
+  },
+  "Issues":
+  {
+    "Name": "Nome",
+    "Type": "Tipo",
+    "Risk": "Nível de risco"
+  }
 }

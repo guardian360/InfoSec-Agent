@@ -1,19 +1,31 @@
 {
-  "ReportingPageTitle": "Berichtsseite",
-  "ReportingPageTooltip": "Öffnen Sie die Berichtsseite",
-  "ScanIntervalTitle": "Scanintervall ändern",
-  "ScanIntervalTooltip": "Ändern Sie das Scanintervall",
-  "ScanNowTitle": "Scanne jetzt",
-  "ScanNowTooltip": "Scannen Sie jetzt Ihr Gerät",
-  "ChangeLanguageTitle": "Sprache ändern",
-  "ChangeLanguageTooltip": "Ändern Sie die Sprache der Anwendung",
-  "QuitTitle": "Beenden",
-  "QuitTooltip": "Beenden Sie die Anwendung",
-  "NavigationSettings": "Einstellungen",
-  "NavigationHome": "Startseite",
-  "NavigationSecurityDashboard": "Sicherheits-Dashboard",
-  "NavigationPrivacyDashboard": "Datenschutz-Dashboard",
-  "NavigationIssues": "Probleme",
-  "NavigationIntegration": "Integration",
-  "NavigationAbout": "Über"
+  "Tray": 
+  {
+    "ReportingPageTitle": "Berichtsseite",
+    "ReportingPageTooltip": "Öffnen Sie die Berichtsseite",
+    "ScanIntervalTitle": "Scan-Intervall ändern",
+    "ScanIntervalTooltip": "Ändern Sie das Intervall für das Scannen",
+    "ScanNowTitle": "Jetzt scannen",
+    "ScanNowTooltip": "Scannen Sie Ihr Gerät jetzt",
+    "ChangeLanguageTitle": "Sprache ändern",
+    "ChangeLanguageTooltip": "Ändern Sie die Sprache der Anwendung",
+    "QuitTitle": "Beenden",
+    "QuitTooltip": "Beenden Sie die Beispiel-Tray-Anwendung"
+  },
+  "Navigation": 
+  {
+    "Settings": "Einstellungen",
+    "Home": "Startseite",
+    "SecurityDashboard": "Sicherheits-Dashboard",
+    "PrivacyDashboard": "Datenschutz-Dashboard",
+    "Issues": "Probleme",
+    "Integration": "Integration",
+    "About": "Über"
+  },
+  "Issues":
+  {
+    "Name": "Name",
+    "Type": "Typ",
+    "Risk": "Risikolevel"
+  }
 }

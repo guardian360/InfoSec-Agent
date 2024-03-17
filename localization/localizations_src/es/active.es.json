@@ -1,19 +1,31 @@
 {
-  "ReportingPageTitle": "Página de informes",
-  "ReportingPageTooltip": "Abrir la página de informes",
-  "ScanIntervalTitle": "Cambiar intervalo de escaneo",
-  "ScanIntervalTooltip": "Cambiar intervalo de escaneo",
-  "ScanNowTitle": "Escanear ahora",
-  "ScanNowTooltip": "Escanea tu dispositivo ahora",
-  "ChangeLanguageTitle": "Cambiar idioma",
-  "ChangeLanguageTooltip": "Cambiar idioma de la aplicación",
-  "QuitTitle": "Terminar aplicación",
-  "QuitTooltip": "Terminar aplicación",
-  "NavigationSettings": "Configuración",
-  "NavigationHome": "Inicio",
-  "NavigationSecurityDashboard": "Panel de seguridad",
-  "NavigationPrivacyDashboard": "Panel de privacidad",
-  "NavigationIssues": "Problemas",
-  "NavigationIntegration": "Integración",
-  "NavigationAbout": "Acerca de"
+  "Tray": 
+  {
+    "ReportingPageTitle": "Página de informes",
+    "ReportingPageTooltip": "Abrir la página de informes",
+    "ScanIntervalTitle": "Cambiar intervalo de escaneo",
+    "ScanIntervalTooltip": "Cambiar el intervalo de escaneo",
+    "ScanNowTitle": "Escanear ahora",
+    "ScanNowTooltip": "Escanear su dispositivo ahora",
+    "ChangeLanguageTitle": "Cambiar idioma",
+    "ChangeLanguageTooltip": "Cambiar el idioma de la aplicación",
+    "QuitTitle": "Salir",
+    "QuitTooltip": "Salir de la aplicación de la bandeja de ejemplo"
+  },
+  "Navigation": 
+  {
+    "Settings": "Configuración",
+    "Home": "Inicio",
+    "SecurityDashboard": "Panel de seguridad",
+    "PrivacyDashboard": "Panel de privacidad",
+    "Issues": "Problemas",
+    "Integration": "Integración",
+    "About": "Acerca de"
+  },
+  "Issues":
+  {
+    "Name": "Nombre",
+    "Type": "Tipo",
+    "Risk": "Nivel de riesgo"
+  }
 }

@@ -1,19 +1,31 @@
 {
-  "ReportingPageTitle": "Reporting page",
-  "ReportingPageTooltip": "Open the reporting page",
-  "ScanIntervalTitle": "Change Scan Interval",
-  "ScanIntervalTooltip": "Change the interval for scanning",
-  "ScanNowTitle": "Scan now",
-  "ScanNowTooltip": "Scan your device now",
-  "ChangeLanguageTitle": "Change Language",
-  "ChangeLanguageTooltip": "Change the language of the application",
-  "QuitTitle": "Quit",
-  "QuitTooltip": "Quit example tray application",
-  "NavigationSettings": "Settings",
-  "NavigationHome": "Home",
-  "NavigationSecurityDashboard": "Security Dashboard",
-  "NavigationPrivacyDashboard": "Privacy Dashboard",
-  "NavigationIssues": "Issues",
-  "NavigationIntegration": "Integration",
-  "NavigationAbout": "About"
+  "Tray": 
+  {
+    "ReportingPageTitle": "Reporting page",
+    "ReportingPageTooltip": "Open the reporting page",
+    "ScanIntervalTitle": "Change Scan Interval",
+    "ScanIntervalTooltip": "Change the interval for scanning",
+    "ScanNowTitle": "Scan now",
+    "ScanNowTooltip": "Scan your device now",
+    "ChangeLanguageTitle": "Change Language",
+    "ChangeLanguageTooltip": "Change the language of the application",
+    "QuitTitle": "Quit",
+    "QuitTooltip": "Quit example tray application"
+  },
+  "Navigation": 
+  {
+    "Settings": "Settings",
+    "Home": "Home",
+    "SecurityDashboard": "Security Dashboard",
+    "PrivacyDashboard": "Privacy Dashboard",
+    "Issues": "Issues",
+    "Integration": "Integration",
+    "About": "About"
+  },
+  "Issues":
+  {
+    "Name": "Name",
+    "Type": "Type",
+    "Risk": "Risk level"
+  }
 }

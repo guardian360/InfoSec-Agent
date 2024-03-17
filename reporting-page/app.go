@@ -6,7 +6,7 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/localization"
 )
 
-var language = 6
+var language = 0
 
 // App struct
 type App struct {
