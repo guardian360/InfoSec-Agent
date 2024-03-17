@@ -26,6 +26,11 @@
   {
     "Name": "Nombre",
     "Type": "Tipo",
-    "Risk": "Nivel de riesgo"
+    "Risk": "Nivel de riesgo",
+    "Information": "Información",
+    "Solution": "Solución",
+    "Previous": "&laquo; Paso anterior",
+    "Next": "Siguiente paso &raquo;",
+    "Back": "Volver a la vista general de problemas"
   }
 }

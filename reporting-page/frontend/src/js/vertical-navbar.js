@@ -12,11 +12,7 @@ function GetLocalization(messageId, elementId) {
 let navbarItems = ["settings", "home", "security_dashboard", "issues", "integration", "about"]
 let localizationIds = ["Navigation.Settings", "Navigation.Home", "Navigation.SecurityDashboard", "Navigation.Issues", "Navigation.Integration", "Navigation.About"]
 for (let i = 0; i < navbarItems.length; i++) {
-    try {
-        GetLocalization(localizationIds[i], navbarItems[i])
-    } catch (e) {
-        console.log('error: ', e)
-    }
+    GetLocalization(localizationIds[i], navbarItems[i])
 }
 
 

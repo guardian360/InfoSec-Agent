@@ -1,7 +1,14 @@
 import data from "../database.json" assert { type: "json" };
 import { openIssuesPage } from "./issues.js";
+import { Localize } from '../../wailsjs/go/main/App';
 
 let stepCounter = 0;
+
+function GetLocalization(messageId, elementId) {
+    Localize(messageId).then((result) => {
+        document.getElementById(elementId).innerHTML = result;
+    });
+}
 
 // Update contents of solution guide
 function updateSolutionStep(solution, screenshots, stepCounter) {
@@ -34,9 +41,9 @@ export function openIssuePage(issueId) {
     pageContents.innerHTML = `
         <h1 id="issue-name">${currentIssue.Name}</h1>
         <div id="issue-information">
-            <h2>Information</h2>
+            <h2 id="information">Information</h2>
             <p>${currentIssue.Information}</p>
-            <h2>Solution</h2>
+            <h2 id="solution">Solution</h2>
             <div id="issue-solution">
                 <p id="solution-text">${currentIssue.Solution[stepCounter]}</p>
                 <img style='display:block; width:500px;height:auto' id="step-screenshot"></img>
@@ -50,6 +57,12 @@ export function openIssuePage(issueId) {
         </div>
         <div id="back-button">Back to issues overview</div>
     `;
+
+    let texts = ["information", "solution", "previous-button", "next-button", "back-button"]
+    let localizationIds = ["Issues.Information", "Issues.Solution", "Issues.Previous", "Issues.Next", "Issues.Back"]
+    for (let i = 0; i < texts.length; i++) {
+        GetLocalization(localizationIds[i], texts[i])
+    }
 
     try {
         document.getElementById("step-screenshot").src = currentIssue.Screenshots[stepCounter];

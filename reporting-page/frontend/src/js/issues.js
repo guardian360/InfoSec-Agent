@@ -1,5 +1,12 @@
 import data from "../database.json" assert { type: "json" };
 import { openIssuePage } from "./issue.js";
+import { Localize } from '../../wailsjs/go/main/App';
+
+function GetLocalization(messageId, elementId) {
+    Localize(messageId).then((result) => {
+        document.getElementById(elementId).innerHTML = result;
+    });
+}
 
 // Load the content of the issues page
 export function openIssuesPage() {
@@ -8,15 +15,21 @@ export function openIssuesPage() {
     <table id="issues-table">
         <thead>
             <tr>
-            <th id="issue-column"><span class="table-header">Name</span><span class="material-symbols-outlined" id="sort-on-issue">swap_vert</span></th>
-            <th id="type-column"><span class="table-header">Type</span><span class="material-symbols-outlined" id="sort-on-type">swap_vert</span></th>
-            <th id="risk-column"><span class="table-header">Risk level</span><span class="material-symbols-outlined" id="sort-on-risk">swap_vert</span></th>
+            <th id="issue-column"><span id="name" class="table-header">Name</span><span class="material-symbols-outlined" id="sort-on-issue">swap_vert</span></th>
+            <th id="type-column"><span id="type" class="table-header">Type</span><span class="material-symbols-outlined" id="sort-on-type">swap_vert</span></th>
+            <th id="risk-column"><span id="risk" class="table-header">Risk level</span><span class="material-symbols-outlined" id="sort-on-risk">swap_vert</span></th>
             </tr>
         </thead>
         <tbody>
         </tbody>
     </table>
     `;
+
+    let tableHeaders = ["name", "type", "risk"]
+    let localizationIds = ["Issues.Name", "Issues.Type", "Issues.Risk"]
+    for (let i = 0; i < tableHeaders.length; i++) {
+        GetLocalization(localizationIds[i], tableHeaders[i])
+    }
 
     var issues = []; // retrieve issues from tray application
     issues = [ // dummy info

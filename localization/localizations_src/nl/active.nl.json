@@ -26,6 +26,12 @@
   {
     "Name": "Naam",
     "Type": "Type",
-    "Risk": "Risiconiveau"
+    "Risk": "Risiconiveau",
+    "Information": "Informatie",
+    "Solution": "Oplossing",
+    "Previous": "&laquo; Vorige stap",
+    "Next": "Volgende stap &raquo;",
+    "Back": "Terug naar het overzicht van problemen"
   }
+  
 }
