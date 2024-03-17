@@ -8,5 +8,12 @@
   "ChangeLanguageTitle": "Changer la langue",
   "ChangeLanguageTooltip": "Changer la langue de l'application",
   "QuitTitle": "Quitter l'application",
-  "QuitTooltip": "Quitter l'application"
+  "QuitTooltip": "Quitter l'application",
+  "NavigationSettings": "Paramètres",
+  "NavigationHome": "Accueil",
+  "NavigationSecurityDashboard": "Tableau de bord de sécurité",
+  "NavigationPrivacyDashboard": "Tableau de bord de confidentialité",
+  "NavigationIssues": "Problèmes",
+  "NavigationIntegration": "Intégration",
+  "NavigationAbout": "À propos"
 }

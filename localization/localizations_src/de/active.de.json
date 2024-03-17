@@ -8,5 +8,12 @@
   "ChangeLanguageTitle": "Sprache ändern",
   "ChangeLanguageTooltip": "Ändern Sie die Sprache der Anwendung",
   "QuitTitle": "Beenden",
-  "QuitTooltip": "Beenden Sie die Anwendung"
+  "QuitTooltip": "Beenden Sie die Anwendung",
+  "NavigationSettings": "Einstellungen",
+  "NavigationHome": "Startseite",
+  "NavigationSecurityDashboard": "Sicherheits-Dashboard",
+  "NavigationPrivacyDashboard": "Datenschutz-Dashboard",
+  "NavigationIssues": "Probleme",
+  "NavigationIntegration": "Integration",
+  "NavigationAbout": "Über"
 }

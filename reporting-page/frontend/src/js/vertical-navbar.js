@@ -1,6 +1,27 @@
 import logo from '../assets/images/logoTeamA-transformed.png';
+import { Localize } from '../../wailsjs/go/main/App';
 
-class Navbar extends HTMLElement {
+document.getElementById('logo').src = logo;
+
+function GetLocalization(messageId, elementId) {
+    Localize(messageId).then((result) => {
+        document.getElementById(elementId).innerHTML = result;
+    });
+}
+
+let navbarItems = ["settings", "home", "security_dashboard", "issues", "integration", "about"]
+let localizationIds = ["NavigationSettings", "NavigationHome", "NavigationSecurityDashboard", "NavigationIssues", "NavigationIntegration", "NavigationAbout"]
+for (let i = 0; i < navbarItems.length; i++) {
+    try {
+        GetLocalization(localizationIds[i], navbarItems[i])
+    } catch (e) {
+        console.log('error: ', e)
+    }
+}
+
+
+
+/* class Navbar extends HTMLElement {
   constructor() {
     super();
   }
@@ -40,6 +61,4 @@ class Navbar extends HTMLElement {
     `;
   }
 }
-customElements.define('vertical-navbar', Navbar);
-
-document.getElementById('logo').src = logo;
+customElements.define('vertical-navbar', Navbar); */

@@ -8,5 +8,13 @@
   "ChangeLanguageTitle": "Verander taal",
   "ChangeLanguageTooltip": "Verander de taal van de applicatie",
   "QuitTitle": "Beëindig applicatie",
-  "QuitTooltip": "Beëindig de applicatie"
+  "QuitTooltip": "Beëindig de applicatie",
+  "NavigationSettings": "Instellingen",
+  "NavigationHome": "Startpagina",
+  "NavigationSecurityDashboard": "Beveiligingsdashboard",
+  "NavigationPrivacyDashboard": "Privacydashboard",
+  "NavigationIssues": "Problemen",
+  "NavigationIntegration": "Integratie",
+  "NavigationAbout": "Over"
+
 }

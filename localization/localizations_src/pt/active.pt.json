@@ -8,5 +8,12 @@
   "ChangeLanguageTitle": "Mudar idioma",
   "ChangeLanguageTooltip": "Muda o idioma do aplicativo",
   "QuitTitle": "Sair",
-  "QuitTooltip": "Fecha o aplicativo"
+  "QuitTooltip": "Fecha o aplicativo",
+  "NavigationSettings": "Configurações",
+  "NavigationHome": "Início",
+  "NavigationSecurityDashboard": "Painel de Segurança",
+  "NavigationPrivacyDashboard": "Painel de Privacidade",
+  "NavigationIssues": "Questões",
+  "NavigationIntegration": "Integração",
+  "NavigationAbout": "Sobre"
 }

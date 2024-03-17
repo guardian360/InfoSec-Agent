@@ -8,5 +8,12 @@
   "ChangeLanguageTitle": "Change Language",
   "ChangeLanguageTooltip": "Change the language of the application",
   "QuitTitle": "Quit",
-  "QuitTooltip": "Quit example tray application"
+  "QuitTooltip": "Quit example tray application",
+  "NavigationSettings": "Settings",
+  "NavigationHome": "Home",
+  "NavigationSecurityDashboard": "Security Dashboard",
+  "NavigationPrivacyDashboard": "Privacy Dashboard",
+  "NavigationIssues": "Issues",
+  "NavigationIntegration": "Integration",
+  "NavigationAbout": "About"
 }
