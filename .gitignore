@@ -22,3 +22,6 @@ go.work
 
 # JetBrains project files
 .idea
+
+# Visual Studio Code files
+.vscode
