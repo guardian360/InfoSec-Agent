@@ -22,7 +22,7 @@ import (
 //
 //	browser (string) - The name of the browser to check
 //
-// Returns: If the user has visited a phishing domain in the last week
+// Returns: The phishing domains that the user has visited in the last week and when they visited it
 func HistoryChromium(browser string) checks.Check {
 	// List of the results, this will contain a list of domains which are known to be phishing domains.
 	var results []string
