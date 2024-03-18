@@ -57,7 +57,6 @@ func ExtensionsChromium(browser string) checks.Check {
 	}
 
 	// Construct a list of all extensions Id's
-	//fmt.Println("Installed", browser, "extensions:")
 	for _, f := range files {
 		if f.IsDir() {
 			extensionIds = append(extensionIds, f.Name())
@@ -75,7 +74,6 @@ func ExtensionsChromium(browser string) checks.Check {
 		if strings.Count(extensionName1, "/") > 4 {
 			parts := strings.Split(extensionName1, "/")
 			extensionNames = append(extensionNames, parts[len(parts)-2])
-			//fmt.Println(parts[len(parts)-2])
 		}
 		if browser == "Edge" {
 			// Get the name of the extension from the Microsoft Edge Addons Store
@@ -85,7 +83,6 @@ func ExtensionsChromium(browser string) checks.Check {
 				log.Fatal(err)
 			}
 			extensionNames = append(extensionNames, extensionName2)
-			//fmt.Println(extensionName2)
 		}
 	}
 	if adblockerInstalled(extensionNames) {
