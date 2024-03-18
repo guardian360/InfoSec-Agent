@@ -1,6 +1,6 @@
 // Package main contains the entry point of the application.
 //
-// Function(s): main
+// Exported function(s): _
 package main
 
 import (

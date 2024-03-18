@@ -47,7 +47,7 @@ func HistoryFirefox() checks.Check {
 	lastWeek := time.Now().AddDate(0, 0, -7).UnixMicro()
 
 	// Get the phishing domains from up-to-date GitHub list
-	phishingDomainList := utils.GetPhisingDomains()
+	phishingDomainList := utils.GetPhishingDomains()
 
 	// Query the urls and when the sites were visited from the history database
 	rows, err := db.Query(

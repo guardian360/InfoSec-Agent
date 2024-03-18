@@ -76,7 +76,7 @@ func HistoryChromium(browser string) checks.Check {
 	defer rows.Close()
 
 	// Get the phishing domains from an up-to-date GitHub list
-	phishingDomainList := utils.GetPhisingDomains()
+	phishingDomainList := utils.GetPhishingDomains()
 	// Compare the visited domains with the phishing domains
 	for rows.Next() {
 		var url, title string
