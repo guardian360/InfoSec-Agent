@@ -106,6 +106,7 @@ func ExtensionsChromium(browser string) checks.Check {
 //	browser (string) - The name of the browser to check
 //
 // Returns: The name of the extension and an optional error (string,error)
+// Error should be nil on success
 func getExtensionNameChromium(extensionID string, url string, browser string) (string, error) {
 	client := &http.Client{}
 	urlToVisit := fmt.Sprintf(url, extensionID)

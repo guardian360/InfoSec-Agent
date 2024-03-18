@@ -1,4 +1,6 @@
-// Testing file for the cryptography package
+// Package cryptography is the package which hosts encrypting and decrypting functions
+//
+// Exported function(s): EncryptMessage, DecryptMessage
 package cryptography
 
 import (
@@ -9,6 +11,12 @@ import (
 const isBase64 = "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$"
 
 // TestEncryptDecrypt tests the EncryptMessage and DecryptMessage from the cryptography package
+//
+// Parameters:
+//
+//	t (*testing.T) - A reference to the testing framework
+//
+// Returns: _
 func TestEncryptDecrypt(t *testing.T) {
 	key := []byte("0123456789abcdef")
 	message := "Hello"
