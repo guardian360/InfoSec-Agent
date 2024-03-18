@@ -19,7 +19,7 @@ func WindowsDefender() Check {
 	windowsDefenderKey, err := registry.OpenKey(registry.LOCAL_MACHINE, `SOFTWARE\Microsoft\Windows Defender`,
 		registry.READ)
 	if err != nil {
-		return newCheckErrorf("WindowsDefender", "error opening registry key", err)
+		return NewCheckErrorf("WindowsDefender", "error opening registry key", err)
 	}
 	// Close the key after we have received all relevant information
 	defer windowsDefenderKey.Close()
@@ -28,7 +28,7 @@ func WindowsDefender() Check {
 	realTimeKey, err := registry.OpenKey(registry.LOCAL_MACHINE,
 		`SOFTWARE\Microsoft\Windows Defender\Real-Time Protection`, registry.READ)
 	if err != nil {
-		return newCheckErrorf("WindowsDefender", "error opening registry key", err)
+		return NewCheckErrorf("WindowsDefender", "error opening registry key", err)
 	}
 	// Close the key after we have received all relevant information
 	defer realTimeKey.Close()
@@ -41,23 +41,23 @@ func WindowsDefender() Check {
 	// are enabled or disabled
 	if err != nil {
 		if antiVirusPeriodic == 1 {
-			return newCheckResult("WindowsDefender", "Windows real-time defender is enabled but the "+
+			return NewCheckResult("WindowsDefender", "Windows real-time defender is enabled but the "+
 				"windows periodic scan is disabled")
 		} else {
-			return newCheckResult("WindowsDefender", "Windows real-time defender is enabled and also the "+
+			return NewCheckResult("WindowsDefender", "Windows real-time defender is enabled and also the "+
 				"windows periodic scan is enabled")
 		}
 	} else {
 		if realTimeDefender == 1 {
 			if antiVirusPeriodic == 1 {
-				return newCheckResult("WindowsDefender", "Windows real-time defender is disabled and also "+
+				return NewCheckResult("WindowsDefender", "Windows real-time defender is disabled and also "+
 					"the windows periodic scan is disabled")
 			} else {
-				return newCheckResult("WindowsDefender", "Windows real-time defender is disabled but the "+
+				return NewCheckResult("WindowsDefender", "Windows real-time defender is disabled but the "+
 					"windows periodic scan is enabled")
 			}
 		} else {
-			return newCheckResult("WindowsDefender", "No windows defender data found")
+			return NewCheckResult("WindowsDefender", "No windows defender data found")
 		}
 	}
 }

@@ -20,7 +20,7 @@ func SecureBoot() Check {
 		`SYSTEM\CurrentControlSet\Control\SecureBoot\State`, registry.READ)
 
 	if err != nil {
-		return newCheckError("SecureBoot", err)
+		return NewCheckError("SecureBoot", err)
 	}
 
 	defer func(windowsSecureBoot registry.Key) {
@@ -33,13 +33,13 @@ func SecureBoot() Check {
 	// Read the status of secure boot
 	secureBootStatus, _, err := windowsSecureBoot.GetIntegerValue("UEFISecureBootEnabled")
 	if err != nil {
-		return newCheckError("SecureBoot", err)
+		return NewCheckError("SecureBoot", err)
 	}
 
 	// Using the status, determine if secure boot is enabled or not
 	if secureBootStatus == 1 {
-		return newCheckResult("SecureBoot", "Secure boot is enabled")
+		return NewCheckResult("SecureBoot", "Secure boot is enabled")
 	}
 
-	return newCheckResult("SecureBoot", "Secure boot is disabled")
+	return NewCheckResult("SecureBoot", "Secure boot is disabled")
 }

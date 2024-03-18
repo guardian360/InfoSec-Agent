@@ -25,13 +25,13 @@ func ExternalDevices() Check {
 		output, err := checkDeviceClass(s)
 
 		if err != nil {
-			return newCheckErrorf("externaldevices", "error checking device "+s, err)
+			return NewCheckErrorf("externaldevices", "error checking device "+s, err)
 		}
 
 		outputs = append(outputs, output...)
 	}
 
-	return newCheckResult("externaldevices", outputs...)
+	return NewCheckResult("externaldevices", outputs...)
 }
 
 // checkDeviceClass runs a specific class within the Get-PnpDevice command

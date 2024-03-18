@@ -21,7 +21,7 @@ func Permission(permission string) Check {
 	key, err := registry.OpenKey(registry.CURRENT_USER,
 		`Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\`+permission, registry.READ)
 	if err != nil {
-		return newCheckErrorf(permission, "error opening registry key", err)
+		return NewCheckErrorf(permission, "error opening registry key", err)
 	}
 	// Close the key after we have received all relevant information
 	defer key.Close()
@@ -29,7 +29,7 @@ func Permission(permission string) Check {
 	// Get the names of all sub-keys (which represent applications)
 	applicationNames, err := key.ReadSubKeyNames(-1)
 	if err != nil {
-		return newCheckErrorf(permission, "error reading subkey names", err)
+		return NewCheckErrorf(permission, "error reading subkey names", err)
 	}
 
 	var results []string
@@ -66,7 +66,7 @@ func Permission(permission string) Check {
 	}
 	// Remove duplicate results
 	filteredResults := removeDuplicateStr(results)
-	return newCheckResult(permission, filteredResults...)
+	return NewCheckResult(permission, filteredResults...)
 }
 
 // removeDuplicateStr removes duplicate strings from a slice

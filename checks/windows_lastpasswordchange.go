@@ -23,11 +23,10 @@ func LastPasswordChange() Check {
 	// Get the current Windows username
 	username, err := getCurrentUsername()
 	if err != nil {
-		return newCheckErrorf("LastPasswordChange", "error retrieving username", err)
+		return NewCheckErrorf("LastPasswordChange", "error retrieving username", err)
 	}
 
-	cmd := exec.Command("net", "user", username)
-	output, _ := cmd.CombinedOutput()
+	output, _ := exec.Command("net", "user", username).Output()
 	lines := strings.Split(string(output), "\n")
 	// Define the regex pattern for the date
 	datePattern := `\b(\d{1,2}(-|/)\d{1,2}(-|/)\d{4})\b`
@@ -50,7 +49,7 @@ func LastPasswordChange() Check {
 	}
 
 	if err != nil {
-		return newCheckError("LastPasswordChange", fmt.Errorf("error parsing date"))
+		return NewCheckError("LastPasswordChange", fmt.Errorf("error parsing date"))
 	}
 
 	// Get the current time
@@ -60,10 +59,10 @@ func LastPasswordChange() Check {
 	halfYear := 365 / 2 * 24 * time.Hour
 	// If it has been more than half a year since the password was last changed, return a warning
 	if difference > halfYear {
-		return newCheckResult("LastPasswordChange", fmt.Sprintf("Password last changed on %s", match),
+		return NewCheckResult("LastPasswordChange", fmt.Sprintf("Password last changed on %s", match),
 			"password was changed more than half a year ago so you should change it again")
 	}
-	return newCheckResult("LastPasswordChange", fmt.Sprintf("You changed your password recently on %s",
+	return NewCheckResult("LastPasswordChange", fmt.Sprintf("You changed your password recently on %s",
 		match))
 }
 

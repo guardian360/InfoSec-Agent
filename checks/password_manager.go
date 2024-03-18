@@ -35,7 +35,7 @@ func PasswordManager() Check {
 	// List all programs found within the 'Program Files' folder
 	programs, err := listInstalledPrograms(programFiles)
 	if err != nil {
-		return newCheckErrorf("PasswordManager",
+		return NewCheckErrorf("PasswordManager",
 			"error listing installed programs in Program Files", err)
 	}
 
@@ -43,7 +43,7 @@ func PasswordManager() Check {
 	for _, program := range programs {
 		for _, passwordmanager := range passwordManagerNames {
 			if strings.Contains(strings.ToLower(program), strings.ToLower(passwordmanager)) {
-				return newCheckResult("PasswordManager", passwordmanager)
+				return NewCheckResult("PasswordManager", passwordmanager)
 			}
 		}
 	}
@@ -51,18 +51,18 @@ func PasswordManager() Check {
 	// Check for a password manager within the 'Program Files (x86)' folder
 	programs, err = listInstalledPrograms(programFilesx86)
 	if err != nil {
-		return newCheckErrorf("PasswordManager",
+		return NewCheckErrorf("PasswordManager",
 			"error listing installed programs in Program Files (x86)", err)
 	}
 	for _, program := range programs {
 		for _, passwordmanager := range passwordManagerNames {
 			if strings.Contains(strings.ToLower(program), passwordmanager) {
-				return newCheckResult("PasswordManager", passwordmanager)
+				return NewCheckResult("PasswordManager", passwordmanager)
 			}
 		}
 	}
 
-	return newCheckResult("PasswordManager", "No password manager found")
+	return NewCheckResult("PasswordManager", "No password manager found")
 }
 
 // listInstalledPrograms lists the installed programs in a given directory
