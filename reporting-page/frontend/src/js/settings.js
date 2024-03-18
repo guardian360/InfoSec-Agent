@@ -1,3 +1,5 @@
+import { openPersonalizePage } from "./personalize";
+
 /** Load the content of the Settings page */
 function openSettingsPage() {
   document.getElementById("page-contents").innerHTML = `
