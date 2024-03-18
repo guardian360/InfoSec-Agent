@@ -1,6 +1,6 @@
 // Package icon is responsible for the icon that appears in the system tray
 //
-// Functions: _
+// Exported functions: _
 
 package icon
 
