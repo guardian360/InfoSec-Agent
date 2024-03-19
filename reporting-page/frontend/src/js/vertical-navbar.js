@@ -7,11 +7,11 @@ class Navbar extends HTMLElement {
 
   connectedCallback() {
     this.innerHTML = `
-    <div id="header">
-      <div id="header-logo">
+    <div class="header">
+      <div class="header-logo">
           <a href="./index.html" class="logo-name">
               <img id="logo" alt="logo"></img>
-              <div id="header-name">
+              <div class="header-name">
                   <h1>Little Brother</h1>
               </div>
           </a>
@@ -41,5 +41,12 @@ class Navbar extends HTMLElement {
   }
 }
 customElements.define('vertical-navbar', Navbar);
-
 document.getElementById('logo').src = logo;
+
+window.onload = function() {
+    const savedImage = localStorage.getItem('picture');
+    if (savedImage) {
+      const logo = document.getElementById('logo');
+      logo.src = savedImage;
+    }
+  };

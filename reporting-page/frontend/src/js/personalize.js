@@ -48,31 +48,31 @@ export function openPersonalizePage() {
     </div>
     `;
 
-    const faviconInput = document.getElementById('faviconInput');
-    faviconInput.addEventListener('change', handleFaviconSelect);
+    const faviconInput = document.getElementById('faviconInput'); //add eventlistener for changing Favicon
+    faviconInput.addEventListener('change', changeFavicon);
 
-    const fileInput = document.getElementById('input-file-picture');
-    fileInput.addEventListener('change', handleFileSelect);
+    const fileInput = document.getElementById('input-file-picture'); //add eventlistener for changing navication picture
+    fileInput.addEventListener('change', changePicture);
 
-    const newTitleInput = document.getElementById('newTitle');
-    newTitleInput.addEventListener('input', handleTitleChange);
+    const newTitleInput = document.getElementById('newTitle'); //add eventlistener for changing navigation title
+    newTitleInput.addEventListener('input', changeTitle);
   }
 
-function handleFileSelect(event) {
-  const file = event.target.files[0]; // Get the selected file
-  if (file) {
-      const reader = new FileReader(); // Create a new FileReader object
-      reader.onload = function(e) {
-          const logo = document.getElementById('logo'); // Get the logo element
-          logo.src = e.target.result; // Set the source of the logo to the selected image
-      };
-      reader.readAsDataURL(file); // Read the selected file as a Data URL
-  }
+function changePicture(picture) {
+  const file = picture.target.files[0]; // Get the selected file
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const logo = document.getElementById('logo'); // Get the logo element
+    logo.src = e.target.result; // Set the source of the logo to the selected image
+    localStorage.setItem("picture", e.target.result)
+    };
+  reader.readAsDataURL(file); // Read the selected file as a Data URL
 }
-function handleFaviconSelect(event) {
-  const file = event.target.files[0]; // Get the selected file
+
+function changeFavicon(favicon) {
+  const file = favicon.target.files[0]; // Get the selected file
   if (file) {
-      const reader = new FileReader(); // Create a new FileReader object
+      const reader = new FileReader();
       reader.onload = function(e) {
           const favicon = document.createElement('link'); // Create a new link element for favicon
           favicon.rel = 'icon'; // Set rel attribute to 'icon' for favicon
@@ -85,7 +85,7 @@ function handleFaviconSelect(event) {
   }
 }
 
-function handleTitleChange() {
+function changeTitle() {
   const newTitle = document.getElementById('newTitle').value; // Get the value from the input field
   const titleElement = document.getElementById('title'); // Get the <h1> element
   titleElement.textContent = newTitle; // Set the text content of the <h1> element to the new title

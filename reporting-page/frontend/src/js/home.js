@@ -1,6 +1,7 @@
 import * as piechart from "./piechart";
 import {ScanNow} from '../../wailsjs/go/main/Tray';
 import {LogPrint, WindowSetAlwaysOnTop} from '../../wailsjs/runtime/runtime';
+import medal from '../assets/images/img_medal1.jpg';
 
 function openHomePage() {
     document.getElementById("page-contents").innerHTML = `
@@ -22,21 +23,21 @@ function openHomePage() {
     <h2 id="title-medals">Medals</h2>
     <div class="container">  
         <div class="medal-layout">
-            <img src="src/assets/images/img_medal1.jpg" alt="Photo of medal">
+            <img id="medal" alt="Photo of medal">
             <p id="medal-name"> Medal 1</p>
             <p> 01-03-2024</p>
         </div>
         <div class="medal-layout">
-            <img src="src/assets/images/img_medal1.jpg" alt="Photo of medal">
+            <img id="medal2" alt="Photo of medal">
             <p id="medal-name"> Medal 2</p>
             <p> 01-03-2024</p>
         </div>
         <div class="medal-layout">
-            <img src="src/assets/images/img_medal1.jpg" alt="Photo of medal">
+            <img id="medal3" alt="Photo of medal">
             <p id="medal-name"> Medal 3</p>
             <p> 01-03-2024</p>
         </div><div class="medal-layout">
-            <img src="src/assets/images/img_medal1.jpg" alt="Photo of medal">
+            <img id="medal4" alt="Photo of medal">
             <p id="medal-name"> Medal 1</p>
             <p> 01-03-2024</p>
         </div>
@@ -46,6 +47,13 @@ function openHomePage() {
     CreatePieChart();
 
     document.getElementById("scan-button").addEventListener("click", () => scanNow());
+    document.getElementById("logo").innerHTML = localStorage.getItem("picture");
+
+    document.getElementById('medal').src = medal;
+    document.getElementById('medal2').src = medal;
+    document.getElementById('medal3').src = medal;
+    document.getElementById('medal4').src = medal;
+
 }
 
 document.getElementById("logo-button").addEventListener("click", () => openHomePage());

@@ -13,7 +13,7 @@ body {
 
 
 /* Header */
-#header {
+.header {
     background-color: var(--light-blue);
     height: 60px;
     position: fixed;
@@ -21,7 +21,7 @@ body {
     top: 0;
     width: 100%;
 }
-#header-logo {
+.header-logo {
     height: 100%;
     width: 49%;
     display: inline-flex;
@@ -46,11 +46,11 @@ body {
     margin-left: 20px;
     margin-top:12px;
 }
-#header-name {
+.header-name {
     margin-left: 20px;
     line-height: 60px;
 }
-#header-name h1 {
+.header-name h1 {
     font-size: 1.2rem;
     font-weight:900;
     margin: 0;
