@@ -1,3 +1,6 @@
+// Package firefox is responsible for running checks on Chromium based browsers.
+//
+// Exported function(s): CookieFirefox, ExtensionFirefox, HistoryFirefox, PasswordFirefox
 package firefox
 
 import (
@@ -12,6 +15,11 @@ import (
 	_ "modernc.org/sqlite"
 )
 
+// HistoryFirefox checks the user's history in the Firefox browser for phishing domains.
+//
+// Parameters:
+//
+// Returns: The phishing domains that the user has visited in the last week and when they visited it
 func HistoryFirefox() checks.Check {
 	var output []string
 	ffdirectory, err := utils.FirefoxFolder()
@@ -19,33 +27,38 @@ func HistoryFirefox() checks.Check {
 		return checks.NewCheckErrorf("HistoryFirefox", "No firefox directory found", err)
 	}
 
-	//Copy the database so we don't have problems with locked files
+	// Copy the database, so we don't have problems with locked files
 	tempHistoryDbff := filepath.Join(os.TempDir(), "tempHistoryDb.sqlite")
+	// Clean up the temporary file when the function returns
+	defer os.Remove(tempHistoryDbff)
 
+	// Copy the database to a temporary location
 	copyError := utils.CopyFile(ffdirectory[0]+"\\places.sqlite", tempHistoryDbff)
 	if copyError != nil {
 		return checks.NewCheckError("HistoryFirefox", copyError)
 	}
-	//OpenDatabase
+
 	db, err := sql.Open("sqlite", tempHistoryDbff)
 	if err != nil {
 		return checks.NewCheckError("HistoryFirefox", err)
 	}
 	defer db.Close()
 
-	last30Days := time.Now().AddDate(0, 0, -30).UnixMicro()
+	lastWeek := time.Now().AddDate(0, 0, -7).UnixMicro()
 
-	// Get the phishing domains from up-to-date github list
-	phishingDomainList := utils.GetPhisingDomains()
+	// Get the phishing domains from up-to-date GitHub list
+	phishingDomainList := utils.GetPhishingDomains()
 
-	// Execute a query
-	rows, err := db.Query("SELECT url, last_visit_date FROM moz_places WHERE last_visit_date >= ? ORDER BY last_visit_date DESC", last30Days)
+	// Query the urls and when the sites were visited from the history database
+	rows, err := db.Query(
+		"SELECT url, last_visit_date FROM moz_places WHERE last_visit_date >= ? ORDER BY last_visit_date DESC",
+		lastWeek)
 	if err != nil {
 		return checks.NewCheckError("HistoryFirefox", err)
 	}
 	defer rows.Close()
 
-	// Iterate over the rows
+	// Iterate over each found url
 	for rows.Next() {
 		var url string
 		var lastVisitDate sql.NullInt64
@@ -54,12 +67,12 @@ func HistoryFirefox() checks.Check {
 			return checks.NewCheckError("HistoryFirefox", err)
 		}
 		var timeString = ""
-		// Check if the lastVisitDate is NULL
+		// Check if the lastVisitDate is nil
 		var lastVisitDateInt64 int64
 		if lastVisitDate.Valid {
 			lastVisitDateInt64 = lastVisitDate.Int64
 		} else {
-			lastVisitDateInt64 = -1 // Or any other default value you prefer
+			lastVisitDateInt64 = -1 // Default value
 		}
 		if lastVisitDateInt64 > 0 {
 			timeofCreation := time.UnixMicro(lastVisitDateInt64)
@@ -69,7 +82,8 @@ func HistoryFirefox() checks.Check {
 			timeString = time.String()
 		}
 
-		//We only want to print the url to map against untrustworthy domains so we use the following regex to extract the domain
+		// The following regex is used to extract the domain from the url,
+		// to use for mapping against the phishing domains
 		re := regexp.MustCompile(`(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+\.[^:\/\n?]+)`)
 		matches := re.FindStringSubmatch(url)
 
@@ -80,6 +94,5 @@ func HistoryFirefox() checks.Check {
 			}
 		}
 	}
-	os.Remove(tempHistoryDbff)
 	return checks.NewCheckResult("HistoryFirefox", output...)
 }
