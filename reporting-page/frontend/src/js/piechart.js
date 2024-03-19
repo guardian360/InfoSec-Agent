@@ -1,6 +1,6 @@
 import * as rc from "./risk-counters"
 
-// Create the data portion for a piechart using the different levels of risks
+/** Creates the data portion for a piechart using the different levels of risks */ 
 export function GetData() {
   var xValues = ["No risk", "Low risk", "Medium risk", "High risk"];
   var yValues = [rc.allNoRisks.slice(-1)[0], rc.allLowRisks.slice(-1)[0], rc.allMediumRisks.slice(-1)[0], rc.allHighRisks.slice(-1)[0]];
@@ -15,7 +15,10 @@ export function GetData() {
   }
 }
 
-// Create the options for a pie chart
+/** Creates the options for a pie chart 
+ * 
+ * @returns {options} Options for pie chart
+ */ 
 export function GetOptions() {
   return {
     maintainAspectRatio: false,
