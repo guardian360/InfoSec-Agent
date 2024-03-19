@@ -2,15 +2,15 @@
 
 /* dashboard css */
 .dashboard-data {
-    width: auto;
-    display:flex;
-    flex-wrap:wrap;
-    padding-top: 60px;
-    padding-left: 240px;
+  width: auto;
+  display:flex;
+  flex-wrap:wrap;
+  padding-top: 60px;
+  padding-left: 240px;
 }
 
 .data-column {
-    height: 500px;
+  height: 500px;
 }
 
 /** FIRST ROW CSS **/
@@ -18,268 +18,266 @@
 /* risk counters css*/
 
 .risk-counters {
-    padding-left: 10px;
-    padding-right: 10px;
-    flex: 2; /* ratio between columns: 1:2:1 */
+  padding-left: 10px;
+  padding-right: 10px;
+  flex: 2; /* ratio between columns: 1:2:1 */
 }
 
 .risk-counter {
-    padding: 5px;
-    margin-top: 10px;
-    height: auto;
-    display: flex;
-    justify-content: space-between;
+  padding: 5px;
+  margin-top: 10px;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
 }
 
 .high-risk {
-    background-color: var(--highRiskColor);
-    border-radius: 15px 15px 0px 0px;
+  background-color: var(--highRiskColor);
+  border-radius: 15px 15px 0px 0px;
 }
 
 .medium-risk {
-    background-color: var(--mediumRiskColor);
+  background-color: var(--mediumRiskColor);
 }
 
 .low-risk {
-    background-color: var(--lowRiskColor);
+  background-color: var(--lowRiskColor);
 }
 
 .no-risk {
-    background-color: var(--noRiskColor);
-    border-radius: 0px 0px 15px 15px;
+  background-color: var(--noRiskColor);
+  border-radius: 0px 0px 15px 15px;
 }
 
 .risk-counter p {
-    background-color: azure;
-    margin: 10px;
-    padding: 10px;
-    vertical-align: middle;
-    font-size: 17.5px;
-    border-radius: 10px 10px 10px 10px;
+  background-color: azure;
+  margin: 10px;
+  padding: 10px;
+  vertical-align: middle;
+  font-size: 17.5px;
+  border-radius: 10px 10px 10px 10px;
 }
 
 .security-status {
-    background-color: var(--secundaryLight500);
-    border: 3px solid var(--primaryDark500);
-    padding: 10px;
-    margin-top: 10px;
-    height: 80px;
-    display: flex;
-    justify-content: space-between;
-    border-radius: 15px 15px 15px 15px;
+  background-color: var(--secundaryLight500);
+  border: 3px solid var(--primaryDark500);
+  padding: 10px;
+  margin-top: 10px;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 15px 15px 15px 15px;
 }
 
 .security-status div,
 .risk-counter div {
-    display: grid;
+  display: grid;
 	align-items: center;
 }
 
 .security-status p {
-    background-color: var(--primaryDark500);
-    margin: 0px;
-    padding: 10px;
-    text-align: center;
-    border-radius: 15px 15px 15px 15px;
-    display: table-cell;
-    border: none;
-    outline: none;
-    /* font */
-    font-size: 20px;
-    color: var(--secundaryLight500); 
+  background-color: var(--primaryDark500);
+  margin: 0px;
+  padding: 10px;
+  text-align: center;
+  border-radius: 15px 15px 15px 15px;
+  display: table-cell;
+  border: none;
+  outline: none;
+  /* font */
+  font-size: 20px;
+  color: var(--secundaryLight500); 
 }
 
 /* pie chart css */
 
 .piechart {
-    flex: 3; /* ratio between columns: 1:2:1 */
-    padding-left: 10px;
-    padding-right: 10px;
-    border-radius: 15px 15px 15px 15px;
-    background-color: var(--accentV2Light900);
-    margin-top: 10px;
+  flex: 3; /* ratio between columns: 1:2:1 */
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 15px 15px 15px 15px;
+  background-color: var(--accentV2Light900);
+  margin-top: 10px;
 }
 
 .piechart canvas {
-    width:100px;
-    max-width:100%;
-    height:500px;
+  width:100px;
+  max-width:100%;
+  height:500px;
 }
 
 /* issue buttons css */
 
 .issue-buttons {
-    flex: 2; /* ratio between columns: 2:3:2 */
-    padding-left: 10px;
-    padding-right: 10px;
+  flex: 2; /* ratio between columns: 2:3:2 */
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .issue-button {
-    cursor: pointer;
-    background-color: var(--secundaryLight500);
-    border: 3px solid var(--primaryDark500);
-    padding: opx;
-    margin: 10px;
-    border-radius: 15px 15px 15px 15px;
-    text-align: center;
-    display: grid;
+  background-color: var(--secundaryLight500);
+  border: 3px solid var(--primaryDark500);
+  padding: 0px;
+  margin: 10px;
+  border-radius: 15px 15px 15px 15px;
+  text-align: center;
+  display: grid;
 	align-items: center;
-    /* font */
-    font-size: 25px;
-    color: var(--secondaryLight500);  
+  /* font */
+  font-size: 25px;
+  color: var(--secondaryLight500);  
 }
 
 
 /* SECOND ROW CSS */
 
 .second-row {
-    padding: 10px;
-    padding-left: 240px;
-    border-radius: 15px 15px 15px 15px;
-    background-color: var(--accentV2Light900);
-    margin-top: 10px;
-    text-align: center;
+  padding: 10px;
+  padding-left: 240px;
+  border-radius: 15px 15px 15px 15px;
+  background-color: var(--accentV2Light900);
+  margin-top: 10px;
+  text-align: center;
 }
 
 .security-areas {
-    border-radius: 15px 15px 15px 15px;
-    background-color: var(--accentV1Light900);
-    margin-top: 10px;
-    border: 3px solid var(--primaryDark500);
-    /* horizontal items evenly distributed */
-    display: flex;
-    justify-content: space-between;
+  border-radius: 15px 15px 15px 15px;
+  background-color: var(--accentV1Light900);
+  margin-top: 10px;
+  border: 3px solid var(--primaryDark500);
+  /* horizontal items evenly distributed */
+  display: flex;
+  justify-content: space-between;
 }
 
 .security-area {
-    background-color: var(--accentV2);
-    margin: auto;
-    border-radius: 15px 15px 15px 15px;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin: 15px 10px;
+  background-color: var(--accentV2);
+  margin: auto;
+  border-radius: 15px 15px 15px 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 15px 10px;
 }
 
 .security-area p {
-    color: var(--accentV1Light900);
-    cursor: pointer;
-    padding: 5px;
-    border-radius: 15px 15px 15px 15px;
+  color: var(--accentV1Light900);
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 15px 15px 15px 15px;
 }
 
 .security-area p:hover {
-    background-color: #427385;
+  background-color: #427385;
 }
 
 .security-area .material-symbols-outlined {
-    font-size: 100px;
-    display: block;
+  font-size: 100px;
+  display: block;
 }
 
 /* THIRD ROW CSS */
 
 .graph-row {
-    padding-left:240px;
-    width: auto;
-    display:flex;
-    flex-wrap:wrap;
-    margin-top: 20px;
+  padding-left:240px;
+  width: auto;
+  display:flex;
+  flex-wrap:wrap;
+  margin-top: 20px;
 }
 
 .issues-graph canvas {
-    width:100px;
-    max-width:100%;
-    height:500px;
+  width:100px;
+  max-width:100%;
+  height:500px;
 }
 
 .issues-graph-buttons {
-    flex: 1; /* ratio between columns: 1:3 */
-    padding-left: 10px;
-    padding-right: 10px;
+  flex: 1; /* ratio between columns: 1:3 */
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .issues-graph {
-    flex: 3; /* ratio between columns: 1:3 */
-    padding-left: 10px;
-    padding-right: 10px;
+  flex: 3; /* ratio between columns: 1:3 */
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .interval-button {
-    cursor: pointer;
-    font-size: 16px;  
-    border: none;
-    outline: none;
-    color: white;
-    padding: 10px 16px;
-    background-color: var(--accentV2);
-    font-family: inherit;
-    margin: 0;
-    min-width: 160px;
-    float: left;
-    margin-top: 10px;
-    text-align: center;
+  cursor: pointer;
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 10px 16px;
+  background-color: var(--accentV2);
+  font-family: inherit;
+  margin: 0;
+  min-width: 160px;
+  float: left;
+  margin-top: 10px;
+  text-align: center;
 }
 
 #graph-interval {
-    width: 100px;
+  width: 100px;
 }
 
 .dropdown .dropbtn {
-    cursor: pointer;
-    font-size: 16px;  
-    border: none;
-    outline: none;
-    color: white;
-    padding: 14px 16px;
-    background-color: var(--accentV2);
-    font-family: inherit;
-    min-width: 192px;
+  cursor: pointer;
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: var(--accentV2);
+  font-family: inherit;
+  min-width: 192px;
 }
 
 .dropdown-selector {
-    display: none;
-    position: absolute;
-    background-color: var(--accentV2);
-    min-width: 192px;
-    box-shadow: 0px 8px 36px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
+  display: none;
+  position: absolute;
+  background-color: var(--accentV2);
+  min-width: 192px;
+  box-shadow: 0px 8px 36px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
   
-  .dropdown-selector p {
-    float: none;
-    color: white;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-  }
+.dropdown-selector p {
+  float: none;
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
 
-  .show {
-    display: block;
-  }
+.show {
+  display: block;
+}
 
 /* Screen size adjustments */
 
 @media only screen and (max-width: 600px) {
-    .data-column {
-      width: 100%;
-    }
+  .data-column {
+    width: 100%;
+  }
 }
 
 @media only screen and (max-width: 1000px) {
 
-    .security-area .material-symbols-outlined {
-        font-size: 50px;
-        display: block;
-    }
-
-    .dashboard-data {
-        display: block;
-    }
+  .security-area .material-symbols-outlined {
+    font-size: 50px;
+    display: block;
+  }
+  .dashboard-data {
+    display: block;
+  }
 }
 
 @media only screen and (max-width: 1300px) {
-    .security-areas {
-        overflow-x: scroll;
-    }
+  .security-areas {
+    overflow-x: scroll;
+  }
 }
