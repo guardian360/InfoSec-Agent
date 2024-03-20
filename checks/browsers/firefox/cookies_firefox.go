@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
+	"log"
 	"os"
 	"path/filepath"
 	"time"
@@ -28,7 +29,12 @@ func CookieFirefox() checks.Check {
 	tempCookieDbff := filepath.Join(os.TempDir(), "tempCookieDbff.sqlite")
 
 	// Clean up the temporary file when the function returns
-	defer os.Remove(tempCookieDbff)
+	defer func(name string) {
+		err := os.Remove(name)
+		if err != nil {
+			log.Println("error removing file: ", err)
+		}
+	}(tempCookieDbff)
 
 	// Copy the database to a temporary location
 	copyError := utils.CopyFile(ffdirectory[0]+"\\cookies.sqlite", tempCookieDbff)
@@ -40,14 +46,24 @@ func CookieFirefox() checks.Check {
 	if err != nil {
 		return checks.NewCheckError("CookieFirefox", err)
 	}
-	defer db.Close()
+	defer func(db *sql.DB) {
+		err := db.Close()
+		if err != nil {
+			log.Println("error closing database: ", err)
+		}
+	}(db)
 
 	// Query the name, origin and when the cookie was created from the database
 	rows, err := db.Query("SELECT name, host, creationTime FROM moz_cookies")
 	if err != nil {
 		return checks.NewCheckError("CookieFirefox", err)
 	}
-	defer rows.Close()
+	defer func(rows *sql.Rows) {
+		err := rows.Close()
+		if err != nil {
+			log.Println("error closing rows: ", err)
+		}
+	}(rows)
 
 	// Iterate over each found cookie
 	for rows.Next() {

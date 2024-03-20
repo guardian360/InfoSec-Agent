@@ -46,6 +46,12 @@ func Bluetooth() Check {
 			result.Result = append(result.Result, fmt.Sprintf("Error opening device subkey %s", deviceName))
 			continue
 		}
+		defer func(deviceKey registry.Key) {
+			err := deviceKey.Close()
+			if err != nil {
+				log.Printf("error closing device subkey: %v", err)
+			}
+		}(deviceKey)
 
 		// Get the device name
 		deviceNameValue, _, err := deviceKey.GetBinaryValue("Name")
@@ -55,7 +61,6 @@ func Bluetooth() Check {
 			result.Result = append(result.Result, string(deviceNameValue))
 		}
 
-		deviceKey.Close()
 	}
 
 	// Check for currently connected bluetooth devices

@@ -76,7 +76,7 @@ func GetPhishingDomains() []string {
 	}(resp.Body)
 
 	if resp.StatusCode != http.StatusOK {
-		fmt.Errorf("HTTP request failed with status code: %d", resp.StatusCode)
+		log.Printf("HTTP request failed with status code: %d", resp.StatusCode)
 	}
 
 	// Parse the response of potential scam domains and split it into a list of domains

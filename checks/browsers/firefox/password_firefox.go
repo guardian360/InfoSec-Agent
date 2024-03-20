@@ -6,6 +6,7 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"github.com/andrewarchi/browser/firefox"
+	"log"
 	"os"
 )
 
@@ -24,7 +25,12 @@ func PasswordFirefox() checks.Check {
 	if err != nil {
 		return checks.NewCheckError("PasswordFirefox", err)
 	}
-	defer content.Close()
+	defer func(content *os.File) {
+		err := content.Close()
+		if err != nil {
+			log.Println("error closing file: ", err)
+		}
+	}(content)
 
 	// Creates a struct for the JSON file
 	var extensions firefox.Extensions
