@@ -138,3 +138,35 @@ func FirefoxFolder() ([]string, error) {
 	}
 	return profileList, nil
 }
+
+// CurrentUsername retrieves the current Windows username
+//
+// Parameters: _
+//
+// Returns: The current Windows username
+func CurrentUsername() (string, error) {
+	currentUser, err := user.Current()
+	if currentUser.Username == "" || err != nil {
+		return "", fmt.Errorf("failed to retrieve current username")
+	}
+	return strings.Split(currentUser.Username, "\\")[1], nil
+}
+
+// RemoveDuplicateStr removes duplicate strings from a slice
+//
+// Parameters: strSlice (string slice) represents the slice to remove duplicates from
+//
+// Returns: A slice with the duplicates removed
+func RemoveDuplicateStr(strSlice []string) []string {
+	// Keep a map of found values, where true means the value has (already) been found
+	allKeys := make(map[string]bool)
+	var list []string
+	for _, item := range strSlice {
+		if _, value := allKeys[item]; !value {
+			// If the value is found for the first time, append it to the list of results
+			allKeys[item] = true
+			list = append(list, item)
+		}
+	}
+	return list
+}

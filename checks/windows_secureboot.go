@@ -1,8 +1,8 @@
 package checks
 
 import (
+	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"golang.org/x/sys/windows/registry"
-	"log"
 )
 
 // SecureBoot checks if Windows secure boot is enabled
@@ -12,19 +12,11 @@ import (
 // Returns: If Windows secure boot is enabled or not
 func SecureBoot() Check {
 	// Get secure boot information from the registry
-	windowsSecureBoot, err := registry.OpenKey(registry.LOCAL_MACHINE,
-		`SYSTEM\CurrentControlSet\Control\SecureBoot\State`, registry.READ)
-
+	windowsSecureBoot, err := utils.OpenRegistryKey(registry.LOCAL_MACHINE, `SYSTEM\CurrentControlSet\Control\SecureBoot\State`)
 	if err != nil {
 		return NewCheckError("SecureBoot", err)
 	}
-
-	defer func(key registry.Key) {
-		err := key.Close()
-		if err != nil {
-			log.Printf("error closing registry key: %v", err)
-		}
-	}(windowsSecureBoot)
+	defer utils.CloseRegistryKey(windowsSecureBoot)
 
 	// Read the status of secure boot
 	secureBootStatus, _, err := windowsSecureBoot.GetIntegerValue("UEFISecureBootEnabled")

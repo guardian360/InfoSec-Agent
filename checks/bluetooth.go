@@ -2,8 +2,8 @@ package checks
 
 import (
 	"fmt"
+	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"golang.org/x/sys/windows/registry"
-	"log"
 	"os/exec"
 	"strings"
 )
@@ -15,18 +15,13 @@ import (
 // Returns: A list of bluetooth devices
 func Bluetooth() Check {
 	// Open the registry key for bluetooth devices
-	key, err := registry.OpenKey(registry.LOCAL_MACHINE,
-		`SYSTEM\CurrentControlSet\Services\BTHPORT\Parameters\Devices`, registry.READ)
+	key, err := utils.OpenRegistryKey(registry.LOCAL_MACHINE,
+		`SYSTEM\CurrentControlSet\Services\BTHPORT\Parameters\Devices`)
 	if err != nil {
 		return NewCheckErrorf("Bluetooth", "error opening registry key", err)
 	}
 	// Close the key after we have received all relevant information
-	defer func(key registry.Key) {
-		err := key.Close()
-		if err != nil {
-			log.Printf("error closing registry key: %v", err)
-		}
-	}(key)
+	defer utils.CloseRegistryKey(key)
 
 	// Get the names of all sub keys (which represent bluetooth devices)
 	deviceNames, err := key.ReadSubKeyNames(-1)
@@ -41,17 +36,12 @@ func Bluetooth() Check {
 	result := NewCheckResult("Bluetooth")
 	// Open each device sub key within the registry
 	for _, deviceName := range deviceNames {
-		deviceKey, err := registry.OpenKey(key, deviceName, registry.READ)
+		deviceKey, err := utils.OpenRegistryKey(key, deviceName)
 		if err != nil {
 			result.Result = append(result.Result, fmt.Sprintf("Error opening device subkey %s", deviceName))
 			continue
 		}
-		defer func(deviceKey registry.Key) {
-			err := deviceKey.Close()
-			if err != nil {
-				log.Printf("error closing device subkey: %v", err)
-			}
-		}(deviceKey)
+		defer utils.CloseRegistryKey(deviceKey)
 
 		// Get the device name
 		deviceNameValue, _, err := deviceKey.GetBinaryValue("Name")
