@@ -3,6 +3,7 @@ package checks
 import (
 	"fmt"
 	"golang.org/x/sys/windows/registry"
+	"log"
 )
 
 // Startup checks the registry for startup programs
@@ -25,9 +26,24 @@ func Startup() Check {
 	}
 
 	// Close the keys after we have received all relevant information
-	defer cuKey.Close()
-	defer lmKey.Close()
-	defer lmKey2.Close()
+	defer func(key registry.Key) {
+		err := key.Close()
+		if err != nil {
+			log.Printf("error closing registry key: %v", err)
+		}
+	}(cuKey)
+	defer func(key registry.Key) {
+		err := key.Close()
+		if err != nil {
+			log.Printf("error closing registry key: %v", err)
+		}
+	}(lmKey)
+	defer func(key registry.Key) {
+		err := key.Close()
+		if err != nil {
+			log.Printf("error closing registry key: %v", err)
+		}
+	}(lmKey2)
 
 	// Read the entries within the registry key
 	cuValueNames, err1 := cuKey.ReadValueNames(0)

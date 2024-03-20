@@ -2,6 +2,7 @@ package checks
 
 import (
 	"golang.org/x/sys/windows/registry"
+	"log"
 )
 
 // SecureBoot checks if Windows secure boot is enabled
@@ -18,10 +19,10 @@ func SecureBoot() Check {
 		return NewCheckError("SecureBoot", err)
 	}
 
-	defer func(windowsSecureBoot registry.Key) {
-		err := windowsSecureBoot.Close()
+	defer func(key registry.Key) {
+		err := key.Close()
 		if err != nil {
-			return
+			log.Printf("error closing registry key: %v", err)
 		}
 	}(windowsSecureBoot)
 

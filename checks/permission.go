@@ -1,6 +1,7 @@
 package checks
 
 import (
+	"log"
 	"strings"
 
 	"golang.org/x/sys/windows/registry"
@@ -19,7 +20,12 @@ func Permission(permission string) Check {
 		return NewCheckErrorf(permission, "error opening registry key", err)
 	}
 	// Close the key after we have received all relevant information
-	defer key.Close()
+	defer func(key registry.Key) {
+		err := key.Close()
+		if err != nil {
+			log.Printf("error closing registry key: %v", err)
+		}
+	}(key)
 
 	// Get the names of all sub-keys (which represent applications)
 	applicationNames, err := key.ReadSubKeyNames(-1)

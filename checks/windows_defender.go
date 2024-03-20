@@ -2,6 +2,7 @@ package checks
 
 import (
 	"golang.org/x/sys/windows/registry"
+	"log"
 )
 
 // WindowsDefender checks if the Windows Defender is enabled and if the periodic scan is enabled
@@ -17,7 +18,12 @@ func WindowsDefender() Check {
 		return NewCheckErrorf("WindowsDefender", "error opening registry key", err)
 	}
 	// Close the key after we have received all relevant information
-	defer windowsDefenderKey.Close()
+	defer func(key registry.Key) {
+		err := key.Close()
+		if err != nil {
+			log.Printf("error closing registry key: %v", err)
+		}
+	}(windowsDefenderKey)
 
 	// Open the Windows Defender real-time protection registry key, representing the periodic scan
 	realTimeKey, err := registry.OpenKey(registry.LOCAL_MACHINE,
@@ -26,7 +32,12 @@ func WindowsDefender() Check {
 		return NewCheckErrorf("WindowsDefender", "error opening registry key", err)
 	}
 	// Close the key after we have received all relevant information
-	defer realTimeKey.Close()
+	defer func(key registry.Key) {
+		err := key.Close()
+		if err != nil {
+			log.Printf("error closing registry key: %v", err)
+		}
+	}(realTimeKey)
 
 	// Read the value of the registry keys
 	antiVirusPeriodic, _, err := windowsDefenderKey.GetIntegerValue("DisableAntiVirus")

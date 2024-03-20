@@ -2,6 +2,7 @@ package checks
 
 import (
 	"golang.org/x/sys/windows/registry"
+	"log"
 )
 
 // RemoteDesktopCheck checks if Remote Desktop is enabled
@@ -17,7 +18,12 @@ func RemoteDesktopCheck() Check {
 		return NewCheckErrorf("RemoteDesktop", "error opening registry key", err)
 	}
 	// Close the key after we have received all relevant information
-	defer key.Close()
+	defer func(key registry.Key) {
+		err := key.Close()
+		if err != nil {
+			log.Printf("error closing registry key: %v", err)
+		}
+	}(key)
 
 	// Read the value of fDenyTSConnections, which contains the information if Remote Desktop is enabled or not
 	val, _, err := key.GetIntegerValue("fDenyTSConnections")

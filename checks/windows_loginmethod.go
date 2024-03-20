@@ -2,6 +2,7 @@ package checks
 
 import (
 	"golang.org/x/sys/windows/registry"
+	"log"
 )
 
 // LoginMethod checks which login method(s) the user has enabled
@@ -17,7 +18,12 @@ func LoginMethod() Check {
 		return NewCheckErrorf("LoginMethod", "error opening registry key", err)
 	}
 	// Close the key after we have received all relevant information
-	defer key.Close()
+	defer func(key registry.Key) {
+		err := key.Close()
+		if err != nil {
+			log.Printf("error closing registry key: %v", err)
+		}
+	}(key)
 
 	// Read the info of the key
 	keyInfo, err := key.Stat()

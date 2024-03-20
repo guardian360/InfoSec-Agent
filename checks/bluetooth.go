@@ -3,6 +3,7 @@ package checks
 import (
 	"fmt"
 	"golang.org/x/sys/windows/registry"
+	"log"
 	"os/exec"
 	"strings"
 )
@@ -20,7 +21,12 @@ func Bluetooth() Check {
 		return NewCheckErrorf("Bluetooth", "error opening registry key", err)
 	}
 	// Close the key after we have received all relevant information
-	defer key.Close()
+	defer func(key registry.Key) {
+		err := key.Close()
+		if err != nil {
+			log.Printf("error closing registry key: %v", err)
+		}
+	}(key)
 
 	// Get the names of all sub keys (which represent bluetooth devices)
 	deviceNames, err := key.ReadSubKeyNames(-1)
