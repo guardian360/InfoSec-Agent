@@ -81,7 +81,10 @@ func OnReady() {
 	for {
 		select {
 		case <-mReportingPage.ClickedCh:
-			openReportingPage()
+			err := openReportingPage("")
+			if err != nil {
+				fmt.Println(err)
+			}
 		case <-mChangeScanInterval.ClickedCh:
 			ChangeScanInterval()
 		case <-mScanNow.ClickedCh:
@@ -116,10 +119,9 @@ func OnQuit() {
 // Parameters: _
 //
 // Returns: _
-func openReportingPage() {
+func openReportingPage(path string) error {
 	if rpPage {
-		fmt.Println("Reporting page is already running")
-		return
+		return fmt.Errorf("reporting-page is already running")
 	}
 
 	// Get the current working directory
@@ -127,15 +129,13 @@ func openReportingPage() {
 	//Consideration: Wails can also send (termination) signals to the back-end, might be worth investigating
 	originalDir, err := os.Getwd()
 	if err != nil {
-		fmt.Println("Error getting current directory:", err)
-		return
+		return fmt.Errorf("Error getting current directory: %s", err)
 	}
 
 	// Change directory to reporting-page folder
-	err = os.Chdir("reporting-page")
+	err = os.Chdir(path + "reporting-page")
 	if err != nil {
-		fmt.Println("Error changing directory:", err)
-		return
+		return fmt.Errorf("Error changing directory: %s", err)
 	}
 
 	// Restore the original working directory
@@ -153,8 +153,7 @@ func openReportingPage() {
 	buildCmd.Stdout = os.Stdout
 	buildCmd.Stderr = os.Stderr
 	if err := buildCmd.Run(); err != nil {
-		fmt.Println("Error building reporting-page:", err)
-		return
+		return fmt.Errorf("Error building reporting-page: %s", err)
 	}
 
 	// Set up the reporting-page executable
@@ -175,10 +174,10 @@ func openReportingPage() {
 	rpPage = true
 	// Run the reporting page executable
 	if err := runCmd.Run(); err != nil {
-		fmt.Println("Error running reporting-page:", err)
 		rpPage = false
-		return
+		return fmt.Errorf("Error running reporting-page: %s", err)
 	}
+	return nil
 }
 
 // ChangeScanInterval provides the user with a dialog window to set the (new) scan interval
