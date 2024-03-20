@@ -1,4 +1,14 @@
 import { openPersonalizePage } from "./personalize";
+import { ChangeLanguage } from "../../wailsjs/go/main/Tray";
+
+function updateLanguage() {
+  ChangeLanguage()
+    .then((result) => {
+    })
+    .catch((err) => {
+        console.error(err);
+    });
+}
 
 function openSettingsPage() {
     document.getElementById("page-contents").innerHTML = `
@@ -31,9 +41,13 @@ function openSettingsPage() {
       <div id="personalize-button-box">
         <div id="personalize-button">Click me</div>
       </div>
-    </div>  
+    </div> 
+    <div class="setting">
+      <button id="change-language" type="button">Change Language</button>
+    </div>
     `;
 
+    document.getElementById("change-language").addEventListener("click", () => updateLanguage());
     document.getElementById("personalize-button").addEventListener("click", () => openPersonalizePage());
 }
 

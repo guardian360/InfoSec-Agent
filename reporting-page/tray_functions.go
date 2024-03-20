@@ -17,6 +17,7 @@ func (t *Tray) ScanNow() {
 
 func (t *Tray) ChangeLanguage() {
 	tray.ChangeLanguage()
+	// tray.RefreshMenu()
 }
 
 func (t *Tray) ChangeScanInterval() {
