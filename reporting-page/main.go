@@ -1,3 +1,8 @@
+// Package (reporting page) main contains the entry point of the reporting page application
+//
+// Exported function(s): NewApp, NewTray
+//
+// Exported struct(s): App
 package main
 
 import (
@@ -13,13 +18,18 @@ import (
 //go:embed all:frontend/dist
 var assets embed.FS
 
+// main is the entry point of the reporting page program, starts the Wails application
+//
+// Parameters: _
+//
+// Returns: _
 func main() {
-	// Create an instance of the app structure
+	// Create a new instance of the app and tray struct
 	app := NewApp()
 	tray := NewTray()
 	localization.Init("../")
 
-	// Create application with options
+	// Create a Wails application with the specified options
 	err := wails.Run(&options.App{
 		Title:  "reporting-page",
 		Width:  1024,

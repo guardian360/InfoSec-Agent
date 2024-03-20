@@ -9,23 +9,34 @@ import (
 	"os"
 )
 
+// PasswordFirefox checks the passwords in the Firefox browser.
+//
+// Parameters: _
+//
+// Returns:
 func PasswordFirefox() checks.Check {
-	ffdirectory, _ := utils.FirefoxFolder() //returns the path to the firefox profile directory
+	// Determine the directory in which the Firefox profile is stored
+	ffdirectory, _ := utils.FirefoxFolder()
+
 	var output []string
-	content, err := os.Open(ffdirectory[0] + "\\logins.json") //reads the extensions.json file or returns an error
+	// Open the logins.json file, which contains a list of all saved Firefox passwords
+	content, err := os.Open(ffdirectory[0] + "\\logins.json")
 	if err != nil {
 		return checks.NewCheckError("PasswordFirefox", err)
 	}
 	defer content.Close()
-	var extensions firefox.Extensions   //Creates a struct for the json file
-	decoder := json.NewDecoder(content) //
+
+	// Creates a struct for the JSON file
+	var extensions firefox.Extensions
+	decoder := json.NewDecoder(content)
 	err = decoder.Decode(&extensions)
 	if err != nil {
 		return checks.NewCheckError("PasswordFirefox", err)
 	}
 
-	// Can add more data to the output for extension data.
-	for _, addon := range extensions.Addons { // Name of addon, type of addon, creator, active or not
+	// TODO: Final functionality currently not implemented yet, should return an analysis on the used passwords
+	// Below code is a placeholder
+	for _, addon := range extensions.Addons {
 		output = append(output, addon.DefaultLocale.Name+addon.Type+addon.DefaultLocale.Creator+fmt.Sprintf("%t", addon.Active))
 	}
 	return checks.NewCheckResult("PasswordFirefox", output...)

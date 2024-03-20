@@ -1,3 +1,6 @@
+// Package localization is responsible for localizing strings for different languages.
+//
+// Exported function(s): Init, Localize, Localizers
 package localization
 
 import (
@@ -10,6 +13,13 @@ import (
 var localizers [7]*i18n.Localizer
 var bundle *i18n.Bundle
 
+// Init initializes the localization bundle and localizers
+//
+// Parameters:
+//
+//	path (string) - The path to the localization files
+//
+// Returns: _
 func Init(path string) { //3
 	bundle = i18n.NewBundle(language.BritishEnglish)
 
@@ -34,13 +44,21 @@ func Init(path string) { //3
 
 // Localize returns the localized string for the given language and ID
 //
-// Parameters: language (int), ID (string)
+// Parameters:
+//
+//	language (int) - The language to localize the message to
+//	ID (string) - The ID of the message to localize
 //
 // Returns: localized string (string)
 func Localize(language int, MessageID string) string {
 	return localizers[language].MustLocalize(&i18n.LocalizeConfig{MessageID: MessageID}) // Is it confusing to have field MessageID and parameter MessageID?
 }
 
+// Localizers returns the localizers variable
+//
+// Parameters: _
+//
+// Returns: localizers ([7]*i18n.Localizer)
 func Localizers() [7]*i18n.Localizer {
 	return localizers
 }

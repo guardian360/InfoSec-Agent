@@ -1,6 +1,8 @@
 // Package cryptography is the package which hosts encrypting and decrypting functions
 //
-// Function(s): EncryptMessage, DecryptMessage
+// Exported function(s): EncryptMessage, DecryptMessage
+//
+// Exported test function(s): TestEncryptDecrypt
 package cryptography
 
 import (
@@ -14,7 +16,10 @@ import (
 
 // EncryptMessage encrypts a string using AES
 //
-// Parameters: key ([]byte), message (string)
+// Parameters:
+//
+//	key ([]byte) - The key to use for encryption
+//	message (string) - The message to encrypt
 //
 // Returns: (string,error) where string is the encoded string.
 // On success, error should be nil
@@ -47,7 +52,9 @@ func EncryptMessage(key []byte, message string) (string, error) {
 
 // DecryptMessage decrypts a string using AES
 //
-// Parameters: key ([]byte), message (string)
+// Parameters:
+// key ([]byte) - The key to use for decryption
+// message (string) - The message to decrypt
 //
 // Returns: (string,error) where string is the decrypted message.
 // On success, error should be nil
