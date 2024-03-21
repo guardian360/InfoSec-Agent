@@ -43,6 +43,9 @@ function openSettingsPage() {
       <div id="personalize-button">Click me</div>
     </div>
   </div> 
+  <div class="setting">
+    <button id="change-language" type="button">Change Language</button>
+  </div> 
   `;
 
   document.getElementById("change-language").addEventListener("click", () => updateLanguage());

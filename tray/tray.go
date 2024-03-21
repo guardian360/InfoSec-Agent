@@ -88,7 +88,7 @@ func OnReady() {
 			ScanNow()
 		case <-mChangeLanguage.ClickedCh:
 			ChangeLanguage()
-			RefreshMenu(menuItems)
+			RefreshMenu()
 		case <-mQuit.ClickedCh:
 			systray.Quit()
 		case <-sigc:
@@ -255,6 +255,7 @@ func ScanNow() {
 //
 // Returns: _
 func ChangeLanguage(testInput ...string) {
+	fmt.Println("ChangeLanguage is veranderd")
 	var res string
 	if len(testInput) > 0 {
 		res = testInput[0]
@@ -295,9 +296,21 @@ func ChangeLanguage(testInput ...string) {
 // Parameters: items ([]MenuItem)
 //
 // Returns: _
-func RefreshMenu(items []MenuItem) {
-	for _, item := range items {
+func RefreshMenu() {
+	fmt.Println("Huidige taal: ", language)
+	fmt.Print(menuItems)
+	for _, item := range menuItems {
 		item.sysMenuItem.SetTitle(localization.Localize(language, item.MenuTitle))
+		fmt.Println(localization.Localize(language, item.MenuTitle))
 		item.sysMenuItem.SetTooltip(localization.Localize(language, item.menuTooltip))
 	}
+}
+
+// GetLanguage returns the current language index
+//
+// Parameters: _
+//
+// Returns: language index
+func GetLanguage() int {
+	return language
 }

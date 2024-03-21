@@ -33,5 +33,5 @@ func (a *App) startup(ctx context.Context) {
 // Localize calls the Localize function from the localization package and passes the given language and ID.
 // Wails binds this function to the frontend.
 func (a *App) Localize(MessageID string) string {
-	return localization.Localize(tray.Language(), MessageID)
+	return localization.Localize(tray.GetLanguage(), MessageID)
 }
