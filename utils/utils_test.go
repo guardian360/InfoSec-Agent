@@ -53,7 +53,57 @@ func TestCopyFileFailNonexistentDestination(T *testing.T) {
 // Parameters: t *testing.T - The testing framework
 //
 // Returns: _
-func TestPhishingDomainsReturnsResults(t *testing.T) {
+func TestPhishingDomainsReturnsResults(T *testing.T) {
 	domains := GetPhishingDomains()
-	require.NotEmpty(t, domains)
+	require.NotEmpty(T, domains)
+}
+
+// TestFirefoxFolder tests the FirefoxFolder function
+//
+// Parameters: t *testing.T - The testing framework
+//
+// Returns: _
+//func TestFirefoxFolder(t *testing.T) {
+// 	// This test should not be a part of the test suite, as it is dependent on the user's system
+//	// (unless the test suite will be run on a virtual machine)
+// 	// It will fail if the user does not have Firefox installed.
+//	// It does work properly if you do have it installed.
+//	folders, err := FirefoxFolder()
+//	require.NoError(T, err)
+//	require.NotEmpty(T, folders)
+//}
+
+// TestCurrentUserNameReturnsResults ensures the CurrentUserName function returns a result
+//
+// Parameters: t *testing.T - The testing framework
+//
+// Returns: _
+func TestCurrentUsernameReturnsResult(T *testing.T) {
+	username, err := CurrentUsername()
+	require.NoError(T, err)
+	require.NotEmpty(T, username)
+}
+
+// TestRemoveDuplicateStrRemovesDuplicates ensures the function works as intended
+//
+// Parameters: t *testing.T - The testing framework
+//
+// Returns: _
+func TestRemoveDuplicateStrRemovesDuplicates(T *testing.T) {
+	input := []string{"a", "b", "a", "c", "b"}
+	expected := []string{"a", "b", "c"}
+	result := RemoveDuplicateStr(input)
+	require.Equal(T, expected, result)
+}
+
+// TestRemoveDuplicateStrEmptyInput ensures the function works as intended with an empty input
+//
+// Parameters: t *testing.T - The testing framework
+//
+// Returns: _
+func TestRemoveDuplicateStrEmptyInput(T *testing.T) {
+	var input []string
+	var expected []string
+	result := RemoveDuplicateStr(input)
+	require.Equal(T, expected, result)
 }
