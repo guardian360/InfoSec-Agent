@@ -63,7 +63,7 @@ func SearchEngineFirefox() checks.Check {
 		return checks.NewCheckErrorf("SearchEngineFirefox", "Unable to skip the first 8 bytes", err)
 	}
 
-	// Retrives bytes 8-11 to find the size of the file
+	// Retrieves bytes 8-11 to find the size of the file
 	_, err = file.Read(uncompressSize)
 	if err != nil {
 		return checks.NewCheckErrorf("SearchEngineFirefox", "Unable to read the file", err)
