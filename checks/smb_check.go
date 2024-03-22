@@ -11,13 +11,13 @@ import (
 // Parameters: _
 //
 // Returns: If SMB1 and SMB2 are enabled or not
-func SmbCheck() Check {
-	smb1, err := SmbEnabled("SMB1", &utils.RealCommandExecutor{})
+func SmbCheck(smb1executor utils.CommandExecutor, smb2executor utils.CommandExecutor) Check {
+	smb1, err := SmbEnabled("SMB1", smb1executor)
 
 	if err != nil {
 		return NewCheckError("smb", err)
 	}
-	smb2, err := SmbEnabled("SMB2", &utils.RealCommandExecutor{})
+	smb2, err := SmbEnabled("SMB2", smb2executor)
 
 	if err != nil {
 		return NewCheckError("smb", err)
