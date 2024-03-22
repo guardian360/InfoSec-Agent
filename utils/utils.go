@@ -92,7 +92,7 @@ func FirefoxFolder() ([]string, error) {
 	// Get the current user
 	currentUser, err := user.Current()
 	if err != nil {
-		fmt.Println("Error:", err)
+		log.Println("Error:", err)
 		return nil, err
 	}
 	// Specify the path to the firefox profile directory
@@ -100,7 +100,7 @@ func FirefoxFolder() ([]string, error) {
 
 	dir, err := os.Open(profilesDir)
 	if err != nil {
-		fmt.Println("Error:", err)
+		log.Println("Error:", err)
 		return nil, err
 	}
 	defer func(dir *os.File) {
@@ -113,7 +113,7 @@ func FirefoxFolder() ([]string, error) {
 	// Read the contents of the directory
 	files, err := dir.Readdir(0)
 	if err != nil {
-		fmt.Println("Error:", err)
+		log.Println("Error:", err)
 		return nil, err
 	}
 
