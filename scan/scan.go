@@ -42,7 +42,9 @@ func Scan(dialog zenity.ProgressDialog) {
 			return checks.SmbCheck(&utils.RealCommandExecutor{}, &utils.RealCommandExecutor{})
 		},
 		checks.Startup,
-		checks.GuestAccount,
+		func() checks.Check {
+			return checks.GuestAccount(&utils.RealCommandExecutor{}, &utils.RealCommandExecutor{}, &utils.RealCommandExecutor{}, &utils.RealCommandExecutor{})
+		},
 		checks.UACCheck,
 		checks.RemoteDesktopCheck,
 		checks.ExternalDevices,
