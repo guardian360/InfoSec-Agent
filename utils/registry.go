@@ -30,7 +30,7 @@ func OpenRegistryKey(k registry.Key, path string) (registry.Key, error) {
 func CloseRegistryKey(key registry.Key) {
 	err := key.Close()
 	if err != nil {
-		log.Printf("error closing registry key: %w", err)
+		log.Printf("error closing registry key: %s", err)
 	}
 }
 
