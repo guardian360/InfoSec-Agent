@@ -56,5 +56,5 @@ func TestInstalledProgramsInvalid(t *testing.T) {
 // Returns: _
 func TestNoPasswordManager(t *testing.T) {
 	check := PasswordManager()
-	assert.Equal(t, check.Contains, "No password manager found")
+	assert.Contains(t, check.Result, "No password manager found")
 }

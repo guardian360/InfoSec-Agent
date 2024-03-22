@@ -1,62 +1,57 @@
 package checks
 
-import (
-	"fmt"
-	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
-	"os/exec"
-	"regexp"
-	"strings"
-	"time"
-)
-
-// LastPasswordChange checks when the Windows password was last changed
+// TestLastPasswordChange tests if response is correct when password was not changed recently
 //
 // Parameters: _
 //
-// Returns: When the password was last changed
-func LastPasswordChange() Check {
-	// Get the current Windows username
-	username, err := utils.CurrentUsername()
-	if err != nil {
-		return NewCheckErrorf("LastPasswordChange", "error retrieving username", err)
-	}
+// Returns: _
+// func TestLastPasswordChange(t *testing.T) {
+// 	// Save the original functions and restore them at the end
+// 	originalCommand := executor
+// 	originalUsername := fetcher
+// 	defer func() {
+// 		executor = originalCommand
+// 		fetcher = originalUsername
+// 	}()
 
-	output, _ := exec.Command("net", "user", username).Output()
-	lines := strings.Split(string(output), "\n")
-	// Define the regex pattern for the date
-	datePattern := `\b(\d{1,2}(-|/)\d{1,2}(-|/)\d{4})\b`
-	regex := regexp.MustCompile(datePattern)
-	// Find the date in the output
-	match := regex.FindString(lines[8])
+// 	// Test when exec.Command returns an error
+// 	utils.CurrentUsername = func() (string, error) {
+// 		return "testuser", nil
+// 	}
+// 	exec.Command = func(command string, args ...string) *exec.Cmd {
+// 		return exec.Command("nonexistent")
+// 	}
+// 	result = LastPasswordChange()
+// 	assert.NotNil(t, result.Error)
 
-	var date time.Time
-	// Define different valid date formats
-	dateFormats := []string{"2/1/2006", "2-1-2006", "1/2/2006", "1-2-2006", "2/1/06", "2-1-06", "1/2/06", "1-2-06"}
+// 	// Test when exec.Command returns valid output
+// 	exec.Command = func(command string, args ...string) *exec.Cmd {
+// 		output := []byte(`User name                    testuser
+// 	Full Name                    Test User
+// 	Comment
+// 	User's comment
+// 	Country/region code          000 (System Default)
+// 	Account active               Yes
+// 	Account expires              Never
 
-	// Try parsing the date with different formats
-	for _, format := range dateFormats {
-		date, err = time.Parse(format, match)
+// 	Password last set            01-01-2022 12:00:00 AM
+// 	Password expires             Never
+// 	Password changeable          01-01-2022 12:00:00 AM
+// 	Password required            Yes
+// 	User may change password     Yes
 
-		// Stop on successful parse
-		if err == nil {
-			break
-		}
-	}
+// 	Workstations allowed         All
+// 	Logon script
+// 	User profile
+// 	Home directory
+// 	Last logon                   Never
 
-	if err != nil {
-		return NewCheckError("LastPasswordChange", fmt.Errorf("error parsing date"))
-	}
-
-	// Get the current time
-	currentTime := time.Now()
-	difference := currentTime.Sub(date)
-	// Define the duration of half a year
-	halfYear := 365 / 2 * 24 * time.Hour
-	// If it has been more than half a year since the password was last changed, return a warning
-	if difference > halfYear {
-		return NewCheckResult("LastPasswordChange", fmt.Sprintf("Password last changed on %s", match),
-			"password was changed more than half a year ago so you should change it again")
-	}
-	return NewCheckResult("LastPasswordChange", fmt.Sprintf("You changed your password recently on %s",
-		match))
-}
+// 	Logon hours allowed          All`)
+// 		cmd := exec.Command(command, args...)
+// 		cmd.Stdout = bytes.NewBuffer(output)
+// 		return cmd
+// 	}
+// 	expectedResult := NewCheckResult("LastPasswordChange", "You changed your password recently on 01-01-2022")
+// 	result = LastPasswordChange()
+// 	assert.Equal(t, expectedResult, result)
+// }
