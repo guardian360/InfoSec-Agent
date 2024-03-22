@@ -1,13 +1,17 @@
 // Package tray implements the basic functionality of the system tray application
 //
-// Function(s): OnReady, OnQuit, openReportingPage, ChangeScanInterval, ScanNow, ChangeLanguage,
-// RefreshMenu, ScanCounter, ScanTicker, Language, MenuItems
+// Exported function(s): OnReady, OnQuit, ChangeScanInterval, ScanNow, ChangeLanguage,
+// RefreshMenu
+//
+// Test functions(s): TestMain, TestChangeScanInterval, TestScanNow,
+// TestOnQuit, TestTranslation, TestChangeLang, TestRefreshMenu
 package tray
 
 import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/icon"
 	"github.com/InfoSec-Agent/InfoSec-Agent/localization"
 	"github.com/InfoSec-Agent/InfoSec-Agent/scan"
+	"log"
 
 	"github.com/getlantern/systray"
 	"github.com/ncruces/zenity"
@@ -139,7 +143,7 @@ func openReportingPage() {
 	defer func() {
 		err := os.Chdir(originalDir)
 		if err != nil {
-			fmt.Println("Error changing directory:", err)
+			log.Println("Error changing directory:", err)
 		}
 		rpPage = false
 	}()
@@ -233,7 +237,7 @@ func ScanNow() {
 	defer func(dialog zenity.ProgressDialog) {
 		err := dialog.Close()
 		if err != nil {
-			fmt.Println("Error closing dialog:", err)
+			log.Println("Error closing dialog:", err)
 		}
 	}(dialog)
 
@@ -298,37 +302,3 @@ func RefreshMenu(items []MenuItem) {
 		item.sysMenuItem.SetTooltip(localization.Localize(language, item.menuTooltip))
 	}
 }
-
-// ScanCounter returns the scanCounter, for use in tray_test.go
-//
-// Parameters: _
-//
-// Returns: scanCounter (int)
-func ScanCounter() int {
-	return scanCounter
-}
-
-// ScanTicker returns the scanTicker, for use in tray_test.go
-//
-// Parameters: _
-//
-// Returns: scanTicker (*time.Ticker)
-func ScanTicker() *time.Ticker {
-	return scanTicker
-}
-
-// Language returns the language variable, for use in tray_test.go
-//
-// Parameters: _
-//
-// Returns: language index (int)
-func Language() int {
-	return language
-}
-
-// MenuItems returns the list of system tray menu items, for use in tray_test.go
-//
-// Parameters: _
-//
-// Returns: menuItems ([]MenuItem)
-func MenuItems() []MenuItem { return menuItems }

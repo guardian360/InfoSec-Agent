@@ -1,11 +1,7 @@
-// Package checks implements different security/privacy checks
-//
-// Exported function(s): PasswordManager, WindowsDefender, LastPasswordChange, LoginMethod, Permission, Bluetooth,
-// OpenPorts, WindowsOutdated, SecureBoot, SmbCheck, Startup, GuestAccount, UACCheck, RemoteDesktopCheck,
-// ExternalDevices, NetworkSharing
 package checks
 
 import (
+	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"golang.org/x/sys/windows/registry"
 )
 
@@ -16,13 +12,13 @@ import (
 // Returns: If Remote Desktop is enabled or not
 func RemoteDesktopCheck() Check {
 	// Open the registry key for Terminal Server settings
-	key, err := registry.OpenKey(registry.LOCAL_MACHINE, `System\CurrentControlSet\Control\Terminal Server`,
-		registry.QUERY_VALUE)
+	key, err := utils.OpenRegistryKey(registry.LOCAL_MACHINE, `System\CurrentControlSet\Control\Terminal Server`)
+	//was registry.QUERY_VALUE, is now registry.READ
 	if err != nil {
 		return NewCheckErrorf("RemoteDesktop", "error opening registry key", err)
 	}
 	// Close the key after we have received all relevant information
-	defer key.Close()
+	defer utils.CloseRegistryKey(key)
 
 	// Read the value of fDenyTSConnections, which contains the information if Remote Desktop is enabled or not
 	val, _, err := key.GetIntegerValue("fDenyTSConnections")

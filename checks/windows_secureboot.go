@@ -1,11 +1,7 @@
-// Package checks implements different security/privacy checks
-//
-// Exported function(s): PasswordManager, WindowsDefender, LastPasswordChange, LoginMethod, Permission, Bluetooth,
-// OpenPorts, WindowsOutdated, SecureBoot, SmbCheck, Startup, GuestAccount, UACCheck, RemoteDesktopCheck,
-// ExternalDevices, NetworkSharing
 package checks
 
 import (
+	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"golang.org/x/sys/windows/registry"
 )
 
@@ -16,19 +12,11 @@ import (
 // Returns: If Windows secure boot is enabled or not
 func SecureBoot() Check {
 	// Get secure boot information from the registry
-	windowsSecureBoot, err := registry.OpenKey(registry.LOCAL_MACHINE,
-		`SYSTEM\CurrentControlSet\Control\SecureBoot\State`, registry.READ)
-
+	windowsSecureBoot, err := utils.OpenRegistryKey(registry.LOCAL_MACHINE, `SYSTEM\CurrentControlSet\Control\SecureBoot\State`)
 	if err != nil {
 		return NewCheckError("SecureBoot", err)
 	}
-
-	defer func(windowsSecureBoot registry.Key) {
-		err := windowsSecureBoot.Close()
-		if err != nil {
-			return
-		}
-	}(windowsSecureBoot)
+	defer utils.CloseRegistryKey(windowsSecureBoot)
 
 	// Read the status of secure boot
 	secureBootStatus, _, err := windowsSecureBoot.GetIntegerValue("UEFISecureBootEnabled")

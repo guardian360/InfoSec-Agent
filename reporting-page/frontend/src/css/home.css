@@ -1,10 +1,10 @@
 @import url(color-palette.css);
 
 body {
-    background-color: var(--background-color);
-    font-family: "DM Sans", sans-serif;
-    padding: 0;
-    margin: 0;
+  background-color: var(--background-color);
+  font-family: "DM Sans", sans-serif;
+  padding: 0;
+  margin: 0;
 }
 
 .page-contents {
@@ -13,186 +13,185 @@ body {
 
 
 /* Header */
-#header {
-    background-color: var(--light-blue);
-    height: 60px;
-    position: fixed;
-    z-index: 10;
-    top: 0;
-    width: 100%;
+.header {
+  background-color: var(--light-blue);
+  height: 60px;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  width: 100%;
 }
-#header-logo {
-    height: 100%;
-    width: 49%;
-    display: inline-flex;
-    float:left;
+.header-logo {
+  height: 100%;
+  width: 49%;
+  display: inline-flex;
+  float:left;
 }
-#logo-button {
-    height: 100%;
-    width: auto;
-    display: inline-flex;
-    text-align: center;
-    text-decoration: none;
-    font-weight: bold;
-    color: #333;
-    padding: 0;
-    margin: 0;
+.logo-name {
+  height: 100%;
+  width: auto;
+  display: inline-flex;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  color: #333;
+  padding: 0;
+  margin: 0;
 }
-#logo-button:hover {
-    cursor: pointer;
+.logo-name:hover {
+  cursor: pointer;
 }
-#logo-button img {
-    height: 60%;
-    margin-left: 20px;
-    margin-top:12px;
+.logo-name img {
+  height: 60%;
+  margin-left: 20px;
+  margin-top:12px;
 }
-#header-name {
-    margin-left: 20px;
-    line-height: 60px;
+.header-name {
+  margin-left: 20px;
+  line-height: 60px;
 }
-#header-name h1 {
-    font-size: 1.2rem;
-    font-weight:900;
-    margin: 0;
-    padding: 0;
-    vertical-align: middle;
+.header-name h1 {
+  font-size: 1.2rem;
+  font-weight:900;
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
 }
-#header-settings {
-    height: 100%;
-    width: 49%;
-    display: inline-flex;
-    float:left;
-    font-size: 1.2em;
-    font-weight: 100;
+.header-settings {
+  height: 100%;
+  width: 49%;
+  display: inline-flex;
+  float:left;
+  font-size: 1.2em;
+  font-weight: 100;
 }
-#header-settings a {
-    margin-left: auto;
-    height: 100%;
-    color: var(--dark-text);
-    text-decoration: none;
+.header-settings a {
+  margin-left: auto;
+  height: 100%;
+  color: var(--dark-text);
+  text-decoration: none;
 }
-#header-settings .nav-link {
-    margin-left: auto;
-    height: 100%;
-    color: var(--dark-text);
-    text-decoration: none;
+.header-settings .nav-link {
+  margin-left: auto;
+  height: 100%;
+  color: var(--dark-text);
+  text-decoration: none;
 }
-#header-settings p {
-    float:left;
-    margin-top:17px;
-    margin-bottom:auto;
-    color: var(--dark-text);
+.header-settings p {
+  float:left;
+  margin-top:17px;
+  margin-bottom:auto;
+  color: var(--dark-text);
 }
-#header-settings p:hover {
-    color: var(--dark-text-hover);
-    cursor: pointer;
+.header-settings p:hover {
+  color: var(--dark-text-hover);
+  cursor: pointer;
 }
-#header-settings span {
-    vertical-align: middle;
-    padding-right: 10px;
+.header-settings span {
+  vertical-align: middle;
+  padding-right: 10px;
 }
 
 
 /* Navigation menu */
-#left-nav {
-    padding-top: 60px;
-    height: 100vh;
-    width: 240px;
-    background-color: var(--blue);
-    float:left;
-    position: fixed;
-    z-index: 1;
+.left-nav {
+  padding-top: 38px;
+  height: 100vh;
+  width: 240px;
+  background-color: var(--blue);
+  float:left;
+  position: fixed;
+  z-index: 1;
 }
-#left-nav a {
-    height: auto;
-    width: 100%;
-    line-height: 100%;
-    text-decoration: none;
-    float: left;
+.left-nav a {
+  height: auto;
+  width: 100%;
+  line-height: 100%;
+  text-decoration: none;
+  float: left;
 }
-#left-nav .nav-link {
-    height: auto;
-    width: 100%;
-    line-height: 100%;
-    text-decoration: none;
-    float: left;
+.left-nav .nav-link {
+  height: auto;
+  width: 100%;
+  line-height: 100%;
+  text-decoration: none;
+  float: left;
 }
-#left-nav p:hover {
-    background-color: var(--blue-hover);
-    color: var(--light-text-hover);
-    cursor: pointer;
+.left-nav p:hover {
+  background-color: var(--blue-hover);
+  color: var(--light-text-hover);
+  cursor: pointer;
 }
-#left-nav p {
-    width: 100%;
-    color: var(--light-text);
-    line-height: 100%;
-    margin: 0;
-    font-size: 1em;
-    float:left;
+.left-nav p {
+  width: 100%;
+  color: var(--light-text);
+  line-height: 100%;
+  margin: 0;
+  font-size: 1em;
+  float:left;
 }
-#left-nav span {
-    float:left;
-    vertical-align: bottom;
-    padding: 10px;
+.left-nav span {
+  float:left;
+  vertical-align: bottom;
+  padding: 10px;
 }
-#left-nav .material-symbols-outlined {
-    padding-left: 20px;
+.left-nav .material-symbols-outlined {
+  padding-left: 20px;
 }
-#left-nav .nav-item {
-    padding-top: 15px;
+.left-nav .nav-item {
+  padding-top: 15px;
 }
 
-#left-nav .active {
-    background-color: #427385;
+.left-nav .active {
+  background-color: #427385;
 }
 
 
 
 /* Medals main */
 .container{
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 75%
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 75%
 }
 
-#title-medals{
-
-    padding: 10px;
-    border-radius: 15px 15px 15px 15px;
-    background-color: var(--accentV2Light900);
-    margin-top: 20px;
-    text-align: center;
-    width:70%;
+.title-medals{
+  padding: 10px;
+  border-radius: 15px 15px 15px 15px;
+  background-color: var(--accentV2Light900);
+  margin-top: 20px;
+  text-align: center;
+  width:70%;
 }
 .medal-layout{
-    flex-basis: 25%;
-    text-align: center;
-    margin: 0 10px 20px;
-    height: 80%;
+  flex-basis: 25%;
+  text-align: center;
+  margin: 0 10px 20px;
+  height: 80%;
 }
 
 .medal-layout img{
-    max-width: 100%
+  max-width: 100%
 }
 
-#medal-name{
-    color: blue;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 10px;
+.medal-name{
+  color: blue;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
 }
 
 /* Data home */
 .container-data{
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 60%;
-    padding-top: 60px;
-    margin-left: 240px;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 60%;
+  padding-top: 38px;
+  margin-left: 240px;
 }
-#title-medals{
-    margin-left: 240px;
+.title-medals{
+  margin-left: 240px;
 }
 .container{
-    margin-left: 240px;
+  margin-left: 240px;
 }
