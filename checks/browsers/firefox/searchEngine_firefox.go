@@ -20,13 +20,10 @@ import (
 func SearchEngineFirefox() checks.Check {
 	// Determine the directory in which the Firefox profile is stored
 	ffdirectory, _ := utils.FirefoxFolder()
-
-	// Path to the search.json.mozlz4 file
 	filePath := ffdirectory[0] + "/search.json.mozlz4"
 
-	//Copy the json file so we don't have problems with locked files
+	// Create a temporary file to copy the compressed json to
 	tempSearch := filepath.Join(os.TempDir(), "tempSearch.json.mozlz4")
-	// Clean up the temporary file when the function returns
 	defer os.Remove(tempSearch)
 
 	// Copy the compressed json to a temporary location
@@ -35,31 +32,29 @@ func SearchEngineFirefox() checks.Check {
 		return checks.NewCheckErrorf("SearchEngineFirefox", "Unable to make a copy of the file", copyError)
 	}
 
-	// Get file information
 	fileInfo, err := os.Stat(tempSearch)
 	if err != nil {
 		return checks.NewCheckErrorf("SearchEngineFirefox", "Unable to retrieve information about the file", err)
 	}
-	// Get the size of the compressed file
 	fileSize := fileInfo.Size()
 
-	//Holds the information from the copied file
+	// Holds the information from the copied file
 	file, err := os.Open(tempSearch)
 	if err != nil {
 		return checks.NewCheckErrorf("SearchEngineFirefox", "Unable to open the file", err)
 	}
 	defer utils.CloseFile(file)
 
-	//Holds the custom magig number for the mozzila lz4 compression
+	// Holds the custom magig number for the mozzila lz4 compression
 	magicNumber := make([]byte, 8)
 
-	//Retrieves the magicNumber from the file
+	// Retrieves the magicNumber from the file
 	_, err = file.Read(magicNumber)
 	if err != nil {
 		return checks.NewCheckErrorf("SearchEngineFirefox", "Unable to read the file", err)
 	}
 
-	//Holds the size of the file after decompressing it
+	// Holds the size of the file after decompressing it
 	uncompressSize := make([]byte, 4)
 
 	// Skip the first 8 bytes to take the bytes 8-11 that hold the size after decompression
@@ -68,22 +63,22 @@ func SearchEngineFirefox() checks.Check {
 		return checks.NewCheckErrorf("SearchEngineFirefox", "Unable to skip the first 8 bytes", err)
 	}
 
-	//Here we read the 8-11 bytes to find the size of the file
+	// Retrives bytes 8-11 to find the size of the file
 	_, err = file.Read(uncompressSize)
 	if err != nil {
 		return checks.NewCheckErrorf("SearchEngineFirefox", "Unable to read the file", err)
 	}
 
-	//Transforms the size of the file after decompression from Little Endian to a normal 32-bit integer
+	// Transforms the size of the file after decompression from Little Endian to a normal 32-bit integer
 	unCompressedSize := binary.LittleEndian.Uint32(uncompressSize)
 
-	// Seek to skip the first 12 bytes
+	// Skip the first 12 bytes because that is the start of the data
 	_, err = file.Seek(12, io.SeekStart)
 	if err != nil {
 		return checks.NewCheckErrorf("SearchEngineFirefox", "Unable to skip the first 12 bytes", err)
 	}
 
-	//Byte slice to hold the compressed data without the header (first 12 bytes)
+	// Byte slice to hold the compressed data without the header (first 12 bytes)
 	compressedData := make([]byte, fileSize-12)
 
 	_, err = file.Read(compressedData)
@@ -91,11 +86,8 @@ func SearchEngineFirefox() checks.Check {
 		return checks.NewCheckErrorf("SearchEngineFirefox", "Unable to read the file", err)
 	}
 
-	//Byte slice to hold all the uncompressed data
 	data := make([]byte, unCompressedSize)
-	// Uncompresses the file and puts it into the data slice
 	lz4.UncompressBlock(compressedData, data)
-	// Transforms the data into a readable string
 	output := string(data)
 	var result string
 	// Regex to check if the defaultEngineId is empty which means that the engine is Google
@@ -107,19 +99,12 @@ func SearchEngineFirefox() checks.Check {
 	} else {
 		// This pattern looks for the values of the other known search engines and returns them
 		pattern := `defaultEngineId":"(?:ddg|bing|ebay|wikipedia|amazon)@search\.mozilla\.org`
-		// Compile the regex pattern
 		re := regexp.MustCompile(pattern)
-
-		// Find all matches in the text
-		matches := re.FindAllString(output, -1)
-
-		// adds the match to the result
-		if len(matches) > 0 {
-			result = matches[0]
-			result = result[18:]
-		} else {
-			result = "Other search engine"
+		matches := re.FindString(output)
+		if matches == "" {
+			return checks.NewCheckResult("SearchEngineFirefox", "Other Search Engine")
 		}
+		result = matches[18:]
 	}
 	return checks.NewCheckResult("SearchEngineFirefox", result)
 }

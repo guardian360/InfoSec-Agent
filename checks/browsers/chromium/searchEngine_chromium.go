@@ -30,7 +30,7 @@ func SearchEngineChromium(browser string) checks.Check {
 		returnBrowserName = "SearchEngineEdge"
 		browserPath = "Microsoft/Edge"
 	}
-	//Holds the return value
+	// Holds the return value
 	var defaultSE string
 	user, err := os.UserHomeDir()
 	if err != nil {
@@ -45,29 +45,25 @@ func SearchEngineChromium(browser string) checks.Check {
 	}
 	defer utils.CloseFile(file)
 
-	//Byte array holding the preferences json data used to unmarshal the data later
+	// Byte array holding the preferences json data used to unmarshal the data later
 	byteValue, err := io.ReadAll(file)
 	if err != nil {
 		return checks.NewCheckErrorf(returnBrowserName, " Can't read data,Error: ", err)
 	}
-	//Holds the unmarshaled data of the json for acces to the key value pairs
+	// Holds the unmarshaled data of the json for acces to the key value pairs
 	var dev map[string]interface{}
 	err = json.Unmarshal(byteValue, &dev)
 	if err != nil {
 		return checks.NewCheckErrorf(returnBrowserName, "Error: ", err)
 	}
 
-	//iterate through the json dev map to look for our search engine key
+	// Iterate through the json dev map to look for our search engine key
 	for key, value := range dev {
 		if key == "default_search_provider_data" {
 			text := fmt.Sprintf("%v", value)
 			// Regex pattern to find the string keyword: and everything after that until we hit a space
 			pattern := `keyword:\s*(\S+)`
-
-			// Compile the regular expression
 			regex := regexp.MustCompile(pattern)
-
-			// Holds the match from the regex
 			matches := regex.FindString(text)
 			if matches == "" {
 				return checks.NewCheckErrorf(returnBrowserName, "Error: ", err)

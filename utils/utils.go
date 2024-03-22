@@ -173,12 +173,12 @@ func RemoveDuplicateStr(strSlice []string) []string {
 
 // CloseFile closes a file and handles associated errors
 //
-// Parameters: file represents the file to close
+// Parameters: file *os.File - the file to close
 //
 // Returns: _
 func CloseFile(file *os.File) {
 	err := file.Close()
 	if err != nil {
-		log.Printf("error closing file: %w", err)
+		log.Printf("error closing file: %s", err)
 	}
 }
