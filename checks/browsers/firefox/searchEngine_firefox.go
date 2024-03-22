@@ -48,7 +48,7 @@ func SearchEngineFirefox() checks.Check {
 	if err != nil {
 		return checks.NewCheckErrorf("SearchEngineFirefox", "Unable to open the file", err)
 	}
-	defer file.Close()
+	defer utils.CloseFile(file)
 
 	//Holds the custom magig number for the mozzila lz4 compression
 	magicNumber := make([]byte, 8)

@@ -9,6 +9,7 @@ import (
 	"regexp"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
+	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 )
 
 // SearchEngineFireFox checks the standard search engine in chromium based browsers.
@@ -38,15 +39,14 @@ func SearchEngineChromium(browser string) checks.Check {
 
 	// Get the current user's home directory, where the preferences can be found
 	preferencesDir := filepath.Join(user, "AppData", "Local", browserPath, "User Data", "Default", "Preferences")
-	files, err := os.Open(preferencesDir)
+	file, err := os.Open(preferencesDir)
 	if err != nil {
 		return checks.NewCheckErrorf(returnBrowserName, "Error: ", err)
 	}
-	defer files.Close()
-
+	defer utils.CloseFile(file)
 
 	//Byte array holding the preferences json data used to unmarshal the data later
-	byteValue, err := io.ReadAll(files)
+	byteValue, err := io.ReadAll(file)
 	if err != nil {
 		return checks.NewCheckErrorf(returnBrowserName, " Can't read data,Error: ", err)
 	}
