@@ -1,8 +1,6 @@
 // Package cryptography is the package which hosts encrypting and decrypting functions
 //
 // Exported function(s): EncryptMessage, DecryptMessage
-//
-// Exported test function(s): TestEncryptDecrypt
 package cryptography
 
 import (

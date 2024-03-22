@@ -2,7 +2,7 @@ package checks
 
 import (
 	"fmt"
-	"os/exec"
+	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"strings"
 )
 
@@ -11,13 +11,13 @@ import (
 // Parameters: _
 //
 // Returns: If SMB1 and SMB2 are enabled or not
-func SmbCheck() Check {
-	smb1, err := smbEnabled("SMB1")
+func SmbCheck(smb1executor utils.CommandExecutor, smb2executor utils.CommandExecutor) Check {
+	smb1, err := SmbEnabled("SMB1", smb1executor)
 
 	if err != nil {
 		return NewCheckError("smb", err)
 	}
-	smb2, err := smbEnabled("SMB2")
+	smb2, err := SmbEnabled("SMB2", smb2executor)
 
 	if err != nil {
 		return NewCheckError("smb", err)
@@ -26,16 +26,15 @@ func SmbCheck() Check {
 	return NewCheckResult("smb", smb1, smb2)
 }
 
-// smbEnabled checks whether the specified SMB protocol is enabled
+// SmbEnabled checks whether the specified SMB protocol is enabled
 //
 // Parameters: smb (string) represents the SMB protocol to check
 //
 // Returns: If the specified SMB protocol is enabled or not
-func smbEnabled(smb string) (string, error) {
+func SmbEnabled(smb string, executor utils.CommandExecutor) (string, error) {
 	// Get the status of the specified SMB protocol
 	command := fmt.Sprintf("Get-SmbServerConfiguration | Select-Object Enable%sProtocol", smb)
-
-	output, err := exec.Command("powershell", command).Output()
+	output, err := executor.Execute("powershell", command)
 
 	if err != nil {
 		return "", err
