@@ -1,5 +1,6 @@
 import * as piechart from "./piechart";
 import {ScanNow} from '../../wailsjs/go/main/Tray';
+import medal from '../assets/images/img_medal1.jpg';
 
 /** Load the content of the Home page */
 function openHomePage() {
@@ -22,21 +23,21 @@ function openHomePage() {
   <h2 class="title-medals">Medals</h2>
   <div class="container">  
     <div class="medal-layout">
-      <img src="src/assets/images/img_medal1.jpg" alt="Photo of medal">
-      <p class="medal-name"> Medal 1</p>
+    <img id="medal" alt="Photo of medal"></img>
+    <p class="medal-name"> Medal 1</p>
       <p> 01-03-2024</p>
     </div>
     <div class="medal-layout">
-      <img src="src/assets/images/img_medal1.jpg" alt="Photo of medal">
+      <img id="medal2" alt="Photo of medal"></img>
       <p class="medal-name"> Medal 2</p>
       <p> 01-03-2024</p>
     </div>
     <div class="medal-layout">
-      <img src="src/assets/images/img_medal1.jpg" alt="Photo of medal">
+      <img id="medal3" alt="Photo of medal"></img>
       <p class="medal-name"> Medal 3</p>
       <p> 01-03-2024</p>
     </div><div class="medal-layout">
-      <img src="src/assets/images/img_medal1.jpg" alt="Photo of medal">
+      <img id="medal4" alt="Photo of medal"></img>
       <p class="medal-name"> Medal 1</p>
       <p> 01-03-2024</p>
     </div>

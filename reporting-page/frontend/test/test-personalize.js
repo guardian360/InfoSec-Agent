@@ -1,4 +1,4 @@
-import { handlePictureChange, handleTitleChange } from '../src/js/personalize.js'; // Assuming the function is in picture.js
+import { handleFaviconChange, handlePictureChange, handleTitleChange } from '../src/js/personalize.js'; // Assuming the function is in picture.js
 import { JSDOM } from 'jsdom';
 import test from 'unit.js';
 
@@ -20,7 +20,7 @@ global.window = dom.window;
 // Mock FileReader
 global.FileReader = class {
   readAsDataURL() {
-    this.onload({ target: { result: 'data:image/jpeg;base64' } });
+    this.onload({ target: { result: 'data:image/png' } });
   }
 };
 
@@ -42,6 +42,22 @@ global.localStorage = localStorageMock;
 
 
 // Test cases
+describe('handleFaviconSelect', () => {
+  it('should change the favicon when a valid .png file is selected', () => {
+    // Arrange
+    const head = document.querySelector('head');
+
+    // Act
+    handleFaviconChange({ target: { files: [new Blob(['dummy'], { type: 'image/png' })] } });
+
+    // Assert
+    const newFavicon = head.querySelector('link[rel="icon"]');
+    test.value(newFavicon.type).isEqualTo('image/png');
+    test.value(newFavicon.href).isEqualTo('data:image/png');
+  });
+});
+
+
 describe('handlePictureChange', () => {
   it('should change the logo image', () => {
     // Arrange
@@ -65,7 +81,6 @@ describe('handlePictureChange', () => {
     // Assert
     test.value(localStorageMock.getItem('picture')).isEqualTo('data:image/jpeg;base64');
   })
-
 });
 
 describe('handleTitleChange', () => {

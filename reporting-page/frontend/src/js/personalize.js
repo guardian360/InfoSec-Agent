@@ -49,7 +49,7 @@ export function openPersonalizePage() {
   </div>
   `;
   const faviconInput = document.getElementById('faviconInput');//add eventlistener for changing Favicon
-  faviconInput.addEventListener('change', handleFaviconSelect);
+  faviconInput.addEventListener('change', handleFaviconChange);
   
   const pictureInput = document.getElementById('input-file-picture'); //add eventlistener for changing navication picture
   pictureInput.addEventListener('change', handlePictureChange);
@@ -69,12 +69,8 @@ export function handlePictureChange(picture) {
   reader.readAsDataURL(file); // Read the selected file as a Data URL
 }
 
-/** Select af file to set as the icon
- * 
- * @param {Event} event File event from which file is taken
- */
-function handleFaviconSelect(event) {
-  const file = event.target.files[0]; // Get the selected file
+export function handleFaviconChange(icon) {
+  const file = icon.target.files[0]; // Get the selected file
   if (file) {
     const reader = new FileReader(); // Create a new FileReader object
     reader.onload = function(e) {
