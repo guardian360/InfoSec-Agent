@@ -2,9 +2,6 @@
 //
 // Exported function(s): OnReady, OnQuit, ChangeScanInterval, ScanNow, ChangeLanguage,
 // RefreshMenu
-//
-// Test functions(s): TestMain, TestChangeScanInterval, TestScanNow,
-// TestOnQuit, TestTranslation, TestChangeLang, TestRefreshMenu
 package tray
 
 import (
