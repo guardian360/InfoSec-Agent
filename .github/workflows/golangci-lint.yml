@@ -31,7 +31,7 @@ jobs:
           version: latest
 
           # Optional: working directory, useful for monorepos
-          working-directory: linting
+          # working-directory: linting
 
           # Optional: golangci-lint command line arguments.
           #
