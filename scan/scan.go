@@ -22,7 +22,7 @@ import (
 //
 // Returns: checks.json file containing the results of all security/privacy checks
 func Scan(dialog zenity.ProgressDialog) {
-
+	
 	// Define all security/privacy checks that Scan() should execute
 	securityChecks := []func() checks.Check{
 		checks.PasswordManager,
@@ -42,11 +42,13 @@ func Scan(dialog zenity.ProgressDialog) {
 			return checks.SmbCheck(&utils.RealCommandExecutor{}, &utils.RealCommandExecutor{})
 		},
 		checks.Startup,
-		checks.GuestAccount,
+		func() checks.Check {
+			return checks.GuestAccount(&utils.RealCommandExecutor{}, &utils.RealCommandExecutor{}, &utils.RealCommandExecutor{}, &utils.RealCommandExecutor{})
+		},
 		checks.UACCheck,
 		checks.RemoteDesktopCheck,
 		checks.ExternalDevices,
-		checks.NetworkSharing,
+		func() checks.Check { return checks.NetworkSharing(&utils.RealCommandExecutor{}) },
 		func() checks.Check { return chromium.HistoryChromium("Chrome") },
 		func() checks.Check { return chromium.ExtensionsChromium("Chrome") },
 		func() checks.Check { return chromium.SearchEngineChromium("Chrome") },
