@@ -22,7 +22,7 @@ import (
 //
 // Returns: checks.json file containing the results of all security/privacy checks
 func Scan(dialog zenity.ProgressDialog) {
-	
+
 	// Define all security/privacy checks that Scan() should execute
 	securityChecks := []func() checks.Check{
 		checks.PasswordManager,
@@ -35,7 +35,9 @@ func Scan(dialog zenity.ProgressDialog) {
 		func() checks.Check { return checks.Permission("appointments") },
 		func() checks.Check { return checks.Permission("contacts") },
 		checks.Bluetooth,
-		checks.OpenPorts,
+		func() checks.Check {
+			return checks.OpenPorts(&utils.RealCommandExecutor{}, &utils.RealCommandExecutor{})
+		},
 		checks.WindowsOutdated,
 		checks.SecureBoot,
 		func() checks.Check {
@@ -45,9 +47,9 @@ func Scan(dialog zenity.ProgressDialog) {
 		func() checks.Check {
 			return checks.GuestAccount(&utils.RealCommandExecutor{}, &utils.RealCommandExecutor{}, &utils.RealCommandExecutor{}, &utils.RealCommandExecutor{})
 		},
-		checks.UACCheck,
+		func() checks.Check { return checks.UACCheck(&utils.RealCommandExecutor{}) },
 		checks.RemoteDesktopCheck,
-		checks.ExternalDevices,
+		func() checks.Check { return checks.ExternalDevices(&utils.RealCommandExecutor{}) },
 		func() checks.Check { return checks.NetworkSharing(&utils.RealCommandExecutor{}) },
 		func() checks.Check { return chromium.HistoryChromium("Chrome") },
 		func() checks.Check { return chromium.ExtensionsChromium("Chrome") },
