@@ -1,4 +1,4 @@
-import { changePicture } from '../src/js/personalize.js'; // Assuming the function is in picture.js
+import { handlePictureChange, handleTitleChange } from '../src/js/personalize.js'; // Assuming the function is in picture.js
 import { JSDOM } from 'jsdom';
 import test from 'unit.js';
 
@@ -9,6 +9,8 @@ const dom = new JSDOM(`
 <body>
   <input type="file" id="picture-input">
   <img id="logo" src="">
+  <input type="text" id="newTitle" value="New Page Title">
+  <h1 id="title">Old Title</h1>
 </body>
 </html>
 `);
@@ -40,20 +42,54 @@ global.localStorage = localStorageMock;
 
 
 // Test cases
-describe('changePicture', () => {
-  it('should change the logo image and save in localStorage', () => {
+describe('handlePictureChange', () => {
+  it('should change the logo image', () => {
     // Arrange
     const fileInput = document.getElementById('picture-input');
     const logo = document.getElementById('logo');
 
     // Act
-    changePicture({ target: { files: [new Blob(['dummy'], { type: 'image/jpeg' })] } });
+    handlePictureChange({ target: { files: [new Blob(['dummy'], { type: 'image/jpeg' })] } });
 
     // Assert
     test.value(logo.src).isEqualTo('data:image/jpeg;base64');
-    test.value(localStorageMock.getItem('picture')).isEqualTo('data:image/jpeg;base64');
   
     })
+  it('should save in localstorage', () => {
+    //Arrange
+    const fileInput = document.getElementById('picture-input');
+    const logo = document.getElementById('logo');
+    // Act
+    handlePictureChange({ target: { files: [new Blob(['dummy'], { type: 'image/jpeg' })] } });
+
+    // Assert
+    test.value(localStorageMock.getItem('picture')).isEqualTo('data:image/jpeg;base64');
+  })
 
 });
 
+describe('handleTitleChange', () => {
+  it('should change the title of the page', () => {
+    // Arrange
+    const newTitleInput = document.getElementById('newTitle');
+    const titleElement = document.getElementById('title');
+      
+    // Act
+    handleTitleChange();
+      
+    // Assert
+    test.value(titleElement.textContent).isEqualTo(newTitleInput.value);
+    });
+      
+    it('should save the new title to localStorage', () => {
+    // Arrange
+    const newTitleInput = document.getElementById('newTitle');
+      
+    // Act
+    handleTitleChange();
+      
+    // Assert
+    test.value(localStorageMock.getItem('title')).isEqualTo(newTitleInput.value);
+
+  });
+});

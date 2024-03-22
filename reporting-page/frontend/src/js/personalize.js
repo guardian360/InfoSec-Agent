@@ -52,13 +52,13 @@ export function openPersonalizePage() {
   faviconInput.addEventListener('change', handleFaviconSelect);
   
   const pictureInput = document.getElementById('input-file-picture'); //add eventlistener for changing navication picture
-  pictureInput.addEventListener('change', changePicture);
+  pictureInput.addEventListener('change', handlePictureChange);
   
   const newTitleInput = document.getElementById('newTitle'); //add eventlistener for changing navigation title
   newTitleInput.addEventListener('input', handleTitleChange);
   }
 
-export function changePicture(picture) {
+export function handlePictureChange(picture) {
   const file = picture.target.files[0]; // Get the selected file
   const reader = new FileReader();
   reader.onload = function(e) {
@@ -90,8 +90,9 @@ function handleFaviconSelect(event) {
 }
 
 /** Changes the title of the page to value of element with id:"newTitle" */
-function handleTitleChange() {
+export function handleTitleChange() {
   const newTitle = document.getElementById('newTitle').value; // Get the value from the input field
   const titleElement = document.getElementById('title'); 
   titleElement.textContent = newTitle; // Set the text content to the new title
+  localStorage.setItem("title", newTitle);
 }
