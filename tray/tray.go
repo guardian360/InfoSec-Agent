@@ -81,7 +81,7 @@ func OnReady() {
 		case <-mReportingPage.ClickedCh:
 			err := openReportingPage("")
 			if err != nil {
-				fmt.Println(err)
+				log.Println(err)
 			}
 		case <-mChangeScanInterval.ClickedCh:
 			ChangeScanInterval()
@@ -163,7 +163,7 @@ func openReportingPage(path string) error {
 	go func() {
 		<-mQuit.ClickedCh
 		if err := runCmd.Process.Kill(); err != nil {
-			fmt.Println("Error interrupting reporting-page process:", err)
+			log.Println("Error interrupting reporting-page process:", err)
 		}
 		rpPage = false
 		systray.Quit()
@@ -193,7 +193,7 @@ func ChangeScanInterval(testInput ...string) {
 		var err error
 		res, err = zenity.Entry("Enter the scan interval (in hours):", zenity.Title("Change Scan Interval"), zenity.DefaultItems("24"))
 		if err != nil {
-			fmt.Println("Error creating dialog:", err)
+			log.Println("Error creating dialog:", err)
 			return
 		}
 	}
@@ -201,7 +201,7 @@ func ChangeScanInterval(testInput ...string) {
 	// Parse the user input
 	interval, err := strconv.Atoi(res)
 	if err != nil || interval <= 0 {
-		fmt.Printf("Invalid input. Using default interval of 24 hours.")
+		log.Printf("Invalid input. Using default interval of 24 hours.")
 		interval = 24
 	}
 
@@ -226,7 +226,7 @@ func ScanNow() {
 	dialog, err := zenity.Progress(
 		zenity.Title("Security/Privacy Scan"))
 	if err != nil {
-		fmt.Println("Error creating dialog:", err)
+		log.Println("Error creating dialog:", err)
 		return
 	}
 	// Defer closing the dialog until the scan completes
@@ -241,7 +241,7 @@ func ScanNow() {
 
 	err = dialog.Complete()
 	if err != nil {
-		fmt.Println("Error completing dialog:", err)
+		log.Println("Error completing dialog:", err)
 		return
 	}
 }
@@ -261,7 +261,7 @@ func ChangeLanguage(testInput ...string) {
 			"Spanish", "French", "Dutch", "Portuguese"}, zenity.Title("Change Language"),
 			zenity.DefaultItems("British English"))
 		if err != nil {
-			fmt.Println("Error creating dialog:", err)
+			log.Println("Error creating dialog:", err)
 			return
 		}
 	}
