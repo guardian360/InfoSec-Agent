@@ -1,7 +1,8 @@
 package checks
 
 import (
-	"os/exec"
+	"fmt"
+	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"strings"
 )
 
@@ -10,33 +11,38 @@ import (
 // Parameters: _
 //
 // Returns: If network sharing is enabled or not
-func NetworkSharing() Check {
+func NetworkSharing(executor utils.CommandExecutor) Check {
 	// Execute a powershell command to get the network adapter binding status
-	output, err := exec.Command("powershell", "Get-NetAdapterBinding | Where-Object "+
-		"{$_.ComponentID -eq 'ms_server'} | Select-Object Enabled").Output()
-
+	command := fmt.Sprintf("Get-NetAdapterBinding | Where-Object {$_.ComponentID -eq 'ms_server'} | Select-Object Enabled")
+	output, err := executor.Execute("powershell", command)
 	if err != nil {
 		return NewCheckErrorf("NetworkSharing",
 			"error executing command Get-NetAdapterBinding", err)
 	}
 
 	outputString := strings.Split(string(output), "\r\n")
-	counter := 0                   // Counter to keep track of the number of enabled network adapters
+	trueCounter := 0               // Counter to keep track of the number of enabled network adapters
+	falseCounter := 0              // Counter to keep track of the number of disabled network adapters
 	total := len(outputString) - 6 // Expected number of enabled network adapters for network sharing to be enabled
 
 	for _, line := range outputString[3 : len(outputString)-3] {
 		// Check if the line contains "True" indicating network sharing is enabled for the adapter
 		if strings.Contains(line, "True") {
-			counter++
+			trueCounter++
+		} else if strings.Contains(line, "False") {
+			falseCounter++
 		}
 	}
 
 	// Check the status of network sharing based on the number of enabled network adapters
-	if counter == total {
+	if trueCounter == total && falseCounter == 0 {
 		return NewCheckResult("NetworkSharing", "Network sharing is enabled")
 	}
-	if counter > 0 && counter < total {
+	if trueCounter > 0 && trueCounter < total && falseCounter > 0 {
 		return NewCheckResult("NetworkSharing", "Network sharing is partially enabled")
 	}
-	return NewCheckResult("NetworkSharing", "Network sharing is disabled")
+	if trueCounter == 0 && falseCounter == total {
+		return NewCheckResult("NetworkSharing", "Network sharing is disabled")
+	}
+	return NewCheckResult("NetworkSharing", "Network sharing status is unknown")
 }

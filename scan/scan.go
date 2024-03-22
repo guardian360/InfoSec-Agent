@@ -35,18 +35,22 @@ func Scan(dialog zenity.ProgressDialog) {
 		func() checks.Check { return checks.Permission("appointments") },
 		func() checks.Check { return checks.Permission("contacts") },
 		checks.Bluetooth,
-		checks.OpenPorts,
+		func() checks.Check {
+			return checks.OpenPorts(&utils.RealCommandExecutor{}, &utils.RealCommandExecutor{})
+		},
 		checks.WindowsOutdated,
 		checks.SecureBoot,
 		func() checks.Check {
 			return checks.SmbCheck(&utils.RealCommandExecutor{}, &utils.RealCommandExecutor{})
 		},
 		checks.Startup,
-		checks.GuestAccount,
-		checks.UACCheck,
+		func() checks.Check {
+			return checks.GuestAccount(&utils.RealCommandExecutor{}, &utils.RealCommandExecutor{}, &utils.RealCommandExecutor{}, &utils.RealCommandExecutor{})
+		},
+		func() checks.Check { return checks.UACCheck(&utils.RealCommandExecutor{}) },
 		checks.RemoteDesktopCheck,
 		func() checks.Check { return checks.ExternalDevices(&utils.RealCommandExecutor{}) },
-		checks.NetworkSharing,
+		func() checks.Check { return checks.NetworkSharing(&utils.RealCommandExecutor{}) },
 		func() checks.Check { return chromium.HistoryChromium("Chrome") },
 		func() checks.Check { return chromium.ExtensionsChromium("Chrome") },
 		func() checks.Check { return chromium.SearchEngineChromium("Chrome") },
