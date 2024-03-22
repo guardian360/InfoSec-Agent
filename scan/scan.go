@@ -45,7 +45,7 @@ func Scan(dialog zenity.ProgressDialog) {
 		checks.GuestAccount,
 		checks.UACCheck,
 		checks.RemoteDesktopCheck,
-		checks.ExternalDevices,
+		func() checks.Check { return checks.ExternalDevices(&utils.RealCommandExecutor{}) },
 		checks.NetworkSharing,
 		func() checks.Check { return chromium.HistoryChromium("Chrome") },
 		func() checks.Check { return chromium.ExtensionsChromium("Chrome") },
