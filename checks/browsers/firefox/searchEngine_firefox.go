@@ -116,6 +116,7 @@ func SearchEngineFirefox() checks.Check {
 		// adds the match to the result
 		if len(matches) > 0 {
 			result = matches[0]
+			result = result[18:]
 		} else {
 			result = "Other search engine"
 		}
