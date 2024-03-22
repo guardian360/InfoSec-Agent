@@ -2,8 +2,8 @@ package checks
 
 import (
 	"fmt"
+	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"os/exec"
-	"os/user"
 	"regexp"
 	"strings"
 	"time"
@@ -16,7 +16,7 @@ import (
 // Returns: When the password was last changed
 func LastPasswordChange() Check {
 	// Get the current Windows username
-	username, err := getCurrentUsername()
+	username, err := utils.CurrentUsername()
 	if err != nil {
 		return NewCheckErrorf("LastPasswordChange", "error retrieving username", err)
 	}
@@ -59,17 +59,4 @@ func LastPasswordChange() Check {
 	}
 	return NewCheckResult("LastPasswordChange", fmt.Sprintf("You changed your password recently on %s",
 		match))
-}
-
-// getCurrentUsername retrieves the current Windows username
-//
-// Parameters: _
-//
-// Returns: The current Windows username
-func getCurrentUsername() (string, error) {
-	currentUser, err := user.Current()
-	if currentUser.Username == "" || err != nil {
-		return "", fmt.Errorf("failed to retrieve current username")
-	}
-	return strings.Split(currentUser.Username, "\\")[1], nil
 }

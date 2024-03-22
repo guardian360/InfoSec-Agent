@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
+	"log"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -27,7 +28,12 @@ func HistoryFirefox() checks.Check {
 	// Copy the database, so we don't have problems with locked files
 	tempHistoryDbff := filepath.Join(os.TempDir(), "tempHistoryDb.sqlite")
 	// Clean up the temporary file when the function returns
-	defer os.Remove(tempHistoryDbff)
+	defer func(name string) {
+		err := os.Remove(name)
+		if err != nil {
+			log.Println("error removing file: ", err)
+		}
+	}(tempHistoryDbff)
 
 	// Copy the database to a temporary location
 	copyError := utils.CopyFile(ffdirectory[0]+"\\places.sqlite", tempHistoryDbff)
@@ -39,7 +45,12 @@ func HistoryFirefox() checks.Check {
 	if err != nil {
 		return checks.NewCheckError("HistoryFirefox", err)
 	}
-	defer db.Close()
+	defer func(db *sql.DB) {
+		err := db.Close()
+		if err != nil {
+			log.Println("error closing database: ", err)
+		}
+	}(db)
 
 	lastWeek := time.Now().AddDate(0, 0, -7).UnixMicro()
 
@@ -53,7 +64,12 @@ func HistoryFirefox() checks.Check {
 	if err != nil {
 		return checks.NewCheckError("HistoryFirefox", err)
 	}
-	defer rows.Close()
+	defer func(rows *sql.Rows) {
+		err := rows.Close()
+		if err != nil {
+			log.Println("error closing rows: ", err)
+		}
+	}(rows)
 
 	// Iterate over each found url
 	for rows.Next() {
