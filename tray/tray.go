@@ -11,6 +11,7 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/icon"
 	"github.com/InfoSec-Agent/InfoSec-Agent/localization"
 	"github.com/InfoSec-Agent/InfoSec-Agent/scan"
+	"log"
 
 	"github.com/getlantern/systray"
 	"github.com/ncruces/zenity"
@@ -142,7 +143,7 @@ func openReportingPage(path string) error {
 	defer func() {
 		err := os.Chdir(originalDir)
 		if err != nil {
-			fmt.Println("Error changing directory:", err)
+			log.Println("Error changing directory:", err)
 		}
 		rpPage = false
 	}()
@@ -235,7 +236,7 @@ func ScanNow() {
 	defer func(dialog zenity.ProgressDialog) {
 		err := dialog.Close()
 		if err != nil {
-			fmt.Println("Error closing dialog:", err)
+			log.Println("Error closing dialog:", err)
 		}
 	}(dialog)
 

@@ -26,13 +26,23 @@ func CopyFile(src, dst string) error {
 	if err != nil {
 		return err
 	}
-	defer sourceFile.Close()
+	defer func(sourceFile *os.File) {
+		err := sourceFile.Close()
+		if err != nil {
+			log.Printf("error closing source file: %v", err)
+		}
+	}(sourceFile)
 
 	destinationFile, err := os.Create(dst)
 	if err != nil {
 		return err
 	}
-	defer destinationFile.Close()
+	defer func(destinationFile *os.File) {
+		err := destinationFile.Close()
+		if err != nil {
+			log.Printf("error closing destination file: %v", err)
+		}
+	}(destinationFile)
 
 	_, err = io.Copy(destinationFile, sourceFile)
 	if err != nil {
@@ -58,10 +68,15 @@ func GetPhishingDomains() []string {
 		log.Fatal(err)
 	}
 	resp, err := client.Do(req)
-	defer resp.Body.Close()
+	defer func(Body io.ReadCloser) {
+		err := Body.Close()
+		if err != nil {
+			log.Printf("error closing response body: %v", err)
+		}
+	}(resp.Body)
 
 	if resp.StatusCode != http.StatusOK {
-		fmt.Errorf("HTTP request failed with status code: %d", resp.StatusCode)
+		log.Printf("HTTP request failed with status code: %d", resp.StatusCode)
 	}
 
 	// Parse the response of potential scam domains and split it into a list of domains
@@ -89,7 +104,12 @@ func FirefoxFolder() ([]string, error) {
 		fmt.Println("Error:", err)
 		return nil, err
 	}
-	defer dir.Close()
+	defer func(dir *os.File) {
+		err := dir.Close()
+		if err != nil {
+			log.Printf("error closing directory: %v", err)
+		}
+	}(dir)
 
 	// Read the contents of the directory
 	files, err := dir.Readdir(0)
@@ -117,4 +137,36 @@ func FirefoxFolder() ([]string, error) {
 		}
 	}
 	return profileList, nil
+}
+
+// CurrentUsername retrieves the current Windows username
+//
+// Parameters: _
+//
+// Returns: The current Windows username
+func CurrentUsername() (string, error) {
+	currentUser, err := user.Current()
+	if currentUser.Username == "" || err != nil {
+		return "", fmt.Errorf("failed to retrieve current username")
+	}
+	return strings.Split(currentUser.Username, "\\")[1], nil
+}
+
+// RemoveDuplicateStr removes duplicate strings from a slice
+//
+// Parameters: strSlice (string slice) represents the slice to remove duplicates from
+//
+// Returns: A slice with the duplicates removed
+func RemoveDuplicateStr(strSlice []string) []string {
+	// Keep a map of found values, where true means the value has (already) been found
+	allKeys := make(map[string]bool)
+	var list []string
+	for _, item := range strSlice {
+		if _, value := allKeys[item]; !value {
+			// If the value is found for the first time, append it to the list of results
+			allKeys[item] = true
+			list = append(list, item)
+		}
+	}
+	return list
 }
