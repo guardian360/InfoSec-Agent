@@ -26,29 +26,17 @@ export function openPersonalizePage() {
   <hr class="solid">
   <div class="setting">
     <span class="setting-description">Font</span>
-    <label class="switch">
-      <input type="checkbox">
-      <span class="slider round"></span>
-    </label>
   </div>
   <hr class="solid">
   <div class="setting">
     <span class="setting-description">Background color</span>
-    <label class="switch">
-      <input type="checkbox">
-      <span class="slider round"></span>
-    </label>
   </div>
   <hr class="solid">
   <div class="setting">
     <span class="setting-description">text color</span>
-    <label class="switch">
-      <input type="checkbox">
-      <span class="slider round"></span>
-    </label>
   </div>
   `;
-  const faviconInput = document.getElementById('faviconInput');//add eventlistener for changing Favicon
+  const faviconInput = document.getElementById('input-file-icon');//add eventlistener for changing Favicon
   faviconInput.addEventListener('change', handleFaviconChange);
   
   const pictureInput = document.getElementById('input-file-picture'); //add eventlistener for changing navication picture

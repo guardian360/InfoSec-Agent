@@ -10,25 +10,26 @@
     <link rel="stylesheet" href="./src/css/dashboard.css">
     <link rel="stylesheet" href="./src/css/issues.css">
     <link rel="stylesheet" href="./src/css/personalize.css">
-    
+
+    <link rel="icon" id="favicon" href="./src/assets/images/logoTeamA-transformed.png" >
+
     <script src="./src/js/vertical-navbar.js" type="module" defer></script>
     <script src="./src/js/home.js" type="module" defer></script>
     <script src="./src/js/settings.js" type="module" defer></script>
     <script src="./src/js/dashboard.js" type="module" defer></script>
     <script src="./src/js/issues.js" type="module" defer></script>
     <script src="./src/js/personalize.js" type="module" defer></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   </head>
   <body>
-    <input type="file" id="faviconInput" accept="image/*"> <!-- Input field for selecting favicon file -->
+    <input type="file" id="faviconInput" accept=".png,.ico"> <!--Use id to dynamically change favicon -->
     <div class="header">
       <div class="header-logo">
         <div id="logo-button" class="logo-name">
-          <img id="logo" alt="logo"></img>
+          <img id="logo" alt="logo"></img>  <!-- Use id to dynamically change logo -->
           <div class="header-name">
-            <h1 id="title">Little Brother</h1>
+            <h1 id="title">Little Brother</h1><!-- Use id to dynamically change title -->
           </div>
         </div>
       </div>
