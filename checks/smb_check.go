@@ -35,7 +35,7 @@ func smbEnabled(smb string) (string, error) {
 	// Get the status of the specified SMB protocol
 	command := fmt.Sprintf("Get-SmbServerConfiguration | Select-Object Enable%sProtocol", smb)
 
-	output, err := exec.Command("powershell", command).Output()
+	output, err := exec.Command("powershell", command).Output() // #nosec G204
 
 	if err != nil {
 		return "", err

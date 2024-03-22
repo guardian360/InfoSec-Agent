@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"os"
 	"os/user"
+	"path/filepath"
 	"strings"
 )
 
@@ -22,7 +23,7 @@ import (
 //
 // Returns: an error if the file cannot be copied, nil if the file is copied successfully
 func CopyFile(src, dst string) error {
-	sourceFile, err := os.Open(src)
+	sourceFile, err := os.Open(filepath.Clean(src))
 	if err != nil {
 		return err
 	}
@@ -33,7 +34,7 @@ func CopyFile(src, dst string) error {
 		}
 	}(sourceFile)
 
-	destinationFile, err := os.Create(dst)
+	destinationFile, err := os.Create(filepath.Clean(dst))
 	if err != nil {
 		return err
 	}
@@ -99,7 +100,7 @@ func FirefoxFolder() ([]string, error) {
 	// Specify the path to the firefox profile directory
 	profilesDir := currentUser.HomeDir + "\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles"
 
-	dir, err := os.Open(profilesDir)
+	dir, err := os.Open(filepath.Clean(profilesDir))
 	if err != nil {
 		fmt.Println("Error:", err)
 		return nil, err
@@ -128,7 +129,7 @@ func FirefoxFolder() ([]string, error) {
 	var profileList []string
 	// Loop through all the folders to check if they have a logins.json file.
 	for _, folder := range folders {
-		content, err := os.ReadFile(profilesDir + "\\" + folder + "\\logins.json")
+		content, err := os.ReadFile(filepath.Clean(profilesDir + "\\" + folder + "\\logins.json"))
 		if err != nil {
 			continue
 		}

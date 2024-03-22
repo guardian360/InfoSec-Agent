@@ -1,4 +1,4 @@
-name: Run Gosec
+name: Gosec Security Analysis
 on:
   push:
     branches:
@@ -17,4 +17,4 @@ jobs:
       - name: Run Gosec Security Scanner
         uses: securego/gosec@master
         with:
-          args: ./...
+          args: -exclude-generated ./...

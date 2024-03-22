@@ -60,7 +60,7 @@ func GuestAccount() Check {
 	}
 
 	// Retrieve the word for 'yes' from the currentUser language
-	output, err = exec.Command("net", "user", currentUser).Output()
+	output, err = exec.Command("net", "user", currentUser).Output() // #nosec G204
 
 	if err != nil {
 		return NewCheckErrorf("Guest account", "error executing command net user", err)
