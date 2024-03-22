@@ -16,10 +16,9 @@ import (
 
 // CopyFile copies a file from the source to the destination
 //
-// Parameters:
+// Parameters: src - the source file
 //
-//	src - the source file
-//	dst - the destination file
+// dst - the destination file
 //
 // Returns: an error if the file cannot be copied, nil if the file is copied successfully
 func CopyFile(src, dst string) error {
@@ -94,7 +93,7 @@ func FirefoxFolder() ([]string, error) {
 	// Get the current user
 	currentUser, err := user.Current()
 	if err != nil {
-		fmt.Println("Error:", err)
+		log.Println("Error:", err)
 		return nil, err
 	}
 	// Specify the path to the firefox profile directory
@@ -102,7 +101,7 @@ func FirefoxFolder() ([]string, error) {
 
 	dir, err := os.Open(filepath.Clean(profilesDir))
 	if err != nil {
-		fmt.Println("Error:", err)
+		log.Println("Error:", err)
 		return nil, err
 	}
 	defer func(dir *os.File) {
@@ -115,7 +114,7 @@ func FirefoxFolder() ([]string, error) {
 	// Read the contents of the directory
 	files, err := dir.Readdir(0)
 	if err != nil {
-		fmt.Println("Error:", err)
+		log.Println("Error:", err)
 		return nil, err
 	}
 
@@ -155,7 +154,7 @@ func CurrentUsername() (string, error) {
 
 // RemoveDuplicateStr removes duplicate strings from a slice
 //
-// Parameters: strSlice (string slice) represents the slice to remove duplicates from
+// Parameters: strSlice (string slice) - the slice to remove duplicates from
 //
 // Returns: A slice with the duplicates removed
 func RemoveDuplicateStr(strSlice []string) []string {
@@ -170,4 +169,16 @@ func RemoveDuplicateStr(strSlice []string) []string {
 		}
 	}
 	return list
+}
+
+// CloseFile closes a file and handles associated errors
+//
+// Parameters: file *os.File - the file to close
+//
+// Returns: _
+func CloseFile(file *os.File) {
+	err := file.Close()
+	if err != nil {
+		log.Printf("error closing file: %s", err)
+	}
 }

@@ -7,9 +7,11 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/chromium"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/firefox"
+	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 
 	"encoding/json"
 	"fmt"
+
 	"github.com/ncruces/zenity"
 )
 
@@ -36,7 +38,9 @@ func Scan(dialog zenity.ProgressDialog) {
 		checks.OpenPorts,
 		checks.WindowsOutdated,
 		checks.SecureBoot,
-		checks.SmbCheck,
+		func() checks.Check {
+			return checks.SmbCheck(&utils.RealCommandExecutor{}, &utils.RealCommandExecutor{})
+		},
 		checks.Startup,
 		checks.GuestAccount,
 		checks.UACCheck,
@@ -45,8 +49,10 @@ func Scan(dialog zenity.ProgressDialog) {
 		checks.NetworkSharing,
 		func() checks.Check { return chromium.HistoryChromium("Chrome") },
 		func() checks.Check { return chromium.ExtensionsChromium("Chrome") },
+		func() checks.Check { return chromium.SearchEngineChromium("Chrome") },
 		func() checks.Check { c, _ := firefox.ExtensionFirefox(); return c },
 		func() checks.Check { _, c := firefox.ExtensionFirefox(); return c },
+		firefox.SearchEngineFirefox,
 	}
 	totalChecks := len(securityChecks)
 
