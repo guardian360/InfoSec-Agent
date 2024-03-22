@@ -32,7 +32,7 @@ func SearchEngineFirefox() checks.Check {
 	// Copy the compressed json to a temporary location
 	copyError := utils.CopyFile(filePath, tempSearch)
 	if copyError != nil {
-		return checks.NewCheckErrorf("SearchEngineFirefox", "Unable to make a copy of the file", err)
+		return checks.NewCheckErrorf("SearchEngineFirefox", "Unable to make a copy of the file", copyError)
 	}
 
 	// Get file information

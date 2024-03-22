@@ -170,3 +170,14 @@ func RemoveDuplicateStr(strSlice []string) []string {
 	}
 	return list
 }
+// CloseFile closes a file and handles associated errors
+//
+// Parameters: file represents the file to close
+//
+// Returns: _
+func CloseFile(file ) {
+	err := file.Close()
+	if err != nil {
+		log.Printf("error closing registry key: %w", err)
+	}
+}
