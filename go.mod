@@ -7,7 +7,7 @@ require (
 	github.com/getlantern/systray v1.2.2
 	github.com/ncruces/zenity v0.10.11
 	github.com/nicksnyder/go-i18n/v2 v2.4.0
-	github.com/stretchr/testify v1.6.1
+	github.com/stretchr/testify v1.9.0
 	golang.org/x/sys v0.18.0
 	golang.org/x/text v0.14.0
 	modernc.org/sqlite v1.29.3
@@ -15,7 +15,7 @@ require (
 
 require (
 	github.com/akavel/rsrc v0.10.2 // indirect
-	github.com/davecgh/go-spew v1.1.0 // indirect
+	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/dchest/jsmin v0.0.0-20220218165748-59f39799265f // indirect
 	github.com/dustin/go-humanize v1.0.1 // indirect
 	github.com/getlantern/context v0.0.0-20190109183933-c447772a6520 // indirect
