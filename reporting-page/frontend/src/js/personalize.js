@@ -48,21 +48,17 @@ export function openPersonalizePage() {
     </label>
   </div>
   `;
-  const faviconInput = document.getElementById('faviconInput');
+  const faviconInput = document.getElementById('faviconInput');//add eventlistener for changing Favicon
   faviconInput.addEventListener('change', handleFaviconSelect);
-
-<<<<<<< HEAD
-    const faviconInput = document.getElementById('faviconInput'); //add eventlistener for changing Favicon
-    faviconInput.addEventListener('change', changeFavicon);
-
-    const fileInput = document.getElementById('input-file-picture'); //add eventlistener for changing navication picture
-    fileInput.addEventListener('change', changePicture);
-
-    const newTitleInput = document.getElementById('newTitle'); //add eventlistener for changing navigation title
-    newTitleInput.addEventListener('input', changeTitle);
+  
+  const pictureInput = document.getElementById('input-file-picture'); //add eventlistener for changing navication picture
+  pictureInput.addEventListener('change', changePicture);
+  
+  const newTitleInput = document.getElementById('newTitle'); //add eventlistener for changing navigation title
+  newTitleInput.addEventListener('input', handleTitleChange);
   }
 
-function changePicture(picture) {
+export function changePicture(picture) {
   const file = picture.target.files[0]; // Get the selected file
   const reader = new FileReader();
   reader.onload = function(e) {
@@ -71,47 +67,6 @@ function changePicture(picture) {
     localStorage.setItem("picture", e.target.result)
     };
   reader.readAsDataURL(file); // Read the selected file as a Data URL
-}
-
-function changeFavicon(favicon) {
-  const file = favicon.target.files[0]; // Get the selected file
-  if (file) {
-      const reader = new FileReader();
-      reader.onload = function(e) {
-          const favicon = document.createElement('link'); // Create a new link element for favicon
-          favicon.rel = 'icon'; // Set rel attribute to 'icon' for favicon
-          favicon.type = 'image/png'; // Set type attribute to 'image/png' for favicon
-          favicon.href = e.target.result; // Set the href attribute to the selected image
-          const head = document.querySelector('head'); // Get the <head> element
-          head.appendChild(favicon); // Append the favicon link to the head
-      };
-      reader.readAsDataURL(file); // Read the selected file as a Data URL
-  }
-}
-
-function changeTitle() {
-=======
-  const fileInput = document.getElementById('input-file-picture');
-  fileInput.addEventListener('change', handleFileSelect);
-  
-  const newTitleInput = document.getElementById('newTitle');
-  newTitleInput.addEventListener('input', handleTitleChange);
-}
-
-/** Select a file to set as the logo
- * 
- * @param {Event} event File event from which file is taken
- */
-function handleFileSelect(event) {
-  const file = event.target.files[0]; // Get the selected file
-  if (file) {
-    const reader = new FileReader(); // Create a new FileReader object
-    reader.onload = function(e) {
-      const logo = document.getElementById('logo'); // Get the logo element
-      logo.src = e.target.result; // Set the source of the logo to the selected image
-    };
-    reader.readAsDataURL(file); // Read the selected file as a Data URL
-  }
 }
 
 /** Select af file to set as the icon
@@ -136,8 +91,7 @@ function handleFaviconSelect(event) {
 
 /** Changes the title of the page to value of element with id:"newTitle" */
 function handleTitleChange() {
->>>>>>> origin/main
   const newTitle = document.getElementById('newTitle').value; // Get the value from the input field
-  const titleElement = document.getElementById('title'); // Get the <h1> element
-  titleElement.textContent = newTitle; // Set the text content of the <h1> element to the new title
+  const titleElement = document.getElementById('title'); 
+  titleElement.textContent = newTitle; // Set the text content to the new title
 }
