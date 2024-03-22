@@ -22,6 +22,19 @@
     "Integration": "Integratie",
     "About": "Over"
   },
+  "Dashboard": 
+  {
+    "SuggestedIssue": "Voorgesteld Probleem",
+    "QuickFix": "Snelle Oplossing",
+    "ScanNow": "Nu Scannen",
+    "Medals": "Medailles",
+    "SecurityStatus": "Veiligheidsstatus",
+    "SecurityRisksOverview": "Overzicht van Beveiligingsrisico's",
+    "HighRisk": "Hoog Risico",
+    "MediumRisk": "Gemiddeld Risico",
+    "LowRisk": "Laag Risico",
+    "Safe": "Veilig"
+  },
   "Issues":
   {
     "Name": "Naam",

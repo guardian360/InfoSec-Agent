@@ -1,6 +1,7 @@
 import * as rc from "./risk-counters";
 import * as graph from "./graph";
 import * as piechart from "./piechart";
+import { GetLocalization } from './localize.js';
 
 /** Load the content of the Security Dashboard page */
 function openSecurityDashboardPage() {
@@ -8,23 +9,23 @@ function openSecurityDashboardPage() {
   <div class="dashboard-data">
     <div class="data-column risk-counters">
       <div class="security-status">
-        <div><p>Security status</p></div>
-        <div><p id="security-status">Critical</p></div>
+        <div><p id="security-status">Security status</p></div>
+        <div><p>Critical</p></div>
       </div>
       <div class="risk-counter high-risk">
-        <div><p>High risk issues</p></div>
+        <div><p id="high-risk">High risk issues</p></div>
         <div><p id="high-risk-counter">0</p></div>
       </div>
       <div class="risk-counter medium-risk">
-        <div><p>Medium risk issues</p></div>
+        <div><p id="medium-risk">Medium risk issues</p></div>
         <div><p id="medium-risk-counter">0</p></div>
       </div>
       <div class="risk-counter low-risk">
-        <div><p>Low risk issues</p></div>
+        <div><p id="low-risk">Low risk issues</p></div>
         <div><p id="low-risk-counter">0</p></div>
       </div>
       <div class="risk-counter no-risk">
-        <div><p>Safe issues</p></div>
+        <div><p id="safe">Safe issues</p></div>
         <div><p id="no-risk-counter">0</p></div>
       </div>
     </div>
@@ -35,8 +36,8 @@ function openSecurityDashboardPage() {
       <H2>You have some issues you can fix. 
         To start resolving an issue either navigate to the issues page, or pick a suggested issue below
       </H2>
-      <a class="issue-button"><p>Suggested Issue</p></a>
-      <a class="issue-button"><p>Quick Fix</p></a>
+      <a id="suggested-issue" class="issue-button"><p>Suggested Issue</p></a>
+      <a id="quick-fix" class="issue-button"><p>Quick Fix</p></a>
     </div>
   </div>
   <div class="second-row">
@@ -126,6 +127,32 @@ function openSecurityDashboardPage() {
   // Create charts
   CreatePieChart();
   CreateGraphChart();
+
+  let dashboardContent = [
+    "suggested-issue", 
+    "quick-fix", 
+    "scan-now", 
+    "title-medals", 
+    "security-status",
+    "high-risk", 
+    "medium-risk",
+    "low-risk",
+    "safe"
+    ]
+    let localizationIds = [
+      "Dashboard.SuggestedIssue", 
+      "Dashboard.QuickFix", 
+      "Dashboard.ScanNow", 
+      "Dashboard.Medals", 
+      "Dashboard.SecurityStatus",
+      "Dashboard.HighRisk", 
+      "Dashboard.MediumRisk",
+      "Dashboard.LowRisk",
+      "Dashboard.Safe"
+    ]
+    for (let i = 0; i < dashboardContent.length; i++) {
+        GetLocalization(localizationIds[i], dashboardContent[i])
+  }
 }
 
 document.getElementById("security-dashboard-button").addEventListener("click", () => openSecurityDashboardPage());

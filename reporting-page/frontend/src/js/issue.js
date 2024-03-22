@@ -1,14 +1,9 @@
 import data from "../database.json" assert { type: "json" };
 import { openIssuesPage } from "./issues.js";
-import { Localize } from '../../wailsjs/go/main/App';
+import { GetLocalization } from './localize.js';
 
 let stepCounter = 0;
 
-function GetLocalization(messageId, elementId) {
-    Localize(messageId).then((result) => {
-        document.getElementById(elementId).innerHTML = result;
-    });
-}
 /** Update contents of solution guide 
  * 
  * @param {[string]} solution List of textual solution steps
@@ -56,9 +51,9 @@ export function openIssuePage(issueId) {
   pageContents.innerHTML = `
     <h1 class="issue-name">${currentIssue.Name}</h1>
     <div class="issue-information">
-      <h2>Information</h2>
+      <h2 id="information">Information</h2>
       <p>${currentIssue.Information}</p>
-      <h2>Solution</h2>
+      <h2 id="solution">Solution</h2>
       <div class="issue-solution">
         <p id="solution-text">${currentIssue.Solution[stepCounter]}</p>
         <img style='display:block; width:500px;height:auto' id="step-screenshot"></img>

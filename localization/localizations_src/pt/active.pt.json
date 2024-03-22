@@ -22,6 +22,19 @@
     "Integration": "Integração",
     "About": "Sobre"
   },
+  "Dashboard": 
+  {
+    "SuggestedIssue": "Problema Sugerido",
+    "QuickFix": "Solução Rápida",
+    "ScanNow": "Escanear Agora",
+    "Medals": "Medalhas",
+    "SecurityStatus": "Status de Segurança",
+    "SecurityRisksOverview": "Visão Geral dos Riscos de Segurança",
+    "HighRisk": "Risco Alto",
+    "MediumRisk": "Risco Médio",
+    "LowRisk": "Risco Baixo",
+    "Safe": "Seguro"
+  },
   "Issues":
   {
     "Name": "Nome",

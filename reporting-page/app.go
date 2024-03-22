@@ -4,7 +4,6 @@ import (
 	"context"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/localization"
-	"github.com/InfoSec-Agent/InfoSec-Agent/tray"
 )
 
 // App is the main application struct, necessary for the Wails runtime
@@ -33,5 +32,5 @@ func (a *App) startup(ctx context.Context) {
 // Localize calls the Localize function from the localization package and passes the given language and ID.
 // Wails binds this function to the frontend.
 func (a *App) Localize(MessageID string) string {
-	return localization.Localize(tray.GetLanguage(), MessageID)
+	return localization.Localize(6, MessageID)
 }

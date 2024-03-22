@@ -1,5 +1,6 @@
 import * as piechart from "./piechart";
 import {ScanNow} from '../../wailsjs/go/main/Tray';
+import { GetLocalization } from './localize.js';
 
 /** Load the content of the Home page */
 function openHomePage() {
@@ -14,12 +15,12 @@ function openHomePage() {
       <H2>You have some issues you can fix. 
         To start resolving a issue either navigate to the issues page, or pick a suggested issue below
       </H2>
-      <a class="issue-button">Suggested Issue</a>
-      <a class="issue-button">Quick Fix</a>
-      <a class="issue-button" id="scan-button">Scan Now</a>
+      <a id="suggested-issue" class="issue-button">Suggested Issue</a>
+      <a id="quick-fix" class="issue-button">Quick Fix</a>
+      <a id="scan-now" class="issue-button" id="scan-button">Scan Now</a>
     </div>
   </div>
-  <h2 class="title-medals">Medals</h2>
+  <h2 id="medals" class="title-medals">Medals</h2>
   <div class="container">  
     <div class="medal-layout">
       <img src="src/assets/images/img_medal1.jpg" alt="Photo of medal">
@@ -45,12 +46,37 @@ function openHomePage() {
 
     CreatePieChart();
 
+    let dashboardContent = [
+      "suggested-issue", 
+      "quick-fix", 
+      "scan-now", 
+      "medals", 
+      "security-status",
+      "high-risk", 
+      "medium-risk",
+      "low-risk",
+      "safe"
+      ]
+      let localizationIds = [
+        "Dashboard.SuggestedIssue", 
+        "Dashboard.QuickFix", 
+        "Dashboard.ScanNow", 
+        "Dashboard.Medals", 
+        "Dashboard.SecurityStatus",
+        "Dashboard.HighRisk", 
+        "Dashboard.MediumRisk",
+        "Dashboard.LowRisk",
+        "Dashboard.Safe"
+      ]
+      for (let i = 0; i < dashboardContent.length; i++) {
+          GetLocalization(localizationIds[i], dashboardContent[i])
+    }
+
     document.getElementById("scan-button").addEventListener("click", () => scanNow());
 }
 
 document.getElementById("logo-button").addEventListener("click", () => openHomePage());
 document.getElementById("home-button").addEventListener("click", () => openHomePage());
-
 
 function scanNow() {
     ScanNow()
