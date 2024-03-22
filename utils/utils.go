@@ -15,10 +15,9 @@ import (
 
 // CopyFile copies a file from the source to the destination
 //
-// Parameters:
+// Parameters: src - the source file
 //
-//	src - the source file
-//	dst - the destination file
+// dst - the destination file
 //
 // Returns: an error if the file cannot be copied, nil if the file is copied successfully
 func CopyFile(src, dst string) error {
@@ -154,7 +153,7 @@ func CurrentUsername() (string, error) {
 
 // RemoveDuplicateStr removes duplicate strings from a slice
 //
-// Parameters: strSlice (string slice) represents the slice to remove duplicates from
+// Parameters: strSlice (string slice) - the slice to remove duplicates from
 //
 // Returns: A slice with the duplicates removed
 func RemoveDuplicateStr(strSlice []string) []string {

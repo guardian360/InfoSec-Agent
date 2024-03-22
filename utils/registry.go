@@ -8,7 +8,8 @@ import (
 
 // OpenRegistryKey opens registry keys and handles associated errors
 //
-// Parameters: k (registry.Key) represents the registry key to open,
+// Parameters: k (registry.Key) - the registry key to open,
+//
 // path (string) represents the path to the registry key
 //
 // Returns: The opened registry key
@@ -24,7 +25,7 @@ func OpenRegistryKey(k registry.Key, path string) (registry.Key, error) {
 
 // CloseRegistryKey closes registry keys and handles associated errors
 //
-// Parameters: key (registry.Key) represents the registry key to close
+// Parameters: key (registry.Key) - the registry key to close
 //
 // Returns: _
 func CloseRegistryKey(key registry.Key) {
@@ -36,7 +37,8 @@ func CloseRegistryKey(key registry.Key) {
 
 // FindEntries returns the values of the entries inside the corresponding registry key
 //
-// Parameters: entries ([]string) represents the entries to check in the registry key,
+// Parameters: entries ([]string) - the entries to check in the registry key,
+//
 // key (registry.Key) represents the registry key in which to look
 //
 // Returns: A slice of the values of the entries inside the registry key
@@ -59,8 +61,9 @@ func FindEntries(entries []string, key registry.Key) []string {
 
 // CheckKey checks the value of a certain element within a registry key
 //
-// Parameters: key (registry.Key) representing the registry key to be checked,
-// el (string) representing the element to be checked
+// Parameters: key (registry.Key) - the registry key to be checked,
+//
+// el (string) - the element to be checked
 //
 // Returns: The value of the element within the registry key
 func CheckKey(key registry.Key, el string) string {
