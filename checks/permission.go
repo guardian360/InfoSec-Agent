@@ -1,10 +1,10 @@
 package checks
 
 import (
+	"github.com/InfoSec-Agent/InfoSec-Agent/RegistryKey"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
-	"strings"
-
 	"golang.org/x/sys/windows/registry"
+	"strings"
 )
 
 // Permission checks if the user has given permission to an application to access a certain capability
@@ -14,13 +14,13 @@ import (
 // Returns: A list of applications that have the given permission
 func Permission(permission string) Check {
 	// Open the registry key for the given permission
-	key, err := utils.OpenRegistryKey(registry.CURRENT_USER,
+	key, err := RegistryKey.OpenRegistryKey(RegistryKey.NewRegistryKeyWrapper(registry.CURRENT_USER),
 		`Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\`+permission)
 	if err != nil {
 		return NewCheckErrorf(permission, "error opening registry key", err)
 	}
 	// Close the key after we have received all relevant information
-	defer utils.CloseRegistryKey(key)
+	defer RegistryKey.CloseRegistryKey(key)
 
 	// Get the names of all sub-keys (which represent applications)
 	applicationNames, err := key.ReadSubKeyNames(-1)
@@ -34,9 +34,9 @@ func Permission(permission string) Check {
 	for _, appName := range applicationNames {
 		// The registry key for packaged/non-packaged applications is different, so they get handled separately
 		if appName == "NonPackaged" {
-			key, err = utils.OpenRegistryKey(registry.CURRENT_USER,
+			key, err = RegistryKey.OpenRegistryKey(RegistryKey.NewRegistryKeyWrapper(registry.CURRENT_USER),
 				`Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\`+permission+`\NonPackaged`)
-			defer utils.CloseRegistryKey(key)
+			defer RegistryKey.CloseRegistryKey(key)
 			nonPackagedApplicationNames, err := key.ReadSubKeyNames(-1)
 			v, vint, err := key.GetStringValue("Value")
 
@@ -48,9 +48,9 @@ func Permission(permission string) Check {
 				}
 			}
 		} else {
-			key, err = utils.OpenRegistryKey(registry.CURRENT_USER,
+			key, err = RegistryKey.OpenRegistryKey(RegistryKey.NewRegistryKeyWrapper(registry.CURRENT_USER),
 				`Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\`+permission+`\`+appName)
-			defer utils.CloseRegistryKey(key)
+			defer RegistryKey.CloseRegistryKey(key)
 			v, vint, err := key.GetStringValue("Value")
 
 			// Check if the application has the specified permission

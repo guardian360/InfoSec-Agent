@@ -4,10 +4,12 @@
 package scan
 
 import (
+	"github.com/InfoSec-Agent/InfoSec-Agent/RegistryKey"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/chromium"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/firefox"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
+	"golang.org/x/sys/windows/registry"
 
 	"encoding/json"
 	"fmt"
@@ -37,7 +39,9 @@ func Scan(dialog zenity.ProgressDialog) {
 		checks.Bluetooth,
 		checks.OpenPorts,
 		checks.WindowsOutdated,
-		checks.SecureBoot,
+		func() checks.Check {
+			return checks.SecureBoot(RegistryKey.NewRegistryKeyWrapper(registry.LOCAL_MACHINE))
+		},
 		func() checks.Check {
 			return checks.SmbCheck(&utils.RealCommandExecutor{}, &utils.RealCommandExecutor{})
 		},

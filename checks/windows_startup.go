@@ -2,7 +2,7 @@ package checks
 
 import (
 	"fmt"
-	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
+	"github.com/InfoSec-Agent/InfoSec-Agent/RegistryKey"
 	"golang.org/x/sys/windows/registry"
 )
 
@@ -14,11 +14,11 @@ import (
 func Startup() Check {
 	// Start-up programs can be found in different locations within the registry
 	// Both the current user and local machine registry keys are checked
-	cuKey, err1 := utils.OpenRegistryKey(registry.CURRENT_USER,
+	cuKey, err1 := RegistryKey.OpenRegistryKey(RegistryKey.NewRegistryKeyWrapper(registry.CURRENT_USER),
 		`SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run`)
-	lmKey, err2 := utils.OpenRegistryKey(registry.LOCAL_MACHINE,
+	lmKey, err2 := RegistryKey.OpenRegistryKey(RegistryKey.NewRegistryKeyWrapper(registry.LOCAL_MACHINE),
 		`SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run`)
-	lmKey2, err3 := utils.OpenRegistryKey(registry.LOCAL_MACHINE,
+	lmKey2, err3 := RegistryKey.OpenRegistryKey(RegistryKey.NewRegistryKeyWrapper(registry.LOCAL_MACHINE),
 		`SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run32`)
 
 	if err1 != nil || err2 != nil || err3 != nil {
@@ -26,9 +26,9 @@ func Startup() Check {
 	}
 
 	// Close the keys after we have received all relevant information
-	defer utils.CloseRegistryKey(cuKey)
-	defer utils.CloseRegistryKey(lmKey)
-	defer utils.CloseRegistryKey(lmKey2)
+	defer RegistryKey.CloseRegistryKey(cuKey)
+	defer RegistryKey.CloseRegistryKey(lmKey)
+	defer RegistryKey.CloseRegistryKey(lmKey2)
 
 	// Read the entries within the registry key
 	cuValueNames, err1 := cuKey.ReadValueNames(0)
@@ -40,9 +40,9 @@ func Startup() Check {
 	}
 
 	output := make([]string, 0)
-	output = append(output, utils.FindEntries(cuValueNames, cuKey)...)
-	output = append(output, utils.FindEntries(lmValueNames, lmKey)...)
-	output = append(output, utils.FindEntries(lm2ValueNames, lmKey2)...)
+	output = append(output, RegistryKey.FindEntries(cuValueNames, cuKey)...)
+	output = append(output, RegistryKey.FindEntries(lmValueNames, lmKey)...)
+	output = append(output, RegistryKey.FindEntries(lm2ValueNames, lmKey2)...)
 
 	return NewCheckResult("Startup", output...)
 }
