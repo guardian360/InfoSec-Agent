@@ -1,11 +1,7 @@
-// Package checks implements different security/privacy checks
-//
-// Exported function(s): PasswordManager, WindowsDefender, LastPasswordChange, LoginMethod, Permission, Bluetooth,
-// OpenPorts, WindowsOutdated, SecureBoot, SmbCheck, Startup, GuestAccount, UACCheck, RemoteDesktopCheck,
-// ExternalDevices, NetworkSharing
 package checks
 
 import (
+	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"os/exec"
 	"strings"
 )
@@ -58,7 +54,7 @@ func GuestAccount() Check {
 	}
 
 	// Retrieve current username
-	currentUser, err := getCurrentUsername()
+	currentUser, err := utils.CurrentUsername()
 	if err != nil {
 		return NewCheckErrorf("Guest account", "error retrieving current username", err)
 	}

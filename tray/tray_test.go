@@ -1,11 +1,7 @@
-// Package tray_test is the testing package for the tray.go file, responsible for unit-testing the basic system tray functionality
-//
-// Function(s): TestChangeScanInterval, TestScanNow, TestOnQuit
-
-package tray_test
+package tray
 
 import (
-	"InfoSec-Agent/localization"
+	"github.com/InfoSec-Agent/InfoSec-Agent/localization"
 	"github.com/nicksnyder/go-i18n/v2/i18n"
 	"github.com/stretchr/testify/require"
 	"io"
@@ -13,19 +9,21 @@ import (
 	"testing"
 	"time"
 
-	"InfoSec-Agent/tray"
-
 	"github.com/getlantern/systray"
 )
 
-// Setup for the tests
+// TestMain initializes the system tray application and runs the tests
+//
+// Parameters: m *testing.M - The testing framework
+//
+// Returns: _
 func TestMain(m *testing.M) {
 	// Initialize systray
 
 	go localization.Init("../")
 	time.Sleep(100 * time.Millisecond)
 
-	go systray.Run(tray.OnReady, tray.OnQuit)
+	go systray.Run(OnReady, OnQuit)
 
 	// Wait for the system tray application to initialize
 	time.Sleep(100 * time.Millisecond)
@@ -39,7 +37,11 @@ func TestMain(m *testing.M) {
 	os.Exit(exitCode)
 }
 
-// Test the ChangeScanInterval function
+// TestChangeScanInterval tests the ChangeScanInterval function with valid and invalid inputs
+//
+// Parameters: t *testing.T - The testing framework
+//
+// Returns: _
 func TestChangeScanInterval(t *testing.T) {
 	// Define test cases with input values and expected results
 	testCases := []struct {
@@ -66,7 +68,7 @@ func TestChangeScanInterval(t *testing.T) {
 		os.Stdout = w
 
 		// Run the function with mocked user input
-		go tray.ChangeScanInterval(tc.input)
+		go ChangeScanInterval(tc.input)
 
 		// Wait for the function to complete
 		time.Sleep(100 * time.Millisecond)
@@ -84,7 +86,11 @@ func TestChangeScanInterval(t *testing.T) {
 	}
 }
 
-// Test the ScanNow function
+// TestScanNow tests the ScanNow function
+//
+// Parameters: t *testing.T - The testing framework
+//
+// Returns: _
 func TestScanNow(t *testing.T) {
 	// Set up initial scanCounter value
 	initialScanCounter := 0
@@ -93,20 +99,24 @@ func TestScanNow(t *testing.T) {
 
 	// Listen for ticker advancement
 	go func() {
-		<-tray.ScanTicker().C
+		<-scanTicker.C
 		tickerAdvanced <- struct{}{}
 	}()
 
 	// Run the function
-	tray.ScanNow()
+	ScanNow()
 
 	// Assert that scanCounter was incremented
-	finalScanCounter := tray.ScanCounter()
+	finalScanCounter := scanCounter
 	expectedScanCounter := initialScanCounter + 1
 	require.Equal(t, finalScanCounter, expectedScanCounter)
 }
 
-// Test the OnQuit function
+// TestOnQuit tests the OnQuit function
+//
+// Parameters: t *testing.T - The testing framework
+//
+// Returns: _
 func TestOnQuit(t *testing.T) {
 	// Mock OS signals channel
 	sigc := make(chan os.Signal, 1)
@@ -116,7 +126,7 @@ func TestOnQuit(t *testing.T) {
 
 	// Run OnQuit in a separate goroutine
 	go func() {
-		tray.OnQuit()
+		OnQuit()
 		quitCompleted <- struct{}{}
 	}()
 
@@ -133,6 +143,10 @@ func TestOnQuit(t *testing.T) {
 }
 
 // TestTranslation tests the localization package, ensuring that strings are translated correctly
+//
+// Parameters: t *testing.T - The testing framework
+//
+// Returns: _
 func TestTranslation(t *testing.T) {
 	var localizer = localization.Localizers()[0]
 	s1 := localizer.MustLocalize(&i18n.LocalizeConfig{
@@ -147,6 +161,10 @@ func TestTranslation(t *testing.T) {
 }
 
 // TestChangeLang tests the tray.ChangeLang function on valid and invalid inputs
+//
+// Parameters: t *testing.T - The testing framework
+//
+// Returns: _
 func TestChangeLang(t *testing.T) {
 	testCases := []struct {
 		input         string
@@ -165,19 +183,37 @@ func TestChangeLang(t *testing.T) {
 	}
 
 	for _, tc := range testCases {
-		tray.ChangeLanguage(tc.input)
-		require.Equal(t, tc.expectedIndex, tray.Language())
+		ChangeLanguage(tc.input)
+		require.Equal(t, tc.expectedIndex, language)
 	}
 }
 
+// TestRefreshMenu tests the RefreshMenu function
+//
+// Parameters: t *testing.T - The testing framework
+//
+// Returns: _
 func TestRefreshMenu(t *testing.T) {
-	value1 := tray.MenuItems()[0].MenuTitle
-	translation1 := localization.Localize(tray.Language(), value1)
-	tray.ChangeLanguage("Spanish")
+	value1 := menuItems[0].MenuTitle
+	translation1 := localization.Localize(language, value1)
+	ChangeLanguage("Spanish")
 	// Refresh the menu, then check if the translation is different
-	tray.RefreshMenu(tray.MenuItems())
-	value2 := tray.MenuItems()[0].MenuTitle
-	translation2 := localization.Localize(tray.Language(), value2)
+	RefreshMenu(menuItems)
+	value2 := menuItems[0].MenuTitle
+	translation2 := localization.Localize(language, value2)
 
 	require.NotEqual(t, translation1, translation2)
+}
+
+// TestOpenReportingPageWhenAlreadyOpen tests the OpenReportingPage function when the reporting page is already open.
+// It should not be able to open another reporting page when one is already running.
+//
+// Parameters: t *testing.T - The testing framework
+//
+// Returns: _
+func TestOpenReportingPageWhenAlreadyOpen(t *testing.T) {
+	rpPage = true
+	err := openReportingPage("../")
+	require.Error(t, err)
+	require.Equal(t, "reporting-page is already running", err.Error())
 }

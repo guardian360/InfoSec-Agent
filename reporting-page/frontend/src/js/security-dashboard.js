@@ -2,8 +2,8 @@ import * as rc from "./risk-counters";
 import * as graph from "./graph";
 import * as piechart from "./piechart";
 
-/** Load the content of the Dashboard page */
-function openDashboardPage() {
+/** Load the content of the Security Dashboard page */
+function openSecurityDashboardPage() {
   document.getElementById("page-contents").innerHTML = `
   <div class="dashboard-data">
     <div class="data-column risk-counters">
@@ -128,7 +128,7 @@ function openDashboardPage() {
   CreateGraphChart();
 }
 
-document.getElementById("dashboard-button").addEventListener("click", () => openDashboardPage());
+document.getElementById("security-dashboard-button").addEventListener("click", () => openSecurityDashboardPage());
 
 /** Changes the risk counters to show the correct values */
 function AdjustWithRiskCounters() {

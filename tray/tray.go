@@ -1,13 +1,14 @@
 // Package tray implements the basic functionality of the system tray application
 //
-// Function(s): OnReady, OnQuit, openReportingPage, ChangeScanInterval, ScanNow, ChangeLanguage,
-// RefreshMenu, ScanCounter, ScanTicker, Language, MenuItems
+// Exported function(s): OnReady, OnQuit, ChangeScanInterval, ScanNow, ChangeLanguage,
+// RefreshMenu
 package tray
 
 import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/icon"
 	"github.com/InfoSec-Agent/InfoSec-Agent/localization"
 	"github.com/InfoSec-Agent/InfoSec-Agent/scan"
+	"log"
 
 	"github.com/getlantern/systray"
 	"github.com/ncruces/zenity"
@@ -78,7 +79,10 @@ func OnReady() {
 	for {
 		select {
 		case <-mReportingPage.ClickedCh:
-			openReportingPage()
+			err := openReportingPage("")
+			if err != nil {
+				log.Println(err)
+			}
 		case <-mChangeScanInterval.ClickedCh:
 			ChangeScanInterval()
 		case <-mScanNow.ClickedCh:
@@ -113,10 +117,9 @@ func OnQuit() {
 // Parameters: _
 //
 // Returns: _
-func openReportingPage() {
+func openReportingPage(path string) error {
 	if rpPage {
-		fmt.Println("Reporting page is already running")
-		return
+		return fmt.Errorf("reporting-page is already running")
 	}
 
 	// Get the current working directory
@@ -124,22 +127,20 @@ func openReportingPage() {
 	//Consideration: Wails can also send (termination) signals to the back-end, might be worth investigating
 	originalDir, err := os.Getwd()
 	if err != nil {
-		fmt.Println("Error getting current directory:", err)
-		return
+		return fmt.Errorf("Error getting current directory: %s", err)
 	}
 
 	// Change directory to reporting-page folder
-	err = os.Chdir("reporting-page")
+	err = os.Chdir(path + "reporting-page")
 	if err != nil {
-		fmt.Println("Error changing directory:", err)
-		return
+		return fmt.Errorf("Error changing directory: %s", err)
 	}
 
 	// Restore the original working directory
 	defer func() {
 		err := os.Chdir(originalDir)
 		if err != nil {
-			fmt.Println("Error changing directory:", err)
+			log.Println("Error changing directory:", err)
 		}
 		rpPage = false
 	}()
@@ -150,8 +151,7 @@ func openReportingPage() {
 	buildCmd.Stdout = os.Stdout
 	buildCmd.Stderr = os.Stderr
 	if err := buildCmd.Run(); err != nil {
-		fmt.Println("Error building reporting-page:", err)
-		return
+		return fmt.Errorf("Error building reporting-page: %s", err)
 	}
 
 	// Set up the reporting-page executable
@@ -163,7 +163,7 @@ func openReportingPage() {
 	go func() {
 		<-mQuit.ClickedCh
 		if err := runCmd.Process.Kill(); err != nil {
-			fmt.Println("Error interrupting reporting-page process:", err)
+			log.Println("Error interrupting reporting-page process:", err)
 		}
 		rpPage = false
 		systray.Quit()
@@ -172,10 +172,10 @@ func openReportingPage() {
 	rpPage = true
 	// Run the reporting page executable
 	if err := runCmd.Run(); err != nil {
-		fmt.Println("Error running reporting-page:", err)
 		rpPage = false
-		return
+		return fmt.Errorf("Error running reporting-page: %s", err)
 	}
+	return nil
 }
 
 // ChangeScanInterval provides the user with a dialog window to set the (new) scan interval
@@ -193,7 +193,7 @@ func ChangeScanInterval(testInput ...string) {
 		var err error
 		res, err = zenity.Entry("Enter the scan interval (in hours):", zenity.Title("Change Scan Interval"), zenity.DefaultItems("24"))
 		if err != nil {
-			fmt.Println("Error creating dialog:", err)
+			log.Println("Error creating dialog:", err)
 			return
 		}
 	}
@@ -226,14 +226,14 @@ func ScanNow() {
 	dialog, err := zenity.Progress(
 		zenity.Title("Security/Privacy Scan"))
 	if err != nil {
-		fmt.Println("Error creating dialog:", err)
+		log.Println("Error creating dialog:", err)
 		return
 	}
 	// Defer closing the dialog until the scan completes
 	defer func(dialog zenity.ProgressDialog) {
 		err := dialog.Close()
 		if err != nil {
-			fmt.Println("Error closing dialog:", err)
+			log.Println("Error closing dialog:", err)
 		}
 	}(dialog)
 
@@ -241,7 +241,7 @@ func ScanNow() {
 
 	err = dialog.Complete()
 	if err != nil {
-		fmt.Println("Error completing dialog:", err)
+		log.Println("Error completing dialog:", err)
 		return
 	}
 }
@@ -261,7 +261,7 @@ func ChangeLanguage(testInput ...string) {
 			"Spanish", "French", "Dutch", "Portuguese"}, zenity.Title("Change Language"),
 			zenity.DefaultItems("British English"))
 		if err != nil {
-			fmt.Println("Error creating dialog:", err)
+			log.Println("Error creating dialog:", err)
 			return
 		}
 	}
@@ -298,37 +298,3 @@ func RefreshMenu(items []MenuItem) {
 		item.sysMenuItem.SetTooltip(localization.Localize(language, item.menuTooltip))
 	}
 }
-
-// ScanCounter returns the scanCounter, for use in tray_test.go
-//
-// Parameters: _
-//
-// Returns: scanCounter (int)
-func ScanCounter() int {
-	return scanCounter
-}
-
-// ScanTicker returns the scanTicker, for use in tray_test.go
-//
-// Parameters: _
-//
-// Returns: scanTicker (*time.Ticker)
-func ScanTicker() *time.Ticker {
-	return scanTicker
-}
-
-// Language returns the language variable, for use in tray_test.go
-//
-// Parameters: _
-//
-// Returns: language index (int)
-func Language() int {
-	return language
-}
-
-// MenuItems returns the list of system tray menu items, for use in tray_test.go
-//
-// Parameters: _
-//
-// Returns: menuItems ([]MenuItem)
-func MenuItems() []MenuItem { return menuItems }
