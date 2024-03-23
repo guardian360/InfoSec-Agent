@@ -7,9 +7,11 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/chromium"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/firefox"
+	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 
 	"encoding/json"
 	"fmt"
+
 	"github.com/ncruces/zenity"
 )
 
@@ -33,20 +35,28 @@ func Scan(dialog zenity.ProgressDialog) {
 		func() checks.Check { return checks.Permission("appointments") },
 		func() checks.Check { return checks.Permission("contacts") },
 		checks.Bluetooth,
-		checks.OpenPorts,
+		func() checks.Check {
+			return checks.OpenPorts(&utils.RealCommandExecutor{}, &utils.RealCommandExecutor{})
+		},
 		checks.WindowsOutdated,
 		checks.SecureBoot,
-		checks.SmbCheck,
+		func() checks.Check {
+			return checks.SmbCheck(&utils.RealCommandExecutor{}, &utils.RealCommandExecutor{})
+		},
 		checks.Startup,
-		checks.GuestAccount,
-		checks.UACCheck,
+		func() checks.Check {
+			return checks.GuestAccount(&utils.RealCommandExecutor{}, &utils.RealCommandExecutor{}, &utils.RealCommandExecutor{}, &utils.RealCommandExecutor{})
+		},
+		func() checks.Check { return checks.UACCheck(&utils.RealCommandExecutor{}) },
 		checks.RemoteDesktopCheck,
-		checks.ExternalDevices,
-		checks.NetworkSharing,
+		func() checks.Check { return checks.ExternalDevices(&utils.RealCommandExecutor{}) },
+		func() checks.Check { return checks.NetworkSharing(&utils.RealCommandExecutor{}) },
 		func() checks.Check { return chromium.HistoryChromium("Chrome") },
 		func() checks.Check { return chromium.ExtensionsChromium("Chrome") },
+		func() checks.Check { return chromium.SearchEngineChromium("Chrome") },
 		func() checks.Check { c, _ := firefox.ExtensionFirefox(); return c },
 		func() checks.Check { _, c := firefox.ExtensionFirefox(); return c },
+		firefox.SearchEngineFirefox,
 	}
 	totalChecks := len(securityChecks)
 

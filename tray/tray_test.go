@@ -205,3 +205,16 @@ func TestRefreshMenu(t *testing.T) {
 
 	require.NotEqual(t, translation1, translation2)
 }
+
+// TestOpenReportingPageWhenAlreadyOpen tests the OpenReportingPage function when the reporting page is already open.
+// It should not be able to open another reporting page when one is already running.
+//
+// Parameters: t *testing.T - The testing framework
+//
+// Returns: _
+func TestOpenReportingPageWhenAlreadyOpen(t *testing.T) {
+	rpPage = true
+	err := openReportingPage("../")
+	require.Error(t, err)
+	require.Equal(t, "reporting-page is already running", err.Error())
+}
