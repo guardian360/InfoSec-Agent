@@ -15,25 +15,48 @@
   "Navigation": 
   {
     "Settings": "Instellingen",
-    "Home": "Home",
+    "Home": "Startpagina",
     "SecurityDashboard": "Beveiligingsdashboard",
     "PrivacyDashboard": "Privacydashboard",
     "Issues": "Problemen",
     "Integration": "Integratie",
     "About": "Over"
   },
+  "Settings":
+  {
+    "PersonalizeTitle": "Personalisatie",
+    "PersonalizeButton": "Personaliseer",
+    "ChangeLanguageTitle": "Taal",
+    "ChangeLanguageButton": "Taal wijzigen"
+  },
   "Dashboard": 
   {
+    "Issues": "Problemen",
     "SuggestedIssue": "Voorgesteld Probleem",
     "QuickFix": "Snelle Oplossing",
     "ScanNow": "Nu Scannen",
     "Medals": "Medailles",
     "SecurityStatus": "Veiligheidsstatus",
-    "SecurityRisksOverview": "Overzicht van Beveiligingsrisico's",
-    "HighRisk": "Hoog Risico",
-    "MediumRisk": "Gemiddeld Risico",
-    "LowRisk": "Laag Risico",
-    "Safe": "Veilig"
+    "Critical": "Kritiek",
+    "MediumConcern": "Gemiddelde Bezorgdheid",
+    "LowConcern": "Lage Bezorgdheid",
+    "NoConcern": "Veilig",
+    "SecurityRisksOverview": "Overzicht van Beveiligings-/Privacyrisico's",
+    "HighRisk": "Hoogrisico-problemen",
+    "MediumRisk": "Gemiddeldrisico-problemen",
+    "LowRisk": "Laagrisico-problemen",
+    "Safe": "Problemen zonder risico",
+    "RiskAreas": "Gebieden van Veiligheids-/Privacyrisico's",
+    "Applications": "Applicaties",
+    "Browser": "Browser",
+    "Devices": "Apparaten",
+    "OperatingSystem": "Besturingssysteem",
+    "Passwords": "Wachtwoorden",
+    "Other": "Andere",
+    "ChooseIssueDescription": "U heeft enkele problemen die u kunt oplossen. Om een probleem op te lossen, navigeer naar de probleempagina of kies een voorgesteld probleem hieronder.",
+    "BarGraphDescription": "Deze grafiek toont de verdeling van problemen van verschillende risiconiveaus die in de afgelopen 5 scans zijn gevonden.",
+    "SelectRisks": "Risico's selecteren",
+    "ChangeInterval": "Interval wijzigen"
   },
   "Issues":
   {

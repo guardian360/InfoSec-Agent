@@ -5,10 +5,11 @@
 package tray
 
 import (
+	"log"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/icon"
 	"github.com/InfoSec-Agent/InfoSec-Agent/localization"
 	"github.com/InfoSec-Agent/InfoSec-Agent/scan"
-	"log"
 
 	"github.com/getlantern/systray"
 	"github.com/ncruces/zenity"
@@ -252,7 +253,6 @@ func ScanNow() {
 //
 // Returns: _
 func ChangeLanguage(testInput ...string) {
-	fmt.Println("ChangeLanguage is veranderd")
 	var res string
 	if len(testInput) > 0 {
 		res = testInput[0]
@@ -294,7 +294,7 @@ func ChangeLanguage(testInput ...string) {
 //
 // Returns: _
 func RefreshMenu() {
-	fmt.Println("Huidige taal: ", language)
+	fmt.Println("Current taal: ", language)
 	fmt.Print(menuItems)
 	for _, item := range menuItems {
 		item.sysMenuItem.SetTitle(localization.Localize(language, item.MenuTitle))

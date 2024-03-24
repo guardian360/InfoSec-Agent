@@ -5,3 +5,7 @@
 export function Localize(arg1) {
   return window['go']['main']['App']['Localize'](arg1);
 }
+
+export function PrintFromFrontend(arg1) {
+  return window['go']['main']['App']['PrintFromFrontend'](arg1);
+}

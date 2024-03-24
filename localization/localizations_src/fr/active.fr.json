@@ -22,18 +22,41 @@
     "Integration": "Intégration",
     "About": "À propos"
   },
+  "Settings":
+  {
+    "PersonalizeTitle": "Personnalisation",
+    "PersonalizeButton": "Personnaliser",
+    "ChangeLanguageTitle": "Langue",
+    "ChangeLanguageButton": "Changer la langue"
+  },
   "Dashboard": 
   {
+    "Issues": "Problèmes",
     "SuggestedIssue": "Problème Suggéré",
     "QuickFix": "Correction Rapide",
     "ScanNow": "Scanner Maintenant",
     "Medals": "Médailles",
     "SecurityStatus": "État de Sécurité",
+    "Critical": "Critique",
+    "MediumConcern": "Préoccupation Moyenne",
+    "LowConcern": "Faible Préoccupation",
+    "NoConcern": "Sûr",
     "SecurityRisksOverview": "Aperçu des Risques de Sécurité",
-    "HighRisk": "Risque Élevé",
-    "MediumRisk": "Risque Moyen",
-    "LowRisk": "Faible Risque",
-    "Safe": "Sûr"
+    "HighRisk": "Problèmes à Haut Risque",
+    "MediumRisk": "Problèmes à Risque Moyen",
+    "LowRisk": "Problèmes à Faible Risque",
+    "Safe": "Problèmes sans Risque",
+    "RiskAreas": "Domaines de Risques de Sécurité/Confidentialité",
+    "Applications": "Applications",
+    "Browser": "Navigateur",
+    "Devices": "Appareils",
+    "OperatingSystem": "Système d'Exploitation",
+    "Passwords": "Mots de Passe",
+    "Other": "Autre",
+    "ChooseIssueDescription": "Vous avez des problèmes que vous pouvez résoudre. Pour commencer à résoudre un problème, naviguez vers la page des problèmes ou sélectionnez un problème suggéré ci-dessous.",
+    "BarGraphDescription": "Ce graphique montre la répartition des problèmes de différents niveaux de risque trouvés lors des 5 derniers scans.",
+    "SelectRisks": "Sélectionner les risques",
+    "ChangeInterval": "Changer l'intervalle"
   },
   "Issues":
   {

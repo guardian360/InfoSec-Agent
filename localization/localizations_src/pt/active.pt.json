@@ -22,18 +22,41 @@
     "Integration": "Integração",
     "About": "Sobre"
   },
+  "Settings":
+  {
+    "PersonalizeTitle": "Personalização",
+    "PersonalizeButton": "Personalizar",
+    "ChangeLanguageTitle": "Idioma",
+    "ChangeLanguageButton": "Alterar idioma"
+  },
   "Dashboard": 
   {
+    "Issues": "Problemas",
     "SuggestedIssue": "Problema Sugerido",
     "QuickFix": "Solução Rápida",
     "ScanNow": "Escanear Agora",
     "Medals": "Medalhas",
     "SecurityStatus": "Status de Segurança",
+    "Critical": "Crítico",
+    "MediumConcern": "Preocupação Média",
+    "LowConcern": "Preocupação Baixa",
+    "NoConcern": "Seguro",
     "SecurityRisksOverview": "Visão Geral dos Riscos de Segurança",
-    "HighRisk": "Risco Alto",
-    "MediumRisk": "Risco Médio",
-    "LowRisk": "Risco Baixo",
-    "Safe": "Seguro"
+    "HighRisk": "Problemas de Alto Risco",
+    "MediumRisk": "Problemas de Risco Médio",
+    "LowRisk": "Problemas de Baixo Risco",
+    "Safe": "Problemas sem Risco",
+    "RiskAreas": "Áreas de Riscos de Segurança/Privacidade",
+    "Applications": "Aplicações",
+    "Browser": "Navegador",
+    "Devices": "Dispositivos",
+    "OperatingSystem": "Sistema Operacional",
+    "Passwords": "Senhas",
+    "Other": "Outro",
+    "ChooseIssueDescription": "Você possui alguns problemas que pode resolver. Para começar a resolver um problema, navegue até a página de problemas ou escolha um problema sugerido abaixo.",
+    "BarGraphDescription": "Este gráfico mostra a distribuição de problemas de diferentes níveis de risco encontrados nos últimos 5 scans.",
+    "SelectRisks": "Selecionar riscos",
+    "ChangeInterval": "Alterar intervalo"
   },
   "Issues":
   {

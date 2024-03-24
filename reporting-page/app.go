@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/localization"
 )
@@ -29,8 +30,21 @@ func (a *App) startup(ctx context.Context) {
 	a.ctx = ctx
 }
 
-// Localize calls the Localize function from the localization package and passes the given language and ID.
-// Wails binds this function to the frontend.
+// Localize is called when the frontend loads text. It localizes the text based on the current language.
+//
+// Parameters: MessageID (string) - the ID of the message to localize
+//
+// Returns: localized string (string)
 func (a *App) Localize(MessageID string) string {
-	return localization.Localize(6, MessageID)
+	// return localization.Localize(tray.GetLanguage(), MessageID)
+	return localization.Localize(5, MessageID)
+}
+
+// Print prints the given message to the console
+//
+// Parameters: message (string) - the message to print
+//
+// Returns: _
+func (a *App) PrintFromFrontend(message string) {
+	fmt.Println(message)
 }

@@ -139,8 +139,14 @@ body {
   padding-left: 20px;
 }
 .left-nav .nav-item {
-  padding-top: 15px;
+  
 }
+.left-nav .home {padding-top: 15px;}
+.left-nav .security-dashboard {padding-top: 15px;}
+.left-nav .privacy-dashboard {padding-top: 15px;}
+.left-nav .issues {padding-top: 15px;}
+.left-nav .integration {padding-top: 15px;}
+.left-nav .about {padding-top: 15px;}
 
 .left-nav .active {
   background-color: #427385;
