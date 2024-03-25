@@ -102,8 +102,13 @@ func (m *MockRegistryKey) Stat() (*registry.KeyInfo, error) {
 // ReadSubKeyNames reads the subkey names of the registry key
 func (m *MockRegistryKey) ReadSubKeyNames(count int) ([]string, error) {
 	var subKeyNames []string
+	var maxCount int
 	for _, key := range m.SubKeys {
 		subKeyNames = append(subKeyNames, key.Name)
+		maxCount++
+		if maxCount == count {
+			break
+		}
 	}
 	return subKeyNames, nil
 }
