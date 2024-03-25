@@ -59,3 +59,4 @@ jobs:
           # install-mode: "goinstall"
       - name: Upload golangci-lint results
         run: Get-ChildItem
+        if: always()
