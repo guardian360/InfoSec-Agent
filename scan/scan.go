@@ -27,7 +27,9 @@ func Scan(dialog zenity.ProgressDialog) {
 	securityChecks := []func() checks.Check{
 		checks.PasswordManager,
 		checks.WindowsDefender,
-		checks.LastPasswordChange,
+		func() checks.Check {
+			return checks.LastPasswordChange(&utils.RealCommandExecutor{})
+		},
 		checks.LoginMethod,
 		func() checks.Check { return checks.Permission("location") },
 		func() checks.Check { return checks.Permission("microphone") },

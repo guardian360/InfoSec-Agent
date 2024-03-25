@@ -1,57 +1,49 @@
 package checks
 
-// TestLastPasswordChange tests if response is correct when password was not changed recently
-//
-// Parameters: _
-//
-// Returns: _
-// func TestLastPasswordChange(t *testing.T) {
-// 	// Save the original functions and restore them at the end
-// 	originalCommand := executor
-// 	originalUsername := fetcher
-// 	defer func() {
-// 		executor = originalCommand
-// 		fetcher = originalUsername
-// 	}()
+import (
+	"fmt"
+	"reflect"
+	"testing"
 
-// 	// Test when exec.Command returns an error
-// 	utils.CurrentUsername = func() (string, error) {
-// 		return "testuser", nil
-// 	}
-// 	exec.Command = func(command string, args ...string) *exec.Cmd {
-// 		return exec.Command("nonexistent")
-// 	}
-// 	result = LastPasswordChange()
-// 	assert.NotNil(t, result.Error)
+	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
+)
 
-// 	// Test when exec.Command returns valid output
-// 	exec.Command = func(command string, args ...string) *exec.Cmd {
-// 		output := []byte(`User name                    testuser
-// 	Full Name                    Test User
-// 	Comment
-// 	User's comment
-// 	Country/region code          000 (System Default)
-// 	Account active               Yes
-// 	Account expires              Never
+type MockUtils struct {
+	Username string
+	Err      error
+}
 
-// 	Password last set            01-01-2022 12:00:00 AM
-// 	Password expires             Never
-// 	Password changeable          01-01-2022 12:00:00 AM
-// 	Password required            Yes
-// 	User may change password     Yes
+func (m *MockUtils) CurrentUsername() (string, error) {
+	return m.Username, m.Err
+}
 
-// 	Workstations allowed         All
-// 	Logon script
-// 	User profile
-// 	Home directory
-// 	Last logon                   Never
-
-// 	Logon hours allowed          All`)
-// 		cmd := exec.Command(command, args...)
-// 		cmd.Stdout = bytes.NewBuffer(output)
-// 		return cmd
-// 	}
-// 	expectedResult := NewCheckResult("LastPasswordChange", "You changed your password recently on 01-01-2022")
-// 	result = LastPasswordChange()
-// 	assert.Equal(t, expectedResult, result)
-// }
+func TestLastPasswordChange(t *testing.T) {
+	tests := []struct {
+		name          string
+		executorClass *utils.MockCommandExecutor
+		want          Check
+	}{
+		{
+			name:          "Password not changed recently",
+			executorClass: &utils.MockCommandExecutor{Output: "Gebruikersnaam                           test\nVolledige naam                           test\nOpmerking\nOpmerking van gebruiker\nLandcode                                 000 (Systeemstandaard)\nAccount actief                           Ja\nAccount verloopt                         Nooit\n\nWachtwoord voor het laatst ingesteld     1-1-2022 17:48:16\nWachtwoord verloopt                      Nooit\nWachtwoord mag worden gewijzigd          1-1-2022 17:48:16\nWachtwoord vereist                       Ja\nGebruiker mag wachtwoord wijzigen        Ja\n\nWerkstations toegestaan                  Alle\nAanmeldingsscript\nGebruikersprofiel\nBasismap\nMeest recente aanmelding                 Nooit\n\nToegestane aanmeldingstijden             Alle\n\nLidmaatschap lokale groep                *Administrators\n                                         *Apparaatbeheerders\n                                         *docker-users\n                                         *Gebruikers\n                                         *Prestatielogboekgebru\nLidmaatschap globale groep               *Geen\nDe opdracht is voltooid.", Err: nil},
+			want:          NewCheckResult("LastPasswordChange", "Password last changed on 1-1-2022 , your password was changed more than half a year ago so you should change it again"),
+		},
+		{
+			name:          "Parsing data error",
+			executorClass: &utils.MockCommandExecutor{Output: "Gebruikersnaam                           test\nVolledige naam                           test\nOpmerking\nOpmerking van gebruiker\nLandcode                                 000 (Systeemstandaard)\nAccount actief                           Ja\nAccount verloopt                         Nooit\n\nWachtwoord voor het laatst ingesteld     1-0.5-2022 17:48:16\nWachtwoord verloopt                      Nooit\nWachtwoord mag worden gewijzigd          1-0.5-2022 17:48:16\nWachtwoord vereist                       Ja\nGebruiker mag wachtwoord wijzigen        Ja\n\nWerkstations toegestaan                  Alle\nAanmeldingsscript\nGebruikersprofiel\nBasismap\nMeest recente aanmelding                 Nooit\n\nToegestane aanmeldingstijden             Alle\n\nLidmaatschap lokale groep                *Administrators\n                                         *Apparaatbeheerders\n                                         *docker-users\n                                         *Gebruikers\n                                         *Prestatielogboekgebru\nLidmaatschap globale groep               *Geen\nDe opdracht is voltooid.", Err: nil},
+			want:          NewCheckError("LastPasswordChange", fmt.Errorf("error parsing date")),
+		},
+		{
+			name:          "Password changed recently",
+			executorClass: &utils.MockCommandExecutor{Output: "Gebruikersnaam                           test\nVolledige naam                           test\nOpmerking\nOpmerking van gebruiker\nLandcode                                 000 (Systeemstandaard)\nAccount actief                           Ja\nAccount verloopt                         Nooit\n\nWachtwoord voor het laatst ingesteld     1-1-2024 17:48:16\nWachtwoord verloopt                      Nooit\nWachtwoord mag worden gewijzigd          1-1-2024 17:48:16\nWachtwoord vereist                       Ja\nGebruiker mag wachtwoord wijzigen        Ja\n\nWerkstations toegestaan                  Alle\nAanmeldingsscript\nGebruikersprofiel\nBasismap\nMeest recente aanmelding                 Nooit\n\nToegestane aanmeldingstijden             Alle\n\nLidmaatschap lokale groep                *Administrators\n                                         *Apparaatbeheerders\n                                         *docker-users\n                                         *Gebruikers\n                                         *Prestatielogboekgebru\nLidmaatschap globale groep               *Geen\nDe opdracht is voltooid.", Err: nil},
+			want:          NewCheckResult("LastPasswordChange", "You changed your password recently on 1-1-2024"),
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := LastPasswordChange(tt.executorClass); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("LastPasswordChange() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
