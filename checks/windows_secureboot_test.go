@@ -15,17 +15,17 @@ func TestSecureBoot(t *testing.T) {
 	}{
 		{
 			name: "SecureBootEnabled",
-			key:  &registrymock.MockRegistryKey{StringValue: "UEFISecureBootEnabled", BinaryValue: nil, IntegerValue: 1, Err: nil},
+			key:  &registrymock.MockRegistryKey{StringValues: nil, BinaryValues: nil, IntegerValues: map[string]uint64{"UEFISecureBootEnabled": 1}, Err: nil},
 			want: checks.NewCheckResult("SecureBoot", "Secure boot is enabled"),
 		},
 		{
 			name: "SecureBootDisabled",
-			key:  &registrymock.MockRegistryKey{StringValue: "UEFISecureBootEnabled", BinaryValue: nil, IntegerValue: 0, Err: nil},
+			key:  &registrymock.MockRegistryKey{StringValues: nil, BinaryValues: nil, IntegerValues: map[string]uint64{"UEFISecureBootEnabled": 0}, Err: nil},
 			want: checks.NewCheckResult("SecureBoot", "Secure boot is disabled"),
 		},
 		{
 			name: "SecureBootUnknown",
-			key:  &registrymock.MockRegistryKey{StringValue: "UEFISecureBootEnabled", BinaryValue: nil, IntegerValue: 2, Err: nil},
+			key:  &registrymock.MockRegistryKey{StringValues: nil, BinaryValues: nil, IntegerValues: map[string]uint64{"UEFISecureBootEnabled": 2}, Err: nil},
 			want: checks.NewCheckResult("SecureBoot", "Secure boot status is unknown"),
 		},
 	}
