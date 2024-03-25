@@ -60,7 +60,9 @@ type MockRegistryKey struct {
 	StringValues  map[string]string
 	BinaryValues  map[string][]byte
 	IntegerValues map[string]uint64
-	SubKeys       []MockRegistryKey
+	SubKeys              []MockRegistryKey
+  StatReturn           *registry.KeyInfo
+	ReadValueNamesReturn []string
 	Err           error
 }
 
@@ -86,7 +88,7 @@ func (m *MockRegistryKey) OpenKey(path string, access uint32) (RegistryKey, erro
 
 // ReadValueNames reads the value names of the key
 func (m *MockRegistryKey) ReadValueNames(count int) ([]string, error) {
-	return []string{}, nil
+	return m.ReadValueNamesReturn, nil
 }
 
 // Close closes the registry key
@@ -96,7 +98,7 @@ func (m *MockRegistryKey) Close() error {
 
 // Stat returns the key info of the registry key
 func (m *MockRegistryKey) Stat() (*registry.KeyInfo, error) {
-	return nil, nil
+	return m.StatReturn, nil
 }
 
 // ReadSubKeyNames reads the subkey names of the registry key
