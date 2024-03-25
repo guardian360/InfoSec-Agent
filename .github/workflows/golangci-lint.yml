@@ -65,8 +65,15 @@ jobs:
           mkdir -p ${{ github.workspace }}/lint-reports
           mv ${{ github.workspace }}/.golangci-lint*.log ${{ github.workspace }}/lint-reports/golangci-lint.log
         if: always()
+      - name: Show golangci-lint output
+        run: cat ${{ github.workspace }}/lint-reports/golangci-lint.log
+        if: always()
+      - name: Show golangci-lint output
+        run: ls ${{ github.workspace }}/lint-reports/
+        if: always()
       - name: Upload golangci-lint output as artifact
         uses: actions/upload-artifact@v2
         with:
           name: golangci-lint-output
           path: ${{ github.workspace }}/lint-reports/golangci-lint.log
+        if: always()
