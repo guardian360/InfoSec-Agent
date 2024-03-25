@@ -9,6 +9,7 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/firefox"
 	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
+	"github.com/InfoSec-Agent/InfoSec-Agent/windowsmock"
 	"golang.org/x/sys/windows/registry"
 
 	"encoding/json"
@@ -43,7 +44,7 @@ func Scan(dialog zenity.ProgressDialog) {
 		func() checks.Check {
 			return checks.OpenPorts(&utils.RealCommandExecutor{}, &utils.RealCommandExecutor{})
 		},
-		checks.WindowsOutdated,
+		func() checks.Check { return checks.WindowsOutdated(&windowsmock.RealWindowsVersion{}) },
 		func() checks.Check {
 			return checks.SecureBoot(registrymock.NewRegistryKeyWrapper(registry.LOCAL_MACHINE))
 		},
