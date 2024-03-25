@@ -22,15 +22,15 @@ func TestLoginMethod(t *testing.T) {
 		{
 			name: "Login method is PIN",
 			key: &registrymock.MockRegistryKey{
-				StringValue:          "{D6886603-9D2F-4EB2-B667-1971041FA96B}",
+				StringValues:         map[string]string{"S-1-5-21-174387295-310396468-1212757568-1001": "{D6886603-9D2F-4EB2-B667-1971041FA96B}"},
 				StatReturn:           &registry.KeyInfo{ValueCount: 1},
-				ReadValueNamesReturn: []string{""}, Err: nil},
+				ReadValueNamesReturn: []string{"S-1-5-21-174387295-310396468-1212757568-1001", ""}, Err: nil},
 			want: checks.NewCheckResult("LoginMethod", "PIN"),
 		},
 		{
 			name: "Login method is Picture",
 			key: &registrymock.MockRegistryKey{
-				StringValue:          "{2135F72A-90B5-4ED3-A7F1-8BB705AC276A}",
+				StringValues:         map[string]string{"": "{2135F72A-90B5-4ED3-A7F1-8BB705AC276A}"},
 				StatReturn:           &registry.KeyInfo{ValueCount: 1},
 				ReadValueNamesReturn: []string{""}, Err: nil},
 			want: checks.NewCheckResult("LoginMethod", "Picture Logon"),
@@ -38,15 +38,15 @@ func TestLoginMethod(t *testing.T) {
 		{
 			name: "Login method is Password",
 			key: &registrymock.MockRegistryKey{
-				StringValue:          "{60B78E88-EAD8-445C-9CFD-0B87F74EA6CD}",
+				StringValues:         map[string]string{"S-1-5-21-174387295-310396468-1212757568-500": "{60B78E88-EAD8-445C-9CFD-0B87F74EA6CD}"},
 				StatReturn:           &registry.KeyInfo{ValueCount: 1},
-				ReadValueNamesReturn: []string{""}, Err: nil},
+				ReadValueNamesReturn: []string{"S-1-5-21-174387295-310396468-1212757568-500"}, Err: nil},
 			want: checks.NewCheckResult("LoginMethod", "Password"),
 		},
 		{
 			name: "Login method is Fingerprint",
 			key: &registrymock.MockRegistryKey{
-				StringValue:          "{BEC09223-B018-416D-A0AC-523971B639F5}",
+				StringValues:         map[string]string{"": "{BEC09223-B018-416D-A0AC-523971B639F5}"},
 				StatReturn:           &registry.KeyInfo{ValueCount: 1},
 				ReadValueNamesReturn: []string{""}, Err: nil},
 			want: checks.NewCheckResult("LoginMethod", "Fingerprint"),
@@ -54,7 +54,7 @@ func TestLoginMethod(t *testing.T) {
 		{
 			name: "Login method is Facial recognition",
 			key: &registrymock.MockRegistryKey{
-				StringValue:          "{8AF662BF-65A0-4D0A-A540-A338A999D36F}",
+				StringValues:         map[string]string{"": "{8AF662BF-65A0-4D0A-A540-A338A999D36F}"},
 				StatReturn:           &registry.KeyInfo{ValueCount: 1},
 				ReadValueNamesReturn: []string{""}, Err: nil},
 			want: checks.NewCheckResult("LoginMethod", "Facial recognition"),
@@ -62,7 +62,7 @@ func TestLoginMethod(t *testing.T) {
 		{
 			name: "Login method is Trust signal",
 			key: &registrymock.MockRegistryKey{
-				StringValue:          "{27FBDB57-B613-4AF2-9D7E-4FA7A66C21AD}",
+				StringValues:         map[string]string{"": "{27FBDB57-B613-4AF2-9D7E-4FA7A66C21AD}"},
 				StatReturn:           &registry.KeyInfo{ValueCount: 1},
 				ReadValueNamesReturn: []string{""}, Err: nil},
 			want: checks.NewCheckResult("LoginMethod", "Trust signal"),
@@ -70,7 +70,7 @@ func TestLoginMethod(t *testing.T) {
 		{
 			name: "Login method is unknown",
 			key: &registrymock.MockRegistryKey{
-				StringValue:          "unknown",
+				StringValues:         map[string]string{"": "unknown"},
 				StatReturn:           &registry.KeyInfo{ValueCount: 1},
 				ReadValueNamesReturn: []string{""}, Err: nil},
 			want: checks.NewCheckResult("LoginMethod"),
