@@ -1,4 +1,4 @@
-package RegistryKey
+package registrymock
 
 import (
 	"fmt"

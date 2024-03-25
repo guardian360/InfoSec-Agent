@@ -4,10 +4,10 @@
 package scan
 
 import (
-	"github.com/InfoSec-Agent/InfoSec-Agent/RegistryKey"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/chromium"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/firefox"
+	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"golang.org/x/sys/windows/registry"
 
@@ -40,7 +40,7 @@ func Scan(dialog zenity.ProgressDialog) {
 		checks.OpenPorts,
 		checks.WindowsOutdated,
 		func() checks.Check {
-			return checks.SecureBoot(RegistryKey.NewRegistryKeyWrapper(registry.LOCAL_MACHINE))
+			return checks.SecureBoot(registrymock.NewRegistryKeyWrapper(registry.LOCAL_MACHINE))
 		},
 		func() checks.Check {
 			return checks.SmbCheck(&utils.RealCommandExecutor{}, &utils.RealCommandExecutor{})
