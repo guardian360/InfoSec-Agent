@@ -294,8 +294,8 @@ func ChangeLanguage(testInput ...string) {
 //
 // Returns: _
 func RefreshMenu() {
-	fmt.Println("Current taal: ", language)
-	fmt.Print(menuItems)
+	fmt.Println("Current language: ", language)
+	fmt.Print("Current menu items: ", menuItems)
 	for _, item := range menuItems {
 		item.sysMenuItem.SetTitle(localization.Localize(language, item.MenuTitle))
 		fmt.Println(localization.Localize(language, item.MenuTitle))
