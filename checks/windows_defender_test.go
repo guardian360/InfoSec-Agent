@@ -21,20 +21,20 @@ func TestWindowsDefender(t *testing.T) {
 	}{
 		{
 			name:        "Windows Defender disabled and periodic scan disabled",
-			scanKey:     &registrymock.MockRegistryKey{StringValue: "DisableAntiVirus", BinaryValue: nil, IntegerValue: 1, Err: nil},
-			defenderKey: &registrymock.MockRegistryKey{StringValue: "DisableRealtimeMonitoring", BinaryValue: nil, IntegerValue: 1, Err: nil},
+			scanKey:     &registrymock.MockRegistryKey{StringValues: make(map[string]string), BinaryValues: make(map[string][]byte), IntegerValues: map[string]uint64{"DisableAntiVirus": 1}, Err: nil},
+			defenderKey: &registrymock.MockRegistryKey{StringValues: make(map[string]string), BinaryValues: make(map[string][]byte), IntegerValues: map[string]uint64{"DisableRealtimeMonitoring": 1}, Err: nil},
 			want:        checks.NewCheckResult("WindowsDefender", "Windows real-time defender is disabled and also the windows periodic scan is disabled"),
 		},
 		{
 			name:        "Windows Defender disabled and periodic scan enabled",
-			scanKey:     &registrymock.MockRegistryKey{StringValue: "DisableAntiVirus", BinaryValue: nil, IntegerValue: 0, Err: nil},
-			defenderKey: &registrymock.MockRegistryKey{StringValue: "DisableRealtimeMonitoring", BinaryValue: nil, IntegerValue: 1, Err: nil},
+			scanKey:     &registrymock.MockRegistryKey{StringValues: make(map[string]string), BinaryValues: make(map[string][]byte), IntegerValues: map[string]uint64{"DisableAntiVirus": 0}, Err: nil},
+			defenderKey: &registrymock.MockRegistryKey{StringValues: make(map[string]string), BinaryValues: make(map[string][]byte), IntegerValues: map[string]uint64{"DisableRealtimeMonitoring": 1}, Err: nil},
 			want:        checks.NewCheckResult("WindowsDefender", "Windows real-time defender is disabled but the windows periodic scan is enabled"),
 		},
 		{
 			name:        "Unknown status",
-			scanKey:     &registrymock.MockRegistryKey{StringValue: "DisableAntiVirus", BinaryValue: nil, IntegerValue: 0, Err: nil},
-			defenderKey: &registrymock.MockRegistryKey{StringValue: "DisableRealtimeMonitoring", BinaryValue: nil, IntegerValue: 0, Err: nil},
+			scanKey:     &registrymock.MockRegistryKey{StringValues: make(map[string]string), BinaryValues: make(map[string][]byte), IntegerValues: map[string]uint64{"DisableRealtimeMonitoring": 0}, Err: nil},
+			defenderKey: &registrymock.MockRegistryKey{StringValues: make(map[string]string), BinaryValues: make(map[string][]byte), IntegerValues: map[string]uint64{"DisableRealtimeMonitoring": 0}, Err: nil},
 			want:        checks.NewCheckResult("WindowsDefender", "No windows defender data found"),
 		},
 	}
