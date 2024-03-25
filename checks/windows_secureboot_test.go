@@ -14,7 +14,6 @@ func TestSecureBoot(t *testing.T) {
 		key  RegistryKey.RegistryKey
 		want checks.Check
 	}{
-		// TODO: Add test cases.
 		{
 			name: "SecureBootError",
 			key:  &RegistryKey.MockRegistryKey{StringValue: "", BinaryValue: nil, IntegerValue: 5, Err: errors.New("error")},
