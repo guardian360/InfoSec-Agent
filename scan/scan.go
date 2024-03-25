@@ -34,7 +34,9 @@ func Scan(dialog zenity.ProgressDialog) {
 				registrymock.NewRegistryKeyWrapper(registry.LOCAL_MACHINE))
 		},
 		checks.LastPasswordChange,
-		checks.LoginMethod,
+		func() checks.Check {
+			return checks.LoginMethod(registrymock.NewRegistryKeyWrapper(registry.LOCAL_MACHINE))
+		},
 		func() checks.Check { return checks.Permission("location") },
 		func() checks.Check { return checks.Permission("microphone") },
 		func() checks.Check { return checks.Permission("webcam") },
