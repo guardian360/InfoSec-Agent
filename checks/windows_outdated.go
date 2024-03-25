@@ -2,7 +2,7 @@ package checks
 
 import (
 	"fmt"
-	"golang.org/x/sys/windows"
+	"github.com/InfoSec-Agent/InfoSec-Agent/windowsmock"
 )
 
 // TODO: The "newest build" is done manually below and should be done automatic.
@@ -17,9 +17,8 @@ const (
 // Parameters: _
 //
 // Returns: If the Windows version is up-to-date or if there are updated available
-func WindowsOutdated() Check {
-	versionData := windows.RtlGetVersion()
-
+func WindowsOutdated(mockOS windowsmock.WindowsVersion) Check {
+	versionData := mockOS.RtlGetVersion()
 	// Prepare the result
 	result := NewCheckResult("Windows Version", fmt.Sprintf("%d.%d.%d",
 		versionData.MajorVersion, versionData.MinorVersion, versionData.BuildNumber))
