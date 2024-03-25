@@ -95,7 +95,7 @@ body {
 
 /* Navigation menu */
 .left-nav {
-  padding-top: 60px;
+  padding-top: 38px;
   height: 100vh;
   width: 240px;
   background-color: var(--blue);
@@ -186,7 +186,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   max-width: 60%;
-  padding-top: 60px;
+  padding-top: 38px;
   margin-left: 240px;
 }
 .title-medals{

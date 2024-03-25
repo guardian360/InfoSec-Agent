@@ -1,13 +1,8 @@
-// Package checks implements different security/privacy checks
-//
-// Exported function(s): PasswordManager, WindowsDefender, LastPasswordChange, LoginMethod, Permission, Bluetooth,
-// OpenPorts, WindowsOutdated, SecureBoot, SmbCheck, Startup, GuestAccount, UACCheck, RemoteDesktopCheck,
-// ExternalDevices, NetworkSharing
 package checks
 
 import (
 	"fmt"
-	"os/exec"
+	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"regexp"
 	"strings"
 )
@@ -17,12 +12,13 @@ import (
 // Parameters: _
 //
 // Returns: A list of open ports and the processes that are using them
-func OpenPorts() Check {
+func OpenPorts(tasklistexecutor, netstatexecutor utils.CommandExecutor) Check {
 	// Regular expression to clean up multiple spaces in the output
 	re := regexp.MustCompile("  +")
 
 	// Get process ids (pids) and names of all processes
-	output, err := exec.Command("tasklist").Output()
+	command := "tasklist"
+	output, err := tasklistexecutor.Execute(command)
 
 	if err != nil {
 		return NewCheckErrorf("OpenPorts", "error running tasklist", err)
@@ -40,7 +36,8 @@ func OpenPorts() Check {
 	}
 
 	// Get all open ports
-	output, err = exec.Command("netstat", "-ano").Output()
+	command = "netstat"
+	output, err = netstatexecutor.Execute(command, "-ano")
 
 	if err != nil {
 		return NewCheckErrorf("OpenPorts", "error running netstat", err)

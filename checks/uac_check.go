@@ -1,12 +1,7 @@
-// Package checks implements different security/privacy checks
-//
-// Exported function(s): PasswordManager, WindowsDefender, LastPasswordChange, LoginMethod, Permission, Bluetooth,
-// OpenPorts, WindowsOutdated, SecureBoot, SmbCheck, Startup, GuestAccount, UACCheck, RemoteDesktopCheck,
-// ExternalDevices, NetworkSharing
 package checks
 
 import (
-	"os/exec"
+	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"strings"
 )
 
@@ -15,10 +10,11 @@ import (
 // Parameters: _
 //
 // Returns: The level that the UAC is enabled at
-func UACCheck() Check {
+func UACCheck(UACexecutor utils.CommandExecutor) Check {
 	// The UAC level can be retrieved as a property from the ConsentPromptBehaviorAdmin
-	key, err := exec.Command("powershell", "(Get-ItemProperty -Path 'HKLM:\\SOFTWARE\\Microsoft\\Windows"+
-		"\\CurrentVersion\\Policies\\System').ConsentPromptBehaviorAdmin").Output()
+	command := "powershell"
+	key, err := UACexecutor.Execute(command, "(Get-ItemProperty -Path 'HKLM:\\SOFTWARE\\Microsoft\\Windows\\"+
+		"CurrentVersion\\Policies\\System').ConsentPromptBehaviorAdmin")
 
 	if err != nil {
 		return NewCheckErrorf("UAC", "error retrieving UAC", err)

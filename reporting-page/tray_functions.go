@@ -1,8 +1,3 @@
-// Package (reporting page) main contains the entry point of the reporting page application
-//
-// Exported function(s): NewApp, NewTray
-//
-// Exported struct(s): App
 package main
 
 import (

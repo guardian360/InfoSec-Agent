@@ -1,12 +1,8 @@
-// Package checks implements different security/privacy checks
-//
-// Exported function(s): PasswordManager, WindowsDefender, LastPasswordChange, LoginMethod, Permission, Bluetooth,
-// OpenPorts, WindowsOutdated, SecureBoot, SmbCheck, Startup, GuestAccount, UACCheck, RemoteDesktopCheck,
-// ExternalDevices, NetworkSharing
 package checks
 
 import (
 	"fmt"
+	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
 	"golang.org/x/sys/windows/registry"
 	"os/exec"
 	"strings"
@@ -19,13 +15,13 @@ import (
 // Returns: A list of bluetooth devices
 func Bluetooth() Check {
 	// Open the registry key for bluetooth devices
-	key, err := registry.OpenKey(registry.LOCAL_MACHINE,
-		`SYSTEM\CurrentControlSet\Services\BTHPORT\Parameters\Devices`, registry.READ)
+	key, err := registrymock.OpenRegistryKey(registrymock.NewRegistryKeyWrapper(registry.LOCAL_MACHINE),
+		`SYSTEM\CurrentControlSet\Services\BTHPORT\Parameters\Devices`)
 	if err != nil {
 		return NewCheckErrorf("Bluetooth", "error opening registry key", err)
 	}
 	// Close the key after we have received all relevant information
-	defer key.Close()
+	defer registrymock.CloseRegistryKey(key)
 
 	// Get the names of all sub keys (which represent bluetooth devices)
 	deviceNames, err := key.ReadSubKeyNames(-1)
@@ -40,11 +36,12 @@ func Bluetooth() Check {
 	result := NewCheckResult("Bluetooth")
 	// Open each device sub key within the registry
 	for _, deviceName := range deviceNames {
-		deviceKey, err := registry.OpenKey(key, deviceName, registry.READ)
+		deviceKey, err := registrymock.OpenRegistryKey(key, deviceName)
 		if err != nil {
 			result.Result = append(result.Result, fmt.Sprintf("Error opening device subkey %s", deviceName))
 			continue
 		}
+		defer registrymock.CloseRegistryKey(deviceKey)
 
 		// Get the device name
 		deviceNameValue, _, err := deviceKey.GetBinaryValue("Name")
@@ -54,7 +51,6 @@ func Bluetooth() Check {
 			result.Result = append(result.Result, string(deviceNameValue))
 		}
 
-		deviceKey.Close()
 	}
 
 	// Check for currently connected bluetooth devices

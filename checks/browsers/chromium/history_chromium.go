@@ -1,12 +1,10 @@
-// Package chromium is responsible for running checks on Chromium based browsers.
-//
-// Exported function(s): ExtensionsChromium, HistoryChromium
 package chromium
 
 import (
 	"database/sql"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
+	"log"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -49,7 +47,12 @@ func HistoryChromium(browser string) checks.Check {
 	tempHistoryDb := filepath.Join(os.TempDir(), "tempHistoryDb.sqlite")
 
 	// Clean up the temporary file when the function returns
-	defer os.Remove(tempHistoryDb)
+	defer func(name string) {
+		err := os.Remove(name)
+		if err != nil {
+			log.Println("error removing file: ", err)
+		}
+	}(tempHistoryDb)
 
 	// Copy the database to a temporary location
 	copyError := utils.CopyFile(user+"/AppData/Local/"+browserPath+"/User Data/Default/History", tempHistoryDb)
@@ -62,7 +65,12 @@ func HistoryChromium(browser string) checks.Check {
 	if err != nil {
 		return checks.NewCheckError(returnBrowserName, err)
 	}
-	defer db.Close()
+	defer func(db *sql.DB) {
+		err := db.Close()
+		if err != nil {
+			log.Println("error closing database: ", err)
+		}
+	}(db)
 
 	// Get the time of one week ago (with Chrome the counting starts from 1601-01-01)
 	oneWeekAgo := time.Now().AddDate(369, 0, -7).UnixMicro()
@@ -73,7 +81,12 @@ func HistoryChromium(browser string) checks.Check {
 	if err != nil {
 		return checks.NewCheckError(returnBrowserName, err)
 	}
-	defer rows.Close()
+	defer func(rows *sql.Rows) {
+		err := rows.Close()
+		if err != nil {
+			log.Println("error closing rows: ", err)
+		}
+	}(rows)
 
 	// Get the phishing domains from an up-to-date GitHub list
 	phishingDomainList := utils.GetPhishingDomains()

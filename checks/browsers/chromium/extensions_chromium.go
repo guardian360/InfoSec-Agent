@@ -8,6 +8,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
+	"io"
 	"log"
 	"net/http"
 	"os"
@@ -88,7 +89,7 @@ func ExtensionsChromium(browser string) checks.Check {
 	if adblockerInstalled(extensionNames) {
 		return checks.NewCheckResult(returnBrowserName, "Adblocker installed")
 	} else {
-		return checks.NewCheckErrorf(returnBrowserName, "No adblocker installed", errors.New("No adblocker installed"))
+		return checks.NewCheckErrorf(returnBrowserName, "No adblocker installed", errors.New("no adblocker installed"))
 	}
 }
 
@@ -115,7 +116,12 @@ func getExtensionNameChromium(extensionID string, url string, browser string) (s
 		return "", err
 	}
 	// Close the response body after the necessary data is retrieved
-	defer resp.Body.Close()
+	defer func(Body io.ReadCloser) {
+		err := Body.Close()
+		if err != nil {
+			log.Println("error closing body: ", err)
+		}
+	}(resp.Body)
 
 	if browser == "Chrome" && resp.StatusCode != http.StatusOK {
 		return "", fmt.Errorf("HTTP request failed with status code: %d", resp.StatusCode)
@@ -129,11 +135,14 @@ func getExtensionNameChromium(extensionID string, url string, browser string) (s
 		} else {
 			// For Edge, the data is stored in a JSON format, so decoding is required
 			var data Response
-			json.NewDecoder(resp.Body).Decode(&data)
+			err := json.NewDecoder(resp.Body).Decode(&data)
+			if err != nil {
+				return "", err
+			}
 			return data.Name, nil
 		}
 	} else {
-		return "", errors.New("Unknown browser")
+		return "", errors.New("unknown browser")
 	}
 }
 

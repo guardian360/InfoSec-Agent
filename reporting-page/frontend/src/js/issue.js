@@ -54,7 +54,7 @@ export function openIssuePage(issueId) {
       <p>${currentIssue.Information}</p>
       <h2>Solution</h2>
       <div class="issue-solution">
-        <p class="solution-text">${currentIssue.Solution[stepCounter]}</p>
+        <p id="solution-text">${currentIssue.Solution[stepCounter]}</p>
         <img style='display:block; width:500px;height:auto' id="step-screenshot"></img>
         <div class="solution-buttons">
           <div class="button-box">

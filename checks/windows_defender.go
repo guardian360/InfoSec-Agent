@@ -1,12 +1,7 @@
-// Package checks implements different security/privacy checks
-//
-// Exported function(s): PasswordManager, WindowsDefender, LastPasswordChange, LoginMethod, Permission, Bluetooth,
-// OpenPorts, WindowsOutdated, SecureBoot, SmbCheck, Startup, GuestAccount, UACCheck, RemoteDesktopCheck,
-// ExternalDevices, NetworkSharing
 package checks
 
 import (
-	"golang.org/x/sys/windows/registry"
+	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
 )
 
 // WindowsDefender checks if the Windows Defender is enabled and if the periodic scan is enabled
@@ -14,24 +9,22 @@ import (
 // Parameters: _
 //
 // Returns: If Windows Defender and periodic scan are enabled/disabled
-func WindowsDefender() Check {
+func WindowsDefender(scanKey registrymock.RegistryKey, defenderKey registrymock.RegistryKey) Check {
 	// Open the Windows Defender registry key
-	windowsDefenderKey, err := registry.OpenKey(registry.LOCAL_MACHINE, `SOFTWARE\Microsoft\Windows Defender`,
-		registry.READ)
+	windowsDefenderKey, err := registrymock.OpenRegistryKey(scanKey, `SOFTWARE\Microsoft\Windows Defender`)
 	if err != nil {
 		return NewCheckErrorf("WindowsDefender", "error opening registry key", err)
 	}
 	// Close the key after we have received all relevant information
-	defer windowsDefenderKey.Close()
+	defer registrymock.CloseRegistryKey(windowsDefenderKey)
 
 	// Open the Windows Defender real-time protection registry key, representing the periodic scan
-	realTimeKey, err := registry.OpenKey(registry.LOCAL_MACHINE,
-		`SOFTWARE\Microsoft\Windows Defender\Real-Time Protection`, registry.READ)
+	realTimeKey, err := registrymock.OpenRegistryKey(defenderKey, `SOFTWARE\Microsoft\Windows Defender\Real-Time Protection`)
 	if err != nil {
 		return NewCheckErrorf("WindowsDefender", "error opening registry key", err)
 	}
 	// Close the key after we have received all relevant information
-	defer realTimeKey.Close()
+	defer registrymock.CloseRegistryKey(realTimeKey)
 
 	// Read the value of the registry keys
 	antiVirusPeriodic, _, err := windowsDefenderKey.GetIntegerValue("DisableAntiVirus")

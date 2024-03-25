@@ -1,28 +1,23 @@
-// Package checks implements different security/privacy checks
-//
-// Exported function(s): PasswordManager, WindowsDefender, LastPasswordChange, LoginMethod, Permission, Bluetooth,
-// OpenPorts, WindowsOutdated, SecureBoot, SmbCheck, Startup, GuestAccount, UACCheck, RemoteDesktopCheck,
-// ExternalDevices, NetworkSharing
 package checks
 
 import (
-	"golang.org/x/sys/windows/registry"
+	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
 )
 
 // RemoteDesktopCheck checks if Remote Desktop is enabled
 //
-// Parameters: _
+// Parameters: registryKey (registrymock.RegistryKey) - A Windows registry mock
 //
 // Returns: If Remote Desktop is enabled or not
-func RemoteDesktopCheck() Check {
+func RemoteDesktopCheck(registryKey registrymock.RegistryKey) Check {
 	// Open the registry key for Terminal Server settings
-	key, err := registry.OpenKey(registry.LOCAL_MACHINE, `System\CurrentControlSet\Control\Terminal Server`,
-		registry.QUERY_VALUE)
+	key, err := registrymock.OpenRegistryKey(registryKey, `System\CurrentControlSet\Control\Terminal Server`)
+
 	if err != nil {
 		return NewCheckErrorf("RemoteDesktop", "error opening registry key", err)
 	}
 	// Close the key after we have received all relevant information
-	defer key.Close()
+	defer registrymock.CloseRegistryKey(key)
 
 	// Read the value of fDenyTSConnections, which contains the information if Remote Desktop is enabled or not
 	val, _, err := key.GetIntegerValue("fDenyTSConnections")

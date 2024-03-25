@@ -1,4 +1,4 @@
-// Package firefox is responsible for running checks on Chromium based browsers.
+// Package firefox is responsible for running checks on Firefox.
 //
 // Exported function(s): CookieFirefox, ExtensionFirefox, HistoryFirefox, PasswordFirefox
 package firefox
@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
+	"log"
 	"os"
 	"strings"
 
@@ -33,7 +34,12 @@ func ExtensionFirefox() (checks.Check, checks.Check) {
 	if err != nil {
 		return checks.NewCheckError("ExtensionsFirefox", err), checks.NewCheckError("AdblockerFirefox", err)
 	}
-	defer content.Close()
+	defer func(content *os.File) {
+		err := content.Close()
+		if err != nil {
+			log.Println("error closing file: ", err)
+		}
+	}(content)
 
 	// Create a struct for the JSON file
 	var extensions firefox.Extensions

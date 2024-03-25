@@ -1,12 +1,7 @@
-// Package checks implements different security/privacy checks
-//
-// Exported function(s): PasswordManager, WindowsDefender, LastPasswordChange, LoginMethod, Permission, Bluetooth,
-// OpenPorts, WindowsOutdated, SecureBoot, SmbCheck, Startup, GuestAccount, UACCheck, RemoteDesktopCheck,
-// ExternalDevices, NetworkSharing
 package checks
 
 import (
-	"golang.org/x/sys/windows/registry"
+	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
 )
 
 // SecureBoot checks if Windows secure boot is enabled
@@ -14,21 +9,13 @@ import (
 // Parameters: _
 //
 // Returns: If Windows secure boot is enabled or not
-func SecureBoot() Check {
+func SecureBoot(registryKey registrymock.RegistryKey) Check {
 	// Get secure boot information from the registry
-	windowsSecureBoot, err := registry.OpenKey(registry.LOCAL_MACHINE,
-		`SYSTEM\CurrentControlSet\Control\SecureBoot\State`, registry.READ)
-
+	windowsSecureBoot, err := registrymock.OpenRegistryKey(registryKey, `SYSTEM\CurrentControlSet\Control\SecureBoot\State`)
 	if err != nil {
 		return NewCheckError("SecureBoot", err)
 	}
-
-	defer func(windowsSecureBoot registry.Key) {
-		err := windowsSecureBoot.Close()
-		if err != nil {
-			return
-		}
-	}(windowsSecureBoot)
+	defer registrymock.CloseRegistryKey(windowsSecureBoot)
 
 	// Read the status of secure boot
 	secureBootStatus, _, err := windowsSecureBoot.GetIntegerValue("UEFISecureBootEnabled")
@@ -40,6 +27,8 @@ func SecureBoot() Check {
 	if secureBootStatus == 1 {
 		return NewCheckResult("SecureBoot", "Secure boot is enabled")
 	}
-
-	return NewCheckResult("SecureBoot", "Secure boot is disabled")
+	if secureBootStatus == 0 {
+		return NewCheckResult("SecureBoot", "Secure boot is disabled")
+	}
+	return NewCheckResult("SecureBoot", "Secure boot status is unknown")
 }

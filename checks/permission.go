@@ -1,14 +1,10 @@
-// Package checks implements different security/privacy checks
-//
-// Exported function(s): PasswordManager, WindowsDefender, LastPasswordChange, LoginMethod, Permission, Bluetooth,
-// OpenPorts, WindowsOutdated, SecureBoot, SmbCheck, Startup, GuestAccount, UACCheck, RemoteDesktopCheck,
-// ExternalDevices, NetworkSharing
 package checks
 
 import (
-	"strings"
-
+	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
+	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"golang.org/x/sys/windows/registry"
+	"strings"
 )
 
 // Permission checks if the user has given permission to an application to access a certain capability
@@ -18,13 +14,13 @@ import (
 // Returns: A list of applications that have the given permission
 func Permission(permission string) Check {
 	// Open the registry key for the given permission
-	key, err := registry.OpenKey(registry.CURRENT_USER,
-		`Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\`+permission, registry.READ)
+	key, err := registrymock.OpenRegistryKey(registrymock.NewRegistryKeyWrapper(registry.CURRENT_USER),
+		`Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\`+permission)
 	if err != nil {
 		return NewCheckErrorf(permission, "error opening registry key", err)
 	}
 	// Close the key after we have received all relevant information
-	defer key.Close()
+	defer registrymock.CloseRegistryKey(key)
 
 	// Get the names of all sub-keys (which represent applications)
 	applicationNames, err := key.ReadSubKeyNames(-1)
@@ -38,9 +34,9 @@ func Permission(permission string) Check {
 	for _, appName := range applicationNames {
 		// The registry key for packaged/non-packaged applications is different, so they get handled separately
 		if appName == "NonPackaged" {
-			key, err = registry.OpenKey(registry.CURRENT_USER,
-				`Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\`+permission+`\NonPackaged`,
-				registry.READ)
+			key, err = registrymock.OpenRegistryKey(registrymock.NewRegistryKeyWrapper(registry.CURRENT_USER),
+				`Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\`+permission+`\NonPackaged`)
+			defer registrymock.CloseRegistryKey(key)
 			nonPackagedApplicationNames, err := key.ReadSubKeyNames(-1)
 			v, vint, err := key.GetStringValue("Value")
 
@@ -52,9 +48,9 @@ func Permission(permission string) Check {
 				}
 			}
 		} else {
-			key, err = registry.OpenKey(registry.CURRENT_USER,
-				`Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\`+permission+`\`+appName,
-				registry.READ)
+			key, err = registrymock.OpenRegistryKey(registrymock.NewRegistryKeyWrapper(registry.CURRENT_USER),
+				`Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\`+permission+`\`+appName)
+			defer registrymock.CloseRegistryKey(key)
 			v, vint, err := key.GetStringValue("Value")
 
 			// Check if the application has the specified permission
@@ -65,25 +61,6 @@ func Permission(permission string) Check {
 		}
 	}
 	// Remove duplicate results
-	filteredResults := removeDuplicateStr(results)
+	filteredResults := utils.RemoveDuplicateStr(results)
 	return NewCheckResult(permission, filteredResults...)
-}
-
-// removeDuplicateStr removes duplicate strings from a slice
-//
-// Parameters: strSlice (string slice) represents the slice to remove duplicates from
-//
-// Returns: A slice with the duplicates removed
-func removeDuplicateStr(strSlice []string) []string {
-	// Keep a map of found values, where true means the value has (already) been found
-	allKeys := make(map[string]bool)
-	var list []string
-	for _, item := range strSlice {
-		if _, value := allKeys[item]; !value {
-			// If the value is found for the first time, append it to the list of results
-			allKeys[item] = true
-			list = append(list, item)
-		}
-	}
-	return list
 }
