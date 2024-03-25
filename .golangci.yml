@@ -14,8 +14,11 @@ run:
 
 output:
   formats:
+    - format: json
+      path: golangci-lint-report.json
     - format: checkstyle
       path: golangci-lint-report.xml
+    - format: colored-line-number
 
 # This file contains only configs which differ from defaults.
 # All possible options can be found here https://github.com/golangci/golangci-lint/blob/master/.golangci.reference.yml
@@ -332,6 +335,6 @@ issues:
         - gosec
         - noctx
         - wrapcheck
-        
+
   exclude-dirs:
     - icon
