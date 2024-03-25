@@ -24,8 +24,7 @@ import (
 //
 // Returns: checks.json file containing the results of all security/privacy checks
 func Scan(dialog zenity.ProgressDialog) {
-	höi := "höi"
-	fmt.Println(höi)
+
 	// Define all security/privacy checks that Scan() should execute
 	securityChecks := []func() checks.Check{
 		checks.PasswordManager,
