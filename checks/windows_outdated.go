@@ -18,7 +18,6 @@ const (
 //
 // Returns: If the Windows version is up-to-date or if there are updated available
 func WindowsOutdated(mockOS windowsmock.WindowsVersion) Check {
-	//versionData := windows.RtlGetVersion()
 	versionData := mockOS.RtlGetVersion()
 	// Prepare the result
 	result := NewCheckResult("Windows Version", fmt.Sprintf("%d.%d.%d",
