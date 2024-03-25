@@ -56,27 +56,29 @@ func (r *RegistryKeyWrapper) ReadSubKeyNames(count int) ([]string, error) {
 
 // MockRegistryKey is a mock implementation of the RegistryKey interface
 type MockRegistryKey struct {
-	Name         string
-	StringValue  string
-	BinaryValue  []byte
-	IntegerValue uint64
-	SubKeys      []MockRegistryKey
-	Err          error
+	KeyName       string
+	StringValues  map[string]string
+	BinaryValues  map[string][]byte
+	IntegerValues map[string]uint64
+	SubKeys              []MockRegistryKey
+  StatReturn           *registry.KeyInfo
+	ReadValueNamesReturn []string
+	Err           error
 }
 
 // GetStringValue returns the string value of the key
 func (m *MockRegistryKey) GetStringValue(name string) (string, uint32, error) {
-	return m.StringValue, 0, nil
+	return m.StringValues[name], 0, nil
 }
 
 // GetBinaryValue returns the binary value of the key
 func (m *MockRegistryKey) GetBinaryValue(name string) ([]byte, uint32, error) {
-	return m.BinaryValue, 0, nil
+	return m.BinaryValues[name], 0, nil
 }
 
 // GetIntegerValue returns the integer value of the key
 func (m *MockRegistryKey) GetIntegerValue(name string) (uint64, uint32, error) {
-	return m.IntegerValue, 0, nil
+	return m.IntegerValues[name], 0, nil
 }
 
 // OpenKey opens a registry key
@@ -86,7 +88,7 @@ func (m *MockRegistryKey) OpenKey(path string, access uint32) (RegistryKey, erro
 
 // ReadValueNames reads the value names of the key
 func (m *MockRegistryKey) ReadValueNames(count int) ([]string, error) {
-	return []string{}, nil
+	return m.ReadValueNamesReturn, nil
 }
 
 // Close closes the registry key
@@ -96,7 +98,7 @@ func (m *MockRegistryKey) Close() error {
 
 // Stat returns the key info of the registry key
 func (m *MockRegistryKey) Stat() (*registry.KeyInfo, error) {
-	return nil, nil
+	return m.StatReturn, nil
 }
 
 // ReadSubKeyNames reads the subkey names of the registry key
@@ -107,7 +109,7 @@ func (m *MockRegistryKey) ReadSubKeyNames(count int) ([]string, error) {
 		if maxCount == count {
 			break
 		}
-		subKeyNames = append(subKeyNames, key.Name)
+		subKeyNames = append(subKeyNames, key.KeyName)
 		maxCount++
 	}
 	return subKeyNames, nil
