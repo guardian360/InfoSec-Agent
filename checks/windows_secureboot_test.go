@@ -1,9 +1,8 @@
 package checks_test
 
 import (
-	"errors"
-	"github.com/InfoSec-Agent/InfoSec-Agent/RegistryKey"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
+	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
 	"reflect"
 	"testing"
 )
@@ -11,23 +10,23 @@ import (
 func TestSecureBoot(t *testing.T) {
 	tests := []struct {
 		name string
-		key  RegistryKey.RegistryKey
+		key  registrymock.RegistryKey
 		want checks.Check
 	}{
 		{
-			name: "SecureBootError",
-			key:  &RegistryKey.MockRegistryKey{StringValue: "", BinaryValue: nil, IntegerValue: 5, Err: errors.New("error")},
-			want: checks.NewCheckError("SecureBoot", errors.New("error")),
-		},
-		{
 			name: "SecureBootEnabled",
-			key:  &RegistryKey.MockRegistryKey{StringValue: "UEFISecureBootEnabled", BinaryValue: nil, IntegerValue: 1, Err: nil},
+			key:  &registrymock.MockRegistryKey{StringValue: "UEFISecureBootEnabled", BinaryValue: nil, IntegerValue: 1, Err: nil},
 			want: checks.NewCheckResult("SecureBoot", "Secure boot is enabled"),
 		},
 		{
 			name: "SecureBootDisabled",
-			key:  &RegistryKey.MockRegistryKey{StringValue: "UEFISecureBootEnabled", BinaryValue: nil, IntegerValue: 0, Err: nil},
+			key:  &registrymock.MockRegistryKey{StringValue: "UEFISecureBootEnabled", BinaryValue: nil, IntegerValue: 0, Err: nil},
 			want: checks.NewCheckResult("SecureBoot", "Secure boot is disabled"),
+		},
+		{
+			name: "SecureBootUnknown",
+			key:  &registrymock.MockRegistryKey{StringValue: "UEFISecureBootEnabled", BinaryValue: nil, IntegerValue: 2, Err: nil},
+			want: checks.NewCheckResult("SecureBoot", "Secure boot status is unknown"),
 		},
 	}
 	for _, tt := range tests {
