@@ -1,10 +1,35 @@
-package checks
+package checks_test
 
 import (
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
+	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
+	"reflect"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 )
+
+func TestPermissionRegistry(t *testing.T) {
+	tests := []struct {
+		name string
+		key  registrymock.RegistryKey
+		want []checks.Check
+	}{
+		{
+			name: "webcam",
+			key:  &registrymock.MockRegistryKey{Name: "Microsoft.Gaming", BinaryValue: nil, IntegerValue: 1, Err: nil},
+			want: []checks.Check{checks.NewCheckResult("webcam", "Allow")},
+		},
+	}
+	tests[0].key.(*registrymock.MockRegistryKey).SubKeys = []registrymock.MockRegistryKey{registrymock.MockRegistryKey{Name: "Value", StringValue: "Allow", IntegerValue: 1, Err: nil}}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := checks.Permission("webcam", tt.key); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("Permission() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
 
 // TestInputPermissionCheck tests the input of the permission check function
 //
@@ -14,9 +39,9 @@ import (
 func TestInputPermission(t *testing.T) {
 	testCases := []string{"/", " ", "test", "cammera"}
 	for _, permission := range testCases {
-		check := Permission(permission)
-		assert.Nil(t, check.Result)
-		assert.NotNil(t, check.ErrorMSG)
+		c := checks.Permission(permission, &registrymock.MockRegistryKey{})
+		assert.Nil(t, c.Result)
+		assert.NotNil(t, c.ErrorMSG)
 	}
 }
 
@@ -28,8 +53,8 @@ func TestInputPermission(t *testing.T) {
 func TestValidPermissions(t *testing.T) {
 	testCases := []string{"webcam", "microphone"}
 	for _, permission := range testCases {
-		check := Permission(permission)
-		assert.Contains(t, check.Result, "Microsoft.WindowsCamera")
+		c := checks.Permission(permission, &registrymock.MockRegistryKey{})
+		assert.Contains(t, c.Result, "Microsoft.WindowsCamera")
 	}
 }
 
@@ -41,9 +66,9 @@ func TestValidPermissions(t *testing.T) {
 func TestFormatPermission(t *testing.T) {
 	testCases := []string{"location"}
 	for _, permission := range testCases {
-		check := Permission(permission)
-		assert.NotContains(t, check.Result, "#")
-		assert.NotContains(t, check.Result, " ")
-		assert.NotContains(t, check.Result, "_")
+		c := checks.Permission(permission, &registrymock.MockRegistryKey{})
+		assert.NotContains(t, c.Result, "#")
+		assert.NotContains(t, c.Result, " ")
+		assert.NotContains(t, c.Result, "_")
 	}
 }

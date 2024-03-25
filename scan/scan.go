@@ -36,11 +36,21 @@ func Scan(dialog zenity.ProgressDialog) {
 			return checks.LastPasswordChange(&utils.RealCommandExecutor{})
 		},
 		checks.LoginMethod,
-		func() checks.Check { return checks.Permission("location") },
-		func() checks.Check { return checks.Permission("microphone") },
-		func() checks.Check { return checks.Permission("webcam") },
-		func() checks.Check { return checks.Permission("appointments") },
-		func() checks.Check { return checks.Permission("contacts") },
+		func() checks.Check {
+			return checks.Permission("location", registrymock.NewRegistryKeyWrapper(registry.CURRENT_USER))
+		},
+		func() checks.Check {
+			return checks.Permission("microphone", registrymock.NewRegistryKeyWrapper(registry.CURRENT_USER))
+		},
+		func() checks.Check {
+			return checks.Permission("webcam", registrymock.NewRegistryKeyWrapper(registry.CURRENT_USER))
+		},
+		func() checks.Check {
+			return checks.Permission("appointments", registrymock.NewRegistryKeyWrapper(registry.CURRENT_USER))
+		},
+		func() checks.Check {
+			return checks.Permission("contacts", registrymock.NewRegistryKeyWrapper(registry.CURRENT_USER))
+		},
 		checks.Bluetooth,
 		func() checks.Check {
 			return checks.OpenPorts(&utils.RealCommandExecutor{}, &utils.RealCommandExecutor{})
@@ -57,7 +67,7 @@ func Scan(dialog zenity.ProgressDialog) {
 			return checks.GuestAccount(&utils.RealCommandExecutor{}, &utils.RealCommandExecutor{}, &utils.RealCommandExecutor{}, &utils.RealCommandExecutor{})
 		},
 		func() checks.Check { return checks.UACCheck(&utils.RealCommandExecutor{}) },
-		checks.RemoteDesktopCheck,
+		//func() checks.Check {return checks.RemoteDesktopCheck(&utils.RealCommandExecutor{})},
 		func() checks.Check { return checks.ExternalDevices(&utils.RealCommandExecutor{}) },
 		func() checks.Check { return checks.NetworkSharing(&utils.RealCommandExecutor{}) },
 		func() checks.Check { return chromium.HistoryChromium("Chrome") },

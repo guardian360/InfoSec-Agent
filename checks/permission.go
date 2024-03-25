@@ -12,10 +12,9 @@ import (
 // Parameters: permission (string) represents the permission to check
 //
 // Returns: A list of applications that have the given permission
-func Permission(permission string) Check {
+func Permission(permission string, registryKey registrymock.RegistryKey) Check {
 	// Open the registry key for the given permission
-	key, err := registrymock.OpenRegistryKey(registrymock.NewRegistryKeyWrapper(registry.CURRENT_USER),
-		`Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\`+permission)
+	key, err := registrymock.OpenRegistryKey(registryKey, `Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\`+permission)
 	if err != nil {
 		return NewCheckErrorf(permission, "error opening registry key", err)
 	}
