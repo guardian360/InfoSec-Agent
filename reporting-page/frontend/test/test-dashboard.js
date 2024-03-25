@@ -1,6 +1,6 @@
 import test from 'unit.js';
 import { JSDOM } from "jsdom";
-import { AdjustWithRiskCounters, SetMaxInterval } from '../src/js/dashboard.js';
+import { AdjustWithRiskCounters, SetMaxInterval } from '../src/js/security-dashboard.js';
 
 // Mock page
 const dom = new JSDOM(`
@@ -123,6 +123,7 @@ url: 'http://localhost'
 global.document = dom.window.document
 global.window = dom.window
 
+// test cases
 describe("dashboard", function() {
     it("Should show data from risk counters", function() {
       const mockRiskCounters = {  

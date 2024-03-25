@@ -14,6 +14,7 @@ url: 'http://localhost'
 global.document = dom.window.document
 global.window = dom.window
 
+// test cases
 describe("piechart", function() {
   // arrange
   let rc = new RiskCounters(true);
@@ -29,11 +30,6 @@ describe("piechart", function() {
       mediumRiskColor : "rgb(0, 0, 255)",
       lowRiskColor : "rgb(255, 0, 0)",
       noRiskColor : "rgb(255, 255, 0)",
-
-      allHighRisks : [1,2,3,4,5,6,1],
-      allMediumRisks : [1,2,3,4,5,6,2],
-      allLowRisks : [1,2,3,4,5,6,3],
-      allNoRisks : [1,2,3,4,5,6,4],
 
       lastHighRisk : 1,
       lastMediumRisk : 2,

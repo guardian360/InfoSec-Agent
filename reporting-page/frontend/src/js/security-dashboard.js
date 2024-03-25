@@ -130,7 +130,7 @@ function openSecurityDashboardPage() {
 }
 
 if (typeof document !== 'undefined') {
-  document.getElementById("dashboard-button").addEventListener("click", () => openSecurityDashboardPage());
+  document.getElementById("security-dashboard-button").addEventListener("click", () => openSecurityDashboardPage());
 }
 
 /** Changes the risk counters to show the correct values 

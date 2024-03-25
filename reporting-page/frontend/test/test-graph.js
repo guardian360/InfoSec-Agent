@@ -37,6 +37,7 @@ const dom = new JSDOM(`
 global.document = dom.window.document
 global.window = dom.window
 
+// test cases
 describe("risk-graph", function() {
   // arrange
   let rc = new RiskCounters(true);
