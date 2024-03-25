@@ -4,10 +4,10 @@
 package scan
 
 import (
-	"github.com/InfoSec-Agent/InfoSec-Agent/RegistryKey"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/chromium"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/firefox"
+	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"golang.org/x/sys/windows/registry"
 
@@ -37,20 +37,24 @@ func Scan(dialog zenity.ProgressDialog) {
 		func() checks.Check { return checks.Permission("appointments") },
 		func() checks.Check { return checks.Permission("contacts") },
 		checks.Bluetooth,
-		checks.OpenPorts,
+		func() checks.Check {
+			return checks.OpenPorts(&utils.RealCommandExecutor{}, &utils.RealCommandExecutor{})
+		},
 		checks.WindowsOutdated,
 		func() checks.Check {
-			return checks.SecureBoot(RegistryKey.NewRegistryKeyWrapper(registry.LOCAL_MACHINE))
+			return checks.SecureBoot(registrymock.NewRegistryKeyWrapper(registry.LOCAL_MACHINE))
 		},
 		func() checks.Check {
 			return checks.SmbCheck(&utils.RealCommandExecutor{}, &utils.RealCommandExecutor{})
 		},
 		checks.Startup,
-		checks.GuestAccount,
-		checks.UACCheck,
+		func() checks.Check {
+			return checks.GuestAccount(&utils.RealCommandExecutor{}, &utils.RealCommandExecutor{}, &utils.RealCommandExecutor{}, &utils.RealCommandExecutor{})
+		},
+		func() checks.Check { return checks.UACCheck(&utils.RealCommandExecutor{}) },
 		checks.RemoteDesktopCheck,
-		checks.ExternalDevices,
-		checks.NetworkSharing,
+		func() checks.Check { return checks.ExternalDevices(&utils.RealCommandExecutor{}) },
+		func() checks.Check { return checks.NetworkSharing(&utils.RealCommandExecutor{}) },
 		func() checks.Check { return chromium.HistoryChromium("Chrome") },
 		func() checks.Check { return chromium.ExtensionsChromium("Chrome") },
 		func() checks.Check { return chromium.SearchEngineChromium("Chrome") },

@@ -1,7 +1,7 @@
 package checks
 
 import (
-	"github.com/InfoSec-Agent/InfoSec-Agent/RegistryKey"
+	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
 )
 
 // SecureBoot checks if Windows secure boot is enabled
@@ -9,13 +9,13 @@ import (
 // Parameters: _
 //
 // Returns: If Windows secure boot is enabled or not
-func SecureBoot(registryKey RegistryKey.RegistryKey) Check {
+func SecureBoot(registryKey registrymock.RegistryKey) Check {
 	// Get secure boot information from the registry
-	windowsSecureBoot, err := RegistryKey.OpenRegistryKey(registryKey, `SYSTEM\CurrentControlSet\Control\SecureBoot\State`)
+	windowsSecureBoot, err := registrymock.OpenRegistryKey(registryKey, `SYSTEM\CurrentControlSet\Control\SecureBoot\State`)
 	if err != nil {
 		return NewCheckError("SecureBoot", err)
 	}
-	defer RegistryKey.CloseRegistryKey(windowsSecureBoot)
+	defer registrymock.CloseRegistryKey(windowsSecureBoot)
 
 	// Read the status of secure boot
 	secureBootStatus, _, err := windowsSecureBoot.GetIntegerValue("UEFISecureBootEnabled")
