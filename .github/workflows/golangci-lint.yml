@@ -41,7 +41,8 @@ jobs:
           # Note: By default, the `.golangci.yml` file should be at the root of the repository.
           # The location of the configuration file can be changed by using `--config=`
           # args: --timeout=30m --config=/my/path/.golangci.yml --issues-exit-code=0 
-          args: --out-format=json:golangci-lint-report.json --issues-exit-code=0
+          #args: --out-format=json:golangci-lint-report.json --issues-exit-code=0
+          args: --issues-exit-code=0
 
           # Optional: show only new issues if it's a pull request. The default value is `false`.
           only-new-issues: false
@@ -62,7 +63,7 @@ jobs:
         run: Get-ChildItem
         if: always()
       - name: Show golangci-lint output
-        run: cat ${{ github.workspace }}/golangci-lint-report.json
+        run: cat ${{ github.workspace }}/golangci-lint-report.xml
         if: always()
       - name: Show golangci-lint output
         run: ls ${{ github.workspace }}
@@ -71,5 +72,5 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: golangci-lint-output
-          path: ${{ github.workspace }}/golangci-lint-report.json
+          path: ${{ github.workspace }}/golangci-lint-report.xml
         if: always()
