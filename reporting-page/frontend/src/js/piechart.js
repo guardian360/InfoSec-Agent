@@ -1,30 +1,60 @@
-import * as rc from "./risk-counters"
+// import * as this.rc from "./risk-counters.js"
 
-/** Creates the data portion for a piechart using the different levels of risks */ 
-export function GetData() {
-  var xValues = ["No risk", "Low risk", "Medium risk", "High risk"];
-  var yValues = [rc.allNoRisks.slice(-1)[0], rc.allLowRisks.slice(-1)[0], rc.allMediumRisks.slice(-1)[0], rc.allHighRisks.slice(-1)[0]];
-  var barColors = [rc.noRiskColor, rc.lowRiskColor, rc.mediumRiskColor, rc.highRiskColor];
+import { RiskCounters } from "./risk-counters.js";
 
-  return {
-    labels: xValues,
-    datasets: [{
-      backgroundColor: barColors,
-      data: yValues
-    }]
+export class PieChart {
+  pieChart;
+  rc;
+  /** Create a piechart showing the risk counters
+   * 
+   * @param {string=} canvas id of the canvas where the piechart would be placed
+   * @param {RiskCounters} riskCounters Risk counters used to retrieve data to be put in the chart
+   */
+  constructor(canvas,riskCounters) {
+    this.rc = riskCounters;
+    if (canvas !== undefined) { this.CreatePieChart(canvas); }
   }
-}
 
-/** Creates the options for a pie chart 
- * 
- * @returns {options} Options for pie chart
- */ 
-export function GetOptions() {
-  return {
-    maintainAspectRatio: false,
-    title: {
-      display: true,
-      text: "Security Risks Overview"
+  /** Creates a pie chart for risks 
+   * 
+   * @param {string} canvas html canvas where pie chart will be placed
+   */
+  CreatePieChart(canvas) {
+    this.pieChart = new Chart(canvas, {
+      type: "doughnut",
+      data: this.GetData(),
+      options: this.GetOptions()
+    });
+  }
+
+  /** Creates the data portion for a piechart using the different levels of risks */ 
+  GetData() {
+    var xValues = ["No risk", "Low risk", "Medium risk", "High risk"];
+    var yValues = [this.rc.allNoRisks.slice(-1)[0], this.rc.allLowRisks.slice(-1)[0], this.rc.allMediumRisks.slice(-1)[0], this.rc.allHighRisks.slice(-1)[0]];
+    var barColors = [this.rc.noRiskColor, this.rc.lowRiskColor, this.rc.mediumRiskColor, this.rc.highRiskColor];
+
+    return {
+      labels: xValues,
+      datasets: [{
+        backgroundColor: barColors,
+        data: yValues
+      }]
+    }
+  }
+
+  /** Creates the options for a pie chart 
+   * 
+   * @returns {options} Options for pie chart
+   */ 
+  GetOptions() {
+    return {
+      maintainAspectRatio: false,
+      title: {
+        display: true,
+        text: "Security Risks Overview"
+      }
     }
   }
 }
+
+

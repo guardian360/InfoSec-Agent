@@ -1,16 +1,37 @@
 // this file should contain code to put the correct count for each risk assessment.
 
-export let highRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--highRiskColor');
-export let mediumRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--mediumRiskColor');
-export let lowRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--lowRiskColor');
-export let noRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--noRiskColor');
+export class RiskCounters {
+  highRiskColor;
+  mediumRiskColor; 
+  lowRiskColor;
+  noRiskColor;
 
-export let allHighRisks = [1,2,3,4,5,6,2];
-export let allMediumRisks = [1,2,3,4,5,6,0];
-export let allLowRisks = [1,2,3,4,5,6,2];
-export let allNoRisks = [1,2,3,4,5,6,4];
+  allHighRisks = [1,2,3,4,5,6,2];
+  allMediumRisks = [1,2,3,4,5,6,0];
+  allLowRisks = [1,2,3,4,5,6,2];
+  allNoRisks = [1,2,3,4,5,6,4];
 
-export let lastHighRisk = allHighRisks.slice(-1)[0];
-export let lastMediumRisk = allMediumRisks.slice(-1)[0];
-export let lastLowRisk = allLowRisks.slice(-1)[0];
-export let lastnoRisk = allNoRisks.slice(-1)[0];
+  lastHighRisk = this.allHighRisks.slice(-1)[0];
+  lastMediumRisk = this.allMediumRisks.slice(-1)[0];
+  lastLowRisk = this.allLowRisks.slice(-1)[0];
+  lastnoRisk = this.allNoRisks.slice(-1)[0];
+
+  /** Create the risk-Counters with the right colors
+   * 
+   * @param {boolean} [testing=false] Specifies if the class is being used in testing, normally set to *false*
+   */
+  constructor (testing=false) {
+    if (testing) {
+      this.highRiskColor = "rgb(0, 255, 255)";
+      this.mediumRiskColor = "rgb(0, 0, 255)";
+      this.lowRiskColor = "rgb(255, 0, 0)";
+      this.noRiskColor = "rgb(255, 255, 0)";
+    } else {
+      this.highRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--highRiskColor');
+      this.mediumRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--mediumRiskColor');
+      this.lowRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--lowRiskColor');
+      this.noRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--noRiskColor');
+    }
+  } 
+}
+
