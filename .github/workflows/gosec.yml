@@ -15,11 +15,6 @@ jobs:
     steps:
       - name: Checkout Source
         uses: actions/checkout@v3
-      - name: Set up GCC
-        uses: egor-tensin/setup-gcc@v1
-        with:
-          version: latest
-          platform: x64
       - name: Run Gosec Security Scanner
         uses: securego/gosec@master
         with:
