@@ -30,7 +30,7 @@ export class PieChart {
   /** Creates the data portion for a piechart using the different levels of risks */ 
   GetData() {
     var xValues = ["No risk", "Low risk", "Medium risk", "High risk"];
-    var yValues = [this.rc.allNoRisks.slice(-1)[0], this.rc.allLowRisks.slice(-1)[0], this.rc.allMediumRisks.slice(-1)[0], this.rc.allHighRisks.slice(-1)[0]];
+    var yValues = [this.rc.lastnoRisk, this.rc.lastLowRisk, this.rc.lastMediumRisk, this.rc.lastHighRisk];
     var barColors = [this.rc.noRiskColor, this.rc.lowRiskColor, this.rc.mediumRiskColor, this.rc.highRiskColor];
 
     return {

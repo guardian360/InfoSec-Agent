@@ -112,11 +112,6 @@ describe("risk-graph", function() {
       allMediumRisks : [1,2,3,4,5,6,2],
       allLowRisks : [1,2,3,4,5,6,3],
       allNoRisks : [1,2,3,4,5,6,4],
-
-      lastHighRisk : 1,
-      lastMediumRisk : 2,
-      lastLowRisk : 3,
-      lastnoRisk : 4,
     };
 
     g = new Graph(undefined,mockRiskCounters);

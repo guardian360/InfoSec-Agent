@@ -121,7 +121,8 @@ export function openDashboardPage() {
   `;  
   // Set counters on the page to the right values
   let rc = new RiskCounters();
-  AdjustWithRiskCounters(rc);    
+  AdjustWithRiskCounters(rc);
+  SetMaxInterval(rc);    
   // Create charts
   new PieChart("pieChart",rc);
   let g = new Graph("interval-graph",rc);
@@ -161,8 +162,14 @@ export function AdjustWithRiskCounters(rc) {
     securityStatus.style.backgroundColor = rc.noRiskColor;
     securityStatus.style.color = "rgb(0, 0, 0)";  
   }  
+}
 
-  document.getElementById("graph-interval").max = rc.allNoRisks.length;
+/** Set the max number input of the 'graph-interval' element
+ * 
+ * @param {RiskCounters} rc Risk counters from which the max count is taken
+ */
+export function SetMaxInterval(rc) {
+  document.getElementById("graph-interval").max = rc.count;
 }
 
 /** Adds eventlisteners to elements in graph-row section of the dashboard page 

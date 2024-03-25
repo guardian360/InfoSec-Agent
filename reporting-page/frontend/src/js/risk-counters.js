@@ -16,6 +16,8 @@ export class RiskCounters {
   lastLowRisk = this.allLowRisks.slice(-1)[0];
   lastnoRisk = this.allNoRisks.slice(-1)[0];
 
+  count = this.allHighRisks.length;
+
   /** Create the risk-Counters with the right colors
    * 
    * @param {boolean} [testing=false] Specifies if the class is being used in testing, normally set to *false*
