@@ -5,7 +5,6 @@ import { RiskCounters } from '../src/js/risk-counters.js';
 
 // Mock page
 const dom = new JSDOM(`
-  <link rel="stylesheet" href="./src/css/color-palette.css">
   <div class="graph-row">
   <div class="graph-column issues-graph-buttons">
     <H2>In this graph you are able to see the distribution of different issues we have found over the past 5 times we ran a check.</H2>
@@ -151,10 +150,6 @@ describe("risk-graph", function() {
     const resultOptions = g.GetOptions();
 
     // assert
-    test.value(resultOptions.scales.xAxes[0].stacked).isEqualTo(expectedOptions.scales.xAxes[0].stacked);
-    test.value(resultOptions.scales.yAxes[0].stacked).isEqualTo(expectedOptions.scales.yAxes[0].stacked);
-    test.value(resultOptions.legend.display).isEqualTo(expectedOptions.legend.display);
-    test.value(resultOptions.maintainAspectRatio).isEqualTo(expectedOptions.maintainAspectRatio);
-    test.value(resultOptions.categoryPercentage).isEqualTo(expectedOptions.categoryPercentage);
+    test.object(resultOptions).is(expectedOptions);
   })
-})
+});
