@@ -28,7 +28,10 @@ func Scan(dialog zenity.ProgressDialog) {
 	// Define all security/privacy checks that Scan() should execute
 	securityChecks := []func() checks.Check{
 		checks.PasswordManager,
-		checks.WindowsDefender,
+		func() checks.Check {
+			return checks.WindowsDefender(registrymock.NewRegistryKeyWrapper(registry.LOCAL_MACHINE),
+				registrymock.NewRegistryKeyWrapper(registry.LOCAL_MACHINE))
+		},
 		func() checks.Check {
 			return checks.LastPasswordChange(&utils.RealCommandExecutor{})
 		},
