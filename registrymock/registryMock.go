@@ -56,9 +56,11 @@ func (r *RegistryKeyWrapper) ReadSubKeyNames(count int) ([]string, error) {
 
 // MockRegistryKey is a mock implementation of the RegistryKey interface
 type MockRegistryKey struct {
+	Name         string
 	StringValue  string
 	BinaryValue  []byte
 	IntegerValue uint64
+	SubKeys      []MockRegistryKey
 	Err          error
 }
 
@@ -99,5 +101,9 @@ func (m *MockRegistryKey) Stat() (*registry.KeyInfo, error) {
 
 // ReadSubKeyNames reads the subkey names of the registry key
 func (m *MockRegistryKey) ReadSubKeyNames(count int) ([]string, error) {
-	return []string{}, nil
+	var subKeyNames []string
+	for _, key := range m.SubKeys {
+		subKeyNames = append(subKeyNames, key.Name)
+	}
+	return subKeyNames, nil
 }
