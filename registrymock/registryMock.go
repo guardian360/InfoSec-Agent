@@ -104,11 +104,11 @@ func (m *MockRegistryKey) ReadSubKeyNames(count int) ([]string, error) {
 	var subKeyNames []string
 	var maxCount int
 	for _, key := range m.SubKeys {
-		subKeyNames = append(subKeyNames, key.Name)
-		maxCount++
 		if maxCount == count {
 			break
 		}
+		subKeyNames = append(subKeyNames, key.Name)
+		maxCount++
 	}
 	return subKeyNames, nil
 }
