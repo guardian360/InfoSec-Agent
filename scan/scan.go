@@ -39,7 +39,7 @@ func Scan(dialog zenity.ProgressDialog) {
 		func() checks.Check { return checks.Permission("webcam") },
 		func() checks.Check { return checks.Permission("appointments") },
 		func() checks.Check { return checks.Permission("contacts") },
-		checks.Bluetooth,
+		func() checks.Check { return checks.Bluetooth(registrymock.NewRegistryKeyWrapper(registry.LOCAL_MACHINE)) },
 		func() checks.Check {
 			return checks.OpenPorts(&utils.RealCommandExecutor{}, &utils.RealCommandExecutor{})
 		},
