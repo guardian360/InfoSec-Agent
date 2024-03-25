@@ -40,17 +40,17 @@ jobs:
           # args: --timeout=30m --config=/my/path/.golangci.yml --issues-exit-code=0 
 
           # Optional: show only new issues if it's a pull request. The default value is `false`.
-          only-new-issues: true
+          only-new-issues: false
 
           # Optional: if set to true, then all caching functionality will be completely disabled,
           #           takes precedence over all other caching options.
-          # skip-cache: true
+          skip-cache: true
 
           # Optional: if set to true, then the action won't cache or restore ~/go/pkg.
-          # skip-pkg-cache: true
+          skip-pkg-cache: true
 
           # Optional: if set to true, then the action won't cache or restore ~/.cache/go-build.
-          # skip-build-cache: true
+          skip-build-cache: true
 
           # Optional: The mode to install golangci-lint. It can be 'binary' or 'goinstall'.
           # install-mode: "goinstall"
