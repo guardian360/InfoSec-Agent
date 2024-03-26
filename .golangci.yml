@@ -16,8 +16,6 @@ output:
   formats:
     - format: json
       path: golangci-lint-report.json
-    - format: checkstyle
-      path: golangci-lint-report.xml
     - format: colored-line-number
 
 # This file contains only configs which differ from defaults.
