@@ -59,14 +59,13 @@ func (r *RegistryKeyWrapper) ReadSubKeyNames(count int) ([]string, error) {
 
 // MockRegistryKey is a mock implementation of the RegistryKey interface
 type MockRegistryKey struct {
-	KeyName              string
-	StringValues         map[string]string
-	BinaryValues         map[string][]byte
-	IntegerValues        map[string]uint64
-	SubKeys              []MockRegistryKey
-	StatReturn           *registry.KeyInfo
-	ReadValueNamesReturn []string
-	Err                  error
+	KeyName       string
+	StringValues  map[string]string
+	BinaryValues  map[string][]byte
+	IntegerValues map[string]uint64
+	SubKeys       []MockRegistryKey
+	StatReturn    *registry.KeyInfo
+	Err           error
 }
 
 // GetStringValue returns the string value of the key
@@ -95,8 +94,36 @@ func (m *MockRegistryKey) OpenKey(path string, access uint32) (RegistryKey, erro
 }
 
 // ReadValueNames reads the value names of the key
-func (m *MockRegistryKey) ReadValueNames(count int) ([]string, error) {
-	return m.ReadValueNamesReturn, nil
+func (m *MockRegistryKey) ReadValueNames(maxCount int) ([]string, error) {
+	uniqueValueNames := make(map[string]string)
+	valueNames := make([]string, 0, len(m.StringValues)+len(m.BinaryValues)+len(m.IntegerValues))
+	count := 0
+	if maxCount <= count {
+		return []string{}, nil
+	}
+	for key := range m.StringValues {
+		if uniqueValueNames[key] == "" {
+			uniqueValueNames[key] = key
+		}
+	}
+	for key := range m.BinaryValues {
+		if uniqueValueNames[key] == "" {
+			uniqueValueNames[key] = key
+		}
+	}
+	for key := range m.IntegerValues {
+		if uniqueValueNames[key] == "" {
+			uniqueValueNames[key] = key
+		}
+	}
+	for key := range uniqueValueNames {
+		if maxCount == count {
+			break
+		}
+		valueNames = append(valueNames, key)
+		count++
+	}
+	return valueNames, nil
 }
 
 // Close closes the registry key
