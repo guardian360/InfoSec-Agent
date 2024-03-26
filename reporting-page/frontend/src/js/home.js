@@ -1,5 +1,6 @@
-import * as piechart from "./piechart";
-import { ScanNow } from '../../wailsjs/go/main/Tray';
+import {PieChart} from "./piechart";
+import {ScanNow} from '../../wailsjs/go/main/Tray';
+import {RiskCounters} from "./risk-counters";
 import { GetLocalization } from './localize.js';
 
 /** Load the content of the Home page */
@@ -43,8 +44,8 @@ function openHomePage() {
     </div>
   </div>
   `;  
-
-    CreatePieChart();
+    let rc = new RiskCounters();
+    new PieChart("pieChart",rc);
 
     // Localize the static content of the home page
     let staticHomePageConent = [
@@ -89,21 +90,5 @@ function scanNow() {
         console.error(err);
     });
 }
-
-//#region PieChart
-
-// Reusable snippit for other files
-let pieChart;
-
-/** Creates a pie chart for risks */
-function CreatePieChart() {
-  pieChart = new Chart("pieChart", {
-    type: "doughnut",
-    data: piechart.GetData(),
-    options: piechart.GetOptions()
-  });
-}
-
-//#endregion
 
 document.onload = openHomePage();

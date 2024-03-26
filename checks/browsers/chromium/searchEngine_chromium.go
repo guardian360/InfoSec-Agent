@@ -30,8 +30,8 @@ func SearchEngineChromium(browser string) checks.Check {
 		returnBrowserName = "SearchEngineEdge"
 		browserPath = "Microsoft/Edge"
 	}
-	// Holds the return value
-	var defaultSE string
+	// Holds the return value and sets the default value to chrome in case you never changed your search engine
+	defaultSE := "google.com"
 	user, err := os.UserHomeDir()
 	if err != nil {
 		return checks.NewCheckErrorf(returnBrowserName, "Error: ", err)
