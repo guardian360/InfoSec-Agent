@@ -1,6 +1,6 @@
-import * as rc from "./risk-counters";
-import * as graph from "./graph";
-import * as piechart from "./piechart";
+import {RiskCounters} from "./risk-counters.js";
+import {Graph} from "./graph.js";
+import {PieChart} from "./piechart.js";
 
 /** Load the content of the Security Dashboard page */
 function openSecurityDashboardPage() {
@@ -120,18 +120,24 @@ function openSecurityDashboardPage() {
   </div>
   `;  
   // Set counters on the page to the right values
-  AdjustWithRiskCounters();  
-  // Add functionalities to dashboard
-  AddGraphFunctions();  
+  let rc = new RiskCounters();
+  AdjustWithRiskCounters(rc);
+  SetMaxInterval(rc);    
   // Create charts
-  CreatePieChart();
-  CreateGraphChart();
+  new PieChart("pieChart",rc);
+  let g = new Graph("interval-graph",rc);
+  AddGraphFunctions(g);
 }
 
-document.getElementById("security-dashboard-button").addEventListener("click", () => openSecurityDashboardPage());
+if (typeof document !== 'undefined') {
+  document.getElementById("security-dashboard-button").addEventListener("click", () => openSecurityDashboardPage());
+}
 
-/** Changes the risk counters to show the correct values */
-function AdjustWithRiskCounters() {
+/** Changes the risk counters to show the correct values 
+ * 
+ * @param {RiskCounters} rc Risk counters from which the data is taken 
+ */
+export function AdjustWithRiskCounters(rc) {
   // change counters according to collected data
   document.getElementById("high-risk-counter").innerHTML = rc.lastHighRisk;
   document.getElementById("medium-risk-counter").innerHTML = rc.lastMediumRisk;
@@ -156,94 +162,26 @@ function AdjustWithRiskCounters() {
     securityStatus.style.backgroundColor = rc.noRiskColor;
     securityStatus.style.color = "rgb(0, 0, 0)";  
   }  
-
-  document.getElementById("graph-interval").max = rc.allNoRisks.length;
 }
 
-/** Adds eventlisteners to elements in graph-row section of the dashboard page */
-function AddGraphFunctions() {
-  document.getElementById("dropbtn").addEventListener("click", () => GraphDropdown());
-  document.getElementById("graph-interval").addEventListener("change", () => ChangeGraph());
-  document.getElementById("select-high-risk").addEventListener("change", () => ToggleRisks("high"));
-  document.getElementById("select-medium-risk").addEventListener("change", () => ToggleRisks("medium"));
-  document.getElementById("select-low-risk").addEventListener("change", () => ToggleRisks("low"));
-  document.getElementById("select-no-risk").addEventListener("change", () => ToggleRisks("no"));
-}
-
-//#region PieChart
-
-// Reusable snippit for other files
-let pieChart;
-
-/** Creates a pie chart for risks */
-function CreatePieChart() {
-  pieChart = new Chart("pieChart", {
-    type: "doughnut",
-    data: piechart.GetData(),
-    options: piechart.GetOptions()
-  });
-}
-
-//#endregion
-
-//#region Graph
-
-// Function to change the graph don't work when imported from another file.
-// Piechart now resides here.
-
-let graphShowHighRisks = true;
-let graphShowMediumRisks = true;
-let graphShowLowRisks = true;
-let graphShowNoRisks = true;
-
-let graphShowAmount = 5;
-
-let barChart;
-
-/** Creates a graph in the form of a bar chart for risks */
-function CreateGraphChart() {
-  barChart = new Chart("interval-graph", {
-    type: 'bar',
-    data: graph.GetData(graphShowAmount, graphShowHighRisks, graphShowMediumRisks, graphShowLowRisks, graphShowNoRisks), // The data for our dataset
-    options: graph.GetOptions() // Configuration options go here
-  });
-}
-
-/** Updates the graph, should be called after a change in graph properties */
-function ChangeGraph() {
-  graphShowAmount = document.getElementById('graph-interval').value;
-  barChart.data = graph.GetData(graphShowAmount, graphShowHighRisks, graphShowMediumRisks, graphShowLowRisks, graphShowNoRisks);
-  console.log(graphShowAmount);
-  barChart.update();
-}
-
-/** Toggles a risks to show in the graph 
+/** Set the max number input of the 'graph-interval' element
  * 
- * @param {string} category Category corresponding to risk 
+ * @param {RiskCounters} rc Risk counters from which the max count is taken
  */
-function ToggleRisks(category) {
-  switch (category) {
-    case "high":
-      graphShowHighRisks = !graphShowHighRisks;
-      break;
-    case "medium":
-      graphShowMediumRisks = !graphShowMediumRisks;
-      break;
-    case "low":
-      graphShowLowRisks = !graphShowLowRisks;
-      break;
-    case "no":
-      graphShowNoRisks = !graphShowNoRisks;
-      break;
-    default:
-      break;
-  }
-  ChangeGraph();
+export function SetMaxInterval(rc) {
+  document.getElementById("graph-interval").max = rc.count;
 }
 
-/** toggles 'show' class on element with id:"myDropDown" */
-function GraphDropdown() {
-  document.getElementById("myDropdown").classList.toggle("show");
+/** Adds eventlisteners to elements in graph-row section of the dashboard page 
+ * 
+ * @param {Graph} g Graph class containing the functions to be called
+ */
+export function AddGraphFunctions(g) {
+  document.getElementById("dropbtn").addEventListener("click", () => g.GraphDropdown());
+  document.getElementById("graph-interval").addEventListener("change", () => g.ChangeGraph());
+  document.getElementById("select-high-risk").addEventListener("change", () => g.ToggleRisks("high"));
+  document.getElementById("select-medium-risk").addEventListener("change", () => g.ToggleRisks("medium"));
+  document.getElementById("select-low-risk").addEventListener("change", () => g.ToggleRisks("low"));
+  document.getElementById("select-no-risk").addEventListener("change", () => g.ToggleRisks("no"));
 }
 
-//#endregion 
