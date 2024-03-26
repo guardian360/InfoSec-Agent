@@ -59,12 +59,6 @@ jobs:
 
           # Optional: The mode to install golangci-lint. It can be 'binary' or 'goinstall'.
           # install-mode: "goinstall"
-      - name: Show golangci-lint output
-        run: cat ${{ github.workspace }}/golangci-lint-report.json
-        if: always()
-      - name: Show golangci-lint output
-        run: ls ${{ github.workspace }}
-        if: always()
       - name: Upload golangci-lint output as artifact
         uses: actions/upload-artifact@v2
         with:
