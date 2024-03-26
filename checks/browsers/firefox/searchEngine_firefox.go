@@ -19,7 +19,10 @@ import (
 // Returns: The standard search engine for firefox
 func SearchEngineFirefox() checks.Check {
 	// Determine the directory in which the Firefox profile is stored
-	ffdirectory, _ := utils.FirefoxFolder()
+	ffdirectory, err := utils.FirefoxFolder()
+	if err != nil {
+		return checks.NewCheckErrorf("SearchEngineFirefox", "No firefox directory found", err)
+	}
 	filePath := ffdirectory[0] + "/search.json.mozlz4"
 
 	// Create a temporary file to copy the compressed json to
@@ -87,7 +90,10 @@ func SearchEngineFirefox() checks.Check {
 	}
 
 	data := make([]byte, unCompressedSize)
-	lz4.UncompressBlock(compressedData, data)
+	_, err = lz4.UncompressBlock(compressedData, data)
+	if err != nil {
+		return checks.NewCheckErrorf("SearchEngineFirefox", "Unable to uncompress", err)
+	}
 	output := string(data)
 	var result string
 	// Regex to check if the defaultEngineId is empty which means that the engine is Google

@@ -1,7 +1,7 @@
 package checks
 
 import (
-	"os/exec"
+	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"strings"
 )
 
@@ -12,12 +12,12 @@ import (
 // Parameters: _
 //
 // Returns: list of external devices
-func ExternalDevices() Check {
+func ExternalDevices(executorClass utils.CommandExecutor) Check {
 	// All the classes you want to check with the Get-PnpDevice command
 	classesToCheck := [2]string{"Mouse", "Camera"}
 	outputs := make([]string, 0)
 	for _, s := range classesToCheck {
-		output, err := checkDeviceClass(s)
+		output, err := CheckDeviceClass(s, executorClass)
 
 		if err != nil {
 			return NewCheckErrorf("externaldevices", "error checking device "+s, err)
@@ -29,15 +29,16 @@ func ExternalDevices() Check {
 	return NewCheckResult("externaldevices", outputs...)
 }
 
-// checkDeviceClass runs a specific class within the Get-PnpDevice command
+// CheckDeviceClass runs a specific class within the Get-PnpDevice command
 //
 // Parameters: deviceClass (string) representing the class to check with the Get-PnpDevice command
 //
 // Returns: list of devices of the given class
-func checkDeviceClass(deviceClass string) ([]string, error) {
+func CheckDeviceClass(deviceClass string, executorClass utils.CommandExecutor) ([]string, error) {
 	// Run the Get-PnpDevice command with the given class
-	output, err := exec.Command("powershell", "-Command", "Get-PnpDevice -Class", deviceClass, " "+
-		"| Where-Object -Property Status -eq 'OK' | Select-Object FriendlyName").Output()
+	command := "powershell"
+	output, err := executorClass.Execute(command, "-Command", "Get-PnpDevice -Class", deviceClass, " "+
+		"| Where-Object -Property Status -eq 'OK' | Select-Object FriendlyName")
 
 	if err != nil {
 		return nil, err
