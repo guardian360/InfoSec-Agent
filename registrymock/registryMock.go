@@ -1,6 +1,9 @@
 package registrymock
 
-import "golang.org/x/sys/windows/registry"
+import (
+	"errors"
+	"golang.org/x/sys/windows/registry"
+)
 
 // RegistryKey is an interface for reading values from the Windows registry
 type RegistryKey interface {
@@ -81,9 +84,14 @@ func (m *MockRegistryKey) GetIntegerValue(name string) (uint64, uint32, error) {
 	return m.IntegerValues[name], 0, nil
 }
 
-// OpenKey opens a registry key
+// OpenKey opens a registry key with a path relative to the current key
 func (m *MockRegistryKey) OpenKey(path string, access uint32) (RegistryKey, error) {
-	return m, nil
+	for _, key := range m.SubKeys {
+		if key.KeyName == path {
+			return &key, nil
+		}
+	}
+	return m, errors.New("key not found")
 }
 
 // ReadValueNames reads the value names of the key
