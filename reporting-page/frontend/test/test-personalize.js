@@ -17,12 +17,27 @@ const dom = new JSDOM(`
 global.document = dom.window.document;
 global.window = dom.window;
 
-// Mock FileReader
-global.FileReader = class {
+// Mock FileReader    
+var fileReaderIco = global.FileReader = class {
   readAsDataURL() {
-    this.onload({ target: { result: 'data:image/png' } });
+    this.onload({ target: { result: 'data:image/x-icon' } });
   }
-};
+}; 
+var fileReaderPng = global.FileReader = class {
+      readAsDataURL() {
+        this.onload({ target: { result: 'data:image/png' } });
+      }
+    };
+var fileReaderJpg = global.FileReader = class {
+      readAsDataURL() {
+        this.onload({ target: { result: 'data:image/jpg' } });
+      }
+    }; 
+var fileReaderJpeg = global.FileReader = class {
+      readAsDataURL() {
+        this.onload({ target: { result: 'data:image/jpeg' } });
+      }
+    }; 
 
 // Mock localStorage
 const localStorageMock = (() => {
@@ -43,43 +58,115 @@ global.localStorage = localStorageMock;
 
 // Test cases
 describe('handleFaviconSelect', () => {
-  it('should change the favicon when a valid .png file is selected', () => {
+  it('should change the favicon when a valid .ico file is selected', () => {
     // Arrange
-    const head = document.querySelector('head');
+    let head = document.querySelector('head');
 
     // Act
+    FileReader = fileReaderIco;
+    handleFaviconChange({ target: { files: [new Blob(['dummy'], { type: 'image/x-icon' })] } });
+
+    // Assert
+    let newFavicon = head.querySelector('link[rel="icon"]');
+    test.value(newFavicon.href).isEqualTo('data:image/x-icon');
+  });
+
+  it('should change the favicon when a valid .png file is selected', () => {
+    // Arrange
+    let head = document.querySelector('head');
+
+    // Act
+    FileReader = fileReaderPng;
     handleFaviconChange({ target: { files: [new Blob(['dummy'], { type: 'image/png' })] } });
 
     // Assert
-    const newFavicon = head.querySelector('link[rel="icon"]');
-    test.value(newFavicon.type).isEqualTo('image/png');
+    let newFavicon = head.querySelector('link[rel="icon"]');
     test.value(newFavicon.href).isEqualTo('data:image/png');
   });
+  it('should save the favicon when a valid .ico file is selected in localstorage', () => {
+    // Arrange
+    // Act
+    FileReader = fileReaderIco;
+    handleFaviconChange({ target: { files: [new Blob(['dummy'], { type: 'image/x-icon' })] } });
+
+    // Assert
+    test.value(localStorageMock.getItem('favicon')).isEqualTo('data:image/x-icon');
+
+  });
+  it('should save the favicon when a valid .png file is selected in localstorage', () => {
+    // Arrange
+    // Act
+    FileReader = fileReaderPng;
+    handleFaviconChange({ target: { files: [new Blob(['dummy'], { type: 'image/png' })] } });
+
+    // Assert
+    test.value(localStorageMock.getItem('favicon')).isEqualTo('data:image/png');
+  })
 });
 
-
 describe('handlePictureChange', () => {
-  it('should change the logo image', () => {
+  it('should change the navigation picture when a valid .png file is selected', () => {
     // Arrange
-    const fileInput = document.getElementById('picture-input');
     const logo = document.getElementById('logo');
 
     // Act
-    handlePictureChange({ target: { files: [new Blob(['dummy'], { type: 'image/jpeg' })] } });
+    FileReader = fileReaderPng;
+    handlePictureChange({ target: { files: [new Blob(['dummy'], { type: 'image/png' })] } });
 
     // Assert
-    test.value(logo.src).isEqualTo('data:image/jpeg;base64');
+    test.value(logo.src).isEqualTo('data:image/png');
   
-    })
-  it('should save in localstorage', () => {
-    //Arrange
-    const fileInput = document.getElementById('picture-input');
+  });
+  it('should change the navigation picture when a valid .jpg file is selected', () => {
+      // Arrange
+      const logo = document.getElementById('logo');
+  
+      // Act
+      FileReader = fileReaderJpg;
+      handlePictureChange({ target: { files: [new Blob(['dummy'], { type: 'image/jpg' })] } });
+  
+      // Assert
+      test.value(logo.src).isEqualTo('data:image/jpg');
+    
+  });
+  it('should change the navigation picture when a valid .jpeg file is selected', () => {
+    // Arrange
     const logo = document.getElementById('logo');
+
     // Act
+    FileReader = fileReaderJpeg;
     handlePictureChange({ target: { files: [new Blob(['dummy'], { type: 'image/jpeg' })] } });
 
     // Assert
-    test.value(localStorageMock.getItem('picture')).isEqualTo('data:image/jpeg;base64');
+    test.value(logo.src).isEqualTo('data:image/jpeg');
+  
+  });
+  it('should save the navigation picture when a valid .png file is selected in localstorage', () => {
+    //Arrange
+    //act
+    FileReader = fileReaderPng;
+    handlePictureChange({ target: { files: [new Blob(['dummy'], { type: 'image/png' })] } });
+
+    // Assert
+    test.value(localStorageMock.getItem('picture')).isEqualTo('data:image/png');
+  })
+  it('should save the navigation picture when a valid .jpg file is selected in localstorage', () => {
+    //Arrange
+    //act
+    FileReader = fileReaderJpg;
+    handlePictureChange({ target: { files: [new Blob(['dummy'], { type: 'image/jpg' })] } });
+
+    // Assert
+    test.value(localStorageMock.getItem('picture')).isEqualTo('data:image/jpg');
+  })
+  it('should save the navigation picture when a valid .jpeg file is selected in localstorage', () => {
+    //Arrange
+    //act
+    FileReader = fileReaderJpeg;
+    handlePictureChange({ target: { files: [new Blob(['dummy'], { type: 'image/jpeg' })] } });
+
+    // Assert
+    test.value(localStorageMock.getItem('picture')).isEqualTo('data:image/jpeg');
   })
 });
 

@@ -94,7 +94,7 @@ body {
 
 
 /* Navigation menu */
-.left-nav {
+#left-nav {
   padding-top: 38px;
   height: 100vh;
   width: 240px;
@@ -103,26 +103,26 @@ body {
   position: fixed;
   z-index: 1;
 }
-.left-nav a {
+#left-nav a {
   height: auto;
   width: 100%;
   line-height: 100%;
   text-decoration: none;
   float: left;
 }
-.left-nav .nav-link {
+#left-nav .nav-link {
   height: auto;
   width: 100%;
   line-height: 100%;
   text-decoration: none;
   float: left;
 }
-.left-nav p:hover {
+#left-nav p:hover {
   background-color: var(--blue-hover);
   color: var(--light-text-hover);
   cursor: pointer;
 }
-.left-nav p {
+#left-nav p {
   width: 100%;
   color: var(--light-text);
   line-height: 100%;
@@ -130,19 +130,19 @@ body {
   font-size: 1em;
   float:left;
 }
-.left-nav span {
+#left-nav span {
   float:left;
   vertical-align: bottom;
   padding: 10px;
 }
-.left-nav .material-symbols-outlined {
+#left-nav .material-symbols-outlined {
   padding-left: 20px;
 }
-.left-nav .nav-item {
+#left-nav .nav-item {
   padding-top: 15px;
 }
 
-.left-nav .active {
+#left-nav .active {
   background-color: #427385;
 }
 

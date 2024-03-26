@@ -42,16 +42,3 @@ class Navbar extends HTMLElement {
 }
 customElements.define('vertical-navbar', Navbar);
 document.getElementById('logo').src = logo;
-
-window.onload = function() {
-    let savedImage = localStorage.getItem('picture');
-    let savedText = localStorage.getItem('title')
-    if (savedImage) {
-      let logo = document.getElementById('logo');
-      logo.src = savedImage;
-    }
-    if (savedText) {
-      let title = document.getElementById('title');
-      title.textContent = savedText;
-    }
-  };

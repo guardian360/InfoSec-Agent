@@ -103,5 +103,8 @@ input:checked + .slider:before {
 #personalize-button{
   position: absolute;
   cursor: pointer;
-  background-color: #cccccc;
+  background-color: var(--blue);
+  color: var(--light-text-hover);
+  text-align: center;
+
 }

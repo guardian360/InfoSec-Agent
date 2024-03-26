@@ -86,3 +86,21 @@ function CreatePieChart() {
 //#endregion
 
 document.onload = openHomePage();
+
+window.onload = function() {
+    let savedImage = localStorage.getItem('picture');
+    let savedText = localStorage.getItem('title');
+    let savedIcon = localStorage.getItem('favicon');
+    if (savedImage) {
+      let logo = document.getElementById('logo');
+      logo.src = savedImage;
+    }
+    if (savedText) {
+      let title = document.getElementById('title');
+      title.textContent = savedText;
+    }
+    if(savedIcon){
+      let favicon = document.getElementById('favicon');
+      favicon.href = savedIcon;
+    }
+  };
