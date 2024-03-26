@@ -114,3 +114,16 @@ func (m *MockRegistryKey) ReadSubKeyNames(count int) ([]string, error) {
 	}
 	return subKeyNames, nil
 }
+
+func (m *MockRegistryKey) ReadSubKeyBinary(count int) ([]byte, error) {
+	var subBinary []byte
+	maxCount := 0
+	for _, key := range m.SubKeys {
+		if maxCount == count {
+			break
+		}
+		subBinary = append(subBinary, key.KeyName...)
+		maxCount++
+	}
+	return subBinary, nil
+}
