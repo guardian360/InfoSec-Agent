@@ -80,7 +80,6 @@ export function fillTable(tbody, issues) {
  * @param {string} column Column to sort the table on
  */ 
 export function sortTable(tbody, column) {
-  console.log("you clicked on column header " + column);
   const table = tbody.closest("table");
   let direction = table.getAttribute("data-sort-direction");
   direction = direction === "ascending" ? "descending" : "ascending";

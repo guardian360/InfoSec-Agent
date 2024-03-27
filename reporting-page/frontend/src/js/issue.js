@@ -9,8 +9,9 @@ let stepCounter = 0;
  * @param {[string]} solution List of textual solution steps
  * @param {[image]} screenshots List of images of solution steps
  * @param {int} stepCounter Counter specifying the current step
- */
-function updateSolutionStep(solution, screenshots, stepCounter) {
+
+ */ 
+export function updateSolutionStep(solution, screenshots, stepCounter) {
   const solutionStep = document.getElementById("solution-text");
   solutionStep.innerHTML = solution[stepCounter];
   document.getElementById("step-screenshot").src = screenshots[stepCounter];
@@ -21,7 +22,7 @@ function updateSolutionStep(solution, screenshots, stepCounter) {
  * @param {[string]} solution List of textual solution steps
  * @param {[image]} screenshots List of images of solution steps
  */ 
-function nextSolutionStep(solution, screenshots) {
+export function nextSolutionStep(solution, screenshots) {
   if (stepCounter < solution.length - 1) {
     stepCounter++;
     updateSolutionStep(solution, screenshots, stepCounter);
@@ -33,7 +34,7 @@ function nextSolutionStep(solution, screenshots) {
  * @param {[string]} solution List of textual solution steps
  * @param {[image]} screenshots List of images of solution steps
  */ 
-function previousSolutionStep(solution, screenshots) {
+export function previousSolutionStep(solution, screenshots) {
   if (stepCounter > 0) {
     stepCounter--;
     updateSolutionStep(solution, screenshots, stepCounter);
