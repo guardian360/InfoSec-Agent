@@ -29,7 +29,7 @@
     "ChangeLanguageTitle": "Language",
     "ChangeLanguageButton": "Change language"
   },
-  "Dashboard": 
+    "Dashboard": 
   {
     "Issues": "Issues",
     "SuggestedIssue": "Suggested Issue",
@@ -37,6 +37,10 @@
     "ScanNow": "Scan Now",
     "Medals": "Medals",
     "SecurityStatus": "Security Status",
+    "Critical": "Critical",
+    "MediumConcern": "Medium Concern",
+    "LowConcern": "Low Concern",
+    "NoConcern": "Safe",
     "SecurityRisksOverview": "Security Risks Overview",
     "HighRisk": "High Risk Issues",
     "MediumRisk": "Medium Risk Issues",
