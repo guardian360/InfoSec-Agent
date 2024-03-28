@@ -5,6 +5,7 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"reflect"
+	"strings"
 	"testing"
 )
 
@@ -65,4 +66,46 @@ func TestOpenPorts(t *testing.T) {
 			}
 		})
 	}
+}
+
+// TestPortsExpected
+//
+// Parameters: t (testing.T) - the testing framework
+//
+// Returns: _
+func TestPortsExpected(t *testing.T) {
+	tests := []struct {
+		name      string
+		command   string
+		arguments string
+		expected  string
+	}{
+		{
+			name:     "tasklist returns expected",
+			command:  "tasklist",
+			expected: "ImageNamePIDSessionNameSession#MemUsage",
+		},
+		{
+			name:      "netstat returns expected",
+			command:   "netstat",
+			arguments: "-ano",
+			expected:  "ActiveConnections",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			executor := &utils.RealCommandExecutor{}
+			var res []byte
+			if tt.command == "netstat" {
+				res, _ = executor.Execute(tt.command, tt.arguments)
+			} else {
+				res, _ = executor.Execute(tt.command)
+			}
+			outputList := strings.Split(string(res), "\r\n")
+			if strings.Replace(outputList[1], " ", "", -1) != tt.expected {
+				t.Errorf("Expected %s, got %s", tt.expected, outputList[1])
+			}
+		})
+	}
+
 }

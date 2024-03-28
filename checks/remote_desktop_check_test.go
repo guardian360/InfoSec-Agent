@@ -20,20 +20,32 @@ func TestRemoteDesktopCheck(t *testing.T) {
 	}{
 		{
 			name: "Remote Desktop enabled",
-			key: &registrymock.MockRegistryKey{StringValues: make(map[string]string),
-				BinaryValues: make(map[string][]byte), IntegerValues: map[string]uint64{"fDenyTSConnections": 0}, Err: nil},
+			key: &registrymock.MockRegistryKey{
+				SubKeys: []registrymock.MockRegistryKey{
+					{KeyName: "System\\CurrentControlSet\\Control\\Terminal Server",
+						IntegerValues: map[string]uint64{"fDenyTSConnections": 0}, Err: nil},
+				},
+			},
 			want: checks.NewCheckResult("RemoteDesktop", "Remote Desktop is enabled"),
 		},
 		{
 			name: "Remote Desktop disabled",
-			key: &registrymock.MockRegistryKey{StringValues: make(map[string]string),
-				BinaryValues: make(map[string][]byte), IntegerValues: map[string]uint64{"fDenyTSConnections": 1}, Err: nil},
+			key: &registrymock.MockRegistryKey{
+				SubKeys: []registrymock.MockRegistryKey{
+					{KeyName: "System\\CurrentControlSet\\Control\\Terminal Server",
+						IntegerValues: map[string]uint64{"fDenyTSConnections": 1}, Err: nil},
+				},
+			},
 			want: checks.NewCheckResult("RemoteDesktop", "Remote Desktop is disabled"),
 		},
 		{
 			name: "Unknown status",
-			key: &registrymock.MockRegistryKey{StringValues: make(map[string]string),
-				BinaryValues: make(map[string][]byte), IntegerValues: map[string]uint64{"fDenyTSConnections": 3}, Err: nil},
+			key: &registrymock.MockRegistryKey{
+				SubKeys: []registrymock.MockRegistryKey{
+					{KeyName: "System\\CurrentControlSet\\Control\\Terminal Server",
+						IntegerValues: map[string]uint64{"fDenyTSConnections": 3}, Err: nil},
+				},
+			},
 			want: checks.NewCheckResult("RemoteDesktop", "Remote Desktop is disabled"),
 		},
 	}

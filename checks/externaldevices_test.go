@@ -5,9 +5,15 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"reflect"
+	"strings"
 	"testing"
 )
 
+// TestExternalDevices tests the ExternalDevices function with (in)valid inputs
+//
+// Parameters: t (testing.T) - the testing framework
+//
+// Returns: _
 func TestExternalDevices(t *testing.T) {
 	tests := []struct {
 		name          string
@@ -39,6 +45,11 @@ func TestExternalDevices(t *testing.T) {
 	}
 }
 
+// TestCheckDeviceClass tests the CheckDeviceClass with (in)valid inputs
+//
+// Parameters: t (testing.T) - the testing framework
+//
+// Returns: _
 func TestCheckDeviceClass(t *testing.T) {
 	tests := []struct {
 		name          string
@@ -73,6 +84,37 @@ func TestCheckDeviceClass(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			if got, _ := checks.CheckDeviceClass(tt.deviceClass, tt.executorClass); !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("ExternalDevices() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+// TestCommandOutput tests that the output of the command run in externaldevices.go is as expected
+//
+// Parameters: t (testing.T) - the testing framework
+//
+// Returns: _
+func TestCommandOutput(t *testing.T) {
+	tests := []struct {
+		name      string
+		command   string
+		arguments string
+		expected  string
+	}{
+		{
+			name:      "Get-PnpDevice output",
+			command:   "powershell",
+			arguments: "Get-PnpDevice | Where-Object -Property Status -eq 'OK' | Select-Object FriendlyName",
+			expected:  "FriendlyName",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			executor := &utils.RealCommandExecutor{}
+			output, _ := executor.Execute(tt.command, tt.arguments)
+			outputList := strings.Split(string(output), "\r\n")
+			if res := strings.Replace(outputList[1], " ", "", -1); res != tt.expected {
+				t.Errorf("Expected %s, got %s", tt.expected, res)
 			}
 		})
 	}
