@@ -29,7 +29,9 @@ jobs:
         uses: actions/setup-go@v5
         with:
           go-version: '1.22.0'
-      - name: Run linter
+      - name: Make lint result directory
+        run: mkdir linting
+      - name: Run linter on InfoSec-Agent backend
         uses: golangci/golangci-lint-action@v4
         with:
           # Require: The version of golangci-lint to use.
@@ -42,7 +44,7 @@ jobs:
           #
           # Note: By default, the `.golangci.yml` file should be at the root of the repository.
           # The location of the configuration file can be changed by using `--config=`
-          args: --out-format=json:golangci-lint-report.json,colored-line-number
+          args: --out-format=json:linting/lint-report-InfoSec-Agent.json,colored-line-number
 
           # Optional: show only new issues if it's a pull request. The default value is `false`.
           only-new-issues: false
@@ -59,9 +61,22 @@ jobs:
 
           # Optional: The mode to install golangci-lint. It can be 'binary' or 'goinstall'.
           # install-mode: "goinstall"
+      - name: Run linter on reporting-page backend
+        uses: golangci/golangci-lint-action@v4
+        with:
+          version: latest
+
+          working-directory: reporting-page
+          args: --out-format=json:../linting/lint-report-reporting-page.json,colored-line-number --config=../.golangci.yml
+          
+          only-new-issues: false
+          
+          skip-cache: false
+          skip-pkg-cache: false
+          skip-build-cache: false
       - name: Upload linter output as artifact
         uses: actions/upload-artifact@v2
         with:
           name: golangci-lint-output
-          path: ${{ github.workspace }}/golangci-lint-report.json
+          path: ${{ github.workspace }}/linting
         if: always()
