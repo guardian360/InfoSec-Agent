@@ -3,7 +3,7 @@ package checks_test
 import (
 	"errors"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
-	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
+	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
 	"reflect"
 	"testing"
 )
@@ -16,34 +16,34 @@ import (
 func TestUACCheck(t *testing.T) {
 	tests := []struct {
 		name        string
-		executorUAC *utils.MockCommandExecutor
+		executorUAC *commandmock.MockCommandExecutor
 		want        checks.Check
 	}{
 		{
 			name:        "UAC disabled",
-			executorUAC: &utils.MockCommandExecutor{Output: "0", Err: nil},
+			executorUAC: &commandmock.MockCommandExecutor{Output: "0", Err: nil},
 			want:        checks.NewCheckResult("UAC", "UAC is disabled."),
 		},
 		{
 			name:        "UAC enabled for apps and settings",
-			executorUAC: &utils.MockCommandExecutor{Output: "2", Err: nil},
+			executorUAC: &commandmock.MockCommandExecutor{Output: "2", Err: nil},
 			want: checks.NewCheckResult("UAC", "UAC is turned on for apps making changes to your computer "+
 				"and for changing your settings."),
 		},
 		{
 			name:        "UAC enabled for apps but not for settings",
-			executorUAC: &utils.MockCommandExecutor{Output: "5", Err: nil},
+			executorUAC: &commandmock.MockCommandExecutor{Output: "5", Err: nil},
 			want: checks.NewCheckResult("UAC", "UAC is turned on for apps making changes to "+
 				"your computer."),
 		},
 		{
 			name:        "unknown UAC level",
-			executorUAC: &utils.MockCommandExecutor{Output: "3", Err: nil},
+			executorUAC: &commandmock.MockCommandExecutor{Output: "3", Err: nil},
 			want:        checks.NewCheckResult("UAC", "Unknown UAC level"),
 		},
 		{
 			name:        "UAC error",
-			executorUAC: &utils.MockCommandExecutor{Output: "", Err: errors.New("error retrieving UAC")},
+			executorUAC: &commandmock.MockCommandExecutor{Output: "", Err: errors.New("error retrieving UAC")},
 			want: checks.NewCheckErrorf("UAC", "error retrieving UAC",
 				errors.New("error retrieving UAC")),
 		},

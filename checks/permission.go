@@ -3,7 +3,6 @@ package checks
 import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
-	"golang.org/x/sys/windows/registry"
 	"strings"
 )
 

@@ -13,7 +13,7 @@ import (
 //
 // Returns: _
 func TestOpenRegistryKeyValidInput(T *testing.T) {
-	key, err := registrymock.OpenRegistryKey(registrymock.NewRegistryKeyWrapper(registry.LOCAL_MACHINE), "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run")
+	key, err := registrymock.OpenRegistryKey(registrymock.LOCAL_MACHINE, "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run")
 	defer registrymock.CloseRegistryKey(key)
 	require.NoError(T, err)
 	require.NotNil(T, key)
@@ -29,6 +29,7 @@ func TestOpenRegistryKeyInvalidKey(T *testing.T) {
 	defer registrymock.CloseRegistryKey(key)
 	require.Error(T, err)
 	require.Equal(T, key, registrymock.NewRegistryKeyWrapper(registry.Key(0x0)))
+
 }
 
 // TestOpenRegistryKeyInvalidPath tests the OpenRegistryKey function with an invalid path
@@ -37,7 +38,7 @@ func TestOpenRegistryKeyInvalidKey(T *testing.T) {
 //
 // Returns: _
 func TestOpenRegistryKeyInvalidPath(T *testing.T) {
-	key, err := registrymock.OpenRegistryKey(registrymock.NewRegistryKeyWrapper(registry.LOCAL_MACHINE),
+	key, err := registrymock.OpenRegistryKey(registrymock.LOCAL_MACHINE,
 		"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\nonexistent")
 	defer registrymock.CloseRegistryKey(key)
 	require.Error(T, err)
@@ -50,7 +51,7 @@ func TestOpenRegistryKeyInvalidPath(T *testing.T) {
 //
 // Returns: _
 func TestCloseRegistryKeyValidInput(T *testing.T) {
-	key, err := registrymock.OpenRegistryKey(registrymock.NewRegistryKeyWrapper(registry.LOCAL_MACHINE), "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run")
+	key, err := registrymock.OpenRegistryKey(registrymock.LOCAL_MACHINE, "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run")
 	require.NoError(T, err)
 	require.NotNil(T, key)
 	registrymock.CloseRegistryKey(key)
@@ -73,7 +74,7 @@ func TestCloseRegistryKeyInvalidKey(T *testing.T) {
 //
 // Returns: _
 func TestFindEntriesValidInput(T *testing.T) {
-	key, err := registrymock.OpenRegistryKey(registrymock.NewRegistryKeyWrapper(registry.CURRENT_USER),
+	key, err := registrymock.OpenRegistryKey(registrymock.CURRENT_USER,
 		`SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run`)
 	defer registrymock.CloseRegistryKey(key)
 	require.NoError(T, err)
@@ -102,7 +103,7 @@ func TestFindEntriesInvalidInput(T *testing.T) {
 //
 // Returns: _
 func TestCheckKeyValidInput(T *testing.T) {
-	key, err := registrymock.OpenRegistryKey(registrymock.NewRegistryKeyWrapper(registry.LOCAL_MACHINE),
+	key, err := registrymock.OpenRegistryKey(registrymock.LOCAL_MACHINE,
 		`SOFTWARE\Microsoft\Windows NT\CurrentVersion`)
 	defer registrymock.CloseRegistryKey(key)
 	require.NoError(T, err)
@@ -129,7 +130,7 @@ func TestCheckKeyInvalidKey(T *testing.T) {
 //
 // Returns: _
 func TestCheckKeyInvalidElement(T *testing.T) {
-	key, err := registrymock.OpenRegistryKey(registrymock.NewRegistryKeyWrapper(registry.LOCAL_MACHINE),
+	key, err := registrymock.OpenRegistryKey(registrymock.LOCAL_MACHINE,
 		`SOFTWARE\Microsoft\Windows NT\CurrentVersion`)
 	defer registrymock.CloseRegistryKey(key)
 	require.NoError(T, err)

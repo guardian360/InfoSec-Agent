@@ -4,6 +4,7 @@
     "unit.js": "^2.1.1"
   },
   "devDependencies": {
-    "ignore-styles": "^5.0.1"
+    "ignore-styles": "^5.0.1",
+    "sinon": "^7.5.0"
   }
 }
