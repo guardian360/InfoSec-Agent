@@ -1,7 +1,7 @@
 package checks
 
 import (
-	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
+	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
 	"strings"
 )
 
@@ -12,7 +12,7 @@ import (
 // Parameters: _
 //
 // Returns: list of external devices
-func ExternalDevices(executorClass utils.CommandExecutor) Check {
+func ExternalDevices(executorClass commandmock.CommandExecutor) Check {
 	// All the classes you want to check with the Get-PnpDevice command
 	classesToCheck := [2]string{"Mouse", "Camera"}
 	outputs := make([]string, 0)
@@ -34,7 +34,7 @@ func ExternalDevices(executorClass utils.CommandExecutor) Check {
 // Parameters: deviceClass (string) representing the class to check with the Get-PnpDevice command
 //
 // Returns: list of devices of the given class
-func CheckDeviceClass(deviceClass string, executorClass utils.CommandExecutor) ([]string, error) {
+func CheckDeviceClass(deviceClass string, executorClass commandmock.CommandExecutor) ([]string, error) {
 	// Run the Get-PnpDevice command with the given class
 	command := "powershell"
 	output, err := executorClass.Execute(command, "-Command", "Get-PnpDevice -Class", deviceClass, " "+

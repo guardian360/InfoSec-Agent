@@ -7,8 +7,8 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/chromium"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/firefox"
+	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
 	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
-	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"github.com/InfoSec-Agent/InfoSec-Agent/windowsmock"
 	"golang.org/x/sys/windows/registry"
 
@@ -44,27 +44,27 @@ func Scan(dialog zenity.ProgressDialog) {
 		func() checks.Check { return checks.Permission("contacts") },
 		checks.Bluetooth,
 		func() checks.Check {
-			return checks.OpenPorts(&utils.RealCommandExecutor{}, &utils.RealCommandExecutor{})
+			return checks.OpenPorts(&commandmock.RealCommandExecutor{}, &commandmock.RealCommandExecutor{})
 		},
 		func() checks.Check { return checks.WindowsOutdated(&windowsmock.RealWindowsVersion{}) },
 		func() checks.Check {
 			return checks.SecureBoot(registrymock.NewRegistryKeyWrapper(registry.LOCAL_MACHINE))
 		},
 		func() checks.Check {
-			return checks.SmbCheck(&utils.RealCommandExecutor{}, &utils.RealCommandExecutor{})
+			return checks.SmbCheck(&commandmock.RealCommandExecutor{}, &commandmock.RealCommandExecutor{})
 		},
 		checks.Startup,
 		func() checks.Check {
-			return checks.GuestAccount(&utils.RealCommandExecutor{}, &utils.RealCommandExecutor{},
-				&utils.RealCommandExecutor{}, &utils.RealCommandExecutor{})
+			return checks.GuestAccount(&commandmock.RealCommandExecutor{}, &commandmock.RealCommandExecutor{},
+				&commandmock.RealCommandExecutor{}, &commandmock.RealCommandExecutor{})
 		},
-		func() checks.Check { return checks.UACCheck(&utils.RealCommandExecutor{}) },
+		func() checks.Check { return checks.UACCheck(&commandmock.RealCommandExecutor{}) },
 		func() checks.Check {
 			return checks.RemoteDesktopCheck(
 				registrymock.NewRegistryKeyWrapper(registry.LOCAL_MACHINE))
 		},
-		func() checks.Check { return checks.ExternalDevices(&utils.RealCommandExecutor{}) },
-		func() checks.Check { return checks.NetworkSharing(&utils.RealCommandExecutor{}) },
+		func() checks.Check { return checks.ExternalDevices(&commandmock.RealCommandExecutor{}) },
+		func() checks.Check { return checks.NetworkSharing(&commandmock.RealCommandExecutor{}) },
 		func() checks.Check { return chromium.HistoryChromium("Chrome") },
 		func() checks.Check { return chromium.ExtensionsChromium("Chrome") },
 		func() checks.Check { return chromium.SearchEngineChromium("Chrome") },
