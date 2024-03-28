@@ -1,7 +1,7 @@
 package checks
 
 import (
-	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
+	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
 	"strings"
 )
 
@@ -10,7 +10,7 @@ import (
 // Parameters: _
 //
 // Returns: The level that the UAC is enabled at
-func UACCheck(UACexecutor utils.CommandExecutor) Check {
+func UACCheck(UACexecutor commandmock.CommandExecutor) Check {
 	// The UAC level can be retrieved as a property from the ConsentPromptBehaviorAdmin
 	command := "powershell"
 	key, err := UACexecutor.Execute(command, "(Get-ItemProperty -Path 'HKLM:\\SOFTWARE\\Microsoft\\Windows\\"+

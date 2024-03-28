@@ -2,7 +2,7 @@ package checks
 
 import (
 	"fmt"
-	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
+	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
 	"strings"
 )
 
@@ -11,7 +11,7 @@ import (
 // Parameters: _
 //
 // Returns: If SMB1 and SMB2 are enabled or not
-func SmbCheck(smb1executor utils.CommandExecutor, smb2executor utils.CommandExecutor) Check {
+func SmbCheck(smb1executor commandmock.CommandExecutor, smb2executor commandmock.CommandExecutor) Check {
 	smb1, err := SmbEnabled("SMB1", smb1executor)
 
 	if err != nil {
@@ -31,7 +31,7 @@ func SmbCheck(smb1executor utils.CommandExecutor, smb2executor utils.CommandExec
 // Parameters: smb (string) represents the SMB protocol to check
 //
 // Returns: If the specified SMB protocol is enabled or not
-func SmbEnabled(smb string, executor utils.CommandExecutor) (string, error) {
+func SmbEnabled(smb string, executor commandmock.CommandExecutor) (string, error) {
 	// Get the status of the specified SMB protocol
 	command := fmt.Sprintf("Get-SmbServerConfiguration | Select-Object Enable%sProtocol", smb)
 	output, err := executor.Execute("powershell", command)
