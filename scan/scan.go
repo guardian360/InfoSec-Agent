@@ -6,12 +6,14 @@ package scan
 import (
 	"encoding/json"
 	"fmt"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/chromium"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/firefox"
 	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
 	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
 	"github.com/InfoSec-Agent/InfoSec-Agent/windowsmock"
+	"golang.org/x/sys/windows/registry"
 
 	"github.com/ncruces/zenity"
 )
@@ -39,7 +41,9 @@ func Scan(dialog zenity.ProgressDialog) {
 		func() checks.Check { return checks.Permission("webcam") },
 		func() checks.Check { return checks.Permission("appointments") },
 		func() checks.Check { return checks.Permission("contacts") },
-		func() checks.Check { return checks.Bluetooth(registrymock.NewRegistryKeyWrapper(registry.LOCAL_MACHINE)) },
+		func() checks.Check {
+			return checks.Bluetooth(registrymock.NewRegistryKeyWrapper(registry.LOCAL_MACHINE))
+		},
 		func() checks.Check {
 			return checks.OpenPorts(&commandmock.RealCommandExecutor{}, &commandmock.RealCommandExecutor{})
 		},

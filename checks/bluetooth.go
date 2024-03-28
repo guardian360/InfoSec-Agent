@@ -13,7 +13,7 @@ import (
 // Returns: A list of bluetooth devices
 func Bluetooth(registryKey registrymock.RegistryKey) Check {
 	// Open the registry key for bluetooth devices
-	key, err := registrymock.OpenRegistryKey(registrymock.LOCAL_MACHINE,
+	key, err := registrymock.OpenRegistryKey(registryKey,
 		`SYSTEM\CurrentControlSet\Services\BTHPORT\Parameters\Devices`)
 	if err != nil {
 		return NewCheckErrorf("Bluetooth", "error opening registry key", err)

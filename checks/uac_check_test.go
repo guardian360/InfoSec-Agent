@@ -7,8 +7,6 @@ import (
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
-
-	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 )
 
 // TestUACCheck tests the OpenPorts function with different (in)valid inputs

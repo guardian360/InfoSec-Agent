@@ -1,11 +1,12 @@
 package checks_test
 
 import (
+	"reflect"
+	"testing"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
 	"golang.org/x/sys/windows/registry"
-	"reflect"
-	"testing"
 )
 
 // TestLoginMethod tests the LoginMethod function with (in)valid inputs
@@ -45,7 +46,7 @@ func TestLoginMethod(t *testing.T) {
 			key: &registrymock.MockRegistryKey{
 				SubKeys: []registrymock.MockRegistryKey{
 					{KeyName: "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Authentication\\LogonUI\\UserTile",
-						StringValues: map[string]string{"S-1-5-21-174387295-310396468-1212757568-500": "{60B78E88-EAD8-445C-9CFD-0B87F74EA6CD}"},
+						StringValues: map[string]string{"": "{60B78E88-EAD8-445C-9CFD-0B87F74EA6CD}"},
 						StatReturn:   &registry.KeyInfo{ValueCount: 1}, Err: nil}}},
 			want: checks.NewCheckResult("LoginMethod", "Password"),
 		},

@@ -21,10 +21,12 @@ func TestBluetooth(t *testing.T) {
 	}{
 		{
 			name: "No Devices found",
-			key:  &registrymock.MockRegistryKey{Err: nil},
+			key: &registrymock.MockRegistryKey{
+				SubKeys: []registrymock.MockRegistryKey{
+					{KeyName: "SYSTEM\\CurrentControlSet\\Services\\BTHPORT\\Parameters\\Devices"}}},
 			want: checks.NewCheckResult("Bluetooth", "No Bluetooth devices found"),
 		},
-		{ // BinaryValues: map[string][]byte{"Name": []byte("dadsa")},
+		{
 			name: "Bluetooth devices found",
 			key: &registrymock.MockRegistryKey{
 				SubKeys: []registrymock.MockRegistryKey{
@@ -33,6 +35,16 @@ func TestBluetooth(t *testing.T) {
 					},
 				}, Err: nil},
 			want: checks.NewCheckResult("Bluetooth", "Device1"),
+		},
+		{
+			name: "Error reading device name",
+			key: &registrymock.MockRegistryKey{
+				SubKeys: []registrymock.MockRegistryKey{
+					{KeyName: "SYSTEM\\CurrentControlSet\\Services\\BTHPORT\\Parameters\\Devices", SubKeys: []registrymock.MockRegistryKey{
+						{KeyName: "FAFA", StringValues: map[string]string{"Name2": "fsdfs"}, Err: nil}},
+					},
+				}},
+			want: checks.NewCheckResult("Bluetooth", "Error reading device name FAFA"),
 		},
 	}
 	for _, tt := range tests {
