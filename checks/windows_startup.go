@@ -3,7 +3,6 @@ package checks
 import (
 	"fmt"
 	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
-	"golang.org/x/sys/windows/registry"
 )
 
 // Startup checks the registry for startup programs
@@ -14,11 +13,11 @@ import (
 func Startup() Check {
 	// Start-up programs can be found in different locations within the registry
 	// Both the current user and local machine registry keys are checked
-	cuKey, err1 := registrymock.OpenRegistryKey(registrymock.NewRegistryKeyWrapper(registry.CURRENT_USER),
+	cuKey, err1 := registrymock.OpenRegistryKey(registrymock.CURRENT_USER,
 		`SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run`)
-	lmKey, err2 := registrymock.OpenRegistryKey(registrymock.NewRegistryKeyWrapper(registry.LOCAL_MACHINE),
+	lmKey, err2 := registrymock.OpenRegistryKey(registrymock.LOCAL_MACHINE,
 		`SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run`)
-	lmKey2, err3 := registrymock.OpenRegistryKey(registrymock.NewRegistryKeyWrapper(registry.LOCAL_MACHINE),
+	lmKey2, err3 := registrymock.OpenRegistryKey(registrymock.LOCAL_MACHINE,
 		`SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run32`)
 
 	if err1 != nil || err2 != nil || err3 != nil {

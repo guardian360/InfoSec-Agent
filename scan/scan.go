@@ -4,16 +4,14 @@
 package scan
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/chromium"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/firefox"
 	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"github.com/InfoSec-Agent/InfoSec-Agent/windowsmock"
-	"golang.org/x/sys/windows/registry"
-
-	"encoding/json"
-	"fmt"
 
 	"github.com/ncruces/zenity"
 )
@@ -30,12 +28,11 @@ func Scan(dialog zenity.ProgressDialog) {
 	securityChecks := []func() checks.Check{
 		checks.PasswordManager,
 		func() checks.Check {
-			return checks.WindowsDefender(registrymock.NewRegistryKeyWrapper(registry.LOCAL_MACHINE),
-				registrymock.NewRegistryKeyWrapper(registry.LOCAL_MACHINE))
+			return checks.WindowsDefender(registrymock.LOCAL_MACHINE, registrymock.LOCAL_MACHINE)
 		},
 		checks.LastPasswordChange,
 		func() checks.Check {
-			return checks.LoginMethod(registrymock.NewRegistryKeyWrapper(registry.LOCAL_MACHINE))
+			return checks.LoginMethod(registrymock.LOCAL_MACHINE)
 		},
 		func() checks.Check { return checks.Permission("location") },
 		func() checks.Check { return checks.Permission("microphone") },
@@ -48,7 +45,7 @@ func Scan(dialog zenity.ProgressDialog) {
 		},
 		func() checks.Check { return checks.WindowsOutdated(&windowsmock.RealWindowsVersion{}) },
 		func() checks.Check {
-			return checks.SecureBoot(registrymock.NewRegistryKeyWrapper(registry.LOCAL_MACHINE))
+			return checks.SecureBoot(registrymock.LOCAL_MACHINE)
 		},
 		func() checks.Check {
 			return checks.SmbCheck(&utils.RealCommandExecutor{}, &utils.RealCommandExecutor{})
@@ -60,8 +57,7 @@ func Scan(dialog zenity.ProgressDialog) {
 		},
 		func() checks.Check { return checks.UACCheck(&utils.RealCommandExecutor{}) },
 		func() checks.Check {
-			return checks.RemoteDesktopCheck(
-				registrymock.NewRegistryKeyWrapper(registry.LOCAL_MACHINE))
+			return checks.RemoteDesktopCheck(registrymock.LOCAL_MACHINE)
 		},
 		func() checks.Check { return checks.ExternalDevices(&utils.RealCommandExecutor{}) },
 		func() checks.Check { return checks.NetworkSharing(&utils.RealCommandExecutor{}) },
