@@ -3,7 +3,6 @@ package checks
 import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
-	"golang.org/x/sys/windows/registry"
 	"strings"
 )
 
@@ -14,7 +13,7 @@ import (
 // Returns: A list of applications that have the given permission
 func Permission(permission string) Check {
 	// Open the registry key for the given permission
-	key, err := registrymock.OpenRegistryKey(registrymock.NewRegistryKeyWrapper(registry.CURRENT_USER),
+	key, err := registrymock.OpenRegistryKey(registrymock.CURRENT_USER,
 		`Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\`+permission)
 	if err != nil {
 		return NewCheckErrorf(permission, "error opening registry key", err)
@@ -34,7 +33,7 @@ func Permission(permission string) Check {
 	for _, appName := range applicationNames {
 		// The registry key for packaged/non-packaged applications is different, so they get handled separately
 		if appName == "NonPackaged" {
-			key, err = registrymock.OpenRegistryKey(registrymock.NewRegistryKeyWrapper(registry.CURRENT_USER),
+			key, err = registrymock.OpenRegistryKey(registrymock.CURRENT_USER,
 				`Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\`+permission+`\NonPackaged`)
 			defer registrymock.CloseRegistryKey(key)
 			nonPackagedApplicationNames, err := key.ReadSubKeyNames(-1)
@@ -48,7 +47,7 @@ func Permission(permission string) Check {
 				}
 			}
 		} else {
-			key, err = registrymock.OpenRegistryKey(registrymock.NewRegistryKeyWrapper(registry.CURRENT_USER),
+			key, err = registrymock.OpenRegistryKey(registrymock.CURRENT_USER,
 				`Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\`+permission+`\`+appName)
 			defer registrymock.CloseRegistryKey(key)
 			v, vint, err := key.GetStringValue("Value")
