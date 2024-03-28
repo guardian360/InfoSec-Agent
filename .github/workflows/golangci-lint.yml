@@ -44,7 +44,7 @@ jobs:
           #
           # Note: By default, the `.golangci.yml` file should be at the root of the repository.
           # The location of the configuration file can be changed by using `--config=`
-          args: --out-format=json:linting/lint-report-InfoSec-Agent.json,colored-line-number
+          args: --out-format=json:linting/lint-report-InfoSec-Agent.json,colored-line-number,github-actions
 
           # Optional: show only new issues if it's a pull request. The default value is `false`.
           only-new-issues: false
@@ -67,7 +67,7 @@ jobs:
           version: latest
 
           working-directory: reporting-page
-          args: --out-format=json:../linting/lint-report-reporting-page.json,colored-line-number -v
+          args: --out-format=json:../linting/lint-report-reporting-page.json,colored-line-number,github-actions
           
           only-new-issues: false
           
