@@ -1,5 +1,6 @@
 import data from "../database.json" assert { type: "json" };
 import { openIssuesPage } from "./issues.js";
+import { retrieveTheme } from "./personalize";
 
 let stepCounter = 0;
 
@@ -75,4 +76,6 @@ export function openIssuePage(issueId) {
   document.getElementById("next-button").addEventListener("click", () => nextSolutionStep(currentIssue.Solution, currentIssue.Screenshots));
   document.getElementById("previous-button").addEventListener("click", () => previousSolutionStep(currentIssue.Solution, currentIssue.Screenshots));
   document.getElementById("back-button").addEventListener("click", () => openIssuesPage());
+
+  document.onload = retrieveTheme();
 }

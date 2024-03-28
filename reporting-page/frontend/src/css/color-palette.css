@@ -21,14 +21,17 @@ Should later on be able to be changed by user, with help of js
   --accentV2: hsl(var(--hueLeftAnalogous) 40% 40%);
   --accentV2Light900: hsl(var(--hueLeftAnalogous) 40% 90%);
       
-  --background-color: #ffffff;
-  --light-blue: #DFEEF1;
-  --blue: #4E869B;
-  --blue-hover: #427385;
+  --background-color: #ffffff;          /*main color background*/
+  --background-color-risk: azure;       /*background text risks*/
+  --background-color-top-nav: #DFEEF1;  /*color background of top bar navigation*/
+  --background-color-left-nav: #4E869B; /*color background of left bar navigation*/
+  --blue-hover: #427385;                /*color when hovering over navigation*/
   --dark-text: #333;
   --dark-text-hover: #646464;
   --light-text: #d4d4d4;
   --light-text-hover: #f0f0f0;
+
+  /*colors for the different risks*/
   --highRiskColor: #ff4500;
   --mediumRiskColor: #ffa500;
   --lowRiskColor: #eee8aa;

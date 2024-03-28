@@ -42,6 +42,18 @@ export function openPersonalizePage() {
   <div class="personalize">
     <span class="personalize-description">text color</span>
   </div>
+  <hr class="solid">
+  <div class="personalize">
+    <form action="" class="color-picker>
+      <fieldset>
+        <legend>Pick a theme</legend>
+        <label for="normal">normal</label>
+        <input type="radio" name="theme" id="normal" checked>
+        <label for="dark">Dark</label>
+        <input type="radio" name="theme" id="dark">
+        <label for="blue">Blue</label>
+        <input type="radio" name="theme" id="blue">
+  </div>
   `;
   const faviconInput = document.getElementById('input-file-icon');//add eventlistener for changing Favicon
   faviconInput.addEventListener('change', handleFaviconChange);
@@ -54,7 +66,25 @@ export function openPersonalizePage() {
 
   const inputBackgroundNav = document.getElementById('input-color-background'); //add eventlistener for changing navigation title
   inputBackgroundNav.addEventListener('change', handleLeftBackgroundNav);
-  }
+
+  
+  /*save themes*/
+  const themes = document.querySelectorAll('[name="theme"]');
+  themes.forEach(themeOption => {
+    themeOption.addEventListener("click", () => {
+      localStorage.setItem("theme", themeOption.id);
+    });
+  });
+  
+  const activeTheme = localStorage.getItem("theme");
+  themes.forEach(themeOption => {
+    if(themeOption.id === activeTheme){
+      themeOption.checked = true;
+    }
+  });
+  document.documentElement.className= activeTheme;
+
+}
   
 /* Changes the favicon*/
 export function handleFaviconChange(icon) {
@@ -107,7 +137,10 @@ export function handleLeftBackgroundNav(){
   temp.style.backgroundColor = color;
 }
 
-
+export function retrieveTheme(){
+  const activeTheme = localStorage.getItem("theme");
+  document.documentElement.className = activeTheme;
+}
 
 //achtergrond navigation
 //normale achtergrond

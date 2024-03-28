@@ -42,3 +42,4 @@ class Navbar extends HTMLElement {
 }
 customElements.define('vertical-navbar', Navbar);
 document.getElementById('logo').src = logo;
+

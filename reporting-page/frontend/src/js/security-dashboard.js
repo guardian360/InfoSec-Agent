@@ -1,6 +1,7 @@
 import {RiskCounters} from "./risk-counters.js";
 import {Graph} from "./graph.js";
 import {PieChart} from "./piechart.js";
+import { retrieveTheme } from "./personalize";
 
 /** Load the content of the Security Dashboard page */
 function openSecurityDashboardPage() {
@@ -127,6 +128,8 @@ function openSecurityDashboardPage() {
   new PieChart("pieChart",rc);
   let g = new Graph("interval-graph",rc);
   AddGraphFunctions(g);
+
+  document.onload = retrieveTheme();
 }
 
 if (typeof document !== 'undefined') {

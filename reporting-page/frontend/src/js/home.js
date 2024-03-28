@@ -2,6 +2,7 @@ import {PieChart} from "./piechart";
 import {ScanNow} from '../../wailsjs/go/main/Tray';
 import {RiskCounters} from "./risk-counters";
 import medal from '../assets/images/img_medal1.jpg';
+import { retrieveTheme } from "./personalize";
 
 /** Load the content of the Home page */
 function openHomePage() {
@@ -55,6 +56,7 @@ function openHomePage() {
     document.getElementById('medal3').src = medal;
     document.getElementById('medal4').src = medal;
 
+    document.onload = retrieveTheme();
 }
 
 document.getElementById("logo-button").addEventListener("click", () => openHomePage());

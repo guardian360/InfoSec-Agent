@@ -2,7 +2,6 @@
 
 /* Setting box */
 .personalize {
-    /* float: left; */
     padding: 20px;
     display: flex;
     float: left;
@@ -27,7 +26,7 @@ hr.solid {
 .personalize-label{
   display: block;
   position: relative;
-  background-color: var(--blue);
+  background-color: var(--background-color-left-nav);
   color: var(--light-text-hover);
   cursor: pointer;
   text-align: center;
@@ -35,7 +34,6 @@ hr.solid {
 
 .personalize-button-container{
   position: relative;
-  /* display: inline-block; */
   width: 80px; /*60*/
   height: 22px; /*34*/
   float: right;
@@ -45,4 +43,61 @@ hr.solid {
 
 .personalize-input-invisible{
   display:none;
+}
+
+/*Theme selector*/
+.color-picker > fieldset{
+  border: 0;
+  display: flex;
+  gap: 2rem;
+  float: left;
+  width: 70%;
+  background: #fff;
+  padding: 1rem 3rem;
+  margin-inline: auto;
+  border-radius: 0 0 1rem 1rem;
+}
+
+.color-picker input[type="radio"]{
+  appearance: none;
+  width: 1rem;
+  height: 1rem;
+  border: 3px solid var(--radio-color, currentColor);
+  border-radius: 50%
+}
+
+.color-picker input[type="radio"]:checked{
+  background-color: var(--radio-color);
+}
+
+.color-picker input[type="radio"]#normal{
+  --radio-color: #ffffff;
+}
+
+.color-picker input[type="radio"]#dark{
+  --radio-color: black;
+}
+
+.color-picker input[type="radio"]#blue{
+  --radio-color: blue;
+}
+
+.normal,
+:root:has(#normal:checked){
+  --background-color: #ffffff;
+}
+
+.blue,
+:root:has(#blue:checked){
+  --background-color: blue;
+  --background-color: red;          
+  --background-color-risk: purple;       
+  --background-color-top-nav: orange;
+  --background-color-left-nav: green; 
+  --blue-hover: darkgreen;                
+}
+
+.dark,
+:root:has(#dark:checked){
+  --background-color: black;
 }

@@ -68,11 +68,11 @@ hr.solid {
 }
 
 input:checked + .slider {
-  background-color: var(--blue);
+  background-color: var(--background-color-left-nav);
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px var(--blue);
+  box-shadow: 0 0 1px var(--background-color-left-nav);
 }
 
 input:checked + .slider:before {
@@ -103,7 +103,7 @@ input:checked + .slider:before {
 #personalize-button{
   position: absolute;
   cursor: pointer;
-  background-color: var(--blue);
+  background-color: var(--background-color-left-nav);
   color: var(--light-text-hover);
   text-align: center;
 

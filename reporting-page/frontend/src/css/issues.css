@@ -13,7 +13,7 @@
   padding: 8px;
 }
 
-.issues-table tr:nth-child(even){background-color: var(--light-blue);}
+.issues-table tr:nth-child(even){background-color: var(--background-color-top-nav);}
 
 .issues-table th {
   text-align: left;

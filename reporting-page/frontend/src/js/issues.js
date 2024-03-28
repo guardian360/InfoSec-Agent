@@ -1,5 +1,6 @@
 import data from "../database.json" assert { type: "json" };
 import { openIssuePage } from "./issue.js";
+import { retrieveTheme } from "./personalize";
 
 /** Load the content of the Issues page */
 export function openIssuesPage() {
@@ -16,7 +17,8 @@ export function openIssuesPage() {
     <tbody>
     </tbody>
   </table>
-  `;  
+  `
+  ;  
   let issues = []; // retrieve issues from tray application
   issues = [ // dummy info
     { 
@@ -33,6 +35,8 @@ export function openIssuesPage() {
 
   const tbody = pageContents.querySelector('tbody');
   fillTable(tbody, issues);
+
+  document.onload = retrieveTheme();
 }
 
 /** Fill the table with issues

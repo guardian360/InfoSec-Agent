@@ -50,7 +50,7 @@
 }
 
 .risk-counter p {
-  background-color: azure;
+  background-color: var(--background-color-risk);
   margin: 10px;
   padding: 10px;
   vertical-align: middle;

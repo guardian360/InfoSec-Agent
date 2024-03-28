@@ -1,5 +1,4 @@
 @import url(color-palette.css);
-
 body {
   background-color: var(--background-color);
   font-family: "DM Sans", sans-serif;
@@ -14,7 +13,7 @@ body {
 
 /* Header */
 .header {
-  background-color: var(--light-blue);
+  background-color: var(--background-color-top-nav);
   height: 60px;
   position: fixed;
   z-index: 10;
@@ -98,7 +97,7 @@ body {
   padding-top: 38px;
   height: 100vh;
   width: 240px;
-  background-color: var(--blue);
+  background-color: var(--background-color-left-nav);
   float:left;
   position: fixed;
   z-index: 1;

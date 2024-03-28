@@ -1,4 +1,5 @@
 import { openPersonalizePage } from "./personalize";
+import { retrieveTheme } from "./personalize";
 
 /** Load the content of the Settings page */
 function openSettingsPage() {
@@ -36,6 +37,7 @@ function openSettingsPage() {
   `;
 
   document.getElementById("personalize-button").addEventListener("click", () => openPersonalizePage());
+  document.onload = retrieveTheme();
 }
 
 document.getElementById("settings-button").addEventListener("click", () => openSettingsPage());
