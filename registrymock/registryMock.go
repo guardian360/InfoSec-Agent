@@ -5,6 +5,12 @@ import (
 	"golang.org/x/sys/windows/registry"
 )
 
+var (
+	CLASSES_ROOT  = RegistryKey(NewRegistryKeyWrapper(registry.CLASSES_ROOT))
+	CURRENT_USER  = RegistryKey(NewRegistryKeyWrapper(registry.CURRENT_USER))
+	LOCAL_MACHINE = RegistryKey(NewRegistryKeyWrapper(registry.LOCAL_MACHINE))
+)
+
 // RegistryKey is an interface for reading values from the Windows registry
 type RegistryKey interface {
 	GetStringValue(name string) (val string, valtype uint32, err error)

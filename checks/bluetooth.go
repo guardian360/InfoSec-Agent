@@ -3,7 +3,6 @@ package checks
 import (
 	"fmt"
 	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
-	"golang.org/x/sys/windows/registry"
 	"os/exec"
 	"strings"
 )
@@ -15,7 +14,7 @@ import (
 // Returns: A list of bluetooth devices
 func Bluetooth() Check {
 	// Open the registry key for bluetooth devices
-	key, err := registrymock.OpenRegistryKey(registrymock.NewRegistryKeyWrapper(registry.LOCAL_MACHINE),
+	key, err := registrymock.OpenRegistryKey(registrymock.LOCAL_MACHINE,
 		`SYSTEM\CurrentControlSet\Services\BTHPORT\Parameters\Devices`)
 	if err != nil {
 		return NewCheckErrorf("Bluetooth", "error opening registry key", err)
