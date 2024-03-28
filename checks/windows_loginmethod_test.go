@@ -101,7 +101,7 @@ func TestLoginMethod(t *testing.T) {
 // Parameters: t (testing.T) - the testing framework
 //
 // Returns: _
-func TestRegistryOutput(t *testing.T) {
+func TestRegistryOutputLoginMethod(t *testing.T) {
 	tests := []struct {
 		name string
 		path string
