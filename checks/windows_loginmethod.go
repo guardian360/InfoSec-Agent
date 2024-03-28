@@ -2,7 +2,6 @@ package checks
 
 import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
-	"golang.org/x/sys/windows/registry"
 )
 
 // LoginMethod checks which login method(s) the user has enabled
@@ -10,10 +9,10 @@ import (
 // Parameters: _
 //
 // Returns: List of login methods enabled
-func LoginMethod() Check {
+func LoginMethod(registryKey registrymock.RegistryKey) Check {
 	// Open the registry key related to log-in methods
-	key, err := registrymock.OpenRegistryKey(registrymock.NewRegistryKeyWrapper(registry.LOCAL_MACHINE),
-		`SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\UserTile`) // now using registry.READ instead of registry.QUERY_VALUE
+	key, err := registrymock.OpenRegistryKey(registryKey,
+		`SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\UserTile`)
 	if err != nil {
 		return NewCheckErrorf("LoginMethod", "error opening registry key", err)
 	}

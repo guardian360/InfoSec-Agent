@@ -64,10 +64,14 @@ func Scan(dialog zenity.ProgressDialog) {
 		},
 		checks.Startup,
 		func() checks.Check {
-			return checks.GuestAccount(&utils.RealCommandExecutor{}, &utils.RealCommandExecutor{}, &utils.RealCommandExecutor{}, &utils.RealCommandExecutor{})
+			return checks.GuestAccount(&utils.RealCommandExecutor{}, &utils.RealCommandExecutor{},
+				&utils.RealCommandExecutor{}, &utils.RealCommandExecutor{})
 		},
 		func() checks.Check { return checks.UACCheck(&utils.RealCommandExecutor{}) },
-		//func() checks.Check {return checks.RemoteDesktopCheck(&utils.RealCommandExecutor{})},
+		func() checks.Check {
+			return checks.RemoteDesktopCheck(
+				registrymock.NewRegistryKeyWrapper(registry.LOCAL_MACHINE))
+		},
 		func() checks.Check { return checks.ExternalDevices(&utils.RealCommandExecutor{}) },
 		func() checks.Check { return checks.NetworkSharing(&utils.RealCommandExecutor{}) },
 		func() checks.Check { return chromium.HistoryChromium("Chrome") },
