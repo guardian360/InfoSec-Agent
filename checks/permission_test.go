@@ -9,23 +9,54 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestPermissionRegistry(t *testing.T) {
+//func TestPermissionRegistry(t *testing.T) {
+//	subKey := registrymock.MockRegistryKey{KeyName: "Microsoft.Gaming", StringValues: map[string]string{"Value": "Allow"}, Err: nil}
+//	tests := []struct {
+//		name string
+//		key  registrymock.RegistryKey
+//		want []checks.Check
+//	}{
+//		{
+//			name: "webcam",
+//			key:  &registrymock.MockRegistryKey{KeyName: "webcam", SubKeys: []registrymock.MockRegistryKey{subKey}, Err: nil},
+//			want: []checks.Check{checks.NewCheckResult("webcam", "Allow")},
+//		},
+//	}
+//	//tests[0].key.(*registrymock.MockRegistryKey).SubKeys = []registrymock.MockRegistryKey{KeyName: "Microsoft.Gaming", StringValues: map[string]string{"Value": "Allow"}, Err: nil}
+//	for _, tt := range tests {
+//		t.Run(tt.name, func(t *testing.T) {
+//			if got := checks.Permission("webcam", tt.key); !reflect.DeepEqual(got, tt.want) {
+//				t.Errorf("Permission() = %v, want %v", got, tt.want)
+//			}
+//		})
+//	}
+//}
+
+func TestPermission(t *testing.T) {
 	tests := []struct {
-		name string
-		key  registrymock.RegistryKey
-		want []checks.Check
+		name       string
+		permission string
+		key        registrymock.RegistryKey
+		want       checks.Check
 	}{
 		{
-			name: "webcam",
-			key:  &registrymock.MockRegistryKey{Name: "Microsoft.Gaming", BinaryValue: nil, IntegerValue: 1, Err: nil},
-			want: []checks.Check{checks.NewCheckResult("webcam", "Allow")},
+			name:       "PermissionExistsWithApps",
+			permission: "webcam",
+			key: &registrymock.MockRegistryKey{
+				KeyName: "Software\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore",
+				SubKeys: []registrymock.MockRegistryKey{
+					{KeyName: "microsoft.webcam", StringValues: map[string]string{"Value": "Allow"}},
+				},
+			},
+			want: checks.NewCheckResult("webcam", "microsoft.webcam"),
 		},
 	}
-	tests[0].key.(*registrymock.MockRegistryKey).SubKeys = []registrymock.MockRegistryKey{registrymock.MockRegistryKey{Name: "Value", StringValue: "Allow", IntegerValue: 1, Err: nil}}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := checks.Permission("webcam", tt.key); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("Permission() = %v, want %v", got, tt.want)
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			result := checks.Permission(tc.permission, tc.key)
+			if !reflect.DeepEqual(result, tc.want) {
+				t.Errorf("Test %s failed. Expected %#v, got %#v", tc.name, tc.want, result)
 			}
 		})
 	}
@@ -37,7 +68,7 @@ func TestPermissionRegistry(t *testing.T) {
 //
 // Returns: _
 func TestInputPermission(t *testing.T) {
-	testCases := []string{"/", " ", "test", "cammera"}
+	testCases := []string{"/", " ", "test", "camera"}
 	for _, permission := range testCases {
 		c := checks.Permission(permission, &registrymock.MockRegistryKey{})
 		assert.Nil(t, c.Result)
