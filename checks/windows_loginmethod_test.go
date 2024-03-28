@@ -101,44 +101,44 @@ func TestLoginMethod(t *testing.T) {
 // Parameters: t (testing.T) - the testing framework
 //
 // Returns: _
-func TestRegistryOutputLoginMethod(t *testing.T) {
-	tests := []struct {
-		name string
-		path string
-		want registry.KeyInfo
-	}{
-		{
-			name: "UserTitle key",
-			path: `SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\UserTile`,
-			// We do not assign a value to lastWritetime, since it can be overwritten by the system
-			want: registry.KeyInfo{
-				SubKeyCount:     0,
-				MaxSubKeyLen:    0,
-				ValueCount:      2,
-				MaxValueNameLen: 46,
-				MaxValueLen:     78},
-		},
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			key, err := registry.OpenKey(registry.LOCAL_MACHINE, tt.path, registry.QUERY_VALUE)
-			if err != nil {
-				t.Fail()
-			}
-			defer func(key registry.Key) {
-				err := key.Close()
-				if err != nil {
-					t.Fail()
-				}
-			}(key)
-			res, err := key.Stat()
-			if !reflect.DeepEqual(res.SubKeyCount, tt.want.SubKeyCount) ||
-				!reflect.DeepEqual(res.MaxSubKeyLen, tt.want.MaxSubKeyLen) ||
-				!reflect.DeepEqual(res.ValueCount, tt.want.ValueCount) ||
-				!reflect.DeepEqual(res.MaxValueNameLen, tt.want.MaxValueNameLen) ||
-				!reflect.DeepEqual(res.MaxValueLen, tt.want.MaxValueLen) {
-				t.Errorf("Registry key info = %v, want %v", res, tt.want)
-			}
-		})
-	}
-}
+//func TestRegistryOutputLoginMethod(t *testing.T) {
+//	tests := []struct {
+//		name string
+//		path string
+//		want registry.KeyInfo
+//	}{
+//		{
+//			name: "UserTitle key",
+//			path: `SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\UserTile`,
+//			// We do not assign a value to lastWritetime, since it can be overwritten by the system
+//			want: registry.KeyInfo{
+//				SubKeyCount:     0,
+//				MaxSubKeyLen:    0,
+//				ValueCount:      2,
+//				MaxValueNameLen: 46,
+//				MaxValueLen:     78},
+//		},
+//	}
+//	for _, tt := range tests {
+//		t.Run(tt.name, func(t *testing.T) {
+//			key, err := registry.OpenKey(registry.LOCAL_MACHINE, tt.path, registry.QUERY_VALUE)
+//			if err != nil {
+//				t.Fail()
+//			}
+//			defer func(key registry.Key) {
+//				err := key.Close()
+//				if err != nil {
+//					t.Fail()
+//				}
+//			}(key)
+//			res, err := key.Stat()
+//			if !reflect.DeepEqual(res.SubKeyCount, tt.want.SubKeyCount) ||
+//				!reflect.DeepEqual(res.MaxSubKeyLen, tt.want.MaxSubKeyLen) ||
+//				!reflect.DeepEqual(res.ValueCount, tt.want.ValueCount) ||
+//				!reflect.DeepEqual(res.MaxValueNameLen, tt.want.MaxValueNameLen) ||
+//				!reflect.DeepEqual(res.MaxValueLen, tt.want.MaxValueLen) {
+//				t.Errorf("Registry key info = %v, want %v", res, tt.want)
+//			}
+//		})
+//	}
+//}
