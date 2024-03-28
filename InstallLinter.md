@@ -26,7 +26,7 @@ golangci-lint --version
 ```
 
 # Usage
-To run the linter, run the following command:
+To run the linter, open a terminal in the root of the InfoSec-Agent repository and run:
 
 ```
 golangci-lint run
