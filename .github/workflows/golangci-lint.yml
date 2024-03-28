@@ -67,7 +67,7 @@ jobs:
           version: latest
 
           working-directory: reporting-page
-          args: --out-format=json:../linting/lint-report-reporting-page.json,colored-line-number --config=../.golangci.yml
+          args: --out-format=json:../linting/lint-report-reporting-page.json,colored-line-number -v
           
           only-new-issues: false
           
