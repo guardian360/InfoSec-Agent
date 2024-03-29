@@ -76,7 +76,7 @@ type MockRegistryKey struct {
 
 // GetStringValue returns the string value of the key
 func (m *MockRegistryKey) GetStringValue(name string) (string, uint32, error) {
-	// TODO: add correct errors
+	// TODO voor Sjaak: add correct errors
 	return m.StringValues[name], 0, nil
 }
 
