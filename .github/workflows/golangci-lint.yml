@@ -61,12 +61,13 @@ jobs:
 
           # Optional: The mode to install golangci-lint. It can be 'binary' or 'goinstall'.
           # install-mode: "goinstall"
+      - run: cd reporting-page
       - name: Run linter on reporting-page backend
         uses: golangci/golangci-lint-action@v4
         with:
           version: latest
 
-          working-directory: reporting-page
+          #working-directory: reporting-page
           args: --out-format=json:../linting/lint-report-reporting-page.json,colored-line-number,github-actions
           
           only-new-issues: false
