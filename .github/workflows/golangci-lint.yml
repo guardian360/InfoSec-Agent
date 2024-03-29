@@ -31,6 +31,10 @@ jobs:
           go-version: '1.22.0'
       - name: Make lint result directory
         run: mkdir linting
+      - name: Make dummy file for reporting-page linting
+        run: New-Item -Force reporting-page/frontend/dist/index.html
+      - name: Setup Go workspace
+        run: ./setup_go_work.bat
       - name: Run linter on InfoSec-Agent backend
         uses: golangci/golangci-lint-action@v4
         with:
