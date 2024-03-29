@@ -32,27 +32,25 @@ func Permission(permission string, registryKey registrymock.RegistryKey) Check {
 	for _, appName := range applicationNames {
 		// The registry key for packaged/non-packaged applications is different, so they get handled separately
 		if appName == "NonPackaged" {
-			key, err = registrymock.OpenRegistryKey(registryKey,
-				`Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\`+permission+`\NonPackaged`)
+			key, err = registrymock.OpenRegistryKey(key, `NonPackaged`)
 			defer registrymock.CloseRegistryKey(key)
 			nonPackagedApplicationNames, err := key.ReadSubKeyNames(-1)
-			v, vint, err := key.GetStringValue("Value")
+			v, _, err := key.GetStringValue("Value")
 
 			// Check if the application has the specified permission
-			if vint == 1 && err == nil && v == "Allow" {
+			if err == nil && v == "Allow" {
 				for _, nonPackagedAppName := range nonPackagedApplicationNames {
 					exeString := strings.Split(nonPackagedAppName, "#")
 					results = append(results, exeString[len(exeString)-1])
 				}
 			}
 		} else {
-			key, err = registrymock.OpenRegistryKey(registryKey,
-				`Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\`+permission+`\`+appName)
+			key, err = registrymock.OpenRegistryKey(key, appName)
 			defer registrymock.CloseRegistryKey(key)
-			v, vint, err := key.GetStringValue("Value")
+			v, _, err := key.GetStringValue("Value")
 
 			// Check if the application has the specified permission
-			if vint == 1 && err == nil && v == "Allow" {
+			if err == nil && v == "Allow" {
 				winApp := strings.Split(appName, "_")
 				results = append(results, winApp[0])
 			}

@@ -8,6 +8,11 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
 )
 
+// TestLastPasswordChange tests the LastPasswordChange function
+//
+// Parameters: t *testing.T - The testing framework
+//
+// Returns: _
 func TestLastPasswordChange(t *testing.T) {
 	tests := []struct {
 		name          string
