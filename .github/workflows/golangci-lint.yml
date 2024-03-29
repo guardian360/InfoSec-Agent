@@ -1,4 +1,4 @@
-name: golangci-lint
+name: Lint Backend
 on:
   push:
     branches:
@@ -62,6 +62,7 @@ jobs:
           # Optional: The mode to install golangci-lint. It can be 'binary' or 'goinstall'.
           # install-mode: "goinstall"
       - run: cd reporting-page
+        if: always()
       - name: Run linter on reporting-page backend
         uses: golangci/golangci-lint-action@v4
         with:
