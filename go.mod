@@ -5,6 +5,7 @@ go 1.22.0
 require (
 	github.com/andrewarchi/browser v0.0.0-20210602185959-ae587407e71c
 	github.com/getlantern/systray v1.2.2
+	github.com/mattn/go-sqlite3 v1.14.22
 	github.com/ncruces/zenity v0.10.11
 	github.com/nicksnyder/go-i18n/v2 v2.4.0
 	github.com/stretchr/testify v1.6.1
@@ -12,6 +13,8 @@ require (
 	golang.org/x/text v0.14.0
 	modernc.org/sqlite v1.29.3
 )
+
+require github.com/frankban/quicktest v1.14.6 // indirect
 
 require (
 	github.com/akavel/rsrc v0.10.2 // indirect
@@ -31,7 +34,7 @@ require (
 	github.com/mattn/go-isatty v0.0.16 // indirect
 	github.com/ncruces/go-strftime v0.1.9 // indirect
 	github.com/oxtoacart/bpool v0.0.0-20190530202638-03653db5a59c // indirect
-	github.com/pierrec/lz4 v2.6.1+incompatible // indirect
+	github.com/pierrec/lz4 v2.6.1+incompatible
 	github.com/pierrec/lz4/v4 v4.1.3 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/randall77/makefat v0.0.0-20210315173500-7ddd0e42c844 // indirect
