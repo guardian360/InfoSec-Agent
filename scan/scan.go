@@ -12,7 +12,6 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/windowsmock"
 	"golang.org/x/sys/windows/registry"
 
-	"encoding/json"
 	"fmt"
 
 	"github.com/ncruces/zenity"
@@ -24,7 +23,7 @@ import (
 // represents the progress dialog window which is displayed while the scan is running
 //
 // Returns: checks.json file containing the results of all security/privacy checks
-func Scan(dialog zenity.ProgressDialog) {
+func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 
 	// Define all security/privacy checks that Scan() should execute
 	securityChecks := []func() checks.Check{
@@ -81,7 +80,7 @@ func Scan(dialog zenity.ProgressDialog) {
 		err := dialog.Text(fmt.Sprintf("Running check %d of %d", i+1, totalChecks))
 		if err != nil {
 			fmt.Println("Error setting progress text:", err)
-			return
+			return checkResults, err
 		}
 
 		result := check()
@@ -92,17 +91,19 @@ func Scan(dialog zenity.ProgressDialog) {
 		err = dialog.Value(int(progress))
 		if err != nil {
 			fmt.Println("Error setting progress value:", err)
-			return
+			return checkResults, err
 		}
 	}
 
 	// Serialize check results to JSON
-	jsonData, err := json.MarshalIndent(checkResults, "", "  ")
-	if err != nil {
-		fmt.Println("Error marshalling JSON:", err)
-		return
-	}
-	fmt.Println(string(jsonData))
+	// jsonData, err := json.MarshalIndent(checkResults, "", "  ")
+	// if err != nil {
+	// 	fmt.Println("Error marshalling JSON:", err)
+	// 	return checkResults, err
+	// }
+	// fmt.Println(string(jsonData))
+
+	return checkResults, nil
 
 	//// Write JSON data to a file
 	//file, err := os.Create("checks.json")

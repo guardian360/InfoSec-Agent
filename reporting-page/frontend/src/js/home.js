@@ -1,6 +1,5 @@
 import {PieChart} from "./piechart";
 import {ScanNow} from '../../wailsjs/go/main/Tray';
-import {RiskCounters} from "./risk-counters";
 
 /** Load the content of the Home page */
 function openHomePage() {
@@ -43,7 +42,7 @@ function openHomePage() {
     </div>
   </div>
   `;  
-    let rc = new RiskCounters();
+    let rc = JSON.parse(sessionStorage.getItem("RiskCounters"));
     new PieChart("pieChart",rc);
 
     document.getElementById("scan-button").addEventListener("click", () => scanNow());

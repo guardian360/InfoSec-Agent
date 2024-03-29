@@ -29,9 +29,10 @@ func main() {
 
 	// Create a Wails application with the specified options
 	err := wails.Run(&options.App{
-		Title:  "reporting-page",
-		Width:  1024,
-		Height: 768,
+		Title:       "reporting-page",
+		Width:       1024,
+		Height:      768,
+		StartHidden: true,
 		AssetServer: &assetserver.Options{
 			Assets: assets,
 		},

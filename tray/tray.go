@@ -5,10 +5,12 @@
 package tray
 
 import (
+	"log"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/icon"
 	"github.com/InfoSec-Agent/InfoSec-Agent/localization"
 	"github.com/InfoSec-Agent/InfoSec-Agent/scan"
-	"log"
 
 	"github.com/getlantern/systray"
 	"github.com/ncruces/zenity"
@@ -216,7 +218,7 @@ func ChangeScanInterval(testInput ...string) {
 // Parameters: _
 //
 // Returns: _
-func ScanNow() {
+func ScanNow() ([]checks.Check, error) {
 	// scanCounter is not concretely used at the moment
 	// might be useful in the future
 	scanCounter++
@@ -227,7 +229,7 @@ func ScanNow() {
 		zenity.Title("Security/Privacy Scan"))
 	if err != nil {
 		log.Println("Error creating dialog:", err)
-		return
+		return nil, err
 	}
 	// Defer closing the dialog until the scan completes
 	defer func(dialog zenity.ProgressDialog) {
@@ -237,13 +239,19 @@ func ScanNow() {
 		}
 	}(dialog)
 
-	scan.Scan(dialog)
+	result, err := scan.Scan(dialog)
+	if err != nil {
+		log.Println("Error calling scan:", err)
+		return result, err
+	}
 
 	err = dialog.Complete()
 	if err != nil {
 		log.Println("Error completing dialog:", err)
-		return
+		return result, err
 	}
+
+	return result, nil
 }
 
 // ChangeLanguage provides the user with a dialog window to change the language of the application
