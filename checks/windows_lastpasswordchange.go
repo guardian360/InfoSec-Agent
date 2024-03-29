@@ -2,6 +2,7 @@ package checks
 
 import (
 	"fmt"
+	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"regexp"
 	"strings"
@@ -13,7 +14,7 @@ import (
 // Parameters: _
 //
 // Returns: When the password was last changed
-func LastPasswordChange(executor utils.CommandExecutor) Check {
+func LastPasswordChange(executor commandmock.CommandExecutor) Check {
 	// Get the current Windows username
 	username, err := utils.CurrentUsername()
 	if err != nil {
