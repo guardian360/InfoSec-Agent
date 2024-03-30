@@ -7,37 +7,39 @@ import { ScanNow } from '../../wailsjs/go/main/Tray';
 /** Load the content of the Security Dashboard page */
 function openSecurityDashboardPage() {
   document.getElementById("page-contents").innerHTML = `
-  <!-- <div class="top-row">
-    <div class="security-status">
-      <p class="security-dash">Security dashboard</p>
-    </div>
-    <div class="security-status">
-      <p class="security-stat">Security status</p><p class="status-descriptor"></p>
-    </div>
-  </div> -->
   <div class="dashboard-data">
     <div class="data-column risk-counters">
-      <div class="data-segment-header">
-        <p class="risk-counters-header">Risk level counters</p>
+      <div class="data-segment">
+        <div class="data-segment-header">
+          <p class="security-stat">Security status</p>
+        </div>
+        <div class="security-status">
+          <p class="status-descriptor"></p>
+        </div>
       </div>
-      <div class="risk-counter high-risk">
-        <div><p class="high-risk-issues">High risk issues</p></div>
-        <div><p id="high-risk-counter">0</p></div>
-      </div>
-      <div class="risk-counter medium-risk">
-        <div><p class="medium-risk-issues">Medium risk issues</p></div>
-        <div><p id="medium-risk-counter">0</p></div>
-      </div>
-      <div class="risk-counter low-risk">
-        <div><p class="low-risk-issues">Low risk issues</p></div>
-        <div><p id="low-risk-counter">0</p></div>
-      </div>
-      <div class="risk-counter no-risk">
-        <div><p class="safe-issues">Safe issues</p></div>
-        <div><p id="no-risk-counter">0</p></div>
+      <div class="data-segment">
+        <div class="data-segment-header">
+          <p class="risk-counters-header">Risk level counters</p>
+        </div>
+        <div class="risk-counter high-risk">
+          <div><p class="high-risk-issues">High risk issues</p></div>
+          <div><p id="high-risk-counter">0</p></div>
+        </div>
+        <div class="risk-counter medium-risk">
+          <div><p class="medium-risk-issues">Medium risk issues</p></div>
+          <div><p id="medium-risk-counter">0</p></div>
+        </div>
+        <div class="risk-counter low-risk">
+          <div><p class="low-risk-issues">Low risk issues</p></div>
+          <div><p id="low-risk-counter">0</p></div>
+        </div>
+        <div class="risk-counter no-risk">
+          <div><p class="safe-issues">Safe issues</p></div>
+          <div><p id="no-risk-counter">0</p></div>
+        </div>
       </div>
     </div>
-    <div class="data-column piechart">
+    <div class="data-column data-segment piechart">
       <div class="data-segment-header">
           <p class="piechart-header">Risk level distribution</p>
       </div>
@@ -45,13 +47,20 @@ function openSecurityDashboardPage() {
         <canvas id="pieChart"></canvas>
       </div>
     </div>
-    <div class="data-column issue-buttons">
-      <div class="data-segment-header">
-        <p class="choose-issue-description"></p>
+    <div class="data-column">
+      <div class="data-segment issue-buttons">
+        <div class="data-segment-header">
+          <p class="choose-issue-description"></p>
+        </div>
+        <a class="issue-button suggested-issue"><p>Suggested Issue</p></a>
+        <a class="issue-button quick-fix"><p>Quick Fix</p></a>
+        <a class="issue-button scan-now">Scan Now</a>
       </div>
-      <a class="issue-button suggested-issue"><p>Suggested Issue</p></a>
-      <a class="issue-button quick-fix"><p>Quick Fix</p></a>
-      <a class="issue-button scan-now">Scan Now</a>
+      <div class="data-segment">
+        <div class="data-segment-header">
+          <p id="risk-areas">Areas of security risks</p>
+        </div>
+      </div>
     </div>
   </div>
   <div class="second-row">
@@ -209,28 +218,28 @@ export function AdjustWithRiskCounters(rc) {
   document.getElementById("low-risk-counter").innerHTML = rc.lastLowRisk;
   document.getElementById("no-risk-counter").innerHTML = rc.lastnoRisk; 
 
-  // let securityStatus = document.getElementsByClassName("status-descriptor")[0];  
-  // if (rc.lastHighRisk > 1) {
-  //   GetLocalization("Dashboard.Critical", "status-descriptor");
-  //   // securityStatus.innerHTML = "Critical";
-  //   securityStatus.style.backgroundColor = rc.highRiskColor;
-  //   securityStatus.style.color = "rgb(255, 255, 255)";
-  // } else if (rc.lastMediumRisk > 1) {
-  //   GetLocalization("Dashboard.MediumConcern", "status-descriptor");
-  //   // securityStatus.innerHTML = "Medium concern";
-  //   securityStatus.style.backgroundColor = rc.mediumRiskColor; 
-  //   securityStatus.style.color = "rgb(255, 255, 255)";
-  // } else if (rc.lastLowRisk > 1) {
-  //   GetLocalization("Dashboard.LightConcern", "status-descriptor");
-  //   // securityStatus.innerHTML = "Light concern";
-  //   securityStatus.style.backgroundColor = rc.lowRiskColor;
-  //   securityStatus.style.color = "rgb(0, 0, 0)";  
-  // } else {
-  //   GetLocalization("Dashboard.NoConcern", "status-descriptor");
-  //   // securityStatus.innerHTML = "Safe";
-  //   securityStatus.style.backgroundColor = rc.noRiskColor;
-  //   securityStatus.style.color = "rgb(0, 0, 0)";  
-  // }  
+  let securityStatus = document.getElementsByClassName("status-descriptor")[0];  
+  if (rc.lastHighRisk > 1) {
+    GetLocalization("Dashboard.Critical", "status-descriptor");
+    // securityStatus.innerHTML = "Critical";
+    securityStatus.style.backgroundColor = rc.highRiskColor;
+    securityStatus.style.color = "rgb(255, 255, 255)";
+  } else if (rc.lastMediumRisk > 1) {
+    GetLocalization("Dashboard.MediumConcern", "status-descriptor");
+    // securityStatus.innerHTML = "Medium concern";
+    securityStatus.style.backgroundColor = rc.mediumRiskColor; 
+    securityStatus.style.color = "rgb(255, 255, 255)";
+  } else if (rc.lastLowRisk > 1) {
+    GetLocalization("Dashboard.LightConcern", "status-descriptor");
+    // securityStatus.innerHTML = "Light concern";
+    securityStatus.style.backgroundColor = rc.lowRiskColor;
+    securityStatus.style.color = "rgb(0, 0, 0)";  
+  } else {
+    GetLocalization("Dashboard.NoConcern", "status-descriptor");
+    // securityStatus.innerHTML = "Safe";
+    securityStatus.style.backgroundColor = rc.noRiskColor;
+    securityStatus.style.color = "rgb(0, 0, 0)";  
+  }  
 }
 
 /** Set the max number input of the 'graph-interval' element

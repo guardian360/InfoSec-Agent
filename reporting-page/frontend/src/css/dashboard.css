@@ -7,25 +7,6 @@
   display: flex;
 } */
 
-/* security status css */
-
-/* .security-status {
-  background-color: var(--secundaryLight500);
-  float: right;
-  display: flex;
-}
-
-.security-status p {
-  margin: 10px;
-  padding: 10px;
-  text-align: center;
-  border-radius: 15px 15px 15px 15px;
-  border: none;
-  outline: none;
-  font-size: 20px;
-  color: var(--secundaryLight500); 
-} */
-
 /* dashboard css */
 
 .dashboard-data {
@@ -41,6 +22,9 @@
   display: flex;
   flex-direction: column;
   height: 500px;
+}
+
+.data-segment {
   border: 3px solid var(--primaryDark500);
   border-radius: 10px;
   margin: 10px;
@@ -61,10 +45,30 @@
 /** FIRST ROW CSS **/
 
 .risk-counters {
-  flex: 2; /* ratio between columns: 1:2:1 */
+  flex: 1.1; /* ratio between columns: 1:2:1 */
   height: 500px;
   display: flex;
   flex-direction: column;
+}
+
+/* security status css */
+
+.security-status {
+  background-color: var(--secundaryLight500);
+  float: center;
+  display: flex;
+}
+
+.security-status p {
+  width: 100%;
+  margin: 0px 10px 10px 10px;
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  color: var(--secundaryLight500); 
 }
 
 /* risk counters css */
@@ -75,7 +79,7 @@
 }
 
 .risk-counter {
-  margin: 5px 10px;
+  margin: 5px 10px 10px 10px;
   padding: 5px;
   height: auto;
   display: flex;
@@ -101,7 +105,7 @@
 }
 
 .risk-counter p {
-  background-color: azure;
+  background-color: rgb(255, 255, 255);
   margin: 10px;
   padding: 10px;
   vertical-align: middle;
@@ -112,7 +116,7 @@
 /* pie chart css */
 
 .piechart {
-  flex: 3; /* ratio between columns: 1:2:1 */
+  flex: 2; /* ratio between columns: 1:2:1 */
 }
 
 .piechart .piechart-container {
@@ -121,7 +125,7 @@
 
 /* issue buttons css */
 
-.issue-buttons {
+.actions {
   flex: 2; /* ratio between columns: 2:3:2 */
 }
 
