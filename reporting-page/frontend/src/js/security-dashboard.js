@@ -47,7 +47,7 @@ function openSecurityDashboardPage() {
         <canvas id="pieChart"></canvas>
       </div>
     </div>
-    <div class="data-column">
+    <div class="data-column actions">
       <div class="data-segment issue-buttons">
         <div class="data-segment-header">
           <p class="choose-issue-description"></p>
@@ -56,9 +56,39 @@ function openSecurityDashboardPage() {
         <a class="issue-button quick-fix"><p>Quick Fix</p></a>
         <a class="issue-button scan-now">Scan Now</a>
       </div>
-      <div class="data-segment">
+      <div class="data-segment risk-areas">
         <div class="data-segment-header">
           <p id="risk-areas">Areas of security risks</p>
+        </div>
+        <div class="security-area">
+          <a>
+            <p><span class="applications">Applications</span><span class="material-symbols-outlined">apps_outage</span></p>
+          </a>
+        </div>
+        <div class="security-area">
+          <a>
+            <p><span class="browser">Browser</span><span class="material-symbols-outlined">travel_explore</span></p>
+          </a>
+        </div>
+        <div class="security-area">
+          <a>
+            <p><span class="devices">Devices</span><span class="material-symbols-outlined">devices</span></p>
+          </a>
+        </div>
+        <div class="security-area">
+          <a>
+            <p><span class="operating-system">Operating system</span><span class="material-symbols-outlined">desktop_windows</span></p>
+          </a>
+        </div>
+        <div class="security-area">
+          <a>
+            <p><span class="passwords">Passwords</span><span class="material-symbols-outlined">key</span></p>
+          </a>
+        </div>
+        <div class="security-area">
+          <a>
+            <p><span class="other">Other</span><span class="material-symbols-outlined">view_cozy</span></p>
+          </a>
         </div>
       </div>
     </div>
@@ -68,54 +98,6 @@ function openSecurityDashboardPage() {
       <p id="risk-areas">Areas of security risks</p>
     </div>
     <div class="security-areas">
-      <div class="security-area">
-        <a>
-          <p><span class="applications">Applications</span><span class="material-symbols-outlined">apps_outage</span></p>
-        </a>
-        <!--<a class="areas-issues-button">
-          <p class="issues">Issues</p>
-        </a>-->
-      </div>
-      <div class="security-area">
-        <a>
-          <p><span class="browser">Browser</span><span class="material-symbols-outlined">travel_explore</span></p>
-        </a>
-        <!--<a class="areas-issues-button">
-          <p class="issues">Issues</p>
-        </a>-->
-      </div>
-      <div class="security-area">
-        <a>
-          <p><span class="devices">Devices</span><span class="material-symbols-outlined">devices</span></p>
-        </a>
-        <!--<a class="areas-issues-button">
-          <p class="issues">Issues</p>
-        </a>-->
-      </div>
-      <div class="security-area">
-        <a>
-          <p><span class="operating-system">Operating system</span><span class="material-symbols-outlined">desktop_windows</span></p>
-        </a>
-        <!--<a class="areas-issues-button">
-          <p class="issues">Issues</p>
-        </a>-->
-      </div>
-      <div class="security-area">
-        <a>
-          <p><span class="passwords">Passwords</span><span class="material-symbols-outlined">key</span></p>
-        </a>
-        <!--<a class="areas-issues-button">
-          <p class="issues">Issues</p>
-        </a>-->
-      </div>
-      <div class="security-area">
-        <a>
-          <p><span class="other">Other</span><span class="material-symbols-outlined">view_cozy</span></p>
-        </a>
-        <!--<a class="areas-issues-button">
-          <p class="issues">Issues</p>
-        </a>-->
-      </div>
     </div>
   </div>
   <div class="graph-row">
