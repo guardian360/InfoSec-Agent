@@ -1,31 +1,82 @@
 @import url(color-palette.css);
 
+/** TOP ROW CSS **/
+
+/* .top-row {
+  margin: 48px 0px 0px 250px;
+  display: flex;
+} */
+
+/* security status css */
+
+/* .security-status {
+  background-color: var(--secundaryLight500);
+  float: right;
+  display: flex;
+}
+
+.security-status p {
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  border-radius: 15px 15px 15px 15px;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  color: var(--secundaryLight500); 
+} */
+
 /* dashboard css */
+
 .dashboard-data {
+  color: var(--dark-text);
   width: auto;
-  display:flex;
-  flex-wrap:wrap;
-  padding-top: 38px;
+  display: flex;
+  flex-wrap: wrap;
   padding-left: 240px;
+  padding-top: 38px;
 }
 
 .data-column {
+  display: flex;
+  flex-direction: column;
   height: 500px;
+  border: 3px solid var(--primaryDark500);
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.data-segment-header {
+  width: 100%;
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--dark-text);
+  border-radius: 10px 10px 0px 0px;
+}
+
+.data-segment-header p {
+  margin: 10px;
 }
 
 /** FIRST ROW CSS **/
 
-/* risk counters css*/
-
 .risk-counters {
-  padding-left: 10px;
-  padding-right: 10px;
   flex: 2; /* ratio between columns: 1:2:1 */
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* risk counters css */
+
+.risk-counters-segment {
+  align-items: center;
+  height: 400px;
 }
 
 .risk-counter {
+  margin: 5px 10px;
   padding: 5px;
-  margin-top: 10px;
   height: auto;
   display: flex;
   justify-content: space-between;
@@ -33,7 +84,7 @@
 
 .high-risk {
   background-color: var(--highRiskColor);
-  border-radius: 15px 15px 0px 0px;
+  border-radius: 10px 10px 0px 0px;
 }
 
 .medium-risk {
@@ -46,7 +97,7 @@
 
 .no-risk {
   background-color: var(--noRiskColor);
-  border-radius: 0px 0px 15px 15px;
+  border-radius: 0px 0px 10px 10px;
 }
 
 .risk-counter p {
@@ -58,116 +109,74 @@
   border-radius: 10px 10px 10px 10px;
 }
 
-.security-status {
-  background-color: var(--secundaryLight500);
-  border: 3px solid var(--primaryDark500);
-  padding: 10px;
-  margin-top: 10px;
-  height: 80px;
-  display: flex;
-  justify-content: space-between;
-  border-radius: 15px 15px 15px 15px;
-}
-
-.security-status div,
-.risk-counter div {
-  display: grid;
-	align-items: center;
-}
-
-.security-status p {
-  background-color: var(--primaryDark500);
-  margin: 0px;
-  padding: 10px;
-  text-align: center;
-  border-radius: 15px 15px 15px 15px;
-  display: table-cell;
-  border: none;
-  outline: none;
-  /* font */
-  font-size: 20px;
-  color: var(--secundaryLight500); 
-}
-
 /* pie chart css */
 
 .piechart {
   flex: 3; /* ratio between columns: 1:2:1 */
-  padding-left: 10px;
-  padding-right: 10px;
-  border-radius: 15px 15px 15px 15px;
-  background-color: var(--accentV2Light900);
-  margin-top: 10px;
 }
 
-.piechart canvas {
-  width:100px;
-  max-width:100%;
-  height:500px;
+.piechart .piechart-container {
+  height: 90%;
 }
 
 /* issue buttons css */
 
 .issue-buttons {
   flex: 2; /* ratio between columns: 2:3:2 */
-  padding-left: 10px;
-  padding-right: 10px;
 }
 
 .issue-button {
-  background-color: var(--secundaryLight500);
-  border: 3px solid var(--primaryDark500);
-  padding: 0px;
-  margin: 10px;
-  border-radius: 15px 15px 15px 15px;
+  background-color: var(--blue);
+  color: var(--accentV1Light900);
+  border-radius: 10px;
+  margin: 0px 10px 10px 10px;
   text-align: center;
   display: grid;
 	align-items: center;
   /* font */
-  font-size: 25px;
-  color: var(--secondaryLight500);  
+  font-size: 20px;
+  padding: 10px; 
 }
 
+.issue-button:hover{
+  background-color: var(--blue-hover);
+  cursor: pointer;
+}
 
 /* SECOND ROW CSS */
 
 .second-row {
-  padding: 10px;
-  padding-left: 240px;
-  border-radius: 15px 15px 15px 15px;
-  background-color: var(--accentV2Light900);
-  margin-top: 10px;
-  text-align: center;
+  color: var(--dark-text);
+  margin: 10px 10px 10px 250px;
+  border-radius: 10px;
+  border: 3px solid var(--primaryDark500);
+  text-align: left;
 }
 
 .security-areas {
-  border-radius: 15px 15px 15px 15px;
-  background-color: var(--accentV1Light900);
-  margin-top: 10px;
-  border: 3px solid var(--primaryDark500);
   /* horizontal items evenly distributed */
   display: flex;
   justify-content: space-between;
 }
 
 .security-area {
-  background-color: var(--accentV2);
-  margin: auto;
-  border-radius: 15px 15px 15px 15px;
-  padding-left: 20px;
-  padding-right: 20px;
-  margin: 15px 10px;
+  /* background-color: var(--accentV2); */
+  background-color: var(--blue);
+  width: 200px;
+  border-radius: 10px;
+  margin: 0px 10px 10px 10px;
+  text-align: center;
 }
 
 .security-area p {
   color: var(--accentV1Light900);
-  cursor: pointer;
   padding: 5px;
-  border-radius: 15px 15px 15px 15px;
+  border-radius: 10px;
 }
 
-.security-area p:hover {
-  background-color: #427385;
+.security-area:hover {
+  background-color: var(--blue-hover);
+  cursor: pointer;
 }
 
 .security-area .material-symbols-outlined {
@@ -178,11 +187,15 @@
 /* THIRD ROW CSS */
 
 .graph-row {
-  padding-left:240px;
+  color: var(--dark-text);
+  margin: 20px 10px 10px 250px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 3px solid var(--primaryDark500);
+  color: var(--dark-text);
   width: auto;
   display:flex;
   flex-wrap:wrap;
-  margin-top: 20px;
 }
 
 .issues-graph canvas {
@@ -204,19 +217,19 @@
 }
 
 .interval-button {
-  cursor: pointer;
   font-size: 16px;  
   border: none;
   outline: none;
-  color: white;
   padding: 10px 16px;
-  background-color: var(--accentV2);
+  background-color: var(--blue);
+  color: var(--accentV1Light900);
   font-family: inherit;
   margin: 0;
   min-width: 160px;
   float: left;
   margin-top: 10px;
   text-align: center;
+  border-radius: 10px;
 }
 
 #graph-interval {
@@ -224,15 +237,19 @@
 }
 
 .dropdown .dropbtn {
-  cursor: pointer;
   font-size: 16px;  
   border: none;
   outline: none;
-  color: white;
   padding: 14px 16px;
-  background-color: var(--accentV2);
+  background-color: var(--blue);
+  color: var(--accentV1Light900);
   font-family: inherit;
   min-width: 192px;
+  border-radius: 10px;
+}
+.dropbtn:hover {
+  background-color: var(--blue-hover);
+  cursor: pointer;
 }
 
 .dropdown-selector {
@@ -273,6 +290,9 @@
   }
   .dashboard-data {
     display: block;
+  }
+  .issue-buttons {
+    height:auto;
   }
 }
 

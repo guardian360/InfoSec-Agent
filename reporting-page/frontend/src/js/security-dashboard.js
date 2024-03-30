@@ -1,16 +1,24 @@
-import {RiskCounters} from "./risk-counters.js";
-import {Graph} from "./graph.js";
-import {PieChart} from "./piechart.js";
+import { RiskCounters } from "./risk-counters.js";
+import { Graph } from "./graph.js";
+import { PieChart } from "./piechart.js";
 import { GetLocalization } from './localize.js';
+import { ScanNow } from '../../wailsjs/go/main/Tray';
 
 /** Load the content of the Security Dashboard page */
 function openSecurityDashboardPage() {
   document.getElementById("page-contents").innerHTML = `
+  <!-- <div class="top-row">
+    <div class="security-status">
+      <p class="security-dash">Security dashboard</p>
+    </div>
+    <div class="security-status">
+      <p class="security-stat">Security status</p><p class="status-descriptor"></p>
+    </div>
+  </div> -->
   <div class="dashboard-data">
     <div class="data-column risk-counters">
-      <div class="security-status">
-        <div><p class="security-stat">Security status</p></div>
-        <div><p class="status-descriptor"></p></div>
+      <div class="data-segment-header">
+        <p class="risk-counters-header">Risk level counters</p>
       </div>
       <div class="risk-counter high-risk">
         <div><p class="high-risk-issues">High risk issues</p></div>
@@ -30,72 +38,80 @@ function openSecurityDashboardPage() {
       </div>
     </div>
     <div class="data-column piechart">
-      <canvas id="pieChart"></canvas>
+      <div class="data-segment-header">
+          <p class="piechart-header">Risk level distribution</p>
+      </div>
+      <div class="piechart-container">
+        <canvas id="pieChart"></canvas>
+      </div>
     </div>
     <div class="data-column issue-buttons">
-      <H2 class="choose-issue-description">You have some issues you can fix. 
-        To start resolving an issue either navigate to the issues page, or pick a suggested issue below.
-      </H2>
+      <div class="data-segment-header">
+        <p class="choose-issue-description"></p>
+      </div>
       <a class="issue-button suggested-issue"><p>Suggested Issue</p></a>
       <a class="issue-button quick-fix"><p>Quick Fix</p></a>
+      <a class="issue-button scan-now">Scan Now</a>
     </div>
   </div>
   <div class="second-row">
-    <h2 id="risk-areas">Areas of security/privacy risks</h2>
+    <div class="data-segment-header">
+      <p id="risk-areas">Areas of security risks</p>
+    </div>
     <div class="security-areas">
       <div class="security-area">
         <a>
-          <p><span class="material-symbols-outlined">apps_outage</span><span class="applications">Applications</span></p>
+          <p><span class="applications">Applications</span><span class="material-symbols-outlined">apps_outage</span></p>
         </a>
-        <a class="areas-issues-button">
+        <!--<a class="areas-issues-button">
           <p class="issues">Issues</p>
-        </a>
+        </a>-->
       </div>
       <div class="security-area">
         <a>
-          <p><span class="material-symbols-outlined">travel_explore</span><span class="browser">Browser</span></p>
+          <p><span class="browser">Browser</span><span class="material-symbols-outlined">travel_explore</span></p>
         </a>
-        <a class="areas-issues-button">
+        <!--<a class="areas-issues-button">
           <p class="issues">Issues</p>
-        </a>
+        </a>-->
       </div>
       <div class="security-area">
         <a>
-          <p><span class="material-symbols-outlined">devices</span><span class="devices">Devices</span></p>
+          <p><span class="devices">Devices</span><span class="material-symbols-outlined">devices</span></p>
         </a>
-        <a class="areas-issues-button">
+        <!--<a class="areas-issues-button">
           <p class="issues">Issues</p>
-        </a>
+        </a>-->
       </div>
       <div class="security-area">
         <a>
-          <p><span class="material-symbols-outlined">desktop_windows</span><span class="operating-system">Operating system</span></p>
+          <p><span class="operating-system">Operating system</span><span class="material-symbols-outlined">desktop_windows</span></p>
         </a>
-        <a class="areas-issues-button">
+        <!--<a class="areas-issues-button">
           <p class="issues">Issues</p>
-        </a>
+        </a>-->
       </div>
       <div class="security-area">
         <a>
-          <p><span class="material-symbols-outlined">key</span><span class="passwords">Passwords</span></p>
+          <p><span class="passwords">Passwords</span><span class="material-symbols-outlined">key</span></p>
         </a>
-        <a class="areas-issues-button">
+        <!--<a class="areas-issues-button">
           <p class="issues">Issues</p>
-        </a>
+        </a>-->
       </div>
       <div class="security-area">
         <a>
-          <p><span class="material-symbols-outlined">view_cozy</span><span class="other">Other</span></p>
+          <p><span class="other">Other</span><span class="material-symbols-outlined">view_cozy</span></p>
         </a>
-        <a class="areas-issues-button">
+        <!--<a class="areas-issues-button">
           <p class="issues">Issues</p>
-        </a>
+        </a>-->
       </div>
     </div>
   </div>
   <div class="graph-row">
     <div class="graph-column issues-graph-buttons">
-      <H2 class="bar-graph-description">In this graph you are able to see the distribution of different issues we have found over the past 5 times we ran a check.</H2>
+      <p class="bar-graph-description">In this graph you are able to see the distribution of different issues we have found over the past 5 times we ran a check.</p>
       <div class="dropdown">
         <button id="dropbtn" class="dropbtn"><span class="select-risks">Select Risks</span></button>
         <div class="dropdown-selector" id="myDropdown">
@@ -135,7 +151,8 @@ function openSecurityDashboardPage() {
     "safe-issues",
     "security-stat",
     "suggested-issue", 
-    "quick-fix", 
+    "quick-fix",
+    "scan-now", 
     "applications",
     "browser",
     "devices",
@@ -156,6 +173,7 @@ function openSecurityDashboardPage() {
     "Dashboard.SecurityStatus",
     "Dashboard.SuggestedIssue",
     "Dashboard.QuickFix",
+    "Dashboard.ScanNow",
     "Dashboard.Applications",
     "Dashboard.Browser",
     "Dashboard.Devices",
@@ -173,6 +191,7 @@ function openSecurityDashboardPage() {
   new PieChart("pieChart",rc);
   let g = new Graph("interval-graph",rc);
   AddGraphFunctions(g);
+  document.getElementsByClassName("scan-now")[0].addEventListener("click", () => ScanNow());
 }
 
 if (typeof document !== 'undefined') {
@@ -190,28 +209,28 @@ export function AdjustWithRiskCounters(rc) {
   document.getElementById("low-risk-counter").innerHTML = rc.lastLowRisk;
   document.getElementById("no-risk-counter").innerHTML = rc.lastnoRisk; 
 
-  let securityStatus = document.getElementsByClassName("status-descriptor")[0];  
-  if (rc.lastHighRisk > 1) {
-    GetLocalization("Dashboard.Critical", "status-descriptor");
-    // securityStatus.innerHTML = "Critical";
-    securityStatus.style.backgroundColor = rc.highRiskColor;
-    securityStatus.style.color = "rgb(255, 255, 255)";
-  } else if (rc.lastMediumRisk > 1) {
-    GetLocalization("Dashboard.MediumConcern", "status-descriptor");
-    // securityStatus.innerHTML = "Medium concern";
-    securityStatus.style.backgroundColor = rc.mediumRiskColor; 
-    securityStatus.style.color = "rgb(255, 255, 255)";
-  } else if (rc.lastLowRisk > 1) {
-    GetLocalization("Dashboard.LightConcern", "status-descriptor");
-    // securityStatus.innerHTML = "Light concern";
-    securityStatus.style.backgroundColor = rc.lowRiskColor;
-    securityStatus.style.color = "rgb(0, 0, 0)";  
-  } else {
-    GetLocalization("Dashboard.NoConcern", "status-descriptor");
-    // securityStatus.innerHTML = "Safe";
-    securityStatus.style.backgroundColor = rc.noRiskColor;
-    securityStatus.style.color = "rgb(0, 0, 0)";  
-  }  
+  // let securityStatus = document.getElementsByClassName("status-descriptor")[0];  
+  // if (rc.lastHighRisk > 1) {
+  //   GetLocalization("Dashboard.Critical", "status-descriptor");
+  //   // securityStatus.innerHTML = "Critical";
+  //   securityStatus.style.backgroundColor = rc.highRiskColor;
+  //   securityStatus.style.color = "rgb(255, 255, 255)";
+  // } else if (rc.lastMediumRisk > 1) {
+  //   GetLocalization("Dashboard.MediumConcern", "status-descriptor");
+  //   // securityStatus.innerHTML = "Medium concern";
+  //   securityStatus.style.backgroundColor = rc.mediumRiskColor; 
+  //   securityStatus.style.color = "rgb(255, 255, 255)";
+  // } else if (rc.lastLowRisk > 1) {
+  //   GetLocalization("Dashboard.LightConcern", "status-descriptor");
+  //   // securityStatus.innerHTML = "Light concern";
+  //   securityStatus.style.backgroundColor = rc.lowRiskColor;
+  //   securityStatus.style.color = "rgb(0, 0, 0)";  
+  // } else {
+  //   GetLocalization("Dashboard.NoConcern", "status-descriptor");
+  //   // securityStatus.innerHTML = "Safe";
+  //   securityStatus.style.backgroundColor = rc.noRiskColor;
+  //   securityStatus.style.color = "rgb(0, 0, 0)";  
+  // }  
 }
 
 /** Set the max number input of the 'graph-interval' element
