@@ -2,6 +2,8 @@ package checks
 
 import (
 	"fmt"
+	"slices"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
 )
 
@@ -36,6 +38,10 @@ func Startup() Check {
 
 	if err1 != nil || err2 != nil || err3 != nil {
 		return NewCheckError("Startup", fmt.Errorf("error reading value names"))
+	}
+
+	if len(slices.Concat(cuValueNames, lmValueNames, lm2ValueNames)) == 0 {
+		return NewCheckResult("Startup", "No startup programs found")
 	}
 
 	output := make([]string, 0)
