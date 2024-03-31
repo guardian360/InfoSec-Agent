@@ -1,6 +1,7 @@
 package checks_test
 
 import (
+	"reflect"
 	"testing"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
@@ -13,7 +14,7 @@ import (
 //
 // Returns: _
 func TestStartup(t *testing.T) {
-	// [not sure if covers all tests/are tests done correctly ?]
+	// [not done yet]
 	tests := []struct {
 		name string
 		key1 registrymock.RegistryKey
@@ -27,4 +28,12 @@ func TestStartup(t *testing.T) {
 		key3: &registrymock.MockRegistryKey{SubKeys: []registrymock.MockRegistryKey{{KeyName: "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\StartupApproved\\Run32"}}},
 		want: checks.NewCheckResult("Startup", "No startup programs found"),
 	}}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got := checks.Startup()
+			if !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("Startup() = %v, want %v", got, tt.want)
+			}
+		})
+	}
 }
