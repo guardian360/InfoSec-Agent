@@ -5,7 +5,7 @@
     padding: 20px;
     display: flex;
     float: left;
-    color: var(--dark-text);
+    color: var(--text-body);
     width: 70%;
     margin-left: 240px;
 }
@@ -17,7 +17,7 @@
     width: 200px;
 }
 hr.solid {
-    border-top: 1px solid var(--dark-text);
+    border-top: 1px solid var(--text-body);
     float: left;
     margin-left: 260px;
     width: 70%;
@@ -27,7 +27,7 @@ hr.solid {
   display: block;
   position: relative;
   background-color: var(--background-color-left-nav);
-  color: var(--light-text-hover);
+  color: var(--left-text-nav);
   cursor: pointer;
   text-align: center;
 }
@@ -85,19 +85,40 @@ hr.solid {
 .normal,
 :root:has(#normal:checked){
   --background-color: #ffffff;
+  --background-color-top-nav: #DFEEF1; 
+  --background-color-left-nav: #4E869B;
+  --background-nav-hover: #427385;
+  --background-color-second-row: hsl(var(--hueRightAnalogous) 40% 95%);
+  --background-piechart: hsl(var(--hueLeftAnalogous) 40% 90%);
+  --background-color-table-header: white;
+
+  --text-body: #333; 
+  --text-navigation: hsl(var(--hueComplement) 5% 30%);
+  --text-settings-hover: #646464; 
+  --text-left-nav: #d4d4d4; 
+
 }
 
 .blue,
 :root:has(#blue:checked){
   --background-color: blue;
-  --background-color: red;          
-  --background-color-risk: purple;       
   --background-color-top-nav: orange;
   --background-color-left-nav: green; 
-  --blue-hover: darkgreen;                
+  --nav-hover: darkgreen;                
 }
 
 .dark,
 :root:has(#dark:checked){
-  --background-color: black;
+  --background-color: rgb(32, 31, 31);
+  --background-color-top-nav: rgb(22, 22, 22);
+  --background-color-left-nav: rgb(19, 20, 20); 
+  --background-nav-hover: rgb(0, 0, 0);
+  --background-color-second-row: #302d2d;
+  --background-piechart: #302d2d;
+  --background-color-table-header: black;
+
+  --text-body: #d6cdcd;
+  --text-navigation: #383636;
+  --text-settings-hover: #798d8a;
+  --text-left-nav: #d6cdcd; 
 }

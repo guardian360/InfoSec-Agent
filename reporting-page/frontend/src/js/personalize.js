@@ -34,7 +34,7 @@ export function openPersonalizePage() {
   <div class="personalize">
     <span class="personalize-description">Background color Left nav</span>
     <div class="personalize-button-container">
-      <label class="personalize-label" for="input-color-background">Change background color</label>
+      <label class="personalize-label" for="input-color-background">Change background</label>
       <input class="personalize-input-invisible" type="color" id="input-color-background">   
     </div>
   </div>

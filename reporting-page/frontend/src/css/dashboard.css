@@ -21,6 +21,7 @@
   padding-left: 10px;
   padding-right: 10px;
   flex: 2; /* ratio between columns: 1:2:1 */
+  
 }
 
 .risk-counter {
@@ -50,17 +51,18 @@
 }
 
 .risk-counter p {
-  background-color: var(--background-color-risk);
+  background-color: var(--background-color-top-nav);
   margin: 10px;
   padding: 10px;
   vertical-align: middle;
   font-size: 17.5px;
   border-radius: 10px 10px 10px 10px;
+  color: var(--text-body);
 }
 
 .security-status {
-  background-color: var(--secundaryLight500);
-  border: 3px solid var(--primaryDark500);
+  background-color: var(--background-piechart);
+  border: 3px solid var(--color-border);
   padding: 10px;
   margin-top: 10px;
   height: 80px;
@@ -76,7 +78,7 @@
 }
 
 .security-status p {
-  background-color: var(--primaryDark500);
+  background-color: var(--background-color-top-nav);
   margin: 0px;
   padding: 10px;
   text-align: center;
@@ -86,7 +88,7 @@
   outline: none;
   /* font */
   font-size: 20px;
-  color: var(--secundaryLight500); 
+  color: var(--text-body); 
 }
 
 /* pie chart css */
@@ -96,7 +98,7 @@
   padding-left: 10px;
   padding-right: 10px;
   border-radius: 15px 15px 15px 15px;
-  background-color: var(--accentV2Light900);
+  background-color: var(--background-piechart);
   margin-top: 10px;
 }
 
@@ -115,8 +117,8 @@
 }
 
 .issue-button {
-  background-color: var(--secundaryLight500);
-  border: 3px solid var(--primaryDark500);
+  background-color: var(--background-piechart);
+  border: 3px solid var(--color-border);
   padding: 0px;
   margin: 10px;
   border-radius: 15px 15px 15px 15px;
@@ -125,7 +127,7 @@
 	align-items: center;
   /* font */
   font-size: 25px;
-  color: var(--secondaryLight500);  
+  color: var(--text-body);  
 }
 
 
@@ -135,23 +137,23 @@
   padding: 10px;
   padding-left: 240px;
   border-radius: 15px 15px 15px 15px;
-  background-color: var(--accentV2Light900);
+  background-color: var(--background-color-top-nav);
   margin-top: 10px;
   text-align: center;
 }
 
 .security-areas {
   border-radius: 15px 15px 15px 15px;
-  background-color: var(--accentV1Light900);
+  background-color: var(--background-color-second-row);
   margin-top: 10px;
-  border: 3px solid var(--primaryDark500);
+  border: 3px solid var(--color-border);
   /* horizontal items evenly distributed */
   display: flex;
   justify-content: space-between;
 }
 
 .security-area {
-  background-color: var(--accentV2);
+  background-color: var(--background-color-second-row-area);
   margin: auto;
   border-radius: 15px 15px 15px 15px;
   padding-left: 20px;
@@ -160,7 +162,7 @@
 }
 
 .security-area p {
-  color: var(--accentV1Light900);
+  color: var(--text-body);
   cursor: pointer;
   padding: 5px;
   border-radius: 15px 15px 15px 15px;
@@ -210,7 +212,7 @@
   outline: none;
   color: white;
   padding: 10px 16px;
-  background-color: var(--accentV2);
+  background-color: var(--background-color-second-row-area);
   font-family: inherit;
   margin: 0;
   min-width: 160px;
@@ -230,7 +232,7 @@
   outline: none;
   color: white;
   padding: 14px 16px;
-  background-color: var(--accentV2);
+  background-color: var(--background-color-second-row-area);
   font-family: inherit;
   min-width: 192px;
 }
@@ -238,15 +240,15 @@
 .dropdown-selector {
   display: none;
   position: absolute;
-  background-color: var(--accentV2);
+  background-color: var(--background-color-second-row-area);
   min-width: 192px;
-  box-shadow: 0px 8px 36px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 36px 0px rgba(0,0,0);
   z-index: 1;
 }
   
 .dropdown-selector p {
   float: none;
-  color: white;
+  color: rgb(68, 68, 68);
   padding: 12px 16px;
   text-decoration: none;
   display: block;
