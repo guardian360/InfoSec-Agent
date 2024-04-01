@@ -23,7 +23,15 @@ export class PieChart {
     this.pieChart = new Chart(canvas, {
       type: "doughnut",
       data: this.GetData(),
-      options: this.GetOptions()
+      options: this.GetOptions(),
+      overrides: {
+        plugins: {
+          legend: {
+            display: true,
+            position: 'left'
+          }
+        }
+      }
     });
   }
 

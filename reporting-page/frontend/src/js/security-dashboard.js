@@ -1,127 +1,138 @@
-import {RiskCounters} from "./risk-counters.js";
-import {Graph} from "./graph.js";
-import {PieChart} from "./piechart.js";
+import { RiskCounters } from "./risk-counters.js";
+import { Graph } from "./graph.js";
+import { PieChart } from "./piechart.js";
 import { GetLocalization } from './localize.js';
+import { ScanNow } from '../../wailsjs/go/main/Tray';
+import { CloseNavigation } from "./navigation-menu.js";
+import { MarkSelectedNavigationItem } from "./navigation-menu.js";
 
 /** Load the content of the Security Dashboard page */
 function openSecurityDashboardPage() {
+  CloseNavigation();
+  MarkSelectedNavigationItem("security-dashboard-button");
+  
   document.getElementById("page-contents").innerHTML = `
   <div class="dashboard-data">
-    <div class="data-column risk-counters">
-      <div class="security-status">
-        <div><p class="security-stat">Security status</p></div>
-        <div><p class="status-descriptor"></p></div>
-      </div>
-      <div class="risk-counter high-risk">
-        <div><p class="high-risk-issues">High risk issues</p></div>
-        <div><p id="high-risk-counter">0</p></div>
-      </div>
-      <div class="risk-counter medium-risk">
-        <div><p class="medium-risk-issues">Medium risk issues</p></div>
-        <div><p id="medium-risk-counter">0</p></div>
-      </div>
-      <div class="risk-counter low-risk">
-        <div><p class="low-risk-issues">Low risk issues</p></div>
-        <div><p id="low-risk-counter">0</p></div>
-      </div>
-      <div class="risk-counter no-risk">
-        <div><p class="safe-issues">Safe issues</p></div>
-        <div><p id="no-risk-counter">0</p></div>
-      </div>
-    </div>
-    <div class="data-column piechart">
-      <canvas id="pieChart"></canvas>
-    </div>
-    <div class="data-column issue-buttons">
-      <H2 class="choose-issue-description">You have some issues you can fix. 
-        To start resolving an issue either navigate to the issues page, or pick a suggested issue below.
-      </H2>
-      <a class="issue-button suggested-issue"><p>Suggested Issue</p></a>
-      <a class="issue-button quick-fix"><p>Quick Fix</p></a>
-    </div>
-  </div>
-  <div class="second-row">
-    <h2 id="risk-areas">Areas of security/privacy risks</h2>
-    <div class="security-areas">
-      <div class="security-area">
-        <a>
-          <p><span class="material-symbols-outlined">apps_outage</span><span class="applications">Applications</span></p>
-        </a>
-        <a class="areas-issues-button">
-          <p class="issues">Issues</p>
-        </a>
-      </div>
-      <div class="security-area">
-        <a>
-          <p><span class="material-symbols-outlined">travel_explore</span><span class="browser">Browser</span></p>
-        </a>
-        <a class="areas-issues-button">
-          <p class="issues">Issues</p>
-        </a>
-      </div>
-      <div class="security-area">
-        <a>
-          <p><span class="material-symbols-outlined">devices</span><span class="devices">Devices</span></p>
-        </a>
-        <a class="areas-issues-button">
-          <p class="issues">Issues</p>
-        </a>
-      </div>
-      <div class="security-area">
-        <a>
-          <p><span class="material-symbols-outlined">desktop_windows</span><span class="operating-system">Operating system</span></p>
-        </a>
-        <a class="areas-issues-button">
-          <p class="issues">Issues</p>
-        </a>
-      </div>
-      <div class="security-area">
-        <a>
-          <p><span class="material-symbols-outlined">key</span><span class="passwords">Passwords</span></p>
-        </a>
-        <a class="areas-issues-button">
-          <p class="issues">Issues</p>
-        </a>
-      </div>
-      <div class="security-area">
-        <a>
-          <p><span class="material-symbols-outlined">view_cozy</span><span class="other">Other</span></p>
-        </a>
-        <a class="areas-issues-button">
-          <p class="issues">Issues</p>
-        </a>
-      </div>
-    </div>
-  </div>
-  <div class="graph-row">
-    <div class="graph-column issues-graph-buttons">
-      <H2 class="bar-graph-description">In this graph you are able to see the distribution of different issues we have found over the past 5 times we ran a check.</H2>
-      <div class="dropdown">
-        <button id="dropbtn" class="dropbtn"><span class="select-risks">Select Risks</span></button>
-        <div class="dropdown-selector" id="myDropdown">
-          <p><input type="checkbox" checked="true" value="true" id="select-high-risk">
-            <label for="select-high-risk" class="high-risk-issues"> High risks</label><br>
-          </p>
-          <p><input type="checkbox" checked="true" value="true" id="select-medium-risk">
-            <label for="select-medium-risk" class="medium-risk-issues"> Medium risks</label>
-          </p>
-          <p><input type="checkbox" checked="true" value="true" id="select-low-risk">
-            <label for="select-low-risk" class="low-risk-issues"> Low risks</label>
-          </p>
-          <p><input type="checkbox" checked="true" value="true" id="select-no-risk">
-            <label for="select-no-risk" class="safe-issues"> Safe</label>
-          </p>
+    <div class="data-column risk-analysis">
+      <div class="data-segment">
+        <div class="data-segment-header">
+          <p class="security-stat">Security status</p>
+        </div>
+        <div class="security-status">
+          <p class="status-descriptor"></p>
         </div>
       </div>
-      <a class="interval-button"><p class="change-interval">Change interval</p><input type="number" value="5" id="graph-interval" min=1></a>
+      <div class="data-segment">
+        <div class="data-segment-header">
+          <p class="risk-counters-header">Risk level counters</p>
+        </div>
+        <div class="risk-counter high-risk">
+          <div><p class="high-risk-issues">High risk issues</p></div>
+          <div><p id="high-risk-counter">0</p></div>
+        </div>
+        <div class="risk-counter medium-risk">
+          <div><p class="medium-risk-issues">Medium risk issues</p></div>
+          <div><p id="medium-risk-counter">0</p></div>
+        </div>
+        <div class="risk-counter low-risk">
+          <div><p class="low-risk-issues">Low risk issues</p></div>
+          <div><p id="low-risk-counter">0</p></div>
+        </div>
+        <div class="risk-counter no-risk">
+          <div><p class="safe-issues">Safe issues</p></div>
+          <div><p id="no-risk-counter">0</p></div>
+        </div>
+      </div>
     </div>
-    <div class="graph-column issues-graph">
-      <canvas id="interval-graph"></canvas>
+    <div class="data-column">
+      <div class="data-segment piechart">
+        <div class="data-segment-header">
+            <p class="piechart-header">Risk level distribution</p>
+        </div>
+        <div class="piechart-container">
+          <canvas id="pieChart"></canvas>
+        </div>
+      </div>
+      <div class="data-segment graph-row">
+        <div class="data-segment-header">
+          <p class="bar-graph-header">Risk level distribution</p>
+        </div>
+        <div class="graph-segment-content">
+          <div class="graph-buttons dropdown">
+            <p class="bar-graph-description">In this graph you are able to see the distribution of different issues we have found over the past 5 times we ran a check.</p>
+            <button id="dropbtn" class="dropbtn"><span class="select-risks">Select Risks</span></button>
+            <div class="dropdown-selector" id="myDropdown">
+              <p><input type="checkbox" checked="true" value="true" id="select-high-risk">
+                <label for="select-high-risk" class="high-risk-issues"> High risks</label><br>
+              </p>
+              <p><input type="checkbox" checked="true" value="true" id="select-medium-risk">
+                <label for="select-medium-risk" class="medium-risk-issues"> Medium risks</label>
+              </p>
+              <p><input type="checkbox" checked="true" value="true" id="select-low-risk">
+                <label for="select-low-risk" class="low-risk-issues"> Low risks</label>
+              </p>
+              <p><input type="checkbox" checked="true" value="true" id="select-no-risk">
+                <label for="select-no-risk" class="safe-issues"> Safe</label>
+              </p>
+            </div>
+            <a class="interval-button"><p class="change-interval">Change interval</p><input type="number" value="5" id="graph-interval" min=1></a>
+          </div>
+          <div class="graph-column issues-graph">
+            <canvas id="interval-graph"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="data-column actions">
+      <div class="data-segment issue-buttons">
+        <div class="data-segment-header">
+          <p class="choose-issue-description"></p>
+        </div>
+        <a class="issue-button suggested-issue"><p>Suggested Issue</p></a>
+        <a class="issue-button quick-fix"><p>Quick Fix</p></a>
+        <a class="issue-button scan-now">Scan Now</a>
+      </div>
+      <div class="data-segment risk-areas">
+        <div class="data-segment-header">
+          <p id="risk-areas">Areas of security risks</p>
+        </div>
+        <div class="security-area">
+          <a>
+            <p><span class="applications">Applications</span><span class="material-symbols-outlined">apps_outage</span></p>
+          </a>
+        </div>
+        <div class="security-area">
+          <a>
+            <p><span class="browser">Browser</span><span class="material-symbols-outlined">travel_explore</span></p>
+          </a>
+        </div>
+        <div class="security-area">
+          <a>
+            <p><span class="devices">Devices</span><span class="material-symbols-outlined">devices</span></p>
+          </a>
+        </div>
+        <div class="security-area">
+          <a>
+            <p><span class="operating-system">Operating system</span><span class="material-symbols-outlined">desktop_windows</span></p>
+          </a>
+        </div>
+        <div class="security-area">
+          <a>
+            <p><span class="passwords">Passwords</span><span class="material-symbols-outlined">key</span></p>
+          </a>
+        </div>
+        <div class="security-area">
+          <a>
+            <p><span class="other">Other</span><span class="material-symbols-outlined">view_cozy</span></p>
+          </a>
+        </div>
+      </div>
     </div>
   </div>
   `;  
   // Set counters on the page to the right values
-  let rc = new RiskCounters();
+  let rc = JSON.parse(sessionStorage.getItem("RiskCounters"));
+  console.log(rc);
   AdjustWithRiskCounters(rc);
   SetMaxInterval(rc);    
   // Create charts
@@ -135,7 +146,8 @@ function openSecurityDashboardPage() {
     "safe-issues",
     "security-stat",
     "suggested-issue", 
-    "quick-fix", 
+    "quick-fix",
+    "scan-now", 
     "applications",
     "browser",
     "devices",
@@ -156,6 +168,7 @@ function openSecurityDashboardPage() {
     "Dashboard.SecurityStatus",
     "Dashboard.SuggestedIssue",
     "Dashboard.QuickFix",
+    "Dashboard.ScanNow",
     "Dashboard.Applications",
     "Dashboard.Browser",
     "Dashboard.Devices",
@@ -173,6 +186,7 @@ function openSecurityDashboardPage() {
   new PieChart("pieChart",rc);
   let g = new Graph("interval-graph",rc);
   AddGraphFunctions(g);
+  document.getElementsByClassName("scan-now")[0].addEventListener("click", () => ScanNow());
 }
 
 if (typeof document !== 'undefined') {

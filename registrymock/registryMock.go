@@ -100,37 +100,34 @@ func (m *MockRegistryKey) OpenKey(path string, access uint32) (RegistryKey, erro
 	return m, errors.New("key not found")
 }
 
-// ReadValueNames reads the value names of the key
+// ReadValueNames returns the value names of key m
+//
+// Parameter maxCount specifies the maximum number of value names to return.
 func (m *MockRegistryKey) ReadValueNames(maxCount int) ([]string, error) {
-	uniqueValueNames := make(map[string]string)
-	valueNames := make([]string, 0, len(m.StringValues)+len(m.BinaryValues)+len(m.IntegerValues))
-	count := 0
-	if maxCount <= count {
-		return []string{}, nil
-	}
+	var valueNames []string
 	for key := range m.StringValues {
-		if uniqueValueNames[key] == "" {
-			uniqueValueNames[key] = key
-		}
+		valueNames = append(valueNames, key)
 	}
 	for key := range m.BinaryValues {
-		if uniqueValueNames[key] == "" {
-			uniqueValueNames[key] = key
-		}
+		valueNames = append(valueNames, key)
 	}
 	for key := range m.IntegerValues {
-		if uniqueValueNames[key] == "" {
-			uniqueValueNames[key] = key
-		}
-	}
-	for key := range uniqueValueNames {
-		if maxCount == count {
-			break
-		}
 		valueNames = append(valueNames, key)
-		count++
 	}
-	return valueNames, nil
+	// remove duplicate keys from valueNames
+	keys := make(map[string]bool)
+	var uniqueValueNames []string
+	for _, entry := range valueNames {
+		if _, value := keys[entry]; !value {
+			keys[entry] = true
+			uniqueValueNames = append(uniqueValueNames, entry)
+		}
+	}
+	if maxCount <= 0 || maxCount >= len(uniqueValueNames) {
+		return uniqueValueNames, nil
+	} else {
+		return uniqueValueNames[:maxCount], nil
+	}
 }
 
 // Close closes the registry key

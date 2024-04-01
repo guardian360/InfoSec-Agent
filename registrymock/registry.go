@@ -2,8 +2,9 @@ package registrymock
 
 import (
 	"fmt"
-	"golang.org/x/sys/windows/registry"
 	"log"
+
+	"golang.org/x/sys/windows/registry"
 )
 
 // OpenRegistryKey opens registry keys and handles associated errors
@@ -35,6 +36,7 @@ func CloseRegistryKey(key RegistryKey) {
 	}
 }
 
+// [SHOULD BE MOVED TO STARTUP.GO !!]
 // FindEntries returns the values of the entries inside the corresponding registry key
 //
 // Parameters: entries ([]string) - the entries to check in the registry key,
