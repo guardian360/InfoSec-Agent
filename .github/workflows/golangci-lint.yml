@@ -5,13 +5,13 @@ on:
       - main
     paths:
       - '**/*.go'
-      - '.github/workflows/**' 
+      - '.github/workflows/golangci-lint.yml' 
   pull_request:
     branches:
       - main
     paths:
       - '**/*.go'
-      - '.github/workflows/**' 
+      - '.github/workflows/golangci-lint.yml' 
 
 permissions:
   # Required: allow read access to the content for analysis.

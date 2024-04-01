@@ -6,13 +6,13 @@ on:
       - main
     paths:
       - 'reporting-page/frontend/**'
-      - '.github/workflows/**'
+      - '.github/workflows/frontend-lint.yml'
   pull_request:
     branches:
       - main
     paths:
       - 'reporting-page/frontend/**'
-      - '.github/workflows/**'
+      - '.github/workflows/frontend-lint.yml'
 
 permissions:
   checks: write
@@ -27,6 +27,8 @@ jobs:
       - name: Checkout git repository
         uses: actions/checkout@v4
 
+      - run: ls -l
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -34,10 +36,11 @@ jobs:
           cache: 'npm'
           cache-dependency-path: 'reporting-page/frontend/package-lock.json'
         
+      - run: ls -l
       - run: cd reporting-page
-    
+      - run: ls -l
       - name: Install Node.js dependencies
-        run: npm install; npm ci
+        run: npm ci
           
       - run: frontend
           
