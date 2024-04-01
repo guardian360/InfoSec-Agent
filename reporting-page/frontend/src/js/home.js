@@ -2,9 +2,11 @@ import { PieChart } from "./piechart";
 import { ScanNow } from '../../wailsjs/go/main/Tray';
 import { RiskCounters } from "./risk-counters";
 import { GetLocalization } from './localize.js';
+import { CloseNavigationHamburger } from "./navigation-menu.js";
 
 /** Load the content of the Home page */
 function openHomePage() {
+  CloseNavigationHamburger();
   document.getElementById("page-contents").innerHTML = `
   <div class="home-data">
     <div class="container-data home-column-one"> 
@@ -55,39 +57,39 @@ function openHomePage() {
     </div>
   </div>
   `;  
-    let rc = new RiskCounters();
-    new PieChart("pieChart",rc);
+  let rc = new RiskCounters();
+  new PieChart("pieChart",rc);
 
-    // Localize the static content of the home page
-    let staticHomePageConent = [
-      "suggested-issue", 
-      "quick-fix", 
-      "scan-now", 
-      "title-medals", 
-      "security-status",
-      "high-risk-issues", 
-      "medium-risk-issues",
-      "low-risk-issues",
-      "safe-issues",
-      "choose-issue-description"
-      ]
-      let localizationIds = [
-        "Dashboard.SuggestedIssue", 
-        "Dashboard.QuickFix", 
-        "Dashboard.ScanNow", 
-        "Dashboard.Medals", 
-        "Dashboard.SecurityStatus",
-        "Dashboard.HighRisk", 
-        "Dashboard.MediumRisk",
-        "Dashboard.LowRisk",
-        "Dashboard.Safe",
-        "Dashboard.ChooseIssueDescription"
-      ]
-      for (let i = 0; i < staticHomePageConent.length; i++) {
-          GetLocalization(localizationIds[i], staticHomePageConent[i])
-    }
+  // Localize the static content of the home page
+  let staticHomePageConent = [
+    "suggested-issue", 
+    "quick-fix", 
+    "scan-now", 
+    "title-medals", 
+    "security-status",
+    "high-risk-issues", 
+    "medium-risk-issues",
+    "low-risk-issues",
+    "safe-issues",
+    "choose-issue-description"
+    ]
+    let localizationIds = [
+      "Dashboard.SuggestedIssue", 
+      "Dashboard.QuickFix", 
+      "Dashboard.ScanNow", 
+      "Dashboard.Medals", 
+      "Dashboard.SecurityStatus",
+      "Dashboard.HighRisk", 
+      "Dashboard.MediumRisk",
+      "Dashboard.LowRisk",
+      "Dashboard.Safe",
+      "Dashboard.ChooseIssueDescription"
+    ]
+    for (let i = 0; i < staticHomePageConent.length; i++) {
+        GetLocalization(localizationIds[i], staticHomePageConent[i])
+  }
 
-    document.getElementsByClassName("scan-now")[0].addEventListener("click", () => scanNow());
+  document.getElementsByClassName("scan-now")[0].addEventListener("click", () => scanNow());
 }
 
 document.getElementById("logo-button").addEventListener("click", () => openHomePage());

@@ -7,6 +7,10 @@ body {
   padding: 0;
 }
 
+#page-contents {
+  margin-top: 38px;
+}
+
 /* Header */
 .header {
   background-color: var(--light-blue);
@@ -15,6 +19,19 @@ body {
   z-index: 10;
   top: 0;
   width: 100%;
+  display: flex;
+}
+.header-hamburger {
+  color: var(--dark-text);
+  text-align: center;
+  line-height: 60px;
+}
+.header-hamburger:hover {
+  color: var(--dark-text-hover);
+  cursor: pointer;
+}
+.header-hamburger.container {
+  height: 60px;
 }
 .header-logo {
   height: 100%;
@@ -141,6 +158,33 @@ body {
   background-color: #427385;
 }
 
+/* Home and dashboard content elements */
+
+.data-column {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.data-segment {
+  border: 1px solid #ddd; /*var(--primaryDark500);*/
+  border-radius: 5px;
+  margin: 5px;
+  flex: 1;
+}
+
+.data-segment-header {
+  width: 100%;
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--dark-text);
+  border-radius: 10px 10px 0px 0px;
+}
+
+.data-segment-header p {
+  margin: 10px;
+}
+
 /* Home contents */
 
 .home-data {
@@ -149,8 +193,7 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  padding-top: 38px;
-  margin-left: 240px;
+  padding: 5px;
 }
 
 /* Left column */

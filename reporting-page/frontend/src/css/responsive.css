@@ -17,3 +17,39 @@
       width: 100%;
     }
 }
+
+@media only screen and (max-width: 799px) {
+    #page-contents {
+      margin-left: 0px;
+    }
+    .left-nav {
+        visibility: hidden;
+    }
+    .header-hamburger {
+        visibility: visible;
+        width: auto;
+        font-size: 1.4em;
+    }
+    .header-hamburger.container {
+        width: 60px;
+        margin-left: 10px;
+    }
+}
+@media only screen and (min-width: 800px) {
+    #page-contents {
+      margin-left: 240px;
+    }
+    .left-nav {
+        visibility: visible;
+    }
+    .header-hamburger {
+        visibility: hidden;
+        width: 0px;
+        height: 0px;
+        font-size: 0px;
+    }
+    .header-hamburger.container {
+        width: 0px;
+        margin-left: 0px;
+    }
+}

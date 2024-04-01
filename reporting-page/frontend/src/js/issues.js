@@ -1,9 +1,11 @@
 import data from "../database.json" assert { type: "json" };
 import { openIssuePage } from "./issue.js";
 import { GetLocalization } from './localize.js';
+import { CloseNavigationHamburger } from "./navigation-menu.js";
 
 /** Load the content of the Issues page */
 export function openIssuesPage() {
+  CloseNavigationHamburger();
   const pageContents = document.getElementById("page-contents");
   pageContents.innerHTML = `
   <div class="issues-data">

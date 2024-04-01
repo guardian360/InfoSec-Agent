@@ -6,33 +6,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  padding-left: 240px;
-  padding-top: 38px;
-}
-
-.data-column {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.data-segment {
-  border: 1px solid var(--primaryDark500);
-  border-radius: 5px;
-  margin: 5px;
-  flex: 1;
-}
-
-.data-segment-header {
-  width: 100%;
-  font-size: 18px;
-  font-weight: bold;
-  color: var(--dark-text);
-  border-radius: 10px 10px 0px 0px;
-}
-
-.data-segment-header p {
-  margin: 10px;
+  padding: 5px;
 }
 
 /** FIRST COLUMN **/
