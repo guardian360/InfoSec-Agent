@@ -27,7 +27,7 @@ jobs:
       - name: Checkout git repository
         uses: actions/checkout@v4
 
-      - run: ls -l
+      - run: ls
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -36,9 +36,9 @@ jobs:
           cache: 'npm'
           cache-dependency-path: 'reporting-page/frontend/package-lock.json'
         
-      - run: ls -l
+      - run: ls
       - run: cd reporting-page
-      - run: ls -l
+      - run: ls
       - name: Install Node.js dependencies
         run: npm ci
           
