@@ -12,14 +12,14 @@ import (
 // Parameters: _
 //
 // Returns: A list of start-up programs
-func Startup() Check {
+func Startup(key1 registrymock.RegistryKey, key2 registrymock.RegistryKey, key3 registrymock.RegistryKey) Check {
 	// Start-up programs can be found in different locations within the registry
 	// Both the current user and local machine registry keys are checked
-	cuKey, err1 := registrymock.OpenRegistryKey(registrymock.CURRENT_USER,
+	cuKey, err1 := registrymock.OpenRegistryKey(key1,
 		`SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run`)
-	lmKey, err2 := registrymock.OpenRegistryKey(registrymock.LOCAL_MACHINE,
+	lmKey, err2 := registrymock.OpenRegistryKey(key2,
 		`SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run`)
-	lmKey2, err3 := registrymock.OpenRegistryKey(registrymock.LOCAL_MACHINE,
+	lmKey2, err3 := registrymock.OpenRegistryKey(key3,
 		`SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run32`)
 
 	if err1 != nil || err2 != nil || err3 != nil {
