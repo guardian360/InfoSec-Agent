@@ -146,6 +146,22 @@ body {
   background-color: #427385;
 }
 
+/* Row one */
+.row-one {
+  display: flex;
+  flex-direction: row;
+  /*flex-wrap: wrap;
+  max-width: 75%;
+  margin-left: 240px;
+  padding-top: 38px; */
+}
+.row-one .risk-counters {
+  flex: 1;
+}
+.row-one .issue-buttons {
+  flex: 1;
+}
+
 
 
 /* Medals main */

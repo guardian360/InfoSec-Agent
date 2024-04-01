@@ -6,41 +6,45 @@ import { GetLocalization } from './localize.js';
 /** Load the content of the Home page */
 function openHomePage() {
   document.getElementById("page-contents").innerHTML = `
-  <div class="container-data">       
-    <div class="risk-counters">     
+  <div class="container-data home-row-one"> 
+    <div class="data-column risk-counters">     
       <div class="data-column data-segment piechart">
         <canvas id="pieChart"></canvas>
       </div>
     </div>
     <div class="data-column data-segment issue-buttons">
-      <p class="choose-issue-description">You have some issues you can fix. 
-        To start resolving a issue either navigate to the issues page, or pick a suggested issue below
-      </p>
+      <div class="data-segment-header">
+        <p class="choose-issue-description"></p>
+      </div>
       <a class="issue-button suggested-issue">Suggested Issue</a>
       <a class="issue-button quick-fix">Quick Fix</a>
       <a class="issue-button scan-now">Scan Now</a>
     </div>
   </div>
-  <p class="title-medals">Medals</p>
   <div class="container">  
-    <div class="medal-layout">
-      <img src="src/assets/images/img_medal1.jpg" alt="Photo of medal">
-      <p class="medal-name"> Medal 1</p>
-      <p> 01-03-2024</p>
+    <div class="data-segment-header">
+      <p class="title-medals">Medals</p>
     </div>
-    <div class="medal-layout">
-      <img src="src/assets/images/img_medal1.jpg" alt="Photo of medal">
-      <p class="medal-name"> Medal 2</p>
-      <p> 01-03-2024</p>
-    </div>
-    <div class="medal-layout">
-      <img src="src/assets/images/img_medal1.jpg" alt="Photo of medal">
-      <p class="medal-name"> Medal 3</p>
-      <p> 01-03-2024</p>
-    </div><div class="medal-layout">
-      <img src="src/assets/images/img_medal1.jpg" alt="Photo of medal">
-      <p class="medal-name"> Medal 1</p>
-      <p> 01-03-2024</p>
+    <div class="data-segment>
+      <div class="medal-layout">
+        <img src="src/assets/images/img_medal1.jpg" alt="Photo of medal">
+        <p class="medal-name"> Medal 1</p>
+        <p> 01-03-2024</p>
+      </div>
+      <div class="medal-layout">
+        <img src="src/assets/images/img_medal1.jpg" alt="Photo of medal">
+        <p class="medal-name"> Medal 2</p>
+        <p> 01-03-2024</p>
+      </div>
+      <div class="medal-layout">
+        <img src="src/assets/images/img_medal1.jpg" alt="Photo of medal">
+        <p class="medal-name"> Medal 3</p>
+        <p> 01-03-2024</p>
+      </div><div class="medal-layout">
+        <img src="src/assets/images/img_medal1.jpg" alt="Photo of medal">
+        <p class="medal-name"> Medal 1</p>
+        <p> 01-03-2024</p>
+      </div>
     </div>
   </div>
   `;  

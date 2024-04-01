@@ -8,7 +8,7 @@ import { ScanNow } from '../../wailsjs/go/main/Tray';
 function openSecurityDashboardPage() {
   document.getElementById("page-contents").innerHTML = `
   <div class="dashboard-data">
-    <div class="data-column risk-counters">
+    <div class="data-column risk-analysis">
       <div class="data-segment">
         <div class="data-segment-header">
           <p class="security-stat">Security status</p>
@@ -39,12 +39,43 @@ function openSecurityDashboardPage() {
         </div>
       </div>
     </div>
-    <div class="data-column data-segment piechart">
-      <div class="data-segment-header">
-          <p class="piechart-header">Risk level distribution</p>
+    <div class="data-column">
+      <div class="data-segment piechart">
+        <div class="data-segment-header">
+            <p class="piechart-header">Risk level distribution</p>
+        </div>
+        <div class="piechart-container">
+          <canvas id="pieChart"></canvas>
+        </div>
       </div>
-      <div class="piechart-container">
-        <canvas id="pieChart"></canvas>
+      <div class="data-segment graph-row">
+        <div class="data-segment-header">
+          <p class="bar-graph-header">Risk level distribution</p>
+        </div>
+        <div class="graph-segment-content">
+          <div class="graph-buttons dropdown">
+            <p class="bar-graph-description">In this graph you are able to see the distribution of different issues we have found over the past 5 times we ran a check.</p>
+            <button id="dropbtn" class="dropbtn"><span class="select-risks">Select Risks</span></button>
+            <div class="dropdown-selector" id="myDropdown">
+              <p><input type="checkbox" checked="true" value="true" id="select-high-risk">
+                <label for="select-high-risk" class="high-risk-issues"> High risks</label><br>
+              </p>
+              <p><input type="checkbox" checked="true" value="true" id="select-medium-risk">
+                <label for="select-medium-risk" class="medium-risk-issues"> Medium risks</label>
+              </p>
+              <p><input type="checkbox" checked="true" value="true" id="select-low-risk">
+                <label for="select-low-risk" class="low-risk-issues"> Low risks</label>
+              </p>
+              <p><input type="checkbox" checked="true" value="true" id="select-no-risk">
+                <label for="select-no-risk" class="safe-issues"> Safe</label>
+              </p>
+            </div>
+            <a class="interval-button"><p class="change-interval">Change interval</p><input type="number" value="5" id="graph-interval" min=1></a>
+          </div>
+          <div class="graph-column issues-graph">
+            <canvas id="interval-graph"></canvas>
+          </div>
+        </div>
       </div>
     </div>
     <div class="data-column actions">
@@ -91,39 +122,6 @@ function openSecurityDashboardPage() {
           </a>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="second-row">
-    <div class="data-segment-header">
-      <p id="risk-areas">Areas of security risks</p>
-    </div>
-    <div class="security-areas">
-    </div>
-  </div>
-  <div class="graph-row">
-    <div class="graph-column issues-graph-buttons">
-      <p class="bar-graph-description">In this graph you are able to see the distribution of different issues we have found over the past 5 times we ran a check.</p>
-      <div class="dropdown">
-        <button id="dropbtn" class="dropbtn"><span class="select-risks">Select Risks</span></button>
-        <div class="dropdown-selector" id="myDropdown">
-          <p><input type="checkbox" checked="true" value="true" id="select-high-risk">
-            <label for="select-high-risk" class="high-risk-issues"> High risks</label><br>
-          </p>
-          <p><input type="checkbox" checked="true" value="true" id="select-medium-risk">
-            <label for="select-medium-risk" class="medium-risk-issues"> Medium risks</label>
-          </p>
-          <p><input type="checkbox" checked="true" value="true" id="select-low-risk">
-            <label for="select-low-risk" class="low-risk-issues"> Low risks</label>
-          </p>
-          <p><input type="checkbox" checked="true" value="true" id="select-no-risk">
-            <label for="select-no-risk" class="safe-issues"> Safe</label>
-          </p>
-        </div>
-      </div>
-      <a class="interval-button"><p class="change-interval">Change interval</p><input type="number" value="5" id="graph-interval" min=1></a>
-    </div>
-    <div class="graph-column issues-graph">
-      <canvas id="interval-graph"></canvas>
     </div>
   </div>
   `;  
