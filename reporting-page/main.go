@@ -8,6 +8,7 @@ package main
 import (
 	"embed"
 
+	"github.com/InfoSec-Agent/InfoSec-Agent/localization"
 	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/options"
 	"github.com/wailsapp/wails/v2/pkg/options/assetserver"
@@ -26,7 +27,11 @@ func main() {
 	// Create a new instance of the app and tray struct
 	app := NewApp()
 	tray := NewTray()
+<<<<<<< HEAD
 	database := NewDataBase()
+=======
+	localization.Init("../")
+>>>>>>> main
 
 	// Create a Wails application with the specified options
 	err := wails.Run(&options.App{

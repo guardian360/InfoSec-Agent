@@ -3,7 +3,7 @@ package checks_test
 import (
 	"errors"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
-	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
+	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
 	"reflect"
 	"testing"
 )
@@ -11,33 +11,33 @@ import (
 func TestNetworkSharing(t *testing.T) {
 	tests := []struct {
 		name     string
-		executor utils.CommandExecutor
+		executor commandmock.CommandExecutor
 		want     checks.Check
 	}{
 		// TODO: Add test cases.
 		{
 			name:     "Get-NetAdapterBinding command error",
-			executor: &utils.MockCommandExecutor{Output: "", Err: errors.New("error executing command Get-NetAdapterBinding")},
+			executor: &commandmock.MockCommandExecutor{Output: "", Err: errors.New("error executing command Get-NetAdapterBinding")},
 			want:     checks.NewCheckErrorf("NetworkSharing", "error executing command Get-NetAdapterBinding", errors.New("error executing command Get-NetAdapterBinding")),
 		},
 		{
 			name:     "Network sharing is enabled",
-			executor: &utils.MockCommandExecutor{Output: "\r\n\r\n\r\nTrue\r\nTrue\r\nTrue\r\n\r\n\r\n", Err: nil},
+			executor: &commandmock.MockCommandExecutor{Output: "\r\n\r\n\r\nTrue\r\nTrue\r\nTrue\r\n\r\n\r\n", Err: nil},
 			want:     checks.NewCheckResult("NetworkSharing", "Network sharing is enabled"),
 		},
 		{
 			name:     "Network sharing is partially enabled",
-			executor: &utils.MockCommandExecutor{Output: "\r\n\r\n\r\nTrue\r\nFalse\r\n\r\n\r\n", Err: nil},
+			executor: &commandmock.MockCommandExecutor{Output: "\r\n\r\n\r\nTrue\r\nFalse\r\n\r\n\r\n", Err: nil},
 			want:     checks.NewCheckResult("NetworkSharing", "Network sharing is partially enabled"),
 		},
 		{
 			name:     "Network sharing is disabled",
-			executor: &utils.MockCommandExecutor{Output: "\r\n\r\n\r\nFalse\r\n\r\n\r\n", Err: nil},
+			executor: &commandmock.MockCommandExecutor{Output: "\r\n\r\n\r\nFalse\r\n\r\n\r\n", Err: nil},
 			want:     checks.NewCheckResult("NetworkSharing", "Network sharing is disabled"),
 		},
 		{
 			name:     "Network sharing status is unknown",
-			executor: &utils.MockCommandExecutor{Output: "\r\n\r\n\r\nHelloWorld\r\n\r\n\r\n", Err: nil},
+			executor: &commandmock.MockCommandExecutor{Output: "\r\n\r\n\r\nHelloWorld\r\n\r\n\r\n", Err: nil},
 			want:     checks.NewCheckResult("NetworkSharing", "Network sharing status is unknown"),
 		},
 	}

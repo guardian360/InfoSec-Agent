@@ -2,7 +2,7 @@ package checks
 
 import (
 	"fmt"
-	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
+	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
 	"regexp"
 	"strings"
 )
@@ -12,7 +12,7 @@ import (
 // Parameters: _
 //
 // Returns: A list of open ports and the processes that are using them
-func OpenPorts(tasklistexecutor, netstatexecutor utils.CommandExecutor) Check {
+func OpenPorts(tasklistexecutor, netstatexecutor commandmock.CommandExecutor) Check {
 	// Regular expression to clean up multiple spaces in the output
 	re := regexp.MustCompile("  +")
 
