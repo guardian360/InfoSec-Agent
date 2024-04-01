@@ -1,8 +1,11 @@
-import { CloseNavigationHamburger } from "./navigation-menu";
+import { CloseNavigation } from "./navigation-menu";
+import { MarkSelectedNavigationItem } from "./navigation-menu";
 
 /** Load the content of the Integration page */
 function openIntegrationPage() {
-    CloseNavigationHamburger();
+    CloseNavigation();
+    MarkSelectedNavigationItem("integration-button");
+    
     document.getElementById("page-contents").innerHTML = `
     <div class="dashboard-data"></div>
     `;

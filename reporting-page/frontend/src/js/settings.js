@@ -1,7 +1,8 @@
 import { openPersonalizePage } from "./personalize";
 import { ChangeLanguage } from "../../wailsjs/go/main/Tray";
 import { GetLocalization } from './localize.js';
-import { CloseNavigationHamburger } from "./navigation-menu.js";
+import { CloseNavigation } from "./navigation-menu.js";
+import { MarkSelectedNavigationItem } from "./navigation-menu.js";
 
 function updateLanguage() {
   ChangeLanguage()
@@ -14,7 +15,9 @@ function updateLanguage() {
 
 /** Load the content of the Settings page */
 function openSettingsPage() {
-  CloseNavigationHamburger();
+  CloseNavigation();
+  MarkSelectedNavigationItem("settings-button");
+
   document.getElementById("page-contents").innerHTML = `
   <div class="setting personalize">
     <span class="setting-description personalize-title">Personalization</span>

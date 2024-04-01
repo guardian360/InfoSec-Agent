@@ -2,11 +2,14 @@ import { PieChart } from "./piechart";
 import { ScanNow } from '../../wailsjs/go/main/Tray';
 import { RiskCounters } from "./risk-counters";
 import { GetLocalization } from './localize.js';
-import { CloseNavigationHamburger } from "./navigation-menu.js";
+import { CloseNavigation } from "./navigation-menu.js";
+import { MarkSelectedNavigationItem } from "./navigation-menu.js";
 
 /** Load the content of the Home page */
 function openHomePage() {
-  CloseNavigationHamburger();
+  CloseNavigation();
+  MarkSelectedNavigationItem("home-button");
+  
   document.getElementById("page-contents").innerHTML = `
   <div class="home-data">
     <div class="container-data home-column-one"> 

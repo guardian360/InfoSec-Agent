@@ -3,11 +3,14 @@ import { Graph } from "./graph.js";
 import { PieChart } from "./piechart.js";
 import { GetLocalization } from './localize.js';
 import { ScanNow } from '../../wailsjs/go/main/Tray';
-import { CloseNavigationHamburger } from "./navigation-menu.js";
+import { CloseNavigation } from "./navigation-menu.js";
+import { MarkSelectedNavigationItem } from "./navigation-menu.js";
 
 /** Load the content of the Security Dashboard page */
 function openSecurityDashboardPage() {
-  CloseNavigationHamburger();
+  CloseNavigation();
+  MarkSelectedNavigationItem("security-dashboard-button");
+  
   document.getElementById("page-contents").innerHTML = `
   <div class="dashboard-data">
     <div class="data-column risk-analysis">
