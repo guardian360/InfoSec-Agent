@@ -4,6 +4,8 @@
 package scan
 
 import (
+	"encoding/json"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/chromium"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/firefox"
@@ -96,12 +98,12 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 	}
 
 	// Serialize check results to JSON
-	// jsonData, err := json.MarshalIndent(checkResults, "", "  ")
-	// if err != nil {
-	// 	fmt.Println("Error marshalling JSON:", err)
-	// 	return checkResults, err
-	// }
-	// fmt.Println(string(jsonData))
+	jsonData, err := json.MarshalIndent(checkResults, "", "  ")
+	if err != nil {
+		fmt.Println("Error marshalling JSON:", err)
+		return checkResults, err
+	}
+	fmt.Println(string(jsonData))
 
 	return checkResults, nil
 

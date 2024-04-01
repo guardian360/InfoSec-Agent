@@ -26,6 +26,7 @@ func main() {
 	// Create a new instance of the app and tray struct
 	app := NewApp()
 	tray := NewTray()
+	database := NewDataBase()
 
 	// Create a Wails application with the specified options
 	err := wails.Run(&options.App{
@@ -41,6 +42,7 @@ func main() {
 		Bind: []interface{}{
 			app,
 			tray,
+			database,
 		},
 		Windows: &windows.Options{
 			Theme: windows.SystemDefault,

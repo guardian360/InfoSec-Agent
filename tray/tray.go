@@ -251,8 +251,6 @@ func ScanNow() ([]checks.Check, error) {
 		return result, err
 	}
 
-	scan.FillDataBase(result)
-
 	return result, nil
 }
 
