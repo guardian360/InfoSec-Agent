@@ -20,24 +20,28 @@ permissions:
   
 jobs:
   run-linters:
-    name: Run linters
-    runs-on: ubuntu-latest
+    name: Lint Frontend
+    runs-on: windows-latest
 
     steps:
-      - name: Check out Git repository
+      - name: Checkout git repository
         uses: actions/checkout@v4
+
+      - run: cd reporting-page/frontend
 
       - name: Set up Node.js
         uses: actions/setup-node@v1
         with:
           node-version: 12
-
-      # ESLint, Prettier, and stylelint must be in `package.json`
+          
       - name: Install Node.js dependencies
         run: npm ci
-
+        
+      # ESLint and stylelint configuration in `reporting-page/frontend/package.json`
       - name: Run linters
         uses: wearerequired/lint-action@v2
         with:
           eslint: true
+          eslint_args: "**/*.js"
           stylelint: true
+          stylelint_args: "**/*.css"

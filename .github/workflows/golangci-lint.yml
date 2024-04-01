@@ -23,7 +23,7 @@ permissions:
 
 jobs:
   golangci:
-    name: Linting
+    name: Lint Backend
     runs-on: windows-latest
     env:
       GO111MODULE: on
