@@ -27,7 +27,7 @@ Should later on be able to be changed by user, with help of js
   --text-body: #333;                                  /*main text color*/
   --text-navigation: hsl(var(--hueComplement) 5% 30%);  /*left side navigation text*/
   --text-settings-hover: #646464;                     /*hover over settings text color*/
-  --text-left-nav: #d4d4d4;                           /*text color left navigation*/
+  --text-left-nav: #e7e7e7;                           /*text color left navigation*/
 
   /*colors for the different risks*/
   --highRiskColor: #e06666;
