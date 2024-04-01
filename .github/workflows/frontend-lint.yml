@@ -27,6 +27,8 @@ jobs:
       - name: Checkout git repository
         uses: actions/checkout@v4
         
+      - run: cd reporting-page
+      
       - name: Set up Node.js
         uses: actions/setup-node@v1
         with:
@@ -35,7 +37,7 @@ jobs:
       - name: Install Node.js dependencies
         run: npm ci
           
-      - run: cd reporting-page/frontend
+      - run: frontend
           
       # ESLint and stylelint configuration in `reporting-page/frontend/package.json`
       - name: Run linters
