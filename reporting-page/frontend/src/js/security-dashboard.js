@@ -132,7 +132,8 @@ function openSecurityDashboardPage() {
   </div>
   `;  
   // Set counters on the page to the right values
-  let rc = new RiskCounters();
+  let rc = JSON.parse(sessionStorage.getItem("RiskCounters"));
+  console.log(rc);
   AdjustWithRiskCounters(rc);
   SetMaxInterval(rc);    
   // Create charts

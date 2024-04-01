@@ -34,18 +34,8 @@ export function openIssuesPage() {
   }
   
   let issues = []; // retrieve issues from tray application
-  issues = [ // dummy info
-    { 
-      "Id": "Windows defender", 
-      "Result": ["Windows defender is disabled"],
-      "ErrorMSG": null
-    },
-    { 
-      "Id": "Camera and microphone access", 
-      "Result": ["Something has access to camera", "Something has access to microphone"],
-      "ErrorMSG": null
-    }
-  ];  
+  issues = JSON.parse(sessionStorage.getItem("Severities"));  
+  console.log(issues);
 
   const tbody = pageContents.querySelector('tbody');
   fillTable(tbody, issues);
@@ -53,23 +43,34 @@ export function openIssuesPage() {
   document.onload = retrieveTheme();
 }
 
+function RiskLevels(level) {
+  switch(level) {
+    case 0:
+      return "Safe"
+    case 1:
+      return "Low"
+    case 2:
+      return "Medium"
+    case 3:
+      return "High"
+  }
+}
+
+
 /** Fill the table with issues
  * 
  * @param {HTMLTableSectionElement} tbody Table to be filled
- * @param {Issue} issues Issues to be filled in
+ * @param {Severity} issues Issues to be filled in
  */ 
 export function fillTable(tbody, issues) {
   issues.forEach(issue => {
-    const currentIssue = data.find(element => element.Name === issue.Id);
-    if (currentIssue) {
-      const row = document.createElement('tr');
-      row.innerHTML = `
-        <td class="issue-link">${currentIssue.Name}</td>
-        <td>${currentIssue.Type}</td>
-        <td>${currentIssue.Risk}</td>
-      `;
-      tbody.appendChild(row);
-    }
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td class="issue-link">${issue.checkid}</td>
+      <td>Security</td>
+      <td>${RiskLevels(issue.level)}</td>
+    `;
+    tbody.appendChild(row);
   });  
 
   // Add links to issue information pages
@@ -83,6 +84,37 @@ export function fillTable(tbody, issues) {
   document.getElementById("sort-on-type").addEventListener("click", () => sortTable(tbody, 1));
   document.getElementById("sort-on-risk").addEventListener("click", () => sortTable(tbody, 2));
 }
+
+// /** Fill the table with issues
+//  * 
+//  * @param {HTMLTableSectionElement} tbody Table to be filled
+//  * @param {Issue} issues Issues to be filled in
+//  */ 
+// export function fillTable(tbody, issues) {
+//   issues.forEach(issue => {
+//     const currentIssue = data.find(element => element.Name === issue.Id);
+//     if (currentIssue) {
+//       const row = document.createElement('tr');
+//       row.innerHTML = `
+//         <td class="issue-link">${currentIssue.Name}</td>
+//         <td>${currentIssue.Type}</td>
+//         <td>${currentIssue.Risk}</td>
+//       `;
+//       tbody.appendChild(row);
+//     }
+//   });  
+
+//   // Add links to issue information pages
+//   const issueLinks = document.querySelectorAll(".issue-link");
+//   issueLinks.forEach((link, index) => {
+//     link.addEventListener("click", () => openIssuePage(issues[index].Id));
+//   });  
+
+//   // Add buttons to sort on columns
+//   document.getElementById("sort-on-issue").addEventListener("click", () => sortTable(tbody, 0));
+//   document.getElementById("sort-on-type").addEventListener("click", () => sortTable(tbody, 1));
+//   document.getElementById("sort-on-risk").addEventListener("click", () => sortTable(tbody, 2));
+// }
 
 /** Sorts the table 
  * 
