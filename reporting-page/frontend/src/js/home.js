@@ -1,12 +1,11 @@
-import { PieChart } from "./piechart";
-import { ScanNow } from '../../wailsjs/go/main/Tray';
-import { RiskCounters } from "./risk-counters";
+import {PieChart} from "./piechart";
+import {ScanNow} from '../../wailsjs/go/main/Tray';
 import { GetLocalization } from './localize.js';
 import { CloseNavigation } from "./navigation-menu.js";
 import { MarkSelectedNavigationItem } from "./navigation-menu.js";
 
 /** Load the content of the Home page */
-function openHomePage() {
+export function openHomePage() {
   CloseNavigation();
   MarkSelectedNavigationItem("home-button");
   
@@ -60,8 +59,8 @@ function openHomePage() {
     </div>
   </div>
   `;  
-  let rc = new RiskCounters();
-  new PieChart("pieChart",rc);
+    let rc = JSON.parse(sessionStorage.getItem("RiskCounters"));
+    new PieChart("pieChart",rc);
 
   // Localize the static content of the home page
   let staticHomePageConent = [
@@ -107,4 +106,6 @@ function scanNow() {
     });
 }
 
-document.onload = openHomePage();
+// document.onload = openHomePage();
+
+
