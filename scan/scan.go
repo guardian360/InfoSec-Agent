@@ -6,6 +6,7 @@ package scan
 import (
 	"encoding/json"
 	"fmt"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/chromium"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/firefox"
@@ -50,7 +51,9 @@ func Scan(dialog zenity.ProgressDialog) {
 		func() checks.Check {
 			return checks.SmbCheck(&commandmock.RealCommandExecutor{}, &commandmock.RealCommandExecutor{})
 		},
-		checks.Startup,
+		func() checks.Check {
+			return checks.Startup(registrymock.CURRENT_USER, registrymock.LOCAL_MACHINE, registrymock.LOCAL_MACHINE)
+		},
 		func() checks.Check {
 			return checks.GuestAccount(&commandmock.RealCommandExecutor{}, &commandmock.RealCommandExecutor{},
 				&commandmock.RealCommandExecutor{}, &commandmock.RealCommandExecutor{})

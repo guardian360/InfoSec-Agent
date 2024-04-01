@@ -30,8 +30,9 @@ Should later on be able to be changed by user, with help of js
   --text-left-nav: #d4d4d4;                           /*text color left navigation*/
 
   /*colors for the different risks*/
-  --highRiskColor: #ff4500;
-  --mediumRiskColor: #ffa500;
-  --lowRiskColor: #eee8aa;
-  --noRiskColor: #7fffd4;
+  --highRiskColor: #e06666;
+  --mediumRiskColor: #f6b26b;
+  --lowRiskColor: #ffd966;
+  --noRiskColor: #93c47d;
+
 }

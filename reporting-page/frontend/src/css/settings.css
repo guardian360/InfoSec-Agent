@@ -2,15 +2,15 @@
 
 /* Setting box */
 .setting {
-    /* float: left; */
-    padding: 20px;
+    padding: 20px 20px;
     display: block;
     float: left;
     color: var(--text-body);
     width: 70%;
     margin-left: 240px;
+}
+.personalize {
     margin-top: 70px;
-
 }
 .setting-description {
     float: left;
@@ -23,9 +23,8 @@
 }
 hr.solid {
     border-top: 1px solid var(--text-body);
-    float: left;
-    margin-left: 260px;
-    width: 70%;
+    float: center;
+    margin: 10px;
 }
 
 /* The switch - the box around the slider */
