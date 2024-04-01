@@ -151,12 +151,12 @@ func TestOnQuit(t *testing.T) {
 func TestTranslation(t *testing.T) {
 	var localizer = localization.Localizers()[0]
 	s1 := localizer.MustLocalize(&i18n.LocalizeConfig{
-		MessageID: "ScanIntervalTitle",
+		MessageID: "Tray.ScanIntervalTitle",
 	})
 	// Change the language, then check if the translation is different
 	localizer = localization.Localizers()[1]
 	s2 := localizer.MustLocalize(&i18n.LocalizeConfig{
-		MessageID: "ScanIntervalTitle",
+		MessageID: "Tray.ScanIntervalTitle",
 	})
 	require.NotEqual(t, s1, s2)
 }
