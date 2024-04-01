@@ -17,9 +17,9 @@
 }
 
 .data-segment {
-  border: 2px solid var(--primaryDark500);
+  border: 1px solid var(--primaryDark500);
   border-radius: 5px;
-  margin: 10px;
+  margin: 5px;
   flex: 1;
 }
 
@@ -124,11 +124,6 @@
 }
 
 /* risk distribution graph */
-
-.graph-row {
-  color: var(--dark-text);
-  margin-top: 10px;
-}
 
 .graph-segment-content {
   display: flex;

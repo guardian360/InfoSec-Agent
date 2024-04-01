@@ -1,30 +1,19 @@
 /* RESPONSIVE SIZING */
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1000px) {
+    .dashboard-data {
+      display: block;
+    }
+    .home-data {
+      display: block;
+    }
+    .home-column-one {
+      display: block;
+    }
     .data-column {
       width: 100%;
     }
     .data-segment {
       width: 100%;
     }
-    .left-nav {
-      display: none;
-    }
-}
-
-@media only screen and (max-width: 1000px) {
-
-  .security-area .material-symbols-outlined {
-    font-size: 50px;
-    display: block;
-  }
-  .dashboard-data {
-    display: block;
-  }
-}
-
-@media only screen and (max-width: 1300px) {
-  .security-areas {
-    overflow-x: scroll;
-  }
 }
