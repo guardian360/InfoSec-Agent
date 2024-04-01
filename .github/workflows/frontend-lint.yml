@@ -44,5 +44,7 @@ jobs:
         with:
           eslint: true
           eslint_args: "**/*.js"
+          eslint_dir: "reporting-page/frontend"
           stylelint: true
           stylelint_args: "**/*.css"
+          stylelint_dir: "reporting-page/frontend"
