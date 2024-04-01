@@ -5,6 +5,7 @@ go 1.22.0
 require (
 	github.com/andrewarchi/browser v0.0.0-20210602185959-ae587407e71c
 	github.com/getlantern/systray v1.2.2
+	github.com/mattn/go-sqlite3 v1.14.22
 	github.com/ncruces/zenity v0.10.12
 	github.com/nicksnyder/go-i18n/v2 v2.4.0
 	github.com/pierrec/lz4 v2.6.1+incompatible

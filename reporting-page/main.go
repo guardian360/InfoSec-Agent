@@ -27,13 +27,15 @@ func main() {
 	// Create a new instance of the app and tray struct
 	app := NewApp()
 	tray := NewTray()
+	database := NewDataBase()
 	localization.Init("../")
 
 	// Create a Wails application with the specified options
 	err := wails.Run(&options.App{
-		Title:  "reporting-page",
-		Width:  1024,
-		Height: 768,
+		Title:       "reporting-page",
+		Width:       1024,
+		Height:      768,
+		StartHidden: true,
 		AssetServer: &assetserver.Options{
 			Assets: assets,
 		},
@@ -42,6 +44,7 @@ func main() {
 		Bind: []interface{}{
 			app,
 			tray,
+			database,
 		},
 		Windows: &windows.Options{
 			Theme: windows.SystemDefault,
