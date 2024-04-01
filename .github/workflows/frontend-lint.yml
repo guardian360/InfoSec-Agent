@@ -37,7 +37,7 @@ jobs:
           cache-dependency-path: 'reporting-page/frontend/package-lock.json'
         
       - run: ls
-      - run: cd reporting-page
+      - run: cd .\reporting-page\
       - run: ls
       - name: Install Node.js dependencies
         run: npm ci
