@@ -3,6 +3,7 @@ package checks_test
 import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
+	"github.com/stretchr/testify/require"
 	"golang.org/x/sys/windows/registry"
 	"reflect"
 	"testing"
@@ -94,4 +95,24 @@ func TestLoginMethod(t *testing.T) {
 			}
 		})
 	}
+}
+
+// TestRegistryOutput tests that the right registry key is retrieved
+//
+// Parameters: t (testing.T) - the testing framework
+//
+// Returns: _
+func TestRegistryOutputLoginMethod(t *testing.T) {
+	path := "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Authentication\\LogonUI\\UserTile"
+
+	key, err := registry.OpenKey(registry.LOCAL_MACHINE, path, registry.QUERY_VALUE)
+	require.NoError(t, err)
+	defer func(key registry.Key) {
+		err := key.Close()
+		require.NoError(t, err)
+	}(key)
+
+	valueNames, err := key.ReadValueNames(-1)
+	require.NoError(t, err)
+	require.NotEmpty(t, valueNames)
 }

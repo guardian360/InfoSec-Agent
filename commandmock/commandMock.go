@@ -1,4 +1,4 @@
-package utils
+package commandmock
 
 import "os/exec"
 

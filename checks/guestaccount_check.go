@@ -2,6 +2,7 @@ package checks
 
 import (
 	"fmt"
+	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"strings"
 )
@@ -12,10 +13,10 @@ import (
 //
 // Returns: If the guest account is active or not
 func GuestAccount(
-	executorLocalGroup utils.CommandExecutor,
-	executorLocalGroupMembers utils.CommandExecutor,
-	executorYesWord utils.CommandExecutor,
-	executorNetUser utils.CommandExecutor,
+	executorLocalGroup commandmock.CommandExecutor,
+	executorLocalGroupMembers commandmock.CommandExecutor,
+	executorYesWord commandmock.CommandExecutor,
+	executorNetUser commandmock.CommandExecutor,
 ) Check {
 	// Get localgroup name using GetWmiObject
 	//output, err := GuestAccountLocalGroup(executorLocalGroup)

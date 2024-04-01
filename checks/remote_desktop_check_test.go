@@ -3,6 +3,8 @@ package checks_test
 import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
+	"github.com/stretchr/testify/require"
+	"golang.org/x/sys/windows/registry"
 	"reflect"
 	"testing"
 )
@@ -57,4 +59,38 @@ func TestRemoteDesktopCheck(t *testing.T) {
 			}
 		})
 	}
+}
+
+// TestRegistryOutput ensures the registry output has the expected format
+//
+// Parameters: t (testing.T) - the testing framework
+//
+// Returns: _
+func TestRegistryOutputRemoteDesktop(t *testing.T) {
+	path := "System\\CurrentControlSet\\Control\\Terminal Server"
+	expectedValueName := "fDenyTSConnections"
+
+	key, err := registry.OpenKey(registry.LOCAL_MACHINE, path, registry.QUERY_VALUE)
+	require.NoError(t, err)
+
+	defer func(key registry.Key) {
+		err := key.Close()
+		require.NoError(t, err)
+	}(key)
+
+	valueNames, err := key.ReadValueNames(-1)
+	require.NoError(t, err)
+	var found bool
+	for _, subKeyName := range valueNames {
+		if subKeyName == expectedValueName {
+			found = true
+			break
+		}
+	}
+	require.True(t, found, "Value name %s not found", expectedValueName)
+
+	val, valType, err := key.GetIntegerValue(expectedValueName)
+	require.NoError(t, err)
+	require.Equal(t, reflect.Uint32, reflect.TypeOf(valType).Kind())
+	require.True(t, val == 0 || val == 1, "Unexpected value: %v, want 0 or 1", val)
 }
