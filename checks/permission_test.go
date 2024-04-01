@@ -26,12 +26,11 @@ func TestPermission(t *testing.T) {
 			permission: "webcam",
 			key: &registrymock.MockRegistryKey{
 				SubKeys: []registrymock.MockRegistryKey{
-					{KeyName: "Software\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\webcam",
+					{KeyName: "Software\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\webcam", StringValues: map[string]string{"Value": "Allow"},
 						SubKeys: []registrymock.MockRegistryKey{
 							{KeyName: "NonPackaged",
-								StringValues: map[string]string{"Value": "Allow"},
 								SubKeys: []registrymock.MockRegistryKey{
-									{KeyName: "microsoft.webcam"},
+									{KeyName: "microsoft.webcam", StringValues: map[string]string{"Value": "Allow"}},
 								},
 							},
 						},
@@ -75,6 +74,7 @@ func TestFormatPermission(t *testing.T) {
 	key := &registrymock.MockRegistryKey{
 		SubKeys: []registrymock.MockRegistryKey{
 			{KeyName: "Software\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\location",
+				StringValues: map[string]string{"Value": "Allow"},
 				SubKeys: []registrymock.MockRegistryKey{
 					{KeyName: "NonPackaged",
 						StringValues: map[string]string{"Value": "Allow"},
@@ -100,6 +100,7 @@ func TestNonExistingPermission(t *testing.T) {
 	key := &registrymock.MockRegistryKey{
 		SubKeys: []registrymock.MockRegistryKey{
 			{KeyName: "Software\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\location",
+				StringValues: map[string]string{"Value": "Allow"},
 				SubKeys: []registrymock.MockRegistryKey{
 					{KeyName: "NonPackaged",
 						StringValues: map[string]string{"Value": "Allow"},

@@ -11,6 +11,20 @@ type ProgramLister interface {
 
 type RealProgramLister struct{}
 
+func (rpl RealProgramLister) ListInstalledPrograms(directory string) ([]string, error) {
+	var programs []string
+	files, err := os.ReadDir(directory)
+	if err != nil {
+		return nil, err
+	}
+	for _, file := range files {
+		if file.IsDir() {
+			programs = append(programs, file.Name())
+		}
+	}
+	return programs, nil
+}
+
 // PasswordManager checks for the presence of known password managers
 //
 // Parameters: _
@@ -50,7 +64,7 @@ func PasswordManager(pl ProgramLister) Check {
 	}
 
 	// Check for a password manager within the 'Program Files (x86)' folder
-	programs, err = listInstalledPrograms(programFilesx86)
+	programs, err = pl.ListInstalledPrograms(programFilesx86)
 	if err != nil {
 		return NewCheckErrorf("PasswordManager",
 			"error listing installed programs in Program Files (x86)", err)
@@ -64,28 +78,4 @@ func PasswordManager(pl ProgramLister) Check {
 	}
 
 	return NewCheckResult("PasswordManager", "No password manager found")
-}
-
-// listInstalledPrograms lists the installed programs in a given directory
-//
-// Parameters: directory (string) representing the directory to check
-//
-// Returns: A slice of strings containing the names of the installed programs
-func listInstalledPrograms(directory string) ([]string, error) {
-	var programs []string
-
-	// Read the directory to get a list of files and folders
-	files, err := os.ReadDir(directory)
-	if err != nil {
-		return nil, err
-	}
-
-	for _, file := range files {
-		// A directory represents an installed program
-		if file.IsDir() {
-			programs = append(programs, file.Name())
-		}
-	}
-
-	return programs, nil
 }

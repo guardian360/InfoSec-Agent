@@ -12,7 +12,6 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
 	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
 	"github.com/InfoSec-Agent/InfoSec-Agent/windowsmock"
-
 	"github.com/ncruces/zenity"
 )
 
@@ -26,29 +25,33 @@ func Scan(dialog zenity.ProgressDialog) {
 
 	// Define all security/privacy checks that Scan() should execute
 	securityChecks := []func() checks.Check{
-		checks.PasswordManager,
+		func() checks.Check {
+			return checks.PasswordManager(checks.RealProgramLister{})
+		},
 		func() checks.Check {
 			return checks.WindowsDefender(registrymock.LOCAL_MACHINE, registrymock.LOCAL_MACHINE)
 		},
 		func() checks.Check {
-			return checks.LastPasswordChange(&utils.RealCommandExecutor{})
-		},
-		checks.LoginMethod,
-		func() checks.Check {
-			return checks.Permission("location", registrymock.NewRegistryKeyWrapper(registry.CURRENT_USER))
+			return checks.LastPasswordChange(&commandmock.RealCommandExecutor{})
 		},
 		func() checks.Check {
-			return checks.Permission("microphone", registrymock.NewRegistryKeyWrapper(registry.CURRENT_USER))
+			return checks.LoginMethod(registrymock.LOCAL_MACHINE)
 		},
 		func() checks.Check {
-			return checks.Permission("webcam", registrymock.NewRegistryKeyWrapper(registry.CURRENT_USER))
+			return checks.Permission("location", registrymock.CURRENT_USER)
 		},
 		func() checks.Check {
-			return checks.Permission("appointments", registrymock.NewRegistryKeyWrapper(registry.CURRENT_USER))
+			return checks.Permission("microphone", registrymock.CURRENT_USER)
 		},
 		func() checks.Check {
-			return checks.Permission("contacts", registrymock.NewRegistryKeyWrapper(registry.CURRENT_USER))
-		},		checks.Bluetooth,
+			return checks.Permission("webcam", registrymock.CURRENT_USER)
+		},
+		func() checks.Check {
+			return checks.Permission("appointments", registrymock.CURRENT_USER)
+		},
+		func() checks.Check {
+			return checks.Permission("contacts", registrymock.CURRENT_USER)
+		}, checks.Bluetooth,
 		func() checks.Check {
 			return checks.OpenPorts(&commandmock.RealCommandExecutor{}, &commandmock.RealCommandExecutor{})
 		},
@@ -70,7 +73,7 @@ func Scan(dialog zenity.ProgressDialog) {
 		},
 		func() checks.Check { return checks.ExternalDevices(&commandmock.RealCommandExecutor{}) },
 		func() checks.Check { return checks.NetworkSharing(&commandmock.RealCommandExecutor{}) },
-		func() checks.Check { return chromium.HistoryChromium("Chrome") },
+		//func() checks.Check { return chromium.HistoryChromium("Chrome",	DBConn{}) },
 		func() checks.Check { return chromium.ExtensionsChromium("Chrome") },
 		func() checks.Check { return chromium.SearchEngineChromium("Chrome") },
 		func() checks.Check { c, _ := firefox.ExtensionFirefox(); return c },
