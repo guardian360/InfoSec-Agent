@@ -19,3 +19,22 @@ export namespace checks {
 
 }
 
+export namespace scan {
+	
+	export class Severity {
+	    checkid: string;
+	    level: number;
+	
+	    static createFrom(source: any = {}) {
+	        return new Severity(source);
+	    }
+	
+	    constructor(source: any = {}) {
+	        if ('string' === typeof source) source = JSON.parse(source);
+	        this.checkid = source["checkid"];
+	        this.level = source["level"];
+	    }
+	}
+
+}
+

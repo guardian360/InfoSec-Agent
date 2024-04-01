@@ -217,7 +217,7 @@ func ChangeScanInterval(testInput ...string) {
 //
 // Parameters: _
 //
-// Returns: _
+// Returns: list of checks
 func ScanNow() ([]checks.Check, error) {
 	// scanCounter is not concretely used at the moment
 	// might be useful in the future
@@ -250,14 +250,6 @@ func ScanNow() ([]checks.Check, error) {
 		log.Println("Error completing dialog:", err)
 		return result, err
 	}
-
-	// Fill database with data
-	// scan.FillDataBase(result)
-
-	// zeros := make([]int, len(result))
-	// zeros[3] = 2
-	// sev, _ := scan.GetAllSeverities(result, zeros)
-	// fmt.Println("severities", sev)
 
 	return result, nil
 }

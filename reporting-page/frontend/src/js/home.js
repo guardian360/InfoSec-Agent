@@ -2,7 +2,7 @@ import {PieChart} from "./piechart";
 import {ScanNow} from '../../wailsjs/go/main/Tray';
 
 /** Load the content of the Home page */
-function openHomePage() {
+export function openHomePage() {
   document.getElementById("page-contents").innerHTML = `
   <div class="container-data">       
     <div class="data-column risk-counters">     
@@ -62,6 +62,6 @@ function scanNow() {
     });
 }
 
-document.onload = openHomePage();
+// document.onload = openHomePage();
 
 

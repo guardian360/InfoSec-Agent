@@ -24,7 +24,7 @@ import (
 // Parameters: dialog (zenity.ProgressDialog)
 // represents the progress dialog window which is displayed while the scan is running
 //
-// Returns: checks.json file containing the results of all security/privacy checks
+// Returns: checks.Check list containing all found issues
 func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 
 	// Define all security/privacy checks that Scan() should execute

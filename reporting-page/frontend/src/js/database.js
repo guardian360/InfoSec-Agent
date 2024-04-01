@@ -1,23 +1,22 @@
 import { ScanNow } from "../../wailsjs/go/main/Tray.js";
 import { GetAllSeverities } from "../../wailsjs/go/main/DataBase.js";
+import { openHomePage } from "./home.js";
 import * as runTime from "../../wailsjs/runtime/runtime.js";
 import * as rc from "./risk-counters.js"
-// var sqlite3 = require('sqlite3');
+import { checks } from "../../wailsjs/go/models.js";
 
 /** Call ScanNow in backend and store result in sessionStorage */
 try {
   ScanNow()
     .then((result) => {
-      // Update result with data back from App.Greet()
+      // place result in session storage
       sessionStorage.setItem("ScanResult",JSON.stringify(result));
+      // place severities in session storage
       setSeverities(result,randomResultIDs(result.length))
-      // runTime.WindowReloadApp();
 
       runTime.WindowShow();
       runTime.WindowMaximise();
-      runTime.LogPrint(sessionStorage.getItem("ScanResult"));
-      // console.log(JSON.parse(sessionStorage.getItem("ScanResult")));
-      // window.alert(sessionStorage.getItem("ScanResult"));
+      runTime.LogPrint(sessionStorage.getItem("ScanResult")); 
     })
     .catch((err) => {
       console.error(err);
@@ -26,27 +25,32 @@ try {
     console.error(err);
 }
 
-// function countOccurences(severities, riskLevel) {
-//   const count = {};
-//   for (const num of severities) {
-//     count[riskLevel] = count[riskLevel] ? count[riskLevel] + 1 : 1;
-//   }
-//   return count[riskLevel]
-// }
-const countOccurences = (severities, riskLevel) => severities.filter(item => item ===riskLevel).length;
+// counts the occurences of each level: 0 = safe, 1 = low, 2 = medium, 3 = high
+const countOccurences = (severities, riskLevel) => severities.filter(item => item.level ===riskLevel).length;
 
+/** Sets the severities collected from the checks and database in session storage
+ * 
+ * @param {checks.Check[]} input Checks to get severities from
+ * @param {int[]} ids List of result ids to get corresponding severities
+ */
 function setSeverities(input, ids) {
   GetAllSeverities(input, ids)
     .then((result) => {
-      console.log(result);
+      sessionStorage.setItem("Severities",JSON.stringify(result));
       let high = countOccurences(result, 3);
       let medium = countOccurences(result, 2);
       let low = countOccurences(result, 1);
       let safe = countOccurences(result, 0);
       sessionStorage.setItem("RiskCounters",JSON.stringify(new rc.RiskCounters(high,medium,low,safe)))
+      openHomePage();
     })
 }
 
+/** Get random result ids for each check
+ * 
+ * @param {int} length Array length
+ * @returns List of random result ids
+ */
 function randomResultIDs(length) {
   let IDs = [];
   for (let i = 0; i < length; i++) {

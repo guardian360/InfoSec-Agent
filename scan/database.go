@@ -10,6 +10,26 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 )
 
+type Severity struct {
+	CheckId string `json:"checkid"`
+	Level   int    `json:"level"`
+}
+
+// future enumerator replacing type of level int with SeverityLevel
+type SeverityLevel string
+
+const (
+	Safe   SeverityLevel = "Safe"
+	Low    SeverityLevel = "Low"
+	Medium SeverityLevel = "Medium"
+	High   SeverityLevel = "High"
+)
+
+type SeverityLevels struct {
+	Value  SeverityLevel
+	TSName string
+}
+
 // FillDataBase will remove the current issues table and create a new one filled with dummy values
 //
 // Parameters: scanResults ([]checks.Check) - the list of checks from a scan
@@ -110,7 +130,7 @@ func addIssue(db *sql.DB, check checks.Check, issueId int, resultId int, severit
 // resultIDs ([]int) - the list of results corresponding to each check
 //
 // Returns: list of all severities
-func GetAllSeverities(checks []checks.Check, resultIDs []int) ([]int, error) {
+func GetAllSeverities(checks []checks.Check, resultIDs []int) ([]Severity, error) {
 	fmt.Println("Opening database")
 	// Open the database file. If it doesn't exist, it will be created.
 	db, err := sql.Open("sqlite3", "./database.db")
@@ -120,13 +140,13 @@ func GetAllSeverities(checks []checks.Check, resultIDs []int) ([]int, error) {
 	}
 	fmt.Println("Connected to database")
 
-	severities := make([]int, len(checks))
-	for i := range checks {
+	severities := make([]Severity, len(checks))
+	for i, s := range checks {
 		val, err := GetSeverity(db, i, resultIDs[i])
 		if err != nil {
 			fmt.Println("Error getting severity value")
 		}
-		severities[i] = val
+		severities[i] = Severity{s.Id, val}
 	}
 
 	fmt.Println("Closing database")
