@@ -27,8 +27,6 @@ jobs:
       - name: Checkout git repository
         uses: actions/checkout@v4
 
-      - run: ls
-
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -36,15 +34,11 @@ jobs:
           cache: 'npm'
           cache-dependency-path: 'reporting-page/frontend/package-lock.json'
         
-      - run: ls
-      - run: cd .\reporting-page\
-      - run: ls
       - name: Install Node.js dependencies
         run: npm ci
-          
-      - run: frontend
-          
-      # ESLint and stylelint configuration in `reporting-page/frontend/package.json`
+        working-directory: reporting-page
+
+        # ESLint and stylelint configuration in `reporting-page/frontend/package.json`
       - name: Run linters
         uses: wearerequired/lint-action@v2
         with:
