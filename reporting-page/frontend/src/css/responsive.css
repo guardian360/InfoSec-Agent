@@ -4,21 +4,27 @@
     .data-column {
       width: 100%;
     }
-  }
-  
-  @media only screen and (max-width: 1000px) {
-  
-    .security-area .material-symbols-outlined {
-      font-size: 50px;
-      display: block;
+    .data-segment {
+      width: 100%;
     }
-    .dashboard-data {
-      display: block;
+    .left-nav {
+      display: none;
     }
+}
+
+@media only screen and (max-width: 1000px) {
+
+  .security-area .material-symbols-outlined {
+    font-size: 50px;
+    display: block;
   }
-  
-  @media only screen and (max-width: 1300px) {
-    .security-areas {
-      overflow-x: scroll;
-    }
+  .dashboard-data {
+    display: block;
   }
+}
+
+@media only screen and (max-width: 1300px) {
+  .security-areas {
+    overflow-x: scroll;
+  }
+}

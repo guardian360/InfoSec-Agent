@@ -118,6 +118,11 @@
   height: 90%;
 }
 
+.piechart-container {
+  min-height: 200px;
+  margin: 10px;
+}
+
 /* risk distribution graph */
 
 .graph-row {

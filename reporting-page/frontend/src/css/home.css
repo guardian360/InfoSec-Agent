@@ -3,14 +3,9 @@
 body {
   background-color: var(--background-color);
   font-family: "DM Sans", sans-serif;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
-
-.page-contents {
-  margin-left: 240px;
-}
-
 
 /* Header */
 .header {
@@ -146,48 +141,51 @@ body {
   background-color: #427385;
 }
 
-/* Row one */
-.row-one {
+/* Home contents */
+
+.home-data {
+  color: var(--dark-text);
+  width: flex;
   display: flex;
   flex-direction: row;
-  /*flex-wrap: wrap;
-  max-width: 75%;
+  flex-wrap: wrap;
+  padding-top: 38px;
   margin-left: 240px;
-  padding-top: 38px; */
 }
-.row-one .risk-counters {
+
+/* Left column */
+.home-column-one {
+  display: flex;
+  flex-direction: column;
+}
+.home-column-one .risk-counters {
   flex: 1;
 }
-.row-one .issue-buttons {
+.home-column-one .issue-buttons {
   flex: 1;
 }
 
-
-
-/* Medals main */
-.container{
+/* Progress */
+.progress{
   display: flex;
   flex-wrap: wrap;
-  max-width: 75%
 }
 
-.title-medals{
-  padding: 10px;
-  border-radius: 15px 15px 15px 15px;
-  background-color: var(--accentV2Light900);
-  margin-top: 20px;
-  text-align: center;
-  width:70%;
+.medals {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
+
 .medal-layout{
-  flex-basis: 25%;
   text-align: center;
   margin: 0 10px 20px;
-  height: 80%;
 }
 
 .medal-layout img{
-  max-width: 100%
+  max-width: 100px;
 }
 
 .medal-name{
@@ -195,19 +193,4 @@ body {
   font-weight: bold;
   text-align: center;
   margin-top: 10px;
-}
-
-/* Data home */
-.container-data{
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 60%;
-  padding-top: 38px;
-  margin-left: 240px;
-}
-.title-medals{
-  margin-left: 240px;
-}
-.container{
-  margin-left: 240px;
 }
