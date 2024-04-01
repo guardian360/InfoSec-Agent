@@ -1,17 +1,20 @@
 import cs from "../customize.json" assert { type: "json" };
-
+import { CloseNavigation } from "./navigation-menu.js";
+import { MarkSelectedNavigationItem } from "./navigation-menu.js";
 /** Load the content of the Personalize page */
 export function openPersonalizePage() {
+  CloseNavigation();
+  //MarkSelectedNavigationItem("home-button");
   document.getElementById("page-contents").innerHTML = `
-  <div class="personalize favicon-mode">
-    <span class="personalize-description">Favicon</span>
+  <div class="setting">
+    <span class="setting-description favicon-title ">Favicon</span>
     <div class="personalize-button-container">
       <label class="personalize-label" for="input-file-icon">Change favicon</label>
       <input class="personalize-input-invisible" type="file" id="input-file-icon" accept=".ico, .png">
     </div>
   </div>
   <hr class="solid">
-  <div class="personalize">
+  <div class="setting">
     <span class="personalize-description">Navigation image</span>
     <div class="personalize-button-container">
       <label class="personalize-label" for="input-file-picture">Update image</label>
@@ -19,7 +22,7 @@ export function openPersonalizePage() {
     </div>
   </div>
   <hr class="solid">
-  <div class="personalize">
+  <div class="setting">
     <span class="personalize-description">Navigation title</span>
     <div class="personalize-button-container">
       <label class="personalize-label" for="newTitle">Update title</label>
@@ -27,11 +30,11 @@ export function openPersonalizePage() {
     </div>
   </div>
   <hr class="solid">
-  <div class="personalize">
+  <div class="setting">
     <span class="personalize-description">Font</span>
   </div>
   <hr class="solid">
-  <div class="personalize">
+  <div class="setting">
     <span class="personalize-description">Background color Left nav</span>
     <div class="personalize-button-container">
       <label class="personalize-label" for="input-color-background">Change background</label>
@@ -39,11 +42,11 @@ export function openPersonalizePage() {
     </div>
   </div>
   <hr class="solid">
-  <div class="personalize">
+  <div class="setting">
     <span class="personalize-description">text color</span>
   </div>
   <hr class="solid">
-  <div class="personalize">
+  <div class="setting">
     <form action="" class="color-picker>
       <fieldset>
         <legend>Pick a theme</legend>
@@ -133,7 +136,7 @@ export function handleTitleChange() {
 export function handleLeftBackgroundNav(){
   const colorPicker = document.getElementById('input-color-background');
   const color = colorPicker.value;
-  let temp = document.getElementById('left-nav');
+  let temp = document.getElementsByClassName('left-nav')[0];
   temp.style.backgroundColor = color;
 }
 

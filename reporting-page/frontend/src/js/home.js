@@ -39,28 +39,34 @@ export function openHomePage() {
       </div>
       <div class="medals">
         <div class="medal-layout">
-          <img src="src/assets/images/img_medal1.jpg" alt="Photo of medal">
+          <img id="medal" alt="Photo of medal"></img>
           <p class="medal-name"> Medal 1</p>
           <p> 01-04-2024</p>
         </div>
         <div class="medal-layout">
-          <img src="src/assets/images/img_medal1.jpg" alt="Photo of medal">
+          <img id="medal2" alt="Photo of medal"></img>
           <p class="medal-name"> Medal 2</p>
           <p> 01-04-2024</p>
         </div>
         <div class="medal-layout">
-          <img src="src/assets/images/img_medal1.jpg" alt="Photo of medal">
+          <img id="medal3" alt="Photo of medal"></img>
           <p class="medal-name"> Medal 3</p>
           <p> 01-04-2024</p>
         </div><div class="medal-layout">
-          <img src="src/assets/images/img_medal1.jpg" alt="Photo of medal">
-          <p class="medal-name"> Medal 1</p>
+          <img id="medal4" alt="Photo of medal"></img>
+          <p class="medal-name"> Medal 4</p>
           <p> 01-04-2024</p>
         </div>
       </div>
     </div>
   </div>
   `;  
+
+    document.getElementById('medal').src = medal;
+    document.getElementById('medal2').src = medal;
+    document.getElementById('medal3').src = medal;
+    document.getElementById('medal4').src = medal;
+
     let rc = JSON.parse(sessionStorage.getItem("RiskCounters"));
     new PieChart("pieChart",rc);
 
@@ -94,7 +100,9 @@ export function openHomePage() {
   }
 
     document.getElementsByClassName("scan-now")[0].addEventListener("click", () => scanNow());
+    document.getElementById("home-button").addEventListener("click", () => openHomePage());
     document.getElementById("logo").innerHTML = localStorage.getItem("picture");
+
     document.onload = retrieveTheme();
 }
 

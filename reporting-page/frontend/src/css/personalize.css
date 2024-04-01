@@ -1,26 +1,14 @@
 @import url(color-palette.css);
 
 /* Setting box */
-.personalize {
-    padding: 20px;
-    display: flex;
-    float: left;
-    color: var(--text-body);
-    width: 70%;
-    margin-left: 240px;
-}
-.favicon-mode {
-    margin-top: 70px;
+.personalize-container {
+  padding: 20px 20px;
+  display: block;
+  color: var(--text-body);
 }
 .personalize-description {
     float: left;
     width: 200px;
-}
-hr.solid {
-    border-top: 1px solid var(--text-body);
-    float: left;
-    margin-left: 260px;
-    width: 70%;
 }
 
 .personalize-label{

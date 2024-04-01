@@ -4,14 +4,9 @@
 .setting {
     padding: 20px 20px;
     display: block;
-    float: left;
     color: var(--text-body);
-    width: 70%;
-    margin-left: 240px;
 }
-.personalize {
-    margin-top: 70px;
-}
+
 .setting-description {
     float: left;
     width: 100px;
@@ -22,7 +17,7 @@
     width: 100px;
 }
 hr.solid {
-    border-top: 1px solid var(--text-body);
+    border-top: 1px solid #ddd;
     float: center;
     margin: 10px;
 }

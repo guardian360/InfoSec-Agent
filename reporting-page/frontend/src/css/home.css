@@ -25,12 +25,12 @@ h2{
   display: flex;
 }
 .header-hamburger {
-  color: var(--dark-text);
+  color: var(--text-body);
   text-align: center;
   line-height: 60px;
 }
 .header-hamburger:hover {
-  color: var(--dark-text-hover);
+  color: var(--text-settings-hover);
   cursor: pointer;
 }
 .header-hamburger.container {
@@ -109,7 +109,7 @@ h2{
 
 
 /* Navigation menu */
-#left-nav {
+.left-nav {
   padding-top: 38px;
   height: 100vh;
   width: 240px;
@@ -118,26 +118,26 @@ h2{
   position: fixed;
   z-index: 1;
 }
-#left-nav a {
+.left-nav a {
   height: auto;
   width: 100%;
   line-height: 100%;
   text-decoration: none;
   float: left;
 }
-#left-nav .nav-link {
+.left-nav .nav-link {
   height: auto;
   width: 100%;
   line-height: 100%;
   text-decoration: none;
   float: left;
 }
-#left-nav p:hover {
+.left-nav p:hover {
   background-color: var(--background-nav-hover);
   color: var(--text-left-nav);
   cursor: pointer;
 }
-#left-nav p {
+.left-nav p {
   width: 100%;
   color: var(--text-left-nav);
   line-height: 100%;
@@ -145,15 +145,15 @@ h2{
   font-size: 1em;
   float:left;
 }
-#left-nav span {
+.left-nav span {
   float:left;
   vertical-align: bottom;
   padding: 10px;
 }
-#left-nav .material-symbols-outlined {
+.left-nav .material-symbols-outlined {
   padding-left: 20px;
 }
-#left-nav .nav-item {
+.left-nav .nav-item {
   padding-top: 15px;
 }
 
