@@ -43,6 +43,7 @@ function openHomePage() {
   </div>
   `;  
     let rc = JSON.parse(sessionStorage.getItem("RiskCounters"));
+    console.log(rc);
     new PieChart("pieChart",rc);
 
     document.getElementById("scan-button").addEventListener("click", () => scanNow());
@@ -62,3 +63,5 @@ function scanNow() {
 }
 
 document.onload = openHomePage();
+
+

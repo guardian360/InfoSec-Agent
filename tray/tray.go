@@ -251,6 +251,14 @@ func ScanNow() ([]checks.Check, error) {
 		return result, err
 	}
 
+	// Fill database with data
+	// scan.FillDataBase(result)
+
+	// zeros := make([]int, len(result))
+	// zeros[3] = 2
+	// sev, _ := scan.GetAllSeverities(result, zeros)
+	// fmt.Println("severities", sev)
+
 	return result, nil
 }
 
