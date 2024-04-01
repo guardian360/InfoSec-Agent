@@ -1,4 +1,5 @@
 name: Go Test
+
 on:
   push:
     branches:
@@ -8,14 +9,17 @@ on:
       - main
 
 jobs:
-  test:
+  go-test:
     runs-on: windows-latest
     steps:
     - name: Checkout git repository
       uses: actions/checkout@v4
+
     - name: Set up Go
       uses: actions/setup-go@v4
       with:
         go-version: '1.22.0'
+
     - name: Run tests
+      # skip TestFindEntriesValidInput because it opens the registry, which is different in the GitHub Actions runner
       run: go test -cover -skip TestFindEntriesValidInput ./...

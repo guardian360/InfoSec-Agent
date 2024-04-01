@@ -1,4 +1,5 @@
 name: Lint Backend
+
 on:
   push:
     branches:
@@ -14,11 +15,8 @@ on:
       - '.github/workflows/golangci-lint.yml' 
 
 permissions:
-  # Required: allow read access to the content for analysis.
   contents: read
-  # Optional: allow read access to pull request. Use with `only-new-issues` option.
   pull-requests: read
-  # Optional: Allow write access to checks to allow the action to annotate code in the PR.
   checks: write
 
 jobs:
@@ -31,32 +29,29 @@ jobs:
     steps:
       - name: Checkout git repository
         uses: actions/checkout@v4
+
       - name: Set up Go
         uses: actions/setup-go@v5
+
         with:
           go-version: '1.22.0'
+
       - name: Make lint result directory
         run: mkdir linting
+
       - name: Make dummy file for reporting-page linting
         run: New-Item -Force reporting-page/frontend/dist/index.html
+
       - name: Setup Go workspace
         run: ./setup_go_work.bat
+
       - name: Run linter on InfoSec-Agent backend
         uses: golangci/golangci-lint-action@v4
         with:
-          # Require: The version of golangci-lint to use.
           version: latest
 
-          # Optional: working directory, useful for monorepos
-          # working-directory: linting
-
-          # Optional: golangci-lint command line arguments.
-          #
-          # Note: By default, the `.golangci.yml` file should be at the root of the repository.
-          # The location of the configuration file can be changed by using `--config=`
           args: --out-format=json:linting/lint-report-InfoSec-Agent.json,colored-line-number,github-actions
 
-          # Optional: show only new issues if it's a pull request. The default value is `false`.
           only-new-issues: false
 
           # Optional: if set to true, then all caching functionality will be completely disabled,
@@ -69,8 +64,6 @@ jobs:
           # Optional: if set to true, then the action won't cache or restore ~/.cache/go-build.
           skip-build-cache: false
 
-          # Optional: The mode to install golangci-lint. It can be 'binary' or 'goinstall'.
-          # install-mode: "goinstall"
       - name: Run linter on reporting-page backend
         uses: golangci/golangci-lint-action@v4
         with:
@@ -85,6 +78,7 @@ jobs:
           skip-pkg-cache: false
           skip-build-cache: false
         if: always()
+        
       - name: Upload linter output as artifact
         uses: actions/upload-artifact@v2
         with:
