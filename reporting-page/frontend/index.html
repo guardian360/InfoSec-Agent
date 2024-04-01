@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
     <link rel="stylesheet" href="./src/css/color-palette.css">
+    <link rel="stylesheet" href="./src/css/responsive.css">
     <link rel="stylesheet" href="./src/css/home.css">
     <link rel="stylesheet" href="./src/css/settings.css">
     <link rel="stylesheet" href="./src/css/dashboard.css">
@@ -12,7 +13,7 @@
     <link rel="stylesheet" href="./src/css/personalize.css">
     
     <script src="./src/js/database.js" type="module" defer></script>
-    <script src="./src/js/vertical-navbar.js" type="module" defer></script>
+    <script src="./src/js/navigation-menu.js" type="module" defer></script>
     <script src="./src/js/home.js" type="module" defer></script>
     <script src="./src/js/settings.js" type="module" defer></script>
     <script src="./src/js/security-dashboard.js" type="module" defer></script>
@@ -28,6 +29,9 @@
   <body>
     <input type="file" id="faviconInput" accept="image/*"> <!-- Input field for selecting favicon file -->
     <div class="header">
+      <div class="header-hamburger container">
+        <span id="header-hambuger" class="header-hamburger material-symbols-outlined">menu</span>
+      </div>
       <div class="header-logo">
         <div id="logo-button" class="logo-name">
           <img id="logo" alt="logo"></img>

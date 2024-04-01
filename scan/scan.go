@@ -51,7 +51,9 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 		func() checks.Check {
 			return checks.SmbCheck(&commandmock.RealCommandExecutor{}, &commandmock.RealCommandExecutor{})
 		},
-		checks.Startup,
+		func() checks.Check {
+			return checks.Startup(registrymock.CURRENT_USER, registrymock.LOCAL_MACHINE, registrymock.LOCAL_MACHINE)
+		},
 		func() checks.Check {
 			return checks.GuestAccount(&commandmock.RealCommandExecutor{}, &commandmock.RealCommandExecutor{},
 				&commandmock.RealCommandExecutor{}, &commandmock.RealCommandExecutor{})

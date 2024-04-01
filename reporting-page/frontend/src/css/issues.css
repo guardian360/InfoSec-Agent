@@ -1,11 +1,18 @@
 @import url(color-palette.css);
 
+.issues-data {
+  color: var(--dark-text);
+  width: flex;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 /* Issue table */
 .issues-table {
   float: left;
-  margin-top: 58px;
-  width: 70%;
-  margin-left: 260px;
+  flex: 1;
+  margin: 10px;
 }
 
 .issues-table td, .issues-table th {
