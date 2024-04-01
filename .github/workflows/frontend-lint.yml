@@ -1,4 +1,4 @@
-name: Lint frontend
+name: Lint Frontend
 
 on:
   push:
@@ -26,17 +26,17 @@ jobs:
     steps:
       - name: Checkout git repository
         uses: actions/checkout@v4
-
-      - run: cd reporting-page/frontend
-
+        
       - name: Set up Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: 20
           
       - name: Install Node.js dependencies
         run: npm ci
-        
+          
+      - run: cd reporting-page/frontend
+          
       # ESLint and stylelint configuration in `reporting-page/frontend/package.json`
       - name: Run linters
         uses: wearerequired/lint-action@v2
