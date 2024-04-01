@@ -5,12 +5,18 @@ import (
 	"strings"
 )
 
+type ProgramLister interface {
+	ListInstalledPrograms(directory string) ([]string, error)
+}
+
+type RealProgramLister struct{}
+
 // PasswordManager checks for the presence of known password managers
 //
 // Parameters: _
 //
 // Returns: The name of the password manager if found, or "No password manager found" if not found
-func PasswordManager() Check {
+func PasswordManager(pl ProgramLister) Check {
 	// List of known password manager registry keys
 	passwordManagerNames := []string{
 		`LastPass`,
@@ -28,7 +34,7 @@ func PasswordManager() Check {
 	programFiles := "C:\\Program Files"
 	programFilesx86 := "C:\\Program Files (x86)"
 	// List all programs found within the 'Program Files' folder
-	programs, err := listInstalledPrograms(programFiles)
+	programs, err := pl.ListInstalledPrograms(programFiles)
 	if err != nil {
 		return NewCheckErrorf("PasswordManager",
 			"error listing installed programs in Program Files", err)
