@@ -1,5 +1,4 @@
 import { GetLocalization } from './localize.js';
-
 import { retrieveTheme } from "./personalize";
 
 /** Load the content of the Privacy Dashboard page */

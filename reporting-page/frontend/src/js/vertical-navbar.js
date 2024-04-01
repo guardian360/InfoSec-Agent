@@ -1,5 +1,6 @@
 import logo from '../assets/images/logoTeamA-transformed.png';
 import { GetLocalization } from './localize.js';
+import { retrieveTheme } from "./personalize";
 
 document.getElementById('logo').src = logo;
 

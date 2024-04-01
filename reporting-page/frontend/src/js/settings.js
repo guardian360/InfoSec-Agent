@@ -15,12 +15,9 @@ function updateLanguage() {
 /** Load the content of the Settings page */
 function openSettingsPage() {
   document.getElementById("page-contents").innerHTML = `
-  <div class="setting personalize">
+  <div class="setting">
     <span class="setting-description personalize-title">Personalization</span>
     <button class="setting-button personalize-button" type="button">Personalize</button>
-    <!--<div id="personalize-button-box">
-      <div class="personalize-button">Personalize</div>
-    </div>-->
   </div> 
   <hr class="solid">
   <div class="setting language">

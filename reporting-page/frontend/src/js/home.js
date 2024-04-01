@@ -79,9 +79,7 @@ function openHomePage() {
     }
 
     document.getElementsByClassName("scan-now")[0].addEventListener("click", () => scanNow());
-    document.getElementById("scan-button").addEventListener("click", () => scanNow());
     document.getElementById("logo").innerHTML = localStorage.getItem("picture");
-
     document.getElementById('medal').src = medal;
     document.getElementById('medal2').src = medal;
     document.getElementById('medal3').src = medal;
