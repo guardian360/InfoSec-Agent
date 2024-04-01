@@ -27,11 +27,8 @@ func main() {
 	// Create a new instance of the app and tray struct
 	app := NewApp()
 	tray := NewTray()
-<<<<<<< HEAD
 	database := NewDataBase()
-=======
 	localization.Init("../")
->>>>>>> main
 
 	// Create a Wails application with the specified options
 	err := wails.Run(&options.App{

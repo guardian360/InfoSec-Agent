@@ -3,7 +3,6 @@ import { GetAllSeverities } from "../../wailsjs/go/main/DataBase.js";
 import { openHomePage } from "./home.js";
 import * as runTime from "../../wailsjs/runtime/runtime.js";
 import * as rc from "./risk-counters.js"
-import { checks } from "../../wailsjs/go/models.js";
 
 /** Call ScanNow in backend and store result in sessionStorage */
 try {
@@ -30,7 +29,7 @@ const countOccurences = (severities, riskLevel) => severities.filter(item => ite
 
 /** Sets the severities collected from the checks and database in session storage
  * 
- * @param {checks.Check[]} input Checks to get severities from
+ * @param {Check[]} input Checks to get severities from
  * @param {int[]} ids List of result ids to get corresponding severities
  */
 function setSeverities(input, ids) {

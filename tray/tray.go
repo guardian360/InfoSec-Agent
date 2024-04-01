@@ -7,10 +7,7 @@ package tray
 import (
 	"log"
 
-<<<<<<< HEAD
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
-=======
->>>>>>> main
 	"github.com/InfoSec-Agent/InfoSec-Agent/icon"
 	"github.com/InfoSec-Agent/InfoSec-Agent/localization"
 	"github.com/InfoSec-Agent/InfoSec-Agent/scan"

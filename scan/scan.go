@@ -5,23 +5,14 @@ package scan
 
 import (
 	"encoding/json"
-<<<<<<< HEAD
-
-=======
 	"fmt"
->>>>>>> main
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/chromium"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/firefox"
 	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
 	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
 	"github.com/InfoSec-Agent/InfoSec-Agent/windowsmock"
-<<<<<<< HEAD
-	"golang.org/x/sys/windows/registry"
-
-	"fmt"
-=======
->>>>>>> main
 
 	"github.com/ncruces/zenity"
 )
