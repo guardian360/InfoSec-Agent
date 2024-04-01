@@ -1,7 +1,7 @@
 @import url(color-palette.css);
 
 .dashboard-data {
-  color: var(--dark-text);
+  color: var(--text-body);
   width: flex;
   display: flex;
   flex-direction: row;
@@ -21,7 +21,7 @@
 /* security status css */
 
 .security-status {
-  background-color: var(--secundaryLight500);
+  background-color: var(--background-piechart);
   float: center;
   display: flex;
 }
@@ -35,7 +35,7 @@
   border: none;
   outline: none;
   font-size: 20px;
-  color: var(--secundaryLight500); 
+  color: var(--text-body);
 }
 
 /* risk counters css */
@@ -71,12 +71,13 @@
 }
 
 .risk-counter p {
-  background-color: rgb(255, 255, 255);
+  background-color: var(--background-color-top-nav);
   margin: 10px;
   padding: 10px;
   vertical-align: middle;
   font-size: 17.5px;
   border-radius: 10px 10px 10px 10px;
+  color: var(--text-body);
 }
 
 /* SECOND COLUMN */
@@ -86,6 +87,8 @@
 .piechart {
   /* ratio between columns: 1:2:1 */
   /* flex: 2; */
+  background-color: var(--background-piechart);
+
 }
 
 .piechart .piechart-container {
@@ -123,8 +126,7 @@
   border: none;
   outline: none;
   padding: 10px 16px;
-  background-color: var(--blue);
-  color: var(--accentV1Light900);
+  background-color: var(--background-color-second-row-area);
   font-family: inherit;
   margin: 0;
   min-width: 160px;
@@ -139,29 +141,29 @@
   border: none;
   outline: none;
   padding: 14px 16px;
-  background-color: var(--blue);
-  color: var(--accentV1Light900);
+  background-color: var(--background-color-second-row-area);
+  color: white;
   font-family: inherit;
   min-width: 192px;
   border-radius: 10px;
 }
 .dropbtn:hover {
-  background-color: var(--blue-hover);
+  background-color: var(--blue-hover);/*!!!!!*/
   cursor: pointer;
 }
 
 .dropdown-selector {
   display: none;
   position: absolute;
-  background-color: var(--blue);
+  background-color: var(--background-color-second-row-area);
   min-width: 192px;
-  box-shadow: 0px 8px 36px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 36px 0px rgba(0,0,0);
   z-index: 1;
 }
   
 .dropdown-selector p {
   float: none;
-  color: white;
+  color: rgb(68, 68, 68);
   padding: 12px 16px;
   text-decoration: none;
   display: block;
@@ -178,8 +180,8 @@
 /* issue buttons */
 
 .issue-button {
-  background-color: var(--blue);
-  color: var(--accentV1Light900);
+  background-color: var(--background-piechart);
+  border: 3px solid var(--color-border);
   border-radius: 10px;
   margin: 0px 10px 10px 10px;
   text-align: center;
@@ -195,7 +197,7 @@
 }
 
 .issue-button:hover{
-  background-color: var(--blue-hover);
+  background-color: var(--blue-hover);  /*!!!!*/
   cursor: pointer;
 }
 
@@ -210,20 +212,20 @@
 
 .security-area {
   flex: 1;
-  background-color: var(--blue);
+  background-color: var(--background-color-second-row-area);
   border-radius: 10px;
   margin: 0px 10px 10px 10px;
   text-align: center;
 }
 
 .security-area p {
-  color: var(--accentV1Light900);
+  color: var(--text-body);
   padding: 5px;
   border-radius: 10px;
 }
 
 .security-area:hover {
-  background-color: var(--blue-hover);
+  background-color: var(--blue-hover); /*!!!!*/
   cursor: pointer;
 }
 

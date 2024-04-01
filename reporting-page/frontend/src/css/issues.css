@@ -1,7 +1,7 @@
 @import url(color-palette.css);
 
 .issues-data {
-  color: var(--dark-text);
+  color: var(--text-body);
   width: flex;
   display: flex;
   flex-direction: row;
@@ -20,12 +20,12 @@
   padding: 8px;
 }
 
-.issues-table tr:nth-child(even){background-color: var(--light-blue);}
+.issues-table tr:nth-child(even){background-color: var(--background-color-top-nav);}
 
 .issues-table th {
   text-align: left;
-  background-color: white;
-  color: var(--dark-text);
+  background-color: var(--background-color-table-header);
+  color: var(--text-body);
 }
 
 .issue-column span {
@@ -42,10 +42,10 @@
 }
 .issue-link {
   text-decoration: none;
-  color: var(--dark-text);
+  color: var(--text-body);
 }
 .issue-link:hover {
-  color: var(--dark-text-hover);
+  color: var(--text-settings-hover);
   cursor: pointer;
 }
 
@@ -55,12 +55,14 @@ h1 {
   margin-top: 80px;
   margin-left: 260px;
   margin-right: 20px;
+  color: var(--text-body);
 }
 
 .issue-information {
   float: left;
   margin-left: 260px;
   margin-right: 20px;
+  color: var(--text-body);
 }
 
 #back-button {
@@ -69,14 +71,15 @@ h1 {
   margin-right: 20px;
   margin-top: 20px;
   margin-bottom: 50px;
+  color: var(--text-body);
 }
 #back-button:hover {
-  color: var(--dark-text-hover);
+  color: var(--text-settings-hover);
   cursor:pointer;
 }
 
 .issue-solution {
-  background-color: var(--light-blue);
+  background-color: var(--background-color-top-nav);
   float: left;
   width: 100%;
   border-radius: 10px;
@@ -103,16 +106,16 @@ h1 {
   width: 320px;
 }
 .step-button {
-  color: var(--dark-text);
+  color: var(--text-body);
 }
 .step-button:hover {
-  color: var(--dark-text-hover);
+  color: var(--text-settings-hover);
   cursor:pointer;
 }
 #next-button {
   float: right;
   width: 130px;
-  background-color: var(--blue);
+  background-color: var(--background-color-left-nav);
   color: #fff;
   margin-left: auto; 
   padding: 10px;
@@ -122,7 +125,7 @@ h1 {
 #previous-button {
   float: left;
   width: 130px;
-  background-color: var(--blue);
+  background-color: var(--background-color-left-nav);
   color: #fff;
   padding: 10px;
   text-align: center;
