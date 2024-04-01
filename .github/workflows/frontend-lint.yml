@@ -39,12 +39,18 @@ jobs:
         working-directory: reporting-page
 
         # ESLint and stylelint configuration in `reporting-page/frontend/package.json`
-      - name: Run linters
-        uses: wearerequired/lint-action@v2
-        with:
-          eslint: true
-          eslint_args: "**/*.js"
-          eslint_dir: "reporting-page/frontend"
-          stylelint: true
-          stylelint_args: "**/*.css"
-          stylelint_dir: "reporting-page/frontend"
+      # - name: Run linters
+      #   uses: wearerequired/lint-action@v2
+      #   with:
+      #     eslint: true
+      #     eslint_args: "**/*.js"
+      #     eslint_dir: "reporting-page/frontend"
+      #     stylelint: true
+      #     stylelint_args: "**/*.css"
+      #     stylelint_dir: "reporting-page/frontend"
+      - name: Run ESLint
+        run: npx eslint **/*.js
+        working-directory: reporting-page/frontend
+      - name: Run Stylelint
+        run: npx stylelint **/*.css
+        working-directory: reporting-page/frontend
