@@ -19,5 +19,20 @@
     "jsdom": "^24.0.0",
     "mocha": "^10.3.0",
     "unit.js": "^2.1.1"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es2021": true
+    },
+    "extends": "google",
+    "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+    },
+    "rules": {}
+  },
+  "stylelint": {
+    "extends": ["stylelint-config-standard"]
   }
 }
