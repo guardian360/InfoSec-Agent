@@ -30,7 +30,15 @@
       "ecmaVersion": "latest",
       "sourceType": "module"
     },
-    "rules": {}
+    "ignorePatterns": [
+      "node_modules/",
+      "dist/",
+      "wailsjs/"
+    ],
+    "rules": {
+      "linebreak-style":"off",
+      "indent": ["error", 2]
+    }
   },
   "stylelint": {
     "extends": ["stylelint-config-standard"]
