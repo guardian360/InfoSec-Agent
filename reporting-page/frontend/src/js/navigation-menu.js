@@ -3,23 +3,23 @@ import { GetLocalization } from "./localize.js";
 
 document.getElementById("logo").src = logo;
 
+export function MarkSelectedNavigationItem() {
+    
+}
+
 export function CloseNavigationHamburger() {
     if (document.body.offsetWidth < 800) {
-        console.log("i closed navigation: " + document.body.offsetWidth);
         document.getElementsByClassName("left-nav")[0].style.visibility = "hidden";
     }
 }
 
 export function ToggleNavigationHamburger() {
     if (document.body.offsetWidth < 800) {
-        console.log("you clicked hamburger: " + document.body.offsetWidth);
         if (document.getElementsByClassName("left-nav")[0].style.visibility === "visible") {
-            console.log("great success you toggled to hidden!");
             document.getElementsByClassName("left-nav")[0].style.visibility = "hidden";
             return;
         }
         else {
-            console.log("great success you toggled to visible!");
             document.getElementsByClassName("left-nav")[0].style.visibility = "visible";
         }
     }
@@ -28,11 +28,9 @@ export function ToggleNavigationHamburger() {
 export function ToggleNavigationResize() {
     if (document.body.offsetWidth > 799) {
         document.getElementsByClassName("left-nav")[0].style.visibility = "visible";
-        console.log("you resized to visible: " + document.body.offsetWidth);
     }
     else {
         document.getElementsByClassName("left-nav")[0].style.visibility = "hidden";
-        console.log("you resized to invisible: " + document.body.offsetWidth);
     }
 }
 
