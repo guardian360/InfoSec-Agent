@@ -145,7 +145,7 @@
   border-radius: 10px;
 }
 .dropbtn:hover {
-  background-color: var(--background-nav-hover);/*!!!!!*/
+  background-color: var(--background-nav-hover);
   cursor: pointer;
 }
 
@@ -194,7 +194,7 @@
 }
 
 .issue-button:hover{
-  background-color: var(--background-nav-hover);  /*!!!!*/
+  background-color: var(--background-nav-hover);
   cursor: pointer;
 }
 
@@ -222,7 +222,7 @@
 }
 
 .security-area:hover {
-  background-color: var(--background-nav-hover); /*!!!!*/
+  background-color: var(--background-nav-hover);
   cursor: pointer;
 }
 
