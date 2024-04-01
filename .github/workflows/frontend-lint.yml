@@ -50,7 +50,9 @@ jobs:
       #     stylelint_dir: "reporting-page/frontend"
       - name: Run ESLint
         run: npx eslint **/*.js
+        if: always()
         working-directory: reporting-page/frontend
       - name: Run Stylelint
         run: npx stylelint **/*.css
         working-directory: reporting-page/frontend
+        if: always()
