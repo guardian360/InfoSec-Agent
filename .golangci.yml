@@ -294,6 +294,7 @@ issues:
         - gosec
         - noctx
         - wrapcheck
+        - godot
 
   exclude-dirs:
     - icon
