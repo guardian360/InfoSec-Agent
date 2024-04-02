@@ -11,6 +11,7 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 
+	// Necessary to use the sqlite driver
 	_ "modernc.org/sqlite"
 )
 
@@ -62,6 +63,10 @@ func HistoryFirefox() checks.Check {
 	rows, err := db.Query(
 		"SELECT url, last_visit_date FROM moz_places WHERE last_visit_date >= ? ORDER BY last_visit_date DESC",
 		lastWeek)
+	// TODO: check if this is error handling is correct
+	if rows.Err() != nil {
+		return checks.NewCheckError("HistoryFirefox", rows.Err())
+	}
 	if err != nil {
 		return checks.NewCheckError("HistoryFirefox", err)
 	}
@@ -80,7 +85,7 @@ func HistoryFirefox() checks.Check {
 		if err := rows.Scan(&url, &lastVisitDate); err != nil {
 			return checks.NewCheckError("HistoryFirefox", err)
 		}
-		var timeString = ""
+		var timeString string
 		// Check if the lastVisitDate is nil
 		var lastVisitDateInt64 int64
 		if lastVisitDate.Valid {

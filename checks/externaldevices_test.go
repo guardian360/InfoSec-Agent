@@ -114,7 +114,7 @@ func TestCommandOutput(t *testing.T) {
 			executor := &commandmock.RealCommandExecutor{}
 			output, _ := executor.Execute(tt.command, tt.arguments)
 			outputList := strings.Split(string(output), "\r\n")
-			if res := strings.Replace(outputList[1], " ", "", -1); res != tt.expected {
+			if res := strings.ReplaceAll(outputList[1], " ", ""); res != tt.expected {
 				t.Errorf("Expected %s, got %s", tt.expected, res)
 			}
 		})

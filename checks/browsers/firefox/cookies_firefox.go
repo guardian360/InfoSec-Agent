@@ -10,6 +10,7 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 
+	// Necessary to use the sqlite driver
 	_ "modernc.org/sqlite"
 )
 
@@ -56,6 +57,10 @@ func CookieFirefox() checks.Check {
 
 	// Query the name, origin and when the cookie was created from the database
 	rows, err := db.Query("SELECT name, host, creationTime FROM moz_cookies")
+	// TODO: check if this is error handling is correct
+	if rows.Err() != nil {
+		return checks.NewCheckError("CookieFirefox", rows.Err())
+	}
 	if err != nil {
 		return checks.NewCheckError("CookieFirefox", err)
 	}

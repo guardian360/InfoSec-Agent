@@ -11,7 +11,7 @@ import (
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
-
+	// Necessary to use the sqlite driver
 	_ "modernc.org/sqlite"
 )
 
@@ -45,7 +45,7 @@ func HistoryChromium(browser string) checks.Check {
 	}
 
 	// Copy the database, so problems don't arise when the file gets locked
-	tempHistoryDb := filepath.Join(os.TempDir(), "tempHistoryDb.sqlite")
+	tempHistoryDB := filepath.Join(os.TempDir(), "tempHistoryDB.sqlite")
 
 	// Clean up the temporary file when the function returns
 	defer func(name string) {
@@ -53,16 +53,16 @@ func HistoryChromium(browser string) checks.Check {
 		if err != nil {
 			log.Println("error removing file: ", err)
 		}
-	}(tempHistoryDb)
+	}(tempHistoryDB)
 
 	// Copy the database to a temporary location
-	copyError := utils.CopyFile(user+"/AppData/Local/"+browserPath+"/User Data/Default/History", tempHistoryDb)
+	copyError := utils.CopyFile(user+"/AppData/Local/"+browserPath+"/User Data/Default/History", tempHistoryDB)
 	if copyError != nil {
 		return checks.NewCheckError(returnBrowserName, copyError)
 	}
 
 	// Open the browser history database
-	db, err := sql.Open("sqlite", tempHistoryDb)
+	db, err := sql.Open("sqlite", tempHistoryDB)
 	if err != nil {
 		return checks.NewCheckError(returnBrowserName, err)
 	}
@@ -78,7 +78,8 @@ func HistoryChromium(browser string) checks.Check {
 	// Query the history table
 	// We limit the results to 50 for the time being
 	rows, err := db.Query(
-		"SELECT url, title, visit_count, last_visit_time FROM urls WHERE last_visit_time > ? ORDER BY last_visit_time DESC", oneWeekAgo)
+		"SELECT url, title, visit_count, last_visit_time FROM urls "+
+			"WHERE last_visit_time > ? ORDER BY last_visit_time DESC", oneWeekAgo)
 	if err != nil {
 		return checks.NewCheckError(returnBrowserName, err)
 	}
@@ -123,7 +124,6 @@ func HistoryChromium(browser string) checks.Check {
 	// Return the domains found, and when they were visited
 	if len(results) > 0 {
 		return checks.NewCheckResult(returnBrowserName, strings.Join(results, "\n"))
-	} else {
-		return checks.NewCheckResult(returnBrowserName, "No phishing domains found in the last week")
 	}
+	return checks.NewCheckResult(returnBrowserName, "No phishing domains found in the last week")
 }

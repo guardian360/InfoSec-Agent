@@ -5,9 +5,9 @@ package firefox
 
 import (
 	"encoding/json"
-	"fmt"
 	"log"
 	"os"
+	"strconv"
 	"strings"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
@@ -25,7 +25,8 @@ func ExtensionFirefox() (checks.Check, checks.Check) {
 	// Determine the directory in which the Firefox profile is stored
 	ffdirectory, err := utils.FirefoxFolder()
 	if err != nil {
-		return checks.NewCheckErrorf("ExtensionsFirefox", "No firefox directory found", err), checks.NewCheckErrorf("AdblockerFirefox", "No firefox directory found", err)
+		return checks.NewCheckErrorf("ExtensionsFirefox", "No firefox directory found", err),
+			checks.NewCheckErrorf("AdblockerFirefox", "No firefox directory found", err)
 	}
 
 	addBlocker := false // Variable used for checking if an adblocker is used
@@ -53,13 +54,13 @@ func ExtensionFirefox() (checks.Check, checks.Check) {
 	// In the result list, add: the name of the addon, type of the addon, the creator, and whether it is active or not
 	for _, addon := range extensions.Addons {
 		output = append(output, addon.DefaultLocale.Name+","+addon.Type+","+addon.DefaultLocale.Creator+","+
-			""+fmt.Sprintf("%t", addon.Active))
+			""+strconv.FormatBool(addon.Active))
 		// Determine if the addon is an adblocker
 		if adblockerFirefox(addon.DefaultLocale.Name) {
 			addBlocker = true
 		}
 	}
-	adBlockused := fmt.Sprintf("%t", addBlocker)
+	adBlockused := strconv.FormatBool(addBlocker)
 	return checks.NewCheckResult("ExtensionsFirefox", output...),
 		checks.NewCheckResult("AdblockerFirefox", adBlockused)
 }
