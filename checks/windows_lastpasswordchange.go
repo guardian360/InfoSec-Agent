@@ -21,7 +21,11 @@ func LastPasswordChange(executor commandmock.CommandExecutor) Check {
 		return NewCheckErrorf("LastPasswordChange", "error retrieving username", err)
 	}
 
-	output, _ := executor.Execute("net", "user", username)
+	output, err := executor.Execute("net", "user", username)
+	if err != nil {
+		return NewCheckErrorf("LastPasswordChange", "error executing net user", err)
+	}
+
 	lines := strings.Split(string(output), "\n")
 	// Define the regex pattern for the date
 	datePattern := `\b(\d{1,2}(-|/)\d{1,2}(-|/)\d{4})\b`

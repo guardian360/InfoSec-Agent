@@ -2,13 +2,14 @@ package checks_test
 
 import (
 	"errors"
-	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
-	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
 	"reflect"
 	"testing"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
+	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
 )
 
-// TestOpenPorts tests the OpenPorts function with different (in)valid inputs
+// TestUACCheck tests the OpenPorts function with different (in)valid inputs
 //
 // Parameters: t (testing.T) - the testing framework
 //
@@ -52,7 +53,7 @@ func TestUACCheck(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			got := checks.UACCheck(tt.executorUAC)
 			if !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("OpenPorts() = %v, want %v", got, tt.want)
+				t.Errorf("UACCheck() = %v, want %v", got, tt.want)
 			}
 		})
 	}
