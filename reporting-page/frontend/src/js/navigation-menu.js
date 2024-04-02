@@ -8,15 +8,23 @@ document.getElementById("logo").src = logo;
 */
 export function MarkSelectedNavigationItem(item) {
     let navItems = document.getElementsByClassName("nav-link");
+    let stylesheet = getComputedStyle(document.documentElement)
     for (let i = 1; i < navItems.length; i++) {
-        navItems[i].style.backgroundColor = "#4E869B";
+        navItems[i].style.backgroundColor = stylesheet.getPropertyValue('--background-color-left-nav');
     }
-    if (item === "settings-button") {
+    if (item === "settings-button" ) {
         return;
     }
-    document.getElementById(item).style.backgroundColor = "#427385";
+    document.getElementById(item).style.backgroundColor = stylesheet.getPropertyValue('--background-nav-hover');
 }
 
+export function loadPersonalizeNavigation(){
+    let navItems = document.getElementsByClassName("nav-link");
+    let stylesheet = getComputedStyle(document.documentElement)
+    for (let i = 1; i < navItems.length; i++) {
+        navItems[i].style.backgroundColor = stylesheet.getPropertyValue('--background-color-left-nav');
+    }
+}
 /** Close the navigation menu when a navigation item is clicked, only when screen size is less than 800px */
 export function CloseNavigation() {
     if (document.body.offsetWidth < 800) {

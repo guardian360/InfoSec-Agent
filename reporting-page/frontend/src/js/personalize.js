@@ -1,10 +1,11 @@
 import cs from "../customize.json" assert { type: "json" };
 import { CloseNavigation } from "./navigation-menu.js";
-import { MarkSelectedNavigationItem } from "./navigation-menu.js";
+import { loadPersonalizeNavigation } from "./navigation-menu.js";
+
 /** Load the content of the Personalize page */
 export function openPersonalizePage() {
-  CloseNavigation();
-  //MarkSelectedNavigationItem("home-button");
+  CloseNavigation();  
+
   document.getElementById("page-contents").innerHTML = `
   <div class="setting">
     <span class="setting-description favicon-title ">Favicon</span>
@@ -70,12 +71,12 @@ export function openPersonalizePage() {
   const inputBackgroundNav = document.getElementById('input-color-background'); //add eventlistener for changing navigation title
   inputBackgroundNav.addEventListener('change', handleLeftBackgroundNav);
 
-  
   /*save themes*/
   const themes = document.querySelectorAll('[name="theme"]');
   themes.forEach(themeOption => {
     themeOption.addEventListener("click", () => {
       localStorage.setItem("theme", themeOption.id);
+      loadPersonalizeNavigation();
     });
   });
   
@@ -84,9 +85,8 @@ export function openPersonalizePage() {
     if(themeOption.id === activeTheme){
       themeOption.checked = true;
     }
-  });
+  });  
   document.documentElement.className= activeTheme;
-
 }
   
 /* Changes the favicon*/
@@ -143,6 +143,7 @@ export function handleLeftBackgroundNav(){
 export function retrieveTheme(){
   const activeTheme = localStorage.getItem("theme");
   document.documentElement.className = activeTheme;
+
 }
 
 //achtergrond navigation
