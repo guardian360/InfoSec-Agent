@@ -14,7 +14,8 @@ import (
 // Returns: A list of applications that have the given permission
 func Permission(permission string, registryKey registrymock.RegistryKey) Check {
 	// Open the registry key for the given permission
-	key, err := registrymock.OpenRegistryKey(registryKey, `Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\`+permission)
+	key, err := registrymock.OpenRegistryKey(registryKey,
+		`Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\`+permission)
 	if err != nil {
 		return NewCheckErrorf(permission, "error opening registry key", err)
 	}
@@ -34,6 +35,9 @@ func Permission(permission string, registryKey registrymock.RegistryKey) Check {
 		// The registry key for packaged/non-packaged applications is different, so they get handled separately
 		if appName == "NonPackaged" {
 			appKey, err := registrymock.OpenRegistryKey(key, `NonPackaged`)
+			if err != nil {
+				return NewCheckErrorf(permission, "error opening registry key", err)
+			}
 			defer registrymock.CloseRegistryKey(appKey)
 			nonPackagedApplicationNames, err := appKey.ReadSubKeyNames(-1)
 			v, _, err := key.GetStringValue("Value")

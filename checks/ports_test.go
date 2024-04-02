@@ -103,7 +103,7 @@ func TestPortsExpected(t *testing.T) {
 				res, _ = executor.Execute(tt.command)
 			}
 			outputList := strings.Split(string(res), "\r\n")
-			if strings.Replace(outputList[1], " ", "", -1) != tt.expected {
+			if strings.ReplaceAll(outputList[1], " ", "") != tt.expected {
 				t.Errorf("Expected %s, got %s", tt.expected, outputList[1])
 			}
 		})

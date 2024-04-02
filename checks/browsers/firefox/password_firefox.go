@@ -44,7 +44,8 @@ func PasswordFirefox() checks.Check {
 	// TODO: Final functionality currently not implemented yet, should return an analysis on the used passwords
 	// Below code is a placeholder
 	for _, addon := range extensions.Addons {
-		output = append(output, addon.DefaultLocale.Name+addon.Type+addon.DefaultLocale.Creator+fmt.Sprintf("%t", addon.Active))
+		output = append(output,
+			addon.DefaultLocale.Name+addon.Type+addon.DefaultLocale.Creator+fmt.Sprintf("%t", addon.Active))
 	}
 	return checks.NewCheckResult("PasswordFirefox", output...)
 }

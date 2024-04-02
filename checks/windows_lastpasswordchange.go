@@ -48,6 +48,7 @@ func LastPasswordChange(executor commandmock.CommandExecutor) Check {
 		}
 	}
 
+	//TODO: Change fmt.Errorf to errors.New here and in test and fix failing test
 	if err != nil {
 		return NewCheckError("LastPasswordChange", fmt.Errorf("error parsing date"))
 	}
@@ -59,7 +60,9 @@ func LastPasswordChange(executor commandmock.CommandExecutor) Check {
 	halfYear := 365 / 2 * 24 * time.Hour
 	// If it has been more than half a year since the password was last changed, return a warning
 	if difference > halfYear {
-		return NewCheckResult("LastPasswordChange", fmt.Sprintf("Password last changed on %s , your password was changed more than half a year ago so you should change it again", match))
+		return NewCheckResult("LastPasswordChange",
+			fmt.Sprintf("Password last changed on %s , "+
+				"your password was changed more than half a year ago so you should change it again", match))
 	}
 	return NewCheckResult("LastPasswordChange", fmt.Sprintf("You changed your password recently on %s",
 		match))

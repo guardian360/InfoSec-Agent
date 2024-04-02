@@ -23,12 +23,10 @@ func RemoteDesktopCheck(registryKey registrymock.RegistryKey) Check {
 	val, _, err := key.GetIntegerValue("fDenyTSConnections")
 	if err != nil {
 		return NewCheckErrorf("RemoteDesktop", "error reading fDenyTSConnections", err)
-	} else {
-		// Check if Remote Desktop is enabled or disabled based on the value of fDenyTSConnections
-		if val == 0 {
-			return NewCheckResult("RemoteDesktop", "Remote Desktop is enabled")
-		} else {
-			return NewCheckResult("RemoteDesktop", "Remote Desktop is disabled")
-		}
 	}
+	// Check if Remote Desktop is enabled or disabled based on the value of fDenyTSConnections
+	if val == 0 {
+		return NewCheckResult("RemoteDesktop", "Remote Desktop is enabled")
+	}
+	return NewCheckResult("RemoteDesktop", "Remote Desktop is disabled")
 }

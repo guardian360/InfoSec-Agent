@@ -1,7 +1,6 @@
 package checks
 
 import (
-	"fmt"
 	"strings"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
@@ -22,7 +21,7 @@ func GuestAccount(
 	// Get localgroup name using GetWmiObject
 	// output, err := GuestAccountLocalGroup(executorLocalGroup)
 
-	command := fmt.Sprintf("Get-WmiObject Win32_Group | Select-Object SID,Name")
+	command := "Get-WmiObject Win32_Group | Select-Object SID,Name"
 	output, err := executorLocalGroup.Execute("powershell", command)
 	if err != nil {
 		return NewCheckErrorf("Guest account", "error executing command Get-WmiObject", err)

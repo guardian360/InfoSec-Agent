@@ -6,6 +6,7 @@ package scan
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/chromium"
@@ -95,7 +96,7 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 		// Display the currently running check in the progress dialog
 		err := dialog.Text(fmt.Sprintf("Running check %d of %d", i+1, totalChecks))
 		if err != nil {
-			fmt.Println("Error setting progress text:", err)
+			log.Println("Error setting progress text:", err)
 			return checkResults, err
 		}
 
@@ -106,7 +107,7 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 		progress := float64(i+1) / float64(totalChecks) * 100
 		err = dialog.Value(int(progress))
 		if err != nil {
-			fmt.Println("Error setting progress value:", err)
+			log.Println("Error setting progress value:", err)
 			return checkResults, err
 		}
 	}
@@ -114,7 +115,7 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 	// Serialize check results to JSON
 	jsonData, err := json.MarshalIndent(checkResults, "", "  ")
 	if err != nil {
-		fmt.Println("Error marshalling JSON:", err)
+		log.Println("Error marshalling JSON:", err)
 		return checkResults, err
 	}
 	fmt.Println(string(jsonData))
