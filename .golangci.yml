@@ -295,6 +295,7 @@ issues:
         - noctx
         - wrapcheck
         - godot
+        - goimports
 
   exclude-dirs:
     - icon
