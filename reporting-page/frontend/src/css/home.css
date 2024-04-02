@@ -1,4 +1,5 @@
 @import url(color-palette.css);
+
 body {
   background-color: var(--background-color);
   font-family: "DM Sans", sans-serif;
@@ -24,24 +25,29 @@ h2{
   width: 100%;
   display: flex;
 }
+
 .header-hamburger {
   color: var(--text-body);
   text-align: center;
   line-height: 60px;
 }
+
 .header-hamburger:hover {
   color: var(--text-settings-hover);
   cursor: pointer;
 }
+
 .header-hamburger.container {
   height: 60px;
 }
+
 .header-logo {
   height: 100%;
   width: 49%;
   display: inline-flex;
   float:left;
 }
+
 .logo-name {
   height: 100%;
   width: auto;
@@ -53,18 +59,22 @@ h2{
   padding: 0;
   margin: 0;
 }
+
 .logo-name:hover {
   cursor: pointer;
 }
+
 .logo-name img {
   height: 60%;
   margin-left: 20px;
   margin-top:12px;
 }
+
 .header-name {
   margin-left: 20px;
   line-height: 60px;
 }
+
 .header-name h1 {
   font-size: 1.2rem;
   font-weight:900;
@@ -72,6 +82,7 @@ h2{
   padding: 0;
   vertical-align: middle;
 }
+
 .header-settings {
   height: 100%;
   width: 49%;
@@ -80,28 +91,33 @@ h2{
   font-size: 1.2em;
   font-weight: 100;
 }
+
 .header-settings a {
   margin-left: auto;
   height: 100%;
   color: var(--text-body);
   text-decoration: none;
 }
+
 .header-settings .nav-link {
   margin-left: auto;
   height: 100%;
   color: var(--text-body);
   text-decoration: none;
 }
+
 .header-settings p {
   float:left;
   margin-top:17px;
   margin-bottom:auto;
   color: var(--text-body);
 }
+
 .header-settings p:hover {
   color: var(--text-settings-hover);
   cursor: pointer;
 }
+
 .header-settings span {
   vertical-align: middle;
   padding-right: 10px;
@@ -118,6 +134,7 @@ h2{
   position: fixed;
   z-index: 1;
 }
+
 .left-nav a {
   height: auto;
   width: 100%;
@@ -125,6 +142,7 @@ h2{
   text-decoration: none;
   float: left;
 }
+
 .left-nav .nav-link {
   height: auto;
   width: 100%;
@@ -132,11 +150,13 @@ h2{
   text-decoration: none;
   float: left;
 }
+
 .left-nav p:hover {
   background-color: var(--background-nav-hover);
   color: var(--text-left-nav);
   cursor: pointer;
 }
+
 .left-nav p {
   width: 100%;
   color: var(--text-left-nav);
@@ -145,14 +165,17 @@ h2{
   font-size: 1em;
   float:left;
 }
+
 .left-nav span {
   float:left;
   vertical-align: bottom;
   padding: 10px;
 }
+
 .left-nav .material-symbols-outlined {
   padding-left: 20px;
 }
+
 .left-nav .nav-item {
   padding-top: 15px;
 }
@@ -170,7 +193,7 @@ h2{
 }
 
 .data-segment {
-  border: 1px solid #ddd; /*var(--primaryDark500);*/
+  border: 1px solid #ddd; /* var(--primaryDark500); */
   border-radius: 5px;
   margin: 5px;
   flex: 1;
@@ -181,7 +204,7 @@ h2{
   font-size: 18px;
   font-weight: bold;
   color: var(--dark-text);
-  border-radius: 10px 10px 0px 0px;
+  border-radius: 10px 10px 0 0;
 }
 
 .data-segment-header p {
@@ -194,8 +217,7 @@ h2{
   color: var(--dark-text);
   width: flex;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   padding: 5px;
 }
 
@@ -204,9 +226,11 @@ h2{
   display: flex;
   flex-direction: column;
 }
+
 .home-column-one .risk-counters {
   flex: 1;
 }
+
 .home-column-one .issue-buttons {
   flex: 1;
 }
@@ -220,8 +244,7 @@ h2{
 .medals {
   width: 100%;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   justify-content: space-evenly;
 }
 
