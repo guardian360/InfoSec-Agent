@@ -2,8 +2,8 @@ package checks
 
 import (
 	"fmt"
+	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
-	"os/exec"
 	"regexp"
 	"strings"
 	"time"
@@ -14,14 +14,14 @@ import (
 // Parameters: _
 //
 // Returns: When the password was last changed
-func LastPasswordChange() Check {
+func LastPasswordChange(executor commandmock.CommandExecutor) Check {
 	// Get the current Windows username
 	username, err := utils.CurrentUsername()
 	if err != nil {
 		return NewCheckErrorf("LastPasswordChange", "error retrieving username", err)
 	}
 
-	output, _ := exec.Command("net", "user", username).Output()
+	output, _ := executor.Execute("net", "user", username)
 	lines := strings.Split(string(output), "\n")
 	// Define the regex pattern for the date
 	datePattern := `\b(\d{1,2}(-|/)\d{1,2}(-|/)\d{4})\b`
@@ -54,8 +54,7 @@ func LastPasswordChange() Check {
 	halfYear := 365 / 2 * 24 * time.Hour
 	// If it has been more than half a year since the password was last changed, return a warning
 	if difference > halfYear {
-		return NewCheckResult("LastPasswordChange", fmt.Sprintf("Password last changed on %s", match),
-			"password was changed more than half a year ago so you should change it again")
+		return NewCheckResult("LastPasswordChange", fmt.Sprintf("Password last changed on %s , your password was changed more than half a year ago so you should change it again", match))
 	}
 	return NewCheckResult("LastPasswordChange", fmt.Sprintf("You changed your password recently on %s",
 		match))
