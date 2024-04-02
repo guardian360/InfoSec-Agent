@@ -40,6 +40,9 @@ func Permission(permission string, registryKey registrymock.RegistryKey) Check {
 			}
 			defer registrymock.CloseRegistryKey(appKey)
 			nonPackagedApplicationNames, err := appKey.ReadSubKeyNames(-1)
+			if err != nil {
+				return NewCheckErrorf(permission, "error reading subkey names", err)
+			}
 			v, _, err := key.GetStringValue("Value")
 			registrymock.CloseRegistryKey(appKey)
 

@@ -5,6 +5,7 @@
 package tray
 
 import (
+	"github.com/pkg/errors"
 	"log"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
@@ -24,11 +25,11 @@ import (
 	"time"
 )
 
-var scanCounter int
-var scanTicker *time.Ticker
+var ScanCounter int
+var ScanTicker *time.Ticker
 var language = 1 // Default language is British English
-var menuItems []MenuItem
-var rpPage = false
+var MenuItems []MenuItem
+var ReportingPageOpen = false
 var mQuit *systray.MenuItem
 
 type MenuItem struct {
@@ -49,23 +50,33 @@ func OnReady() {
 
 	// Generate the menu for the system tray application
 
-	mReportingPage := systray.AddMenuItem(localization.Localize(language, "Tray.ReportingPageTitle"), localization.Localize(language, "Tray.ReportingPageTooltip"))
-	menuItems = append(menuItems, MenuItem{MenuTitle: "Tray.ReportingPageTitle", menuTooltip: "Tray.ReportingPageTooltip", sysMenuItem: mReportingPage})
+	mReportingPage := systray.AddMenuItem(localization.Localize(language, "Tray.ReportingPageTitle"),
+		localization.Localize(language, "Tray.ReportingPageTooltip"))
+	MenuItems = append(MenuItems, MenuItem{MenuTitle: "Tray.ReportingPageTitle",
+		menuTooltip: "Tray.ReportingPageTooltip", sysMenuItem: mReportingPage})
 
 	systray.AddSeparator()
-	mChangeScanInterval := systray.AddMenuItem(localization.Localize(language, "Tray.ScanIntervalTitle"), localization.Localize(language, "Tray.ScanIntervalTooltip"))
-	menuItems = append(menuItems, MenuItem{MenuTitle: "Tray.ScanIntervalTitle", menuTooltip: "Tray.ScanIntervalTooltip", sysMenuItem: mChangeScanInterval})
+	mChangeScanInterval := systray.AddMenuItem(localization.Localize(language, "Tray.ScanIntervalTitle"),
+		localization.Localize(language, "Tray.ScanIntervalTooltip"))
+	MenuItems = append(MenuItems, MenuItem{MenuTitle: "Tray.ScanIntervalTitle",
+		menuTooltip: "Tray.ScanIntervalTooltip", sysMenuItem: mChangeScanInterval})
 
-	mScanNow := systray.AddMenuItem(localization.Localize(language, "Tray.ScanNowTitle"), localization.Localize(language, "Tray.ScanNowTooltip"))
-	menuItems = append(menuItems, MenuItem{MenuTitle: "Tray.ScanNowTitle", menuTooltip: "Tray.ScanNowTooltip", sysMenuItem: mScanNow})
+	mScanNow := systray.AddMenuItem(localization.Localize(language, "Tray.ScanNowTitle"),
+		localization.Localize(language, "Tray.ScanNowTooltip"))
+	MenuItems = append(MenuItems, MenuItem{MenuTitle: "Tray.ScanNowTitle",
+		menuTooltip: "Tray.ScanNowTooltip", sysMenuItem: mScanNow})
 
 	systray.AddSeparator()
-	mChangeLanguage := systray.AddMenuItem(localization.Localize(language, "Tray.ChangeLanguageTitle"), localization.Localize(language, "Tray.ChangeLanguageTooltip"))
-	menuItems = append(menuItems, MenuItem{MenuTitle: "Tray.ChangeLanguageTitle", menuTooltip: "Tray.ChangeLanguageTooltip", sysMenuItem: mChangeLanguage})
+	mChangeLanguage := systray.AddMenuItem(localization.Localize(language, "Tray.ChangeLanguageTitle"),
+		localization.Localize(language, "Tray.ChangeLanguageTooltip"))
+	MenuItems = append(MenuItems, MenuItem{MenuTitle: "Tray.ChangeLanguageTitle",
+		menuTooltip: "Tray.ChangeLanguageTooltip", sysMenuItem: mChangeLanguage})
 
 	systray.AddSeparator()
-	mQuit = systray.AddMenuItem(localization.Localize(language, "Tray.QuitTitle"), localization.Localize(language, "Tray.QuitTooltip"))
-	menuItems = append(menuItems, MenuItem{MenuTitle: "Tray.QuitTitle", menuTooltip: "Tray.QuitTooltip", sysMenuItem: mQuit})
+	mQuit = systray.AddMenuItem(localization.Localize(language, "Tray.QuitTitle"),
+		localization.Localize(language, "Tray.QuitTooltip"))
+	MenuItems = append(MenuItems, MenuItem{MenuTitle: "Tray.QuitTitle",
+		menuTooltip: "Tray.QuitTooltip", sysMenuItem: mQuit})
 
 	// Set up a channel to receive OS signals, used for termination
 	// Can be used to notify the application about system termination signals,
@@ -73,22 +84,25 @@ func OnReady() {
 	sigc := make(chan os.Signal, 1)
 	signal.Notify(sigc, syscall.SIGTERM, syscall.SIGINT)
 
-	scanCounter = 0
+	ScanCounter = 0
 	// Set a ticker to run a scan at a set interval (default = 1 week)
-	scanTicker = time.NewTicker(7 * 24 * time.Hour)
+	ScanTicker = time.NewTicker(7 * 24 * time.Hour)
 
 	// Iterate over each menu option/signal
 	for {
 		select {
 		case <-mReportingPage.ClickedCh:
-			err := openReportingPage("")
+			err := OpenReportingPage("")
 			if err != nil {
 				log.Println(err)
 			}
 		case <-mChangeScanInterval.ClickedCh:
 			ChangeScanInterval()
 		case <-mScanNow.ClickedCh:
-			ScanNow()
+			_, err := ScanNow()
+			if err != nil {
+				log.Println("Error scanning:", err)
+			}
 		case <-mChangeLanguage.ClickedCh:
 			ChangeLanguage()
 			RefreshMenu()
@@ -96,11 +110,14 @@ func OnReady() {
 			systray.Quit()
 		case <-sigc:
 			systray.Quit()
-		// Executes each time the scanTicker has elapsed the set amount of time
-		case <-scanTicker.C:
-			scanCounter++
-			fmt.Println("Scan:", scanCounter)
-			ScanNow()
+		// Executes each time the ScanTicker has elapsed the set amount of time
+		case <-ScanTicker.C:
+			ScanCounter++
+			fmt.Println("Scan:", ScanCounter)
+			_, err := ScanNow()
+			if err != nil {
+				log.Println("Error scanning:", err)
+			}
 		}
 	}
 }
@@ -113,14 +130,14 @@ func OnReady() {
 func OnQuit() {
 }
 
-// openReportingPage opens the reporting page using a Wails application
+// OpenReportingPage opens the reporting page using a Wails application
 //
 // Parameters: _
 //
 // Returns: _
-func openReportingPage(path string) error {
-	if rpPage {
-		return fmt.Errorf("reporting-page is already running")
+func OpenReportingPage(path string) error {
+	if ReportingPageOpen {
+		return errors.New("reporting-page is already running")
 	}
 
 	// Get the current working directory
@@ -128,13 +145,13 @@ func openReportingPage(path string) error {
 	//Consideration: Wails can also send (termination) signals to the back-end, might be worth investigating
 	originalDir, err := os.Getwd()
 	if err != nil {
-		return fmt.Errorf("Error getting current directory: %s", err)
+		return fmt.Errorf("error getting current directory: %w", err)
 	}
 
 	// Change directory to reporting-page folder
 	err = os.Chdir(path + "reporting-page")
 	if err != nil {
-		return fmt.Errorf("Error changing directory: %s", err)
+		return fmt.Errorf("error changing directory: %w", err)
 	}
 
 	// Restore the original working directory
@@ -143,7 +160,7 @@ func openReportingPage(path string) error {
 		if err != nil {
 			log.Println("Error changing directory:", err)
 		}
-		rpPage = false
+		ReportingPageOpen = false
 	}()
 
 	// Build reporting-page executable
@@ -152,7 +169,7 @@ func openReportingPage(path string) error {
 	buildCmd.Stdout = os.Stdout
 	buildCmd.Stderr = os.Stderr
 	if err := buildCmd.Run(); err != nil {
-		return fmt.Errorf("Error building reporting-page: %s", err)
+		return fmt.Errorf("error building reporting-page: %w", err)
 	}
 
 	// Set up the reporting-page executable
@@ -166,15 +183,15 @@ func openReportingPage(path string) error {
 		if err := runCmd.Process.Kill(); err != nil {
 			log.Println("Error interrupting reporting-page process:", err)
 		}
-		rpPage = false
+		ReportingPageOpen = false
 		systray.Quit()
 	}()
 
-	rpPage = true
+	ReportingPageOpen = true
 	// Run the reporting page executable
 	if err := runCmd.Run(); err != nil {
-		rpPage = false
-		return fmt.Errorf("Error running reporting-page: %s", err)
+		ReportingPageOpen = false
+		return fmt.Errorf("error running reporting-page: %w", err)
 	}
 	return nil
 }
@@ -192,7 +209,8 @@ func ChangeScanInterval(testInput ...string) {
 	} else {
 		// Get user input by creating a dialog window
 		var err error
-		res, err = zenity.Entry("Enter the scan interval (in hours):", zenity.Title("Change Scan Interval"), zenity.DefaultItems("24"))
+		res, err = zenity.Entry("Enter the scan interval (in hours):", zenity.Title("Change Scan Interval"),
+			zenity.DefaultItems("24"))
 		if err != nil {
 			log.Println("Error creating dialog:", err)
 			return
@@ -207,8 +225,8 @@ func ChangeScanInterval(testInput ...string) {
 	}
 
 	// Restart the ticker with the new interval
-	scanTicker.Stop()
-	scanTicker = time.NewTicker(time.Duration(interval) * time.Hour)
+	ScanTicker.Stop()
+	ScanTicker = time.NewTicker(time.Duration(interval) * time.Hour)
 	fmt.Printf("Scan interval changed to %d hours\n", interval)
 }
 
@@ -218,10 +236,10 @@ func ChangeScanInterval(testInput ...string) {
 //
 // Returns: list of checks
 func ScanNow() ([]checks.Check, error) {
-	// scanCounter is not concretely used at the moment
+	// ScanCounter is not concretely used at the moment
 	// might be useful in the future
-	scanCounter++
-	fmt.Println("Scanning now. Scan:", scanCounter)
+	ScanCounter++
+	fmt.Println("Scanning now. Scan:", ScanCounter)
 
 	// Display a progress dialog while the scan is running
 	dialog, err := zenity.Progress(
@@ -300,20 +318,17 @@ func ChangeLanguage(testInput ...string) {
 //
 // Returns: _
 func RefreshMenu() {
-	fmt.Println("Current language: ", language)
-	fmt.Print("Current menu items: ", menuItems)
-	for _, item := range menuItems {
+	for _, item := range MenuItems {
 		item.sysMenuItem.SetTitle(localization.Localize(language, item.MenuTitle))
-		fmt.Println(localization.Localize(language, item.MenuTitle))
 		item.sysMenuItem.SetTooltip(localization.Localize(language, item.menuTooltip))
 	}
 }
 
-// GetLanguage returns the current language index
+// Language returns the current language index
 //
 // Parameters: _
 //
 // Returns: language index
-func GetLanguage() int {
+func Language() int {
 	return language
 }

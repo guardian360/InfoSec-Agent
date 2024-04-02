@@ -4,7 +4,7 @@
 package utils
 
 import (
-	"fmt"
+	"errors"
 	"io"
 	"log"
 	"net/http"
@@ -60,8 +60,7 @@ func CopyFile(src, dst string) error {
 func GetPhishingDomains() []string {
 	// Get the phishing domains from up-to-date GitHub list
 	client := &http.Client{}
-	url := fmt.Sprintf(
-		"https://raw.githubusercontent.com/mitchellkrogza/Phishing.Database/master/phishing-domains-ACTIVE.txt")
+	url := "https://raw.githubusercontent.com/mitchellkrogza/Phishing.Database/master/phishing-domains-ACTIVE.txt"
 	req, err := http.NewRequest("GET", url, nil)
 	req.Header.Add("User-Agent", "Mozilla/5.0")
 	if err != nil {
@@ -81,6 +80,9 @@ func GetPhishingDomains() []string {
 
 	// Parse the response of potential scam domains and split it into a list of domains
 	scamDomainsResponse, err := io.ReadAll(resp.Body)
+	if err != nil {
+		log.Println("Error reading response body:", err)
+	}
 	return strings.Split(string(scamDomainsResponse), "\n")
 }
 
@@ -147,7 +149,7 @@ func FirefoxFolder() ([]string, error) {
 func CurrentUsername() (string, error) {
 	currentUser, err := user.Current()
 	if currentUser.Username == "" || err != nil {
-		return "", fmt.Errorf("failed to retrieve current username")
+		return "", errors.New("failed to retrieve current username")
 	}
 	return strings.Split(currentUser.Username, "\\")[1], nil
 }

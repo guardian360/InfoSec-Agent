@@ -1,6 +1,7 @@
-package utils
+package utils_test
 
 import (
+	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"os"
 	"testing"
 
@@ -19,7 +20,7 @@ func TestCopyFileSuccess(t *testing.T) {
 		err := os.Remove("utils_copy.go")
 		require.NoError(t, err)
 	}()
-	err := CopyFile(src, dst)
+	err := utils.CopyFile(src, dst)
 	require.NoError(t, err)
 }
 
@@ -28,11 +29,11 @@ func TestCopyFileSuccess(t *testing.T) {
 // Parameters: t *testing.T - The testing framework
 //
 // Returns: _
-func TestCopyFileFailNonexistentSource(T *testing.T) {
+func TestCopyFileFailNonexistentSource(t *testing.T) {
 	src := "nonexistent.txt"
 	dst := "test_copy.txt"
-	err := CopyFile(src, dst)
-	require.Error(T, err)
+	err := utils.CopyFile(src, dst)
+	require.Error(t, err)
 }
 
 // TestCopyFileFailNonexistentDestination tests the CopyFile function with a nonexistent destination folder
@@ -40,13 +41,13 @@ func TestCopyFileFailNonexistentSource(T *testing.T) {
 // Parameters: t *testing.T - The testing framework
 //
 // Returns: _
-func TestCopyFileFailNonexistentDestination(T *testing.T) {
+func TestCopyFileFailNonexistentDestination(t *testing.T) {
 	src := "utils.go"
 	dst := "nonexistent/test_copy.txt"
-	err := CopyFile(src, dst)
-	require.Error(T, err)
+	err := utils.CopyFile(src, dst)
+	require.Error(t, err)
 	_, err = os.Stat("nonexistent")
-	require.Error(T, err)
+	require.Error(t, err)
 }
 
 // TestPhishingDomainsReturnsResults ensures the GetPhishingDomains function returns results
@@ -54,9 +55,9 @@ func TestCopyFileFailNonexistentDestination(T *testing.T) {
 // Parameters: t *testing.T - The testing framework
 //
 // Returns: _
-func TestPhishingDomainsReturnsResults(T *testing.T) {
-	domains := GetPhishingDomains()
-	require.NotEmpty(T, domains)
+func TestPhishingDomainsReturnsResults(t *testing.T) {
+	domains := utils.GetPhishingDomains()
+	require.NotEmpty(t, domains)
 }
 
 // TestFirefoxFolder tests the FirefoxFolder function
@@ -70,8 +71,8 @@ func TestPhishingDomainsReturnsResults(T *testing.T) {
 // 	// It will fail if the user does not have Firefox installed.
 //	// It does work properly if you do have it installed.
 //	folders, err := FirefoxFolder()
-//	require.NoError(T, err)
-//	require.NotEmpty(T, folders)
+//	require.NoError(t, err)
+//	require.NotEmpty(t, folders)
 //}
 
 // TestCurrentUserNameReturnsResults ensures the CurrentUserName function returns a result
@@ -79,10 +80,10 @@ func TestPhishingDomainsReturnsResults(T *testing.T) {
 // Parameters: t *testing.T - The testing framework
 //
 // Returns: _
-func TestCurrentUsernameReturnsResult(T *testing.T) {
-	username, err := CurrentUsername()
-	require.NoError(T, err)
-	require.NotEmpty(T, username)
+func TestCurrentUsernameReturnsResult(t *testing.T) {
+	username, err := utils.CurrentUsername()
+	require.NoError(t, err)
+	require.NotEmpty(t, username)
 }
 
 // TestRemoveDuplicateStrRemovesDuplicates ensures the function works as intended
@@ -90,11 +91,11 @@ func TestCurrentUsernameReturnsResult(T *testing.T) {
 // Parameters: t *testing.T - The testing framework
 //
 // Returns: _
-func TestRemoveDuplicateStrRemovesDuplicates(T *testing.T) {
+func TestRemoveDuplicateStrRemovesDuplicates(t *testing.T) {
 	input := []string{"a", "b", "a", "c", "b"}
 	expected := []string{"a", "b", "c"}
-	result := RemoveDuplicateStr(input)
-	require.Equal(T, expected, result)
+	result := utils.RemoveDuplicateStr(input)
+	require.Equal(t, expected, result)
 }
 
 // TestRemoveDuplicateStrEmptyInput ensures the function works as intended with an empty input
@@ -102,9 +103,9 @@ func TestRemoveDuplicateStrRemovesDuplicates(T *testing.T) {
 // Parameters: t *testing.T - The testing framework
 //
 // Returns: _
-func TestRemoveDuplicateStrEmptyInput(T *testing.T) {
+func TestRemoveDuplicateStrEmptyInput(t *testing.T) {
 	var input []string
 	var expected []string
-	result := RemoveDuplicateStr(input)
-	require.Equal(T, expected, result)
+	result := utils.RemoveDuplicateStr(input)
+	require.Equal(t, expected, result)
 }

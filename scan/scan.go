@@ -32,28 +32,28 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 			return checks.PasswordManager(checks.RealProgramLister{})
 		},
 		func() checks.Check {
-			return checks.WindowsDefender(registrymock.LOCAL_MACHINE, registrymock.LOCAL_MACHINE)
+			return checks.WindowsDefender(registrymock.LocalMachine, registrymock.LocalMachine)
 		},
 		func() checks.Check {
 			return checks.LastPasswordChange(&commandmock.RealCommandExecutor{})
 		},
 		func() checks.Check {
-			return checks.LoginMethod(registrymock.LOCAL_MACHINE)
+			return checks.LoginMethod(registrymock.LocalMachine)
 		},
 		func() checks.Check {
-			return checks.Permission("location", registrymock.CURRENT_USER)
+			return checks.Permission("location", registrymock.CurrentUser)
 		},
 		func() checks.Check {
-			return checks.Permission("microphone", registrymock.CURRENT_USER)
+			return checks.Permission("microphone", registrymock.CurrentUser)
 		},
 		func() checks.Check {
-			return checks.Permission("webcam", registrymock.CURRENT_USER)
+			return checks.Permission("webcam", registrymock.CurrentUser)
 		},
 		func() checks.Check {
-			return checks.Permission("appointments", registrymock.CURRENT_USER)
+			return checks.Permission("appointments", registrymock.CurrentUser)
 		},
 		func() checks.Check {
-			return checks.Permission("contacts", registrymock.CURRENT_USER)
+			return checks.Permission("contacts", registrymock.CurrentUser)
 		},
 		func() checks.Check {
 			return checks.Bluetooth(registrymock.NewRegistryKeyWrapper(registry.LOCAL_MACHINE))
@@ -63,13 +63,13 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 		},
 		func() checks.Check { return checks.WindowsOutdated(&windowsmock.RealWindowsVersion{}) },
 		func() checks.Check {
-			return checks.SecureBoot(registrymock.LOCAL_MACHINE)
+			return checks.SecureBoot(registrymock.LocalMachine)
 		},
 		func() checks.Check {
 			return checks.SmbCheck(&commandmock.RealCommandExecutor{}, &commandmock.RealCommandExecutor{})
 		},
 		func() checks.Check {
-			return checks.Startup(registrymock.CURRENT_USER, registrymock.LOCAL_MACHINE, registrymock.LOCAL_MACHINE)
+			return checks.Startup(registrymock.CurrentUser, registrymock.LocalMachine, registrymock.LocalMachine)
 		},
 		func() checks.Check {
 			return checks.GuestAccount(&commandmock.RealCommandExecutor{}, &commandmock.RealCommandExecutor{},
@@ -77,7 +77,7 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 		},
 		func() checks.Check { return checks.UACCheck(&commandmock.RealCommandExecutor{}) },
 		func() checks.Check {
-			return checks.RemoteDesktopCheck(registrymock.LOCAL_MACHINE)
+			return checks.RemoteDesktopCheck(registrymock.LocalMachine)
 		},
 		func() checks.Check { return checks.ExternalDevices(&commandmock.RealCommandExecutor{}) },
 		func() checks.Check { return checks.NetworkSharing(&commandmock.RealCommandExecutor{}) },

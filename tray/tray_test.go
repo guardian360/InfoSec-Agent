@@ -1,6 +1,7 @@
-package tray
+package tray_test
 
 import (
+	"github.com/InfoSec-Agent/InfoSec-Agent/tray"
 	"io"
 	"os"
 	"testing"
@@ -24,7 +25,7 @@ func TestMain(m *testing.M) {
 	go localization.Init("../")
 	time.Sleep(100 * time.Millisecond)
 
-	go systray.Run(OnReady, OnQuit)
+	go systray.Run(tray.OnReady, tray.OnQuit)
 
 	// Wait for the system tray application to initialize
 	time.Sleep(100 * time.Millisecond)
@@ -69,7 +70,7 @@ func TestChangeScanInterval(t *testing.T) {
 		os.Stdout = w
 
 		// Run the function with mocked user input
-		go ChangeScanInterval(tc.input)
+		go tray.ChangeScanInterval(tc.input)
 
 		// Wait for the function to complete
 		time.Sleep(100 * time.Millisecond)
@@ -83,7 +84,7 @@ func TestChangeScanInterval(t *testing.T) {
 		capturedOutput, _ := io.ReadAll(r)
 
 		// Assert that the printed message matches the expected message
-		require.Equal(t, string(capturedOutput), tc.expectedMessage)
+		require.Equal(t, tc.expectedMessage, string(capturedOutput))
 	}
 }
 
@@ -93,24 +94,25 @@ func TestChangeScanInterval(t *testing.T) {
 //
 // Returns: _
 func TestScanNow(t *testing.T) {
-	// Set up initial scanCounter value
+	// Set up initial ScanCounter value
 	initialScanCounter := 0
 
 	tickerAdvanced := make(chan struct{})
 
 	// Listen for ticker advancement
 	go func() {
-		<-scanTicker.C
+		<-tray.ScanTicker.C
 		tickerAdvanced <- struct{}{}
 	}()
 
 	// Run the function
-	ScanNow()
+	_, err := tray.ScanNow()
+	require.NoError(t, err)
 
-	// Assert that scanCounter was incremented
-	finalScanCounter := scanCounter
+	// Assert that ScanCounter was incremented
+	finalScanCounter := tray.ScanCounter
 	expectedScanCounter := initialScanCounter + 1
-	require.Equal(t, finalScanCounter, expectedScanCounter)
+	require.Equal(t, expectedScanCounter, finalScanCounter)
 }
 
 // TestOnQuit tests the OnQuit function
@@ -127,7 +129,7 @@ func TestOnQuit(t *testing.T) {
 
 	// Run OnQuit in a separate goroutine
 	go func() {
-		OnQuit()
+		tray.OnQuit()
 		quitCompleted <- struct{}{}
 	}()
 
@@ -184,8 +186,8 @@ func TestChangeLang(t *testing.T) {
 	}
 
 	for _, tc := range testCases {
-		ChangeLanguage(tc.input)
-		require.Equal(t, tc.expectedIndex, language)
+		tray.ChangeLanguage(tc.input)
+		require.Equal(t, tc.expectedIndex, tray.Language())
 	}
 }
 
@@ -195,13 +197,13 @@ func TestChangeLang(t *testing.T) {
 //
 // Returns: _
 func TestRefreshMenu(t *testing.T) {
-	value1 := menuItems[0].MenuTitle
-	translation1 := localization.Localize(language, value1)
-	ChangeLanguage("Spanish")
+	value1 := tray.MenuItems[0].MenuTitle
+	translation1 := localization.Localize(tray.Language(), value1)
+	tray.ChangeLanguage("Spanish")
 	// Refresh the menu, then check if the translation is different
-	// RefreshMenu(menuItems)
-	value2 := menuItems[0].MenuTitle
-	translation2 := localization.Localize(language, value2)
+	// RefreshMenu(MenuItems)
+	value2 := tray.MenuItems[0].MenuTitle
+	translation2 := localization.Localize(tray.Language(), value2)
 
 	require.NotEqual(t, translation1, translation2)
 }
@@ -213,8 +215,8 @@ func TestRefreshMenu(t *testing.T) {
 //
 // Returns: _
 func TestOpenReportingPageWhenAlreadyOpen(t *testing.T) {
-	rpPage = true
-	err := openReportingPage("../")
+	tray.ReportingPageOpen = true
+	err := tray.OpenReportingPage("../")
 	require.Error(t, err)
 	require.Equal(t, "reporting-page is already running", err.Error())
 }

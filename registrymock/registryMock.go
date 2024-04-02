@@ -7,9 +7,8 @@ import (
 )
 
 var (
-	CLASSES_ROOT  = RegistryKey(NewRegistryKeyWrapper(registry.CLASSES_ROOT))
-	CURRENT_USER  = RegistryKey(NewRegistryKeyWrapper(registry.CURRENT_USER))
-	LOCAL_MACHINE = RegistryKey(NewRegistryKeyWrapper(registry.LOCAL_MACHINE))
+	CurrentUser  = RegistryKey(NewRegistryKeyWrapper(registry.CURRENT_USER))
+	LocalMachine = RegistryKey(NewRegistryKeyWrapper(registry.LOCAL_MACHINE))
 )
 
 // RegistryKey is an interface for reading values from the Windows registry
@@ -95,7 +94,7 @@ func (m *MockRegistryKey) GetIntegerValue(name string) (uint64, uint32, error) {
 }
 
 // OpenKey opens a registry key with a path relative to the current key
-func (m *MockRegistryKey) OpenKey(path string, access uint32) (RegistryKey, error) {
+func (m *MockRegistryKey) OpenKey(path string, _ uint32) (RegistryKey, error) {
 	for _, key := range m.SubKeys {
 		if key.KeyName == path {
 			return &key, nil
@@ -129,9 +128,8 @@ func (m *MockRegistryKey) ReadValueNames(maxCount int) ([]string, error) {
 	}
 	if maxCount <= 0 || maxCount >= len(uniqueValueNames) {
 		return uniqueValueNames, nil
-	} else {
-		return uniqueValueNames[:maxCount], nil
 	}
+	return uniqueValueNames[:maxCount], nil
 }
 
 // Close closes the registry key

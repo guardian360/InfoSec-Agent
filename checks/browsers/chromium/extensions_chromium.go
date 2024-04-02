@@ -26,6 +26,8 @@ type Response struct {
 
 const edge = "Edge"
 const chrome = "Chrome"
+const edgePath = "Microsoft/Edge"
+const chromePath = "Google/Chrome"
 
 // ExtensionsChromium checks if an adblocker is installed in a Chromium based browser.
 //
@@ -41,11 +43,11 @@ func ExtensionsChromium(browser string) checks.Check {
 	// Currently, supports checking of Google Chrome and Microsoft Edge
 	if browser == chrome {
 		returnBrowserName = "ExtensionsChrome"
-		browserPath = "Google/Chrome"
+		browserPath = chromePath
 	}
 	if browser == edge {
 		returnBrowserName = "ExtensionsEdge"
-		browserPath = "Microsoft/Edge"
+		browserPath = edgePath
 	}
 	var extensionIDs []string
 	var extensionNames []string
@@ -94,7 +96,6 @@ func ExtensionsChromium(browser string) checks.Check {
 		return checks.NewCheckResult(returnBrowserName, "Adblocker installed")
 	}
 	return checks.NewCheckErrorf(returnBrowserName, "No adblocker installed", errors.New("no adblocker installed"))
-
 }
 
 // getExtensionNameChromium gets the name of an extension from the Chrome Web Store or the Microsoft Edge Addons Store
@@ -120,12 +121,6 @@ func getExtensionNameChromium(extensionID string, url string, browser string) (s
 	}
 	req.Header.Add("User-Agent", "Mozilla/5.0")
 	resp, err := client.Do(req)
-	defer func(Body io.ReadCloser) {
-		err := Body.Close()
-		if err != nil {
-			log.Println("error closing body: ", err)
-		}
-	}(resp.Body)
 	if err != nil {
 		log.Println("error sending request: ", err)
 		return "", err
@@ -147,15 +142,14 @@ func getExtensionNameChromium(extensionID string, url string, browser string) (s
 	if browser == edge {
 		if strings.Contains(resp.Request.URL.String(), "chromewebstore.google.com") {
 			return resp.Request.URL.String(), nil
-		} else {
-			// For Edge, the data is stored in a JSON format, so decoding is required
-			var data Response
-			err := json.NewDecoder(resp.Body).Decode(&data)
-			if err != nil {
-				return "", err
-			}
-			return data.Name, nil
 		}
+		// For Edge, the data is stored in a JSON format, so decoding is required
+		var data Response
+		err := json.NewDecoder(resp.Body).Decode(&data)
+		if err != nil {
+			return "", err
+		}
+		return data.Name, nil
 	}
 	return "", errors.New("unknown browser")
 }

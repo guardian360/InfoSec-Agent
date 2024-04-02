@@ -44,15 +44,14 @@ func WindowsDefender(scanKey registrymock.RegistryKey, defenderKey registrymock.
 		}
 		return NewCheckResult("WindowsDefender", "Windows real-time defender is enabled and also the "+
 			"windows periodic scan is enabled")
-	} else {
-		if realTimeDefender == 1 {
-			if antiVirusPeriodic == 1 {
-				return NewCheckResult("WindowsDefender", "Windows real-time defender is disabled and also "+
-					"the windows periodic scan is disabled")
-			}
-			return NewCheckResult("WindowsDefender", "Windows real-time defender is disabled but the "+
-				"windows periodic scan is enabled")
-		}
-		return NewCheckResult("WindowsDefender", "No windows defender data found")
 	}
+	if realTimeDefender == 1 {
+		if antiVirusPeriodic == 1 {
+			return NewCheckResult("WindowsDefender", "Windows real-time defender is disabled and also "+
+				"the windows periodic scan is disabled")
+		}
+		return NewCheckResult("WindowsDefender", "Windows real-time defender is disabled but the "+
+			"windows periodic scan is enabled")
+	}
+	return NewCheckResult("WindowsDefender", "No windows defender data found")
 }

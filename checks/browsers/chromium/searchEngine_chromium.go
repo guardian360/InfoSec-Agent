@@ -22,13 +22,13 @@ func SearchEngineChromium(browser string) checks.Check {
 	var returnBrowserName string
 	// Set the browser path and the return browser name based on the browser to check
 	// Currently, supports checking of Google Chrome and Microsoft Edge
-	if browser == "Chrome" {
+	if browser == chrome {
 		returnBrowserName = "SearchEngineChrome"
-		browserPath = "Google/Chrome"
+		browserPath = chromePath
 	}
-	if browser == "Edge" {
+	if browser == edge {
 		returnBrowserName = "SearchEngineEdge"
-		browserPath = "Microsoft/Edge"
+		browserPath = edgePath
 	}
 	// Holds the return value and sets the default value to chrome in case you never changed your search engine
 	defaultSE := "google.com"

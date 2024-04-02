@@ -29,13 +29,13 @@ func HistoryChromium(browser string) checks.Check {
 	var returnBrowserName string
 	// Set the browser path and the return browser name based on the browser to check
 	// Currently, supports checking of Google Chrome and Microsoft Edge
-	if browser == "Chrome" {
+	if browser == chrome {
 		returnBrowserName = "HistoryChrome"
-		browserPath = "Google/Chrome"
+		browserPath = chromePath
 	}
-	if browser == "Edge" {
+	if browser == edge {
 		returnBrowserName = "HistoryEdge"
-		browserPath = "Microsoft/Edge"
+		browserPath = edgePath
 	}
 
 	// Get the current user's home directory, where the history can be found

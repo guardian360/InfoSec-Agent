@@ -2,9 +2,9 @@ package firefox
 
 import (
 	"encoding/json"
-	"fmt"
 	"log"
 	"os"
+	"strconv"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
@@ -45,7 +45,7 @@ func PasswordFirefox() checks.Check {
 	// Below code is a placeholder
 	for _, addon := range extensions.Addons {
 		output = append(output,
-			addon.DefaultLocale.Name+addon.Type+addon.DefaultLocale.Creator+fmt.Sprintf("%t", addon.Active))
+			addon.DefaultLocale.Name+addon.Type+addon.DefaultLocale.Creator+strconv.FormatBool(addon.Active))
 	}
 	return checks.NewCheckResult("PasswordFirefox", output...)
 }
