@@ -11,10 +11,9 @@ import (
 // Parameters: permission (string) represents the permission to check
 //
 // Returns: A list of applications that have the given permission
-func Permission(permission string) Check {
+func Permission(permission string, registryKey registrymock.RegistryKey) Check {
 	// Open the registry key for the given permission
-	key, err := registrymock.OpenRegistryKey(registrymock.CURRENT_USER,
-		`Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\`+permission)
+	key, err := registrymock.OpenRegistryKey(registryKey, `Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\`+permission)
 	if err != nil {
 		return NewCheckErrorf(permission, "error opening registry key", err)
 	}
@@ -33,27 +32,26 @@ func Permission(permission string) Check {
 	for _, appName := range applicationNames {
 		// The registry key for packaged/non-packaged applications is different, so they get handled separately
 		if appName == "NonPackaged" {
-			key, err = registrymock.OpenRegistryKey(registrymock.CURRENT_USER,
-				`Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\`+permission+`\NonPackaged`)
-			defer registrymock.CloseRegistryKey(key)
-			nonPackagedApplicationNames, err := key.ReadSubKeyNames(-1)
-			v, vint, err := key.GetStringValue("Value")
+			appKey, err := registrymock.OpenRegistryKey(key, `NonPackaged`)
+			defer registrymock.CloseRegistryKey(appKey)
+			nonPackagedApplicationNames, err := appKey.ReadSubKeyNames(-1)
+			v, _, err := key.GetStringValue("Value")
+			registrymock.CloseRegistryKey(appKey)
 
 			// Check if the application has the specified permission
-			if vint == 1 && err == nil && v == "Allow" {
+			if err == nil && v == "Allow" {
 				for _, nonPackagedAppName := range nonPackagedApplicationNames {
 					exeString := strings.Split(nonPackagedAppName, "#")
 					results = append(results, exeString[len(exeString)-1])
 				}
 			}
 		} else {
-			key, err = registrymock.OpenRegistryKey(registrymock.CURRENT_USER,
-				`Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\`+permission+`\`+appName)
-			defer registrymock.CloseRegistryKey(key)
-			v, vint, err := key.GetStringValue("Value")
+			appKey, err := registrymock.OpenRegistryKey(key, appName)
+			v, _, err := appKey.GetStringValue("Value")
+			registrymock.CloseRegistryKey(appKey)
 
 			// Check if the application has the specified permission
-			if vint == 1 && err == nil && v == "Allow" {
+			if err == nil && v == "Allow" {
 				winApp := strings.Split(appName, "_")
 				results = append(results, winApp[0])
 			}

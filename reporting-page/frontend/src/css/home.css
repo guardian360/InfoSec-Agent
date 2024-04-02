@@ -1,5 +1,4 @@
 @import url(color-palette.css);
-
 body {
   background-color: var(--background-color);
   font-family: "DM Sans", sans-serif;
@@ -11,9 +10,13 @@ body {
   margin-top: 38px;
 }
 
+h2{
+  color: var(--text-body);
+}
+
 /* Header */
 .header {
-  background-color: var(--light-blue);
+  background-color: var(--background-color-top-nav);
   height: 60px;
   position: fixed;
   z-index: 10;
@@ -22,12 +25,12 @@ body {
   display: flex;
 }
 .header-hamburger {
-  color: var(--dark-text);
+  color: var(--text-body);
   text-align: center;
   line-height: 60px;
 }
 .header-hamburger:hover {
-  color: var(--dark-text-hover);
+  color: var(--text-settings-hover);
   cursor: pointer;
 }
 .header-hamburger.container {
@@ -46,7 +49,7 @@ body {
   text-align: center;
   text-decoration: none;
   font-weight: bold;
-  color: #333;
+  color: var(--text-body);
   padding: 0;
   margin: 0;
 }
@@ -80,23 +83,23 @@ body {
 .header-settings a {
   margin-left: auto;
   height: 100%;
-  color: var(--dark-text);
+  color: var(--text-body);
   text-decoration: none;
 }
 .header-settings .nav-link {
   margin-left: auto;
   height: 100%;
-  color: var(--dark-text);
+  color: var(--text-body);
   text-decoration: none;
 }
 .header-settings p {
   float:left;
   margin-top:17px;
   margin-bottom:auto;
-  color: var(--dark-text);
+  color: var(--text-body);
 }
 .header-settings p:hover {
-  color: var(--dark-text-hover);
+  color: var(--text-settings-hover);
   cursor: pointer;
 }
 .header-settings span {
@@ -110,7 +113,7 @@ body {
   padding-top: 38px;
   height: 100vh;
   width: 240px;
-  background-color: var(--blue);
+  background-color: var(--background-color-left-nav);
   float:left;
   position: fixed;
   z-index: 1;
@@ -130,13 +133,13 @@ body {
   float: left;
 }
 .left-nav p:hover {
-  background-color: var(--blue-hover);
-  color: var(--light-text-hover);
+  background-color: var(--background-nav-hover);
+  color: var(--text-left-nav);
   cursor: pointer;
 }
 .left-nav p {
   width: 100%;
-  color: var(--light-text);
+  color: var(--text-left-nav);
   line-height: 100%;
   margin: 0;
   font-size: 1em;
@@ -232,7 +235,7 @@ body {
 }
 
 .medal-name{
-  color: blue;
+  color: var(--text-body);
   font-weight: bold;
   text-align: center;
   margin-top: 10px;

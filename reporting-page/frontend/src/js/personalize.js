@@ -1,102 +1,152 @@
+import cs from "../customize.json" assert { type: "json" };
+import { CloseNavigation } from "./navigation-menu.js";
+import { MarkSelectedNavigationItem } from "./navigation-menu.js";
 /** Load the content of the Personalize page */
 export function openPersonalizePage() {
+  CloseNavigation();
+  //MarkSelectedNavigationItem("home-button");
   document.getElementById("page-contents").innerHTML = `
-  <h1>Customize Page</h1>
   <div class="setting">
-    <span class="setting-description">Favicon</span>
-    <div class="favicon-button-container">
-      <label for="input-file-icon"></label>
-      <input type="file" id="input-file-icon" accept=".ico, .png">
+    <span class="setting-description favicon-title ">Favicon</span>
+    <div class="personalize-button-container">
+      <label class="personalize-label" for="input-file-icon">Change favicon</label>
+      <input class="personalize-input-invisible" type="file" id="input-file-icon" accept=".ico, .png">
     </div>
   </div>
   <hr class="solid">
   <div class="setting">
-    <span class="setting-description">Picture(Top left)</span>
-    <div class="picture-button-container">
-      <label for="input-file-picture"></label>
-      <input type="file" id="input-file-picture" accept="image/jpeg, image/png, image/jpg">   
+    <span class="personalize-description">Navigation image</span>
+    <div class="personalize-button-container">
+      <label class="personalize-label" for="input-file-picture">Update image</label>
+      <input class="personalize-input-invisible" type="file" id="input-file-picture" accept="image/jpeg, image/png, image/jpg">   
     </div>
   </div>
   <hr class="solid">
   <div class="setting">
-    <span class="setting-description">Name(Top left)</span>
-      <label for="newTitle">Enter new title:</label>
+    <span class="personalize-description">Navigation title</span>
+    <div class="personalize-button-container">
+      <label class="personalize-label" for="newTitle">Update title</label>
       <input type="text" id="newTitle">
+    </div>
   </div>
   <hr class="solid">
   <div class="setting">
-    <span class="setting-description">Font</span>
-    <label class="switch">
-      <input type="checkbox">
-      <span class="slider round"></span>
-    </label>
+    <span class="personalize-description">Font</span>
   </div>
   <hr class="solid">
   <div class="setting">
-    <span class="setting-description">Background color</span>
-    <label class="switch">
-      <input type="checkbox">
-      <span class="slider round"></span>
-    </label>
+    <span class="personalize-description">Background color Left nav</span>
+    <div class="personalize-button-container">
+      <label class="personalize-label" for="input-color-background">Change background</label>
+      <input class="personalize-input-invisible" type="color" id="input-color-background">   
+    </div>
   </div>
   <hr class="solid">
   <div class="setting">
-    <span class="setting-description">text color</span>
-    <label class="switch">
-      <input type="checkbox">
-      <span class="slider round"></span>
-    </label>
+    <span class="personalize-description">text color</span>
+  </div>
+  <hr class="solid">
+  <div class="setting">
+    <form action="" class="color-picker>
+      <fieldset>
+        <legend>Pick a theme</legend>
+        <label for="normal">normal</label>
+        <input type="radio" name="theme" id="normal" checked>
+        <label for="dark">Dark</label>
+        <input type="radio" name="theme" id="dark">
+        <label for="blue">Blue</label>
+        <input type="radio" name="theme" id="blue">
   </div>
   `;
-  const faviconInput = document.getElementById('faviconInput');
-  faviconInput.addEventListener('change', handleFaviconSelect);
-
-  const fileInput = document.getElementById('input-file-picture');
-  fileInput.addEventListener('change', handleFileSelect);
+  const faviconInput = document.getElementById('input-file-icon');//add eventlistener for changing Favicon
+  faviconInput.addEventListener('change', handleFaviconChange);
   
-  const newTitleInput = document.getElementById('newTitle');
+  const pictureInput = document.getElementById('input-file-picture'); //add eventlistener for changing navication picture
+  pictureInput.addEventListener('change', handlePictureChange);
+  
+  const newTitleInput = document.getElementById('newTitle'); //add eventlistener for changing navigation title
   newTitleInput.addEventListener('input', handleTitleChange);
-}
 
-/** Select a file to set as the logo
- * 
- * @param {Event} event File event from which file is taken
- */
-function handleFileSelect(event) {
-  const file = event.target.files[0]; // Get the selected file
+  const inputBackgroundNav = document.getElementById('input-color-background'); //add eventlistener for changing navigation title
+  inputBackgroundNav.addEventListener('change', handleLeftBackgroundNav);
+
+  
+  /*save themes*/
+  const themes = document.querySelectorAll('[name="theme"]');
+  themes.forEach(themeOption => {
+    themeOption.addEventListener("click", () => {
+      localStorage.setItem("theme", themeOption.id);
+    });
+  });
+  
+  const activeTheme = localStorage.getItem("theme");
+  themes.forEach(themeOption => {
+    if(themeOption.id === activeTheme){
+      themeOption.checked = true;
+    }
+  });
+  document.documentElement.className= activeTheme;
+
+}
+  
+/* Changes the favicon*/
+export function handleFaviconChange(icon) {
+  const file = icon.target.files[0]; // Get the selected file
   if (file) {
-    const reader = new FileReader(); // Create a new FileReader object
+    const reader = new FileReader();
     reader.onload = function(e) {
-      const logo = document.getElementById('logo'); // Get the logo element
-      logo.src = e.target.result; // Set the source of the logo to the selected image
+      const picture = e.target.result;
+      const favicon = document.querySelector('link[rel="icon"]');
+      if(favicon){
+        favicon.href = picture;
+      }
+      else{
+        const newFavicon = document.createElement('link');
+        newFavicon.rel = 'icon';
+        newFavicon.href = picture;
+        document.head.appendChild(newFavicon);
+      }
+      localStorage.setItem("favicon", picture);
     };
     reader.readAsDataURL(file); // Read the selected file as a Data URL
   }
 }
 
-/** Select af file to set as the icon
- * 
- * @param {Event} event File event from which file is taken
- */
-function handleFaviconSelect(event) {
-  const file = event.target.files[0]; // Get the selected file
-  if (file) {
-    const reader = new FileReader(); // Create a new FileReader object
-    reader.onload = function(e) {
-      const favicon = document.createElement('link'); // Create a new link element for favicon
-      favicon.rel = 'icon'; // Set rel attribute to 'icon' for favicon
-      favicon.type = 'image/png'; // Set type attribute to 'image/png' for favicon
-      favicon.href = e.target.result; // Set the href attribute to the selected image
-      const head = document.querySelector('head'); // Get the <head> element
-      head.appendChild(favicon); // Append the favicon link to the head
+/* Changes the navigation picture*/
+export function handlePictureChange(picture) {
+  const file = picture.target.files[0]; // Get the selected file
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const logo = document.getElementById('logo');
+    logo.src = e.target.result; // Set the source of the logo to the selected image
+    localStorage.setItem("picture", e.target.result)
     };
-    reader.readAsDataURL(file); // Read the selected file as a Data URL
-  }
+  reader.readAsDataURL(file); // Read the selected file as a Data URL
 }
 
-/** Changes the title of the page to value of element with id:"newTitle" */
-function handleTitleChange() {
+/* Changes the title of the page to value of element with id:"newTitle" */
+export function handleTitleChange() {
   const newTitle = document.getElementById('newTitle').value; // Get the value from the input field
-  const titleElement = document.getElementById('title'); // Get the <h1> element
-  titleElement.textContent = newTitle; // Set the text content of the <h1> element to the new title
+  const titleElement = document.getElementById('title'); 
+  titleElement.textContent = newTitle; // Set the text content to the new title
+  localStorage.setItem("title", newTitle);
 }
+
+/*Change the left background of the navigation*/
+export function handleLeftBackgroundNav(){
+  const colorPicker = document.getElementById('input-color-background');
+  const color = colorPicker.value;
+  let temp = document.getElementsByClassName('left-nav')[0];
+  temp.style.backgroundColor = color;
+}
+
+export function retrieveTheme(){
+  const activeTheme = localStorage.getItem("theme");
+  document.documentElement.className = activeTheme;
+}
+
+//achtergrond navigation
+//normale achtergrond
+//kleur text
+//text font
+//kleur buttons

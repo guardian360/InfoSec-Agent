@@ -5,6 +5,7 @@ import { GetLocalization } from './localize.js';
 import { ScanNow } from '../../wailsjs/go/main/Tray';
 import { CloseNavigation } from "./navigation-menu.js";
 import { MarkSelectedNavigationItem } from "./navigation-menu.js";
+import { retrieveTheme } from "./personalize";
 
 /** Load the content of the Security Dashboard page */
 function openSecurityDashboardPage() {
@@ -187,6 +188,7 @@ function openSecurityDashboardPage() {
   let g = new Graph("interval-graph",rc);
   AddGraphFunctions(g);
   document.getElementsByClassName("scan-now")[0].addEventListener("click", () => ScanNow());
+  document.onload = retrieveTheme();
 }
 
 if (typeof document !== 'undefined') {

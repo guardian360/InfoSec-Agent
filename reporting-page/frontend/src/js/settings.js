@@ -1,8 +1,9 @@
-import { openPersonalizePage } from "./personalize";
+import { openPersonalizePage } from "./personalize.js";
 import { ChangeLanguage } from "../../wailsjs/go/main/Tray";
 import { GetLocalization } from './localize.js';
 import { CloseNavigation } from "./navigation-menu.js";
 import { MarkSelectedNavigationItem } from "./navigation-menu.js";
+import { retrieveTheme } from "./personalize.js";
 
 function updateLanguage() {
   ChangeLanguage()
@@ -21,10 +22,7 @@ function openSettingsPage() {
   document.getElementById("page-contents").innerHTML = `
   <div class="setting personalize">
     <span class="setting-description personalize-title">Personalization</span>
-    <button class="setting-button personalize-button" type="button">Personalize</button>
-    <!--<div id="personalize-button-box">
-      <div class="personalize-button">Personalize</div>
-    </div>-->
+    <button class="setting-button personalize-button" type="button">Personalize</button>    
   </div> 
   <hr class="solid">
   <div class="setting language">
@@ -42,6 +40,7 @@ function openSettingsPage() {
 
   document.getElementsByClassName("language-button")[0].addEventListener("click", () => updateLanguage());
   document.getElementsByClassName("personalize-button")[0].addEventListener("click", () => openPersonalizePage());
+  document.onload = retrieveTheme();
 }
 
 document.getElementById("settings-button").addEventListener("click", () => openSettingsPage());

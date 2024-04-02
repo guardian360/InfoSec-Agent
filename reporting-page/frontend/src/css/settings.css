@@ -4,13 +4,14 @@
 .setting {
     padding: 20px 20px;
     display: block;
-    color: var(--dark-text);
-
+    color: var(--text-body);
 }
+
 .setting-description {
     float: left;
     width: 100px;
 }
+
 .setting-button {
     float: right;
     width: 100px;
@@ -20,21 +21,6 @@ hr.solid {
     float: center;
     margin: 10px;
 }
-
-/* #personalize-button-box{
-  position: relative;
-  width: 40px;
-  height: 22px;
-  float: right;
-  margin-left: auto;
-  margin-right: 10px;
-}
-
-#personalize-button{
-  position: absolute;
-  cursor: pointer;
-  background-color: #cccccc;
-} */
 
 /* The switch - the box around the slider */
 .switch {
@@ -80,11 +66,11 @@ hr.solid {
 }
 
 input:checked + .slider {
-  background-color: var(--blue);
+  background-color: var(--background-color-left-nav);
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px var(--blue);
+  box-shadow: 0 0 1px var(--background-color-left-nav);
 }
 
 input:checked + .slider:before {

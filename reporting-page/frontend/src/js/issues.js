@@ -3,6 +3,7 @@ import { openIssuePage } from "./issue.js";
 import { GetLocalization } from './localize.js';
 import { CloseNavigation } from "./navigation-menu.js";
 import { MarkSelectedNavigationItem } from "./navigation-menu.js";
+import { retrieveTheme } from "./personalize";
 
 /** Load the content of the Issues page */
 export function openIssuesPage() {
@@ -31,13 +32,15 @@ export function openIssuesPage() {
   for (let i = 0; i < tableHeaders.length; i++) {
       GetLocalization(localizationIds[i], tableHeaders[i])
   }
-
+  
   let issues = []; // retrieve issues from tray application
   issues = JSON.parse(sessionStorage.getItem("Severities"));  
   console.log(issues);
 
   const tbody = pageContents.querySelector('tbody');
   fillTable(tbody, issues);
+
+  document.onload = retrieveTheme();
 }
 
 function RiskLevels(level) {

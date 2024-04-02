@@ -3,6 +3,8 @@ import {ScanNow} from '../../wailsjs/go/main/Tray';
 import { GetLocalization } from './localize.js';
 import { CloseNavigation } from "./navigation-menu.js";
 import { MarkSelectedNavigationItem } from "./navigation-menu.js";
+import medal from '../assets/images/img_medal1.jpg';
+import { retrieveTheme } from "./personalize";
 
 /** Load the content of the Home page */
 export function openHomePage() {
@@ -37,28 +39,34 @@ export function openHomePage() {
       </div>
       <div class="medals">
         <div class="medal-layout">
-          <img src="src/assets/images/img_medal1.jpg" alt="Photo of medal">
+          <img id="medal" alt="Photo of medal"></img>
           <p class="medal-name"> Medal 1</p>
           <p> 01-04-2024</p>
         </div>
         <div class="medal-layout">
-          <img src="src/assets/images/img_medal1.jpg" alt="Photo of medal">
+          <img id="medal2" alt="Photo of medal"></img>
           <p class="medal-name"> Medal 2</p>
           <p> 01-04-2024</p>
         </div>
         <div class="medal-layout">
-          <img src="src/assets/images/img_medal1.jpg" alt="Photo of medal">
+          <img id="medal3" alt="Photo of medal"></img>
           <p class="medal-name"> Medal 3</p>
           <p> 01-04-2024</p>
         </div><div class="medal-layout">
-          <img src="src/assets/images/img_medal1.jpg" alt="Photo of medal">
-          <p class="medal-name"> Medal 1</p>
+          <img id="medal4" alt="Photo of medal"></img>
+          <p class="medal-name"> Medal 4</p>
           <p> 01-04-2024</p>
         </div>
       </div>
     </div>
   </div>
   `;  
+
+    document.getElementById('medal').src = medal;
+    document.getElementById('medal2').src = medal;
+    document.getElementById('medal3').src = medal;
+    document.getElementById('medal4').src = medal;
+
     let rc = JSON.parse(sessionStorage.getItem("RiskCounters"));
     new PieChart("pieChart",rc);
 
@@ -91,7 +99,11 @@ export function openHomePage() {
         GetLocalization(localizationIds[i], staticHomePageConent[i])
   }
 
-  document.getElementsByClassName("scan-now")[0].addEventListener("click", () => scanNow());
+    document.getElementsByClassName("scan-now")[0].addEventListener("click", () => scanNow());
+    document.getElementById("home-button").addEventListener("click", () => openHomePage());
+    document.getElementById("logo").innerHTML = localStorage.getItem("picture");
+
+    document.onload = retrieveTheme();
 }
 
 document.getElementById("logo-button").addEventListener("click", () => openHomePage());
@@ -106,6 +118,22 @@ function scanNow() {
     });
 }
 
-// document.onload = openHomePage();
+//document.onload = openHomePage();
 
-
+window.onload = function() {
+    let savedImage = localStorage.getItem('picture');
+    let savedText = localStorage.getItem('title');
+    let savedIcon = localStorage.getItem('favicon');
+    if (savedImage) {
+      let logo = document.getElementById('logo');
+      logo.src = savedImage;
+    }
+    if (savedText) {
+      let title = document.getElementById('title');
+      title.textContent = savedText;
+    }
+    if(savedIcon){
+      let favicon = document.getElementById('favicon');
+      favicon.href = savedIcon;
+    }
+  };
