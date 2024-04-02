@@ -9,29 +9,30 @@ Should later on be able to be changed by user, with help of js
   --hueRightAnalogous: calc(var(--hue) + 30);
   --hueLeftAnalogous: calc(var(--hue) - 30);
   
-  --primary: hsl(var(--hue) 25% 95%);
-  --primaryDark500: hsl(var(--hue) 20% 85%);
-  --primaryDark600: hsl(var(--hue) 20% 75%);
-  --secondary: hsl(var(--hueComplement) 5% 25%);
-  --secondaryLight500: hsl(var(--hueComplement) 5% 30%);
-  --secondaryLight900: hsl(var(--hueComplement) 5% 95%);
-  --secondaryDark500: hsl(var(--hueComplement) 5% 20%);
-  --accentV1: hsl(var(--hueRightAnalogous) 40% 40%);
-  --accentV1Light900: hsl(var(--hueRightAnalogous) 40% 95%);
-  --accentV2: hsl(var(--hueLeftAnalogous) 40% 40%);
-  --accentV2Light900: hsl(var(--hueLeftAnalogous) 40% 90%);
-      
-  --background-color: #ffffff;
-  --light-blue: #DFEEF1;
-  --blue: #4E869B;
-  --blue-hover: #427385;
-  --dark-text: #333;
-  --dark-text-hover: #646464;
-  --light-text: #d4d4d4;
-  --light-text-hover: #f0f0f0;
-  --highRiskColor: #ff4500;
-  --mediumRiskColor: #ffa500;
-  --lowRiskColor: #eee8aa;
-  --noRiskColor: #7fffd4;
+
+  /*color for borders*/
+  --color-border: hsl(var(--hue) 20% 85%);  /*main color for borders*/
+
+  /*colors for background*/
+  --background-color: #ffffff;          /*main color background*/
+  --background-color-top-nav: #DFEEF1;  /*color background of top bar navigation and for titles between sections*/
+  --background-color-left-nav: #4E869B; /*color background of left bar navigation*/
+  --background-nav-hover: #427385;      /*color when hovering over navigation*/
+  --background-color-second-row: hsl(var(--hueRightAnalogous) 40% 95%); /*changes background security/privacy risk*/
+  --background-color-second-row-area: hsl(var(--hueLeftAnalogous) 40% 40%); /*changes background of small area in security/privacy risk*/
+  --background-piechart: hsl(var(--hueLeftAnalogous) 40% 90%); /*changes background piechart*/
+  --background-color-table-header: white;
+
+  /*colors for text*/
+  --text-body: #333;                                  /*main text color*/
+  --text-navigation: hsl(var(--hueComplement) 5% 30%);  /*left side navigation text*/
+  --text-settings-hover: #646464;                     /*hover over settings text color*/
+  --text-left-nav: #e7e7e7;                           /*text color left navigation*/
+
+  /*colors for the different risks*/
+  --highRiskColor: #e06666;
+  --mediumRiskColor: #f6b26b;
+  --lowRiskColor: #ffd966;
+  --noRiskColor: #93c47d;
 
 }

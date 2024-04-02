@@ -1,25 +1,40 @@
 @import url(color-palette.css);
-
 body {
   background-color: var(--background-color);
   font-family: "DM Sans", sans-serif;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
-.page-contents {
-  margin-left: 240px;
+#page-contents {
+  margin-top: 38px;
 }
 
+h2{
+  color: var(--text-body);
+}
 
 /* Header */
 .header {
-  background-color: var(--light-blue);
+  background-color: var(--background-color-top-nav);
   height: 60px;
   position: fixed;
   z-index: 10;
   top: 0;
   width: 100%;
+  display: flex;
+}
+.header-hamburger {
+  color: var(--text-body);
+  text-align: center;
+  line-height: 60px;
+}
+.header-hamburger:hover {
+  color: var(--text-settings-hover);
+  cursor: pointer;
+}
+.header-hamburger.container {
+  height: 60px;
 }
 .header-logo {
   height: 100%;
@@ -34,7 +49,7 @@ body {
   text-align: center;
   text-decoration: none;
   font-weight: bold;
-  color: #333;
+  color: var(--text-body);
   padding: 0;
   margin: 0;
 }
@@ -68,23 +83,23 @@ body {
 .header-settings a {
   margin-left: auto;
   height: 100%;
-  color: var(--dark-text);
+  color: var(--text-body);
   text-decoration: none;
 }
 .header-settings .nav-link {
   margin-left: auto;
   height: 100%;
-  color: var(--dark-text);
+  color: var(--text-body);
   text-decoration: none;
 }
 .header-settings p {
   float:left;
   margin-top:17px;
   margin-bottom:auto;
-  color: var(--dark-text);
+  color: var(--text-body);
 }
 .header-settings p:hover {
-  color: var(--dark-text-hover);
+  color: var(--text-settings-hover);
   cursor: pointer;
 }
 .header-settings span {
@@ -98,7 +113,7 @@ body {
   padding-top: 38px;
   height: 100vh;
   width: 240px;
-  background-color: var(--blue);
+  background-color: var(--background-color-left-nav);
   float:left;
   position: fixed;
   z-index: 1;
@@ -118,13 +133,13 @@ body {
   float: left;
 }
 .left-nav p:hover {
-  background-color: var(--blue-hover);
-  color: var(--light-text-hover);
+  background-color: var(--background-nav-hover);
+  color: var(--text-left-nav);
   cursor: pointer;
 }
 .left-nav p {
   width: 100%;
-  color: var(--light-text);
+  color: var(--text-left-nav);
   line-height: 100%;
   margin: 0;
   font-size: 1em;
@@ -146,52 +161,82 @@ body {
   background-color: #427385;
 }
 
+/* Home and dashboard content elements */
 
+.data-column {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
 
-/* Medals main */
-.container{
+.data-segment {
+  border: 1px solid #ddd; /*var(--primaryDark500);*/
+  border-radius: 5px;
+  margin: 5px;
+  flex: 1;
+}
+
+.data-segment-header {
+  width: 100%;
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--dark-text);
+  border-radius: 10px 10px 0px 0px;
+}
+
+.data-segment-header p {
+  margin: 10px;
+}
+
+/* Home contents */
+
+.home-data {
+  color: var(--dark-text);
+  width: flex;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 5px;
+}
+
+/* Left column */
+.home-column-one {
+  display: flex;
+  flex-direction: column;
+}
+.home-column-one .risk-counters {
+  flex: 1;
+}
+.home-column-one .issue-buttons {
+  flex: 1;
+}
+
+/* Progress */
+.progress{
   display: flex;
   flex-wrap: wrap;
-  max-width: 75%
 }
 
-.title-medals{
-  padding: 10px;
-  border-radius: 15px 15px 15px 15px;
-  background-color: var(--accentV2Light900);
-  margin-top: 20px;
-  text-align: center;
-  width:70%;
+.medals {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
+
 .medal-layout{
-  flex-basis: 25%;
   text-align: center;
   margin: 0 10px 20px;
-  height: 80%;
 }
 
 .medal-layout img{
-  max-width: 100%
+  max-width: 100px;
 }
 
 .medal-name{
-  color: blue;
+  color: var(--text-body);
   font-weight: bold;
   text-align: center;
   margin-top: 10px;
-}
-
-/* Data home */
-.container-data{
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 60%;
-  padding-top: 38px;
-  margin-left: 240px;
-}
-.title-medals{
-  margin-left: 240px;
-}
-.container{
-  margin-left: 240px;
 }

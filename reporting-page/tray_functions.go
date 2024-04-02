@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/tray"
 )
 
@@ -22,8 +23,8 @@ func NewTray() *Tray {
 // Parameters: t (*Tray) - a pointer to the Tray struct
 //
 // Returns: _
-func (t *Tray) ScanNow() {
-	tray.ScanNow()
+func (t *Tray) ScanNow() ([]checks.Check, error) {
+	return tray.ScanNow()
 }
 
 // ChangeLanguage calls the ChangeLanguage function from the tray package
@@ -33,6 +34,7 @@ func (t *Tray) ScanNow() {
 // Returns: _
 func (t *Tray) ChangeLanguage() {
 	tray.ChangeLanguage()
+	tray.RefreshMenu()
 }
 
 // ChangeScanInterval calls the ChangeScanInterval function from the tray package

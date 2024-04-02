@@ -1,12 +1,72 @@
 {
-  "ReportingPageTitle": "Reporting page",
-  "ReportingPageTooltip": "Open the reporting page",
-  "ScanIntervalTitle": "Change Scan Interval",
-  "ScanIntervalTooltip": "Change the interval for scanning",
-  "ScanNowTitle": "Scan now",
-  "ScanNowTooltip": "Scan your device now",
-  "ChangeLanguageTitle": "Change Language",
-  "ChangeLanguageTooltip": "Change the language of the application",
-  "QuitTitle": "Quit",
-  "QuitTooltip": "Quit example tray application"
+  "Tray": 
+  {
+    "ReportingPageTitle": "Reporting page",
+    "ReportingPageTooltip": "Open the reporting page",
+    "ScanIntervalTitle": "Change Scan Interval",
+    "ScanIntervalTooltip": "Change the interval for scanning",
+    "ScanNowTitle": "Scan now",
+    "ScanNowTooltip": "Scan your device now",
+    "ChangeLanguageTitle": "Change Language",
+    "ChangeLanguageTooltip": "Change the language of the application",
+    "QuitTitle": "Quit",
+    "QuitTooltip": "Quit example tray application"
+  },
+  "Navigation": 
+  {
+    "Settings": "Settings",
+    "Home": "Home",
+    "SecurityDashboard": "Security Dashboard",
+    "PrivacyDashboard": "Privacy Dashboard",
+    "Issues": "Issues",
+    "Integration": "Integration",
+    "About": "About"
+  },
+  "Settings":
+  {
+    "PersonalizeTitle": "Personalization",
+    "PersonalizeButton": "Personalize",
+    "ChangeLanguageTitle": "Language",
+    "ChangeLanguageButton": "Change language"
+  },
+  "Dashboard": 
+  {
+    "Issues": "Issues",
+    "SuggestedIssue": "Suggested Issue",
+    "QuickFix": "Quick Fix",
+    "ScanNow": "Scan Now",
+    "Medals": "Progress",
+    "SecurityStatus": "Security status",
+    "Critical": "Critical",
+    "MediumConcern": "Medium concern",
+    "LowConcern": "Low concern",
+    "NoConcern": "Safe",
+    "SecurityRisksOverview": "Security risks overview",
+    "HighRisk": "High risk issues",
+    "MediumRisk": "Medium risk issues",
+    "LowRisk": "Low risk issues",
+    "Safe": "Issues without risk",
+    "RiskAreas": "Areas of security risks",
+    "Applications": "Applications",
+    "Browser": "Browser",
+    "Devices": "Devices",
+    "OperatingSystem": "OS",
+    "Passwords": "Passwords",
+    "Other": "Other",
+    "ChooseIssueDescription": "Actions",
+    "BarGraphDescription": "This graph shows the distribution of issues of different risk levels found over the past 5 scans.",
+    "SelectRisks": "Select risks",
+    "ChangeInterval": "Change interval"
+  },
+  "Issues":
+  {
+    "Name": "Name",
+    "Type": "Type",
+    "Risk": "Risk level",
+    "Information": "Information",
+    "Solution": "Solution",
+    "Previous": "&laquo; Previous step",
+    "Next": "Next step &raquo;",
+    "Back": "Back to issues overview"
+  }
 }

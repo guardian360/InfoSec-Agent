@@ -2,26 +2,24 @@
 
 /* Setting box */
 .setting {
-    /* float: left; */
-    padding: 20px;
-    display: flex;
-    float: left;
-    color: var(--dark-text);
-    width: 70%;
-    margin-left: 240px;
+    padding: 20px 20px;
+    display: block;
+    color: var(--text-body);
 }
-.dark-mode {
-    margin-top: 70px;
-}
+
 .setting-description {
     float: left;
     width: 100px;
 }
+
+.setting-button {
+    float: right;
+    width: 100px;
+}
 hr.solid {
-    border-top: 1px solid var(--dark-text);
-    float: left;
-    margin-left: 260px;
-    width: 70%;
+    border-top: 1px solid #ddd;
+    float: center;
+    margin: 10px;
 }
 
 /* The switch - the box around the slider */
@@ -68,11 +66,11 @@ hr.solid {
 }
 
 input:checked + .slider {
-  background-color: var(--blue);
+  background-color: var(--background-color-left-nav);
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px var(--blue);
+  box-shadow: 0 0 1px var(--background-color-left-nav);
 }
 
 input:checked + .slider:before {
@@ -88,20 +86,4 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
-}
-
-#personalize-button-box{
-  position: relative;
-  /* display: inline-block; */
-  width: 40px;
-  height: 22px;
-  float: right;
-  margin-left: auto;
-  margin-right: 10px;
-}
-
-#personalize-button{
-  position: absolute;
-  cursor: pointer;
-  background-color: #cccccc;
 }
