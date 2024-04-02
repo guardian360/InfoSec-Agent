@@ -1,10 +1,11 @@
 package registrymock_test
 
 import (
+	"testing"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
 	"github.com/stretchr/testify/require"
 	"golang.org/x/sys/windows/registry"
-	"testing"
 )
 
 // TestOpenRegistryKeyValidInput tests the OpenRegistryKey function with valid input
