@@ -16,7 +16,7 @@ func Bluetooth(registryKey registrymock.RegistryKey) Check {
 	key, err := registrymock.OpenRegistryKey(registryKey,
 		`SYSTEM\CurrentControlSet\Services\BTHPORT\Parameters\Devices`)
 	if err != nil {
-		return NewCheckErrorf("Bluetooth", "error opening registry key", err)
+		return NewCheckError("Bluetooth", err)
 	}
 	// Close the key after we have received all relevant information
 	defer registrymock.CloseRegistryKey(key)
