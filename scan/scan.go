@@ -123,7 +123,7 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 
 	//// Write JSON data to a file
 	// file, err := os.Create("checks.json")
-	//if err != nil {
+	// if err != nil {
 	//	fmt.Println("Error creating file:", err)
 	//	return
 	//}
