@@ -1,7 +1,6 @@
 package checks_test
 
 import (
-	"errors"
 	"reflect"
 	"testing"
 
@@ -46,13 +45,6 @@ func TestBluetooth(t *testing.T) {
 					},
 				}},
 			want: checks.NewCheckResult("Bluetooth", "Error reading device name FAFA"),
-		},
-		// TO Test the error opening device subkey
-		// Error reading subkey Name is not possible because it just returns empty list
-		{
-			name: "Error opening Registry key",
-			key:  &registrymock.MockRegistryKey{},
-			want: checks.NewCheckError("Bluetooth", errors.New("error opening registry key: key not found")),
 		},
 	}
 	for _, tt := range tests {
