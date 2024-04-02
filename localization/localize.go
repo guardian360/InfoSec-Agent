@@ -51,7 +51,7 @@ func Init(path string) { //3
 //
 // Returns: localized string (string)
 func Localize(language int, messageID string) string {
-	return localizers[language].MustLocalize(&i18n.LocalizeConfig{MessageID: messageID}) // Is it confusing to have field MessageID and parameter MessageID?
+	return localizers[language].MustLocalize(&i18n.LocalizeConfig{MessageID: messageID})
 }
 
 // Localizers returns the localizers variable

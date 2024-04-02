@@ -60,10 +60,10 @@ func TestCloseRegistryKeyValidInput(t *testing.T) {
 // TestCloseRegistryKeyInvalidKey tests the CloseRegistryKey function with an invalid key
 // Because a potential error is only logged, we test if the function panics
 //
-// Parameters: t *testing.T - The testing framework
+// Parameters: _ *testing.T - The testing framework
 //
 // Returns: _
-func TestCloseRegistryKeyInvalidKey(t *testing.T) {
+func TestCloseRegistryKeyInvalidKey(_ *testing.T) {
 	key := registrymock.NewRegistryKeyWrapper(registry.Key(0x0))
 	registrymock.CloseRegistryKey(key)
 }
