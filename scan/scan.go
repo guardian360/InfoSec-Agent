@@ -28,19 +28,33 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 
 	// Define all security/privacy checks that Scan() should execute
 	securityChecks := []func() checks.Check{
-		checks.PasswordManager,
+		func() checks.Check {
+			return checks.PasswordManager(checks.RealProgramLister{})
+		},
 		func() checks.Check {
 			return checks.WindowsDefender(registrymock.LOCAL_MACHINE, registrymock.LOCAL_MACHINE)
 		},
-		checks.LastPasswordChange,
+		func() checks.Check {
+			return checks.LastPasswordChange(&commandmock.RealCommandExecutor{})
+		},
 		func() checks.Check {
 			return checks.LoginMethod(registrymock.LOCAL_MACHINE)
 		},
-		func() checks.Check { return checks.Permission("location") },
-		func() checks.Check { return checks.Permission("microphone") },
-		func() checks.Check { return checks.Permission("webcam") },
-		func() checks.Check { return checks.Permission("appointments") },
-		func() checks.Check { return checks.Permission("contacts") },
+		func() checks.Check {
+			return checks.Permission("location", registrymock.CURRENT_USER)
+		},
+		func() checks.Check {
+			return checks.Permission("microphone", registrymock.CURRENT_USER)
+		},
+		func() checks.Check {
+			return checks.Permission("webcam", registrymock.CURRENT_USER)
+		},
+		func() checks.Check {
+			return checks.Permission("appointments", registrymock.CURRENT_USER)
+		},
+		func() checks.Check {
+			return checks.Permission("contacts", registrymock.CURRENT_USER)
+		},
 		func() checks.Check {
 			return checks.Bluetooth(registrymock.NewRegistryKeyWrapper(registry.LOCAL_MACHINE))
 		},
