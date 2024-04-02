@@ -31,5 +31,4 @@ func RemoteDesktopCheck(registryKey registrymock.RegistryKey) Check {
 			return NewCheckResult("RemoteDesktop", "Remote Desktop is disabled")
 		}
 	}
-
 }

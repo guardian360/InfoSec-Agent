@@ -28,7 +28,7 @@ func ExtensionFirefox() (checks.Check, checks.Check) {
 		return checks.NewCheckErrorf("ExtensionsFirefox", "No firefox directory found", err), checks.NewCheckErrorf("AdblockerFirefox", "No firefox directory found", err)
 	}
 
-	addBlocker := false //Variable used for checking if an adblocker is used
+	addBlocker := false // Variable used for checking if an adblocker is used
 	var output []string
 	// Open the extensions.json file, which contains a list of all installed Firefox extensions
 	content, err := os.Open(ffdirectory[0] + "\\extensions.json")

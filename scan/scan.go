@@ -25,7 +25,6 @@ import (
 //
 // Returns: checks.Check list containing all found issues
 func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
-
 	// Define all security/privacy checks that Scan() should execute
 	securityChecks := []func() checks.Check{
 		func() checks.Check {
@@ -123,7 +122,7 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 	return checkResults, nil
 
 	//// Write JSON data to a file
-	//file, err := os.Create("checks.json")
+	// file, err := os.Create("checks.json")
 	//if err != nil {
 	//	fmt.Println("Error creating file:", err)
 	//	return

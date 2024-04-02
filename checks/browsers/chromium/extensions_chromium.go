@@ -65,7 +65,7 @@ func ExtensionsChromium(browser string) checks.Check {
 		}
 	}
 
-	//extensionName := ""
+	// extensionName := ""
 	for _, id := range extensionIds {
 		// Get the name of the extension from the Chrome Web Store
 		extensionName1, err := getExtensionNameChromium(id,

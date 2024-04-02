@@ -102,7 +102,6 @@ func OnReady() {
 			fmt.Println("Scan:", scanCounter)
 			ScanNow()
 		}
-
 	}
 }
 

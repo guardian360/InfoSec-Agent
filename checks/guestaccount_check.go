@@ -20,7 +20,7 @@ func GuestAccount(
 	executorNetUser commandmock.CommandExecutor,
 ) Check {
 	// Get localgroup name using GetWmiObject
-	//output, err := GuestAccountLocalGroup(executorLocalGroup)
+	// output, err := GuestAccountLocalGroup(executorLocalGroup)
 
 	command := fmt.Sprintf("Get-WmiObject Win32_Group | Select-Object SID,Name")
 	output, err := executorLocalGroup.Execute("powershell", command)
