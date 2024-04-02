@@ -127,10 +127,10 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 	//	fmt.Println("Error creating file:", err)
 	//	return
 	//}
-	//defer file.Close()
+	// defer file.Close()
 	//
-	//_, err = file.Write(jsonData)
-	//if err != nil {
+	// _, err = file.Write(jsonData)
+	// if err != nil {
 	//	fmt.Println("Error writing JSON data to file:", err)
 	//	return
 	//}
