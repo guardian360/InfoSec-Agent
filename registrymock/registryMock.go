@@ -2,6 +2,7 @@ package registrymock
 
 import (
 	"errors"
+
 	"golang.org/x/sys/windows/registry"
 )
 
@@ -82,6 +83,9 @@ func (m *MockRegistryKey) GetStringValue(name string) (string, uint32, error) {
 
 // GetBinaryValue returns the binary value of the key
 func (m *MockRegistryKey) GetBinaryValue(name string) ([]byte, uint32, error) {
+	if m.BinaryValues[name] == nil {
+		return nil, 0, errors.New("key not found")
+	}
 	return m.BinaryValues[name], 0, nil
 }
 

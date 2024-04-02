@@ -2,9 +2,8 @@ package checks
 
 import (
 	"fmt"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
-	"os/exec"
-	"strings"
 )
 
 // Bluetooth checks for bluetooth devices which are / have been connected to the system
@@ -12,12 +11,12 @@ import (
 // Parameters: _
 //
 // Returns: A list of bluetooth devices
-func Bluetooth() Check {
+func Bluetooth(registryKey registrymock.RegistryKey) Check {
 	// Open the registry key for bluetooth devices
-	key, err := registrymock.OpenRegistryKey(registrymock.LOCAL_MACHINE,
+	key, err := registrymock.OpenRegistryKey(registryKey,
 		`SYSTEM\CurrentControlSet\Services\BTHPORT\Parameters\Devices`)
 	if err != nil {
-		return NewCheckErrorf("Bluetooth", "error opening registry key", err)
+		return NewCheckError("Bluetooth", err)
 	}
 	// Close the key after we have received all relevant information
 	defer registrymock.CloseRegistryKey(key)
@@ -49,30 +48,6 @@ func Bluetooth() Check {
 		} else {
 			result.Result = append(result.Result, string(deviceNameValue))
 		}
-
 	}
-
-	// Check for currently connected bluetooth devices
-	bt := "null"
-
-	output, _ := exec.Command("ipconfig").Output()
-
-	//re := regexp.MustCompile(":")
-	lines := strings.Split(string(output), "\r\n")
-	for _, i := range lines[len(lines)-3:] {
-		// Within ipconfig, Media State represents the status of the bluetooth adapter
-		if strings.Contains(i, "Media State") {
-			bt = i
-		}
-	}
-	if bt != "null" {
-		btLines := strings.Split(bt, ": ")
-		if btLines[1] == "Media disconnected" {
-			result.Result = append(result.Result, "You have no devices connected via bluetooth.")
-		} else {
-			result.Result = append(result.Result, fmt.Sprintf("Device connected: %s", btLines[1]))
-		}
-	}
-
 	return result
 }

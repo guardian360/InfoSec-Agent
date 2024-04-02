@@ -13,6 +13,8 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
 	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
 	"github.com/InfoSec-Agent/InfoSec-Agent/windowsmock"
+	"golang.org/x/sys/windows/registry"
+
 	"github.com/ncruces/zenity"
 )
 
@@ -52,7 +54,10 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 		},
 		func() checks.Check {
 			return checks.Permission("contacts", registrymock.CURRENT_USER)
-		}, checks.Bluetooth,
+		},
+		func() checks.Check {
+			return checks.Bluetooth(registrymock.NewRegistryKeyWrapper(registry.LOCAL_MACHINE))
+		},
 		func() checks.Check {
 			return checks.OpenPorts(&commandmock.RealCommandExecutor{}, &commandmock.RealCommandExecutor{})
 		},
@@ -76,7 +81,7 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 		},
 		func() checks.Check { return checks.ExternalDevices(&commandmock.RealCommandExecutor{}) },
 		func() checks.Check { return checks.NetworkSharing(&commandmock.RealCommandExecutor{}) },
-		//func() checks.Check { return chromium.HistoryChromium("Chrome",	DBConn{}) },
+		func() checks.Check { return chromium.HistoryChromium("Chrome") },
 		func() checks.Check { return chromium.ExtensionsChromium("Chrome") },
 		func() checks.Check { return chromium.SearchEngineChromium("Chrome") },
 		func() checks.Check { c, _ := firefox.ExtensionFirefox(); return c },
