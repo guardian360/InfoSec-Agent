@@ -64,7 +64,7 @@ func TestPhishingDomainsReturnsResults(T *testing.T) {
 // Parameters: t *testing.T - The testing framework
 //
 // Returns: _
-//func TestFirefoxFolder(t *testing.T) {
+// func TestFirefoxFolder(t *testing.T) {
 // 	// This test should not be a part of the test suite, as it is dependent on the user's system
 //	// (unless the test suite will be run on a virtual machine)
 // 	// It will fail if the user does not have Firefox installed.

@@ -30,7 +30,6 @@ func TestOpenRegistryKeyInvalidKey(T *testing.T) {
 	defer registrymock.CloseRegistryKey(key)
 	require.Error(T, err)
 	require.Equal(T, key, registrymock.NewRegistryKeyWrapper(registry.Key(0x0)))
-
 }
 
 // TestOpenRegistryKeyInvalidPath tests the OpenRegistryKey function with an invalid path
