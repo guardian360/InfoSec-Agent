@@ -21,6 +21,36 @@ export namespace checks {
 
 export namespace scan {
 	
+	export class DataBaseData {
+	    id: string;
+	    severity: number;
+	    jsonkey: string;
+	
+	    static createFrom(source: any = {}) {
+	        return new DataBaseData(source);
+	    }
+	
+	    constructor(source: any = {}) {
+	        if ('string' === typeof source) source = JSON.parse(source);
+	        this.id = source["id"];
+	        this.severity = source["severity"];
+	        this.jsonkey = source["jsonkey"];
+	    }
+	}
+	export class JsonKey {
+	    id: string;
+	    key: string;
+	
+	    static createFrom(source: any = {}) {
+	        return new JsonKey(source);
+	    }
+	
+	    constructor(source: any = {}) {
+	        if ('string' === typeof source) source = JSON.parse(source);
+	        this.id = source["id"];
+	        this.key = source["key"];
+	    }
+	}
 	export class Severity {
 	    checkid: string;
 	    level: number;

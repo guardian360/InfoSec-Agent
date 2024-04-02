@@ -21,20 +21,20 @@ func NewDataBase() *DataBase {
 // future enumerator maybe for severity
 var Severities = []scan.SeverityLevels{}
 
-func (d *DataBase) CreateIssues() []scan.SeverityLevels {
-	return []scan.SeverityLevels{{scan.Safe, "0"},
-		{scan.Low, "1"},
-		{scan.Medium, "2"},
-		{scan.High, "3"}}
-}
+// func (d *DataBase) CreateIssues() []scan.SeverityLevels {
+// 	return []scan.SeverityLevels{{scan.Safe, "0"},
+// 		{scan.Low, "1"},
+// 		{scan.Medium, "2"},
+// 		{scan.High, "3"}}
+// }
 
-// GetAllSeverities gets all severities found by the check
+// GetDataBaseData gets all severities and JSON keys found by the check
 //
 // Parameters: checks ([]checks.Check) - list of checks to get severities from
 //
 // resultIDs ([]int) - list of result ids corresponding to a severity level
 //
-// Returns: list of severity levels for each issue checked
-func (d *DataBase) GetAllSeverities(checks []checks.Check, resultIDs []int) ([]scan.Severity, error) {
-	return scan.GetAllSeverities(checks, resultIDs)
+// Returns: list of severity levels and JSON keys for each issue checked
+func (d *DataBase) GetDataBaseData(checks []checks.Check, resultIDs []int) ([]scan.DataBaseData, error) {
+	return scan.GetDataBaseData(checks, resultIDs)
 }

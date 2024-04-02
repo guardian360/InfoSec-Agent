@@ -1,5 +1,5 @@
 import { ScanNow } from "../../wailsjs/go/main/Tray.js";
-import { GetAllSeverities } from "../../wailsjs/go/main/DataBase.js";
+import { GetDataBaseData, GetAllSeverities } from "../../wailsjs/go/main/DataBase.js";
 import { openHomePage } from "./home.js";
 import * as runTime from "../../wailsjs/runtime/runtime.js";
 import * as rc from "./risk-counters.js"
@@ -25,7 +25,7 @@ try {
 }
 
 // counts the occurences of each level: 0 = safe, 1 = low, 2 = medium, 3 = high
-const countOccurences = (severities, riskLevel) => severities.filter(item => item.level ===riskLevel).length;
+const countOccurences = (severities, level) => severities.filter(item => item.severity === level).length;
 
 /** Sets the severities collected from the checks and database in session storage
  * 
@@ -33,9 +33,9 @@ const countOccurences = (severities, riskLevel) => severities.filter(item => ite
  * @param {int[]} ids List of result ids to get corresponding severities
  */
 function setSeverities(input, ids) {
-  GetAllSeverities(input, ids)
+  GetDataBaseData(input, ids)
     .then((result) => {
-      sessionStorage.setItem("Severities",JSON.stringify(result));
+      sessionStorage.setItem("DataBaseData",JSON.stringify(result));
       let high = countOccurences(result, 3);
       let medium = countOccurences(result, 2);
       let low = countOccurences(result, 1);
@@ -43,6 +43,9 @@ function setSeverities(input, ids) {
       sessionStorage.setItem("RiskCounters",JSON.stringify(new rc.RiskCounters(high,medium,low,safe)))
       openHomePage();
     })
+    .catch((err) => {
+      console.error(err);
+    });
 }
 
 /** Get random result ids for each check

@@ -34,7 +34,7 @@ export function openIssuesPage() {
   }
   
   let issues = []; // retrieve issues from tray application
-  issues = JSON.parse(sessionStorage.getItem("Severities"));  
+  issues = JSON.parse(sessionStorage.getItem("DataBaseData"));  
   console.log(issues);
 
   const tbody = pageContents.querySelector('tbody');
@@ -43,16 +43,17 @@ export function openIssuesPage() {
   document.onload = retrieveTheme();
 }
 
+// TODO should be localized
 function RiskLevels(level) {
   switch(level) {
     case 0:
-      return "Safe"
+      return "acceptable"
     case 1:
-      return "Low"
+      return "low"
     case 2:
-      return "Medium"
+      return "medium"
     case 3:
-      return "High"
+      return "high"
   }
 }
 
@@ -66,9 +67,9 @@ export function fillTable(tbody, issues) {
   issues.forEach(issue => {
     const row = document.createElement('tr');
     row.innerHTML = `
-      <td class="issue-link">${issue.checkid}</td>
+      <td class="issue-link">${issue.id}</td>
       <td>Security</td>
-      <td>${RiskLevels(issue.level)}</td>
+      <td>${RiskLevels(issue.severity)}</td>
     `;
     tbody.appendChild(row);
   });  
