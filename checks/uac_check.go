@@ -1,8 +1,9 @@
 package checks
 
 import (
-	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
 	"strings"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
 )
 
 // UACCheck checks the User Account Control (UAC) level

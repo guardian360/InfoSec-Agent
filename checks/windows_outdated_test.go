@@ -1,10 +1,11 @@
 package checks_test
 
 import (
-	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
-	"github.com/InfoSec-Agent/InfoSec-Agent/windowsmock"
 	"reflect"
 	"testing"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
+	"github.com/InfoSec-Agent/InfoSec-Agent/windowsmock"
 )
 
 // TestWindowsOutdated tests the WindowsOutdated function with different (in)valid inputs

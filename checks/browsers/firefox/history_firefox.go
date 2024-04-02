@@ -2,13 +2,14 @@ package firefox
 
 import (
 	"database/sql"
-	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
-	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"log"
 	"os"
 	"path/filepath"
 	"regexp"
 	"time"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
+	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 
 	_ "modernc.org/sqlite"
 )

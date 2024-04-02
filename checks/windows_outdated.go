@@ -2,6 +2,7 @@ package checks
 
 import (
 	"fmt"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/windowsmock"
 )
 

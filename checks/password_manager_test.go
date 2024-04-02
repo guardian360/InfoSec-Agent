@@ -1,10 +1,11 @@
 package checks_test
 
 import (
-	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
-	"github.com/stretchr/testify/mock"
 	"reflect"
 	"testing"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
+	"github.com/stretchr/testify/mock"
 )
 
 // MockProgramLister is a mock type for the ProgramLister interface

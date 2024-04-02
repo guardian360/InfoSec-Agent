@@ -2,11 +2,12 @@ package checks_test
 
 import (
 	"errors"
-	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
-	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
 	"reflect"
 	"strings"
 	"testing"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
+	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
 )
 
 func TestSmbCheck(t *testing.T) {

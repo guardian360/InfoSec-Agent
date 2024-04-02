@@ -2,9 +2,10 @@ package checks
 
 import (
 	"fmt"
-	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
 	"regexp"
 	"strings"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
 )
 
 // OpenPorts checks for open ports and the processes that are using them

@@ -1,8 +1,9 @@
 package checks
 
 import (
-	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
 	"strings"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
 )
 
 // TODO: Improve formatting of output, check more classes

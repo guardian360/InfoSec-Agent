@@ -1,12 +1,13 @@
 package checks_test
 
 import (
+	"reflect"
+	"testing"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
 	"github.com/stretchr/testify/require"
 	"golang.org/x/sys/windows/registry"
-	"reflect"
-	"testing"
 )
 
 // TestRemoteDesktopCheck tests the RemoteDesktopCheck function on (in)valid input

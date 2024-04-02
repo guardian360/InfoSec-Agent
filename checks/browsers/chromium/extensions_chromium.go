@@ -7,13 +7,14 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"io"
 	"log"
 	"net/http"
 	"os"
 	"path/filepath"
 	"strings"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 )
 
 // Response is a struct that represents the JSON response from the Microsoft Edge Addons Store

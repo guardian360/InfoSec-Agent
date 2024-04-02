@@ -1,9 +1,10 @@
 package checks
 
 import (
+	"strings"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
-	"strings"
 )
 
 // Permission checks if the user has given permission to an application to access a certain capability

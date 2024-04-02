@@ -1,9 +1,10 @@
 package utils
 
 import (
-	"github.com/stretchr/testify/require"
 	"os"
 	"testing"
+
+	"github.com/stretchr/testify/require"
 )
 
 // TestCopyFileSuccess tests the CopyFile function with a valid source and destination file

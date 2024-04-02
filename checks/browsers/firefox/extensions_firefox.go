@@ -6,11 +6,12 @@ package firefox
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
-	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"log"
 	"os"
 	"strings"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
+	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 
 	"github.com/andrewarchi/browser/firefox"
 )

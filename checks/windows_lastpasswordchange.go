@@ -2,11 +2,12 @@ package checks
 
 import (
 	"fmt"
-	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
-	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"regexp"
 	"strings"
 	"time"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
+	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 )
 
 // LastPasswordChange checks when the Windows password was last changed

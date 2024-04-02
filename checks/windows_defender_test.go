@@ -1,10 +1,11 @@
 package checks_test
 
 import (
-	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
-	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
 	"reflect"
 	"testing"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
+	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
 )
 
 // TestWindowsDefender tests the WindowsDefender function with (in)valid inputs

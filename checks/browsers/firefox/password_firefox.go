@@ -3,11 +3,12 @@ package firefox
 import (
 	"encoding/json"
 	"fmt"
+	"log"
+	"os"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"github.com/andrewarchi/browser/firefox"
-	"log"
-	"os"
 )
 
 // PasswordFirefox checks the passwords in the Firefox browser.

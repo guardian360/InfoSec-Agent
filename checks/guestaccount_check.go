@@ -2,9 +2,10 @@ package checks
 
 import (
 	"fmt"
+	"strings"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
-	"strings"
 )
 
 // GuestAccount checks if the Windows guest account is active

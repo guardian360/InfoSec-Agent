@@ -2,10 +2,11 @@ package checks_test
 
 import (
 	"errors"
-	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
-	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
 	"reflect"
 	"testing"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
+	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
 )
 
 func TestGuestAccount(t *testing.T) {
