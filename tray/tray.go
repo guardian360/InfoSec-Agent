@@ -5,8 +5,9 @@
 package tray
 
 import (
-	"github.com/pkg/errors"
 	"log"
+
+	"github.com/pkg/errors"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/icon"

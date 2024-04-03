@@ -1,8 +1,9 @@
 package checks
 
 import (
-	"github.com/getlantern/errors"
 	"slices"
+
+	"github.com/getlantern/errors"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
 )

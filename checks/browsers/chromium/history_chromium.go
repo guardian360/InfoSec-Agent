@@ -2,17 +2,19 @@ package chromium
 
 import (
 	"database/sql"
-	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"log"
 	"os"
 	"path/filepath"
 	"regexp"
 
+	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	// Necessary to use the sqlite driver
-	_ "modernc.org/sqlite"
 	"strings"
 	"time"
+
+	_ "modernc.org/sqlite"
 )
 
 // HistoryChromium checks the user's history in a Chromium based browser for phishing domains.

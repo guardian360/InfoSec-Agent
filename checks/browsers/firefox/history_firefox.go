@@ -2,12 +2,13 @@ package firefox
 
 import (
 	"database/sql"
-	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"log"
 	"os"
 	"path/filepath"
 	"regexp"
 	"time"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	// Necessary to use the sqlite driver
