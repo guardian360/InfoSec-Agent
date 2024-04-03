@@ -73,7 +73,7 @@ func TestRegistryOutputRemoteDesktop(t *testing.T) {
 	require.NoError(t, err)
 
 	defer func(key registry.Key) {
-		err := key.Close()
+		err = key.Close()
 		require.NoError(t, err)
 	}(key)
 

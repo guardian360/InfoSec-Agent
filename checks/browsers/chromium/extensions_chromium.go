@@ -70,10 +70,11 @@ func ExtensionsChromium(browser string) checks.Check {
 		}
 	}
 
-	// extensionName := ""
+	var extensionName1 string
+	var extensionName2 string
 	for _, id := range extensionIDs {
 		// Get the name of the extension from the Chrome Web Store
-		extensionName1, err := getExtensionNameChromium(id,
+		extensionName1, err = getExtensionNameChromium(id,
 			"https://chromewebstore.google.com/detail/%s", browser)
 		if err != nil {
 			log.Fatal(err)
@@ -84,7 +85,7 @@ func ExtensionsChromium(browser string) checks.Check {
 		}
 		if browser == edge {
 			// Get the name of the extension from the Microsoft Edge Addons Store
-			extensionName2, err := getExtensionNameChromium(id,
+			extensionName2, err = getExtensionNameChromium(id,
 				"https://microsoftedge.microsoft.com/addons/getproductdetailsbycrxid/%s", browser)
 			if err != nil {
 				log.Fatal(err)
@@ -127,7 +128,7 @@ func getExtensionNameChromium(extensionID string, url string, browser string) (s
 	}
 	// Close the response body after the necessary data is retrieved
 	defer func(Body io.ReadCloser) {
-		err := Body.Close()
+		err = Body.Close()
 		if err != nil {
 			log.Println("error closing body: ", err)
 		}
@@ -145,7 +146,7 @@ func getExtensionNameChromium(extensionID string, url string, browser string) (s
 		}
 		// For Edge, the data is stored in a JSON format, so decoding is required
 		var data Response
-		err := json.NewDecoder(resp.Body).Decode(&data)
+		err = json.NewDecoder(resp.Body).Decode(&data)
 		if err != nil {
 			return "", err
 		}

@@ -32,7 +32,7 @@ func CookieFirefox() checks.Check {
 
 	// Clean up the temporary file when the function returns
 	defer func(name string) {
-		err := os.Remove(name)
+		err = os.Remove(name)
 		if err != nil {
 			log.Println("error removing file: ", err)
 		}
@@ -49,7 +49,7 @@ func CookieFirefox() checks.Check {
 		return checks.NewCheckError("CookieFirefox", err)
 	}
 	defer func(db *sql.DB) {
-		err := db.Close()
+		err = db.Close()
 		if err != nil {
 			log.Println("error closing database: ", err)
 		}
@@ -65,7 +65,7 @@ func CookieFirefox() checks.Check {
 		return checks.NewCheckError("CookieFirefox", err)
 	}
 	defer func(rows *sql.Rows) {
-		err := rows.Close()
+		err = rows.Close()
 		if err != nil {
 			log.Println("error closing rows: ", err)
 		}
@@ -76,7 +76,7 @@ func CookieFirefox() checks.Check {
 		var name, host string
 		var creationTime int64
 		// Scan the row into variables
-		if err := rows.Scan(&name, &host, &creationTime); err != nil {
+		if err = rows.Scan(&name, &host, &creationTime); err != nil {
 			return checks.NewCheckError("CookieFirefox", err)
 		}
 		// Append the cookie to the result list

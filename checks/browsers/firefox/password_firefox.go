@@ -27,7 +27,7 @@ func PasswordFirefox() checks.Check {
 		return checks.NewCheckError("PasswordFirefox", err)
 	}
 	defer func(content *os.File) {
-		err := content.Close()
+		err = content.Close()
 		if err != nil {
 			log.Println("error closing file: ", err)
 		}

@@ -156,7 +156,7 @@ func OpenReportingPage(path string) error {
 
 	// Restore the original working directory
 	defer func() {
-		err := os.Chdir(originalDir)
+		err = os.Chdir(originalDir)
 		if err != nil {
 			log.Println("Error changing directory:", err)
 		}
@@ -168,7 +168,7 @@ func OpenReportingPage(path string) error {
 
 	buildCmd.Stdout = os.Stdout
 	buildCmd.Stderr = os.Stderr
-	if err := buildCmd.Run(); err != nil {
+	if err = buildCmd.Run(); err != nil {
 		return fmt.Errorf("error building reporting-page: %w", err)
 	}
 
@@ -180,7 +180,7 @@ func OpenReportingPage(path string) error {
 	// Set up a listener for the quit function from the system tray
 	go func() {
 		<-mQuit.ClickedCh
-		if err := runCmd.Process.Kill(); err != nil {
+		if err = runCmd.Process.Kill(); err != nil {
 			log.Println("Error interrupting reporting-page process:", err)
 		}
 		ReportingPageOpen = false
@@ -189,7 +189,7 @@ func OpenReportingPage(path string) error {
 
 	ReportingPageOpen = true
 	// Run the reporting page executable
-	if err := runCmd.Run(); err != nil {
+	if err = runCmd.Run(); err != nil {
 		ReportingPageOpen = false
 		return fmt.Errorf("error running reporting-page: %w", err)
 	}
@@ -250,7 +250,7 @@ func ScanNow() ([]checks.Check, error) {
 	}
 	// Defer closing the dialog until the scan completes
 	defer func(dialog zenity.ProgressDialog) {
-		err := dialog.Close()
+		err = dialog.Close()
 		if err != nil {
 			log.Println("Error closing dialog:", err)
 		}

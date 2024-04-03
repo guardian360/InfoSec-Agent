@@ -27,7 +27,7 @@ func CopyFile(src, dst string) error {
 		return err
 	}
 	defer func(sourceFile *os.File) {
-		err := sourceFile.Close()
+		err = sourceFile.Close()
 		if err != nil {
 			log.Printf("error closing source file: %v", err)
 		}
@@ -38,7 +38,7 @@ func CopyFile(src, dst string) error {
 		return err
 	}
 	defer func(destinationFile *os.File) {
-		err := destinationFile.Close()
+		err = destinationFile.Close()
 		if err != nil {
 			log.Printf("error closing destination file: %v", err)
 		}
@@ -68,7 +68,7 @@ func GetPhishingDomains() []string {
 	}
 	resp, err := client.Do(req)
 	defer func(Body io.ReadCloser) {
-		err := Body.Close()
+		err = Body.Close()
 		if err != nil {
 			log.Printf("error closing response body: %v", err)
 		}
@@ -107,7 +107,7 @@ func FirefoxFolder() ([]string, error) {
 		return nil, err
 	}
 	defer func(dir *os.File) {
-		err := dir.Close()
+		err = dir.Close()
 		if err != nil {
 			log.Printf("error closing directory: %v", err)
 		}
@@ -128,9 +128,10 @@ func FirefoxFolder() ([]string, error) {
 		}
 	}
 	var profileList []string
+	var content []byte
 	// Loop through all the folders to check if they have a logins.json file.
 	for _, folder := range folders {
-		content, err := os.ReadFile(filepath.Clean(profilesDir + "\\" + folder + "\\logins.json"))
+		content, err = os.ReadFile(filepath.Clean(profilesDir + "\\" + folder + "\\logins.json"))
 		if err != nil {
 			continue
 		}

@@ -49,7 +49,7 @@ func HistoryChromium(browser string) checks.Check {
 
 	// Clean up the temporary file when the function returns
 	defer func(name string) {
-		err := os.Remove(name)
+		err = os.Remove(name)
 		if err != nil {
 			log.Println("error removing file: ", err)
 		}
@@ -67,7 +67,7 @@ func HistoryChromium(browser string) checks.Check {
 		return checks.NewCheckError(returnBrowserName, err)
 	}
 	defer func(db *sql.DB) {
-		err := db.Close()
+		err = db.Close()
 		if err != nil {
 			log.Println("error closing database: ", err)
 		}
@@ -84,7 +84,7 @@ func HistoryChromium(browser string) checks.Check {
 		return checks.NewCheckError(returnBrowserName, err)
 	}
 	defer func(rows *sql.Rows) {
-		err := rows.Close()
+		err = rows.Close()
 		if err != nil {
 			log.Println("error closing rows: ", err)
 		}

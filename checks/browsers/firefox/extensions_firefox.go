@@ -37,7 +37,7 @@ func ExtensionFirefox() (checks.Check, checks.Check) {
 		return checks.NewCheckError("ExtensionsFirefox", err), checks.NewCheckError("AdblockerFirefox", err)
 	}
 	defer func(content *os.File) {
-		err := content.Close()
+		err = content.Close()
 		if err != nil {
 			log.Println("error closing file: ", err)
 		}

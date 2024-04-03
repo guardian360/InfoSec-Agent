@@ -31,7 +31,7 @@ func HistoryFirefox() checks.Check {
 	tempHistoryDbff := filepath.Join(os.TempDir(), "tempHistoryDb.sqlite")
 	// Clean up the temporary file when the function returns
 	defer func(name string) {
-		err := os.Remove(name)
+		err = os.Remove(name)
 		if err != nil {
 			log.Println("error removing file: ", err)
 		}
@@ -48,7 +48,7 @@ func HistoryFirefox() checks.Check {
 		return checks.NewCheckError("HistoryFirefox", err)
 	}
 	defer func(db *sql.DB) {
-		err := db.Close()
+		err = db.Close()
 		if err != nil {
 			log.Println("error closing database: ", err)
 		}
@@ -71,7 +71,7 @@ func HistoryFirefox() checks.Check {
 		return checks.NewCheckError("HistoryFirefox", err)
 	}
 	defer func(rows *sql.Rows) {
-		err := rows.Close()
+		err = rows.Close()
 		if err != nil {
 			log.Println("error closing rows: ", err)
 		}
@@ -82,7 +82,7 @@ func HistoryFirefox() checks.Check {
 		var url string
 		var lastVisitDate sql.NullInt64
 		// Scan the row into variables
-		if err := rows.Scan(&url, &lastVisitDate); err != nil {
+		if err = rows.Scan(&url, &lastVisitDate); err != nil {
 			return checks.NewCheckError("HistoryFirefox", err)
 		}
 		var timeString string

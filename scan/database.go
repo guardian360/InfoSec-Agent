@@ -75,7 +75,7 @@ func FillDataBase(scanResults []checks.Check) {
 
 	// Add dummy values to table
 	for i, s := range scanResults {
-		_, err := addIssue(db, s, i, 0, 0)
+		_, err = addIssue(db, s, i, 0, 0)
 		if err != nil {
 			log.Println("Error adding issue: ", err)
 		}
@@ -145,9 +145,10 @@ func GetAllSeverities(checks []checks.Check, resultIDs []int) ([]Severity, error
 	}
 	log.Println("Connected to database")
 
+	var val int
 	severities := make([]Severity, len(checks))
 	for i, s := range checks {
-		val, err := GetSeverity(db, i, resultIDs[i])
+		val, err = GetSeverity(db, i, resultIDs[i])
 		if err != nil {
 			log.Println("Error getting severity value")
 		}
