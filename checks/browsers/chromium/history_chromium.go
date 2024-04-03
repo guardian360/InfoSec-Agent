@@ -9,11 +9,12 @@ import (
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 
-	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
-	// Necessary to use the sqlite driver
 	"strings"
 	"time"
 
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
+
+	// Necessary to use the sqlite driver
 	_ "modernc.org/sqlite"
 )
 
