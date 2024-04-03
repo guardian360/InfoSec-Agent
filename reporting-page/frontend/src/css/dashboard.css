@@ -52,20 +52,20 @@
 }
 
 .high-risk {
-  background-color: var(--highRiskColor);
+  background-color: var(--high-risk-color);
   border-radius: 10px 10px 0 0;
 }
 
 .medium-risk {
-  background-color: var(--mediumRiskColor);
+  background-color: var(--medium-risk-color);
 }
 
 .low-risk {
-  background-color: var(--lowRiskColor);
+  background-color: var(--low-risk-color);
 }
 
 .no-risk {
-  background-color: var(--noRiskColor);
+  background-color: var(--no-risk-color);
   border-radius: 0 0 10px 10px;
 }
 
@@ -89,14 +89,16 @@
   /* flex: 2; */
 }
 
-.piechart .piechart-container {
-  height: 90%;
-}
-
 .piechart-container {
   min-height: 200px;
   margin: 10px;
 }
+
+.piechart .piechart-container {
+  height: 90%;
+}
+
+
 
 /* risk distribution graph */
 
@@ -123,7 +125,8 @@
   border: none;
   outline: none;
   padding: 10px 16px;
-  background-color: var(--);
+
+  /* background-color: var(--); */
   font-family: inherit;
   margin: 0;
   min-width: 160px;

@@ -5,9 +5,9 @@ Should later on be able to be changed by user, with help of js
 
 :root {
   --hue: 200;
-  --hueComplement: calc(var(--hue) + 180);
-  --hueRightAnalogous: calc(var(--hue) + 30);
-  --hueLeftAnalogous: calc(var(--hue) - 30);
+  --hue-complement: calc(var(--hue) + 180);
+  --hue-right-analogous: calc(var(--hue) + 30);
+  --hueleft-analogous: calc(var(--hue) - 30);
   
 
   /* color for borders */
@@ -18,21 +18,21 @@ Should later on be able to be changed by user, with help of js
   --background-color-top-nav: #DFEEF1;  /* color background of top bar navigation and for titles between sections */
   --background-color-left-nav: #4E869B; /* color background of left bar navigation */
   --background-nav-hover: #427385;      /* color when hovering over navigation */
-  --background-color-second-row: hsl(var(--hueRightAnalogous) 40% 95%); /* changes background security/privacy risk */
-  --background-color-second-row-area: hsl(var(--hueLeftAnalogous) 40% 40%); /* changes background of small area in security/privacy risk */
-  --background-piechart: hsl(var(--hueLeftAnalogous) 40% 90%); /* changes background piechart */
+  --background-color-second-row: hsl(var(--hue-right-analogous) 40% 95%); /* changes background security/privacy risk */
+  --background-color-second-row-area: hsl(var(--hueleft-analogous) 40% 40%); /* changes background of small area in security/privacy risk */
+  --background-piechart: hsl(var(--hueleft-analogous) 40% 90%); /* changes background piechart */
   --background-color-table-header: white;
 
   /* colors for text */
   --text-body: #333;                                  /* main text color */
-  --text-navigation: hsl(var(--hueComplement) 5% 30%);  /* left side navigation text */
+  --text-navigation: hsl(var(--hue-complement) 5% 30%);  /* left side navigation text */
   --text-settings-hover: #646464;                     /* hover over settings text color */
   --text-left-nav: #e7e7e7;                           /* text color left navigation */
 
   /* colors for the different risks */
-  --highRiskColor: #e06666;
-  --mediumRiskColor: #f6b26b;
-  --lowRiskColor: #ffd966;
-  --noRiskColor: #93c47d;
+  --high-risk-color: #e06666;
+  --medium-risk-color: #f6b26b;
+  --low-risk-color: #ffd966;
+  --no-risk-color: #93c47d;
 
 }

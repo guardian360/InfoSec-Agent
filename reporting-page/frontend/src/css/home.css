@@ -151,12 +151,6 @@ h2{
   float: left;
 }
 
-.left-nav p:hover {
-  background-color: var(--background-nav-hover);
-  color: var(--text-left-nav);
-  cursor: pointer;
-}
-
 .left-nav p {
   width: 100%;
   color: var(--text-left-nav);
@@ -164,6 +158,12 @@ h2{
   margin: 0;
   font-size: 1em;
   float:left;
+}
+
+.left-nav p:hover {
+  background-color: var(--background-nav-hover);
+  color: var(--text-left-nav);
+  cursor: pointer;
 }
 
 .left-nav span {
@@ -199,6 +199,7 @@ h2{
   flex: 1;
 }
 
+
 .data-segment-header {
   width: 100%;
   font-size: 18px;
@@ -210,6 +211,7 @@ h2{
 .data-segment-header p {
   margin: 10px;
 }
+
 
 /* Home contents */
 

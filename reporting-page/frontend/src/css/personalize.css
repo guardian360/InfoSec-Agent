@@ -77,11 +77,11 @@
   --background-color-top-nav: #DFEEF1; 
   --background-color-left-nav: #4E869B;
   --background-nav-hover: #427385;
-  --background-color-second-row: hsl(var(--hueRightAnalogous) 40% 95%);
-  --background-piechart: hsl(var(--hueLeftAnalogous) 40% 90%);
+  --background-color-second-row: hsl(var(--hue-right-analogous) 40% 95%);
+  --background-piechart: hsl(var(--hue-left-analogous) 40% 90%);
   --background-color-table-header: white;
   --text-body: #333; 
-  --text-navigation: hsl(var(--hueComplement) 5% 30%);
+  --text-navigation: hsl(var(--hue-complement) 5% 30%);
   --text-settings-hover: #646464; 
   --text-left-nav: #d4d4d4; 
 
