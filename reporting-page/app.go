@@ -2,7 +2,7 @@ package main
 
 import (
 	"context"
-	"fmt"
+	"log"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/localization"
 	"github.com/InfoSec-Agent/InfoSec-Agent/tray"
@@ -46,5 +46,5 @@ func (a *App) Localize(messageID string) string {
 //
 // Returns: _
 func (a *App) PrintFromFrontend(message string) {
-	fmt.Println(message)
+	log.Println(message)
 }
