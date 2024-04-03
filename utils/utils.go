@@ -4,6 +4,7 @@
 package utils
 
 import (
+	"context"
 	"errors"
 	"io"
 	"log"
@@ -61,7 +62,7 @@ func GetPhishingDomains() []string {
 	// Get the phishing domains from up-to-date GitHub list
 	client := &http.Client{}
 	url := "https://raw.githubusercontent.com/mitchellkrogza/Phishing.Database/master/phishing-domains-ACTIVE.txt"
-	req, err := http.NewRequest(http.MethodGet, url, nil)
+	req, err := http.NewRequestWithContext(context.Background(), http.MethodGet, url, nil)
 	req.Header.Add("User-Agent", "Mozilla/5.0")
 	if err != nil {
 		log.Fatal(err)
