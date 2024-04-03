@@ -4,6 +4,7 @@
 package chromium
 
 import (
+	"context"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -115,7 +116,7 @@ func getExtensionNameChromium(extensionID string, url string, browser string) (s
 	client := &http.Client{}
 	urlToVisit := fmt.Sprintf(url, extensionID)
 	// Generate a new request to visit the extension/addon store
-	req, err := http.NewRequest(http.MethodGet, urlToVisit, nil)
+	req, err := http.NewRequestWithContext(context.Background(), http.MethodGet, urlToVisit, nil)
 	if err != nil {
 		log.Println("error creating request: ", err)
 		return "", err
