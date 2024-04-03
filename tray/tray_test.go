@@ -54,7 +54,6 @@ func TestChangeScanInterval(t *testing.T) {
 		// Valid input
 		{"24", "Scan interval changed to 24 hours\n"},
 		// Invalid input (non-numeric)
-		//{"abc", "Invalid input. Using default interval of 24 hours.Scan interval changed to 24 hours\n"},
 		{"abc", "Invalid input"},
 		// Invalid input (negative)
 		{"-1", "Invalid input"},
@@ -68,10 +67,6 @@ func TestChangeScanInterval(t *testing.T) {
 	for _, tc := range testCases {
 		var buf bytes.Buffer
 		log.SetOutput(&buf)
-		// Capture standard output to check the printed message
-		//oldStdout := os.Stdout
-		//r, w, _ := os.Pipe()
-		//os.Stdout = w
 
 		// Run the function with mocked user input
 		go tray.ChangeScanInterval(tc.input)
@@ -79,17 +74,9 @@ func TestChangeScanInterval(t *testing.T) {
 		// Wait for the function to complete
 		time.Sleep(100 * time.Millisecond)
 
-		//// Restore standard output
-		//err := w.Close()
-		//if err != nil {
-		//	t.Errorf("Error closing pipe: %v", err)
-		//}
-		//os.Stdout = oldStdout
-		//capturedOutput, _ := io.ReadAll(r)
 		capturedOutput := buf.String()
 
 		// Assert that the printed message matches the expected message
-		//require.Equal(t, tc.expectedMessage, string(capturedOutput))
 		require.Contains(t, capturedOutput, tc.expectedMessage)
 
 		// Reset log output to standard output
