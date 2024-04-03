@@ -18,7 +18,6 @@ func TestGuestAccount(t *testing.T) {
 		executorNetUser           commandmock.CommandExecutor
 		want                      checks.Check
 	}{
-		// TODO: Add test cases.
 		{
 			name:                      "wmiObjectError",
 			executorLocalGroup:        &commandmock.MockCommandExecutor{Output: "", Err: errors.New("Get-WmiObject error")},

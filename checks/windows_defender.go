@@ -36,7 +36,6 @@ func WindowsDefender(scanKey registrymock.RegistryKey, defenderKey registrymock.
 
 	// Based on the values of these keys, we can determine if Windows Defender and the periodic scan
 	// are enabled or disabled
-	//TODO: Nested if, should be less complex
 	if err != nil {
 		if antiVirusPeriodic == 1 {
 			return NewCheckResult("WindowsDefender", "Windows real-time defender is enabled but the "+
