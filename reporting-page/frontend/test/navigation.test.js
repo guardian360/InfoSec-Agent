@@ -1,12 +1,12 @@
 import test from 'unit.js';
-import { JSDOM } from "jsdom";
-import { MarkSelectedNavigationItem, CloseNavigation, ToggleNavigationHamburger, ToggleNavigationResize } from '../src/js/navigation-menu';
+import {JSDOM} from 'jsdom';
+import {MarkSelectedNavigationItem, CloseNavigation, ToggleNavigationHamburger, ToggleNavigationResize} from '../src/js/navigation-menu';
 
 // Mock page
 const dom = new JSDOM(`
 `);
-global.document = dom.window.document
-global.window = dom.window
+global.document = dom.window.document;
+global.window = dom.window;
 
 // Test cases
 describe('MarkSelectedNavigationItem', function() {

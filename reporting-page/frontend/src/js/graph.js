@@ -1,6 +1,6 @@
 // import * as this.rc from "./risk-counters.js"
 
-import { RiskCounters } from "./risk-counters.js";
+import {RiskCounters} from './risk-counters.js';
 
 export class Graph {
   graphShowHighRisks = true;
@@ -13,24 +13,24 @@ export class Graph {
   barChart;
   rc;
   /** Create a bar chart showing the risk counters
-   * 
+   *
    * @param {string=} canvas Id of the canvas where the bar chart would be placed
    * @param {RiskCounters} riskCounters Risk counters used to retrieve data to be put in the chart
    */
-  constructor(canvas,riskCounters) {
+  constructor(canvas, riskCounters) {
     this.rc = riskCounters;
     if (canvas !== undefined) this.CreateGraphChart(canvas);
   }
 
-  /** Creates a graph in the form of a bar chart for risks 
-   * 
+  /** Creates a graph in the form of a bar chart for risks
+   *
    * @param {string} canvas html canvas where bar chart will be placed
    */
   CreateGraphChart(canvas) {
     this.barChart = new Chart(canvas, {
       type: 'bar',
       data: this.GetData(), // The data for our dataset
-      options: this.GetOptions() // Configuration options go here
+      options: this.GetOptions(), // Configuration options go here
     });
   }
 
@@ -42,101 +42,101 @@ export class Graph {
     this.barChart.update();
   }
 
-  /** Toggles a risks to show in the graph 
-   * 
-   * @param {string} category Category corresponding to risk 
+  /** Toggles a risks to show in the graph
+   *
+   * @param {string} category Category corresponding to risk
    * @param {boolean} [change=true] Changes graph after call, normally set to *true*
    */
   ToggleRisks(category, change = true) {
     switch (category) {
-      case "high":
-        this.graphShowHighRisks = !this.graphShowHighRisks;
-        break;
-      case "medium":
-        this.graphShowMediumRisks = !this.graphShowMediumRisks;
-        break;
-      case "low":
-        this.graphShowLowRisks = !this.graphShowLowRisks;
-        break;
-      case "no":
-        this.graphShowNoRisks = !this.graphShowNoRisks;
-        break;
-      default:
-        break;
+    case 'high':
+      this.graphShowHighRisks = !this.graphShowHighRisks;
+      break;
+    case 'medium':
+      this.graphShowMediumRisks = !this.graphShowMediumRisks;
+      break;
+    case 'low':
+      this.graphShowLowRisks = !this.graphShowLowRisks;
+      break;
+    case 'no':
+      this.graphShowNoRisks = !this.graphShowNoRisks;
+      break;
+    default:
+      break;
     }
     if (change) this.ChangeGraph();
   }
 
   /** toggles 'show' class on element with id:"myDropDown" */
   GraphDropdown() {
-    document.getElementById("myDropdown").classList.toggle("show");
+    document.getElementById('myDropdown').classList.toggle('show');
   }
 
 
-  /** Creates the data portion for a graph using the different levels of risks 
-   * 
-   * @returns {data} Data for graph chart
-   */ 
+  /** Creates the data portion for a graph using the different levels of risks
+   *
+   * @return {data} Data for graph chart
+   */
   GetData() {
     /**
      * Labels created for the x-axis
      * @type {!Array<string>}
      */
-    let labels = [];
-    for (var i = 1; i <= Math.min(this.rc.allNoRisks.length, this.graphShowAmount); i++) {
+    const labels = [];
+    for (let i = 1; i <= Math.min(this.rc.allNoRisks.length, this.graphShowAmount); i++) {
       labels.push(i);
     }
 
-    let noRiskData = {
+    const noRiskData = {
       label: 'Safe issues',
       data: this.rc.allNoRisks.slice(Math.max(this.rc.allNoRisks.length - this.graphShowAmount, 0)),
       backgroundColor: this.rc.noRiskColor,
     };
 
-    let lowRiskData = {
+    const lowRiskData = {
       label: 'Low risk issues',
       data: this.rc.allLowRisks.slice(Math.max(this.rc.allLowRisks.length - this.graphShowAmount, 0)),
       backgroundColor: this.rc.lowRiskColor,
     };
 
-    let mediumRiskData = {
+    const mediumRiskData = {
       label: 'Medium risk issues',
       data: this.rc.allMediumRisks.slice(Math.max(this.rc.allMediumRisks.length - this.graphShowAmount, 0)),
       backgroundColor: this.rc.mediumRiskColor,
     };
 
-    let highRiskData = {
+    const highRiskData = {
       label: 'High risk issues',
       data: this.rc.allHighRisks.slice(Math.max(this.rc.allHighRisks.length - this.graphShowAmount, 0)),
       backgroundColor: this.rc.highRiskColor,
     };
 
-    let datasets = [];
+    const datasets = [];
 
     if (this.graphShowNoRisks) datasets.push(noRiskData);
     if (this.graphShowLowRisks) datasets.push(lowRiskData);
     if (this.graphShowMediumRisks) datasets.push(mediumRiskData);
-    if (this.graphShowHighRisks) datasets.push(highRiskData); 
+    if (this.graphShowHighRisks) datasets.push(highRiskData);
 
     return {
       labels: labels,
-      datasets: datasets
+      datasets: datasets,
     };
   }
 
-  /** Create the options for a bar chart 
-   * 
-   * @returns {Options} Options for graph chart
-   */ 
+  /** Create the options for a bar chart
+   *
+   * @return {Options} Options for graph chart
+   */
   GetOptions() {
     return {
       scales: {
         xAxes: [{
-          stacked: true
+          stacked: true,
         }],
         yAxes: [{
-          stacked: true
-        }]
+          stacked: true,
+        }],
       },
       legend: {
         display: false,
@@ -148,4 +148,3 @@ export class Graph {
 }
 
 
-  
