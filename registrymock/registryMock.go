@@ -13,9 +13,9 @@ var (
 
 // RegistryKey is an interface for reading values from the Windows registry
 type RegistryKey interface {
-	GetStringValue(name string) (val string, valtype uint32, err error)
-	GetBinaryValue(name string) (val []byte, valtype uint32, err error)
-	GetIntegerValue(name string) (val uint64, valtype uint32, err error)
+	GetStringValue(name string) (string, uint32, error)
+	GetBinaryValue(name string) ([]byte, uint32, error)
+	GetIntegerValue(name string) (uint64, uint32, error)
 	OpenKey(path string, access uint32) (RegistryKey, error)
 	ReadValueNames(count int) ([]string, error)
 	ReadSubKeyNames(count int) ([]string, error)
