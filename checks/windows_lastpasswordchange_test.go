@@ -1,7 +1,7 @@
 package checks_test
 
 import (
-	"fmt"
+	"errors"
 	"github.com/stretchr/testify/require"
 
 	"testing"
@@ -29,7 +29,7 @@ func TestLastPasswordChange(t *testing.T) {
 		{
 			name:          "Parsing data error",
 			executorClass: &commandmock.MockCommandExecutor{Output: "Gebruikersnaam                           test\nVolledige naam                           test\nOpmerking\nOpmerking van gebruiker\nLandcode                                 000 (Systeemstandaard)\nAccount actief                           Ja\nAccount verloopt                         Nooit\n\nWachtwoord voor het laatst ingesteld     1-0.5-2022 17:48:16\nWachtwoord verloopt                      Nooit\nWachtwoord mag worden gewijzigd          1-0.5-2022 17:48:16\nWachtwoord vereist                       Ja\nGebruiker mag wachtwoord wijzigen        Ja\n\nWerkstations toegestaan                  Alle\nAanmeldingsscript\nGebruikersprofiel\nBasismap\nMeest recente aanmelding                 Nooit\n\nToegestane aanmeldingstijden             Alle\n\nLidmaatschap lokale groep                *Administrators\n                                         *Apparaatbeheerders\n                                         *docker-users\n                                         *Gebruikers\n                                         *Prestatielogboekgebru\nLidmaatschap globale groep               *Geen\nDe opdracht is voltooid.", Err: nil},
-			want:          checks.NewCheckError("LastPasswordChange", fmt.Errorf("error parsing date")),
+			want:          checks.NewCheckError("LastPasswordChange", errors.New("error parsing date")),
 		},
 		{
 			name:          "Password changed recently",

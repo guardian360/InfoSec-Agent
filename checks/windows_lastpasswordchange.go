@@ -1,6 +1,7 @@
 package checks
 
 import (
+	"errors"
 	"fmt"
 	"regexp"
 	"strings"
@@ -48,9 +49,8 @@ func LastPasswordChange(executor commandmock.CommandExecutor) Check {
 		}
 	}
 
-	//TODO: Change fmt.Errorf to errors.New here and in test and fix failing test
 	if err != nil {
-		return NewCheckError("LastPasswordChange", fmt.Errorf("error parsing date"))
+		return NewCheckError("LastPasswordChange", errors.New("error parsing date"))
 	}
 
 	// Get the current time
