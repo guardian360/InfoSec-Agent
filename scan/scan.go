@@ -118,7 +118,7 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 		log.Println("Error marshalling JSON:", err)
 		return checkResults, err
 	}
-	fmt.Println(string(jsonData))
+	log.Println(string(jsonData))
 
 	return checkResults, nil
 

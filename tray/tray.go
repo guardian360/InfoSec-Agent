@@ -114,7 +114,7 @@ func OnReady() {
 		// Executes each time the ScanTicker has elapsed the set amount of time
 		case <-ScanTicker.C:
 			ScanCounter++
-			fmt.Println("Scan:", ScanCounter)
+			log.Println("Scan:", ScanCounter)
 			_, err := ScanNow()
 			if err != nil {
 				log.Println("Error scanning:", err)
@@ -221,14 +221,14 @@ func ChangeScanInterval(testInput ...string) {
 	// Parse the user input
 	interval, err := strconv.Atoi(res)
 	if err != nil || interval <= 0 {
-		fmt.Printf("Invalid input. Using default interval of 24 hours.")
+		log.Printf("Invalid input. Using default interval of 24 hours.")
 		interval = 24
 	}
 
 	// Restart the ticker with the new interval
 	ScanTicker.Stop()
 	ScanTicker = time.NewTicker(time.Duration(interval) * time.Hour)
-	fmt.Printf("Scan interval changed to %d hours\n", interval)
+	log.Printf("Scan interval changed to %d hours\n", interval)
 }
 
 // ScanNow performs one scan iteration (without checking if it is scheduled)
@@ -240,7 +240,7 @@ func ScanNow() ([]checks.Check, error) {
 	// ScanCounter is not concretely used at the moment
 	// might be useful in the future
 	ScanCounter++
-	fmt.Println("Scanning now. Scan:", ScanCounter)
+	log.Println("Scanning now. Scan:", ScanCounter)
 
 	// Display a progress dialog while the scan is running
 	dialog, err := zenity.Progress(

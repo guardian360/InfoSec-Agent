@@ -16,9 +16,12 @@ func TestNetworkSharing(t *testing.T) {
 		want     checks.Check
 	}{
 		{
-			name:     "Get-NetAdapterBinding command error",
-			executor: &commandmock.MockCommandExecutor{Output: "", Err: errors.New("error executing command Get-NetAdapterBinding")},
-			want:     checks.NewCheckErrorf("NetworkSharing", "error executing command Get-NetAdapterBinding", errors.New("error executing command Get-NetAdapterBinding")),
+			name: "Get-NetAdapterBinding command error",
+			executor: &commandmock.MockCommandExecutor{Output: "",
+				Err: errors.New("error executing command Get-NetAdapterBinding")},
+			want: checks.NewCheckErrorf("NetworkSharing",
+				"error executing command Get-NetAdapterBinding",
+				errors.New("error executing command Get-NetAdapterBinding")),
 		},
 		{
 			name:     "Network sharing is enabled",

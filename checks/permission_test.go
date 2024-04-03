@@ -27,7 +27,8 @@ func TestPermission(t *testing.T) {
 			permission: "webcam",
 			key: &registrymock.MockRegistryKey{
 				SubKeys: []registrymock.MockRegistryKey{
-					{KeyName: "Software\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\webcam", StringValues: map[string]string{"Value": "Allow"},
+					{KeyName: "Software\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\webcam",
+						StringValues: map[string]string{"Value": "Allow"},
 						SubKeys: []registrymock.MockRegistryKey{
 							{KeyName: "NonPackaged",
 								SubKeys: []registrymock.MockRegistryKey{

@@ -28,14 +28,16 @@ func TestExternalDevices(t *testing.T) {
 			want:          checks.NewCheckResult("externaldevices", "", ""),
 		},
 		{
-			name:          "External devices connected",
-			executorClass: &commandmock.MockCommandExecutor{Output: "\r\nFriendlyName\r\n-\r\nHD WebCam\r\n\r\n\r\n\r\n", Err: nil},
-			want:          checks.NewCheckResult("externaldevices", "HD WebCam", "", "HD WebCam", ""),
+			name: "External devices connected",
+			executorClass: &commandmock.MockCommandExecutor{
+				Output: "\r\nFriendlyName\r\n-\r\nHD WebCam\r\n\r\n\r\n\r\n", Err: nil},
+			want: checks.NewCheckResult("externaldevices", "HD WebCam", "", "HD WebCam", ""),
 		},
 		{
 			name:          "Error checking device",
 			executorClass: &commandmock.MockCommandExecutor{Output: "", Err: errors.New("error checking device")},
-			want:          checks.NewCheckErrorf("externaldevices", "error checking device Mouse", errors.New("error checking device")),
+			want: checks.NewCheckErrorf("externaldevices", "error checking device Mouse",
+				errors.New("error checking device")),
 		},
 	}
 	for _, tt := range tests {
@@ -67,11 +69,12 @@ func TestCheckDeviceClass(t *testing.T) {
 			wantErr:       nil,
 		},
 		{
-			name:          "Devices of the specified class",
-			deviceClass:   "Camera",
-			executorClass: &commandmock.MockCommandExecutor{Output: "\r\nFriendlyName\r\n-\r\nHD WebCam\r\n\r\n\r\n\r\n", Err: nil},
-			want:          []string{"HD WebCam", ""},
-			wantErr:       nil,
+			name:        "Devices of the specified class",
+			deviceClass: "Camera",
+			executorClass: &commandmock.MockCommandExecutor{
+				Output: "\r\nFriendlyName\r\n-\r\nHD WebCam\r\n\r\n\r\n\r\n", Err: nil},
+			want:    []string{"HD WebCam", ""},
+			wantErr: nil,
 		},
 		{
 			name:          "Error checking device",
