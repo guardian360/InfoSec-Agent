@@ -92,7 +92,7 @@ func TestGuestAccount(t *testing.T) {
 				tt.executorYesWord,
 				tt.executorNetUser,
 			)
-			require.Equal(t, got, tt.want)
+			require.Equal(t, tt.want, got)
 		})
 	}
 }

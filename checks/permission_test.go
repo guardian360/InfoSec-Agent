@@ -59,7 +59,7 @@ func TestPermission(t *testing.T) {
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
 			result := checks.Permission(tc.permission, tc.key)
-			require.Equal(t, result, tc.want)
+			require.Equal(t, tc.want, result)
 		})
 	}
 }
