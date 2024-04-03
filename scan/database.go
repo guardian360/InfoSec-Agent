@@ -73,23 +73,24 @@ func FillDataBase(scanResults []checks.Check) {
 		log.Println("Error deleting from table:", err)
 	}
 
+	var val int64
 	// Add dummy values to table
 	for i, s := range scanResults {
-		_, err = addIssue(db, s, i, 0, 0)
+		val, err = addIssue(db, s, i, 0, 0)
 		if err != nil {
-			log.Println("Error adding issue: ", err)
+			log.Println("Error adding issue: ", err, val)
 		}
-		_, err = addIssue(db, s, i, 1, 1)
+		val, err = addIssue(db, s, i, 1, 1)
 		if err != nil {
-			log.Println("Error adding issue: ", err)
+			log.Println("Error adding issue: ", err, val)
 		}
-		_, err = addIssue(db, s, i, 2, 2)
+		val, err = addIssue(db, s, i, 2, 2)
 		if err != nil {
-			log.Println("Error adding issue: ", err)
+			log.Println("Error adding issue: ", err, val)
 		}
-		_, err = addIssue(db, s, i, 3, 3)
+		val, err = addIssue(db, s, i, 3, 3)
 		if err != nil {
-			log.Println("Error adding issue: ", err)
+			log.Println("Error adding issue: ", err, val)
 		}
 	}
 
