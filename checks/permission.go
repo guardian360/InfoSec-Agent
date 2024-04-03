@@ -58,6 +58,9 @@ func Permission(permission string, registryKey registrymock.RegistryKey) Check {
 			}
 		} else {
 			appKey, err = registrymock.OpenRegistryKey(key, appName)
+			if err != nil {
+				return NewCheckErrorf(permission, "error opening registry key", err)
+			}
 			val, _, err = appKey.GetStringValue("Value")
 			registrymock.CloseRegistryKey(appKey)
 
