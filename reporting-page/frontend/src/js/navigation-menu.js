@@ -1,7 +1,7 @@
-import logo from "../assets/images/logoTeamA-transformed.png";
+//import logo from "../assets/images/logoTeamA-transformed.png";
 import { GetLocalization } from "./localize.js";
 
-document.getElementById("logo").src = logo;
+//document.getElementById("logo").src = logo;
 
 /** Give the selected navigation item a different color 
  * @param {string} item - The navigation item that is selected
