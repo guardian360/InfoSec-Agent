@@ -7,6 +7,8 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 )
 
+const nonpackaged = "NonPackaged"
+
 // Permission checks if the user has given permission to an application to access a certain capability
 //
 // Parameters: permission (string) represents the permission to check
@@ -40,7 +42,7 @@ func Permission(permission string, registryKey registrymock.RegistryKey) Check {
 		if err != nil {
 			return NewCheckErrorf(permission, "error opening registry key", err)
 		}
-		if appName == "NonPackaged" {
+		if appName == nonpackaged {
 			val, _, err = key.GetStringValue("Value")
 		} else {
 			val, _, err = appKey.GetStringValue("Value")
@@ -52,7 +54,7 @@ func Permission(permission string, registryKey registrymock.RegistryKey) Check {
 		if val != "Allow" {
 			continue
 		}
-		if appName == "NonPackaged" {
+		if appName == nonpackaged {
 			nonPackagedApplicationNames, err = nonPackagedAppNames(appKey)
 			if err != nil {
 				return NewCheckErrorf(permission, "error reading subkey names", err)
@@ -70,8 +72,8 @@ func Permission(permission string, registryKey registrymock.RegistryKey) Check {
 
 // appKeyName returns the appropriate key name for the given application name
 func appKeyName(appName string) string {
-	if appName == "NonPackaged" {
-		return "NonPackaged"
+	if appName == nonpackaged {
+		return nonpackaged
 	}
 	return appName
 }
