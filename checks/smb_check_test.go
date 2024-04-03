@@ -102,24 +102,19 @@ func TestSmbEnabled(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
+			var smbVersion string
 			if strings.Contains(tt.name, "SMB1") {
-				got, err := checks.SmbEnabled("SMB1", tt.executor)
-				if (err != nil) != tt.wantErr {
-					t.Errorf("SmbEnabled() error = %v, wantErr %v", err, tt.wantErr)
-					return
-				}
-				if got != tt.want {
-					t.Errorf("SmbEnabled() got = %v, want %v", got, tt.want)
-				}
+				smbVersion = "SMB1"
 			} else {
-				got, err := checks.SmbEnabled("SMB2", tt.executor)
-				if (err != nil) != tt.wantErr {
-					t.Errorf("SmbEnabled() error = %v, wantErr %v", err, tt.wantErr)
-					return
-				}
-				if got != tt.want {
-					t.Errorf("SmbEnabled() got = %v, want %v", got, tt.want)
-				}
+				smbVersion = "SMB2"
+			}
+			got, err := checks.SmbEnabled(smbVersion, tt.executor)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("SmbEnabled() error = %v, wantErr %v", err, tt.wantErr)
+				return
+			}
+			if got != tt.want {
+				t.Errorf("SmbEnabled() got = %v, want %v", got, tt.want)
 			}
 		})
 	}
