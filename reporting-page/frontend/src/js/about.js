@@ -1,6 +1,5 @@
-import { CloseNavigation } from "./navigation-menu";
-import { MarkSelectedNavigationItem } from "./navigation-menu";
-import { retrieveTheme } from "./personalize";
+import { CloseNavigation, MarkSelectedNavigationItem } from "./navigation-menu.js";
+import { retrieveTheme } from "./personalize.js";
 
 /** Load the content of the About page */
 function openAboutPage() {

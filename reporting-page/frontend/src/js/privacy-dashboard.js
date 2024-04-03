@@ -1,7 +1,6 @@
 import { GetLocalization } from './localize.js';
-import { CloseNavigation } from "./navigation-menu.js";
-import { MarkSelectedNavigationItem } from "./navigation-menu.js";
-import { retrieveTheme } from "./personalize";
+import { CloseNavigation, MarkSelectedNavigationItem } from "./navigation-menu.js";
+import { retrieveTheme } from "./personalize.js";
 
 /** Load the content of the Privacy Dashboard page */
 function openPrivacyDashboardPage() {

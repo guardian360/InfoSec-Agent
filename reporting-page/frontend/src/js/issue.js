@@ -1,7 +1,7 @@
 import data from "../database.json" assert { type: "json" };
 import { openIssuesPage } from "./issues.js";
 import { GetLocalization } from './localize.js';
-import { retrieveTheme } from "./personalize";
+import { retrieveTheme } from "./personalize.js";
 
 let stepCounter = 0;
 

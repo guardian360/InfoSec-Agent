@@ -2,10 +2,9 @@ import { RiskCounters } from "./risk-counters.js";
 import { Graph } from "./graph.js";
 import { PieChart } from "./piechart.js";
 import { GetLocalization } from './localize.js';
-import { ScanNow } from '../../wailsjs/go/main/Tray';
-import { CloseNavigation } from "./navigation-menu.js";
-import { MarkSelectedNavigationItem } from "./navigation-menu.js";
-import { retrieveTheme } from "./personalize";
+import { ScanNow } from '../../wailsjs/go/main/Tray.js';
+import { CloseNavigation, MarkSelectedNavigationItem } from "./navigation-menu.js";
+import { retrieveTheme } from "./personalize.js";
 
 /** Load the content of the Security Dashboard page */
 function openSecurityDashboardPage() {

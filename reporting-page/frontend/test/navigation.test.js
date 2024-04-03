@@ -1,6 +1,6 @@
 import test from 'unit.js';
 import { JSDOM } from "jsdom";
-import { MarkSelectedNavigationItem, CloseNavigation, ToggleNavigationHamburger, ToggleNavigationResize } from '../src/js/navigation-menu';
+import { MarkSelectedNavigationItem, CloseNavigation, ToggleNavigationHamburger, ToggleNavigationResize } from '../src/js/navigation-menu.js';
 
 // Mock page
 const dom = new JSDOM(`

@@ -1,10 +1,10 @@
-import {PieChart} from "./piechart";
-import {ScanNow} from '../../wailsjs/go/main/Tray';
+import {PieChart} from "./piechart.js";
+import {ScanNow} from '../../wailsjs/go/main/Tray.js';
 import { GetLocalization } from './localize.js';
 import { CloseNavigation } from "./navigation-menu.js";
 import { MarkSelectedNavigationItem } from "./navigation-menu.js";
 import medal from '../assets/images/img_medal1.jpg';
-import { retrieveTheme } from "./personalize";
+import { retrieveTheme } from "./personalize.js";
 
 /** Load the content of the Home page */
 export function openHomePage() {

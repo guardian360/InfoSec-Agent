@@ -1,4 +1,4 @@
-import { Localize } from '../../wailsjs/go/main/App';
+import { Localize } from '../../wailsjs/go/main/App.js';
 
 export function GetLocalization(messageId, elementClass) {
     Localize(messageId).then((result) => {

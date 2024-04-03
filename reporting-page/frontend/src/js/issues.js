@@ -1,9 +1,8 @@
 import data from "../database.json" assert { type: "json" };
 import { openIssuePage } from "./issue.js";
 import { GetLocalization } from './localize.js';
-import { CloseNavigation } from "./navigation-menu.js";
-import { MarkSelectedNavigationItem } from "./navigation-menu.js";
-import { retrieveTheme } from "./personalize";
+import { CloseNavigation, MarkSelectedNavigationItem } from "./navigation-menu.js";
+import { retrieveTheme } from "./personalize.js";
 
 /** Load the content of the Issues page */
 export function openIssuesPage() {
