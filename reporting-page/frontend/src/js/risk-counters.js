@@ -33,10 +33,10 @@ export class RiskCounters {
       this.lowRiskColor = "rgb(255, 0, 0)";
       this.noRiskColor = "rgb(255, 255, 0)";
     } else {
-      this.highRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--highRiskColor');
-      this.mediumRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--mediumRiskColor');
-      this.lowRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--lowRiskColor');
-      this.noRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--noRiskColor');
+      this.highRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--high-risk-color');
+      this.mediumRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--medium-risk-color');
+      this.lowRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--low-risk-color');
+      this.noRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--no-risk-color');
     }
     this.allHighRisks.push(high);
     this.allMediumRisks.push(medium);
