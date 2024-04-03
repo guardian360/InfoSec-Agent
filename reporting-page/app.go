@@ -33,14 +33,14 @@ func (a *App) startup(ctx context.Context) {
 
 // Localize is called when the frontend loads text. It localizes the text based on the current language.
 //
-// Parameters: MessageID (string) - the ID of the message to localize
+// Parameters: messageID (string) - the ID of the message to localize
 //
 // Returns: localized string (string)
-func (a *App) Localize(MessageID string) string {
-	return localization.Localize(tray.Language(), MessageID)
+func (a *App) Localize(messageID string) string {
+	return localization.Localize(tray.Language(), messageID)
 }
 
-// Print prints the given message to the console
+// PrintFromFrontend Print prints the given message to the console
 //
 // Parameters: message (string) - the message to print
 //

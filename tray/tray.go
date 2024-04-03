@@ -315,7 +315,7 @@ func ChangeLanguage(testInput ...string) {
 
 // RefreshMenu updates the menu items with the current language
 //
-// Parameters: items ([]MenuItem)
+// Parameters: _
 //
 // Returns: _
 func RefreshMenu() {
