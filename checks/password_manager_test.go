@@ -48,7 +48,7 @@ func TestPasswordManager(t *testing.T) {
 			mockLister.On("ListInstalledPrograms", mock.Anything).Return(tt.mockPrograms, nil)
 
 			result := checks.PasswordManager(mockLister)
-			require.Equal(t, result, tt.want)
+			require.Equal(t, tt.want, result)
 		})
 	}
 }
@@ -82,7 +82,7 @@ func TestListInstalledPrograms(t *testing.T) {
 			mockLister.On("ListInstalledPrograms", mock.Anything).Return(tt.want, nil)
 
 			result, err := mockLister.ListInstalledPrograms(tt.directory)
-			require.Equal(t, result, tt.want)
+			require.Equal(t, tt.want, result)
 			if err != nil {
 				t.Errorf("Test %s failed. Expected no error, got %v", tt.name, err)
 			}
