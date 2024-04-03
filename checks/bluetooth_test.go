@@ -1,7 +1,7 @@
 package checks_test
 
 import (
-	"reflect"
+	"github.com/stretchr/testify/require"
 	"testing"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
@@ -50,9 +50,7 @@ func TestBluetooth(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got := checks.Bluetooth(tt.key)
-			if !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("Bluetooth() = %v, want %v", got, tt.want)
-			}
+			require.Equal(t, got, tt.want)
 		})
 	}
 }

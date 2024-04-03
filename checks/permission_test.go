@@ -1,7 +1,7 @@
 package checks_test
 
 import (
-	"reflect"
+	"github.com/stretchr/testify/require"
 	"testing"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
@@ -59,9 +59,7 @@ func TestPermission(t *testing.T) {
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
 			result := checks.Permission(tc.permission, tc.key)
-			if !reflect.DeepEqual(result, tc.want) {
-				t.Errorf("Test %s failed. Expected %#v, got %#v", tc.name, tc.want, result)
-			}
+			require.Equal(t, result, tc.want)
 		})
 	}
 }

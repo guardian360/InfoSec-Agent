@@ -2,7 +2,7 @@ package checks_test
 
 import (
 	"errors"
-	"reflect"
+	"github.com/stretchr/testify/require"
 	"strings"
 	"testing"
 
@@ -56,12 +56,8 @@ func TestSmbCheck(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := checks.SmbCheck(tt.executor1, tt.executor2); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("SmbCheck() = %v, want %v", got, tt.want)
-			}
-			if got := checks.SmbCheck(tt.executor1, tt.executor2); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("SmbCheck() = %v, want %v", got, tt.want)
-			}
+			got := checks.SmbCheck(tt.executor1, tt.executor2)
+			require.Equal(t, got, tt.want)
 		})
 	}
 }

@@ -1,7 +1,6 @@
 package checks_test
 
 import (
-	"reflect"
 	"testing"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
@@ -91,9 +90,7 @@ func TestLoginMethod(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got := checks.LoginMethod(tt.key)
-			if !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("LoginMethod() = %v, want %v", got, tt.want)
-			}
+			require.Equal(t, got, tt.want)
 		})
 	}
 }

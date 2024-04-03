@@ -55,9 +55,7 @@ func TestRemoteDesktopCheck(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got := checks.RemoteDesktopCheck(tt.key)
-			if !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("RemoteDesktopCheck() = %v, want %v", got, tt.want)
-			}
+			require.Equal(t, got, tt.want)
 		})
 	}
 }

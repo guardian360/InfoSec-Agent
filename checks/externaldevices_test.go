@@ -2,6 +2,7 @@ package checks_test
 
 import (
 	"errors"
+	"github.com/stretchr/testify/require"
 	"reflect"
 	"strings"
 	"testing"
@@ -39,9 +40,8 @@ func TestExternalDevices(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := checks.ExternalDevices(tt.executorClass); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("ExternalDevices() = %v, want %v", got, tt.want)
-			}
+			got := checks.ExternalDevices(tt.executorClass)
+			require.Equal(t, got, tt.want)
 		})
 	}
 }

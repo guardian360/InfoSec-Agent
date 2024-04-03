@@ -1,7 +1,7 @@
 package checks_test
 
 import (
-	"reflect"
+	"github.com/stretchr/testify/require"
 	"testing"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
@@ -43,9 +43,7 @@ func TestWindowsDefender(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got := checks.WindowsDefender(tt.scanKey, tt.defenderKey)
-			if !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("WindowsDefender() = %v, want %v", got, tt.want)
-			}
+			require.Equal(t, got, tt.want)
 		})
 	}
 }

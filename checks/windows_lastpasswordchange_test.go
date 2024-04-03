@@ -2,8 +2,8 @@ package checks_test
 
 import (
 	"fmt"
+	"github.com/stretchr/testify/require"
 
-	"reflect"
 	"testing"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
@@ -39,9 +39,8 @@ func TestLastPasswordChange(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := checks.LastPasswordChange(tt.executorClass); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("LastPasswordChange() = %v, want %v", got, tt.want)
-			}
+			got := checks.LastPasswordChange(tt.executorClass)
+			require.Equal(t, got, tt.want)
 		})
 	}
 }

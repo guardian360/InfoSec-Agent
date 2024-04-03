@@ -1,7 +1,7 @@
 package checks_test
 
 import (
-	"reflect"
+	"github.com/stretchr/testify/require"
 	"testing"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
@@ -48,9 +48,7 @@ func TestPasswordManager(t *testing.T) {
 			mockLister.On("ListInstalledPrograms", mock.Anything).Return(tt.mockPrograms, nil)
 
 			result := checks.PasswordManager(mockLister)
-			if !reflect.DeepEqual(result, tt.want) {
-				t.Errorf("Test %s failed. Expected %#v, got %#v", tt.name, tt.want, result)
-			}
+			require.Equal(t, result, tt.want)
 		})
 	}
 }
@@ -84,9 +82,7 @@ func TestListInstalledPrograms(t *testing.T) {
 			mockLister.On("ListInstalledPrograms", mock.Anything).Return(tt.want, nil)
 
 			result, err := mockLister.ListInstalledPrograms(tt.directory)
-			if !reflect.DeepEqual(result, tt.want) {
-				t.Errorf("Test %s failed. Expected %#v, got %#v", tt.name, tt.want, result)
-			}
+			require.Equal(t, result, tt.want)
 			if err != nil {
 				t.Errorf("Test %s failed. Expected no error, got %v", tt.name, err)
 			}
