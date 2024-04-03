@@ -1,7 +1,7 @@
 package checks_test
 
 import (
-	"reflect"
+	"github.com/stretchr/testify/require"
 	"testing"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
@@ -30,8 +30,9 @@ func TestBluetooth(t *testing.T) {
 			name: "Bluetooth devices found",
 			key: &registrymock.MockRegistryKey{
 				SubKeys: []registrymock.MockRegistryKey{
-					{KeyName: "SYSTEM\\CurrentControlSet\\Services\\BTHPORT\\Parameters\\Devices", SubKeys: []registrymock.MockRegistryKey{
-						{KeyName: "4dbndas2", BinaryValues: map[string][]byte{"Name": []byte("Device1")}, Err: nil}},
+					{KeyName: "SYSTEM\\CurrentControlSet\\Services\\BTHPORT\\Parameters\\Devices",
+						SubKeys: []registrymock.MockRegistryKey{
+							{KeyName: "4dbndas2", BinaryValues: map[string][]byte{"Name": []byte("Device1")}, Err: nil}},
 					},
 				}, Err: nil},
 			want: checks.NewCheckResult("Bluetooth", "Device1"),
@@ -40,8 +41,9 @@ func TestBluetooth(t *testing.T) {
 			name: "Error reading device name",
 			key: &registrymock.MockRegistryKey{
 				SubKeys: []registrymock.MockRegistryKey{
-					{KeyName: "SYSTEM\\CurrentControlSet\\Services\\BTHPORT\\Parameters\\Devices", SubKeys: []registrymock.MockRegistryKey{
-						{KeyName: "FAFA", StringValues: map[string]string{"Name2": "fsdfs"}, Err: nil}},
+					{KeyName: "SYSTEM\\CurrentControlSet\\Services\\BTHPORT\\Parameters\\Devices",
+						SubKeys: []registrymock.MockRegistryKey{
+							{KeyName: "FAFA", StringValues: map[string]string{"Name2": "fsdfs"}, Err: nil}},
 					},
 				}},
 			want: checks.NewCheckResult("Bluetooth", "Error reading device name FAFA"),
@@ -50,9 +52,7 @@ func TestBluetooth(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got := checks.Bluetooth(tt.key)
-			if !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("Bluetooth() = %v, want %v", got, tt.want)
-			}
+			require.Equal(t, tt.want, got)
 		})
 	}
 }

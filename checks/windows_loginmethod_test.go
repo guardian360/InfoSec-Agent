@@ -1,7 +1,6 @@
 package checks_test
 
 import (
-	"reflect"
 	"testing"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
@@ -85,15 +84,13 @@ func TestLoginMethod(t *testing.T) {
 					{KeyName: "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Authentication\\LogonUI\\UserTile",
 						StringValues: map[string]string{"": "unknown"},
 						StatReturn:   &registry.KeyInfo{ValueCount: 1}, Err: nil}}},
-			want: checks.NewCheckResult("LoginMethod"),
+			want: checks.NewCheckErrorf("LoginMethod", "error reading value", nil),
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got := checks.LoginMethod(tt.key)
-			if !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("LoginMethod() = %v, want %v", got, tt.want)
-			}
+			require.Equal(t, tt.want, got)
 		})
 	}
 }
@@ -109,7 +106,7 @@ func TestRegistryOutputLoginMethod(t *testing.T) {
 	key, err := registry.OpenKey(registry.LOCAL_MACHINE, path, registry.QUERY_VALUE)
 	require.NoError(t, err)
 	defer func(key registry.Key) {
-		err := key.Close()
+		err = key.Close()
 		require.NoError(t, err)
 	}(key)
 

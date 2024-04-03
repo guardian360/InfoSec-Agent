@@ -2,7 +2,7 @@ package checks_test
 
 import (
 	"errors"
-	"reflect"
+	"github.com/stretchr/testify/require"
 	"testing"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
@@ -52,9 +52,7 @@ func TestUACCheck(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got := checks.UACCheck(tt.executorUAC)
-			if !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("UACCheck() = %v, want %v", got, tt.want)
-			}
+			require.Equal(t, tt.want, got)
 		})
 	}
 }

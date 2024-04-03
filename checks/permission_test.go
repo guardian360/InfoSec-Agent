@@ -1,10 +1,11 @@
 package checks_test
 
 import (
+	"github.com/stretchr/testify/require"
+	"testing"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
-	"reflect"
-	"testing"
 
 	"github.com/stretchr/testify/assert"
 )
@@ -26,7 +27,8 @@ func TestPermission(t *testing.T) {
 			permission: "webcam",
 			key: &registrymock.MockRegistryKey{
 				SubKeys: []registrymock.MockRegistryKey{
-					{KeyName: "Software\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\webcam", StringValues: map[string]string{"Value": "Allow"},
+					{KeyName: "Software\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\webcam",
+						StringValues: map[string]string{"Value": "Allow"},
 						SubKeys: []registrymock.MockRegistryKey{
 							{KeyName: "NonPackaged",
 								SubKeys: []registrymock.MockRegistryKey{
@@ -58,9 +60,7 @@ func TestPermission(t *testing.T) {
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
 			result := checks.Permission(tc.permission, tc.key)
-			if !reflect.DeepEqual(result, tc.want) {
-				t.Errorf("Test %s failed. Expected %#v, got %#v", tc.name, tc.want, result)
-			}
+			require.Equal(t, tc.want, result)
 		})
 	}
 }

@@ -11,7 +11,8 @@ import (
 // Returns: If Windows secure boot is enabled or not
 func SecureBoot(registryKey registrymock.RegistryKey) Check {
 	// Get secure boot information from the registry
-	windowsSecureBoot, err := registrymock.OpenRegistryKey(registryKey, `SYSTEM\CurrentControlSet\Control\SecureBoot\State`)
+	windowsSecureBoot, err := registrymock.OpenRegistryKey(registryKey,
+		`SYSTEM\CurrentControlSet\Control\SecureBoot\State`)
 	if err != nil {
 		return NewCheckError("SecureBoot", err)
 	}
