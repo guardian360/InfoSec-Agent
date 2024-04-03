@@ -35,40 +35,57 @@ func Permission(permission string, registryKey registrymock.RegistryKey) Check {
 	var val string
 	// Iterate through the application names and append them to the results
 	for _, appName := range applicationNames {
-		// The registry key for packaged/non-packaged applications is different, so they get handled separately
+		appKey, err = registrymock.OpenRegistryKey(key, appKeyName(appName))
+		defer registrymock.CloseRegistryKey(appKey)
+		if err != nil {
+			return NewCheckErrorf(permission, "error opening registry key", err)
+		}
 		if appName == "NonPackaged" {
-			appKey, err = registrymock.OpenRegistryKey(key, `NonPackaged`)
-			if err != nil {
-				return NewCheckErrorf(permission, "error opening registry key", err)
-			}
-			defer registrymock.CloseRegistryKey(appKey)
-			nonPackagedApplicationNames, err = appKey.ReadSubKeyNames(-1)
+			val, _, err = key.GetStringValue("Value")
+		} else {
+			val, _, err = appKey.GetStringValue("Value")
+		}
+		if err != nil {
+			return NewCheckErrorf(permission, "error reading value", err)
+		}
+		// If the value is not "Allow", the application does not have permission
+		if val != "Allow" {
+			continue
+		}
+		if appName == "NonPackaged" {
+			nonPackagedApplicationNames, err = nonPackagedAppNames(appKey)
 			if err != nil {
 				return NewCheckErrorf(permission, "error reading subkey names", err)
 			}
-			val, _, err = key.GetStringValue("Value")
-			registrymock.CloseRegistryKey(appKey)
-
-			// Check if the application has the specified permission
-			if err == nil && val == "Allow" {
-				for _, nonPackagedAppName := range nonPackagedApplicationNames {
-					exeString := strings.Split(nonPackagedAppName, "#")
-					results = append(results, exeString[len(exeString)-1])
-				}
-			}
+			results = append(results, nonPackagedApplicationNames...)
 		} else {
-			appKey, err = registrymock.OpenRegistryKey(key, appName)
-			val, _, err = appKey.GetStringValue("Value")
-			registrymock.CloseRegistryKey(appKey)
-
-			// Check if the application has the specified permission
-			if err == nil && val == "Allow" {
-				winApp := strings.Split(appName, "_")
-				results = append(results, winApp[0])
-			}
+			winApp := strings.Split(appName, "_")
+			results = append(results, winApp[0])
 		}
 	}
 	// Remove duplicate results
 	filteredResults := utils.RemoveDuplicateStr(results)
 	return NewCheckResult(permission, filteredResults...)
+}
+
+// appKeyName returns the appropriate key name for the given application name
+func appKeyName(appName string) string {
+	if appName == "NonPackaged" {
+		return "NonPackaged"
+	}
+	return appName
+}
+
+// nonPackagedAppNames returns the names of non-packaged applications
+func nonPackagedAppNames(appKey registrymock.RegistryKey) ([]string, error) {
+	nonPackagedApplicationNames, err := appKey.ReadSubKeyNames(-1)
+	if err != nil {
+		return nil, err
+	}
+	var results []string
+	for _, nonPackagedAppName := range nonPackagedApplicationNames {
+		exeString := strings.Split(nonPackagedAppName, "#")
+		results = append(results, exeString[len(exeString)-1])
+	}
+	return results, nil
 }
