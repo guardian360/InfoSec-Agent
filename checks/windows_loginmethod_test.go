@@ -84,7 +84,7 @@ func TestLoginMethod(t *testing.T) {
 					{KeyName: "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Authentication\\LogonUI\\UserTile",
 						StringValues: map[string]string{"": "unknown"},
 						StatReturn:   &registry.KeyInfo{ValueCount: 1}, Err: nil}}},
-			want: checks.NewCheckResult("LoginMethod"),
+			want: checks.NewCheckErrorf("LoginMethod", "error reading value", nil),
 		},
 	}
 	for _, tt := range tests {

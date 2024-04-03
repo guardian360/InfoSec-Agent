@@ -36,7 +36,6 @@ func LoginMethod(registryKey registrymock.RegistryKey) Check {
 	// Each log-in method corresponds to a unique GUID
 	// Check whether the GUID is present in the registry key, and if it is, that log-in method is enabled
 	for _, element := range names {
-		//TODO: Error handling, checkKey can return -1 but it is not handled
 		switch {
 		case registrymock.CheckKey(key, element) == "{D6886603-9D2F-4EB2-B667-1971041FA96B}":
 			result.Result = append(result.Result, "PIN")
@@ -50,6 +49,8 @@ func LoginMethod(registryKey registrymock.RegistryKey) Check {
 			result.Result = append(result.Result, "Facial recognition")
 		case registrymock.CheckKey(key, element) == "{27FBDB57-B613-4AF2-9D7E-4FA7A66C21AD}":
 			result.Result = append(result.Result, "Trust signal")
+		default:
+			return NewCheckErrorf("LoginMethod", "error reading value", err)
 		}
 	}
 

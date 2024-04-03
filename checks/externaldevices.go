@@ -1,6 +1,7 @@
 package checks
 
 import (
+	"errors"
 	"strings"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
@@ -47,6 +48,9 @@ func CheckDeviceClass(deviceClass string, executorClass commandmock.CommandExecu
 
 	// Get all devices from the output
 	devices := strings.Split(string(output), "\r\n")
+	if len(devices) == 0 {
+		return nil, errors.New("no devices found")
+	}
 	devices = devices[3 : len(devices)-3]
 
 	// Trim all spaces in devices
