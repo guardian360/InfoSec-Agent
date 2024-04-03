@@ -48,7 +48,7 @@ func CheckDeviceClass(deviceClass string, executorClass commandmock.CommandExecu
 
 	// Get all devices from the output
 	devices := strings.Split(string(output), "\r\n")
-	if len(devices) == 0 {
+	if len(devices) == 1 {
 		return nil, errors.New("no devices found")
 	}
 	devices = devices[3 : len(devices)-3]
