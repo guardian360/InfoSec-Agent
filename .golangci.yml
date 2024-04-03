@@ -272,7 +272,7 @@ linters:
     #- bodyclose # checks whether HTTP response body is closed successfully
     #- gochecknoglobals # checks that no global variables exist
     #- sqlclosecheck # checks that sql.Rows and sql.Stmt are closed
-    #- lll # reports long lines
+    #- lll # reports long lines ## TODO: this should be run every now and then
     #- godot # checks if comments end in a period
 
 issues:
