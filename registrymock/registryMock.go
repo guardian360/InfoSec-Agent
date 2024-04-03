@@ -31,15 +31,15 @@ func NewRegistryKeyWrapper(key registry.Key) *RegistryKeyWrapper {
 	return &RegistryKeyWrapper{key: key}
 }
 
-func (r *RegistryKeyWrapper) GetStringValue(name string) (val string, valtype uint32, err error) {
+func (r *RegistryKeyWrapper) GetStringValue(name string) (string, uint32, error) {
 	return r.key.GetStringValue(name)
 }
 
-func (r *RegistryKeyWrapper) GetBinaryValue(name string) (val []byte, valtype uint32, err error) {
+func (r *RegistryKeyWrapper) GetBinaryValue(name string) ([]byte, uint32, error) {
 	return r.key.GetBinaryValue(name)
 }
 
-func (r *RegistryKeyWrapper) GetIntegerValue(name string) (val uint64, valtype uint32, err error) {
+func (r *RegistryKeyWrapper) GetIntegerValue(name string) (uint64, uint32, error) {
 	return r.key.GetIntegerValue(name)
 }
 
