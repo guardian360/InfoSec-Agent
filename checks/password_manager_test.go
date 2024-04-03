@@ -48,7 +48,7 @@ func TestPasswordManager(t *testing.T) {
 			mockLister.On("ListInstalledPrograms", mock.Anything).Return(tt.mockPrograms, nil)
 
 			result := checks.PasswordManager(mockLister)
-			require.Equal(t, result, tt.want)
+			require.Equal(t, tt.want, result)
 		})
 	}
 }
