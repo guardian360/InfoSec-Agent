@@ -15,7 +15,6 @@ func TestNetworkSharing(t *testing.T) {
 		executor commandmock.CommandExecutor
 		want     checks.Check
 	}{
-		// TODO: Add test cases.
 		{
 			name:     "Get-NetAdapterBinding command error",
 			executor: &commandmock.MockCommandExecutor{Output: "", Err: errors.New("error executing command Get-NetAdapterBinding")},
