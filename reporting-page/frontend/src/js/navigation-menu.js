@@ -18,6 +18,10 @@ export function MarkSelectedNavigationItem(item) {
   document.getElementById(item).style.backgroundColor = stylesheet.getPropertyValue('--background-nav-hover');
 }
 
+/**
+ * Loads personalized navigation by applying background color to navigation links.
+ * Background color is retrieved from CSS variables.
+ */
 export function loadPersonalizeNavigation() {
   const navItems = document.getElementsByClassName('nav-link');
   const stylesheet = getComputedStyle(document.documentElement);

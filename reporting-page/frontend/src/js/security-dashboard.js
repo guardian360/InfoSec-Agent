@@ -1,4 +1,3 @@
-import {RiskCounters} from './risk-counters.js';
 import {Graph} from './graph.js';
 import {PieChart} from './piechart.js';
 import {GetLocalization} from './localize.js';

@@ -1,12 +1,11 @@
-import cs from "../customize.json" assert { type: "json" };
-import { CloseNavigation } from "./navigation-menu.js";
-import { loadPersonalizeNavigation } from "./navigation-menu.js";
+import {CloseNavigation} from './navigation-menu.js';
+import {loadPersonalizeNavigation} from './navigation-menu.js';
 
 /** Load the content of the Personalize page */
 export function openPersonalizePage() {
-  CloseNavigation();  
+  CloseNavigation();
 
-  document.getElementById("page-contents").innerHTML = `
+  document.getElementById('page-contents').innerHTML = `
   <div class="setting">
     <span class="setting-description favicon-title ">Favicon</span>
     <div class="personalize-button-container">
@@ -59,37 +58,42 @@ export function openPersonalizePage() {
         <input type="radio" name="theme" id="blue">
   </div>
   `;
-  const faviconInput = document.getElementById('input-file-icon');//add eventlistener for changing Favicon
+  const faviconInput = document.getElementById('input-file-icon');// add eventlistener for changing Favicon
   faviconInput.addEventListener('change', handleFaviconChange);
-  
-  const pictureInput = document.getElementById('input-file-picture'); //add eventlistener for changing navication picture
+
+  const pictureInput = document.getElementById('input-file-picture'); // add eventlistener for changing navication picture
   pictureInput.addEventListener('change', handlePictureChange);
-  
-  const newTitleInput = document.getElementById('newTitle'); //add eventlistener for changing navigation title
+
+  const newTitleInput = document.getElementById('newTitle'); // add eventlistener for changing navigation title
   newTitleInput.addEventListener('input', handleTitleChange);
 
-  const inputBackgroundNav = document.getElementById('input-color-background'); //add eventlistener for changing navigation title
+  const inputBackgroundNav = document.getElementById('input-color-background'); // add eventlistener for changing navigation title
   inputBackgroundNav.addEventListener('change', handleLeftBackgroundNav);
 
-  /*save themes*/
+  /* save themes*/
   const themes = document.querySelectorAll('[name="theme"]');
-  themes.forEach(themeOption => {
-    themeOption.addEventListener("click", () => {
-      localStorage.setItem("theme", themeOption.id);
+  themes.forEach((themeOption) => {
+    themeOption.addEventListener('click', () => {
+      localStorage.setItem('theme', themeOption.id);
       loadPersonalizeNavigation();
     });
   });
-  
-  const activeTheme = localStorage.getItem("theme");
-  themes.forEach(themeOption => {
-    if(themeOption.id === activeTheme){
+
+  const activeTheme = localStorage.getItem('theme');
+  themes.forEach((themeOption) => {
+    if (themeOption.id === activeTheme) {
       themeOption.checked = true;
     }
-  });  
+  });
   document.documentElement.className= activeTheme;
 }
-  
-/* Changes the favicon*/
+
+/**
+ * Handles the change event when selecting a new favicon file.
+ * Updates the favicon of the document with the selected image.
+ * Saves the selected image URL in the localStorage.
+ * @param {Event} icon - The event object representing the change of the favicon input.
+ */
 export function handleFaviconChange(icon) {
   const file = icon.target.files[0]; // Get the selected file
   if (file) {
@@ -97,57 +101,71 @@ export function handleFaviconChange(icon) {
     reader.onload = function(e) {
       const picture = e.target.result;
       const favicon = document.querySelector('link[rel="icon"]');
-      if(favicon){
+      if (favicon) {
         favicon.href = picture;
-      }
-      else{
+      } else {
         const newFavicon = document.createElement('link');
         newFavicon.rel = 'icon';
         newFavicon.href = picture;
         document.head.appendChild(newFavicon);
       }
-      localStorage.setItem("favicon", picture);
+      localStorage.setItem('favicon', picture);
     };
     reader.readAsDataURL(file); // Read the selected file as a Data URL
   }
 }
 
-/* Changes the navigation picture*/
+/**
+ * Handles the change event when selecting a new picture file.
+ * Updates the source of the specified image element with the selected image.
+ * Saves the selected image URL in the localStorage.
+ * @param {Event} picture - The event object representing the change of the picture input.
+ */
 export function handlePictureChange(picture) {
   const file = picture.target.files[0]; // Get the selected file
   const reader = new FileReader();
   reader.onload = function(e) {
     const logo = document.getElementById('logo');
     logo.src = e.target.result; // Set the source of the logo to the selected image
-    localStorage.setItem("picture", e.target.result)
-    };
+    localStorage.setItem('picture', e.target.result);
+  };
   reader.readAsDataURL(file); // Read the selected file as a Data URL
 }
 
-/* Changes the title of the page to value of element with id:"newTitle" */
+/**
+ * Handles the change event when updating the title.
+ * Updates the text content of the specified title element with the new title value.
+ * Saves the new title value in the localStorage.
+ */
 export function handleTitleChange() {
   const newTitle = document.getElementById('newTitle').value; // Get the value from the input field
-  const titleElement = document.getElementById('title'); 
+  const titleElement = document.getElementById('title');
   titleElement.textContent = newTitle; // Set the text content to the new title
-  localStorage.setItem("title", newTitle);
+  localStorage.setItem('title', newTitle);
 }
 
-/*Change the left background of the navigation*/
-export function handleLeftBackgroundNav(){
+/**
+ * Handles the change event when updating the background color of the left navigation.
+ * Retrieves the selected color from the color picker input.
+ * Updates the background color of the left navigation with the selected color.
+ */
+export function handleLeftBackgroundNav() {
   const colorPicker = document.getElementById('input-color-background');
   const color = colorPicker.value;
-  let temp = document.getElementsByClassName('left-nav')[0];
+  const temp = document.getElementsByClassName('left-nav')[0];
   temp.style.backgroundColor = color;
 }
-
-export function retrieveTheme(){
-  const activeTheme = localStorage.getItem("theme");
+/**
+ * Retrieves the active theme from localStorage and applies it to the document's root element.
+ * The active theme class name is retrieved from the 'theme' key in localStorage.
+ */
+export function retrieveTheme() {
+  const activeTheme = localStorage.getItem('theme');
   document.documentElement.className = activeTheme;
-
 }
 
-//achtergrond navigation
-//normale achtergrond
-//kleur text
-//text font
-//kleur buttons
+// achtergrond navigation
+// normale achtergrond
+// kleur text
+// text font
+// kleur buttons

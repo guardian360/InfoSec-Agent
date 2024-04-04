@@ -48,7 +48,7 @@ function setSeverities(input, ids) {
 /** Get random result ids for each check
  *
  * @param {int} length Array length
- * @return List of random result ids
+ * @return {int} List of random result ids
  */
 function randomResultIDs(length) {
   const IDs = [];

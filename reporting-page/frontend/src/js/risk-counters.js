@@ -1,5 +1,6 @@
-// this file should contain code to put the correct count for each risk assessment.
-
+/**
+ * Represents the correct count for each risk assessment.
+ */
 export class RiskCounters {
   highRiskColor;
   mediumRiskColor;

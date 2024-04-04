@@ -1,7 +1,6 @@
-// import * as this.rc from "./risk-counters.js"
-
-import {RiskCounters} from './risk-counters.js';
-
+/**
+ * Represents a graph for displaying risk counters.
+ */
 export class Graph {
   graphShowHighRisks = true;
   graphShowMediumRisks = true;

@@ -1,7 +1,6 @@
-// import * as this.rc from "./risk-counters.js"
-
-import {RiskCounters} from './risk-counters.js';
-
+/**
+ * Represents a PieChart object for displaying risk counters.
+ */
 export class PieChart {
   pieChart;
   rc;
@@ -37,7 +36,10 @@ export class PieChart {
     });
   }
 
-  /** Creates the data portion for a piechart using the different levels of risks */
+  /**
+ * Creates the data portion for a piechart using the different levels of risks
+ * @return {ChartData} The data for the pie chart.
+ */
   getData() {
     const xValues = ['No risk', 'Low risk', 'Medium risk', 'High risk'];
     const yValues = [this.rc.lastnoRisk, this.rc.lastLowRisk, this.rc.lastMediumRisk, this.rc.lastHighRisk];

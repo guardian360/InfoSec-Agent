@@ -4,7 +4,10 @@ import {GetLocalization} from './localize.js';
 import {CloseNavigation} from './navigation-menu.js';
 import {MarkSelectedNavigationItem} from './navigation-menu.js';
 import {retrieveTheme} from './personalize.js';
-
+/**
+ * Initiates a language update operation.
+ * Calls the ChangeLanguage function and handles the result or error.
+ */
 function updateLanguage() {
   ChangeLanguage()
     .then((result) => {

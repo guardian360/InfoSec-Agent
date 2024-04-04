@@ -4,7 +4,7 @@ import {GetLocalization} from './localize.js';
 import {CloseNavigation} from './navigation-menu.js';
 import {MarkSelectedNavigationItem} from './navigation-menu.js';
 import medal from '../assets/images/img_medal1.jpg';
-import {retrieveTheme} from './personalize';
+import {retrieveTheme} from './personalize.js';
 
 /** Load the content of the Home page */
 export function openHomePage() {
@@ -109,6 +109,10 @@ export function openHomePage() {
 document.getElementById('logo-button').addEventListener('click', () => openHomePage());
 document.getElementById('home-button').addEventListener('click', () => openHomePage());
 
+/**
+ * Initiates a scan operation immediately.
+ * Calls the ScanNow function and handles the result or error.
+ */
 function scanNow() {
   ScanNow()
     .then((result) => {
