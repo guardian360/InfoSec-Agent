@@ -22,13 +22,13 @@ func ExternalDevices(executorClass commandmock.CommandExecutor) Check {
 		output, err := CheckDeviceClass(s, executorClass)
 
 		if err != nil {
-			return NewCheckErrorf("externaldevices", "error checking device "+s, err)
+			return NewCheckErrorf(1, "error checking device "+s, err)
 		}
 
 		outputs = append(outputs, output...)
 	}
 
-	return NewCheckResult("externaldevices", outputs...)
+	return NewCheckResult(1, 0, outputs...)
 }
 
 // CheckDeviceClass runs a specific class within the Get-PnpDevice command

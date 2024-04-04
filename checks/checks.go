@@ -15,24 +15,25 @@ import "fmt"
 //
 // A new Check struct can be created with the accompanying functions: NewCheckResult, NewCheckError, NewCheckErrorf
 type Check struct {
-	ID       string   `json:"id"`
-	Result   []string `json:"result,omitempty"`
-	Error    error    `json:"-"` // Don't serialize error field to JSON
-	ErrorMSG string   `json:"error,omitempty"`
+	Issue_ID  int      `json:"issue_id"`
+	Result_ID int      `json:"result_id"`
+	Result    []string `json:"result,omitempty"`
+	Error     error    `json:"-"` // Don't serialize error field to JSON
+	ErrorMSG  string   `json:"error,omitempty"`
 }
 
 // NewCheckResult creates a new Check struct with only a result
-func NewCheckResult(id string, result ...string) Check {
-	return Check{ID: id, Result: result}
+func NewCheckResult(iss_id int, res_id int, result ...string) Check {
+	return Check{Issue_ID: iss_id, Result_ID: res_id, Result: result}
 }
 
 // NewCheckError creates a new Check struct with the error and error message
-func NewCheckError(id string, err error) Check {
-	return Check{ID: id, Error: err, ErrorMSG: err.Error()}
+func NewCheckError(id int, err error) Check {
+	return Check{Issue_ID: id, Error: err, ErrorMSG: err.Error()}
 }
 
 // NewCheckErrorf creates a new Check struct with the error and formatted error message
-func NewCheckErrorf(id string, message string, err error) Check {
+func NewCheckErrorf(id int, message string, err error) Check {
 	formatErr := fmt.Errorf(message+": %w", err)
-	return Check{ID: id, Error: formatErr, ErrorMSG: formatErr.Error()}
+	return Check{Issue_ID: id, Error: formatErr, ErrorMSG: formatErr.Error()}
 }
