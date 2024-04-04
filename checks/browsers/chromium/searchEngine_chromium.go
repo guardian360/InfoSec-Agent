@@ -19,42 +19,42 @@ import (
 // Returns: The standard search engine for chromium based browsers
 func SearchEngineChromium(browser string) checks.Check {
 	var browserPath string
-	var returnBrowserName string
+	var returnID int
 	// Set the browser path and the return browser name based on the browser to check
 	// Currently, supports checking of Google Chrome and Microsoft Edge
 	if browser == chrome {
-		returnBrowserName = "SearchEngineChrome"
 		browserPath = chromePath
+		returnID = 24
 	}
 	if browser == edge {
-		returnBrowserName = "SearchEngineEdge"
 		browserPath = edgePath
+		returnID = 25
 	}
 	// Holds the return value and sets the default value to chrome in case you never changed your search engine
 	defaultSE := "google.com"
 	user, err := os.UserHomeDir()
 	if err != nil {
-		return checks.NewCheckErrorf(returnBrowserName, "Error: ", err)
+		return checks.NewCheckErrorf(returnID, "Error: ", err)
 	}
 
 	// Get the current user's home directory, where the preferences can be found
 	preferencesDir := filepath.Join(user, "AppData", "Local", browserPath, "User Data", "Default", "Preferences")
 	file, err := os.Open(filepath.Clean(preferencesDir))
 	if err != nil {
-		return checks.NewCheckErrorf(returnBrowserName, "Error: ", err)
+		return checks.NewCheckErrorf(returnID, "Error: ", err)
 	}
 	defer utils.CloseFile(file)
 
 	// Byte array holding the preferences json data used to unmarshal the data later
 	byteValue, err := io.ReadAll(file)
 	if err != nil {
-		return checks.NewCheckErrorf(returnBrowserName, " Can't read data,Error: ", err)
+		return checks.NewCheckErrorf(returnID, " Can't read data,Error: ", err)
 	}
 	// Holds the unmarshaled data of the json for acces to the key value pairs
 	var dev map[string]interface{}
 	err = json.Unmarshal(byteValue, &dev)
 	if err != nil {
-		return checks.NewCheckErrorf(returnBrowserName, "Error: ", err)
+		return checks.NewCheckErrorf(returnID, "Error: ", err)
 	}
 
 	// Iterate through the json dev map to look for our search engine key
@@ -66,12 +66,12 @@ func SearchEngineChromium(browser string) checks.Check {
 			regex := regexp.MustCompile(pattern)
 			matches := regex.FindString(text)
 			if matches == "" {
-				return checks.NewCheckErrorf(returnBrowserName, "Error: ", err)
+				return checks.NewCheckErrorf(returnID, "Error: ", err)
 			}
 			// Removes the word keyword: from the result
 			defaultSE = matches[8:]
 		}
 	}
 	// Returns the default search engine used
-	return checks.NewCheckResult(returnBrowserName, defaultSE)
+	return checks.NewCheckResult(returnID, 0, defaultSE)
 }

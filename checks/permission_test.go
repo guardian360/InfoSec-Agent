@@ -1,8 +1,9 @@
 package checks_test
 
 import (
-	"github.com/stretchr/testify/require"
 	"testing"
+
+	"github.com/stretchr/testify/require"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
@@ -39,7 +40,7 @@ func TestPermission(t *testing.T) {
 					},
 				},
 			},
-			want: checks.NewCheckResult("webcam", "microsoft.webcam"),
+			want: checks.NewCheckResult(7, 0, "microsoft.webcam"),
 		},
 		{
 			name:       "WebcamPermissionExists",
@@ -53,7 +54,7 @@ func TestPermission(t *testing.T) {
 					},
 				},
 			},
-			want: checks.NewCheckResult("webcam", "microsoft.webcam"),
+			want: checks.NewCheckResult(7, 0, "microsoft.webcam"),
 		},
 	}
 

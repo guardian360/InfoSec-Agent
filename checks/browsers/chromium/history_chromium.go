@@ -28,20 +28,20 @@ import (
 func HistoryChromium(browser string) checks.Check {
 	var results []string
 	var browserPath string
-	var returnBrowserName string
+	var returnID int
 
 	if browser == chrome {
-		returnBrowserName = "HistoryChrome"
 		browserPath = chromePath
+		returnID = 22
 	}
 	if browser == edge {
-		returnBrowserName = "HistoryEdge"
 		browserPath = edgePath
+		returnID = 23
 	}
 	// Get the current user's home directory, where the history can be found
 	user, err := os.UserHomeDir()
 	if err != nil {
-		return checks.NewCheckErrorf(returnBrowserName, "Error: ", err)
+		return checks.NewCheckErrorf(returnID, "Error: ", err)
 	}
 
 	// Copy the database, so problems don't arise when the file gets locked
@@ -58,31 +58,31 @@ func HistoryChromium(browser string) checks.Check {
 	// Copy the database to a temporary location
 	copyError := utils.CopyFile(user+"/AppData/Local/"+browserPath+"/User Data/Default/History", tempHistoryDB)
 	if copyError != nil {
-		return checks.NewCheckError(returnBrowserName, copyError)
+		return checks.NewCheckError(returnID, copyError)
 	}
 
 	// Open the browser history database
 	db, err := sql.Open("sqlite", tempHistoryDB)
 	if err != nil {
-		return checks.NewCheckError(returnBrowserName, err)
+		return checks.NewCheckError(returnID, err)
 	}
 	defer closeDatabase(db)
 
 	rows, err := queryDatabase(db)
 	if err != nil {
-		return checks.NewCheckError(returnBrowserName, err)
+		return checks.NewCheckError(returnID, err)
 	}
 	defer closeRows(rows)
 
 	results, err = processQueryResults(rows)
 	if err != nil {
-		return checks.NewCheckError(returnBrowserName, err)
+		return checks.NewCheckError(returnID, err)
 	}
 
 	if len(results) > 0 {
-		return checks.NewCheckResult(returnBrowserName, strings.Join(results, "\n"))
+		return checks.NewCheckResult(returnID, 0, strings.Join(results, "\n"))
 	}
-	return checks.NewCheckResult(returnBrowserName, "No phishing domains found in the last week")
+	return checks.NewCheckResult(returnID, 1, "No phishing domains found in the last week")
 }
 
 func closeDatabase(db *sql.DB) {

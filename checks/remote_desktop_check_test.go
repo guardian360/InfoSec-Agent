@@ -29,7 +29,7 @@ func TestRemoteDesktopCheck(t *testing.T) {
 						IntegerValues: map[string]uint64{"fDenyTSConnections": 0}, Err: nil},
 				},
 			},
-			want: checks.NewCheckResult("RemoteDesktop", "Remote Desktop is enabled"),
+			want: checks.NewCheckResult(11, 0, "Remote Desktop is enabled"),
 		},
 		{
 			name: "Remote Desktop disabled",
@@ -39,7 +39,7 @@ func TestRemoteDesktopCheck(t *testing.T) {
 						IntegerValues: map[string]uint64{"fDenyTSConnections": 1}, Err: nil},
 				},
 			},
-			want: checks.NewCheckResult("RemoteDesktop", "Remote Desktop is disabled"),
+			want: checks.NewCheckResult(11, 1, "Remote Desktop is disabled"),
 		},
 		{
 			name: "Unknown status",
@@ -49,7 +49,7 @@ func TestRemoteDesktopCheck(t *testing.T) {
 						IntegerValues: map[string]uint64{"fDenyTSConnections": 3}, Err: nil},
 				},
 			},
-			want: checks.NewCheckResult("RemoteDesktop", "Remote Desktop is disabled"),
+			want: checks.NewCheckResult(11, 1, "Remote Desktop is disabled"),
 		},
 	}
 	for _, tt := range tests {

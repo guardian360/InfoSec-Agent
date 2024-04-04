@@ -22,11 +22,12 @@ import (
 //
 // Returns: A list of found extensions, and if an adblocker is installed
 func ExtensionFirefox() (checks.Check, checks.Check) {
+	var resultID int
 	// Determine the directory in which the Firefox profile is stored
 	ffdirectory, err := utils.FirefoxFolder()
 	if err != nil {
-		return checks.NewCheckErrorf("ExtensionsFirefox", "No firefox directory found", err),
-			checks.NewCheckErrorf("AdblockerFirefox", "No firefox directory found", err)
+		return checks.NewCheckErrorf(27, "No firefox directory found", err),
+			checks.NewCheckErrorf(28, "No firefox directory found", err)
 	}
 
 	addBlocker := false // Variable used for checking if an adblocker is used
@@ -34,7 +35,7 @@ func ExtensionFirefox() (checks.Check, checks.Check) {
 	// Open the extensions.json file, which contains a list of all installed Firefox extensions
 	content, err := os.Open(ffdirectory[0] + "\\extensions.json")
 	if err != nil {
-		return checks.NewCheckError("ExtensionsFirefox", err), checks.NewCheckError("AdblockerFirefox", err)
+		return checks.NewCheckError(27, err), checks.NewCheckError(28, err)
 	}
 	defer func(content *os.File) {
 		err = content.Close()
@@ -48,7 +49,7 @@ func ExtensionFirefox() (checks.Check, checks.Check) {
 	decoder := json.NewDecoder(content)
 	err = decoder.Decode(&extensions)
 	if err != nil {
-		return checks.NewCheckError("ExtensionsFirefox", err), checks.NewCheckError("AdblockerFirefox", err)
+		return checks.NewCheckError(27, err), checks.NewCheckError(28, err)
 	}
 
 	// In the result list, add: the name of the addon, type of the addon, the creator, and whether it is active or not
@@ -58,11 +59,12 @@ func ExtensionFirefox() (checks.Check, checks.Check) {
 		// Determine if the addon is an adblocker
 		if adblockerFirefox(addon.DefaultLocale.Name) {
 			addBlocker = true
+			resultID += 1
 		}
 	}
 	adBlockused := strconv.FormatBool(addBlocker)
-	return checks.NewCheckResult("ExtensionsFirefox", output...),
-		checks.NewCheckResult("AdblockerFirefox", adBlockused)
+	return checks.NewCheckResult(27, 0, output...),
+		checks.NewCheckResult(28, resultID, adBlockused)
 }
 
 // adblockerFirefox checks if the given extension is an adblocker

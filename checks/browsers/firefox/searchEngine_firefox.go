@@ -21,7 +21,7 @@ func SearchEngineFirefox() checks.Check {
 	// Determine the directory in which the Firefox profile is stored
 	ffdirectory, err := utils.FirefoxFolder()
 	if err != nil {
-		return checks.NewCheckErrorf("SearchEngineFirefox", "No firefox directory found", err)
+		return checks.NewCheckErrorf(29, "No firefox directory found", err)
 	}
 	filePath := ffdirectory[0] + "/search.json.mozlz4"
 
@@ -32,19 +32,19 @@ func SearchEngineFirefox() checks.Check {
 	// Copy the compressed json to a temporary location
 	copyError := utils.CopyFile(filePath, tempSearch)
 	if copyError != nil {
-		return checks.NewCheckErrorf("SearchEngineFirefox", "Unable to make a copy of the file", copyError)
+		return checks.NewCheckErrorf(29, "Unable to make a copy of the file", copyError)
 	}
 
 	fileInfo, err := os.Stat(tempSearch)
 	if err != nil {
-		return checks.NewCheckErrorf("SearchEngineFirefox", "Unable to retrieve information about the file", err)
+		return checks.NewCheckErrorf(29, "Unable to retrieve information about the file", err)
 	}
 	fileSize := fileInfo.Size()
 
 	// Holds the information from the copied file
 	file, err := os.Open(filepath.Clean(tempSearch))
 	if err != nil {
-		return checks.NewCheckErrorf("SearchEngineFirefox", "Unable to open the file", err)
+		return checks.NewCheckErrorf(29, "Unable to open the file", err)
 	}
 	defer utils.CloseFile(file)
 
@@ -54,7 +54,7 @@ func SearchEngineFirefox() checks.Check {
 	// Retrieves the magicNumber from the file
 	_, err = file.Read(magicNumber)
 	if err != nil {
-		return checks.NewCheckErrorf("SearchEngineFirefox", "Unable to read the file", err)
+		return checks.NewCheckErrorf(29, "Unable to read the file", err)
 	}
 
 	// Holds the size of the file after decompressing it
@@ -63,13 +63,13 @@ func SearchEngineFirefox() checks.Check {
 	// Skip the first 8 bytes to take the bytes 8-11 that hold the size after decompression
 	_, err = file.Seek(8, io.SeekStart)
 	if err != nil {
-		return checks.NewCheckErrorf("SearchEngineFirefox", "Unable to skip the first 8 bytes", err)
+		return checks.NewCheckErrorf(29, "Unable to skip the first 8 bytes", err)
 	}
 
 	// Retrieves bytes 8-11 to find the size of the file
 	_, err = file.Read(uncompressSize)
 	if err != nil {
-		return checks.NewCheckErrorf("SearchEngineFirefox", "Unable to read the file", err)
+		return checks.NewCheckErrorf(29, "Unable to read the file", err)
 	}
 
 	// Transforms the size of the file after decompression from Little Endian to a normal 32-bit integer
@@ -78,7 +78,7 @@ func SearchEngineFirefox() checks.Check {
 	// Skip the first 12 bytes because that is the start of the data
 	_, err = file.Seek(12, io.SeekStart)
 	if err != nil {
-		return checks.NewCheckErrorf("SearchEngineFirefox", "Unable to skip the first 12 bytes", err)
+		return checks.NewCheckErrorf(29, "Unable to skip the first 12 bytes", err)
 	}
 
 	// Byte slice to hold the compressed data without the header (first 12 bytes)
@@ -86,13 +86,13 @@ func SearchEngineFirefox() checks.Check {
 
 	_, err = file.Read(compressedData)
 	if err != nil {
-		return checks.NewCheckErrorf("SearchEngineFirefox", "Unable to read the file", err)
+		return checks.NewCheckErrorf(29, "Unable to read the file", err)
 	}
 
 	data := make([]byte, unCompressedSize)
 	_, err = lz4.UncompressBlock(compressedData, data)
 	if err != nil {
-		return checks.NewCheckErrorf("SearchEngineFirefox", "Unable to uncompress", err)
+		return checks.NewCheckErrorf(29, "Unable to uncompress", err)
 	}
 	output := string(data)
 	var result string
@@ -110,9 +110,9 @@ func SearchEngineFirefox() checks.Check {
 		re = regexp.MustCompile(pattern)
 		matches = re.FindString(output)
 		if matches == "" {
-			return checks.NewCheckResult("SearchEngineFirefox", "Other Search Engine")
+			return checks.NewCheckResult(29, 1, "Other Search Engine")
 		}
 		result = matches[18:]
 	}
-	return checks.NewCheckResult("SearchEngineFirefox", result)
+	return checks.NewCheckResult(29, 0, result)
 }

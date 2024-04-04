@@ -59,7 +59,9 @@ func HistoryFirefox() checks.Check {
 	if err != nil {
 		return checks.NewCheckError("HistoryFirefox", err)
 	}
-
+	if output == nil {
+		return checks.NewCheckResult("HistoryFirefox", "No phising domains found in the last week")
+	}
 	return checks.NewCheckResult("HistoryFirefox", output...)
 }
 

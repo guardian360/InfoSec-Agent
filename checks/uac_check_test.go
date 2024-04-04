@@ -23,29 +23,29 @@ func TestUACCheck(t *testing.T) {
 		{
 			name:        "UAC disabled",
 			executorUAC: &commandmock.MockCommandExecutor{Output: "0", Err: nil},
-			want:        checks.NewCheckResult("UAC", "UAC is disabled."),
+			want:        checks.NewCheckResult(13, 0, "UAC is disabled."),
 		},
 		{
 			name:        "UAC enabled for apps and settings",
 			executorUAC: &commandmock.MockCommandExecutor{Output: "2", Err: nil},
-			want: checks.NewCheckResult("UAC", "UAC is turned on for apps making changes to your computer "+
+			want: checks.NewCheckResult(13, 1, "UAC is turned on for apps making changes to your computer "+
 				"and for changing your settings."),
 		},
 		{
 			name:        "UAC enabled for apps but not for settings",
 			executorUAC: &commandmock.MockCommandExecutor{Output: "5", Err: nil},
-			want: checks.NewCheckResult("UAC", "UAC is turned on for apps making changes to "+
+			want: checks.NewCheckResult(13, 2, "UAC is turned on for apps making changes to "+
 				"your computer."),
 		},
 		{
 			name:        "unknown UAC level",
 			executorUAC: &commandmock.MockCommandExecutor{Output: "3", Err: nil},
-			want:        checks.NewCheckResult("UAC", "Unknown UAC level"),
+			want:        checks.NewCheckResult(13, 3, "Unknown UAC level"),
 		},
 		{
 			name:        "UAC error",
 			executorUAC: &commandmock.MockCommandExecutor{Output: "", Err: errors.New("error retrieving UAC")},
-			want: checks.NewCheckErrorf("UAC", "error retrieving UAC",
+			want: checks.NewCheckErrorf(13, "error retrieving UAC",
 				errors.New("error retrieving UAC")),
 		},
 	}

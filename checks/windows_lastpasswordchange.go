@@ -20,12 +20,12 @@ func LastPasswordChange(executor commandmock.CommandExecutor) Check {
 	// Get the current Windows username
 	username, err := utils.CurrentUsername()
 	if err != nil {
-		return NewCheckErrorf("LastPasswordChange", "error retrieving username", err)
+		return NewCheckErrorf(15, "error retrieving username", err)
 	}
 
 	output, err := executor.Execute("net", "user", username)
 	if err != nil {
-		return NewCheckErrorf("LastPasswordChange", "error executing net user", err)
+		return NewCheckErrorf(15, "error executing net user", err)
 	}
 
 	lines := strings.Split(string(output), "\n")
@@ -50,7 +50,7 @@ func LastPasswordChange(executor commandmock.CommandExecutor) Check {
 	}
 
 	if err != nil {
-		return NewCheckError("LastPasswordChange", errors.New("error parsing date"))
+		return NewCheckError(15, errors.New("error parsing date"))
 	}
 
 	// Get the current time
@@ -60,10 +60,10 @@ func LastPasswordChange(executor commandmock.CommandExecutor) Check {
 	halfYear := 365 / 2 * 24 * time.Hour
 	// If it has been more than half a year since the password was last changed, return a warning
 	if difference > halfYear {
-		return NewCheckResult("LastPasswordChange",
+		return NewCheckResult(15, 0,
 			fmt.Sprintf("Password last changed on %s , "+
 				"your password was changed more than half a year ago so you should change it again", match))
 	}
-	return NewCheckResult("LastPasswordChange", fmt.Sprintf("You changed your password recently on %s",
+	return NewCheckResult(15, 1, fmt.Sprintf("You changed your password recently on %s",
 		match))
 }
