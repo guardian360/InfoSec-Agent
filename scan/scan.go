@@ -86,6 +86,7 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 		func() checks.Check { return chromium.SearchEngineChromium("Chrome") },
 		func() checks.Check { c, _ := firefox.ExtensionFirefox(); return c },
 		func() checks.Check { _, c := firefox.ExtensionFirefox(); return c },
+		firefox.HistoryFirefox,
 		firefox.SearchEngineFirefox,
 	}
 	totalChecks := len(securityChecks)

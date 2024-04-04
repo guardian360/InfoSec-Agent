@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "mocha": "*",
-    "vite": "^3.0.7"
+    "vite": "^3.2.10"
   },
   "dependencies": {
     "canvas": "^2.11.2",
