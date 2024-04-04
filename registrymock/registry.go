@@ -72,7 +72,6 @@ func CheckKey(key RegistryKey, elem string) string {
 	val, _, err := key.GetStringValue(elem)
 	if err == nil {
 		return val
-	} else {
-		return "-1"
 	}
+	return "-1"
 }

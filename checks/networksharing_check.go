@@ -1,9 +1,9 @@
 package checks
 
 import (
-	"fmt"
-	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
 	"strings"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
 )
 
 // NetworkSharing checks if network sharing is enabled or disabled
@@ -13,7 +13,7 @@ import (
 // Returns: If network sharing is enabled or not
 func NetworkSharing(executor commandmock.CommandExecutor) Check {
 	// Execute a powershell command to get the network adapter binding status
-	command := fmt.Sprintf("Get-NetAdapterBinding | Where-Object {$_.ComponentID -eq 'ms_server'} | Select-Object Enabled")
+	command := "Get-NetAdapterBinding | Where-Object {$_.ComponentID -eq 'ms_server'} | Select-Object Enabled"
 	output, err := executor.Execute("powershell", command)
 	if err != nil {
 		return NewCheckErrorf("NetworkSharing",

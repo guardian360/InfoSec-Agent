@@ -211,7 +211,6 @@ linters:
     - asasalint # checks for pass []any as any in variadic func(...any)
     - asciicheck # checks that your code does not contain non-ASCII identifiers
     - bidichk # checks for dangerous unicode character sequences
-    - bodyclose # checks whether HTTP response body is closed successfully
     - copyloopvar # detects places where loop variables are copied
     - cyclop # checks function and package cyclomatic complexity
     - dupl # tool for code clone detection
@@ -224,21 +223,18 @@ linters:
     - forbidigo # forbids identifiers
     - funlen # tool for detection of long functions
     - gocheckcompilerdirectives # validates go compiler directive comments (//go:)
-    - gochecknoglobals # checks that no global variables exist
     - gochecknoinits # checks that no init functions are present in Go code
     - gochecksumtype # checks exhaustiveness on Go "sum types"
     - gocognit # computes and checks the cognitive complexity of functions
     - goconst # finds repeated strings that could be replaced by a constant
     - gocritic # provides diagnostics that check for bugs, performance and style issues
     - gocyclo # computes and checks the cyclomatic complexity of functions
-    - godot # checks if comments end in a period
     - goimports # in addition to fixing imports, goimports also formats your code in the same style as gofmt
     - gomoddirectives # manages the use of 'replace', 'retract', and 'excludes' directives in go.mod
     - gomodguard # allow and block lists linter for direct Go module dependencies. This is different from depguard where there are different block types for example version constraints and module recommendations
     - goprintffuncname # checks that printf-like functions are named with f at the end
     - gosec # inspects source code for security problems
     - intrange # finds places where for loops could make use of an integer range
-    - lll # reports long lines
     - loggercheck # checks key value pairs for common logger libraries (kitlog,klog,logr,zap)
     - makezero # finds slice declarations with non-zero initial length
     - mirror # reports wrong mirror patterns of bytes/strings usage
@@ -260,7 +256,6 @@ linters:
     - rowserrcheck # checks whether Err of rows is checked successfully
     - sloglint # ensure consistent code style when using log/slog
     - spancheck # checks for mistakes with OpenTelemetry/Census spans
-    - sqlclosecheck # checks that sql.Rows and sql.Stmt are closed
     - stylecheck # is a replacement for golint
     - tenv # detects using os.Setenv instead of t.Setenv since Go1.17
     - testableexamples # checks if examples are testable (have an expected output)
@@ -272,7 +267,13 @@ linters:
     - usestdlibvars # detects the possibility to use variables/constants from the Go standard library
     - wastedassign # finds wasted assignment statements
     - whitespace # detects leading and trailing whitespace
+    # Disabled by choice
     #- godox # detects FIXME, TODO and other comment keywords
+    #- bodyclose # checks whether HTTP response body is closed successfully
+    #- gochecknoglobals # checks that no global variables exist
+    #- sqlclosecheck # checks that sql.Rows and sql.Stmt are closed
+    #- lll # reports long lines ## TODO: this should be run every now and then
+    #- godot # checks if comments end in a period
 
 issues:
   # Maximum count of issues with the same text.
@@ -294,6 +295,8 @@ issues:
         - gosec
         - noctx
         - wrapcheck
+        - godot
+        - goimports
 
   exclude-dirs:
     - icon

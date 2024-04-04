@@ -1,10 +1,10 @@
 package checks
 
 import (
-	"fmt"
+	"strings"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
-	"strings"
 )
 
 // GuestAccount checks if the Windows guest account is active
@@ -19,9 +19,9 @@ func GuestAccount(
 	executorNetUser commandmock.CommandExecutor,
 ) Check {
 	// Get localgroup name using GetWmiObject
-	//output, err := GuestAccountLocalGroup(executorLocalGroup)
+	// output, err := GuestAccountLocalGroup(executorLocalGroup)
 
-	command := fmt.Sprintf("Get-WmiObject Win32_Group | Select-Object SID,Name")
+	command := "Get-WmiObject Win32_Group | Select-Object SID,Name"
 	output, err := executorLocalGroup.Execute("powershell", command)
 	if err != nil {
 		return NewCheckErrorf("Guest account", "error executing command Get-WmiObject", err)

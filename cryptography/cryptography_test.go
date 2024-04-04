@@ -1,8 +1,10 @@
-package cryptography
+package cryptography_test
 
 import (
-	"github.com/stretchr/testify/require"
+	"github.com/InfoSec-Agent/InfoSec-Agent/cryptography"
 	"testing"
+
+	"github.com/stretchr/testify/require"
 )
 
 const isBase64 = "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$"
@@ -18,24 +20,25 @@ func TestEncryptDecrypt(t *testing.T) {
 	key := []byte("0123456789abcdef")
 	message := "Hello"
 
-	encrypted, err := EncryptMessage(key, message)
-	require.Nil(t, err)
+	encrypted, err := cryptography.EncryptMessage(key, message)
+	require.NoError(t, err)
 	require.Regexp(t, isBase64, encrypted)
 
-	decrypted, err := DecryptMessage(key, encrypted)
-	require.Nil(t, err)
+	decrypted, err := cryptography.DecryptMessage(key, encrypted)
+	require.NoError(t, err)
 	require.Equal(t, message, decrypted)
 
 	// Test encryption with an invalid key,
 	// key is invalid because it is not 16, 24, or 32 bytes long
 	key = []byte("0123456789abcde")
-	_, err = EncryptMessage(key, message)
-	require.NotNil(t, err)
+	_, err = cryptography.EncryptMessage(key, message)
+	require.Error(t, err)
 
 	// Test decryption with an invalid message,
 	// message is invalid because it is not a base64 string
-	_, err = DecryptMessage(key, "invalid")
-	require.NotNil(t, err)
+	_, err = cryptography.DecryptMessage(key, "invalid")
+	require.Error(t, err)
 	// Test decryption with an invalid key,
-	_, err = DecryptMessage(key, encrypted)
+	_, err = cryptography.DecryptMessage(key, encrypted)
+	require.Error(t, err)
 }

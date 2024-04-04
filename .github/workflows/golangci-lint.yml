@@ -1,15 +1,10 @@
 name: Lint Backend
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - '**/*.go'
-      - '.github/workflows/golangci-lint.yml' 
   pull_request:
     branches:
       - main
+      - dev
     paths:
       - '**/*.go'
       - '.github/workflows/golangci-lint.yml' 

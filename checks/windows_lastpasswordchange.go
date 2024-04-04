@@ -1,12 +1,14 @@
 package checks
 
 import (
+	"errors"
 	"fmt"
-	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
-	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"regexp"
 	"strings"
 	"time"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
+	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 )
 
 // LastPasswordChange checks when the Windows password was last changed
@@ -48,7 +50,7 @@ func LastPasswordChange(executor commandmock.CommandExecutor) Check {
 	}
 
 	if err != nil {
-		return NewCheckError("LastPasswordChange", fmt.Errorf("error parsing date"))
+		return NewCheckError("LastPasswordChange", errors.New("error parsing date"))
 	}
 
 	// Get the current time
@@ -58,7 +60,9 @@ func LastPasswordChange(executor commandmock.CommandExecutor) Check {
 	halfYear := 365 / 2 * 24 * time.Hour
 	// If it has been more than half a year since the password was last changed, return a warning
 	if difference > halfYear {
-		return NewCheckResult("LastPasswordChange", fmt.Sprintf("Password last changed on %s , your password was changed more than half a year ago so you should change it again", match))
+		return NewCheckResult("LastPasswordChange",
+			fmt.Sprintf("Password last changed on %s , "+
+				"your password was changed more than half a year ago so you should change it again", match))
 	}
 	return NewCheckResult("LastPasswordChange", fmt.Sprintf("You changed your password recently on %s",
 		match))

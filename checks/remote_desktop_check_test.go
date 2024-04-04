@@ -1,12 +1,13 @@
 package checks_test
 
 import (
+	"reflect"
+	"testing"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
 	"github.com/stretchr/testify/require"
 	"golang.org/x/sys/windows/registry"
-	"reflect"
-	"testing"
 )
 
 // TestRemoteDesktopCheck tests the RemoteDesktopCheck function on (in)valid input
@@ -54,9 +55,7 @@ func TestRemoteDesktopCheck(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got := checks.RemoteDesktopCheck(tt.key)
-			if !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("RemoteDesktopCheck() = %v, want %v", got, tt.want)
-			}
+			require.Equal(t, tt.want, got)
 		})
 	}
 }
@@ -74,7 +73,7 @@ func TestRegistryOutputRemoteDesktop(t *testing.T) {
 	require.NoError(t, err)
 
 	defer func(key registry.Key) {
-		err := key.Close()
+		err = key.Close()
 		require.NoError(t, err)
 	}(key)
 

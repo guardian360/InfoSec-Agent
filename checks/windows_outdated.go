@@ -2,6 +2,7 @@ package checks
 
 import (
 	"fmt"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/windowsmock"
 )
 
@@ -30,7 +31,6 @@ func WindowsOutdated(mockOS windowsmock.WindowsVersion) Check {
 			result.Result = append(result.Result, "You are currently up to date.")
 		} else {
 			result.Result = append(result.Result, "There are updates available for Windows 11.")
-
 		}
 	case 10:
 		if versionData.BuildNumber == newestWin10Build {

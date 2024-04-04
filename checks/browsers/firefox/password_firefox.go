@@ -2,12 +2,13 @@ package firefox
 
 import (
 	"encoding/json"
-	"fmt"
+	"log"
+	"os"
+	"strconv"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"github.com/andrewarchi/browser/firefox"
-	"log"
-	"os"
 )
 
 // PasswordFirefox checks the passwords in the Firefox browser.
@@ -26,7 +27,7 @@ func PasswordFirefox() checks.Check {
 		return checks.NewCheckError("PasswordFirefox", err)
 	}
 	defer func(content *os.File) {
-		err := content.Close()
+		err = content.Close()
 		if err != nil {
 			log.Println("error closing file: ", err)
 		}
@@ -43,7 +44,8 @@ func PasswordFirefox() checks.Check {
 	// TODO: Final functionality currently not implemented yet, should return an analysis on the used passwords
 	// Below code is a placeholder
 	for _, addon := range extensions.Addons {
-		output = append(output, addon.DefaultLocale.Name+addon.Type+addon.DefaultLocale.Creator+fmt.Sprintf("%t", addon.Active))
+		output = append(output,
+			addon.DefaultLocale.Name+addon.Type+addon.DefaultLocale.Creator+strconv.FormatBool(addon.Active))
 	}
 	return checks.NewCheckResult("PasswordFirefox", output...)
 }

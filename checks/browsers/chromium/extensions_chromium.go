@@ -4,16 +4,18 @@
 package chromium
 
 import (
+	"context"
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"io"
 	"log"
 	"net/http"
 	"os"
 	"path/filepath"
 	"strings"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 )
 
 // Response is a struct that represents the JSON response from the Microsoft Edge Addons Store
@@ -22,6 +24,11 @@ import (
 type Response struct {
 	Name string `json:"name"`
 }
+
+const edge = "Edge"
+const chrome = "Chrome"
+const edgePath = "Microsoft/Edge"
+const chromePath = "Google/Chrome"
 
 // ExtensionsChromium checks if an adblocker is installed in a Chromium based browser.
 //
@@ -35,15 +42,15 @@ func ExtensionsChromium(browser string) checks.Check {
 	var returnBrowserName string
 	// Set the browser path and the return browser name based on the browser to check
 	// Currently, supports checking of Google Chrome and Microsoft Edge
-	if browser == "Chrome" {
+	if browser == chrome {
 		returnBrowserName = "ExtensionsChrome"
-		browserPath = "Google/Chrome"
+		browserPath = chromePath
 	}
-	if browser == "Edge" {
+	if browser == edge {
 		returnBrowserName = "ExtensionsEdge"
-		browserPath = "Microsoft/Edge"
+		browserPath = edgePath
 	}
-	var extensionIds []string
+	var extensionIDs []string
 	var extensionNames []string
 	// Get the current user's home directory, where the extensions are stored
 	user, err := os.UserHomeDir()
@@ -57,17 +64,18 @@ func ExtensionsChromium(browser string) checks.Check {
 		checks.NewCheckErrorf(returnBrowserName, "Error: ", err)
 	}
 
-	// Construct a list of all extensions Id's
+	// Construct a list of all extensions ID's
 	for _, f := range files {
 		if f.IsDir() {
-			extensionIds = append(extensionIds, f.Name())
+			extensionIDs = append(extensionIDs, f.Name())
 		}
 	}
 
-	//extensionName := ""
-	for _, id := range extensionIds {
+	var extensionName1 string
+	var extensionName2 string
+	for _, id := range extensionIDs {
 		// Get the name of the extension from the Chrome Web Store
-		extensionName1, err := getExtensionNameChromium(id,
+		extensionName1, err = getExtensionNameChromium(id,
 			"https://chromewebstore.google.com/detail/%s", browser)
 		if err != nil {
 			log.Fatal(err)
@@ -76,9 +84,9 @@ func ExtensionsChromium(browser string) checks.Check {
 			parts := strings.Split(extensionName1, "/")
 			extensionNames = append(extensionNames, parts[len(parts)-2])
 		}
-		if browser == "Edge" {
+		if browser == edge {
 			// Get the name of the extension from the Microsoft Edge Addons Store
-			extensionName2, err := getExtensionNameChromium(id,
+			extensionName2, err = getExtensionNameChromium(id,
 				"https://microsoftedge.microsoft.com/addons/getproductdetailsbycrxid/%s", browser)
 			if err != nil {
 				log.Fatal(err)
@@ -88,9 +96,8 @@ func ExtensionsChromium(browser string) checks.Check {
 	}
 	if adblockerInstalled(extensionNames) {
 		return checks.NewCheckResult(returnBrowserName, "Adblocker installed")
-	} else {
-		return checks.NewCheckErrorf(returnBrowserName, "No adblocker installed", errors.New("no adblocker installed"))
 	}
+	return checks.NewCheckErrorf(returnBrowserName, "No adblocker installed", errors.New("no adblocker installed"))
 }
 
 // getExtensionNameChromium gets the name of an extension from the Chrome Web Store or the Microsoft Edge Addons Store
@@ -109,41 +116,44 @@ func getExtensionNameChromium(extensionID string, url string, browser string) (s
 	client := &http.Client{}
 	urlToVisit := fmt.Sprintf(url, extensionID)
 	// Generate a new request to visit the extension/addon store
-	req, err := http.NewRequest("GET", urlToVisit, nil)
+	req, err := http.NewRequestWithContext(context.Background(), http.MethodGet, urlToVisit, nil)
+	if err != nil {
+		log.Println("error creating request: ", err)
+		return "", err
+	}
 	req.Header.Add("User-Agent", "Mozilla/5.0")
 	resp, err := client.Do(req)
 	if err != nil {
+		log.Println("error sending request: ", err)
 		return "", err
 	}
 	// Close the response body after the necessary data is retrieved
 	defer func(Body io.ReadCloser) {
-		err := Body.Close()
+		err = Body.Close()
 		if err != nil {
 			log.Println("error closing body: ", err)
 		}
 	}(resp.Body)
 
-	if browser == "Chrome" && resp.StatusCode != http.StatusOK {
+	if browser == chrome && resp.StatusCode != http.StatusOK {
 		return "", fmt.Errorf("HTTP request failed with status code: %d", resp.StatusCode)
 	}
-	if browser == "Chrome" {
+	if browser == chrome {
 		return resp.Request.URL.String(), nil
 	}
-	if browser == "Edge" {
+	if browser == edge {
 		if strings.Contains(resp.Request.URL.String(), "chromewebstore.google.com") {
 			return resp.Request.URL.String(), nil
-		} else {
-			// For Edge, the data is stored in a JSON format, so decoding is required
-			var data Response
-			err := json.NewDecoder(resp.Body).Decode(&data)
-			if err != nil {
-				return "", err
-			}
-			return data.Name, nil
 		}
-	} else {
-		return "", errors.New("unknown browser")
+		// For Edge, the data is stored in a JSON format, so decoding is required
+		var data Response
+		err = json.NewDecoder(resp.Body).Decode(&data)
+		if err != nil {
+			return "", err
+		}
+		return data.Name, nil
 	}
+	return "", errors.New("unknown browser")
 }
 
 // adblockerInstalled checks if an adblocker is installed
