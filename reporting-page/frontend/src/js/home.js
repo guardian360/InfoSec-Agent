@@ -1,15 +1,15 @@
 import {PieChart} from './piechart';
 import {ScanNow} from '../../wailsjs/go/main/Tray';
-import {GetLocalization} from './localize.js';
-import {CloseNavigation} from './navigation-menu.js';
-import {MarkSelectedNavigationItem} from './navigation-menu.js';
+import {getLocalization} from './localize.js';
+import {closeNavigation} from './navigation-menu.js';
+import {markSelectedNavigationItem} from './navigation-menu.js';
 import medal from '../assets/images/img_medal1.jpg';
 import {retrieveTheme} from './personalize.js';
 
 /** Load the content of the Home page */
 export function openHomePage() {
-  CloseNavigation();
-  MarkSelectedNavigationItem('home-button');
+  closeNavigation();
+  markSelectedNavigationItem('home-button');
 
   document.getElementById('page-contents').innerHTML = `
   <div class="home-data">
@@ -96,10 +96,10 @@ export function openHomePage() {
     'Dashboard.ChooseIssueDescription',
   ];
   for (let i = 0; i < staticHomePageConent.length; i++) {
-    GetLocalization(localizationIds[i], staticHomePageConent[i]);
+    getLocalization(localizationIds[i], staticHomePageConent[i]);
   }
 
-  document.getElementsByClassName('scan-now')[0].addEventListener('click', () => scanNow());
+  document.getElementsByClassName('scan-now')[0].addEventListener('click', () => ScanNow());
   document.getElementById('home-button').addEventListener('click', () => openHomePage());
   document.getElementById('logo').innerHTML = localStorage.getItem('picture');
 
@@ -114,7 +114,7 @@ document.getElementById('home-button').addEventListener('click', () => openHomeP
  * Calls the ScanNow function and handles the result or error.
  */
 function scanNow() {
-  ScanNow()
+  scanNowGo()
     .then((result) => {
     })
     .catch((err) => {

@@ -1,4 +1,8 @@
-import {handleFaviconChange, handlePictureChange, handleTitleChange} from '../src/js/personalize.js'; // Assuming the function is in picture.js
+import {
+  handleFaviconChange,
+  handlePictureChange,
+  handleTitleChange,
+} from '../src/js/personalize.js';
 import {JSDOM} from 'jsdom';
 import test from 'unit.js';
 
@@ -81,7 +85,8 @@ describe('handleFaviconSelect', () => {
 
     // Act
     FileReader = fileReaderIco;
-    handleFaviconChange({target: {files: [new Blob(['dummy'], {type: 'image/x-icon'})]}});
+    const blob = new Blob(['dummy'], {type: 'image/x-icon'});
+    handleFaviconChange({target: {files: blob}});
 
     // Assert
     const newFavicon = head.querySelector('link[rel="icon"]');
@@ -94,26 +99,31 @@ describe('handleFaviconSelect', () => {
 
     // Act
     FileReader = fileReaderPng;
-    handleFaviconChange({target: {files: [new Blob(['dummy'], {type: 'image/png'})]}});
+    const blob = new Blob(['dummy'], {type: 'image/png'});
+    handleFaviconChange({target: {files: blob}});
 
     // Assert
     const newFavicon = head.querySelector('link[rel="icon"]');
     test.value(newFavicon.href).isEqualTo('data:image/png');
   });
-  it('should save the favicon when a valid .ico file is selected in localstorage', () => {
+  it('saves valid .ico favicon in localStorage', () => {
     // Arrange
     // Act
     FileReader = fileReaderIco;
-    handleFaviconChange({target: {files: [new Blob(['dummy'], {type: 'image/x-icon'})]}});
+    const blob = new Blob(['dummy'], {type: 'image/x-icon'});
+    handleFaviconChange({target: {files: blob}});
 
     // Assert
-    test.value(localStorageMock.getItem('favicon')).isEqualTo('data:image/x-icon');
+    const favicon = localStorageMock.getItem('favicon');
+    const expectedValue = 'data:image/x-icon';
+    test.value(favicon).isEqualTo(expectedValue);
   });
-  it('should save the favicon when a valid .png file is selected in localstorage', () => {
+  it('saves valid .png favicon in localStorage', () => {
     // Arrange
     // Act
     FileReader = fileReaderPng;
-    handleFaviconChange({target: {files: [new Blob(['dummy'], {type: 'image/png'})]}});
+    const blob = new Blob(['dummy'], {type: 'image/png'});
+    handleFaviconChange({target: {files: blob}});
 
     // Assert
     test.value(localStorageMock.getItem('favicon')).isEqualTo('data:image/png');
@@ -121,65 +131,73 @@ describe('handleFaviconSelect', () => {
 });
 
 describe('handlePictureChange', () => {
-  it('should change the navigation picture when a valid .png file is selected', () => {
+  it('changes navigation picture with valid .png file', () => {
     // Arrange
     const logo = document.getElementById('logo');
 
     // Act
     FileReader = fileReaderPng;
-    handlePictureChange({target: {files: [new Blob(['dummy'], {type: 'image/png'})]}});
+    const blob = new Blob(['dummy'], {type: 'image/png'});
+    handlePictureChange({target: {files: blob}});
 
     // Assert
     test.value(logo.src).isEqualTo('data:image/png');
   });
-  it('should change the navigation picture when a valid .jpg file is selected', () => {
+  it('changes navigation picture with valid .jpg file', () => {
     // Arrange
     const logo = document.getElementById('logo');
 
     // Act
     FileReader = fileReaderJpg;
-    handlePictureChange({target: {files: [new Blob(['dummy'], {type: 'image/jpg'})]}});
+    const blob = new Blob(['dummy'], {type: 'image/jpg'});
+    handlePictureChange({target: {files: blob}});
 
     // Assert
     test.value(logo.src).isEqualTo('data:image/jpg');
   });
-  it('should change the navigation picture when a valid .jpeg file is selected', () => {
+  it('changes navigation picture with valid .jpeg file', () => {
     // Arrange
     const logo = document.getElementById('logo');
 
     // Act
     FileReader = fileReaderJpeg;
-    handlePictureChange({target: {files: [new Blob(['dummy'], {type: 'image/jpeg'})]}});
+    const blob = new Blob(['dummy'], {type: 'image/jpeg'});
+    handlePictureChange({target: {files: blob}});
 
     // Assert
     test.value(logo.src).isEqualTo('data:image/jpeg');
   });
-  it('should save the navigation picture when a valid .png file is selected in localstorage', () => {
+  it('saves valid .png file in localStorage', () => {
     // Arrange
     // act
     FileReader = fileReaderPng;
-    handlePictureChange({target: {files: [new Blob(['dummy'], {type: 'image/png'})]}});
+    const blob = new Blob(['dummy'], {type: 'image/png'});
+    handlePictureChange({target: {files: blob}});
 
     // Assert
     test.value(localStorageMock.getItem('picture')).isEqualTo('data:image/png');
   });
-  it('should save the navigation picture when a valid .jpg file is selected in localstorage', () => {
+  it('saves valid .jpg file in localStorage', () => {
     // Arrange
     // act
     FileReader = fileReaderJpg;
-    handlePictureChange({target: {files: [new Blob(['dummy'], {type: 'image/jpg'})]}});
 
+    const blob = new Blob(['dummy'], {type: 'image/jpg'});
+    handlePictureChange({target: {files: blob}});
     // Assert
     test.value(localStorageMock.getItem('picture')).isEqualTo('data:image/jpg');
   });
-  it('should save the navigation picture when a valid .jpeg file is selected in localstorage', () => {
+  it('saves .jpeg file in localStorage', () => {
     // Arrange
     // act
     FileReader = fileReaderJpeg;
-    handlePictureChange({target: {files: [new Blob(['dummy'], {type: 'image/jpeg'})]}});
+    const blob = new Blob(['dummy'], {type: 'image/jpeg'});
+    handlePictureChange({target: {files: blob}});
 
     // Assert
-    test.value(localStorageMock.getItem('picture')).isEqualTo('data:image/jpeg');
+    const localStoragePicture = localStorageMock.getItem('picture');
+    const expectedValue = 'data:image/jpeg';
+    test.value(localStoragePicture).isEqualTo(expectedValue);
   });
 });
 
@@ -204,6 +222,8 @@ describe('handleTitleChange', () => {
     handleTitleChange();
 
     // Assert
-    test.value(localStorageMock.getItem('title')).isEqualTo(newTitleInput.value);
+    const localStorageTitle = localStorageMock.getItem('title');
+    const expectedValue = newTitleInput.value;
+    test.value(localStorageTitle).isEqualTo(expectedValue);
   });
 });

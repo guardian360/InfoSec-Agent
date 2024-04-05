@@ -1,6 +1,6 @@
 import test from 'unit.js';
 import {JSDOM} from 'jsdom';
-import {AdjustWithRiskCounters, SetMaxInterval} from '../src/js/security-dashboard.js';
+import {adjustWithRiskCounters, setMaxInterval} from '../src/js/security-dashboard.js';
 
 // Mock page
 const dom = new JSDOM(`
@@ -93,7 +93,8 @@ const dom = new JSDOM(`
   </div>
   <div class="graph-row">
   <div class="graph-column issues-graph-buttons">
-    <H2>In this graph you are able to see the distribution of different issues we have found over the past 5 times we ran a check.</H2>
+    <H2>In this graph you are able to see the distribution of different issues 
+    we have found over the past 5 times we ran a check.</H2>
     <div class="dropdown">
       <button class="dropbtn" id="dropbtn">Select Risks</button>
       <div class="dropdown-selector" id="myDropdown">
@@ -136,7 +137,7 @@ describe('dashboard', function() {
     };
 
     // act
-    AdjustWithRiskCounters(mockRiskCounters);
+    adjustWithRiskCounters(mockRiskCounters);
 
     // assert
     test.value(document.getElementById('high-risk-counter').innerHTML).isEqualTo(mockRiskCounters.lastHighRisk);
@@ -166,11 +167,13 @@ describe('dashboard', function() {
       if (index == 1) mockRiskCounters.lastHighRisk = 0;
       if (index == 2) mockRiskCounters.lastMediumRisk = 0;
       if (index == 3) mockRiskCounters.lastLowRisk = 0;
-      AdjustWithRiskCounters(mockRiskCounters);
+      adjustWithRiskCounters(mockRiskCounters);
 
       // assert
       test.value(document.getElementById('security-status').innerHTML).isEqualTo(expectedText[index]);
-      test.value(document.getElementById('security-status').style.backgroundColor).isEqualTo(expectedBackgroundColors[index]);
+      const securityStatusBackground = document.getElementById('security-status').style.backgroundColor;
+      const expectedBackgroundColor = expectedBackgroundColors[index];
+      test.value(securityStatusBackground).isEqualTo(expectedBackgroundColor);
       test.value(document.getElementById('security-status').style.color).isEqualTo(expectedColors[index]);
     });
   });
@@ -181,7 +184,7 @@ describe('dashboard', function() {
     };
 
     // act
-    SetMaxInterval(mockRiskCounters);
+    setMaxInterval(mockRiskCounters);
 
     // assert
     test.value(document.getElementById('graph-interval').max).isEqualTo(mockRiskCounters.count);

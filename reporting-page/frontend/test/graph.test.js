@@ -7,7 +7,8 @@ import {RiskCounters} from '../src/js/risk-counters.js';
 const dom = new JSDOM(`
   <div class="graph-row">
   <div class="graph-column issues-graph-buttons">
-    <H2>In this graph you are able to see the distribution of different issues we have found over the past 5 times we ran a check.</H2>
+    <H2>In this graph you are able to see the distribution of different issues 
+    we have found over the past 5 times we ran a check.</H2>
     <div class="dropdown">
       <button class="dropbtn" id="dropbtn">Select Risks</button>
       <div class="dropdown-selector" id="myDropdown">
@@ -44,10 +45,10 @@ describe('risk-graph', function() {
   let g = new Graph(undefined, rc);
   it('Should have togglable risks', function() {
     // act
-    g.ToggleRisks('high', false);
-    g.ToggleRisks('medium', false);
-    g.ToggleRisks('low', false);
-    g.ToggleRisks('no', false);
+    g.toggleRisks('high', false);
+    g.toggleRisks('medium', false);
+    g.toggleRisks('low', false);
+    g.toggleRisks('no', false);
 
     // assert
     test.value(g.graphShowHighRisks).isEqualTo(false);
@@ -56,10 +57,10 @@ describe('risk-graph', function() {
     test.value(g.graphShowNoRisks).isEqualTo(false);
 
     // act
-    g.ToggleRisks('high', false);
-    g.ToggleRisks('medium', false);
-    g.ToggleRisks('low', false);
-    g.ToggleRisks('no', false);
+    g.toggleRisks('high', false);
+    g.toggleRisks('medium', false);
+    g.toggleRisks('low', false);
+    g.toggleRisks('no', false);
 
     // assert
     test.value(g.graphShowHighRisks).isEqualTo(true);
@@ -69,13 +70,13 @@ describe('risk-graph', function() {
   });
   it('Should have a togglable dropdown button', function() {
     // act
-    g.GraphDropdown();
+    g.graphDropdown();
 
     // assert
     test.value(document.getElementById('myDropdown').classList.contains('show')).isEqualTo(true);
 
     // act
-    g.GraphDropdown();
+    g.graphDropdown();
 
     // assert
     test.value(document.getElementById('myDropdown').classList.contains('show')).isEqualTo(false);
@@ -118,7 +119,7 @@ describe('risk-graph', function() {
     g = new Graph(undefined, mockRiskCounters);
 
     // act
-    const resultData = g.GetData();
+    const resultData = g.getData();
 
     // assert
     test.array(resultData.labels).is(expectedData.labels);
@@ -143,7 +144,7 @@ describe('risk-graph', function() {
     };
 
     // act
-    const resultOptions = g.GetOptions();
+    const resultOptions = g.getOptions();
 
     // assert
     test.object(resultOptions).is(expectedOptions);

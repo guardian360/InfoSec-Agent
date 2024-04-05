@@ -39,8 +39,7 @@
     "rules": {
       "linebreak-style":"off",
       "indent": ["error", 2],
-      "max-len": "off",
-      "new-cap": "off"
+      "max-len": ["error", {"code": 120}]
     }
   },
   "stylelint": {

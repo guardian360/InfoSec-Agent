@@ -18,25 +18,25 @@ export class Graph {
    */
   constructor(canvas, riskCounters) {
     this.rc = riskCounters;
-    if (canvas !== undefined) this.CreateGraphChart(canvas);
+    if (canvas !== undefined) this.createGraphChart(canvas);
   }
 
   /** Creates a graph in the form of a bar chart for risks
    *
    * @param {string} canvas html canvas where bar chart will be placed
    */
-  CreateGraphChart(canvas) {
+  createGraphChart(canvas) {
     this.barChart = new Chart(canvas, {
       type: 'bar',
-      data: this.GetData(), // The data for our dataset
-      options: this.GetOptions(), // Configuration options go here
+      data: this.getData(), // The data for our dataset
+      options: this.getOptions(), // Configuration options go here
     });
   }
 
   /** Updates the graph, should be called after a change in graph properties */
-  ChangeGraph() {
+  changeGraph() {
     this.graphShowAmount = document.getElementById('graph-interval').value;
-    this.barChart.data = this.GetData();
+    this.barChart.data = this.getData();
     console.log(this.graphShowAmount);
     this.barChart.update();
   }
@@ -46,7 +46,7 @@ export class Graph {
    * @param {string} category Category corresponding to risk
    * @param {boolean} [change=true] Changes graph after call, normally set to *true*
    */
-  ToggleRisks(category, change = true) {
+  toggleRisks(category, change = true) {
     switch (category) {
     case 'high':
       this.graphShowHighRisks = !this.graphShowHighRisks;
@@ -63,11 +63,11 @@ export class Graph {
     default:
       break;
     }
-    if (change) this.ChangeGraph();
+    if (change) this.changeGraph();
   }
 
   /** toggles 'show' class on element with id:"myDropDown" */
-  GraphDropdown() {
+  graphDropdown() {
     document.getElementById('myDropdown').classList.toggle('show');
   }
 
@@ -76,7 +76,7 @@ export class Graph {
    *
    * @return {data} Data for graph chart
    */
-  GetData() {
+  getData() {
     /**
      * Labels created for the x-axis
      * @type {!Array<string>}
@@ -127,7 +127,7 @@ export class Graph {
    *
    * @return {Options} Options for graph chart
    */
-  GetOptions() {
+  getOptions() {
     return {
       scales: {
         xAxes: [{

@@ -1,13 +1,13 @@
 import {openIssuePage} from './issue.js';
-import {GetLocalization} from './localize.js';
-import {CloseNavigation} from './navigation-menu.js';
-import {MarkSelectedNavigationItem} from './navigation-menu.js';
+import {getLocalization} from './localize.js';
+import {closeNavigation} from './navigation-menu.js';
+import {markSelectedNavigationItem} from './navigation-menu.js';
 import {retrieveTheme} from './personalize';
 
 /** Load the content of the Issues page */
 export function openIssuesPage() {
-  CloseNavigation();
-  MarkSelectedNavigationItem('issues-button');
+  closeNavigation();
+  markSelectedNavigationItem('issues-button');
 
   const pageContents = document.getElementById('page-contents');
   pageContents.innerHTML = `
@@ -15,9 +15,18 @@ export function openIssuesPage() {
     <table class="issues-table" id="issues-table">
       <thead>
         <tr>
-        <th class="issue-column"><span class="table-header name">Name</span><span class="material-symbols-outlined" id="sort-on-issue">swap_vert</span></th>
-        <th class="type-column"><span class="table-header type">Type</span><span class="material-symbols-outlined" id="sort-on-type">swap_vert</span></th>
-        <th class="risk-column"><span class="table-header risk">Risk level</span><span class="material-symbols-outlined" id="sort-on-risk">swap_vert</span></th>
+        <th class="issue-column">
+          <span class="table-header name">Name</span>
+          <span class="material-symbols-outlined" id="sort-on-issue">swap_vert</span>
+        </th>
+        <th class="type-column">
+          <span class="table-header type">Type</span>
+          <span class="material-symbols-outlined" id="sort-on-type">swap_vert</span>
+        </th>
+        <th class="risk-column">
+          <span class="table-header risk">Risk level</span>
+          <span class="material-symbols-outlined" id="sort-on-risk">swap_vert</span>
+        </th>
         </tr>
       </thead>
       <tbody>
@@ -29,7 +38,7 @@ export function openIssuesPage() {
   const tableHeaders = ['name', 'type', 'risk'];
   const localizationIds = ['Issues.Name', 'Issues.Type', 'Issues.Risk'];
   for (let i = 0; i < tableHeaders.length; i++) {
-    GetLocalization(localizationIds[i], tableHeaders[i]);
+    getLocalization(localizationIds[i], tableHeaders[i]);
   }
 
   let issues = []; // retrieve issues from tray application
@@ -46,7 +55,7 @@ export function openIssuesPage() {
  * @param {number} level - The numeric representation of the risk level.
  * @return {string} The risk level corresponding to the numeric input:
  */
-function RiskLevels(level) {
+function riskLevels(level) {
   switch (level) {
   case 0:
     return 'Safe';
@@ -71,7 +80,7 @@ export function fillTable(tbody, issues) {
     row.innerHTML = `
       <td class="issue-link">${issue.checkid}</td>
       <td>Security</td>
-      <td>${RiskLevels(issue.level)}</td>
+      <td>${riskLevels(issue.level)}</td>
     `;
     tbody.appendChild(row);
   });

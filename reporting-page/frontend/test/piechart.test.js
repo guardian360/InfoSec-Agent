@@ -23,8 +23,12 @@ describe('piechart', function() {
     // arrange
     const expectedXValues = ['No risk', 'Low risk', 'Medium risk', 'High risk'];
     const expectedYValues = [4, 3, 2, 1];
-    const expectedColors = ['rgb(255, 255, 0)', 'rgb(255, 0, 0)', 'rgb(0, 0, 255)', 'rgb(0, 255, 255)'];
-
+    const expectedColors = [
+      'rgb(255, 255, 0)',
+      'rgb(255, 0, 0)',
+      'rgb(0, 0, 255)',
+      'rgb(0, 255, 255)',
+    ];
     const mockRiskCounters = {
       highRiskColor: 'rgb(0, 255, 255)',
       mediumRiskColor: 'rgb(0, 0, 255)',
@@ -39,7 +43,7 @@ describe('piechart', function() {
     p = new PieChart(undefined, mockRiskCounters);
 
     // act
-    const resultData = p.GetData();
+    const resultData = p.getData();
 
     // assert
     test.array(resultData.labels).is(expectedXValues);
@@ -57,7 +61,7 @@ describe('piechart', function() {
     };
 
     // act
-    const resultOptions = p.GetOptions();
+    const resultOptions = p.getOptions();
 
     // assert
     test.object(resultOptions).is(expectedOptions);

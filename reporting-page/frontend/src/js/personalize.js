@@ -1,9 +1,9 @@
-import {CloseNavigation} from './navigation-menu.js';
+import {closeNavigation} from './navigation-menu.js';
 import {loadPersonalizeNavigation} from './navigation-menu.js';
 
 /** Load the content of the Personalize page */
 export function openPersonalizePage() {
-  CloseNavigation();
+  closeNavigation();
 
   document.getElementById('page-contents').innerHTML = `
   <div class="setting">
@@ -18,7 +18,10 @@ export function openPersonalizePage() {
     <span class="personalize-description">Navigation image</span>
     <div class="personalize-button-container">
       <label class="personalize-label" for="input-file-picture">Update image</label>
-      <input class="personalize-input-invisible" type="file" id="input-file-picture" accept="image/jpeg, image/png, image/jpg">   
+      <input class="personalize-input-invisible" 
+       type="file" 
+       id="input-file-picture" 
+       accept="image/jpeg, image/png, image/jpg">
     </div>
   </div>
   <hr class="solid">
@@ -58,16 +61,19 @@ export function openPersonalizePage() {
         <input type="radio" name="theme" id="blue">
   </div>
   `;
-  const faviconInput = document.getElementById('input-file-icon');// add eventlistener for changing Favicon
+  // add eventlistener for changing Favicon
+  const faviconInput = document.getElementById('input-file-icon');
   faviconInput.addEventListener('change', handleFaviconChange);
 
-  const pictureInput = document.getElementById('input-file-picture'); // add eventlistener for changing navication picture
+  // add eventlistener for changing navication picture
+  const pictureInput = document.getElementById('input-file-picture');
   pictureInput.addEventListener('change', handlePictureChange);
 
   const newTitleInput = document.getElementById('newTitle'); // add eventlistener for changing navigation title
   newTitleInput.addEventListener('input', handleTitleChange);
 
-  const inputBackgroundNav = document.getElementById('input-color-background'); // add eventlistener for changing navigation title
+  // add eventlistener for changing navigation title
+  const inputBackgroundNav = document.getElementById('input-color-background');
   inputBackgroundNav.addEventListener('change', handleLeftBackgroundNav);
 
   /* save themes*/

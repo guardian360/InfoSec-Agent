@@ -4,7 +4,7 @@ import {Localize} from '../../wailsjs/go/main/App';
  * @param {string} messageId - The ID of the message to be localized.
  * @param {string} elementClass - The class name of HTML elements to be updated with the localized message.
  */
-export function GetLocalization(messageId, elementClass) {
+export function getLocalization(messageId, elementClass) {
   Localize(messageId).then((result) => {
     const elements = document.getElementsByClassName(elementClass);
     for (let i = 0; i < elements.length; i++) {

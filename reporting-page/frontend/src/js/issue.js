@@ -1,5 +1,5 @@
 import {openIssuesPage} from './issues.js';
-import {GetLocalization} from './localize.js';
+import {getLocalization} from './localize.js';
 import {retrieveTheme} from './personalize';
 
 let stepCounter = 0;
@@ -72,7 +72,7 @@ export function openIssuePage(issueId) {
   const texts = ['information', 'solution', 'previous-button', 'next-button', 'back-button'];
   const localizationIds = ['Issues.Information', 'Issues.Solution', 'Issues.Previous', 'Issues.Next', 'Issues.Back'];
   for (let i = 0; i < texts.length; i++) {
-    GetLocalization(localizationIds[i], texts[i]);
+    getLocalization(localizationIds[i], texts[i]);
   }
 
   try {
@@ -80,8 +80,10 @@ export function openIssuePage(issueId) {
   } catch (error) { }
 
   // Add functions to page for navigation
-  document.getElementById('next-button').addEventListener('click', () => nextSolutionStep(currentIssue.Solution, currentIssue.Screenshots));
-  document.getElementById('previous-button').addEventListener('click', () => previousSolutionStep(currentIssue.Solution, currentIssue.Screenshots));
+  document.getElementById('next-button').addEventListener('click', () =>
+    nextSolutionStep(currentIssue.Solution, currentIssue.Screenshots));
+  document.getElementById('previous-button').addEventListener('click', () =>
+    previousSolutionStep(currentIssue.Solution, currentIssue.Screenshots));
   document.getElementById('back-button').addEventListener('click', () => openIssuesPage());
 
   document.onload = retrieveTheme();

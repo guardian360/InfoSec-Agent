@@ -1,8 +1,8 @@
 import {openPersonalizePage} from './personalize.js';
 import {ChangeLanguage} from '../../wailsjs/go/main/Tray';
-import {GetLocalization} from './localize.js';
-import {CloseNavigation} from './navigation-menu.js';
-import {MarkSelectedNavigationItem} from './navigation-menu.js';
+import {getLocalization} from './localize.js';
+import {closeNavigation} from './navigation-menu.js';
+import {markSelectedNavigationItem} from './navigation-menu.js';
 import {retrieveTheme} from './personalize.js';
 /**
  * Initiates a language update operation.
@@ -19,8 +19,8 @@ function updateLanguage() {
 
 /** Load the content of the Settings page */
 function openSettingsPage() {
-  CloseNavigation();
-  MarkSelectedNavigationItem('settings-button');
+  closeNavigation();
+  markSelectedNavigationItem('settings-button');
 
   document.getElementById('page-contents').innerHTML = `
   <div class="setting personalize">
@@ -36,9 +36,14 @@ function openSettingsPage() {
 
   // Localize the static content of the settings page
   const staticSettingsContent = ['personalize-title', 'personalize-button', 'language-title', 'language-button'];
-  const localizationIds = ['Settings.PersonalizeTitle', 'Settings.PersonalizeButton', 'Settings.ChangeLanguageTitle', 'Settings.ChangeLanguageButton'];
+  const localizationIds = [
+    'Settings.PersonalizeTitle',
+    'Settings.PersonalizeButton',
+    'Settings.ChangeLanguageTitle',
+    'Settings.ChangeLanguageButton',
+  ];
   for (let i = 0; i < staticSettingsContent.length; i++) {
-    GetLocalization(localizationIds[i], staticSettingsContent[i]);
+    getLocalization(localizationIds[i], staticSettingsContent[i]);
   }
 
   document.getElementsByClassName('language-button')[0].addEventListener('click', () => updateLanguage());
