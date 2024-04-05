@@ -1,12 +1,12 @@
-import {ScanNow} from '../../wailsjs/go/main/Tray.js';
-import {GetAllSeverities} from '../../wailsjs/go/main/DataBase.js';
+import {ScanNow as scanNowGo} from '../../wailsjs/go/main/Tray.js';
+import {GetAllSeverities as getAllSeverities} from '../../wailsjs/go/main/DataBase.js';
 import {openHomePage} from './home.js';
 import * as runTime from '../../wailsjs/runtime/runtime.js';
 import * as rc from './risk-counters.js';
 
 /** Call ScanNow in backend and store result in sessionStorage */
 try {
-  ScanNow()
+  scanNowGo()
     .then((result) => {
       // place result in session storage
       sessionStorage.setItem('ScanResult', JSON.stringify(result));
@@ -33,7 +33,7 @@ const countOccurences = (severities, riskLevel) => severities.filter((item) => i
  * @param {int[]} ids List of result ids to get corresponding severities
  */
 function setSeverities(input, ids) {
-  GetAllSeverities(input, ids)
+  getAllSeverities(input, ids)
     .then((result) => {
       sessionStorage.setItem('Severities', JSON.stringify(result));
       const high = countOccurences(result, 3);

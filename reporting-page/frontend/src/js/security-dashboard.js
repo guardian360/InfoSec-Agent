@@ -1,7 +1,7 @@
 import {Graph} from './graph.js';
 import {PieChart} from './piechart.js';
 import {getLocalization} from './localize.js';
-import {ScanNow} from '../../wailsjs/go/main/Tray';
+import {ScanNow as scanNowGo} from '../../wailsjs/go/main/Tray';
 import {closeNavigation} from './navigation-menu.js';
 import {markSelectedNavigationItem} from './navigation-menu.js';
 import {retrieveTheme} from './personalize';
@@ -198,7 +198,7 @@ function openSecurityDashboardPage() {
   new PieChart('pieChart', rc);
   const g = new Graph('interval-graph', rc);
   addGraphFunctions(g);
-  document.getElementsByClassName('scan-now')[0].addEventListener('click', () => ScanNow());
+  document.getElementsByClassName('scan-now')[0].addEventListener('click', () => scanNowGo());
   document.onload = retrieveTheme();
 }
 

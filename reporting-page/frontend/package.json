@@ -39,7 +39,8 @@
     "rules": {
       "linebreak-style":"off",
       "indent": ["error", 2],
-      "max-len": ["error", {"code": 120}]
+      "max-len": ["error", {"code": 120}],
+      "new-cap": ["error",{"capIsNewExceptions": ["WindowShow", "WindowMaximise", "LogPrint"]}]
     }
   },
   "stylelint": {

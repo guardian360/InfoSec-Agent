@@ -1,5 +1,5 @@
 import {PieChart} from './piechart';
-import {ScanNow} from '../../wailsjs/go/main/Tray';
+import {ScanNow as scanNowGo} from '../../wailsjs/go/main/Tray';
 import {getLocalization} from './localize.js';
 import {closeNavigation} from './navigation-menu.js';
 import {markSelectedNavigationItem} from './navigation-menu.js';
@@ -99,7 +99,7 @@ export function openHomePage() {
     getLocalization(localizationIds[i], staticHomePageConent[i]);
   }
 
-  document.getElementsByClassName('scan-now')[0].addEventListener('click', () => ScanNow());
+  document.getElementsByClassName('scan-now')[0].addEventListener('click', () => scanNow());
   document.getElementById('home-button').addEventListener('click', () => openHomePage());
   document.getElementById('logo').innerHTML = localStorage.getItem('picture');
 
