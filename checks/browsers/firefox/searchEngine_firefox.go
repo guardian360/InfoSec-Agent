@@ -3,23 +3,28 @@ package firefox
 import (
 	"encoding/binary"
 	"io"
+	"log"
 	"os"
 	"path/filepath"
 	"regexp"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/filemock"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"github.com/pierrec/lz4"
 )
 
-// SearchEngineFireFox checks the standard search engine in firefox.
+// SearchEngineFirefox checks the standard search engine in firefox.
 //
 // Parameters: _
 //
 // Returns: The standard search engine for firefox
 func SearchEngineFirefox() checks.Check {
 	// Determine the directory in which the Firefox profile is stored
-	ffdirectory, err := utils.FirefoxFolder()
+	var ffdirectory []string
+	var err error
+	ffdirectory, err = utils.FirefoxFolder()
 	if err != nil {
 		return checks.NewCheckErrorf("SearchEngineFirefox", "No firefox directory found", err)
 	}
@@ -27,7 +32,12 @@ func SearchEngineFirefox() checks.Check {
 
 	// Create a temporary file to copy the compressed json to
 	tempSearch := filepath.Join(os.TempDir(), "tempSearch.json.mozlz4")
-	defer os.Remove(tempSearch)
+	defer func(name string) {
+		err = os.Remove(name)
+		if err != nil {
+			log.Println("Error deleting temporary file")
+		}
+	}(tempSearch)
 
 	// Copy the compressed json to a temporary location
 	copyError := utils.CopyFile(filePath, tempSearch)
@@ -42,11 +52,17 @@ func SearchEngineFirefox() checks.Check {
 	fileSize := fileInfo.Size()
 
 	// Holds the information from the copied file
+	// TODO: Look at searchEngine_chromium.go for how to implement filemock.File
 	file, err := os.Open(filepath.Clean(tempSearch))
 	if err != nil {
 		return checks.NewCheckErrorf("SearchEngineFirefox", "Unable to open the file", err)
 	}
-	defer utils.CloseFile(file)
+	defer func(file filemock.File) {
+		err = utils.CloseFile(file)
+		if err != nil {
+			log.Println("Error closing file")
+		}
+	}(file)
 
 	// Holds the custom magig number for the mozzila lz4 compression
 	magicNumber := make([]byte, 8)
@@ -95,6 +111,10 @@ func SearchEngineFirefox() checks.Check {
 		return checks.NewCheckErrorf("SearchEngineFirefox", "Unable to uncompress", err)
 	}
 	output := string(data)
+	return checks.NewCheckResult("SearchEngineFirefox", results(output))
+}
+
+func results(output string) string {
 	var result string
 	var re *regexp.Regexp
 	var matches string
@@ -110,9 +130,9 @@ func SearchEngineFirefox() checks.Check {
 		re = regexp.MustCompile(pattern)
 		matches = re.FindString(output)
 		if matches == "" {
-			return checks.NewCheckResult("SearchEngineFirefox", "Other Search Engine")
+			return "Other Search Engine"
 		}
 		result = matches[18:]
 	}
-	return checks.NewCheckResult("SearchEngineFirefox", result)
+	return result
 }
