@@ -133,8 +133,8 @@ function openSecurityDashboardPage() {
   // Set counters on the page to the right values
   let rc = JSON.parse(sessionStorage.getItem("RiskCounters"));
   console.log(rc);
-  AdjustWithRiskCounters(rc);
-  SetMaxInterval(rc);    
+  AdjustWithRiskCounters(rc, document);
+  SetMaxInterval(rc, document);    
   // Create charts
 
   // Localize the static content of the dashboard
@@ -202,43 +202,47 @@ if (typeof document !== 'undefined') {
  * 
  * @param {RiskCounters} rc Risk counters from which the data is taken 
  */
-export function AdjustWithRiskCounters(rc) {
+export function AdjustWithRiskCounters(rc, doc) {
   // change counters according to collected data
-  document.getElementById("high-risk-counter").innerHTML = rc.lastHighRisk;
-  document.getElementById("medium-risk-counter").innerHTML = rc.lastMediumRisk;
-  document.getElementById("low-risk-counter").innerHTML = rc.lastLowRisk;
-  document.getElementById("no-risk-counter").innerHTML = rc.lastnoRisk; 
+  doc.getElementById("high-risk-counter").innerHTML = rc.lastHighRisk;
+  doc.getElementById("medium-risk-counter").innerHTML = rc.lastMediumRisk;
+  doc.getElementById("low-risk-counter").innerHTML = rc.lastLowRisk;
+  doc.getElementById("no-risk-counter").innerHTML = rc.lastnoRisk; 
 
-  let securityStatus = document.getElementsByClassName("status-descriptor")[0];  
-  if (rc.lastHighRisk > 1) {
-    GetLocalization("Dashboard.Critical", "status-descriptor");
-    // securityStatus.innerHTML = "Critical";
-    securityStatus.style.backgroundColor = rc.highRiskColor;
-    securityStatus.style.color = "rgb(255, 255, 255)";
-  } else if (rc.lastMediumRisk > 1) {
-    GetLocalization("Dashboard.MediumConcern", "status-descriptor");
-    // securityStatus.innerHTML = "Medium concern";
-    securityStatus.style.backgroundColor = rc.mediumRiskColor; 
-    securityStatus.style.color = "rgb(255, 255, 255)";
-  } else if (rc.lastLowRisk > 1) {
-    GetLocalization("Dashboard.LightConcern", "status-descriptor");
-    // securityStatus.innerHTML = "Light concern";
-    securityStatus.style.backgroundColor = rc.lowRiskColor;
-    securityStatus.style.color = "rgb(0, 0, 0)";  
-  } else {
-    GetLocalization("Dashboard.NoConcern", "status-descriptor");
-    // securityStatus.innerHTML = "Safe";
-    securityStatus.style.backgroundColor = rc.noRiskColor;
-    securityStatus.style.color = "rgb(0, 0, 0)";  
-  }  
+  let securityStatus = doc.getElementsByClassName("status-descriptor")[0];  
+  try {
+    if (rc.lastHighRisk > 1) {
+      GetLocalization("Dashboard.Critical", "status-descriptor");
+      // securityStatus.innerHTML = "Critical";
+      securityStatus.style.backgroundColor = rc.highRiskColor;
+      securityStatus.style.color = "rgb(255, 255, 255)";
+    } else if (rc.lastMediumRisk > 1) {
+      GetLocalization("Dashboard.MediumConcern", "status-descriptor");
+      // securityStatus.innerHTML = "Medium concern";
+      securityStatus.style.backgroundColor = rc.mediumRiskColor; 
+      securityStatus.style.color = "rgb(255, 255, 255)";
+    } else if (rc.lastLowRisk > 1) {
+      GetLocalization("Dashboard.LightConcern", "status-descriptor");
+      // securityStatus.innerHTML = "Light concern";
+      securityStatus.style.backgroundColor = rc.lowRiskColor;
+      securityStatus.style.color = "rgb(0, 0, 0)";  
+    } else {
+      GetLocalization("Dashboard.NoConcern", "status-descriptor");
+      // securityStatus.innerHTML = "Safe";
+      securityStatus.style.backgroundColor = rc.noRiskColor;
+      securityStatus.style.color = "rgb(0, 0, 0)";  
+    }  
+  } catch (error) {
+    console.log("Error in security-dashboard.js: " + error);
+  }
 }
 
 /** Set the max number input of the 'graph-interval' element
  * 
  * @param {RiskCounters} rc Risk counters from which the max count is taken
  */
-export function SetMaxInterval(rc) {
-  document.getElementById("graph-interval").max = rc.count;
+export function SetMaxInterval(rc, doc) {
+  doc.getElementById("graph-interval").max = rc.count;
 }
 
 /** Adds eventlisteners to elements in graph-row section of the dashboard page 

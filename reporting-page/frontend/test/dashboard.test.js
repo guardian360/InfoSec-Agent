@@ -125,8 +125,8 @@ global.document = dom.window.document
 global.window = dom.window
 
 // test cases
-describe("dashboard", function() {
-    it("Should show data from risk counters", function() {
+describe("Security dashboard", function() {
+    it("should show data from risk counters", function() {
       const mockRiskCounters = {  
         lastHighRisk : 2,
         lastMediumRisk : 3,
@@ -137,16 +137,16 @@ describe("dashboard", function() {
       };
 
       // act
-      AdjustWithRiskCounters(mockRiskCounters);
+      AdjustWithRiskCounters(mockRiskCounters, dom.window.document);
 
       // assert
-      test.value(document.getElementById("high-risk-counter").innerHTML).isEqualTo(mockRiskCounters.lastHighRisk);
-      test.value(document.getElementById("medium-risk-counter").innerHTML).isEqualTo(mockRiskCounters.lastMediumRisk);
-      test.value(document.getElementById("low-risk-counter").innerHTML).isEqualTo(mockRiskCounters.lastLowRisk);
-      test.value(document.getElementById("no-risk-counter").innerHTML).isEqualTo(mockRiskCounters.lastnoRisk);
+      test.value(dom.window.document.getElementById("high-risk-counter").innerHTML).isEqualTo(mockRiskCounters.lastHighRisk);
+      test.value(dom.window.document.getElementById("medium-risk-counter").innerHTML).isEqualTo(mockRiskCounters.lastMediumRisk);
+      test.value(dom.window.document.getElementById("low-risk-counter").innerHTML).isEqualTo(mockRiskCounters.lastLowRisk);
+      test.value(dom.window.document.getElementById("no-risk-counter").innerHTML).isEqualTo(mockRiskCounters.lastnoRisk);
 
     })
-    it("Should display the right security status", function() {
+    it("should display the right security status", function() {
       // arrange
       const expectedColors = ["rgb(255, 255, 255)","rgb(255, 255, 255)","rgb(0, 0, 0)","rgb(0, 0, 0)"]
       const expectedBackgroundColors = ["rgb(0, 255, 255)","rgb(0, 0, 255)","rgb(255, 0, 0)","rgb(255, 255, 0)"]
@@ -176,16 +176,16 @@ describe("dashboard", function() {
         test.value(document.getElementById("security-status").style.color).isEqualTo(expectedColors[index]);
       });
     })
-    it("Should set the max value of the graph interval to the maximum amount of data", function() {
+    it("should set the max value of the graph interval to the maximum amount of data", function() {
       // arrange
       const mockRiskCounters = {  
         count : 5,
       };
 
       // act
-      SetMaxInterval(mockRiskCounters);
+      SetMaxInterval(mockRiskCounters, dom.window.document);
 
       // assert
-      test.value(document.getElementById("graph-interval").max).isEqualTo(mockRiskCounters.count);
+      test.value(dom.window.document.getElementById("graph-interval").max).isEqualTo(mockRiskCounters.count);
     })
 })
