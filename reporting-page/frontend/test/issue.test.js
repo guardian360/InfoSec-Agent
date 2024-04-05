@@ -1,10 +1,8 @@
 import test from 'unit.js';
-import { JSDOM } from "jsdom";
-import { openIssuePage } from "../src/js/issue.js";
-import { updateSolutionStep } from "../src/js/issue.js";
-import { nextSolutionStep } from "../src/js/issue.js";
-import { previousSolutionStep } from "../src/js/issue.js";
-import data from "../src/database.json" assert { type: "json" };
+import {JSDOM} from 'jsdom';
+import {updateSolutionStep} from '../src/js/issue.js';
+import {nextSolutionStep} from '../src/js/issue.js';
+import {previousSolutionStep} from '../src/js/issue.js';
 
 // Mock issue page
 const issuesDOM = new JSDOM(`
@@ -15,16 +13,16 @@ const issuesDOM = new JSDOM(`
 </body>
 </html>
 `);
-global.document = issuesDOM.window.document
-global.window = issuesDOM.window
+global.document = issuesDOM.window.document;
+global.window = issuesDOM.window;
 
-var stepCounter = 0;
-const solution = ["Step 1", "Step 2", "Step 3"];
-const screenshots = ["screenshot1.jpg", "screenshot2.jpg", "screenshot3.jpg"];
-const solutionStep = document.createElement("p");
-const screenshot = document.createElement("img");
-solutionStep.id = "solution-text";
-screenshot.id = "step-screenshot";
+let stepCounter = 0;
+const solution = ['Step 1', 'Step 2', 'Step 3'];
+const screenshots = ['screenshot1.jpg', 'screenshot2.jpg', 'screenshot3.jpg'];
+const solutionStep = document.createElement('p');
+const screenshot = document.createElement('img');
+solutionStep.id = 'solution-text';
+screenshot.id = 'step-screenshot';
 document.body.appendChild(solutionStep);
 document.body.appendChild(screenshot);
 
@@ -38,8 +36,8 @@ describe('updateSolutionStep', function() {
     updateSolutionStep(solution, screenshots, stepCounter);
 
     // Assert
-    test.value(solutionStep.innerHTML).isEqualTo("Step 1");
-    test.value(screenshot.src).isEqualTo("screenshot1.jpg");
+    test.value(solutionStep.innerHTML).isEqualTo('Step 1');
+    test.value(screenshot.src).isEqualTo('screenshot1.jpg');
   });
 });
 
@@ -53,8 +51,8 @@ describe('nextSolutionStep', function() {
     nextSolutionStep(solution, screenshots);
 
     // Assert
-    test.value(solutionStep.innerHTML).isEqualTo("Step 2");
-    test.value(screenshot.src).isEqualTo("screenshot2.jpg");
+    test.value(solutionStep.innerHTML).isEqualTo('Step 2');
+    test.value(screenshot.src).isEqualTo('screenshot2.jpg');
   });
 });
 
@@ -68,7 +66,7 @@ describe('previousSolutionStep', function() {
     previousSolutionStep(solution, screenshots);
 
     // Assert
-    test.value(solutionStep.innerHTML).isEqualTo("Step 1");
-    test.value(screenshot.src).isEqualTo("screenshot1.jpg");
+    test.value(solutionStep.innerHTML).isEqualTo('Step 1');
+    test.value(screenshot.src).isEqualTo('screenshot1.jpg');
   });
 });

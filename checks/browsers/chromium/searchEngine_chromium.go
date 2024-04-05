@@ -4,9 +4,12 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"log"
 	"os"
 	"path/filepath"
 	"regexp"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/filemock"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
@@ -32,21 +35,31 @@ func SearchEngineChromium(browser string) checks.Check {
 	}
 	// Holds the return value and sets the default value to chrome in case you never changed your search engine
 	defaultSE := "google.com"
-	user, err := os.UserHomeDir()
+	var user string
+	var err error
+	user, err = os.UserHomeDir()
 	if err != nil {
 		return checks.NewCheckErrorf(returnID, "Error: ", err)
 	}
 
 	// Get the current user's home directory, where the preferences can be found
 	preferencesDir := filepath.Join(user, "AppData", "Local", browserPath, "User Data", "Default", "Preferences")
-	file, err := os.Open(filepath.Clean(preferencesDir))
+	// TODO: var needs to be filemock.File (this requires implementation of all other functions used for files in project)
+	var file *os.File
+	file, err = os.Open(filepath.Clean(preferencesDir))
 	if err != nil {
 		return checks.NewCheckErrorf(returnID, "Error: ", err)
 	}
-	defer utils.CloseFile(file)
+	defer func(file filemock.File) {
+		err = utils.CloseFile(file)
+		if err != nil {
+			log.Println("Error closing file")
+		}
+	}(file)
 
 	// Byte array holding the preferences json data used to unmarshal the data later
-	byteValue, err := io.ReadAll(file)
+	var byteValue []byte
+	byteValue, err = io.ReadAll(file)
 	if err != nil {
 		return checks.NewCheckErrorf(returnID, " Can't read data,Error: ", err)
 	}
