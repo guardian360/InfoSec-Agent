@@ -1,28 +1,27 @@
-import data from "../database.json" assert { type: "json" };
-import { openIssuesPage } from "./issues.js";
-import { GetLocalization } from './localize.js';
-import { retrieveTheme } from "./personalize";
+import {openIssuesPage} from './issues.js';
+import {getLocalization} from './localize.js';
+import {retrieveTheme} from './personalize';
 
 let stepCounter = 0;
 
-/** Update contents of solution guide 
- * 
+/** Update contents of solution guide
+ *
  * @param {[string]} solution List of textual solution steps
  * @param {[image]} screenshots List of images of solution steps
  * @param {int} stepCounter Counter specifying the current step
 
- */ 
+ */
 export function updateSolutionStep(solution, screenshots, stepCounter) {
-  const solutionStep = document.getElementById("solution-text");
+  const solutionStep = document.getElementById('solution-text');
   solutionStep.innerHTML = solution[stepCounter];
-  document.getElementById("step-screenshot").src = screenshots[stepCounter];
+  document.getElementById('step-screenshot').src = screenshots[stepCounter];
 }
 
-/** Go to next step of solution guide 
- * 
+/** Go to next step of solution guide
+ *
  * @param {[string]} solution List of textual solution steps
  * @param {[image]} screenshots List of images of solution steps
- */ 
+ */
 export function nextSolutionStep(solution, screenshots) {
   if (stepCounter < solution.length - 1) {
     stepCounter++;
@@ -30,11 +29,11 @@ export function nextSolutionStep(solution, screenshots) {
   }
 }
 
-/** Go to previous step of solution guide 
- * 
+/** Go to previous step of solution guide
+ *
  * @param {[string]} solution List of textual solution steps
  * @param {[image]} screenshots List of images of solution steps
- */ 
+ */
 export function previousSolutionStep(solution, screenshots) {
   if (stepCounter > 0) {
     stepCounter--;
@@ -42,14 +41,14 @@ export function previousSolutionStep(solution, screenshots) {
   }
 }
 
-/** Load the content of the issue page 
- * 
+/** Load the content of the issue page
+ *
  * @param {string} issueId Id of the issue to open
- */ 
+ */
 export function openIssuePage(issueId) {
   stepCounter = 0;
   const currentIssue = data.find((element) => element.Name === issueId);
-  const pageContents = document.getElementById("page-contents");
+  const pageContents = document.getElementById('page-contents');
   pageContents.innerHTML = `
     <h1 class="issue-name">${currentIssue.Name}</h1>
     <div class="issue-information">
@@ -68,22 +67,24 @@ export function openIssuePage(issueId) {
       </div>
     </div>
     <div id="back-button">Back to issues overview</div>
-  `;  
+  `;
 
-    let texts = ["information", "solution", "previous-button", "next-button", "back-button"]
-    let localizationIds = ["Issues.Information", "Issues.Solution", "Issues.Previous", "Issues.Next", "Issues.Back"]
-    for (let i = 0; i < texts.length; i++) {
-        GetLocalization(localizationIds[i], texts[i])
-    }
+  const texts = ['information', 'solution', 'previous-button', 'next-button', 'back-button'];
+  const localizationIds = ['Issues.Information', 'Issues.Solution', 'Issues.Previous', 'Issues.Next', 'Issues.Back'];
+  for (let i = 0; i < texts.length; i++) {
+    getLocalization(localizationIds[i], texts[i]);
+  }
 
-    try {
-        document.getElementById("step-screenshot").src = currentIssue.Screenshots[stepCounter];
-    } catch (error) { }
+  try {
+    document.getElementById('step-screenshot').src = currentIssue.Screenshots[stepCounter];
+  } catch (error) { }
 
   // Add functions to page for navigation
-  document.getElementById("next-button").addEventListener("click", () => nextSolutionStep(currentIssue.Solution, currentIssue.Screenshots));
-  document.getElementById("previous-button").addEventListener("click", () => previousSolutionStep(currentIssue.Solution, currentIssue.Screenshots));
-  document.getElementById("back-button").addEventListener("click", () => openIssuesPage());
+  document.getElementById('next-button').addEventListener('click', () =>
+    nextSolutionStep(currentIssue.Solution, currentIssue.Screenshots));
+  document.getElementById('previous-button').addEventListener('click', () =>
+    previousSolutionStep(currentIssue.Solution, currentIssue.Screenshots));
+  document.getElementById('back-button').addEventListener('click', () => openIssuesPage());
 
   document.onload = retrieveTheme();
 }

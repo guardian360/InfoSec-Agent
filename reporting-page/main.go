@@ -7,6 +7,7 @@ package main
 
 import (
 	"embed"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/localization"
 	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/options"
@@ -59,6 +60,6 @@ func main() {
 	})
 
 	if err != nil {
-		//log.Println("Error:", err.Error())
+		// log.Println("Error:", err.Error())
 	}
 }

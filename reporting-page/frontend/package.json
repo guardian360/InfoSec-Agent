@@ -38,7 +38,9 @@
     ],
     "rules": {
       "linebreak-style":"off",
-      "indent": ["error", 2]
+      "indent": ["error", 2],
+      "max-len": ["error", {"code": 120}],
+      "new-cap": ["error",{"capIsNewExceptions": ["WindowShow", "WindowMaximise", "LogPrint"]}]
     }
   },
   "stylelint": {
@@ -47,6 +49,10 @@
       "node_modules/**",
       "dist/**",
       "wailsjs/**"
-    ]
+    ],
+    "rules": {
+      "function-url-quotes": "never",
+      "no-descending-specificity": null
+    }
   }
 }

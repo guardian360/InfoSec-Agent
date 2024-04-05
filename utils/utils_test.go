@@ -1,6 +1,7 @@
 package utils_test
 
 import (
+	"github.com/InfoSec-Agent/InfoSec-Agent/filemock"
 	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"os"
@@ -122,4 +123,39 @@ func TestRemoveDuplicateStrEmptyInput(t *testing.T) {
 	var expected []string
 	result := utils.RemoveDuplicateStr(input)
 	require.Equal(t, expected, result)
+}
+
+// TestCloseFileNoError ensures the CloseFile function works as intended
+//
+// Parameters: t *testing.T - The testing framework
+//
+// Returns: _
+func TestCloseFileNoError(t *testing.T) {
+	file := &filemock.FileMock{Open: true, Err: nil}
+	err := utils.CloseFile(file)
+	require.NoError(t, err)
+}
+
+// TestCloseFileWhenFileWasAlreadyClosed ensures the CloseFile function works as intended when the file was already closed
+//
+// Parameters: t *testing.T - The testing framework
+//
+// Returns: _
+func TestCloseFileWhenFileWasAlreadyClosed(t *testing.T) {
+	file := &filemock.FileMock{Open: true, Err: nil}
+	err := file.Close()
+	require.NoError(t, err)
+	err = utils.CloseFile(file)
+	require.Error(t, err)
+}
+
+// TestCloseFileWhenFileIsNil ensures the CloseFile function works as intended when the file is nil
+//
+// Parameters: t *testing.T - The testing framework
+//
+// Returns: _
+func TestCloseFileWhenFileIsNil(t *testing.T) {
+	var file *filemock.FileMock
+	err := utils.CloseFile(file)
+	require.Error(t, err)
 }

@@ -26,6 +26,6 @@ func NewDataBase() *DataBase {
 //
 // Returns: list of severity levels for each issue checked
 func (d *DataBase) GetAllSeverities(checks []checks.Check, resultIDs []int) ([]scan.Severity, error) {
-	//return scan.GetAllSeverities(checks, resultIDs)
+	// return scan.GetAllSeverities(checks, resultIDs)
 	return nil, nil
 }

@@ -14,6 +14,8 @@ import (
 	"strings"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/filemock"
 )
 
 // CopyFile copies a file from the source to the destination
@@ -178,12 +180,14 @@ func RemoveDuplicateStr(strSlice []string) []string {
 
 // CloseFile closes a file and handles associated errors
 //
-// Parameters: file *os.File - the file to close
+// Parameters: file *filemock.File - the file to close
 //
 // Returns: _
-func CloseFile(file *os.File) {
+func CloseFile(file filemock.File) error {
 	err := file.Close()
 	if err != nil {
 		logger.Log.Printf("error closing file: %s", err)
+		return err
 	}
+	return nil
 }

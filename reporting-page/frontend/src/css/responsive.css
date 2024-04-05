@@ -1,55 +1,66 @@
 /* RESPONSIVE SIZING */
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (width <= 1000px) {
     .dashboard-data {
       display: block;
     }
+
     .home-data {
       display: block;
     }
+
     .home-column-one {
       display: block;
     }
+
     .data-column {
       width: 100%;
     }
+
     .data-segment {
       width: 100%;
     }
 }
 
-@media only screen and (max-width: 799px) {
+@media only screen and (width <= 799px) {
     #page-contents {
-      margin-left: 0px;
+      margin-left: 0;
     }
+
     .left-nav {
         visibility: hidden;
     }
+
     .header-hamburger {
         visibility: visible;
         width: auto;
         font-size: 1.4em;
     }
+
     .header-hamburger.container {
         width: 60px;
         margin-left: 10px;
     }
 }
-@media only screen and (min-width: 800px) {
+
+@media only screen and (width >= 800px) {
     #page-contents {
       margin-left: 240px;
     }
+
     .left-nav {
         visibility: visible;
     }
+
     .header-hamburger {
         visibility: hidden;
-        width: 0px;
-        height: 0px;
-        font-size: 0px;
+        width: 0;
+        height: 0;
+        font-size: 0;
     }
+
     .header-hamburger.container {
-        width: 0px;
-        margin-left: 0px;
+        width: 0;
+        margin-left: 0;
     }
 }
