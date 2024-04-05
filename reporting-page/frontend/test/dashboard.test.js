@@ -130,14 +130,14 @@ const dom = new JSDOM(`
 
 // test cases
 describe("Security dashboard", function() {
-    it("adjustWithRiskCounters should show data from risk counters", function() {
-      const mockRiskCounters = {  
-        lastHighRisk : 2,
-        lastMediumRisk : 3,
-        lastLowRisk : 4,
-        lastnoRisk : 5,
-        count: 5,
-      };
+  it("adjustWithRiskCounters should show data from risk counters", function() {
+    const mockRiskCounters = {  
+      lastHighRisk : 2,
+      lastMediumRisk : 3,
+      lastLowRisk : 4,
+      lastnoRisk : 5,
+      count: 5,
+    };
 
     // act
     adjustWithRiskCounters(mockRiskCounters);
@@ -175,47 +175,46 @@ describe("Security dashboard", function() {
       test.value(dom.window.document.getElementById("low-risk-counter").innerHTML).isEqualTo(mockRiskCounters.lastLowRisk);
       test.value(dom.window.document.getElementById("no-risk-counter").innerHTML).isEqualTo(mockRiskCounters.lastnoRisk);
 
-    })
-    it("adjustWithRiskCounters should display the right security status", function() {
-      // arrange
-      const expectedColors = ["rgb(255, 255, 255)","rgb(255, 255, 255)","rgb(0, 0, 0)","rgb(0, 0, 0)"]
-      const expectedBackgroundColors = ["rgb(0, 255, 255)","rgb(0, 0, 255)","rgb(255, 0, 0)","rgb(255, 255, 0)"]
-      const expectedText = ["Critical","Medium concern","Light concern","Safe"]
+    });
+  });
+  it("adjustWithRiskCounters should display the right security status", function() {
+    // arrange
+    const expectedColors = ["rgb(255, 255, 255)","rgb(255, 255, 255)","rgb(0, 0, 0)","rgb(0, 0, 0)"]
+    const expectedBackgroundColors = ["rgb(0, 255, 255)","rgb(0, 0, 255)","rgb(255, 0, 0)","rgb(255, 255, 0)"]
+    const expectedText = ["Critical","Medium concern","Light concern","Safe"]
+    const mockRiskCounters = {
+      highRiskColor : "rgb(0, 255, 255)",
+      mediumRiskColor : "rgb(0, 0, 255)",
+      lowRiskColor : "rgb(255, 0, 0)",
+      noRiskColor : "rgb(255, 255, 0)",
 
-      const mockRiskCounters = {
-        highRiskColor : "rgb(0, 255, 255)",
-        mediumRiskColor : "rgb(0, 0, 255)",
-        lowRiskColor : "rgb(255, 0, 0)",
-        noRiskColor : "rgb(255, 255, 0)",
-  
-        lastHighRisk : 10,
-        lastMediumRisk : 10,
-        lastLowRisk : 10,
-        lastnoRisk : 10,
-      };
-      expectedColors.forEach((element,index) => {
-        // act
-        if (index == 1) mockRiskCounters.lastHighRisk = 0;
-        if (index == 2) mockRiskCounters.lastMediumRisk = 0;
-        if (index == 3) mockRiskCounters.lastLowRisk = 0;
-        AdjustWithRiskCounters(mockRiskCounters, dom.window.document);
-
-        // assert
-        test.value(dom.window.document.getElementsByClassName("status-descriptor")[0].innerHTML).isEqualTo(expectedText[index]);
-        test.value(dom.window.document.getElementsByClassName("status-descriptor")[0].style.backgroundColor).isEqualTo(expectedBackgroundColors[index]);
-        test.value(dom.window.document.getElementsByClassName("status-descriptor")[0].style.color).isEqualTo(expectedColors[index]);
-      });
-    })
-    it("setMaxInterval should set the max value of the graph interval to the maximum amount of data", function() {
-      // arrange
-      const mockRiskCounters = {  
-        count : 5,
-      };
-
+      lastHighRisk : 10,
+      lastMediumRisk : 10,
+      lastLowRisk : 10,
+      lastnoRisk : 10,
+    };
+    expectedColors.forEach((element,index) => {
       // act
-      SetMaxInterval(mockRiskCounters, dom.window.document);
-
+      if (index == 1) mockRiskCounters.lastHighRisk = 0;
+      if (index == 2) mockRiskCounters.lastMediumRisk = 0;
+      if (index == 3) mockRiskCounters.lastLowRisk = 0;
+      AdjustWithRiskCounters(mockRiskCounters, dom.window.document);
       // assert
-      test.value(dom.window.document.getElementById("graph-interval").max).isEqualTo(mockRiskCounters.count);
-    })
-})
+      test.value(dom.window.document.getElementsByClassName("status-descriptor")[0].innerHTML).isEqualTo(expectedText[index]);
+      test.value(dom.window.document.getElementsByClassName("status-descriptor")[0].style.backgroundColor).isEqualTo(expectedBackgroundColors[index]);
+      test.value(dom.window.document.getElementsByClassName("status-descriptor")[0].style.color).isEqualTo(expectedColors[index]);
+    });
+  });
+  it("setMaxInterval should set the max value of the graph interval to the maximum amount of data", function() {
+    // arrange
+    const mockRiskCounters = {  
+      count : 5,
+    };
+
+    // act
+    SetMaxInterval(mockRiskCounters, dom.window.document);
+
+    // assert
+    test.value(dom.window.document.getElementById("graph-interval").max).isEqualTo(mockRiskCounters.count);
+  });
+});
