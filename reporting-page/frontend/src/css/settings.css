@@ -2,7 +2,7 @@
 
 /* Setting box */
 .setting {
-    padding: 20px 20px;
+    padding: 20px;
     display: block;
     color: var(--text-body);
 }
@@ -16,6 +16,7 @@
     float: right;
     width: 100px;
 }
+
 hr.solid {
     border-top: 1px solid #ddd;
     float: center;
@@ -25,9 +26,10 @@ hr.solid {
 /* The switch - the box around the slider */
 .switch {
   position: relative;
+
   /* display: inline-block; */
-  width: 40px; /*60*/
-  height: 22px; /*34*/
+  width: 40px; /* 60 */
+  height: 22px; /* 34 */
   float: right;
   margin-left: auto;
   margin-right: 10px;
@@ -38,52 +40,4 @@ hr.solid {
   opacity: 0;
   width: 0;
   height: 0;
-}
-
-/* The slider */
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 17px; /*26*/
-  width: 17px;
-  left: 2.5px; /*4*/
-  bottom: 2.5px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-input:checked + .slider {
-  background-color: var(--background-color-left-nav);
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px var(--background-color-left-nav);
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(17px);
-  -ms-transform: translateX(17px);
-  transform: translateX(17px);
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 22px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
 }

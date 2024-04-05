@@ -4,8 +4,7 @@
   color: var(--text-body);
   width: flex;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
 }
 
 /* Issue table */
@@ -31,19 +30,24 @@
 .issue-column span {
   float: left;
 }
+
 .table-header {
   margin-top: 2px;
 }
+
 .issues-table .material-symbols-outlined {
   float: right;
 }
+
 .issues-table .material-symbols-outlined:hover {
   cursor: pointer;
 }
+
 .issue-link {
   text-decoration: none;
   color: var(--text-body);
 }
+
 .issue-link:hover {
   color: var(--text-settings-hover);
   cursor: pointer;
@@ -67,12 +71,10 @@ h1 {
 
 #back-button {
   float: left;
-  margin-left: 260px;
-  margin-right: 20px;
-  margin-top: 20px;
-  margin-bottom: 50px;
+  margin: 20px 20px 50px 260px;
   color: var(--text-body);
 }
+
 #back-button:hover {
   color: var(--text-settings-hover);
   cursor:pointer;
@@ -84,34 +86,41 @@ h1 {
   width: 100%;
   border-radius: 10px;
 }
+
 .solution-text {
   margin: 20px;
 }
+
 #step-screenshot {
   /* display: block; */
   margin-left: auto;
   margin-right: auto;
 }
+
 .solution-buttons {
   display: flex;
+  margin: 10px;
   margin-left: auto;
   margin-right: auto;
   width:100%;
-  margin: 10px;
 }
+
 .button-box {
   display:block;
   margin-left: auto;
   margin-right: auto;
   width: 320px;
 }
+
 .step-button {
   color: var(--text-body);
 }
+
 .step-button:hover {
   color: var(--text-settings-hover);
   cursor:pointer;
 }
+
 #next-button {
   float: right;
   width: 130px;
@@ -122,6 +131,7 @@ h1 {
   text-align: center;
   border-radius: 10px;
 }
+
 #previous-button {
   float: left;
   width: 130px;
