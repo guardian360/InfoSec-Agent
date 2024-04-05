@@ -17,15 +17,15 @@ func SmbCheck(smb1executor commandmock.CommandExecutor, smb2executor commandmock
 	smb1, err := SmbEnabled("SMB1", smb1executor, resultInt)
 
 	if err != nil {
-		return NewCheckError(12, err)
+		return NewCheckError(SmbID, err)
 	}
 	smb2, err := SmbEnabled("SMB2", smb2executor, resultInt)
 
 	if err != nil {
-		return NewCheckError(12, err)
+		return NewCheckError(SmbID, err)
 	}
 
-	return NewCheckResult(12, resultInt, smb1, smb2)
+	return NewCheckResult(SmbID, resultInt, smb1, smb2)
 }
 
 // SmbEnabled checks whether the specified SMB protocol is enabled
@@ -46,7 +46,7 @@ func SmbEnabled(smb string, executor commandmock.CommandExecutor, resultID int) 
 	line := strings.TrimSpace(outputString[3])
 	if line == "True" {
 		if smb == "SMB1" {
-			resultID += 1
+			resultID++
 		}
 		if smb == "SMB2" {
 			resultID += 2

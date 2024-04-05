@@ -24,7 +24,7 @@ func HistoryFirefox() checks.Check {
 	var output []string
 	ffdirectory, err := utils.FirefoxFolder()
 	if err != nil {
-		return checks.NewCheckErrorf(30, "No firefox directory found", err)
+		return checks.NewCheckErrorf(checks.HistoryFirefoxID, "No firefox directory found", err)
 	}
 
 	// Copy the database, so we don't have problems with locked files
@@ -40,29 +40,29 @@ func HistoryFirefox() checks.Check {
 	// Copy the database to a temporary location
 	copyError := utils.CopyFile(ffdirectory[0]+"\\places.sqlite", tempHistoryDbff)
 	if copyError != nil {
-		return checks.NewCheckError(30, copyError)
+		return checks.NewCheckError(checks.HistoryFirefoxID, copyError)
 	}
 
 	db, err := sql.Open("sqlite", tempHistoryDbff)
 	if err != nil {
-		return checks.NewCheckError(30, err)
+		return checks.NewCheckError(checks.HistoryFirefoxID, err)
 	}
 	defer closeDatabase(db)
 
 	rows, err := queryDatabase(db)
 	if err != nil {
-		return checks.NewCheckError(30, err)
+		return checks.NewCheckError(checks.HistoryFirefoxID, err)
 	}
 	defer closeRows(rows)
 
 	output, err = processQueryResults(rows)
 	if err != nil {
-		return checks.NewCheckError(30, err)
+		return checks.NewCheckError(checks.HistoryFirefoxID, err)
 	}
 	if output == nil {
-		return checks.NewCheckResult(30, 0, "No phising domains found in the last week")
+		return checks.NewCheckResult(checks.HistoryFirefoxID, 0, "No phising domains found in the last week")
 	}
-	return checks.NewCheckResult(30, 1, output...)
+	return checks.NewCheckResult(checks.HistoryFirefoxID, 1, output...)
 }
 
 // closeDatabase is a helper function used by the HistoryFirefox function.

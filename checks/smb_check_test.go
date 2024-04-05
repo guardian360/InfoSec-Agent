@@ -22,37 +22,37 @@ func TestSmbCheck(t *testing.T) {
 			name:      "SMB1 and SMB2 enabled",
 			executor1: &commandmock.MockCommandExecutor{Output: "\r\n\r\n\r\nTrue", Err: nil},
 			executor2: &commandmock.MockCommandExecutor{Output: "\r\n\r\n\r\nTrue", Err: nil},
-			want:      checks.NewCheckResult(12, 3, "SMB1: enabled", "SMB2: enabled"),
+			want:      checks.NewCheckResult(checks.SmbID, 3, "SMB1: enabled", "SMB2: enabled"),
 		},
 		{
 			name:      "SMB1 enabled and SMB2 not enabled",
 			executor1: &commandmock.MockCommandExecutor{Output: "\r\n\r\n\r\nTrue", Err: nil},
 			executor2: &commandmock.MockCommandExecutor{Output: "\r\n\r\n\r\nFalse", Err: nil},
-			want:      checks.NewCheckResult(12, 1, "SMB1: enabled", "SMB2: not enabled"),
+			want:      checks.NewCheckResult(checks.SmbID, 1, "SMB1: enabled", "SMB2: not enabled"),
 		},
 		{
 			name:      "SMB1 not enabled and SMB2 enabled",
 			executor1: &commandmock.MockCommandExecutor{Output: "\r\n\r\n\r\nFalse", Err: nil},
 			executor2: &commandmock.MockCommandExecutor{Output: "\r\n\r\n\r\nTrue", Err: nil},
-			want:      checks.NewCheckResult(12, 2, "SMB1: not enabled", "SMB2: enabled"),
+			want:      checks.NewCheckResult(checks.SmbID, 2, "SMB1: not enabled", "SMB2: enabled"),
 		},
 		{
 			name:      "SMB1 and SMB2 not enabled",
 			executor1: &commandmock.MockCommandExecutor{Output: "\r\n\r\n\r\nFalse", Err: nil},
 			executor2: &commandmock.MockCommandExecutor{Output: "\r\n\r\n\r\nFalse", Err: nil},
-			want:      checks.NewCheckResult(12, 0, "SMB1: not enabled", "SMB2: not enabled"),
+			want:      checks.NewCheckResult(checks.SmbID, 0, "SMB1: not enabled", "SMB2: not enabled"),
 		},
 		{
 			name:      "command smb1 error",
 			executor1: &commandmock.MockCommandExecutor{Output: "", Err: errors.New("command smb1 error")},
 			executor2: &commandmock.MockCommandExecutor{Output: "\r\n\r\n\r\nFalse", Err: nil},
-			want:      checks.NewCheckError(12, errors.New("command smb1 error")),
+			want:      checks.NewCheckError(checks.SmbID, errors.New("command smb1 error")),
 		},
 		{
 			name:      "command smb2 error",
 			executor1: &commandmock.MockCommandExecutor{Output: "\r\n\r\n\r\nFalse", Err: nil},
 			executor2: &commandmock.MockCommandExecutor{Output: "", Err: errors.New("command smb2 error")},
-			want:      checks.NewCheckError(12, errors.New("command smb2 error")),
+			want:      checks.NewCheckError(checks.SmbID, errors.New("command smb2 error")),
 		},
 	}
 	for _, tt := range tests {
@@ -109,7 +109,7 @@ func TestSmbEnabled(t *testing.T) {
 			} else {
 				smbVersion = "SMB2"
 			}
-			got, err := checks.SmbEnabled(smbVersion, tt.executor)
+			got, err := checks.SmbEnabled(smbVersion, tt.executor, 0)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("SmbEnabled() error = %v, wantErr %v", err, tt.wantErr)
 				return

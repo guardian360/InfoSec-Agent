@@ -24,11 +24,11 @@ func SearchEngineChromium(browser string) checks.Check {
 	// Currently, supports checking of Google Chrome and Microsoft Edge
 	if browser == chrome {
 		browserPath = chromePath
-		returnID = 24
+		returnID = checks.SearchChromiumID
 	}
 	if browser == edge {
 		browserPath = edgePath
-		returnID = 25
+		returnID = checks.SearchEdgeID
 	}
 	// Holds the return value and sets the default value to chrome in case you never changed your search engine
 	defaultSE := "google.com"

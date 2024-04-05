@@ -15,7 +15,7 @@ func LoginMethod(registryKey registrymock.RegistryKey) Check {
 	key, err := registrymock.OpenRegistryKey(registryKey,
 		`SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\UserTile`)
 	if err != nil {
-		return NewCheckErrorf(16, "error opening registry key", err)
+		return NewCheckErrorf(LoginMethodID, "error opening registry key", err)
 	}
 	// Close the key after we have received all relevant information
 	defer registrymock.CloseRegistryKey(key)
@@ -23,16 +23,16 @@ func LoginMethod(registryKey registrymock.RegistryKey) Check {
 	// Read the info of the key
 	keyInfo, err := key.Stat()
 	if err != nil {
-		return NewCheckErrorf(16, "error getting key info", err)
+		return NewCheckErrorf(LoginMethodID, "error getting key info", err)
 	}
 
 	// Read the value names, which correspond to different log-in methods
 	names, err := key.ReadValueNames(int(keyInfo.ValueCount))
 	if err != nil {
-		return NewCheckErrorf(16, "error reading value names", err)
+		return NewCheckErrorf(LoginMethodID, "error reading value names", err)
 	}
 
-	result := NewCheckResult(16, resultID, "")
+	result := NewCheckResult(LoginMethodID, resultID, "")
 
 	// Each log-in method corresponds to a unique GUID
 	// Check whether the GUID is present in the registry key, and if it is, that log-in method is enabled
@@ -57,7 +57,7 @@ func LoginMethod(registryKey registrymock.RegistryKey) Check {
 				resultID |= 1 << 5
 				result.Result = append(result.Result, "Trust signal")
 			default:
-				return NewCheckErrorf(16, "error reading value", err)
+				return NewCheckErrorf(LoginMethodID, "error reading value", err)
 		}
 	}
 

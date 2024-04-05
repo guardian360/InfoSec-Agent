@@ -41,19 +41,19 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 			return checks.LoginMethod(registrymock.LocalMachine)
 		},
 		func() checks.Check {
-			return checks.Permission(5, "location", registrymock.CurrentUser)
+			return checks.Permission(checks.LocationID, "location", registrymock.CurrentUser)
 		},
 		func() checks.Check {
-			return checks.Permission(6, "microphone", registrymock.CurrentUser)
+			return checks.Permission(checks.MicrophoneID, "microphone", registrymock.CurrentUser)
 		},
 		func() checks.Check {
-			return checks.Permission(7, "webcam", registrymock.CurrentUser)
+			return checks.Permission(checks.WebcamID, "webcam", registrymock.CurrentUser)
 		},
 		func() checks.Check {
-			return checks.Permission(8, "appointments", registrymock.CurrentUser)
+			return checks.Permission(checks.AppointmentsID, "appointments", registrymock.CurrentUser)
 		},
 		func() checks.Check {
-			return checks.Permission(9, "contacts", registrymock.CurrentUser)
+			return checks.Permission(checks.ContactsID, "contacts", registrymock.CurrentUser)
 		},
 		func() checks.Check {
 			return checks.Bluetooth(registrymock.NewRegistryKeyWrapper(registry.LOCAL_MACHINE))

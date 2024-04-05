@@ -44,11 +44,11 @@ func ExtensionsChromium(browser string) checks.Check {
 	// Currently, supports checking of Google Chrome and Microsoft Edge
 	if browser == chrome {
 		browserPath = chromePath
-		returnID = 20
+		returnID = checks.ExtensionChromiumID
 	}
 	if browser == edge {
 		browserPath = edgePath
-		returnID = 21
+		returnID = checks.ExtensionEdgeID
 	}
 	var extensionIDs []string
 	var extensionNames []string

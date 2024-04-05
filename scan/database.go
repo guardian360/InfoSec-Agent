@@ -12,7 +12,7 @@ import (
 )
 
 type Severity struct {
-	CheckID string `json:"checkid"`
+	CheckID Int `json:"checkid"`
 	Level   int    `json:"level"`
 }
 
@@ -117,7 +117,7 @@ func FillDataBase(scanResults []checks.Check) {
 func addIssue(db *sql.DB, check checks.Check, issueID int, resultID int, severity int) (int64, error) {
 	result, err := db.Exec(
 		"INSERT INTO issues ([JSON Key], [Issue ID], [Result ID], Severity) VALUES (?, ?, ?, ?)",
-		check.ID+"_"+strconv.Itoa(resultID), issueID, resultID, severity)
+		strconv.Itoa(check.Issue_ID) ,resultID, issueID, resultID, severity)
 	if err != nil {
 		return 0, fmt.Errorf("addIssue: %w", err)
 	}

@@ -40,7 +40,7 @@ func TestPermission(t *testing.T) {
 					},
 				},
 			},
-			want: checks.NewCheckResult(7, 0, "microsoft.webcam"),
+			want: checks.NewCheckResult(checks.WebcamID, 0, "microsoft.webcam"),
 		},
 		{
 			name:       "WebcamPermissionExists",
@@ -54,7 +54,7 @@ func TestPermission(t *testing.T) {
 					},
 				},
 			},
-			want: checks.NewCheckResult(7, 0, "microsoft.webcam"),
+			want: checks.NewCheckResult(checks.WebcamID, 0, "microsoft.webcam"),
 		},
 	}
 
@@ -87,7 +87,7 @@ func TestFormatPermission(t *testing.T) {
 			},
 		},
 	}
-	c := checks.Permission("location", key)
+	c := checks.Permission(checks.LocationID, "location", key)
 	assert.NotContains(t, c.Result, "#")
 	assert.Contains(t, c.Result, "test.exe")
 }
@@ -113,7 +113,7 @@ func TestNonExistingPermission(t *testing.T) {
 			},
 		},
 	}
-	c := checks.Permission("hello", key)
+	c := checks.Permission(99, "hello", key)
 	assert.Equal(t, c.Result, []string(nil))
 	assert.EqualError(t, c.Error, "error opening registry key: error opening registry key: key not found")
 }

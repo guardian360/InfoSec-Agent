@@ -22,7 +22,7 @@ func WindowsOutdated(mockOS windowsmock.WindowsVersion) Check {
 	var resultID int
 	versionData := mockOS.RtlGetVersion()
 	// Prepare the result
-	result := NewCheckResult(17, resultID, fmt.Sprintf("%d.%d.%d",
+	result := NewCheckResult(WindowsOutdatedID, resultID, fmt.Sprintf("%d.%d.%d",
 		versionData.MajorVersion, versionData.MinorVersion, versionData.BuildNumber))
 
 	// Depending on the major Windows version (10 or 11), act accordingly

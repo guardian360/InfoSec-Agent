@@ -32,11 +32,11 @@ func HistoryChromium(browser string) checks.Check {
 
 	if browser == chrome {
 		browserPath = chromePath
-		returnID = 22
+		returnID = checks.HistoryChromiumID
 	}
 	if browser == edge {
 		browserPath = edgePath
-		returnID = 23
+		returnID = checks.HistoryEdgeID
 	}
 	// Get the current user's home directory, where the history can be found
 	user, err := os.UserHomeDir()

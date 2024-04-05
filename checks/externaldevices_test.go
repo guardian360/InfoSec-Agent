@@ -26,18 +26,18 @@ func TestExternalDevices(t *testing.T) {
 		{
 			name:          "No external devices connected",
 			executorClass: &commandmock.MockCommandExecutor{Output: "\r\nFriendlyName\r\n-\r\n\r\n\r\n\r\n", Err: nil},
-			want:          checks.NewCheckResult(1, 0, "", ""),
+			want:          checks.NewCheckResult(checks.ExternalDevicesID, 0, "", ""),
 		},
 		{
 			name: "External devices connected",
 			executorClass: &commandmock.MockCommandExecutor{
 				Output: "\r\nFriendlyName\r\n-\r\nHD WebCam\r\n\r\n\r\n\r\n", Err: nil},
-			want: checks.NewCheckResult(1, 0, "HD WebCam", "", "HD WebCam", ""),
+			want: checks.NewCheckResult(checks.ExternalDevicesID, 0, "HD WebCam", "", "HD WebCam", ""),
 		},
 		{
 			name:          "Error checking device",
 			executorClass: &commandmock.MockCommandExecutor{Output: "", Err: errors.New("error checking device")},
-			want: checks.NewCheckErrorf(1, "error checking device Mouse",
+			want: checks.NewCheckErrorf(checks.ExternalDevicesID, "error checking device Mouse",
 				errors.New("error checking device")),
 		},
 	}

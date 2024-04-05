@@ -29,7 +29,7 @@ func TestStartup(t *testing.T) {
 			KeyName: "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\StartupApproved\\Run"}}},
 		key3: &registrymock.MockRegistryKey{SubKeys: []registrymock.MockRegistryKey{{
 			KeyName: "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\StartupApproved\\Run32"}}},
-		want: checks.NewCheckResult(19, 0, "No startup programs found"),
+		want: checks.NewCheckResult(checks.StartupID, 0, "No startup programs found"),
 	}, {
 		name: "Startup programs found",
 		key1: &registrymock.MockRegistryKey{SubKeys: []registrymock.MockRegistryKey{{
@@ -41,7 +41,7 @@ func TestStartup(t *testing.T) {
 		key3: &registrymock.MockRegistryKey{SubKeys: []registrymock.MockRegistryKey{{
 			KeyName:      "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\StartupApproved\\Run32",
 			BinaryValues: map[string][]byte{"MockProgram3": []byte{0, 0, 0, 0, 0, 1, 0}}, Err: nil}}},
-		want: checks.NewCheckResult(19, 1, "MockProgram"),
+		want: checks.NewCheckResult(checks.StartupID, 1, "MockProgram"),
 	}} /*,{
 		name: "Error finding startup programs",
 		key1:

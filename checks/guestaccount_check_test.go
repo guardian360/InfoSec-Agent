@@ -2,8 +2,9 @@ package checks_test
 
 import (
 	"errors"
-	"github.com/stretchr/testify/require"
 	"testing"
+
+	"github.com/stretchr/testify/require"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
@@ -25,7 +26,7 @@ func TestGuestAccount(t *testing.T) {
 			executorLocalGroupMembers: &commandmock.MockCommandExecutor{Output: "", Err: nil},
 			executorYesWord:           &commandmock.MockCommandExecutor{Output: "", Err: nil},
 			executorNetUser:           &commandmock.MockCommandExecutor{Output: "", Err: nil},
-			want: checks.NewCheckErrorf(2,
+			want: checks.NewCheckErrorf(checks.GuestAccountID,
 				"error executing command Get-WmiObject", errors.New("Get-WmiObject error")),
 		},
 		{
@@ -34,7 +35,7 @@ func TestGuestAccount(t *testing.T) {
 			executorLocalGroupMembers: &commandmock.MockCommandExecutor{Output: "", Err: nil},
 			executorYesWord:           &commandmock.MockCommandExecutor{Output: "", Err: nil},
 			executorNetUser:           &commandmock.MockCommandExecutor{Output: "", Err: nil},
-			want:                      checks.NewCheckResult(2, 0, "Guest localgroup not found"),
+			want:                      checks.NewCheckResult(checks.GuestAccountID, 0, "Guest localgroup not found"),
 		},
 		{
 			name:               "netLocalGroupError",
@@ -43,7 +44,7 @@ func TestGuestAccount(t *testing.T) {
 				Err: errors.New("net localgroup error")},
 			executorYesWord: &commandmock.MockCommandExecutor{Output: "", Err: nil},
 			executorNetUser: &commandmock.MockCommandExecutor{Output: "", Err: nil},
-			want: checks.NewCheckErrorf(2,
+			want: checks.NewCheckErrorf(checks.GuestAccountID,
 				"error executing command net localgroup", errors.New("net localgroup error")),
 		},
 		{
@@ -53,7 +54,7 @@ func TestGuestAccount(t *testing.T) {
 				Err: nil},
 			executorYesWord: &commandmock.MockCommandExecutor{Output: "", Err: nil},
 			executorNetUser: &commandmock.MockCommandExecutor{Output: "", Err: nil},
-			want:            checks.NewCheckResult(2, 0, "Guest account not found"),
+			want:            checks.NewCheckResult(checks.GuestAccountID, 0, "Guest account not found"),
 		},
 		{
 			name:                      "YesWordError",
@@ -62,7 +63,7 @@ func TestGuestAccount(t *testing.T) {
 			executorYesWord: &commandmock.MockCommandExecutor{Output: "",
 				Err: errors.New("net user yesWord error")},
 			executorNetUser: &commandmock.MockCommandExecutor{Output: "", Err: nil},
-			want: checks.NewCheckErrorf(2,
+			want: checks.NewCheckErrorf(cehcks.GuestAccountID,
 				"error executing command net user", errors.New("net user yesWord error")),
 		},
 		{
@@ -72,7 +73,7 @@ func TestGuestAccount(t *testing.T) {
 			executorYesWord:           &commandmock.MockCommandExecutor{Output: "\r\n\r\n\r\n\r\n\r\nno yes", Err: nil},
 			executorNetUser: &commandmock.MockCommandExecutor{Output: "",
 				Err: errors.New("net user error")},
-			want: checks.NewCheckErrorf(2,
+			want: checks.NewCheckErrorf(checks.GuestAccountID,
 				"error executing command net user", errors.New("net user error")),
 		},
 		{
@@ -81,7 +82,7 @@ func TestGuestAccount(t *testing.T) {
 			executorLocalGroupMembers: &commandmock.MockCommandExecutor{Output: "-----\r\nguest", Err: nil},
 			executorYesWord:           &commandmock.MockCommandExecutor{Output: "\r\n\r\n\r\n\r\n\r\nno yes", Err: nil},
 			executorNetUser:           &commandmock.MockCommandExecutor{Output: "\r\n\r\n\r\n\r\n\r\nyes", Err: nil},
-			want:                      checks.NewCheckResult(2, 1, "Guest account is active"),
+			want:                      checks.NewCheckResult(checks.GuestAccountID, 1, "Guest account is active"),
 		},
 		{
 			name:                      "guestAccountFoundAndInactive",
@@ -89,7 +90,7 @@ func TestGuestAccount(t *testing.T) {
 			executorLocalGroupMembers: &commandmock.MockCommandExecutor{Output: "-----\r\nguest", Err: nil},
 			executorYesWord:           &commandmock.MockCommandExecutor{Output: "\r\n\r\n\r\n\r\n\r\nno yes", Err: nil},
 			executorNetUser:           &commandmock.MockCommandExecutor{Output: "\r\n\r\n\r\n\r\n\r\nno", Err: nil},
-			want:                      checks.NewCheckResult(2, 2, "Guest account is not active"),
+			want:                      checks.NewCheckResult(checks.GuestAccountID, 2, "Guest account is not active"),
 		},
 	}
 	for _, tt := range tests {
