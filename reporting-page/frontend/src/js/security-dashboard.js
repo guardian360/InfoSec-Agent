@@ -210,31 +210,39 @@ export function AdjustWithRiskCounters(rc, doc) {
   doc.getElementById("no-risk-counter").innerHTML = rc.lastnoRisk; 
 
   let securityStatus = doc.getElementsByClassName("status-descriptor")[0];  
-  try {
     if (rc.lastHighRisk > 1) {
-      GetLocalization("Dashboard.Critical", "status-descriptor");
-      // securityStatus.innerHTML = "Critical";
+      try {
+        GetLocalization("Dashboard.Critical", "status-descriptor");
+      } catch (error) { 
+        securityStatus.innerHTML = "Critical";
+      }
       securityStatus.style.backgroundColor = rc.highRiskColor;
       securityStatus.style.color = "rgb(255, 255, 255)";
     } else if (rc.lastMediumRisk > 1) {
-      GetLocalization("Dashboard.MediumConcern", "status-descriptor");
-      // securityStatus.innerHTML = "Medium concern";
+      try {
+        GetLocalization("Dashboard.MediumConcern", "status-descriptor");
+      } catch (error) {
+        securityStatus.innerHTML = "Medium concern";
+      }
       securityStatus.style.backgroundColor = rc.mediumRiskColor; 
       securityStatus.style.color = "rgb(255, 255, 255)";
     } else if (rc.lastLowRisk > 1) {
-      GetLocalization("Dashboard.LightConcern", "status-descriptor");
-      // securityStatus.innerHTML = "Light concern";
+      try {
+        GetLocalization("Dashboard.LightConcern", "status-descriptor");
+      } catch (error) {
+        securityStatus.innerHTML = "Light concern";
+      }
       securityStatus.style.backgroundColor = rc.lowRiskColor;
       securityStatus.style.color = "rgb(0, 0, 0)";  
     } else {
-      GetLocalization("Dashboard.NoConcern", "status-descriptor");
-      // securityStatus.innerHTML = "Safe";
+      try {
+        GetLocalization("Dashboard.NoConcern", "status-descriptor");
+      } catch (error) {
+        securityStatus.innerHTML = "Safe";
+      }
       securityStatus.style.backgroundColor = rc.noRiskColor;
       securityStatus.style.color = "rgb(0, 0, 0)";  
-    }  
-  } catch (error) {
-    console.log("Error in security-dashboard.js: " + error);
-  }
+    }
 }
 
 /** Set the max number input of the 'graph-interval' element

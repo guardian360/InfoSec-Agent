@@ -16,11 +16,11 @@ global.document = dom.window.document
 global.window = dom.window
 
 // test cases
-describe("piechart", function() {
+describe("Risk level distribution piechart", function() {
   // arrange
   let rc = new RiskCounters(true);
   let p = new PieChart(undefined,rc);
-  it("Should cotain the right data", function() {
+  it("getData should fill the piechart with the correct data", function() {
     // arrange
     const expectedXValues = ["No risk", "Low risk", "Medium risk", "High risk"];
     const expectedYValues = [4,3,2,1];
@@ -47,7 +47,7 @@ describe("piechart", function() {
     test.array(resultData.datasets[0].backgroundColor).is(expectedColors);
     test.array(resultData.datasets[0].data).is(expectedYValues);
   })
-  it("Should contain the right options", function() {
+  it("getOptions should return the correct piechart options", function() {
     // arrange
     const expectedOptions = {
       maintainAspectRatio: false,
