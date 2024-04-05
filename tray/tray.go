@@ -33,21 +33,31 @@ var MenuItems []MenuItem
 var ReportingPageOpen = false
 var mQuit *systray.MenuItem
 
-// TODO: fix this comment once copilot decides to cooperate
-
+// MenuItem represents a single item in the system tray menu.
+//
+// This struct encapsulates the title, tooltip text, and the actual system tray menu item object for a single menu item.
+// The 'MenuTitle' field is a string that represents the title of the menu item. This is the text that is displayed in the system tray menu.
+// The 'menuTooltip' field is a string that represents the tooltip text for the menu item. This is the text that is displayed when the user hovers over the menu item in the system tray menu.
+// The 'sysMenuItem' field is a pointer to a systray.MenuItem object. This is the actual menu item object that is added to the system tray menu.
+//
+// Fields:
+//   - MenuTitle string: The title of the menu item. This is the text that is displayed in the system tray menu.
+//   - menuTooltip string: The tooltip text for the menu item. This is the text that is displayed when the user hovers over the menu item in the system tray menu.
+//   - sysMenuItem *systray.MenuItem: The actual menu item object that is added to the system tray menu.
 type MenuItem struct {
 	MenuTitle   string
 	menuTooltip string
 	sysMenuItem *systray.MenuItem
 }
 
-// TODO: fix this comment once copilot decides to cooperate
-
-// OnReady handles all actions that should be handled during the application run-time
+// OnReady orchestrates the runtime behavior of the system tray application.
 //
-// Parameters: _
+// This function sets up the system tray with various menu items such as 'Reporting Page', 'Change Scan Interval', 'Scan Now', 'Change Language', and 'Quit'. It also initializes a ticker for scheduled security scans and a signal listener for system termination signals.
+// It then enters a loop where it listens for various events such as clicks on the menu items, system termination signals, and the elapse of the scan interval. Depending on the event, it performs actions such as opening the reporting page, changing the scan interval, initiating an immediate scan, changing the application language, refreshing the menu, or quitting the application.
 //
-// Returns: _
+// Parameters: None.
+//
+// Returns: None. The function runs indefinitely, orchestrating the behavior of the system tray application.
 func OnReady() {
 	// Icon data can be found in the "icon" package
 	systray.SetIcon(icon.Data)
@@ -127,23 +137,26 @@ func OnReady() {
 	}
 }
 
-// TODO: fix this comment once copilot decides to cooperate
-
-// OnQuit handles all actions that should happen when the application exits/terminates
+// OnQuit manages the cleanup operations that need to be performed when the application is about to terminate.
 //
-// Parameters: _
+// This function is called when the application is exiting. It is responsible for performing any necessary cleanup operations such as closing open files, terminating active connections, or releasing resources. The specific cleanup operations depend on the resources and services used by the application.
 //
-// Returns: _
+// Parameters: None.
+//
+// Returns: None. The function performs cleanup operations in-place.
 func OnQuit() {
 }
 
-// TODO: fix this comment once copilot decides to cooperate
-
-// OpenReportingPage opens the reporting page using a Wails application
+// OpenReportingPage launches the reporting page of the application using a Wails application.
 //
-// Parameters: _
+// This function checks if a reporting page is already open. If it is, it returns an error. If not, it changes the current working directory to the reporting page directory and builds the reporting-page executable using the Wails framework.
+// It then runs the executable, opening the reporting page. If the 'Quit' option is selected from the system tray while the reporting page is open, the function kills the reporting-page process and sets the ReportingPageOpen flag to false.
 //
-// Returns: _
+// Parameters:
+//   - path string: The relative path to the reporting-page directory. This is used to change the current working directory to the reporting-page directory.
+//
+// Returns:
+//   - error: An error object if an error occurred during the process, otherwise nil.
 func OpenReportingPage(path string) error {
 	if ReportingPageOpen {
 		return errors.New("reporting-page is already running")
@@ -205,13 +218,16 @@ func OpenReportingPage(path string) error {
 	return nil
 }
 
-// TODO: fix this comment once copilot decides to cooperate
-
-// ChangeScanInterval provides the user with a dialog window to set the (new) scan interval
+// ChangeScanInterval prompts the user to set a new scan interval through a dialog window.
 //
-// Parameters: optional string testInput, used in tray_test.go
+// This function displays a dialog window asking the user to input the desired scan interval in hours. If the user input is valid, the function updates the scan interval accordingly. If the input is invalid or less than or equal to zero, the function defaults to a 24-hour interval.
 //
-// Returns: _
+// For testing purposes, an optional string parameter 'testInput' can be provided. If 'testInput' is provided, the function uses this as the user's input instead of displaying the dialog window.
+//
+// Parameters:
+//   - testInput ...string: Optional parameter used for testing. If provided, the function uses this as the user's input instead of displaying the dialog window.
+//
+// Returns: None. The function updates the 'ScanTicker' variable in-place.
 func ChangeScanInterval(testInput ...string) {
 	var res string
 	// If testInput is provided, use it for testing
@@ -241,13 +257,16 @@ func ChangeScanInterval(testInput ...string) {
 	log.Printf("Scan interval changed to %d hours\n", interval)
 }
 
-// TODO: fix this comment once copilot decides to cooperate
-
-// ScanNow performs one scan iteration (without checking if it is scheduled)
+// ScanNow initiates an immediate security scan, bypassing the scheduled intervals.
 //
-// Parameters: _
+// This function triggers a security scan regardless of the scheduled intervals. It is useful for situations where an immediate scan is required, such as after a significant system change or when manually requested by the user.
+// During the scan, a progress dialog is displayed to keep the user informed about the scan progress. Once the scan is complete, the dialog is closed and the results of the scan are returned.
 //
-// Returns: list of checks
+// Parameters: None.
+//
+// Returns:
+//   - []checks.Check: A list of checks performed during the scan.
+//   - error: An error object if an error occurred during the scan, otherwise nil.
 func ScanNow() ([]checks.Check, error) {
 	// ScanCounter is not concretely used at the moment
 	// might be useful in the future
@@ -284,13 +303,24 @@ func ScanNow() ([]checks.Check, error) {
 	return result, nil
 }
 
-// TODO: fix this comment once copilot decides to cooperate
-
-// ChangeLanguage provides the user with a dialog window to change the language of the application
+// ChangeLanguage allows the user to select a new language for the application via a dialog window.
 //
-// Parameters: _
+// This function presents a dialog window with a list of available languages. The user can select a language from this list, and the application's language setting is updated accordingly.
+// The function maps each language to an index, which is used internally for localization. If the function is called with a test input, it uses the test input instead of displaying the dialog window.
 //
-// Returns: _
+// The language indices are as follows:
+// 0: German
+// 1: British English
+// 2: American English
+// 3: Spanish
+// 4: French
+// 5: Dutch
+// 6: Portuguese
+//
+// Parameters:
+//   - testInput ...string: Optional parameter used for testing. If provided, the function uses this as the user's language selection instead of displaying the dialog window.
+//
+// Returns: None. The function updates the 'language' variable in-place.
 func ChangeLanguage(testInput ...string) {
 	var res string
 	if len(testInput) > 0 {
@@ -327,13 +357,15 @@ func ChangeLanguage(testInput ...string) {
 	}
 }
 
-// TODO: fix this comment once copilot decides to cooperate
-
-// RefreshMenu updates the menu items with the current language
+// RefreshMenu updates the system tray menu items to reflect the current language setting.
 //
-// Parameters: _
+// This function iterates over each menu item in the system tray and updates its title and tooltip text to match the current language setting.
+// The language setting is determined by the 'language' variable, which stores the index of the currently active language.
+// The function uses the 'Localize' function from the 'localization' package to translate the title and tooltip text of each menu item.
 //
-// Returns: _
+// Parameters: None.
+//
+// Returns: None. The function updates the system tray menu items in-place.
 func RefreshMenu() {
 	for _, item := range MenuItems {
 		item.sysMenuItem.SetTitle(localization.Localize(language, item.MenuTitle))
@@ -341,13 +373,22 @@ func RefreshMenu() {
 	}
 }
 
-// TODO: fix this comment once copilot decides to cooperate
-
-// Language returns the current language index
+// Language retrieves the current language index that corresponds to the active language setting in the application.
 //
-// Parameters: _
+// This function is used to get the index of the currently selected language. The index is used internally to manage language settings and localization.
+// The language indices are as follows:
+// 0: German
+// 1: British English
+// 2: American English
+// 3: Spanish
+// 4: French
+// 5: Dutch
+// 6: Portuguese
 //
-// Returns: language index
+// Parameters: None.
+//
+// Returns:
+//   - int: The index of the currently active language.
 func Language() int {
 	return language
 }

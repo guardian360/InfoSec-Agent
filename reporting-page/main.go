@@ -19,13 +19,16 @@ import (
 //go:embed all:frontend/dist
 var assets embed.FS
 
-// TODO: fix this comment once copilot decides to cooperate
-
-// main is the entry point of the reporting page program, starts the Wails application
+// main is the entry point of the reporting page application. It initializes the localization settings, creates a new instance of the application, tray, and database, and starts the Wails application.
 //
-// Parameters: _
+// This function first calls the Init function from the localization package to set up the localization settings for the application. It then creates new instances of the App, Tray, and DataBase structs.
+// After setting up these instances, it creates a Wails application with specific options including the title, dimensions, startup behavior, asset server, background color, startup function, and bound interfaces.
+// It also sets up the Windows-specific options for the Wails application, including the theme and custom theme settings.
+// If an error occurs during the creation or startup of the Wails application, it is logged and the program terminates.
 //
-// Returns: _
+// Parameters: None.
+//
+// Returns: None. This function does not return a value as it is the entry point of the application.
 func main() {
 	// Create a new instance of the app and tray struct
 	app := NewApp()
