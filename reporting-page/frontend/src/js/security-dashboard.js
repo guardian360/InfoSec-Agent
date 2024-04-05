@@ -214,7 +214,7 @@ if (typeof document !== 'undefined') {
  * @param {RiskCounters} rc Risk counters from which the data is taken
  * @param {Document} doc Document in which the counters are located
  */
-export function AdjustWithRiskCounters(rc, doc) {
+export function adjustWithRiskCounters(rc, doc) {
   // change counters according to collected data
   doc.getElementById('high-risk-counter').innerHTML = rc.lastHighRisk;
   doc.getElementById('medium-risk-counter').innerHTML = rc.lastMediumRisk;
@@ -262,7 +262,7 @@ export function AdjustWithRiskCounters(rc, doc) {
  * @param {RiskCounters} rc Risk counters from which the max count is taken
  * @param {Document} doc Document in which the counters are located
  */
-export function SetMaxInterval(rc, doc) {
+export function setMaxInterval(rc, doc) {
   doc.getElementById('graph-interval').max = rc.count;
 }
 
