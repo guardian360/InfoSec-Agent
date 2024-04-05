@@ -155,6 +155,7 @@ export function sortTable(tbody, column) {
   });
   table.setAttribute("data-sort-direction", direction);
 }
+
 if (typeof document !== 'undefined') {
   try {
     document.getElementById("issues-button").addEventListener("click", () => openIssuesPage());

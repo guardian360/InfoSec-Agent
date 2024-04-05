@@ -23,12 +23,10 @@ const dom = new JSDOM(`
 </body>
 </html>
 `);
-global.document = dom.window.document
-global.window = dom.window
 
 // Test cases
 describe('Issues table', function() {
-  it('should be filled with information from the provided JSON array', function() {
+  it('fillTable should fill the issues table with information from the provided JSON array', function() {
     // Arrange input issues
     let issues = [];
     issues = [
@@ -68,9 +66,9 @@ describe('Issues table', function() {
     });
   });  
 
-  it('should be sortable', function() {
+  it('sortTable should sort the issues table', function() {
     // Arrange table rows
-    const table = global.document.getElementById("issues-table");
+    const table = dom.window.document.getElementById("issues-table");
     const tbody = table.querySelector('tbody');
     tbody.innerHTML = `
       <tr>
