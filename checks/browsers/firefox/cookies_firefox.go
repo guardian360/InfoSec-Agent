@@ -2,10 +2,11 @@ package firefox
 
 import (
 	"database/sql"
-	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 	"os"
 	"path/filepath"
 	"time"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"

@@ -3,8 +3,9 @@ package scan
 import (
 	"database/sql"
 	"fmt"
-	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 	"strconv"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	// Necessary to use the sqlite3 driver

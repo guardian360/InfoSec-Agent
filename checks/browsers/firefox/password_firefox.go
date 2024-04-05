@@ -2,9 +2,10 @@ package firefox
 
 import (
 	"encoding/json"
-	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 	"os"
 	"strconv"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"

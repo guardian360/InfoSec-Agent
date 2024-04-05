@@ -6,13 +6,14 @@ package utils
 import (
 	"context"
 	"errors"
-	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 	"io"
 	"net/http"
 	"os"
 	"os/user"
 	"path/filepath"
 	"strings"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 )
 
 // CopyFile copies a file from the source to the destination

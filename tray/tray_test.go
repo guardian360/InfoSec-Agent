@@ -22,7 +22,6 @@ import (
 //
 // Returns: _
 func TestMain(m *testing.M) {
-
 	logger.SetupTests()
 
 	// Initialize systray

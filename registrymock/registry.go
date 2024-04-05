@@ -2,6 +2,7 @@ package registrymock
 
 import (
 	"fmt"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 	"golang.org/x/sys/windows/registry"
 )
