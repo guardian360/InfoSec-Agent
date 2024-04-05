@@ -109,7 +109,7 @@ func TestSmbEnabled(t *testing.T) {
 			} else {
 				smbVersion = "SMB2"
 			}
-			got, err := checks.SmbEnabled(smbVersion, tt.executor, 0)
+			got, _, err := checks.SmbEnabled(smbVersion, tt.executor, 0)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("SmbEnabled() error = %v, wantErr %v", err, tt.wantErr)
 				return

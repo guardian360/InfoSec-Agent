@@ -59,7 +59,7 @@ func ExtensionFirefox() (checks.Check, checks.Check) {
 		// Determine if the addon is an adblocker
 		if adblockerFirefox(addon.DefaultLocale.Name) {
 			addBlocker = true
-			resultID += 1
+			resultID++
 		}
 	}
 	adBlockused := strconv.FormatBool(addBlocker)

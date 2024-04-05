@@ -13,19 +13,19 @@ import (
 //
 // Returns: If SMB1 and SMB2 are enabled or not
 func SmbCheck(smb1executor commandmock.CommandExecutor, smb2executor commandmock.CommandExecutor) Check {
-	var resultInt int
-	smb1, err := SmbEnabled("SMB1", smb1executor, resultInt)
+	var resultID int
+	smb1, resultID, err := SmbEnabled("SMB1", smb1executor, resultID)
 
 	if err != nil {
 		return NewCheckError(SmbID, err)
 	}
-	smb2, err := SmbEnabled("SMB2", smb2executor, resultInt)
+	smb2, resultID, err := SmbEnabled("SMB2", smb2executor, resultID)
 
 	if err != nil {
 		return NewCheckError(SmbID, err)
 	}
 
-	return NewCheckResult(SmbID, resultInt, smb1, smb2)
+	return NewCheckResult(SmbID, resultID, smb1, smb2)
 }
 
 // SmbEnabled checks whether the specified SMB protocol is enabled
@@ -33,13 +33,13 @@ func SmbCheck(smb1executor commandmock.CommandExecutor, smb2executor commandmock
 // Parameters: smb (string) represents the SMB protocol to check
 //
 // Returns: If the specified SMB protocol is enabled or not
-func SmbEnabled(smb string, executor commandmock.CommandExecutor, resultID int) (string, error) {
+func SmbEnabled(smb string, executor commandmock.CommandExecutor, resultID int) (string, int, error) {
 	// Get the status of the specified SMB protocol
 	command := fmt.Sprintf("Get-SmbServerConfiguration | Select-Object Enable%sProtocol", smb)
 	output, err := executor.Execute("powershell", command)
 
 	if err != nil {
-		return "", err
+		return "", 0, err
 	}
 
 	outputString := strings.Split(string(output), "\r\n")
@@ -51,8 +51,8 @@ func SmbEnabled(smb string, executor commandmock.CommandExecutor, resultID int) 
 		if smb == "SMB2" {
 			resultID += 2
 		}
-		return smb + ": enabled", nil
+		return smb + ": enabled", resultID, nil
 	}
 
-	return smb + ": not enabled", nil
+	return smb + ": not enabled", resultID, nil
 }

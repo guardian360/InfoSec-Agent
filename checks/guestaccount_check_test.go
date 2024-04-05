@@ -63,7 +63,7 @@ func TestGuestAccount(t *testing.T) {
 			executorYesWord: &commandmock.MockCommandExecutor{Output: "",
 				Err: errors.New("net user yesWord error")},
 			executorNetUser: &commandmock.MockCommandExecutor{Output: "", Err: nil},
-			want: checks.NewCheckErrorf(cehcks.GuestAccountID,
+			want: checks.NewCheckErrorf(checks.GuestAccountID,
 				"error executing command net user", errors.New("net user yesWord error")),
 		},
 		{

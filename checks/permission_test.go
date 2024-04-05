@@ -60,7 +60,7 @@ func TestPermission(t *testing.T) {
 
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
-			result := checks.Permission(tc.permission, tc.key)
+			result := checks.Permission(checks.WebcamID, tc.permission, tc.key)
 			require.Equal(t, tc.want, result)
 		})
 	}
