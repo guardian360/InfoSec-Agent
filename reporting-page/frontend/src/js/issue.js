@@ -6,10 +6,12 @@ let stepCounter = 0;
 
 /** Update contents of solution guide
  *
+ * @param {HTMLParagraphElement} solutionText Element in which textual solution step is shown
+ * @param {HTMLImageElement} solutionScreenshot Element in which screenshot of solution step is shown
  * @param {[string]} solution List of textual solution steps
  * @param {[image]} screenshots List of images of solution steps
  * @param {int} stepCounter Counter specifying the current step
- */ 
+ */
 export function updateSolutionStep(solutionText, solutionScreenshot, solution, screenshots, stepCounter) {
   solutionText.innerHTML = solution[stepCounter];
   solutionScreenshot.src = screenshots[stepCounter];
@@ -17,9 +19,11 @@ export function updateSolutionStep(solutionText, solutionScreenshot, solution, s
 
 /** Go to next step of solution guide
  *
+ * @param {HTMLParagraphElement} solutionText Element in which textual solution step is shown
+ * @param {HTMLImageElement} solutionScreenshot Element in which screenshot of solution step is shown
  * @param {[string]} solution List of textual solution steps
  * @param {[image]} screenshots List of images of solution steps
- */ 
+ */
 export function nextSolutionStep(solutionText, solutionScreenshot, solution, screenshots) {
   if (stepCounter < solution.length - 1) {
     stepCounter++;
@@ -29,9 +33,11 @@ export function nextSolutionStep(solutionText, solutionScreenshot, solution, scr
 
 /** Go to previous step of solution guide
  *
+ * @param {HTMLParagraphElement} solutionText Element in which textual solution step is shown
+ * @param {HTMLImageElement} solutionScreenshot Element in which screenshot of solution step is shown
  * @param {[string]} solution List of textual solution steps
  * @param {[image]} screenshots List of images of solution steps
- */ 
+ */
 export function previousSolutionStep(solutionText, solutionScreenshot, solution, screenshots) {
   if (stepCounter > 0) {
     stepCounter--;
@@ -79,12 +85,12 @@ export function openIssuePage(issueId) {
   } catch (error) { }
 
   // Add functions to page for navigation
-  let solutionTextElement = document.getElementById("solution-text");
-  let solutionScreenshotElement = document.getElementById("step-screenshot");
+  const solutionText = document.getElementById('solution-text');
+  const solutionScreenshot = document.getElementById('step-screenshot');
   document.getElementById('next-button').addEventListener('click', () =>
-    nextSolutionStep(solutionTextElement, solutionScreenshotElement, currentIssue.Solution, currentIssue.Screenshots));
+    nextSolutionStep(solutionText, solutionScreenshot, currentIssue.Solution, currentIssue.Screenshots));
   document.getElementById('previous-button').addEventListener('click', () =>
-  previousSolutionStep(solutionTextElement, solutionScreenshotElement, currentIssue.Solution, currentIssue.Screenshots));
+    previousSolutionStep(solutionText, solutionScreenshot, currentIssue.Solution, currentIssue.Screenshots));
   document.getElementById('back-button').addEventListener('click', () => openIssuesPage());
 
   document.onload = retrieveTheme();

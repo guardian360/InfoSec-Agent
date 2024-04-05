@@ -52,7 +52,7 @@ const dom = new JSDOM(`
       </div>
       <div class="graph-segment-content">
         <div class="graph-buttons dropdown">
-          <p class="bar-graph-description">In this graph you are able to see the distribution of different issues we have found over the past 5 times we ran a check.</p>
+          <p class="bar-graph-description"></p>
           <button id="dropbtn" class="dropbtn"><span class="select-risks">Select Risks</span></button>
           <div class="dropdown-selector" id="myDropdown">
             <p><input type="checkbox" checked="true" value="true" id="select-high-risk">
@@ -68,7 +68,10 @@ const dom = new JSDOM(`
               <label for="select-no-risk" class="safe-issues"> Safe</label>
             </p>
           </div>
-          <a class="interval-button"><p class="change-interval">Change interval</p><input type="number" value="5" id="graph-interval" min=1></a>
+          <a class="interval-button">
+            <p class="change-interval">Change interval</p>
+            <input type="number" value="5" id="graph-interval" min=1>
+          </a>
         </div>
         <div class="graph-column issues-graph">
           <canvas id="interval-graph"></canvas>
@@ -91,7 +94,10 @@ const dom = new JSDOM(`
       </div>
       <div class="security-area">
         <a>
-          <p><span class="applications">Applications</span><span class="material-symbols-outlined">apps_outage</span></p>
+          <p>
+            <span class="applications">Applications</span>
+            <span class="material-symbols-outlined">apps_outage</span>
+          </p>
         </a>
       </div>
       <div class="security-area">
@@ -106,7 +112,10 @@ const dom = new JSDOM(`
       </div>
       <div class="security-area">
         <a>
-          <p><span class="operating-system">Operating system</span><span class="material-symbols-outlined">desktop_windows</span></p>
+          <p>
+            <span class="operating-system">Operating system</span>
+            <span class="material-symbols-outlined">desktop_windows</span>
+          </p>
         </a>
       </div>
       <div class="security-area">
@@ -129,13 +138,13 @@ const dom = new JSDOM(`
 // global.window = dom.window
 
 // test cases
-describe("Security dashboard", function() {
-  it("adjustWithRiskCounters should show data from risk counters", function() {
-    const mockRiskCounters = {  
-      lastHighRisk : 2,
-      lastMediumRisk : 3,
-      lastLowRisk : 4,
-      lastnoRisk : 5,
+describe('Security dashboard', function() {
+  it('adjustWithRiskCounters should show data from risk counters', function() {
+    const mockRiskCounters = {
+      lastHighRisk: 2,
+      lastMediumRisk: 3,
+      lastLowRisk: 4,
+      lastnoRisk: 5,
       count: 5,
     };
 
@@ -151,8 +160,8 @@ describe("Security dashboard", function() {
   it('Should display the right security status', function() {
     // arrange
     const expectedColors = ['rgb(255, 255, 255)', 'rgb(255, 255, 255)', 'rgb(0, 0, 0)', 'rgb(0, 0, 0)'];
-    const expectedBackgroundColors = ['rgb(0, 255, 255)', 'rgb(0, 0, 255)', 'rgb(255, 0, 0)', 'rgb(255, 255, 0)'];
-    const expectedText = ['Critical', 'Medium concern', 'Light concern', 'Safe'];
+    // const expectedBackgroundColors = ['rgb(0, 255, 255)', 'rgb(0, 0, 255)', 'rgb(255, 0, 0)', 'rgb(255, 255, 0)'];
+    // const expectedText = ['Critical', 'Medium concern', 'Light concern', 'Safe'];
 
     const mockRiskCounters = {
       highRiskColor: 'rgb(0, 255, 255)',
@@ -167,54 +176,60 @@ describe("Security dashboard", function() {
     };
     expectedColors.forEach((element, index) => {
       // act
-      AdjustWithRiskCounters(mockRiskCounters, dom.window.document);
+      adjustWithRiskCounters(mockRiskCounters, dom.window.document);
 
       // assert
-      test.value(dom.window.document.getElementById("high-risk-counter").innerHTML).isEqualTo(mockRiskCounters.lastHighRisk);
-      test.value(dom.window.document.getElementById("medium-risk-counter").innerHTML).isEqualTo(mockRiskCounters.lastMediumRisk);
-      test.value(dom.window.document.getElementById("low-risk-counter").innerHTML).isEqualTo(mockRiskCounters.lastLowRisk);
-      test.value(dom.window.document.getElementById("no-risk-counter").innerHTML).isEqualTo(mockRiskCounters.lastnoRisk);
-
+      test.value(dom.window.document.getElementById('high-risk-counter').innerHTML)
+        .isEqualTo(mockRiskCounters.lastHighRisk);
+      test.value(dom.window.document.getElementById('medium-risk-counter').innerHTML)
+        .isEqualTo(mockRiskCounters.lastMediumRisk);
+      test.value(dom.window.document.getElementById('low-risk-counter').innerHTML)
+        .isEqualTo(mockRiskCounters.lastLowRisk);
+      test.value(dom.window.document.getElementById('no-risk-counter').innerHTML)
+        .isEqualTo(mockRiskCounters.lastnoRisk);
     });
   });
-  it("adjustWithRiskCounters should display the right security status", function() {
+  it('adjustWithRiskCounters should display the right security status', function() {
     // arrange
-    const expectedColors = ["rgb(255, 255, 255)","rgb(255, 255, 255)","rgb(0, 0, 0)","rgb(0, 0, 0)"]
-    const expectedBackgroundColors = ["rgb(0, 255, 255)","rgb(0, 0, 255)","rgb(255, 0, 0)","rgb(255, 255, 0)"]
-    const expectedText = ["Critical","Medium concern","Light concern","Safe"]
+    const expectedColors = ['rgb(255, 255, 255)', 'rgb(255, 255, 255)', 'rgb(0, 0, 0)', 'rgb(0, 0, 0)'];
+    const expectedBackgroundColors = ['rgb(0, 255, 255)', 'rgb(0, 0, 255)', 'rgb(255, 0, 0)', 'rgb(255, 255, 0)'];
+    const expectedText = ['Critical', 'Medium concern', 'Light concern', 'Safe'];
     const mockRiskCounters = {
-      highRiskColor : "rgb(0, 255, 255)",
-      mediumRiskColor : "rgb(0, 0, 255)",
-      lowRiskColor : "rgb(255, 0, 0)",
-      noRiskColor : "rgb(255, 255, 0)",
+      highRiskColor: 'rgb(0, 255, 255)',
+      mediumRiskColor: 'rgb(0, 0, 255)',
+      lowRiskColor: 'rgb(255, 0, 0)',
+      noRiskColor: 'rgb(255, 255, 0)',
 
-      lastHighRisk : 10,
-      lastMediumRisk : 10,
-      lastLowRisk : 10,
-      lastnoRisk : 10,
+      lastHighRisk: 10,
+      lastMediumRisk: 10,
+      lastLowRisk: 10,
+      lastnoRisk: 10,
     };
-    expectedColors.forEach((element,index) => {
+    expectedColors.forEach((element, index) => {
       // act
       if (index == 1) mockRiskCounters.lastHighRisk = 0;
       if (index == 2) mockRiskCounters.lastMediumRisk = 0;
       if (index == 3) mockRiskCounters.lastLowRisk = 0;
-      AdjustWithRiskCounters(mockRiskCounters, dom.window.document);
+      adjustWithRiskCounters(mockRiskCounters, dom.window.document);
       // assert
-      test.value(dom.window.document.getElementsByClassName("status-descriptor")[0].innerHTML).isEqualTo(expectedText[index]);
-      test.value(dom.window.document.getElementsByClassName("status-descriptor")[0].style.backgroundColor).isEqualTo(expectedBackgroundColors[index]);
-      test.value(dom.window.document.getElementsByClassName("status-descriptor")[0].style.color).isEqualTo(expectedColors[index]);
+      test.value(dom.window.document.getElementsByClassName('status-descriptor')[0].innerHTML)
+        .isEqualTo(expectedText[index]);
+      test.value(dom.window.document.getElementsByClassName('status-descriptor')[0].style.backgroundColor)
+        .isEqualTo(expectedBackgroundColors[index]);
+      test.value(dom.window.document.getElementsByClassName('status-descriptor')[0].style.color)
+        .isEqualTo(expectedColors[index]);
     });
   });
-  it("setMaxInterval should set the max value of the graph interval to the maximum amount of data", function() {
+  it('setMaxInterval should set the max value of the graph interval to the maximum amount of data', function() {
     // arrange
-    const mockRiskCounters = {  
-      count : 5,
+    const mockRiskCounters = {
+      count: 5,
     };
 
     // act
-    SetMaxInterval(mockRiskCounters, dom.window.document);
+    setMaxInterval(mockRiskCounters, dom.window.document);
 
     // assert
-    test.value(dom.window.document.getElementById("graph-interval").max).isEqualTo(mockRiskCounters.count);
+    test.value(dom.window.document.getElementById('graph-interval').max).isEqualTo(mockRiskCounters.count);
   });
 });

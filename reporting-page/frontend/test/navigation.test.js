@@ -1,7 +1,12 @@
 import 'jsdom-global/register.js';
-import test from 'unit.js';
-import {JSDOM} from "jsdom";
-import {MarkSelectedNavigationItem, CloseNavigation, ToggleNavigationHamburger, ToggleNavigationResize} from '../src/js/navigation-menu.js';
+// import test from 'unit.js';
+import {JSDOM} from 'jsdom';
+// import {
+//   markSelectedNavigationItem,
+//   closeNavigation,
+//   toggleNavigationHamburger,
+//   toggleNavigationResize
+// } from '../src/js/navigation-menu.js';
 
 // Mock page
 const dom = new JSDOM(`
@@ -18,14 +23,14 @@ describe('Navigation menu', function() {
 
     // Assert
   });
-  it('closeNavigation should close the navigation menu if a menu item is selected and the screen size is smaller than 800 px', function() {
+  it('closeNavigation should close the navigation menu if screen size is small', function() {
     // Arrange
 
     // Act
 
     // Assert
   });
-  it('toggleNavigationHamburger should open or close the navigation menu when the hamburger menu is clicked', function() {
+  it('toggleNavigationHamburger should open or close the navigation menu', function() {
     // Arrange
 
     // Act

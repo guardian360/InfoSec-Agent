@@ -144,8 +144,8 @@ function openSecurityDashboardPage() {
   // Set counters on the page to the right values
   const rc = JSON.parse(sessionStorage.getItem('RiskCounters'));
   console.log(rc);
-  AdjustWithRiskCounters(rc, document);
-  SetMaxInterval(rc, document);
+  adjustWithRiskCounters(rc, document);
+  setMaxInterval(rc, document);
   // Create charts
 
   // Localize the static content of the dashboard
@@ -203,65 +203,67 @@ function openSecurityDashboardPage() {
 
 if (typeof document !== 'undefined') {
   try {
-    document.getElementById("security-dashboard-button").addEventListener("click", () => openSecurityDashboardPage());
+    document.getElementById('security-dashboard-button').addEventListener('click', () => openSecurityDashboardPage());
   } catch (error) {
-    console.log("Error in security-dashboard.js: " + error);
+    console.log('Error in security-dashboard.js: ' + error);
   }
 }
 
 /** Changes the risk counters to show the correct values
  *
  * @param {RiskCounters} rc Risk counters from which the data is taken
+ * @param {Document} doc Document in which the counters are located
  */
 export function AdjustWithRiskCounters(rc, doc) {
   // change counters according to collected data
-  doc.getElementById("high-risk-counter").innerHTML = rc.lastHighRisk;
-  doc.getElementById("medium-risk-counter").innerHTML = rc.lastMediumRisk;
-  doc.getElementById("low-risk-counter").innerHTML = rc.lastLowRisk;
-  doc.getElementById("no-risk-counter").innerHTML = rc.lastnoRisk; 
+  doc.getElementById('high-risk-counter').innerHTML = rc.lastHighRisk;
+  doc.getElementById('medium-risk-counter').innerHTML = rc.lastMediumRisk;
+  doc.getElementById('low-risk-counter').innerHTML = rc.lastLowRisk;
+  doc.getElementById('no-risk-counter').innerHTML = rc.lastnoRisk;
 
-  let securityStatus = doc.getElementsByClassName("status-descriptor")[0];  
-    if (rc.lastHighRisk > 1) {
-      try {
-        GetLocalization("Dashboard.Critical", "status-descriptor");
-      } catch (error) { 
-        securityStatus.innerHTML = "Critical";
-      }
-      securityStatus.style.backgroundColor = rc.highRiskColor;
-      securityStatus.style.color = "rgb(255, 255, 255)";
-    } else if (rc.lastMediumRisk > 1) {
-      try {
-        GetLocalization("Dashboard.MediumConcern", "status-descriptor");
-      } catch (error) {
-        securityStatus.innerHTML = "Medium concern";
-      }
-      securityStatus.style.backgroundColor = rc.mediumRiskColor; 
-      securityStatus.style.color = "rgb(255, 255, 255)";
-    } else if (rc.lastLowRisk > 1) {
-      try {
-        GetLocalization("Dashboard.LightConcern", "status-descriptor");
-      } catch (error) {
-        securityStatus.innerHTML = "Light concern";
-      }
-      securityStatus.style.backgroundColor = rc.lowRiskColor;
-      securityStatus.style.color = "rgb(0, 0, 0)";  
-    } else {
-      try {
-        GetLocalization("Dashboard.NoConcern", "status-descriptor");
-      } catch (error) {
-        securityStatus.innerHTML = "Safe";
-      }
-      securityStatus.style.backgroundColor = rc.noRiskColor;
-      securityStatus.style.color = "rgb(0, 0, 0)";  
+  const securityStatus = doc.getElementsByClassName('status-descriptor')[0];
+  if (rc.lastHighRisk > 1) {
+    try {
+      getLocalization('Dashboard.Critical', 'status-descriptor');
+    } catch (error) {
+      securityStatus.innerHTML = 'Critical';
     }
+    securityStatus.style.backgroundColor = rc.highRiskColor;
+    securityStatus.style.color = 'rgb(255, 255, 255)';
+  } else if (rc.lastMediumRisk > 1) {
+    try {
+      getLocalization('Dashboard.MediumConcern', 'status-descriptor');
+    } catch (error) {
+      securityStatus.innerHTML = 'Medium concern';
+    }
+    securityStatus.style.backgroundColor = rc.mediumRiskColor;
+    securityStatus.style.color = 'rgb(255, 255, 255)';
+  } else if (rc.lastLowRisk > 1) {
+    try {
+      getLocalization('Dashboard.LightConcern', 'status-descriptor');
+    } catch (error) {
+      securityStatus.innerHTML = 'Light concern';
+    }
+    securityStatus.style.backgroundColor = rc.lowRiskColor;
+    securityStatus.style.color = 'rgb(0, 0, 0)';
+  } else {
+    try {
+      getLocalization('Dashboard.NoConcern', 'status-descriptor');
+    } catch (error) {
+      securityStatus.innerHTML = 'Safe';
+    }
+    securityStatus.style.backgroundColor = rc.noRiskColor;
+    securityStatus.style.color = 'rgb(0, 0, 0)';
+  }
 }
 
 /** Set the max number input of the 'graph-interval' element
  *
  * @param {RiskCounters} rc Risk counters from which the max count is taken
+ * @param {Document} doc Document in which the counters are located
  */
 export function SetMaxInterval(rc, doc) {
-  doc.getElementById("graph-interval").max = rc.count;
+  doc.getElementById('graph-interval').max = rc.count;
 }
 
 /** Adds eventlisteners to elements in graph-row section of the dashboard page

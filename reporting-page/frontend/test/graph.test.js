@@ -40,11 +40,11 @@ global.document = dom.window.document;
 global.window = dom.window;
 
 // test cases
-describe("Risk graph", function() {
+describe('Risk graph', function() {
   // arrange
-  let rc = new RiskCounters(true);
-  let g = new Graph(undefined,rc);
-  it("toggleRisks should change which risk levels are shown in the risk graph", function() {
+  const rc = new RiskCounters(true);
+  let g = new Graph(undefined, rc);
+  it('toggleRisks should change which risk levels are shown in the risk graph', function() {
     // act
     g.toggleRisks('high', false);
     g.toggleRisks('medium', false);
@@ -68,8 +68,8 @@ describe("Risk graph", function() {
     test.value(g.graphShowMediumRisks).isEqualTo(true);
     test.value(g.graphShowLowRisks).isEqualTo(true);
     test.value(g.graphShowNoRisks).isEqualTo(true);
-  })
-  it("graphDropdown should show and hide a togglable dropdown button", function() {
+  });
+  it('graphDropdown should show and hide a togglable dropdown button', function() {
     // act
     g.graphDropdown();
 
@@ -80,9 +80,9 @@ describe("Risk graph", function() {
     g.graphDropdown();
 
     // assert
-    test.value(document.getElementById("myDropdown").classList.contains("show")).isEqualTo(false);
-  })
-  it("getData should fill the graph with the correct data", function() {
+    test.value(document.getElementById('myDropdown').classList.contains('show')).isEqualTo(false);
+  });
+  it('getData should fill the graph with the correct data', function() {
     // arrange
     const expectedData = {
       'labels': [1, 2, 3, 4, 5],
@@ -125,8 +125,8 @@ describe("Risk graph", function() {
     // assert
     test.array(resultData.labels).is(expectedData.labels);
     test.array(resultData.datasets).is(expectedData.datasets);
-  })
-  it("getOptions should return the correct graph options", function() {
+  });
+  it('getOptions should return the correct graph options', function() {
     // arrange
     const expectedOptions = {
       scales: {

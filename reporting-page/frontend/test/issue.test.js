@@ -15,20 +15,20 @@ describe('Issue page', function() {
   </body>
   </html>
   `);
-  global.document = issuesDOM.window.document
-  global.window = issuesDOM.window
+  global.document = issuesDOM.window.document;
+  global.window = issuesDOM.window;
 
-  var stepCounter = 0;
-  const solution = ["Step 1", "Step 2", "Step 3"];
-  const screenshots = ["screenshot1.jpg", "screenshot2.jpg", "screenshot3.jpg"];
-  const solutionStep = document.createElement("p");
-  const screenshot = document.createElement("img");
-  solutionStep.id = "solution-text";
-  screenshot.id = "step-screenshot";
+  let stepCounter = 0;
+  const solution = ['Step 1', 'Step 2', 'Step 3'];
+  const screenshots = ['screenshot1.jpg', 'screenshot2.jpg', 'screenshot3.jpg'];
+  const solutionStep = document.createElement('p');
+  const screenshot = document.createElement('img');
+  solutionStep.id = 'solution-text';
+  screenshot.id = 'step-screenshot';
   document.body.appendChild(solutionStep);
-  solutionStep.innerHTML = "Step 1";
+  solutionStep.innerHTML = 'Step 1';
   document.body.appendChild(screenshot);
-  screenshot.src = "screenshot1.jpg";
+  screenshot.src = 'screenshot1.jpg';
 
   it('updateSolutionStep should update the solution step', function() {
     // Arrange

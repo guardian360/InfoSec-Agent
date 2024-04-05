@@ -170,8 +170,8 @@ export function sortTable(tbody, column) {
 
 if (typeof document !== 'undefined') {
   try {
-    document.getElementById("issues-button").addEventListener("click", () => openIssuesPage());
+    document.getElementById('issues-button').addEventListener('click', () => openIssuesPage());
   } catch (error) {
-    console.log("Error in issues.js: " + error)
+    console.log('Error in issues.js: ' + error);
   }
 }

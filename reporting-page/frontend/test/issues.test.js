@@ -77,7 +77,7 @@ describe('Issues table', function() {
 
   it('sortTable should sort the issues table', function() {
     // Arrange table rows
-    const table = dom.window.document.getElementById("issues-table");
+    const table = dom.window.document.getElementById('issues-table');
     const tbody = table.querySelector('tbody');
     tbody.innerHTML = `
       <tr>
