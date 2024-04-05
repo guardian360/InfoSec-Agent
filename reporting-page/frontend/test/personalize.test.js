@@ -1,8 +1,8 @@
+import 'jsdom-global/register.js';
 import {
   handleFaviconChange,
   handlePictureChange,
-  handleTitleChange,
-} from '../src/js/personalize.js';
+  handleTitleChange} from '../src/js/personalize.js';
 import {JSDOM} from 'jsdom';
 import test from 'unit.js';
 
