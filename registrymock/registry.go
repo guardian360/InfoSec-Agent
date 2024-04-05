@@ -2,8 +2,7 @@ package registrymock
 
 import (
 	"fmt"
-	"log"
-
+	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 	"golang.org/x/sys/windows/registry"
 )
 
@@ -32,7 +31,7 @@ func OpenRegistryKey(k RegistryKey, path string) (RegistryKey, error) {
 func CloseRegistryKey(key RegistryKey) {
 	err := key.Close()
 	if err != nil {
-		log.Printf("error closing registry key: %s", err)
+		logger.Log.Printf("error closing registry key: %s", err)
 	}
 }
 

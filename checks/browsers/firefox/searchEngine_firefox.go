@@ -12,7 +12,7 @@ import (
 	"github.com/pierrec/lz4"
 )
 
-// SearchEngineFireFox checks the standard search engine in firefox.
+// SearchEngineFirefox checks the standard search engine in firefox.
 //
 // Parameters: _
 //

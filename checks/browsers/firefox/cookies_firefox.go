@@ -2,7 +2,7 @@ package firefox
 
 import (
 	"database/sql"
-	"log"
+	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 	"os"
 	"path/filepath"
 	"time"
@@ -34,7 +34,7 @@ func CookieFirefox() checks.Check {
 	defer func(name string) {
 		err = os.Remove(name)
 		if err != nil {
-			log.Println("error removing file: ", err)
+			logger.Log.Println("error removing file: ", err)
 		}
 	}(tempCookieDbff)
 
@@ -51,7 +51,7 @@ func CookieFirefox() checks.Check {
 	defer func(db *sql.DB) {
 		err = db.Close()
 		if err != nil {
-			log.Println("error closing database: ", err)
+			logger.Log.Println("error closing database: ", err)
 		}
 	}(db)
 
@@ -67,7 +67,7 @@ func CookieFirefox() checks.Check {
 	defer func(rows *sql.Rows) {
 		err = rows.Close()
 		if err != nil {
-			log.Println("error closing rows: ", err)
+			logger.Log.Println("error closing rows: ", err)
 		}
 	}(rows)
 

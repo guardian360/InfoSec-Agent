@@ -5,7 +5,7 @@ package firefox
 
 import (
 	"encoding/json"
-	"log"
+	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 	"os"
 	"strconv"
 	"strings"
@@ -39,7 +39,7 @@ func ExtensionFirefox() (checks.Check, checks.Check) {
 	defer func(content *os.File) {
 		err = content.Close()
 		if err != nil {
-			log.Println("error closing file: ", err)
+			logger.Log.Println("error closing file: ", err)
 		}
 	}(content)
 

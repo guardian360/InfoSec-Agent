@@ -6,8 +6,8 @@ package utils
 import (
 	"context"
 	"errors"
+	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 	"io"
-	"log"
 	"net/http"
 	"os"
 	"os/user"
@@ -30,7 +30,7 @@ func CopyFile(src, dst string) error {
 	defer func(sourceFile *os.File) {
 		err = sourceFile.Close()
 		if err != nil {
-			log.Printf("error closing source file: %v", err)
+			logger.Log.Printf("error closing source file: %v", err)
 		}
 	}(sourceFile)
 
@@ -41,7 +41,7 @@ func CopyFile(src, dst string) error {
 	defer func(destinationFile *os.File) {
 		err = destinationFile.Close()
 		if err != nil {
-			log.Printf("error closing destination file: %v", err)
+			logger.Log.Printf("error closing destination file: %v", err)
 		}
 	}(destinationFile)
 
@@ -65,24 +65,24 @@ func GetPhishingDomains() []string {
 	req, err := http.NewRequestWithContext(context.Background(), http.MethodGet, url, nil)
 	req.Header.Add("User-Agent", "Mozilla/5.0")
 	if err != nil {
-		log.Fatal(err)
+		logger.Log.Fatal(err)
 	}
 	resp, err := client.Do(req)
 	defer func(Body io.ReadCloser) {
 		err = Body.Close()
 		if err != nil {
-			log.Printf("error closing response body: %v", err)
+			logger.Log.Printf("error closing response body: %v", err)
 		}
 	}(resp.Body)
 
 	if resp.StatusCode != http.StatusOK {
-		log.Printf("HTTP request failed with status code: %d", resp.StatusCode)
+		logger.Log.Printf("HTTP request failed with status code: %d", resp.StatusCode)
 	}
 
 	// Parse the response of potential scam domains and split it into a list of domains
 	scamDomainsResponse, err := io.ReadAll(resp.Body)
 	if err != nil {
-		log.Println("Error reading response body:", err)
+		logger.Log.Println("Error reading response body:", err)
 	}
 	return strings.Split(string(scamDomainsResponse), "\n")
 }
@@ -96,7 +96,7 @@ func FirefoxFolder() ([]string, error) {
 	// Get the current user
 	currentUser, err := user.Current()
 	if err != nil {
-		log.Println("Error:", err)
+		logger.Log.Println("Error:", err)
 		return nil, err
 	}
 	// Specify the path to the firefox profile directory
@@ -104,20 +104,20 @@ func FirefoxFolder() ([]string, error) {
 
 	dir, err := os.Open(filepath.Clean(profilesDir))
 	if err != nil {
-		log.Println("Error:", err)
+		logger.Log.Println("Error:", err)
 		return nil, err
 	}
 	defer func(dir *os.File) {
 		err = dir.Close()
 		if err != nil {
-			log.Printf("error closing directory: %v", err)
+			logger.Log.Printf("error closing directory: %v", err)
 		}
 	}(dir)
 
 	// Read the contents of the directory
 	files, err := dir.Readdir(0)
 	if err != nil {
-		log.Println("Error:", err)
+		logger.Log.Println("Error:", err)
 		return nil, err
 	}
 
@@ -183,6 +183,6 @@ func RemoveDuplicateStr(strSlice []string) []string {
 func CloseFile(file *os.File) {
 	err := file.Close()
 	if err != nil {
-		log.Printf("error closing file: %s", err)
+		logger.Log.Printf("error closing file: %s", err)
 	}
 }

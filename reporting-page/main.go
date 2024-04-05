@@ -7,9 +7,8 @@ package main
 
 import (
 	"embed"
-	"log"
-
 	"github.com/InfoSec-Agent/InfoSec-Agent/localization"
+	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/options"
 	"github.com/wailsapp/wails/v2/pkg/options/assetserver"
@@ -61,6 +60,6 @@ func main() {
 	})
 
 	if err != nil {
-		log.Println("Error:", err.Error())
+		logger.Log.Println("Error:", err.Error())
 	}
 }
