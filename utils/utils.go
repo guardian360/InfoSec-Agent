@@ -17,6 +17,8 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/filemock"
 )
 
+// TODO: fix this comment once copilot decides to cooperate
+
 // CopyFile copies a file from the source to the destination
 //
 // Parameters: src - the source file
@@ -55,6 +57,8 @@ func CopyFile(src, dst string) error {
 	return nil
 }
 
+// TODO: fix this comment once copilot decides to cooperate
+
 // GetPhishingDomains gets the phishing domains from a remote GitHub list
 //
 // Parameters: _
@@ -88,6 +92,8 @@ func GetPhishingDomains() []string {
 	}
 	return strings.Split(string(scamDomainsResponse), "\n")
 }
+
+// TODO: fix this comment once copilot decides to cooperate
 
 // FirefoxFolder gets the path to the Firefox profile folder
 //
@@ -145,6 +151,8 @@ func FirefoxFolder() ([]string, error) {
 	return profileList, nil
 }
 
+// TODO: fix this comment once copilot decides to cooperate
+
 // CurrentUsername retrieves the current Windows username
 //
 // Parameters: _
@@ -157,6 +165,8 @@ func CurrentUsername() (string, error) {
 	}
 	return strings.Split(currentUser.Username, "\\")[1], nil
 }
+
+// TODO: fix this comment once copilot decides to cooperate
 
 // RemoveDuplicateStr removes duplicate strings from a slice
 //
@@ -176,6 +186,8 @@ func RemoveDuplicateStr(strSlice []string) []string {
 	}
 	return list
 }
+
+// TODO: fix this comment once copilot decides to cooperate
 
 // CloseFile closes a file and handles associated errors
 //

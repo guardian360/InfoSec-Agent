@@ -19,6 +19,8 @@ import (
 //go:embed all:frontend/dist
 var assets embed.FS
 
+// TODO: fix this comment once copilot decides to cooperate
+
 // main is the entry point of the reporting page program, starts the Wails application
 //
 // Parameters: _

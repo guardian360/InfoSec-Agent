@@ -8,11 +8,14 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/windowsmock"
 )
 
-// TestWindowsOutdated tests the WindowsOutdated function with different (in)valid inputs
+// TestWindowsOutdated is a function that tests the behavior of the WindowsOutdated function with various inputs.
 //
-// Parameters: t (testing.T) - the testing framework
+// Parameters:
+//   - t *testing.T: The testing framework provided by the Go testing package. It provides methods for reporting test failures and logging additional information.
 //
-// Returns: _
+// Returns: None
+//
+// This function tests the WindowsOutdated function with different scenarios. It uses a mock implementation of the WindowsVersion interface to simulate the behavior of retrieving the Windows version information. Each test case checks if the WindowsOutdated function correctly identifies whether the Windows version is up-to-date, outdated, or unsupported based on the simulated Windows version information. The function asserts that the returned Check instance contains the expected results.
 func TestWindowsOutdated(t *testing.T) {
 	tests := []struct {
 		name   string

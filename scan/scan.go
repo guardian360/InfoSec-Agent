@@ -19,12 +19,20 @@ import (
 	"github.com/ncruces/zenity"
 )
 
-// Scan runs all security/privacy checks and serializes the results to JSON.
+// Scan executes all security/privacy checks, serializes the results to JSON, and returns a list of all found issues.
 //
-// Parameters: dialog (zenity.ProgressDialog)
-// represents the progress dialog window which is displayed while the scan is running
+// Parameters:
+//   - dialog (zenity.ProgressDialog): A dialog window that displays the progress of the scan as it runs.
 //
-// Returns: checks.Check list containing all found issues
+// This function performs the following operations:
+//  1. Defines all security/privacy checks that should be executed.
+//  2. Iterates over each check, displaying the currently running check in the progress dialog and executing the check.
+//  3. Appends the result of each check to the checkResults slice.
+//  4. Serializes the checkResults slice to JSON and logs the JSON data.
+//
+// Returns:
+//   - []checks.Check: A slice of Check objects representing all found issues.
+//   - error: An error object that describes the error (if any) that occurred while running the checks or serializing the results to JSON. If no error occurred, this value is nil.
 func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 	// Define all security/privacy checks that Scan() should execute
 	securityChecks := []func() checks.Check{

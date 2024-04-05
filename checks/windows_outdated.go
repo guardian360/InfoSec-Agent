@@ -13,11 +13,15 @@ const (
 	newestWin11Build uint32 = 22631 // Version 23H2 (2023 update)
 )
 
-// WindowsOutdated checks if the current installed Windows version is outdated
+// WindowsOutdated is a function that checks if the currently installed Windows version is outdated.
 //
-// Parameters: _
+// Parameters:
+//   - mockOS windowsmock.WindowsVersion: A mock object for retrieving the Windows version information.
 //
-// Returns: If the Windows version is up-to-date or if there are updated available
+// Returns:
+//   - Check: A struct containing the result of the check. The result indicates whether the Windows version is up-to-date or if updates are available.
+//
+// The function works by retrieving the Windows version information using the provided mock object. It then compares the build number of the installed Windows version with the build numbers of the latest Windows 10 and Windows 11 versions. If the installed version's build number matches the latest build number for its major version (10 or 11), the function returns a message indicating that the Windows version is up-to-date. If the build number does not match, the function returns a message indicating that updates are available. If the major version is neither 10 nor 11, the function returns a message suggesting to update to Windows 10 or Windows 11.
 func WindowsOutdated(mockOS windowsmock.WindowsVersion) Check {
 	versionData := mockOS.RtlGetVersion()
 	// Prepare the result

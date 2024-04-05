@@ -8,6 +8,14 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
 )
 
+// TestSecureBoot is a function that tests the behavior of the SecureBoot function with various inputs.
+//
+// Parameters:
+//   - t *testing.T: The testing framework provided by the Go testing package. It provides methods for reporting test failures and logging additional information.
+//
+// Returns: None
+//
+// This function tests the SecureBoot function with different scenarios. It uses a mock implementation of the RegistryKey interface to simulate the behavior of the Secure Boot registry key. Each test case checks if the SecureBoot function correctly identifies the status of Secure Boot (enabled, disabled, or unknown) based on the simulated registry key value. The function asserts that the returned Check instance contains the expected results.
 func TestSecureBoot(t *testing.T) {
 	tests := []struct {
 		name string

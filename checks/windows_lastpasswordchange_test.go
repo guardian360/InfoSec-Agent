@@ -10,11 +10,14 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
 )
 
-// TestLastPasswordChange tests the LastPasswordChange function
+// TestLastPasswordChange is a function that tests the behavior of the LastPasswordChange function with various inputs.
 //
-// Parameters: t *testing.T - The testing framework
+// Parameters:
+//   - t *testing.T: The testing framework provided by the Go testing package. It provides methods for reporting test failures and logging additional information.
 //
-// Returns: _
+// Returns: None
+//
+// This function tests the LastPasswordChange function with different scenarios. It uses a mock implementation of the CommandExecutor interface to simulate the behavior of the command execution for retrieving the last password change date. Each test case checks if the LastPasswordChange function correctly identifies the date when the password was last changed based on the simulated command output. The function asserts that the returned Check instance contains the expected results.
 func TestLastPasswordChange(t *testing.T) {
 	tests := []struct {
 		name          string

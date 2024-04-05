@@ -4,11 +4,15 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
 )
 
-// RemoteDesktopCheck checks if Remote Desktop is enabled
+// RemoteDesktopCheck is a function that checks if the Remote Desktop feature is enabled on the system.
 //
-// Parameters: registryKey (registrymock.RegistryKey) - A Windows registry mock
+// Parameters:
+//   - registryKey (registrymock.RegistryKey): A mock of a Windows registry key. This is used to simulate the behavior of the Windows registry for testing purposes.
 //
-// Returns: If Remote Desktop is enabled or not
+// Returns:
+//   - Check: A struct containing the result of the check. The result indicates whether the Remote Desktop feature is enabled or not.
+//
+// The function works by opening the registry key for Terminal Server settings. It then reads the value of 'fDenyTSConnections', which indicates whether Remote Desktop is enabled or not. If the value is 0, it means that Remote Desktop is enabled. Otherwise, it is disabled. The function returns a Check instance containing the result of the check.
 func RemoteDesktopCheck(registryKey registrymock.RegistryKey) Check {
 	// Open the registry key for Terminal Server settings
 	key, err := registrymock.OpenRegistryKey(registryKey, `System\CurrentControlSet\Control\Terminal Server`)

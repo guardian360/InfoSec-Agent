@@ -10,6 +10,14 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
 )
 
+// TestSmbCheck is a function that tests the SmbCheck function's behavior with various inputs.
+//
+// Parameters:
+//   - t *testing.T: The testing framework provided by the Go testing package. It provides methods for reporting test failures and logging additional information.
+//
+// Returns: None
+//
+// This function tests the SmbCheck function with different scenarios. It uses a mock implementation of the CommandExecutor interface to simulate the behavior of the command execution for checking the status of SMB1 and SMB2 protocols. Each test case checks if the SmbCheck function correctly identifies the status of the SMB protocols based on the simulated command output. The function asserts that the returned Check instance contains the expected results.
 func TestSmbCheck(t *testing.T) {
 	tests := []struct {
 		name      string
@@ -62,6 +70,14 @@ func TestSmbCheck(t *testing.T) {
 	}
 }
 
+// TestSmbEnabled is a function that tests the SmbEnabled function's behavior with various inputs.
+//
+// Parameters:
+//   - t *testing.T: The testing framework provided by the Go testing package. It provides methods for reporting test failures and logging additional information.
+//
+// Returns: None
+//
+// This function tests the SmbEnabled function with different scenarios. It uses a mock implementation of the CommandExecutor interface to simulate the behavior of the command execution for checking the status of SMB1 and SMB2 protocols. Each test case checks if the SmbEnabled function correctly identifies the status of the SMB protocols based on the simulated command output. The function asserts that the returned string and error match the expected results.
 func TestSmbEnabled(t *testing.T) {
 	tests := []struct {
 		name     string

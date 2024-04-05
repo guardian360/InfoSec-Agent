@@ -9,6 +9,8 @@ import (
 	"github.com/getlantern/systray"
 )
 
+// TODO: fix this comment once copilot decides to cooperate
+
 // main is the entry point of the program, starts the system tray application
 //
 // Parameters: _

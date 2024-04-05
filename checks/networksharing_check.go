@@ -6,11 +6,19 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
 )
 
-// NetworkSharing checks if network sharing is enabled or disabled
+// NetworkSharing is a function that checks the status of network sharing on the system.
 //
-// Parameters: _
+// Parameters:
+//   - executor (commandmock.CommandExecutor): An instance of CommandExecutor used to execute the PowerShell command to retrieve the network adapter binding status.
 //
-// Returns: If network sharing is enabled or not
+// Returns:
+//   - Check: A Check instance encapsulating the results of the network sharing check. The Result field of the Check instance will contain one of the following messages:
+//   - "Network sharing is enabled" if all network adapters have network sharing enabled.
+//   - "Network sharing is partially enabled" if some network adapters have network sharing enabled and others do not.
+//   - "Network sharing is disabled" if no network adapters have network sharing enabled.
+//   - "Network sharing status is unknown" if the function is unable to determine the status of network sharing.
+//
+// This function is primarily used to identify potential security risks associated with network sharing on the system.
 func NetworkSharing(executor commandmock.CommandExecutor) Check {
 	// Execute a powershell command to get the network adapter binding status
 	command := "Get-NetAdapterBinding | Where-Object {$_.ComponentID -eq 'ms_server'} | Select-Object Enabled"

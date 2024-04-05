@@ -8,11 +8,14 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
 )
 
-// TestBluetooth tests the Bluetooth function on (in)valid input
+// TestBluetooth is a function that validates the functionality of the Bluetooth function with both valid and invalid inputs.
 //
-// Parameters: t (testing.T) - the testing framework
+// Parameters:
+//   - t (*testing.T): An instance of the testing framework used to run the test cases.
 //
-// Returns: _
+// This function defines a series of test cases, each represented as a struct. Each test case includes a name, a mock registry key to simulate the system's registry, and the expected result of the Bluetooth function when it is called with the mock registry key. The function iterates over these test cases, and for each one, it calls the Bluetooth function with the provided mock registry key and compares the result to the expected result. If the actual result matches the expected result, the test case passes; otherwise, it fails.
+//
+// This function does not return a value. Instead, it uses the testing framework's functionality to indicate whether each test case passed or failed.
 func TestBluetooth(t *testing.T) {
 	tests := []struct {
 		name string

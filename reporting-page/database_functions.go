@@ -5,9 +5,13 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/scan"
 )
 
-// Database represents the database, used for calling function which connect to the database
+// TODO: fix this comment once copilot decides to cooperate
+
+// DataBase Database represents the database, used for calling function which connect to the database
 type DataBase struct {
 }
+
+// TODO: fix this comment once copilot decides to cooperate
 
 // NewDataBase creates a new DataBase struct
 //
@@ -17,6 +21,8 @@ type DataBase struct {
 func NewDataBase() *DataBase {
 	return &DataBase{}
 }
+
+// TODO: fix this comment once copilot decides to cooperate
 
 // GetAllSeverities gets all severities found by the check
 //

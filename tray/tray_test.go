@@ -15,6 +15,8 @@ import (
 	"github.com/getlantern/systray"
 )
 
+// TODO: fix this comment once copilot decides to cooperate
+
 // TestMain initializes the system tray application and runs the tests
 //
 // Parameters: m *testing.M - The testing framework
@@ -39,6 +41,8 @@ func TestMain(m *testing.M) {
 
 	os.Exit(exitCode)
 }
+
+// TODO: fix this comment once copilot decides to cooperate
 
 // TestChangeScanInterval tests the ChangeScanInterval function with valid and invalid inputs
 //
@@ -84,6 +88,8 @@ func TestChangeScanInterval(t *testing.T) {
 	}
 }
 
+// TODO: fix this comment once copilot decides to cooperate
+
 // TestScanNow tests the ScanNow function
 //
 // Parameters: t *testing.T - The testing framework
@@ -110,6 +116,8 @@ func TestScanNow(t *testing.T) {
 	expectedScanCounter := initialScanCounter + 1
 	require.Equal(t, expectedScanCounter, finalScanCounter)
 }
+
+// TODO: fix this comment once copilot decides to cooperate
 
 // TestOnQuit tests the OnQuit function
 //
@@ -141,6 +149,8 @@ func TestOnQuit(t *testing.T) {
 	}
 }
 
+// TODO: fix this comment once copilot decides to cooperate
+
 // TestTranslation tests the localization package, ensuring that strings are translated correctly
 //
 // Parameters: t *testing.T - The testing framework
@@ -158,6 +168,8 @@ func TestTranslation(t *testing.T) {
 	})
 	require.NotEqual(t, s1, s2)
 }
+
+// TODO: fix this comment once copilot decides to cooperate
 
 // TestChangeLang tests the tray.ChangeLang function on valid and invalid inputs
 //
@@ -187,6 +199,8 @@ func TestChangeLang(t *testing.T) {
 	}
 }
 
+// TODO: fix this comment once copilot decides to cooperate
+
 // TestRefreshMenu tests the RefreshMenu function
 //
 // Parameters: t *testing.T - The testing framework
@@ -203,6 +217,8 @@ func TestRefreshMenu(t *testing.T) {
 
 	require.NotEqual(t, translation1, translation2)
 }
+
+// TODO: fix this comment once copilot decides to cooperate
 
 // TestOpenReportingPageWhenAlreadyOpen tests the OpenReportingPage function when the reporting page is already open.
 // It should not be able to open another reporting page when one is already running.

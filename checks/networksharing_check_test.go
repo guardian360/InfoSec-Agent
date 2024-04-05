@@ -9,6 +9,16 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
 )
 
+// TestNetworkSharing is a test function that validates the behavior of the NetworkSharing function.
+//
+// It executes a series of test cases, each with different inputs, to ensure that the function behaves as expected in various scenarios.
+//
+// Parameters:
+//   - t (*testing.T): An instance of the testing framework provided by the "testing" package. This is used to report test failures and log output.
+//
+// Returns: None. If a test case fails, the function calls methods on the *testing.T parameter to report the failure.
+//
+// This function is part of the test suite for the "checks" package. It is used to verify that the NetworkSharing function correctly identifies the status of network sharing on the system and handles errors as expected.
 func TestNetworkSharing(t *testing.T) {
 	tests := []struct {
 		name     string

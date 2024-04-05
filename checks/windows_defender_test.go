@@ -8,11 +8,14 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
 )
 
-// TestWindowsDefender tests the WindowsDefender function with (in)valid inputs
+// TestWindowsDefender is a function that tests the WindowsDefender function's behavior with various inputs.
 //
-// Parameters: t (testing.T) - the testing framework
+// Parameters:
+//   - t *testing.T: The testing framework provided by the Go testing package. It provides methods for reporting test failures and logging additional information.
 //
-// Returns: _
+// Returns: None
+//
+// This function tests the WindowsDefender function with different scenarios. It uses a mock implementation of the RegistryKey interface to simulate the behavior of the registry key access for checking the status of Windows Defender and its periodic scan feature. Each test case checks if the WindowsDefender function correctly identifies the status of Windows Defender and its periodic scan feature based on the simulated registry key values. The function asserts that the returned Check instance contains the expected results.
 func TestWindowsDefender(t *testing.T) {
 	tests := []struct {
 		name        string

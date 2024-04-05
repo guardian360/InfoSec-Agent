@@ -33,11 +33,15 @@ var MenuItems []MenuItem
 var ReportingPageOpen = false
 var mQuit *systray.MenuItem
 
+// TODO: fix this comment once copilot decides to cooperate
+
 type MenuItem struct {
 	MenuTitle   string
 	menuTooltip string
 	sysMenuItem *systray.MenuItem
 }
+
+// TODO: fix this comment once copilot decides to cooperate
 
 // OnReady handles all actions that should be handled during the application run-time
 //
@@ -123,6 +127,8 @@ func OnReady() {
 	}
 }
 
+// TODO: fix this comment once copilot decides to cooperate
+
 // OnQuit handles all actions that should happen when the application exits/terminates
 //
 // Parameters: _
@@ -130,6 +136,8 @@ func OnReady() {
 // Returns: _
 func OnQuit() {
 }
+
+// TODO: fix this comment once copilot decides to cooperate
 
 // OpenReportingPage opens the reporting page using a Wails application
 //
@@ -197,6 +205,8 @@ func OpenReportingPage(path string) error {
 	return nil
 }
 
+// TODO: fix this comment once copilot decides to cooperate
+
 // ChangeScanInterval provides the user with a dialog window to set the (new) scan interval
 //
 // Parameters: optional string testInput, used in tray_test.go
@@ -230,6 +240,8 @@ func ChangeScanInterval(testInput ...string) {
 	ScanTicker = time.NewTicker(time.Duration(interval) * time.Hour)
 	log.Printf("Scan interval changed to %d hours\n", interval)
 }
+
+// TODO: fix this comment once copilot decides to cooperate
 
 // ScanNow performs one scan iteration (without checking if it is scheduled)
 //
@@ -272,6 +284,8 @@ func ScanNow() ([]checks.Check, error) {
 	return result, nil
 }
 
+// TODO: fix this comment once copilot decides to cooperate
+
 // ChangeLanguage provides the user with a dialog window to change the language of the application
 //
 // Parameters: _
@@ -313,6 +327,8 @@ func ChangeLanguage(testInput ...string) {
 	}
 }
 
+// TODO: fix this comment once copilot decides to cooperate
+
 // RefreshMenu updates the menu items with the current language
 //
 // Parameters: _
@@ -324,6 +340,8 @@ func RefreshMenu() {
 		item.sysMenuItem.SetTooltip(localization.Localize(language, item.menuTooltip))
 	}
 }
+
+// TODO: fix this comment once copilot decides to cooperate
 
 // Language returns the current language index
 //

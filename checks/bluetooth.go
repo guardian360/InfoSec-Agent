@@ -6,11 +6,15 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
 )
 
-// Bluetooth checks for bluetooth devices which are / have been connected to the system
+// Bluetooth is a function that checks for Bluetooth devices which are currently connected or have been previously connected to the system.
 //
-// Parameters: _
+// Parameters:
+//   - registryKey (registrymock.RegistryKey): The registry key used to access the system's registry.
 //
-// Returns: A list of bluetooth devices
+// Returns:
+//   - Check: A Check object that encapsulates the results of the Bluetooth check. The Check object includes a list of strings, where each string represents a Bluetooth device that is currently or was previously connected to the system. If an error occurs during the Bluetooth check, the Check object will encapsulate this error.
+//
+// This function first opens the registry key for Bluetooth devices. It then reads the names of all subkeys, which represent Bluetooth devices. For each device, the function opens the device subkey, retrieves the device name, and adds it to the results. If an error occurs at any point during this process, it is encapsulated in the Check object and returned.
 func Bluetooth(registryKey registrymock.RegistryKey) Check {
 	var err error
 	var deviceKey registrymock.RegistryKey

@@ -9,11 +9,14 @@ import (
 	"golang.org/x/sys/windows/registry"
 )
 
-// TestLoginMethod tests the LoginMethod function with (in)valid inputs
+// TestLoginMethod is a function that tests the behavior of the LoginMethod function with various inputs.
 //
-// Parameters: t (testing.T) - the testing framework
+// Parameters:
+//   - t *testing.T: The testing framework provided by the Go testing package. It provides methods for reporting test failures and logging additional information.
 //
-// Returns: _
+// Returns: None
+//
+// This function tests the LoginMethod function with different scenarios. It uses a mock implementation of the RegistryKey interface to simulate the behavior of the Windows login methods registry key. Each test case checks if the LoginMethod function correctly identifies the enabled login methods based on the simulated registry key values. The function asserts that the returned Check instance contains the expected results.
 func TestLoginMethod(t *testing.T) {
 	tests := []struct {
 		name string
@@ -95,11 +98,14 @@ func TestLoginMethod(t *testing.T) {
 	}
 }
 
-// TestRegistryOutput tests that the right registry key is retrieved
+// TestRegistryOutputLoginMethod is a function that verifies the correct registry key is retrieved for the LoginMethod function.
 //
-// Parameters: t (testing.T) - the testing framework
+// Parameters:
+//   - t *testing.T: The testing framework provided by the Go testing package. It provides methods for reporting test failures and logging additional information.
 //
-// Returns: _
+// Returns: None
+//
+// This function opens the registry key for the Windows login methods and retrieves the value names. It checks if the retrieved value names are not empty, indicating that the correct registry key has been accessed. If the value names are empty, the function reports a test failure. This test ensures that the LoginMethod function is reading from the correct registry key.
 func TestRegistryOutputLoginMethod(t *testing.T) {
 	path := "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Authentication\\LogonUI\\UserTile"
 

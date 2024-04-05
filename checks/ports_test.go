@@ -10,11 +10,14 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
 )
 
-// TestOpenPorts tests the OpenPorts function with different (in)valid inputs
+// TestOpenPorts is a function that tests the OpenPorts function's ability to correctly identify open ports and the processes using them.
 //
-// Parameters: t (testing.T) - the testing framework
+// Parameters:
+//   - t *testing.T: The testing framework provided by the Go testing package. It provides methods for reporting test failures and logging additional information.
 //
-// Returns: _
+// Returns: None
+//
+// This function tests the OpenPorts function with different scenarios. It uses mock implementations of the CommandExecutor interface to simulate the output of 'tasklist' and 'netstat' commands. Each test case checks if the OpenPorts function correctly identifies the open ports and the processes using them based on the simulated command outputs. The function asserts that the returned Check instance contains the expected results or error messages.
 func TestOpenPorts(t *testing.T) {
 	tests := []struct {
 		name             string
@@ -81,11 +84,14 @@ func TestOpenPorts(t *testing.T) {
 	}
 }
 
-// TestPortsExpected
+// TestPortsExpected is a function that tests if the output of the 'tasklist' and 'netstat' commands match the expected results.
 //
-// Parameters: t (testing.T) - the testing framework
+// Parameters:
+//   - t *testing.T: The testing framework provided by the Go testing package. It provides methods for reporting test failures and logging additional information.
 //
-// Returns: _
+// Returns: None
+//
+// This function tests the 'tasklist' and 'netstat' commands by comparing their output with the expected results. It uses the RealCommandExecutor to execute the commands and retrieve their output. The function then checks if the output matches the expected results. If the output does not match the expected results, the function reports a test failure.
 func TestPortsExpected(t *testing.T) {
 	tests := []struct {
 		name      string

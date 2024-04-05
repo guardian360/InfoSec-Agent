@@ -9,11 +9,15 @@ import (
 
 // TODO: Improve formatting of output, check more classes
 
-// ExternalDevices checks for external devices connected to the system
+// ExternalDevices performs a security check for external devices connected to the system.
 //
-// Parameters: _
+// Parameters:
+//   - executorClass (commandmock.CommandExecutor): An instance of CommandExecutor used to execute system commands.
 //
-// Returns: list of external devices
+// Returns:
+//   - Check: A Check instance encapsulating the results of the external devices check. If any external devices are found, their names are included in the Result field of the Check instance. If an error occurs during the check, it is encapsulated in the Error and ErrorMSG fields of the Check instance.
+//
+// This function is primarily used to identify potential security risks associated with external devices connected to the system.
 func ExternalDevices(executorClass commandmock.CommandExecutor) Check {
 	// All the classes you want to check with the Get-PnpDevice command
 	classesToCheck := [2]string{"Mouse", "Camera"}
@@ -31,11 +35,17 @@ func ExternalDevices(executorClass commandmock.CommandExecutor) Check {
 	return NewCheckResult("externaldevices", outputs...)
 }
 
-// CheckDeviceClass runs a specific class within the Get-PnpDevice command
+// CheckDeviceClass executes the Get-PnpDevice command for a specific device class.
 //
-// Parameters: deviceClass (string) representing the class to check with the Get-PnpDevice command
+// Parameters:
+//   - deviceClass (string): The device class to check with the Get-PnpDevice command.
+//   - executorClass (commandmock.CommandExecutor): An instance of CommandExecutor used to execute system commands.
 //
-// Returns: list of devices of the given class
+// Returns:
+//   - ([]string): A list of devices belonging to the specified device class. Each string represents a device name.
+//   - (error): An error object that captures any error that occurred during the execution of the command. If no devices are found, an error is returned.
+//
+// This function is primarily used to identify devices of a specific class connected to the system. It executes the Get-PnpDevice command with the specified device class and parses the output to extract the device names. If no devices are found, it returns an error.
 func CheckDeviceClass(deviceClass string, executorClass commandmock.CommandExecutor) ([]string, error) {
 	// Run the Get-PnpDevice command with the given class
 	command := "powershell"

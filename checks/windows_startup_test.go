@@ -8,11 +8,14 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
 )
 
-// TestStartup tests the Startup function on (in)valid input
+// TestStartup is a function that tests the behavior of the Startup function with various inputs.
 //
-// Parameters: t (testing.T) - the testing framework
+// Parameters:
+//   - t *testing.T: The testing framework provided by the Go testing package. It provides methods for reporting test failures and logging additional information.
 //
-// Returns: _
+// Returns: None
+//
+// This function tests the Startup function with different scenarios. It uses a mock implementation of the RegistryKey interface to simulate the behavior of the registry keys where startup programs can be located. Each test case checks if the Startup function correctly identifies the presence of startup programs based on the simulated registry key values. The function asserts that the returned Check instance contains the expected results.
 func TestStartup(t *testing.T) {
 	tests := []struct {
 		name string

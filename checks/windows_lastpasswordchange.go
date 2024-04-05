@@ -11,11 +11,15 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 )
 
-// LastPasswordChange checks when the Windows password was last changed
+// LastPasswordChange is a function that checks the last time the Windows password was changed.
 //
-// Parameters: _
+// Parameters:
+//   - executor commandmock.CommandExecutor: An executor to run the command for retrieving the last password change date.
 //
-// Returns: When the password was last changed
+// Returns:
+//   - Check: A struct containing the result of the check. The result indicates the date when the password was last changed.
+//
+// The function works by executing a 'net user' command to get the user's password last set date. It then parses the output of the command to extract the date. The function compares this date with the current date and if the difference is more than half a year, it returns a warning suggesting the user to change the password. Otherwise, it returns a message indicating that the password was changed recently.
 func LastPasswordChange(executor commandmock.CommandExecutor) Check {
 	// Get the current Windows username
 	username, err := utils.CurrentUsername()

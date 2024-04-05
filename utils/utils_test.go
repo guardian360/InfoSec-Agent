@@ -9,6 +9,8 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+// TODO: fix this comment once copilot decides to cooperate
+
 // TestCopyFileSuccess tests the CopyFile function with a valid source and destination file
 //
 // Parameters: t *testing.T - The testing framework
@@ -25,6 +27,8 @@ func TestCopyFileSuccess(t *testing.T) {
 	require.NoError(t, err)
 }
 
+// TODO: fix this comment once copilot decides to cooperate
+
 // TestCopyFileFailNonexistentSource tests the CopyFile function with a nonexistent source file
 //
 // Parameters: t *testing.T - The testing framework
@@ -36,6 +40,8 @@ func TestCopyFileFailNonexistentSource(t *testing.T) {
 	err := utils.CopyFile(src, dst)
 	require.Error(t, err)
 }
+
+// TODO: fix this comment once copilot decides to cooperate
 
 // TestCopyFileFailNonexistentDestination tests the CopyFile function with a nonexistent destination folder
 //
@@ -51,6 +57,8 @@ func TestCopyFileFailNonexistentDestination(t *testing.T) {
 	require.Error(t, err)
 }
 
+// TODO: fix this comment once copilot decides to cooperate
+
 // TestPhishingDomainsReturnsResults ensures the GetPhishingDomains function returns results
 //
 // Parameters: t *testing.T - The testing framework
@@ -60,6 +68,8 @@ func TestPhishingDomainsReturnsResults(t *testing.T) {
 	domains := utils.GetPhishingDomains()
 	require.NotEmpty(t, domains)
 }
+
+// TODO: fix this comment once copilot decides to cooperate
 
 // TestFirefoxFolder tests the FirefoxFolder function
 //
@@ -76,6 +86,8 @@ func TestPhishingDomainsReturnsResults(t *testing.T) {
 //	require.NotEmpty(t, folders)
 //}
 
+// TODO: fix this comment once copilot decides to cooperate
+
 // TestCurrentUserNameReturnsResults ensures the CurrentUserName function returns a result
 //
 // Parameters: t *testing.T - The testing framework
@@ -86,6 +98,8 @@ func TestCurrentUsernameReturnsResult(t *testing.T) {
 	require.NoError(t, err)
 	require.NotEmpty(t, username)
 }
+
+// TODO: fix this comment once copilot decides to cooperate
 
 // TestRemoveDuplicateStrRemovesDuplicates ensures the function works as intended
 //
@@ -99,6 +113,8 @@ func TestRemoveDuplicateStrRemovesDuplicates(t *testing.T) {
 	require.Equal(t, expected, result)
 }
 
+// TODO: fix this comment once copilot decides to cooperate
+
 // TestRemoveDuplicateStrEmptyInput ensures the function works as intended with an empty input
 //
 // Parameters: t *testing.T - The testing framework
@@ -111,6 +127,8 @@ func TestRemoveDuplicateStrEmptyInput(t *testing.T) {
 	require.Equal(t, expected, result)
 }
 
+// TODO: fix this comment once copilot decides to cooperate
+
 // TestCloseFileNoError ensures the CloseFile function works as intended
 //
 // Parameters: t *testing.T - The testing framework
@@ -121,6 +139,8 @@ func TestCloseFileNoError(t *testing.T) {
 	err := utils.CloseFile(file)
 	require.NoError(t, err)
 }
+
+// TODO: fix this comment once copilot decides to cooperate
 
 // TestCloseFileWhenFileWasAlreadyClosed ensures the CloseFile function works as intended when the file was already closed
 //
@@ -134,6 +154,8 @@ func TestCloseFileWhenFileWasAlreadyClosed(t *testing.T) {
 	err = utils.CloseFile(file)
 	require.Error(t, err)
 }
+
+// TODO: fix this comment once copilot decides to cooperate
 
 // TestCloseFileWhenFileIsNil ensures the CloseFile function works as intended when the file is nil
 //
