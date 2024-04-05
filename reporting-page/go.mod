@@ -3,7 +3,7 @@ module github.com/InfoSec-Agent/InfoSec-Agent/reporting-page
 go 1.22.0
 
 require (
-	github.com/InfoSec-Agent/InfoSec-Agent v0.0.0-20240402081353-d114b73b6dc4
+	github.com/InfoSec-Agent/InfoSec-Agent v0.0.0-20240405123729-6bc5fc7301a6
 	github.com/wailsapp/wails/v2 v2.8.0
 )
 
@@ -38,7 +38,6 @@ require (
 	github.com/leaanthony/u v1.1.0 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
-	github.com/mattn/go-sqlite3 v1.14.22 // indirect
 	github.com/ncruces/go-strftime v0.1.9 // indirect
 	github.com/ncruces/zenity v0.10.12 // indirect
 	github.com/nicksnyder/go-i18n/v2 v2.4.0 // indirect

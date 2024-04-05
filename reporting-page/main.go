@@ -7,6 +7,8 @@ package main
 
 import (
 	"embed"
+	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
+	"log"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/localization"
 	"github.com/wailsapp/wails/v2"
@@ -26,16 +28,17 @@ var assets embed.FS
 func main() {
 	// Create a new instance of the app and tray struct
 	app := NewApp()
-	tray := NewTray()
+	tray := NewTray(logger.NewCustomLogger())
 	database := NewDataBase()
+	customLogger := logger.NewCustomLogger()
 	localization.Init("../")
 
 	// Create a Wails application with the specified options
 	err := wails.Run(&options.App{
-		Title:  "reporting-page",
-		Width:  1024,
-		Height: 768,
-		//StartHidden: true,
+		Title:       "reporting-page",
+		Width:       1024,
+		Height:      768,
+		StartHidden: true,
 		AssetServer: &assetserver.Options{
 			Assets: assets,
 		},
@@ -46,6 +49,7 @@ func main() {
 			tray,
 			database,
 		},
+		Logger: customLogger,
 		Windows: &windows.Options{
 			Theme: windows.SystemDefault,
 			CustomTheme: &windows.ThemeSettings{
@@ -60,6 +64,18 @@ func main() {
 	})
 
 	if err != nil {
-		// log.Println("Error:", err.Error())
+		log.Println("Error:", err.Error())
 	}
+}
+
+type Logger struct {
+}
+
+func NewLogger() *Logger {
+	return &Logger{}
+}
+
+func (l *Logger) Log(message string) {
+	// Here you can use your logger
+	logger.Log.Println(message)
 }
