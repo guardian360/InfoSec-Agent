@@ -34,5 +34,6 @@ func NewDataBase() *DataBase {
 //   - []scan.Severity: A list of severity levels for each check, in the order the checks were provided.
 //   - error: An error object that describes the error, if any occurred. nil if no error occurred.
 func (d *DataBase) GetAllSeverities(checks []checks.Check, resultIDs []int) ([]scan.Severity, error) {
-	return scan.GetAllSeverities(checks, resultIDs)
+	// return scan.GetAllSeverities(checks, resultIDs)
+	return nil, nil
 }

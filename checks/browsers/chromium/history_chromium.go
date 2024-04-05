@@ -2,10 +2,11 @@ package chromium
 
 import (
 	"database/sql"
-	"log"
 	"os"
 	"path/filepath"
 	"regexp"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 
@@ -53,7 +54,7 @@ func HistoryChromium(browser string) checks.Check {
 	defer func(name string) {
 		err = os.Remove(name)
 		if err != nil {
-			log.Println("error removing file: ", err)
+			logger.Log.Println("error removing file: ", err)
 		}
 	}(tempHistoryDB)
 
@@ -96,7 +97,7 @@ func HistoryChromium(browser string) checks.Check {
 // It does not return any value.
 func closeDatabase(db *sql.DB) {
 	if err := db.Close(); err != nil {
-		log.Println("error closing database: ", err)
+		logger.Log.Println("error closing database: ", err)
 	}
 }
 
@@ -131,7 +132,7 @@ func queryDatabase(db *sql.DB) (*sql.Rows, error) {
 // It does not return any value.
 func closeRows(rows *sql.Rows) {
 	if err := rows.Close(); err != nil {
-		log.Println("error closing rows: ", err)
+		logger.Log.Println("error closing rows: ", err)
 	}
 }
 

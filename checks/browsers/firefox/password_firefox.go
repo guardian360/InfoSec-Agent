@@ -2,9 +2,10 @@ package firefox
 
 import (
 	"encoding/json"
-	"log"
 	"os"
 	"strconv"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
@@ -32,7 +33,7 @@ func PasswordFirefox() checks.Check {
 	defer func(content *os.File) {
 		err = content.Close()
 		if err != nil {
-			log.Println("error closing file: ", err)
+			logger.Log.Println("error closing file: ", err)
 		}
 	}(content)
 

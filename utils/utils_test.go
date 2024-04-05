@@ -2,12 +2,26 @@ package utils_test
 
 import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/filemock"
+	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"os"
 	"testing"
 
 	"github.com/stretchr/testify/require"
 )
+
+func TestMain(m *testing.M) {
+	// Setup
+	logger.SetupTests()
+
+	// Run the tests
+	code := m.Run()
+
+	// Teardown
+
+	// Exit with the code returned from the tests
+	os.Exit(code)
+}
 
 // TestCopyFileSuccess validates the behavior of the CopyFile function when provided with a valid source and destination file.
 //

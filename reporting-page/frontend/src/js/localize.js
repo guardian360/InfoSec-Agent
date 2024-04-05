@@ -1,4 +1,4 @@
-import {Localize as localize} from '../../wailsjs/go/main/App';
+import {Localize as localize} from '../../wailsjs/go/main/App.js';
 /**
  * Retrieves localized message using the provided message ID and updates HTML elements with the specified class.
  * @param {string} messageId - The ID of the message to be localized.

@@ -2,6 +2,7 @@ package tray_test
 
 import (
 	"bytes"
+	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/tray"
 	"log"
 	"os"
@@ -25,8 +26,9 @@ import (
 //
 // Returns: None. The function calls os.Exit with the exit code returned by m.Run().
 func TestMain(m *testing.M) {
-	// Initialize systray
+	logger.SetupTests()
 
+	// Initialize systray
 	go localization.Init("../")
 	time.Sleep(100 * time.Millisecond)
 
@@ -75,7 +77,7 @@ func TestChangeScanInterval(t *testing.T) {
 	// Iterate over test cases
 	for _, tc := range testCases {
 		var buf bytes.Buffer
-		log.SetOutput(&buf)
+		logger.Log.SetOutput(&buf)
 
 		// Run the function with mocked user input
 		go tray.ChangeScanInterval(tc.input)

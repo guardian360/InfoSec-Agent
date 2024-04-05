@@ -1,6 +1,5 @@
-import {closeNavigation} from './navigation-menu';
-import {markSelectedNavigationItem} from './navigation-menu';
-import {retrieveTheme} from './personalize';
+import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
+import {retrieveTheme} from './personalize.js';
 
 /** Load the content of the Integration page */
 function openIntegrationPage() {

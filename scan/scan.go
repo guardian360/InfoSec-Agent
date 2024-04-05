@@ -6,12 +6,12 @@ package scan
 import (
 	"encoding/json"
 	"fmt"
-	"log"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/chromium"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/firefox"
 	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
+	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
 	"github.com/InfoSec-Agent/InfoSec-Agent/windowsmock"
 	"golang.org/x/sys/windows/registry"
@@ -105,7 +105,7 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 		// Display the currently running check in the progress dialog
 		err := dialog.Text(fmt.Sprintf("Running check %d of %d", i+1, totalChecks))
 		if err != nil {
-			log.Println("Error setting progress text:", err)
+			logger.Log.Println("Error setting progress text:", err)
 			return checkResults, err
 		}
 
@@ -116,7 +116,7 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 		progress := float64(i+1) / float64(totalChecks) * 100
 		err = dialog.Value(int(progress))
 		if err != nil {
-			log.Println("Error setting progress value:", err)
+			logger.Log.Println("Error setting progress value:", err)
 			return checkResults, err
 		}
 	}
@@ -124,10 +124,10 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 	// Serialize check results to JSON
 	jsonData, err := json.MarshalIndent(checkResults, "", "  ")
 	if err != nil {
-		log.Println("Error marshalling JSON:", err)
+		logger.Log.Println("Error marshalling JSON:", err)
 		return checkResults, err
 	}
-	log.Println(string(jsonData))
+	logger.Log.Println(string(jsonData))
 
 	return checkResults, nil
 

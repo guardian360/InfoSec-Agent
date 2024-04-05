@@ -1,12 +1,27 @@
 package registrymock_test
 
 import (
+	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
+	"os"
 	"testing"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
 	"github.com/stretchr/testify/require"
 	"golang.org/x/sys/windows/registry"
 )
+
+func TestMain(m *testing.M) {
+	// Setup
+	logger.SetupTests()
+
+	// Run the tests
+	code := m.Run()
+
+	// Teardown
+
+	// Exit with the code returned from the tests
+	os.Exit(code)
+}
 
 // TestOpenRegistryKeyValidInput validates the functionality of the OpenRegistryKey function when provided with valid input.
 //
