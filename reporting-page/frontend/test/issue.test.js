@@ -1,3 +1,4 @@
+import 'jsdom-global/register.js';
 import test from 'unit.js';
 import { JSDOM } from "jsdom";
 import { openIssuePage } from "../src/js/issue.js";

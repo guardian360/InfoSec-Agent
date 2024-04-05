@@ -156,5 +156,9 @@ export function sortTable(tbody, column) {
   table.setAttribute("data-sort-direction", direction);
 }
 if (typeof document !== 'undefined') {
-  document.getElementById("issues-button").addEventListener("click", () => openIssuesPage());
+  try {
+    document.getElementById("issues-button").addEventListener("click", () => openIssuesPage());
+  } catch (error) {
+    console.log("Error in issues.js: " + error)
+  }
 }

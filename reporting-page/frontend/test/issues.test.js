@@ -1,3 +1,4 @@
+import 'jsdom-global/register.js';
 import test from 'unit.js';
 import { fillTable } from '../src/js/issues.js';
 import { sortTable } from '../src/js/issues.js';

@@ -1,3 +1,4 @@
+import 'jsdom-global/register.js';
 import test from 'unit.js';
 import { JSDOM } from "jsdom";
 import { MarkSelectedNavigationItem, CloseNavigation, ToggleNavigationHamburger, ToggleNavigationResize } from '../src/js/navigation-menu.js';

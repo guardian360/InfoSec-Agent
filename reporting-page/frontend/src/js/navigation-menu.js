@@ -55,11 +55,17 @@ export function ToggleNavigationResize() {
     }
 }
 
-document.getElementById("header-hambuger").addEventListener("click", () => ToggleNavigationHamburger());
-document.body.onresize = () => ToggleNavigationResize();
+if (typeof document !== 'undefined') {
+    try {
+        document.getElementById("header-hambuger").addEventListener("click", () => ToggleNavigationHamburger());
+        document.body.onresize = () => ToggleNavigationResize();
 
-let navbarItems = ["settings", "home", "security-dashboard","privacy-dashboard", "issues", "integration", "about"]
-let localizationIds = ["Navigation.Settings", "Navigation.Home", "Navigation.SecurityDashboard", "Navigation.PrivacyDashboard", "Navigation.Issues", "Navigation.Integration", "Navigation.About"]
-for (let i = 0; i < navbarItems.length; i++) {
-    GetLocalization(localizationIds[i], navbarItems[i])
+        let navbarItems = ["settings", "home", "security-dashboard","privacy-dashboard", "issues", "integration", "about"]
+        let localizationIds = ["Navigation.Settings", "Navigation.Home", "Navigation.SecurityDashboard", "Navigation.PrivacyDashboard", "Navigation.Issues", "Navigation.Integration", "Navigation.About"]
+        for (let i = 0; i < navbarItems.length; i++) {
+            GetLocalization(localizationIds[i], navbarItems[i])
+        }
+    } catch (error) {
+        console.log("Error in navigation-menu.js: " + error)
+    }
 }

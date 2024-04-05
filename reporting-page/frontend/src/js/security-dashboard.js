@@ -191,7 +191,11 @@ function openSecurityDashboardPage() {
 }
 
 if (typeof document !== 'undefined') {
-  document.getElementById("security-dashboard-button").addEventListener("click", () => openSecurityDashboardPage());
+  try {
+    document.getElementById("security-dashboard-button").addEventListener("click", () => openSecurityDashboardPage());
+  } catch (error) {
+    console.log("Error in security-dashboard.js: " + error);
+  }
 }
 
 /** Changes the risk counters to show the correct values 
