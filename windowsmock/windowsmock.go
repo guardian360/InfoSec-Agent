@@ -5,10 +5,14 @@ import (
 	"golang.org/x/sys/windows"
 )
 
-// TODO: fix this comment once copilot decides to cooperate
-
-// WindowsVersion is an interface for reading the Windows version
-// You can use RtlGetVersion to give custom Windows version information back
+// WindowsVersion is an interface that defines a contract for retrieving Windows version information.
+// It exposes a single method, RtlGetVersion, which is expected to return an instance of windows.OsVersionInfoEx.
+//
+// Implementations of this interface can provide either real or mocked Windows version information,
+// making it useful in a variety of scenarios such as testing and simulation.
+//
+// The RtlGetVersion method is designed to return custom Windows version information,
+// allowing for flexibility and control over the reported Windows version.
 type WindowsVersion interface {
 	RtlGetVersion() *windows.OsVersionInfoEx
 }
@@ -29,22 +33,39 @@ type MockWindowsVersion struct {
 	BuildNumber  uint32
 }
 
-// TODO: fix this comment once copilot decides to cooperate
-
-// RtlGetVersion with the MockWindowsVersion pointer returns the custom Windows version information
+// RtlGetVersion returns a custom Windows version information when called on a MockWindowsVersion instance.
+// This method is primarily used in testing scenarios where specific Windows version information is required.
+//
+// The returned OsVersionInfoEx object contains the following fields:
+//   - MajorVersion: Simulates the major version of the Windows OS.
+//   - MinorVersion: Simulates the minor version of the Windows OS.
+//   - BuildNumber: Simulates the build number of the Windows OS.
+//
+// Returns:
+//   - *windows.OsVersionInfoEx: A pointer to an OsVersionInfoEx object that contains the custom Windows version information.
 func (m *MockWindowsVersion) RtlGetVersion() *windows.OsVersionInfoEx {
 	return &windows.OsVersionInfoEx{MajorVersion: m.MajorVersion, MinorVersion: m.MinorVersion, BuildNumber: m.BuildNumber}
 }
 
-// TODO: fix this comment once copilot decides to cooperate
-
-// RealWindowsVersion is the real implementation of the WindowsVersion interface
+// RealWindowsVersion is a struct that provides the actual version information of the Windows operating system.
+//
+// It implements the WindowsVersion interface by providing a RtlGetVersion method that returns a genuine windows.OsVersionInfoEx object.
+//
+// This struct is typically used in production scenarios where accurate Windows version information is required.
 type RealWindowsVersion struct {
 }
 
-// TODO: fix this comment once copilot decides to cooperate
-
-// RtlGetVersion with the RealWindowsVersion pointer returns the real Windows version information
+// RtlGetVersion retrieves the actual Windows version information when called on a RealWindowsVersion instance.
+//
+// This method is typically used in production scenarios where accurate Windows version information is required.
+//
+// The returned OsVersionInfoEx object contains the actual version information of the Windows operating system, including:
+//   - MajorVersion: The major version of the Windows OS.
+//   - MinorVersion: The minor version of the Windows OS.
+//   - BuildNumber: The build number of the Windows OS.
+//
+// Returns:
+//   - *windows.OsVersionInfoEx: A pointer to an OsVersionInfoEx object that contains the actual Windows version information.
 func (r *RealWindowsVersion) RtlGetVersion() *windows.OsVersionInfoEx {
 	return windows.RtlGetVersion()
 }
