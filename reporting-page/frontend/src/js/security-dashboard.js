@@ -187,7 +187,7 @@ function openSecurityDashboardPage() {
   new PieChart("pieChart",rc);
   let g = new Graph("interval-graph",rc);
   AddGraphFunctions(g);
-  document.getElementsByClassName("scan-now")[0].addEventListener("click", () => ScanNow());
+  document.getElementsByClassName("scan-now")[0].addEventListener("click", () => openSecurityDashboardPage());
   document.onload = retrieveTheme();
 }
 

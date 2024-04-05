@@ -5,6 +5,7 @@ package scan
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
@@ -92,6 +93,8 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 		err := dialog.Text(fmt.Sprintf("Running check %d of %d", i+1, totalChecks))
 		if err != nil {
 			fmt.Println("Error setting progress text:", err)
+			err2 := errors.Unwrap(err)
+			fmt.Println(err2)
 			return checkResults, err
 		}
 

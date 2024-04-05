@@ -1,28 +1,25 @@
 import { ScanNow } from "../../wailsjs/go/main/Tray.js";
-import { GetDataBaseData, GetAllSeverities } from "../../wailsjs/go/main/DataBase.js";
+import { GetDataBaseData } from "../../wailsjs/go/main/DataBase.js";
 import { openHomePage } from "./home.js";
 import * as runTime from "../../wailsjs/runtime/runtime.js";
 import * as rc from "./risk-counters.js"
 
 /** Call ScanNow in backend and store result in sessionStorage */
-try {
-  ScanNow()
-    .then((result) => {
-      // place result in session storage
-      sessionStorage.setItem("ScanResult",JSON.stringify(result));
-      // place severities in session storage
-      setSeverities(result,randomResultIDs(result.length))
 
-      runTime.WindowShow();
-      runTime.WindowMaximise();
-      runTime.LogPrint(sessionStorage.getItem("ScanResult")); 
-    })
-    .catch((err) => {
-      console.error(err);
-    });
-  } catch (err) {
+ScanNow()
+  .then((result) => {
+    // place result in session storage
+    sessionStorage.setItem("ScanResult",JSON.stringify(result));
+    // place severities in session storage
+    setSeverities(result,randomResultIDs(result.length))
+    runTime.WindowShow();
+    runTime.WindowMaximise();
+    runTime.LogPrint(sessionStorage.getItem("ScanResult")); 
+  })
+  .catch((err) => {
     console.error(err);
-}
+  });
+
 
 // counts the occurences of each level: 0 = safe, 1 = low, 2 = medium, 3 = high
 const countOccurences = (severities, level) => severities.filter(item => item.severity === level).length;

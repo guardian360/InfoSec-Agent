@@ -3,8 +3,4 @@
 import {checks} from '../models';
 import {scan} from '../models';
 
-export function GetAllJsonKeys(arg1:Array<checks.Check>,arg2:Array<number>):Promise<Array<scan.JsonKey>>;
-
-export function GetAllSeverities(arg1:Array<checks.Check>,arg2:Array<number>):Promise<Array<scan.Severity>>;
-
 export function GetDataBaseData(arg1:Array<checks.Check>,arg2:Array<number>):Promise<Array<scan.DataBaseData>>;

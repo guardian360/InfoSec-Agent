@@ -9,35 +9,10 @@ import (
 	_ "modernc.org/sqlite"
 )
 
-type Severity struct {
-	CheckId string `json:"checkid"`
-	Level   int    `json:"level"`
-}
-
-type JsonKey struct {
-	CheckId string `json:"id"`
-	Key     string `json:"key"`
-}
-
 type DataBaseData struct {
 	CheckId  string `json:"id"`
 	Severity int    `json:"severity"`
 	JsonKey  string `json:"jsonkey"`
-}
-
-// future enumerator replacing type of level int with SeverityLevel
-type SeverityLevel string
-
-const (
-	Safe   SeverityLevel = "Safe"
-	Low    SeverityLevel = "Low"
-	Medium SeverityLevel = "Medium"
-	High   SeverityLevel = "High"
-)
-
-type SeverityLevels struct {
-	Value  SeverityLevel
-	TSName string
 }
 
 // FillDataBase will remove the current issues table and create a new one filled with dummy values
@@ -55,59 +30,28 @@ func FillDataBase(scanResults []checks.Check) {
 	}
 	fmt.Println("Connected to database")
 
-	// Drop the existing table if it exists
-	_, err = db.Exec("DROP TABLE IF EXISTS issue_names")
-	if err != nil {
-		fmt.Println("Error dropping table:", err)
-		return
-	}
-
-	// Create a new table
-	_, err = db.Exec(`CREATE TABLE issue_names (
-	                    [Name] TEXT PRIMARY KEY,
-						[Issue ID] INTEGER,
-	                    FOREIGN KEY ([Issue ID]) REFERENCES issues([Issue ID])
-	                )`)
-	if err != nil {
-		fmt.Println("Error creating table:", err)
-		return
-	}
-
-	// // Clear rows of issues if they are still there
-	// _, err = db.Exec("DELETE FROM issues")
-	// if err != nil {
-	// 	fmt.Println("Error deleting from table:", err)
-	// }
-
-	// // Add dummy values to table
-	// for i, s := range scanResults {
-	// 	_, err := addIssue(db, s, i, 0, 0)
-	// 	if err != nil {
-	// 		fmt.Println("Error adding issue: ", err)
-	// 	}
-	// 	_, err = addIssue(db, s, i, 1, 1)
-	// 	if err != nil {
-	// 		fmt.Println("Error adding issue: ", err)
-	// 	}
-	// 	_, err = addIssue(db, s, i, 2, 2)
-	// 	if err != nil {
-	// 		fmt.Println("Error adding issue: ", err)
-	// 	}
-	// 	_, err = addIssue(db, s, i, 3, 3)
-	// 	if err != nil {
-	// 		fmt.Println("Error adding issue: ", err)
-	// 	}
-	// }
-
 	// Clear rows of issues if they are still there
-	_, err = db.Exec("DELETE FROM issue_names")
+	_, err = db.Exec("DELETE FROM issues")
 	if err != nil {
 		fmt.Println("Error deleting from table:", err)
 	}
 
 	// Add dummy values to table
+	// addIssue's second argument should become s.id and the specific results and severities should be used
 	for i, s := range scanResults {
-		_, err := addName(db, s, i)
+		_, err := addIssue(db, s, i, 0, 0)
+		if err != nil {
+			fmt.Println("Error adding issue: ", err)
+		}
+		_, err = addIssue(db, s, i, 1, 1)
+		if err != nil {
+			fmt.Println("Error adding issue: ", err)
+		}
+		_, err = addIssue(db, s, i, 2, 2)
+		if err != nil {
+			fmt.Println("Error adding issue: ", err)
+		}
+		_, err = addIssue(db, s, i, 3, 3)
 		if err != nil {
 			fmt.Println("Error adding issue: ", err)
 		}
@@ -141,31 +85,7 @@ func addIssue(db *sql.DB, check checks.Check, issueId int, resultId int, severit
 	fmt.Println("Inserted issue")
 	id, err := result.LastInsertId()
 	if err != nil {
-		return 0, fmt.Errorf("addIssue: %v", err)
-	}
-	return id, nil
-}
-
-// addName will add a single entry in the issue_names table
-//
-// Parameters:
-//
-// db (*sql.DB) - database connection where table resides
-//
-// check (checks.Check) - the issue to be added
-//
-// issueId (int) - id of the issue
-//
-// Returns: returns index of the added row in the table
-func addName(db *sql.DB, check checks.Check, issueId int) (int64, error) {
-	result, err := db.Exec("INSERT INTO issue_names ([Name], [Issue ID]) VALUES (?, ?)", check.Id, issueId)
-	if err != nil {
-		return 0, fmt.Errorf("addIssue: %v", err)
-	}
-	fmt.Println("Inserted issue")
-	id, err := result.LastInsertId()
-	if err != nil {
-		return 0, fmt.Errorf("addIssue: %v", err)
+		return id, fmt.Errorf("addIssue: %v", err)
 	}
 	return id, nil
 }

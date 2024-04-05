@@ -37,34 +37,6 @@ export namespace scan {
 	        this.jsonkey = source["jsonkey"];
 	    }
 	}
-	export class JsonKey {
-	    id: string;
-	    key: string;
-	
-	    static createFrom(source: any = {}) {
-	        return new JsonKey(source);
-	    }
-	
-	    constructor(source: any = {}) {
-	        if ('string' === typeof source) source = JSON.parse(source);
-	        this.id = source["id"];
-	        this.key = source["key"];
-	    }
-	}
-	export class Severity {
-	    checkid: string;
-	    level: number;
-	
-	    static createFrom(source: any = {}) {
-	        return new Severity(source);
-	    }
-	
-	    constructor(source: any = {}) {
-	        if ('string' === typeof source) source = JSON.parse(source);
-	        this.checkid = source["checkid"];
-	        this.level = source["level"];
-	    }
-	}
 
 }
 
