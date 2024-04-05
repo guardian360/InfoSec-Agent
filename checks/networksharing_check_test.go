@@ -2,10 +2,11 @@ package checks_test
 
 import (
 	"errors"
+	"github.com/stretchr/testify/require"
+	"testing"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
-	"reflect"
-	"testing"
 )
 
 func TestNetworkSharing(t *testing.T) {
@@ -14,11 +15,13 @@ func TestNetworkSharing(t *testing.T) {
 		executor commandmock.CommandExecutor
 		want     checks.Check
 	}{
-		// TODO: Add test cases.
 		{
-			name:     "Get-NetAdapterBinding command error",
-			executor: &commandmock.MockCommandExecutor{Output: "", Err: errors.New("error executing command Get-NetAdapterBinding")},
-			want:     checks.NewCheckErrorf("NetworkSharing", "error executing command Get-NetAdapterBinding", errors.New("error executing command Get-NetAdapterBinding")),
+			name: "Get-NetAdapterBinding command error",
+			executor: &commandmock.MockCommandExecutor{Output: "",
+				Err: errors.New("error executing command Get-NetAdapterBinding")},
+			want: checks.NewCheckErrorf("NetworkSharing",
+				"error executing command Get-NetAdapterBinding",
+				errors.New("error executing command Get-NetAdapterBinding")),
 		},
 		{
 			name:     "Network sharing is enabled",
@@ -43,9 +46,8 @@ func TestNetworkSharing(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := checks.NetworkSharing(tt.executor); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("NetworkSharing() = %v, want %v", got, tt.want)
-			}
+			got := checks.NetworkSharing(tt.executor)
+			require.Equal(t, tt.want, got)
 		})
 	}
 }

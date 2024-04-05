@@ -4,7 +4,8 @@
 package utils
 
 import (
-	"fmt"
+	"context"
+	"errors"
 	"io"
 	"log"
 	"net/http"
@@ -27,7 +28,7 @@ func CopyFile(src, dst string) error {
 		return err
 	}
 	defer func(sourceFile *os.File) {
-		err := sourceFile.Close()
+		err = sourceFile.Close()
 		if err != nil {
 			log.Printf("error closing source file: %v", err)
 		}
@@ -38,7 +39,7 @@ func CopyFile(src, dst string) error {
 		return err
 	}
 	defer func(destinationFile *os.File) {
-		err := destinationFile.Close()
+		err = destinationFile.Close()
 		if err != nil {
 			log.Printf("error closing destination file: %v", err)
 		}
@@ -60,16 +61,15 @@ func CopyFile(src, dst string) error {
 func GetPhishingDomains() []string {
 	// Get the phishing domains from up-to-date GitHub list
 	client := &http.Client{}
-	url := fmt.Sprintf(
-		"https://raw.githubusercontent.com/mitchellkrogza/Phishing.Database/master/phishing-domains-ACTIVE.txt")
-	req, err := http.NewRequest("GET", url, nil)
+	url := "https://raw.githubusercontent.com/mitchellkrogza/Phishing.Database/master/phishing-domains-ACTIVE.txt"
+	req, err := http.NewRequestWithContext(context.Background(), http.MethodGet, url, nil)
 	req.Header.Add("User-Agent", "Mozilla/5.0")
 	if err != nil {
 		log.Fatal(err)
 	}
 	resp, err := client.Do(req)
 	defer func(Body io.ReadCloser) {
-		err := Body.Close()
+		err = Body.Close()
 		if err != nil {
 			log.Printf("error closing response body: %v", err)
 		}
@@ -81,6 +81,9 @@ func GetPhishingDomains() []string {
 
 	// Parse the response of potential scam domains and split it into a list of domains
 	scamDomainsResponse, err := io.ReadAll(resp.Body)
+	if err != nil {
+		log.Println("Error reading response body:", err)
+	}
 	return strings.Split(string(scamDomainsResponse), "\n")
 }
 
@@ -105,7 +108,7 @@ func FirefoxFolder() ([]string, error) {
 		return nil, err
 	}
 	defer func(dir *os.File) {
-		err := dir.Close()
+		err = dir.Close()
 		if err != nil {
 			log.Printf("error closing directory: %v", err)
 		}
@@ -126,9 +129,10 @@ func FirefoxFolder() ([]string, error) {
 		}
 	}
 	var profileList []string
+	var content []byte
 	// Loop through all the folders to check if they have a logins.json file.
 	for _, folder := range folders {
-		content, err := os.ReadFile(filepath.Clean(profilesDir + "\\" + folder + "\\logins.json"))
+		content, err = os.ReadFile(filepath.Clean(profilesDir + "\\" + folder + "\\logins.json"))
 		if err != nil {
 			continue
 		}
@@ -147,7 +151,7 @@ func FirefoxFolder() ([]string, error) {
 func CurrentUsername() (string, error) {
 	currentUser, err := user.Current()
 	if currentUser.Username == "" || err != nil {
-		return "", fmt.Errorf("failed to retrieve current username")
+		return "", errors.New("failed to retrieve current username")
 	}
 	return strings.Split(currentUser.Username, "\\")[1], nil
 }

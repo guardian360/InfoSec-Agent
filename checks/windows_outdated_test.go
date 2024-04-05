@@ -1,10 +1,11 @@
 package checks_test
 
 import (
+	"github.com/stretchr/testify/require"
+	"testing"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/windowsmock"
-	"reflect"
-	"testing"
 )
 
 // TestWindowsOutdated tests the WindowsOutdated function with different (in)valid inputs
@@ -53,9 +54,7 @@ func TestWindowsOutdated(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got := checks.WindowsOutdated(tt.mockOS)
-			if !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("WindowsOutdated() = %v, want %v", got, tt.want)
-			}
+			require.Equal(t, tt.want, got)
 		})
 	}
 }

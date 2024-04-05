@@ -1,15 +1,15 @@
-import { CloseNavigation, MarkSelectedNavigationItem } from "./navigation-menu.js";
-import { retrieveTheme } from "./personalize.js";
+import {closeNavigation,markSelectedNavigationItem} from './navigation-menu';
+import {retrieveTheme} from './personalize';
 
 /** Load the content of the About page */
 function openAboutPage() {
-  CloseNavigation();
-  MarkSelectedNavigationItem("about-button");
-  
-  document.getElementById("page-contents").innerHTML = `
+  closeNavigation();
+  markSelectedNavigationItem('about-button');
+
+  document.getElementById('page-contents').innerHTML = `
   <div class="dashboard-data"></div>
   `;
-    document.onload = retrieveTheme();
-  }
-  
-document.getElementById("about-button").addEventListener("click", () => openAboutPage());
+  document.onload = retrieveTheme();
+}
+
+document.getElementById('about-button').addEventListener('click', () => openAboutPage());

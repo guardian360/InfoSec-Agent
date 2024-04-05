@@ -96,17 +96,19 @@ func SearchEngineFirefox() checks.Check {
 	}
 	output := string(data)
 	var result string
+	var re *regexp.Regexp
+	var matches string
 	// Regex to check if the defaultEngineId is empty which means that the engine is Google
-	re := regexp.MustCompile(`"defaultEngineId":""`)
+	re = regexp.MustCompile(`"defaultEngineId":""`)
 	// Performs the regex on the string and returns either google or goes into the next check
-	matches := re.FindString(output)
+	matches = re.FindString(output)
 	if matches != "" {
 		result = "Google"
 	} else {
 		// This pattern looks for the values of the other known search engines and returns them
 		pattern := `defaultEngineId":"(?:ddg|bing|ebay|wikipedia|amazon)@search\.mozilla\.org`
-		re := regexp.MustCompile(pattern)
-		matches := re.FindString(output)
+		re = regexp.MustCompile(pattern)
+		matches = re.FindString(output)
 		if matches == "" {
 			return checks.NewCheckResult("SearchEngineFirefox", "Other Search Engine")
 		}

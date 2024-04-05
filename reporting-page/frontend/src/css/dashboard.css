@@ -4,8 +4,7 @@
   color: var(--text-body);
   width: flex;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   padding: 5px;
 }
 
@@ -13,6 +12,7 @@
 
 .risk-analysis {
   /* flex: 1;  */
+
   /* ratio between columns: 1:2:1 */
   display: flex;
   flex-direction: column;
@@ -27,7 +27,7 @@
 
 .security-status p {
   width: 100%;
-  margin: 0px 10px 10px 10px;
+  margin: 0 10px 10px;
   padding: 10px;
   text-align: center;
   border-radius: 10px;
@@ -44,7 +44,7 @@
 }
 
 .risk-counter {
-  margin: 5px 10px 10px 10px;
+  margin: 5px 10px 10px;
   padding: 5px;
   height: auto;
   display: flex;
@@ -52,21 +52,21 @@
 }
 
 .high-risk {
-  background-color: var(--highRiskColor);
-  border-radius: 10px 10px 0px 0px;
+  background-color: var(--high-risk-color);
+  border-radius: 10px 10px 0 0;
 }
 
 .medium-risk {
-  background-color: var(--mediumRiskColor);
+  background-color: var(--medium-risk-color);
 }
 
 .low-risk {
-  background-color: var(--lowRiskColor);
+  background-color: var(--low-risk-color);
 }
 
 .no-risk {
-  background-color: var(--noRiskColor);
-  border-radius: 0px 0px 10px 10px;
+  background-color: var(--no-risk-color);
+  border-radius: 0 0 10px 10px;
 }
 
 .risk-counter p {
@@ -75,7 +75,7 @@
   padding: 10px;
   vertical-align: middle;
   font-size: 17.5px;
-  border-radius: 10px 10px 10px 10px;
+  border-radius: 10px;
   color: var(--text-body);
 }
 
@@ -85,11 +85,8 @@
 
 .piechart {
   /* ratio between columns: 1:2:1 */
-  /* flex: 2; */
-}
 
-.piechart .piechart-container {
-  height: 90%;
+  /* flex: 2; */
 }
 
 .piechart-container {
@@ -97,12 +94,17 @@
   margin: 10px;
 }
 
+.piechart .piechart-container {
+  height: 90%;
+}
+
+
+
 /* risk distribution graph */
 
 .graph-segment-content {
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+  flex-flow: row nowrap;
   justify-content: space-evenly;
 }
 
@@ -123,7 +125,8 @@
   border: none;
   outline: none;
   padding: 10px 16px;
-  background-color: var(--);
+
+  /* background-color: var(--); */
   font-family: inherit;
   margin: 0;
   min-width: 160px;
@@ -144,6 +147,7 @@
   min-width: 192px;
   border-radius: 10px;
 }
+
 .dropbtn:hover {
   background-color: var(--background-nav-hover);
   cursor: pointer;
@@ -154,13 +158,13 @@
   position: absolute;
   background-color: var(--background-color-left-nav);
   min-width: 192px;
-  box-shadow: 0px 8px 36px 0px rgba(0,0,0);
+  box-shadow: 0 8px 36px 0 rgb(0 0 0);
   z-index: 1;
 }
   
 .dropdown-selector p {
   float: none;
-  color: rgb(68, 68, 68);
+  color: rgb(68 68 68);
   padding: 12px 16px;
   text-decoration: none;
   display: block;
@@ -171,6 +175,7 @@
 
 .actions {
   /* flex: 1;  */
+
   /* ratio between columns: 2:3:2 */
 }
 
@@ -179,10 +184,11 @@
 .issue-button {
   background-color: var(--background-color-left-nav);
   border-radius: 10px;
-  margin: 0px 10px 10px 10px;
+  margin: 0 10px 10px;
   text-align: center;
   display: grid;
 	align-items: center;
+
   /* font */
   font-size: 1em;
   padding: 10px; 
@@ -202,8 +208,7 @@
 
 .risk-areas {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   justify-content: space-evenly;
 }
 
@@ -211,7 +216,7 @@
   flex: 1;
   background-color: var(--background-color-left-nav);
   border-radius: 10px;
-  margin: 0px 10px 10px 10px;
+  margin: 0 10px 10px;
   text-align: center;
 }
 

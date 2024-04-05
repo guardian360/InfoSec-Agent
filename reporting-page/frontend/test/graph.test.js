@@ -1,14 +1,15 @@
 import 'jsdom-global/register.js';
 import test from 'unit.js';
-import { JSDOM } from "jsdom";
-import { Graph } from '../src/js/graph.js';
-import { RiskCounters } from '../src/js/risk-counters.js';
+import {JSDOM} from 'jsdom';
+import {Graph} from '../src/js/graph.js';
+import {RiskCounters} from '../src/js/risk-counters.js';
 
 // Mock page
 const dom = new JSDOM(`
   <div class="graph-row">
   <div class="graph-column issues-graph-buttons">
-    <H2>In this graph you are able to see the distribution of different issues we have found over the past 5 times we ran a check.</H2>
+    <H2>In this graph you are able to see the distribution of different issues 
+    we have found over the past 5 times we ran a check.</H2>
     <div class="dropdown">
       <button class="dropbtn" id="dropbtn">Select Risks</button>
       <div class="dropdown-selector" id="myDropdown">
@@ -33,10 +34,10 @@ const dom = new JSDOM(`
   </div>
   </div>
 `, {
-  url: 'http://localhost'
+  url: 'http://localhost',
 });
-global.document = dom.window.document
-global.window = dom.window
+global.document = dom.window.document;
+global.window = dom.window;
 
 // test cases
 describe("Risk graph", function() {
@@ -45,10 +46,10 @@ describe("Risk graph", function() {
   let g = new Graph(undefined,rc);
   it("toggleRisks should change which risk levels are shown in the risk graph", function() {
     // act
-    g.ToggleRisks("high",false);
-    g.ToggleRisks("medium",false);
-    g.ToggleRisks("low",false);
-    g.ToggleRisks("no",false);
+    g.toggleRisks('high', false);
+    g.toggleRisks('medium', false);
+    g.toggleRisks('low', false);
+    g.toggleRisks('no', false);
 
     // assert
     test.value(g.graphShowHighRisks).isEqualTo(false);
@@ -57,10 +58,10 @@ describe("Risk graph", function() {
     test.value(g.graphShowNoRisks).isEqualTo(false);
 
     // act
-    g.ToggleRisks("high",false);
-    g.ToggleRisks("medium",false);
-    g.ToggleRisks("low",false);
-    g.ToggleRisks("no",false);
+    g.toggleRisks('high', false);
+    g.toggleRisks('medium', false);
+    g.toggleRisks('low', false);
+    g.toggleRisks('no', false);
 
     // assert
     test.value(g.graphShowHighRisks).isEqualTo(true);
@@ -70,56 +71,56 @@ describe("Risk graph", function() {
   })
   it("graphDropdown should show and hide a togglable dropdown button", function() {
     // act
-    g.GraphDropdown();
+    g.graphDropdown();
 
     // assert
-    test.value(document.getElementById("myDropdown").classList.contains("show")).isEqualTo(true);
+    test.value(document.getElementById('myDropdown').classList.contains('show')).isEqualTo(true);
 
     // act
-    g.GraphDropdown();
+    g.graphDropdown();
 
     // assert
     test.value(document.getElementById("myDropdown").classList.contains("show")).isEqualTo(false);
   })
   it("getData should fill the graph with the correct data", function() {
-    // arrange 
+    // arrange
     const expectedData = {
-      "labels" : [1,2,3,4,5],
-      "datasets" : [{
-        "label" : 'Safe issues',
-        "data" : [3,4,5,6,4],
-        "backgroundColor" : "rgb(255, 255, 0)",
+      'labels': [1, 2, 3, 4, 5],
+      'datasets': [{
+        'label': 'Safe issues',
+        'data': [3, 4, 5, 6, 4],
+        'backgroundColor': 'rgb(255, 255, 0)',
       }, {
-        "label" : 'Low risk issues',
-        "data" : [3,4,5,6,3],
-        "backgroundColor" : "rgb(255, 0, 0)",
+        'label': 'Low risk issues',
+        'data': [3, 4, 5, 6, 3],
+        'backgroundColor': 'rgb(255, 0, 0)',
       }, {
-        "label" : 'Medium risk issues',
-        "data" : [3,4,5,6,2],
-        "backgroundColor" : "rgb(0, 0, 255)",
+        'label': 'Medium risk issues',
+        'data': [3, 4, 5, 6, 2],
+        'backgroundColor': 'rgb(0, 0, 255)',
       }, {
-        "label" : 'High risk issues',
-        "data" : [3,4,5,6,1],
-        "backgroundColor" : "rgb(0, 255, 255)",
+        'label': 'High risk issues',
+        'data': [3, 4, 5, 6, 1],
+        'backgroundColor': 'rgb(0, 255, 255)',
       }],
-    }
-
-    const mockRiskCounters = {
-      highRiskColor : "rgb(0, 255, 255)",
-      mediumRiskColor : "rgb(0, 0, 255)",
-      lowRiskColor : "rgb(255, 0, 0)",
-      noRiskColor : "rgb(255, 255, 0)",
-
-      allHighRisks : [1,2,3,4,5,6,1],
-      allMediumRisks : [1,2,3,4,5,6,2],
-      allLowRisks : [1,2,3,4,5,6,3],
-      allNoRisks : [1,2,3,4,5,6,4],
     };
 
-    g = new Graph(undefined,mockRiskCounters);
+    const mockRiskCounters = {
+      highRiskColor: 'rgb(0, 255, 255)',
+      mediumRiskColor: 'rgb(0, 0, 255)',
+      lowRiskColor: 'rgb(255, 0, 0)',
+      noRiskColor: 'rgb(255, 255, 0)',
 
-    //act
-    const resultData = g.GetData();
+      allHighRisks: [1, 2, 3, 4, 5, 6, 1],
+      allMediumRisks: [1, 2, 3, 4, 5, 6, 2],
+      allLowRisks: [1, 2, 3, 4, 5, 6, 3],
+      allNoRisks: [1, 2, 3, 4, 5, 6, 4],
+    };
+
+    g = new Graph(undefined, mockRiskCounters);
+
+    // act
+    const resultData = g.getData();
 
     // assert
     test.array(resultData.labels).is(expectedData.labels);
@@ -130,11 +131,11 @@ describe("Risk graph", function() {
     const expectedOptions = {
       scales: {
         xAxes: [{
-          stacked: true
+          stacked: true,
         }],
         yAxes: [{
-          stacked: true
-        }]
+          stacked: true,
+        }],
       },
       legend: {
         display: false,
@@ -144,9 +145,9 @@ describe("Risk graph", function() {
     };
 
     // act
-    const resultOptions = g.GetOptions();
+    const resultOptions = g.getOptions();
 
     // assert
     test.object(resultOptions).is(expectedOptions);
-  })
+  });
 });

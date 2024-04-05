@@ -1,15 +1,10 @@
 name: Lint Frontend
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'reporting-page/frontend/**'
-      - '.github/workflows/frontend-lint.yml'
   pull_request:
     branches:
       - main
+      - dev
     paths:
       - 'reporting-page/frontend/**'
       - '.github/workflows/frontend-lint.yml'

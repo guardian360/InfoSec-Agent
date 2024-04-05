@@ -14,7 +14,7 @@
     "jsdom": "24.0.0",
     "jsdom-global": "3.0.2",
     "mocha": "*",
-    "vite": "^3.0.7"
+    "vite": "^3.2.10"
   },
   "dependencies": {
     "canvas": "^2.11.2",
@@ -39,11 +39,10 @@
       "wailsjs/"
     ],
     "rules": {
-      "linebreak-style": "off",
-      "indent": [
-        "error",
-        2
-      ]
+      "linebreak-style":"off",
+      "indent": ["error", 2],
+      "max-len": ["error", {"code": 120}],
+      "new-cap": ["error",{"capIsNewExceptions": ["WindowShow", "WindowMaximise", "LogPrint"]}]
     }
   },
   "stylelint": {
@@ -54,6 +53,10 @@
       "node_modules/**",
       "dist/**",
       "wailsjs/**"
-    ]
+    ],
+    "rules": {
+      "function-url-quotes": "never",
+      "no-descending-specificity": null
+    }
   }
 }

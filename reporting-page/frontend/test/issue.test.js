@@ -1,11 +1,9 @@
 import 'jsdom-global/register.js';
 import test from 'unit.js';
-import { JSDOM } from "jsdom";
-import { openIssuePage } from "../src/js/issue.js";
-import { updateSolutionStep } from "../src/js/issue.js";
-import { nextSolutionStep } from "../src/js/issue.js";
-import { previousSolutionStep } from "../src/js/issue.js";
-import data from "../src/database.json" assert { type: "json" };
+import {JSDOM} from 'jsdom';
+import {updateSolutionStep} from '../src/js/issue.js';
+import {nextSolutionStep} from '../src/js/issue.js';
+import {previousSolutionStep} from '../src/js/issue.js';
 
 describe('Issue page', function() {
   // Mock issue page
@@ -40,8 +38,8 @@ describe('Issue page', function() {
     updateSolutionStep(solutionStep, screenshot, solution, screenshots, stepCounter);
 
     // Assert
-    test.value(solutionStep.innerHTML).isEqualTo("Step 1");
-    test.value(screenshot.src).isEqualTo("screenshot1.jpg");
+    test.value(solutionStep.innerHTML).isEqualTo('Step 1');
+    test.value(screenshot.src).isEqualTo('screenshot1.jpg');
   });
 
   it('nextSolutionStep should update the current step and screenshot', function() {
@@ -52,8 +50,8 @@ describe('Issue page', function() {
     nextSolutionStep(solutionStep, screenshot, solution, screenshots);
 
     // Assert
-    test.value(solutionStep.innerHTML).isEqualTo("Step 2");
-    test.value(screenshot.src).isEqualTo("screenshot2.jpg");
+    test.value(solutionStep.innerHTML).isEqualTo('Step 2');
+    test.value(screenshot.src).isEqualTo('screenshot2.jpg');
   });
 
   it('previousSolutionStep should update the current step and screenshot', function() {
@@ -64,7 +62,7 @@ describe('Issue page', function() {
     previousSolutionStep(solutionStep, screenshot, solution, screenshots);
 
     // Assert
-    test.value(solutionStep.innerHTML).isEqualTo("Step 1");
-    test.value(screenshot.src).isEqualTo("screenshot1.jpg");
+    test.value(solutionStep.innerHTML).isEqualTo('Step 1');
+    test.value(screenshot.src).isEqualTo('screenshot1.jpg');
   });
 });

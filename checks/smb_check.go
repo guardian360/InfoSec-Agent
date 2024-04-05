@@ -2,8 +2,9 @@ package checks
 
 import (
 	"fmt"
-	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
 	"strings"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
 )
 
 // SmbCheck checks whether SMB1 (Server Message Block) and SMB2 are enabled
