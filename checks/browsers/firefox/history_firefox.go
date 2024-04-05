@@ -2,11 +2,12 @@ package firefox
 
 import (
 	"database/sql"
-	"log"
 	"os"
 	"path/filepath"
 	"regexp"
 	"time"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 
@@ -33,7 +34,7 @@ func HistoryFirefox() checks.Check {
 	defer func(name string) {
 		err = os.Remove(name)
 		if err != nil {
-			log.Println("error removing file: ", err)
+			logger.Log.Println("error removing file: ", err)
 		}
 	}(tempHistoryDbff)
 
@@ -73,7 +74,7 @@ func HistoryFirefox() checks.Check {
 // Returns: _
 func closeDatabase(db *sql.DB) {
 	if err := db.Close(); err != nil {
-		log.Println("error closing database: ", err)
+		logger.Log.Println("error closing database: ", err)
 	}
 }
 
@@ -103,7 +104,7 @@ func queryDatabase(db *sql.DB) (*sql.Rows, error) {
 // Returns: _
 func closeRows(rows *sql.Rows) {
 	if err := rows.Close(); err != nil {
-		log.Println("error closing rows: ", err)
+		logger.Log.Println("error closing rows: ", err)
 	}
 }
 

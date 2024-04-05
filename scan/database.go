@@ -3,8 +3,9 @@ package scan
 import (
 	"database/sql"
 	"fmt"
-	"log"
 	"strconv"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	// Necessary to use the sqlite3 driver
@@ -37,21 +38,21 @@ type SeverityLevels struct {
 //
 // Returns: _
 func FillDataBase(scanResults []checks.Check) {
-	log.Println("Opening database")
+	logger.Log.Println("Opening database")
 	var err error
 	var db *sql.DB
 	// Open the database file. If it doesn't exist, it will be created.
 	db, err = sql.Open("sqlite3", "./database.db")
 	if err != nil {
-		log.Println("Error opening database:", err)
+		logger.Log.Println("Error opening database:", err)
 		return
 	}
-	log.Println("Connected to database")
+	logger.Log.Println("Connected to database")
 
 	// Drop the existing table if it exists
 	_, err = db.Exec("DROP TABLE IF EXISTS issues")
 	if err != nil {
-		log.Println("Error dropping table:", err)
+		logger.Log.Println("Error dropping table:", err)
 		return
 	}
 
@@ -63,14 +64,14 @@ func FillDataBase(scanResults []checks.Check) {
                         severity INTEGER
                     )`)
 	if err != nil {
-		log.Println("Error creating table:", err)
+		logger.Log.Println("Error creating table:", err)
 		return
 	}
 
 	// Clear issues of rows if they are still there
 	_, err = db.Exec("DELETE FROM issues")
 	if err != nil {
-		log.Println("Error deleting from table:", err)
+		logger.Log.Println("Error deleting from table:", err)
 	}
 
 	var val int64
@@ -78,24 +79,24 @@ func FillDataBase(scanResults []checks.Check) {
 	for i, s := range scanResults {
 		val, err = addIssue(db, s, i, 0, 0)
 		if err != nil {
-			log.Println("Error adding issue: ", err, val)
+			logger.Log.Println("Error adding issue: ", err, val)
 		}
 		val, err = addIssue(db, s, i, 1, 1)
 		if err != nil {
-			log.Println("Error adding issue: ", err, val)
+			logger.Log.Println("Error adding issue: ", err, val)
 		}
 		val, err = addIssue(db, s, i, 2, 2)
 		if err != nil {
-			log.Println("Error adding issue: ", err, val)
+			logger.Log.Println("Error adding issue: ", err, val)
 		}
 		val, err = addIssue(db, s, i, 3, 3)
 		if err != nil {
-			log.Println("Error adding issue: ", err, val)
+			logger.Log.Println("Error adding issue: ", err, val)
 		}
 	}
 
 	// Close the database
-	log.Println("Closing database")
+	logger.Log.Println("Closing database")
 	defer db.Close()
 }
 
@@ -121,7 +122,7 @@ func addIssue(db *sql.DB, check checks.Check, issueID int, resultID int, severit
 	if err != nil {
 		return 0, fmt.Errorf("addIssue: %w", err)
 	}
-	log.Println("Inserted issue")
+	logger.Log.Println("Inserted issue")
 	id, err := result.LastInsertId()
 	if err != nil {
 		return 0, fmt.Errorf("addIssue: %w", err)
@@ -137,26 +138,26 @@ func addIssue(db *sql.DB, check checks.Check, issueID int, resultID int, severit
 //
 // Returns: list of all severities
 func GetAllSeverities(checks []checks.Check, resultIDs []int) ([]Severity, error) {
-	log.Println("Opening database")
+	logger.Log.Println("Opening database")
 	// Open the database file. If it doesn't exist, it will be created.
 	db, err := sql.Open("sqlite3", "./database.db")
 	if err != nil {
-		log.Println("Error opening database:", err)
+		logger.Log.Println("Error opening database:", err)
 		return nil, err
 	}
-	log.Println("Connected to database")
+	logger.Log.Println("Connected to database")
 
 	var val int
 	severities := make([]Severity, len(checks))
 	for i, s := range checks {
 		val, err = GetSeverity(db, i, resultIDs[i])
 		if err != nil {
-			log.Println("Error getting severity value")
+			logger.Log.Println("Error getting severity value")
 		}
 		severities[i] = Severity{s.ID, val}
 	}
 
-	log.Println("Closing database")
+	logger.Log.Println("Closing database")
 	defer db.Close()
 	return severities, nil
 }
@@ -184,9 +185,9 @@ func GetSeverity(db *sql.DB, issueID int, resultID int) (int, error) {
 	err := row.Scan(&result)
 	if err != nil {
 		if err == sql.ErrNoRows {
-			log.Println("No rows found.")
+			logger.Log.Println("No rows found.")
 		} else {
-			log.Println("Error scanning row:", err)
+			logger.Log.Println("Error scanning row:", err)
 		}
 		return 0, err
 	}
