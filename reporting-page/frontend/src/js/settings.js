@@ -1,8 +1,7 @@
 import {openPersonalizePage} from './personalize.js';
-import {ChangeLanguage as changeLangue} from '../../wailsjs/go/main/Tray';
+import {ChangeLanguage as changeLangue} from '../../wailsjs/go/main/Tray.js';
 import {getLocalization} from './localize.js';
-import {closeNavigation} from './navigation-menu.js';
-import {markSelectedNavigationItem} from './navigation-menu.js';
+import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
 import {retrieveTheme} from './personalize.js';
 /**
  * Initiates a language update operation.

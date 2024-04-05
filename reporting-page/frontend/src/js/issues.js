@@ -1,8 +1,7 @@
 import {openIssuePage} from './issue.js';
 import {getLocalization} from './localize.js';
-import {closeNavigation} from './navigation-menu.js';
-import {markSelectedNavigationItem} from './navigation-menu.js';
-import {retrieveTheme} from './personalize';
+import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
+import {retrieveTheme} from './personalize.js';
 
 /** Load the content of the Issues page */
 export function openIssuesPage() {
@@ -168,6 +167,11 @@ export function sortTable(tbody, column) {
   });
   table.setAttribute('data-sort-direction', direction);
 }
+
 if (typeof document !== 'undefined') {
-  document.getElementById('issues-button').addEventListener('click', () => openIssuesPage());
+  try {
+    document.getElementById('issues-button').addEventListener('click', () => openIssuesPage());
+  } catch (error) {
+    console.log('Error in issues.js: ' + error);
+  }
 }
