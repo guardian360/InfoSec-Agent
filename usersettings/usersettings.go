@@ -13,7 +13,7 @@ type UserSettings struct {
 }
 
 // NewUserSettings creates a new UserSettings struct
-//
+// TODO: Reformat with new doc standard
 // Parameters: _
 //
 // Returns: a pointer to a new UserSettings struct
@@ -25,7 +25,7 @@ func NewUserSettings() *UserSettings {
 }
 
 // LoadUserSettings loads the user setting from the user settings file
-//
+// TODO: Reformat with new doc standard
 // Parameters: _
 //
 // Returns: language setting (int)
@@ -46,7 +46,7 @@ func LoadUserSettings() UserSettings {
 }
 
 // SaveUserSettings saves the user setting(s) to the user settings file
-//
+// TODO: Reformat with new doc standard
 // Parameters: lang (int) - the language setting to save
 //
 // Returns: _
