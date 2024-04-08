@@ -40,29 +40,29 @@ const chromePath = "Google/Chrome"
 // Returns: If the user has an ad blocker installed
 func ExtensionsChromium(browser string) checks.Check {
 	var browserPath string
-	var returnBrowserName string
+	var returnID int
 	// Set the browser path and the return browser name based on the browser to check
 	// Currently, supports checking of Google Chrome and Microsoft Edge
 	if browser == chrome {
-		returnBrowserName = "ExtensionsChrome"
 		browserPath = chromePath
+		returnID = checks.ExtensionChromiumID
 	}
 	if browser == edge {
-		returnBrowserName = "ExtensionsEdge"
 		browserPath = edgePath
+		returnID = checks.ExtensionEdgeID
 	}
 	var extensionIDs []string
 	var extensionNames []string
 	// Get the current user's home directory, where the extensions are stored
 	user, err := os.UserHomeDir()
 	if err != nil {
-		checks.NewCheckErrorf(returnBrowserName, "Error: ", err)
+		checks.NewCheckErrorf(returnID, "Error: ", err)
 	}
 
 	extensionsDir := filepath.Join(user, "AppData", "Local", browserPath, "User Data", "Default", "Extensions")
 	files, err := os.ReadDir(extensionsDir)
 	if err != nil {
-		checks.NewCheckErrorf(returnBrowserName, "Error: ", err)
+		checks.NewCheckErrorf(returnID, "Error: ", err)
 	}
 
 	// Construct a list of all extensions ID's
@@ -79,7 +79,7 @@ func ExtensionsChromium(browser string) checks.Check {
 		extensionName1, err = getExtensionNameChromium(id,
 			"https://chromewebstore.google.com/detail/%s", browser)
 		if err != nil {
-			logger.Log.Fatal(err)
+			logger.Log.ErrorWithErr("Error getting extension name: ", err)
 		}
 		if strings.Count(extensionName1, "/") > 4 {
 			parts := strings.Split(extensionName1, "/")
@@ -90,15 +90,15 @@ func ExtensionsChromium(browser string) checks.Check {
 			extensionName2, err = getExtensionNameChromium(id,
 				"https://microsoftedge.microsoft.com/addons/getproductdetailsbycrxid/%s", browser)
 			if err != nil {
-				logger.Log.Fatal(err)
+				logger.Log.ErrorWithErr("Error getting extension name: ", err)
 			}
 			extensionNames = append(extensionNames, extensionName2)
 		}
 	}
 	if adblockerInstalled(extensionNames) {
-		return checks.NewCheckResult(returnBrowserName, "Adblocker installed")
+		return checks.NewCheckResult(returnID, 0, "Adblocker installed")
 	}
-	return checks.NewCheckErrorf(returnBrowserName, "No adblocker installed", errors.New("no adblocker installed"))
+	return checks.NewCheckErrorf(returnID, "No adblocker installed", errors.New("no adblocker installed"))
 }
 
 // getExtensionNameChromium gets the name of an extension from the Chrome Web Store or the Microsoft Edge Addons Store
@@ -112,27 +112,27 @@ func ExtensionsChromium(browser string) checks.Check {
 //	browser (string) - The name of the browser to check
 //
 // Returns: The name of the extension and an optional error (string,error)
-// Error should be nil on success
+// error should be nil on success
 func getExtensionNameChromium(extensionID string, url string, browser string) (string, error) {
 	client := &http.Client{}
 	urlToVisit := fmt.Sprintf(url, extensionID)
 	// Generate a new request to visit the extension/addon store
 	req, err := http.NewRequestWithContext(context.Background(), http.MethodGet, urlToVisit, nil)
 	if err != nil {
-		logger.Log.Println("error creating request: ", err)
+		logger.Log.ErrorWithErr("Error creating request: ", err)
 		return "", err
 	}
 	req.Header.Add("User-Agent", "Mozilla/5.0")
 	resp, err := client.Do(req)
 	if err != nil {
-		logger.Log.Println("error sending request: ", err)
+		logger.Log.ErrorWithErr("Error sending request: ", err)
 		return "", err
 	}
 	// Close the response body after the necessary data is retrieved
 	defer func(Body io.ReadCloser) {
 		err = Body.Close()
 		if err != nil {
-			logger.Log.Println("error closing body: ", err)
+			logger.Log.ErrorWithErr("Error closing body: ", err)
 		}
 	}(resp.Body)
 

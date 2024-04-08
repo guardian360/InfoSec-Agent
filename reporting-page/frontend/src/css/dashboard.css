@@ -171,6 +171,10 @@
   text-align: left;
 }
 
+.show{
+  display: block;
+}
+
 /* THIRD COLUMN */
 
 .actions {

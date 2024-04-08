@@ -1,8 +1,9 @@
 package checks_test
 
 import (
-	"github.com/stretchr/testify/require"
 	"testing"
+
+	"github.com/stretchr/testify/require"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
@@ -24,7 +25,7 @@ func TestBluetooth(t *testing.T) {
 			key: &registrymock.MockRegistryKey{
 				SubKeys: []registrymock.MockRegistryKey{
 					{KeyName: "SYSTEM\\CurrentControlSet\\Services\\BTHPORT\\Parameters\\Devices"}}},
-			want: checks.NewCheckResult("Bluetooth", "No Bluetooth devices found"),
+			want: checks.NewCheckResult(checks.BluetoothID, 0, "No Bluetooth devices found"),
 		},
 		{
 			name: "Bluetooth devices found",
@@ -35,7 +36,7 @@ func TestBluetooth(t *testing.T) {
 							{KeyName: "4dbndas2", BinaryValues: map[string][]byte{"Name": []byte("Device1")}, Err: nil}},
 					},
 				}, Err: nil},
-			want: checks.NewCheckResult("Bluetooth", "Device1"),
+			want: checks.NewCheckResult(checks.BluetoothID, 1, "Device1"),
 		},
 		{
 			name: "Error reading device name",
@@ -46,7 +47,7 @@ func TestBluetooth(t *testing.T) {
 							{KeyName: "FAFA", StringValues: map[string]string{"Name2": "fsdfs"}, Err: nil}},
 					},
 				}},
-			want: checks.NewCheckResult("Bluetooth", "Error reading device name FAFA"),
+			want: checks.NewCheckResult(checks.BluetoothID, 1, "Error reading device name FAFA"),
 		},
 	}
 	for _, tt := range tests {
