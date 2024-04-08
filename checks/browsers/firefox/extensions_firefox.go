@@ -40,7 +40,7 @@ func ExtensionFirefox() (checks.Check, checks.Check) {
 	defer func(content *os.File) {
 		err = content.Close()
 		if err != nil {
-			logger.Log.Println("error closing file: ", err)
+			logger.Log.ErrorWithErr("Error closing file: ", err)
 		}
 	}(content)
 

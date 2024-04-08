@@ -35,7 +35,7 @@ func CookieFirefox() checks.Check {
 	defer func(name string) {
 		err = os.Remove(name)
 		if err != nil {
-			logger.Log.Println("error removing file: ", err)
+			logger.Log.ErrorWithErr("Error removing file: ", err)
 		}
 	}(tempCookieDbff)
 
@@ -52,7 +52,7 @@ func CookieFirefox() checks.Check {
 	defer func(db *sql.DB) {
 		err = db.Close()
 		if err != nil {
-			logger.Log.Println("error closing database: ", err)
+			logger.Log.ErrorWithErr("Error closing database: ", err)
 		}
 	}(db)
 
@@ -68,7 +68,7 @@ func CookieFirefox() checks.Check {
 	defer func(rows *sql.Rows) {
 		err = rows.Close()
 		if err != nil {
-			logger.Log.Println("error closing rows: ", err)
+			logger.Log.ErrorWithErr("Error closing rows: ", err)
 		}
 	}(rows)
 

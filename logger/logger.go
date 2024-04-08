@@ -8,7 +8,7 @@ import (
 )
 
 var (
-	Log *log.Logger
+	Log *CustomLogger
 )
 
 type CustomLogger struct {
@@ -21,13 +21,17 @@ type CustomLogger struct {
 // Parameters: _
 //
 // Returns: _
-func Setup() {
-	file, err := os.OpenFile("log.txt", os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0666)
-	if err != nil {
-		log.Fatal(err)
-	}
+//func Setup() {
+//	file, err := os.OpenFile("log.txt", os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0666)
+//	if err != nil {
+//		log.Fatal(err)
+//	}
+//
+//	Log = log.New(file, "", log.LstdFlags)
+//}
 
-	Log = log.New(file, "", log.LstdFlags)
+func Setup() {
+	Log = NewCustomLogger(false)
 }
 
 // SetupTests initializes a logger for the runtime of the tests
@@ -37,15 +41,24 @@ func Setup() {
 //
 // Returns: _
 func SetupTests() {
-	Log = log.New(os.Stdout, "", log.LstdFlags)
+	Log = NewCustomLogger(true)
 }
 
-func NewCustomLogger() *CustomLogger {
-	file, _ := os.OpenFile("log.txt", os.O_TRUNC|os.O_CREATE|os.O_WRONLY, 0666)
+func NewCustomLogger(test bool) *CustomLogger {
+	if test {
+		return &CustomLogger{
+			Logger: log.New(os.Stdout, "", log.LstdFlags),
+		}
+	}
+	file, err := os.OpenFile("log.txt", os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0666)
+	if err != nil {
+		log.Fatal(err)
+	}
 	return &CustomLogger{
 		Logger: log.New(file, "", log.LstdFlags),
 	}
 }
+
 func (l *CustomLogger) Print(message string) {
 	l.Println(message)
 }
@@ -70,6 +83,14 @@ func (l *CustomLogger) Error(message string) {
 	l.Println("ERROR: " + message)
 }
 
+func (l *CustomLogger) ErrorWithErr(message string, err error) {
+	l.Println("ERROR: " + message + " " + err.Error())
+}
+
 func (l *CustomLogger) Fatal(message string) {
 	l.Fatalln("FATAL: " + message)
+}
+
+func (l *CustomLogger) FatalWithErr(message string, err error) {
+	l.Fatalln("FATAL: " + message + " " + err.Error())
 }

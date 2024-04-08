@@ -7,10 +7,8 @@ package main
 
 import (
 	"embed"
-	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
-	"log"
-
 	"github.com/InfoSec-Agent/InfoSec-Agent/localization"
+	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/options"
 	"github.com/wailsapp/wails/v2/pkg/options/assetserver"
@@ -28,9 +26,9 @@ var assets embed.FS
 func main() {
 	// Create a new instance of the app and tray struct
 	app := NewApp()
-	tray := NewTray(logger.NewCustomLogger())
+	tray := NewTray(logger.NewCustomLogger(false))
 	database := NewDataBase()
-	customLogger := logger.NewCustomLogger()
+	customLogger := logger.NewCustomLogger(false)
 	localization.Init("../")
 
 	// Create a Wails application with the specified options
@@ -64,18 +62,6 @@ func main() {
 	})
 
 	if err != nil {
-		log.Println("Error:", err.Error())
+		logger.Log.ErrorWithErr("Error creating Wails application:", err)
 	}
-}
-
-type Logger struct {
-}
-
-func NewLogger() *Logger {
-	return &Logger{}
-}
-
-func (l *Logger) Log(message string) {
-	// Here you can use your logger
-	logger.Log.Println(message)
 }

@@ -101,7 +101,7 @@ func OnReady() {
 		case <-mScanNow.ClickedCh:
 			_, err := ScanNow()
 			if err != nil {
-				logger.Log.Println("Error scanning:", err)
+				logger.Log.ErrorWithErr("Error scanning:", err)
 			}
 		case <-mChangeLanguage.ClickedCh:
 			ChangeLanguage()
@@ -116,7 +116,7 @@ func OnReady() {
 			logger.Log.Println("Scan:", ScanCounter)
 			_, err := ScanNow()
 			if err != nil {
-				logger.Log.Println("Error scanning:", err)
+				logger.Log.ErrorWithErr("Error scanning:", err)
 			}
 		}
 	}
@@ -130,7 +130,7 @@ func OnReady() {
 func OnQuit() {
 	// Perform cleanup tasks here
 	// Currently, there are no cleanup tasks to perform
-	logger.Log.Println("Quitting the application")
+	logger.Log.Info("Quitting the application")
 }
 
 // OpenReportingPage opens the reporting page using a Wails application
@@ -161,7 +161,7 @@ func OpenReportingPage(path string) error {
 	defer func() {
 		err = os.Chdir(originalDir)
 		if err != nil {
-			logger.Log.Println("Error changing directory:", err)
+			logger.Log.ErrorWithErr("Error changing directory:", err)
 		}
 		ReportingPageOpen = false
 	}()
@@ -184,7 +184,7 @@ func OpenReportingPage(path string) error {
 	go func() {
 		<-mQuit.ClickedCh
 		if err = runCmd.Process.Kill(); err != nil {
-			logger.Log.Println("Error interrupting reporting-page process:", err)
+			logger.Log.ErrorWithErr("Error interrupting reporting-page process:", err)
 		}
 		ReportingPageOpen = false
 		systray.Quit()
@@ -215,7 +215,7 @@ func ChangeScanInterval(testInput ...string) {
 		res, err = zenity.Entry("Enter the scan interval (in hours):", zenity.Title("Change Scan Interval"),
 			zenity.DefaultItems("24"))
 		if err != nil {
-			logger.Log.Println("Error creating dialog:", err)
+			logger.Log.ErrorWithErr("Error creating dialog:", err)
 			return
 		}
 	}
@@ -242,32 +242,32 @@ func ScanNow() ([]checks.Check, error) {
 	// ScanCounter is not concretely used at the moment
 	// might be useful in the future
 	ScanCounter++
-	logger.Log.Println("Scanning now. Scan:", ScanCounter)
+	logger.Log.Info("Scanning now. Scan:" + string(rune(ScanCounter)))
 
 	// Display a progress dialog while the scan is running
 	dialog, err := zenity.Progress(
 		zenity.Title("Security/Privacy Scan"))
 	if err != nil {
-		logger.Log.Println("Error creating dialog:", err)
+		logger.Log.ErrorWithErr("Error creating dialog:", err)
 		return nil, err
 	}
 	// Defer closing the dialog until the scan completes
 	defer func(dialog zenity.ProgressDialog) {
 		err = dialog.Close()
 		if err != nil {
-			logger.Log.Println("Error closing dialog:", err)
+			logger.Log.ErrorWithErr("Error closing dialog:", err)
 		}
 	}(dialog)
 
 	result, err := scan.Scan(dialog)
 	if err != nil {
-		logger.Log.Println("Error calling scan:", err)
+		logger.Log.ErrorWithErr("Error calling scan:", err)
 		return result, err
 	}
 
 	err = dialog.Complete()
 	if err != nil {
-		logger.Log.Println("Error completing dialog:", err)
+		logger.Log.ErrorWithErr("Error completing dialog:", err)
 		return result, err
 	}
 
@@ -289,7 +289,7 @@ func ChangeLanguage(testInput ...string) {
 			"Spanish", "French", "Dutch", "Portuguese"}, zenity.Title("Change Language"),
 			zenity.DefaultItems("British English"))
 		if err != nil {
-			logger.Log.Println("Error creating dialog:", err)
+			logger.Log.ErrorWithErr("Error creating dialog:", err)
 			return
 		}
 	}
