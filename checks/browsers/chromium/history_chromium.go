@@ -52,7 +52,7 @@ func HistoryChromium(browser string) checks.Check {
 	defer func(name string) {
 		err = os.Remove(name)
 		if err != nil {
-			logger.Log.Println("error removing file: ", err)
+			logger.Log.ErrorWithErr("Error removing file: ", err)
 		}
 	}(tempHistoryDB)
 
@@ -88,7 +88,7 @@ func HistoryChromium(browser string) checks.Check {
 
 func closeDatabase(db *sql.DB) {
 	if err := db.Close(); err != nil {
-		logger.Log.Println("error closing database: ", err)
+		logger.Log.ErrorWithErr("Error closing database: ", err)
 	}
 }
 
@@ -106,7 +106,7 @@ func queryDatabase(db *sql.DB) (*sql.Rows, error) {
 
 func closeRows(rows *sql.Rows) {
 	if err := rows.Close(); err != nil {
-		logger.Log.Println("error closing rows: ", err)
+		logger.Log.ErrorWithErr("Error closing rows: ", err)
 	}
 }
 

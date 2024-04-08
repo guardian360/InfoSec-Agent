@@ -18,6 +18,6 @@ import (
 func main() {
 	localization.Init("")
 	logger.Setup()
-	logger.Log.Println("Starting InfoSec Agent")
+	logger.Log.Info("Starting InfoSec Agent")
 	systray.Run(tray.OnReady, tray.OnQuit)
 }

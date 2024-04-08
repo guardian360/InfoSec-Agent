@@ -9,6 +9,7 @@ import (
 	"embed"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/localization"
+	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/options"
 	"github.com/wailsapp/wails/v2/pkg/options/assetserver"
@@ -24,18 +25,21 @@ var assets embed.FS
 //
 // Returns: _
 func main() {
+	logger.Setup()
+	logger.Log.Info("Reporting page starting")
 	// Create a new instance of the app and tray struct
 	app := NewApp()
-	tray := NewTray()
+	tray := NewTray(logger.Log)
 	database := NewDataBase()
+	customLogger := logger.Log
 	localization.Init("../")
 
 	// Create a Wails application with the specified options
 	err := wails.Run(&options.App{
-		Title:  "reporting-page",
-		Width:  1024,
-		Height: 768,
-		//StartHidden: true,
+		Title:       "reporting-page",
+		Width:       1024,
+		Height:      768,
+		StartHidden: true,
 		AssetServer: &assetserver.Options{
 			Assets: assets,
 		},
@@ -46,6 +50,7 @@ func main() {
 			tray,
 			database,
 		},
+		Logger: customLogger,
 		Windows: &windows.Options{
 			Theme: windows.SystemDefault,
 			CustomTheme: &windows.ThemeSettings{
@@ -58,8 +63,7 @@ func main() {
 			},
 		},
 	})
-
 	if err != nil {
-		// log.Println("Error:", err.Error())
+		logger.Log.ErrorWithErr("Error creating Wails application:", err)
 	}
 }
