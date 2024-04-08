@@ -1,0 +1,465 @@
+2024/04/08 14:48:44 INFO: Reporting page starting
+2024/04/08 14:48:45 INFO: Scanning now. Scan:1
+2024/04/08 14:49:07 ERROR: Error getting profiles directory: open C:\Users\larss\AppData\Roaming\Mozilla\Firefox\Profiles: The system cannot find the path specified.
+2024/04/08 14:49:07 ERROR: Error getting profiles directory: open C:\Users\larss\AppData\Roaming\Mozilla\Firefox\Profiles: The system cannot find the path specified.
+2024/04/08 14:49:07 ERROR: Error getting profiles directory: open C:\Users\larss\AppData\Roaming\Mozilla\Firefox\Profiles: The system cannot find the path specified.
+2024/04/08 14:49:07 ERROR: Error getting profiles directory: open C:\Users\larss\AppData\Roaming\Mozilla\Firefox\Profiles: The system cannot find the path specified.
+2024/04/08 14:49:07 INFO: [
+  {
+    "issue_id": 5,
+    "result_id": 1,
+    "result": [
+      "No password manager found"
+    ]
+  },
+  {
+    "issue_id": 15,
+    "result_id": 0,
+    "result": [
+      "Windows real-time defender is enabled and also the windows periodic scan is enabled"
+    ]
+  },
+  {
+    "issue_id": 16,
+    "result_id": 0,
+    "result": [
+      "Password last changed on 01/03/2023 , your password was changed more than half a year ago so you should change it again"
+    ]
+  },
+  {
+    "issue_id": 17,
+    "result_id": 5,
+    "result": [
+      "Password",
+      "PIN"
+    ]
+  },
+  {
+    "issue_id": 6,
+    "result_id": 0,
+    "result": [
+      "E046963F.LenovoCompanion",
+      "MicrosoftWindows.Client.WebExperience",
+      "msedge.exe",
+      "OUTLOOK.EXE",
+      "POWERPNT.EXE",
+      "WINWORD.EXE",
+      "dllhost.exe",
+      "windows.immersivecontrolpanel"
+    ]
+  },
+  {
+    "issue_id": 7,
+    "result_id": 0,
+    "result": [
+      "E046963F.LenovoCompanion",
+      "Microsoft.GamingApp",
+      "Microsoft.MixedReality.Portal",
+      "Microsoft.ScreenSketch",
+      "Microsoft.WindowsCamera",
+      "Microsoft.WindowsFeedbackHub",
+      "Microsoft.XboxGamingOverlay",
+      "Discord.exe"
+    ]
+  },
+  {
+    "issue_id": 8,
+    "result_id": 0,
+    "result": [
+      "E046963F.LenovoCompanion",
+      "E0469640.SmartAppearance",
+      "Microsoft.GamingApp",
+      "Microsoft.WindowsCamera",
+      "Microsoft.WindowsFeedbackHub",
+      "MicrosoftWindows.Client.CBS"
+    ]
+  },
+  {
+    "issue_id": 9,
+    "result_id": 0,
+    "result": [
+      "microsoft.windowscommunicationsapps"
+    ]
+  },
+  {
+    "issue_id": 10,
+    "result_id": 0,
+    "result": [
+      "microsoft.windowscommunicationsapps",
+      "svchost.exe"
+    ]
+  },
+  {
+    "issue_id": 1,
+    "result_id": 0,
+    "result": [
+      "No Bluetooth devices found"
+    ]
+  },
+  {
+    "issue_id": 11,
+    "result_id": 0,
+    "result": [
+      "port: 6463, process: Discord.exe",
+      "port: 9000, process: python3.11.exe",
+      "port: 9001, process: python3.11.exe",
+      "port: 9001, process: python3.11.exe",
+      "port: 9002, process: python3.11.exe",
+      "port: 9002, process: python3.11.exe",
+      "port: 9002, process: python3.11.exe",
+      "port: 9003, process: python3.11.exe",
+      "port: 9003, process: python3.11.exe",
+      "port: 9004, process: python3.11.exe",
+      "port: 9004, process: python3.11.exe",
+      "port: 9005, process: python3.11.exe",
+      "port: 9006, process: python3.11.exe",
+      "port: 9006, process: python3.11.exe",
+      "port: 9007, process: python3.11.exe",
+      "port: 9007, process: python3.11.exe",
+      "port: 9007, process: python3.11.exe",
+      "port: 9008, process: python3.11.exe",
+      "port: 9008, process: python3.11.exe",
+      "port: 9009, process: python3.11.exe",
+      "port: 9009, process: python3.11.exe",
+      "port: 49670, process: bdvpnService.exe",
+      "port: 49671, process: bdvpnService.exe",
+      "port: 49695, process: WUDFHost.exe",
+      "port: 49696, process: WUDFHost.exe",
+      "port: 49697, process: OneApp.IGCC.WinService.ex",
+      "port: 49704, process: WUDFHost.exe",
+      "port: 49705, process: WUDFHost.exe",
+      "port: 49720, process: ipfsvc.exe",
+      "port: 49721, process: ipfsvc.exe",
+      "port: 49729, process: bdagent.exe",
+      "port: 49730, process: bdagent.exe",
+      "port: 49733, process: bdvpnapp.exe",
+      "port: 49734, process: bdvpnapp.exe",
+      "port: 50670, process: msedgewebview2.exe",
+      "port: 50671, process: msedgewebview2.exe",
+      "port: 51003, process: Code.exe",
+      "port: 51005, process: Code.exe",
+      "port: 51131, process: Code.exe",
+      "port: 51168, process: Code.exe",
+      "port: 51169, process: Code.exe",
+      "port: 51170, process: Code.exe",
+      "port: 51171, process: Code.exe",
+      "port: 51176, process: python3.11.exe",
+      "port: 51177, process: python3.11.exe",
+      "port: 51178, process: python3.11.exe",
+      "port: 51179, process: python3.11.exe",
+      "port: 51180, process: python3.11.exe",
+      "port: 51181, process: python3.11.exe",
+      "port: 51182, process: python3.11.exe",
+      "port: 51183, process: python3.11.exe",
+      "port: 51184, process: python3.11.exe",
+      "port: 51185, process: python3.11.exe",
+      "port: 51186, process: python3.11.exe",
+      "port: 51187, process: python3.11.exe",
+      "port: 51188, process: python3.11.exe",
+      "port: 51189, process: python3.11.exe",
+      "port: 51190, process: python3.11.exe",
+      "port: 51191, process: python3.11.exe",
+      "port: 51192, process: python3.11.exe",
+      "port: 51193, process: python3.11.exe",
+      "port: 51194, process: python3.11.exe",
+      "port: 51195, process: python3.11.exe",
+      "port: 51196, process: python3.11.exe",
+      "port: 51197, process: python3.11.exe",
+      "port: 51198, process: python3.11.exe",
+      "port: 51199, process: python3.11.exe",
+      "port: 51200, process: python3.11.exe",
+      "port: 51202, process: python3.11.exe",
+      "port: 51203, process: python3.11.exe",
+      "port: 51204, process: python3.11.exe",
+      "port: 51205, process: python3.11.exe",
+      "port: 51206, process: python3.11.exe",
+      "port: 51207, process: python3.11.exe",
+      "port: 51208, process: python3.11.exe",
+      "port: 51209, process: python3.11.exe",
+      "port: 51210, process: python3.11.exe",
+      "port: 51211, process: python3.11.exe",
+      "port: 51212, process: python3.11.exe",
+      "port: 51213, process: python3.11.exe",
+      "port: 51214, process: python3.11.exe",
+      "port: 51215, process: python3.11.exe",
+      "port: 51216, process: python3.11.exe",
+      "port: 51217, process: python3.11.exe",
+      "port: 51218, process: python3.11.exe",
+      "port: 51219, process: python3.11.exe",
+      "port: 51220, process: python3.11.exe",
+      "port: 54117, process: bdservicehost.exe",
+      "port: 54118, process: bdservicehost.exe",
+      "port: 54137, process: ProductAgentService.exe",
+      "port: 54138, process: ProductAgentService.exe",
+      "port: 54594, process: python3.11.exe",
+      "port: 54595, process: python3.11.exe",
+      "port: 54596, process: python3.11.exe",
+      "port: 54597, process: python3.11.exe",
+      "port: 54598, process: python3.11.exe",
+      "port: 54599, process: python3.11.exe",
+      "port: 54600, process: python3.11.exe",
+      "port: 54601, process: python3.11.exe",
+      "port: 54602, process: python3.11.exe",
+      "port: 54603, process: python3.11.exe",
+      "port: 54604, process: python3.11.exe",
+      "port: 54605, process: python3.11.exe",
+      "port: 54606, process: python3.11.exe",
+      "port: 54607, process: python3.11.exe",
+      "port: 54608, process: python3.11.exe",
+      "port: 54609, process: python3.11.exe",
+      "port: 54610, process: python3.11.exe",
+      "port: 54611, process: python3.11.exe",
+      "port: 54612, process: python3.11.exe",
+      "port: 54613, process: python3.11.exe",
+      "port: 54614, process: python3.11.exe",
+      "port: 54615, process: python3.11.exe",
+      "port: 54616, process: python3.11.exe",
+      "port: 54617, process: python3.11.exe",
+      "port: 54618, process: python3.11.exe",
+      "port: 54619, process: python3.11.exe",
+      "port: 54620, process: python3.11.exe",
+      "port: 54621, process: python3.11.exe",
+      "port: 54622, process: python3.11.exe",
+      "port: 54623, process: python3.11.exe",
+      "port: 54624, process: python3.11.exe",
+      "port: 54625, process: python3.11.exe",
+      "port: 54626, process: python3.11.exe",
+      "port: 54627, process: python3.11.exe",
+      "port: 54628, process: python3.11.exe",
+      "port: 54629, process: python3.11.exe",
+      "port: 54631, process: python3.11.exe",
+      "port: 54632, process: python3.11.exe",
+      "port: 54634, process: Code.exe",
+      "port: 54635, process: Code.exe",
+      "port: 54636, process: Code.exe",
+      "port: 54637, process: Code.exe",
+      "port: 54638, process: python3.11.exe",
+      "port: 54639, process: python3.11.exe",
+      "port: 54640, process: python3.11.exe",
+      "port: 54641, process: python3.11.exe",
+      "port: 54642, process: python3.11.exe",
+      "port: 54643, process: python3.11.exe",
+      "port: 54725, process: python3.11.exe",
+      "port: 54726, process: python3.11.exe",
+      "port: 54727, process: python3.11.exe",
+      "port: 54728, process: python3.11.exe",
+      "port: 54729, process: python3.11.exe",
+      "port: 54730, process: python3.11.exe",
+      "port: 54731, process: python3.11.exe",
+      "port: 54732, process: python3.11.exe",
+      "port: 54733, process: python3.11.exe",
+      "port: 54734, process: python3.11.exe",
+      "port: 57206, process: bdservicehost.exe",
+      "port: 57207, process: bdservicehost.exe",
+      "port: 57208, process: bdservicehost.exe",
+      "port: 57209, process: bdservicehost.exe",
+      "port: 57411, process: bdservicehost.exe",
+      "port: 57412, process: bdservicehost.exe",
+      "port: 139, process: System",
+      "port: 49419, process: svchost.exe",
+      "port: 49955, process: System Idle Process",
+      "port: 50543, process: Code.exe",
+      "port: 50611, process: Discord.exe",
+      "port: 50612, process: Discord.exe",
+      "port: 50640, process: System Idle Process",
+      "port: 50650, process: Code.exe",
+      "port: 50657, process: chrome.exe",
+      "port: 50663, process: chrome.exe",
+      "port: 50665, process: chrome.exe",
+      "port: 58664, process: OneDrive.exe",
+      "port: 58727, process: chrome.exe",
+      "port: 58737, process: Discord.exe",
+      "port: 58796, process: chrome.exe",
+      "port: 60471, process: chrome.exe",
+      "port: 63020, process: SearchHost.exe",
+      "port: 63021, process: SearchHost.exe",
+      "port: 63025, process: SearchHost.exe",
+      "port: 63063, process: Discord.exe",
+      "port: 64143, process: chrome.exe",
+      "port: 64999, process: chrome.exe",
+      "port: 65015, process: chrome.exe",
+      "port: 65020, process: chrome.exe",
+      "port: 65027, process: chrome.exe",
+      "port: 65062, process: chrome.exe",
+      "port: 65064, process: chrome.exe",
+      "port: 65079, process: chrome.exe",
+      "port: 65199, process: bdservicehost.exe",
+      "port: 65329, process: bdservicehost.exe",
+      "port: 65330, process: bdservicehost.exe",
+      "port: 135, process: svchost.exe",
+      "port: 445, process: System",
+      "port: 2869, process: System",
+      "port: 7680, process: svchost.exe",
+      "port: 49664, process: lsass.exe",
+      "port: 49665, process: wininit.exe",
+      "port: 49668, process: svchost.exe",
+      "port: 49669, process: svchost.exe",
+      "port: 49684, process: spoolsv.exe",
+      "port: 49688, process: services.exe",
+      "port: 49685, process: jhi_service.exe",
+      "port: 50668, process: msedgewebview2.exe",
+      "port: 50669, process: msedgewebview2.exe",
+      "port: 1900, process: svchost.exe",
+      "port: 49664, process: svchost.exe",
+      "port: 54612, process: svchost.exe",
+      "port: 137, process: System",
+      "port: 138, process: System",
+      "port: 1900, process: svchost.exe",
+      "port: 54611, process: svchost.exe",
+      "port: 123, process: svchost.exe",
+      "port: 500, process: svchost.exe",
+      "port: 4500, process: svchost.exe",
+      "port: 5353, process: msedge.exe",
+      "port: 5353, process: chrome.exe",
+      "port: 5353, process: svchost.exe",
+      "port: 5353, process: chrome.exe",
+      "port: 5355, process: svchost.exe",
+      "port: 51929, process: svchost.exe",
+      "port: 53711, process: svchost.exe",
+      "port: 62208, process: svchost.exe",
+      "port: 1900, process: svchost.exe",
+      "port: 54610, process: svchost.exe",
+      "port: 1900, process: svchost.exe",
+      "port: 54609, process: svchost.exe"
+    ]
+  },
+  {
+    "issue_id": 18,
+    "result_id": 1,
+    "result": [
+      "10.0.22631",
+      "There are updates available for Windows 10."
+    ]
+  },
+  {
+    "issue_id": 19,
+    "result_id": 1,
+    "result": [
+      "Secure boot is enabled"
+    ]
+  },
+  {
+    "issue_id": 13,
+    "result_id": 2,
+    "result": [
+      "SMB1: not enabled",
+      "SMB2: enabled"
+    ]
+  },
+  {
+    "issue_id": 20,
+    "result_id": 1,
+    "result": [
+      "SecurityHealth",
+      "AMMW"
+    ]
+  },
+  {
+    "issue_id": 3,
+    "result_id": 2,
+    "result": [
+      "Guest account is not active"
+    ]
+  },
+  {
+    "issue_id": 14,
+    "result_id": 2,
+    "result": [
+      "UAC is turned on for apps making changes to your computer."
+    ]
+  },
+  {
+    "issue_id": 12,
+    "result_id": 1,
+    "result": [
+      "Remote Desktop is disabled"
+    ]
+  },
+  {
+    "issue_id": 2,
+    "result_id": 0,
+    "result": [
+      "HID-compliant mouse",
+      "ELAN Input Device For WDF",
+      "Integrated Camera"
+    ]
+  },
+  {
+    "issue_id": 4,
+    "result_id": 0,
+    "result": [
+      "Network sharing is enabled"
+    ]
+  },
+  {
+    "issue_id": 23,
+    "result_id": 1,
+    "result": [
+      "No phishing domains found in the last week"
+    ]
+  },
+  {
+    "issue_id": 21,
+    "result_id": 0,
+    "error": "No adblocker installed: no adblocker installed"
+  },
+  {
+    "issue_id": 25,
+    "result_id": 0,
+    "result": [
+      "google.com"
+    ]
+  },
+  {
+    "issue_id": 28,
+    "result_id": 0,
+    "error": "No firefox directory found: open C:\\Users\\larss\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles: The system cannot find the path specified."
+  },
+  {
+    "issue_id": 29,
+    "result_id": 0,
+    "error": "No firefox directory found: open C:\\Users\\larss\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles: The system cannot find the path specified."
+  },
+  {
+    "issue_id": 31,
+    "result_id": 0,
+    "error": "No firefox directory found: open C:\\Users\\larss\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles: The system cannot find the path specified."
+  },
+  {
+    "issue_id": 30,
+    "result_id": 0,
+    "error": "No firefox directory found: open C:\\Users\\larss\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles: The system cannot find the path specified."
+  }
+]
+2024/04/08 14:49:07 [{"issue_id":5,"result_id":1,"result":["No password manager found"]},{"issue_id":15,"result_id":0,"result":["Windows real-time defender is enabled and also the windows periodic scan is enabled"]},{"issue_id":16,"result_id":0,"result":["Password last changed on 01/03/2023 , your password was changed more than half a year ago so you should change it again"]},{"issue_id":17,"result_id":5,"result":["Password","PIN"]},{"issue_id":6,"result_id":0,"result":["E046963F.LenovoCompanion","MicrosoftWindows.Client.WebExperience","msedge.exe","OUTLOOK.EXE","POWERPNT.EXE","WINWORD.EXE","dllhost.exe","windows.immersivecontrolpanel"]},{"issue_id":7,"result_id":0,"result":["E046963F.LenovoCompanion","Microsoft.GamingApp","Microsoft.MixedReality.Portal","Microsoft.ScreenSketch","Microsoft.WindowsCamera","Microsoft.WindowsFeedbackHub","Microsoft.XboxGamingOverlay","Discord.exe"]},{"issue_id":8,"result_id":0,"result":["E046963F.LenovoCompanion","E0469640.SmartAppearance","Microsoft.GamingApp","Microsoft.WindowsCamera","Microsoft.WindowsFeedbackHub","MicrosoftWindows.Client.CBS"]},{"issue_id":9,"result_id":0,"result":["microsoft.windowscommunicationsapps"]},{"issue_id":10,"result_id":0,"result":["microsoft.windowscommunicationsapps","svchost.exe"]},{"issue_id":1,"result_id":0,"result":["No Bluetooth devices found"]},{"issue_id":11,"result_id":0,"result":["port: 6463, process: Discord.exe","port: 9000, process: python3.11.exe","port: 9001, process: python3.11.exe","port: 9001, process: python3.11.exe","port: 9002, process: python3.11.exe","port: 9002, process: python3.11.exe","port: 9002, process: python3.11.exe","port: 9003, process: python3.11.exe","port: 9003, process: python3.11.exe","port: 9004, process: python3.11.exe","port: 9004, process: python3.11.exe","port: 9005, process: python3.11.exe","port: 9006, process: python3.11.exe","port: 9006, process: python3.11.exe","port: 9007, process: python3.11.exe","port: 9007, process: python3.11.exe","port: 9007, process: python3.11.exe","port: 9008, process: python3.11.exe","port: 9008, process: python3.11.exe","port: 9009, process: python3.11.exe","port: 9009, process: python3.11.exe","port: 49670, process: bdvpnService.exe","port: 49671, process: bdvpnService.exe","port: 49695, process: WUDFHost.exe","port: 49696, process: WUDFHost.exe","port: 49697, process: OneApp.IGCC.WinService.ex","port: 49704, process: WUDFHost.exe","port: 49705, process: WUDFHost.exe","port: 49720, process: ipfsvc.exe","port: 49721, process: ipfsvc.exe","port: 49729, process: bdagent.exe","port: 49730, process: bdagent.exe","port: 49733, process: bdvpnapp.exe","port: 49734, process: bdvpnapp.exe","port: 50670, process: msedgewebview2.exe","port: 50671, process: msedgewebview2.exe","port: 51003, process: Code.exe","port: 51005, process: Code.exe","port: 51131, process: Code.exe","port: 51168, process: Code.exe","port: 51169, process: Code.exe","port: 51170, process: Code.exe","port: 51171, process: Code.exe","port: 51176, process: python3.11.exe","port: 51177, process: python3.11.exe","port: 51178, process: python3.11.exe","port: 51179, process: python3.11.exe","port: 51180, process: python3.11.exe","port: 51181, process: python3.11.exe","port: 51182, process: python3.11.exe","port: 51183, process: python3.11.exe","port: 51184, process: python3.11.exe","port: 51185, process: python3.11.exe","port: 51186, process: python3.11.exe","port: 51187, process: python3.11.exe","port: 51188, process: python3.11.exe","port: 51189, process: python3.11.exe","port: 51190, process: python3.11.exe","port: 51191, process: python3.11.exe","port: 51192, process: python3.11.exe","port: 51193, process: python3.11.exe","port: 51194, process: python3.11.exe","port: 51195, process: python3.11.exe","port: 51196, process: python3.11.exe","port: 51197, process: python3.11.exe","port: 51198, process: python3.11.exe","port: 51199, process: python3.11.exe","port: 51200, process: python3.11.exe","port: 51202, process: python3.11.exe","port: 51203, process: python3.11.exe","port: 51204, process: python3.11.exe","port: 51205, process: python3.11.exe","port: 51206, process: python3.11.exe","port: 51207, process: python3.11.exe","port: 51208, process: python3.11.exe","port: 51209, process: python3.11.exe","port: 51210, process: python3.11.exe","port: 51211, process: python3.11.exe","port: 51212, process: python3.11.exe","port: 51213, process: python3.11.exe","port: 51214, process: python3.11.exe","port: 51215, process: python3.11.exe","port: 51216, process: python3.11.exe","port: 51217, process: python3.11.exe","port: 51218, process: python3.11.exe","port: 51219, process: python3.11.exe","port: 51220, process: python3.11.exe","port: 54117, process: bdservicehost.exe","port: 54118, process: bdservicehost.exe","port: 54137, process: ProductAgentService.exe","port: 54138, process: ProductAgentService.exe","port: 54594, process: python3.11.exe","port: 54595, process: python3.11.exe","port: 54596, process: python3.11.exe","port: 54597, process: python3.11.exe","port: 54598, process: python3.11.exe","port: 54599, process: python3.11.exe","port: 54600, process: python3.11.exe","port: 54601, process: python3.11.exe","port: 54602, process: python3.11.exe","port: 54603, process: python3.11.exe","port: 54604, process: python3.11.exe","port: 54605, process: python3.11.exe","port: 54606, process: python3.11.exe","port: 54607, process: python3.11.exe","port: 54608, process: python3.11.exe","port: 54609, process: python3.11.exe","port: 54610, process: python3.11.exe","port: 54611, process: python3.11.exe","port: 54612, process: python3.11.exe","port: 54613, process: python3.11.exe","port: 54614, process: python3.11.exe","port: 54615, process: python3.11.exe","port: 54616, process: python3.11.exe","port: 54617, process: python3.11.exe","port: 54618, process: python3.11.exe","port: 54619, process: python3.11.exe","port: 54620, process: python3.11.exe","port: 54621, process: python3.11.exe","port: 54622, process: python3.11.exe","port: 54623, process: python3.11.exe","port: 54624, process: python3.11.exe","port: 54625, process: python3.11.exe","port: 54626, process: python3.11.exe","port: 54627, process: python3.11.exe","port: 54628, process: python3.11.exe","port: 54629, process: python3.11.exe","port: 54631, process: python3.11.exe","port: 54632, process: python3.11.exe","port: 54634, process: Code.exe","port: 54635, process: Code.exe","port: 54636, process: Code.exe","port: 54637, process: Code.exe","port: 54638, process: python3.11.exe","port: 54639, process: python3.11.exe","port: 54640, process: python3.11.exe","port: 54641, process: python3.11.exe","port: 54642, process: python3.11.exe","port: 54643, process: python3.11.exe","port: 54725, process: python3.11.exe","port: 54726, process: python3.11.exe","port: 54727, process: python3.11.exe","port: 54728, process: python3.11.exe","port: 54729, process: python3.11.exe","port: 54730, process: python3.11.exe","port: 54731, process: python3.11.exe","port: 54732, process: python3.11.exe","port: 54733, process: python3.11.exe","port: 54734, process: python3.11.exe","port: 57206, process: bdservicehost.exe","port: 57207, process: bdservicehost.exe","port: 57208, process: bdservicehost.exe","port: 57209, process: bdservicehost.exe","port: 57411, process: bdservicehost.exe","port: 57412, process: bdservicehost.exe","port: 139, process: System","port: 49419, process: svchost.exe","port: 49955, process: System Idle Process","port: 50543, process: Code.exe","port: 50611, process: Discord.exe","port: 50612, process: Discord.exe","port: 50640, process: System Idle Process","port: 50650, process: Code.exe","port: 50657, process: chrome.exe","port: 50663, process: chrome.exe","port: 50665, process: chrome.exe","port: 58664, process: OneDrive.exe","port: 58727, process: chrome.exe","port: 58737, process: Discord.exe","port: 58796, process: chrome.exe","port: 60471, process: chrome.exe","port: 63020, process: SearchHost.exe","port: 63021, process: SearchHost.exe","port: 63025, process: SearchHost.exe","port: 63063, process: Discord.exe","port: 64143, process: chrome.exe","port: 64999, process: chrome.exe","port: 65015, process: chrome.exe","port: 65020, process: chrome.exe","port: 65027, process: chrome.exe","port: 65062, process: chrome.exe","port: 65064, process: chrome.exe","port: 65079, process: chrome.exe","port: 65199, process: bdservicehost.exe","port: 65329, process: bdservicehost.exe","port: 65330, process: bdservicehost.exe","port: 135, process: svchost.exe","port: 445, process: System","port: 2869, process: System","port: 7680, process: svchost.exe","port: 49664, process: lsass.exe","port: 49665, process: wininit.exe","port: 49668, process: svchost.exe","port: 49669, process: svchost.exe","port: 49684, process: spoolsv.exe","port: 49688, process: services.exe","port: 49685, process: jhi_service.exe","port: 50668, process: msedgewebview2.exe","port: 50669, process: msedgewebview2.exe","port: 1900, process: svchost.exe","port: 49664, process: svchost.exe","port: 54612, process: svchost.exe","port: 137, process: System","port: 138, process: System","port: 1900, process: svchost.exe","port: 54611, process: svchost.exe","port: 123, process: svchost.exe","port: 500, process: svchost.exe","port: 4500, process: svchost.exe","port: 5353, process: msedge.exe","port: 5353, process: chrome.exe","port: 5353, process: svchost.exe","port: 5353, process: chrome.exe","port: 5355, process: svchost.exe","port: 51929, process: svchost.exe","port: 53711, process: svchost.exe","port: 62208, process: svchost.exe","port: 1900, process: svchost.exe","port: 54610, process: svchost.exe","port: 1900, process: svchost.exe","port: 54609, process: svchost.exe"]},{"issue_id":18,"result_id":1,"result":["10.0.22631","There are updates available for Windows 10."]},{"issue_id":19,"result_id":1,"result":["Secure boot is enabled"]},{"issue_id":13,"result_id":2,"result":["SMB1: not enabled","SMB2: enabled"]},{"issue_id":20,"result_id":1,"result":["SecurityHealth","AMMW"]},{"issue_id":3,"result_id":2,"result":["Guest account is not active"]},{"issue_id":14,"result_id":2,"result":["UAC is turned on for apps making changes to your computer."]},{"issue_id":12,"result_id":1,"result":["Remote Desktop is disabled"]},{"issue_id":2,"result_id":0,"result":["HID-compliant mouse","ELAN Input Device For WDF","Integrated Camera"]},{"issue_id":4,"result_id":0,"result":["Network sharing is enabled"]},{"issue_id":23,"result_id":1,"result":["No phishing domains found in the last week"]},{"issue_id":21,"result_id":0,"error":"No adblocker installed: no adblocker installed"},{"issue_id":25,"result_id":0,"result":["google.com"]},{"issue_id":28,"result_id":0,"error":"No firefox directory found: open C:\\Users\\larss\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles: The system cannot find the path specified."},{"issue_id":29,"result_id":0,"error":"No firefox directory found: open C:\\Users\\larss\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles: The system cannot find the path specified."},{"issue_id":31,"result_id":0,"error":"No firefox directory found: open C:\\Users\\larss\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles: The system cannot find the path specified."},{"issue_id":30,"result_id":0,"error":"No firefox directory found: open C:\\Users\\larss\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles: The system cannot find the path specified."}]
+2024/04/08 14:49:07 INFO: Opening Home Page
+2024/04/08 14:49:39 INFO: Opening Home Page
+2024/04/08 14:49:39 INFO: Opening Home Page
+2024/04/08 14:49:47 INFO: Opening Home Page
+2024/04/08 14:49:47 INFO: Opening Home Page
+2024/04/08 14:49:47 INFO: Opening Home Page
+2024/04/08 14:49:47 INFO: Opening Home Page
+2024/04/08 14:49:57 INFO: Opening Home Page
+2024/04/08 14:49:57 INFO: Opening Home Page
+2024/04/08 14:49:57 INFO: Opening Home Page
+2024/04/08 14:49:57 INFO: Opening Home Page
+2024/04/08 14:49:57 INFO: Opening Home Page
+2024/04/08 14:49:57 INFO: Opening Home Page
+2024/04/08 14:49:57 INFO: Opening Home Page
+2024/04/08 14:49:57 INFO: Opening Home Page
+2024/04/08 14:50:32 INFO: Opening Home Page
+2024/04/08 14:50:32 INFO: Opening Home Page
+2024/04/08 14:50:32 INFO: Opening Home Page
+2024/04/08 14:50:32 INFO: Opening Home Page
+2024/04/08 14:50:32 INFO: Opening Home Page
+2024/04/08 14:50:32 INFO: Opening Home Page
+2024/04/08 14:50:32 INFO: Opening Home Page
+2024/04/08 14:50:32 INFO: Opening Home Page
+2024/04/08 14:50:32 INFO: Opening Home Page
+2024/04/08 14:50:32 INFO: Opening Home Page
+2024/04/08 14:50:32 INFO: Opening Home Page
+2024/04/08 14:50:32 INFO: Opening Home Page
+2024/04/08 14:50:32 INFO: Opening Home Page
+2024/04/08 14:50:32 INFO: Opening Home Page
+2024/04/08 14:50:32 INFO: Opening Home Page
+2024/04/08 14:50:32 INFO: Opening Home Page
