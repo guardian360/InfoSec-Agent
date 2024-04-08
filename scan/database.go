@@ -9,7 +9,7 @@ import (
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	// Necessary to use the sqlite3 driver
-	_ "github.com/mattn/go-sqlite3"
+	_ "modernc.org/sqlite"
 )
 
 type Severity struct {
@@ -42,7 +42,7 @@ func FillDataBase(scanResults []checks.Check) {
 	var err error
 	var db *sql.DB
 	// Open the database file. If it doesn't exist, it will be created.
-	db, err = sql.Open("sqlite3", "./database.db")
+	db, err = sql.Open("sqlite", "./database.db")
 	if err != nil {
 		logger.Log.Println("Error opening database:", err)
 		return
@@ -140,7 +140,7 @@ func addIssue(db *sql.DB, check checks.Check, issueID int, resultID int, severit
 func GetAllSeverities(checks []checks.Check, resultIDs []int) ([]Severity, error) {
 	logger.Log.Info("Opening database")
 	// Open the database file. If it doesn't exist, it will be created.
-	db, err := sql.Open("sqlite3", "./database.db")
+	db, err := sql.Open("sqlite", "./database.db")
 	if err != nil {
 		logger.Log.ErrorWithErr("Error opening database:", err)
 		return nil, err
