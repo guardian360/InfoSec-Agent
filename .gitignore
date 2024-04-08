@@ -28,3 +28,6 @@ go.work*
 
 # Linter output
 golangci-lint-report.json
+
+# Logging
+log.txt

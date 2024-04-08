@@ -1,7 +1,8 @@
 export namespace checks {
 	
 	export class Check {
-	    id: string;
+	    issue_id: number;
+	    result_id: number;
 	    result?: string[];
 	    error?: string;
 	
@@ -11,7 +12,8 @@ export namespace checks {
 	
 	    constructor(source: any = {}) {
 	        if ('string' === typeof source) source = JSON.parse(source);
-	        this.id = source["id"];
+	        this.issue_id = source["issue_id"];
+	        this.result_id = source["result_id"];
 	        this.result = source["result"];
 	        this.error = source["error"];
 	    }
@@ -22,9 +24,9 @@ export namespace checks {
 export namespace scan {
 	
 	export class DataBaseData {
-	    id: string;
+	    id: number;
 	    severity: number;
-	    jsonkey: string;
+	    jsonkey: number;
 	
 	    static createFrom(source: any = {}) {
 	        return new DataBaseData(source);

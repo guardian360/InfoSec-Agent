@@ -12,6 +12,9 @@ import (
 	_ "modernc.org/sqlite"
 )
 
+// DataBaseData is a struct which is used to format extracted information from the database
+//
+// CheckId is used as the identifier to connect the severity level and JSON key to
 type DataBaseData struct {
 	CheckId  int `json:"id"`
 	Severity int `json:"severity"`

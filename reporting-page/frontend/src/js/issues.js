@@ -1,3 +1,4 @@
+import data from "../database.json" assert { type: "json" };
 import {openIssuePage} from './issue.js';
 import {getLocalization} from './localize.js';
 import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
@@ -42,7 +43,6 @@ export function openIssuesPage() {
 
   let issues = []; // retrieve issues from tray application
   issues = JSON.parse(sessionStorage.getItem("DataBaseData"));  
-  console.log(issues);
 
   const tbody = pageContents.querySelector('tbody');
   fillTable(tbody, issues);
@@ -54,7 +54,7 @@ export function openIssuesPage() {
  * @param {number} level - The numeric representation of the risk level.
  * @return {string} The risk level corresponding to the numeric input:
  */
-function riskLevels(level) {
+function toRiskLevel(level) {
   switch (level) {
   case 0:
     return 'Acceptable';
@@ -67,65 +67,37 @@ function riskLevels(level) {
   }
 }
 
-
 /** Fill the table with issues
  *
  * @param {HTMLTableSectionElement} tbody Table to be filled
- * @param {Severity} issues Issues to be filled in
+ * @param {Issue} issues Issues to be filled in
  */
 export function fillTable(tbody, issues) {
-  issues.forEach((issue) => {
-    const row = document.createElement('tr');
-    row.innerHTML = `
-      <td class="issue-link">${issue.id}</td>
-      <td>Security</td>
-      <td>${RiskLevels(issue.severity)}</td>
-    `;
-    tbody.appendChild(row);
+  issues.forEach(issue => {
+    const currentIssue = data[issue.jsonkey];
+    if (currentIssue) {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td class="issue-link">${currentIssue.Name}</td>
+        <td>${currentIssue.Type}</td>
+        <td>${toRiskLevel(issue.severity)}</td>
+      `;
+      row.cells[0].id = issue.jsonkey
+      tbody.appendChild(row);
+    }
   });
 
   // Add links to issue information pages
-  const issueLinks = document.querySelectorAll('.issue-link');
-  issueLinks.forEach((link, index) => {
-    link.addEventListener('click', () => openIssuePage(issues[index].Id));
+  const issueLinks = document.querySelectorAll(".issue-link");
+  issueLinks.forEach((link) => {
+    link.addEventListener("click", () => openIssuePage(link.id));
   });
 
   // Add buttons to sort on columns
-  document.getElementById('sort-on-issue').addEventListener('click', () => sortTable(tbody, 0));
-  document.getElementById('sort-on-type').addEventListener('click', () => sortTable(tbody, 1));
-  document.getElementById('sort-on-risk').addEventListener('click', () => sortTable(tbody, 2));
+  document.getElementById("sort-on-issue").addEventListener("click", () => sortTable(tbody, 0));
+  document.getElementById("sort-on-type").addEventListener("click", () => sortTable(tbody, 1));
+  document.getElementById("sort-on-risk").addEventListener("click", () => sortTable(tbody, 2));
 }
-
-// /** Fill the table with issues
-//  *
-//  * @param {HTMLTableSectionElement} tbody Table to be filled
-//  * @param {Issue} issues Issues to be filled in
-//  */
-// export function fillTable(tbody, issues) {
-//   issues.forEach(issue => {
-//     const currentIssue = data.find(element => element.Name === issue.Id);
-//     if (currentIssue) {
-//       const row = document.createElement('tr');
-//       row.innerHTML = `
-//         <td class="issue-link">${currentIssue.Name}</td>
-//         <td>${currentIssue.Type}</td>
-//         <td>${currentIssue.Risk}</td>
-//       `;
-//       tbody.appendChild(row);
-//     }
-//   });
-
-//   // Add links to issue information pages
-//   const issueLinks = document.querySelectorAll(".issue-link");
-//   issueLinks.forEach((link, index) => {
-//     link.addEventListener("click", () => openIssuePage(issues[index].Id));
-//   });
-
-//   // Add buttons to sort on columns
-//   document.getElementById("sort-on-issue").addEventListener("click", () => sortTable(tbody, 0));
-//   document.getElementById("sort-on-type").addEventListener("click", () => sortTable(tbody, 1));
-//   document.getElementById("sort-on-risk").addEventListener("click", () => sortTable(tbody, 2));
-// }
 
 /** Sorts the table
  *
