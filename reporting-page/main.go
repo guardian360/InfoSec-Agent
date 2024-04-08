@@ -7,6 +7,7 @@ package main
 
 import (
 	"embed"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/localization"
 	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 	"github.com/wailsapp/wails/v2"
