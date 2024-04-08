@@ -7,8 +7,6 @@ package main
 
 import (
 	"embed"
-	"github.com/InfoSec-Agent/InfoSec-Agent/tray"
-
 	"github.com/InfoSec-Agent/InfoSec-Agent/localization"
 	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 	"github.com/wailsapp/wails/v2"
@@ -28,13 +26,15 @@ var assets embed.FS
 func main() {
 	logger.Setup()
 	logger.Log.Info("Reporting page starting")
+
 	// Create a new instance of the app and tray struct
 	app := NewApp()
 	systemTray := NewTray(logger.Log)
 	database := NewDataBase()
 	customLogger := logger.Log
 	localization.Init("../")
-	logger.Log.Info(localization.Localize(tray.Language(), "Navigation.Issues"))
+	//lang := usersettings.LoadUserSettings().Language
+	//tray.Language = lang
 
 	// Create a Wails application with the specified options
 	err := wails.Run(&options.App{
@@ -49,7 +49,7 @@ func main() {
 		OnStartup:        app.startup,
 		Bind: []interface{}{
 			app,
-			tray,
+			systemTray,
 			database,
 		},
 		Logger: customLogger,
