@@ -7,10 +7,10 @@ export class RiskCounters {
   lowRiskColor;
   noRiskColor;
 
-  allHighRisks = [1, 2, 3, 4, 5, 6, 2];
-  allMediumRisks = [1, 2, 3, 4, 5, 6, 0];
-  allLowRisks = [1, 2, 3, 4, 5, 6, 2];
-  allNoRisks = [1, 2, 3, 4, 5, 6, 4];
+  allHighRisks = [];
+  allMediumRisks = [];
+  allLowRisks = [];
+  allNoRisks = [];
 
   lastHighRisk;
   lastMediumRisk;
