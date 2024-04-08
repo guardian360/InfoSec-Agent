@@ -26,19 +26,19 @@ func WindowsOutdated(mockOS windowsmock.WindowsVersion) Check {
 	switch versionData.MajorVersion {
 	case 11:
 		if versionData.BuildNumber == newestWin11Build {
-			return NewCheckResult(WindowsOutdatedID, 0, versionString+"You are currently up to date.")
+			return NewCheckResult(WindowsOutdatedID, 0, versionString, "You are currently up to date.")
 		} else {
-			return NewCheckResult(WindowsOutdatedID, 1, versionString+"There are updates available for Windows 11.")
+			return NewCheckResult(WindowsOutdatedID, 1, versionString, "There are updates available for Windows 11.")
 		}
 	case 10:
 		if versionData.BuildNumber == newestWin10Build {
-			return NewCheckResult(WindowsOutdatedID, 0, versionString+"You are currently up to date.")
+			return NewCheckResult(WindowsOutdatedID, 0, versionString, "You are currently up to date.")
 		} else {
-			return NewCheckResult(WindowsOutdatedID, 1, versionString+"There are updates available for Windows 10.")
+			return NewCheckResult(WindowsOutdatedID, 1, versionString, "There are updates available for Windows 10.")
 		}
 	default:
-		return NewCheckResult(WindowsOutdatedID, 2, versionString+
+		return NewCheckResult(WindowsOutdatedID, 2, versionString,
 			"You are using a Windows version which does not have support anymore. "+
-			"Consider updating to Windows 10 or Windows 11.")
+				"Consider updating to Windows 10 or Windows 11.")
 	}
 }

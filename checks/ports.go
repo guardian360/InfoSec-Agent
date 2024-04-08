@@ -45,7 +45,7 @@ func OpenPorts(tasklistexecutor, netstatexecutor commandmock.CommandExecutor) Ch
 	}
 	netstat := strings.Split(string(output), "\n")
 
-	result := NewCheckResult(PortsID, 0, "")
+	result := NewCheckResult(PortsID, 0)
 	for _, line := range netstat[4 : len(netstat)-1] {
 		words := strings.Fields(line)
 

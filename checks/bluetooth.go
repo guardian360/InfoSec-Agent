@@ -35,7 +35,7 @@ func Bluetooth(registryKey registrymock.RegistryKey) Check {
 		return NewCheckResult(BluetoothID, 0, "No Bluetooth devices found")
 	}
 
-	result := NewCheckResult(0, 1, "")
+	result := NewCheckResult(BluetoothID, 1)
 	// Open each device sub key within the registry
 	for _, deviceName := range deviceNames {
 		deviceKey, err = registrymock.OpenRegistryKey(key, deviceName)
