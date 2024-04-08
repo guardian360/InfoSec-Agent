@@ -1,4 +1,4 @@
-import data from "../database.json" assert { type: "json" };
+import data from '../database.json' assert { type: 'json' };
 import {openIssuePage} from './issue.js';
 import {getLocalization} from './localize.js';
 import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
@@ -42,7 +42,7 @@ export function openIssuesPage() {
   }
 
   let issues = []; // retrieve issues from tray application
-  issues = JSON.parse(sessionStorage.getItem("DataBaseData"));  
+  issues = JSON.parse(sessionStorage.getItem('DataBaseData'));
 
   const tbody = pageContents.querySelector('tbody');
   fillTable(tbody, issues);
@@ -73,7 +73,7 @@ function toRiskLevel(level) {
  * @param {Issue} issues Issues to be filled in
  */
 export function fillTable(tbody, issues) {
-  issues.forEach(issue => {
+  issues.forEach((issue) => {
     const currentIssue = data[issue.jsonkey];
     if (currentIssue) {
       const row = document.createElement('tr');
@@ -82,21 +82,21 @@ export function fillTable(tbody, issues) {
         <td>${currentIssue.Type}</td>
         <td>${toRiskLevel(issue.severity)}</td>
       `;
-      row.cells[0].id = issue.jsonkey
+      row.cells[0].id = issue.jsonkey;
       tbody.appendChild(row);
     }
   });
 
   // Add links to issue information pages
-  const issueLinks = document.querySelectorAll(".issue-link");
+  const issueLinks = document.querySelectorAll('.issue-link');
   issueLinks.forEach((link) => {
-    link.addEventListener("click", () => openIssuePage(link.id));
+    link.addEventListener('click', () => openIssuePage(link.id));
   });
 
   // Add buttons to sort on columns
-  document.getElementById("sort-on-issue").addEventListener("click", () => sortTable(tbody, 0));
-  document.getElementById("sort-on-type").addEventListener("click", () => sortTable(tbody, 1));
-  document.getElementById("sort-on-risk").addEventListener("click", () => sortTable(tbody, 2));
+  document.getElementById('sort-on-issue').addEventListener('click', () => sortTable(tbody, 0));
+  document.getElementById('sort-on-type').addEventListener('click', () => sortTable(tbody, 1));
+  document.getElementById('sort-on-risk').addEventListener('click', () => sortTable(tbody, 2));
 }
 
 /** Sorts the table

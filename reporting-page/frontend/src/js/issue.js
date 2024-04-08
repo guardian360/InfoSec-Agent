@@ -1,4 +1,4 @@
-import data from "../database.json" assert { type: "json" };
+import data from '../database.json' assert { type: 'json' };
 import {openIssuesPage} from './issues.js';
 import {getLocalization} from './localize.js';
 import {retrieveTheme} from './personalize.js';
