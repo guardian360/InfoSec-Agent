@@ -45,14 +45,14 @@ func SearchEngineChromium(browser string) checks.Check {
 
 	// Get the current user's home directory, where the preferences can be found
 	preferencesDir := filepath.Join(user, "AppData", "Local", browserPath, "User Data", "Default", "Preferences")
-	// TODO: var needs to be filemock.File (this requires implementation of all other functions used for files in project)
 	var file *os.File
 	file, err = os.Open(filepath.Clean(preferencesDir))
 	if err != nil {
 		return checks.NewCheckErrorf(returnBrowserName, "Error: ", err)
 	}
-	defer func(file filemock.File) {
-		err = utils.CloseFile(file)
+	defer func(file *os.File) {
+		tmpFile := filemock.Wrap(file)
+		err = utils.CloseFile(tmpFile)
 		if err != nil {
 			log.Println("Error closing file")
 		}
@@ -64,7 +64,7 @@ func SearchEngineChromium(browser string) checks.Check {
 	if err != nil {
 		return checks.NewCheckErrorf(returnBrowserName, " Can't read data,Error: ", err)
 	}
-	// Holds the unmarshaled data of the json for acces to the key value pairs
+	// Holds the unmarshalled data of the json for access to the key value pairs
 	var dev map[string]interface{}
 	err = json.Unmarshal(byteValue, &dev)
 	if err != nil {

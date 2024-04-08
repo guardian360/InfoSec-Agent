@@ -13,9 +13,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
-
 	"github.com/InfoSec-Agent/InfoSec-Agent/filemock"
+	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 )
 
 // CopyFile copies a file from the source to the destination
@@ -25,34 +24,48 @@ import (
 // dst - the destination file
 //
 // Returns: an error if the file cannot be copied, nil if the file is copied successfully
-func CopyFile(src, dst string) error {
-	sourceFile, err := os.Open(filepath.Clean(src))
+func CopyFile(src, dst string, mockSource filemock.File, mockDestination filemock.File) error {
+	var sourceFile filemock.File
+	var err error
+	if mockSource != nil {
+		sourceFile, err = mockSource, nil
+	} else {
+		var tmp *os.File
+		tmp, err = os.Open(filepath.Clean(src))
+		sourceFile = filemock.Wrap(tmp)
+	}
 	if err != nil {
 		return err
 	}
-	defer func(sourceFile *os.File) {
+	defer func(sourceFile filemock.File) {
 		err = sourceFile.Close()
 		if err != nil {
 			logger.Log.Printf("error closing source file: %v", err)
 		}
 	}(sourceFile)
-
-	destinationFile, err := os.Create(filepath.Clean(dst))
+	var destinationFile filemock.File
+	if mockDestination != nil {
+		destinationFile, err = mockDestination, nil
+	} else {
+		var tmp *os.File
+		tmp, err = os.Create(filepath.Clean(dst))
+		destinationFile = filemock.Wrap(tmp)
+	}
 	if err != nil {
 		return err
 	}
-	defer func(destinationFile *os.File) {
+	defer func(destinationFile filemock.File) {
 		err = destinationFile.Close()
 		if err != nil {
 			logger.Log.Printf("error closing destination file: %v", err)
 		}
 	}(destinationFile)
 
-	_, err = io.Copy(destinationFile, sourceFile)
+	_, err = sourceFile.Copy(destinationFile, sourceFile)
 	if err != nil {
+		logger.Log.Println("Error copying file:", err)
 		return err
 	}
-
 	return nil
 }
 

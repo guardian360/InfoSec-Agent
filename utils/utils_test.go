@@ -29,13 +29,10 @@ func TestMain(m *testing.M) {
 //
 // Returns: _
 func TestCopyFileSuccess(t *testing.T) {
-	src := "utils.go"
-	dst := "utils_copy.go"
-	defer func() {
-		err := os.Remove("utils_copy.go")
-		require.NoError(t, err)
-	}()
-	err := utils.CopyFile(src, dst)
+	src, dst := "", ""
+	mockSource := &filemock.FileMock{IsOpen: true, Bytes: 10, Err: nil}
+	mockDestination := &filemock.FileMock{IsOpen: true, Bytes: 10, Err: nil}
+	err := utils.CopyFile(src, dst, mockSource, mockDestination)
 	require.NoError(t, err)
 }
 
@@ -45,9 +42,10 @@ func TestCopyFileSuccess(t *testing.T) {
 //
 // Returns: _
 func TestCopyFileFailNonexistentSource(t *testing.T) {
-	src := "nonexistent.txt"
-	dst := "test_copy.txt"
-	err := utils.CopyFile(src, dst)
+	src, dst := "", ""
+	mockSource := &filemock.FileMock{IsOpen: true, Bytes: 10, Err: os.ErrNotExist}
+	mockDestination := &filemock.FileMock{IsOpen: true, Bytes: 10, Err: nil}
+	err := utils.CopyFile(src, dst, mockSource, mockDestination)
 	require.Error(t, err)
 }
 
@@ -57,9 +55,10 @@ func TestCopyFileFailNonexistentSource(t *testing.T) {
 //
 // Returns: _
 func TestCopyFileFailNonexistentDestination(t *testing.T) {
-	src := "utils.go"
-	dst := "nonexistent/test_copy.txt"
-	err := utils.CopyFile(src, dst)
+	src, dst := "", ""
+	mockSource := &filemock.FileMock{IsOpen: true, Bytes: 10, Err: nil}
+	mockDestination := &filemock.FileMock{IsOpen: true, Bytes: 10, Err: os.ErrNotExist}
+	err := utils.CopyFile(src, dst, mockSource, mockDestination)
 	require.Error(t, err)
 	_, err = os.Stat("nonexistent")
 	require.Error(t, err)
@@ -131,7 +130,7 @@ func TestRemoveDuplicateStrEmptyInput(t *testing.T) {
 //
 // Returns: _
 func TestCloseFileNoError(t *testing.T) {
-	file := &filemock.FileMock{Open: true, Err: nil}
+	file := &filemock.FileMock{IsOpen: true, Err: nil}
 	err := utils.CloseFile(file)
 	require.NoError(t, err)
 }
@@ -142,7 +141,7 @@ func TestCloseFileNoError(t *testing.T) {
 //
 // Returns: _
 func TestCloseFileWhenFileWasAlreadyClosed(t *testing.T) {
-	file := &filemock.FileMock{Open: true, Err: nil}
+	file := &filemock.FileMock{IsOpen: true, Err: nil}
 	err := file.Close()
 	require.NoError(t, err)
 	err = utils.CloseFile(file)

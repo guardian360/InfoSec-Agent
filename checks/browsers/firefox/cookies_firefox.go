@@ -40,7 +40,7 @@ func CookieFirefox() checks.Check {
 	}(tempCookieDbff)
 
 	// Copy the database to a temporary location
-	copyError := utils.CopyFile(ffdirectory[0]+"\\cookies.sqlite", tempCookieDbff)
+	copyError := utils.CopyFile(ffdirectory[0]+"\\cookies.sqlite", tempCookieDbff, nil, nil)
 	if copyError != nil {
 		return checks.NewCheckErrorf("CookieFirefox", "Unable to make a copy of the file", copyError)
 	}

@@ -39,7 +39,7 @@ func HistoryFirefox() checks.Check {
 	}(tempHistoryDbff)
 
 	// Copy the database to a temporary location
-	copyError := utils.CopyFile(ffdirectory[0]+"\\places.sqlite", tempHistoryDbff)
+	copyError := utils.CopyFile(ffdirectory[0]+"\\places.sqlite", tempHistoryDbff, nil, nil)
 	if copyError != nil {
 		return checks.NewCheckError("HistoryFirefox", copyError)
 	}
