@@ -231,7 +231,9 @@ func ChangeScanInterval(testInput ...string) {
 	}
 
 	// Restart the ticker with the new interval
-	ScanTicker.Stop()
+	if ScanTicker != nil {
+		ScanTicker.Stop()
+	}
 	ScanTicker = time.NewTicker(time.Duration(interval) * time.Hour)
 	logger.Log.Printf("Scan interval changed to %d hours\n", interval)
 	usersettings.SaveUserSettings(usersettings.UserSettings{
