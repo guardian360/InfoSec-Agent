@@ -3,6 +3,7 @@ import {GetAllSeverities as getAllSeverities} from '../../wailsjs/go/main/DataBa
 import {openHomePage} from './home.js';
 import * as runTime from '../../wailsjs/runtime/runtime.js';
 import * as rc from './risk-counters.js';
+import {updateRiskcounter} from './risk-counters.js';
 
 /** Call ScanNow in backend and store result in sessionStorage */
 try {
@@ -40,7 +41,14 @@ function setSeverities(input, ids) {
       const medium = countOccurences(result, 2);
       const low = countOccurences(result, 1);
       const safe = countOccurences(result, 0);
-      sessionStorage.setItem('RiskCounters', JSON.stringify(new rc.RiskCounters(high, medium, low, safe)));
+      if(sessionStorage.getItem('RiskCounters') === null || sessionStorage.getItem('RiskCounters') === undefined){
+        sessionStorage.setItem('RiskCounters', JSON.stringify(new rc.RiskCounters(high, medium, low, safe)));
+      }
+      else{
+        riskCounter = sessionStorage.getItem('RiskCounters');
+        updateRiskcounter(riskCounter, high, medium, low, safe);
+        sessionStorage.setItem('RiskCounters', JSON.stringify(riskCounter));
+      }
       openHomePage();
     });
 }

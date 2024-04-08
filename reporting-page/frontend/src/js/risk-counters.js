@@ -18,7 +18,7 @@ export class RiskCounters {
   lastnoRisk;
 
   count = this.allHighRisks.length;
-
+  
   /** Create the risk-Counters with the right colors
    *
    * @param {int} high Last recorded amount of high risks
@@ -49,6 +49,13 @@ export class RiskCounters {
     this.lastLowRisk = this.allLowRisks.slice(-1)[0];
     this.lastnoRisk = this.allNoRisks.slice(-1)[0];
   }
+}
+
+export function updateRiskcounter(rc, high, medium, low, safe) {
+  rc.allHighRisks.push(high);
+  rc.allMediumRisks.push(medium);
+  rc.allLowRisks.push(low);
+  rc.allNoRisks.push(safe);
 }
 // sessionStorage.setItem("RiskCounters",JSON.stringify(new RiskCounters()));
 

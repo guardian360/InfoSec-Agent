@@ -60,7 +60,7 @@ function openSecurityDashboardPage() {
           <div class="graph-buttons dropdown">
             <p class="bar-graph-description">
               In this graph you are able to see the distribution of different issues 
-              we have found over the past 5 times we ran a check.
+              we have found over the past times we ran a check.
             </p>
             <button id="dropbtn" class="dropbtn"><span class="select-risks">Select Risks</span></button>
             <div class="dropdown-selector" id="myDropdown">
@@ -79,7 +79,7 @@ function openSecurityDashboardPage() {
             </div>
             <a class="interval-button">
               <p class="change-interval">Change interval</p>
-              <input type="number" value="5" id="graph-interval" min="1">
+              <input type="number" value="1" id="graph-interval" min="1">
             </a>
           </div>
           <div class="graph-column issues-graph">
@@ -197,7 +197,10 @@ function openSecurityDashboardPage() {
   new PieChart('pieChart', rc);
   const g = new Graph('interval-graph', rc);
   addGraphFunctions(g);
-  document.getElementsByClassName('scan-now')[0].addEventListener('click', () => scanNowGo());
+  document.getElementsByClassName('scan-now')[0].addEventListener('click', () => {
+    scanNowGo();
+    g.changeGraph();
+  });
   document.onload = retrieveTheme();
 }
 
