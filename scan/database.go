@@ -5,14 +5,17 @@ import (
 	"fmt"
 	"strconv"
 
+	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
+	// Necessary to use the sqlite3 driver
 	_ "modernc.org/sqlite"
 )
 
 type DataBaseData struct {
-	CheckId  string `json:"id"`
-	Severity int    `json:"severity"`
-	JsonKey  string `json:"jsonkey"`
+	CheckId  int `json:"id"`
+	Severity int `json:"severity"`
+	JsonKey  int `json:"jsonkey"`
 }
 
 // FillDataBase will remove the current issues table and create a new one filled with dummy values
@@ -21,44 +24,47 @@ type DataBaseData struct {
 //
 // Returns: _
 func FillDataBase(scanResults []checks.Check) {
-	fmt.Println("Opening database")
+	logger.Log.Info("Opening database")
+	var err error
+	var db *sql.DB
 	// Open the database file. If it doesn't exist, it will be created.
-	db, err := sql.Open("sqlite", "./database.db")
+	db, err = sql.Open("sqlite", "./database.db")
 	if err != nil {
-		fmt.Println("Error opening database:", err)
+		logger.Log.Println("Error opening database:", err)
 		return
 	}
-	fmt.Println("Connected to database")
+	logger.Log.Info("Connected to database")
 
 	// Clear rows of issues if they are still there
 	_, err = db.Exec("DELETE FROM issues")
 	if err != nil {
-		fmt.Println("Error deleting from table:", err)
+		logger.Log.ErrorWithErr("Error deleting from table:", err)
 	}
 
+	var val int64
 	// Add dummy values to table
 	// addIssue's second argument should become s.id and the specific results and severities should be used
-	for i, s := range scanResults {
-		_, err := addIssue(db, s, i, 0, 0)
+	for _, s := range scanResults {
+		val, err = addIssue(db, s, s.IssueID, 0, 0)
 		if err != nil {
-			fmt.Println("Error adding issue: ", err)
+			logger.Log.Printf("Error adding issue: %s %s", err, strconv.FormatInt(val, 10))
 		}
-		_, err = addIssue(db, s, i, 1, 1)
+		val, err = addIssue(db, s, s.IssueID, 1, 1)
 		if err != nil {
-			fmt.Println("Error adding issue: ", err)
+			logger.Log.Printf("Error adding issue: %s %s", err, strconv.FormatInt(val, 10))
 		}
-		_, err = addIssue(db, s, i, 2, 2)
+		val, err = addIssue(db, s, s.IssueID, 2, 2)
 		if err != nil {
-			fmt.Println("Error adding issue: ", err)
+			logger.Log.Printf("Error adding issue: %s %s", err, strconv.FormatInt(val, 10))
 		}
-		_, err = addIssue(db, s, i, 3, 3)
+		val, err = addIssue(db, s, s.IssueID, 3, 3)
 		if err != nil {
-			fmt.Println("Error adding issue: ", err)
+			logger.Log.Printf("Error adding issue: %s %s", err, strconv.FormatInt(val, 10))
 		}
 	}
 
 	// Close the database
-	fmt.Println("Closing database")
+	logger.Log.Info("Closing database")
 	defer db.Close()
 }
 
@@ -70,22 +76,24 @@ func FillDataBase(scanResults []checks.Check) {
 //
 // check (checks.Check) - the issue to be added
 //
-// issueId (int) - id of the issue
+// issueID (int) - id of the issue
 //
-// resultId (int) - id of the result of the issue
+// resultID (int) - id of the result of the issue
 //
 // severity (int) - severity of the result
 //
 // Returns: returns index of the added row in the table
-func addIssue(db *sql.DB, check checks.Check, issueId int, resultId int, severity int) (int64, error) {
-	result, err := db.Exec("INSERT INTO issues ([Issue ID], [Result ID], Severity, [JSON Key]) VALUES (?, ?, ?, ?)", issueId, resultId, severity, check.Id+"_"+strconv.Itoa(resultId))
+func addIssue(db *sql.DB, check checks.Check, issueID int, resultID int, severity int) (int64, error) {
+	result, err := db.Exec(
+		"INSERT INTO issues ([Issue ID], [Result ID], Severity, [JSON Key]) VALUES (?, ?, ?, ?)",
+		resultID, issueID, resultID, severity, strconv.Itoa(check.IssueID))
 	if err != nil {
-		return 0, fmt.Errorf("addIssue: %v", err)
+		return 0, fmt.Errorf("addIssue: %w", err)
 	}
-	fmt.Println("Inserted issue")
+	logger.Log.Info("Inserted issue with issueID: " + strconv.Itoa(issueID))
 	id, err := result.LastInsertId()
 	if err != nil {
-		return id, fmt.Errorf("addIssue: %v", err)
+		return 0, fmt.Errorf("addIssue: %w", err)
 	}
 	return id, nil
 }
@@ -98,24 +106,24 @@ func addIssue(db *sql.DB, check checks.Check, issueId int, resultId int, severit
 //
 // issueId (int) - id of the issue
 //
-// resultId (int) - id of the result of the issue
+// resultID (int) - id of the result of the issue
 //
 // Returns: severity of the issue
-func GetSeverity(db *sql.DB, issueID int, resultId int) (int, error) {
+func GetSeverity(db *sql.DB, issueID int, resultID int) (int, error) {
 	// Prepare the SQL query
 	query := "SELECT Severity FROM issues WHERE [Issue ID] = ? AND [Result ID] = ?"
 
 	// Query the database
-	row := db.QueryRow(query, issueID, resultId)
+	row := db.QueryRow(query, issueID, resultID)
 
 	var result int
 	// Scan the value from the row into the integer variable
 	err := row.Scan(&result)
 	if err != nil {
 		if err == sql.ErrNoRows {
-			fmt.Println("No rows found.")
+			logger.Log.Warning("No rows found.")
 		} else {
-			fmt.Println("Error scanning row:", err)
+			logger.Log.ErrorWithErr("Error scanning row:", err)
 		}
 		return 0, err
 	}
@@ -133,14 +141,14 @@ func GetSeverity(db *sql.DB, issueID int, resultId int) (int, error) {
 // resultId (int) - id of the result of the issue
 //
 // Returns: JSON key of the issue
-func GetJsonKey(db *sql.DB, issueID int, resultId int) (string, error) {
+func GetJsonKey(db *sql.DB, issueID int, resultId int) (int, error) {
 	// Prepare the SQL query
 	query := "SELECT [JSON Key] FROM issues WHERE [Issue ID] = ? AND [Result ID] = ?"
 
 	// Query the database
 	row := db.QueryRow(query, issueID, resultId)
 
-	var result string
+	var result int
 	// Scan the value from the row into the integer variable
 	err := row.Scan(&result)
 	if err != nil {
@@ -149,7 +157,7 @@ func GetJsonKey(db *sql.DB, issueID int, resultId int) (string, error) {
 		} else {
 			fmt.Println("Error scanning row:", err)
 		}
-		return "", err
+		return result, err
 	}
 	return result, nil
 }
@@ -161,7 +169,7 @@ func GetJsonKey(db *sql.DB, issueID int, resultId int) (string, error) {
 // resultIDs ([]int) - the list of results corresponding to each check
 //
 // Returns: list of all severities and JSON keys
-func GetDataBaseData(checks []checks.Check, resultIDs []int) ([]DataBaseData, error) {
+func GetDataBaseData(checks []checks.Check) ([]DataBaseData, error) {
 	fmt.Println("Opening database")
 	// Open the database file. If it doesn't exist, it will be created.
 	db, err := sql.Open("sqlite", "./database.db")
@@ -173,15 +181,15 @@ func GetDataBaseData(checks []checks.Check, resultIDs []int) ([]DataBaseData, er
 
 	dbData := make([]DataBaseData, len(checks))
 	for i, s := range checks {
-		sev, err := GetSeverity(db, i, resultIDs[i])
+		sev, err := GetSeverity(db, s.IssueID, s.ResultID)
 		if err != nil {
-			fmt.Println("Error getting severity value")
+			fmt.Printf("Error getting severity value for IssueID:%v and ResultID:%v", s.IssueID, s.ResultID)
 		}
-		jsn, err := GetJsonKey(db, i, resultIDs[i])
+		jsn, err := GetJsonKey(db, s.IssueID, s.ResultID)
 		if err != nil {
-			fmt.Println("Error getting severity value")
+			fmt.Printf("Error getting severity value for IssueID:%v and ResultID:%v", s.IssueID, s.ResultID)
 		}
-		dbData[i] = DataBaseData{s.Id, sev, jsn}
+		dbData[i] = DataBaseData{s.IssueID, sev, jsn}
 	}
 
 	fmt.Println("Closing database")

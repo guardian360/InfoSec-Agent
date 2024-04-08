@@ -2,9 +2,10 @@ package checks
 
 import (
 	"fmt"
-	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
 	"regexp"
 	"strings"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
 )
 
 // OpenPorts checks for open ports and the processes that are using them
@@ -21,7 +22,7 @@ func OpenPorts(tasklistexecutor, netstatexecutor commandmock.CommandExecutor) Ch
 	output, err := tasklistexecutor.Execute(command)
 
 	if err != nil {
-		return NewCheckErrorf("OpenPorts", "error running tasklist", err)
+		return NewCheckErrorf(PortsID, "error running tasklist", err)
 	}
 	tasklist := strings.Split(string(output), "\r\n")
 
@@ -40,11 +41,11 @@ func OpenPorts(tasklistexecutor, netstatexecutor commandmock.CommandExecutor) Ch
 	output, err = netstatexecutor.Execute(command, "-ano")
 
 	if err != nil {
-		return NewCheckErrorf("OpenPorts", "error running netstat", err)
+		return NewCheckErrorf(PortsID, "error running netstat", err)
 	}
 	netstat := strings.Split(string(output), "\n")
 
-	result := NewCheckResult("OpenPorts")
+	result := NewCheckResult(PortsID, 0)
 	for _, line := range netstat[4 : len(netstat)-1] {
 		words := strings.Fields(line)
 

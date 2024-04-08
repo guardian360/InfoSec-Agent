@@ -1,17 +1,17 @@
-import {PieChart} from "./piechart";
-import {ScanNow} from '../../wailsjs/go/main/Tray';
-import { GetLocalization } from './localize.js';
-import { CloseNavigation } from "./navigation-menu.js";
-import { MarkSelectedNavigationItem } from "./navigation-menu.js";
+import {PieChart} from './piechart.js';
+import {LogMessage as logMessage, ScanNow as scanNowGo} from '../../wailsjs/go/main/Tray.js';
+import {getLocalization} from './localize.js';
+import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
 import medal from '../assets/images/img_medal1.jpg';
-import { retrieveTheme } from "./personalize";
+import {retrieveTheme} from './personalize.js';
 
 /** Load the content of the Home page */
 export function openHomePage() {
-  CloseNavigation();
-  MarkSelectedNavigationItem("home-button");
-  
-  document.getElementById("page-contents").innerHTML = `
+  logMessage('Opening Home Page');
+  document.onload = retrieveTheme();
+  closeNavigation();
+  markSelectedNavigationItem('home-button');
+  document.getElementById('page-contents').innerHTML = `
   <div class="home-data">
     <div class="container-data home-column-one"> 
       <div class="data-column risk-counters">     
@@ -60,80 +60,83 @@ export function openHomePage() {
       </div>
     </div>
   </div>
-  `;  
+  `;
 
-    document.getElementById('medal').src = medal;
-    document.getElementById('medal2').src = medal;
-    document.getElementById('medal3').src = medal;
-    document.getElementById('medal4').src = medal;
+  document.getElementById('medal').src = medal;
+  document.getElementById('medal2').src = medal;
+  document.getElementById('medal3').src = medal;
+  document.getElementById('medal4').src = medal;
 
-    let rc = JSON.parse(sessionStorage.getItem("RiskCounters"));
-    new PieChart("pieChart",rc);
+  const rc = JSON.parse(sessionStorage.getItem('RiskCounters'));
+  new PieChart('pieChart', rc);
 
   // Localize the static content of the home page
-  let staticHomePageConent = [
-    "suggested-issue", 
-    "quick-fix", 
-    "scan-now", 
-    "title-medals", 
-    "security-status",
-    "high-risk-issues", 
-    "medium-risk-issues",
-    "low-risk-issues",
-    "safe-issues",
-    "choose-issue-description"
-    ]
-    let localizationIds = [
-      "Dashboard.SuggestedIssue", 
-      "Dashboard.QuickFix", 
-      "Dashboard.ScanNow", 
-      "Dashboard.Medals", 
-      "Dashboard.SecurityStatus",
-      "Dashboard.HighRisk", 
-      "Dashboard.MediumRisk",
-      "Dashboard.LowRisk",
-      "Dashboard.Safe",
-      "Dashboard.ChooseIssueDescription"
-    ]
-    for (let i = 0; i < staticHomePageConent.length; i++) {
-        GetLocalization(localizationIds[i], staticHomePageConent[i])
+  const staticHomePageConent = [
+    'suggested-issue',
+    'quick-fix',
+    'scan-now',
+    'title-medals',
+    'security-status',
+    'high-risk-issues',
+    'medium-risk-issues',
+    'low-risk-issues',
+    'safe-issues',
+    'choose-issue-description',
+  ];
+  const localizationIds = [
+    'Dashboard.SuggestedIssue',
+    'Dashboard.QuickFix',
+    'Dashboard.ScanNow',
+    'Dashboard.Medals',
+    'Dashboard.SecurityStatus',
+    'Dashboard.HighRisk',
+    'Dashboard.MediumRisk',
+    'Dashboard.LowRisk',
+    'Dashboard.Safe',
+    'Dashboard.ChooseIssueDescription',
+  ];
+  for (let i = 0; i < staticHomePageConent.length; i++) {
+    getLocalization(localizationIds[i], staticHomePageConent[i]);
   }
 
-    document.getElementsByClassName("scan-now")[0].addEventListener("click", () => scanNow());
-    document.getElementById("home-button").addEventListener("click", () => openHomePage());
-    document.getElementById("logo").innerHTML = localStorage.getItem("picture");
-
-    document.onload = retrieveTheme();
+  document.getElementsByClassName('scan-now')[0].addEventListener('click', () => scanNow());
+  document.getElementById('home-button').addEventListener('click', () => openHomePage());
+  document.getElementById('logo').innerHTML = localStorage.getItem('picture');
 }
 
-document.getElementById("logo-button").addEventListener("click", () => openHomePage());
-document.getElementById("home-button").addEventListener("click", () => openHomePage());
+document.getElementById('logo-button').addEventListener('click', () => openHomePage());
+document.getElementById('home-button').addEventListener('click', () => openHomePage());
 
+/**
+ * Initiates a scan operation immediately.
+ * Calls the ScanNow function and handles the result or error.
+ */
 function scanNow() {
-    ScanNow()
+  scanNowGo()
     .then((result) => {
     })
     .catch((err) => {
-        console.error(err);
+      console.error(err);
     });
 }
 
-//document.onload = openHomePage();
+// document.onload = openHomePage();
 
 window.onload = function() {
-    let savedImage = localStorage.getItem('picture');
-    let savedText = localStorage.getItem('title');
-    let savedIcon = localStorage.getItem('favicon');
-    if (savedImage) {
-      let logo = document.getElementById('logo');
-      logo.src = savedImage;
-    }
-    if (savedText) {
-      let title = document.getElementById('title');
-      title.textContent = savedText;
-    }
-    if(savedIcon){
-      let favicon = document.getElementById('favicon');
-      favicon.href = savedIcon;
-    }
-  };
+  markSelectedNavigationItem('home-button');
+  const savedImage = localStorage.getItem('picture');
+  const savedText = localStorage.getItem('title');
+  const savedIcon = localStorage.getItem('favicon');
+  if (savedImage) {
+    const logo = document.getElementById('logo');
+    logo.src = savedImage;
+  }
+  if (savedText) {
+    const title = document.getElementById('title');
+    title.textContent = savedText;
+  }
+  if (savedIcon) {
+    const favicon = document.getElementById('favicon');
+    favicon.href = savedIcon;
+  }
+};

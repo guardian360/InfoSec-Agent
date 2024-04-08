@@ -5,12 +5,14 @@ package firefox
 
 import (
 	"encoding/json"
-	"fmt"
+	"os"
+	"strconv"
+	"strings"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
-	"log"
-	"os"
-	"strings"
 
 	"github.com/andrewarchi/browser/firefox"
 )
@@ -21,23 +23,25 @@ import (
 //
 // Returns: A list of found extensions, and if an adblocker is installed
 func ExtensionFirefox() (checks.Check, checks.Check) {
+	var resultID int
 	// Determine the directory in which the Firefox profile is stored
 	ffdirectory, err := utils.FirefoxFolder()
 	if err != nil {
-		return checks.NewCheckErrorf("ExtensionsFirefox", "No firefox directory found", err), checks.NewCheckErrorf("AdblockerFirefox", "No firefox directory found", err)
+		return checks.NewCheckErrorf(checks.ExtensionFirefoxID, "No firefox directory found", err),
+			checks.NewCheckErrorf(checks.AdblockFirefoxID, "No firefox directory found", err)
 	}
 
-	addBlocker := false //Variable used for checking if an adblocker is used
+	addBlocker := false // Variable used for checking if an adblocker is used
 	var output []string
 	// Open the extensions.json file, which contains a list of all installed Firefox extensions
 	content, err := os.Open(ffdirectory[0] + "\\extensions.json")
 	if err != nil {
-		return checks.NewCheckError("ExtensionsFirefox", err), checks.NewCheckError("AdblockerFirefox", err)
+		return checks.NewCheckError(checks.ExtensionFirefoxID, err), checks.NewCheckError(checks.AdblockFirefoxID, err)
 	}
 	defer func(content *os.File) {
-		err := content.Close()
+		err = content.Close()
 		if err != nil {
-			log.Println("error closing file: ", err)
+			logger.Log.ErrorWithErr("Error closing file: ", err)
 		}
 	}(content)
 
@@ -46,21 +50,22 @@ func ExtensionFirefox() (checks.Check, checks.Check) {
 	decoder := json.NewDecoder(content)
 	err = decoder.Decode(&extensions)
 	if err != nil {
-		return checks.NewCheckError("ExtensionsFirefox", err), checks.NewCheckError("AdblockerFirefox", err)
+		return checks.NewCheckError(checks.ExtensionFirefoxID, err), checks.NewCheckError(checks.AdblockFirefoxID, err)
 	}
 
 	// In the result list, add: the name of the addon, type of the addon, the creator, and whether it is active or not
 	for _, addon := range extensions.Addons {
 		output = append(output, addon.DefaultLocale.Name+","+addon.Type+","+addon.DefaultLocale.Creator+","+
-			""+fmt.Sprintf("%t", addon.Active))
+			""+strconv.FormatBool(addon.Active))
 		// Determine if the addon is an adblocker
 		if adblockerFirefox(addon.DefaultLocale.Name) {
 			addBlocker = true
+			resultID++
 		}
 	}
-	adBlockused := fmt.Sprintf("%t", addBlocker)
-	return checks.NewCheckResult("ExtensionsFirefox", output...),
-		checks.NewCheckResult("AdblockerFirefox", adBlockused)
+	adBlockused := strconv.FormatBool(addBlocker)
+	return checks.NewCheckResult(checks.ExtensionFirefoxID, 0, output...),
+		checks.NewCheckResult(checks.AdblockFirefoxID, resultID, adBlockused)
 }
 
 // adblockerFirefox checks if the given extension is an adblocker

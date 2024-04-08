@@ -1,10 +1,11 @@
 package checks_test
 
 import (
+	"github.com/stretchr/testify/require"
+	"testing"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/stretchr/testify/mock"
-	"reflect"
-	"testing"
 )
 
 // MockProgramLister is a mock type for the ProgramLister interface
@@ -32,12 +33,12 @@ func TestPasswordManager(t *testing.T) {
 		{
 			name:         "With Known Password Manager",
 			mockPrograms: []string{"1Password"},
-			want:         checks.NewCheckResult("PasswordManager", "1Password"),
+			want:         checks.NewCheckResult(checks.PasswordManagerID, 0, "1Password"),
 		},
 		{
 			name:         "No Password Manager",
 			mockPrograms: []string{"RandomSoftware"},
-			want:         checks.NewCheckResult("PasswordManager", "No password manager found"),
+			want:         checks.NewCheckResult(checks.PasswordManagerID, 1, "No password manager found"),
 		},
 	}
 
@@ -47,9 +48,7 @@ func TestPasswordManager(t *testing.T) {
 			mockLister.On("ListInstalledPrograms", mock.Anything).Return(tt.mockPrograms, nil)
 
 			result := checks.PasswordManager(mockLister)
-			if !reflect.DeepEqual(result, tt.want) {
-				t.Errorf("Test %s failed. Expected %#v, got %#v", tt.name, tt.want, result)
-			}
+			require.Equal(t, tt.want, result)
 		})
 	}
 }
@@ -83,9 +82,7 @@ func TestListInstalledPrograms(t *testing.T) {
 			mockLister.On("ListInstalledPrograms", mock.Anything).Return(tt.want, nil)
 
 			result, err := mockLister.ListInstalledPrograms(tt.directory)
-			if !reflect.DeepEqual(result, tt.want) {
-				t.Errorf("Test %s failed. Expected %#v, got %#v", tt.name, tt.want, result)
-			}
+			require.Equal(t, tt.want, result)
 			if err != nil {
 				t.Errorf("Test %s failed. Expected no error, got %v", tt.name, err)
 			}

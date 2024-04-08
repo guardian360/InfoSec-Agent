@@ -3,4 +3,4 @@
 import {checks} from '../models';
 import {scan} from '../models';
 
-export function GetDataBaseData(arg1:Array<checks.Check>,arg2:Array<number>):Promise<Array<scan.DataBaseData>>;
+export function GetDataBaseData(arg1:Array<checks.Check>):Promise<Array<scan.DataBaseData>>;

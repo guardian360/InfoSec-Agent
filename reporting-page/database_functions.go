@@ -25,6 +25,6 @@ func NewDataBase() *DataBase {
 // resultIDs ([]int) - list of result ids corresponding to a severity level
 //
 // Returns: list of severity levels and JSON keys for each issue checked
-func (d *DataBase) GetDataBaseData(checks []checks.Check, resultIDs []int) ([]scan.DataBaseData, error) {
-	return scan.GetDataBaseData(checks, resultIDs)
+func (d *DataBase) GetDataBaseData(checks []checks.Check) ([]scan.DataBaseData, error) {
+	return scan.GetDataBaseData(checks)
 }

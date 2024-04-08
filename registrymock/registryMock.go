@@ -2,20 +2,20 @@ package registrymock
 
 import (
 	"errors"
+
 	"golang.org/x/sys/windows/registry"
 )
 
 var (
-	CLASSES_ROOT  = RegistryKey(NewRegistryKeyWrapper(registry.CLASSES_ROOT))
-	CURRENT_USER  = RegistryKey(NewRegistryKeyWrapper(registry.CURRENT_USER))
-	LOCAL_MACHINE = RegistryKey(NewRegistryKeyWrapper(registry.LOCAL_MACHINE))
+	CurrentUser  = RegistryKey(NewRegistryKeyWrapper(registry.CURRENT_USER))
+	LocalMachine = RegistryKey(NewRegistryKeyWrapper(registry.LOCAL_MACHINE))
 )
 
 // RegistryKey is an interface for reading values from the Windows registry
 type RegistryKey interface {
-	GetStringValue(name string) (val string, valtype uint32, err error)
-	GetBinaryValue(name string) (val []byte, valtype uint32, err error)
-	GetIntegerValue(name string) (val uint64, valtype uint32, err error)
+	GetStringValue(name string) (string, uint32, error)
+	GetBinaryValue(name string) ([]byte, uint32, error)
+	GetIntegerValue(name string) (uint64, uint32, error)
 	OpenKey(path string, access uint32) (RegistryKey, error)
 	ReadValueNames(count int) ([]string, error)
 	ReadSubKeyNames(count int) ([]string, error)
@@ -31,15 +31,15 @@ func NewRegistryKeyWrapper(key registry.Key) *RegistryKeyWrapper {
 	return &RegistryKeyWrapper{key: key}
 }
 
-func (r *RegistryKeyWrapper) GetStringValue(name string) (val string, valtype uint32, err error) {
+func (r *RegistryKeyWrapper) GetStringValue(name string) (string, uint32, error) {
 	return r.key.GetStringValue(name)
 }
 
-func (r *RegistryKeyWrapper) GetBinaryValue(name string) (val []byte, valtype uint32, err error) {
+func (r *RegistryKeyWrapper) GetBinaryValue(name string) ([]byte, uint32, error) {
 	return r.key.GetBinaryValue(name)
 }
 
-func (r *RegistryKeyWrapper) GetIntegerValue(name string) (val uint64, valtype uint32, err error) {
+func (r *RegistryKeyWrapper) GetIntegerValue(name string) (uint64, uint32, error) {
 	return r.key.GetIntegerValue(name)
 }
 
@@ -76,12 +76,17 @@ type MockRegistryKey struct {
 
 // GetStringValue returns the string value of the key
 func (m *MockRegistryKey) GetStringValue(name string) (string, uint32, error) {
-	// TODO voor Sjaak: add correct errors
+	if m.StringValues[name] == "" {
+		return "", 0, errors.New("key not found")
+	}
 	return m.StringValues[name], 0, nil
 }
 
 // GetBinaryValue returns the binary value of the key
 func (m *MockRegistryKey) GetBinaryValue(name string) ([]byte, uint32, error) {
+	if m.BinaryValues[name] == nil {
+		return nil, 0, errors.New("key not found")
+	}
 	return m.BinaryValues[name], 0, nil
 }
 
@@ -91,7 +96,7 @@ func (m *MockRegistryKey) GetIntegerValue(name string) (uint64, uint32, error) {
 }
 
 // OpenKey opens a registry key with a path relative to the current key
-func (m *MockRegistryKey) OpenKey(path string, access uint32) (RegistryKey, error) {
+func (m *MockRegistryKey) OpenKey(path string, _ uint32) (RegistryKey, error) {
 	for _, key := range m.SubKeys {
 		if key.KeyName == path {
 			return &key, nil
@@ -125,9 +130,8 @@ func (m *MockRegistryKey) ReadValueNames(maxCount int) ([]string, error) {
 	}
 	if maxCount <= 0 || maxCount >= len(uniqueValueNames) {
 		return uniqueValueNames, nil
-	} else {
-		return uniqueValueNames[:maxCount], nil
 	}
+	return uniqueValueNames[:maxCount], nil
 }
 
 // Close closes the registry key

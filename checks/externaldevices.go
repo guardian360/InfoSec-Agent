@@ -1,8 +1,10 @@
 package checks
 
 import (
-	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
+	"errors"
 	"strings"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
 )
 
 // TODO: Improve formatting of output, check more classes
@@ -20,13 +22,13 @@ func ExternalDevices(executorClass commandmock.CommandExecutor) Check {
 		output, err := CheckDeviceClass(s, executorClass)
 
 		if err != nil {
-			return NewCheckErrorf("externaldevices", "error checking device "+s, err)
+			return NewCheckErrorf(ExternalDevicesID, "error checking device "+s, err)
 		}
 
 		outputs = append(outputs, output...)
 	}
 
-	return NewCheckResult("externaldevices", outputs...)
+	return NewCheckResult(ExternalDevicesID, 0, outputs...)
 }
 
 // CheckDeviceClass runs a specific class within the Get-PnpDevice command
@@ -46,6 +48,9 @@ func CheckDeviceClass(deviceClass string, executorClass commandmock.CommandExecu
 
 	// Get all devices from the output
 	devices := strings.Split(string(output), "\r\n")
+	if len(devices) == 1 {
+		return nil, errors.New("no devices found")
+	}
 	devices = devices[3 : len(devices)-3]
 
 	// Trim all spaces in devices

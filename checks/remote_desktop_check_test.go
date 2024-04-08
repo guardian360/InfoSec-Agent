@@ -1,12 +1,13 @@
 package checks_test
 
 import (
+	"reflect"
+	"testing"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
 	"github.com/stretchr/testify/require"
 	"golang.org/x/sys/windows/registry"
-	"reflect"
-	"testing"
 )
 
 // TestRemoteDesktopCheck tests the RemoteDesktopCheck function on (in)valid input
@@ -28,7 +29,7 @@ func TestRemoteDesktopCheck(t *testing.T) {
 						IntegerValues: map[string]uint64{"fDenyTSConnections": 0}, Err: nil},
 				},
 			},
-			want: checks.NewCheckResult("RemoteDesktop", "Remote Desktop is enabled"),
+			want: checks.NewCheckResult(checks.RemoteDesktopID, 0, "Remote Desktop is enabled"),
 		},
 		{
 			name: "Remote Desktop disabled",
@@ -38,7 +39,7 @@ func TestRemoteDesktopCheck(t *testing.T) {
 						IntegerValues: map[string]uint64{"fDenyTSConnections": 1}, Err: nil},
 				},
 			},
-			want: checks.NewCheckResult("RemoteDesktop", "Remote Desktop is disabled"),
+			want: checks.NewCheckResult(checks.RemoteDesktopID, 1, "Remote Desktop is disabled"),
 		},
 		{
 			name: "Unknown status",
@@ -48,15 +49,13 @@ func TestRemoteDesktopCheck(t *testing.T) {
 						IntegerValues: map[string]uint64{"fDenyTSConnections": 3}, Err: nil},
 				},
 			},
-			want: checks.NewCheckResult("RemoteDesktop", "Remote Desktop is disabled"),
+			want: checks.NewCheckResult(checks.RemoteDesktopID, 1, "Remote Desktop is disabled"),
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got := checks.RemoteDesktopCheck(tt.key)
-			if !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("RemoteDesktopCheck() = %v, want %v", got, tt.want)
-			}
+			require.Equal(t, tt.want, got)
 		})
 	}
 }
@@ -74,7 +73,7 @@ func TestRegistryOutputRemoteDesktop(t *testing.T) {
 	require.NoError(t, err)
 
 	defer func(key registry.Key) {
-		err := key.Close()
+		err = key.Close()
 		require.NoError(t, err)
 	}(key)
 

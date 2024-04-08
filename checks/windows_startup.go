@@ -1,8 +1,9 @@
 package checks
 
 import (
-	"fmt"
 	"slices"
+
+	"github.com/getlantern/errors"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
 )
@@ -22,7 +23,7 @@ func Startup(key1 registrymock.RegistryKey, key2 registrymock.RegistryKey, key3 
 	lmKey2, err3 := registrymock.OpenRegistryKey(key3,
 		`SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run32`)
 	if err1 != nil || err2 != nil || err3 != nil {
-		return NewCheckError("Startup", fmt.Errorf("error opening registry keys"))
+		return NewCheckError(StartupID, errors.New("error opening registry keys"))
 	}
 
 	// Close the keys after we have received all relevant information
@@ -36,11 +37,11 @@ func Startup(key1 registrymock.RegistryKey, key2 registrymock.RegistryKey, key3 
 	lm2ValueNames, err3 := lmKey2.ReadValueNames(0)
 
 	if err1 != nil || err2 != nil || err3 != nil {
-		return NewCheckError("Startup", fmt.Errorf("error reading value names"))
+		return NewCheckError(StartupID, errors.New("error reading value names"))
 	}
 
 	if len(slices.Concat(cuValueNames, lmValueNames, lm2ValueNames)) == 0 {
-		return NewCheckResult("Startup", "No startup programs found")
+		return NewCheckResult(StartupID, 0, "No startup programs found")
 	}
 
 	output := make([]string, 0)
@@ -48,5 +49,5 @@ func Startup(key1 registrymock.RegistryKey, key2 registrymock.RegistryKey, key3 
 	output = append(output, registrymock.FindEntries(lmValueNames, lmKey)...)
 	output = append(output, registrymock.FindEntries(lm2ValueNames, lmKey2)...)
 
-	return NewCheckResult("Startup", output...)
+	return NewCheckResult(StartupID, 1, output...)
 }
