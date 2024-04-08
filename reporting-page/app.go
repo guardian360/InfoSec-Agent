@@ -37,7 +37,7 @@ func (a *App) startup(ctx context.Context) {
 //
 // Returns: localized string (string)
 func (a *App) Localize(messageID string) string {
-	return localization.Localize(tray.Language(), messageID)
+	return localization.Localize(tray.Language, messageID)
 }
 
 // PrintFromFrontend Print prints the given message to the console
