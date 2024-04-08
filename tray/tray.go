@@ -343,6 +343,6 @@ func RefreshMenu() {
 // Parameters: _
 //
 // Returns: language index
-//func Language() int {
+// func Language() int {
 //	return Language
 //}

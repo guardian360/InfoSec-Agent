@@ -7,6 +7,7 @@ package main
 
 import (
 	"embed"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/localization"
 	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 	"github.com/wailsapp/wails/v2"
@@ -33,8 +34,8 @@ func main() {
 	database := NewDataBase()
 	customLogger := logger.Log
 	localization.Init("../")
-	//lang := usersettings.LoadUserSettings().Language
-	//tray.Language = lang
+	// lang := usersettings.LoadUserSettings().Language
+	// tray.Language = lang
 
 	// Create a Wails application with the specified options
 	err := wails.Run(&options.App{

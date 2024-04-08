@@ -2,8 +2,9 @@ package usersettings
 
 import (
 	"encoding/json"
-	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 	"os"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 )
 
 type UserSettings struct {
@@ -40,7 +41,6 @@ func LoadUserSettings() UserSettings {
 	if err != nil {
 		logger.Log.ErrorWithErr("Error unmarshalling user settings JSON:", err)
 		return UserSettings{Language: 1, ScanInterval: 24}
-
 	}
 	return settings
 }
@@ -56,7 +56,7 @@ func SaveUserSettings(settings UserSettings) {
 		logger.Log.ErrorWithErr("Error marshalling user settings JSON:", err)
 		return
 	}
-	err = os.WriteFile("./usersettings/usersettings.json", file, 0644)
+	err = os.WriteFile("./usersettings/usersettings.json", file, 0600)
 	if err != nil {
 		logger.Log.ErrorWithErr("Error writing user setting(s) to file:", err)
 	}
