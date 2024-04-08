@@ -62,7 +62,7 @@ func SearchEngineChromium(browser string) checks.Check {
 	var byteValue []byte
 	byteValue, err = io.ReadAll(file)
 	if err != nil {
-		return checks.NewCheckErrorf(returnBrowserName, " Can't read data,Error: ", err)
+		return checks.NewCheckErrorf(returnBrowserName, " Can't read data, error: ", err)
 	}
 	// Holds the unmarshaled data of the json for acces to the key value pairs
 	var dev map[string]interface{}

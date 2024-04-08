@@ -38,7 +38,7 @@ type SeverityLevels struct {
 //
 // Returns: _
 func FillDataBase(scanResults []checks.Check) {
-	logger.Log.Println("Opening database")
+	logger.Log.Info("Opening database")
 	var err error
 	var db *sql.DB
 	// Open the database file. If it doesn't exist, it will be created.
@@ -47,12 +47,12 @@ func FillDataBase(scanResults []checks.Check) {
 		logger.Log.Println("Error opening database:", err)
 		return
 	}
-	logger.Log.Println("Connected to database")
+	logger.Log.Info("Connected to database")
 
 	// Drop the existing table if it exists
 	_, err = db.Exec("DROP TABLE IF EXISTS issues")
 	if err != nil {
-		logger.Log.Println("Error dropping table:", err)
+		logger.Log.ErrorWithErr("Error dropping table:", err)
 		return
 	}
 
@@ -64,14 +64,14 @@ func FillDataBase(scanResults []checks.Check) {
                         severity INTEGER
                     )`)
 	if err != nil {
-		logger.Log.Println("Error creating table:", err)
+		logger.Log.ErrorWithErr("Error creating table:", err)
 		return
 	}
 
 	// Clear issues of rows if they are still there
 	_, err = db.Exec("DELETE FROM issues")
 	if err != nil {
-		logger.Log.Println("Error deleting from table:", err)
+		logger.Log.ErrorWithErr("Error deleting from table:", err)
 	}
 
 	var val int64
@@ -79,24 +79,24 @@ func FillDataBase(scanResults []checks.Check) {
 	for i, s := range scanResults {
 		val, err = addIssue(db, s, i, 0, 0)
 		if err != nil {
-			logger.Log.Println("Error adding issue: ", err, val)
+			logger.Log.Printf("Error adding issue: %s %s", err, strconv.FormatInt(val, 10))
 		}
 		val, err = addIssue(db, s, i, 1, 1)
 		if err != nil {
-			logger.Log.Println("Error adding issue: ", err, val)
+			logger.Log.Printf("Error adding issue: %s %s", err, strconv.FormatInt(val, 10))
 		}
 		val, err = addIssue(db, s, i, 2, 2)
 		if err != nil {
-			logger.Log.Println("Error adding issue: ", err, val)
+			logger.Log.Printf("Error adding issue: %s %s", err, strconv.FormatInt(val, 10))
 		}
 		val, err = addIssue(db, s, i, 3, 3)
 		if err != nil {
-			logger.Log.Println("Error adding issue: ", err, val)
+			logger.Log.Printf("Error adding issue: %s %s", err, strconv.FormatInt(val, 10))
 		}
 	}
 
 	// Close the database
-	logger.Log.Println("Closing database")
+	logger.Log.Info("Closing database")
 	defer db.Close()
 }
 
@@ -122,7 +122,7 @@ func addIssue(db *sql.DB, check checks.Check, issueID int, resultID int, severit
 	if err != nil {
 		return 0, fmt.Errorf("addIssue: %w", err)
 	}
-	logger.Log.Println("Inserted issue")
+	logger.Log.Info("Inserted issue with issueID: " + strconv.Itoa(issueID))
 	id, err := result.LastInsertId()
 	if err != nil {
 		return 0, fmt.Errorf("addIssue: %w", err)
@@ -138,26 +138,26 @@ func addIssue(db *sql.DB, check checks.Check, issueID int, resultID int, severit
 //
 // Returns: list of all severities
 func GetAllSeverities(checks []checks.Check, resultIDs []int) ([]Severity, error) {
-	logger.Log.Println("Opening database")
+	logger.Log.Info("Opening database")
 	// Open the database file. If it doesn't exist, it will be created.
 	db, err := sql.Open("sqlite", "./database.db")
 	if err != nil {
-		logger.Log.Println("Error opening database:", err)
+		logger.Log.ErrorWithErr("Error opening database:", err)
 		return nil, err
 	}
-	logger.Log.Println("Connected to database")
+	logger.Log.Info("Connected to database")
 
 	var val int
 	severities := make([]Severity, len(checks))
 	for i, s := range checks {
 		val, err = GetSeverity(db, i, resultIDs[i])
 		if err != nil {
-			logger.Log.Println("Error getting severity value")
+			logger.Log.ErrorWithErr("Error getting severity value:", err)
 		}
 		severities[i] = Severity{s.ID, val}
 	}
 
-	logger.Log.Println("Closing database")
+	logger.Log.Info("Closing database")
 	defer db.Close()
 	return severities, nil
 }
@@ -185,9 +185,9 @@ func GetSeverity(db *sql.DB, issueID int, resultID int) (int, error) {
 	err := row.Scan(&result)
 	if err != nil {
 		if err == sql.ErrNoRows {
-			logger.Log.Println("No rows found.")
+			logger.Log.Warning("No rows found.")
 		} else {
-			logger.Log.Println("Error scanning row:", err)
+			logger.Log.ErrorWithErr("Error scanning row:", err)
 		}
 		return 0, err
 	}
