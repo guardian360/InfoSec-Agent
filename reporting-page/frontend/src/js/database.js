@@ -1,4 +1,4 @@
-import {ScanNow as scanNowGo} from '../../wailsjs/go/main/Tray.js';
+import {LogError as logError, ScanNow as scanNowGo} from '../../wailsjs/go/main/Tray.js';
 import {GetAllSeverities as getAllSeverities} from '../../wailsjs/go/main/DataBase.js';
 import {openHomePage} from './home.js';
 import * as runTime from '../../wailsjs/runtime/runtime.js';
@@ -18,10 +18,10 @@ try {
       runTime.LogPrint(sessionStorage.getItem('ScanResult'));
     })
     .catch((err) => {
-      console.error(err);
+      logError("Error in scanNowGo: " + err);
     });
 } catch (err) {
-  console.error(err);
+    logError("Error in scanNowGo: " + err);
 }
 
 // counts the occurences of each level: 0 = safe, 1 = low, 2 = medium, 3 = high
