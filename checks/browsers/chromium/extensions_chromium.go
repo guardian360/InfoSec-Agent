@@ -98,7 +98,7 @@ func ExtensionsChromium(browser string) checks.Check {
 	if adblockerInstalled(extensionNames) {
 		return checks.NewCheckResult(returnID, 0, "Adblocker installed")
 	}
-	return checks.NewCheckErrorf(returnID, "No adblocker installed", errors.New("no adblocker installed"))
+	return checks.NewCheckResult(returnID, 1, "No adblocker installed")
 }
 
 // getExtensionNameChromium gets the name of an extension from the Chrome Web Store or the Microsoft Edge Addons Store
