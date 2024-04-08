@@ -24,11 +24,13 @@ var assets embed.FS
 //
 // Returns: _
 func main() {
+	logger.Setup()
+	logger.Log.Info("Reporting page starting")
 	// Create a new instance of the app and tray struct
 	app := NewApp()
-	tray := NewTray(logger.NewCustomLogger(false))
+	tray := NewTray(logger.Log)
 	database := NewDataBase()
-	customLogger := logger.NewCustomLogger(false)
+	customLogger := logger.Log
 	localization.Init("../")
 
 	// Create a Wails application with the specified options
@@ -60,7 +62,6 @@ func main() {
 			},
 		},
 	})
-
 	if err != nil {
 		logger.Log.ErrorWithErr("Error creating Wails application:", err)
 	}

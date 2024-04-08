@@ -4,11 +4,9 @@ import {getLocalization} from './localize.js';
 import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
 import medal from '../assets/images/img_medal1.jpg';
 import {retrieveTheme} from './personalize.js';
-import {log} from './logger.js';
 
 /** Load the content of the Home page */
 export function openHomePage() {
-  log("Opening home page")
   closeNavigation();
   markSelectedNavigationItem('home-button');
 

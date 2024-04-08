@@ -242,7 +242,7 @@ func ScanNow() ([]checks.Check, error) {
 	// ScanCounter is not concretely used at the moment
 	// might be useful in the future
 	ScanCounter++
-	logger.Log.Info("Scanning now. Scan:" + string(rune(ScanCounter)))
+	logger.Log.Info("Scanning now. Scan:" + strconv.Itoa(ScanCounter))
 
 	// Display a progress dialog while the scan is running
 	dialog, err := zenity.Progress(
