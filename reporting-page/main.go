@@ -7,6 +7,7 @@ package main
 
 import (
 	"embed"
+	"github.com/InfoSec-Agent/InfoSec-Agent/tray"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/localization"
 	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
@@ -29,10 +30,11 @@ func main() {
 	logger.Log.Info("Reporting page starting")
 	// Create a new instance of the app and tray struct
 	app := NewApp()
-	tray := NewTray(logger.Log)
+	systemTray := NewTray(logger.Log)
 	database := NewDataBase()
 	customLogger := logger.Log
 	localization.Init("../")
+	logger.Log.Info(localization.Localize(tray.Language(), "Navigation.Issues"))
 
 	// Create a Wails application with the specified options
 	err := wails.Run(&options.App{
