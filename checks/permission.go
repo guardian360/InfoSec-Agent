@@ -14,7 +14,7 @@ const nonpackaged = "NonPackaged"
 // Parameters: permission (string) represents the permission to check
 //
 // Returns: A list of applications that have the given permission
-func Permission(permission string, registryKey registrymock.RegistryKey) Check {
+func Permission(permissionID int, permission string, registryKey registrymock.RegistryKey) Check {
 	var err error
 	var appKey registrymock.RegistryKey
 	var nonPackagedApplicationNames []string
@@ -22,7 +22,7 @@ func Permission(permission string, registryKey registrymock.RegistryKey) Check {
 	key, err := registrymock.OpenRegistryKey(registryKey,
 		`Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\`+permission)
 	if err != nil {
-		return NewCheckErrorf(permission, "error opening registry key", err)
+		return NewCheckErrorf(permissionID, "error opening registry key", err)
 	}
 	// Close the key after we have received all relevant information
 	defer registrymock.CloseRegistryKey(key)
@@ -30,7 +30,7 @@ func Permission(permission string, registryKey registrymock.RegistryKey) Check {
 	// Get the names of all sub-keys (which represent applications)
 	applicationNames, err := key.ReadSubKeyNames(-1)
 	if err != nil {
-		return NewCheckErrorf(permission, "error reading subkey names", err)
+		return NewCheckErrorf(permissionID, "error reading subkey names", err)
 	}
 
 	var results []string
@@ -40,7 +40,7 @@ func Permission(permission string, registryKey registrymock.RegistryKey) Check {
 		appKey, err = registrymock.OpenRegistryKey(key, appKeyName(appName))
 		defer registrymock.CloseRegistryKey(appKey)
 		if err != nil {
-			return NewCheckErrorf(permission, "error opening registry key", err)
+			return NewCheckErrorf(permissionID, "error opening registry key", err)
 		}
 		if appName == nonpackaged {
 			val, _, err = key.GetStringValue("Value")
@@ -48,7 +48,7 @@ func Permission(permission string, registryKey registrymock.RegistryKey) Check {
 			val, _, err = appKey.GetStringValue("Value")
 		}
 		if err != nil {
-			return NewCheckErrorf(permission, "error reading value", err)
+			return NewCheckErrorf(permissionID, "error reading value", err)
 		}
 		// If the value is not "Allow", the application does not have permission
 		if val != "Allow" {
@@ -57,7 +57,7 @@ func Permission(permission string, registryKey registrymock.RegistryKey) Check {
 		if appName == nonpackaged {
 			nonPackagedApplicationNames, err = nonPackagedAppNames(appKey)
 			if err != nil {
-				return NewCheckErrorf(permission, "error reading subkey names", err)
+				return NewCheckErrorf(permissionID, "error reading subkey names", err)
 			}
 			results = append(results, nonPackagedApplicationNames...)
 		} else {
@@ -67,7 +67,7 @@ func Permission(permission string, registryKey registrymock.RegistryKey) Check {
 	}
 	// Remove duplicate results
 	filteredResults := utils.RemoveDuplicateStr(results)
-	return NewCheckResult(permission, filteredResults...)
+	return NewCheckResult(permissionID, 0, filteredResults...)
 }
 
 // appKeyName returns the appropriate key name for the given application name

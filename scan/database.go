@@ -13,8 +13,8 @@ import (
 )
 
 type Severity struct {
-	CheckID string `json:"checkid"`
-	Level   int    `json:"level"`
+	CheckID int `json:"checkid"`
+	Level   int `json:"level"`
 }
 
 // future enumerator replacing type of level int with SeverityLevel
@@ -118,7 +118,7 @@ func FillDataBase(scanResults []checks.Check) {
 func addIssue(db *sql.DB, check checks.Check, issueID int, resultID int, severity int) (int64, error) {
 	result, err := db.Exec(
 		"INSERT INTO issues ([JSON Key], [Issue ID], [Result ID], Severity) VALUES (?, ?, ?, ?)",
-		check.ID+"_"+strconv.Itoa(resultID), issueID, resultID, severity)
+		strconv.Itoa(check.IssueID), resultID, issueID, resultID, severity)
 	if err != nil {
 		return 0, fmt.Errorf("addIssue: %w", err)
 	}
@@ -154,7 +154,7 @@ func GetAllSeverities(checks []checks.Check, resultIDs []int) ([]Severity, error
 		if err != nil {
 			logger.Log.ErrorWithErr("Error getting severity value:", err)
 		}
-		severities[i] = Severity{s.ID, val}
+		severities[i] = Severity{s.IssueID, val}
 	}
 
 	logger.Log.Info("Closing database")

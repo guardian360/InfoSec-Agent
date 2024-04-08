@@ -40,29 +40,29 @@ const chromePath = "Google/Chrome"
 // Returns: If the user has an ad blocker installed
 func ExtensionsChromium(browser string) checks.Check {
 	var browserPath string
-	var returnBrowserName string
+	var returnID int
 	// Set the browser path and the return browser name based on the browser to check
 	// Currently, supports checking of Google Chrome and Microsoft Edge
 	if browser == chrome {
-		returnBrowserName = "ExtensionsChrome"
 		browserPath = chromePath
+		returnID = checks.ExtensionChromiumID
 	}
 	if browser == edge {
-		returnBrowserName = "ExtensionsEdge"
 		browserPath = edgePath
+		returnID = checks.ExtensionEdgeID
 	}
 	var extensionIDs []string
 	var extensionNames []string
 	// Get the current user's home directory, where the extensions are stored
 	user, err := os.UserHomeDir()
 	if err != nil {
-		checks.NewCheckErrorf(returnBrowserName, "Error: ", err)
+		checks.NewCheckErrorf(returnID, "Error: ", err)
 	}
 
 	extensionsDir := filepath.Join(user, "AppData", "Local", browserPath, "User Data", "Default", "Extensions")
 	files, err := os.ReadDir(extensionsDir)
 	if err != nil {
-		checks.NewCheckErrorf(returnBrowserName, "Error: ", err)
+		checks.NewCheckErrorf(returnID, "Error: ", err)
 	}
 
 	// Construct a list of all extensions ID's
@@ -96,9 +96,9 @@ func ExtensionsChromium(browser string) checks.Check {
 		}
 	}
 	if adblockerInstalled(extensionNames) {
-		return checks.NewCheckResult(returnBrowserName, "Adblocker installed")
+		return checks.NewCheckResult(returnID, 0, "Adblocker installed")
 	}
-	return checks.NewCheckErrorf(returnBrowserName, "No adblocker installed", errors.New("no adblocker installed"))
+	return checks.NewCheckErrorf(returnID, "No adblocker installed", errors.New("no adblocker installed"))
 }
 
 // getExtensionNameChromium gets the name of an extension from the Chrome Web Store or the Microsoft Edge Addons Store
