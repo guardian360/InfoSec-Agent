@@ -1,5 +1,6 @@
 package checks
 
+// This is a list of all the Result IDs for the checks that are performed. It starts at 1 and then iterates up.
 const (
 	BluetoothID int = iota + 1
 	ExternalDevicesID
