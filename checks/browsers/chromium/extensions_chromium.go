@@ -9,11 +9,12 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"log"
 	"net/http"
 	"os"
 	"path/filepath"
 	"strings"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 )
@@ -78,7 +79,7 @@ func ExtensionsChromium(browser string) checks.Check {
 		extensionName1, err = getExtensionNameChromium(id,
 			"https://chromewebstore.google.com/detail/%s", browser)
 		if err != nil {
-			log.Fatal(err)
+			logger.Log.Fatal(err)
 		}
 		if strings.Count(extensionName1, "/") > 4 {
 			parts := strings.Split(extensionName1, "/")
@@ -89,7 +90,7 @@ func ExtensionsChromium(browser string) checks.Check {
 			extensionName2, err = getExtensionNameChromium(id,
 				"https://microsoftedge.microsoft.com/addons/getproductdetailsbycrxid/%s", browser)
 			if err != nil {
-				log.Fatal(err)
+				logger.Log.Fatal(err)
 			}
 			extensionNames = append(extensionNames, extensionName2)
 		}
@@ -118,20 +119,20 @@ func getExtensionNameChromium(extensionID string, url string, browser string) (s
 	// Generate a new request to visit the extension/addon store
 	req, err := http.NewRequestWithContext(context.Background(), http.MethodGet, urlToVisit, nil)
 	if err != nil {
-		log.Println("error creating request: ", err)
+		logger.Log.Println("error creating request: ", err)
 		return "", err
 	}
 	req.Header.Add("User-Agent", "Mozilla/5.0")
 	resp, err := client.Do(req)
 	if err != nil {
-		log.Println("error sending request: ", err)
+		logger.Log.Println("error sending request: ", err)
 		return "", err
 	}
 	// Close the response body after the necessary data is retrieved
 	defer func(Body io.ReadCloser) {
 		err = Body.Close()
 		if err != nil {
-			log.Println("error closing body: ", err)
+			logger.Log.Println("error closing body: ", err)
 		}
 	}(resp.Body)
 

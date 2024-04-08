@@ -1,8 +1,7 @@
-import {PieChart} from './piechart';
-import {ScanNow as scanNowGo} from '../../wailsjs/go/main/Tray';
+import {PieChart} from './piechart.js';
+import {ScanNow as scanNowGo} from '../../wailsjs/go/main/Tray.js';
 import {getLocalization} from './localize.js';
-import {closeNavigation} from './navigation-menu.js';
-import {markSelectedNavigationItem} from './navigation-menu.js';
+import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
 import medal from '../assets/images/img_medal1.jpg';
 import {retrieveTheme} from './personalize.js';
 
