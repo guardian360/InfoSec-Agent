@@ -1,5 +1,5 @@
 import {PieChart} from './piechart.js';
-import {ScanNow as scanNowGo} from '../../wailsjs/go/main/Tray.js';
+import {LogMessage as logMessage, ScanNow as scanNowGo} from '../../wailsjs/go/main/Tray.js';
 import {getLocalization} from './localize.js';
 import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
 import medal from '../assets/images/img_medal1.jpg';
@@ -7,6 +7,7 @@ import {retrieveTheme} from './personalize.js';
 
 /** Load the content of the Home page */
 export function openHomePage() {
+  logMessage('Opening Home Page');
   document.onload = retrieveTheme();
   closeNavigation();
   markSelectedNavigationItem('home-button');

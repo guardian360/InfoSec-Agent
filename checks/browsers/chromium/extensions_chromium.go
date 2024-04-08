@@ -9,11 +9,12 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"log"
 	"net/http"
 	"os"
 	"path/filepath"
 	"strings"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 )
@@ -78,7 +79,7 @@ func ExtensionsChromium(browser string) checks.Check {
 		extensionName1, err = getExtensionNameChromium(id,
 			"https://chromewebstore.google.com/detail/%s", browser)
 		if err != nil {
-			log.Fatal(err)
+			logger.Log.ErrorWithErr("Error getting extension name: ", err)
 		}
 		if strings.Count(extensionName1, "/") > 4 {
 			parts := strings.Split(extensionName1, "/")
@@ -89,7 +90,7 @@ func ExtensionsChromium(browser string) checks.Check {
 			extensionName2, err = getExtensionNameChromium(id,
 				"https://microsoftedge.microsoft.com/addons/getproductdetailsbycrxid/%s", browser)
 			if err != nil {
-				log.Fatal(err)
+				logger.Log.ErrorWithErr("Error getting extension name: ", err)
 			}
 			extensionNames = append(extensionNames, extensionName2)
 		}
@@ -111,27 +112,27 @@ func ExtensionsChromium(browser string) checks.Check {
 //	browser (string) - The name of the browser to check
 //
 // Returns: The name of the extension and an optional error (string,error)
-// Error should be nil on success
+// error should be nil on success
 func getExtensionNameChromium(extensionID string, url string, browser string) (string, error) {
 	client := &http.Client{}
 	urlToVisit := fmt.Sprintf(url, extensionID)
 	// Generate a new request to visit the extension/addon store
 	req, err := http.NewRequestWithContext(context.Background(), http.MethodGet, urlToVisit, nil)
 	if err != nil {
-		log.Println("error creating request: ", err)
+		logger.Log.ErrorWithErr("Error creating request: ", err)
 		return "", err
 	}
 	req.Header.Add("User-Agent", "Mozilla/5.0")
 	resp, err := client.Do(req)
 	if err != nil {
-		log.Println("error sending request: ", err)
+		logger.Log.ErrorWithErr("Error sending request: ", err)
 		return "", err
 	}
 	// Close the response body after the necessary data is retrieved
 	defer func(Body io.ReadCloser) {
 		err = Body.Close()
 		if err != nil {
-			log.Println("error closing body: ", err)
+			logger.Log.ErrorWithErr("Error closing body: ", err)
 		}
 	}(resp.Body)
 

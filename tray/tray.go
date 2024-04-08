@@ -5,8 +5,7 @@
 package tray
 
 import (
-	"log"
-
+	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 	"github.com/pkg/errors"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
@@ -95,14 +94,14 @@ func OnReady() {
 		case <-mReportingPage.ClickedCh:
 			err := OpenReportingPage("")
 			if err != nil {
-				log.Println(err)
+				logger.Log.Println(err)
 			}
 		case <-mChangeScanInterval.ClickedCh:
 			ChangeScanInterval()
 		case <-mScanNow.ClickedCh:
 			_, err := ScanNow()
 			if err != nil {
-				log.Println("Error scanning:", err)
+				logger.Log.ErrorWithErr("Error scanning:", err)
 			}
 		case <-mChangeLanguage.ClickedCh:
 			ChangeLanguage()
@@ -114,10 +113,10 @@ func OnReady() {
 		// Executes each time the ScanTicker has elapsed the set amount of time
 		case <-ScanTicker.C:
 			ScanCounter++
-			log.Println("Scan:", ScanCounter)
+			logger.Log.Println("Scan:", ScanCounter)
 			_, err := ScanNow()
 			if err != nil {
-				log.Println("Error scanning:", err)
+				logger.Log.ErrorWithErr("Error scanning:", err)
 			}
 		}
 	}
@@ -129,6 +128,9 @@ func OnReady() {
 //
 // Returns: _
 func OnQuit() {
+	// Perform cleanup tasks here
+	// Currently, there are no cleanup tasks to perform
+	logger.Log.Info("Quitting the application")
 }
 
 // OpenReportingPage opens the reporting page using a Wails application
@@ -159,7 +161,7 @@ func OpenReportingPage(path string) error {
 	defer func() {
 		err = os.Chdir(originalDir)
 		if err != nil {
-			log.Println("Error changing directory:", err)
+			logger.Log.ErrorWithErr("Error changing directory:", err)
 		}
 		ReportingPageOpen = false
 	}()
@@ -182,7 +184,7 @@ func OpenReportingPage(path string) error {
 	go func() {
 		<-mQuit.ClickedCh
 		if err = runCmd.Process.Kill(); err != nil {
-			log.Println("Error interrupting reporting-page process:", err)
+			logger.Log.ErrorWithErr("Error interrupting reporting-page process:", err)
 		}
 		ReportingPageOpen = false
 		systray.Quit()
@@ -213,7 +215,7 @@ func ChangeScanInterval(testInput ...string) {
 		res, err = zenity.Entry("Enter the scan interval (in hours):", zenity.Title("Change Scan Interval"),
 			zenity.DefaultItems("24"))
 		if err != nil {
-			log.Println("Error creating dialog:", err)
+			logger.Log.ErrorWithErr("Error creating dialog:", err)
 			return
 		}
 	}
@@ -221,14 +223,14 @@ func ChangeScanInterval(testInput ...string) {
 	// Parse the user input
 	interval, err := strconv.Atoi(res)
 	if err != nil || interval <= 0 {
-		log.Printf("Invalid input. Using default interval of 24 hours.")
+		logger.Log.Printf("Invalid input. Using default interval of 24 hours.")
 		interval = 24
 	}
 
 	// Restart the ticker with the new interval
 	ScanTicker.Stop()
 	ScanTicker = time.NewTicker(time.Duration(interval) * time.Hour)
-	log.Printf("Scan interval changed to %d hours\n", interval)
+	logger.Log.Printf("Scan interval changed to %d hours\n", interval)
 }
 
 // ScanNow performs one scan iteration (without checking if it is scheduled)
@@ -240,32 +242,32 @@ func ScanNow() ([]checks.Check, error) {
 	// ScanCounter is not concretely used at the moment
 	// might be useful in the future
 	ScanCounter++
-	log.Println("Scanning now. Scan:", ScanCounter)
+	logger.Log.Info("Scanning now. Scan:" + strconv.Itoa(ScanCounter))
 
 	// Display a progress dialog while the scan is running
 	dialog, err := zenity.Progress(
 		zenity.Title("Security/Privacy Scan"))
 	if err != nil {
-		log.Println("Error creating dialog:", err)
+		logger.Log.ErrorWithErr("Error creating dialog:", err)
 		return nil, err
 	}
 	// Defer closing the dialog until the scan completes
 	defer func(dialog zenity.ProgressDialog) {
 		err = dialog.Close()
 		if err != nil {
-			log.Println("Error closing dialog:", err)
+			logger.Log.ErrorWithErr("Error closing dialog:", err)
 		}
 	}(dialog)
 
 	result, err := scan.Scan(dialog)
 	if err != nil {
-		log.Println("Error calling scan:", err)
+		logger.Log.ErrorWithErr("Error calling scan:", err)
 		return result, err
 	}
 
 	err = dialog.Complete()
 	if err != nil {
-		log.Println("Error completing dialog:", err)
+		logger.Log.ErrorWithErr("Error completing dialog:", err)
 		return result, err
 	}
 
@@ -287,7 +289,7 @@ func ChangeLanguage(testInput ...string) {
 			"Spanish", "French", "Dutch", "Portuguese"}, zenity.Title("Change Language"),
 			zenity.DefaultItems("British English"))
 		if err != nil {
-			log.Println("Error creating dialog:", err)
+			logger.Log.ErrorWithErr("Error creating dialog:", err)
 			return
 		}
 	}
