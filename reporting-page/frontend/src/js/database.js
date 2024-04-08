@@ -18,10 +18,10 @@ try {
       runTime.LogPrint(sessionStorage.getItem('ScanResult'));
     })
     .catch((err) => {
-      logError("Error in scanNowGo: " + err);
+      logError('Error in scanNowGo: ' + err);
     });
 } catch (err) {
-    logError("Error in scanNowGo: " + err);
+  logError('Error in scanNowGo: ' + err);
 }
 
 // counts the occurences of each level: 0 = safe, 1 = low, 2 = medium, 3 = high
