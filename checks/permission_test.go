@@ -1,8 +1,9 @@
 package checks_test
 
 import (
-	"github.com/stretchr/testify/require"
 	"testing"
+
+	"github.com/stretchr/testify/require"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
@@ -39,7 +40,7 @@ func TestPermission(t *testing.T) {
 					},
 				},
 			},
-			want: checks.NewCheckResult("webcam", "microsoft.webcam"),
+			want: checks.NewCheckResult(checks.WebcamID, 0, "microsoft.webcam"),
 		},
 		{
 			name:       "WebcamPermissionExists",
@@ -53,13 +54,13 @@ func TestPermission(t *testing.T) {
 					},
 				},
 			},
-			want: checks.NewCheckResult("webcam", "microsoft.webcam"),
+			want: checks.NewCheckResult(checks.WebcamID, 0, "microsoft.webcam"),
 		},
 	}
 
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
-			result := checks.Permission(tc.permission, tc.key)
+			result := checks.Permission(checks.WebcamID, tc.permission, tc.key)
 			require.Equal(t, tc.want, result)
 		})
 	}
@@ -86,7 +87,7 @@ func TestFormatPermission(t *testing.T) {
 			},
 		},
 	}
-	c := checks.Permission("location", key)
+	c := checks.Permission(checks.LocationID, "location", key)
 	assert.NotContains(t, c.Result, "#")
 	assert.Contains(t, c.Result, "test.exe")
 }
@@ -112,7 +113,7 @@ func TestNonExistingPermission(t *testing.T) {
 			},
 		},
 	}
-	c := checks.Permission("hello", key)
+	c := checks.Permission(99, "hello", key)
 	assert.Equal(t, c.Result, []string(nil))
 	assert.EqualError(t, c.Error, "error opening registry key: error opening registry key: key not found")
 }

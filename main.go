@@ -5,6 +5,7 @@ package main
 
 import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/localization"
+	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/tray"
 	"github.com/getlantern/systray"
 )
@@ -16,5 +17,7 @@ import (
 // Returns: _
 func main() {
 	localization.Init("")
+	logger.Setup()
+	logger.Log.Info("Starting InfoSec Agent")
 	systray.Run(tray.OnReady, tray.OnQuit)
 }

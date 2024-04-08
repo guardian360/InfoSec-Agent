@@ -10,13 +10,15 @@
     "test": "mocha"
   },
   "devDependencies": {
+    "global-jsdom": "^24.0.0",
+    "jsdom": "24.0.0",
+    "jsdom-global": "3.0.2",
     "mocha": "*",
     "vite": "^3.2.10"
   },
   "dependencies": {
     "canvas": "^2.11.2",
     "chart.js": "^4.4.2",
-    "jsdom": "^24.0.0",
     "mocha": "^10.3.0",
     "sqlite3": "^5.1.7",
     "unit.js": "^2.1.1"
@@ -44,7 +46,9 @@
     }
   },
   "stylelint": {
-    "extends": ["stylelint-config-standard"],
+    "extends": [
+      "stylelint-config-standard"
+    ],
     "ignoreFiles": [
       "node_modules/**",
       "dist/**",

@@ -10,6 +10,10 @@ export function ChangeScanInterval() {
   return window['go']['main']['Tray']['ChangeScanInterval']();
 }
 
+export function LogMessage(arg1) {
+  return window['go']['main']['Tray']['LogMessage'](arg1);
+}
+
 export function ScanNow() {
   return window['go']['main']['Tray']['ScanNow']();
 }
