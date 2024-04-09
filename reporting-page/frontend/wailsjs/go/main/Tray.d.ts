@@ -6,6 +6,8 @@ export function ChangeLanguage():Promise<void>;
 
 export function ChangeScanInterval():Promise<void>;
 
-export function LogMessage(arg1:string):Promise<void>;
+export function LogError(arg1:string):Promise<void>;
+
+export function LogInfo(arg1:string):Promise<void>;
 
 export function ScanNow():Promise<Array<checks.Check>>;

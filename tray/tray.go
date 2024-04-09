@@ -49,8 +49,8 @@ func OnReady() {
 	systray.SetIcon(icon.Data)
 	systray.SetTooltip("InfoSec Agent")
 
-	Language = usersettings.LoadUserSettings().Language
-	scanInterval := usersettings.LoadUserSettings().ScanInterval
+	Language = usersettings.LoadUserSettings("usersettings").Language
+	scanInterval := usersettings.LoadUserSettings("usersettings").ScanInterval
 
 	// Generate the menu for the system tray application
 	mReportingPage := systray.AddMenuItem(localization.Localize(Language, "Tray.ReportingPageTitle"),
@@ -237,9 +237,9 @@ func ChangeScanInterval(testInput ...string) {
 	ScanTicker = time.NewTicker(time.Duration(interval) * time.Hour)
 	logger.Log.Printf("Scan interval changed to %d hours\n", interval)
 	usersettings.SaveUserSettings(usersettings.UserSettings{
-		Language:     usersettings.LoadUserSettings().Language,
+		Language:     usersettings.LoadUserSettings("usersettings").Language,
 		ScanInterval: interval,
-	})
+	}, "usersettings")
 }
 
 // ScanNow performs one scan iteration (without checking if it is scheduled)
@@ -324,8 +324,8 @@ func ChangeLanguage(testInput ...string) {
 	}
 	usersettings.SaveUserSettings(usersettings.UserSettings{
 		Language:     Language,
-		ScanInterval: usersettings.LoadUserSettings().ScanInterval,
-	})
+		ScanInterval: usersettings.LoadUserSettings("usersettings").ScanInterval,
+	}, "usersettings")
 }
 
 // RefreshMenu updates the menu items with the current language

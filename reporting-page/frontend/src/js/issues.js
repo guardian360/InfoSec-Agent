@@ -3,6 +3,7 @@ import {openIssuePage} from './issue.js';
 import {getLocalization} from './localize.js';
 import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
 import {retrieveTheme} from './personalize.js';
+import {LogError as logError} from '../../wailsjs/go/main/Tray.js';
 
 /** Load the content of the Issues page */
 export function openIssuesPage() {
@@ -144,6 +145,6 @@ if (typeof document !== 'undefined') {
   try {
     document.getElementById('issues-button').addEventListener('click', () => openIssuesPage());
   } catch (error) {
-    console.log('Error in issues.js: ' + error);
+    logError('Error in issues.js: ' + error);
   }
 }

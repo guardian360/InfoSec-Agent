@@ -19,8 +19,8 @@ type UserSettings struct {
 // Returns: a pointer to a new UserSettings struct
 func NewUserSettings() *UserSettings {
 	return &UserSettings{
-		Language:     LoadUserSettings().Language,
-		ScanInterval: LoadUserSettings().ScanInterval,
+		Language:     LoadUserSettings("usersettings").Language,
+		ScanInterval: LoadUserSettings("usersettings").ScanInterval,
 	}
 }
 
@@ -29,8 +29,8 @@ func NewUserSettings() *UserSettings {
 // Parameters: _
 //
 // Returns: language setting (int)
-func LoadUserSettings() UserSettings {
-	data, err := os.ReadFile("./usersettings/usersettings.json")
+func LoadUserSettings(path string) UserSettings {
+	data, err := os.ReadFile(path + "/usersettings.json")
 	if err != nil {
 		logger.Log.ErrorWithErr("Error reading user settings file:", err)
 		return UserSettings{Language: 1, ScanInterval: 24}
@@ -50,13 +50,13 @@ func LoadUserSettings() UserSettings {
 // Parameters: lang (int) - the language setting to save
 //
 // Returns: _
-func SaveUserSettings(settings UserSettings) {
+func SaveUserSettings(settings UserSettings, path string) {
 	file, err := json.MarshalIndent(settings, "", " ")
 	if err != nil {
 		logger.Log.ErrorWithErr("Error marshalling user settings JSON:", err)
 		return
 	}
-	err = os.WriteFile("./usersettings/usersettings.json", file, 0600)
+	err = os.WriteFile(path+"/usersettings.json", file, 0600)
 	if err != nil {
 		logger.Log.ErrorWithErr("Error writing user setting(s) to file:", err)
 	}

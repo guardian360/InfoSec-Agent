@@ -1,5 +1,5 @@
 import {openPersonalizePage} from './personalize.js';
-import {ChangeLanguage as changeLangue} from '../../wailsjs/go/main/Tray.js';
+import {ChangeLanguage as changeLanguage, LogError as logError} from '../../wailsjs/go/main/Tray.js';
 import {getLocalization} from './localize.js';
 import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
 import {retrieveTheme} from './personalize.js';
@@ -8,10 +8,11 @@ import {retrieveTheme} from './personalize.js';
  * Calls the ChangeLanguage function and handles the result or error.
  */
 function updateLanguage() {
-  changeLangue()
+  changeLanguage()
     .then((result) => {
     })
     .catch((err) => {
+      logError('Error changing language:' + err);
       console.error(err);
     });
 }
