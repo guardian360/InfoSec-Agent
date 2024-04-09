@@ -2,10 +2,11 @@ package checks_test
 
 import (
 	"errors"
-	"github.com/stretchr/testify/require"
 	"reflect"
 	"strings"
 	"testing"
+
+	"github.com/stretchr/testify/require"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
@@ -25,18 +26,18 @@ func TestExternalDevices(t *testing.T) {
 		{
 			name:          "No external devices connected",
 			executorClass: &commandmock.MockCommandExecutor{Output: "\r\nFriendlyName\r\n-\r\n\r\n\r\n\r\n", Err: nil},
-			want:          checks.NewCheckResult("externaldevices", "", ""),
+			want:          checks.NewCheckResult(checks.ExternalDevicesID, 0, "", ""),
 		},
 		{
 			name: "External devices connected",
 			executorClass: &commandmock.MockCommandExecutor{
 				Output: "\r\nFriendlyName\r\n-\r\nHD WebCam\r\n\r\n\r\n\r\n", Err: nil},
-			want: checks.NewCheckResult("externaldevices", "HD WebCam", "", "HD WebCam", ""),
+			want: checks.NewCheckResult(checks.ExternalDevicesID, 0, "HD WebCam", "", "HD WebCam", ""),
 		},
 		{
 			name:          "Error checking device",
 			executorClass: &commandmock.MockCommandExecutor{Output: "", Err: errors.New("error checking device")},
-			want: checks.NewCheckErrorf("externaldevices", "error checking device Mouse",
+			want: checks.NewCheckErrorf(checks.ExternalDevicesID, "error checking device Mouse",
 				errors.New("error checking device")),
 		},
 	}

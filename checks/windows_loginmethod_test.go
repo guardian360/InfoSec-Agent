@@ -30,7 +30,7 @@ func TestLoginMethod(t *testing.T) {
 				},
 			},
 			},
-			want: checks.NewCheckResult("LoginMethod", "PIN"),
+			want: checks.NewCheckResult(checks.LoginMethodID, 1, "PIN"),
 		},
 		{
 			name: "Login method is Picture",
@@ -39,7 +39,7 @@ func TestLoginMethod(t *testing.T) {
 					StringValues: map[string]string{"": "{2135F72A-90B5-4ED3-A7F1-8BB705AC276A}"},
 					StatReturn:   &registry.KeyInfo{ValueCount: 1},
 					Err:          nil}}},
-			want: checks.NewCheckResult("LoginMethod", "Picture Logon"),
+			want: checks.NewCheckResult(checks.LoginMethodID, 2, "Picture Logon"),
 		},
 		{
 			name: "Login method is Password",
@@ -48,7 +48,7 @@ func TestLoginMethod(t *testing.T) {
 					{KeyName: "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Authentication\\LogonUI\\UserTile",
 						StringValues: map[string]string{"": "{60B78E88-EAD8-445C-9CFD-0B87F74EA6CD}"},
 						StatReturn:   &registry.KeyInfo{ValueCount: 1}, Err: nil}}},
-			want: checks.NewCheckResult("LoginMethod", "Password"),
+			want: checks.NewCheckResult(checks.LoginMethodID, 4, "Password"),
 		},
 		{
 			name: "Login method is Fingerprint",
@@ -57,7 +57,7 @@ func TestLoginMethod(t *testing.T) {
 					{KeyName: "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Authentication\\LogonUI\\UserTile",
 						StringValues: map[string]string{"": "{BEC09223-B018-416D-A0AC-523971B639F5}"},
 						StatReturn:   &registry.KeyInfo{ValueCount: 1}, Err: nil}}},
-			want: checks.NewCheckResult("LoginMethod", "Fingerprint"),
+			want: checks.NewCheckResult(checks.LoginMethodID, 8, "Fingerprint"),
 		},
 		{
 			name: "Login method is Facial recognition",
@@ -66,7 +66,7 @@ func TestLoginMethod(t *testing.T) {
 					{KeyName: "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Authentication\\LogonUI\\UserTile",
 						StringValues: map[string]string{"": "{8AF662BF-65A0-4D0A-A540-A338A999D36F}"},
 						StatReturn:   &registry.KeyInfo{ValueCount: 1}, Err: nil}}},
-			want: checks.NewCheckResult("LoginMethod", "Facial recognition"),
+			want: checks.NewCheckResult(checks.LoginMethodID, 16, "Facial recognition"),
 		},
 		{
 			name: "Login method is Trust signal",
@@ -75,7 +75,7 @@ func TestLoginMethod(t *testing.T) {
 					{KeyName: "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Authentication\\LogonUI\\UserTile",
 						StringValues: map[string]string{"": "{27FBDB57-B613-4AF2-9D7E-4FA7A66C21AD}"},
 						StatReturn:   &registry.KeyInfo{ValueCount: 1}, Err: nil}}},
-			want: checks.NewCheckResult("LoginMethod", "Trust signal"),
+			want: checks.NewCheckResult(checks.LoginMethodID, 32, "Trust signal"),
 		},
 		{
 			name: "Login method is unknown",
@@ -84,7 +84,7 @@ func TestLoginMethod(t *testing.T) {
 					{KeyName: "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Authentication\\LogonUI\\UserTile",
 						StringValues: map[string]string{"": "unknown"},
 						StatReturn:   &registry.KeyInfo{ValueCount: 1}, Err: nil}}},
-			want: checks.NewCheckErrorf("LoginMethod", "error reading value", nil),
+			want: checks.NewCheckErrorf(checks.LoginMethodID, "error reading value", nil),
 		},
 	}
 	for _, tt := range tests {

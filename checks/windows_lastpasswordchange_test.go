@@ -40,7 +40,7 @@ func TestLastPasswordChange(t *testing.T) {
 					"                                         *Gebruikers\n" +
 					"                                         *Prestatielogboekgebru\nLidmaatschap globale groep" +
 					"               *Geen\nDe opdracht is voltooid.", Err: nil},
-			want: checks.NewCheckResult("LastPasswordChange", "Password last changed on 1-1-2022 , "+
+			want: checks.NewCheckResult(checks.LastPasswordChangeID, 0, "Password last changed on 1-1-2022 , "+
 				"your password was changed more than half a year ago so you should change it again"),
 		},
 		{
@@ -62,7 +62,7 @@ func TestLastPasswordChange(t *testing.T) {
 					"                                         *Gebruikers\n" +
 					"                                         *Prestatielogboekgebru\nLidmaatschap globale groep" +
 					"               *Geen\nDe opdracht is voltooid.", Err: nil},
-			want: checks.NewCheckError("LastPasswordChange", errors.New("error parsing date")),
+			want: checks.NewCheckError(checks.LastPasswordChangeID, errors.New("error parsing date")),
 		},
 		{
 			name: "Password changed recently",
@@ -83,7 +83,7 @@ func TestLastPasswordChange(t *testing.T) {
 					"                                         *Gebruikers\n" +
 					"                                         *Prestatielogboekgebru\nLidmaatschap globale groep" +
 					"               *Geen\nDe opdracht is voltooid.", Err: nil},
-			want: checks.NewCheckResult("LastPasswordChange",
+			want: checks.NewCheckResult(checks.LastPasswordChangeID, 1,
 				"You changed your password recently on 1-1-2024"),
 		},
 	}

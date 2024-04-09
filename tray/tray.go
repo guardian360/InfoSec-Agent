@@ -6,6 +6,7 @@ package tray
 
 import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
+	"github.com/InfoSec-Agent/InfoSec-Agent/usersettings"
 	"github.com/pkg/errors"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
@@ -27,7 +28,7 @@ import (
 
 var ScanCounter int
 var ScanTicker *time.Ticker
-var language = 1 // Default language is British English
+var Language = 1 // Default language is British English
 var MenuItems []MenuItem
 var ReportingPageOpen = false
 var mQuit *systray.MenuItem
@@ -48,33 +49,35 @@ func OnReady() {
 	systray.SetIcon(icon.Data)
 	systray.SetTooltip("InfoSec Agent")
 
-	// Generate the menu for the system tray application
+	Language = usersettings.LoadUserSettings("usersettings").Language
+	scanInterval := usersettings.LoadUserSettings("usersettings").ScanInterval
 
-	mReportingPage := systray.AddMenuItem(localization.Localize(language, "Tray.ReportingPageTitle"),
-		localization.Localize(language, "Tray.ReportingPageTooltip"))
+	// Generate the menu for the system tray application
+	mReportingPage := systray.AddMenuItem(localization.Localize(Language, "Tray.ReportingPageTitle"),
+		localization.Localize(Language, "Tray.ReportingPageTooltip"))
 	MenuItems = append(MenuItems, MenuItem{MenuTitle: "Tray.ReportingPageTitle",
 		menuTooltip: "Tray.ReportingPageTooltip", sysMenuItem: mReportingPage})
 
 	systray.AddSeparator()
-	mChangeScanInterval := systray.AddMenuItem(localization.Localize(language, "Tray.ScanIntervalTitle"),
-		localization.Localize(language, "Tray.ScanIntervalTooltip"))
+	mChangeScanInterval := systray.AddMenuItem(localization.Localize(Language, "Tray.ScanIntervalTitle"),
+		localization.Localize(Language, "Tray.ScanIntervalTooltip"))
 	MenuItems = append(MenuItems, MenuItem{MenuTitle: "Tray.ScanIntervalTitle",
 		menuTooltip: "Tray.ScanIntervalTooltip", sysMenuItem: mChangeScanInterval})
 
-	mScanNow := systray.AddMenuItem(localization.Localize(language, "Tray.ScanNowTitle"),
-		localization.Localize(language, "Tray.ScanNowTooltip"))
+	mScanNow := systray.AddMenuItem(localization.Localize(Language, "Tray.ScanNowTitle"),
+		localization.Localize(Language, "Tray.ScanNowTooltip"))
 	MenuItems = append(MenuItems, MenuItem{MenuTitle: "Tray.ScanNowTitle",
 		menuTooltip: "Tray.ScanNowTooltip", sysMenuItem: mScanNow})
 
 	systray.AddSeparator()
-	mChangeLanguage := systray.AddMenuItem(localization.Localize(language, "Tray.ChangeLanguageTitle"),
-		localization.Localize(language, "Tray.ChangeLanguageTooltip"))
+	mChangeLanguage := systray.AddMenuItem(localization.Localize(Language, "Tray.ChangeLanguageTitle"),
+		localization.Localize(Language, "Tray.ChangeLanguageTooltip"))
 	MenuItems = append(MenuItems, MenuItem{MenuTitle: "Tray.ChangeLanguageTitle",
 		menuTooltip: "Tray.ChangeLanguageTooltip", sysMenuItem: mChangeLanguage})
 
 	systray.AddSeparator()
-	mQuit = systray.AddMenuItem(localization.Localize(language, "Tray.QuitTitle"),
-		localization.Localize(language, "Tray.QuitTooltip"))
+	mQuit = systray.AddMenuItem(localization.Localize(Language, "Tray.QuitTitle"),
+		localization.Localize(Language, "Tray.QuitTooltip"))
 	MenuItems = append(MenuItems, MenuItem{MenuTitle: "Tray.QuitTitle",
 		menuTooltip: "Tray.QuitTooltip", sysMenuItem: mQuit})
 
@@ -86,7 +89,7 @@ func OnReady() {
 
 	ScanCounter = 0
 	// Set a ticker to run a scan at a set interval (default = 1 week)
-	ScanTicker = time.NewTicker(7 * 24 * time.Hour)
+	ScanTicker = time.NewTicker(time.Duration(scanInterval) * time.Hour)
 
 	// Iterate over each menu option/signal
 	for {
@@ -101,7 +104,7 @@ func OnReady() {
 		case <-mScanNow.ClickedCh:
 			_, err := ScanNow()
 			if err != nil {
-				logger.Log.Println("Error scanning:", err)
+				logger.Log.ErrorWithErr("Error scanning:", err)
 			}
 		case <-mChangeLanguage.ClickedCh:
 			ChangeLanguage()
@@ -116,7 +119,7 @@ func OnReady() {
 			logger.Log.Println("Scan:", ScanCounter)
 			_, err := ScanNow()
 			if err != nil {
-				logger.Log.Println("Error scanning:", err)
+				logger.Log.ErrorWithErr("Error scanning:", err)
 			}
 		}
 	}
@@ -130,7 +133,7 @@ func OnReady() {
 func OnQuit() {
 	// Perform cleanup tasks here
 	// Currently, there are no cleanup tasks to perform
-	logger.Log.Println("Quitting the application")
+	logger.Log.Info("Quitting the application")
 }
 
 // OpenReportingPage opens the reporting page using a Wails application
@@ -161,7 +164,7 @@ func OpenReportingPage(path string) error {
 	defer func() {
 		err = os.Chdir(originalDir)
 		if err != nil {
-			logger.Log.Println("Error changing directory:", err)
+			logger.Log.ErrorWithErr("Error changing directory:", err)
 		}
 		ReportingPageOpen = false
 	}()
@@ -184,7 +187,7 @@ func OpenReportingPage(path string) error {
 	go func() {
 		<-mQuit.ClickedCh
 		if err = runCmd.Process.Kill(); err != nil {
-			logger.Log.Println("Error interrupting reporting-page process:", err)
+			logger.Log.ErrorWithErr("Error interrupting reporting-page process:", err)
 		}
 		ReportingPageOpen = false
 		systray.Quit()
@@ -215,7 +218,7 @@ func ChangeScanInterval(testInput ...string) {
 		res, err = zenity.Entry("Enter the scan interval (in hours):", zenity.Title("Change Scan Interval"),
 			zenity.DefaultItems("24"))
 		if err != nil {
-			logger.Log.Println("Error creating dialog:", err)
+			logger.Log.ErrorWithErr("Error creating dialog:", err)
 			return
 		}
 	}
@@ -228,9 +231,15 @@ func ChangeScanInterval(testInput ...string) {
 	}
 
 	// Restart the ticker with the new interval
-	ScanTicker.Stop()
+	if ScanTicker != nil {
+		ScanTicker.Stop()
+	}
 	ScanTicker = time.NewTicker(time.Duration(interval) * time.Hour)
 	logger.Log.Printf("Scan interval changed to %d hours\n", interval)
+	usersettings.SaveUserSettings(usersettings.UserSettings{
+		Language:     usersettings.LoadUserSettings("usersettings").Language,
+		ScanInterval: interval,
+	}, "usersettings")
 }
 
 // ScanNow performs one scan iteration (without checking if it is scheduled)
@@ -242,32 +251,32 @@ func ScanNow() ([]checks.Check, error) {
 	// ScanCounter is not concretely used at the moment
 	// might be useful in the future
 	ScanCounter++
-	logger.Log.Println("Scanning now. Scan:", ScanCounter)
+	logger.Log.Info("Scanning now. Scan:" + strconv.Itoa(ScanCounter))
 
 	// Display a progress dialog while the scan is running
 	dialog, err := zenity.Progress(
 		zenity.Title("Security/Privacy Scan"))
 	if err != nil {
-		logger.Log.Println("Error creating dialog:", err)
+		logger.Log.ErrorWithErr("Error creating dialog:", err)
 		return nil, err
 	}
 	// Defer closing the dialog until the scan completes
 	defer func(dialog zenity.ProgressDialog) {
 		err = dialog.Close()
 		if err != nil {
-			logger.Log.Println("Error closing dialog:", err)
+			logger.Log.ErrorWithErr("Error closing dialog:", err)
 		}
 	}(dialog)
 
 	result, err := scan.Scan(dialog)
 	if err != nil {
-		logger.Log.Println("Error calling scan:", err)
+		logger.Log.ErrorWithErr("Error calling scan:", err)
 		return result, err
 	}
 
 	err = dialog.Complete()
 	if err != nil {
-		logger.Log.Println("Error completing dialog:", err)
+		logger.Log.ErrorWithErr("Error completing dialog:", err)
 		return result, err
 	}
 
@@ -289,7 +298,7 @@ func ChangeLanguage(testInput ...string) {
 			"Spanish", "French", "Dutch", "Portuguese"}, zenity.Title("Change Language"),
 			zenity.DefaultItems("British English"))
 		if err != nil {
-			logger.Log.Println("Error creating dialog:", err)
+			logger.Log.ErrorWithErr("Error creating dialog:", err)
 			return
 		}
 	}
@@ -297,22 +306,26 @@ func ChangeLanguage(testInput ...string) {
 	// Assign each language to an index for the localization package
 	switch res {
 	case "German":
-		language = 0
+		Language = 0
 	case "British English":
-		language = 1
+		Language = 1
 	case "American English":
-		language = 2
+		Language = 2
 	case "Spanish":
-		language = 3
+		Language = 3
 	case "French":
-		language = 4
+		Language = 4
 	case "Dutch":
-		language = 5
+		Language = 5
 	case "Portuguese":
-		language = 6
+		Language = 6
 	default:
-		language = 1
+		Language = 1
 	}
+	usersettings.SaveUserSettings(usersettings.UserSettings{
+		Language:     Language,
+		ScanInterval: usersettings.LoadUserSettings("usersettings").ScanInterval,
+	}, "usersettings")
 }
 
 // RefreshMenu updates the menu items with the current language
@@ -322,8 +335,8 @@ func ChangeLanguage(testInput ...string) {
 // Returns: _
 func RefreshMenu() {
 	for _, item := range MenuItems {
-		item.sysMenuItem.SetTitle(localization.Localize(language, item.MenuTitle))
-		item.sysMenuItem.SetTooltip(localization.Localize(language, item.menuTooltip))
+		item.sysMenuItem.SetTitle(localization.Localize(Language, item.MenuTitle))
+		item.sysMenuItem.SetTooltip(localization.Localize(Language, item.menuTooltip))
 	}
 }
 
@@ -332,6 +345,6 @@ func RefreshMenu() {
 // Parameters: _
 //
 // Returns: language index
-func Language() int {
-	return language
-}
+// func Language() int {
+//	return Language
+//}

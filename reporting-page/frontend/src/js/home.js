@@ -1,5 +1,5 @@
 import {PieChart} from './piechart.js';
-import {ScanNow as scanNowGo} from '../../wailsjs/go/main/Tray.js';
+import {LogError as logError, ScanNow as scanNowGo} from '../../wailsjs/go/main/Tray.js';
 import {getLocalization} from './localize.js';
 import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
 import medal from '../assets/images/img_medal1.jpg';
@@ -7,9 +7,9 @@ import {retrieveTheme} from './personalize.js';
 
 /** Load the content of the Home page */
 export function openHomePage() {
+  document.onload = retrieveTheme();
   closeNavigation();
   markSelectedNavigationItem('home-button');
-
   document.getElementById('page-contents').innerHTML = `
   <div class="home-data">
     <div class="container-data home-column-one"> 
@@ -101,8 +101,6 @@ export function openHomePage() {
   document.getElementsByClassName('scan-now')[0].addEventListener('click', () => scanNow());
   document.getElementById('home-button').addEventListener('click', () => openHomePage());
   document.getElementById('logo').innerHTML = localStorage.getItem('picture');
-
-  document.onload = retrieveTheme();
 }
 
 document.getElementById('logo-button').addEventListener('click', () => openHomePage());
@@ -117,13 +115,14 @@ function scanNow() {
     .then((result) => {
     })
     .catch((err) => {
-      console.error(err);
+      logError('Error in scanNow: ' + err);
     });
 }
 
 // document.onload = openHomePage();
 
 window.onload = function() {
+  markSelectedNavigationItem('home-button');
   const savedImage = localStorage.getItem('picture');
   const savedText = localStorage.getItem('title');
   const savedIcon = localStorage.getItem('favicon');

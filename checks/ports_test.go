@@ -29,7 +29,7 @@ func TestOpenPorts(t *testing.T) {
 			executornetstat: &commandmock.MockCommandExecutor{
 				Output: "	\r\n Active Connections \r\n	\r\n	Proto	Local Address	Foreign Address	State\r\n",
 				Err:    nil},
-			want: checks.NewCheckResult("OpenPorts"),
+			want: checks.NewCheckResult(checks.PortsID, 0),
 		},
 		{
 			name: "1 open port",
@@ -39,7 +39,7 @@ func TestOpenPorts(t *testing.T) {
 			executornetstat: &commandmock.MockCommandExecutor{
 				Output: "	\r\n Active Connections \r\n	\r\n	Proto	Local Address	Foreign Address	State\r\n" +
 					"TCP	123.0.0.1:8080	123:123	ESTABLISHED 0\r\n", Err: nil},
-			want: checks.NewCheckResult("OpenPorts", "port: 8080, process: System Idle Process"),
+			want: checks.NewCheckResult(checks.PortsID, 0, "port: 8080, process: System Idle Process"),
 		},
 		{
 			name: "multiple open ports",
@@ -53,7 +53,7 @@ func TestOpenPorts(t *testing.T) {
 				Output: " \r\n Active Connections \r\n	\r\n	Proto	Local Address	Foreign Address	State\r\n" +
 					"TCP 123.0.0.1:8080 123:123 ESTABLISHED 0\r\n" + "TCP 123.0.0.1:8081 123:123 ESTABLISHED 1\r\n" +
 					"TCP 123.0.0.1:8082 123:123 ESTABLISHED 2\r\n", Err: nil},
-			want: checks.NewCheckResult("OpenPorts",
+			want: checks.NewCheckResult(checks.PortsID, 0,
 				"port: 8080, process: System Idle Process", "port: 8081, process: System2",
 				"port: 8082, process: System3"),
 		},
@@ -61,7 +61,7 @@ func TestOpenPorts(t *testing.T) {
 			name:             "tasklist error",
 			executortasklist: &commandmock.MockCommandExecutor{Output: "", Err: errors.New("")},
 			executornetstat:  &commandmock.MockCommandExecutor{Output: "", Err: nil},
-			want: checks.NewCheckErrorf("OpenPorts",
+			want: checks.NewCheckErrorf(checks.PortsID,
 				"error running tasklist", errors.New("")),
 		},
 		{
@@ -69,7 +69,7 @@ func TestOpenPorts(t *testing.T) {
 			executortasklist: &commandmock.MockCommandExecutor{
 				Output: "	\r\n Image Name 	PID 	Session Name 	Session# 	Mem Usage\r\n	\r\n", Err: nil},
 			executornetstat: &commandmock.MockCommandExecutor{Output: "", Err: errors.New("")},
-			want: checks.NewCheckErrorf("OpenPorts",
+			want: checks.NewCheckErrorf(checks.PortsID,
 				"error running netstat", errors.New("")),
 		},
 	}
