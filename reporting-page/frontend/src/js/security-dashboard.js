@@ -146,7 +146,6 @@ function openSecurityDashboardPage() {
   console.log(rc);
   adjustWithRiskCounters(rc, document);
   setMaxInterval(rc, document);
-  // Create charts
 
   // Localize the static content of the dashboard
   const staticDashboardContent = [
@@ -194,12 +193,17 @@ function openSecurityDashboardPage() {
   for (let i = 0; i < staticDashboardContent.length; i++) {
     getLocalization(localizationIds[i], staticDashboardContent[i]);
   }
+
+  // Create charts
   new PieChart('pieChart', rc);
   const g = new Graph('interval-graph', rc);
   addGraphFunctions(g);
   document.getElementsByClassName('scan-now')[0].addEventListener('click', () => {
     scanNowGo();
+    const rc = JSON.parse(sessionStorage.getItem('RiskCounters'));
     g.changeGraph();
+    adjustWithRiskCounters(rc, document);
+    setMaxInterval(rc, document);
   });
   document.onload = retrieveTheme();
 }

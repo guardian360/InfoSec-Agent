@@ -7,10 +7,10 @@ export class RiskCounters {
   lowRiskColor;
   noRiskColor;
 
-  allHighRisks = [];
-  allMediumRisks = [];
-  allLowRisks = [];
-  allNoRisks = [];
+  allHighRisks = [1, 1, 1];
+  allMediumRisks = [1, 1, 1];
+  allLowRisks = [1, 1, 1];
+  allNoRisks = [1, 1, 1];
 
   lastHighRisk;
   lastMediumRisk;
@@ -18,7 +18,6 @@ export class RiskCounters {
   lastnoRisk;
 
   count = this.allHighRisks.length;
-  
   /** Create the risk-Counters with the right colors
    *
    * @param {int} high Last recorded amount of high risks
@@ -44,18 +43,25 @@ export class RiskCounters {
     this.allLowRisks.push(low);
     this.allNoRisks.push(safe);
 
-    this.lastHighRisk = this.allHighRisks.slice(-1)[0];
-    this.lastMediumRisk = this.allMediumRisks.slice(-1)[0];
-    this.lastLowRisk = this.allLowRisks.slice(-1)[0];
-    this.lastnoRisk = this.allNoRisks.slice(-1)[0];
+    this.lastHighRisk = high;
+    this.lastMediumRisk = medium;
+    this.lastLowRisk = low;
+    this.lastnoRisk = safe;
+  }
+
+  updateRiskcounter(high, medium, low, safe) {
+    this.allHighRisks.push(high);
+    this.allMediumRisks.push(medium);
+    this.allLowRisks.push(low);
+    this.allNoRisks.push(safe);
+
+    this.lastHighRisk = high;
+    this.lastMediumRisk = medium;
+    this.lastLowRisk = low;
+    this.lastnoRisk = safe;
+    this.count = this.allHighRisks.length;
   }
 }
 
-export function updateRiskcounter(rc, high, medium, low, safe) {
-  rc.allHighRisks.push(high);
-  rc.allMediumRisks.push(medium);
-  rc.allLowRisks.push(low);
-  rc.allNoRisks.push(safe);
-}
 // sessionStorage.setItem("RiskCounters",JSON.stringify(new RiskCounters()));
 
