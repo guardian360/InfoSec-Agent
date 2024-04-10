@@ -4,6 +4,7 @@ import {getLocalization} from './localize.js';
 import {ScanNow as scanNowGo, LogError as logError} from '../../wailsjs/go/main/Tray.js';
 import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
 import {retrieveTheme} from './personalize.js';
+import { scanTest } from './database.js';
 
 /** Load the content of the Security Dashboard page */
 function openSecurityDashboardPage() {
@@ -198,11 +199,12 @@ function openSecurityDashboardPage() {
   const g = new Graph('interval-graph', rc);
   addGraphFunctions(g);
   document.getElementsByClassName('scan-now')[0].addEventListener('click', () => {
-    scanNowGo();
+    scanTest();
     const rc = JSON.parse(sessionStorage.getItem('RiskCounters'));
-    g.changeGraph();
     adjustWithRiskCounters(rc, document);
     setMaxInterval(rc, document);
+    g.changeGraph();
+    console.log(rc);
   });
   document.onload = retrieveTheme();
 }

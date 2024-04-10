@@ -5,24 +5,28 @@ import * as runTime from '../../wailsjs/runtime/runtime.js';
 import * as rc from './risk-counters.js';
 
 /** Call ScanNow in backend and store result in sessionStorage */
-try {
-  scanNowGo()
-    .then((result) => {
-      // place result in session storage
-      sessionStorage.setItem('ScanResult', JSON.stringify(result));
-      // place severities in session storage
-      setSeverities(result);
-
-      runTime.WindowShow();
-      runTime.WindowMaximise();
-      runTime.LogPrint(sessionStorage.getItem('ScanResult'));
-    })
-    .catch((err) => {
-      logError('Error in scanNowGo: ' + err);
-    });
-} catch (err) {
-  logError('Error in scanNowGo: ' + err);
+export function scanTest(){
+  try {
+    scanNowGo()
+      .then((result) => {
+        // place result in session storage
+        sessionStorage.setItem('ScanResult', JSON.stringify(result));
+        // place severities in session storage
+        setSeverities(result);
+  
+        runTime.WindowShow();
+        runTime.WindowMaximise();
+        runTime.LogPrint(sessionStorage.getItem('ScanResult'));
+      })
+      .catch((err) => {
+        logError('Error in scanNowGo: ' + err);
+      });
+  } catch (err) {
+    logError('Error in scanNowGo: ' + err);
+  }
 }
+
+scanTest();
 
 // counts the occurences of each level: 0 = acceptable, 1 = low, 2 = medium, 3 = high
 const countOccurences = (severities, level) => severities.filter((item) => item.severity === level).length;
