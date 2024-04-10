@@ -9,8 +9,8 @@
         "Here you can see which devices are connected via bluetooth, and you can remove them if necessary."
     ],"Screenshots":
     [
-        "/images/bluetooth-devices-1.jpg",
-        "/images/bluetooth-devices-2.jpg"
+        "frontend/src/assets/images/devices-connected-via-bluetooth/bluetooth-devices-1.jpg",
+        "frontend/src/assets/images/devices-connected-via-bluetooth/bluetooth-devices-2.jpg"
     ]
     },
     "11": {
@@ -23,8 +23,8 @@
         "Here you can see which devices are connected via bluetooth, and you can remove them if necessary."
     ],"Screenshots":
     [
-        "/images/bluetooth-devices-1.jpg",
-        "/images/bluetooth-devices-2.jpg"
+        "frontend/src/assets/images/devices-connected-via-bluetooth/bluetooth-devices-1.jpg",
+        "frontend/src/assets/images/devices-connected-via-bluetooth/bluetooth-devices-2.jpg"
     ]
 },
 "30": {
@@ -39,8 +39,10 @@
         "To finish, restart your computer."
     ],"Screenshots":
     [
-        "/images/guest-account-1.jpg",
-        "/images/guest-account-3.jpg"
+        "frontend/src/assets/images/guest-account/guest-account-1.jpg",
+        "frontend/src/assets/images/guest-account/guest-account-1.jpg",
+        "frontend/src/assets/images/guest-account/guest-account-3.jpg",        
+        "frontend/src/assets/images/guest-account/guest-account-3.jpg"       
     ]
 },
 "31": {
@@ -55,8 +57,10 @@
         "To finish, restart your computer."
     ],"Screenshots":
     [
-        "/images/guest-account-1.jpg",
-        "/images/guest-account-3.jpg"
+        "frontend/src/assets/images/guest-account/guest-account-1.jpg",
+        "frontend/src/assets/images/guest-account/guest-account-1.jpg",
+        "frontend/src/assets/images/guest-account/guest-account-3.jpg",        
+        "frontend/src/assets/images/guest-account/guest-account-3.jpg"
     ]
 },
 "32": {
@@ -71,8 +75,10 @@
         "To finish, restart your computer."
     ],"Screenshots":
     [
-        "/images/guest-account-1.jpg",
-        "/images/guest-account-3.jpg"
+        "frontend/src/assets/images/guest-account/guest-account-1.jpg",
+        "frontend/src/assets/images/guest-account/guest-account-1.jpg",
+        "frontend/src/assets/images/guest-account/guest-account-3.jpg",        
+        "frontend/src/assets/images/guest-account/guest-account-3.jpg"
     ]
 },
 "40": {
@@ -85,8 +91,8 @@
         "Here you can control the network sharing settings and turn the feature off."
     ],"Screenshots":
     [
-        "/images/nearby-sharing-1.jpg",
-        "/images/nearby-sharing-2.jpg"
+        "frontend/src/assets/images/network-sharing/nearby-sharing-1.jpg",
+        "frontend/src/assets/images/network-sharing/nearby-sharing-2.jpg"
     ]
 },
 "41": {
@@ -99,8 +105,8 @@
         "Here you can control the network sharing settings and turn the feature off."
     ],"Screenshots":
     [
-        "/images/nearby-sharing-1.jpg",
-        "/images/nearby-sharing-2.jpg"
+        "frontend/src/assets/images/network-sharing/nearby-sharing-1.jpg",
+        "frontend/src/assets/images/network-sharing/nearby-sharing-2.jpg"
     ]
 },
 "42": {
@@ -113,8 +119,8 @@
         "Here you can control the network sharing settings and turn the feature off."
     ],"Screenshots":
     [
-        "/images/nearby-sharing-1.jpg",
-        "/images/nearby-sharing-2.jpg"
+        "frontend/src/assets/images/network-sharing/nearby-sharing-1.jpg",
+        "frontend/src/assets/images/network-sharing/nearby-sharing-2.jpg"
     ]
 },
 "43": {
@@ -127,8 +133,8 @@
         "Here you can control the network sharing settings and turn the feature off."
     ],"Screenshots":
     [
-        "/images/nearby-sharing-1.jpg",
-        "/images/nearby-sharing-2.jpg"
+        "frontend/src/assets/images/network-sharing/nearby-sharing-1.jpg",
+        "frontend/src/assets/images/network-sharing/nearby-sharing-2.jpg"
     ]
 },
 "50": {
@@ -141,7 +147,8 @@
         "Follow the installation steps provided by the website of the password manager."
     ],"Screenshots":
     [
-        "/images/password-manager-1.jpg"
+        "frontend/src/assets/images/password-maanger/password-manager-1.jpg",
+        "frontend/src/assets/images/password-manager/password-manager-1.jpg"
     ]
 },
 "51": {
@@ -154,7 +161,8 @@
         "Follow the installation steps provided by the website of the password manager."
     ],"Screenshots":
     [
-        "/images/password-manager-1.jpg"
+        "frontend/src/assets/images/password-manager/password-manager-1.jpg",
+        "frontend/src/assets/images/password-manager/password-manager-1.jpg"
     ]
 },
 "60": {
@@ -166,8 +174,8 @@
         "Here you can select location to see which applications have access, and you can revoke access for certain applications."
     ],"Screenshots":
     [
-        "/images/location-permissions-1.jpg",
-        "/images/location-permissions-2.jpg"
+        "frontend/src/assets/images/applications-with-location-permission/location-permissions-1.jpg",
+        "frontend/src/assets/images/applications-with-location-permission/location-permissions-2.jpg"
     ]
 },
 "61": {
@@ -179,8 +187,8 @@
         "Here you can select location to see which applications have access, and you can revoke access for certain applications."
     ],"Screenshots":
     [
-        "/images/location-permissions-1.jpg",
-        "/images/location-permissions-2.jpg"
+        "frontend/src/assets/images/applications-with-location-permission/location-permissions-1.jpg",
+        "frontend/src/assets/images/applications-with-location-permission/location-permissions-2.jpg"
     ]
 },
 "70": {
@@ -192,8 +200,8 @@
         "Here you can select microphone to see which applications have access, and you can revoke access for certain applications."
     ],"Screenshots":
     [
-        "/images/microphone-permissions-1.jpg",
-        "/images/microphone-permissions-2.jpg"
+        "frontend/src/assets/images/applications-with-microphone-permission/microphone-permissions-1.jpg",
+        "frontend/src/assets/images/applications-with-microphone-permission/microphone-permissions-2.jpg"
     ]
 },
 "71": {
@@ -205,8 +213,8 @@
         "Here you can select microphone to see which applications have access, and you can revoke access for certain applications."
     ],"Screenshots":
     [
-        "/images/microphone-permissions-1.jpg",
-        "/images/microphone-permissions-2.jpg"
+        "frontend/src/assets/images/applications-with-microphone-permission/microphone-permissions-1.jpg",
+        "frontend/src/assets/images/applications-with-microphone-permission/microphone-permissions-2.jpg"
     ]
 },
 "80": {
@@ -218,8 +226,8 @@
         "Here you can select webcam to see which applications have access, and you can revoke access for certain applications."
     ],"Screenshots":
     [
-        "/images/camera-permissions-1.jpg",
-        "/images/camera-permissions-2.jpg"
+        "frontend/src/assets/images/applications-with-webcam-permission/camera-permissions-1.jpg",
+        "frontend/src/assets/images/applications-with-webcam-permission/camera-permissions-2.jpg"
     ]
 },
 "81": {
@@ -231,8 +239,8 @@
         "Here you can select webcam to see which applications have access, and you can revoke access for certain applications."
     ],"Screenshots":
     [
-        "/images/camera-permissions-1.jpg",
-        "/images/camera-permissions-2.jpg"
+        "frontend/src/assets/images/applications-with-webcam-permission/camera-permissions-1.jpg",
+        "frontend/src/assets/images/applications-with-webcam-permission/camera-permissions-2.jpg"
     ]
 },
 "90": {
@@ -244,8 +252,8 @@
         "Here you can select appointments to see which applications have access, and you can revoke access for certain applications."
     ],"Screenshots":
     [
-        "/images/calendar-permissions-1.jpg",
-        "/images/calendar-permissions-2.jpg"
+        "frontend/src/assets/images/applications-with-calendar-permission/calendar-permissions-1.jpg",
+        "frontend/src/assets/images/applications-with-calendar-permission/calendar-permissions-2.jpg"
     ]
 },
 "91": {
@@ -257,8 +265,8 @@
         "Here you can select appointments to see which applications have access, and you can revoke access for certain applications."
     ],"Screenshots":
     [
-        "/images/calendar-permissions-1.jpg",
-        "/images/calendar-permissions-2.jpg"
+        "frontend/src/assets/images/applications-with-calendar-permission/calendar-permissions-1.jpg",
+        "frontend/src/assets/images/applications-with-calendar-permission/calendar-permissions-2.jpg"
     ]
 },
 "100": {
@@ -270,8 +278,8 @@
         "Here you can select contacts to see which applications have access, and you can revoke access for certain applications."
     ],"Screenshots":
     [
-        "/images/contacts-permissions-1.jpg",
-        "/images/contacts-permissions-2.jpg"
+        "frontend/src/assets/images/applications-with-contacts-permission/contacts-permissions-1.jpg",
+        "frontend/src/assets/images/applications-with-contacts-permission/contacts-permissions-2.jpg"
     ]
 },
 "101": {
@@ -283,8 +291,8 @@
         "Here you can select contacts to see which applications have access, and you can revoke access for certain applications."
     ],"Screenshots":
     [
-        "/images/contacts-permissions-1.jpg",
-        "/images/contacts-permissions-2.jpg"
+        "frontend/src/assets/images/applications-with-contacts-permission/contacts-permissions-1.jpg",
+        "frontend/src/assets/images/applications-with-contacts-permission/contacts-permissions-2.jpg"
     ]
 },
 "110": {
@@ -337,8 +345,10 @@
         "To finish, restart your computer."
     ],"Screenshots":
     [
-        "/images/smb-2.jpg",
-        "/images/smb-3.jpg"
+        "frontend/src/assets/images/smb-status/smb-2.jpg",
+        "frontend/src/assets/images/smb-status/smb-2.jpg",
+        "frontend/src/assets/images/smb-status/smb-3.jpg",
+        "frontend/src/assets/images/smb-status/smb-3.jpg"
     ]
 },
 "131": {
@@ -353,8 +363,10 @@
         "To finish, restart your computer."
     ],"Screenshots":
     [
-        "/images/smb-2.jpg",
-        "/images/smb-3.jpg"
+        "frontend/src/assets/images/smb-status/smb-2.jpg",
+        "frontend/src/assets/images/smb-status/smb-2.jpg",
+        "frontend/src/assets/images/smb-status/smb-3.jpg",
+        "frontend/src/assets/images/smb-status/smb-3.jpg"
     ]
 },
 "132": {
@@ -369,8 +381,10 @@
         "To finish, restart your computer."
     ],"Screenshots":
     [
-        "/images/smb-2.jpg",
-        "/images/smb-3.jpg"
+        "frontend/src/assets/images/smb-status/smb-2.jpg",
+        "frontend/src/assets/images/smb-status/smb-2.jpg",
+        "frontend/src/assets/images/smb-status/smb-3.jpg",
+        "frontend/src/assets/images/smb-status/smb-3.jpg"
     ]
 },
 "133": {
@@ -385,8 +399,10 @@
         "To finish, restart your computer."
     ],"Screenshots":
     [
-        "/images/smb-2.jpg",
-        "/images/smb-3.jpg"
+        "frontend/src/assets/images/smb-status/smb-2.jpg",
+        "frontend/src/assets/images/smb-status/smb-2.jpg",
+        "frontend/src/assets/images/smb-status/smb-3.jpg",
+        "frontend/src/assets/images/smb-status/smb-3.jpg"
     ]
 },
 "150": {
@@ -402,7 +418,10 @@
     ],
     "Screenshots":
     [
-        "/images/windows-defender-1.jpg"
+        "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
+        "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
+        "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
+        "frontend/src/assets/images/windows-defender/windows-defender-1.jpg"
     ]
 },
 "151": {
@@ -418,7 +437,10 @@
     ],
     "Screenshots":
     [
-        "/images/windows-defender-1.jpg"
+        "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
+        "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
+        "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
+        "frontend/src/assets/images/windows-defender/windows-defender-1.jpg"
     ]
 },
 "152": {
@@ -434,7 +456,10 @@
     ],
     "Screenshots":
     [
-        "/images/windows-defender-1.jpg"
+        "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
+        "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
+        "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
+        "frontend/src/assets/images/windows-defender/windows-defender-1.jpg"
     ]
 },
 "153": {
@@ -450,7 +475,10 @@
     ],
     "Screenshots":
     [
-        "/images/windows-defender-1.jpg"
+        "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
+        "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
+        "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
+        "frontend/src/assets/images/windows-defender/windows-defender-1.jpg"
     ]
 },
 "154": {
@@ -466,7 +494,10 @@
     ],
     "Screenshots":
     [
-        "/images/windows-defender-1.jpg"
+        "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
+        "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
+        "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
+        "frontend/src/assets/images/windows-defender/windows-defender-1.jpg"
     ]
 },
 "160": {
@@ -479,8 +510,9 @@
         "You can now change your password to a new unique one."
     ],"Screenshots":
     [
-        "/images/change-password-1.jpg",
-        "/images/change-password-2.jpg"
+        "frontend/src/assets/images/last-password-change/change-password-1.jpg",
+        "frontend/src/assets/images/last-password-change/change-password-2.jpg",
+        "frontend/src/assets/images/last-password-change/change-password-2.jpg"
     ]
 },
 "161": {
@@ -493,8 +525,9 @@
         "You can now change your password to a new unique one."
     ],"Screenshots":
     [
-        "/images/change-password-1.jpg",
-        "/images/change-password-2.jpg"
+        "frontend/src/assets/images/last-password-change/change-password-1.jpg",
+        "frontend/src/assets/images/last-password-change/change-password-2.jpg",
+        "frontend/src/assets/images/last-password-change/change-password-2.jpg"
     ]
 },
 "170": {
@@ -507,8 +540,8 @@
         "Now you can set up one of the available login methods by following the steps described."
     ],"Screenshots":
     [
-        "/images/login-method-1.jpg",
-        "/images/login-method-2.jpg"
+        "frontend/src/assets/images/windows-login-method/login-method-1.jpg",
+        "frontend/src/assets/images/windows-login-method/login-method-2.jpg"
     ]
 },
 "171": {
@@ -521,8 +554,8 @@
         "Now you can set up one of the available login methods by following the steps described."
     ],"Screenshots":
     [
-        "/images/login-method-1.jpg",
-        "/images/login-method-2.jpg"
+        "frontend/src/assets/images/windows-login-method/login-method-1.jpg",
+        "frontend/src/assets/images/windows-login-method/login-method-2.jpg"
     ]
 },
 "180": {
@@ -535,8 +568,8 @@
         "Here you can check for updates and install updates."
     ],"Screenshots":
     [
-        "/images/windows-update-1.jpg",
-        "/images/windows-update-2.jpg"
+        "frontend/src/assets/images/outdated-windows-version/windows-update-1.jpg",
+        "frontend/src/assets/images/outdated-windows-version/windows-update-2.jpg"
     ]
 },
 "181": {
@@ -549,8 +582,8 @@
         "Here you can check for updates and install updates."
     ],"Screenshots":
     [
-        "/images/windows-update-1.jpg",
-        "/images/windows-update-2.jpg"
+        "frontend/src/assets/images/outdated-windows-version/windows-update-1.jpg",
+        "frontend/src/assets/images/outdated-windows-version/windows-update-2.jpg"
     ]
 },
 "182": {
@@ -563,8 +596,8 @@
         "Here you can check for updates and install updates."
     ],"Screenshots":
     [
-        "/images/windows-update-1.jpg",
-        "/images/windows-update-2.jpg"
+        "frontend/src/assets/images/outdated-windows-version/windows-update-1.jpg",
+        "frontend/src/assets/images/outdated-windows-version/windows-update-2.jpg"
     ]
 },
 "190": {
@@ -613,8 +646,8 @@
         "Here you can choose which applications will automatically start during boot."
     ],"Screenshots":
     [
-        "/images/boot-apps-1.jpg",
-        "/images/boot-apps-2.jpg"
+        "frontend/src/assets/images/applications-which-start-at-boot/boot-apps-1.jpg",
+        "frontend/src/assets/images/applications-which-start-at-boot/boot-apps-2.jpg"
     ]
 },
 "201": {
@@ -627,8 +660,8 @@
         "Here you can choose which applications will automatically start during boot."
     ],"Screenshots":
     [
-        "/images/boot-apps-1.jpg",
-        "/images/boot-apps-2.jpg"
+        "frontend/src/assets/images/applications-which-start-at-boot/boot-apps-1.jpg",
+        "frontend/src/assets/images/applications-which-start-at-boot/boot-apps-2.jpg"
     ]
 },
 "320": {
@@ -644,10 +677,11 @@
         "If you see programs which do not need to run with admin permissions you can right click on them and end the task."
     ],"Screenshots":
     [
-        "/images/admin-privileges-1.jpg",
-        "/images/admin-privileges-2.jpg",
-        "/images/admin-privileges-3.jpg",
-        "/images/admin-privileges-4.jpg"
+        "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-1.jpg",
+        "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-2.jpg",
+        "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-3.jpg",
+        "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-4.jpg",
+        "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-4.jpg"
     ]
 },
 "321": {
@@ -663,10 +697,11 @@
         "If you see programs which do not need to run with admin permissions you can right click on them and end the task."
     ],"Screenshots":
     [
-        "/images/admin-privileges-1.jpg",
-        "/images/admin-privileges-2.jpg",
-        "/images/admin-privileges-3.jpg",
-        "/images/admin-privileges-4.jpg"
+        "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-1.jpg",
+        "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-2.jpg",
+        "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-3.jpg",
+        "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-4.jpg",
+        "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-4.jpg"
     ]
 },
 "999": {
@@ -683,10 +718,12 @@
         "To finish, restart your computer."
     ],"Screenshots":
     [
-        "/images/user-account-control-1.jpg",
-        "/images/user-account-control-2.jpg",
-        "/images/user-account-control-3.jpg",
-        "/images/user-account-control-5.jpg"
+        "frontend/src/assets/images/user-account-control/user-account-control-1.jpg",
+        "frontend/src/assets/images/user-account-control/user-account-control-2.jpg",
+        "frontend/src/assets/images/user-account-control/user-account-control-2.jpg",
+        "frontend/src/assets/images/user-account-control/user-account-control-3.jpg",
+        "frontend/src/assets/images/user-account-control/user-account-control-5.jpg",
+        "frontend/src/assets/images/user-account-control/user-account-control-5.jpg"
     ]
 }
 }

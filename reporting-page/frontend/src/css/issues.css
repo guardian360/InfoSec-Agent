@@ -71,8 +71,14 @@ h1 {
 
 #back-button {
   float: left;
-  margin: 20px 20px 50px 260px;
+  margin: 20px 20px 50px 20px;
+  background-color: var(--background-color-left-nav);
   color: var(--text-body);
+  width: 180px;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
 }
 
 #back-button:hover {

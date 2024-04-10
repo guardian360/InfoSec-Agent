@@ -1,3 +1,4 @@
+import { LogPrint } from '../../wailsjs/runtime/runtime.js';
 import data from '../database.json' assert { type: 'json' };
 import {openIssuesPage} from './issues.js';
 import {getLocalization} from './localize.js';
@@ -63,7 +64,7 @@ export function openIssuePage(issueId) {
       <h2 id="solution">Solution</h2>
       <div class="issue-solution">
         <p id="solution-text">${currentIssue.Solution[stepCounter]}</p>
-        <img style='display:block; width:500px;height:auto' id="step-screenshot"></img>
+        <img style='display:block; width:750px;height:auto' id="step-screenshot"></img>
         <div class="solution-buttons">
           <div class="button-box">
             <div id="previous-button" class="step-button">&laquo; Previous step</div>
@@ -83,6 +84,8 @@ export function openIssuePage(issueId) {
 
   try {
     document.getElementById('step-screenshot').src = currentIssue.Screenshots[stepCounter];
+    LogPrint(currentIssue.Screenshots[stepCounter])
+    LogPrint(document.getElementById('step-screenshot').src)
   } catch (error) { }
 
   // Add functions to page for navigation
