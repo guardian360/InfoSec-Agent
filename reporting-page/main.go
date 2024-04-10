@@ -41,8 +41,9 @@ func (h *FileLoader) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 		res.WriteHeader(http.StatusBadRequest)
 		logger.Log.Info("Could not load file" + requestedFilename)
 	}
-
-	res.Write(fileData)
+	if _, err := res.Write(fileData); err != nil {
+		logger.Log.Info("Could not write file" + requestedFilename)
+	}
 }
 
 // main is the entry point of the reporting page program, starts the Wails application
