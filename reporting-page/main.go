@@ -41,7 +41,7 @@ func (h *FileLoader) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 		res.WriteHeader(http.StatusBadRequest)
 		logger.Log.Info("Could not load file" + requestedFilename)
 	}
-	if _, err := res.Write(fileData); err != nil {
+	if _, err = res.Write(fileData); err != nil {
 		logger.Log.Info("Could not write file" + requestedFilename)
 	}
 }
