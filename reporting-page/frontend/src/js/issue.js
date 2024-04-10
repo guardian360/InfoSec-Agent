@@ -1,3 +1,4 @@
+import data from '../database.json' assert { type: 'json' };
 import {openIssuesPage} from './issues.js';
 import {getLocalization} from './localize.js';
 import {retrieveTheme} from './personalize.js';
@@ -52,7 +53,7 @@ export function previousSolutionStep(solutionText, solutionScreenshot, solution,
  */
 export function openIssuePage(issueId) {
   stepCounter = 0;
-  const currentIssue = data.find((element) => element.Name === issueId);
+  const currentIssue = data[issueId];
   const pageContents = document.getElementById('page-contents');
   pageContents.innerHTML = `
     <h1 class="issue-name">${currentIssue.Name}</h1>
@@ -62,7 +63,7 @@ export function openIssuePage(issueId) {
       <h2 id="solution">Solution</h2>
       <div class="issue-solution">
         <p id="solution-text">${currentIssue.Solution[stepCounter]}</p>
-        <img style='display:block; width:500px;height:auto' id="step-screenshot"></img>
+        <img style='display:block; width:750px;height:auto' id="step-screenshot"></img>
         <div class="solution-buttons">
           <div class="button-box">
             <div id="previous-button" class="step-button">&laquo; Previous step</div>

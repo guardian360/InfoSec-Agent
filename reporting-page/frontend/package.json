@@ -24,6 +24,7 @@
     "unit.js": "^2.1.1"
   },
   "eslintConfig": {
+    "parser": "@babel/eslint-parser",
     "env": {
       "browser": true,
       "es2021": true
@@ -31,7 +32,13 @@
     "extends": "google",
     "parserOptions": {
       "ecmaVersion": "latest",
-      "sourceType": "module"
+      "sourceType": "module",
+      "requireConfigFile": false,
+      "babelOptions": {
+        "plugins": [
+          "@babel/plugin-syntax-import-assertions"
+        ]
+      }
     },
     "ignorePatterns": [
       "node_modules/",
@@ -39,10 +46,27 @@
       "wailsjs/"
     ],
     "rules": {
-      "linebreak-style":"off",
-      "indent": ["error", 2],
-      "max-len": ["error", {"code": 120}],
-      "new-cap": ["error",{"capIsNewExceptions": ["WindowShow", "WindowMaximise", "LogPrint"]}]
+      "linebreak-style": "off",
+      "indent": [
+        "error",
+        2
+      ],
+      "max-len": [
+        "error",
+        {
+          "code": 120
+        }
+      ],
+      "new-cap": [
+        "error",
+        {
+          "capIsNewExceptions": [
+            "WindowShow",
+            "WindowMaximise",
+            "LogPrint"
+          ]
+        }
+      ]
     }
   },
   "stylelint": {
