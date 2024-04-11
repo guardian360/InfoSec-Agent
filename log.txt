@@ -1,5 +1,5 @@
-2024/04/10 12:48:49 INFO: Starting InfoSec Agent
-2024/04/10 12:48:49 ERROR: Error reading user settings file: open usersettings/usersettings.json: The system cannot find the file specified.
-2024/04/10 12:48:49 ERROR: Error reading user settings file: open usersettings/usersettings.json: The system cannot find the file specified.
-2024/04/10 12:53:56 INFO: Quitting the application
-2024/04/10 12:53:56 error running reporting-page: exit status 1
+2024/04/11 17:13:53 INFO: Starting InfoSec Agent
+2024/04/11 17:13:53 ERROR: Error reading user settings file: open usersettings/usersettings.json: The system cannot find the file specified.
+2024/04/11 17:13:53 ERROR: Error reading user settings file: open usersettings/usersettings.json: The system cannot find the file specified.
+2024/04/11 17:15:31 ERROR: Error interrupting reporting-page process: invalid argument
+2024/04/11 17:15:31 INFO: Quitting the application

@@ -3,9 +3,9 @@ import {GetDataBaseData as getDataBaseData} from '../../wailsjs/go/main/DataBase
 import {openHomePage} from './home.js';
 import * as runTime from '../../wailsjs/runtime/runtime.js';
 import * as rc from './risk-counters.js';
-
+import {updateRiskcounter} from './risk-counters.js';
 /** Call ScanNow in backend and store result in sessionStorage */
-export function scanTest(){
+export function scanTest() {
   try {
     scanNowGo()
       .then((result) => {
@@ -13,7 +13,7 @@ export function scanTest(){
         sessionStorage.setItem('ScanResult', JSON.stringify(result));
         // place severities in session storage
         setSeverities(result);
-  
+
         runTime.WindowShow();
         runTime.WindowMaximise();
         runTime.LogPrint(sessionStorage.getItem('ScanResult'));
@@ -44,16 +44,15 @@ function setSeverities(input) {
       const medium = countOccurences(result, 2);
       const low = countOccurences(result, 1);
       const acceptable = countOccurences(result, 0);
-      sessionStorage.setItem('RiskCounters', JSON.stringify(new rc.RiskCounters(high, medium, low, acceptable)));
-      if(sessionStorage.getItem('RiskCounters') === null || sessionStorage.getItem('RiskCounters') === undefined){
+      if (sessionStorage.getItem('RiskCounters') === null || sessionStorage.getItem('RiskCounters') === undefined) {
         sessionStorage.setItem('RiskCounters', JSON.stringify(new rc.RiskCounters(high, medium, low, acceptable)));
-      }
-      else{
-        riskCounter = sessionStorage.getItem('RiskCounters');
-        riskCounter.updateRiskcounter(high, medium, low, acceptable);
+        openHomePage();
+      } else {
+        let riskCounter = JSON.parse(sessionStorage.getItem('RiskCounters'));
+        console.log(riskCounter);
+        riskCounter = updateRiskcounter(riskCounter, high, medium, low, acceptable);
         sessionStorage.setItem('RiskCounters', JSON.stringify(riskCounter));
       }
-      openHomePage();
     })
     .catch((err) => {
       console.error(err);

@@ -1,106 +1,7 @@
-2024/04/10 13:18:06 INFO: Reporting page starting
-2024/04/10 13:18:07 ERROR: Error reading user settings file: open ../usersettings/usersettings.json: The system cannot find the file specified.
-2024/04/10 13:18:07 INFO: Serving assets from frontend DevServer URL: http://localhost:5173/
-2024/04/10 13:18:07 DEBUG: WebView2 Runtime Version '123.0.2420.81' installed. Minimum version required: 94.0.992.31.
-2024/04/10 13:18:07 DEBUG: [DevWebServer] Serving DevServer at http://localhost:34115
-2024/04/10 13:18:07 DEBUG: [AssetHandler] Handling request '/' (file='.')
-2024/04/10 13:18:07 DEBUG: [AssetHandler] File '.' not found, serving '/' by AssetHandler
-2024/04/10 13:18:07 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/'
-2024/04/10 13:18:07 DEBUG: [AssetHandler] Handling request '/@vite/client' (file='@vite/client')
-2024/04/10 13:18:07 DEBUG: [AssetHandler] File '@vite/client' not found, serving '/@vite/client' by AssetHandler
-2024/04/10 13:18:07 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/@vite/client'
-2024/04/10 13:18:07 DEBUG: [AssetHandler] Handling request '/src/css/color-palette.css' (file='src/css/color-palette.css')
-2024/04/10 13:18:07 DEBUG: [AssetHandler] File 'src/css/color-palette.css' not found, serving '/src/css/color-palette.css' by AssetHandler
-2024/04/10 13:18:07 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/css/color-palette.css'
-2024/04/10 13:18:07 DEBUG: [AssetHandler] Handling request '/src/css/responsive.css' (file='src/css/responsive.css')
-2024/04/10 13:18:07 DEBUG: [AssetHandler] File 'src/css/responsive.css' not found, serving '/src/css/responsive.css' by AssetHandler
-2024/04/10 13:18:07 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/css/responsive.css'
-2024/04/10 13:18:07 DEBUG: [AssetHandler] Handling request '/src/css/home.css' (file='src/css/home.css')
-2024/04/10 13:18:07 DEBUG: [AssetHandler] File 'src/css/home.css' not found, serving '/src/css/home.css' by AssetHandler
-2024/04/10 13:18:07 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/css/home.css'
-2024/04/10 13:18:08 DEBUG: [AssetHandler] Handling request '/src/css/settings.css' (file='src/css/settings.css')
-2024/04/10 13:18:08 DEBUG: [AssetHandler] File 'src/css/settings.css' not found, serving '/src/css/settings.css' by AssetHandler
-2024/04/10 13:18:08 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/css/settings.css'
-2024/04/10 13:18:08 DEBUG: [AssetHandler] Handling request '/src/css/dashboard.css' (file='src/css/dashboard.css')
-2024/04/10 13:18:08 DEBUG: [AssetHandler] File 'src/css/dashboard.css' not found, serving '/src/css/dashboard.css' by AssetHandler
-2024/04/10 13:18:08 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/css/dashboard.css'
-2024/04/10 13:18:08 DEBUG: [AssetHandler] Handling request '/src/css/issues.css' (file='src/css/issues.css')
-2024/04/10 13:18:08 DEBUG: [AssetHandler] File 'src/css/issues.css' not found, serving '/src/css/issues.css' by AssetHandler
-2024/04/10 13:18:08 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/css/issues.css'
-2024/04/10 13:18:08 DEBUG: [AssetHandler] Handling request '/src/css/personalize.css' (file='src/css/personalize.css')
-2024/04/10 13:18:08 DEBUG: [AssetHandler] File 'src/css/personalize.css' not found, serving '/src/css/personalize.css' by AssetHandler
-2024/04/10 13:18:08 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/css/personalize.css'
-2024/04/10 13:18:08 DEBUG: [AssetHandler] Handling request '/src/js/database.js' (file='src/js/database.js')
-2024/04/10 13:18:08 DEBUG: [AssetHandler] File 'src/js/database.js' not found, serving '/src/js/database.js' by AssetHandler
-2024/04/10 13:18:08 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/database.js'
-2024/04/10 13:18:08 DEBUG: [AssetHandler] Handling request '/src/js/navigation-menu.js' (file='src/js/navigation-menu.js')
-2024/04/10 13:18:08 DEBUG: [AssetHandler] File 'src/js/navigation-menu.js' not found, serving '/src/js/navigation-menu.js' by AssetHandler
-2024/04/10 13:18:08 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/navigation-menu.js'
-2024/04/10 13:18:08 DEBUG: [AssetHandler] Handling request '/src/js/home.js' (file='src/js/home.js')
-2024/04/10 13:18:08 DEBUG: [AssetHandler] File 'src/js/home.js' not found, serving '/src/js/home.js' by AssetHandler
-2024/04/10 13:18:08 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/home.js'
-2024/04/10 13:18:08 DEBUG: [AssetHandler] Handling request '/src/js/settings.js' (file='src/js/settings.js')
-2024/04/10 13:18:08 DEBUG: [AssetHandler] File 'src/js/settings.js' not found, serving '/src/js/settings.js' by AssetHandler
-2024/04/10 13:18:08 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/settings.js'
-2024/04/10 13:18:08 DEBUG: [AssetHandler] Handling request '/src/js/security-dashboard.js' (file='src/js/security-dashboard.js')
-2024/04/10 13:18:08 DEBUG: [AssetHandler] File 'src/js/security-dashboard.js' not found, serving '/src/js/security-dashboard.js' by AssetHandler
-2024/04/10 13:18:08 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/security-dashboard.js'
-2024/04/10 13:18:08 DEBUG: [AssetHandler] Handling request '/src/js/privacy-dashboard.js' (file='src/js/privacy-dashboard.js')
-2024/04/10 13:18:08 DEBUG: [AssetHandler] File 'src/js/privacy-dashboard.js' not found, serving '/src/js/privacy-dashboard.js' by AssetHandler
-2024/04/10 13:18:08 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/privacy-dashboard.js'
-2024/04/10 13:18:08 DEBUG: [AssetHandler] Handling request '/src/js/issues.js' (file='src/js/issues.js')
-2024/04/10 13:18:08 DEBUG: [AssetHandler] File 'src/js/issues.js' not found, serving '/src/js/issues.js' by AssetHandler
-2024/04/10 13:18:08 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/issues.js'
-2024/04/10 13:18:08 DEBUG: [AssetHandler] Handling request '/src/js/integration.js' (file='src/js/integration.js')
-2024/04/10 13:18:08 DEBUG: [AssetHandler] File 'src/js/integration.js' not found, serving '/src/js/integration.js' by AssetHandler
-2024/04/10 13:18:08 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/integration.js'
-2024/04/10 13:18:08 DEBUG: [AssetHandler] Handling request '/src/js/about.js' (file='src/js/about.js')
-2024/04/10 13:18:08 DEBUG: [AssetHandler] File 'src/js/about.js' not found, serving '/src/js/about.js' by AssetHandler
-2024/04/10 13:18:08 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/about.js'
-2024/04/10 13:18:08 DEBUG: [AssetHandler] Handling request '/src/js/personalize.js' (file='src/js/personalize.js')
-2024/04/10 13:18:08 DEBUG: [AssetHandler] File 'src/js/personalize.js' not found, serving '/src/js/personalize.js' by AssetHandler
-2024/04/10 13:18:08 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/personalize.js'
-2024/04/10 13:18:08 DEBUG: [AssetHandler] Handling request '/node_modules/vite/dist/client/env.mjs' (file='node_modules/vite/dist/client/env.mjs')
-2024/04/10 13:18:08 DEBUG: [AssetHandler] File 'node_modules/vite/dist/client/env.mjs' not found, serving '/node_modules/vite/dist/client/env.mjs' by AssetHandler
-2024/04/10 13:18:08 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/node_modules/vite/dist/client/env.mjs'
-2024/04/10 13:18:08 DEBUG: [AssetHandler] Handling request '/wailsjs/go/main/Tray.js' (file='wailsjs/go/main/Tray.js')
-2024/04/10 13:18:08 DEBUG: [AssetHandler] File 'wailsjs/go/main/Tray.js' not found, serving '/wailsjs/go/main/Tray.js' by AssetHandler
-2024/04/10 13:18:08 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/wailsjs/go/main/Tray.js'
-2024/04/10 13:18:08 DEBUG: [AssetHandler] Handling request '/wailsjs/go/main/DataBase.js' (file='wailsjs/go/main/DataBase.js')
-2024/04/10 13:18:08 DEBUG: [AssetHandler] File 'wailsjs/go/main/DataBase.js' not found, serving '/wailsjs/go/main/DataBase.js' by AssetHandler
-2024/04/10 13:18:08 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/wailsjs/go/main/DataBase.js'
-2024/04/10 13:18:08 DEBUG: [AssetHandler] Handling request '/wailsjs/runtime/runtime.js' (file='wailsjs/runtime/runtime.js')
-2024/04/10 13:18:08 DEBUG: [AssetHandler] File 'wailsjs/runtime/runtime.js' not found, serving '/wailsjs/runtime/runtime.js' by AssetHandler
-2024/04/10 13:18:08 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/wailsjs/runtime/runtime.js'
-2024/04/10 13:18:08 DEBUG: [AssetHandler] Handling request '/src/js/risk-counters.js' (file='src/js/risk-counters.js')
-2024/04/10 13:18:08 DEBUG: [AssetHandler] File 'src/js/risk-counters.js' not found, serving '/src/js/risk-counters.js' by AssetHandler
-2024/04/10 13:18:08 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/risk-counters.js'
-2024/04/10 13:18:08 DEBUG: [AssetHandler] Handling request '/src/js/piechart.js' (file='src/js/piechart.js')
-2024/04/10 13:18:08 DEBUG: [AssetHandler] File 'src/js/piechart.js' not found, serving '/src/js/piechart.js' by AssetHandler
-2024/04/10 13:18:08 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/piechart.js'
-2024/04/10 13:18:08 DEBUG: [AssetHandler] Handling request '/src/js/localize.js' (file='src/js/localize.js')
-2024/04/10 13:18:08 DEBUG: [AssetHandler] File 'src/js/localize.js' not found, serving '/src/js/localize.js' by AssetHandler
-2024/04/10 13:18:08 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/localize.js'
-2024/04/10 13:18:08 DEBUG: [AssetHandler] Handling request '/src/assets/images/img_medal1.jpg' (file='src/assets/images/img_medal1.jpg')
-2024/04/10 13:18:08 DEBUG: [AssetHandler] File 'src/assets/images/img_medal1.jpg' not found, serving '/src/assets/images/img_medal1.jpg' by AssetHandler
-2024/04/10 13:18:08 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/assets/images/img_medal1.jpg?import'
-2024/04/10 13:18:08 DEBUG: [AssetHandler] Handling request '/src/js/graph.js' (file='src/js/graph.js')
-2024/04/10 13:18:08 DEBUG: [AssetHandler] File 'src/js/graph.js' not found, serving '/src/js/graph.js' by AssetHandler
-2024/04/10 13:18:08 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/graph.js'
-2024/04/10 13:18:08 DEBUG: [AssetHandler] Handling request '/src/database.json' (file='src/database.json')
-2024/04/10 13:18:08 DEBUG: [AssetHandler] File 'src/database.json' not found, serving '/src/database.json' by AssetHandler
-2024/04/10 13:18:08 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/database.json?import'
-2024/04/10 13:18:08 DEBUG: [AssetHandler] Handling request '/src/js/issue.js' (file='src/js/issue.js')
-2024/04/10 13:18:08 DEBUG: [AssetHandler] File 'src/js/issue.js' not found, serving '/src/js/issue.js' by AssetHandler
-2024/04/10 13:18:08 DEBUG: [AssetHandler] Handling request '/src/assets/images/logoTeamA-transformed.png' (file='src/assets/images/logoTeamA-transformed.png')
-2024/04/10 13:18:08 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/issue.js'
-2024/04/10 13:18:08 DEBUG: [AssetHandler] File 'src/assets/images/logoTeamA-transformed.png' not found, serving '/src/assets/images/logoTeamA-transformed.png' by AssetHandler
-2024/04/10 13:18:08 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/assets/images/logoTeamA-transformed.png'
-2024/04/10 13:18:08 DEBUG: [AssetHandler] Handling request '/wailsjs/go/main/App.js' (file='wailsjs/go/main/App.js')
-2024/04/10 13:18:08 DEBUG: [AssetHandler] File 'wailsjs/go/main/App.js' not found, serving '/wailsjs/go/main/App.js' by AssetHandler
-2024/04/10 13:18:08 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/wailsjs/go/main/App.js'
-2024/04/10 13:18:08 INFO: Scanning now. Scan:1
-2024/04/10 13:18:17 INFO: [
+2024/04/11 17:14:33 INFO: Reporting page starting
+2024/04/11 17:14:33 ERROR: Error reading user settings file: open ../usersettings/usersettings.json: The system cannot find the file specified.
+2024/04/11 17:14:33 INFO: Scanning now. Scan:1
+2024/04/11 17:14:38 INFO: [
   {
     "issue_id": 5,
     "result_id": 1,
@@ -110,9 +11,9 @@
   },
   {
     "issue_id": 15,
-    "result_id": 1,
+    "result_id": 0,
     "result": [
-      "Windows real-time defender is enabled but the windows periodic scan is disabled"
+      "Windows real-time defender is enabled and also the windows periodic scan is enabled"
     ]
   },
   {
@@ -199,120 +100,75 @@
     "issue_id": 11,
     "result_id": 0,
     "result": [
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: System Idle Process",
-      "port: 34115, process: System Idle Process",
-      "port: 34115, process: System Idle Process",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 51337, process: firefox.exe",
-      "port: 51338, process: firefox.exe",
-      "port: 51339, process: firefox.exe",
-      "port: 51340, process: firefox.exe",
-      "port: 51342, process: NVIDIA Web Helper.exe",
-      "port: 51342, process: NVIDIA Web Helper.exe",
-      "port: 52099, process: nvcontainer.exe",
-      "port: 52138, process: NVIDIA Share.exe",
-      "port: 52532, process: System Idle Process",
-      "port: 52533, process: System Idle Process",
-      "port: 52560, process: System Idle Process",
-      "port: 52561, process: System Idle Process",
-      "port: 52565, process: msedgewebview2.exe",
+      "port: 54925, process: NVIDIA Web Helper.exe",
+      "port: 54925, process: NVIDIA Web Helper.exe",
+      "port: 55555, process: nvcontainer.exe",
+      "port: 55595, process: NVIDIA Share.exe",
+      "port: 55769, process: firefox.exe",
+      "port: 55770, process: firefox.exe",
+      "port: 55771, process: firefox.exe",
+      "port: 55772, process: firefox.exe",
+      "port: 57219, process: msedgewebview2.exe",
+      "port: 57220, process: msedgewebview2.exe",
       "port: 65001, process: nvcontainer.exe",
       "port: 65001, process: nvcontainer.exe",
       "port: 139, process: System",
-      "port: 52086, process: KillerNetworkService.exe",
-      "port: 52088, process: firefox.exe",
-      "port: 52095, process: ekrn.exe",
-      "port: 52114, process: svchost.exe",
-      "port: 52115, process: svchost.exe",
-      "port: 52382, process: firefox.exe",
-      "port: 52424, process: System Idle Process",
-      "port: 52428, process: Code.exe",
-      "port: 52467, process: System Idle Process",
-      "port: 52469, process: System Idle Process",
-      "port: 52494, process: System Idle Process",
-      "port: 52496, process: System Idle Process",
-      "port: 52506, process: firefox.exe",
-      "port: 52507, process: firefox.exe",
-      "port: 52539, process: SearchHost.exe",
-      "port: 52541, process: SearchHost.exe",
-      "port: 52544, process: SearchHost.exe",
-      "port: 52545, process: SearchHost.exe",
-      "port: 52549, process: OneDrive.exe",
-      "port: 52550, process: System Idle Process",
+      "port: 55622, process: svchost.exe",
+      "port: 55763, process: ekrn.exe",
+      "port: 55792, process: firefox.exe",
+      "port: 57145, process: Code.exe",
+      "port: 57187, process: System Idle Process",
+      "port: 57204, process: msedge.exe",
+      "port: 57210, process: OneDrive.exe",
+      "port: 57212, process: System Idle Process",
+      "port: 57213, process: firefox.exe",
+      "port: 57214, process: System Idle Process",
+      "port: 57215, process: firefox.exe",
       "port: 135, process: svchost.exe",
       "port: 445, process: System",
+      "port: 7680, process: svchost.exe",
       "port: 49664, process: lsass.exe",
       "port: 49665, process: wininit.exe",
       "port: 49666, process: svchost.exe",
       "port: 49667, process: svchost.exe",
       "port: 49668, process: spoolsv.exe",
       "port: 49679, process: services.exe",
-      "port: 5173, process: node.exe",
-      "port: 5173, process: System Idle Process",
-      "port: 5173, process: System Idle Process",
-      "port: 5173, process: System Idle Process",
-      "port: 5173, process: node.exe",
-      "port: 5173, process: node.exe",
-      "port: 5173, process: node.exe",
+      "port: 42050, process: Microsoft.SharePoint.exe",
       "port: 49671, process: jhi_service.exe",
-      "port: 52493, process: System Idle Process",
-      "port: 52498, process: System Idle Process",
-      "port: 52508, process: System Idle Process",
-      "port: 52510, process: System Idle Process",
-      "port: 52511, process: System Idle Process",
-      "port: 52512, process: System Idle Process",
-      "port: 52513, process: System Idle Process",
-      "port: 52514, process: System Idle Process",
-      "port: 52515, process: System Idle Process",
-      "port: 52516, process: System Idle Process",
-      "port: 52517, process: System Idle Process",
-      "port: 52518, process: System Idle Process",
-      "port: 52519, process: System Idle Process",
-      "port: 52520, process: System Idle Process",
-      "port: 52522, process: System Idle Process",
-      "port: 52523, process: System Idle Process",
-      "port: 52524, process: System Idle Process",
-      "port: 52525, process: System Idle Process",
-      "port: 52526, process: System Idle Process",
-      "port: 52527, process: System Idle Process",
-      "port: 52528, process: System Idle Process",
-      "port: 52529, process: System Idle Process",
-      "port: 52530, process: System Idle Process",
-      "port: 52531, process: System Idle Process",
-      "port: 52535, process: System Idle Process",
-      "port: 52537, process: System Idle Process",
-      "port: 52554, process: System Idle Process",
-      "port: 52557, process: System Idle Process",
-      "port: 52558, process: System Idle Process",
-      "port: 52559, process: reporting-page-dev.exe",
-      "port: 52563, process: reporting-page-dev.exe",
-      "port: 52564, process: System Idle Process",
-      "port: 52566, process: reporting-page-dev.exe",
+      "port: 57216, process: msedgewebview2.exe",
+      "port: 57217, process: msedgewebview2.exe",
+      "port: 56974, process: SearchHost.exe",
+      "port: 56980, process: SearchHost.exe",
+      "port: 57194, process: System Idle Process",
       "port: 1900, process: svchost.exe",
-      "port: 10030, process: NVIDIA Web Helper.exe",
+      "port: 10040, process: NVIDIA Web Helper.exe",
+      "port: 51456, process: nvcontainer.exe",
       "port: 52333, process: svchost.exe",
-      "port: 58880, process: svchost.exe",
+      "port: 59180, process: svchost.exe",
       "port: 60534, process: ekrn.exe",
-      "port: 60889, process: nvcontainer.exe",
       "port: 137, process: System",
       "port: 138, process: System",
       "port: 1900, process: svchost.exe",
       "port: 5353, process: nvcontainer.exe",
-      "port: 58879, process: svchost.exe",
+      "port: 59179, process: svchost.exe",
+      "port: 123, process: svchost.exe",
       "port: 500, process: svchost.exe",
       "port: 4500, process: svchost.exe",
       "port: 5353, process: svchost.exe",
       "port: 5355, process: svchost.exe",
+      "port: 51726, process: firefox.exe",
+      "port: 58282, process: ekrn.exe",
+      "port: 59518, process: svchost.exe",
+      "port: 60253, process: firefox.exe",
       "port: 60542, process: nvcontainer.exe",
-      "port: 62433, process: svchost.exe",
-      "port: 62575, process: svchost.exe",
-      "port: 63891, process: svchost.exe",
+      "port: 63439, process: svchost.exe",
+      "port: 63643, process: svchost.exe",
+      "port: 65126, process: msedgewebview2.exe",
       "port: 1900, process: svchost.exe",
       "port: 5353, process: nvcontainer.exe",
-      "port: 58878, process: svchost.exe",
+      "port: 59178, process: svchost.exe",
       "port: 1900, process: svchost.exe",
-      "port: 58877, process: svchost.exe"
+      "port: 59177, process: svchost.exe"
     ]
   },
   {
@@ -371,6 +227,7 @@
     "issue_id": 2,
     "result_id": 0,
     "result": [
+      "HID-muis",
       "HID-muis",
       "HD User Facing"
     ]
@@ -448,128 +305,12 @@
     ]
   }
 ]
-2024/04/10 13:18:17 INFO: Opening database
-2024/04/10 13:18:17 INFO: Connected to database
-2024/04/10 13:18:17 [{"issue_id":5,"result_id":1,"result":["No password manager found"]},{"issue_id":15,"result_id":1,"result":["Windows real-time defender is enabled but the windows periodic scan is disabled"]},{"issue_id":16,"result_id":0,"result":["Password last changed on 26-10-2022 , your password was changed more than half a year ago so you should change it again"]},{"issue_id":17,"result_id":4,"result":["Password","Password"]},{"issue_id":6,"result_id":0,"result":["MicrosoftTeams","MicrosoftWindows.Client.WebExperience","MSTeams"]},{"issue_id":7,"result_id":0,"result":["Microsoft.GamingApp","Microsoft.ScreenSketch","Microsoft.WindowsCamera","Microsoft.WindowsFeedbackHub","Microsoft.XboxGamingOverlay","MicrosoftTeams","chrome.exe","POWERPNT.EXE","firefox.exe","Teams.exe","ShooterGame.exe","FallGuys_client_game.exe","FortniteClient-Win64-Shipping.exe","RemotePlay.exe","RocketLeague.exe","windows.immersivecontrolpanel"]},{"issue_id":8,"result_id":0,"result":["Microsoft.WindowsCamera","MicrosoftTeams","MicrosoftWindows.Client.CBS","MSTeams","chrome.exe","Pokemon TCG Live.exe"]},{"issue_id":9,"result_id":0,"result":["microsoft.windowscommunicationsapps"]},{"issue_id":10,"result_id":0,"result":["microsoft.windowscommunicationsapps"]},{"issue_id":1,"result_id":1,"result":["AirPods Pro - Find My\u0000","AirPods\u0000"]},{"issue_id":11,"result_id":0,"result":["port: 34115, process: reporting-page-dev.exe","port: 34115, process: System Idle Process","port: 34115, process: System Idle Process","port: 34115, process: System Idle Process","port: 34115, process: reporting-page-dev.exe","port: 51337, process: firefox.exe","port: 51338, process: firefox.exe","port: 51339, process: firefox.exe","port: 51340, process: firefox.exe","port: 51342, process: NVIDIA Web Helper.exe","port: 51342, process: NVIDIA Web Helper.exe","port: 52099, process: nvcontainer.exe","port: 52138, process: NVIDIA Share.exe","port: 52532, process: System Idle Process","port: 52533, process: System Idle Process","port: 52560, process: System Idle Process","port: 52561, process: System Idle Process","port: 52565, process: msedgewebview2.exe","port: 65001, process: nvcontainer.exe","port: 65001, process: nvcontainer.exe","port: 139, process: System","port: 52086, process: KillerNetworkService.exe","port: 52088, process: firefox.exe","port: 52095, process: ekrn.exe","port: 52114, process: svchost.exe","port: 52115, process: svchost.exe","port: 52382, process: firefox.exe","port: 52424, process: System Idle Process","port: 52428, process: Code.exe","port: 52467, process: System Idle Process","port: 52469, process: System Idle Process","port: 52494, process: System Idle Process","port: 52496, process: System Idle Process","port: 52506, process: firefox.exe","port: 52507, process: firefox.exe","port: 52539, process: SearchHost.exe","port: 52541, process: SearchHost.exe","port: 52544, process: SearchHost.exe","port: 52545, process: SearchHost.exe","port: 52549, process: OneDrive.exe","port: 52550, process: System Idle Process","port: 135, process: svchost.exe","port: 445, process: System","port: 49664, process: lsass.exe","port: 49665, process: wininit.exe","port: 49666, process: svchost.exe","port: 49667, process: svchost.exe","port: 49668, process: spoolsv.exe","port: 49679, process: services.exe","port: 5173, process: node.exe","port: 5173, process: System Idle Process","port: 5173, process: System Idle Process","port: 5173, process: System Idle Process","port: 5173, process: node.exe","port: 5173, process: node.exe","port: 5173, process: node.exe","port: 49671, process: jhi_service.exe","port: 52493, process: System Idle Process","port: 52498, process: System Idle Process","port: 52508, process: System Idle Process","port: 52510, process: System Idle Process","port: 52511, process: System Idle Process","port: 52512, process: System Idle Process","port: 52513, process: System Idle Process","port: 52514, process: System Idle Process","port: 52515, process: System Idle Process","port: 52516, process: System Idle Process","port: 52517, process: System Idle Process","port: 52518, process: System Idle Process","port: 52519, process: System Idle Process","port: 52520, process: System Idle Process","port: 52522, process: System Idle Process","port: 52523, process: System Idle Process","port: 52524, process: System Idle Process","port: 52525, process: System Idle Process","port: 52526, process: System Idle Process","port: 52527, process: System Idle Process","port: 52528, process: System Idle Process","port: 52529, process: System Idle Process","port: 52530, process: System Idle Process","port: 52531, process: System Idle Process","port: 52535, process: System Idle Process","port: 52537, process: System Idle Process","port: 52554, process: System Idle Process","port: 52557, process: System Idle Process","port: 52558, process: System Idle Process","port: 52559, process: reporting-page-dev.exe","port: 52563, process: reporting-page-dev.exe","port: 52564, process: System Idle Process","port: 52566, process: reporting-page-dev.exe","port: 1900, process: svchost.exe","port: 10030, process: NVIDIA Web Helper.exe","port: 52333, process: svchost.exe","port: 58880, process: svchost.exe","port: 60534, process: ekrn.exe","port: 60889, process: nvcontainer.exe","port: 137, process: System","port: 138, process: System","port: 1900, process: svchost.exe","port: 5353, process: nvcontainer.exe","port: 58879, process: svchost.exe","port: 500, process: svchost.exe","port: 4500, process: svchost.exe","port: 5353, process: svchost.exe","port: 5355, process: svchost.exe","port: 60542, process: nvcontainer.exe","port: 62433, process: svchost.exe","port: 62575, process: svchost.exe","port: 63891, process: svchost.exe","port: 1900, process: svchost.exe","port: 5353, process: nvcontainer.exe","port: 58878, process: svchost.exe","port: 1900, process: svchost.exe","port: 58877, process: svchost.exe"]},{"issue_id":18,"result_id":1,"result":["10.0.22631","There are updates available for Windows 10."]},{"issue_id":19,"result_id":1,"result":["Secure boot is enabled"]},{"issue_id":13,"result_id":2,"result":["SMB1: not enabled","SMB2: enabled"]},{"issue_id":20,"result_id":1,"result":["Docker Desktop","SecurityHealth"]},{"issue_id":3,"result_id":2,"result":["Guest account is not active"]},{"issue_id":14,"result_id":2,"result":["UAC is turned on for apps making changes to your computer."]},{"issue_id":12,"result_id":1,"result":["Remote Desktop is disabled"]},{"issue_id":2,"result_id":0,"result":["HID-muis","HD User Facing"]},{"issue_id":4,"result_id":0,"result":["Network sharing is enabled"]},{"issue_id":23,"result_id":1,"result":["No phishing domains found in the last week"]},{"issue_id":21,"result_id":0,"result":["Adblocker installed"]},{"issue_id":25,"result_id":0,"result":["google.com"]},{"issue_id":28,"result_id":0,"result":["Form Autofill,extension,,true","Picture-In-Picture,extension,,true","Firefox Screenshots,extension,Mozilla <screenshots-feedback@mozilla.com>,true","WebCompat Reporter,extension,Thomas Wisniewski <twisniewski@mozilla.com>,false","Web Compatibility Interventions,extension,,true","System theme — auto,theme,Mozilla,true","Add-ons Search Detection,extension,,true","Google,extension,,true","Wikipedia (en),extension,,true","Bing,extension,,true","DuckDuckGo,extension,,true","Light,theme,Mozilla,false","Dark,theme,Mozilla,false","Firefox Alpenglow,theme,,false","Amazon.com.au,extension,,true","eBay,extension,,true","Qwant,extension,,true"]},{"issue_id":29,"result_id":0,"result":["false"]},{"issue_id":31,"result_id":0,"result":["No phising domains found in the last week"]},{"issue_id":30,"result_id":0,"result":["Other Search Engine"]}]
-2024/04/10 13:18:17 INFO: Closing database
-2024/04/10 13:21:56 DEBUG: [AssetHandler] Handling request '/' (file='.')
-2024/04/10 13:21:56 DEBUG: [AssetHandler] File '.' not found, serving '/' by AssetHandler
-2024/04/10 13:21:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/'
-2024/04/10 13:21:56 DEBUG: [AssetHandler] Handling request '/@vite/client' (file='@vite/client')
-2024/04/10 13:21:56 DEBUG: [AssetHandler] File '@vite/client' not found, serving '/@vite/client' by AssetHandler
-2024/04/10 13:21:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/@vite/client'
-2024/04/10 13:21:56 DEBUG: [AssetHandler] Handling request '/src/css/color-palette.css' (file='src/css/color-palette.css')
-2024/04/10 13:21:56 DEBUG: [AssetHandler] File 'src/css/color-palette.css' not found, serving '/src/css/color-palette.css' by AssetHandler
-2024/04/10 13:21:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/css/color-palette.css'
-2024/04/10 13:21:56 DEBUG: [AssetHandler] Handling request '/src/css/responsive.css' (file='src/css/responsive.css')
-2024/04/10 13:21:56 DEBUG: [AssetHandler] File 'src/css/responsive.css' not found, serving '/src/css/responsive.css' by AssetHandler
-2024/04/10 13:21:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/css/responsive.css'
-2024/04/10 13:21:56 DEBUG: [AssetHandler] Handling request '/src/css/home.css' (file='src/css/home.css')
-2024/04/10 13:21:56 DEBUG: [AssetHandler] File 'src/css/home.css' not found, serving '/src/css/home.css' by AssetHandler
-2024/04/10 13:21:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/css/home.css'
-2024/04/10 13:21:56 DEBUG: [AssetHandler] Handling request '/src/css/settings.css' (file='src/css/settings.css')
-2024/04/10 13:21:56 DEBUG: [AssetHandler] File 'src/css/settings.css' not found, serving '/src/css/settings.css' by AssetHandler
-2024/04/10 13:21:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/css/settings.css'
-2024/04/10 13:21:56 DEBUG: [AssetHandler] Handling request '/src/css/dashboard.css' (file='src/css/dashboard.css')
-2024/04/10 13:21:56 DEBUG: [AssetHandler] File 'src/css/dashboard.css' not found, serving '/src/css/dashboard.css' by AssetHandler
-2024/04/10 13:21:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/css/dashboard.css'
-2024/04/10 13:21:56 DEBUG: [AssetHandler] Handling request '/src/css/issues.css' (file='src/css/issues.css')
-2024/04/10 13:21:56 DEBUG: [AssetHandler] File 'src/css/issues.css' not found, serving '/src/css/issues.css' by AssetHandler
-2024/04/10 13:21:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/css/issues.css'
-2024/04/10 13:21:56 DEBUG: [AssetHandler] Handling request '/src/css/personalize.css' (file='src/css/personalize.css')
-2024/04/10 13:21:56 DEBUG: [AssetHandler] File 'src/css/personalize.css' not found, serving '/src/css/personalize.css' by AssetHandler
-2024/04/10 13:21:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/css/personalize.css'
-2024/04/10 13:21:56 DEBUG: [AssetHandler] Handling request '/src/js/database.js' (file='src/js/database.js')
-2024/04/10 13:21:56 DEBUG: [AssetHandler] File 'src/js/database.js' not found, serving '/src/js/database.js' by AssetHandler
-2024/04/10 13:21:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/database.js'
-2024/04/10 13:21:56 DEBUG: [AssetHandler] Handling request '/src/js/navigation-menu.js' (file='src/js/navigation-menu.js')
-2024/04/10 13:21:56 DEBUG: [AssetHandler] File 'src/js/navigation-menu.js' not found, serving '/src/js/navigation-menu.js' by AssetHandler
-2024/04/10 13:21:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/navigation-menu.js'
-2024/04/10 13:21:56 DEBUG: [AssetHandler] Handling request '/src/js/home.js' (file='src/js/home.js')
-2024/04/10 13:21:56 DEBUG: [AssetHandler] Handling request '/src/js/settings.js' (file='src/js/settings.js')
-2024/04/10 13:21:56 DEBUG: [AssetHandler] File 'src/js/settings.js' not found, serving '/src/js/settings.js' by AssetHandler
-2024/04/10 13:21:56 DEBUG: [AssetHandler] Handling request '/src/js/security-dashboard.js' (file='src/js/security-dashboard.js')
-2024/04/10 13:21:56 DEBUG: [AssetHandler] File 'src/js/home.js' not found, serving '/src/js/home.js' by AssetHandler
-2024/04/10 13:21:56 DEBUG: [AssetHandler] Handling request '/src/js/privacy-dashboard.js' (file='src/js/privacy-dashboard.js')
-2024/04/10 13:21:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/settings.js'
-2024/04/10 13:21:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/home.js'
-2024/04/10 13:21:56 DEBUG: [AssetHandler] File 'src/js/privacy-dashboard.js' not found, serving '/src/js/privacy-dashboard.js' by AssetHandler
-2024/04/10 13:21:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/privacy-dashboard.js'
-2024/04/10 13:21:56 DEBUG: [AssetHandler] Handling request '/src/js/issues.js' (file='src/js/issues.js')
-2024/04/10 13:21:56 DEBUG: [AssetHandler] File 'src/js/security-dashboard.js' not found, serving '/src/js/security-dashboard.js' by AssetHandler
-2024/04/10 13:21:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/security-dashboard.js'
-2024/04/10 13:21:56 DEBUG: [AssetHandler] File 'src/js/issues.js' not found, serving '/src/js/issues.js' by AssetHandler
-2024/04/10 13:21:56 DEBUG: [AssetHandler] Handling request '/src/js/integration.js' (file='src/js/integration.js')
-2024/04/10 13:21:56 DEBUG: [AssetHandler] File 'src/js/integration.js' not found, serving '/src/js/integration.js' by AssetHandler
-2024/04/10 13:21:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/integration.js'
-2024/04/10 13:21:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/issues.js'
-2024/04/10 13:21:56 DEBUG: [AssetHandler] Handling request '/src/js/about.js' (file='src/js/about.js')
-2024/04/10 13:21:56 DEBUG: [AssetHandler] File 'src/js/about.js' not found, serving '/src/js/about.js' by AssetHandler
-2024/04/10 13:21:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/about.js'
-2024/04/10 13:21:56 DEBUG: [AssetHandler] Handling request '/src/js/personalize.js' (file='src/js/personalize.js')
-2024/04/10 13:21:56 DEBUG: [AssetHandler] File 'src/js/personalize.js' not found, serving '/src/js/personalize.js' by AssetHandler
-2024/04/10 13:21:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/personalize.js'
-2024/04/10 13:21:56 DEBUG: [AssetHandler] Handling request '/src/assets/images/logoTeamA-transformed.png' (file='src/assets/images/logoTeamA-transformed.png')
-2024/04/10 13:21:56 DEBUG: [AssetHandler] File 'src/assets/images/logoTeamA-transformed.png' not found, serving '/src/assets/images/logoTeamA-transformed.png' by AssetHandler
-2024/04/10 13:21:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/assets/images/logoTeamA-transformed.png'
-2024/04/10 13:21:56 DEBUG: [AssetHandler] Handling request '/node_modules/vite/dist/client/env.mjs' (file='node_modules/vite/dist/client/env.mjs')
-2024/04/10 13:21:56 DEBUG: [AssetHandler] File 'node_modules/vite/dist/client/env.mjs' not found, serving '/node_modules/vite/dist/client/env.mjs' by AssetHandler
-2024/04/10 13:21:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/node_modules/vite/dist/client/env.mjs'
-2024/04/10 13:21:56 DEBUG: [AssetHandler] Handling request '/src/js/localize.js' (file='src/js/localize.js')
-2024/04/10 13:21:56 DEBUG: [AssetHandler] File 'src/js/localize.js' not found, serving '/src/js/localize.js' by AssetHandler
-2024/04/10 13:21:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/localize.js'
-2024/04/10 13:21:56 DEBUG: [AssetHandler] Handling request '/wailsjs/go/main/Tray.js' (file='wailsjs/go/main/Tray.js')
-2024/04/10 13:21:56 DEBUG: [AssetHandler] File 'wailsjs/go/main/Tray.js' not found, serving '/wailsjs/go/main/Tray.js' by AssetHandler
-2024/04/10 13:21:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/wailsjs/go/main/Tray.js'
-2024/04/10 13:21:56 DEBUG: [AssetHandler] Handling request '/wailsjs/go/main/DataBase.js' (file='wailsjs/go/main/DataBase.js')
-2024/04/10 13:21:56 DEBUG: [AssetHandler] File 'wailsjs/go/main/DataBase.js' not found, serving '/wailsjs/go/main/DataBase.js' by AssetHandler
-2024/04/10 13:21:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/wailsjs/go/main/DataBase.js'
-2024/04/10 13:21:56 DEBUG: [AssetHandler] Handling request '/src/js/home.js' (file='src/js/home.js')
-2024/04/10 13:21:56 DEBUG: [AssetHandler] File 'src/js/home.js' not found, serving '/src/js/home.js' by AssetHandler
-2024/04/10 13:21:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/home.js?t=1712748116187'
-2024/04/10 13:21:56 DEBUG: [AssetHandler] Handling request '/wailsjs/runtime/runtime.js' (file='wailsjs/runtime/runtime.js')
-2024/04/10 13:21:56 DEBUG: [AssetHandler] File 'wailsjs/runtime/runtime.js' not found, serving '/wailsjs/runtime/runtime.js' by AssetHandler
-2024/04/10 13:21:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/wailsjs/runtime/runtime.js'
-2024/04/10 13:21:56 DEBUG: [AssetHandler] Handling request '/src/js/risk-counters.js' (file='src/js/risk-counters.js')
-2024/04/10 13:21:56 DEBUG: [AssetHandler] File 'src/js/risk-counters.js' not found, serving '/src/js/risk-counters.js' by AssetHandler
-2024/04/10 13:21:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/risk-counters.js'
-2024/04/10 13:21:56 DEBUG: [AssetHandler] Handling request '/src/js/personalize.js' (file='src/js/personalize.js')
-2024/04/10 13:21:56 DEBUG: [AssetHandler] File 'src/js/personalize.js' not found, serving '/src/js/personalize.js' by AssetHandler
-2024/04/10 13:21:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/personalize.js?t=1712748116187'
-2024/04/10 13:21:56 DEBUG: [AssetHandler] Handling request '/src/database.json' (file='src/database.json')
-2024/04/10 13:21:56 DEBUG: [AssetHandler] File 'src/database.json' not found, serving '/src/database.json' by AssetHandler
-2024/04/10 13:21:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/database.json?import'
-2024/04/10 13:21:56 DEBUG: [AssetHandler] Handling request '/src/js/issue.js' (file='src/js/issue.js')
-2024/04/10 13:21:56 DEBUG: [AssetHandler] File 'src/js/issue.js' not found, serving '/src/js/issue.js' by AssetHandler
-2024/04/10 13:21:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/issue.js?t=1712748116187'
-2024/04/10 13:21:56 DEBUG: [AssetHandler] Handling request '/src/js/graph.js' (file='src/js/graph.js')
-2024/04/10 13:21:56 DEBUG: [AssetHandler] File 'src/js/graph.js' not found, serving '/src/js/graph.js' by AssetHandler
-2024/04/10 13:21:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/graph.js'
-2024/04/10 13:21:56 DEBUG: [AssetHandler] Handling request '/src/js/piechart.js' (file='src/js/piechart.js')
-2024/04/10 13:21:56 DEBUG: [AssetHandler] File 'src/js/piechart.js' not found, serving '/src/js/piechart.js' by AssetHandler
-2024/04/10 13:21:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/piechart.js'
-2024/04/10 13:21:56 DEBUG: [AssetHandler] Handling request '/src/js/database.js' (file='src/js/database.js')
-2024/04/10 13:21:56 DEBUG: [AssetHandler] File 'src/js/database.js' not found, serving '/src/js/database.js' by AssetHandler
-2024/04/10 13:21:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/database.js?t=1712748116187'
-2024/04/10 13:21:56 DEBUG: [AssetHandler] Handling request '/src/assets/images/img_medal1.jpg' (file='src/assets/images/img_medal1.jpg')
-2024/04/10 13:21:56 DEBUG: [AssetHandler] File 'src/assets/images/img_medal1.jpg' not found, serving '/src/assets/images/img_medal1.jpg' by AssetHandler
-2024/04/10 13:21:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/assets/images/img_medal1.jpg?import'
-2024/04/10 13:21:56 DEBUG: [AssetHandler] Handling request '/wailsjs/go/main/App.js' (file='wailsjs/go/main/App.js')
-2024/04/10 13:21:56 DEBUG: [AssetHandler] File 'wailsjs/go/main/App.js' not found, serving '/wailsjs/go/main/App.js' by AssetHandler
-2024/04/10 13:21:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/wailsjs/go/main/App.js'
-2024/04/10 13:21:56 INFO: Scanning now. Scan:2
-2024/04/10 13:21:56 INFO: Scanning now. Scan:3
-2024/04/10 13:21:56 ERROR: Error setting progress text: Class already exists.
-2024/04/10 13:21:56 ERROR: Error calling scan: Class already exists.
-2024/04/10 13:21:56 ERROR: Error closing dialog: Class already exists.
-2024/04/10 13:21:56 ERROR: Error in scanNowGo: Class already exists.
-2024/04/10 13:21:56 DEBUG: [AssetHandler] Handling request '/src/js/issues.js' (file='src/js/issues.js')
-2024/04/10 13:21:56 DEBUG: [AssetHandler] File 'src/js/issues.js' not found, serving '/src/js/issues.js' by AssetHandler
-2024/04/10 13:21:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/issues.js?t=1712748116187'
-2024/04/10 13:21:56 DEBUG: [AssetHandler] Handling request '/src/assets/images/logoTeamA-transformed.png' (file='src/assets/images/logoTeamA-transformed.png')
-2024/04/10 13:21:56 DEBUG: [AssetHandler] File 'src/assets/images/logoTeamA-transformed.png' not found, serving '/src/assets/images/logoTeamA-transformed.png' by AssetHandler
-2024/04/10 13:21:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/assets/images/logoTeamA-transformed.png'
-2024/04/10 13:22:05 INFO: [
+2024/04/11 17:14:38 INFO: Opening database
+2024/04/11 17:14:38 INFO: Connected to database
+2024/04/11 17:14:38 [{"issue_id":5,"result_id":1,"result":["No password manager found"]},{"issue_id":15,"result_id":0,"result":["Windows real-time defender is enabled and also the windows periodic scan is enabled"]},{"issue_id":16,"result_id":0,"result":["Password last changed on 26-10-2022 , your password was changed more than half a year ago so you should change it again"]},{"issue_id":17,"result_id":4,"result":["Password","Password"]},{"issue_id":6,"result_id":0,"result":["MicrosoftTeams","MicrosoftWindows.Client.WebExperience","MSTeams"]},{"issue_id":7,"result_id":0,"result":["Microsoft.GamingApp","Microsoft.ScreenSketch","Microsoft.WindowsCamera","Microsoft.WindowsFeedbackHub","Microsoft.XboxGamingOverlay","MicrosoftTeams","chrome.exe","POWERPNT.EXE","firefox.exe","Teams.exe","ShooterGame.exe","FallGuys_client_game.exe","FortniteClient-Win64-Shipping.exe","RemotePlay.exe","RocketLeague.exe","windows.immersivecontrolpanel"]},{"issue_id":8,"result_id":0,"result":["Microsoft.WindowsCamera","MicrosoftTeams","MicrosoftWindows.Client.CBS","MSTeams","chrome.exe","Pokemon TCG Live.exe"]},{"issue_id":9,"result_id":0,"result":["microsoft.windowscommunicationsapps"]},{"issue_id":10,"result_id":0,"result":["microsoft.windowscommunicationsapps"]},{"issue_id":1,"result_id":1,"result":["AirPods Pro - Find My\u0000","AirPods\u0000"]},{"issue_id":11,"result_id":0,"result":["port: 54925, process: NVIDIA Web Helper.exe","port: 54925, process: NVIDIA Web Helper.exe","port: 55555, process: nvcontainer.exe","port: 55595, process: NVIDIA Share.exe","port: 55769, process: firefox.exe","port: 55770, process: firefox.exe","port: 55771, process: firefox.exe","port: 55772, process: firefox.exe","port: 57219, process: msedgewebview2.exe","port: 57220, process: msedgewebview2.exe","port: 65001, process: nvcontainer.exe","port: 65001, process: nvcontainer.exe","port: 139, process: System","port: 55622, process: svchost.exe","port: 55763, process: ekrn.exe","port: 55792, process: firefox.exe","port: 57145, process: Code.exe","port: 57187, process: System Idle Process","port: 57204, process: msedge.exe","port: 57210, process: OneDrive.exe","port: 57212, process: System Idle Process","port: 57213, process: firefox.exe","port: 57214, process: System Idle Process","port: 57215, process: firefox.exe","port: 135, process: svchost.exe","port: 445, process: System","port: 7680, process: svchost.exe","port: 49664, process: lsass.exe","port: 49665, process: wininit.exe","port: 49666, process: svchost.exe","port: 49667, process: svchost.exe","port: 49668, process: spoolsv.exe","port: 49679, process: services.exe","port: 42050, process: Microsoft.SharePoint.exe","port: 49671, process: jhi_service.exe","port: 57216, process: msedgewebview2.exe","port: 57217, process: msedgewebview2.exe","port: 56974, process: SearchHost.exe","port: 56980, process: SearchHost.exe","port: 57194, process: System Idle Process","port: 1900, process: svchost.exe","port: 10040, process: NVIDIA Web Helper.exe","port: 51456, process: nvcontainer.exe","port: 52333, process: svchost.exe","port: 59180, process: svchost.exe","port: 60534, process: ekrn.exe","port: 137, process: System","port: 138, process: System","port: 1900, process: svchost.exe","port: 5353, process: nvcontainer.exe","port: 59179, process: svchost.exe","port: 123, process: svchost.exe","port: 500, process: svchost.exe","port: 4500, process: svchost.exe","port: 5353, process: svchost.exe","port: 5355, process: svchost.exe","port: 51726, process: firefox.exe","port: 58282, process: ekrn.exe","port: 59518, process: svchost.exe","port: 60253, process: firefox.exe","port: 60542, process: nvcontainer.exe","port: 63439, process: svchost.exe","port: 63643, process: svchost.exe","port: 65126, process: msedgewebview2.exe","port: 1900, process: svchost.exe","port: 5353, process: nvcontainer.exe","port: 59178, process: svchost.exe","port: 1900, process: svchost.exe","port: 59177, process: svchost.exe"]},{"issue_id":18,"result_id":1,"result":["10.0.22631","There are updates available for Windows 10."]},{"issue_id":19,"result_id":1,"result":["Secure boot is enabled"]},{"issue_id":13,"result_id":2,"result":["SMB1: not enabled","SMB2: enabled"]},{"issue_id":20,"result_id":1,"result":["Docker Desktop","SecurityHealth"]},{"issue_id":3,"result_id":2,"result":["Guest account is not active"]},{"issue_id":14,"result_id":2,"result":["UAC is turned on for apps making changes to your computer."]},{"issue_id":12,"result_id":1,"result":["Remote Desktop is disabled"]},{"issue_id":2,"result_id":0,"result":["HID-muis","HID-muis","HD User Facing"]},{"issue_id":4,"result_id":0,"result":["Network sharing is enabled"]},{"issue_id":23,"result_id":1,"result":["No phishing domains found in the last week"]},{"issue_id":21,"result_id":0,"result":["Adblocker installed"]},{"issue_id":25,"result_id":0,"result":["google.com"]},{"issue_id":28,"result_id":0,"result":["Form Autofill,extension,,true","Picture-In-Picture,extension,,true","Firefox Screenshots,extension,Mozilla <screenshots-feedback@mozilla.com>,true","WebCompat Reporter,extension,Thomas Wisniewski <twisniewski@mozilla.com>,false","Web Compatibility Interventions,extension,,true","System theme — auto,theme,Mozilla,true","Add-ons Search Detection,extension,,true","Google,extension,,true","Wikipedia (en),extension,,true","Bing,extension,,true","DuckDuckGo,extension,,true","Light,theme,Mozilla,false","Dark,theme,Mozilla,false","Firefox Alpenglow,theme,,false","Amazon.com.au,extension,,true","eBay,extension,,true","Qwant,extension,,true"]},{"issue_id":29,"result_id":0,"result":["false"]},{"issue_id":31,"result_id":0,"result":["No phising domains found in the last week"]},{"issue_id":30,"result_id":0,"result":["Other Search Engine"]}]
+2024/04/11 17:14:38 INFO: Closing database
+2024/04/11 17:14:42 INFO: Scanning now. Scan:2
+2024/04/11 17:14:47 INFO: [
   {
     "issue_id": 5,
     "result_id": 1,
@@ -579,9 +320,9 @@
   },
   {
     "issue_id": 15,
-    "result_id": 1,
+    "result_id": 0,
     "result": [
-      "Windows real-time defender is enabled but the windows periodic scan is disabled"
+      "Windows real-time defender is enabled and also the windows periodic scan is enabled"
     ]
   },
   {
@@ -668,139 +409,70 @@
     "issue_id": 11,
     "result_id": 0,
     "result": [
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 51337, process: firefox.exe",
-      "port: 51338, process: firefox.exe",
-      "port: 51339, process: firefox.exe",
-      "port: 51340, process: firefox.exe",
-      "port: 51342, process: NVIDIA Web Helper.exe",
-      "port: 51342, process: NVIDIA Web Helper.exe",
-      "port: 52099, process: nvcontainer.exe",
-      "port: 52138, process: NVIDIA Share.exe",
-      "port: 52565, process: System Idle Process",
-      "port: 52743, process: msedgewebview2.exe",
-      "port: 52744, process: msedgewebview2.exe",
-      "port: 52745, process: msedgewebview2.exe",
+      "port: 54925, process: NVIDIA Web Helper.exe",
+      "port: 54925, process: NVIDIA Web Helper.exe",
+      "port: 55555, process: nvcontainer.exe",
+      "port: 55595, process: NVIDIA Share.exe",
+      "port: 55769, process: firefox.exe",
+      "port: 55770, process: firefox.exe",
+      "port: 55771, process: firefox.exe",
+      "port: 55772, process: firefox.exe",
       "port: 65001, process: nvcontainer.exe",
       "port: 65001, process: nvcontainer.exe",
       "port: 139, process: System",
-      "port: 52086, process: KillerNetworkService.exe",
-      "port: 52088, process: firefox.exe",
-      "port: 52095, process: ekrn.exe",
-      "port: 52114, process: svchost.exe",
-      "port: 52115, process: svchost.exe",
-      "port: 52382, process: firefox.exe",
-      "port: 52428, process: Code.exe",
-      "port: 52573, process: firefox.exe",
-      "port: 52577, process: firefox.exe",
-      "port: 52579, process: System Idle Process",
-      "port: 52580, process: System Idle Process",
-      "port: 52582, process: System Idle Process",
-      "port: 52583, process: System Idle Process",
-      "port: 52586, process: System Idle Process",
-      "port: 52594, process: System Idle Process",
-      "port: 52595, process: System Idle Process",
-      "port: 52596, process: System Idle Process",
-      "port: 52601, process: System Idle Process",
-      "port: 52606, process: firefox.exe",
-      "port: 52610, process: firefox.exe",
-      "port: 52612, process: firefox.exe",
-      "port: 52616, process: firefox.exe",
-      "port: 52620, process: firefox.exe",
-      "port: 52624, process: firefox.exe",
-      "port: 52632, process: firefox.exe",
-      "port: 52637, process: firefox.exe",
-      "port: 52638, process: System Idle Process",
-      "port: 52639, process: System Idle Process",
-      "port: 52640, process: System Idle Process",
-      "port: 52644, process: System Idle Process",
-      "port: 52646, process: firefox.exe",
-      "port: 52650, process: firefox.exe",
-      "port: 52656, process: firefox.exe",
-      "port: 52660, process: firefox.exe",
-      "port: 52664, process: firefox.exe",
-      "port: 52671, process: firefox.exe",
-      "port: 52673, process: firefox.exe",
-      "port: 52674, process: firefox.exe",
-      "port: 52676, process: firefox.exe",
-      "port: 52678, process: firefox.exe",
-      "port: 52681, process: firefox.exe",
-      "port: 52689, process: firefox.exe",
-      "port: 52696, process: firefox.exe",
-      "port: 52702, process: firefox.exe",
-      "port: 52703, process: firefox.exe",
-      "port: 52704, process: firefox.exe",
-      "port: 52709, process: firefox.exe",
-      "port: 52712, process: firefox.exe",
-      "port: 52718, process: msedgewebview2.exe",
+      "port: 55622, process: svchost.exe",
+      "port: 55763, process: ekrn.exe",
+      "port: 55792, process: firefox.exe",
+      "port: 57145, process: Code.exe",
+      "port: 57204, process: msedge.exe",
+      "port: 57210, process: OneDrive.exe",
+      "port: 57212, process: System Idle Process",
+      "port: 57213, process: firefox.exe",
+      "port: 57214, process: System Idle Process",
+      "port: 57215, process: firefox.exe",
       "port: 135, process: svchost.exe",
       "port: 445, process: System",
+      "port: 7680, process: svchost.exe",
       "port: 49664, process: lsass.exe",
       "port: 49665, process: wininit.exe",
       "port: 49666, process: svchost.exe",
       "port: 49667, process: svchost.exe",
       "port: 49668, process: spoolsv.exe",
       "port: 49679, process: services.exe",
-      "port: 5173, process: node.exe",
-      "port: 5173, process: node.exe",
-      "port: 5173, process: node.exe",
-      "port: 5173, process: node.exe",
+      "port: 42050, process: Microsoft.SharePoint.exe",
       "port: 49671, process: jhi_service.exe",
-      "port: 52719, process: reporting-page-dev.exe",
-      "port: 52720, process: System Idle Process",
-      "port: 52721, process: System Idle Process",
-      "port: 52722, process: System Idle Process",
-      "port: 52723, process: System Idle Process",
-      "port: 52724, process: System Idle Process",
-      "port: 52725, process: System Idle Process",
-      "port: 52726, process: System Idle Process",
-      "port: 52727, process: System Idle Process",
-      "port: 52728, process: System Idle Process",
-      "port: 52729, process: System Idle Process",
-      "port: 52730, process: System Idle Process",
-      "port: 52731, process: System Idle Process",
-      "port: 52732, process: System Idle Process",
-      "port: 52733, process: System Idle Process",
-      "port: 52734, process: System Idle Process",
-      "port: 52735, process: System Idle Process",
-      "port: 52736, process: System Idle Process",
-      "port: 52737, process: reporting-page-dev.exe",
-      "port: 52739, process: System Idle Process",
-      "port: 52740, process: System Idle Process",
-      "port: 52741, process: System Idle Process",
-      "port: 52742, process: System Idle Process",
-      "port: 52746, process: reporting-page-dev.exe",
+      "port: 56974, process: SearchHost.exe",
+      "port: 56980, process: SearchHost.exe",
+      "port: 57194, process: System Idle Process",
+      "port: 57222, process: reporting-page.exe",
+      "port: 57223, process: reporting-page.exe",
       "port: 1900, process: svchost.exe",
-      "port: 10030, process: NVIDIA Web Helper.exe",
+      "port: 10040, process: NVIDIA Web Helper.exe",
+      "port: 51456, process: nvcontainer.exe",
       "port: 52333, process: svchost.exe",
-      "port: 58880, process: svchost.exe",
+      "port: 59180, process: svchost.exe",
       "port: 60534, process: ekrn.exe",
-      "port: 60889, process: nvcontainer.exe",
       "port: 137, process: System",
       "port: 138, process: System",
       "port: 1900, process: svchost.exe",
       "port: 5353, process: nvcontainer.exe",
-      "port: 58879, process: svchost.exe",
+      "port: 59179, process: svchost.exe",
+      "port: 123, process: svchost.exe",
       "port: 500, process: svchost.exe",
       "port: 4500, process: svchost.exe",
       "port: 5353, process: svchost.exe",
       "port: 5355, process: svchost.exe",
-      "port: 50060, process: svchost.exe",
-      "port: 50307, process: svchost.exe",
-      "port: 53969, process: svchost.exe",
+      "port: 51726, process: firefox.exe",
+      "port: 58282, process: ekrn.exe",
       "port: 60542, process: nvcontainer.exe",
-      "port: 62208, process: svchost.exe",
-      "port: 62433, process: svchost.exe",
-      "port: 62575, process: svchost.exe",
-      "port: 63891, process: svchost.exe",
+      "port: 63439, process: svchost.exe",
+      "port: 63643, process: svchost.exe",
+      "port: 65126, process: msedgewebview2.exe",
       "port: 1900, process: svchost.exe",
       "port: 5353, process: nvcontainer.exe",
-      "port: 58878, process: svchost.exe",
+      "port: 59178, process: svchost.exe",
       "port: 1900, process: svchost.exe",
-      "port: 58877, process: svchost.exe"
+      "port: 59177, process: svchost.exe"
     ]
   },
   {
@@ -859,6 +531,7 @@
     "issue_id": 2,
     "result_id": 0,
     "result": [
+      "HID-muis",
       "HID-muis",
       "HD User Facing"
     ]
@@ -936,122 +609,12 @@
     ]
   }
 ]
-2024/04/10 13:22:05 [{"issue_id":5,"result_id":1,"result":["No password manager found"]},{"issue_id":15,"result_id":1,"result":["Windows real-time defender is enabled but the windows periodic scan is disabled"]},{"issue_id":16,"result_id":0,"result":["Password last changed on 26-10-2022 , your password was changed more than half a year ago so you should change it again"]},{"issue_id":17,"result_id":4,"result":["Password","Password"]},{"issue_id":6,"result_id":0,"result":["MicrosoftTeams","MicrosoftWindows.Client.WebExperience","MSTeams"]},{"issue_id":7,"result_id":0,"result":["Microsoft.GamingApp","Microsoft.ScreenSketch","Microsoft.WindowsCamera","Microsoft.WindowsFeedbackHub","Microsoft.XboxGamingOverlay","MicrosoftTeams","chrome.exe","POWERPNT.EXE","firefox.exe","Teams.exe","ShooterGame.exe","FallGuys_client_game.exe","FortniteClient-Win64-Shipping.exe","RemotePlay.exe","RocketLeague.exe","windows.immersivecontrolpanel"]},{"issue_id":8,"result_id":0,"result":["Microsoft.WindowsCamera","MicrosoftTeams","MicrosoftWindows.Client.CBS","MSTeams","chrome.exe","Pokemon TCG Live.exe"]},{"issue_id":9,"result_id":0,"result":["microsoft.windowscommunicationsapps"]},{"issue_id":10,"result_id":0,"result":["microsoft.windowscommunicationsapps"]},{"issue_id":1,"result_id":1,"result":["AirPods Pro - Find My\u0000","AirPods\u0000"]},{"issue_id":11,"result_id":0,"result":["port: 34115, process: reporting-page-dev.exe","port: 34115, process: reporting-page-dev.exe","port: 34115, process: reporting-page-dev.exe","port: 34115, process: reporting-page-dev.exe","port: 51337, process: firefox.exe","port: 51338, process: firefox.exe","port: 51339, process: firefox.exe","port: 51340, process: firefox.exe","port: 51342, process: NVIDIA Web Helper.exe","port: 51342, process: NVIDIA Web Helper.exe","port: 52099, process: nvcontainer.exe","port: 52138, process: NVIDIA Share.exe","port: 52565, process: System Idle Process","port: 52743, process: msedgewebview2.exe","port: 52744, process: msedgewebview2.exe","port: 52745, process: msedgewebview2.exe","port: 65001, process: nvcontainer.exe","port: 65001, process: nvcontainer.exe","port: 139, process: System","port: 52086, process: KillerNetworkService.exe","port: 52088, process: firefox.exe","port: 52095, process: ekrn.exe","port: 52114, process: svchost.exe","port: 52115, process: svchost.exe","port: 52382, process: firefox.exe","port: 52428, process: Code.exe","port: 52573, process: firefox.exe","port: 52577, process: firefox.exe","port: 52579, process: System Idle Process","port: 52580, process: System Idle Process","port: 52582, process: System Idle Process","port: 52583, process: System Idle Process","port: 52586, process: System Idle Process","port: 52594, process: System Idle Process","port: 52595, process: System Idle Process","port: 52596, process: System Idle Process","port: 52601, process: System Idle Process","port: 52606, process: firefox.exe","port: 52610, process: firefox.exe","port: 52612, process: firefox.exe","port: 52616, process: firefox.exe","port: 52620, process: firefox.exe","port: 52624, process: firefox.exe","port: 52632, process: firefox.exe","port: 52637, process: firefox.exe","port: 52638, process: System Idle Process","port: 52639, process: System Idle Process","port: 52640, process: System Idle Process","port: 52644, process: System Idle Process","port: 52646, process: firefox.exe","port: 52650, process: firefox.exe","port: 52656, process: firefox.exe","port: 52660, process: firefox.exe","port: 52664, process: firefox.exe","port: 52671, process: firefox.exe","port: 52673, process: firefox.exe","port: 52674, process: firefox.exe","port: 52676, process: firefox.exe","port: 52678, process: firefox.exe","port: 52681, process: firefox.exe","port: 52689, process: firefox.exe","port: 52696, process: firefox.exe","port: 52702, process: firefox.exe","port: 52703, process: firefox.exe","port: 52704, process: firefox.exe","port: 52709, process: firefox.exe","port: 52712, process: firefox.exe","port: 52718, process: msedgewebview2.exe","port: 135, process: svchost.exe","port: 445, process: System","port: 49664, process: lsass.exe","port: 49665, process: wininit.exe","port: 49666, process: svchost.exe","port: 49667, process: svchost.exe","port: 49668, process: spoolsv.exe","port: 49679, process: services.exe","port: 5173, process: node.exe","port: 5173, process: node.exe","port: 5173, process: node.exe","port: 5173, process: node.exe","port: 49671, process: jhi_service.exe","port: 52719, process: reporting-page-dev.exe","port: 52720, process: System Idle Process","port: 52721, process: System Idle Process","port: 52722, process: System Idle Process","port: 52723, process: System Idle Process","port: 52724, process: System Idle Process","port: 52725, process: System Idle Process","port: 52726, process: System Idle Process","port: 52727, process: System Idle Process","port: 52728, process: System Idle Process","port: 52729, process: System Idle Process","port: 52730, process: System Idle Process","port: 52731, process: System Idle Process","port: 52732, process: System Idle Process","port: 52733, process: System Idle Process","port: 52734, process: System Idle Process","port: 52735, process: System Idle Process","port: 52736, process: System Idle Process","port: 52737, process: reporting-page-dev.exe","port: 52739, process: System Idle Process","port: 52740, process: System Idle Process","port: 52741, process: System Idle Process","port: 52742, process: System Idle Process","port: 52746, process: reporting-page-dev.exe","port: 1900, process: svchost.exe","port: 10030, process: NVIDIA Web Helper.exe","port: 52333, process: svchost.exe","port: 58880, process: svchost.exe","port: 60534, process: ekrn.exe","port: 60889, process: nvcontainer.exe","port: 137, process: System","port: 138, process: System","port: 1900, process: svchost.exe","port: 5353, process: nvcontainer.exe","port: 58879, process: svchost.exe","port: 500, process: svchost.exe","port: 4500, process: svchost.exe","port: 5353, process: svchost.exe","port: 5355, process: svchost.exe","port: 50060, process: svchost.exe","port: 50307, process: svchost.exe","port: 53969, process: svchost.exe","port: 60542, process: nvcontainer.exe","port: 62208, process: svchost.exe","port: 62433, process: svchost.exe","port: 62575, process: svchost.exe","port: 63891, process: svchost.exe","port: 1900, process: svchost.exe","port: 5353, process: nvcontainer.exe","port: 58878, process: svchost.exe","port: 1900, process: svchost.exe","port: 58877, process: svchost.exe"]},{"issue_id":18,"result_id":1,"result":["10.0.22631","There are updates available for Windows 10."]},{"issue_id":19,"result_id":1,"result":["Secure boot is enabled"]},{"issue_id":13,"result_id":2,"result":["SMB1: not enabled","SMB2: enabled"]},{"issue_id":20,"result_id":1,"result":["Docker Desktop","SecurityHealth"]},{"issue_id":3,"result_id":2,"result":["Guest account is not active"]},{"issue_id":14,"result_id":2,"result":["UAC is turned on for apps making changes to your computer."]},{"issue_id":12,"result_id":1,"result":["Remote Desktop is disabled"]},{"issue_id":2,"result_id":0,"result":["HID-muis","HD User Facing"]},{"issue_id":4,"result_id":0,"result":["Network sharing is enabled"]},{"issue_id":23,"result_id":1,"result":["No phishing domains found in the last week"]},{"issue_id":21,"result_id":0,"result":["Adblocker installed"]},{"issue_id":25,"result_id":0,"result":["google.com"]},{"issue_id":28,"result_id":0,"result":["Form Autofill,extension,,true","Picture-In-Picture,extension,,true","Firefox Screenshots,extension,Mozilla <screenshots-feedback@mozilla.com>,true","WebCompat Reporter,extension,Thomas Wisniewski <twisniewski@mozilla.com>,false","Web Compatibility Interventions,extension,,true","System theme — auto,theme,Mozilla,true","Add-ons Search Detection,extension,,true","Google,extension,,true","Wikipedia (en),extension,,true","Bing,extension,,true","DuckDuckGo,extension,,true","Light,theme,Mozilla,false","Dark,theme,Mozilla,false","Firefox Alpenglow,theme,,false","Amazon.com.au,extension,,true","eBay,extension,,true","Qwant,extension,,true"]},{"issue_id":29,"result_id":0,"result":["false"]},{"issue_id":31,"result_id":0,"result":["No phising domains found in the last week"]},{"issue_id":30,"result_id":0,"result":["Other Search Engine"]}]
-2024/04/10 13:22:05 INFO: Opening database
-2024/04/10 13:22:05 INFO: Connected to database
-2024/04/10 13:22:05 INFO: Closing database
-2024/04/10 13:22:41 DEBUG: [AssetHandler] Handling request '/' (file='.')
-2024/04/10 13:22:41 DEBUG: [AssetHandler] File '.' not found, serving '/' by AssetHandler
-2024/04/10 13:22:41 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/'
-2024/04/10 13:22:41 DEBUG: [AssetHandler] Handling request '/@vite/client' (file='@vite/client')
-2024/04/10 13:22:41 DEBUG: [AssetHandler] File '@vite/client' not found, serving '/@vite/client' by AssetHandler
-2024/04/10 13:22:41 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/@vite/client'
-2024/04/10 13:22:41 DEBUG: [AssetHandler] Handling request '/src/js/database.js' (file='src/js/database.js')
-2024/04/10 13:22:41 DEBUG: [AssetHandler] File 'src/js/database.js' not found, serving '/src/js/database.js' by AssetHandler
-2024/04/10 13:22:41 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/database.js'
-2024/04/10 13:22:41 DEBUG: [AssetHandler] Handling request '/src/js/navigation-menu.js' (file='src/js/navigation-menu.js')
-2024/04/10 13:22:41 DEBUG: [AssetHandler] File 'src/js/navigation-menu.js' not found, serving '/src/js/navigation-menu.js' by AssetHandler
-2024/04/10 13:22:41 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/navigation-menu.js'
-2024/04/10 13:22:41 DEBUG: [AssetHandler] Handling request '/src/js/settings.js' (file='src/js/settings.js')
-2024/04/10 13:22:41 DEBUG: [AssetHandler] File 'src/js/settings.js' not found, serving '/src/js/settings.js' by AssetHandler
-2024/04/10 13:22:41 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/settings.js'
-2024/04/10 13:22:41 DEBUG: [AssetHandler] Handling request '/src/js/home.js' (file='src/js/home.js')
-2024/04/10 13:22:41 DEBUG: [AssetHandler] File 'src/js/home.js' not found, serving '/src/js/home.js' by AssetHandler
-2024/04/10 13:22:41 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/home.js'
-2024/04/10 13:22:41 DEBUG: [AssetHandler] Handling request '/src/js/security-dashboard.js' (file='src/js/security-dashboard.js')
-2024/04/10 13:22:41 DEBUG: [AssetHandler] File 'src/js/security-dashboard.js' not found, serving '/src/js/security-dashboard.js' by AssetHandler
-2024/04/10 13:22:41 DEBUG: [AssetHandler] Handling request '/src/js/privacy-dashboard.js' (file='src/js/privacy-dashboard.js')
-2024/04/10 13:22:41 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/security-dashboard.js'
-2024/04/10 13:22:41 DEBUG: [AssetHandler] File 'src/js/privacy-dashboard.js' not found, serving '/src/js/privacy-dashboard.js' by AssetHandler
-2024/04/10 13:22:41 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/privacy-dashboard.js'
-2024/04/10 13:22:41 DEBUG: [AssetHandler] Handling request '/src/js/issues.js' (file='src/js/issues.js')
-2024/04/10 13:22:41 DEBUG: [AssetHandler] File 'src/js/issues.js' not found, serving '/src/js/issues.js' by AssetHandler
-2024/04/10 13:22:41 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/issues.js'
-2024/04/10 13:22:41 DEBUG: [AssetHandler] Handling request '/src/js/integration.js' (file='src/js/integration.js')
-2024/04/10 13:22:41 DEBUG: [AssetHandler] File 'src/js/integration.js' not found, serving '/src/js/integration.js' by AssetHandler
-2024/04/10 13:22:41 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/integration.js'
-2024/04/10 13:22:41 DEBUG: [AssetHandler] Handling request '/src/js/about.js' (file='src/js/about.js')
-2024/04/10 13:22:41 DEBUG: [AssetHandler] File 'src/js/about.js' not found, serving '/src/js/about.js' by AssetHandler
-2024/04/10 13:22:41 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/about.js'
-2024/04/10 13:22:41 DEBUG: [AssetHandler] Handling request '/src/js/personalize.js' (file='src/js/personalize.js')
-2024/04/10 13:22:41 DEBUG: [AssetHandler] File 'src/js/personalize.js' not found, serving '/src/js/personalize.js' by AssetHandler
-2024/04/10 13:22:41 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/personalize.js'
-2024/04/10 13:22:41 DEBUG: [AssetHandler] Handling request '/src/css/color-palette.css' (file='src/css/color-palette.css')
-2024/04/10 13:22:41 DEBUG: [AssetHandler] File 'src/css/color-palette.css' not found, serving '/src/css/color-palette.css' by AssetHandler
-2024/04/10 13:22:41 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/css/color-palette.css'
-2024/04/10 13:22:41 DEBUG: [AssetHandler] Handling request '/src/css/responsive.css' (file='src/css/responsive.css')
-2024/04/10 13:22:41 DEBUG: [AssetHandler] File 'src/css/responsive.css' not found, serving '/src/css/responsive.css' by AssetHandler
-2024/04/10 13:22:41 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/css/responsive.css'
-2024/04/10 13:22:41 DEBUG: [AssetHandler] Handling request '/src/css/home.css' (file='src/css/home.css')
-2024/04/10 13:22:41 DEBUG: [AssetHandler] File 'src/css/home.css' not found, serving '/src/css/home.css' by AssetHandler
-2024/04/10 13:22:41 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/css/home.css'
-2024/04/10 13:22:41 DEBUG: [AssetHandler] Handling request '/src/css/settings.css' (file='src/css/settings.css')
-2024/04/10 13:22:41 DEBUG: [AssetHandler] File 'src/css/settings.css' not found, serving '/src/css/settings.css' by AssetHandler
-2024/04/10 13:22:41 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/css/settings.css'
-2024/04/10 13:22:41 DEBUG: [AssetHandler] Handling request '/src/css/dashboard.css' (file='src/css/dashboard.css')
-2024/04/10 13:22:41 DEBUG: [AssetHandler] File 'src/css/dashboard.css' not found, serving '/src/css/dashboard.css' by AssetHandler
-2024/04/10 13:22:41 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/css/dashboard.css'
-2024/04/10 13:22:41 DEBUG: [AssetHandler] Handling request '/src/css/issues.css' (file='src/css/issues.css')
-2024/04/10 13:22:41 DEBUG: [AssetHandler] File 'src/css/issues.css' not found, serving '/src/css/issues.css' by AssetHandler
-2024/04/10 13:22:41 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/css/issues.css'
-2024/04/10 13:22:41 DEBUG: [AssetHandler] Handling request '/src/css/personalize.css' (file='src/css/personalize.css')
-2024/04/10 13:22:41 DEBUG: [AssetHandler] File 'src/css/personalize.css' not found, serving '/src/css/personalize.css' by AssetHandler
-2024/04/10 13:22:41 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/css/personalize.css'
-2024/04/10 13:22:41 DEBUG: [AssetHandler] Handling request '/wailsjs/go/main/Tray.js' (file='wailsjs/go/main/Tray.js')
-2024/04/10 13:22:41 DEBUG: [AssetHandler] File 'wailsjs/go/main/Tray.js' not found, serving '/wailsjs/go/main/Tray.js' by AssetHandler
-2024/04/10 13:22:41 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/wailsjs/go/main/Tray.js'
-2024/04/10 13:22:41 DEBUG: [AssetHandler] Handling request '/wailsjs/go/main/DataBase.js' (file='wailsjs/go/main/DataBase.js')
-2024/04/10 13:22:41 DEBUG: [AssetHandler] File 'wailsjs/go/main/DataBase.js' not found, serving '/wailsjs/go/main/DataBase.js' by AssetHandler
-2024/04/10 13:22:41 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/wailsjs/go/main/DataBase.js'
-2024/04/10 13:22:41 DEBUG: [AssetHandler] Handling request '/src/js/home.js' (file='src/js/home.js')
-2024/04/10 13:22:41 DEBUG: [AssetHandler] File 'src/js/home.js' not found, serving '/src/js/home.js' by AssetHandler
-2024/04/10 13:22:41 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/home.js?t=1712748116187'
-2024/04/10 13:22:41 DEBUG: [AssetHandler] Handling request '/wailsjs/runtime/runtime.js' (file='wailsjs/runtime/runtime.js')
-2024/04/10 13:22:41 DEBUG: [AssetHandler] File 'wailsjs/runtime/runtime.js' not found, serving '/wailsjs/runtime/runtime.js' by AssetHandler
-2024/04/10 13:22:41 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/wailsjs/runtime/runtime.js'
-2024/04/10 13:22:41 DEBUG: [AssetHandler] Handling request '/src/js/risk-counters.js' (file='src/js/risk-counters.js')
-2024/04/10 13:22:41 DEBUG: [AssetHandler] File 'src/js/risk-counters.js' not found, serving '/src/js/risk-counters.js' by AssetHandler
-2024/04/10 13:22:41 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/risk-counters.js'
-2024/04/10 13:22:41 DEBUG: [AssetHandler] Handling request '/src/js/piechart.js' (file='src/js/piechart.js')
-2024/04/10 13:22:41 DEBUG: [AssetHandler] File 'src/js/piechart.js' not found, serving '/src/js/piechart.js' by AssetHandler
-2024/04/10 13:22:41 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/piechart.js'
-2024/04/10 13:22:41 DEBUG: [AssetHandler] Handling request '/src/js/localize.js' (file='src/js/localize.js')
-2024/04/10 13:22:41 DEBUG: [AssetHandler] File 'src/js/localize.js' not found, serving '/src/js/localize.js' by AssetHandler
-2024/04/10 13:22:41 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/localize.js'
-2024/04/10 13:22:41 DEBUG: [AssetHandler] Handling request '/src/assets/images/img_medal1.jpg' (file='src/assets/images/img_medal1.jpg')
-2024/04/10 13:22:41 DEBUG: [AssetHandler] File 'src/assets/images/img_medal1.jpg' not found, serving '/src/assets/images/img_medal1.jpg' by AssetHandler
-2024/04/10 13:22:41 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/assets/images/img_medal1.jpg?import'
-2024/04/10 13:22:41 DEBUG: [AssetHandler] Handling request '/src/js/personalize.js' (file='src/js/personalize.js')
-2024/04/10 13:22:41 DEBUG: [AssetHandler] File 'src/js/personalize.js' not found, serving '/src/js/personalize.js' by AssetHandler
-2024/04/10 13:22:41 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/personalize.js?t=1712748116187'
-2024/04/10 13:22:41 DEBUG: [AssetHandler] Handling request '/node_modules/vite/dist/client/env.mjs' (file='node_modules/vite/dist/client/env.mjs')
-2024/04/10 13:22:41 DEBUG: [AssetHandler] File 'node_modules/vite/dist/client/env.mjs' not found, serving '/node_modules/vite/dist/client/env.mjs' by AssetHandler
-2024/04/10 13:22:41 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/node_modules/vite/dist/client/env.mjs'
-2024/04/10 13:22:41 DEBUG: [AssetHandler] Handling request '/src/database.json' (file='src/database.json')
-2024/04/10 13:22:41 DEBUG: [AssetHandler] File 'src/database.json' not found, serving '/src/database.json' by AssetHandler
-2024/04/10 13:22:41 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/database.json?import'
-2024/04/10 13:22:41 DEBUG: [AssetHandler] Handling request '/src/js/issue.js' (file='src/js/issue.js')
-2024/04/10 13:22:41 DEBUG: [AssetHandler] File 'src/js/issue.js' not found, serving '/src/js/issue.js' by AssetHandler
-2024/04/10 13:22:41 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/issue.js?t=1712748116187'
-2024/04/10 13:22:41 DEBUG: [AssetHandler] Handling request '/src/js/graph.js' (file='src/js/graph.js')
-2024/04/10 13:22:41 DEBUG: [AssetHandler] File 'src/js/graph.js' not found, serving '/src/js/graph.js' by AssetHandler
-2024/04/10 13:22:41 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/graph.js'
-2024/04/10 13:22:41 DEBUG: [AssetHandler] Handling request '/src/js/database.js' (file='src/js/database.js')
-2024/04/10 13:22:41 DEBUG: [AssetHandler] File 'src/js/database.js' not found, serving '/src/js/database.js' by AssetHandler
-2024/04/10 13:22:41 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/database.js?t=1712748116187'
-2024/04/10 13:22:41 DEBUG: [AssetHandler] Handling request '/src/assets/images/logoTeamA-transformed.png' (file='src/assets/images/logoTeamA-transformed.png')
-2024/04/10 13:22:41 DEBUG: [AssetHandler] File 'src/assets/images/logoTeamA-transformed.png' not found, serving '/src/assets/images/logoTeamA-transformed.png' by AssetHandler
-2024/04/10 13:22:41 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/assets/images/logoTeamA-transformed.png'
-2024/04/10 13:22:41 DEBUG: [DevWebServer] Websocket client 0xc000504a20 connected
-2024/04/10 13:22:41 DEBUG: [AssetHandler] Handling request '/src/js/issues.js' (file='src/js/issues.js')
-2024/04/10 13:22:41 DEBUG: [AssetHandler] File 'src/js/issues.js' not found, serving '/src/js/issues.js' by AssetHandler
-2024/04/10 13:22:41 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/issues.js?t=1712748116187'
-2024/04/10 13:22:41 DEBUG: [AssetHandler] Handling request '/wailsjs/go/main/App.js' (file='wailsjs/go/main/App.js')
-2024/04/10 13:22:41 DEBUG: [AssetHandler] File 'wailsjs/go/main/App.js' not found, serving '/wailsjs/go/main/App.js' by AssetHandler
-2024/04/10 13:22:41 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/wailsjs/go/main/App.js'
-2024/04/10 13:22:41 ERROR: Unknown message from front end: runtime:ready
-2024/04/10 13:22:41 INFO: Scanning now. Scan:4
-2024/04/10 13:22:49 INFO: [
+2024/04/11 17:14:47 INFO: Opening database
+2024/04/11 17:14:47 INFO: Connected to database
+2024/04/11 17:14:47 [{"issue_id":5,"result_id":1,"result":["No password manager found"]},{"issue_id":15,"result_id":0,"result":["Windows real-time defender is enabled and also the windows periodic scan is enabled"]},{"issue_id":16,"result_id":0,"result":["Password last changed on 26-10-2022 , your password was changed more than half a year ago so you should change it again"]},{"issue_id":17,"result_id":4,"result":["Password","Password"]},{"issue_id":6,"result_id":0,"result":["MicrosoftTeams","MicrosoftWindows.Client.WebExperience","MSTeams"]},{"issue_id":7,"result_id":0,"result":["Microsoft.GamingApp","Microsoft.ScreenSketch","Microsoft.WindowsCamera","Microsoft.WindowsFeedbackHub","Microsoft.XboxGamingOverlay","MicrosoftTeams","chrome.exe","POWERPNT.EXE","firefox.exe","Teams.exe","ShooterGame.exe","FallGuys_client_game.exe","FortniteClient-Win64-Shipping.exe","RemotePlay.exe","RocketLeague.exe","windows.immersivecontrolpanel"]},{"issue_id":8,"result_id":0,"result":["Microsoft.WindowsCamera","MicrosoftTeams","MicrosoftWindows.Client.CBS","MSTeams","chrome.exe","Pokemon TCG Live.exe"]},{"issue_id":9,"result_id":0,"result":["microsoft.windowscommunicationsapps"]},{"issue_id":10,"result_id":0,"result":["microsoft.windowscommunicationsapps"]},{"issue_id":1,"result_id":1,"result":["AirPods Pro - Find My\u0000","AirPods\u0000"]},{"issue_id":11,"result_id":0,"result":["port: 54925, process: NVIDIA Web Helper.exe","port: 54925, process: NVIDIA Web Helper.exe","port: 55555, process: nvcontainer.exe","port: 55595, process: NVIDIA Share.exe","port: 55769, process: firefox.exe","port: 55770, process: firefox.exe","port: 55771, process: firefox.exe","port: 55772, process: firefox.exe","port: 65001, process: nvcontainer.exe","port: 65001, process: nvcontainer.exe","port: 139, process: System","port: 55622, process: svchost.exe","port: 55763, process: ekrn.exe","port: 55792, process: firefox.exe","port: 57145, process: Code.exe","port: 57204, process: msedge.exe","port: 57210, process: OneDrive.exe","port: 57212, process: System Idle Process","port: 57213, process: firefox.exe","port: 57214, process: System Idle Process","port: 57215, process: firefox.exe","port: 135, process: svchost.exe","port: 445, process: System","port: 7680, process: svchost.exe","port: 49664, process: lsass.exe","port: 49665, process: wininit.exe","port: 49666, process: svchost.exe","port: 49667, process: svchost.exe","port: 49668, process: spoolsv.exe","port: 49679, process: services.exe","port: 42050, process: Microsoft.SharePoint.exe","port: 49671, process: jhi_service.exe","port: 56974, process: SearchHost.exe","port: 56980, process: SearchHost.exe","port: 57194, process: System Idle Process","port: 57222, process: reporting-page.exe","port: 57223, process: reporting-page.exe","port: 1900, process: svchost.exe","port: 10040, process: NVIDIA Web Helper.exe","port: 51456, process: nvcontainer.exe","port: 52333, process: svchost.exe","port: 59180, process: svchost.exe","port: 60534, process: ekrn.exe","port: 137, process: System","port: 138, process: System","port: 1900, process: svchost.exe","port: 5353, process: nvcontainer.exe","port: 59179, process: svchost.exe","port: 123, process: svchost.exe","port: 500, process: svchost.exe","port: 4500, process: svchost.exe","port: 5353, process: svchost.exe","port: 5355, process: svchost.exe","port: 51726, process: firefox.exe","port: 58282, process: ekrn.exe","port: 60542, process: nvcontainer.exe","port: 63439, process: svchost.exe","port: 63643, process: svchost.exe","port: 65126, process: msedgewebview2.exe","port: 1900, process: svchost.exe","port: 5353, process: nvcontainer.exe","port: 59178, process: svchost.exe","port: 1900, process: svchost.exe","port: 59177, process: svchost.exe"]},{"issue_id":18,"result_id":1,"result":["10.0.22631","There are updates available for Windows 10."]},{"issue_id":19,"result_id":1,"result":["Secure boot is enabled"]},{"issue_id":13,"result_id":2,"result":["SMB1: not enabled","SMB2: enabled"]},{"issue_id":20,"result_id":1,"result":["Docker Desktop","SecurityHealth"]},{"issue_id":3,"result_id":2,"result":["Guest account is not active"]},{"issue_id":14,"result_id":2,"result":["UAC is turned on for apps making changes to your computer."]},{"issue_id":12,"result_id":1,"result":["Remote Desktop is disabled"]},{"issue_id":2,"result_id":0,"result":["HID-muis","HID-muis","HD User Facing"]},{"issue_id":4,"result_id":0,"result":["Network sharing is enabled"]},{"issue_id":23,"result_id":1,"result":["No phishing domains found in the last week"]},{"issue_id":21,"result_id":0,"result":["Adblocker installed"]},{"issue_id":25,"result_id":0,"result":["google.com"]},{"issue_id":28,"result_id":0,"result":["Form Autofill,extension,,true","Picture-In-Picture,extension,,true","Firefox Screenshots,extension,Mozilla <screenshots-feedback@mozilla.com>,true","WebCompat Reporter,extension,Thomas Wisniewski <twisniewski@mozilla.com>,false","Web Compatibility Interventions,extension,,true","System theme — auto,theme,Mozilla,true","Add-ons Search Detection,extension,,true","Google,extension,,true","Wikipedia (en),extension,,true","Bing,extension,,true","DuckDuckGo,extension,,true","Light,theme,Mozilla,false","Dark,theme,Mozilla,false","Firefox Alpenglow,theme,,false","Amazon.com.au,extension,,true","eBay,extension,,true","Qwant,extension,,true"]},{"issue_id":29,"result_id":0,"result":["false"]},{"issue_id":31,"result_id":0,"result":["No phising domains found in the last week"]},{"issue_id":30,"result_id":0,"result":["Other Search Engine"]}]
+2024/04/11 17:14:47 INFO: Closing database
+2024/04/11 17:14:50 INFO: Scanning now. Scan:3
+2024/04/11 17:14:55 INFO: [
   {
     "issue_id": 5,
     "result_id": 1,
@@ -1061,9 +624,9 @@
   },
   {
     "issue_id": 15,
-    "result_id": 1,
+    "result_id": 0,
     "result": [
-      "Windows real-time defender is enabled but the windows periodic scan is disabled"
+      "Windows real-time defender is enabled and also the windows periodic scan is enabled"
     ]
   },
   {
@@ -1150,153 +713,69 @@
     "issue_id": 11,
     "result_id": 0,
     "result": [
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 51337, process: firefox.exe",
-      "port: 51338, process: firefox.exe",
-      "port: 51339, process: firefox.exe",
-      "port: 51340, process: firefox.exe",
-      "port: 51342, process: NVIDIA Web Helper.exe",
-      "port: 51342, process: NVIDIA Web Helper.exe",
-      "port: 52099, process: nvcontainer.exe",
-      "port: 52138, process: NVIDIA Share.exe",
-      "port: 52565, process: System Idle Process",
-      "port: 52743, process: msedgewebview2.exe",
-      "port: 52744, process: msedgewebview2.exe",
-      "port: 52745, process: msedgewebview2.exe",
-      "port: 52750, process: firefox.exe",
-      "port: 52752, process: firefox.exe",
-      "port: 52753, process: firefox.exe",
-      "port: 52754, process: firefox.exe",
-      "port: 52755, process: firefox.exe",
-      "port: 52756, process: firefox.exe",
-      "port: 52770, process: firefox.exe",
-      "port: 52771, process: firefox.exe",
+      "port: 54925, process: NVIDIA Web Helper.exe",
+      "port: 54925, process: NVIDIA Web Helper.exe",
+      "port: 55555, process: nvcontainer.exe",
+      "port: 55595, process: NVIDIA Share.exe",
+      "port: 55769, process: firefox.exe",
+      "port: 55770, process: firefox.exe",
+      "port: 55771, process: firefox.exe",
+      "port: 55772, process: firefox.exe",
       "port: 65001, process: nvcontainer.exe",
       "port: 65001, process: nvcontainer.exe",
       "port: 139, process: System",
-      "port: 52086, process: KillerNetworkService.exe",
-      "port: 52088, process: firefox.exe",
-      "port: 52095, process: ekrn.exe",
-      "port: 52114, process: svchost.exe",
-      "port: 52115, process: svchost.exe",
-      "port: 52382, process: firefox.exe",
-      "port: 52428, process: Code.exe",
-      "port: 52573, process: firefox.exe",
-      "port: 52579, process: System Idle Process",
-      "port: 52580, process: System Idle Process",
-      "port: 52582, process: System Idle Process",
-      "port: 52583, process: System Idle Process",
-      "port: 52586, process: System Idle Process",
-      "port: 52594, process: System Idle Process",
-      "port: 52595, process: System Idle Process",
-      "port: 52596, process: System Idle Process",
-      "port: 52601, process: System Idle Process",
-      "port: 52637, process: System Idle Process",
-      "port: 52644, process: System Idle Process",
-      "port: 52673, process: firefox.exe",
-      "port: 52674, process: firefox.exe",
-      "port: 52676, process: firefox.exe",
-      "port: 52689, process: firefox.exe",
-      "port: 52704, process: firefox.exe",
-      "port: 52709, process: firefox.exe",
-      "port: 52712, process: firefox.exe",
-      "port: 52718, process: msedgewebview2.exe",
-      "port: 52747, process: reporting-page-dev.exe",
-      "port: 52748, process: reporting-page-dev.exe",
-      "port: 52757, process: firefox.exe",
-      "port: 52763, process: firefox.exe",
-      "port: 52764, process: firefox.exe",
-      "port: 52773, process: OneDrive.exe",
+      "port: 55622, process: svchost.exe",
+      "port: 55763, process: ekrn.exe",
+      "port: 55792, process: firefox.exe",
+      "port: 57145, process: Code.exe",
+      "port: 57210, process: OneDrive.exe",
+      "port: 57212, process: System Idle Process",
+      "port: 57213, process: firefox.exe",
+      "port: 57214, process: System Idle Process",
+      "port: 57215, process: firefox.exe",
       "port: 135, process: svchost.exe",
       "port: 445, process: System",
+      "port: 7680, process: svchost.exe",
       "port: 49664, process: lsass.exe",
       "port: 49665, process: wininit.exe",
       "port: 49666, process: svchost.exe",
       "port: 49667, process: svchost.exe",
       "port: 49668, process: spoolsv.exe",
       "port: 49679, process: services.exe",
-      "port: 5173, process: node.exe",
-      "port: 5173, process: System Idle Process",
-      "port: 5173, process: System Idle Process",
-      "port: 5173, process: node.exe",
-      "port: 5173, process: node.exe",
-      "port: 5173, process: node.exe",
-      "port: 5173, process: node.exe",
+      "port: 42050, process: Microsoft.SharePoint.exe",
       "port: 49671, process: jhi_service.exe",
-      "port: 52720, process: System Idle Process",
-      "port: 52721, process: System Idle Process",
-      "port: 52722, process: System Idle Process",
-      "port: 52723, process: System Idle Process",
-      "port: 52724, process: System Idle Process",
-      "port: 52725, process: System Idle Process",
-      "port: 52726, process: System Idle Process",
-      "port: 52727, process: System Idle Process",
-      "port: 52728, process: System Idle Process",
-      "port: 52729, process: System Idle Process",
-      "port: 52730, process: System Idle Process",
-      "port: 52731, process: System Idle Process",
-      "port: 52732, process: System Idle Process",
-      "port: 52733, process: System Idle Process",
-      "port: 52734, process: System Idle Process",
-      "port: 52735, process: System Idle Process",
-      "port: 52736, process: System Idle Process",
-      "port: 52739, process: System Idle Process",
-      "port: 52740, process: System Idle Process",
-      "port: 52741, process: System Idle Process",
-      "port: 52742, process: System Idle Process",
-      "port: 52746, process: reporting-page-dev.exe",
-      "port: 52751, process: System Idle Process",
-      "port: 52758, process: System Idle Process",
-      "port: 52759, process: System Idle Process",
-      "port: 52760, process: System Idle Process",
-      "port: 52761, process: reporting-page-dev.exe",
-      "port: 52762, process: System Idle Process",
-      "port: 52765, process: System Idle Process",
-      "port: 52766, process: System Idle Process",
-      "port: 52767, process: reporting-page-dev.exe",
-      "port: 52768, process: System Idle Process",
-      "port: 52769, process: System Idle Process",
-      "port: 52772, process: reporting-page-dev.exe",
+      "port: 56974, process: SearchHost.exe",
+      "port: 56980, process: SearchHost.exe",
+      "port: 57194, process: System Idle Process",
+      "port: 57222, process: reporting-page.exe",
+      "port: 57223, process: reporting-page.exe",
       "port: 1900, process: svchost.exe",
-      "port: 10030, process: NVIDIA Web Helper.exe",
+      "port: 10040, process: NVIDIA Web Helper.exe",
+      "port: 51456, process: nvcontainer.exe",
       "port: 52333, process: svchost.exe",
-      "port: 58880, process: svchost.exe",
+      "port: 59180, process: svchost.exe",
       "port: 60534, process: ekrn.exe",
-      "port: 60889, process: nvcontainer.exe",
       "port: 137, process: System",
       "port: 138, process: System",
       "port: 1900, process: svchost.exe",
       "port: 5353, process: nvcontainer.exe",
-      "port: 58879, process: svchost.exe",
+      "port: 59179, process: svchost.exe",
+      "port: 123, process: svchost.exe",
       "port: 500, process: svchost.exe",
       "port: 4500, process: svchost.exe",
       "port: 5353, process: svchost.exe",
       "port: 5355, process: svchost.exe",
-      "port: 50060, process: svchost.exe",
-      "port: 50307, process: svchost.exe",
-      "port: 50521, process: svchost.exe",
-      "port: 53969, process: svchost.exe",
+      "port: 51726, process: firefox.exe",
+      "port: 58282, process: ekrn.exe",
       "port: 60542, process: nvcontainer.exe",
-      "port: 62208, process: svchost.exe",
-      "port: 62433, process: svchost.exe",
-      "port: 62575, process: svchost.exe",
-      "port: 63891, process: svchost.exe",
+      "port: 63439, process: svchost.exe",
+      "port: 63643, process: svchost.exe",
+      "port: 65126, process: msedgewebview2.exe",
       "port: 1900, process: svchost.exe",
       "port: 5353, process: nvcontainer.exe",
-      "port: 58878, process: svchost.exe",
+      "port: 59178, process: svchost.exe",
       "port: 1900, process: svchost.exe",
-      "port: 58877, process: svchost.exe"
+      "port: 59177, process: svchost.exe"
     ]
   },
   {
@@ -1355,6 +834,7 @@
     "issue_id": 2,
     "result_id": 0,
     "result": [
+      "HID-muis",
       "HID-muis",
       "HD User Facing"
     ]
@@ -1432,8 +912,12 @@
     ]
   }
 ]
-2024/04/10 13:22:49 INFO: Scanning now. Scan:5
-2024/04/10 13:22:57 INFO: [
+2024/04/11 17:14:55 INFO: Opening database
+2024/04/11 17:14:55 INFO: Connected to database
+2024/04/11 17:14:55 [{"issue_id":5,"result_id":1,"result":["No password manager found"]},{"issue_id":15,"result_id":0,"result":["Windows real-time defender is enabled and also the windows periodic scan is enabled"]},{"issue_id":16,"result_id":0,"result":["Password last changed on 26-10-2022 , your password was changed more than half a year ago so you should change it again"]},{"issue_id":17,"result_id":4,"result":["Password","Password"]},{"issue_id":6,"result_id":0,"result":["MicrosoftTeams","MicrosoftWindows.Client.WebExperience","MSTeams"]},{"issue_id":7,"result_id":0,"result":["Microsoft.GamingApp","Microsoft.ScreenSketch","Microsoft.WindowsCamera","Microsoft.WindowsFeedbackHub","Microsoft.XboxGamingOverlay","MicrosoftTeams","chrome.exe","POWERPNT.EXE","firefox.exe","Teams.exe","ShooterGame.exe","FallGuys_client_game.exe","FortniteClient-Win64-Shipping.exe","RemotePlay.exe","RocketLeague.exe","windows.immersivecontrolpanel"]},{"issue_id":8,"result_id":0,"result":["Microsoft.WindowsCamera","MicrosoftTeams","MicrosoftWindows.Client.CBS","MSTeams","chrome.exe","Pokemon TCG Live.exe"]},{"issue_id":9,"result_id":0,"result":["microsoft.windowscommunicationsapps"]},{"issue_id":10,"result_id":0,"result":["microsoft.windowscommunicationsapps"]},{"issue_id":1,"result_id":1,"result":["AirPods Pro - Find My\u0000","AirPods\u0000"]},{"issue_id":11,"result_id":0,"result":["port: 54925, process: NVIDIA Web Helper.exe","port: 54925, process: NVIDIA Web Helper.exe","port: 55555, process: nvcontainer.exe","port: 55595, process: NVIDIA Share.exe","port: 55769, process: firefox.exe","port: 55770, process: firefox.exe","port: 55771, process: firefox.exe","port: 55772, process: firefox.exe","port: 65001, process: nvcontainer.exe","port: 65001, process: nvcontainer.exe","port: 139, process: System","port: 55622, process: svchost.exe","port: 55763, process: ekrn.exe","port: 55792, process: firefox.exe","port: 57145, process: Code.exe","port: 57210, process: OneDrive.exe","port: 57212, process: System Idle Process","port: 57213, process: firefox.exe","port: 57214, process: System Idle Process","port: 57215, process: firefox.exe","port: 135, process: svchost.exe","port: 445, process: System","port: 7680, process: svchost.exe","port: 49664, process: lsass.exe","port: 49665, process: wininit.exe","port: 49666, process: svchost.exe","port: 49667, process: svchost.exe","port: 49668, process: spoolsv.exe","port: 49679, process: services.exe","port: 42050, process: Microsoft.SharePoint.exe","port: 49671, process: jhi_service.exe","port: 56974, process: SearchHost.exe","port: 56980, process: SearchHost.exe","port: 57194, process: System Idle Process","port: 57222, process: reporting-page.exe","port: 57223, process: reporting-page.exe","port: 1900, process: svchost.exe","port: 10040, process: NVIDIA Web Helper.exe","port: 51456, process: nvcontainer.exe","port: 52333, process: svchost.exe","port: 59180, process: svchost.exe","port: 60534, process: ekrn.exe","port: 137, process: System","port: 138, process: System","port: 1900, process: svchost.exe","port: 5353, process: nvcontainer.exe","port: 59179, process: svchost.exe","port: 123, process: svchost.exe","port: 500, process: svchost.exe","port: 4500, process: svchost.exe","port: 5353, process: svchost.exe","port: 5355, process: svchost.exe","port: 51726, process: firefox.exe","port: 58282, process: ekrn.exe","port: 60542, process: nvcontainer.exe","port: 63439, process: svchost.exe","port: 63643, process: svchost.exe","port: 65126, process: msedgewebview2.exe","port: 1900, process: svchost.exe","port: 5353, process: nvcontainer.exe","port: 59178, process: svchost.exe","port: 1900, process: svchost.exe","port: 59177, process: svchost.exe"]},{"issue_id":18,"result_id":1,"result":["10.0.22631","There are updates available for Windows 10."]},{"issue_id":19,"result_id":1,"result":["Secure boot is enabled"]},{"issue_id":13,"result_id":2,"result":["SMB1: not enabled","SMB2: enabled"]},{"issue_id":20,"result_id":1,"result":["Docker Desktop","SecurityHealth"]},{"issue_id":3,"result_id":2,"result":["Guest account is not active"]},{"issue_id":14,"result_id":2,"result":["UAC is turned on for apps making changes to your computer."]},{"issue_id":12,"result_id":1,"result":["Remote Desktop is disabled"]},{"issue_id":2,"result_id":0,"result":["HID-muis","HID-muis","HD User Facing"]},{"issue_id":4,"result_id":0,"result":["Network sharing is enabled"]},{"issue_id":23,"result_id":1,"result":["No phishing domains found in the last week"]},{"issue_id":21,"result_id":0,"result":["Adblocker installed"]},{"issue_id":25,"result_id":0,"result":["google.com"]},{"issue_id":28,"result_id":0,"result":["Form Autofill,extension,,true","Picture-In-Picture,extension,,true","Firefox Screenshots,extension,Mozilla <screenshots-feedback@mozilla.com>,true","WebCompat Reporter,extension,Thomas Wisniewski <twisniewski@mozilla.com>,false","Web Compatibility Interventions,extension,,true","System theme — auto,theme,Mozilla,true","Add-ons Search Detection,extension,,true","Google,extension,,true","Wikipedia (en),extension,,true","Bing,extension,,true","DuckDuckGo,extension,,true","Light,theme,Mozilla,false","Dark,theme,Mozilla,false","Firefox Alpenglow,theme,,false","Amazon.com.au,extension,,true","eBay,extension,,true","Qwant,extension,,true"]},{"issue_id":29,"result_id":0,"result":["false"]},{"issue_id":31,"result_id":0,"result":["No phising domains found in the last week"]},{"issue_id":30,"result_id":0,"result":["Other Search Engine"]}]
+2024/04/11 17:14:55 INFO: Closing database
+2024/04/11 17:14:57 INFO: Scanning now. Scan:4
+2024/04/11 17:15:02 INFO: [
   {
     "issue_id": 5,
     "result_id": 1,
@@ -1443,9 +927,9 @@
   },
   {
     "issue_id": 15,
-    "result_id": 1,
+    "result_id": 0,
     "result": [
-      "Windows real-time defender is enabled but the windows periodic scan is disabled"
+      "Windows real-time defender is enabled and also the windows periodic scan is enabled"
     ]
   },
   {
@@ -1532,145 +1016,68 @@
     "issue_id": 11,
     "result_id": 0,
     "result": [
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 51337, process: firefox.exe",
-      "port: 51338, process: firefox.exe",
-      "port: 51339, process: firefox.exe",
-      "port: 51340, process: firefox.exe",
-      "port: 51342, process: NVIDIA Web Helper.exe",
-      "port: 51342, process: NVIDIA Web Helper.exe",
-      "port: 52099, process: nvcontainer.exe",
-      "port: 52138, process: NVIDIA Share.exe",
-      "port: 52565, process: System Idle Process",
-      "port: 52743, process: msedgewebview2.exe",
-      "port: 52744, process: msedgewebview2.exe",
-      "port: 52745, process: msedgewebview2.exe",
-      "port: 52750, process: firefox.exe",
-      "port: 52752, process: firefox.exe",
-      "port: 52753, process: firefox.exe",
-      "port: 52754, process: firefox.exe",
-      "port: 52755, process: firefox.exe",
-      "port: 52756, process: firefox.exe",
-      "port: 52770, process: firefox.exe",
-      "port: 52771, process: firefox.exe",
+      "port: 54925, process: NVIDIA Web Helper.exe",
+      "port: 54925, process: NVIDIA Web Helper.exe",
+      "port: 55555, process: nvcontainer.exe",
+      "port: 55595, process: NVIDIA Share.exe",
+      "port: 55769, process: firefox.exe",
+      "port: 55770, process: firefox.exe",
+      "port: 55771, process: firefox.exe",
+      "port: 55772, process: firefox.exe",
       "port: 65001, process: nvcontainer.exe",
       "port: 65001, process: nvcontainer.exe",
       "port: 139, process: System",
-      "port: 52086, process: KillerNetworkService.exe",
-      "port: 52088, process: firefox.exe",
-      "port: 52095, process: ekrn.exe",
-      "port: 52114, process: svchost.exe",
-      "port: 52115, process: svchost.exe",
-      "port: 52382, process: firefox.exe",
-      "port: 52428, process: Code.exe",
-      "port: 52573, process: firefox.exe",
-      "port: 52579, process: System Idle Process",
-      "port: 52580, process: System Idle Process",
-      "port: 52582, process: System Idle Process",
-      "port: 52583, process: System Idle Process",
-      "port: 52586, process: System Idle Process",
-      "port: 52594, process: System Idle Process",
-      "port: 52596, process: System Idle Process",
-      "port: 52637, process: System Idle Process",
-      "port: 52644, process: System Idle Process",
-      "port: 52676, process: firefox.exe",
-      "port: 52689, process: firefox.exe",
-      "port: 52709, process: firefox.exe",
-      "port: 52718, process: msedgewebview2.exe",
-      "port: 52747, process: reporting-page-dev.exe",
-      "port: 52748, process: reporting-page-dev.exe",
-      "port: 52757, process: firefox.exe",
-      "port: 52763, process: firefox.exe",
-      "port: 52764, process: firefox.exe",
-      "port: 52773, process: OneDrive.exe",
+      "port: 55622, process: svchost.exe",
+      "port: 55763, process: ekrn.exe",
+      "port: 55792, process: firefox.exe",
+      "port: 57145, process: Code.exe",
+      "port: 57210, process: OneDrive.exe",
+      "port: 57212, process: System Idle Process",
+      "port: 57214, process: System Idle Process",
+      "port: 57215, process: firefox.exe",
       "port: 135, process: svchost.exe",
       "port: 445, process: System",
+      "port: 7680, process: svchost.exe",
       "port: 49664, process: lsass.exe",
       "port: 49665, process: wininit.exe",
       "port: 49666, process: svchost.exe",
       "port: 49667, process: svchost.exe",
       "port: 49668, process: spoolsv.exe",
       "port: 49679, process: services.exe",
-      "port: 5173, process: node.exe",
-      "port: 5173, process: System Idle Process",
-      "port: 5173, process: System Idle Process",
-      "port: 5173, process: node.exe",
-      "port: 5173, process: System Idle Process",
-      "port: 5173, process: System Idle Process",
-      "port: 5173, process: node.exe",
+      "port: 42050, process: Microsoft.SharePoint.exe",
       "port: 49671, process: jhi_service.exe",
-      "port: 52720, process: System Idle Process",
-      "port: 52721, process: System Idle Process",
-      "port: 52722, process: System Idle Process",
-      "port: 52723, process: System Idle Process",
-      "port: 52724, process: System Idle Process",
-      "port: 52725, process: System Idle Process",
-      "port: 52726, process: System Idle Process",
-      "port: 52727, process: System Idle Process",
-      "port: 52728, process: System Idle Process",
-      "port: 52729, process: System Idle Process",
-      "port: 52730, process: System Idle Process",
-      "port: 52731, process: System Idle Process",
-      "port: 52732, process: System Idle Process",
-      "port: 52733, process: System Idle Process",
-      "port: 52734, process: System Idle Process",
-      "port: 52735, process: System Idle Process",
-      "port: 52736, process: System Idle Process",
-      "port: 52739, process: System Idle Process",
-      "port: 52740, process: System Idle Process",
-      "port: 52741, process: System Idle Process",
-      "port: 52742, process: System Idle Process",
-      "port: 52746, process: reporting-page-dev.exe",
-      "port: 52751, process: System Idle Process",
-      "port: 52758, process: System Idle Process",
-      "port: 52759, process: System Idle Process",
-      "port: 52760, process: System Idle Process",
-      "port: 52762, process: System Idle Process",
-      "port: 52765, process: System Idle Process",
-      "port: 52766, process: System Idle Process",
-      "port: 52768, process: System Idle Process",
-      "port: 52769, process: System Idle Process",
-      "port: 52772, process: reporting-page-dev.exe",
+      "port: 56974, process: SearchHost.exe",
+      "port: 56980, process: SearchHost.exe",
+      "port: 57194, process: System Idle Process",
+      "port: 57222, process: reporting-page.exe",
+      "port: 57223, process: reporting-page.exe",
       "port: 1900, process: svchost.exe",
-      "port: 10030, process: NVIDIA Web Helper.exe",
+      "port: 10040, process: NVIDIA Web Helper.exe",
+      "port: 51456, process: nvcontainer.exe",
       "port: 52333, process: svchost.exe",
-      "port: 58880, process: svchost.exe",
+      "port: 59180, process: svchost.exe",
       "port: 60534, process: ekrn.exe",
-      "port: 60889, process: nvcontainer.exe",
       "port: 137, process: System",
       "port: 138, process: System",
       "port: 1900, process: svchost.exe",
       "port: 5353, process: nvcontainer.exe",
-      "port: 58879, process: svchost.exe",
+      "port: 59179, process: svchost.exe",
+      "port: 123, process: svchost.exe",
       "port: 500, process: svchost.exe",
       "port: 4500, process: svchost.exe",
       "port: 5353, process: svchost.exe",
       "port: 5355, process: svchost.exe",
-      "port: 50060, process: svchost.exe",
-      "port: 50307, process: svchost.exe",
-      "port: 50521, process: svchost.exe",
-      "port: 53969, process: svchost.exe",
+      "port: 51726, process: firefox.exe",
+      "port: 58282, process: ekrn.exe",
       "port: 60542, process: nvcontainer.exe",
-      "port: 62208, process: svchost.exe",
-      "port: 62433, process: svchost.exe",
-      "port: 62575, process: svchost.exe",
-      "port: 63891, process: svchost.exe",
+      "port: 63439, process: svchost.exe",
+      "port: 63643, process: svchost.exe",
+      "port: 65126, process: msedgewebview2.exe",
       "port: 1900, process: svchost.exe",
       "port: 5353, process: nvcontainer.exe",
-      "port: 58878, process: svchost.exe",
+      "port: 59178, process: svchost.exe",
       "port: 1900, process: svchost.exe",
-      "port: 58877, process: svchost.exe"
+      "port: 59177, process: svchost.exe"
     ]
   },
   {
@@ -1729,6 +1136,7 @@
     "issue_id": 2,
     "result_id": 0,
     "result": [
+      "HID-muis",
       "HID-muis",
       "HD User Facing"
     ]
@@ -1806,1282 +1214,7 @@
     ]
   }
 ]
-2024/04/10 13:22:57 INFO: Opening database
-2024/04/10 13:22:57 INFO: Connected to database
-2024/04/10 13:22:57 INFO: Closing database
-2024/04/10 13:22:57 [{"issue_id":5,"result_id":1,"result":["No password manager found"]},{"issue_id":15,"result_id":1,"result":["Windows real-time defender is enabled but the windows periodic scan is disabled"]},{"issue_id":16,"result_id":0,"result":["Password last changed on 26-10-2022 , your password was changed more than half a year ago so you should change it again"]},{"issue_id":17,"result_id":4,"result":["Password","Password"]},{"issue_id":6,"result_id":0,"result":["MicrosoftTeams","MicrosoftWindows.Client.WebExperience","MSTeams"]},{"issue_id":7,"result_id":0,"result":["Microsoft.GamingApp","Microsoft.ScreenSketch","Microsoft.WindowsCamera","Microsoft.WindowsFeedbackHub","Microsoft.XboxGamingOverlay","MicrosoftTeams","chrome.exe","POWERPNT.EXE","firefox.exe","Teams.exe","ShooterGame.exe","FallGuys_client_game.exe","FortniteClient-Win64-Shipping.exe","RemotePlay.exe","RocketLeague.exe","windows.immersivecontrolpanel"]},{"issue_id":8,"result_id":0,"result":["Microsoft.WindowsCamera","MicrosoftTeams","MicrosoftWindows.Client.CBS","MSTeams","chrome.exe","Pokemon TCG Live.exe"]},{"issue_id":9,"result_id":0,"result":["microsoft.windowscommunicationsapps"]},{"issue_id":10,"result_id":0,"result":["microsoft.windowscommunicationsapps"]},{"issue_id":1,"result_id":1,"result":["AirPods Pro - Find My\u0000","AirPods\u0000"]},{"issue_id":11,"result_id":0,"result":["port: 34115, process: reporting-page-dev.exe","port: 34115, process: reporting-page-dev.exe","port: 34115, process: reporting-page-dev.exe","port: 34115, process: reporting-page-dev.exe","port: 34115, process: reporting-page-dev.exe","port: 34115, process: reporting-page-dev.exe","port: 34115, process: reporting-page-dev.exe","port: 34115, process: reporting-page-dev.exe","port: 34115, process: reporting-page-dev.exe","port: 34115, process: reporting-page-dev.exe","port: 34115, process: reporting-page-dev.exe","port: 34115, process: reporting-page-dev.exe","port: 51337, process: firefox.exe","port: 51338, process: firefox.exe","port: 51339, process: firefox.exe","port: 51340, process: firefox.exe","port: 51342, process: NVIDIA Web Helper.exe","port: 51342, process: NVIDIA Web Helper.exe","port: 52099, process: nvcontainer.exe","port: 52138, process: NVIDIA Share.exe","port: 52565, process: System Idle Process","port: 52743, process: msedgewebview2.exe","port: 52744, process: msedgewebview2.exe","port: 52745, process: msedgewebview2.exe","port: 52750, process: firefox.exe","port: 52752, process: firefox.exe","port: 52753, process: firefox.exe","port: 52754, process: firefox.exe","port: 52755, process: firefox.exe","port: 52756, process: firefox.exe","port: 52770, process: firefox.exe","port: 52771, process: firefox.exe","port: 65001, process: nvcontainer.exe","port: 65001, process: nvcontainer.exe","port: 139, process: System","port: 52086, process: KillerNetworkService.exe","port: 52088, process: firefox.exe","port: 52095, process: ekrn.exe","port: 52114, process: svchost.exe","port: 52115, process: svchost.exe","port: 52382, process: firefox.exe","port: 52428, process: Code.exe","port: 52573, process: firefox.exe","port: 52579, process: System Idle Process","port: 52580, process: System Idle Process","port: 52582, process: System Idle Process","port: 52583, process: System Idle Process","port: 52586, process: System Idle Process","port: 52594, process: System Idle Process","port: 52595, process: System Idle Process","port: 52596, process: System Idle Process","port: 52601, process: System Idle Process","port: 52637, process: System Idle Process","port: 52644, process: System Idle Process","port: 52673, process: firefox.exe","port: 52674, process: firefox.exe","port: 52676, process: firefox.exe","port: 52689, process: firefox.exe","port: 52704, process: firefox.exe","port: 52709, process: firefox.exe","port: 52712, process: firefox.exe","port: 52718, process: msedgewebview2.exe","port: 52747, process: reporting-page-dev.exe","port: 52748, process: reporting-page-dev.exe","port: 52757, process: firefox.exe","port: 52763, process: firefox.exe","port: 52764, process: firefox.exe","port: 52773, process: OneDrive.exe","port: 135, process: svchost.exe","port: 445, process: System","port: 49664, process: lsass.exe","port: 49665, process: wininit.exe","port: 49666, process: svchost.exe","port: 49667, process: svchost.exe","port: 49668, process: spoolsv.exe","port: 49679, process: services.exe","port: 5173, process: node.exe","port: 5173, process: System Idle Process","port: 5173, process: System Idle Process","port: 5173, process: node.exe","port: 5173, process: node.exe","port: 5173, process: node.exe","port: 5173, process: node.exe","port: 49671, process: jhi_service.exe","port: 52720, process: System Idle Process","port: 52721, process: System Idle Process","port: 52722, process: System Idle Process","port: 52723, process: System Idle Process","port: 52724, process: System Idle Process","port: 52725, process: System Idle Process","port: 52726, process: System Idle Process","port: 52727, process: System Idle Process","port: 52728, process: System Idle Process","port: 52729, process: System Idle Process","port: 52730, process: System Idle Process","port: 52731, process: System Idle Process","port: 52732, process: System Idle Process","port: 52733, process: System Idle Process","port: 52734, process: System Idle Process","port: 52735, process: System Idle Process","port: 52736, process: System Idle Process","port: 52739, process: System Idle Process","port: 52740, process: System Idle Process","port: 52741, process: System Idle Process","port: 52742, process: System Idle Process","port: 52746, process: reporting-page-dev.exe","port: 52751, process: System Idle Process","port: 52758, process: System Idle Process","port: 52759, process: System Idle Process","port: 52760, process: System Idle Process","port: 52761, process: reporting-page-dev.exe","port: 52762, process: System Idle Process","port: 52765, process: System Idle Process","port: 52766, process: System Idle Process","port: 52767, process: reporting-page-dev.exe","port: 52768, process: System Idle Process","port: 52769, process: System Idle Process","port: 52772, process: reporting-page-dev.exe","port: 1900, process: svchost.exe","port: 10030, process: NVIDIA Web Helper.exe","port: 52333, process: svchost.exe","port: 58880, process: svchost.exe","port: 60534, process: ekrn.exe","port: 60889, process: nvcontainer.exe","port: 137, process: System","port: 138, process: System","port: 1900, process: svchost.exe","port: 5353, process: nvcontainer.exe","port: 58879, process: svchost.exe","port: 500, process: svchost.exe","port: 4500, process: svchost.exe","port: 5353, process: svchost.exe","port: 5355, process: svchost.exe","port: 50060, process: svchost.exe","port: 50307, process: svchost.exe","port: 50521, process: svchost.exe","port: 53969, process: svchost.exe","port: 60542, process: nvcontainer.exe","port: 62208, process: svchost.exe","port: 62433, process: svchost.exe","port: 62575, process: svchost.exe","port: 63891, process: svchost.exe","port: 1900, process: svchost.exe","port: 5353, process: nvcontainer.exe","port: 58878, process: svchost.exe","port: 1900, process: svchost.exe","port: 58877, process: svchost.exe"]},{"issue_id":18,"result_id":1,"result":["10.0.22631","There are updates available for Windows 10."]},{"issue_id":19,"result_id":1,"result":["Secure boot is enabled"]},{"issue_id":13,"result_id":2,"result":["SMB1: not enabled","SMB2: enabled"]},{"issue_id":20,"result_id":1,"result":["Docker Desktop","SecurityHealth"]},{"issue_id":3,"result_id":2,"result":["Guest account is not active"]},{"issue_id":14,"result_id":2,"result":["UAC is turned on for apps making changes to your computer."]},{"issue_id":12,"result_id":1,"result":["Remote Desktop is disabled"]},{"issue_id":2,"result_id":0,"result":["HID-muis","HD User Facing"]},{"issue_id":4,"result_id":0,"result":["Network sharing is enabled"]},{"issue_id":23,"result_id":1,"result":["No phishing domains found in the last week"]},{"issue_id":21,"result_id":0,"result":["Adblocker installed"]},{"issue_id":25,"result_id":0,"result":["google.com"]},{"issue_id":28,"result_id":0,"result":["Form Autofill,extension,,true","Picture-In-Picture,extension,,true","Firefox Screenshots,extension,Mozilla <screenshots-feedback@mozilla.com>,true","WebCompat Reporter,extension,Thomas Wisniewski <twisniewski@mozilla.com>,false","Web Compatibility Interventions,extension,,true","System theme — auto,theme,Mozilla,true","Add-ons Search Detection,extension,,true","Google,extension,,true","Wikipedia (en),extension,,true","Bing,extension,,true","DuckDuckGo,extension,,true","Light,theme,Mozilla,false","Dark,theme,Mozilla,false","Firefox Alpenglow,theme,,false","Amazon.com.au,extension,,true","eBay,extension,,true","Qwant,extension,,true"]},{"issue_id":29,"result_id":0,"result":["false"]},{"issue_id":31,"result_id":0,"result":["No phising domains found in the last week"]},{"issue_id":30,"result_id":0,"result":["Other Search Engine"]}]
-2024/04/10 13:22:57 INFO: Opening database
-2024/04/10 13:22:57 INFO: Connected to database
-2024/04/10 13:22:57 INFO: Closing database
-2024/04/10 13:22:57 [{"issue_id":5,"result_id":1,"result":["No password manager found"]},{"issue_id":15,"result_id":1,"result":["Windows real-time defender is enabled but the windows periodic scan is disabled"]},{"issue_id":16,"result_id":0,"result":["Password last changed on 26-10-2022 , your password was changed more than half a year ago so you should change it again"]},{"issue_id":17,"result_id":4,"result":["Password","Password"]},{"issue_id":6,"result_id":0,"result":["MicrosoftTeams","MicrosoftWindows.Client.WebExperience","MSTeams"]},{"issue_id":7,"result_id":0,"result":["Microsoft.GamingApp","Microsoft.ScreenSketch","Microsoft.WindowsCamera","Microsoft.WindowsFeedbackHub","Microsoft.XboxGamingOverlay","MicrosoftTeams","chrome.exe","POWERPNT.EXE","firefox.exe","Teams.exe","ShooterGame.exe","FallGuys_client_game.exe","FortniteClient-Win64-Shipping.exe","RemotePlay.exe","RocketLeague.exe","windows.immersivecontrolpanel"]},{"issue_id":8,"result_id":0,"result":["Microsoft.WindowsCamera","MicrosoftTeams","MicrosoftWindows.Client.CBS","MSTeams","chrome.exe","Pokemon TCG Live.exe"]},{"issue_id":9,"result_id":0,"result":["microsoft.windowscommunicationsapps"]},{"issue_id":10,"result_id":0,"result":["microsoft.windowscommunicationsapps"]},{"issue_id":1,"result_id":1,"result":["AirPods Pro - Find My\u0000","AirPods\u0000"]},{"issue_id":11,"result_id":0,"result":["port: 34115, process: reporting-page-dev.exe","port: 34115, process: reporting-page-dev.exe","port: 34115, process: reporting-page-dev.exe","port: 34115, process: reporting-page-dev.exe","port: 34115, process: reporting-page-dev.exe","port: 34115, process: reporting-page-dev.exe","port: 34115, process: reporting-page-dev.exe","port: 34115, process: reporting-page-dev.exe","port: 34115, process: reporting-page-dev.exe","port: 34115, process: reporting-page-dev.exe","port: 34115, process: reporting-page-dev.exe","port: 34115, process: reporting-page-dev.exe","port: 51337, process: firefox.exe","port: 51338, process: firefox.exe","port: 51339, process: firefox.exe","port: 51340, process: firefox.exe","port: 51342, process: NVIDIA Web Helper.exe","port: 51342, process: NVIDIA Web Helper.exe","port: 52099, process: nvcontainer.exe","port: 52138, process: NVIDIA Share.exe","port: 52565, process: System Idle Process","port: 52743, process: msedgewebview2.exe","port: 52744, process: msedgewebview2.exe","port: 52745, process: msedgewebview2.exe","port: 52750, process: firefox.exe","port: 52752, process: firefox.exe","port: 52753, process: firefox.exe","port: 52754, process: firefox.exe","port: 52755, process: firefox.exe","port: 52756, process: firefox.exe","port: 52770, process: firefox.exe","port: 52771, process: firefox.exe","port: 65001, process: nvcontainer.exe","port: 65001, process: nvcontainer.exe","port: 139, process: System","port: 52086, process: KillerNetworkService.exe","port: 52088, process: firefox.exe","port: 52095, process: ekrn.exe","port: 52114, process: svchost.exe","port: 52115, process: svchost.exe","port: 52382, process: firefox.exe","port: 52428, process: Code.exe","port: 52573, process: firefox.exe","port: 52579, process: System Idle Process","port: 52580, process: System Idle Process","port: 52582, process: System Idle Process","port: 52583, process: System Idle Process","port: 52586, process: System Idle Process","port: 52594, process: System Idle Process","port: 52596, process: System Idle Process","port: 52637, process: System Idle Process","port: 52644, process: System Idle Process","port: 52676, process: firefox.exe","port: 52689, process: firefox.exe","port: 52709, process: firefox.exe","port: 52718, process: msedgewebview2.exe","port: 52747, process: reporting-page-dev.exe","port: 52748, process: reporting-page-dev.exe","port: 52757, process: firefox.exe","port: 52763, process: firefox.exe","port: 52764, process: firefox.exe","port: 52773, process: OneDrive.exe","port: 135, process: svchost.exe","port: 445, process: System","port: 49664, process: lsass.exe","port: 49665, process: wininit.exe","port: 49666, process: svchost.exe","port: 49667, process: svchost.exe","port: 49668, process: spoolsv.exe","port: 49679, process: services.exe","port: 5173, process: node.exe","port: 5173, process: System Idle Process","port: 5173, process: System Idle Process","port: 5173, process: node.exe","port: 5173, process: System Idle Process","port: 5173, process: System Idle Process","port: 5173, process: node.exe","port: 49671, process: jhi_service.exe","port: 52720, process: System Idle Process","port: 52721, process: System Idle Process","port: 52722, process: System Idle Process","port: 52723, process: System Idle Process","port: 52724, process: System Idle Process","port: 52725, process: System Idle Process","port: 52726, process: System Idle Process","port: 52727, process: System Idle Process","port: 52728, process: System Idle Process","port: 52729, process: System Idle Process","port: 52730, process: System Idle Process","port: 52731, process: System Idle Process","port: 52732, process: System Idle Process","port: 52733, process: System Idle Process","port: 52734, process: System Idle Process","port: 52735, process: System Idle Process","port: 52736, process: System Idle Process","port: 52739, process: System Idle Process","port: 52740, process: System Idle Process","port: 52741, process: System Idle Process","port: 52742, process: System Idle Process","port: 52746, process: reporting-page-dev.exe","port: 52751, process: System Idle Process","port: 52758, process: System Idle Process","port: 52759, process: System Idle Process","port: 52760, process: System Idle Process","port: 52762, process: System Idle Process","port: 52765, process: System Idle Process","port: 52766, process: System Idle Process","port: 52768, process: System Idle Process","port: 52769, process: System Idle Process","port: 52772, process: reporting-page-dev.exe","port: 1900, process: svchost.exe","port: 10030, process: NVIDIA Web Helper.exe","port: 52333, process: svchost.exe","port: 58880, process: svchost.exe","port: 60534, process: ekrn.exe","port: 60889, process: nvcontainer.exe","port: 137, process: System","port: 138, process: System","port: 1900, process: svchost.exe","port: 5353, process: nvcontainer.exe","port: 58879, process: svchost.exe","port: 500, process: svchost.exe","port: 4500, process: svchost.exe","port: 5353, process: svchost.exe","port: 5355, process: svchost.exe","port: 50060, process: svchost.exe","port: 50307, process: svchost.exe","port: 50521, process: svchost.exe","port: 53969, process: svchost.exe","port: 60542, process: nvcontainer.exe","port: 62208, process: svchost.exe","port: 62433, process: svchost.exe","port: 62575, process: svchost.exe","port: 63891, process: svchost.exe","port: 1900, process: svchost.exe","port: 5353, process: nvcontainer.exe","port: 58878, process: svchost.exe","port: 1900, process: svchost.exe","port: 58877, process: svchost.exe"]},{"issue_id":18,"result_id":1,"result":["10.0.22631","There are updates available for Windows 10."]},{"issue_id":19,"result_id":1,"result":["Secure boot is enabled"]},{"issue_id":13,"result_id":2,"result":["SMB1: not enabled","SMB2: enabled"]},{"issue_id":20,"result_id":1,"result":["Docker Desktop","SecurityHealth"]},{"issue_id":3,"result_id":2,"result":["Guest account is not active"]},{"issue_id":14,"result_id":2,"result":["UAC is turned on for apps making changes to your computer."]},{"issue_id":12,"result_id":1,"result":["Remote Desktop is disabled"]},{"issue_id":2,"result_id":0,"result":["HID-muis","HD User Facing"]},{"issue_id":4,"result_id":0,"result":["Network sharing is enabled"]},{"issue_id":23,"result_id":1,"result":["No phishing domains found in the last week"]},{"issue_id":21,"result_id":0,"result":["Adblocker installed"]},{"issue_id":25,"result_id":0,"result":["google.com"]},{"issue_id":28,"result_id":0,"result":["Form Autofill,extension,,true","Picture-In-Picture,extension,,true","Firefox Screenshots,extension,Mozilla <screenshots-feedback@mozilla.com>,true","WebCompat Reporter,extension,Thomas Wisniewski <twisniewski@mozilla.com>,false","Web Compatibility Interventions,extension,,true","System theme — auto,theme,Mozilla,true","Add-ons Search Detection,extension,,true","Google,extension,,true","Wikipedia (en),extension,,true","Bing,extension,,true","DuckDuckGo,extension,,true","Light,theme,Mozilla,false","Dark,theme,Mozilla,false","Firefox Alpenglow,theme,,false","Amazon.com.au,extension,,true","eBay,extension,,true","Qwant,extension,,true"]},{"issue_id":29,"result_id":0,"result":["false"]},{"issue_id":31,"result_id":0,"result":["No phising domains found in the last week"]},{"issue_id":30,"result_id":0,"result":["Other Search Engine"]}]
-2024/04/10 13:22:59 DEBUG: [DevWebServer] Websocket client 0xc000504a20 disconnected
-2024/04/10 13:23:01 DEBUG: [DevWebServer] Websocket client 0xc00060eab0 connected
-2024/04/10 13:23:01 ERROR: Unknown message from front end: runtime:ready
-2024/04/10 13:23:01 INFO: Scanning now. Scan:6
-2024/04/10 13:23:09 INFO: [
-  {
-    "issue_id": 5,
-    "result_id": 1,
-    "result": [
-      "No password manager found"
-    ]
-  },
-  {
-    "issue_id": 15,
-    "result_id": 1,
-    "result": [
-      "Windows real-time defender is enabled but the windows periodic scan is disabled"
-    ]
-  },
-  {
-    "issue_id": 16,
-    "result_id": 0,
-    "result": [
-      "Password last changed on 26-10-2022 , your password was changed more than half a year ago so you should change it again"
-    ]
-  },
-  {
-    "issue_id": 17,
-    "result_id": 4,
-    "result": [
-      "Password",
-      "Password"
-    ]
-  },
-  {
-    "issue_id": 6,
-    "result_id": 0,
-    "result": [
-      "MicrosoftTeams",
-      "MicrosoftWindows.Client.WebExperience",
-      "MSTeams"
-    ]
-  },
-  {
-    "issue_id": 7,
-    "result_id": 0,
-    "result": [
-      "Microsoft.GamingApp",
-      "Microsoft.ScreenSketch",
-      "Microsoft.WindowsCamera",
-      "Microsoft.WindowsFeedbackHub",
-      "Microsoft.XboxGamingOverlay",
-      "MicrosoftTeams",
-      "chrome.exe",
-      "POWERPNT.EXE",
-      "firefox.exe",
-      "Teams.exe",
-      "ShooterGame.exe",
-      "FallGuys_client_game.exe",
-      "FortniteClient-Win64-Shipping.exe",
-      "RemotePlay.exe",
-      "RocketLeague.exe",
-      "windows.immersivecontrolpanel"
-    ]
-  },
-  {
-    "issue_id": 8,
-    "result_id": 0,
-    "result": [
-      "Microsoft.WindowsCamera",
-      "MicrosoftTeams",
-      "MicrosoftWindows.Client.CBS",
-      "MSTeams",
-      "chrome.exe",
-      "Pokemon TCG Live.exe"
-    ]
-  },
-  {
-    "issue_id": 9,
-    "result_id": 0,
-    "result": [
-      "microsoft.windowscommunicationsapps"
-    ]
-  },
-  {
-    "issue_id": 10,
-    "result_id": 0,
-    "result": [
-      "microsoft.windowscommunicationsapps"
-    ]
-  },
-  {
-    "issue_id": 1,
-    "result_id": 1,
-    "result": [
-      "AirPods Pro - Find My\u0000",
-      "AirPods\u0000"
-    ]
-  },
-  {
-    "issue_id": 11,
-    "result_id": 0,
-    "result": [
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: System Idle Process",
-      "port: 34115, process: System Idle Process",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 51337, process: firefox.exe",
-      "port: 51338, process: firefox.exe",
-      "port: 51339, process: firefox.exe",
-      "port: 51340, process: firefox.exe",
-      "port: 51342, process: NVIDIA Web Helper.exe",
-      "port: 51342, process: NVIDIA Web Helper.exe",
-      "port: 52099, process: nvcontainer.exe",
-      "port: 52138, process: NVIDIA Share.exe",
-      "port: 52565, process: System Idle Process",
-      "port: 52743, process: msedgewebview2.exe",
-      "port: 52744, process: msedgewebview2.exe",
-      "port: 52745, process: msedgewebview2.exe",
-      "port: 52750, process: firefox.exe",
-      "port: 52752, process: firefox.exe",
-      "port: 52753, process: firefox.exe",
-      "port: 52754, process: firefox.exe",
-      "port: 52755, process: firefox.exe",
-      "port: 52756, process: firefox.exe",
-      "port: 52774, process: firefox.exe",
-      "port: 52775, process: firefox.exe",
-      "port: 65001, process: nvcontainer.exe",
-      "port: 65001, process: nvcontainer.exe",
-      "port: 139, process: System",
-      "port: 52086, process: KillerNetworkService.exe",
-      "port: 52088, process: firefox.exe",
-      "port: 52095, process: ekrn.exe",
-      "port: 52114, process: svchost.exe",
-      "port: 52115, process: svchost.exe",
-      "port: 52382, process: firefox.exe",
-      "port: 52428, process: Code.exe",
-      "port: 52573, process: firefox.exe",
-      "port: 52579, process: System Idle Process",
-      "port: 52580, process: System Idle Process",
-      "port: 52582, process: System Idle Process",
-      "port: 52583, process: System Idle Process",
-      "port: 52586, process: System Idle Process",
-      "port: 52594, process: System Idle Process",
-      "port: 52596, process: System Idle Process",
-      "port: 52637, process: System Idle Process",
-      "port: 52644, process: System Idle Process",
-      "port: 52676, process: firefox.exe",
-      "port: 52689, process: firefox.exe",
-      "port: 52709, process: firefox.exe",
-      "port: 52718, process: msedgewebview2.exe",
-      "port: 52747, process: reporting-page-dev.exe",
-      "port: 52748, process: reporting-page-dev.exe",
-      "port: 52757, process: firefox.exe",
-      "port: 52763, process: firefox.exe",
-      "port: 52764, process: firefox.exe",
-      "port: 52773, process: OneDrive.exe",
-      "port: 135, process: svchost.exe",
-      "port: 445, process: System",
-      "port: 49664, process: lsass.exe",
-      "port: 49665, process: wininit.exe",
-      "port: 49666, process: svchost.exe",
-      "port: 49667, process: svchost.exe",
-      "port: 49668, process: spoolsv.exe",
-      "port: 49679, process: services.exe",
-      "port: 5173, process: node.exe",
-      "port: 5173, process: System Idle Process",
-      "port: 5173, process: System Idle Process",
-      "port: 5173, process: node.exe",
-      "port: 5173, process: System Idle Process",
-      "port: 5173, process: System Idle Process",
-      "port: 5173, process: System Idle Process",
-      "port: 5173, process: node.exe",
-      "port: 49671, process: jhi_service.exe",
-      "port: 52720, process: System Idle Process",
-      "port: 52721, process: System Idle Process",
-      "port: 52722, process: System Idle Process",
-      "port: 52723, process: System Idle Process",
-      "port: 52724, process: System Idle Process",
-      "port: 52725, process: System Idle Process",
-      "port: 52726, process: System Idle Process",
-      "port: 52727, process: System Idle Process",
-      "port: 52728, process: System Idle Process",
-      "port: 52729, process: System Idle Process",
-      "port: 52730, process: System Idle Process",
-      "port: 52731, process: System Idle Process",
-      "port: 52732, process: System Idle Process",
-      "port: 52733, process: System Idle Process",
-      "port: 52734, process: System Idle Process",
-      "port: 52735, process: System Idle Process",
-      "port: 52736, process: System Idle Process",
-      "port: 52739, process: System Idle Process",
-      "port: 52740, process: System Idle Process",
-      "port: 52741, process: System Idle Process",
-      "port: 52742, process: System Idle Process",
-      "port: 52746, process: reporting-page-dev.exe",
-      "port: 52751, process: System Idle Process",
-      "port: 52758, process: System Idle Process",
-      "port: 52759, process: System Idle Process",
-      "port: 52760, process: System Idle Process",
-      "port: 52762, process: System Idle Process",
-      "port: 52765, process: System Idle Process",
-      "port: 52766, process: System Idle Process",
-      "port: 52768, process: System Idle Process",
-      "port: 52769, process: System Idle Process",
-      "port: 52776, process: reporting-page-dev.exe",
-      "port: 1900, process: svchost.exe",
-      "port: 10030, process: NVIDIA Web Helper.exe",
-      "port: 52333, process: svchost.exe",
-      "port: 58880, process: svchost.exe",
-      "port: 60534, process: ekrn.exe",
-      "port: 60889, process: nvcontainer.exe",
-      "port: 137, process: System",
-      "port: 138, process: System",
-      "port: 1900, process: svchost.exe",
-      "port: 5353, process: nvcontainer.exe",
-      "port: 58879, process: svchost.exe",
-      "port: 500, process: svchost.exe",
-      "port: 4500, process: svchost.exe",
-      "port: 5353, process: svchost.exe",
-      "port: 5355, process: svchost.exe",
-      "port: 50060, process: svchost.exe",
-      "port: 50307, process: svchost.exe",
-      "port: 50521, process: svchost.exe",
-      "port: 53969, process: svchost.exe",
-      "port: 60542, process: nvcontainer.exe",
-      "port: 62208, process: svchost.exe",
-      "port: 62433, process: svchost.exe",
-      "port: 62575, process: svchost.exe",
-      "port: 63891, process: svchost.exe",
-      "port: 1900, process: svchost.exe",
-      "port: 5353, process: nvcontainer.exe",
-      "port: 58878, process: svchost.exe",
-      "port: 1900, process: svchost.exe",
-      "port: 58877, process: svchost.exe"
-    ]
-  },
-  {
-    "issue_id": 18,
-    "result_id": 1,
-    "result": [
-      "10.0.22631",
-      "There are updates available for Windows 10."
-    ]
-  },
-  {
-    "issue_id": 19,
-    "result_id": 1,
-    "result": [
-      "Secure boot is enabled"
-    ]
-  },
-  {
-    "issue_id": 13,
-    "result_id": 2,
-    "result": [
-      "SMB1: not enabled",
-      "SMB2: enabled"
-    ]
-  },
-  {
-    "issue_id": 20,
-    "result_id": 1,
-    "result": [
-      "Docker Desktop",
-      "SecurityHealth"
-    ]
-  },
-  {
-    "issue_id": 3,
-    "result_id": 2,
-    "result": [
-      "Guest account is not active"
-    ]
-  },
-  {
-    "issue_id": 14,
-    "result_id": 2,
-    "result": [
-      "UAC is turned on for apps making changes to your computer."
-    ]
-  },
-  {
-    "issue_id": 12,
-    "result_id": 1,
-    "result": [
-      "Remote Desktop is disabled"
-    ]
-  },
-  {
-    "issue_id": 2,
-    "result_id": 0,
-    "result": [
-      "HID-muis",
-      "HD User Facing"
-    ]
-  },
-  {
-    "issue_id": 4,
-    "result_id": 0,
-    "result": [
-      "Network sharing is enabled"
-    ]
-  },
-  {
-    "issue_id": 23,
-    "result_id": 1,
-    "result": [
-      "No phishing domains found in the last week"
-    ]
-  },
-  {
-    "issue_id": 21,
-    "result_id": 0,
-    "result": [
-      "Adblocker installed"
-    ]
-  },
-  {
-    "issue_id": 25,
-    "result_id": 0,
-    "result": [
-      "google.com"
-    ]
-  },
-  {
-    "issue_id": 28,
-    "result_id": 0,
-    "result": [
-      "Form Autofill,extension,,true",
-      "Picture-In-Picture,extension,,true",
-      "Firefox Screenshots,extension,Mozilla \u003cscreenshots-feedback@mozilla.com\u003e,true",
-      "WebCompat Reporter,extension,Thomas Wisniewski \u003ctwisniewski@mozilla.com\u003e,false",
-      "Web Compatibility Interventions,extension,,true",
-      "System theme — auto,theme,Mozilla,true",
-      "Add-ons Search Detection,extension,,true",
-      "Google,extension,,true",
-      "Wikipedia (en),extension,,true",
-      "Bing,extension,,true",
-      "DuckDuckGo,extension,,true",
-      "Light,theme,Mozilla,false",
-      "Dark,theme,Mozilla,false",
-      "Firefox Alpenglow,theme,,false",
-      "Amazon.com.au,extension,,true",
-      "eBay,extension,,true",
-      "Qwant,extension,,true"
-    ]
-  },
-  {
-    "issue_id": 29,
-    "result_id": 0,
-    "result": [
-      "false"
-    ]
-  },
-  {
-    "issue_id": 31,
-    "result_id": 0,
-    "result": [
-      "No phising domains found in the last week"
-    ]
-  },
-  {
-    "issue_id": 30,
-    "result_id": 0,
-    "result": [
-      "Other Search Engine"
-    ]
-  }
-]
-2024/04/10 13:23:09 INFO: Scanning now. Scan:7
-2024/04/10 13:23:18 INFO: [
-  {
-    "issue_id": 5,
-    "result_id": 1,
-    "result": [
-      "No password manager found"
-    ]
-  },
-  {
-    "issue_id": 15,
-    "result_id": 1,
-    "result": [
-      "Windows real-time defender is enabled but the windows periodic scan is disabled"
-    ]
-  },
-  {
-    "issue_id": 16,
-    "result_id": 0,
-    "result": [
-      "Password last changed on 26-10-2022 , your password was changed more than half a year ago so you should change it again"
-    ]
-  },
-  {
-    "issue_id": 17,
-    "result_id": 4,
-    "result": [
-      "Password",
-      "Password"
-    ]
-  },
-  {
-    "issue_id": 6,
-    "result_id": 0,
-    "result": [
-      "MicrosoftTeams",
-      "MicrosoftWindows.Client.WebExperience",
-      "MSTeams"
-    ]
-  },
-  {
-    "issue_id": 7,
-    "result_id": 0,
-    "result": [
-      "Microsoft.GamingApp",
-      "Microsoft.ScreenSketch",
-      "Microsoft.WindowsCamera",
-      "Microsoft.WindowsFeedbackHub",
-      "Microsoft.XboxGamingOverlay",
-      "MicrosoftTeams",
-      "chrome.exe",
-      "POWERPNT.EXE",
-      "firefox.exe",
-      "Teams.exe",
-      "ShooterGame.exe",
-      "FallGuys_client_game.exe",
-      "FortniteClient-Win64-Shipping.exe",
-      "RemotePlay.exe",
-      "RocketLeague.exe",
-      "windows.immersivecontrolpanel"
-    ]
-  },
-  {
-    "issue_id": 8,
-    "result_id": 0,
-    "result": [
-      "Microsoft.WindowsCamera",
-      "MicrosoftTeams",
-      "MicrosoftWindows.Client.CBS",
-      "MSTeams",
-      "chrome.exe",
-      "Pokemon TCG Live.exe"
-    ]
-  },
-  {
-    "issue_id": 9,
-    "result_id": 0,
-    "result": [
-      "microsoft.windowscommunicationsapps"
-    ]
-  },
-  {
-    "issue_id": 10,
-    "result_id": 0,
-    "result": [
-      "microsoft.windowscommunicationsapps"
-    ]
-  },
-  {
-    "issue_id": 1,
-    "result_id": 1,
-    "result": [
-      "AirPods Pro - Find My\u0000",
-      "AirPods\u0000"
-    ]
-  },
-  {
-    "issue_id": 11,
-    "result_id": 0,
-    "result": [
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: System Idle Process",
-      "port: 34115, process: System Idle Process",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 51337, process: firefox.exe",
-      "port: 51338, process: firefox.exe",
-      "port: 51339, process: firefox.exe",
-      "port: 51340, process: firefox.exe",
-      "port: 51342, process: NVIDIA Web Helper.exe",
-      "port: 51342, process: NVIDIA Web Helper.exe",
-      "port: 52099, process: nvcontainer.exe",
-      "port: 52138, process: NVIDIA Share.exe",
-      "port: 52565, process: System Idle Process",
-      "port: 52743, process: msedgewebview2.exe",
-      "port: 52744, process: msedgewebview2.exe",
-      "port: 52745, process: msedgewebview2.exe",
-      "port: 52750, process: firefox.exe",
-      "port: 52752, process: firefox.exe",
-      "port: 52753, process: firefox.exe",
-      "port: 52754, process: firefox.exe",
-      "port: 52755, process: firefox.exe",
-      "port: 52756, process: firefox.exe",
-      "port: 52774, process: firefox.exe",
-      "port: 52775, process: firefox.exe",
-      "port: 65001, process: nvcontainer.exe",
-      "port: 65001, process: nvcontainer.exe",
-      "port: 139, process: System",
-      "port: 52086, process: KillerNetworkService.exe",
-      "port: 52088, process: firefox.exe",
-      "port: 52095, process: ekrn.exe",
-      "port: 52114, process: svchost.exe",
-      "port: 52115, process: svchost.exe",
-      "port: 52382, process: firefox.exe",
-      "port: 52428, process: Code.exe",
-      "port: 52573, process: firefox.exe",
-      "port: 52579, process: System Idle Process",
-      "port: 52580, process: System Idle Process",
-      "port: 52582, process: System Idle Process",
-      "port: 52583, process: System Idle Process",
-      "port: 52586, process: System Idle Process",
-      "port: 52594, process: System Idle Process",
-      "port: 52596, process: System Idle Process",
-      "port: 52637, process: System Idle Process",
-      "port: 52676, process: firefox.exe",
-      "port: 52689, process: firefox.exe",
-      "port: 52709, process: firefox.exe",
-      "port: 52718, process: msedgewebview2.exe",
-      "port: 52747, process: reporting-page-dev.exe",
-      "port: 52748, process: reporting-page-dev.exe",
-      "port: 52757, process: firefox.exe",
-      "port: 52763, process: firefox.exe",
-      "port: 52764, process: firefox.exe",
-      "port: 52773, process: OneDrive.exe",
-      "port: 135, process: svchost.exe",
-      "port: 445, process: System",
-      "port: 49664, process: lsass.exe",
-      "port: 49665, process: wininit.exe",
-      "port: 49666, process: svchost.exe",
-      "port: 49667, process: svchost.exe",
-      "port: 49668, process: spoolsv.exe",
-      "port: 49679, process: services.exe",
-      "port: 5173, process: node.exe",
-      "port: 5173, process: System Idle Process",
-      "port: 5173, process: System Idle Process",
-      "port: 5173, process: node.exe",
-      "port: 5173, process: System Idle Process",
-      "port: 5173, process: System Idle Process",
-      "port: 5173, process: System Idle Process",
-      "port: 5173, process: node.exe",
-      "port: 49671, process: jhi_service.exe",
-      "port: 52720, process: System Idle Process",
-      "port: 52721, process: System Idle Process",
-      "port: 52722, process: System Idle Process",
-      "port: 52723, process: System Idle Process",
-      "port: 52724, process: System Idle Process",
-      "port: 52725, process: System Idle Process",
-      "port: 52726, process: System Idle Process",
-      "port: 52727, process: System Idle Process",
-      "port: 52728, process: System Idle Process",
-      "port: 52729, process: System Idle Process",
-      "port: 52730, process: System Idle Process",
-      "port: 52731, process: System Idle Process",
-      "port: 52732, process: System Idle Process",
-      "port: 52733, process: System Idle Process",
-      "port: 52734, process: System Idle Process",
-      "port: 52735, process: System Idle Process",
-      "port: 52736, process: System Idle Process",
-      "port: 52739, process: System Idle Process",
-      "port: 52740, process: System Idle Process",
-      "port: 52741, process: System Idle Process",
-      "port: 52742, process: System Idle Process",
-      "port: 52746, process: reporting-page-dev.exe",
-      "port: 52751, process: System Idle Process",
-      "port: 52758, process: System Idle Process",
-      "port: 52759, process: System Idle Process",
-      "port: 52760, process: System Idle Process",
-      "port: 52762, process: System Idle Process",
-      "port: 52765, process: System Idle Process",
-      "port: 52766, process: System Idle Process",
-      "port: 52768, process: System Idle Process",
-      "port: 52769, process: System Idle Process",
-      "port: 52776, process: reporting-page-dev.exe",
-      "port: 1900, process: svchost.exe",
-      "port: 10030, process: NVIDIA Web Helper.exe",
-      "port: 52333, process: svchost.exe",
-      "port: 58880, process: svchost.exe",
-      "port: 60534, process: ekrn.exe",
-      "port: 60889, process: nvcontainer.exe",
-      "port: 137, process: System",
-      "port: 138, process: System",
-      "port: 1900, process: svchost.exe",
-      "port: 5353, process: nvcontainer.exe",
-      "port: 58879, process: svchost.exe",
-      "port: 500, process: svchost.exe",
-      "port: 4500, process: svchost.exe",
-      "port: 5353, process: svchost.exe",
-      "port: 5355, process: svchost.exe",
-      "port: 50060, process: svchost.exe",
-      "port: 50307, process: svchost.exe",
-      "port: 50521, process: svchost.exe",
-      "port: 53969, process: svchost.exe",
-      "port: 60542, process: nvcontainer.exe",
-      "port: 62208, process: svchost.exe",
-      "port: 62433, process: svchost.exe",
-      "port: 62575, process: svchost.exe",
-      "port: 63891, process: svchost.exe",
-      "port: 1900, process: svchost.exe",
-      "port: 5353, process: nvcontainer.exe",
-      "port: 58878, process: svchost.exe",
-      "port: 1900, process: svchost.exe",
-      "port: 58877, process: svchost.exe"
-    ]
-  },
-  {
-    "issue_id": 18,
-    "result_id": 1,
-    "result": [
-      "10.0.22631",
-      "There are updates available for Windows 10."
-    ]
-  },
-  {
-    "issue_id": 19,
-    "result_id": 1,
-    "result": [
-      "Secure boot is enabled"
-    ]
-  },
-  {
-    "issue_id": 13,
-    "result_id": 2,
-    "result": [
-      "SMB1: not enabled",
-      "SMB2: enabled"
-    ]
-  },
-  {
-    "issue_id": 20,
-    "result_id": 1,
-    "result": [
-      "Docker Desktop",
-      "SecurityHealth"
-    ]
-  },
-  {
-    "issue_id": 3,
-    "result_id": 2,
-    "result": [
-      "Guest account is not active"
-    ]
-  },
-  {
-    "issue_id": 14,
-    "result_id": 2,
-    "result": [
-      "UAC is turned on for apps making changes to your computer."
-    ]
-  },
-  {
-    "issue_id": 12,
-    "result_id": 1,
-    "result": [
-      "Remote Desktop is disabled"
-    ]
-  },
-  {
-    "issue_id": 2,
-    "result_id": 0,
-    "result": [
-      "HID-muis",
-      "HD User Facing"
-    ]
-  },
-  {
-    "issue_id": 4,
-    "result_id": 0,
-    "result": [
-      "Network sharing is enabled"
-    ]
-  },
-  {
-    "issue_id": 23,
-    "result_id": 1,
-    "result": [
-      "No phishing domains found in the last week"
-    ]
-  },
-  {
-    "issue_id": 21,
-    "result_id": 0,
-    "result": [
-      "Adblocker installed"
-    ]
-  },
-  {
-    "issue_id": 25,
-    "result_id": 0,
-    "result": [
-      "google.com"
-    ]
-  },
-  {
-    "issue_id": 28,
-    "result_id": 0,
-    "result": [
-      "Form Autofill,extension,,true",
-      "Picture-In-Picture,extension,,true",
-      "Firefox Screenshots,extension,Mozilla \u003cscreenshots-feedback@mozilla.com\u003e,true",
-      "WebCompat Reporter,extension,Thomas Wisniewski \u003ctwisniewski@mozilla.com\u003e,false",
-      "Web Compatibility Interventions,extension,,true",
-      "System theme — auto,theme,Mozilla,true",
-      "Add-ons Search Detection,extension,,true",
-      "Google,extension,,true",
-      "Wikipedia (en),extension,,true",
-      "Bing,extension,,true",
-      "DuckDuckGo,extension,,true",
-      "Light,theme,Mozilla,false",
-      "Dark,theme,Mozilla,false",
-      "Firefox Alpenglow,theme,,false",
-      "Amazon.com.au,extension,,true",
-      "eBay,extension,,true",
-      "Qwant,extension,,true"
-    ]
-  },
-  {
-    "issue_id": 29,
-    "result_id": 0,
-    "result": [
-      "false"
-    ]
-  },
-  {
-    "issue_id": 31,
-    "result_id": 0,
-    "result": [
-      "No phising domains found in the last week"
-    ]
-  },
-  {
-    "issue_id": 30,
-    "result_id": 0,
-    "result": [
-      "Other Search Engine"
-    ]
-  }
-]
-2024/04/10 13:23:18 INFO: Opening database
-2024/04/10 13:23:18 INFO: Connected to database
-2024/04/10 13:23:18 INFO: Closing database
-2024/04/10 13:23:18 [{"issue_id":5,"result_id":1,"result":["No password manager found"]},{"issue_id":15,"result_id":1,"result":["Windows real-time defender is enabled but the windows periodic scan is disabled"]},{"issue_id":16,"result_id":0,"result":["Password last changed on 26-10-2022 , your password was changed more than half a year ago so you should change it again"]},{"issue_id":17,"result_id":4,"result":["Password","Password"]},{"issue_id":6,"result_id":0,"result":["MicrosoftTeams","MicrosoftWindows.Client.WebExperience","MSTeams"]},{"issue_id":7,"result_id":0,"result":["Microsoft.GamingApp","Microsoft.ScreenSketch","Microsoft.WindowsCamera","Microsoft.WindowsFeedbackHub","Microsoft.XboxGamingOverlay","MicrosoftTeams","chrome.exe","POWERPNT.EXE","firefox.exe","Teams.exe","ShooterGame.exe","FallGuys_client_game.exe","FortniteClient-Win64-Shipping.exe","RemotePlay.exe","RocketLeague.exe","windows.immersivecontrolpanel"]},{"issue_id":8,"result_id":0,"result":["Microsoft.WindowsCamera","MicrosoftTeams","MicrosoftWindows.Client.CBS","MSTeams","chrome.exe","Pokemon TCG Live.exe"]},{"issue_id":9,"result_id":0,"result":["microsoft.windowscommunicationsapps"]},{"issue_id":10,"result_id":0,"result":["microsoft.windowscommunicationsapps"]},{"issue_id":1,"result_id":1,"result":["AirPods Pro - Find My\u0000","AirPods\u0000"]},{"issue_id":11,"result_id":0,"result":["port: 34115, process: reporting-page-dev.exe","port: 34115, process: reporting-page-dev.exe","port: 34115, process: reporting-page-dev.exe","port: 34115, process: reporting-page-dev.exe","port: 34115, process: reporting-page-dev.exe","port: 34115, process: reporting-page-dev.exe","port: 34115, process: reporting-page-dev.exe","port: 34115, process: reporting-page-dev.exe","port: 34115, process: reporting-page-dev.exe","port: 34115, process: reporting-page-dev.exe","port: 34115, process: System Idle Process","port: 34115, process: System Idle Process","port: 34115, process: reporting-page-dev.exe","port: 34115, process: reporting-page-dev.exe","port: 51337, process: firefox.exe","port: 51338, process: firefox.exe","port: 51339, process: firefox.exe","port: 51340, process: firefox.exe","port: 51342, process: NVIDIA Web Helper.exe","port: 51342, process: NVIDIA Web Helper.exe","port: 52099, process: nvcontainer.exe","port: 52138, process: NVIDIA Share.exe","port: 52565, process: System Idle Process","port: 52743, process: msedgewebview2.exe","port: 52744, process: msedgewebview2.exe","port: 52745, process: msedgewebview2.exe","port: 52750, process: firefox.exe","port: 52752, process: firefox.exe","port: 52753, process: firefox.exe","port: 52754, process: firefox.exe","port: 52755, process: firefox.exe","port: 52756, process: firefox.exe","port: 52774, process: firefox.exe","port: 52775, process: firefox.exe","port: 65001, process: nvcontainer.exe","port: 65001, process: nvcontainer.exe","port: 139, process: System","port: 52086, process: KillerNetworkService.exe","port: 52088, process: firefox.exe","port: 52095, process: ekrn.exe","port: 52114, process: svchost.exe","port: 52115, process: svchost.exe","port: 52382, process: firefox.exe","port: 52428, process: Code.exe","port: 52573, process: firefox.exe","port: 52579, process: System Idle Process","port: 52580, process: System Idle Process","port: 52582, process: System Idle Process","port: 52583, process: System Idle Process","port: 52586, process: System Idle Process","port: 52594, process: System Idle Process","port: 52596, process: System Idle Process","port: 52637, process: System Idle Process","port: 52644, process: System Idle Process","port: 52676, process: firefox.exe","port: 52689, process: firefox.exe","port: 52709, process: firefox.exe","port: 52718, process: msedgewebview2.exe","port: 52747, process: reporting-page-dev.exe","port: 52748, process: reporting-page-dev.exe","port: 52757, process: firefox.exe","port: 52763, process: firefox.exe","port: 52764, process: firefox.exe","port: 52773, process: OneDrive.exe","port: 135, process: svchost.exe","port: 445, process: System","port: 49664, process: lsass.exe","port: 49665, process: wininit.exe","port: 49666, process: svchost.exe","port: 49667, process: svchost.exe","port: 49668, process: spoolsv.exe","port: 49679, process: services.exe","port: 5173, process: node.exe","port: 5173, process: System Idle Process","port: 5173, process: System Idle Process","port: 5173, process: node.exe","port: 5173, process: System Idle Process","port: 5173, process: System Idle Process","port: 5173, process: System Idle Process","port: 5173, process: node.exe","port: 49671, process: jhi_service.exe","port: 52720, process: System Idle Process","port: 52721, process: System Idle Process","port: 52722, process: System Idle Process","port: 52723, process: System Idle Process","port: 52724, process: System Idle Process","port: 52725, process: System Idle Process","port: 52726, process: System Idle Process","port: 52727, process: System Idle Process","port: 52728, process: System Idle Process","port: 52729, process: System Idle Process","port: 52730, process: System Idle Process","port: 52731, process: System Idle Process","port: 52732, process: System Idle Process","port: 52733, process: System Idle Process","port: 52734, process: System Idle Process","port: 52735, process: System Idle Process","port: 52736, process: System Idle Process","port: 52739, process: System Idle Process","port: 52740, process: System Idle Process","port: 52741, process: System Idle Process","port: 52742, process: System Idle Process","port: 52746, process: reporting-page-dev.exe","port: 52751, process: System Idle Process","port: 52758, process: System Idle Process","port: 52759, process: System Idle Process","port: 52760, process: System Idle Process","port: 52762, process: System Idle Process","port: 52765, process: System Idle Process","port: 52766, process: System Idle Process","port: 52768, process: System Idle Process","port: 52769, process: System Idle Process","port: 52776, process: reporting-page-dev.exe","port: 1900, process: svchost.exe","port: 10030, process: NVIDIA Web Helper.exe","port: 52333, process: svchost.exe","port: 58880, process: svchost.exe","port: 60534, process: ekrn.exe","port: 60889, process: nvcontainer.exe","port: 137, process: System","port: 138, process: System","port: 1900, process: svchost.exe","port: 5353, process: nvcontainer.exe","port: 58879, process: svchost.exe","port: 500, process: svchost.exe","port: 4500, process: svchost.exe","port: 5353, process: svchost.exe","port: 5355, process: svchost.exe","port: 50060, process: svchost.exe","port: 50307, process: svchost.exe","port: 50521, process: svchost.exe","port: 53969, process: svchost.exe","port: 60542, process: nvcontainer.exe","port: 62208, process: svchost.exe","port: 62433, process: svchost.exe","port: 62575, process: svchost.exe","port: 63891, process: svchost.exe","port: 1900, process: svchost.exe","port: 5353, process: nvcontainer.exe","port: 58878, process: svchost.exe","port: 1900, process: svchost.exe","port: 58877, process: svchost.exe"]},{"issue_id":18,"result_id":1,"result":["10.0.22631","There are updates available for Windows 10."]},{"issue_id":19,"result_id":1,"result":["Secure boot is enabled"]},{"issue_id":13,"result_id":2,"result":["SMB1: not enabled","SMB2: enabled"]},{"issue_id":20,"result_id":1,"result":["Docker Desktop","SecurityHealth"]},{"issue_id":3,"result_id":2,"result":["Guest account is not active"]},{"issue_id":14,"result_id":2,"result":["UAC is turned on for apps making changes to your computer."]},{"issue_id":12,"result_id":1,"result":["Remote Desktop is disabled"]},{"issue_id":2,"result_id":0,"result":["HID-muis","HD User Facing"]},{"issue_id":4,"result_id":0,"result":["Network sharing is enabled"]},{"issue_id":23,"result_id":1,"result":["No phishing domains found in the last week"]},{"issue_id":21,"result_id":0,"result":["Adblocker installed"]},{"issue_id":25,"result_id":0,"result":["google.com"]},{"issue_id":28,"result_id":0,"result":["Form Autofill,extension,,true","Picture-In-Picture,extension,,true","Firefox Screenshots,extension,Mozilla <screenshots-feedback@mozilla.com>,true","WebCompat Reporter,extension,Thomas Wisniewski <twisniewski@mozilla.com>,false","Web Compatibility Interventions,extension,,true","System theme — auto,theme,Mozilla,true","Add-ons Search Detection,extension,,true","Google,extension,,true","Wikipedia (en),extension,,true","Bing,extension,,true","DuckDuckGo,extension,,true","Light,theme,Mozilla,false","Dark,theme,Mozilla,false","Firefox Alpenglow,theme,,false","Amazon.com.au,extension,,true","eBay,extension,,true","Qwant,extension,,true"]},{"issue_id":29,"result_id":0,"result":["false"]},{"issue_id":31,"result_id":0,"result":["No phising domains found in the last week"]},{"issue_id":30,"result_id":0,"result":["Other Search Engine"]}]
-2024/04/10 13:23:18 DEBUG: [DevWebServer] Websocket client 0xc00060eab0 disconnected
-2024/04/10 13:23:56 DEBUG: [AssetHandler] Handling request '/' (file='.')
-2024/04/10 13:23:56 DEBUG: [AssetHandler] File '.' not found, serving '/' by AssetHandler
-2024/04/10 13:23:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/'
-2024/04/10 13:23:56 DEBUG: [AssetHandler] Handling request '/src/css/color-palette.css' (file='src/css/color-palette.css')
-2024/04/10 13:23:56 DEBUG: [AssetHandler] File 'src/css/color-palette.css' not found, serving '/src/css/color-palette.css' by AssetHandler
-2024/04/10 13:23:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/css/color-palette.css'
-2024/04/10 13:23:56 DEBUG: [AssetHandler] Handling request '/src/css/responsive.css' (file='src/css/responsive.css')
-2024/04/10 13:23:56 DEBUG: [AssetHandler] File 'src/css/responsive.css' not found, serving '/src/css/responsive.css' by AssetHandler
-2024/04/10 13:23:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/css/responsive.css'
-2024/04/10 13:23:56 DEBUG: [AssetHandler] Handling request '/src/css/home.css' (file='src/css/home.css')
-2024/04/10 13:23:56 DEBUG: [AssetHandler] File 'src/css/home.css' not found, serving '/src/css/home.css' by AssetHandler
-2024/04/10 13:23:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/css/home.css'
-2024/04/10 13:23:56 DEBUG: [AssetHandler] Handling request '/src/css/settings.css' (file='src/css/settings.css')
-2024/04/10 13:23:56 DEBUG: [AssetHandler] File 'src/css/settings.css' not found, serving '/src/css/settings.css' by AssetHandler
-2024/04/10 13:23:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/css/settings.css'
-2024/04/10 13:23:56 DEBUG: [AssetHandler] Handling request '/src/css/dashboard.css' (file='src/css/dashboard.css')
-2024/04/10 13:23:56 DEBUG: [AssetHandler] File 'src/css/dashboard.css' not found, serving '/src/css/dashboard.css' by AssetHandler
-2024/04/10 13:23:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/css/dashboard.css'
-2024/04/10 13:23:56 DEBUG: [AssetHandler] Handling request '/src/css/issues.css' (file='src/css/issues.css')
-2024/04/10 13:23:56 DEBUG: [AssetHandler] File 'src/css/issues.css' not found, serving '/src/css/issues.css' by AssetHandler
-2024/04/10 13:23:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/css/issues.css'
-2024/04/10 13:23:56 DEBUG: [AssetHandler] Handling request '/src/css/personalize.css' (file='src/css/personalize.css')
-2024/04/10 13:23:56 DEBUG: [AssetHandler] File 'src/css/personalize.css' not found, serving '/src/css/personalize.css' by AssetHandler
-2024/04/10 13:23:56 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/css/personalize.css'
-2024/04/10 13:25:13 DEBUG: [AssetHandler] Handling request '/' (file='.')
-2024/04/10 13:25:13 DEBUG: [AssetHandler] File '.' not found, serving '/' by AssetHandler
-2024/04/10 13:25:13 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/'
-2024/04/10 13:25:13 DEBUG: [AssetHandler] Handling request '/@vite/client' (file='@vite/client')
-2024/04/10 13:25:13 DEBUG: [AssetHandler] File '@vite/client' not found, serving '/@vite/client' by AssetHandler
-2024/04/10 13:25:13 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/@vite/client'
-2024/04/10 13:25:13 DEBUG: [AssetHandler] Handling request '/src/css/color-palette.css' (file='src/css/color-palette.css')
-2024/04/10 13:25:13 DEBUG: [AssetHandler] File 'src/css/color-palette.css' not found, serving '/src/css/color-palette.css' by AssetHandler
-2024/04/10 13:25:13 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/css/color-palette.css'
-2024/04/10 13:25:13 DEBUG: [AssetHandler] Handling request '/src/css/responsive.css' (file='src/css/responsive.css')
-2024/04/10 13:25:13 DEBUG: [AssetHandler] File 'src/css/responsive.css' not found, serving '/src/css/responsive.css' by AssetHandler
-2024/04/10 13:25:13 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/css/responsive.css'
-2024/04/10 13:25:13 DEBUG: [AssetHandler] Handling request '/src/css/home.css' (file='src/css/home.css')
-2024/04/10 13:25:13 DEBUG: [AssetHandler] File 'src/css/home.css' not found, serving '/src/css/home.css' by AssetHandler
-2024/04/10 13:25:13 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/css/home.css'
-2024/04/10 13:25:13 DEBUG: [AssetHandler] Handling request '/src/css/settings.css' (file='src/css/settings.css')
-2024/04/10 13:25:13 DEBUG: [AssetHandler] File 'src/css/settings.css' not found, serving '/src/css/settings.css' by AssetHandler
-2024/04/10 13:25:13 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/css/settings.css'
-2024/04/10 13:25:13 DEBUG: [AssetHandler] Handling request '/src/css/dashboard.css' (file='src/css/dashboard.css')
-2024/04/10 13:25:13 DEBUG: [AssetHandler] File 'src/css/dashboard.css' not found, serving '/src/css/dashboard.css' by AssetHandler
-2024/04/10 13:25:13 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/css/dashboard.css'
-2024/04/10 13:25:13 DEBUG: [AssetHandler] Handling request '/src/css/issues.css' (file='src/css/issues.css')
-2024/04/10 13:25:13 DEBUG: [AssetHandler] File 'src/css/issues.css' not found, serving '/src/css/issues.css' by AssetHandler
-2024/04/10 13:25:13 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/css/issues.css'
-2024/04/10 13:25:13 DEBUG: [AssetHandler] Handling request '/src/css/personalize.css' (file='src/css/personalize.css')
-2024/04/10 13:25:13 DEBUG: [AssetHandler] Handling request '/src/js/database.js' (file='src/js/database.js')
-2024/04/10 13:25:13 DEBUG: [AssetHandler] File 'src/css/personalize.css' not found, serving '/src/css/personalize.css' by AssetHandler
-2024/04/10 13:25:13 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/css/personalize.css'
-2024/04/10 13:25:13 DEBUG: [AssetHandler] File 'src/js/database.js' not found, serving '/src/js/database.js' by AssetHandler
-2024/04/10 13:25:13 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/database.js'
-2024/04/10 13:25:13 DEBUG: [AssetHandler] Handling request '/src/js/home.js' (file='src/js/home.js')
-2024/04/10 13:25:13 DEBUG: [AssetHandler] Handling request '/src/js/navigation-menu.js' (file='src/js/navigation-menu.js')
-2024/04/10 13:25:13 DEBUG: [AssetHandler] Handling request '/src/js/settings.js' (file='src/js/settings.js')
-2024/04/10 13:25:13 DEBUG: [AssetHandler] File 'src/js/settings.js' not found, serving '/src/js/settings.js' by AssetHandler
-2024/04/10 13:25:13 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/settings.js'
-2024/04/10 13:25:13 DEBUG: [AssetHandler] File 'src/js/home.js' not found, serving '/src/js/home.js' by AssetHandler
-2024/04/10 13:25:13 DEBUG: [AssetHandler] File 'src/js/navigation-menu.js' not found, serving '/src/js/navigation-menu.js' by AssetHandler
-2024/04/10 13:25:13 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/home.js'
-2024/04/10 13:25:13 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/navigation-menu.js'
-2024/04/10 13:25:13 DEBUG: [AssetHandler] Handling request '/src/js/security-dashboard.js' (file='src/js/security-dashboard.js')
-2024/04/10 13:25:13 DEBUG: [AssetHandler] File 'src/js/security-dashboard.js' not found, serving '/src/js/security-dashboard.js' by AssetHandler
-2024/04/10 13:25:13 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/security-dashboard.js'
-2024/04/10 13:25:13 DEBUG: [AssetHandler] Handling request '/src/js/issues.js' (file='src/js/issues.js')
-2024/04/10 13:25:13 DEBUG: [AssetHandler] File 'src/js/issues.js' not found, serving '/src/js/issues.js' by AssetHandler
-2024/04/10 13:25:13 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/issues.js'
-2024/04/10 13:25:13 DEBUG: [AssetHandler] Handling request '/src/js/privacy-dashboard.js' (file='src/js/privacy-dashboard.js')
-2024/04/10 13:25:13 DEBUG: [AssetHandler] File 'src/js/privacy-dashboard.js' not found, serving '/src/js/privacy-dashboard.js' by AssetHandler
-2024/04/10 13:25:13 DEBUG: [AssetHandler] Handling request '/src/js/integration.js' (file='src/js/integration.js')
-2024/04/10 13:25:13 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/privacy-dashboard.js'
-2024/04/10 13:25:13 DEBUG: [AssetHandler] Handling request '/src/js/about.js' (file='src/js/about.js')
-2024/04/10 13:25:13 DEBUG: [AssetHandler] File 'src/js/about.js' not found, serving '/src/js/about.js' by AssetHandler
-2024/04/10 13:25:13 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/about.js'
-2024/04/10 13:25:13 DEBUG: [AssetHandler] File 'src/js/integration.js' not found, serving '/src/js/integration.js' by AssetHandler
-2024/04/10 13:25:13 DEBUG: [AssetHandler] Handling request '/src/js/personalize.js' (file='src/js/personalize.js')
-2024/04/10 13:25:13 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/integration.js'
-2024/04/10 13:25:13 DEBUG: [AssetHandler] File 'src/js/personalize.js' not found, serving '/src/js/personalize.js' by AssetHandler
-2024/04/10 13:25:13 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/personalize.js'
-2024/04/10 13:25:13 DEBUG: [AssetHandler] Handling request '/src/assets/images/logoTeamA-transformed.png' (file='src/assets/images/logoTeamA-transformed.png')
-2024/04/10 13:25:13 DEBUG: [AssetHandler] File 'src/assets/images/logoTeamA-transformed.png' not found, serving '/src/assets/images/logoTeamA-transformed.png' by AssetHandler
-2024/04/10 13:25:13 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/assets/images/logoTeamA-transformed.png'
-2024/04/10 13:25:13 DEBUG: [AssetHandler] Handling request '/node_modules/vite/dist/client/env.mjs' (file='node_modules/vite/dist/client/env.mjs')
-2024/04/10 13:25:13 DEBUG: [AssetHandler] File 'node_modules/vite/dist/client/env.mjs' not found, serving '/node_modules/vite/dist/client/env.mjs' by AssetHandler
-2024/04/10 13:25:13 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/node_modules/vite/dist/client/env.mjs'
-2024/04/10 13:25:13 DEBUG: [AssetHandler] Handling request '/wailsjs/go/main/Tray.js' (file='wailsjs/go/main/Tray.js')
-2024/04/10 13:25:13 DEBUG: [AssetHandler] File 'wailsjs/go/main/Tray.js' not found, serving '/wailsjs/go/main/Tray.js' by AssetHandler
-2024/04/10 13:25:13 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/wailsjs/go/main/Tray.js'
-2024/04/10 13:25:13 DEBUG: [AssetHandler] Handling request '/wailsjs/go/main/DataBase.js' (file='wailsjs/go/main/DataBase.js')
-2024/04/10 13:25:13 DEBUG: [AssetHandler] File 'wailsjs/go/main/DataBase.js' not found, serving '/wailsjs/go/main/DataBase.js' by AssetHandler
-2024/04/10 13:25:13 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/wailsjs/go/main/DataBase.js'
-2024/04/10 13:25:13 DEBUG: [AssetHandler] Handling request '/src/js/home.js' (file='src/js/home.js')
-2024/04/10 13:25:13 DEBUG: [AssetHandler] File 'src/js/home.js' not found, serving '/src/js/home.js' by AssetHandler
-2024/04/10 13:25:13 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/home.js?t=1712748116187'
-2024/04/10 13:25:13 DEBUG: [AssetHandler] Handling request '/wailsjs/runtime/runtime.js' (file='wailsjs/runtime/runtime.js')
-2024/04/10 13:25:13 DEBUG: [AssetHandler] File 'wailsjs/runtime/runtime.js' not found, serving '/wailsjs/runtime/runtime.js' by AssetHandler
-2024/04/10 13:25:13 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/wailsjs/runtime/runtime.js'
-2024/04/10 13:25:13 DEBUG: [AssetHandler] Handling request '/src/js/risk-counters.js' (file='src/js/risk-counters.js')
-2024/04/10 13:25:13 DEBUG: [AssetHandler] File 'src/js/risk-counters.js' not found, serving '/src/js/risk-counters.js' by AssetHandler
-2024/04/10 13:25:13 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/risk-counters.js'
-2024/04/10 13:25:13 DEBUG: [AssetHandler] Handling request '/src/js/piechart.js' (file='src/js/piechart.js')
-2024/04/10 13:25:13 DEBUG: [AssetHandler] File 'src/js/piechart.js' not found, serving '/src/js/piechart.js' by AssetHandler
-2024/04/10 13:25:13 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/piechart.js'
-2024/04/10 13:25:13 DEBUG: [AssetHandler] Handling request '/src/js/localize.js' (file='src/js/localize.js')
-2024/04/10 13:25:13 DEBUG: [AssetHandler] File 'src/js/localize.js' not found, serving '/src/js/localize.js' by AssetHandler
-2024/04/10 13:25:13 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/localize.js'
-2024/04/10 13:25:13 DEBUG: [AssetHandler] Handling request '/src/assets/images/img_medal1.jpg' (file='src/assets/images/img_medal1.jpg')
-2024/04/10 13:25:13 DEBUG: [AssetHandler] File 'src/assets/images/img_medal1.jpg' not found, serving '/src/assets/images/img_medal1.jpg' by AssetHandler
-2024/04/10 13:25:13 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/assets/images/img_medal1.jpg?import'
-2024/04/10 13:25:13 DEBUG: [AssetHandler] Handling request '/src/js/personalize.js' (file='src/js/personalize.js')
-2024/04/10 13:25:13 DEBUG: [AssetHandler] File 'src/js/personalize.js' not found, serving '/src/js/personalize.js' by AssetHandler
-2024/04/10 13:25:13 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/personalize.js?t=1712748116187'
-2024/04/10 13:25:13 DEBUG: [AssetHandler] Handling request '/src/database.json' (file='src/database.json')
-2024/04/10 13:25:13 DEBUG: [AssetHandler] File 'src/database.json' not found, serving '/src/database.json' by AssetHandler
-2024/04/10 13:25:13 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/database.json?import'
-2024/04/10 13:25:13 DEBUG: [AssetHandler] Handling request '/src/js/issue.js' (file='src/js/issue.js')
-2024/04/10 13:25:13 DEBUG: [AssetHandler] File 'src/js/issue.js' not found, serving '/src/js/issue.js' by AssetHandler
-2024/04/10 13:25:13 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/issue.js?t=1712748116187'
-2024/04/10 13:25:13 DEBUG: [AssetHandler] Handling request '/src/js/graph.js' (file='src/js/graph.js')
-2024/04/10 13:25:13 DEBUG: [AssetHandler] File 'src/js/graph.js' not found, serving '/src/js/graph.js' by AssetHandler
-2024/04/10 13:25:13 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/graph.js'
-2024/04/10 13:25:13 DEBUG: [AssetHandler] Handling request '/src/js/database.js' (file='src/js/database.js')
-2024/04/10 13:25:13 DEBUG: [AssetHandler] File 'src/js/database.js' not found, serving '/src/js/database.js' by AssetHandler
-2024/04/10 13:25:13 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/database.js?t=1712748116187'
-2024/04/10 13:25:13 DEBUG: [AssetHandler] Handling request '/wailsjs/go/main/App.js' (file='wailsjs/go/main/App.js')
-2024/04/10 13:25:13 DEBUG: [AssetHandler] File 'wailsjs/go/main/App.js' not found, serving '/wailsjs/go/main/App.js' by AssetHandler
-2024/04/10 13:25:13 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/wailsjs/go/main/App.js'
-2024/04/10 13:25:13 DEBUG: [AssetHandler] Handling request '/src/js/issues.js' (file='src/js/issues.js')
-2024/04/10 13:25:13 DEBUG: [AssetHandler] File 'src/js/issues.js' not found, serving '/src/js/issues.js' by AssetHandler
-2024/04/10 13:25:13 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/js/issues.js?t=1712748116187'
-2024/04/10 13:25:13 INFO: Scanning now. Scan:8
-2024/04/10 13:25:13 INFO: Scanning now. Scan:9
-2024/04/10 13:25:14 ERROR: Error setting progress text: Class already exists.
-2024/04/10 13:25:14 ERROR: Error calling scan: Class already exists.
-2024/04/10 13:25:14 ERROR: Error closing dialog: Class already exists.
-2024/04/10 13:25:14 ERROR: Error in scanNowGo: Class already exists.
-2024/04/10 13:25:14 DEBUG: [AssetHandler] Handling request '/src/assets/images/logoTeamA-transformed.png' (file='src/assets/images/logoTeamA-transformed.png')
-2024/04/10 13:25:14 DEBUG: [AssetHandler] File 'src/assets/images/logoTeamA-transformed.png' not found, serving '/src/assets/images/logoTeamA-transformed.png' by AssetHandler
-2024/04/10 13:25:14 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/assets/images/logoTeamA-transformed.png'
-2024/04/10 13:25:21 INFO: [
-  {
-    "issue_id": 5,
-    "result_id": 1,
-    "result": [
-      "No password manager found"
-    ]
-  },
-  {
-    "issue_id": 15,
-    "result_id": 1,
-    "result": [
-      "Windows real-time defender is enabled but the windows periodic scan is disabled"
-    ]
-  },
-  {
-    "issue_id": 16,
-    "result_id": 0,
-    "result": [
-      "Password last changed on 26-10-2022 , your password was changed more than half a year ago so you should change it again"
-    ]
-  },
-  {
-    "issue_id": 17,
-    "result_id": 4,
-    "result": [
-      "Password",
-      "Password"
-    ]
-  },
-  {
-    "issue_id": 6,
-    "result_id": 0,
-    "result": [
-      "MicrosoftTeams",
-      "MicrosoftWindows.Client.WebExperience",
-      "MSTeams"
-    ]
-  },
-  {
-    "issue_id": 7,
-    "result_id": 0,
-    "result": [
-      "Microsoft.GamingApp",
-      "Microsoft.ScreenSketch",
-      "Microsoft.WindowsCamera",
-      "Microsoft.WindowsFeedbackHub",
-      "Microsoft.XboxGamingOverlay",
-      "MicrosoftTeams",
-      "chrome.exe",
-      "POWERPNT.EXE",
-      "firefox.exe",
-      "Teams.exe",
-      "ShooterGame.exe",
-      "FallGuys_client_game.exe",
-      "FortniteClient-Win64-Shipping.exe",
-      "RemotePlay.exe",
-      "RocketLeague.exe",
-      "windows.immersivecontrolpanel"
-    ]
-  },
-  {
-    "issue_id": 8,
-    "result_id": 0,
-    "result": [
-      "Microsoft.WindowsCamera",
-      "MicrosoftTeams",
-      "MicrosoftWindows.Client.CBS",
-      "MSTeams",
-      "chrome.exe",
-      "Pokemon TCG Live.exe"
-    ]
-  },
-  {
-    "issue_id": 9,
-    "result_id": 0,
-    "result": [
-      "microsoft.windowscommunicationsapps"
-    ]
-  },
-  {
-    "issue_id": 10,
-    "result_id": 0,
-    "result": [
-      "microsoft.windowscommunicationsapps"
-    ]
-  },
-  {
-    "issue_id": 1,
-    "result_id": 1,
-    "result": [
-      "AirPods Pro - Find My\u0000",
-      "AirPods\u0000"
-    ]
-  },
-  {
-    "issue_id": 11,
-    "result_id": 0,
-    "result": [
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: System Idle Process",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 34115, process: reporting-page-dev.exe",
-      "port: 51337, process: firefox.exe",
-      "port: 51338, process: firefox.exe",
-      "port: 51339, process: firefox.exe",
-      "port: 51340, process: firefox.exe",
-      "port: 51342, process: NVIDIA Web Helper.exe",
-      "port: 51342, process: NVIDIA Web Helper.exe",
-      "port: 52099, process: nvcontainer.exe",
-      "port: 52138, process: NVIDIA Share.exe",
-      "port: 52743, process: System Idle Process",
-      "port: 52744, process: System Idle Process",
-      "port: 52745, process: System Idle Process",
-      "port: 52750, process: System Idle Process",
-      "port: 52752, process: System Idle Process",
-      "port: 52753, process: System Idle Process",
-      "port: 52754, process: System Idle Process",
-      "port: 52755, process: System Idle Process",
-      "port: 52756, process: System Idle Process",
-      "port: 52833, process: msedgewebview2.exe",
-      "port: 52834, process: msedgewebview2.exe",
-      "port: 52835, process: msedgewebview2.exe",
-      "port: 65001, process: nvcontainer.exe",
-      "port: 65001, process: nvcontainer.exe",
-      "port: 139, process: System",
-      "port: 52086, process: KillerNetworkService.exe",
-      "port: 52088, process: firefox.exe",
-      "port: 52095, process: ekrn.exe",
-      "port: 52114, process: svchost.exe",
-      "port: 52115, process: svchost.exe",
-      "port: 52382, process: firefox.exe",
-      "port: 52573, process: firefox.exe",
-      "port: 52676, process: firefox.exe",
-      "port: 52689, process: firefox.exe",
-      "port: 52709, process: firefox.exe",
-      "port: 52748, process: System Idle Process",
-      "port: 52757, process: firefox.exe",
-      "port: 52763, process: firefox.exe",
-      "port: 52764, process: firefox.exe",
-      "port: 52773, process: System Idle Process",
-      "port: 52777, process: msedgewebview2.exe",
-      "port: 52778, process: msedgewebview2.exe",
-      "port: 52779, process: msedgewebview2.exe",
-      "port: 52789, process: msedgewebview2.exe",
-      "port: 52790, process: msedgewebview2.exe",
-      "port: 52791, process: msedgewebview2.exe",
-      "port: 52792, process: msedgewebview2.exe",
-      "port: 52803, process: Code.exe",
-      "port: 52804, process: Code.exe",
-      "port: 52807, process: msedgewebview2.exe",
-      "port: 135, process: svchost.exe",
-      "port: 445, process: System",
-      "port: 49664, process: lsass.exe",
-      "port: 49665, process: wininit.exe",
-      "port: 49666, process: svchost.exe",
-      "port: 49667, process: svchost.exe",
-      "port: 49668, process: spoolsv.exe",
-      "port: 49679, process: services.exe",
-      "port: 5173, process: node.exe",
-      "port: 5173, process: System Idle Process",
-      "port: 5173, process: System Idle Process",
-      "port: 5173, process: node.exe",
-      "port: 5173, process: node.exe",
-      "port: 5173, process: node.exe",
-      "port: 49671, process: jhi_service.exe",
-      "port: 52781, process: System Idle Process",
-      "port: 52782, process: System Idle Process",
-      "port: 52785, process: System Idle Process",
-      "port: 52786, process: System Idle Process",
-      "port: 52787, process: System Idle Process",
-      "port: 52788, process: System Idle Process",
-      "port: 52808, process: System Idle Process",
-      "port: 52809, process: System Idle Process",
-      "port: 52810, process: System Idle Process",
-      "port: 52811, process: System Idle Process",
-      "port: 52812, process: System Idle Process",
-      "port: 52813, process: System Idle Process",
-      "port: 52814, process: System Idle Process",
-      "port: 52815, process: System Idle Process",
-      "port: 52816, process: reporting-page-dev.exe",
-      "port: 52817, process: System Idle Process",
-      "port: 52818, process: System Idle Process",
-      "port: 52819, process: System Idle Process",
-      "port: 52820, process: System Idle Process",
-      "port: 52821, process: System Idle Process",
-      "port: 52822, process: System Idle Process",
-      "port: 52823, process: System Idle Process",
-      "port: 52824, process: System Idle Process",
-      "port: 52825, process: System Idle Process",
-      "port: 52826, process: System Idle Process",
-      "port: 52827, process: System Idle Process",
-      "port: 52828, process: reporting-page-dev.exe",
-      "port: 52830, process: System Idle Process",
-      "port: 52831, process: System Idle Process",
-      "port: 52832, process: System Idle Process",
-      "port: 52836, process: reporting-page-dev.exe",
-      "port: 1900, process: svchost.exe",
-      "port: 10030, process: NVIDIA Web Helper.exe",
-      "port: 52333, process: svchost.exe",
-      "port: 58880, process: svchost.exe",
-      "port: 60534, process: ekrn.exe",
-      "port: 60889, process: nvcontainer.exe",
-      "port: 137, process: System",
-      "port: 138, process: System",
-      "port: 1900, process: svchost.exe",
-      "port: 5353, process: nvcontainer.exe",
-      "port: 58879, process: svchost.exe",
-      "port: 500, process: svchost.exe",
-      "port: 4500, process: svchost.exe",
-      "port: 5353, process: svchost.exe",
-      "port: 5355, process: svchost.exe",
-      "port: 50060, process: svchost.exe",
-      "port: 50307, process: svchost.exe",
-      "port: 50521, process: svchost.exe",
-      "port: 53969, process: svchost.exe",
-      "port: 60542, process: nvcontainer.exe",
-      "port: 62208, process: svchost.exe",
-      "port: 62433, process: svchost.exe",
-      "port: 62575, process: svchost.exe",
-      "port: 63891, process: svchost.exe",
-      "port: 1900, process: svchost.exe",
-      "port: 5353, process: nvcontainer.exe",
-      "port: 58878, process: svchost.exe",
-      "port: 1900, process: svchost.exe",
-      "port: 58877, process: svchost.exe"
-    ]
-  },
-  {
-    "issue_id": 18,
-    "result_id": 1,
-    "result": [
-      "10.0.22631",
-      "There are updates available for Windows 10."
-    ]
-  },
-  {
-    "issue_id": 19,
-    "result_id": 1,
-    "result": [
-      "Secure boot is enabled"
-    ]
-  },
-  {
-    "issue_id": 13,
-    "result_id": 2,
-    "result": [
-      "SMB1: not enabled",
-      "SMB2: enabled"
-    ]
-  },
-  {
-    "issue_id": 20,
-    "result_id": 1,
-    "result": [
-      "Docker Desktop",
-      "SecurityHealth"
-    ]
-  },
-  {
-    "issue_id": 3,
-    "result_id": 2,
-    "result": [
-      "Guest account is not active"
-    ]
-  },
-  {
-    "issue_id": 14,
-    "result_id": 2,
-    "result": [
-      "UAC is turned on for apps making changes to your computer."
-    ]
-  },
-  {
-    "issue_id": 12,
-    "result_id": 1,
-    "result": [
-      "Remote Desktop is disabled"
-    ]
-  },
-  {
-    "issue_id": 2,
-    "result_id": 0,
-    "result": [
-      "HID-muis",
-      "HD User Facing"
-    ]
-  },
-  {
-    "issue_id": 4,
-    "result_id": 0,
-    "result": [
-      "Network sharing is enabled"
-    ]
-  },
-  {
-    "issue_id": 23,
-    "result_id": 1,
-    "result": [
-      "No phishing domains found in the last week"
-    ]
-  },
-  {
-    "issue_id": 21,
-    "result_id": 0,
-    "result": [
-      "Adblocker installed"
-    ]
-  },
-  {
-    "issue_id": 25,
-    "result_id": 0,
-    "result": [
-      "google.com"
-    ]
-  },
-  {
-    "issue_id": 28,
-    "result_id": 0,
-    "result": [
-      "Form Autofill,extension,,true",
-      "Picture-In-Picture,extension,,true",
-      "Firefox Screenshots,extension,Mozilla \u003cscreenshots-feedback@mozilla.com\u003e,true",
-      "WebCompat Reporter,extension,Thomas Wisniewski \u003ctwisniewski@mozilla.com\u003e,false",
-      "Web Compatibility Interventions,extension,,true",
-      "System theme — auto,theme,Mozilla,true",
-      "Add-ons Search Detection,extension,,true",
-      "Google,extension,,true",
-      "Wikipedia (en),extension,,true",
-      "Bing,extension,,true",
-      "DuckDuckGo,extension,,true",
-      "Light,theme,Mozilla,false",
-      "Dark,theme,Mozilla,false",
-      "Firefox Alpenglow,theme,,false",
-      "Amazon.com.au,extension,,true",
-      "eBay,extension,,true",
-      "Qwant,extension,,true"
-    ]
-  },
-  {
-    "issue_id": 29,
-    "result_id": 0,
-    "result": [
-      "false"
-    ]
-  },
-  {
-    "issue_id": 31,
-    "result_id": 0,
-    "result": [
-      "No phising domains found in the last week"
-    ]
-  },
-  {
-    "issue_id": 30,
-    "result_id": 0,
-    "result": [
-      "Other Search Engine"
-    ]
-  }
-]
-2024/04/10 13:25:21 INFO: Opening database
-2024/04/10 13:25:21 INFO: Connected to database
-2024/04/10 13:25:21 [{"issue_id":5,"result_id":1,"result":["No password manager found"]},{"issue_id":15,"result_id":1,"result":["Windows real-time defender is enabled but the windows periodic scan is disabled"]},{"issue_id":16,"result_id":0,"result":["Password last changed on 26-10-2022 , your password was changed more than half a year ago so you should change it again"]},{"issue_id":17,"result_id":4,"result":["Password","Password"]},{"issue_id":6,"result_id":0,"result":["MicrosoftTeams","MicrosoftWindows.Client.WebExperience","MSTeams"]},{"issue_id":7,"result_id":0,"result":["Microsoft.GamingApp","Microsoft.ScreenSketch","Microsoft.WindowsCamera","Microsoft.WindowsFeedbackHub","Microsoft.XboxGamingOverlay","MicrosoftTeams","chrome.exe","POWERPNT.EXE","firefox.exe","Teams.exe","ShooterGame.exe","FallGuys_client_game.exe","FortniteClient-Win64-Shipping.exe","RemotePlay.exe","RocketLeague.exe","windows.immersivecontrolpanel"]},{"issue_id":8,"result_id":0,"result":["Microsoft.WindowsCamera","MicrosoftTeams","MicrosoftWindows.Client.CBS","MSTeams","chrome.exe","Pokemon TCG Live.exe"]},{"issue_id":9,"result_id":0,"result":["microsoft.windowscommunicationsapps"]},{"issue_id":10,"result_id":0,"result":["microsoft.windowscommunicationsapps"]},{"issue_id":1,"result_id":1,"result":["AirPods Pro - Find My\u0000","AirPods\u0000"]},{"issue_id":11,"result_id":0,"result":["port: 34115, process: reporting-page-dev.exe","port: 34115, process: System Idle Process","port: 34115, process: reporting-page-dev.exe","port: 34115, process: reporting-page-dev.exe","port: 34115, process: reporting-page-dev.exe","port: 51337, process: firefox.exe","port: 51338, process: firefox.exe","port: 51339, process: firefox.exe","port: 51340, process: firefox.exe","port: 51342, process: NVIDIA Web Helper.exe","port: 51342, process: NVIDIA Web Helper.exe","port: 52099, process: nvcontainer.exe","port: 52138, process: NVIDIA Share.exe","port: 52743, process: System Idle Process","port: 52744, process: System Idle Process","port: 52745, process: System Idle Process","port: 52750, process: System Idle Process","port: 52752, process: System Idle Process","port: 52753, process: System Idle Process","port: 52754, process: System Idle Process","port: 52755, process: System Idle Process","port: 52756, process: System Idle Process","port: 52833, process: msedgewebview2.exe","port: 52834, process: msedgewebview2.exe","port: 52835, process: msedgewebview2.exe","port: 65001, process: nvcontainer.exe","port: 65001, process: nvcontainer.exe","port: 139, process: System","port: 52086, process: KillerNetworkService.exe","port: 52088, process: firefox.exe","port: 52095, process: ekrn.exe","port: 52114, process: svchost.exe","port: 52115, process: svchost.exe","port: 52382, process: firefox.exe","port: 52573, process: firefox.exe","port: 52676, process: firefox.exe","port: 52689, process: firefox.exe","port: 52709, process: firefox.exe","port: 52748, process: System Idle Process","port: 52757, process: firefox.exe","port: 52763, process: firefox.exe","port: 52764, process: firefox.exe","port: 52773, process: System Idle Process","port: 52777, process: msedgewebview2.exe","port: 52778, process: msedgewebview2.exe","port: 52779, process: msedgewebview2.exe","port: 52789, process: msedgewebview2.exe","port: 52790, process: msedgewebview2.exe","port: 52791, process: msedgewebview2.exe","port: 52792, process: msedgewebview2.exe","port: 52803, process: Code.exe","port: 52804, process: Code.exe","port: 52807, process: msedgewebview2.exe","port: 135, process: svchost.exe","port: 445, process: System","port: 49664, process: lsass.exe","port: 49665, process: wininit.exe","port: 49666, process: svchost.exe","port: 49667, process: svchost.exe","port: 49668, process: spoolsv.exe","port: 49679, process: services.exe","port: 5173, process: node.exe","port: 5173, process: System Idle Process","port: 5173, process: System Idle Process","port: 5173, process: node.exe","port: 5173, process: node.exe","port: 5173, process: node.exe","port: 49671, process: jhi_service.exe","port: 52781, process: System Idle Process","port: 52782, process: System Idle Process","port: 52785, process: System Idle Process","port: 52786, process: System Idle Process","port: 52787, process: System Idle Process","port: 52788, process: System Idle Process","port: 52808, process: System Idle Process","port: 52809, process: System Idle Process","port: 52810, process: System Idle Process","port: 52811, process: System Idle Process","port: 52812, process: System Idle Process","port: 52813, process: System Idle Process","port: 52814, process: System Idle Process","port: 52815, process: System Idle Process","port: 52816, process: reporting-page-dev.exe","port: 52817, process: System Idle Process","port: 52818, process: System Idle Process","port: 52819, process: System Idle Process","port: 52820, process: System Idle Process","port: 52821, process: System Idle Process","port: 52822, process: System Idle Process","port: 52823, process: System Idle Process","port: 52824, process: System Idle Process","port: 52825, process: System Idle Process","port: 52826, process: System Idle Process","port: 52827, process: System Idle Process","port: 52828, process: reporting-page-dev.exe","port: 52830, process: System Idle Process","port: 52831, process: System Idle Process","port: 52832, process: System Idle Process","port: 52836, process: reporting-page-dev.exe","port: 1900, process: svchost.exe","port: 10030, process: NVIDIA Web Helper.exe","port: 52333, process: svchost.exe","port: 58880, process: svchost.exe","port: 60534, process: ekrn.exe","port: 60889, process: nvcontainer.exe","port: 137, process: System","port: 138, process: System","port: 1900, process: svchost.exe","port: 5353, process: nvcontainer.exe","port: 58879, process: svchost.exe","port: 500, process: svchost.exe","port: 4500, process: svchost.exe","port: 5353, process: svchost.exe","port: 5355, process: svchost.exe","port: 50060, process: svchost.exe","port: 50307, process: svchost.exe","port: 50521, process: svchost.exe","port: 53969, process: svchost.exe","port: 60542, process: nvcontainer.exe","port: 62208, process: svchost.exe","port: 62433, process: svchost.exe","port: 62575, process: svchost.exe","port: 63891, process: svchost.exe","port: 1900, process: svchost.exe","port: 5353, process: nvcontainer.exe","port: 58878, process: svchost.exe","port: 1900, process: svchost.exe","port: 58877, process: svchost.exe"]},{"issue_id":18,"result_id":1,"result":["10.0.22631","There are updates available for Windows 10."]},{"issue_id":19,"result_id":1,"result":["Secure boot is enabled"]},{"issue_id":13,"result_id":2,"result":["SMB1: not enabled","SMB2: enabled"]},{"issue_id":20,"result_id":1,"result":["Docker Desktop","SecurityHealth"]},{"issue_id":3,"result_id":2,"result":["Guest account is not active"]},{"issue_id":14,"result_id":2,"result":["UAC is turned on for apps making changes to your computer."]},{"issue_id":12,"result_id":1,"result":["Remote Desktop is disabled"]},{"issue_id":2,"result_id":0,"result":["HID-muis","HD User Facing"]},{"issue_id":4,"result_id":0,"result":["Network sharing is enabled"]},{"issue_id":23,"result_id":1,"result":["No phishing domains found in the last week"]},{"issue_id":21,"result_id":0,"result":["Adblocker installed"]},{"issue_id":25,"result_id":0,"result":["google.com"]},{"issue_id":28,"result_id":0,"result":["Form Autofill,extension,,true","Picture-In-Picture,extension,,true","Firefox Screenshots,extension,Mozilla <screenshots-feedback@mozilla.com>,true","WebCompat Reporter,extension,Thomas Wisniewski <twisniewski@mozilla.com>,false","Web Compatibility Interventions,extension,,true","System theme — auto,theme,Mozilla,true","Add-ons Search Detection,extension,,true","Google,extension,,true","Wikipedia (en),extension,,true","Bing,extension,,true","DuckDuckGo,extension,,true","Light,theme,Mozilla,false","Dark,theme,Mozilla,false","Firefox Alpenglow,theme,,false","Amazon.com.au,extension,,true","eBay,extension,,true","Qwant,extension,,true"]},{"issue_id":29,"result_id":0,"result":["false"]},{"issue_id":31,"result_id":0,"result":["No phising domains found in the last week"]},{"issue_id":30,"result_id":0,"result":["Other Search Engine"]}]
-2024/04/10 13:25:21 INFO: Closing database
-2024/04/10 13:25:46 DEBUG: [AssetHandler] Handling request '/src/assets/images/img_medal1.jpg' (file='src/assets/images/img_medal1.jpg')
-2024/04/10 13:25:46 DEBUG: [AssetHandler] File 'src/assets/images/img_medal1.jpg' not found, serving '/src/assets/images/img_medal1.jpg' by AssetHandler
-2024/04/10 13:25:46 DEBUG: [ExternalAssetHandler] Loading 'http://localhost:5173/src/assets/images/img_medal1.jpg'
+2024/04/11 17:15:02 INFO: Opening database
+2024/04/11 17:15:02 INFO: Connected to database
+2024/04/11 17:15:02 [{"issue_id":5,"result_id":1,"result":["No password manager found"]},{"issue_id":15,"result_id":0,"result":["Windows real-time defender is enabled and also the windows periodic scan is enabled"]},{"issue_id":16,"result_id":0,"result":["Password last changed on 26-10-2022 , your password was changed more than half a year ago so you should change it again"]},{"issue_id":17,"result_id":4,"result":["Password","Password"]},{"issue_id":6,"result_id":0,"result":["MicrosoftTeams","MicrosoftWindows.Client.WebExperience","MSTeams"]},{"issue_id":7,"result_id":0,"result":["Microsoft.GamingApp","Microsoft.ScreenSketch","Microsoft.WindowsCamera","Microsoft.WindowsFeedbackHub","Microsoft.XboxGamingOverlay","MicrosoftTeams","chrome.exe","POWERPNT.EXE","firefox.exe","Teams.exe","ShooterGame.exe","FallGuys_client_game.exe","FortniteClient-Win64-Shipping.exe","RemotePlay.exe","RocketLeague.exe","windows.immersivecontrolpanel"]},{"issue_id":8,"result_id":0,"result":["Microsoft.WindowsCamera","MicrosoftTeams","MicrosoftWindows.Client.CBS","MSTeams","chrome.exe","Pokemon TCG Live.exe"]},{"issue_id":9,"result_id":0,"result":["microsoft.windowscommunicationsapps"]},{"issue_id":10,"result_id":0,"result":["microsoft.windowscommunicationsapps"]},{"issue_id":1,"result_id":1,"result":["AirPods Pro - Find My\u0000","AirPods\u0000"]},{"issue_id":11,"result_id":0,"result":["port: 54925, process: NVIDIA Web Helper.exe","port: 54925, process: NVIDIA Web Helper.exe","port: 55555, process: nvcontainer.exe","port: 55595, process: NVIDIA Share.exe","port: 55769, process: firefox.exe","port: 55770, process: firefox.exe","port: 55771, process: firefox.exe","port: 55772, process: firefox.exe","port: 65001, process: nvcontainer.exe","port: 65001, process: nvcontainer.exe","port: 139, process: System","port: 55622, process: svchost.exe","port: 55763, process: ekrn.exe","port: 55792, process: firefox.exe","port: 57145, process: Code.exe","port: 57210, process: OneDrive.exe","port: 57212, process: System Idle Process","port: 57214, process: System Idle Process","port: 57215, process: firefox.exe","port: 135, process: svchost.exe","port: 445, process: System","port: 7680, process: svchost.exe","port: 49664, process: lsass.exe","port: 49665, process: wininit.exe","port: 49666, process: svchost.exe","port: 49667, process: svchost.exe","port: 49668, process: spoolsv.exe","port: 49679, process: services.exe","port: 42050, process: Microsoft.SharePoint.exe","port: 49671, process: jhi_service.exe","port: 56974, process: SearchHost.exe","port: 56980, process: SearchHost.exe","port: 57194, process: System Idle Process","port: 57222, process: reporting-page.exe","port: 57223, process: reporting-page.exe","port: 1900, process: svchost.exe","port: 10040, process: NVIDIA Web Helper.exe","port: 51456, process: nvcontainer.exe","port: 52333, process: svchost.exe","port: 59180, process: svchost.exe","port: 60534, process: ekrn.exe","port: 137, process: System","port: 138, process: System","port: 1900, process: svchost.exe","port: 5353, process: nvcontainer.exe","port: 59179, process: svchost.exe","port: 123, process: svchost.exe","port: 500, process: svchost.exe","port: 4500, process: svchost.exe","port: 5353, process: svchost.exe","port: 5355, process: svchost.exe","port: 51726, process: firefox.exe","port: 58282, process: ekrn.exe","port: 60542, process: nvcontainer.exe","port: 63439, process: svchost.exe","port: 63643, process: svchost.exe","port: 65126, process: msedgewebview2.exe","port: 1900, process: svchost.exe","port: 5353, process: nvcontainer.exe","port: 59178, process: svchost.exe","port: 1900, process: svchost.exe","port: 59177, process: svchost.exe"]},{"issue_id":18,"result_id":1,"result":["10.0.22631","There are updates available for Windows 10."]},{"issue_id":19,"result_id":1,"result":["Secure boot is enabled"]},{"issue_id":13,"result_id":2,"result":["SMB1: not enabled","SMB2: enabled"]},{"issue_id":20,"result_id":1,"result":["Docker Desktop","SecurityHealth"]},{"issue_id":3,"result_id":2,"result":["Guest account is not active"]},{"issue_id":14,"result_id":2,"result":["UAC is turned on for apps making changes to your computer."]},{"issue_id":12,"result_id":1,"result":["Remote Desktop is disabled"]},{"issue_id":2,"result_id":0,"result":["HID-muis","HID-muis","HD User Facing"]},{"issue_id":4,"result_id":0,"result":["Network sharing is enabled"]},{"issue_id":23,"result_id":1,"result":["No phishing domains found in the last week"]},{"issue_id":21,"result_id":0,"result":["Adblocker installed"]},{"issue_id":25,"result_id":0,"result":["google.com"]},{"issue_id":28,"result_id":0,"result":["Form Autofill,extension,,true","Picture-In-Picture,extension,,true","Firefox Screenshots,extension,Mozilla <screenshots-feedback@mozilla.com>,true","WebCompat Reporter,extension,Thomas Wisniewski <twisniewski@mozilla.com>,false","Web Compatibility Interventions,extension,,true","System theme — auto,theme,Mozilla,true","Add-ons Search Detection,extension,,true","Google,extension,,true","Wikipedia (en),extension,,true","Bing,extension,,true","DuckDuckGo,extension,,true","Light,theme,Mozilla,false","Dark,theme,Mozilla,false","Firefox Alpenglow,theme,,false","Amazon.com.au,extension,,true","eBay,extension,,true","Qwant,extension,,true"]},{"issue_id":29,"result_id":0,"result":["false"]},{"issue_id":31,"result_id":0,"result":["No phising domains found in the last week"]},{"issue_id":30,"result_id":0,"result":["Other Search Engine"]}]
+2024/04/11 17:15:02 INFO: Closing database

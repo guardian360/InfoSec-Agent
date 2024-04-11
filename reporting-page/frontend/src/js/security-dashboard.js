@@ -1,10 +1,10 @@
 import {Graph} from './graph.js';
 import {PieChart} from './piechart.js';
 import {getLocalization} from './localize.js';
-import {ScanNow as scanNowGo, LogError as logError} from '../../wailsjs/go/main/Tray.js';
+import {LogError as logError} from '../../wailsjs/go/main/Tray.js';
 import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
 import {retrieveTheme} from './personalize.js';
-import { scanTest } from './database.js';
+import {scanTest} from './database.js';
 
 /** Load the content of the Security Dashboard page */
 function openSecurityDashboardPage() {
@@ -204,7 +204,6 @@ function openSecurityDashboardPage() {
     adjustWithRiskCounters(rc, document);
     setMaxInterval(rc, document);
     g.changeGraph();
-    console.log(rc);
   });
   document.onload = retrieveTheme();
 }
