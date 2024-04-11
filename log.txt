@@ -1,0 +1,2 @@
+2024/04/11 13:13:24 INFO: Starting InfoSec Agent
+2024/04/11 13:13:27 INFO: Quitting the application
