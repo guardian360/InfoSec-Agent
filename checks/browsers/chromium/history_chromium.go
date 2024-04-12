@@ -57,7 +57,7 @@ func HistoryChromium(browser string) checks.Check {
 	}(tempHistoryDB)
 
 	// Copy the database to a temporary location
-	copyError := utils.CopyFile(user+"/AppData/Local/"+browserPath+"/User Data/Default/History", tempHistoryDB)
+	copyError := utils.CopyFile(user+"/AppData/Local/"+browserPath+"/User Data/Default/History", tempHistoryDB, nil, nil)
 	if copyError != nil {
 		return checks.NewCheckError(returnID, copyError)
 	}
