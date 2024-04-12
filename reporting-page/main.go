@@ -18,16 +18,37 @@ import (
 //go:embed all:frontend/dist
 var assets embed.FS
 
-// main is the entry point of the reporting page application. It initializes the localization settings, creates a new instance of the application, tray, and database, and starts the Wails application.
+// TODO: Fix this one
+type FileLoader struct {
+	http.Handler
+}
+
+// TODO: Fix this one
+func NewFileLoader() *FileLoader {
+	return &FileLoader{}
+}
+
+// TODO: Fix this one
+func (h *FileLoader) ServeHTTP(res http.ResponseWriter, req *http.Request) {
+	var err error
+	requestedFilename := strings.TrimPrefix(req.URL.Path, "/")
+	logger.Log.Info("Requesting file:" + requestedFilename)
+	fileData, err := os.ReadFile(requestedFilename)
+	if err != nil {
+		res.WriteHeader(http.StatusBadRequest)
+		logger.Log.Info("Could not load file" + requestedFilename)
+	}
+	if _, err = res.Write(fileData); err != nil {
+		logger.Log.Info("Could not write file" + requestedFilename)
+	}
+}
+
+// TODO: Fix this one
+// main is the entry point of the reporting page program, starts the Wails application
 //
-// This function first calls the Init function from the localization package to set up the localization settings for the application. It then creates new instances of the App, Tray, and DataBase structs.
-// After setting up these instances, it creates a Wails application with specific options including the title, dimensions, startup behavior, asset server, background color, startup function, and bound interfaces.
-// It also sets up the Windows-specific options for the Wails application, including the theme and custom theme settings.
-// If an error occurs during the creation or startup of the Wails application, it is logged and the program terminates.
+// Parameters: _
 //
-// Parameters: None.
-//
-// Returns: None. This function does not return a value as it is the entry point of the application.
+// Returns: _
 func main() {
 	// Create a new instance of the app and tray struct
 	app := NewApp()

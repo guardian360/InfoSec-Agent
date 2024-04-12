@@ -24,7 +24,7 @@ func NetworkSharing(executor commandmock.CommandExecutor) Check {
 	command := "Get-NetAdapterBinding | Where-Object {$_.ComponentID -eq 'ms_server'} | Select-Object Enabled"
 	output, err := executor.Execute("powershell", command)
 	if err != nil {
-		return NewCheckErrorf("NetworkSharing",
+		return NewCheckErrorf(NetworkSharingID,
 			"error executing command Get-NetAdapterBinding", err)
 	}
 
@@ -44,13 +44,13 @@ func NetworkSharing(executor commandmock.CommandExecutor) Check {
 
 	// Check the status of network sharing based on the number of enabled network adapters
 	if trueCounter == total && falseCounter == 0 {
-		return NewCheckResult("NetworkSharing", "Network sharing is enabled")
+		return NewCheckResult(NetworkSharingID, 0, "Network sharing is enabled")
 	}
 	if trueCounter > 0 && trueCounter < total && falseCounter > 0 {
-		return NewCheckResult("NetworkSharing", "Network sharing is partially enabled")
+		return NewCheckResult(NetworkSharingID, 1, "Network sharing is partially enabled")
 	}
 	if trueCounter == 0 && falseCounter == total {
-		return NewCheckResult("NetworkSharing", "Network sharing is disabled")
+		return NewCheckResult(NetworkSharingID, 2, "Network sharing is disabled")
 	}
-	return NewCheckResult("NetworkSharing", "Network sharing status is unknown")
+	return NewCheckResult(NetworkSharingID, 3, "Network sharing status is unknown")
 }

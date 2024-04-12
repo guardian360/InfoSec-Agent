@@ -28,7 +28,7 @@ func HistoryFirefox() checks.Check {
 	var output []string
 	ffdirectory, err := utils.FirefoxFolder()
 	if err != nil {
-		return checks.NewCheckErrorf("HistoryFirefox", "No firefox directory found", err)
+		return checks.NewCheckErrorf(checks.HistoryFirefoxID, "No firefox directory found", err)
 	}
 
 	// Copy the database, so we don't have problems with locked files
@@ -37,36 +37,36 @@ func HistoryFirefox() checks.Check {
 	defer func(name string) {
 		err = os.Remove(name)
 		if err != nil {
-			logger.Log.Println("error removing file: ", err)
+			logger.Log.ErrorWithErr("Error removing file: ", err)
 		}
 	}(tempHistoryDbff)
 
 	// Copy the database to a temporary location
-	copyError := utils.CopyFile(ffdirectory[0]+"\\places.sqlite", tempHistoryDbff)
+	copyError := utils.CopyFile(ffdirectory[0]+"\\places.sqlite", tempHistoryDbff, nil, nil)
 	if copyError != nil {
-		return checks.NewCheckError("HistoryFirefox", copyError)
+		return checks.NewCheckError(checks.HistoryFirefoxID, copyError)
 	}
 
 	db, err := sql.Open("sqlite", tempHistoryDbff)
 	if err != nil {
-		return checks.NewCheckError("HistoryFirefox", err)
+		return checks.NewCheckError(checks.HistoryFirefoxID, err)
 	}
 	defer closeDatabase(db)
 
 	rows, err := queryDatabase(db)
 	if err != nil {
-		return checks.NewCheckError("HistoryFirefox", err)
+		return checks.NewCheckError(checks.HistoryFirefoxID, err)
 	}
 	defer closeRows(rows)
 
 	output, err = processQueryResults(rows)
 	if err != nil {
-		return checks.NewCheckError("HistoryFirefox", err)
+		return checks.NewCheckError(checks.HistoryFirefoxID, err)
 	}
 	if output == nil {
-		return checks.NewCheckResult("HistoryFirefox", "No phising domains found in the last week")
+		return checks.NewCheckResult(checks.HistoryFirefoxID, 0, "No phising domains found in the last week")
 	}
-	return checks.NewCheckResult("HistoryFirefox", output...)
+	return checks.NewCheckResult(checks.HistoryFirefoxID, 1, output...)
 }
 
 // closeDatabase is a utility function that is utilized within the HistoryFirefox function.
@@ -79,7 +79,7 @@ func HistoryFirefox() checks.Check {
 // it will be logged for debugging purposes.
 func closeDatabase(db *sql.DB) {
 	if err := db.Close(); err != nil {
-		logger.Log.Println("error closing database: ", err)
+		logger.Log.ErrorWithErr("Error closing database: ", err)
 	}
 }
 
@@ -116,7 +116,7 @@ func queryDatabase(db *sql.DB) (*sql.Rows, error) {
 // it will be logged for debugging purposes.
 func closeRows(rows *sql.Rows) {
 	if err := rows.Close(); err != nil {
-		logger.Log.Println("error closing rows: ", err)
+		logger.Log.ErrorWithErr("Error closing rows: ", err)
 	}
 }
 

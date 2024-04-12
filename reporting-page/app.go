@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/localization"
+	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/tray"
 )
 
@@ -44,7 +45,7 @@ func (a *App) startup(ctx context.Context) {
 //
 // Returns: string: The localized text corresponding to the provided message ID.
 func (a *App) Localize(messageID string) string {
-	return localization.Localize(tray.Language(), messageID)
+	return localization.Localize(tray.Language, messageID)
 }
 
 // PrintFromFrontend logs the provided message to the console.
@@ -55,5 +56,5 @@ func (a *App) Localize(messageID string) string {
 //
 // Returns: None. The method performs an action and does not return any value.
 func (a *App) PrintFromFrontend(message string) {
-	// log.Println(message)
+	logger.Log.Info(message)
 }

@@ -26,17 +26,16 @@ import (
 // This function works by locating the preferences file in the user's home directory, which contains the browser's settings. It opens and reads this file, then parses it as JSON to access the settings. It specifically looks for the "default_search_provider_data" key in the JSON data, which holds the name of the default search engine. If this key is found, its value is returned as the result of the check. If any error occurs during this process, such as an error reading the file or parsing the JSON, this error is returned as the result of the check.
 func SearchEngineChromium(browser string) checks.Check {
 	var browserPath string
-	var returnBrowserName string
-
+	var returnID int
 	// Set the browser path and the return browser name based on the browser to check
 	// Currently, supports checking of Google Chrome and Microsoft Edge
 	if browser == chrome {
-		returnBrowserName = "SearchEngineChrome"
 		browserPath = chromePath
+		returnID = checks.SearchChromiumID
 	}
 	if browser == edge {
-		returnBrowserName = "SearchEngineEdge"
 		browserPath = edgePath
+		returnID = checks.SearchEdgeID
 	}
 	// Holds the return value and sets the default value to chrome in case you never changed your search engine
 	defaultSE := "google.com"
@@ -44,19 +43,19 @@ func SearchEngineChromium(browser string) checks.Check {
 	var err error
 	user, err = os.UserHomeDir()
 	if err != nil {
-		return checks.NewCheckErrorf(returnBrowserName, "Error: ", err)
+		return checks.NewCheckErrorf(returnID, "Error: ", err)
 	}
 
 	// Get the current user's home directory, where the preferences can be found
 	preferencesDir := filepath.Join(user, "AppData", "Local", browserPath, "User Data", "Default", "Preferences")
-	// TODO: var needs to be filemock.File (this requires implementation of all other functions used for files in project)
 	var file *os.File
 	file, err = os.Open(filepath.Clean(preferencesDir))
 	if err != nil {
-		return checks.NewCheckErrorf(returnBrowserName, "Error: ", err)
+		return checks.NewCheckErrorf(returnID, "Error: ", err)
 	}
-	defer func(file filemock.File) {
-		err = utils.CloseFile(file)
+	defer func(file *os.File) {
+		tmpFile := filemock.Wrap(file)
+		err = utils.CloseFile(tmpFile)
 		if err != nil {
 			log.Println("Error closing file")
 		}
@@ -66,13 +65,13 @@ func SearchEngineChromium(browser string) checks.Check {
 	var byteValue []byte
 	byteValue, err = io.ReadAll(file)
 	if err != nil {
-		return checks.NewCheckErrorf(returnBrowserName, " Can't read data,Error: ", err)
+		return checks.NewCheckErrorf(returnID, " Can't read data,Error: ", err)
 	}
-	// Holds the unmarshaled data of the json for acces to the key value pairs
+	// Holds the unmarshalled data of the json for access to the key value pairs
 	var dev map[string]interface{}
 	err = json.Unmarshal(byteValue, &dev)
 	if err != nil {
-		return checks.NewCheckErrorf(returnBrowserName, "Error: ", err)
+		return checks.NewCheckErrorf(returnID, "Error: ", err)
 	}
 
 	// Iterate through the json dev map to look for our search engine key
@@ -84,12 +83,12 @@ func SearchEngineChromium(browser string) checks.Check {
 			regex := regexp.MustCompile(pattern)
 			matches := regex.FindString(text)
 			if matches == "" {
-				return checks.NewCheckErrorf(returnBrowserName, "Error: ", err)
+				return checks.NewCheckErrorf(returnID, "Error: ", err)
 			}
 			// Removes the word keyword: from the result
 			defaultSE = matches[8:]
 		}
 	}
 	// Returns the default search engine used
-	return checks.NewCheckResult(returnBrowserName, defaultSE)
+	return checks.NewCheckResult(returnID, 0, defaultSE)
 }

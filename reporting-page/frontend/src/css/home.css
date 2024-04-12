@@ -5,10 +5,11 @@ body {
   font-family: "DM Sans", sans-serif;
   margin: 0;
   padding: 0;
+  color: var(--text-body);
 }
 
 #page-contents {
-  margin-top: 38px;
+  margin-top: 55px;
 }
 
 h2{
@@ -126,7 +127,7 @@ h2{
 
 /* Navigation menu */
 .left-nav {
-  padding-top: 38px;
+  padding-top: 5px;
   height: 100vh;
   width: 240px;
   background-color: var(--background-color-left-nav);

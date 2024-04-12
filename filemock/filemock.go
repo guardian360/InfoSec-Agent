@@ -4,82 +4,81 @@ import (
 	"os"
 )
 
-// File is an interface that represents a file. It provides a method for closing the file.
-// The Close method should return an error if the file cannot be closed, and nil if the file is closed successfully.
 type File interface {
 	Close() error
 }
 
-// FileWrapper is a struct that wraps the os.File type. It provides a method for closing the file and encapsulates the os.File within it.
-// This allows for additional functionality or modifications to be added without changing the behavior of the os.File type itself.
-// The Close method should return an error if the file cannot be closed, and nil if the file is closed successfully.
+// FileWrapper is a wrapper for the os.File type
 type FileWrapper struct {
 	file *os.File
 }
 
-// NewFileWrapper is a constructor function that creates and returns a new instance of the FileWrapper struct.
-// It takes an os.File pointer as an argument and wraps it in a FileWrapper to provide additional functionality.
+// TODO: Fix this one
+// Wrap creates a new FileWrapper struct
 //
-// Parameter:
-//   - file: A pointer to an os.File instance that needs to be wrapped.
+// Parameters: file - the file to wrap
 //
-// Returns:
-//   - A pointer to a newly created FileWrapper instance that encapsulates the provided os.File.
-func NewFileWrapper(file *os.File) *FileWrapper {
-	return &FileWrapper{file: file}
+// Returns: a pointer to a new FileWrapper struct
+func Wrap(file *os.File) *FileWrapper {
+	return &FileWrapper{file: file, Writer: file, Reader: file}
 }
 
-// Close is a method of the FileWrapper struct that attempts to close the encapsulated os.File instance.
-// It delegates the operation to the Close method of the os.File instance.
+// Close closes the file
 //
-// Parameters: None.
+// Parameters: _
 //
-// Returns:
-//   - An error if the os.File instance cannot be closed, typically due to an I/O problem.
-//   - Nil if the os.File instance is closed successfully.
-//
-// Note: After the Close method is called, the FileWrapper and its encapsulated os.File instance should not be used.
+// Returns: an error if the file cannot be closed, nil if the file is closed successfully
 func (f *FileWrapper) Close() error {
 	return f.file.Close()
 }
 
-// FileMock is a struct that simulates a file for testing purposes. It contains fields that represent the state of the file.
+// TODO: fix this docstring according to new documentation standard
+
+// Read reads from the file
 //
-// Fields:
-//   - FileName: A string representing the name of the file.
-//   - Open: A boolean indicating whether the file is open or closed.
-//   - Err: An error that will be returned when attempting to close the file if it is set.
+// Parameters: p - the buffer to read into
 //
-// This struct is typically used in tests to simulate various file-related scenarios without having to interact with the actual file system.
+// Returns: the number of bytes read and an error if the file cannot be read from
+func (f *FileWrapper) Read(p []byte) (int, error) {
+	return f.file.Read(p)
+}
+
+// TODO: fix this docstring according to new documentation standard
+
+// Write writes to the file
+//
+// Parameters: p - the buffer to write from
+//
+// Returns: the number of bytes written and an error if the file cannot be written to
+func (f *FileWrapper) Write(p []byte) (int, error) {
+	return f.file.Write(p)
+}
+
+func (f *FileWrapper) Copy(source File, destination File) (int64, error) {
+	return io.Copy(destination, source)
+}
+
+// TODO: Fix this one
 type FileMock struct {
 	FileName string
 	Open     bool
 	Err      error
 }
 
-// Close attempts to close the FileMock instance, simulating the behavior of a real file.
+// TODO: Fix this one
+// Close closes the mock file
 //
-// If the FileMock instance is already closed or nil, it returns an appropriate error.
-// If the FileMock instance has an error set (Err field), it returns that error.
-// If the FileMock instance is open and no error is set, it closes the instance and returns nil.
+// Parameters: _
 //
-// Parameters: None.
-//
-// Returns:
-//   - os.ErrInvalid if the FileMock instance is nil.
-//   - os.ErrClosed if the FileMock instance is already closed.
-//   - The error set in the Err field of the FileMock instance, if any.
-//   - Nil if the FileMock instance is open and no error is set.
-//
-// Note: After the Close method is called, the FileMock instance should not be used.
-func (file *FileMock) Close() error {
-	if file == nil {
+// Returns: an error if the file cannot be closed, nil if the file is closed successfully
+func (f *FileMock) Close() error {
+	if f == nil {
 		return os.ErrInvalid
 	}
-	if file.Open {
-		file.Open = false
+	if f.Open {
+		f.Open = false
 	} else {
 		return os.ErrClosed
 	}
-	return file.Err
+	return f.Err
 }

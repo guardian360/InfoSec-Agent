@@ -18,16 +18,24 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/filemock"
 )
 
-// CopyFile is a utility function that copies a file from a source path to a destination path.
+// TODO: Fix this one
+// CopyFile copies a file from the source to the destination
 //
-// Parameters:
-//   - src string: The path to the source file that needs to be copied.
-//   - dst string: The path to the destination where the source file should be copied to.
+// Parameters: src - the source file
 //
-// Returns:
-//   - error: An error object that wraps any error that occurs during the file copying process. If the file is copied successfully, it returns nil.
-func CopyFile(src, dst string) error {
-	sourceFile, err := os.Open(filepath.Clean(src))
+// dst - the destination file
+//
+// Returns: an error if the file cannot be copied, nil if the file is copied successfully
+func CopyFile(src, dst string, mockSource filemock.File, mockDestination filemock.File) error {
+	var sourceFile filemock.File
+	var err error
+	if mockSource != nil {
+		sourceFile, err = mockSource, nil
+	} else {
+		var tmp *os.File
+		tmp, err = os.Open(filepath.Clean(src))
+		sourceFile = filemock.Wrap(tmp)
+	}
 	if err != nil {
 		return err
 	}
@@ -57,14 +65,11 @@ func CopyFile(src, dst string) error {
 	return nil
 }
 
-// GetPhishingDomains retrieves a list of active phishing domains from a remote GitHub repository.
+// GetPhishingDomains gets the phishing domains from a remote GitHub list
 //
-// This function sends a GET request to the URL of the phishing database hosted on GitHub. It reads the response body,
-// which contains a list of active phishing domains, each on a new line. The function then splits this response into a slice
-// of strings, where each string represents a single phishing domain.
+// Parameters: _
 //
-// Returns:
-//   - []string: A slice containing the phishing domains. If an error occurs during the retrieval or parsing of the domains, an empty slice is returned.
+// Returns: a list of phishing domains
 func GetPhishingDomains() []string {
 	// Get the phishing domains from up-to-date GitHub list
 	client := &http.Client{}
@@ -94,15 +99,11 @@ func GetPhishingDomains() []string {
 	return strings.Split(string(scamDomainsResponse), "\n")
 }
 
-// FirefoxFolder retrieves the paths to all Firefox profile folders for the currently logged-in user.
+// FirefoxFolder gets the path to the Firefox profile folder
 //
-// This function uses the os/user package to access the current user's information and constructs the path to the Firefox profile directory.
-// It then reads the directory and filters out all non-directory files. For each directory, it checks if a 'logins.json' file exists.
-// If such a file exists, the directory is considered a Firefox profile folder and its path is added to the returned list.
+// Parameters: _
 //
-// Returns:
-//   - []string: A slice containing the paths to all Firefox profile folders. If no profile folders are found or an error occurs, an empty slice is returned.
-//   - error: An error object that wraps any error that occurs during the retrieval of the Firefox profile folders. If the folders are retrieved successfully, it returns nil.
+// Returns: a list of paths to the Firefox profile folder, and an optional error which should be nil on success
 func FirefoxFolder() ([]string, error) {
 	// Get the current user
 	currentUser, err := user.Current()
@@ -154,14 +155,11 @@ func FirefoxFolder() ([]string, error) {
 	return profileList, nil
 }
 
-// CurrentUsername retrieves the username of the currently logged-in user in a Windows environment.
+// CurrentUsername retrieves the current Windows username
 //
-// This function uses the os/user package to access the current user's information.
-// It then parses the Username field to extract the actual username, discarding the domain if present.
+// Parameters: _
 //
-// Returns:
-//   - string: The username of the currently logged-in user. If the username cannot be retrieved, an empty string is returned.
-//   - error: An error object that wraps any error that occurs during the retrieval of the username. If the username is retrieved successfully, it returns nil.
+// Returns: The current Windows username
 func CurrentUsername() (string, error) {
 	currentUser, err := user.Current()
 	if currentUser.Username == "" || err != nil {
@@ -170,13 +168,11 @@ func CurrentUsername() (string, error) {
 	return strings.Split(currentUser.Username, "\\")[1], nil
 }
 
-// RemoveDuplicateStr is a utility function that eliminates duplicate string values from a given slice.
+// RemoveDuplicateStr removes duplicate strings from a slice
 //
-// Parameters:
-//   - strSlice []string: The input slice from which duplicate string values need to be removed.
+// Parameters: strSlice (string slice) - the slice to remove duplicates from
 //
-// Returns:
-//   - []string: A new slice that contains the unique string values from the input slice. The order of the elements is preserved based on their first occurrence in the input slice.
+// Returns: A slice with the duplicates removed
 func RemoveDuplicateStr(strSlice []string) []string {
 	// Keep a map of found values, where true means the value has (already) been found
 	allKeys := make(map[string]bool)
@@ -191,13 +187,11 @@ func RemoveDuplicateStr(strSlice []string) []string {
 	return list
 }
 
-// CloseFile is a utility function that closes a given file and logs any errors that occur during the process.
+// CloseFile closes a file and handles associated errors
 //
-// Parameters:
-//   - file *filemock.File: The file that needs to be closed. It is an instance of a File from the filemock package.
+// Parameters: file *filemock.File - the file to close
 //
-// Returns:
-//   - error: An error object that wraps any error that occurs during file closure. If the file is closed successfully, it returns nil.
+// Returns: _
 func CloseFile(file filemock.File) error {
 	err := file.Close()
 	if err != nil {

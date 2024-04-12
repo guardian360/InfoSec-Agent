@@ -28,7 +28,7 @@ func CookieFirefox() checks.Check {
 	// Determine the directory in which the Firefox profile is stored
 	ffdirectory, err := utils.FirefoxFolder()
 	if err != nil {
-		return checks.NewCheckErrorf("CookieFirefox", "No firefox directory found", err)
+		return checks.NewCheckErrorf(checks.CookiesFirefoxID, "No firefox directory found", err)
 	}
 
 	// Copy the database, so problems don't arise when the file gets locked
@@ -38,24 +38,24 @@ func CookieFirefox() checks.Check {
 	defer func(name string) {
 		err = os.Remove(name)
 		if err != nil {
-			logger.Log.Println("error removing file: ", err)
+			logger.Log.ErrorWithErr("Error removing file: ", err)
 		}
 	}(tempCookieDbff)
 
 	// Copy the database to a temporary location
-	copyError := utils.CopyFile(ffdirectory[0]+"\\cookies.sqlite", tempCookieDbff)
+	copyError := utils.CopyFile(ffdirectory[0]+"\\cookies.sqlite", tempCookieDbff, nil, nil)
 	if copyError != nil {
-		return checks.NewCheckErrorf("CookieFirefox", "Unable to make a copy of the file", copyError)
+		return checks.NewCheckErrorf(checks.CookiesFirefoxID, "Unable to make a copy of the file", copyError)
 	}
 
 	db, err := sql.Open("sqlite", tempCookieDbff)
 	if err != nil {
-		return checks.NewCheckError("CookieFirefox", err)
+		return checks.NewCheckError(checks.CookiesFirefoxID, err)
 	}
 	defer func(db *sql.DB) {
 		err = db.Close()
 		if err != nil {
-			logger.Log.Println("error closing database: ", err)
+			logger.Log.ErrorWithErr("Error closing database: ", err)
 		}
 	}(db)
 
@@ -63,15 +63,15 @@ func CookieFirefox() checks.Check {
 	rows, err := db.Query("SELECT name, host, creationTime FROM moz_cookies")
 	// TODO: check if this is error handling is correct
 	if rows.Err() != nil {
-		return checks.NewCheckError("CookieFirefox", rows.Err())
+		return checks.NewCheckError(checks.CookiesFirefoxID, rows.Err())
 	}
 	if err != nil {
-		return checks.NewCheckError("CookieFirefox", err)
+		return checks.NewCheckError(checks.CookiesFirefoxID, err)
 	}
 	defer func(rows *sql.Rows) {
 		err = rows.Close()
 		if err != nil {
-			logger.Log.Println("error closing rows: ", err)
+			logger.Log.ErrorWithErr("Error closing rows: ", err)
 		}
 	}(rows)
 
@@ -81,12 +81,12 @@ func CookieFirefox() checks.Check {
 		var creationTime int64
 		// Scan the row into variables
 		if err = rows.Scan(&name, &host, &creationTime); err != nil {
-			return checks.NewCheckError("CookieFirefox", err)
+			return checks.NewCheckError(checks.CookiesFirefoxID, err)
 		}
 		// Append the cookie to the result list
 		timeofCreation := time.UnixMicro(creationTime)
 		timeString := timeofCreation.String()
 		output = append(output, name, host, timeString)
 	}
-	return checks.NewCheckResult("CookieFirefox", output...)
+	return checks.NewCheckResult(checks.CookiesFirefoxID, 0, output...)
 }
