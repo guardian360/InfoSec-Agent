@@ -1,5 +1,4 @@
 import {PieChart} from './piechart.js';
-// import {LogError as logError} from '../../wailsjs/go/main/Tray.js';
 import {getLocalization} from './localize.js';
 import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
 import medal from '../assets/images/img_medal1.jpg';

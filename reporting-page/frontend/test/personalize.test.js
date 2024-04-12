@@ -6,6 +6,8 @@ import {
 import {JSDOM} from 'jsdom';
 import test from 'unit.js';
 
+global.TESTING = true;
+
 // Mock page
 const dom = new JSDOM(`
 <!DOCTYPE html>
