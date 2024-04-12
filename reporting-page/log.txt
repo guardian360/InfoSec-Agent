@@ -1,7 +1,7 @@
-2024/04/11 17:14:33 INFO: Reporting page starting
-2024/04/11 17:14:33 ERROR: Error reading user settings file: open ../usersettings/usersettings.json: The system cannot find the file specified.
-2024/04/11 17:14:33 INFO: Scanning now. Scan:1
-2024/04/11 17:14:38 INFO: [
+2024/04/12 09:40:36 INFO: Reporting page starting
+2024/04/12 09:40:36 ERROR: Error reading user settings file: open ../usersettings/usersettings.json: The system cannot find the file specified.
+2024/04/12 09:40:36 INFO: Scanning now. Scan:1
+2024/04/12 09:40:46 INFO: [
   {
     "issue_id": 5,
     "result_id": 1,
@@ -100,75 +100,90 @@
     "issue_id": 11,
     "result_id": 0,
     "result": [
-      "port: 54925, process: NVIDIA Web Helper.exe",
-      "port: 54925, process: NVIDIA Web Helper.exe",
-      "port: 55555, process: nvcontainer.exe",
-      "port: 55595, process: NVIDIA Share.exe",
-      "port: 55769, process: firefox.exe",
-      "port: 55770, process: firefox.exe",
-      "port: 55771, process: firefox.exe",
-      "port: 55772, process: firefox.exe",
-      "port: 57219, process: msedgewebview2.exe",
-      "port: 57220, process: msedgewebview2.exe",
+      "port: 60158, process: nvcontainer.exe",
+      "port: 60292, process: NVIDIA Web Helper.exe",
+      "port: 60292, process: NVIDIA Web Helper.exe",
+      "port: 60308, process: NVIDIA Share.exe",
+      "port: 60391, process: firefox.exe",
+      "port: 60392, process: firefox.exe",
+      "port: 60393, process: firefox.exe",
+      "port: 60394, process: firefox.exe",
+      "port: 61250, process: msedgewebview2.exe",
+      "port: 61251, process: msedgewebview2.exe",
       "port: 65001, process: nvcontainer.exe",
       "port: 65001, process: nvcontainer.exe",
       "port: 139, process: System",
-      "port: 55622, process: svchost.exe",
-      "port: 55763, process: ekrn.exe",
-      "port: 55792, process: firefox.exe",
-      "port: 57145, process: Code.exe",
-      "port: 57187, process: System Idle Process",
-      "port: 57204, process: msedge.exe",
-      "port: 57210, process: OneDrive.exe",
-      "port: 57212, process: System Idle Process",
-      "port: 57213, process: firefox.exe",
-      "port: 57214, process: System Idle Process",
-      "port: 57215, process: firefox.exe",
+      "port: 60271, process: ekrn.exe",
+      "port: 60285, process: svchost.exe",
+      "port: 60331, process: SearchHost.exe",
+      "port: 60332, process: SearchHost.exe",
+      "port: 60334, process: SearchHost.exe",
+      "port: 60335, process: SearchHost.exe",
+      "port: 60336, process: SearchHost.exe",
+      "port: 60337, process: SearchHost.exe",
+      "port: 60338, process: SearchHost.exe",
+      "port: 60339, process: SearchHost.exe",
+      "port: 60340, process: SearchHost.exe",
+      "port: 60341, process: SearchHost.exe",
+      "port: 60342, process: SearchHost.exe",
+      "port: 60343, process: SearchHost.exe",
+      "port: 60344, process: SearchHost.exe",
+      "port: 60345, process: SearchHost.exe",
+      "port: 60346, process: SearchHost.exe",
+      "port: 60347, process: SearchHost.exe",
+      "port: 60348, process: SearchHost.exe",
+      "port: 60349, process: SearchHost.exe",
+      "port: 60350, process: SearchHost.exe",
+      "port: 60351, process: SearchHost.exe",
+      "port: 60352, process: SearchHost.exe",
+      "port: 60403, process: firefox.exe",
+      "port: 61239, process: System Idle Process",
+      "port: 61240, process: firefox.exe",
+      "port: 61243, process: OneDrive.exe",
+      "port: 61247, process: Code.exe",
+      "port: 139, process: System",
       "port: 135, process: svchost.exe",
       "port: 445, process: System",
-      "port: 7680, process: svchost.exe",
       "port: 49664, process: lsass.exe",
       "port: 49665, process: wininit.exe",
       "port: 49666, process: svchost.exe",
       "port: 49667, process: svchost.exe",
       "port: 49668, process: spoolsv.exe",
       "port: 49679, process: services.exe",
-      "port: 42050, process: Microsoft.SharePoint.exe",
       "port: 49671, process: jhi_service.exe",
-      "port: 57216, process: msedgewebview2.exe",
-      "port: 57217, process: msedgewebview2.exe",
-      "port: 56974, process: SearchHost.exe",
-      "port: 56980, process: SearchHost.exe",
-      "port: 57194, process: System Idle Process",
+      "port: 61248, process: msedgewebview2.exe",
+      "port: 61249, process: msedgewebview2.exe",
       "port: 1900, process: svchost.exe",
-      "port: 10040, process: NVIDIA Web Helper.exe",
-      "port: 51456, process: nvcontainer.exe",
+      "port: 10060, process: NVIDIA Web Helper.exe",
       "port: 52333, process: svchost.exe",
-      "port: 59180, process: svchost.exe",
+      "port: 57207, process: svchost.exe",
       "port: 60534, process: ekrn.exe",
+      "port: 60693, process: nvcontainer.exe",
       "port: 137, process: System",
       "port: 138, process: System",
       "port: 1900, process: svchost.exe",
       "port: 5353, process: nvcontainer.exe",
-      "port: 59179, process: svchost.exe",
-      "port: 123, process: svchost.exe",
+      "port: 57206, process: svchost.exe",
+      "port: 137, process: System",
+      "port: 138, process: System",
+      "port: 1900, process: svchost.exe",
+      "port: 5353, process: nvcontainer.exe",
+      "port: 57205, process: svchost.exe",
       "port: 500, process: svchost.exe",
       "port: 4500, process: svchost.exe",
       "port: 5353, process: svchost.exe",
       "port: 5355, process: svchost.exe",
-      "port: 51726, process: firefox.exe",
-      "port: 58282, process: ekrn.exe",
-      "port: 59518, process: svchost.exe",
-      "port: 60253, process: firefox.exe",
+      "port: 54875, process: svchost.exe",
+      "port: 55103, process: svchost.exe",
+      "port: 56456, process: svchost.exe",
       "port: 60542, process: nvcontainer.exe",
-      "port: 63439, process: svchost.exe",
-      "port: 63643, process: svchost.exe",
-      "port: 65126, process: msedgewebview2.exe",
       "port: 1900, process: svchost.exe",
       "port: 5353, process: nvcontainer.exe",
-      "port: 59178, process: svchost.exe",
+      "port: 57204, process: svchost.exe",
       "port: 1900, process: svchost.exe",
-      "port: 59177, process: svchost.exe"
+      "port: 57202, process: svchost.exe",
+      "port: 1900, process: svchost.exe",
+      "port: 57203, process: svchost.exe"
     ]
   },
   {
@@ -227,7 +242,6 @@
     "issue_id": 2,
     "result_id": 0,
     "result": [
-      "HID-muis",
       "HID-muis",
       "HD User Facing"
     ]
@@ -305,12 +319,12 @@
     ]
   }
 ]
-2024/04/11 17:14:38 INFO: Opening database
-2024/04/11 17:14:38 INFO: Connected to database
-2024/04/11 17:14:38 [{"issue_id":5,"result_id":1,"result":["No password manager found"]},{"issue_id":15,"result_id":0,"result":["Windows real-time defender is enabled and also the windows periodic scan is enabled"]},{"issue_id":16,"result_id":0,"result":["Password last changed on 26-10-2022 , your password was changed more than half a year ago so you should change it again"]},{"issue_id":17,"result_id":4,"result":["Password","Password"]},{"issue_id":6,"result_id":0,"result":["MicrosoftTeams","MicrosoftWindows.Client.WebExperience","MSTeams"]},{"issue_id":7,"result_id":0,"result":["Microsoft.GamingApp","Microsoft.ScreenSketch","Microsoft.WindowsCamera","Microsoft.WindowsFeedbackHub","Microsoft.XboxGamingOverlay","MicrosoftTeams","chrome.exe","POWERPNT.EXE","firefox.exe","Teams.exe","ShooterGame.exe","FallGuys_client_game.exe","FortniteClient-Win64-Shipping.exe","RemotePlay.exe","RocketLeague.exe","windows.immersivecontrolpanel"]},{"issue_id":8,"result_id":0,"result":["Microsoft.WindowsCamera","MicrosoftTeams","MicrosoftWindows.Client.CBS","MSTeams","chrome.exe","Pokemon TCG Live.exe"]},{"issue_id":9,"result_id":0,"result":["microsoft.windowscommunicationsapps"]},{"issue_id":10,"result_id":0,"result":["microsoft.windowscommunicationsapps"]},{"issue_id":1,"result_id":1,"result":["AirPods Pro - Find My\u0000","AirPods\u0000"]},{"issue_id":11,"result_id":0,"result":["port: 54925, process: NVIDIA Web Helper.exe","port: 54925, process: NVIDIA Web Helper.exe","port: 55555, process: nvcontainer.exe","port: 55595, process: NVIDIA Share.exe","port: 55769, process: firefox.exe","port: 55770, process: firefox.exe","port: 55771, process: firefox.exe","port: 55772, process: firefox.exe","port: 57219, process: msedgewebview2.exe","port: 57220, process: msedgewebview2.exe","port: 65001, process: nvcontainer.exe","port: 65001, process: nvcontainer.exe","port: 139, process: System","port: 55622, process: svchost.exe","port: 55763, process: ekrn.exe","port: 55792, process: firefox.exe","port: 57145, process: Code.exe","port: 57187, process: System Idle Process","port: 57204, process: msedge.exe","port: 57210, process: OneDrive.exe","port: 57212, process: System Idle Process","port: 57213, process: firefox.exe","port: 57214, process: System Idle Process","port: 57215, process: firefox.exe","port: 135, process: svchost.exe","port: 445, process: System","port: 7680, process: svchost.exe","port: 49664, process: lsass.exe","port: 49665, process: wininit.exe","port: 49666, process: svchost.exe","port: 49667, process: svchost.exe","port: 49668, process: spoolsv.exe","port: 49679, process: services.exe","port: 42050, process: Microsoft.SharePoint.exe","port: 49671, process: jhi_service.exe","port: 57216, process: msedgewebview2.exe","port: 57217, process: msedgewebview2.exe","port: 56974, process: SearchHost.exe","port: 56980, process: SearchHost.exe","port: 57194, process: System Idle Process","port: 1900, process: svchost.exe","port: 10040, process: NVIDIA Web Helper.exe","port: 51456, process: nvcontainer.exe","port: 52333, process: svchost.exe","port: 59180, process: svchost.exe","port: 60534, process: ekrn.exe","port: 137, process: System","port: 138, process: System","port: 1900, process: svchost.exe","port: 5353, process: nvcontainer.exe","port: 59179, process: svchost.exe","port: 123, process: svchost.exe","port: 500, process: svchost.exe","port: 4500, process: svchost.exe","port: 5353, process: svchost.exe","port: 5355, process: svchost.exe","port: 51726, process: firefox.exe","port: 58282, process: ekrn.exe","port: 59518, process: svchost.exe","port: 60253, process: firefox.exe","port: 60542, process: nvcontainer.exe","port: 63439, process: svchost.exe","port: 63643, process: svchost.exe","port: 65126, process: msedgewebview2.exe","port: 1900, process: svchost.exe","port: 5353, process: nvcontainer.exe","port: 59178, process: svchost.exe","port: 1900, process: svchost.exe","port: 59177, process: svchost.exe"]},{"issue_id":18,"result_id":1,"result":["10.0.22631","There are updates available for Windows 10."]},{"issue_id":19,"result_id":1,"result":["Secure boot is enabled"]},{"issue_id":13,"result_id":2,"result":["SMB1: not enabled","SMB2: enabled"]},{"issue_id":20,"result_id":1,"result":["Docker Desktop","SecurityHealth"]},{"issue_id":3,"result_id":2,"result":["Guest account is not active"]},{"issue_id":14,"result_id":2,"result":["UAC is turned on for apps making changes to your computer."]},{"issue_id":12,"result_id":1,"result":["Remote Desktop is disabled"]},{"issue_id":2,"result_id":0,"result":["HID-muis","HID-muis","HD User Facing"]},{"issue_id":4,"result_id":0,"result":["Network sharing is enabled"]},{"issue_id":23,"result_id":1,"result":["No phishing domains found in the last week"]},{"issue_id":21,"result_id":0,"result":["Adblocker installed"]},{"issue_id":25,"result_id":0,"result":["google.com"]},{"issue_id":28,"result_id":0,"result":["Form Autofill,extension,,true","Picture-In-Picture,extension,,true","Firefox Screenshots,extension,Mozilla <screenshots-feedback@mozilla.com>,true","WebCompat Reporter,extension,Thomas Wisniewski <twisniewski@mozilla.com>,false","Web Compatibility Interventions,extension,,true","System theme — auto,theme,Mozilla,true","Add-ons Search Detection,extension,,true","Google,extension,,true","Wikipedia (en),extension,,true","Bing,extension,,true","DuckDuckGo,extension,,true","Light,theme,Mozilla,false","Dark,theme,Mozilla,false","Firefox Alpenglow,theme,,false","Amazon.com.au,extension,,true","eBay,extension,,true","Qwant,extension,,true"]},{"issue_id":29,"result_id":0,"result":["false"]},{"issue_id":31,"result_id":0,"result":["No phising domains found in the last week"]},{"issue_id":30,"result_id":0,"result":["Other Search Engine"]}]
-2024/04/11 17:14:38 INFO: Closing database
-2024/04/11 17:14:42 INFO: Scanning now. Scan:2
-2024/04/11 17:14:47 INFO: [
+2024/04/12 09:40:46 INFO: Opening database
+2024/04/12 09:40:46 INFO: Connected to database
+2024/04/12 09:40:46 INFO: Closing database
+2024/04/12 09:40:46 [{"issue_id":5,"result_id":1,"result":["No password manager found"]},{"issue_id":15,"result_id":0,"result":["Windows real-time defender is enabled and also the windows periodic scan is enabled"]},{"issue_id":16,"result_id":0,"result":["Password last changed on 26-10-2022 , your password was changed more than half a year ago so you should change it again"]},{"issue_id":17,"result_id":4,"result":["Password","Password"]},{"issue_id":6,"result_id":0,"result":["MicrosoftTeams","MicrosoftWindows.Client.WebExperience","MSTeams"]},{"issue_id":7,"result_id":0,"result":["Microsoft.GamingApp","Microsoft.ScreenSketch","Microsoft.WindowsCamera","Microsoft.WindowsFeedbackHub","Microsoft.XboxGamingOverlay","MicrosoftTeams","chrome.exe","POWERPNT.EXE","firefox.exe","Teams.exe","ShooterGame.exe","FallGuys_client_game.exe","FortniteClient-Win64-Shipping.exe","RemotePlay.exe","RocketLeague.exe","windows.immersivecontrolpanel"]},{"issue_id":8,"result_id":0,"result":["Microsoft.WindowsCamera","MicrosoftTeams","MicrosoftWindows.Client.CBS","MSTeams","chrome.exe","Pokemon TCG Live.exe"]},{"issue_id":9,"result_id":0,"result":["microsoft.windowscommunicationsapps"]},{"issue_id":10,"result_id":0,"result":["microsoft.windowscommunicationsapps"]},{"issue_id":1,"result_id":1,"result":["AirPods Pro - Find My\u0000","AirPods\u0000"]},{"issue_id":11,"result_id":0,"result":["port: 60158, process: nvcontainer.exe","port: 60292, process: NVIDIA Web Helper.exe","port: 60292, process: NVIDIA Web Helper.exe","port: 60308, process: NVIDIA Share.exe","port: 60391, process: firefox.exe","port: 60392, process: firefox.exe","port: 60393, process: firefox.exe","port: 60394, process: firefox.exe","port: 61250, process: msedgewebview2.exe","port: 61251, process: msedgewebview2.exe","port: 65001, process: nvcontainer.exe","port: 65001, process: nvcontainer.exe","port: 139, process: System","port: 60271, process: ekrn.exe","port: 60285, process: svchost.exe","port: 60331, process: SearchHost.exe","port: 60332, process: SearchHost.exe","port: 60334, process: SearchHost.exe","port: 60335, process: SearchHost.exe","port: 60336, process: SearchHost.exe","port: 60337, process: SearchHost.exe","port: 60338, process: SearchHost.exe","port: 60339, process: SearchHost.exe","port: 60340, process: SearchHost.exe","port: 60341, process: SearchHost.exe","port: 60342, process: SearchHost.exe","port: 60343, process: SearchHost.exe","port: 60344, process: SearchHost.exe","port: 60345, process: SearchHost.exe","port: 60346, process: SearchHost.exe","port: 60347, process: SearchHost.exe","port: 60348, process: SearchHost.exe","port: 60349, process: SearchHost.exe","port: 60350, process: SearchHost.exe","port: 60351, process: SearchHost.exe","port: 60352, process: SearchHost.exe","port: 60403, process: firefox.exe","port: 61239, process: System Idle Process","port: 61240, process: firefox.exe","port: 61243, process: OneDrive.exe","port: 61247, process: Code.exe","port: 139, process: System","port: 135, process: svchost.exe","port: 445, process: System","port: 49664, process: lsass.exe","port: 49665, process: wininit.exe","port: 49666, process: svchost.exe","port: 49667, process: svchost.exe","port: 49668, process: spoolsv.exe","port: 49679, process: services.exe","port: 49671, process: jhi_service.exe","port: 61248, process: msedgewebview2.exe","port: 61249, process: msedgewebview2.exe","port: 1900, process: svchost.exe","port: 10060, process: NVIDIA Web Helper.exe","port: 52333, process: svchost.exe","port: 57207, process: svchost.exe","port: 60534, process: ekrn.exe","port: 60693, process: nvcontainer.exe","port: 137, process: System","port: 138, process: System","port: 1900, process: svchost.exe","port: 5353, process: nvcontainer.exe","port: 57206, process: svchost.exe","port: 137, process: System","port: 138, process: System","port: 1900, process: svchost.exe","port: 5353, process: nvcontainer.exe","port: 57205, process: svchost.exe","port: 500, process: svchost.exe","port: 4500, process: svchost.exe","port: 5353, process: svchost.exe","port: 5355, process: svchost.exe","port: 54875, process: svchost.exe","port: 55103, process: svchost.exe","port: 56456, process: svchost.exe","port: 60542, process: nvcontainer.exe","port: 1900, process: svchost.exe","port: 5353, process: nvcontainer.exe","port: 57204, process: svchost.exe","port: 1900, process: svchost.exe","port: 57202, process: svchost.exe","port: 1900, process: svchost.exe","port: 57203, process: svchost.exe"]},{"issue_id":18,"result_id":1,"result":["10.0.22631","There are updates available for Windows 10."]},{"issue_id":19,"result_id":1,"result":["Secure boot is enabled"]},{"issue_id":13,"result_id":2,"result":["SMB1: not enabled","SMB2: enabled"]},{"issue_id":20,"result_id":1,"result":["Docker Desktop","SecurityHealth"]},{"issue_id":3,"result_id":2,"result":["Guest account is not active"]},{"issue_id":14,"result_id":2,"result":["UAC is turned on for apps making changes to your computer."]},{"issue_id":12,"result_id":1,"result":["Remote Desktop is disabled"]},{"issue_id":2,"result_id":0,"result":["HID-muis","HD User Facing"]},{"issue_id":4,"result_id":0,"result":["Network sharing is enabled"]},{"issue_id":23,"result_id":1,"result":["No phishing domains found in the last week"]},{"issue_id":21,"result_id":0,"result":["Adblocker installed"]},{"issue_id":25,"result_id":0,"result":["google.com"]},{"issue_id":28,"result_id":0,"result":["Form Autofill,extension,,true","Picture-In-Picture,extension,,true","Firefox Screenshots,extension,Mozilla <screenshots-feedback@mozilla.com>,true","WebCompat Reporter,extension,Thomas Wisniewski <twisniewski@mozilla.com>,false","Web Compatibility Interventions,extension,,true","System theme — auto,theme,Mozilla,true","Add-ons Search Detection,extension,,true","Google,extension,,true","Wikipedia (en),extension,,true","Bing,extension,,true","DuckDuckGo,extension,,true","Light,theme,Mozilla,false","Dark,theme,Mozilla,false","Firefox Alpenglow,theme,,false","Amazon.com.au,extension,,true","eBay,extension,,true","Qwant,extension,,true"]},{"issue_id":29,"result_id":0,"result":["false"]},{"issue_id":31,"result_id":0,"result":["No phising domains found in the last week"]},{"issue_id":30,"result_id":0,"result":["Other Search Engine"]}]
+2024/04/12 09:40:51 INFO: Scanning now. Scan:2
+2024/04/12 09:40:59 INFO: [
   {
     "issue_id": 5,
     "result_id": 1,
@@ -409,70 +423,88 @@
     "issue_id": 11,
     "result_id": 0,
     "result": [
-      "port: 54925, process: NVIDIA Web Helper.exe",
-      "port: 54925, process: NVIDIA Web Helper.exe",
-      "port: 55555, process: nvcontainer.exe",
-      "port: 55595, process: NVIDIA Share.exe",
-      "port: 55769, process: firefox.exe",
-      "port: 55770, process: firefox.exe",
-      "port: 55771, process: firefox.exe",
-      "port: 55772, process: firefox.exe",
+      "port: 60158, process: nvcontainer.exe",
+      "port: 60292, process: NVIDIA Web Helper.exe",
+      "port: 60292, process: NVIDIA Web Helper.exe",
+      "port: 60308, process: NVIDIA Share.exe",
+      "port: 60391, process: firefox.exe",
+      "port: 60392, process: firefox.exe",
+      "port: 60393, process: firefox.exe",
+      "port: 60394, process: firefox.exe",
       "port: 65001, process: nvcontainer.exe",
       "port: 65001, process: nvcontainer.exe",
       "port: 139, process: System",
-      "port: 55622, process: svchost.exe",
-      "port: 55763, process: ekrn.exe",
-      "port: 55792, process: firefox.exe",
-      "port: 57145, process: Code.exe",
-      "port: 57204, process: msedge.exe",
-      "port: 57210, process: OneDrive.exe",
-      "port: 57212, process: System Idle Process",
-      "port: 57213, process: firefox.exe",
-      "port: 57214, process: System Idle Process",
-      "port: 57215, process: firefox.exe",
+      "port: 60271, process: ekrn.exe",
+      "port: 60285, process: svchost.exe",
+      "port: 60331, process: SearchHost.exe",
+      "port: 60332, process: SearchHost.exe",
+      "port: 60334, process: SearchHost.exe",
+      "port: 60335, process: SearchHost.exe",
+      "port: 60336, process: SearchHost.exe",
+      "port: 60337, process: SearchHost.exe",
+      "port: 60338, process: SearchHost.exe",
+      "port: 60339, process: SearchHost.exe",
+      "port: 60340, process: SearchHost.exe",
+      "port: 60341, process: SearchHost.exe",
+      "port: 60342, process: SearchHost.exe",
+      "port: 60343, process: SearchHost.exe",
+      "port: 60344, process: SearchHost.exe",
+      "port: 60345, process: SearchHost.exe",
+      "port: 60346, process: SearchHost.exe",
+      "port: 60347, process: SearchHost.exe",
+      "port: 60348, process: SearchHost.exe",
+      "port: 60349, process: SearchHost.exe",
+      "port: 60350, process: SearchHost.exe",
+      "port: 60351, process: SearchHost.exe",
+      "port: 60352, process: SearchHost.exe",
+      "port: 60403, process: firefox.exe",
+      "port: 61239, process: System Idle Process",
+      "port: 61240, process: firefox.exe",
+      "port: 61243, process: OneDrive.exe",
+      "port: 61247, process: Code.exe",
+      "port: 61252, process: reporting-page.exe",
+      "port: 61253, process: reporting-page.exe",
+      "port: 139, process: System",
       "port: 135, process: svchost.exe",
       "port: 445, process: System",
-      "port: 7680, process: svchost.exe",
       "port: 49664, process: lsass.exe",
       "port: 49665, process: wininit.exe",
       "port: 49666, process: svchost.exe",
       "port: 49667, process: svchost.exe",
       "port: 49668, process: spoolsv.exe",
       "port: 49679, process: services.exe",
-      "port: 42050, process: Microsoft.SharePoint.exe",
       "port: 49671, process: jhi_service.exe",
-      "port: 56974, process: SearchHost.exe",
-      "port: 56980, process: SearchHost.exe",
-      "port: 57194, process: System Idle Process",
-      "port: 57222, process: reporting-page.exe",
-      "port: 57223, process: reporting-page.exe",
       "port: 1900, process: svchost.exe",
-      "port: 10040, process: NVIDIA Web Helper.exe",
-      "port: 51456, process: nvcontainer.exe",
+      "port: 10060, process: NVIDIA Web Helper.exe",
       "port: 52333, process: svchost.exe",
-      "port: 59180, process: svchost.exe",
+      "port: 57207, process: svchost.exe",
       "port: 60534, process: ekrn.exe",
+      "port: 60693, process: nvcontainer.exe",
       "port: 137, process: System",
       "port: 138, process: System",
       "port: 1900, process: svchost.exe",
       "port: 5353, process: nvcontainer.exe",
-      "port: 59179, process: svchost.exe",
-      "port: 123, process: svchost.exe",
+      "port: 57206, process: svchost.exe",
+      "port: 137, process: System",
+      "port: 138, process: System",
+      "port: 1900, process: svchost.exe",
+      "port: 5353, process: nvcontainer.exe",
+      "port: 57205, process: svchost.exe",
       "port: 500, process: svchost.exe",
       "port: 4500, process: svchost.exe",
       "port: 5353, process: svchost.exe",
       "port: 5355, process: svchost.exe",
-      "port: 51726, process: firefox.exe",
-      "port: 58282, process: ekrn.exe",
+      "port: 54875, process: svchost.exe",
+      "port: 55103, process: svchost.exe",
+      "port: 56456, process: svchost.exe",
       "port: 60542, process: nvcontainer.exe",
-      "port: 63439, process: svchost.exe",
-      "port: 63643, process: svchost.exe",
-      "port: 65126, process: msedgewebview2.exe",
       "port: 1900, process: svchost.exe",
       "port: 5353, process: nvcontainer.exe",
-      "port: 59178, process: svchost.exe",
+      "port: 57204, process: svchost.exe",
       "port: 1900, process: svchost.exe",
-      "port: 59177, process: svchost.exe"
+      "port: 57202, process: svchost.exe",
+      "port: 1900, process: svchost.exe",
+      "port: 57203, process: svchost.exe"
     ]
   },
   {
@@ -531,7 +563,6 @@
     "issue_id": 2,
     "result_id": 0,
     "result": [
-      "HID-muis",
       "HID-muis",
       "HD User Facing"
     ]
@@ -609,12 +640,12 @@
     ]
   }
 ]
-2024/04/11 17:14:47 INFO: Opening database
-2024/04/11 17:14:47 INFO: Connected to database
-2024/04/11 17:14:47 [{"issue_id":5,"result_id":1,"result":["No password manager found"]},{"issue_id":15,"result_id":0,"result":["Windows real-time defender is enabled and also the windows periodic scan is enabled"]},{"issue_id":16,"result_id":0,"result":["Password last changed on 26-10-2022 , your password was changed more than half a year ago so you should change it again"]},{"issue_id":17,"result_id":4,"result":["Password","Password"]},{"issue_id":6,"result_id":0,"result":["MicrosoftTeams","MicrosoftWindows.Client.WebExperience","MSTeams"]},{"issue_id":7,"result_id":0,"result":["Microsoft.GamingApp","Microsoft.ScreenSketch","Microsoft.WindowsCamera","Microsoft.WindowsFeedbackHub","Microsoft.XboxGamingOverlay","MicrosoftTeams","chrome.exe","POWERPNT.EXE","firefox.exe","Teams.exe","ShooterGame.exe","FallGuys_client_game.exe","FortniteClient-Win64-Shipping.exe","RemotePlay.exe","RocketLeague.exe","windows.immersivecontrolpanel"]},{"issue_id":8,"result_id":0,"result":["Microsoft.WindowsCamera","MicrosoftTeams","MicrosoftWindows.Client.CBS","MSTeams","chrome.exe","Pokemon TCG Live.exe"]},{"issue_id":9,"result_id":0,"result":["microsoft.windowscommunicationsapps"]},{"issue_id":10,"result_id":0,"result":["microsoft.windowscommunicationsapps"]},{"issue_id":1,"result_id":1,"result":["AirPods Pro - Find My\u0000","AirPods\u0000"]},{"issue_id":11,"result_id":0,"result":["port: 54925, process: NVIDIA Web Helper.exe","port: 54925, process: NVIDIA Web Helper.exe","port: 55555, process: nvcontainer.exe","port: 55595, process: NVIDIA Share.exe","port: 55769, process: firefox.exe","port: 55770, process: firefox.exe","port: 55771, process: firefox.exe","port: 55772, process: firefox.exe","port: 65001, process: nvcontainer.exe","port: 65001, process: nvcontainer.exe","port: 139, process: System","port: 55622, process: svchost.exe","port: 55763, process: ekrn.exe","port: 55792, process: firefox.exe","port: 57145, process: Code.exe","port: 57204, process: msedge.exe","port: 57210, process: OneDrive.exe","port: 57212, process: System Idle Process","port: 57213, process: firefox.exe","port: 57214, process: System Idle Process","port: 57215, process: firefox.exe","port: 135, process: svchost.exe","port: 445, process: System","port: 7680, process: svchost.exe","port: 49664, process: lsass.exe","port: 49665, process: wininit.exe","port: 49666, process: svchost.exe","port: 49667, process: svchost.exe","port: 49668, process: spoolsv.exe","port: 49679, process: services.exe","port: 42050, process: Microsoft.SharePoint.exe","port: 49671, process: jhi_service.exe","port: 56974, process: SearchHost.exe","port: 56980, process: SearchHost.exe","port: 57194, process: System Idle Process","port: 57222, process: reporting-page.exe","port: 57223, process: reporting-page.exe","port: 1900, process: svchost.exe","port: 10040, process: NVIDIA Web Helper.exe","port: 51456, process: nvcontainer.exe","port: 52333, process: svchost.exe","port: 59180, process: svchost.exe","port: 60534, process: ekrn.exe","port: 137, process: System","port: 138, process: System","port: 1900, process: svchost.exe","port: 5353, process: nvcontainer.exe","port: 59179, process: svchost.exe","port: 123, process: svchost.exe","port: 500, process: svchost.exe","port: 4500, process: svchost.exe","port: 5353, process: svchost.exe","port: 5355, process: svchost.exe","port: 51726, process: firefox.exe","port: 58282, process: ekrn.exe","port: 60542, process: nvcontainer.exe","port: 63439, process: svchost.exe","port: 63643, process: svchost.exe","port: 65126, process: msedgewebview2.exe","port: 1900, process: svchost.exe","port: 5353, process: nvcontainer.exe","port: 59178, process: svchost.exe","port: 1900, process: svchost.exe","port: 59177, process: svchost.exe"]},{"issue_id":18,"result_id":1,"result":["10.0.22631","There are updates available for Windows 10."]},{"issue_id":19,"result_id":1,"result":["Secure boot is enabled"]},{"issue_id":13,"result_id":2,"result":["SMB1: not enabled","SMB2: enabled"]},{"issue_id":20,"result_id":1,"result":["Docker Desktop","SecurityHealth"]},{"issue_id":3,"result_id":2,"result":["Guest account is not active"]},{"issue_id":14,"result_id":2,"result":["UAC is turned on for apps making changes to your computer."]},{"issue_id":12,"result_id":1,"result":["Remote Desktop is disabled"]},{"issue_id":2,"result_id":0,"result":["HID-muis","HID-muis","HD User Facing"]},{"issue_id":4,"result_id":0,"result":["Network sharing is enabled"]},{"issue_id":23,"result_id":1,"result":["No phishing domains found in the last week"]},{"issue_id":21,"result_id":0,"result":["Adblocker installed"]},{"issue_id":25,"result_id":0,"result":["google.com"]},{"issue_id":28,"result_id":0,"result":["Form Autofill,extension,,true","Picture-In-Picture,extension,,true","Firefox Screenshots,extension,Mozilla <screenshots-feedback@mozilla.com>,true","WebCompat Reporter,extension,Thomas Wisniewski <twisniewski@mozilla.com>,false","Web Compatibility Interventions,extension,,true","System theme — auto,theme,Mozilla,true","Add-ons Search Detection,extension,,true","Google,extension,,true","Wikipedia (en),extension,,true","Bing,extension,,true","DuckDuckGo,extension,,true","Light,theme,Mozilla,false","Dark,theme,Mozilla,false","Firefox Alpenglow,theme,,false","Amazon.com.au,extension,,true","eBay,extension,,true","Qwant,extension,,true"]},{"issue_id":29,"result_id":0,"result":["false"]},{"issue_id":31,"result_id":0,"result":["No phising domains found in the last week"]},{"issue_id":30,"result_id":0,"result":["Other Search Engine"]}]
-2024/04/11 17:14:47 INFO: Closing database
-2024/04/11 17:14:50 INFO: Scanning now. Scan:3
-2024/04/11 17:14:55 INFO: [
+2024/04/12 09:40:59 INFO: Opening database
+2024/04/12 09:40:59 INFO: Connected to database
+2024/04/12 09:41:00 INFO: Closing database
+2024/04/12 09:41:00 [{"issue_id":5,"result_id":1,"result":["No password manager found"]},{"issue_id":15,"result_id":0,"result":["Windows real-time defender is enabled and also the windows periodic scan is enabled"]},{"issue_id":16,"result_id":0,"result":["Password last changed on 26-10-2022 , your password was changed more than half a year ago so you should change it again"]},{"issue_id":17,"result_id":4,"result":["Password","Password"]},{"issue_id":6,"result_id":0,"result":["MicrosoftTeams","MicrosoftWindows.Client.WebExperience","MSTeams"]},{"issue_id":7,"result_id":0,"result":["Microsoft.GamingApp","Microsoft.ScreenSketch","Microsoft.WindowsCamera","Microsoft.WindowsFeedbackHub","Microsoft.XboxGamingOverlay","MicrosoftTeams","chrome.exe","POWERPNT.EXE","firefox.exe","Teams.exe","ShooterGame.exe","FallGuys_client_game.exe","FortniteClient-Win64-Shipping.exe","RemotePlay.exe","RocketLeague.exe","windows.immersivecontrolpanel"]},{"issue_id":8,"result_id":0,"result":["Microsoft.WindowsCamera","MicrosoftTeams","MicrosoftWindows.Client.CBS","MSTeams","chrome.exe","Pokemon TCG Live.exe"]},{"issue_id":9,"result_id":0,"result":["microsoft.windowscommunicationsapps"]},{"issue_id":10,"result_id":0,"result":["microsoft.windowscommunicationsapps"]},{"issue_id":1,"result_id":1,"result":["AirPods Pro - Find My\u0000","AirPods\u0000"]},{"issue_id":11,"result_id":0,"result":["port: 60158, process: nvcontainer.exe","port: 60292, process: NVIDIA Web Helper.exe","port: 60292, process: NVIDIA Web Helper.exe","port: 60308, process: NVIDIA Share.exe","port: 60391, process: firefox.exe","port: 60392, process: firefox.exe","port: 60393, process: firefox.exe","port: 60394, process: firefox.exe","port: 65001, process: nvcontainer.exe","port: 65001, process: nvcontainer.exe","port: 139, process: System","port: 60271, process: ekrn.exe","port: 60285, process: svchost.exe","port: 60331, process: SearchHost.exe","port: 60332, process: SearchHost.exe","port: 60334, process: SearchHost.exe","port: 60335, process: SearchHost.exe","port: 60336, process: SearchHost.exe","port: 60337, process: SearchHost.exe","port: 60338, process: SearchHost.exe","port: 60339, process: SearchHost.exe","port: 60340, process: SearchHost.exe","port: 60341, process: SearchHost.exe","port: 60342, process: SearchHost.exe","port: 60343, process: SearchHost.exe","port: 60344, process: SearchHost.exe","port: 60345, process: SearchHost.exe","port: 60346, process: SearchHost.exe","port: 60347, process: SearchHost.exe","port: 60348, process: SearchHost.exe","port: 60349, process: SearchHost.exe","port: 60350, process: SearchHost.exe","port: 60351, process: SearchHost.exe","port: 60352, process: SearchHost.exe","port: 60403, process: firefox.exe","port: 61239, process: System Idle Process","port: 61240, process: firefox.exe","port: 61243, process: OneDrive.exe","port: 61247, process: Code.exe","port: 61252, process: reporting-page.exe","port: 61253, process: reporting-page.exe","port: 139, process: System","port: 135, process: svchost.exe","port: 445, process: System","port: 49664, process: lsass.exe","port: 49665, process: wininit.exe","port: 49666, process: svchost.exe","port: 49667, process: svchost.exe","port: 49668, process: spoolsv.exe","port: 49679, process: services.exe","port: 49671, process: jhi_service.exe","port: 1900, process: svchost.exe","port: 10060, process: NVIDIA Web Helper.exe","port: 52333, process: svchost.exe","port: 57207, process: svchost.exe","port: 60534, process: ekrn.exe","port: 60693, process: nvcontainer.exe","port: 137, process: System","port: 138, process: System","port: 1900, process: svchost.exe","port: 5353, process: nvcontainer.exe","port: 57206, process: svchost.exe","port: 137, process: System","port: 138, process: System","port: 1900, process: svchost.exe","port: 5353, process: nvcontainer.exe","port: 57205, process: svchost.exe","port: 500, process: svchost.exe","port: 4500, process: svchost.exe","port: 5353, process: svchost.exe","port: 5355, process: svchost.exe","port: 54875, process: svchost.exe","port: 55103, process: svchost.exe","port: 56456, process: svchost.exe","port: 60542, process: nvcontainer.exe","port: 1900, process: svchost.exe","port: 5353, process: nvcontainer.exe","port: 57204, process: svchost.exe","port: 1900, process: svchost.exe","port: 57202, process: svchost.exe","port: 1900, process: svchost.exe","port: 57203, process: svchost.exe"]},{"issue_id":18,"result_id":1,"result":["10.0.22631","There are updates available for Windows 10."]},{"issue_id":19,"result_id":1,"result":["Secure boot is enabled"]},{"issue_id":13,"result_id":2,"result":["SMB1: not enabled","SMB2: enabled"]},{"issue_id":20,"result_id":1,"result":["Docker Desktop","SecurityHealth"]},{"issue_id":3,"result_id":2,"result":["Guest account is not active"]},{"issue_id":14,"result_id":2,"result":["UAC is turned on for apps making changes to your computer."]},{"issue_id":12,"result_id":1,"result":["Remote Desktop is disabled"]},{"issue_id":2,"result_id":0,"result":["HID-muis","HD User Facing"]},{"issue_id":4,"result_id":0,"result":["Network sharing is enabled"]},{"issue_id":23,"result_id":1,"result":["No phishing domains found in the last week"]},{"issue_id":21,"result_id":0,"result":["Adblocker installed"]},{"issue_id":25,"result_id":0,"result":["google.com"]},{"issue_id":28,"result_id":0,"result":["Form Autofill,extension,,true","Picture-In-Picture,extension,,true","Firefox Screenshots,extension,Mozilla <screenshots-feedback@mozilla.com>,true","WebCompat Reporter,extension,Thomas Wisniewski <twisniewski@mozilla.com>,false","Web Compatibility Interventions,extension,,true","System theme — auto,theme,Mozilla,true","Add-ons Search Detection,extension,,true","Google,extension,,true","Wikipedia (en),extension,,true","Bing,extension,,true","DuckDuckGo,extension,,true","Light,theme,Mozilla,false","Dark,theme,Mozilla,false","Firefox Alpenglow,theme,,false","Amazon.com.au,extension,,true","eBay,extension,,true","Qwant,extension,,true"]},{"issue_id":29,"result_id":0,"result":["false"]},{"issue_id":31,"result_id":0,"result":["No phising domains found in the last week"]},{"issue_id":30,"result_id":0,"result":["Other Search Engine"]}]
+2024/04/12 09:41:07 INFO: Scanning now. Scan:3
+2024/04/12 09:41:16 INFO: [
   {
     "issue_id": 5,
     "result_id": 1,
@@ -713,69 +744,87 @@
     "issue_id": 11,
     "result_id": 0,
     "result": [
-      "port: 54925, process: NVIDIA Web Helper.exe",
-      "port: 54925, process: NVIDIA Web Helper.exe",
-      "port: 55555, process: nvcontainer.exe",
-      "port: 55595, process: NVIDIA Share.exe",
-      "port: 55769, process: firefox.exe",
-      "port: 55770, process: firefox.exe",
-      "port: 55771, process: firefox.exe",
-      "port: 55772, process: firefox.exe",
+      "port: 60158, process: nvcontainer.exe",
+      "port: 60292, process: NVIDIA Web Helper.exe",
+      "port: 60292, process: NVIDIA Web Helper.exe",
+      "port: 60308, process: NVIDIA Share.exe",
+      "port: 60391, process: firefox.exe",
+      "port: 60392, process: firefox.exe",
+      "port: 60393, process: firefox.exe",
+      "port: 60394, process: firefox.exe",
       "port: 65001, process: nvcontainer.exe",
       "port: 65001, process: nvcontainer.exe",
       "port: 139, process: System",
-      "port: 55622, process: svchost.exe",
-      "port: 55763, process: ekrn.exe",
-      "port: 55792, process: firefox.exe",
-      "port: 57145, process: Code.exe",
-      "port: 57210, process: OneDrive.exe",
-      "port: 57212, process: System Idle Process",
-      "port: 57213, process: firefox.exe",
-      "port: 57214, process: System Idle Process",
-      "port: 57215, process: firefox.exe",
+      "port: 60271, process: ekrn.exe",
+      "port: 60285, process: svchost.exe",
+      "port: 60331, process: SearchHost.exe",
+      "port: 60332, process: SearchHost.exe",
+      "port: 60334, process: SearchHost.exe",
+      "port: 60335, process: SearchHost.exe",
+      "port: 60336, process: SearchHost.exe",
+      "port: 60337, process: SearchHost.exe",
+      "port: 60338, process: SearchHost.exe",
+      "port: 60339, process: SearchHost.exe",
+      "port: 60340, process: SearchHost.exe",
+      "port: 60341, process: SearchHost.exe",
+      "port: 60342, process: SearchHost.exe",
+      "port: 60343, process: SearchHost.exe",
+      "port: 60344, process: SearchHost.exe",
+      "port: 60345, process: SearchHost.exe",
+      "port: 60346, process: SearchHost.exe",
+      "port: 60347, process: SearchHost.exe",
+      "port: 60348, process: SearchHost.exe",
+      "port: 60349, process: SearchHost.exe",
+      "port: 60350, process: SearchHost.exe",
+      "port: 60351, process: SearchHost.exe",
+      "port: 60352, process: SearchHost.exe",
+      "port: 60403, process: firefox.exe",
+      "port: 61239, process: System Idle Process",
+      "port: 61243, process: OneDrive.exe",
+      "port: 61247, process: Code.exe",
+      "port: 61252, process: reporting-page.exe",
+      "port: 61253, process: reporting-page.exe",
+      "port: 139, process: System",
       "port: 135, process: svchost.exe",
       "port: 445, process: System",
-      "port: 7680, process: svchost.exe",
       "port: 49664, process: lsass.exe",
       "port: 49665, process: wininit.exe",
       "port: 49666, process: svchost.exe",
       "port: 49667, process: svchost.exe",
       "port: 49668, process: spoolsv.exe",
       "port: 49679, process: services.exe",
-      "port: 42050, process: Microsoft.SharePoint.exe",
       "port: 49671, process: jhi_service.exe",
-      "port: 56974, process: SearchHost.exe",
-      "port: 56980, process: SearchHost.exe",
-      "port: 57194, process: System Idle Process",
-      "port: 57222, process: reporting-page.exe",
-      "port: 57223, process: reporting-page.exe",
       "port: 1900, process: svchost.exe",
-      "port: 10040, process: NVIDIA Web Helper.exe",
-      "port: 51456, process: nvcontainer.exe",
+      "port: 10060, process: NVIDIA Web Helper.exe",
       "port: 52333, process: svchost.exe",
-      "port: 59180, process: svchost.exe",
+      "port: 57207, process: svchost.exe",
       "port: 60534, process: ekrn.exe",
+      "port: 60693, process: nvcontainer.exe",
       "port: 137, process: System",
       "port: 138, process: System",
       "port: 1900, process: svchost.exe",
       "port: 5353, process: nvcontainer.exe",
-      "port: 59179, process: svchost.exe",
-      "port: 123, process: svchost.exe",
+      "port: 57206, process: svchost.exe",
+      "port: 137, process: System",
+      "port: 138, process: System",
+      "port: 1900, process: svchost.exe",
+      "port: 5353, process: nvcontainer.exe",
+      "port: 57205, process: svchost.exe",
       "port: 500, process: svchost.exe",
       "port: 4500, process: svchost.exe",
       "port: 5353, process: svchost.exe",
       "port: 5355, process: svchost.exe",
-      "port: 51726, process: firefox.exe",
-      "port: 58282, process: ekrn.exe",
+      "port: 54875, process: svchost.exe",
+      "port: 55103, process: svchost.exe",
+      "port: 56456, process: svchost.exe",
       "port: 60542, process: nvcontainer.exe",
-      "port: 63439, process: svchost.exe",
-      "port: 63643, process: svchost.exe",
-      "port: 65126, process: msedgewebview2.exe",
       "port: 1900, process: svchost.exe",
       "port: 5353, process: nvcontainer.exe",
-      "port: 59178, process: svchost.exe",
+      "port: 57204, process: svchost.exe",
       "port: 1900, process: svchost.exe",
-      "port: 59177, process: svchost.exe"
+      "port: 57202, process: svchost.exe",
+      "port: 1900, process: svchost.exe",
+      "port: 57203, process: svchost.exe"
     ]
   },
   {
@@ -834,7 +883,6 @@
     "issue_id": 2,
     "result_id": 0,
     "result": [
-      "HID-muis",
       "HID-muis",
       "HD User Facing"
     ]
@@ -912,309 +960,7 @@
     ]
   }
 ]
-2024/04/11 17:14:55 INFO: Opening database
-2024/04/11 17:14:55 INFO: Connected to database
-2024/04/11 17:14:55 [{"issue_id":5,"result_id":1,"result":["No password manager found"]},{"issue_id":15,"result_id":0,"result":["Windows real-time defender is enabled and also the windows periodic scan is enabled"]},{"issue_id":16,"result_id":0,"result":["Password last changed on 26-10-2022 , your password was changed more than half a year ago so you should change it again"]},{"issue_id":17,"result_id":4,"result":["Password","Password"]},{"issue_id":6,"result_id":0,"result":["MicrosoftTeams","MicrosoftWindows.Client.WebExperience","MSTeams"]},{"issue_id":7,"result_id":0,"result":["Microsoft.GamingApp","Microsoft.ScreenSketch","Microsoft.WindowsCamera","Microsoft.WindowsFeedbackHub","Microsoft.XboxGamingOverlay","MicrosoftTeams","chrome.exe","POWERPNT.EXE","firefox.exe","Teams.exe","ShooterGame.exe","FallGuys_client_game.exe","FortniteClient-Win64-Shipping.exe","RemotePlay.exe","RocketLeague.exe","windows.immersivecontrolpanel"]},{"issue_id":8,"result_id":0,"result":["Microsoft.WindowsCamera","MicrosoftTeams","MicrosoftWindows.Client.CBS","MSTeams","chrome.exe","Pokemon TCG Live.exe"]},{"issue_id":9,"result_id":0,"result":["microsoft.windowscommunicationsapps"]},{"issue_id":10,"result_id":0,"result":["microsoft.windowscommunicationsapps"]},{"issue_id":1,"result_id":1,"result":["AirPods Pro - Find My\u0000","AirPods\u0000"]},{"issue_id":11,"result_id":0,"result":["port: 54925, process: NVIDIA Web Helper.exe","port: 54925, process: NVIDIA Web Helper.exe","port: 55555, process: nvcontainer.exe","port: 55595, process: NVIDIA Share.exe","port: 55769, process: firefox.exe","port: 55770, process: firefox.exe","port: 55771, process: firefox.exe","port: 55772, process: firefox.exe","port: 65001, process: nvcontainer.exe","port: 65001, process: nvcontainer.exe","port: 139, process: System","port: 55622, process: svchost.exe","port: 55763, process: ekrn.exe","port: 55792, process: firefox.exe","port: 57145, process: Code.exe","port: 57210, process: OneDrive.exe","port: 57212, process: System Idle Process","port: 57213, process: firefox.exe","port: 57214, process: System Idle Process","port: 57215, process: firefox.exe","port: 135, process: svchost.exe","port: 445, process: System","port: 7680, process: svchost.exe","port: 49664, process: lsass.exe","port: 49665, process: wininit.exe","port: 49666, process: svchost.exe","port: 49667, process: svchost.exe","port: 49668, process: spoolsv.exe","port: 49679, process: services.exe","port: 42050, process: Microsoft.SharePoint.exe","port: 49671, process: jhi_service.exe","port: 56974, process: SearchHost.exe","port: 56980, process: SearchHost.exe","port: 57194, process: System Idle Process","port: 57222, process: reporting-page.exe","port: 57223, process: reporting-page.exe","port: 1900, process: svchost.exe","port: 10040, process: NVIDIA Web Helper.exe","port: 51456, process: nvcontainer.exe","port: 52333, process: svchost.exe","port: 59180, process: svchost.exe","port: 60534, process: ekrn.exe","port: 137, process: System","port: 138, process: System","port: 1900, process: svchost.exe","port: 5353, process: nvcontainer.exe","port: 59179, process: svchost.exe","port: 123, process: svchost.exe","port: 500, process: svchost.exe","port: 4500, process: svchost.exe","port: 5353, process: svchost.exe","port: 5355, process: svchost.exe","port: 51726, process: firefox.exe","port: 58282, process: ekrn.exe","port: 60542, process: nvcontainer.exe","port: 63439, process: svchost.exe","port: 63643, process: svchost.exe","port: 65126, process: msedgewebview2.exe","port: 1900, process: svchost.exe","port: 5353, process: nvcontainer.exe","port: 59178, process: svchost.exe","port: 1900, process: svchost.exe","port: 59177, process: svchost.exe"]},{"issue_id":18,"result_id":1,"result":["10.0.22631","There are updates available for Windows 10."]},{"issue_id":19,"result_id":1,"result":["Secure boot is enabled"]},{"issue_id":13,"result_id":2,"result":["SMB1: not enabled","SMB2: enabled"]},{"issue_id":20,"result_id":1,"result":["Docker Desktop","SecurityHealth"]},{"issue_id":3,"result_id":2,"result":["Guest account is not active"]},{"issue_id":14,"result_id":2,"result":["UAC is turned on for apps making changes to your computer."]},{"issue_id":12,"result_id":1,"result":["Remote Desktop is disabled"]},{"issue_id":2,"result_id":0,"result":["HID-muis","HID-muis","HD User Facing"]},{"issue_id":4,"result_id":0,"result":["Network sharing is enabled"]},{"issue_id":23,"result_id":1,"result":["No phishing domains found in the last week"]},{"issue_id":21,"result_id":0,"result":["Adblocker installed"]},{"issue_id":25,"result_id":0,"result":["google.com"]},{"issue_id":28,"result_id":0,"result":["Form Autofill,extension,,true","Picture-In-Picture,extension,,true","Firefox Screenshots,extension,Mozilla <screenshots-feedback@mozilla.com>,true","WebCompat Reporter,extension,Thomas Wisniewski <twisniewski@mozilla.com>,false","Web Compatibility Interventions,extension,,true","System theme — auto,theme,Mozilla,true","Add-ons Search Detection,extension,,true","Google,extension,,true","Wikipedia (en),extension,,true","Bing,extension,,true","DuckDuckGo,extension,,true","Light,theme,Mozilla,false","Dark,theme,Mozilla,false","Firefox Alpenglow,theme,,false","Amazon.com.au,extension,,true","eBay,extension,,true","Qwant,extension,,true"]},{"issue_id":29,"result_id":0,"result":["false"]},{"issue_id":31,"result_id":0,"result":["No phising domains found in the last week"]},{"issue_id":30,"result_id":0,"result":["Other Search Engine"]}]
-2024/04/11 17:14:55 INFO: Closing database
-2024/04/11 17:14:57 INFO: Scanning now. Scan:4
-2024/04/11 17:15:02 INFO: [
-  {
-    "issue_id": 5,
-    "result_id": 1,
-    "result": [
-      "No password manager found"
-    ]
-  },
-  {
-    "issue_id": 15,
-    "result_id": 0,
-    "result": [
-      "Windows real-time defender is enabled and also the windows periodic scan is enabled"
-    ]
-  },
-  {
-    "issue_id": 16,
-    "result_id": 0,
-    "result": [
-      "Password last changed on 26-10-2022 , your password was changed more than half a year ago so you should change it again"
-    ]
-  },
-  {
-    "issue_id": 17,
-    "result_id": 4,
-    "result": [
-      "Password",
-      "Password"
-    ]
-  },
-  {
-    "issue_id": 6,
-    "result_id": 0,
-    "result": [
-      "MicrosoftTeams",
-      "MicrosoftWindows.Client.WebExperience",
-      "MSTeams"
-    ]
-  },
-  {
-    "issue_id": 7,
-    "result_id": 0,
-    "result": [
-      "Microsoft.GamingApp",
-      "Microsoft.ScreenSketch",
-      "Microsoft.WindowsCamera",
-      "Microsoft.WindowsFeedbackHub",
-      "Microsoft.XboxGamingOverlay",
-      "MicrosoftTeams",
-      "chrome.exe",
-      "POWERPNT.EXE",
-      "firefox.exe",
-      "Teams.exe",
-      "ShooterGame.exe",
-      "FallGuys_client_game.exe",
-      "FortniteClient-Win64-Shipping.exe",
-      "RemotePlay.exe",
-      "RocketLeague.exe",
-      "windows.immersivecontrolpanel"
-    ]
-  },
-  {
-    "issue_id": 8,
-    "result_id": 0,
-    "result": [
-      "Microsoft.WindowsCamera",
-      "MicrosoftTeams",
-      "MicrosoftWindows.Client.CBS",
-      "MSTeams",
-      "chrome.exe",
-      "Pokemon TCG Live.exe"
-    ]
-  },
-  {
-    "issue_id": 9,
-    "result_id": 0,
-    "result": [
-      "microsoft.windowscommunicationsapps"
-    ]
-  },
-  {
-    "issue_id": 10,
-    "result_id": 0,
-    "result": [
-      "microsoft.windowscommunicationsapps"
-    ]
-  },
-  {
-    "issue_id": 1,
-    "result_id": 1,
-    "result": [
-      "AirPods Pro - Find My\u0000",
-      "AirPods\u0000"
-    ]
-  },
-  {
-    "issue_id": 11,
-    "result_id": 0,
-    "result": [
-      "port: 54925, process: NVIDIA Web Helper.exe",
-      "port: 54925, process: NVIDIA Web Helper.exe",
-      "port: 55555, process: nvcontainer.exe",
-      "port: 55595, process: NVIDIA Share.exe",
-      "port: 55769, process: firefox.exe",
-      "port: 55770, process: firefox.exe",
-      "port: 55771, process: firefox.exe",
-      "port: 55772, process: firefox.exe",
-      "port: 65001, process: nvcontainer.exe",
-      "port: 65001, process: nvcontainer.exe",
-      "port: 139, process: System",
-      "port: 55622, process: svchost.exe",
-      "port: 55763, process: ekrn.exe",
-      "port: 55792, process: firefox.exe",
-      "port: 57145, process: Code.exe",
-      "port: 57210, process: OneDrive.exe",
-      "port: 57212, process: System Idle Process",
-      "port: 57214, process: System Idle Process",
-      "port: 57215, process: firefox.exe",
-      "port: 135, process: svchost.exe",
-      "port: 445, process: System",
-      "port: 7680, process: svchost.exe",
-      "port: 49664, process: lsass.exe",
-      "port: 49665, process: wininit.exe",
-      "port: 49666, process: svchost.exe",
-      "port: 49667, process: svchost.exe",
-      "port: 49668, process: spoolsv.exe",
-      "port: 49679, process: services.exe",
-      "port: 42050, process: Microsoft.SharePoint.exe",
-      "port: 49671, process: jhi_service.exe",
-      "port: 56974, process: SearchHost.exe",
-      "port: 56980, process: SearchHost.exe",
-      "port: 57194, process: System Idle Process",
-      "port: 57222, process: reporting-page.exe",
-      "port: 57223, process: reporting-page.exe",
-      "port: 1900, process: svchost.exe",
-      "port: 10040, process: NVIDIA Web Helper.exe",
-      "port: 51456, process: nvcontainer.exe",
-      "port: 52333, process: svchost.exe",
-      "port: 59180, process: svchost.exe",
-      "port: 60534, process: ekrn.exe",
-      "port: 137, process: System",
-      "port: 138, process: System",
-      "port: 1900, process: svchost.exe",
-      "port: 5353, process: nvcontainer.exe",
-      "port: 59179, process: svchost.exe",
-      "port: 123, process: svchost.exe",
-      "port: 500, process: svchost.exe",
-      "port: 4500, process: svchost.exe",
-      "port: 5353, process: svchost.exe",
-      "port: 5355, process: svchost.exe",
-      "port: 51726, process: firefox.exe",
-      "port: 58282, process: ekrn.exe",
-      "port: 60542, process: nvcontainer.exe",
-      "port: 63439, process: svchost.exe",
-      "port: 63643, process: svchost.exe",
-      "port: 65126, process: msedgewebview2.exe",
-      "port: 1900, process: svchost.exe",
-      "port: 5353, process: nvcontainer.exe",
-      "port: 59178, process: svchost.exe",
-      "port: 1900, process: svchost.exe",
-      "port: 59177, process: svchost.exe"
-    ]
-  },
-  {
-    "issue_id": 18,
-    "result_id": 1,
-    "result": [
-      "10.0.22631",
-      "There are updates available for Windows 10."
-    ]
-  },
-  {
-    "issue_id": 19,
-    "result_id": 1,
-    "result": [
-      "Secure boot is enabled"
-    ]
-  },
-  {
-    "issue_id": 13,
-    "result_id": 2,
-    "result": [
-      "SMB1: not enabled",
-      "SMB2: enabled"
-    ]
-  },
-  {
-    "issue_id": 20,
-    "result_id": 1,
-    "result": [
-      "Docker Desktop",
-      "SecurityHealth"
-    ]
-  },
-  {
-    "issue_id": 3,
-    "result_id": 2,
-    "result": [
-      "Guest account is not active"
-    ]
-  },
-  {
-    "issue_id": 14,
-    "result_id": 2,
-    "result": [
-      "UAC is turned on for apps making changes to your computer."
-    ]
-  },
-  {
-    "issue_id": 12,
-    "result_id": 1,
-    "result": [
-      "Remote Desktop is disabled"
-    ]
-  },
-  {
-    "issue_id": 2,
-    "result_id": 0,
-    "result": [
-      "HID-muis",
-      "HID-muis",
-      "HD User Facing"
-    ]
-  },
-  {
-    "issue_id": 4,
-    "result_id": 0,
-    "result": [
-      "Network sharing is enabled"
-    ]
-  },
-  {
-    "issue_id": 23,
-    "result_id": 1,
-    "result": [
-      "No phishing domains found in the last week"
-    ]
-  },
-  {
-    "issue_id": 21,
-    "result_id": 0,
-    "result": [
-      "Adblocker installed"
-    ]
-  },
-  {
-    "issue_id": 25,
-    "result_id": 0,
-    "result": [
-      "google.com"
-    ]
-  },
-  {
-    "issue_id": 28,
-    "result_id": 0,
-    "result": [
-      "Form Autofill,extension,,true",
-      "Picture-In-Picture,extension,,true",
-      "Firefox Screenshots,extension,Mozilla \u003cscreenshots-feedback@mozilla.com\u003e,true",
-      "WebCompat Reporter,extension,Thomas Wisniewski \u003ctwisniewski@mozilla.com\u003e,false",
-      "Web Compatibility Interventions,extension,,true",
-      "System theme — auto,theme,Mozilla,true",
-      "Add-ons Search Detection,extension,,true",
-      "Google,extension,,true",
-      "Wikipedia (en),extension,,true",
-      "Bing,extension,,true",
-      "DuckDuckGo,extension,,true",
-      "Light,theme,Mozilla,false",
-      "Dark,theme,Mozilla,false",
-      "Firefox Alpenglow,theme,,false",
-      "Amazon.com.au,extension,,true",
-      "eBay,extension,,true",
-      "Qwant,extension,,true"
-    ]
-  },
-  {
-    "issue_id": 29,
-    "result_id": 0,
-    "result": [
-      "false"
-    ]
-  },
-  {
-    "issue_id": 31,
-    "result_id": 0,
-    "result": [
-      "No phising domains found in the last week"
-    ]
-  },
-  {
-    "issue_id": 30,
-    "result_id": 0,
-    "result": [
-      "Other Search Engine"
-    ]
-  }
-]
-2024/04/11 17:15:02 INFO: Opening database
-2024/04/11 17:15:02 INFO: Connected to database
-2024/04/11 17:15:02 [{"issue_id":5,"result_id":1,"result":["No password manager found"]},{"issue_id":15,"result_id":0,"result":["Windows real-time defender is enabled and also the windows periodic scan is enabled"]},{"issue_id":16,"result_id":0,"result":["Password last changed on 26-10-2022 , your password was changed more than half a year ago so you should change it again"]},{"issue_id":17,"result_id":4,"result":["Password","Password"]},{"issue_id":6,"result_id":0,"result":["MicrosoftTeams","MicrosoftWindows.Client.WebExperience","MSTeams"]},{"issue_id":7,"result_id":0,"result":["Microsoft.GamingApp","Microsoft.ScreenSketch","Microsoft.WindowsCamera","Microsoft.WindowsFeedbackHub","Microsoft.XboxGamingOverlay","MicrosoftTeams","chrome.exe","POWERPNT.EXE","firefox.exe","Teams.exe","ShooterGame.exe","FallGuys_client_game.exe","FortniteClient-Win64-Shipping.exe","RemotePlay.exe","RocketLeague.exe","windows.immersivecontrolpanel"]},{"issue_id":8,"result_id":0,"result":["Microsoft.WindowsCamera","MicrosoftTeams","MicrosoftWindows.Client.CBS","MSTeams","chrome.exe","Pokemon TCG Live.exe"]},{"issue_id":9,"result_id":0,"result":["microsoft.windowscommunicationsapps"]},{"issue_id":10,"result_id":0,"result":["microsoft.windowscommunicationsapps"]},{"issue_id":1,"result_id":1,"result":["AirPods Pro - Find My\u0000","AirPods\u0000"]},{"issue_id":11,"result_id":0,"result":["port: 54925, process: NVIDIA Web Helper.exe","port: 54925, process: NVIDIA Web Helper.exe","port: 55555, process: nvcontainer.exe","port: 55595, process: NVIDIA Share.exe","port: 55769, process: firefox.exe","port: 55770, process: firefox.exe","port: 55771, process: firefox.exe","port: 55772, process: firefox.exe","port: 65001, process: nvcontainer.exe","port: 65001, process: nvcontainer.exe","port: 139, process: System","port: 55622, process: svchost.exe","port: 55763, process: ekrn.exe","port: 55792, process: firefox.exe","port: 57145, process: Code.exe","port: 57210, process: OneDrive.exe","port: 57212, process: System Idle Process","port: 57214, process: System Idle Process","port: 57215, process: firefox.exe","port: 135, process: svchost.exe","port: 445, process: System","port: 7680, process: svchost.exe","port: 49664, process: lsass.exe","port: 49665, process: wininit.exe","port: 49666, process: svchost.exe","port: 49667, process: svchost.exe","port: 49668, process: spoolsv.exe","port: 49679, process: services.exe","port: 42050, process: Microsoft.SharePoint.exe","port: 49671, process: jhi_service.exe","port: 56974, process: SearchHost.exe","port: 56980, process: SearchHost.exe","port: 57194, process: System Idle Process","port: 57222, process: reporting-page.exe","port: 57223, process: reporting-page.exe","port: 1900, process: svchost.exe","port: 10040, process: NVIDIA Web Helper.exe","port: 51456, process: nvcontainer.exe","port: 52333, process: svchost.exe","port: 59180, process: svchost.exe","port: 60534, process: ekrn.exe","port: 137, process: System","port: 138, process: System","port: 1900, process: svchost.exe","port: 5353, process: nvcontainer.exe","port: 59179, process: svchost.exe","port: 123, process: svchost.exe","port: 500, process: svchost.exe","port: 4500, process: svchost.exe","port: 5353, process: svchost.exe","port: 5355, process: svchost.exe","port: 51726, process: firefox.exe","port: 58282, process: ekrn.exe","port: 60542, process: nvcontainer.exe","port: 63439, process: svchost.exe","port: 63643, process: svchost.exe","port: 65126, process: msedgewebview2.exe","port: 1900, process: svchost.exe","port: 5353, process: nvcontainer.exe","port: 59178, process: svchost.exe","port: 1900, process: svchost.exe","port: 59177, process: svchost.exe"]},{"issue_id":18,"result_id":1,"result":["10.0.22631","There are updates available for Windows 10."]},{"issue_id":19,"result_id":1,"result":["Secure boot is enabled"]},{"issue_id":13,"result_id":2,"result":["SMB1: not enabled","SMB2: enabled"]},{"issue_id":20,"result_id":1,"result":["Docker Desktop","SecurityHealth"]},{"issue_id":3,"result_id":2,"result":["Guest account is not active"]},{"issue_id":14,"result_id":2,"result":["UAC is turned on for apps making changes to your computer."]},{"issue_id":12,"result_id":1,"result":["Remote Desktop is disabled"]},{"issue_id":2,"result_id":0,"result":["HID-muis","HID-muis","HD User Facing"]},{"issue_id":4,"result_id":0,"result":["Network sharing is enabled"]},{"issue_id":23,"result_id":1,"result":["No phishing domains found in the last week"]},{"issue_id":21,"result_id":0,"result":["Adblocker installed"]},{"issue_id":25,"result_id":0,"result":["google.com"]},{"issue_id":28,"result_id":0,"result":["Form Autofill,extension,,true","Picture-In-Picture,extension,,true","Firefox Screenshots,extension,Mozilla <screenshots-feedback@mozilla.com>,true","WebCompat Reporter,extension,Thomas Wisniewski <twisniewski@mozilla.com>,false","Web Compatibility Interventions,extension,,true","System theme — auto,theme,Mozilla,true","Add-ons Search Detection,extension,,true","Google,extension,,true","Wikipedia (en),extension,,true","Bing,extension,,true","DuckDuckGo,extension,,true","Light,theme,Mozilla,false","Dark,theme,Mozilla,false","Firefox Alpenglow,theme,,false","Amazon.com.au,extension,,true","eBay,extension,,true","Qwant,extension,,true"]},{"issue_id":29,"result_id":0,"result":["false"]},{"issue_id":31,"result_id":0,"result":["No phising domains found in the last week"]},{"issue_id":30,"result_id":0,"result":["Other Search Engine"]}]
-2024/04/11 17:15:02 INFO: Closing database
+2024/04/12 09:41:16 INFO: Opening database
+2024/04/12 09:41:16 INFO: Connected to database
+2024/04/12 09:41:16 INFO: Closing database
+2024/04/12 09:41:16 [{"issue_id":5,"result_id":1,"result":["No password manager found"]},{"issue_id":15,"result_id":0,"result":["Windows real-time defender is enabled and also the windows periodic scan is enabled"]},{"issue_id":16,"result_id":0,"result":["Password last changed on 26-10-2022 , your password was changed more than half a year ago so you should change it again"]},{"issue_id":17,"result_id":4,"result":["Password","Password"]},{"issue_id":6,"result_id":0,"result":["MicrosoftTeams","MicrosoftWindows.Client.WebExperience","MSTeams"]},{"issue_id":7,"result_id":0,"result":["Microsoft.GamingApp","Microsoft.ScreenSketch","Microsoft.WindowsCamera","Microsoft.WindowsFeedbackHub","Microsoft.XboxGamingOverlay","MicrosoftTeams","chrome.exe","POWERPNT.EXE","firefox.exe","Teams.exe","ShooterGame.exe","FallGuys_client_game.exe","FortniteClient-Win64-Shipping.exe","RemotePlay.exe","RocketLeague.exe","windows.immersivecontrolpanel"]},{"issue_id":8,"result_id":0,"result":["Microsoft.WindowsCamera","MicrosoftTeams","MicrosoftWindows.Client.CBS","MSTeams","chrome.exe","Pokemon TCG Live.exe"]},{"issue_id":9,"result_id":0,"result":["microsoft.windowscommunicationsapps"]},{"issue_id":10,"result_id":0,"result":["microsoft.windowscommunicationsapps"]},{"issue_id":1,"result_id":1,"result":["AirPods Pro - Find My\u0000","AirPods\u0000"]},{"issue_id":11,"result_id":0,"result":["port: 60158, process: nvcontainer.exe","port: 60292, process: NVIDIA Web Helper.exe","port: 60292, process: NVIDIA Web Helper.exe","port: 60308, process: NVIDIA Share.exe","port: 60391, process: firefox.exe","port: 60392, process: firefox.exe","port: 60393, process: firefox.exe","port: 60394, process: firefox.exe","port: 65001, process: nvcontainer.exe","port: 65001, process: nvcontainer.exe","port: 139, process: System","port: 60271, process: ekrn.exe","port: 60285, process: svchost.exe","port: 60331, process: SearchHost.exe","port: 60332, process: SearchHost.exe","port: 60334, process: SearchHost.exe","port: 60335, process: SearchHost.exe","port: 60336, process: SearchHost.exe","port: 60337, process: SearchHost.exe","port: 60338, process: SearchHost.exe","port: 60339, process: SearchHost.exe","port: 60340, process: SearchHost.exe","port: 60341, process: SearchHost.exe","port: 60342, process: SearchHost.exe","port: 60343, process: SearchHost.exe","port: 60344, process: SearchHost.exe","port: 60345, process: SearchHost.exe","port: 60346, process: SearchHost.exe","port: 60347, process: SearchHost.exe","port: 60348, process: SearchHost.exe","port: 60349, process: SearchHost.exe","port: 60350, process: SearchHost.exe","port: 60351, process: SearchHost.exe","port: 60352, process: SearchHost.exe","port: 60403, process: firefox.exe","port: 61239, process: System Idle Process","port: 61243, process: OneDrive.exe","port: 61247, process: Code.exe","port: 61252, process: reporting-page.exe","port: 61253, process: reporting-page.exe","port: 139, process: System","port: 135, process: svchost.exe","port: 445, process: System","port: 49664, process: lsass.exe","port: 49665, process: wininit.exe","port: 49666, process: svchost.exe","port: 49667, process: svchost.exe","port: 49668, process: spoolsv.exe","port: 49679, process: services.exe","port: 49671, process: jhi_service.exe","port: 1900, process: svchost.exe","port: 10060, process: NVIDIA Web Helper.exe","port: 52333, process: svchost.exe","port: 57207, process: svchost.exe","port: 60534, process: ekrn.exe","port: 60693, process: nvcontainer.exe","port: 137, process: System","port: 138, process: System","port: 1900, process: svchost.exe","port: 5353, process: nvcontainer.exe","port: 57206, process: svchost.exe","port: 137, process: System","port: 138, process: System","port: 1900, process: svchost.exe","port: 5353, process: nvcontainer.exe","port: 57205, process: svchost.exe","port: 500, process: svchost.exe","port: 4500, process: svchost.exe","port: 5353, process: svchost.exe","port: 5355, process: svchost.exe","port: 54875, process: svchost.exe","port: 55103, process: svchost.exe","port: 56456, process: svchost.exe","port: 60542, process: nvcontainer.exe","port: 1900, process: svchost.exe","port: 5353, process: nvcontainer.exe","port: 57204, process: svchost.exe","port: 1900, process: svchost.exe","port: 57202, process: svchost.exe","port: 1900, process: svchost.exe","port: 57203, process: svchost.exe"]},{"issue_id":18,"result_id":1,"result":["10.0.22631","There are updates available for Windows 10."]},{"issue_id":19,"result_id":1,"result":["Secure boot is enabled"]},{"issue_id":13,"result_id":2,"result":["SMB1: not enabled","SMB2: enabled"]},{"issue_id":20,"result_id":1,"result":["Docker Desktop","SecurityHealth"]},{"issue_id":3,"result_id":2,"result":["Guest account is not active"]},{"issue_id":14,"result_id":2,"result":["UAC is turned on for apps making changes to your computer."]},{"issue_id":12,"result_id":1,"result":["Remote Desktop is disabled"]},{"issue_id":2,"result_id":0,"result":["HID-muis","HD User Facing"]},{"issue_id":4,"result_id":0,"result":["Network sharing is enabled"]},{"issue_id":23,"result_id":1,"result":["No phishing domains found in the last week"]},{"issue_id":21,"result_id":0,"result":["Adblocker installed"]},{"issue_id":25,"result_id":0,"result":["google.com"]},{"issue_id":28,"result_id":0,"result":["Form Autofill,extension,,true","Picture-In-Picture,extension,,true","Firefox Screenshots,extension,Mozilla <screenshots-feedback@mozilla.com>,true","WebCompat Reporter,extension,Thomas Wisniewski <twisniewski@mozilla.com>,false","Web Compatibility Interventions,extension,,true","System theme — auto,theme,Mozilla,true","Add-ons Search Detection,extension,,true","Google,extension,,true","Wikipedia (en),extension,,true","Bing,extension,,true","DuckDuckGo,extension,,true","Light,theme,Mozilla,false","Dark,theme,Mozilla,false","Firefox Alpenglow,theme,,false","Amazon.com.au,extension,,true","eBay,extension,,true","Qwant,extension,,true"]},{"issue_id":29,"result_id":0,"result":["false"]},{"issue_id":31,"result_id":0,"result":["No phising domains found in the last week"]},{"issue_id":30,"result_id":0,"result":["Other Search Engine"]}]

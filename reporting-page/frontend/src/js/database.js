@@ -5,24 +5,34 @@ import * as runTime from '../../wailsjs/runtime/runtime.js';
 import * as rc from './risk-counters.js';
 import {updateRiskcounter} from './risk-counters.js';
 /** Call ScanNow in backend and store result in sessionStorage */
-export function scanTest() {
+export async function scanTest() {
   try {
-    scanNowGo()
-      .then((result) => {
-        // place result in session storage
-        sessionStorage.setItem('ScanResult', JSON.stringify(result));
-        // place severities in session storage
-        setSeverities(result);
+    const result = await new Promise((resolve, reject) => {
+      scanNowGo()
+        .then(async (scanResult) => {
+          // Handle the scan result
+          // For example, save it in session storage
+          sessionStorage.setItem('ScanResult', JSON.stringify(scanResult));
+          // Set severities in session storage
+          await setSeverities(scanResult);
+          // Resolve the promise with the scan result
+          resolve(scanResult);
+        })
+        .catch((err) => {
+          // Log any errors from scanNowGo
+          logError('Error in scanNowGo: ' + err);
+          // Reject the promise with the error
+          reject(err);
+        });
+    });
 
-        runTime.WindowShow();
-        runTime.WindowMaximise();
-        runTime.LogPrint(sessionStorage.getItem('ScanResult'));
-      })
-      .catch((err) => {
-        logError('Error in scanNowGo: ' + err);
-      });
+    // Perform other actions after scanTest is complete
+    runTime.WindowShow();
+    runTime.WindowMaximise();
+    runTime.LogPrint(sessionStorage.getItem('ScanResult'));
   } catch (err) {
-    logError('Error in scanNowGo: ' + err);
+    // Handle any errors that occurred during scanTest or subsequent actions
+    logError('Error in scanTest: ' + err);
   }
 }
 
@@ -36,26 +46,24 @@ const countOccurences = (severities, level) => severities.filter((item) => item.
  * @param {Check[]} input Checks to get severities from
  * @param {int[]} ids List of result ids to get corresponding severities
  */
-function setSeverities(input) {
-  getDataBaseData(input)
-    .then((result) => {
-      sessionStorage.setItem('DataBaseData', JSON.stringify(result));
-      const high = countOccurences(result, 3);
-      const medium = countOccurences(result, 2);
-      const low = countOccurences(result, 1);
-      const acceptable = countOccurences(result, 0);
-      if (sessionStorage.getItem('RiskCounters') === null || sessionStorage.getItem('RiskCounters') === undefined) {
-        sessionStorage.setItem('RiskCounters', JSON.stringify(new rc.RiskCounters(high, medium, low, acceptable)));
-        openHomePage();
-      } else {
-        let riskCounter = JSON.parse(sessionStorage.getItem('RiskCounters'));
-        console.log(riskCounter);
-        riskCounter = updateRiskcounter(riskCounter, high, medium, low, acceptable);
-        sessionStorage.setItem('RiskCounters', JSON.stringify(riskCounter));
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-    });
+async function setSeverities(input) {
+  try {
+    const result = await getDataBaseData(input);
+    sessionStorage.setItem('DataBaseData', JSON.stringify(result));
+    const high = countOccurences(result, 3);
+    const medium = countOccurences(result, 2);
+    const low = countOccurences(result, 1);
+    const acceptable = countOccurences(result, 0);
+    if (sessionStorage.getItem('RiskCounters') === null || sessionStorage.getItem('RiskCounters') === undefined) {
+      sessionStorage.setItem('RiskCounters', JSON.stringify(new rc.RiskCounters(high, medium, low, acceptable)));
+      openHomePage();
+    } else {
+      let riskCounter = JSON.parse(sessionStorage.getItem('RiskCounters'));
+      console.log(riskCounter);
+      riskCounter = updateRiskcounter(riskCounter, high, medium, low, acceptable);
+      sessionStorage.setItem('RiskCounters', JSON.stringify(riskCounter));
+    }
+  } catch (err) {
+    console.error(err);
+  }
 }
-

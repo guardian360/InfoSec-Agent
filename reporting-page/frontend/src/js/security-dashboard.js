@@ -8,6 +8,7 @@ import {scanTest} from './database.js';
 
 /** Load the content of the Security Dashboard page */
 function openSecurityDashboardPage() {
+  document.onload = retrieveTheme();
   closeNavigation();
   markSelectedNavigationItem('security-dashboard-button');
 
@@ -143,7 +144,7 @@ function openSecurityDashboardPage() {
   </div>
   `;
   // Set counters on the page to the right values
-  const rc = JSON.parse(sessionStorage.getItem('RiskCounters'));
+  let rc = JSON.parse(sessionStorage.getItem('RiskCounters'));
   adjustWithRiskCounters(rc, document);
   setMaxInterval(rc, document);
 
@@ -196,16 +197,16 @@ function openSecurityDashboardPage() {
 
   // Create charts
   new PieChart('pieChart', rc);
-  const g = new Graph('interval-graph', rc);
+  let g = new Graph('interval-graph', rc);
   addGraphFunctions(g);
-  document.getElementsByClassName('scan-now')[0].addEventListener('click', () => {
-    scanTest();
-    const rc = JSON.parse(sessionStorage.getItem('RiskCounters'));
+  document.getElementsByClassName('scan-now')[0].addEventListener('click', async () => {
+    await scanTest();
+    rc = JSON.parse(sessionStorage.getItem('RiskCounters'));
     adjustWithRiskCounters(rc, document);
     setMaxInterval(rc, document);
+    g.rc = rc;
     g.changeGraph();
   });
-  document.onload = retrieveTheme();
 }
 
 if (typeof document !== 'undefined') {
