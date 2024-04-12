@@ -60,12 +60,12 @@ export function openIssuePage(issueId) {
       <h1 class="issue-name">${currentIssue.Name}</h1>
       <div class="issue-information">
         <h2 id="information">Information</h2>
-        <p>${currentIssue.Information}</p>
+        <p id="description">${currentIssue.Information}</p>
         <h2 id="solution">Acceptable</h2>
         <div class="issue-solution">
           <p id="solution-text">${currentIssue.Solution[stepCounter]}</p>
         </div>
-        <div id="back-button">Back to issues overview</div>
+        <div class="button" id="back-button">Back to issues overview</div>
       </div>
     `;
 
@@ -89,12 +89,12 @@ export function openIssuePage(issueId) {
           <img style='display:block; width:750px;height:auto' id="step-screenshot"></img>
           <div class="solution-buttons">
             <div class="button-box">
-              <div id="previous-button" class="step-button">&laquo; Previous step</div>
-              <div id="next-button" class="step-button">Next step &raquo;</div>
+              <div id="previous-button" class="button">&laquo; Previous step</div>
+              <div id="next-button" class="button">Next step &raquo;</div>
             </div>
           </div>
         </div>
-        <div id="back-button">Back to issues overview</div>
+        <div class="button" id="back-button">Back to issues overview</div>
       </div>
     `;
 
