@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
+	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 )
 
@@ -16,7 +16,7 @@ import (
 // Parameters: _
 //
 // Returns: When the password was last changed
-func LastPasswordChange(executor commandmock.CommandExecutor) Check {
+func LastPasswordChange(executor mocking.CommandExecutor) Check {
 	// Get the current Windows username
 	username, err := utils.CurrentUsername()
 	if err != nil {

@@ -3,7 +3,7 @@ package checks
 import (
 	"strings"
 
-	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
+	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 )
 
@@ -14,18 +14,18 @@ const nonpackaged = "NonPackaged"
 // Parameters: permission (string) represents the permission to check
 //
 // Returns: A list of applications that have the given permission
-func Permission(permissionID int, permission string, registryKey registrymock.RegistryKey) Check {
+func Permission(permissionID int, permission string, registryKey mocking.RegistryKey) Check {
 	var err error
-	var appKey registrymock.RegistryKey
+	var appKey mocking.RegistryKey
 	var nonPackagedApplicationNames []string
 	// Open the registry key for the given permission
-	key, err := registrymock.OpenRegistryKey(registryKey,
+	key, err := mocking.OpenRegistryKey(registryKey,
 		`Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\`+permission)
 	if err != nil {
 		return NewCheckErrorf(permissionID, "error opening registry key", err)
 	}
 	// Close the key after we have received all relevant information
-	defer registrymock.CloseRegistryKey(key)
+	defer mocking.CloseRegistryKey(key)
 
 	// Get the names of all sub-keys (which represent applications)
 	applicationNames, err := key.ReadSubKeyNames(-1)
@@ -37,8 +37,8 @@ func Permission(permissionID int, permission string, registryKey registrymock.Re
 	var val string
 	// Iterate through the application names and append them to the results
 	for _, appName := range applicationNames {
-		appKey, err = registrymock.OpenRegistryKey(key, appKeyName(appName))
-		defer registrymock.CloseRegistryKey(appKey)
+		appKey, err = mocking.OpenRegistryKey(key, appKeyName(appName))
+		defer mocking.CloseRegistryKey(appKey)
 		if err != nil {
 			return NewCheckErrorf(permissionID, "error opening registry key", err)
 		}
@@ -79,7 +79,7 @@ func appKeyName(appName string) string {
 }
 
 // nonPackagedAppNames returns the names of non-packaged applications
-func nonPackagedAppNames(appKey registrymock.RegistryKey) ([]string, error) {
+func nonPackagedAppNames(appKey mocking.RegistryKey) ([]string, error) {
 	nonPackagedApplicationNames, err := appKey.ReadSubKeyNames(-1)
 	if err != nil {
 		return nil, err

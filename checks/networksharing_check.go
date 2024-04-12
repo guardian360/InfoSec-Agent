@@ -3,7 +3,7 @@ package checks
 import (
 	"strings"
 
-	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
+	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 )
 
 // NetworkSharing checks if network sharing is enabled or disabled
@@ -11,7 +11,7 @@ import (
 // Parameters: _
 //
 // Returns: If network sharing is enabled or not
-func NetworkSharing(executor commandmock.CommandExecutor) Check {
+func NetworkSharing(executor mocking.CommandExecutor) Check {
 	// Execute a powershell command to get the network adapter binding status
 	command := "Get-NetAdapterBinding | Where-Object {$_.ComponentID -eq 'ms_server'} | Select-Object Enabled"
 	output, err := executor.Execute("powershell", command)

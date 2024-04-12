@@ -1,4 +1,4 @@
-package commandmock
+package mocking
 
 import "os/exec"
 

@@ -3,7 +3,7 @@ package checks
 import (
 	"fmt"
 
-	"github.com/InfoSec-Agent/InfoSec-Agent/windowsmock"
+	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 )
 
 // TODO: The "newest build" is done manually below and should be done automatic.
@@ -18,7 +18,7 @@ const (
 // Parameters: _
 //
 // Returns: If the Windows version is up-to-date or if there are updated available
-func WindowsOutdated(mockOS windowsmock.WindowsVersion) Check {
+func WindowsOutdated(mockOS mocking.WindowsVersion) Check {
 	versionData := mockOS.RtlGetVersion()
 	versionString := fmt.Sprintf("%d.%d.%d", versionData.MajorVersion, versionData.MinorVersion, versionData.BuildNumber)
 

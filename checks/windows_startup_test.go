@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/require"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
-	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
+	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 )
 
 // TestStartup tests the Startup function on (in)valid input
@@ -17,28 +17,28 @@ import (
 func TestStartup(t *testing.T) {
 	tests := []struct {
 		name string
-		key1 registrymock.RegistryKey
-		key2 registrymock.RegistryKey
-		key3 registrymock.RegistryKey
+		key1 mocking.RegistryKey
+		key2 mocking.RegistryKey
+		key3 mocking.RegistryKey
 		want checks.Check
 	}{{
 		name: "No startup programs found",
-		key1: &registrymock.MockRegistryKey{SubKeys: []registrymock.MockRegistryKey{{
+		key1: &mocking.MockRegistryKey{SubKeys: []mocking.MockRegistryKey{{
 			KeyName: "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\StartupApproved\\Run"}}},
-		key2: &registrymock.MockRegistryKey{SubKeys: []registrymock.MockRegistryKey{{
+		key2: &mocking.MockRegistryKey{SubKeys: []mocking.MockRegistryKey{{
 			KeyName: "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\StartupApproved\\Run"}}},
-		key3: &registrymock.MockRegistryKey{SubKeys: []registrymock.MockRegistryKey{{
+		key3: &mocking.MockRegistryKey{SubKeys: []mocking.MockRegistryKey{{
 			KeyName: "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\StartupApproved\\Run32"}}},
 		want: checks.NewCheckResult(checks.StartupID, 0, "No startup programs found"),
 	}, {
 		name: "Startup programs found",
-		key1: &registrymock.MockRegistryKey{SubKeys: []registrymock.MockRegistryKey{{
+		key1: &mocking.MockRegistryKey{SubKeys: []mocking.MockRegistryKey{{
 			KeyName:      "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\StartupApproved\\Run",
 			BinaryValues: map[string][]byte{"MockProgram": []byte{1, 2, 3, 4, 0, 0, 0}}, Err: nil}}},
-		key2: &registrymock.MockRegistryKey{SubKeys: []registrymock.MockRegistryKey{{
+		key2: &mocking.MockRegistryKey{SubKeys: []mocking.MockRegistryKey{{
 			KeyName:      "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\StartupApproved\\Run",
 			BinaryValues: map[string][]byte{"MockProgram2": []byte{0, 0, 0, 0, 1, 0, 0}}, Err: nil}}},
-		key3: &registrymock.MockRegistryKey{SubKeys: []registrymock.MockRegistryKey{{
+		key3: &mocking.MockRegistryKey{SubKeys: []mocking.MockRegistryKey{{
 			KeyName:      "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\StartupApproved\\Run32",
 			BinaryValues: map[string][]byte{"MockProgram3": []byte{0, 0, 0, 0, 0, 1, 0}}, Err: nil}}},
 		want: checks.NewCheckResult(checks.StartupID, 1, "MockProgram"),

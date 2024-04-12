@@ -9,7 +9,7 @@ import (
 	"path/filepath"
 	"regexp"
 
-	"github.com/InfoSec-Agent/InfoSec-Agent/filemock"
+	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
@@ -50,7 +50,7 @@ func SearchEngineChromium(browser string) checks.Check {
 		return checks.NewCheckErrorf(returnID, "Error: ", err)
 	}
 	defer func(file *os.File) {
-		tmpFile := filemock.Wrap(file)
+		tmpFile := mocking.Wrap(file)
 		err = utils.CloseFile(tmpFile)
 		if err != nil {
 			log.Println("Error closing file")

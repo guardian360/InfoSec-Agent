@@ -1,5 +1,5 @@
 // Package windowsmock provides a mock implementation of the WindowsVersion interface
-package windowsmock
+package mocking
 
 import (
 	"golang.org/x/sys/windows"

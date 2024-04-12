@@ -1,8 +1,8 @@
 package utils_test
 
 import (
-	"github.com/InfoSec-Agent/InfoSec-Agent/filemock"
 	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
+	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"os"
 	"testing"
@@ -29,8 +29,8 @@ func TestMain(m *testing.M) {
 //
 // Returns: _
 func TestCopyFileSuccess(t *testing.T) {
-	mockSource := &filemock.FileMock{IsOpen: true, Bytes: 10, Err: nil}
-	mockDestination := &filemock.FileMock{IsOpen: true, Bytes: 10, Err: nil}
+	mockSource := &mocking.FileMock{IsOpen: true, Bytes: 10, Err: nil}
+	mockDestination := &mocking.FileMock{IsOpen: true, Bytes: 10, Err: nil}
 	err := utils.CopyFile("", "", mockSource, mockDestination)
 	require.NoError(t, err)
 }
@@ -41,8 +41,8 @@ func TestCopyFileSuccess(t *testing.T) {
 //
 // Returns: _
 func TestCopyFileFailNonexistentSource(t *testing.T) {
-	mockSource := &filemock.FileMock{IsOpen: true, Bytes: 10, Err: os.ErrNotExist}
-	mockDestination := &filemock.FileMock{IsOpen: true, Bytes: 10, Err: nil}
+	mockSource := &mocking.FileMock{IsOpen: true, Bytes: 10, Err: os.ErrNotExist}
+	mockDestination := &mocking.FileMock{IsOpen: true, Bytes: 10, Err: nil}
 	err := utils.CopyFile("", "", mockSource, mockDestination)
 	require.Error(t, err)
 }
@@ -53,8 +53,8 @@ func TestCopyFileFailNonexistentSource(t *testing.T) {
 //
 // Returns: _
 func TestCopyFileFailNonexistentDestination(t *testing.T) {
-	mockSource := &filemock.FileMock{IsOpen: true, Bytes: 10, Err: nil}
-	mockDestination := &filemock.FileMock{IsOpen: true, Bytes: 10, Err: os.ErrNotExist}
+	mockSource := &mocking.FileMock{IsOpen: true, Bytes: 10, Err: nil}
+	mockDestination := &mocking.FileMock{IsOpen: true, Bytes: 10, Err: os.ErrNotExist}
 	err := utils.CopyFile("", "", mockSource, mockDestination)
 	require.Error(t, err)
 }
@@ -125,7 +125,7 @@ func TestRemoveDuplicateStrEmptyInput(t *testing.T) {
 //
 // Returns: _
 func TestCloseFileNoError(t *testing.T) {
-	file := &filemock.FileMock{IsOpen: true, Err: nil}
+	file := &mocking.FileMock{IsOpen: true, Err: nil}
 	err := utils.CloseFile(file)
 	require.NoError(t, err)
 }
@@ -136,7 +136,7 @@ func TestCloseFileNoError(t *testing.T) {
 //
 // Returns: _
 func TestCloseFileWhenFileWasAlreadyClosed(t *testing.T) {
-	file := &filemock.FileMock{IsOpen: true, Err: nil}
+	file := &mocking.FileMock{IsOpen: true, Err: nil}
 	err := file.Close()
 	require.NoError(t, err)
 	err = utils.CloseFile(file)
@@ -149,7 +149,7 @@ func TestCloseFileWhenFileWasAlreadyClosed(t *testing.T) {
 //
 // Returns: _
 func TestCloseFileWhenFileIsNil(t *testing.T) {
-	var file *filemock.FileMock
+	var file *mocking.FileMock
 	err := utils.CloseFile(file)
 	require.Error(t, err)
 }

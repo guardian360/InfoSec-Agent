@@ -5,7 +5,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
+	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 )
 
 // OpenPorts checks for open ports and the processes that are using them
@@ -13,7 +13,7 @@ import (
 // Parameters: _
 //
 // Returns: A list of open ports and the processes that are using them
-func OpenPorts(tasklistexecutor, netstatexecutor commandmock.CommandExecutor) Check {
+func OpenPorts(tasklistexecutor, netstatexecutor mocking.CommandExecutor) Check {
 	// Regular expression to clean up multiple spaces in the output
 	re := regexp.MustCompile("  +")
 

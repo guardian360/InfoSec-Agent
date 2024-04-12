@@ -13,8 +13,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/InfoSec-Agent/InfoSec-Agent/filemock"
 	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
+	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 )
 
 // CopyFile copies a file from the source to the destination
@@ -24,37 +24,37 @@ import (
 // dst - the destination file
 //
 // Returns: an error if the file cannot be copied, nil if the file is copied successfully
-func CopyFile(src, dst string, mockSource filemock.File, mockDestination filemock.File) error {
-	var sourceFile filemock.File
+func CopyFile(src, dst string, mockSource mocking.File, mockDestination mocking.File) error {
+	var sourceFile mocking.File
 	var err error
 	if mockSource != nil {
 		sourceFile, err = mockSource, nil
 	} else {
 		var tmp *os.File
 		tmp, err = os.Open(filepath.Clean(src))
-		sourceFile = filemock.Wrap(tmp)
+		sourceFile = mocking.Wrap(tmp)
 	}
 	if err != nil {
 		return err
 	}
-	defer func(sourceFile filemock.File) {
+	defer func(sourceFile mocking.File) {
 		err = sourceFile.Close()
 		if err != nil {
 			logger.Log.ErrorWithErr("Error closing source file:", err)
 		}
 	}(sourceFile)
-	var destinationFile filemock.File
+	var destinationFile mocking.File
 	if mockDestination != nil {
 		destinationFile, err = mockDestination, nil
 	} else {
 		var tmp *os.File
 		tmp, err = os.Create(filepath.Clean(dst))
-		destinationFile = filemock.Wrap(tmp)
+		destinationFile = mocking.Wrap(tmp)
 	}
 	if err != nil {
 		return err
 	}
-	defer func(destinationFile filemock.File) {
+	defer func(destinationFile mocking.File) {
 		err = destinationFile.Close()
 		if err != nil {
 			logger.Log.ErrorWithErr("Error closing destination file:", err)
@@ -196,7 +196,7 @@ func RemoveDuplicateStr(strSlice []string) []string {
 // Parameters: file *filemock.File - the file to close
 //
 // Returns: _
-func CloseFile(file filemock.File) error {
+func CloseFile(file mocking.File) error {
 	err := file.Close()
 	if err != nil {
 		logger.Log.ErrorWithErr("Error closing file: %s", err)
