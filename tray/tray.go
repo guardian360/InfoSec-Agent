@@ -210,13 +210,12 @@ func OpenReportingPage(path string) error {
 		ReportingPageOpen = false
 	}()
 
-	// Build reporting-page executable
-	buildCmd := exec.Command("wails", "build", "-windowsconsole")
-
-	buildCmd.Stdout = os.Stdout
-	buildCmd.Stderr = os.Stderr
-	if err = buildCmd.Run(); err != nil {
-		return fmt.Errorf("error building reporting-page: %w", err)
+	const build = false
+	if build {
+		err = BuildReportingPage()
+		if err != nil {
+			return err
+		}
 	}
 
 	// Set up the reporting-page executable
@@ -239,6 +238,22 @@ func OpenReportingPage(path string) error {
 	if err = runCmd.Run(); err != nil {
 		ReportingPageOpen = false
 		return fmt.Errorf("error running reporting-page: %w", err)
+	}
+	return nil
+}
+
+// BuildReportingPage builds the reporting page executable using a Wails application
+//
+// Parameters: _
+//
+// Returns: _
+func BuildReportingPage() error {
+	buildCmd := exec.Command("wails", "build", "-windowsconsole")
+
+	buildCmd.Stdout = os.Stdout
+	buildCmd.Stderr = os.Stderr
+	if err := buildCmd.Run(); err != nil {
+		return fmt.Errorf("error building reporting-page: %w", err)
 	}
 	return nil
 }
