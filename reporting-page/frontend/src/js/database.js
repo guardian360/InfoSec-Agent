@@ -1,4 +1,4 @@
-import {LogError as logError, ScanNow as scanNowGo} from '../../wailsjs/go/main/Tray.js';
+import {ScanNow as scanNowGo, LogError as logError} from '../../wailsjs/go/main/Tray.js';
 import {GetDataBaseData as getDataBaseData} from '../../wailsjs/go/main/DataBase.js';
 import {openHomePage} from './home.js';
 import * as runTime from '../../wailsjs/runtime/runtime.js';

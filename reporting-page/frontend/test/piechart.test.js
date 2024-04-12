@@ -4,6 +4,8 @@ import {JSDOM} from 'jsdom';
 import {PieChart} from '../src/js/piechart.js';
 import {RiskCounters} from '../src/js/risk-counters.js';
 
+global.TESTING = true;
+
 // Mock page
 const dom = new JSDOM(`
   <div class="data-column piechart">

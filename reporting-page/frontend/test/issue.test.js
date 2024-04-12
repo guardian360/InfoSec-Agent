@@ -5,6 +5,8 @@ import {updateSolutionStep} from '../src/js/issue.js';
 import {nextSolutionStep} from '../src/js/issue.js';
 import {previousSolutionStep} from '../src/js/issue.js';
 
+global.TESTING = true;
+
 describe('Issue page', function() {
   // Mock issue page
   const issuesDOM = new JSDOM(`
