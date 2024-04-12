@@ -146,3 +146,13 @@ h1 {
   text-align: center;
   border-radius: 10px;
 }
+
+#next-button:hover {
+  color: var(--text-settings-hover);
+  cursor:pointer;
+}
+
+#previous-button:hover {
+  color: var(--text-settings-hover);
+  cursor:pointer;
+}
