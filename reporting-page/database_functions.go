@@ -18,14 +18,13 @@ func NewDataBase() *DataBase {
 	return &DataBase{}
 }
 
-// GetAllSeverities gets all severities found by the check
+// GetDataBaseData gets all severities and JSON keys found by the check
 //
 // Parameters: checks ([]checks.Check) - list of checks to get severities from
 //
 // resultIDs ([]int) - list of result ids corresponding to a severity level
 //
-// Returns: list of severity levels for each issue checked
-func (d *DataBase) GetAllSeverities(checks []checks.Check, resultIDs []int) ([]scan.Severity, error) {
-	// return scan.GetAllSeverities(checks, resultIDs)
-	return nil, nil
+// Returns: list of severity levels and JSON keys for each issue checked
+func (d *DataBase) GetDataBaseData(checks []checks.Check) ([]scan.DataBaseData, error) {
+	return scan.GetDataBaseData(checks)
 }

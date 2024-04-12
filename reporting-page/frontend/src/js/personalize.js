@@ -9,7 +9,7 @@ export function openPersonalizePage() {
   <div class="setting">
     <span class="setting-description favicon-title ">Favicon</span>
     <div class="personalize-button-container">
-      <label class="personalize-label" for="input-file-icon">Change favicon</label>
+      <button class="setting-button icon-button" type="button">Change icon </button>    
       <input class="personalize-input-invisible" type="file" id="input-file-icon" accept=".ico, .png">
     </div>
   </div>
@@ -17,23 +17,28 @@ export function openPersonalizePage() {
   <div class="setting">
     <span class="personalize-description">Navigation image</span>
     <div class="personalize-button-container">
-      <label class="personalize-label" for="input-file-picture">Update image</label>
-      <input class="personalize-input-invisible" 
-       type="file" 
-       id="input-file-picture" 
-       accept="image/jpeg, image/png, image/jpg">
+      <button class="setting-button logo-button" type="button">Change logo </button>    
+      <input class="personalize-input-invisible"
+      type="file" 
+      id="input-file-picture" 
+      accept="image/jpeg, image/png, image/jpg">
     </div>
   </div>
   <hr class="solid">
   <div class="setting">
     <span class="personalize-description">Navigation title</span>
     <div class="personalize-button-container">
-      <label class="personalize-label" for="newTitle">Update title</label>
-      <input type="text" id="newTitle">
+      <button class="setting-button title-button" type="button">Change title </button>
+      <div id="custom-modal" class="modal">
+        <div class="modal-content">
+          <input type="text" id="new-title-input">
+          <button id="saveTitleButton">Save</button>
+        </div>
+      </div>
     </div>
   </div>
   <hr class="solid">
-  <div class="setting">
+  <!--<div class="setting">
     <span class="personalize-description">Font</span>
   </div>
   <hr class="solid">
@@ -48,7 +53,7 @@ export function openPersonalizePage() {
   <div class="setting">
     <span class="personalize-description">text color</span>
   </div>
-  <hr class="solid">
+  <hr class="solid">-->
   <div class="setting">
     <form action="" class="color-picker>
       <fieldset>
@@ -57,25 +62,52 @@ export function openPersonalizePage() {
         <input type="radio" name="theme" id="normal" checked>
         <label for="dark">Dark</label>
         <input type="radio" name="theme" id="dark">
-        <label for="blue">Blue</label>
-        <input type="radio" name="theme" id="blue">
   </div>
   `;
   // add eventlistener for changing Favicon
-  const faviconInput = document.getElementById('input-file-icon');
-  faviconInput.addEventListener('change', handleFaviconChange);
+  const changeIconButton = document.getElementsByClassName('icon-button')[0];
+  const inputFileIcon = document.getElementById('input-file-icon');
+
+  changeIconButton.addEventListener('click', function() {
+    inputFileIcon.click();
+  });
+
+  inputFileIcon.addEventListener('change', handleFaviconChange);
 
   // add eventlistener for changing navication picture
-  const pictureInput = document.getElementById('input-file-picture');
-  pictureInput.addEventListener('change', handlePictureChange);
+  const changeLogoButton = document.getElementsByClassName('logo-button')[0];
+  const inputLogo = document.getElementById('input-file-picture');
 
-  const newTitleInput = document.getElementById('newTitle'); // add eventlistener for changing navigation title
-  newTitleInput.addEventListener('input', handleTitleChange);
+  changeLogoButton.addEventListener('click', function() {
+    inputLogo.click();
+  });
 
+  inputLogo.addEventListener('change', handlePictureChange);
+
+  // add eventlistener for changing navigation title
+  const changeTitleButton = document.getElementsByClassName('title-button')[0];
+  const customModal = document.getElementById('custom-modal');
+  const newTitleInput = document.getElementById('new-title-input');
+  const saveTitleButton = document.getElementById('saveTitleButton');
+
+  changeTitleButton.addEventListener('click', function() {
+    customModal.style.display = 'block';
+    newTitleInput.focus();
+  });
+
+  saveTitleButton.addEventListener('click', function() {
+    const newTitle = newTitleInput.value.trim();
+    if (newTitle !== '') {
+      handleTitleChange(newTitle);
+      customModal.style.display = 'none';
+    }
+  });
+
+  /*
   // add eventlistener for changing navigation title
   const inputBackgroundNav = document.getElementById('input-color-background');
   inputBackgroundNav.addEventListener('change', handleLeftBackgroundNav);
-
+  */
   /* save themes*/
   const themes = document.querySelectorAll('[name="theme"]');
   themes.forEach((themeOption) => {
@@ -93,6 +125,7 @@ export function openPersonalizePage() {
   });
   document.documentElement.className= activeTheme;
 }
+
 
 /**
  * Handles the change event when selecting a new favicon file.
@@ -142,9 +175,9 @@ export function handlePictureChange(picture) {
  * Handles the change event when updating the title.
  * Updates the text content of the specified title element with the new title value.
  * Saves the new title value in the localStorage.
+ * @param {string} newTitle - The new title to set.
  */
-export function handleTitleChange() {
-  const newTitle = document.getElementById('newTitle').value; // Get the value from the input field
+export function handleTitleChange(newTitle) {
   const titleElement = document.getElementById('title');
   titleElement.textContent = newTitle; // Set the text content to the new title
   localStorage.setItem('title', newTitle);

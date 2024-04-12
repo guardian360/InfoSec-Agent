@@ -10,6 +10,14 @@ export function ChangeScanInterval() {
   return window['go']['main']['Tray']['ChangeScanInterval']();
 }
 
+export function LogError(arg1) {
+  return window['go']['main']['Tray']['LogError'](arg1);
+}
+
+export function LogInfo(arg1) {
+  return window['go']['main']['Tray']['LogInfo'](arg1);
+}
+
 export function ScanNow() {
   return window['go']['main']['Tray']['ScanNow']();
 }

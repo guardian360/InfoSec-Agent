@@ -20,7 +20,7 @@ func Bluetooth(registryKey registrymock.RegistryKey) Check {
 	key, err := registrymock.OpenRegistryKey(registryKey,
 		`SYSTEM\CurrentControlSet\Services\BTHPORT\Parameters\Devices`)
 	if err != nil {
-		return NewCheckError("Bluetooth", err)
+		return NewCheckError(BluetoothID, err)
 	}
 	// Close the key after we have received all relevant information
 	defer registrymock.CloseRegistryKey(key)
@@ -28,14 +28,14 @@ func Bluetooth(registryKey registrymock.RegistryKey) Check {
 	// Get the names of all sub keys (which represent bluetooth devices)
 	deviceNames, err = key.ReadSubKeyNames(-1)
 	if err != nil {
-		return NewCheckErrorf("Bluetooth", "error reading sub key names", err)
+		return NewCheckErrorf(BluetoothID, "error reading sub key names", err)
 	}
 
 	if len(deviceNames) == 0 {
-		return NewCheckResult("Bluetooth", "No Bluetooth devices found")
+		return NewCheckResult(BluetoothID, 0, "No Bluetooth devices found")
 	}
 
-	result := NewCheckResult("Bluetooth")
+	result := NewCheckResult(BluetoothID, 1)
 	// Open each device sub key within the registry
 	for _, deviceName := range deviceNames {
 		deviceKey, err = registrymock.OpenRegistryKey(key, deviceName)

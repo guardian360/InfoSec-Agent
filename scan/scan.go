@@ -41,19 +41,19 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 			return checks.LoginMethod(registrymock.LocalMachine)
 		},
 		func() checks.Check {
-			return checks.Permission("location", registrymock.CurrentUser)
+			return checks.Permission(checks.LocationID, "location", registrymock.CurrentUser)
 		},
 		func() checks.Check {
-			return checks.Permission("microphone", registrymock.CurrentUser)
+			return checks.Permission(checks.MicrophoneID, "microphone", registrymock.CurrentUser)
 		},
 		func() checks.Check {
-			return checks.Permission("webcam", registrymock.CurrentUser)
+			return checks.Permission(checks.WebcamID, "webcam", registrymock.CurrentUser)
 		},
 		func() checks.Check {
-			return checks.Permission("appointments", registrymock.CurrentUser)
+			return checks.Permission(checks.AppointmentsID, "appointments", registrymock.CurrentUser)
 		},
 		func() checks.Check {
-			return checks.Permission("contacts", registrymock.CurrentUser)
+			return checks.Permission(checks.ContactsID, "contacts", registrymock.CurrentUser)
 		},
 		func() checks.Check {
 			return checks.Bluetooth(registrymock.NewRegistryKeyWrapper(registry.LOCAL_MACHINE))
@@ -97,7 +97,7 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 		// Display the currently running check in the progress dialog
 		err := dialog.Text(fmt.Sprintf("Running check %d of %d", i+1, totalChecks))
 		if err != nil {
-			logger.Log.Println("Error setting progress text:", err)
+			logger.Log.ErrorWithErr("Error setting progress text:", err)
 			return checkResults, err
 		}
 
@@ -108,7 +108,7 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 		progress := float64(i+1) / float64(totalChecks) * 100
 		err = dialog.Value(int(progress))
 		if err != nil {
-			logger.Log.Println("Error setting progress value:", err)
+			logger.Log.ErrorWithErr("Error setting progress value:", err)
 			return checkResults, err
 		}
 	}
@@ -116,10 +116,10 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 	// Serialize check results to JSON
 	jsonData, err := json.MarshalIndent(checkResults, "", "  ")
 	if err != nil {
-		logger.Log.Println("Error marshalling JSON:", err)
+		logger.Log.ErrorWithErr("Error marshalling JSON:", err)
 		return checkResults, err
 	}
-	logger.Log.Println(string(jsonData))
+	logger.Log.Info(string(jsonData))
 
 	return checkResults, nil
 

@@ -40,7 +40,7 @@ func CopyFile(src, dst string, mockSource filemock.File, mockDestination filemoc
 	defer func(sourceFile filemock.File) {
 		err = sourceFile.Close()
 		if err != nil {
-			logger.Log.Printf("error closing source file: %v", err)
+			logger.Log.ErrorWithErr("Error closing source file:", err)
 		}
 	}(sourceFile)
 	var destinationFile filemock.File
@@ -57,7 +57,7 @@ func CopyFile(src, dst string, mockSource filemock.File, mockDestination filemoc
 	defer func(destinationFile filemock.File) {
 		err = destinationFile.Close()
 		if err != nil {
-			logger.Log.Printf("error closing destination file: %v", err)
+			logger.Log.ErrorWithErr("Error closing destination file:", err)
 		}
 	}(destinationFile)
 
@@ -81,13 +81,13 @@ func GetPhishingDomains() []string {
 	req, err := http.NewRequestWithContext(context.Background(), http.MethodGet, url, nil)
 	req.Header.Add("User-Agent", "Mozilla/5.0")
 	if err != nil {
-		logger.Log.Fatal(err)
+		logger.Log.FatalWithErr("Error creating HTTP request:", err)
 	}
 	resp, err := client.Do(req)
 	defer func(Body io.ReadCloser) {
 		err = Body.Close()
 		if err != nil {
-			logger.Log.Printf("error closing response body: %v", err)
+			logger.Log.ErrorWithErr("Error closing response body: %v", err)
 		}
 	}(resp.Body)
 
@@ -98,7 +98,7 @@ func GetPhishingDomains() []string {
 	// Parse the response of potential scam domains and split it into a list of domains
 	scamDomainsResponse, err := io.ReadAll(resp.Body)
 	if err != nil {
-		logger.Log.Println("Error reading response body:", err)
+		logger.Log.ErrorWithErr("Error reading response body:", err)
 	}
 	return strings.Split(string(scamDomainsResponse), "\n")
 }
@@ -112,7 +112,7 @@ func FirefoxFolder() ([]string, error) {
 	// Get the current user
 	currentUser, err := user.Current()
 	if err != nil {
-		logger.Log.Println("Error:", err)
+		logger.Log.ErrorWithErr("Error getting current user:", err)
 		return nil, err
 	}
 	// Specify the path to the firefox profile directory
@@ -120,20 +120,20 @@ func FirefoxFolder() ([]string, error) {
 
 	dir, err := os.Open(filepath.Clean(profilesDir))
 	if err != nil {
-		logger.Log.Println("Error:", err)
+		logger.Log.ErrorWithErr("Error getting profiles directory:", err)
 		return nil, err
 	}
 	defer func(dir *os.File) {
 		err = dir.Close()
 		if err != nil {
-			logger.Log.Printf("error closing directory: %v", err)
+			logger.Log.ErrorWithErr("Error closing directory: %v", err)
 		}
 	}(dir)
 
 	// Read the contents of the directory
 	files, err := dir.Readdir(0)
 	if err != nil {
-		logger.Log.Println("Error:", err)
+		logger.Log.ErrorWithErr("Error reading contents:", err)
 		return nil, err
 	}
 
@@ -199,7 +199,7 @@ func RemoveDuplicateStr(strSlice []string) []string {
 func CloseFile(file filemock.File) error {
 	err := file.Close()
 	if err != nil {
-		logger.Log.Printf("error closing file: %s", err)
+		logger.Log.ErrorWithErr("Error closing file: %s", err)
 		return err
 	}
 	return nil

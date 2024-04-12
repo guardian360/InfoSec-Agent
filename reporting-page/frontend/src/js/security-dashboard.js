@@ -1,7 +1,7 @@
 import {Graph} from './graph.js';
 import {PieChart} from './piechart.js';
 import {getLocalization} from './localize.js';
-import {ScanNow as scanNowGo} from '../../wailsjs/go/main/Tray.js';
+import {ScanNow as scanNowGo, LogError as logError} from '../../wailsjs/go/main/Tray.js';
 import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
 import {retrieveTheme} from './personalize.js';
 
@@ -143,7 +143,6 @@ function openSecurityDashboardPage() {
   `;
   // Set counters on the page to the right values
   const rc = JSON.parse(sessionStorage.getItem('RiskCounters'));
-  console.log(rc);
   adjustWithRiskCounters(rc, document);
   setMaxInterval(rc, document);
   // Create charts
@@ -205,7 +204,7 @@ if (typeof document !== 'undefined') {
   try {
     document.getElementById('security-dashboard-button').addEventListener('click', () => openSecurityDashboardPage());
   } catch (error) {
-    console.log('Error in security-dashboard.js: ' + error);
+    logError('Error in security-dashboard.js: ' + error);
   }
 }
 
