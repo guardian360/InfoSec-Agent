@@ -29,15 +29,23 @@ import (
 var ScanCounter int
 var ScanTicker *time.Ticker
 
-// This variable is used to represent the index of the currently selected language.
+// Language is used to represent the index of the currently selected language.
 // The language indices are as follows:
+//
 // 0: German
+//
 // 1: British English
+//
 // 2: American English
+//
 // 3: Spanish
+//
 // 4: French
+//
 // 5: Dutch
+//
 // 6: Portuguese
+//
 // Default language is British English
 var Language = 1
 
