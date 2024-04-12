@@ -1,3 +1,6 @@
+// Package mocking contains different Windows mocking implementations
+//
+// Currently contains mocking implementations for: Windows version, Windows registry, and command execution
 package mocking
 
 import "os/exec"

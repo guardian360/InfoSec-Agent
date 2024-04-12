@@ -1,4 +1,3 @@
-// Package windowsmock provides a mock implementation of the WindowsVersion interface
 package mocking
 
 import (
