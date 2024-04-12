@@ -5,13 +5,9 @@
     "Information": "Bluetooth technology enables wireless data transmission and reception. While this functionality is typically harmless when used as intended, it can become a security risk if exploited by malicious actors. If a malicious individual gains unauthorized access to your device through a Bluetooth connection, they can potentially steal your data, eavesdrop on your activities, or even send malware to your device. To mitigate these risks, it's crucial to only connect your device to known and trusted devices.",
     "Solution": 
     [   
-        "Go to Start > Settings > Bluetooth & devices", 
-        "Here you can see which devices are connected via bluetooth, and you can remove them if necessary."
+        "No devices are connected via bluetooth, so there is no action needed."
     ],"Screenshots":
-    [
-        "frontend/src/assets/images/devices-connected-via-bluetooth/bluetooth-devices-1.jpg",
-        "frontend/src/assets/images/devices-connected-via-bluetooth/bluetooth-devices-2.jpg"
-    ]
+    []
     },
     "11": {
     "Name": "Devices connected via bluetooth",
@@ -32,13 +28,14 @@
     "Type": "Security",
     "Information": "The guest account is a default account designed to offer temporary and restricted access to the system for individuals without regular user accounts. If you are the sole user of the computer and do not require a guest account, it's advisable to disable it. This ensures that no unauthorized users can access data on the computer, enhancing overall security and privacy.",
     "Solution": 
-    [   
+    [   "A unknown guest account status can be a security risk. To check the status and potentially solve the issue of the guest account, follow these steps",
         "Go to start > Other accounts", 
         "Here you will see the other accounts, if there is an account you don't know or something called ' guest' click on it",
         "Now select 'remove' and confirm the deletion of the account",
         "To finish, restart your computer."
     ],"Screenshots":
     [
+        "frontend/src/assets/images/guest-account/guest-account-1.jpg",
         "frontend/src/assets/images/guest-account/guest-account-1.jpg",
         "frontend/src/assets/images/guest-account/guest-account-1.jpg",
         "frontend/src/assets/images/guest-account/guest-account-3.jpg",        
@@ -69,16 +66,9 @@
     "Information": "The guest account is a default account designed to offer temporary and restricted access to the system for individuals without regular user accounts. If you are the sole user of the computer and do not require a guest account, it's advisable to disable it. This ensures that no unauthorized users can access data on the computer, enhancing overall security and privacy.",
     "Solution": 
     [   
-        "Go to start > Other accounts", 
-        "Here you will see the other accounts, if there is an account you don't know or something called ' guest' click on it",
-        "Now select 'remove' and confirm the deletion of the account",
-        "To finish, restart your computer."
+        "There is no guest account on your computer, so there is no action needed."
     ],"Screenshots":
     [
-        "frontend/src/assets/images/guest-account/guest-account-1.jpg",
-        "frontend/src/assets/images/guest-account/guest-account-1.jpg",
-        "frontend/src/assets/images/guest-account/guest-account-3.jpg",        
-        "frontend/src/assets/images/guest-account/guest-account-3.jpg"
     ]
 },
 "40": {
@@ -115,12 +105,9 @@
     "Information": "Network sharing refers to the ability to share resources, such as files, folders, printers, and internet connections, between multiple devices connected to a network. It allows users to access and collaborate on shared resources across the network, facilitating data exchange and collaboration among users and devices. Permissions can be configured to allow or deny access to specific users or groups, ensuring that sensitive data remains secure. If you do not need network sharing it is safer to turn it off.",
     "Solution": 
     [   
-        "Go to Start > Settings > System > Nearby share settings.", 
-        "Here you can control the network sharing settings and turn the feature off."
+        "Network sharing is disabled, so there is no action needed."
     ],"Screenshots":
     [
-        "frontend/src/assets/images/network-sharing/nearby-sharing-1.jpg",
-        "frontend/src/assets/images/network-sharing/nearby-sharing-2.jpg"
     ]
 },
 "43": {
@@ -129,10 +116,12 @@
     "Information": "Network sharing refers to the ability to share resources, such as files, folders, printers, and internet connections, between multiple devices connected to a network. It allows users to access and collaborate on shared resources across the network, facilitating data exchange and collaboration among users and devices. Permissions can be configured to allow or deny access to specific users or groups, ensuring that sensitive data remains secure. If you do not need network sharing it is safer to turn it off.",
     "Solution": 
     [   
+        "It was not possible to retrieve the status of the network sharing settings. To check the status and potentially solve the issue of the network sharing, follow these steps",
         "Go to Start > Settings > System > Nearby share settings.", 
         "Here you can control the network sharing settings and turn the feature off."
     ],"Screenshots":
     [
+        "frontend/src/assets/images/network-sharing/nearby-sharing-1.jpg",
         "frontend/src/assets/images/network-sharing/nearby-sharing-1.jpg",
         "frontend/src/assets/images/network-sharing/nearby-sharing-2.jpg"
     ]
@@ -143,13 +132,9 @@
     "Information": "Using a password manager offers several benefits for individuals and organizations, primarily revolving around enhancing security, convenience, and overall password management practices. Here are some key reasons why you should consider using a password manager. Stronger Passwords: Password managers can generate complex, unique passwords for each of your accounts. These passwords are typically long, random, and difficult to crack, significantly improving the security of your online accounts compared to using weak or reused passwords. Elimination of Password Reuse: One of the most common security pitfalls is reusing passwords across multiple accounts. Password managers allow you to generate and store unique passwords for each account, reducing the risk of unauthorized access if one account is compromised. Convenience: Password managers streamline the process of logging into websites and online services by automatically filling in login credentials for you. This saves time and effort, especially when managing numerous accounts across various platforms. Secure Storage: Password managers encrypt and store your passwords in a secure vault, protecting them from unauthorized access. Many password managers also offer additional security features such as two-factor authentication (2FA) and biometric authentication to further enhance protection.",
     "Solution": 
     [   
-        "Open your browser and look for a password manager like: LastPass, Dashlane, Bitwarden or another password manager you prefer.", 
-        "Follow the installation steps provided by the website of the password manager."
+        "You are using a password manager, so there is no action needed."    
     ],"Screenshots":
-    [
-        "frontend/src/assets/images/password-maanger/password-manager-1.jpg",
-        "frontend/src/assets/images/password-manager/password-manager-1.jpg"
-    ]
+    []
 },
 "51": {
     "Name": "No password manager in use",
@@ -178,33 +163,7 @@
         "frontend/src/assets/images/applications-with-location-permission/location-permissions-2.jpg"
     ]
 },
-"61": {
-    "Name": "Applications with location permission",
-    "Type": "Privacy",
-    "Information": "Knowing which applications have access to your location is important for protecting your privacy. It helps you control who can track your location, prevent security risks, conserve battery life, manage data usage, customize your app experience, and ensure compliance with regulations.",
-    "Solution": 
-    [   "Select Start > Settings > Privacy & security.", 
-        "Here you can select location to see which applications have access, and you can revoke access for certain applications."
-    ],"Screenshots":
-    [
-        "frontend/src/assets/images/applications-with-location-permission/location-permissions-1.jpg",
-        "frontend/src/assets/images/applications-with-location-permission/location-permissions-2.jpg"
-    ]
-},
 "70": {
-    "Name": "Applications with microphone permission",
-    "Type": "Privacy",
-    "Information": "Understanding which applications have access to your microphone on your Windows computer is important for protecting your privacy and confidentiality. It helps you control who can listen to your conversations, prevent unauthorized recording, safeguard sensitive information, and ensure compliance with regulations.",
-    "Solution": 
-    [   "Select Start > Settings > Privacy & security.", 
-        "Here you can select microphone to see which applications have access, and you can revoke access for certain applications."
-    ],"Screenshots":
-    [
-        "frontend/src/assets/images/applications-with-microphone-permission/microphone-permissions-1.jpg",
-        "frontend/src/assets/images/applications-with-microphone-permission/microphone-permissions-2.jpg"
-    ]
-},
-"71": {
     "Name": "Applications with microphone permission",
     "Type": "Privacy",
     "Information": "Understanding which applications have access to your microphone on your Windows computer is important for protecting your privacy and confidentiality. It helps you control who can listen to your conversations, prevent unauthorized recording, safeguard sensitive information, and ensure compliance with regulations.",
@@ -230,33 +189,7 @@
         "frontend/src/assets/images/applications-with-webcam-permission/camera-permissions-2.jpg"
     ]
 },
-"81": {
-    "Name": "Applications with webcam permission",
-    "Type": "Privacy",
-    "Information": "Being aware of which applications have access to your camera helps prevent unauthorized access. Malicious software or even legitimate applications with poorly implemented security features could potentially access your camera without your knowledge or consent. By knowing which applications have access, you can identify and block any unauthorized attempts.",
-    "Solution": 
-    [   "Select Start > Settings > Privacy & security.", 
-        "Here you can select webcam to see which applications have access, and you can revoke access for certain applications."
-    ],"Screenshots":
-    [
-        "frontend/src/assets/images/applications-with-webcam-permission/camera-permissions-1.jpg",
-        "frontend/src/assets/images/applications-with-webcam-permission/camera-permissions-2.jpg"
-    ]
-},
 "90": {
-    "Name": "Applications with appointments permission",
-    "Type": "Privacy",
-    "Information": "Understanding which applications have access to your calendar or appointments is crucial for protecting your privacy, and schedule. It helps you control who can view and potentially misuse your sensitive appointment information, prevent unauthorized access and manage data usage.",
-    "Solution": 
-    [   "Select Start > Settings > Privacy & security.", 
-        "Here you can select appointments to see which applications have access, and you can revoke access for certain applications."
-    ],"Screenshots":
-    [
-        "frontend/src/assets/images/applications-with-calendar-permission/calendar-permissions-1.jpg",
-        "frontend/src/assets/images/applications-with-calendar-permission/calendar-permissions-2.jpg"
-    ]
-},
-"91": {
     "Name": "Applications with appointments permission",
     "Type": "Privacy",
     "Information": "Understanding which applications have access to your calendar or appointments is crucial for protecting your privacy, and schedule. It helps you control who can view and potentially misuse your sensitive appointment information, prevent unauthorized access and manage data usage.",
@@ -282,19 +215,6 @@
         "frontend/src/assets/images/applications-with-contacts-permission/contacts-permissions-2.jpg"
     ]
 },
-"101": {
-    "Name": "Applications with contacts permission",
-    "Type": "Privacy",
-    "Information": "Understanding which applications have access to your contacts on your Windows computer is good for safeguarding your privacy. It allows you to control who can view and potentially misuse your contact information, prevent unauthorized access and manage data usage.",
-    "Solution": 
-    [   "Select Start > Settings > Privacy & security.", 
-        "Here you can select contacts to see which applications have access, and you can revoke access for certain applications."
-    ],"Screenshots":
-    [
-        "frontend/src/assets/images/applications-with-contacts-permission/contacts-permissions-1.jpg",
-        "frontend/src/assets/images/applications-with-contacts-permission/contacts-permissions-2.jpg"
-    ]
-},
 "110": {
     "Name": "Open ports",
     "Type": "Security",
@@ -302,6 +222,9 @@
     "Solution": 
     [   
         "not sure yet"
+    ],
+    "Screenshots":
+    [
     ]
 },
 "111": {
@@ -311,6 +234,8 @@
     "Solution": 
     [   
         "not sure yet"
+    ],"Screenshots":
+    [
     ]
 },
 "120": {
@@ -321,6 +246,8 @@
     [   
         "Go to Start > Settings > System > Remote Desktop.", 
         "Here you can control the remote desktop settings and turn the feature off."
+    ],"Screenshots":
+    [
     ]
 },
 "121": {
@@ -329,8 +256,9 @@
     "Information": "Remote Desktop is a built-in feature in the Windows operating system that allows users to remotely access and control another Windows computer over a network or the internet. It enables users to connect to a remote computer as if they were sitting in front of it, providing full access to the remote desktop, applications, files, and resources. If you do not use this feature, it is safer to turn it off.",
     "Solution": 
     [   
-        "Go to Start > Settings > System > Remote Desktop.", 
-        "Here you can control the remote desktop settings and turn the feature off."
+        "Remote desktop has been disabled, so there is no action needed."
+    ],"Screenshots":
+    [
     ]
 },
 "130": {
@@ -339,16 +267,9 @@
     "Information": "The SMB (Server Message Block) protocol is used for sharing files, printers, and other resources between devices on a network in Windows environments. Ensuring that SMB settings on your Windows computer are configured correctly is crucial. The SMBv1 has numerous known vulnerabilities and therefore should never be used. Using SMBv2/v3 instead is the safer option.",
     "Solution": 
     [   
-        "On your keyboard, press 'Windows+R' to open the Run window.", 
-        "Type ‘Powershell’. Then select ‘OK’.", 
-        "In the Powershell, type ‘Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol’ and hit enter.",
-        "To finish, restart your computer."
+        "All version of SMB are disabled, so there is no action needed."
     ],"Screenshots":
     [
-        "frontend/src/assets/images/smb-status/smb-2.jpg",
-        "frontend/src/assets/images/smb-status/smb-2.jpg",
-        "frontend/src/assets/images/smb-status/smb-3.jpg",
-        "frontend/src/assets/images/smb-status/smb-3.jpg"
     ]
 },
 "131": {
@@ -375,16 +296,9 @@
     "Information": "The SMB (Server Message Block) protocol is used for sharing files, printers, and other resources between devices on a network in Windows environments. Ensuring that SMB settings on your Windows computer are configured correctly is crucial. The SMBv1 has numerous known vulnerabilities and therefore should never be used. Using SMBv2/v3 instead is the safer option.",
     "Solution": 
     [   
-        "On your keyboard, press 'Windows+R' to open the Run window.", 
-        "Type ‘Powershell’. Then select ‘OK’.", 
-        "In the Powershell, type ‘Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol’ and hit enter.",
-        "To finish, restart your computer."
+        "SMB version 2 is enabled which is a secure and widely used version, so there is no action needed."
     ],"Screenshots":
     [
-        "frontend/src/assets/images/smb-status/smb-2.jpg",
-        "frontend/src/assets/images/smb-status/smb-2.jpg",
-        "frontend/src/assets/images/smb-status/smb-3.jpg",
-        "frontend/src/assets/images/smb-status/smb-3.jpg"
     ]
 },
 "133": {
@@ -411,17 +325,10 @@
     "Information": "Windows Defender continuously monitors your system for any suspicious activity, including malware, viruses, and other forms of malicious software. By having it enabled, you have an active defense against potential threats that could compromise your privacy or security. It also receives regular updates from Microsoft to stay up-to-date with the latest security threats and vulnerabilities. By keeping it enabled, you ensure that your computer is protected against newly emerging threats that could exploit known security weaknesses.",
     "Solution": 
     [
-        "Open the Windows Security app.", 
-        "Select Virus & threat protection.", 
-        "Under Virus & threat protection settings, select Manage settings.", 
-        "Flip the switch under Real-time protection to turn it on."
+        "Windows defender and the periodic scan is enabled, so there is no action needed."
     ],
     "Screenshots":
     [
-        "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
-        "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
-        "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
-        "frontend/src/assets/images/windows-defender/windows-defender-1.jpg"
     ]
 },
 "151": {
@@ -487,6 +394,7 @@
     "Information": "Windows Defender continuously monitors your system for any suspicious activity, including malware, viruses, and other forms of malicious software. By having it enabled, you have an active defense against potential threats that could compromise your privacy or security. It also receives regular updates from Microsoft to stay up-to-date with the latest security threats and vulnerabilities. By keeping it enabled, you ensure that your computer is protected against newly emerging threats that could exploit known security weaknesses.",
     "Solution": 
     [
+        "The windows defender status is unknown, to check the status and potentially solve the issue of the windows defender, follow these steps",
         "Open the Windows Security app.", 
         "Select Virus & threat protection.", 
         "Under Virus & threat protection settings, select Manage settings.", 
@@ -494,6 +402,7 @@
     ],
     "Screenshots":
     [
+        "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
         "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
         "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
         "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
@@ -520,15 +429,9 @@
     "Type": "Security",
     "Information": "Changing your password regularly is important. Especially when the same password is used for multiple applications. So it is a good habit to change you password at least twice a year.",
     "Solution": 
-    [   "Go to start > Change your password", 
-        "Open the 'Password' section and click on the 'change' button.",
-        "You can now change your password to a new unique one."
+    [   "You changed your password recently, so there is no action needed."
     ],"Screenshots":
-    [
-        "frontend/src/assets/images/last-password-change/change-password-1.jpg",
-        "frontend/src/assets/images/last-password-change/change-password-2.jpg",
-        "frontend/src/assets/images/last-password-change/change-password-2.jpg"
-    ]
+    []
 },
 "170": {
     "Name": "Windows login method",
@@ -564,12 +467,9 @@
     "Information": "Outdated Windows versions may contain unpatched security vulnerabilities that could be exploited by attackers to compromise the system. Hackers actively search for and exploit vulnerabilities in outdated operating systems, potentially leading to unauthorized access, data breaches, and malware infections.",
     "Solution": 
     [
-        "Go to Start > Settings > Windows Update.",
-        "Here you can check for updates and install updates."
+        "Your windows version is up-to-date, so there is no action needed."
     ],"Screenshots":
     [
-        "frontend/src/assets/images/outdated-windows-version/windows-update-1.jpg",
-        "frontend/src/assets/images/outdated-windows-version/windows-update-2.jpg"
     ]
 },
 "181": {
@@ -610,6 +510,8 @@
         "Once you are in the BIOS/UEFI settings, navigate to the section related to Secure Boot. This section may be named differently depending on your system manufacturer and BIOS/UEFI version.",
         "In the Secure Boot section, you should find an option to enable Secure Boot. Select this option and set it to \"Enabled.\" Some systems may require you to set a Secure Boot Mode or choose the Secure Boot Key Management option. Follow the on-screen instructions to enable Secure Boot.",
         "After enabling Secure Boot, save the changes to the BIOS/UEFI settings and exit. Usually, you can do this by selecting the \"Save & Exit\" or \"Exit\" option from the BIOS/UEFI menu. Confirm any prompts to save the changes and restart your computer."
+    ],"Screenshots":
+    [
     ]
 },
 "191": {
@@ -617,11 +519,10 @@
     "Type": "Security",
     "Information": "Secure Boot ensures that only trusted software components, signed with recognized digital signatures, are loaded during the boot process. This prevents malware and other unauthorized software from tampering with the boot process and gaining control of the system at an early stage.",
     "Solution": 
-    [   
-        "Restart your computer and access the BIOS/UEFI settings. This is usually done by pressing a specific key during the boot process. Common keys to access BIOS/UEFI settings include F2, Del, Esc, or F10. The specific key varies depending on your computer's manufacturer.", 
-        "Once you are in the BIOS/UEFI settings, navigate to the section related to Secure Boot. This section may be named differently depending on your system manufacturer and BIOS/UEFI version.",
-        "In the Secure Boot section, you should find an option to enable Secure Boot. Select this option and set it to \"Enabled.\" Some systems may require you to set a Secure Boot Mode or choose the Secure Boot Key Management option. Follow the on-screen instructions to enable Secure Boot.",
-        "After enabling Secure Boot, save the changes to the BIOS/UEFI settings and exit. Usually, you can do this by selecting the \"Save & Exit\" or \"Exit\" option from the BIOS/UEFI menu. Confirm any prompts to save the changes and restart your computer."
+    [
+        "Secure boot is enabled, so there is no action needed."
+    ],"Screenshots":
+    [
     ]
 },
 "192": {
@@ -630,10 +531,13 @@
     "Information": "Secure Boot ensures that only trusted software components, signed with recognized digital signatures, are loaded during the boot process. This prevents malware and other unauthorized software from tampering with the boot process and gaining control of the system at an early stage.",
     "Solution": 
     [   
+        "The status of the secure boot setting is unknown, to check the status and potentially solve the issue of the secure boot, follow these steps",
         "Restart your computer and access the BIOS/UEFI settings. This is usually done by pressing a specific key during the boot process. Common keys to access BIOS/UEFI settings include F2, Del, Esc, or F10. The specific key varies depending on your computer's manufacturer.", 
         "Once you are in the BIOS/UEFI settings, navigate to the section related to Secure Boot. This section may be named differently depending on your system manufacturer and BIOS/UEFI version.",
         "In the Secure Boot section, you should find an option to enable Secure Boot. Select this option and set it to \"Enabled.\" Some systems may require you to set a Secure Boot Mode or choose the Secure Boot Key Management option. Follow the on-screen instructions to enable Secure Boot.",
         "After enabling Secure Boot, save the changes to the BIOS/UEFI settings and exit. Usually, you can do this by selecting the \"Save & Exit\" or \"Exit\" option from the BIOS/UEFI menu. Confirm any prompts to save the changes and restart your computer."
+    ],"Screenshots":
+    [
     ]
 },
 "200": {
@@ -642,12 +546,9 @@
     "Information": "When you boot up your computer, several applications automatically launch. Some of these are essential processes for the system to function properly, while others are convenient to have at startup. However, there might also be applications that start during boot without your knowledge. It's wise to disable these to prevent any unauthorized actions and to improve the speed of your computer's startup process.",
     "Solution": 
     [   
-        "Go to Start > Settings > Apps > Startup.", 
-        "Here you can choose which applications will automatically start during boot."
+        "There are no applications which start at boot, so there is no action needed."
     ],"Screenshots":
     [
-        "frontend/src/assets/images/applications-which-start-at-boot/boot-apps-1.jpg",
-        "frontend/src/assets/images/applications-which-start-at-boot/boot-apps-2.jpg"
     ]
 },
 "201": {
@@ -704,7 +605,7 @@
         "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-4.jpg"
     ]
 },
-"999": {
+"140": {
     "Name": "User account control",
     "Type": "Security",
     "Information": "User Account Control (UAC) is a security feature introduced in Windows Vista and present in subsequent versions of the Windows operating system. Its primary purpose is to enhance the security of the operating system by limiting the privileges of applications and processes running with standard user rights and requiring administrator approval for tasks that require elevated permissions.",
@@ -718,6 +619,60 @@
         "To finish, restart your computer."
     ],"Screenshots":
     [
+        "frontend/src/assets/images/user-account-control/user-account-control-1.jpg",
+        "frontend/src/assets/images/user-account-control/user-account-control-2.jpg",
+        "frontend/src/assets/images/user-account-control/user-account-control-2.jpg",
+        "frontend/src/assets/images/user-account-control/user-account-control-3.jpg",
+        "frontend/src/assets/images/user-account-control/user-account-control-5.jpg",
+        "frontend/src/assets/images/user-account-control/user-account-control-5.jpg"
+    ]
+},"141": {
+    "Name": "User account control",
+    "Type": "Security",
+    "Information": "User Account Control (UAC) is a security feature introduced in Windows Vista and present in subsequent versions of the Windows operating system. Its primary purpose is to enhance the security of the operating system by limiting the privileges of applications and processes running with standard user rights and requiring administrator approval for tasks that require elevated permissions.",
+    "Solution": 
+    [   
+       "The settings for the user account control are set to 'Always notify', so there is no action needed."
+    ],"Screenshots":
+    [
+    ]
+},"142": {
+    "Name": "User account control",
+    "Type": "Security",
+    "Information": "User Account Control (UAC) is a security feature introduced in Windows Vista and present in subsequent versions of the Windows operating system. Its primary purpose is to enhance the security of the operating system by limiting the privileges of applications and processes running with standard user rights and requiring administrator approval for tasks that require elevated permissions.",
+    "Solution": 
+    [   "The settings for user account control are turned on for apps, setting it to always notify is a safer option. To turn on UAC follow these steps",
+        "On your keyboard, press 'Windows+R' to open the Run window.", 
+        "Type ‘Control Panel’. Then select ‘OK’.",
+        "Select 'User Accounts' or 'User Accounts and Family Safety'.",
+        "Select 'Change User Account Control settings'. If you are prompted by UAC, select 'Yes' to continue.",
+        "Here you can move the slider to 'Always notify' to turn UAC on. If you are prompted by UAC, select 'Yes' to continue.",
+        "To finish, restart your computer."
+    ],"Screenshots":
+    [
+        "frontend/src/assets/images/user-account-control/user-account-control-1.jpg",
+        "frontend/src/assets/images/user-account-control/user-account-control-1.jpg",
+        "frontend/src/assets/images/user-account-control/user-account-control-2.jpg",
+        "frontend/src/assets/images/user-account-control/user-account-control-2.jpg",
+        "frontend/src/assets/images/user-account-control/user-account-control-3.jpg",
+        "frontend/src/assets/images/user-account-control/user-account-control-5.jpg",
+        "frontend/src/assets/images/user-account-control/user-account-control-5.jpg"
+    ]
+},"143": {
+    "Name": "User account control",
+    "Type": "Security",
+    "Information": "User Account Control (UAC) is a security feature introduced in Windows Vista and present in subsequent versions of the Windows operating system. Its primary purpose is to enhance the security of the operating system by limiting the privileges of applications and processes running with standard user rights and requiring administrator approval for tasks that require elevated permissions.",
+    "Solution": 
+    [   "The status of the user account control settings are unknown, to check the status and potentially solve the issue of the user account control, follow these steps",
+        "On your keyboard, press 'Windows+R' to open the Run window.", 
+        "Type ‘Control Panel’. Then select ‘OK’.",
+        "Select 'User Accounts' or 'User Accounts and Family Safety'.",
+        "Select 'Change User Account Control settings'. If you are prompted by UAC, select 'Yes' to continue.",
+        "Here you can move the slider to 'Always notify' to turn UAC on. If you are prompted by UAC, select 'Yes' to continue.",
+        "To finish, restart your computer."
+    ],"Screenshots":
+    [
+        "frontend/src/assets/images/user-account-control/user-account-control-1.jpg",
         "frontend/src/assets/images/user-account-control/user-account-control-1.jpg",
         "frontend/src/assets/images/user-account-control/user-account-control-2.jpg",
         "frontend/src/assets/images/user-account-control/user-account-control-2.jpg",
