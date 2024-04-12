@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "mocha ./test/**/*.js"
+    "test": "mocha ./test/graph.test.js ./test/navigation.test.js ./test/piechart.test.js --parallel"
   },
   "devDependencies": {
     "global-jsdom": "^24.0.0",
@@ -20,6 +20,7 @@
     "canvas": "^2.11.2",
     "chart.js": "^4.4.2",
     "mocha": "^10.3.0",
+    "mock-require": "^3.0.3",
     "sqlite3": "^5.1.7",
     "unit.js": "^2.1.1"
   },

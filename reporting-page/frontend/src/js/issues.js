@@ -3,12 +3,8 @@ import {openIssuePage} from './issue.js';
 import {getLocalization} from './localize.js';
 import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
 import {retrieveTheme} from './personalize.js';
-let logError;
-if (!global.TESTING) {
-  import('../../wailsjs/go/main/Tray.js').then((module) => {
-    logError = module.LogError
-  });
-}
+import {LogError as logError} from '../../wailsjs/go/main/Tray.js';
+
 /** Load the content of the Issues page */
 export function openIssuesPage() {
   closeNavigation();

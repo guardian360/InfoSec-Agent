@@ -8,7 +8,7 @@ import {JSDOM} from 'jsdom';
 //   toggleNavigationResize
 // } from '../src/js/navigation-menu.js';
 
-global.TESTING = true
+global.TESTING = true;
 
 // Mock page
 const dom = new JSDOM(`

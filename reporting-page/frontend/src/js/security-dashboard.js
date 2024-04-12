@@ -1,13 +1,7 @@
 import {Graph} from './graph.js';
 import {PieChart} from './piechart.js';
 import {getLocalization} from './localize.js';
-let logError;
-if (!global.TESTING) {
-  import('../../wailsjs/go/main/Tray.js').then((module) => {
-    logError = module.LogError
-  });
-}
-import {ScanNow as scanNowGo} from '../../wailsjs/go/main/Tray.js';
+import {LogError as logError} from '../../wailsjs/go/main/Tray.js';
 import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
 import {retrieveTheme} from './personalize.js';
 import {scanTest} from './database.js';
@@ -219,9 +213,7 @@ if (typeof document !== 'undefined') {
   try {
     document.getElementById('security-dashboard-button').addEventListener('click', () => openSecurityDashboardPage());
   } catch (error) {
-    if (logError != null) {
-      logError('Error in security-dashboard.js: ' + error);
-    }
+    logError('Error in security-dashboard.js: ' + error);
   }
 }
 

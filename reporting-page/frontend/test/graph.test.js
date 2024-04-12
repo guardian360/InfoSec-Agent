@@ -4,7 +4,7 @@ import {JSDOM} from 'jsdom';
 import {Graph} from '../src/js/graph.js';
 import {RiskCounters} from '../src/js/risk-counters.js';
 
-global.TESTING = true
+global.TESTING = true;
 
 // Mock page
 const dom = new JSDOM(`
