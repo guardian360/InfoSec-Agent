@@ -90,12 +90,20 @@ func GetPhishingDomains() []string {
 	return strings.Split(string(scamDomainsResponse), "\n")
 }
 
+// FirefoxProfileFinder is an interface that wraps the FirefoxFolder method
+type FirefoxProfileFinder interface {
+	FirefoxFolder() ([]string, error)
+}
+
+// RealProfileFinder is a struct that implements the FirefoxProfileFinder interface
+type RealProfileFinder struct{}
+
 // FirefoxFolder gets the path to the Firefox profile folder
 //
 // Parameters: _
 //
 // Returns: a list of paths to the Firefox profile folder, and an optional error which should be nil on success
-func FirefoxFolder() ([]string, error) {
+func (r RealProfileFinder) FirefoxFolder() ([]string, error) {
 	// Get the current user
 	currentUser, err := user.Current()
 	if err != nil {
@@ -144,6 +152,16 @@ func FirefoxFolder() ([]string, error) {
 		}
 	}
 	return profileList, nil
+}
+
+// MockProfileFinder is a struct that implements the FirefoxProfileFinder interface for testing
+type MockProfileFinder struct {
+	MockFirefoxFolder func() ([]string, error)
+}
+
+// FirefoxFolder is a mock function
+func (m MockProfileFinder) FirefoxFolder() ([]string, error) {
+	return m.MockFirefoxFolder()
 }
 
 // CurrentUsername retrieves the current Windows username

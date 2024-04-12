@@ -23,7 +23,7 @@ import (
 func CookieFirefox() checks.Check {
 	var output []string
 	// Determine the directory in which the Firefox profile is stored
-	ffdirectory, err := utils.FirefoxFolder()
+	ffdirectory, err := utils.RealProfileFinder{}.FirefoxFolder()
 	if err != nil {
 		return checks.NewCheckErrorf(checks.CookiesFirefoxID, "No firefox directory found", err)
 	}

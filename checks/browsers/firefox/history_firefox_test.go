@@ -1,6 +1,10 @@
 package firefox_test
 
 import (
+	"errors"
+	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
+	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
+	"os"
 	"testing"
 
 	"database/sql"
@@ -11,13 +15,92 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+func TestMain(m *testing.M) {
+	logger.SetupTests()
+	// Run tests
+	exitCode := m.Run()
+
+	os.Exit(exitCode)
+}
+
+var profileFinder utils.FirefoxProfileFinder
+
+func TestHistoryFirefox(t *testing.T) {
+	t.Run("success", func(t *testing.T) {
+		// Mock the FirefoxFolder function to return a valid directory and no error
+		profileFinder = utils.MockProfileFinder{
+			MockFirefoxFolder: func() ([]string, error) {
+				return []string{"/valid/directory"}, nil
+			},
+		}
+
+		check := firefox.HistoryFirefox(profileFinder)
+		require.Nil(t, check.Result)
+		require.Error(t, check.Error)
+	})
+
+	t.Run("failure", func(t *testing.T) {
+		// Mock the FirefoxFolder function to return an error
+		profileFinder = utils.MockProfileFinder{
+			MockFirefoxFolder: func() ([]string, error) {
+				return nil, errors.New("mock error")
+			},
+		}
+
+		profileFinder = utils.MockProfileFinder{
+			MockFirefoxFolder: func() ([]string, error) {
+				return nil, errors.New("mock error")
+			},
+		}
+
+		check := firefox.HistoryFirefox(profileFinder)
+		require.Nil(t, check.Result)
+		require.Error(t, check.Error)
+	})
+}
+
+/*
+func TestCloseRows_Error(t *testing.T) {
+
+	db, mock, err := sqlmock.New()
+	require.NoError(t, err)
+
+	defer db.Close()
+
+	rows := sqlmock.NewRows([]string{"column"})
+	mock.ExpectQuery("SELECT").WillReturnRows(rows)
+
+	realRows, err := db.Query("SELECT")
+	require.NoError(t, err)
+
+	// Simulate an error when closing the rows
+	mock.ExpectClose().WillReturnError(errors.New("sql: Rows are already closed"))
+
+	var buf bytes.Buffer
+	logger.Log.SetOutput(&buf)
+
+	// This should log an error because the rows are already closed
+	firefox.CloseRows(realRows)
+
+	// Wait for the function to complete
+	time.Sleep(100 * time.Millisecond)
+
+	capturedOutput := buf.String()
+
+	// Check if the expected error was logged
+	require.Contains(t, capturedOutput, "Error closing rows:")
+
+	err = mock.ExpectationsWereMet()
+	require.NoError(t, err)
+}*/
+
 func TestQueryDatabase(t *testing.T) {
 	db, mock, err := sqlmock.New()
 	require.NoError(t, err)
 
 	defer db.Close()
 
-	lastWeek := (time.Now().AddDate(0, 0, -7).UnixMicro()/1000000) * 1000000
+	lastWeek := (time.Now().AddDate(0, 0, -7).UnixMicro() / 10000000) * 10000000
 
 	rows := sqlmock.NewRows([]string{"url", "last_visit_date"}).
 		AddRow("http://startpagina.nl/path", 1712580339000000).
@@ -40,9 +123,72 @@ func TestQueryDatabase(t *testing.T) {
 	require.Equal(t, expected, results)
 }
 
+func TestQueryDatabase_Error(t *testing.T) {
+	db, mock, err := sqlmock.New()
+	require.NoError(t, err)
+
+	defer db.Close()
+
+	lastWeek := (time.Now().AddDate(0, 0, -7).UnixMicro() / 10000000) * 10000000
+
+	mock.ExpectQuery("^SELECT url, last_visit_date FROM moz_places WHERE last_visit_date >= \\? ORDER BY last_visit_date DESC$").
+		WithArgs(lastWeek).
+		WillReturnError(errors.New("mock error"))
+
+	_, err = firefox.QueryDatabase(db)
+	require.Error(t, err)
+	require.Equal(t, "mock error", err.Error())
+}
+
+func TestQueryDatabase_RowError(t *testing.T) {
+	db, mock, err := sqlmock.New()
+	require.NoError(t, err)
+
+	defer db.Close()
+
+	lastWeek := (time.Now().AddDate(0, 0, -7).UnixMicro() / 10000000) * 10000000
+
+	rows := sqlmock.NewRows([]string{"url", "last_visit_date"}).
+		AddRow("http://startpagina.nl/path", 1712580339000000).
+		AddRow("http://001return.com/path", 1712580439000000).
+		AddRow("http://012345bet.com/path", 1712580539000000).
+		RowError(1, errors.New("mock row error"))
+
+	mock.ExpectQuery("^SELECT url, last_visit_date FROM moz_places WHERE last_visit_date >= \\? ORDER BY last_visit_date DESC$").
+		WithArgs(lastWeek).
+		WillReturnRows(rows)
+
+	_, err = firefox.QueryDatabase(db)
+	require.Error(t, err)
+	require.Equal(t, "mock row error", err.Error())
+}
+
+func TestQueryDatabase_ScanError(t *testing.T) {
+	db, mock, err := sqlmock.New()
+	require.NoError(t, err)
+
+	defer db.Close()
+
+	lastWeek := (time.Now().AddDate(0, 0, -7).UnixMicro() / 10000000) * 10000000
+
+	rows := sqlmock.NewRows([]string{"url", "last_visit_date"}).
+		AddRow("http://startpagina.nl/path", "invalid time").
+		AddRow("http://001return.com/path", 1712580439000000).
+		AddRow("http://012345bet.com/path", 1712580539000000).
+		RowError(0, errors.New("mock scan error")) // Simulate an error when scanning the rows
+
+	mock.ExpectQuery("^SELECT url, last_visit_date FROM moz_places WHERE last_visit_date >= \\? ORDER BY last_visit_date DESC$").
+		WithArgs(lastWeek).
+		WillReturnRows(rows)
+
+	_, err = firefox.QueryDatabase(db)
+	require.Error(t, err)
+	require.Equal(t, "mock scan error", err.Error())
+}
+
 type MockTimeFormatter struct{}
 
-func (MockTimeFormatter) FormatTime(lastVisitDate sql.NullInt64) string {
+func (MockTimeFormatter) FormatTime(_ sql.NullInt64) string {
 	return "Good"
 }
 

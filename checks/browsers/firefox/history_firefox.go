@@ -21,9 +21,9 @@ import (
 // Parameters:
 //
 // Returns: The phishing domains that the user has visited in the last week and when they visited it
-func HistoryFirefox() checks.Check {
+func HistoryFirefox(profileFinder utils.FirefoxProfileFinder) checks.Check {
 	var output []string
-	ffdirectory, err := utils.FirefoxFolder()
+	ffdirectory, err := profileFinder.FirefoxFolder()
 	if err != nil {
 		return checks.NewCheckErrorf(checks.HistoryFirefoxID, "No firefox directory found", err)
 	}
@@ -60,12 +60,12 @@ func HistoryFirefox() checks.Check {
 		return checks.NewCheckError(checks.HistoryFirefoxID, err)
 	}
 	if output == nil {
-		return checks.NewCheckResult(checks.HistoryFirefoxID, 0, "No phising domains found in the last week")
+		return checks.NewCheckResult(checks.HistoryFirefoxID, 0, "No phishing domains found in the last week")
 	}
 	return checks.NewCheckResult(checks.HistoryFirefoxID, 1, output...)
 }
 
-// closeDatabase is a helper function used by the HistoryFirefox function.
+// CloseDatabase is a helper function used by the HistoryFirefox function.
 // It closes the database connection passed to it.
 //
 // Parameters: db (*sql.DB) - the database connection to close
@@ -77,15 +77,15 @@ func CloseDatabase(db *sql.DB) {
 	}
 }
 
-// queryDatabase is a helper function used by the HistoryFirefox function.
+// QueryDatabase is a helper function used by the HistoryFirefox function.
 // It queries the Firefox history database for the user's history in the last week.
 //
 // Parameters: db (*sql.DB) - the database connection to query
 //
 // Returns: The QueryResults in a slice and an error if applicable
 func QueryDatabase(db *sql.DB) ([]QueryResult, error) {
-	// Trunctate the time to the time of the last week without the milliseconds
-	lastWeek := (time.Now().AddDate(0, 0, -7).UnixMicro() / 1000000) * 1000000
+	// Truncate the time to the time of the last week without the milliseconds
+	lastWeek := (time.Now().AddDate(0, 0, -7).UnixMicro() / 10000000) * 10000000
 	rows, err := db.Query(
 		"SELECT url, last_visit_date FROM moz_places WHERE last_visit_date >= ? ORDER BY last_visit_date DESC",
 		lastWeek)
@@ -111,14 +111,15 @@ func QueryDatabase(db *sql.DB) ([]QueryResult, error) {
 	return results, nil
 }
 
-// closeRows is a helper function used by the HistoryFirefox function.
+// CloseRows is a helper function used by the HistoryFirefox function.
 // It closes the rows of the query passed to it.
 //
 // Parameters: rows (*sql.Rows) - the rows to close
 //
 // Returns: _
 func CloseRows(rows *sql.Rows) {
-	if err := rows.Close(); err != nil {
+	err := rows.Close()
+	if err != nil {
 		logger.Log.ErrorWithErr("Error closing rows: ", err)
 	}
 }
@@ -129,7 +130,7 @@ type QueryResult struct {
 	LastVisitDate sql.NullInt64
 }
 
-// processQueryResults is a helper function used by the HistoryFirefox function.
+// ProcessQueryResults is a helper function used by the HistoryFirefox function.
 // It processes the results of the query and returns the phishing domains that the user has visited in the last week.
 //
 // Parameters: QueryResult ([]QueryResult) - A slice of QueryResults
@@ -156,13 +157,6 @@ func ProcessQueryResults(results []QueryResult) ([]string, error) {
 	return output, nil
 }
 
-// formatTime is a helper function used by the processQueryResults function.
-// It formats the last visit date of a website to a human-readable string.
-//
-// Parameters: lastVisitDate (sql.NullInt64) - the last visit date of a website
-//
-// Returns: The last visit date of a website as a human-readable string
-
 // TimeFormatter is an interface that wraps the FormatTime function.
 type TimeFormatter interface {
 	FormatTime(lastVisitDate sql.NullInt64) string
@@ -171,7 +165,12 @@ type TimeFormatter interface {
 // RealTimeFormatter is a type that implements TimeFormatter using the real FormatTime function.
 type RealTimeFormatter struct{}
 
-// FormatTime is a method of the RealTimeFormatter type that formats the last visit date of a website to a human-readable string.
+// FormatTime  is a helper function used by the processQueryResults function.
+// It formats the last visit date of a website to a human-readable string.
+//
+// Parameters: lastVisitDate (sql.NullInt64) - the last visit date of a website
+//
+// Returns: The last visit date of a website as a human-readable string
 func (RealTimeFormatter) FormatTime(lastVisitDate sql.NullInt64) string {
 	if lastVisitDate.Valid && lastVisitDate.Int64 > 0 {
 		return time.UnixMicro(lastVisitDate.Int64).String()
@@ -179,7 +178,7 @@ func (RealTimeFormatter) FormatTime(lastVisitDate sql.NullInt64) string {
 	return time.UnixMicro(0).String()
 }
 
-// timeFormatter is the TimeFormatter currently in use. It can be reassigned to a mock in tests.
+// TimeFormat timeFormatter is the TimeFormatter currently in use. It can be reassigned to a mock in tests.
 var TimeFormat TimeFormatter = RealTimeFormatter{}
 
 // FormatTime is a function that calls the FormatTime method of the current TimeFormatter.

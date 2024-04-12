@@ -25,7 +25,7 @@ import (
 func ExtensionFirefox() (checks.Check, checks.Check) {
 	var resultID int
 	// Determine the directory in which the Firefox profile is stored
-	ffdirectory, err := utils.FirefoxFolder()
+	ffdirectory, err := utils.RealProfileFinder{}.FirefoxFolder()
 	if err != nil {
 		return checks.NewCheckErrorf(checks.ExtensionFirefoxID, "No firefox directory found", err),
 			checks.NewCheckErrorf(checks.AdblockFirefoxID, "No firefox directory found", err)
