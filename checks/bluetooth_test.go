@@ -9,12 +9,14 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 )
 
-// TestBluetooth is a function that validates the functionality of the Bluetooth function with both valid and invalid inputs.
+// TestBluetooth is a unit test function for the Bluetooth function in the checks package.
 //
 // Parameters:
-//   - t (*testing.T): An instance of the testing framework used to run the test cases.
+//   - t (*testing.T): A pointer to an instance of testing.T that provides methods for indicating test success or failure.
 //
-// This function defines a series of test cases, each represented as a struct. Each test case includes a name, a mock registry key to simulate the system's registry, and the expected result of the Bluetooth function when it is called with the mock registry key. The function iterates over these test cases, and for each one, it calls the Bluetooth function with the provided mock registry key and compares the result to the expected result. If the actual result matches the expected result, the test case passes; otherwise, it fails.
+// This function defines a series of test cases to validate the functionality of the Bluetooth function. Each test case is represented as a struct that includes a name, a mock registry key, and the expected result of the Bluetooth function when called with the mock registry key.
+//
+// The function iterates over these test cases. For each test case, it calls the Bluetooth function with the provided mock registry key and compares the actual result to the expected result. If the actual result matches the expected result, the test case is considered to have passed; otherwise, it is considered to have failed.
 //
 // This function does not return a value. Instead, it uses the testing framework's functionality to indicate whether each test case passed or failed.
 func TestBluetooth(t *testing.T) {

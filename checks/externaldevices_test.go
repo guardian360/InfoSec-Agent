@@ -12,15 +12,15 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 )
 
-// TestExternalDevices is a test function that validates the behavior of the ExternalDevices function.
-// It executes a series of test cases, each with different inputs, to ensure that the function behaves as expected in various scenarios.
+// TestExternalDevices is a unit test for the ExternalDevices function in the "checks" package.
+// It runs a series of test scenarios with varying inputs to validate the function's behavior.
 //
 // Parameters:
-//   - t (*testing.T): An instance of the testing framework provided by the "testing" package. This is used to report test failures and log output.
+//   - t (*testing.T): A pointer to an instance of the testing framework, used for reporting test results.
 //
-// Returns: None. If a test case fails, the function calls methods on the *testing.T parameter to report the failure.
+// Returns: None. Failures are reported through the *testing.T parameter.
 //
-// This function is part of the test suite for the "checks" package. It is used to verify that the ExternalDevices function correctly identifies external devices connected to the system and handles errors as expected.
+// The function is part of the test suite for the "checks" package. It ensures that the ExternalDevices function accurately detects external devices connected to the system and handles error scenarios appropriately.
 func TestExternalDevices(t *testing.T) {
 	tests := []struct {
 		name          string
@@ -53,15 +53,15 @@ func TestExternalDevices(t *testing.T) {
 	}
 }
 
-// TestCheckDeviceClass is a test function that validates the behavior of the CheckDeviceClass function.
-// It executes a series of test cases, each with different inputs, to ensure that the function behaves as expected in various scenarios.
+// TestCheckDeviceClass is a testing function that ensures the correct functionality of the CheckDeviceClass function.
+// It runs multiple test cases with different inputs to validate the expected behavior of the function in various situations.
 //
 // Parameters:
-//   - t (*testing.T): An instance of the testing framework provided by the "testing" package. This is used to report test failures and log output.
+//   - t (*testing.T): A pointer to the testing framework instance, used for logging and reporting test results.
 //
-// Returns: None. If a test case fails, the function calls methods on the *testing.T parameter to report the failure.
+// Returns: None. Any test failures are reported via the *testing.T parameter.
 //
-// This function is part of the test suite for the "checks" package. It is used to verify that the CheckDeviceClass function correctly identifies devices of a specific class connected to the system and handles errors as expected.
+// This function is a component of the "checks" package test suite. It confirms that the CheckDeviceClass function accurately identifies devices of a given class connected to the system and properly handles any errors.
 func TestCheckDeviceClass(t *testing.T) {
 	tests := []struct {
 		name          string
@@ -102,14 +102,14 @@ func TestCheckDeviceClass(t *testing.T) {
 	}
 }
 
-// TestCommandOutput is a test function that validates the output of the system command executed in the ExternalDevices function in the 'externaldevices.go' file.
+// TestCommandOutput is a testing function that confirms the correctness of the system command's output in the ExternalDevices function from the 'externaldevices.go' file.
 //
 // Parameters:
-//   - t (*testing.T): An instance of the testing framework provided by the "testing" package. This is used to report test failures and log output.
+//   - t (*testing.T): A pointer to the testing framework instance, used for logging and reporting test results.
 //
-// Returns: None. If the output of the command does not match the expected output, the function calls methods on the *testing.T parameter to report the failure.
+// Returns: None. Any discrepancies between the command's output and the expected output are reported via the *testing.T parameter.
 //
-// This function is part of the test suite for the "checks" package. It is used to verify that the system command executed in the ExternalDevices function produces the expected output. This helps ensure that the function is correctly identifying external devices connected to the system.
+// This function is a key part of the "checks" package test suite. It verifies that the system command executed within the ExternalDevices function yields the expected output, thereby ensuring the function's ability to accurately identify external devices connected to the system.
 func TestCommandOutput(t *testing.T) {
 	tests := []struct {
 		name      string

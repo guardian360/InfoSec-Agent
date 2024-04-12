@@ -9,17 +9,17 @@ import "fmt"
 
 // Check is a struct that encapsulates the outcome of a security or privacy check.
 //
-// Each instance of Check contains an ID, a Result, and an Error.
-// - IssueID (int): A unique identifier for the check.
-// - ResultID (int): A unique identifier for the result.
-// - Result ([]string): The outcome of the check. This could be a list of strings representing various results.
-// - Error (error): An error object that captures any error that occurred during the check. This is not serialized directly to JSON.
-// - ErrorMSG (string): A string representation of the error. This is included because the error datatype cannot be directly serialized to JSON.
+// Fields:
+//   - IssueID (int): A unique identifier for the issue. This value is used to distinguish between different checks.
+//   - ResultID (int): A unique identifier for the result. This value is used to distinguish between different results of a check.
+//   - Result ([]string): The outcome of the check. This could be a list of strings representing various results.
+//   - Error (error): An error object that captures any error that occurred during the check. This is not serialized directly to JSON.
+//   - ErrorMSG (string): A string representation of the error. This is included because the error datatype cannot be directly serialized to JSON.
 //
 // The Check struct can be instantiated using the following functions:
-// - NewCheckResult: Creates a new Check instance with only a result.
-// - NewCheckError: Creates a new Check instance with an error and its string representation.
-// - NewCheckErrorf: Creates a new Check instance with a formatted error message and its error object.
+//   - NewCheckResult: Creates a new Check instance with only a result.
+//   - NewCheckError: Creates a new Check instance with an error and its string representation.
+//   - NewCheckErrorf: Creates a new Check instance with a formatted error message and its error object.
 //
 // This struct is primarily used to standardize the return type across various security and privacy checks in the application.
 type Check struct {
@@ -31,14 +31,15 @@ type Check struct {
 }
 
 // NewCheckResult is a constructor function that creates and returns a new instance of the Check struct.
-// It sets the ID and Result fields of the Check struct, leaving the Error and ErrorMSG fields as their zero values.
+// It sets the IssueID, ResultID, and Result fields of the Check struct, leaving the Error and ErrorMSG fields as their zero values.
 //
 // Parameters:
-//   - id (int): A unique identifier for the check. This value is assigned to the ID field of the Check struct.
+//   - issID (int): A unique identifier for the issue. This value is assigned to the IssueID field of the Check struct.
+//   - resID (int): A unique identifier for the result. This value is assigned to the ResultID field of the Check struct.
 //   - result ([]string): The outcome of the check. This could be a list of strings representing various results. This value is assigned to the Result field of the Check struct.
 //
 // Returns:
-//   - Check: A new instance of the Check struct with the ID and Result fields set to the provided values, and the Error and ErrorMSG fields set to their zero values.
+//   - Check: A new instance of the Check struct with the IssueID, ResultID, and Result fields set to the provided values, and the Error and ErrorMSG fields set to their zero values.
 //
 // This function is primarily used when a security or privacy check completes successfully and returns a result without any errors.
 func NewCheckResult(issID int, resID int, result ...string) Check {
