@@ -40,7 +40,7 @@ func SearchEngineFirefox() checks.Check {
 	}(tempSearch)
 
 	// Copy the compressed json to a temporary location
-	copyError := utils.CopyFile(filePath, tempSearch)
+	copyError := utils.CopyFile(filePath, tempSearch, nil, nil)
 	if copyError != nil {
 		return checks.NewCheckErrorf(checks.SearchFirefoxID, "Unable to make a copy of the file", copyError)
 	}
@@ -52,19 +52,19 @@ func SearchEngineFirefox() checks.Check {
 	fileSize := fileInfo.Size()
 
 	// Holds the information from the copied file
-	// TODO: Look at searchEngine_chromium.go for how to implement filemock.File
 	file, err := os.Open(filepath.Clean(tempSearch))
 	if err != nil {
 		return checks.NewCheckErrorf(checks.SearchFirefoxID, "Unable to open the file", err)
 	}
-	defer func(file filemock.File) {
-		err = utils.CloseFile(file)
+	defer func(file *os.File) {
+		tmpFile := filemock.Wrap(file)
+		err = utils.CloseFile(tmpFile)
 		if err != nil {
 			log.Println("Error closing file")
 		}
 	}(file)
 
-	// Holds the custom magig number for the mozzila lz4 compression
+	// Holds the custom magic number for the mozilla lz4 compression
 	magicNumber := make([]byte, 8)
 
 	// Retrieves the magicNumber from the file
@@ -110,11 +110,11 @@ func SearchEngineFirefox() checks.Check {
 	if err != nil {
 		return checks.NewCheckErrorf(checks.SearchFirefoxID, "Unable to uncompress", err)
 	}
-	output := string(data)
-	return checks.NewCheckResult(checks.SearchFirefoxID, 0, results(output))
+	return checks.NewCheckResult(checks.SearchFirefoxID, 0, results(data))
 }
 
-func results(output string) string {
+func results(data []byte) string {
+	output := string(data)
 	var result string
 	var re *regexp.Regexp
 	var matches string

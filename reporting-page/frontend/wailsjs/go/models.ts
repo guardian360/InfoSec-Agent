@@ -23,18 +23,20 @@ export namespace checks {
 
 export namespace scan {
 	
-	export class Severity {
-	    checkid: number;
-	    level: number;
+	export class DataBaseData {
+	    id: number;
+	    severity: number;
+	    jsonkey: number;
 	
 	    static createFrom(source: any = {}) {
-	        return new Severity(source);
+	        return new DataBaseData(source);
 	    }
 	
 	    constructor(source: any = {}) {
 	        if ('string' === typeof source) source = JSON.parse(source);
-	        this.checkid = source["checkid"];
-	        this.level = source["level"];
+	        this.id = source["id"];
+	        this.severity = source["severity"];
+	        this.jsonkey = source["jsonkey"];
 	    }
 	}
 

@@ -7,6 +7,9 @@ package main
 
 import (
 	"embed"
+	"net/http"
+	"os"
+	"strings"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/localization"
 	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
@@ -20,6 +23,28 @@ import (
 
 //go:embed all:frontend/dist
 var assets embed.FS
+
+type FileLoader struct {
+	http.Handler
+}
+
+func NewFileLoader() *FileLoader {
+	return &FileLoader{}
+}
+
+func (h *FileLoader) ServeHTTP(res http.ResponseWriter, req *http.Request) {
+	var err error
+	requestedFilename := strings.TrimPrefix(req.URL.Path, "/")
+	logger.Log.Info("Requesting file:" + requestedFilename)
+	fileData, err := os.ReadFile(requestedFilename)
+	if err != nil {
+		res.WriteHeader(http.StatusBadRequest)
+		logger.Log.Info("Could not load file" + requestedFilename)
+	}
+	if _, err = res.Write(fileData); err != nil {
+		logger.Log.Info("Could not write file" + requestedFilename)
+	}
+}
 
 // main is the entry point of the reporting page program, starts the Wails application
 //
@@ -46,7 +71,8 @@ func main() {
 		Height:      768,
 		StartHidden: true,
 		AssetServer: &assetserver.Options{
-			Assets: assets,
+			Assets:  assets,
+			Handler: NewFileLoader(),
 		},
 		BackgroundColour: &options.RGBA{R: 27, G: 38, B: 54, A: 1},
 		OnStartup:        app.startup,
