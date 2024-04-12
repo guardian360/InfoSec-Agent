@@ -10,9 +10,11 @@ if (!global.TESTING) {
 import {ScanNow as scanNowGo} from '../../wailsjs/go/main/Tray.js';
 import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
 import {retrieveTheme} from './personalize.js';
+import {scanTest} from './database.js';
 
 /** Load the content of the Security Dashboard page */
 function openSecurityDashboardPage() {
+  document.onload = retrieveTheme();
   closeNavigation();
   markSelectedNavigationItem('security-dashboard-button');
 
@@ -66,7 +68,7 @@ function openSecurityDashboardPage() {
           <div class="graph-buttons dropdown">
             <p class="bar-graph-description">
               In this graph you are able to see the distribution of different issues 
-              we have found over the past 5 times we ran a check.
+              we have found over the past times we ran a check.
             </p>
             <button id="dropbtn" class="dropbtn"><span class="select-risks">Select Risks</span></button>
             <div class="dropdown-selector" id="myDropdown">
@@ -85,7 +87,7 @@ function openSecurityDashboardPage() {
             </div>
             <a class="interval-button">
               <p class="change-interval">Change interval</p>
-              <input type="number" value="5" id="graph-interval" min="1">
+              <input type="number" value="1" id="graph-interval" min="1">
             </a>
           </div>
           <div class="graph-column issues-graph">
@@ -148,10 +150,9 @@ function openSecurityDashboardPage() {
   </div>
   `;
   // Set counters on the page to the right values
-  const rc = JSON.parse(sessionStorage.getItem('RiskCounters'));
+  let rc = JSON.parse(sessionStorage.getItem('RiskCounters'));
   adjustWithRiskCounters(rc, document);
   setMaxInterval(rc, document);
-  // Create charts
 
   // Localize the static content of the dashboard
   const staticDashboardContent = [
@@ -199,11 +200,19 @@ function openSecurityDashboardPage() {
   for (let i = 0; i < staticDashboardContent.length; i++) {
     getLocalization(localizationIds[i], staticDashboardContent[i]);
   }
+
+  // Create charts
   new PieChart('pieChart', rc);
   const g = new Graph('interval-graph', rc);
   addGraphFunctions(g);
-  document.getElementsByClassName('scan-now')[0].addEventListener('click', () => scanNowGo());
-  document.onload = retrieveTheme();
+  document.getElementsByClassName('scan-now')[0].addEventListener('click', async () => {
+    await scanTest();
+    rc = JSON.parse(sessionStorage.getItem('RiskCounters'));
+    adjustWithRiskCounters(rc, document);
+    setMaxInterval(rc, document);
+    g.rc = rc;
+    g.changeGraph();
+  });
 }
 
 if (typeof document !== 'undefined') {

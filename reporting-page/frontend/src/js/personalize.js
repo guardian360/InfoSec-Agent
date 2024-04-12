@@ -58,7 +58,7 @@ export function openPersonalizePage() {
     <form action="" class="color-picker>
       <fieldset>
         <legend>Pick a theme</legend>
-        <label for="normal">normal</label>
+        <label for="normal">Light</label>
         <input type="radio" name="theme" id="normal" checked>
         <label for="dark">Dark</label>
         <input type="radio" name="theme" id="dark">
