@@ -15,7 +15,7 @@
 }
 
 .issues-table td, .issues-table th {
-  border: 1px solid #ddd;
+  border: 1px solid #504e4e;
   padding: 8px;
 }
 
@@ -56,23 +56,27 @@
 /* Issue pages */
 h1 {
   float: left;
-  margin-top: 80px;
-  margin-left: 260px;
+  margin-left: 20px;
   margin-right: 20px;
   color: var(--text-body);
 }
 
 .issue-information {
   float: left;
-  margin-left: 260px;
+  margin-left: 20px;
   margin-right: 20px;
   color: var(--text-body);
 }
 
 #back-button {
   float: left;
-  margin: 20px 20px 50px 260px;
-  color: var(--text-body);
+  margin-top: 10px;
+  background-color: var(--background-color-left-nav);
+  width: 180px;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
 }
 
 #back-button:hover {
@@ -140,4 +144,14 @@ h1 {
   padding: 10px;
   text-align: center;
   border-radius: 10px;
+}
+
+#next-button:hover {
+  color: var(--text-settings-hover);
+  cursor:pointer;
+}
+
+#previous-button:hover {
+  color: var(--text-settings-hover);
+  cursor:pointer;
 }

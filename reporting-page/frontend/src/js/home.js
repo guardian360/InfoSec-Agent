@@ -1,16 +1,15 @@
-import {PieChart} from './piechart';
-import {ScanNow as scanNowGo} from '../../wailsjs/go/main/Tray';
+import {PieChart} from './piechart.js';
 import {getLocalization} from './localize.js';
-import {closeNavigation} from './navigation-menu.js';
-import {markSelectedNavigationItem} from './navigation-menu.js';
+import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
 import medal from '../assets/images/img_medal1.jpg';
 import {retrieveTheme} from './personalize.js';
+import {scanTest} from './database.js';
 
 /** Load the content of the Home page */
 export function openHomePage() {
+  document.onload = retrieveTheme();
   closeNavigation();
   markSelectedNavigationItem('home-button');
-
   document.getElementById('page-contents').innerHTML = `
   <div class="home-data">
     <div class="container-data home-column-one"> 
@@ -99,32 +98,16 @@ export function openHomePage() {
     getLocalization(localizationIds[i], staticHomePageConent[i]);
   }
 
-  document.getElementsByClassName('scan-now')[0].addEventListener('click', () => scanNow());
+  document.getElementsByClassName('scan-now')[0].addEventListener('click', () => scanTest());
   document.getElementById('home-button').addEventListener('click', () => openHomePage());
   document.getElementById('logo').innerHTML = localStorage.getItem('picture');
-
-  document.onload = retrieveTheme();
 }
 
 document.getElementById('logo-button').addEventListener('click', () => openHomePage());
 document.getElementById('home-button').addEventListener('click', () => openHomePage());
 
-/**
- * Initiates a scan operation immediately.
- * Calls the ScanNow function and handles the result or error.
- */
-function scanNow() {
-  scanNowGo()
-    .then((result) => {
-    })
-    .catch((err) => {
-      console.error(err);
-    });
-}
-
-// document.onload = openHomePage();
-
 window.onload = function() {
+  markSelectedNavigationItem('home-button');
   const savedImage = localStorage.getItem('picture');
   const savedText = localStorage.getItem('title');
   const savedIcon = localStorage.getItem('favicon');

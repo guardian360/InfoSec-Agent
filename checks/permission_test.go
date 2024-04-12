@@ -1,11 +1,12 @@
 package checks_test
 
 import (
-	"github.com/stretchr/testify/require"
 	"testing"
 
+	"github.com/stretchr/testify/require"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
-	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
+	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 
 	"github.com/stretchr/testify/assert"
 )
@@ -22,19 +23,19 @@ func TestPermission(t *testing.T) {
 	tests := []struct {
 		name       string
 		permission string
-		key        registrymock.RegistryKey
+		key        mocking.RegistryKey
 		want       checks.Check
 	}{
 		{
 			name:       "NonPackagedWebcamPermissionExists",
 			permission: "webcam",
-			key: &registrymock.MockRegistryKey{
-				SubKeys: []registrymock.MockRegistryKey{
+			key: &mocking.MockRegistryKey{
+				SubKeys: []mocking.MockRegistryKey{
 					{KeyName: "Software\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\webcam",
 						StringValues: map[string]string{"Value": "Allow"},
-						SubKeys: []registrymock.MockRegistryKey{
+						SubKeys: []mocking.MockRegistryKey{
 							{KeyName: "NonPackaged",
-								SubKeys: []registrymock.MockRegistryKey{
+								SubKeys: []mocking.MockRegistryKey{
 									{KeyName: "microsoft.webcam", StringValues: map[string]string{"Value": "Allow"}},
 								},
 							},
@@ -42,27 +43,27 @@ func TestPermission(t *testing.T) {
 					},
 				},
 			},
-			want: checks.NewCheckResult("webcam", "microsoft.webcam"),
+			want: checks.NewCheckResult(checks.WebcamID, 0, "microsoft.webcam"),
 		},
 		{
 			name:       "WebcamPermissionExists",
 			permission: "webcam",
-			key: &registrymock.MockRegistryKey{
-				SubKeys: []registrymock.MockRegistryKey{
+			key: &mocking.MockRegistryKey{
+				SubKeys: []mocking.MockRegistryKey{
 					{KeyName: "Software\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\webcam",
-						SubKeys: []registrymock.MockRegistryKey{
+						SubKeys: []mocking.MockRegistryKey{
 							{KeyName: "microsoft.webcam", StringValues: map[string]string{"Value": "Allow"}},
 						},
 					},
 				},
 			},
-			want: checks.NewCheckResult("webcam", "microsoft.webcam"),
+			want: checks.NewCheckResult(checks.WebcamID, 0, "microsoft.webcam"),
 		},
 	}
 
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
-			result := checks.Permission(tc.permission, tc.key)
+			result := checks.Permission(checks.WebcamID, tc.permission, tc.key)
 			require.Equal(t, tc.want, result)
 		})
 	}
@@ -77,14 +78,14 @@ func TestPermission(t *testing.T) {
 //
 // This function tests the Permission function with a specific scenario where the permission string is in a certain format. It uses a mock implementation of the RegistryKey interface to simulate a specific permission format. The test case checks if the Permission function correctly formats the returned permission string by removing any '#' characters. The function asserts that the returned permission string matches the expected format.
 func TestFormatPermission(t *testing.T) {
-	key := &registrymock.MockRegistryKey{
-		SubKeys: []registrymock.MockRegistryKey{
+	key := &mocking.MockRegistryKey{
+		SubKeys: []mocking.MockRegistryKey{
 			{KeyName: "Software\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\location",
 				StringValues: map[string]string{"Value": "Allow"},
-				SubKeys: []registrymock.MockRegistryKey{
+				SubKeys: []mocking.MockRegistryKey{
 					{KeyName: "NonPackaged",
 						StringValues: map[string]string{"Value": "Allow"},
-						SubKeys: []registrymock.MockRegistryKey{
+						SubKeys: []mocking.MockRegistryKey{
 							{KeyName: "test#test#test.exe"},
 						},
 					},
@@ -92,7 +93,7 @@ func TestFormatPermission(t *testing.T) {
 			},
 		},
 	}
-	c := checks.Permission("location", key)
+	c := checks.Permission(checks.LocationID, "location", key)
 	assert.NotContains(t, c.Result, "#")
 	assert.Contains(t, c.Result, "test.exe")
 }
@@ -106,14 +107,14 @@ func TestFormatPermission(t *testing.T) {
 //
 // This function tests the Permission function with a scenario where the requested permission does not exist in the simulated registry keys. It uses a mock implementation of the RegistryKey interface to simulate this scenario. The test case checks if the Permission function correctly returns an error when the requested permission does not exist. The function asserts that the returned Check instance contains the expected error message.
 func TestNonExistingPermission(t *testing.T) {
-	key := &registrymock.MockRegistryKey{
-		SubKeys: []registrymock.MockRegistryKey{
+	key := &mocking.MockRegistryKey{
+		SubKeys: []mocking.MockRegistryKey{
 			{KeyName: "Software\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\location",
 				StringValues: map[string]string{"Value": "Allow"},
-				SubKeys: []registrymock.MockRegistryKey{
+				SubKeys: []mocking.MockRegistryKey{
 					{KeyName: "NonPackaged",
 						StringValues: map[string]string{"Value": "Allow"},
-						SubKeys: []registrymock.MockRegistryKey{
+						SubKeys: []mocking.MockRegistryKey{
 							{KeyName: "test.test"},
 						},
 					},
@@ -121,7 +122,7 @@ func TestNonExistingPermission(t *testing.T) {
 			},
 		},
 	}
-	c := checks.Permission("hello", key)
+	c := checks.Permission(99, "hello", key)
 	assert.Equal(t, c.Result, []string(nil))
 	assert.EqualError(t, c.Error, "error opening registry key: error opening registry key: key not found")
 }

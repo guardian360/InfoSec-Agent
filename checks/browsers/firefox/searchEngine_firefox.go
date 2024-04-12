@@ -8,7 +8,7 @@ import (
 	"path/filepath"
 	"regexp"
 
-	"github.com/InfoSec-Agent/InfoSec-Agent/filemock"
+	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
@@ -29,7 +29,7 @@ func SearchEngineFirefox() checks.Check {
 	var err error
 	ffdirectory, err = utils.FirefoxFolder()
 	if err != nil {
-		return checks.NewCheckErrorf("SearchEngineFirefox", "No firefox directory found", err)
+		return checks.NewCheckErrorf(checks.SearchFirefoxID, "No firefox directory found", err)
 	}
 	filePath := ffdirectory[0] + "/search.json.mozlz4"
 
@@ -43,37 +43,37 @@ func SearchEngineFirefox() checks.Check {
 	}(tempSearch)
 
 	// Copy the compressed json to a temporary location
-	copyError := utils.CopyFile(filePath, tempSearch)
+	copyError := utils.CopyFile(filePath, tempSearch, nil, nil)
 	if copyError != nil {
-		return checks.NewCheckErrorf("SearchEngineFirefox", "Unable to make a copy of the file", copyError)
+		return checks.NewCheckErrorf(checks.SearchFirefoxID, "Unable to make a copy of the file", copyError)
 	}
 
 	fileInfo, err := os.Stat(tempSearch)
 	if err != nil {
-		return checks.NewCheckErrorf("SearchEngineFirefox", "Unable to retrieve information about the file", err)
+		return checks.NewCheckErrorf(checks.SearchFirefoxID, "Unable to retrieve information about the file", err)
 	}
 	fileSize := fileInfo.Size()
 
 	// Holds the information from the copied file
-	// TODO: Look at searchEngine_chromium.go for how to implement filemock.File
 	file, err := os.Open(filepath.Clean(tempSearch))
 	if err != nil {
-		return checks.NewCheckErrorf("SearchEngineFirefox", "Unable to open the file", err)
+		return checks.NewCheckErrorf(checks.SearchFirefoxID, "Unable to open the file", err)
 	}
-	defer func(file filemock.File) {
-		err = utils.CloseFile(file)
+	defer func(file *os.File) {
+		tmpFile := mocking.Wrap(file)
+		err = utils.CloseFile(tmpFile)
 		if err != nil {
 			log.Println("Error closing file")
 		}
 	}(file)
 
-	// Holds the custom magig number for the mozzila lz4 compression
+	// Holds the custom magic number for the mozilla lz4 compression
 	magicNumber := make([]byte, 8)
 
 	// Retrieves the magicNumber from the file
 	_, err = file.Read(magicNumber)
 	if err != nil {
-		return checks.NewCheckErrorf("SearchEngineFirefox", "Unable to read the file", err)
+		return checks.NewCheckErrorf(checks.SearchFirefoxID, "Unable to read the file", err)
 	}
 
 	// Holds the size of the file after decompressing it
@@ -82,13 +82,13 @@ func SearchEngineFirefox() checks.Check {
 	// Skip the first 8 bytes to take the bytes 8-11 that hold the size after decompression
 	_, err = file.Seek(8, io.SeekStart)
 	if err != nil {
-		return checks.NewCheckErrorf("SearchEngineFirefox", "Unable to skip the first 8 bytes", err)
+		return checks.NewCheckErrorf(checks.SearchFirefoxID, "Unable to skip the first 8 bytes", err)
 	}
 
 	// Retrieves bytes 8-11 to find the size of the file
 	_, err = file.Read(uncompressSize)
 	if err != nil {
-		return checks.NewCheckErrorf("SearchEngineFirefox", "Unable to read the file", err)
+		return checks.NewCheckErrorf(checks.SearchFirefoxID, "Unable to read the file", err)
 	}
 
 	// Transforms the size of the file after decompression from Little Endian to a normal 32-bit integer
@@ -97,7 +97,7 @@ func SearchEngineFirefox() checks.Check {
 	// Skip the first 12 bytes because that is the start of the data
 	_, err = file.Seek(12, io.SeekStart)
 	if err != nil {
-		return checks.NewCheckErrorf("SearchEngineFirefox", "Unable to skip the first 12 bytes", err)
+		return checks.NewCheckErrorf(checks.SearchFirefoxID, "Unable to skip the first 12 bytes", err)
 	}
 
 	// Byte slice to hold the compressed data without the header (first 12 bytes)
@@ -105,16 +105,15 @@ func SearchEngineFirefox() checks.Check {
 
 	_, err = file.Read(compressedData)
 	if err != nil {
-		return checks.NewCheckErrorf("SearchEngineFirefox", "Unable to read the file", err)
+		return checks.NewCheckErrorf(checks.SearchFirefoxID, "Unable to read the file", err)
 	}
 
 	data := make([]byte, unCompressedSize)
 	_, err = lz4.UncompressBlock(compressedData, data)
 	if err != nil {
-		return checks.NewCheckErrorf("SearchEngineFirefox", "Unable to uncompress", err)
+		return checks.NewCheckErrorf(checks.SearchFirefoxID, "Unable to uncompress", err)
 	}
-	output := string(data)
-	return checks.NewCheckResult("SearchEngineFirefox", results(output))
+	return checks.NewCheckResult(checks.SearchFirefoxID, 0, results(data))
 }
 
 // results is a utility function used within the SearchEngineFirefox function.
@@ -127,7 +126,8 @@ func SearchEngineFirefox() checks.Check {
 //   - string: A string that represents the default search engine in the Firefox browser. If the defaultEngineId is empty, the function returns "Google". If the defaultEngineId matches known search engines (ddg, bing, ebay, wikipedia, amazon), the function returns the name of the matched search engine. If the defaultEngineId does not match any known search engines, the function returns "Other Search Engine".
 //
 // This function first checks if the defaultEngineId in the output string is empty, which indicates that the default search engine is Google. If the defaultEngineId is not empty, the function checks if it matches the ids of other known search engines. If a match is found, the function returns the name of the matched search engine. If no match is found, the function returns "Other Search Engine".
-func results(output string) string {
+func results(data []byte) string {
+	output := string(data)
 	var result string
 	var re *regexp.Regexp
 	var matches string

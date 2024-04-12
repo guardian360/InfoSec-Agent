@@ -1,7 +1,5 @@
-import logo from '../assets/images/logoTeamA-transformed.png';
 import {getLocalization} from './localize.js';
-
-document.getElementById('logo').src = logo;
+import {LogError as logError} from '../../wailsjs/go/main/Tray.js';
 
 /** Give the selected navigation item a different color
  * @param {string} item - The navigation item that is selected
@@ -57,19 +55,33 @@ export function toggleNavigationResize() {
   }
 }
 
-document.getElementById('header-hambuger').addEventListener('click', () => toggleNavigationHamburger());
-document.body.onresize = () => toggleNavigationResize();
+if (typeof document !== 'undefined') {
+  try {
+    document.getElementById('header-hambuger').addEventListener('click', () => toggleNavigationHamburger());
+    document.body.onresize = () => toggleNavigationResize();
 
-const navbarItems = ['settings', 'home', 'security-dashboard', 'privacy-dashboard', 'issues', 'integration', 'about'];
-const localizationIds = [
-  'Navigation.Settings',
-  'Navigation.Home',
-  'Navigation.SecurityDashboard',
-  'Navigation.PrivacyDashboard',
-  'Navigation.Issues',
-  'Navigation.Integration',
-  'Navigation.About',
-];
-for (let i = 0; i < navbarItems.length; i++) {
-  getLocalization(localizationIds[i], navbarItems[i]);
+    const navbarItems = [
+      'settings',
+      'home',
+      'security-dashboard',
+      'privacy-dashboard',
+      'issues',
+      'integration',
+      'about',
+    ];
+    const localizationIds = [
+      'Navigation.Settings',
+      'Navigation.Home',
+      'Navigation.SecurityDashboard',
+      'Navigation.PrivacyDashboard',
+      'Navigation.Issues',
+      'Navigation.Integration',
+      'Navigation.About',
+    ];
+    for (let i = 0; i < navbarItems.length; i++) {
+      getLocalization(localizationIds[i], navbarItems[i]);
+    }
+  } catch (error) {
+    logError('Error in navigation-menu.js: ' + error);
+  }
 }

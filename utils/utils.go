@@ -7,14 +7,14 @@ import (
 	"context"
 	"errors"
 	"io"
-	"log"
 	"net/http"
 	"os"
 	"os/user"
 	"path/filepath"
 	"strings"
 
-	"github.com/InfoSec-Agent/InfoSec-Agent/filemock"
+	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
+	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 )
 
 // CopyFile is a utility function that copies a file from a source path to a destination path.
@@ -23,36 +23,52 @@ import (
 //   - src string: The path to the source file that needs to be copied.
 //   - dst string: The path to the destination where the source file should be copied to.
 //
+// dst - the destination file
+//
 // Returns:
 //   - error: An error object that wraps any error that occurs during the file copying process. If the file is copied successfully, it returns nil.
-func CopyFile(src, dst string) error {
-	sourceFile, err := os.Open(filepath.Clean(src))
+func CopyFile(src, dst string, mockSource mocking.File, mockDestination mocking.File) error {
+	var sourceFile mocking.File
+	var err error
+	if mockSource != nil {
+		sourceFile, err = mockSource, nil
+	} else {
+		var tmp *os.File
+		tmp, err = os.Open(filepath.Clean(src))
+		sourceFile = mocking.Wrap(tmp)
+	}
 	if err != nil {
 		return err
 	}
-	defer func(sourceFile *os.File) {
+	defer func(sourceFile mocking.File) {
 		err = sourceFile.Close()
 		if err != nil {
-			log.Printf("error closing source file: %v", err)
+			logger.Log.ErrorWithErr("Error closing source file:", err)
 		}
 	}(sourceFile)
-
-	destinationFile, err := os.Create(filepath.Clean(dst))
+	var destinationFile mocking.File
+	if mockDestination != nil {
+		destinationFile, err = mockDestination, nil
+	} else {
+		var tmp *os.File
+		tmp, err = os.Create(filepath.Clean(dst))
+		destinationFile = mocking.Wrap(tmp)
+	}
 	if err != nil {
 		return err
 	}
-	defer func(destinationFile *os.File) {
+	defer func(destinationFile mocking.File) {
 		err = destinationFile.Close()
 		if err != nil {
-			log.Printf("error closing destination file: %v", err)
+			logger.Log.ErrorWithErr("Error closing destination file:", err)
 		}
 	}(destinationFile)
 
-	_, err = io.Copy(destinationFile, sourceFile)
+	_, err = sourceFile.Copy(destinationFile, sourceFile)
 	if err != nil {
+		logger.Log.Println("Error copying file:", err)
 		return err
 	}
-
 	return nil
 }
 
@@ -71,24 +87,24 @@ func GetPhishingDomains() []string {
 	req, err := http.NewRequestWithContext(context.Background(), http.MethodGet, url, nil)
 	req.Header.Add("User-Agent", "Mozilla/5.0")
 	if err != nil {
-		log.Fatal(err)
+		logger.Log.FatalWithErr("Error creating HTTP request:", err)
 	}
 	resp, err := client.Do(req)
 	defer func(Body io.ReadCloser) {
 		err = Body.Close()
 		if err != nil {
-			log.Printf("error closing response body: %v", err)
+			logger.Log.ErrorWithErr("Error closing response body: %v", err)
 		}
 	}(resp.Body)
 
 	if resp.StatusCode != http.StatusOK {
-		log.Printf("HTTP request failed with status code: %d", resp.StatusCode)
+		logger.Log.Printf("HTTP request failed with status code: %d", resp.StatusCode)
 	}
 
 	// Parse the response of potential scam domains and split it into a list of domains
 	scamDomainsResponse, err := io.ReadAll(resp.Body)
 	if err != nil {
-		log.Println("Error reading response body:", err)
+		logger.Log.ErrorWithErr("Error reading response body:", err)
 	}
 	return strings.Split(string(scamDomainsResponse), "\n")
 }
@@ -106,7 +122,7 @@ func FirefoxFolder() ([]string, error) {
 	// Get the current user
 	currentUser, err := user.Current()
 	if err != nil {
-		log.Println("Error:", err)
+		logger.Log.ErrorWithErr("Error getting current user:", err)
 		return nil, err
 	}
 	// Specify the path to the firefox profile directory
@@ -114,20 +130,20 @@ func FirefoxFolder() ([]string, error) {
 
 	dir, err := os.Open(filepath.Clean(profilesDir))
 	if err != nil {
-		log.Println("Error:", err)
+		logger.Log.ErrorWithErr("Error getting profiles directory:", err)
 		return nil, err
 	}
 	defer func(dir *os.File) {
 		err = dir.Close()
 		if err != nil {
-			log.Printf("error closing directory: %v", err)
+			logger.Log.ErrorWithErr("Error closing directory: %v", err)
 		}
 	}(dir)
 
 	// Read the contents of the directory
 	files, err := dir.Readdir(0)
 	if err != nil {
-		log.Println("Error:", err)
+		logger.Log.ErrorWithErr("Error reading contents:", err)
 		return nil, err
 	}
 
@@ -197,10 +213,10 @@ func RemoveDuplicateStr(strSlice []string) []string {
 //
 // Returns:
 //   - error: An error object that wraps any error that occurs during file closure. If the file is closed successfully, it returns nil.
-func CloseFile(file filemock.File) error {
+func CloseFile(file mocking.File) error {
 	err := file.Close()
 	if err != nil {
-		log.Printf("error closing file: %s", err)
+		logger.Log.ErrorWithErr("Error closing file: %s", err)
 		return err
 	}
 	return nil

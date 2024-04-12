@@ -3,7 +3,7 @@ package checks
 import (
 	"strings"
 
-	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
+	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 )
 
@@ -20,10 +20,10 @@ import (
 //
 // This function is primarily used to identify potential security risks associated with an active guest account on the Windows system.
 func GuestAccount(
-	executorLocalGroup commandmock.CommandExecutor,
-	executorLocalGroupMembers commandmock.CommandExecutor,
-	executorYesWord commandmock.CommandExecutor,
-	executorNetUser commandmock.CommandExecutor,
+	executorLocalGroup mocking.CommandExecutor,
+	executorLocalGroupMembers mocking.CommandExecutor,
+	executorYesWord mocking.CommandExecutor,
+	executorNetUser mocking.CommandExecutor,
 ) Check {
 	// Get localgroup name using GetWmiObject
 	// output, err := GuestAccountLocalGroup(executorLocalGroup)
@@ -31,7 +31,7 @@ func GuestAccount(
 	command := "Get-WmiObject Win32_Group | Select-Object SID,Name"
 	output, err := executorLocalGroup.Execute("powershell", command)
 	if err != nil {
-		return NewCheckErrorf("Guest account", "error executing command Get-WmiObject", err)
+		return NewCheckErrorf(GuestAccountID, "error executing command Get-WmiObject", err)
 	}
 	outputString := strings.Split(string(output), "\r\n")
 	found := false
@@ -46,13 +46,13 @@ func GuestAccount(
 		}
 	}
 	if !found {
-		return NewCheckResult("Guest account", "Guest localgroup not found")
+		return NewCheckResult(GuestAccountID, 0, "Guest localgroup not found")
 	}
 
 	// Get local group members using net localgroup command
 	output, err = executorLocalGroupMembers.Execute("net", "localgroup", guestGroup)
 	if err != nil {
-		return NewCheckErrorf("Guest account", "error executing command net localgroup", err)
+		return NewCheckErrorf(GuestAccountID, "error executing command net localgroup", err)
 	}
 	outputString = strings.Split(string(output), "\r\n")
 	guestUser := ""
@@ -63,19 +63,19 @@ func GuestAccount(
 		}
 	}
 	if guestUser == "" {
-		return NewCheckResult("Guest account", "Guest account not found")
+		return NewCheckResult(GuestAccountID, 0, "Guest account not found")
 	}
 
 	// Retrieve current username
 	currentUser, err := utils.CurrentUsername()
 	if err != nil {
-		return NewCheckErrorf("Guest account", "error retrieving current username", err)
+		return NewCheckErrorf(GuestAccountID, "error retrieving current username", err)
 	}
 
 	// Retrieve the word for 'yes' from the currentUser language
 	output, err = executorYesWord.Execute("net", "user", currentUser)
 	if err != nil {
-		return NewCheckErrorf("Guest account", "error executing command net user", err)
+		return NewCheckErrorf(GuestAccountID, "error executing command net user", err)
 	}
 	outputString = strings.Split(string(output), "\r\n")
 	line := strings.Split(outputString[5], " ")
@@ -84,13 +84,13 @@ func GuestAccount(
 	// Get all users using net user command
 	output, err = executorNetUser.Execute("net", "user", guestUser)
 	if err != nil {
-		return NewCheckErrorf("Guest account", "error executing command net user", err)
+		return NewCheckErrorf(GuestAccountID, "error executing command net user", err)
 	}
 	outputString = strings.Split(string(output), "\r\n")
 	// Check if the guest account is active based on the presence of the word 'yes' in the user's language
 	if strings.Contains(outputString[5], yesWord) {
-		return NewCheckResult("Guest account",
+		return NewCheckResult(GuestAccountID, 1,
 			"Guest account is active")
 	}
-	return NewCheckResult("Guest account", "Guest account is not active")
+	return NewCheckResult(GuestAccountID, 2, "Guest account is not active")
 }

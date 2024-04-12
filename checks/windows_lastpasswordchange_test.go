@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
-	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
+	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 )
 
 // TestLastPasswordChange is a function that tests the behavior of the LastPasswordChange function with various inputs.
@@ -21,12 +21,12 @@ import (
 func TestLastPasswordChange(t *testing.T) {
 	tests := []struct {
 		name          string
-		executorClass *commandmock.MockCommandExecutor
+		executorClass *mocking.MockCommandExecutor
 		want          checks.Check
 	}{
 		{
 			name: "Password not changed recently",
-			executorClass: &commandmock.MockCommandExecutor{
+			executorClass: &mocking.MockCommandExecutor{
 				Output: "Gebruikersnaam                           test\nVolledige naam                           " +
 					"test\nOpmerking\nOpmerking van gebruiker\nLandcode                                 " +
 					"000 (Systeemstandaard)\nAccount actief                           Ja\nAccount verloopt" +
@@ -43,12 +43,12 @@ func TestLastPasswordChange(t *testing.T) {
 					"                                         *Gebruikers\n" +
 					"                                         *Prestatielogboekgebru\nLidmaatschap globale groep" +
 					"               *Geen\nDe opdracht is voltooid.", Err: nil},
-			want: checks.NewCheckResult("LastPasswordChange", "Password last changed on 1-1-2022 , "+
+			want: checks.NewCheckResult(checks.LastPasswordChangeID, 0, "Password last changed on 1-1-2022 , "+
 				"your password was changed more than half a year ago so you should change it again"),
 		},
 		{
 			name: "Parsing data error",
-			executorClass: &commandmock.MockCommandExecutor{
+			executorClass: &mocking.MockCommandExecutor{
 				Output: "Gebruikersnaam                           test\nVolledige naam                           " +
 					"test\nOpmerking\nOpmerking van gebruiker\nLandcode                                 " +
 					"000 (Systeemstandaard)\nAccount actief                           Ja\nAccount verloopt" +
@@ -65,11 +65,11 @@ func TestLastPasswordChange(t *testing.T) {
 					"                                         *Gebruikers\n" +
 					"                                         *Prestatielogboekgebru\nLidmaatschap globale groep" +
 					"               *Geen\nDe opdracht is voltooid.", Err: nil},
-			want: checks.NewCheckError("LastPasswordChange", errors.New("error parsing date")),
+			want: checks.NewCheckError(checks.LastPasswordChangeID, errors.New("error parsing date")),
 		},
 		{
 			name: "Password changed recently",
-			executorClass: &commandmock.MockCommandExecutor{
+			executorClass: &mocking.MockCommandExecutor{
 				Output: "Gebruikersnaam                           test\nVolledige naam                           " +
 					"test\nOpmerking\nOpmerking van gebruiker\nLandcode                                 " +
 					"000 (Systeemstandaard)\nAccount actief                           Ja\nAccount verloopt" +
@@ -86,7 +86,7 @@ func TestLastPasswordChange(t *testing.T) {
 					"                                         *Gebruikers\n" +
 					"                                         *Prestatielogboekgebru\nLidmaatschap globale groep" +
 					"               *Geen\nDe opdracht is voltooid.", Err: nil},
-			want: checks.NewCheckResult("LastPasswordChange",
+			want: checks.NewCheckResult(checks.LastPasswordChangeID, 1,
 				"You changed your password recently on 1-1-2024"),
 		},
 	}

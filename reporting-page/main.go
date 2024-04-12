@@ -7,9 +7,14 @@ package main
 
 import (
 	"embed"
-	"log"
+	"net/http"
+	"os"
+	"strings"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/localization"
+	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
+	"github.com/InfoSec-Agent/InfoSec-Agent/tray"
+	"github.com/InfoSec-Agent/InfoSec-Agent/usersettings"
 	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/options"
 	"github.com/wailsapp/wails/v2/pkg/options/assetserver"
@@ -18,6 +23,28 @@ import (
 
 //go:embed all:frontend/dist
 var assets embed.FS
+
+type FileLoader struct {
+	http.Handler
+}
+
+func NewFileLoader() *FileLoader {
+	return &FileLoader{}
+}
+
+func (h *FileLoader) ServeHTTP(res http.ResponseWriter, req *http.Request) {
+	var err error
+	requestedFilename := strings.TrimPrefix(req.URL.Path, "/")
+	logger.Log.Info("Requesting file:" + requestedFilename)
+	fileData, err := os.ReadFile(requestedFilename)
+	if err != nil {
+		res.WriteHeader(http.StatusBadRequest)
+		logger.Log.Info("Could not load file" + requestedFilename)
+	}
+	if _, err = res.Write(fileData); err != nil {
+		logger.Log.Info("Could not write file" + requestedFilename)
+	}
+}
 
 // main is the entry point of the reporting page application. It initializes the localization settings, creates a new instance of the application, tray, and database, and starts the Wails application.
 //
@@ -30,11 +57,17 @@ var assets embed.FS
 //
 // Returns: None. This function does not return a value as it is the entry point of the application.
 func main() {
+	logger.Setup()
+	logger.Log.Info("Reporting page starting")
+
 	// Create a new instance of the app and tray struct
 	app := NewApp()
-	tray := NewTray()
+	systemTray := NewTray(logger.Log)
 	database := NewDataBase()
+	customLogger := logger.Log
 	localization.Init("../")
+	lang := usersettings.LoadUserSettings("../usersettings").Language
+	tray.Language = lang
 
 	// Create a Wails application with the specified options
 	err := wails.Run(&options.App{
@@ -43,15 +76,17 @@ func main() {
 		Height:      768,
 		StartHidden: true,
 		AssetServer: &assetserver.Options{
-			Assets: assets,
+			Assets:  assets,
+			Handler: NewFileLoader(),
 		},
 		BackgroundColour: &options.RGBA{R: 27, G: 38, B: 54, A: 1},
 		OnStartup:        app.startup,
 		Bind: []interface{}{
 			app,
-			tray,
+			systemTray,
 			database,
 		},
+		Logger: customLogger,
 		Windows: &windows.Options{
 			Theme: windows.SystemDefault,
 			CustomTheme: &windows.ThemeSettings{
@@ -64,8 +99,7 @@ func main() {
 			},
 		},
 	})
-
 	if err != nil {
-		log.Println("Error:", err.Error())
+		logger.Log.ErrorWithErr("Error creating Wails application:", err)
 	}
 }

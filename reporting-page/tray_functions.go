@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
+	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/tray"
 )
 
@@ -9,6 +10,7 @@ import (
 //
 // It provides methods to perform actions such as initiating an immediate scan, changing the language, and altering the scan interval of the system tray application. It does not contain any fields as it is primarily used as a receiver for these methods.
 type Tray struct {
+	Log *logger.CustomLogger
 }
 
 // NewTray is a constructor that returns a pointer to a Tray instance.
@@ -18,8 +20,10 @@ type Tray struct {
 // Parameters: None.
 //
 // Returns: *Tray: A pointer to a Tray instance.
-func NewTray() *Tray {
-	return &Tray{}
+func NewTray(log *logger.CustomLogger) *Tray {
+	return &Tray{
+		Log: log,
+	}
 }
 
 // ScanNow initiates an immediate scan operation via the system tray application.
@@ -56,4 +60,23 @@ func (t *Tray) ChangeLanguage() {
 // Returns: None. The method performs an action and does not return any value.
 func (t *Tray) ChangeScanInterval() {
 	tray.ChangeScanInterval()
+}
+
+// LogInfo logs an Info level message to the log file. This function is used for logging messages from the front-end JS
+// TODO: fix this docstring according to new documentation standard
+// Parameters: t (*Tray) - a pointer to the Tray struct
+//
+// Returns: _
+func (t *Tray) LogInfo(message string) {
+	t.Log.Info(message)
+}
+
+// LogError logs an error level message to the existing log file.
+// This function is used for logging messages from the front-end JS.
+// TODO: fix this docstring according to new documentation standard
+// Parameters: t (*Tray) - a pointer to the Tray struct
+//
+// Returns: _
+func (t *Tray) LogError(message string) {
+	t.Log.Error(message)
 }

@@ -9,11 +9,12 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"log"
 	"net/http"
 	"os"
 	"path/filepath"
 	"strings"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 )
@@ -49,29 +50,29 @@ const chromePath = "Google/Chrome"
 // Chrome Web Store or the Microsoft Edge Addons Store.
 func ExtensionsChromium(browser string) checks.Check {
 	var browserPath string
-	var returnBrowserName string
+	var returnID int
 	// Set the browser path and the return browser name based on the browser to check
 	// Currently, supports checking of Google Chrome and Microsoft Edge
 	if browser == chrome {
-		returnBrowserName = "ExtensionsChrome"
 		browserPath = chromePath
+		returnID = checks.ExtensionChromiumID
 	}
 	if browser == edge {
-		returnBrowserName = "ExtensionsEdge"
 		browserPath = edgePath
+		returnID = checks.ExtensionEdgeID
 	}
 	var extensionIDs []string
 	var extensionNames []string
 	// Get the current user's home directory, where the extensions are stored
 	user, err := os.UserHomeDir()
 	if err != nil {
-		checks.NewCheckErrorf(returnBrowserName, "Error: ", err)
+		checks.NewCheckErrorf(returnID, "Error: ", err)
 	}
 
 	extensionsDir := filepath.Join(user, "AppData", "Local", browserPath, "User Data", "Default", "Extensions")
 	files, err := os.ReadDir(extensionsDir)
 	if err != nil {
-		checks.NewCheckErrorf(returnBrowserName, "Error: ", err)
+		checks.NewCheckErrorf(returnID, "Error: ", err)
 	}
 
 	// Construct a list of all extensions ID's
@@ -85,10 +86,10 @@ func ExtensionsChromium(browser string) checks.Check {
 	var extensionName2 string
 	for _, id := range extensionIDs {
 		// Get the name of the extension from the Chrome Web Store
-		extensionName1, err = extensionNameChromium(id,
+		extensionName1, err = getExtensionNameChromium(id,
 			"https://chromewebstore.google.com/detail/%s", browser)
 		if err != nil {
-			log.Fatal(err)
+			logger.Log.ErrorWithErr("Error getting extension name: ", err)
 		}
 		if strings.Count(extensionName1, "/") > 4 {
 			parts := strings.Split(extensionName1, "/")
@@ -96,21 +97,21 @@ func ExtensionsChromium(browser string) checks.Check {
 		}
 		if browser == edge {
 			// Get the name of the extension from the Microsoft Edge Addons Store
-			extensionName2, err = extensionNameChromium(id,
+			extensionName2, err = getExtensionNameChromium(id,
 				"https://microsoftedge.microsoft.com/addons/getproductdetailsbycrxid/%s", browser)
 			if err != nil {
-				log.Fatal(err)
+				logger.Log.ErrorWithErr("Error getting extension name: ", err)
 			}
 			extensionNames = append(extensionNames, extensionName2)
 		}
 	}
 	if adblockerInstalled(extensionNames) {
-		return checks.NewCheckResult(returnBrowserName, "Adblocker installed")
+		return checks.NewCheckResult(returnID, 0, "Adblocker installed")
 	}
-	return checks.NewCheckErrorf(returnBrowserName, "No adblocker installed", errors.New("no adblocker installed"))
+	return checks.NewCheckResult(returnID, 1, "No adblocker installed")
 }
 
-// extensionNameChromium fetches the name of an extension from the Chrome Web Store or the Microsoft Edge Addons Store.
+// getExtensionNameChromium fetches the name of an extension from the Chrome Web Store or the Microsoft Edge Addons Store.
 //
 // Parameters:
 //   - extensionID: The unique identifier of the extension.
@@ -124,26 +125,26 @@ func ExtensionsChromium(browser string) checks.Check {
 // This function sends a HTTP request to the store's URL and parses the response to extract the extension name.
 // For Edge, the response is in JSON format and requires decoding.
 // If the HTTP request fails or the browser is unknown, the function returns an error.
-func extensionNameChromium(extensionID string, url string, browser string) (string, error) {
+func getExtensionNameChromium(extensionID string, url string, browser string) (string, error) {
 	client := &http.Client{}
 	urlToVisit := fmt.Sprintf(url, extensionID)
 	// Generate a new request to visit the extension/addon store
 	req, err := http.NewRequestWithContext(context.Background(), http.MethodGet, urlToVisit, nil)
 	if err != nil {
-		log.Println("error creating request: ", err)
+		logger.Log.ErrorWithErr("Error creating request: ", err)
 		return "", err
 	}
 	req.Header.Add("User-Agent", "Mozilla/5.0")
 	resp, err := client.Do(req)
 	if err != nil {
-		log.Println("error sending request: ", err)
+		logger.Log.ErrorWithErr("Error sending request: ", err)
 		return "", err
 	}
 	// Close the response body after the necessary data is retrieved
 	defer func(Body io.ReadCloser) {
 		err = Body.Close()
 		if err != nil {
-			log.Println("error closing body: ", err)
+			logger.Log.ErrorWithErr("Error closing body: ", err)
 		}
 	}(resp.Body)
 

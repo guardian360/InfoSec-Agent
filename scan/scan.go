@@ -6,14 +6,12 @@ package scan
 import (
 	"encoding/json"
 	"fmt"
-	"log"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/chromium"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/firefox"
-	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
-	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
-	"github.com/InfoSec-Agent/InfoSec-Agent/windowsmock"
+	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
+	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 	"golang.org/x/sys/windows/registry"
 
 	"github.com/ncruces/zenity"
@@ -40,55 +38,55 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 			return checks.PasswordManager(checks.RealProgramLister{})
 		},
 		func() checks.Check {
-			return checks.WindowsDefender(registrymock.LocalMachine, registrymock.LocalMachine)
+			return checks.WindowsDefender(mocking.LocalMachine, mocking.LocalMachine)
 		},
 		func() checks.Check {
-			return checks.LastPasswordChange(&commandmock.RealCommandExecutor{})
+			return checks.LastPasswordChange(&mocking.RealCommandExecutor{})
 		},
 		func() checks.Check {
-			return checks.LoginMethod(registrymock.LocalMachine)
+			return checks.LoginMethod(mocking.LocalMachine)
 		},
 		func() checks.Check {
-			return checks.Permission("location", registrymock.CurrentUser)
+			return checks.Permission(checks.LocationID, "location", mocking.CurrentUser)
 		},
 		func() checks.Check {
-			return checks.Permission("microphone", registrymock.CurrentUser)
+			return checks.Permission(checks.MicrophoneID, "microphone", mocking.CurrentUser)
 		},
 		func() checks.Check {
-			return checks.Permission("webcam", registrymock.CurrentUser)
+			return checks.Permission(checks.WebcamID, "webcam", mocking.CurrentUser)
 		},
 		func() checks.Check {
-			return checks.Permission("appointments", registrymock.CurrentUser)
+			return checks.Permission(checks.AppointmentsID, "appointments", mocking.CurrentUser)
 		},
 		func() checks.Check {
-			return checks.Permission("contacts", registrymock.CurrentUser)
+			return checks.Permission(checks.ContactsID, "contacts", mocking.CurrentUser)
 		},
 		func() checks.Check {
-			return checks.Bluetooth(registrymock.NewRegistryKeyWrapper(registry.LOCAL_MACHINE))
+			return checks.Bluetooth(mocking.NewRegistryKeyWrapper(registry.LOCAL_MACHINE))
 		},
 		func() checks.Check {
-			return checks.OpenPorts(&commandmock.RealCommandExecutor{}, &commandmock.RealCommandExecutor{})
+			return checks.OpenPorts(&mocking.RealCommandExecutor{}, &mocking.RealCommandExecutor{})
 		},
-		func() checks.Check { return checks.WindowsOutdated(&windowsmock.RealWindowsVersion{}) },
+		func() checks.Check { return checks.WindowsOutdated(&mocking.RealWindowsVersion{}) },
 		func() checks.Check {
-			return checks.SecureBoot(registrymock.LocalMachine)
-		},
-		func() checks.Check {
-			return checks.SmbCheck(&commandmock.RealCommandExecutor{}, &commandmock.RealCommandExecutor{})
+			return checks.SecureBoot(mocking.LocalMachine)
 		},
 		func() checks.Check {
-			return checks.Startup(registrymock.CurrentUser, registrymock.LocalMachine, registrymock.LocalMachine)
+			return checks.SmbCheck(&mocking.RealCommandExecutor{}, &mocking.RealCommandExecutor{})
 		},
 		func() checks.Check {
-			return checks.GuestAccount(&commandmock.RealCommandExecutor{}, &commandmock.RealCommandExecutor{},
-				&commandmock.RealCommandExecutor{}, &commandmock.RealCommandExecutor{})
+			return checks.Startup(mocking.CurrentUser, mocking.LocalMachine, mocking.LocalMachine)
 		},
-		func() checks.Check { return checks.UACCheck(&commandmock.RealCommandExecutor{}) },
 		func() checks.Check {
-			return checks.RemoteDesktopCheck(registrymock.LocalMachine)
+			return checks.GuestAccount(&mocking.RealCommandExecutor{}, &mocking.RealCommandExecutor{},
+				&mocking.RealCommandExecutor{}, &mocking.RealCommandExecutor{})
 		},
-		func() checks.Check { return checks.ExternalDevices(&commandmock.RealCommandExecutor{}) },
-		func() checks.Check { return checks.NetworkSharing(&commandmock.RealCommandExecutor{}) },
+		func() checks.Check { return checks.UACCheck(&mocking.RealCommandExecutor{}) },
+		func() checks.Check {
+			return checks.RemoteDesktopCheck(mocking.LocalMachine)
+		},
+		func() checks.Check { return checks.ExternalDevices(&mocking.RealCommandExecutor{}) },
+		func() checks.Check { return checks.NetworkSharing(&mocking.RealCommandExecutor{}) },
 		func() checks.Check { return chromium.HistoryChromium("Chrome") },
 		func() checks.Check { return chromium.ExtensionsChromium("Chrome") },
 		func() checks.Check { return chromium.SearchEngineChromium("Chrome") },
@@ -105,7 +103,7 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 		// Display the currently running check in the progress dialog
 		err := dialog.Text(fmt.Sprintf("Running check %d of %d", i+1, totalChecks))
 		if err != nil {
-			log.Println("Error setting progress text:", err)
+			logger.Log.ErrorWithErr("Error setting progress text:", err)
 			return checkResults, err
 		}
 
@@ -116,7 +114,7 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 		progress := float64(i+1) / float64(totalChecks) * 100
 		err = dialog.Value(int(progress))
 		if err != nil {
-			log.Println("Error setting progress value:", err)
+			logger.Log.ErrorWithErr("Error setting progress value:", err)
 			return checkResults, err
 		}
 	}
@@ -124,10 +122,10 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 	// Serialize check results to JSON
 	jsonData, err := json.MarshalIndent(checkResults, "", "  ")
 	if err != nil {
-		log.Println("Error marshalling JSON:", err)
+		logger.Log.ErrorWithErr("Error marshalling JSON:", err)
 		return checkResults, err
 	}
-	log.Println(string(jsonData))
+	logger.Log.Info(string(jsonData))
 
 	return checkResults, nil
 

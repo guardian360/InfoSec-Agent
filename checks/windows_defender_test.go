@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
-	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
+	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 )
 
 // TestWindowsDefender is a function that tests the WindowsDefender function's behavior with various inputs.
@@ -19,41 +19,41 @@ import (
 func TestWindowsDefender(t *testing.T) {
 	tests := []struct {
 		name        string
-		scanKey     registrymock.RegistryKey
-		defenderKey registrymock.RegistryKey
+		scanKey     mocking.RegistryKey
+		defenderKey mocking.RegistryKey
 		want        checks.Check
 	}{
 		{
 			name: "Windows Defender disabled and periodic scan disabled",
-			scanKey: &registrymock.MockRegistryKey{SubKeys: []registrymock.MockRegistryKey{{
+			scanKey: &mocking.MockRegistryKey{SubKeys: []mocking.MockRegistryKey{{
 				KeyName:       "SOFTWARE\\Microsoft\\Windows Defender",
 				IntegerValues: map[string]uint64{"DisableAntiVirus": 1}, Err: nil}}},
-			defenderKey: &registrymock.MockRegistryKey{SubKeys: []registrymock.MockRegistryKey{{
+			defenderKey: &mocking.MockRegistryKey{SubKeys: []mocking.MockRegistryKey{{
 				KeyName:       "SOFTWARE\\Microsoft\\Windows Defender\\Real-Time Protection",
 				IntegerValues: map[string]uint64{"DisableRealtimeMonitoring": 1}, Err: nil}}},
-			want: checks.NewCheckResult("WindowsDefender",
+			want: checks.NewCheckResult(checks.WindowsDefenderID, 3,
 				"Windows real-time defender is disabled and also the windows periodic scan is disabled"),
 		},
 		{
 			name: "Windows Defender disabled and periodic scan enabled",
-			scanKey: &registrymock.MockRegistryKey{SubKeys: []registrymock.MockRegistryKey{{
+			scanKey: &mocking.MockRegistryKey{SubKeys: []mocking.MockRegistryKey{{
 				KeyName:       "SOFTWARE\\Microsoft\\Windows Defender",
 				IntegerValues: map[string]uint64{"DisableAntiVirus": 0}, Err: nil}}},
-			defenderKey: &registrymock.MockRegistryKey{SubKeys: []registrymock.MockRegistryKey{{
+			defenderKey: &mocking.MockRegistryKey{SubKeys: []mocking.MockRegistryKey{{
 				KeyName:       "SOFTWARE\\Microsoft\\Windows Defender\\Real-Time Protection",
 				IntegerValues: map[string]uint64{"DisableRealtimeMonitoring": 1}, Err: nil}}},
-			want: checks.NewCheckResult("WindowsDefender",
+			want: checks.NewCheckResult(checks.WindowsDefenderID, 2,
 				"Windows real-time defender is disabled but the windows periodic scan is enabled"),
 		},
 		{
 			name: "Unknown status",
-			scanKey: &registrymock.MockRegistryKey{SubKeys: []registrymock.MockRegistryKey{{
+			scanKey: &mocking.MockRegistryKey{SubKeys: []mocking.MockRegistryKey{{
 				KeyName:       "SOFTWARE\\Microsoft\\Windows Defender",
 				IntegerValues: map[string]uint64{"DisableAntiVirus": 0}, Err: nil}}},
-			defenderKey: &registrymock.MockRegistryKey{SubKeys: []registrymock.MockRegistryKey{{
+			defenderKey: &mocking.MockRegistryKey{SubKeys: []mocking.MockRegistryKey{{
 				KeyName:       "SOFTWARE\\Microsoft\\Windows Defender\\Real-Time Protection",
 				IntegerValues: map[string]uint64{"DisableRealtimeMonitoring": 0}, Err: nil}}},
-			want: checks.NewCheckResult("WindowsDefender", "No windows defender data found"),
+			want: checks.NewCheckResult(checks.WindowsDefenderID, 4, "No windows defender data found"),
 		},
 	}
 

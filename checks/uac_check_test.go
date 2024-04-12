@@ -6,7 +6,7 @@ import (
 	"testing"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
-	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
+	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 )
 
 // TestUACCheck is a function that tests the UACCheck function's behavior with various inputs.
@@ -20,35 +20,35 @@ import (
 func TestUACCheck(t *testing.T) {
 	tests := []struct {
 		name        string
-		executorUAC *commandmock.MockCommandExecutor
+		executorUAC *mocking.MockCommandExecutor
 		want        checks.Check
 	}{
 		{
 			name:        "UAC disabled",
-			executorUAC: &commandmock.MockCommandExecutor{Output: "0", Err: nil},
-			want:        checks.NewCheckResult("UAC", "UAC is disabled."),
+			executorUAC: &mocking.MockCommandExecutor{Output: "0", Err: nil},
+			want:        checks.NewCheckResult(checks.UacID, 0, "UAC is disabled."),
 		},
 		{
 			name:        "UAC enabled for apps and settings",
-			executorUAC: &commandmock.MockCommandExecutor{Output: "2", Err: nil},
-			want: checks.NewCheckResult("UAC", "UAC is turned on for apps making changes to your computer "+
+			executorUAC: &mocking.MockCommandExecutor{Output: "2", Err: nil},
+			want: checks.NewCheckResult(checks.UacID, 1, "UAC is turned on for apps making changes to your computer "+
 				"and for changing your settings."),
 		},
 		{
 			name:        "UAC enabled for apps but not for settings",
-			executorUAC: &commandmock.MockCommandExecutor{Output: "5", Err: nil},
-			want: checks.NewCheckResult("UAC", "UAC is turned on for apps making changes to "+
+			executorUAC: &mocking.MockCommandExecutor{Output: "5", Err: nil},
+			want: checks.NewCheckResult(checks.UacID, 2, "UAC is turned on for apps making changes to "+
 				"your computer."),
 		},
 		{
 			name:        "unknown UAC level",
-			executorUAC: &commandmock.MockCommandExecutor{Output: "3", Err: nil},
-			want:        checks.NewCheckResult("UAC", "Unknown UAC level"),
+			executorUAC: &mocking.MockCommandExecutor{Output: "3", Err: nil},
+			want:        checks.NewCheckResult(checks.UacID, 3, "Unknown UAC level"),
 		},
 		{
 			name:        "UAC error",
-			executorUAC: &commandmock.MockCommandExecutor{Output: "", Err: errors.New("error retrieving UAC")},
-			want: checks.NewCheckErrorf("UAC", "error retrieving UAC",
+			executorUAC: &mocking.MockCommandExecutor{Output: "", Err: errors.New("error retrieving UAC")},
+			want: checks.NewCheckErrorf(checks.UacID, "error retrieving UAC",
 				errors.New("error retrieving UAC")),
 		},
 	}

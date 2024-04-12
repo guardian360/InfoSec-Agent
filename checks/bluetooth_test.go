@@ -1,11 +1,12 @@
 package checks_test
 
 import (
-	"github.com/stretchr/testify/require"
 	"testing"
 
+	"github.com/stretchr/testify/require"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
-	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
+	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 )
 
 // TestBluetooth is a function that validates the functionality of the Bluetooth function with both valid and invalid inputs.
@@ -19,37 +20,37 @@ import (
 func TestBluetooth(t *testing.T) {
 	tests := []struct {
 		name string
-		key  registrymock.RegistryKey
+		key  mocking.RegistryKey
 		want checks.Check
 	}{
 		{
 			name: "No Devices found",
-			key: &registrymock.MockRegistryKey{
-				SubKeys: []registrymock.MockRegistryKey{
+			key: &mocking.MockRegistryKey{
+				SubKeys: []mocking.MockRegistryKey{
 					{KeyName: "SYSTEM\\CurrentControlSet\\Services\\BTHPORT\\Parameters\\Devices"}}},
-			want: checks.NewCheckResult("Bluetooth", "No Bluetooth devices found"),
+			want: checks.NewCheckResult(checks.BluetoothID, 0, "No Bluetooth devices found"),
 		},
 		{
 			name: "Bluetooth devices found",
-			key: &registrymock.MockRegistryKey{
-				SubKeys: []registrymock.MockRegistryKey{
+			key: &mocking.MockRegistryKey{
+				SubKeys: []mocking.MockRegistryKey{
 					{KeyName: "SYSTEM\\CurrentControlSet\\Services\\BTHPORT\\Parameters\\Devices",
-						SubKeys: []registrymock.MockRegistryKey{
+						SubKeys: []mocking.MockRegistryKey{
 							{KeyName: "4dbndas2", BinaryValues: map[string][]byte{"Name": []byte("Device1")}, Err: nil}},
 					},
 				}, Err: nil},
-			want: checks.NewCheckResult("Bluetooth", "Device1"),
+			want: checks.NewCheckResult(checks.BluetoothID, 1, "Device1"),
 		},
 		{
 			name: "Error reading device name",
-			key: &registrymock.MockRegistryKey{
-				SubKeys: []registrymock.MockRegistryKey{
+			key: &mocking.MockRegistryKey{
+				SubKeys: []mocking.MockRegistryKey{
 					{KeyName: "SYSTEM\\CurrentControlSet\\Services\\BTHPORT\\Parameters\\Devices",
-						SubKeys: []registrymock.MockRegistryKey{
+						SubKeys: []mocking.MockRegistryKey{
 							{KeyName: "FAFA", StringValues: map[string]string{"Name2": "fsdfs"}, Err: nil}},
 					},
 				}},
-			want: checks.NewCheckResult("Bluetooth", "Error reading device name FAFA"),
+			want: checks.NewCheckResult(checks.BluetoothID, 1, "Error reading device name FAFA"),
 		},
 	}
 	for _, tt := range tests {

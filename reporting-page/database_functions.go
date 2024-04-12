@@ -22,7 +22,7 @@ func NewDataBase() *DataBase {
 	return &DataBase{}
 }
 
-// GetAllSeverities retrieves the severity levels for each check performed, based on the provided checks and result IDs.
+// GetDataBaseData gets all severities and JSON keys found by the check
 //
 // This function iterates over the provided checks and result IDs, and retrieves the severity level for each check. The severity level is determined by the check's result ID. The function returns a list of severity levels, where each severity level corresponds to a check in the order they were provided.
 //
@@ -30,9 +30,7 @@ func NewDataBase() *DataBase {
 //   - checks []checks.Check: A list of checks from which to retrieve severity levels.
 //   - resultIDs []int: A list of result IDs, each corresponding to a severity level for a check.
 //
-// Returns:
-//   - []scan.Severity: A list of severity levels for each check, in the order the checks were provided.
-//   - error: An error object that describes the error, if any occurred. nil if no error occurred.
-func (d *DataBase) GetAllSeverities(checks []checks.Check, resultIDs []int) ([]scan.Severity, error) {
-	return scan.GetAllSeverities(checks, resultIDs)
+// Returns: list of severity levels and JSON keys for each issue checked
+func (d *DataBase) GetDataBaseData(checks []checks.Check) ([]scan.DataBaseData, error) {
+	return scan.GetDataBaseData(checks)
 }

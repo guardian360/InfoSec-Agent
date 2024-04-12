@@ -2,11 +2,12 @@ package checks_test
 
 import (
 	"errors"
-	"github.com/stretchr/testify/require"
 	"testing"
 
+	"github.com/stretchr/testify/require"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
-	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
+	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 )
 
 // TestGuestAccount is a test function that validates the behavior of the GuestAccount function.
@@ -22,84 +23,84 @@ import (
 func TestGuestAccount(t *testing.T) {
 	tests := []struct {
 		name                      string
-		executorLocalGroup        commandmock.CommandExecutor
-		executorLocalGroupMembers commandmock.CommandExecutor
-		executorYesWord           commandmock.CommandExecutor
-		executorNetUser           commandmock.CommandExecutor
+		executorLocalGroup        mocking.CommandExecutor
+		executorLocalGroupMembers mocking.CommandExecutor
+		executorYesWord           mocking.CommandExecutor
+		executorNetUser           mocking.CommandExecutor
 		want                      checks.Check
 	}{
 		{
 			name: "wmiObjectError",
-			executorLocalGroup: &commandmock.MockCommandExecutor{Output: "",
+			executorLocalGroup: &mocking.MockCommandExecutor{Output: "",
 				Err: errors.New("Get-WmiObject error")},
-			executorLocalGroupMembers: &commandmock.MockCommandExecutor{Output: "", Err: nil},
-			executorYesWord:           &commandmock.MockCommandExecutor{Output: "", Err: nil},
-			executorNetUser:           &commandmock.MockCommandExecutor{Output: "", Err: nil},
-			want: checks.NewCheckErrorf("Guest account",
+			executorLocalGroupMembers: &mocking.MockCommandExecutor{Output: "", Err: nil},
+			executorYesWord:           &mocking.MockCommandExecutor{Output: "", Err: nil},
+			executorNetUser:           &mocking.MockCommandExecutor{Output: "", Err: nil},
+			want: checks.NewCheckErrorf(checks.GuestAccountID,
 				"error executing command Get-WmiObject", errors.New("Get-WmiObject error")),
 		},
 		{
 			name:                      "guestLocalGroupNotFound",
-			executorLocalGroup:        &commandmock.MockCommandExecutor{Output: "", Err: nil},
-			executorLocalGroupMembers: &commandmock.MockCommandExecutor{Output: "", Err: nil},
-			executorYesWord:           &commandmock.MockCommandExecutor{Output: "", Err: nil},
-			executorNetUser:           &commandmock.MockCommandExecutor{Output: "", Err: nil},
-			want:                      checks.NewCheckResult("Guest account", "Guest localgroup not found"),
+			executorLocalGroup:        &mocking.MockCommandExecutor{Output: "", Err: nil},
+			executorLocalGroupMembers: &mocking.MockCommandExecutor{Output: "", Err: nil},
+			executorYesWord:           &mocking.MockCommandExecutor{Output: "", Err: nil},
+			executorNetUser:           &mocking.MockCommandExecutor{Output: "", Err: nil},
+			want:                      checks.NewCheckResult(checks.GuestAccountID, 0, "Guest localgroup not found"),
 		},
 		{
 			name:               "netLocalGroupError",
-			executorLocalGroup: &commandmock.MockCommandExecutor{Output: "             S-1-5-32-546", Err: nil},
-			executorLocalGroupMembers: &commandmock.MockCommandExecutor{Output: "",
+			executorLocalGroup: &mocking.MockCommandExecutor{Output: "             S-1-5-32-546", Err: nil},
+			executorLocalGroupMembers: &mocking.MockCommandExecutor{Output: "",
 				Err: errors.New("net localgroup error")},
-			executorYesWord: &commandmock.MockCommandExecutor{Output: "", Err: nil},
-			executorNetUser: &commandmock.MockCommandExecutor{Output: "", Err: nil},
-			want: checks.NewCheckErrorf("Guest account",
+			executorYesWord: &mocking.MockCommandExecutor{Output: "", Err: nil},
+			executorNetUser: &mocking.MockCommandExecutor{Output: "", Err: nil},
+			want: checks.NewCheckErrorf(checks.GuestAccountID,
 				"error executing command net localgroup", errors.New("net localgroup error")),
 		},
 		{
 			name:               "guestAccountNotFound",
-			executorLocalGroup: &commandmock.MockCommandExecutor{Output: "             S-1-5-32-546", Err: nil},
-			executorLocalGroupMembers: &commandmock.MockCommandExecutor{Output: "The command completed successfully.",
+			executorLocalGroup: &mocking.MockCommandExecutor{Output: "             S-1-5-32-546", Err: nil},
+			executorLocalGroupMembers: &mocking.MockCommandExecutor{Output: "The command completed successfully.",
 				Err: nil},
-			executorYesWord: &commandmock.MockCommandExecutor{Output: "", Err: nil},
-			executorNetUser: &commandmock.MockCommandExecutor{Output: "", Err: nil},
-			want:            checks.NewCheckResult("Guest account", "Guest account not found"),
+			executorYesWord: &mocking.MockCommandExecutor{Output: "", Err: nil},
+			executorNetUser: &mocking.MockCommandExecutor{Output: "", Err: nil},
+			want:            checks.NewCheckResult(checks.GuestAccountID, 0, "Guest account not found"),
 		},
 		{
 			name:                      "YesWordError",
-			executorLocalGroup:        &commandmock.MockCommandExecutor{Output: "             S-1-5-32-546", Err: nil},
-			executorLocalGroupMembers: &commandmock.MockCommandExecutor{Output: "-----\r\nguest", Err: nil},
-			executorYesWord: &commandmock.MockCommandExecutor{Output: "",
+			executorLocalGroup:        &mocking.MockCommandExecutor{Output: "             S-1-5-32-546", Err: nil},
+			executorLocalGroupMembers: &mocking.MockCommandExecutor{Output: "-----\r\nguest", Err: nil},
+			executorYesWord: &mocking.MockCommandExecutor{Output: "",
 				Err: errors.New("net user yesWord error")},
-			executorNetUser: &commandmock.MockCommandExecutor{Output: "", Err: nil},
-			want: checks.NewCheckErrorf("Guest account",
+			executorNetUser: &mocking.MockCommandExecutor{Output: "", Err: nil},
+			want: checks.NewCheckErrorf(checks.GuestAccountID,
 				"error executing command net user", errors.New("net user yesWord error")),
 		},
 		{
 			name:                      "netUserError",
-			executorLocalGroup:        &commandmock.MockCommandExecutor{Output: "             S-1-5-32-546", Err: nil},
-			executorLocalGroupMembers: &commandmock.MockCommandExecutor{Output: "-----\r\nguest", Err: nil},
-			executorYesWord:           &commandmock.MockCommandExecutor{Output: "\r\n\r\n\r\n\r\n\r\nno yes", Err: nil},
-			executorNetUser: &commandmock.MockCommandExecutor{Output: "",
+			executorLocalGroup:        &mocking.MockCommandExecutor{Output: "             S-1-5-32-546", Err: nil},
+			executorLocalGroupMembers: &mocking.MockCommandExecutor{Output: "-----\r\nguest", Err: nil},
+			executorYesWord:           &mocking.MockCommandExecutor{Output: "\r\n\r\n\r\n\r\n\r\nno yes", Err: nil},
+			executorNetUser: &mocking.MockCommandExecutor{Output: "",
 				Err: errors.New("net user error")},
-			want: checks.NewCheckErrorf("Guest account",
+			want: checks.NewCheckErrorf(checks.GuestAccountID,
 				"error executing command net user", errors.New("net user error")),
 		},
 		{
 			name:                      "guestAccountFoundAndActive",
-			executorLocalGroup:        &commandmock.MockCommandExecutor{Output: "             S-1-5-32-546", Err: nil},
-			executorLocalGroupMembers: &commandmock.MockCommandExecutor{Output: "-----\r\nguest", Err: nil},
-			executorYesWord:           &commandmock.MockCommandExecutor{Output: "\r\n\r\n\r\n\r\n\r\nno yes", Err: nil},
-			executorNetUser:           &commandmock.MockCommandExecutor{Output: "\r\n\r\n\r\n\r\n\r\nyes", Err: nil},
-			want:                      checks.NewCheckResult("Guest account", "Guest account is active"),
+			executorLocalGroup:        &mocking.MockCommandExecutor{Output: "             S-1-5-32-546", Err: nil},
+			executorLocalGroupMembers: &mocking.MockCommandExecutor{Output: "-----\r\nguest", Err: nil},
+			executorYesWord:           &mocking.MockCommandExecutor{Output: "\r\n\r\n\r\n\r\n\r\nno yes", Err: nil},
+			executorNetUser:           &mocking.MockCommandExecutor{Output: "\r\n\r\n\r\n\r\n\r\nyes", Err: nil},
+			want:                      checks.NewCheckResult(checks.GuestAccountID, 1, "Guest account is active"),
 		},
 		{
 			name:                      "guestAccountFoundAndInactive",
-			executorLocalGroup:        &commandmock.MockCommandExecutor{Output: "             S-1-5-32-546", Err: nil},
-			executorLocalGroupMembers: &commandmock.MockCommandExecutor{Output: "-----\r\nguest", Err: nil},
-			executorYesWord:           &commandmock.MockCommandExecutor{Output: "\r\n\r\n\r\n\r\n\r\nno yes", Err: nil},
-			executorNetUser:           &commandmock.MockCommandExecutor{Output: "\r\n\r\n\r\n\r\n\r\nno", Err: nil},
-			want:                      checks.NewCheckResult("Guest account", "Guest account is not active"),
+			executorLocalGroup:        &mocking.MockCommandExecutor{Output: "             S-1-5-32-546", Err: nil},
+			executorLocalGroupMembers: &mocking.MockCommandExecutor{Output: "-----\r\nguest", Err: nil},
+			executorYesWord:           &mocking.MockCommandExecutor{Output: "\r\n\r\n\r\n\r\n\r\nno yes", Err: nil},
+			executorNetUser:           &mocking.MockCommandExecutor{Output: "\r\n\r\n\r\n\r\n\r\nno", Err: nil},
+			want:                      checks.NewCheckResult(checks.GuestAccountID, 2, "Guest account is not active"),
 		},
 	}
 	for _, tt := range tests {

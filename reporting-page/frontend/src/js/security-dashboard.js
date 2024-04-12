@@ -1,13 +1,14 @@
 import {Graph} from './graph.js';
 import {PieChart} from './piechart.js';
 import {getLocalization} from './localize.js';
-import {ScanNow as scanNowGo} from '../../wailsjs/go/main/Tray';
-import {closeNavigation} from './navigation-menu.js';
-import {markSelectedNavigationItem} from './navigation-menu.js';
-import {retrieveTheme} from './personalize';
+import {LogError as logError} from '../../wailsjs/go/main/Tray.js';
+import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
+import {retrieveTheme} from './personalize.js';
+import {scanTest} from './database.js';
 
 /** Load the content of the Security Dashboard page */
 function openSecurityDashboardPage() {
+  document.onload = retrieveTheme();
   closeNavigation();
   markSelectedNavigationItem('security-dashboard-button');
 
@@ -61,7 +62,7 @@ function openSecurityDashboardPage() {
           <div class="graph-buttons dropdown">
             <p class="bar-graph-description">
               In this graph you are able to see the distribution of different issues 
-              we have found over the past 5 times we ran a check.
+              we have found over the past times we ran a check.
             </p>
             <button id="dropbtn" class="dropbtn"><span class="select-risks">Select Risks</span></button>
             <div class="dropdown-selector" id="myDropdown">
@@ -80,7 +81,7 @@ function openSecurityDashboardPage() {
             </div>
             <a class="interval-button">
               <p class="change-interval">Change interval</p>
-              <input type="number" value="5" id="graph-interval" min="1">
+              <input type="number" value="1" id="graph-interval" min="1">
             </a>
           </div>
           <div class="graph-column issues-graph">
@@ -143,11 +144,9 @@ function openSecurityDashboardPage() {
   </div>
   `;
   // Set counters on the page to the right values
-  const rc = JSON.parse(sessionStorage.getItem('RiskCounters'));
-  console.log(rc);
-  adjustWithRiskCounters(rc);
-  setMaxInterval(rc);
-  // Create charts
+  let rc = JSON.parse(sessionStorage.getItem('RiskCounters'));
+  adjustWithRiskCounters(rc, document);
+  setMaxInterval(rc, document);
 
   // Localize the static content of the dashboard
   const staticDashboardContent = [
@@ -195,47 +194,72 @@ function openSecurityDashboardPage() {
   for (let i = 0; i < staticDashboardContent.length; i++) {
     getLocalization(localizationIds[i], staticDashboardContent[i]);
   }
+
+  // Create charts
   new PieChart('pieChart', rc);
   const g = new Graph('interval-graph', rc);
   addGraphFunctions(g);
-  document.getElementsByClassName('scan-now')[0].addEventListener('click', () => scanNowGo());
-  document.onload = retrieveTheme();
+  document.getElementsByClassName('scan-now')[0].addEventListener('click', async () => {
+    await scanTest();
+    rc = JSON.parse(sessionStorage.getItem('RiskCounters'));
+    adjustWithRiskCounters(rc, document);
+    setMaxInterval(rc, document);
+    g.rc = rc;
+    g.changeGraph();
+  });
 }
 
 if (typeof document !== 'undefined') {
-  document.getElementById('security-dashboard-button').addEventListener('click', () => openSecurityDashboardPage());
+  try {
+    document.getElementById('security-dashboard-button').addEventListener('click', () => openSecurityDashboardPage());
+  } catch (error) {
+    logError('Error in security-dashboard.js: ' + error);
+  }
 }
 
 /** Changes the risk counters to show the correct values
  *
  * @param {RiskCounters} rc Risk counters from which the data is taken
+ * @param {Document} doc Document in which the counters are located
  */
-export function adjustWithRiskCounters(rc) {
+export function adjustWithRiskCounters(rc, doc) {
   // change counters according to collected data
-  document.getElementById('high-risk-counter').innerHTML = rc.lastHighRisk;
-  document.getElementById('medium-risk-counter').innerHTML = rc.lastMediumRisk;
-  document.getElementById('low-risk-counter').innerHTML = rc.lastLowRisk;
-  document.getElementById('no-risk-counter').innerHTML = rc.lastnoRisk;
+  doc.getElementById('high-risk-counter').innerHTML = rc.lastHighRisk;
+  doc.getElementById('medium-risk-counter').innerHTML = rc.lastMediumRisk;
+  doc.getElementById('low-risk-counter').innerHTML = rc.lastLowRisk;
+  doc.getElementById('no-risk-counter').innerHTML = rc.lastnoRisk;
 
-  const securityStatus = document.getElementsByClassName('status-descriptor')[0];
+  const securityStatus = doc.getElementsByClassName('status-descriptor')[0];
   if (rc.lastHighRisk > 1) {
-    getLocalization('Dashboard.Critical', 'status-descriptor');
-    // securityStatus.innerHTML = "Critical";
+    try {
+      getLocalization('Dashboard.Critical', 'status-descriptor');
+    } catch (error) {
+      securityStatus.innerHTML = 'Critical';
+    }
     securityStatus.style.backgroundColor = rc.highRiskColor;
     securityStatus.style.color = 'rgb(255, 255, 255)';
   } else if (rc.lastMediumRisk > 1) {
-    getLocalization('Dashboard.MediumConcern', 'status-descriptor');
-    // securityStatus.innerHTML = "Medium concern";
+    try {
+      getLocalization('Dashboard.MediumConcern', 'status-descriptor');
+    } catch (error) {
+      securityStatus.innerHTML = 'Medium concern';
+    }
     securityStatus.style.backgroundColor = rc.mediumRiskColor;
     securityStatus.style.color = 'rgb(255, 255, 255)';
   } else if (rc.lastLowRisk > 1) {
-    getLocalization('Dashboard.LightConcern', 'status-descriptor');
-    // securityStatus.innerHTML = "Light concern";
+    try {
+      getLocalization('Dashboard.LightConcern', 'status-descriptor');
+    } catch (error) {
+      securityStatus.innerHTML = 'Light concern';
+    }
     securityStatus.style.backgroundColor = rc.lowRiskColor;
     securityStatus.style.color = 'rgb(0, 0, 0)';
   } else {
-    getLocalization('Dashboard.NoConcern', 'status-descriptor');
-    // securityStatus.innerHTML = "Safe";
+    try {
+      getLocalization('Dashboard.NoConcern', 'status-descriptor');
+    } catch (error) {
+      securityStatus.innerHTML = 'Safe';
+    }
     securityStatus.style.backgroundColor = rc.noRiskColor;
     securityStatus.style.color = 'rgb(0, 0, 0)';
   }
@@ -244,9 +268,10 @@ export function adjustWithRiskCounters(rc) {
 /** Set the max number input of the 'graph-interval' element
  *
  * @param {RiskCounters} rc Risk counters from which the max count is taken
+ * @param {Document} doc Document in which the counters are located
  */
-export function setMaxInterval(rc) {
-  document.getElementById('graph-interval').max = rc.count;
+export function setMaxInterval(rc, doc) {
+  doc.getElementById('graph-interval').max = rc.count;
 }
 
 /** Adds eventlisteners to elements in graph-row section of the dashboard page

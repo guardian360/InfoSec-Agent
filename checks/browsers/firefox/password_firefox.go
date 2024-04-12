@@ -2,9 +2,10 @@ package firefox
 
 import (
 	"encoding/json"
-	"log"
 	"os"
 	"strconv"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
@@ -27,12 +28,12 @@ func PasswordFirefox() checks.Check {
 	// Open the logins.json file, which contains a list of all saved Firefox passwords
 	content, err := os.Open(ffdirectory[0] + "\\logins.json")
 	if err != nil {
-		return checks.NewCheckError("PasswordFirefox", err)
+		return checks.NewCheckError(99, err)
 	}
 	defer func(content *os.File) {
 		err = content.Close()
 		if err != nil {
-			log.Println("error closing file: ", err)
+			logger.Log.ErrorWithErr("Error closing file: ", err)
 		}
 	}(content)
 
@@ -41,7 +42,7 @@ func PasswordFirefox() checks.Check {
 	decoder := json.NewDecoder(content)
 	err = decoder.Decode(&extensions)
 	if err != nil {
-		return checks.NewCheckError("PasswordFirefox", err)
+		return checks.NewCheckError(99, err)
 	}
 
 	// TODO: Final functionality currently not implemented yet, should return an analysis on the used passwords
@@ -50,5 +51,5 @@ func PasswordFirefox() checks.Check {
 		output = append(output,
 			addon.DefaultLocale.Name+addon.Type+addon.DefaultLocale.Creator+strconv.FormatBool(addon.Active))
 	}
-	return checks.NewCheckResult("PasswordFirefox", output...)
+	return checks.NewCheckResult(99, 0, output...)
 }

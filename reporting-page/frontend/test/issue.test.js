@@ -1,69 +1,67 @@
+import 'jsdom-global/register.js';
 import test from 'unit.js';
 import {JSDOM} from 'jsdom';
 import {updateSolutionStep} from '../src/js/issue.js';
 import {nextSolutionStep} from '../src/js/issue.js';
 import {previousSolutionStep} from '../src/js/issue.js';
 
-// Mock issue page
-const issuesDOM = new JSDOM(`
-<!DOCTYPE html>
-<html>
-<body>
-    <div id="page-contents"></div>
-</body>
-</html>
-`);
-global.document = issuesDOM.window.document;
-global.window = issuesDOM.window;
+global.TESTING = true;
 
-let stepCounter = 0;
-const solution = ['Step 1', 'Step 2', 'Step 3'];
-const screenshots = ['screenshot1.jpg', 'screenshot2.jpg', 'screenshot3.jpg'];
-const solutionStep = document.createElement('p');
-const screenshot = document.createElement('img');
-solutionStep.id = 'solution-text';
-screenshot.id = 'step-screenshot';
-document.body.appendChild(solutionStep);
-document.body.appendChild(screenshot);
+describe('Issue page', function() {
+  // Mock issue page
+  const issuesDOM = new JSDOM(`
+  <!DOCTYPE html>
+  <html>
+  <body>
+      <div id="page-contents"></div>
+  </body>
+  </html>
+  `);
+  global.document = issuesDOM.window.document;
+  global.window = issuesDOM.window;
 
-// unit test for updateSolutionStep
-describe('updateSolutionStep', function() {
-  it('should update the solution step', function() {
+  let stepCounter = 0;
+  const solution = ['Step 1', 'Step 2', 'Step 3'];
+  const screenshots = ['screenshot1.jpg', 'screenshot2.jpg', 'screenshot3.jpg'];
+  const solutionStep = document.createElement('p');
+  const screenshot = document.createElement('img');
+  solutionStep.id = 'solution-text';
+  screenshot.id = 'step-screenshot';
+  document.body.appendChild(solutionStep);
+  solutionStep.innerHTML = 'Step 1';
+  document.body.appendChild(screenshot);
+  screenshot.src = 'screenshot1.jpg';
+
+  it('updateSolutionStep should update the solution step', function() {
     // Arrange
     stepCounter = 0;
 
     // Act
-    updateSolutionStep(solution, screenshots, stepCounter);
+    updateSolutionStep(solutionStep, screenshot, solution, screenshots, stepCounter);
 
     // Assert
     test.value(solutionStep.innerHTML).isEqualTo('Step 1');
     test.value(screenshot.src).isEqualTo('screenshot1.jpg');
   });
-});
 
-// unit test for nextSolutionStep
-describe('nextSolutionStep', function() {
-  it('should go to the next step', function() {
+  it('nextSolutionStep should update the current step and screenshot', function() {
     // Arrange
     stepCounter = 0;
 
     // Act
-    nextSolutionStep(solution, screenshots);
+    nextSolutionStep(solutionStep, screenshot, solution, screenshots);
 
     // Assert
     test.value(solutionStep.innerHTML).isEqualTo('Step 2');
     test.value(screenshot.src).isEqualTo('screenshot2.jpg');
   });
-});
 
-// unit test for previousSolutionStep
-describe('previousSolutionStep', function() {
-  it('should go to the previous step', function() {
+  it('previousSolutionStep should update the current step and screenshot', function() {
     // Arrange
     stepCounter = 1;
 
     // Act
-    previousSolutionStep(solution, screenshots);
+    previousSolutionStep(solutionStep, screenshot, solution, screenshots);
 
     // Assert
     test.value(solutionStep.innerHTML).isEqualTo('Step 1');

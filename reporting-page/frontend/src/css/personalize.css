@@ -34,6 +34,30 @@
   display:none;
 }
 
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.modal-content {
+  background-color: var(--background-color);
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+}
+
+#new-title-input {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
 /* Theme selector */
 .color-picker > fieldset{
   border: 0;
@@ -67,10 +91,6 @@
   --radio-color: black;
 }
 
-.color-picker input[type="radio"]#blue{
-  --radio-color: blue;
-}
-
 .normal,
 :root:has(#normal:checked){
   --background-color: #fff;
@@ -85,14 +105,6 @@
   --text-settings-hover: #646464; 
   --text-left-nav: #d4d4d4; 
 
-}
-
-.blue,
-:root:has(#blue:checked){
-  --background-color: blue;
-  --background-color-top-nav: orange;
-  --background-color-left-nav: green; 
-  --nav-hover: darkgreen;                
 }
 
 .dark,

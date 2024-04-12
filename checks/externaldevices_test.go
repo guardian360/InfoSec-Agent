@@ -2,13 +2,14 @@ package checks_test
 
 import (
 	"errors"
-	"github.com/stretchr/testify/require"
 	"reflect"
 	"strings"
 	"testing"
 
+	"github.com/stretchr/testify/require"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
-	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
+	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 )
 
 // TestExternalDevices is a test function that validates the behavior of the ExternalDevices function.
@@ -23,24 +24,24 @@ import (
 func TestExternalDevices(t *testing.T) {
 	tests := []struct {
 		name          string
-		executorClass *commandmock.MockCommandExecutor
+		executorClass *mocking.MockCommandExecutor
 		want          checks.Check
 	}{
 		{
 			name:          "No external devices connected",
-			executorClass: &commandmock.MockCommandExecutor{Output: "\r\nFriendlyName\r\n-\r\n\r\n\r\n\r\n", Err: nil},
-			want:          checks.NewCheckResult("externaldevices", "", ""),
+			executorClass: &mocking.MockCommandExecutor{Output: "\r\nFriendlyName\r\n-\r\n\r\n\r\n\r\n", Err: nil},
+			want:          checks.NewCheckResult(checks.ExternalDevicesID, 0, "", ""),
 		},
 		{
 			name: "External devices connected",
-			executorClass: &commandmock.MockCommandExecutor{
+			executorClass: &mocking.MockCommandExecutor{
 				Output: "\r\nFriendlyName\r\n-\r\nHD WebCam\r\n\r\n\r\n\r\n", Err: nil},
-			want: checks.NewCheckResult("externaldevices", "HD WebCam", "", "HD WebCam", ""),
+			want: checks.NewCheckResult(checks.ExternalDevicesID, 0, "HD WebCam", "", "HD WebCam", ""),
 		},
 		{
 			name:          "Error checking device",
-			executorClass: &commandmock.MockCommandExecutor{Output: "", Err: errors.New("error checking device")},
-			want: checks.NewCheckErrorf("externaldevices", "error checking device Mouse",
+			executorClass: &mocking.MockCommandExecutor{Output: "", Err: errors.New("error checking device")},
+			want: checks.NewCheckErrorf(checks.ExternalDevicesID, "error checking device Mouse",
 				errors.New("error checking device")),
 		},
 	}
@@ -65,21 +66,21 @@ func TestCheckDeviceClass(t *testing.T) {
 	tests := []struct {
 		name          string
 		deviceClass   string
-		executorClass *commandmock.MockCommandExecutor
+		executorClass *mocking.MockCommandExecutor
 		want          []string
 		wantErr       error
 	}{
 		{
 			name:          "No devices of the specified class",
 			deviceClass:   "Mouse",
-			executorClass: &commandmock.MockCommandExecutor{Output: "\r\nFriendlyName\r\n-\r\n\r\n\r\n\r\n", Err: nil},
+			executorClass: &mocking.MockCommandExecutor{Output: "\r\nFriendlyName\r\n-\r\n\r\n\r\n\r\n", Err: nil},
 			want:          []string{""},
 			wantErr:       nil,
 		},
 		{
 			name:        "Devices of the specified class",
 			deviceClass: "Camera",
-			executorClass: &commandmock.MockCommandExecutor{
+			executorClass: &mocking.MockCommandExecutor{
 				Output: "\r\nFriendlyName\r\n-\r\nHD WebCam\r\n\r\n\r\n\r\n", Err: nil},
 			want:    []string{"HD WebCam", ""},
 			wantErr: nil,
@@ -87,7 +88,7 @@ func TestCheckDeviceClass(t *testing.T) {
 		{
 			name:          "Error checking device",
 			deviceClass:   "Camera",
-			executorClass: &commandmock.MockCommandExecutor{Output: "", Err: errors.New("error checking device")},
+			executorClass: &mocking.MockCommandExecutor{Output: "", Err: errors.New("error checking device")},
 			want:          nil,
 			wantErr:       errors.New("error checking device"),
 		},
@@ -125,7 +126,7 @@ func TestCommandOutput(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			executor := &commandmock.RealCommandExecutor{}
+			executor := &mocking.RealCommandExecutor{}
 			output, _ := executor.Execute(tt.command, tt.arguments)
 			outputList := strings.Split(string(output), "\r\n")
 			if res := strings.ReplaceAll(outputList[1], " ", ""); res != tt.expected {

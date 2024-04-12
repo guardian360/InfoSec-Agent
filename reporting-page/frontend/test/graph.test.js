@@ -1,7 +1,10 @@
+import 'jsdom-global/register.js';
 import test from 'unit.js';
 import {JSDOM} from 'jsdom';
 import {Graph} from '../src/js/graph.js';
 import {RiskCounters} from '../src/js/risk-counters.js';
+
+global.TESTING = true;
 
 // Mock page
 const dom = new JSDOM(`
@@ -39,11 +42,11 @@ global.document = dom.window.document;
 global.window = dom.window;
 
 // test cases
-describe('risk-graph', function() {
+describe('Risk graph', function() {
   // arrange
   const rc = new RiskCounters(true);
   let g = new Graph(undefined, rc);
-  it('Should have togglable risks', function() {
+  it('toggleRisks should change which risk levels are shown in the risk graph', function() {
     // act
     g.toggleRisks('high', false);
     g.toggleRisks('medium', false);
@@ -68,7 +71,7 @@ describe('risk-graph', function() {
     test.value(g.graphShowLowRisks).isEqualTo(true);
     test.value(g.graphShowNoRisks).isEqualTo(true);
   });
-  it('Should have a togglable dropdown button', function() {
+  it('graphDropdown should show and hide a togglable dropdown button', function() {
     // act
     g.graphDropdown();
 
@@ -81,7 +84,7 @@ describe('risk-graph', function() {
     // assert
     test.value(document.getElementById('myDropdown').classList.contains('show')).isEqualTo(false);
   });
-  it('Should contain the right data', function() {
+  it('getData should fill the graph with the correct data', function() {
     // arrange
     const expectedData = {
       'labels': [1, 2, 3, 4, 5],
@@ -125,7 +128,7 @@ describe('risk-graph', function() {
     test.array(resultData.labels).is(expectedData.labels);
     test.array(resultData.datasets).is(expectedData.datasets);
   });
-  it('Should use the right options', function() {
+  it('getOptions should return the correct graph options', function() {
     // arrange
     const expectedOptions = {
       scales: {
