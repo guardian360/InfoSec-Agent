@@ -29,10 +29,9 @@ func TestMain(m *testing.M) {
 //
 // Returns: _
 func TestCopyFileSuccess(t *testing.T) {
-	src, dst := "", ""
 	mockSource := &filemock.FileMock{IsOpen: true, Bytes: 10, Err: nil}
 	mockDestination := &filemock.FileMock{IsOpen: true, Bytes: 10, Err: nil}
-	err := utils.CopyFile(src, dst, mockSource, mockDestination)
+	err := utils.CopyFile("", "", mockSource, mockDestination)
 	require.NoError(t, err)
 }
 
@@ -42,10 +41,9 @@ func TestCopyFileSuccess(t *testing.T) {
 //
 // Returns: _
 func TestCopyFileFailNonexistentSource(t *testing.T) {
-	src, dst := "", ""
 	mockSource := &filemock.FileMock{IsOpen: true, Bytes: 10, Err: os.ErrNotExist}
 	mockDestination := &filemock.FileMock{IsOpen: true, Bytes: 10, Err: nil}
-	err := utils.CopyFile(src, dst, mockSource, mockDestination)
+	err := utils.CopyFile("", "", mockSource, mockDestination)
 	require.Error(t, err)
 }
 
@@ -55,12 +53,9 @@ func TestCopyFileFailNonexistentSource(t *testing.T) {
 //
 // Returns: _
 func TestCopyFileFailNonexistentDestination(t *testing.T) {
-	src, dst := "", ""
 	mockSource := &filemock.FileMock{IsOpen: true, Bytes: 10, Err: nil}
 	mockDestination := &filemock.FileMock{IsOpen: true, Bytes: 10, Err: os.ErrNotExist}
-	err := utils.CopyFile(src, dst, mockSource, mockDestination)
-	require.Error(t, err)
-	_, err = os.Stat("nonexistent")
+	err := utils.CopyFile("", "", mockSource, mockDestination)
 	require.Error(t, err)
 }
 
