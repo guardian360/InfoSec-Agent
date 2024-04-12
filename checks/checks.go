@@ -30,6 +30,7 @@ type Check struct {
 }
 
 // TODO: Fix this one
+
 // NewCheckResult is a constructor function that creates and returns a new instance of the Check struct.
 // It sets the ID and Result fields of the Check struct, leaving the Error and ErrorMSG fields as their zero values.
 //
@@ -45,25 +46,36 @@ func NewCheckResult(issID int, resID int, result ...string) Check {
 	return Check{IssueID: issID, ResultID: resID, Result: result}
 }
 
-// TODO: Fix this one
 // NewCheckError is a constructor function that creates and returns a new instance of the Check struct.
-// It sets the ID, Error, and ErrorMSG fields of the Check struct, leaving the Result field as its zero value.
+// It sets the IssueID, Error, and ErrorMSG fields of the Check struct, leaving the Result and ResultID fields as their zero values.
 //
 // Parameters:
-//   - id (string): A unique identifier for the check. This value is assigned to the ID field of the Check struct.
+//   - id (int): A unique identifier for the check. This value is assigned to the IssueID field of the Check struct.
 //   - err (error): An error object that captures any error that occurred during the check. This value is assigned to the Error field of the Check struct, and its string representation is assigned to the ErrorMSG field.
 //
 // Returns:
-//   - Check: A new instance of the Check struct with the ID, Error, and ErrorMSG fields set to the provided values, and the Result field set to its zero value.
+//   - Check: A new instance of the Check struct with the IssueID, Error, and ErrorMSG fields set to the provided values, and the Result and ResultID fields set to their zero values.
 //
-// This function is primarily used when a security or privacy check encounters an error and needs to return a Check instance that encapsulates this error.
+// This function is primarily used when a security or privacy check encounters an error and needs to return a Check instance that encapsulates this error. The encapsulated error can then be logged, displayed to the user, or used for further processing.
 func NewCheckError(id int, err error) Check {
 	return Check{IssueID: id, Error: err, ErrorMSG: err.Error()}
 }
 
-// TODO: Fix this one
-// NewCheckErrorf creates a new Check struct with the error and formatted error message
+// NewCheckErrorf is a constructor function that creates and returns a new instance of the Check struct.
+// It sets the ID, Error, and ErrorMSG fields of the Check struct, leaving the Result field as its zero value.
+//
+// Parameters:
+//   - id (int): A unique identifier for the check. This value is assigned to the IssueID field of the Check struct.
+//   - message (string): A string that describes the error. This is used to format the error message.
+//   - err (error): An error object that captures any error that occurred during the check. This value is assigned to the Error field of the Check struct, and its string representation, along with the provided message, is assigned to the ErrorMSG field.
+//
+// The function works by first creating a new error object that wraps the provided error with the formatted message. It then creates a new Check instance, sets the IssueID field to the provided id, the Error field to the newly created error object, and the ErrorMSG field to the string representation of the new error object.
+//
+// Returns:
+//   - Check: A new instance of the Check struct with the IssueID, Error, and ErrorMSG fields set to the provided values, and the Result field set to its zero value.
+//
+// This function is primarily used when a security or privacy check encounters an error and needs to return a Check instance that encapsulates this error along with a formatted error message.
 func NewCheckErrorf(id int, message string, err error) Check {
 	formatErr := fmt.Errorf(message+": %w", err)
-	return Check{ID: id, Error: formatErr, ErrorMSG: formatErr.Error()}
+	return Check{IssueID: id, Error: formatErr, ErrorMSG: formatErr.Error()}
 }
