@@ -394,7 +394,7 @@
     "Information": "Windows Defender continuously monitors your system for any suspicious activity, including malware, viruses, and other forms of malicious software. By having it enabled, you have an active defense against potential threats that could compromise your privacy or security. It also receives regular updates from Microsoft to stay up-to-date with the latest security threats and vulnerabilities. By keeping it enabled, you ensure that your computer is protected against newly emerging threats that could exploit known security weaknesses.",
     "Solution": 
     [
-        "The windows defender status is unkown, to check the status and potentially solve the issue of the windows defender, follow these steps",
+        "The windows defender status is unknown, to check the status and potentially solve the issue of the windows defender, follow these steps",
         "Open the Windows Security app.", 
         "Select Virus & threat protection.", 
         "Under Virus & threat protection settings, select Manage settings.", 
@@ -531,7 +531,7 @@
     "Information": "Secure Boot ensures that only trusted software components, signed with recognized digital signatures, are loaded during the boot process. This prevents malware and other unauthorized software from tampering with the boot process and gaining control of the system at an early stage.",
     "Solution": 
     [   
-        "The status of the secure boot setting is unkown, to check the status and potentially solve the issue of the secure boot, follow these steps",
+        "The status of the secure boot setting is unknown, to check the status and potentially solve the issue of the secure boot, follow these steps",
         "Restart your computer and access the BIOS/UEFI settings. This is usually done by pressing a specific key during the boot process. Common keys to access BIOS/UEFI settings include F2, Del, Esc, or F10. The specific key varies depending on your computer's manufacturer.", 
         "Once you are in the BIOS/UEFI settings, navigate to the section related to Secure Boot. This section may be named differently depending on your system manufacturer and BIOS/UEFI version.",
         "In the Secure Boot section, you should find an option to enable Secure Boot. Select this option and set it to \"Enabled.\" Some systems may require you to set a Secure Boot Mode or choose the Secure Boot Key Management option. Follow the on-screen instructions to enable Secure Boot.",
@@ -663,7 +663,7 @@
     "Type": "Security",
     "Information": "User Account Control (UAC) is a security feature introduced in Windows Vista and present in subsequent versions of the Windows operating system. Its primary purpose is to enhance the security of the operating system by limiting the privileges of applications and processes running with standard user rights and requiring administrator approval for tasks that require elevated permissions.",
     "Solution": 
-    [   "The status of the user account control settings are unkown, to check the status and potentially solve the issue of the user account control, follow these steps",
+    [   "The status of the user account control settings are unknown, to check the status and potentially solve the issue of the user account control, follow these steps",
         "On your keyboard, press 'Windows+R' to open the Run window.", 
         "Type ‘Control Panel’. Then select ‘OK’.",
         "Select 'User Accounts' or 'User Accounts and Family Safety'.",
