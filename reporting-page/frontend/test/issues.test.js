@@ -4,6 +4,8 @@ import {fillTable} from '../src/js/issues.js';
 import {sortTable} from '../src/js/issues.js';
 import {JSDOM} from 'jsdom';
 
+global.TESTING = true
+
 // Mock page
 const dom = new JSDOM(`
 <!DOCTYPE html>

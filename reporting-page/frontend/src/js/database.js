@@ -1,4 +1,10 @@
-import {LogError as logError, ScanNow as scanNowGo} from '../../wailsjs/go/main/Tray.js';
+let logError;
+if (!global.TESTING) {
+    import('../../wailsjs/go/main/Tray.js').then((module) => {
+        logError = module.LogError
+    });
+}
+import {ScanNow as scanNowGo} from '../../wailsjs/go/main/Tray.js';
 import {GetDataBaseData as getDataBaseData} from '../../wailsjs/go/main/DataBase.js';
 import {openHomePage} from './home.js';
 import * as runTime from '../../wailsjs/runtime/runtime.js';

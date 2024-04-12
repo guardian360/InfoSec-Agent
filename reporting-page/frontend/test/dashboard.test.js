@@ -3,6 +3,8 @@ import test from 'unit.js';
 import {JSDOM} from 'jsdom';
 import {adjustWithRiskCounters, setMaxInterval} from '../src/js/security-dashboard.js';
 
+global.TESTING = true
+
 // Mock page
 const dom = new JSDOM(`
 <div class="dashboard-data">
