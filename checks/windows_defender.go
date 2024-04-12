@@ -1,7 +1,7 @@
 package checks
 
 import (
-	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
+	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 )
 
 // WindowsDefender checks if the Windows Defender is enabled and if the periodic scan is enabled
@@ -9,23 +9,23 @@ import (
 // Parameters: _
 //
 // Returns: If Windows Defender and periodic scan are enabled/disabled
-func WindowsDefender(scanKey registrymock.RegistryKey, defenderKey registrymock.RegistryKey) Check {
+func WindowsDefender(scanKey mocking.RegistryKey, defenderKey mocking.RegistryKey) Check {
 	// Open the Windows Defender registry key
-	windowsDefenderKey, err := registrymock.OpenRegistryKey(scanKey, `SOFTWARE\Microsoft\Windows Defender`)
+	windowsDefenderKey, err := mocking.OpenRegistryKey(scanKey, `SOFTWARE\Microsoft\Windows Defender`)
 	if err != nil {
 		return NewCheckErrorf(WindowsDefenderID, "error opening registry key", err)
 	}
 	// Close the key after we have received all relevant information
-	defer registrymock.CloseRegistryKey(windowsDefenderKey)
+	defer mocking.CloseRegistryKey(windowsDefenderKey)
 
 	// Open the Windows Defender real-time protection registry key, representing the periodic scan
-	realTimeKey, err := registrymock.OpenRegistryKey(defenderKey,
+	realTimeKey, err := mocking.OpenRegistryKey(defenderKey,
 		`SOFTWARE\Microsoft\Windows Defender\Real-Time Protection`)
 	if err != nil {
 		return NewCheckErrorf(WindowsDefenderID, "error opening registry key", err)
 	}
 	// Close the key after we have received all relevant information
-	defer registrymock.CloseRegistryKey(realTimeKey)
+	defer mocking.CloseRegistryKey(realTimeKey)
 
 	// Read the value of the registry keys
 	antiVirusPeriodic, _, err := windowsDefenderKey.GetIntegerValue("DisableAntiVirus")

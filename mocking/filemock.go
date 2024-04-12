@@ -1,4 +1,4 @@
-package filemock
+package mocking
 
 import (
 	"io"

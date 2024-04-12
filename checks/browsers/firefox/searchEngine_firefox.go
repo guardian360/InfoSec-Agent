@@ -8,7 +8,7 @@ import (
 	"path/filepath"
 	"regexp"
 
-	"github.com/InfoSec-Agent/InfoSec-Agent/filemock"
+	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
@@ -57,7 +57,7 @@ func SearchEngineFirefox() checks.Check {
 		return checks.NewCheckErrorf(checks.SearchFirefoxID, "Unable to open the file", err)
 	}
 	defer func(file *os.File) {
-		tmpFile := filemock.Wrap(file)
+		tmpFile := mocking.Wrap(file)
 		err = utils.CloseFile(tmpFile)
 		if err != nil {
 			log.Println("Error closing file")

@@ -1,11 +1,11 @@
-package registrymock_test
+package mocking_test
 
 import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 	"os"
 	"testing"
 
-	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
+	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 	"github.com/stretchr/testify/require"
 	"golang.org/x/sys/windows/registry"
 )
@@ -29,9 +29,9 @@ func TestMain(m *testing.M) {
 //
 // Returns: _
 func TestOpenRegistryKeyValidInput(t *testing.T) {
-	key, err := registrymock.OpenRegistryKey(registrymock.LocalMachine,
+	key, err := mocking.OpenRegistryKey(mocking.LocalMachine,
 		"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run")
-	defer registrymock.CloseRegistryKey(key)
+	defer mocking.CloseRegistryKey(key)
 	require.NoError(t, err)
 	require.NotNil(t, key)
 }
@@ -42,11 +42,11 @@ func TestOpenRegistryKeyValidInput(t *testing.T) {
 //
 // Returns: _
 func TestOpenRegistryKeyInvalidKey(t *testing.T) {
-	key, err := registrymock.OpenRegistryKey(registrymock.NewRegistryKeyWrapper(registry.Key(0x0)),
+	key, err := mocking.OpenRegistryKey(mocking.NewRegistryKeyWrapper(registry.Key(0x0)),
 		"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run")
-	defer registrymock.CloseRegistryKey(key)
+	defer mocking.CloseRegistryKey(key)
 	require.Error(t, err)
-	require.Equal(t, key, registrymock.NewRegistryKeyWrapper(registry.Key(0x0)))
+	require.Equal(t, key, mocking.NewRegistryKeyWrapper(registry.Key(0x0)))
 }
 
 // TestOpenRegistryKeyInvalidPath tests the OpenRegistryKey function with an invalid path
@@ -55,11 +55,11 @@ func TestOpenRegistryKeyInvalidKey(t *testing.T) {
 //
 // Returns: _
 func TestOpenRegistryKeyInvalidPath(t *testing.T) {
-	key, err := registrymock.OpenRegistryKey(registrymock.LocalMachine,
+	key, err := mocking.OpenRegistryKey(mocking.LocalMachine,
 		"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\nonexistent")
-	defer registrymock.CloseRegistryKey(key)
+	defer mocking.CloseRegistryKey(key)
 	require.Error(t, err)
-	require.Equal(t, key, registrymock.NewRegistryKeyWrapper(registry.Key(0x0)))
+	require.Equal(t, key, mocking.NewRegistryKeyWrapper(registry.Key(0x0)))
 }
 
 // TestCloseRegistryKeyValidInput tests the CloseRegistryKey function with valid input
@@ -68,11 +68,11 @@ func TestOpenRegistryKeyInvalidPath(t *testing.T) {
 //
 // Returns: _
 func TestCloseRegistryKeyValidInput(t *testing.T) {
-	key, err := registrymock.OpenRegistryKey(registrymock.LocalMachine,
+	key, err := mocking.OpenRegistryKey(mocking.LocalMachine,
 		"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run")
 	require.NoError(t, err)
 	require.NotNil(t, key)
-	registrymock.CloseRegistryKey(key)
+	mocking.CloseRegistryKey(key)
 }
 
 // TestCloseRegistryKeyInvalidKey tests the CloseRegistryKey function with an invalid key
@@ -82,8 +82,8 @@ func TestCloseRegistryKeyValidInput(t *testing.T) {
 //
 // Returns: _
 func TestCloseRegistryKeyInvalidKey(_ *testing.T) {
-	key := registrymock.NewRegistryKeyWrapper(registry.Key(0x0))
-	registrymock.CloseRegistryKey(key)
+	key := mocking.NewRegistryKeyWrapper(registry.Key(0x0))
+	mocking.CloseRegistryKey(key)
 }
 
 // TestFindEntriesValidInput tests the FindEntries function with valid input
@@ -92,14 +92,14 @@ func TestCloseRegistryKeyInvalidKey(_ *testing.T) {
 //
 // Returns: _
 func TestFindEntriesValidInput(t *testing.T) {
-	key, err := registrymock.OpenRegistryKey(registrymock.CurrentUser,
+	key, err := mocking.OpenRegistryKey(mocking.CurrentUser,
 		`SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run`)
-	defer registrymock.CloseRegistryKey(key)
+	defer mocking.CloseRegistryKey(key)
 	require.NoError(t, err)
 	require.NotNil(t, key)
 	entries, err := key.ReadValueNames(0)
 	require.NoError(t, err)
-	result := registrymock.FindEntries(entries, key)
+	result := mocking.FindEntries(entries, key)
 	require.NotEmpty(t, result)
 }
 
@@ -111,7 +111,7 @@ func TestFindEntriesValidInput(t *testing.T) {
 func TestFindEntriesInvalidInput(t *testing.T) {
 	key := registry.Key(0x0)
 	var entries []string
-	elements := registrymock.FindEntries(entries, registrymock.NewRegistryKeyWrapper(key))
+	elements := mocking.FindEntries(entries, mocking.NewRegistryKeyWrapper(key))
 	require.Empty(t, elements)
 }
 
@@ -121,13 +121,13 @@ func TestFindEntriesInvalidInput(t *testing.T) {
 //
 // Returns: _
 func TestCheckKeyValidInput(t *testing.T) {
-	key, err := registrymock.OpenRegistryKey(registrymock.LocalMachine,
+	key, err := mocking.OpenRegistryKey(mocking.LocalMachine,
 		`SOFTWARE\Microsoft\Windows NT\CurrentVersion`)
-	defer registrymock.CloseRegistryKey(key)
+	defer mocking.CloseRegistryKey(key)
 	require.NoError(t, err)
 
 	// This test might fail if the element does not exist on the machine where the test is run
-	val := registrymock.CheckKey(key, "ProductName")
+	val := mocking.CheckKey(key, "ProductName")
 	require.NotEqual(t, "-1", val)
 }
 
@@ -138,7 +138,7 @@ func TestCheckKeyValidInput(t *testing.T) {
 // Returns: _
 func TestCheckKeyInvalidKey(t *testing.T) {
 	key := registry.Key(0x0)
-	val := registrymock.CheckKey(registrymock.NewRegistryKeyWrapper(key), "ProductName")
+	val := mocking.CheckKey(mocking.NewRegistryKeyWrapper(key), "ProductName")
 	require.Equal(t, "-1", val)
 }
 
@@ -148,10 +148,10 @@ func TestCheckKeyInvalidKey(t *testing.T) {
 //
 // Returns: _
 func TestCheckKeyInvalidElement(t *testing.T) {
-	key, err := registrymock.OpenRegistryKey(registrymock.LocalMachine,
+	key, err := mocking.OpenRegistryKey(mocking.LocalMachine,
 		`SOFTWARE\Microsoft\Windows NT\CurrentVersion`)
-	defer registrymock.CloseRegistryKey(key)
+	defer mocking.CloseRegistryKey(key)
 	require.NoError(t, err)
-	val := registrymock.CheckKey(key, "Nonexistent")
+	val := mocking.CheckKey(key, "Nonexistent")
 	require.Equal(t, "-1", val)
 }

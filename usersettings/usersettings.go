@@ -1,3 +1,8 @@
+// Package usersettings contains functions for loading and saving user settings
+//
+// Exported function(s): NewUserSettings, LoadUserSettings, SaveUserSettings
+//
+// Exported type(s): UserSettings
 package usersettings
 
 import (

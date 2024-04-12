@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/require"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
-	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
+	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 
 	"github.com/stretchr/testify/assert"
 )
@@ -20,19 +20,19 @@ func TestPermission(t *testing.T) {
 	tests := []struct {
 		name       string
 		permission string
-		key        registrymock.RegistryKey
+		key        mocking.RegistryKey
 		want       checks.Check
 	}{
 		{
 			name:       "NonPackagedWebcamPermissionExists",
 			permission: "webcam",
-			key: &registrymock.MockRegistryKey{
-				SubKeys: []registrymock.MockRegistryKey{
+			key: &mocking.MockRegistryKey{
+				SubKeys: []mocking.MockRegistryKey{
 					{KeyName: "Software\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\webcam",
 						StringValues: map[string]string{"Value": "Allow"},
-						SubKeys: []registrymock.MockRegistryKey{
+						SubKeys: []mocking.MockRegistryKey{
 							{KeyName: "NonPackaged",
-								SubKeys: []registrymock.MockRegistryKey{
+								SubKeys: []mocking.MockRegistryKey{
 									{KeyName: "microsoft.webcam", StringValues: map[string]string{"Value": "Allow"}},
 								},
 							},
@@ -45,10 +45,10 @@ func TestPermission(t *testing.T) {
 		{
 			name:       "WebcamPermissionExists",
 			permission: "webcam",
-			key: &registrymock.MockRegistryKey{
-				SubKeys: []registrymock.MockRegistryKey{
+			key: &mocking.MockRegistryKey{
+				SubKeys: []mocking.MockRegistryKey{
 					{KeyName: "Software\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\webcam",
-						SubKeys: []registrymock.MockRegistryKey{
+						SubKeys: []mocking.MockRegistryKey{
 							{KeyName: "microsoft.webcam", StringValues: map[string]string{"Value": "Allow"}},
 						},
 					},
@@ -72,14 +72,14 @@ func TestPermission(t *testing.T) {
 //
 // Returns: _
 func TestFormatPermission(t *testing.T) {
-	key := &registrymock.MockRegistryKey{
-		SubKeys: []registrymock.MockRegistryKey{
+	key := &mocking.MockRegistryKey{
+		SubKeys: []mocking.MockRegistryKey{
 			{KeyName: "Software\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\location",
 				StringValues: map[string]string{"Value": "Allow"},
-				SubKeys: []registrymock.MockRegistryKey{
+				SubKeys: []mocking.MockRegistryKey{
 					{KeyName: "NonPackaged",
 						StringValues: map[string]string{"Value": "Allow"},
-						SubKeys: []registrymock.MockRegistryKey{
+						SubKeys: []mocking.MockRegistryKey{
 							{KeyName: "test#test#test.exe"},
 						},
 					},
@@ -98,14 +98,14 @@ func TestFormatPermission(t *testing.T) {
 //
 // Returns: _
 func TestNonExistingPermission(t *testing.T) {
-	key := &registrymock.MockRegistryKey{
-		SubKeys: []registrymock.MockRegistryKey{
+	key := &mocking.MockRegistryKey{
+		SubKeys: []mocking.MockRegistryKey{
 			{KeyName: "Software\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\location",
 				StringValues: map[string]string{"Value": "Allow"},
-				SubKeys: []registrymock.MockRegistryKey{
+				SubKeys: []mocking.MockRegistryKey{
 					{KeyName: "NonPackaged",
 						StringValues: map[string]string{"Value": "Allow"},
-						SubKeys: []registrymock.MockRegistryKey{
+						SubKeys: []mocking.MockRegistryKey{
 							{KeyName: "test.test"},
 						},
 					},

@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
-	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
+	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 	"github.com/stretchr/testify/require"
 	"golang.org/x/sys/windows/registry"
 )
@@ -18,13 +18,13 @@ import (
 func TestRemoteDesktopCheck(t *testing.T) {
 	tests := []struct {
 		name string
-		key  registrymock.RegistryKey
+		key  mocking.RegistryKey
 		want checks.Check
 	}{
 		{
 			name: "Remote Desktop enabled",
-			key: &registrymock.MockRegistryKey{
-				SubKeys: []registrymock.MockRegistryKey{
+			key: &mocking.MockRegistryKey{
+				SubKeys: []mocking.MockRegistryKey{
 					{KeyName: "System\\CurrentControlSet\\Control\\Terminal Server",
 						IntegerValues: map[string]uint64{"fDenyTSConnections": 0}, Err: nil},
 				},
@@ -33,8 +33,8 @@ func TestRemoteDesktopCheck(t *testing.T) {
 		},
 		{
 			name: "Remote Desktop disabled",
-			key: &registrymock.MockRegistryKey{
-				SubKeys: []registrymock.MockRegistryKey{
+			key: &mocking.MockRegistryKey{
+				SubKeys: []mocking.MockRegistryKey{
 					{KeyName: "System\\CurrentControlSet\\Control\\Terminal Server",
 						IntegerValues: map[string]uint64{"fDenyTSConnections": 1}, Err: nil},
 				},
@@ -43,8 +43,8 @@ func TestRemoteDesktopCheck(t *testing.T) {
 		},
 		{
 			name: "Unknown status",
-			key: &registrymock.MockRegistryKey{
-				SubKeys: []registrymock.MockRegistryKey{
+			key: &mocking.MockRegistryKey{
+				SubKeys: []mocking.MockRegistryKey{
 					{KeyName: "System\\CurrentControlSet\\Control\\Terminal Server",
 						IntegerValues: map[string]uint64{"fDenyTSConnections": 3}, Err: nil},
 				},

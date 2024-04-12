@@ -3,7 +3,7 @@ package checks
 import (
 	"fmt"
 
-	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
+	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 )
 
 // Bluetooth checks for bluetooth devices which are / have been connected to the system
@@ -11,19 +11,19 @@ import (
 // Parameters: _
 //
 // Returns: A list of bluetooth devices
-func Bluetooth(registryKey registrymock.RegistryKey) Check {
+func Bluetooth(registryKey mocking.RegistryKey) Check {
 	var err error
-	var deviceKey registrymock.RegistryKey
+	var deviceKey mocking.RegistryKey
 	var deviceNames []string
 	var deviceNameValue []byte
 	// Open the registry key for bluetooth devices
-	key, err := registrymock.OpenRegistryKey(registryKey,
+	key, err := mocking.OpenRegistryKey(registryKey,
 		`SYSTEM\CurrentControlSet\Services\BTHPORT\Parameters\Devices`)
 	if err != nil {
 		return NewCheckError(BluetoothID, err)
 	}
 	// Close the key after we have received all relevant information
-	defer registrymock.CloseRegistryKey(key)
+	defer mocking.CloseRegistryKey(key)
 
 	// Get the names of all sub keys (which represent bluetooth devices)
 	deviceNames, err = key.ReadSubKeyNames(-1)
@@ -38,12 +38,12 @@ func Bluetooth(registryKey registrymock.RegistryKey) Check {
 	result := NewCheckResult(BluetoothID, 1)
 	// Open each device sub key within the registry
 	for _, deviceName := range deviceNames {
-		deviceKey, err = registrymock.OpenRegistryKey(key, deviceName)
+		deviceKey, err = mocking.OpenRegistryKey(key, deviceName)
 		if err != nil {
 			result.Result = append(result.Result, fmt.Sprintf("Error opening device subkey %s", deviceName))
 			continue
 		}
-		defer registrymock.CloseRegistryKey(deviceKey)
+		defer mocking.CloseRegistryKey(deviceKey)
 
 		// Get the device name
 		deviceNameValue, _, err = deviceKey.GetBinaryValue("Name")

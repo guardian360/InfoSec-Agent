@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
-	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
+	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 )
 
 // TestLastPasswordChange tests the LastPasswordChange function
@@ -18,12 +18,12 @@ import (
 func TestLastPasswordChange(t *testing.T) {
 	tests := []struct {
 		name          string
-		executorClass *commandmock.MockCommandExecutor
+		executorClass *mocking.MockCommandExecutor
 		want          checks.Check
 	}{
 		{
 			name: "Password not changed recently",
-			executorClass: &commandmock.MockCommandExecutor{
+			executorClass: &mocking.MockCommandExecutor{
 				Output: "Gebruikersnaam                           test\nVolledige naam                           " +
 					"test\nOpmerking\nOpmerking van gebruiker\nLandcode                                 " +
 					"000 (Systeemstandaard)\nAccount actief                           Ja\nAccount verloopt" +
@@ -45,7 +45,7 @@ func TestLastPasswordChange(t *testing.T) {
 		},
 		{
 			name: "Parsing data error",
-			executorClass: &commandmock.MockCommandExecutor{
+			executorClass: &mocking.MockCommandExecutor{
 				Output: "Gebruikersnaam                           test\nVolledige naam                           " +
 					"test\nOpmerking\nOpmerking van gebruiker\nLandcode                                 " +
 					"000 (Systeemstandaard)\nAccount actief                           Ja\nAccount verloopt" +
@@ -66,7 +66,7 @@ func TestLastPasswordChange(t *testing.T) {
 		},
 		{
 			name: "Password changed recently",
-			executorClass: &commandmock.MockCommandExecutor{
+			executorClass: &mocking.MockCommandExecutor{
 				Output: "Gebruikersnaam                           test\nVolledige naam                           " +
 					"test\nOpmerking\nOpmerking van gebruiker\nLandcode                                 " +
 					"000 (Systeemstandaard)\nAccount actief                           Ja\nAccount verloopt" +

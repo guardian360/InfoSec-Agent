@@ -1,7 +1,7 @@
 package checks
 
 import (
-	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
+	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 )
 
 // RemoteDesktopCheck checks if Remote Desktop is enabled
@@ -9,15 +9,15 @@ import (
 // Parameters: registryKey (registrymock.RegistryKey) - A Windows registry mock
 //
 // Returns: If Remote Desktop is enabled or not
-func RemoteDesktopCheck(registryKey registrymock.RegistryKey) Check {
+func RemoteDesktopCheck(registryKey mocking.RegistryKey) Check {
 	// Open the registry key for Terminal Server settings
-	key, err := registrymock.OpenRegistryKey(registryKey, `System\CurrentControlSet\Control\Terminal Server`)
+	key, err := mocking.OpenRegistryKey(registryKey, `System\CurrentControlSet\Control\Terminal Server`)
 
 	if err != nil {
 		return NewCheckErrorf(RemoteDesktopID, "error opening registry key", err)
 	}
 	// Close the key after we have received all relevant information
-	defer registrymock.CloseRegistryKey(key)
+	defer mocking.CloseRegistryKey(key)
 
 	// Read the value of fDenyTSConnections, which contains the information if Remote Desktop is enabled or not
 	val, _, err := key.GetIntegerValue("fDenyTSConnections")

@@ -4,7 +4,7 @@ import (
 	"errors"
 	"strings"
 
-	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
+	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 )
 
 // TODO: Improve formatting of output, check more classes
@@ -14,7 +14,7 @@ import (
 // Parameters: _
 //
 // Returns: list of external devices
-func ExternalDevices(executorClass commandmock.CommandExecutor) Check {
+func ExternalDevices(executorClass mocking.CommandExecutor) Check {
 	// All the classes you want to check with the Get-PnpDevice command
 	classesToCheck := [2]string{"Mouse", "Camera"}
 	outputs := make([]string, 0)
@@ -36,7 +36,7 @@ func ExternalDevices(executorClass commandmock.CommandExecutor) Check {
 // Parameters: deviceClass (string) representing the class to check with the Get-PnpDevice command
 //
 // Returns: list of devices of the given class
-func CheckDeviceClass(deviceClass string, executorClass commandmock.CommandExecutor) ([]string, error) {
+func CheckDeviceClass(deviceClass string, executorClass mocking.CommandExecutor) ([]string, error) {
 	// Run the Get-PnpDevice command with the given class
 	command := "powershell"
 	output, err := executorClass.Execute(command, "-Command", "Get-PnpDevice -Class", deviceClass, " "+

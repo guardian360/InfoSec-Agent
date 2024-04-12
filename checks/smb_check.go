@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
+	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 )
 
 // SmbCheck checks whether SMB1 (Server Message Block) and SMB2 are enabled
@@ -12,7 +12,7 @@ import (
 // Parameters: _
 //
 // Returns: If SMB1 and SMB2 are enabled or not
-func SmbCheck(smb1executor commandmock.CommandExecutor, smb2executor commandmock.CommandExecutor) Check {
+func SmbCheck(smb1executor mocking.CommandExecutor, smb2executor mocking.CommandExecutor) Check {
 	var resultID int
 	smb1, resultID, err := SmbEnabled("SMB1", smb1executor, resultID)
 
@@ -33,7 +33,7 @@ func SmbCheck(smb1executor commandmock.CommandExecutor, smb2executor commandmock
 // Parameters: smb (string) represents the SMB protocol to check
 //
 // Returns: If the specified SMB protocol is enabled or not
-func SmbEnabled(smb string, executor commandmock.CommandExecutor, resultID int) (string, int, error) {
+func SmbEnabled(smb string, executor mocking.CommandExecutor, resultID int) (string, int, error) {
 	// Get the status of the specified SMB protocol
 	command := fmt.Sprintf("Get-SmbServerConfiguration | Select-Object Enable%sProtocol", smb)
 	output, err := executor.Execute("powershell", command)

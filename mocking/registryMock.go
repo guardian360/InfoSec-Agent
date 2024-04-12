@@ -1,4 +1,4 @@
-package registrymock
+package mocking
 
 import (
 	"errors"
