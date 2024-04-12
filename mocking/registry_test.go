@@ -1,9 +1,10 @@
 package mocking_test
 
 import (
-	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 	"os"
 	"testing"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 	"github.com/stretchr/testify/require"
@@ -23,11 +24,12 @@ func TestMain(m *testing.M) {
 	os.Exit(code)
 }
 
-// TestOpenRegistryKeyValidInput tests the OpenRegistryKey function with valid input
+// TestOpenRegistryKeyValidInput validates the functionality of the OpenRegistryKey function when provided with valid input.
 //
-// Parameters: t *testing.T - The testing framework
+// Parameter:
+//   - t *testing.T: The testing framework used to run the test.
 //
-// Returns: _
+// This function does not return any values. It uses the testing framework to assert that the OpenRegistryKey function behaves as expected when provided with a valid registry key and path. If the OpenRegistryKey function does not behave as expected, this test function will cause the test run to fail.
 func TestOpenRegistryKeyValidInput(t *testing.T) {
 	key, err := mocking.OpenRegistryKey(mocking.LocalMachine,
 		"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run")
@@ -36,11 +38,12 @@ func TestOpenRegistryKeyValidInput(t *testing.T) {
 	require.NotNil(t, key)
 }
 
-// TestOpenRegistryKeyInvalidKey tests the OpenRegistryKey function with an invalid key
+// TestOpenRegistryKeyInvalidKey is a test function that verifies the behavior of the OpenRegistryKey function when provided with an invalid registry key.
 //
-// Parameters: t *testing.T - The testing framework
+// Parameter:
+//   - t *testing.T: The testing framework instance used to run the test and report the results.
 //
-// Returns: _
+// This function does not return any values. It uses the testing framework to assert that the OpenRegistryKey function behaves as expected when provided with an invalid registry key. Specifically, it checks that the function returns an error and that the returned key is equivalent to the invalid input key. If the OpenRegistryKey function does not behave as expected, this test function will cause the test run to fail.
 func TestOpenRegistryKeyInvalidKey(t *testing.T) {
 	key, err := mocking.OpenRegistryKey(mocking.NewRegistryKeyWrapper(registry.Key(0x0)),
 		"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run")
@@ -49,11 +52,12 @@ func TestOpenRegistryKeyInvalidKey(t *testing.T) {
 	require.Equal(t, key, mocking.NewRegistryKeyWrapper(registry.Key(0x0)))
 }
 
-// TestOpenRegistryKeyInvalidPath tests the OpenRegistryKey function with an invalid path
+// TestOpenRegistryKeyInvalidPath is a test function that validates the behavior of the OpenRegistryKey function when provided with an invalid path.
 //
-// Parameters: t *testing.T - The testing framework
+// Parameter:
+//   - t *testing.T: The testing framework instance used to run the test and report the results.
 //
-// Returns: _
+// This function does not return any values. It uses the testing framework to assert that the OpenRegistryKey function behaves as expected when provided with an invalid path. Specifically, it checks that the function returns an error and that the returned key is equivalent to a null key. If the OpenRegistryKey function does not behave as expected, this test function will cause the test run to fail.
 func TestOpenRegistryKeyInvalidPath(t *testing.T) {
 	key, err := mocking.OpenRegistryKey(mocking.LocalMachine,
 		"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\nonexistent")
@@ -62,11 +66,12 @@ func TestOpenRegistryKeyInvalidPath(t *testing.T) {
 	require.Equal(t, key, mocking.NewRegistryKeyWrapper(registry.Key(0x0)))
 }
 
-// TestCloseRegistryKeyValidInput tests the CloseRegistryKey function with valid input
+// TestCloseRegistryKeyValidInput is a test function that validates the behavior of the CloseRegistryKey function when provided with a valid registry key.
 //
-// Parameters: t *testing.T - The testing framework
+// Parameter:
+//   - t *testing.T: The testing framework instance used to run the test and report the results.
 //
-// Returns: _
+// This function does not return any values. It uses the testing framework to assert that the CloseRegistryKey function behaves as expected when provided with a valid registry key. Specifically, it checks that the function does not return an error and that the key is successfully closed. If the CloseRegistryKey function does not behave as expected, this test function will cause the test run to fail.
 func TestCloseRegistryKeyValidInput(t *testing.T) {
 	key, err := mocking.OpenRegistryKey(mocking.LocalMachine,
 		"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run")
@@ -75,22 +80,23 @@ func TestCloseRegistryKeyValidInput(t *testing.T) {
 	mocking.CloseRegistryKey(key)
 }
 
-// TestCloseRegistryKeyInvalidKey tests the CloseRegistryKey function with an invalid key
-// Because a potential error is only logged, we test if the function panics
+// TestCloseRegistryKeyInvalidKey is a test function that verifies the behavior of the CloseRegistryKey function when provided with an invalid registry key.
 //
-// Parameters: _ *testing.T - The testing framework
+// Parameter:
+//   - t *testing.T: The testing framework instance used to run the test and report the results.
 //
-// Returns: _
+// This function does not return any values. It uses the testing framework to assert that the CloseRegistryKey function does not panic when provided with an invalid registry key. As the function only logs potential errors and does not return them, this test function checks for unexpected panics as an indication of error handling.
 func TestCloseRegistryKeyInvalidKey(_ *testing.T) {
 	key := mocking.NewRegistryKeyWrapper(registry.Key(0x0))
 	mocking.CloseRegistryKey(key)
 }
 
-// TestFindEntriesValidInput tests the FindEntries function with valid input
+// TestFindEntriesValidInput is a test function that validates the behavior of the FindEntries function when provided with valid input.
 //
-// Parameters: t *testing.T - The testing framework
+// Parameter:
+//   - t *testing.T: The testing framework instance used to run the test and report the results.
 //
-// Returns: _
+// This function does not return any values. It uses the testing framework to assert that the FindEntries function behaves as expected when provided with valid registry key and entries. Specifically, it checks that the function returns a non-empty list of entries. If the FindEntries function does not behave as expected, this test function will cause the test run to fail.
 func TestFindEntriesValidInput(t *testing.T) {
 	key, err := mocking.OpenRegistryKey(mocking.CurrentUser,
 		`SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run`)
@@ -103,11 +109,12 @@ func TestFindEntriesValidInput(t *testing.T) {
 	require.NotEmpty(t, result)
 }
 
-// TestFindEntriesInvalidInput tests the FindEntries function with invalid (empty) input
+// TestFindEntriesInvalidInput is a test function that validates the behavior of the FindEntries function when provided with invalid (empty) input.
 //
-// Parameters: t *testing.T - The testing framework
+// Parameter:
+//   - t *testing.T: The testing framework instance used to run the test and report the results.
 //
-// Returns: _
+// This function does not return any values. It uses the testing framework to assert that the FindEntries function behaves as expected when provided with an empty list of entries and an invalid registry key. Specifically, it checks that the function returns an empty list of entries. If the FindEntries function does not behave as expected, this test function will cause the test run to fail.
 func TestFindEntriesInvalidInput(t *testing.T) {
 	key := registry.Key(0x0)
 	var entries []string
@@ -115,11 +122,12 @@ func TestFindEntriesInvalidInput(t *testing.T) {
 	require.Empty(t, elements)
 }
 
-// TestCheckKeyValidInput tests the CheckKey function with valid input
+// TestCheckKeyValidInput is a test function that validates the behavior of the CheckKey function when provided with valid input.
 //
-// Parameters: t *testing.T - The testing framework
+// Parameter:
+//   - t *testing.T: The testing framework instance used to run the test and report the results.
 //
-// Returns: _
+// This function does not return any values. It uses the testing framework to assert that the CheckKey function behaves as expected when provided with a valid registry key and a valid element. Specifically, it checks that the function returns the correct value of the specified element within the registry key. If the CheckKey function does not behave as expected, this test function will cause the test run to fail.
 func TestCheckKeyValidInput(t *testing.T) {
 	key, err := mocking.OpenRegistryKey(mocking.LocalMachine,
 		`SOFTWARE\Microsoft\Windows NT\CurrentVersion`)
@@ -131,22 +139,24 @@ func TestCheckKeyValidInput(t *testing.T) {
 	require.NotEqual(t, "-1", val)
 }
 
-// TestCheckKeyInvalidKey tests the CheckKey function with an invalid key
+// TestCheckKeyInvalidKey is a test function that validates the behavior of the CheckKey function when provided with an invalid registry key.
 //
-// Parameters: t *testing.T - The testing framework
+// Parameter:
+//   - t *testing.T: The testing framework instance used to run the test and report the results.
 //
-// Returns: _
+// This function does not return any values. It uses the testing framework to assert that the CheckKey function behaves as expected when provided with an invalid registry key. Specifically, it checks that the function returns "-1", indicating that the key does not exist or an error occurred while retrieving its value. If the CheckKey function does not behave as expected, this test function will cause the test run to fail.
 func TestCheckKeyInvalidKey(t *testing.T) {
 	key := registry.Key(0x0)
 	val := mocking.CheckKey(mocking.NewRegistryKeyWrapper(key), "ProductName")
 	require.Equal(t, "-1", val)
 }
 
-// TestCheckKeyInvalidElement tests the CheckKey function with an invalid element
+// TestCheckKeyInvalidElement is a test function that validates the behavior of the CheckKey function when provided with a non-existent element.
 //
-// Parameters: t *testing.T - The testing framework
+// Parameter:
+//   - t *testing.T: The testing framework instance used to run the test and report the results.
 //
-// Returns: _
+// This function does not return any values. It uses the testing framework to assert that the CheckKey function behaves as expected when provided with a valid registry key and a non-existent element. Specifically, it checks that the function returns "-1", indicating that the element does not exist within the registry key. If the CheckKey function does not behave as expected, this test function will cause the test run to fail.
 func TestCheckKeyInvalidElement(t *testing.T) {
 	key, err := mocking.OpenRegistryKey(mocking.LocalMachine,
 		`SOFTWARE\Microsoft\Windows NT\CurrentVersion`)

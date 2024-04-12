@@ -12,11 +12,14 @@ import (
 	"github.com/andrewarchi/browser/firefox"
 )
 
-// PasswordFirefox checks the passwords in the Firefox browser.
+// PasswordFirefox is a function that checks the passwords stored in the Firefox browser.
 //
-// Parameters: _
+// Parameters: None
 //
 // Returns:
+//   - checks.Check: A Check object that encapsulates the results of the password check. The Check object includes a list of strings, where each string represents a saved password in the Firefox browser. If an error occurs during the password check, the Check object will encapsulate this error.
+//
+// This function first determines the directory in which the Firefox profile is stored. It then opens the 'logins.json' file, which contains a list of all saved Firefox passwords. The function decodes the JSON file into a struct, and then iterates over the struct to extract the saved passwords. These passwords are added to the results, which are returned as a Check object. If an error occurs at any point during this process, it is encapsulated in the Check object and returned.
 func PasswordFirefox() checks.Check {
 	// Determine the directory in which the Firefox profile is stored
 	ffdirectory, _ := utils.FirefoxFolder()

@@ -4,11 +4,16 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 )
 
-// WindowsDefender checks if the Windows Defender is enabled and if the periodic scan is enabled
+// WindowsDefender is a function that checks the status of Windows Defender and its periodic scan feature on the system.
 //
-// Parameters: _
+// Parameters:
+//   - scanKey mocking.RegistryKey: A registry key object for accessing the Windows Defender registry key.
+//   - defenderKey mocking.RegistryKey: A registry key object for accessing the Windows Defender Real-Time Protection registry key.
 //
-// Returns: If Windows Defender and periodic scan are enabled/disabled
+// Returns:
+//   - Check: A struct containing the result of the check. The result indicates whether Windows Defender and its periodic scan feature are enabled or disabled.
+//
+// The function works by opening and reading the values of the Windows Defender and Real-Time Protection registry keys. Based on these values, it determines the status of Windows Defender and its periodic scan feature. The function returns a Check instance containing a string that describes the status of Windows Defender and its periodic scan feature.
 func WindowsDefender(scanKey mocking.RegistryKey, defenderKey mocking.RegistryKey) Check {
 	// Open the Windows Defender registry key
 	windowsDefenderKey, err := mocking.OpenRegistryKey(scanKey, `SOFTWARE\Microsoft\Windows Defender`)

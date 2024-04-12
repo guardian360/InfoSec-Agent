@@ -11,11 +11,14 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-// TestPermission tests if the correct permission is returned
+// TestPermission is a function that tests the Permission function's ability to correctly return permissions.
 //
-// Parameters: t *testing.T - The testing framework
+// Parameters:
+//   - t *testing.T: The testing framework provided by the Go testing package. It provides methods for reporting test failures and logging additional information.
 //
-// Returns: _
+// Returns: None
+//
+// This function tests the Permission function with different scenarios. It uses a mock implementation of the RegistryKey interface to simulate different sets of permissions. Each test case checks if the Permission function correctly identifies the presence or absence of specific permissions based on the simulated registry keys. The function asserts that the returned permissions match the expected results.
 func TestPermission(t *testing.T) {
 	tests := []struct {
 		name       string
@@ -66,11 +69,14 @@ func TestPermission(t *testing.T) {
 	}
 }
 
-// TestFormatPermission tests if the correct format is returned
+// TestFormatPermission is a function that tests the Permission function's ability to correctly format the returned permissions.
 //
-// Parameters: t *testing.T - The testing framework
+// Parameters:
+//   - t *testing.T: The testing framework provided by the Go testing package. It provides methods for reporting test failures and logging additional information.
 //
-// Returns: _
+// Returns: None
+//
+// This function tests the Permission function with a specific scenario where the permission string is in a certain format. It uses a mock implementation of the RegistryKey interface to simulate a specific permission format. The test case checks if the Permission function correctly formats the returned permission string by removing any '#' characters. The function asserts that the returned permission string matches the expected format.
 func TestFormatPermission(t *testing.T) {
 	key := &mocking.MockRegistryKey{
 		SubKeys: []mocking.MockRegistryKey{
@@ -92,11 +98,14 @@ func TestFormatPermission(t *testing.T) {
 	assert.Contains(t, c.Result, "test.exe")
 }
 
-// TestNonExistingPermission tests if the correct error is returned when the permission does not exist
+// TestNonExistingPermission is a function that tests the Permission function's behavior when the requested permission does not exist.
 //
-// Parameters: t *testing.T - The testing framework
+// Parameters:
+//   - t *testing.T: The testing framework provided by the Go testing package. It provides methods for reporting test failures and logging additional information.
 //
-// Returns: _
+// Returns: None
+//
+// This function tests the Permission function with a scenario where the requested permission does not exist in the simulated registry keys. It uses a mock implementation of the RegistryKey interface to simulate this scenario. The test case checks if the Permission function correctly returns an error when the requested permission does not exist. The function asserts that the returned Check instance contains the expected error message.
 func TestNonExistingPermission(t *testing.T) {
 	key := &mocking.MockRegistryKey{
 		SubKeys: []mocking.MockRegistryKey{

@@ -10,11 +10,14 @@ import (
 	"golang.org/x/sys/windows/registry"
 )
 
-// TestRemoteDesktopCheck tests the RemoteDesktopCheck function on (in)valid input
+// TestRemoteDesktopCheck is a function that tests the RemoteDesktopCheck function's behavior with various inputs.
 //
-// Parameters: t (testing.T) - the testing framework
+// Parameters:
+//   - t *testing.T: The testing framework provided by the Go testing package. It provides methods for reporting test failures and logging additional information.
 //
-// Returns: _
+// Returns: None
+//
+// This function tests the RemoteDesktopCheck function with different scenarios. It uses a mock implementation of the RegistryKey interface to simulate the behavior of the Windows registry. Each test case checks if the RemoteDesktopCheck function correctly identifies the status of the Remote Desktop feature based on the simulated registry key values. The function asserts that the returned Check instance contains the expected results.
 func TestRemoteDesktopCheck(t *testing.T) {
 	tests := []struct {
 		name string
@@ -60,11 +63,14 @@ func TestRemoteDesktopCheck(t *testing.T) {
 	}
 }
 
-// TestRegistryOutput ensures the registry output has the expected format
+// TestRegistryOutputRemoteDesktop is a function that verifies the format and values of the registry output related to the Remote Desktop settings.
 //
-// Parameters: t (testing.T) - the testing framework
+// Parameters:
+//   - t *testing.T: The testing framework provided by the Go testing package. It provides methods for reporting test failures and logging additional information.
 //
-// Returns: _
+// Returns: None
+//
+// This function opens the registry key for Terminal Server settings and retrieves the value names. It checks if the expected value name 'fDenyTSConnections' is present among the retrieved value names. If the expected value name is not found, the function reports a test failure. The function then retrieves the integer value and its type for 'fDenyTSConnections'. It checks if the value type is uint32 and if the value is either 0 or 1, which represent the enabled or disabled status of the Remote Desktop feature. If the value type or value does not match the expected results, the function reports a test failure.
 func TestRegistryOutputRemoteDesktop(t *testing.T) {
 	path := "System\\CurrentControlSet\\Control\\Terminal Server"
 	expectedValueName := "fDenyTSConnections"

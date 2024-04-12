@@ -20,11 +20,20 @@ type DataBaseData struct {
 	JSONKey  int `json:"jsonkey"`
 }
 
-// FillDataBase will remove the current issues table and create a new one filled with dummy values
+// FillDataBase clears the existing issues table and populates it with the results from a scan.
 //
-// Parameters: scanResults ([]checks.Check) - the list of checks from a scan
+// Parameters:
+//   - scanResults ([]checks.Check): A slice of Check objects obtained from a scan. Each Check object represents a security check that has been performed.
 //
-// Returns: _
+// This function performs the following operations:
+//  1. Opens a connection to the SQLite database located at "./database.db". If the database does not exist, it is created.
+//  2. Drops the existing "issues" table if it exists.
+//  3. Creates a new "issues" table with columns for JSON Key, Issue ID, Result ID, and Severity.
+//  4. Clears any existing rows in the "issues" table.
+//  5. Iterates over the scanResults slice and adds each Check object to the "issues" table as a new row.
+//  6. Closes the connection to the database.
+//
+// Note: This function logs any errors that occur during its execution and does not return any values.
 func FillDataBase(scanResults []checks.Check) {
 	logger.Log.Info("Opening database")
 	var err error
@@ -70,21 +79,24 @@ func FillDataBase(scanResults []checks.Check) {
 	defer db.Close()
 }
 
-// addIssue will add a single entry in the issues table
+// addIssue inserts a new issue into the 'issues' table in the database.
 //
 // Parameters:
+//   - db (*sql.DB): The database connection where the 'issues' table resides.
+//   - check (checks.Check): The issue to be added to the table. Each issue represents a security check that has been performed.
+//   - issueID (int): The unique identifier of the issue. This is used as a reference in the 'issues' table.
+//   - resultID (int): The unique identifier of the result of the issue. This is used as a reference in the 'issues' table.
+//   - severity (int): The severity level of the issue. This is represented as an integer where a higher value indicates a higher severity.
 //
-// db (*sql.DB) - database connection where table resides
+// Returns:
+//   - int64: The index of the newly added row in the 'issues' table.
+//   - error: An error object that describes the error (if any) that occurred while adding the issue to the table. If no error occurred, this value is nil.
 //
-// check (checks.Check) - the issue to be added
-//
-// issueID (int) - id of the issue
-//
-// resultID (int) - id of the result of the issue
-//
-// severity (int) - severity of the result
-//
-// Returns: returns index of the added row in the table
+// This function performs the following operations:
+//  1. Prepares an SQL INSERT statement to add a new row to the 'issues' table.
+//  2. Executes the SQL statement, passing in the parameters of the function.
+//  3. If an error occurs while executing the SQL statement, it logs the error and returns it along with a zero value for the index.
+//  4. If the SQL statement executes successfully, it retrieves the index of the newly added row and returns it along with a nil error.
 func addIssue(db *sql.DB, check checks.Check, issueID int, resultID int, severity int) (int64, error) {
 	result, err := db.Exec(
 		"INSERT INTO issues ([Issue ID], [Result ID], Severity, [JSON Key]) VALUES (?, ?, ?, ?)",
@@ -100,17 +112,22 @@ func addIssue(db *sql.DB, check checks.Check, issueID int, resultID int, severit
 	return id, nil
 }
 
-// GetSeverity gets the single severity of an issue
+// GetSeverity retrieves the severity level of a specific issue from the 'issues' table in the database.
 //
 // Parameters:
+//   - db (*sql.DB): The database connection where the 'issues' table resides.
+//   - issueID (int): The unique identifier of the issue. This is used as a reference in the 'issues' table.
+//   - resultID (int): The unique identifier of the result of the issue. This is used as a reference in the 'issues' table.
 //
-// db (*sql.DB) - database connection where table resides
+// This function performs the following operations:
+//  1. Prepares an SQL SELECT statement to retrieve the severity level of the issue from the 'issues' table.
+//  2. Executes the SQL statement, passing in the issueID and resultID as parameters.
+//  3. If an error occurs while executing the SQL statement, it logs the error and returns it along with a zero value for the severity level.
+//  4. If the SQL statement executes successfully, it retrieves the severity level from the result and returns it along with a nil error.
 //
-// issueId (int) - id of the issue
-//
-// resultID (int) - id of the result of the issue
-//
-// Returns: severity of the issue
+// Returns:
+//   - int: The severity level of the issue. This is represented as an integer where a higher value indicates a higher severity.
+//   - error: An error object that describes the error (if any) that occurred while retrieving the severity level. If no error occurred, this value is nil.
 func GetSeverity(db *sql.DB, issueID int, resultID int) (int, error) {
 	// Prepare the SQL query
 	query := "SELECT Severity FROM issues WHERE [Issue ID] = ? AND [Result ID] = ?"

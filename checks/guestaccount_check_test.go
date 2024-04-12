@@ -10,6 +10,16 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 )
 
+// TestGuestAccount is a test function that validates the behavior of the GuestAccount function.
+//
+// It executes a series of test cases, each with different inputs, to ensure that the function behaves as expected in various scenarios.
+//
+// Parameters:
+//   - t (*testing.T): An instance of the testing framework provided by the "testing" package. This is used to report test failures and log output.
+//
+// Returns: None. If a test case fails, the function calls methods on the *testing.T parameter to report the failure.
+//
+// This function is part of the test suite for the "checks" package. It is used to verify that the GuestAccount function correctly identifies the status of the guest account on the Windows system and handles errors as expected.
 func TestGuestAccount(t *testing.T) {
 	tests := []struct {
 		name                      string

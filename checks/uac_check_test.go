@@ -9,11 +9,14 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 )
 
-// TestUACCheck tests the OpenPorts function with different (in)valid inputs
+// TestUACCheck is a function that tests the UACCheck function's behavior with various inputs.
 //
-// Parameters: t (testing.T) - the testing framework
+// Parameters:
+//   - t *testing.T: The testing framework provided by the Go testing package. It provides methods for reporting test failures and logging additional information.
 //
-// Returns: _
+// Returns: None
+//
+// This function tests the UACCheck function with different scenarios. It uses a mock implementation of the CommandExecutor interface to simulate the behavior of the command execution for checking the User Account Control (UAC) level. Each test case checks if the UACCheck function correctly identifies the UAC level based on the simulated command output. The function asserts that the returned Check instance contains the expected results.
 func TestUACCheck(t *testing.T) {
 	tests := []struct {
 		name        string

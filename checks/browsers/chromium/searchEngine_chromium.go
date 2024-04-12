@@ -15,11 +15,15 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 )
 
-// SearchEngineChromium checks the standard search engine in chromium based browsers.
+// SearchEngineChromium inspects the default search engine setting in Chromium-based browsers.
 //
-// Parameters: _
+// Parameters:
+//   - browser: A string representing the name of the Chromium-based browser to inspect. This could be "Chrome", "Edge", etc.
 //
-// Returns: The standard search engine for chromium based browsers
+// Returns:
+//   - A checks.Check object representing the result of the check. The result contains the name of the default search engine used in the specified browser. If an error occurs during the check, the result will contain a description of the error.
+//
+// This function works by locating the preferences file in the user's home directory, which contains the browser's settings. It opens and reads this file, then parses it as JSON to access the settings. It specifically looks for the "default_search_provider_data" key in the JSON data, which holds the name of the default search engine. If this key is found, its value is returned as the result of the check. If any error occurs during this process, such as an error reading the file or parsing the JSON, this error is returned as the result of the check.
 func SearchEngineChromium(browser string) checks.Check {
 	var browserPath string
 	var returnID int

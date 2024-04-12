@@ -7,11 +7,18 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 )
 
-// GuestAccount checks if the Windows guest account is active
+// GuestAccount checks the status of the Windows guest account.
 //
-// Parameters: _
+// Parameters:
+//   - executorLocalGroup (commandmock.CommandExecutor): An instance of CommandExecutor used to execute the Get-WmiObject command to retrieve local group information.
+//   - executorLocalGroupMembers (commandmock.CommandExecutor): An instance of CommandExecutor used to execute the 'net localgroup' command to retrieve local group members.
+//   - executorYesWord (commandmock.CommandExecutor): An instance of CommandExecutor used to execute the 'net user' command to retrieve the word for 'yes' in the current user's language.
+//   - executorNetUser (commandmock.CommandExecutor): An instance of CommandExecutor used to execute the 'net user' command to retrieve all users.
 //
-// Returns: If the guest account is active or not
+// Returns:
+//   - Check: A Check instance encapsulating the results of the guest account check. If the guest account is active, the Result field of the Check instance will contain the message "Guest account is active". If the guest account is not active, the Result field will contain the message "Guest account is not active". If an error occurs during the check, it is encapsulated in the Error and ErrorMSG fields of the Check instance.
+//
+// This function is primarily used to identify potential security risks associated with an active guest account on the Windows system.
 func GuestAccount(
 	executorLocalGroup mocking.CommandExecutor,
 	executorLocalGroupMembers mocking.CommandExecutor,
