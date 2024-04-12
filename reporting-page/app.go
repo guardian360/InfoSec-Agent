@@ -2,49 +2,59 @@ package main
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/localization"
+	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/tray"
 )
 
-// App is the main application struct, necessary for the Wails runtime
+// App serves as the core structure for the Wails runtime.
+//
+// It encapsulates the application's context and provides methods for its management. This struct is pivotal for the lifecycle of the application, enabling the invocation of runtime methods and facilitating interactions with the frontend.
 type App struct {
 	ctx context.Context
 }
 
-// NewApp creates a new App application struct
+// NewApp is a factory method that generates an instance of the App struct.
 //
-// Parameters: _
+// This method is typically invoked at the start of the application's lifecycle. The created App instance serves as the primary interface for managing the application's context.
 //
-// Returns: a pointer to a new App struct
+// Parameters: None.
+//
+// Returns: *App: A pointer to a newly created App instance.
 func NewApp() *App {
 	return &App{}
 }
 
-// startup is called when the app starts. The context is saved, so runtime methods can be called
+// startup is the initial setup function for the App instance.
 //
-// Parameters: ctx (context.Context) - the context of the application
+// This method is invoked at the beginning of the application's lifecycle. It stores the application's context for future use, enabling the invocation of runtime methods.
 //
-// Returns: _
+// Parameters: ctx (context.Context) - The application's context.
+//
+// Returns: None. The method performs an action and does not return any value.
 func (a *App) startup(ctx context.Context) {
 	a.ctx = ctx
 }
 
-// Localize is called when the frontend loads text. It localizes the text based on the current language.
+// Localize retrieves the localized version of a given message ID.
 //
-// Parameters: MessageID (string) - the ID of the message to localize
+// This method is used to fetch the localized text corresponding to a specific message ID, based on the currently set language. It is typically invoked when the frontend needs to display text to the user.
 //
-// Returns: localized string (string)
-func (a *App) Localize(MessageID string) string {
-	return localization.Localize(tray.GetLanguage(), MessageID)
+// Parameters: messageID (string) - The identifier of the message to be localized.
+//
+// Returns: string: The localized text corresponding to the provided message ID.
+func (a *App) Localize(messageID string) string {
+	return localization.Localize(tray.Language, messageID)
 }
 
-// Print prints the given message to the console
+// PrintFromFrontend logs the provided message to the console.
 //
-// Parameters: message (string) - the message to print
+// This method is primarily used for debugging purposes, allowing messages from the frontend to be logged and viewed in the console.
 //
-// Returns: _
+// Parameters: message (string) - The text to be logged.
+//
+// Returns: None. The method performs an action and does not return any value.
 func (a *App) PrintFromFrontend(message string) {
-	fmt.Println(message)
+	logger.Log.Info(message)
 }

@@ -2,17 +2,23 @@ package checks
 
 import (
 	"fmt"
-	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
 	"regexp"
 	"strings"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 )
 
-// OpenPorts checks for open ports and the processes that are using them
+// OpenPorts is a function that checks for open ports on the system and identifies the processes that are using them.
 //
-// Parameters: _
+// Parameters:
+//   - tasklistexecutor (mocking.CommandExecutor): An executor to run the 'tasklist' command which retrieves the list of currently running tasks.
+//   - netstatexecutor (mocking.CommandExecutor): An executor to run the 'netstat' command which provides network statistics.
 //
-// Returns: A list of open ports and the processes that are using them
-func OpenPorts(tasklistexecutor, netstatexecutor commandmock.CommandExecutor) Check {
+// Returns:
+//   - Check: A struct containing the result of the check. The result is a list of open ports along with the names of the processes that are using them.
+//
+// The function works by first running the 'tasklist' command to get a list of all running tasks. It then maps each process ID to its corresponding process name. Next, it runs the 'netstat' command to get a list of all open ports. For each open port, it identifies the process ID and maps it back to the process name using the previously created map. The function then returns a list of open ports along with the names of the processes that are using them.
+func OpenPorts(tasklistexecutor, netstatexecutor mocking.CommandExecutor) Check {
 	// Regular expression to clean up multiple spaces in the output
 	re := regexp.MustCompile("  +")
 
@@ -21,7 +27,7 @@ func OpenPorts(tasklistexecutor, netstatexecutor commandmock.CommandExecutor) Ch
 	output, err := tasklistexecutor.Execute(command)
 
 	if err != nil {
-		return NewCheckErrorf("OpenPorts", "error running tasklist", err)
+		return NewCheckErrorf(PortsID, "error running tasklist", err)
 	}
 	tasklist := strings.Split(string(output), "\r\n")
 
@@ -40,11 +46,11 @@ func OpenPorts(tasklistexecutor, netstatexecutor commandmock.CommandExecutor) Ch
 	output, err = netstatexecutor.Execute(command, "-ano")
 
 	if err != nil {
-		return NewCheckErrorf("OpenPorts", "error running netstat", err)
+		return NewCheckErrorf(PortsID, "error running netstat", err)
 	}
 	netstat := strings.Split(string(output), "\n")
 
-	result := NewCheckResult("OpenPorts")
+	result := NewCheckResult(PortsID, 0)
 	for _, line := range netstat[4 : len(netstat)-1] {
 		words := strings.Fields(line)
 

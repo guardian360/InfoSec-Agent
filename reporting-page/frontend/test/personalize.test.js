@@ -1,6 +1,12 @@
-import { handleFaviconChange, handlePictureChange, handleTitleChange } from '../src/js/personalize.js'; // Assuming the function is in picture.js
-import { JSDOM } from 'jsdom';
+import 'jsdom-global/register.js';
+import {
+  handleFaviconChange,
+  handlePictureChange,
+  handleTitleChange} from '../src/js/personalize.js';
+import {JSDOM} from 'jsdom';
 import test from 'unit.js';
+
+global.TESTING = true;
 
 // Mock page
 const dom = new JSDOM(`
@@ -17,40 +23,57 @@ const dom = new JSDOM(`
 global.document = dom.window.document;
 global.window = dom.window;
 
-// Mock FileReader    
-var fileReaderIco = global.FileReader = class {
+// Mock FileReader
+const fileReaderIco = global.FileReader = class {
+  /**
+ * Simulates the behavior of the FileReader's readAsDataURL method by triggering the onload event with a mock result.
+ * This method is used for testing purposes to mimic the behavior of FileReader.
+ * @param {Function} onload - The onload event handler to be triggered with a mock result.
+ */
   readAsDataURL() {
-    this.onload({ target: { result: 'data:image/x-icon' } });
+    this.onload({target: {result: 'data:image/x-icon'}});
   }
-}; 
-var fileReaderPng = global.FileReader = class {
-      readAsDataURL() {
-        this.onload({ target: { result: 'data:image/png' } });
-      }
-    };
-var fileReaderJpg = global.FileReader = class {
-      readAsDataURL() {
-        this.onload({ target: { result: 'data:image/jpg' } });
-      }
-    }; 
-var fileReaderJpeg = global.FileReader = class {
-      readAsDataURL() {
-        this.onload({ target: { result: 'data:image/jpeg' } });
-      }
-    }; 
+};
+const fileReaderPng = global.FileReader = class { /**
+* Simulates the behavior of the FileReader's readAsDataURL method by triggering the onload event with a mock result.
+* This method is used for testing purposes to mimic the behavior of FileReader.
+* @param {Function} onload - The onload event handler to be triggered with a mock result.
+*/
+  readAsDataURL() {
+    this.onload({target: {result: 'data:image/png'}});
+  }
+};
+const fileReaderJpg = global.FileReader = class { /**
+* Simulates the behavior of the FileReader's readAsDataURL method by triggering the onload event with a mock result.
+* This method is used for testing purposes to mimic the behavior of FileReader.
+* @param {Function} onload - The onload event handler to be triggered with a mock result.
+*/
+  readAsDataURL() {
+    this.onload({target: {result: 'data:image/jpg'}});
+  }
+};
+const fileReaderJpeg = global.FileReader = class { /**
+* Simulates the behavior of the FileReader's readAsDataURL method by triggering the onload event with a mock result.
+* This method is used for testing purposes to mimic the behavior of FileReader.
+* @param {Function} onload - The onload event handler to be triggered with a mock result.
+*/
+  readAsDataURL() {
+    this.onload({target: {result: 'data:image/jpeg'}});
+  }
+};
 
 // Mock localStorage
 const localStorageMock = (() => {
   let store = {};
 
   return {
-    getItem: key => store[key],
+    getItem: (key) => store[key],
     setItem: (key, value) => {
       store[key] = value.toString();
     },
     clear: () => {
       store = {};
-    }
+    },
   };
 })();
 global.localStorage = localStorageMock;
@@ -60,114 +83,124 @@ global.localStorage = localStorageMock;
 describe('handleFaviconSelect', () => {
   it('should change the favicon when a valid .ico file is selected', () => {
     // Arrange
-    let head = document.querySelector('head');
+    const head = document.querySelector('head');
 
     // Act
     FileReader = fileReaderIco;
-    handleFaviconChange({ target: { files: [new Blob(['dummy'], { type: 'image/x-icon' })] } });
+    const blob = new Blob(['dummy'], {type: 'image/x-icon'});
+    handleFaviconChange({target: {files: blob}});
 
     // Assert
-    let newFavicon = head.querySelector('link[rel="icon"]');
+    const newFavicon = head.querySelector('link[rel="icon"]');
     test.value(newFavicon.href).isEqualTo('data:image/x-icon');
   });
 
   it('should change the favicon when a valid .png file is selected', () => {
     // Arrange
-    let head = document.querySelector('head');
+    const head = document.querySelector('head');
 
     // Act
     FileReader = fileReaderPng;
-    handleFaviconChange({ target: { files: [new Blob(['dummy'], { type: 'image/png' })] } });
+    const blob = new Blob(['dummy'], {type: 'image/png'});
+    handleFaviconChange({target: {files: blob}});
 
     // Assert
-    let newFavicon = head.querySelector('link[rel="icon"]');
+    const newFavicon = head.querySelector('link[rel="icon"]');
     test.value(newFavicon.href).isEqualTo('data:image/png');
   });
-  it('should save the favicon when a valid .ico file is selected in localstorage', () => {
+  it('saves valid .ico favicon in localStorage', () => {
     // Arrange
     // Act
     FileReader = fileReaderIco;
-    handleFaviconChange({ target: { files: [new Blob(['dummy'], { type: 'image/x-icon' })] } });
+    const blob = new Blob(['dummy'], {type: 'image/x-icon'});
+    handleFaviconChange({target: {files: blob}});
 
     // Assert
-    test.value(localStorageMock.getItem('favicon')).isEqualTo('data:image/x-icon');
-
+    const favicon = localStorageMock.getItem('favicon');
+    const expectedValue = 'data:image/x-icon';
+    test.value(favicon).isEqualTo(expectedValue);
   });
-  it('should save the favicon when a valid .png file is selected in localstorage', () => {
+  it('saves valid .png favicon in localStorage', () => {
     // Arrange
     // Act
     FileReader = fileReaderPng;
-    handleFaviconChange({ target: { files: [new Blob(['dummy'], { type: 'image/png' })] } });
+    const blob = new Blob(['dummy'], {type: 'image/png'});
+    handleFaviconChange({target: {files: blob}});
 
     // Assert
     test.value(localStorageMock.getItem('favicon')).isEqualTo('data:image/png');
-  })
+  });
 });
 
 describe('handlePictureChange', () => {
-  it('should change the navigation picture when a valid .png file is selected', () => {
+  it('changes navigation picture with valid .png file', () => {
     // Arrange
     const logo = document.getElementById('logo');
 
     // Act
     FileReader = fileReaderPng;
-    handlePictureChange({ target: { files: [new Blob(['dummy'], { type: 'image/png' })] } });
+    const blob = new Blob(['dummy'], {type: 'image/png'});
+    handlePictureChange({target: {files: blob}});
 
     // Assert
     test.value(logo.src).isEqualTo('data:image/png');
-  
   });
-  it('should change the navigation picture when a valid .jpg file is selected', () => {
-      // Arrange
-      const logo = document.getElementById('logo');
-  
-      // Act
-      FileReader = fileReaderJpg;
-      handlePictureChange({ target: { files: [new Blob(['dummy'], { type: 'image/jpg' })] } });
-  
-      // Assert
-      test.value(logo.src).isEqualTo('data:image/jpg');
-    
+  it('changes navigation picture with valid .jpg file', () => {
+    // Arrange
+    const logo = document.getElementById('logo');
+
+    // Act
+    FileReader = fileReaderJpg;
+    const blob = new Blob(['dummy'], {type: 'image/jpg'});
+    handlePictureChange({target: {files: blob}});
+
+    // Assert
+    test.value(logo.src).isEqualTo('data:image/jpg');
   });
-  it('should change the navigation picture when a valid .jpeg file is selected', () => {
+  it('changes navigation picture with valid .jpeg file', () => {
     // Arrange
     const logo = document.getElementById('logo');
 
     // Act
     FileReader = fileReaderJpeg;
-    handlePictureChange({ target: { files: [new Blob(['dummy'], { type: 'image/jpeg' })] } });
+    const blob = new Blob(['dummy'], {type: 'image/jpeg'});
+    handlePictureChange({target: {files: blob}});
 
     // Assert
     test.value(logo.src).isEqualTo('data:image/jpeg');
-  
   });
-  it('should save the navigation picture when a valid .png file is selected in localstorage', () => {
-    //Arrange
-    //act
+  it('saves valid .png file in localStorage', () => {
+    // Arrange
+    // act
     FileReader = fileReaderPng;
-    handlePictureChange({ target: { files: [new Blob(['dummy'], { type: 'image/png' })] } });
+    const blob = new Blob(['dummy'], {type: 'image/png'});
+    handlePictureChange({target: {files: blob}});
 
     // Assert
     test.value(localStorageMock.getItem('picture')).isEqualTo('data:image/png');
-  })
-  it('should save the navigation picture when a valid .jpg file is selected in localstorage', () => {
-    //Arrange
-    //act
+  });
+  it('saves valid .jpg file in localStorage', () => {
+    // Arrange
+    // act
     FileReader = fileReaderJpg;
-    handlePictureChange({ target: { files: [new Blob(['dummy'], { type: 'image/jpg' })] } });
 
+    const blob = new Blob(['dummy'], {type: 'image/jpg'});
+    handlePictureChange({target: {files: blob}});
     // Assert
     test.value(localStorageMock.getItem('picture')).isEqualTo('data:image/jpg');
-  })
-  it('should save the navigation picture when a valid .jpeg file is selected in localstorage', () => {
-    //Arrange
-    //act
+  });
+  it('saves .jpeg file in localStorage', () => {
+    // Arrange
+    // act
     FileReader = fileReaderJpeg;
-    handlePictureChange({ target: { files: [new Blob(['dummy'], { type: 'image/jpeg' })] } });
+    const blob = new Blob(['dummy'], {type: 'image/jpeg'});
+    handlePictureChange({target: {files: blob}});
 
     // Assert
-    test.value(localStorageMock.getItem('picture')).isEqualTo('data:image/jpeg');
-  })
+    const localStoragePicture = localStorageMock.getItem('picture');
+    const expectedValue = 'data:image/jpeg';
+    test.value(localStoragePicture).isEqualTo(expectedValue);
+  });
 });
 
 describe('handleTitleChange', () => {
@@ -175,23 +208,24 @@ describe('handleTitleChange', () => {
     // Arrange
     const newTitleInput = document.getElementById('newTitle');
     const titleElement = document.getElementById('title');
-      
+
     // Act
     handleTitleChange();
-      
+
     // Assert
     test.value(titleElement.textContent).isEqualTo(newTitleInput.value);
-    });
-      
-    it('should save the new title to localStorage', () => {
+  });
+
+  it('should save the new title to localStorage', () => {
     // Arrange
     const newTitleInput = document.getElementById('newTitle');
-      
+
     // Act
     handleTitleChange();
-      
-    // Assert
-    test.value(localStorageMock.getItem('title')).isEqualTo(newTitleInput.value);
 
+    // Assert
+    const localStorageTitle = localStorageMock.getItem('title');
+    const expectedValue = newTitleInput.value;
+    test.value(localStorageTitle).isEqualTo(expectedValue);
   });
 });

@@ -1,15 +1,10 @@
 name: Lint Backend
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - '**/*.go'
-      - '.github/workflows/golangci-lint.yml' 
   pull_request:
     branches:
       - main
+      - dev
     paths:
       - '**/*.go'
       - '.github/workflows/golangci-lint.yml' 
@@ -80,7 +75,7 @@ jobs:
         if: always()
         
       - name: Upload linter output as artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: golangci-lint-output
           path: ${{ github.workspace }}/linting

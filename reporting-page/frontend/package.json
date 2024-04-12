@@ -7,21 +7,25 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "mocha"
+    "test": "mocha ./test/graph.test.js ./test/navigation.test.js ./test/piechart.test.js --parallel"
   },
   "devDependencies": {
+    "global-jsdom": "^24.0.0",
+    "jsdom": "24.0.0",
+    "jsdom-global": "3.0.2",
     "mocha": "*",
-    "vite": "^3.0.7"
+    "vite": "^3.2.10"
   },
   "dependencies": {
     "canvas": "^2.11.2",
     "chart.js": "^4.4.2",
-    "jsdom": "^24.0.0",
     "mocha": "^10.3.0",
+    "mock-require": "^3.0.3",
     "sqlite3": "^5.1.7",
     "unit.js": "^2.1.1"
   },
   "eslintConfig": {
+    "parser": "@babel/eslint-parser",
     "env": {
       "browser": true,
       "es2021": true
@@ -29,7 +33,13 @@
     "extends": "google",
     "parserOptions": {
       "ecmaVersion": "latest",
-      "sourceType": "module"
+      "sourceType": "module",
+      "requireConfigFile": false,
+      "babelOptions": {
+        "plugins": [
+          "@babel/plugin-syntax-import-assertions"
+        ]
+      }
     },
     "ignorePatterns": [
       "node_modules/",
@@ -37,16 +47,41 @@
       "wailsjs/"
     ],
     "rules": {
-      "linebreak-style":"off",
-      "indent": ["error", 2]
+      "linebreak-style": "off",
+      "indent": [
+        "error",
+        2
+      ],
+      "max-len": [
+        "error",
+        {
+          "code": 120
+        }
+      ],
+      "new-cap": [
+        "error",
+        {
+          "capIsNewExceptions": [
+            "WindowShow",
+            "WindowMaximise",
+            "LogPrint"
+          ]
+        }
+      ]
     }
   },
   "stylelint": {
-    "extends": ["stylelint-config-standard"],
+    "extends": [
+      "stylelint-config-standard"
+    ],
     "ignoreFiles": [
       "node_modules/**",
       "dist/**",
       "wailsjs/**"
-    ]
+    ],
+    "rules": {
+      "function-url-quotes": "never",
+      "no-descending-specificity": null
+    }
   }
 }
