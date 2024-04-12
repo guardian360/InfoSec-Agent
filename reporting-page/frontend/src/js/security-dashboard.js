@@ -197,7 +197,7 @@ function openSecurityDashboardPage() {
 
   // Create charts
   new PieChart('pieChart', rc);
-  let g = new Graph('interval-graph', rc);
+  const g = new Graph('interval-graph', rc);
   addGraphFunctions(g);
   document.getElementsByClassName('scan-now')[0].addEventListener('click', async () => {
     await scanTest();

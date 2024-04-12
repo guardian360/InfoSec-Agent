@@ -7,7 +7,7 @@ import {updateRiskcounter} from './risk-counters.js';
 /** Call ScanNow in backend and store result in sessionStorage */
 export async function scanTest() {
   try {
-    const result = await new Promise((resolve, reject) => {
+    await new Promise((resolve, reject) => {
       scanNowGo()
         .then(async (scanResult) => {
           // Handle the scan result
