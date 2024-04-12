@@ -65,8 +65,8 @@ export function openIssuePage(issueId) {
         <div class="issue-solution">
           <p id="solution-text">${currentIssue.Solution[stepCounter]}</p>
         </div>
+        <div id="back-button">Back to issues overview</div>
       </div>
-      <div id="back-button">Back to issues overview</div>
     `;
 
     const texts = ['information', 'solution', 'previous-button', 'next-button', 'back-button'];
@@ -74,12 +74,9 @@ export function openIssuePage(issueId) {
     for (let i = 0; i < texts.length; i++) {
       getLocalization(localizationIds[i], texts[i]);
     }
-    const solutionText = document.getElementById('solution-text');
-
     document.getElementById('back-button').addEventListener('click', () => openIssuesPage());
     document.onload = retrieveTheme();
-  }
-  else {
+  } else {
     const pageContents = document.getElementById('page-contents');
     pageContents.innerHTML = `
       <h1 class="issue-name">${currentIssue.Name}</h1>
@@ -97,8 +94,8 @@ export function openIssuePage(issueId) {
             </div>
           </div>
         </div>
+        <div id="back-button">Back to issues overview</div>
       </div>
-      <div id="back-button">Back to issues overview</div>
     `;
 
     const texts = ['information', 'solution', 'previous-button', 'next-button', 'back-button'];

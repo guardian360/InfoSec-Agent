@@ -70,7 +70,7 @@ h1 {
 
 #back-button {
   float: left;
-  margin: 20px 20px 50px;
+  margin-top: 10px;
   background-color: var(--background-color-left-nav);
   width: 180px;
   color: #fff;
