@@ -14,7 +14,7 @@ let stepCounter = 0;
  * @param {int} stepCounter Counter specifying the current step
  */
 export function updateSolutionStep(solutionText, solutionScreenshot, solution, screenshots, stepCounter) {
-  solutionText.innerHTML = solution[stepCounter];
+  solutionText.innerHTML = `${stepCounter + 1}. ${solution[stepCounter]}`;
   solutionScreenshot.src = screenshots[stepCounter];
 }
 
@@ -61,7 +61,7 @@ export function openIssuePage(issueId) {
       <div class="issue-information">
         <h2 id="information">Information</h2>
         <p>${currentIssue.Information}</p>
-        <h2 id="solution">Solution</h2>
+        <h2 id="solution">Acceptable</h2>
         <div class="issue-solution">
           <p id="solution-text">${currentIssue.Solution[stepCounter]}</p>
         </div>
@@ -88,7 +88,7 @@ export function openIssuePage(issueId) {
         <p>${currentIssue.Information}</p>
         <h2 id="solution">Solution</h2>
         <div class="issue-solution">
-          <p id="solution-text">${currentIssue.Solution[stepCounter]}</p>
+          <p id="solution-text">${stepCounter +1}. ${currentIssue.Solution[stepCounter]}</p>
           <img style='display:block; width:750px;height:auto' id="step-screenshot"></img>
           <div class="solution-buttons">
             <div class="button-box">
