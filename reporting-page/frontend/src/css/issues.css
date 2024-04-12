@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-@import url('color-palette.css');
+@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap);
+@import url(color-palette.css);
 
 /* Reset some basic elements */
 * {
@@ -9,7 +9,7 @@
 }
 
 body, button, input, select, textarea {
-  font-family: 'Roboto', sans-serif;
+  font-family: Roboto, sans-serif;
 }
 
 /* Use flexbox for layout */
@@ -82,6 +82,7 @@ body, button, input, select, textarea {
 #back-button, #next-button, #previous-button {
   width: auto; /* Auto width based on content */
   padding: 10px 15px; /* Sufficient padding for touch targets */
+  float: none; /* Remove float property */
 }
 
 /* Ensure buttons don't line up against each other */
@@ -94,7 +95,7 @@ body, button, input, select, textarea {
 }
 
 /* Responsive design */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .button, #back-button, #next-button, #previous-button {
     width: 100%; /* Full width on small screens */
     margin-top: 10px; /* Space out stacked buttons */
@@ -117,32 +118,23 @@ body, button, input, select, textarea {
 
 /* Additional styles for better visual */
 .issue-information, .issue-solution {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+  box-shadow: 0 4px 8px rgb(0 0 0 / 10%); /* Add shadow for depth */
   border: 1px solid #dcdcdc; /* Light border for definition */
-}
-
-/* Remove the float property to align with modern layout practices */
-#back-button, #next-button, #previous-button {
-  float: none;
+  margin: 20px; /* Add space around the elements */
+  background-color: var(--background-color-top-nav); /* Light background color */
+  border-radius: 10px; /* Rounded corners for a softer look */
+  padding: 10px; /* Add padding for space inside the elements */
 }
 
 /* Additional styles for other elements */
 h1, h2{
   color: var(--text-body);
   margin: 10px;
-  padding: 10px 0px 10px 10px; /* Add some padding to create space around the titles */
+  padding: 10px 0 10px 10px; /* Add some padding to create space around the titles */
 }
 
 .issue-information > p{
   margin-left: 20px;
-}
-
-.issue-information,
-.issue-solution {
-  margin: 20px;
-  background-color: var(--background-color-top-nav);
-  border-radius: 10px;
-  padding: 10px;
 }
 
 #step-screenshot {
