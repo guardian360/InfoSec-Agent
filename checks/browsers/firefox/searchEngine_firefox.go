@@ -110,11 +110,11 @@ func SearchEngineFirefox() checks.Check {
 	if err != nil {
 		return checks.NewCheckErrorf(checks.SearchFirefoxID, "Unable to uncompress", err)
 	}
-	output := string(data)
-	return checks.NewCheckResult(checks.SearchFirefoxID, 0, results(output))
+	return checks.NewCheckResult(checks.SearchFirefoxID, 0, results(data))
 }
 
-func results(output string) string {
+func results(data []byte) string {
+	output := string(data)
 	var result string
 	var re *regexp.Regexp
 	var matches string
