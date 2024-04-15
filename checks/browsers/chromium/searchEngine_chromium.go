@@ -9,17 +9,21 @@ import (
 	"path/filepath"
 	"regexp"
 
-	"github.com/InfoSec-Agent/InfoSec-Agent/filemock"
+	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 )
 
-// SearchEngineChromium checks the standard search engine in chromium based browsers.
+// SearchEngineChromium inspects the default search engine setting in Chromium-based browsers.
 //
-// Parameters: _
+// Parameters:
+//   - browser: A string representing the name of the Chromium-based browser to inspect. This could be "Chrome", "Edge", etc.
 //
-// Returns: The standard search engine for chromium based browsers
+// Returns:
+//   - A checks.Check object representing the result of the check. The result contains the name of the default search engine used in the specified browser. If an error occurs during the check, the result will contain a description of the error.
+//
+// This function works by locating the preferences file in the user's home directory, which contains the browser's settings. It opens and reads this file, then parses it as JSON to access the settings. It specifically looks for the "default_search_provider_data" key in the JSON data, which holds the name of the default search engine. If this key is found, its value is returned as the result of the check. If any error occurs during this process, such as an error reading the file or parsing the JSON, this error is returned as the result of the check.
 func SearchEngineChromium(browser string) checks.Check {
 	var browserPath string
 	var returnID int
@@ -44,14 +48,14 @@ func SearchEngineChromium(browser string) checks.Check {
 
 	// Get the current user's home directory, where the preferences can be found
 	preferencesDir := filepath.Join(user, "AppData", "Local", browserPath, "User Data", "Default", "Preferences")
-	// TODO: var needs to be filemock.File (this requires implementation of all other functions used for files in project)
 	var file *os.File
 	file, err = os.Open(filepath.Clean(preferencesDir))
 	if err != nil {
 		return checks.NewCheckErrorf(returnID, "Error: ", err)
 	}
-	defer func(file filemock.File) {
-		err = utils.CloseFile(file)
+	defer func(file *os.File) {
+		tmpFile := mocking.Wrap(file)
+		err = utils.CloseFile(tmpFile)
 		if err != nil {
 			log.Println("Error closing file")
 		}
@@ -63,7 +67,7 @@ func SearchEngineChromium(browser string) checks.Check {
 	if err != nil {
 		return checks.NewCheckErrorf(returnID, " Can't read data,Error: ", err)
 	}
-	// Holds the unmarshaled data of the json for acces to the key value pairs
+	// Holds the unmarshalled data of the json for access to the key value pairs
 	var dev map[string]interface{}
 	err = json.Unmarshal(byteValue, &dev)
 	if err != nil {

@@ -1,22 +1,26 @@
 package checks
 
 import (
-	"github.com/InfoSec-Agent/InfoSec-Agent/registrymock"
+	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 )
 
-// SecureBoot checks if Windows secure boot is enabled
+// SecureBoot is a function that checks if Windows Secure Boot is enabled on the system.
 //
-// Parameters: _
+// Parameters:
+//   - registryKey mocking.RegistryKey: A registry key object for accessing the Windows Secure Boot registry key.
 //
-// Returns: If Windows secure boot is enabled or not
-func SecureBoot(registryKey registrymock.RegistryKey) Check {
+// Returns:
+//   - Check: A struct containing the result of the check. The result indicates whether Windows Secure Boot is enabled or not.
+//
+// The function works by opening the Windows Secure Boot registry key and reading its 'UEFISecureBootEnabled' value. This value represents the status of Secure Boot. If the value is 1, Secure Boot is enabled. If the value is 0, Secure Boot is disabled. If the function encounters an error while accessing the registry key or reading the value, it returns a Check instance containing an error message. If the 'UEFISecureBootEnabled' value is not 1 or 0, the function returns a Check instance indicating that the Secure Boot status is unknown.
+func SecureBoot(registryKey mocking.RegistryKey) Check {
 	// Get secure boot information from the registry
-	windowsSecureBoot, err := registrymock.OpenRegistryKey(registryKey,
+	windowsSecureBoot, err := mocking.OpenRegistryKey(registryKey,
 		`SYSTEM\CurrentControlSet\Control\SecureBoot\State`)
 	if err != nil {
 		return NewCheckError(SecureBootID, err)
 	}
-	defer registrymock.CloseRegistryKey(windowsSecureBoot)
+	defer mocking.CloseRegistryKey(windowsSecureBoot)
 
 	// Read the status of secure boot
 	secureBootStatus, _, err := windowsSecureBoot.GetIntegerValue("UEFISecureBootEnabled")

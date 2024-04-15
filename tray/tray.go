@@ -6,6 +6,7 @@ package tray
 
 import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
+	"github.com/InfoSec-Agent/InfoSec-Agent/usersettings"
 	"github.com/pkg/errors"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
@@ -27,54 +28,90 @@ import (
 
 var ScanCounter int
 var ScanTicker *time.Ticker
-var language = 1 // Default language is British English
+
+// Language is used to represent the index of the currently selected language.
+// The language indices are as follows:
+//
+// 0: German
+//
+// 1: British English
+//
+// 2: American English
+//
+// 3: Spanish
+//
+// 4: French
+//
+// 5: Dutch
+//
+// 6: Portuguese
+//
+// Default language is British English
+var Language = 1
+
 var MenuItems []MenuItem
 var ReportingPageOpen = false
 var mQuit *systray.MenuItem
 
+// MenuItem represents a single item in the system tray menu.
+//
+// This struct encapsulates the title, tooltip text, and the actual system tray menu item object for a single menu item.
+// The 'MenuTitle' field is a string that represents the title of the menu item. This is the text that is displayed in the system tray menu.
+// The 'menuTooltip' field is a string that represents the tooltip text for the menu item. This is the text that is displayed when the user hovers over the menu item in the system tray menu.
+// The 'sysMenuItem' field is a pointer to a systray.MenuItem object. This is the actual menu item object that is added to the system tray menu.
+//
+// Fields:
+//   - MenuTitle string: The title of the menu item. This is the text that is displayed in the system tray menu.
+//   - menuTooltip string: The tooltip text for the menu item. This is the text that is displayed when the user hovers over the menu item in the system tray menu.
+//   - sysMenuItem *systray.MenuItem: The actual menu item object that is added to the system tray menu.
 type MenuItem struct {
 	MenuTitle   string
 	menuTooltip string
 	sysMenuItem *systray.MenuItem
 }
 
-// OnReady handles all actions that should be handled during the application run-time
+// OnReady orchestrates the runtime behavior of the system tray application.
 //
-// Parameters: _
+// This function sets up the system tray with various menu items such as 'Reporting Page', 'Change Scan Interval', 'Scan Now', 'Change Language', and 'Quit'. It also initializes a ticker for scheduled security scans and a signal listener for system termination signals.
+// It then enters a loop where it listens for various events such as clicks on the menu items, system termination signals, and the elapse of the scan interval. Depending on the event, it performs actions such as opening the reporting page, changing the scan interval, initiating an immediate scan, changing the application language, refreshing the menu, or quitting the application.
 //
-// Returns: _
+// Parameters: None.
+//
+// Returns: None. The function runs indefinitely, orchestrating the behavior of the system tray application.
 func OnReady() {
 	// Icon data can be found in the "icon" package
 	systray.SetIcon(icon.Data)
 	systray.SetTooltip("InfoSec Agent")
 
-	// Generate the menu for the system tray application
+	Language = usersettings.LoadUserSettings("usersettings").Language
+	scanInterval := usersettings.LoadUserSettings("usersettings").ScanInterval
 
-	mReportingPage := systray.AddMenuItem(localization.Localize(language, "Tray.ReportingPageTitle"),
-		localization.Localize(language, "Tray.ReportingPageTooltip"))
+	// Generate the menu for the system tray application
+	mReportingPage := systray.AddMenuItem(localization.Localize(Language, "Tray.ReportingPageTitle"),
+		localization.Localize(Language, "Tray.ReportingPageTooltip"))
 	MenuItems = append(MenuItems, MenuItem{MenuTitle: "Tray.ReportingPageTitle",
 		menuTooltip: "Tray.ReportingPageTooltip", sysMenuItem: mReportingPage})
 
 	systray.AddSeparator()
-	mChangeScanInterval := systray.AddMenuItem(localization.Localize(language, "Tray.ScanIntervalTitle"),
-		localization.Localize(language, "Tray.ScanIntervalTooltip"))
+	mChangeScanInterval := systray.AddMenuItem(localization.Localize(Language, "Tray.ScanIntervalTitle"),
+		localization.Localize(Language, "Tray.ScanIntervalTooltip"))
 	MenuItems = append(MenuItems, MenuItem{MenuTitle: "Tray.ScanIntervalTitle",
 		menuTooltip: "Tray.ScanIntervalTooltip", sysMenuItem: mChangeScanInterval})
 
-	mScanNow := systray.AddMenuItem(localization.Localize(language, "Tray.ScanNowTitle"),
-		localization.Localize(language, "Tray.ScanNowTooltip"))
+	mScanNow := systray.AddMenuItem(localization.Localize(Language, "Tray.ScanNowTitle"),
+		localization.Localize(Language, "Tray.ScanNowTooltip"))
 	MenuItems = append(MenuItems, MenuItem{MenuTitle: "Tray.ScanNowTitle",
 		menuTooltip: "Tray.ScanNowTooltip", sysMenuItem: mScanNow})
 
 	systray.AddSeparator()
-	mChangeLanguage := systray.AddMenuItem(localization.Localize(language, "Tray.ChangeLanguageTitle"),
-		localization.Localize(language, "Tray.ChangeLanguageTooltip"))
+	mChangeLanguage := systray.AddMenuItem(localization.Localize(Language, "Tray.ChangeLanguageTitle"),
+		localization.Localize(Language, "Tray.ChangeLanguageTooltip"))
 	MenuItems = append(MenuItems, MenuItem{MenuTitle: "Tray.ChangeLanguageTitle",
 		menuTooltip: "Tray.ChangeLanguageTooltip", sysMenuItem: mChangeLanguage})
 
 	systray.AddSeparator()
-	mQuit = systray.AddMenuItem(localization.Localize(language, "Tray.QuitTitle"),
-		localization.Localize(language, "Tray.QuitTooltip"))
+	mQuit = systray.AddMenuItem(localization.Localize(Language, "Tray.QuitTitle"),
+		localization.Localize(Language, "Tray.QuitTooltip"))
 	MenuItems = append(MenuItems, MenuItem{MenuTitle: "Tray.QuitTitle",
 		menuTooltip: "Tray.QuitTooltip", sysMenuItem: mQuit})
 
@@ -86,7 +123,7 @@ func OnReady() {
 
 	ScanCounter = 0
 	// Set a ticker to run a scan at a set interval (default = 1 week)
-	ScanTicker = time.NewTicker(7 * 24 * time.Hour)
+	ScanTicker = time.NewTicker(time.Duration(scanInterval) * time.Hour)
 
 	// Iterate over each menu option/signal
 	for {
@@ -122,22 +159,29 @@ func OnReady() {
 	}
 }
 
-// OnQuit handles all actions that should happen when the application exits/terminates
+// OnQuit manages the cleanup operations that need to be performed when the application is about to terminate.
 //
-// Parameters: _
+// This function is called when the application is exiting. It is responsible for performing any necessary cleanup operations such as closing open files, terminating active connections, or releasing resources. The specific cleanup operations depend on the resources and services used by the application.
 //
-// Returns: _
+// Parameters: None.
+//
+// Returns: None. The function performs cleanup operations in-place.
 func OnQuit() {
 	// Perform cleanup tasks here
 	// Currently, there are no cleanup tasks to perform
 	logger.Log.Info("Quitting the application")
 }
 
-// OpenReportingPage opens the reporting page using a Wails application
+// OpenReportingPage launches the reporting page of the application using a Wails application.
 //
-// Parameters: _
+// This function checks if a reporting page is already open. If it is, it returns an error. If not, it changes the current working directory to the reporting page directory and builds the reporting-page executable using the Wails framework.
+// It then runs the executable, opening the reporting page. If the 'Quit' option is selected from the system tray while the reporting page is open, the function kills the reporting-page process and sets the ReportingPageOpen flag to false.
 //
-// Returns: _
+// Parameters:
+//   - path string: The relative path to the reporting-page directory. This is used to change the current working directory to the reporting-page directory.
+//
+// Returns:
+//   - error: An error object if an error occurred during the process, otherwise nil.
 func OpenReportingPage(path string) error {
 	if ReportingPageOpen {
 		return errors.New("reporting-page is already running")
@@ -166,13 +210,12 @@ func OpenReportingPage(path string) error {
 		ReportingPageOpen = false
 	}()
 
-	// Build reporting-page executable
-	buildCmd := exec.Command("wails", "build", "-windowsconsole")
-
-	buildCmd.Stdout = os.Stdout
-	buildCmd.Stderr = os.Stderr
-	if err = buildCmd.Run(); err != nil {
-		return fmt.Errorf("error building reporting-page: %w", err)
+	const build = false
+	if build {
+		err = BuildReportingPage()
+		if err != nil {
+			return err
+		}
 	}
 
 	// Set up the reporting-page executable
@@ -199,11 +242,32 @@ func OpenReportingPage(path string) error {
 	return nil
 }
 
-// ChangeScanInterval provides the user with a dialog window to set the (new) scan interval
+// BuildReportingPage builds the reporting page executable using a Wails application
 //
-// Parameters: optional string testInput, used in tray_test.go
+// Parameters: _
 //
 // Returns: _
+func BuildReportingPage() error {
+	buildCmd := exec.Command("wails", "build", "-windowsconsole")
+
+	buildCmd.Stdout = os.Stdout
+	buildCmd.Stderr = os.Stderr
+	if err := buildCmd.Run(); err != nil {
+		return fmt.Errorf("error building reporting-page: %w", err)
+	}
+	return nil
+}
+
+// ChangeScanInterval prompts the user to set a new scan interval through a dialog window.
+//
+// This function displays a dialog window asking the user to input the desired scan interval in hours. If the user input is valid, the function updates the scan interval accordingly. If the input is invalid or less than or equal to zero, the function defaults to a 24-hour interval.
+//
+// For testing purposes, an optional string parameter 'testInput' can be provided. If 'testInput' is provided, the function uses this as the user's input instead of displaying the dialog window.
+//
+// Parameters:
+//   - testInput ...string: Optional parameter used for testing. If provided, the function uses this as the user's input instead of displaying the dialog window.
+//
+// Returns: None. The function updates the 'ScanTicker' variable in-place.
 func ChangeScanInterval(testInput ...string) {
 	var res string
 	// If testInput is provided, use it for testing
@@ -228,16 +292,27 @@ func ChangeScanInterval(testInput ...string) {
 	}
 
 	// Restart the ticker with the new interval
-	ScanTicker.Stop()
+	if ScanTicker != nil {
+		ScanTicker.Stop()
+	}
 	ScanTicker = time.NewTicker(time.Duration(interval) * time.Hour)
 	logger.Log.Printf("Scan interval changed to %d hours\n", interval)
+	usersettings.SaveUserSettings(usersettings.UserSettings{
+		Language:     usersettings.LoadUserSettings("usersettings").Language,
+		ScanInterval: interval,
+	}, "usersettings")
 }
 
-// ScanNow performs one scan iteration (without checking if it is scheduled)
+// ScanNow initiates an immediate security scan, bypassing the scheduled intervals.
 //
-// Parameters: _
+// This function triggers a security scan regardless of the scheduled intervals. It is useful for situations where an immediate scan is required, such as after a significant system change or when manually requested by the user.
+// During the scan, a progress dialog is displayed to keep the user informed about the scan progress. Once the scan is complete, the dialog is closed and the results of the scan are returned.
 //
-// Returns: list of checks
+// Parameters: None.
+//
+// Returns:
+//   - []checks.Check: A list of checks performed during the scan.
+//   - error: An error object if an error occurred during the scan, otherwise nil.
 func ScanNow() ([]checks.Check, error) {
 	// ScanCounter is not concretely used at the moment
 	// might be useful in the future
@@ -274,11 +349,24 @@ func ScanNow() ([]checks.Check, error) {
 	return result, nil
 }
 
-// ChangeLanguage provides the user with a dialog window to change the language of the application
+// ChangeLanguage allows the user to select a new language for the application via a dialog window.
 //
-// Parameters: _
+// This function presents a dialog window with a list of available languages. The user can select a language from this list, and the application's language setting is updated accordingly.
+// The function maps each language to an index, which is used internally for localization. If the function is called with a test input, it uses the test input instead of displaying the dialog window.
 //
-// Returns: _
+// The language indices are as follows:
+// 0: German
+// 1: British English
+// 2: American English
+// 3: Spanish
+// 4: French
+// 5: Dutch
+// 6: Portuguese
+//
+// Parameters:
+//   - testInput ...string: Optional parameter used for testing. If provided, the function uses this as the user's language selection instead of displaying the dialog window.
+//
+// Returns: None. The function updates the 'language' variable in-place.
 func ChangeLanguage(testInput ...string) {
 	var res string
 	if len(testInput) > 0 {
@@ -297,41 +385,40 @@ func ChangeLanguage(testInput ...string) {
 	// Assign each language to an index for the localization package
 	switch res {
 	case "German":
-		language = 0
+		Language = 0
 	case "British English":
-		language = 1
+		Language = 1
 	case "American English":
-		language = 2
+		Language = 2
 	case "Spanish":
-		language = 3
+		Language = 3
 	case "French":
-		language = 4
+		Language = 4
 	case "Dutch":
-		language = 5
+		Language = 5
 	case "Portuguese":
-		language = 6
+		Language = 6
 	default:
-		language = 1
+		Language = 1
 	}
+	usersettings.SaveUserSettings(usersettings.UserSettings{
+		Language:     Language,
+		ScanInterval: usersettings.LoadUserSettings("usersettings").ScanInterval,
+	}, "usersettings")
 }
 
-// RefreshMenu updates the menu items with the current language
+// RefreshMenu updates the system tray menu items to reflect the current language setting.
 //
-// Parameters: _
+// This function iterates over each menu item in the system tray and updates its title and tooltip text to match the current language setting.
+// The language setting is determined by the 'language' variable, which stores the index of the currently active language.
+// The function uses the 'Localize' function from the 'localization' package to translate the title and tooltip text of each menu item.
 //
-// Returns: _
+// Parameters: None.
+//
+// Returns: None. The function updates the system tray menu items in-place.
 func RefreshMenu() {
 	for _, item := range MenuItems {
-		item.sysMenuItem.SetTitle(localization.Localize(language, item.MenuTitle))
-		item.sysMenuItem.SetTooltip(localization.Localize(language, item.menuTooltip))
+		item.sysMenuItem.SetTitle(localization.Localize(Language, item.MenuTitle))
+		item.sysMenuItem.SetTooltip(localization.Localize(Language, item.menuTooltip))
 	}
-}
-
-// Language returns the current language index
-//
-// Parameters: _
-//
-// Returns: language index
-func Language() int {
-	return language
 }

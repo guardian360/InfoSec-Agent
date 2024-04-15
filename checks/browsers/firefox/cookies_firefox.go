@@ -15,11 +15,14 @@ import (
 	_ "modernc.org/sqlite"
 )
 
-// CookieFirefox checks the cookies in the Firefox browser.
+// CookieFirefox inspects the cookies stored in the Firefox browser.
 //
-// Parameters: _
+// Parameters: None
 //
-// Returns: A list of cookies in the Firefox browser
+// Returns:
+//   - A checks.Check object representing the result of the check. The result contains a list of cookies stored in the Firefox browser. Each cookie is represented as a string that includes the name, host, and creation time of the cookie. If an error occurs during the check, the result will contain a description of the error.
+//
+// This function works by locating the Firefox profile directory and copying the cookies.sqlite database to a temporary location. It then opens this database and queries it for the name, host, and creation time of each cookie. The results are returned as a list of strings, each string representing a cookie. If any error occurs during this process, such as an error copying the file or querying the database, this error is returned as the result of the check.
 func CookieFirefox() checks.Check {
 	var output []string
 	// Determine the directory in which the Firefox profile is stored
@@ -40,7 +43,7 @@ func CookieFirefox() checks.Check {
 	}(tempCookieDbff)
 
 	// Copy the database to a temporary location
-	copyError := utils.CopyFile(ffdirectory[0]+"\\cookies.sqlite", tempCookieDbff)
+	copyError := utils.CopyFile(ffdirectory[0]+"\\cookies.sqlite", tempCookieDbff, nil, nil)
 	if copyError != nil {
 		return checks.NewCheckErrorf(checks.CookiesFirefoxID, "Unable to make a copy of the file", copyError)
 	}

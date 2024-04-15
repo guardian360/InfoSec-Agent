@@ -3,15 +3,19 @@ package checks
 import (
 	"strings"
 
-	"github.com/InfoSec-Agent/InfoSec-Agent/commandmock"
+	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 )
 
-// UACCheck checks the User Account Control (UAC) level
+// UACCheck is a function that checks the User Account Control (UAC) level on the system.
 //
-// Parameters: _
+// Parameters:
+//   - uacExecutor commandmock.CommandExecutor: An executor to run the command for checking the UAC level.
 //
-// Returns: The level that the UAC is enabled at
-func UACCheck(uacExecutor commandmock.CommandExecutor) Check {
+// Returns:
+//   - Check: A struct containing the result of the check. The result indicates the level at which the UAC is enabled.
+//
+// The function works by executing a PowerShell command to get the 'ConsentPromptBehaviorAdmin' property from the system registry. This property represents the UAC level. The function then parses the output of the command to determine the UAC level. Based on the value of the key, the function returns a Check instance containing a string that describes the UAC level.
+func UACCheck(uacExecutor mocking.CommandExecutor) Check {
 	// The UAC level can be retrieved as a property from the ConsentPromptBehaviorAdmin
 	command := "powershell"
 	key, err := uacExecutor.Execute(command, "(Get-ItemProperty -Path 'HKLM:\\SOFTWARE\\Microsoft\\Windows\\"+

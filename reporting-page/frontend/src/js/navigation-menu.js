@@ -1,4 +1,5 @@
 import {getLocalization} from './localize.js';
+import {LogError as logError} from '../../wailsjs/go/main/Tray.js';
 
 /** Give the selected navigation item a different color
  * @param {string} item - The navigation item that is selected
@@ -81,6 +82,6 @@ if (typeof document !== 'undefined') {
       getLocalization(localizationIds[i], navbarItems[i]);
     }
   } catch (error) {
-    console.log('Error in navigation-menu.js: ' + error);
+    logError('Error in navigation-menu.js: ' + error);
   }
 }

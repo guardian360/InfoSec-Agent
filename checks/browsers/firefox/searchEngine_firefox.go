@@ -8,18 +8,21 @@ import (
 	"path/filepath"
 	"regexp"
 
-	"github.com/InfoSec-Agent/InfoSec-Agent/filemock"
+	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"github.com/pierrec/lz4"
 )
 
-// SearchEngineFirefox checks the standard search engine in firefox.
+// SearchEngineFirefox is a function that retrieves the default search engine used in the Firefox browser.
 //
-// Parameters: _
+// Parameters: None
 //
-// Returns: The standard search engine for firefox
+// Returns:
+//   - checks.Check: A Check object that encapsulates the result of the search engine check. The Check object includes a string that represents the default search engine in the Firefox browser. If an error occurs during the check, the Check object will encapsulate this error.
+//
+// This function first determines the directory in which the Firefox profile is stored. It then opens and reads the 'search.json.mozlz4' file, which contains information about the default search engine. The function decompresses the file, extracts the default search engine information, and returns this information as a Check object. If an error occurs at any point during this process, it is encapsulated in the Check object and returned.
 func SearchEngineFirefox() checks.Check {
 	// Determine the directory in which the Firefox profile is stored
 	var ffdirectory []string
@@ -40,7 +43,7 @@ func SearchEngineFirefox() checks.Check {
 	}(tempSearch)
 
 	// Copy the compressed json to a temporary location
-	copyError := utils.CopyFile(filePath, tempSearch)
+	copyError := utils.CopyFile(filePath, tempSearch, nil, nil)
 	if copyError != nil {
 		return checks.NewCheckErrorf(checks.SearchFirefoxID, "Unable to make a copy of the file", copyError)
 	}
@@ -52,19 +55,19 @@ func SearchEngineFirefox() checks.Check {
 	fileSize := fileInfo.Size()
 
 	// Holds the information from the copied file
-	// TODO: Look at searchEngine_chromium.go for how to implement filemock.File
 	file, err := os.Open(filepath.Clean(tempSearch))
 	if err != nil {
 		return checks.NewCheckErrorf(checks.SearchFirefoxID, "Unable to open the file", err)
 	}
-	defer func(file filemock.File) {
-		err = utils.CloseFile(file)
+	defer func(file *os.File) {
+		tmpFile := mocking.Wrap(file)
+		err = utils.CloseFile(tmpFile)
 		if err != nil {
 			log.Println("Error closing file")
 		}
 	}(file)
 
-	// Holds the custom magig number for the mozzila lz4 compression
+	// Holds the custom magic number for the mozilla lz4 compression
 	magicNumber := make([]byte, 8)
 
 	// Retrieves the magicNumber from the file
@@ -110,11 +113,21 @@ func SearchEngineFirefox() checks.Check {
 	if err != nil {
 		return checks.NewCheckErrorf(checks.SearchFirefoxID, "Unable to uncompress", err)
 	}
-	output := string(data)
-	return checks.NewCheckResult(checks.SearchFirefoxID, 0, results(output))
+	return checks.NewCheckResult(checks.SearchFirefoxID, 0, results(data))
 }
 
-func results(output string) string {
+// results is a utility function used within the SearchEngineFirefox function.
+// It processes the output string from the decompressed 'search.json.mozlz4' file to identify the default search engine.
+//
+// Parameters:
+//   - output (string): Represents the decompressed output string from the 'search.json.mozlz4' file.
+//
+// Returns:
+//   - string: A string that represents the default search engine in the Firefox browser. If the defaultEngineId is empty, the function returns "Google". If the defaultEngineId matches known search engines (ddg, bing, ebay, wikipedia, amazon), the function returns the name of the matched search engine. If the defaultEngineId does not match any known search engines, the function returns "Other Search Engine".
+//
+// This function first checks if the defaultEngineId in the output string is empty, which indicates that the default search engine is Google. If the defaultEngineId is not empty, the function checks if it matches the ids of other known search engines. If a match is found, the function returns the name of the matched search engine. If no match is found, the function returns "Other Search Engine".
+func results(data []byte) string {
+	output := string(data)
 	var result string
 	var re *regexp.Regexp
 	var matches string

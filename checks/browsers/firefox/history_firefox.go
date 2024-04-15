@@ -16,9 +16,9 @@ import (
 	_ "modernc.org/sqlite"
 )
 
-// HistoryFirefox checks the user's history in the Firefox browser for phishing domains.
+// HistoryFirefox inspects the user's browsing history in the Firefox browser for any visits to known phishing domains within the last week.
 //
-// Parameters:
+// Parameters: None
 //
 // Returns: The phishing domains that the user has visited in the last week and when they visited it
 func HistoryFirefox(profileFinder utils.FirefoxProfileFinder) checks.Check {
@@ -39,7 +39,7 @@ func HistoryFirefox(profileFinder utils.FirefoxProfileFinder) checks.Check {
 	}(tempHistoryDbff)
 
 	// Copy the database to a temporary location
-	copyError := utils.CopyFile(ffdirectory[0]+"\\places.sqlite", tempHistoryDbff)
+	copyError := utils.CopyFile(ffdirectory[0]+"\\places.sqlite", tempHistoryDbff, nil, nil)
 	if copyError != nil {
 		return checks.NewCheckError(checks.HistoryFirefoxID, copyError)
 	}
@@ -65,10 +65,11 @@ func HistoryFirefox(profileFinder utils.FirefoxProfileFinder) checks.Check {
 	return checks.NewCheckResult(checks.HistoryFirefoxID, 1, output...)
 }
 
-// CloseDatabase is a helper function used by the HistoryFirefox function.
-// It closes the database connection passed to it.
+// CloseDatabase is a utility function that is utilized within the HistoryFirefox function.
+// It is responsible for terminating the established database connection.
 //
-// Parameters: db (*sql.DB) - the database connection to close
+// Parameters:
+//   - db (*sql.DB): Represents the active database connection that needs to be closed.
 //
 // Returns: _
 func CloseDatabase(db *sql.DB) {
@@ -77,12 +78,17 @@ func CloseDatabase(db *sql.DB) {
 	}
 }
 
-// QueryDatabase is a helper function used by the HistoryFirefox function.
-// It queries the Firefox history database for the user's history in the last week.
+// QueryDatabase is a helper function that is utilized within the HistoryFirefox function.
+// It performs a query on the Firefox history database to retrieve the user's browsing history from the past week.
 //
-// Parameters: db (*sql.DB) - the database connection to query
+// Parameters:
+//   - db (*sql.DB): Represents the active database connection that will be queried.
 //
-// Returns: The QueryResults in a slice and an error if applicable
+// Returns:
+//   - *sql.Rows: The result set of the query, which includes the URLs visited by the user in the past week and their respective visit dates.
+//   - error: An error object that encapsulates any error encountered during the execution of the query. If no error occurred, this will be nil.
+//
+// This function constructs a SQL query to select the URL and last visit date from the 'moz_places' table for entries where the last visit date is within the past week. The query is executed against the provided database connection, and the resulting rows are returned. If an error occurs during the execution of the query, it is returned as well.
 func QueryDatabase(db *sql.DB) ([]QueryResult, error) {
 	// Truncate the time to the time of the last week without the milliseconds
 	lastWeek := (time.Now().AddDate(0, 0, -7).UnixMicro() / 10000000) * 10000000
@@ -111,15 +117,16 @@ func QueryDatabase(db *sql.DB) ([]QueryResult, error) {
 	return results, nil
 }
 
-// CloseRows is a helper function used by the HistoryFirefox function.
-// It closes the rows of the query passed to it.
+// CloseRows is a utility function used within the HistoryFirefox function.
+// It is responsible for closing the result set of a database query.
 //
-// Parameters: rows (*sql.Rows) - the rows to close
+// Parameters:
+//   - rows (*sql.Rows): Represents the result set of a database query that needs to be closed.
 //
-// Returns: _
+// This function does not return any value. However, if an error occurs during the closure of the result set,
+// it will be logged for debugging purposes.
 func CloseRows(rows *sql.Rows) {
-	err := rows.Close()
-	if err != nil {
+	if err := rows.Close(); err != nil {
 		logger.Log.ErrorWithErr("Error closing rows: ", err)
 	}
 }
@@ -130,13 +137,17 @@ type QueryResult struct {
 	LastVisitDate sql.NullInt64
 }
 
-// ProcessQueryResults is a helper function used by the HistoryFirefox function.
-// It processes the results of the query and returns the phishing domains that the user has visited in the last week.
+// ProcessQueryResults is a function used within the HistoryFirefox function.
+// It processes the results of a database query and identifies any visited phishing domains from the past week.
 //
-// Parameters: QueryResult ([]QueryResult) - A slice of QueryResults
+// Parameters:
+//   - results []QueryResult: Represents the result set of a database query, which includes the URLs visited by the user in the past week and their respective visit dates.
 //
-// Returns: The phishing domains that the user has visited in the last week and when they visited it
-// and an error if applicable
+// Returns:
+//   - []string: A slice of strings, where each string represents a phishing domain that the user has visited in the past week, along with the time of the visit. If no visits to phishing domains are found, the slice will be empty.
+//   - error: An error object that encapsulates any error encountered during the processing of the query results. If no error occurred, this will be nil.
+//
+// This function iterates over each row in the provided result set. For each row, it extracts the URL and last visit date, and checks the URL against a list of known phishing domains. If a match is found, a string is generated that includes the domain name and the time of the visit, and this string is added to the results. If an error occurs during this process, it is returned as well.
 func ProcessQueryResults(results []QueryResult) ([]string, error) {
 	var output []string
 	phishingDomainList := utils.GetPhishingDomains()
@@ -168,7 +179,8 @@ type RealTimeFormatter struct{}
 // FormatTime  is a helper function used by the processQueryResults function.
 // It formats the last visit date of a website to a human-readable string.
 //
-// Parameters: lastVisitDate (sql.NullInt64) - the last visit date of a website
+// Parameters:
+//   - lastVisitDate (sql.NullInt64): Represents the Unix timestamp of the last visit date of a website. This value can be null.
 //
 // Returns: The last visit date of a website as a human-readable string
 func (RealTimeFormatter) FormatTime(lastVisitDate sql.NullInt64) string {

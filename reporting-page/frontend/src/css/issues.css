@@ -1,143 +1,145 @@
+@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap);
 @import url(color-palette.css);
 
-.issues-data {
-  color: var(--text-body);
-  width: flex;
-  display: flex;
-  flex-flow: row wrap;
+/* Reset some basic elements */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Issue table */
+body, button, input, select, textarea {
+  font-family: Roboto, sans-serif;
+}
+
+/* Use flexbox for layout */
+.issues-data {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 10px; /* Use gap to space flex items */
+}
+
+/* Make tables full-width and scrollable on small screens */
 .issues-table {
-  float: left;
-  flex: 1;
-  margin: 10px;
+  width: 100%; /* Use 100% width for responsive design */
+  margin-bottom: 20px;
+  overflow-x: auto; /* Allows table to scroll on small screens */
 }
 
 .issues-table td, .issues-table th {
-  border: 1px solid #ddd;
   padding: 8px;
+  border: none; /* Remove borders for a cleaner look */
 }
 
-.issues-table tr:nth-child(even){background-color: var(--background-color-top-nav);}
+.issues-table tr:nth-child(even) {
+  background-color: var(--background-color-top-nav);
+}
 
 .issues-table th {
-  text-align: left;
   background-color: var(--background-color-table-header);
-  color: var(--text-body);
+  text-align: left;
 }
 
-.issue-column span {
-  float: left;
+/* Icons */
+.material-symbols-outlined {
+  float: none; /* Avoid using float and instead use flex or grid */
+  margin-left: auto; /* Align icon to the right using margin */
 }
 
-.table-header {
-  margin-top: 2px;
-}
-
-.issues-table .material-symbols-outlined {
-  float: right;
-}
-
-.issues-table .material-symbols-outlined:hover {
-  cursor: pointer;
-}
-
+/* Links */
 .issue-link {
   text-decoration: none;
   color: var(--text-body);
+  transition: color 0.3s; /* Smooth transition for hover effect */
 }
 
 .issue-link:hover {
   color: var(--text-settings-hover);
-  cursor: pointer;
 }
 
-/* Issue pages */
-h1 {
-  float: left;
-  margin-top: 80px;
-  margin-left: 260px;
-  margin-right: 20px;
-  color: var(--text-body);
-}
-
-.issue-information {
-  float: left;
-  margin-left: 260px;
-  margin-right: 20px;
-  color: var(--text-body);
-}
-
-#back-button {
-  float: left;
-  margin: 20px 20px 50px 260px;
-  color: var(--text-body);
-}
-
-#back-button:hover {
-  color: var(--text-settings-hover);
-  cursor:pointer;
-}
-
-.issue-solution {
-  background-color: var(--background-color-top-nav);
-  float: left;
-  width: 100%;
-  border-radius: 10px;
-}
-
-.solution-text {
-  margin: 20px;
-}
-
-#step-screenshot {
-  /* display: block; */
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.solution-buttons {
-  display: flex;
-  margin: 10px;
-  margin-left: auto;
-  margin-right: auto;
-  width:100%;
-}
-
-.button-box {
-  display:block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 320px;
-}
-
-.step-button {
-  color: var(--text-body);
-}
-
-.step-button:hover {
-  color: var(--text-settings-hover);
-  cursor:pointer;
-}
-
-#next-button {
-  float: right;
-  width: 130px;
+/* Button styles */
+.button {
   background-color: var(--background-color-left-nav);
   color: #fff;
-  margin-left: auto; 
-  padding: 10px;
+  padding: 12px 20px;
   text-align: center;
-  border-radius: 10px;
+  text-decoration: none; /* Remove underline from links styled as buttons */
+  display: inline-block; /* Allows padding and width to take effect */
+  border-radius: 5px;
+  transition: background-color 0.2s, color 0.2s;
+  cursor: pointer; /* Indicate that it's clickable */
+  border: none; /* Remove borders for flat design */
+  font-size: 16px; /* Increase font size for readability */
+  margin: 5px; /* Add some space around buttons */
+}
+
+.button:hover {
+  background-color: #0056b3; /* Slightly darker blue on hover */
+  color: #dcdcdc; /* Light grey text color on hover for better contrast */
+}
+
+/* Specific Styles for Navigation Buttons */
+#back-button, #next-button, #previous-button {
+  width: auto; /* Auto width based on content */
+  padding: 10px 15px; /* Sufficient padding for touch targets */
+  float: none; /* Remove float property */
+}
+
+/* Ensure buttons don't line up against each other */
+#next-button {
+  margin-left: 10px; /* Add space between buttons */
 }
 
 #previous-button {
-  float: left;
-  width: 130px;
-  background-color: var(--background-color-left-nav);
-  color: #fff;
-  padding: 10px;
-  text-align: center;
-  border-radius: 10px;
+  margin-right: 10px; /* Add space between buttons */
+}
+
+/* Responsive design */
+@media (width <= 768px) {
+  .button, #back-button, #next-button, #previous-button {
+    width: 100%; /* Full width on small screens */
+    margin-top: 10px; /* Space out stacked buttons */
+  }
+}
+
+/* Solution Buttons Container */
+.solution-buttons {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center; /* Center buttons in the container */
+  flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+}
+
+.button-box {
+  display: flex;
+  justify-content: center; /* Center buttons horizontally */
+  flex-wrap: wrap; /* Allow buttons to wrap */
+}
+
+/* Additional styles for better visual */
+.issue-information, .issue-solution {
+  box-shadow: 0 4px 8px rgb(0 0 0 / 10%); /* Add shadow for depth */
+  border: 1px solid #dcdcdc; /* Light border for definition */
+  margin: 20px; /* Add space around the elements */
+  background-color: var(--background-color-top-nav); /* Light background color */
+  border-radius: 10px; /* Rounded corners for a softer look */
+  padding: 10px; /* Add padding for space inside the elements */
+}
+
+/* Additional styles for other elements */
+h1, h2{
+  color: var(--text-body);
+  margin: 10px;
+  padding: 10px 0 10px 10px; /* Add some padding to create space around the titles */
+}
+
+.issue-information > p{
+  margin-left: 20px;
+}
+
+#step-screenshot {
+  display: block;
+  max-width: 100%; /* Make it responsive */
+  height: auto;
+  margin-top: 20px;
 }
