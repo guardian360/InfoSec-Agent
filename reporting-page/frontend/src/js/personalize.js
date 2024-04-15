@@ -38,22 +38,6 @@ export function openPersonalizePage() {
     </div>
   </div>
   <hr class="solid">
-  <!--<div class="setting">
-    <span class="personalize-description">Font</span>
-  </div>
-  <hr class="solid">
-  <div class="setting">
-    <span class="personalize-description">Background color Left nav</span>
-    <div class="personalize-button-container">
-      <label class="personalize-label" for="input-color-background">Change background</label>
-      <input class="personalize-input-invisible" type="color" id="input-color-background">   
-    </div>
-  </div>
-  <hr class="solid">
-  <div class="setting">
-    <span class="personalize-description">text color</span>
-  </div>
-  <hr class="solid">-->
   <div class="setting">
     <form action="" class="color-picker>
       <fieldset>
@@ -62,6 +46,9 @@ export function openPersonalizePage() {
         <input type="radio" name="theme" id="normal" checked>
         <label for="dark">Dark</label>
         <input type="radio" name="theme" id="dark">
+    <div class="personalize-button-container">
+      <button class="setting-button reset-button" type="button">Reset settings </button>    
+    </div>
   </div>
   `;
   // add eventlistener for changing Favicon
@@ -103,11 +90,20 @@ export function openPersonalizePage() {
     }
   });
 
+
+  // add eventlistener for changing Favicon
+  const changeResetButton = document.getElementsByClassName('reset-button')[0];
+
+  changeResetButton.addEventListener('click', function() {
+    resetSettings();
+  });
+
   /*
   // add eventlistener for changing navigation title
   const inputBackgroundNav = document.getElementById('input-color-background');
   inputBackgroundNav.addEventListener('change', handleLeftBackgroundNav);
   */
+
   /* save themes*/
   const themes = document.querySelectorAll('[name="theme"]');
   themes.forEach((themeOption) => {
@@ -202,9 +198,17 @@ export function retrieveTheme() {
   const activeTheme = localStorage.getItem('theme');
   document.documentElement.className = activeTheme;
 }
+/**
+ * Resets the settings by clearing localStorage and restoring default values.
+ */
+export function resetSettings() {
+  localStorage.clear();
+  const logo = document.getElementById('logo');
+  logo.src = './src/assets/images/logoTeamA-transformed.png';
 
-// achtergrond navigation
-// normale achtergrond
-// kleur text
-// text font
-// kleur buttons
+  const title = document.getElementById('title');
+  title.textContent = 'Little Brother';
+
+  const favicon = document.getElementById('favicon');
+  favicon.href = './src/assets/images/logoTeamA-transformed.png';
+}
