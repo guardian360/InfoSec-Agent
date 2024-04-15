@@ -26,14 +26,25 @@ import (
 //go:embed all:frontend/dist
 var assets embed.FS
 
+// FileLoader is a struct that implements the http.Handler interface to serve files from the frontend/src/assets/images directory.
 type FileLoader struct {
 	http.Handler
 }
 
+// NewFileLoader creates a new instance of the FileLoader struct.
 func NewFileLoader() *FileLoader {
 	return &FileLoader{}
 }
 
+// ServeHTTP serves the requested file from the frontend/src/assets/images directory.
+// It first constructs the full path to the requested file and checks if the file is within the allowed directory.
+//
+// This function reads the file data and writes it to the response writer.
+// If an error occurs during the file reading or writing process, it logs the error and returns an appropriate HTTP error response.
+//
+// Parameters: The response writer and the HTTP request.
+//
+// Returns: None. This function does not return a value as it serves the requested file.
 func (h *FileLoader) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 	const baseDir = "frontend/src/assets/images" // Base directory for image files
 	requestedPath := req.URL.Path
