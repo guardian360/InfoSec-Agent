@@ -7,8 +7,10 @@ package main
 
 import (
 	"embed"
+	"log"
 	"net/http"
 	"os"
+	"path/filepath"
 	"strings"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/localization"
@@ -33,16 +35,37 @@ func NewFileLoader() *FileLoader {
 }
 
 func (h *FileLoader) ServeHTTP(res http.ResponseWriter, req *http.Request) {
-	var err error
-	requestedFilename := strings.TrimPrefix(req.URL.Path, "/")
-	logger.Log.Info("Requesting file:" + requestedFilename)
-	fileData, err := os.ReadFile(requestedFilename)
-	if err != nil {
-		res.WriteHeader(http.StatusBadRequest)
-		logger.Log.Info("Could not load file" + requestedFilename)
+	const baseDir = "frontend/src/assets/images" // Base directory for image files
+	requestedPath := req.URL.Path
+	cleanPath := filepath.Clean(requestedPath) // Clean the path to avoid directory traversal
+
+	// Ensure the requested path is relative and does not try to traverse directories
+	if cleanPath == "." || strings.Contains(cleanPath, "..") {
+		log.Printf("Invalid file path: %s", requestedPath)
+		http.Error(res, "Invalid file path", http.StatusBadRequest)
+		return
 	}
+
+	// Construct the full path to the file
+	fullPath := filepath.Join(baseDir, cleanPath)
+
+	// Check if the file is within the allowed directory
+	if !strings.HasPrefix(fullPath, filepath.Clean(baseDir)+string(os.PathSeparator)) {
+		log.Printf("Access to the file path denied: %s", fullPath)
+		http.Error(res, "Access denied", http.StatusForbidden)
+		return
+	}
+
+	fileData, err := os.ReadFile(fullPath)
+	if err != nil {
+		log.Printf("Could not load file: %s, Error: %v", fullPath, err)
+		http.Error(res, "File not found", http.StatusNotFound)
+		return
+	}
+
 	if _, err = res.Write(fileData); err != nil {
-		logger.Log.Info("Could not write file" + requestedFilename)
+		log.Printf("Could not write file: %s, Error: %v", fullPath, err)
+		http.Error(res, "Failed to serve file", http.StatusInternalServerError)
 	}
 }
 
