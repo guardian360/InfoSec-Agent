@@ -5,7 +5,6 @@ const (
 	BluetoothID int = iota + 1
 	ExternalDevicesID
 	GuestAccountID
-	NetworkSharingID
 	PasswordManagerID
 	LocationID
 	MicrophoneID
@@ -33,4 +32,5 @@ const (
 	AdblockFirefoxID
 	SearchFirefoxID
 	HistoryFirefoxID
+	NetworkProfileTypeID
 )
