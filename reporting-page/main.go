@@ -57,7 +57,7 @@ func (h *FileLoader) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 //
 // Returns: None. This function does not return a value as it is the entry point of the application.
 func main() {
-	logger.Setup()
+	logger.Setup(0, -1)
 	logger.Log.Info("Reporting page starting")
 
 	// Create a new instance of the app and tray struct
