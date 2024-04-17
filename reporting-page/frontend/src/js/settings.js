@@ -11,7 +11,7 @@ import * as runTime from '../../wailsjs/runtime/runtime.js';
 async function updateLanguage() {
   await changeLanguage()
     .then(async (result) => {
-      sessionStorage.setItem('languageChanged',JSON.stringify(true))
+      sessionStorage.setItem('languageChanged', JSON.stringify(true));
       runTime.WindowReload();
     })
     .catch((err) => {

@@ -16,7 +16,7 @@ export function getLocalization(messageId, elementClass) {
 /**
  * Retrieves localized message as a string using the provided message ID.
  * @param {string} messageID - The ID of the message to be localized.
- * @returns The localized string.
+ * @return {string} The localized string.
  */
 export async function getLocalizationString(messageID) {
   return await localize(messageID);

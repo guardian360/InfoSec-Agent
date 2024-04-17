@@ -45,10 +45,10 @@ export class PieChart {
   async getData() {
     // const xValues = ['No risk', 'Low risk', 'Medium risk', 'High risk'];
     const xValues = [
-      await getLocalizationString('Dashboard.Safe'), 
-      await getLocalizationString('Dashboard.LowRisk'), 
-      await getLocalizationString('Dashboard.MediumRisk'), 
-      await getLocalizationString('Dashboard.HighRisk')
+      await getLocalizationString('Dashboard.Safe'),
+      await getLocalizationString('Dashboard.LowRisk'),
+      await getLocalizationString('Dashboard.MediumRisk'),
+      await getLocalizationString('Dashboard.HighRisk'),
     ];
     const yValues = [this.rc.lastnoRisk, this.rc.lastLowRisk, this.rc.lastMediumRisk, this.rc.lastHighRisk];
     const barColors = [this.rc.noRiskColor, this.rc.lowRiskColor, this.rc.mediumRiskColor, this.rc.highRiskColor];
@@ -71,7 +71,7 @@ export class PieChart {
       maintainAspectRatio: false,
       title: {
         display: true,
-        text: await getLocalizationString("Dashboard.SecurityRisksOverview"),
+        text: await getLocalizationString('Dashboard.SecurityRisksOverview'),
       },
     };
   }
