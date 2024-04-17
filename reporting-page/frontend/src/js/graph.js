@@ -73,12 +73,12 @@ export class Graph {
     document.getElementById('myDropdown').classList.toggle('show');
   }
 
-
-  /** Creates the data portion for a graph using the different levels of risks
+  /** Creates data for a bar chart
    *
-   * @return {data} Data for graph chart
+   * @param {*} getString Function to retrieve localized text
+   * @return {ChartData} The data for the bar chart
    */
-  async getData() {
+  async getData(getString = getLocalizationString) {
     /**
      * Labels created for the x-axis
      * @type {!Array<string>}
@@ -89,25 +89,25 @@ export class Graph {
     }
 
     const noRiskData = {
-      label: await getLocalizationString('Dashboard.Safe'),
+      label: await getString('Dashboard.Safe'),
       data: this.rc.allNoRisks.slice(Math.max(this.rc.allNoRisks.length - this.graphShowAmount, 0)),
       backgroundColor: this.rc.noRiskColor,
     };
 
     const lowRiskData = {
-      label: await getLocalizationString('Dashboard.LowRisk'),
+      label: await getString('Dashboard.LowRisk'),
       data: this.rc.allLowRisks.slice(Math.max(this.rc.allLowRisks.length - this.graphShowAmount, 0)),
       backgroundColor: this.rc.lowRiskColor,
     };
 
     const mediumRiskData = {
-      label: await getLocalizationString('Dashboard.MediumRisk'),
+      label: await getString('Dashboard.MediumRisk'),
       data: this.rc.allMediumRisks.slice(Math.max(this.rc.allMediumRisks.length - this.graphShowAmount, 0)),
       backgroundColor: this.rc.mediumRiskColor,
     };
 
     const highRiskData = {
-      label: await getLocalizationString('Dashboard.HighRisk'),
+      label: await getString('Dashboard.HighRisk'),
       data: this.rc.allHighRisks.slice(Math.max(this.rc.allHighRisks.length - this.graphShowAmount, 0)),
       backgroundColor: this.rc.highRiskColor,
     };

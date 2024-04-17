@@ -38,17 +38,17 @@ export class PieChart {
     });
   }
 
-  /**
- * Creates the data portion for a piechart using the different levels of risks
- * @return {ChartData} The data for the pie chart.
- */
-  async getData() {
-    // const xValues = ['No risk', 'Low risk', 'Medium risk', 'High risk'];
+  /** Creates data for a pie chart using different levels of risks
+   *
+   * @param {*} getString Function to retrieve localized text
+   * @return {ChartData} The data for the pie chart
+   */
+  async getData(getString = getLocalizationString) {
     const xValues = [
-      await getLocalizationString('Dashboard.Safe'),
-      await getLocalizationString('Dashboard.LowRisk'),
-      await getLocalizationString('Dashboard.MediumRisk'),
-      await getLocalizationString('Dashboard.HighRisk'),
+      await getString('Dashboard.Safe'),
+      await getString('Dashboard.LowRisk'),
+      await getString('Dashboard.MediumRisk'),
+      await getString('Dashboard.HighRisk'),
     ];
     const yValues = [this.rc.lastnoRisk, this.rc.lastLowRisk, this.rc.lastMediumRisk, this.rc.lastHighRisk];
     const barColors = [this.rc.noRiskColor, this.rc.lowRiskColor, this.rc.mediumRiskColor, this.rc.highRiskColor];
@@ -62,16 +62,17 @@ export class PieChart {
     };
   }
 
-  /** Creates the options for a pie chart
+  /** Creates options for a pie chart
    *
-   * @return {options} Options for pie chart
+   * @param {*} getString Function to retrieve localized text
+   * @return {ChartData} The options for the pie chart
    */
-  async getOptions() {
+  async getOptions(getString = getLocalizationString) {
     return {
       maintainAspectRatio: false,
       title: {
         display: true,
-        text: await getLocalizationString('Dashboard.SecurityRisksOverview'),
+        text: await getString('Dashboard.SecurityRisksOverview'),
       },
     };
   }
