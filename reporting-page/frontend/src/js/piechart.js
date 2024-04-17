@@ -1,3 +1,5 @@
+import {getLocalizationString} from './localize.js';
+
 /**
  * Represents a PieChart object for displaying risk counters.
  */
@@ -20,11 +22,11 @@ export class PieChart {
    *
    * @param {string} canvas html canvas where pie chart will be placed
    */
-  createPieChart(canvas) {
+  async createPieChart(canvas) {
     this.pieChart = new Chart(canvas, {
       type: 'doughnut',
-      data: this.getData(),
-      options: this.getOptions(),
+      data: await this.getData(),
+      options: await this.getOptions(),
       overrides: {
         plugins: {
           legend: {
@@ -36,12 +38,18 @@ export class PieChart {
     });
   }
 
-  /**
- * Creates the data portion for a piechart using the different levels of risks
- * @return {ChartData} The data for the pie chart.
- */
-  getData() {
-    const xValues = ['No risk', 'Low risk', 'Medium risk', 'High risk'];
+  /** Creates data for a pie chart using different levels of risks
+   *
+   * @param {*} getString Function to retrieve localized text
+   * @return {ChartData} The data for the pie chart
+   */
+  async getData(getString = getLocalizationString) {
+    const xValues = [
+      await getString('Dashboard.Safe'),
+      await getString('Dashboard.LowRisk'),
+      await getString('Dashboard.MediumRisk'),
+      await getString('Dashboard.HighRisk'),
+    ];
     const yValues = [this.rc.lastnoRisk, this.rc.lastLowRisk, this.rc.lastMediumRisk, this.rc.lastHighRisk];
     const barColors = [this.rc.noRiskColor, this.rc.lowRiskColor, this.rc.mediumRiskColor, this.rc.highRiskColor];
 
@@ -54,16 +62,17 @@ export class PieChart {
     };
   }
 
-  /** Creates the options for a pie chart
+  /** Creates options for a pie chart
    *
-   * @return {options} Options for pie chart
+   * @param {*} getString Function to retrieve localized text
+   * @return {ChartData} The options for the pie chart
    */
-  getOptions() {
+  async getOptions(getString = getLocalizationString) {
     return {
       maintainAspectRatio: false,
       title: {
         display: true,
-        text: 'Security Risks Overview',
+        text: await getString('Dashboard.SecurityRisksOverview'),
       },
     };
   }
