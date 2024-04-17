@@ -1,3 +1,5 @@
+import {getLocalizationString} from './localize.js';
+
 /**
  * Represents a graph for displaying risk counters.
  */
@@ -25,11 +27,11 @@ export class Graph {
    *
    * @param {string} canvas html canvas where bar chart will be placed
    */
-  createGraphChart(canvas) {
+  async createGraphChart(canvas) {
     this.barChart = new Chart(canvas, {
       type: 'bar',
-      data: this.getData(), // The data for our dataset
-      options: this.getOptions(), // Configuration options go here
+      data: await this.getData(), // The data for our dataset
+      options: await this.getOptions(), // Configuration options go here
     });
   }
 
@@ -71,12 +73,12 @@ export class Graph {
     document.getElementById('myDropdown').classList.toggle('show');
   }
 
-
-  /** Creates the data portion for a graph using the different levels of risks
+  /** Creates data for a bar chart
    *
-   * @return {data} Data for graph chart
+   * @param {*} getString Function to retrieve localized text
+   * @return {ChartData} The data for the bar chart
    */
-  getData() {
+  async getData(getString = getLocalizationString) {
     /**
      * Labels created for the x-axis
      * @type {!Array<string>}
@@ -87,25 +89,25 @@ export class Graph {
     }
 
     const noRiskData = {
-      label: 'Safe issues',
+      label: await getString('Dashboard.Safe'),
       data: this.rc.allNoRisks.slice(Math.max(this.rc.allNoRisks.length - this.graphShowAmount, 0)),
       backgroundColor: this.rc.noRiskColor,
     };
 
     const lowRiskData = {
-      label: 'Low risk issues',
+      label: await getString('Dashboard.LowRisk'),
       data: this.rc.allLowRisks.slice(Math.max(this.rc.allLowRisks.length - this.graphShowAmount, 0)),
       backgroundColor: this.rc.lowRiskColor,
     };
 
     const mediumRiskData = {
-      label: 'Medium risk issues',
+      label: await getString('Dashboard.MediumRisk'),
       data: this.rc.allMediumRisks.slice(Math.max(this.rc.allMediumRisks.length - this.graphShowAmount, 0)),
       backgroundColor: this.rc.mediumRiskColor,
     };
 
     const highRiskData = {
-      label: 'High risk issues',
+      label: await getString('Dashboard.HighRisk'),
       data: this.rc.allHighRisks.slice(Math.max(this.rc.allHighRisks.length - this.graphShowAmount, 0)),
       backgroundColor: this.rc.highRiskColor,
     };
