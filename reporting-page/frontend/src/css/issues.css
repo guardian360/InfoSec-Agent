@@ -22,8 +22,10 @@ body, button, input, select, textarea {
 /* Make tables full-width and scrollable on small screens */
 .issues-table {
   width: 100%; /* Use 100% width for responsive design */
+  border-collapse: collapse;
   margin-bottom: 20px;
   overflow-x: auto; /* Allows table to scroll on small screens */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
 .issues-table td, .issues-table th {
@@ -51,6 +53,7 @@ body, button, input, select, textarea {
   text-decoration: none;
   color: var(--text-body);
   transition: color 0.3s; /* Smooth transition for hover effect */
+  cursor: pointer;
 }
 
 .issue-link:hover {

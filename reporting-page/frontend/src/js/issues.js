@@ -40,11 +40,11 @@ export function openIssuesPage() {
         <tr>
         <th class="issue-column">
           <span class="table-header name">Name</span>
-          <span class="material-symbols-outlined" id="sort-on-issue">swap_vert</span>
+          <span class="material-symbols-outlined" id="sort-on-issue2">swap_vert</span>
         </th>
         <th class="type-column">
           <span class="table-header type">Type</span>
-          <span class="material-symbols-outlined" id="sort-on-type">swap_vert</span>
+          <span class="material-symbols-outlined" id="sort-on-type2">swap_vert</span>
         </th>
       </tr>
     </thead>
@@ -63,11 +63,11 @@ export function openIssuesPage() {
   let issues = []; // retrieve issues from tray application
   issues = JSON.parse(sessionStorage.getItem('DataBaseData'));
 
-  let tbody = document.getElementById('issues-table');
-  fillTable(tbody, issues, true);
+  const issueTable = document.getElementById('issues-table').querySelector('tbody');
+  fillTable(issueTable, issues, true);
 
-  tbody = document.getElementById('non-issues-table');
-  fillTable(tbody, issues, false);
+  const nonIssueTable = document.getElementById('non-issues-table').querySelector('tbody');
+  fillTable(nonIssueTable, issues, false);
 
 
   document.onload = retrieveTheme();
@@ -94,36 +94,38 @@ function toRiskLevel(level) {
  *
  * @param {HTMLTableSectionElement} tbody Table to be filled
  * @param {Issue} issues Issues to be filled in
+ * @param {isIssue} bool True for issue table, false for non issue table
  */
 export function fillTable(tbody, issues, isIssue) {
   issues.forEach((issue) => {
     const currentIssue = data[issue.jsonkey];
 
     if(isIssue){
-      if(issue.severity != "0"){
-        if (currentIssue) {
-          const row = document.createElement('tr');
-          row.innerHTML = `
-            <td class="issue-link">${currentIssue.Name}</td>
-            <td>${currentIssue.Type}</td>
-            <td>${toRiskLevel(issue.severity)}</td>
-          `;
-          row.cells[0].id = issue.jsonkey;
-          tbody.appendChild(row);
-        }
+      if(currentIssue) {
+        if(issue.severity != "0"){
+            const row = document.createElement('tr');
+            row.innerHTML = `
+              <td class="issue-link">${currentIssue.Name}</td>
+              <td>${currentIssue.Type}</td>
+              <td>${toRiskLevel(issue.severity)}</td>
+            `;
+            row.cells[0].id = issue.jsonkey;
+            tbody.appendChild(row);
+          }
       }
     }
     else{
-      if(issue.severity == "0"){
-        const row = document.createElement('tr');
-        row.innerHTML = `
-          <td class="issue-link">${currentIssue.Name}</td>
-          <td>${currentIssue.Type}</td>
-        `;
-        row.cells[0].id = issue.jsonkey;
-        tbody.appendChild(row);
+      if(currentIssue){
+        if(issue.severity == "0"){
+            const row = document.createElement('tr');
+            row.innerHTML = `
+              <td class="issue-link">${currentIssue.Name}</td>
+              <td>${currentIssue.Type}</td>
+            `;
+            row.cells[0].id = issue.jsonkey;
+            tbody.appendChild(row);
+        }
       }
-
     }
   });
 
@@ -134,9 +136,15 @@ export function fillTable(tbody, issues, isIssue) {
   });
 
   // Add buttons to sort on columns
-  document.getElementById('sort-on-issue').addEventListener('click', () => sortTable(tbody, 0));
-  document.getElementById('sort-on-type').addEventListener('click', () => sortTable(tbody, 1));
-  document.getElementById('sort-on-risk').addEventListener('click', () => sortTable(tbody, 2));
+  if(isIssue){
+    document.getElementById('sort-on-issue').addEventListener('click', () => sortTable(tbody, 0));
+    document.getElementById('sort-on-type').addEventListener('click', () => sortTable(tbody, 1));
+    document.getElementById('sort-on-risk').addEventListener('click', () => sortTable(tbody, 2));
+  }
+  else{
+    document.getElementById('sort-on-issue2').addEventListener('click', () => sortTable(tbody, 0));
+    document.getElementById('sort-on-type2').addEventListener('click', () => sortTable(tbody, 1));
+  }
 }
 
 /** Sorts the table
