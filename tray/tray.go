@@ -219,7 +219,7 @@ func OpenReportingPage(path string) error {
 	}
 
 	// Set up the reporting-page executable
-	runCmd := exec.Command("build/bin/Infosec-Agent-reporting-page")
+	runCmd := exec.Command("build/bin/Infosec-Agent-Reporting-Page")
 	runCmd.Stdout = os.Stdout
 	runCmd.Stderr = os.Stderr
 
