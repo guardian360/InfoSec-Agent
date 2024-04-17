@@ -47,7 +47,7 @@ func WindowsOutdated(mockOs mocking.CommandExecutor) Check {
 		return NewCheckError(WindowsOutdatedID, err)
 	}
 
-	winVer := string(minorVersion) + "." + buildNumber
+	winVer := strconv.Itoa(minorVersion) + "." + buildNumber
 
 	win10HTML := getUrlBody("https://learn.microsoft.com/en-us/windows/release-health/release-information")
 	latestWin10Build := findWindowsBuild(win10HTML)
@@ -59,18 +59,18 @@ func WindowsOutdated(mockOs mocking.CommandExecutor) Check {
 	switch {
 	case minorVersion >= 22000:
 		if winVer == latestWin11Build {
-			return NewCheckResult(WindowsOutdatedID, 0, versionString, "You are currently up to date.")
+			return NewCheckResult(WindowsOutdatedID, 0, strings.TrimSpace(versionString), "You are currently up to date.")
 		} else {
-			return NewCheckResult(WindowsOutdatedID, 1, versionString, "There are updates available for Windows 11.")
+			return NewCheckResult(WindowsOutdatedID, 1, strings.TrimSpace(versionString), "There are updates available for Windows 11.")
 		}
 	case minorVersion < 22000 && majorVersion == 10:
 		if winVer == latestWin10Build {
-			return NewCheckResult(WindowsOutdatedID, 0, versionString, "You are currently up to date.")
+			return NewCheckResult(WindowsOutdatedID, 0, strings.TrimSpace(versionString), "You are currently up to date.")
 		} else {
-			return NewCheckResult(WindowsOutdatedID, 1, versionString, "There are updates available for Windows 10.")
+			return NewCheckResult(WindowsOutdatedID, 1, strings.TrimSpace(versionString), "There are updates available for Windows 10.")
 		}
 	default:
-		return NewCheckResult(WindowsOutdatedID, 2, versionString,
+		return NewCheckResult(WindowsOutdatedID, 2, strings.TrimSpace(versionString),
 			"You are using a Windows version which does not have support anymore. "+
 				"Consider updating to Windows 10 or Windows 11.")
 	}
