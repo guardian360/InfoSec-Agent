@@ -1,21 +1,16 @@
 package checks
 
 import (
-	"fmt"
-	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
-	"golang.org/x/net/html"
 	"io"
 	"net/http"
+	"regexp"
+	"strconv"
 	"strings"
 
-	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
-)
+	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
+	"golang.org/x/net/html"
 
-// TODO: The "newest build" is done manually below and should be done automatic.
-// So preferably it would read the newest build without us changing the values.
-const (
-	newestWin10Build uint32 = 19045 // Version 22H2 (2022 update)
-	newestWin11Build uint32 = 22631 // Version 23H2 (2023 update)
+	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 )
 
 // WindowsOutdated is a function that checks if the currently installed Windows version is outdated.
@@ -27,9 +22,32 @@ const (
 //   - Check: A struct containing the result of the check. The result indicates whether the Windows version is up-to-date or if updates are available.
 //
 // The function works by retrieving the Windows version information using the provided mock object. It then compares the build number of the installed Windows version with the build numbers of the latest Windows 10 and Windows 11 versions. If the installed version's build number matches the latest build number for its major version (10 or 11), the function returns a message indicating that the Windows version is up-to-date. If the build number does not match, the function returns a message indicating that updates are available. If the major version is neither 10 nor 11, the function returns a message suggesting to update to Windows 10 or Windows 11.
-func WindowsOutdated(mockOS mocking.WindowsVersion) Check {
-	versionData := mockOS.RtlGetVersion()
-	versionString := fmt.Sprintf("%d.%d.%d", versionData.MajorVersion, versionData.MinorVersion, versionData.BuildNumber)
+func WindowsOutdated(mockOs mocking.CommandExecutor) Check {
+	versionData, err := mockOs.Execute("cmd", "/c", "ver")
+	if err != nil {
+		logger.Log.ErrorWithErr("Error executing command: ", err)
+		return NewCheckError(WindowsOutdatedID, err)
+	}
+
+	versionString := string(versionData)
+	// Using regular expression to extract numbers after the second dot
+	re := regexp.MustCompile(`(\d+)\.\d+\.(\d+)\.(\d+)`)
+	match := re.FindStringSubmatch(versionString)
+
+	majorVersion, err := strconv.Atoi(match[1])
+	if err != nil {
+		logger.Log.ErrorWithErr("Error converting major version to integer: ", err)
+		return NewCheckError(WindowsOutdatedID, err)
+	}
+
+	buildNumber := match[3]
+	minorVersion, err := strconv.Atoi(match[2])
+	if err != nil {
+		logger.Log.ErrorWithErr("Error converting minor version to integer: ", err)
+		return NewCheckError(WindowsOutdatedID, err)
+	}
+
+	winVer := string(minorVersion) + "." + buildNumber
 
 	win10HTML := getUrlBody("https://learn.microsoft.com/en-us/windows/release-health/release-information")
 	latestWin10Build := findWindowsBuild(win10HTML)
@@ -38,15 +56,15 @@ func WindowsOutdated(mockOS mocking.WindowsVersion) Check {
 	latestWin11Build := findWindowsBuild(win11HTML)
 
 	// Depending on the major Windows version (10 or 11), act accordingly
-	switch versionData.MajorVersion {
-	case 11:
-		if versionData.BuildNumber == latestWin11Build {
+	switch {
+	case minorVersion >= 22000:
+		if winVer == latestWin11Build {
 			return NewCheckResult(WindowsOutdatedID, 0, versionString, "You are currently up to date.")
 		} else {
 			return NewCheckResult(WindowsOutdatedID, 1, versionString, "There are updates available for Windows 11.")
 		}
-	case 10:
-		if versionData.BuildNumber == latestWin10Build {
+	case minorVersion < 22000 && majorVersion == 10:
+		if winVer == latestWin10Build {
 			return NewCheckResult(WindowsOutdatedID, 0, versionString, "You are currently up to date.")
 		} else {
 			return NewCheckResult(WindowsOutdatedID, 1, versionString, "There are updates available for Windows 10.")

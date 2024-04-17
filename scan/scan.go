@@ -67,7 +67,7 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 		func() checks.Check {
 			return checks.OpenPorts(&mocking.RealCommandExecutor{}, &mocking.RealCommandExecutor{})
 		},
-		func() checks.Check { return checks.WindowsOutdated(&mocking.RealWindowsVersion{}) },
+		func() checks.Check { return checks.WindowsOutdated(&mocking.RealCommandExecutor{}) },
 		func() checks.Check {
 			return checks.SecureBoot(mocking.LocalMachine)
 		},
