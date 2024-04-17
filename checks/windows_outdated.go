@@ -1,6 +1,7 @@
 package checks
 
 import (
+	"context"
 	"io"
 	"net/http"
 	"regexp"
@@ -22,8 +23,8 @@ import (
 //   - Check: A struct containing the result of the check. The result indicates whether the Windows version is up-to-date or if updates are available.
 //
 // The function works by retrieving the Windows version information using the provided mock object. It then compares the build number of the installed Windows version with the build numbers of the latest Windows 10 and Windows 11 versions. If the installed version's build number matches the latest build number for its major version (10 or 11), the function returns a message indicating that the Windows version is up-to-date. If the build number does not match, the function returns a message indicating that updates are available. If the major version is neither 10 nor 11, the function returns a message suggesting to update to Windows 10 or Windows 11.
-func WindowsOutdated(mockOs mocking.CommandExecutor) Check {
-	versionData, err := mockOs.Execute("cmd", "/c", "ver")
+func WindowsOutdated(mockExecutor mocking.CommandExecutor) Check {
+	versionData, err := mockExecutor.Execute("cmd", "/c", "ver")
 	if err != nil {
 		logger.Log.ErrorWithErr("Error executing command: ", err)
 		return NewCheckError(WindowsOutdatedID, err)
@@ -49,21 +50,23 @@ func WindowsOutdated(mockOs mocking.CommandExecutor) Check {
 
 	winVer := strconv.Itoa(minorVersion) + "." + buildNumber
 
-	win10HTML := getUrlBody("https://learn.microsoft.com/en-us/windows/release-health/release-information")
-	latestWin10Build := findWindowsBuild(win10HTML)
+	const win10Url = "https://learn.microsoft.com/en-us/windows/release-health/release-information"
+	const win11Url = "https://learn.microsoft.com/en-us/windows/release-health/windows11-release-information"
+	win10HTML := GetURLBody(win10Url)
+	latestWin10Build := FindWindowsBuild(win10HTML)
 
-	win11HTML := getUrlBody("https://learn.microsoft.com/en-us/windows/release-health/windows11-release-information")
-	latestWin11Build := findWindowsBuild(win11HTML)
+	win11HTML := GetURLBody(win11Url)
+	latestWin11Build := FindWindowsBuild(win11HTML)
 
 	// Depending on the major Windows version (10 or 11), act accordingly
 	switch {
-	case minorVersion >= 22000:
+	case minorVersion >= 22000 && majorVersion == 10:
 		if winVer == latestWin11Build {
 			return NewCheckResult(WindowsOutdatedID, 0, strings.TrimSpace(versionString), "You are currently up to date.")
 		} else {
 			return NewCheckResult(WindowsOutdatedID, 1, strings.TrimSpace(versionString), "There are updates available for Windows 11.")
 		}
-	case minorVersion < 22000 && majorVersion == 10:
+	case majorVersion == 10:
 		if winVer == latestWin10Build {
 			return NewCheckResult(WindowsOutdatedID, 0, strings.TrimSpace(versionString), "You are currently up to date.")
 		} else {
@@ -76,7 +79,7 @@ func WindowsOutdated(mockOs mocking.CommandExecutor) Check {
 	}
 }
 
-// getUrlBody fetches and parses the HTML content of a given URL.
+// GetURLBody fetches and parses the HTML content of a given URL.
 //
 // This function makes an HTTP GET request to the provided URL and parses the HTML content of the response.
 // It logs any errors that occur during the HTTP request or the HTML parsing.
@@ -87,14 +90,21 @@ func WindowsOutdated(mockOs mocking.CommandExecutor) Check {
 //   - url string - The URL to fetch and parse the HTML content from.
 //
 // Returns: The root node of the parsed HTML document.
-func getUrlBody(url string) *html.Node {
+func GetURLBody(urlStr string) *html.Node {
 	// Make HTTP GET request
-	resp, err := http.Get(url)
+	ctx := context.Background()
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, urlStr, nil)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error fetching URL: ", err)
+		logger.Log.ErrorWithErr("Error creating HTTP request: ", err)
+		return nil
+	}
+	resp, err := http.DefaultClient.Do(req)
+	if err != nil {
+		logger.Log.ErrorWithErr("Error getting response: ", err)
+		return nil
 	}
 	defer func(Body io.ReadCloser) {
-		err := Body.Close()
+		err = Body.Close()
 		if err != nil {
 			logger.Log.ErrorWithErr("Error closing response body: ", err)
 		}
@@ -108,7 +118,7 @@ func getUrlBody(url string) *html.Node {
 	return doc
 }
 
-// findWindowsBuild searches for the latest Windows build in the HTML content of a given URL.
+// FindWindowsBuild searches for the latest Windows build in the HTML content of a given URL.
 //
 // This function iterates over the children of the provided HTML node. If the node is a table body (tbody),
 // the function iterates over its children.
@@ -126,23 +136,15 @@ func getUrlBody(url string) *html.Node {
 //
 // Returns: The data from the fifth td element in the first tr of the tbody of the provided HTML node.
 // If no such data element is found, the function returns an empty string.
-func findWindowsBuild(n *html.Node) string {
+func FindWindowsBuild(n *html.Node) string {
 	if n.Type == html.ElementNode && n.Data == "tbody" {
 		// Iterate over tbody children
 		for child := n.FirstChild; child != nil; child = child.NextSibling {
 			// Check if the child is a table row
 			if child.Type == html.ElementNode && child.Data == "tr" {
-				// Count the number of table data elements in this row
-				tdCount := 0
-				for td := child.FirstChild; td != nil; td = td.NextSibling {
-					if td.Type == html.ElementNode && td.Data == "td" {
-						// Increment td count
-						tdCount++
-						if tdCount == 5 { // Fifth data element
-							// Extract and return the data
-							return strings.TrimSpace(td.FirstChild.Data)
-						}
-					}
+				tdData := checkTableTDs(child)
+				if tdData != "" {
+					return tdData
 				}
 			}
 		}
@@ -150,10 +152,34 @@ func findWindowsBuild(n *html.Node) string {
 
 	// If data element not found yet, continue searching recursively
 	for c := n.FirstChild; c != nil; c = c.NextSibling {
-		if result := findWindowsBuild(c); result != "" {
+		if result := FindWindowsBuild(c); result != "" {
 			return result
 		}
 	}
 
+	return ""
+}
+
+// checkTableTDs is a helper function that iterates over the children of a given HTML node,
+// looking for 'td' elements. It counts the number of 'td' elements and when it finds the fifth one,
+// it extracts and returns the data as a string.
+//
+// Parameters:
+//   - child *html.Node: The HTML node to search for 'td' elements.
+//
+// Returns: The data from the fifth 'td' element in the provided HTML node.
+// If no such 'td' element is found, the function returns an empty string.
+func checkTableTDs(child *html.Node) string {
+	tdCount := 0
+	for td := child.FirstChild; td != nil; td = td.NextSibling {
+		if td.Type == html.ElementNode && td.Data == "td" {
+			// Increment td count
+			tdCount++
+			if tdCount == 5 { // Fifth data element
+				// Extract and return the data
+				return strings.TrimSpace(td.FirstChild.Data)
+			}
+		}
+	}
 	return ""
 }
