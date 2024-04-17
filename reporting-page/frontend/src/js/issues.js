@@ -13,6 +13,7 @@ export function openIssuesPage() {
   const pageContents = document.getElementById('page-contents');
   pageContents.innerHTML = `
   <div class="issues-data">
+    <h2>Issue table</h2>
     <table class="issues-table" id="issues-table">
       <thead>
         <tr>
@@ -32,7 +33,24 @@ export function openIssuesPage() {
       </thead>
       <tbody>
       </tbody>
-    </table>
+    </table> 
+    <h2>Non issue table</h2>
+    <table class="issues-table" id="non-issues-table">
+      <thead>
+        <tr>
+        <th class="issue-column">
+          <span class="table-header name">Name</span>
+          <span class="material-symbols-outlined" id="sort-on-issue">swap_vert</span>
+        </th>
+        <th class="type-column">
+          <span class="table-header type">Type</span>
+          <span class="material-symbols-outlined" id="sort-on-type">swap_vert</span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
   </div>
   `;
 
@@ -45,8 +63,12 @@ export function openIssuesPage() {
   let issues = []; // retrieve issues from tray application
   issues = JSON.parse(sessionStorage.getItem('DataBaseData'));
 
-  const tbody = pageContents.querySelector('tbody');
-  fillTable(tbody, issues);
+  let tbody = document.getElementById('issues-table');
+  fillTable(tbody, issues, true);
+
+  tbody = document.getElementById('non-issues-table');
+  fillTable(tbody, issues, false);
+
 
   document.onload = retrieveTheme();
 }
@@ -73,18 +95,35 @@ function toRiskLevel(level) {
  * @param {HTMLTableSectionElement} tbody Table to be filled
  * @param {Issue} issues Issues to be filled in
  */
-export function fillTable(tbody, issues) {
+export function fillTable(tbody, issues, isIssue) {
   issues.forEach((issue) => {
     const currentIssue = data[issue.jsonkey];
-    if (currentIssue) {
-      const row = document.createElement('tr');
-      row.innerHTML = `
-        <td class="issue-link">${currentIssue.Name}</td>
-        <td>${currentIssue.Type}</td>
-        <td>${toRiskLevel(issue.severity)}</td>
-      `;
-      row.cells[0].id = issue.jsonkey;
-      tbody.appendChild(row);
+
+    if(isIssue){
+      if(issue.severity != "0"){
+        if (currentIssue) {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td class="issue-link">${currentIssue.Name}</td>
+            <td>${currentIssue.Type}</td>
+            <td>${toRiskLevel(issue.severity)}</td>
+          `;
+          row.cells[0].id = issue.jsonkey;
+          tbody.appendChild(row);
+        }
+      }
+    }
+    else{
+      if(issue.severity == "0"){
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td class="issue-link">${currentIssue.Name}</td>
+          <td>${currentIssue.Type}</td>
+        `;
+        row.cells[0].id = issue.jsonkey;
+        tbody.appendChild(row);
+      }
+
     }
   });
 
