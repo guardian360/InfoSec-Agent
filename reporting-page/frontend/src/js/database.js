@@ -36,7 +36,11 @@ export async function scanTest() {
   }
 }
 
-scanTest();
+// Run scanTest on only on startup
+if (sessionStorage.getItem('startup') == null) {
+  scanTest();
+  sessionStorage.setItem('startup',JSON.stringify(true))
+}
 
 // counts the occurences of each level: 0 = acceptable, 1 = low, 2 = medium, 3 = high
 const countOccurences = (severities, level) => severities.filter((item) => item.severity === level).length;

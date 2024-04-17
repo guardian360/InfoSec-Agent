@@ -1,3 +1,5 @@
+import {getLocalizationString} from './localize.js';
+
 /**
  * Represents a PieChart object for displaying risk counters.
  */
@@ -20,11 +22,11 @@ export class PieChart {
    *
    * @param {string} canvas html canvas where pie chart will be placed
    */
-  createPieChart(canvas) {
+  async createPieChart(canvas) {
     this.pieChart = new Chart(canvas, {
       type: 'doughnut',
-      data: this.getData(),
-      options: this.getOptions(),
+      data: await this.getData(),
+      options: await this.getOptions(),
       overrides: {
         plugins: {
           legend: {
@@ -40,8 +42,14 @@ export class PieChart {
  * Creates the data portion for a piechart using the different levels of risks
  * @return {ChartData} The data for the pie chart.
  */
-  getData() {
-    const xValues = ['No risk', 'Low risk', 'Medium risk', 'High risk'];
+  async getData() {
+    // const xValues = ['No risk', 'Low risk', 'Medium risk', 'High risk'];
+    const xValues = [
+      await getLocalizationString('Dashboard.Safe'), 
+      await getLocalizationString('Dashboard.LowRisk'), 
+      await getLocalizationString('Dashboard.MediumRisk'), 
+      await getLocalizationString('Dashboard.HighRisk')
+    ];
     const yValues = [this.rc.lastnoRisk, this.rc.lastLowRisk, this.rc.lastMediumRisk, this.rc.lastHighRisk];
     const barColors = [this.rc.noRiskColor, this.rc.lowRiskColor, this.rc.mediumRiskColor, this.rc.highRiskColor];
 
@@ -58,12 +66,12 @@ export class PieChart {
    *
    * @return {options} Options for pie chart
    */
-  getOptions() {
+  async getOptions() {
     return {
       maintainAspectRatio: false,
       title: {
         display: true,
-        text: 'Security Risks Overview',
+        text: await getLocalizationString("Dashboard.SecurityRisksOverview"),
       },
     };
   }

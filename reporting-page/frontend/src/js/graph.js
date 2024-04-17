@@ -1,3 +1,5 @@
+import {getLocalizationString} from './localize.js';
+
 /**
  * Represents a graph for displaying risk counters.
  */
@@ -25,11 +27,11 @@ export class Graph {
    *
    * @param {string} canvas html canvas where bar chart will be placed
    */
-  createGraphChart(canvas) {
+  async createGraphChart(canvas) {
     this.barChart = new Chart(canvas, {
       type: 'bar',
-      data: this.getData(), // The data for our dataset
-      options: this.getOptions(), // Configuration options go here
+      data: await this.getData(), // The data for our dataset
+      options: await this.getOptions(), // Configuration options go here
     });
   }
 
@@ -76,7 +78,7 @@ export class Graph {
    *
    * @return {data} Data for graph chart
    */
-  getData() {
+  async getData() {
     /**
      * Labels created for the x-axis
      * @type {!Array<string>}
@@ -87,25 +89,25 @@ export class Graph {
     }
 
     const noRiskData = {
-      label: 'Safe issues',
+      label: await getLocalizationString('Dashboard.Safe'),
       data: this.rc.allNoRisks.slice(Math.max(this.rc.allNoRisks.length - this.graphShowAmount, 0)),
       backgroundColor: this.rc.noRiskColor,
     };
 
     const lowRiskData = {
-      label: 'Low risk issues',
+      label: await getLocalizationString('Dashboard.LowRisk'),
       data: this.rc.allLowRisks.slice(Math.max(this.rc.allLowRisks.length - this.graphShowAmount, 0)),
       backgroundColor: this.rc.lowRiskColor,
     };
 
     const mediumRiskData = {
-      label: 'Medium risk issues',
+      label: await getLocalizationString('Dashboard.MediumRisk'),
       data: this.rc.allMediumRisks.slice(Math.max(this.rc.allMediumRisks.length - this.graphShowAmount, 0)),
       backgroundColor: this.rc.mediumRiskColor,
     };
 
     const highRiskData = {
-      label: 'High risk issues',
+      label: await getLocalizationString('Dashboard.HighRisk'),
       data: this.rc.allHighRisks.slice(Math.max(this.rc.allHighRisks.length - this.graphShowAmount, 0)),
       backgroundColor: this.rc.highRiskColor,
     };
