@@ -13,7 +13,6 @@ async function updateLanguage() {
     .then(async (result) => {
       sessionStorage.setItem('languageChanged',JSON.stringify(true))
       runTime.WindowReload();
-      openSettingsPage();
     })
     .catch((err) => {
       logError('Error changing language:' + err);

@@ -36,12 +36,6 @@ export async function scanTest() {
   }
 }
 
-<<<<<<< HEAD
-// Run scanTest on only on startup
-if (sessionStorage.getItem('startup') == null) {
-  scanTest();
-  sessionStorage.setItem('startup',JSON.stringify(true))
-=======
 // Check if scanTest has already been called before
 if (sessionStorage.getItem('scanTest') === null) {
   // Call scanTest() only if it hasn't been called before
@@ -49,7 +43,6 @@ if (sessionStorage.getItem('scanTest') === null) {
 
   // Set the flag in sessionStorage to indicate that scanTest has been called
   sessionStorage.setItem('scanTest', 'called');
->>>>>>> dev
 }
 
 // counts the occurences of each level: 0 = acceptable, 1 = low, 2 = medium, 3 = high
