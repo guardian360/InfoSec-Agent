@@ -41,6 +41,26 @@ const dom = new JSDOM(`
 global.document = dom.window.document;
 global.window = dom.window;
 
+/** Mock of getLocalizationString function
+ *
+ * @param {string} messageID - The ID of the message to be localized.
+ * @return {string} The localized string.
+ */
+function mockGetLocalizationString(messageID) {
+  switch (messageID) {
+  case 'Dashboard.Safe':
+    return 'Acceptable';
+  case 'Dashboard.LowRisk':
+    return 'Low';
+  case 'Dashboard.MediumRisk':
+    return 'Medium';
+  case 'Dashboard.HighRisk':
+    return 'High';
+  case 'Dashboard.SecurityRisksOverview':
+    return 'Security Risks Overview';
+  }
+}
+
 // test cases
 describe('Risk graph', function() {
   // arrange
@@ -89,19 +109,19 @@ describe('Risk graph', function() {
     const expectedData = {
       'labels': [1, 2, 3, 4, 5],
       'datasets': [{
-        'label': 'Safe issues',
+        'label': 'Acceptable',
         'data': [3, 4, 5, 6, 4],
         'backgroundColor': 'rgb(255, 255, 0)',
       }, {
-        'label': 'Low risk issues',
+        'label': 'Low',
         'data': [3, 4, 5, 6, 3],
         'backgroundColor': 'rgb(255, 0, 0)',
       }, {
-        'label': 'Medium risk issues',
+        'label': 'Medium',
         'data': [3, 4, 5, 6, 2],
         'backgroundColor': 'rgb(0, 0, 255)',
       }, {
-        'label': 'High risk issues',
+        'label': 'High',
         'data': [3, 4, 5, 6, 1],
         'backgroundColor': 'rgb(0, 255, 255)',
       }],
@@ -122,11 +142,19 @@ describe('Risk graph', function() {
     g = new Graph(undefined, mockRiskCounters);
 
     // act
-    const resultData = g.getData();
+
+    /** asynchronous function to call g.getData() */
+    async function getData() {
+      return await g.getData(mockGetLocalizationString);
+    }
 
     // assert
-    test.array(resultData.labels).is(expectedData.labels);
-    test.array(resultData.datasets).is(expectedData.datasets);
+    getData().then((result) => {
+      test.array(result.labels).is(expectedData.labels);
+      test.array(result.datasets).is(expectedData.datasets);
+    })
+      .catch((error) =>
+        console.log(error));
   });
   it('getOptions should return the correct graph options', function() {
     // arrange
