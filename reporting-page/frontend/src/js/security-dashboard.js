@@ -144,7 +144,7 @@ function openSecurityDashboardPage() {
   </div>
   `;
   // Set counters on the page to the right values
-  let rc = JSON.parse(sessionStorage.getItem('RiskCounters'));
+  let rc = JSON.parse(sessionStorage.getItem('SecurityRiskCounters'));
   adjustWithRiskCounters(rc, document);
   setMaxInterval(rc, document);
 
@@ -201,7 +201,7 @@ function openSecurityDashboardPage() {
   addGraphFunctions(g);
   document.getElementsByClassName('scan-now')[0].addEventListener('click', async () => {
     await scanTest();
-    rc = JSON.parse(sessionStorage.getItem('RiskCounters'));
+    rc = JSON.parse(sessionStorage.getItem('SecurityRiskCounters'));
     adjustWithRiskCounters(rc, document);
     setMaxInterval(rc, document);
     g.rc = rc;
@@ -248,9 +248,9 @@ export function adjustWithRiskCounters(rc, doc) {
     securityStatus.style.color = 'rgb(255, 255, 255)';
   } else if (rc.lastLowRisk > 1) {
     try {
-      getLocalization('Dashboard.LightConcern', 'status-descriptor');
+      getLocalization('Dashboard.LowConcern', 'status-descriptor');
     } catch (error) {
-      securityStatus.innerHTML = 'Light concern';
+      securityStatus.innerHTML = 'Low concern';
     }
     securityStatus.style.backgroundColor = rc.lowRiskColor;
     securityStatus.style.color = 'rgb(0, 0, 0)';
