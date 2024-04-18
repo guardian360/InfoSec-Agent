@@ -68,7 +68,7 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 		func() checks.Check {
 			return checks.OpenPorts(&mocking.RealCommandExecutor{}, &mocking.RealCommandExecutor{})
 		},
-		func() checks.Check { return checks.WindowsOutdated(&mocking.RealWindowsVersion{}) },
+		func() checks.Check { return checks.WindowsOutdated(&mocking.RealCommandExecutor{}) },
 		func() checks.Check {
 			return checks.SecureBoot(mocking.LocalMachine)
 		},
@@ -87,7 +87,7 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 			return checks.RemoteDesktopCheck(mocking.LocalMachine)
 		},
 		func() checks.Check { return checks.ExternalDevices(&mocking.RealCommandExecutor{}) },
-		func() checks.Check { return checks.NetworkSharing(&mocking.RealCommandExecutor{}) },
+		func() checks.Check { return checks.NetworkProfileTypes(mocking.LocalMachine) },
 		func() checks.Check { return chromium.HistoryChromium("Chrome") },
 		func() checks.Check { return chromium.ExtensionsChromium("Chrome") },
 		func() checks.Check { return chromium.SearchEngineChromium("Chrome") },

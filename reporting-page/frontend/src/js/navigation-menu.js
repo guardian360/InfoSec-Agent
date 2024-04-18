@@ -27,6 +27,7 @@ export function loadPersonalizeNavigation() {
     navItems[i].style.backgroundColor = stylesheet.getPropertyValue('--background-color-left-nav');
   }
 }
+
 /** Close the navigation menu when a navigation item is clicked, only when screen size is less than 800px */
 export function closeNavigation() {
   if (document.body.offsetWidth < 800) {

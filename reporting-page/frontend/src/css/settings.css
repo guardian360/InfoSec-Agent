@@ -15,6 +15,11 @@
 .setting-button {
     float: right;
     width: 100px;
+
+}
+
+.setting-button:hover{
+  cursor: pointer;
 }
 
 hr.solid {

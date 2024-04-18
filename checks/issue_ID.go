@@ -5,7 +5,7 @@ const (
 	BluetoothID int = iota + 1
 	ExternalDevicesID
 	GuestAccountID
-	NetworkSharingID
+	NetworkProfileTypeID
 	PasswordManagerID
 	LocationID
 	MicrophoneID
