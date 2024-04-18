@@ -1,39 +1,87 @@
-@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap);
-@import url(color-palette.css);
-
-/* Reset some basic elements */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body, button, input, select, textarea {
-  font-family: Roboto, sans-serif;
-}
-
-/* Use flexbox for layout */
+/* Container for the entire page content */
 .issues-data {
   display: flex;
-  flex-flow: row wrap;
-  gap: 10px; /* Use gap to space flex items */
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px; /* Add space at the top */
 }
 
-/* Make tables full-width and scrollable on small screens */
-.issues-table {
-  width: 100%; /* Use 100% width for responsive design */
-  border-collapse: collapse;
+/* Table container */
+.table-container {
+  width: 100%;
+  max-width: 800px; /* Limit the width of the table container */
   margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+  overflow: hidden; /* Hide overflow content */
+}
+
+/* Table titles */
+.issues-data h2 {
+  padding: 10px 20px;
+  background-color: var(--background-color-left-nav); /* Green background color */
+  margin-bottom: 10px; /* Add space below titles */
+  border-radius: 8px 8px 0 0; /* Rounded corners for top */
+}
+
+/* Button container */
+.issues-data .button-container {
+  display: flex;
+  justify-content: center; /* Center the button horizontally */
+  margin-bottom: 20px; /* Add space below the button */
+}
+/* Dropdown container */
+.dropdown-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown button */
+.dropbtn-table {
+  background-color: var(--background-color-left-nav);
+  color: var(--text-body);
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Dropdown selector */
+.dropdown-selector-table {
+  display: none;
+  position: absolute;
+  background-color: var(--background-color-left-nav);
+  color: var(--text-body);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  z-index: 1;
+  top: 100%; /* Position below the button */
+  right: 0; /* Align with the right side of the button */
+}
+
+/* Show dropdown content when hovering over dropdown container */
+.dropdown-container:hover .dropdown-selector-table {
+  display: block;
+}
+
+/* Table styles */
+.issues-table {
+  width: 100%;
+  border-collapse: collapse;
   overflow-x: auto; /* Allows table to scroll on small screens */
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
-.issues-table td, .issues-table th {
+.issues-table th,
+.issues-table td {
   padding: 8px;
-  border: none; /* Remove borders for a cleaner look */
+  text-align: left;
+  border: 1px solid #8b8b8b; /* Gray border bottom */
 }
 
-.issues-table tr:nth-child(even) {
+/* Alternate row background color */
+.issues-table tbody tr:nth-child(even) {
   background-color: var(--background-color-top-nav);
 }
 
@@ -42,22 +90,18 @@ body, button, input, select, textarea {
   text-align: left;
 }
 
-/* Icons */
+/* Sort icon */
 .material-symbols-outlined {
   float: none; /* Avoid using float and instead use flex or grid */
   margin-left: auto; /* Align icon to the right using margin */
 }
-
-/* Links */
-.issue-link {
-  text-decoration: none;
-  color: var(--text-body);
-  transition: color 0.3s; /* Smooth transition for hover effect */
+.material-symbols-outlined:hover {
   cursor: pointer;
 }
 
 .issue-link:hover {
   color: var(--text-settings-hover);
+  cursor: pointer;
 }
 
 /* Button styles */

@@ -13,44 +13,64 @@ export function openIssuesPage() {
   const pageContents = document.getElementById('page-contents');
   pageContents.innerHTML = `
   <div class="issues-data">
-    <h2>Issue table</h2>
-    <table class="issues-table" id="issues-table">
-      <thead>
-        <tr>
-        <th class="issue-column">
-          <span class="table-header name">Name</span>
-          <span class="material-symbols-outlined" id="sort-on-issue">swap_vert</span>
-        </th>
-        <th class="type-column">
-          <span class="table-header type">Type</span>
-          <span class="material-symbols-outlined" id="sort-on-type">swap_vert</span>
-        </th>
-        <th class="risk-column">
-          <span class="table-header risk">Risk level</span>
-          <span class="material-symbols-outlined" id="sort-on-risk">swap_vert</span>
-        </th>
-        </tr>
-      </thead>
-      <tbody>
-      </tbody>
-    </table> 
-    <h2>Non issue table</h2>
-    <table class="issues-table" id="non-issues-table">
-      <thead>
-        <tr>
-        <th class="issue-column">
-          <span class="table-header name">Name</span>
-          <span class="material-symbols-outlined" id="sort-on-issue2">swap_vert</span>
-        </th>
-        <th class="type-column">
-          <span class="table-header type">Type</span>
-          <span class="material-symbols-outlined" id="sort-on-type2">swap_vert</span>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-    </tbody>
-  </table>
+    <div class="table-container">
+      <h2>Issue table</h2>
+      <table class="issues-table" id="issues-table">
+        <thead>
+          <tr>
+          <th class="issue-column">
+            <span class="table-header name">Name</span>
+            <span class="material-symbols-outlined" id="sort-on-issue">swap_vert</span>
+          </th>
+          <th class="type-column">
+            <span class="table-header type">Type</span>
+            <span class="material-symbols-outlined" id="sort-on-type">swap_vert</span>
+          </th>
+          <th class="risk-column">
+            <span class="table-header risk">Risk level</span>
+            <span class="material-symbols-outlined" id="sort-on-risk">swap_vert</span>
+          </th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+    <div class="dropdown-container">
+      <button id="dropbtn-table" class="dropbtn-table"><span class="select-risks">Select Risks</span></button>
+      <div class="dropdown-selector-table" id="myDropdown-table">
+        <p><input type="checkbox" checked="true" value="true" id="select-high-risk-table">
+          <label for="select-high-risk" class="high-risk-issues"> High risks</label><br>
+        </p>
+        <p><input type="checkbox" checked="true" value="true" id="select-medium-risk-table">
+          <label for="select-medium-risk" class="medium-risk-issues"> Medium risks</label>
+        </p>
+        <p><input type="checkbox" checked="true" value="true" id="select-low-risk-table">
+          <label for="select-low-risk" class="low-risk-issues"> Low risks</label>
+        </p>
+      </div>
+    </div>
+    <div class="table-container">
+      <h2>Non issue table</h2>
+      <table class="issues-table" id="non-issues-table">
+        <thead>
+          <tr>
+          <th class="issue-column">
+            <span class="table-header name">Name</span>
+            <span class="material-symbols-outlined" id="sort-on-issue2">swap_vert</span>
+          </th>
+          <th class="type-column">
+            <span class="table-header type">Type</span>
+            <span class="material-symbols-outlined" id="sort-on-type2">swap_vert</span>
+          </th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+
+
   </div>
   `;
 
@@ -69,7 +89,10 @@ export function openIssuesPage() {
   const nonIssueTable = document.getElementById('non-issues-table').querySelector('tbody');
   fillTable(nonIssueTable, issues, false);
 
-
+  document.getElementById('dropbtn-table').addEventListener('click', () => document.getElementById('myDropdown-table').classList.toggle('show'));
+  document.getElementById('select-high-risk-table').addEventListener('change', changeTable);
+  document.getElementById('select-medium-risk-table').addEventListener('change', changeTable);
+  document.getElementById('select-low-risk-table').addEventListener('change', changeTable);
   document.onload = retrieveTheme();
 }
 /**
@@ -194,4 +217,29 @@ if (typeof document !== 'undefined') {
   } catch (error) {
     logError('Error in issues.js: ' + error);
   }
+}
+
+function changeTable() {
+  const selectedHigh = document.getElementById('select-high-risk-table').checked;
+  const selectedMedium = document.getElementById('select-medium-risk-table').checked;
+  const selectedLow = document.getElementById('select-low-risk-table').checked;
+
+  const issues = JSON.parse(sessionStorage.getItem('DataBaseData'));
+
+  const issueTable = document.getElementById('issues-table').querySelector('tbody');
+
+  // Filter issues based on the selected risk levels
+  const filteredIssues = issues.filter(issue => {
+    return (
+      (selectedHigh && issue.severity === 3) ||
+      (selectedMedium && issue.severity === 2) ||
+      (selectedLow && issue.severity === 1)
+    );
+  });
+
+  // Clear existing table rows
+  issueTable.innerHTML = '';
+
+  // Refill tables with filtered issues
+  fillTable(issueTable, filteredIssues, true);
 }
