@@ -17,6 +17,26 @@ const dom = new JSDOM(`
 global.document = dom.window.document;
 global.window = dom.window;
 
+/** Mock of getLocalizationString function
+ *
+ * @param {string} messageID - The ID of the message to be localized.
+ * @return {string} The localized string.
+ */
+function mockGetLocalizationString(messageID) {
+  switch (messageID) {
+  case 'Dashboard.Safe':
+    return 'Acceptable';
+  case 'Dashboard.LowRisk':
+    return 'Low';
+  case 'Dashboard.MediumRisk':
+    return 'Medium';
+  case 'Dashboard.HighRisk':
+    return 'High';
+  case 'Dashboard.SecurityRisksOverview':
+    return 'Security Risks Overview';
+  }
+}
+
 // test cases
 describe('Risk level distribution piechart', function() {
   // arrange
@@ -24,7 +44,7 @@ describe('Risk level distribution piechart', function() {
   let p = new PieChart(undefined, rc);
   it('getData should fill the piechart with the correct data', function() {
     // arrange
-    const expectedXValues = ['No risk', 'Low risk', 'Medium risk', 'High risk'];
+    const expectedXValues = ['Acceptable', 'Low', 'Medium', 'High'];
     const expectedYValues = [4, 3, 2, 1];
     const expectedColors = [
       'rgb(255, 255, 0)',
@@ -43,15 +63,24 @@ describe('Risk level distribution piechart', function() {
       lastLowRisk: 3,
       lastnoRisk: 4,
     };
+
     p = new PieChart(undefined, mockRiskCounters);
 
     // act
-    const resultData = p.getData();
+
+    /** asynchronous function to call p.getData() */
+    async function getData() {
+      return await p.getData(mockGetLocalizationString);
+    }
 
     // assert
-    test.array(resultData.labels).is(expectedXValues);
-    test.array(resultData.datasets[0].backgroundColor).is(expectedColors);
-    test.array(resultData.datasets[0].data).is(expectedYValues);
+    getData().then((result) =>{
+      test.array(result.labels).is(expectedXValues);
+      test.array(result.datasets[0].backgroundColor).is(expectedColors);
+      test.array(result.datasets[0].data).is(expectedYValues);
+    })
+      .catch((error) =>
+        console.log(error));
   });
   it('getOptions should return the correct piechart options', function() {
     // arrange
@@ -64,9 +93,17 @@ describe('Risk level distribution piechart', function() {
     };
 
     // act
-    const resultOptions = p.getOptions();
+
+    /** asynchronous function to call p.getOptions() */
+    async function getOptions() {
+      return await p.getOptions(mockGetLocalizationString);
+    }
 
     // assert
-    test.object(resultOptions).is(expectedOptions);
+    getOptions().then((result) => {
+      test.object(result).is(expectedOptions);
+    })
+      .catch((error) =>
+        console.log(error));
   });
 });
