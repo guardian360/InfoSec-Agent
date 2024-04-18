@@ -1,8 +1,8 @@
-2024/04/18 10:42:52 INFO: Starting InfoSec Agent
-2024/04/18 10:42:52 ERROR: Error reading user settings file: open usersettings/usersettings.json: The system cannot find the file specified.
-2024/04/18 10:42:52 ERROR: Error reading user settings file: open usersettings/usersettings.json: The system cannot find the file specified.
-2024/04/18 10:43:44 INFO: Scanning now. Scan:1
-2024/04/18 10:43:51 INFO: [
+2024/04/18 13:54:43 INFO: Starting InfoSec Agent
+2024/04/18 13:54:43 ERROR: Error reading user settings file: open usersettings/usersettings.json: The system cannot find the file specified.
+2024/04/18 13:54:43 ERROR: Error reading user settings file: open usersettings/usersettings.json: The system cannot find the file specified.
+2024/04/18 13:54:46 INFO: Scanning now. Scan:1
+2024/04/18 13:54:53 INFO: [
   {
     "issue_id": 5,
     "result_id": 1,
@@ -110,36 +110,30 @@
       "port: 65001, process: nvcontainer.exe",
       "port: 139, process: System",
       "port: 49412, process: svchost.exe",
-      "port: 54225, process: firefox.exe",
       "port: 54234, process: firefox.exe",
-      "port: 54284, process: firefox.exe",
-      "port: 54312, process: firefox.exe",
-      "port: 54542, process: GitHubDesktop.exe",
-      "port: 54555, process: firefox.exe",
-      "port: 54566, process: System Idle Process",
-      "port: 54578, process: firefox.exe",
       "port: 54581, process: firefox.exe",
       "port: 54582, process: firefox.exe",
-      "port: 54587, process: svchost.exe",
-      "port: 54592, process: svchost.exe",
-      "port: 54597, process: copilot-agent-win.exe",
-      "port: 54598, process: Discord.exe",
-      "port: 54599, process: firefox.exe",
-      "port: 54600, process: SearchApp.exe",
-      "port: 54604, process: SearchApp.exe",
-      "port: 54605, process: SearchApp.exe",
-      "port: 54606, process: SearchApp.exe",
-      "port: 54607, process: SearchApp.exe",
-      "port: 54608, process: SearchApp.exe",
-      "port: 54609, process: SearchApp.exe",
-      "port: 54610, process: SearchApp.exe",
-      "port: 54614, process: SearchApp.exe",
-      "port: 54615, process: SearchApp.exe",
-      "port: 54616, process: SearchApp.exe",
-      "port: 54617, process: SearchApp.exe",
-      "port: 54618, process: SearchApp.exe",
-      "port: 54620, process: SearchApp.exe",
-      "port: 54621, process: SearchApp.exe",
+      "port: 54972, process: Discord.exe",
+      "port: 55507, process: firefox.exe",
+      "port: 55511, process: GitHubDesktop.exe",
+      "port: 55527, process: firefox.exe",
+      "port: 55666, process: SearchApp.exe",
+      "port: 55735, process: GitHubDesktop.exe",
+      "port: 55781, process: System Idle Process",
+      "port: 55784, process: firefox.exe",
+      "port: 55785, process: System Idle Process",
+      "port: 55801, process: System Idle Process",
+      "port: 55823, process: System Idle Process",
+      "port: 55824, process: System Idle Process",
+      "port: 55826, process: System Idle Process",
+      "port: 55841, process: System Idle Process",
+      "port: 55849, process: System Idle Process",
+      "port: 55860, process: firefox.exe",
+      "port: 55873, process: copilot-agent-win.exe",
+      "port: 55874, process: copilot-agent-win.exe",
+      "port: 55876, process: svchost.exe",
+      "port: 55877, process: svchost.exe",
+      "port: 55884, process: copilot-agent-win.exe",
       "port: 135, process: svchost.exe",
       "port: 445, process: System",
       "port: 5357, process: System",
@@ -167,10 +161,10 @@
       "port: 5353, process: mDNSResponder.exe",
       "port: 54753, process: svchost.exe",
       "port: 123, process: svchost.exe",
-      "port: 3702, process: svchost.exe",
-      "port: 3702, process: svchost.exe",
       "port: 3702, process: dasHost.exe",
       "port: 3702, process: dasHost.exe",
+      "port: 3702, process: svchost.exe",
+      "port: 3702, process: svchost.exe",
       "port: 5353, process: svchost.exe",
       "port: 5355, process: svchost.exe",
       "port: 49665, process: mDNSResponder.exe",
@@ -178,8 +172,8 @@
       "port: 55147, process: dasHost.exe",
       "port: 63860, process: nvcontainer.exe",
       "port: 1900, process: svchost.exe",
-      "port: 5353, process: mDNSResponder.exe",
       "port: 5353, process: nvcontainer.exe",
+      "port: 5353, process: mDNSResponder.exe",
       "port: 54752, process: svchost.exe",
       "port: 1900, process: svchost.exe",
       "port: 54751, process: svchost.exe"
@@ -189,7 +183,7 @@
     "issue_id": 18,
     "result_id": 0,
     "result": [
-      "10.0.19045",
+      "Microsoft Windows [Version 10.0.19045.4291]",
       "You are currently up to date."
     ]
   },
@@ -252,14 +246,14 @@
   {
     "issue_id": 4,
     "result_id": 0,
-    "result": [
-      "Network sharing is enabled"
-    ]
+    "error": "error opening registry key: Access is denied."
   },
   {
     "issue_id": 23,
-    "result_id": 0,
-    "error": "SQL logic error: no such table: urls (1)"
+    "result_id": 1,
+    "result": [
+      "No phishing domains found in the last week"
+    ]
   },
   {
     "issue_id": 21,
@@ -312,12 +306,15 @@
   {
     "issue_id": 31,
     "result_id": 0,
-    "error": "SQL logic error: no such table: moz_places (1)"
+    "result": [
+      "No phishing domains found in the last week"
+    ]
   },
   {
     "issue_id": 30,
     "result_id": 0,
-    "error": "Unable to read the file: EOF"
+    "result": [
+      "ddg@search.mozilla.org"
+    ]
   }
 ]
-2024/04/18 10:45:06 INFO: Quitting the application

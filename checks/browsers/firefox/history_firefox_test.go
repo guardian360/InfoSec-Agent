@@ -2,6 +2,7 @@ package firefox_test
 
 import (
 	"errors"
+	"fmt"
 	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"os"
@@ -93,6 +94,67 @@ func TestCloseRows_Error(t *testing.T) {
 	err = mock.ExpectationsWereMet()
 	require.NoError(t, err)
 }*/
+
+func TestHistoryFirefox_Success(t *testing.T) {
+	db, mock, err := sqlmock.New()
+	if err != nil {
+		t.Fatalf("an error '%s' was not expected when opening a stub database connection", err)
+	}
+	defer db.Close()
+
+	profileFinder = utils.RealProfileFinder{}
+
+	mock.ExpectQuery("^SELECT url, last_visit_date FROM moz_places WHERE last_visit_date >= \\? ORDER BY last_visit_date DESC$").
+		WillReturnRows(sqlmock.NewRows([]string{"url", "last_visit_date"}))
+
+	// now we execute our method
+	check := firefox.HistoryFirefox(profileFinder)
+	if check.Error != nil {
+		t.Errorf("error was not expected while updating stats: %s", check.Error)
+	}
+
+	// we make sure that all expectations were met
+	if err := mock.ExpectationsWereMet(); err != nil {
+		t.Errorf("there were unfulfilled expectations: %s", err)
+	}
+}
+
+func TestHistoryFirefox_Failure(t *testing.T) {
+	db, mock, err := sqlmock.New()
+	if err != nil {
+		t.Fatalf("an error '%s' was not expected when opening a stub database connection", err)
+	}
+	defer db.Close()
+
+	// Mock the FirefoxFolder function to return a valid directory
+	profileFinder = utils.MockProfileFinder{
+		MockFirefoxFolder: func() ([]string, error) {
+			return []string{"/valid/directory"}, nil
+		},
+	}
+
+	mock.ExpectQuery("^SELECT url, last_visit_date FROM moz_places WHERE last_visit_date >= \\? ORDER BY last_visit_date DESC$").
+		WillReturnError(fmt.Errorf("some error"))
+
+	// now we execute our method
+	check := firefox.HistoryFirefox(profileFinder)
+	if check.Error == nil {
+		t.Errorf("was expecting an error, but there was none")
+	}
+
+	// we make sure that all expectations were met
+	if err := mock.ExpectationsWereMet(); err != nil {
+		t.Errorf("there were unfulfilled expectations: %s", err)
+	}
+}
+
+func TestOpenAndQueryDatabase_OpenFailure(t *testing.T) {
+	db, err := sql.Open("sqlite", "/invalid/path")
+	require.NoError(t, err)
+
+	_, err = firefox.QueryDatabase(db)
+	require.Error(t, err)
+}
 
 func TestQueryDatabase(t *testing.T) {
 	db, mock, err := sqlmock.New()
