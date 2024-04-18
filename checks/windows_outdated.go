@@ -2,6 +2,7 @@ package checks
 
 import (
 	"context"
+	"errors"
 	"io"
 	"net/http"
 	"regexp"
@@ -13,6 +14,8 @@ import (
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 )
+
+var WinVersion int
 
 // WindowsOutdated is a function that checks if the currently installed Windows version is outdated.
 //
@@ -36,6 +39,7 @@ func WindowsOutdated(mockExecutor mocking.CommandExecutor) Check {
 	match := re.FindStringSubmatch(versionString)
 
 	majorVersion, err := strconv.Atoi(match[1])
+	WinVersion = majorVersion
 	if err != nil {
 		logger.Log.ErrorWithErr("Error converting major version to integer: ", err)
 		return NewCheckError(WindowsOutdatedID, err)
@@ -53,9 +57,21 @@ func WindowsOutdated(mockExecutor mocking.CommandExecutor) Check {
 	const win10Url = "https://learn.microsoft.com/en-us/windows/release-health/release-information"
 	const win11Url = "https://learn.microsoft.com/en-us/windows/release-health/windows11-release-information"
 	win10HTML := GetURLBody(win10Url)
+	if win10HTML == nil {
+		logger.Log.Error(
+			"Error fetching Windows 10 HTML content, this function requires an internet connection")
+		return NewCheckError(WindowsOutdatedID, errors.New(
+			"error fetching Windows 10 HTML content,this function requires an internet connection"))
+	}
 	latestWin10Build := FindWindowsBuild(win10HTML)
 
 	win11HTML := GetURLBody(win11Url)
+	if win11HTML == nil {
+		logger.Log.Error(
+			"Error fetching Windows 11 HTML content, this function requires an internet connection")
+		return NewCheckError(WindowsOutdatedID, errors.New(
+			"error fetching Windows 11 HTML content, this function requires an internet connection"))
+	}
 	latestWin11Build := FindWindowsBuild(win11HTML)
 
 	// Depending on the major Windows version (10 or 11), act accordingly
