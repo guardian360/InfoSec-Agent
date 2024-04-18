@@ -3,18 +3,26 @@ import {ChangeLanguage as changeLanguage, LogError as logError} from '../../wail
 import {getLocalization} from './localize.js';
 import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
 import {retrieveTheme} from './personalize.js';
+import * as runTime from '../../wailsjs/runtime/runtime.js';
 /**
  * Initiates a language update operation.
  * Calls the ChangeLanguage function and handles the result or error.
  */
-function updateLanguage() {
-  changeLanguage()
-    .then((result) => {
+async function updateLanguage() {
+  await changeLanguage()
+    .then(async (result) => {
+      sessionStorage.setItem('languageChanged', JSON.stringify(true));
+      runTime.WindowReload();
     })
     .catch((err) => {
       logError('Error changing language:' + err);
       console.error(err);
     });
+}
+/** Opens the settings page after window is reloaded after updateLanguage() is called */
+if (sessionStorage.getItem('languageChanged') != null) {
+  openSettingsPage();
+  sessionStorage.removeItem('languageChanged');
 }
 
 /** Load the content of the Settings page */

@@ -36,7 +36,14 @@ export async function scanTest() {
   }
 }
 
-scanTest();
+// Check if scanTest has already been called before
+if (sessionStorage.getItem('scanTest') === null) {
+  // Call scanTest() only if it hasn't been called before
+  scanTest();
+
+  // Set the flag in sessionStorage to indicate that scanTest has been called
+  sessionStorage.setItem('scanTest', 'called');
+}
 
 // counts the occurences of each level: 0 = acceptable, 1 = low, 2 = medium, 3 = high
 const countOccurences = (severities, level) => severities.filter((item) => item.severity === level).length;
