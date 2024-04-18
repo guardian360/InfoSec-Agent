@@ -64,7 +64,7 @@ func CopyFile(src, dst string, mockSource mocking.File, mockDestination mocking.
 		}
 	}(destinationFile)
 
-	_, err = sourceFile.Copy(destinationFile, sourceFile)
+	_, err = sourceFile.Copy(sourceFile, destinationFile)
 	if err != nil {
 		logger.Log.Println("Error copying file:", err)
 		return err
