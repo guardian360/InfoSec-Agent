@@ -82,11 +82,10 @@ async function setSeverities(input, type) {
       openHomePage();
     } else {
       let riskCounter = JSON.parse(sessionStorage.getItem(type + 'RiskCounters'));
-      console.log(riskCounter);
       riskCounter = updateRiskcounter(riskCounter, high, medium, low, acceptable);
       sessionStorage.setItem(type + 'RiskCounters', JSON.stringify(riskCounter));
     }
   } catch (err) {
-    console.error(err);
+    logError(err);
   }
 }
