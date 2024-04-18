@@ -36,9 +36,9 @@ export class Graph {
   }
 
   /** Updates the graph, should be called after a change in graph properties */
-  changeGraph() {
+  async changeGraph() {
     this.graphShowAmount = document.getElementById('graph-interval').value;
-    this.barChart.data = this.getData();
+    this.barChart.data = await this.getData();
     console.log(this.graphShowAmount);
     this.barChart.update();
   }

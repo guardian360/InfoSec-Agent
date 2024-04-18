@@ -67,7 +67,7 @@ export function openHomePage() {
   document.getElementById('medal4').src = medal;
 
   const rc = JSON.parse(sessionStorage.getItem('RiskCounters'));
-  new PieChart('pieChart', rc);
+  new PieChart('pieChart', rc, 'Total');
 
   // Localize the static content of the home page
   const staticHomePageConent = [

@@ -10,23 +10,25 @@ export class PieChart {
    *
    * @param {string=} canvas id of the canvas where the piechart would be placed
    * @param {RiskCounters} riskCounters Risk counters used to retrieve data to be put in the chart
+   * @param {string} type Title for the type of risks shown in the chart
    */
-  constructor(canvas, riskCounters) {
+  constructor(canvas, riskCounters, type) {
     this.rc = riskCounters;
     if (canvas !== undefined) {
-      this.createPieChart(canvas);
+      this.createPieChart(canvas, type);
     }
   }
 
   /** Creates a pie chart for risks
    *
    * @param {string} canvas html canvas where pie chart will be placed
+   * @param {string} type Title for the type of risks shown in the chart
    */
-  async createPieChart(canvas) {
+  async createPieChart(canvas, type) {
     this.pieChart = new Chart(canvas, {
       type: 'doughnut',
       data: await this.getData(),
-      options: await this.getOptions(),
+      options: await this.getOptions(type),
       overrides: {
         plugins: {
           legend: {
@@ -64,15 +66,16 @@ export class PieChart {
 
   /** Creates options for a pie chart
    *
+   * @param {string} type Title for the type of risks shown in the chart
    * @param {*} getString Function to retrieve localized text
    * @return {ChartData} The options for the pie chart
    */
-  async getOptions(getString = getLocalizationString) {
+  async getOptions(type, getString = getLocalizationString) {
     return {
       maintainAspectRatio: false,
       title: {
         display: true,
-        text: await getString('Dashboard.SecurityRisksOverview'),
+        text: await getString('Dashboard.' + type + 'RisksOverview'),
       },
     };
   }

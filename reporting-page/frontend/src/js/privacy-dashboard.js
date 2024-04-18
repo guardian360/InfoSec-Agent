@@ -196,7 +196,7 @@ function openPrivacyDashboardPage() {
   }
 
   // Create charts
-  new PieChart('pieChart', rc);
+  new PieChart('pieChart', rc, 'Privacy');
   const g = new Graph('interval-graph', rc);
   addGraphFunctions(g);
   document.getElementsByClassName('scan-now')[0].addEventListener('click', async () => {
