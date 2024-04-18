@@ -6,6 +6,7 @@ package scan
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/chromium"
@@ -92,7 +93,7 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 		func() checks.Check { return chromium.SearchEngineChromium("Chrome") },
 		func() checks.Check { c, _ := firefox.ExtensionFirefox(); return c },
 		func() checks.Check { _, c := firefox.ExtensionFirefox(); return c },
-		firefox.HistoryFirefox,
+		func() checks.Check { return firefox.HistoryFirefox(utils.RealProfileFinder{}) },
 		firefox.SearchEngineFirefox,
 	}
 	totalChecks := len(securityChecks)

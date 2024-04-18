@@ -1,2 +1,323 @@
-2024/04/11 13:13:24 INFO: Starting InfoSec Agent
-2024/04/11 13:13:27 INFO: Quitting the application
+2024/04/18 10:42:52 INFO: Starting InfoSec Agent
+2024/04/18 10:42:52 ERROR: Error reading user settings file: open usersettings/usersettings.json: The system cannot find the file specified.
+2024/04/18 10:42:52 ERROR: Error reading user settings file: open usersettings/usersettings.json: The system cannot find the file specified.
+2024/04/18 10:43:44 INFO: Scanning now. Scan:1
+2024/04/18 10:43:51 INFO: [
+  {
+    "issue_id": 5,
+    "result_id": 1,
+    "result": [
+      "No password manager found"
+    ]
+  },
+  {
+    "issue_id": 15,
+    "result_id": 0,
+    "result": [
+      "Windows real-time defender is enabled and also the windows periodic scan is enabled"
+    ]
+  },
+  {
+    "issue_id": 16,
+    "result_id": 1,
+    "result": [
+      "You changed your password recently on 15-4-2024"
+    ]
+  },
+  {
+    "issue_id": 17,
+    "result_id": 12,
+    "result": [
+      "Password",
+      "Fingerprint"
+    ]
+  },
+  {
+    "issue_id": 6,
+    "result_id": 0,
+    "result": [
+      "MSTeams"
+    ]
+  },
+  {
+    "issue_id": 7,
+    "result_id": 0,
+    "error": "error reading value: The system cannot find the file specified."
+  },
+  {
+    "issue_id": 8,
+    "result_id": 0,
+    "result": [
+      "AD2F1837.HPPrinterControl",
+      "Microsoft.Microsoft3DViewer",
+      "Microsoft.Win32WebViewHost",
+      "Microsoft.WindowsCamera",
+      "Microsoft.WindowsFeedbackHub",
+      "Microsoft.XboxGamingOverlay",
+      "MSTeams",
+      "brave.exe",
+      "firefox.exe",
+      "obs64.exe",
+      "Discord.exe",
+      "Teams.exe"
+    ]
+  },
+  {
+    "issue_id": 9,
+    "result_id": 0,
+    "result": [
+      "microsoft.windowscommunicationsapps"
+    ]
+  },
+  {
+    "issue_id": 10,
+    "result_id": 0,
+    "result": [
+      "microsoft.windowscommunicationsapps"
+    ]
+  },
+  {
+    "issue_id": 1,
+    "result_id": 1,
+    "result": [
+      "manon\u0000",
+      "Error reading device name 5c5f674ad561",
+      "Hal\u0000",
+      "iPhone van Kevin\u0000",
+      "WH-1000XM4\u0000"
+    ]
+  },
+  {
+    "issue_id": 11,
+    "result_id": 0,
+    "result": [
+      "port: 5354, process: mDNSResponder.exe",
+      "port: 5354, process: mDNSResponder.exe",
+      "port: 5354, process: mDNSResponder.exe",
+      "port: 6463, process: Discord.exe",
+      "port: 27015, process: AppleMobileDeviceService.",
+      "port: 49671, process: AppleMobileDeviceService.",
+      "port: 49672, process: AppleMobileDeviceService.",
+      "port: 54297, process: nvcontainer.exe",
+      "port: 54368, process: NVIDIA Web Helper.exe",
+      "port: 54588, process: firefox.exe",
+      "port: 54589, process: firefox.exe",
+      "port: 54590, process: firefox.exe",
+      "port: 54591, process: firefox.exe",
+      "port: 54619, process: GitHubDesktop.exe",
+      "port: 63342, process: goland64.exe",
+      "port: 65001, process: nvcontainer.exe",
+      "port: 65001, process: nvcontainer.exe",
+      "port: 139, process: System",
+      "port: 49412, process: svchost.exe",
+      "port: 54225, process: firefox.exe",
+      "port: 54234, process: firefox.exe",
+      "port: 54284, process: firefox.exe",
+      "port: 54312, process: firefox.exe",
+      "port: 54542, process: GitHubDesktop.exe",
+      "port: 54555, process: firefox.exe",
+      "port: 54566, process: System Idle Process",
+      "port: 54578, process: firefox.exe",
+      "port: 54581, process: firefox.exe",
+      "port: 54582, process: firefox.exe",
+      "port: 54587, process: svchost.exe",
+      "port: 54592, process: svchost.exe",
+      "port: 54597, process: copilot-agent-win.exe",
+      "port: 54598, process: Discord.exe",
+      "port: 54599, process: firefox.exe",
+      "port: 54600, process: SearchApp.exe",
+      "port: 54604, process: SearchApp.exe",
+      "port: 54605, process: SearchApp.exe",
+      "port: 54606, process: SearchApp.exe",
+      "port: 54607, process: SearchApp.exe",
+      "port: 54608, process: SearchApp.exe",
+      "port: 54609, process: SearchApp.exe",
+      "port: 54610, process: SearchApp.exe",
+      "port: 54614, process: SearchApp.exe",
+      "port: 54615, process: SearchApp.exe",
+      "port: 54616, process: SearchApp.exe",
+      "port: 54617, process: SearchApp.exe",
+      "port: 54618, process: SearchApp.exe",
+      "port: 54620, process: SearchApp.exe",
+      "port: 54621, process: SearchApp.exe",
+      "port: 135, process: svchost.exe",
+      "port: 445, process: System",
+      "port: 5357, process: System",
+      "port: 7680, process: svchost.exe",
+      "port: 49664, process: lsass.exe",
+      "port: 49665, process: wininit.exe",
+      "port: 49666, process: svchost.exe",
+      "port: 49667, process: svchost.exe",
+      "port: 49668, process: svchost.exe",
+      "port: 49669, process: spoolsv.exe",
+      "port: 49674, process: services.exe",
+      "port: 42050, process: Microsoft.SharePoint.exe",
+      "port: 49670, process: jhi_service.exe",
+      "port: 1900, process: svchost.exe",
+      "port: 10020, process: NVIDIA Web Helper.exe",
+      "port: 49666, process: AppleMobileDeviceService.",
+      "port: 49667, process: AppleMobileDeviceService.",
+      "port: 49668, process: svchost.exe",
+      "port: 54754, process: svchost.exe",
+      "port: 57172, process: nvcontainer.exe",
+      "port: 137, process: System",
+      "port: 138, process: System",
+      "port: 1900, process: svchost.exe",
+      "port: 5353, process: nvcontainer.exe",
+      "port: 5353, process: mDNSResponder.exe",
+      "port: 54753, process: svchost.exe",
+      "port: 123, process: svchost.exe",
+      "port: 3702, process: svchost.exe",
+      "port: 3702, process: svchost.exe",
+      "port: 3702, process: dasHost.exe",
+      "port: 3702, process: dasHost.exe",
+      "port: 5353, process: svchost.exe",
+      "port: 5355, process: svchost.exe",
+      "port: 49665, process: mDNSResponder.exe",
+      "port: 50490, process: svchost.exe",
+      "port: 55147, process: dasHost.exe",
+      "port: 63860, process: nvcontainer.exe",
+      "port: 1900, process: svchost.exe",
+      "port: 5353, process: mDNSResponder.exe",
+      "port: 5353, process: nvcontainer.exe",
+      "port: 54752, process: svchost.exe",
+      "port: 1900, process: svchost.exe",
+      "port: 54751, process: svchost.exe"
+    ]
+  },
+  {
+    "issue_id": 18,
+    "result_id": 0,
+    "result": [
+      "10.0.19045",
+      "You are currently up to date."
+    ]
+  },
+  {
+    "issue_id": 19,
+    "result_id": 1,
+    "result": [
+      "Secure boot is enabled"
+    ]
+  },
+  {
+    "issue_id": 13,
+    "result_id": 2,
+    "result": [
+      "SMB1: not enabled",
+      "SMB2: enabled"
+    ]
+  },
+  {
+    "issue_id": 20,
+    "result_id": 1,
+    "result": [
+      "Docker Desktop",
+      "SecurityHealth",
+      "DellMobileConnectWelcome",
+      "RtkAudUService",
+      "WavesSvc",
+      "WindowsDefender"
+    ]
+  },
+  {
+    "issue_id": 3,
+    "result_id": 2,
+    "result": [
+      "Guest account is not active"
+    ]
+  },
+  {
+    "issue_id": 14,
+    "result_id": 2,
+    "result": [
+      "UAC is turned on for apps making changes to your computer."
+    ]
+  },
+  {
+    "issue_id": 12,
+    "result_id": 1,
+    "result": [
+      "Remote Desktop is disabled"
+    ]
+  },
+  {
+    "issue_id": 2,
+    "result_id": 0,
+    "result": [
+      "HID-muis",
+      "Integrated Webcam"
+    ]
+  },
+  {
+    "issue_id": 4,
+    "result_id": 0,
+    "result": [
+      "Network sharing is enabled"
+    ]
+  },
+  {
+    "issue_id": 23,
+    "result_id": 0,
+    "error": "SQL logic error: no such table: urls (1)"
+  },
+  {
+    "issue_id": 21,
+    "result_id": 1,
+    "result": [
+      "No adblocker installed"
+    ]
+  },
+  {
+    "issue_id": 25,
+    "result_id": 0,
+    "result": [
+      "duckduckgo.com"
+    ]
+  },
+  {
+    "issue_id": 28,
+    "result_id": 0,
+    "result": [
+      "Lush – Bold,theme,Mozilla,true",
+      "Terraria wiki: begone, fandom!,extension,,true",
+      "LastPass: Free Password Manager,extension,LastPass,true",
+      "Form Autofill,extension,,true",
+      "Firefox Screenshots,extension,Mozilla \u003cscreenshots-feedback@mozilla.com\u003e,true",
+      "WebCompat Reporter,extension,Thomas Wisniewski \u003ctwisniewski@mozilla.com\u003e,false",
+      "Web Compatibility Interventions,extension,,true",
+      "Picture-In-Picture,extension,,true",
+      "Google,extension,,true",
+      "Bing,extension,,true",
+      "DuckDuckGo,extension,,true",
+      "eBay,extension,,true",
+      "Wikipedia (en),extension,,true",
+      "System theme — auto,theme,Mozilla,false",
+      "Light,theme,Mozilla,false",
+      "Dark,theme,Mozilla,false",
+      "Firefox Alpenglow,theme,,false",
+      "Add-ons Search Detection,extension,,true",
+      "Lush – Bold,theme,Mozilla,false",
+      "Qwant,extension,,true",
+      "uBlock Origin,extension,Raymond Hill \u0026 contributors,true"
+    ]
+  },
+  {
+    "issue_id": 29,
+    "result_id": 1,
+    "result": [
+      "true"
+    ]
+  },
+  {
+    "issue_id": 31,
+    "result_id": 0,
+    "error": "SQL logic error: no such table: moz_places (1)"
+  },
+  {
+    "issue_id": 30,
+    "result_id": 0,
+    "error": "Unable to read the file: EOF"
+  }
+]
+2024/04/18 10:45:06 INFO: Quitting the application
