@@ -57,8 +57,8 @@ async function setAllSeverities(input) {
   const result = await getDataBaseData(input);
   sessionStorage.setItem('DataBaseData', JSON.stringify(result));
   await setSeverities(result, '');
-  await setSeverities(result,'Security');
-  await setSeverities(result,'Privacy');
+  await setSeverities(result, 'Security');
+  await setSeverities(result, 'Privacy');
 }
 
 /** Sets the severities collected from the database in session storage
@@ -66,17 +66,18 @@ async function setAllSeverities(input) {
  * @param {DataBaseData[]} input DataBaseData retrieved from database
  * @param {string} type Type of issues to set the severities of in session storage
  */
-async function setSeverities(input,type) {
+async function setSeverities(input, type) {
   try {
     if (type !== '') {
-      input = input.filter((item) => data[item.jsonkey] !== undefined)
-      input = input.filter((item) => data[item.jsonkey].Type == type)
+      input = input.filter((item) => data[item.jsonkey] !== undefined);
+      input = input.filter((item) => data[item.jsonkey].Type == type);
     }
     const high = countOccurences(input, 3);
     const medium = countOccurences(input, 2);
     const low = countOccurences(input, 1);
     const acceptable = countOccurences(input, 0);
-    if (sessionStorage.getItem(type + 'RiskCounters') === null || sessionStorage.getItem(type + 'RiskCounters') === undefined) {
+    if (sessionStorage.getItem(type + 'RiskCounters') === null ||
+        sessionStorage.getItem(type + 'RiskCounters') === undefined) {
       sessionStorage.setItem(type + 'RiskCounters', JSON.stringify(new rc.RiskCounters(high, medium, low, acceptable)));
       openHomePage();
     } else {
