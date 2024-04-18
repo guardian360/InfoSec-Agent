@@ -2,6 +2,7 @@ package mocking
 
 import (
 	"io"
+	"math"
 	"os"
 )
 
@@ -10,12 +11,13 @@ type File interface {
 	io.Closer
 	Read(p []byte) (int, error)
 	Write(p []byte) (int, error)
-	Copy(destination File, source File) (int64, error)
+	Copy(source File, destination File) (int64, error)
 }
 
 // FileWrapper is a wrapper for the os.File type
 type FileWrapper struct {
 	file   *os.File
+	Buffer []byte
 	Err    error
 	Writer *os.File
 	Reader *os.File
@@ -27,7 +29,17 @@ type FileWrapper struct {
 //
 // Returns: a pointer to a new FileWrapper struct
 func Wrap(file *os.File) *FileWrapper {
-	return &FileWrapper{file: file, Writer: file, Reader: file}
+	fileInfo, err := file.Stat()
+	if err != nil {
+		return nil
+	}
+	fileSize := fileInfo.Size()
+	return &FileWrapper{
+		file:   file,
+		Buffer: make([]byte, int64(math.Round(float64(fileSize)*1.1))),
+		Writer: file,
+		Reader: file,
+	}
 }
 
 // Close closes the file
@@ -62,7 +74,20 @@ func (f *FileWrapper) Write(p []byte) (int, error) {
 }
 
 func (f *FileWrapper) Copy(source File, destination File) (int64, error) {
-	return io.Copy(destination, source)
+	// Read from the source file
+	bytesRead, err := source.Read(f.Buffer)
+	if err != nil {
+		return 0, err
+	}
+
+	// Write to the destination file
+	bytesWritten, err := destination.Write(f.Buffer[:bytesRead])
+	if err != nil {
+		return 0, err
+	}
+
+	// Return the number of bytes written
+	return int64(bytesWritten), nil
 }
 
 type FileMock struct {
