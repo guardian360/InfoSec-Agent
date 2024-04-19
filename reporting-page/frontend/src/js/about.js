@@ -40,7 +40,7 @@ function openAboutPage() {
             which is scheduled for June 24, 2024.
             Feel free to report any bugs or issues you encounter. 
             Your feedback is valuable and helps improve the InfoSec-Agent project.
-            You can email us at <a href="mailto:infosec-agent@gmail.com">infosec-agent@gmail.com</a>.</p>
+            You can email us at <a href="mailto:infosecagentuu@gmail.com">infosecagentuu@gmail.com</a>.</p>
     </div>
 </div>`;
   document.onload = retrieveTheme();

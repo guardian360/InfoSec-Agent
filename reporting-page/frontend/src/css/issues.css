@@ -68,7 +68,6 @@
 /* Table styles */
 .issues-table {
   width: 100%;
-  border-collapse: collapse;
   overflow-x: auto; /* Allows table to scroll on small screens */
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
