@@ -210,7 +210,7 @@ func OpenReportingPage(path string) error {
 		ReportingPageOpen = false
 	}()
 
-	const build = false
+	const build = true
 	if build {
 		err = BuildReportingPage()
 		if err != nil {
