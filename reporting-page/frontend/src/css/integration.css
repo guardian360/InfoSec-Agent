@@ -5,28 +5,28 @@ body {
     padding: 0;
   }
 
-  .apiKeyContainer {
+  .api-key-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
   }
 
-  .apiKeyForm {
+  .api-key-form {
     max-width: 600px;
     width: 100%;
     background-color: #f4f4f4;
     border-radius: 8px;
     padding: 20px;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10 0 rgba(0 0 0 10%);
   }
 
-  .apiKeyTitle {
+  .api-key-title {
     color: #333;
     margin-bottom: 20px;
   }
 
-  .apiKeyButton {
+  .api-key-button {
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -35,11 +35,11 @@ body {
     cursor: pointer;
   }
 
-  .apiKeyButton:hover {
+  .api-key-button:hover {
     background-color: #0056b3;
   }
 
-  .apiKeyInput {
+  .api-key-input {
     width: calc(100% - 120px);
     padding: 10px;
     border: 1px solid #ccc;
@@ -47,13 +47,12 @@ body {
     margin-bottom: 10px;
   }
 
-  .apiKeyStatus {
-    margin-top: 20px;
-    padding: 10px;
+  .api-key-status {
+    margin-top: 5px;
     border-radius: 4px;
     font-weight: bold;
   }
 
-  .apiKeyStep {
+  .api-key-step {
     display: none;
   }

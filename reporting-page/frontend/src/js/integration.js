@@ -1,8 +1,9 @@
 import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
 import {retrieveTheme} from './personalize.js';
 
+export let currentStep = 1;
 /** Load the content of the Integration page */
-function openIntegrationPage() {
+export function openIntegrationPage() {
   closeNavigation();
   markSelectedNavigationItem('integration-button');
 
@@ -15,78 +16,91 @@ function openIntegrationPage() {
     <title>Lighthouse API</title>
   </head>
   <body>
-  <div class="apiKeyContainer">
-    <div class="apiKeyForm">
-      <h1 class="apiKeyTitle">API Key Connection</h1>
+  <div class="api-key-container">
+    <div class="api-key-form">
+      <h1 class="api-key-title">Connect to the Lighthouse API</h1>
 
-      <h2>Step-by-Step Guide to Obtain API Key:</h2>
-      <div class="apiKeyStep" id="step1">
+      <div class="api-key-step" id="step1">
         <h3>Step 1: Register for an account</h3>
         <p>Visit our website and register for a new account.</p>
-        <div class="apiKeyImageContainer">
-          <img class="apiKeyImage" src="https://via.placeholder.com/400" alt="Step 1 Image">
+        <div class="api-key-image-container">
+          <img class="api-key-image" src="https://via.placeholder.com/400" alt="Step 1 Image">
         </div>
       </div>
 
-      <div class="apiKeyStep" id="step2">
+      <div class="api-key-step" id="step2">
         <h3>Step 2: Navigate to API Settings</h3>
         <p>Once logged in, navigate to your account settings and find the API section.</p>
-        <div class="apiKeyImageContainer">
-          <img class="apiKeyImage" src="https://via.placeholder.com/400" alt="Step 2 Image">
+        <div class="api-key-image-container">
+          <img class="api-key-image" src="https://via.placeholder.com/400" alt="Step 2 Image">
         </div>
       </div>
 
-      <div class="apiKeyStep" id="step3">
+      <div class="api-key-step" id="step3">
         <h3>Step 3: Generate API Key</h3>
         <p>Generate a new API key and copy it.</p>
-        <div class="apiKeyImageContainer">
-          <img class="apiKeyImage" src="https://via.placeholder.com/400" alt="Step 3 Image">
+        <div class="api-key-image-container">
+          <img class="api-key-image" src="https://via.placeholder.com/400" alt="Step 3 Image">
         </div>
       </div>
 
       <div id="steps">
-      <button class="apiKeyButton" id="prevBtn">&#8249; Previous</button>
-      <button class="apiKeyButton" id="nextBtn">Next &#8250;</button>
+      <button class="api-key-button" id="prevBtn">&#8249; Previous</button>
+      <button class="api-key-button" id="nextBtn">Next &#8250;</button>
       </div>
 
       <h2>Enter Your API Key:</h2>
-      <input type="password" class="apiKeyInput" id="apiKeyInput">
-      <button class="apiKeyButton" id="apiKeyButtonClick">Connect</button>
-      <button class="apiKeyButton" id="disconnectButton">Disconnect</button>
-      <div class="apiKeyStatus" id="status"></div>
+      <input type="password" class="api-key-input" id="apiKeyInput">
+      <button class="api-key-button" id="apiKeyButtonClick">Connect</button>
+      <button class="api-key-button" id="disconnectButton">Disconnect</button>
+      <div class="api-key-status" id="status"></div>
       </div>
-  </div>
-</body>
-</html>`;
+    </div>
+  </body>
+  </html>`;
 
-document.getElementById('nextBtn').addEventListener('click', () => nextStep());
-document.getElementById('prevBtn').addEventListener('click', () => prevStep());
-document.getElementById('apiKeyButtonClick').addEventListener('click', () => connectToAPI());
-document.getElementById('disconnectButton').addEventListener('click', () => disconnectFromAPI());
-document.getElementById('disconnectButton').style.display = 'none';
+  document.getElementById('nextBtn').addEventListener('click', () => nextStep());
+  document.getElementById('prevBtn').addEventListener('click', () => prevStep());
+  document.getElementById('apiKeyButtonClick').addEventListener('click', () => connectToAPI());
+  document.getElementById('disconnectButton').addEventListener('click', () => disconnectFromAPI());
+  document.getElementById('disconnectButton').style.display = 'none';
 
-let currentStep = 1;
-showStep(currentStep);
+  showStep(currentStep);
+  document.onload = retrieveTheme();
+}
 
+/**
+ * This function shows the step of the API key connection process
+ * @param {number} step The step to show
+ */
 function showStep(step) {
-  const steps = document.querySelectorAll('.apiKeyStep');
-  steps.forEach(s => s.style.display = 'none');
+  const steps = document.querySelectorAll('.api-key-step');
+  steps.forEach((s) => s.style.display = 'none');
   document.getElementById('step' + step).style.display = 'block';
   currentStep = step;
 }
 
+/**
+ * This function navigates to the next step of the API key connection process
+ */
 function nextStep() {
   if (currentStep < 3) {
     showStep(currentStep + 1);
   }
 }
 
+/**
+ * This function navigates to the previous step of the API key connection process
+ */
 function prevStep() {
   if (currentStep > 1) {
     showStep(currentStep - 1);
   }
 }
 
+/**
+ * This function connects to the API using the entered API key
+ */
 function connectToAPI() {
   const apiKey = document.getElementById('apiKeyInput').value;
   // Dummy API connection logic
@@ -105,17 +119,18 @@ function connectToAPI() {
   }, 1000);
 }
 
+/**
+ * This function disconnects from the API
+ */
 function disconnectFromAPI() {
   // Dummy disconnect logic
   const status = document.getElementById('status');
   status.innerHTML = 'Disconnected from API.';
   status.style.color = 'red';
   // Show API key input
-  document.getElementById('apiKeyButtonClick').style.display = 'block';
+  document.getElementById('apiKeyButtonClick').style.display = 'inline-block';
   // Hide disconnect button
   document.getElementById('disconnectButton').style.display = 'none';
-}
-document.onload = retrieveTheme();
 }
 
 document.getElementById('integration-button').addEventListener('click', () => openIntegrationPage());
