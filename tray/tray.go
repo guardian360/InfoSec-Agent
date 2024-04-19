@@ -141,7 +141,7 @@ func OnReady() {
 				logger.Log.ErrorWithErr("Error scanning:", err)
 			}
 		case <-mChangeLanguage.ClickedCh:
-			ChangeLanguage()
+			ChangeLanguage("usersettings")
 			RefreshMenu()
 		case <-mQuit.ClickedCh:
 			systray.Quit()
@@ -364,10 +364,12 @@ func ScanNow() ([]checks.Check, error) {
 // 6: Portuguese
 //
 // Parameters:
+//
+//   - path string: The relative path to the user settings file. This is used to save the updated language setting.
 //   - testInput ...string: Optional parameter used for testing. If provided, the function uses this as the user's language selection instead of displaying the dialog window.
 //
 // Returns: None. The function updates the 'language' variable in-place.
-func ChangeLanguage(testInput ...string) {
+func ChangeLanguage(path string, testInput ...string) {
 	var res string
 	if len(testInput) > 0 {
 		res = testInput[0]
@@ -403,8 +405,8 @@ func ChangeLanguage(testInput ...string) {
 	}
 	usersettings.SaveUserSettings(usersettings.UserSettings{
 		Language:     Language,
-		ScanInterval: usersettings.LoadUserSettings("usersettings").ScanInterval,
-	}, "usersettings")
+		ScanInterval: usersettings.LoadUserSettings(path).ScanInterval,
+	}, path)
 }
 
 // RefreshMenu updates the system tray menu items to reflect the current language setting.
