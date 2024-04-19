@@ -1,10 +1,3 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #fff;
-    margin: 0;
-    padding: 0;
-  }
-
   .api-key-container {
     display: flex;
     justify-content: center;
@@ -15,20 +8,20 @@ body {
   .api-key-form {
     max-width: 600px;
     width: 100%;
-    background-color: #f4f4f4;
+    background-color: var(--background-color-integration);
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 0 10 0 rgba(0 0 0 10%);
   }
 
   .api-key-title {
-    color: #333;
+    color: var(--text-body);
     margin-bottom: 20px;
   }
 
   .api-key-button {
-    background-color: #007bff;
-    color: #fff;
+    background-color: var(--background-color-left-nav);
+    color: var(--text-body);
     border: none;
     padding: 10px 20px;
     border-radius: 4px;
@@ -36,7 +29,7 @@ body {
   }
 
   .api-key-button:hover {
-    background-color: #0056b3;
+    background-color: var(--background-color-left-nav);
   }
 
   .api-key-input {
