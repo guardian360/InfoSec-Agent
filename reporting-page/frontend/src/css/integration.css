@@ -1,0 +1,51 @@
+  .api-key-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .api-key-form {
+    max-width: 600px;
+    width: 100%;
+    background-color: var(--background-color-integration);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10 0 rgba(0 0 0 10%);
+  }
+
+  .api-key-title {
+    color: var(--text-body);
+    margin-bottom: 20px;
+  }
+
+  .api-key-button {
+    background-color: var(--background-color-left-nav);
+    color: var(--text-body);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .api-key-button:hover {
+    background-color: var(--background-color-left-nav);
+  }
+
+  .api-key-input {
+    width: calc(100% - 120px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+
+  .api-key-status {
+    margin-top: 5px;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+
+  .api-key-step {
+    display: none;
+  }

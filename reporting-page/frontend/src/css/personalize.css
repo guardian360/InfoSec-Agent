@@ -104,6 +104,7 @@
   --text-navigation: hsl(var(--hue-complement) 5% 30%);
   --text-settings-hover: #646464; 
   --text-left-nav: #d4d4d4; 
+  --background-color-integration: #f4f4f4;
 
 }
 
@@ -120,4 +121,5 @@
   --text-navigation: #383636;
   --text-settings-hover: #798d8a;
   --text-left-nav: #d6cdcd; 
+  --background-color-integration: #181818;
 }

@@ -22,6 +22,7 @@ Should later on be able to be changed by user, with help of js
   --background-color-second-row-area: hsl(var(--hueleft-analogous) 40% 40%); /* changes background of small area in security/privacy risk */
   --background-piechart: hsl(var(--hueleft-analogous) 40% 90%); /* changes background piechart */
   --background-color-table-header: white;
+  --background-color-integration: #f4f4f4;
 
   /* colors for text */
   --text-body: #333;                                  /* main text color */
