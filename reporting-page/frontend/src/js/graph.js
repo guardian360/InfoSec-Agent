@@ -1,5 +1,4 @@
 import {getLocalizationString} from './localize.js';
-import {Chart} from 'chart.js';
 
 /**
  * Represents a graph for displaying risk counters.

@@ -1,5 +1,4 @@
 import {getLocalizationString} from './localize.js';
-import {Chart} from 'chart.js';
 
 /**
  * Represents a PieChart object for displaying risk counters.
@@ -53,7 +52,7 @@ export class PieChart {
       await getString('Dashboard.MediumRisk'),
       await getString('Dashboard.HighRisk'),
     ];
-    const yValues = [this.rc.lastnoRisk, this.rc.lastLowRisk, this.rc.lastMediumRisk, this.rc.lastHighRisk];
+    const yValues = [this.rc.lastNoRisk, this.rc.lastLowRisk, this.rc.lastMediumRisk, this.rc.lastHighRisk];
     const barColors = [this.rc.noRiskColor, this.rc.lowRiskColor, this.rc.mediumRiskColor, this.rc.highRiskColor];
 
     return {
