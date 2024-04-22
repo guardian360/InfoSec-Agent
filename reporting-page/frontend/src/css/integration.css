@@ -11,7 +11,7 @@
     background-color: var(--background-color-integration);
     border-radius: 8px;
     padding: 20px;
-    box-shadow: 0 0 10 0 rgba(0 0 0 10%);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
   }
 
   .api-key-title {

@@ -2,7 +2,7 @@
 
 .dashboard-data {
   color: var(--text-body);
-  width: flex;
+  width: fit-content;
   display: flex;
   flex-flow: row wrap;
   padding: 5px;
@@ -21,7 +21,6 @@
 /* security status css */
 
 .security-status {
-  float: center;
   display: flex;
 }
 
@@ -74,7 +73,7 @@
   margin: 10px;
   padding: 10px;
   vertical-align: middle;
-  font-size: 17.5px;
+  font-size: 18px;
   border-radius: 10px;
   color: var(--text-body);
 }
@@ -128,10 +127,9 @@
 
   /* background-color: var(--); */
   font-family: inherit;
-  margin: 0;
   min-width: 160px;
   float: left;
-  margin-top: 10px;
+  margin: 10px 0 0;
   text-align: center;
   border-radius: 10px;
 }
