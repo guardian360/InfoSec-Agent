@@ -89,7 +89,8 @@ export function openIssuesPage() {
   const nonIssueTable = document.getElementById('non-issues-table').querySelector('tbody');
   fillTable(nonIssueTable, issues, false);
 
-  document.getElementById('dropbtn-table').addEventListener('click', () => document.getElementById('myDropdown-table').classList.toggle('show'));
+  myDropdownTable = document.getElementById('myDropdown-table');
+  document.getElementById('dropbtn-table').addEventListener('click', () => myDropdownTable.classList.toggle('show'));
   document.getElementById('select-high-risk-table').addEventListener('change', changeTable);
   document.getElementById('select-medium-risk-table').addEventListener('change', changeTable);
   document.getElementById('select-low-risk-table').addEventListener('change', changeTable);
@@ -117,36 +118,35 @@ function toRiskLevel(level) {
  *
  * @param {HTMLTableSectionElement} tbody Table to be filled
  * @param {Issue} issues Issues to be filled in
- * @param {isIssue} bool True for issue table, false for non issue table
+ * @param {Bool} isIssue True for issue table, false for non issue table
  */
 export function fillTable(tbody, issues, isIssue) {
   issues.forEach((issue) => {
     const currentIssue = data[issue.jsonkey];
 
-    if(isIssue){
-      if(currentIssue) {
-        if(issue.severity != "0"){
-            const row = document.createElement('tr');
-            row.innerHTML = `
+    if (isIssue) {
+      if (currentIssue) {
+        if (issue.severity != '0') {
+          const row = document.createElement('tr');
+          row.innerHTML = `
               <td class="issue-link">${currentIssue.Name}</td>
               <td>${currentIssue.Type}</td>
               <td>${toRiskLevel(issue.severity)}</td>
             `;
-            row.cells[0].id = issue.jsonkey;
-            tbody.appendChild(row);
-          }
+          row.cells[0].id = issue.jsonkey;
+          tbody.appendChild(row);
+        }
       }
-    }
-    else{
-      if(currentIssue){
-        if(issue.severity == "0"){
-            const row = document.createElement('tr');
-            row.innerHTML = `
+    } else {
+      if (currentIssue) {
+        if (issue.severity == '0') {
+          const row = document.createElement('tr');
+          row.innerHTML = `
               <td class="issue-link">${currentIssue.Name}</td>
               <td>${currentIssue.Type}</td>
             `;
-            row.cells[0].id = issue.jsonkey;
-            tbody.appendChild(row);
+          row.cells[0].id = issue.jsonkey;
+          tbody.appendChild(row);
         }
       }
     }
@@ -159,12 +159,11 @@ export function fillTable(tbody, issues, isIssue) {
   });
 
   // Add buttons to sort on columns
-  if(isIssue){
+  if (isIssue) {
     document.getElementById('sort-on-issue').addEventListener('click', () => sortTable(tbody, 0));
     document.getElementById('sort-on-type').addEventListener('click', () => sortTable(tbody, 1));
     document.getElementById('sort-on-risk').addEventListener('click', () => sortTable(tbody, 2));
-  }
-  else{
+  } else {
     document.getElementById('sort-on-issue2').addEventListener('click', () => sortTable(tbody, 0));
     document.getElementById('sort-on-type2').addEventListener('click', () => sortTable(tbody, 1));
   }
@@ -219,6 +218,11 @@ if (typeof document !== 'undefined') {
   }
 }
 
+/**
+ * Updates the displayed issues table based on the selected risk levels.
+ * Retrieves issues data from session storage, filters it based on selected risk levels,
+ * and updates the table with the filtered data.
+ */
 function changeTable() {
   const selectedHigh = document.getElementById('select-high-risk-table').checked;
   const selectedMedium = document.getElementById('select-medium-risk-table').checked;
@@ -229,7 +233,7 @@ function changeTable() {
   const issueTable = document.getElementById('issues-table').querySelector('tbody');
 
   // Filter issues based on the selected risk levels
-  const filteredIssues = issues.filter(issue => {
+  const filteredIssues = issues.filter((issue) => {
     return (
       (selectedHigh && issue.severity === 3) ||
       (selectedMedium && issue.severity === 2) ||

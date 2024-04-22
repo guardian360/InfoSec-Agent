@@ -12,7 +12,7 @@
   max-width: 800px; /* Limit the width of the table container */
   margin-bottom: 20px;
   border-radius: 8px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+  box-shadow: 0 0 10px rgb(0 0 0 / 10%); /* Add shadow for depth */
   overflow: hidden; /* Hide overflow content */
 }
 
@@ -30,6 +30,7 @@
   justify-content: center; /* Center the button horizontally */
   margin-bottom: 20px; /* Add space below the button */
 }
+
 /* Dropdown container */
 .dropdown-container {
   position: relative;
@@ -53,7 +54,7 @@
   background-color: var(--background-color-left-nav);
   color: var(--text-body);
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%);
   border-radius: 8px;
   z-index: 1;
   top: 100%; /* Position below the button */
@@ -69,7 +70,7 @@
 .issues-table {
   width: 100%;
   overflow-x: auto; /* Allows table to scroll on small screens */
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 20px rgb(0 0 0 / 10%);
 }
 
 .issues-table th,
@@ -94,6 +95,7 @@
   float: none; /* Avoid using float and instead use flex or grid */
   margin-left: auto; /* Align icon to the right using margin */
 }
+
 .material-symbols-outlined:hover {
   cursor: pointer;
 }
