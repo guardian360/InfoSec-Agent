@@ -54,41 +54,6 @@ func TestHistoryFirefox(t *testing.T) {
 	})
 }
 
-/*
-func TestCloseRows_Error(t *testing.T) {
-
-	db, mock, err := sqlmock.New()
-	require.NoError(t, err)
-
-	defer db.Close()
-
-	rows := sqlmock.NewRows([]string{"column"})
-	mock.ExpectQuery("SELECT").WillReturnRows(rows)
-
-	realRows, err := db.Query("SELECT")
-	require.NoError(t, err)
-
-	// Simulate an error when closing the rows
-	mock.ExpectClose().WillReturnError(errors.New("sql: Rows are already closed"))
-
-	var buf bytes.Buffer
-	logger.Log.SetOutput(&buf)
-
-	// This should log an error because the rows are already closed
-	firefox.CloseRows(realRows)
-
-	// Wait for the function to complete
-	time.Sleep(100 * time.Millisecond)
-
-	capturedOutput := buf.String()
-
-	// Check if the expected error was logged
-	require.Contains(t, capturedOutput, "Error closing rows:")
-
-	err = mock.ExpectationsWereMet()
-	require.NoError(t, err)
-}*/
-
 func TestOpenAndQueryDatabase_OpenFailure(t *testing.T) {
 	db, err := sql.Open("sqlite", "/invalid/path")
 	require.NoError(t, err)

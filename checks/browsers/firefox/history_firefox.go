@@ -47,7 +47,7 @@ func HistoryFirefox(profileFinder browserutils.FirefoxProfileFinder) checks.Chec
 	}
 
 	db, err := sql.Open("sqlite", tempHistoryDbff)
-	if err != nil { // Returns an error if a file is not found automatically check not needed?
+	if err != nil {
 		return checks.NewCheckError(checks.HistoryFirefoxID, err)
 	}
 	defer CloseDatabase(db)
