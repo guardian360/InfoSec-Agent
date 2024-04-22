@@ -9,11 +9,11 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/browserutils"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
-	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
-
 	"github.com/andrewarchi/browser/firefox"
 )
 
@@ -29,7 +29,7 @@ import (
 func ExtensionFirefox() (checks.Check, checks.Check) {
 	var resultID int
 	// Determine the directory in which the Firefox profile is stored
-	ffdirectory, err := utils.FirefoxFolder()
+	ffdirectory, err := browserutils.RealProfileFinder{}.FirefoxFolder()
 	if err != nil {
 		return checks.NewCheckErrorf(checks.ExtensionFirefoxID, "No firefox directory found", err),
 			checks.NewCheckErrorf(checks.AdblockFirefoxID, "No firefox directory found", err)
