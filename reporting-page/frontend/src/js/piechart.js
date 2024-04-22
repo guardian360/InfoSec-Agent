@@ -15,7 +15,7 @@ export class PieChart {
   constructor(canvas, riskCounters, type) {
     this.rc = riskCounters;
     if (canvas !== undefined) {
-      this.createPieChart(canvas, type).then((r) => {});
+      this.createPieChart(canvas, type).then(() => {});
     }
   }
 
