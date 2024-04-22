@@ -78,25 +78,30 @@ export function openIssuePage(issueId) {
     document.onload = retrieveTheme();
   } else {
     const pageContents = document.getElementById('page-contents');
-    pageContents.innerHTML = `
-      <h1 class="issue-name">${currentIssue.Name}</h1>
-      <div class="issue-information">
-        <h2 id="information">Information</h2>
-        <p>${currentIssue.Information}</p>
-        <h2 id="solution">Solution</h2>
-        <div class="issue-solution">
-          <p id="solution-text">${stepCounter +1}. ${currentIssue.Solution[stepCounter]}</p>
-          <img style='display:block; width:750px;height:auto' id="step-screenshot"></img>
-          <div class="solution-buttons">
-            <div class="button-box">
-              <div id="previous-button" class="button">&laquo; Previous step</div>
-              <div id="next-button" class="button">Next step &raquo;</div>
+    if (checkShowResult(currentIssue)) {
+      pageContents.innerHTML = parseShowResult(issueId, currentIssue);
+    }
+    else {
+      pageContents.innerHTML = `
+        <h1 class="issue-name">${currentIssue.Name}</h1>
+        <div class="issue-information">
+          <h2 id="information">Information</h2>
+          <p>${currentIssue.Information}</p>
+          <h2 id="solution">Solution</h2>
+          <div class="issue-solution">
+            <p id="solution-text">${stepCounter +1}. ${currentIssue.Solution[stepCounter]}</p>
+            <img style='display:block; width:750px;height:auto' id="step-screenshot"></img>
+            <div class="solution-buttons">
+              <div class="button-box">
+                <div id="previous-button" class="button">&laquo; Previous step</div>
+                <div id="next-button" class="button">Next step &raquo;</div>
+              </div>
             </div>
           </div>
+          <div class="button" id="back-button">Back to issues overview</div>
         </div>
-        <div class="button" id="back-button">Back to issues overview</div>
-      </div>
-    `;
+      `;
+    }
 
     const texts = ['information', 'solution', 'previous-button', 'next-button', 'back-button'];
     const localizationIds = ['Issues.Information', 'Issues.Solution', 'Issues.Previous', 'Issues.Next', 'Issues.Back'];
@@ -119,4 +124,39 @@ export function openIssuePage(issueId) {
 
     document.onload = retrieveTheme();
   }
+}
+
+export function checkShowResult(issue) {
+  return issue.Name.includes('Applications with');
+}
+
+export function parseShowResult(issueId, currentIssue){
+  let issues = [];
+  let applications = '';
+  issues = JSON.parse(sessionStorage.getItem('ScanResult'));
+  issues.forEach((issue) => {
+    if (issue.issue_id.toString() + issue.result_id.toString() === issueId.toString()) {
+      let issueResult = issue.result;
+      issueResult.forEach((application) => {
+        applications += `${application}, `;
+      });
+    }
+  });
+  applications = applications.slice(0, -2);
+
+  let result = `
+  <h1 class="issue-name">${currentIssue.Name}</h1>
+  <div class="issue-information">
+    <h2 id="information">Information</h2>
+    <p id="description">${currentIssue.Information}</p>
+    <h2 id="information">Findings</h2>
+    <p id="description">The following applications currently have been given permission: ${applications}</p>
+    <h2 id="solution">Acceptable</h2>
+    <div class="issue-solution">
+      <p id="solution-text">${currentIssue.Solution[stepCounter]}</p>
+    </div>
+    <div class="button" id="back-button">Back to issues overview</div>
+  </div>
+`;
+  return result;
 }

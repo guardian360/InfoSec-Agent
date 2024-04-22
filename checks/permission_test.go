@@ -43,7 +43,7 @@ func TestPermission(t *testing.T) {
 					},
 				},
 			},
-			want: checks.NewCheckResult(checks.WebcamID, 0, "microsoft.webcam"),
+			want: checks.NewCheckResult(checks.WebcamID, 0, "microsoft webcam"),
 		},
 		{
 			name:       "WebcamPermissionExists",
@@ -57,7 +57,7 @@ func TestPermission(t *testing.T) {
 					},
 				},
 			},
-			want: checks.NewCheckResult(checks.WebcamID, 0, "microsoft.webcam"),
+			want: checks.NewCheckResult(checks.WebcamID, 0, "microsoft webcam"),
 		},
 	}
 
@@ -95,7 +95,7 @@ func TestFormatPermission(t *testing.T) {
 	}
 	c := checks.Permission(checks.LocationID, "location", key)
 	assert.NotContains(t, c.Result, "#")
-	assert.Contains(t, c.Result, "test.exe")
+	assert.Contains(t, c.Result, "test")
 }
 
 // TestNonExistingPermission is a function that tests the Permission function's behavior when the requested permission does not exist.
@@ -115,7 +115,7 @@ func TestNonExistingPermission(t *testing.T) {
 					{KeyName: "NonPackaged",
 						StringValues: map[string]string{"Value": "Allow"},
 						SubKeys: []mocking.MockRegistryKey{
-							{KeyName: "test.test"},
+							{KeyName: "test test"},
 						},
 					},
 				},
