@@ -23,7 +23,7 @@ import (
 // Returns: The phishing domains that the user has visited in the last week and when they visited it
 func HistoryFirefox(profileFinder browserutils.FirefoxProfileFinder) checks.Check {
 	var output []string
-	ffdirectory, err := browserutils.RealProfileFinder{}.FirefoxFolder()
+	ffdirectory, err := profileFinder.FirefoxFolder()
 	if err != nil {
 		logger.Log.ErrorWithErr("No firefox directory found: ", err)
 		return checks.NewCheckErrorf(checks.HistoryFirefoxID, "No firefox directory found", err)

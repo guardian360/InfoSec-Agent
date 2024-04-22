@@ -6,12 +6,12 @@ import (
 	"testing"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
-	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 
 	"database/sql"
 	"time"
 
 	"github.com/DATA-DOG/go-sqlmock"
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/browserutils"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/firefox"
 	"github.com/stretchr/testify/require"
 )
@@ -24,12 +24,12 @@ func TestMain(m *testing.M) {
 	os.Exit(exitCode)
 }
 
-var Profilefinder utils.FirefoxProfileFinder
+var Profilefinder browserutils.FirefoxProfileFinder
 
 func TestHistoryFirefox(t *testing.T) {
 	t.Run("success", func(t *testing.T) {
 		// Mock the FirefoxFolder function to return a valid directory and no error
-		Profilefinder = utils.MockProfileFinder{
+		Profilefinder = browserutils.MockProfileFinder{
 			MockFirefoxFolder: func() ([]string, error) {
 				return []string{"/valid/directory"}, nil
 			},
@@ -42,13 +42,7 @@ func TestHistoryFirefox(t *testing.T) {
 
 	t.Run("failure", func(t *testing.T) {
 		// Mock the FirefoxFolder function to return an error
-		Profilefinder = utils.MockProfileFinder{
-			MockFirefoxFolder: func() ([]string, error) {
-				return nil, errors.New("mock error")
-			},
-		}
-
-		Profilefinder = utils.MockProfileFinder{
+		Profilefinder = browserutils.MockProfileFinder{
 			MockFirefoxFolder: func() ([]string, error) {
 				return nil, errors.New("mock error")
 			},
