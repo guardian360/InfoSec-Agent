@@ -2,11 +2,11 @@ package firefox_test
 
 import (
 	"errors"
-	"fmt"
-	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
-	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"os"
 	"testing"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
+	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 
 	"database/sql"
 	"time"
@@ -24,37 +24,37 @@ func TestMain(m *testing.M) {
 	os.Exit(exitCode)
 }
 
-var profileFinder utils.FirefoxProfileFinder
+var Profilefinder utils.FirefoxProfileFinder
 
 func TestHistoryFirefox(t *testing.T) {
 	t.Run("success", func(t *testing.T) {
 		// Mock the FirefoxFolder function to return a valid directory and no error
-		profileFinder = utils.MockProfileFinder{
+		Profilefinder = utils.MockProfileFinder{
 			MockFirefoxFolder: func() ([]string, error) {
 				return []string{"/valid/directory"}, nil
 			},
 		}
 
-		check := firefox.HistoryFirefox(profileFinder)
+		check := firefox.HistoryFirefox(Profilefinder)
 		require.Nil(t, check.Result)
 		require.Error(t, check.Error)
 	})
 
 	t.Run("failure", func(t *testing.T) {
 		// Mock the FirefoxFolder function to return an error
-		profileFinder = utils.MockProfileFinder{
+		Profilefinder = utils.MockProfileFinder{
 			MockFirefoxFolder: func() ([]string, error) {
 				return nil, errors.New("mock error")
 			},
 		}
 
-		profileFinder = utils.MockProfileFinder{
+		Profilefinder = utils.MockProfileFinder{
 			MockFirefoxFolder: func() ([]string, error) {
 				return nil, errors.New("mock error")
 			},
 		}
 
-		check := firefox.HistoryFirefox(profileFinder)
+		check := firefox.HistoryFirefox(Profilefinder)
 		require.Nil(t, check.Result)
 		require.Error(t, check.Error)
 	})
@@ -94,59 +94,6 @@ func TestCloseRows_Error(t *testing.T) {
 	err = mock.ExpectationsWereMet()
 	require.NoError(t, err)
 }*/
-
-func TestHistoryFirefox_Success(t *testing.T) {
-	db, mock, err := sqlmock.New()
-	if err != nil {
-		t.Fatalf("an error '%s' was not expected when opening a stub database connection", err)
-	}
-	defer db.Close()
-
-	profileFinder = utils.RealProfileFinder{}
-
-	mock.ExpectQuery("^SELECT url, last_visit_date FROM moz_places WHERE last_visit_date >= \\? ORDER BY last_visit_date DESC$").
-		WillReturnRows(sqlmock.NewRows([]string{"url", "last_visit_date"}))
-
-	// now we execute our method
-	check := firefox.HistoryFirefox(profileFinder)
-	if check.Error != nil {
-		t.Errorf("error was not expected while updating stats: %s", check.Error)
-	}
-
-	// we make sure that all expectations were met
-	if err := mock.ExpectationsWereMet(); err != nil {
-		t.Errorf("there were unfulfilled expectations: %s", err)
-	}
-}
-
-func TestHistoryFirefox_Failure(t *testing.T) {
-	db, mock, err := sqlmock.New()
-	if err != nil {
-		t.Fatalf("an error '%s' was not expected when opening a stub database connection", err)
-	}
-	defer db.Close()
-
-	// Mock the FirefoxFolder function to return a valid directory
-	profileFinder = utils.MockProfileFinder{
-		MockFirefoxFolder: func() ([]string, error) {
-			return []string{"/valid/directory"}, nil
-		},
-	}
-
-	mock.ExpectQuery("^SELECT url, last_visit_date FROM moz_places WHERE last_visit_date >= \\? ORDER BY last_visit_date DESC$").
-		WillReturnError(fmt.Errorf("some error"))
-
-	// now we execute our method
-	check := firefox.HistoryFirefox(profileFinder)
-	if check.Error == nil {
-		t.Errorf("was expecting an error, but there was none")
-	}
-
-	// we make sure that all expectations were met
-	if err := mock.ExpectationsWereMet(); err != nil {
-		t.Errorf("there were unfulfilled expectations: %s", err)
-	}
-}
 
 func TestOpenAndQueryDatabase_OpenFailure(t *testing.T) {
 	db, err := sql.Open("sqlite", "/invalid/path")

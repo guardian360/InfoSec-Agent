@@ -25,6 +25,7 @@ func HistoryFirefox(profileFinder utils.FirefoxProfileFinder) checks.Check {
 	var output []string
 	ffdirectory, err := profileFinder.FirefoxFolder()
 	if err != nil {
+		logger.Log.ErrorWithErr("No firefox directory found: ", err)
 		return checks.NewCheckErrorf(checks.HistoryFirefoxID, "No firefox directory found", err)
 	}
 
@@ -41,6 +42,7 @@ func HistoryFirefox(profileFinder utils.FirefoxProfileFinder) checks.Check {
 	// Copy the database to a temporary location
 	copyError := utils.CopyFile(ffdirectory[0]+"\\places.sqlite", tempHistoryDbff, nil, nil)
 	if copyError != nil {
+		logger.Log.ErrorWithErr("Unable to make a copy of the file: ", copyError)
 		return checks.NewCheckError(checks.HistoryFirefoxID, copyError)
 	}
 
@@ -96,6 +98,7 @@ func QueryDatabase(db *sql.DB) ([]QueryResult, error) {
 		"SELECT url, last_visit_date FROM moz_places WHERE last_visit_date >= ? ORDER BY last_visit_date DESC",
 		lastWeek)
 	if err != nil {
+		logger.Log.ErrorWithErr("Error querying database: ", err)
 		return nil, err
 	}
 
@@ -105,12 +108,14 @@ func QueryDatabase(db *sql.DB) ([]QueryResult, error) {
 	for rows.Next() {
 		var result QueryResult
 		if err := rows.Scan(&result.URL, &result.LastVisitDate); err != nil {
+			logger.Log.ErrorWithErr("Error scanning row: ", err)
 			return nil, err
 		}
 		results = append(results, result)
 	}
 
 	if err := rows.Err(); err != nil {
+		logger.Log.ErrorWithErr("Error iterating over rows: ", err)
 		return nil, err
 	}
 
