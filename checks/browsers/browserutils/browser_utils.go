@@ -33,6 +33,14 @@ func CloseFile(file mocking.File) error {
 	return nil
 }
 
+// FirefoxProfileFinder is an interface that wraps the FirefoxFolder method
+type FirefoxProfileFinder interface {
+	FirefoxFolder() ([]string, error)
+}
+
+// RealProfileFinder is a struct that implements the FirefoxProfileFinder interface
+type RealProfileFinder struct{}
+
 // FirefoxFolder retrieves the paths to all Firefox profile folders for the currently logged-in user.
 //
 // This function uses the os/user package to access the current user's information and constructs the path to the Firefox profile directory.
@@ -42,7 +50,7 @@ func CloseFile(file mocking.File) error {
 // Returns:
 //   - []string: A slice containing the paths to all Firefox profile folders. If no profile folders are found or an error occurs, an empty slice is returned.
 //   - error: An error object that wraps any error that occurs during the retrieval of the Firefox profile folders. If the folders are retrieved successfully, it returns nil.
-func FirefoxFolder() ([]string, error) {
+func (r RealProfileFinder) FirefoxFolder() ([]string, error) {
 	// Get the current user
 	currentUser, err := user.Current()
 	if err != nil {
@@ -93,7 +101,17 @@ func FirefoxFolder() ([]string, error) {
 	return profileList, nil
 }
 
-// GetPhishingDomains retrieves a list of active phishing domains from a remote GitHub repository.
+// MockProfileFinder is a struct that implements the FirefoxProfileFinder interface for testing
+type MockProfileFinder struct {
+	MockFirefoxFolder func() ([]string, error)
+}
+
+// FirefoxFolder is a mock function
+func (m MockProfileFinder) FirefoxFolder() ([]string, error) {
+	return m.MockFirefoxFolder()
+}
+
+// CurrentUsername retrieves the current Windows username
 //
 // This function sends a GET request to the URL of the phishing database hosted on GitHub. It reads the response body,
 // which contains a list of active phishing domains, each on a new line. The function then splits this response into a slice

@@ -28,7 +28,7 @@ func SearchEngineFirefox() checks.Check {
 	// Determine the directory in which the Firefox profile is stored
 	var ffdirectory []string
 	var err error
-	ffdirectory, err = browserutils.FirefoxFolder()
+	ffdirectory, err = browserutils.RealProfileFinder{}.FirefoxFolder()
 	if err != nil {
 		return checks.NewCheckErrorf(checks.SearchFirefoxID, "No firefox directory found", err)
 	}
