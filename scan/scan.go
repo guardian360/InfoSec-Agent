@@ -80,8 +80,8 @@ var securityChecks = []func() checks.Check{
 	func() checks.Check { return chromium.SearchEngineChromium("Chrome") },
 	func() checks.Check { c, _ := firefox.ExtensionFirefox(); return c },
 	func() checks.Check { _, c := firefox.ExtensionFirefox(); return c },
-	firefox.HistoryFirefox,
-	firefox.SearchEngineFirefox,
+	//func() checks.Check { return firefox.HistoryFirefox(utils.RealProfileFinder{}) },
+	//func() checks.Check { return firefox.SearchEngineFirefox(utils.RealProfileFinder{}) },
 }
 
 // Scan executes all security/privacy checks, serializes the results to JSON, and returns a list of all found issues.

@@ -23,11 +23,11 @@ import (
 //   - checks.Check: A Check object that encapsulates the result of the search engine check. The Check object includes a string that represents the default search engine in the Firefox browser. If an error occurs during the check, the Check object will encapsulate this error.
 //
 // This function first determines the directory in which the Firefox profile is stored. It then opens and reads the 'search.json.mozlz4' file, which contains information about the default search engine. The function decompresses the file, extracts the default search engine information, and returns this information as a Check object. If an error occurs at any point during this process, it is encapsulated in the Check object and returned.
-func SearchEngineFirefox() checks.Check {
+func SearchEngineFirefox(profileFinder utils.FirefoxProfileFinder) checks.Check {
 	// Determine the directory in which the Firefox profile is stored
 	var ffdirectory []string
 	var err error
-	ffdirectory, err = utils.FirefoxFolder()
+	ffdirectory, err = profileFinder.FirefoxFolder()
 	if err != nil {
 		return checks.NewCheckErrorf(checks.SearchFirefoxID, "No firefox directory found", err)
 	}
@@ -48,14 +48,7 @@ func SearchEngineFirefox() checks.Check {
 		return checks.NewCheckErrorf(checks.SearchFirefoxID, "Unable to make a copy of the file", copyError)
 	}
 
-	fileInfo, err := os.Stat(tempSearch)
-	if err != nil {
-		return checks.NewCheckErrorf(checks.SearchFirefoxID, "Unable to retrieve information about the file", err)
-	}
-	fileSize := fileInfo.Size()
-
-	// Holds the information from the copied file
-	file, err := os.Open(filepath.Clean(tempSearch))
+	file, fileSize, err := OpenAndStatFile(tempSearch)
 	if err != nil {
 		return checks.NewCheckErrorf(checks.SearchFirefoxID, "Unable to open the file", err)
 	}
@@ -113,10 +106,10 @@ func SearchEngineFirefox() checks.Check {
 	if err != nil {
 		return checks.NewCheckErrorf(checks.SearchFirefoxID, "Unable to uncompress", err)
 	}
-	return checks.NewCheckResult(checks.SearchFirefoxID, 0, results(data))
+	return checks.NewCheckResult(checks.SearchFirefoxID, 0, Results(data))
 }
 
-// results is a utility function used within the SearchEngineFirefox function.
+// Results is a utility function used within the SearchEngineFirefox function.
 // It processes the output string from the decompressed 'search.json.mozlz4' file to identify the default search engine.
 //
 // Parameters:
@@ -126,7 +119,7 @@ func SearchEngineFirefox() checks.Check {
 //   - string: A string that represents the default search engine in the Firefox browser. If the defaultEngineId is empty, the function returns "Google". If the defaultEngineId matches known search engines (ddg, bing, ebay, wikipedia, amazon), the function returns the name of the matched search engine. If the defaultEngineId does not match any known search engines, the function returns "Other Search Engine".
 //
 // This function first checks if the defaultEngineId in the output string is empty, which indicates that the default search engine is Google. If the defaultEngineId is not empty, the function checks if it matches the ids of other known search engines. If a match is found, the function returns the name of the matched search engine. If no match is found, the function returns "Other Search Engine".
-func results(data []byte) string {
+func Results(data []byte) string {
 	output := string(data)
 	var result string
 	var re *regexp.Regexp
@@ -148,4 +141,20 @@ func results(data []byte) string {
 		result = matches[18:]
 	}
 	return result
+}
+
+func OpenAndStatFile(tempSearch string) (*os.File, int64, error) {
+	fileInfo, err := os.Stat(tempSearch)
+	if err != nil {
+		return nil, 0, err
+	}
+	fileSize := fileInfo.Size()
+
+	// Holds the information from the copied file
+	file, err := os.Open(filepath.Clean(tempSearch))
+	if err != nil {
+		return nil, 0, err
+	}
+
+	return file, fileSize, nil
 }
