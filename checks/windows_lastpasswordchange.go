@@ -3,12 +3,12 @@ package checks
 import (
 	"errors"
 	"fmt"
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks/checks_utils"
 	"regexp"
 	"strings"
 	"time"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
-	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 )
 
 // LastPasswordChange is a function that checks the last time the Windows password was changed.
@@ -22,7 +22,7 @@ import (
 // The function works by executing a 'net user' command to get the user's password last set date. It then parses the output of the command to extract the date. The function compares this date with the current date and if the difference is more than half a year, it returns a warning suggesting the user to change the password. Otherwise, it returns a message indicating that the password was changed recently.
 func LastPasswordChange(executor mocking.CommandExecutor) Check {
 	// Get the current Windows username
-	username, err := utils.CurrentUsername()
+	username, err := checks_utils.CurrentUsername()
 	if err != nil {
 		return NewCheckErrorf(LastPasswordChangeID, "error retrieving username", err)
 	}

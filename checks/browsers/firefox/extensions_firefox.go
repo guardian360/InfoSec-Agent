@@ -5,6 +5,7 @@ package firefox
 
 import (
 	"encoding/json"
+	browser_utils "github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers"
 	"os"
 	"strconv"
 	"strings"
@@ -12,8 +13,6 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
-	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
-
 	"github.com/andrewarchi/browser/firefox"
 )
 
@@ -29,7 +28,7 @@ import (
 func ExtensionFirefox() (checks.Check, checks.Check) {
 	var resultID int
 	// Determine the directory in which the Firefox profile is stored
-	ffdirectory, err := utils.FirefoxFolder()
+	ffdirectory, err := browser_utils.FirefoxFolder()
 	if err != nil {
 		return checks.NewCheckErrorf(checks.ExtensionFirefoxID, "No firefox directory found", err),
 			checks.NewCheckErrorf(checks.AdblockFirefoxID, "No firefox directory found", err)

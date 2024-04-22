@@ -126,3 +126,35 @@ func TestNonExistingPermission(t *testing.T) {
 	assert.Equal(t, c.Result, []string(nil))
 	assert.EqualError(t, c.Error, "error opening registry key: error opening registry key: key not found")
 }
+
+// TestRemoveDuplicateStrRemovesDuplicates validates the functionality of the RemoveDuplicateStr function by ensuring it correctly removes duplicate string values from a given slice.
+//
+// This test function creates a slice with duplicate string values and passes it to the RemoveDuplicateStr function.
+// It asserts that the returned slice contains only the unique string values from the input slice, in the order of their first occurrence.
+//
+// Parameters:
+//   - t *testing.T: The testing framework used for assertions.
+//
+// No return values.
+func TestRemoveDuplicateStrRemovesDuplicates(t *testing.T) {
+	input := []string{"a", "b", "a", "c", "b"}
+	expected := []string{"a", "b", "c"}
+	result := checks.RemoveDuplicateStr(input)
+	require.Equal(t, expected, result)
+}
+
+// TestRemoveDuplicateStrEmptyInput validates the behavior of the RemoveDuplicateStr function when provided with an empty input.
+//
+// This test function creates an empty string slice and passes it to the RemoveDuplicateStr function.
+// It asserts that the returned slice is also empty, confirming that the function handles empty input correctly.
+//
+// Parameters:
+//   - t *testing.T: The testing framework used for assertions.
+//
+// No return values.
+func TestRemoveDuplicateStrEmptyInput(t *testing.T) {
+	var input []string
+	var expected []string
+	result := checks.RemoveDuplicateStr(input)
+	require.Equal(t, expected, result)
+}

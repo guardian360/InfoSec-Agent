@@ -1,10 +1,10 @@
 package checks
 
 import (
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks/checks_utils"
 	"strings"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
-	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 )
 
 // GuestAccount checks the status of the Windows guest account.
@@ -67,7 +67,7 @@ func GuestAccount(
 	}
 
 	// Retrieve current username
-	currentUser, err := utils.CurrentUsername()
+	currentUser, err := checks_utils.CurrentUsername()
 	if err != nil {
 		return NewCheckErrorf(GuestAccountID, "error retrieving current username", err)
 	}

@@ -2,6 +2,7 @@ package firefox
 
 import (
 	"database/sql"
+	browser_utils "github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers"
 	"os"
 	"path/filepath"
 	"time"
@@ -9,8 +10,6 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
-	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
-
 	// Necessary to use the sqlite driver
 	_ "modernc.org/sqlite"
 )
@@ -26,7 +25,7 @@ import (
 func CookieFirefox() checks.Check {
 	var output []string
 	// Determine the directory in which the Firefox profile is stored
-	ffdirectory, err := utils.FirefoxFolder()
+	ffdirectory, err := browser_utils.FirefoxFolder()
 	if err != nil {
 		return checks.NewCheckErrorf(checks.CookiesFirefoxID, "No firefox directory found", err)
 	}
@@ -43,7 +42,7 @@ func CookieFirefox() checks.Check {
 	}(tempCookieDbff)
 
 	// Copy the database to a temporary location
-	copyError := utils.CopyFile(ffdirectory[0]+"\\cookies.sqlite", tempCookieDbff, nil, nil)
+	copyError := browser_utils.CopyFile(ffdirectory[0]+"\\cookies.sqlite", tempCookieDbff, nil, nil)
 	if copyError != nil {
 		return checks.NewCheckErrorf(checks.CookiesFirefoxID, "Unable to make a copy of the file", copyError)
 	}

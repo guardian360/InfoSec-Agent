@@ -2,6 +2,7 @@ package firefox
 
 import (
 	"encoding/binary"
+	browser_utils "github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers"
 	"io"
 	"log"
 	"os"
@@ -11,7 +12,6 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
-	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"github.com/pierrec/lz4"
 )
 
@@ -27,7 +27,7 @@ func SearchEngineFirefox() checks.Check {
 	// Determine the directory in which the Firefox profile is stored
 	var ffdirectory []string
 	var err error
-	ffdirectory, err = utils.FirefoxFolder()
+	ffdirectory, err = browser_utils.FirefoxFolder()
 	if err != nil {
 		return checks.NewCheckErrorf(checks.SearchFirefoxID, "No firefox directory found", err)
 	}
@@ -43,7 +43,7 @@ func SearchEngineFirefox() checks.Check {
 	}(tempSearch)
 
 	// Copy the compressed json to a temporary location
-	copyError := utils.CopyFile(filePath, tempSearch, nil, nil)
+	copyError := browser_utils.CopyFile(filePath, tempSearch, nil, nil)
 	if copyError != nil {
 		return checks.NewCheckErrorf(checks.SearchFirefoxID, "Unable to make a copy of the file", copyError)
 	}
@@ -61,7 +61,7 @@ func SearchEngineFirefox() checks.Check {
 	}
 	defer func(file *os.File) {
 		tmpFile := mocking.Wrap(file)
-		err = utils.CloseFile(tmpFile)
+		err = browser_utils.CloseFile(tmpFile)
 		if err != nil {
 			log.Println("Error closing file")
 		}
