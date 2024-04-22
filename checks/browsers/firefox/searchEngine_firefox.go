@@ -8,10 +8,11 @@ import (
 	"path/filepath"
 	"regexp"
 
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/browserutils"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
-	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"github.com/pierrec/lz4"
 )
 
@@ -23,11 +24,11 @@ import (
 //   - checks.Check: A Check object that encapsulates the result of the search engine check. The Check object includes a string that represents the default search engine in the Firefox browser. If an error occurs during the check, the Check object will encapsulate this error.
 //
 // This function first determines the directory in which the Firefox profile is stored. It then opens and reads the 'search.json.mozlz4' file, which contains information about the default search engine. The function decompresses the file, extracts the default search engine information, and returns this information as a Check object. If an error occurs at any point during this process, it is encapsulated in the Check object and returned.
-func SearchEngineFirefox(profileFinder utils.FirefoxProfileFinder) checks.Check {
+func SearchEngineFirefox(profileFinder browserutils.FirefoxProfileFinder) checks.Check {
 	// Determine the directory in which the Firefox profile is stored
 	var ffdirectory []string
 	var err error
-	ffdirectory, err = profileFinder.FirefoxFolder()
+	ffdirectory, err = browserutils.FirefoxFolder()
 	if err != nil {
 		return checks.NewCheckErrorf(checks.SearchFirefoxID, "No firefox directory found", err)
 	}
@@ -43,7 +44,7 @@ func SearchEngineFirefox(profileFinder utils.FirefoxProfileFinder) checks.Check 
 	}(tempSearch)
 
 	// Copy the compressed json to a temporary location
-	copyError := utils.CopyFile(filePath, tempSearch, nil, nil)
+	copyError := browserutils.CopyFile(filePath, tempSearch, nil, nil)
 	if copyError != nil {
 		return checks.NewCheckErrorf(checks.SearchFirefoxID, "Unable to make a copy of the file", copyError)
 	}
@@ -54,7 +55,7 @@ func SearchEngineFirefox(profileFinder utils.FirefoxProfileFinder) checks.Check 
 	}
 	defer func(file *os.File) {
 		tmpFile := mocking.Wrap(file)
-		err = utils.CloseFile(tmpFile)
+		err = browserutils.CloseFile(tmpFile)
 		if err != nil {
 			log.Println("Error closing file")
 		}
