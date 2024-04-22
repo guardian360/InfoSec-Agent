@@ -4,7 +4,7 @@ import (
 	"errors"
 	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 	"github.com/stretchr/testify/require"
-	html "golang.org/x/net/html"
+	"golang.org/x/net/html"
 	"os"
 	"testing"
 
