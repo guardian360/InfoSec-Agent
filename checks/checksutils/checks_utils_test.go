@@ -1,7 +1,7 @@
-package checks_utils_test
+package checksutils_test
 
 import (
-	"github.com/InfoSec-Agent/InfoSec-Agent/checks/checks_utils"
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks/checksutils"
 	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 	"github.com/stretchr/testify/require"
 	"os"
@@ -31,7 +31,7 @@ func TestMain(m *testing.M) {
 //
 // No return values.
 func TestCurrentUsernameReturnsResult(t *testing.T) {
-	username, err := checks_utils.CurrentUsername()
+	username, err := checksutils.CurrentUsername()
 	require.NoError(t, err)
 	require.NotEmpty(t, username)
 }

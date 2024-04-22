@@ -3,12 +3,13 @@ package chromium
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/browser_utils"
 	"io"
 	"log"
 	"os"
 	"path/filepath"
 	"regexp"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/browserutils"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 
@@ -55,7 +56,7 @@ func SearchEngineChromium(browser string) checks.Check {
 	}
 	defer func(file *os.File) {
 		tmpFile := mocking.Wrap(file)
-		err = browser_utils.CloseFile(tmpFile)
+		err = browserutils.CloseFile(tmpFile)
 		if err != nil {
 			log.Println("Error closing file")
 		}

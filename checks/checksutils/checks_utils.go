@@ -1,4 +1,4 @@
-package checks_utils
+package checksutils
 
 import (
 	"errors"

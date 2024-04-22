@@ -2,10 +2,11 @@ package chromium
 
 import (
 	"database/sql"
-	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/browser_utils"
 	"os"
 	"path/filepath"
 	"regexp"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/browserutils"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 
@@ -58,7 +59,7 @@ func HistoryChromium(browser string) checks.Check {
 	}(tempHistoryDB)
 
 	// Copy the database to a temporary location
-	copyError := browser_utils.CopyFile(user+"/AppData/Local/"+browserPath+"/User Data/Default/History", tempHistoryDB, nil, nil)
+	copyError := browserutils.CopyFile(user+"/AppData/Local/"+browserPath+"/User Data/Default/History", tempHistoryDB, nil, nil)
 	if copyError != nil {
 		return checks.NewCheckError(returnID, copyError)
 	}
@@ -147,7 +148,7 @@ func closeRows(rows *sql.Rows) {
 // This function works by iterating over the rows, extracting the URL from each row, and checking the domain part of the URL against a list of known phishing domains. If a match is found, a string is generated that includes the domain name and the time of the last visit, and this string is added to the results. The function uses the utils.GetPhishingDomains helper function to fetch the list of known phishing domains and a regular expression to extract the domain part of the URL.
 func processQueryResults(rows *sql.Rows) ([]string, error) {
 	var results []string
-	phishingDomainList := browser_utils.GetPhishingDomains()
+	phishingDomainList := browserutils.GetPhishingDomains()
 	re := regexp.MustCompile(`(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+\.[^:\/\n?]+)`)
 
 	for rows.Next() {

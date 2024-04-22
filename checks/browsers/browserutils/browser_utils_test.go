@@ -1,7 +1,7 @@
-package browser_utils_test
+package browserutils_test
 
 import (
-	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/browser_utils"
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/browserutils"
 	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 	"github.com/stretchr/testify/require"
@@ -33,7 +33,7 @@ func TestMain(m *testing.M) {
 // No return values.
 func TestCloseFileNoError(t *testing.T) {
 	file := &mocking.FileMock{IsOpen: true, Err: nil}
-	err := browser_utils.CloseFile(file)
+	err := browserutils.CloseFile(file)
 	require.NoError(t, err)
 }
 
@@ -50,7 +50,7 @@ func TestCloseFileWhenFileWasAlreadyClosed(t *testing.T) {
 	file := &mocking.FileMock{IsOpen: true, Err: nil}
 	err := file.Close()
 	require.NoError(t, err)
-	err = browser_utils.CloseFile(file)
+	err = browserutils.CloseFile(file)
 	require.Error(t, err)
 }
 
@@ -65,7 +65,7 @@ func TestCloseFileWhenFileWasAlreadyClosed(t *testing.T) {
 // No return values.
 func TestCloseFileWhenFileIsNil(t *testing.T) {
 	var file *mocking.FileMock
-	err := browser_utils.CloseFile(file)
+	err := browserutils.CloseFile(file)
 	require.Error(t, err)
 }
 
@@ -79,7 +79,7 @@ func TestCloseFileWhenFileIsNil(t *testing.T) {
 //
 // No return values.
 func TestPhishingDomainsReturnsResults(t *testing.T) {
-	domains := browser_utils.GetPhishingDomains()
+	domains := browserutils.GetPhishingDomains()
 	require.NotEmpty(t, domains)
 }
 
@@ -95,7 +95,7 @@ func TestPhishingDomainsReturnsResults(t *testing.T) {
 func TestCopyFileSuccess(t *testing.T) {
 	mockSource := &mocking.FileMock{IsOpen: true, Bytes: 10, Err: nil}
 	mockDestination := &mocking.FileMock{IsOpen: true, Bytes: 10, Err: nil}
-	err := browser_utils.CopyFile("", "", mockSource, mockDestination)
+	err := browserutils.CopyFile("", "", mockSource, mockDestination)
 	require.NoError(t, err)
 }
 
@@ -111,7 +111,7 @@ func TestCopyFileSuccess(t *testing.T) {
 func TestCopyFileFailNonexistentSource(t *testing.T) {
 	mockSource := &mocking.FileMock{IsOpen: true, Bytes: 10, Err: os.ErrNotExist}
 	mockDestination := &mocking.FileMock{IsOpen: true, Bytes: 10, Err: nil}
-	err := browser_utils.CopyFile("", "", mockSource, mockDestination)
+	err := browserutils.CopyFile("", "", mockSource, mockDestination)
 	require.Error(t, err)
 }
 
@@ -127,6 +127,6 @@ func TestCopyFileFailNonexistentSource(t *testing.T) {
 func TestCopyFileFailNonexistentDestination(t *testing.T) {
 	mockSource := &mocking.FileMock{IsOpen: true, Bytes: 10, Err: nil}
 	mockDestination := &mocking.FileMock{IsOpen: true, Bytes: 10, Err: os.ErrNotExist}
-	err := browser_utils.CopyFile("", "", mockSource, mockDestination)
+	err := browserutils.CopyFile("", "", mockSource, mockDestination)
 	require.Error(t, err)
 }

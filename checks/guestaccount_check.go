@@ -1,8 +1,9 @@
 package checks
 
 import (
-	"github.com/InfoSec-Agent/InfoSec-Agent/checks/checks_utils"
 	"strings"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks/checksutils"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 )
@@ -67,7 +68,7 @@ func GuestAccount(
 	}
 
 	// Retrieve current username
-	currentUser, err := checks_utils.CurrentUsername()
+	currentUser, err := checksutils.CurrentUsername()
 	if err != nil {
 		return NewCheckErrorf(GuestAccountID, "error retrieving current username", err)
 	}

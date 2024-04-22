@@ -2,11 +2,12 @@ package firefox
 
 import (
 	"database/sql"
-	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/browser_utils"
 	"os"
 	"path/filepath"
 	"regexp"
 	"time"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/browserutils"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 
@@ -25,7 +26,7 @@ import (
 // This function works by locating the Firefox profile directory and copying the places.sqlite database to a temporary location. It then opens this database and queries it for the URLs visited in the last week. It processes the results of the query by checking each URL against a list of known phishing domains. If a match is found, a string is generated that includes the domain name and the time of the visit, and this string is added to the results. If any error occurs during this process, such as an error copying the file or querying the database, this error is returned as the result of the check.
 func HistoryFirefox() checks.Check {
 	var output []string
-	ffdirectory, err := browser_utils.FirefoxFolder()
+	ffdirectory, err := browserutils.FirefoxFolder()
 	if err != nil {
 		return checks.NewCheckErrorf(checks.HistoryFirefoxID, "No firefox directory found", err)
 	}
@@ -41,7 +42,7 @@ func HistoryFirefox() checks.Check {
 	}(tempHistoryDbff)
 
 	// Copy the database to a temporary location
-	copyError := browser_utils.CopyFile(ffdirectory[0]+"\\places.sqlite", tempHistoryDbff, nil, nil)
+	copyError := browserutils.CopyFile(ffdirectory[0]+"\\places.sqlite", tempHistoryDbff, nil, nil)
 	if copyError != nil {
 		return checks.NewCheckError(checks.HistoryFirefoxID, copyError)
 	}
@@ -132,7 +133,7 @@ func closeRows(rows *sql.Rows) {
 // This function iterates over each row in the provided result set. For each row, it extracts the URL and last visit date, and checks the URL against a list of known phishing domains. If a match is found, a string is generated that includes the domain name and the time of the visit, and this string is added to the results. If an error occurs during this process, it is returned as well.
 func processQueryResults(rows *sql.Rows) ([]string, error) {
 	var output []string
-	phishingDomainList := browser_utils.GetPhishingDomains()
+	phishingDomainList := browserutils.GetPhishingDomains()
 	re := regexp.MustCompile(`(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+\.[^:\/\n?]+)`)
 
 	for rows.Next() {

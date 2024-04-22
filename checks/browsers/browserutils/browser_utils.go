@@ -1,17 +1,18 @@
-// Package browser_utils provides utility functions for handling browser-related operations.
+// Package browserutils provides utility functions for handling browser-related operations.
 // These functions are used in the context of performing security checks on a system.
-package browser_utils
+package browserutils
 
 import (
 	"context"
-	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
-	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 	"io"
 	"net/http"
 	"os"
 	"os/user"
 	"path/filepath"
 	"strings"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
+	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 )
 
 // CloseFile is a utility function that closes a given file and logs any errors that occur during the process.
