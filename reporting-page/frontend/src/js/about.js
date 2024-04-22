@@ -1,5 +1,6 @@
 import {closeNavigation, markSelectedNavigationItem} from './navigation-menu';
 import {retrieveTheme} from './personalize';
+import {getLocalization} from './localize.js';
 
 /** Load the content of the About page */
 function openAboutPage() {
@@ -9,12 +10,12 @@ function openAboutPage() {
   document.getElementById('page-contents').innerHTML = `
   <div class="container-about">
     <div class="about-header">
-        <h1>About Infosec Agent</h1>
+        <h1 class="about-title">About Infosec Agent</h1>
     </div>
     <div class="project-info">
         <div class="project">
             <h2>Infosec Agent</h2>
-            <p>The InfoSec Agent project aims to improve the security and privacy of Windows computer users. 
+            <p class='infosec-info'>The InfoSec Agent project aims to improve the security and privacy of Windows computer users. 
                 Currently, 
                 there are applications available that do this, but they are mainly targeted at large companies. 
                 The goal of this project is to make this accessible to everyone.
@@ -25,7 +26,7 @@ function openAboutPage() {
         </div>
         <div class="project">
             <h2>Little Brother</h2>
-            <p>
+            <p class='little-brother-info'>
               This project is a collaborative effort involving nine students from Utrecht University in The Netherlands
               , in partnership with the Dutch IT company Guardian360. 
               It serves as the Software Project for the Bachelor's Programme in Computing Sciences at the UU.
@@ -33,8 +34,8 @@ function openAboutPage() {
         </div>
     </div>
     <div class="contribute">
-        <h2>Contributing</h2>
-        <p>InfoSec-Agent is an Open-Source project licensed under the GPL-3.0 License. 
+        <h2 class="about-contribute">Contributing</h2>
+        <p class='contribute-info'>InfoSec-Agent is an Open-Source project licensed under the GPL-3.0 License. 
             However, due to its origins as a Utrecht University assignment, 
             public contributions to this repository will only be merged after the completion of this assignment, 
             which is scheduled for June 24, 2024.
@@ -44,6 +45,25 @@ function openAboutPage() {
     </div>
 </div>`;
   document.onload = retrieveTheme();
+  
+  // Localize the static content of the home page
+  const staticAboutPageConent = [
+    'about-title',
+    'infosec-info',
+    'little-brother-info',
+    'about-contribute', 
+    'contribute-info',
+  ];
+  const localizationIds = [
+    'About.about-title',
+    'About.infosec-info',
+    'About.little-brother-info',
+    'About.about-contribute',
+    'About.contribute-info',
+  ];
+  for (let i = 0; i < staticAboutPageConent.length; i++) {
+    getLocalization(localizationIds[i], staticAboutPageConent[i]);
+  }
 }
 
 document.getElementById('about-button').addEventListener('click', () => openAboutPage());
