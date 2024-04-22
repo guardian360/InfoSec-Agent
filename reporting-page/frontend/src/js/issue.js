@@ -4,6 +4,7 @@ import {getLocalization} from './localize.js';
 import {retrieveTheme} from './personalize.js';
 
 let stepCounter = 0;
+const issuesWithResultsShow = ['60','70','80','90','100','110','160'];
 
 /** Update contents of solution guide
  *
@@ -54,6 +55,7 @@ export function previousSolutionStep(solutionText, solutionScreenshot, solution,
 export function openIssuePage(issueId) {
   stepCounter = 0;
   const currentIssue = data[issueId];
+  // Check if the issue has no screenshots, if so, display that there is no issue
   if (currentIssue.Screenshots.length === 0) {
     const pageContents = document.getElementById('page-contents');
     pageContents.innerHTML = `
@@ -68,7 +70,6 @@ export function openIssuePage(issueId) {
         <div class="button" id="back-button">Back to issues overview</div>
       </div>
     `;
-
     const texts = ['information', 'solution', 'previous-button', 'next-button', 'back-button'];
     const localizationIds = ['Issues.Information', 'Issues.Solution', 'Issues.Previous', 'Issues.Next', 'Issues.Back'];
     for (let i = 0; i < texts.length; i++) {
@@ -76,9 +77,9 @@ export function openIssuePage(issueId) {
     }
     document.getElementById('back-button').addEventListener('click', () => openIssuesPage());
     document.onload = retrieveTheme();
-  } else {
+  } else { // Issue has screenshots, display the solution guide
     const pageContents = document.getElementById('page-contents');
-    if (checkShowResult(currentIssue)) {
+    if (issuesWithResultsShow.includes(issueId)) {
       pageContents.innerHTML = parseShowResult(issueId, currentIssue);
     }
     else {
@@ -102,13 +103,6 @@ export function openIssuePage(issueId) {
         </div>
       `;
     }
-
-    const texts = ['information', 'solution', 'previous-button', 'next-button', 'back-button'];
-    const localizationIds = ['Issues.Information', 'Issues.Solution', 'Issues.Previous', 'Issues.Next', 'Issues.Back'];
-    for (let i = 0; i < texts.length; i++) {
-      getLocalization(localizationIds[i], texts[i]);
-    }
-
     try {
       document.getElementById('step-screenshot').src = currentIssue.Screenshots[stepCounter];
     } catch (error) { }
@@ -132,28 +126,68 @@ export function checkShowResult(issue) {
 
 export function parseShowResult(issueId, currentIssue){
   let issues = [];
-  let applications = '';
   issues = JSON.parse(sessionStorage.getItem('ScanResult'));
-  issues.forEach((issue) => {
-    if (issue.issue_id.toString() + issue.result_id.toString() === issueId.toString()) {
-      let issueResult = issue.result;
-      issueResult.forEach((application) => {
-        applications += `${application}, `;
+  let resultLine = '';
+
+  switch (issueId) {
+    case '60':
+      resultLine = permissionShowResults(issues);
+      break;
+    case '70':
+      resultLine = permissionShowResults(issues);
+      break;
+    case '80':
+      resultLine = permissionShowResults(issues);
+      break;
+    case '90':
+      resultLine = permissionShowResults(issues);
+      break;
+    case '100':
+      resultLine = permissionShowResults(issues);
+      break;
+    case '110':
+      break;
+    case '160':
+      issues.getItem('16').result.forEach((issue) => {
+        resultLine += `You changed your password on: ${issue}`;
       });
-    }
-  });
-  applications = applications.slice(0, -2);
+      break;
+    default:
+      break;
+  }
+
+  function permissionShowResults(issues){
+    let applications = '';
+    issues.forEach((issue) => {
+      if (issue.issue_id.toString() + issue.result_id.toString() === issueId.toString()) {
+        let issueResult = issue.result;
+        issueResult.forEach((application) => {
+          applications += `${application}, `;
+        });
+      }
+    });
+    applications = applications.slice(0, -2);
+    resultLine = `The following applications currently have been given permission: ${applications}.`;
+    return resultLine;
+  }
 
   let result = `
   <h1 class="issue-name">${currentIssue.Name}</h1>
   <div class="issue-information">
     <h2 id="information">Information</h2>
-    <p id="description">${currentIssue.Information}</p>
+    <p>${currentIssue.Information}</p>
     <h2 id="information">Findings</h2>
-    <p id="description">The following applications currently have been given permission: ${applications}</p>
-    <h2 id="solution">Acceptable</h2>
+    <p id="description">${resultLine}</p>
+    <h2 id="solution">Solution</h2>
     <div class="issue-solution">
-      <p id="solution-text">${currentIssue.Solution[stepCounter]}</p>
+      <p id="solution-text">${stepCounter +1}. ${currentIssue.Solution[stepCounter]}</p>
+      <img style='display:block; width:750px;height:auto' id="step-screenshot"></img>
+      <div class="solution-buttons">
+        <div class="button-box">
+          <div id="previous-button" class="button">&laquo; Previous step</div>
+          <div id="next-button" class="button">Next step &raquo;</div>
+        </div>
+      </div>
     </div>
     <div class="button" id="back-button">Back to issues overview</div>
   </div>
