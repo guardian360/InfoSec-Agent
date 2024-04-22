@@ -3,7 +3,7 @@ package chromium
 import (
 	"encoding/json"
 	"fmt"
-	browser_utils "github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers"
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/browser_utils"
 	"io"
 	"log"
 	"os"
