@@ -7,9 +7,9 @@ import (
 	"regexp"
 	"time"
 
-	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/browserutils"
 
-	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
+	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	// Necessary to use the sqlite driver
@@ -21,9 +21,9 @@ import (
 // Parameters: None
 //
 // Returns: The phishing domains that the user has visited in the last week and when they visited it
-func HistoryFirefox(profileFinder utils.FirefoxProfileFinder) checks.Check {
+func HistoryFirefox(profileFinder browserutils.FirefoxProfileFinder) checks.Check {
 	var output []string
-	ffdirectory, err := profileFinder.FirefoxFolder()
+	ffdirectory, err := browserutils.RealProfileFinder{}.FirefoxFolder()
 	if err != nil {
 		logger.Log.ErrorWithErr("No firefox directory found: ", err)
 		return checks.NewCheckErrorf(checks.HistoryFirefoxID, "No firefox directory found", err)
@@ -40,7 +40,7 @@ func HistoryFirefox(profileFinder utils.FirefoxProfileFinder) checks.Check {
 	}(tempHistoryDbff)
 
 	// Copy the database to a temporary location
-	copyError := utils.CopyFile(ffdirectory[0]+"\\places.sqlite", tempHistoryDbff, nil, nil)
+	copyError := browserutils.CopyFile(ffdirectory[0]+"\\places.sqlite", tempHistoryDbff, nil, nil)
 	if copyError != nil {
 		logger.Log.ErrorWithErr("Unable to make a copy of the file: ", copyError)
 		return checks.NewCheckError(checks.HistoryFirefoxID, copyError)
@@ -155,7 +155,7 @@ type QueryResult struct {
 // This function iterates over each row in the provided result set. For each row, it extracts the URL and last visit date, and checks the URL against a list of known phishing domains. If a match is found, a string is generated that includes the domain name and the time of the visit, and this string is added to the results. If an error occurs during this process, it is returned as well.
 func ProcessQueryResults(results []QueryResult) ([]string, error) {
 	var output []string
-	phishingDomainList := utils.GetPhishingDomains()
+	phishingDomainList := browserutils.GetPhishingDomains()
 	re := regexp.MustCompile(`(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+\.[^:\/\n?]+)`)
 
 	for _, result := range results {

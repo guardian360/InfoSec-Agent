@@ -4,7 +4,6 @@ import (
 	"strings"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
-	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 )
 
 const nonpackaged = "NonPackaged"
@@ -72,7 +71,7 @@ func Permission(permissionID int, permission string, registryKey mocking.Registr
 		}
 	}
 	// Remove duplicate results
-	filteredResults := utils.RemoveDuplicateStr(results)
+	filteredResults := RemoveDuplicateStr(results)
 	return NewCheckResult(permissionID, 0, filteredResults...)
 }
 
@@ -113,4 +112,25 @@ func nonPackagedAppNames(appKey mocking.RegistryKey) ([]string, error) {
 		results = append(results, exeString[len(exeString)-1])
 	}
 	return results, nil
+}
+
+// RemoveDuplicateStr is a utility function that eliminates duplicate string values from a given slice.
+//
+// Parameters:
+//   - strSlice []string: The input slice from which duplicate string values need to be removed.
+//
+// Returns:
+//   - []string: A new slice that contains the unique string values from the input slice. The order of the elements is preserved based on their first occurrence in the input slice.
+func RemoveDuplicateStr(strSlice []string) []string {
+	// Keep a map of found values, where true means the value has (already) been found
+	allKeys := make(map[string]bool)
+	var list []string
+	for _, item := range strSlice {
+		if _, value := allKeys[item]; !value {
+			// If the value is found for the first time, append it to the list of results
+			allKeys[item] = true
+			list = append(list, item)
+		}
+	}
+	return list
 }
