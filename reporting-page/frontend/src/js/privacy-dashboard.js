@@ -205,7 +205,7 @@ function openPrivacyDashboardPage() {
     adjustWithRiskCounters(rc, document);
     setMaxInterval(rc, document);
     g.rc = rc;
-    g.changeGraph();
+    await g.changeGraph();
   });
 }
 

@@ -40,7 +40,7 @@ export async function scanTest() {
 // Check if scanTest has already been called before
 if (sessionStorage.getItem('scanTest') === null) {
   // Call scanTest() only if it hasn't been called before
-  scanTest();
+  scanTest().then(r => {});
 
   // Set the flag in sessionStorage to indicate that scanTest has been called
   sessionStorage.setItem('scanTest', 'called');
@@ -70,7 +70,7 @@ async function setSeverities(input, type) {
   try {
     if (type !== '') {
       input = input.filter((item) => data[item.jsonkey] !== undefined);
-      input = input.filter((item) => data[item.jsonkey].Type == type);
+      input = input.filter((item) => data[item.jsonkey].Type === type);
     }
     const high = countOccurences(input, 3);
     const medium = countOccurences(input, 2);

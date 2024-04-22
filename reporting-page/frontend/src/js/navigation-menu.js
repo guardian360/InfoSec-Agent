@@ -40,7 +40,6 @@ export function toggleNavigationHamburger() {
   if (document.body.offsetWidth < 800) {
     if (document.getElementsByClassName('left-nav')[0].style.visibility === 'visible') {
       document.getElementsByClassName('left-nav')[0].style.visibility = 'hidden';
-      return;
     } else {
       document.getElementsByClassName('left-nav')[0].style.visibility = 'visible';
     }

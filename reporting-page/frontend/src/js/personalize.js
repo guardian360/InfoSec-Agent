@@ -1,5 +1,4 @@
-import {closeNavigation} from './navigation-menu.js';
-import {loadPersonalizeNavigation} from './navigation-menu.js';
+import {closeNavigation, loadPersonalizeNavigation} from './navigation-menu.js';
 import logoPhoto from '../assets/images/logoTeamA-transformed.png';
 
 /** Load the content of the Personalize page */
@@ -142,10 +141,10 @@ export function handleFaviconChange(icon) {
       } else {
         const newFavicon = document.createElement('link');
         newFavicon.rel = 'icon';
-        newFavicon.href = picture;
+        newFavicon.href = picture.toString();
         document.head.appendChild(newFavicon);
       }
-      localStorage.setItem('favicon', picture);
+      localStorage.setItem('favicon', picture.toString());
     };
     reader.readAsDataURL(file); // Read the selected file as a Data URL
   }
@@ -163,7 +162,7 @@ export function handlePictureChange(picture) {
   reader.onload = function(e) {
     const logo = document.getElementById('logo');
     logo.src = e.target.result; // Set the source of the logo to the selected image
-    localStorage.setItem('picture', e.target.result);
+    localStorage.setItem('picture', e.target.result.toString());
   };
   reader.readAsDataURL(file); // Read the selected file as a Data URL
 }
@@ -196,8 +195,7 @@ export function handleLeftBackgroundNav() {
  * The active theme class name is retrieved from the 'theme' key in localStorage.
  */
 export function retrieveTheme() {
-  const activeTheme = localStorage.getItem('theme');
-  document.documentElement.className = activeTheme;
+  document.documentElement.className = localStorage.getItem('theme');
 }
 /**
  * Resets the settings by clearing localStorage and restoring default values.
