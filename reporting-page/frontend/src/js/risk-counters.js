@@ -15,7 +15,7 @@ export class RiskCounters {
   lastHighRisk;
   lastMediumRisk;
   lastLowRisk;
-  lastnoRisk;
+  lastNoRisk;
 
   count = 1;
   /** Create the risk-Counters with the right colors
@@ -46,7 +46,7 @@ export class RiskCounters {
     this.lastHighRisk = high;
     this.lastMediumRisk = medium;
     this.lastLowRisk = low;
-    this.lastnoRisk = acceptable;
+    this.lastNoRisk = acceptable;
   }
 }
 
@@ -60,7 +60,7 @@ export class RiskCounters {
  * @param {number} acceptable - The last recorded amount of acceptable risks.
  * @return {RiskCounters} The updated RiskCounters instance.
  */
-export function updateRiskcounter(rc, high, medium, low, acceptable) {
+export function updateRiskCounter(rc, high, medium, low, acceptable) {
   rc.allHighRisks.push(high);
   rc.allMediumRisks.push(medium);
   rc.allLowRisks.push(low);
@@ -69,7 +69,7 @@ export function updateRiskcounter(rc, high, medium, low, acceptable) {
   rc.lastHighRisk = high;
   rc.lastMediumRisk = medium;
   rc.lastLowRisk = low;
-  rc.lastnoRisk = acceptable;
+  rc.lastNoRisk = acceptable;
   rc.count = calculateMaxCount(rc);
   return rc;
 }

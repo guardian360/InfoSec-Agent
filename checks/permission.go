@@ -7,7 +7,7 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 )
 
-const nonpackaged = "NonPackaged"
+const nonPackaged = "NonPackaged"
 
 // Permission is a function that checks if a user has granted a specific permission to an application.
 //
@@ -36,7 +36,7 @@ func Permission(permissionID int, permission string, registryKey mocking.Registr
 	// Get the names of all sub-keys (which represent applications)
 	applicationNames, err := key.ReadSubKeyNames(-1)
 	if err != nil {
-		return NewCheckErrorf(permissionID, "error reading subkey names", err)
+		return NewCheckErrorf(permissionID, "error reading sub-key names", err)
 	}
 
 	var results []string
@@ -48,7 +48,7 @@ func Permission(permissionID int, permission string, registryKey mocking.Registr
 		if err != nil {
 			return NewCheckErrorf(permissionID, "error opening registry key", err)
 		}
-		if appName == nonpackaged {
+		if appName == nonPackaged {
 			val, _, err = key.GetStringValue("Value")
 		} else {
 			val, _, err = appKey.GetStringValue("Value")
@@ -60,10 +60,10 @@ func Permission(permissionID int, permission string, registryKey mocking.Registr
 		if val != "Allow" {
 			continue
 		}
-		if appName == nonpackaged {
+		if appName == nonPackaged {
 			nonPackagedApplicationNames, err = nonPackagedAppNames(appKey)
 			if err != nil {
-				return NewCheckErrorf(permissionID, "error reading subkey names", err)
+				return NewCheckErrorf(permissionID, "error reading sub-key names", err)
 			}
 			results = append(results, nonPackagedApplicationNames...)
 		} else {
@@ -86,8 +86,8 @@ func Permission(permissionID int, permission string, registryKey mocking.Registr
 //
 // This function is used to handle a special case where the application name is "NonPackaged". In such a case, it returns the string "NonPackaged" as the registry key name. For all other application names, it returns the application name itself as the registry key name. This function is used in the context of checking permissions for applications.
 func appKeyName(appName string) string {
-	if appName == nonpackaged {
-		return nonpackaged
+	if appName == nonPackaged {
+		return nonPackaged
 	}
 	return appName
 }

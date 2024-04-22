@@ -64,7 +64,7 @@ func HistoryFirefox() checks.Check {
 		return checks.NewCheckError(checks.HistoryFirefoxID, err)
 	}
 	if output == nil {
-		return checks.NewCheckResult(checks.HistoryFirefoxID, 0, "No phising domains found in the last week")
+		return checks.NewCheckResult(checks.HistoryFirefoxID, 0, "No phishing domains found in the last week")
 	}
 	return checks.NewCheckResult(checks.HistoryFirefoxID, 1, output...)
 }
@@ -176,8 +176,8 @@ func formatTime(lastVisitDate sql.NullInt64) string {
 	}
 
 	if lastVisitDateInt64 > 0 {
-		timeofCreation := time.UnixMicro(lastVisitDateInt64)
-		return timeofCreation.String()
+		timeOfCreation := time.UnixMicro(lastVisitDateInt64)
+		return timeOfCreation.String()
 	}
 	var timeNow = time.Now()
 	return timeNow.String()

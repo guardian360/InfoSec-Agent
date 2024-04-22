@@ -84,8 +84,8 @@ func CookieFirefox() checks.Check {
 			return checks.NewCheckError(checks.CookiesFirefoxID, err)
 		}
 		// Append the cookie to the result list
-		timeofCreation := time.UnixMicro(creationTime)
-		timeString := timeofCreation.String()
+		timeOfCreation := time.UnixMicro(creationTime)
+		timeString := timeOfCreation.String()
 		output = append(output, name, host, timeString)
 	}
 	return checks.NewCheckResult(checks.CookiesFirefoxID, 0, output...)

@@ -91,7 +91,7 @@ func HistoryChromium(browser string) checks.Check {
 // closeDatabase safely closes the provided database connection.
 //
 // Parameters:
-//   - db: A pointer to an sql.DB object representing the database connection to close.
+//   - db: A pointer to a sql.DB object representing the database connection to close.
 //
 // This function attempts to close the provided database connection and logs an error if the operation fails.
 // It does not return any value.
@@ -104,10 +104,10 @@ func closeDatabase(db *sql.DB) {
 // queryDatabase retrieves the browsing history from the provided database connection.
 //
 // Parameters:
-//   - db: A pointer to an sql.DB object representing the database connection to query.
+//   - db: A pointer to a sql.DB object representing the database connection to query.
 //
 // Returns:
-//   - A pointer to an sql.Rows object representing the result set of the query.
+//   - A pointer to a sql.Rows object representing the result set of the query.
 //   - An error, which will be nil if the operation was successful.
 //
 // This function queries the database for URLs visited in the last week, ordered by the last visit time in descending order. It returns the result set of the query and an error, if any occurred.
@@ -126,7 +126,7 @@ func queryDatabase(db *sql.DB) (*sql.Rows, error) {
 // closeRows safely closes the provided sql.Rows object.
 //
 // Parameters:
-//   - rows: A pointer to an sql.Rows object that needs to be closed.
+//   - rows: A pointer to a sql.Rows object that needs to be closed.
 //
 // This function attempts to close the provided sql.Rows object and logs an error if the operation fails.
 // It does not return any value.
@@ -139,7 +139,7 @@ func closeRows(rows *sql.Rows) {
 // processQueryResults processes the result set of a query to the browsing history database, checking each URL against a list of known phishing domains.
 //
 // Parameters:
-//   - rows: A pointer to an sql.Rows object representing the result set of the query. Each row represents a URL visited in the last week, along with its title, visit count, and last visit time.
+//   - rows: A pointer to a sql.Rows object representing the result set of the query. Each row represents a URL visited in the last week, along with its title, visit count, and last visit time.
 //
 // Returns:
 //   - A slice of strings, each string representing a visit to a known phishing domain. The string includes the domain name and the time of the last visit. If no visits to phishing domains are found, the slice will be empty.

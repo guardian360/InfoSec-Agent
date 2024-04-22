@@ -8,7 +8,7 @@ global.TESTING = true;
 
 // Mock page
 const dom = new JSDOM(`
-  <div class="data-column piechart">
+  <div class="data-column pie-chart">
     <canvas id="pieChart"></canvas>
   </div>
 `, {

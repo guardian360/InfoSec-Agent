@@ -51,7 +51,7 @@ export function openPersonalizePage() {
     </div>
   </div>
   `;
-  // add eventlistener for changing Favicon
+  // add event-listener for changing Favicon
   const changeIconButton = document.getElementsByClassName('icon-button')[0];
   const inputFileIcon = document.getElementById('input-file-icon');
 
@@ -61,7 +61,7 @@ export function openPersonalizePage() {
 
   inputFileIcon.addEventListener('change', handleFaviconChange);
 
-  // add eventlistener for changing navication picture
+  // add event-listener for changing navigation picture
   const changeLogoButton = document.getElementsByClassName('logo-button')[0];
   const inputLogo = document.getElementById('input-file-picture');
 
@@ -71,7 +71,7 @@ export function openPersonalizePage() {
 
   inputLogo.addEventListener('change', handlePictureChange);
 
-  // add eventlistener for changing navigation title
+  // add event-listener for changing navigation title
   const changeTitleButton = document.getElementsByClassName('title-button')[0];
   const customModal = document.getElementById('custom-modal');
   const newTitleInput = document.getElementById('new-title-input');
@@ -91,7 +91,7 @@ export function openPersonalizePage() {
   });
 
 
-  // add eventlistener for changing Favicon
+  // add event-listener for changing Favicon
   const changeResetButton = document.getElementsByClassName('reset-button')[0];
 
   changeResetButton.addEventListener('click', function() {
@@ -99,7 +99,7 @@ export function openPersonalizePage() {
   });
 
   /*
-  // add eventlistener for changing navigation title
+  // add event-listener for changing navigation title
   const inputBackgroundNav = document.getElementById('input-color-background');
   inputBackgroundNav.addEventListener('change', handleLeftBackgroundNav);
   */

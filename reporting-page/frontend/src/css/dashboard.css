@@ -82,18 +82,18 @@
 
 /* risk distribution pie chart */
 
-.piechart {
+.pie-chart {
   /* ratio between columns: 1:2:1 */
 
   /* flex: 2; */
 }
 
-.piechart-container {
+.pie-chart-container {
   min-height: 200px;
   margin: 10px;
 }
 
-.piechart .piechart-container {
+.pie-chart .pie-chart-container {
   height: 90%;
 }
 

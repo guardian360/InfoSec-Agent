@@ -7,9 +7,9 @@ import {Chart} from "chart.js";
 export class PieChart {
   pieChart;
   rc;
-  /** Create a piechart showing the risk counters
+  /** Create a pie-chart showing the risk counters
    *
-   * @param {string=} canvas id of the canvas where the piechart would be placed
+   * @param {string=} canvas id of the canvas where the pie-chart would be placed
    * @param {RiskCounters} riskCounters Risk counters used to retrieve data to be put in the chart
    * @param {string} type Title for the type of risks shown in the chart
    */

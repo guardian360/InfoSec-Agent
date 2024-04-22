@@ -57,7 +57,7 @@ export function toggleNavigationResize() {
 
 if (typeof document !== 'undefined') {
   try {
-    document.getElementById('header-hambuger').addEventListener('click', () => toggleNavigationHamburger());
+    document.getElementById('header-hamburger').addEventListener('click', () => toggleNavigationHamburger());
     document.body.onresize = () => toggleNavigationResize();
 
     const navbarItems = [

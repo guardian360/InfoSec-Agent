@@ -25,13 +25,13 @@ import (
 // This function first determines the directory in which the Firefox profile is stored. It then opens and reads the 'search.json.mozlz4' file, which contains information about the default search engine. The function decompresses the file, extracts the default search engine information, and returns this information as a Check object. If an error occurs at any point during this process, it is encapsulated in the Check object and returned.
 func SearchEngineFirefox() checks.Check {
 	// Determine the directory in which the Firefox profile is stored
-	var ffdirectory []string
+	var ffDirectory []string
 	var err error
-	ffdirectory, err = utils.FirefoxFolder()
+	ffDirectory, err = utils.FirefoxFolder()
 	if err != nil {
 		return checks.NewCheckErrorf(checks.SearchFirefoxID, "No firefox directory found", err)
 	}
-	filePath := ffdirectory[0] + "/search.json.mozlz4"
+	filePath := ffDirectory[0] + "/search.json.mozlz4"
 
 	// Create a temporary file to copy the compressed json to
 	tempSearch := filepath.Join(os.TempDir(), "tempSearch.json.mozlz4")
