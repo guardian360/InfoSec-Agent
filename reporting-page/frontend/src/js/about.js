@@ -15,7 +15,8 @@ function openAboutPage() {
     <div class="project-info">
         <div class="project">
             <h2>Infosec Agent</h2>
-            <p class='infosec-info'>The InfoSec Agent project aims to improve the security and privacy of Windows computer users. 
+            <p class='infosec-info'>The InfoSec Agent project aims to improve 
+                the security and privacy of Windows computer users. 
                 Currently, 
                 there are applications available that do this, but they are mainly targeted at large companies. 
                 The goal of this project is to make this accessible to everyone.
@@ -45,13 +46,13 @@ function openAboutPage() {
     </div>
 </div>`;
   document.onload = retrieveTheme();
-  
+
   // Localize the static content of the home page
   const staticAboutPageConent = [
     'about-title',
     'infosec-info',
     'little-brother-info',
-    'about-contribute', 
+    'about-contribute',
     'contribute-info',
   ];
   const localizationIds = [
