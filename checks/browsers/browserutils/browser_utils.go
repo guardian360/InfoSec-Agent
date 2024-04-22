@@ -1,5 +1,7 @@
 // Package browserutils provides utility functions for handling browser-related operations.
 // These functions are used in the context of performing security checks on a system.
+//
+// Exported function(s): CloseFile, FirefoxFolder, GetPhishingDomains, CopyFile
 package browserutils
 
 import (

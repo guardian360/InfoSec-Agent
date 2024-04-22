@@ -1,3 +1,7 @@
+// Package checksutils provides utility functions for security/privacy checks.
+// These functions are used in the context of performing security/privacy checks on a system.
+//
+// Exported function(s): CurrentUsername
 package checksutils
 
 import (
