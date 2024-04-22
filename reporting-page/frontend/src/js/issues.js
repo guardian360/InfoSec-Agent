@@ -89,7 +89,7 @@ export function openIssuesPage() {
   const nonIssueTable = document.getElementById('non-issues-table').querySelector('tbody');
   fillTable(nonIssueTable, issues, false);
 
-  myDropdownTable = document.getElementById('myDropdown-table');
+  const myDropdownTable = document.getElementById('myDropdown-table');
   document.getElementById('dropbtn-table').addEventListener('click', () => myDropdownTable.classList.toggle('show'));
   document.getElementById('select-high-risk-table').addEventListener('change', changeTable);
   document.getElementById('select-medium-risk-table').addEventListener('change', changeTable);
