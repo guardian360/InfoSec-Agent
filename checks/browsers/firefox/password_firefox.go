@@ -23,6 +23,10 @@ import (
 func PasswordFirefox() checks.Check {
 	// Determine the directory in which the Firefox profile is stored
 	ffdirectory, err := utils.RealProfileFinder{}.FirefoxFolder()
+	if err != nil {
+		logger.Log.ErrorWithErr("No firefox directory found: ", err)
+		return checks.NewCheckErrorf(checks.HistoryFirefoxID, "No firefox directory found", err)
+	}
 
 	var output []string
 	// Open the logins.json file, which contains a list of all saved Firefox passwords

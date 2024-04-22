@@ -6,6 +6,7 @@ package scan
 import (
 	"encoding/json"
 	"fmt"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"

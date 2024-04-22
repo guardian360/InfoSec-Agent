@@ -107,14 +107,14 @@ func QueryDatabase(db *sql.DB) ([]QueryResult, error) {
 	var results []QueryResult
 	for rows.Next() {
 		var result QueryResult
-		if err := rows.Scan(&result.URL, &result.LastVisitDate); err != nil {
+		if err = rows.Scan(&result.URL, &result.LastVisitDate); err != nil {
 			logger.Log.ErrorWithErr("Error scanning row: ", err)
 			return nil, err
 		}
 		results = append(results, result)
 	}
 
-	if err := rows.Err(); err != nil {
+	if err = rows.Err(); err != nil {
 		logger.Log.ErrorWithErr("Error iterating over rows: ", err)
 		return nil, err
 	}
