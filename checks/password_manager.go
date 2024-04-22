@@ -82,9 +82,9 @@ func PasswordManager(pl ProgramLister) Check {
 
 	// Check if any of the listed programs are password managers
 	for _, program := range programs {
-		for _, passwordmanager := range passwordManagerNames {
-			if strings.Contains(strings.ToLower(program), strings.ToLower(passwordmanager)) {
-				return NewCheckResult(PasswordManagerID, 0, passwordmanager)
+		for _, passwordManager := range passwordManagerNames {
+			if strings.Contains(strings.ToLower(program), strings.ToLower(passwordManager)) {
+				return NewCheckResult(PasswordManagerID, 0, passwordManager)
 			}
 		}
 	}
@@ -96,9 +96,9 @@ func PasswordManager(pl ProgramLister) Check {
 			"error listing installed programs in Program Files (x86)", err)
 	}
 	for _, program := range programs {
-		for _, passwordmanager := range passwordManagerNames {
-			if strings.Contains(strings.ToLower(program), passwordmanager) {
-				return NewCheckResult(PasswordManagerID, 0, passwordmanager)
+		for _, passwordManager := range passwordManagerNames {
+			if strings.Contains(strings.ToLower(program), passwordManager) {
+				return NewCheckResult(PasswordManagerID, 0, passwordManager)
 			}
 		}
 	}

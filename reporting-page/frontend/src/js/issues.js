@@ -42,8 +42,8 @@ export function openIssuesPage() {
     getLocalization(localizationIds[i], tableHeaders[i]);
   }
 
-  let issues = []; // retrieve issues from tray application
-  issues = JSON.parse(sessionStorage.getItem('DataBaseData'));
+  // retrieve issues from tray application
+  const issues = JSON.parse(sessionStorage.getItem('DataBaseData'));
 
   const tbody = pageContents.querySelector('tbody');
   fillTable(tbody, issues);
@@ -103,7 +103,7 @@ export function fillTable(tbody, issues) {
 /** Sorts the table
  *
  * @param {HTMLTableSectionElement} tbody Table to be sorted
- * @param {string} column Column to sort the table on
+ * @param {number} column Column to sort the table on
  */
 export function sortTable(tbody, column) {
   const table = tbody.closest('table');
@@ -111,7 +111,16 @@ export function sortTable(tbody, column) {
   direction = direction === 'ascending' ? 'descending' : 'ascending';
   const rows = Array.from(tbody.rows);
   rows.sort((a, b) => {
-    if (column === 2) {
+    if (column !== 2) {
+      // Alphabetical sorting for other columns
+      const textA = a.cells[column].textContent.toLowerCase();
+      const textB = b.cells[column].textContent.toLowerCase();
+      if (direction === 'ascending') {
+        return textA.localeCompare(textB);
+      } else {
+        return textB.localeCompare(textA);
+      }
+    } else {
       // Custom sorting for the last column
       const order = {'high': 1, 'medium': 2, 'low': 3, 'acceptable': 4};
       const textA = a.cells[column].textContent.toLowerCase();
@@ -120,15 +129,6 @@ export function sortTable(tbody, column) {
         return order[textA] - order[textB];
       } else {
         return order[textB] - order[textA];
-      }
-    } else {
-      // Alphabetical sorting for other columns
-      const textA = a.cells[column].textContent.toLowerCase();
-      const textB = b.cells[column].textContent.toLowerCase();
-      if (direction === 'ascending') {
-        return textA.localeCompare(textB);
-      } else {
-        return textB.localeCompare(textA);
       }
     }
   });

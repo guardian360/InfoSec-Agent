@@ -205,7 +205,6 @@ h2{
   width: 100%;
   font-size: 18px;
   font-weight: bold;
-  color: var(--dark-text);
   border-radius: 10px 10px 0 0;
 }
 
@@ -217,8 +216,7 @@ h2{
 /* Home contents */
 
 .home-data {
-  color: var(--dark-text);
-  width: flex;
+  width: fit-content;
   display: flex;
   flex-flow: row wrap;
   padding: 5px;

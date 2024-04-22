@@ -1,5 +1,4 @@
-import {closeNavigation} from './navigation-menu.js';
-import {loadPersonalizeNavigation} from './navigation-menu.js';
+import {closeNavigation, loadPersonalizeNavigation} from './navigation-menu.js';
 import logoPhoto from '../assets/images/logoTeamA-transformed.png';
 
 /** Load the content of the Personalize page */
@@ -52,7 +51,7 @@ export function openPersonalizePage() {
     </div>
   </div>
   `;
-  // add eventlistener for changing Favicon
+  // add event-listener for changing Favicon
   const changeIconButton = document.getElementsByClassName('icon-button')[0];
   const inputFileIcon = document.getElementById('input-file-icon');
 
@@ -62,7 +61,7 @@ export function openPersonalizePage() {
 
   inputFileIcon.addEventListener('change', handleFaviconChange);
 
-  // add eventlistener for changing navication picture
+  // add event-listener for changing navigation picture
   const changeLogoButton = document.getElementsByClassName('logo-button')[0];
   const inputLogo = document.getElementById('input-file-picture');
 
@@ -72,7 +71,7 @@ export function openPersonalizePage() {
 
   inputLogo.addEventListener('change', handlePictureChange);
 
-  // add eventlistener for changing navigation title
+  // add event-listener for changing navigation title
   const changeTitleButton = document.getElementsByClassName('title-button')[0];
   const customModal = document.getElementById('custom-modal');
   const newTitleInput = document.getElementById('new-title-input');
@@ -92,7 +91,7 @@ export function openPersonalizePage() {
   });
 
 
-  // add eventlistener for changing Favicon
+  // add event-listener for changing Favicon
   const changeResetButton = document.getElementsByClassName('reset-button')[0];
 
   changeResetButton.addEventListener('click', function() {
@@ -100,7 +99,7 @@ export function openPersonalizePage() {
   });
 
   /*
-  // add eventlistener for changing navigation title
+  // add event-listener for changing navigation title
   const inputBackgroundNav = document.getElementById('input-color-background');
   inputBackgroundNav.addEventListener('change', handleLeftBackgroundNav);
   */
@@ -142,10 +141,10 @@ export function handleFaviconChange(icon) {
       } else {
         const newFavicon = document.createElement('link');
         newFavicon.rel = 'icon';
-        newFavicon.href = picture;
+        newFavicon.href = picture.toString();
         document.head.appendChild(newFavicon);
       }
-      localStorage.setItem('favicon', picture);
+      localStorage.setItem('favicon', picture.toString());
     };
     reader.readAsDataURL(file); // Read the selected file as a Data URL
   }
@@ -163,7 +162,7 @@ export function handlePictureChange(picture) {
   reader.onload = function(e) {
     const logo = document.getElementById('logo');
     logo.src = e.target.result; // Set the source of the logo to the selected image
-    localStorage.setItem('picture', e.target.result);
+    localStorage.setItem('picture', e.target.result.toString());
   };
   reader.readAsDataURL(file); // Read the selected file as a Data URL
 }
@@ -196,8 +195,7 @@ export function handleLeftBackgroundNav() {
  * The active theme class name is retrieved from the 'theme' key in localStorage.
  */
 export function retrieveTheme() {
-  const activeTheme = localStorage.getItem('theme');
-  document.documentElement.className = activeTheme;
+  document.documentElement.className = localStorage.getItem('theme');
 }
 /**
  * Resets the settings by clearing localStorage and restoring default values.
