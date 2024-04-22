@@ -40,7 +40,7 @@ export async function scanTest() {
 // Check if scanTest has already been called before
 if (sessionStorage.getItem('scanTest') === null) {
   // Call scanTest() only if it hasn't been called before
-  scanTest().then(r => {});
+  scanTest().then((r) => {});
 
   // Set the flag in sessionStorage to indicate that scanTest has been called
   sessionStorage.setItem('scanTest', 'called');

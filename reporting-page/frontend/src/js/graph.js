@@ -1,5 +1,5 @@
 import {getLocalizationString} from './localize.js';
-import {Chart} from "chart.js";
+import {Chart} from 'chart.js';
 
 /**
  * Represents a graph for displaying risk counters.
@@ -21,7 +21,7 @@ export class Graph {
    */
   constructor(canvas, riskCounters) {
     this.rc = riskCounters;
-    if (canvas !== undefined) this.createGraphChart(canvas).then(r => {});
+    if (canvas !== undefined) this.createGraphChart(canvas).then((r) => {});
   }
 
   /** Creates a graph in the form of a bar chart for risks
@@ -65,7 +65,7 @@ export class Graph {
     default:
       break;
     }
-    if (change) this.changeGraph().then(r => {});
+    if (change) this.changeGraph().then((r) => {});
   }
 
   /** toggles 'show' class on element with id:"myDropDown" */

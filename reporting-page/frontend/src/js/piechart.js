@@ -1,5 +1,5 @@
 import {getLocalizationString} from './localize.js';
-import {Chart} from "chart.js";
+import {Chart} from 'chart.js';
 
 /**
  * Represents a PieChart object for displaying risk counters.
@@ -16,7 +16,7 @@ export class PieChart {
   constructor(canvas, riskCounters, type) {
     this.rc = riskCounters;
     if (canvas !== undefined) {
-      this.createPieChart(canvas, type).then(r => {});
+      this.createPieChart(canvas, type).then((r) => {});
     }
   }
 

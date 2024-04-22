@@ -42,8 +42,8 @@ export function openIssuesPage() {
     getLocalization(localizationIds[i], tableHeaders[i]);
   }
 
-  let issues; // retrieve issues from tray application
-  issues = JSON.parse(sessionStorage.getItem('DataBaseData'));
+  // retrieve issues from tray application
+  const issues = JSON.parse(sessionStorage.getItem('DataBaseData'));
 
   const tbody = pageContents.querySelector('tbody');
   fillTable(tbody, issues);
