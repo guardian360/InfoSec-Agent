@@ -66,7 +66,12 @@ func TestQueryDatabase(t *testing.T) {
 	db, mock, err := sqlmock.New()
 	require.NoError(t, err)
 
-	defer db.Close()
+	defer func(db *sql.DB) {
+		err = db.Close()
+		if err != nil {
+			logger.Log.ErrorWithErr("Error closing database: ", err)
+		}
+	}(db)
 
 	lastWeek := (time.Now().AddDate(0, 0, -7).UnixMicro() / 10000000) * 10000000
 
@@ -95,7 +100,12 @@ func TestQueryDatabase_Error(t *testing.T) {
 	db, mock, err := sqlmock.New()
 	require.NoError(t, err)
 
-	defer db.Close()
+	defer func(db *sql.DB) {
+		err = db.Close()
+		if err != nil {
+			logger.Log.ErrorWithErr("Error closing database: ", err)
+		}
+	}(db)
 
 	lastWeek := (time.Now().AddDate(0, 0, -7).UnixMicro() / 10000000) * 10000000
 
@@ -112,7 +122,12 @@ func TestQueryDatabase_RowError(t *testing.T) {
 	db, mock, err := sqlmock.New()
 	require.NoError(t, err)
 
-	defer db.Close()
+	defer func(db *sql.DB) {
+		err = db.Close()
+		if err != nil {
+			logger.Log.ErrorWithErr("Error closing database: ", err)
+		}
+	}(db)
 
 	lastWeek := (time.Now().AddDate(0, 0, -7).UnixMicro() / 10000000) * 10000000
 
@@ -135,7 +150,12 @@ func TestQueryDatabase_ScanError(t *testing.T) {
 	db, mock, err := sqlmock.New()
 	require.NoError(t, err)
 
-	defer db.Close()
+	defer func(db *sql.DB) {
+		err = db.Close()
+		if err != nil {
+			logger.Log.ErrorWithErr("Error closing database: ", err)
+		}
+	}(db)
 
 	lastWeek := (time.Now().AddDate(0, 0, -7).UnixMicro() / 10000000) * 10000000
 

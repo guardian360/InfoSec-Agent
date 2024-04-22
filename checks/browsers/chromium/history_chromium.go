@@ -149,7 +149,7 @@ func closeRows(rows *sql.Rows) {
 func processQueryResults(rows *sql.Rows) ([]string, error) {
 	var results []string
 	phishingDomainList := browserutils.GetPhishingDomains()
-	re := regexp.MustCompile(`(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+\.[^:\/\n?]+)`)
+	re := regexp.MustCompile(`(?:https?://)?(?:[^@\n]+@)?(?:www\.)?([^:/\n?]+\.[^:/\n?]+)`)
 
 	for rows.Next() {
 		var url, title string
