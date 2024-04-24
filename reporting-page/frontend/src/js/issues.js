@@ -117,7 +117,7 @@ function toRiskLevel(level) {
   case 3:
     return 'High';
   case 4:
-    return 'info';
+    return 'Info';
   }
 }
 
@@ -198,7 +198,7 @@ export function sortTable(tbody, column) {
       }
     } else {
       // Custom sorting for the last column
-      const order = {'high': 1, 'medium': 2, 'low': 3, 'acceptable': 4, 'info': 5};
+      const order = {'high': 1, 'medium': 2, 'low': 3, 'acceptable': 4, 'Info': 5};
       const textA = a.cells[column].textContent.toLowerCase();
       const textB = b.cells[column].textContent.toLowerCase();
       if (direction === 'ascending') {
