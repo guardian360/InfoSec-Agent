@@ -7,7 +7,6 @@ package main
 
 import (
 	"embed"
-	"log"
 	"net/http"
 	"os"
 	"path/filepath"
@@ -53,7 +52,7 @@ func (h *FileLoader) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 
 	// Ensure the requested path is relative and does not try to traverse directories
 	if cleanPath == "." || strings.Contains(cleanPath, "..") {
-		log.Printf("Invalid file path: %s", requestedPath)
+		logger.Log.Error("Invalid file path: " + requestedPath)
 		http.Error(res, "Invalid file path", http.StatusBadRequest)
 		return
 	}
@@ -63,20 +62,20 @@ func (h *FileLoader) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 
 	// Check if the file is within the allowed directory
 	if !strings.HasPrefix(fullPath, filepath.Clean(baseDir)+string(os.PathSeparator)) {
-		log.Printf("Access to the file path denied: %s", newPath)
+		logger.Log.Error("Access to the file path denied:" + newPath)
 		http.Error(res, "Access denied", http.StatusForbidden)
 		return
 	}
 
 	fileData, err := os.ReadFile(newPath)
 	if err != nil {
-		log.Printf("Could not load file: %s, Error: %v", newPath, err)
+		logger.Log.ErrorWithErr("Could not load file:"+newPath, err)
 		http.Error(res, "File not found", http.StatusNotFound)
 		return
 	}
 
 	if _, err = res.Write(fileData); err != nil {
-		log.Printf("Could not write file: %s, Error: %v", newPath, err)
+		logger.Log.ErrorWithErr("Could not write file:"+newPath, err)
 		http.Error(res, "Failed to serve file", http.StatusInternalServerError)
 	}
 }
