@@ -79,7 +79,8 @@ async function setSeverities(input, type) {
     const acceptable = countOccurrences(input, 0);
     if (sessionStorage.getItem(type + 'RiskCounters') === null ||
         sessionStorage.getItem(type + 'RiskCounters') === undefined) {
-      sessionStorage.setItem(type + 'RiskCounters', JSON.stringify(new rc.RiskCounters(high, medium, low, info, acceptable)));
+      sessionStorage.setItem(type + 'RiskCounters',
+        JSON.stringify(new rc.RiskCounters(high, medium, low, info, acceptable)));
       openHomePage();
     } else {
       let riskCounter = JSON.parse(sessionStorage.getItem(type + 'RiskCounters'));

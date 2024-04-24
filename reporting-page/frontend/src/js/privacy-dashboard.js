@@ -79,6 +79,9 @@ function openPrivacyDashboardPage() {
               <p><input type="checkbox" checked="true" value="true" id="select-low-risk">
                 <label for="select-low-risk" class="low-risk-issues"> Low risks</label>
               </p>
+              <p><input type="checkbox" checked="true" value="true" id="select-info-risk">
+                <label for="select-info-risk" class="info-risk-issues"> Informative</label>
+              </p>
               <p><input type="checkbox" checked="true" value="true" id="select-no-risk">
                 <label for="select-no-risk" class="safe-issues"> Safe</label>
               </p>

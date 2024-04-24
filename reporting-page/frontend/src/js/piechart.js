@@ -53,8 +53,10 @@ export class PieChart {
       await getString('Dashboard.HighRisk'),
       await getString('Dashboard.InfoRisk'),
     ];
-    const yValues = [this.rc.lastNoRisk, this.rc.lastLowRisk, this.rc.lastMediumRisk, this.rc.lastHighRisk, this.rc.lastInfoRisk];
-    const barColors = [this.rc.noRiskColor, this.rc.lowRiskColor, this.rc.mediumRiskColor, this.rc.highRiskColor, this.rc.infoColor];
+    const yValues = [this.rc.lastNoRisk, this.rc.lastLowRisk,
+      this.rc.lastMediumRisk, this.rc.lastHighRisk, this.rc.lastInfoRisk];
+    const barColors = [this.rc.noRiskColor, this.rc.lowRiskColor,
+      this.rc.mediumRiskColor, this.rc.highRiskColor, this.rc.infoColor];
 
     return {
       labels: xValues,

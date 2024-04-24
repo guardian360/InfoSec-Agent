@@ -272,7 +272,7 @@ export function adjustWithRiskCounters(rc, doc) {
     }
     securityStatus.style.backgroundColor = rc.infoColor;
     securityStatus.style.color = 'rgb(0, 0, 0)';
-  }  else{
+  } else {
     try {
       getLocalization('Dashboard.NoConcern', 'status-descriptor');
     } catch (error) {
@@ -304,6 +304,5 @@ export function addGraphFunctions(g) {
   document.getElementById('select-low-risk').addEventListener('change', () => g.toggleRisks('low'));
   document.getElementById('select-info-risk').addEventListener('change', () => g.toggleRisks('info'));
   document.getElementById('select-no-risk').addEventListener('change', () => g.toggleRisks('no'));
-
 }
 
