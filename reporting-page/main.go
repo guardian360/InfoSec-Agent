@@ -49,6 +49,7 @@ func (h *FileLoader) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 	const baseDir = "frontend/src/assets/images" // Base directory for image files
 	requestedPath := req.URL.Path
 	cleanPath := filepath.Clean(requestedPath) // Clean the path to avoid directory traversal
+	newPath := strings.Replace(cleanPath, `\`, ``, 1)
 
 	// Ensure the requested path is relative and does not try to traverse directories
 	if cleanPath == "." || strings.Contains(cleanPath, "..") {
@@ -62,20 +63,20 @@ func (h *FileLoader) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 
 	// Check if the file is within the allowed directory
 	if !strings.HasPrefix(fullPath, filepath.Clean(baseDir)+string(os.PathSeparator)) {
-		log.Printf("Access to the file path denied: %s", fullPath)
+		log.Printf("Access to the file path denied: %s", newPath)
 		http.Error(res, "Access denied", http.StatusForbidden)
 		return
 	}
 
-	fileData, err := os.ReadFile(fullPath)
+	fileData, err := os.ReadFile(newPath)
 	if err != nil {
-		log.Printf("Could not load file: %s, Error: %v", fullPath, err)
+		log.Printf("Could not load file: %s, Error: %v", newPath, err)
 		http.Error(res, "File not found", http.StatusNotFound)
 		return
 	}
 
 	if _, err = res.Write(fileData); err != nil {
-		log.Printf("Could not write file: %s, Error: %v", fullPath, err)
+		log.Printf("Could not write file: %s, Error: %v", newPath, err)
 		http.Error(res, "Failed to serve file", http.StatusInternalServerError)
 	}
 }
