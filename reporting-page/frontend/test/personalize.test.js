@@ -1,10 +1,12 @@
 import 'jsdom-global/register.js';
-import {
-  handleFaviconChange,
-  handlePictureChange,
-  handleTitleChange} from '../src/js/personalize.js';
+// import {
+//   handleFaviconChange,
+//   handlePictureChange,
+//   handleTitleChange} from '../src/js/personalize.js';
 import {JSDOM} from 'jsdom';
 import test from 'unit.js';
+import {jest} from '@jest/globals'
+// import { closeNavigation } from '../src/js/navigation-menu.js';
 
 global.TESTING = true;
 
@@ -78,54 +80,62 @@ const localStorageMock = (() => {
 })();
 global.localStorage = localStorageMock;
 
+jest.unstable_mockModule('../wailsjs/go/main/Tray.js', () => ({
+  LogError: jest.fn()
+}))
 
 // Test cases
 describe('handleFaviconSelect', () => {
-  it('should change the favicon when a valid .ico file is selected', () => {
+
+  it('should change the favicon when a valid .ico file is selected', async () => {
     // Arrange
     const head = document.querySelector('head');
+    const personalize = await import('../src/js/personalize.js');
 
     // Act
     FileReader = fileReaderIco;
     const blob = new Blob(['dummy'], {type: 'image/x-icon'});
-    handleFaviconChange({target: {files: blob}});
+    personalize.handleFaviconChange({target: {files: blob}});
 
     // Assert
     const newFavicon = head.querySelector('link[rel="icon"]');
     test.value(newFavicon.href).isEqualTo('data:image/x-icon');
   });
 
-  it('should change the favicon when a valid .png file is selected', () => {
+  it('should change the favicon when a valid .png file is selected', async () => {
     // Arrange
+    const personalize = await import('../src/js/personalize.js');
     const head = document.querySelector('head');
 
     // Act
     FileReader = fileReaderPng;
     const blob = new Blob(['dummy'], {type: 'image/png'});
-    handleFaviconChange({target: {files: blob}});
+    personalize.handleFaviconChange({target: {files: blob}});
 
     // Assert
     const newFavicon = head.querySelector('link[rel="icon"]');
     test.value(newFavicon.href).isEqualTo('data:image/png');
   });
-  it('saves valid .ico favicon in localStorage', () => {
+  it('saves valid .ico favicon in localStorage', async () => {
     // Arrange
+    const personalize = await import('../src/js/personalize.js');
     // Act
     FileReader = fileReaderIco;
     const blob = new Blob(['dummy'], {type: 'image/x-icon'});
-    handleFaviconChange({target: {files: blob}});
+    personalize.handleFaviconChange({target: {files: blob}});
 
     // Assert
     const favicon = localStorageMock.getItem('favicon');
     const expectedValue = 'data:image/x-icon';
     test.value(favicon).isEqualTo(expectedValue);
   });
-  it('saves valid .png favicon in localStorage', () => {
+  it('saves valid .png favicon in localStorage', async () => {
     // Arrange
+    const personalize = await import('../src/js/personalize.js');
     // Act
     FileReader = fileReaderPng;
     const blob = new Blob(['dummy'], {type: 'image/png'});
-    handleFaviconChange({target: {files: blob}});
+    personalize.handleFaviconChange({target: {files: blob}});
 
     // Assert
     test.value(localStorageMock.getItem('favicon')).isEqualTo('data:image/png');
@@ -133,68 +143,77 @@ describe('handleFaviconSelect', () => {
 });
 
 describe('handlePictureChange', () => {
-  it('changes navigation picture with valid .png file', () => {
+  it('changes navigation picture with valid .png file', async () => {
     // Arrange
     const logo = document.getElementById('logo');
+    const personalize = await import('../src/js/personalize.js');
 
     // Act
     FileReader = fileReaderPng;
     const blob = new Blob(['dummy'], {type: 'image/png'});
-    handlePictureChange({target: {files: blob}});
+    personalize.handlePictureChange({target: {files: blob}});
 
     // Assert
     test.value(logo.src).isEqualTo('data:image/png');
   });
-  it('changes navigation picture with valid .jpg file', () => {
+  it('changes navigation picture with valid .jpg file', async () => {
     // Arrange
     const logo = document.getElementById('logo');
+    const personalize = await import('../src/js/personalize.js');
 
     // Act
     FileReader = fileReaderJpg;
     const blob = new Blob(['dummy'], {type: 'image/jpg'});
-    handlePictureChange({target: {files: blob}});
+    personalize.handlePictureChange({target: {files: blob}});
 
     // Assert
     test.value(logo.src).isEqualTo('data:image/jpg');
   });
-  it('changes navigation picture with valid .jpeg file', () => {
+  it('changes navigation picture with valid .jpeg file', async () => {
     // Arrange
     const logo = document.getElementById('logo');
+    const personalize = await import('../src/js/personalize.js');
 
     // Act
     FileReader = fileReaderJpeg;
     const blob = new Blob(['dummy'], {type: 'image/jpeg'});
-    handlePictureChange({target: {files: blob}});
+    personalize.handlePictureChange({target: {files: blob}});
 
     // Assert
     test.value(logo.src).isEqualTo('data:image/jpeg');
   });
-  it('saves valid .png file in localStorage', () => {
+  it('saves valid .png file in localStorage', async () => {
     // Arrange
+    const personalize = await import('../src/js/personalize.js');
+
     // act
     FileReader = fileReaderPng;
     const blob = new Blob(['dummy'], {type: 'image/png'});
-    handlePictureChange({target: {files: blob}});
+    personalize.handlePictureChange({target: {files: blob}});
 
     // Assert
     test.value(localStorageMock.getItem('picture')).isEqualTo('data:image/png');
   });
-  it('saves valid .jpg file in localStorage', () => {
+  it('saves valid .jpg file in localStorage', async () => {
     // Arrange
+    const personalize = await import('../src/js/personalize.js');
+
     // act
     FileReader = fileReaderJpg;
 
     const blob = new Blob(['dummy'], {type: 'image/jpg'});
-    handlePictureChange({target: {files: blob}});
+    personalize.handlePictureChange({target: {files: blob}});
     // Assert
     test.value(localStorageMock.getItem('picture')).isEqualTo('data:image/jpg');
   });
-  it('saves .jpeg file in localStorage', () => {
+  it('saves .jpeg file in localStorage', async () => {
     // Arrange
+    const personalize = await import('../src/js/personalize.js');
+
     // act
     FileReader = fileReaderJpeg;
     const blob = new Blob(['dummy'], {type: 'image/jpeg'});
-    handlePictureChange({target: {files: blob}});
+    personalize.handlePictureChange({target: {files: blob}});
 
     // Assert
     const localStoragePicture = localStorageMock.getItem('picture');
@@ -204,24 +223,26 @@ describe('handlePictureChange', () => {
 });
 
 describe('handleTitleChange', () => {
-  it('should change the title of the page', () => {
+  it('should change the title of the page', async () => {
     // Arrange
     const newTitleInput = document.getElementById('newTitle');
     const titleElement = document.getElementById('title');
+    const personalize = await import('../src/js/personalize.js');
 
     // Act
-    handleTitleChange();
+    personalize.handleTitleChange();
 
     // Assert
     test.value(titleElement.textContent).isEqualTo(newTitleInput.value);
   });
 
-  it('should save the new title to localStorage', () => {
+  it('should save the new title to localStorage', async () => {
     // Arrange
     const newTitleInput = document.getElementById('newTitle');
+    const personalize = await import('../src/js/personalize.js');
 
     // Act
-    handleTitleChange();
+    personalize.handleTitleChange();
 
     // Assert
     const localStorageTitle = localStorageMock.getItem('title');

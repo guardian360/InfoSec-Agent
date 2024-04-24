@@ -1,5 +1,5 @@
 import {closeNavigation} from './navigation-menu.js';
-import {loadPersonalizeNavigation} from './navigation-menu.js';
+// import {loadPersonalizeNavigation} from './navigation-menu.js';
 // import logoPhoto from '../assets/images/logoTeamA-transformed.png';
 
 /** Load the content of the Personalize page */
@@ -110,7 +110,7 @@ export function openPersonalizePage() {
   themes.forEach((themeOption) => {
     themeOption.addEventListener('click', () => {
       localStorage.setItem('theme', themeOption.id);
-      loadPersonalizeNavigation();
+      // loadPersonalizeNavigation();
     });
   });
 

@@ -1,7 +1,8 @@
 import 'jsdom-global/register.js';
 import test from 'unit.js';
 import {JSDOM} from 'jsdom';
-import {adjustWithRiskCounters, setMaxInterval} from '../src/js/security-dashboard.js';
+import {jest} from '@jest/globals'
+// import {adjustWithRiskCounters, setMaxInterval} from '../src/js/security-dashboard.js';
 
 global.TESTING = true;
 
@@ -136,12 +137,27 @@ const dom = new JSDOM(`
 `, {
   url: 'http://localhost',
 });
-// global.document = dom.window.document
-// global.window = dom.window
+global.document = dom.window.document
+global.window = dom.window
+
+// jest.unstable_mockModule('../wailsjs/runtime/runtime.js', () => ({
+//   WindowShow: jest.fn(),
+//   WindowMaximise: jest.fn(),
+//   LogPrint: jest.fn()
+// }))
+
+jest.unstable_mockModule('../src/js/database.js', () => ({
+  scanTest: jest.fn()
+}))
+
+jest.unstable_mockModule('../wailsjs/go/main/Tray.js', () => ({
+  LogError: jest.fn()
+}))
 
 // test cases
 describe('Security dashboard', function() {
-  it('adjustWithRiskCounters should show data from risk counters', function() {
+  it('adjustWithRiskCounters should show data from risk counters', async function() {
+    // arrange
     const mockRiskCounters = {
       lastHighRisk: 2,
       lastMediumRisk: 3,
@@ -150,8 +166,10 @@ describe('Security dashboard', function() {
       count: 5,
     };
 
+    const dashboard = await import('../src/js/security-dashboard.js');
+
     // act
-    adjustWithRiskCounters(mockRiskCounters);
+    dashboard.adjustWithRiskCounters(mockRiskCounters, global.document);
 
     // assert
     test.value(document.getElementById('high-risk-counter').innerHTML).isEqualTo(mockRiskCounters.lastHighRisk);
@@ -159,7 +177,7 @@ describe('Security dashboard', function() {
     test.value(document.getElementById('low-risk-counter').innerHTML).isEqualTo(mockRiskCounters.lastLowRisk);
     test.value(document.getElementById('no-risk-counter').innerHTML).isEqualTo(mockRiskCounters.lastnoRisk);
   });
-  it('Should display the right security status', function() {
+  it('Should display the right security status', async function() {
     // arrange
     const expectedColors = ['rgb(255, 255, 255)', 'rgb(255, 255, 255)', 'rgb(0, 0, 0)', 'rgb(0, 0, 0)'];
     // const expectedBackgroundColors = ['rgb(0, 255, 255)', 'rgb(0, 0, 255)', 'rgb(255, 0, 0)', 'rgb(255, 255, 0)'];
@@ -176,9 +194,12 @@ describe('Security dashboard', function() {
       lastLowRisk: 10,
       lastnoRisk: 10,
     };
+
+    const dashboard = await import('../src/js/security-dashboard.js');
+
     expectedColors.forEach((element, index) => {
       // act
-      adjustWithRiskCounters(mockRiskCounters, dom.window.document);
+      dashboard.adjustWithRiskCounters(mockRiskCounters, dom.window.document);
 
       // assert
       test.value(dom.window.document.getElementById('high-risk-counter').innerHTML)
@@ -191,7 +212,7 @@ describe('Security dashboard', function() {
         .isEqualTo(mockRiskCounters.lastnoRisk);
     });
   });
-  it('adjustWithRiskCounters should display the right security status', function() {
+  it('adjustWithRiskCounters should display the right security status', async function() {
     // arrange
     const expectedColors = ['rgb(255, 255, 255)', 'rgb(255, 255, 255)', 'rgb(0, 0, 0)', 'rgb(0, 0, 0)'];
     const expectedBackgroundColors = ['rgb(0, 255, 255)', 'rgb(0, 0, 255)', 'rgb(255, 0, 0)', 'rgb(255, 255, 0)'];
@@ -207,12 +228,15 @@ describe('Security dashboard', function() {
       lastLowRisk: 10,
       lastnoRisk: 10,
     };
+
+    const dashboard = await import('../src/js/security-dashboard.js');
+
     expectedColors.forEach((element, index) => {
       // act
       if (index == 1) mockRiskCounters.lastHighRisk = 0;
       if (index == 2) mockRiskCounters.lastMediumRisk = 0;
       if (index == 3) mockRiskCounters.lastLowRisk = 0;
-      adjustWithRiskCounters(mockRiskCounters, dom.window.document);
+      dashboard.adjustWithRiskCounters(mockRiskCounters, dom.window.document);
       // assert
       test.value(dom.window.document.getElementsByClassName('status-descriptor')[0].innerHTML)
         .isEqualTo(expectedText[index]);
@@ -222,14 +246,16 @@ describe('Security dashboard', function() {
         .isEqualTo(expectedColors[index]);
     });
   });
-  it('setMaxInterval should set the max value of the graph interval to the maximum amount of data', function() {
+  it('setMaxInterval should set the max value of the graph interval to the maximum amount of data', async function() {
     // arrange
     const mockRiskCounters = {
       count: 5,
     };
 
+    const dashboard = await import('../src/js/security-dashboard.js');
+
     // act
-    setMaxInterval(mockRiskCounters, dom.window.document);
+    dashboard.setMaxInterval(mockRiskCounters, dom.window.document);
 
     // assert
     test.value(dom.window.document.getElementById('graph-interval').max).isEqualTo(mockRiskCounters.count);
