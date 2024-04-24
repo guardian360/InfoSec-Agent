@@ -32,20 +32,20 @@ const chrome = "Chrome"
 const edgePath = "Microsoft/Edge"
 const chromePath = "Google/Chrome"
 
-// ExtensionsChromium checks for the presence of an adblocker extension in a specified Chromium-based browser.
+// ExtensionsChromium checks for the presence of an ad blocker extension in a specified Chromium-based browser.
 //
 // Parameters:
 //   - browser: A string representing the name of the Chromium-based browser to check.
 //     Currently, this function supports "Chrome" and "Edge".
 //
 // Returns:
-//   - A checks.Check object representing the result of the check. If an adblocker is installed,
-//     the result will be "Adblocker installed". If no adblocker is found, the result will be
-//     "No adblocker installed". If an error occurs during the check, the function will return
+//   - A checks.Check object representing the result of the check. If an ad blocker is installed,
+//     the result will be "Ad blocker installed". If no ad blocker is found, the result will be
+//     "No ad blocker installed". If an error occurs during the check, the function will return
 //     a checks.CheckError with the error message.
 //
 // This function works by reading the extensions directory of the specified browser in the user's home directory,
-// and checking each installed extension against a list of known adblocker names.
+// and checking each installed extension against a list of known ad blocker names.
 // The function uses the extensionNameChromium helper function to fetch the name of each extension from the
 // Chrome Web Store or the Microsoft Edge Addons Store.
 func ExtensionsChromium(browser string) checks.Check {
@@ -106,9 +106,9 @@ func ExtensionsChromium(browser string) checks.Check {
 		}
 	}
 	if adblockerInstalled(extensionNames) {
-		return checks.NewCheckResult(returnID, 0, "Adblocker installed")
+		return checks.NewCheckResult(returnID, 0, "Ad blocker installed")
 	}
-	return checks.NewCheckResult(returnID, 1, "No adblocker installed")
+	return checks.NewCheckResult(returnID, 1, "No ad blocker installed")
 }
 
 // getExtensionNameChromium fetches the name of an extension from the Chrome Web Store or the Microsoft Edge Addons Store.
@@ -122,7 +122,7 @@ func ExtensionsChromium(browser string) checks.Check {
 //   - The name of the extension.
 //   - An error, which will be nil if the operation was successful.
 //
-// This function sends a HTTP request to the store's URL and parses the response to extract the extension name.
+// This function sends an HTTP request to the store's URL and parses the response to extract the extension name.
 // For Edge, the response is in JSON format and requires decoding.
 // If the HTTP request fails or the browser is unknown, the function returns an error.
 func getExtensionNameChromium(extensionID string, url string, browser string) (string, error) {
@@ -169,17 +169,17 @@ func getExtensionNameChromium(extensionID string, url string, browser string) (s
 	return "", errors.New("unknown browser")
 }
 
-// adblockerInstalled determines whether an adblocker extension is installed.
+// adblockerInstalled determines whether an ad blocker extension is installed.
 //
 // Parameters:
 //   - extensionNames: A slice of strings representing the names of the installed extensions.
 //
 // Returns:
-//   - A boolean value indicating whether an adblocker is installed. Returns true if an adblocker is found among the installed extensions, and false otherwise.
+//   - A boolean value indicating whether an ad blocker is installed. Returns true if an ad blocker is found among the installed extensions, and false otherwise.
 //
-// This function works by iterating over the provided list of extension names and checking each one against a predefined list of known adblocker names. If a match is found, the function returns true. If no match is found after checking all extension names, the function returns false.
+// This function works by iterating over the provided list of extension names and checking each one against a predefined list of known ad blocker names. If a match is found, the function returns true. If no match is found after checking all extension names, the function returns false.
 func adblockerInstalled(extensionNames []string) bool {
-	// List of adblocker (related) terms to check for in the name of the extension/addon
+	// List of ad blocker (related) terms to check for in the name of the extension/addon
 	adblockerNames := []string{
 		"adblock",
 		"adblox",

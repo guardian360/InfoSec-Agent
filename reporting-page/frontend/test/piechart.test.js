@@ -8,7 +8,7 @@ global.TESTING = true;
 
 // Mock page
 const dom = new JSDOM(`
-  <div class="data-column piechart">
+  <div class="data-column pie-chart">
     <canvas id="pieChart"></canvas>
   </div>
 `, {
@@ -74,7 +74,7 @@ describe('Risk level distribution piechart', function() {
 
     /** asynchronous function to call p.getData() */
     async function getData() {
-      return await p.getData(mockGetLocalizationString);
+      return p.getData(mockGetLocalizationString);
     }
 
     // assert
@@ -104,7 +104,7 @@ describe('Risk level distribution piechart', function() {
 
       /** asynchronous function to call p.getOptions() */
       async function getOptions() {
-        return await p.getOptions(title, mockGetLocalizationString);
+        return p.getOptions(title, mockGetLocalizationString);
       }
 
       // assert

@@ -73,7 +73,7 @@ type MenuItem struct {
 // OnReady orchestrates the runtime behavior of the system tray application.
 //
 // This function sets up the system tray with various menu items such as 'Reporting Page', 'Change Scan Interval', 'Scan Now', 'Change Language', and 'Quit'. It also initializes a ticker for scheduled security scans and a signal listener for system termination signals.
-// It then enters a loop where it listens for various events such as clicks on the menu items, system termination signals, and the elapse of the scan interval. Depending on the event, it performs actions such as opening the reporting page, changing the scan interval, initiating an immediate scan, changing the application language, refreshing the menu, or quitting the application.
+// It then enters a loop where it listens for various events such as clicks on the menu items, system termination signals, and elapse of the scan interval. Depending on the event, it performs actions such as opening the reporting page, changing the scan interval, initiating an immediate scan, changing the application language, refreshing the menu, or quitting the application.
 //
 // Parameters: None.
 //
@@ -219,7 +219,7 @@ func OpenReportingPage(path string) error {
 	}
 
 	// Set up the reporting-page executable
-	runCmd := exec.Command("build/bin/Infosec-Agent-Reporting-Page")
+	runCmd := exec.Command("build/bin/InfoSec-Agent-Reporting-Page")
 	runCmd.Stdout = os.Stdout
 	runCmd.Stderr = os.Stderr
 

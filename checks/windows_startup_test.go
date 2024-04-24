@@ -37,13 +37,13 @@ func TestStartup(t *testing.T) {
 		name: "Startup programs found",
 		key1: &mocking.MockRegistryKey{SubKeys: []mocking.MockRegistryKey{{
 			KeyName:      "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\StartupApproved\\Run",
-			BinaryValues: map[string][]byte{"MockProgram": []byte{1, 2, 3, 4, 0, 0, 0}}, Err: nil}}},
+			BinaryValues: map[string][]byte{"MockProgram": {1, 2, 3, 4, 0, 0, 0}}, Err: nil}}},
 		key2: &mocking.MockRegistryKey{SubKeys: []mocking.MockRegistryKey{{
 			KeyName:      "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\StartupApproved\\Run",
-			BinaryValues: map[string][]byte{"MockProgram2": []byte{0, 0, 0, 0, 1, 0, 0}}, Err: nil}}},
+			BinaryValues: map[string][]byte{"MockProgram2": {0, 0, 0, 0, 1, 0, 0}}, Err: nil}}},
 		key3: &mocking.MockRegistryKey{SubKeys: []mocking.MockRegistryKey{{
 			KeyName:      "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\StartupApproved\\Run32",
-			BinaryValues: map[string][]byte{"MockProgram3": []byte{0, 0, 0, 0, 0, 1, 0}}, Err: nil}}},
+			BinaryValues: map[string][]byte{"MockProgram3": {0, 0, 0, 0, 0, 1, 0}}, Err: nil}}},
 		want: checks.NewCheckResult(checks.StartupID, 1, "MockProgram"),
 	}} /*,{
 		name: "Error finding startup programs",

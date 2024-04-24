@@ -4,10 +4,9 @@ import (
 	"strings"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
-	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 )
 
-const nonpackaged = "NonPackaged"
+const nonPackaged = "NonPackaged"
 
 // Permission is a function that checks if a user has granted a specific permission to an application.
 //
@@ -36,7 +35,7 @@ func Permission(permissionID int, permission string, registryKey mocking.Registr
 	// Get the names of all sub-keys (which represent applications)
 	applicationNames, err := key.ReadSubKeyNames(-1)
 	if err != nil {
-		return NewCheckErrorf(permissionID, "error reading subkey names", err)
+		return NewCheckErrorf(permissionID, "error reading sub-key names", err)
 	}
 
 	var results []string
@@ -48,7 +47,7 @@ func Permission(permissionID int, permission string, registryKey mocking.Registr
 		if err != nil {
 			return NewCheckErrorf(permissionID, "error opening registry key", err)
 		}
-		if appName == nonpackaged {
+		if appName == nonPackaged {
 			val, _, err = key.GetStringValue("Value")
 		} else {
 			val, _, err = appKey.GetStringValue("Value")
@@ -60,10 +59,10 @@ func Permission(permissionID int, permission string, registryKey mocking.Registr
 		if val != "Allow" {
 			continue
 		}
-		if appName == nonpackaged {
+		if appName == nonPackaged {
 			nonPackagedApplicationNames, err = nonPackagedAppNames(appKey)
 			if err != nil {
-				return NewCheckErrorf(permissionID, "error reading subkey names", err)
+				return NewCheckErrorf(permissionID, "error reading sub-key names", err)
 			}
 			results = append(results, nonPackagedApplicationNames...)
 		} else {
@@ -92,8 +91,8 @@ func Permission(permissionID int, permission string, registryKey mocking.Registr
 //
 // This function is used to handle a special case where the application name is "NonPackaged". In such a case, it returns the string "NonPackaged" as the registry key name. For all other application names, it returns the application name itself as the registry key name. This function is used in the context of checking permissions for applications.
 func appKeyName(appName string) string {
-	if appName == nonpackaged {
-		return nonpackaged
+	if appName == nonPackaged {
+		return nonPackaged
 	}
 	return appName
 }
@@ -119,4 +118,25 @@ func nonPackagedAppNames(appKey mocking.RegistryKey) ([]string, error) {
 		results = append(results, exeString[len(exeString)-1])
 	}
 	return results, nil
+}
+
+// RemoveDuplicateStr is a utility function that eliminates duplicate string values from a given slice.
+//
+// Parameters:
+//   - strSlice []string: The input slice from which duplicate string values need to be removed.
+//
+// Returns:
+//   - []string: A new slice that contains the unique string values from the input slice. The order of the elements is preserved based on their first occurrence in the input slice.
+func RemoveDuplicateStr(strSlice []string) []string {
+	// Keep a map of found values, where true means the value has (already) been found
+	allKeys := make(map[string]bool)
+	var list []string
+	for _, item := range strSlice {
+		if _, value := allKeys[item]; !value {
+			// If the value is found for the first time, append it to the list of results
+			allKeys[item] = true
+			list = append(list, item)
+		}
+	}
+	return list
 }

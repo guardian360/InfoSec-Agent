@@ -1,0 +1,4 @@
+2024/04/22 12:54:55 INFO: Starting InfoSec Agent
+2024/04/22 12:54:55 ERROR: Error reading user settings file: open usersettings/usersettings.json: The system cannot find the file specified.
+2024/04/22 12:54:55 ERROR: Error reading user settings file: open usersettings/usersettings.json: The system cannot find the file specified.
+2024/04/22 12:55:41 INFO: Quitting the application

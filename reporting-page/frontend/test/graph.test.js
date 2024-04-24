@@ -145,7 +145,7 @@ describe('Risk graph', function() {
 
     /** asynchronous function to call g.getData() */
     async function getData() {
-      return await g.getData(mockGetLocalizationString);
+      return g.getData(mockGetLocalizationString);
     }
 
     // assert
