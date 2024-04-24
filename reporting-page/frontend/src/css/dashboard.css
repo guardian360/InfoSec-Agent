@@ -63,6 +63,9 @@
   background-color: var(--low-risk-color);
 }
 
+.info-risk {
+  background-color: var(--info-color);
+}
 .no-risk {
   background-color: var(--no-risk-color);
   border-radius: 0 0 10px 10px;

@@ -39,6 +39,10 @@ function openPrivacyDashboardPage() {
           <div><p class="low-risk-issues">Low risk issues</p></div>
           <div><p id="low-risk-counter">0</p></div>
         </div>
+        <div class="risk-counter info-risk">
+          <div><p class="info-issues">Informative</p></div>
+          <div><p id="info-risk-counter">0</p></div>
+        </div>
         <div class="risk-counter no-risk">
           <div><p class="safe-issues">Safe issues</p></div>
           <div><p id="no-risk-counter">0</p></div>
@@ -154,6 +158,7 @@ function openPrivacyDashboardPage() {
     'high-risk-issues',
     'medium-risk-issues',
     'low-risk-issues',
+    'info-risk-issues',
     'safe-issues',
     'privacy-stat',
     'suggested-issue',
@@ -175,6 +180,7 @@ function openPrivacyDashboardPage() {
     'Dashboard.HighRisk',
     'Dashboard.MediumRisk',
     'Dashboard.LowRisk',
+    'Dashboard.InfoRisk',
     'Dashboard.Safe',
     'Dashboard.PrivacyStatus',
     'Dashboard.SuggestedIssue',
