@@ -99,7 +99,6 @@ export function openHomePage() {
   }
 
   document.getElementsByClassName('scan-now')[0].addEventListener('click', () => scanTest());
-  document.getElementById('home-button').addEventListener('click', () => openHomePage());
   document.getElementById('logo').innerHTML = localStorage.getItem('picture');
 }
 
