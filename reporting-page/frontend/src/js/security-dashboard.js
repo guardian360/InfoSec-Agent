@@ -39,6 +39,10 @@ function openSecurityDashboardPage() {
           <div><p class="low-risk-issues">Low risk issues</p></div>
           <div><p id="low-risk-counter">0</p></div>
         </div>
+        <div class="risk-counter info-risk">
+          <div><p class="info-risk-issues">Informative</p></div>
+          <div><p id="info-risk-counter">0</p></div>
+        </div>
         <div class="risk-counter no-risk">
           <div><p class="safe-issues">Safe issues</p></div>
           <div><p id="no-risk-counter">0</p></div>
@@ -74,6 +78,9 @@ function openSecurityDashboardPage() {
               </p>
               <p><input type="checkbox" checked="true" value="true" id="select-low-risk">
                 <label for="select-low-risk" class="low-risk-issues"> Low risks</label>
+              </p>
+              <p><input type="checkbox" checked="true" value="true" id="select-info-risk">
+                <label for="select-info-risk" class="info-risk-issues"> Informative</label>
               </p>
               <p><input type="checkbox" checked="true" value="true" id="select-no-risk">
                 <label for="select-no-risk" class="safe-issues"> Safe</label>
@@ -154,6 +161,7 @@ function openSecurityDashboardPage() {
     'high-risk-issues',
     'medium-risk-issues',
     'low-risk-issues',
+    'info-risk-issues',
     'safe-issues',
     'security-stat',
     'suggested-issue',
@@ -175,6 +183,7 @@ function openSecurityDashboardPage() {
     'Dashboard.HighRisk',
     'Dashboard.MediumRisk',
     'Dashboard.LowRisk',
+    'Dashboard.InfoRisk',
     'Dashboard.Safe',
     'Dashboard.SecurityStatus',
     'Dashboard.SuggestedIssue',
@@ -227,7 +236,8 @@ export function adjustWithRiskCounters(rc, doc) {
   doc.getElementById('high-risk-counter').innerHTML = rc.lastHighRisk;
   doc.getElementById('medium-risk-counter').innerHTML = rc.lastMediumRisk;
   doc.getElementById('low-risk-counter').innerHTML = rc.lastLowRisk;
-  doc.getElementById('no-risk-counter').innerHTML = rc.lastnoRisk;
+  doc.getElementById('info-risk-counter').innerHTML = rc.lastInfoRisk;
+  doc.getElementById('no-risk-counter').innerHTML = rc.lastNoRisk;
 
   const securityStatus = doc.getElementsByClassName('status-descriptor')[0];
   if (rc.lastHighRisk > 1) {
@@ -253,6 +263,14 @@ export function adjustWithRiskCounters(rc, doc) {
       securityStatus.innerHTML = 'Low concern';
     }
     securityStatus.style.backgroundColor = rc.lowRiskColor;
+    securityStatus.style.color = 'rgb(0, 0, 0)';
+  } else if (rc.lastInfoRisk > 1) {
+    try {
+      getLocalization('Dashboard.InfoConcern', 'status-descriptor');
+    } catch (error) {
+      securityStatus.innerHTML = 'Informative';
+    }
+    securityStatus.style.backgroundColor = rc.infoColor;
     securityStatus.style.color = 'rgb(0, 0, 0)';
   } else {
     try {
@@ -284,6 +302,7 @@ export function addGraphFunctions(g) {
   document.getElementById('select-high-risk').addEventListener('change', () => g.toggleRisks('high'));
   document.getElementById('select-medium-risk').addEventListener('change', () => g.toggleRisks('medium'));
   document.getElementById('select-low-risk').addEventListener('change', () => g.toggleRisks('low'));
+  document.getElementById('select-info-risk').addEventListener('change', () => g.toggleRisks('info'));
   document.getElementById('select-no-risk').addEventListener('change', () => g.toggleRisks('no'));
 }
 

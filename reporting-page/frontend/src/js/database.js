@@ -72,17 +72,19 @@ async function setSeverities(input, type) {
       input = input.filter((item) => data[item.jsonkey] !== undefined);
       input = input.filter((item) => data[item.jsonkey].Type === type);
     }
+    const info = countOccurrences(input, 4);
     const high = countOccurrences(input, 3);
     const medium = countOccurrences(input, 2);
     const low = countOccurrences(input, 1);
     const acceptable = countOccurrences(input, 0);
     if (sessionStorage.getItem(type + 'RiskCounters') === null ||
         sessionStorage.getItem(type + 'RiskCounters') === undefined) {
-      sessionStorage.setItem(type + 'RiskCounters', JSON.stringify(new rc.RiskCounters(high, medium, low, acceptable)));
+      sessionStorage.setItem(type + 'RiskCounters',
+        JSON.stringify(new rc.RiskCounters(high, medium, low, info, acceptable)));
       openHomePage();
     } else {
       let riskCounter = JSON.parse(sessionStorage.getItem(type + 'RiskCounters'));
-      riskCounter = updateRiskCounter(riskCounter, high, medium, low, acceptable);
+      riskCounter = updateRiskCounter(riskCounter, high, medium, low, info, acceptable);
       sessionStorage.setItem(type + 'RiskCounters', JSON.stringify(riskCounter));
     }
   } catch (err) {
