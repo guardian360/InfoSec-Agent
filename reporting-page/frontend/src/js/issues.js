@@ -48,6 +48,9 @@ export function openIssuesPage() {
         <p><input type="checkbox" checked="true" value="true" id="select-low-risk-table">
           <label for="select-low-risk" class="low-risk-issues"> Low risks</label>
         </p>
+        <p><input type="checkbox" checked="true" value="true" id="select-info-risk-table">
+          <label for="select-info-risk" class="info-risk-issues"> Informative</label>
+        </p>
       </div>
     </div>
     <div class="table-container">
@@ -94,6 +97,8 @@ export function openIssuesPage() {
   document.getElementById('select-high-risk-table').addEventListener('change', changeTable);
   document.getElementById('select-medium-risk-table').addEventListener('change', changeTable);
   document.getElementById('select-low-risk-table').addEventListener('change', changeTable);
+  document.getElementById('select-info-risk-table').addEventListener('change', changeTable);
+
   document.onload = retrieveTheme();
 }
 /**
@@ -111,6 +116,8 @@ function toRiskLevel(level) {
     return 'Medium';
   case 3:
     return 'High';
+  case 4:
+    return 'Info';
   }
 }
 
@@ -191,7 +198,7 @@ export function sortTable(tbody, column) {
       }
     } else {
       // Custom sorting for the last column
-      const order = {'high': 1, 'medium': 2, 'low': 3, 'acceptable': 4};
+      const order = {'high': 1, 'medium': 2, 'low': 3, 'acceptable': 4, 'Info': 5};
       const textA = a.cells[column].textContent.toLowerCase();
       const textB = b.cells[column].textContent.toLowerCase();
       if (direction === 'ascending') {
@@ -227,6 +234,7 @@ function changeTable() {
   const selectedHigh = document.getElementById('select-high-risk-table').checked;
   const selectedMedium = document.getElementById('select-medium-risk-table').checked;
   const selectedLow = document.getElementById('select-low-risk-table').checked;
+  const selectedInfo = document.getElementById('select-info-risk-table').checked;
 
   const issues = JSON.parse(sessionStorage.getItem('DataBaseData'));
 
@@ -237,7 +245,8 @@ function changeTable() {
     return (
       (selectedHigh && issue.severity === 3) ||
       (selectedMedium && issue.severity === 2) ||
-      (selectedLow && issue.severity === 1)
+      (selectedLow && issue.severity === 1) ||
+      (selectedInfo && issue.severity === 4)
     );
   });
 

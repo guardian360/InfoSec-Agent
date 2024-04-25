@@ -8,6 +8,7 @@ export class Graph {
   graphShowMediumRisks = true;
   graphShowLowRisks = true;
   graphShowNoRisks = true;
+  graphShowInfoRisks = true;
 
   graphShowAmount = document.getElementById('graph-interval').value;
 
@@ -60,6 +61,8 @@ export class Graph {
       break;
     case 'no':
       this.graphShowNoRisks = !this.graphShowNoRisks;
+    case 'info':
+      this.graphShowInfoRisks = !this.graphShowInfoRisks;
       break;
     default:
       break;
@@ -111,12 +114,19 @@ export class Graph {
       backgroundColor: this.rc.highRiskColor,
     };
 
+    const infoRiskData = {
+      label: await getString('Dashboard.InfoRisk'),
+      data: this.rc.allInfoRisks.slice(Math.max(this.rc.allInfoRisks.length - this.graphShowAmount, 0)),
+      backgroundColor: this.rc.infoColor,
+    };
+
     const datasets = [];
 
     if (this.graphShowNoRisks) datasets.push(noRiskData);
     if (this.graphShowLowRisks) datasets.push(lowRiskData);
     if (this.graphShowMediumRisks) datasets.push(mediumRiskData);
     if (this.graphShowHighRisks) datasets.push(highRiskData);
+    if (this.graphShowInfoRisks) datasets.push(infoRiskData);
 
     return {
       labels: labels,
