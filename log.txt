@@ -1,4 +1,499 @@
-2024/04/22 12:54:55 INFO: Starting InfoSec Agent
-2024/04/22 12:54:55 ERROR: Error reading user settings file: open usersettings/usersettings.json: The system cannot find the file specified.
-2024/04/22 12:54:55 ERROR: Error reading user settings file: open usersettings/usersettings.json: The system cannot find the file specified.
-2024/04/22 12:55:41 INFO: Quitting the application
+2024/04/26 12:42:10 INFO: Starting InfoSec Agent
+2024/04/26 12:42:14 INFO: Scanning now. Scan:1
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: Access is denied.
+2024/04/26 12:42:22 ERROR: Error reading registry value of NodeType The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of nonamereleaseondemand The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of DisableIPSourceRouting The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of EnableICMPRedirect The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of DisableIPSourceRouting The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of NoWebServices The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of NoAutorun The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of NoDriveTypeAutoRun The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of PreXPSP2ShellProtocolBehavior The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of NoConnectedUser The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of DisableCAD The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of InactivityTimeoutSecs The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of FilterAdministratorToken The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of LocalAccountTokenFilterPolicy The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of MSAOptional The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of DisableAutomaticRestartSignOn The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of ProcessCreationIncludeCmdLine_Enabled The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of PUAProtection The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of DisableAntiSpyware The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of fAllowUnsolicited The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of fAllowToGetHelp The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of DisablePasswordSaving The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of fDisableCdm The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of fPromptForPassword The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of fEncryptRPCTraffic The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of SecurityLayer The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of UserAuthentication The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of MinEncryptionLevel The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of DeleteTempDirsOnExit The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of BlockNonAdminUserInstall The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of AllowTelemetry The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of DisableOneSettingsDownloads The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of DoNotShowFeedbackNotifications The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of EnableOneSettingsAuditing The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of LimitDiagnosticLogCollection The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of LimitDumpCollection The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of fMinimizeConnections The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of fBlockNonDomain The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of AutoDisconnect The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of SMBServerNameHardeningLevel The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of NullSessionPipes unexpected key value type
+2024/04/26 12:42:22 ERROR: Error reading registry value of NullSessionShares The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of SMB1 The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of NC_AllowNetBridge_NLA The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of NC_ShowSharedAccessUI The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of NC_StdDomainUserSetLocation The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of \\*\NETLOGON The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of \\*\SYSVOL The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of EnableCdp The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of BlockUserFromShowingAccountDetailsOnSignin The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of DontDisplayNetworkSelectionUI The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of DontEnumerateConnectedUsers The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of EnumerateLocalUsers The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of DisableLockScreenAppNotifications The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of BlockDomainPicturePassword The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of AllowDomainPINLogon The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of NoLocalPasswordResetQuestions The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of  EnableSmartScreen The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of ShellSmartScreenLevel The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of AutoConnectAllowedOEM The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of AllocateDASD The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of ScRemoveOption unexpected key value type
+2024/04/26 12:42:22 ERROR: Error reading registry value of AutoAdminLogon The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of ScreenSaverGracePeriod The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of SCENoApplyLegacyAuditPolicy The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of restrictremotesam The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of UseMachineId The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of LMCompatibilityLevel The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of AllowNullSessionFallback The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of RelaxMinimumPasswordLengthLimits The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: Access is denied.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: Access is denied.
+2024/04/26 12:42:22 ERROR: Error reading registry value of UseLogonCredential The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of SafeDllSearchMode The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error reading registry value of DisableExceptionChainValidation The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 ERROR: Error opening registry key for CIS Audit list error opening registry key: The system cannot find the file specified.
+2024/04/26 12:42:22 INFO: [
+  {
+    "issue_id": 5,
+    "result_id": 1,
+    "result": [
+      "No password manager found"
+    ]
+  },
+  {
+    "issue_id": 15,
+    "result_id": 0,
+    "result": [
+      "Windows real-time defender is enabled and also the windows periodic scan is enabled"
+    ]
+  },
+  {
+    "issue_id": 16,
+    "result_id": 0,
+    "result": [
+      "Password last changed on 01/05/2023 , your password was changed more than half a year ago so you should change it again"
+    ]
+  },
+  {
+    "issue_id": 17,
+    "result_id": 12,
+    "result": [
+      "Password",
+      "Fingerprint"
+    ]
+  },
+  {
+    "issue_id": 6,
+    "result_id": 0,
+    "result": [
+      "AcerIncorporated.AcerCollectionS",
+      "Microsoft.SkypeApp",
+      "MicrosoftWindows.Client.WebExperience",
+      "MSTeams",
+      "windows.immersivecontrolpanel"
+    ]
+  },
+  {
+    "issue_id": 7,
+    "result_id": 0,
+    "result": [
+      "Microsoft.GamingApp",
+      "Microsoft.MixedReality.Portal",
+      "Microsoft.ScreenSketch",
+      "Microsoft.SkypeApp",
+      "Microsoft.WindowsCamera",
+      "Microsoft.WindowsFeedbackHub",
+      "Microsoft.WindowsSoundRecorder",
+      "Microsoft.XboxGamingOverlay",
+      "MSTeams",
+      "chrome.exe",
+      "obs64.exe",
+      "Discord.exe",
+      "Teams.exe",
+      "javaw.exe",
+      "rundll32.exe",
+      "windows.immersivecontrolpanel"
+    ]
+  },
+  {
+    "issue_id": 8,
+    "result_id": 0,
+    "result": [
+      "Microsoft.GamingApp",
+      "Microsoft.SkypeApp",
+      "Microsoft.Win32WebViewHost",
+      "Microsoft.WindowsCamera",
+      "Microsoft.WindowsFeedbackHub",
+      "MicrosoftWindows.Client.CBS",
+      "MSTeams",
+      "chrome.exe",
+      "Discord.exe",
+      "Teams.exe"
+    ]
+  },
+  {
+    "issue_id": 9,
+    "result_id": 0,
+    "result": [
+      "microsoft.windowscommunicationsapps"
+    ]
+  },
+  {
+    "issue_id": 10,
+    "result_id": 0,
+    "result": [
+      "microsoft.windowscommunicationsapps"
+    ]
+  },
+  {
+    "issue_id": 1,
+    "result_id": 1,
+    "result": [
+      "Sennheiser URBANITE\u0000",
+      "AKG Y50BT\u0000"
+    ]
+  },
+  {
+    "issue_id": 11,
+    "result_id": 0,
+    "result": [
+      "port: 49670, process: mysqld.exe",
+      "port: 49671, process: mysqld.exe",
+      "port: 49672, process: mysqld.exe",
+      "port: 49673, process: mysqld.exe",
+      "port: 63342, process: goland64.exe",
+      "port: 139, process: System",
+      "port: 139, process: System",
+      "port: 53192, process: copilot-agent-win.exe",
+      "port: 53196, process: copilot-agent-win.exe",
+      "port: 53886, process: System Idle Process",
+      "port: 53887, process: System Idle Process",
+      "port: 53914, process: System Idle Process",
+      "port: 65276, process: chrome.exe",
+      "port: 65308, process: Spotify.exe",
+      "port: 65313, process: Spotify.exe",
+      "port: 65340, process: Spotify.exe",
+      "port: 135, process: svchost.exe",
+      "port: 445, process: System",
+      "port: 2869, process: System",
+      "port: 3306, process: mysqld.exe",
+      "port: 7250, process: CastSrv.exe",
+      "port: 33060, process: mysqld.exe",
+      "port: 49664, process: lsass.exe",
+      "port: 49665, process: wininit.exe",
+      "port: 49666, process: svchost.exe",
+      "port: 49667, process: svchost.exe",
+      "port: 49668, process: spoolsv.exe",
+      "port: 49675, process: services.exe",
+      "port: 42050, process: Microsoft.SharePoint.exe",
+      "port: 49669, process: jhi_service.exe",
+      "port: 49235, process: chrome.exe",
+      "port: 49412, process: svchost.exe",
+      "port: 50325, process: SearchHost.exe",
+      "port: 50326, process: SearchHost.exe",
+      "port: 53892, process: System Idle Process",
+      "port: 53893, process: System Idle Process",
+      "port: 53894, process: System Idle Process",
+      "port: 53895, process: System Idle Process",
+      "port: 53896, process: System Idle Process",
+      "port: 53897, process: System Idle Process",
+      "port: 53898, process: System Idle Process",
+      "port: 53899, process: System Idle Process",
+      "port: 53900, process: System Idle Process",
+      "port: 53902, process: System Idle Process",
+      "port: 53903, process: System Idle Process",
+      "port: 53904, process: System Idle Process",
+      "port: 53905, process: System Idle Process",
+      "port: 53906, process: System Idle Process",
+      "port: 53907, process: System Idle Process",
+      "port: 53910, process: System Idle Process",
+      "port: 53911, process: System Idle Process",
+      "port: 53912, process: System Idle Process",
+      "port: 53916, process: System Idle Process",
+      "port: 53917, process: System Idle Process",
+      "port: 53918, process: System Idle Process",
+      "port: 65347, process: Spotify.exe",
+      "port: 1900, process: svchost.exe",
+      "port: 49664, process: svchost.exe",
+      "port: 50206, process: svchost.exe",
+      "port: 67, process: svchost.exe",
+      "port: 68, process: svchost.exe",
+      "port: 137, process: System",
+      "port: 138, process: System",
+      "port: 1900, process: svchost.exe",
+      "port: 50204, process: svchost.exe",
+      "port: 137, process: System",
+      "port: 138, process: System",
+      "port: 1900, process: svchost.exe",
+      "port: 50205, process: svchost.exe",
+      "port: 500, process: svchost.exe",
+      "port: 3702, process: dasHost.exe",
+      "port: 3702, process: dasHost.exe",
+      "port: 4500, process: svchost.exe",
+      "port: 5353, process: Spotify.exe",
+      "port: 5353, process: Spotify.exe",
+      "port: 5353, process: Spotify.exe",
+      "port: 5353, process: Spotify.exe",
+      "port: 5353, process: chrome.exe",
+      "port: 5353, process: Spotify.exe",
+      "port: 5353, process: Spotify.exe",
+      "port: 5353, process: svchost.exe",
+      "port: 5353, process: chrome.exe",
+      "port: 5355, process: svchost.exe",
+      "port: 52531, process: chrome.exe",
+      "port: 55476, process: chrome.exe",
+      "port: 59527, process: dasHost.exe",
+      "port: 60837, process: chrome.exe",
+      "port: 64601, process: chrome.exe",
+      "port: 1900, process: svchost.exe",
+      "port: 50203, process: svchost.exe",
+      "port: 1900, process: svchost.exe",
+      "port: 50202, process: svchost.exe",
+      "port: 1900, process: svchost.exe",
+      "port: 50201, process: svchost.exe"
+    ]
+  },
+  {
+    "issue_id": 18,
+    "result_id": 0,
+    "result": [
+      "Microsoft Windows [Version 10.0.22631.3527]",
+      "You are currently up to date."
+    ]
+  },
+  {
+    "issue_id": 19,
+    "result_id": 1,
+    "result": [
+      "Secure boot is enabled"
+    ]
+  },
+  {
+    "issue_id": 13,
+    "result_id": 2,
+    "result": [
+      "SMB1: not enabled",
+      "SMB2: enabled"
+    ]
+  },
+  {
+    "issue_id": 20,
+    "result_id": 1,
+    "result": [
+      "Docker Desktop",
+      "SecurityHealth",
+      "RtkAudUService",
+      "SunJavaUpdateSched"
+    ]
+  },
+  {
+    "issue_id": 3,
+    "result_id": 2,
+    "result": [
+      "Guest account is not active"
+    ]
+  },
+  {
+    "issue_id": 14,
+    "result_id": 2,
+    "result": [
+      "UAC is turned on for apps making changes to your computer."
+    ]
+  },
+  {
+    "issue_id": 12,
+    "result_id": 1,
+    "result": [
+      "Remote Desktop is disabled"
+    ]
+  },
+  {
+    "issue_id": 2,
+    "result_id": 0,
+    "result": [
+      "HID-compliant mouse",
+      "HD WebCam"
+    ]
+  },
+  {
+    "issue_id": 4,
+    "result_id": 0,
+    "error": "error opening registry key: Access is denied."
+  },
+  {
+    "issue_id": 23,
+    "result_id": 1,
+    "result": [
+      "No phishing domains found in the last week"
+    ]
+  },
+  {
+    "issue_id": 21,
+    "result_id": 0,
+    "result": [
+      "Ad blocker installed"
+    ]
+  },
+  {
+    "issue_id": 25,
+    "result_id": 0,
+    "result": [
+      "google.com"
+    ]
+  },
+  {
+    "issue_id": 28,
+    "result_id": 0,
+    "result": [
+      "FrankerFaceZ,extension,,true",
+      "BetterTTV,extension,NightDev, LLC,true",
+      "Form Autofill,extension,,true",
+      "Firefox Screenshots,extension,Mozilla \u003cscreenshots-feedback@mozilla.com\u003e,true",
+      "WebCompat Reporter,extension,Thomas Wisniewski \u003ctwisniewski@mozilla.com\u003e,false",
+      "Web Compatibility Interventions,extension,,true",
+      "Picture-In-Picture,extension,,true",
+      "System theme — auto,theme,Mozilla,false",
+      "Light,theme,Mozilla,false",
+      "Dark,theme,Mozilla,true",
+      "Firefox Alpenglow,theme,,false",
+      "Google,extension,,true",
+      "Wikipedia (en),extension,,true",
+      "Bing,extension,,true",
+      "Amazon.com.au,extension,,true",
+      "DuckDuckGo,extension,,true",
+      "eBay,extension,,true",
+      "Add-ons Search Detection,extension,,true",
+      "Qwant,extension,,true"
+    ]
+  },
+  {
+    "issue_id": 29,
+    "result_id": 0,
+    "result": [
+      "false"
+    ]
+  },
+  {
+    "issue_id": 31,
+    "result_id": 0,
+    "result": [
+      "No phishing domains found in the last week"
+    ]
+  },
+  {
+    "issue_id": 30,
+    "result_id": 0,
+    "result": [
+      "Google"
+    ]
+  },
+  {
+    "issue_id": 32,
+    "result_id": 0,
+    "result": [
+      "Not all registry settings adhere to the CIS Benchmark standards"
+    ]
+  }
+]

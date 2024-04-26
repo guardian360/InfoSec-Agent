@@ -33,4 +33,5 @@ const (
 	AdblockFirefoxID
 	SearchFirefoxID
 	HistoryFirefoxID
+	CISRegistrySettingsID
 )
