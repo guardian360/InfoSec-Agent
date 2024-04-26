@@ -79,6 +79,7 @@ export function openHomePage() {
     'high-risk-issues',
     'medium-risk-issues',
     'low-risk-issues',
+    'info-risk-issues',
     'safe-issues',
     'choose-issue-description',
   ];
@@ -91,6 +92,7 @@ export function openHomePage() {
     'Dashboard.HighRisk',
     'Dashboard.MediumRisk',
     'Dashboard.LowRisk',
+    'Dashboard.InfoRisk',
     'Dashboard.Safe',
     'Dashboard.ChooseIssueDescription',
   ];
@@ -99,7 +101,6 @@ export function openHomePage() {
   }
 
   document.getElementsByClassName('scan-now')[0].addEventListener('click', () => scanTest());
-  document.getElementById('home-button').addEventListener('click', () => openHomePage());
   document.getElementById('logo').innerHTML = localStorage.getItem('picture');
 }
 
