@@ -71,7 +71,7 @@ func Permission(permissionID int, permission string, registryKey mocking.Registr
 		}
 	}
 	// Remove duplicate results
-	filteredResults := utils.RemoveDuplicateStr(results)
+	filteredResults := RemoveDuplicateStr(results)
 	prettyResults := []string{}
 	for _, result := range filteredResults {
 		cleanedFilename := strings.TrimSuffix(result, ".exe")
