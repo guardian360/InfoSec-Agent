@@ -2,8 +2,6 @@ package cisregistrysettings
 
 import "github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 
-//TODO: POLICIES NEEDS HKU KEY
-
 // CheckPoliciesHKU is a function that checks various registry settings related to different policies
 // to ensure they adhere to the CIS Benchmark standards.
 // It takes a RegistryKey object as an argument, which represents the root key from which the registry settings will be checked.
