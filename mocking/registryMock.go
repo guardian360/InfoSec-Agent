@@ -8,6 +8,7 @@ import (
 
 var (
 	CurrentUser  = RegistryKey(NewRegistryKeyWrapper(registry.CURRENT_USER))
+	UserProfiles = RegistryKey(NewRegistryKeyWrapper(registry.USERS))
 	LocalMachine = RegistryKey(NewRegistryKeyWrapper(registry.LOCAL_MACHINE))
 )
 
