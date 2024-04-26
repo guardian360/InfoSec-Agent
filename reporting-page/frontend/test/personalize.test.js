@@ -1,7 +1,7 @@
 import 'jsdom-global/register.js';
 import {JSDOM} from 'jsdom';
 import test from 'unit.js';
-import {jest} from '@jest/globals'
+import {jest} from '@jest/globals';
 
 global.TESTING = true;
 
@@ -73,12 +73,11 @@ global.localStorage = localStorageMock;
 
 // Mock logError
 jest.unstable_mockModule('../wailsjs/go/main/Tray.js', () => ({
-  LogError: jest.fn()
-}))
+  LogError: jest.fn(),
+}));
 
 // Test cases
 describe('handleFaviconSelect', () => {
-
   it('should change the favicon when a valid .ico file is selected', async () => {
     // Arrange
     const head = global.document.querySelector('head');

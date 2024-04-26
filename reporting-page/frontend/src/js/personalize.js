@@ -1,5 +1,5 @@
 import {closeNavigation, loadPersonalizeNavigation} from './navigation-menu.js';
-import logoPhoto from '../assets/images/logoTeamA-transformed.png';
+// import logoPhoto from '../assets/images/logoTeamA-transformed.png';
 
 /** Load the content of the Personalize page */
 export function openPersonalizePage() {
@@ -202,7 +202,7 @@ export function retrieveTheme() {
  */
 export function resetSettings() {
   localStorage.clear();
-  logoPhoto = "frontend/src/assets/images/logoTeamA-transformed.png";
+  logoPhoto = 'frontend/src/assets/images/logoTeamA-transformed.png';
   const logo = document.getElementById('logo');
   logo.src = logoPhoto;
 

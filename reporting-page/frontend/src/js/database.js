@@ -2,7 +2,7 @@ import {ScanNow as scanNowGo, LogError as logError} from '../../wailsjs/go/main/
 import {GetDataBaseData as getDataBaseData} from '../../wailsjs/go/main/DataBase.js';
 import {openHomePage} from './home.js';
 import {
-  WindowShow as windowShow, 
+  WindowShow as windowShow,
   WindowMaximise as windowMaximise,
   LogPrint as logPrint} from '../../wailsjs/runtime/runtime.js';
 import * as rc from './risk-counters.js';

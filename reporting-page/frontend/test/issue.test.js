@@ -1,7 +1,7 @@
 import 'jsdom-global/register.js';
 import test from 'unit.js';
 import {JSDOM} from 'jsdom';
-import {jest} from '@jest/globals'
+import {jest} from '@jest/globals';
 
 global.TESTING = true;
 
@@ -32,8 +32,8 @@ describe('Issue page', function() {
 
   // Mock LogError
   jest.unstable_mockModule('../wailsjs/go/main/Tray.js', () => ({
-    LogError: jest.fn()
-  }))
+    LogError: jest.fn(),
+  }));
 
   it('updateSolutionStep should update the solution step', async function() {
     // Arrange

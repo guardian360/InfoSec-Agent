@@ -1,7 +1,7 @@
 import 'jsdom-global/register.js';
 import test from 'unit.js';
 import {JSDOM} from 'jsdom';
-import {jest} from '@jest/globals'
+import {jest} from '@jest/globals';
 import data from '../src/database.json' assert { type: 'json' };
 
 global.TESTING = true;
@@ -39,8 +39,8 @@ global.window = dom.window;
 
 // Mock LogError
 jest.unstable_mockModule('../wailsjs/go/main/Tray.js', () => ({
-  LogError: jest.fn()
-}))
+  LogError: jest.fn(),
+}));
 
 // Test cases
 describe('Issues table', function() {
@@ -48,19 +48,19 @@ describe('Issues table', function() {
     // Arrange input issues
     let issues = [];
     issues = [
-      {id: 5, severity: 1, jsonkey: 51}, 
-      {id: 15, severity: 0, jsonkey: 150}
+      {id: 5, severity: 1, jsonkey: 51},
+      {id: 15, severity: 2, jsonkey: 151},
     ];
     // Arrange expected table data
     const expectedData = [];
-    expectedData.push(data[issues[0].jsonkey])
-    expectedData.push(data[issues[1].jsonkey])
+    expectedData.push(data[issues[0].jsonkey]);
+    expectedData.push(data[issues[1].jsonkey]);
 
     const issue = await import('../src/js/issues.js');
 
     // Act
     const tbody = global.document.querySelector('tbody');
-    issue.fillTable(tbody, issues);
+    issue.fillTable(tbody, issues, true);
     // Assert
     expectedData.forEach((expectedIssue, index) => {
       const row = tbody.rows[index];
