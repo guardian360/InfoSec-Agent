@@ -224,5 +224,4 @@ func sessionManagerKernel(registryKey mocking.RegistryKey) []bool {
 	expectedValues := []interface{}{uint64(1), uint64(0)}
 
 	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
-
 }

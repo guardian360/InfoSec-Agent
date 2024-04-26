@@ -6,6 +6,7 @@ package scan
 import (
 	"encoding/json"
 	"fmt"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks/cisregistrysettings"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
