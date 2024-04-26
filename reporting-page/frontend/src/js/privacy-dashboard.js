@@ -39,6 +39,10 @@ function openPrivacyDashboardPage() {
           <div><p class="low-risk-issues">Low risk issues</p></div>
           <div><p id="low-risk-counter">0</p></div>
         </div>
+        <div class="risk-counter info-risk">
+          <div><p class="info-issues">Informative</p></div>
+          <div><p id="info-risk-counter">0</p></div>
+        </div>
         <div class="risk-counter no-risk">
           <div><p class="safe-issues">Safe issues</p></div>
           <div><p id="no-risk-counter">0</p></div>
@@ -74,6 +78,9 @@ function openPrivacyDashboardPage() {
               </p>
               <p><input type="checkbox" checked="true" value="true" id="select-low-risk">
                 <label for="select-low-risk" class="low-risk-issues"> Low risks</label>
+              </p>
+              <p><input type="checkbox" checked="true" value="true" id="select-info-risk">
+                <label for="select-info-risk" class="info-risk-issues"> Informative</label>
               </p>
               <p><input type="checkbox" checked="true" value="true" id="select-no-risk">
                 <label for="select-no-risk" class="safe-issues"> Safe</label>
@@ -154,6 +161,7 @@ function openPrivacyDashboardPage() {
     'high-risk-issues',
     'medium-risk-issues',
     'low-risk-issues',
+    'info-risk-issues',
     'safe-issues',
     'privacy-stat',
     'suggested-issue',
@@ -175,6 +183,7 @@ function openPrivacyDashboardPage() {
     'Dashboard.HighRisk',
     'Dashboard.MediumRisk',
     'Dashboard.LowRisk',
+    'Dashboard.InfoRisk',
     'Dashboard.Safe',
     'Dashboard.PrivacyStatus',
     'Dashboard.SuggestedIssue',
