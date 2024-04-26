@@ -1,7 +1,10 @@
 import {ScanNow as scanNowGo, LogError as logError} from '../../wailsjs/go/main/Tray.js';
 import {GetDataBaseData as getDataBaseData} from '../../wailsjs/go/main/DataBase.js';
 import {openHomePage} from './home.js';
-import * as runTime from '../../wailsjs/runtime/runtime.js';
+import {
+  WindowShow as windowShow,
+  WindowMaximise as windowMaximise,
+  LogPrint as logPrint} from '../../wailsjs/runtime/runtime.js';
 import * as rc from './risk-counters.js';
 import {updateRiskCounter} from './risk-counters.js';
 import data from '../database.json' assert { type: 'json' };
@@ -28,9 +31,9 @@ export async function scanTest() {
     });
 
     // Perform other actions after scanTest is complete
-    runTime.WindowShow();
-    runTime.WindowMaximise();
-    runTime.LogPrint(sessionStorage.getItem('ScanResult'));
+    windowShow();
+    windowMaximise();
+    logPrint(sessionStorage.getItem('ScanResult'));
   } catch (err) {
     // Handle any errors that occurred during scanTest or subsequent actions
     logError('Error in scanTest: ' + err);

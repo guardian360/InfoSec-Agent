@@ -1,8 +1,8 @@
 import 'jsdom-global/register.js';
 import test from 'unit.js';
-import {fillTable} from '../src/js/issues.js';
-import {sortTable} from '../src/js/issues.js';
 import {JSDOM} from 'jsdom';
+import {jest} from '@jest/globals';
+import data from '../src/database.json' assert { type: 'json' };
 
 global.TESTING = true;
 
@@ -34,50 +34,44 @@ const dom = new JSDOM(`
 </body>
 </html>
 `);
+global.document = dom.window.document;
+global.window = dom.window;
+
+// Mock LogError
+jest.unstable_mockModule('../wailsjs/go/main/Tray.js', () => ({
+  LogError: jest.fn(),
+}));
 
 // Test cases
 describe('Issues table', function() {
-  it('fillTable should fill the issues table with information from the provided JSON array', function() {
+  it('fillTable should fill the issues table with information from the provided JSON array', async function() {
     // Arrange input issues
     let issues = [];
     issues = [
-      {
-        'Id': 'Windows defender',
-        'Result': ['Windows defender is disabled'],
-        'ErrorMSG': null,
-      },
-      {
-        'Id': 'Camera and microphone access',
-        'Result': ['Something has access to camera', 'Something has access to microphone'],
-        'ErrorMSG': null,
-      },
+      {id: 5, severity: 1, jsonkey: 51},
+      {id: 15, severity: 2, jsonkey: 151},
     ];
     // Arrange expected table data
-    const expectedData = [
-      {
-        'Name': 'Windows defender',
-        'Type': 'Security',
-        'Risk': 'High',
-      },
-      {
-        'Name': 'Camera and microphone access',
-        'Type': 'Privacy',
-        'Risk': 'Low',
-      },
-    ];
+    const expectedData = [];
+    expectedData.push(data[issues[0].jsonkey]);
+    expectedData.push(data[issues[1].jsonkey]);
+
+    const issue = await import('../src/js/issues.js');
+
     // Act
     const tbody = global.document.querySelector('tbody');
-    fillTable(tbody, issues);
+    issue.fillTable(tbody, issues, true);
     // Assert
     expectedData.forEach((expectedIssue, index) => {
       const row = tbody.rows[index];
+      // console.log(row);
       test.value(row.cells[0].textContent).isEqualTo(expectedData[index].Name);
       test.value(row.cells[1].textContent).isEqualTo(expectedData[index].Type);
-      test.value(row.cells[2].textContent).isEqualTo(expectedData[index].Risk);
+      test.value(row.cells[2].textContent).isEqualTo(issue.toRiskLevel(issues[index].severity));
     });
   });
 
-  it('sortTable should sort the issues table', function() {
+  it('sortTable should sort the issues table', async function() {
     // Arrange table rows
     const table = dom.window.document.getElementById('issues-table');
     const tbody = table.querySelector('tbody');
@@ -99,8 +93,10 @@ describe('Issues table', function() {
       </tr>
     `;
 
+    const issue = await import('../src/js/issues.js');
+
     // Act
-    sortTable(tbody, 0);
+    issue.sortTable(tbody, 0);
 
     // Assert
     let sortedRows = Array.from(tbody.rows);
@@ -108,7 +104,7 @@ describe('Issues table', function() {
     test.array(sortedNames).is(['Camera and microphone access', 'Firewall settings', 'Windows defender']);
 
     // Act
-    sortTable(tbody, 0);
+    issue.sortTable(tbody, 0);
 
     // Assert
     let sortedRowsDescending = Array.from(tbody.rows);
@@ -116,7 +112,7 @@ describe('Issues table', function() {
     test.array(sortedNamesDescending).is(['Windows defender', 'Firewall settings', 'Camera and microphone access']);
 
     // Act
-    sortTable(tbody, 2);
+    issue.sortTable(tbody, 2);
 
     // Assert
     sortedRows = Array.from(tbody.rows);
@@ -124,7 +120,7 @@ describe('Issues table', function() {
     test.array(sortedRisks).is(['High', 'Medium', 'Low']);
 
     // Act
-    sortTable(tbody, 2);
+    issue.sortTable(tbody, 2);
 
     // Assert
     sortedRowsDescending = Array.from(tbody.rows);

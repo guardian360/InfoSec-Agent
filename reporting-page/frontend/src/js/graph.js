@@ -77,10 +77,9 @@ export class Graph {
 
   /** Creates data for a bar chart
    *
-   * @param {*} getString Function to retrieve localized text
    * @return {ChartData} The data for the bar chart
    */
-  async getData(getString = getLocalizationString) {
+  async getData() {
     /**
      * Labels created for the x-axis
      * @type {!Array<string>}
@@ -91,31 +90,31 @@ export class Graph {
     }
 
     const noRiskData = {
-      label: await getString('Dashboard.Safe'),
+      label: await getLocalizationString('Dashboard.Safe'),
       data: this.rc.allNoRisks.slice(Math.max(this.rc.allNoRisks.length - this.graphShowAmount, 0)),
       backgroundColor: this.rc.noRiskColor,
     };
 
     const lowRiskData = {
-      label: await getString('Dashboard.LowRisk'),
+      label: await getLocalizationString('Dashboard.LowRisk'),
       data: this.rc.allLowRisks.slice(Math.max(this.rc.allLowRisks.length - this.graphShowAmount, 0)),
       backgroundColor: this.rc.lowRiskColor,
     };
 
     const mediumRiskData = {
-      label: await getString('Dashboard.MediumRisk'),
+      label: await getLocalizationString('Dashboard.MediumRisk'),
       data: this.rc.allMediumRisks.slice(Math.max(this.rc.allMediumRisks.length - this.graphShowAmount, 0)),
       backgroundColor: this.rc.mediumRiskColor,
     };
 
     const highRiskData = {
-      label: await getString('Dashboard.HighRisk'),
+      label: await getLocalizationString('Dashboard.HighRisk'),
       data: this.rc.allHighRisks.slice(Math.max(this.rc.allHighRisks.length - this.graphShowAmount, 0)),
       backgroundColor: this.rc.highRiskColor,
     };
 
     const infoRiskData = {
-      label: await getString('Dashboard.InfoRisk'),
+      label: await getLocalizationString('Dashboard.InfoRisk'),
       data: this.rc.allInfoRisks.slice(Math.max(this.rc.allInfoRisks.length - this.graphShowAmount, 0)),
       backgroundColor: this.rc.infoColor,
     };

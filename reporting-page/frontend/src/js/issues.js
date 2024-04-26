@@ -106,7 +106,7 @@ export function openIssuesPage() {
  * @param {number} level - The numeric representation of the risk level.
  * @return {string} The risk level corresponding to the numeric input:
  */
-function toRiskLevel(level) {
+export function toRiskLevel(level) {
   switch (level) {
   case 0:
     return 'Acceptable';
