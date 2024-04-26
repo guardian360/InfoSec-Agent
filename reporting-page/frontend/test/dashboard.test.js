@@ -140,16 +140,12 @@ const dom = new JSDOM(`
 global.document = dom.window.document
 global.window = dom.window
 
-// jest.unstable_mockModule('../wailsjs/runtime/runtime.js', () => ({
-//   WindowShow: jest.fn(),
-//   WindowMaximise: jest.fn(),
-//   LogPrint: jest.fn()
-// }))
-
+// Mock scanTest
 jest.unstable_mockModule('../src/js/database.js', () => ({
   scanTest: jest.fn()
 }))
 
+// Mock LogError
 jest.unstable_mockModule('../wailsjs/go/main/Tray.js', () => ({
   LogError: jest.fn()
 }))

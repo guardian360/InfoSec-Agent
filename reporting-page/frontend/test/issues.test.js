@@ -1,9 +1,8 @@
 import 'jsdom-global/register.js';
 import test from 'unit.js';
-// import {fillTable} from '../src/js/issues.js';
-// import {sortTable} from '../src/js/issues.js';
 import {JSDOM} from 'jsdom';
 import {jest} from '@jest/globals'
+import data from '../src/database.json' assert { type: 'json' };
 
 global.TESTING = true;
 
@@ -38,41 +37,24 @@ const dom = new JSDOM(`
 global.document = dom.window.document;
 global.window = dom.window;
 
+// Mock LogError
+jest.unstable_mockModule('../wailsjs/go/main/Tray.js', () => ({
+  LogError: jest.fn()
+}))
+
 // Test cases
 describe('Issues table', function() {
-
-  jest.unstable_mockModule('../wailsjs/go/main/Tray.js', () => ({
-    LogError: jest.fn()
-  }))
-
   it('fillTable should fill the issues table with information from the provided JSON array', async function() {
     // Arrange input issues
     let issues = [];
     issues = [
-      {
-        'Id': 'Windows defender',
-        'Result': ['Windows defender is disabled'],
-        'ErrorMSG': null,
-      },
-      {
-        'Id': 'Camera and microphone access',
-        'Result': ['Something has access to camera', 'Something has access to microphone'],
-        'ErrorMSG': null,
-      },
+      {id: 5, severity: 1, jsonkey: 51}, 
+      {id: 15, severity: 0, jsonkey: 150}
     ];
     // Arrange expected table data
-    const expectedData = [
-      {
-        'Name': 'Windows defender',
-        'Type': 'Security',
-        'Risk': 'High',
-      },
-      {
-        'Name': 'Camera and microphone access',
-        'Type': 'Privacy',
-        'Risk': 'Low',
-      },
-    ];
+    const expectedData = [];
+    expectedData.push(data[issues[0].jsonkey])
+    expectedData.push(data[issues[1].jsonkey])
 
     const issue = await import('../src/js/issues.js');
 
@@ -85,7 +67,7 @@ describe('Issues table', function() {
       // console.log(row);
       test.value(row.cells[0].textContent).isEqualTo(expectedData[index].Name);
       test.value(row.cells[1].textContent).isEqualTo(expectedData[index].Type);
-      test.value(row.cells[2].textContent).isEqualTo(expectedData[index].Risk);
+      test.value(row.cells[2].textContent).isEqualTo(issue.toRiskLevel(issues[index].severity));
     });
   });
 

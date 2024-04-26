@@ -1,9 +1,6 @@
 import 'jsdom-global/register.js';
 import test from 'unit.js';
 import {JSDOM} from 'jsdom';
-// import {updateSolutionStep} from '../src/js/issue.js';
-// import {nextSolutionStep} from '../src/js/issue.js';
-// import {previousSolutionStep} from '../src/js/issue.js';
 import {jest} from '@jest/globals'
 
 global.TESTING = true;
@@ -33,6 +30,7 @@ describe('Issue page', function() {
   document.body.appendChild(screenshot);
   screenshot.src = 'screenshot1.jpg';
 
+  // Mock LogError
   jest.unstable_mockModule('../wailsjs/go/main/Tray.js', () => ({
     LogError: jest.fn()
   }))

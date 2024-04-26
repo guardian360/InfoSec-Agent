@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "mocha ./test/graph.test.js ./test/navigation.test.js ./test/piechart.test.js --parallel"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "devDependencies": {
     "@babel/core": "^7.24.4",
