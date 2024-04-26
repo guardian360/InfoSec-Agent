@@ -9,33 +9,33 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/browserutils"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
-	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
-
 	"github.com/andrewarchi/browser/firefox"
 )
 
-// ExtensionFirefox inspects the extensions installed in the Firefox browser and checks for the presence of an adblocker.
+// ExtensionFirefox inspects the extensions installed in the Firefox browser and checks for the presence of an ad blocker.
 //
 // Parameters: None
 //
 // Returns:
 //   - A checks.Check object representing the result of the check. The result contains a list of installed extensions in the Firefox browser. Each extension is represented as a string that includes the name, type, creator, and its active status.
-//   - A checks.Check object representing the result of the adblocker check. The result is a boolean indicating whether an adblocker is installed or not.
+//   - A checks.Check object representing the result of the ad blocker check. The result is a boolean indicating whether an adblocker is installed or not.
 //
-// This function works by locating the Firefox profile directory and opening the extensions.json file, which contains a list of all installed Firefox extensions. It decodes the JSON file into a struct and iterates over the addons in the struct. For each addon, it appends a string to the result list that includes the name, type, creator, and active status of the addon. It also checks if the addon is an adblocker by calling the adblockerFirefox function with the addon's name. If an adblocker is found, it sets a boolean variable to true. The function returns two checks.Check objects: one with the list of extensions and one with the boolean indicating the presence of an adblocker.
+// This function works by locating the Firefox profile directory and opening the extensions.json file, which contains a list of all installed Firefox extensions. It decodes the JSON file into a struct and iterates over the addons in the struct. For each addon, it appends a string to the result list that includes the name, type, creator, and active status of the addon. It also checks if the addon is an ad blocker by calling the adblockerFirefox function with the addon's name. If an adblocker is found, it sets a boolean variable to true. The function returns two checks.Check objects: one with the list of extensions and one with the boolean indicating the presence of an adblocker.
 func ExtensionFirefox() (checks.Check, checks.Check) {
 	var resultID int
 	// Determine the directory in which the Firefox profile is stored
-	ffdirectory, err := utils.FirefoxFolder()
+	ffdirectory, err := browserutils.RealProfileFinder{}.FirefoxFolder()
 	if err != nil {
 		return checks.NewCheckErrorf(checks.ExtensionFirefoxID, "No firefox directory found", err),
 			checks.NewCheckErrorf(checks.AdblockFirefoxID, "No firefox directory found", err)
 	}
 
-	addBlocker := false // Variable used for checking if an adblocker is used
+	addBlocker := false // Variable used for checking if an ad blocker is used
 	var output []string
 	// Open the extensions.json file, which contains a list of all installed Firefox extensions
 	content, err := os.Open(ffdirectory[0] + "\\extensions.json")
@@ -61,7 +61,7 @@ func ExtensionFirefox() (checks.Check, checks.Check) {
 	for _, addon := range extensions.Addons {
 		output = append(output, addon.DefaultLocale.Name+","+addon.Type+","+addon.DefaultLocale.Creator+","+
 			""+strconv.FormatBool(addon.Active))
-		// Determine if the addon is an adblocker
+		// Determine if the addon is an ad blocker
 		if adblockerFirefox(addon.DefaultLocale.Name) {
 			addBlocker = true
 			resultID++
@@ -78,11 +78,11 @@ func ExtensionFirefox() (checks.Check, checks.Check) {
 //   - extensionName: A string representing the name of the Firefox extension to be evaluated.
 //
 // Returns:
-//   - A boolean value indicating whether the provided extension is recognized as an adblocker. The function returns true if the extension name matches any known adblocker names, and false otherwise.
+//   - A boolean value indicating whether the provided extension is recognized as an ad blocker. The function returns true if the extension name matches any known adblocker names, and false otherwise.
 //
-// This function works by comparing the provided extension name to a list of known adblocker names. The comparison is case-insensitive. If a match is found, the function returns true. If no match is found, the function returns false. This function is used in the context of the ExtensionFirefox function to identify whether any of the installed Firefox extensions function as adblockers.
+// This function works by comparing the provided extension name to a list of known ad blocker names. The comparison is case-insensitive. If a match is found, the function returns true. If no match is found, the function returns false. This function is used in the context of the ExtensionFirefox function to identify whether any of the installed Firefox extensions function as ad blockers.
 func adblockerFirefox(extensionName string) bool {
-	// List of known/popular adblockers to match against
+	// List of known/popular ad blockers to match against
 	adblockerNames := []string{
 		"adblocker ultimate",
 		"adguard adblocker",

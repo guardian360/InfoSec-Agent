@@ -2,7 +2,7 @@
 
 .dashboard-data {
   color: var(--text-body);
-  width: flex;
+  width: fit-content;
   display: flex;
   flex-flow: row wrap;
   padding: 5px;
@@ -21,7 +21,6 @@
 /* security status css */
 
 .security-status {
-  float: center;
   display: flex;
 }
 
@@ -64,6 +63,10 @@
   background-color: var(--low-risk-color);
 }
 
+.info-risk {
+  background-color: var(--info-color);
+}
+
 .no-risk {
   background-color: var(--no-risk-color);
   border-radius: 0 0 10px 10px;
@@ -74,7 +77,7 @@
   margin: 10px;
   padding: 10px;
   vertical-align: middle;
-  font-size: 17.5px;
+  font-size: 18px;
   border-radius: 10px;
   color: var(--text-body);
 }
@@ -83,18 +86,18 @@
 
 /* risk distribution pie chart */
 
-.piechart {
+.pie-chart {
   /* ratio between columns: 1:2:1 */
 
   /* flex: 2; */
 }
 
-.piechart-container {
+.pie-chart-container {
   min-height: 200px;
   margin: 10px;
 }
 
-.piechart .piechart-container {
+.pie-chart .pie-chart-container {
   height: 90%;
 }
 
@@ -128,10 +131,9 @@
 
   /* background-color: var(--); */
   font-family: inherit;
-  margin: 0;
   min-width: 160px;
   float: left;
-  margin-top: 10px;
+  margin: 10px 0 0;
   text-align: center;
   border-radius: 10px;
 }

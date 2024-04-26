@@ -15,7 +15,7 @@ let stepCounter = 0;
  */
 export function updateSolutionStep(solutionText, solutionScreenshot, solution, screenshots, stepCounter) {
   solutionText.innerHTML = `${stepCounter + 1}. ${solution[stepCounter]}`;
-  solutionScreenshot.src = screenshots[stepCounter];
+  solutionScreenshot.src = screenshots[stepCounter].toString();
 }
 
 /** Go to next step of solution guide

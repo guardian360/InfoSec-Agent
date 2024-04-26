@@ -8,7 +8,7 @@ export function getLocalization(messageId, elementClass) {
   localize(messageId).then((result) => {
     const elements = document.getElementsByClassName(elementClass);
     for (let i = 0; i < elements.length; i++) {
-      elements[i].innerHTML = result;
+      elements[i].innerHTML = result.toString();
     }
   });
 }

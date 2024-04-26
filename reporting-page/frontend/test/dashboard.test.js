@@ -41,11 +41,11 @@ const dom = new JSDOM(`
     </div>
   </div>
   <div class="data-column">
-    <div class="data-segment piechart">
+    <div class="data-segment pie-chart">
       <div class="data-segment-header">
           <p class="piechart-header">Risk level distribution</p>
       </div>
-      <div class="piechart-container">
+      <div class="pie-chart-container">
         <canvas id="pieChart"></canvas>
       </div>
     </div>

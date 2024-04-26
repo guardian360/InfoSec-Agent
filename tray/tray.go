@@ -73,7 +73,7 @@ type MenuItem struct {
 // OnReady orchestrates the runtime behavior of the system tray application.
 //
 // This function sets up the system tray with various menu items such as 'Reporting Page', 'Change Scan Interval', 'Scan Now', 'Change Language', and 'Quit'. It also initializes a ticker for scheduled security scans and a signal listener for system termination signals.
-// It then enters a loop where it listens for various events such as clicks on the menu items, system termination signals, and the elapse of the scan interval. Depending on the event, it performs actions such as opening the reporting page, changing the scan interval, initiating an immediate scan, changing the application language, refreshing the menu, or quitting the application.
+// It then enters a loop where it listens for various events such as clicks on the menu items, system termination signals, and elapse of the scan interval. Depending on the event, it performs actions such as opening the reporting page, changing the scan interval, initiating an immediate scan, changing the application language, refreshing the menu, or quitting the application.
 //
 // Parameters: None.
 //
@@ -141,7 +141,7 @@ func OnReady() {
 				logger.Log.ErrorWithErr("Error scanning:", err)
 			}
 		case <-mChangeLanguage.ClickedCh:
-			ChangeLanguage()
+			ChangeLanguage("usersettings")
 			RefreshMenu()
 		case <-mQuit.ClickedCh:
 			systray.Quit()
@@ -210,7 +210,7 @@ func OpenReportingPage(path string) error {
 		ReportingPageOpen = false
 	}()
 
-	const build = false
+	const build = true
 	if build {
 		err = BuildReportingPage()
 		if err != nil {
@@ -219,7 +219,7 @@ func OpenReportingPage(path string) error {
 	}
 
 	// Set up the reporting-page executable
-	runCmd := exec.Command("build/bin/Infosec-Agent-Reporting-Page")
+	runCmd := exec.Command("build/bin/InfoSec-Agent-Reporting-Page")
 	runCmd.Stdout = os.Stdout
 	runCmd.Stderr = os.Stderr
 
@@ -364,10 +364,12 @@ func ScanNow() ([]checks.Check, error) {
 // 6: Portuguese
 //
 // Parameters:
+//
+//   - path string: The relative path to the user settings file. This is used to save the updated language setting.
 //   - testInput ...string: Optional parameter used for testing. If provided, the function uses this as the user's language selection instead of displaying the dialog window.
 //
 // Returns: None. The function updates the 'language' variable in-place.
-func ChangeLanguage(testInput ...string) {
+func ChangeLanguage(path string, testInput ...string) {
 	var res string
 	if len(testInput) > 0 {
 		res = testInput[0]
@@ -403,8 +405,8 @@ func ChangeLanguage(testInput ...string) {
 	}
 	usersettings.SaveUserSettings(usersettings.UserSettings{
 		Language:     Language,
-		ScanInterval: usersettings.LoadUserSettings("usersettings").ScanInterval,
-	}, "usersettings")
+		ScanInterval: usersettings.LoadUserSettings(path).ScanInterval,
+	}, path)
 }
 
 // RefreshMenu updates the system tray menu items to reflect the current language setting.

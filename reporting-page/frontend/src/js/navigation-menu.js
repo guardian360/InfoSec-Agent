@@ -40,7 +40,6 @@ export function toggleNavigationHamburger() {
   if (document.body.offsetWidth < 800) {
     if (document.getElementsByClassName('left-nav')[0].style.visibility === 'visible') {
       document.getElementsByClassName('left-nav')[0].style.visibility = 'hidden';
-      return;
     } else {
       document.getElementsByClassName('left-nav')[0].style.visibility = 'visible';
     }
@@ -58,7 +57,7 @@ export function toggleNavigationResize() {
 
 if (typeof document !== 'undefined') {
   try {
-    document.getElementById('header-hambuger').addEventListener('click', () => toggleNavigationHamburger());
+    document.getElementById('header-hamburger').addEventListener('click', () => toggleNavigationHamburger());
     document.body.onresize = () => toggleNavigationResize();
 
     const navbarItems = [

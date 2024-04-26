@@ -6,16 +6,19 @@ export class RiskCounters {
   mediumRiskColor;
   lowRiskColor;
   noRiskColor;
+  infoColor;
 
   allHighRisks = [];
   allMediumRisks = [];
   allLowRisks = [];
   allNoRisks = [];
+  allInfoRisks = [];
 
   lastHighRisk;
   lastMediumRisk;
   lastLowRisk;
-  lastnoRisk;
+  lastNoRisk;
+  lastInfoRisk;
 
   count = 1;
   /** Create the risk-Counters with the right colors
@@ -23,30 +26,35 @@ export class RiskCounters {
    * @param {int} high Last recorded amount of high risks
    * @param {int} medium Last recorded amount of medium risks
    * @param {int} low Last recorded amount of low risks
+   * @param {int} info Last recorded amount of information risks
    * @param {int} acceptable Last recorded amount of acceptable risks
    * @param {boolean} [testing=false] Specifies if the class is being used in testing, normally set to *false*
    */
-  constructor(high, medium, low, acceptable, testing=false) {
+  constructor(high, medium, low, info, acceptable, testing=false) {
     if (testing) {
       this.highRiskColor = 'rgb(0, 255, 255)';
       this.mediumRiskColor = 'rgb(0, 0, 255)';
       this.lowRiskColor = 'rgb(255, 0, 0)';
+      this.infoColor = 'rgb(122, 122, 122)';
       this.noRiskColor = 'rgb(255, 255, 0)';
     } else {
       this.highRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--high-risk-color');
       this.mediumRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--medium-risk-color');
       this.lowRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--low-risk-color');
+      this.infoColor = getComputedStyle(document.documentElement).getPropertyValue('--info-color');
       this.noRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--no-risk-color');
     }
     this.allHighRisks.push(high);
     this.allMediumRisks.push(medium);
     this.allLowRisks.push(low);
     this.allNoRisks.push(acceptable);
+    this.allInfoRisks.push(info);
 
     this.lastHighRisk = high;
     this.lastMediumRisk = medium;
     this.lastLowRisk = low;
-    this.lastnoRisk = acceptable;
+    this.lastInfoRisk = info;
+    this.lastNoRisk = acceptable;
   }
 }
 
@@ -57,19 +65,23 @@ export class RiskCounters {
  * @param {number} high - The last recorded amount of high risks.
  * @param {number} medium - The last recorded amount of medium risks.
  * @param {number} low - The last recorded amount of low risks.
- * @param {number} acceptable - The last recorded amount of acceptable risks.
+ * @param {number} info - The last recorded amount of information risks.
+ * @param {number} acceptable - The last recorded amount of acceptable risks. *
  * @return {RiskCounters} The updated RiskCounters instance.
  */
-export function updateRiskcounter(rc, high, medium, low, acceptable) {
+export function updateRiskCounter(rc, high, medium, low, info, acceptable) {
   rc.allHighRisks.push(high);
   rc.allMediumRisks.push(medium);
   rc.allLowRisks.push(low);
+  rc.allInfoRisks.push(info);
   rc.allNoRisks.push(acceptable);
 
   rc.lastHighRisk = high;
   rc.lastMediumRisk = medium;
   rc.lastLowRisk = low;
-  rc.lastnoRisk = acceptable;
+  rc.lastInfoRisk = info;
+  rc.lastNoRisk = acceptable;
+
   rc.count = calculateMaxCount(rc);
   return rc;
 }
@@ -85,6 +97,7 @@ function calculateMaxCount(rc) {
     rc.allHighRisks.length,
     rc.allMediumRisks.length,
     rc.allLowRisks.length,
+    rc.allInfoRisks.length,
     rc.allNoRisks.length,
   );
 }

@@ -8,7 +8,7 @@ global.TESTING = true;
 
 // Mock page
 const dom = new JSDOM(`
-  <div class="data-column piechart">
+  <div class="data-column pie-chart">
     <canvas id="pieChart"></canvas>
   </div>
 `, {
@@ -32,8 +32,12 @@ function mockGetLocalizationString(messageID) {
     return 'Medium';
   case 'Dashboard.HighRisk':
     return 'High';
+  case 'Dashboard.TotalRisksOverview':
+    return 'Total Risks Overview';
   case 'Dashboard.SecurityRisksOverview':
     return 'Security Risks Overview';
+  case 'Dashboard.PrivacyRisksOverview':
+    return 'Privacy Risks Overview';
   }
 }
 
@@ -70,7 +74,7 @@ describe('Risk level distribution piechart', function() {
 
     /** asynchronous function to call p.getData() */
     async function getData() {
-      return await p.getData(mockGetLocalizationString);
+      return p.getData(mockGetLocalizationString);
     }
 
     // assert
@@ -84,26 +88,31 @@ describe('Risk level distribution piechart', function() {
   });
   it('getOptions should return the correct piechart options', function() {
     // arrange
-    const expectedOptions = {
-      maintainAspectRatio: false,
-      title: {
-        display: true,
-        text: 'Security Risks Overview',
-      },
-    };
+    const titles = ['Total', 'Security', 'Privacy'];
 
-    // act
+    titles.forEach((title) => {
+      // arrange
+      const expectedOptions = {
+        maintainAspectRatio: false,
+        title: {
+          display: true,
+          text: (title + ' Risks Overview'),
+        },
+      };
 
-    /** asynchronous function to call p.getOptions() */
-    async function getOptions() {
-      return await p.getOptions(mockGetLocalizationString);
-    }
+      // act
 
-    // assert
-    getOptions().then((result) => {
-      test.object(result).is(expectedOptions);
-    })
-      .catch((error) =>
-        console.log(error));
+      /** asynchronous function to call p.getOptions() */
+      async function getOptions() {
+        return p.getOptions(title, mockGetLocalizationString);
+      }
+
+      // assert
+      getOptions().then((result) => {
+        test.object(result).is(expectedOptions);
+      })
+        .catch((error) =>
+          console.log(error));
+    });
   });
 });

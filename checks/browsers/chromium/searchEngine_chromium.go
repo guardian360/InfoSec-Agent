@@ -9,10 +9,11 @@ import (
 	"path/filepath"
 	"regexp"
 
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/browserutils"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
-	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 )
 
 // SearchEngineChromium inspects the default search engine setting in Chromium-based browsers.
@@ -55,7 +56,7 @@ func SearchEngineChromium(browser string) checks.Check {
 	}
 	defer func(file *os.File) {
 		tmpFile := mocking.Wrap(file)
-		err = utils.CloseFile(tmpFile)
+		err = browserutils.CloseFile(tmpFile)
 		if err != nil {
 			log.Println("Error closing file")
 		}

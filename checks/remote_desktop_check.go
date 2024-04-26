@@ -7,7 +7,7 @@ import (
 // RemoteDesktopCheck is a function that checks if the Remote Desktop feature is enabled on the system.
 //
 // Parameters:
-//   - registryKey (mocking.RegistryKey): A mock of a Windows registry key. This is used to simulate the behavior of the Windows registry for testing purposes.
+//   - registryKey (mocking.RegistryKey): A mocker of a Windows registry key. This is used to simulate the behavior of the Windows registry for testing purposes.
 //
 // Returns:
 //   - Check: A struct containing the result of the check. The result indicates whether the Remote Desktop feature is enabled or not.

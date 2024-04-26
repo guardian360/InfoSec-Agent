@@ -8,10 +8,11 @@ import (
 	"path/filepath"
 	"regexp"
 
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/browserutils"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
-	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"github.com/pierrec/lz4"
 )
 
@@ -25,13 +26,13 @@ import (
 // This function first determines the directory in which the Firefox profile is stored. It then opens and reads the 'search.json.mozlz4' file, which contains information about the default search engine. The function decompresses the file, extracts the default search engine information, and returns this information as a Check object. If an error occurs at any point during this process, it is encapsulated in the Check object and returned.
 func SearchEngineFirefox() checks.Check {
 	// Determine the directory in which the Firefox profile is stored
-	var ffdirectory []string
+	var ffDirectory []string
 	var err error
-	ffdirectory, err = utils.FirefoxFolder()
+	ffDirectory, err = browserutils.RealProfileFinder{}.FirefoxFolder()
 	if err != nil {
 		return checks.NewCheckErrorf(checks.SearchFirefoxID, "No firefox directory found", err)
 	}
-	filePath := ffdirectory[0] + "/search.json.mozlz4"
+	filePath := ffDirectory[0] + "/search.json.mozlz4"
 
 	// Create a temporary file to copy the compressed json to
 	tempSearch := filepath.Join(os.TempDir(), "tempSearch.json.mozlz4")
@@ -43,7 +44,7 @@ func SearchEngineFirefox() checks.Check {
 	}(tempSearch)
 
 	// Copy the compressed json to a temporary location
-	copyError := utils.CopyFile(filePath, tempSearch, nil, nil)
+	copyError := browserutils.CopyFile(filePath, tempSearch, nil, nil)
 	if copyError != nil {
 		return checks.NewCheckErrorf(checks.SearchFirefoxID, "Unable to make a copy of the file", copyError)
 	}
@@ -61,7 +62,7 @@ func SearchEngineFirefox() checks.Check {
 	}
 	defer func(file *os.File) {
 		tmpFile := mocking.Wrap(file)
-		err = utils.CloseFile(tmpFile)
+		err = browserutils.CloseFile(tmpFile)
 		if err != nil {
 			log.Println("Error closing file")
 		}
