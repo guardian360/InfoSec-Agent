@@ -6,7 +6,6 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.24.1",
-    "@babel/plugin-syntax-import-assertions": "^7.24.1",
     "@babel/plugin-syntax-import-attributes": "^7.24.1",
     "eslint": "^8.57.0",
     "eslint-config-google": "^0.14.0",
