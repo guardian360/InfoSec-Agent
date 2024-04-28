@@ -55,7 +55,7 @@ export function previousSolutionStep(solutionText, solutionScreenshot, solution,
 export function openIssuePage(issueId) {
   stepCounter = 0;
   const currentIssue = data[issueId];
-  // Check if the issue has no screenshots, if so, display that there is no issue
+  // Check if the issue has no screenshots, if so, display that there is no issue (acceptable)
   if (currentIssue.Screenshots.length === 0) {
     const pageContents = document.getElementById('page-contents');
     pageContents.innerHTML = `
@@ -70,13 +70,6 @@ export function openIssuePage(issueId) {
         <div class="button" id="back-button">Back to issues overview</div>
       </div>
     `;
-    const texts = ['information', 'solution', 'previous-button', 'next-button', 'back-button'];
-    const localizationIds = ['Issues.Information', 'Issues.Solution', 'Issues.Previous', 'Issues.Next', 'Issues.Back'];
-    for (let i = 0; i < texts.length; i++) {
-      getLocalization(localizationIds[i], texts[i]);
-    }
-    document.getElementById('back-button').addEventListener('click', () => openIssuesPage());
-    document.onload = retrieveTheme();
   } else { // Issue has screenshots, display the solution guide
     const pageContents = document.getElementById('page-contents');
     if (issuesWithResultsShow.includes(issueId)) {
@@ -114,10 +107,15 @@ export function openIssuePage(issueId) {
       nextSolutionStep(solutionText, solutionScreenshot, currentIssue.Solution, currentIssue.Screenshots));
     document.getElementById('previous-button').addEventListener('click', () =>
       previousSolutionStep(solutionText, solutionScreenshot, currentIssue.Solution, currentIssue.Screenshots));
-    document.getElementById('back-button').addEventListener('click', () => openIssuesPage());
-
-    document.onload = retrieveTheme();
   }
+
+  document.onload = retrieveTheme();
+  const texts = ['information', 'solution', 'previous-button', 'next-button', 'back-button'];
+  const localizationIds = ['Issues.Information', 'Issues.Solution', 'Issues.Previous', 'Issues.Next', 'Issues.Back'];
+  for (let i = 0; i < texts.length; i++) {
+    getLocalization(localizationIds[i], texts[i]);
+  }
+  document.getElementById('back-button').addEventListener('click', () => openIssuesPage());
 }
 
 export function checkShowResult(issue) {
@@ -146,9 +144,13 @@ export function parseShowResult(issueId, currentIssue){
       resultLine = permissionShowResults(issues);
       break;
     case '110':
+      resultLine += `The following ports are open:`
+      issues.find(issue => issue.issue_id === 11).result.forEach((issue) => {
+        resultLine += `${issue}, `;
+      });
       break;
     case '160':
-      issues.getItem('16').result.forEach((issue) => {
+      issues.find(issue => issue.issue_id === 16).result.forEach((issue) => {
         resultLine += `You changed your password on: ${issue}`;
       });
       break;
