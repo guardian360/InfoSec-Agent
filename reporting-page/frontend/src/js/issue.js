@@ -144,9 +144,9 @@ export function parseShowResult(issueId, currentIssue){
       resultLine = permissionShowResults(issues);
       break;
     case '110':
-      resultLine += `The following ports are open:`
+      resultLine += `The following ports are open: <br>`
       issues.find(issue => issue.issue_id === 11).result.forEach((issue) => {
-        resultLine += `${issue}, `;
+        resultLine += `${issue} <br> `;
       });
       break;
     case '160':

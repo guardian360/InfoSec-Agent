@@ -209,13 +209,10 @@
         "Information": "Knowing which applications have access to your location is important for protecting your privacy. It helps you control who can track your location, prevent security risks, conserve battery life, manage data usage, customize your app experience, and ensure compliance with regulations.",
         "Solution": 
         [   
-            "Select Start > Settings > Privacy & security.", 
-            "Here you can select location to see which applications have access, and you can revoke access for certain applications."
+            "There are no apps with location permission"
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/applications-with-location-permission/location-permissions-1.jpg",
-            "frontend/src/assets/images/applications-with-location-permission/location-permissions-2.jpg"
         ]
     },
     "70": {
@@ -239,13 +236,10 @@
         "Information": "Understanding which applications have access to your microphone on your Windows computer is important for protecting your privacy and confidentiality. It helps you control who can listen to your conversations, prevent unauthorized recording, safeguard sensitive information, and ensure compliance with regulations.",
         "Solution": 
         [   
-            "Select Start > Settings > Privacy & security.", 
-            "Here you can select microphone to see which applications have access, and you can revoke access for certain applications."
+            "There are no apps with microqphone permission"
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/applications-with-microphone-permission/microphone-permissions-1.jpg",
-            "frontend/src/assets/images/applications-with-microphone-permission/microphone-permissions-2.jpg"
         ]
     },
     "80": {
@@ -269,13 +263,10 @@
         "Information": "Being aware of which applications have access to your camera helps prevent unauthorized access. Malicious software or even legitimate applications with poorly implemented security features could potentially access your camera without your knowledge or consent. By knowing which applications have access, you can identify and block any unauthorized attempts.",
         "Solution": 
         [   
-            "Select Start > Settings > Privacy & security.", 
-            "Here you can select webcam to see which applications have access, and you can revoke access for certain applications."
+            "There are no apps with webcam permission"
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/applications-with-webcam-permission/camera-permissions-1.jpg",
-            "frontend/src/assets/images/applications-with-webcam-permission/camera-permissions-2.jpg"
         ]
     },
     "90": {
@@ -299,13 +290,10 @@
         "Information": "Understanding which applications have access to your calendar or appointments is crucial for protecting your privacy, and schedule. It helps you control who can view and potentially misuse your sensitive appointment information, prevent unauthorized access and manage data usage.",
         "Solution": 
         [   
-            "Select Start > Settings > Privacy & security.", 
-            "Here you can select appointments to see which applications have access, and you can revoke access for certain applications."
+            "There are no apps with appointments permission"
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/applications-with-calendar-permission/calendar-permissions-1.jpg",
-            "frontend/src/assets/images/applications-with-calendar-permission/calendar-permissions-2.jpg"
         ]
     },
     "100": {
@@ -329,13 +317,10 @@
         "Information": "Understanding which applications have access to your contacts on your Windows computer is good for safeguarding your privacy. It allows you to control who can view and potentially misuse your contact information, prevent unauthorized access and manage data usage.",
         "Solution": 
         [   
-            "Select Start > Settings > Privacy & security.", 
-            "Here you can select contacts to see which applications have access, and you can revoke access for certain applications."
+            "There are no apps with contacts permission"
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/applications-with-contacts-permission/contacts-permissions-1.jpg",
-            "frontend/src/assets/images/applications-with-contacts-permission/contacts-permissions-2.jpg"
         ]
     },
     "110": {
@@ -351,6 +336,7 @@
         ],
         "Screenshots":
         [
+            "frontend/src/assets/images/devices-connected-via-bluetooth/bluetooth-devices-1.jpg"
         ]
     },
     "120": {
