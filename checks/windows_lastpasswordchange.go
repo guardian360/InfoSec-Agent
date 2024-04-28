@@ -2,7 +2,6 @@ package checks
 
 import (
 	"errors"
-	"fmt"
 	"regexp"
 	"strings"
 	"time"
@@ -67,6 +66,5 @@ func LastPasswordChange(executor mocking.CommandExecutor) Check {
 	if difference > halfYear {
 		return NewCheckResult(LastPasswordChangeID, 0, match)
 	}
-	return NewCheckResult(LastPasswordChangeID, 1, fmt.Sprintf("You changed your password recently on %s",
-		match))
+	return NewCheckResult(LastPasswordChangeID, 1, match)
 }
