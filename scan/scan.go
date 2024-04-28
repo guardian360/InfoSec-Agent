@@ -7,6 +7,8 @@ import (
 	"encoding/json"
 	"fmt"
 
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks/cisregistrysettings"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/browserutils"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/chromium"
@@ -83,6 +85,9 @@ var securityChecks = []func() checks.Check{
 	func() checks.Check { _, c := firefox.ExtensionFirefox(); return c },
 	func() checks.Check { return firefox.HistoryFirefox(browserutils.RealProfileFinder{}) },
 	firefox.SearchEngineFirefox,
+	func() checks.Check {
+		return cisregistrysettings.CISRegistrySettings(mocking.LocalMachine, mocking.UserProfiles)
+	},
 }
 
 // Scan executes all security/privacy checks, serializes the results to JSON, and returns a list of all found issues.

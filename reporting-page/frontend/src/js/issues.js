@@ -106,7 +106,7 @@ export function openIssuesPage() {
  * @param {number} level - The numeric representation of the risk level.
  * @return {string} The risk level corresponding to the numeric input:
  */
-function toRiskLevel(level) {
+export function toRiskLevel(level) {
   switch (level) {
   case 0:
     return 'Acceptable';
@@ -198,7 +198,7 @@ export function sortTable(tbody, column) {
       }
     } else {
       // Custom sorting for the last column
-      const order = {'high': 1, 'medium': 2, 'low': 3, 'acceptable': 4, 'Info': 5};
+      const order = {'high': 1, 'medium': 2, 'low': 3, 'acceptable': 4, 'info': 5};
       const textA = a.cells[column].textContent.toLowerCase();
       const textB = b.cells[column].textContent.toLowerCase();
       if (direction === 'ascending') {

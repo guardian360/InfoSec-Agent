@@ -1,12 +1,13 @@
 {
-        "10": {
+    "10": {
         "Name": "No devices connected via bluetooth",
         "Type": "Security",
         "Information": "Bluetooth technology enables wireless data transmission and reception. While this functionality is typically harmless when used as intended, it can become a security risk if exploited by malicious actors. If a malicious individual gains unauthorized access to your device through a Bluetooth connection, they can potentially steal your data, eavesdrop on your activities, or even send malware to your device. To mitigate these risks, it's crucial to only connect your device to known and trusted devices.",
         "Solution": 
         [   
             "No devices are connected via bluetooth, so there is no action needed."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
         ]
     },
@@ -16,12 +17,37 @@
         "Information": "Bluetooth technology enables wireless data transmission and reception. While this functionality is typically harmless when used as intended, it can become a security risk if exploited by malicious actors. If a malicious individual gains unauthorized access to your device through a Bluetooth connection, they can potentially steal your data, eavesdrop on your activities, or even send malware to your device. To mitigate these risks, it's crucial to only connect your device to known and trusted devices.",
         "Solution": 
         [   
-            "Go to Start > Settings > Bluetooth & devices", 
+            "Go to Start > Settings > Bluetooth & devices.", 
             "Here you can see which devices are connected via bluetooth, and you can remove them if necessary."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
             "frontend/src/assets/images/devices-connected-via-bluetooth/bluetooth-devices-1.jpg",
             "frontend/src/assets/images/devices-connected-via-bluetooth/bluetooth-devices-2.jpg"
+        ]
+    },
+    "20": {
+        "Name": "No external devices connected",
+        "Type": "Security",
+        "Information": "External devices such as USB drives, external hard drives, and other peripherals can introduce security risks to your computer. Malware can be spread through infected external devices, potentially compromising the security and integrity of your system. By ensuring that no external devices are connected to your computer when not in use, you reduce the risk of malware infection and unauthorized access to your system.",
+        "Solution": 
+        [   
+            "No external devices are connected, so there is no action needed."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "21": {
+        "Name": "External devices connected",
+        "Type": "Security",
+        "Information": "External devices such as USB drives, external hard drives, and other peripherals can introduce security risks to your computer. Malware can be spread through infected external devices, potentially compromising the security and integrity of your system. By ensuring that no external devices are connected to your computer when not in use, you reduce the risk of malware infection and unauthorized access to your system.",
+        "Solution": 
+        [   
+            "Check if any external devices are connected to your computer, and disconnect them if not in use. Examples of external devices include USB drives, external hard drives, external microphones, external cameras, and other peripherals."
+        ],
+        "Screenshots":
+        [
         ]
     },
     "30": {
@@ -30,12 +56,13 @@
         "Information": "The guest account is a default account designed to offer temporary and restricted access to the system for individuals without regular user accounts. If you are the sole user of the computer and do not require a guest account, it's advisable to disable it. This ensures that no unauthorized users can access data on the computer, enhancing overall security and privacy.",
         "Solution": 
         [   
-            "A unknown guest account status can be a security risk. To check the status and potentially solve the issue of the guest account, follow these steps",
-            "Go to start > Other accounts", 
-            "Here you will see the other accounts, if there is an account you don't know or something called ' guest' click on it",
-            "Now select 'remove' and confirm the deletion of the account",
+            "An unknown guest account status can be a security risk. To check the status and potentially solve the issue of the guest account, follow these steps.",
+            "Go to start > Other accounts.", 
+            "Here you will see the other accounts, if there is an account you do not know or an account called 'guest', click on it.",
+            "Now select 'remove' and confirm the deletion of the account.",
             "To finish, restart your computer."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
             "frontend/src/assets/images/guest-account/guest-account-1.jpg",
             "frontend/src/assets/images/guest-account/guest-account-1.jpg",
@@ -50,11 +77,12 @@
         "Information": "The guest account is a default account designed to offer temporary and restricted access to the system for individuals without regular user accounts. If you are the sole user of the computer and do not require a guest account, it's advisable to disable it. This ensures that no unauthorized users can access data on the computer, enhancing overall security and privacy.",
         "Solution": 
         [   
-            "Go to start > Other accounts", 
-            "Here you will see the other accounts, if there is an account you don't know or something called ' guest' click on it",
-            "Now select 'remove' and confirm the deletion of the account",
+            "Go to start > Other accounts.", 
+            "Here you will see the other accounts, if there is an account you do not know or something called 'guest' click on it.",
+            "Now select 'remove' and confirm the deletion of the account.",
             "To finish, restart your computer."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
             "frontend/src/assets/images/guest-account/guest-account-1.jpg",
             "frontend/src/assets/images/guest-account/guest-account-1.jpg",
@@ -69,7 +97,8 @@
         "Solution": 
         [   
             "There is no guest account on your computer, so there is no action needed."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
         ]
     },
@@ -81,7 +110,8 @@
         [   
             "Go to Start > Settings > System > Nearby share settings.", 
             "Here you can control the network sharing settings and turn the feature off."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
             "frontend/src/assets/images/network-sharing/nearby-sharing-1.jpg",
             "frontend/src/assets/images/network-sharing/nearby-sharing-2.jpg"
@@ -95,7 +125,8 @@
         [   
             "Go to Start > Settings > System > Nearby share settings.", 
             "Here you can control the network sharing settings and turn the feature off."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
             "frontend/src/assets/images/network-sharing/nearby-sharing-1.jpg",
             "frontend/src/assets/images/network-sharing/nearby-sharing-2.jpg"
@@ -108,7 +139,8 @@
         "Solution": 
         [   
             "Network sharing is disabled, so there is no action needed."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
         ]
     },
@@ -118,10 +150,11 @@
         "Information": "Network sharing refers to the ability to share resources, such as files, folders, printers, and internet connections, between multiple devices connected to a network. It allows users to access and collaborate on shared resources across the network, facilitating data exchange and collaboration among users and devices. Permissions can be configured to allow or deny access to specific users or groups, ensuring that sensitive data remains secure. If you do not need network sharing it is safer to turn it off.",
         "Solution": 
         [   
-            "It was not possible to retrieve the status of the network sharing settings. To check the status and potentially solve the issue of the network sharing, follow these steps",
+            "It was not possible to retrieve the status of the network sharing settings. To check the status and potentially solve the issue of the network sharing, follow these steps.",
             "Go to Start > Settings > System > Nearby share settings.", 
             "Here you can control the network sharing settings and turn the feature off."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
             "frontend/src/assets/images/network-sharing/nearby-sharing-1.jpg",
             "frontend/src/assets/images/network-sharing/nearby-sharing-1.jpg",
@@ -135,7 +168,8 @@
         "Solution": 
         [   
             "You are using a password manager, so there is no action needed."    
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
         ]
     },
@@ -147,7 +181,8 @@
         [   
             "Open your browser and look for a password manager like: LastPass, Dashlane, Bitwarden or another password manager you prefer.", 
             "Follow the installation steps provided by the website of the password manager."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
             "frontend/src/assets/images/password-manager/password-manager-1.jpg",
             "frontend/src/assets/images/password-manager/password-manager-1.jpg"
@@ -158,9 +193,11 @@
         "Type": "Privacy",
         "Information": "Knowing which applications have access to your location is important for protecting your privacy. It helps you control who can track your location, prevent security risks, conserve battery life, manage data usage, customize your app experience, and ensure compliance with regulations.",
         "Solution": 
-        [   "Select Start > Settings > Privacy & security.", 
+        [   
+            "Select Start > Settings > Privacy & security.", 
             "Here you can select location to see which applications have access, and you can revoke access for certain applications."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
             "frontend/src/assets/images/applications-with-location-permission/location-permissions-1.jpg",
             "frontend/src/assets/images/applications-with-location-permission/location-permissions-2.jpg"
@@ -171,9 +208,11 @@
         "Type": "Privacy",
         "Information": "Knowing which applications have access to your location is important for protecting your privacy. It helps you control who can track your location, prevent security risks, conserve battery life, manage data usage, customize your app experience, and ensure compliance with regulations.",
         "Solution": 
-        [   "Select Start > Settings > Privacy & security.", 
+        [   
+            "Select Start > Settings > Privacy & security.", 
             "Here you can select location to see which applications have access, and you can revoke access for certain applications."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
             "frontend/src/assets/images/applications-with-location-permission/location-permissions-1.jpg",
             "frontend/src/assets/images/applications-with-location-permission/location-permissions-2.jpg"
@@ -184,9 +223,11 @@
         "Type": "Privacy",
         "Information": "Understanding which applications have access to your microphone on your Windows computer is important for protecting your privacy and confidentiality. It helps you control who can listen to your conversations, prevent unauthorized recording, safeguard sensitive information, and ensure compliance with regulations.",
         "Solution": 
-        [   "Select Start > Settings > Privacy & security.", 
+        [   
+            "Select Start > Settings > Privacy & security.", 
             "Here you can select microphone to see which applications have access, and you can revoke access for certain applications."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
             "frontend/src/assets/images/applications-with-microphone-permission/microphone-permissions-1.jpg",
             "frontend/src/assets/images/applications-with-microphone-permission/microphone-permissions-2.jpg"
@@ -197,9 +238,11 @@
         "Type": "Privacy",
         "Information": "Understanding which applications have access to your microphone on your Windows computer is important for protecting your privacy and confidentiality. It helps you control who can listen to your conversations, prevent unauthorized recording, safeguard sensitive information, and ensure compliance with regulations.",
         "Solution": 
-        [   "Select Start > Settings > Privacy & security.", 
+        [   
+            "Select Start > Settings > Privacy & security.", 
             "Here you can select microphone to see which applications have access, and you can revoke access for certain applications."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
             "frontend/src/assets/images/applications-with-microphone-permission/microphone-permissions-1.jpg",
             "frontend/src/assets/images/applications-with-microphone-permission/microphone-permissions-2.jpg"
@@ -210,9 +253,11 @@
         "Type": "Privacy",
         "Information": "Being aware of which applications have access to your camera helps prevent unauthorized access. Malicious software or even legitimate applications with poorly implemented security features could potentially access your camera without your knowledge or consent. By knowing which applications have access, you can identify and block any unauthorized attempts.",
         "Solution": 
-        [   "Select Start > Settings > Privacy & security.", 
+        [   
+            "Select Start > Settings > Privacy & security.", 
             "Here you can select webcam to see which applications have access, and you can revoke access for certain applications."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
             "frontend/src/assets/images/applications-with-webcam-permission/webcam-permissions-1.jpg",
             "frontend/src/assets/images/applications-with-webcam-permission/webcam-permissions-2.jpg"
@@ -223,9 +268,11 @@
         "Type": "Privacy",
         "Information": "Being aware of which applications have access to your camera helps prevent unauthorized access. Malicious software or even legitimate applications with poorly implemented security features could potentially access your camera without your knowledge or consent. By knowing which applications have access, you can identify and block any unauthorized attempts.",
         "Solution": 
-        [   "Select Start > Settings > Privacy & security.", 
+        [   
+            "Select Start > Settings > Privacy & security.", 
             "Here you can select webcam to see which applications have access, and you can revoke access for certain applications."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
             "frontend/src/assets/images/applications-with-webcam-permission/camera-permissions-1.jpg",
             "frontend/src/assets/images/applications-with-webcam-permission/camera-permissions-2.jpg"
@@ -236,9 +283,11 @@
         "Type": "Privacy",
         "Information": "Understanding which applications have access to your calendar or appointments is crucial for protecting your privacy, and schedule. It helps you control who can view and potentially misuse your sensitive appointment information, prevent unauthorized access and manage data usage.",
         "Solution": 
-        [   "Select Start > Settings > Privacy & security.", 
+        [   
+            "Select Start > Settings > Privacy & security.", 
             "Here you can select appointments to see which applications have access, and you can revoke access for certain applications."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
             "frontend/src/assets/images/applications-with-calendar-permission/calendar-permissions-1.jpg",
             "frontend/src/assets/images/applications-with-calendar-permission/calendar-permissions-2.jpg"
@@ -249,9 +298,11 @@
         "Type": "Privacy",
         "Information": "Understanding which applications have access to your calendar or appointments is crucial for protecting your privacy, and schedule. It helps you control who can view and potentially misuse your sensitive appointment information, prevent unauthorized access and manage data usage.",
         "Solution": 
-        [   "Select Start > Settings > Privacy & security.", 
+        [   
+            "Select Start > Settings > Privacy & security.", 
             "Here you can select appointments to see which applications have access, and you can revoke access for certain applications."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
             "frontend/src/assets/images/applications-with-calendar-permission/calendar-permissions-1.jpg",
             "frontend/src/assets/images/applications-with-calendar-permission/calendar-permissions-2.jpg"
@@ -262,9 +313,11 @@
         "Type": "Privacy",
         "Information": "Understanding which applications have access to your contacts on your Windows computer is good for safeguarding your privacy. It allows you to control who can view and potentially misuse your contact information, prevent unauthorized access and manage data usage.",
         "Solution": 
-        [   "Select Start > Settings > Privacy & security.", 
+        [   
+            "Select Start > Settings > Privacy & security.", 
             "Here you can select contacts to see which applications have access, and you can revoke access for certain applications."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
             "frontend/src/assets/images/applications-with-contacts-permission/contacts-permissions-1.jpg",
             "frontend/src/assets/images/applications-with-contacts-permission/contacts-permissions-2.jpg"
@@ -275,9 +328,11 @@
         "Type": "Privacy",
         "Information": "Understanding which applications have access to your contacts on your Windows computer is good for safeguarding your privacy. It allows you to control who can view and potentially misuse your contact information, prevent unauthorized access and manage data usage.",
         "Solution": 
-        [   "Select Start > Settings > Privacy & security.", 
+        [   
+            "Select Start > Settings > Privacy & security.", 
             "Here you can select contacts to see which applications have access, and you can revoke access for certain applications."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
             "frontend/src/assets/images/applications-with-contacts-permission/contacts-permissions-1.jpg",
             "frontend/src/assets/images/applications-with-contacts-permission/contacts-permissions-2.jpg"
@@ -286,22 +341,15 @@
     "110": {
         "Name": "Open ports",
         "Type": "Security",
-        "Information": "An open port is one that permits the receipt of data packets. Certain applications require specific ports to receive data so the presence of open ports does not inherently pose risks. However, some ports may lack adequate protection, potentially allowing unauthorized communication and introducing security vulnerabilities. It's essential to keep ports open only when actively in use and close them when not needed. Given that numerous open ports can expand the attack surface of your computer, it's advisable to routinely monitor and secure your system's network ports to mitigate these risks and maintain a strong security posture.",
+        "Information": "An open port is one that permits the receipt of data packets. Certain applications require specific ports to receive data so the presence of open ports does not inherently pose risks. However, some ports may lack adequate protection, potentially allowing unauthorized communication and introducing security vulnerabilities. It is essential to keep ports open only when actively in use and close them when not needed. Given that numerous open ports can expand the attack surface of your computer, it's advisable to routinely monitor and secure your system's network ports to mitigate these risks and maintain a strong security posture.",
         "Solution": 
         [   
-            "not sure yet"
-        ],"Screenshots":
-        [
-        ]
-    },
-    "111": {
-        "Name": "Open ports",
-        "Type": "Security",
-        "Information": "An open port is one that permits the receipt of data packets. Certain applications require specific ports to receive data so the presence of open ports does not inherently pose risks. However, some ports may lack adequate protection, potentially allowing unauthorized communication and introducing security vulnerabilities. It's essential to keep ports open only when actively in use and close them when not needed. Given that numerous open ports can expand the attack surface of your computer, it's advisable to routinely monitor and secure your system's network ports to mitigate these risks and maintain a strong security posture.",
-        "Solution": 
-        [   
-            "not sure yet"
-        ],"Screenshots":
+            "To reduce risk, make sure that Windows Defender is enabled. This will block certain traffic into or out of your device via open ports. To gain more insight in your open ports following the following instructions.",
+            "Open a command prompt by clicking 'Start', typing 'cmd', and pressing 'Enter'.",
+            "Now type 'netstat -ab' and you will see a list of open ports and their corresponding programs.",
+            "If you see any suspicious programs or ports, you can close them by by shutting down the corresponding program."
+        ],
+        "Screenshots":
         [
         ]
     },
@@ -313,7 +361,8 @@
         [   
             "Go to Start > Settings > System > Remote Desktop.", 
             "Here you can control the remote desktop settings and turn the feature off."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
         ]
     },
@@ -324,7 +373,8 @@
         "Solution": 
         [   
             "Remote desktop has been disabled, so there is no action needed."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
         ]
     },
@@ -335,7 +385,8 @@
         "Solution": 
         [   
             "All version of SMB are disabled, so there is no action needed."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
         ]
     },
@@ -346,10 +397,11 @@
         "Solution": 
         [   
             "On your keyboard, press 'Windows+R' to open the Run window.", 
-            "Type ‘Powershell’. Then select ‘OK’.", 
-            "In the Powershell, type ‘Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol’ and hit enter.",
+            "Type 'Powershell', then select OK.", 
+            "In the Powershell, type 'Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol' and hit enter.",
             "To finish, restart your computer."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
             "frontend/src/assets/images/smb-status/smb-2.jpg",
             "frontend/src/assets/images/smb-status/smb-2.jpg",
@@ -364,7 +416,8 @@
         "Solution": 
         [   
             "SMB version 2 is enabled which is a secure and widely used version, so there is no action needed."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
         ]
     },
@@ -375,10 +428,11 @@
         "Solution": 
         [   
             "On your keyboard, press 'Windows+R' to open the Run window.", 
-            "Type ‘Powershell’. Then select ‘OK’.", 
-            "In the Powershell, type ‘Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol’ and hit enter.",
+            "Type 'Powershell', then select OK.", 
+            "In the Powershell, type 'Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol' and hit enter.",
             "To finish, restart your computer."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
             "frontend/src/assets/images/smb-status/smb-2.jpg",
             "frontend/src/assets/images/smb-status/smb-2.jpg",
@@ -393,12 +447,13 @@
         "Solution": 
         [   
             "On your keyboard, press 'Windows+R' to open the Run window.", 
-            "Type ‘Control Panel’. Then select ‘OK’.",
+            "Type 'Control Panel', then select OK.", 
             "Select 'User Accounts' or 'User Accounts and Family Safety'.",
             "Select 'Change User Account Control settings'. If you are prompted by UAC, select 'Yes' to continue.",
             "Here you can move the slider to 'Always notify' to turn UAC on. If you are prompted by UAC, select 'Yes' to continue.",
             "To finish, restart your computer."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
             "frontend/src/assets/images/user-account-control/user-account-control-1.jpg",
             "frontend/src/assets/images/user-account-control/user-account-control-2.jpg",
@@ -407,24 +462,27 @@
             "frontend/src/assets/images/user-account-control/user-account-control-5.jpg",
             "frontend/src/assets/images/user-account-control/user-account-control-5.jpg"
         ]
-    },"141": {
+    },
+    "141": {
         "Name": "User account control",
         "Type": "Security",
         "Information": "User Account Control (UAC) is a security feature introduced in Windows Vista and present in subsequent versions of the Windows operating system. Its primary purpose is to enhance the security of the operating system by limiting the privileges of applications and processes running with standard user rights and requiring administrator approval for tasks that require elevated permissions.",
         "Solution": 
         [   
            "The settings for the user account control are set to 'Always notify', so there is no action needed."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
         ]
-    },"142": {
+    },
+    "142": {
         "Name": "User account control",
         "Type": "Security",
         "Information": "User Account Control (UAC) is a security feature introduced in Windows Vista and present in subsequent versions of the Windows operating system. Its primary purpose is to enhance the security of the operating system by limiting the privileges of applications and processes running with standard user rights and requiring administrator approval for tasks that require elevated permissions.",
         "Solution": 
         [   "The settings for user account control are turned on for apps, setting it to always notify is a safer option. To turn on UAC follow these steps",
             "On your keyboard, press 'Windows+R' to open the Run window.", 
-            "Type ‘Control Panel’. Then select ‘OK’.",
+            "Type 'Control Panel', then select OK.",
             "Select 'User Accounts' or 'User Accounts and Family Safety'.",
             "Select 'Change User Account Control settings'. If you are prompted by UAC, select 'Yes' to continue.",
             "Here you can move the slider to 'Always notify' to turn UAC on. If you are prompted by UAC, select 'Yes' to continue.",
@@ -439,14 +497,15 @@
             "frontend/src/assets/images/user-account-control/user-account-control-5.jpg",
             "frontend/src/assets/images/user-account-control/user-account-control-5.jpg"
         ]
-    },"143": {
+    },
+    "143": {
         "Name": "User account control",
         "Type": "Security",
         "Information": "User Account Control (UAC) is a security feature introduced in Windows Vista and present in subsequent versions of the Windows operating system. Its primary purpose is to enhance the security of the operating system by limiting the privileges of applications and processes running with standard user rights and requiring administrator approval for tasks that require elevated permissions.",
         "Solution": 
         [   "The status of the user account control settings are unknown, to check the status and potentially solve the issue of the user account control, follow these steps",
             "On your keyboard, press 'Windows+R' to open the Run window.", 
-            "Type ‘Control Panel’. Then select ‘OK’.",
+            "Type 'Control Panel', then select OK.",
             "Select 'User Accounts' or 'User Accounts and Family Safety'.",
             "Select 'Change User Account Control settings'. If you are prompted by UAC, select 'Yes' to continue.",
             "Here you can move the slider to 'Always notify' to turn UAC on. If you are prompted by UAC, select 'Yes' to continue.",
@@ -555,12 +614,14 @@
     "160": {
         "Name": "Last password change more than 6 months ago",
         "Type": "Security",
-        "Information": "Changing your password regularly is important. Especially when the same password is used for multiple applications. So it is a good habit to change you password at least twice a year.",
+        "Information": "Regularly changing your password reduces the likelihood of unauthorized access to your computer or sensitive information. If someone does manage to obtain your password, changing it regularly limits the time they have to exploit it.  So it is a good habit to change your password at least twice a year.",
         "Solution": 
-        [   "Go to start > Change your password", 
+        [   
+            "Go to start > Change your password", 
             "Open the 'Password' section and click on the 'change' button.",
             "You can now change your password to a new unique one."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
             "frontend/src/assets/images/last-password-change/change-password-1.jpg",
             "frontend/src/assets/images/last-password-change/change-password-2.jpg",
@@ -570,11 +631,12 @@
     "161": {
         "Name": "Last password change recent",
         "Type": "Security",
-        "Information": "Changing your password regularly is important. Especially when the same password is used for multiple applications. So it is a good habit to change you password at least twice a year.",
+        "Information": "Regularly changing your password reduces the likelihood of unauthorized access to your computer or sensitive information. If someone does manage to obtain your password, changing it regularly limits the time they have to exploit it.  So it is a good habit to change your password at least twice a year.",
         "Solution": 
         [   
             "You changed your password recently, so there is no action needed."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
         ]
     },
@@ -586,21 +648,38 @@
         [   
             "Go to Start > Settings > Accounts > Sign-in options.", 
             "Now you can set up one of the available login methods by following the steps described."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
             "frontend/src/assets/images/windows-login-method/login-method-1.jpg",
             "frontend/src/assets/images/windows-login-method/login-method-2.jpg"
         ]
     },
     "171": {
-        "Name": "Windows login method",
+        "Name": "Windows login with pin only",
         "Type": "Security",
         "Information": "Using a secure windows login method is important. Windows supports various login methods like a password, pin, security key or fingerprint. Using one of these login methods is important to keep your data safe. Without one of these login methods anyone is able to unlock your device and access your data.",
         "Solution": 
         [   
             "Go to Start > Settings > Accounts > Sign-in options.", 
             "Now you can set up one of the available login methods by following the steps described."
-        ],"Screenshots":
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-login-method/login-method-1.jpg",
+            "frontend/src/assets/images/windows-login-method/login-method-2.jpg"
+        ]
+    },
+    "173": {
+        "Name": "Windows login with multi-factor authentication",
+        "Type": "Security",
+        "Information": "Using a secure windows login method is important. Windows supports various login methods like a password, pin, security key or fingerprint. Using one of these login methods is important to keep your data safe. Without one of these login methods anyone is able to unlock your device and access your data.",
+        "Solution": 
+        [   
+            "Go to Start > Settings > Accounts > Sign-in options.", 
+            "Now you can set up one of the available login methods by following the steps described."
+        ],
+        "Screenshots":
         [
             "frontend/src/assets/images/windows-login-method/login-method-1.jpg",
             "frontend/src/assets/images/windows-login-method/login-method-2.jpg"
@@ -613,7 +692,8 @@
         "Solution": 
         [
             "Your windows version is up-to-date, so there is no action needed."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
         ]
     },
@@ -625,7 +705,8 @@
         [
             "Go to Start > Settings > Windows Update.",
             "Here you can check for updates and install updates."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
             "frontend/src/assets/images/outdated-windows-version/windows-update-1.jpg",
             "frontend/src/assets/images/outdated-windows-version/windows-update-2.jpg"
@@ -639,7 +720,8 @@
         [
             "Go to Start > Settings > Windows Update.",
             "Here you can check for updates and install updates."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
             "frontend/src/assets/images/outdated-windows-version/windows-update-1.jpg",
             "frontend/src/assets/images/outdated-windows-version/windows-update-2.jpg"
@@ -655,7 +737,8 @@
             "Once you are in the BIOS/UEFI settings, navigate to the section related to Secure Boot. This section may be named differently depending on your system manufacturer and BIOS/UEFI version.",
             "In the Secure Boot section, you should find an option to enable Secure Boot. Select this option and set it to 'Enabled.' Some systems may require you to set a Secure Boot Mode or choose the Secure Boot Key Management option. Follow the on-screen instructions to enable Secure Boot.",
             "After enabling Secure Boot, save the changes to the BIOS/UEFI settings and exit. Usually, you can do this by selecting the 'Save & Exit' or 'Exit' option from the BIOS/UEFI menu. Confirm any prompts to save the changes and restart your computer."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
         ]
     },
@@ -666,7 +749,8 @@
         "Solution": 
         [   
             "Secure boot is enabled, so there is no action needed."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
         ]
     },
@@ -676,12 +760,13 @@
         "Information": "Secure Boot ensures that only trusted software components, signed with recognized digital signatures, are loaded during the boot process. This prevents malware and other unauthorized software from tampering with the boot process and gaining control of the system at an early stage.",
         "Solution": 
         [   
-        "The status of the secure boot setting is unknown, to check the status and potentially solve the issue of the secure boot, follow these steps",
-        "Restart your computer and access the BIOS/UEFI settings. This is usually done by pressing a specific key during the boot process. Common keys to access BIOS/UEFI settings include F2, Del, Esc, or F10. The specific key varies depending on your computer's manufacturer.", 
-        "Once you are in the BIOS/UEFI settings, navigate to the section related to Secure Boot. This section may be named differently depending on your system manufacturer and BIOS/UEFI version.",
-        "In the Secure Boot section, you should find an option to enable Secure Boot. Select this option and set it to \"Enabled.\" Some systems may require you to set a Secure Boot Mode or choose the Secure Boot Key Management option. Follow the on-screen instructions to enable Secure Boot.",
-        "After enabling Secure Boot, save the changes to the BIOS/UEFI settings and exit. Usually, you can do this by selecting the \"Save & Exit\" or \"Exit\" option from the BIOS/UEFI menu. Confirm any prompts to save the changes and restart your computer."
-        ],"Screenshots":
+            "The status of the secure boot setting is unknown, to check the status and potentially solve the issue of the secure boot, follow these steps",
+            "Restart your computer and access the BIOS/UEFI settings. This is usually done by pressing a specific key during the boot process. Common keys to access BIOS/UEFI settings include F2, Del, Esc, or F10. The specific key varies depending on your computer's manufacturer.", 
+            "Once you are in the BIOS/UEFI settings, navigate to the section related to Secure Boot. This section may be named differently depending on your system manufacturer and BIOS/UEFI version.",
+            "In the Secure Boot section, you should find an option to enable Secure Boot. Select this option and set it to \"Enabled.\" Some systems may require you to set a Secure Boot Mode or choose the Secure Boot Key Management option. Follow the on-screen instructions to enable Secure Boot.",
+            "After enabling Secure Boot, save the changes to the BIOS/UEFI settings and exit. Usually, you can do this by selecting the \"Save & Exit\" or \"Exit\" option from the BIOS/UEFI menu. Confirm any prompts to save the changes and restart your computer."
+        ],
+        "Screenshots":
         [
         ]
     },
@@ -692,7 +777,8 @@
         "Solution": 
         [   
             "There are no applications which start at boot, so there is no action needed."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
         ]
     },
@@ -704,7 +790,8 @@
         [   
             "Go to Start > Settings > Apps > Startup.", 
             "Here you can choose which applications will automatically start during boot."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
             "frontend/src/assets/images/applications-which-start-at-boot/boot-apps-1.jpg",
             "frontend/src/assets/images/applications-which-start-at-boot/boot-apps-2.jpg"
@@ -713,13 +800,14 @@
     "210": {
         "Name": "Google Chrome with an adblocker installed",
         "Type": "Privacy",
-        "Information": "Adblockers shield users from online advertisements. With their filters and algorithms, they provide a sanctuary of uninterrupted browsing, sparing users from the visual clutter and potential security risks posed by ads. ",
+        "Information": "Adblockers shield users from online advertisements. With their filters and algorithms, they provide a sanctuary of uninterrupted browsing, sparing users from the visual clutter and potential security risks posed by ads.",
         "Solution": 
         [   		
             "Open Google Chrome and navigate to the Chrome Store.", 
 			"Search for an adblocker in the search bar(for example: AdBlock Plus or uBlock Origin",
 			"Click on the 'Add to Chrome' button and restart the browser."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
         ]
     },
@@ -732,7 +820,8 @@
             "Open Google Chrome and navigate to the Chrome Store.", 
 			"Search for an adblocker in the search bar (for example: AdBlock Plus or uBlock Origin",
 			"Click on the 'Add to Chrome' button and restart the browser."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
         ]
     },
@@ -745,7 +834,8 @@
             "Open Microsoft Edge and navigate to Microsoft Edge Extensions", 
 			"Search for an adblocker in the search bar (for example: AdBlock Plus or uBlock Origin)",
 			"Click on the 'Download' button and restart the browser."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
         ]
     },
@@ -758,7 +848,8 @@
             "Open Microsoft Edge and navigate to Microsoft Edge Extensions", 
 			"Search for an adblocker in the search bar (for example: AdBlock Plus or uBlock Origin)",
 			"Click on the 'Download' button and restart the browser."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
         ]
     },
@@ -769,7 +860,8 @@
         "Solution": 
         [   		
             "Be careful browsing the internet as trusted websites could be spoofed easily. Furthermore there are a lot of websites with malicious intentions. In case of doubt of actively browsing on a potential phishing website, it is advised to change your password."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
         ]
     },	
@@ -780,7 +872,8 @@
         "Solution": 
         [   		
             "Be careful browsing the internet as trusted websites could be spoofed easily. Furthermore there are a lot of websites with malicious intentions. In case of doubt of actively browsing on a potential phishing website, it is advised to change your password."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
         ]
     },	
@@ -791,7 +884,8 @@
         "Solution": 
         [   		
             "Be careful browsing the internet as trusted websites could be spoofed easily. Furthermore there are a lot of websites with malicious intentions. In case of doubt of actively browsing on a potential phishing website, it is advised to change your password."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
         ]
     },	
@@ -802,7 +896,8 @@
         "Solution": 
         [   		
             "Be careful browsing the internet as trusted websites could be spoofed easily. Furthermore there are a lot of websites with malicious intentions. In case of doubt of actively browsing on a potential phishing website, it is advised to change your password."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
         ]
     },
@@ -812,8 +907,9 @@
         "Information": "A standard search engine helps users find information on the internet by entering keywords or phrases. Examples include Google, Bing, and Yahoo. They often face criticism for their approach to privacy.",
         "Solution": 
         [   		
-            "Consider using a browser with a focus on the privacy of the users (for example DuckDuckGo)"
-        ],"Screenshots":
+            "Consider using a search engine with a focus on the privacy of the users (for example DuckDuckGo)."
+        ],
+        "Screenshots":
         [
         ]
     },	
@@ -823,11 +919,41 @@
         "Information": "A standard search engine helps users find information on the internet by entering keywords or phrases. Examples include Google, Bing, and Yahoo. They often face criticism for their approach to privacy.",
         "Solution": 
         [   		
-            "Consider using a browser with a focus on the privacy of the users (for example DuckDuckGo)"
-        ],"Screenshots":
+            "Consider using a search engine with a focus on the privacy of the users (for example DuckDuckGo)."
+        ],
+        "Screenshots":
         [
         ]
-    },	
+    },
+    "270": {
+        "Name": "Cookies stored by Mozilla Firefox",
+        "Type": "Privacy",
+        "Information": "Cookies are small text files stored on your computer by websites you visit. They are used to remember your preferences, login information, and other data to enhance your browsing experience. However, cookies can also be used to track your online activities and gather personal information without your consent, raising privacy concerns. Managing and clearing cookies regularly helps protect your privacy and control the data websites collect about you.",
+        "Solution": 
+        [   		
+            "Open Mozilla Firefox and click on the menu button (three horizontal lines) in the top right corner.",
+            "Select 'Options' and go to the 'Privacy & Security' tab.",
+            "Under 'Cookies and Site Data', click on 'Manage Data'.",
+            "Here you can view and remove cookies stored by websites. You can also clear all cookies by clicking on 'Remove All'."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "280": {
+        "Name": "Extensions installed in Mozilla Firefox",
+        "Type": "Privacy",
+        "Information": "Browser extensions enhance the functionality of your web browser by adding features, tools, and customization options. While extensions can be useful, they can also pose privacy and security risks if they have access to sensitive data or track your online activities without your consent. Regularly reviewing and managing your browser extensions helps protect your privacy and security online. Remove any extensions that you no longer use or trust to minimize potential risks.",
+        "Solution": 
+        [   		
+            "Open Mozilla Firefox and click on the menu button (three horizontal lines) in the top right corner.",
+            "Select 'Add-ons' and go to the 'Extensions' tab.",
+            "Here you can view and manage the extensions installed in your browser. Disable or remove any extensions that you no longer use or trust."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
     "290": {
         "Name": "Mozilla Firefox with an adblocker installed",
         "Type": "Privacy",
@@ -837,7 +963,8 @@
             "Open Mozilla Firefox and navigate to Firefox Extensions", 
 			"Search for an adblocker in the search bar (for example: AdBlock Plus or uBlock Origin)",
 			"Click on the 'Download' button and restart the browser."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
         ]
     },	
@@ -850,7 +977,8 @@
             "Open Mozilla Firefox and navigate to Firefox Extensions", 
 			"Search for an adblocker in the search bar (for example: AdBlock Plus or uBlock Origin)",
 			"Click on the 'Download' button and restart the browser."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
         ]
     },		
@@ -861,7 +989,8 @@
         "Solution": 
         [   		
           "Consider using a browser with a focus on the privacy of the users (for example DuckDuckGo)"
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
         ]
     },	
@@ -872,7 +1001,8 @@
         "Solution": 
         [   		
           "Be careful browsing the internet as trusted websites could be spoofed easily. Furthermore there are a lot of websites with malicious intentions. In case of doubt of actively browsing on a potential phishing website, it is advised to change your password."  
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
         ]
     },		
@@ -883,7 +1013,8 @@
         "Solution": 
         [   		
            "Be careful browsing the internet as trusted websites could be spoofed easily. Furthermore there are a lot of websites with malicious intentions. In case of doubt of actively browsing on a potential phishing website, it is advised to change your password." 
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
         ]
     },
@@ -926,5 +1057,19 @@
             "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-4.jpg",
             "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-4.jpg"
         ]
-    }	
+    },
+    "330": {
+        "Name": "Extensions installed in Google Chrome",
+        "Type": "Privacy",
+        "Information": "Browser extensions enhance the functionality of your web browser by adding features, tools, and customization options. While extensions can be useful, they can also pose privacy and security risks if they have access to sensitive data or track your online activities without your consent. Regularly reviewing and managing your browser extensions helps protect your privacy and security online. Remove any extensions that you no longer use or trust to minimize potential risks.",
+        "Solution": 
+        [   		
+            "Open Google Chrome and click on the three dots in the top right corner.",
+            "Select 'Extensions' and then 'Manage Extensions.",
+            "Here you can view and manage the extensions installed in your browser. Disable or remove any extensions that you no longer use or trust."
+        ],
+        "Screenshots":
+        [
+        ]
+    }
 }
