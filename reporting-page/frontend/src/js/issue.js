@@ -4,7 +4,7 @@ import {getLocalization} from './localize.js';
 import {retrieveTheme} from './personalize.js';
 
 let stepCounter = 0;
-const issuesWithResultsShow = ['60','70','80','90','100','110','160'];
+const issuesWithResultsShow = ['60', '70', '80', '90', '100', '110', '160'];
 
 /** Update contents of solution guide
  *
@@ -74,8 +74,7 @@ export function openIssuePage(issueId) {
     const pageContents = document.getElementById('page-contents');
     if (issuesWithResultsShow.includes(issueId)) {
       pageContents.innerHTML = parseShowResult(issueId, currentIssue);
-    }
-    else {
+    } else {
       pageContents.innerHTML = `
         <h1 class="issue-name">${currentIssue.Name}</h1>
         <div class="issue-information">
@@ -118,51 +117,67 @@ export function openIssuePage(issueId) {
   document.getElementById('back-button').addEventListener('click', () => openIssuesPage());
 }
 
+/** Check if the issue is a show result issue
+ *
+ * @param {string} issue checks if the issue is a show result issue
+ * @return {boolean} if the issue is a show result issue
+ */
 export function checkShowResult(issue) {
   return issue.Name.includes('Applications with');
 }
 
-export function parseShowResult(issueId, currentIssue){
+/** Parse the show result of an issue
+ *
+ * @param {string} issueId of the issue
+ * @param {string} currentIssue of the issue we are looking at
+ * @return {string} result of the show result
+ */
+export function parseShowResult(issueId, currentIssue) {
   let issues = [];
   issues = JSON.parse(sessionStorage.getItem('ScanResult'));
   let resultLine = '';
 
   switch (issueId) {
-    case '60':
-      resultLine = permissionShowResults(issues);
-      break;
-    case '70':
-      resultLine = permissionShowResults(issues);
-      break;
-    case '80':
-      resultLine = permissionShowResults(issues);
-      break;
-    case '90':
-      resultLine = permissionShowResults(issues);
-      break;
-    case '100':
-      resultLine = permissionShowResults(issues);
-      break;
-    case '110':
-      resultLine += `The following ports are open: <br>`
-      issues.find(issue => issue.issue_id === 11).result.forEach((issue) => {
-        resultLine += `${issue} <br> `;
-      });
-      break;
-    case '160':
-      issues.find(issue => issue.issue_id === 16).result.forEach((issue) => {
-        resultLine += `You changed your password on: ${issue}`;
-      });
-      break;
-    default:
-      break;
+  case '60':
+    resultLine = permissionShowResults(issues);
+    break;
+  case '70':
+    resultLine = permissionShowResults(issues);
+    break;
+  case '80':
+    resultLine = permissionShowResults(issues);
+    break;
+  case '90':
+    resultLine = permissionShowResults(issues);
+    break;
+  case '100':
+    resultLine = permissionShowResults(issues);
+    break;
+  case '110':
+    resultLine += `The following ports are open: <br>`;
+    issues.find((issue) => issue.issue_id === 11).result.forEach((issue) => {
+      resultLine += `${issue} <br> `;
+    });
+    break;
+  case '160':
+    issues.find((issue) => issue.issue_id === 16).result.forEach((issue) => {
+      resultLine += `You changed your password on: ${issue}`;
+    });
+    break;
+  default:
+    break;
   }
 
-  function permissionShowResults(issues){
+  /**
+   *
+   * @param {string} issues with the permission results
+   * @return {string} resultLine with the permission results
+   */
+  function permissionShowResults(issues) {
     let applications = '';
     issues.forEach((issue) => {
       if (issue.issue_id.toString() + issue.result_id.toString() === issueId.toString()) {
-        let issueResult = issue.result;
+        const issueResult = issue.result;
         issueResult.forEach((application) => {
           applications += `${application}, `;
         });
@@ -173,7 +188,7 @@ export function parseShowResult(issueId, currentIssue){
     return resultLine;
   }
 
-  let result = `
+  const result = `
   <h1 class="issue-name">${currentIssue.Name}</h1>
   <div class="issue-information">
     <h2 id="information">Information</h2>
