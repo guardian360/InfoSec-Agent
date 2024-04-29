@@ -8,7 +8,7 @@ import "github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 //
 // Parameters:
 //
-//   - registryKey (mocking.RegistryKey): The root key from which the registry settings will be checked. Should be TODO: for this function.
+//   - registryKey (mocking.RegistryKey): The root key from which the registry settings will be checked. Should be HKEY_LOCAL_MACHINE for this function.
 //
 // Returns:
 //
