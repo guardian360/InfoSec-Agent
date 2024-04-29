@@ -200,13 +200,24 @@ func checkTableTDs(child *html.Node) string {
 	return ""
 }
 
-
+// findWindowsVersion is a function that determines the Windows version based on the major and minor version numbers.
+// It uses the versioning scheme of Windows 10 and Windows 11, where Windows 11 is identified by a minor version number of 22000 or higher.
+//
+// Parameters:
+//   - majorVersion int: The major version number of the Windows OS. For Windows 10 and 11, this should be 10.
+//   - minorVersion int: The minor version number of the Windows OS. For Windows 11, this should be 22000 or higher.
+//
+// Returns:
+//   - int: The identified Windows version. This will be 11 for Windows 11, 10 for Windows 10, and 0 for any other version.
 func findWindowsVersion(majorVersion int, minorVersion int) int {
+	// If the minor version is 22000 or higher and the major version is 10, this is Windows 11
 	if minorVersion >= 22000 && majorVersion == 10 {
 		return 11
 	}
+	// If the major version is 10, and it's not Windows 11, it must be Windows 10
 	if majorVersion == 10 {
 		return 10
 	}
+	// If it's neither Windows 10 nor 11, return 0
 	return 0
 }
