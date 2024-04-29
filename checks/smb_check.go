@@ -57,19 +57,15 @@ func SmbEnabled(executor mocking.CommandExecutor, resultID int) (string, string,
 		}
 	}
 
-	if smb1 == enabled || smb2 == enabled {
-		smb1Enabled := "not enabled"
-		smb2Enabled := "not enabled"
-		if smb1 == enabled {
-			resultID++
-			smb1Enabled = "enabled"
-		}
-		if smb2 == enabled {
-			resultID += 2
-			smb2Enabled = "enabled"
-		}
-		return "SMB1: " + smb1Enabled, "SMB2: " + smb2Enabled, resultID, nil
+	smb1Enabled := "not enabled"
+	smb2Enabled := "not enabled"
+	if smb1 == enabled {
+		resultID++
+		smb1Enabled = "enabled"
 	}
-
-	return "SMB1: not enabled", "SMB2: not enabled", resultID, nil
+	if smb2 == enabled {
+		resultID += 2
+		smb2Enabled = "enabled"
+	}
+	return "SMB1: " + smb1Enabled, "SMB2: " + smb2Enabled, resultID, nil
 }
