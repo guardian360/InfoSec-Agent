@@ -72,7 +72,11 @@ func Permission(permissionID int, permission string, registryKey mocking.Registr
 	}
 	// Remove duplicate results
 	filteredResults := RemoveDuplicateStr(results)
-	return NewCheckResult(permissionID, 0, filteredResults...)
+	if len(filteredResults) == 0 {
+		return NewCheckResult(permissionID, 1)
+	} else {
+		return NewCheckResult(permissionID, 0, filteredResults...)
+	}
 }
 
 // appKeyName is a helper function that returns the appropriate registry key name for a given application name.
