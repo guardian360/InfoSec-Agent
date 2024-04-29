@@ -24,8 +24,11 @@ func Permission(permissionID int, permission string, registryKey mocking.Registr
 	var appKey mocking.RegistryKey
 	var nonPackagedApplicationNames []string
 	// Open the registry key for the given permission
-	key, _ := mocking.OpenRegistryKey(registryKey,
+	key, err := mocking.OpenRegistryKey(registryKey,
 		`Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\`+permission)
+	if err != nil {
+		return NewCheckErrorf(permissionID, "error opening registry key", err)
+	}
 	// Close the key after we have received all relevant information
 	defer mocking.CloseRegistryKey(key)
 
@@ -78,7 +81,7 @@ func Permission(permissionID int, permission string, registryKey mocking.Registr
 	if len(prettyResults) == 0 {
 		return NewCheckResult(permissionID, 1)
 	}
-	return NewCheckResult(permissionID, 0, filteredResults...)
+	return NewCheckResult(permissionID, 0, prettyResults...)
 }
 
 // appKeyName is a helper function that returns the appropriate registry key name for a given application name.
