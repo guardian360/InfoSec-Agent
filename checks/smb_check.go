@@ -16,9 +16,9 @@ import (
 //   - Check: A struct containing the results of the checks. The result indicates whether SMB1 and SMB2 protocols are enabled or not.
 //
 // The function works by executing the commands to check the status of SMB1 and SMB2 protocols using the provided executors. It then parses the output of the commands to determine whether the protocols are enabled or not. The function returns a Check instance containing the results of the checks.
-func SmbCheck(smb1executor mocking.CommandExecutor, smb2executor mocking.CommandExecutor) Check {
+func SmbCheck(smbexecutor mocking.CommandExecutor) Check {
 	var resultID int
-	smb1, smb2, resultID, err := SmbEnabled(smb1executor, resultID)
+	smb1, smb2, resultID, err := SmbEnabled(smbexecutor, resultID)
 
 	if err != nil {
 		return NewCheckError(SmbID, err)
@@ -44,20 +44,21 @@ func SmbEnabled(executor mocking.CommandExecutor, resultID int) (string, string,
 	output, err := executor.Execute("powershell", command)
 
 	if err != nil {
-		return "", 0, err
+		return "", "", 0, err
 	}
 
-	line = strings.TrimSpace(output)
+	smb1, smb2 := "", ""
+	line := strings.TrimSpace(string(output))
 	if line != "" {
 		values := strings.Fields(line)
 		if len(values) == 2 {
-			smb1, smb2 := values[0], values[1]
+			smb1, smb2 = values[0], values[1]
 		}
 	}
 
 	if smb1 == "True" || smb2 == "True" {
-		smb1Enabled = "not enabled"
-		smb2Enabled = "not enabled"
+		smb1Enabled := "not enabled"
+		smb2Enabled := "not enabled"
 		if smb1 == "True" {
 			resultID++
 			smb1Enabled = "enabled"
@@ -70,18 +71,4 @@ func SmbEnabled(executor mocking.CommandExecutor, resultID int) (string, string,
 	}
 
 	return "SMB1: not enabled", "SMB2: not enabled", resultID, nil
-
-	// outputString := strings.Split(string(output), "\r\n")
-	// line := strings.TrimSpace(outputString[3])
-	// if line == "True" {
-	// 	if smb1 == "SMB1" {
-	// 		resultID++
-	// 	}
-	// 	if smb == "SMB2" {
-	// 		resultID += 2
-	// 	}
-	// 	return smb + ": enabled", resultID, nil
-	// }
-
-	// return smb + ": not enabled", resultID, nil
 }
