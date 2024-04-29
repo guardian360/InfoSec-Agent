@@ -19,6 +19,7 @@ import (
 func ExternalDevices(executorClass mocking.CommandExecutor) Check {
 	// All the classes you want to check with the Get-PnpDevice command
 	// This list can easily be extended; we refer to the Microsoft documentation for the Get-PnpDevice command
+	// (for example: Biometric, Printer, etc.)
 	classesToCheck := [5]string{"Mouse", "Camera", "AudioEndpoint", "Keyboard", "Biometric"}
 	outputs := make([]string, 0)
 	for _, s := range classesToCheck {
