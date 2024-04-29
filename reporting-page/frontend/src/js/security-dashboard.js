@@ -7,10 +7,11 @@ import {retrieveTheme} from './personalize.js';
 import {scanTest} from './database.js';
 
 /** Load the content of the Security Dashboard page */
-function openSecurityDashboardPage() {
+export function openSecurityDashboardPage() {
   document.onload = retrieveTheme();
   closeNavigation();
   markSelectedNavigationItem('security-dashboard-button');
+  sessionStorage.setItem('savedPage', "2");
 
   document.getElementById('page-contents').innerHTML = `
   <div class="dashboard-data">

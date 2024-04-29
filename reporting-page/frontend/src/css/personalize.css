@@ -20,6 +20,10 @@
   text-align: center;
 }
 
+.personalize-button{
+  float: right;
+  width: 100px;
+}
 .personalize-button-container{
   position: relative;
   width: 80px; /* 60 */
@@ -31,6 +35,11 @@
 
 .personalize-input-invisible{
   display:none;
+}
+
+hr.solid {
+  border-top: 1px solid #ddd;
+  margin: 10px;
 }
 
 .modal {

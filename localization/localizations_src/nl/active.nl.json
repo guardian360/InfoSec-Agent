@@ -14,20 +14,12 @@
   },
   "Navigation": 
   {
-    "Settings": "Instellingen",
     "Home": "Startpagina",
     "SecurityDashboard": "Beveiligingsdashboard",
     "PrivacyDashboard": "Privacydashboard",
     "Issues": "Problemen",
     "Integration": "Integratie",
     "About": "Over"
-  },
-  "Settings":
-  {
-    "PersonalizeTitle": "Personalisatie",
-    "PersonalizeButton": "Personaliseer",
-    "ChangeLanguageTitle": "Taal",
-    "ChangeLanguageButton": "Taal wijzigen"
   },
   "Dashboard": 
   {

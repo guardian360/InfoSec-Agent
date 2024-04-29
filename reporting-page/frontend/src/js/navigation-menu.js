@@ -61,7 +61,6 @@ if (typeof document !== 'undefined') {
     document.body.onresize = () => toggleNavigationResize();
 
     const navbarItems = [
-      'settings',
       'home',
       'security-dashboard',
       'privacy-dashboard',
@@ -70,7 +69,6 @@ if (typeof document !== 'undefined') {
       'about',
     ];
     const localizationIds = [
-      'Navigation.Settings',
       'Navigation.Home',
       'Navigation.SecurityDashboard',
       'Navigation.PrivacyDashboard',

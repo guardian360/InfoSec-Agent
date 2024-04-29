@@ -4,7 +4,7 @@ go 1.22.0
 
 require (
 	github.com/InfoSec-Agent/InfoSec-Agent v0.0.0-20240408130329-a7ccb52829c8
-	github.com/wailsapp/wails/v2 v2.8.0
+	github.com/wailsapp/wails/v2 v2.8.1
 )
 
 require (

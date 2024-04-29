@@ -3,10 +3,12 @@ import {retrieveTheme} from './personalize';
 import {getLocalization} from './localize.js';
 
 /** Load the content of the About page */
-function openAboutPage() {
+export function openAboutPage() {
+  document.onload = retrieveTheme();
   closeNavigation();
   markSelectedNavigationItem('about-button');
-
+  sessionStorage.setItem('savedPage', "6");
+  
   document.getElementById('page-contents').innerHTML = `
   <div class="container-about">
     <div class="about-header">
@@ -45,7 +47,6 @@ function openAboutPage() {
             You can email us at <a href="mailto:infosecagentuu@gmail.com">infosecagentuu@gmail.com</a>.</p>
     </div>
 </div>`;
-  document.onload = retrieveTheme();
 
   // Localize the static content of the home page
   const staticAboutPageConent = [
