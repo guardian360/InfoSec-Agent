@@ -63,7 +63,7 @@ var securityChecks = []func() checks.Check{
 		return checks.SecureBoot(mocking.LocalMachine)
 	},
 	func() checks.Check {
-		return checks.SmbCheck(&mocking.RealCommandExecutor{}, &mocking.RealCommandExecutor{})
+		return checks.SmbCheck(&mocking.RealCommandExecutor{})
 	},
 	func() checks.Check {
 		return checks.Startup(mocking.CurrentUser, mocking.LocalMachine, mocking.LocalMachine)

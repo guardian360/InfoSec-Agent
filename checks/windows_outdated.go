@@ -39,7 +39,6 @@ func WindowsOutdated(mockExecutor mocking.CommandExecutor) Check {
 	match := re.FindStringSubmatch(versionString)
 
 	majorVersion, err := strconv.Atoi(match[1])
-	WinVersion = majorVersion
 	if err != nil {
 		logger.Log.ErrorWithErr("Error converting major version to integer: ", err)
 		return NewCheckError(WindowsOutdatedID, err)
@@ -47,6 +46,7 @@ func WindowsOutdated(mockExecutor mocking.CommandExecutor) Check {
 
 	buildNumber := match[3]
 	minorVersion, err := strconv.Atoi(match[2])
+	WinVersion = findWindowsVersion(majorVersion, minorVersion)
 	if err != nil {
 		logger.Log.ErrorWithErr("Error converting minor version to integer: ", err)
 		return NewCheckError(WindowsOutdatedID, err)
@@ -76,13 +76,13 @@ func WindowsOutdated(mockExecutor mocking.CommandExecutor) Check {
 
 	// Depending on the major Windows version (10 or 11), act accordingly
 	switch {
-	case minorVersion >= 22000 && majorVersion == 10:
+	case findWindowsVersion(majorVersion, minorVersion) == 11:
 		if winVer == latestWin11Build {
 			return NewCheckResult(WindowsOutdatedID, 0, strings.TrimSpace(versionString), "You are currently up to date.")
 		} else {
 			return NewCheckResult(WindowsOutdatedID, 1, strings.TrimSpace(versionString), "There are updates available for Windows 11.")
 		}
-	case majorVersion == 10:
+	case findWindowsVersion(majorVersion, minorVersion) == 10:
 		if winVer == latestWin10Build {
 			return NewCheckResult(WindowsOutdatedID, 0, strings.TrimSpace(versionString), "You are currently up to date.")
 		} else {
@@ -198,4 +198,26 @@ func checkTableTDs(child *html.Node) string {
 		}
 	}
 	return ""
+}
+
+// findWindowsVersion is a function that determines the Windows version based on the major and minor version numbers.
+// It uses the versioning scheme of Windows 10 and Windows 11, where Windows 11 is identified by a minor version number of 22000 or higher.
+//
+// Parameters:
+//   - majorVersion int: The major version number of the Windows OS. For Windows 10 and 11, this should be 10.
+//   - minorVersion int: The minor version number of the Windows OS. For Windows 11, this should be 22000 or higher.
+//
+// Returns:
+//   - int: The identified Windows version. This will be 11 for Windows 11, 10 for Windows 10, and 0 for any other version.
+func findWindowsVersion(majorVersion int, minorVersion int) int {
+	// If the minor version is 22000 or higher and the major version is 10, this is Windows 11
+	if minorVersion >= 22000 && majorVersion == 10 {
+		return 11
+	}
+	// If the major version is 10, and it's not Windows 11, it must be Windows 10
+	if majorVersion == 10 {
+		return 10
+	}
+	// If it's neither Windows 10 nor 11, return 0
+	return 0
 }
