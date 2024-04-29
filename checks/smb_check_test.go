@@ -58,11 +58,7 @@ func TestSMBCheck(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got := checks.SmbCheck(tt.executor)
-			if tt.wantErr {
-				require.Equal(t, tt.want, got)
-			} else {
-				require.Equal(t, tt.want, got)
-			}
+			require.Equal(t, tt.want, got)
 		})
 	}
 }

@@ -48,6 +48,7 @@ func SmbEnabled(executor mocking.CommandExecutor, resultID int) (string, string,
 	}
 
 	smb1, smb2 := "", ""
+	enabled := "True"
 	line := strings.TrimSpace(string(output))
 	if line != "" {
 		values := strings.Fields(line)
@@ -56,14 +57,14 @@ func SmbEnabled(executor mocking.CommandExecutor, resultID int) (string, string,
 		}
 	}
 
-	if smb1 == "True" || smb2 == "True" {
+	if smb1 == enabled || smb2 == enabled {
 		smb1Enabled := "not enabled"
 		smb2Enabled := "not enabled"
-		if smb1 == "True" {
+		if smb1 == enabled {
 			resultID++
 			smb1Enabled = "enabled"
 		}
-		if smb2 == "True" {
+		if smb2 == enabled {
 			resultID += 2
 			smb2Enabled = "enabled"
 		}
