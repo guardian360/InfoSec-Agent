@@ -54,7 +54,7 @@ func win10Print(registryKey mocking.RegistryKey) []bool {
 //
 // CIS Benchmark Audit list index: 18.6.4.1
 func win10DNSClient(registryKey mocking.RegistryKey) []bool {
-	registryPath := `SOFTWARE\Policies\Microsoft\Windows NT\DNSClient`
+	registryPath := DNSClientRegistryPath
 
 	settings := []string{"EnableNetbios"}
 

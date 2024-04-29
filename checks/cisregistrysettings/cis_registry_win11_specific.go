@@ -34,7 +34,7 @@ var checksWin11 = []func(mocking.RegistryKey) []bool{
 //
 // CIS Benchmark Audit list index: 18.5.4.1
 func win11DNSClient(registryKey mocking.RegistryKey) []bool {
-	registryPath := `SOFTWARE\Policies\Microsoft\Windows NT\DNSClient`
+	registryPath := DNSClientRegistryPath
 
 	settings := []string{"DoHPolicy"}
 

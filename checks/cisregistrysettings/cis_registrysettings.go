@@ -11,6 +11,8 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 )
 
+const DNSClientRegistryPath = `SOFTWARE\Policies\Microsoft\Windows NT\DNSClient`
+
 // CISRegistrySettings is a function that checks various registry settings to ensure they adhere to the CIS Benchmark standards.
 // It takes a RegistryKey object as an argument, which represents the root key from which the registry settings will be checked.
 // The function returns a slice of boolean values, where each boolean represents whether a particular registry setting adheres to the CIS Benchmark standards.

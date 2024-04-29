@@ -410,7 +410,7 @@ func checkWindowsDefenderNetworkProtection(registryKey mocking.RegistryKey) []bo
 //
 // CIS Benchmark Audit list indices: 18.5.4.2
 func policiesDNSClient(registryKey mocking.RegistryKey) []bool {
-	registryPath := `SOFTWARE\Policies\Microsoft\Windows NT\DNSClient`
+	registryPath := DNSClientRegistryPath
 
 	settings := []string{"EnableMulticast"}
 
