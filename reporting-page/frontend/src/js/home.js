@@ -10,6 +10,7 @@ export function openHomePage() {
   document.onload = retrieveTheme();
   closeNavigation();
   markSelectedNavigationItem('home-button');
+  sessionStorage.setItem('savedPage', 1);
   document.getElementById('page-contents').innerHTML = `
   <div class="home-data">
     <div class="container-data home-column-one"> 

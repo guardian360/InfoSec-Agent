@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="./src/css/color-palette.css">
     <link rel="stylesheet" href="./src/css/responsive.css">
     <link rel="stylesheet" href="./src/css/home.css">
-    <link rel="stylesheet" href="./src/css/settings.css">
     <link rel="stylesheet" href="./src/css/dashboard.css">
     <link rel="stylesheet" href="./src/css/issues.css">
     <link rel="stylesheet" href="./src/css/personalize.css">
@@ -44,7 +43,13 @@
         </div>
       </div>
       <div class="header-settings">
-        <span id="settings-button" class="nav-link"><span class="material-symbols-outlined">settings</span><span class="settings">Settings</span></span>
+        <div class="nav-link settings-button">
+          <span><span class="material-symbols-outlined">settings</span></span>
+          <div class="dropdown-content">
+            <a id="personalize-button">Personalize page</a>
+            <a id="language-button">Change Language</a>
+          </div>
+        </div>
       </div>
     </div> 
     <div class="left-nav">

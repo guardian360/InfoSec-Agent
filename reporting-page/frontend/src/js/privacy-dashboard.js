@@ -7,10 +7,11 @@ import {adjustWithRiskCounters, setMaxInterval, addGraphFunctions} from './secur
 import {scanTest} from './database.js';
 
 /** Load the content of the Privacy Dashboard page */
-function openPrivacyDashboardPage() {
+export function openPrivacyDashboardPage() {
   document.onload = retrieveTheme();
   closeNavigation();
   markSelectedNavigationItem('privacy-dashboard-button');
+  sessionStorage.setItem('savedPage', '3');
 
   document.getElementById('page-contents').innerHTML = `
   <div class="dashboard-data">

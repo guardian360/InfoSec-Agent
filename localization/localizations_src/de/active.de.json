@@ -14,20 +14,12 @@
   },
   "Navigation": 
   {
-    "Settings": "Einstellungen",
     "Home": "Startseite",
     "SecurityDashboard": "Sicherheits-Dashboard",
     "PrivacyDashboard": "Datenschutz-Dashboard",
     "Issues": "Probleme",
     "Integration": "Integration",
     "About": "Über"
-  },
-  "Settings":
-  {
-    "PersonalizeTitle": "Personalisierung",
-    "PersonalizeButton": "Anpassen",
-    "ChangeLanguageTitle": "Sprache",
-    "ChangeLanguageButton": "Sprache ändern"
   },
   "Dashboard": 
   {

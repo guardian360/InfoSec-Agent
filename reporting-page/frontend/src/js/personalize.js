@@ -4,20 +4,21 @@ import {closeNavigation, loadPersonalizeNavigation} from './navigation-menu.js';
 /** Load the content of the Personalize page */
 export function openPersonalizePage() {
   closeNavigation();
+  sessionStorage.setItem('savedPage', '7');
 
   document.getElementById('page-contents').innerHTML = `
-  <div class="setting">
-    <span class="setting-description favicon-title ">Favicon</span>
+  <div class="personalize-container">
+    <span class="personalize-description favicon-title ">Favicon</span>
     <div class="personalize-button-container">
-      <button class="setting-button icon-button" type="button">Change icon </button>    
+      <button class="personalize-button icon-button" type="button">Change icon </button>    
       <input class="personalize-input-invisible" type="file" id="input-file-icon" accept=".ico, .png">
     </div>
   </div>
   <hr class="solid">
-  <div class="setting">
+  <div class="personalize-container">
     <span class="personalize-description">Navigation image</span>
     <div class="personalize-button-container">
-      <button class="setting-button logo-button" type="button">Change logo </button>    
+      <button class="personalize-button logo-button" type="button">Change logo </button>    
       <input class="personalize-input-invisible"
       type="file" 
       id="input-file-picture" 
@@ -25,10 +26,10 @@ export function openPersonalizePage() {
     </div>
   </div>
   <hr class="solid">
-  <div class="setting">
+  <div class="personalize-container">
     <span class="personalize-description">Navigation title</span>
     <div class="personalize-button-container">
-      <button class="setting-button title-button" type="button">Change title </button>
+      <button class="personalize-button title-button" type="button">Change title </button>
       <div id="custom-modal" class="modal">
         <div class="modal-content">
           <input type="text" id="new-title-input">
@@ -38,7 +39,7 @@ export function openPersonalizePage() {
     </div>
   </div>
   <hr class="solid">
-  <div class="setting">
+  <div class="personalize-container">
     <form action="" class="color-picker>
       <fieldset>
         <legend>Pick a theme</legend>
@@ -47,7 +48,7 @@ export function openPersonalizePage() {
         <label for="dark">Dark</label>
         <input type="radio" name="theme" id="dark">
     <div class="personalize-button-container">
-      <button class="setting-button reset-button" type="button">Reset settings </button>    
+      <button class="personalize-button reset-button" type="button">Reset settings</button>    
     </div>
   </div>
   `;
