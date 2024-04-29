@@ -39,7 +39,6 @@ func WindowsOutdated(mockExecutor mocking.CommandExecutor) Check {
 	match := re.FindStringSubmatch(versionString)
 
 	majorVersion, err := strconv.Atoi(match[1])
-	WinVersion = majorVersion
 	if err != nil {
 		logger.Log.ErrorWithErr("Error converting major version to integer: ", err)
 		return NewCheckError(WindowsOutdatedID, err)
@@ -47,6 +46,7 @@ func WindowsOutdated(mockExecutor mocking.CommandExecutor) Check {
 
 	buildNumber := match[3]
 	minorVersion, err := strconv.Atoi(match[2])
+	WinVersion = findWindowsVersion(majorVersion, minorVersion)
 	if err != nil {
 		logger.Log.ErrorWithErr("Error converting minor version to integer: ", err)
 		return NewCheckError(WindowsOutdatedID, err)
@@ -76,13 +76,13 @@ func WindowsOutdated(mockExecutor mocking.CommandExecutor) Check {
 
 	// Depending on the major Windows version (10 or 11), act accordingly
 	switch {
-	case minorVersion >= 22000 && majorVersion == 10:
+	case findWindowsVersion(majorVersion, minorVersion) == 11:
 		if winVer == latestWin11Build {
 			return NewCheckResult(WindowsOutdatedID, 0, strings.TrimSpace(versionString), "You are currently up to date.")
 		} else {
 			return NewCheckResult(WindowsOutdatedID, 1, strings.TrimSpace(versionString), "There are updates available for Windows 11.")
 		}
-	case majorVersion == 10:
+	case findWindowsVersion(majorVersion, minorVersion) == 10:
 		if winVer == latestWin10Build {
 			return NewCheckResult(WindowsOutdatedID, 0, strings.TrimSpace(versionString), "You are currently up to date.")
 		} else {
@@ -198,4 +198,15 @@ func checkTableTDs(child *html.Node) string {
 		}
 	}
 	return ""
+}
+
+
+func findWindowsVersion(majorVersion int, minorVersion int) int {
+	if minorVersion >= 22000 && majorVersion == 10 {
+		return 11
+	}
+	if majorVersion == 10 {
+		return 10
+	}
+	return 0
 }
