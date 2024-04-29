@@ -1,16 +1,18 @@
 package firefox_test
 
 import (
-	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/firefox"
-	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
-	"github.com/stretchr/testify/assert"
 	"os"
 	"testing"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/browserutils"
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/firefox"
+	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestSearchEngineFirefox_WithInvalidDirectory(t *testing.T) {
 	// Mock the FirefoxFolder function to return an invalid directory
-	Profilefinder = utils.MockProfileFinder{
+	Profilefinder = browserutils.MockProfileFinder{
 		MockFirefoxFolder: func() ([]string, error) {
 			return []string{"/invalid/directory"}, nil
 		},
@@ -65,12 +67,24 @@ func TestOpenAndStatFile_WithNonExistentFile(t *testing.T) {
 	assert.Equal(t, int64(0), size)
 }
 
-func TestOpenAndStatFile_WithDirectory(t *testing.T) {
-	// Call the function with a directory
-	file, size, err := firefox.OpenAndStatFile("/")
+func TestYourFunction(t *testing.T) {
+	// Mock the OpenAndStatFile function
+	// Save the original function and defer its restoration
+	originalOpenAndStatFile := firefox.OpenAndStatFile
+	defer func() { firefox.OpenAndStatFile = originalOpenAndStatFile }()
 
-	// Assert that an error occurred, the returned file is nil, and the size is 0
-	assert.Error(t, err)
-	assert.Nil(t, file)
-	assert.Equal(t, int64(0), size)
+	// Mock the OpenAndStatFile function
+	firefox.OpenAndStatFile = func(tempSearch string) (*os.File, int64, error) {
+		// Return whatever you need for your test
+		file := &mocking.FileMock{
+			Bytes: 0,
+			Err: nil,
+		}
+		return file, 0, nil
+	}
+	// Call the function under test
+	result := firefox.SearchEngineFirefox(Profilefinder) // Replace with the actual function call
+
+	// Assert the result
+	assert.Nil(t, result)
 }

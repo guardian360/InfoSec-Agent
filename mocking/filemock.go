@@ -90,6 +90,14 @@ func (f *FileWrapper) Copy(source File, destination File) (int64, error) {
 	return int64(bytesWritten), nil
 }
 
+//func (f *FileWrapper) Size() (int64, error) {
+//	fileInfo, err := f.file.Stat()
+//	if err != nil {
+//		return 0, err
+//	}
+//	return fileInfo.Size(), nil
+//}
+
 type FileMock struct {
 	FileName string
 	IsOpen   bool

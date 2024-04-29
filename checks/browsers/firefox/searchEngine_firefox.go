@@ -28,7 +28,7 @@ func SearchEngineFirefox(profileFinder browserutils.FirefoxProfileFinder) checks
 	// Determine the directory in which the Firefox profile is stored
 	var ffdirectory []string
 	var err error
-	ffdirectory, err = browserutils.RealProfileFinder{}.FirefoxFolder()
+	ffdirectory, err = profileFinder.FirefoxFolder()
 	if err != nil {
 		return checks.NewCheckErrorf(checks.SearchFirefoxID, "No firefox directory found", err)
 	}
@@ -144,18 +144,18 @@ func Results(data []byte) string {
 	return result
 }
 
-func OpenAndStatFile(tempSearch string) (*os.File, int64, error) {
-	fileInfo, err := os.Stat(tempSearch)
-	if err != nil {
-		return nil, 0, err
-	}
-	fileSize := fileInfo.Size()
+var OpenAndStatFile = func(tempSearch string) (*os.File, int64, error) {
+    fileInfo, err := os.Stat(tempSearch)
+    if err != nil {
+        return nil, 0, err
+    }
+    fileSize := fileInfo.Size()
 
-	// Holds the information from the copied file
-	file, err := os.Open(filepath.Clean(tempSearch))
-	if err != nil {
-		return nil, 0, err
-	}
+    // Holds the information from the copied file
+    file, err := os.Open(filepath.Clean(tempSearch))
+    if err != nil {
+        return nil, 0, err
+    }
 
-	return file, fileSize, nil
+    return file, fileSize, nil
 }
