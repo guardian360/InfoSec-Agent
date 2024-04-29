@@ -47,7 +47,7 @@ func CISRegistrySettings(localMachineKey mocking.RegistryKey, usersKey mocking.R
 	return checks.NewCheckResult(checks.CISRegistrySettingsID, 1, "All registry settings adhere to the CIS Benchmark standards")
 }
 
-// checkIntegerValue is a helper function that checks if the integer value of a registry key matches the expected value.
+// CheckIntegerValue is a helper function that checks if the integer value of a registry key matches the expected value.
 //
 // Parameters:
 //
@@ -58,7 +58,7 @@ func CISRegistrySettings(localMachineKey mocking.RegistryKey, usersKey mocking.R
 // Returns:
 //
 //   - bool: A boolean value indicating whether the integer value of the registry key matches the expected value.
-func checkIntegerValue(openKey mocking.RegistryKey, value string, expected interface{}) bool {
+func CheckIntegerValue(openKey mocking.RegistryKey, value string, expected interface{}) bool {
 	val, _, err := openKey.GetIntegerValue(value)
 	if err != nil {
 		logger.Log.ErrorWithErr("Error reading registry value of "+value, err)
@@ -71,21 +71,22 @@ func checkIntegerValue(openKey mocking.RegistryKey, value string, expected inter
 		return val == v
 	// Slice of uint64 values, check if registry value is in the slice
 	case []uint64:
+		// Slice of exactly 2 uint64 values, check if registry value is within the range
+		if len(v) == 2 {
+			return val >= v[0] && val <= v[1]
+		}
 		for _, i := range v {
 			if val == i {
 				return true
 			}
 		}
-	// Slice of exactly 2 uint64 values, check if registry value is within the range
-	case [2]uint64:
-		return val >= v[0] && val <= v[1]
 	default:
 		return false
 	}
 	return false
 }
 
-// checkStringValue is a helper function that checks if the string value of a registry key matches the expected value.
+// CheckStringValue is a helper function that checks if the string value of a registry key matches the expected value.
 //
 // Parameters:
 //
@@ -96,7 +97,7 @@ func checkIntegerValue(openKey mocking.RegistryKey, value string, expected inter
 // Returns:
 //
 //   - bool: A boolean value indicating whether the string value of the registry key matches the expected value.
-func checkStringValue(openKey mocking.RegistryKey, value string, expected string) bool {
+func CheckStringValue(openKey mocking.RegistryKey, value string, expected string) bool {
 	val, _, err := openKey.GetStringValue(value)
 	if err != nil {
 		logger.Log.ErrorWithErr("Error reading registry value of "+value, err)
@@ -105,7 +106,7 @@ func checkStringValue(openKey mocking.RegistryKey, value string, expected string
 	return val == expected
 }
 
-// openRegistryKeyWithErrHandling is a helper function that opens a registry key and handles any errors that occur.
+// OpenRegistryKeyWithErrHandling is a helper function that opens a registry key and handles any errors that occur.
 //
 // Parameters:
 //
@@ -116,7 +117,7 @@ func checkStringValue(openKey mocking.RegistryKey, value string, expected string
 //
 //   - mocking.RegistryKey: The opened registry key.
 //   - error: An error object that describes the error (if any) that occurred while opening the registry key. If no error occurred, this value is nil.
-func openRegistryKeyWithErrHandling(registryKey mocking.RegistryKey, path string) (mocking.RegistryKey, error) {
+func OpenRegistryKeyWithErrHandling(registryKey mocking.RegistryKey, path string) (mocking.RegistryKey, error) {
 	key, err := mocking.OpenRegistryKey(registryKey, path)
 	if err != nil {
 		logger.Log.ErrorWithErr("Error opening registry key for CIS Audit list", err)
@@ -124,7 +125,7 @@ func openRegistryKeyWithErrHandling(registryKey mocking.RegistryKey, path string
 	return key, err
 }
 
-// checkMultipleIntegerValues is a helper function that checks multiple integer values of a registry key against their expected values.
+// CheckMultipleIntegerValues is a helper function that checks multiple integer values of a registry key against their expected values.
 //
 // Parameters:
 //
@@ -135,15 +136,15 @@ func openRegistryKeyWithErrHandling(registryKey mocking.RegistryKey, path string
 // Returns:
 //
 //   - []bool: A slice of boolean values indicating whether the integer values of the registry keys match the expected values.
-func checkMultipleIntegerValues(openKey mocking.RegistryKey, settings []string, expectedValues []interface{}) []bool {
+func CheckMultipleIntegerValues(openKey mocking.RegistryKey, settings []string, expectedValues []interface{}) []bool {
 	results := make([]bool, len(settings))
 	for i, val := range settings {
-		results[i] = checkIntegerValue(openKey, val, expectedValues[i])
+		results[i] = CheckIntegerValue(openKey, val, expectedValues[i])
 	}
 	return results
 }
 
-// checkMultipleStringValues is a helper function that checks multiple string values of a registry key against their expected values.
+// CheckMultipleStringValues is a helper function that checks multiple string values of a registry key against their expected values.
 //
 // Parameters:
 //
@@ -154,15 +155,15 @@ func checkMultipleIntegerValues(openKey mocking.RegistryKey, settings []string, 
 // Returns:
 //
 //   - []bool: A slice of boolean values indicating whether the string values of the registry keys match the expected values.
-func checkMultipleStringValues(openKey mocking.RegistryKey, settings []string, expectedValues []string) []bool {
+func CheckMultipleStringValues(openKey mocking.RegistryKey, settings []string, expectedValues []string) []bool {
 	results := make([]bool, len(settings))
 	for i, val := range settings {
-		results[i] = checkStringValue(openKey, val, expectedValues[i])
+		results[i] = CheckStringValue(openKey, val, expectedValues[i])
 	}
 	return results
 }
 
-// checkIntegerRegistrySettings is a helper function that checks the registry to determine if the system is configured with the correct integer settings.
+// CheckIntegerRegistrySettings is a helper function that checks the registry to determine if the system is configured with the correct integer settings.
 //
 // Parameters:
 //
@@ -174,17 +175,17 @@ func checkMultipleStringValues(openKey mocking.RegistryKey, settings []string, e
 // Returns:
 //
 //   - []bool: A slice of boolean values indicating whether the integer settings of the registry keys match the expected values.
-func checkIntegerRegistrySettings(registryKey mocking.RegistryKey, registryPath string, settings []string, expectedValues []interface{}) []bool {
-	key, err := openRegistryKeyWithErrHandling(registryKey, registryPath)
+func CheckIntegerRegistrySettings(registryKey mocking.RegistryKey, registryPath string, settings []string, expectedValues []interface{}) []bool {
+	key, err := OpenRegistryKeyWithErrHandling(registryKey, registryPath)
 	if err != nil {
 		return make([]bool, len(settings))
 	}
 	defer mocking.CloseRegistryKey(key)
 
-	return checkMultipleIntegerValues(key, settings, expectedValues)
+	return CheckMultipleIntegerValues(key, settings, expectedValues)
 }
 
-// checkStringRegistrySettings is a helper function that checks the registry to determine if the system is configured with the correct string settings.
+// CheckStringRegistrySettings is a helper function that checks the registry to determine if the system is configured with the correct string settings.
 //
 // Parameters:
 //
@@ -196,17 +197,17 @@ func checkIntegerRegistrySettings(registryKey mocking.RegistryKey, registryPath 
 // Returns:
 //
 //   - []bool: A slice of boolean values indicating whether the string settings of the registry keys match the expected values.
-func checkStringRegistrySettings(registryKey mocking.RegistryKey, registryPath string, settings []string, expectedValues []string) []bool {
-	key, err := openRegistryKeyWithErrHandling(registryKey, registryPath)
+func CheckStringRegistrySettings(registryKey mocking.RegistryKey, registryPath string, settings []string, expectedValues []string) []bool {
+	key, err := OpenRegistryKeyWithErrHandling(registryKey, registryPath)
 	if err != nil {
 		return make([]bool, len(settings))
 	}
 	defer mocking.CloseRegistryKey(key)
 
-	return checkMultipleStringValues(key, settings, expectedValues)
+	return CheckMultipleStringValues(key, settings, expectedValues)
 }
 
-// checkIntegerStringRegistrySettings is a helper function that checks the registry to determine if the system is configured with the correct integer and string settings.
+// CheckIntegerStringRegistrySettings is a helper function that checks the registry to determine if the system is configured with the correct integer and string settings.
 //
 // Parameters:
 //
@@ -220,17 +221,17 @@ func checkStringRegistrySettings(registryKey mocking.RegistryKey, registryPath s
 // Returns:
 //
 //   - []bool: A slice of boolean values indicating whether the integer and string settings of the registry keys match the expected values.
-func checkIntegerStringRegistrySettings(registryKey mocking.RegistryKey, registryPath string,
+func CheckIntegerStringRegistrySettings(registryKey mocking.RegistryKey, registryPath string,
 	integerSettings []string, expectedIntegers []interface{}, stringSettings []string,
 	expectedStrings []string) []bool {
-	key, err := openRegistryKeyWithErrHandling(registryKey, registryPath)
+	key, err := OpenRegistryKeyWithErrHandling(registryKey, registryPath)
 	if err != nil {
 		return make([]bool, len(integerSettings)+len(stringSettings))
 	}
 	defer mocking.CloseRegistryKey(key)
 
 	results := make([]bool, 0)
-	results = append(results, checkMultipleIntegerValues(key, integerSettings, expectedIntegers)...)
-	results = append(results, checkMultipleStringValues(key, stringSettings, expectedStrings)...)
+	results = append(results, CheckMultipleIntegerValues(key, integerSettings, expectedIntegers)...)
+	results = append(results, CheckMultipleStringValues(key, stringSettings, expectedStrings)...)
 	return results
 }

@@ -47,7 +47,7 @@ func win10Print(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(1)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // wind10DNSClient is a helper function that checks the registry to determine if the system is configured with the correct settings for the DNS Client.
@@ -60,7 +60,7 @@ func win10DNSClient(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(2)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // win10Printers is a helper function that checks the registry to determine if the system is configured with the correct settings for the Printers.
@@ -74,7 +74,7 @@ func win10Printers(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(1), uint64(1)}
 
-	results = append(results, checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
+	results = append(results, CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
 	results = append(results, win10PrintersRPC(registryKey)...)
 	return results
 }
@@ -90,7 +90,7 @@ func win10PrintersRPC(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(0), uint64(0), uint64(5), uint64(0), uint64(0)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // win10System is a helper function that checks the registry to determine if the system is configured with the correct settings for the System.
@@ -103,7 +103,7 @@ func win10System(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(0)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // win10AppInstaller is a helper function that checks the registry to determine if the system is configured with the correct settings for the AppInstaller.
@@ -117,7 +117,7 @@ func win10AppInstaller(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(0), uint64(0), uint64(0), uint64(0)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // win10InternetExplorerMain is a helper function that checks the registry to determine if the system is configured with the correct settings for Internet Explorer
@@ -130,7 +130,7 @@ func win10InternetExplorerMain(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(1)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // win10ExploitGuardRules is a helper function that checks the registry to determine if the system is configured with the correct settings for the Exploit Guard Rules.
@@ -143,7 +143,7 @@ func win10ExploitGuardRules(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(1)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // win10PoliciesSystem is a helper function that checks the registry to determine if the system is configured with the correct policy settings for the System.
@@ -156,5 +156,5 @@ func win10PoliciesSystem(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(0)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }

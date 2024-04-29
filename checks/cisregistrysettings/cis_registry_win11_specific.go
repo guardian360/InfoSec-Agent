@@ -40,5 +40,5 @@ func win11DNSClient(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{[]uint64{2, 3}}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }

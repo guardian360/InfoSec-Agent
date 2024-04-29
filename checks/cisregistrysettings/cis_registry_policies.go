@@ -46,7 +46,7 @@ func policiesAttachments(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(2), uint64(3)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesExplorer is a helper function that checks the registry to determine if the system is configured with the correct settings for the Explorer policies.
@@ -59,7 +59,7 @@ func policiesExplorerHKU(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(1)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesCloudContentHKU is a helper function that checks the registry to determine if the system is configured with the correct settings for cloud content.
@@ -72,7 +72,7 @@ func policiesCloudContentHKU(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(2), uint64(1), uint64(1)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesControlPanelDesktop is a helper function that checks the registry to determine if the system is configured with the correct settings for the Control Panel Desktop.
@@ -85,7 +85,7 @@ func policiesControlPanelDesktop(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(1), uint64(1), []uint64{0, 900}}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesPushNotifications is a helper function that checks the registry to determine if the system is configured with the correct settings for push notifications.
@@ -98,7 +98,7 @@ func policiesPushNotifications(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(1)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesInstallerHKU is a helper function that checks the registry to determine if the system is configured with the correct settings for the Installer.
@@ -111,5 +111,5 @@ func policiesInstallerHKU(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(0)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }

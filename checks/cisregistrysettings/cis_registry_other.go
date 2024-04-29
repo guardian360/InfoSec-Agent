@@ -46,7 +46,7 @@ func CheckAutoConnectHotspot(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(0)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // CheckCurrentVersionRegistry is a helper function that checks the registry to determine if the system is configured with the correct settings for the current version.
@@ -66,7 +66,7 @@ func CheckCurrentVersionRegistry(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(2), []uint64{5, 14}, []uint64{1, 2, 3}, uint64(0), []uint64{0, 5}}
 
-	result = append(result, checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
+	result = append(result, CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
 
 	registryPath =
 		`SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\GPExtensions\{D76B9641-3288-4f75-942D-087DE603E3EA}`
@@ -76,7 +76,7 @@ func CheckCurrentVersionRegistry(registryKey mocking.RegistryKey) []bool {
 	expectedStringValues := []string{"C:\\Program Files\\LAPS\\CSE\\AdmPwd.dll"}
 
 	result = append(result,
-		checkStringRegistrySettings(registryKey, registryPath, settings, expectedStringValues)...)
+		CheckStringRegistrySettings(registryKey, registryPath, settings, expectedStringValues)...)
 	return result
 }
 
@@ -95,7 +95,7 @@ func CheckControlLsa(registryKey mocking.RegistryKey) []bool {
 		uint64(1), uint64(0), uint64(1), uint64(1), uint64(5)}
 
 	results := make([]bool, 0)
-	results = append(results, checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
+	results = append(results, CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
 	results = append(results, checkLsaMSV(registryKey)...)
 	results = append(results, checkLsapku2u(registryKey)...)
 	return results
@@ -111,7 +111,7 @@ func checkLsaMSV(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(0), uint64(537395200), uint64(537395200)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // checkLsapku2u is a helper function that checks the registry to determine if the system is configured with the correct settings for Lsa pku2u.
@@ -124,7 +124,7 @@ func checkLsapku2u(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(0)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // CheckControlSAM is a helper function that checks the registry to determine if the system is configured with the correct settings for Control SAM.
@@ -137,7 +137,7 @@ func CheckControlSAM(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(1)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // CheckSecurePipeServers is a helper function that checks the registry to determine if the system is configured with the correct settings for secure pipe servers.
@@ -162,7 +162,7 @@ func securePipeServersExactPaths(registryKey mocking.RegistryKey) []bool {
 		"System\\CurrentControlSet\\Control\\ProductOptionsSystem\\CurrentControlSet\\Control\\" +
 		"Server ApplicationsSoftware\\Microsoft\\Windows NT\\CurrentVersion"}
 
-	return checkStringRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckStringRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // securePipeServersPaths is a helper function that checks the registry to determine if the system is configured with the correct settings for secure pipe servers paths.
@@ -181,7 +181,7 @@ func securePipeServersPaths(registryKey mocking.RegistryKey) []bool {
 		"\\Control\\Terminal Server\\DefaultUserConfigurationSoftware\\Microsoft\\Windows NT\\CurrentVersion" +
 		"\\PerflibSystem\\CurrentControlSet\\Services\\Sysmonlog"}
 
-	return checkStringRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckStringRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // CheckWDigest is a helper function that checks the registry to determine if the system is configured with the correct settings for WDigest.
@@ -194,7 +194,7 @@ func CheckWDigest(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(0)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // CheckSessionManager is a helper function that checks the registry to determine if the system is configured with the correct settings for the session manager.
@@ -208,7 +208,7 @@ func CheckSessionManager(registryKey mocking.RegistryKey) []bool {
 	expectedValues := []interface{}{uint64(1), uint64(1)}
 
 	results := make([]bool, 0)
-	results = append(results, checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
+	results = append(results, CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
 	results = append(results, sessionManagerKernel(registryKey)...)
 	return results
 }
@@ -223,5 +223,5 @@ func sessionManagerKernel(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(1), uint64(0)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }

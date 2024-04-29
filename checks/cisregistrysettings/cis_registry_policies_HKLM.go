@@ -86,7 +86,7 @@ func policiesCredui(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(0)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesExplorerHKLM is a helper function that checks the registry to determine if the system is configured with the correct settings for Explorer policies.
@@ -104,7 +104,7 @@ func policiesExplorerHKLM(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(1), uint64(1), uint64(255), uint64(0)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesSystem is a helper function that checks the registry to determine if the system is configured with the correct settings for system policies.
@@ -134,7 +134,7 @@ func policiesSystem(registryKey mocking.RegistryKey) []bool {
 	expectedValues := []interface{}{uint64(3), uint64(0), uint64(1), []uint64{0, 900}, uint64(1), uint64(2), uint64(0),
 		uint64(1), uint64(1), uint64(1), uint64(1), uint64(1), uint64(0), uint64(1), uint64(1)}
 
-	result = append(result, checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
+	result = append(result, CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
 
 	subKeys := []string{
 		`SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\Kerberos\Parameters`,
@@ -153,10 +153,8 @@ func policiesSystem(registryKey mocking.RegistryKey) []bool {
 	for i, subKey := range subKeys {
 		func() {
 			registryPath = subKey
-			result = append(result, checkIntegerRegistrySettings(
+			result = append(result, CheckIntegerRegistrySettings(
 				registryKey, registryPath, []string{subKeysSettings[i]}, []interface{}{subKeysExpected[i]})...)
-
-			// // checkIntegerValue(key, subKeysSettings[i], subKeysExpected[i]))
 		}()
 	}
 	return result
@@ -178,7 +176,7 @@ func policiesAdmPwd(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(1), uint64(1), uint64(4), []uint64{15, ^uint64(0)}, []uint64{0, 30}}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesFacialFeatures is a helper function that checks the registry to determine if the system is configured with the correct settings for enhanced anti-spoofing.
@@ -191,7 +189,7 @@ func policiesFacialFeatures(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(1)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesDsh is a helper function that checks the registry to determine if the system is configured to allow widgets.
@@ -204,7 +202,7 @@ func policiesDsh(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(0)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesInputPersonalization is a helper function that checks the registry to determine if the system is configured to allow online speech recognition services.
@@ -217,7 +215,7 @@ func policiesInputPersonalization(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(0)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesIEFeeds is a helper function that checks the registry to determine if the system is configured to download enclosures.
@@ -230,7 +228,7 @@ func policiesIEFeeds(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(1)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesMicrosoftAccount is a helper function that checks the registry to determine if the system is configured to block consumer user authentication.
@@ -243,7 +241,7 @@ func policiesMicrosoftAccount(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(1)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesPhishingFilter is a helper function that checks the registry to determine if the system is configured with the correct settings for the phishing filter.
@@ -256,7 +254,7 @@ func policiesPhishingFilter(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(1), uint64(1)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesPowerSettings is a helper function that checks the registry to determine if the system is configured with the correct power settings.
@@ -273,13 +271,13 @@ func policiesPowerSettings(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(0), uint64(0)}
 
-	result = append(result, checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
+	result = append(result, CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
 
 	registryPath = `SOFTWARE\Policies\Microsoft\Power\PowerSettings\0e796bdb-100d-47d6-a2d5-f7d2daa51f51`
 
 	expectedValues = []interface{}{uint64(1), uint64(1)}
 
-	result = append(result, checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
+	result = append(result, CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
 	return result
 }
 
@@ -297,7 +295,7 @@ func policiesWindowsDefender(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(1), uint64(0)}
 
-	results = append(results, checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
+	results = append(results, CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
 	results = append(results, checkWindowsDefenderScan(registryKey)...)
 	results = append(results, checkWindowsDefenderRealTime(registryKey)...)
 	results = append(results, checkWindowsDefenderASR(registryKey)...)
@@ -318,7 +316,7 @@ func checkWindowsDefenderScan(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(0), uint64(0)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // checkWindowsDefenderRealTime is a helper function that checks the registry to determine if Windows Defender is configured with the correct real-time protection settings.
@@ -331,7 +329,7 @@ func checkWindowsDefenderRealTime(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(0), uint64(0), uint64(0), uint64(0)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // checkWindowsDefenderASR is a helper function that checks the registry to determine if Windows Defender is configured with the correct ASR settings.
@@ -345,7 +343,7 @@ func checkWindowsDefenderASR(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(1)}
 
-	results = append(results, checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
+	results = append(results, CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
 
 	registryPath = `SOFTWARE\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\ASR\Rules`
 
@@ -365,7 +363,7 @@ func checkWindowsDefenderASR(registryKey mocking.RegistryKey) []bool {
 	expectedValues = []interface{}{uint64(1), uint64(1), uint64(1), uint64(1), uint64(1), uint64(1), uint64(1),
 		uint64(1), uint64(1), uint64(1), uint64(1)}
 
-	results = append(results, checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
+	results = append(results, CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
 	return results
 }
 
@@ -379,7 +377,7 @@ func checkWindowsDefenderSpyNet(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(0)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // checkWindowsDefenderAppBrowserProtection is a helper function that checks the registry to determine if Windows Defender is configured with the correct app and browser protection settings.
@@ -392,7 +390,7 @@ func checkWindowsDefenderAppBrowserProtection(registryKey mocking.RegistryKey) [
 
 	expectedValues := []interface{}{uint64(1)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // checkWindowsDefenderNetworkProtection is a helper function that checks the registry to determine if Windows Defender is configured with the correct network protection settings.
@@ -405,7 +403,7 @@ func checkWindowsDefenderNetworkProtection(registryKey mocking.RegistryKey) []bo
 
 	expectedValues := []interface{}{uint64(1)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesDNSClient is a helper function that checks the registry to determine if the system is configured with the correct settings for the DNS client.
@@ -418,7 +416,7 @@ func policiesDNSClient(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(0)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesPrinters is a helper function that checks the registry to determine if the system is configured with the correct settings for printers.
@@ -433,7 +431,7 @@ func policiesPrinters(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(2), uint64(1)}
 
-	results = append(results, checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
+	results = append(results, CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
 
 	registryPath = `SOFTWARE\Policies\Microsoft\Windows NT\Printers\PointAndPrint`
 
@@ -441,7 +439,7 @@ func policiesPrinters(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues = []interface{}{uint64(1), uint64(0), uint64(0)}
 
-	results = append(results, checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
+	results = append(results, CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
 	return results
 }
 
@@ -455,7 +453,7 @@ func policiesRPC(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(1), uint64(1)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesTerminalServices is a helper function that checks the registry to determine if the system is configured with the correct settings for terminal services.
@@ -471,7 +469,7 @@ func policiesTerminalServices(registryKey mocking.RegistryKey) []bool {
 	expectedValues := []interface{}{uint64(0), uint64(0), uint64(1), uint64(1), uint64(1), uint64(1), uint64(2),
 		uint64(1), uint64(3), uint64(1)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesAppPrivacy is a helper function that checks the registry to determine if the system is configured with the correct settings for app privacy.
@@ -484,7 +482,7 @@ func policiesAppPrivacy(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(2)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesAppx is a helper function that checks the registry to determine if the system is configured with the correct settings for Appx.
@@ -497,7 +495,7 @@ func policiesAppx(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(1)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesCloudContentHKLM is a helper function that checks the registry to determine if the system is configured with the correct settings for cloud content.
@@ -510,7 +508,7 @@ func policiesCloudContentHKLM(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(1), uint64(1)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesConnect is a helper function that checks the registry to determine if the system is configured with the correct settings for Connect.
@@ -523,7 +521,7 @@ func policiesConnect(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{[]uint64{1, 2}}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesCredentialsDelegation is a helper function that checks the registry to determine if the system is configured with the correct settings for credentials delegation.
@@ -536,7 +534,7 @@ func policiesCredentialsDelegation(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(1)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesGeneralCredui is a helper function that checks the registry to determine if the system is configured with the correct settings for Credui.
@@ -549,7 +547,7 @@ func policiesGeneralCredui(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(1)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesDataCollection is a helper function that checks the registry to determine if the system is configured with the correct settings for data collection.
@@ -563,7 +561,7 @@ func policiesDataCollection(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{[]uint64{0, 1}, uint64(1), uint64(1), uint64(1), uint64(1), uint64(1)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesDeliveryOptimization is a helper function that checks the registry to determine if the system is configured with the correct settings for delivery optimization.
@@ -576,7 +574,7 @@ func policiesDeliveryOptimization(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{[]uint64{0, 1, 2, 99, 100}}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesDeviceMetadata is a helper function that checks the registry to determine if the system is configured with the correct settings for device metadata.
@@ -589,7 +587,7 @@ func policiesDeviceMetadata(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(1)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesEventLog is a helper function that checks the registry to determine if the system is configured with the correct settings for the event log.
@@ -603,7 +601,7 @@ func policiesEventLog(registryKey mocking.RegistryKey) []bool {
 	expectedValues := []interface{}{uint64(0), []uint64{32768, ^uint64(0)}}
 
 	results := make([]bool, 0)
-	results = append(results, checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
+	results = append(results, CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
 	results = append(results, checkEventLogSecurity(registryKey)...)
 	results = append(results, checkEventLogSetup(registryKey)...)
 	results = append(results, checkEventLogSystem(registryKey)...)
@@ -620,7 +618,7 @@ func checkEventLogSecurity(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(0), []uint64{196608, ^uint64(0)}}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // checkEventLogSetup is a helper function that checks the registry to determine if the system is configured with the correct settings for the setup event log.
@@ -633,7 +631,7 @@ func checkEventLogSetup(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(0), []uint64{32768, ^uint64(0)}}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // checkEventLogSystem is a helper function that checks the registry to determine if the system is configured with the correct settings for the system event log.
@@ -646,7 +644,7 @@ func checkEventLogSystem(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(0), []uint64{32768, ^uint64(0)}}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesWindowsExplorer is a helper function that checks the registry to determine if the system is configured with the correct settings for Windows Explorer.
@@ -659,7 +657,7 @@ func policiesWindowsExplorer(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(1), uint64(0), uint64(0)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesGameDVR is a helper function that checks the registry to determine if the system is configured with the correct settings for GameDVR.
@@ -672,7 +670,7 @@ func policiesGameDVR(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(0)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesGroupPolicy is a helper function that checks the registry to determine if the system is configured with the correct settings for Group Policy.
@@ -686,7 +684,7 @@ func policiesGroupPolicy(registryKey mocking.RegistryKey) []bool {
 	expectedValues := []interface{}{uint64(0), uint64(0)}
 
 	results := make([]bool, 0)
-	results = append(results, checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
+	results = append(results, CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
 	results = append(results, checkWcmSvcGroupPolicy(registryKey)...)
 	return results
 }
@@ -701,7 +699,7 @@ func checkWcmSvcGroupPolicy(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(3), uint64(1)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesHomeGroup is a helper function that checks the registry to determine if the system is configured with the correct settings for HomeGroup.
@@ -714,7 +712,7 @@ func policiesHomeGroup(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(1)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesInstallerHKLM is a helper function that checks the registry to determine if the system is configured with the correct settings for the installer.
@@ -727,7 +725,7 @@ func policiesInstallerHKLM(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(0), uint64(0)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesLanman is a helper function that checks the registry to determine if the system is configured with the correct settings for Lanman.
@@ -740,7 +738,7 @@ func policiesLanman(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(0)}
 	results := make([]bool, 0)
-	results = append(results, checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
+	results = append(results, CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
 	results = append(results, checkLanmanParameters(registryKey)...)
 	results = append(results, checkLanmanServerParameters(registryKey)...)
 	return results
@@ -756,7 +754,7 @@ func checkLanmanParameters(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(1), uint64(1), uint64(0)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // checkLanmanServerParameters is a helper function that checks the registry to determine if the system is configured with the correct settings for Lanman server parameters.
@@ -771,7 +769,7 @@ func checkLanmanServerParameters(registryKey mocking.RegistryKey) []bool {
 	expectedValues := []interface{}{[]uint64{1, 15}, uint64(1), uint64(1), uint64(1), []uint64{1, 2}, nil, uint64(1),
 		nil, uint64(0)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesNetworkConnections is a helper function that checks the registry to determine if the system is configured with the correct settings for network connections.
@@ -784,7 +782,7 @@ func policiesNetworkConnections(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(0), uint64(0), uint64(1)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesNetworkProvider is a helper function that checks the registry to determine if the system is configured with the correct settings for the network provider.
@@ -801,7 +799,7 @@ func policiesNetworkProvider(registryKey mocking.RegistryKey) []bool {
 		"[Rr]equire([Mm]utual[Aa]uthentication|[Ii]ntegrity)=1.*[Rr]equire([Mm]utual[Aa]uthentication|[Ii]ntegrity)=1",
 	}
 
-	return checkStringRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckStringRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesOneDrive is a helper function that checks the registry to determine if the system is configured with the correct settings for OneDrive.
@@ -814,7 +812,7 @@ func policiesOneDrive(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(1)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesPersonalization is a helper function that checks the registry to determine if the system is configured with the correct settings for personalization.
@@ -827,7 +825,7 @@ func policiesPersonalization(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(1), uint64(1)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesPowerShell is a helper function that checks the registry to determine if the system is configured with the correct settings for PowerShell.
@@ -851,7 +849,7 @@ func checkPowershellScriptblocklogging(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(1)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // checkPowershellTranscription is a helper function that checks the registry to determine if the system is configured with the correct settings for PowerShell transcription.
@@ -864,7 +862,7 @@ func checkPowershellTranscription(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(0)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesPreviewBuild is a helper function that checks the registry to determine if the system is configured with the correct settings for preview builds.
@@ -877,7 +875,7 @@ func policiesPreviewBuild(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(0)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesSandbox is a helper function that checks the registry to determine if the system is configured with the correct settings for the sandbox.
@@ -890,7 +888,7 @@ func policiesSandbox(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(0), uint64(0)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesGeneralSystem is a helper function that checks the registry to determine if the system is configured with the correct settings for Windows System.
@@ -907,7 +905,7 @@ func policiesGeneralSystem(registryKey mocking.RegistryKey) []bool {
 	expectedValues := []interface{}{uint64(0), uint64(1), uint64(1), uint64(1), uint64(0), uint64(1), uint64(1),
 		uint64(0), uint64(1), uint64(1), uint64(1)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesWindowsSearch is a helper function that checks the registry to determine if the system is configured with the correct settings for Windows Search.
@@ -920,7 +918,7 @@ func policiesWindowsSearch(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(0), uint64(0), uint64(0), uint64(0)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesWindowsUpdate is a helper function that checks the registry to determine if the system is configured with the correct settings for Windows Update.
@@ -935,7 +933,7 @@ func policiesWindowsUpdate(registryKey mocking.RegistryKey) []bool {
 	expectedValues := []interface{}{uint64(1), uint64(1), uint64(1), []uint64{180, ^uint64(0)}, uint64(1), uint64(0)}
 
 	results := make([]bool, 0)
-	results = append(results, checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
+	results = append(results, CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
 	results = append(results, checkWindowsUpdateAu(registryKey)...)
 	return results
 }
@@ -950,7 +948,7 @@ func checkWindowsUpdateAu(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(0), uint64(0), uint64(0)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesWinRM is a helper function that checks the registry to determine if the system is configured with the correct settings for WinRM.
@@ -973,7 +971,7 @@ func checkWinRMClient(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(0), uint64(0), uint64(0)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // checkWinRMService is a helper function that checks the registry to determine if the system is configured with the correct settings for WinRM service.
@@ -986,7 +984,7 @@ func checkWinRMService(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(0), uint64(0), uint64(1)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesWindowsFirewall is a helper function that checks the registry to determine if the system is configured with the correct settings for the Windows firewall.
@@ -1013,7 +1011,7 @@ func checkWindowsFirewallDomainProfile(registryKey mocking.RegistryKey) []bool {
 
 	results := make([]bool, 0)
 	results = append(results, checkWindowsFirewallDomainProfileLogging(registryKey)...)
-	results = append(results, checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
+	results = append(results, CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
 	return results
 }
 
@@ -1029,7 +1027,7 @@ func checkWindowsFirewallDomainProfileLogging(registryKey mocking.RegistryKey) [
 	expectedString := []string{`%SYSTEMROOT%\System32\logfiles\firewall\domainfw.log`}
 	expectedValues := []interface{}{[]uint64{16384, ^uint64(0)}, uint64(1), uint64(1)}
 
-	return checkIntegerStringRegistrySettings(registryKey, registryPath, settings, expectedValues,
+	return CheckIntegerStringRegistrySettings(registryKey, registryPath, settings, expectedValues,
 		stringSetting, expectedString)
 }
 
@@ -1045,7 +1043,7 @@ func checkWindowsFirewallPrivateProfile(registryKey mocking.RegistryKey) []bool 
 
 	results := make([]bool, 0)
 	results = append(results, checkWindowsFirewallPrivateProfileLogging(registryKey)...)
-	results = append(results, checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
+	results = append(results, CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
 
 	return results
 }
@@ -1062,7 +1060,7 @@ func checkWindowsFirewallPrivateProfileLogging(registryKey mocking.RegistryKey) 
 	expectedString := []string{`%SYSTEMROOT%\System32\logfiles\firewall\privatefw.log`}
 	expectedValues := []interface{}{[]uint64{16384, ^uint64(0)}, uint64(1), uint64(1)}
 
-	return checkIntegerStringRegistrySettings(registryKey, registryPath, settings, expectedValues, stringSetting, expectedString)
+	return CheckIntegerStringRegistrySettings(registryKey, registryPath, settings, expectedValues, stringSetting, expectedString)
 }
 
 // checkWindowsFirewallPublicProfile is a helper function that checks the registry to determine if the system is configured with the correct settings for the public profile.
@@ -1077,7 +1075,7 @@ func checkWindowsFirewallPublicProfile(registryKey mocking.RegistryKey) []bool {
 
 	results := make([]bool, 0)
 	results = append(results, checkWindowsFirewallPublicProfileLogging(registryKey)...)
-	results = append(results, checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
+	results = append(results, CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
 
 	return results
 }
@@ -1093,7 +1091,7 @@ func checkWindowsFirewallPublicProfileLogging(registryKey mocking.RegistryKey) [
 	expectedString := []string{`%SYSTEMROOT%\System32\logfiles\firewall\publicfw.log`}
 	expectedValues := []interface{}{[]uint64{16384, ^uint64(0)}, uint64(1), uint64(1)}
 
-	return checkIntegerStringRegistrySettings(registryKey, registryPath, settings, expectedValues,
+	return CheckIntegerStringRegistrySettings(registryKey, registryPath, settings, expectedValues,
 		stringSetting, expectedString)
 }
 
@@ -1107,7 +1105,7 @@ func policiesWindowsInkWorkspace(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{[]uint64{0, 1}}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesWindowsStore is a helper function that checks the registry to determine if the system is configured with the correct settings for the Windows Store.
@@ -1120,7 +1118,7 @@ func policiesWindowsStore(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(1), uint64(4), uint64(1)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesEarlyLaunch is a helper function that checks the registry to determine if the system is configured with the correct settings for early launch.
@@ -1133,5 +1131,5 @@ func policiesEarlyLaunch(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(3)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
