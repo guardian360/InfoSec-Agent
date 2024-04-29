@@ -3,6 +3,7 @@ module github.com/InfoSec-Agent/InfoSec-Agent
 go 1.22.0
 
 require (
+	github.com/DATA-DOG/go-sqlmock v1.5.2
 	github.com/andrewarchi/browser v0.0.0-20210602185959-ae587407e71c
 	github.com/getlantern/systray v1.2.2
 	github.com/ncruces/zenity v0.10.12
@@ -16,7 +17,6 @@ require (
 )
 
 require (
-	github.com/DATA-DOG/go-sqlmock v1.5.2 // indirect
 	github.com/frankban/quicktest v1.14.6 // indirect
 	github.com/go-logr/logr v1.4.1 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect

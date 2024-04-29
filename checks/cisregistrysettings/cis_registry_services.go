@@ -74,7 +74,7 @@ func servicesEventLog(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{[]uint64{1, 90}}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // servicesLDAP is a helper function that checks the registry to determine if the system is configured with the correct settings for the LDAP service.
@@ -87,7 +87,7 @@ func servicesLDAP(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(1)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // servicesNetBTParameters is a helper function that checks the registry to determine if the system is configured with the correct settings for the NetBT parameters.
@@ -100,7 +100,7 @@ func servicesNetBTParameters(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(2), uint64(1)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // servicesNetlogonParameters is a helper function that checks the registry to determine if the system is configured with the correct settings for the Netlogon parameters.
@@ -114,7 +114,7 @@ func servicesNetlogonParameters(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(1), uint64(1), uint64(1), uint64(0), []uint64{1, 30}, uint64(1)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // servicesTCPIP is a helper function that checks the registry to determine if the system is configured with the correct settings for the TCPIP service.
@@ -127,7 +127,7 @@ func servicesTCPIP(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(2), uint64(0)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // servicesTCPIP6 is a helper function that checks the registry to determine if the system is configured with the correct settings for the TCPIP6 service.
@@ -140,7 +140,7 @@ func servicesTCPIP6(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(2)}
 
-	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // checkservicesDisabled is a helper function that checks the registry to determine if the system is configured with the correct settings for the services that should be disabled.
@@ -151,7 +151,7 @@ func checkservicesDisabled(registryKey mocking.RegistryKey, registryPaths []stri
 
 		expectedValues := []interface{}{uint64(4)}
 
-		results = append(results, checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
+		results = append(results, CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
 	}
 	return results
 }
