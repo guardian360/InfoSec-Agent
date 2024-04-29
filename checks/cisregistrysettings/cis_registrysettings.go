@@ -24,13 +24,20 @@ import (
 //   - []bool: A slice of boolean values, where each boolean represents whether a particular registry setting adheres to the CIS Benchmark standards.
 func CISRegistrySettings(localMachineKey mocking.RegistryKey, usersKey mocking.RegistryKey) checks.Check {
 	results := make([]bool, 0)
-	// HKEY_LOCAL_MACHINE
+	// Following function(s) need the HKEY_LOCAL_MACHINE registry key
 	results = append(results, CheckServices(localMachineKey)...)
 	results = append(results, CheckPoliciesHKLM(localMachineKey)...)
 	results = append(results, CheckOtherRegistrySettings(localMachineKey)...)
-	// HKEY_USERS
+	// Following function(s) need the HKEY_USERS registry key
 	results = append(results, CheckPoliciesHKU(usersKey)...)
 
+	// Following function(s) need the HKEY_LOCAL_MACHINE registry key
+	if checks.WinVersion == 10 {
+		results = append(results, CheckWin10(localMachineKey)...)
+	}
+	if checks.WinVersion == 11 {
+		results = append(results, CheckWin11(localMachineKey)...)
+	}
 	// check if results are all true
 	for _, result := range results {
 		if !result {

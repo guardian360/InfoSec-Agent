@@ -410,13 +410,13 @@ func checkWindowsDefenderNetworkProtection(registryKey mocking.RegistryKey) []bo
 
 // policiesDNSClient is a helper function that checks the registry to determine if the system is configured with the correct settings for the DNS client.
 //
-// CIS Benchmark Audit list indices: 18.5.4.1-2
+// CIS Benchmark Audit list indices: 18.5.4.2
 func policiesDNSClient(registryKey mocking.RegistryKey) []bool {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows NT\DNSClient`
 
-	settings := []string{"DoHPolicy", "EnableMulticast"}
+	settings := []string{"EnableMulticast"}
 
-	expectedValues := []interface{}{[]uint64{2, 3}, uint64(0)}
+	expectedValues := []interface{}{uint64(0)}
 
 	return checkIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
