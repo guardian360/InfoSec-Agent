@@ -11,7 +11,7 @@ export function openPrivacyDashboardPage() {
   document.onload = retrieveTheme();
   closeNavigation();
   markSelectedNavigationItem('privacy-dashboard-button');
-  sessionStorage.setItem('savedPage', "3");
+  sessionStorage.setItem('savedPage', '3');
 
   document.getElementById('page-contents').innerHTML = `
   <div class="dashboard-data">

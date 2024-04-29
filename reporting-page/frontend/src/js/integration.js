@@ -6,7 +6,7 @@ export let currentStep = 1;
 export function openIntegrationPage() {
   closeNavigation();
   markSelectedNavigationItem('integration-button');
-  sessionStorage.setItem('savedPage', "5");
+  sessionStorage.setItem('savedPage', '5');
   document.getElementById('page-contents').innerHTML = `
   <!DOCTYPE html>
   <html lang="en">

@@ -3,8 +3,8 @@ import {closeNavigation, loadPersonalizeNavigation} from './navigation-menu.js';
 
 /** Load the content of the Personalize page */
 export function openPersonalizePage() {
-  closeNavigation();  
-  sessionStorage.setItem('savedPage', "7");
+  closeNavigation();
+  sessionStorage.setItem('savedPage', '7');
 
   document.getElementById('page-contents').innerHTML = `
   <div class="personalize-container">

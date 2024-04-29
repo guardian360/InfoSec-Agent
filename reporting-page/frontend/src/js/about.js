@@ -7,8 +7,8 @@ export function openAboutPage() {
   document.onload = retrieveTheme();
   closeNavigation();
   markSelectedNavigationItem('about-button');
-  sessionStorage.setItem('savedPage', "6");
-  
+  sessionStorage.setItem('savedPage', '6');
+
   document.getElementById('page-contents').innerHTML = `
   <div class="container-about">
     <div class="about-header">

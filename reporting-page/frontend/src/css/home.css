@@ -276,7 +276,7 @@ h2{
   position: absolute;
   background: var(--background-color);
   min-width: 160px;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%);
   z-index: 1;
   right: 0;
 }
