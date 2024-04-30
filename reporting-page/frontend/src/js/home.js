@@ -8,7 +8,7 @@ import {scanTest} from './database.js';
 /** Load the content of the Home page */
 export function openHomePage() {
   document.onload = retrieveTheme();
-  closeNavigation();
+  closeNavigation(document.body.offsetWidth);
   markSelectedNavigationItem('home-button');
   sessionStorage.setItem('savedPage', 1);
   document.getElementById('page-contents').innerHTML = `
