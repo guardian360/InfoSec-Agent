@@ -7,6 +7,7 @@ package tray
 import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/usersettings"
+	"github.com/go-toast/toast"
 	"github.com/pkg/errors"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
@@ -140,6 +141,11 @@ func OnReady() {
 			if err != nil {
 				logger.Log.ErrorWithErr("Error scanning:", err)
 			}
+			// Notify the user that a scan has been completed
+			err = Popup()
+			if err != nil {
+				logger.Log.ErrorWithErr("Error notifying user:", err)
+			}
 		case <-mChangeLanguage.ClickedCh:
 			ChangeLanguage("usersettings")
 			RefreshMenu()
@@ -154,6 +160,11 @@ func OnReady() {
 			_, err := ScanNow()
 			if err != nil {
 				logger.Log.ErrorWithErr("Error scanning:", err)
+			}
+			// Notify the user that a scan has been completed
+			err = Popup()
+			if err != nil {
+				logger.Log.ErrorWithErr("Error notifying user:", err)
 			}
 		}
 	}
@@ -423,4 +434,28 @@ func RefreshMenu() {
 		item.sysMenuItem.SetTitle(localization.Localize(Language, item.MenuTitle))
 		item.sysMenuItem.SetTooltip(localization.Localize(Language, item.menuTooltip))
 	}
+}
+
+// Notify displays a notification to the user when a scan is completed.
+//
+// This function creates a notification with a title, message, and icon to inform the user that a scan has been completed.
+// The notification also includes an action button that lets the user open the reporting page.
+//
+// Parameters: scanResult []checks.Check: A list of checks performed during the scan.
+//
+// Returns: error: An error object if an error occurred during the scan, otherwise nil.
+func Popup() error {
+	notification := toast.Notification{
+		AppID:   "InfoSec Agent",
+		Title:   "Scan Completed",
+		Message: "The privacy and security scan has been completed. Open the reporting page to view the results.",
+		// Icon:    "",
+		Actions: []toast.Action{
+			{"protocol", "Open Reporting Page", ""},
+		},
+	}
+	if err := notification.Push(); err != nil {
+		return fmt.Errorf("error pushing scan notification: %w", err)
+	}
+	return nil
 }
