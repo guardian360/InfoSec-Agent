@@ -111,7 +111,7 @@ func (m MockProfileFinder) FirefoxFolder() ([]string, error) {
 	return m.MockFirefoxFolder()
 }
 
-// CurrentUsername retrieves the current Windows username
+// GetPhishingDomains retrieves a list of active phishing domains from a remote database.
 //
 // This function sends a GET request to the URL of the phishing database hosted on GitHub. It reads the response body,
 // which contains a list of active phishing domains, each on a new line. The function then splits this response into a slice
