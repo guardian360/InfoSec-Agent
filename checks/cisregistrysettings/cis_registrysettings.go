@@ -6,10 +6,11 @@
 package cisregistrysettings
 
 import (
+	"slices"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
-	"slices"
 )
 
 const DNSClientRegistryPath = `SOFTWARE\Policies\Microsoft\Windows NT\DNSClient`

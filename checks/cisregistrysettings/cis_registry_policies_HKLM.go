@@ -294,7 +294,6 @@ func policiesWindowsDefender(registryKey mocking.RegistryKey) {
 	checkWindowsDefenderSpyNet(registryKey)
 	checkWindowsDefenderNetworkProtection(registryKey)
 	checkWindowsDefenderAppBrowserProtection(registryKey)
-
 }
 
 // checkWindowsDefenderScan is a helper function that checks the registry to determine if Windows Defender is configured with the correct scan settings.
@@ -928,10 +927,8 @@ func checkWindowsUpdateAu(registryKey mocking.RegistryKey) {
 
 // policiesWinRM is a helper function that checks the registry to determine if the system is configured with the correct settings for WinRM.
 func policiesWinRM(registryKey mocking.RegistryKey) {
-
 	checkWinRMClient(registryKey)
 	checkWinRMService(registryKey)
-
 }
 
 // checkWinRMClient is a helper function that checks the registry to determine if the system is configured with the correct settings for WinRM client.
@@ -1040,7 +1037,6 @@ func checkWindowsFirewallPublicProfile(registryKey mocking.RegistryKey) {
 
 	checkWindowsFirewallPublicProfileLogging(registryKey)
 	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
-
 }
 
 // checkWindowsFirewallPublicProfileLogging is a helper function that checks the registry to determine if the system is configured with the correct settings for the public profile logging.
