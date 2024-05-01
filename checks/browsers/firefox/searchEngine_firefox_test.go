@@ -74,11 +74,11 @@ func TestYourFunction(t *testing.T) {
 	defer func() { firefox.OpenAndStatFile = originalOpenAndStatFile }()
 
 	// Mock the OpenAndStatFile function
-	firefox.OpenAndStatFile = func(tempSearch string) (*os.File, int64, error) {
+	firefox.OpenAndStatFile = func(tempSearch string) (mocking.File, int64, error) {
 		// Return whatever you need for your test
 		file := &mocking.FileMock{
 			Bytes: 0,
-			Err: nil,
+			Err:   nil,
 		}
 		return file, 0, nil
 	}
