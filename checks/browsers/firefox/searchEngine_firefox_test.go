@@ -8,7 +8,7 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/browserutils"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/firefox"
 	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
-	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 func TestSearchEngineFirefox_WithInvalidDirectory(t *testing.T) {
@@ -20,42 +20,40 @@ func TestSearchEngineFirefox_WithInvalidDirectory(t *testing.T) {
 	}
 
 	check := firefox.SearchEngineFirefox(Profilefinder)
-	assert.Nil(t, check.Result)
-	assert.NotNil(t, check.Error)
+	require.Nil(t, check.Result)
+	require.Error(t, check.Error)
 }
 
 func TestResults_WithGoogleEngine(t *testing.T) {
 	data := []byte(`"defaultEngineId":""`)
 	result := firefox.Results(data)
-	assert.Equal(t, "Google", result)
+	require.Equal(t, "Google", result)
 }
 
 func TestResults_WithKnownEngine(t *testing.T) {
 	data := []byte(`"defaultEngineId":"ddg@search.mozilla.org"`)
 	result := firefox.Results(data)
-	assert.Equal(t, "ddg@search.mozilla.org", result)
+	require.Equal(t, "ddg@search.mozilla.org", result)
 }
 
 func TestResults_WithUnknownEngine(t *testing.T) {
 	data := []byte(`"defaultEngineId":"unknown@search.mozilla.org"`)
 	result := firefox.Results(data)
-	assert.Equal(t, "Other Search Engine", result)
+	require.Equal(t, "Other Search Engine", result)
 }
 
 func TestOpenAndStatFile_WithValidFile(t *testing.T) {
 	// Create a temporary file for testing
-	tempFile, err := os.CreateTemp("", "testfile")
-	if err != nil {
-	}
+	tempFile, _ := os.CreateTemp("", "testfile")
 	defer os.Remove(tempFile.Name())
 
 	// Call the function with the temporary file
 	file, size, err := firefox.OpenAndStatFile(tempFile.Name())
 
 	// Assert that no error occurred, the returned file is not nil, and the size is correct
-	assert.NoError(t, err)
-	assert.NotNil(t, file)
-	assert.Equal(t, int64(0), size)
+	require.NoError(t, err)
+	require.NotNil(t, file)
+	require.Equal(t, int64(0), size)
 }
 
 func TestOpenAndStatFile_WithNonExistentFile(t *testing.T) {
@@ -63,9 +61,9 @@ func TestOpenAndStatFile_WithNonExistentFile(t *testing.T) {
 	file, size, err := firefox.OpenAndStatFile("/non/existent/file")
 
 	// Assert that an error occurred, the returned file is nil, and the size is 0
-	assert.Error(t, err)
-	assert.Nil(t, file)
-	assert.Equal(t, int64(0), size)
+	require.Error(t, err)
+	require.Nil(t, file)
+	require.Equal(t, int64(0), size)
 }
 
 func TestYourFunction(t *testing.T) {
@@ -75,7 +73,7 @@ func TestYourFunction(t *testing.T) {
 	defer func() { firefox.OpenAndStatFile = originalOpenAndStatFile }()
 
 	// Mock the OpenAndStatFile function
-	firefox.OpenAndStatFile = func(tempSearch string) (mocking.File, int64, error) {
+	firefox.OpenAndStatFile = func(_ string) (mocking.File, int64, error) {
 		// Return whatever you need for your test
 		file := &mocking.FileMock{
 			FileName: "testfile",
@@ -92,5 +90,5 @@ func TestYourFunction(t *testing.T) {
 	result := firefox.SearchEngineFirefox(browserutils.RealProfileFinder{}) // Replace with the actual function call
 
 	// Assert the result
-	assert.Equal(t, expected, result)
+	require.Equal(t, expected, result)
 }

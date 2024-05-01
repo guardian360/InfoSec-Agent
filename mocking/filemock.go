@@ -12,7 +12,7 @@ type File interface {
 	io.Closer
 	Read(p []byte) (int, error)
 	Write(p []byte) (int, error)
-	Seek(offset int64, whence int) (int64, error)
+	Seek(offset int64, _ int) (int64, error)
 	Stat() (os.FileInfo, error)
 	Copy(source File, destination File) (int64, error)
 }
@@ -99,9 +99,8 @@ func (f *FileWrapper) Copy(source File, destination File) (int64, error) {
 	return int64(bytesWritten), nil
 }
 
-
 func (f *FileWrapper) Stat() (os.FileInfo, error) {
-    return f.file.Stat()
+	return f.file.Stat()
 }
 
 type FileInfoMock struct {
@@ -118,7 +117,7 @@ func (f *FileInfoMock) ModTime() time.Time { return time.Time{} }
 func (f *FileInfoMock) IsDir() bool        { return false }
 func (f *FileInfoMock) Sys() interface{}   { return nil }
 
-//func (f *FileWrapper) Size() (int64, error) {
+// func (f *FileWrapper) Size() (int64, error) {
 //	fileInfo, err := f.file.Stat()
 //	if err != nil {
 //		return 0, err
@@ -174,7 +173,7 @@ func (f *FileMock) Write(_ []byte) (int, error) {
 	return f.Bytes, f.Err
 }
 
-func (f *FileMock) Seek(offset int64, whence int) (int64, error) {
+func (f *FileMock) Seek(offset int64, _ int) (int64, error) {
 	return offset, f.Err
 }
 
