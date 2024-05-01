@@ -4,6 +4,7 @@ import (
 	"io"
 	"math"
 	"os"
+	"time"
 )
 
 type File interface {
@@ -12,6 +13,7 @@ type File interface {
 	Read(p []byte) (int, error)
 	Write(p []byte) (int, error)
 	Seek(offset int64, whence int) (int64, error)
+	Stat() (os.FileInfo, error)
 	Copy(source File, destination File) (int64, error)
 }
 
@@ -97,6 +99,25 @@ func (f *FileWrapper) Copy(source File, destination File) (int64, error) {
 	return int64(bytesWritten), nil
 }
 
+
+func (f *FileWrapper) Stat() (os.FileInfo, error) {
+    return f.file.Stat()
+}
+
+type FileInfoMock struct {
+	file *FileMock
+}
+
+func (f *FileInfoMock) Size() int64 {
+	return int64(len(f.file.Buffer))
+}
+
+func (f *FileInfoMock) Name() string       { return "" }
+func (f *FileInfoMock) Mode() os.FileMode  { return 0 }
+func (f *FileInfoMock) ModTime() time.Time { return time.Time{} }
+func (f *FileInfoMock) IsDir() bool        { return false }
+func (f *FileInfoMock) Sys() interface{}   { return nil }
+
 //func (f *FileWrapper) Size() (int64, error) {
 //	fileInfo, err := f.file.Stat()
 //	if err != nil {
@@ -111,6 +132,7 @@ type FileMock struct {
 	Buffer   []byte
 	Bytes    int
 	Err      error
+	FileInfo *FileInfoMock
 }
 
 // Close closes the mock file
@@ -167,4 +189,8 @@ func (f *FileMock) Copy(source File, destination File) (int64, error) {
 		return 0, err
 	}
 	return int64(f.Bytes), f.Err
+}
+
+func (f *FileMock) Stat() (os.FileInfo, error) {
+	return f.FileInfo, f.Err
 }

@@ -4,6 +4,7 @@ import (
 	"os"
 	"testing"
 
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/browserutils"
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/firefox"
 	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
@@ -77,14 +78,19 @@ func TestYourFunction(t *testing.T) {
 	firefox.OpenAndStatFile = func(tempSearch string) (mocking.File, int64, error) {
 		// Return whatever you need for your test
 		file := &mocking.FileMock{
-			Bytes: 0,
-			Err:   nil,
+			FileName: "testfile",
+			IsOpen:   true,
+			Buffer:   []byte("1234567864567744545454443343454"),
+			Bytes:    26,
+			FileInfo: &mocking.FileInfoMock{},
+			Err:      nil,
 		}
-		return file, 0, nil
+		return file, 26, nil
 	}
+	expected := checks.NewCheckErrorf(checks.SearchFirefoxID, "Uncompressed size is 0", nil)
 	// Call the function under test
-	result := firefox.SearchEngineFirefox(Profilefinder) // Replace with the actual function call
+	result := firefox.SearchEngineFirefox(browserutils.RealProfileFinder{}) // Replace with the actual function call
 
 	// Assert the result
-	assert.Nil(t, result)
+	assert.Equal(t, expected, result)
 }

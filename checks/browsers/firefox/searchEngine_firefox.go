@@ -28,7 +28,7 @@ func SearchEngineFirefox(profileFinder browserutils.FirefoxProfileFinder) checks
 	// Determine the directory in which the Firefox profile is stored
 	var ffDirectory []string
 	var err error
-	ffDirectory, err = browserutils.RealProfileFinder{}.FirefoxFolder()
+	ffDirectory, err = profileFinder.FirefoxFolder()
 	if err != nil {
 		return checks.NewCheckErrorf(checks.SearchFirefoxID, "No firefox directory found", err)
 	}
@@ -77,6 +77,9 @@ func SearchEngineFirefox(profileFinder browserutils.FirefoxProfileFinder) checks
 
 	// Transforms the size of the file after decompression from Little Endian to a normal 32-bit integer
 	unCompressedSize := binary.LittleEndian.Uint32(uncompressSize)
+	if unCompressedSize == 0 {
+		return checks.NewCheckErrorf(checks.SearchFirefoxID, "Uncompressed size is 0", nil)
+	}
 
 	// Skip the first 12 bytes because that is the start of the data
 	_, err = file.Seek(12, io.SeekStart)
