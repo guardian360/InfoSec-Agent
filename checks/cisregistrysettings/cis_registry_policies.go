@@ -16,7 +16,6 @@ func CheckPoliciesHKU(registryKey mocking.RegistryKey) {
 	for _, check := range policyChecksHKU {
 		check(registryKey)
 	}
-
 }
 
 // policyChecksHKU is a collection of registry checks related to different policies.
