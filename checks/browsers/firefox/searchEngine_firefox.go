@@ -61,15 +61,6 @@ func SearchEngineFirefox(profileFinder browserutils.FirefoxProfileFinder) checks
 		}
 	}(file)
 
-	// Holds the custom magic number for the mozilla lz4 compression
-	magicNumber := make([]byte, 8)
-
-	// Retrieves the magicNumber from the file
-	_, err = file.Read(magicNumber)
-	if err != nil {
-		return checks.NewCheckErrorf(checks.SearchFirefoxID, "Unable to read the file", err)
-	}
-
 	// Holds the size of the file after decompressing it
 	uncompressSize := make([]byte, 4)
 
