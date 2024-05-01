@@ -6,12 +6,18 @@
 package cisregistrysettings
 
 import (
+	"slices"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 )
 
 const DNSClientRegistryPath = `SOFTWARE\Policies\Microsoft\Windows NT\DNSClient`
+
+// RegistrySettingsMap is a map that stores the results of the registry settings checks.
+// The key is the registry path and the value is a boolean indicating whether the registry setting adheres to the CIS Benchmark standards.
+var RegistrySettingsMap = map[string]bool{}
 
 // CISRegistrySettings is a function that checks various registry settings to ensure they adhere to the CIS Benchmark standards.
 // It takes a RegistryKey object as an argument, which represents the root key from which the registry settings will be checked.
@@ -23,30 +29,29 @@ const DNSClientRegistryPath = `SOFTWARE\Policies\Microsoft\Windows NT\DNSClient`
 //
 // Returns:
 //
-//   - []bool: A slice of boolean values, where each boolean represents whether a particular registry setting adheres to the CIS Benchmark standards.
+//   - checks.Check: A check object containing the settings that do not adhere to the CIS Benchmark standards.
 func CISRegistrySettings(localMachineKey mocking.RegistryKey, usersKey mocking.RegistryKey) checks.Check {
-	results := make([]bool, 0)
 	// Following function(s) need the HKEY_LOCAL_MACHINE registry key
-	results = append(results, CheckServices(localMachineKey)...)
-	results = append(results, CheckPoliciesHKLM(localMachineKey)...)
-	results = append(results, CheckOtherRegistrySettings(localMachineKey)...)
+	CheckServices(localMachineKey)
+	CheckPoliciesHKLM(localMachineKey)
+	CheckOtherRegistrySettings(localMachineKey)
 	// Following function(s) need the HKEY_USERS registry key
-	results = append(results, CheckPoliciesHKU(usersKey)...)
+	CheckPoliciesHKU(usersKey)
 
 	// Following function(s) need the HKEY_LOCAL_MACHINE registry key
 	if checks.WinVersion == 10 {
-		results = append(results, CheckWin10(localMachineKey)...)
+		CheckWin10(localMachineKey)
 	}
 	if checks.WinVersion == 11 {
-		results = append(results, CheckWin11(localMachineKey)...)
+		CheckWin11(localMachineKey)
 	}
-	// check if results are all true
-	for _, result := range results {
-		if !result {
-			return checks.NewCheckResult(checks.CISRegistrySettingsID, 0, "Not all registry settings adhere to the CIS Benchmark standards")
-		}
+	// Check if all registry settings adhere to the CIS Benchmark standards
+	fullyTrue, incorrectSettings := getIncorrectSettings()
+	if fullyTrue {
+		return checks.NewCheckResult(checks.CISRegistrySettingsID, 1, "All registry settings adhere to the CIS Benchmark standards")
 	}
-	return checks.NewCheckResult(checks.CISRegistrySettingsID, 1, "All registry settings adhere to the CIS Benchmark standards")
+	resultString := "Not all registry settings adhere to the CIS Benchmark standards"
+	return checks.NewCheckResult(checks.CISRegistrySettingsID, 0, append([]string{resultString}, incorrectSettings...)...)
 }
 
 // CheckIntegerValue is a helper function that checks if the integer value of a registry key matches the expected value.
@@ -127,44 +132,6 @@ func OpenRegistryKeyWithErrHandling(registryKey mocking.RegistryKey, path string
 	return key, err
 }
 
-// CheckMultipleIntegerValues is a helper function that checks multiple integer values of a registry key against their expected values.
-//
-// Parameters:
-//
-//   - openKey (mocking.RegistryKey): The registry key to check.
-//   - settings ([]string): A slice of strings representing the names of the values to check.
-//   - expectedValues ([]interface{}): A slice of interface values representing the expected values of the registry keys.
-//
-// Returns:
-//
-//   - []bool: A slice of boolean values indicating whether the integer values of the registry keys match the expected values.
-func CheckMultipleIntegerValues(openKey mocking.RegistryKey, settings []string, expectedValues []interface{}) []bool {
-	results := make([]bool, len(settings))
-	for i, val := range settings {
-		results[i] = CheckIntegerValue(openKey, val, expectedValues[i])
-	}
-	return results
-}
-
-// CheckMultipleStringValues is a helper function that checks multiple string values of a registry key against their expected values.
-//
-// Parameters:
-//
-//   - openKey (mocking.RegistryKey): The registry key to check.
-//   - settings ([]string): A slice of strings representing the names of the values to check.
-//   - expectedValues ([]string): A slice of strings representing the expected values of the registry keys.
-//
-// Returns:
-//
-//   - []bool: A slice of boolean values indicating whether the string values of the registry keys match the expected values.
-func CheckMultipleStringValues(openKey mocking.RegistryKey, settings []string, expectedValues []string) []bool {
-	results := make([]bool, len(settings))
-	for i, val := range settings {
-		results[i] = CheckStringValue(openKey, val, expectedValues[i])
-	}
-	return results
-}
-
 // CheckIntegerRegistrySettings is a helper function that checks the registry to determine if the system is configured with the correct integer settings.
 //
 // Parameters:
@@ -174,17 +141,20 @@ func CheckMultipleStringValues(openKey mocking.RegistryKey, settings []string, e
 //   - settings ([]string): A slice of strings representing the names of the values to check.
 //   - expectedValues ([]interface{}): A slice of interface values representing the expected values of the registry keys.
 //
-// Returns:
-//
-//   - []bool: A slice of boolean values indicating whether the integer settings of the registry keys match the expected values.
-func CheckIntegerRegistrySettings(registryKey mocking.RegistryKey, registryPath string, settings []string, expectedValues []interface{}) []bool {
+// Returns: None
+func CheckIntegerRegistrySettings(registryKey mocking.RegistryKey, registryPath string, settings []string, expectedValues []interface{}) {
 	key, err := OpenRegistryKeyWithErrHandling(registryKey, registryPath)
 	if err != nil {
-		return make([]bool, len(settings))
+		for _, setting := range settings {
+			RegistrySettingsMap[registryPath+"\\"+setting] = false
+			return
+		}
 	}
 	defer mocking.CloseRegistryKey(key)
 
-	return CheckMultipleIntegerValues(key, settings, expectedValues)
+	for i, setting := range settings {
+		RegistrySettingsMap[registryPath+"\\"+setting] = CheckIntegerValue(key, setting, expectedValues[i])
+	}
 }
 
 // CheckStringRegistrySettings is a helper function that checks the registry to determine if the system is configured with the correct string settings.
@@ -196,17 +166,20 @@ func CheckIntegerRegistrySettings(registryKey mocking.RegistryKey, registryPath 
 //   - settings ([]string): A slice of strings representing the names of the values to check.
 //   - expectedValues ([]string): A slice of strings representing the expected values of the registry keys.
 //
-// Returns:
-//
-//   - []bool: A slice of boolean values indicating whether the string settings of the registry keys match the expected values.
-func CheckStringRegistrySettings(registryKey mocking.RegistryKey, registryPath string, settings []string, expectedValues []string) []bool {
+// Returns: None
+func CheckStringRegistrySettings(registryKey mocking.RegistryKey, registryPath string, settings []string, expectedValues []string) {
 	key, err := OpenRegistryKeyWithErrHandling(registryKey, registryPath)
 	if err != nil {
-		return make([]bool, len(settings))
+		for _, setting := range settings {
+			RegistrySettingsMap[registryPath+"\\"+setting] = false
+			return
+		}
 	}
 	defer mocking.CloseRegistryKey(key)
 
-	return CheckMultipleStringValues(key, settings, expectedValues)
+	for i, setting := range settings {
+		RegistrySettingsMap[registryPath+"\\"+setting] = CheckStringValue(key, setting, expectedValues[i])
+	}
 }
 
 // CheckIntegerStringRegistrySettings is a helper function that checks the registry to determine if the system is configured with the correct integer and string settings.
@@ -220,20 +193,47 @@ func CheckStringRegistrySettings(registryKey mocking.RegistryKey, registryPath s
 //   - stringSettings ([]string): A slice of strings representing the names of the string values to check.
 //   - expectedStrings ([]string): A slice of strings representing the expected string values of the registry keys.
 //
-// Returns:
-//
-//   - []bool: A slice of boolean values indicating whether the integer and string settings of the registry keys match the expected values.
+// Returns: None
 func CheckIntegerStringRegistrySettings(registryKey mocking.RegistryKey, registryPath string,
 	integerSettings []string, expectedIntegers []interface{}, stringSettings []string,
-	expectedStrings []string) []bool {
+	expectedStrings []string) {
 	key, err := OpenRegistryKeyWithErrHandling(registryKey, registryPath)
 	if err != nil {
-		return make([]bool, len(integerSettings)+len(stringSettings))
+		for _, setting := range integerSettings {
+			RegistrySettingsMap[registryPath+"\\"+setting] = false
+		}
+		for _, setting := range stringSettings {
+			RegistrySettingsMap[registryPath+"\\"+setting] = false
+		}
+		return
 	}
 	defer mocking.CloseRegistryKey(key)
 
-	results := make([]bool, 0)
-	results = append(results, CheckMultipleIntegerValues(key, integerSettings, expectedIntegers)...)
-	results = append(results, CheckMultipleStringValues(key, stringSettings, expectedStrings)...)
-	return results
+	for i, integerSetting := range integerSettings {
+		RegistrySettingsMap[registryPath+"\\"+integerSetting] = CheckIntegerValue(key, integerSetting, expectedIntegers[i])
+	}
+	for i, stringSetting := range stringSettings {
+		RegistrySettingsMap[registryPath+"\\"+stringSetting] = CheckStringValue(key, stringSetting, expectedStrings[i])
+	}
+}
+
+// getIncorrectSettings iterates over the RegistrySettingsMap and returns a slice of incorrect settings.
+//
+// Parameters: None
+//
+// Returns:
+//
+//   - bool: A boolean value indicating whether all registry settings adhere to the CIS Benchmark standards.
+//   - []string: A slice of strings representing the incorrect registry settings.
+func getIncorrectSettings() (bool, []string) {
+	var incorrectSettings []string
+	fullyTrue := true
+	for key, value := range RegistrySettingsMap {
+		if !value {
+			fullyTrue = false
+			incorrectSettings = append(incorrectSettings, key)
+		}
+	}
+	slices.Sort(incorrectSettings)
+	return fullyTrue, incorrectSettings
 }
