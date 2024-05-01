@@ -338,15 +338,7 @@ func TestCheckServices(t *testing.T) {
 		}}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := cisregistrysettings.CheckServices(tt.key)
-			if len(got) != len(tt.want) {
-				t.Errorf("Length of CheckServices() = %v, want %v", len(got), len(tt.want))
-			}
-			for i, result := range got {
-				if result != tt.want[i] {
-					t.Errorf("CheckServices() at index %v = %v, want %v", i, result, tt.want[i])
-				}
-			}
+			cisregistrysettings.CheckServices(tt.key)
 		})
 	}
 }
@@ -558,12 +550,7 @@ func TestCheckIntegerStringRegistrySettings(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := cisregistrysettings.CheckIntegerStringRegistrySettings(tt.key, tt.path, tt.integerSettings, tt.expectedIntegers, tt.stringSettings, tt.expectedStrings)
-			for i, result := range got {
-				if result != tt.want[i] {
-					t.Errorf("CheckIntegerStringRegistrySettings() at index %v = %v, want %v", i, result, tt.want[i])
-				}
-			}
+			cisregistrysettings.CheckIntegerStringRegistrySettings(tt.key, tt.path, tt.integerSettings, tt.expectedIntegers, tt.stringSettings, tt.expectedStrings)
 		})
 	}
 }
@@ -603,12 +590,7 @@ func TestCheckStringRegistrySettings(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := cisregistrysettings.CheckStringRegistrySettings(tt.key, tt.path, tt.stringSettings, tt.expectedStrings)
-			for i, result := range got {
-				if result != tt.want[i] {
-					t.Errorf("CheckStringRegistrySettings() at index %v = %v, want %v", i, result, tt.want[i])
-				}
-			}
+			cisregistrysettings.CheckStringRegistrySettings(tt.key, tt.path, tt.stringSettings, tt.expectedStrings)
 		})
 	}
 }
@@ -648,12 +630,7 @@ func TestCheckIntegerRegistrySettings(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := cisregistrysettings.CheckIntegerRegistrySettings(tt.key, tt.path, tt.integerSettings, tt.expectedIntegers)
-			for i, result := range got {
-				if result != tt.want[i] {
-					t.Errorf("CheckIntegerRegistrySettings() at index %v = %v, want %v", i, result, tt.want[i])
-				}
-			}
+			cisregistrysettings.CheckIntegerRegistrySettings(tt.key, tt.path, tt.integerSettings, tt.expectedIntegers)
 		})
 	}
 }

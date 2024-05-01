@@ -183,6 +183,7 @@ func CheckIntegerRegistrySettings(registryKey mocking.RegistryKey, registryPath 
 	if err != nil {
 		for _, setting := range settings {
 			RegistrySettingsMap[registryPath+"\\"+setting] = false
+			return
 		}
 	}
 	defer mocking.CloseRegistryKey(key)
@@ -209,6 +210,7 @@ func CheckStringRegistrySettings(registryKey mocking.RegistryKey, registryPath s
 	if err != nil {
 		for _, setting := range settings {
 			RegistrySettingsMap[registryPath+"\\"+setting] = false
+			return
 		}
 	}
 	defer mocking.CloseRegistryKey(key)
@@ -243,6 +245,7 @@ func CheckIntegerStringRegistrySettings(registryKey mocking.RegistryKey, registr
 		for _, setting := range stringSettings {
 			RegistrySettingsMap[registryPath+"\\"+setting] = false
 		}
+		return
 	}
 	defer mocking.CloseRegistryKey(key)
 
