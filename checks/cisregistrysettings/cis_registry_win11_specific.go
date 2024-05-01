@@ -17,7 +17,7 @@ func CheckWin11(registryKey mocking.RegistryKey) []bool {
 	results := make([]bool, 0)
 
 	for _, check := range checksWin11 {
-		results = append(results, check(registryKey)...)
+		check(registryKey)
 	}
 
 	return results
@@ -26,19 +26,19 @@ func CheckWin11(registryKey mocking.RegistryKey) []bool {
 // checksWin11 is a collection of registry checks specific to the Windows 11 CIS Benchmark Audit list.
 // Each function in the collection represents a different registry setting check that the application can perform.
 // The registry settings get checked against the CIS Benchmark recommendations.
-var checksWin11 = []func(mocking.RegistryKey) []bool{
+var checksWin11 = []func(mocking.RegistryKey){
 	win11DNSClient,
 }
 
 // win11DNSClient is a helper function that checks the registry to determine if the system is configured with the correct settings for the DNS Client.
 //
 // CIS Benchmark Audit list index: 18.5.4.1
-func win11DNSClient(registryKey mocking.RegistryKey) []bool {
+func win11DNSClient(registryKey mocking.RegistryKey) {
 	registryPath := DNSClientRegistryPath
 
 	settings := []string{"DoHPolicy"}
 
 	expectedValues := []interface{}{[]uint64{2, 3}}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
