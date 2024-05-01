@@ -11,6 +11,7 @@ type File interface {
 	io.Closer
 	Read(p []byte) (int, error)
 	Write(p []byte) (int, error)
+	Seek(offset int64, whence int) (int64, error)
 	Copy(source File, destination File) (int64, error)
 }
 
@@ -60,6 +61,12 @@ func (f *FileWrapper) Close() error {
 // Returns: the number of bytes read and an error if the file cannot be read from
 func (f *FileWrapper) Read(p []byte) (int, error) {
 	return f.file.Read(p)
+}
+
+// TODO: fix this docstring according to new documentation standard
+// Seek sets the offset for the next Read or Write on file to offset, interpreted according to whence: 0 means relative to the origin of the file, 1 means relative to the current offset, and 2 means relative to the end. It returns the new offset and an error, if any.
+func (f *FileWrapper) Seek(offset int64, whence int) (int64, error) {
+	return f.file.Seek(offset, whence)
 }
 
 // TODO: fix this docstring according to new documentation standard
@@ -143,6 +150,10 @@ func (f *FileMock) Read(_ []byte) (int, error) {
 // Returns: the number of bytes written and an error if the file cannot be written to
 func (f *FileMock) Write(_ []byte) (int, error) {
 	return f.Bytes, f.Err
+}
+
+func (f *FileMock) Seek(offset int64, whence int) (int64, error) {
+	return offset, f.Err
 }
 
 func (f *FileMock) Copy(source File, destination File) (int64, error) {

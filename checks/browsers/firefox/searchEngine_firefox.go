@@ -53,9 +53,8 @@ func SearchEngineFirefox(profileFinder browserutils.FirefoxProfileFinder) checks
 	if err != nil {
 		return checks.NewCheckErrorf(checks.SearchFirefoxID, "Unable to open the file", err)
 	}
-	defer func(file *os.File) {
-		tmpFile := mocking.Wrap(file)
-		err = browserutils.CloseFile(tmpFile)
+	defer func(file mocking.File) {
+		err = browserutils.CloseFile(file)
 		if err != nil {
 			log.Println("Error closing file")
 		}
@@ -135,18 +134,18 @@ func Results(data []byte) string {
 	return result
 }
 
-var OpenAndStatFile = func(tempSearch string) (*os.File, int64, error) {
-    fileInfo, err := os.Stat(tempSearch)
-    if err != nil {
-        return nil, 0, err
-    }
-    fileSize := fileInfo.Size()
+var OpenAndStatFile = func(tempSearch string) (mocking.File, int64, error) {
+	fileInfo, err := os.Stat(tempSearch)
+	if err != nil {
+		return nil, 0, err
+	}
+	fileSize := fileInfo.Size()
 
-    // Holds the information from the copied file
-    file, err := os.Open(filepath.Clean(tempSearch))
-    if err != nil {
-        return nil, 0, err
-    }
+	// Holds the information from the copied file
+	file, err := os.Open(filepath.Clean(tempSearch))
+	if err != nil {
+		return nil, 0, err
+	}
 
-    return file, fileSize, nil
+	return mocking.Wrap(file), fileSize, nil
 }
