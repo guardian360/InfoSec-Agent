@@ -49,6 +49,19 @@ jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
   Localize: jest.fn().mockImplementation((input) => mockGetLocalizationString(input)),
 }));
 
+// Mock Chart constructor
+jest.unstable_mockModule('chart.js/auto', () => ({
+  Chart: jest.fn().mockImplementation((context, config) => {
+    return {  
+    // properties
+      type: 'pie',
+      data: config.data || {},
+      options: config.options || {},
+      // functions
+      update: jest.fn(),
+    }
+})}));
+
 // test cases
 describe('Risk level distribution piechart', function() {
   it('getData should fill the piechart with the correct data', async function() {
@@ -114,4 +127,23 @@ describe('Risk level distribution piechart', function() {
       test.object(result).is(expectedOptions);
     });
   });
+  it('Creating a piechart should call getOptions and getData', async function() {
+    // arrange
+    const piechart = await import('../src/js/piechart.js');
+    const chart = await import('chart.js/auto');
+    const rc = new RiskCounters(true);
+    const getDataMock = jest.spyOn(piechart.PieChart.prototype, 'getData')
+    const getOptionsMock = jest.spyOn(piechart.PieChart.prototype, 'getOptions')
+
+    // act
+    const p = new piechart.PieChart('pieChart', rc);
+    await p.createPieChart();
+
+    // assert
+    expect(getDataMock).toHaveBeenCalled();
+    expect(getOptionsMock).toHaveBeenCalled();
+    expect(chart.Chart).toHaveBeenCalled();
+    getDataMock.mockRestore();
+    getOptionsMock.mockRestore();
+  })
 });
