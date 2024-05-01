@@ -7,8 +7,6 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 )
 
-// TODO: Improve formatting of output, check more classes
-
 // ExternalDevices is a function that conducts a security assessment for any external devices connected to the system.
 //
 // Parameters:
@@ -20,7 +18,9 @@ import (
 // The primary use of this function is to identify potential security threats associated with external devices that are connected to the system.
 func ExternalDevices(executorClass mocking.CommandExecutor) Check {
 	// All the classes you want to check with the Get-PnpDevice command
-	classesToCheck := [2]string{"Mouse", "Camera"}
+	// This list can easily be extended; we refer to the Microsoft documentation for the Get-PnpDevice command
+	// (for example: Biometric, Printer, etc.)
+	classesToCheck := [5]string{"Mouse", "Camera", "AudioEndpoint", "Keyboard", "Biometric"}
 	outputs := make([]string, 0)
 	for _, s := range classesToCheck {
 		output, err := CheckDeviceClass(s, executorClass)

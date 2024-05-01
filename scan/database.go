@@ -2,6 +2,7 @@ package scan
 
 import (
 	"database/sql"
+	"errors"
 	"strconv"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
@@ -76,7 +77,12 @@ func FillDataBase(scanResults []checks.Check) {
 
 	// Close the database
 	logger.Log.Info("Closing database")
-	defer db.Close()
+	defer func(db *sql.DB) {
+		err = db.Close()
+		if err != nil {
+			logger.Log.ErrorWithErr("Error closing database:", err)
+		}
+	}(db)
 }
 
 // addIssue inserts a new issue into the 'issues' table in the database.
@@ -139,7 +145,7 @@ func GetSeverity(db *sql.DB, issueID int, resultID int) (int, error) {
 	// Scan the value from the row into the integer variable
 	err := row.Scan(&result)
 	if err != nil {
-		if err == sql.ErrNoRows {
+		if errors.Is(err, sql.ErrNoRows) {
 			logger.Log.Warning("No rows found.")
 		} else {
 			logger.Log.ErrorWithErr("Error scanning row:", err)
@@ -171,7 +177,7 @@ func GetJSONKey(db *sql.DB, issueID int, resultID int) (int, error) {
 	// Scan the value from the row into the integer variable
 	err := row.Scan(&result)
 	if err != nil {
-		if err == sql.ErrNoRows {
+		if errors.Is(err, sql.ErrNoRows) {
 			logger.Log.Error("No rows found.")
 		} else {
 			logger.Log.ErrorWithErr("Error scanning row:", err)
@@ -212,6 +218,11 @@ func GetDataBaseData(checks []checks.Check) ([]DataBaseData, error) {
 	}
 
 	logger.Log.Info("Closing database")
-	defer db.Close()
+	defer func(db *sql.DB) {
+		err = db.Close()
+		if err != nil {
+			logger.Log.ErrorWithErr("Error closing database:", err)
+		}
+	}(db)
 	return dbData, nil
 }

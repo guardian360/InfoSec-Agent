@@ -14,20 +14,12 @@
   },
   "Navigation": 
   {
-    "Settings": "Instellingen",
     "Home": "Startpagina",
     "SecurityDashboard": "Beveiligingsdashboard",
     "PrivacyDashboard": "Privacydashboard",
     "Issues": "Problemen",
     "Integration": "Integratie",
     "About": "Over"
-  },
-  "Settings":
-  {
-    "PersonalizeTitle": "Personalisatie",
-    "PersonalizeButton": "Personaliseer",
-    "ChangeLanguageTitle": "Taal",
-    "ChangeLanguageButton": "Taal wijzigen"
   },
   "Dashboard": 
   {
@@ -41,6 +33,7 @@
     "Critical": "Kritiek",
     "MediumConcern": "Gemiddelde Bezorgdheid",
     "LowConcern": "Lage Bezorgdheid",
+    "InfoConcern": "Informative",
     "NoConcern": "Veilig",
     "TotalRisksOverview": "Total risks overview",
     "SecurityRisksOverview": "Overzicht van Beveiligings-/Privacyrisico's",
@@ -48,6 +41,7 @@
     "HighRisk": "Hoogrisico-problemen",
     "MediumRisk": "Gemiddeldrisico-problemen",
     "LowRisk": "Laagrisico-problemen",
+    "InfoRisk": "Informative",
     "Safe": "Problemen zonder risico",
     "RiskAreas": "Gebieden van Veiligheids-/Privacyrisico's",
     "Applications": "Applicaties",
@@ -71,6 +65,13 @@
     "Previous": "&laquo; Vorige stap",
     "Next": "Volgende stap &raquo;",
     "Back": "Terug naar het overzicht van problemen"
-  }
-  
+  },
+  "About":
+  { 
+    "about-title": "Over Infosec Agent",
+    "infosec-info": "Het InfoSec Agent-project heeft als doel de beveiliging en privacy van Windows-gebruikers te verbeteren. Momenteel zijn er toepassingen beschikbaar die dit doen, maar ze zijn voornamelijk gericht op grote bedrijven. Het doel van dit project is om dit toegankelijk te maken voor iedereen. Er wordt een applicatie ontwikkeld die informatie verzamelt over het systeem van de gebruiker om eventuele beveiligings- of privacygerelateerde kwetsbaarheden te ontdekken. De resultaten worden aan de gebruiker gepresenteerd in een speciaal dashboard, met de huidige status van het systeem, inclusief aanbevolen acties om het te verbeteren.",
+    "little-brother-info": "Dit project is een gezamenlijke inspanning van negen studenten van de Universiteit Utrecht in Nederland, in samenwerking met het Nederlandse IT-bedrijf Guardian360. Het dient als het Softwareproject voor het Bachelorprogramma in Computerwetenschappen aan de UU.",
+    "about-contribute": "Bijdragen",
+    "contribute-info": "InfoSec-Agent is een open-sourceproject dat is gelicentieerd onder de GPL-3.0-licentie. Echter, vanwege de oorsprong als opdracht van de Universiteit Utrecht, zullen openbare bijdragen aan deze repository pas worden samengevoegd na voltooiing van deze opdracht, die gepland staat voor 24 juni 2024. Voel je vrij om eventuele bugs of problemen te melden die je tegenkomt. Jouw feedback is waardevol en helpt het InfoSec-Agent-project te verbeteren. Je kunt ons mailen op <a href=\"mailto:infosecagentuu@gmail.com\">infosecagentuu@gmail.com</a>"
+  }  
 }

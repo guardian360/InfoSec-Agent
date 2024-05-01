@@ -6,16 +6,16 @@ import {getLocalizationString} from './localize.js';
 export class PieChart {
   pieChart;
   rc;
-  /** Create a piechart showing the risk counters
+  /** Create a pie-chart showing the risk counters
    *
-   * @param {string=} canvas id of the canvas where the piechart would be placed
+   * @param {string=} canvas id of the canvas where the pie-chart would be placed
    * @param {RiskCounters} riskCounters Risk counters used to retrieve data to be put in the chart
    * @param {string} type Title for the type of risks shown in the chart
    */
   constructor(canvas, riskCounters, type) {
     this.rc = riskCounters;
     if (canvas !== undefined) {
-      this.createPieChart(canvas, type);
+      this.createPieChart(canvas, type).then(() => {});
     }
   }
 
@@ -42,18 +42,20 @@ export class PieChart {
 
   /** Creates data for a pie chart using different levels of risks
    *
-   * @param {*} getString Function to retrieve localized text
    * @return {ChartData} The data for the pie chart
    */
-  async getData(getString = getLocalizationString) {
+  async getData() {
     const xValues = [
-      await getString('Dashboard.Safe'),
-      await getString('Dashboard.LowRisk'),
-      await getString('Dashboard.MediumRisk'),
-      await getString('Dashboard.HighRisk'),
+      await getLocalizationString('Dashboard.Safe'),
+      await getLocalizationString('Dashboard.LowRisk'),
+      await getLocalizationString('Dashboard.MediumRisk'),
+      await getLocalizationString('Dashboard.HighRisk'),
+      await getLocalizationString('Dashboard.InfoRisk'),
     ];
-    const yValues = [this.rc.lastnoRisk, this.rc.lastLowRisk, this.rc.lastMediumRisk, this.rc.lastHighRisk];
-    const barColors = [this.rc.noRiskColor, this.rc.lowRiskColor, this.rc.mediumRiskColor, this.rc.highRiskColor];
+    const yValues = [this.rc.lastNoRisk, this.rc.lastLowRisk,
+      this.rc.lastMediumRisk, this.rc.lastHighRisk, this.rc.lastInfoRisk];
+    const barColors = [this.rc.noRiskColor, this.rc.lowRiskColor,
+      this.rc.mediumRiskColor, this.rc.highRiskColor, this.rc.infoColor];
 
     return {
       labels: xValues,
@@ -67,15 +69,14 @@ export class PieChart {
   /** Creates options for a pie chart
    *
    * @param {string} type Title for the type of risks shown in the chart
-   * @param {*} getString Function to retrieve localized text
    * @return {ChartData} The options for the pie chart
    */
-  async getOptions(type, getString = getLocalizationString) {
+  async getOptions(type) {
     return {
       maintainAspectRatio: false,
       title: {
         display: true,
-        text: await getString('Dashboard.' + type + 'RisksOverview'),
+        text: await getLocalizationString('Dashboard.' + type + 'RisksOverview'),
       },
     };
   }

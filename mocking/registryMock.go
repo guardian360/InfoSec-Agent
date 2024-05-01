@@ -8,6 +8,7 @@ import (
 
 var (
 	CurrentUser  = RegistryKey(NewRegistryKeyWrapper(registry.CURRENT_USER))
+	UserProfiles = RegistryKey(NewRegistryKeyWrapper(registry.USERS))
 	LocalMachine = RegistryKey(NewRegistryKeyWrapper(registry.LOCAL_MACHINE))
 )
 
@@ -98,7 +99,7 @@ func (r *RegistryKeyWrapper) OpenKey(path string, access uint32) (RegistryKey, e
 //   - count int: The maximum number of value names to retrieve. If count is less than or equal to zero, all value names are retrieved.
 //
 // Returns:
-//   - []string: A slice of strings containing the names of the values in the registry key. The length of the slice is the lesser of the number of values in the key and the count parameter.
+//   - []string: A slice of strings containing the names of the values in the registry key. The length of the slice is the least of the number of values in the key and the count parameter.
 //   - error: An error object if an error occurred while retrieving the value names. Otherwise, nil.
 //
 // This function is a method of the RegistryKeyWrapper struct and uses the ReadValueNames method of the registry.Key object it wraps.
@@ -127,14 +128,14 @@ func (r *RegistryKeyWrapper) Stat() (*registry.KeyInfo, error) {
 	return r.key.Stat()
 }
 
-// ReadSubKeyNames retrieves the names of the subkeys in the Windows registry key.
+// ReadSubKeyNames retrieves the names of the sub-keys in the Windows registry key.
 //
 // Parameters:
-//   - count int: The maximum number of subkey names to retrieve. If count is less than or equal to zero, all subkey names are retrieved.
+//   - count int: The maximum number of sub-key names to retrieve. If count is less than or equal to zero, all subkey names are retrieved.
 //
 // Returns:
-//   - []string: A slice of strings containing the names of the subkeys in the registry key. The length of the slice is the lesser of the number of subkeys in the key and the count parameter.
-//   - error: An error object if an error occurred while retrieving the subkey names. Otherwise, nil.
+//   - []string: A slice of strings containing the names of the sub-keys in the registry key. The length of the slice is the least of the number of subkeys in the key and the count parameter.
+//   - error: An error object if an error occurred while retrieving the sub-key names. Otherwise, nil.
 //
 // This function is a method of the RegistryKeyWrapper struct and uses the ReadSubKeyNames method of the registry.Key object it wraps.
 func (r *RegistryKeyWrapper) ReadSubKeyNames(count int) ([]string, error) {
@@ -146,11 +147,11 @@ func (r *RegistryKeyWrapper) ReadSubKeyNames(count int) ([]string, error) {
 // without interacting with the actual Windows registry.
 //
 // The struct contains fields that represent the possible values a registry key can hold,
-// including string, binary, and integer values. It also includes a list of subkeys,
+// including string, binary, and integer values. It also includes a list of sub-keys,
 // allowing for the simulation of a registry key hierarchy.
 //
 // The methods of this struct mimic the behavior of their counterparts in the RegistryKey interface,
-// returning the values stored in the struct's fields instead of interacting with the Windows registry.
+// returning the values stored in the struct fields instead of interacting with the Windows registry.
 type MockRegistryKey struct {
 	KeyName       string
 	StringValues  map[string]string
@@ -212,17 +213,17 @@ func (m *MockRegistryKey) GetIntegerValue(name string) (uint64, uint32, error) {
 	return m.IntegerValues[name], 0, nil
 }
 
-// OpenKey opens a subkey with a specified path relative to the current key in the MockRegistryKey.
+// OpenKey opens a sub-key with a specified path relative to the current key in the MockRegistryKey.
 //
 // Parameters:
-//   - path string: The path of the subkey to open, relative to the current key.
+//   - path string: The path of the sub-key to open, relative to the current key.
 //   - _ uint32: This parameter is ignored in the MockRegistryKey implementation as no access rights are required to open a mock key.
 //
 // Returns:
-//   - RegistryKey: A RegistryKey object representing the opened subkey. If the specified path does not exist in the SubKeys slice, the method returns the current key.
+//   - RegistryKey: A RegistryKey object representing the opened sub-key. If the specified path does not exist in the SubKeys slice, the method returns the current key.
 //   - error: An error object if the specified path does not exist in the SubKeys slice. Otherwise, nil.
 //
-// This function is a method of the MockRegistryKey struct and simulates the OpenKey method of the RegistryKey interface by returning a subkey from the SubKeys slice of the MockRegistryKey.
+// This function is a method of the MockRegistryKey struct and simulates the OpenKey method of the RegistryKey interface by returning a sub-key from the SubKeys slice of the MockRegistryKey.
 func (m *MockRegistryKey) OpenKey(path string, _ uint32) (RegistryKey, error) {
 	for _, key := range m.SubKeys {
 		if key.KeyName == path {
@@ -238,7 +239,7 @@ func (m *MockRegistryKey) OpenKey(path string, _ uint32) (RegistryKey, error) {
 //   - maxCount int: The maximum number of value names to retrieve. If maxCount is less than or equal to zero, all value names are retrieved.
 //
 // Returns:
-//   - []string: A slice of strings containing the names of the values in the MockRegistryKey. The length of the slice is the lesser of the number of values in the key and the maxCount parameter.
+//   - []string: A slice of strings containing the names of the values in the MockRegistryKey. The length of the slice is the least of the number of values in the key and the maxCount parameter.
 //   - error: An error object if an error occurred while retrieving the value names. Otherwise, nil.
 //
 // This function is a method of the MockRegistryKey struct and simulates the ReadValueNames method of the RegistryKey interface by returning the names of the values stored in the StringValues, BinaryValues, and IntegerValues maps of the MockRegistryKey. It removes any duplicate names before returning the result.
@@ -283,7 +284,7 @@ func (m *MockRegistryKey) Close() error {
 // Stat retrieves the information about the MockRegistryKey.
 //
 // Returns:
-//   - *registry.KeyInfo: A pointer to a KeyInfo object that contains information about the MockRegistryKey. This includes the number of subkeys and values, and the time of the last write operation.
+//   - *registry.KeyInfo: A pointer to a KeyInfo object that contains information about the MockRegistryKey. This includes the number of sub-keys and values, and the time of the last write operation.
 //   - error: An error object if an error occurred while retrieving the information. Otherwise, nil.
 //
 // This function is a method of the MockRegistryKey struct and simulates the Stat method of the RegistryKey interface by returning the KeyInfo stored in the StatReturn field of the MockRegistryKey.
@@ -291,16 +292,16 @@ func (m *MockRegistryKey) Stat() (*registry.KeyInfo, error) {
 	return m.StatReturn, nil
 }
 
-// ReadSubKeyNames retrieves the names of the subkeys in the MockRegistryKey.
+// ReadSubKeyNames retrieves the names of the sub-keys in the MockRegistryKey.
 //
 // Parameters:
-//   - count int: The maximum number of subkey names to retrieve. If count is less than or equal to zero, all subkey names are retrieved.
+//   - count int: The maximum number of sub-key names to retrieve. If count is less than or equal to zero, all sub-key names are retrieved.
 //
 // Returns:
-//   - []string: A slice of strings containing the names of the subkeys in the MockRegistryKey. The length of the slice is the lesser of the number of subkeys in the key and the count parameter.
-//   - error: An error object if an error occurred while retrieving the subkey names. Otherwise, nil.
+//   - []string: A slice of strings containing the names of the sub-keys in the MockRegistryKey. The length of the slice is the least of the number of sub-keys in the key and the count parameter.
+//   - error: An error object if an error occurred while retrieving the sub-key names. Otherwise, nil.
 //
-// This function is a method of the MockRegistryKey struct and simulates the ReadSubKeyNames method of the RegistryKey interface by returning the names of the subkeys stored in the SubKeys slice of the MockRegistryKey.
+// This function is a method of the MockRegistryKey struct and simulates the ReadSubKeyNames method of the RegistryKey interface by returning the names of the sub-keys stored in the SubKeys slice of the MockRegistryKey.
 func (m *MockRegistryKey) ReadSubKeyNames(count int) ([]string, error) {
 	var subKeyNames []string
 	maxCount := 0

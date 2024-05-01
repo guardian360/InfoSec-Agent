@@ -23,7 +23,7 @@ import (
 // Returns: The phishing domains that the user has visited in the last week and when they visited it
 func HistoryFirefox(profileFinder browserutils.FirefoxProfileFinder) checks.Check {
 	var output []string
-	ffdirectory, err := profileFinder.FirefoxFolder()
+	ffDirectory, err := profileFinder.FirefoxFolder()
 	if err != nil {
 		logger.Log.ErrorWithErr("No firefox directory found: ", err)
 		return checks.NewCheckErrorf(checks.HistoryFirefoxID, "No firefox directory found", err)
@@ -40,7 +40,7 @@ func HistoryFirefox(profileFinder browserutils.FirefoxProfileFinder) checks.Chec
 	}(tempHistoryDbff)
 
 	// Copy the database to a temporary location
-	copyError := browserutils.CopyFile(ffdirectory[0]+"\\places.sqlite", tempHistoryDbff, nil, nil)
+	copyError := browserutils.CopyFile(ffDirectory[0]+"\\places.sqlite", tempHistoryDbff, nil, nil)
 	if copyError != nil {
 		logger.Log.ErrorWithErr("Unable to make a copy of the file: ", copyError)
 		return checks.NewCheckError(checks.HistoryFirefoxID, copyError)
@@ -156,7 +156,7 @@ type QueryResult struct {
 func ProcessQueryResults(results []QueryResult) ([]string, error) {
 	var output []string
 	phishingDomainList := browserutils.GetPhishingDomains()
-	re := regexp.MustCompile(`(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+\.[^:\/\n?]+)`)
+	re := regexp.MustCompile(`(?:https?://)?(?:[^@\n]+@)?(?:www\.)?([^:/\n?]+\.[^:/\n?]+)`)
 
 	for _, result := range results {
 		timeString := FormatTime(result.LastVisitDate)

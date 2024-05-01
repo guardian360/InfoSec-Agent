@@ -14,20 +14,12 @@
   },
   "Navigation": 
   {
-    "Settings": "Settings",
     "Home": "Home",
     "SecurityDashboard": "Security Dashboard",
     "PrivacyDashboard": "Privacy Dashboard",
     "Issues": "Issues",
     "Integration": "Integration",
     "About": "About"
-  },
-   "Settings":
-  {
-    "PersonalizeTitle": "Personalization",
-    "PersonalizeButton": "Personalize",
-    "ChangeLanguageTitle": "Language",
-    "ChangeLanguageButton": "Change language"
   },
     "Dashboard": 
   {
@@ -41,6 +33,7 @@
     "Critical": "Critical",
     "MediumConcern": "Medium Concern",
     "LowConcern": "Low Concern",
+    "InfoConcern": "Informative",
     "NoConcern": "Safe",
     "TotalRisksOverview": "Total risks overview",
     "SecurityRisksOverview": "Security Risks Overview",
@@ -48,6 +41,7 @@
     "HighRisk": "High Risk Issues",
     "MediumRisk": "Medium Risk Issues",
     "LowRisk": "Low Risk Issues",
+    "InfoRisk": "Informative",
     "Safe": "Issues Without Risk",
     "RiskAreas": "Areas of security/privacy risks",
     "Applications": "Applications",
@@ -71,5 +65,12 @@
     "Previous": "&laquo; Previous step",
     "Next": "Next step &raquo;",
     "Back": "Back to issues overview"
+  },
+  "About": {
+    "about-title": "About Infosec Agent",
+    "infosec-info": "The InfoSec Agent project aims to improve the security and privacy of Windows computer users. Currently, there are applications available that do this, but they are mainly targeted at large companies. The goal of this project is to make this accessible to everyone. An application is being developed that collects information about the user's system to discover any security or privacy-related vulnerabilities. The results will be presented to the user in a special dashboard, showing the current status of the system, including recommended actions to improve it.",
+    "little-brother-info": "This project is a collaborative effort involving nine students from Utrecht University in The Netherlands, in partnership with the Dutch IT company Guardian360. It serves as the Software Project for the Bachelor's Program in Computing Sciences at the UU.",
+    "about-contribute": "Contribute",
+    "contribute-info": "InfoSec-Agent is an Open-Source project licensed under the GPL-3.0 License. However, due to its origins as a Utrecht University assignment, public contributions to this repository will only be merged after the completion of this assignment, which is scheduled for June 24, 2024. Feel free to report any bugs or issues you encounter. Your feedback is valuable and helps improve the InfoSec-Agent project. You can email us at <a href=\"mailto:infosecagentuu@gmail.com\">infosecagentuu@gmail.com</a>"
   }
 }

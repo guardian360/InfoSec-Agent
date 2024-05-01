@@ -1,8 +1,11 @@
 import {openPersonalizePage} from './personalize.js';
+import {openAboutPage} from './about.js';
+import {openHomePage} from './home.js';
+import {openSecurityDashboardPage} from './security-dashboard.js';
+import {openPrivacyDashboardPage} from './privacy-dashboard.js';
+import {openIssuesPage} from './issues.js';
+import {openIntegrationPage} from './integration.js';
 import {ChangeLanguage as changeLanguage, LogError as logError} from '../../wailsjs/go/main/Tray.js';
-import {getLocalization} from './localize.js';
-import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
-import {retrieveTheme} from './personalize.js';
 import * as runTime from '../../wailsjs/runtime/runtime.js';
 /**
  * Initiates a language update operation.
@@ -10,7 +13,7 @@ import * as runTime from '../../wailsjs/runtime/runtime.js';
  */
 async function updateLanguage() {
   await changeLanguage()
-    .then(async (result) => {
+    .then(async () => {
       sessionStorage.setItem('languageChanged', JSON.stringify(true));
       runTime.WindowReload();
     })
@@ -21,42 +24,36 @@ async function updateLanguage() {
 }
 /** Opens the settings page after window is reloaded after updateLanguage() is called */
 if (sessionStorage.getItem('languageChanged') != null) {
-  openSettingsPage();
+  let page = sessionStorage.getItem('savedPage');
+  page = parseInt(page);
+  switch (page) {
+  case 1:
+    openHomePage();
+    break;
+  case 2:
+    openSecurityDashboardPage();
+    break;
+  case 3:
+    openPrivacyDashboardPage();
+    break;
+  case 4:
+    openIssuesPage();
+    break;
+  case 5:
+    openIntegrationPage();
+    break;
+  case 6:
+    openAboutPage();
+    break;
+  case 7:
+    openPersonalizePage();
+    break;
+  default:
+    console.log('Invalid option selected');
+  }
   sessionStorage.removeItem('languageChanged');
 }
 
-/** Load the content of the Settings page */
-function openSettingsPage() {
-  closeNavigation();
-  markSelectedNavigationItem('settings-button');
+document.getElementById('personalize-button').addEventListener('click', () => openPersonalizePage());
+document.getElementById('language-button').addEventListener('click', () => updateLanguage());
 
-  document.getElementById('page-contents').innerHTML = `
-  <div class="setting personalize">
-    <span class="setting-description personalize-title">Personalization</span>
-    <button class="setting-button personalize-button" type="button">Personalize</button>    
-  </div> 
-  <hr class="solid">
-  <div class="setting language">
-    <span class="setting-description language-title">Language</span>
-    <button class="setting-button language-button" type="button">Change Language</button>
-  </div> 
-  `;
-
-  // Localize the static content of the settings page
-  const staticSettingsContent = ['personalize-title', 'personalize-button', 'language-title', 'language-button'];
-  const localizationIds = [
-    'Settings.PersonalizeTitle',
-    'Settings.PersonalizeButton',
-    'Settings.ChangeLanguageTitle',
-    'Settings.ChangeLanguageButton',
-  ];
-  for (let i = 0; i < staticSettingsContent.length; i++) {
-    getLocalization(localizationIds[i], staticSettingsContent[i]);
-  }
-
-  document.getElementsByClassName('language-button')[0].addEventListener('click', () => updateLanguage());
-  document.getElementsByClassName('personalize-button')[0].addEventListener('click', () => openPersonalizePage());
-  document.onload = retrieveTheme();
-}
-
-document.getElementById('settings-button').addEventListener('click', () => openSettingsPage());

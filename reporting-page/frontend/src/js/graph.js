@@ -8,6 +8,7 @@ export class Graph {
   graphShowMediumRisks = true;
   graphShowLowRisks = true;
   graphShowNoRisks = true;
+  graphShowInfoRisks = true;
 
   graphShowAmount = document.getElementById('graph-interval').value;
 
@@ -20,7 +21,7 @@ export class Graph {
    */
   constructor(canvas, riskCounters) {
     this.rc = riskCounters;
-    if (canvas !== undefined) this.createGraphChart(canvas);
+    if (canvas !== undefined) this.createGraphChart(canvas).then(() => {});
   }
 
   /** Creates a graph in the form of a bar chart for risks
@@ -60,11 +61,13 @@ export class Graph {
       break;
     case 'no':
       this.graphShowNoRisks = !this.graphShowNoRisks;
+    case 'info':
+      this.graphShowInfoRisks = !this.graphShowInfoRisks;
       break;
     default:
       break;
     }
-    if (change) this.changeGraph();
+    if (change) this.changeGraph().then(() => {});
   }
 
   /** toggles 'show' class on element with id:"myDropDown" */
@@ -74,41 +77,46 @@ export class Graph {
 
   /** Creates data for a bar chart
    *
-   * @param {*} getString Function to retrieve localized text
    * @return {ChartData} The data for the bar chart
    */
-  async getData(getString = getLocalizationString) {
+  async getData() {
     /**
      * Labels created for the x-axis
      * @type {!Array<string>}
      */
     const labels = [];
     for (let i = 1; i <= Math.min(this.rc.allNoRisks.length, this.graphShowAmount); i++) {
-      labels.push(i);
+      labels.push(i.toString());
     }
 
     const noRiskData = {
-      label: await getString('Dashboard.Safe'),
+      label: await getLocalizationString('Dashboard.Safe'),
       data: this.rc.allNoRisks.slice(Math.max(this.rc.allNoRisks.length - this.graphShowAmount, 0)),
       backgroundColor: this.rc.noRiskColor,
     };
 
     const lowRiskData = {
-      label: await getString('Dashboard.LowRisk'),
+      label: await getLocalizationString('Dashboard.LowRisk'),
       data: this.rc.allLowRisks.slice(Math.max(this.rc.allLowRisks.length - this.graphShowAmount, 0)),
       backgroundColor: this.rc.lowRiskColor,
     };
 
     const mediumRiskData = {
-      label: await getString('Dashboard.MediumRisk'),
+      label: await getLocalizationString('Dashboard.MediumRisk'),
       data: this.rc.allMediumRisks.slice(Math.max(this.rc.allMediumRisks.length - this.graphShowAmount, 0)),
       backgroundColor: this.rc.mediumRiskColor,
     };
 
     const highRiskData = {
-      label: await getString('Dashboard.HighRisk'),
+      label: await getLocalizationString('Dashboard.HighRisk'),
       data: this.rc.allHighRisks.slice(Math.max(this.rc.allHighRisks.length - this.graphShowAmount, 0)),
       backgroundColor: this.rc.highRiskColor,
+    };
+
+    const infoRiskData = {
+      label: await getLocalizationString('Dashboard.InfoRisk'),
+      data: this.rc.allInfoRisks.slice(Math.max(this.rc.allInfoRisks.length - this.graphShowAmount, 0)),
+      backgroundColor: this.rc.infoColor,
     };
 
     const datasets = [];
@@ -117,6 +125,7 @@ export class Graph {
     if (this.graphShowLowRisks) datasets.push(lowRiskData);
     if (this.graphShowMediumRisks) datasets.push(mediumRiskData);
     if (this.graphShowHighRisks) datasets.push(highRiskData);
+    if (this.graphShowInfoRisks) datasets.push(infoRiskData);
 
     return {
       labels: labels,

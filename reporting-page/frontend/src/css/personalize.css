@@ -16,9 +16,13 @@
   display: block;
   position: relative;
   background-color: var(--background-color-left-nav);
-  color: var(--left-text-nav);
   cursor: pointer;
   text-align: center;
+}
+
+.personalize-button{
+  float: right;
+  width: 100px;
 }
 
 .personalize-button-container{
@@ -32,6 +36,11 @@
 
 .personalize-input-invisible{
   display:none;
+}
+
+hr.solid {
+  border-top: 1px solid #ddd;
+  margin: 10px;
 }
 
 .modal {
@@ -98,7 +107,6 @@
   --background-color-left-nav: #4E869B;
   --background-nav-hover: #427385;
   --background-color-second-row: hsl(var(--hue-right-analogous) 40% 95%);
-  --background-piechart: hsl(var(--hue-left-analogous) 40% 90%);
   --background-color-table-header: white;
   --text-body: #333; 
   --text-navigation: hsl(var(--hue-complement) 5% 30%);

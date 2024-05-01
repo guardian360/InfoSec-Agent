@@ -14,7 +14,7 @@ import (
 // Returns:
 //   - Check: A Check object that encapsulates the results of the Bluetooth check. The Check object includes a list of strings, where each string represents a Bluetooth device that is currently or was previously connected to the system. If an error occurs during the Bluetooth check, the Check object will encapsulate this error.
 //
-// This function first opens the registry key for Bluetooth devices. It then reads the names of all subkeys, which represent Bluetooth devices. For each device, the function opens the device subkey, retrieves the device name, and adds it to the results. If an error occurs at any point during this process, it is encapsulated in the Check object and returned.
+// This function first opens the registry key for Bluetooth devices. It then reads the names of all sub-keys, which represent Bluetooth devices. For each device, the function opens the device sub-key, retrieves the device name, and adds it to the results. If an error occurs at any point during this process, it is encapsulated in the Check object and returned.
 func Bluetooth(registryKey mocking.RegistryKey) Check {
 	var err error
 	var deviceKey mocking.RegistryKey

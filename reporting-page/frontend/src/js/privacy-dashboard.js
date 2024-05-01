@@ -7,10 +7,11 @@ import {adjustWithRiskCounters, setMaxInterval, addGraphFunctions} from './secur
 import {scanTest} from './database.js';
 
 /** Load the content of the Privacy Dashboard page */
-function openPrivacyDashboardPage() {
+export function openPrivacyDashboardPage() {
   document.onload = retrieveTheme();
   closeNavigation();
   markSelectedNavigationItem('privacy-dashboard-button');
+  sessionStorage.setItem('savedPage', '3');
 
   document.getElementById('page-contents').innerHTML = `
   <div class="dashboard-data">
@@ -39,6 +40,10 @@ function openPrivacyDashboardPage() {
           <div><p class="low-risk-issues">Low risk issues</p></div>
           <div><p id="low-risk-counter">0</p></div>
         </div>
+        <div class="risk-counter info-risk">
+          <div><p class="info-issues">Informative</p></div>
+          <div><p id="info-risk-counter">0</p></div>
+        </div>
         <div class="risk-counter no-risk">
           <div><p class="safe-issues">Safe issues</p></div>
           <div><p id="no-risk-counter">0</p></div>
@@ -46,11 +51,11 @@ function openPrivacyDashboardPage() {
       </div>
     </div>
     <div class="data-column">
-      <div class="data-segment piechart">
+      <div class="data-segment pie-chart">
         <div class="data-segment-header">
             <p class="piechart-header">Risk level distribution</p>
         </div>
-        <div class="piechart-container">
+        <div class="pie-chart-container">
           <canvas id="pieChart"></canvas>
         </div>
       </div>
@@ -74,6 +79,9 @@ function openPrivacyDashboardPage() {
               </p>
               <p><input type="checkbox" checked="true" value="true" id="select-low-risk">
                 <label for="select-low-risk" class="low-risk-issues"> Low risks</label>
+              </p>
+              <p><input type="checkbox" checked="true" value="true" id="select-info-risk">
+                <label for="select-info-risk" class="info-risk-issues"> Informative</label>
               </p>
               <p><input type="checkbox" checked="true" value="true" id="select-no-risk">
                 <label for="select-no-risk" class="safe-issues"> Safe</label>
@@ -154,6 +162,7 @@ function openPrivacyDashboardPage() {
     'high-risk-issues',
     'medium-risk-issues',
     'low-risk-issues',
+    'info-risk-issues',
     'safe-issues',
     'privacy-stat',
     'suggested-issue',
@@ -175,6 +184,7 @@ function openPrivacyDashboardPage() {
     'Dashboard.HighRisk',
     'Dashboard.MediumRisk',
     'Dashboard.LowRisk',
+    'Dashboard.InfoRisk',
     'Dashboard.Safe',
     'Dashboard.PrivacyStatus',
     'Dashboard.SuggestedIssue',
@@ -205,7 +215,7 @@ function openPrivacyDashboardPage() {
     adjustWithRiskCounters(rc, document);
     setMaxInterval(rc, document);
     g.rc = rc;
-    g.changeGraph();
+    await g.changeGraph();
   });
 }
 

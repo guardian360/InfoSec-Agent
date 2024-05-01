@@ -1,14 +1,15 @@
 import 'jsdom-global/register.js';
 import test from 'unit.js';
 import {JSDOM} from 'jsdom';
-import {PieChart} from '../src/js/piechart.js';
+// import {PieChart} from '../src/js/piechart.js';
 import {RiskCounters} from '../src/js/risk-counters.js';
+import {jest} from '@jest/globals';
 
 global.TESTING = true;
 
 // Mock page
 const dom = new JSDOM(`
-  <div class="data-column piechart">
+  <div class="data-column pie-chart">
     <canvas id="pieChart"></canvas>
   </div>
 `, {
@@ -32,6 +33,8 @@ function mockGetLocalizationString(messageID) {
     return 'Medium';
   case 'Dashboard.HighRisk':
     return 'High';
+  case 'Dashboard.InfoRisk':
+    return 'Info';
   case 'Dashboard.TotalRisksOverview':
     return 'Total Risks Overview';
   case 'Dashboard.SecurityRisksOverview':
@@ -41,56 +44,60 @@ function mockGetLocalizationString(messageID) {
   }
 }
 
+// Mock Localize function
+jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
+  Localize: jest.fn().mockImplementation((input) => mockGetLocalizationString(input)),
+}));
+
 // test cases
 describe('Risk level distribution piechart', function() {
-  // arrange
-  const rc = new RiskCounters(true);
-  let p = new PieChart(undefined, rc);
-  it('getData should fill the piechart with the correct data', function() {
+  it('getData should fill the piechart with the correct data', async function() {
     // arrange
-    const expectedXValues = ['Acceptable', 'Low', 'Medium', 'High'];
-    const expectedYValues = [4, 3, 2, 1];
+    const chart = await import('../src/js/piechart.js');
+
+    // arrange
+    const expectedXValues = ['Acceptable', 'Low', 'Medium', 'High', 'Info'];
+    const expectedYValues = [4, 3, 2, 1, 0];
     const expectedColors = [
       'rgb(255, 255, 0)',
       'rgb(255, 0, 0)',
       'rgb(0, 0, 255)',
       'rgb(0, 255, 255)',
+      'rgb(255,255,255)',
     ];
     const mockRiskCounters = {
       highRiskColor: 'rgb(0, 255, 255)',
       mediumRiskColor: 'rgb(0, 0, 255)',
       lowRiskColor: 'rgb(255, 0, 0)',
       noRiskColor: 'rgb(255, 255, 0)',
+      infoColor: 'rgb(255,255,255)',
 
+      lastInfoRisk: 0,
       lastHighRisk: 1,
       lastMediumRisk: 2,
       lastLowRisk: 3,
-      lastnoRisk: 4,
+      lastNoRisk: 4,
     };
 
-    p = new PieChart(undefined, mockRiskCounters);
+    const p = new chart.PieChart(undefined, mockRiskCounters);
 
     // act
-
-    /** asynchronous function to call p.getData() */
-    async function getData() {
-      return await p.getData(mockGetLocalizationString);
-    }
+    const result = await p.getData();
 
     // assert
-    getData().then((result) =>{
-      test.array(result.labels).is(expectedXValues);
-      test.array(result.datasets[0].backgroundColor).is(expectedColors);
-      test.array(result.datasets[0].data).is(expectedYValues);
-    })
-      .catch((error) =>
-        console.log(error));
+    test.array(result.labels).is(expectedXValues);
+    test.array(result.datasets[0].backgroundColor).is(expectedColors);
+    test.array(result.datasets[0].data).is(expectedYValues);
   });
-  it('getOptions should return the correct piechart options', function() {
+  it('getOptions should return the correct piechart options', async function() {
     // arrange
+    const chart = await import('../src/js/piechart.js');
+    const rc = new RiskCounters(true);
+    const p = new chart.PieChart(undefined, rc);
+
     const titles = ['Total', 'Security', 'Privacy'];
 
-    titles.forEach((title) => {
+    titles.forEach(async (title) => {
       // arrange
       const expectedOptions = {
         maintainAspectRatio: false,
@@ -101,18 +108,10 @@ describe('Risk level distribution piechart', function() {
       };
 
       // act
-
-      /** asynchronous function to call p.getOptions() */
-      async function getOptions() {
-        return await p.getOptions(title, mockGetLocalizationString);
-      }
+      const result = await p.getOptions(title);
 
       // assert
-      getOptions().then((result) => {
-        test.object(result).is(expectedOptions);
-      })
-        .catch((error) =>
-          console.log(error));
+      test.object(result).is(expectedOptions);
     });
   });
 });
