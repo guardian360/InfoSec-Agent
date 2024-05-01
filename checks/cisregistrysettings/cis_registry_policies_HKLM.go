@@ -14,13 +14,10 @@ import "github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 // Returns:
 //
 //   - []bool: A slice of boolean values, where each boolean represents whether a particular registry setting adheres to the CIS Benchmark standards.
-func CheckPoliciesHKLM(registryKey mocking.RegistryKey) []bool {
-	results := make([]bool, 0)
+func CheckPoliciesHKLM(registryKey mocking.RegistryKey) {
 	for _, check := range policyChecksHKLM {
 		check(registryKey)
 	}
-
-	return results
 }
 
 // policyChecksHKLM is a collection of registry checks related to different policies.

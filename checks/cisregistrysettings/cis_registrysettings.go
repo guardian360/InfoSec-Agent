@@ -9,6 +9,7 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/mocking"
+	"slices"
 )
 
 const DNSClientRegistryPath = `SOFTWARE\Policies\Microsoft\Windows NT\DNSClient`
@@ -41,13 +42,13 @@ func CISRegistrySettings(localMachineKey mocking.RegistryKey, usersKey mocking.R
 	if checks.WinVersion == 11 {
 		CheckWin11(localMachineKey)
 	}
-	// check if results are all true
-	for _, result := range RegistrySettingsMap {
-		if !result {
-			return checks.NewCheckResult(checks.CISRegistrySettingsID, 0, "Not all registry settings adhere to the CIS Benchmark standards")
-		}
+	// Check if all registry settings adhere to the CIS Benchmark standards
+	fullyTrue, incorrectSettings := getIncorrectSettings()
+	if fullyTrue {
+		return checks.NewCheckResult(checks.CISRegistrySettingsID, 1, "All registry settings adhere to the CIS Benchmark standards")
 	}
-	return checks.NewCheckResult(checks.CISRegistrySettingsID, 1, "All registry settings adhere to the CIS Benchmark standards")
+	resultString := "Not all registry settings adhere to the CIS Benchmark standards"
+	return checks.NewCheckResult(checks.CISRegistrySettingsID, 0, append([]string{resultString}, incorrectSettings...)...)
 }
 
 // CheckIntegerValue is a helper function that checks if the integer value of a registry key matches the expected value.
@@ -126,44 +127,6 @@ func OpenRegistryKeyWithErrHandling(registryKey mocking.RegistryKey, path string
 		logger.Log.ErrorWithErr("Error opening registry key for CIS Audit list", err)
 	}
 	return key, err
-}
-
-// CheckMultipleIntegerValues is a helper function that checks multiple integer values of a registry key against their expected values.
-//
-// Parameters:
-//
-//   - openKey (mocking.RegistryKey): The registry key to check.
-//   - settings ([]string): A slice of strings representing the names of the values to check.
-//   - expectedValues ([]interface{}): A slice of interface values representing the expected values of the registry keys.
-//
-// Returns:
-//
-//   - []bool: A slice of boolean values indicating whether the integer values of the registry keys match the expected values.
-func CheckMultipleIntegerValues(openKey mocking.RegistryKey, settings []string, expectedValues []interface{}) []bool {
-	results := make([]bool, len(settings))
-	for i, val := range settings {
-		results[i] = CheckIntegerValue(openKey, val, expectedValues[i])
-	}
-	return results
-}
-
-// CheckMultipleStringValues is a helper function that checks multiple string values of a registry key against their expected values.
-//
-// Parameters:
-//
-//   - openKey (mocking.RegistryKey): The registry key to check.
-//   - settings ([]string): A slice of strings representing the names of the values to check.
-//   - expectedValues ([]string): A slice of strings representing the expected values of the registry keys.
-//
-// Returns:
-//
-//   - []bool: A slice of boolean values indicating whether the string values of the registry keys match the expected values.
-func CheckMultipleStringValues(openKey mocking.RegistryKey, settings []string, expectedValues []string) []bool {
-	results := make([]bool, len(settings))
-	for i, val := range settings {
-		results[i] = CheckStringValue(openKey, val, expectedValues[i])
-	}
-	return results
 }
 
 // CheckIntegerRegistrySettings is a helper function that checks the registry to determine if the system is configured with the correct integer settings.
@@ -255,4 +218,17 @@ func CheckIntegerStringRegistrySettings(registryKey mocking.RegistryKey, registr
 	for i, stringSetting := range stringSettings {
 		RegistrySettingsMap[registryPath+"\\"+stringSetting] = CheckStringValue(key, stringSetting, expectedStrings[i])
 	}
+}
+
+func getIncorrectSettings() (bool, []string) {
+	var incorrectSettings []string
+	fullyTrue := true
+	for key, value := range RegistrySettingsMap {
+		if !value {
+			fullyTrue = false
+			incorrectSettings = append(incorrectSettings, key)
+		}
+	}
+	slices.Sort(incorrectSettings)
+	return fullyTrue, incorrectSettings
 }

@@ -13,14 +13,10 @@ import "github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 // Returns:
 //
 //   - []bool: A slice of boolean values, where each boolean represents whether a particular registry setting adheres to the CIS Benchmark standards.
-func CheckWin11(registryKey mocking.RegistryKey) []bool {
-	results := make([]bool, 0)
-
+func CheckWin11(registryKey mocking.RegistryKey) {
 	for _, check := range checksWin11 {
 		check(registryKey)
 	}
-
-	return results
 }
 
 // checksWin11 is a collection of registry checks specific to the Windows 11 CIS Benchmark Audit list.
