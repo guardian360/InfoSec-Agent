@@ -11,17 +11,12 @@ import "github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 //
 //   - registryKey (mocking.RegistryKey): The root key from which the registry settings will be checked. Should be HKEY_USERS for this function.
 //
-// Returns:
-//
-//   - []bool: A slice of boolean values, where each boolean represents whether a particular registry setting adheres to the CIS Benchmark standards.
-func CheckPoliciesHKU(registryKey mocking.RegistryKey) []bool {
-	results := make([]bool, 0)
-
+// Returns: None
+func CheckPoliciesHKU(registryKey mocking.RegistryKey) {
 	for _, check := range policyChecksHKU {
 		check(registryKey)
 	}
 
-	return results
 }
 
 // policyChecksHKU is a collection of registry checks related to different policies.

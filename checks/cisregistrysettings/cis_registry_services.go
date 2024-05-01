@@ -11,9 +11,7 @@ import "github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 //
 //   - registryKey (mocking.RegistryKey): The root key from which the registry settings will be checked. Should be HKEY_LOCAL_MACHINE for this function.
 //
-// Returns:
-//
-//   - []bool: A slice of boolean values, where each boolean represents whether a particular registry setting adheres to the CIS Benchmark standards.
+// Returns: None
 func CheckServices(registryKey mocking.RegistryKey) {
 	checkservicesDisabled(registryKey, servicesDisabledRegistryPaths)
 	for _, check := range serviceChecks {
