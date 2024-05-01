@@ -28,14 +28,18 @@ export function loadPersonalizeNavigation() {
   }
 }
 
-/** Close the navigation menu when a navigation item is clicked, only when screen size is less than 800px */
+/** Close the navigation menu when a navigation item is clicked, only when screen size is less than 800px 
+ * @param {int} appWidth - The width of the application screen
+*/
 export function closeNavigation(appWidth) {
   if (appWidth < 800) {
     document.getElementsByClassName('left-nav')[0].style.visibility = 'hidden';
   }
 }
 
-/** Open or close the navigation menu when user clicks on hamburger menu */
+/** Open or close the navigation menu when user clicks on hamburger menu 
+ * @param {int} appWidth - The width of the application screen
+*/
 export function toggleNavigationHamburger(appWidth) {
   if (appWidth < 800) {
     if (document.getElementsByClassName('left-nav')[0].style.visibility === 'visible') {
@@ -46,7 +50,9 @@ export function toggleNavigationHamburger(appWidth) {
   }
 }
 
-/** Open or close the navigation menu when user resizes the screen */
+/** Open or close the navigation menu when user resizes the screen 
+ * @param {int} appWidth - The width of the application screen
+*/
 export function toggleNavigationResize(appWidth) {
   if (appWidth > 799) {
     document.getElementsByClassName('left-nav')[0].style.visibility = 'visible';
@@ -57,7 +63,9 @@ export function toggleNavigationResize(appWidth) {
 
 if (typeof document !== 'undefined') {
   try {
-    document.getElementById('header-hamburger').addEventListener('click', () => toggleNavigationHamburger(document.body.offsetWidth));
+    document.getElementById('header-hamburger').addEventListener(
+      'click', () => toggleNavigationHamburger(document.body.offsetWidth)
+    );
     document.body.onresize = () => toggleNavigationResize(document.body.offsetWidth);
 
     const navbarItems = [

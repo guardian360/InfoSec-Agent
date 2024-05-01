@@ -9,22 +9,40 @@ global.TESTING = true;
 const dom = new JSDOM(`
   <div class="left-nav">
     <div id="home-button" class="nav-link">
-      <p><span class="material-symbols-outlined">home</span><span class="nav-item home">Home</span></p>
+      <p>
+        <span class="material-symbols-outlined">home</span>
+        <span class="nav-item home">Home</span>
+      </p>
     </div>
     <div id="security-dashboard-button" class="nav-link">
-      <p><span class="material-symbols-outlined">security</span><span class="nav-item security-dashboard">Security Dashboard</span></p>
+      <p>
+        <span class="material-symbols-outlined">security</span>
+        <span class="nav-item security-dashboard">Security Dashboard</span>
+      </p>
     </div>
     <div id="privacy-dashboard-button" class="nav-link">
-      <p><span class="material-symbols-outlined">lock</span><span class="nav-item privacy-dashboard">Privacy Dashboard</span></p>
+      <p>
+        <span class="material-symbols-outlined">lock</span>
+        <span class="nav-item privacy-dashboard">Privacy Dashboard</span>
+      </p>
     </div>
     <div id="issues-button" class="nav-link">
-      <p><span class="material-symbols-outlined">checklist</span><span class="nav-item issues">Issues</span></p>
+      <p>
+        <span class="material-symbols-outlined">checklist</span>
+        <span class="nav-item issues">Issues</span>
+      </p>
     </div>
     <div id="integration-button" class="nav-link">
-      <p><span class="material-symbols-outlined">integration_instructions</span><span class="nav-item integration">Integration</span></p>
+      <p>
+        <span class="material-symbols-outlined">integration_instructions</span>
+        <span class="nav-item integration">Integration</span>
+      </p>
     </div>
     <div id="about-button" class="nav-link">
-      <p><span class="material-symbols-outlined">info</span><span class="nav-item about" >About</span></p>
+      <p>
+        <span class="material-symbols-outlined">info</span>
+        <span class="nav-item about" >About</span>
+        </p>
     </div>
   </div>
 `, {
