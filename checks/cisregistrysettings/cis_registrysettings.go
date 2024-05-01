@@ -220,6 +220,11 @@ func CheckIntegerStringRegistrySettings(registryKey mocking.RegistryKey, registr
 	}
 }
 
+// getIncorrectSettings iterates over the RegistrySettingsMap and returns a slice of incorrect settings.
+//
+// Parameters: None
+//
+// Returns: None
 func getIncorrectSettings() (bool, []string) {
 	var incorrectSettings []string
 	fullyTrue := true
