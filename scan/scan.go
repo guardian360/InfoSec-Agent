@@ -84,7 +84,9 @@ var securityChecks = []func() checks.Check{
 	func() checks.Check { c, _ := firefox.ExtensionFirefox(); return c },
 	func() checks.Check { _, c := firefox.ExtensionFirefox(); return c },
 	func() checks.Check { return firefox.HistoryFirefox(browserutils.RealProfileFinder{}) },
-	firefox.SearchEngineFirefox,
+	func() checks.Check {
+		return firefox.SearchEngineFirefox(browserutils.RealProfileFinder{}, false, nil, nil)
+	},
 	func() checks.Check {
 		return cisregistrysettings.CISRegistrySettings(mocking.LocalMachine, mocking.UserProfiles)
 	},
