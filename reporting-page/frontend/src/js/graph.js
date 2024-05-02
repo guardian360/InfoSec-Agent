@@ -1,3 +1,5 @@
+import {getLocalizationString} from './localize.js';
+
 /**
  * Represents a graph for displaying risk counters.
  */
@@ -6,6 +8,7 @@ export class Graph {
   graphShowMediumRisks = true;
   graphShowLowRisks = true;
   graphShowNoRisks = true;
+  graphShowInfoRisks = true;
 
   graphShowAmount = document.getElementById('graph-interval').value;
 
@@ -18,26 +21,25 @@ export class Graph {
    */
   constructor(canvas, riskCounters) {
     this.rc = riskCounters;
-    if (canvas !== undefined) this.createGraphChart(canvas);
+    if (canvas !== undefined) this.createGraphChart(canvas).then(() => {});
   }
 
   /** Creates a graph in the form of a bar chart for risks
    *
    * @param {string} canvas html canvas where bar chart will be placed
    */
-  createGraphChart(canvas) {
+  async createGraphChart(canvas) {
     this.barChart = new Chart(canvas, {
       type: 'bar',
-      data: this.getData(), // The data for our dataset
-      options: this.getOptions(), // Configuration options go here
+      data: await this.getData(), // The data for our dataset
+      options: await this.getOptions(), // Configuration options go here
     });
   }
 
   /** Updates the graph, should be called after a change in graph properties */
-  changeGraph() {
+  async changeGraph() {
     this.graphShowAmount = document.getElementById('graph-interval').value;
-    this.barChart.data = this.getData();
-    console.log(this.graphShowAmount);
+    this.barChart.data = await this.getData();
     this.barChart.update();
   }
 
@@ -59,11 +61,13 @@ export class Graph {
       break;
     case 'no':
       this.graphShowNoRisks = !this.graphShowNoRisks;
+    case 'info':
+      this.graphShowInfoRisks = !this.graphShowInfoRisks;
       break;
     default:
       break;
     }
-    if (change) this.changeGraph();
+    if (change) this.changeGraph().then(() => {});
   }
 
   /** toggles 'show' class on element with id:"myDropDown" */
@@ -71,43 +75,48 @@ export class Graph {
     document.getElementById('myDropdown').classList.toggle('show');
   }
 
-
-  /** Creates the data portion for a graph using the different levels of risks
+  /** Creates data for a bar chart
    *
-   * @return {data} Data for graph chart
+   * @return {ChartData} The data for the bar chart
    */
-  getData() {
+  async getData() {
     /**
      * Labels created for the x-axis
      * @type {!Array<string>}
      */
     const labels = [];
     for (let i = 1; i <= Math.min(this.rc.allNoRisks.length, this.graphShowAmount); i++) {
-      labels.push(i);
+      labels.push(i.toString());
     }
 
     const noRiskData = {
-      label: 'Safe issues',
+      label: await getLocalizationString('Dashboard.Safe'),
       data: this.rc.allNoRisks.slice(Math.max(this.rc.allNoRisks.length - this.graphShowAmount, 0)),
       backgroundColor: this.rc.noRiskColor,
     };
 
     const lowRiskData = {
-      label: 'Low risk issues',
+      label: await getLocalizationString('Dashboard.LowRisk'),
       data: this.rc.allLowRisks.slice(Math.max(this.rc.allLowRisks.length - this.graphShowAmount, 0)),
       backgroundColor: this.rc.lowRiskColor,
     };
 
     const mediumRiskData = {
-      label: 'Medium risk issues',
+      label: await getLocalizationString('Dashboard.MediumRisk'),
       data: this.rc.allMediumRisks.slice(Math.max(this.rc.allMediumRisks.length - this.graphShowAmount, 0)),
       backgroundColor: this.rc.mediumRiskColor,
     };
 
     const highRiskData = {
-      label: 'High risk issues',
+      label: await getLocalizationString('Dashboard.HighRisk'),
       data: this.rc.allHighRisks.slice(Math.max(this.rc.allHighRisks.length - this.graphShowAmount, 0)),
       backgroundColor: this.rc.highRiskColor,
+    };
+
+    const infoRiskData = {
+      label: await getLocalizationString('Dashboard.InfoRisk'),
+      data: this.rc.allInfoRisks.slice(Math.max(this.rc.allInfoRisks.length - this.graphShowAmount, 0)),
+      backgroundColor: this.rc.infoColor,
     };
 
     const datasets = [];
@@ -116,6 +125,7 @@ export class Graph {
     if (this.graphShowLowRisks) datasets.push(lowRiskData);
     if (this.graphShowMediumRisks) datasets.push(mediumRiskData);
     if (this.graphShowHighRisks) datasets.push(highRiskData);
+    if (this.graphShowInfoRisks) datasets.push(infoRiskData);
 
     return {
       labels: labels,

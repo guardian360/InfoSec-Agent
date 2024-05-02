@@ -1,14 +1,15 @@
 import 'jsdom-global/register.js';
 import test from 'unit.js';
 import {JSDOM} from 'jsdom';
-import {PieChart} from '../src/js/piechart.js';
+// import {PieChart} from '../src/js/piechart.js';
 import {RiskCounters} from '../src/js/risk-counters.js';
+import {jest} from '@jest/globals';
 
 global.TESTING = true;
 
 // Mock page
 const dom = new JSDOM(`
-  <div class="data-column piechart">
+  <div class="data-column pie-chart">
     <canvas id="pieChart"></canvas>
   </div>
 `, {
@@ -17,56 +18,100 @@ const dom = new JSDOM(`
 global.document = dom.window.document;
 global.window = dom.window;
 
+/** Mock of getLocalizationString function
+ *
+ * @param {string} messageID - The ID of the message to be localized.
+ * @return {string} The localized string.
+ */
+function mockGetLocalizationString(messageID) {
+  switch (messageID) {
+  case 'Dashboard.Safe':
+    return 'Acceptable';
+  case 'Dashboard.LowRisk':
+    return 'Low';
+  case 'Dashboard.MediumRisk':
+    return 'Medium';
+  case 'Dashboard.HighRisk':
+    return 'High';
+  case 'Dashboard.InfoRisk':
+    return 'Info';
+  case 'Dashboard.TotalRisksOverview':
+    return 'Total Risks Overview';
+  case 'Dashboard.SecurityRisksOverview':
+    return 'Security Risks Overview';
+  case 'Dashboard.PrivacyRisksOverview':
+    return 'Privacy Risks Overview';
+  }
+}
+
+// Mock Localize function
+jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
+  Localize: jest.fn().mockImplementation((input) => mockGetLocalizationString(input)),
+}));
+
 // test cases
 describe('Risk level distribution piechart', function() {
-  // arrange
-  const rc = new RiskCounters(true);
-  let p = new PieChart(undefined, rc);
-  it('getData should fill the piechart with the correct data', function() {
+  it('getData should fill the piechart with the correct data', async function() {
     // arrange
-    const expectedXValues = ['No risk', 'Low risk', 'Medium risk', 'High risk'];
-    const expectedYValues = [4, 3, 2, 1];
+    const chart = await import('../src/js/piechart.js');
+
+    // arrange
+    const expectedXValues = ['Acceptable', 'Low', 'Medium', 'High', 'Info'];
+    const expectedYValues = [4, 3, 2, 1, 0];
     const expectedColors = [
       'rgb(255, 255, 0)',
       'rgb(255, 0, 0)',
       'rgb(0, 0, 255)',
       'rgb(0, 255, 255)',
+      'rgb(255,255,255)',
     ];
     const mockRiskCounters = {
       highRiskColor: 'rgb(0, 255, 255)',
       mediumRiskColor: 'rgb(0, 0, 255)',
       lowRiskColor: 'rgb(255, 0, 0)',
       noRiskColor: 'rgb(255, 255, 0)',
+      infoColor: 'rgb(255,255,255)',
 
+      lastInfoRisk: 0,
       lastHighRisk: 1,
       lastMediumRisk: 2,
       lastLowRisk: 3,
-      lastnoRisk: 4,
+      lastNoRisk: 4,
     };
-    p = new PieChart(undefined, mockRiskCounters);
+
+    const p = new chart.PieChart(undefined, mockRiskCounters);
 
     // act
-    const resultData = p.getData();
+    const result = await p.getData();
 
     // assert
-    test.array(resultData.labels).is(expectedXValues);
-    test.array(resultData.datasets[0].backgroundColor).is(expectedColors);
-    test.array(resultData.datasets[0].data).is(expectedYValues);
+    test.array(result.labels).is(expectedXValues);
+    test.array(result.datasets[0].backgroundColor).is(expectedColors);
+    test.array(result.datasets[0].data).is(expectedYValues);
   });
-  it('getOptions should return the correct piechart options', function() {
+  it('getOptions should return the correct piechart options', async function() {
     // arrange
-    const expectedOptions = {
-      maintainAspectRatio: false,
-      title: {
-        display: true,
-        text: 'Security Risks Overview',
-      },
-    };
+    const chart = await import('../src/js/piechart.js');
+    const rc = new RiskCounters(true);
+    const p = new chart.PieChart(undefined, rc);
 
-    // act
-    const resultOptions = p.getOptions();
+    const titles = ['Total', 'Security', 'Privacy'];
 
-    // assert
-    test.object(resultOptions).is(expectedOptions);
+    titles.forEach(async (title) => {
+      // arrange
+      const expectedOptions = {
+        maintainAspectRatio: false,
+        title: {
+          display: true,
+          text: (title + ' Risks Overview'),
+        },
+      };
+
+      // act
+      const result = await p.getOptions(title);
+
+      // assert
+      test.object(result).is(expectedOptions);
+    });
   });
 });

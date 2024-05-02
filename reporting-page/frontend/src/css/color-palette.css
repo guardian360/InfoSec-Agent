@@ -20,8 +20,9 @@ Should later on be able to be changed by user, with help of js
   --background-nav-hover: #427385;      /* color when hovering over navigation */
   --background-color-second-row: hsl(var(--hue-right-analogous) 40% 95%); /* changes background security/privacy risk */
   --background-color-second-row-area: hsl(var(--hueleft-analogous) 40% 40%); /* changes background of small area in security/privacy risk */
-  --background-piechart: hsl(var(--hueleft-analogous) 40% 90%); /* changes background piechart */
+  --background-piechart: hsl(var(--hueleft-analogous) 40% 90%); /* changes background pie-chart */
   --background-color-table-header: white;
+  --background-color-integration: #f4f4f4;
 
   /* colors for text */
   --text-body: #333;                                  /* main text color */
@@ -34,5 +35,5 @@ Should later on be able to be changed by user, with help of js
   --medium-risk-color: #f6b26b;
   --low-risk-color: #ffd966;
   --no-risk-color: #93c47d;
-
+  --info-color: #80d8db;
 }

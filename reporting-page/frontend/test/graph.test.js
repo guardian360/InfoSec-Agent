@@ -1,8 +1,8 @@
 import 'jsdom-global/register.js';
 import test from 'unit.js';
 import {JSDOM} from 'jsdom';
-import {Graph} from '../src/js/graph.js';
 import {RiskCounters} from '../src/js/risk-counters.js';
+import {jest} from '@jest/globals';
 
 global.TESTING = true;
 
@@ -41,12 +41,41 @@ const dom = new JSDOM(`
 global.document = dom.window.document;
 global.window = dom.window;
 
+/** Mock of getLocalizationString function
+ *
+ * @param {string} messageID - The ID of the message to be localized.
+ * @return {string} The localized string.
+ */
+function mockGetLocalizationString(messageID) {
+  switch (messageID) {
+  case 'Dashboard.Safe':
+    return 'Acceptable';
+  case 'Dashboard.LowRisk':
+    return 'Low';
+  case 'Dashboard.MediumRisk':
+    return 'Medium';
+  case 'Dashboard.HighRisk':
+    return 'High';
+  case 'Dashboard.InfoRisk':
+    return 'Info';
+  case 'Dashboard.SecurityRisksOverview':
+    return 'Security Risks Overview';
+  }
+}
+
+// Mock Localize function
+jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
+  Localize: jest.fn().mockImplementation((input) => mockGetLocalizationString(input)),
+}));
+
 // test cases
 describe('Risk graph', function() {
-  // arrange
-  const rc = new RiskCounters(true);
-  let g = new Graph(undefined, rc);
-  it('toggleRisks should change which risk levels are shown in the risk graph', function() {
+  it('toggleRisks should change which risk levels are shown in the risk graph', async function() {
+    // arrange
+    const graph = await import('../src/js/graph.js');
+    const rc = new RiskCounters(true);
+    const g = new graph.Graph(undefined, rc);
+
     // act
     g.toggleRisks('high', false);
     g.toggleRisks('medium', false);
@@ -71,7 +100,12 @@ describe('Risk graph', function() {
     test.value(g.graphShowLowRisks).isEqualTo(true);
     test.value(g.graphShowNoRisks).isEqualTo(true);
   });
-  it('graphDropdown should show and hide a togglable dropdown button', function() {
+  it('graphDropdown should show and hide a togglable dropdown button', async function() {
+    // arrange
+    const graph = await import('../src/js/graph.js');
+    const rc = new RiskCounters(true);
+    const g = new graph.Graph(undefined, rc);
+
     // act
     g.graphDropdown();
 
@@ -84,26 +118,32 @@ describe('Risk graph', function() {
     // assert
     test.value(document.getElementById('myDropdown').classList.contains('show')).isEqualTo(false);
   });
-  it('getData should fill the graph with the correct data', function() {
+  it('getData should fill the graph with the correct data', async function() {
     // arrange
+    const graph = await import('../src/js/graph.js');
+
     const expectedData = {
-      'labels': [1, 2, 3, 4, 5],
+      'labels': ['1', '2', '3', '4', '5'],
       'datasets': [{
-        'label': 'Safe issues',
+        'label': 'Acceptable',
         'data': [3, 4, 5, 6, 4],
         'backgroundColor': 'rgb(255, 255, 0)',
       }, {
-        'label': 'Low risk issues',
+        'label': 'Low',
         'data': [3, 4, 5, 6, 3],
         'backgroundColor': 'rgb(255, 0, 0)',
       }, {
-        'label': 'Medium risk issues',
+        'label': 'Medium',
         'data': [3, 4, 5, 6, 2],
         'backgroundColor': 'rgb(0, 0, 255)',
       }, {
-        'label': 'High risk issues',
+        'label': 'High',
         'data': [3, 4, 5, 6, 1],
         'backgroundColor': 'rgb(0, 255, 255)',
+      }, {
+        'label': 'Info',
+        'data': [3, 4, 5, 6, 5],
+        'backgroundColor': 'rgb(255, 255, 255)',
       }],
     };
 
@@ -112,24 +152,30 @@ describe('Risk graph', function() {
       mediumRiskColor: 'rgb(0, 0, 255)',
       lowRiskColor: 'rgb(255, 0, 0)',
       noRiskColor: 'rgb(255, 255, 0)',
+      infoColor: 'rgb(255, 255, 255)',
 
       allHighRisks: [1, 2, 3, 4, 5, 6, 1],
       allMediumRisks: [1, 2, 3, 4, 5, 6, 2],
       allLowRisks: [1, 2, 3, 4, 5, 6, 3],
       allNoRisks: [1, 2, 3, 4, 5, 6, 4],
+      allInfoRisks: [1, 2, 3, 4, 5, 6, 5],
     };
 
-    g = new Graph(undefined, mockRiskCounters);
+    const g = new graph.Graph(undefined, mockRiskCounters);
 
     // act
-    const resultData = g.getData();
+    const result = await g.getData();
 
     // assert
-    test.array(resultData.labels).is(expectedData.labels);
-    test.array(resultData.datasets).is(expectedData.datasets);
+    test.array(result.labels).is(expectedData.labels);
+    test.array(result.datasets).is(expectedData.datasets);
   });
-  it('getOptions should return the correct graph options', function() {
+  it('getOptions should return the correct graph options', async function() {
     // arrange
+    const graph = await import('../src/js/graph.js');
+    const rc = new RiskCounters(true);
+    const g = new graph.Graph(undefined, rc);
+
     const expectedOptions = {
       scales: {
         xAxes: [{

@@ -1,9 +1,13 @@
 import {ScanNow as scanNowGo, LogError as logError} from '../../wailsjs/go/main/Tray.js';
 import {GetDataBaseData as getDataBaseData} from '../../wailsjs/go/main/DataBase.js';
 import {openHomePage} from './home.js';
-import * as runTime from '../../wailsjs/runtime/runtime.js';
+import {
+  WindowShow as windowShow,
+  WindowMaximise as windowMaximise,
+  LogPrint as logPrint} from '../../wailsjs/runtime/runtime.js';
 import * as rc from './risk-counters.js';
-import {updateRiskcounter} from './risk-counters.js';
+import {updateRiskCounter} from './risk-counters.js';
+import data from '../database.json' assert { type: 'json' };
 /** Call ScanNow in backend and store result in sessionStorage */
 export async function scanTest() {
   try {
@@ -14,7 +18,7 @@ export async function scanTest() {
           // For example, save it in session storage
           sessionStorage.setItem('ScanResult', JSON.stringify(scanResult));
           // Set severities in session storage
-          await setSeverities(scanResult);
+          await setAllSeverities(scanResult);
           // Resolve the promise with the scan result
           resolve(scanResult);
         })
@@ -27,43 +31,66 @@ export async function scanTest() {
     });
 
     // Perform other actions after scanTest is complete
-    runTime.WindowShow();
-    runTime.WindowMaximise();
-    runTime.LogPrint(sessionStorage.getItem('ScanResult'));
+    windowShow();
+    windowMaximise();
+    logPrint(sessionStorage.getItem('ScanResult'));
   } catch (err) {
     // Handle any errors that occurred during scanTest or subsequent actions
     logError('Error in scanTest: ' + err);
   }
 }
 
-scanTest();
+// Check if scanTest has already been called before
+if (sessionStorage.getItem('scanTest') === null) {
+  // Call scanTest() only if it hasn't been called before
+  scanTest().then((r) => {});
 
-// counts the occurences of each level: 0 = acceptable, 1 = low, 2 = medium, 3 = high
-const countOccurences = (severities, level) => severities.filter((item) => item.severity === level).length;
+  // Set the flag in sessionStorage to indicate that scanTest has been called
+  sessionStorage.setItem('scanTest', 'called');
+}
 
-/** Sets the severities collected from the checks and database in session storage
+// counts the occurrences of each level: 0 = acceptable, 1 = low, 2 = medium, 3 = high
+const countOccurrences = (severities, level) => severities.filter((item) => item.severity === level).length;
+
+/** Sets the severities collected from the checks and database in session storage of all types
  *
  * @param {Check[]} input Checks to get severities from
- * @param {int[]} ids List of result ids to get corresponding severities
  */
-async function setSeverities(input) {
+async function setAllSeverities(input) {
+  const result = await getDataBaseData(input);
+  sessionStorage.setItem('DataBaseData', JSON.stringify(result));
+  await setSeverities(result, '');
+  await setSeverities(result, 'Security');
+  await setSeverities(result, 'Privacy');
+}
+
+/** Sets the severities collected from the database in session storage
+ *
+ * @param {DataBaseData[]} input DataBaseData retrieved from database
+ * @param {string} type Type of issues to set the severities of in session storage
+ */
+async function setSeverities(input, type) {
   try {
-    const result = await getDataBaseData(input);
-    sessionStorage.setItem('DataBaseData', JSON.stringify(result));
-    const high = countOccurences(result, 3);
-    const medium = countOccurences(result, 2);
-    const low = countOccurences(result, 1);
-    const acceptable = countOccurences(result, 0);
-    if (sessionStorage.getItem('RiskCounters') === null || sessionStorage.getItem('RiskCounters') === undefined) {
-      sessionStorage.setItem('RiskCounters', JSON.stringify(new rc.RiskCounters(high, medium, low, acceptable)));
+    if (type !== '') {
+      input = input.filter((item) => data[item.jsonkey] !== undefined);
+      input = input.filter((item) => data[item.jsonkey].Type === type);
+    }
+    const info = countOccurrences(input, 4);
+    const high = countOccurrences(input, 3);
+    const medium = countOccurrences(input, 2);
+    const low = countOccurrences(input, 1);
+    const acceptable = countOccurrences(input, 0);
+    if (sessionStorage.getItem(type + 'RiskCounters') === null ||
+        sessionStorage.getItem(type + 'RiskCounters') === undefined) {
+      sessionStorage.setItem(type + 'RiskCounters',
+        JSON.stringify(new rc.RiskCounters(high, medium, low, info, acceptable)));
       openHomePage();
     } else {
-      let riskCounter = JSON.parse(sessionStorage.getItem('RiskCounters'));
-      console.log(riskCounter);
-      riskCounter = updateRiskcounter(riskCounter, high, medium, low, acceptable);
-      sessionStorage.setItem('RiskCounters', JSON.stringify(riskCounter));
+      let riskCounter = JSON.parse(sessionStorage.getItem(type + 'RiskCounters'));
+      riskCounter = updateRiskCounter(riskCounter, high, medium, low, info, acceptable);
+      sessionStorage.setItem(type + 'RiskCounters', JSON.stringify(riskCounter));
     }
   } catch (err) {
-    console.error(err);
+    logError(err);
   }
 }

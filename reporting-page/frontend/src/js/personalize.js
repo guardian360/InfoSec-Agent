@@ -1,23 +1,24 @@
-import {closeNavigation} from './navigation-menu.js';
-import {loadPersonalizeNavigation} from './navigation-menu.js';
+import {closeNavigation, loadPersonalizeNavigation} from './navigation-menu.js';
+// import logoPhoto from '../assets/images/logoTeamA-transformed.png';
 
 /** Load the content of the Personalize page */
 export function openPersonalizePage() {
   closeNavigation();
+  sessionStorage.setItem('savedPage', '7');
 
   document.getElementById('page-contents').innerHTML = `
-  <div class="setting">
-    <span class="setting-description favicon-title ">Favicon</span>
+  <div class="personalize-container">
+    <span class="personalize-description favicon-title ">Favicon</span>
     <div class="personalize-button-container">
-      <button class="setting-button icon-button" type="button">Change icon </button>    
+      <button class="personalize-button icon-button" type="button">Change icon </button>    
       <input class="personalize-input-invisible" type="file" id="input-file-icon" accept=".ico, .png">
     </div>
   </div>
   <hr class="solid">
-  <div class="setting">
+  <div class="personalize-container">
     <span class="personalize-description">Navigation image</span>
     <div class="personalize-button-container">
-      <button class="setting-button logo-button" type="button">Change logo </button>    
+      <button class="personalize-button logo-button" type="button">Change logo </button>    
       <input class="personalize-input-invisible"
       type="file" 
       id="input-file-picture" 
@@ -25,10 +26,10 @@ export function openPersonalizePage() {
     </div>
   </div>
   <hr class="solid">
-  <div class="setting">
+  <div class="personalize-container">
     <span class="personalize-description">Navigation title</span>
     <div class="personalize-button-container">
-      <button class="setting-button title-button" type="button">Change title </button>
+      <button class="personalize-button title-button" type="button">Change title </button>
       <div id="custom-modal" class="modal">
         <div class="modal-content">
           <input type="text" id="new-title-input">
@@ -38,23 +39,7 @@ export function openPersonalizePage() {
     </div>
   </div>
   <hr class="solid">
-  <!--<div class="setting">
-    <span class="personalize-description">Font</span>
-  </div>
-  <hr class="solid">
-  <div class="setting">
-    <span class="personalize-description">Background color Left nav</span>
-    <div class="personalize-button-container">
-      <label class="personalize-label" for="input-color-background">Change background</label>
-      <input class="personalize-input-invisible" type="color" id="input-color-background">   
-    </div>
-  </div>
-  <hr class="solid">
-  <div class="setting">
-    <span class="personalize-description">text color</span>
-  </div>
-  <hr class="solid">-->
-  <div class="setting">
+  <div class="personalize-container">
     <form action="" class="color-picker>
       <fieldset>
         <legend>Pick a theme</legend>
@@ -62,9 +47,12 @@ export function openPersonalizePage() {
         <input type="radio" name="theme" id="normal" checked>
         <label for="dark">Dark</label>
         <input type="radio" name="theme" id="dark">
+    <div class="personalize-button-container">
+      <button class="personalize-button reset-button" type="button">Reset settings</button>    
+    </div>
   </div>
   `;
-  // add eventlistener for changing Favicon
+  // add event-listener for changing Favicon
   const changeIconButton = document.getElementsByClassName('icon-button')[0];
   const inputFileIcon = document.getElementById('input-file-icon');
 
@@ -74,7 +62,7 @@ export function openPersonalizePage() {
 
   inputFileIcon.addEventListener('change', handleFaviconChange);
 
-  // add eventlistener for changing navication picture
+  // add event-listener for changing navigation picture
   const changeLogoButton = document.getElementsByClassName('logo-button')[0];
   const inputLogo = document.getElementById('input-file-picture');
 
@@ -84,7 +72,7 @@ export function openPersonalizePage() {
 
   inputLogo.addEventListener('change', handlePictureChange);
 
-  // add eventlistener for changing navigation title
+  // add event-listener for changing navigation title
   const changeTitleButton = document.getElementsByClassName('title-button')[0];
   const customModal = document.getElementById('custom-modal');
   const newTitleInput = document.getElementById('new-title-input');
@@ -103,11 +91,20 @@ export function openPersonalizePage() {
     }
   });
 
+
+  // add event-listener for changing Favicon
+  const changeResetButton = document.getElementsByClassName('reset-button')[0];
+
+  changeResetButton.addEventListener('click', function() {
+    resetSettings();
+  });
+
   /*
-  // add eventlistener for changing navigation title
+  // add event-listener for changing navigation title
   const inputBackgroundNav = document.getElementById('input-color-background');
   inputBackgroundNav.addEventListener('change', handleLeftBackgroundNav);
   */
+
   /* save themes*/
   const themes = document.querySelectorAll('[name="theme"]');
   themes.forEach((themeOption) => {
@@ -145,10 +142,10 @@ export function handleFaviconChange(icon) {
       } else {
         const newFavicon = document.createElement('link');
         newFavicon.rel = 'icon';
-        newFavicon.href = picture;
+        newFavicon.href = picture.toString();
         document.head.appendChild(newFavicon);
       }
-      localStorage.setItem('favicon', picture);
+      localStorage.setItem('favicon', picture.toString());
     };
     reader.readAsDataURL(file); // Read the selected file as a Data URL
   }
@@ -166,7 +163,7 @@ export function handlePictureChange(picture) {
   reader.onload = function(e) {
     const logo = document.getElementById('logo');
     logo.src = e.target.result; // Set the source of the logo to the selected image
-    localStorage.setItem('picture', e.target.result);
+    localStorage.setItem('picture', e.target.result.toString());
   };
   reader.readAsDataURL(file); // Read the selected file as a Data URL
 }
@@ -199,12 +196,20 @@ export function handleLeftBackgroundNav() {
  * The active theme class name is retrieved from the 'theme' key in localStorage.
  */
 export function retrieveTheme() {
-  const activeTheme = localStorage.getItem('theme');
-  document.documentElement.className = activeTheme;
+  document.documentElement.className = localStorage.getItem('theme');
 }
+/**
+ * Resets the settings by clearing localStorage and restoring default values.
+ */
+export function resetSettings() {
+  localStorage.clear();
+  logoPhoto = 'frontend/src/assets/images/logoTeamA-transformed.png';
+  const logo = document.getElementById('logo');
+  logo.src = logoPhoto;
 
-// achtergrond navigation
-// normale achtergrond
-// kleur text
-// text font
-// kleur buttons
+  const title = document.getElementById('title');
+  title.textContent = 'Little Brother';
+
+  const favicon = document.getElementById('favicon');
+  favicon.href = logoPhoto;
+}

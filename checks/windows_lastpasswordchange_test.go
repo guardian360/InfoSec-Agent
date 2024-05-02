@@ -2,6 +2,7 @@ package checks_test
 
 import (
 	"errors"
+
 	"github.com/stretchr/testify/require"
 
 	"testing"
@@ -43,8 +44,7 @@ func TestLastPasswordChange(t *testing.T) {
 					"                                         *Gebruikers\n" +
 					"                                         *Prestatielogboekgebru\nLidmaatschap globale groep" +
 					"               *Geen\nDe opdracht is voltooid.", Err: nil},
-			want: checks.NewCheckResult(checks.LastPasswordChangeID, 0, "Password last changed on 1-1-2022 , "+
-				"your password was changed more than half a year ago so you should change it again"),
+			want: checks.NewCheckResult(checks.LastPasswordChangeID, 0, "1-1-2022"),
 		},
 		{
 			name: "Parsing data error",
@@ -86,8 +86,7 @@ func TestLastPasswordChange(t *testing.T) {
 					"                                         *Gebruikers\n" +
 					"                                         *Prestatielogboekgebru\nLidmaatschap globale groep" +
 					"               *Geen\nDe opdracht is voltooid.", Err: nil},
-			want: checks.NewCheckResult(checks.LastPasswordChangeID, 1,
-				"You changed your password recently on 1-1-2024"),
+			want: checks.NewCheckResult(checks.LastPasswordChangeID, 1, "1-1-2024"),
 		},
 	}
 	for _, tt := range tests {

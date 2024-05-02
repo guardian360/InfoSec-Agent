@@ -27,6 +27,7 @@ export function loadPersonalizeNavigation() {
     navItems[i].style.backgroundColor = stylesheet.getPropertyValue('--background-color-left-nav');
   }
 }
+
 /** Close the navigation menu when a navigation item is clicked, only when screen size is less than 800px */
 export function closeNavigation() {
   if (document.body.offsetWidth < 800) {
@@ -39,7 +40,6 @@ export function toggleNavigationHamburger() {
   if (document.body.offsetWidth < 800) {
     if (document.getElementsByClassName('left-nav')[0].style.visibility === 'visible') {
       document.getElementsByClassName('left-nav')[0].style.visibility = 'hidden';
-      return;
     } else {
       document.getElementsByClassName('left-nav')[0].style.visibility = 'visible';
     }
@@ -57,11 +57,10 @@ export function toggleNavigationResize() {
 
 if (typeof document !== 'undefined') {
   try {
-    document.getElementById('header-hambuger').addEventListener('click', () => toggleNavigationHamburger());
+    document.getElementById('header-hamburger').addEventListener('click', () => toggleNavigationHamburger());
     document.body.onresize = () => toggleNavigationResize();
 
     const navbarItems = [
-      'settings',
       'home',
       'security-dashboard',
       'privacy-dashboard',
@@ -70,7 +69,6 @@ if (typeof document !== 'undefined') {
       'about',
     ];
     const localizationIds = [
-      'Navigation.Settings',
       'Navigation.Home',
       'Navigation.SecurityDashboard',
       'Navigation.PrivacyDashboard',

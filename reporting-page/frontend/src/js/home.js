@@ -10,15 +10,16 @@ export function openHomePage() {
   document.onload = retrieveTheme();
   closeNavigation();
   markSelectedNavigationItem('home-button');
+  sessionStorage.setItem('savedPage', 1);
   document.getElementById('page-contents').innerHTML = `
   <div class="home-data">
     <div class="container-data home-column-one"> 
       <div class="data-column risk-counters">     
-        <div class="data-column data-segment piechart">
+        <div class="data-column data-segment pie-chart">
           <div class="data-segment-header">
             <p class="piechart-header">Risk level distribution</p>
           </div>
-          <div class="piechart-container">
+          <div class="pie-chart-container">
             <canvas id="pieChart"></canvas>
           </div>
         </div>
@@ -67,10 +68,10 @@ export function openHomePage() {
   document.getElementById('medal4').src = medal;
 
   const rc = JSON.parse(sessionStorage.getItem('RiskCounters'));
-  new PieChart('pieChart', rc);
+  new PieChart('pieChart', rc, 'Total');
 
   // Localize the static content of the home page
-  const staticHomePageConent = [
+  const staticHomePageContent = [
     'suggested-issue',
     'quick-fix',
     'scan-now',
@@ -79,6 +80,7 @@ export function openHomePage() {
     'high-risk-issues',
     'medium-risk-issues',
     'low-risk-issues',
+    'info-risk-issues',
     'safe-issues',
     'choose-issue-description',
   ];
@@ -91,15 +93,15 @@ export function openHomePage() {
     'Dashboard.HighRisk',
     'Dashboard.MediumRisk',
     'Dashboard.LowRisk',
+    'Dashboard.InfoRisk',
     'Dashboard.Safe',
     'Dashboard.ChooseIssueDescription',
   ];
-  for (let i = 0; i < staticHomePageConent.length; i++) {
-    getLocalization(localizationIds[i], staticHomePageConent[i]);
+  for (let i = 0; i < staticHomePageContent.length; i++) {
+    getLocalization(localizationIds[i], staticHomePageContent[i]);
   }
 
   document.getElementsByClassName('scan-now')[0].addEventListener('click', () => scanTest());
-  document.getElementById('home-button').addEventListener('click', () => openHomePage());
   document.getElementById('logo').innerHTML = localStorage.getItem('picture');
 }
 

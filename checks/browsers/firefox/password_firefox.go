@@ -5,10 +5,11 @@ import (
 	"os"
 	"strconv"
 
+	"github.com/InfoSec-Agent/InfoSec-Agent/checks/browsers/browserutils"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
-	"github.com/InfoSec-Agent/InfoSec-Agent/utils"
 	"github.com/andrewarchi/browser/firefox"
 )
 
@@ -22,7 +23,11 @@ import (
 // This function first determines the directory in which the Firefox profile is stored. It then opens the 'logins.json' file, which contains a list of all saved Firefox passwords. The function decodes the JSON file into a struct, and then iterates over the struct to extract the saved passwords. These passwords are added to the results, which are returned as a Check object. If an error occurs at any point during this process, it is encapsulated in the Check object and returned.
 func PasswordFirefox() checks.Check {
 	// Determine the directory in which the Firefox profile is stored
-	ffdirectory, _ := utils.FirefoxFolder()
+	ffdirectory, err := browserutils.RealProfileFinder{}.FirefoxFolder()
+	if err != nil {
+		logger.Log.ErrorWithErr("No firefox directory found: ", err)
+		return checks.NewCheckErrorf(checks.HistoryFirefoxID, "No firefox directory found", err)
+	}
 
 	var output []string
 	// Open the logins.json file, which contains a list of all saved Firefox passwords

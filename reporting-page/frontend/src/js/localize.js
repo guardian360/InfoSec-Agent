@@ -8,7 +8,16 @@ export function getLocalization(messageId, elementClass) {
   localize(messageId).then((result) => {
     const elements = document.getElementsByClassName(elementClass);
     for (let i = 0; i < elements.length; i++) {
-      elements[i].innerHTML = result;
+      elements[i].innerHTML = result.toString();
     }
   });
+}
+
+/**
+ * Retrieves localized message as a string using the provided message ID.
+ * @param {string} messageID - The ID of the message to be localized.
+ * @return {string} The localized string.
+ */
+export async function getLocalizationString(messageID) {
+  return await localize(messageID);
 }
