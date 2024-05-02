@@ -11,22 +11,17 @@ import "github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 //
 //   - registryKey (mocking.RegistryKey): The root key from which the registry settings will be checked. Should be HKEY_LOCAL_MACHINE for this function.
 //
-// Returns:
-//
-//   - []bool: A slice of boolean values, where each boolean represents whether a particular registry setting adheres to the CIS Benchmark standards.
-func CheckPoliciesHKLM(registryKey mocking.RegistryKey) []bool {
-	results := make([]bool, 0)
+// Returns: None
+func CheckPoliciesHKLM(registryKey mocking.RegistryKey) {
 	for _, check := range policyChecksHKLM {
-		results = append(results, check(registryKey)...)
+		check(registryKey)
 	}
-
-	return results
 }
 
 // policyChecksHKLM is a collection of registry checks related to different policies.
 // Each function in the collection represents a different policy check that the application can perform.
 // The registry settings get checked against the CIS Benchmark recommendations.
-var policyChecksHKLM = []func(mocking.RegistryKey) []bool{
+var policyChecksHKLM = []func(mocking.RegistryKey){
 	policiesCredui,
 	policiesExplorerHKLM,
 	policiesSystem,
@@ -79,20 +74,20 @@ var policyChecksHKLM = []func(mocking.RegistryKey) []bool{
 // policiesCredui is a helper function that checks the registry to determine if the system is configured to enumerate administrator accounts.
 //
 // CIS Benchmark Audit list index: 18.9.16.2
-func policiesCredui(registryKey mocking.RegistryKey) []bool {
+func policiesCredui(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Microsoft\Windows\Currentversion\Policies\Credui`
 
 	settings := []string{"EnumerateAdministrators"}
 
 	expectedValues := []interface{}{uint64(0)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesExplorerHKLM is a helper function that checks the registry to determine if the system is configured with the correct settings for Explorer policies.
 //
 // CIS Benchmark Audit list indices: 18.8.22.1.6, 18.9.8.2, 18.9.8.3, 18.9.31.4
-func policiesExplorerHKLM(registryKey mocking.RegistryKey) []bool {
+func policiesExplorerHKLM(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer`
 
 	settings := []string{
@@ -104,14 +99,13 @@ func policiesExplorerHKLM(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(1), uint64(1), uint64(255), uint64(0)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesSystem is a helper function that checks the registry to determine if the system is configured with the correct settings for system policies.
 //
 // CIS Benchmark Audit list indices: 2.3.1.2, 2.3.7.1-3, 2.3.11.4, 2.3.17.1-8, 18.3.1, 18.8.3.1, 18.8.4.1, 18.9.6.1, 18.9.91.1
-func policiesSystem(registryKey mocking.RegistryKey) []bool {
-	result := make([]bool, 0)
+func policiesSystem(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System`
 
 	settings := []string{
@@ -134,7 +128,7 @@ func policiesSystem(registryKey mocking.RegistryKey) []bool {
 	expectedValues := []interface{}{uint64(3), uint64(0), uint64(1), []uint64{0, 900}, uint64(1), uint64(2), uint64(0),
 		uint64(1), uint64(1), uint64(1), uint64(1), uint64(1), uint64(0), uint64(1), uint64(1)}
 
-	result = append(result, CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 
 	subKeys := []string{
 		`SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\Kerberos\Parameters`,
@@ -153,17 +147,16 @@ func policiesSystem(registryKey mocking.RegistryKey) []bool {
 	for i, subKey := range subKeys {
 		func() {
 			registryPath = subKey
-			result = append(result, CheckIntegerRegistrySettings(
-				registryKey, registryPath, []string{subKeysSettings[i]}, []interface{}{subKeysExpected[i]})...)
+			CheckIntegerRegistrySettings(
+				registryKey, registryPath, []string{subKeysSettings[i]}, []interface{}{subKeysExpected[i]})
 		}()
 	}
-	return result
 }
 
 // policiesAdmPwd is a helper function that checks the registry to determine if the system is configured with the correct settings for the administrator password.
 //
 // CIS Benchmark Audit list indices: 18.2.2-6
-func policiesAdmPwd(registryKey mocking.RegistryKey) []bool {
+func policiesAdmPwd(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft Services\AdmPwd`
 
 	settings := []string{
@@ -176,92 +169,91 @@ func policiesAdmPwd(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(1), uint64(1), uint64(4), []uint64{15, ^uint64(0)}, []uint64{0, 30}}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesFacialFeatures is a helper function that checks the registry to determine if the system is configured with the correct settings for enhanced anti-spoofing.
 //
 // CIS Benchmark Audit list index: 18.9.10.1.1
-func policiesFacialFeatures(registryKey mocking.RegistryKey) []bool {
+func policiesFacialFeatures(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Biometrics\FacialFeatures`
 
 	settings := []string{"EnhancedAntiSpoofing"}
 
 	expectedValues := []interface{}{uint64(1)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesDsh is a helper function that checks the registry to determine if the system is configured to allow widgets.
 //
 // CIS Benchmark Audit list index: 18.9.81.1
-func policiesDsh(registryKey mocking.RegistryKey) []bool {
+func policiesDsh(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Dsh`
 
 	settings := []string{"AllowNewsAndInterests"}
 
 	expectedValues := []interface{}{uint64(0)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesInputPersonalization is a helper function that checks the registry to determine if the system is configured to allow online speech recognition services.
 //
 // CIS Benchmark Audit list index: 18.1.2.2
-func policiesInputPersonalization(registryKey mocking.RegistryKey) []bool {
+func policiesInputPersonalization(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\InputPersonalization`
 
 	settings := []string{"AllowInputPersonalization"}
 
 	expectedValues := []interface{}{uint64(0)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesIEFeeds is a helper function that checks the registry to determine if the system is configured to download enclosures.
 //
 // CIS Benchmark Audit list index: 18.9.66.1
-func policiesIEFeeds(registryKey mocking.RegistryKey) []bool {
+func policiesIEFeeds(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Internet Explorer\Feeds`
 
 	settings := []string{"DisableEnclosureDownload"}
 
 	expectedValues := []interface{}{uint64(1)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesMicrosoftAccount is a helper function that checks the registry to determine if the system is configured to block consumer user authentication.
 //
 // CIS Benchmark Audit list index: 18.9.46.1
-func policiesMicrosoftAccount(registryKey mocking.RegistryKey) []bool {
+func policiesMicrosoftAccount(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\MicrosoftAccount`
 
 	settings := []string{"DisableUserAuth"}
 
 	expectedValues := []interface{}{uint64(1)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesPhishingFilter is a helper function that checks the registry to determine if the system is configured with the correct settings for the phishing filter.
 //
 // CIS Benchmark Audit list indices: 18.9.85.2.1-2
-func policiesPhishingFilter(registryKey mocking.RegistryKey) []bool {
+func policiesPhishingFilter(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter`
 
 	settings := []string{"EnabledV9", "PreventOverride"}
 
 	expectedValues := []interface{}{uint64(1), uint64(1)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesPowerSettings is a helper function that checks the registry to determine if the system is configured with the correct power settings.
 //
 // CIS Benchmark Audit list indices: 18.8.34.6.1-2, 18.8.34.6.5-6
-func policiesPowerSettings(registryKey mocking.RegistryKey) []bool {
-	result := make([]bool, 0)
+func policiesPowerSettings(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Power\PowerSettings\f15576e8-98b7-4186-b944-eafa664402d9`
 
 	settings := []string{
@@ -271,21 +263,19 @@ func policiesPowerSettings(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(0), uint64(0)}
 
-	result = append(result, CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 
 	registryPath = `SOFTWARE\Policies\Microsoft\Power\PowerSettings\0e796bdb-100d-47d6-a2d5-f7d2daa51f51`
 
 	expectedValues = []interface{}{uint64(1), uint64(1)}
 
-	result = append(result, CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
-	return result
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesWindowsDefender is a helper function that checks the registry to determine if Windows Defender is configured with the correct settings.
 //
 // CIS Benchmark Audit list indices: 18.9.47.15-16
-func policiesWindowsDefender(registryKey mocking.RegistryKey) []bool {
-	results := make([]bool, 0)
+func policiesWindowsDefender(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows Defender`
 
 	settings := []string{
@@ -295,55 +285,52 @@ func policiesWindowsDefender(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(1), uint64(0)}
 
-	results = append(results, CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
-	results = append(results, checkWindowsDefenderScan(registryKey)...)
-	results = append(results, checkWindowsDefenderRealTime(registryKey)...)
-	results = append(results, checkWindowsDefenderASR(registryKey)...)
-	results = append(results, checkWindowsDefenderSpyNet(registryKey)...)
-	results = append(results, checkWindowsDefenderNetworkProtection(registryKey)...)
-	results = append(results, checkWindowsDefenderAppBrowserProtection(registryKey)...)
-
-	return results
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	checkWindowsDefenderScan(registryKey)
+	checkWindowsDefenderRealTime(registryKey)
+	checkWindowsDefenderASR(registryKey)
+	checkWindowsDefenderSpyNet(registryKey)
+	checkWindowsDefenderNetworkProtection(registryKey)
+	checkWindowsDefenderAppBrowserProtection(registryKey)
 }
 
 // checkWindowsDefenderScan is a helper function that checks the registry to determine if Windows Defender is configured with the correct scan settings.
 //
 // CIS Benchmark Audit list indices: 18.9.47.12.1-2
-func checkWindowsDefenderScan(registryKey mocking.RegistryKey) []bool {
+func checkWindowsDefenderScan(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows Defender\Scan`
 
 	settings := []string{"DisableRemovableDriveScanning", "DisableEmailScanning"}
 
 	expectedValues := []interface{}{uint64(0), uint64(0)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // checkWindowsDefenderRealTime is a helper function that checks the registry to determine if Windows Defender is configured with the correct real-time protection settings.
 //
 // CIS Benchmark Audit list indices: 18.9.47.9.1-4
-func checkWindowsDefenderRealTime(registryKey mocking.RegistryKey) []bool {
+func checkWindowsDefenderRealTime(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection`
 
 	settings := []string{"DisableIOAVProtection", "DisableRealtimeMonitoring", "DisableBehaviorMonitoring", "DisableScriptScanning"}
 
 	expectedValues := []interface{}{uint64(0), uint64(0), uint64(0), uint64(0)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // checkWindowsDefenderASR is a helper function that checks the registry to determine if Windows Defender is configured with the correct ASR settings.
 //
 // CIS Benchmark Audit list indices: 18.9.47.5.1.1-2
-func checkWindowsDefenderASR(registryKey mocking.RegistryKey) []bool {
-	results := make([]bool, 0)
+func checkWindowsDefenderASR(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\ASR`
 
 	settings := []string{"ExploitGuard_ASR_Rules"}
 
 	expectedValues := []interface{}{uint64(1)}
 
-	results = append(results, CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 
 	registryPath = `SOFTWARE\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\ASR\Rules`
 
@@ -363,75 +350,72 @@ func checkWindowsDefenderASR(registryKey mocking.RegistryKey) []bool {
 	expectedValues = []interface{}{uint64(1), uint64(1), uint64(1), uint64(1), uint64(1), uint64(1), uint64(1),
 		uint64(1), uint64(1), uint64(1), uint64(1)}
 
-	results = append(results, CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
-	return results
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // checkWindowsDefenderSpyNet is a helper function that checks the registry to determine if Windows Defender is configured with the correct SpyNet settings.
 //
 // CIS Benchmark Audit list index: 18.9.47.4.1
-func checkWindowsDefenderSpyNet(registryKey mocking.RegistryKey) []bool {
+func checkWindowsDefenderSpyNet(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows Defender\Spynet`
 
 	settings := []string{"LocalSettingOverrideSpynetReporting"}
 
 	expectedValues := []interface{}{uint64(0)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // checkWindowsDefenderAppBrowserProtection is a helper function that checks the registry to determine if Windows Defender is configured with the correct app and browser protection settings.
 //
 // CIS Benchmark Audit list index: 18.9.105.2.1
-func checkWindowsDefenderAppBrowserProtection(registryKey mocking.RegistryKey) []bool {
+func checkWindowsDefenderAppBrowserProtection(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows Defender Security Center\App and Browser protection`
 
 	settings := []string{"DisallowExploitProtectionOverride"}
 
 	expectedValues := []interface{}{uint64(1)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // checkWindowsDefenderNetworkProtection is a helper function that checks the registry to determine if Windows Defender is configured with the correct network protection settings.
 //
 // CIS Benchmark Audit list index: 18.9.47.5.3.1
-func checkWindowsDefenderNetworkProtection(registryKey mocking.RegistryKey) []bool {
+func checkWindowsDefenderNetworkProtection(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\Network Protection`
 
 	settings := []string{"EnableNetworkProtection"}
 
 	expectedValues := []interface{}{uint64(1)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesDNSClient is a helper function that checks the registry to determine if the system is configured with the correct settings for the DNS client.
 //
 // CIS Benchmark Audit list indices: 18.5.4.2
-func policiesDNSClient(registryKey mocking.RegistryKey) []bool {
+func policiesDNSClient(registryKey mocking.RegistryKey) {
 	registryPath := DNSClientRegistryPath
 
 	settings := []string{"EnableMulticast"}
 
 	expectedValues := []interface{}{uint64(0)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesPrinters is a helper function that checks the registry to determine if the system is configured with the correct settings for printers.
 //
 // CIS Benchmark Audit list indices: 18.3.5, 18.6.1-3, 18.8.22.1.2
-func policiesPrinters(registryKey mocking.RegistryKey) []bool {
+func policiesPrinters(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows NT\Printers`
-
-	results := make([]bool, 0)
 
 	settings := []string{"RegisterSpoolerRemoteRpcEndPoint", "DisableWebPnPDownload"}
 
 	expectedValues := []interface{}{uint64(2), uint64(1)}
 
-	results = append(results, CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 
 	registryPath = `SOFTWARE\Policies\Microsoft\Windows NT\Printers\PointAndPrint`
 
@@ -439,27 +423,26 @@ func policiesPrinters(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues = []interface{}{uint64(1), uint64(0), uint64(0)}
 
-	results = append(results, CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
-	return results
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesRPC is a helper function that checks the registry to determine if the system is configured with the correct settings for RPC.
 //
 // CIS Benchmark Audit list indices: 18.8.37.1-2
-func policiesRPC(registryKey mocking.RegistryKey) []bool {
+func policiesRPC(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows NT\Rpc`
 
 	settings := []string{"EnableAuthEpResolution", "RestrictRemoteClients"}
 
 	expectedValues := []interface{}{uint64(1), uint64(1)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesTerminalServices is a helper function that checks the registry to determine if the system is configured with the correct settings for terminal services.
 //
 // CIS Benchmark Audit list indices: 18.8.36.1-2, 18.9.65.2.2, 18.9.65.3.3.3, 18.9.65.3.9.1-5, 18.9.65.3.11.1
-func policiesTerminalServices(registryKey mocking.RegistryKey) []bool {
+func policiesTerminalServices(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services`
 
 	settings := []string{"fAllowUnsolicited", "fAllowToGetHelp", "DisablePasswordSaving", "fDisableCdm",
@@ -469,91 +452,91 @@ func policiesTerminalServices(registryKey mocking.RegistryKey) []bool {
 	expectedValues := []interface{}{uint64(0), uint64(0), uint64(1), uint64(1), uint64(1), uint64(1), uint64(2),
 		uint64(1), uint64(3), uint64(1)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesAppPrivacy is a helper function that checks the registry to determine if the system is configured with the correct settings for app privacy.
 //
 // CIS Benchmark Audit list index: 18.9.5.1
-func policiesAppPrivacy(registryKey mocking.RegistryKey) []bool {
+func policiesAppPrivacy(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows\AppPrivacy`
 
 	settings := []string{"LetAppsActivateWithVoiceAboveLock"}
 
 	expectedValues := []interface{}{uint64(2)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesAppx is a helper function that checks the registry to determine if the system is configured with the correct settings for Appx.
 //
 // CIS Benchmark Audit list index: 18.9.4.2
-func policiesAppx(registryKey mocking.RegistryKey) []bool {
+func policiesAppx(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows\Appx`
 
 	settings := []string{"BlockNonAdminUserInstall"}
 
 	expectedValues := []interface{}{uint64(1)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesCloudContentHKLM is a helper function that checks the registry to determine if the system is configured with the correct settings for cloud content.
 //
 // CIS Benchmark Audit list indices: 18.9.14.1, 18.9.14.3
-func policiesCloudContentHKLM(registryKey mocking.RegistryKey) []bool {
+func policiesCloudContentHKLM(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows\CloudContent`
 
 	settings := []string{"DisableConsumerAccountStateContent", "DisableWindowsConsumerFeatures"}
 
 	expectedValues := []interface{}{uint64(1), uint64(1)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesConnect is a helper function that checks the registry to determine if the system is configured with the correct settings for Connect.
 //
 // CIS Benchmark Audit list index: 18.9.15.1
-func policiesConnect(registryKey mocking.RegistryKey) []bool {
+func policiesConnect(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows\Connect`
 
 	settings := []string{"RequirePinForPairing"}
 
 	expectedValues := []interface{}{[]uint64{1, 2}}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesCredentialsDelegation is a helper function that checks the registry to determine if the system is configured with the correct settings for credentials delegation.
 //
 // CIS Benchmark Audit list index: 18.8.4.2
-func policiesCredentialsDelegation(registryKey mocking.RegistryKey) []bool {
+func policiesCredentialsDelegation(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows\CredentialsDelegation`
 
 	settings := []string{"AllowProtectedCreds"}
 
 	expectedValues := []interface{}{uint64(1)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesGeneralCredui is a helper function that checks the registry to determine if the system is configured with the correct settings for Credui.
 //
 // CIS Benchmark Audit list index: 18.9.16.1
-func policiesGeneralCredui(registryKey mocking.RegistryKey) []bool {
+func policiesGeneralCredui(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows\Credui`
 
 	settings := []string{"DisablePasswordReveal"}
 
 	expectedValues := []interface{}{uint64(1)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesDataCollection is a helper function that checks the registry to determine if the system is configured with the correct settings for data collection.
 //
 // CIS Benchmark Audit list indices: 18.9.17.1, 18.9.17.3-7
-func policiesDataCollection(registryKey mocking.RegistryKey) []bool {
+func policiesDataCollection(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows\DataCollection`
 
 	settings := []string{"AllowTelemetry", "DisableOneSettingsDownloads", "DoNotShowFeedbackNotifications",
@@ -561,206 +544,200 @@ func policiesDataCollection(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{[]uint64{0, 1}, uint64(1), uint64(1), uint64(1), uint64(1), uint64(1)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesDeliveryOptimization is a helper function that checks the registry to determine if the system is configured with the correct settings for delivery optimization.
 //
 // CIS Benchmark Audit list index: 18.9.18.1
-func policiesDeliveryOptimization(registryKey mocking.RegistryKey) []bool {
+func policiesDeliveryOptimization(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization`
 
 	settings := []string{"DODownloadMode"}
 
 	expectedValues := []interface{}{[]uint64{0, 1, 2, 99, 100}}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesDeviceMetadata is a helper function that checks the registry to determine if the system is configured with the correct settings for device metadata.
 //
 // CIS Benchmark Audit list index: 18.8.7.2
-func policiesDeviceMetadata(registryKey mocking.RegistryKey) []bool {
+func policiesDeviceMetadata(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows\Device Metadata`
 
 	settings := []string{"PreventDeviceMetadataFromNetwork"}
 
 	expectedValues := []interface{}{uint64(1)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesEventLog is a helper function that checks the registry to determine if the system is configured with the correct settings for the event log.
 //
 // CIS Benchmark Audit list indices: 18.9.27.1.1-2
-func policiesEventLog(registryKey mocking.RegistryKey) []bool {
+func policiesEventLog(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows\EventLog\Application`
 
 	settings := []string{"Retention", "MaxSize"}
 
 	expectedValues := []interface{}{uint64(0), []uint64{32768, ^uint64(0)}}
 
-	results := make([]bool, 0)
-	results = append(results, CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
-	results = append(results, checkEventLogSecurity(registryKey)...)
-	results = append(results, checkEventLogSetup(registryKey)...)
-	results = append(results, checkEventLogSystem(registryKey)...)
-	return results
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	checkEventLogSecurity(registryKey)
+	checkEventLogSetup(registryKey)
+	checkEventLogSystem(registryKey)
 }
 
 // checkEventLogSecurity is a helper function that checks the registry to determine if the system is configured with the correct settings for the security event log.
 //
 // CIS Benchmark Audit list indices: 18.9.27.2.1-2
-func checkEventLogSecurity(registryKey mocking.RegistryKey) []bool {
+func checkEventLogSecurity(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows\EventLog\Security`
 
 	settings := []string{"Retention", "MaxSize"}
 
 	expectedValues := []interface{}{uint64(0), []uint64{196608, ^uint64(0)}}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // checkEventLogSetup is a helper function that checks the registry to determine if the system is configured with the correct settings for the setup event log.
 //
 // CIS Benchmark Audit list indices: 18.9.27.3.1-2
-func checkEventLogSetup(registryKey mocking.RegistryKey) []bool {
+func checkEventLogSetup(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows\Eventlog\Setup`
 
 	settings := []string{"Retention", "MaxSize"}
 
 	expectedValues := []interface{}{uint64(0), []uint64{32768, ^uint64(0)}}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // checkEventLogSystem is a helper function that checks the registry to determine if the system is configured with the correct settings for the system event log.
 //
 // CIS Benchmark Audit list indices: 18.9.27.4.1-2
-func checkEventLogSystem(registryKey mocking.RegistryKey) []bool {
+func checkEventLogSystem(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows\EventLog\System`
 
 	settings := []string{"Retention", "MaxSize"}
 
 	expectedValues := []interface{}{uint64(0), []uint64{32768, ^uint64(0)}}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesWindowsExplorer is a helper function that checks the registry to determine if the system is configured with the correct settings for Windows Explorer.
 //
 // CIS Benchmark Audit list indices: 18.9.8.1, 18.9.31.2-3,
-func policiesWindowsExplorer(registryKey mocking.RegistryKey) []bool {
+func policiesWindowsExplorer(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows\Explorer`
 
 	settings := []string{"NoAutoplayfornonVolume", "NoDataExecutionPrevention", "NoHeapTerminationOnCorruption"}
 
 	expectedValues := []interface{}{uint64(1), uint64(0), uint64(0)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesGameDVR is a helper function that checks the registry to determine if the system is configured with the correct settings for GameDVR.
 //
 // CIS Benchmark Audit list index: 18.9.87.1
-func policiesGameDVR(registryKey mocking.RegistryKey) []bool {
+func policiesGameDVR(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows\GameDVR`
 
 	settings := []string{"AllowGameDVR"}
 
 	expectedValues := []interface{}{uint64(0)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesGroupPolicy is a helper function that checks the registry to determine if the system is configured with the correct settings for Group Policy.
 //
 // CIS Benchmark Audit list indices: 18.8.21.2-3
-func policiesGroupPolicy(registryKey mocking.RegistryKey) []bool {
+func policiesGroupPolicy(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows\Group Policy\{35378EAC-683F-11D2-A89A-00C04FBBCFA2}`
 
 	settings := []string{"NoBackgroundPolicy", "NoGPOListChanges"}
 
 	expectedValues := []interface{}{uint64(0), uint64(0)}
 
-	results := make([]bool, 0)
-	results = append(results, CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
-	results = append(results, checkWcmSvcGroupPolicy(registryKey)...)
-	return results
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	checkWcmSvcGroupPolicy(registryKey)
 }
 
 // checkWcmSvcGroupPolicy is a helper function that checks the registry to determine if the system is configured with the correct settings for WcmSvc group policy.
 //
 // CIS Benchmark Audit list indices: 18.5.21.1-2
-func checkWcmSvcGroupPolicy(registryKey mocking.RegistryKey) []bool {
+func checkWcmSvcGroupPolicy(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows\WcmSvc\GroupPolicy`
 
 	settings := []string{"fMinimizeConnections", "fBlockNonDomain"}
 
 	expectedValues := []interface{}{uint64(3), uint64(1)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesHomeGroup is a helper function that checks the registry to determine if the system is configured with the correct settings for HomeGroup.
 //
 // CIS Benchmark Audit list index: 18.9.36.1
-func policiesHomeGroup(registryKey mocking.RegistryKey) []bool {
+func policiesHomeGroup(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows\HomeGroup`
 
 	settings := []string{"DisableHomeGroup"}
 
 	expectedValues := []interface{}{uint64(1)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesInstallerHKLM is a helper function that checks the registry to determine if the system is configured with the correct settings for the installer.
 //
 // CIS Benchmark Audit list indices: 18.9.90.1-2
-func policiesInstallerHKLM(registryKey mocking.RegistryKey) []bool {
+func policiesInstallerHKLM(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows\Installer`
 
 	settings := []string{"EnableUserControl", "AlwaysInstallElevated"}
 
 	expectedValues := []interface{}{uint64(0), uint64(0)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesLanman is a helper function that checks the registry to determine if the system is configured with the correct settings for Lanman.
 //
 // CIS Benchmark Audit list index: 18.5.8.1
-func policiesLanman(registryKey mocking.RegistryKey) []bool {
+func policiesLanman(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows\LanmanWorkstation`
 
 	settings := []string{"AllowInsecureGuestAuth"}
 
 	expectedValues := []interface{}{uint64(0)}
-	results := make([]bool, 0)
-	results = append(results, CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
-	results = append(results, checkLanmanParameters(registryKey)...)
-	results = append(results, checkLanmanServerParameters(registryKey)...)
-	return results
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	checkLanmanParameters(registryKey)
+	checkLanmanServerParameters(registryKey)
 }
 
 // checkLanmanParameters is a helper function that checks the registry to determine if the system is configured with the correct settings for Lanman parameters.
 //
 // CIS Benchmark Audit list indices: 2.3.8.1-3
-func checkLanmanParameters(registryKey mocking.RegistryKey) []bool {
+func checkLanmanParameters(registryKey mocking.RegistryKey) {
 	registryPath := `SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters`
 
 	settings := []string{"RequireSecuritySignature", "EnableSecuritySignature", "EnablePlainTextPassword"}
 
 	expectedValues := []interface{}{uint64(1), uint64(1), uint64(0)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // checkLanmanServerParameters is a helper function that checks the registry to determine if the system is configured with the correct settings for Lanman server parameters.
 //
 // CIS Benchmark Audit list indices: 2.3.9.1-5, 2.3.10.6, 2.3.10.9, 2.3.10.11, 18.3.3
-func checkLanmanServerParameters(registryKey mocking.RegistryKey) []bool {
+func checkLanmanServerParameters(registryKey mocking.RegistryKey) {
 	registryPath := `SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters`
 
 	settings := []string{"AutoDisconnect", "RequireSecuritySignature", "EnableSecuritySignature", "enableforcedlogoff",
@@ -769,27 +746,27 @@ func checkLanmanServerParameters(registryKey mocking.RegistryKey) []bool {
 	expectedValues := []interface{}{[]uint64{1, 15}, uint64(1), uint64(1), uint64(1), []uint64{1, 2}, nil, uint64(1),
 		nil, uint64(0)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesNetworkConnections is a helper function that checks the registry to determine if the system is configured with the correct settings for network connections.
 //
 // CIS Benchmark Audit list indices: 18.5.11.2-4
-func policiesNetworkConnections(registryKey mocking.RegistryKey) []bool {
+func policiesNetworkConnections(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows\Network Connections`
 
 	settings := []string{"NC_AllowNetBridge_NLA", "NC_ShowSharedAccessUI", "NC_StdDomainUserSetLocation"}
 
 	expectedValues := []interface{}{uint64(0), uint64(0), uint64(1)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesNetworkProvider is a helper function that checks the registry to determine if the system is configured with the correct settings for the network provider.
 //
 // CIS Benchmark Audit list index: 18.5.14.1
 // TODO: NEEDS CHECKING, IF THIS WORKS AS INTENDED, COULD NOT TEST DUE TO NON-EXISTENT REGISTRY KEY
-func policiesNetworkProvider(registryKey mocking.RegistryKey) []bool {
+func policiesNetworkProvider(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows\NetworkProvider\HardenedPaths`
 
 	settings := []string{"\\\\*\\NETLOGON", "\\\\*\\SYSVOL"}
@@ -799,102 +776,99 @@ func policiesNetworkProvider(registryKey mocking.RegistryKey) []bool {
 		"[Rr]equire([Mm]utual[Aa]uthentication|[Ii]ntegrity)=1.*[Rr]equire([Mm]utual[Aa]uthentication|[Ii]ntegrity)=1",
 	}
 
-	return CheckStringRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckStringRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesOneDrive is a helper function that checks the registry to determine if the system is configured with the correct settings for OneDrive.
 //
 // CIS Benchmark Audit list index: 18.9.58.1
-func policiesOneDrive(registryKey mocking.RegistryKey) []bool {
+func policiesOneDrive(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows\OneDrive`
 
 	settings := []string{"DisableFileSyncNGSC"}
 
 	expectedValues := []interface{}{uint64(1)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesPersonalization is a helper function that checks the registry to determine if the system is configured with the correct settings for personalization.
 //
 // CIS Benchmark Audit list indices: 18.1.1.1-2
-func policiesPersonalization(registryKey mocking.RegistryKey) []bool {
+func policiesPersonalization(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows\Personalization`
 
 	settings := []string{"NoLockScreenCamera", "NoLockScreenSlideshow"}
 
 	expectedValues := []interface{}{uint64(1), uint64(1)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesPowerShell is a helper function that checks the registry to determine if the system is configured with the correct settings for PowerShell.
 //
 // CIS Benchmark Audit list indices: 18.9.100.1-2
-func policiesPowerShell(registryKey mocking.RegistryKey) []bool {
-	results := make([]bool, 0)
-
-	results = append(results, checkPowershellScriptblocklogging(registryKey)...)
-	results = append(results, checkPowershellTranscription(registryKey)...)
-	return results
+func policiesPowerShell(registryKey mocking.RegistryKey) {
+	checkPowershellScriptblocklogging(registryKey)
+	checkPowershellTranscription(registryKey)
 }
 
 // checkPowershellScriptblocklogging is a helper function that checks the registry to determine if the system is configured with the correct settings for PowerShell script block logging.
 //
 // CIS Benchmark Audit list index: 18.9.100.1
-func checkPowershellScriptblocklogging(registryKey mocking.RegistryKey) []bool {
+func checkPowershellScriptblocklogging(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows\Powershell\Scriptblocklogging`
 
 	settings := []string{"EnableScriptBlockLogging"}
 
 	expectedValues := []interface{}{uint64(1)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // checkPowershellTranscription is a helper function that checks the registry to determine if the system is configured with the correct settings for PowerShell transcription.
 //
 // CIS Benchmark Audit list index: 18.9.100.1
-func checkPowershellTranscription(registryKey mocking.RegistryKey) []bool {
+func checkPowershellTranscription(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows\Powershell\Transcription`
 
 	settings := []string{"EnableTranscripting"}
 
 	expectedValues := []interface{}{uint64(0)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesPreviewBuild is a helper function that checks the registry to determine if the system is configured with the correct settings for preview builds.
 //
 // CIS Benchmark Audit list index: 18.9.17.8
-func policiesPreviewBuild(registryKey mocking.RegistryKey) []bool {
+func policiesPreviewBuild(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows\Previewbuilds`
 
 	settings := []string{"AllowBuildPreview"}
 
 	expectedValues := []interface{}{uint64(0)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesSandbox is a helper function that checks the registry to determine if the system is configured with the correct settings for the sandbox.
 //
 // CIS Benchmark Audit list indices: 18.9.104.1-2
-func policiesSandbox(registryKey mocking.RegistryKey) []bool {
+func policiesSandbox(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows\Sandbox`
 
 	settings := []string{"AllowClipboardRedirection", "AllowNetworking"}
 
 	expectedValues := []interface{}{uint64(0), uint64(0)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesGeneralSystem is a helper function that checks the registry to determine if the system is configured with the correct settings for Windows System.
 //
 // CIS Benchmark Audit list indices: 18.8.21.4, 18.8.28.1-7, 18.9.16.3, 18.9.85.1.1
-func policiesGeneralSystem(registryKey mocking.RegistryKey) []bool {
+func policiesGeneralSystem(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows\System`
 
 	settings := []string{"EnableCdp", "BlockUserFromShowingAccountDetailsOnSignin", "DontDisplayNetworkSelectionUI",
@@ -905,26 +879,26 @@ func policiesGeneralSystem(registryKey mocking.RegistryKey) []bool {
 	expectedValues := []interface{}{uint64(0), uint64(1), uint64(1), uint64(1), uint64(0), uint64(1), uint64(1),
 		uint64(0), uint64(1), uint64(1), uint64(1)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesWindowsSearch is a helper function that checks the registry to determine if the system is configured with the correct settings for Windows Search.
 //
 // CIS Benchmark Audit list indices: 18.9.67.3-6
-func policiesWindowsSearch(registryKey mocking.RegistryKey) []bool {
+func policiesWindowsSearch(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows\Windows Search`
 
 	settings := []string{"AllowCortana", "AllowCortanaAboveLock", "AllowIndexingEncryptedStoresOrItems", "AllowSearchToUseLocation"}
 
 	expectedValues := []interface{}{uint64(0), uint64(0), uint64(0), uint64(0)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesWindowsUpdate is a helper function that checks the registry to determine if the system is configured with the correct settings for Windows Update.
 //
 // CIS Benchmark Audit list indices: 18.9.108.2.2-3, 18.9.108.4.1-3
-func policiesWindowsUpdate(registryKey mocking.RegistryKey) []bool {
+func policiesWindowsUpdate(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate`
 
 	settings := []string{"SetDisablePauseUXAccess", "ManagePreviewBuildsPolicyValue", "DeferFeatureUpdates",
@@ -932,93 +906,82 @@ func policiesWindowsUpdate(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(1), uint64(1), uint64(1), []uint64{180, ^uint64(0)}, uint64(1), uint64(0)}
 
-	results := make([]bool, 0)
-	results = append(results, CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
-	results = append(results, checkWindowsUpdateAu(registryKey)...)
-	return results
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	checkWindowsUpdateAu(registryKey)
 }
 
 // checkWindowsUpdateAu is a helper function that checks the registry to determine if the system is configured with the correct settings for Windows Update AU.
 //
 // CIS Benchmark Audit list indices: 18.9.108.1.1, 18.9.108.2.1-2
-func checkWindowsUpdateAu(registryKey mocking.RegistryKey) []bool {
+func checkWindowsUpdateAu(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows\Windowsupdate\Au`
 
 	settings := []string{"NoAutoRebootWithLoggedOnUsers", "NoAutoUpdate", "ScheduledInstallDay"}
 
 	expectedValues := []interface{}{uint64(0), uint64(0), uint64(0)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesWinRM is a helper function that checks the registry to determine if the system is configured with the correct settings for WinRM.
-func policiesWinRM(registryKey mocking.RegistryKey) []bool {
-	results := make([]bool, 0)
-
-	results = append(results, checkWinRMClient(registryKey)...)
-	results = append(results, checkWinRMService(registryKey)...)
-
-	return results
+func policiesWinRM(registryKey mocking.RegistryKey) {
+	checkWinRMClient(registryKey)
+	checkWinRMService(registryKey)
 }
 
 // checkWinRMClient is a helper function that checks the registry to determine if the system is configured with the correct settings for WinRM client.
 //
 // CIS Benchmark Audit list indices: 18.9.102.1.1-3
-func checkWinRMClient(registryKey mocking.RegistryKey) []bool {
+func checkWinRMClient(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows\WinRM\Client`
 
 	settings := []string{"AllowBasic", "AllowUnencryptedTraffic", "AllowDigest"}
 
 	expectedValues := []interface{}{uint64(0), uint64(0), uint64(0)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // checkWinRMService is a helper function that checks the registry to determine if the system is configured with the correct settings for WinRM service.
 //
 // CIS Benchmark Audit list indices: 18.9.102.2.1, 18.9.102.2.3-4
-func checkWinRMService(registryKey mocking.RegistryKey) []bool {
+func checkWinRMService(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows\WinRM\Service`
 
 	settings := []string{"AllowBasic", "AllowUnencryptedTraffic", "DisableRunAs"}
 
 	expectedValues := []interface{}{uint64(0), uint64(0), uint64(1)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesWindowsFirewall is a helper function that checks the registry to determine if the system is configured with the correct settings for the Windows firewall.
 //
 // CIS Benchmark Audit list indices: 9.1.1-4, 9.1.5-8, 9.2.1-4, 9.2.5-8, 9.3.1-6, 9.3.7-10
-func policiesWindowsFirewall(registryKey mocking.RegistryKey) []bool {
-	results := make([]bool, 0)
-
-	results = append(results, checkWindowsFirewallPrivateProfile(registryKey)...)
-	results = append(results, checkWindowsFirewallPublicProfile(registryKey)...)
-	results = append(results, checkWindowsFirewallDomainProfile(registryKey)...)
-	return results
+func policiesWindowsFirewall(registryKey mocking.RegistryKey) {
+	checkWindowsFirewallPrivateProfile(registryKey)
+	checkWindowsFirewallPublicProfile(registryKey)
+	checkWindowsFirewallDomainProfile(registryKey)
 }
 
 // checkWindowsFirewallDomainProfile is a helper function that checks the registry to determine if the system is configured with the correct settings for the domain profile.
 //
 // CIS Benchmark Audit list indices: 9.1.1-4
-func checkWindowsFirewallDomainProfile(registryKey mocking.RegistryKey) []bool {
+func checkWindowsFirewallDomainProfile(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile`
 
 	settings := []string{"EnableFirewall", "DefaultInboundAction", "DefaultOutboundAction", "DisableNotifications"}
 
 	expectedValues := []interface{}{uint64(1), uint64(1), uint64(0), uint64(1)}
 
-	results := make([]bool, 0)
-	results = append(results, checkWindowsFirewallDomainProfileLogging(registryKey)...)
-	results = append(results, CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
-	return results
+	checkWindowsFirewallDomainProfileLogging(registryKey)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // checkWindowsFirewallDomainProfileLogging is a helper function that checks the registry to determine if the system is configured with the correct settings for the domain profile logging.
 //
 // CIS Benchmark Audit list indices: 9.1.5-8
-func checkWindowsFirewallDomainProfileLogging(registryKey mocking.RegistryKey) []bool {
+func checkWindowsFirewallDomainProfileLogging(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\Logging`
 
 	stringSetting := []string{"LogFilePath"}
@@ -1027,31 +990,28 @@ func checkWindowsFirewallDomainProfileLogging(registryKey mocking.RegistryKey) [
 	expectedString := []string{`%SYSTEMROOT%\System32\logfiles\firewall\domainfw.log`}
 	expectedValues := []interface{}{[]uint64{16384, ^uint64(0)}, uint64(1), uint64(1)}
 
-	return CheckIntegerStringRegistrySettings(registryKey, registryPath, settings, expectedValues,
+	CheckIntegerStringRegistrySettings(registryKey, registryPath, settings, expectedValues,
 		stringSetting, expectedString)
 }
 
 // checkWindowsFirewallPublicProfile is a helper function that checks the registry to determine if the system is configured with the correct settings for the public profile.
 //
 // CIS Benchmark Audit list indices: 9.2.1-4
-func checkWindowsFirewallPrivateProfile(registryKey mocking.RegistryKey) []bool {
+func checkWindowsFirewallPrivateProfile(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile`
 
 	settings := []string{"EnableFirewall", "DefaultInboundAction", "DefaultOutboundAction", "DisableNotifications"}
 
 	expectedValues := []interface{}{uint64(1), uint64(1), uint64(0), uint64(1)}
 
-	results := make([]bool, 0)
-	results = append(results, checkWindowsFirewallPrivateProfileLogging(registryKey)...)
-	results = append(results, CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
-
-	return results
+	checkWindowsFirewallPrivateProfileLogging(registryKey)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // checkWindowsFirewallPrivateProfileLogging is a helper function that checks the registry to determine if the system is configured with the correct settings for the private profile logging.
 //
 // CIS Benchmark Audit list indices: 9.2.5-8
-func checkWindowsFirewallPrivateProfileLogging(registryKey mocking.RegistryKey) []bool {
+func checkWindowsFirewallPrivateProfileLogging(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile\Logging`
 
 	stringSetting := []string{"LogFilePath"}
@@ -1060,30 +1020,27 @@ func checkWindowsFirewallPrivateProfileLogging(registryKey mocking.RegistryKey) 
 	expectedString := []string{`%SYSTEMROOT%\System32\logfiles\firewall\privatefw.log`}
 	expectedValues := []interface{}{[]uint64{16384, ^uint64(0)}, uint64(1), uint64(1)}
 
-	return CheckIntegerStringRegistrySettings(registryKey, registryPath, settings, expectedValues, stringSetting, expectedString)
+	CheckIntegerStringRegistrySettings(registryKey, registryPath, settings, expectedValues, stringSetting, expectedString)
 }
 
 // checkWindowsFirewallPublicProfile is a helper function that checks the registry to determine if the system is configured with the correct settings for the public profile.
 //
 // CIS Benchmark Audit list indices: 9.3.1-6
-func checkWindowsFirewallPublicProfile(registryKey mocking.RegistryKey) []bool {
+func checkWindowsFirewallPublicProfile(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile`
 	settings := []string{"EnableFirewall", "DefaultInboundAction", "DefaultOutboundAction", "DisableNotifications",
 		"AllowLocalPolicyMerge", "AllowLocalIPsecPolicyMerge"}
 
 	expectedValues := []interface{}{uint64(1), uint64(1), uint64(0), uint64(1), uint64(0), uint64(0)}
 
-	results := make([]bool, 0)
-	results = append(results, checkWindowsFirewallPublicProfileLogging(registryKey)...)
-	results = append(results, CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
-
-	return results
+	checkWindowsFirewallPublicProfileLogging(registryKey)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // checkWindowsFirewallPublicProfileLogging is a helper function that checks the registry to determine if the system is configured with the correct settings for the public profile logging.
 //
 // CIS Benchmark Audit list indices: 9.3.7-10
-func checkWindowsFirewallPublicProfileLogging(registryKey mocking.RegistryKey) []bool {
+func checkWindowsFirewallPublicProfileLogging(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile\Logging`
 	stringSetting := []string{"LogFilePath"}
 	settings := []string{"LogFileSize", "LogDroppedPackets", "LogSuccessfulConnections"}
@@ -1091,45 +1048,45 @@ func checkWindowsFirewallPublicProfileLogging(registryKey mocking.RegistryKey) [
 	expectedString := []string{`%SYSTEMROOT%\System32\logfiles\firewall\publicfw.log`}
 	expectedValues := []interface{}{[]uint64{16384, ^uint64(0)}, uint64(1), uint64(1)}
 
-	return CheckIntegerStringRegistrySettings(registryKey, registryPath, settings, expectedValues,
+	CheckIntegerStringRegistrySettings(registryKey, registryPath, settings, expectedValues,
 		stringSetting, expectedString)
 }
 
 // policiesWindowsInkWorkspace is a helper function that checks the registry to determine if the system is configured with the correct settings for Windows Ink Workspace.
 //
 // CIS Benchmark Audit list index: 18.9.89.2
-func policiesWindowsInkWorkspace(registryKey mocking.RegistryKey) []bool {
+func policiesWindowsInkWorkspace(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\WindowsInkWorkspace`
 
 	settings := []string{"AllowWindowsInkWorkspace"}
 
 	expectedValues := []interface{}{[]uint64{0, 1}}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesWindowsStore is a helper function that checks the registry to determine if the system is configured with the correct settings for the Windows Store.
 //
 // CIS Benchmark Audit list indices: 18.9.75.2-4
-func policiesWindowsStore(registryKey mocking.RegistryKey) []bool {
+func policiesWindowsStore(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\WindowsStore`
 
 	settings := []string{"RequirePrivateStoreOnly", "AutoDownload", "DisableOSUpgrade"}
 
 	expectedValues := []interface{}{uint64(1), uint64(4), uint64(1)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // policiesEarlyLaunch is a helper function that checks the registry to determine if the system is configured with the correct settings for early launch.
 //
 // CIS Benchmark Audit list index: 18.8.14.1
-func policiesEarlyLaunch(registryKey mocking.RegistryKey) []bool {
+func policiesEarlyLaunch(registryKey mocking.RegistryKey) {
 	registryPath := `SYSTEM\CurrentControlSet\Policies\EarlyLaunch`
 
 	settings := []string{"DriverLoadPolicy"}
 
 	expectedValues := []interface{}{uint64(3)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
