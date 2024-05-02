@@ -67,3 +67,11 @@
         margin-left: 0;
     }
 }
+
+/* This CSS will hide the title in smaller screens */
+
+@media screen and (max-width: 550px) {
+  .header-name h1 {
+      display: none; /* This hides the title "Little Brother" */
+  }
+}

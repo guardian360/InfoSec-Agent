@@ -1,5 +1,5 @@
 @import url(color-palette.css);
-
+/*all pages*/
 body {
   background-color: var(--background-color);
   font-family: "DM Sans", sans-serif;
