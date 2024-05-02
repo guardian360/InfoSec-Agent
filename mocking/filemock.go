@@ -1,6 +1,7 @@
 package mocking
 
 import (
+	"errors"
 	"io"
 	"math"
 	"os"
@@ -158,8 +159,14 @@ func (f *FileMock) Close() error {
 // Parameters: p - the buffer to read into
 //
 // Returns: the number of bytes read and an error if the file cannot be read from
-func (f *FileMock) Read(_ []byte) (int, error) {
-	return f.Bytes, f.Err
+func (f *FileMock) Read(p []byte) (int, error) {
+	if f.Err != nil {
+		return 0, f.Err
+	}
+
+	n := copy(p, f.Buffer)
+	f.Buffer = f.Buffer[n:]
+	return n, nil
 }
 
 // TODO: fix this docstring according to new documentation standard
@@ -173,8 +180,37 @@ func (f *FileMock) Write(_ []byte) (int, error) {
 	return f.Bytes, f.Err
 }
 
-func (f *FileMock) Seek(offset int64, _ int) (int64, error) {
-	return offset, f.Err
+// Seek sets the offset for the next Read or Write on file to offset, interpreted according to whence:
+// 0 means relative to the origin of the file,
+// 1 means relative to the current offset,
+// 2 means relative to the end.
+// It returns the new offset and an error, if any.
+func (f *FileMock) Seek(offset int64, whence int) (int64, error) {
+	if f.Err != nil {
+		return 0, f.Err
+	}
+
+	switch whence {
+	case 0: // relative to the origin of the file
+		if offset < 0 || offset > int64(len(f.Buffer)) {
+			return 0, io.EOF
+		}
+		f.Buffer = f.Buffer[offset:]
+	case 1: // relative to the current offset
+		if offset < 0 || offset > int64(len(f.Buffer)) {
+			return 0, io.EOF
+		}
+		f.Buffer = f.Buffer[offset:]
+	case 2: // relative to the end
+		if offset > 0 || -offset > int64(len(f.Buffer)) {
+			return 0, io.EOF
+		}
+		f.Buffer = f.Buffer[:len(f.Buffer)+int(offset)]
+	default:
+		return 0, errors.New("invalid whence")
+	}
+
+	return int64(len(f.Buffer)), nil
 }
 
 func (f *FileMock) Copy(source File, destination File) (int64, error) {
