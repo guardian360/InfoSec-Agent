@@ -18,7 +18,7 @@ import (
 
 // HistoryFirefox inspects the user's browsing history in the Firefox browser for any visits to known phishing domains within the last week.
 //
-// Parameters: None
+// Parameters:   profileFinder: An object that implements the FirefoxProfileFinder interface. It is used to find the Firefox profile directory.
 //
 // Returns: The phishing domains that the user has visited in the last week and when they visited it
 func HistoryFirefox(profileFinder browserutils.FirefoxProfileFinder) checks.Check {

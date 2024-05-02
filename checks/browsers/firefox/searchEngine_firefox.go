@@ -18,7 +18,11 @@ import (
 
 // SearchEngineFirefox is a function that retrieves the default search engine used in the Firefox browser.
 //
-// Parameters: None
+// Parameters:
+//   - profileFinder: An object that implements the FirefoxProfileFinder interface. It is used to find the Firefox profile directory.
+//   - boolMock: A boolean value that determines whether to use the mockSource and mockDest files for testing.
+//   - mockSource: A mock file used for testing. It is used as the source file when boolMock is true.
+//   - mockDest: A mock file used for testing. It is used as the destination file when boolMock is true.
 //
 // Returns:
 //   - checks.Check: A Check object that encapsulates the result of the search engine check. The Check object includes a string that represents the default search engine in the Firefox browser. If an error occurs during the check, the Check object will encapsulate this error.
@@ -145,18 +149,35 @@ func Results(data []byte) string {
 	return result
 }
 
+// OpenAndStatFile is a function that opens a file and retrieves its size.
+//
+// Parameters:
+//   - tempSearch: A string that represents the path to the file that should be opened.
+//
+// Returns:
+//   - mocking.File: A File object that represents the opened file. This object is wrapped in a mocking layer for testing purposes.
+//   - int64: An integer that represents the size of the file in bytes.
+//   - error: An error object that encapsulates any errors that occurred during the execution of the function. If no errors occurred, this object is nil.
+//
+// This function first calls the os.Stat function to retrieve the FileInfo object for the file. If an error occurs during this call, the function returns nil, 0, and the error. If no error occurs, the function retrieves the size of the file from the FileInfo object.
+// The function then calls the os.Open function to open the file. If an error occurs during this call, the function returns nil, 0, and the error. If no error occurs, the function wraps the opened file in a mocking layer and returns the wrapped file, the size of the file, and nil for the error.
 var OpenAndStatFile = func(tempSearch string) (mocking.File, int64, error) {
+	// Retrieve the FileInfo object for the file
 	fileInfo, err := os.Stat(tempSearch)
 	if err != nil {
+		// If an error occurred, return nil, 0, and the error
 		return nil, 0, err
 	}
+	// Retrieve the size of the file from the FileInfo object
 	fileSize := fileInfo.Size()
 
-	// Holds the information from the copied file
+	// Open the file
 	file, err := os.Open(filepath.Clean(tempSearch))
 	if err != nil {
+		// If an error occurred, return nil, 0, and the error
 		return nil, 0, err
 	}
 
+	// Wrap the opened file in a mocking layer and return the wrapped file, the size of the file, and nil for the error
 	return mocking.Wrap(file), fileSize, nil
 }
