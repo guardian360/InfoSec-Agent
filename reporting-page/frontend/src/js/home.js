@@ -1,7 +1,7 @@
 import {PieChart} from './piechart.js';
 import {getLocalization} from './localize.js';
 import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
-import medal from '../assets/images/img_medal1.jpg';
+import medal from '../assets/images/img_medal1.png';
 import {retrieveTheme} from './personalize.js';
 import {scanTest} from './database.js';
 
@@ -13,49 +13,45 @@ export function openHomePage() {
   sessionStorage.setItem('savedPage', 1);
   document.getElementById('page-contents').innerHTML = `
   <div class="home-data">
-    <div class="container-data home-column-one"> 
-      <div class="data-column risk-counters">     
-        <div class="data-column data-segment pie-chart">
-          <div class="data-segment-header">
-            <p class="piechart-header">Risk level distribution</p>
-          </div>
+    <div class="container-data"> 
+      <div class="data-column">     
+        <div class="data-segment">
+          <p class="piechart-header">Risk level distribution</p>
           <div class="pie-chart-container">
             <canvas id="pieChart"></canvas>
           </div>
         </div>
       </div>
-      <div class="data-column data-segment issue-buttons">
-        <div class="data-segment-header">
-          <p class="choose-issue-description"></p>
+      <div class="data-column">
+        <div class="data-segment">
+          <p class="choose-issue-description">Select an issue</p>
+          <a class="issue-button suggested-issue"></a>
+          <a class="issue-button quick-fix">Quick Fix</a>
+          <a class="issue-button scan-now">Scan Now</a>
         </div>
-        <a class="issue-button suggested-issue">Suggested Issue</a>
-        <a class="issue-button quick-fix">Quick Fix</a>
-        <a class="issue-button scan-now">Scan Now</a>
       </div>
     </div>
-    <div class="data-segment progress">  
-      <div class="data-segment-header">
-        <p class="title-medals"></p>
-      </div>
-      <div class="medals">
-        <div class="medal-layout">
-          <img id="medal" alt="Photo of medal"></img>
-          <p class="medal-name"> Medal 1</p>
-          <p> 01-04-2024</p>
-        </div>
-        <div class="medal-layout">
-          <img id="medal2" alt="Photo of medal"></img>
-          <p class="medal-name"> Medal 2</p>
-          <p> 01-04-2024</p>
-        </div>
-        <div class="medal-layout">
-          <img id="medal3" alt="Photo of medal"></img>
-          <p class="medal-name"> Medal 3</p>
-          <p> 01-04-2024</p>
-        </div><div class="medal-layout">
-          <img id="medal4" alt="Photo of medal"></img>
-          <p class="medal-name"> Medal 4</p>
-          <p> 01-04-2024</p>
+    <div class="container-data"> 
+      <div class="data-column">  
+        <div class="data-segment">
+          <p class="title-medals"></p>
+          <div class="medals">
+            <div class="medal-layout">
+              <img id="medal" alt="Photo of medal"></img>
+              <p class="medal-name"> Medal 1</p>
+            </div>
+            <div class="medal-layout">
+              <img id="medal2" alt="Photo of medal"></img>
+              <p class="medal-name"> Medal 2</p>
+            </div>
+            <div class="medal-layout">
+              <img id="medal3" alt="Photo of medal"></img>
+              <p class="medal-name"> Medal 3</p>
+            </div><div class="medal-layout">
+              <img id="medal4" alt="Photo of medal"></img>
+              <p class="medal-name"> Medal 4</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

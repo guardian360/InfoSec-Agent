@@ -1,27 +1,30 @@
 /* RESPONSIVE SIZING */
+/*Home page*/
+@media (max-width: 768px) {
+  .container-data {
+    flex: 1 1 100%; /* Full width on smaller screens */
+  }
 
-@media only screen and (width <= 1000px) {
-    .dashboard-data {
-      display: block;
-    }
+  .medals {
+    justify-content: center; /* Center medals on smaller screens */
+  }
 
-    .home-data {
-      display: block;
-    }
+  .medal-layout {
+    flex: 0 0 50%; /* Two medals per row on smaller screens, no growth */
+  }
 
-    .home-column-one {
-      display: block;
-    }
-
-    .data-column {
-      width: 100%;
-    }
-
-    .data-segment {
-      width: 100%;
-    }
+  .issue-button {
+    padding: 8px 16px; /* Smaller padding on smaller screens */
+  }
 }
 
+@media (max-width: 480px) {
+  .medal-layout {
+    flex: 0 0 100%; /* One medal per row on very small screens, no growth */
+  }
+}
+
+/*Navigation*/
 @media only screen and (width <= 799px) {
     #page-contents {
       margin-left: 0;
