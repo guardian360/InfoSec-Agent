@@ -67,6 +67,11 @@ func TestOpenAndStatFile_WithNonExistentFile(t *testing.T) {
 }
 
 func TestYourFunction(t *testing.T) {
+	Profilefinder = browserutils.MockProfileFinder{
+		MockFirefoxFolder: func() ([]string, error) {
+			return []string{"\\valid\\directory"}, nil
+		},
+	}
 	// Mock the OpenAndStatFile function
 	// Save the original function and defer its restoration
 	originalOpenAndStatFile := firefox.OpenAndStatFile
@@ -76,7 +81,7 @@ func TestYourFunction(t *testing.T) {
 	firefox.OpenAndStatFile = func(_ string) (mocking.File, int64, error) {
 		// Return whatever you need for your test
 		file := &mocking.FileMock{
-			FileName: "testfile",
+			FileName: "\\valid\\directory\\search.json.mozlz4", 
 			IsOpen:   true,
 			Buffer:   []byte("1234567864567744545454443343454"),
 			Bytes:    26,
@@ -87,7 +92,7 @@ func TestYourFunction(t *testing.T) {
 	}
 	expected := checks.NewCheckErrorf(checks.SearchFirefoxID, "Uncompressed size is 0", nil)
 	// Call the function under test
-	result := firefox.SearchEngineFirefox(browserutils.RealProfileFinder{}) // Replace with the actual function call
+	result := firefox.SearchEngineFirefox(Profilefinder) // Replace with the actual function call
 
 	// Assert the result
 	require.Equal(t, expected, result)
