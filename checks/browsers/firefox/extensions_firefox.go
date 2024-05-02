@@ -35,6 +35,7 @@ func ExtensionFirefox() (checks.Check, checks.Check) {
 			checks.NewCheckErrorf(checks.AdblockFirefoxID, "No firefox directory found", err)
 	}
 
+	resultID = 1
 	addBlocker := false // Variable used for checking if an ad blocker is used
 	var output []string
 	// Open the extensions.json file, which contains a list of all installed Firefox extensions
@@ -64,7 +65,7 @@ func ExtensionFirefox() (checks.Check, checks.Check) {
 		// Determine if the addon is an ad blocker
 		if adblockerFirefox(addon.DefaultLocale.Name) {
 			addBlocker = true
-			resultID++
+			resultID--
 		}
 	}
 	adBlockused := strconv.FormatBool(addBlocker)
