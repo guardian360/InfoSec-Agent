@@ -34,3 +34,6 @@ golangci-lint-report.json
 
 # Logging output
 **/log.txt
+
+# Coverage report
+coverage/

@@ -68,19 +68,33 @@ jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
   Localize: jest.fn().mockImplementation((input) => mockGetLocalizationString(input)),
 }));
 
+// Mock Chart constructor
+jest.unstable_mockModule('chart.js/auto', () => ({
+  Chart: jest.fn().mockImplementation((context, config) => {
+    return {
+    // properties
+      type: 'graph',
+      data: config.data || {},
+      options: config.options || {},
+      // functions
+      update: jest.fn(),
+    };
+  })}));
+
 // test cases
 describe('Risk graph', function() {
   it('toggleRisks should change which risk levels are shown in the risk graph', async function() {
     // arrange
     const graph = await import('../src/js/graph.js');
     const rc = new RiskCounters(true);
-    const g = new graph.Graph(undefined, rc);
+    const g = new graph.Graph('interval-graph', rc);
+    await g.createGraphChart();
 
     // act
-    g.toggleRisks('high', false);
-    g.toggleRisks('medium', false);
-    g.toggleRisks('low', false);
-    g.toggleRisks('no', false);
+    g.toggleRisks('high');
+    g.toggleRisks('medium');
+    g.toggleRisks('low');
+    g.toggleRisks('no');
 
     // assert
     test.value(g.graphShowHighRisks).isEqualTo(false);
@@ -89,10 +103,19 @@ describe('Risk graph', function() {
     test.value(g.graphShowNoRisks).isEqualTo(false);
 
     // act
-    g.toggleRisks('high', false);
-    g.toggleRisks('medium', false);
-    g.toggleRisks('low', false);
-    g.toggleRisks('no', false);
+    g.toggleRisks('high');
+    g.toggleRisks('medium');
+    g.toggleRisks('low');
+    g.toggleRisks('no');
+
+    // assert
+    test.value(g.graphShowHighRisks).isEqualTo(true);
+    test.value(g.graphShowMediumRisks).isEqualTo(true);
+    test.value(g.graphShowLowRisks).isEqualTo(true);
+    test.value(g.graphShowNoRisks).isEqualTo(true);
+
+    // act
+    g.toggleRisks();
 
     // assert
     test.value(g.graphShowHighRisks).isEqualTo(true);
@@ -178,15 +201,17 @@ describe('Risk graph', function() {
 
     const expectedOptions = {
       scales: {
-        xAxes: [{
+        x: {
           stacked: true,
-        }],
-        yAxes: [{
+        },
+        y: {
           stacked: true,
-        }],
+        },
       },
-      legend: {
-        display: false,
+      plugins: {
+        legend: {
+          display: false,
+        },
       },
       maintainAspectRatio: false,
       categoryPercentage: 1,
@@ -197,5 +222,24 @@ describe('Risk graph', function() {
 
     // assert
     test.object(resultOptions).is(expectedOptions);
+  });
+  it('Creating a graph should call getOptions and getData', async function() {
+    // arrange
+    const graph = await import('../src/js/graph.js');
+    const chart = await import('chart.js/auto');
+    const rc = new RiskCounters(true);
+    const getDataMock = jest.spyOn(graph.Graph.prototype, 'getData');
+    const getOptionsMock = jest.spyOn(graph.Graph.prototype, 'getOptions');
+
+    // act
+    const g = new graph.Graph('interval-graph', rc);
+    await g.createGraphChart();
+
+    // assert
+    expect(getDataMock).toHaveBeenCalled();
+    expect(getOptionsMock).toHaveBeenCalled();
+    expect(chart.Chart).toHaveBeenCalled();
+    getDataMock.mockRestore();
+    getOptionsMock.mockRestore();
   });
 });
