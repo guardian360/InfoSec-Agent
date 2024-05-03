@@ -52,15 +52,15 @@ jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
 // Mock Chart constructor
 jest.unstable_mockModule('chart.js/auto', () => ({
   Chart: jest.fn().mockImplementation((context, config) => {
-    return {  
+    return {
     // properties
       type: 'pie',
       data: config.data || {},
       options: config.options || {},
       // functions
       update: jest.fn(),
-    }
-})}));
+    };
+  })}));
 
 // test cases
 describe('Risk level distribution piechart', function() {
@@ -132,8 +132,8 @@ describe('Risk level distribution piechart', function() {
     const piechart = await import('../src/js/piechart.js');
     const chart = await import('chart.js/auto');
     const rc = new RiskCounters(true);
-    const getDataMock = jest.spyOn(piechart.PieChart.prototype, 'getData')
-    const getOptionsMock = jest.spyOn(piechart.PieChart.prototype, 'getOptions')
+    const getDataMock = jest.spyOn(piechart.PieChart.prototype, 'getData');
+    const getOptionsMock = jest.spyOn(piechart.PieChart.prototype, 'getOptions');
 
     // act
     const p = new piechart.PieChart('pieChart', rc);
@@ -145,5 +145,5 @@ describe('Risk level distribution piechart', function() {
     expect(chart.Chart).toHaveBeenCalled();
     getDataMock.mockRestore();
     getOptionsMock.mockRestore();
-  })
+  });
 });

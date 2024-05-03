@@ -37,7 +37,7 @@ global.TESTING = true;
 const dom = new JSDOM(`
   <div id="page-contents"></div>
   <div class="page-contents"></div>
-`)
+`);
 global.document = dom.window.document;
 global.window = dom.window;
 
@@ -63,23 +63,19 @@ global.sessionStorage = sessionStorageMock;
  * @return {string} The localized string.
  */
 function mockGetLocalizationString(messageID) {
-  let myPromise = new Promise(function(myResolve, myReject) {
+  const myPromise = new Promise(function(myResolve, myReject) {
     switch (messageID) {
-      case 'Issues.Name':
-        // console.log(messageID);
-        myResolve('Name');
-      case 'Issues.Type':
-        // console.log(messageID);
-        myResolve('Type');
-      case 'Issues.Risk':
-        // console.log(messageID);
-        myResolve('Risk');
-      default:
-        // console.log(messageID);
-        myReject('Error'); 
-      }
-    })
-  return myPromise
+    case 'Issues.Name':
+      myResolve('Name');
+    case 'Issues.Type':
+      myResolve('Type');
+    case 'Issues.Risk':
+      myResolve('Risk');
+    default:
+      myReject(new Error('Wrong message ID'));
+    }
+  });
+  return myPromise;
 }
 
 // Mock Localize function
@@ -116,10 +112,10 @@ describe('Issues table', function() {
       {id: 5, severity: 1, jsonkey: 51},
       {id: 15, severity: 0, jsonkey: 150},
     ];
-    sessionStorage.setItem('DataBaseData',JSON.stringify(issues))
-    
+    sessionStorage.setItem('DataBaseData', JSON.stringify(issues));
+
     // Act
-    await issue.openIssuesPage()
+    await issue.openIssuesPage();
 
     const name = document.getElementsByClassName('name')[0].innerHTML;
     const type = document.getElementsByClassName('type')[0].innerHTML;
@@ -129,19 +125,19 @@ describe('Issues table', function() {
     test.value(name).isEqualTo('Name');
     test.value(type).isEqualTo('Type');
     test.value(risk).isEqualTo('Risk');
-  })
+  });
   it('toRiskLevel should return the right risk level', async function() {
     // Arrange
     const issue = await import('../src/js/issues.js');
-    
-    // act 
-    const risks = ['Acceptable','Low','Medium','High','Info'];
+
+    // act
+    const risks = ['Acceptable', 'Low', 'Medium', 'High', 'Info'];
 
     // Assert
     risks.forEach((value, index) => {
       test.value(issue.toRiskLevel(index)).isEqualTo(value);
-    })
-  })
+    });
+  });
   it('fillTable should fill the issues table with information from the provided JSON array', async function() {
     // Arrange input issues
     let issues = [];
@@ -159,7 +155,7 @@ describe('Issues table', function() {
     // Act
     const issueTable = document.getElementById('issues-table').querySelector('tbody');
     issue.fillTable(issueTable, issues, true);
-  
+
     const nonIssueTable = document.getElementById('non-issues-table').querySelector('tbody');
     issue.fillTable(nonIssueTable, issues, false);
     // Assert
@@ -245,15 +241,15 @@ describe('Issues table', function() {
     const expectedData = [];
     issues.forEach((issue) => {
       expectedData.push(data[issue.jsonkey]);
-    })
-    sessionStorage.setItem('DataBaseData',JSON.stringify(issues))
-    
-    let ids = [
+    });
+    sessionStorage.setItem('DataBaseData', JSON.stringify(issues));
+
+    const ids = [
       'select-low-risk-table',
       'select-medium-risk-table',
       'select-high-risk-table',
       'select-info-risk-table',
-    ]
+    ];
 
     for (let i = -1; i < issues.length; i++) {
       // Act
@@ -274,5 +270,5 @@ describe('Issues table', function() {
         }
       });
     }
-  })
+  });
 });

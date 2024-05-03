@@ -1,5 +1,5 @@
 import {getLocalizationString} from './localize.js';
-import { Chart } from 'chart.js/auto';
+import {Chart} from 'chart.js/auto';
 
 /**
  * Represents a PieChart object for displaying risk counters.

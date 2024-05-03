@@ -1,5 +1,5 @@
 import {getLocalizationString} from './localize.js';
-import { Chart } from 'chart.js/auto';
+import {Chart} from 'chart.js/auto';
 
 /**
  * Represents a graph for displaying risk counters.
@@ -144,8 +144,8 @@ export class Graph {
           stacked: true,
         },
         y: {
-          stacked: true
-        }
+          stacked: true,
+        },
       },
       plugins: {
         legend: {

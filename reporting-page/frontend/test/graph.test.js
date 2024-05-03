@@ -71,15 +71,15 @@ jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
 // Mock Chart constructor
 jest.unstable_mockModule('chart.js/auto', () => ({
   Chart: jest.fn().mockImplementation((context, config) => {
-    return {  
+    return {
     // properties
       type: 'graph',
       data: config.data || {},
       options: config.options || {},
       // functions
       update: jest.fn(),
-    }
-})}));
+    };
+  })}));
 
 // test cases
 describe('Risk graph', function() {
@@ -205,8 +205,8 @@ describe('Risk graph', function() {
           stacked: true,
         },
         y: {
-          stacked: true
-        }
+          stacked: true,
+        },
       },
       plugins: {
         legend: {
@@ -228,8 +228,8 @@ describe('Risk graph', function() {
     const graph = await import('../src/js/graph.js');
     const chart = await import('chart.js/auto');
     const rc = new RiskCounters(true);
-    const getDataMock = jest.spyOn(graph.Graph.prototype, 'getData')
-    const getOptionsMock = jest.spyOn(graph.Graph.prototype, 'getOptions')
+    const getDataMock = jest.spyOn(graph.Graph.prototype, 'getData');
+    const getOptionsMock = jest.spyOn(graph.Graph.prototype, 'getOptions');
 
     // act
     const g = new graph.Graph('interval-graph', rc);
@@ -241,5 +241,5 @@ describe('Risk graph', function() {
     expect(chart.Chart).toHaveBeenCalled();
     getDataMock.mockRestore();
     getOptionsMock.mockRestore();
-  })
+  });
 });
