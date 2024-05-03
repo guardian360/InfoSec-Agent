@@ -45,6 +45,7 @@ jobs:
         with:
           version: latest
 
+          working-directory: backend
           args: --out-format=json:linting/lint-report-InfoSec-Agent.json,colored-line-number,github-actions
 
           only-new-issues: false
