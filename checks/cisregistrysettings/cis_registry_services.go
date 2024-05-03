@@ -8,26 +8,20 @@ import "github.com/InfoSec-Agent/InfoSec-Agent/mocking"
 // The function returns a slice of boolean values, where each boolean represents whether a particular registry setting adheres to the CIS Benchmark standards.
 //
 // Parameters:
-//
 //   - registryKey (mocking.RegistryKey): The root key from which the registry settings will be checked. Should be HKEY_LOCAL_MACHINE for this function.
 //
-// Returns:
-//
-//   - []bool: A slice of boolean values, where each boolean represents whether a particular registry setting adheres to the CIS Benchmark standards.
-func CheckServices(registryKey mocking.RegistryKey) []bool {
-	results := make([]bool, 0)
-	results = append(results, checkservicesDisabled(registryKey, servicesDisabledRegistryPaths)...)
+// Returns: None
+func CheckServices(registryKey mocking.RegistryKey) {
+	checkservicesDisabled(registryKey, servicesDisabledRegistryPaths)
 	for _, check := range serviceChecks {
-		results = append(results, check(registryKey)...)
+		check(registryKey)
 	}
-
-	return results
 }
 
 // serviceChecks is a collection of registry checks related to different services.
 // Each function in the collection represents a different service check that the application can perform.
 // The registry settings get checked against the CIS Benchmark recommendations.
-var serviceChecks = []func(mocking.RegistryKey) []bool{
+var serviceChecks = []func(mocking.RegistryKey){
 	servicesEventLog,
 	servicesLDAP,
 	servicesNetBTParameters,
@@ -67,46 +61,46 @@ var servicesDisabledRegistryPaths = []string{
 // servicesEventLog is a helper function that checks the registry to determine if the system is configured with the correct settings for the event log service.
 //
 // CIS Benchmark Audit list index: 18.4.13
-func servicesEventLog(registryKey mocking.RegistryKey) []bool {
+func servicesEventLog(registryKey mocking.RegistryKey) {
 	registryPath := `SYSTEM\CurrentControlSet\Services\Eventlog\Security`
 
 	settings := []string{"WarningLevel"}
 
 	expectedValues := []interface{}{[]uint64{1, 90}}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // servicesLDAP is a helper function that checks the registry to determine if the system is configured with the correct settings for the LDAP service.
 //
 // CIS Benchmark Audit list index: 2.3.11.8
-func servicesLDAP(registryKey mocking.RegistryKey) []bool {
+func servicesLDAP(registryKey mocking.RegistryKey) {
 	registryPath := `SYSTEM\CurrentControlSet\Services\LDAP`
 
 	settings := []string{"LDAPClientIntegrity"}
 
 	expectedValues := []interface{}{uint64(1)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // servicesNetBTParameters is a helper function that checks the registry to determine if the system is configured with the correct settings for the NetBT parameters.
 //
 // CIS Benchmark Audit list indices: 18.3.6, 18.4.7
-func servicesNetBTParameters(registryKey mocking.RegistryKey) []bool {
+func servicesNetBTParameters(registryKey mocking.RegistryKey) {
 	registryPath := `SYSTEM\CurrentControlSet\Services\NetBT\Parameters`
 
 	settings := []string{"NodeType", "nonamereleaseondemand"}
 
 	expectedValues := []interface{}{uint64(2), uint64(1)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // servicesNetlogonParameters is a helper function that checks the registry to determine if the system is configured with the correct settings for the Netlogon parameters.
 //
 // CIS Benchmark Audit list indices: 2.3.6.1-6
-func servicesNetlogonParameters(registryKey mocking.RegistryKey) []bool {
+func servicesNetlogonParameters(registryKey mocking.RegistryKey) {
 	registryPath := `SYSTEM\CurrentControlSet\Services\Netlogon\Parameters`
 
 	settings := []string{"RequireSignOrSeal", "SealSecureChannel", "SignSecureChannel",
@@ -114,44 +108,42 @@ func servicesNetlogonParameters(registryKey mocking.RegistryKey) []bool {
 
 	expectedValues := []interface{}{uint64(1), uint64(1), uint64(1), uint64(0), []uint64{1, 30}, uint64(1)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // servicesTCPIP is a helper function that checks the registry to determine if the system is configured with the correct settings for the TCPIP service.
 //
 // CIS Benchmark Audit list indices: 18.4.3, 18.4.5
-func servicesTCPIP(registryKey mocking.RegistryKey) []bool {
+func servicesTCPIP(registryKey mocking.RegistryKey) {
 	registryPath := `SYSTEM\CurrentControlSet\Services\Tcpip\Parameters`
 
 	settings := []string{"DisableIPSourceRouting", "EnableICMPRedirect"}
 
 	expectedValues := []interface{}{uint64(2), uint64(0)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // servicesTCPIP6 is a helper function that checks the registry to determine if the system is configured with the correct settings for the TCPIP6 service.
 //
 // CIS Benchmark Audit list indices: 18.4.2
-func servicesTCPIP6(registryKey mocking.RegistryKey) []bool {
+func servicesTCPIP6(registryKey mocking.RegistryKey) {
 	registryPath := `SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters`
 
 	settings := []string{"DisableIPSourceRouting"}
 
 	expectedValues := []interface{}{uint64(2)}
 
-	return CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
+	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
 // checkservicesDisabled is a helper function that checks the registry to determine if the system is configured with the correct settings for the services that should be disabled.
-func checkservicesDisabled(registryKey mocking.RegistryKey, registryPaths []string) []bool {
-	results := make([]bool, 0)
+func checkservicesDisabled(registryKey mocking.RegistryKey, registryPaths []string) {
 	for _, registryPath := range registryPaths {
 		settings := []string{"Start"}
 
 		expectedValues := []interface{}{uint64(4)}
 
-		results = append(results, CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)...)
+		CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 	}
-	return results
 }

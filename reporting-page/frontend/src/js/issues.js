@@ -7,7 +7,7 @@ import {LogError as logError} from '../../wailsjs/go/main/Tray.js';
 
 /** Load the content of the Issues page */
 export function openIssuesPage() {
-  closeNavigation();
+  closeNavigation(document.body.offsetWidth);
   markSelectedNavigationItem('issues-button');
   sessionStorage.setItem('savedPage', '4');
 

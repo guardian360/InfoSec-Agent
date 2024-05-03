@@ -22,7 +22,7 @@ func TestCheckWin11(t *testing.T) {
 	tests := []struct {
 		name string
 		key  mocking.RegistryKey
-		want []bool
+		want bool
 	}{
 		{
 			name: "DNS Client set up correctly",
@@ -31,7 +31,7 @@ func TestCheckWin11(t *testing.T) {
 					{KeyName: "SOFTWARE\\Policies\\Microsoft\\Windows NT\\DNSClient",
 						IntegerValues: map[string]uint64{"DoHPolicy": uint64(2)}},
 				}},
-			want: []bool{true},
+			want: true,
 		},
 		{
 			name: "DNS Client not set up correctly",
@@ -40,19 +40,15 @@ func TestCheckWin11(t *testing.T) {
 					{KeyName: "SOFTWARE\\Policies\\Microsoft\\Windows NT\\DNSClient",
 						IntegerValues: map[string]uint64{"DoHPolicy": uint64(1)}},
 				}},
-			want: []bool{false},
+			want: false,
 		},
 	}
 	for _, tt := range tests {
+		cisregistrysettings.RegistrySettingsMap = map[string]bool{}
 		t.Run(tt.name, func(t *testing.T) {
-			got := cisregistrysettings.CheckWin11(tt.key)
-			if len(got) != len(tt.want) {
-				t.Errorf("Length of CheckWin11() = %v, want %v", len(got), len(tt.want))
-			}
-			for i, result := range got {
-				if result != tt.want[i] {
-					t.Errorf("CheckWin11() at index %v = %v, want %v", i, result, tt.want[i])
-				}
+			cisregistrysettings.CheckWin11(tt.key)
+			if cisregistrysettings.RegistrySettingsMap["SOFTWARE\\Policies\\Microsoft\\Windows NT\\DNSClient\\DoHPolicy"] != tt.want {
+				t.Errorf("CheckWin11() = %v, want %v", cisregistrysettings.RegistrySettingsMap["SOFTWARE\\Policies\\Microsoft\\Windows NT\\DNSClient"], tt.want)
 			}
 		})
 	}
@@ -62,13 +58,13 @@ func TestCheckWin10(t *testing.T) {
 	tests := []struct {
 		name string
 		key  mocking.RegistryKey
-		want []bool
+		want bool
 	}{
 		{
 			name: "Nothing set up correctly",
 			key: &mocking.MockRegistryKey{
 				SubKeys: []mocking.MockRegistryKey{}},
-			want: make([]bool, 17),
+			want: false,
 		},
 		{
 			name: "Everything set up correctly",
@@ -113,24 +109,14 @@ func TestCheckWin10(t *testing.T) {
 				},
 			},
 
-			want: func() []bool {
-				results := make([]bool, 17)
-				for i := range results {
-					results[i] = true
-				}
-				return results
-			}(),
+			want: true,
 		}}
 	for _, tt := range tests {
+		cisregistrysettings.RegistrySettingsMap = map[string]bool{}
 		t.Run(tt.name, func(t *testing.T) {
-			got := cisregistrysettings.CheckWin10(tt.key)
-			if len(got) != len(tt.want) {
-				t.Errorf("Length of CheckWin10() = %v, want %v", len(got), len(tt.want))
-			}
-			for i, result := range got {
-				if result != tt.want[i] {
-					t.Errorf("CheckWin10() at index %v = %v, want %v", i, result, tt.want[i])
-				}
+			cisregistrysettings.CheckWin10(tt.key)
+			if allValuesTrue(cisregistrysettings.RegistrySettingsMap) != tt.want {
+				t.Errorf("CheckWin10() = %v, want %v", allValuesTrue(cisregistrysettings.RegistrySettingsMap), tt.want)
 			}
 		})
 	}
@@ -140,12 +126,12 @@ func TestCheckPoliciesHKU(t *testing.T) {
 	tests := []struct {
 		name string
 		key  mocking.RegistryKey
-		want []bool
+		want bool
 	}{
 		{
 			name: "Nothing set up correctly",
 			key:  &mocking.MockRegistryKey{},
-			want: make([]bool, 11),
+			want: false,
 		},
 		{
 			name: "Everything set up correctly",
@@ -177,24 +163,14 @@ func TestCheckPoliciesHKU(t *testing.T) {
 					},
 				},
 			},
-			want: func() []bool {
-				results := make([]bool, 11)
-				for i := range results {
-					results[i] = true
-				}
-				return results
-			}(),
+			want: true,
 		}}
 	for _, tt := range tests {
+		cisregistrysettings.RegistrySettingsMap = map[string]bool{}
 		t.Run(tt.name, func(t *testing.T) {
-			got := cisregistrysettings.CheckPoliciesHKU(tt.key)
-			if len(got) != len(tt.want) {
-				t.Errorf("Length of CheckPoliciesHKU() = %v, want %v", len(got), len(tt.want))
-			}
-			for i, result := range got {
-				if result != tt.want[i] {
-					t.Errorf("CheckPoliciesHKU() at index %v = %v, want %v", i, result, tt.want[i])
-				}
+			cisregistrysettings.CheckPoliciesHKU(tt.key)
+			if allValuesTrue(cisregistrysettings.RegistrySettingsMap) != tt.want {
+				t.Errorf("CheckPoliciesHKU() = %v, want %v", allValuesTrue(cisregistrysettings.RegistrySettingsMap), tt.want)
 			}
 		})
 	}
@@ -204,12 +180,12 @@ func TestCheckServices(t *testing.T) {
 	tests := []struct {
 		name string
 		key  mocking.RegistryKey
-		want []bool
+		want bool
 	}{
 		{
 			name: "Nothing set up correctly",
 			key:  &mocking.MockRegistryKey{},
-			want: make([]bool, 35),
+			want: false,
 		},
 		{
 			name: "Everything set up correctly",
@@ -328,24 +304,14 @@ func TestCheckServices(t *testing.T) {
 						IntegerValues: map[string]uint64{"Start": uint64(4)},
 					},
 				}},
-			want: func() []bool {
-				results := make([]bool, 35)
-				for i := range results {
-					results[i] = true
-				}
-				return results
-			}(),
+			want: true,
 		}}
 	for _, tt := range tests {
+		cisregistrysettings.RegistrySettingsMap = map[string]bool{}
 		t.Run(tt.name, func(t *testing.T) {
-			got := cisregistrysettings.CheckServices(tt.key)
-			if len(got) != len(tt.want) {
-				t.Errorf("Length of CheckServices() = %v, want %v", len(got), len(tt.want))
-			}
-			for i, result := range got {
-				if result != tt.want[i] {
-					t.Errorf("CheckServices() at index %v = %v, want %v", i, result, tt.want[i])
-				}
+			cisregistrysettings.CheckServices(tt.key)
+			if allValuesTrue(cisregistrysettings.RegistrySettingsMap) != tt.want {
+				t.Errorf("CheckServices() = %v, want %v", allValuesTrue(cisregistrysettings.RegistrySettingsMap), tt.want)
 			}
 		})
 	}
@@ -355,12 +321,12 @@ func TestCheckOtherRegistrySettings(t *testing.T) {
 	tests := []struct {
 		name string
 		key  mocking.RegistryKey
-		want []bool
+		want bool
 	}{
 		{
 			name: "Nothing set up correctly",
 			key:  &mocking.MockRegistryKey{},
-			want: make([]bool, 31),
+			want: false,
 		},
 		{
 			name: "Everything set up correctly",
@@ -424,25 +390,15 @@ func TestCheckOtherRegistrySettings(t *testing.T) {
 					},
 				},
 			},
-			want: func() []bool {
-				results := make([]bool, 31)
-				for i := range results {
-					results[i] = true
-				}
-				return results
-			}(),
+			want: true,
 		},
 	}
 	for _, tt := range tests {
+		cisregistrysettings.RegistrySettingsMap = map[string]bool{}
 		t.Run(tt.name, func(t *testing.T) {
-			got := cisregistrysettings.CheckOtherRegistrySettings(tt.key)
-			if len(got) != len(tt.want) {
-				t.Errorf("Length of CheckOtherRegistrySettings() = %v, want %v", len(got), len(tt.want))
-			}
-			for i, result := range got {
-				if result != tt.want[i] {
-					t.Errorf("CheckOtherRegistrySettings() at index %v = %v, want %v", i, result, tt.want[i])
-				}
+			cisregistrysettings.CheckOtherRegistrySettings(tt.key)
+			if allValuesTrue(cisregistrysettings.RegistrySettingsMap) != tt.want {
+				t.Errorf("CheckOtherRegistrySettings() = %v, want %v", allValuesTrue(cisregistrysettings.RegistrySettingsMap), tt.want)
 			}
 		})
 	}
@@ -452,12 +408,12 @@ func TestCheckPoliciesHKLM(t *testing.T) {
 	tests := []struct {
 		name string
 		key  mocking.RegistryKey
-		want []bool
+		want bool
 	}{
 		{
 			name: "Nothing set up correctly",
 			key:  &mocking.MockRegistryKey{},
-			want: make([]bool, 201),
+			want: false,
 		},
 		{
 			name: "Some setting is set up correctly",
@@ -469,23 +425,15 @@ func TestCheckPoliciesHKLM(t *testing.T) {
 					},
 				},
 			},
-			want: func() []bool {
-				results := make([]bool, 201)
-				results[0] = true
-				return results
-			}(),
+			want: true,
 		},
 	}
 	for _, tt := range tests {
+		cisregistrysettings.RegistrySettingsMap = map[string]bool{}
 		t.Run(tt.name, func(t *testing.T) {
-			got := cisregistrysettings.CheckPoliciesHKLM(tt.key)
-			if len(got) != len(tt.want) {
-				t.Errorf("Length of CheckPoliciesHKLM() = %v, want %v", len(got), len(tt.want))
-			}
-			for i, result := range got {
-				if result != tt.want[i] {
-					t.Errorf("CheckPoliciesHKLM() at index %v = %v, want %v", i, result, tt.want[i])
-				}
+			cisregistrysettings.CheckPoliciesHKLM(tt.key)
+			if cisregistrysettings.RegistrySettingsMap[`SOFTWARE\Microsoft\Windows\Currentversion\Policies\Credui\EnumerateAdministrators`] != tt.want {
+				t.Errorf("CheckPoliciesHKLM() = %v, want %v", allValuesTrue(cisregistrysettings.RegistrySettingsMap), tt.want)
 			}
 		})
 	}
@@ -507,6 +455,7 @@ func TestCISRegistrySettings(t *testing.T) {
 		},
 	}
 	for _, tt := range tests {
+		cisregistrysettings.RegistrySettingsMap = map[string]bool{}
 		t.Run(tt.name, func(t *testing.T) {
 			got := cisregistrysettings.CISRegistrySettings(tt.lmKey, tt.usrKey)
 			if got.Result[0] != tt.want.Result[0] {
@@ -525,7 +474,7 @@ func TestCheckIntegerStringRegistrySettings(t *testing.T) {
 		expectedIntegers []interface{}
 		stringSettings   []string
 		expectedStrings  []string
-		want             []bool
+		want             bool
 	}{
 		{
 			name:             "Check nothing",
@@ -535,7 +484,7 @@ func TestCheckIntegerStringRegistrySettings(t *testing.T) {
 			expectedIntegers: []interface{}{},
 			stringSettings:   []string{},
 			expectedStrings:  []string{},
-			want:             make([]bool, 0),
+			want:             false,
 		},
 		{
 			name: "Check some int and string setting",
@@ -553,16 +502,15 @@ func TestCheckIntegerStringRegistrySettings(t *testing.T) {
 			expectedIntegers: []interface{}{uint64(0)},
 			stringSettings:   []string{"EnumerateAdministrators"},
 			expectedStrings:  []string{"0"},
-			want:             []bool{true, true},
+			want:             true,
 		},
 	}
 	for _, tt := range tests {
+		cisregistrysettings.RegistrySettingsMap = map[string]bool{}
 		t.Run(tt.name, func(t *testing.T) {
-			got := cisregistrysettings.CheckIntegerStringRegistrySettings(tt.key, tt.path, tt.integerSettings, tt.expectedIntegers, tt.stringSettings, tt.expectedStrings)
-			for i, result := range got {
-				if result != tt.want[i] {
-					t.Errorf("CheckIntegerStringRegistrySettings() at index %v = %v, want %v", i, result, tt.want[i])
-				}
+			cisregistrysettings.CheckIntegerStringRegistrySettings(tt.key, tt.path, tt.integerSettings, tt.expectedIntegers, tt.stringSettings, tt.expectedStrings)
+			if allValuesTrue(cisregistrysettings.RegistrySettingsMap) != tt.want {
+				t.Errorf("CheckIntegerStringRegistrySettings() = %v, want %v", allValuesTrue(cisregistrysettings.RegistrySettingsMap), tt.want)
 			}
 		})
 	}
@@ -575,7 +523,7 @@ func TestCheckStringRegistrySettings(t *testing.T) {
 		path            string
 		stringSettings  []string
 		expectedStrings []string
-		want            []bool
+		want            bool
 	}{
 		{
 			name:            "Check nothing",
@@ -583,7 +531,7 @@ func TestCheckStringRegistrySettings(t *testing.T) {
 			path:            "",
 			stringSettings:  []string{},
 			expectedStrings: []string{},
-			want:            make([]bool, 0),
+			want:            false,
 		},
 		{
 			name: "Check some string setting",
@@ -598,16 +546,15 @@ func TestCheckStringRegistrySettings(t *testing.T) {
 			path:            "SOFTWARE\\Microsoft\\Windows\\Currentversion\\Policies\\Credui",
 			stringSettings:  []string{"EnumerateAdministrators"},
 			expectedStrings: []string{"0"},
-			want:            []bool{true},
+			want:            true,
 		},
 	}
 	for _, tt := range tests {
+		cisregistrysettings.RegistrySettingsMap = map[string]bool{}
 		t.Run(tt.name, func(t *testing.T) {
-			got := cisregistrysettings.CheckStringRegistrySettings(tt.key, tt.path, tt.stringSettings, tt.expectedStrings)
-			for i, result := range got {
-				if result != tt.want[i] {
-					t.Errorf("CheckStringRegistrySettings() at index %v = %v, want %v", i, result, tt.want[i])
-				}
+			cisregistrysettings.CheckStringRegistrySettings(tt.key, tt.path, tt.stringSettings, tt.expectedStrings)
+			if allValuesTrue(cisregistrysettings.RegistrySettingsMap) != tt.want {
+				t.Errorf("CheckStringRegistrySettings() = %v, want %v", allValuesTrue(cisregistrysettings.RegistrySettingsMap), tt.want)
 			}
 		})
 	}
@@ -620,7 +567,7 @@ func TestCheckIntegerRegistrySettings(t *testing.T) {
 		path             string
 		integerSettings  []string
 		expectedIntegers []interface{}
-		want             []bool
+		want             bool
 	}{
 		{
 			name:             "Check nothing",
@@ -628,7 +575,7 @@ func TestCheckIntegerRegistrySettings(t *testing.T) {
 			path:             "",
 			integerSettings:  []string{},
 			expectedIntegers: []interface{}{},
-			want:             make([]bool, 0),
+			want:             false,
 		},
 		{
 			name: "Check some integer setting",
@@ -643,90 +590,15 @@ func TestCheckIntegerRegistrySettings(t *testing.T) {
 			path:             "SOFTWARE\\Microsoft\\Windows\\Currentversion\\Policies\\Credui",
 			integerSettings:  []string{"EnumerateAdministrators"},
 			expectedIntegers: []interface{}{uint64(0)},
-			want:             []bool{true},
+			want:             true,
 		},
 	}
 	for _, tt := range tests {
+		cisregistrysettings.RegistrySettingsMap = map[string]bool{}
 		t.Run(tt.name, func(t *testing.T) {
-			got := cisregistrysettings.CheckIntegerRegistrySettings(tt.key, tt.path, tt.integerSettings, tt.expectedIntegers)
-			for i, result := range got {
-				if result != tt.want[i] {
-					t.Errorf("CheckIntegerRegistrySettings() at index %v = %v, want %v", i, result, tt.want[i])
-				}
-			}
-		})
-	}
-}
-
-func TestCheckMultipleStringValues(t *testing.T) {
-	tests := []struct {
-		name            string
-		key             mocking.RegistryKey
-		stringSettings  []string
-		expectedStrings []string
-		want            []bool
-	}{
-		{
-			name:            "Check nothing",
-			key:             &mocking.MockRegistryKey{},
-			stringSettings:  []string{},
-			expectedStrings: []string{},
-			want:            make([]bool, 0),
-		},
-		{
-			name: "Check some string settings",
-			key: &mocking.MockRegistryKey{
-				StringValues: map[string]string{"EnumerateAdministrators": "0", "EnumerateUsers": "1"},
-			},
-			stringSettings:  []string{"EnumerateAdministrators", "EnumerateUsers"},
-			expectedStrings: []string{"0", "1"},
-			want:            []bool{true, true},
-		},
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			got := cisregistrysettings.CheckMultipleStringValues(tt.key, tt.stringSettings, tt.expectedStrings)
-			for i, result := range got {
-				if result != tt.want[i] {
-					t.Errorf("CheckMultipleStringValues() at index %v = %v, want %v", i, result, tt.want[i])
-				}
-			}
-		})
-	}
-}
-
-func TestCheckMultipleIntegerValues(t *testing.T) {
-	tests := []struct {
-		name             string
-		key              mocking.RegistryKey
-		integerSettings  []string
-		expectedIntegers []interface{}
-		want             []bool
-	}{
-		{
-			name:             "Check nothing",
-			key:              &mocking.MockRegistryKey{},
-			integerSettings:  []string{},
-			expectedIntegers: []interface{}{},
-			want:             make([]bool, 0),
-		},
-		{
-			name: "Check some integer setting",
-			key: &mocking.MockRegistryKey{
-				IntegerValues: map[string]uint64{"EnumerateAdministrators": uint64(0), "EnumerateUsers": uint64(1)},
-			},
-			integerSettings:  []string{"EnumerateAdministrators"},
-			expectedIntegers: []interface{}{uint64(0), uint64(1)},
-			want:             []bool{true, true},
-		},
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			got := cisregistrysettings.CheckMultipleIntegerValues(tt.key, tt.integerSettings, tt.expectedIntegers)
-			for i, result := range got {
-				if result != tt.want[i] {
-					t.Errorf("CheckMultipleIntegerValues() at index %v = %v, want %v", i, result, tt.want[i])
-				}
+			cisregistrysettings.CheckIntegerRegistrySettings(tt.key, tt.path, tt.integerSettings, tt.expectedIntegers)
+			if allValuesTrue(cisregistrysettings.RegistrySettingsMap) != tt.want {
+				t.Errorf("CheckIntegerRegistrySettings() = %v, want %v", allValuesTrue(cisregistrysettings.RegistrySettingsMap), tt.want)
 			}
 		})
 	}
@@ -748,6 +620,7 @@ func TestOpenRegistryKeyWithErrHandling(t *testing.T) {
 		},
 	}
 	for _, tt := range tests {
+		cisregistrysettings.RegistrySettingsMap = map[string]bool{}
 		t.Run(tt.name, func(t *testing.T) {
 			got, _ := cisregistrysettings.OpenRegistryKeyWithErrHandling(tt.key, tt.path)
 			if got != nil && tt.want == false {
@@ -825,4 +698,17 @@ func TestCheckIntegerValue(t *testing.T) {
 			}
 		})
 	}
+}
+
+// Helper function to check if all values in a map are true
+func allValuesTrue(m map[string]bool) bool {
+	if (len(m)) == 0 {
+		return false
+	}
+	for _, value := range m {
+		if !value {
+			return false
+		}
+	}
+	return true
 }

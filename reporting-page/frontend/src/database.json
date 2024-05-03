@@ -209,7 +209,7 @@
         "Information": "Knowing which applications have access to your location is important for protecting your privacy. It helps you control who can track your location, prevent security risks, conserve battery life, manage data usage, customize your app experience, and ensure compliance with regulations.",
         "Solution": 
         [   
-            "There are no apps with location permission"
+            "There are no applications which have location permission, so there is no action needed."
         ],
         "Screenshots":
         [
@@ -236,7 +236,7 @@
         "Information": "Understanding which applications have access to your microphone on your Windows computer is important for protecting your privacy and confidentiality. It helps you control who can listen to your conversations, prevent unauthorized recording, safeguard sensitive information, and ensure compliance with regulations.",
         "Solution": 
         [   
-            "There are no apps with microphone permission"
+            "There are no applications which have microphone permission, so there is no action needed."
         ],
         "Screenshots":
         [
@@ -263,7 +263,7 @@
         "Information": "Being aware of which applications have access to your camera helps prevent unauthorized access. Malicious software or even legitimate applications with poorly implemented security features could potentially access your camera without your knowledge or consent. By knowing which applications have access, you can identify and block any unauthorized attempts.",
         "Solution": 
         [   
-            "There are no apps with webcam permission"
+            "There are no applications which have webcam permission, so there is no action needed."
         ],
         "Screenshots":
         [
@@ -290,7 +290,7 @@
         "Information": "Understanding which applications have access to your calendar or appointments is crucial for protecting your privacy, and schedule. It helps you control who can view and potentially misuse your sensitive appointment information, prevent unauthorized access and manage data usage.",
         "Solution": 
         [   
-            "There are no apps with appointments permission"
+            "There are no applications which have appointments permission, so there is no action needed."
         ],
         "Screenshots":
         [
@@ -317,7 +317,7 @@
         "Information": "Understanding which applications have access to your contacts on your Windows computer is good for safeguarding your privacy. It allows you to control who can view and potentially misuse your contact information, prevent unauthorized access and manage data usage.",
         "Solution": 
         [   
-            "There are no apps with contacts permission"
+            "There are no applications which have contacts permission, so there is no action needed."
         ],
         "Screenshots":
         [
