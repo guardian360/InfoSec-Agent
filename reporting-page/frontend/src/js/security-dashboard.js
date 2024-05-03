@@ -9,7 +9,7 @@ import {scanTest} from './database.js';
 /** Load the content of the Security Dashboard page */
 export function openSecurityDashboardPage() {
   document.onload = retrieveTheme();
-  closeNavigation();
+  closeNavigation(document.body.offsetWidth);
   markSelectedNavigationItem('security-dashboard-button');
   sessionStorage.setItem('savedPage', '2');
 

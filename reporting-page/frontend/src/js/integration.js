@@ -4,7 +4,7 @@ import {retrieveTheme} from './personalize.js';
 export let currentStep = 1;
 /** Load the content of the Integration page */
 export function openIntegrationPage() {
-  closeNavigation();
+  closeNavigation(document.body.offsetWidth);
   markSelectedNavigationItem('integration-button');
   sessionStorage.setItem('savedPage', '5');
   document.getElementById('page-contents').innerHTML = `

@@ -873,7 +873,7 @@ func policiesGeneralSystem(registryKey mocking.RegistryKey) {
 
 	settings := []string{"EnableCdp", "BlockUserFromShowingAccountDetailsOnSignin", "DontDisplayNetworkSelectionUI",
 		"DontEnumerateConnectedUsers", "EnumerateLocalUsers", "DisableLockScreenAppNotifications",
-		"BlockDomainPicturePassword", "AllowDomainPINLogon", "NoLocalPasswordResetQuestions", " EnableSmartScreen",
+		"BlockDomainPicturePassword", "AllowDomainPINLogon", "NoLocalPasswordResetQuestions", "EnableSmartScreen",
 		"ShellSmartScreenLevel"}
 
 	expectedValues := []interface{}{uint64(0), uint64(1), uint64(1), uint64(1), uint64(0), uint64(1), uint64(1),
@@ -914,7 +914,7 @@ func policiesWindowsUpdate(registryKey mocking.RegistryKey) {
 //
 // CIS Benchmark Audit list indices: 18.9.108.1.1, 18.9.108.2.1-2
 func checkWindowsUpdateAu(registryKey mocking.RegistryKey) {
-	registryPath := `SOFTWARE\Policies\Microsoft\Windows\Windowsupdate\Au`
+	registryPath := `SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\Au`
 
 	settings := []string{"NoAutoRebootWithLoggedOnUsers", "NoAutoUpdate", "ScheduledInstallDay"}
 

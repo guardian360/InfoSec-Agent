@@ -95,7 +95,7 @@ func TestFormatPermission(t *testing.T) {
 	}
 	c := checks.Permission(checks.LocationID, "location", key)
 	assert.NotContains(t, c.Result, "#")
-	assert.Contains(t, c.Result, "test")
+	assert.Contains(t, c.Result[0], "test")
 }
 
 // TestNonExistingPermission is a function that tests the Permission function's behavior when the requested permission does not exist.
