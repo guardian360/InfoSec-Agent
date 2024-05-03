@@ -30,17 +30,17 @@ func TestExternalDevices(t *testing.T) {
 		{
 			name:          "No external devices connected",
 			executorClass: &mocking.MockCommandExecutor{Output: "\r\nFriendlyName\r\n-\r\n\r\n\r\n\r\n", Err: nil},
-			want:          checks.NewCheckResult(checks.ExternalDevicesID, 0, "", "", "", "", ""),
+			want:          checks.NewCheckResult(checks.ExternalDevicesID, 0, ""),
 		},
 		{
 			name:          "External devices connected",
 			executorClass: &mocking.MockCommandExecutor{Output: "\r\nFriendlyName\r\n-\r\nHD WebCam\r\n\r\n\r\n\r\n", Err: nil},
-			want:          checks.NewCheckResult(checks.ExternalDevicesID, 0, "HD WebCam", "", "HD WebCam", "", "HD WebCam", "", "HD WebCam", "", "HD WebCam", ""),
+			want:          checks.NewCheckResult(checks.ExternalDevicesID, 0, "HD WebCam", ""),
 		},
 		{
 			name:          "Error checking device",
 			executorClass: &mocking.MockCommandExecutor{Output: "", Err: errors.New("error checking device")},
-			want: checks.NewCheckErrorf(checks.ExternalDevicesID, "error checking device Mouse",
+			want: checks.NewCheckErrorf(checks.ExternalDevicesID, "error checking device",
 				errors.New("error checking device")),
 		},
 	}
@@ -52,7 +52,7 @@ func TestExternalDevices(t *testing.T) {
 	}
 }
 
-// TestCheckDeviceClass is a testing function that ensures the correct functionality of the CheckDeviceClass function.
+// TestCheckDeviceClasses is a testing function that ensures the correct functionality of the CheckDeviceClass function.
 // It runs multiple test cases with different inputs to validate the expected behavior of the function in various situations.
 //
 // Parameters:
@@ -61,24 +61,24 @@ func TestExternalDevices(t *testing.T) {
 // Returns: None. Any test failures are reported via the *testing.T parameter.
 //
 // This function is a component of the "checks" package test suite. It confirms that the CheckDeviceClass function accurately identifies devices of a given class connected to the system and properly handles any errors.
-func TestCheckDeviceClass(t *testing.T) {
+func TestCheckDeviceClasses(t *testing.T) {
 	tests := []struct {
 		name          string
-		deviceClass   string
+		deviceClass   []string
 		executorClass *mocking.MockCommandExecutor
 		want          []string
 		wantErr       error
 	}{
 		{
 			name:          "No devices of the specified class",
-			deviceClass:   "Mouse",
+			deviceClass:   []string{"Mouse"},
 			executorClass: &mocking.MockCommandExecutor{Output: "\r\nFriendlyName\r\n-\r\n\r\n\r\n\r\n", Err: nil},
 			want:          []string{""},
 			wantErr:       nil,
 		},
 		{
 			name:        "Devices of the specified class",
-			deviceClass: "Camera",
+			deviceClass: []string{"Camera"},
 			executorClass: &mocking.MockCommandExecutor{
 				Output: "\r\nFriendlyName\r\n-\r\nHD WebCam\r\n\r\n\r\n\r\n", Err: nil},
 			want:    []string{"HD WebCam", ""},
@@ -86,7 +86,7 @@ func TestCheckDeviceClass(t *testing.T) {
 		},
 		{
 			name:          "Error checking device",
-			deviceClass:   "Camera",
+			deviceClass:   []string{"Camera"},
 			executorClass: &mocking.MockCommandExecutor{Output: "", Err: errors.New("error checking device")},
 			want:          nil,
 			wantErr:       errors.New("error checking device"),
@@ -94,7 +94,7 @@ func TestCheckDeviceClass(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got, _ := checks.CheckDeviceClass(tt.deviceClass, tt.executorClass); !reflect.DeepEqual(got, tt.want) {
+			if got, _ := checks.CheckDeviceClasses(tt.deviceClass, tt.executorClass); !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("ExternalDevices() = %v, want %v", got, tt.want)
 			}
 		})

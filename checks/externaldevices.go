@@ -20,22 +20,16 @@ func ExternalDevices(executorClass mocking.CommandExecutor) Check {
 	// All the classes you want to check with the Get-PnpDevice command
 	// This list can easily be extended; we refer to the Microsoft documentation for the Get-PnpDevice command
 	// (for example: Biometric, Printer, etc.)
-	classesToCheck := [5]string{"Mouse", "Camera", "AudioEndpoint", "Keyboard", "Biometric"}
-	outputs := make([]string, 0)
-	for _, s := range classesToCheck {
-		output, err := CheckDeviceClass(s, executorClass)
+	classesToCheck := []string{"Mouse", "Camera", "AudioEndpoint", "Keyboard", "Biometric"}
+	output, err := CheckDeviceClasses(classesToCheck, executorClass)
 
-		if err != nil {
-			return NewCheckErrorf(ExternalDevicesID, "error checking device "+s, err)
-		}
-
-		outputs = append(outputs, output...)
+	if err != nil {
+		return NewCheckErrorf(ExternalDevicesID, "error checking device", err)
 	}
-
-	return NewCheckResult(ExternalDevicesID, 0, outputs...)
+	return NewCheckResult(ExternalDevicesID, 0, output...)
 }
 
-// CheckDeviceClass is a function that runs the Get-PnpDevice command for a specified device class.
+// CheckDeviceClasses is a function that runs the Get-PnpDevice command for device classes.
 //
 // Parameters:
 //   - deviceClass (string): The specific device class to be checked using the Get-PnpDevice command.
@@ -46,10 +40,12 @@ func ExternalDevices(executorClass mocking.CommandExecutor) Check {
 //   - (error): An error object that captures any error that occurred during the command execution. If no devices are found, an error is returned.
 //
 // The main purpose of this function is to identify devices of a specific class that are connected to the system. It runs the Get-PnpDevice command with the specified device class and parses the output to extract the device names. If no devices are found, the function returns an error.
-func CheckDeviceClass(deviceClass string, executorClass mocking.CommandExecutor) ([]string, error) {
+func CheckDeviceClasses(deviceClasses []string, executorClass mocking.CommandExecutor) ([]string, error) {
+	// Convert the device classes to a string
+	classesString := strings.Join(deviceClasses, ",")
 	// Run the Get-PnpDevice command with the given class
 	command := "powershell"
-	output, err := executorClass.Execute(command, "-Command", "Get-PnpDevice -Class", deviceClass, " "+
+	output, err := executorClass.Execute(command, "-Command", "Get-PnpDevice -Class", classesString, " "+
 		"| Where-Object -Property Status -eq 'OK' | Select-Object FriendlyName")
 
 	if err != nil {

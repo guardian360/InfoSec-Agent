@@ -1,4 +1,5 @@
 import {getLocalizationString} from './localize.js';
+import {Chart} from 'chart.js/auto';
 
 /**
  * Represents a graph for displaying risk counters.
@@ -21,7 +22,7 @@ export class Graph {
    */
   constructor(canvas, riskCounters) {
     this.rc = riskCounters;
-    if (canvas !== undefined) this.createGraphChart(canvas).then(() => {});
+    this.createGraphChart(canvas).then(() => {});
   }
 
   /** Creates a graph in the form of a bar chart for risks
@@ -46,9 +47,8 @@ export class Graph {
   /** Toggles a risks to show in the graph
    *
    * @param {string} category Category corresponding to risk
-   * @param {boolean} [change=true] Changes graph after call, normally set to *true*
    */
-  toggleRisks(category, change = true) {
+  async toggleRisks(category) {
     switch (category) {
     case 'high':
       this.graphShowHighRisks = !this.graphShowHighRisks;
@@ -67,7 +67,7 @@ export class Graph {
     default:
       break;
     }
-    if (change) this.changeGraph().then(() => {});
+    await this.changeGraph();
   }
 
   /** toggles 'show' class on element with id:"myDropDown" */
@@ -140,15 +140,17 @@ export class Graph {
   getOptions() {
     return {
       scales: {
-        xAxes: [{
+        x: {
           stacked: true,
-        }],
-        yAxes: [{
+        },
+        y: {
           stacked: true,
-        }],
+        },
       },
-      legend: {
-        display: false,
+      plugins: {
+        legend: {
+          display: false,
+        },
       },
       maintainAspectRatio: false,
       categoryPercentage: 1,
