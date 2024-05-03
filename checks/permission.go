@@ -78,6 +78,9 @@ func Permission(permissionID int, permission string, registryKey mocking.Registr
 		cleanedFilename = strings.ReplaceAll(cleanedFilename, ".", " ")
 		prettyResults = append(prettyResults, cleanedFilename)
 	}
+	if len(prettyResults) == 0 {
+		return NewCheckResult(permissionID, 1)
+	}
 	return NewCheckResult(permissionID, 0, prettyResults...)
 }
 
