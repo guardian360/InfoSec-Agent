@@ -16,7 +16,7 @@
 
   .issue-button {
     padding: 8px 16px; /* Smaller padding on smaller screens */
-    width: 80%;
+    max-width: 90%;
   }
 }
 
@@ -34,6 +34,7 @@
 
     .left-nav {
         visibility: hidden;
+        height: 10vh;
     }
 
     .header-hamburger {
@@ -70,40 +71,9 @@
     }
 }
 
+/* This hides the title on navigation */
 @media screen and (width <= 550px) {
   .header-name h1 {
-      display: none; /* This hides the title on navigation */
-  }
-}
-
-/* Dashboard */
-
-/* Responsive adjustments for smaller screens */
-@media (width <= 768px) {
-  .graph-segment-content {
-      flex-direction: column; /* Stacks the content vertically */
-  }
-
-  .graph-buttons {
-      order: 2; /* Makes the text come first */
-      width: 100%; /* Full width for better readability */
-  }
-
-  .issues-graph {
-      order: 1; /* Graph below the text */
-      width: 100%; /* Adjusts to full container width */
-  }
-
-  /* If there are buttons or other controls in .graph-buttons, adjust their styling if necessary */
-  .graph-buttons button, .graph-buttons .dropdown {
-      width: 100%; /* Full width buttons */
-      margin-top: 10px; /* Space between text and buttons */
-  }
-}
-
-/* You might want to adjust the font size or padding for smaller screens too */
-@media (width <= 480px) {
-  .graph-buttons p, .issues-graph p {
-      font-size: 14px; /* Smaller font for smaller screens */
+      display: none; 
   }
 }

@@ -2,20 +2,15 @@
 
 /* all pages */
 body {
-  background-color: var(--background-color);
   font-family: "DM Sans", sans-serif;
   margin: 0;
-  padding: 0;
+  background: var(--background-color);
   color: var(--text-body);
   overflow-x: hidden;
 }
 
 #page-contents {
   margin-top: 55px;
-}
-
-h2 {
-  color: var(--text-body);
 }
 
 /* Base Styles */
@@ -34,14 +29,12 @@ h2 {
   border: 1px solid #ddd;
   padding: 10px;
   margin-bottom: 20px;
-  border-radius: 10px;
 }
 
 .data-segment-header {
   width: 100%;
   font-size: 18px;
   font-weight: bold;
-  border-radius: 10px 10px 0 0;
 }
 
 .data-segment-header p {
@@ -62,10 +55,8 @@ h2 {
   padding: 10px 20px;
   background: var(--background-color-top-nav);
   color: var(--text-body);
-  border: none;
   border-radius: 5px;
   cursor: pointer;
-  text-decoration: none;
 }
 
 .issue-button:hover {
