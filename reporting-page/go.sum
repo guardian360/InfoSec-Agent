@@ -1,7 +1,9 @@
 github.com/BurntSushi/toml v1.3.2 h1:o7IhLm0Msx3BaB+n3Ag7L8EVlByGnpq14C4YWiu/gL8=
 github.com/BurntSushi/toml v1.3.2/go.mod h1:CxXYINrC8qIiEnFrOxCa7Jy5BFHlXnUU2pbicEuybxQ=
-github.com/InfoSec-Agent/InfoSec-Agent v0.0.0-20240408130329-a7ccb52829c8 h1:pPpyRu2EqXJAaGrxu6zAR1yF2QMzZLEQN9iKpwjmZTM=
-github.com/InfoSec-Agent/InfoSec-Agent v0.0.0-20240408130329-a7ccb52829c8/go.mod h1:bjFD7TdFiMiB1rU5UyGRTPXUkqvmKPdI/KCDJdiCoIA=
+github.com/DATA-DOG/go-sqlmock v1.5.2 h1:OcvFkGmslmlZibjAjaHm3L//6LiuBgolP7OputlJIzU=
+github.com/DATA-DOG/go-sqlmock v1.5.2/go.mod h1:88MAG/4G7SMwSE3CeA0ZKzrT5CiOU3OJ+JlNzwDqpNU=
+github.com/InfoSec-Agent/InfoSec-Agent v0.2.0 h1:DTcJgLzbuivM543LoM/ij1Nt/1XpxkjWTuNUabFEZ/4=
+github.com/InfoSec-Agent/InfoSec-Agent v0.2.0/go.mod h1:3GpcjMkbB/JoS/Z++igjwfawNSROPhxoxYRFPZtjJdk=
 github.com/PuerkitoBio/goquery v1.6.1/go.mod h1:GsLWisAFVj4WgDibEWF4pvYnkVQBpKBKeU+7zCJoLcc=
 github.com/akavel/rsrc v0.10.2 h1:Zxm8V5eI1hW4gGaYsJQUhxpjkENuG91ki8B4zCrvEsw=
 github.com/akavel/rsrc v0.10.2/go.mod h1:uLoCtb9J+EyAqh+26kdrTgmzRBFPGOolLWKpdxkKq+c=

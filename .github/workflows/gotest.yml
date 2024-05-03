@@ -25,3 +25,4 @@ jobs:
     - name: Run tests
       # skip TestFindEntriesValidInput because it opens the registry, which is different in the GitHub Actions runner
       run: go test -cover -skip TestFindEntriesValidInput ./...
+      working-directory: backend
