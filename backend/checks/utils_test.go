@@ -2,7 +2,6 @@ package checks_test
 
 import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
-	"github.com/InfoSec-Agent/InfoSec-Agent/checks/checksutils"
 	"os"
 	"testing"
 
@@ -178,7 +177,7 @@ func TestCheckKeyInvalidElement(t *testing.T) {
 //
 // No return values.
 func TestCurrentUsernameReturnsResult(t *testing.T) {
-	username, err := checksutils.CurrentUsername()
+	username, err := checks.CurrentUsername()
 	require.NoError(t, err)
 	require.NotEmpty(t, username)
 }
