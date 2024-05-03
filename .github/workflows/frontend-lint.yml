@@ -30,7 +30,7 @@ jobs:
         
       - name: Install Node.js dependencies
         run: npm ci
-        working-directory: reporting-page
+        working-directory: reporting-page/frontend
 
         # ESLint and stylelint configuration in `reporting-page/frontend/package.json`
       - name: Run ESLint
