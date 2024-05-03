@@ -6,34 +6,6 @@ import data from '../src/database.json' assert { type: 'json' };
 
 global.TESTING = true;
 
-// Mock page
-// const dom = new JSDOM(`
-// <!DOCTYPE html>
-// <html>
-// <body>
-//   <table class="issues-table" id="issues-table">
-//     <thead>
-//       <tr>
-//         <th class="issue-column">
-//           <span class="table-header">Name</span>
-//           <span class="material-symbols-outlined" id="sort-on-issue">swap_vert</span>
-//         </th>
-//         <th class="type-column">
-//           <span class="table-header">Type</span>
-//           <span class="material-symbols-outlined" id="sort-on-type">swap_vert</span>
-//         </th>
-//         <th class="risk-column">
-//           <span class="table-header">Risk level</span>
-//           <span class="material-symbols-outlined" id="sort-on-risk">swap_vert</span>
-//         </th>
-//       </tr>
-//     </thead>
-//     <tbody>
-//     </tbody>
-//   </table>
-// </body>
-// </html>
-// `);
 const dom = new JSDOM(`
   <div id="page-contents"></div>
   <div class="page-contents"></div>
