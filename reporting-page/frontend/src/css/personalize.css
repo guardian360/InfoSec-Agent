@@ -102,7 +102,7 @@ hr.solid {
 
 .normal,
 :root:has(#normal:checked){
-  --background-color: #fff;
+  --background-color: #fffafa;
   --background-color-top-nav: #DFEEF1; 
   --background-color-left-nav: #4E869B;
   --background-nav-hover: #427385;

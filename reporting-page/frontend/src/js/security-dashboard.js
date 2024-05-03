@@ -14,9 +14,9 @@ export function openSecurityDashboardPage() {
   sessionStorage.setItem('savedPage', '2');
 
   document.getElementById('page-contents').innerHTML = `
-  <div class="dashboard-data">
-    <div class="data-column risk-analysis">
-      <div class="data-segment">
+  <div class="dashboard">
+    <div class="container-dashboard">
+      <div class="dashboard-segment">
         <div class="data-segment-header">
           <p class="security-stat">Security status</p>
         </div>
@@ -24,9 +24,9 @@ export function openSecurityDashboardPage() {
           <p class="status-descriptor"></p>
         </div>
       </div>
-      <div class="data-segment">
+      <div class="dashboard-segment">
         <div class="data-segment-header">
-          <p class="risk-counters-header">Risk level counters</p>
+          <p>Risk level counters</p>
         </div>
         <div class="risk-counter high-risk">
           <div><p class="high-risk-issues">High risk issues</p></div>
@@ -48,23 +48,23 @@ export function openSecurityDashboardPage() {
           <div><p class="safe-issues">Safe issues</p></div>
           <div><p id="no-risk-counter">0</p></div>
         </div>
-      </div>
+      </div>      
     </div>
-    <div class="data-column">
-      <div class="data-segment pie-chart">
+    <div class="container-dashboard">
+      <div class="dashboard-segment">
         <div class="data-segment-header">
             <p class="piechart-header">Risk level distribution</p>
         </div>
         <div class="pie-chart-container">
-          <canvas id="pieChart"></canvas>
+          <canvas id="pie-chart"></canvas>
         </div>
       </div>
-      <div class="data-segment graph-row">
+      <div class="dashboard-segment">
         <div class="data-segment-header">
-          <p class="bar-graph-header">Risk level distribution</p>
+          <p>Risk level distribution</p>
         </div>
         <div class="graph-segment-content">
-          <div class="graph-buttons dropdown">
+          <div class="graph-buttons">
             <p class="bar-graph-description">
               In this graph you are able to see the distribution of different issues 
               we have found over the past times we ran a check.
@@ -92,14 +92,14 @@ export function openSecurityDashboardPage() {
               <input type="number" value="1" id="graph-interval" min="1">
             </a>
           </div>
-          <div class="graph-column issues-graph">
+          <div class="interval-graph-container">
             <canvas id="interval-graph"></canvas>
           </div>
         </div>
       </div>
     </div>
-    <div class="data-column actions">
-      <div class="data-segment issue-buttons">
+    <div class="container-dashboard">
+      <div class="dashboard-segment">
         <div class="data-segment-header">
           <p class="choose-issue-description"></p>
         </div>
@@ -107,7 +107,7 @@ export function openSecurityDashboardPage() {
         <a class="issue-button quick-fix"><p>Quick Fix</p></a>
         <a class="issue-button scan-now">Scan Now</a>
       </div>
-      <div class="data-segment risk-areas">
+      <div class="dashboard-segment risk-areas">
         <div class="data-segment-header">
           <p id="risk-areas">Areas of security risks</p>
         </div>
@@ -206,7 +206,7 @@ export function openSecurityDashboardPage() {
   }
 
   // Create charts
-  new PieChart('pieChart', rc, 'Security');
+  new PieChart('pie-chart', rc, 'Security');
   const g = new Graph('interval-graph', rc);
   addGraphFunctions(g);
   document.getElementsByClassName('scan-now')[0].addEventListener('click', async () => {

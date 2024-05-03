@@ -4,6 +4,8 @@
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgb(0 0 0 / 10%);
+    background: var(--background-color-integration);
+    
 }
 
 .about-header {
@@ -12,7 +14,6 @@
 
 .about-header h1 {
     font-size: 2.5em;
-    color: var(--text-body);
 }
 
 .project-info {
@@ -26,28 +27,16 @@
     margin: 0 20px;
 }
 
-.project h2 {
+.project h2, .contribute h2 {
     font-size: 1.5em;
-    color: var(--text-body);
 }
 
-.project p {
-    color: var(--text-body);
+.project p, .contribute p {
     line-height: 1.6;
 }
 
 .contribute {
     margin-top: 40px;
-}
-
-.contribute h2 {
-    font-size: 1.5em;
-    color: var(--text-body);
-}
-
-.contribute p {
-    color: var(--text-body);
-    line-height: 1.6;
 }
 
 .container-about a {
