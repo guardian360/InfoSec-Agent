@@ -12,45 +12,45 @@ export function openHomePage() {
   markSelectedNavigationItem('home-button');
   sessionStorage.setItem('savedPage', 1);
   document.getElementById('page-contents').innerHTML = `
-  <div class="home-data">
-    <div class="container-data"> 
-      <div class="data-column">     
-        <div class="data-segment">
+  <div class="home">
+    <div class="container-home"> 
+      <div class="data-segment">
+        <div class="data-segment-header">
           <p class="piechart-header">Risk level distribution</p>
-          <div class="pie-chart-container">
-            <canvas id="pieChart"></canvas>
-          </div>
+        </div>
+        <div class="pie-chart-container">
+          <canvas id="pie-chart"></canvas>
         </div>
       </div>
-      <div class="data-column">
-        <div class="data-segment">
+      <div class="data-segment">
+        <div class="data-segment-header">
           <p class="choose-issue-description">Select an issue</p>
-          <a class="issue-button suggested-issue"></a>
-          <a class="issue-button quick-fix">Quick Fix</a>
-          <a class="issue-button scan-now">Scan Now</a>
         </div>
+        <a class="issue-button suggested-issue"></a>
+        <a class="issue-button quick-fix">Quick Fix</a>
+        <a class="issue-button scan-now">Scan Now</a>
       </div>
     </div>
-    <div class="container-data"> 
-      <div class="data-column">  
-        <div class="data-segment">
+    <div class="container-home"> 
+      <div class="data-segment">
+        <div class="data-segment-header">
           <p class="title-medals"></p>
-          <div class="medals">
-            <div class="medal-layout">
-              <img id="medal" alt="Photo of medal"></img>
-              <p class="medal-name"> Medal 1</p>
-            </div>
-            <div class="medal-layout">
-              <img id="medal2" alt="Photo of medal"></img>
-              <p class="medal-name"> Medal 2</p>
-            </div>
-            <div class="medal-layout">
-              <img id="medal3" alt="Photo of medal"></img>
-              <p class="medal-name"> Medal 3</p>
-            </div><div class="medal-layout">
-              <img id="medal4" alt="Photo of medal"></img>
-              <p class="medal-name"> Medal 4</p>
-            </div>
+        </div>
+        <div class="medals">
+          <div class="medal-layout">
+            <img id="medal" alt="Photo of medal"></img>
+            <p class="medal-name"> Medal 1</p>
+          </div>
+          <div class="medal-layout">
+            <img id="medal2" alt="Photo of medal"></img>
+            <p class="medal-name"> Medal 2</p>
+          </div>
+          <div class="medal-layout">
+            <img id="medal3" alt="Photo of medal"></img>
+            <p class="medal-name"> Medal 3</p>
+          </div><div class="medal-layout">
+            <img id="medal4" alt="Photo of medal"></img>
+            <p class="medal-name"> Medal 4</p>
           </div>
         </div>
       </div>
@@ -64,7 +64,7 @@ export function openHomePage() {
   document.getElementById('medal4').src = medal;
 
   const rc = JSON.parse(sessionStorage.getItem('RiskCounters'));
-  new PieChart('pieChart', rc, 'Total');
+  new PieChart('pie-chart', rc, 'Total');
 
   // Localize the static content of the home page
   const staticHomePageContent = [

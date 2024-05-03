@@ -1,5 +1,6 @@
 @import url(color-palette.css);
-/*all pages*/
+
+/* all pages */
 body {
   background-color: var(--background-color);
   font-family: "DM Sans", sans-serif;
@@ -18,12 +19,12 @@ h2 {
 }
 
 /* Base Styles */
-.home-data {
+.home {
   display: flex;
   flex-wrap: wrap;
 }
 
-.container-data {
+.container-home {
   flex: 1 1 50%;
   padding: 10px;
   box-sizing: border-box;
@@ -31,27 +32,25 @@ h2 {
 
 .data-segment {
   border: 1px solid #ddd;
-  background: var(--background-color);
-  padding: 20px;
+  padding: 10px;
   margin-bottom: 20px;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
-.data-column {
-  display: flex;
-  flex-direction: column;
+.data-segment-header {
+  width: 100%;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 10px 10px 0 0;
+}
+
+.data-segment-header p {
+  margin: 10px;
 }
 
 /* Pie Chart */
-.pie-chart-container {
-  width: 100%;
-  text-align: center;
-}
 
-#pieChart {
-  max-width: 100%;
-  height: auto;
-}
+/* see dashboard.css */
 
 /* Issue Buttons */
 .issue-buttons {

@@ -1,10 +1,11 @@
 /* RESPONSIVE SIZING */
-/*Home page*/
-@media (max-width: 768px) {
-  .container-data {
+
+/* Home page */
+@media (width <= 768px) {
+  .container-home {
     flex: 1 1 100%; /* Full width on smaller screens */
   }
-
+  
   .medals {
     justify-content: center; /* Center medals on smaller screens */
   }
@@ -15,16 +16,17 @@
 
   .issue-button {
     padding: 8px 16px; /* Smaller padding on smaller screens */
+    width: 80%;
   }
 }
 
-@media (max-width: 480px) {
+@media (width <= 480px) {
   .medal-layout {
     flex: 0 0 100%; /* One medal per row on very small screens, no growth */
   }
 }
 
-/*Navigation*/
+/* Navigation */
 @media only screen and (width <= 799px) {
     #page-contents {
       margin-left: 0;
@@ -68,10 +70,40 @@
     }
 }
 
-/* This CSS will hide the title in smaller screens */
-
-@media screen and (max-width: 550px) {
+@media screen and (width <= 550px) {
   .header-name h1 {
-      display: none; /* This hides the title "Little Brother" */
+      display: none; /* This hides the title on navigation */
+  }
+}
+
+/* Dashboard */
+
+/* Responsive adjustments for smaller screens */
+@media (width <= 768px) {
+  .graph-segment-content {
+      flex-direction: column; /* Stacks the content vertically */
+  }
+
+  .graph-buttons {
+      order: 2; /* Makes the text come first */
+      width: 100%; /* Full width for better readability */
+  }
+
+  .issues-graph {
+      order: 1; /* Graph below the text */
+      width: 100%; /* Adjusts to full container width */
+  }
+
+  /* If there are buttons or other controls in .graph-buttons, adjust their styling if necessary */
+  .graph-buttons button, .graph-buttons .dropdown {
+      width: 100%; /* Full width buttons */
+      margin-top: 10px; /* Space between text and buttons */
+  }
+}
+
+/* You might want to adjust the font size or padding for smaller screens too */
+@media (width <= 480px) {
+  .graph-buttons p, .issues-graph p {
+      font-size: 14px; /* Smaller font for smaller screens */
   }
 }
