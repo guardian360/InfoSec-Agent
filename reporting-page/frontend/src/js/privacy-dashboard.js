@@ -9,7 +9,7 @@ import {scanTest} from './database.js';
 /** Load the content of the Privacy Dashboard page */
 export function openPrivacyDashboardPage() {
   document.onload = retrieveTheme();
-  closeNavigation();
+  closeNavigation(document.body.offsetWidth);
   markSelectedNavigationItem('privacy-dashboard-button');
   sessionStorage.setItem('savedPage', '3');
 
