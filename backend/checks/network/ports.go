@@ -54,6 +54,7 @@ func OpenPorts(tasklistexecutor, netstatexecutor mocking.CommandExecutor) checks
 	netstat := strings.Split(string(output), "\n")
 
 	result := checks.NewCheckResult(checks.PortsID, 0)
+	processPorts := make(map[string][]string)
 	for _, line := range netstat[4 : len(netstat)-1] {
 		words := strings.Fields(line)
 
@@ -79,8 +80,14 @@ func OpenPorts(tasklistexecutor, netstatexecutor mocking.CommandExecutor) checks
 		// Return the process name from the pid
 		name, ok := pids[pid]
 		if ok {
-			result.Result = append(result.Result, fmt.Sprintf("port: %s, process: %s", port, name))
+			//result.Result = append(result.Result, fmt.Sprintf("port: %s, process: %s", port, name))
+			processPorts[name] = append(processPorts[name], port)
 		}
+	}
+
+	// Construct the output strings
+	for name, ports := range processPorts {
+		result.Result = append(result.Result, fmt.Sprintf("process: %s, port: %s", name, strings.Join(ports, ", ")))
 	}
 
 	return result
