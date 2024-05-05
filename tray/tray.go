@@ -441,7 +441,7 @@ func RefreshMenu() {
 // This function creates a notification with a title, message, and icon to inform the user that a scan has been completed.
 // The notification also includes an action button that lets the user open the reporting page.
 //
-// Parameters: scanResult []checks.Check: A list of checks performed during the scan.
+// Parameters: _
 //
 // Returns: error: An error object if an error occurred during the scan, otherwise nil.
 func Popup() error {
@@ -450,8 +450,9 @@ func Popup() error {
 		Title:   "Scan Completed",
 		Message: "The privacy and security scan has been completed. Open the reporting page to view the results.",
 		// Icon:    "",
+		ActivationArguments: "infosecagent:", // TODO: infosecagent should be added to the registry during installation
 		Actions: []toast.Action{
-			{"protocol", "Open Reporting Page", ""},
+			{Type: "protocol", Label: "Open Reporting Page", Arguments: "infosecagent:"},
 		},
 	}
 	if err := notification.Push(); err != nil {
