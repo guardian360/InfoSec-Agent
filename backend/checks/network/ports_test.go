@@ -43,7 +43,7 @@ func TestOpenPorts(t *testing.T) {
 			executornetstat: &mocking.MockCommandExecutor{
 				Output: "	\r\n Active Connections \r\n	\r\n	Proto	Local Address	Foreign Address	State\r\n" +
 					"TCP	123.0.0.1:8080	123:123	ESTABLISHED 0\r\n", Err: nil},
-			want: checks.NewCheckResult(checks.PortsID, 0, "port: 8080, process: System Idle Process"),
+			want: checks.NewCheckResult(checks.PortsID, 0, "process: System Idle Process, port: 8080"),
 		},
 		{
 			name: "multiple open ports",
@@ -58,8 +58,8 @@ func TestOpenPorts(t *testing.T) {
 					"TCP 123.0.0.1:8080 123:123 ESTABLISHED 0\r\n" + "TCP 123.0.0.1:8081 123:123 ESTABLISHED 1\r\n" +
 					"TCP 123.0.0.1:8082 123:123 ESTABLISHED 2\r\n", Err: nil},
 			want: checks.NewCheckResult(checks.PortsID, 0,
-				"port: 8080, process: System Idle Process", "port: 8081, process: System2",
-				"port: 8082, process: System3"),
+				"process: System Idle Process, port: 8080", "process: System2, port: 8081",
+				"process: System3, port: 8082"),
 		},
 		{
 			name:             "tasklist error",
