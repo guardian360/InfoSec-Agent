@@ -45,9 +45,7 @@ func Permission(permissionID int, permission string, registryKey mocking.Registr
 	// Iterate through the application names and append them to the results
 	for _, appName := range applicationNames {
 		appKey, err = checks.OpenRegistryKey(key, appKeyName(appName))
-		func() {
-			defer checks.CloseRegistryKey(appKey)
-		}()
+		defer checks.CloseRegistryKey(appKey)
 		if err != nil {
 			return checks.NewCheckErrorf(permissionID, "error opening registry key", err)
 		}
