@@ -32,11 +32,8 @@ jobs:
           cache-dependency-path: 'reporting-page/frontend/package-lock.json'
         
       - name: Install Node.js dependencies
-        run: |
-          npm ci
-          cd frontend
-          npm ci
-        working-directory: reporting-page
+        run: npm ci
+        working-directory: reporting-page/frontend
 
       - name: npm test
         run: npm test

@@ -46,20 +46,20 @@ The ESLint (for JavaScript) and Stylelint (for css) are installed trough npm.
 
 The configuration for these linters is already defined in reporting-page/package.json and reporting-page/frontend/package.json
 
-To install the linters, open a terminal in the ***InfoSec-Agent/reporting-page*** directory and run:
+To install the linters, open a terminal in the ***InfoSec-Agent/reporting-page/frontend*** directory and run:
 
 ```
 npm ci
 ```
 
 ### Usage
-To run ESlint on all JavaScript code, open a terminal in the ***InfoSec-Agent/reporting-page*** directory and run:
+To run ESlint on all JavaScript code, open a terminal in the ***InfoSec-Agent/reporting-page/frontend*** directory and run:
 
 ```
 npx eslint **/*.js
 ```
 
-To run Stylelint on all CSS code, open a terminal in the ***InfoSec-Agent/reporting-page*** directory and run:
+To run Stylelint on all CSS code, open a terminal in the ***InfoSec-Agent/reporting-page/frontend*** directory and run:
 
 ```
 npx stylelint **/*.css

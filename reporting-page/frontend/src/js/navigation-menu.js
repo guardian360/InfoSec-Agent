@@ -10,7 +10,7 @@ export function markSelectedNavigationItem(item) {
   for (let i = 1; i < navItems.length; i++) {
     navItems[i].style.backgroundColor = stylesheet.getPropertyValue('--background-color-left-nav');
   }
-  if (item === 'settings-button' ) {
+  if (item === 'settings-button') {
     return;
   }
   document.getElementById(item).style.backgroundColor = stylesheet.getPropertyValue('--background-nav-hover');
@@ -28,16 +28,20 @@ export function loadPersonalizeNavigation() {
   }
 }
 
-/** Close the navigation menu when a navigation item is clicked, only when screen size is less than 800px */
-export function closeNavigation() {
-  if (document.body.offsetWidth < 800) {
+/** Close the navigation menu when a navigation item is clicked, only when screen size is less than 800px
+ * @param {int} appWidth - The width of the application screen
+*/
+export function closeNavigation(appWidth) {
+  if (appWidth < 800) {
     document.getElementsByClassName('left-nav')[0].style.visibility = 'hidden';
   }
 }
 
-/** Open or close the navigation menu when user clicks on hamburger menu */
-export function toggleNavigationHamburger() {
-  if (document.body.offsetWidth < 800) {
+/** Open or close the navigation menu when user clicks on hamburger menu
+ * @param {int} appWidth - The width of the application screen
+*/
+export function toggleNavigationHamburger(appWidth) {
+  if (appWidth < 800) {
     if (document.getElementsByClassName('left-nav')[0].style.visibility === 'visible') {
       document.getElementsByClassName('left-nav')[0].style.visibility = 'hidden';
     } else {
@@ -46,9 +50,11 @@ export function toggleNavigationHamburger() {
   }
 }
 
-/** Open or close the navigation menu when user resizes the screen */
-export function toggleNavigationResize() {
-  if (document.body.offsetWidth > 799) {
+/** Open or close the navigation menu when user resizes the screen
+ * @param {int} appWidth - The width of the application screen
+*/
+export function toggleNavigationResize(appWidth) {
+  if (appWidth > 799) {
     document.getElementsByClassName('left-nav')[0].style.visibility = 'visible';
   } else {
     document.getElementsByClassName('left-nav')[0].style.visibility = 'hidden';
@@ -57,8 +63,9 @@ export function toggleNavigationResize() {
 
 if (typeof document !== 'undefined') {
   try {
-    document.getElementById('header-hamburger').addEventListener('click', () => toggleNavigationHamburger());
-    document.body.onresize = () => toggleNavigationResize();
+    document.getElementById('header-hamburger')
+      .addEventListener('click', () => toggleNavigationHamburger(document.body.offsetWidth));
+    document.body.onresize = () => toggleNavigationResize(document.body.offsetWidth);
 
     const navbarItems = [
       'home',

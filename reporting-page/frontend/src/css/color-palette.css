@@ -14,7 +14,7 @@ Should later on be able to be changed by user, with help of js
   --color-border: hsl(var(--hue) 20% 85%);  /* main color for borders */
 
   /* colors for background */
-  --background-color: #fff;          /* main color background */
+  --background-color: #fffafa;          /* main color background */
   --background-color-top-nav: #DFEEF1;  /* color background of top bar navigation and for titles between sections */
   --background-color-left-nav: #4E869B; /* color background of left bar navigation */
   --background-nav-hover: #427385;      /* color when hovering over navigation */

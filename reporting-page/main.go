@@ -122,8 +122,8 @@ func main() {
 	systemTray := NewTray(logger.Log)
 	database := NewDataBase()
 	customLogger := logger.Log
-	localization.Init("../")
-	lang := usersettings.LoadUserSettings("../usersettings").Language
+	localization.Init("../backend/")
+	lang := usersettings.LoadUserSettings("../backend/usersettings").Language
 	tray.Language = lang
 
 	// Create a Wails application with the specified options

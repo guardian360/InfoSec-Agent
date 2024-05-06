@@ -5,7 +5,7 @@ import {getLocalization} from './localize.js';
 /** Load the content of the About page */
 export function openAboutPage() {
   document.onload = retrieveTheme();
-  closeNavigation();
+  closeNavigation(document.body.offsetWidth);
   markSelectedNavigationItem('about-button');
   sessionStorage.setItem('savedPage', '6');
 

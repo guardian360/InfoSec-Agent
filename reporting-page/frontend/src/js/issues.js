@@ -7,7 +7,7 @@ import {LogError as logError} from '../../wailsjs/go/main/Tray.js';
 
 /** Load the content of the Issues page */
 export function openIssuesPage() {
-  closeNavigation();
+  closeNavigation(document.body.offsetWidth);
   markSelectedNavigationItem('issues-button');
   sessionStorage.setItem('savedPage', '4');
 
@@ -102,6 +102,7 @@ export function openIssuesPage() {
 
   document.onload = retrieveTheme();
 }
+
 /**
  * Returns the risk level based on the given numeric level.
  * @param {number} level - The numeric representation of the risk level.
@@ -218,6 +219,7 @@ export function sortTable(tbody, column) {
   table.setAttribute('data-sort-direction', direction);
 }
 
+/* istanbul ignore next */
 if (typeof document !== 'undefined') {
   try {
     document.getElementById('issues-button').addEventListener('click', () => openIssuesPage());
@@ -231,7 +233,7 @@ if (typeof document !== 'undefined') {
  * Retrieves issues data from session storage, filters it based on selected risk levels,
  * and updates the table with the filtered data.
  */
-function changeTable() {
+export function changeTable() {
   const selectedHigh = document.getElementById('select-high-risk-table').checked;
   const selectedMedium = document.getElementById('select-medium-risk-table').checked;
   const selectedLow = document.getElementById('select-low-risk-table').checked;

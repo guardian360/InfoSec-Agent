@@ -10,6 +10,14 @@
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.24.1",
+    "@babel/plugin-syntax-import-assertions": "^7.24.1",
+    "eslint": "^8.57.0",
+    "eslint-config-google": "^0.14.0",
+    "ignore-styles": "^5.0.1",
+    "sinon": "^7.5.0",
+    "stylelint": "^16.3.1",
+    "stylelint-config-standard": "^36.0.0",
     "@babel/core": "^7.24.4",
     "@babel/preset-env": "^7.24.4",
     "babel-jest": "^29.7.0",
@@ -23,7 +31,8 @@
   "dependencies": {
     "canvas": "^2.11.2",
     "chart.js": "^4.4.2",
-    "mocha": "^10.3.0",
+    "mocha": "^10.4.0",
+    "jsdom": "^24.0.0",
     "mock-require": "^3.0.3",
     "sqlite3": "^5.1.7",
     "unit.js": "^2.1.1"

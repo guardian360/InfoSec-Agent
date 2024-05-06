@@ -30,7 +30,11 @@ go.work*
 golangci-lint-report.json
 
 # User settings
+**/user_settings.json
 **/usersettings.json
 
 # Logging output
 **/log.txt
+
+# Coverage report
+coverage/
