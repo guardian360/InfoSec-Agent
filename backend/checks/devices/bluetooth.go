@@ -3,7 +3,6 @@ package devices
 
 import (
 	"fmt"
-
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
