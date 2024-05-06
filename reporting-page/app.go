@@ -3,9 +3,9 @@ package main
 import (
 	"context"
 
-	"github.com/InfoSec-Agent/InfoSec-Agent/localization"
-	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
-	"github.com/InfoSec-Agent/InfoSec-Agent/tray"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/localization"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/tray"
 )
 
 // App serves as the core structure for the Wails runtime.

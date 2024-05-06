@@ -129,7 +129,7 @@ func OnReady() {
 	for {
 		select {
 		case <-mReportingPage.ClickedCh:
-			err := OpenReportingPage("../")
+			err := OpenReportingPage("")
 			if err != nil {
 				logger.Log.Println(err)
 			}
