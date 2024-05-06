@@ -135,6 +135,8 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 			return checkResults, err
 		}
 	}
+	initialState := GameState{Points: 0, LigthouseState: 0} // tijdelijk: uiteindelijk in main met onthoud wat gamestate is
+	print(PointCalculation(initialState).Points)
 
 	// Serialize check results to JSON
 	jsonData, err := json.MarshalIndent(checkResults, "", "  ")
