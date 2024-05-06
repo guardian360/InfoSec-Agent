@@ -3,7 +3,7 @@ module github.com/InfoSec-Agent/InfoSec-Agent/reporting-page
 go 1.22.0
 
 require (
-	github.com/InfoSec-Agent/InfoSec-Agent v0.2.0
+	github.com/InfoSec-Agent/InfoSec-Agent/backend v0.0.0-20240506073931-f53e1c9b58d0
 	github.com/wailsapp/wails/v2 v2.8.1
 )
 
