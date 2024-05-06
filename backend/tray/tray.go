@@ -5,8 +5,8 @@
 package tray
 
 import (
-	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
-	"github.com/InfoSec-Agent/InfoSec-Agent/usersettings"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/usersettings"
 	"github.com/go-toast/toast"
 	"github.com/pkg/errors"
 
@@ -137,12 +137,12 @@ func OnReady() {
 		case <-mChangeScanInterval.ClickedCh:
 			ChangeScanInterval()
 		case <-mScanNow.ClickedCh:
-			_, err := ScanNow()
+			result, err := ScanNow()
 			if err != nil {
 				logger.Log.ErrorWithErr("Error scanning:", err)
 			}
 			// Notify the user that a scan has been completed
-			err = Popup()
+			err = Popup(result)
 			if err != nil {
 				logger.Log.ErrorWithErr("Error notifying user:", err)
 			}
@@ -157,12 +157,12 @@ func OnReady() {
 		case <-ScanTicker.C:
 			ScanCounter++
 			logger.Log.Println("Scan:", ScanCounter)
-			_, err := ScanNow()
+			result, err := ScanNow()
 			if err != nil {
 				logger.Log.ErrorWithErr("Error scanning:", err)
 			}
 			// Notify the user that a scan has been completed
-			err = Popup()
+			err = Popup(result)
 			if err != nil {
 				logger.Log.ErrorWithErr("Error notifying user:", err)
 			}
@@ -441,14 +441,35 @@ func RefreshMenu() {
 // This function creates a notification with a title, message, and icon to inform the user that a scan has been completed.
 // The notification also includes an action button that lets the user open the reporting page.
 //
-// Parameters: _
+// Parameters: scanResult: A slice of checks representing the scan results.
 //
 // Returns: error: An error object if an error occurred during the scan, otherwise nil.
-func Popup() error {
+func Popup(scanResult []checks.Check) error {
+	// Get the database data from the scan results
+	dbData, err := scan.GetDataBaseData(scanResult)
+	if err != nil {
+		return fmt.Errorf("error getting database data: %w", err)
+	}
+	severityCounters := make(map[int]int)
+	for _, data := range dbData {
+		severityCounters[data.Severity]++
+	}
+
+	// Generate notification message based on the severity of the issues found
+	resultMessage := ""
+	if severityCounters[3] > 0 {
+		resultMessage = fmt.Sprintf("The privacy and security scan has been completed. You have %d high risk issues. Open the reporting page to see more information.", severityCounters[3])
+	} else if severityCounters[2] > 0 {
+		resultMessage = fmt.Sprintf("The privacy and security scan has been completed. You have %d medium risk issues. Open the reporting page to see more information.", severityCounters[2])
+	} else {
+		resultMessage = "The privacy and security scan has been completed. Open the reporting page to view the results."
+	}
+
+	// Create a notification to inform the user that the scan is complete
 	notification := toast.Notification{
 		AppID:   "InfoSec Agent",
 		Title:   "Scan Completed",
-		Message: "The privacy and security scan has been completed. Open the reporting page to view the results.",
+		Message: resultMessage,
 		// Icon:    "",
 		ActivationArguments: "infosecagent:", // TODO: infosecagent should be added to the registry during installation
 		Actions: []toast.Action{
