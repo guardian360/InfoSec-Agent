@@ -25,6 +25,7 @@ type DataBaseData struct {
 //
 // Parameters:
 //   - scanResults ([]checks.Check): A slice of Check objects obtained from a scan. Each Check object represents a security check that has been performed.
+//   - path (string): The path to the database file where the issues table is located.
 //
 // This function performs the following operations:
 //  1. Opens a connection to the SQLite database located at "./database.db". If the database does not exist, it is created.
@@ -35,12 +36,12 @@ type DataBaseData struct {
 //  6. Closes the connection to the database.
 //
 // Note: This function logs any errors that occur during its execution and does not return any values.
-func FillDataBase(scanResults []checks.Check) {
+func FillDataBase(scanResults []checks.Check, path string) {
 	logger.Log.Info("Opening database")
 	var err error
 	var db *sql.DB
 	// Open the database file. If it doesn't exist, it will be created.
-	db, err = sql.Open("sqlite", "./database.db")
+	db, err = sql.Open("sqlite", path)
 	if err != nil {
 		logger.Log.ErrorWithErr("Error opening database:", err)
 		return
@@ -189,15 +190,19 @@ func GetJSONKey(db *sql.DB, issueID int, resultID int) (int, error) {
 
 // GetDataBaseData gets the severities and JSON keys for all checks passed
 //
-// Parameters: checks ([]checks.Check) - the list of checks from a scan
+// Parameters:
+//
+// checks ([]checks.Check) - the list of checks from a scan
+//
+// path (string) - the path to the database
 //
 // resultIDs ([]int) - the list of results corresponding to each check
 //
 // Returns: list of all severities and JSON keys
-func GetDataBaseData(checks []checks.Check) ([]DataBaseData, error) {
+func GetDataBaseData(checks []checks.Check, path string) ([]DataBaseData, error) {
 	logger.Log.Info("Opening database")
 	// Open the database file. If it doesn't exist, it will be created.
-	db, err := sql.Open("sqlite", "./database.db")
+	db, err := sql.Open("sqlite", path)
 	if err != nil {
 		logger.Log.ErrorWithErr("Error opening database:", err)
 		return nil, err
