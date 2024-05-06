@@ -3,6 +3,6 @@
 :: It will initialize the go work environment, and then use the current directory and the reporting-page directory
 @echo off
 go work init
-go work use .\backend
+go work use .
 go work use .\reporting-page
 go work sync

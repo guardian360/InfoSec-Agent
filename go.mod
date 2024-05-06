@@ -1,4 +1,4 @@
-module github.com/InfoSec-Agent/InfoSec-Agent/backend
+module github.com/InfoSec-Agent/InfoSec-Agent
 
 go 1.22.0
 
