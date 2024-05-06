@@ -13,6 +13,13 @@ const dom = new JSDOM(`
 global.document = dom.window.document;
 global.window = dom.window;
 
+// empty the table to have it empty for next tests
+function emptyTable(table) {
+  for (let i = 0; i < table.rows.length; i++) {
+    table.deleteRow(i);
+  }
+}
+
 // Mock sessionStorage
 const sessionStorageMock = (() => {
   let store = {};
@@ -72,6 +79,15 @@ jest.unstable_mockModule('../src/js/personalize.js', () => ({
   retrieveTheme: jest.fn(),
 }));
 
+// Mock retrieveTheme
+jest.unstable_mockModule('../src/js/issue.js', () => ({
+  openIssuePage: jest.fn(),
+}));
+
+// Create mock mouse events
+const clickEvent = new window.MouseEvent('click');
+const beginHover = new window.MouseEvent('mouseenter');
+const endHover = new window.MouseEvent('mouseleave')
 
 // Test cases
 describe('Issues table', function() {
@@ -97,6 +113,12 @@ describe('Issues table', function() {
     test.value(name).isEqualTo('Name');
     test.value(type).isEqualTo('Type');
     test.value(risk).isEqualTo('Risk');
+
+    // Make issues table empty
+    const issueTable = document.getElementById('issues-table').querySelector('tbody');
+    emptyTable(issueTable);
+    const nonIssueTable = document.getElementById('non-issues-table').querySelector('tbody');
+    emptyTable(nonIssueTable);
   });
   it('toRiskLevel should return the right risk level', async function() {
     // Arrange
@@ -139,8 +161,38 @@ describe('Issues table', function() {
     row = nonIssueTable.rows[0];
     test.value(row.cells[0].textContent).isEqualTo(expectedData[1].Name);
     test.value(row.cells[1].textContent).isEqualTo(expectedData[1].Type);
-  });
 
+    // Make issues table empty
+    emptyTable(issueTable);
+    emptyTable(nonIssueTable);
+  });
+  it('fillTable should not fill the issues table if the data from the JSON array is incorrect', async function() {
+    // Arrange input issues
+    let issues = [];
+    issues = [
+      {id: 0, severity: 1, jsonkey: 55},
+      {id: 123, severity: 0, jsonkey: 1234},
+    ];
+
+    // Arrange expected table data
+    const expectedData = [];
+    expectedData.push(data[issues[0].jsonkey]);
+    expectedData.push(data[issues[1].jsonkey]);
+    const issue = await import('../src/js/issues.js');
+
+    // Act
+    const issueTable = document.getElementById('issues-table').querySelector('tbody');
+    issue.fillTable(issueTable, issues, true);
+    const nonIssueTable = document.getElementById('non-issues-table').querySelector('tbody');
+    issue.fillTable(nonIssueTable, issues, false);
+
+    // Assert
+    let row = issueTable.rows[0];
+    test.value(row).isEqualTo(undefined);
+
+    row = nonIssueTable.rows[0];
+    test.value(row).isEqualTo(undefined);
+ });
   it('sortTable should sort the issues table', async function() {
     // Arrange table rows
     const table = dom.window.document.getElementById('issues-table');
@@ -166,7 +218,7 @@ describe('Issues table', function() {
     const issue = await import('../src/js/issues.js');
 
     // Act
-    issue.sortTable(tbody, 0);
+    document.getElementById('sort-on-issue').dispatchEvent(clickEvent);
 
     // Assert
     let sortedRows = Array.from(tbody.rows);
@@ -174,7 +226,7 @@ describe('Issues table', function() {
     test.array(sortedNames).is(['Camera and microphone access', 'Firewall settings', 'Windows defender']);
 
     // Act
-    issue.sortTable(tbody, 0);
+    document.getElementById('sort-on-issue').dispatchEvent(clickEvent);
 
     // Assert
     let sortedRowsDescending = Array.from(tbody.rows);
@@ -182,7 +234,23 @@ describe('Issues table', function() {
     test.array(sortedNamesDescending).is(['Windows defender', 'Firewall settings', 'Camera and microphone access']);
 
     // Act
-    issue.sortTable(tbody, 2);
+    document.getElementById('sort-on-type').dispatchEvent(clickEvent);
+
+    // Assert
+    sortedRows = Array.from(tbody.rows);
+    const sortedTypes = sortedRows.map((row) => row.cells[1].textContent);
+    test.array(sortedTypes).is(['Privacy','Security','Security']);
+
+    // Act
+    document.getElementById('sort-on-type').dispatchEvent(clickEvent);
+
+    // Assert
+    sortedRowsDescending = Array.from(tbody.rows);
+    const sortedTypesDescending = sortedRowsDescending.map((row) => row.cells[1].textContent);
+    test.array(sortedTypesDescending).is(['Security','Security','Privacy']);
+
+    // Act
+    document.getElementById('sort-on-risk').dispatchEvent(clickEvent);
 
     // Assert
     sortedRows = Array.from(tbody.rows);
@@ -190,12 +258,68 @@ describe('Issues table', function() {
     test.array(sortedRisks).is(['High', 'Medium', 'Low']);
 
     // Act
-    issue.sortTable(tbody, 2);
+    document.getElementById('sort-on-risk').dispatchEvent(clickEvent);
 
     // Assert
     sortedRowsDescending = Array.from(tbody.rows);
     const sortedRisksDescending = sortedRowsDescending.map((row) => row.cells[2].textContent);
     test.array(sortedRisksDescending).is(['Low', 'Medium', 'High']);
+  });
+  it('sortTable should sort the non-issues table', async function() {
+    // Arrange table rows
+    const table = dom.window.document.getElementById('non-issues-table');
+    const tbody = table.querySelector('tbody');
+    tbody.innerHTML = `
+      <tr>
+        <td>Windows defender</td>
+        <td>Security</td>
+        <td>High</td>
+      </tr>
+      <tr>
+        <td>Camera and microphone access</td>
+        <td>Privacy</td>
+        <td>Low</td>
+      </tr>
+      <tr>
+        <td>Firewall settings</td>
+        <td>Security</td>
+        <td>Medium</td>
+      </tr>
+    `;
+
+    const issue = await import('../src/js/issues.js');
+
+    // Act
+    document.getElementById('sort-on-issue2').dispatchEvent(clickEvent);
+
+    // Assert
+    let sortedRows = Array.from(tbody.rows);
+    const sortedNames = sortedRows.map((row) => row.cells[0].textContent);
+    test.array(sortedNames).is(['Camera and microphone access', 'Firewall settings', 'Windows defender']);
+
+    // Act
+    document.getElementById('sort-on-issue2').dispatchEvent(clickEvent);
+
+    // Assert
+    let sortedRowsDescending = Array.from(tbody.rows);
+    const sortedNamesDescending = sortedRowsDescending.map((row) => row.cells[0].textContent);
+    test.array(sortedNamesDescending).is(['Windows defender', 'Firewall settings', 'Camera and microphone access']);
+
+    // Act
+    document.getElementById('sort-on-type2').dispatchEvent(clickEvent);
+
+    // Assert
+    sortedRows = Array.from(tbody.rows);
+    const sortedTypes = sortedRows.map((row) => row.cells[1].textContent);
+    test.array(sortedTypes).is(['Privacy','Security','Security']);
+
+    // Act
+    document.getElementById('sort-on-type2').dispatchEvent(clickEvent);
+
+    // Assert
+    sortedRowsDescending = Array.from(tbody.rows);
+    const sortedTypesDescending = sortedRowsDescending.map((row) => row.cells[1].textContent);
+    test.array(sortedTypesDescending).is(['Security','Security','Privacy']);    
   });
   it('changeTable should update the table with selected risks', async function() {
     // Arrange
@@ -223,7 +347,7 @@ describe('Issues table', function() {
       'select-info-risk-table',
     ];
 
-    for (let i = -1; i < issues.length; i++) {
+    for (let i = -1; i < issues.length - 1; i++) {
       // Act
       let issueTable = document.getElementById('issues-table').querySelector('tbody');
       issue.fillTable(issueTable, issues, true);
@@ -242,5 +366,35 @@ describe('Issues table', function() {
         }
       });
     }
+  });
+  it('clicking on an issue should open the issue page', async function() {
+    // Arrange
+    const issue = await import('../src/js/issue.js');
+    const issueLinks = document.querySelectorAll('.issue-link');
+    const openIssuePageMock = jest.spyOn(issue, 'openIssuePage');
+
+    // Assert
+    issueLinks.forEach((link) => {
+      link.dispatchEvent(clickEvent);
+      expect(openIssuePageMock).toHaveBeenCalled();
+    })
+  });
+  it('clicking the select risks toggles show', async function() {
+    // Arrange
+    const issue = await import('../src/js/issues.js');
+    const button = document.getElementById('dropbtn-table')
+    const myDropdownTable = document.getElementById('myDropdown-table');
+
+    // Act 
+    button.dispatchEvent(clickEvent);
+
+    // Arrange
+    expect(myDropdownTable.classList.contains('show')).toBe(true)
+
+    // Act 
+    button.dispatchEvent(clickEvent);
+
+    // Arrange
+    expect(myDropdownTable.classList.contains('show')).toBe(false)
   });
 });
