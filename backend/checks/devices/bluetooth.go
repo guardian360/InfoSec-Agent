@@ -50,9 +50,8 @@ func Bluetooth(registryKey mocking.RegistryKey) checks.Check {
 			result.Result = append(result.Result, fmt.Sprintf("Error opening device subkey %s", deviceName))
 			continue
 		}
-		func() {
-			defer checks.CloseRegistryKey(deviceKey)
-		}()
+
+		defer checks.CloseRegistryKey(deviceKey)
 
 		// Get the device name
 		deviceNameValue, _, err = deviceKey.GetBinaryValue("Name")
