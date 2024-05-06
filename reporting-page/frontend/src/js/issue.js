@@ -4,7 +4,7 @@ import {getLocalization} from './localize.js';
 import {retrieveTheme} from './personalize.js';
 
 let stepCounter = 0;
-const issuesWithResultsShow = ['11','60', '70', '80', '90', '100', '110', '160'];
+const issuesWithResultsShow = ['11', '60', '70', '80', '90', '100', '110', '160'];
 
 /** Update contents of solution guide
  *

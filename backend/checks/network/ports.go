@@ -80,7 +80,6 @@ func OpenPorts(tasklistexecutor, netstatexecutor mocking.CommandExecutor) checks
 		// Return the process name from the pid
 		name, ok := pids[pid]
 		if ok {
-			//result.Result = append(result.Result, fmt.Sprintf("port: %s, process: %s", port, name))
 			processPorts[name] = append(processPorts[name], port)
 		}
 	}
