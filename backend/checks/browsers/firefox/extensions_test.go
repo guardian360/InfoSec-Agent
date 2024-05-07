@@ -96,8 +96,8 @@ func TestExtensionFirefox(t *testing.T) {
 		}
 
 		check1, check2 := firefox.ExtensionFirefox(profileFinder)
-		require.Nil(t, check1.Error)
-		require.Nil(t, check2.Error)
+		require.NoError(t, check1.Error)
+		require.NoError(t, check2.Error)
 		expected1 := checks.NewCheckResult(checks.ExtensionFirefoxID, 0, "Test Addon,extension,Test Creator,true")
 		expected2 := checks.NewCheckResult(checks.AdblockFirefoxID, 1, strconv.FormatBool(false))
 		require.Equal(t, expected1, check1)
@@ -193,8 +193,8 @@ func TestExtensionFirefoxAdblocker(t *testing.T) {
 	}
 
 	check1, check2 := firefox.ExtensionFirefox(profileFinder)
-	require.Nil(t, check1.Error)
-	require.Nil(t, check2.Error)
+	require.NoError(t, check1.Error)
+	require.NoError(t, check2.Error)
 	expected1 := checks.NewCheckResult(checks.ExtensionFirefoxID, 0, "adblocker ultimate,extension,Test Creator,true")
 	expected2 := checks.NewCheckResult(checks.AdblockFirefoxID, 0, strconv.FormatBool(true))
 	require.Equal(t, expected1, check1)
