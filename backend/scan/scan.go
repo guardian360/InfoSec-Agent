@@ -29,7 +29,7 @@ import (
 // Each function in the slice represents a different security or privacy check that the application can perform.
 // When the Scan function is called, it iterates over this slice and executes each check in turn.
 // The result of each check is then appended to the checkResults slice, which is returned by the Scan function.
-var securityChecks = []func() checks.Check{
+var SecurityChecks = []func() checks.Check{
 	func() checks.Check {
 		return programs.PasswordManager(programs.RealProgramLister{})
 	},
