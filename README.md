@@ -33,7 +33,15 @@ The reporting page has its own log file located in its root folder (folder with 
 
 The program can be exited by selecting 'Quit' in the menu or by manually interrupting the command line (Ctrl + c)
 
-## Running the tests
+# Running tests
+## Frontend
+From the terminal, within the ***InfoSec-Agent/reporting-page/frontend*** folder, run the command `npm test` which will run all test found in the current folder and all subfolders. The tests are located in the ***InfoSec-Agent/reporting-page/frontend/test*** folder and only tests defined with the `.test.js` extension will be run.
+
+To receive a coverage report of the tests, run the command `npm test -- --coverage`, which will show a table containing coverage of files being tested by the tests.
+
+If you wish to run a specific test, you can run the command `npm test -- --testPathPattern=test/specific-test` where you would change specific-test to the filename of the test you would like to run. To get coverage from this single test, add `--coverage` to the end of the command.
+
+## Backend
 From the terminal, within the InfoSec-Agent folder, run the command `go test ./...` which will run all tests in the current folder and all subfolders.
 If you wish to run a specific test, you can run the command `go test -run regexp`. This will only run the tests that match the regular expression.
 
