@@ -62,7 +62,7 @@ func HistoryFirefox(profileFinder browsers.FirefoxProfileFinder) checks.Check {
 		return checks.NewCheckError(checks.HistoryFirefoxID, err)
 	}
 	if output == nil {
-		return checks.NewCheckResult(checks.HistoryFirefoxID, 0, "No phishing domains found in the last week")
+		return checks.NewCheckResult(checks.HistoryFirefoxID, 0)
 	}
 	return checks.NewCheckResult(checks.HistoryFirefoxID, 1, output...)
 }

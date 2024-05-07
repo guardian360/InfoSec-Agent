@@ -50,10 +50,9 @@ func CISRegistrySettings(localMachineKey mocking.RegistryKey, usersKey mocking.R
 	// Check if all registry settings adhere to the CIS Benchmark standards
 	fullyTrue, incorrectSettings := getIncorrectSettings()
 	if fullyTrue {
-		return checks.NewCheckResult(checks.CISRegistrySettingsID, 1, "All registry settings adhere to the CIS Benchmark standards")
+		return checks.NewCheckResult(checks.CISRegistrySettingsID, 1)
 	}
-	resultString := "Not all registry settings adhere to the CIS Benchmark standards"
-	return checks.NewCheckResult(checks.CISRegistrySettingsID, 0, append([]string{resultString}, incorrectSettings...)...)
+	return checks.NewCheckResult(checks.CISRegistrySettingsID, 0, incorrectSettings...)
 }
 
 // CheckIntegerValue is a helper function that checks if the integer value of a registry key matches the expected value.

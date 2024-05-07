@@ -2,9 +2,8 @@
 package devices
 
 import (
-	"fmt"
-
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 )
@@ -39,7 +38,7 @@ func Bluetooth(registryKey mocking.RegistryKey) checks.Check {
 	}
 
 	if len(deviceNames) == 0 {
-		return checks.NewCheckResult(checks.BluetoothID, 0, "No Bluetooth devices found")
+		return checks.NewCheckResult(checks.BluetoothID, 0)
 	}
 
 	result := checks.NewCheckResult(checks.BluetoothID, 1)
@@ -47,7 +46,7 @@ func Bluetooth(registryKey mocking.RegistryKey) checks.Check {
 	for _, deviceName := range deviceNames {
 		deviceKey, err = checks.OpenRegistryKey(key, deviceName)
 		if err != nil {
-			result.Result = append(result.Result, fmt.Sprintf("Error opening device subkey %s", deviceName))
+			logger.Log.Error("Error opening device subkey " + deviceName)
 			continue
 		}
 
@@ -56,7 +55,7 @@ func Bluetooth(registryKey mocking.RegistryKey) checks.Check {
 		// Get the device name
 		deviceNameValue, _, err = deviceKey.GetBinaryValue("Name")
 		if err != nil {
-			result.Result = append(result.Result, fmt.Sprintf("Error reading device name %s", deviceName))
+			logger.Log.Error("Error reading device name " + deviceName)
 		} else {
 			result.Result = append(result.Result, string(deviceNameValue))
 		}

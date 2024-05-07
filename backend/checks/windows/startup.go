@@ -49,7 +49,7 @@ func Startup(key1 mocking.RegistryKey, key2 mocking.RegistryKey, key3 mocking.Re
 	}
 
 	if len(slices.Concat(cuValueNames, lmValueNames, lm2ValueNames)) == 0 {
-		return checks.NewCheckResult(checks.StartupID, 0, "No startup programs found")
+		return checks.NewCheckResult(checks.StartupID, 0)
 	}
 
 	output := make([]string, 0)

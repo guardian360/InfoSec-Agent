@@ -13,8 +13,9 @@ import (
 )
 
 type UserSettings struct {
-	Language     int `json:"Language"`
-	ScanInterval int `json:"ScanInterval"`
+	Language     int  `json:"Language"`
+	ScanInterval int  `json:"ScanInterval"`
+	Integration  bool `json:"Integration"`
 }
 
 // NewUserSettings creates a new UserSettings struct
