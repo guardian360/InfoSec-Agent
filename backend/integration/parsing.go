@@ -2,6 +2,7 @@ package integration
 
 import (
 	"fmt"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 )
 

@@ -4,7 +4,6 @@ import (
 	"errors"
 	"os"
 	"path/filepath"
-	"strconv"
 	"testing"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
@@ -99,7 +98,7 @@ func TestExtensionFirefox(t *testing.T) {
 		require.NoError(t, check1.Error)
 		require.NoError(t, check2.Error)
 		expected1 := checks.NewCheckResult(checks.ExtensionFirefoxID, 0, "Test Addon,extension,Test Creator,true")
-		expected2 := checks.NewCheckResult(checks.AdblockFirefoxID, 1, strconv.FormatBool(false))
+		expected2 := checks.NewCheckResult(checks.AdblockFirefoxID, 1)
 		require.Equal(t, expected1, check1)
 		require.Equal(t, expected2, check2)
 	})
@@ -196,7 +195,7 @@ func TestExtensionFirefoxAdblocker(t *testing.T) {
 	require.NoError(t, check1.Error)
 	require.NoError(t, check2.Error)
 	expected1 := checks.NewCheckResult(checks.ExtensionFirefoxID, 0, "adblocker ultimate,extension,Test Creator,true")
-	expected2 := checks.NewCheckResult(checks.AdblockFirefoxID, 0, strconv.FormatBool(true))
+	expected2 := checks.NewCheckResult(checks.AdblockFirefoxID, 0)
 	require.Equal(t, expected1, check1)
 	require.Equal(t, expected2, check2)
 }

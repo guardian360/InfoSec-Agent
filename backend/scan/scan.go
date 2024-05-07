@@ -6,6 +6,8 @@ package scan
 import (
 	"encoding/json"
 	"fmt"
+	"time"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/browsers"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/devices"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/network"
@@ -13,7 +15,6 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/windows"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/integration"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/usersettings"
-	"time"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/cisregistrysettings"
 
@@ -117,7 +118,7 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 	// TODO: Replace with actual workstation ID and user
 	workStationID := 0
 	user := "user"
-	//Define all security/privacy checks that Scan() should execute
+	// Define all security/privacy checks that Scan() should execute
 	totalChecks := len(securityChecks)
 
 	var checkResults []checks.Check
@@ -151,7 +152,7 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 	logger.Log.Info(string(jsonData))
 
 	// TODO: Set usersettings.Integration to true depending on whether user has connected with the API
-	if usersettings.LoadUserSettings("backend/usersettings").Integration == true {
+	if usersettings.LoadUserSettings("backend/usersettings").Integration {
 		integration.ParseScanResults(integration.Metadata{WorkStationID: workStationID, User: user, Date: date}, checkResults)
 	}
 	return checkResults, nil
