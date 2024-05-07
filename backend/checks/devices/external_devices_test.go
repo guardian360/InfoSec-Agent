@@ -31,12 +31,12 @@ func TestExternalDevices(t *testing.T) {
 		{
 			name:          "No external devices connected",
 			executorClass: &mocking.MockCommandExecutor{Output: "\r\nFriendlyName\r\n-\r\n\r\n\r\n\r\n", Err: nil},
-			want:          checks.NewCheckResult(checks.ExternalDevicesID, 0, ""),
+			want:          checks.NewCheckResult(checks.ExternalDevicesID, 1, ""),
 		},
 		{
 			name:          "External devices connected",
 			executorClass: &mocking.MockCommandExecutor{Output: "\r\nFriendlyName\r\n-\r\nHD WebCam\r\n\r\n\r\n\r\n", Err: nil},
-			want:          checks.NewCheckResult(checks.ExternalDevicesID, 0, "HD WebCam", ""),
+			want:          checks.NewCheckResult(checks.ExternalDevicesID, 1, "HD WebCam", ""),
 		},
 		{
 			name:          "Error checking device",

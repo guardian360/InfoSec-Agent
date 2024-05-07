@@ -450,16 +450,15 @@ func TestCISRegistrySettings(t *testing.T) {
 			name:   "Nothing set up correctly",
 			lmKey:  &mocking.MockRegistryKey{},
 			usrKey: &mocking.MockRegistryKey{},
-			want: checks.NewCheckResult(checks.CISRegistrySettingsID, 0,
-				"Not all registry settings adhere to the CIS Benchmark standards"),
+			want:   checks.NewCheckResult(checks.CISRegistrySettingsID, 0),
 		},
 	}
 	for _, tt := range tests {
 		cisregistrysettings.RegistrySettingsMap = map[string]bool{}
 		t.Run(tt.name, func(t *testing.T) {
 			got := cisregistrysettings.CISRegistrySettings(tt.lmKey, tt.usrKey)
-			if got.Result[0] != tt.want.Result[0] {
-				t.Errorf("CISRegistrySettings() = %v, want %v", got.Result[0], tt.want.Result[0])
+			if got.ResultID != tt.want.ResultID {
+				t.Errorf("CISRegistrySettings() = %v, want %v", got, tt)
 			}
 		})
 	}

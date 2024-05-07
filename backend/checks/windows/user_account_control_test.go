@@ -27,24 +27,22 @@ func TestUACCheck(t *testing.T) {
 		{
 			name:        "UAC disabled",
 			executorUAC: &mocking.MockCommandExecutor{Output: "0", Err: nil},
-			want:        checks.NewCheckResult(checks.UacID, 0, "UAC is disabled."),
+			want:        checks.NewCheckResult(checks.UacID, 0),
 		},
 		{
 			name:        "UAC enabled for apps and settings",
 			executorUAC: &mocking.MockCommandExecutor{Output: "2", Err: nil},
-			want: checks.NewCheckResult(checks.UacID, 1, "UAC is turned on for apps making changes to your computer "+
-				"and for changing your settings."),
+			want:        checks.NewCheckResult(checks.UacID, 1),
 		},
 		{
 			name:        "UAC enabled for apps but not for settings",
 			executorUAC: &mocking.MockCommandExecutor{Output: "5", Err: nil},
-			want: checks.NewCheckResult(checks.UacID, 2, "UAC is turned on for apps making changes to "+
-				"your computer."),
+			want:        checks.NewCheckResult(checks.UacID, 2),
 		},
 		{
 			name:        "unknown UAC level",
 			executorUAC: &mocking.MockCommandExecutor{Output: "3", Err: nil},
-			want:        checks.NewCheckResult(checks.UacID, 3, "Unknown UAC level"),
+			want:        checks.NewCheckResult(checks.UacID, 3),
 		},
 		{
 			name:        "UAC error",
