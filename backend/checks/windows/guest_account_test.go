@@ -46,7 +46,7 @@ func TestGuestAccount(t *testing.T) {
 			executorLocalGroupMembers: &mocking.MockCommandExecutor{Output: "", Err: nil},
 			executorYesWord:           &mocking.MockCommandExecutor{Output: "", Err: nil},
 			executorNetUser:           &mocking.MockCommandExecutor{Output: "", Err: nil},
-			want:                      checks.NewCheckResult(checks.GuestAccountID, 0, "Guest localgroup not found"),
+			want:                      checks.NewCheckResult(checks.GuestAccountID, 0),
 		},
 		{
 			name:               "netLocalGroupError",
@@ -65,7 +65,7 @@ func TestGuestAccount(t *testing.T) {
 				Err: nil},
 			executorYesWord: &mocking.MockCommandExecutor{Output: "", Err: nil},
 			executorNetUser: &mocking.MockCommandExecutor{Output: "", Err: nil},
-			want:            checks.NewCheckResult(checks.GuestAccountID, 0, "Guest account not found"),
+			want:            checks.NewCheckResult(checks.GuestAccountID, 0),
 		},
 		{
 			name:                      "YesWordError",
@@ -93,7 +93,7 @@ func TestGuestAccount(t *testing.T) {
 			executorLocalGroupMembers: &mocking.MockCommandExecutor{Output: "-----\r\nguest", Err: nil},
 			executorYesWord:           &mocking.MockCommandExecutor{Output: "\r\n\r\n\r\n\r\n\r\nno yes", Err: nil},
 			executorNetUser:           &mocking.MockCommandExecutor{Output: "\r\n\r\n\r\n\r\n\r\nyes", Err: nil},
-			want:                      checks.NewCheckResult(checks.GuestAccountID, 1, "Guest account is active"),
+			want:                      checks.NewCheckResult(checks.GuestAccountID, 1),
 		},
 		{
 			name:                      "guestAccountFoundAndInactive",
@@ -101,7 +101,7 @@ func TestGuestAccount(t *testing.T) {
 			executorLocalGroupMembers: &mocking.MockCommandExecutor{Output: "-----\r\nguest", Err: nil},
 			executorYesWord:           &mocking.MockCommandExecutor{Output: "\r\n\r\n\r\n\r\n\r\nno yes", Err: nil},
 			executorNetUser:           &mocking.MockCommandExecutor{Output: "\r\n\r\n\r\n\r\n\r\nno", Err: nil},
-			want:                      checks.NewCheckResult(checks.GuestAccountID, 2, "Guest account is not active"),
+			want:                      checks.NewCheckResult(checks.GuestAccountID, 2),
 		},
 	}
 	for _, tt := range tests {

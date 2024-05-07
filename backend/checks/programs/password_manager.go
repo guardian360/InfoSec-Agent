@@ -106,5 +106,5 @@ func PasswordManager(pl ProgramLister) checks.Check {
 		}
 	}
 
-	return checks.NewCheckResult(checks.PasswordManagerID, 1, "No password manager found")
+	return checks.NewCheckResult(checks.PasswordManagerID, 1)
 }

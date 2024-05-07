@@ -55,7 +55,7 @@ func TestPasswordManager(t *testing.T) {
 		{
 			name:         "No Password Manager",
 			mockPrograms: []string{"RandomSoftware"},
-			want:         checks.NewCheckResult(checks.PasswordManagerID, 1, "No password manager found"),
+			want:         checks.NewCheckResult(checks.PasswordManagerID, 1),
 		},
 	}
 

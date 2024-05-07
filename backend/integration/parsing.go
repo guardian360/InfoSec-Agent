@@ -1,9 +1,8 @@
-package scan
+package integration
 
 import (
 	"fmt"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 )
 
 // ParseResult is a struct that encapsulates the results of parsing a scan.
@@ -17,7 +16,7 @@ type ParseResult struct {
 // Metadata is a struct that contains metadata about the scan.
 // This metadata includes the workstation ID, the user who initiated the scan, and the date of the scan.
 type Metadata struct {
-	workStationID int
+	WorkStationID int
 	User          string
 	Date          string
 }
@@ -28,7 +27,7 @@ type Metadata struct {
 type IssueData struct {
 	IssueID        int
 	Detected       bool
-	AdditionalData []interface{}
+	AdditionalData []string
 }
 
 // String returns a string representation of the ParseResult struct.
@@ -57,7 +56,6 @@ func ParseScanResults(metaData Metadata, checks []checks.Check) ParseResult {
 		result = append(result, parseCheckResult(check))
 	}
 	parseResult := ParseResult{Metadata: metaData, Results: result}
-	logger.Log.Info(parseResult.String())
 	return parseResult
 }
 
@@ -70,7 +68,10 @@ func ParseScanResults(metaData Metadata, checks []checks.Check) ParseResult {
 // - IssueData: An IssueData struct that encapsulates the data for the checked issue.
 func parseCheckResult(check checks.Check) IssueData {
 	if check.Error != nil {
-		return IssueData{IssueID: check.IssueID, Detected: false, AdditionalData: nil}
+		return IssueData{IssueID: check.IssueID, Detected: false}
 	}
-	return IssueData{IssueID: check.IssueID, Detected: true, AdditionalData: check.AdditionalData}
+	return IssueData{
+		IssueID:        check.IssueID,
+		Detected:       IssueMap[IssueResPair{check.IssueID, check.ResultID}],
+		AdditionalData: check.Result}
 }

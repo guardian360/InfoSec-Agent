@@ -23,12 +23,11 @@ import "fmt"
 //
 // This struct is primarily used to standardize the return type across various security and privacy checks in the application.
 type Check struct {
-	IssueID        int           `json:"issue_id"`
-	ResultID       int           `json:"result_id"`
-	Result         []string      `json:"result,omitempty"`
-	AdditionalData []interface{} `json:"additional_data,omitempty"`
-	Error          error         `json:"-"` // Don't serialize error field to JSON
-	ErrorMSG       string        `json:"error,omitempty"`
+	IssueID  int      `json:"issue_id"`
+	ResultID int      `json:"result_id"`
+	Result   []string `json:"result,omitempty"`
+	Error    error    `json:"-"` // Don't serialize error field to JSON
+	ErrorMSG string   `json:"error,omitempty"`
 }
 
 // NewCheckResult is a constructor function that creates and returns a new instance of the Check struct.

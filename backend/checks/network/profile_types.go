@@ -36,7 +36,7 @@ func ProfileTypes(registryKey mocking.RegistryKey) checks.Check {
 		return checks.NewCheckErrorf(checks.NetworkProfileTypeID, "error reading sub key names", err)
 	}
 	if len(networkHashes) == 0 {
-		return checks.NewCheckResult(checks.NetworkProfileTypeID, 0, "No network profiles found")
+		return checks.NewCheckResult(checks.NetworkProfileTypeID, 0)
 	}
 	networkNames := make(map[string]string)
 	var name string

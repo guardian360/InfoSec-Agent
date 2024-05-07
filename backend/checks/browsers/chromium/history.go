@@ -85,7 +85,7 @@ func HistoryChromium(browser string) checks.Check {
 	if len(results) > 0 {
 		return checks.NewCheckResult(returnID, 0, strings.Join(results, "\n"))
 	}
-	return checks.NewCheckResult(returnID, 1, "No phishing domains found in the last week")
+	return checks.NewCheckResult(returnID, 1)
 }
 
 // closeDatabase safely closes the provided database connection.

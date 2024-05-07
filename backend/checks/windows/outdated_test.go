@@ -45,33 +45,27 @@ func TestWindowsOutdated(t *testing.T) {
 		{
 			name:         "Windows 11 up-to-date",
 			mockExecutor: &mocking.MockCommandExecutor{Output: "Microsoft Windows [Version 10.0." + latestWin11Build + "]", Err: nil},
-			want: checks.NewCheckResult(checks.WindowsOutdatedID, 0, "Microsoft Windows [Version 10.0."+latestWin11Build+"]",
-				"You are currently up to date."),
+			want:         checks.NewCheckResult(checks.WindowsOutdatedID, 0),
 		},
 		{
 			name:         "Windows 11 outdated",
 			mockExecutor: &mocking.MockCommandExecutor{Output: "Microsoft Windows [Version 10.0.22000.000]", Err: nil},
-			want: checks.NewCheckResult(checks.WindowsOutdatedID, 1, "Microsoft Windows [Version 10.0.22000.000]",
-				"There are updates available for Windows 11."),
+			want:         checks.NewCheckResult(checks.WindowsOutdatedID, 1, "WinVersion: 22000.000"),
 		},
 		{
 			name:         "Windows 10 up-to-date",
 			mockExecutor: &mocking.MockCommandExecutor{Output: "Microsoft Windows [Version 10.0." + latestWin10Build + "]", Err: nil},
-			want: checks.NewCheckResult(checks.WindowsOutdatedID, 0, "Microsoft Windows [Version 10.0."+latestWin10Build+"]",
-				"You are currently up to date."),
+			want:         checks.NewCheckResult(checks.WindowsOutdatedID, 0),
 		},
 		{
 			name:         "Windows 10 outdated",
 			mockExecutor: &mocking.MockCommandExecutor{Output: "Microsoft Windows [Version 10.0.0.0]", Err: nil},
-			want: checks.NewCheckResult(checks.WindowsOutdatedID, 1, "Microsoft Windows [Version 10.0.0.0]",
-				"There are updates available for Windows 10."),
+			want:         checks.NewCheckResult(checks.WindowsOutdatedID, 1, "WinVersion: 0.0"),
 		},
 		{
 			name:         "Unsupported Windows version",
 			mockExecutor: &mocking.MockCommandExecutor{Output: "Microsoft Windows [Version 9.0.0.0]", Err: nil},
-			want: checks.NewCheckResult(checks.WindowsOutdatedID, 2, "Microsoft Windows [Version 9.0.0.0]",
-				"You are using a Windows version which does not have support anymore. "+
-					"Consider updating to Windows 10 or Windows 11."),
+			want:         checks.NewCheckResult(checks.WindowsOutdatedID, 2),
 		},
 		{
 			name:         "Error executing command",

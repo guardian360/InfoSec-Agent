@@ -29,7 +29,7 @@ func TestNetworkProfileTypes(t *testing.T) {
 		{
 			name:        "No network profiles found",
 			registryKey: &mocking.MockRegistryKey{SubKeys: []mocking.MockRegistryKey{{KeyName: "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\NetworkList\\Profiles"}}},
-			want:        checks.NewCheckResult(checks.NetworkProfileTypeID, 0, "No network profiles found"),
+			want:        checks.NewCheckResult(checks.NetworkProfileTypeID, 0),
 		},
 		{
 			name: "All network profiles are public",
