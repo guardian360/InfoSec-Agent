@@ -1,3 +1,7 @@
+// Package gamification handles the gamification within the application, to reward users for performing security checks and staying secure.
+//
+// Exported function(s): PointCalculation, LighthouseStateTransition
+
 package gamification
 
 import (
@@ -10,11 +14,19 @@ import (
 )
 
 type GameState struct {
-	Points         int
-	PointsHistory  []int
-	LigthouseState int
+	Points          int
+	PointsHistory   []int
+	LighthouseState int
 }
 
+// PointCalculation calculates the number of points for the user based on the check results.
+//
+// Parameters:
+//   - gs (GameState): The current game state, which includes the user's points and lighthouse state.
+//   - securityChecks ([] func() checks.Check): A slice of check functions, which will be executed to calculate the points amount.
+//
+// Returns:
+//   - GameState: The updated game state with the new points amount.
 func PointCalculation(gs GameState, securityChecks []func() checks.Check) GameState {
 	gs.Points = 0
 
@@ -51,16 +63,26 @@ func PointCalculation(gs GameState, securityChecks []func() checks.Check) GameSt
 	return gs
 }
 
+// LighthouseStateTransition determines the lighthouse state based on the user's points. (TO DO: it should be based also on point history / time of use)
+//
+// Parameters:
+//   - gs (GameState): The current game state, which includes the user's points and lighthouse state.
+//
+// Returns:
+//   - GameState: The updated game state with the new ligthouse state.
 func LighthouseStateTransition(gs GameState) GameState {
-	if gs.Points < 5 {
-		gs.LigthouseState = 0
-	} else if gs.Points < 10 {
-		gs.LigthouseState = 1
-	} else if gs.Points < 15 {
-		gs.LigthouseState = 2
+	if gs.Points < 10 {
+		gs.LighthouseState = 0
+	} else if gs.Points < 20 {
+		gs.LighthouseState = 1
+	} else if gs.Points < 30 {
+		gs.LighthouseState = 2
+	} else if gs.Points < 40 {
+		gs.LighthouseState = 3
+	} else if gs.Points < 50 {
+		gs.LighthouseState = 4
 	} else {
-		gs.LigthouseState = 3
+		gs.LighthouseState = 5
 	}
 	return gs
-
 }

@@ -136,7 +136,7 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 			return checkResults, err
 		}
 	}
-	initialState := gamification.GameState{Points: 0, LigthouseState: 0} // tijdelijk: uiteindelijk in main met onthoud wat gamestate is
+	initialState := gamification.GameState{Points: 0, LighthouseState: 0} // tijdelijk: uiteindelijk in main met onthoud wat gamestate is
 	print(gamification.PointCalculation(initialState, securityChecks).Points)
 
 	// Serialize check results to JSON
