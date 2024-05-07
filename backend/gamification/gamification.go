@@ -4,8 +4,9 @@ import (
 	"database/sql"
 	"strconv"
 
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/database"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/scan"
 )
 
 type GameState struct {
@@ -14,10 +15,10 @@ type GameState struct {
 	LigthouseState int
 }
 
-func PointCalculation(gs GameState) GameState {
+func PointCalculation(gs GameState, securityChecks []func() checks.Check) GameState {
 	gs.Points = 0
 
-	for _, check := range scan.SecurityChecks {
+	for _, check := range securityChecks {
 		result := check()
 		result.ResultID = 0
 		if result.Error != nil {
@@ -32,7 +33,7 @@ func PointCalculation(gs GameState) GameState {
 		if err != nil {
 			logger.Log.ErrorWithErr("Error opening database:", err)
 		}
-		sev, err := scan.GetSeverity(db, result.IssueID, result.ResultID)
+		sev, err := database.GetSeverity(db, result.IssueID, result.ResultID)
 
 		if err != nil {
 			logger.Log.ErrorWithErr("Error getting severity:", err)
