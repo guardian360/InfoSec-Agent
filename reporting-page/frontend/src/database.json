@@ -103,28 +103,25 @@
         ]
     },
     "40": {
-        "Name": "Network sharing enabled",
-        "Type": "Security",
-        "Information": "Network sharing refers to the ability to share resources, such as files, folders, printers, and internet connections, between multiple devices connected to a network. It allows users to access and collaborate on shared resources across the network, facilitating data exchange and collaboration among users and devices. Permissions can be configured to allow or deny access to specific users or groups, ensuring that sensitive data remains secure. If you do not need network sharing it is safer to turn it off.",
+        "Name": "Advertisement ID sharing disabled",
+        "Type": "Privacy",
+        "Information": "The advertisement ID setting allows windows to send you personalized ads. It is important to limit the amount of entities that have your personal data, therefore it is safer to turn this setting off.",
         "Solution": 
-        [   
-            "Go to Start > Settings > System > Nearby share settings.", 
-            "Here you can control the network sharing settings and turn the feature off."
+        [
+            "Advertisement ID sharing is disabled, so there is no action needed."
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/network-sharing/nearby-sharing-1.jpg",
-            "frontend/src/assets/images/network-sharing/nearby-sharing-2.jpg"
         ]
     },
     "41": {
-        "Name": "Network sharing partially enabled",
+        "Name": "Advertisement ID sharing enabled",
         "Type": "Security",
-        "Information": "Network sharing refers to the ability to share resources, such as files, folders, printers, and internet connections, between multiple devices connected to a network. It allows users to access and collaborate on shared resources across the network, facilitating data exchange and collaboration among users and devices. Permissions can be configured to allow or deny access to specific users or groups, ensuring that sensitive data remains secure. If you do not need network sharing it is safer to turn it off.",
+        "Information": "The advertisement ID setting allows windows to send you personalized ads. It is important to limit the amount of entities that have your personal data, therefore it is safer to turn this setting off.",
         "Solution": 
-        [   
-            "Go to Start > Settings > System > Nearby share settings.", 
-            "Here you can control the network sharing settings and turn the feature off."
+        [
+            "Go to Start > Settings > Privacy & Security > General ",
+            "Here you can control the advertisement ID settings and turn the feature on/off."
         ],
         "Screenshots":
         [
