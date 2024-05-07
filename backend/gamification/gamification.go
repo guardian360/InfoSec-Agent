@@ -13,6 +13,8 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 )
 
+// GameState is a struct that represents the state of the gamification.
+// This consists of the user's points, a history of all previous points, and a lighthouse state.
 type GameState struct {
 	Points          int
 	PointsHistory   []int
@@ -24,6 +26,8 @@ type GameState struct {
 // Parameters:
 //   - gs (GameState): The current game state, which includes the user's points and lighthouse state.
 //   - securityChecks ([] func() checks.Check): A slice of check functions, which will be executed to calculate the points amount.
+//
+// TO DO: Points based on more factors than only the checks.
 //
 // Returns:
 //   - GameState: The updated game state with the new points amount.
@@ -63,10 +67,12 @@ func PointCalculation(gs GameState, securityChecks []func() checks.Check) GameSt
 	return gs
 }
 
-// LighthouseStateTransition determines the lighthouse state based on the user's points. (TO DO: it should be based also on point history / time of use)
+// LighthouseStateTransition determines the lighthouse state based on the user's points.
 //
 // Parameters:
 //   - gs (GameState): The current game state, which includes the user's points and lighthouse state.
+//
+// TO DO: It should be based also on point history / time of use
 //
 // Returns:
 //   - GameState: The updated game state with the new ligthouse state.
