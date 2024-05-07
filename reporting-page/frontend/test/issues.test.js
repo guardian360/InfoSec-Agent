@@ -3,6 +3,7 @@ import test from 'unit.js';
 import {JSDOM} from 'jsdom';
 import {jest} from '@jest/globals';
 import data from '../src/database.json' assert { type: 'json' };
+import {mockPageFunctions,clickEvent,storageMock} from './mock.js';
 
 global.TESTING = true;
 
@@ -21,20 +22,7 @@ function emptyTable(table) {
 }
 
 // Mock sessionStorage
-const sessionStorageMock = (() => {
-  let store = {};
-
-  return {
-    getItem: (key) => store[key],
-    setItem: (key, value) => {
-      store[key] = value.toString();
-    },
-    clear: () => {
-      store = {};
-    },
-  };
-})();
-global.sessionStorage = sessionStorageMock;
+global.sessionStorage = storageMock;
 
 /** Mock of getLocalizationString function
  *
@@ -57,37 +45,18 @@ function mockGetLocalizationString(messageID) {
   return myPromise;
 }
 
+// Mock often used page functions
+mockPageFunctions();
+
 // Mock Localize function
 jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
   Localize: jest.fn().mockImplementation((input) => mockGetLocalizationString(input)),
-}));
-
-// Mock LogError
-jest.unstable_mockModule('../wailsjs/go/main/Tray.js', () => ({
-  LogError: jest.fn(),
-}));
-
-// Mock Navigation
-jest.unstable_mockModule('../src/js/navigation-menu.js', () => ({
-  closeNavigation: jest.fn(),
-  markSelectedNavigationItem: jest.fn(),
-  loadPersonalizeNavigation: jest.fn(),
-}));
-
-// Mock retrieveTheme
-jest.unstable_mockModule('../src/js/personalize.js', () => ({
-  retrieveTheme: jest.fn(),
 }));
 
 // Mock retrieveTheme
 jest.unstable_mockModule('../src/js/issue.js', () => ({
   openIssuePage: jest.fn(),
 }));
-
-// Create mock mouse events
-const clickEvent = new window.MouseEvent('click');
-const beginHover = new window.MouseEvent('mouseenter');
-const endHover = new window.MouseEvent('mouseleave')
 
 // Test cases
 describe('Issues table', function() {

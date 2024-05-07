@@ -15,6 +15,7 @@ const issuesWithResultsShow = ['60', '70', '80', '90', '100', '110', '160'];
  * @param {int} stepCounter Counter specifying the current step
  */
 export function updateSolutionStep(solutionText, solutionScreenshot, solution, screenshots, stepCounter) {
+  console.log(stepCounter);
   solutionText.innerHTML = `${stepCounter + 1}. ${solution[stepCounter]}`;
   solutionScreenshot.src = screenshots[stepCounter].toString();
 }
