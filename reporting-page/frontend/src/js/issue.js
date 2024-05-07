@@ -140,7 +140,7 @@ export function parseShowResult(issueId, currentIssue) {
   switch (issueId) {
   case '11':
     resultLine += `The following devices are or have been connected via bluetooth: <br>`;
-    issues.find((issue) => issue.issue_id === 11).result.forEach((issue) => {
+    issues.find((issue) => issue.issue_id === 1).result.forEach((issue) => {
       resultLine += `${issue} <br> `;
     });
     break;
