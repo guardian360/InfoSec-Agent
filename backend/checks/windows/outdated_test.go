@@ -3,24 +3,13 @@ package windows_test
 import (
 	"errors"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/windows"
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/stretchr/testify/require"
 	"golang.org/x/net/html"
-	"os"
 	"testing"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 )
-
-func TestMain(m *testing.M) {
-	logger.SetupTests()
-
-	// Run tests
-	exitCode := m.Run()
-
-	os.Exit(exitCode)
-}
 
 // TestWindowsOutdated is a function that tests the behavior of the Outdated function with various inputs.
 //
