@@ -446,7 +446,7 @@ func RefreshMenu() {
 // Returns: error: An error object if an error occurred during the scan, otherwise nil.
 func Popup(scanResult []checks.Check) error {
 	// Get the database data from the scan results
-	dbData, err := scan.GetDataBaseData(scanResult)
+	dbData, err := scan.GetDataBaseData(scanResult, "./reporting-page/database.db")
 	if err != nil {
 		return fmt.Errorf("error getting database data: %w", err)
 	}
