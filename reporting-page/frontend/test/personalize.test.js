@@ -210,11 +210,11 @@ describe('openPersonalizePage function', () => {
     const title = document.getElementById('title');
     const favicon = document.getElementById('favicon');
     const setItemMock = jest.spyOn(localStorage, 'setItem').mockImplementation(() => {});
-    
+
     // Act
     resetButton.click();
 
-    setItemMock.mockRestore();    
+    setItemMock.mockRestore();
     // Arrange
     expect(localStorage.getItem('favicon')) === null;
     expect(localStorage.getItem('title')) === null;

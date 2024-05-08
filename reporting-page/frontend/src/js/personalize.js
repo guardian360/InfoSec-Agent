@@ -183,7 +183,7 @@ export function retrieveTheme() {
  * Resets the settings by clearing localStorage and restoring default values.
  */
 export function resetSettings() {
-  const theme = localStorage.getItem('theme')
+  const theme = localStorage.getItem('theme');
 
   localStorage.clear();
   const logoPhoto = 'frontend/src/assets/images/logoTeamA-transformed.png';
@@ -195,5 +195,5 @@ export function resetSettings() {
 
   const favicon = document.getElementById('favicon');
   favicon.href = logoPhoto;
-  localStorage.setItem('theme', theme)
+  localStorage.setItem('theme', theme);
 }
