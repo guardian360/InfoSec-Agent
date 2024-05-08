@@ -86,7 +86,7 @@ describe('Risk graph', function() {
   it('toggleRisks should change which risk levels are shown in the risk graph', async function() {
     // arrange
     const graph = await import('../src/js/graph.js');
-    const rc = new RiskCounters(true);
+    const rc = new RiskCounters();
     const g = new graph.Graph('interval-graph', rc);
     await g.createGraphChart();
 
@@ -126,7 +126,7 @@ describe('Risk graph', function() {
   it('graphDropdown should show and hide a togglable dropdown button', async function() {
     // arrange
     const graph = await import('../src/js/graph.js');
-    const rc = new RiskCounters(true);
+    const rc = new RiskCounters();
     const g = new graph.Graph(undefined, rc);
 
     // act
@@ -196,7 +196,7 @@ describe('Risk graph', function() {
   it('getOptions should return the correct graph options', async function() {
     // arrange
     const graph = await import('../src/js/graph.js');
-    const rc = new RiskCounters(true);
+    const rc = new RiskCounters();
     const g = new graph.Graph(undefined, rc);
 
     const expectedOptions = {
@@ -227,7 +227,7 @@ describe('Risk graph', function() {
     // arrange
     const graph = await import('../src/js/graph.js');
     const chart = await import('chart.js/auto');
-    const rc = new RiskCounters(true);
+    const rc = new RiskCounters();
     const getDataMock = jest.spyOn(graph.Graph.prototype, 'getData');
     const getOptionsMock = jest.spyOn(graph.Graph.prototype, 'getOptions');
 

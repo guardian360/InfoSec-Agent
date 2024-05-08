@@ -28,22 +28,14 @@ export class RiskCounters {
    * @param {int} low Last recorded amount of low risks
    * @param {int} info Last recorded amount of information risks
    * @param {int} acceptable Last recorded amount of acceptable risks
-   * @param {boolean} [testing=false] Specifies if the class is being used in testing, normally set to *false*
    */
-  constructor(high, medium, low, info, acceptable, testing=false) {
-    if (testing) {
-      this.highRiskColor = 'rgb(0, 255, 255)';
-      this.mediumRiskColor = 'rgb(0, 0, 255)';
-      this.lowRiskColor = 'rgb(255, 0, 0)';
-      this.infoColor = 'rgb(122, 122, 122)';
-      this.noRiskColor = 'rgb(255, 255, 0)';
-    } else {
-      this.highRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--high-risk-color');
-      this.mediumRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--medium-risk-color');
-      this.lowRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--low-risk-color');
-      this.infoColor = getComputedStyle(document.documentElement).getPropertyValue('--info-color');
-      this.noRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--no-risk-color');
-    }
+  constructor(high, medium, low, info, acceptable) {
+    this.highRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--high-risk-color');
+    this.mediumRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--medium-risk-color');
+    this.lowRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--low-risk-color');
+    this.infoColor = getComputedStyle(document.documentElement).getPropertyValue('--info-color');
+    this.noRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--no-risk-color');
+
     this.allHighRisks.push(high);
     this.allMediumRisks.push(medium);
     this.allLowRisks.push(low);

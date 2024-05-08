@@ -105,7 +105,7 @@ describe('Risk level distribution piechart', function() {
   it('getOptions should return the correct piechart options', async function() {
     // arrange
     const chart = await import('../src/js/piechart.js');
-    const rc = new RiskCounters(true);
+    const rc = new RiskCounters();
     const p = new chart.PieChart(undefined, rc);
 
     const titles = ['Total', 'Security', 'Privacy'];
@@ -131,7 +131,7 @@ describe('Risk level distribution piechart', function() {
     // arrange
     const piechart = await import('../src/js/piechart.js');
     const chart = await import('chart.js/auto');
-    const rc = new RiskCounters(true);
+    const rc = new RiskCounters();
     const getDataMock = jest.spyOn(piechart.PieChart.prototype, 'getData');
     const getOptionsMock = jest.spyOn(piechart.PieChart.prototype, 'getOptions');
 
