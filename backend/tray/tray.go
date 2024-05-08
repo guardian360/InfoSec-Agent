@@ -436,34 +436,18 @@ func RefreshMenu() {
 	}
 }
 
-// Notify displays a notification to the user when a scan is completed.
+// Popup displays a notification to the user when a scan is completed.
 //
 // This function creates a notification with a title, message, and icon to inform the user that a scan has been completed.
 // The notification also includes an action button that lets the user open the reporting page.
 //
-// Parameters: scanResult: A slice of checks representing the scan results.
+// Parameters: scanResult []checks.Check: A slice of checks representing the scan results.
 //
 // Returns: error: An error object if an error occurred during the scan, otherwise nil.
 func Popup(scanResult []checks.Check) error {
-	// Get the database data from the scan results
-	dbData, err := scan.GetDataBaseData(scanResult, "./reporting-page/database.db")
-	if err != nil {
-		return fmt.Errorf("error getting database data: %w", err)
-	}
-	severityCounters := make(map[int]int)
-	for _, data := range dbData {
-		severityCounters[data.Severity]++
-	}
-
 	// Generate notification message based on the severity of the issues found
-	resultMessage := ""
-	if severityCounters[3] > 0 {
-		resultMessage = fmt.Sprintf("The privacy and security scan has been completed. You have %d high risk issues. Open the reporting page to see more information.", severityCounters[3])
-	} else if severityCounters[2] > 0 {
-		resultMessage = fmt.Sprintf("The privacy and security scan has been completed. You have %d medium risk issues. Open the reporting page to see more information.", severityCounters[2])
-	} else {
-		resultMessage = "The privacy and security scan has been completed. Open the reporting page to view the results."
-	}
+	severityCounters := severityCounters(scanResult)
+	resultMessage := popupMessage(severityCounters)
 
 	// Create a notification to inform the user that the scan is complete
 	notification := toast.Notification{
@@ -480,4 +464,44 @@ func Popup(scanResult []checks.Check) error {
 		return fmt.Errorf("error pushing scan notification: %w", err)
 	}
 	return nil
+}
+
+// severityCounters generates a map of severity counters based on the issues found during the scan.
+//
+// This function takes a slice of checks representing the scan results and generates a map of severity counters based on the issues found.
+// The severity counters map contains the count of issues at each severity level (1, 2, or 3).
+//
+// Parameters: scanResult []checks.Check: A slice of checks representing the scan results.
+//
+// Returns: map[int]int: A map containing the count of issues at each severity level.
+func severityCounters(scanResult []checks.Check) map[int]int {
+	dbData, err := scan.GetDataBaseData(scanResult, "./reporting-page/database.db")
+	if err != nil {
+		logger.Log.ErrorWithErr("Error getting database data:", err)
+	}
+	severityCounters := make(map[int]int)
+	for _, issue := range dbData {
+		severityCounters[issue.Severity]++
+	}
+	return severityCounters
+}
+
+// generatePopupMessage generates a notification message based on the severity of the issues found during the scan.
+//
+// This function takes a map of severity counters as input and generates a notification message based on the number of issues found at each severity level.
+// The message informs the user about the number of issues found during the scan and prompts them to open the reporting page for more information.
+//
+// Parameters: severityCounters map[int]int: A map containing the count of issues at each severity level.
+//
+// Returns: string: A notification message based on the severity of the issues found during the scan.
+func popupMessage(severityCounters map[int]int) string {
+	var message string
+	if severityCounters[3] > 0 {
+		message = fmt.Sprintf("The privacy and security scan has been completed. You have %d high risk issues. Open the reporting page to see more information.", severityCounters[3])
+	} else if severityCounters[2] > 0 {
+		message = fmt.Sprintf("The privacy and security scan has been completed. You have %d medium risk issues. Open the reporting page to see more information.", severityCounters[2])
+	} else {
+		message = "The privacy and security scan has been completed. Open the reporting page to view the results."
+	}
+	return message
 }
