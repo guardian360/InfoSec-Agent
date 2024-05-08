@@ -47,7 +47,7 @@ func GuestAccount(
 		}
 	}
 	if !found {
-		return checks.NewCheckResult(checks.GuestAccountID, 0, "Guest localgroup not found")
+		return checks.NewCheckResult(checks.GuestAccountID, 0)
 	}
 
 	// Get local group members using net localgroup command
@@ -64,7 +64,7 @@ func GuestAccount(
 		}
 	}
 	if guestUser == "" {
-		return checks.NewCheckResult(checks.GuestAccountID, 0, "Guest account not found")
+		return checks.NewCheckResult(checks.GuestAccountID, 0)
 	}
 
 	// Retrieve current username
@@ -90,8 +90,7 @@ func GuestAccount(
 	outputString = strings.Split(string(output), "\r\n")
 	// Check if the guest account is active based on the presence of the word 'yes' in the user's language
 	if strings.Contains(outputString[5], yesWord) {
-		return checks.NewCheckResult(checks.GuestAccountID, 1,
-			"Guest account is active")
+		return checks.NewCheckResult(checks.GuestAccountID, 1)
 	}
-	return checks.NewCheckResult(checks.GuestAccountID, 2, "Guest account is not active")
+	return checks.NewCheckResult(checks.GuestAccountID, 2)
 }

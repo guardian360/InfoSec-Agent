@@ -31,7 +31,7 @@ func RemoteDesktopCheck(registryKey mocking.RegistryKey) checks.Check {
 	}
 	// Check if Remote Desktop is enabled or disabled based on the value of fDenyTSConnections
 	if val == 0 {
-		return checks.NewCheckResult(checks.RemoteDesktopID, 0, "Remote Desktop is enabled")
+		return checks.NewCheckResult(checks.RemoteDesktopID, 0)
 	}
-	return checks.NewCheckResult(checks.RemoteDesktopID, 1, "Remote Desktop is disabled")
+	return checks.NewCheckResult(checks.RemoteDesktopID, 1)
 }

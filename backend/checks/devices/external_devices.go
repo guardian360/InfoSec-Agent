@@ -28,7 +28,10 @@ func ExternalDevices(executorClass mocking.CommandExecutor) checks.Check {
 	if err != nil {
 		return checks.NewCheckErrorf(checks.ExternalDevicesID, "error checking device", err)
 	}
-	return checks.NewCheckResult(checks.ExternalDevicesID, 0, output...)
+	if output == nil {
+		return checks.NewCheckResult(checks.ExternalDevicesID, 0)
+	}
+	return checks.NewCheckResult(checks.ExternalDevicesID, 1, output...)
 }
 
 // CheckDeviceClasses is a function that runs the Get-PnpDevice command for device classes.

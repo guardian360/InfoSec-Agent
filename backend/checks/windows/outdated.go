@@ -80,20 +80,18 @@ func Outdated(mockExecutor mocking.CommandExecutor) checks.Check {
 	switch {
 	case findWindowsVersion(majorVersion, minorVersion) == 11:
 		if winVer == latestWin11Build {
-			return checks.NewCheckResult(checks.WindowsOutdatedID, 0, strings.TrimSpace(versionString), "You are currently up to date.")
+			return checks.NewCheckResult(checks.WindowsOutdatedID, 0)
 		} else {
-			return checks.NewCheckResult(checks.WindowsOutdatedID, 1, strings.TrimSpace(versionString), "There are updates available for Windows 11.")
+			return checks.NewCheckResult(checks.WindowsOutdatedID, 1, "WinVersion: "+winVer)
 		}
 	case findWindowsVersion(majorVersion, minorVersion) == 10:
 		if winVer == latestWin10Build {
-			return checks.NewCheckResult(checks.WindowsOutdatedID, 0, strings.TrimSpace(versionString), "You are currently up to date.")
+			return checks.NewCheckResult(checks.WindowsOutdatedID, 0)
 		} else {
-			return checks.NewCheckResult(checks.WindowsOutdatedID, 1, strings.TrimSpace(versionString), "There are updates available for Windows 10.")
+			return checks.NewCheckResult(checks.WindowsOutdatedID, 1, "WinVersion: "+winVer)
 		}
 	default:
-		return checks.NewCheckResult(checks.WindowsOutdatedID, 2, strings.TrimSpace(versionString),
-			"You are using a Windows version which does not have support anymore. "+
-				"Consider updating to Windows 10 or Windows 11.")
+		return checks.NewCheckResult(checks.WindowsOutdatedID, 2)
 	}
 }
 

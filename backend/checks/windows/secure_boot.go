@@ -31,10 +31,10 @@ func SecureBoot(registryKey mocking.RegistryKey) checks.Check {
 
 	// Using the status, determine if secure boot is enabled or not
 	if secureBootStatus == 1 {
-		return checks.NewCheckResult(checks.SecureBootID, 1, "Secure boot is enabled")
+		return checks.NewCheckResult(checks.SecureBootID, 1)
 	}
 	if secureBootStatus == 0 {
-		return checks.NewCheckResult(checks.SecureBootID, 0, "Secure boot is disabled")
+		return checks.NewCheckResult(checks.SecureBootID, 0)
 	}
-	return checks.NewCheckResult(checks.SecureBootID, 2, "Secure boot status is unknown")
+	return checks.NewCheckResult(checks.SecureBootID, 2)
 }
