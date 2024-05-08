@@ -196,8 +196,6 @@ func GetJSONKey(db *sql.DB, issueID int, resultID int) (int, error) {
 //
 // path (string) - the path to the database
 //
-// resultIDs ([]int) - the list of results corresponding to each check
-//
 // Returns: list of all severities and JSON keys
 func GetDataBaseData(checks []checks.Check, path string) ([]DataBaseData, error) {
 	logger.Log.Info("Opening database")
