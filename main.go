@@ -1,12 +1,12 @@
-// Package main contains the entry point of the application.
+// Package main contains the entry point of the tray application.
 //
 // Exported function(s): _
 package main
 
 import (
-	"github.com/InfoSec-Agent/InfoSec-Agent/localization"
-	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
-	"github.com/InfoSec-Agent/InfoSec-Agent/tray"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/localization"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/tray"
 	"github.com/getlantern/systray"
 )
 
@@ -19,7 +19,7 @@ import (
 //
 // Returns: None. This function does not return a value as it is the entry point of the application.
 func main() {
-	localization.Init("")
+	localization.Init("backend/")
 	// Set up the logger, passing the log-level you desire (it logs everything equal and lower to the log-level):
 	// 0 - Trace
 	// 1 - Debug
