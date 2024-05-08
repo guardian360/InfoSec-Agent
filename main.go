@@ -19,7 +19,6 @@ import (
 //
 // Returns: None. This function does not return a value as it is the entry point of the application.
 func main() {
-	localization.Init("backend/")
 	// Set up the logger, passing the log-level you desire (it logs everything equal and lower to the log-level):
 	// 0 - Trace
 	// 1 - Debug
@@ -31,5 +30,6 @@ func main() {
 	// If you want to log all levels up to the specified level, pass -1.
 	logger.Setup(0, -1)
 	logger.Log.Info("Starting InfoSec Agent")
+	localization.Init("backend/")
 	systray.Run(tray.OnReady, tray.OnQuit)
 }
