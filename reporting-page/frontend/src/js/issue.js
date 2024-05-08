@@ -4,7 +4,7 @@ import {getLocalization} from './localize.js';
 import {retrieveTheme} from './personalize.js';
 
 let stepCounter = 0;
-const issuesWithResultsShow = ['11', '60', '70', '80', '90', '100', '110', '160'];
+const issuesWithResultsShow = ['11', '60', '70', '80', '90', '100', '110', '160', '320'];
 
 /** Update contents of solution guide
  *
@@ -170,6 +170,15 @@ export function parseShowResult(issueId, currentIssue) {
       resultLine += `You changed your password on: ${issue}`;
     });
     break;
+  case '320':
+    const table = cisregistryTable(issues.find((issue) => issue.issue_id === 32).result);
+    resultLine += `<table class = "issues-table">`;
+    table.forEach((entry) => {
+      resultLine += `<tr><td style="width: 30%; word-break: break-all">${entry.registryKey}</td>
+        <td>${entry.values.join('<br>')}</td></tr>`;
+    });
+    resultLine += '</table>';
+    break;
   default:
     break;
   }
@@ -192,6 +201,35 @@ export function parseShowResult(issueId, currentIssue) {
     applications = applications.slice(0, -2);
     resultLine = `The following applications currently have been given permission: ${applications}.`;
     return resultLine;
+  }
+
+  /**
+   * Create a table for the CIS registry issues
+   * @param {string} issues list of incorrect registry keys
+   * @return {*[]} table with registry keys and values
+   */
+  function cisregistryTable(issues) {
+    const table = [];
+    let currentKey = null;
+    let currentValues = [];
+
+    issues.forEach((issue) => {
+      if (issue.includes('SYSTEM') || issue.includes('SOFTWARE')) {
+        if (currentKey) {
+          table.push({registryKey: currentKey, values: currentValues});
+        }
+        currentKey = issue;
+        currentValues = [];
+      } else if (currentKey) {
+        currentValues.push(issue);
+      }
+    });
+
+    if (currentKey) {
+      table.push({registryKey: currentKey, values: currentValues});
+    }
+
+    return table;
   }
 
   const result = `
