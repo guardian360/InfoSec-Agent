@@ -48,6 +48,7 @@
         ],
         "Screenshots":
         [
+            "TOBEFILLED"
         ]
     },
     "30": {
@@ -846,6 +847,7 @@
         ],
         "Screenshots":
         [
+            "TOBEFILLED"
         ]
     },	
     "231": {
@@ -978,27 +980,28 @@
         ]
     },	
     "310": {
-        "Name": "Potential phishing domains found on Mozilla Firefox",
+        "Name": "No potential phishing domains found on Mozilla Firefox",
         "Type": "Privacy",
-        "Information": "Be careful browsing the internet as trusted websites could be spoofed easily. Furthermore there are a lot of websites with malicious intentions. In case of doubt of actively browsing on a potential phishing website, it is advised to change your password.",
-        "Solution": 
-        [   		
-          "Be careful browsing the internet as trusted websites could be spoofed easily. Furthermore there are a lot of websites with malicious intentions. In case of doubt of actively browsing on a potential phishing website, it is advised to change your password."  
+        "Information": "Phishing domains are fake websites designed to trick people into sharing sensitive information like passwords or credit card details. They look real, mimicking trusted brands or organizations. These scams exploit trust and curiosity to steal personal data.",
+        "Solution":
+        [
+            "Be careful browsing the internet as trusted websites could be spoofed easily. Furthermore there are a lot of websites with malicious intentions. In case of doubt of actively browsing on a potential phishing website, it is advised to change your password."
         ],
         "Screenshots":
         [
         ]
     },		
     "311": {
-        "Name": "No potential phishing domains found on Mozilla Firefox",
+        "Name": "Potential phishing domains found on Mozilla Firefox",
         "Type": "Privacy",
-        "Information": "Phishing domains are fake websites designed to trick people into sharing sensitive information like passwords or credit card details. They look real, mimicking trusted brands or organizations. These scams exploit trust and curiosity to steal personal data.",
-        "Solution": 
-        [   		
-           "Be careful browsing the internet as trusted websites could be spoofed easily. Furthermore there are a lot of websites with malicious intentions. In case of doubt of actively browsing on a potential phishing website, it is advised to change your password." 
+        "Information": "Be careful browsing the internet as trusted websites could be spoofed easily. Furthermore there are a lot of websites with malicious intentions. In case of doubt of actively browsing on a potential phishing website, it is advised to change your password.",
+        "Solution":
+        [
+            "Be careful browsing the internet as trusted websites could be spoofed easily. Furthermore there are a lot of websites with malicious intentions. In case of doubt of actively browsing on a potential phishing website, it is advised to change your password."
         ],
         "Screenshots":
         [
+            "TOBEFILLED"
         ]
     },
     "320": {
