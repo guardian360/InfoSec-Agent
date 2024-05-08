@@ -4,6 +4,7 @@ package network
 import (
 	"fmt"
 	"regexp"
+	"sort"
 	"strings"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
@@ -54,6 +55,7 @@ func OpenPorts(tasklistexecutor, netstatexecutor mocking.CommandExecutor) checks
 	netstat := strings.Split(string(output), "\n")
 
 	result := checks.NewCheckResult(checks.PortsID, 0)
+	processPorts := make(map[string][]string)
 	for _, line := range netstat[4 : len(netstat)-1] {
 		words := strings.Fields(line)
 
@@ -79,8 +81,23 @@ func OpenPorts(tasklistexecutor, netstatexecutor mocking.CommandExecutor) checks
 		// Return the process name from the pid
 		name, ok := pids[pid]
 		if ok {
-			result.Result = append(result.Result, fmt.Sprintf("port: %s, process: %s", port, name))
+			processPorts[name] = append(processPorts[name], port)
 		}
+	}
+	// Create a slice for the keys
+	keys := make([]string, 0, len(processPorts))
+
+	for k := range processPorts {
+		keys = append(keys, k)
+	}
+
+	// Sort the keys
+	sort.Strings(keys)
+
+	// Iterate over the sorted keys and construct the ouput strings
+	for _, name := range keys {
+		ports := processPorts[name]
+		result.Result = append(result.Result, fmt.Sprintf("process: %s, port: %s", name, strings.Join(ports, ", ")))
 	}
 
 	return result

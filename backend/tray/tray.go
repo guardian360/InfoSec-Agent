@@ -83,8 +83,8 @@ func OnReady() {
 	systray.SetIcon(icon.Data)
 	systray.SetTooltip("InfoSec Agent")
 
-	Language = usersettings.LoadUserSettings("usersettings").Language
-	scanInterval := usersettings.LoadUserSettings("usersettings").ScanInterval
+	Language = usersettings.LoadUserSettings("backend/usersettings").Language
+	scanInterval := usersettings.LoadUserSettings("backend/usersettings").ScanInterval
 
 	// Generate the menu for the system tray application
 	mReportingPage := systray.AddMenuItem(localization.Localize(Language, "Tray.ReportingPageTitle"),
@@ -298,9 +298,9 @@ func ChangeScanInterval(testInput ...string) {
 	ScanTicker = time.NewTicker(time.Duration(interval) * time.Hour)
 	logger.Log.Printf("Scan interval changed to %d hours\n", interval)
 	usersettings.SaveUserSettings(usersettings.UserSettings{
-		Language:     usersettings.LoadUserSettings("usersettings").Language,
+		Language:     usersettings.LoadUserSettings("backend/usersettings").Language,
 		ScanInterval: interval,
-	}, "usersettings")
+	}, "backend/usersettings")
 }
 
 // ScanNow initiates an immediate security scan, bypassing the scheduled intervals.
