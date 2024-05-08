@@ -141,7 +141,7 @@ func OnReady() {
 				logger.Log.ErrorWithErr("Error scanning:", err)
 			}
 		case <-mChangeLanguage.ClickedCh:
-			ChangeLanguage("usersettings")
+			ChangeLanguage()
 			RefreshMenu()
 		case <-mQuit.ClickedCh:
 			systray.Quit()

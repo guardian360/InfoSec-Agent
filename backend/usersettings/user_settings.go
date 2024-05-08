@@ -28,12 +28,14 @@ type UserSettings struct {
 // Returns:
 //   - settings (UserSettings): The loaded user settings. This is a UserSettings struct.
 func LoadUserSettings() UserSettings {
+	logger.Log.Debug("Getting user config directory")
 	appDataPath, err := os.UserConfigDir()
 	if err != nil {
 		logger.Log.ErrorWithErr("Error getting user config directory:", err)
 		return UserSettings{Language: 1, ScanInterval: 24}
 	}
 	dirPath := appDataPath + `\InfoSec-Agent`
+	logger.Log.Debug("Creating/reading directory at:" + dirPath)
 	err = os.MkdirAll(dirPath, os.ModePerm)
 	if err != nil {
 		logger.Log.ErrorWithErr("Error creating directory:", err)
@@ -42,6 +44,7 @@ func LoadUserSettings() UserSettings {
 
 	filePath := dirPath + `\user_settings.json`
 
+	logger.Log.Debug("Reading user settings from file:" + filePath)
 	data, err := os.ReadFile(filePath)
 	if err != nil {
 		logger.Log.ErrorWithErr("Error reading user settings file:", err)
@@ -49,6 +52,7 @@ func LoadUserSettings() UserSettings {
 	}
 
 	var settings UserSettings
+	logger.Log.Debug("Unmarshalling user settings JSON")
 	err = json.Unmarshal(data, &settings)
 	if err != nil {
 		logger.Log.ErrorWithErr("Error unmarshalling user settings JSON:", err)
@@ -67,6 +71,7 @@ func LoadUserSettings() UserSettings {
 //
 // Returns: None
 func SaveUserSettings(settings UserSettings) {
+	logger.Log.Debug("Getting user config directory")
 	appDataPath, err := os.UserConfigDir()
 	if err != nil {
 		logger.Log.ErrorWithErr("Error getting user config directory:", err)
@@ -74,6 +79,7 @@ func SaveUserSettings(settings UserSettings) {
 	}
 
 	dirPath := appDataPath + `\InfoSec-Agent`
+	logger.Log.Debug("Creating/reading directory at:" + dirPath)
 	err = os.MkdirAll(dirPath, os.ModePerm)
 	if err != nil {
 		logger.Log.ErrorWithErr("Error creating directory:", err)
@@ -81,11 +87,13 @@ func SaveUserSettings(settings UserSettings) {
 	}
 	filePath := dirPath + `\user_settings.json`
 
+	logger.Log.Debug("Marshalling data to JSON")
 	file, err := json.MarshalIndent(settings, "", " ")
 	if err != nil {
 		logger.Log.ErrorWithErr("Error marshalling user settings JSON:", err)
 		return
 	}
+	logger.Log.Debug("Writing user settings to file:" + filePath)
 	err = os.WriteFile(filePath, file, 0600)
 	if err != nil {
 		logger.Log.ErrorWithErr("Error writing user setting(s) to file:", err)
