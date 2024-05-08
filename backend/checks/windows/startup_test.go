@@ -33,7 +33,7 @@ func TestStartup(t *testing.T) {
 			KeyName: "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\StartupApproved\\Run"}}},
 		key3: &mocking.MockRegistryKey{SubKeys: []mocking.MockRegistryKey{{
 			KeyName: "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\StartupApproved\\Run32"}}},
-		want: checks.NewCheckResult(checks.StartupID, 0, "No startup programs found"),
+		want: checks.NewCheckResult(checks.StartupID, 0),
 	}, {
 		name: "Startup programs found",
 		key1: &mocking.MockRegistryKey{SubKeys: []mocking.MockRegistryKey{{

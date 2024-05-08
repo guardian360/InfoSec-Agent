@@ -6,12 +6,15 @@ package scan
 import (
 	"encoding/json"
 	"fmt"
+	"time"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/browsers"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/devices"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/network"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/programs"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/windows"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/integration"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/usersettings"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/cisregistrysettings"
 
@@ -82,12 +85,12 @@ var securityChecks = []func() checks.Check{
 		return windows.RemoteDesktopCheck(mocking.LocalMachine)
 	},
 	func() checks.Check { return devices.ExternalDevices(&mocking.RealCommandExecutor{}) },
-	func() checks.Check { return network.ProfileTypes(mocking.LocalMachine) },
+	func() checks.Check { return windows.Advertisement(mocking.LocalMachine) },
 	func() checks.Check { return chromium.HistoryChromium("Chrome") },
 	func() checks.Check { return chromium.ExtensionsChromium("Chrome") },
 	func() checks.Check { return chromium.SearchEngineChromium("Chrome") },
-	func() checks.Check { c, _ := firefox.ExtensionFirefox(); return c },
-	func() checks.Check { _, c := firefox.ExtensionFirefox(); return c },
+	func() checks.Check { c, _ := firefox.ExtensionFirefox(browsers.RealProfileFinder{}); return c },
+	func() checks.Check { _, c := firefox.ExtensionFirefox(browsers.RealProfileFinder{}); return c },
 	func() checks.Check { return firefox.HistoryFirefox(browsers.RealProfileFinder{}) },
 	func() checks.Check {
 		return firefox.SearchEngineFirefox(browsers.RealProfileFinder{}, false, nil, nil)
@@ -111,6 +114,10 @@ var securityChecks = []func() checks.Check{
 //   - []checks.Check: A slice of Check objects representing all found issues.
 //   - error: An error object that describes the error (if any) that occurred while running the checks or serializing the results to JSON. If no error occurred, this value is nil.
 func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
+	date := time.Now().Format(time.RFC3339)
+	// TODO: Replace with actual workstation ID and user
+	workStationID := 0
+	user := "user"
 	// Define all security/privacy checks that Scan() should execute
 	totalChecks := len(securityChecks)
 
@@ -144,5 +151,9 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 	}
 	logger.Log.Info(string(jsonData))
 
+	// TODO: Set usersettings.Integration to true depending on whether user has connected with the API
+	if usersettings.LoadUserSettings("backend/usersettings").Integration {
+		integration.ParseScanResults(integration.Metadata{WorkStationID: workStationID, User: user, Date: date}, checkResults)
+	}
 	return checkResults, nil
 }
