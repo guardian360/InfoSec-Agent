@@ -13,42 +13,37 @@ function htmlDecode(input){
   return e.childNodes[0].nodeValue;
 }
 
+// Mock issue page
+const issuesDOM = new JSDOM(`
+<!DOCTYPE html>
+<html>
+<body>
+    <div id="page-contents"></div>
+</body>
+</html>
+`);
+global.document = issuesDOM.window.document;
+global.window = issuesDOM.window;
+
+let stepCounter = 0;
+
+// Mock often used page functions
+mockPageFunctions();
+
+// Mock Localize function
+jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
+  Localize: jest.fn().mockImplementation((input) => mockGetLocalization(input)),
+}));
+
+// Mock openIssuesPage
+jest.unstable_mockModule('../src/js/issues.js', () => ({
+  openIssuesPage: jest.fn(),
+}));
+
 // Mock sessionStorage
 global.sessionStorage = storageMock;
 
 describe('Issue page', function() {
-  // Mock issue page
-  const issuesDOM = new JSDOM(`
-  <!DOCTYPE html>
-  <html>
-  <body>
-      <div id="page-contents"></div>
-  </body>
-  </html>
-  `);
-  global.document = issuesDOM.window.document;
-  global.window = issuesDOM.window;
-
-  let stepCounter = 0;
-  // const solution = ['Step 1', 'Step 2', 'Step 3'];
-  // const screenshots = ['screenshot1.jpg', 'screenshot2.jpg', 'screenshot3.jpg'];
-  // const solutionStep = document.createElement('p');
-  // const screenshot = document.createElement('img');
-  // solutionStep.id = 'solution-text';
-  // screenshot.id = 'step-screenshot';
-  // document.body.appendChild(solutionStep);
-  // solutionStep.innerHTML = 'Step 1';
-  // document.body.appendChild(screenshot);
-  // screenshot.src = 'screenshot1.jpg';
-
-  // Mock often used page functions
-  mockPageFunctions();
-
-  // Mock Localize function
-  jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
-    Localize: jest.fn().mockImplementation((input) => mockGetLocalization(input)),
-  }));
-
   it('openIssuesPage should not add solutions for a non-issue to the page-contents', async function() {
     // Arrange
     const issue = await import('../src/js/issue.js');
@@ -67,10 +62,22 @@ describe('Issue page', function() {
     test.value(solution).isEqualTo(currentIssue.Solution[0]);
 
   });
+  it('clicking on the back button should call openIssuesPage', async function() {
+    // Arrange
+    const issues = await import('../src/js/issues.js');
+    const button = document.getElementById('back-button');
+    const openIssuesPageMock = jest.spyOn(issues, 'openIssuesPage');
 
-  // from here on issueID 160 is used for testing
+    // Act
+    button.dispatchEvent(clickEvent);
+
+    // Assert
+    expect(openIssuesPageMock).toHaveBeenCalled();
+  });
+
+  // from here on issueID 160 is used for tests up to parseShowResults tests
   const issueID = 160;
-  const currentIssue = data[issueID];
+  let currentIssue = data[issueID];
 
   it('openIssuesPage should add the right info about the issue to the page-contents', async function() {
     // Arrange
@@ -108,8 +115,6 @@ describe('Issue page', function() {
     const solutionText = document.getElementById('solution-text');
     const solutionScreenshot = document.getElementById('step-screenshot');
 
-    const issue = await import('../src/js/issue.js');
-
     // Act
     // calls nextSolutionStep
     document.getElementById('next-button').dispatchEvent(clickEvent);
@@ -118,13 +123,10 @@ describe('Issue page', function() {
     test.value(solutionText.innerHTML).isEqualTo('2. ' + currentIssue.Solution[1]);
     test.value(solutionScreenshot.src).isEqualTo(currentIssue.Screenshots[1]);
   });
-
   it('previousSolutionStep should update the current step and screenshot', async function() {
     // Arrange
     const solutionText = document.getElementById('solution-text');
     const solutionScreenshot = document.getElementById('step-screenshot');
-
-    const issue = await import('../src/js/issue.js');
 
     // Act
     // calls previousSolutionStep
@@ -135,7 +137,164 @@ describe('Issue page', function() {
     test.value(solutionScreenshot.src).isEqualTo(currentIssue.Screenshots[0]);
   });
 
-  it('Should fill page with parseShowResult with a set of resultIDs', async function() {
+  it('clicking previous step button on first step should not update the current step and screenshot', async function() {
+    // Arrange
+    const solutionText = document.getElementById('solution-text');
+    const solutionScreenshot = document.getElementById('step-screenshot');
 
+    // Act
+    // calls previousSolutionStep
+    document.getElementById('previous-button').dispatchEvent(clickEvent);
+
+    // Assert
+    test.value(htmlDecode(solutionText.innerHTML)).isEqualTo('1. ' + currentIssue.Solution[0]);
+    test.value(solutionScreenshot.src).isEqualTo(currentIssue.Screenshots[0]);  
+  });
+  it('clicking next step button at last step should not update the current step and screenshot', async function() {
+    // Arrange
+    const solutionText = document.getElementById('solution-text');
+    const solutionScreenshot = document.getElementById('step-screenshot');
+
+    // Act
+    // starts on step 1. 
+    // calls nextSolutionStep
+    document.getElementById('next-button').dispatchEvent(clickEvent);
+    document.getElementById('next-button').dispatchEvent(clickEvent);
+    // At step 3 now, click next one more time.
+    document.getElementById('next-button').dispatchEvent(clickEvent);
+
+    // Assert
+    test.value(solutionText.innerHTML).isEqualTo('3. ' + currentIssue.Solution[2]);
+    test.value(solutionScreenshot.src).isEqualTo(currentIssue.Screenshots[2]);
+  });
+  
+  it('Should fill page with parseShowResult with a set of resultIDs', async function() {
+    // Arrange
+    const issue = await import('../src/js/issue.js');
+    // Expected findings for results
+    const expectedFindings = [
+      `The following devices are or have been connected via bluetooth: <br>findings <br> `,
+      `The following applications currently have been given permission: findings.`,
+      `The following applications currently have been given permission: findings.`,
+      `The following applications currently have been given permission: findings.`,
+      `The following applications currently have been given permission: findings.`,
+      `The following applications currently have been given permission: findings.`,
+      `The following ports are open: <br>findings <br> `,
+      `You changed your password on: findings`,
+    ]
+    // Mock scan results
+    const mockResult = [
+      {
+        issue_id: 1,
+        result_id: 1,
+        result: [
+          "findings",        
+        ]
+      },
+      {
+        issue_id: 6,
+        result_id: 0,
+        result: [
+          "findings",        
+        ]
+      },
+      {
+        issue_id: 7,
+        result_id: 0,
+        result: [
+          "findings",        
+        ]
+      },
+      {
+        issue_id: 8,
+        result_id: 0,
+        result: [
+          "findings",        
+        ]
+      },
+      {
+        issue_id: 9,
+        result_id: 0,
+        result: [
+          "findings",        
+        ]
+      },
+      {
+        issue_id: 10,
+        result_id: 0,
+        result: [
+          "findings",        
+        ]
+      },
+      {
+        issue_id: 11,
+        result_id: 0,
+        result: [
+          "findings",        
+        ]
+      },
+      {
+        issue_id: 16,
+        result_id: 0,
+        result: [
+          "findings",
+        ]
+      },
+    ]
+
+    sessionStorage.setItem('ScanResult', JSON.stringify(mockResult));
+
+    mockResult.forEach((result, index) => {
+      let jsonkey = result.issue_id.toString() + result.result_id.toString();
+      currentIssue = data[jsonkey];
+
+      // Act
+      issue.openIssuePage(jsonkey);
+      const name = document.getElementsByClassName('issue-name')[0].innerHTML;
+      const description = document.getElementById('information').nextElementSibling.innerHTML;
+      const solution = document.getElementById('solution-text').innerHTML;
+      const findings = document.getElementById('description').innerHTML;
+  
+      // Assert
+      test.value(name).isEqualTo(currentIssue.Name);
+      test.value(description).isEqualTo(currentIssue.Information);
+      test.value(htmlDecode(solution)).isEqualTo('1. ' + currentIssue.Solution[0]);
+      test.value(findings).isEqualTo(expectedFindings[index]);  
+    })
+  });
+  it('parseShowResult keeps findings empty if the issueID is not in the issuesWithResultsShow list', async function() {
+    // Arrange
+    const issue = await import('../src/js/issue.js');
+    // Mock scan result
+    const mockResult = [
+      {
+        issue_id: 1,
+        result_id: 0,
+        result: [
+          "findings",        
+        ]
+      },
+    ]
+    sessionStorage.setItem('ScanResult', JSON.stringify(mockResult));
+    let jsonkey = mockResult[0].issue_id.toString() + mockResult[0].result_id.toString();
+    currentIssue = data[jsonkey];
+    const pageContents = document.getElementById('page-contents');
+
+    // Act
+    pageContents.innerHTML = issue.parseShowResult(jsonkey, currentIssue);
+    const findings = document.getElementById('description').innerHTML;
+
+    // Assert
+    test.value(findings).isEqualTo(''); 
   })
+  it('checkShowResult should check if an issue name contains "applications with"', async function() {
+    // Arrange
+    const issue = await import('../src/js/issue.js');
+
+    // Act
+    const checked = issue.checkShowResult(data[60])
+
+    // Assert
+    test.value(checked).isEqualTo(true);
+  });
 });
