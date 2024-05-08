@@ -91,14 +91,6 @@ export function openPersonalizePage() {
     }
   });
 
-
-  // add event-listener for changing Favicon
-  const changeResetButton = document.getElementsByClassName('reset-button')[0];
-
-  changeResetButton.addEventListener('click', function() {
-    resetSettings();
-  });
-
   /* save themes*/
   const themes = document.querySelectorAll('[name="theme"]');
   themes.forEach((themeOption) => {
@@ -115,6 +107,13 @@ export function openPersonalizePage() {
     }
   });
   document.documentElement.className= activeTheme;
+
+  // add event-listener for changing Favicon
+  const changeResetButton = document.getElementsByClassName('reset-button')[0];
+
+  changeResetButton.addEventListener('click', function() {
+    resetSettings();
+  });
 }
 
 /**
@@ -184,6 +183,8 @@ export function retrieveTheme() {
  * Resets the settings by clearing localStorage and restoring default values.
  */
 export function resetSettings() {
+  const theme = localStorage.getItem('theme')
+
   localStorage.clear();
   const logoPhoto = 'frontend/src/assets/images/logoTeamA-transformed.png';
   const logo = document.getElementById('logo');
@@ -194,4 +195,5 @@ export function resetSettings() {
 
   const favicon = document.getElementById('favicon');
   favicon.href = logoPhoto;
+  localStorage.setItem('theme', theme)
 }

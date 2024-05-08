@@ -196,7 +196,6 @@ describe('openPersonalizePage function', () => {
   });
   it('should call resetSettings function on reset button click', async () => {
     // Arrange
-    localStorage.setItem('theme', 'dark-theme');
     localStorage.setItem('favicon', 'custom.ico');
     localStorage.setItem('title', 'tempTitle');
     const resetButton = document.querySelector('.reset-button');
@@ -210,12 +209,13 @@ describe('openPersonalizePage function', () => {
     const logo = document.getElementById('logo');
     const title = document.getElementById('title');
     const favicon = document.getElementById('favicon');
-
+    const setItemMock = jest.spyOn(localStorage, 'setItem').mockImplementation(() => {});
+    
     // Act
     resetButton.click();
 
+    setItemMock.mockRestore();    
     // Arrange
-    expect(localStorage.getItem('theme')) === null;
     expect(localStorage.getItem('favicon')) === null;
     expect(localStorage.getItem('title')) === null;
     expect(logo).not.toBeNull();
