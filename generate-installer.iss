@@ -24,7 +24,7 @@ ArchitecturesInstallIn64BitMode=x64
 DefaultDirName={autopf}\{#MyAppName}
 DisableProgramGroupPage=yes
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
-PrivilegesRequired=lowest
+; PrivilegesRequired=lowest
 OutputBaseFilename=InfoSec-Agent-{#MyAppVersion}-Setup
 OutputDir=.
 Compression=lzma
