@@ -32,7 +32,7 @@ jobs:
           cache-dependency-path: 'reporting-page/frontend/package-lock.json'
 
       - name: Install wails    
-        run: go install github.com/wailsapp/wails/v2/cmd/wails@latest
+        run: go install github.com/wailsapp/wails/v2/cmd/wails@v2.8.1
 
       - name: Setup Go workspace
         run: ./setup_go_work.bat
@@ -44,7 +44,7 @@ jobs:
         uses: Minionguyjpro/Inno-Setup-Action@v1.2.2
         with:
           path: generate-installer.iss
-          options: /DMyAppVersion=$env:VERSION
+          options: /DMyAppVersion=${{ env.VERSION }}
       
       - name: Create draft release
         uses: softprops/action-gh-release@v2
