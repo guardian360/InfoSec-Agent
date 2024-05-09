@@ -292,7 +292,7 @@ func ChangeScanInterval(testInput ...string) {
 	// Parse the user input
 	interval, err := strconv.Atoi(res)
 	if err != nil || interval <= 0 {
-		logger.Log.Error("invalid input, using default interval of 24 hours.")
+		logger.Log.Printf("Invalid input. Using default interval of 24 hours.")
 		interval = 24
 	}
 
