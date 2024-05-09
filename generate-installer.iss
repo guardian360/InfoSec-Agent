@@ -1,5 +1,10 @@
+; MyAppVersion should be defined as a command line parameter, e.g.: iscc generate-installer.iss /DMyAppVersion=0.2.0
+; This parameter should be set to the most recent git version tag
+#ifndef MyAppVersion
+  #define MyAppVersion "0.0.0"
+#endif
+
 #define MyAppName "InfoSec-Agent"
-#define MyAppVersion "0.2.0"
 #define MyAppPublisher "Little Brother"
 #define MyAppURL "github.com/InfoSec-Agent/InfoSec-Agent/"
 #define MyAppExeName "InfoSec-Agent.exe"
@@ -19,7 +24,7 @@ ArchitecturesInstallIn64BitMode=x64
 DefaultDirName={autopf}\{#MyAppName}
 DisableProgramGroupPage=yes
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
-;PrivilegesRequired=lowest
+PrivilegesRequired=lowest
 OutputBaseFilename=InfoSec-Agent-{#MyAppVersion}-Setup
 OutputDir=.
 Compression=lzma
