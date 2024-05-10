@@ -32,5 +32,5 @@ func NewDatabase() *Database {
 //
 // Returns: list of severity levels and JSON keys for each issue checked
 func (d *Database) GetData(checks []checks.Check) ([]database.Data, error) {
-	return database.GetData(checks)
+	return database.GetData(checks, "./database.db")
 }

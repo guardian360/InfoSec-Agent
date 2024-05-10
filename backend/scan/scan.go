@@ -85,7 +85,7 @@ var securityChecks = []func() checks.Check{
 		return windows.RemoteDesktopCheck(mocking.LocalMachine)
 	},
 	func() checks.Check { return devices.ExternalDevices(&mocking.RealCommandExecutor{}) },
-	func() checks.Check { return network.ProfileTypes(mocking.LocalMachine) },
+	func() checks.Check { return windows.Advertisement(mocking.LocalMachine) },
 	func() checks.Check { return chromium.HistoryChromium("Chrome") },
 	func() checks.Check { return chromium.ExtensionsChromium("Chrome") },
 	func() checks.Check { return chromium.SearchEngineChromium("Chrome") },
@@ -152,7 +152,7 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 	logger.Log.Info(string(jsonData))
 
 	// TODO: Set usersettings.Integration to true depending on whether user has connected with the API
-	if usersettings.LoadUserSettings("backend/usersettings").Integration {
+	if usersettings.LoadUserSettings().Integration {
 		integration.ParseScanResults(integration.Metadata{WorkStationID: workStationID, User: user, Date: date}, checkResults)
 	}
 	return checkResults, nil
