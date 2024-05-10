@@ -26,7 +26,7 @@ type GameState struct {
 //   - gs (GameState): The current game state, which includes the user's points and lighthouse state.
 //   - securityChecks ([] func() checks.Check): A slice of check functions, which will be executed to calculate the points amount.
 //
-// TO DO: Points based on more factors than only the checks.
+// TO DO: points based on more factors than only the checks.
 //
 // Returns:
 //   - GameState: The updated game state with the new points amount.
@@ -38,8 +38,6 @@ func PointCalculation(gs GameState, securityChecks []func() checks.Check) GameSt
 		result.ResultID = 0
 		if result.Error != nil {
 			logger.Log.ErrorWithErr("Error performing security checks", result.Error)
-		} else {
-			gs.Points++
 		}
 		db, err := sql.Open("sqlite", "reporting-page/database.db")
 
@@ -65,29 +63,29 @@ func PointCalculation(gs GameState, securityChecks []func() checks.Check) GameSt
 	return gs
 }
 
-// LighthouseStateTransition determines the lighthouse state based on the user's points.
+// LighthouseStateTransition determines the lighthouse state based on the user's points (the less points, the better)
 //
 // Parameters:
 //   - gs (GameState): The current game state, which includes the user's points and lighthouse state.
 //
-// TO DO: It should be based also on point history / time of use
+// TO DO: transition based on more factors than only points (time, points history, etc.)
 //
 // Returns:
 //   - GameState: The updated game state with the new lighthouse state.
 func LighthouseStateTransition(gs GameState) GameState {
 	switch {
 	case (gs.Points < 10):
-		gs.LighthouseState = 0
-	case (gs.Points < 20):
-		gs.LighthouseState = 1
-	case (gs.Points < 30):
-		gs.LighthouseState = 2
-	case (gs.Points < 40):
-		gs.LighthouseState = 3
-	case (gs.Points < 50):
-		gs.LighthouseState = 4
-	default:
 		gs.LighthouseState = 5
+	case (gs.Points < 20):
+		gs.LighthouseState = 4
+	case (gs.Points < 30):
+		gs.LighthouseState = 3
+	case (gs.Points < 40):
+		gs.LighthouseState = 2
+	case (gs.Points < 50):
+		gs.LighthouseState = 1
+	default:
+		gs.LighthouseState = 0
 	}
 	return gs
 }
