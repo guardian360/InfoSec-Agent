@@ -1,7 +1,6 @@
 // Package gamification handles the gamification within the application, to reward users for performing security checks and staying secure.
 //
 // Exported function(s): PointCalculation, LighthouseStateTransition
-
 package gamification
 
 import (
@@ -42,7 +41,7 @@ func PointCalculation(gs GameState, securityChecks []func() checks.Check) GameSt
 		} else {
 			gs.Points++
 		}
-		db, err := sql.Open("sqlite", "backend/database.db")
+		db, err := sql.Open("sqlite", "reporting-page/database.db")
 
 		// Note that due to opening of non-existent database, it will create one, so there can not be an error.
 		// This is a potential bug, as the database is created in the current directory, which is not the intended location.
@@ -58,11 +57,10 @@ func PointCalculation(gs GameState, securityChecks []func() checks.Check) GameSt
 
 		// When severity is of the Informative level , we do not want to adjust the points
 		if sev != 4 {
-			gs.Points = gs.Points + sev
+			gs.Points += sev
 		}
 
 		gs.PointsHistory = append(gs.PointsHistory, gs.Points)
-
 	}
 	return gs
 }
@@ -75,19 +73,20 @@ func PointCalculation(gs GameState, securityChecks []func() checks.Check) GameSt
 // TO DO: It should be based also on point history / time of use
 //
 // Returns:
-//   - GameState: The updated game state with the new ligthouse state.
+//   - GameState: The updated game state with the new lighthouse state.
 func LighthouseStateTransition(gs GameState) GameState {
-	if gs.Points < 10 {
+	switch {
+	case (gs.Points < 10):
 		gs.LighthouseState = 0
-	} else if gs.Points < 20 {
+	case (gs.Points < 20):
 		gs.LighthouseState = 1
-	} else if gs.Points < 30 {
+	case (gs.Points < 30):
 		gs.LighthouseState = 2
-	} else if gs.Points < 40 {
+	case (gs.Points < 40):
 		gs.LighthouseState = 3
-	} else if gs.Points < 50 {
+	case (gs.Points < 50):
 		gs.LighthouseState = 4
-	} else {
+	default:
 		gs.LighthouseState = 5
 	}
 	return gs

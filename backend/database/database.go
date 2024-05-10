@@ -12,10 +12,10 @@ import (
 	_ "modernc.org/sqlite"
 )
 
-// DatabaseData is a struct which is used to format extracted information from the database
+// Data is a struct which is used to format extracted information from the database
 //
 // CheckId is used as the identifier to connect the severity level and JSON key to
-type DatabaseData struct {
+type Data struct {
 	CheckID  int `json:"id"`
 	Severity int `json:"severity"`
 	JSONKey  int `json:"jsonkey"`
@@ -187,14 +187,14 @@ func GetJSONKey(db *sql.DB, issueID int, resultID int) (int, error) {
 	return result, nil
 }
 
-// GetDatabaseData gets the severities and JSON keys for all checks passed
+// GetData gets the severities and JSON keys for all checks passed
 //
 // Parameters: checks ([]checks.Check) - the list of checks from a scan
 //
 // resultIDs ([]int) - the list of results corresponding to each check
 //
 // Returns: list of all severities and JSON keys
-func GetDatabaseData(checks []checks.Check) ([]DatabaseData, error) {
+func GetData(checks []checks.Check) ([]Data, error) {
 	logger.Log.Info("Opening database")
 	// Open the database file. If it doesn't exist, it will be created.
 	db, err := sql.Open("sqlite", "./database.db")
@@ -204,7 +204,7 @@ func GetDatabaseData(checks []checks.Check) ([]DatabaseData, error) {
 	}
 	logger.Log.Info("Connected to database")
 
-	dbData := make([]DatabaseData, len(checks))
+	dbData := make([]Data, len(checks))
 	for i, s := range checks {
 		sev, err2 := GetSeverity(db, s.IssueID, s.ResultID)
 		if err2 != nil {
@@ -214,7 +214,7 @@ func GetDatabaseData(checks []checks.Check) ([]DatabaseData, error) {
 		if err3 != nil {
 			logger.Log.Printf("Error getting severity value for IssueID:%v and ResultID:%v", s.IssueID, s.ResultID)
 		}
-		dbData[i] = DatabaseData{s.IssueID, sev, jsn}
+		dbData[i] = Data{s.IssueID, sev, jsn}
 	}
 
 	logger.Log.Info("Closing database")

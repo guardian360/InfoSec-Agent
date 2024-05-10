@@ -21,7 +21,6 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/browsers/chromium"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/browsers/firefox"
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/gamification"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 	"golang.org/x/sys/windows/registry"
@@ -143,8 +142,6 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 			return checkResults, err
 		}
 	}
-	initialState := gamification.GameState{Points: 0, LighthouseState: 0} // tijdelijk: uiteindelijk in main met onthoud wat gamestate is
-	print(gamification.PointCalculation(initialState, securityChecks).Points)
 
 	// Serialize check results to JSON
 	jsonData, err := json.MarshalIndent(checkResults, "", "  ")
