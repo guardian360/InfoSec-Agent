@@ -73,8 +73,6 @@ export function openIssuesPage() {
         </tbody>
       </table>
     </div>
-
-
   </div>
   `;
 
