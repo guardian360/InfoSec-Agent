@@ -142,7 +142,7 @@ func OnReady() {
 				logger.Log.ErrorWithErr("Error scanning:", err)
 			}
 			// Notify the user that a scan has been completed
-			err = Popup(result)
+			err = Popup(result, "./reporting-page/database.db")
 			if err != nil {
 				logger.Log.ErrorWithErr("Error notifying user:", err)
 			}
@@ -162,7 +162,7 @@ func OnReady() {
 				logger.Log.ErrorWithErr("Error scanning:", err)
 			}
 			// Notify the user that a scan has been completed
-			err = Popup(result)
+			err = Popup(result, "./reporting-page/database.db")
 			if err != nil {
 				logger.Log.ErrorWithErr("Error notifying user:", err)
 			}
@@ -444,9 +444,9 @@ func RefreshMenu() {
 // Parameters: scanResult []checks.Check: A slice of checks representing the scan results.
 //
 // Returns: error: An error object if an error occurred during the scan, otherwise nil.
-func Popup(scanResult []checks.Check) error {
+func Popup(scanResult []checks.Check, path string) error {
 	// Generate notification message based on the severity of the issues found during the scan
-	resultMessage := PopupMessage(scanResult, "./reporting-page/database.db")
+	resultMessage := PopupMessage(scanResult, path)
 
 	// Create a notification to inform the user that the scan is complete
 	notification := toast.Notification{
@@ -482,13 +482,19 @@ func PopupMessage(scanResult []checks.Check, path string) string {
 	for _, issue := range dbData {
 		severityCounters[issue.Severity]++
 	}
-	var message string
 	if severityCounters[3] > 0 {
-		message = fmt.Sprintf("The privacy and security scan has been completed. You have %d high risk issues. Open the reporting page to see more information.", severityCounters[3])
+		if severityCounters[3] == 1 {
+			return "The privacy and security scan has been completed. You have 1 high risk issue. Open the reporting page to see more information."
+		} else {
+			return fmt.Sprintf("The privacy and security scan has been completed. You have %d high risk issues. Open the reporting page to see more information.", severityCounters[3])
+		}
 	} else if severityCounters[2] > 0 {
-		message = fmt.Sprintf("The privacy and security scan has been completed. You have %d medium risk issues. Open the reporting page to see more information.", severityCounters[2])
+		if severityCounters[2] == 1 {
+			return "The privacy and security scan has been completed. You have 1 medium risk issue. Open the reporting page to see more information."
+		} else {
+			return fmt.Sprintf("The privacy and security scan has been completed. You have %d medium risk issues. Open the reporting page to see more information.", severityCounters[2])
+		}
 	} else {
-		message = "The privacy and security scan has been completed. Open the reporting page to view the results."
+		return "The privacy and security scan has been completed. Open the reporting page to view the results."
 	}
-	return message
 }

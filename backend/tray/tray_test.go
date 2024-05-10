@@ -284,6 +284,31 @@ func TestPopupMessage(t *testing.T) {
 	}
 	scanResult2 := []checks.Check{
 		{
+			IssueID:  12,
+			ResultID: 0,
+			Result:   []string{"Issue 1"},
+			Error:    nil,
+			ErrorMSG: "",
+		},
+		{
+			IssueID:  13,
+			ResultID: 1,
+			Result:   []string{"Issue 2"},
+			Error:    nil,
+			ErrorMSG: "",
+		},
+	}
+	scanResult3 := []checks.Check{
+		{
+			IssueID:  3,
+			ResultID: 1,
+			Result:   []string{"Issue 1"},
+			Error:    nil,
+			ErrorMSG: "",
+		},
+	}
+	scanResult4 := []checks.Check{
+		{
 			IssueID:  13,
 			ResultID: 0,
 			Result:   []string{"Issue 1"},
@@ -298,7 +323,7 @@ func TestPopupMessage(t *testing.T) {
 			ErrorMSG: "",
 		},
 	}
-	scanResult3 := []checks.Check{
+	scanResult5 := []checks.Check{
 		{
 			IssueID:  1,
 			ResultID: 0,
@@ -311,12 +336,16 @@ func TestPopupMessage(t *testing.T) {
 		input           []checks.Check
 		expectedMessage string
 	}{
-		// Scanresult with high risk issues and medium risk issues
-		{scanResult1, "The privacy and security scan has been completed. You have 1 high risk issues. Open the reporting page to see more information."},
-		// Scanresult with no high risk issues an medium risk issues
-		{scanResult2, "The privacy and security scan has been completed. You have 2 medium risk issues. Open the reporting page to see more information."},
+		// Scanresult with 1 high risk issue and medium risk issues
+		{scanResult1, "The privacy and security scan has been completed. You have 1 high risk issue. Open the reporting page to see more information."},
+		// Scanresult with multiple high risk issues
+		{scanResult2, "The privacy and security scan has been completed. You have 2 high risk issues. Open the reporting page to see more information."},
+		// Scan result with 1 medium risk issue
+		{scanResult3, "The privacy and security scan has been completed. You have 1 medium risk issue. Open the reporting page to see more information."},
+		// Scanresult with no high risk issues an multiple medium risk issues
+		{scanResult4, "The privacy and security scan has been completed. You have 2 medium risk issues. Open the reporting page to see more information."},
 		// Scanresult with no high risk issues an no medium risk issues
-		{scanResult3, "The privacy and security scan has been completed. Open the reporting page to view the results."},
+		{scanResult5, "The privacy and security scan has been completed. Open the reporting page to view the results."},
 		// Empty scanresult
 		{[]checks.Check{}, "The privacy and security scan has been completed. Open the reporting page to view the results."},
 	}
