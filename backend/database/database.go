@@ -188,7 +188,7 @@ func GetJSONKey(db *sql.DB, issueID int, resultID int) (int, error) {
 	return result, nil
 }
 
-// GetDataBaseData gets the severities and JSON keys for all checks passed
+// GetData gets the severities and JSON keys for all checks passed
 //
 // Parameters:
 //
@@ -197,8 +197,7 @@ func GetJSONKey(db *sql.DB, issueID int, resultID int) (int, error) {
 // path (string) - the path to the database
 //
 // Returns: list of all severities and JSON keys
-func GetData(checks []checks.Check) ([]Data, error) {
-func GetDataBaseData(checks []checks.Check, path string) ([]DataBaseData, error) {
+func GetData(checks []checks.Check, path string) ([]Data, error) {
 	logger.Log.Info("Opening database")
 	// Open the database file. If it doesn't exist, it will be created.
 	db, err := sql.Open("sqlite", path)
