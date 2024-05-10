@@ -32,10 +32,57 @@ export function mockGetLocalization(messageID) {
   return myPromise;
 }
 
+/** Mock of Chart constructor and update function from chart.js */
+export function mockChart() {
+  // Mock Chart constructor
+  jest.unstable_mockModule('chart.js/auto', () => ({
+    Chart: jest.fn().mockImplementation((context, config) => {
+      return {
+      // properties
+        type: config?.type || '',
+        data: config?.data || {},
+        options: config?.options || {},
+        // functions
+        update: jest.fn(),
+      };
+    })
+  }));
+}
+
+/** Mock of graph class */
+export function mockGraph() {
+  // Mock Chart constructor
+  jest.unstable_mockModule('../src/js/graph.js', () => ({
+    Graph: jest.fn().mockImplementation((context, riskcount) => {
+      return {
+        // properties
+        graphShowHighRisks : true,
+        graphShowMediumRisks : true,
+        graphShowLowRisks : true,
+        graphShowNoRisks : true,
+        graphShowInfoRisks : true,
+        
+        graphShowAmount : 1,
+        
+        barChart : {},
+        rc : riskcount,
+        // functions
+        createGraphChart: jest.fn(),
+        changeGraph: jest.fn(),
+        toggleRisks: jest.fn(),
+        graphDropdown: jest.fn(),
+        getData: jest.fn(),
+        getOptions: jest.fn(),
+      };
+    })
+  }));
+}
+
 // Create mock mouse events
 export const clickEvent = new window.MouseEvent('click');
 export const beginHover = new window.MouseEvent('mouseenter');
 export const endHover = new window.MouseEvent('mouseleave');
+export const changeEvent = new Event('change');
 
 // Mock global storage
 export const storageMock = (() => {

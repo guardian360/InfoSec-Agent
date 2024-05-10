@@ -219,6 +219,7 @@ export function openSecurityDashboardPage() {
   });
 }
 
+/* istanbul ignore next */
 if (typeof document !== 'undefined') {
   try {
     document.getElementById('security-dashboard-button').addEventListener('click', () => openSecurityDashboardPage());
@@ -245,6 +246,7 @@ export function adjustWithRiskCounters(rc, doc) {
     try {
       getLocalization('Dashboard.Critical', 'status-descriptor');
     } catch (error) {
+      /* istanbul ignore next */
       securityStatus.innerHTML = 'Critical';
     }
     securityStatus.style.backgroundColor = rc.highRiskColor;
@@ -253,6 +255,7 @@ export function adjustWithRiskCounters(rc, doc) {
     try {
       getLocalization('Dashboard.MediumConcern', 'status-descriptor');
     } catch (error) {
+      /* istanbul ignore next */
       securityStatus.innerHTML = 'Medium concern';
     }
     securityStatus.style.backgroundColor = rc.mediumRiskColor;
@@ -261,6 +264,7 @@ export function adjustWithRiskCounters(rc, doc) {
     try {
       getLocalization('Dashboard.LowConcern', 'status-descriptor');
     } catch (error) {
+      /* istanbul ignore next */
       securityStatus.innerHTML = 'Low concern';
     }
     securityStatus.style.backgroundColor = rc.lowRiskColor;
@@ -269,6 +273,7 @@ export function adjustWithRiskCounters(rc, doc) {
     try {
       getLocalization('Dashboard.InfoConcern', 'status-descriptor');
     } catch (error) {
+      /* istanbul ignore next */
       securityStatus.innerHTML = 'Informative';
     }
     securityStatus.style.backgroundColor = rc.infoColor;
@@ -277,6 +282,7 @@ export function adjustWithRiskCounters(rc, doc) {
     try {
       getLocalization('Dashboard.NoConcern', 'status-descriptor');
     } catch (error) {
+      /* istanbul ignore next */
       securityStatus.innerHTML = 'Safe';
     }
     securityStatus.style.backgroundColor = rc.noRiskColor;

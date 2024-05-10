@@ -1,7 +1,7 @@
 import 'jsdom-global/register.js';
 import test from 'unit.js';
 import {JSDOM} from 'jsdom';
-// import {PieChart} from '../src/js/piechart.js';
+import {mockChart} from './mock.js';
 import {RiskCounters} from '../src/js/risk-counters.js';
 import {jest} from '@jest/globals';
 
@@ -49,18 +49,9 @@ jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
   Localize: jest.fn().mockImplementation((input) => mockGetLocalizationString(input)),
 }));
 
-// Mock Chart constructor
-jest.unstable_mockModule('chart.js/auto', () => ({
-  Chart: jest.fn().mockImplementation((context, config) => {
-    return {
-    // properties
-      type: 'pie',
-      data: config.data || {},
-      options: config.options || {},
-      // functions
-      update: jest.fn(),
-    };
-  })}));
+// Mock chart constructor
+mockChart();
+
 
 // test cases
 describe('Risk level distribution piechart', function() {

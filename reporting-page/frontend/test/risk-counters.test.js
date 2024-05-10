@@ -1,7 +1,21 @@
+import 'jsdom-global/register.js';
 import test from 'unit.js';
+import {JSDOM} from 'jsdom';
 import {RiskCounters,updateRiskCounter} from '../src/js/risk-counters.js';
 
 global.TESTING = true;
+
+// Mock issue page
+const dom = new JSDOM(`
+<!DOCTYPE html>
+<html>
+<body>
+    <div id="page-contents"></div>
+</body>
+</html>
+`);
+global.document = dom.window.document;
+global.window = dom.window;
 
 describe('risk-counters class', function() {
     it('Calling the constructor of risk-counters should fill in the right properties', function() {

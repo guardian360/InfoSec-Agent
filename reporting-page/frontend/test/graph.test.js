@@ -3,6 +3,7 @@ import test from 'unit.js';
 import {JSDOM} from 'jsdom';
 import {RiskCounters} from '../src/js/risk-counters.js';
 import {jest} from '@jest/globals';
+import {mockChart} from './mock.js';
 
 global.TESTING = true;
 
@@ -69,17 +70,7 @@ jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
 }));
 
 // Mock Chart constructor
-jest.unstable_mockModule('chart.js/auto', () => ({
-  Chart: jest.fn().mockImplementation((context, config) => {
-    return {
-    // properties
-      type: 'graph',
-      data: config.data || {},
-      options: config.options || {},
-      // functions
-      update: jest.fn(),
-    };
-  })}));
+mockChart();
 
 // test cases
 describe('Risk graph', function() {

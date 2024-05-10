@@ -1,6 +1,7 @@
 import {Graph} from './graph.js';
 import {PieChart} from './piechart.js';
 import {getLocalization} from './localize.js';
+import {LogError as logError} from '../../wailsjs/go/main/Tray.js';
 import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
 import {retrieveTheme} from './personalize.js';
 import {adjustWithRiskCounters, setMaxInterval, addGraphFunctions} from './security-dashboard.js';
@@ -219,4 +220,11 @@ export function openPrivacyDashboardPage() {
   });
 }
 
-document.getElementById('privacy-dashboard-button').addEventListener('click', () => openPrivacyDashboardPage());
+/* istanbul ignore next */
+if (typeof document !== 'undefined') {
+  try {
+    document.getElementById('privacy-dashboard-button').addEventListener('click', () => openPrivacyDashboardPage());
+  } catch (error) {
+    logError('Error in security-dashboard.js: ' + error);
+  }
+}
