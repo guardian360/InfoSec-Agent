@@ -76,8 +76,20 @@ export function openIssuesPage() {
   </div>
   `;
 
-  const tableHeaders = ['issue-table', 'acceptable-findings', 'name', 'type', 'risk'];
-  const localizationIds = ['Issues.IssueTable', 'Issues.AcceptableFindings', 'Issues.Name', 'Issues.Type', 'Issues.Risk'];
+  const tableHeaders = [
+    'issue-table',
+    'acceptable-findings',
+    'name',
+    'type',
+    'risk',
+  ];
+  const localizationIds = [
+    'Issues.IssueTable',
+    'Issues.AcceptableFindings',
+    'Issues.Name',
+    'Issues.Type',
+    'Issues.Risk',
+  ];
   for (let i = 0; i < tableHeaders.length; i++) {
     getLocalization(localizationIds[i], tableHeaders[i]);
   }
