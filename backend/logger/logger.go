@@ -91,9 +91,22 @@ func NewCustomLogger(test bool, logLevel int, logLevelSpecific int) *CustomLogge
 			LogLevel: logLevel,
 		}
 	}
-	file, err := os.OpenFile("log.txt", os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0666)
+	appDataPath, err := os.UserConfigDir()
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal("error setting up logger: error getting user config dir", err)
+	}
+	// Create the InfoSec-Agent directory in the AppData folder if it does not exist
+	dirPath := appDataPath + "/InfoSec-Agent"
+	err = os.MkdirAll(dirPath, os.ModePerm)
+	if err != nil {
+		log.Fatal("error setting up logger: error creating InfoSec-Agent dir", err)
+	}
+
+	// Create the log file in the InfoSec-Agent directory or truncate it if it already exists
+	logPath := dirPath + "/log.txt"
+	file, err := os.OpenFile(logPath, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0666)
+	if err != nil {
+		log.Fatal("error setting up logger: error opening log file", err)
 	}
 	return &CustomLogger{
 		Logger:           log.New(file, "", log.LstdFlags),
