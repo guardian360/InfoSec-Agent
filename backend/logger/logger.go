@@ -46,14 +46,16 @@ type CustomLogger struct {
 //
 // Parameters:
 //
+// fileName string - The name of the log file to write to.
+//
 // logLevel int - The log level to log up to. This should be a value between 0 (TraceLevel) and 5 (FatalLevel).
 //
 // logLevelSpecific int - The specific log level to log. This should be a value between
 // 0 (TraceLevel) and 5 (FatalLevel), or -1 to log all levels up to the specified log level.
 //
 // Returns: None
-func Setup(logLevel int, logLevelSpecific int) {
-	Log = NewCustomLogger(false, logLevel, logLevelSpecific)
+func Setup(fileName string, logLevel int, logLevelSpecific int) {
+	Log = NewCustomLogger(false, fileName, logLevel, logLevelSpecific)
 }
 
 // SetupTests initializes a logger for the runtime of the tests.
@@ -66,7 +68,7 @@ func Setup(logLevel int, logLevelSpecific int) {
 //
 // Returns: None
 func SetupTests() {
-	Log = NewCustomLogger(true, 0, -1)
+	Log = NewCustomLogger(true, "", 0, -1)
 }
 
 // NewCustomLogger creates a new CustomLogger struct.
@@ -79,12 +81,14 @@ func SetupTests() {
 //
 // test bool - A boolean value that specifies whether the logger is used for testing.
 //
+// fileName string - The name of the log file to write to.
+//
 // logLevel int - The log level to log up to. This should be a value between 0 (TraceLevel) and 5 (FatalLevel).
 //
 // logLevelSpecific int - The specific log level to log. This should be a value between 0 (TraceLevel) and 5 (FatalLevel), or -1 to log all levels up to the specified log level.
 //
 // Returns: a pointer to a new CustomLogger struct
-func NewCustomLogger(test bool, logLevel int, logLevelSpecific int) *CustomLogger {
+func NewCustomLogger(test bool, fileName string, logLevel int, logLevelSpecific int) *CustomLogger {
 	if test {
 		return &CustomLogger{
 			Logger:   log.New(os.Stdout, "", log.LstdFlags),
@@ -96,14 +100,14 @@ func NewCustomLogger(test bool, logLevel int, logLevelSpecific int) *CustomLogge
 		log.Fatal("error setting up logger: error getting user config dir", err)
 	}
 	// Create the InfoSec-Agent directory in the AppData folder if it does not exist
-	dirPath := appDataPath + "/InfoSec-Agent"
+	dirPath := appDataPath + "\\InfoSec-Agent\\"
 	err = os.MkdirAll(dirPath, os.ModePerm)
 	if err != nil {
 		log.Fatal("error setting up logger: error creating InfoSec-Agent dir", err)
 	}
 
 	// Create the log file in the InfoSec-Agent directory or truncate it if it already exists
-	logPath := dirPath + "/log.txt"
+	logPath := dirPath + fileName
 	file, err := os.OpenFile(logPath, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0666)
 	if err != nil {
 		log.Fatal("error setting up logger: error opening log file", err)

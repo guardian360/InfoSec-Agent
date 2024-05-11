@@ -28,7 +28,7 @@ func main() {
 	// 5 - Fatal
 	// The second argument is the specific log-level you want to log, giving this a value will only log that level.
 	// If you want to log all levels up to the specified level, pass -1.
-	logger.Setup(0, -1)
+	logger.Setup("log.txt", 0, -1)
 	logger.Log.Info("Starting InfoSec Agent")
 	localization.Init("backend/")
 	systray.Run(tray.OnReady, tray.OnQuit)
