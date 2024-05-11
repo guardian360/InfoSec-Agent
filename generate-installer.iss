@@ -46,6 +46,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Source: "{#SourcePath}\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#SourcePath}\reporting-page\build\bin\InfoSec-Agent-Reporting-Page.exe"; DestDir: "{app}\reporting-page\build\bin"; Flags: ignoreversion
 Source: "{#SourcePath}\backend\localization\localizations_src\*"; DestDir: "{app}\backend\localization\localizations_src"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "{#SourcePath}\reporting-page\frontend\src\assets\images\*"; DestDir: "{app}\reporting-page\frontend\src\assets\images\"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "{#SourcePath}\reporting-page\database.db"; DestDir: "{app}\reporting-page"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
@@ -58,8 +59,6 @@ Root: HKLM; Subkey: "Software\{#MyAppName}"; Flags: uninsdeletevalue uninsdelete
 Root: HKLM; Subkey: "Software\{#MyAppName}\Reporting Page"; ValueType: string; ValueName: "exe"; ValueData: "{app}\reporting-page\InfoSec-Agent-Reporting-Page.exe"; Flags: uninsdeletevalue uninsdeletekeyifempty; Check: IsWin64
 
 [UninstallDelete]
-Type: files; Name: "{app}\log.txt";
-Type: files; Name: "{app}\reporting-page\log.txt";
 Type: filesandordirs; Name: "{userappdata}\{#MyAppName}"
 
 [Run]
