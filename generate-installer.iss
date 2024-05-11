@@ -56,7 +56,7 @@ Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: de
 
 [Registry]
 Root: HKLM; Subkey: "Software\{#MyAppName}"; Flags: uninsdeletevalue uninsdeletekeyifempty; Check: IsWin64
-Root: HKLM; Subkey: "Software\{#MyAppName}\Reporting Page"; ValueType: string; ValueName: "exe"; ValueData: "{app}\reporting-page\InfoSec-Agent-Reporting-Page.exe"; Flags: uninsdeletevalue uninsdeletekeyifempty; Check: IsWin64
+Root: HKLM; Subkey: "Software\{#MyAppName}\Reporting Page"; ValueType: string; ValueName: "exe"; ValueData: "{app}\reporting-page\build\bin\InfoSec-Agent-Reporting-Page.exe"; Flags: uninsdeletevalue uninsdeletekeyifempty; Check: IsWin64
 
 [UninstallDelete]
 Type: filesandordirs; Name: "{userappdata}\{#MyAppName}"
