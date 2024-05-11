@@ -10,7 +10,6 @@
   display: flex;
   flex-flow: column wrap;
   flex: 1 1 30%;
-  /* box-sizing: border-box; */
 }
 
 .dashboard-segment {
@@ -114,7 +113,6 @@
   width: 100%;
   text-align: center;
   min-height: 200px;
-  /* margin: 10px; */
 }
 
 .interval-button {
@@ -185,8 +183,7 @@
   cursor: pointer;
   text-align: center;
   font-size: 1em;
-  padding: 10px; 
-  color: var(--text-left-nav);
+  padding: 10px;
   display: grid;
 }
 
