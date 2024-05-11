@@ -100,7 +100,7 @@ func NewCustomLogger(test bool, fileName string, logLevel int, logLevelSpecific 
 		log.Fatal("error setting up logger: error getting user config dir", err)
 	}
 	// Create the InfoSec-Agent directory in the AppData folder if it does not exist
-	dirPath := appDataPath + "\\InfoSec-Agent\\"
+	dirPath := appDataPath + `\InfoSec-Agent\`
 	err = os.MkdirAll(dirPath, os.ModePerm)
 	if err != nil {
 		log.Fatal("error setting up logger: error creating InfoSec-Agent dir", err)
