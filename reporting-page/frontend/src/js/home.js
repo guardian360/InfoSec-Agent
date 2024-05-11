@@ -68,6 +68,7 @@ export function openHomePage() {
 
   // Localize the static content of the home page
   const staticHomePageContent = [
+    'piechart-header',
     'suggested-issue',
     'quick-fix',
     'scan-now',
@@ -81,6 +82,7 @@ export function openHomePage() {
     'choose-issue-description',
   ];
   const localizationIds = [
+    'Dashboard.RiskLevelDistribution',
     'Dashboard.SuggestedIssue',
     'Dashboard.QuickFix',
     'Dashboard.ScanNow',
