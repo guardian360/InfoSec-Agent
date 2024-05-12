@@ -35,6 +35,8 @@
     "LowConcern": "Low concern",
     "InfoConcern": "Informative",
     "NoConcern": "Safe",
+    "RiskLevelCounters": "Risk level counters",
+    "RiskLevelDistribution": "Risk level distribution",
     "TotalRisksOverview": "Total risks overview",
     "SecurityRisksOverview": "Security risks overview",
     "PrivacyRisksOverview": "Privacy risks overview",
@@ -42,7 +44,7 @@
     "MediumRisk": "Medium risk issues",
     "LowRisk": "Low risk issues",
     "InfoRisk": "Informative",
-    "Safe": "Issues without risk",
+    "Safe": "Acceptable findings",
     "SecurityRiskAreas": "Areas of security risks",
     "PrivacyRiskAreas": "Areas of privacy risks",
     "Applications": "Applications",
@@ -59,6 +61,8 @@
   },
   "Issues":
   {
+    "IssueTable": "Issue table",
+    "AcceptableFindings": "Acceptable findings",
     "Name": "Name",
     "Type": "Type",
     "Risk": "Risk level",

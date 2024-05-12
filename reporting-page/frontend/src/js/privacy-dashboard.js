@@ -26,7 +26,7 @@ export function openPrivacyDashboardPage() {
       </div>
       <div class="dashboard-segment">
         <div class="data-segment-header">
-          <p>Risk level counters</p>
+          <p class="risk-level-counters">Risk level counters</p>
         </div>
         <div class="risk-counter high-risk">
           <div><p class="high-risk-issues">High risk issues</p></div>
@@ -53,7 +53,7 @@ export function openPrivacyDashboardPage() {
     <div class="container-dashboard">
       <div class="dashboard-segment">
         <div class="data-segment-header">
-            <p class="piechart-header">Risk level distribution</p>
+            <p class="risk-level-distribution piechart-header">Risk level distribution</p>
         </div>
         <div class="pie-chart-container">
           <canvas id="pie-chart"></canvas>
@@ -61,7 +61,7 @@ export function openPrivacyDashboardPage() {
       </div>
       <div class="dashboard-segment">
         <div class="data-segment-header">
-          <p>Risk level distribution</p>
+          <p class="risk-level-distribution">Risk level distribution</p>
         </div>
         <div class="graph-segment-content">
           <div class="graph-buttons">
@@ -147,6 +147,8 @@ export function openPrivacyDashboardPage() {
     'info-risk-issues',
     'safe-issues',
     'privacy-stat',
+    'risk-level-counters',
+    'risk-level-distribution',
     'suggested-issue',
     'quick-fix',
     'scan-now',
@@ -167,6 +169,8 @@ export function openPrivacyDashboardPage() {
     'Dashboard.InfoRisk',
     'Dashboard.Safe',
     'Dashboard.PrivacyStatus',
+    'Dashboard.RiskLevelCounters',
+    'Dashboard.RiskLevelDistribution',
     'Dashboard.SuggestedIssue',
     'Dashboard.QuickFix',
     'Dashboard.ScanNow',
