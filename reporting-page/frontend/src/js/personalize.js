@@ -1,12 +1,12 @@
 import {closeNavigation, loadPersonalizeNavigation} from './navigation-menu.js';
-// import logoPhoto from '../assets/images/logoTeamA-transformed.png';
 
 /** Load the content of the Personalize page */
 export function openPersonalizePage() {
   closeNavigation();
   sessionStorage.setItem('savedPage', '7');
 
-  document.getElementById('page-contents').innerHTML = `
+  const pageContents = document.getElementById('page-contents');
+  pageContents.innerHTML = `  
   <div class="personalize-container">
     <span class="personalize-description favicon-title ">Favicon</span>
     <div class="personalize-button-container">
@@ -91,20 +91,6 @@ export function openPersonalizePage() {
     }
   });
 
-
-  // add event-listener for changing Favicon
-  const changeResetButton = document.getElementsByClassName('reset-button')[0];
-
-  changeResetButton.addEventListener('click', function() {
-    resetSettings();
-  });
-
-  /*
-  // add event-listener for changing navigation title
-  const inputBackgroundNav = document.getElementById('input-color-background');
-  inputBackgroundNav.addEventListener('change', handleLeftBackgroundNav);
-  */
-
   /* save themes*/
   const themes = document.querySelectorAll('[name="theme"]');
   themes.forEach((themeOption) => {
@@ -121,8 +107,14 @@ export function openPersonalizePage() {
     }
   });
   document.documentElement.className= activeTheme;
-}
 
+  // add event-listener for changing Favicon
+  const changeResetButton = document.getElementsByClassName('reset-button')[0];
+
+  changeResetButton.addEventListener('click', function() {
+    resetSettings();
+  });
+}
 
 /**
  * Handles the change event when selecting a new favicon file.
@@ -181,17 +173,6 @@ export function handleTitleChange(newTitle) {
 }
 
 /**
- * Handles the change event when updating the background color of the left navigation.
- * Retrieves the selected color from the color picker input.
- * Updates the background color of the left navigation with the selected color.
- */
-export function handleLeftBackgroundNav() {
-  const colorPicker = document.getElementById('input-color-background');
-  const color = colorPicker.value;
-  const temp = document.getElementsByClassName('left-nav')[0];
-  temp.style.backgroundColor = color;
-}
-/**
  * Retrieves the active theme from localStorage and applies it to the document's root element.
  * The active theme class name is retrieved from the 'theme' key in localStorage.
  */
@@ -202,8 +183,10 @@ export function retrieveTheme() {
  * Resets the settings by clearing localStorage and restoring default values.
  */
 export function resetSettings() {
+  const theme = localStorage.getItem('theme');
+
   localStorage.clear();
-  logoPhoto = 'frontend/src/assets/images/logoTeamA-transformed.png';
+  const logoPhoto = 'frontend/src/assets/images/logoTeamA-transformed.png';
   const logo = document.getElementById('logo');
   logo.src = logoPhoto;
 
@@ -212,4 +195,5 @@ export function resetSettings() {
 
   const favicon = document.getElementById('favicon');
   favicon.href = logoPhoto;
+  localStorage.setItem('theme', theme);
 }

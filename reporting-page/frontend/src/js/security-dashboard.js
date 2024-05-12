@@ -26,7 +26,7 @@ export function openSecurityDashboardPage() {
       </div>
       <div class="dashboard-segment">
         <div class="data-segment-header">
-          <p>Risk level counters</p>
+          <p class="risk-level-counters">Risk level counters</p>
         </div>
         <div class="risk-counter high-risk">
           <div><p class="high-risk-issues">High risk issues</p></div>
@@ -53,7 +53,7 @@ export function openSecurityDashboardPage() {
     <div class="container-dashboard">
       <div class="dashboard-segment">
         <div class="data-segment-header">
-            <p class="piechart-header">Risk level distribution</p>
+            <p class="risk-level-distribution piechart-header">Risk level distribution</p>
         </div>
         <div class="pie-chart-container">
           <canvas id="pie-chart"></canvas>
@@ -61,7 +61,7 @@ export function openSecurityDashboardPage() {
       </div>
       <div class="dashboard-segment">
         <div class="data-segment-header">
-          <p>Risk level distribution</p>
+          <p class="risk-level-distribution">Risk level distribution</p>
         </div>
         <div class="graph-segment-content">
           <div class="graph-buttons">
@@ -109,7 +109,7 @@ export function openSecurityDashboardPage() {
       </div>
       <div class="dashboard-segment risk-areas">
         <div class="data-segment-header">
-          <p id="risk-areas">Areas of security risks</p>
+          <p class="security-risk-areas">Areas of security risks</p>
         </div>
         <div class="security-area">
           <a>
@@ -165,9 +165,12 @@ export function openSecurityDashboardPage() {
     'info-risk-issues',
     'safe-issues',
     'security-stat',
+    'risk-level-counters',
+    'risk-level-distribution',
     'suggested-issue',
     'quick-fix',
     'scan-now',
+    'security-risk-areas',
     'applications',
     'browser',
     'devices',
@@ -187,9 +190,12 @@ export function openSecurityDashboardPage() {
     'Dashboard.InfoRisk',
     'Dashboard.Safe',
     'Dashboard.SecurityStatus',
+    'Dashboard.RiskLevelCounters',
+    'Dashboard.RiskLevelDistribution',
     'Dashboard.SuggestedIssue',
     'Dashboard.QuickFix',
     'Dashboard.ScanNow',
+    'Dashboard.SecurityRiskAreas',
     'Dashboard.Applications',
     'Dashboard.Browser',
     'Dashboard.Devices',

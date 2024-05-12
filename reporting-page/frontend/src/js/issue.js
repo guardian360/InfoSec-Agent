@@ -78,20 +78,20 @@ export function openIssuePage(issueId) {
       pageContents.innerHTML = `
         <h1 class="issue-name">${currentIssue.Name}</h1>
         <div class="issue-information">
-          <h2 id="information">Information</h2>
+          <h2 id="information" class="information">Information</h2>
           <p>${currentIssue.Information}</p>
-          <h2 id="solution">Solution</h2>
+          <h2 id="solution" class="solution">Solution</h2>
           <div class="issue-solution">
             <p id="solution-text">${stepCounter +1}. ${currentIssue.Solution[stepCounter]}</p>
             <img style='display:block; width:750px;height:auto' id="step-screenshot"></img>
             <div class="solution-buttons">
               <div class="button-box">
-                <div id="previous-button" class="button">&laquo; Previous step</div>
-                <div id="next-button" class="button">Next step &raquo;</div>
+                <div id="previous-button" class="previous-button button">&laquo; Previous step</div>
+                <div id="next-button" class="next-button button">Next step &raquo;</div>
               </div>
             </div>
           </div>
-          <div class="button" id="back-button">Back to issues overview</div>
+          <div class="back-button button" id="back-button">Back to issues overview</div>
         </div>
       `;
     }

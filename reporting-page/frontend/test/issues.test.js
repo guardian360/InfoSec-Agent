@@ -37,6 +37,10 @@ global.sessionStorage = sessionStorageMock;
 function mockGetLocalizationString(messageID) {
   const myPromise = new Promise(function(myResolve, myReject) {
     switch (messageID) {
+    case 'Issues.IssueTable':
+      myResolve('Issue table');
+    case 'Issues.AcceptableFindings':
+      myResolve('Acceptable findings');
     case 'Issues.Name':
       myResolve('Name');
     case 'Issues.Type':
