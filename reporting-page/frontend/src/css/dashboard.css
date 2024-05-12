@@ -113,6 +113,7 @@
   width: 100%;
   text-align: center;
   min-height: 200px;
+  aspect-ratio: 4 / 3;
 }
 
 .interval-button {
