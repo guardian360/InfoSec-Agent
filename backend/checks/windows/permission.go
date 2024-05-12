@@ -55,7 +55,7 @@ func Permission(permissionID int, permission string, registryKey mocking.Registr
 			val, _, err = appKey.GetStringValue("Value")
 		}
 		if err != nil {
-			return checks.NewCheckErrorf(permissionID, "error reading value", err)
+			continue
 		}
 		// If the value is not "Allow", the application does not have permission
 		if val != "Allow" {
