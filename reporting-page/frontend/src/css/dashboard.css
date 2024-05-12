@@ -3,12 +3,13 @@
 .dashboard {
   display: flex;
   flex-flow: row wrap;
+  padding: 10px;
 }
 
 .container-dashboard {
+  display: flex;
+  flex-flow: column wrap;
   flex: 1 1 30%;
-  padding: 10px;
-  box-sizing: border-box;
 }
 
 .dashboard-segment {
@@ -50,7 +51,7 @@
 }
 
 .risk-counter p {
-  background-color: var(--background-color-top-nav);
+  background-color: var(--background-color);
   margin: 10px;
   padding: 10px;
   vertical-align: middle;
@@ -112,7 +113,6 @@
   width: 100%;
   text-align: center;
   min-height: 200px;
-  margin: 10px;
 }
 
 .interval-button {
@@ -170,27 +170,30 @@
 /* THIRD COLUMN */
 
 /* issue buttons */
-.issue-button {
-  background-color: var(--background-color-left-nav);
-  border-radius: 10px;
-  margin: 0 10px 10px;
-  text-align: center;
-  display: grid;
-	align-items: center;
+.issue-buttons {
+  display: flex;
+  justify-content: space-between;
+}
 
-  /* font */
-  font-size: 1em;
-  padding: 10px; 
+.issue-button {
+  margin: 0 10px 10px;
+  background: var(--background-color-left-nav);
   color: var(--text-left-nav);
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 1em;
+  padding: 10px;
+  display: grid;
+}
+
+.issue-button:hover {
+  background: var(--background-nav-hover);
+  cursor: pointer;
 }
 
 .issue-button p {
   margin: 0;
-}
-
-.issue-button:hover{
-  background-color: var(--background-nav-hover);
-  cursor: pointer;
 }
 
 /* risk areas */
@@ -201,6 +204,7 @@
 }
 
 .security-area {
+  height: 100px;
   flex: 1;
   background-color: var(--background-color-left-nav);
   border-radius: 10px;

@@ -109,7 +109,7 @@ export function openSecurityDashboardPage() {
       </div>
       <div class="dashboard-segment risk-areas">
         <div class="data-segment-header">
-          <p id="risk-areas">Areas of security risks</p>
+          <p class="security-risk-areas">Areas of security risks</p>
         </div>
         <div class="security-area">
           <a>
@@ -170,6 +170,7 @@ export function openSecurityDashboardPage() {
     'suggested-issue',
     'quick-fix',
     'scan-now',
+    'security-risk-areas',
     'applications',
     'browser',
     'devices',
@@ -194,6 +195,7 @@ export function openSecurityDashboardPage() {
     'Dashboard.SuggestedIssue',
     'Dashboard.QuickFix',
     'Dashboard.ScanNow',
+    'Dashboard.SecurityRiskAreas',
     'Dashboard.Applications',
     'Dashboard.Browser',
     'Dashboard.Devices',

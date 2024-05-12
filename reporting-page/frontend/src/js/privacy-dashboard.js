@@ -109,37 +109,19 @@ export function openPrivacyDashboardPage() {
       </div>
       <div class="dashboard-segment risk-areas">
         <div class="data-segment-header">
-          <p id="risk-areas">Areas of security risks</p>
+          <p class="privacy-risk-areas">Areas of privacy risks</p>
         </div>
         <div class="security-area">
           <a>
             <p>
-              <span class="applications">Applications</span>
-              <span class="material-symbols-outlined">apps_outage</span>
+              <span class="permissions">Permissions</span>
+              <span class="material-symbols-outlined">person_check</span>
             </p>
           </a>
         </div>
         <div class="security-area">
           <a>
             <p><span class="browser">Browser</span><span class="material-symbols-outlined">travel_explore</span></p>
-          </a>
-        </div>
-        <div class="security-area">
-          <a>
-            <p><span class="devices">Devices</span><span class="material-symbols-outlined">devices</span></p>
-          </a>
-        </div>
-        <div class="security-area">
-          <a>
-            <p>
-              <span class="operating-system">Operating system</span>
-              <span class="material-symbols-outlined">desktop_windows</span>
-            </p>        
-          </a>
-        </div>
-        <div class="security-area">
-          <a>
-            <p><span class="passwords">Passwords</span><span class="material-symbols-outlined">key</span></p>
           </a>
         </div>
         <div class="security-area">
@@ -170,11 +152,9 @@ export function openPrivacyDashboardPage() {
     'suggested-issue',
     'quick-fix',
     'scan-now',
-    'applications',
+    'privacy-risk-areas',
+    'permissions',
     'browser',
-    'devices',
-    'operating-system',
-    'passwords',
     'other',
     'select-risks',
     'change-interval',
@@ -194,11 +174,9 @@ export function openPrivacyDashboardPage() {
     'Dashboard.SuggestedIssue',
     'Dashboard.QuickFix',
     'Dashboard.ScanNow',
-    'Dashboard.Applications',
+    'Dashboard.PrivacyRiskAreas',
+    'Dashboard.Permissions',
     'Dashboard.Browser',
-    'Dashboard.Devices',
-    'Dashboard.OperatingSystem',
-    'Dashboard.Passwords',
     'Dashboard.Other',
     'Dashboard.SelectRisks',
     'Dashboard.ChangeInterval',
