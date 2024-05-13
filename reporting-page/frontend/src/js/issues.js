@@ -15,7 +15,7 @@ export function openIssuesPage() {
   pageContents.innerHTML = `
   <div class="issues-data">
     <div class="table-container">
-      <h2>Issue table</h2>
+      <h2 class="issue-table">Issue table</h2>
       <table class="issues-table" id="issues-table">
         <thead>
           <tr>
@@ -55,7 +55,7 @@ export function openIssuesPage() {
       </div>
     </div>
     <div class="table-container">
-      <h2>Non issue table</h2>
+      <h2 class="acceptable-findings">Non issue table</h2>
       <table class="issues-table" id="non-issues-table">
         <thead>
           <tr>
@@ -73,13 +73,23 @@ export function openIssuesPage() {
         </tbody>
       </table>
     </div>
-
-
   </div>
   `;
 
-  const tableHeaders = ['name', 'type', 'risk'];
-  const localizationIds = ['Issues.Name', 'Issues.Type', 'Issues.Risk'];
+  const tableHeaders = [
+    'issue-table',
+    'acceptable-findings',
+    'name',
+    'type',
+    'risk',
+  ];
+  const localizationIds = [
+    'Issues.IssueTable',
+    'Issues.AcceptableFindings',
+    'Issues.Name',
+    'Issues.Type',
+    'Issues.Risk',
+  ];
   for (let i = 0; i < tableHeaders.length; i++) {
     getLocalization(localizationIds[i], tableHeaders[i]);
   }

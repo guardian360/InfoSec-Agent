@@ -152,7 +152,7 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 	logger.Log.Info(string(jsonData))
 
 	// TODO: Set usersettings.Integration to true depending on whether user has connected with the API
-	if usersettings.LoadUserSettings("backend/usersettings").Integration {
+	if usersettings.LoadUserSettings().Integration {
 		integration.ParseScanResults(integration.Metadata{WorkStationID: workStationID, User: user, Date: date}, checkResults)
 	}
 	return checkResults, nil

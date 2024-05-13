@@ -84,8 +84,8 @@ func OnReady() {
 	systray.SetIcon(icon.Data)
 	systray.SetTooltip("InfoSec Agent")
 
-	Language = usersettings.LoadUserSettings("backend/usersettings").Language
-	scanInterval := usersettings.LoadUserSettings("backend/usersettings").ScanInterval
+	Language = usersettings.LoadUserSettings().Language
+	scanInterval := usersettings.LoadUserSettings().ScanInterval
 
 	// Generate the menu for the system tray application
 	mReportingPage := systray.AddMenuItem(localization.Localize(Language, "Tray.ReportingPageTitle"),
@@ -147,7 +147,7 @@ func OnReady() {
 				logger.Log.ErrorWithErr("Error notifying user:", err)
 			}
 		case <-mChangeLanguage.ClickedCh:
-			ChangeLanguage("usersettings")
+			ChangeLanguage()
 			RefreshMenu()
 		case <-mQuit.ClickedCh:
 			systray.Quit()
@@ -309,9 +309,9 @@ func ChangeScanInterval(testInput ...string) {
 	ScanTicker = time.NewTicker(time.Duration(interval) * time.Hour)
 	logger.Log.Printf("Scan interval changed to %d hours\n", interval)
 	usersettings.SaveUserSettings(usersettings.UserSettings{
-		Language:     usersettings.LoadUserSettings("backend/usersettings").Language,
+		Language:     usersettings.LoadUserSettings().Language,
 		ScanInterval: interval,
-	}, "backend/usersettings")
+	})
 }
 
 // ScanNow initiates an immediate security scan, bypassing the scheduled intervals.
@@ -376,11 +376,10 @@ func ScanNow() ([]checks.Check, error) {
 //
 // Parameters:
 //
-//   - path string: The relative path to the user settings file. This is used to save the updated language setting.
 //   - testInput ...string: Optional parameter used for testing. If provided, the function uses this as the user's language selection instead of displaying the dialog window.
 //
 // Returns: None. The function updates the 'language' variable in-place.
-func ChangeLanguage(path string, testInput ...string) {
+func ChangeLanguage(testInput ...string) {
 	var res string
 	if len(testInput) > 0 {
 		res = testInput[0]
@@ -416,8 +415,8 @@ func ChangeLanguage(path string, testInput ...string) {
 	}
 	usersettings.SaveUserSettings(usersettings.UserSettings{
 		Language:     Language,
-		ScanInterval: usersettings.LoadUserSettings(path).ScanInterval,
-	}, path)
+		ScanInterval: usersettings.LoadUserSettings().ScanInterval,
+	})
 }
 
 // RefreshMenu updates the system tray menu items to reflect the current language setting.

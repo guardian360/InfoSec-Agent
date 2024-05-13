@@ -213,7 +213,7 @@ func TestChangeLang(t *testing.T) {
 	}
 
 	for _, tc := range testCases {
-		tray.ChangeLanguage("usersettings", tc.input)
+		tray.ChangeLanguage(tc.input)
 		require.Equal(t, tc.expectedIndex, tray.Language)
 	}
 }
@@ -230,7 +230,7 @@ func TestChangeLang(t *testing.T) {
 func TestRefreshMenu(t *testing.T) {
 	value1 := tray.MenuItems[0].MenuTitle
 	translation1 := localization.Localize(tray.Language, value1)
-	tray.ChangeLanguage("usersettings", "Spanish")
+	tray.ChangeLanguage("Spanish")
 	// Refresh the menu, then check if the translation is different
 	// RefreshMenu(MenuItems)
 	value2 := tray.MenuItems[0].MenuTitle
