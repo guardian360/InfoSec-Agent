@@ -1029,6 +1029,32 @@
         ]
     },
     "330": {
+        "Name": "Automatic log-in disabled",
+        "Type": "Security",
+        "Information": "Automatic log-in allows users to access their accounts without entering a password each time they start their computer or open a specific application. While convenient, automatic log-in poses security risks, as anyone with physical access to the device can access the account without authentication. Disabling automatic log-in enhances the security of your accounts and prevents unauthorized access.",
+        "Solution":
+        [
+            "Automatic log-in is disabled, so there is no action needed."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "331": {
+        "Name": "Automatic log-in enabled",
+        "Type": "Security",
+        "Information": "Automatic log-in allows users to access their accounts without entering a password each time they start their computer or open a specific application. While convenient, automatic log-in poses security risks, as anyone with physical access to the device can access the account without authentication. Disabling automatic log-in enhances the security of your accounts and prevents unauthorized access.",
+        "Solution":
+        [
+            "Go to Start > Settings > Accounts > Sign-in options.",
+            "Under 'Require sign-in', select 'When PC wakes up from sleep'."
+        ],
+        "Screenshots":
+        [
+            "TOBEFILLED"
+        ]
+    },
+    "997": {
         "Name": "Extensions installed in Google Chrome",
         "Type": "Privacy",
         "Information": "Browser extensions enhance the functionality of your web browser by adding features, tools, and customization options. While extensions can be useful, they can also pose privacy and security risks if they have access to sensitive data or track your online activities without your consent. Regularly reviewing and managing your browser extensions helps protect your privacy and security online. Remove any extensions that you no longer use or trust to minimize potential risks.",
