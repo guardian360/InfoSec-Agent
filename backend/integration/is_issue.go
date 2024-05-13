@@ -96,7 +96,7 @@ var IssueMap = map[IssueResPair]bool{
 	// Login Method: Password only
 	{17, 4}: false,
 	// Login Method: PIN and Password
-	{17, 5}: false,
+	{17, 5}: true,
 	// Login Method: Picture Logon and Password
 	{17, 6}: true,
 	// Login Method: PIN, Picture Logon, and Password
@@ -104,7 +104,7 @@ var IssueMap = map[IssueResPair]bool{
 	// Login Method: Fingerprint only
 	{17, 8}: false,
 	// Login Method: PIN and Fingerprint
-	{17, 9}: false,
+	{17, 9}: true,
 	// Login Method: Picture Logon and Fingerprint
 	{17, 10}: true,
 	// Login Method: PIN, Picture Logon, and Fingerprint
@@ -112,7 +112,7 @@ var IssueMap = map[IssueResPair]bool{
 	// Login Method: Password and Fingerprint
 	{17, 12}: false,
 	// Login Method: PIN, Password, and Fingerprint
-	{17, 13}: false,
+	{17, 13}: true,
 	// Login Method: Picture Logon, Password, and Fingerprint
 	{17, 14}: true,
 	// Login Method: PIN, Picture Logon, Password, and Fingerprint
