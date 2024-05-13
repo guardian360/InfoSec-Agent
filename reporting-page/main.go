@@ -103,6 +103,7 @@ func main() {
 	lang := usersettings.LoadUserSettings().Language
 	tray.Language = lang
 
+	logger.Log.Debug("Starting wails application")
 	// Create a Wails application with the specified options
 	err := wails.Run(&options.App{
 		Title:       "reporting-page",
