@@ -98,6 +98,9 @@ var securityChecks = []func() checks.Check{
 	func() checks.Check {
 		return cisregistrysettings.CISRegistrySettings(mocking.LocalMachine, mocking.UserProfiles)
 	},
+	func() checks.Check {
+		return windows.AutomaticLogin(mocking.NewRegistryKeyWrapper(registry.LOCAL_MACHINE))
+	},
 }
 
 // Scan executes all security/privacy checks, serializes the results to JSON, and returns a list of all found issues.
