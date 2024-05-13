@@ -11,8 +11,9 @@ export function openHomePage() {
   closeNavigation(document.body.offsetWidth);
   markSelectedNavigationItem('home-button');
   sessionStorage.setItem('savedPage', 1);
+
   document.getElementById('page-contents').innerHTML = `
-  <div class="home">
+  <div class="home-page">
     <div class="container-home"> 
       <div class="data-segment">
         <div class="data-segment-header">
@@ -100,14 +101,13 @@ export function openHomePage() {
   }
 
   document.getElementsByClassName('scan-now')[0].addEventListener('click', () => scanTest());
-  document.getElementById('logo').innerHTML = localStorage.getItem('picture');
 }
 
 document.getElementById('logo-button').addEventListener('click', () => openHomePage());
 document.getElementById('home-button').addEventListener('click', () => openHomePage());
 
+
 window.onload = function() {
-  markSelectedNavigationItem('home-button');
   const savedImage = localStorage.getItem('picture');
   const savedText = localStorage.getItem('title');
   const savedIcon = localStorage.getItem('favicon');

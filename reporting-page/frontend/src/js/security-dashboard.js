@@ -312,4 +312,3 @@ export function addGraphFunctions(g) {
   document.getElementById('select-info-risk').addEventListener('change', () => g.toggleRisks('info'));
   document.getElementById('select-no-risk').addEventListener('change', () => g.toggleRisks('no'));
 }
-
