@@ -176,8 +176,8 @@ export function parseShowResult(issueId, currentIssue) {
     });
     break;
   case '173':
-  generateBulletList(issues, 17);
-  break;
+    generateBulletList(issues, 17);
+    break;
   case '201':
     generateBulletList(issues, 20);
     break;
