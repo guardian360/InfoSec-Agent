@@ -7,7 +7,7 @@ import {LogError as logError} from '../../wailsjs/go/main/Tray.js';
 
 /** Load the content of the Issues page */
 export function openIssuesPage() {
-  closeNavigation();
+  closeNavigation(document.body.offsetWidth);
   markSelectedNavigationItem('issues-button');
   sessionStorage.setItem('savedPage', '4');
 
@@ -15,7 +15,7 @@ export function openIssuesPage() {
   pageContents.innerHTML = `
   <div class="issues-data">
     <div class="table-container">
-      <h2>Issue table</h2>
+      <h2 class="issue-table">Issue table</h2>
       <table class="issues-table" id="issues-table">
         <thead>
           <tr>
@@ -55,7 +55,7 @@ export function openIssuesPage() {
       </div>
     </div>
     <div class="table-container">
-      <h2>Non issue table</h2>
+      <h2 class="acceptable-findings">Non issue table</h2>
       <table class="issues-table" id="non-issues-table">
         <thead>
           <tr>
@@ -73,13 +73,23 @@ export function openIssuesPage() {
         </tbody>
       </table>
     </div>
-
-
   </div>
   `;
 
-  const tableHeaders = ['name', 'type', 'risk'];
-  const localizationIds = ['Issues.Name', 'Issues.Type', 'Issues.Risk'];
+  const tableHeaders = [
+    'issue-table',
+    'acceptable-findings',
+    'name',
+    'type',
+    'risk',
+  ];
+  const localizationIds = [
+    'Issues.IssueTable',
+    'Issues.AcceptableFindings',
+    'Issues.Name',
+    'Issues.Type',
+    'Issues.Risk',
+  ];
   for (let i = 0; i < tableHeaders.length; i++) {
     getLocalization(localizationIds[i], tableHeaders[i]);
   }
@@ -102,6 +112,7 @@ export function openIssuesPage() {
 
   document.onload = retrieveTheme();
 }
+
 /**
  * Returns the risk level based on the given numeric level.
  * @param {number} level - The numeric representation of the risk level.
@@ -218,6 +229,7 @@ export function sortTable(tbody, column) {
   table.setAttribute('data-sort-direction', direction);
 }
 
+/* istanbul ignore next */
 if (typeof document !== 'undefined') {
   try {
     document.getElementById('issues-button').addEventListener('click', () => openIssuesPage());
@@ -231,7 +243,7 @@ if (typeof document !== 'undefined') {
  * Retrieves issues data from session storage, filters it based on selected risk levels,
  * and updates the table with the filtered data.
  */
-function changeTable() {
+export function changeTable() {
   const selectedHigh = document.getElementById('select-high-risk-table').checked;
   const selectedMedium = document.getElementById('select-medium-risk-table').checked;
   const selectedLow = document.getElementById('select-low-risk-table').checked;

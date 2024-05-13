@@ -48,6 +48,7 @@
         ],
         "Screenshots":
         [
+            "TOBEFILLED"
         ]
     },
     "30": {
@@ -103,28 +104,25 @@
         ]
     },
     "40": {
-        "Name": "Network sharing enabled",
-        "Type": "Security",
-        "Information": "Network sharing refers to the ability to share resources, such as files, folders, printers, and internet connections, between multiple devices connected to a network. It allows users to access and collaborate on shared resources across the network, facilitating data exchange and collaboration among users and devices. Permissions can be configured to allow or deny access to specific users or groups, ensuring that sensitive data remains secure. If you do not need network sharing it is safer to turn it off.",
+        "Name": "Advertisement ID sharing disabled",
+        "Type": "Privacy",
+        "Information": "The advertisement ID setting allows windows to send you personalized ads. It is important to limit the amount of entities that have your personal data, therefore it is safer to turn this setting off.",
         "Solution": 
-        [   
-            "Go to Start > Settings > System > Nearby share settings.", 
-            "Here you can control the network sharing settings and turn the feature off."
+        [
+            "Advertisement ID sharing is disabled, so there is no action needed."
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/network-sharing/nearby-sharing-1.jpg",
-            "frontend/src/assets/images/network-sharing/nearby-sharing-2.jpg"
         ]
     },
     "41": {
-        "Name": "Network sharing partially enabled",
+        "Name": "Advertisement ID sharing enabled",
         "Type": "Security",
-        "Information": "Network sharing refers to the ability to share resources, such as files, folders, printers, and internet connections, between multiple devices connected to a network. It allows users to access and collaborate on shared resources across the network, facilitating data exchange and collaboration among users and devices. Permissions can be configured to allow or deny access to specific users or groups, ensuring that sensitive data remains secure. If you do not need network sharing it is safer to turn it off.",
+        "Information": "The advertisement ID setting allows windows to send you personalized ads. It is important to limit the amount of entities that have your personal data, therefore it is safer to turn this setting off.",
         "Solution": 
-        [   
-            "Go to Start > Settings > System > Nearby share settings.", 
-            "Here you can control the network sharing settings and turn the feature off."
+        [
+            "Go to Start > Settings > Privacy & Security > General ",
+            "Here you can control the advertisement ID settings and turn the feature on/off."
         ],
         "Screenshots":
         [
@@ -209,7 +207,7 @@
         "Information": "Knowing which applications have access to your location is important for protecting your privacy. It helps you control who can track your location, prevent security risks, conserve battery life, manage data usage, customize your app experience, and ensure compliance with regulations.",
         "Solution": 
         [   
-            "There are no apps with location permission"
+            "There are no applications which have location permission, so there is no action needed."
         ],
         "Screenshots":
         [
@@ -236,7 +234,7 @@
         "Information": "Understanding which applications have access to your microphone on your Windows computer is important for protecting your privacy and confidentiality. It helps you control who can listen to your conversations, prevent unauthorized recording, safeguard sensitive information, and ensure compliance with regulations.",
         "Solution": 
         [   
-            "There are no apps with microphone permission"
+            "There are no applications which have microphone permission, so there is no action needed."
         ],
         "Screenshots":
         [
@@ -263,7 +261,7 @@
         "Information": "Being aware of which applications have access to your camera helps prevent unauthorized access. Malicious software or even legitimate applications with poorly implemented security features could potentially access your camera without your knowledge or consent. By knowing which applications have access, you can identify and block any unauthorized attempts.",
         "Solution": 
         [   
-            "There are no apps with webcam permission"
+            "There are no applications which have webcam permission, so there is no action needed."
         ],
         "Screenshots":
         [
@@ -290,7 +288,7 @@
         "Information": "Understanding which applications have access to your calendar or appointments is crucial for protecting your privacy, and schedule. It helps you control who can view and potentially misuse your sensitive appointment information, prevent unauthorized access and manage data usage.",
         "Solution": 
         [   
-            "There are no apps with appointments permission"
+            "There are no applications which have appointments permission, so there is no action needed."
         ],
         "Screenshots":
         [
@@ -317,7 +315,7 @@
         "Information": "Understanding which applications have access to your contacts on your Windows computer is good for safeguarding your privacy. It allows you to control who can view and potentially misuse your contact information, prevent unauthorized access and manage data usage.",
         "Solution": 
         [   
-            "There are no apps with contacts permission"
+            "There are no applications which have contacts permission, so there is no action needed."
         ],
         "Screenshots":
         [
@@ -849,6 +847,7 @@
         ],
         "Screenshots":
         [
+            "TOBEFILLED"
         ]
     },	
     "231": {
@@ -981,67 +980,52 @@
         ]
     },	
     "310": {
-        "Name": "Potential phishing domains found on Mozilla Firefox",
+        "Name": "No potential phishing domains found on Mozilla Firefox",
         "Type": "Privacy",
-        "Information": "Be careful browsing the internet as trusted websites could be spoofed easily. Furthermore there are a lot of websites with malicious intentions. In case of doubt of actively browsing on a potential phishing website, it is advised to change your password.",
-        "Solution": 
-        [   		
-          "Be careful browsing the internet as trusted websites could be spoofed easily. Furthermore there are a lot of websites with malicious intentions. In case of doubt of actively browsing on a potential phishing website, it is advised to change your password."  
+        "Information": "Phishing domains are fake websites designed to trick people into sharing sensitive information like passwords or credit card details. They look real, mimicking trusted brands or organizations. These scams exploit trust and curiosity to steal personal data.",
+        "Solution":
+        [
         ],
         "Screenshots":
         [
         ]
     },		
     "311": {
-        "Name": "No potential phishing domains found on Mozilla Firefox",
+        "Name": "Potential phishing domains found on Mozilla Firefox",
         "Type": "Privacy",
-        "Information": "Phishing domains are fake websites designed to trick people into sharing sensitive information like passwords or credit card details. They look real, mimicking trusted brands or organizations. These scams exploit trust and curiosity to steal personal data.",
-        "Solution": 
-        [   		
-           "Be careful browsing the internet as trusted websites could be spoofed easily. Furthermore there are a lot of websites with malicious intentions. In case of doubt of actively browsing on a potential phishing website, it is advised to change your password." 
+        "Information": "Be careful browsing the internet as trusted websites could be spoofed easily. Furthermore there are a lot of websites with malicious intentions. In case of doubt of actively browsing on a potential phishing website, it is advised to change your password.",
+        "Solution":
+        [
+            "Be careful browsing the internet as trusted websites could be spoofed easily. Furthermore there are a lot of websites with malicious intentions. In case of doubt of actively browsing on a potential phishing website, it is advised to change your password."
         ],
         "Screenshots":
         [
+            "TOBEFILLED"
         ]
     },
     "320": {
-        "Name": "Applications with administrator privileges",
+        "Name": "Incorrect CIS Audit list registry settings",
         "Type": "Security",
-        "Information": "Applications with administrator permissions have elevated privileges, allowing them to make changes to system settings, install or uninstall software, modify system files, and perform other actions that can affect the security and stability of your computer. Knowing which apps have admin permissions helps you identify potential security risks and vulnerabilities, such as malicious software or unauthorized applications that may have gained elevated access.",
-        "Solution": 
-        [   
-            "Right-click on the taskbar and select 'Task Manager', or press Ctrl + Shift + Esc on your keyboard to open Task Manager.", 
-            "In Task Manager, click on the 'Details' tab to view a list of running processes and applications.",
-            "Right-click on the column header, click 'Select columns', and make sure that 'Elevated' is checked. This column shows whether a process or application is running with admin permissions.",
-            "Scroll through the list of processes and look for entries with 'Yes' in the 'Elevated' column. These processes have admin privileges.",
-            "If you see programs which do not need to run with admin permissions you can right click on them and end the task."
-        ],"Screenshots":
+        "Information": "The Center for Internet Security (CIS) provides a set of guidelines and best practices for securing computer systems. The CIS Audit list registry settings help ensure that your system is configured according to these security standards. Incorrect or outdated registry settings may leave your system vulnerable to security threats and compromise your privacy.",
+        "Solution":
         [
-            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-1.jpg",
-            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-2.jpg",
-            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-3.jpg",
-            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-4.jpg",
-            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-4.jpg"
+            "Download the CIS Benchmark for your operating system from the official CIS website. Follow the instructions in the benchmark document to review and update the registry settings on your system to align with the CIS security standards. Regularly check for updates to the CIS Benchmark and apply any changes or recommendations to maintain a secure configuration."
+        ],
+        "Screenshots":
+        [
+            "TOBEFILLED"
         ]
     },
     "321": {
-        "Name": "Applications with administrator privileges",
+        "Name": "Correct CIS Audit list registry settings",
         "Type": "Security",
-        "Information": "Applications with administrator permissions have elevated privileges, allowing them to make changes to system settings, install or uninstall software, modify system files, and perform other actions that can affect the security and stability of your computer. Knowing which apps have admin permissions helps you identify potential security risks and vulnerabilities, such as malicious software or unauthorized applications that may have gained elevated access.",
-        "Solution": 
-        [   
-            "Right-click on the taskbar and select 'Task Manager', or press Ctrl + Shift + Esc on your keyboard to open Task Manager.", 
-            "In Task Manager, click on the 'Details' tab to view a list of running processes and applications.",
-            "Right-click on the column header, click 'Select columns', and make sure that 'Elevated' is checked. This column shows whether a process or application is running with admin permissions.",
-            "Scroll through the list of processes and look for entries with 'Yes' in the 'Elevated' column. These processes have admin privileges.",
-            "If you see programs which do not need to run with admin permissions you can right click on them and end the task."
-        ],"Screenshots":
+        "Information": "The Center for Internet Security (CIS) provides a set of guidelines and best practices for securing computer systems. The CIS Audit list registry settings help ensure that your system is configured according to these security standards. Incorrect or outdated registry settings may leave your system vulnerable to security threats and compromise your privacy.",
+        "Solution":
         [
-            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-1.jpg",
-            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-2.jpg",
-            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-3.jpg",
-            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-4.jpg",
-            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-4.jpg"
+            "All settings adhere to the CIS Audit list guidelines, no action is needed."
+        ],
+        "Screenshots":
+        [
         ]
     },
     "330": {
@@ -1056,6 +1040,46 @@
         ],
         "Screenshots":
         [
+        ]
+    },
+    "998": {
+        "Name": "Applications with administrator privileges",
+        "Type": "Security",
+        "Information": "Applications with administrator permissions have elevated privileges, allowing them to make changes to system settings, install or uninstall software, modify system files, and perform other actions that can affect the security and stability of your computer. Knowing which apps have admin permissions helps you identify potential security risks and vulnerabilities, such as malicious software or unauthorized applications that may have gained elevated access.",
+        "Solution":
+        [
+            "Right-click on the taskbar and select 'Task Manager', or press Ctrl + Shift + Esc on your keyboard to open Task Manager.",
+            "In Task Manager, click on the 'Details' tab to view a list of running processes and applications.",
+            "Right-click on the column header, click 'Select columns', and make sure that 'Elevated' is checked. This column shows whether a process or application is running with admin permissions.",
+            "Scroll through the list of processes and look for entries with 'Yes' in the 'Elevated' column. These processes have admin privileges.",
+            "If you see programs which do not need to run with admin permissions you can right click on them and end the task."
+        ],"Screenshots":
+        [
+            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-1.jpg",
+            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-2.jpg",
+            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-3.jpg",
+            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-4.jpg",
+            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-4.jpg"
+        ]
+    },
+    "999": {
+        "Name": "Applications with administrator privileges",
+        "Type": "Security",
+        "Information": "Applications with administrator permissions have elevated privileges, allowing them to make changes to system settings, install or uninstall software, modify system files, and perform other actions that can affect the security and stability of your computer. Knowing which apps have admin permissions helps you identify potential security risks and vulnerabilities, such as malicious software or unauthorized applications that may have gained elevated access.",
+        "Solution":
+        [
+            "Right-click on the taskbar and select 'Task Manager', or press Ctrl + Shift + Esc on your keyboard to open Task Manager.",
+            "In Task Manager, click on the 'Details' tab to view a list of running processes and applications.",
+            "Right-click on the column header, click 'Select columns', and make sure that 'Elevated' is checked. This column shows whether a process or application is running with admin permissions.",
+            "Scroll through the list of processes and look for entries with 'Yes' in the 'Elevated' column. These processes have admin privileges.",
+            "If you see programs which do not need to run with admin permissions you can right click on them and end the task."
+        ],"Screenshots":
+        [
+            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-1.jpg",
+            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-2.jpg",
+            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-3.jpg",
+            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-4.jpg",
+            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-4.jpg"
         ]
     }
 }

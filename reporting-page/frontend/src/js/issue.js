@@ -4,7 +4,8 @@ import {getLocalization} from './localize.js';
 import {retrieveTheme} from './personalize.js';
 
 let stepCounter = 0;
-const issuesWithResultsShow = ['60', '70', '80', '90', '100', '110', '160'];
+const issuesWithResultsShow =
+    ['11', '21', '60', '70', '80', '90', '100', '110', '160', '201', '230', '310', '320'];
 
 /** Update contents of solution guide
  *
@@ -47,7 +48,6 @@ export function previousSolutionStep(solutionText, solutionScreenshot, solution,
   }
 }
 
-
 /** Load the content of the issue page
  *
  * @param {string} issueId Id of the issue to open
@@ -78,20 +78,20 @@ export function openIssuePage(issueId) {
       pageContents.innerHTML = `
         <h1 class="issue-name">${currentIssue.Name}</h1>
         <div class="issue-information">
-          <h2 id="information">Information</h2>
+          <h2 id="information" class="information">Information</h2>
           <p>${currentIssue.Information}</p>
-          <h2 id="solution">Solution</h2>
+          <h2 id="solution" class="solution">Solution</h2>
           <div class="issue-solution">
             <p id="solution-text">${stepCounter +1}. ${currentIssue.Solution[stepCounter]}</p>
             <img style='display:block; width:750px;height:auto' id="step-screenshot"></img>
             <div class="solution-buttons">
               <div class="button-box">
-                <div id="previous-button" class="button">&laquo; Previous step</div>
-                <div id="next-button" class="button">Next step &raquo;</div>
+                <div id="previous-button" class="previous-button button">&laquo; Previous step</div>
+                <div id="next-button" class="next-button button">Next step &raquo;</div>
               </div>
             </div>
           </div>
-          <div class="button" id="back-button">Back to issues overview</div>
+          <div class="back-button button" id="back-button">Back to issues overview</div>
         </div>
       `;
     }
@@ -138,6 +138,12 @@ export function parseShowResult(issueId, currentIssue) {
   let resultLine = '';
 
   switch (issueId) {
+  case '11':
+    generateBulletList(issues, 1);
+    break;
+  case '21':
+    generateBulletList(issues, 2);
+    break;
   case '60':
     resultLine = permissionShowResults(issues);
     break;
@@ -154,18 +160,56 @@ export function parseShowResult(issueId, currentIssue) {
     resultLine = permissionShowResults(issues);
     break;
   case '110':
-    resultLine += `The following ports are open: <br>`;
-    issues.find((issue) => issue.issue_id === 11).result.forEach((issue) => {
-      resultLine += `${issue} <br> `;
+    resultLine += `The following processes are currently running on your device on the following ports: <br>`;
+    const portTable = processPortsTable(issues.find((issue) => issue.issue_id === 11).result);
+    resultLine += `<table class = "issues-table">`;
+    resultLine += `<thead><tr><th>Process</th><th>Port(s)</th></tr></thead>`;
+    portTable.forEach((entry) => {
+      resultLine += `<tr><td style="width: 30%">${entry.portProcess}</td>
+        <td style="width: 30%">${entry.ports.join('<br>')}</td></tr>`;
     });
+    resultLine += '</table>';
     break;
   case '160':
     issues.find((issue) => issue.issue_id === 16).result.forEach((issue) => {
       resultLine += `You changed your password on: ${issue}`;
     });
     break;
+  case '201':
+    generateBulletList(issues, 20);
+    break;
+  case '230':
+    generateBulletList(issues, 23);
+    break;
+  case '310':
+    generateBulletList(issues, 31);
+    break;
+  case '320':
+    const cisTable = cisregistryTable(issues.find((issue) => issue.issue_id === 32).result);
+    resultLine += `<table class = "issues-table">`;
+    cisTable.forEach((entry) => {
+      resultLine += `<tr><td style="width: 30%; word-break: break-all">${entry.registryKey}</td>
+        <td>${entry.values.join('<br>')}</td></tr>`;
+    });
+    resultLine += '</table>';
+    break;
   default:
     break;
+  }
+
+  /**
+   * Generate a bullet list for each entry of a result of certain issues
+   * @param {string} issues to generate a bullet list for
+   * @param {int} issueId of the issue
+   * @return {string} html tags for a bullet list
+   */
+  function generateBulletList(issues, issueId) {
+    resultLine += `<ul>`;
+    issues.find((issue) => issue.issue_id === issueId).result.forEach((issue) => {
+      resultLine += `<li>${issue}</li>`;
+    });
+    resultLine += `</ul>`;
+    return resultLine;
   }
 
   /**
@@ -174,18 +218,70 @@ export function parseShowResult(issueId, currentIssue) {
    * @return {string} resultLine with the permission results
    */
   function permissionShowResults(issues) {
-    let applications = '';
+    let applications = '<ul>';
     issues.forEach((issue) => {
       if (issue.issue_id.toString() + issue.result_id.toString() === issueId.toString()) {
         const issueResult = issue.result;
         issueResult.forEach((application) => {
-          applications += `${application}, `;
+          applications += `<li>${application}</li>`;
         });
       }
     });
-    applications = applications.slice(0, -2);
-    resultLine = `The following applications currently have been given permission: ${applications}.`;
+    applications += '</ul>'; // Close the list
+    resultLine = `The following applications currently have been given permission:<br>${applications}`;
     return resultLine;
+  }
+
+  /**
+   * Create a table for the CIS registry issues
+   * @param {string} issues list of incorrect registry keys
+   * @return {*[]} table with registry keys and values
+   */
+  function cisregistryTable(issues) {
+    const table = [];
+    let currentKey = null;
+    let currentValues = [];
+
+    issues.forEach((issue) => {
+      if (issue.includes('SYSTEM') || issue.includes('SOFTWARE')) {
+        if (currentKey) {
+          table.push({registryKey: currentKey, values: currentValues});
+        }
+        currentKey = issue;
+        currentValues = [];
+      } else if (currentKey) {
+        currentValues.push(issue);
+      }
+    });
+
+    if (currentKey) {
+      table.push({registryKey: currentKey, values: currentValues});
+    }
+
+    return table;
+  }
+
+  /**
+   * Create a table for the process ports
+   * @param {string} issues list of processes and ports
+   * @return {*[]} table with process names and ports
+   */
+  function processPortsTable(issues) {
+    const table = [];
+
+    issues.forEach((issue) => {
+      const parts = issue.split(/[ ,]+/); // Split on space and comma
+      const processIndex = parts.indexOf('process:');
+      const portIndex = parts.indexOf('port:');
+
+      if (processIndex !== -1 && portIndex !== -1) {
+        const processName = parts[processIndex + 1];
+        const ports = new Set(parts.slice(portIndex + 1));
+        table.push({portProcess: processName, ports: Array.from(ports)});
+      }
+    });
+
+    return table;
   }
 
   const result = `

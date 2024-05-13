@@ -1,0 +1,83 @@
+{
+  "Tray": 
+  {
+    "ReportingPageTitle": "Rapportagepagina",
+    "ReportingPageTooltip": "Open de rapportagepagina",
+    "ScanIntervalTitle": "Interval voor scannen wijzigen",
+    "ScanIntervalTooltip": "Wijzig het interval voor scannen",
+    "ScanNowTitle": "Nu scannen",
+    "ScanNowTooltip": "Scan nu uw apparaat",
+    "ChangeLanguageTitle": "Taal wijzigen",
+    "ChangeLanguageTooltip": "Wijzig de taal van de applicatie",
+    "QuitTitle": "Afsluiten",
+    "QuitTooltip": "Sluit voorbeeldbladtoepassing af"
+  },
+  "Navigation": 
+  {
+    "Home": "Startpagina",
+    "SecurityDashboard": "Beveiligingsdashboard",
+    "PrivacyDashboard": "Privacydashboard",
+    "Issues": "Problemen",
+    "Integration": "Integratie",
+    "About": "Over"
+  },
+  "Dashboard": 
+  {
+    "Issues": "Problemen",
+    "SuggestedIssue": "Voorgesteld Probleem",
+    "QuickFix": "Snelle Oplossing",
+    "ScanNow": "Nu Scannen",
+    "Medals": "Medailles",
+    "SecurityStatus": "Veiligheidsstatus",
+    "PrivacyStatus": "Privacystatus",
+    "Critical": "Kritiek",
+    "MediumConcern": "Gemiddelde Bezorgdheid",
+    "LowConcern": "Lage Bezorgdheid",
+    "InfoConcern": "Informatief",
+    "NoConcern": "Veilig",
+    "RiskLevelCounters": "Risiconiveautellers",
+    "RiskLevelDistribution": "Risiconiveaudistributie",
+    "TotalRisksOverview": "Totale risico-overzicht",
+    "SecurityRisksOverview": "Overzicht van beveiligingsrisico's",
+    "PrivacyRisksOverview": "Overzicht van privacyrisico's",
+    "HighRisk": "Hoogrisico-problemen",
+    "MediumRisk": "Gemiddeldrisico-problemen",
+    "LowRisk": "Laagrisico-problemen",
+    "InfoRisk": "Informatief",
+    "Safe": "Acceptabele bevindingen",
+    "SecurityRiskAreas": "Gebieden met beveiligingsrisico's",
+    "PrivacyRiskAreas": "Gebieden met privacyrisico's",    
+    "Applications": "Applicaties",
+    "Browser": "Browser",
+    "Devices": "Apparaten",
+    "OperatingSystem": "Besturingssysteem",
+    "Passwords": "Wachtwoorden",
+    "Permissions": "Machtigingen",
+    "Other": "Andere",
+    "ChooseIssueDescription": "Acties",
+    "BarGraphDescription": "Deze grafiek toont de verdeling van problemen van verschillende risiconiveaus die in de afgelopen 5 scans zijn gevonden.",
+    "SelectRisks": "Risico's selecteren",
+    "ChangeInterval": "Interval wijzigen"
+  },
+  "Issues":
+  {
+    "IssueTable": "Problementabel",
+    "AcceptableFindings": "Acceptabele bevindingen",
+    "Name": "Naam",
+    "Type": "Type",
+    "Risk": "Risiconiveau",
+    "Information": "Informatie",
+    "Solution": "Oplossing",
+    "Previous": "&laquo; Vorige stap",
+    "Next": "Volgende stap &raquo;",
+    "Back": "Terug naar het overzicht van problemen"
+  },
+  "About":
+  { 
+    "about-title": "Over Infosec Agent",
+    "infosec-info": "Het InfoSec Agent-project heeft als doel de beveiliging en privacy van Windows-gebruikers te verbeteren. Momenteel zijn er toepassingen beschikbaar die dit doen, maar ze zijn voornamelijk gericht op grote bedrijven. Het doel van dit project is om dit toegankelijk te maken voor iedereen. Er wordt een applicatie ontwikkeld die informatie verzamelt over het systeem van de gebruiker om eventuele beveiligings- of privacygerelateerde kwetsbaarheden te ontdekken. De resultaten worden aan de gebruiker gepresenteerd in een speciaal dashboard, met de huidige status van het systeem, inclusief aanbevolen acties om het te verbeteren.",
+    "little-brother-info": "Dit project is een gezamenlijke inspanning van negen studenten van de Universiteit Utrecht in Nederland, in samenwerking met het Nederlandse IT-bedrijf Guardian360. Het dient als het Softwareproject voor het Bachelorprogramma in Computerwetenschappen aan de UU.",
+    "about-contribute": "Bijdragen",
+    "contribute-info": "InfoSec-Agent is een open-sourceproject dat is gelicentieerd onder de GPL-3.0-licentie. Echter, vanwege de oorsprong als opdracht van de Universiteit Utrecht, zullen openbare bijdragen aan deze repository pas worden samengevoegd na voltooiing van deze opdracht, die gepland staat voor 24 juni 2024. Voel je vrij om eventuele bugs of problemen te melden die je tegenkomt. Jouw feedback is waardevol en helpt het InfoSec-Agent-project te verbeteren. Je kunt ons mailen op <a href=\"mailto:infosecagentuu@gmail.com\">infosecagentuu@gmail.com</a>"
+  }  
+}

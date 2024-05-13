@@ -1,0 +1,82 @@
+{
+  "Tray": 
+  {
+    "ReportingPageTitle": "Page de rapport",
+    "ReportingPageTooltip": "Ouvrir la page de rapport",
+    "ScanIntervalTitle": "Modifier l'intervalle de balayage",
+    "ScanIntervalTooltip": "Modifier l'intervalle de balayage",
+    "ScanNowTitle": "Balayer maintenant",
+    "ScanNowTooltip": "Balayer votre appareil maintenant",
+    "ChangeLanguageTitle": "Changer la langue",
+    "ChangeLanguageTooltip": "Changer la langue de l'application",
+    "QuitTitle": "Quitter",
+    "QuitTooltip": "Quitter l'application de la barre d'état exemple"
+  },
+  "Navigation": 
+  {
+    "Home": "Accueil",
+    "SecurityDashboard": "Sécurité",
+    "PrivacyDashboard": "Confidentialité",
+    "Issues": "Problèmes",
+    "Integration": "Intégration",
+    "About": "À propos"
+  },
+  "Dashboard": 
+  {
+    "Issues": "Problèmes",
+    "SuggestedIssue": "Problème Suggéré",
+    "QuickFix": "Correction Rapide",
+    "ScanNow": "Scanner Maintenant",
+    "Medals": "Médailles",
+    "SecurityStatus": "État de Sécurité",
+    "PrivacyStatus": "État de confidentialité",
+    "Critical": "Critique",
+    "MediumConcern": "Préoccupation Moyenne",
+    "LowConcern": "Faible Préoccupation",
+    "InfoConcern": "Informatif",
+    "NoConcern": "Sûr",
+    "RiskLevelCounters": "Compteurs de niveau de risque",
+    "RiskLevelDistribution": "Distribution des niveaux de risque",
+    "TotalRisksOverview": "Aperçu total des risques",
+    "SecurityRisksOverview": "Aperçu des risques de sécurité",
+    "PrivacyRisksOverview": "Aperçu des risques de confidentialité",
+    "HighRisk": "Problèmes à Haut Risque",
+    "MediumRisk": "Problèmes à Risque Moyen",
+    "LowRisk": "Problèmes à Faible Risque",
+    "InfoRisk": "Informatif",
+    "Safe": "Constatations acceptables",
+    "SecurityRiskAreas": "Domaines à risque de sécurité",
+    "PrivacyRiskAreas": "Domaines à risque de confidentialité",    
+    "Applications": "Applications",
+    "Browser": "Navigateur",
+    "Devices": "Appareils",
+    "OperatingSystem": "Système d'Exploitation",
+    "Passwords": "Mots de Passe",
+    "Permissions": "Autorisations",
+    "Other": "Autre",
+    "ChooseIssueDescription": "Actions",
+    "BarGraphDescription": "Ce graphique montre la répartition des problèmes de différents niveaux de risque trouvés lors des 5 derniers scans.",
+    "SelectRisks": "Sélectionner les risques",
+    "ChangeInterval": "Changer l'intervalle"
+  },
+  "Issues":
+  {
+    "IssueTable": "Tableau des problèmes",
+    "AcceptableFindings": "Résultats acceptables",
+    "Name": "Nom",
+    "Type": "Type",
+    "Risk": "Niveau de risque",
+    "Information": "Information",
+    "Solution": "Solution",
+    "Previous": "&laquo; Étape précédente",
+    "Next": "Étape suivante &raquo;",
+    "Back": "Retour à l'aperçu des problèmes"
+  },
+  "About": {
+    "about-title": "À propos de l'agent Infosec",
+    "infosec-info": "Le projet InfoSec Agent vise à améliorer la sécurité et la confidentialité des utilisateurs d'ordinateurs Windows. Actuellement, il existe des applications disponibles pour cela, mais elles sont principalement destinées aux grandes entreprises. L'objectif de ce projet est de le rendre accessible à tous. Une application est en cours de développement pour collecter des informations sur le système de l'utilisateur afin de découvrir les vulnérabilités liées à la sécurité ou à la confidentialité. Les résultats seront présentés à l'utilisateur dans un tableau de bord spécial, montrant l'état actuel du système, y compris les actions recommandées pour l'améliorer.",
+    "little-brother-info": "Ce projet est un effort collaboratif impliquant neuf étudiants de l'Université d'Utrecht aux Pays-Bas, en partenariat avec la société informatique néerlandaise Guardian360. Il sert de projet logiciel pour le programme de baccalauréat en sciences informatiques à l'UU.",
+    "about-contribute": "Contribuer",
+    "contribute-info": "InfoSec-Agent est un projet open source sous licence GPL-3.0. Cependant, en raison de ses origines en tant que devoir de l'Université d'Utrecht, les contributions publiques à ce dépôt ne seront fusionnées qu'après la fin de ce devoir, prévue pour le 24 juin 2024. N'hésitez pas à signaler tout bogue ou problème que vous rencontrez. Vos retours sont précieux et contribuent à améliorer le projet InfoSec-Agent. Vous pouvez nous envoyer un email à <a href=\"mailto:infosecagentuu@gmail.com\">infosecagentuu@gmail.com</a>."
+  }
+}

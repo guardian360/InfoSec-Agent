@@ -12,10 +12,10 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/InfoSec-Agent/InfoSec-Agent/localization"
-	"github.com/InfoSec-Agent/InfoSec-Agent/logger"
-	"github.com/InfoSec-Agent/InfoSec-Agent/tray"
-	"github.com/InfoSec-Agent/InfoSec-Agent/usersettings"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/localization"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/tray"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/usersettings"
 	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/options"
 	"github.com/wailsapp/wails/v2/pkg/options/assetserver"
@@ -99,8 +99,8 @@ func main() {
 	systemTray := NewTray(logger.Log)
 	database := NewDataBase()
 	customLogger := logger.Log
-	localization.Init("../")
-	lang := usersettings.LoadUserSettings("../usersettings").Language
+	localization.Init("../backend/")
+	lang := usersettings.LoadUserSettings().Language
 	tray.Language = lang
 
 	// Create a Wails application with the specified options

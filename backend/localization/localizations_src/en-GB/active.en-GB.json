@@ -1,0 +1,82 @@
+{
+  "Tray": 
+  {
+    "ReportingPageTitle": "Reporting page",
+    "ReportingPageTooltip": "Open the reporting page",
+    "ScanIntervalTitle": "Change Scan Interval",
+    "ScanIntervalTooltip": "Change the interval for scanning",
+    "ScanNowTitle": "Scan now",
+    "ScanNowTooltip": "Scan your device now",
+    "ChangeLanguageTitle": "Change Language",
+    "ChangeLanguageTooltip": "Change the language of the application",
+    "QuitTitle": "Quit",
+    "QuitTooltip": "Quit example tray application"
+  },
+  "Navigation": 
+  {
+    "Home": "Home",
+    "SecurityDashboard": "Security Dashboard",
+    "PrivacyDashboard": "Privacy Dashboard",
+    "Issues": "Issues",
+    "Integration": "Integration",
+    "About": "About"
+  },
+  "Dashboard": 
+  {
+    "Issues": "Issues",
+    "SuggestedIssue": "Suggested Issue",
+    "QuickFix": "Quick Fix",
+    "ScanNow": "Scan Now",
+    "Medals": "Progress",
+    "SecurityStatus": "Security status",
+    "PrivacyStatus": "Privacy status",
+    "Critical": "Critical",
+    "MediumConcern": "Medium concern",
+    "LowConcern": "Low concern",
+    "InfoConcern": "Informative",
+    "NoConcern": "Safe",
+    "RiskLevelCounters": "Risk level counters",
+    "RiskLevelDistribution": "Risk level distribution",
+    "TotalRisksOverview": "Total risks overview",
+    "SecurityRisksOverview": "Security risks overview",
+    "PrivacyRisksOverview": "Privacy risks overview",
+    "HighRisk": "High risk issues",
+    "MediumRisk": "Medium risk issues",
+    "LowRisk": "Low risk issues",
+    "InfoRisk": "Informative",
+    "Safe": "Acceptable findings",
+    "SecurityRiskAreas": "Areas of security risks",
+    "PrivacyRiskAreas": "Areas of privacy risks",
+    "Applications": "Applications",
+    "Browser": "Browser",
+    "Devices": "Devices",
+    "OperatingSystem": "OS",
+    "Passwords": "Passwords",
+    "Permissions": "Permissions",
+    "Other": "Other",
+    "ChooseIssueDescription": "Actions",
+    "BarGraphDescription": "This graph shows the distribution of issues of different risk levels found over the past 5 scans.",
+    "SelectRisks": "Select risks",
+    "ChangeInterval": "Change interval"
+  },
+  "Issues":
+  {
+    "IssueTable": "Issue table",
+    "AcceptableFindings": "Acceptable findings",
+    "Name": "Name",
+    "Type": "Type",
+    "Risk": "Risk level",
+    "Information": "Information",
+    "Solution": "Solution",
+    "Previous": "&laquo; Previous step",
+    "Next": "Next step &raquo;",
+    "Back": "Back to issues overview"
+  },
+  "About": {
+    "about-title": "About Infosec Agent",
+    "infosec-info": "The InfoSec Agent project aims to improve the security and privacy of Windows computer users. Currently, there are applications available that do this, but they are mainly targeted at large companies. The goal of this project is to make this accessible to everyone. An application is being developed that collects information about the user's system to discover any security or privacy-related vulnerabilities. The results will be presented to the user in a special dashboard, showing the current status of the system, including recommended actions to improve it.",
+    "little-brother-info": "This project is a collaborative effort involving nine students from Utrecht University in The Netherlands, in partnership with the Dutch IT company Guardian360. It serves as the Software Project for the Bachelor's Programme in Computing Sciences at the UU.",
+    "about-contribute": "Contribute",
+    "contribute-info": "InfoSec-Agent is an Open-Source project licensed under the GPL-3.0 Licence. However, due to its origins as a Utrecht University assignment, public contributions to this repository will only be merged after the completion of this assignment, which is scheduled for 24th June 2024. Feel free to report any bugs or issues you encounter. Your feedback is valuable and helps improve the InfoSec-Agent project. You can email us at <a href=\"mailto:infosecagentuu@gmail.com\">infosecagentuu@gmail.com</a>"
+  }
+}

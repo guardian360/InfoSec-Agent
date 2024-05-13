@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/InfoSec-Agent/InfoSec-Agent/checks"
-	"github.com/InfoSec-Agent/InfoSec-Agent/scan"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/scan"
 )
 
 // DataBase represents the application's database. It is used for invoking functions that interact with the database.
@@ -32,5 +32,5 @@ func NewDataBase() *DataBase {
 //
 // Returns: list of severity levels and JSON keys for each issue checked
 func (d *DataBase) GetDataBaseData(checks []checks.Check) ([]scan.DataBaseData, error) {
-	return scan.GetDataBaseData(checks)
+	return scan.GetDataBaseData(checks, "./database.db")
 }
