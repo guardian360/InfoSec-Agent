@@ -83,6 +83,7 @@ export const clickEvent = new window.MouseEvent('click');
 export const beginHover = new window.MouseEvent('mouseenter');
 export const endHover = new window.MouseEvent('mouseleave');
 export const changeEvent = new Event('change');
+export const resizeEvent = new Event('resize');
 
 // Mock global storage
 export const storageMock = (() => {
