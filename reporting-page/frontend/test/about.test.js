@@ -1,0 +1,59 @@
+import 'jsdom-global/register.js';
+import test from 'unit.js';
+import {JSDOM} from 'jsdom';
+import {jest} from '@jest/globals';
+import {mockPageFunctions,mockGetLocalization,storageMock} from './mock.js';
+
+global.TESTING = true;
+
+// Mock issue page
+const dom = new JSDOM(`
+<!DOCTYPE html>
+<html>
+<body>
+    <div id="page-contents"></div>
+</body>
+</html>
+`);
+global.document = dom.window.document;
+global.window = dom.window;
+
+// Mock often used page functions
+mockPageFunctions();
+
+// Mock Localize function
+jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
+    Localize: jest.fn().mockImplementation((input) => mockGetLocalization(input)),
+  }));
+
+// Mock sessionStorage
+global.sessionStorage = storageMock;
+
+describe('About page', function() {
+    it('openAboutPage opens the about page', async function() {
+        // Arrange
+        const about = await import('../src/js/about.js');
+        const classNames = [
+            'about-title',
+            'infosec-info',
+            'little-brother-info',
+            'about-contribute',
+            'contribute-info',
+          ];
+          const expectedTexts = [
+            'About.about-title',
+            'About.infosec-info',
+            'About.little-brother-info',
+            'About.about-contribute',
+            'About.contribute-info',
+          ];
+
+        // Act
+        await about.openAboutPage();
+
+        // Assert
+        expectedTexts.forEach((expected, index) => {
+            test.value(document.getElementsByClassName(classNames[index])[0].innerHTML).isEqualTo(expected);
+        })
+    })
+});

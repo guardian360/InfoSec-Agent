@@ -1,6 +1,7 @@
 import {closeNavigation, markSelectedNavigationItem} from './navigation-menu';
 import {retrieveTheme} from './personalize';
 import {getLocalization} from './localize.js';
+import {LogError as logError} from '../../wailsjs/go/main/Tray.js';
 
 /** Load the content of the About page */
 export function openAboutPage() {
@@ -68,4 +69,11 @@ export function openAboutPage() {
   }
 }
 
-document.getElementById('about-button').addEventListener('click', () => openAboutPage());
+/* istanbul ignore next */
+if (typeof document !== 'undefined') {
+  try {
+    document.getElementById('about-button').addEventListener('click', () => openAboutPage());
+  } catch (error) {
+    logError('Error in about.js: ' + error);
+  }
+}
