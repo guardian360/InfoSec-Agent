@@ -5,7 +5,7 @@ import {retrieveTheme} from './personalize.js';
 
 let stepCounter = 0;
 const issuesWithResultsShow =
-    ['11', '21', '60', '70', '80', '90', '100', '110', '160', '201', '230', '310', '320'];
+    ['11', '21', '60', '70', '80', '90', '100', '110', '160', '173', '201', '230', '310', '320'];
 
 /** Update contents of solution guide
  *
@@ -174,6 +174,9 @@ export function parseShowResult(issueId, currentIssue) {
     issues.find((issue) => issue.issue_id === 16).result.forEach((issue) => {
       resultLine += `You changed your password on: ${issue}`;
     });
+    break;
+  case '173':
+    generateBulletList(issues, 17);
     break;
   case '201':
     generateBulletList(issues, 20);
