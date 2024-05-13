@@ -253,9 +253,9 @@ var IssueMap = map[IssueResPair]bool{
 	{27, 0}: false,
 	// Firefox Extension: List of extensions
 	{28, 0}: false,
-	// Firefox Adblock: Adblocker installed
+	// Firefox Adblock: Ad blocker installed
 	{29, 0}: false,
-	// Firefox Adblock: No adblocker installed
+	// Firefox Adblock: No ad blocker installed
 	{29, 1}: true,
 	// Firefox SearchEngine: Search engine
 	{30, 0}: false,
@@ -267,4 +267,8 @@ var IssueMap = map[IssueResPair]bool{
 	{32, 0}: true,
 	// CIS Registry Settings: Everything is set correctly
 	{32, 1}: false,
+	// Auto Login: Auto login disabled
+	{33, 0}: false,
+	// Auto Login: Auto login enabled
+	{33, 1}: true,
 }
