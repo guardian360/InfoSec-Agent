@@ -15,8 +15,8 @@
   "Navigation": 
   {
     "Home": "Startseite",
-    "SecurityDashboard": "Sicherheits-Dashboard",
-    "PrivacyDashboard": "Datenschutz-Dashboard",
+    "SecurityDashboard": "Sicherheits",
+    "PrivacyDashboard": "Datenschutz",
     "Issues": "Probleme",
     "Integration": "Integration",
     "About": "Über"
@@ -29,7 +29,7 @@
     "ScanNow": "Jetzt Scannen",
     "Medals": "Medaillen",
     "SecurityStatus": "Sicherheitsstatus",
-    "PrivacyStatus": "Privacy status",
+    "PrivacyStatus": "Datenschutzstatus",
     "Critical": "Kritisch",
     "MediumConcern": "Mittlere Besorgnis",
     "LowConcern": "Geringe Besorgnis",

@@ -15,8 +15,8 @@
   "Navigation": 
   {
     "Home": "Accueil",
-    "SecurityDashboard": "Tableau de bord de sécurité",
-    "PrivacyDashboard": "Tableau de bord de confidentialité",
+    "SecurityDashboard": "Sécurité",
+    "PrivacyDashboard": "Confidentialité",
     "Issues": "Problèmes",
     "Integration": "Intégration",
     "About": "À propos"
@@ -29,7 +29,7 @@
     "ScanNow": "Scanner Maintenant",
     "Medals": "Médailles",
     "SecurityStatus": "État de Sécurité",
-    "PrivacyStatus": "Privacy status",
+    "PrivacyStatus": "État de confidentialité",
     "Critical": "Critique",
     "MediumConcern": "Préoccupation Moyenne",
     "LowConcern": "Faible Préoccupation",
