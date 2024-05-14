@@ -376,7 +376,8 @@ func ScanNow() ([]checks.Check, error) {
 // Returns: None. The function updates the 'language' variable in-place.
 func ChangeLanguage(testInput ...string) {
 	var res string
-	if len(testInput) > 0 {
+	test := testInput != nil
+	if test {
 		res = testInput[0]
 	} else {
 		var err error
@@ -407,6 +408,10 @@ func ChangeLanguage(testInput ...string) {
 		Language = 6
 	default:
 		Language = 1
+	}
+
+	if test {
+		return
 	}
 	usersettings.SaveUserSettings(usersettings.UserSettings{
 		Language:     Language,

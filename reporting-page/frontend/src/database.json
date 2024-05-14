@@ -625,9 +625,9 @@
         ]
     },
     "170": {
-        "Name": "Windows login method",
+        "Name": "No windows login method set up",
         "Type": "Security",
-        "Information": "Using a secure windows login method is important. Windows supports various login methods like a password, pin, security key or fingerprint. Using one of these login methods is important to keep your data safe. Without one of these login methods anyone is able to unlock your device and access your data.",
+        "Information": "Using a secure windows login method is important. Windows supports various login methods like a password, PIN, security key or fingerprint. Using one of these login methods is important to keep your data safe. Without one of these login methods anyone is able to unlock your device and access your data. You are not using a login method / a less secure login method / combination of login methods, it is recommended to switch to a more secure login method like password or fingerprint.",
         "Solution": 
         [   
             "Go to Start > Settings > Accounts > Sign-in options.", 
@@ -640,24 +640,21 @@
         ]
     },
     "171": {
-        "Name": "Windows login with pin only",
+        "Name": "Windows login with secure login method",
         "Type": "Security",
-        "Information": "Using a secure windows login method is important. Windows supports various login methods like a password, pin, security key or fingerprint. Using one of these login methods is important to keep your data safe. Without one of these login methods anyone is able to unlock your device and access your data.",
+        "Information": "Using a secure windows login method is important. Windows supports various login methods like a password, PIN, security key or fingerprint. Using one of these login methods is important to keep your data safe. Without one of these login methods anyone is able to unlock your device and access your data.",
         "Solution": 
         [   
-            "Go to Start > Settings > Accounts > Sign-in options.", 
-            "Now you can set up one of the available login methods by following the steps described."
+            "You are using a secure login method, no action is needed."
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-login-method/login-method-1.jpg",
-            "frontend/src/assets/images/windows-login-method/login-method-2.jpg"
         ]
     },
     "173": {
-        "Name": "Windows login with multi-factor authentication",
+        "Name": "Windows login with less secure login method",
         "Type": "Security",
-        "Information": "Using a secure windows login method is important. Windows supports various login methods like a password, pin, security key or fingerprint. Using one of these login methods is important to keep your data safe. Without one of these login methods anyone is able to unlock your device and access your data.",
+        "Information": "Using a secure windows login method is important. Windows supports various login methods like a password, PIN, security key or fingerprint. Using one of these login methods is important to keep your data safe. Without one of these login methods anyone is able to unlock your device and access your data. You are using a less secure login method / combination of login methods as seen below, it is recommended to switch to a more secure login method like password or fingerprint.",
         "Solution": 
         [   
             "Go to Start > Settings > Accounts > Sign-in options.", 
@@ -1029,6 +1026,32 @@
         ]
     },
     "330": {
+        "Name": "Automatic log-in disabled",
+        "Type": "Security",
+        "Information": "Automatic log-in allows users to access their accounts without entering a password each time they start their computer or open a specific application. While convenient, automatic log-in poses security risks, as anyone with physical access to the device can access the account without authentication. Disabling automatic log-in enhances the security of your accounts and prevents unauthorized access.",
+        "Solution":
+        [
+            "Automatic log-in is disabled, so there is no action needed."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "331": {
+        "Name": "Automatic log-in enabled",
+        "Type": "Security",
+        "Information": "Automatic log-in allows users to access their accounts without entering a password each time they start their computer or open a specific application. While convenient, automatic log-in poses security risks, as anyone with physical access to the device can access the account without authentication. Disabling automatic log-in enhances the security of your accounts and prevents unauthorized access.",
+        "Solution":
+        [
+            "Go to Start > Settings > Accounts > Sign-in options.",
+            "Under 'Require sign-in', select 'When PC wakes up from sleep'."
+        ],
+        "Screenshots":
+        [
+            "TOBEFILLED"
+        ]
+    },
+    "997": {
         "Name": "Extensions installed in Google Chrome",
         "Type": "Privacy",
         "Information": "Browser extensions enhance the functionality of your web browser by adding features, tools, and customization options. While extensions can be useful, they can also pose privacy and security risks if they have access to sensitive data or track your online activities without your consent. Regularly reviewing and managing your browser extensions helps protect your privacy and security online. Remove any extensions that you no longer use or trust to minimize potential risks.",

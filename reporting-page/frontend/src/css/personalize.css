@@ -111,7 +111,7 @@ hr.solid {
   --text-body: #333; 
   --text-navigation: hsl(var(--hue-complement) 5% 30%);
   --text-settings-hover: #646464; 
-  --text-left-nav: #d4d4d4; 
+  --text-left-nav: #e7e7e7; 
   --background-color-integration: #f4f4f4;
 
 }
