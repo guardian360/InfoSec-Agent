@@ -210,7 +210,11 @@ func (m *MockRegistryKey) GetBinaryValue(name string) ([]byte, uint32, error) {
 //
 // This function is a method of the MockRegistryKey struct and simulates the GetIntegerValue method of the RegistryKey interface by returning the values stored in the IntegerValues map of the MockRegistryKey.
 func (m *MockRegistryKey) GetIntegerValue(name string) (uint64, uint32, error) {
-	return m.IntegerValues[name], 0, nil
+	value, ok := m.IntegerValues[name]
+	if ok {
+		return value, 0, nil
+	}
+	return 0, 0, errors.New("")
 }
 
 // OpenKey opens a sub-key with a specified path relative to the current key in the MockRegistryKey.

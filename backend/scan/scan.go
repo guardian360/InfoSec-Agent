@@ -6,12 +6,15 @@ package scan
 import (
 	"encoding/json"
 	"fmt"
+	"time"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/browsers"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/devices"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/network"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/programs"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/windows"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/integration"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/usersettings"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/cisregistrysettings"
 
@@ -25,6 +28,8 @@ import (
 	"github.com/ncruces/zenity"
 )
 
+var executor = &mocking.RealCommandExecutor{}
+
 // securityChecks is a slice of functions that return checks.Check objects.
 // Each function in the slice represents a different security or privacy check that the application can perform.
 // When the Scan function is called, it iterates over this slice and executes each check in turn.
@@ -37,7 +42,7 @@ var securityChecks = []func() checks.Check{
 		return windows.Defender(mocking.LocalMachine, mocking.LocalMachine)
 	},
 	func() checks.Check {
-		return windows.LastPasswordChange(&mocking.RealCommandExecutor{})
+		return windows.LastPasswordChange(executor)
 	},
 	func() checks.Check {
 		return windows.LoginMethod(mocking.LocalMachine)
@@ -61,31 +66,33 @@ var securityChecks = []func() checks.Check{
 		return devices.Bluetooth(mocking.NewRegistryKeyWrapper(registry.LOCAL_MACHINE))
 	},
 	func() checks.Check {
-		return network.OpenPorts(&mocking.RealCommandExecutor{}, &mocking.RealCommandExecutor{})
+		return network.OpenPorts(executor, executor)
 	},
-	func() checks.Check { return windows.Outdated(&mocking.RealCommandExecutor{}) },
+	func() checks.Check { return windows.Outdated(executor) },
 	func() checks.Check {
 		return windows.SecureBoot(mocking.LocalMachine)
 	},
 	func() checks.Check {
-		return network.SmbCheck(&mocking.RealCommandExecutor{})
+		return network.SmbCheck(executor)
 	},
 	func() checks.Check {
 		return windows.Startup(mocking.CurrentUser, mocking.LocalMachine, mocking.LocalMachine)
 	},
 	func() checks.Check {
-		return windows.GuestAccount(&mocking.RealCommandExecutor{}, &mocking.RealCommandExecutor{},
-			&mocking.RealCommandExecutor{}, &mocking.RealCommandExecutor{})
+		return windows.GuestAccount(executor, executor,
+			executor, executor)
 	},
-	func() checks.Check { return windows.UACCheck(&mocking.RealCommandExecutor{}) },
+	func() checks.Check { return windows.UACCheck(executor) },
 	func() checks.Check {
 		return windows.RemoteDesktopCheck(mocking.LocalMachine)
 	},
-	func() checks.Check { return devices.ExternalDevices(&mocking.RealCommandExecutor{}) },
-	func() checks.Check { return network.ProfileTypes(mocking.LocalMachine) },
+	func() checks.Check { return devices.ExternalDevices(executor) },
+	func() checks.Check { return windows.Advertisement(mocking.LocalMachine) },
 	func() checks.Check { return chromium.HistoryChromium("Chrome") },
 	func() checks.Check { return chromium.ExtensionsChromium("Chrome") },
-	func() checks.Check { return chromium.SearchEngineChromium("Chrome") },
+	func() checks.Check {
+		return chromium.SearchEngineChromium("Chrome", false, nil, browsers.RealPreferencesDirGetter{})
+	},
 	func() checks.Check { c, _ := firefox.ExtensionFirefox(browsers.RealProfileFinder{}); return c },
 	func() checks.Check { _, c := firefox.ExtensionFirefox(browsers.RealProfileFinder{}); return c },
 	func() checks.Check { return firefox.HistoryFirefox(browsers.RealProfileFinder{}) },
@@ -94,6 +101,9 @@ var securityChecks = []func() checks.Check{
 	},
 	func() checks.Check {
 		return cisregistrysettings.CISRegistrySettings(mocking.LocalMachine, mocking.UserProfiles)
+	},
+	func() checks.Check {
+		return windows.AutomaticLogin(mocking.LocalMachine)
 	},
 }
 
@@ -111,6 +121,10 @@ var securityChecks = []func() checks.Check{
 //   - []checks.Check: A slice of Check objects representing all found issues.
 //   - error: An error object that describes the error (if any) that occurred while running the checks or serializing the results to JSON. If no error occurred, this value is nil.
 func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
+	date := time.Now().Format(time.RFC3339)
+	// TODO: Replace with actual workstation ID and user
+	workStationID := 0
+	user := "user"
 	// Define all security/privacy checks that Scan() should execute
 	totalChecks := len(securityChecks)
 
@@ -144,5 +158,9 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 	}
 	logger.Log.Info(string(jsonData))
 
+	// TODO: Set usersettings.Integration to true depending on whether user has connected with the API
+	if usersettings.LoadUserSettings().Integration {
+		integration.ParseScanResults(integration.Metadata{WorkStationID: workStationID, User: user, Date: date}, checkResults)
+	}
 	return checkResults, nil
 }

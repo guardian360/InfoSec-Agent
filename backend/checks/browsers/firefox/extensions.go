@@ -36,7 +36,6 @@ func ExtensionFirefox(profileFinder browsers.FirefoxProfileFinder) (checks.Check
 	}
 
 	resultID = 1
-	addBlocker := false // Variable used for checking if an ad blocker is used
 	var output []string
 	// Open the extensions.json file, which contains a list of all installed Firefox extensions
 	content, err := os.Open(ffdirectory[0] + "\\extensions.json")
@@ -64,13 +63,11 @@ func ExtensionFirefox(profileFinder browsers.FirefoxProfileFinder) (checks.Check
 			""+strconv.FormatBool(addon.Active))
 		// Determine if the addon is an ad blocker
 		if AdblockerFirefox(addon.DefaultLocale.Name) {
-			addBlocker = true
 			resultID = 0
 		}
 	}
-	adBlockused := strconv.FormatBool(addBlocker)
 	return checks.NewCheckResult(checks.ExtensionFirefoxID, 0, output...),
-		checks.NewCheckResult(checks.AdblockFirefoxID, resultID, adBlockused)
+		checks.NewCheckResult(checks.AdblockFirefoxID, resultID)
 }
 
 // AdblockerFirefox determines whether the provided Firefox extension functions as an adblocker.

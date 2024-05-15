@@ -2,13 +2,22 @@ package devices_test
 
 import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/devices"
-	"testing"
-
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/stretchr/testify/require"
+	"os"
+	"testing"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 )
+
+func TestMain(m *testing.M) {
+	logger.SetupTests()
+
+	exitCode := m.Run()
+
+	os.Exit(exitCode)
+}
 
 // TestBluetooth is a unit test function for the Bluetooth function in the checks package.
 //
@@ -31,7 +40,7 @@ func TestBluetooth(t *testing.T) {
 			key: &mocking.MockRegistryKey{
 				SubKeys: []mocking.MockRegistryKey{
 					{KeyName: "SYSTEM\\CurrentControlSet\\Services\\BTHPORT\\Parameters\\Devices"}}},
-			want: checks.NewCheckResult(checks.BluetoothID, 0, "No Bluetooth devices found"),
+			want: checks.NewCheckResult(checks.BluetoothID, 0),
 		},
 		{
 			name: "Bluetooth devices found",
@@ -53,7 +62,7 @@ func TestBluetooth(t *testing.T) {
 							{KeyName: "FAFA", StringValues: map[string]string{"Name2": "fsdfs"}, Err: nil}},
 					},
 				}},
-			want: checks.NewCheckResult(checks.BluetoothID, 1, "Error reading device name FAFA"),
+			want: checks.NewCheckResult(checks.BluetoothID, 1),
 		},
 	}
 	for _, tt := range tests {

@@ -17,6 +17,14 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 )
 
+// constants to store information of the browsers
+const Edge = "Edge"
+const Chrome = "Chrome"
+const EdgePath = "Microsoft/Edge"
+const ChromePath = "Google/Chrome"
+
+var UserHomeDirFunc = os.UserHomeDir
+
 // CloseFile is a utility function that closes a given file and logs any errors that occur during the process.
 //
 // Parameters:
@@ -201,4 +209,34 @@ func CopyFile(src, dst string, mockSource mocking.File, mockDestination mocking.
 		return err
 	}
 	return nil
+}
+
+// PreferencesDirGetter is an interface that wraps the GetPreferencesDir method.
+// It provides a way to get the preferences directory of a specific browser.
+type PreferencesDirGetter interface {
+	// GetPreferencesDir takes a browser name as input and returns the path to the preferences directory of the browser.
+	// It returns an error if there is any issue in getting the preferences directory.
+	GetPreferencesDir(browser string) (string, error)
+}
+
+// RealPreferencesDirGetter is a struct that implements the PreferencesDirGetter interface.
+// It provides the real implementation of the GetPreferencesDir method.
+type RealPreferencesDirGetter struct{}
+
+// GetPreferencesDir is a method of RealPreferencesDirGetter that gets the preferences directory of a specific browser.
+// It takes a browser name as input and returns the path to the preferences directory of the browser.
+// It returns an error if there is any issue in getting the preferences directory.
+func (r RealPreferencesDirGetter) GetPreferencesDir(browser string) (string, error) {
+	var browserPath string
+	if browser == Chrome {
+		browserPath = ChromePath
+	}
+	if browser == Edge {
+		browserPath = EdgePath
+	}
+	user, err := UserHomeDirFunc()
+	if err != nil {
+		return "", err
+	}
+	return filepath.Join(user, "AppData", "Local", browserPath, "User Data", "Default"), nil
 }

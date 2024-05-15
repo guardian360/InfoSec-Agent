@@ -48,6 +48,7 @@
         ],
         "Screenshots":
         [
+            "TOBEFILLED"
         ]
     },
     "30": {
@@ -103,28 +104,25 @@
         ]
     },
     "40": {
-        "Name": "Network sharing enabled",
-        "Type": "Security",
-        "Information": "Network sharing refers to the ability to share resources, such as files, folders, printers, and internet connections, between multiple devices connected to a network. It allows users to access and collaborate on shared resources across the network, facilitating data exchange and collaboration among users and devices. Permissions can be configured to allow or deny access to specific users or groups, ensuring that sensitive data remains secure. If you do not need network sharing it is safer to turn it off.",
+        "Name": "Advertisement ID sharing disabled",
+        "Type": "Privacy",
+        "Information": "The advertisement ID setting allows windows to send you personalized ads. It is important to limit the amount of entities that have your personal data, therefore it is safer to turn this setting off.",
         "Solution": 
-        [   
-            "Go to Start > Settings > System > Nearby share settings.", 
-            "Here you can control the network sharing settings and turn the feature off."
+        [
+            "Advertisement ID sharing is disabled, so there is no action needed."
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/network-sharing/nearby-sharing-1.jpg",
-            "frontend/src/assets/images/network-sharing/nearby-sharing-2.jpg"
         ]
     },
     "41": {
-        "Name": "Network sharing partially enabled",
+        "Name": "Advertisement ID sharing enabled",
         "Type": "Security",
-        "Information": "Network sharing refers to the ability to share resources, such as files, folders, printers, and internet connections, between multiple devices connected to a network. It allows users to access and collaborate on shared resources across the network, facilitating data exchange and collaboration among users and devices. Permissions can be configured to allow or deny access to specific users or groups, ensuring that sensitive data remains secure. If you do not need network sharing it is safer to turn it off.",
+        "Information": "The advertisement ID setting allows windows to send you personalized ads. It is important to limit the amount of entities that have your personal data, therefore it is safer to turn this setting off.",
         "Solution": 
-        [   
-            "Go to Start > Settings > System > Nearby share settings.", 
-            "Here you can control the network sharing settings and turn the feature off."
+        [
+            "Go to Start > Settings > Privacy & Security > General ",
+            "Here you can control the advertisement ID settings and turn the feature on/off."
         ],
         "Screenshots":
         [
@@ -627,9 +625,9 @@
         ]
     },
     "170": {
-        "Name": "Windows login method",
+        "Name": "No windows login method set up",
         "Type": "Security",
-        "Information": "Using a secure windows login method is important. Windows supports various login methods like a password, pin, security key or fingerprint. Using one of these login methods is important to keep your data safe. Without one of these login methods anyone is able to unlock your device and access your data.",
+        "Information": "Using a secure windows login method is important. Windows supports various login methods like a password, PIN, security key or fingerprint. Using one of these login methods is important to keep your data safe. Without one of these login methods anyone is able to unlock your device and access your data. You are not using a login method / a less secure login method / combination of login methods, it is recommended to switch to a more secure login method like password or fingerprint.",
         "Solution": 
         [   
             "Go to Start > Settings > Accounts > Sign-in options.", 
@@ -642,24 +640,21 @@
         ]
     },
     "171": {
-        "Name": "Windows login with pin only",
+        "Name": "Windows login with secure login method",
         "Type": "Security",
-        "Information": "Using a secure windows login method is important. Windows supports various login methods like a password, pin, security key or fingerprint. Using one of these login methods is important to keep your data safe. Without one of these login methods anyone is able to unlock your device and access your data.",
+        "Information": "Using a secure windows login method is important. Windows supports various login methods like a password, PIN, security key or fingerprint. Using one of these login methods is important to keep your data safe. Without one of these login methods anyone is able to unlock your device and access your data.",
         "Solution": 
         [   
-            "Go to Start > Settings > Accounts > Sign-in options.", 
-            "Now you can set up one of the available login methods by following the steps described."
+            "You are using a secure login method, no action is needed."
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-login-method/login-method-1.jpg",
-            "frontend/src/assets/images/windows-login-method/login-method-2.jpg"
         ]
     },
     "173": {
-        "Name": "Windows login with multi-factor authentication",
+        "Name": "Windows login with less secure login method",
         "Type": "Security",
-        "Information": "Using a secure windows login method is important. Windows supports various login methods like a password, pin, security key or fingerprint. Using one of these login methods is important to keep your data safe. Without one of these login methods anyone is able to unlock your device and access your data.",
+        "Information": "Using a secure windows login method is important. Windows supports various login methods like a password, PIN, security key or fingerprint. Using one of these login methods is important to keep your data safe. Without one of these login methods anyone is able to unlock your device and access your data. You are using a less secure login method / combination of login methods as seen below, it is recommended to switch to a more secure login method like password or fingerprint.",
         "Solution": 
         [   
             "Go to Start > Settings > Accounts > Sign-in options.", 
@@ -849,6 +844,7 @@
         ],
         "Screenshots":
         [
+            "TOBEFILLED"
         ]
     },	
     "231": {
@@ -981,70 +977,81 @@
         ]
     },	
     "310": {
-        "Name": "Potential phishing domains found on Mozilla Firefox",
+        "Name": "No potential phishing domains found on Mozilla Firefox",
         "Type": "Privacy",
-        "Information": "Be careful browsing the internet as trusted websites could be spoofed easily. Furthermore there are a lot of websites with malicious intentions. In case of doubt of actively browsing on a potential phishing website, it is advised to change your password.",
-        "Solution": 
-        [   		
-          "Be careful browsing the internet as trusted websites could be spoofed easily. Furthermore there are a lot of websites with malicious intentions. In case of doubt of actively browsing on a potential phishing website, it is advised to change your password."  
+        "Information": "Phishing domains are fake websites designed to trick people into sharing sensitive information like passwords or credit card details. They look real, mimicking trusted brands or organizations. These scams exploit trust and curiosity to steal personal data.",
+        "Solution":
+        [
         ],
         "Screenshots":
         [
         ]
     },		
     "311": {
-        "Name": "No potential phishing domains found on Mozilla Firefox",
+        "Name": "Potential phishing domains found on Mozilla Firefox",
         "Type": "Privacy",
-        "Information": "Phishing domains are fake websites designed to trick people into sharing sensitive information like passwords or credit card details. They look real, mimicking trusted brands or organizations. These scams exploit trust and curiosity to steal personal data.",
-        "Solution": 
-        [   		
-           "Be careful browsing the internet as trusted websites could be spoofed easily. Furthermore there are a lot of websites with malicious intentions. In case of doubt of actively browsing on a potential phishing website, it is advised to change your password." 
+        "Information": "Be careful browsing the internet as trusted websites could be spoofed easily. Furthermore there are a lot of websites with malicious intentions. In case of doubt of actively browsing on a potential phishing website, it is advised to change your password.",
+        "Solution":
+        [
+            "Be careful browsing the internet as trusted websites could be spoofed easily. Furthermore there are a lot of websites with malicious intentions. In case of doubt of actively browsing on a potential phishing website, it is advised to change your password."
+        ],
+        "Screenshots":
+        [
+            "TOBEFILLED"
+        ]
+    },
+    "320": {
+        "Name": "Incorrect CIS Audit list registry settings",
+        "Type": "Security",
+        "Information": "The Center for Internet Security (CIS) provides a set of guidelines and best practices for securing computer systems. The CIS Audit list registry settings help ensure that your system is configured according to these security standards. Incorrect or outdated registry settings may leave your system vulnerable to security threats and compromise your privacy.",
+        "Solution":
+        [
+            "Download the CIS Benchmark for your operating system from the official CIS website. Follow the instructions in the benchmark document to review and update the registry settings on your system to align with the CIS security standards. Regularly check for updates to the CIS Benchmark and apply any changes or recommendations to maintain a secure configuration."
+        ],
+        "Screenshots":
+        [
+            "TOBEFILLED"
+        ]
+    },
+    "321": {
+        "Name": "Correct CIS Audit list registry settings",
+        "Type": "Security",
+        "Information": "The Center for Internet Security (CIS) provides a set of guidelines and best practices for securing computer systems. The CIS Audit list registry settings help ensure that your system is configured according to these security standards. Incorrect or outdated registry settings may leave your system vulnerable to security threats and compromise your privacy.",
+        "Solution":
+        [
+            "All settings adhere to the CIS Audit list guidelines, no action is needed."
         ],
         "Screenshots":
         [
         ]
     },
-    "320": {
-        "Name": "Applications with administrator privileges",
-        "Type": "Security",
-        "Information": "Applications with administrator permissions have elevated privileges, allowing them to make changes to system settings, install or uninstall software, modify system files, and perform other actions that can affect the security and stability of your computer. Knowing which apps have admin permissions helps you identify potential security risks and vulnerabilities, such as malicious software or unauthorized applications that may have gained elevated access.",
-        "Solution": 
-        [   
-            "Right-click on the taskbar and select 'Task Manager', or press Ctrl + Shift + Esc on your keyboard to open Task Manager.", 
-            "In Task Manager, click on the 'Details' tab to view a list of running processes and applications.",
-            "Right-click on the column header, click 'Select columns', and make sure that 'Elevated' is checked. This column shows whether a process or application is running with admin permissions.",
-            "Scroll through the list of processes and look for entries with 'Yes' in the 'Elevated' column. These processes have admin privileges.",
-            "If you see programs which do not need to run with admin permissions you can right click on them and end the task."
-        ],"Screenshots":
-        [
-            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-1.jpg",
-            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-2.jpg",
-            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-3.jpg",
-            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-4.jpg",
-            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-4.jpg"
-        ]
-    },
-    "321": {
-        "Name": "Applications with administrator privileges",
-        "Type": "Security",
-        "Information": "Applications with administrator permissions have elevated privileges, allowing them to make changes to system settings, install or uninstall software, modify system files, and perform other actions that can affect the security and stability of your computer. Knowing which apps have admin permissions helps you identify potential security risks and vulnerabilities, such as malicious software or unauthorized applications that may have gained elevated access.",
-        "Solution": 
-        [   
-            "Right-click on the taskbar and select 'Task Manager', or press Ctrl + Shift + Esc on your keyboard to open Task Manager.", 
-            "In Task Manager, click on the 'Details' tab to view a list of running processes and applications.",
-            "Right-click on the column header, click 'Select columns', and make sure that 'Elevated' is checked. This column shows whether a process or application is running with admin permissions.",
-            "Scroll through the list of processes and look for entries with 'Yes' in the 'Elevated' column. These processes have admin privileges.",
-            "If you see programs which do not need to run with admin permissions you can right click on them and end the task."
-        ],"Screenshots":
-        [
-            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-1.jpg",
-            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-2.jpg",
-            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-3.jpg",
-            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-4.jpg",
-            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-4.jpg"
-        ]
-    },
     "330": {
+        "Name": "Automatic log-in disabled",
+        "Type": "Security",
+        "Information": "Automatic log-in allows users to access their accounts without entering a password each time they start their computer or open a specific application. While convenient, automatic log-in poses security risks, as anyone with physical access to the device can access the account without authentication. Disabling automatic log-in enhances the security of your accounts and prevents unauthorized access.",
+        "Solution":
+        [
+            "Automatic log-in is disabled, so there is no action needed."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "331": {
+        "Name": "Automatic log-in enabled",
+        "Type": "Security",
+        "Information": "Automatic log-in allows users to access their accounts without entering a password each time they start their computer or open a specific application. While convenient, automatic log-in poses security risks, as anyone with physical access to the device can access the account without authentication. Disabling automatic log-in enhances the security of your accounts and prevents unauthorized access.",
+        "Solution":
+        [
+            "Go to Start > Settings > Accounts > Sign-in options.",
+            "Under 'Require sign-in', select 'When PC wakes up from sleep'."
+        ],
+        "Screenshots":
+        [
+            "TOBEFILLED"
+        ]
+    },
+    "997": {
         "Name": "Extensions installed in Google Chrome",
         "Type": "Privacy",
         "Information": "Browser extensions enhance the functionality of your web browser by adding features, tools, and customization options. While extensions can be useful, they can also pose privacy and security risks if they have access to sensitive data or track your online activities without your consent. Regularly reviewing and managing your browser extensions helps protect your privacy and security online. Remove any extensions that you no longer use or trust to minimize potential risks.",
@@ -1056,6 +1063,46 @@
         ],
         "Screenshots":
         [
+        ]
+    },
+    "998": {
+        "Name": "Applications with administrator privileges",
+        "Type": "Security",
+        "Information": "Applications with administrator permissions have elevated privileges, allowing them to make changes to system settings, install or uninstall software, modify system files, and perform other actions that can affect the security and stability of your computer. Knowing which apps have admin permissions helps you identify potential security risks and vulnerabilities, such as malicious software or unauthorized applications that may have gained elevated access.",
+        "Solution":
+        [
+            "Right-click on the taskbar and select 'Task Manager', or press Ctrl + Shift + Esc on your keyboard to open Task Manager.",
+            "In Task Manager, click on the 'Details' tab to view a list of running processes and applications.",
+            "Right-click on the column header, click 'Select columns', and make sure that 'Elevated' is checked. This column shows whether a process or application is running with admin permissions.",
+            "Scroll through the list of processes and look for entries with 'Yes' in the 'Elevated' column. These processes have admin privileges.",
+            "If you see programs which do not need to run with admin permissions you can right click on them and end the task."
+        ],"Screenshots":
+        [
+            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-1.jpg",
+            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-2.jpg",
+            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-3.jpg",
+            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-4.jpg",
+            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-4.jpg"
+        ]
+    },
+    "999": {
+        "Name": "Applications with administrator privileges",
+        "Type": "Security",
+        "Information": "Applications with administrator permissions have elevated privileges, allowing them to make changes to system settings, install or uninstall software, modify system files, and perform other actions that can affect the security and stability of your computer. Knowing which apps have admin permissions helps you identify potential security risks and vulnerabilities, such as malicious software or unauthorized applications that may have gained elevated access.",
+        "Solution":
+        [
+            "Right-click on the taskbar and select 'Task Manager', or press Ctrl + Shift + Esc on your keyboard to open Task Manager.",
+            "In Task Manager, click on the 'Details' tab to view a list of running processes and applications.",
+            "Right-click on the column header, click 'Select columns', and make sure that 'Elevated' is checked. This column shows whether a process or application is running with admin permissions.",
+            "Scroll through the list of processes and look for entries with 'Yes' in the 'Elevated' column. These processes have admin privileges.",
+            "If you see programs which do not need to run with admin permissions you can right click on them and end the task."
+        ],"Screenshots":
+        [
+            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-1.jpg",
+            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-2.jpg",
+            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-3.jpg",
+            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-4.jpg",
+            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-4.jpg"
         ]
     }
 }

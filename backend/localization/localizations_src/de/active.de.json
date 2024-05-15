@@ -15,11 +15,14 @@
   "Navigation": 
   {
     "Home": "Startseite",
-    "SecurityDashboard": "Sicherheits-Dashboard",
-    "PrivacyDashboard": "Datenschutz-Dashboard",
+    "SecurityDashboard": "Sicherheits",
+    "PrivacyDashboard": "Datenschutz",
     "Issues": "Probleme",
     "Integration": "Integration",
-    "About": "Über"
+    "About": "Über",
+    "Personalize": "Seite personalisieren",
+    "ChangeLanguage": "Sprache ändern"
+    
   },
   "Dashboard": 
   {
@@ -29,34 +32,40 @@
     "ScanNow": "Jetzt Scannen",
     "Medals": "Medaillen",
     "SecurityStatus": "Sicherheitsstatus",
-    "PrivacyStatus": "Privacy status",
+    "PrivacyStatus": "Datenschutzstatus",
     "Critical": "Kritisch",
     "MediumConcern": "Mittlere Besorgnis",
     "LowConcern": "Geringe Besorgnis",
-    "InfoConcern": "Informative",
+    "InfoConcern": "Informativ",
     "NoConcern": "Sicher",
-    "TotalRisksOverview": "Total risks overview",
-    "SecurityRisksOverview": "Übersicht der Sicherheitsrisiken",
-    "PrivacyRisksOverview": "Privacy risks overview",
+    "RiskLevelCounters": "Risikostufenzähler",
+    "RiskLevelDistribution": "Verteilung der Risikostufen",
+    "TotalRisksOverview": "Gesamtübersicht über Risiken",
+    "SecurityRisksOverview": "Übersicht über Sicherheitsrisiken",
+    "PrivacyRisksOverview": "Übersicht über Datenschutzrisiken",
     "HighRisk": "Probleme mit hohem Risiko",
     "MediumRisk": "Probleme mit mittlerem Risiko",
     "LowRisk": "Probleme mit niedrigem Risiko",
-    "InfoRisk": "Informative",
-    "Safe": "Probleme ohne Risiko",
-    "RiskAreas": "Bereiche von Sicherheits-/Datenschutzrisiken",
+    "InfoRisk": "Informativ",
+    "Acceptable": "Akzeptable Befunde",
+    "SecurityRiskAreas": "Bereiche mit Sicherheitsrisiken",
+    "PrivacyRiskAreas": "Bereiche mit Datenschutzrisiken",    
     "Applications": "Anwendungen",
     "Browser": "Browser",
     "Devices": "Geräte",
     "OperatingSystem": "Betriebssystem",
     "Passwords": "Passwörter",
+    "Permissions": "Berechtigungen",
     "Other": "Andere",
-    "ChooseIssueDescription": "Sie haben einige Probleme, die Sie lösen können. Um ein Problem zu lösen, navigieren Sie entweder zur Probleme-Seite oder wählen Sie unten ein vorgeschlagenes Problem aus.",
+    "ChooseIssueDescription": "Aktionen",
     "BarGraphDescription": "Dieses Diagramm zeigt die Verteilung von Problemen unterschiedlicher Risikostufen, die in den letzten 5 Scans gefunden wurden.",
     "SelectRisks": "Risiken auswählen",
     "ChangeInterval": "Intervall ändern"
   },
   "Issues":
   {
+    "IssueTable": "Problemübersicht",
+    "AcceptableFindings": "Akzeptable Ergebnisse",
     "Name": "Name",
     "Type": "Typ",
     "Risk": "Risikolevel",
@@ -70,7 +79,7 @@
     "about-title": "Über Infosec Agent",
     "infosec-info": "Das InfoSec Agent-Projekt zielt darauf ab, die Sicherheit und Privatsphäre von Windows-Computernutzern zu verbessern. Derzeit gibt es Anwendungen, die dies tun, aber sie sind hauptsächlich auf große Unternehmen ausgerichtet. Das Ziel dieses Projekts ist es, dies für jeden zugänglich zu machen. Es wird eine Anwendung entwickelt, die Informationen über das System des Benutzers sammelt, um etwaige Sicherheits- oder Datenschutzprobleme zu entdecken. Die Ergebnisse werden dem Benutzer in einem speziellen Dashboard präsentiert, das den aktuellen Status des Systems zeigt, einschließlich empfohlener Maßnahmen zur Verbesserung.",
     "little-brother-info": "Dieses Projekt ist eine gemeinsame Anstrengung von neun Studenten der Universität Utrecht in den Niederlanden, in Zusammenarbeit mit dem niederländischen IT-Unternehmen Guardian360. Es dient als Softwareprojekt für das Bachelor-Programm in Informatikwissenschaften an der UU.",
-    "about-contribute": "Beitragen",
+    "contribute-title": "Beitragen",
     "contribute-info": "InfoSec-Agent ist ein Open-Source-Projekt, das unter der GPL-3.0-Lizenz lizenziert ist. Aufgrund seiner Herkunft als Aufgabe der Universität Utrecht werden öffentliche Beiträge zu diesem Repository erst nach Abschluss dieser Aufgabe zusammengeführt, der für den 24. Juni 2024 geplant ist. Bitte melden Sie uns alle Fehler oder Probleme, die Sie finden. Ihr Feedback ist wertvoll und hilft dabei, das InfoSec-Agent-Projekt zu verbessern. Sie können uns per E-Mail erreichen unter <a href=\"mailto:infosecagentuu@gmail.com\">infosecagentuu@gmail.com</a>."
   }
 }

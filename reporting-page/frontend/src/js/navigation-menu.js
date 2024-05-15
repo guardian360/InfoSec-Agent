@@ -10,22 +10,10 @@ export function markSelectedNavigationItem(item) {
   for (let i = 1; i < navItems.length; i++) {
     navItems[i].style.backgroundColor = stylesheet.getPropertyValue('--background-color-left-nav');
   }
-  if (item === 'settings-button') {
+  if (item === 'settings-button' || item === 'personalize-button') {
     return;
   }
   document.getElementById(item).style.backgroundColor = stylesheet.getPropertyValue('--background-nav-hover');
-}
-
-/**
- * Loads personalized navigation by applying background color to navigation links.
- * Background color is retrieved from CSS variables.
- */
-export function loadPersonalizeNavigation() {
-  const navItems = document.getElementsByClassName('nav-link');
-  const stylesheet = getComputedStyle(document.documentElement);
-  for (let i = 1; i < navItems.length; i++) {
-    navItems[i].style.backgroundColor = stylesheet.getPropertyValue('--background-color-left-nav');
-  }
 }
 
 /** Close the navigation menu when a navigation item is clicked, only when screen size is less than 800px
@@ -68,12 +56,14 @@ if (typeof document !== 'undefined') {
     document.body.onresize = () => toggleNavigationResize(document.body.offsetWidth);
 
     const navbarItems = [
-      'home',
-      'security-dashboard',
-      'privacy-dashboard',
-      'issues',
-      'integration',
-      'about',
+      'lang-home',
+      'lang-security-dashboard',
+      'lang-privacy-dashboard',
+      'lang-issues',
+      'lang-integration',
+      'lang-about',
+      'lang-personalize-page',
+      'lang-change-language',
     ];
     const localizationIds = [
       'Navigation.Home',
@@ -82,6 +72,8 @@ if (typeof document !== 'undefined') {
       'Navigation.Issues',
       'Navigation.Integration',
       'Navigation.About',
+      'Navigation.Personalize',
+      'Navigation.ChangeLanguage',
     ];
     for (let i = 0; i < navbarItems.length; i++) {
       getLocalization(localizationIds[i], navbarItems[i]);

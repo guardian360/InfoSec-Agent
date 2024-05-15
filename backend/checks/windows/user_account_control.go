@@ -30,13 +30,12 @@ func UACCheck(uacExecutor mocking.CommandExecutor) checks.Check {
 	// Based on the value of the key, return the appropriate result
 	switch strings.TrimSpace(string(key)) {
 	case "0":
-		return checks.NewCheckResult(checks.UacID, 0, "UAC is disabled.")
+		return checks.NewCheckResult(checks.UacID, 0)
 	case "2":
-		return checks.NewCheckResult(checks.UacID, 1, "UAC is turned on for apps making changes to your computer and "+
-			"for changing your settings.")
+		return checks.NewCheckResult(checks.UacID, 1)
 	case "5":
-		return checks.NewCheckResult(checks.UacID, 2, "UAC is turned on for apps making changes to your computer.")
+		return checks.NewCheckResult(checks.UacID, 2)
 	default:
-		return checks.NewCheckResult(checks.UacID, 3, "Unknown UAC level")
+		return checks.NewCheckResult(checks.UacID, 3)
 	}
 }

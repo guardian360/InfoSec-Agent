@@ -100,12 +100,12 @@ func main() {
 	database := NewDataBase()
 	customLogger := logger.Log
 	localization.Init("../backend/")
-	lang := usersettings.LoadUserSettings("../backend/usersettings").Language
+	lang := usersettings.LoadUserSettings().Language
 	tray.Language = lang
 
 	// Create a Wails application with the specified options
 	err := wails.Run(&options.App{
-		Title:       "reporting-page",
+		Title:       "InfoSec Agent Reporting Page",
 		Width:       1024,
 		Height:      768,
 		StartHidden: true,

@@ -48,16 +48,13 @@ func Defender(scanKey mocking.RegistryKey, defenderKey mocking.RegistryKey) chec
 			return checks.NewCheckResult(checks.WindowsDefenderID, 1, "Windows real-time defender is enabled but the "+
 				"windows periodic scan is disabled")
 		}
-		return checks.NewCheckResult(checks.WindowsDefenderID, 0, "Windows real-time defender is enabled and also the "+
-			"windows periodic scan is enabled")
+		return checks.NewCheckResult(checks.WindowsDefenderID, 0)
 	}
 	if realTimeDefender == 1 {
 		if antiVirusPeriodic == 1 {
-			return checks.NewCheckResult(checks.WindowsDefenderID, 3, "Windows real-time defender is disabled and also "+
-				"the windows periodic scan is disabled")
+			return checks.NewCheckResult(checks.WindowsDefenderID, 3)
 		}
-		return checks.NewCheckResult(checks.WindowsDefenderID, 2, "Windows real-time defender is disabled but the "+
-			"windows periodic scan is enabled")
+		return checks.NewCheckResult(checks.WindowsDefenderID, 2)
 	}
-	return checks.NewCheckResult(checks.WindowsDefenderID, 4, "No windows defender data found")
+	return checks.NewCheckResult(checks.WindowsDefenderID, 4)
 }

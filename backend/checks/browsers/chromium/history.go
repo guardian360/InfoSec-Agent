@@ -33,12 +33,12 @@ func HistoryChromium(browser string) checks.Check {
 	var browserPath string
 	var returnID int
 
-	if browser == chrome {
-		browserPath = chromePath
+	if browser == browsers.Chrome {
+		browserPath = browsers.ChromePath
 		returnID = checks.HistoryChromiumID
 	}
-	if browser == edge {
-		browserPath = edgePath
+	if browser == browsers.Edge {
+		browserPath = browsers.EdgePath
 		returnID = checks.HistoryEdgeID
 	}
 	// Get the current user's home directory, where the history can be found
@@ -85,7 +85,7 @@ func HistoryChromium(browser string) checks.Check {
 	if len(results) > 0 {
 		return checks.NewCheckResult(returnID, 0, strings.Join(results, "\n"))
 	}
-	return checks.NewCheckResult(returnID, 1, "No phishing domains found in the last week")
+	return checks.NewCheckResult(returnID, 1)
 }
 
 // closeDatabase safely closes the provided database connection.

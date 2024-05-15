@@ -92,8 +92,8 @@ func TestYourFunction(t *testing.T) {
 	mockDestinationFile := &mocking.FileMock{
 		FileName: "\\valid\\directory\\destination.json.mozlz4",
 		IsOpen:   true,
-		Buffer:   []byte{},
-		Bytes:    0,
+		Buffer:   []byte("This is some test data."),
+		Bytes:    22,
 		FileInfo: &mocking.FileInfoMock{},
 		Err:      nil,
 	}
@@ -110,7 +110,7 @@ func TestYourFunction(t *testing.T) {
 			FileName: "\\valid\\directory\\search.json.mozlz4",
 			IsOpen:   true,
 			Buffer:   []byte{0x6D, 0x6F, 0x7A, 0x4C, 0x7A, 0x34, 0x30, 0x00, 0x00, 0x00, 0x00, 0x00},
-			Bytes:    26,
+			Bytes:    12,
 			FileInfo: &mocking.FileInfoMock{},
 			Err:      nil,
 		}
