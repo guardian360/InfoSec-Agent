@@ -4,6 +4,8 @@ import (
 	"database/sql"
 	"testing"
 
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/scan"
 	"github.com/stretchr/testify/require"
 )
@@ -18,6 +20,8 @@ import (
 //
 // No return values.
 func TestGetSeverity(t *testing.T) {
+	logger.SetupTests()
+
 	testCases := []struct {
 		issueID          int
 		resultID         int
@@ -38,6 +42,11 @@ func TestGetSeverity(t *testing.T) {
 		}
 		require.Equal(t, tc.expectedSeverity, severity)
 	}
+
+	// Test for invalid issue ID and result ID pair
+	_, err = scan.GetSeverity(db, 0, 0)
+	require.Error(t, err)
+	require.Equal(t, sql.ErrNoRows.Error(), err.Error())
 }
 
 // TestGetJSONKey tests the GetJSONKey function to ensure it returns the correct JSON key for a given check ID.
@@ -50,6 +59,8 @@ func TestGetSeverity(t *testing.T) {
 //
 // No return values.
 func TestGetJSONKey(t *testing.T) {
+	logger.SetupTests()
+
 	testCases := []struct {
 		issueID         int
 		resultID        int
@@ -58,6 +69,7 @@ func TestGetJSONKey(t *testing.T) {
 		{1, 1, 11},
 		{3, 0, 30},
 	}
+
 	db, err := sql.Open("sqlite", "../../reporting-page/database.db")
 	if err != nil {
 		t.Errorf("Error occurred: %v", err)
@@ -69,5 +81,46 @@ func TestGetJSONKey(t *testing.T) {
 			t.Errorf("Error occurred: %v", err)
 		}
 		require.Equal(t, tc.expectedJSONKey, jsonKey)
+	}
+
+	// Test for invalid issue ID and result ID pair
+	_, err = scan.GetSeverity(db, 0, 0)
+	require.Error(t, err)
+	require.Equal(t, sql.ErrNoRows.Error(), err.Error())
+}
+
+func TestGetDataBaseData(t *testing.T) {
+	logger.SetupTests()
+
+	scanResult1 := []checks.Check{
+		{
+			IssueID:  1,
+			ResultID: 1,
+			Result:   []string{"Issue 1"},
+			Error:    nil,
+			ErrorMSG: "",
+		},
+	}
+	expectedData1 := []scan.DataBaseData{
+		{
+			CheckID:  1,
+			Severity: 4,
+			JSONKey:  11,
+		},
+	}
+	testCases := []struct {
+		scanResult   []checks.Check
+		expectedData []scan.DataBaseData
+	}{
+		{scanResult1, expectedData1},
+	}
+
+	for _, tc := range testCases {
+		data, err := scan.GetDataBaseData(tc.scanResult, "../../reporting-page/database.db")
+		if err != nil {
+			t.Errorf("Error occurred: %v", err)
+		}
+		require.Equal(t, tc.expectedData, data)
+		require.Equal(t, tc.expectedData, data)
 	}
 }
