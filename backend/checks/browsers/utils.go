@@ -211,12 +211,21 @@ func CopyFile(src, dst string, mockSource mocking.File, mockDestination mocking.
 	return nil
 }
 
+// PreferencesDirGetter is an interface that wraps the GetPreferencesDir method.
+// It provides a way to get the preferences directory of a specific browser.
 type PreferencesDirGetter interface {
+	// GetPreferencesDir takes a browser name as input and returns the path to the preferences directory of the browser.
+	// It returns an error if there is any issue in getting the preferences directory.
 	GetPreferencesDir(browser string) (string, error)
 }
 
+// RealPreferencesDirGetter is a struct that implements the PreferencesDirGetter interface.
+// It provides the real implementation of the GetPreferencesDir method.
 type RealPreferencesDirGetter struct{}
 
+// GetPreferencesDir is a method of RealPreferencesDirGetter that gets the preferences directory of a specific browser.
+// It takes a browser name as input and returns the path to the preferences directory of the browser.
+// It returns an error if there is any issue in getting the preferences directory.
 func (r RealPreferencesDirGetter) GetPreferencesDir(browser string) (string, error) {
 	var browserPath string
 	if browser == Chrome {

@@ -21,6 +21,9 @@ var OpenFileFunc = os.Open
 //
 // Parameters:
 //   - browser: A string representing the name of the Chromium-based browser to inspect. This could be "Chrome", "Edge", etc.
+//   - mockBool: A boolean indicating whether to use mock data for testing.
+//   - mockFile: A mocking.File object representing the file to use for testing.
+//   - getter: A browsers.PreferencesDirGetter object that provides the path to the preferences file for the specified browser.
 //
 // Returns:
 //   - A checks.Check object representing the result of the check. The result contains the name of the default search engine used in the specified browser. If an error occurs during the check, the result will contain a description of the error.
@@ -34,6 +37,7 @@ func SearchEngineChromium(browser string, mockBool bool, mockFile mocking.File, 
 	if browser == browsers.Edge {
 		returnID = checks.SearchEdgeID
 	}
+	// Holds the return value and sets the default value to Chrome in case you never changed your search engine
 	defaultSE := "google.com"
 
 	preferencesDir, err := getter.GetPreferencesDir(browser)
@@ -69,6 +73,16 @@ func SearchEngineChromium(browser string, mockBool bool, mockFile mocking.File, 
 	return checks.NewCheckResult(returnID, 0, defaultSE)
 }
 
+// ParsePreferencesFile is a function that reads and parses a preferences file.
+//
+// Parameters:
+//   - file mocking.File: The file object representing the preferences file to be parsed.
+//
+// Returns:
+//   - map[string]interface{}: A map representing the parsed JSON data from the preferences file. The keys are the setting names and the values are the setting values.
+//   - error: An error object that wraps any error that occurs during the reading and parsing of the preferences file. If the file is read and parsed successfully, it returns nil.
+//
+// This function works by reading all the bytes from the file, then unmarshalling the bytes into a map. If any error occurs during this process, such as an error reading the file or parsing the JSON, this error is returned.
 func ParsePreferencesFile(file mocking.File) (map[string]interface{}, error) {
 	byteValue, err := io.ReadAll(file)
 	if err != nil {
@@ -82,6 +96,16 @@ func ParsePreferencesFile(file mocking.File) (map[string]interface{}, error) {
 	return dev, nil
 }
 
+// GetDefaultSearchEngine is a function that retrieves the default search engine from a parsed preferences file.
+//
+// Parameters:
+//   - dev map[string]interface{}: A map representing the parsed JSON data from the preferences file. The keys are the setting names and the values are the setting values.
+//   - defSE string: A string representing the default search engine to return if the "default_search_provider_data" key is not found in the parsed preferences file.
+//
+// Returns:
+//   - string: The name of the default search engine. If the "default_search_provider_data" key is found in the parsed preferences file, the value of this key is returned. If the key is not found, the value of defSE is returned.
+//
+// This function works by iterating over the keys and values in the parsed preferences file. If it finds the "default_search_provider_data" key, it uses a regular expression to extract the name of the default search engine from the value of this key. If the key is not found, it returns the value of defSE.
 func GetDefaultSearchEngine(dev map[string]interface{}, defSE string) string {
 	for key, value := range dev {
 		if key == "default_search_provider_data" {
