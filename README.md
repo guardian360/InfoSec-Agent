@@ -28,8 +28,8 @@ From the terminal, within the InfoSec-Agent folder, run the command `go run .`
 This will start the program and a new icon should appear in your system tray.
 
 Clicking on the icon will show a menu containing actions that the program can execute.
-Any confirmations/messages/errors that the application sends will be sent to the log file located in the root of the project.
-The reporting page has its own log file located in its root folder (folder with main.go).
+Any confirmations/messages/errors that the application sends will be sent to the log file located in the %AppData%/InfoSec-Agent directory.
+The reporting page has its own log file located in the same directory.
 
 The program can be exited by selecting 'Quit' in the menu or by manually interrupting the command line (Ctrl + c)
 
@@ -162,3 +162,37 @@ build with `wails build`.
 - `info.json` - Application details used for Windows builds. The data here will be used by the Windows installer,
   as well as the application itself (right-click the exe -> properties -> details)
 - `wails.exe.manifest` - The main application manifest file.
+
+# Generating Installer
+
+This project can generate an installer for the InfoSec-Agent application using Inno Setup.
+
+## Requirements
+
+To generate the installer the following software has to be installed:
+
+- [Golang](https://go.dev/doc/install) - To generate the executable for the system tray application.
+- [Wails](https://wails.io/docs/gettingstarted/installation) - To generate the executable for the reporting page.
+  - Wails requires GoLang and [NPM](https://nodejs.org/en/download/)
+- [Inno Setup](https://jrsoftware.org/isdl.php) - To generate the installer itself.
+  - To use the installer script provided by this project, the Inno Setup directory has to be added to the Path, as the script calls Inno Setup's console-mode compiler, ISCC.exe
+
+## Creating installer executable
+How the installer executable is generated is defined in the generate-installer.iss Inno Setup Script file.
+There is a generate-installer.ps1 PowerShell script to easily generate the installer.
+
+The version of the software is set using a parameter given to the iscc command.
+The PowerShell scripts obtains the version information from the most recent git tag, as the tags indicate version numbers.
+
+To generate the installer yourself, without using the provided PowerShell script, you first need to build both the tray and reporting-page executables.
+There is a build.bat script provided to easily do this.
+
+Then, run the following command from the root of the repository:
+
+```
+iscc .\generate-installer.iss /DMyAppVersion=$VERSION
+```
+
+Here, the VERSION variable needs to be set beforehand to the desired version number.
+
+This command will output a InfoSec-Agent-{Version number}-Setup.exe file in the root of the repository.
