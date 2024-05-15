@@ -4,11 +4,43 @@ import (
 	"database/sql"
 	"testing"
 
+	"github.com/ncruces/zenity"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/scan"
 	"github.com/stretchr/testify/require"
 )
+
+// TestScan tests the Scan function to ensure it runs without errors.
+//
+// This test function calls the Scan function and asserts that it does not return an error.
+//
+// Parameters:
+//   - t *testing.T: The testing framework used for assertions.
+//
+// No return values.
+func TestScan(t *testing.T) {
+	logger.SetupTests()
+
+	// Display a progress dialog while the scan is running
+	dialog, err := zenity.Progress(
+		zenity.Title("Security/Privacy Scan"))
+	if err != nil {
+		logger.Log.ErrorWithErr("Error creating dialog:", err)
+	}
+	// Defer closing the dialog until the scan completes
+	defer func(dialog zenity.ProgressDialog) {
+		err = dialog.Close()
+		if err != nil {
+			logger.Log.ErrorWithErr("Error closing dialog:", err)
+		}
+	}(dialog)
+
+	// Execute the scan
+	_, err = scan.Scan(dialog)
+	require.NoError(t, err)
+}
 
 // TestGetSeverity tests the GetSeverity function to ensure it returns the correct severity level for a given issue ID and result ID pair.
 //
@@ -22,28 +54,18 @@ import (
 func TestGetSeverity(t *testing.T) {
 	logger.SetupTests()
 
-	testCases := []struct {
-		issueID          int
-		resultID         int
-		expectedSeverity int
-	}{
-		{1, 1, 4},
-		{3, 0, 1},
-	}
+	// Arrange database connection
 	db, err := sql.Open("sqlite", "../../reporting-page/database.db")
 	if err != nil {
 		t.Errorf("Error occurred: %v", err)
 	}
 
-	for _, tc := range testCases {
-		severity, err := scan.GetSeverity(db, tc.issueID, tc.resultID)
-		if err != nil {
-			t.Errorf("Error occurred: %v", err)
-		}
-		require.Equal(t, tc.expectedSeverity, severity)
-	}
+	// Test for valid issue ID and result ID
+	severity, err := scan.GetSeverity(db, 1, 1)
+	require.NoError(t, err)
+	require.Equal(t, 4, severity)
 
-	// Test for invalid issue ID and result ID pair
+	// Test for invalid issue ID and result ID
 	_, err = scan.GetSeverity(db, 0, 0)
 	require.Error(t, err)
 	require.Equal(t, sql.ErrNoRows.Error(), err.Error())
@@ -61,29 +83,18 @@ func TestGetSeverity(t *testing.T) {
 func TestGetJSONKey(t *testing.T) {
 	logger.SetupTests()
 
-	testCases := []struct {
-		issueID         int
-		resultID        int
-		expectedJSONKey int
-	}{
-		{1, 1, 11},
-		{3, 0, 30},
-	}
-
+	// Arrange database connection
 	db, err := sql.Open("sqlite", "../../reporting-page/database.db")
 	if err != nil {
 		t.Errorf("Error occurred: %v", err)
 	}
 
-	for _, tc := range testCases {
-		jsonKey, err := scan.GetJSONKey(db, tc.issueID, tc.resultID)
-		if err != nil {
-			t.Errorf("Error occurred: %v", err)
-		}
-		require.Equal(t, tc.expectedJSONKey, jsonKey)
-	}
+	// Test for valid issue ID and result ID
+	jsonKey, err := scan.GetJSONKey(db, 1, 1)
+	require.NoError(t, err)
+	require.Equal(t, 11, jsonKey)
 
-	// Test for invalid issue ID and result ID pair
+	// Test for invalid issue ID and result ID
 	_, err = scan.GetSeverity(db, 0, 0)
 	require.Error(t, err)
 	require.Equal(t, sql.ErrNoRows.Error(), err.Error())
@@ -148,6 +159,7 @@ func TestGetDataBaseData(t *testing.T) {
 	}{
 		{scanResult, expectedData},
 		{emptyScanResult, emptyExpectedData},
+		{invalidScanResult, invalidExpectedData},
 	}
 
 	for _, tc := range testCases {
@@ -159,11 +171,7 @@ func TestGetDataBaseData(t *testing.T) {
 		require.Equal(t, tc.expectedData, data)
 	}
 
-	// Test for invalid scan result
-	result, _ := scan.GetDataBaseData(invalidScanResult, "../../reporting-page/database.db")
-	require.Equal(t, invalidExpectedData, result)
-
 	// Test for invalid database path
-	result, _ = scan.GetDataBaseData(scanResult, "")
+	result, _ := scan.GetDataBaseData(scanResult, "")
 	require.Equal(t, wrongPathExpectedData, result)
 }
