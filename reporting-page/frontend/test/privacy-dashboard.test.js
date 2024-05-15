@@ -97,4 +97,16 @@ describe('Privacy dashboard page', function() {
         .isEqualTo(expectedColors[index]);
     });
   });
+  it('Clicking the scan-now button should call scanTest', async function() {
+    // Arrange
+    const database = await import('../src/js/database.js');
+    const scanTestMock = jest.spyOn(database, 'scanTest');
+    const scanButton = document.getElementsByClassName('scan-now')[0];
+
+    // Act
+    scanButton.dispatchEvent(clickEvent);
+
+    // Assert
+    expect(scanTestMock).toHaveBeenCalled();
+  })
 })
