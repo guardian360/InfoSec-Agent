@@ -3,7 +3,10 @@
 // Currently contains mocking implementations for: Windows version, Windows registry, and command execution
 package mocking
 
-import "os/exec"
+import (
+	"os/exec"
+	"syscall"
+)
 
 // CommandExecutor is an interface that defines a contract for executing system commands.
 // It abstracts the details of command execution, allowing for different implementations
@@ -57,5 +60,7 @@ type RealCommandExecutor struct {
 // This method uses the os/exec package to execute the command, capturing and returning the output.
 // It provides a mechanism for actual interaction with the system's command line interface.
 func (r *RealCommandExecutor) Execute(command string, args ...string) ([]byte, error) {
-	return exec.Command(command, args...).Output()
+	cmd := exec.Command(command, args...)
+	cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
+	return cmd.Output()
 }
