@@ -8,12 +8,12 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/api_connection"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/browsers"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/devices"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/network"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/programs"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/windows"
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/integration"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/usersettings"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/cisregistrysettings"
@@ -160,7 +160,7 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 
 	// TODO: Set usersettings.Integration to true depending on whether user has connected with the API
 	if usersettings.LoadUserSettings().Integration {
-		integration.ParseScanResults(integration.Metadata{WorkStationID: workStationID, User: user, Date: date}, checkResults)
+		api_connection.ParseScanResults(api_connection.Metadata{WorkStationID: workStationID, User: user, Date: date}, checkResults)
 	}
 	return checkResults, nil
 }

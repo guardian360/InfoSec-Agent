@@ -1,4 +1,4 @@
-package integration
+package api_connection
 
 import (
 	"fmt"
