@@ -1,9 +1,9 @@
 import {PieChart} from './piechart.js';
 import {getLocalization} from './localize.js';
 import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
-import medal from '../assets/images/img_medal1.png';
 import {retrieveTheme} from './personalize.js';
 import {scanTest} from './database.js';
+import {LogError as logError} from '../../wailsjs/go/main/Tray.js';
 
 /** Load the content of the Home page */
 export function openHomePage() {
@@ -58,6 +58,7 @@ export function openHomePage() {
   </div>
   `;
 
+  const medal = 'frontend/src/assets/images/img_medal1.png';
   document.getElementById('medal').src = medal;
   document.getElementById('medal2').src = medal;
   document.getElementById('medal3').src = medal;
@@ -101,8 +102,16 @@ export function openHomePage() {
   document.getElementById('logo').innerHTML = localStorage.getItem('picture');
 }
 
-document.getElementById('logo-button').addEventListener('click', () => openHomePage());
-document.getElementById('home-button').addEventListener('click', () => openHomePage());
+
+if (typeof document !== 'undefined') {
+  try {
+    document.getElementById('logo-button').addEventListener('click', () => openHomePage());
+    document.getElementById('home-button').addEventListener('click', () => openHomePage());
+  } catch (error) {
+    /* istanbul ignore next */
+    logError('Error in security-dashboard.js: ' + error);
+  }
+}
 
 window.onload = function() {
   markSelectedNavigationItem('home-button');

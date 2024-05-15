@@ -1,5 +1,6 @@
 import {jest} from '@jest/globals';
 
+/** Mocks common function used inside openPage functions */
 export function mockPageFunctions() {
   // Mock LogError
   jest.unstable_mockModule('../wailsjs/go/main/Tray.js', () => ({
@@ -30,6 +31,14 @@ export function mockGetLocalization(messageID) {
      else myReject(new Error('error'));
     });
   return myPromise;
+}
+
+export function mockChangeLanguage(bool) {
+  const myPromise = new Promise(function(myResolve, myReject) {
+    if (bool) myResolve() 
+    else myReject(new Error('error'));
+   });
+ return myPromise;
 }
 
 /** Mock of Chart constructor and update function from chart.js */
@@ -97,5 +106,50 @@ export const storageMock = (() => {
     clear: () => {
       store = {};
     },
+    removeItem: (key) => {
+      delete store[key];
+    }
   };
 })();
+
+/** Mocks of openPage functions from:
+ *  home, security-dashboard, privacy-dashboard,
+ *  issues, integration, about and personalize.
+ */
+export function mockOpenPageFunctions() {
+  // Mock openHomePage
+  jest.unstable_mockModule('../src/js/Home.js', () => ({
+    openHomePage: jest.fn(),
+  }));
+
+  // Mock openSecurityDashboardPage
+  jest.unstable_mockModule('../src/js/security-dashboard.js', () => ({
+    openSecurityDashboardPage: jest.fn(),
+  }));
+
+  // Mock openPrivacyDashboardPage
+  jest.unstable_mockModule('../src/js/privacy-dashboard.js', () => ({
+    openPrivacyDashboardPage: jest.fn(),
+  }));
+
+  // Mock openIssuesPage
+  jest.unstable_mockModule('../src/js/issues.js', () => ({
+    openIssuesPage: jest.fn(),
+  }));
+
+  // Mock openIntegrationPage
+  jest.unstable_mockModule('../src/js/integration.js', () => ({
+    openIntegrationPage: jest.fn(),
+  }));
+
+  // Mock openAboutPage
+  jest.unstable_mockModule('../src/js/about.js', () => ({
+    openAboutPage: jest.fn(),
+  }));
+
+  // Mock openPersonalizePage
+  jest.unstable_mockModule('../src/js/personalize.js', () => ({
+    openPersonalizePage: jest.fn(),
+    retrieveTheme: jest.fn(),
+  }));
+}
