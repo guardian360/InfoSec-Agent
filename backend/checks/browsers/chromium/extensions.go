@@ -14,6 +14,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/browsers"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
@@ -25,12 +26,6 @@ import (
 type Response struct {
 	Name string `json:"name"`
 }
-
-// constants to store information of the browsers
-const edge = "Edge"
-const chrome = "Chrome"
-const edgePath = "Microsoft/Edge"
-const chromePath = "Google/Chrome"
 
 // ExtensionsChromium checks for the presence of an ad blocker extension in a specified Chromium-based browser.
 //
@@ -53,12 +48,12 @@ func ExtensionsChromium(browser string) checks.Check {
 	var returnID int
 	// Set the browser path and the return browser name based on the browser to check
 	// Currently, supports checking of Google Chrome and Microsoft Edge
-	if browser == chrome {
-		browserPath = chromePath
+	if browser == browsers.Chrome {
+		browserPath = browsers.ChromePath
 		returnID = checks.ExtensionChromiumID
 	}
-	if browser == edge {
-		browserPath = edgePath
+	if browser == browsers.Edge {
+		browserPath = browsers.EdgePath
 		returnID = checks.ExtensionEdgeID
 	}
 	var extensionIDs []string
@@ -95,7 +90,7 @@ func ExtensionsChromium(browser string) checks.Check {
 			parts := strings.Split(extensionName1, "/")
 			extensionNames = append(extensionNames, parts[len(parts)-2])
 		}
-		if browser == edge {
+		if browser == browsers.Edge {
 			// Get the name of the extension from the Microsoft Edge Addons Store
 			extensionName2, err = getExtensionNameChromium(id,
 				"https://microsoftedge.microsoft.com/addons/getproductdetailsbycrxid/%s", browser)
@@ -148,13 +143,13 @@ func getExtensionNameChromium(extensionID string, url string, browser string) (s
 		}
 	}(resp.Body)
 
-	if browser == chrome && resp.StatusCode != http.StatusOK {
+	if browser == browsers.Chrome && resp.StatusCode != http.StatusOK {
 		return "", fmt.Errorf("HTTP request failed with status code: %d", resp.StatusCode)
 	}
-	if browser == chrome {
+	if browser == browsers.Chrome {
 		return resp.Request.URL.String(), nil
 	}
-	if browser == edge {
+	if browser == browsers.Edge {
 		if strings.Contains(resp.Request.URL.String(), "chromewebstore.google.com") {
 			return resp.Request.URL.String(), nil
 		}

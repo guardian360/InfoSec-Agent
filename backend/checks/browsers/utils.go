@@ -17,6 +17,14 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 )
 
+// constants to store information of the browsers
+const Edge = "Edge"
+const Chrome = "Chrome"
+const EdgePath = "Microsoft/Edge"
+const ChromePath = "Google/Chrome"
+
+var UserHomeDirFunc = os.UserHomeDir
+
 // CloseFile is a utility function that closes a given file and logs any errors that occur during the process.
 //
 // Parameters:
@@ -201,4 +209,25 @@ func CopyFile(src, dst string, mockSource mocking.File, mockDestination mocking.
 		return err
 	}
 	return nil
+}
+
+type PreferencesDirGetter interface {
+	GetPreferencesDir(browser string) (string, error)
+}
+
+type RealPreferencesDirGetter struct{}
+
+func (r RealPreferencesDirGetter) GetPreferencesDir(browser string) (string, error) {
+	var browserPath string
+	if browser == Chrome {
+		browserPath = ChromePath
+	}
+	if browser == Edge {
+		browserPath = EdgePath
+	}
+	user, err := UserHomeDirFunc()
+	if err != nil {
+		return "", err
+	}
+	return filepath.Join(user, "AppData", "Local", browserPath, "User Data", "Default"), nil
 }

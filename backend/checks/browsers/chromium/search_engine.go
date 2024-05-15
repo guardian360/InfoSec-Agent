@@ -4,17 +4,18 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	"log"
 	"os"
-	"path/filepath"
 	"regexp"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/browsers"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 )
+
+var OpenFileFunc = os.Open
 
 // SearchEngineChromium inspects the default search engine setting in Chromium-based browsers.
 //
@@ -25,71 +26,73 @@ import (
 //   - A checks.Check object representing the result of the check. The result contains the name of the default search engine used in the specified browser. If an error occurs during the check, the result will contain a description of the error.
 //
 // This function works by locating the preferences file in the user's home directory, which contains the browser's settings. It opens and reads this file, then parses it as JSON to access the settings. It specifically looks for the "default_search_provider_data" key in the JSON data, which holds the name of the default search engine. If this key is found, its value is returned as the result of the check. If any error occurs during this process, such as an error reading the file or parsing the JSON, this error is returned as the result of the check.
-func SearchEngineChromium(browser string) checks.Check {
-	var browserPath string
+func SearchEngineChromium(browser string, mockBool bool, mockFile mocking.File, getter browsers.PreferencesDirGetter) checks.Check {
 	var returnID int
-	// Set the browser path and the return browser name based on the browser to check
-	// Currently, supports checking of Google Chrome and Microsoft Edge
-	if browser == chrome {
-		browserPath = chromePath
+	if browser == browsers.Chrome {
 		returnID = checks.SearchChromiumID
 	}
-	if browser == edge {
-		browserPath = edgePath
+	if browser == browsers.Edge {
 		returnID = checks.SearchEdgeID
 	}
-	// Holds the return value and sets the default value to chrome in case you never changed your search engine
 	defaultSE := "google.com"
-	var user string
-	var err error
-	user, err = os.UserHomeDir()
-	if err != nil {
-		return checks.NewCheckErrorf(returnID, "Error: ", err)
-	}
 
-	// Get the current user's home directory, where the preferences can be found
-	preferencesDir := filepath.Join(user, "AppData", "Local", browserPath, "User Data", "Default", "Preferences")
-	var file *os.File
-	file, err = os.Open(filepath.Clean(preferencesDir))
+	preferencesDir, err := getter.GetPreferencesDir(browser)
 	if err != nil {
 		return checks.NewCheckErrorf(returnID, "Error: ", err)
 	}
-	defer func(file *os.File) {
-		tmpFile := mocking.Wrap(file)
-		err = browsers.CloseFile(tmpFile)
-		if err != nil {
-			log.Println("Error closing file")
+	var dev map[string]interface{}
+	var file mocking.File
+
+	if !mockBool {
+		tmpfile, openErr := os.Open(preferencesDir + "/Preferences")
+		if openErr != nil {
+			return checks.NewCheckErrorf(returnID, "Error: ", err)
 		}
-	}(file)
-
-	// Byte array holding the preferences json data used to unmarshal the data later
-	var byteValue []byte
-	byteValue, err = io.ReadAll(file)
-	if err != nil {
-		return checks.NewCheckErrorf(returnID, " Can't read data,Error: ", err)
+		file = mocking.Wrap(tmpfile)
+		defer func(file mocking.File) {
+			openErr = browsers.CloseFile(file)
+			if openErr != nil {
+				logger.Log.Error("Error closing file")
+			}
+		}(file)
+	} else {
+		file = mockFile
 	}
-	// Holds the unmarshalled data of the json for access to the key value pairs
+
+	dev, err = ParsePreferencesFile(file)
+	if err != nil {
+		return checks.NewCheckErrorf(returnID, "Error: ", err)
+	}
+
+	defaultSE = GetDefaultSearchEngine(dev, defaultSE)
+
+	return checks.NewCheckResult(returnID, 0, defaultSE)
+}
+
+func ParsePreferencesFile(file mocking.File) (map[string]interface{}, error) {
+	byteValue, err := io.ReadAll(file)
+	if err != nil {
+		return nil, err
+	}
 	var dev map[string]interface{}
 	err = json.Unmarshal(byteValue, &dev)
 	if err != nil {
-		return checks.NewCheckErrorf(returnID, "Error: ", err)
+		return nil, err
 	}
+	return dev, nil
+}
 
-	// Iterate through the json dev map to look for our search engine key
+func GetDefaultSearchEngine(dev map[string]interface{}, defSE string) string {
 	for key, value := range dev {
 		if key == "default_search_provider_data" {
 			text := fmt.Sprintf("%v", value)
-			// Regex pattern to find the string keyword: and everything after that until we hit a space
-			pattern := `keyword:\s*(\S+)`
+			pattern := `keyword:\s*([^]\s]+)`
 			regex := regexp.MustCompile(pattern)
 			matches := regex.FindString(text)
-			if matches == "" {
-				return checks.NewCheckErrorf(returnID, "Error: ", err)
+			if matches != "" {
+				return matches[8:]
 			}
-			// Removes the word keyword: from the result
-			defaultSE = matches[8:]
 		}
 	}
-	// Returns the default search engine used
-	return checks.NewCheckResult(returnID, 0, defaultSE)
+	return defSE
 }
