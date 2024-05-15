@@ -88,7 +88,9 @@ var securityChecks = []func() checks.Check{
 	func() checks.Check { return windows.Advertisement(mocking.LocalMachine) },
 	func() checks.Check { return chromium.HistoryChromium("Chrome") },
 	func() checks.Check { return chromium.ExtensionsChromium("Chrome") },
-	func() checks.Check { return chromium.SearchEngineChromium("Chrome") },
+	func() checks.Check {
+		return chromium.SearchEngineChromium("Chrome", false, nil, browsers.RealPreferencesDirGetter{})
+	},
 	func() checks.Check { c, _ := firefox.ExtensionFirefox(browsers.RealProfileFinder{}); return c },
 	func() checks.Check { _, c := firefox.ExtensionFirefox(browsers.RealProfileFinder{}); return c },
 	func() checks.Check { return firefox.HistoryFirefox(browsers.RealProfileFinder{}) },
