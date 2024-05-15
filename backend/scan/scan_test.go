@@ -101,7 +101,7 @@ func TestGetJSONKey(t *testing.T) {
 func TestGetDataBaseData(t *testing.T) {
 	logger.SetupTests()
 
-	scanResult1 := []checks.Check{
+	scanResult := []checks.Check{
 		{
 			IssueID:  1,
 			ResultID: 1,
@@ -110,18 +110,44 @@ func TestGetDataBaseData(t *testing.T) {
 			ErrorMSG: "",
 		},
 	}
-	expectedData1 := []scan.DataBaseData{
+	expectedData := []scan.DataBaseData{
 		{
 			CheckID:  1,
 			Severity: 4,
 			JSONKey:  11,
 		},
 	}
+	emptyScanResult := []checks.Check{}
+	emptyExpectedData := []scan.DataBaseData{}
+	invalidScanResult := []checks.Check{
+		{
+			IssueID:  0,
+			ResultID: 0,
+			Result:   []string{"Issue 0"},
+			Error:    nil,
+			ErrorMSG: "",
+		},
+	}
+	invalidExpectedData := []scan.DataBaseData{
+		{
+			CheckID:  0,
+			Severity: 0,
+			JSONKey:  0,
+		},
+	}
+	wrongPathExpectedData := []scan.DataBaseData{
+		{
+			CheckID:  1,
+			Severity: 0,
+			JSONKey:  0,
+		},
+	}
 	testCases := []struct {
 		scanResult   []checks.Check
 		expectedData []scan.DataBaseData
 	}{
-		{scanResult1, expectedData1},
+		{scanResult, expectedData},
+		{emptyScanResult, emptyExpectedData},
 	}
 
 	for _, tc := range testCases {
@@ -132,4 +158,12 @@ func TestGetDataBaseData(t *testing.T) {
 		require.Equal(t, tc.expectedData, data)
 		require.Equal(t, tc.expectedData, data)
 	}
+
+	// Test for invalid scan result
+	result, _ := scan.GetDataBaseData(invalidScanResult, "../../reporting-page/database.db")
+	require.Equal(t, invalidExpectedData, result)
+
+	// Test for invalid database path
+	result, _ = scan.GetDataBaseData(scanResult, "")
+	require.Equal(t, wrongPathExpectedData, result)
 }
