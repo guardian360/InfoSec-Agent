@@ -3,4 +3,4 @@
 @echo off
 go build -buildmode=exe -ldflags -H=windowsgui
 cd reporting-page
-wails build -windowsconsole
+wails build

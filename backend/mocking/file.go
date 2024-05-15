@@ -165,6 +165,10 @@ func (f *FileMock) Read(p []byte) (int, error) {
 		return 0, f.Err
 	}
 
+	if len(f.Buffer) == 0 {
+		return 0, io.EOF
+	}
+
 	n := copy(p, f.Buffer)
 	f.Buffer = f.Buffer[n:]
 	return n, nil

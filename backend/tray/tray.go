@@ -253,7 +253,7 @@ func OpenReportingPage(path string) error {
 //
 // Returns: _
 func BuildReportingPage() error {
-	buildCmd := exec.Command("wails", "build", "-windowsconsole")
+	buildCmd := exec.Command("wails", "build")
 
 	buildCmd.Stdout = os.Stdout
 	buildCmd.Stderr = os.Stderr
