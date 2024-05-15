@@ -49,6 +49,7 @@ if (sessionStorage.getItem('languageChanged') != null) {
     openPersonalizePage();
     break;
   default:
+    openHomePage();
     console.log('Invalid option selected');
   }
   sessionStorage.removeItem('languageChanged');

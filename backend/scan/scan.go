@@ -100,6 +100,9 @@ var securityChecks = []func() checks.Check{
 	func() checks.Check {
 		return cisregistrysettings.CISRegistrySettings(mocking.LocalMachine, mocking.UserProfiles)
 	},
+	func() checks.Check {
+		return windows.AutomaticLogin(mocking.NewRegistryKeyWrapper(registry.LOCAL_MACHINE))
+	},
 }
 
 // Scan executes all security/privacy checks, serializes the results to JSON, and returns a list of all found issues.
@@ -154,7 +157,7 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 	logger.Log.Info(string(jsonData))
 
 	// TODO: Set usersettings.Integration to true depending on whether user has connected with the API
-	if usersettings.LoadUserSettings("backend/usersettings").Integration {
+	if usersettings.LoadUserSettings().Integration {
 		integration.ParseScanResults(integration.Metadata{WorkStationID: workStationID, User: user, Date: date}, checkResults)
 	}
 	return checkResults, nil

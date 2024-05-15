@@ -47,7 +47,7 @@ func (t *Tray) ScanNow() ([]checks.Check, error) {
 //
 // Returns: None. The method performs an action and does not return any value.
 func (t *Tray) ChangeLanguage() {
-	tray.ChangeLanguage("../backend/usersettings")
+	tray.ChangeLanguage()
 	tray.RefreshMenu()
 }
 

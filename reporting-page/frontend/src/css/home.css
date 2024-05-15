@@ -10,25 +10,25 @@ body {
 }
 
 #page-contents {
-  margin-top: 55px;
+  margin-top: 60px;
 }
 
 /* Base Styles */
-.home {
+.home-page {
   display: flex;
   flex-wrap: wrap;
+  padding: 10px;
 }
 
 .container-home {
   flex: 1 1 50%;
-  padding: 10px;
   box-sizing: border-box;
 }
 
 .data-segment {
   border: 1px solid #ddd;
-  padding: 10px;
-  margin-bottom: 20px;
+  border-radius: 5px;
+  margin: 5px;
 }
 
 .data-segment-header {
@@ -41,27 +41,11 @@ body {
   margin: 10px;
 }
 
-/* Pie Chart */
+/* Pie Chart: see dashboard.css */
 
 /* see dashboard.css */
 
-/* Issue Buttons */
-.issue-buttons {
-  display: flex;
-  justify-content: space-between;
-}
-
-.issue-button {
-  padding: 10px 20px;
-  background: var(--background-color-top-nav);
-  color: var(--text-body);
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.issue-button:hover {
-  background: var(--background-color-left-nav);
-}
+/* Issue Buttons: see dashboard.css */
 
 /* Medals */
 .medals {
