@@ -33,6 +33,11 @@ export function mockGetLocalization(messageID) {
   return myPromise;
 }
 
+/** Mock of changeLanguage function with no functionality
+ * 
+ * @param {bool} bool if set to false will result in error from promise
+ * @returns a promise
+ */
 export function mockChangeLanguage(bool) {
   const myPromise = new Promise(function(myResolve, myReject) {
     if (bool) myResolve() 
@@ -40,6 +45,65 @@ export function mockChangeLanguage(bool) {
    });
  return myPromise;
 }
+
+/** Mock of scanNowGo function 
+ * 
+ * @param {bool} bool if set to false will result in error from promise
+ * @returns a promise with the scanResultMock as a value
+ */
+export function mockScanNowGo(bool) {
+  const myPromise = new Promise(function(myResolve, myReject) {
+    if (bool) myResolve(scanResultMock); 
+    else myReject(new Error('error'));
+   });
+ return myPromise;
+}
+
+/** Mock of getDataBaseData function 
+ * 
+ * @param {bool} bool if set to false will result in error from promise
+ * @returns a promise with mocked database results as a value
+ */
+export function mockGetDataBaseData(input) {
+  let databaseList = [];
+  for (let i = 0; i < input.length; i++) {
+    databaseList.push({
+      id: input[i].issue_id,
+      severity: i,
+      jsonkey: parseInt(input[i].issue_id.toString()+input[i].result_id.toString())
+    });
+  }
+  return databaseList
+}
+
+// Scan result mock
+export const scanResultMock = [
+  { // Privacy, level 0
+    issue_id: 21,
+    result_id: 0,
+    result: []
+  },
+  { // Security, level 1
+    issue_id: 3,
+    result_id: 0,
+    result: []
+  },
+  { // Security, level 2
+    issue_id: 4,
+    result_id: 0,
+    result: []
+  },
+  { // Security, level 3
+    issue_id: 18,
+    result_id: 2,
+    result: []
+  },
+  { // Privacy, level 4
+    issue_id: 10,
+    result_id: 0,
+    result: []
+  },
+]
 
 /** Mock of Chart constructor and update function from chart.js */
 export function mockChart() {
@@ -83,6 +147,31 @@ export function mockGraph() {
         getData: jest.fn(),
         getOptions: jest.fn(),
       };
+    })
+  }));
+}
+
+/** Mock of RiskCounters class */
+export function mockRiskCounters() {
+  // Mock RiskCounters constructor
+  jest.unstable_mockModule('../src/js/risk-counters.js', () => ({
+    RiskCounters: jest.fn().mockImplementation((h, m, l, i, a) => {
+      return {
+        // properties
+        high : [h],
+        medium: [m],
+        low: [l],
+        info: [i],
+        acceptable: [a],
+      };
+    }),
+    updateRiskCounter: jest.fn().mockImplementation((rc, h, m, l, i, a) => {
+      rc.high.push(h);
+      rc.medium.push(m);
+      rc.low.push(l);
+      rc.info.push(i);
+      rc.acceptable.push(a);
+      return rc
     })
   }));
 }
@@ -153,3 +242,5 @@ export function mockOpenPageFunctions() {
     retrieveTheme: jest.fn(),
   }));
 }
+
+

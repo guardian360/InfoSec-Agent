@@ -41,7 +41,7 @@ export async function scanTest() {
 }
 
 // Check if scanTest has already been called before
-if (sessionStorage.getItem('scanTest') === null) {
+if (sessionStorage.getItem('scanTest') === null || sessionStorage.getItem('scanTest') == undefined) {
   // Call scanTest() only if it hasn't been called before
   scanTest().then((r) => {});
 
@@ -58,6 +58,7 @@ const countOccurrences = (severities, level) => severities.filter((item) => item
  */
 async function setAllSeverities(input) {
   const result = await getDataBaseData(input);
+  console.log(result);
   sessionStorage.setItem('DataBaseData', JSON.stringify(result));
   await setSeverities(result, '');
   await setSeverities(result, 'Security');
@@ -91,6 +92,7 @@ async function setSeverities(input, type) {
       sessionStorage.setItem(type + 'RiskCounters', JSON.stringify(riskCounter));
     }
   } catch (err) {
+    /* istanbul ignore next */
     logError(err);
   }
 }
