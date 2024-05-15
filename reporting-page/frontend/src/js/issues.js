@@ -41,16 +41,16 @@ export function openIssuesPage() {
       <button id="dropbtn-table" class="dropbtn-table"><span class="lang-select-risks"></span></button>
       <div class="dropdown-selector-table" id="myDropdown-table">
         <p><input type="checkbox" checked="true" value="true" id="select-high-risk-table">
-          <label for="select-high-risk" class="lang-high-risk-issues"> High risks</label><br>
+          <label for="select-high-risk" class="lang-high-risk-issues"></label><br>
         </p>
         <p><input type="checkbox" checked="true" value="true" id="select-medium-risk-table">
-          <label for="select-medium-risk" class="lang-medium-risk-issues"> Medium risks</label>
+          <label for="select-medium-risk" class="lang-medium-risk-issues"></label>
         </p>
         <p><input type="checkbox" checked="true" value="true" id="select-low-risk-table">
-          <label for="select-low-risk" class="lang-low-risk-issues"> Low risks</label>
+          <label for="select-low-risk" class="lang-low-risk-issues"></label>
         </p>
         <p><input type="checkbox" checked="true" value="true" id="select-info-risk-table">
-          <label for="select-info-risk" class="lang-info-risk-issues"> Informative</label>
+          <label for="select-info-risk" class="lang-info-risk-issues"></label>
         </p>
       </div>
     </div>
@@ -83,7 +83,7 @@ export function openIssuesPage() {
     'lang-type',
     'lang-risk',
     'lang-high-risk-issues',
-    'lang-lang-medium-risk-issues',
+    'lang-medium-risk-issues',
     'lang-low-risk-issues',
     'lang-info-risk-issues',
     'lang-select-risks',

@@ -42,7 +42,7 @@ export function toggleNavigationHamburger(appWidth) {
  * @param {int} appWidth - The width of the application screen
 */
 export function toggleNavigationResize(appWidth) {
-  if (appWidth >= 799) {
+  if (appWidth > 799) {
     document.getElementsByClassName('left-nav')[0].style.visibility = 'visible';
   } else {
     document.getElementsByClassName('left-nav')[0].style.visibility = 'hidden';
