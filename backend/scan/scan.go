@@ -28,6 +28,8 @@ import (
 	"github.com/ncruces/zenity"
 )
 
+var executor = &mocking.RealCommandExecutor{}
+
 // securityChecks is a slice of functions that return checks.Check objects.
 // Each function in the slice represents a different security or privacy check that the application can perform.
 // When the Scan function is called, it iterates over this slice and executes each check in turn.
@@ -40,7 +42,7 @@ var securityChecks = []func() checks.Check{
 		return windows.Defender(mocking.LocalMachine, mocking.LocalMachine)
 	},
 	func() checks.Check {
-		return windows.LastPasswordChange(&mocking.RealCommandExecutor{})
+		return windows.LastPasswordChange(executor)
 	},
 	func() checks.Check {
 		return windows.LoginMethod(mocking.LocalMachine)
@@ -64,27 +66,27 @@ var securityChecks = []func() checks.Check{
 		return devices.Bluetooth(mocking.NewRegistryKeyWrapper(registry.LOCAL_MACHINE))
 	},
 	func() checks.Check {
-		return network.OpenPorts(&mocking.RealCommandExecutor{}, &mocking.RealCommandExecutor{})
+		return network.OpenPorts(executor, executor)
 	},
-	func() checks.Check { return windows.Outdated(&mocking.RealCommandExecutor{}) },
+	func() checks.Check { return windows.Outdated(executor) },
 	func() checks.Check {
 		return windows.SecureBoot(mocking.LocalMachine)
 	},
 	func() checks.Check {
-		return network.SmbCheck(&mocking.RealCommandExecutor{})
+		return network.SmbCheck(executor)
 	},
 	func() checks.Check {
 		return windows.Startup(mocking.CurrentUser, mocking.LocalMachine, mocking.LocalMachine)
 	},
 	func() checks.Check {
-		return windows.GuestAccount(&mocking.RealCommandExecutor{}, &mocking.RealCommandExecutor{},
-			&mocking.RealCommandExecutor{}, &mocking.RealCommandExecutor{})
+		return windows.GuestAccount(executor, executor,
+			executor, executor)
 	},
-	func() checks.Check { return windows.UACCheck(&mocking.RealCommandExecutor{}) },
+	func() checks.Check { return windows.UACCheck(executor) },
 	func() checks.Check {
 		return windows.RemoteDesktopCheck(mocking.LocalMachine)
 	},
-	func() checks.Check { return devices.ExternalDevices(&mocking.RealCommandExecutor{}) },
+	func() checks.Check { return devices.ExternalDevices(executor) },
 	func() checks.Check { return windows.Advertisement(mocking.LocalMachine) },
 	func() checks.Check { return chromium.HistoryChromium("Chrome") },
 	func() checks.Check { return chromium.ExtensionsChromium("Chrome") },
@@ -99,7 +101,7 @@ var securityChecks = []func() checks.Check{
 		return cisregistrysettings.CISRegistrySettings(mocking.LocalMachine, mocking.UserProfiles)
 	},
 	func() checks.Check {
-		return windows.AutomaticLogin(mocking.NewRegistryKeyWrapper(registry.LOCAL_MACHINE))
+		return windows.AutomaticLogin(mocking.LocalMachine)
 	},
 }
 
