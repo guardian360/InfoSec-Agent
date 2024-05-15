@@ -45,7 +45,7 @@ export class PieChart {
    */
   async getData() {
     const xValues = [
-      await getLocalizationString('Dashboard.Safe'),
+      await getLocalizationString('Dashboard.Acceptable'),
       await getLocalizationString('Dashboard.LowRisk'),
       await getLocalizationString('Dashboard.MediumRisk'),
       await getLocalizationString('Dashboard.HighRisk'),

@@ -53,6 +53,7 @@ export function previousSolutionStep(solutionText, solutionScreenshot, solution,
  * @param {string} issueId Id of the issue to open
  */
 export function openIssuePage(issueId) {
+  retrieveTheme();
   stepCounter = 0;
   const currentIssue = data[issueId];
   // Check if the issue has no screenshots, if so, display that there is no issue (acceptable)
@@ -78,20 +79,20 @@ export function openIssuePage(issueId) {
       pageContents.innerHTML = `
         <h1 class="issue-name">${currentIssue.Name}</h1>
         <div class="issue-information">
-          <h2 id="information" class="information">Information</h2>
+          <h2 id="information" class="lang-information"></h2>
           <p>${currentIssue.Information}</p>
-          <h2 id="solution" class="solution">Solution</h2>
+          <h2 id="solution" class="lang-solution"></h2>
           <div class="issue-solution">
             <p id="solution-text">${stepCounter +1}. ${currentIssue.Solution[stepCounter]}</p>
             <img style='display:block; width:750px;height:auto' id="step-screenshot"></img>
             <div class="solution-buttons">
               <div class="button-box">
-                <div id="previous-button" class="previous-button button">&laquo; Previous step</div>
-                <div id="next-button" class="next-button button">Next step &raquo;</div>
+                <div id="previous-button" class="lang-previous-button button"></div>
+                <div id="next-button" class="lang-next-button button">;</div>
               </div>
             </div>
           </div>
-          <div class="back-button button" id="back-button">Back to issues overview</div>
+          <div class="lang-back-button button" id="back-button"></div>
         </div>
       `;
     }
@@ -108,8 +109,7 @@ export function openIssuePage(issueId) {
       previousSolutionStep(solutionText, solutionScreenshot, currentIssue.Solution, currentIssue.Screenshots));
   }
 
-  document.onload = retrieveTheme();
-  const texts = ['information', 'solution', 'previous-button', 'next-button', 'back-button'];
+  const texts = ['lang-information', 'lang-solution', 'lang-previous-button', 'lang-next-button', 'lang-back-button'];
   const localizationIds = ['Issues.Information', 'Issues.Solution', 'Issues.Previous', 'Issues.Next', 'Issues.Back'];
   for (let i = 0; i < texts.length; i++) {
     getLocalization(localizationIds[i], texts[i]);

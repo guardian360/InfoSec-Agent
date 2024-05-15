@@ -25,7 +25,7 @@ global.window = dom.window;
  */
 function mockGetLocalizationString(messageID) {
   switch (messageID) {
-  case 'Dashboard.Safe':
+  case 'Dashboard.Acceptable':
     return 'Acceptable';
   case 'Dashboard.LowRisk':
     return 'Low';

@@ -19,7 +19,10 @@
     "PrivacyDashboard": "Painel de privacidade",
     "Issues": "Problemas",
     "Integration": "Integração",
-    "About": "Sobre"
+    "About": "Sobre",
+    "Personalize": "Personalizar página",
+    "ChangeLanguage": "Mudar idioma"
+    
   },
   "Dashboard": 
   {
@@ -44,7 +47,7 @@
     "MediumRisk": "Problemas de Risco Médio",
     "LowRisk": "Problemas de Baixo Risco",
     "InfoRisk": "Informativo",
-    "Safe": "Resultados aceitáveis",
+    "Acceptable": "Resultados aceitáveis",
     "SecurityRiskAreas": "Áreas de risco de segurança",
     "PrivacyRiskAreas": "Áreas de risco de privacidade",    
     "Applications": "Aplicações",
@@ -76,7 +79,7 @@
     "about-title": "Sobre o Agente Infosec",
     "infosec-info": "O projeto InfoSec Agent tem como objetivo melhorar a segurança e a privacidade dos usuários de computadores com Windows. Atualmente, existem aplicativos disponíveis que fazem isso, mas eles são principalmente destinados a grandes empresas. O objetivo deste projeto é torná-lo acessível a todos. Um aplicativo está sendo desenvolvido para coletar informações sobre o sistema do usuário para descobrir quaisquer vulnerabilidades relacionadas à segurança ou privacidade. Os resultados serão apresentados ao usuário em um painel especial, mostrando o estado atual do sistema, incluindo ações recomendadas para melhorá-lo.",
     "little-brother-info": "Este projeto é um esforço colaborativo envolvendo nove estudantes da Universidade de Utrecht, nos Países Baixos, em parceria com a empresa de TI holandesa Guardian360. Serve como Projeto de Software para o Programa de Bacharelado em Ciências da Computação na UU.",
-    "about-contribute": "Contribuir",
+    "contribute-title": "Contribuir",
     "contribute-info": "O InfoSec-Agent é um projeto de código aberto licenciado sob a Licença GPL-3.0. No entanto, devido às suas origens como uma tarefa da Universidade de Utrecht, contribuições públicas para este repositório só serão mescladas após a conclusão desta tarefa, programada para 24 de junho de 2024. Sinta-se à vontade para relatar quaisquer erros ou problemas que encontrar. Seus feedbacks são valiosos e ajudam a melhorar o projeto InfoSec-Agent. Você pode nos enviar um email para <a href=\"mailto:infosecagentuu@gmail.com\">infosecagentuu@gmail.com</a>."
   }
 }
