@@ -249,8 +249,10 @@ var IssueMap = map[IssueResPair]bool{
 	{25, 0}: false,
 	// Edge SearchEngine: Search engine,
 	{26, 0}: false,
-	// Firefox Cookies: Cookies found
+	// Firefox Cookies: No tracking cookies found
 	{27, 0}: false,
+	// Firefox Cookies: Tracking cookies found
+	{27, 1}: true,
 	// Firefox Extension: List of extensions
 	{28, 0}: false,
 	// Firefox Adblock: Ad blocker installed
