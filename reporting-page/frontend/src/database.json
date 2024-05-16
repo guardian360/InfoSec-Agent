@@ -1057,7 +1057,7 @@
         "Information": "Remote Procedure Call (RPC) is a protocol that allows programs and processes to communicate with each other on a network. Disabling Remote RPC helps prevent unauthorized access to your computer and protects it from potential security threats and vulnerabilities.",
         "Solution":
         [
-            "Remote RPC is disabled, so there is no action needed.",
+            "Remote RPC is disabled, so there is no action needed."
         ],
         "Screenshots":
         [
