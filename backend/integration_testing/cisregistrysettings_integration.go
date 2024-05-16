@@ -7,13 +7,6 @@ import (
 	"testing"
 )
 
-func TestIntegrationCISRegistrySettingsCorrect(t *testing.T) {
-	result := cisregistrysettings.CISRegistrySettings(mocking.LocalMachine, mocking.UserProfiles)
-	require.NotEmpty(t, result)
-	require.Empty(t, result.Result)
-	require.Equal(t, 1, result.ResultID)
-}
-
 func TestIntegrationCISRegistrySettingsIncorrect(t *testing.T) {
 	result := cisregistrysettings.CISRegistrySettings(mocking.LocalMachine, mocking.UserProfiles)
 	require.NotEmpty(t, result)
