@@ -27,8 +27,5 @@ func AllowRemoteRPC(registryKey mocking.RegistryKey) checks.Check {
 		return checks.NewCheckError(checks.RemoteRPCID, err)
 	}
 
-	if value == 1 {
-		return checks.NewCheckResult(checks.RemoteRPCID, 1)
-	}
-	return checks.NewCheckResult(checks.RemoteRPCID, 0)
+	return checks.NewCheckResult(checks.RemoteRPCID, int(value))
 }
