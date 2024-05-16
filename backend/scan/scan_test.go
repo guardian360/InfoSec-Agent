@@ -2,6 +2,7 @@ package scan_test
 
 import (
 	"database/sql"
+	"os"
 	"testing"
 
 	"github.com/ncruces/zenity"
@@ -12,6 +13,22 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+// TestMain sets up the necessary environment for the system scan package tests and executes them.
+//
+// This function initializes the logger for the tests and runs the tests.
+//
+// Parameters:
+//   - m *testing.M: The testing framework that manages and runs the tests.
+//
+// Returns: None. The function calls os.Exit with the exit code returned by m.Run().
+func TestMain(m *testing.M) {
+	logger.SetupTests()
+
+	// Run tests
+	exitCode := m.Run()
+	os.Exit(exitCode)
+}
+
 // TestScan tests the Scan function to ensure it runs without errors.
 //
 // This test function calls the Scan function and asserts that it does not return an error.
@@ -21,7 +38,7 @@ import (
 //
 // No return values.
 func TestScan(t *testing.T) {
-	logger.SetupTests()
+	// logger.SetupTests()
 
 	// Display a progress dialog while the scan is running
 	dialog, err := zenity.Progress(
@@ -52,7 +69,7 @@ func TestScan(t *testing.T) {
 //
 // No return values.
 func TestGetSeverity(t *testing.T) {
-	logger.SetupTests()
+	// logger.SetupTests()
 
 	// Arrange database connection
 	db, err := sql.Open("sqlite", "../../reporting-page/database.db")
@@ -81,7 +98,7 @@ func TestGetSeverity(t *testing.T) {
 //
 // No return values.
 func TestGetJSONKey(t *testing.T) {
-	logger.SetupTests()
+	// logger.SetupTests()
 
 	// Arrange database connection
 	db, err := sql.Open("sqlite", "../../reporting-page/database.db")
@@ -110,7 +127,7 @@ func TestGetJSONKey(t *testing.T) {
 //
 // No return values.
 func TestGetDataBaseData(t *testing.T) {
-	logger.SetupTests()
+	// logger.SetupTests()
 
 	scanResult := []checks.Check{
 		{
