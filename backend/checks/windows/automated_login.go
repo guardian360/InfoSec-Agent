@@ -28,8 +28,5 @@ func AutomaticLogin(registryKey mocking.RegistryKey) checks.Check {
 		return checks.NewCheckResult(checks.AutoLoginID, 0)
 	}
 
-	if value == 1 {
-		return checks.NewCheckResult(checks.AutoLoginID, 1)
-	}
-	return checks.NewCheckResult(checks.AutoLoginID, 0)
+	return checks.NewCheckResult(checks.AutoLoginID, int(value))
 }

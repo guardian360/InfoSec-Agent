@@ -58,7 +58,7 @@ func NewCheckResult(issID int, resID int, result ...string) Check {
 //
 // This function is primarily used when a security or privacy check encounters an error and needs to return a Check instance that encapsulates this error.
 func NewCheckError(id int, err error) Check {
-	return Check{IssueID: id, Error: err, ErrorMSG: err.Error()}
+	return Check{IssueID: id, ResultID: -1, Error: err, ErrorMSG: err.Error()}
 }
 
 // NewCheckErrorf is a constructor function that creates and returns a new instance of the Check struct.
@@ -75,5 +75,5 @@ func NewCheckError(id int, err error) Check {
 // This function is primarily used when a security or privacy check encounters an error and needs to return a Check instance that encapsulates this error. The formatted error message provides additional context about the error, which can be helpful for debugging and understanding the nature of the error.
 func NewCheckErrorf(id int, message string, err error) Check {
 	formatErr := fmt.Errorf(message+": %w", err)
-	return Check{IssueID: id, Error: formatErr, ErrorMSG: formatErr.Error()}
+	return Check{IssueID: id, ResultID: -1, Error: formatErr, ErrorMSG: formatErr.Error()}
 }
