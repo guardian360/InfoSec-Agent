@@ -2,20 +2,9 @@ package integration_testing
 
 import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/browsers"
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/stretchr/testify/require"
-	"os"
 	"testing"
 )
-
-func TestMain(m *testing.M) {
-	logger.SetupTests()
-
-	// Run tests
-	exitCode := m.Run()
-
-	os.Exit(exitCode)
-}
 
 func TestIntegrationFirefoxFolderExists(t *testing.T) {
 	result, err := browsers.RealProfileFinder{}.FirefoxFolder()
