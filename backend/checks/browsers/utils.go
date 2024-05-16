@@ -211,32 +211,25 @@ func CopyFile(src, dst string, mockSource mocking.File, mockDestination mocking.
 	return nil
 }
 
-// PreferencesDirGetter is an interface that wraps the GetPreferencesDir method.
-// It provides a way to get the preferences directory of a specific browser.
-type PreferencesDirGetter interface {
-	// GetPreferencesDir takes a browser name as input and returns the path to the preferences directory of the browser.
-	// It returns an error if there is any issue in getting the preferences directory.
-	GetPreferencesDir(browser string) (string, error)
+// DefaultDirGetter is an interface that wraps the GetPreferencesDir method.
+// It provides a way to get the default directory of a specific browser.
+type DefaultDirGetter interface {
+	// GetDefaultDir takes a browser name as input and returns the path to the preferences directory of the browser.
+	// It returns an error if there is any issue in getting the default directory.
+	GetDefaultDir(browser string) (string, error)
 }
 
-// RealPreferencesDirGetter is a struct that implements the PreferencesDirGetter interface.
-// It provides the real implementation of the GetPreferencesDir method.
-type RealPreferencesDirGetter struct{}
+// RealDefaultDirGetter is a struct that implements the DefaultDirGetter interface.
+// It provides the real implementation of the GetDefaultDir method.
+type RealDefaultDirGetter struct{}
 
-// GetPreferencesDir is a method of RealPreferencesDirGetter that gets the preferences directory of a specific browser.
-// It takes a browser name as input and returns the path to the preferences directory of the browser.
-// It returns an error if there is any issue in getting the preferences directory.
-func (r RealPreferencesDirGetter) GetPreferencesDir(browser string) (string, error) {
-	var browserPath string
-	if browser == Chrome {
-		browserPath = ChromePath
-	}
-	if browser == Edge {
-		browserPath = EdgePath
-	}
-	user, err := UserHomeDirFunc()
+// GetDefaultDir is a method of RealDefaultDirGetter that gets the default directory of a specific browser.
+// It takes a browser name as input and returns the path to the default directory of the browser.
+// It returns an error if there is any issue in getting the default directory.
+func (r RealDefaultDirGetter) GetDefaultDir(browserPath string) (string, error) {
+	userDir, err := UserHomeDirFunc()
 	if err != nil {
 		return "", err
 	}
-	return filepath.Join(user, "AppData", "Local", browserPath, "User Data", "Default"), nil
+	return filepath.Join(userDir, "AppData", "Local", browserPath, "User Data", "Default"), nil
 }

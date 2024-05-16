@@ -89,9 +89,11 @@ var securityChecks = []func() checks.Check{
 	func() checks.Check { return devices.ExternalDevices(executor) },
 	func() checks.Check { return windows.Advertisement(mocking.LocalMachine) },
 	func() checks.Check { return chromium.HistoryChromium("Chrome") },
-	func() checks.Check { return chromium.ExtensionsChromium("Chrome") },
 	func() checks.Check {
-		return chromium.SearchEngineChromium("Chrome", false, nil, browsers.RealPreferencesDirGetter{})
+		return chromium.ExtensionsChromium("Chrome", browsers.RealDefaultDirGetter{}, chromium.RealExtensionIDGetter{}, chromium.ChromeExtensionNameGetter{})
+	},
+	func() checks.Check {
+		return chromium.SearchEngineChromium("Chrome", false, nil, browsers.RealDefaultDirGetter{})
 	},
 	func() checks.Check { c, _ := firefox.ExtensionFirefox(browsers.RealProfileFinder{}); return c },
 	func() checks.Check { _, c := firefox.ExtensionFirefox(browsers.RealProfileFinder{}); return c },

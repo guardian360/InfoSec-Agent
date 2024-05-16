@@ -136,6 +136,10 @@ type FileMock struct {
 	FileInfo *FileInfoMock
 }
 
+func (f *FileMock) ReadDir(_ string) ([]os.DirEntry, error) {
+	return nil, f.Err
+}
+
 // Close closes the mock file
 //
 // Parameters: _
