@@ -1,9 +1,10 @@
-package integration_testing
+package integration
 
 import (
+	"testing"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/tray"
 	"github.com/stretchr/testify/require"
-	"testing"
 )
 
 func TestIntegrationScanNowSuccessful(t *testing.T) {

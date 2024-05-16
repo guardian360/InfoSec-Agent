@@ -1,11 +1,12 @@
-package integration_testing
+package integration
 
 import (
+	"testing"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/browsers"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/browsers/chromium"
 	"github.com/stretchr/testify/require"
-	"testing"
 )
 
 func TestIntegrationExtensionsChromiumWithAdBlocker(t *testing.T) {

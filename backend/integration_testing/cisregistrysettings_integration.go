@@ -1,10 +1,11 @@
-package integration_testing
+package integration
 
 import (
+	"testing"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/cisregistrysettings"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 	"github.com/stretchr/testify/require"
-	"testing"
 )
 
 func TestIntegrationCISRegistrySettingsIncorrect(t *testing.T) {

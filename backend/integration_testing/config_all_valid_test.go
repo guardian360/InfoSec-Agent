@@ -1,40 +1,41 @@
-package integration_testing
+package integration_test
 
 import (
+	i "github.com/InfoSec-Agent/InfoSec-Agent/backend/integration_testing"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"os"
 	"testing"
 )
 
 var testsValid = []func(t *testing.T){
-	TestIntegrationFirefoxFolderExists,
-	TestIntegrationGetPreferencesDirExists,
-	TestIntegrationCurrentUsernameFound,
-	TestIntegrationExtensionsChromiumWithAdBlocker,
-	TestIntegrationHistoryChromiumWithoutPhishing,
-	TestIntegrationSearchEngineChromiumWithSearchEngine,
-	TestIntegrationBluetoothNoDevices,
-	TestIntegrationExternalDevicesNoDevices,
-	TestIntegrationExtensionsFirefoxWithAdBlocker,
-	TestIntegrationHistoryFirefoxWithoutPhishing,
-	TestIntegrationSearchEngineFirefoxWithSearchEngine,
-	TestIntegrationOpenPortsNoPorts,
-	TestIntegrationSmbCheckGoodSetup,
-	TestIntegrationPasswordManagerPresent,
-	TestIntegrationAdvertisementNotActive,
-	TestIntegrationAutomatedLoginNotActive,
-	TestIntegrationDefenderAllActive,
-	TestIntegrationGuestAccountNotActive,
-	TestIntegrationLastPasswordChangeValid,
-	TestIntegrationLoginMethodPasswordOnly,
-	TestIntegrationOutdatedWin11UpToDate,
-	TestIntegrationPermissionWithoutApps,
-	TestIntegrationRemoteDesktopDisabled,
-	TestIntegrationSecureBootEnabled,
-	TestIntegrationStartupWithoutApps,
-	TestIntegrationUACFullEnabled,
-	TestIntegrationScanNowSuccessful,
-	TestIntegrationScanSuccess,
+	i.TestIntegrationFirefoxFolderExists,
+	i.TestIntegrationGetPreferencesDirExists,
+	i.TestIntegrationCurrentUsernameFound,
+	i.TestIntegrationExtensionsChromiumWithAdBlocker,
+	i.TestIntegrationHistoryChromiumWithoutPhishing,
+	i.TestIntegrationSearchEngineChromiumWithSearchEngine,
+	i.TestIntegrationBluetoothNoDevices,
+	i.TestIntegrationExternalDevicesNoDevices,
+	i.TestIntegrationExtensionsFirefoxWithAdBlocker,
+	i.TestIntegrationHistoryFirefoxWithoutPhishing,
+	i.TestIntegrationSearchEngineFirefoxWithSearchEngine,
+	i.TestIntegrationOpenPortsNoPorts,
+	i.TestIntegrationSmbCheckGoodSetup,
+	i.TestIntegrationPasswordManagerPresent,
+	i.TestIntegrationAdvertisementNotActive,
+	i.TestIntegrationAutomatedLoginNotActive,
+	i.TestIntegrationDefenderAllActive,
+	i.TestIntegrationGuestAccountNotActive,
+	i.TestIntegrationLastPasswordChangeValid,
+	i.TestIntegrationLoginMethodPasswordOnly,
+	i.TestIntegrationOutdatedWin11UpToDate,
+	i.TestIntegrationPermissionWithoutApps,
+	i.TestIntegrationRemoteDesktopDisabled,
+	i.TestIntegrationSecureBootEnabled,
+	i.TestIntegrationStartupWithoutApps,
+	i.TestIntegrationUACFullEnabled,
+	i.TestIntegrationScanNowSuccessful,
+	i.TestIntegrationScanSuccess,
 }
 
 func TestMain(m *testing.M) {

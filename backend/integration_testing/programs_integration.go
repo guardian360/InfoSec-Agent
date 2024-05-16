@@ -1,9 +1,10 @@
-package integration_testing
+package integration
 
 import (
+	"testing"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/programs"
 	"github.com/stretchr/testify/require"
-	"testing"
 )
 
 func TestIntegrationPasswordManagerPresent(t *testing.T) {

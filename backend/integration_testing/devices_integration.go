@@ -1,11 +1,12 @@
-package integration_testing
+package integration
 
 import (
+	"testing"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/devices"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 	"github.com/stretchr/testify/require"
 	"golang.org/x/sys/windows/registry"
-	"testing"
 )
 
 func TestIntegrationBluetoothDevices(t *testing.T) {

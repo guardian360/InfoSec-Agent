@@ -1,10 +1,11 @@
-package integration_testing
+package integration
 
 import (
+	"testing"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/browsers"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/browsers/firefox"
 	"github.com/stretchr/testify/require"
-	"testing"
 )
 
 func TestIntegrationExtensionsFirefoxWithAdBlocker(t *testing.T) {
@@ -12,7 +13,7 @@ func TestIntegrationExtensionsFirefoxWithAdBlocker(t *testing.T) {
 	require.NotEqual(t, -1, result.ResultID)
 	require.NotEmpty(t, result)
 	require.Equal(t, 0, result.ResultID)
-	require.Equal(t, adblock, true)
+	require.Equal(t, 0, adblock.ResultID)
 }
 
 func TestIntegrationExtensionsFirefoxWithoutAdBlocker(t *testing.T) {

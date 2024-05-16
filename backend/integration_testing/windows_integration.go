@@ -1,11 +1,12 @@
-package integration_testing
+package integration
 
 import (
+	"testing"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/windows"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 	"github.com/stretchr/testify/require"
-	"testing"
 )
 
 func TestIntegrationAdvertisementActive(t *testing.T) {

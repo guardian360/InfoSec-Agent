@@ -1,21 +1,22 @@
-package integration_testing
+package integration_test
 
 import (
+	i "github.com/InfoSec-Agent/InfoSec-Agent/backend/integration_testing"
 	"testing"
 )
 
 var testsNotPresent = []func(t *testing.T){
-	TestIntegrationFirefoxFolderNotExists,
-	TestIntegrationExtensionsChromiumNotInstalled,
-	TestIntegrationHistoryChromiumNotInstalled,
-	TestIntegrationSearchEngineChromiumNotInstalled,
-	TestIntegrationSearchEngineFirefoxNotInstalled,
-	TestIntegrationHistoryFirefoxNotInstalled,
-	TestIntegrationExtensionsFirefoxNotInstalled,
-	TestIntegrationDefenderPeriodicScanActive,
-	TestIntegrationLoginMethodPasswordAndPIN,
-	TestIntegrationOutdatedWin10UpToDate,
-	TestIntegrationUACPartialEnabled,
+	i.TestIntegrationFirefoxFolderNotExists,
+	i.TestIntegrationExtensionsChromiumNotInstalled,
+	i.TestIntegrationHistoryChromiumNotInstalled,
+	i.TestIntegrationSearchEngineChromiumNotInstalled,
+	i.TestIntegrationSearchEngineFirefoxNotInstalled,
+	i.TestIntegrationHistoryFirefoxNotInstalled,
+	i.TestIntegrationExtensionsFirefoxNotInstalled,
+	i.TestIntegrationDefenderPeriodicScanActive,
+	i.TestIntegrationLoginMethodPasswordAndPIN,
+	i.TestIntegrationOutdatedWin10UpToDate,
+	i.TestIntegrationUACPartialEnabled,
 }
 
 func TestNotPresent(t *testing.T) {

@@ -1,12 +1,14 @@
-package integration_testing
+package integration
 
 import (
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/api_connection"
+	"testing"
+
+	apiconnection "github.com/InfoSec-Agent/InfoSec-Agent/backend/api_connection"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/scan"
 	"github.com/ncruces/zenity"
 	"github.com/stretchr/testify/require"
-	"testing"
 )
 
 func TestIntegrationScanSuccess(t *testing.T) {
@@ -42,8 +44,8 @@ func TestIntegrationScanSuccess(t *testing.T) {
 	require.Equal(t, len(checks), len(data))
 
 	// Parse scan results
-	metaData := api_connection.Metadata{WorkStationID: 0, User: "user", Date: "2022-01-01T00:00:00Z"}
-	parseResult := api_connection.ParseScanResults(metaData, checks)
+	metaData := apiconnection.Metadata{WorkStationID: 0, User: "user", Date: "2022-01-01T00:00:00Z"}
+	parseResult := apiconnection.ParseScanResults(metaData, checks)
 	require.NotEmpty(t, parseResult)
 	require.Equal(t, metaData, parseResult.Metadata)
 	require.Equal(t, len(checks), len(parseResult.Results))

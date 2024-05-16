@@ -1,5 +1,5 @@
-// Package api_connection provides functions for integrating the application with the Guardian360 Lighthouse platform.
-package api_connection
+// Package apiconnection provides functions for integrating the application with the Guardian360 Lighthouse platform.
+package apiconnection
 
 type IssueResPair struct {
 	IssueID  int
