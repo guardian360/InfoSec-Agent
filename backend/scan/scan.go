@@ -8,12 +8,13 @@ import (
 	"fmt"
 	"time"
 
+	apiconnection "github.com/InfoSec-Agent/InfoSec-Agent/backend/api_connection"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/browsers"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/devices"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/network"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/programs"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/windows"
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/integration"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/usersettings"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/cisregistrysettings"
@@ -30,11 +31,11 @@ import (
 
 var executor = &mocking.RealCommandExecutor{}
 
-// securityChecks is a slice of functions that return checks.Check objects.
+// SecurityChecks is a slice of functions that return checks.Check objects.
 // Each function in the slice represents a different security or privacy check that the application can perform.
 // When the Scan function is called, it iterates over this slice and executes each check in turn.
 // The result of each check is then appended to the checkResults slice, which is returned by the Scan function.
-var securityChecks = []func() checks.Check{
+var SecurityChecks = []func() checks.Check{
 	func() checks.Check {
 		return programs.PasswordManager(programs.RealProgramLister{})
 	},
@@ -126,11 +127,11 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 	workStationID := 0
 	user := "user"
 	// Define all security/privacy checks that Scan() should execute
-	totalChecks := len(securityChecks)
+	totalChecks := len(SecurityChecks)
 
 	var checkResults []checks.Check
 	// Run all security/privacy checks
-	for i, check := range securityChecks {
+	for i, check := range SecurityChecks {
 		// Display the currently running check in the progress dialog
 		err := dialog.Text(fmt.Sprintf("Running check %d of %d", i+1, totalChecks))
 		if err != nil {
@@ -160,7 +161,7 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 
 	// TODO: Set usersettings.Integration to true depending on whether user has connected with the API
 	if usersettings.LoadUserSettings().Integration {
-		integration.ParseScanResults(integration.Metadata{WorkStationID: workStationID, User: user, Date: date}, checkResults)
+		apiconnection.ParseScanResults(apiconnection.Metadata{WorkStationID: workStationID, User: user, Date: date}, checkResults)
 	}
 	return checkResults, nil
 }
