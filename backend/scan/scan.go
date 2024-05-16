@@ -106,6 +106,7 @@ var SecurityChecks = []func() checks.Check{
 	func() checks.Check {
 		return windows.AutomaticLogin(mocking.LocalMachine)
 	},
+	func() checks.Check { return windows.AllowRemoteRPC(mocking.LocalMachine) },
 }
 
 // Scan executes all security/privacy checks, serializes the results to JSON, and returns a list of all found issues.
