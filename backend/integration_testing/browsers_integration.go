@@ -22,7 +22,7 @@ func TestIntegrationFirefoxFolderNotExists(t *testing.T) {
 	require.Error(t, err)
 }
 
-func TestIntegrationGetPreferencesDirExists(t *testing.T) {
+func TestIntegrationGetDefaultDirExists(t *testing.T) {
 	tests := []struct {
 		name    string
 		browser string
@@ -38,7 +38,7 @@ func TestIntegrationGetPreferencesDirExists(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			result, err := browsers.RealPreferencesDirGetter{}.GetPreferencesDir(tt.browser)
+			result, err := browsers.RealDefaultDirGetter{}.GetDefaultDir(tt.browser)
 			require.NotEmpty(t, result)
 			require.NoError(t, err)
 		})
