@@ -5,7 +5,7 @@ import {retrieveTheme} from './personalize.js';
 
 let stepCounter = 0;
 const issuesWithResultsShow =
-    ['11', '21', '60', '70', '80', '90', '100', '110', '160', '173', '201', '230', '310', '320'];
+    ['11', '21', '60', '70', '80', '90', '100', '110', '160', '173', '201', '230', '271', '310', '320'];
 
 /** Update contents of solution guide
  *
@@ -184,6 +184,9 @@ export function parseShowResult(issueId, currentIssue) {
   case '230':
     generateBulletList(issues, 23);
     break;
+  case '271':
+    resultLine += cookiesTable(issues.find((issue) => issue.issue_id === 27).result);
+    break;
   case '310':
     generateBulletList(issues, 31);
     break;
@@ -285,6 +288,34 @@ export function parseShowResult(issueId, currentIssue) {
     });
 
     return table;
+  }
+
+  /**
+   * Create a table to display found (possible) tracking cookies
+   * @param {string} issues list of cookies and their host
+   * @returns {string} HTML table with cookies and their host
+   */
+  function cookiesTable(issues) {
+    let cookiesByHost = {};
+    for (let i = 0; i < issues.length; i += 2) {
+      let host = issues[i+1];
+
+      if (cookiesByHost[host]) {
+        cookiesByHost[host].push(cookieName);
+      } else {
+        cookiesByHost[host] = [cookieName];
+      }
+    }
+
+    // Generate HTML for table
+    let tableHTML = '<table class="issues-table">';
+    for (let host in cookiesByHost) {
+      let cookieNames = cookiesByHost[host].join('<br>');
+      tableHTML += `<tr><td style="width: 30%; word-break: break-all">${host}</td><td style="width: 30%; word-break: break-all">${cookieNames}</td></tr>`;
+    }
+    tableHTML += '</table>';
+
+    return tableHTML;
   }
 
   const result = `
