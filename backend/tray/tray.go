@@ -84,8 +84,9 @@ func OnReady() {
 	systray.SetIcon(icon.Data)
 	systray.SetTooltip("InfoSec Agent")
 
-	Language = usersettings.LoadUserSettings().Language
-	scanInterval := usersettings.LoadUserSettings().ScanInterval
+	settings := usersettings.LoadUserSettings()
+	Language = settings.Language
+	scanInterval := settings.ScanInterval
 
 	// Generate the menu for the system tray application
 	mReportingPage := systray.AddMenuItem(localization.Localize(Language, "Tray.ReportingPageTitle"),
@@ -132,7 +133,7 @@ func OnReady() {
 		case <-mReportingPage.ClickedCh:
 			err := OpenReportingPage("")
 			if err != nil {
-				logger.Log.Println(err)
+				logger.Log.ErrorWithErr("Error opening reporting page:", err)
 			}
 		case <-mChangeScanInterval.ClickedCh:
 			ChangeScanInterval()
@@ -198,6 +199,8 @@ func OpenReportingPage(path string) error {
 		return errors.New("reporting-page is already running")
 	}
 
+	logger.Log.Debug("opening reporting page")
+
 	// Get the current working directory
 	//TODO: In a release version, there (should be) no need to build the application, just run it
 	//Consideration: Wails can also send (termination) signals to the back-end, might be worth investigating
@@ -216,12 +219,12 @@ func OpenReportingPage(path string) error {
 	defer func() {
 		err = os.Chdir(originalDir)
 		if err != nil {
-			logger.Log.ErrorWithErr("Error changing directory:", err)
+			logger.Log.ErrorWithErr("error changing directory:", err)
 		}
 		ReportingPageOpen = false
 	}()
 
-	const build = true
+	const build = false
 	if build {
 		err = BuildReportingPage()
 		if err != nil {
@@ -238,7 +241,7 @@ func OpenReportingPage(path string) error {
 	go func() {
 		<-mQuit.ClickedCh
 		if err = runCmd.Process.Kill(); err != nil {
-			logger.Log.ErrorWithErr("Error interrupting reporting-page process:", err)
+			logger.Log.ErrorWithErr("error interrupting reporting-page process:", err)
 		}
 		ReportingPageOpen = false
 		systray.Quit()
@@ -250,6 +253,8 @@ func OpenReportingPage(path string) error {
 		ReportingPageOpen = false
 		return fmt.Errorf("error running reporting-page: %w", err)
 	}
+
+	logger.Log.Debug("reporting page opened")
 	return nil
 }
 
@@ -259,13 +264,14 @@ func OpenReportingPage(path string) error {
 //
 // Returns: _
 func BuildReportingPage() error {
-	buildCmd := exec.Command("wails", "build", "-windowsconsole")
+	buildCmd := exec.Command("wails", "build")
 
 	buildCmd.Stdout = os.Stdout
 	buildCmd.Stderr = os.Stderr
 	if err := buildCmd.Run(); err != nil {
 		return fmt.Errorf("error building reporting-page: %w", err)
 	}
+	logger.Log.Debug("reporting page built successfully")
 	return nil
 }
 
@@ -381,7 +387,8 @@ func ScanNow() ([]checks.Check, error) {
 // Returns: None. The function updates the 'language' variable in-place.
 func ChangeLanguage(testInput ...string) {
 	var res string
-	if len(testInput) > 0 {
+	test := testInput != nil
+	if test {
 		res = testInput[0]
 	} else {
 		var err error
@@ -412,6 +419,10 @@ func ChangeLanguage(testInput ...string) {
 		Language = 6
 	default:
 		Language = 1
+	}
+
+	if test {
+		return
 	}
 	usersettings.SaveUserSettings(usersettings.UserSettings{
 		Language:     Language,

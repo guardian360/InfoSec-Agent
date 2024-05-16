@@ -34,4 +34,6 @@ const (
 	SearchFirefoxID
 	HistoryFirefoxID
 	CISRegistrySettingsID
+	AutoLoginID
+	RemoteRPCID
 )

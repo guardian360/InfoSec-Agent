@@ -1,6 +1,3 @@
-// Package firefox is responsible for running checks on Firefox.
-//
-// Exported function(s): CookieFirefox, ExtensionFirefox, HistoryFirefox, PasswordFirefox
 package firefox
 
 import (

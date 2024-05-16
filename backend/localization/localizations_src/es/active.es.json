@@ -19,7 +19,9 @@
     "PrivacyDashboard": "Panel de privacidad",
     "Issues": "Problemas",
     "Integration": "Integración",
-    "About": "Acerca de"
+    "About": "Acerca de",
+    "Personalize": "Personalizar la página",
+    "ChangeLanguage": "Cambiar idioma"
   },
   "Dashboard": 
   {
@@ -29,7 +31,7 @@
     "ScanNow": "Escanear Ahora",
     "Medals": "Medallas",
     "SecurityStatus": "Estado de Seguridad",
-    "PrivacyStatus": "Privacy status",
+    "PrivacyStatus": "Estado de privacidad",
     "Critical": "Crítico",
     "MediumConcern": "Preocupación Media",
     "LowConcern": "Preocupación Baja",
@@ -44,7 +46,7 @@
     "MediumRisk": "Problemas de Riesgo Medio",
     "LowRisk": "Problemas de Bajo Riesgo",
     "InfoRisk": "Informativo",
-    "Safe": "Hallazgos aceptables",
+    "Acceptable": "Hallazgos aceptables",
     "SecurityRiskAreas": "Áreas de riesgo de seguridad",
     "PrivacyRiskAreas": "Áreas de riesgo de privacidad",    
     "Applications": "Aplicaciones",
@@ -76,7 +78,7 @@
     "about-title": "Acerca de Infosec Agent",
     "infosec-info": "El proyecto InfoSec Agent tiene como objetivo mejorar la seguridad y privacidad de los usuarios de computadoras con Windows. Actualmente, existen aplicaciones disponibles que realizan esta función, pero están dirigidas principalmente a grandes empresas. El objetivo de este proyecto es hacerlo accesible para todos. Se está desarrollando una aplicación que recopila información sobre el sistema del usuario para descubrir cualquier vulnerabilidad relacionada con la seguridad o la privacidad. Los resultados se presentarán al usuario en un panel especial, mostrando el estado actual del sistema, incluidas las acciones recomendadas para mejorarlo.",
     "little-brother-info": "Este proyecto es un esfuerzo colaborativo que involucra a nueve estudiantes de la Universidad de Utrecht en los Países Bajos, en asociación con la empresa de TI holandesa Guardian360. Sirve como Proyecto de Software para el Programa de Licenciatura en Ciencias de la Computación en la UU.",
-    "about-contribute": "Contribuir",
+    "contribute-title": "Contribuir",
     "contribute-info": "InfoSec-Agent es un proyecto de código abierto con licencia bajo la Licencia GPL-3.0. Sin embargo, debido a su origen como tarea de la Universidad de Utrecht, las contribuciones públicas a este repositorio solo se fusionarán después de la finalización de esta tarea, que está programada para el 24 de junio de 2024. No dude en informarnos sobre cualquier error o problema que encuentre. Su retroalimentación es valiosa y ayuda a mejorar el proyecto InfoSec-Agent. Puede enviarnos un correo electrónico a <a href=\"mailto:infosecagentuu@gmail.com\">infosecagentuu@gmail.com</a>."
   }
 }

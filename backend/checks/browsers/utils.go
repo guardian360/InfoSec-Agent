@@ -17,6 +17,14 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 )
 
+// constants to store information of the browsers
+const Edge = "Edge"
+const Chrome = "Chrome"
+const EdgePath = "Microsoft/Edge"
+const ChromePath = "Google/Chrome"
+
+var UserHomeDirFunc = os.UserHomeDir
+
 // CloseFile is a utility function that closes a given file and logs any errors that occur during the process.
 //
 // Parameters:
@@ -201,4 +209,27 @@ func CopyFile(src, dst string, mockSource mocking.File, mockDestination mocking.
 		return err
 	}
 	return nil
+}
+
+// DefaultDirGetter is an interface that wraps the GetPreferencesDir method.
+// It provides a way to get the default directory of a specific browser.
+type DefaultDirGetter interface {
+	// GetDefaultDir takes a browser name as input and returns the path to the preferences directory of the browser.
+	// It returns an error if there is any issue in getting the default directory.
+	GetDefaultDir(browser string) (string, error)
+}
+
+// RealDefaultDirGetter is a struct that implements the DefaultDirGetter interface.
+// It provides the real implementation of the GetDefaultDir method.
+type RealDefaultDirGetter struct{}
+
+// GetDefaultDir is a method of RealDefaultDirGetter that gets the default directory of a specific browser.
+// It takes a browser name as input and returns the path to the default directory of the browser.
+// It returns an error if there is any issue in getting the default directory.
+func (r RealDefaultDirGetter) GetDefaultDir(browserPath string) (string, error) {
+	userDir, err := UserHomeDirFunc()
+	if err != nil {
+		return "", err
+	}
+	return filepath.Join(userDir, "AppData", "Local", browserPath, "User Data", "Default"), nil
 }

@@ -1,12 +1,14 @@
 package browsers_test
 
 import (
+	"errors"
+	"os"
+	"testing"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/browsers"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 	"github.com/stretchr/testify/require"
-	"os"
-	"testing"
 )
 
 func TestMain(m *testing.M) {
@@ -93,8 +95,8 @@ func TestPhishingDomainsReturnsResults(t *testing.T) {
 //
 // No return values.
 func TestCopyFileSuccess(t *testing.T) {
-	mockSource := &mocking.FileMock{IsOpen: true, Bytes: 10, Err: nil}
-	mockDestination := &mocking.FileMock{IsOpen: true, Bytes: 10, Err: nil}
+	mockSource := &mocking.FileMock{IsOpen: true, Buffer: []byte{96, 96, 97, 97, 98, 98, 99, 99, 100, 100}, Bytes: 10, Err: nil}
+	mockDestination := &mocking.FileMock{IsOpen: true, Buffer: []byte{96, 96, 97, 97, 98, 98, 99, 99, 100, 100}, Bytes: 10, Err: nil}
 	err := browsers.CopyFile("", "", mockSource, mockDestination)
 	require.NoError(t, err)
 }
@@ -129,4 +131,59 @@ func TestCopyFileFailNonexistentDestination(t *testing.T) {
 	mockDestination := &mocking.FileMock{IsOpen: true, Bytes: 10, Err: os.ErrNotExist}
 	err := browsers.CopyFile("", "", mockSource, mockDestination)
 	require.Error(t, err)
+}
+
+func TestGetDefaultDir(t *testing.T) {
+	tests := []struct {
+		name           string
+		browserPath    string
+		userHomeDir    string
+		userHomeDirErr error
+		expected       string
+		expectErr      bool
+	}{
+		{
+			name:           "Test with Chrome",
+			browserPath:    browsers.ChromePath,
+			userHomeDir:    "/mock/home/dir",
+			userHomeDirErr: nil,
+			expected:       "\\mock\\home\\dir\\AppData\\Local\\Google\\Chrome\\User Data\\Default",
+			expectErr:      false,
+		},
+		{
+			name:           "Test with Edge",
+			browserPath:    browsers.EdgePath,
+			userHomeDir:    "/mock/home/dir",
+			userHomeDirErr: nil,
+			expected:       "\\mock\\home\\dir\\AppData\\Local\\Microsoft\\Edge\\User Data\\Default",
+			expectErr:      false,
+		},
+		{
+			name:           "Test with error",
+			browserPath:    browsers.ChromePath,
+			userHomeDir:    "",
+			userHomeDirErr: errors.New("mock error"),
+			expected:       "",
+			expectErr:      true,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			// Mock UserHomeDirFunc
+			browsers.UserHomeDirFunc = func() (string, error) {
+				return tt.userHomeDir, tt.userHomeDirErr
+			}
+
+			getter := browsers.RealDefaultDirGetter{}
+			got, err := getter.GetDefaultDir(tt.browserPath)
+
+			if tt.expectErr {
+				require.Error(t, err)
+			} else {
+				require.NoError(t, err)
+				require.Equal(t, tt.expected, got)
+			}
+		})
+	}
 }

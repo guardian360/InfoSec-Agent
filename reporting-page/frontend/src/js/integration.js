@@ -4,9 +4,11 @@ import {retrieveTheme} from './personalize.js';
 export let currentStep = 1;
 /** Load the content of the Integration page */
 export function openIntegrationPage() {
+  retrieveTheme();
   closeNavigation(document.body.offsetWidth);
   markSelectedNavigationItem('integration-button');
   sessionStorage.setItem('savedPage', '5');
+
   document.getElementById('page-contents').innerHTML = `
   <!DOCTYPE html>
   <html lang="en">
@@ -66,7 +68,6 @@ export function openIntegrationPage() {
   document.getElementById('disconnectButton').style.display = 'none';
 
   showStep(currentStep);
-  document.onload = retrieveTheme();
 }
 
 /**

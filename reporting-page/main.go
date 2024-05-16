@@ -94,7 +94,7 @@ func (h *FileLoader) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 func main() {
 	// Setup log file
 	os.Chdir(os.Getenv("USERPROFILE")) // When opening the page from the Windows notification we start in C:\Windows\System32, and we cannot open a log file there
-	logger.Setup(0, -1)
+	logger.Setup("reporting-page-log.txt", 0, -1)
 	logger.Log.Info("Reporting page starting")
 
 	// Get executable path
@@ -126,9 +126,10 @@ func main() {
 	lang := usersettings.LoadUserSettings().Language
 	tray.Language = lang
 
+	logger.Log.Debug("Starting wails application")
 	// Create a Wails application with the specified options
 	err = wails.Run(&options.App{
-		Title:       "reporting-page",
+		Title:       "InfoSec Agent Reporting Page",
 		Width:       1024,
 		Height:      768,
 		StartHidden: true,

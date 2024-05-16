@@ -58,6 +58,7 @@ func LoadUserSettings() UserSettings {
 		logger.Log.ErrorWithErr("Error unmarshalling user settings JSON:", err)
 		return UserSettings{Language: 1, ScanInterval: 24}
 	}
+	logger.Log.Debug("Loaded user settings")
 	return settings
 }
 

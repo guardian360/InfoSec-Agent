@@ -1,5 +1,5 @@
-// Package integration provides functions for integrating the application with the Guardian360 Lighthouse platform.
-package integration
+// Package apiconnection provides functions for integrating the application with the Guardian360 Lighthouse platform.
+package apiconnection
 
 type IssueResPair struct {
 	IssueID  int
@@ -96,7 +96,7 @@ var IssueMap = map[IssueResPair]bool{
 	// Login Method: Password only
 	{17, 4}: false,
 	// Login Method: PIN and Password
-	{17, 5}: false,
+	{17, 5}: true,
 	// Login Method: Picture Logon and Password
 	{17, 6}: true,
 	// Login Method: PIN, Picture Logon, and Password
@@ -104,7 +104,7 @@ var IssueMap = map[IssueResPair]bool{
 	// Login Method: Fingerprint only
 	{17, 8}: false,
 	// Login Method: PIN and Fingerprint
-	{17, 9}: false,
+	{17, 9}: true,
 	// Login Method: Picture Logon and Fingerprint
 	{17, 10}: true,
 	// Login Method: PIN, Picture Logon, and Fingerprint
@@ -112,7 +112,7 @@ var IssueMap = map[IssueResPair]bool{
 	// Login Method: Password and Fingerprint
 	{17, 12}: false,
 	// Login Method: PIN, Password, and Fingerprint
-	{17, 13}: false,
+	{17, 13}: true,
 	// Login Method: Picture Logon, Password, and Fingerprint
 	{17, 14}: true,
 	// Login Method: PIN, Picture Logon, Password, and Fingerprint
@@ -249,13 +249,15 @@ var IssueMap = map[IssueResPair]bool{
 	{25, 0}: false,
 	// Edge SearchEngine: Search engine,
 	{26, 0}: false,
-	// Firefox Cookies: Cookies found
+	// Firefox Cookies: No tracking cookies found
 	{27, 0}: false,
+	// Firefox Cookies: Tracking cookies found
+	{27, 1}: true,
 	// Firefox Extension: List of extensions
 	{28, 0}: false,
-	// Firefox Adblock: Adblocker installed
+	// Firefox Adblock: Ad blocker installed
 	{29, 0}: false,
-	// Firefox Adblock: No adblocker installed
+	// Firefox Adblock: No ad blocker installed
 	{29, 1}: true,
 	// Firefox SearchEngine: Search engine
 	{30, 0}: false,
@@ -267,4 +269,12 @@ var IssueMap = map[IssueResPair]bool{
 	{32, 0}: true,
 	// CIS Registry Settings: Everything is set correctly
 	{32, 1}: false,
+	// Auto Login: Auto login disabled
+	{33, 0}: false,
+	// Auto Login: Auto login enabled
+	{33, 1}: true,
+	// Remote RPC: Remote RPC disabled
+	{34, 0}: false,
+	// Remote RPC: Remote RPC enabled
+	{34, 1}: true,
 }

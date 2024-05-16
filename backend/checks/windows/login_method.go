@@ -15,7 +15,7 @@ import (
 //
 // The function works by opening and reading the values of the Windows login methods registry key. Each login method corresponds to a unique GUID. The function checks whether the GUID is present in the registry key, and if it is, that login method is considered enabled. The function returns a Check instance containing a list of enabled login methods.
 func LoginMethod(registryKey mocking.RegistryKey) checks.Check {
-	var resultID int
+	resultID := 0
 	// Open the registry key related to log-in methods
 	key, err := checks.OpenRegistryKey(registryKey,
 		`SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\UserTile`)

@@ -90,7 +90,7 @@ export class Graph {
     }
 
     const noRiskData = {
-      label: await getLocalizationString('Dashboard.Safe'),
+      label: await getLocalizationString('Dashboard.Acceptable'),
       data: this.rc.allNoRisks.slice(Math.max(this.rc.allNoRisks.length - this.graphShowAmount, 0)),
       backgroundColor: this.rc.noRiskColor,
     };

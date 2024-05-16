@@ -442,6 +442,7 @@ describe('retrieveTheme', () => {
     const personalize = await import('../src/js/personalize.js');
 
     // Act
+    window.scrollTo = jest.fn();
     personalize.retrieveTheme();
 
     // Assert
