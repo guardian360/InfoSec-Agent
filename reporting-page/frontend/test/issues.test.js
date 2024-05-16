@@ -47,6 +47,16 @@ function mockGetLocalizationString(messageID) {
       myResolve('Type');
     case 'Issues.Risk':
       myResolve('Risk');
+    case 'Dashboard.HighRisk':
+      myResolve('HighRisk');
+    case 'Dashboard.MediumRisk':
+      myResolve('MediumRisk');
+    case 'Dashboard.LowRisk':
+      myResolve('LowRisk');
+    case 'Dashboard.InfoRisk':
+      myResolve('InfoRisk');
+    case 'Dashboard.SelectRisks':
+      myResolve('SelectRisks');
     default:
       myReject(new Error('Wrong message ID'));
     }
@@ -93,9 +103,9 @@ describe('Issues table', function() {
     // Act
     await issue.openIssuesPage();
 
-    const name = document.getElementsByClassName('name')[0].innerHTML;
-    const type = document.getElementsByClassName('type')[0].innerHTML;
-    const risk = document.getElementsByClassName('risk')[0].innerHTML;
+    const name = document.getElementsByClassName('lang-name')[0].innerHTML;
+    const type = document.getElementsByClassName('lang-type')[0].innerHTML;
+    const risk = document.getElementsByClassName('lang-risk')[0].innerHTML;
 
     // Assert
     test.value(name).isEqualTo('Name');

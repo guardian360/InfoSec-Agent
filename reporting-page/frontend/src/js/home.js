@@ -7,7 +7,7 @@ import {scanTest} from './database.js';
 
 /** Load the content of the Home page */
 export function openHomePage() {
-  document.onload = retrieveTheme();
+  retrieveTheme();
   closeNavigation(document.body.offsetWidth);
   markSelectedNavigationItem('home-button');
   sessionStorage.setItem('savedPage', 1);
@@ -17,25 +17,25 @@ export function openHomePage() {
     <div class="container-home"> 
       <div class="data-segment">
         <div class="data-segment-header">
-          <p class="piechart-header">Risk level distribution</p>
+          <p class="lang-piechart-header"></p>
         </div>
         <div class="pie-chart-container">
-          <canvas id="pie-chart"></canvas>
+          <canvas class="pie-chart" id="pie-chart-home"></canvas>
         </div>
       </div>
       <div class="data-segment">
         <div class="data-segment-header">
-          <p class="choose-issue-description">Select an issue</p>
+          <p class="lang-choose-issue-description"></p>
         </div>
-        <a class="issue-button suggested-issue"></a>
-        <a class="issue-button quick-fix">Quick Fix</a>
-        <a class="issue-button scan-now">Scan Now</a>
+        <a class="issue-button lang-suggested-issue"></a>
+        <a class="issue-button lang-quick-fix"></a>
+        <a id="scan-now" class="issue-button lang-scan-now"></a>
       </div>
     </div>
     <div class="container-home"> 
       <div class="data-segment">
         <div class="data-segment-header">
-          <p class="title-medals"></p>
+          <p class="lang-title-medals"></p>
         </div>
         <div class="medals">
           <div class="medal-layout">
@@ -65,22 +65,16 @@ export function openHomePage() {
   document.getElementById('medal4').src = medal;
 
   const rc = JSON.parse(sessionStorage.getItem('RiskCounters'));
-  new PieChart('pie-chart', rc, 'Total');
+  new PieChart('pie-chart-home', rc, 'Total');
 
   // Localize the static content of the home page
   const staticHomePageContent = [
-    'piechart-header',
-    'suggested-issue',
-    'quick-fix',
-    'scan-now',
-    'title-medals',
-    'security-status',
-    'high-risk-issues',
-    'medium-risk-issues',
-    'low-risk-issues',
-    'info-risk-issues',
-    'safe-issues',
-    'choose-issue-description',
+    'lang-piechart-header',
+    'lang-suggested-issue',
+    'lang-quick-fix',
+    'lang-scan-now',
+    'lang-title-medals',
+    'lang-choose-issue-description',
   ];
   const localizationIds = [
     'Dashboard.RiskLevelDistribution',
@@ -88,24 +82,17 @@ export function openHomePage() {
     'Dashboard.QuickFix',
     'Dashboard.ScanNow',
     'Dashboard.Medals',
-    'Dashboard.SecurityStatus',
-    'Dashboard.HighRisk',
-    'Dashboard.MediumRisk',
-    'Dashboard.LowRisk',
-    'Dashboard.InfoRisk',
-    'Dashboard.Safe',
     'Dashboard.ChooseIssueDescription',
   ];
   for (let i = 0; i < staticHomePageContent.length; i++) {
     getLocalization(localizationIds[i], staticHomePageContent[i]);
   }
 
-  document.getElementsByClassName('scan-now')[0].addEventListener('click', () => scanTest());
+  document.getElementById('scan-now').addEventListener('click', () => scanTest());
 }
 
 document.getElementById('logo-button').addEventListener('click', () => openHomePage());
 document.getElementById('home-button').addEventListener('click', () => openHomePage());
-
 
 window.onload = function() {
   const savedImage = localStorage.getItem('picture');
