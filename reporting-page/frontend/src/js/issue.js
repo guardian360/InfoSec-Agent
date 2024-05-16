@@ -185,6 +185,7 @@ export function parseShowResult(issueId, currentIssue) {
     generateBulletList(issues, 23);
     break;
   case '271':
+    resultLine += "(Possible) tracking cookies have been found from the following websites:"
     resultLine += cookiesTable(issues.find((issue) => issue.issue_id === 27).result);
     break;
   case '310':
@@ -300,18 +301,15 @@ export function parseShowResult(issueId, currentIssue) {
     for (let i = 0; i < issues.length; i += 2) {
       let host = issues[i+1];
 
-      if (cookiesByHost[host]) {
-        cookiesByHost[host].push(cookieName);
-      } else {
-        cookiesByHost[host] = [cookieName];
+      if (!cookiesByHost[host]) {
+        cookiesByHost[host] = true;
       }
     }
 
     // Generate HTML for table
     let tableHTML = '<table class="issues-table">';
     for (let host in cookiesByHost) {
-      let cookieNames = cookiesByHost[host].join('<br>');
-      tableHTML += `<tr><td style="width: 30%; word-break: break-all">${host}</td><td style="width: 30%; word-break: break-all">${cookieNames}</td></tr>`;
+      tableHTML += `<tr><td style="width: 30%; word-break: break-all">${host}</td></tr>`;
     }
     tableHTML += '</table>';
 
