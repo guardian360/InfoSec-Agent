@@ -908,18 +908,30 @@
         ]
     },
     "270": {
-        "Name": "Cookies stored by Mozilla Firefox",
+        "Name": "No possible tracking cookies found in Mozilla Firefox",
+        "Type": "Privacy",
+        "Information": "Cookies are small text files stored on your computer by websites you visit. They are used to remember your preferences, login information, and other data to enhance your browsing experience. However, cookies can also be used to track your online activities and gather personal information without your consent, raising privacy concerns. Managing and clearing cookies regularly helps protect your privacy and control the data websites collect about you.",
+        "Solution":
+        [
+            "No possible tracking cookies found in Mozilla Firefox, so there is no action needed."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "271": {
+        "Name": "Possible tracking cookies found in Mozilla Firefox",
         "Type": "Privacy",
         "Information": "Cookies are small text files stored on your computer by websites you visit. They are used to remember your preferences, login information, and other data to enhance your browsing experience. However, cookies can also be used to track your online activities and gather personal information without your consent, raising privacy concerns. Managing and clearing cookies regularly helps protect your privacy and control the data websites collect about you.",
         "Solution": 
         [   		
             "Open Mozilla Firefox and click on the menu button (three horizontal lines) in the top right corner.",
-            "Select 'Options' and go to the 'Privacy & Security' tab.",
-            "Under 'Cookies and Site Data', click on 'Manage Data'.",
-            "Here you can view and remove cookies stored by websites. You can also clear all cookies by clicking on 'Remove All'."
+            "Select 'Settings' and go to the 'Privacy & Security' tab.",
+            "The 'Enhanced Tracking Protection' option should be set to 'Standard' or 'Custom'. Custom gives you more control over what you allow or block. Under Cookies and Site Data, you can delete your existing cookies and manage exceptions. It is recommended to clear your cookies often to protect your privacy."
         ],
         "Screenshots":
         [
+            "TOBEFILLED"
         ]
     },
     "280": {

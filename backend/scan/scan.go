@@ -96,6 +96,7 @@ var SecurityChecks = []func() checks.Check{
 	func() checks.Check {
 		return chromium.SearchEngineChromium("Chrome", false, nil, browsers.RealDefaultDirGetter{})
 	},
+	func() checks.Check { return firefox.CookiesFirefox(browsers.RealProfileFinder{}) },
 	func() checks.Check { c, _ := firefox.ExtensionFirefox(browsers.RealProfileFinder{}); return c },
 	func() checks.Check { _, c := firefox.ExtensionFirefox(browsers.RealProfileFinder{}); return c },
 	func() checks.Check { return firefox.HistoryFirefox(browsers.RealProfileFinder{}) },
