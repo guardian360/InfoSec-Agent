@@ -3,6 +3,8 @@
 // Exported function(s): _
 package main
 
+//go:generate rsrc -ico reporting-page\build\windows\icon.ico -o rsrc.syso
+
 import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/localization"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"

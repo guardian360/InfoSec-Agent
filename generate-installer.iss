@@ -28,6 +28,7 @@ DisableProgramGroupPage=yes
 OutputBaseFilename=InfoSec-Agent-{#MyAppVersion}-Setup
 OutputDir=.
 Compression=lzma
+SetupIconFile=.\reporting-page\build\windows\icon.ico
 SolidCompression=yes
 WizardStyle=modern
 
@@ -48,11 +49,12 @@ Source: "{#SourcePath}\reporting-page\build\bin\InfoSec-Agent-Reporting-Page.exe
 Source: "{#SourcePath}\backend\localization\localizations_src\*"; DestDir: "{app}\backend\localization\localizations_src"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "{#SourcePath}\reporting-page\frontend\src\assets\images\*"; DestDir: "{app}\reporting-page\frontend\src\assets\images\"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "{#SourcePath}\reporting-page\database.db"; DestDir: "{app}\reporting-page"; Flags: ignoreversion
+Source: "{#SourcePath}\reporting-page\build\windows\icon.ico"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
-Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
-Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
+Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; WorkingDir: "{app}"; IconFilename: "{app}\icon.ico"
+Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; WorkingDir: "{app}"; IconFilename: "{app}\icon.ico"; Tasks: desktopicon
 
 [Registry]
 Root: HKLM; Subkey: "Software\{#MyAppName}"; Flags: uninsdeletevalue uninsdeletekeyifempty; Check: IsWin64
