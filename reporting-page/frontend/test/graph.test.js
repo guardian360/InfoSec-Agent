@@ -25,7 +25,7 @@ const dom = new JSDOM(`
           <label for="select-low-risk"> Low risks</label>
         </p>
         <p><input type="checkbox" checked="true" value="true" id="select-no-risk">
-          <label for="select-no-risk"> Safe</label>
+          <label for="select-no-risk"> Acceptable</label>
         </p>
       </div>
     </div>
@@ -48,7 +48,7 @@ global.window = dom.window;
  */
 function mockGetLocalizationString(messageID) {
   switch (messageID) {
-  case 'Dashboard.Safe':
+  case 'Dashboard.Acceptable':
     return 'Acceptable';
   case 'Dashboard.LowRisk':
     return 'Low';

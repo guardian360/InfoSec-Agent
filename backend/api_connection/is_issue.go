@@ -1,5 +1,5 @@
-// Package integration provides functions for integrating the application with the Guardian360 Lighthouse platform.
-package integration
+// Package apiconnection provides functions for integrating the application with the Guardian360 Lighthouse platform.
+package apiconnection
 
 type IssueResPair struct {
 	IssueID  int
@@ -271,4 +271,8 @@ var IssueMap = map[IssueResPair]bool{
 	{33, 0}: false,
 	// Auto Login: Auto login enabled
 	{33, 1}: true,
+	// Remote RPC: Remote RPC disabled
+	{34, 0}: false,
+	// Remote RPC: Remote RPC enabled
+	{34, 1}: true,
 }

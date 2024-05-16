@@ -38,7 +38,7 @@ const dom = new JSDOM(`
           <div><p id="info-risk-counter">0</p></div>
         </div>
         <div class="risk-counter no-risk">
-          <div><p class="safe-issues">Safe issues</p></div>
+          <div><p class="acceptable-issues">Acceptable</p></div>
           <div><p id="no-risk-counter">0</p></div>
         </div>
       </div>
@@ -77,7 +77,7 @@ const dom = new JSDOM(`
                 <label for="select-info-risk" class="info-risk-issues"> Informative</label>
               </p>
               <p><input type="checkbox" checked="true" value="true" id="select-no-risk">
-                <label for="select-no-risk" class="safe-issues"> Safe</label>
+                <label for="select-no-risk" class="acceptable-issues"> Acceptable</label>
               </p>
             </div>
             <a class="interval-button">
@@ -224,7 +224,7 @@ describe('Security dashboard', function() {
     // arrange
     const expectedColors = ['rgb(255, 255, 255)', 'rgb(255, 255, 255)', 'rgb(0, 0, 0)', 'rgb(0, 0, 0)'];
     const expectedBackgroundColors = ['rgb(0, 255, 255)', 'rgb(0, 0, 255)', 'rgb(255, 0, 0)', 'rgb(255, 255, 0)'];
-    const expectedText = ['Critical', 'Medium concern', 'Low concern', 'Safe'];
+    const expectedText = ['Critical', 'Medium concern', 'Low concern', 'Acceptable'];
     const mockRiskCounters = {
       highRiskColor: 'rgb(0, 255, 255)',
       mediumRiskColor: 'rgb(0, 0, 255)',

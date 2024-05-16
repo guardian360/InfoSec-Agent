@@ -90,7 +90,7 @@
   margin: 10px;
 }
 
-#pie-chart, #interval-graph  {
+.pie-chart, #interval-graph  {
   max-width: 100%;
   height: auto;
 }
