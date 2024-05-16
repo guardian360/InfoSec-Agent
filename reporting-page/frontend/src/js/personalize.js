@@ -1,12 +1,12 @@
-import {closeNavigation, loadPersonalizeNavigation} from './navigation-menu.js';
+import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
 
 /** Load the content of the Personalize page */
 export function openPersonalizePage() {
   closeNavigation();
+  markSelectedNavigationItem('personalize-button');
   sessionStorage.setItem('savedPage', '7');
 
-  const pageContents = document.getElementById('page-contents');
-  pageContents.innerHTML = `  
+  document.getElementById('page-contents').innerHTML = `  
   <div class="personalize-container">
     <span class="personalize-description favicon-title ">Favicon</span>
     <div class="personalize-button-container">
@@ -96,7 +96,7 @@ export function openPersonalizePage() {
   themes.forEach((themeOption) => {
     themeOption.addEventListener('click', () => {
       localStorage.setItem('theme', themeOption.id);
-      loadPersonalizeNavigation();
+      markSelectedNavigationItem('personalize-button');
     });
   });
 
@@ -177,6 +177,7 @@ export function handleTitleChange(newTitle) {
  * The active theme class name is retrieved from the 'theme' key in localStorage.
  */
 export function retrieveTheme() {
+  window.scrollTo(0, 0);
   document.documentElement.className = localStorage.getItem('theme');
 }
 /**

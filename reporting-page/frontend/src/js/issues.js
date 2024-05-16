@@ -7,28 +7,28 @@ import {LogError as logError} from '../../wailsjs/go/main/Tray.js';
 
 /** Load the content of the Issues page */
 export function openIssuesPage() {
+  retrieveTheme();
   closeNavigation(document.body.offsetWidth);
   markSelectedNavigationItem('issues-button');
   sessionStorage.setItem('savedPage', '4');
 
-  const pageContents = document.getElementById('page-contents');
-  pageContents.innerHTML = `
+  document.getElementById('page-contents').innerHTML = `
   <div class="issues-data">
     <div class="table-container">
-      <h2 class="issue-table">Issue table</h2>
+      <h2 class="lang-issue-table"></h2>
       <table class="issues-table" id="issues-table">
         <thead>
           <tr>
           <th class="issue-column">
-            <span class="table-header name">Name</span>
+            <span class="table-header lang-name"></span>
             <span class="material-symbols-outlined" id="sort-on-issue">swap_vert</span>
           </th>
           <th class="type-column">
-            <span class="table-header type">Type</span>
+            <span class="table-header lang-type"></span>
             <span class="material-symbols-outlined" id="sort-on-type">swap_vert</span>
           </th>
           <th class="risk-column">
-            <span class="table-header risk">Risk level</span>
+            <span class="table-header lang-risk"></span>
             <span class="material-symbols-outlined" id="sort-on-risk">swap_vert</span>
           </th>
           </tr>
@@ -38,33 +38,33 @@ export function openIssuesPage() {
       </table>
     </div>
     <div class="dropdown-container">
-      <button id="dropbtn-table" class="dropbtn-table"><span class="select-risks">Select Risks</span></button>
+      <button id="dropbtn-table" class="dropbtn-table"><span class="lang-select-risks"></span></button>
       <div class="dropdown-selector-table" id="myDropdown-table">
         <p><input type="checkbox" checked="true" value="true" id="select-high-risk-table">
-          <label for="select-high-risk" class="high-risk-issues"> High risks</label><br>
+          <label for="select-high-risk" class="lang-high-risk-issues"></label><br>
         </p>
         <p><input type="checkbox" checked="true" value="true" id="select-medium-risk-table">
-          <label for="select-medium-risk" class="medium-risk-issues"> Medium risks</label>
+          <label for="select-medium-risk" class="lang-medium-risk-issues"></label>
         </p>
         <p><input type="checkbox" checked="true" value="true" id="select-low-risk-table">
-          <label for="select-low-risk" class="low-risk-issues"> Low risks</label>
+          <label for="select-low-risk" class="lang-low-risk-issues"></label>
         </p>
         <p><input type="checkbox" checked="true" value="true" id="select-info-risk-table">
-          <label for="select-info-risk" class="info-risk-issues"> Informative</label>
+          <label for="select-info-risk" class="lang-info-risk-issues"></label>
         </p>
       </div>
     </div>
     <div class="table-container">
-      <h2 class="acceptable-findings">Non issue table</h2>
+      <h2 class="lang-acceptable-findings"></h2>
       <table class="issues-table" id="non-issues-table">
         <thead>
           <tr>
           <th class="issue-column">
-            <span class="table-header name">Name</span>
+            <span class="table-header lang-name"></span>
             <span class="material-symbols-outlined" id="sort-on-issue2">swap_vert</span>
           </th>
           <th class="type-column">
-            <span class="table-header type">Type</span>
+            <span class="table-header lang-type"></span>
             <span class="material-symbols-outlined" id="sort-on-type2">swap_vert</span>
           </th>
           </tr>
@@ -77,11 +77,16 @@ export function openIssuesPage() {
   `;
 
   const tableHeaders = [
-    'issue-table',
-    'acceptable-findings',
-    'name',
-    'type',
-    'risk',
+    'lang-issue-table',
+    'lang-acceptable-findings',
+    'lang-name',
+    'lang-type',
+    'lang-risk',
+    'lang-high-risk-issues',
+    'lang-medium-risk-issues',
+    'lang-low-risk-issues',
+    'lang-info-risk-issues',
+    'lang-select-risks',
   ];
   const localizationIds = [
     'Issues.IssueTable',
@@ -89,6 +94,11 @@ export function openIssuesPage() {
     'Issues.Name',
     'Issues.Type',
     'Issues.Risk',
+    'Dashboard.HighRisk',
+    'Dashboard.MediumRisk',
+    'Dashboard.LowRisk',
+    'Dashboard.InfoRisk',
+    'Dashboard.SelectRisks',
   ];
   for (let i = 0; i < tableHeaders.length; i++) {
     getLocalization(localizationIds[i], tableHeaders[i]);
@@ -109,8 +119,6 @@ export function openIssuesPage() {
   document.getElementById('select-medium-risk-table').addEventListener('change', changeTable);
   document.getElementById('select-low-risk-table').addEventListener('change', changeTable);
   document.getElementById('select-info-risk-table').addEventListener('change', changeTable);
-
-  document.onload = retrieveTheme();
 }
 
 /**
@@ -210,7 +218,7 @@ export function sortTable(tbody, column) {
       }
     } else {
       // Custom sorting for the last column
-      const order = {'high': 1, 'medium': 2, 'low': 3, 'acceptable': 4, 'info': 5};
+      const order = {'high': 1, 'medium': 2, 'low': 3, 'info': 4};
       const textA = a.cells[column].textContent.toLowerCase();
       const textB = b.cells[column].textContent.toLowerCase();
       if (direction === 'ascending') {
@@ -256,9 +264,9 @@ export function changeTable() {
   // Filter issues based on the selected risk levels
   const filteredIssues = issues.filter((issue) => {
     return (
-      (selectedHigh && issue.severity === 3) ||
-      (selectedMedium && issue.severity === 2) ||
       (selectedLow && issue.severity === 1) ||
+      (selectedMedium && issue.severity === 2) ||
+      (selectedHigh && issue.severity === 3) ||
       (selectedInfo && issue.severity === 4)
     );
   });

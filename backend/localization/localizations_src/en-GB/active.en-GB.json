@@ -19,7 +19,9 @@
     "PrivacyDashboard": "Privacy Dashboard",
     "Issues": "Issues",
     "Integration": "Integration",
-    "About": "About"
+    "About": "About",
+    "Personalize": "Personalize Page",
+    "ChangeLanguage": "Change Language"
   },
   "Dashboard": 
   {
@@ -34,7 +36,7 @@
     "MediumConcern": "Medium concern",
     "LowConcern": "Low concern",
     "InfoConcern": "Informative",
-    "NoConcern": "Safe",
+    "NoConcern": "Acceptable",
     "RiskLevelCounters": "Risk level counters",
     "RiskLevelDistribution": "Risk level distribution",
     "TotalRisksOverview": "Total risks overview",
@@ -44,7 +46,7 @@
     "MediumRisk": "Medium risk issues",
     "LowRisk": "Low risk issues",
     "InfoRisk": "Informative",
-    "Safe": "Acceptable findings",
+    "Acceptable": "Acceptable findings",
     "SecurityRiskAreas": "Areas of security risks",
     "PrivacyRiskAreas": "Areas of privacy risks",
     "Applications": "Applications",
@@ -76,7 +78,7 @@
     "about-title": "About Infosec Agent",
     "infosec-info": "The InfoSec Agent project aims to improve the security and privacy of Windows computer users. Currently, there are applications available that do this, but they are mainly targeted at large companies. The goal of this project is to make this accessible to everyone. An application is being developed that collects information about the user's system to discover any security or privacy-related vulnerabilities. The results will be presented to the user in a special dashboard, showing the current status of the system, including recommended actions to improve it.",
     "little-brother-info": "This project is a collaborative effort involving nine students from Utrecht University in The Netherlands, in partnership with the Dutch IT company Guardian360. It serves as the Software Project for the Bachelor's Programme in Computing Sciences at the UU.",
-    "about-contribute": "Contribute",
+    "contribute-title": "Contribute",
     "contribute-info": "InfoSec-Agent is an Open-Source project licensed under the GPL-3.0 Licence. However, due to its origins as a Utrecht University assignment, public contributions to this repository will only be merged after the completion of this assignment, which is scheduled for 24th June 2024. Feel free to report any bugs or issues you encounter. Your feedback is valuable and helps improve the InfoSec-Agent project. You can email us at <a href=\"mailto:infosecagentuu@gmail.com\">infosecagentuu@gmail.com</a>"
   }
 }
