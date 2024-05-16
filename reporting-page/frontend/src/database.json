@@ -1051,6 +1051,34 @@
             "TOBEFILLED"
         ]
     },
+    "340": {
+        "Name": "Remote RPC disabled",
+        "Type": "Security",
+        "Information": "Remote Procedure Call (RPC) is a protocol that allows programs and processes to communicate with each other on a network. Disabling Remote RPC helps prevent unauthorized access to your computer and protects it from potential security threats and vulnerabilities.",
+        "Solution":
+        [
+            "Remote RPC is disabled, so there is no action needed."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "341": {
+        "Name": "Remote RPC enabled",
+        "Type": "Security",
+        "Information": "Remote Procedure Call (RPC) is a protocol that allows programs and processes to communicate with each other on a network. Disabling Remote RPC helps prevent unauthorized access to your computer and protects it from potential security threats and vulnerabilities.",
+        "Solution":
+        [
+            "The Remote RPC setting can not be changed in a conventional way. It requires editing of the registry directly.",
+            "In Windows Search, type in Registry Editor and open the program.",
+            "Navigate to \"Computer\\HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server.",
+            "Double click on the \"AllowRemoteRPC\" key and set its value to 0."
+        ],
+        "Screenshots":
+        [
+            "TOBEFILLED"
+        ]
+    },
     "997": {
         "Name": "Extensions installed in Google Chrome",
         "Type": "Privacy",
