@@ -6,6 +6,7 @@ require (
 	github.com/DATA-DOG/go-sqlmock v1.5.2
 	github.com/andrewarchi/browser v0.0.0-20210602185959-ae587407e71c
 	github.com/getlantern/systray v1.2.2
+	github.com/jarcoal/httpmock v1.3.1
 	github.com/ncruces/zenity v0.10.12
 	github.com/nicksnyder/go-i18n/v2 v2.4.0
 	github.com/pkg/errors v0.9.1

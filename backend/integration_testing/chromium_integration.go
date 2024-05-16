@@ -25,7 +25,7 @@ func TestIntegrationExtensionsChromiumWithAdBlocker(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			result := chromium.ExtensionsChromium(tt.browser)
+			result := chromium.ExtensionsChromium(tt.browser, browsers.RealDefaultDirGetter{}, chromium.RealExtensionIDGetter{}, chromium.ChromeExtensionNameGetter{})
 			require.NotEqual(t, -1, result.ResultID)
 			require.NotEmpty(t, result)
 			require.Equal(t, checks.NewCheckResult(result.IssueID, 0), result)
@@ -49,7 +49,7 @@ func TestIntegrationExtensionsChromiumWithoutAdBlocker(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			result := chromium.ExtensionsChromium(tt.browser)
+			result := chromium.ExtensionsChromium(tt.browser, browsers.RealDefaultDirGetter{}, chromium.RealExtensionIDGetter{}, chromium.ChromeExtensionNameGetter{})
 			require.NotEqual(t, -1, result.ResultID)
 			require.NotEmpty(t, result)
 			require.Equal(t, checks.NewCheckResult(result.IssueID, 1), result)
@@ -73,7 +73,7 @@ func TestIntegrationExtensionsChromiumNotInstalled(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			result := chromium.ExtensionsChromium(tt.browser)
+			result := chromium.ExtensionsChromium(tt.browser, browsers.RealDefaultDirGetter{}, chromium.RealExtensionIDGetter{}, chromium.ChromeExtensionNameGetter{})
 			require.NotEqual(t, -1, result.ResultID)
 			require.NotEmpty(t, result)
 			require.Equal(t, -1, result.ResultID)
@@ -168,7 +168,7 @@ func TestIntegrationSearchEngineChromiumWithSearchEngine(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			result := chromium.SearchEngineChromium(tt.browser, false, nil, browsers.RealPreferencesDirGetter{})
+			result := chromium.SearchEngineChromium(tt.browser, false, nil, browsers.RealDefaultDirGetter{})
 			require.NotEmpty(t, result)
 			require.NotEqual(t, -1, result.ResultID)
 			require.Equal(t, checks.NewCheckResult(result.IssueID, 0), result)
@@ -192,7 +192,7 @@ func TestIntegrationSearchEngineChromiumNotInstalled(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			result := chromium.SearchEngineChromium(tt.browser, false, nil, browsers.RealPreferencesDirGetter{})
+			result := chromium.SearchEngineChromium(tt.browser, false, nil, browsers.RealDefaultDirGetter{})
 			require.NotEmpty(t, result)
 			require.Equal(t, -1, result.ResultID)
 		})

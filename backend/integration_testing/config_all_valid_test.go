@@ -9,7 +9,7 @@ import (
 
 var testsValid = []func(t *testing.T){
 	i.TestIntegrationFirefoxFolderExists,
-	i.TestIntegrationGetPreferencesDirExists,
+	i.TestIntegrationGetDefaultDirExists,
 	i.TestIntegrationCurrentUsernameFound,
 	i.TestIntegrationExtensionsChromiumWithAdBlocker,
 	i.TestIntegrationHistoryChromiumWithoutPhishing,
