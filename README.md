@@ -180,6 +180,10 @@ To generate the installer the following software has to be installed:
 ## Creating installer executable
 How the installer executable is generated is defined in the generate-installer.iss Inno Setup Script file.
 There is a generate-installer.ps1 PowerShell script to easily generate the installer.
+The easiest way to generate the installer is to run this script in a PowerShell instance.
+
+To be able to execute the script, your PowerShell execution policy has to allow running scripts on your device (by default this is disabled in Windows).
+For more information about PowerShell execution policies, read the [Microsoft documentation](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies). The easiest way to enable running scripts is to open an ***elevated*** PowerShell instance and run `Set-ExecutionPolicy RemoteSigned`.
 
 The version of the software is set using a parameter given to the iscc command.
 The PowerShell scripts obtains the version information from the most recent git tag, as the tags indicate version numbers.
