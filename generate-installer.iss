@@ -30,6 +30,7 @@ OutputDir=.
 Compression=lzma
 SetupIconFile=.\reporting-page\build\windows\icon.ico
 SolidCompression=yes
+UninstallDisplayIcon={app}\icon.ico
 WizardStyle=modern
 
 [Languages]
