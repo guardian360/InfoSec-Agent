@@ -4,7 +4,6 @@ import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js'
 import medal from '../assets/images/img_medal1.png';
 import {retrieveTheme} from './personalize.js';
 import {scanTest} from './database.js';
-
 /** Load the content of the Home page */
 export function openHomePage() {
   retrieveTheme();
@@ -93,6 +92,7 @@ export function openHomePage() {
 
 document.getElementById('logo-button').addEventListener('click', () => openHomePage());
 document.getElementById('home-button').addEventListener('click', () => openHomePage());
+
 
 window.onload = function() {
   const savedImage = localStorage.getItem('picture');

@@ -7,7 +7,7 @@ import {
   LogPrint as logPrint} from '../../wailsjs/runtime/runtime.js';
 import * as rc from './risk-counters.js';
 import {updateRiskCounter} from './risk-counters.js';
-import data from '../database.json' assert { type: 'json' };
+import data from '../databases/database.en-GB.json' assert { type: 'json' };
 /** Call ScanNow in backend and store result in sessionStorage */
 export async function scanTest() {
   try {
