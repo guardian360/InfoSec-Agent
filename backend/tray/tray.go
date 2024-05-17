@@ -464,7 +464,7 @@ func Popup(scanResult []checks.Check, path string) error {
 		Title:   "Scan Completed",
 		Message: resultMessage,
 		// Icon:    "",
-		ActivationArguments: "infosecagent:", // TODO: infosecagent should be added to the registry during installation
+		ActivationArguments: "infosecagent:",
 		Actions: []toast.Action{
 			{Type: "protocol", Label: "Open Reporting Page", Arguments: "infosecagent:"},
 		},
