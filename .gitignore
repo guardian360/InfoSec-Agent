@@ -38,3 +38,6 @@ golangci-lint-report.json
 
 # Coverage report
 coverage/
+
+# bash history
+.bash_history
