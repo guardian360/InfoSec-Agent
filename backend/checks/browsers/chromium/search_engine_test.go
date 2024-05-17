@@ -3,6 +3,7 @@ package chromium_test
 import (
 	"errors"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/browsers"
+	"github.com/stretchr/testify/assert"
 	"reflect"
 	"testing"
 
@@ -50,9 +51,45 @@ func TestSearchEngineChromium(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			getter := browsers.RealPreferencesDirGetter{}
+			getter := browsers.RealDefaultDirGetter{}
 			got := chromium.SearchEngineChromium(tt.browser, tt.mockBool, tt.mockFile, getter)
 			require.Equal(t, tt.want, got)
+		})
+	}
+}
+
+func TestGetBrowserPathAndIDSearch(t *testing.T) {
+	tests := []struct {
+		name     string
+		browser  string
+		wantPath string
+		wantID   int
+	}{
+		{
+			name:     "Test with Chrome",
+			browser:  "Chrome",
+			wantPath: "Google/Chrome",
+			wantID:   checks.SearchChromiumID,
+		},
+		{
+			name:     "Test with Edge",
+			browser:  "Edge",
+			wantPath: "Microsoft/Edge",
+			wantID:   checks.SearchEdgeID,
+		},
+		{
+			name:     "Test with unknown browser",
+			browser:  "Unknown",
+			wantPath: "",
+			wantID:   0,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			gotPath, gotID := chromium.GetBrowserPathAndIDSearch(tt.browser)
+			assert.Equal(t, tt.wantPath, gotPath)
+			assert.Equal(t, tt.wantID, gotID)
 		})
 	}
 }
@@ -60,7 +97,7 @@ func TestSearchEngineChromium(t *testing.T) {
 // Create a mock implementation of the interface
 type MockPreferencesDirGetter struct{}
 
-func (m MockPreferencesDirGetter) GetPreferencesDir(_ string) (string, error) {
+func (m MockPreferencesDirGetter) GetDefaultDir(_ string) (string, error) {
 	return "", errors.New("mock error")
 }
 
@@ -86,7 +123,7 @@ func TestSearchEngineChromium_GetPreferencesDirError(t *testing.T) {
 
 func TestSearchEngineChromium_ParsePreferencesFileError(t *testing.T) {
 	// Use the mock implementation in your test
-	getter := browsers.RealPreferencesDirGetter{}
+	getter := browsers.RealDefaultDirGetter{}
 
 	mockFile := &mocking.FileMock{
 		FileName: "\\valid\\directory\\Preferences",

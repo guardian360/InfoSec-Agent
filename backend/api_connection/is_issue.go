@@ -1,5 +1,5 @@
-// Package integration provides functions for integrating the application with the Guardian360 Lighthouse platform.
-package integration
+// Package apiconnection provides functions for integrating the application with the Guardian360 Lighthouse platform.
+package apiconnection
 
 type IssueResPair struct {
 	IssueID  int
@@ -249,8 +249,10 @@ var IssueMap = map[IssueResPair]bool{
 	{25, 0}: false,
 	// Edge SearchEngine: Search engine,
 	{26, 0}: false,
-	// Firefox Cookies: Cookies found
+	// Firefox Cookies: No tracking cookies found
 	{27, 0}: false,
+	// Firefox Cookies: Tracking cookies found
+	{27, 1}: true,
 	// Firefox Extension: List of extensions
 	{28, 0}: false,
 	// Firefox Adblock: Ad blocker installed
@@ -271,4 +273,8 @@ var IssueMap = map[IssueResPair]bool{
 	{33, 0}: false,
 	// Auto Login: Auto login enabled
 	{33, 1}: true,
+	// Remote RPC: Remote RPC disabled
+	{34, 0}: false,
+	// Remote RPC: Remote RPC enabled
+	{34, 1}: true,
 }

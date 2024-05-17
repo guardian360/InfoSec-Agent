@@ -133,49 +133,57 @@ func TestCopyFileFailNonexistentDestination(t *testing.T) {
 	require.Error(t, err)
 }
 
-func TestGetPreferencesDir(t *testing.T) {
-	// Mock UserHomeDirFunc
-	browsers.UserHomeDirFunc = func() (string, error) {
-		return "/mock/home/dir", nil
-	}
-
-	// Test cases
+func TestGetDefaultDir(t *testing.T) {
 	tests := []struct {
-		browser string
-		want    string
+		name           string
+		browserPath    string
+		userHomeDir    string
+		userHomeDirErr error
+		expected       string
+		expectErr      bool
 	}{
-		{"Chrome", "\\mock\\home\\dir\\AppData\\Local\\Google\\Chrome\\User Data\\Default"},
-		{"Edge", "\\mock\\home\\dir\\AppData\\Local\\Microsoft\\Edge\\User Data\\Default"},
+		{
+			name:           "Test with Chrome",
+			browserPath:    browsers.ChromePath,
+			userHomeDir:    "/mock/home/dir",
+			userHomeDirErr: nil,
+			expected:       "\\mock\\home\\dir\\AppData\\Local\\Google\\Chrome\\User Data\\Default",
+			expectErr:      false,
+		},
+		{
+			name:           "Test with Edge",
+			browserPath:    browsers.EdgePath,
+			userHomeDir:    "/mock/home/dir",
+			userHomeDirErr: nil,
+			expected:       "\\mock\\home\\dir\\AppData\\Local\\Microsoft\\Edge\\User Data\\Default",
+			expectErr:      false,
+		},
+		{
+			name:           "Test with error",
+			browserPath:    browsers.ChromePath,
+			userHomeDir:    "",
+			userHomeDirErr: errors.New("mock error"),
+			expected:       "",
+			expectErr:      true,
+		},
 	}
 
-	// Run tests
 	for _, tt := range tests {
-		t.Run(tt.browser, func(t *testing.T) {
-			getter := browsers.RealPreferencesDirGetter{}
-			got, err := getter.GetPreferencesDir(tt.browser)
-			if err != nil {
-				t.Errorf("getPreferencesDir() error = %v", err)
-				return
+		t.Run(tt.name, func(t *testing.T) {
+			// Mock UserHomeDirFunc
+			browsers.UserHomeDirFunc = func() (string, error) {
+				return tt.userHomeDir, tt.userHomeDirErr
 			}
-			if got != tt.want {
-				t.Errorf("getPreferencesDir() = %v, want %v", got, tt.want)
+
+			getter := browsers.RealDefaultDirGetter{}
+			got, err := getter.GetDefaultDir(tt.browserPath)
+
+			if tt.expectErr {
+				require.Error(t, err)
+			} else {
+				require.NoError(t, err)
+				require.Equal(t, tt.expected, got)
 			}
 		})
-	}
-}
-
-func TestGetPreferencesDir_Error(t *testing.T) {
-	// Mock UserHomeDirFunc to return an error
-	browsers.UserHomeDirFunc = func() (string, error) {
-		return "", errors.New("mock error")
-	}
-
-	// Call getPreferencesDir
-	getter := browsers.RealPreferencesDirGetter{}
-	_, err := getter.GetPreferencesDir("chrome")
-
-	// Check the error
-	if err == nil || err.Error() != "mock error" {
-		t.Errorf("Expected error 'mock error', got: %v", err)
 	}
 }

@@ -5,7 +5,7 @@ import {retrieveTheme} from './personalize.js';
 
 let stepCounter = 0;
 const issuesWithResultsShow =
-    ['11', '21', '60', '70', '80', '90', '100', '110', '160', '173', '201', '230', '311', '320'];
+    ['11', '21', '60', '70', '80', '90', '100', '110', '160', '173', '201', '230', '271', '311', '320'];
 
 /** Update contents of solution guide
  *
@@ -184,6 +184,10 @@ export function parseShowResult(issueId, currentIssue) {
   case '230':
     generateBulletList(issues, 23);
     break;
+  case '271':
+    resultLine += '(Possible) tracking cookies have been found from the following websites:';
+    resultLine += cookiesTable(issues.find((issue) => issue.issue_id === 27).result);
+    break;
   case '311':
     generateBulletList(issues, 31);
     break;
@@ -284,6 +288,33 @@ export function parseShowResult(issueId, currentIssue) {
     });
 
     return table;
+  }
+
+  /**
+   * Create a table to display found (possible) tracking cookies
+   * @param {string} issues list of cookies and their host
+   * @return {string} HTML table with cookies and their host
+   */
+  function cookiesTable(issues) {
+    const cookiesByHost = {};
+    for (let i = 0; i < issues.length; i += 2) {
+      const host = issues[i+1];
+
+      if (!cookiesByHost[host]) {
+        cookiesByHost[host] = true;
+      }
+    }
+
+    // Generate HTML for table
+    let tableHTML = '<table class="issues-table">';
+    for (const host in cookiesByHost) {
+      if (cookiesByHost.hasOwnProperty(host)) {
+        tableHTML += `<tr><td style="width: 30%; word-break: break-all">${host}</td></tr>`;
+      }
+    }
+    tableHTML += '</table>';
+
+    return tableHTML;
   }
 
   const result = `
