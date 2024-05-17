@@ -6,6 +6,7 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/localization"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/tray"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/usersettings"
 )
 
 // App serves as the core structure for the Wails runtime.
@@ -13,6 +14,9 @@ import (
 // It encapsulates the application's context and provides methods for its management. This struct is pivotal for the lifecycle of the application, enabling the invocation of runtime methods and facilitating interactions with the frontend.
 type App struct {
 	ctx context.Context
+}
+
+type UserSettings struct {
 }
 
 // NewApp is a factory method that generates an instance of the App struct.
@@ -57,4 +61,8 @@ func (a *App) Localize(messageID string) string {
 // Returns: None. The method performs an action and does not return any value.
 func (a *App) PrintFromFrontend(message string) {
 	logger.Log.Info(message)
+}
+
+func (a *App) LoadUserSettings() usersettings.UserSettings {
+	return usersettings.LoadUserSettings()
 }

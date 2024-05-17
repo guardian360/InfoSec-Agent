@@ -1,5 +1,12 @@
-import data from '../database.json' assert { type: 'json' };
-import {openIssuesPage} from './issues.js';
+import dataDe from '../databases/database.de.json' assert { type: 'json' };
+import dataEnGB from '../databases/database.en-GB.json' assert { type: 'json' };
+import dataEnUS from '../databases/database.en-US.json' assert { type: 'json' };
+import dataEs from '../databases/database.es.json' assert { type: 'json' };
+import dataFr from '../databases/database.fr.json' assert { type: 'json' };
+import dataNl from '../databases/database.nl.json' assert { type: 'json' };
+import dataPt from '../databases/database.pt.json' assert { type: 'json' };
+
+import {openIssuesPage, getUserSettings} from './issues.js';
 import {getLocalization} from './localize.js';
 import {retrieveTheme} from './personalize.js';
 
@@ -52,10 +59,38 @@ export function previousSolutionStep(solutionText, solutionScreenshot, solution,
  *
  * @param {string} issueId Id of the issue to open
  */
-export function openIssuePage(issueId) {
+export async function openIssuePage(issueId) {
   retrieveTheme();
   stepCounter = 0;
-  const currentIssue = data[issueId];
+
+  const language = await getUserSettings();
+  let currentIssue;
+  switch (language) {
+  case 0:
+    currentIssue = dataDe[issueId];
+    break;
+  case 1:
+    currentIssue = dataEnGB[issueId];
+    break;
+  case 2:
+    currentIssue = dataEnUS[issueId];
+    break;
+  case 3:
+    currentIssue = dataEs[issueId];
+    break;
+  case 4:
+    currentIssue = dataFr[issueId];
+    break;
+  case 5:
+    currentIssue = dataNl[issueId];
+    break;
+  case 6:
+    currentIssue = dataPt[issueId];
+    break;
+  default:
+    currentIssue = dataEnGB[issueId];
+  }
+
   // Check if the issue has no screenshots, if so, display that there is no issue (acceptable)
   if (currentIssue.Screenshots.length === 0) {
     const pageContents = document.getElementById('page-contents');
