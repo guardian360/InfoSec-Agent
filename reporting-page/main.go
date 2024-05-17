@@ -20,6 +20,7 @@ import (
 	"github.com/wailsapp/wails/v2/pkg/options"
 	"github.com/wailsapp/wails/v2/pkg/options/assetserver"
 	"github.com/wailsapp/wails/v2/pkg/options/windows"
+	"golang.org/x/sys/windows/registry"
 )
 
 //go:embed all:frontend/dist
@@ -91,8 +92,33 @@ func (h *FileLoader) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 //
 // Returns: None. This function does not return a value as it is the entry point of the application.
 func main() {
+	// Setup log file
 	logger.Setup("reporting-page-log.txt", 0, -1)
 	logger.Log.Info("Reporting page starting")
+
+	// Change directory to the reporting page directory.
+	// When opening the reporting page from the Windows notification we start in C:\Windows\System32, and we cannot run the reporting page from there.
+	k, err := registry.OpenKey(
+		registry.CURRENT_USER, `Software\Microsoft\Windows\CurrentVersion\App Paths\InfoSec-Agent-Reporting-Page.exe`,
+		registry.QUERY_VALUE,
+	)
+	if err != nil {
+		logger.Log.ErrorWithErr("Error opening registry key: ", err)
+	} else {
+		defer k.Close()
+
+		// Get reporting page executable path
+		s, _, err2 := k.GetStringValue("Path")
+		if err2 != nil {
+			logger.Log.ErrorWithErr("Error getting path string: ", err)
+		}
+
+		// Set current directory to reporting-page
+		err2 = os.Chdir(s + "/../..")
+		if err2 != nil {
+			logger.Log.ErrorWithErr("Error changing directory: ", err)
+		}
+	}
 
 	// Create a new instance of the app and tray struct
 	app := NewApp()
@@ -105,7 +131,7 @@ func main() {
 
 	logger.Log.Debug("Starting wails application")
 	// Create a Wails application with the specified options
-	err := wails.Run(&options.App{
+	err = wails.Run(&options.App{
 		Title:       "InfoSec Agent Reporting Page",
 		Width:       1024,
 		Height:      768,

@@ -7,6 +7,7 @@ package tray
 import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/usersettings"
+	"github.com/go-toast/toast"
 	"github.com/pkg/errors"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
@@ -137,9 +138,14 @@ func OnReady() {
 		case <-mChangeScanInterval.ClickedCh:
 			ChangeScanInterval()
 		case <-mScanNow.ClickedCh:
-			_, err := ScanNow()
+			result, err := ScanNow()
 			if err != nil {
 				logger.Log.ErrorWithErr("Error scanning:", err)
+			}
+			// Notify the user that a scan has been completed
+			err = Popup(result, "./reporting-page/database.db")
+			if err != nil {
+				logger.Log.ErrorWithErr("Error notifying user:", err)
 			}
 		case <-mChangeLanguage.ClickedCh:
 			ChangeLanguage()
@@ -152,9 +158,14 @@ func OnReady() {
 		case <-ScanTicker.C:
 			ScanCounter++
 			logger.Log.Println("Scan:", ScanCounter)
-			_, err := ScanNow()
+			result, err := ScanNow()
 			if err != nil {
 				logger.Log.ErrorWithErr("Error scanning:", err)
+			}
+			// Notify the user that a scan has been completed
+			err = Popup(result, "./reporting-page/database.db")
+			if err != nil {
+				logger.Log.ErrorWithErr("Error notifying user:", err)
 			}
 		}
 	}
@@ -190,9 +201,51 @@ func OpenReportingPage(path string) error {
 
 	logger.Log.Debug("opening reporting page")
 
-	// Get the current working directory
 	//TODO: In a release version, there (should be) no need to build the application, just run it
-	//Consideration: Wails can also send (termination) signals to the back-end, might be worth investigating
+	const build = false
+	if build {
+		err := BuildReportingPage(path)
+		if err != nil {
+			return err
+		}
+	}
+
+	// Set up the reporting-page executable
+	runCmd := exec.Command("reporting-page/build/bin/InfoSec-Agent-Reporting-Page")
+	runCmd.Stdout = os.Stdout
+	runCmd.Stderr = os.Stderr
+
+	// Set up a listener for the quit function from the system tray
+	go func() {
+		<-mQuit.ClickedCh
+		if err := runCmd.Process.Kill(); err != nil {
+			logger.Log.ErrorWithErr("error interrupting reporting-page process:", err)
+		}
+		ReportingPageOpen = false
+		systray.Quit()
+	}()
+
+	ReportingPageOpen = true
+	// Run the reporting page executable
+	if err := runCmd.Run(); err != nil {
+		ReportingPageOpen = false
+		return fmt.Errorf("error running reporting-page: %w", err)
+	}
+
+	logger.Log.Debug("reporting page opened")
+	return nil
+}
+
+// BuildReportingPage builds the reporting page executable using a Wails application
+//
+// Parameters:
+//   - path string: The relative path to the reporting-page directory. This is used to change the current working directory to the reporting-page directory.
+//
+// Returns:
+//   - error: An error object if an error occurred during the process, otherwise nil.
+func BuildReportingPage(path string) error {
+	// Get the current working directory
+	// Consideration: Wails can also send (termination) signals to the back-end, might be worth investigating
 	originalDir, err := os.Getwd()
 	if err != nil {
 		return fmt.Errorf("error getting current directory: %w", err)
@@ -213,51 +266,11 @@ func OpenReportingPage(path string) error {
 		ReportingPageOpen = false
 	}()
 
-	const build = false
-	if build {
-		err = BuildReportingPage()
-		if err != nil {
-			return err
-		}
-	}
-
-	// Set up the reporting-page executable
-	runCmd := exec.Command("build/bin/InfoSec-Agent-Reporting-Page")
-	runCmd.Stdout = os.Stdout
-	runCmd.Stderr = os.Stderr
-
-	// Set up a listener for the quit function from the system tray
-	go func() {
-		<-mQuit.ClickedCh
-		if err = runCmd.Process.Kill(); err != nil {
-			logger.Log.ErrorWithErr("error interrupting reporting-page process:", err)
-		}
-		ReportingPageOpen = false
-		systray.Quit()
-	}()
-
-	ReportingPageOpen = true
-	// Run the reporting page executable
-	if err = runCmd.Run(); err != nil {
-		ReportingPageOpen = false
-		return fmt.Errorf("error running reporting-page: %w", err)
-	}
-
-	logger.Log.Debug("reporting page opened")
-	return nil
-}
-
-// BuildReportingPage builds the reporting page executable using a Wails application
-//
-// Parameters: _
-//
-// Returns: _
-func BuildReportingPage() error {
+	// Build reporting page
 	buildCmd := exec.Command("wails", "build")
-
 	buildCmd.Stdout = os.Stdout
 	buildCmd.Stderr = os.Stderr
-	if err := buildCmd.Run(); err != nil {
+	if err = buildCmd.Run(); err != nil {
 		return fmt.Errorf("error building reporting-page: %w", err)
 	}
 	logger.Log.Debug("reporting page built successfully")
@@ -433,4 +446,64 @@ func RefreshMenu() {
 		item.sysMenuItem.SetTitle(localization.Localize(Language, item.MenuTitle))
 		item.sysMenuItem.SetTooltip(localization.Localize(Language, item.menuTooltip))
 	}
+}
+
+// Popup displays a notification to the user when a scan is completed.
+//
+// This function creates a notification with a title, message, and icon to inform the user that a scan has been completed.
+// The notification also includes an action button that lets the user open the reporting page.
+//
+// Parameters: scanResult []checks.Check: A slice of checks representing the scan results.
+//
+// Returns: error: An error object if an error occurred during the scan, otherwise nil.
+func Popup(scanResult []checks.Check, path string) error {
+	// Generate notification message based on the severity of the issues found during the scan
+	resultMessage := PopupMessage(scanResult, path)
+
+	// Create a notification to inform the user that the scan is complete
+	notification := toast.Notification{
+		AppID:   "InfoSec Agent",
+		Title:   "Scan Completed",
+		Message: resultMessage,
+		// Icon:    "",
+		ActivationArguments: "infosecagent:",
+		Actions: []toast.Action{
+			{Type: "protocol", Label: "Open Reporting Page", Arguments: "infosecagent:"},
+		},
+	}
+	if err := notification.Push(); err != nil {
+		return fmt.Errorf("error pushing scan notification: %w", err)
+	}
+	return nil
+}
+
+// generatePopupMessage generates a notification message based on the severity of the issues found during the scan.
+//
+// This function takes a slice of checks representing the scan results and generates a notification message based on the number of issues found at each severity level.
+// The message informs the user about the number of issues found during the scan and prompts them to open the reporting page for more information.
+//
+// Parameters: scanResult []checks.Check: A slice of checks representing the scan results.
+//
+// Returns: string: A notification message based on the severity of the issues found during the scan.
+func PopupMessage(scanResult []checks.Check, path string) string {
+	dbData, err := scan.GetDataBaseData(scanResult, path)
+	if err != nil {
+		logger.Log.ErrorWithErr("Error getting database data:", err)
+	}
+	severityCounters := make(map[int]int)
+	for _, issue := range dbData {
+		severityCounters[issue.Severity]++
+	}
+	if severityCounters[3] > 0 {
+		if severityCounters[3] == 1 {
+			return "The privacy and security scan has been completed. You have 1 high risk issue. Open the reporting page to see more information."
+		}
+		return fmt.Sprintf("The privacy and security scan has been completed. You have %d high risk issues. Open the reporting page to see more information.", severityCounters[3])
+	} else if severityCounters[2] > 0 {
+		if severityCounters[2] == 1 {
+			return "The privacy and security scan has been completed. You have 1 medium risk issue. Open the reporting page to see more information."
+		}
+		return fmt.Sprintf("The privacy and security scan has been completed. You have %d medium risk issues. Open the reporting page to see more information.", severityCounters[2])
+	}
+	return "The privacy and security scan has been completed. Open the reporting page to view the results."
 }
