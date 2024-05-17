@@ -40,4 +40,4 @@ golangci-lint-report.json
 coverage/
 
 # bash history
-./bash_history
+.bash_history
