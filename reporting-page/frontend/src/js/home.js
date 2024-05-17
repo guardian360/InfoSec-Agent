@@ -103,6 +103,7 @@ if (typeof document !== 'undefined') {
   }
 }
 
+
 window.onload = function() {
   const savedImage = localStorage.getItem('picture');
   const savedText = localStorage.getItem('title');

@@ -42,3 +42,24 @@ export namespace scan {
 
 }
 
+export namespace usersettings {
+	
+	export class UserSettings {
+	    Language: number;
+	    ScanInterval: number;
+	    Integration: boolean;
+	
+	    static createFrom(source: any = {}) {
+	        return new UserSettings(source);
+	    }
+	
+	    constructor(source: any = {}) {
+	        if ('string' === typeof source) source = JSON.parse(source);
+	        this.Language = source["Language"];
+	        this.ScanInterval = source["ScanInterval"];
+	        this.Integration = source["Integration"];
+	    }
+	}
+
+}
+
