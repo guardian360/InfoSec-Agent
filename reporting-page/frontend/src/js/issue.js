@@ -5,7 +5,7 @@ import {retrieveTheme} from './personalize.js';
 
 let stepCounter = 0;
 const issuesWithResultsShow =
-    ['11', '21', '60', '70', '80', '90', '100', '110', '160', '173', '201', '230', '310', '320'];
+    ['11', '21', '60', '70', '80', '90', '100', '110', '160', '173', '201', '230', '311', '320'];
 
 /** Update contents of solution guide
  *
@@ -184,7 +184,7 @@ export function parseShowResult(issueId, currentIssue) {
   case '230':
     generateBulletList(issues, 23);
     break;
-  case '310':
+  case '311':
     generateBulletList(issues, 31);
     break;
   case '320':
@@ -256,7 +256,7 @@ export function parseShowResult(issueId, currentIssue) {
         currentValues.push(issue);
       }
     });
-
+    
     if (currentKey) {
       table.push({registryKey: currentKey, values: currentValues});
     }
@@ -271,7 +271,6 @@ export function parseShowResult(issueId, currentIssue) {
    */
   function processPortsTable(issues) {
     const table = [];
-
     issues.forEach((issue) => {
       const parts = issue.split(/[ ,]+/); // Split on space and comma
       const processIndex = parts.indexOf('process:');

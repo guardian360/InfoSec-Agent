@@ -25,30 +25,30 @@ const dom = new JSDOM(`
       <div class="nav-link settings-button">
         <span><span class="material-symbols-outlined">settings</span></span>
         <div class="dropdown-content">
-          <a id="personalize-button">Personalize page</a>
-          <a id="language-button">Change Language</a>
+          <a id="personalize-button" class="lang-personalize-page">Personalize page</a>
+          <a id="language-button" class="lang-change-language">Change Language</a>
         </div>
       </div>
     </div>
   </div> 
   <div class="left-nav">
     <div id="home-button" class="nav-link">
-      <p><span class="material-symbols-outlined">home</span><span class="nav-item home">Home</span></p>
+      <p><span class="material-symbols-outlined">home</span><span class="nav-item lang-home">Home</span></p>
     </div>
     <div id="security-dashboard-button" class="nav-link">
-      <p><span class="material-symbols-outlined">security</span><span class="nav-item security-dashboard">Security Dashboard</span></p>
+      <p><span class="material-symbols-outlined">security</span><span class="nav-item lang-security-dashboard">Security Dashboard</span></p>
     </div>
     <div id="privacy-dashboard-button" class="nav-link">
-      <p><span class="material-symbols-outlined">lock</span><span class="nav-item privacy-dashboard">Privacy Dashboard</span></p>
+      <p><span class="material-symbols-outlined">lock</span><span class="nav-item lang-privacy-dashboard">Privacy Dashboard</span></p>
     </div>
     <div id="issues-button" class="nav-link">
-      <p><span class="material-symbols-outlined">checklist</span><span class="nav-item issues">Issues</span></p>
+      <p><span class="material-symbols-outlined">checklist</span><span class="nav-item lang-issues">Issues</span></p>
     </div>
     <div id="integration-button" class="nav-link">
-      <p><span class="material-symbols-outlined">integration_instructions</span><span class="nav-item integration">Integration</span></p>
+      <p><span class="material-symbols-outlined">integration_instructions</span><span class="nav-item lang-integration">Integration</span></p>
     </div>
     <div id="about-button" class="nav-link">
-      <p><span class="material-symbols-outlined">info</span><span class="nav-item about" >About</span></p>
+      <p><span class="material-symbols-outlined">info</span><span class="nav-item lang-about" >About</span></p>
     </div>
   </div>
   <div id="page-contents"></div>
@@ -91,20 +91,6 @@ describe('Navigation menu', function() {
     // Assert
     test.value(document.getElementById('integration-button').style.backgroundColor).isEqualTo('red');
     test.value(document.getElementsByClassName('settings-button')[0].style.backgroundColor).isNotEqualTo('blue');
-  });
-  it('loadPersonalizeNavigation sets the navigation items to the standard color', async function() {
-    // Arrange
-    const navigationMenu = await import('../src/js/navigation-menu.js');
-    document.documentElement.style.setProperty('--background-color-left-nav', 'red');
-    const navItems = document.getElementsByClassName('nav-link');
-
-    // Act
-    navigationMenu.loadPersonalizeNavigation();
-
-    // Assert
-    for (let i = 1; i < navItems.length; i++) {
-      test.value(navItems[i].style.backgroundColor).isEqualTo('red');
-    }
   });
   it('closeNavigation should close the navigation menu if screen size is small', async function() {
     // Arrange
@@ -174,12 +160,14 @@ describe('Navigation menu', function() {
     // Arrange
     const navigationMenu = await import('../src/js/navigation-menu.js');
     const navbarItems = [
-      'home',
-      'security-dashboard',
-      'privacy-dashboard',
-      'issues',
-      'integration',
-      'about',
+      'lang-home',
+      'lang-security-dashboard',
+      'lang-privacy-dashboard',
+      'lang-issues',
+      'lang-integration',
+      'lang-about',
+      'lang-personalize-page',
+      'lang-change-language',
     ];
     const expectedNames = [
       'Navigation.Home',

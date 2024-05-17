@@ -34,17 +34,17 @@ describe('About page', function() {
         // Arrange
         const about = await import('../src/js/about.js');
         const classNames = [
-            'about-title',
-            'infosec-info',
-            'little-brother-info',
-            'about-contribute',
-            'contribute-info',
+            'lang-about-title',
+            'lang-infosec-info',
+            'lang-little-brother-info',
+            'lang-contribute-title',
+            'lang-contribute-info',
           ];
           const expectedTexts = [
             'About.about-title',
             'About.infosec-info',
             'About.little-brother-info',
-            'About.about-contribute',
+            'About.contribute-title',
             'About.contribute-info',
           ];
 

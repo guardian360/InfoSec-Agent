@@ -52,7 +52,6 @@ jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
 // Mock chart constructor
 mockChart();
 
-
 // test cases
 describe('Risk level distribution piechart', function() {
   it('getData should fill the piechart with the correct data', async function() {

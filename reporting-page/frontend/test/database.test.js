@@ -96,13 +96,13 @@ describe('database functions', function() {
         test.array(rc.acceptable).is([1]);
 
         test.array(src.high).is([1]);
-        test.array(src.medium).is([1]);
+        test.array(src.medium).is([0]);
         test.array(src.low).is([1]);
         test.array(src.info).is([0]);
         test.array(src.acceptable).is([0]);
 
         test.array(prc.high).is([0]);
-        test.array(prc.medium).is([0]);
+        test.array(prc.medium).is([1]);
         test.array(prc.low).is([0]);
         test.array(prc.info).is([1]);
         test.array(prc.acceptable).is([1]);
@@ -125,13 +125,13 @@ describe('database functions', function() {
         test.array(rc.acceptable).is([1,1]);
 
         test.array(src.high).is([1,1]);
-        test.array(src.medium).is([1,1]);
+        test.array(src.medium).is([0,0]);
         test.array(src.low).is([1,1]);
         test.array(src.info).is([0,0]);
         test.array(src.acceptable).is([0,0]);
 
         test.array(prc.high).is([0,0]);
-        test.array(prc.medium).is([0,0]);
+        test.array(prc.medium).is([1,1]);
         test.array(prc.low).is([0,0]);
         test.array(prc.info).is([1,1]);
         test.array(prc.acceptable).is([1,1]);

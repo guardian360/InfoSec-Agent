@@ -61,7 +61,7 @@ describe('Security dashboard', function() {
     dashboard.addGraphFunctions(Graph);
 
     // Assert
-    test.value(document.getElementsByClassName('security-stat')[0].innerHTML).isEqualTo('Dashboard.SecurityStatus');
+    test.value(document.getElementsByClassName('lang-security-stat')[0].innerHTML).isEqualTo('Dashboard.SecurityStatus');
 
     // Act
     document.getElementById('dropbtn').dispatchEvent(clickEvent);
@@ -210,7 +210,7 @@ describe('Security dashboard', function() {
     // Arrange
     const database = await import('../src/js/database.js');
     const scanTestMock = jest.spyOn(database, 'scanTest');
-    const scanButton = document.getElementsByClassName('scan-now')[0];
+    const scanButton = document.getElementById('scan-now');
 
     // Act
     scanButton.dispatchEvent(clickEvent);

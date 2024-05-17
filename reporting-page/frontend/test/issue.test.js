@@ -168,79 +168,41 @@ describe('Issue page', function() {
     test.value(solutionScreenshot.src).isEqualTo(currentIssue.Screenshots[2]);
   });
   
+  // Mock scan results for the parseShowResult function 
+  const issueResult_ids = [
+    [1,1],
+    [2,1],
+    [6,0],
+    [7,0],
+    [8,0],
+    [9,0],
+    [10,0],
+    [11,0],
+    [16,0],
+    [17,3],
+    [20,1],
+    [23,0],
+    [31,1],
+    [32,0]];
+  // Mock scan results
+  const mockResult = []
+  issueResult_ids.forEach((ir) => {
+    mockResult.push({
+      issue_id: ir[0],
+      result_id: ir[1],
+      result: [
+        'process: p, port: 1, 2, 3',
+        'SYSTEM',
+        'CIS registry 1',
+        'SOFTWARE',
+        'CIS registry 2',      
+      ]
+    })
+  });
+
   it('Should fill page with parseShowResult with a set of resultIDs', async function() {
     // Arrange
     const issue = await import('../src/js/issue.js');
-    // Expected findings for results
-    const expectedFindings = [
-      `The following devices are or have been connected via bluetooth: <br>findings <br> `,
-      `The following applications currently have been given permission: findings.`,
-      `The following applications currently have been given permission: findings.`,
-      `The following applications currently have been given permission: findings.`,
-      `The following applications currently have been given permission: findings.`,
-      `The following applications currently have been given permission: findings.`,
-      `The following ports are open: <br>findings <br> `,
-      `You changed your password on: findings`,
-    ]
-    // Mock scan results
-    const mockResult = [
-      {
-        issue_id: 1,
-        result_id: 1,
-        result: [
-          "findings",        
-        ]
-      },
-      {
-        issue_id: 6,
-        result_id: 0,
-        result: [
-          "findings",        
-        ]
-      },
-      {
-        issue_id: 7,
-        result_id: 0,
-        result: [
-          "findings",        
-        ]
-      },
-      {
-        issue_id: 8,
-        result_id: 0,
-        result: [
-          "findings",        
-        ]
-      },
-      {
-        issue_id: 9,
-        result_id: 0,
-        result: [
-          "findings",        
-        ]
-      },
-      {
-        issue_id: 10,
-        result_id: 0,
-        result: [
-          "findings",        
-        ]
-      },
-      {
-        issue_id: 11,
-        result_id: 0,
-        result: [
-          "findings",        
-        ]
-      },
-      {
-        issue_id: 16,
-        result_id: 0,
-        result: [
-          "findings",
-        ]
-      },
-    ]
 
     sessionStorage.setItem('ScanResult', JSON.stringify(mockResult));
 
@@ -253,15 +215,63 @@ describe('Issue page', function() {
       const name = document.getElementsByClassName('issue-name')[0].innerHTML;
       const description = document.getElementById('information').nextElementSibling.innerHTML;
       const solution = document.getElementById('solution-text').innerHTML;
-      const findings = document.getElementById('description').innerHTML;
   
       // Assert
       test.value(name).isEqualTo(currentIssue.Name);
       test.value(description).isEqualTo(currentIssue.Information);
       test.value(htmlDecode(solution)).isEqualTo('1. ' + currentIssue.Solution[0]);
-      test.value(findings).isEqualTo(expectedFindings[index]);  
     })
   });
+  it('parseShowResult fills the page with the correct structure for specific results', async function() {
+    // Arrange
+    const issue = await import('../src/js/issue.js');
+    // expectedFindings should be changed if the structure for specific results is changed in the code
+    const expectedFindings = [
+      '<li>process: p, port: 1, 2, 3</li><li>SYSTEM</li><li>CIS registry 1</li><li>SOFTWARE</li><li>CIS registry 2</li>',
+      '<thead><tr><th>Process</th><th>Port(s)</th></tr></thead><tbody><tr><td style="width: 30%">p</td>\n' +
+      '        <td style="width: 30%">1<br>2<br>3</td></tr></tbody>',
+      'You changed your password on: process: p, port: 1, 2, 3You changed your password on: SYSTEM' +
+      'You changed your password on: CIS registry 1You changed your password on: SOFTWAREYou changed your password on: CIS registry 2',
+      '<tbody><tr><td style="width: 30%; word-break: break-all">SYSTEM</td>\n' +
+      '        <td>CIS registry 1</td></tr><tr><td style="width: 30%; word-break: break-all">SOFTWARE</td>\n' +
+      '        <td>CIS registry 2</td></tr></tbody>',
+    ]
+
+    sessionStorage.setItem('ScanResult', JSON.stringify(mockResult));
+
+    mockResult.forEach((result, index) => {
+      let jsonkey = result.issue_id.toString() + result.result_id.toString();
+      currentIssue = data[jsonkey];
+
+      // Act
+      issue.openIssuePage(jsonkey);
+
+      if (index < 7 || (index > 8 && index < 13)) {
+        // called to generateBulletList and permissionShowResults
+        const findings = document.getElementById('description').nextElementSibling.innerHTML;
+  
+        // Assert
+        test.value(findings).isEqualTo(expectedFindings[0]);
+      } else if (index == 7) {
+        // called to processPortsTable
+        const findings = document.getElementById('description').nextElementSibling.innerHTML;
+  
+        // Assert
+        test.value(findings).isEqualTo(expectedFindings[1]);
+      } else if (index == 8) {
+        const findings = document.getElementById('description').innerHTML;
+  
+        // Assert
+        test.value(findings).isEqualTo(expectedFindings[2]);
+      } else {
+        // called to cisregristryTable
+        const findings = document.getElementsByClassName('issues-table')[0].innerHTML;
+
+        // Assert
+        test.value(findings).isEqualTo(expectedFindings[3]);
+      }
+    })
+  })
   it('parseShowResult keeps findings empty if the issueID is not in the issuesWithResultsShow list', async function() {
     // Arrange
     const issue = await import('../src/js/issue.js');

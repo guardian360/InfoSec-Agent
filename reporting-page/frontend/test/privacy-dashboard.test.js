@@ -49,7 +49,7 @@ describe('Privacy dashboard page', function() {
     await dashboard.openPrivacyDashboardPage();
 
     // Assert
-    test.value(document.getElementsByClassName('privacy-stat')[0].innerHTML).isEqualTo('Dashboard.PrivacyStatus');
+    test.value(document.getElementsByClassName('lang-privacy-stat')[0].innerHTML).isEqualTo('Dashboard.PrivacyStatus');
 
   })
   it('adjustWithRiskCounters should show the correct style', async function() {
@@ -101,7 +101,7 @@ describe('Privacy dashboard page', function() {
     // Arrange
     const database = await import('../src/js/database.js');
     const scanTestMock = jest.spyOn(database, 'scanTest');
-    const scanButton = document.getElementsByClassName('scan-now')[0];
+    const scanButton = document.getElementById('scan-now');
 
     // Act
     scanButton.dispatchEvent(clickEvent);

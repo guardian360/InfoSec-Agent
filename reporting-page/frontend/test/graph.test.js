@@ -82,37 +82,42 @@ describe('Risk graph', function() {
     await g.createGraphChart();
 
     // act
-    g.toggleRisks('high');
-    g.toggleRisks('medium');
-    g.toggleRisks('low');
-    g.toggleRisks('no');
+    await g.toggleRisks('high');
+    await g.toggleRisks('medium');
+    await g.toggleRisks('low');
+    await g.toggleRisks('no');
+    await g.toggleRisks('info');
 
     // assert
     test.value(g.graphShowHighRisks).isEqualTo(false);
     test.value(g.graphShowMediumRisks).isEqualTo(false);
     test.value(g.graphShowLowRisks).isEqualTo(false);
     test.value(g.graphShowNoRisks).isEqualTo(false);
+    test.value(g.graphShowInfoRisks).isEqualTo(false);
 
     // act
-    g.toggleRisks('high');
-    g.toggleRisks('medium');
-    g.toggleRisks('low');
-    g.toggleRisks('no');
+    await g.toggleRisks('high');
+    await g.toggleRisks('medium');
+    await g.toggleRisks('low');
+    await g.toggleRisks('no');
+    await g.toggleRisks('info');
 
     // assert
     test.value(g.graphShowHighRisks).isEqualTo(true);
     test.value(g.graphShowMediumRisks).isEqualTo(true);
     test.value(g.graphShowLowRisks).isEqualTo(true);
     test.value(g.graphShowNoRisks).isEqualTo(true);
+    test.value(g.graphShowInfoRisks).isEqualTo(true);
 
     // act
-    g.toggleRisks();
+    await g.toggleRisks();
 
     // assert
     test.value(g.graphShowHighRisks).isEqualTo(true);
     test.value(g.graphShowMediumRisks).isEqualTo(true);
     test.value(g.graphShowLowRisks).isEqualTo(true);
     test.value(g.graphShowNoRisks).isEqualTo(true);
+    test.value(g.graphShowInfoRisks).isEqualTo(true);
   });
   it('graphDropdown should show and hide a togglable dropdown button', async function() {
     // arrange

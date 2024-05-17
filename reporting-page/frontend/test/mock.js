@@ -1,6 +1,6 @@
 import {jest} from '@jest/globals';
 
-/** Mocks common function used inside openPage functions */
+/** Mocks common functions used inside openPage functions */
 export function mockPageFunctions() {
   // Mock LogError
   jest.unstable_mockModule('../wailsjs/go/main/Tray.js', () => ({
