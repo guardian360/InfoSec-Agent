@@ -170,8 +170,10 @@ describe('Issues table', function() {
 
     // Act
     const issueTable = document.getElementById('issues-table').querySelector('tbody');
+    emptyTable(issueTable);
     issue.fillTable(issueTable, issues, true);
     const nonIssueTable = document.getElementById('non-issues-table').querySelector('tbody');
+    emptyTable(nonIssueTable);
     issue.fillTable(nonIssueTable, issues, false);
 
     // Assert
