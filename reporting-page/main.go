@@ -93,12 +93,12 @@ func (h *FileLoader) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 // Returns: None. This function does not return a value as it is the entry point of the application.
 func main() {
 	// Setup log file
-	// os.Chdir(os.Getenv("USERPROFILE")) // When opening the page from the Windows notification we start in C:\Windows\System32, and we cannot open a log file there
 	logger.Setup("reporting-page-log.txt", 0, -1)
 	logger.Log.Info("Reporting page starting")
 
-	// Get executable path
-	k, err := registry.OpenKey( // TODO: executable path should be added to the registry during installation
+	// Change directory to the reporting page directory.
+	// When opening the reporting page from the Windows notification we start in C:\Windows\System32, and we cannot run the reporting page from there.
+	k, err := registry.OpenKey(
 		registry.CURRENT_USER, `Software\Microsoft\Windows\CurrentVersion\App Paths\InfoSec-Agent-Reporting-Page.exe`,
 		registry.QUERY_VALUE,
 	)
@@ -106,28 +106,19 @@ func main() {
 		logger.Log.ErrorWithErr("Error opening registry key: ", err)
 	} else {
 		defer k.Close()
+
+		// Get reporting page executable path
 		s, _, err := k.GetStringValue("Path")
 		if err != nil {
 			logger.Log.ErrorWithErr("Error getting path string: ", err)
 		}
 
-		// Set curent directory to reporting-page
+		// Set current directory to reporting-page
 		err = os.Chdir(s + "/../..")
 		if err != nil {
 			logger.Log.ErrorWithErr("Error changing directory: ", err)
 		}
 	}
-	// defer k.Close()
-	// s, _, err := k.GetStringValue("Path")
-	// if err != nil {
-	// 	logger.Log.ErrorWithErr("Error getting path string: ", err)
-	// }
-
-	// // Set curent directory to reporting-page
-	// err = os.Chdir(s + "/../..")
-	// if err != nil {
-	// 	logger.Log.ErrorWithErr("Error changing directory: ", err)
-	// }
 
 	// Create a new instance of the app and tray struct
 	app := NewApp()
