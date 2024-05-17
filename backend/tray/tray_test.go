@@ -255,6 +255,32 @@ func TestOpenReportingPageWhenAlreadyOpen(t *testing.T) {
 	require.Equal(t, "reporting-page is already running", err.Error())
 }
 
+// TestPopup verifies the behavior of the Popup function.
+//
+// This test function sets up a scan result and calls the Popup function to display a popup notification with the scan result.
+// It then asserts that the Popup function does not return any errors during its execution.
+//
+// Parameters:
+//   - t *testing.T: The testing framework used for assertions.
+//
+// No return values.
+func TestPopup(t *testing.T) {
+	// Define check result
+	scanResult := []checks.Check{
+		{
+			IssueID:  13,
+			ResultID: 1,
+			Result:   []string{"Issue 1"},
+			Error:    nil,
+			ErrorMSG: "",
+		},
+	}
+
+	// Run the function
+	er := tray.Popup(scanResult, "../../reporting-page/database.db")
+	require.NoError(t, er)
+}
+
 // TestPopupMessage varifies the behavior of the PopupMessage function by entering scan results and verifying that it returns a correct message.
 //
 // This test function sets up a scan result and calls the PopupMessage function to generate a message based on the scan result.
