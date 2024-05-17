@@ -108,14 +108,14 @@ func main() {
 		defer k.Close()
 
 		// Get reporting page executable path
-		s, _, err := k.GetStringValue("Path")
-		if err != nil {
+		s, _, err2 := k.GetStringValue("Path")
+		if err2 != nil {
 			logger.Log.ErrorWithErr("Error getting path string: ", err)
 		}
 
 		// Set current directory to reporting-page
-		err = os.Chdir(s + "/../..")
-		if err != nil {
+		err2 = os.Chdir(s + "/../..")
+		if err2 != nil {
 			logger.Log.ErrorWithErr("Error changing directory: ", err)
 		}
 	}
