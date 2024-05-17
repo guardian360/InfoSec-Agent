@@ -43,6 +43,7 @@ jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
 // Mock openIssuesPage
 jest.unstable_mockModule('../src/js/issues.js', () => ({
   openIssuesPage: jest.fn(),
+  getUserSettings: jest.fn().mockImplementation(() => 1),
 }));
 
 // Mock sessionStorage
@@ -212,12 +213,12 @@ describe('Issue page', function() {
 
     sessionStorage.setItem('ScanResult', JSON.stringify(mockResult));
 
-    mockResult.forEach((result, index) => {
+    mockResult.forEach(async (result, index) => {
       const jsonkey = result.issue_id.toString() + result.result_id.toString();
       currentIssue = data[jsonkey];
 
       // Act
-      issue.openIssuePage(jsonkey);
+      await issue.openIssuePage(jsonkey);
       const name = document.getElementsByClassName('issue-name')[0].innerHTML;
       const description = document.getElementById('information').nextElementSibling.innerHTML;
       const solution = document.getElementById('solution-text').innerHTML;
@@ -256,10 +257,12 @@ describe('Issue page', function() {
 
       // Act
       issue.openIssuePage(jsonkey);
-
+      console.log(jsonkey)
+      console.log(document.getElementById('description').nextElementSibling.innerHTML)
       if (index < 7 || (index > 8 && index < 12) || index == 13) {
         // called to generateBulletList and permissionShowResults
         const findings = document.getElementById('description').nextElementSibling.innerHTML;
+        console.log(findings);
 
         // Assert
         test.value(findings).isEqualTo(expectedFindings[0]);
@@ -279,12 +282,10 @@ describe('Issue page', function() {
         const findings = document.getElementById('description').nextElementSibling.innerHTML;
 
         // Assert
-        // console.log(findings);
         test.value(findings).isEqualTo(expectedFindings[3]);
       } else {
         // called to cisregristryTable
         const findings = document.getElementsByClassName('issues-table')[0].innerHTML;
-
         // Assert
         test.value(findings).isEqualTo(expectedFindings[4]);
       }
