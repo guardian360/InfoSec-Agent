@@ -3,6 +3,12 @@ import test from 'unit.js';
 import {JSDOM} from 'jsdom';
 import {jest} from '@jest/globals';
 import data from '../src/databases/database.en-GB.json' assert { type: 'json' };
+import dataDe from '../src/databases/database.de.json' assert { type: 'json' };
+import dataEnUS from '../src/databases/database.en-US.json' assert { type: 'json' };
+import dataEs from '../src/databases/database.es.json' assert { type: 'json' };
+import dataFr from '../src/databases/database.fr.json' assert { type: 'json' };
+import dataNl from '../src/databases/database.nl.json' assert { type: 'json' };
+import dataPt from '../src/databases/database.pt.json' assert { type: 'json' };
 import {mockPageFunctions, clickEvent, storageMock} from './mock.js';
 
 global.TESTING = true;
@@ -170,8 +176,10 @@ describe('Issues table', function() {
 
     // Act
     const issueTable = document.getElementById('issues-table').querySelector('tbody');
+    emptyTable(issueTable);
     issue.fillTable(issueTable, issues, true);
     const nonIssueTable = document.getElementById('non-issues-table').querySelector('tbody');
+    emptyTable(nonIssueTable);
     issue.fillTable(nonIssueTable, issues, false);
 
     // Assert
@@ -384,5 +392,40 @@ describe('Issues table', function() {
 
     // Arrange
     expect(myDropdownTable.classList.contains('show')).toBe(false);
+  });
+  it('should use the correct data object based on user language settings', async () => {
+    
+    // Define the language settings and the corresponding expected data
+    const languageSettings = [
+      { language: 0, expectedData: dataDe },
+      { language: 1, expectedData: data },
+      { language: 2, expectedData: dataEnUS },
+      { language: 3, expectedData: dataEs },
+      { language: 4, expectedData: dataFr },
+      { language: 5, expectedData: dataNl },
+      { language: 6, expectedData: dataPt },
+      { language: 999, expectedData: data }, // Default case
+    ];
+    const loadUserSettingsMock = jest.spyOn(await import('../wailsjs/go/main/App.js'), 'LoadUserSettings');
+
+    for (const { language, expectedData } of languageSettings) {
+      loadUserSettingsMock.mockResolvedValueOnce({ Language: language });
+      // Prepare the issues array
+      const issues = [
+        { id: 1, severity: 1, jsonkey: 51 }, // assuming 51 exists in all datasets
+      ];
+
+      // Act
+      const { fillTable } = await import('../src/js/issues.js');
+      const issueTable = document.createElement('tbody');
+      await fillTable(issueTable, issues, true);
+
+      // Assert
+      const row = issueTable.rows[0];
+      const currentIssue = expectedData[issues[0].jsonkey];
+      test.value(row.cells[0].textContent).isEqualTo(currentIssue.Name);
+      test.value(row.cells[1].textContent).isEqualTo(currentIssue.Type);
+      test.value(row.cells[2].textContent).isEqualTo('Low'); // Based on toRiskLevel(1)
+    }
   });
 });
