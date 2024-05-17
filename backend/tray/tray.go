@@ -201,9 +201,51 @@ func OpenReportingPage(path string) error {
 
 	logger.Log.Debug("opening reporting page")
 
-	// Get the current working directory
 	//TODO: In a release version, there (should be) no need to build the application, just run it
-	//Consideration: Wails can also send (termination) signals to the back-end, might be worth investigating
+	const build = false
+	if build {
+		err := BuildReportingPage(path)
+		if err != nil {
+			return err
+		}
+	}
+
+	// Set up the reporting-page executable
+	runCmd := exec.Command("reporting-page/build/bin/InfoSec-Agent-Reporting-Page")
+	runCmd.Stdout = os.Stdout
+	runCmd.Stderr = os.Stderr
+
+	// Set up a listener for the quit function from the system tray
+	go func() {
+		<-mQuit.ClickedCh
+		if err := runCmd.Process.Kill(); err != nil {
+			logger.Log.ErrorWithErr("error interrupting reporting-page process:", err)
+		}
+		ReportingPageOpen = false
+		systray.Quit()
+	}()
+
+	ReportingPageOpen = true
+	// Run the reporting page executable
+	if err := runCmd.Run(); err != nil {
+		ReportingPageOpen = false
+		return fmt.Errorf("error running reporting-page: %w", err)
+	}
+
+	logger.Log.Debug("reporting page opened")
+	return nil
+}
+
+// BuildReportingPage builds the reporting page executable using a Wails application
+//
+// Parameters:
+//   - path string: The relative path to the reporting-page directory. This is used to change the current working directory to the reporting-page directory.
+//
+// Returns:
+//   - error: An error object if an error occurred during the process, otherwise nil.
+func BuildReportingPage(path string) error {
+	// Get the current working directory
+	// Consideration: Wails can also send (termination) signals to the back-end, might be worth investigating
 	originalDir, err := os.Getwd()
 	if err != nil {
 		return fmt.Errorf("error getting current directory: %w", err)
@@ -224,48 +266,8 @@ func OpenReportingPage(path string) error {
 		ReportingPageOpen = false
 	}()
 
-	const build = false
-	if build {
-		err = BuildReportingPage()
-		if err != nil {
-			return err
-		}
-	}
-
-	// Set up the reporting-page executable
-	runCmd := exec.Command("build/bin/InfoSec-Agent-Reporting-Page")
-	runCmd.Stdout = os.Stdout
-	runCmd.Stderr = os.Stderr
-
-	// Set up a listener for the quit function from the system tray
-	go func() {
-		<-mQuit.ClickedCh
-		if err = runCmd.Process.Kill(); err != nil {
-			logger.Log.ErrorWithErr("error interrupting reporting-page process:", err)
-		}
-		ReportingPageOpen = false
-		systray.Quit()
-	}()
-
-	ReportingPageOpen = true
-	// Run the reporting page executable
-	if err = runCmd.Run(); err != nil {
-		ReportingPageOpen = false
-		return fmt.Errorf("error running reporting-page: %w", err)
-	}
-
-	logger.Log.Debug("reporting page opened")
-	return nil
-}
-
-// BuildReportingPage builds the reporting page executable using a Wails application
-//
-// Parameters: _
-//
-// Returns: _
-func BuildReportingPage() error {
+	// Build reporting page
 	buildCmd := exec.Command("wails", "build")
-
 	buildCmd.Stdout = os.Stdout
 	buildCmd.Stderr = os.Stderr
 	if err := buildCmd.Run(); err != nil {
