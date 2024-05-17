@@ -250,10 +250,10 @@ describe('Issues table', function() {
       // Assert
       expectedData.forEach((expectedIssue, index) => {
         if (index > i) {
-          const row = issueTable.rows[index - 1 - i];
-          //test.value(row.cells[0].textContent).isEqualTo(expectedIssue.Name);
-          //test.value(row.cells[1].textContent).isEqualTo(expectedIssue.Type);
-          //test.value(row.cells[2].textContent).isEqualTo(issue.toRiskLevel(issues[index].severity));
+          // const row = issueTable.rows[index - 1 - i];
+          // test.value(row.cells[0].textContent).isEqualTo(expectedIssue.Name);
+          // test.value(row.cells[1].textContent).isEqualTo(expectedIssue.Type);
+          // test.value(row.cells[2].textContent).isEqualTo(issue.toRiskLevel(issues[index].severity));
         }
       });
     }
