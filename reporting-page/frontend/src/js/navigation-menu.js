@@ -51,7 +51,7 @@ export function toggleNavigationResize(appWidth) {
 
 if (typeof document !== 'undefined') {
   try {
-    const header = document.getElementById('header-hamburger')
+    const header = document.getElementById('header-hamburger');
     header.addEventListener('click', () => toggleNavigationHamburger(document.body.offsetWidth));
     document.body.onresize = () => toggleNavigationResize(document.body.offsetWidth);
 

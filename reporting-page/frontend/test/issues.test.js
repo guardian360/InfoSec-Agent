@@ -3,7 +3,7 @@ import test from 'unit.js';
 import {JSDOM} from 'jsdom';
 import {jest} from '@jest/globals';
 import data from '../src/database.json' assert { type: 'json' };
-import {mockPageFunctions,clickEvent,storageMock} from './mock.js';
+import {mockPageFunctions, clickEvent, storageMock} from './mock.js';
 
 global.TESTING = true;
 
@@ -14,7 +14,10 @@ const dom = new JSDOM(`
 global.document = dom.window.document;
 global.window = dom.window;
 
-// empty the table to have it empty for next tests
+/** empty the table to have it empty for next tests
+ *
+ * @param {HTMLTableElement} table table to delete all rows from
+ */
 function emptyTable(table) {
   for (let i = 0; i < table.rows.length; i++) {
     table.deleteRow(i);
@@ -175,7 +178,7 @@ describe('Issues table', function() {
 
     row = nonIssueTable.rows[0];
     test.value(row).isEqualTo(undefined);
- });
+  });
   it('sortTable should sort the issues table', async function() {
     // Arrange table rows
     const table = dom.window.document.getElementById('issues-table');
@@ -198,7 +201,7 @@ describe('Issues table', function() {
       </tr>
     `;
 
-    const issue = await import('../src/js/issues.js');
+    await import('../src/js/issues.js');
 
     // Act
     document.getElementById('sort-on-issue').dispatchEvent(clickEvent);
@@ -222,7 +225,7 @@ describe('Issues table', function() {
     // Assert
     sortedRows = Array.from(tbody.rows);
     const sortedTypes = sortedRows.map((row) => row.cells[1].textContent);
-    test.array(sortedTypes).is(['Privacy','Security','Security']);
+    test.array(sortedTypes).is(['Privacy', 'Security', 'Security']);
 
     // Act
     document.getElementById('sort-on-type').dispatchEvent(clickEvent);
@@ -230,7 +233,7 @@ describe('Issues table', function() {
     // Assert
     sortedRowsDescending = Array.from(tbody.rows);
     const sortedTypesDescending = sortedRowsDescending.map((row) => row.cells[1].textContent);
-    test.array(sortedTypesDescending).is(['Security','Security','Privacy']);
+    test.array(sortedTypesDescending).is(['Security', 'Security', 'Privacy']);
 
     // Act
     document.getElementById('sort-on-risk').dispatchEvent(clickEvent);
@@ -270,7 +273,7 @@ describe('Issues table', function() {
       </tr>
     `;
 
-    const issue = await import('../src/js/issues.js');
+    await import('../src/js/issues.js');
 
     // Act
     document.getElementById('sort-on-issue2').dispatchEvent(clickEvent);
@@ -294,7 +297,7 @@ describe('Issues table', function() {
     // Assert
     sortedRows = Array.from(tbody.rows);
     const sortedTypes = sortedRows.map((row) => row.cells[1].textContent);
-    test.array(sortedTypes).is(['Privacy','Security','Security']);
+    test.array(sortedTypes).is(['Privacy', 'Security', 'Security']);
 
     // Act
     document.getElementById('sort-on-type2').dispatchEvent(clickEvent);
@@ -302,7 +305,7 @@ describe('Issues table', function() {
     // Assert
     sortedRowsDescending = Array.from(tbody.rows);
     const sortedTypesDescending = sortedRowsDescending.map((row) => row.cells[1].textContent);
-    test.array(sortedTypesDescending).is(['Security','Security','Privacy']);    
+    test.array(sortedTypesDescending).is(['Security', 'Security', 'Privacy']);
   });
   it('changeTable should update the table with selected risks', async function() {
     // Arrange
@@ -360,24 +363,24 @@ describe('Issues table', function() {
     issueLinks.forEach((link) => {
       link.dispatchEvent(clickEvent);
       expect(openIssuePageMock).toHaveBeenCalled();
-    })
+    });
   });
   it('clicking the select risks toggles show', async function() {
     // Arrange
-    const issue = await import('../src/js/issues.js');
-    const button = document.getElementById('dropbtn-table')
+    await import('../src/js/issues.js');
+    const button = document.getElementById('dropbtn-table');
     const myDropdownTable = document.getElementById('myDropdown-table');
 
-    // Act 
+    // Act
     button.dispatchEvent(clickEvent);
 
     // Arrange
-    expect(myDropdownTable.classList.contains('show')).toBe(true)
+    expect(myDropdownTable.classList.contains('show')).toBe(true);
 
-    // Act 
+    // Act
     button.dispatchEvent(clickEvent);
 
     // Arrange
-    expect(myDropdownTable.classList.contains('show')).toBe(false)
+    expect(myDropdownTable.classList.contains('show')).toBe(false);
   });
 });

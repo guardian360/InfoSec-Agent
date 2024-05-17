@@ -260,7 +260,7 @@ export function parseShowResult(issueId, currentIssue) {
         currentValues.push(issue);
       }
     });
-    
+
     if (currentKey) {
       table.push({registryKey: currentKey, values: currentValues});
     }

@@ -2,7 +2,13 @@ import 'jsdom-global/register.js';
 import test from 'unit.js';
 import {JSDOM} from 'jsdom';
 import {jest} from '@jest/globals';
-import {mockPageFunctions,mockGetLocalization,mockChart,mockGraph,clickEvent,changeEvent,storageMock} from './mock.js';
+import {mockPageFunctions,
+  mockGetLocalization,
+  mockChart,
+  mockGraph,
+  clickEvent,
+  changeEvent,
+  storageMock} from './mock.js';
 import {RiskCounters} from '../src/js/risk-counters.js';
 
 global.TESTING = true;
@@ -48,9 +54,9 @@ describe('Security dashboard', function() {
     const graph = await import('../src/js/graph.js');
     const Graph = new graph.Graph();
 
-    const changeGraphSpy = jest.spyOn(Graph,'changeGraph');
-    const toggleRisksSpy = jest.spyOn(Graph,'toggleRisks');
-    const graphDropdownSpy = jest.spyOn(Graph,'graphDropdown');
+    const changeGraphSpy = jest.spyOn(Graph, 'changeGraph');
+    const toggleRisksSpy = jest.spyOn(Graph, 'toggleRisks');
+    const graphDropdownSpy = jest.spyOn(Graph, 'graphDropdown');
 
     const dashboard = await import('../src/js/security-dashboard.js');
     const rc = new RiskCounters(1, 1, 1, 1, 1);
@@ -61,18 +67,19 @@ describe('Security dashboard', function() {
     dashboard.addGraphFunctions(Graph);
 
     // Assert
-    test.value(document.getElementsByClassName('lang-security-stat')[0].innerHTML).isEqualTo('Dashboard.SecurityStatus');
+    const status = document.getElementsByClassName('lang-security-stat')[0].innerHTML;
+    test.value(status).isEqualTo('Dashboard.SecurityStatus');
 
     // Act
     document.getElementById('dropbtn').dispatchEvent(clickEvent);
 
     // Assert
     expect(graphDropdownSpy).toHaveBeenCalled();
-    
+
     // Act
     document.getElementById('graph-interval').dispatchEvent(changeEvent);
 
-    //Assert
+    // Assert
     expect(changeGraphSpy).toHaveBeenCalled();
 
     // Act
@@ -104,8 +111,8 @@ describe('Security dashboard', function() {
 
     // Assert
     expect(toggleRisksSpy).toHaveBeenCalled();
-  })
-  
+  });
+
   it('adjustWithRiskCounters should show data from risk counters', async function() {
     // arrange
     const mockRiskCounters = {
@@ -167,30 +174,36 @@ describe('Security dashboard', function() {
   });
   it('adjustWithRiskCounters should display the right security status', async function() {
     // Arrange
-    const expectedText = ['Dashboard.Critical', 'Dashboard.MediumConcern', 'Dashboard.LowConcern', 'Dashboard.InfoConcern','Dashboard.NoConcern'];
+    const expectedText = [
+      'Dashboard.Critical',
+      'Dashboard.MediumConcern',
+      'Dashboard.LowConcern',
+      'Dashboard.InfoConcern',
+      'Dashboard.NoConcern',
+    ];
     const mockRiskCounters = {
       highRiskColor: 'rgb(0, 255, 255)',
       mediumRiskColor: 'rgb(0, 0, 255)',
       lowRiskColor: 'rgb(255, 0, 0)',
       infoColor: 'rgb(255, 255, 0)',
       noRiskColor: 'rgb(255, 255, 255)',
-    
+
       lastHighRisk: 10,
       lastMediumRisk: 10,
       lastLowRisk: 10,
       lastInfoRisk: 10,
       lastnoRisk: 10,
-    
-      allHighRisks : [10],
-      allMediumRisks : [10],
-      allLowRisks : [10],
-      allNoRisks : [10],
-      allInfoRisks : [10],
+
+      allHighRisks: [10],
+      allMediumRisks: [10],
+      allLowRisks: [10],
+      allNoRisks: [10],
+      allInfoRisks: [10],
     };
     sessionStorage.setItem('SecurityRiskCounters', JSON.stringify(mockRiskCounters));
 
     const dashboard = await import('../src/js/security-dashboard.js');
-    
+
     dashboard.openSecurityDashboardPage();
     const securityStatus = document.getElementsByClassName('status-descriptor');
     expectedText.forEach(async (element, index) => {
@@ -200,7 +213,7 @@ describe('Security dashboard', function() {
       if (index == 3) mockRiskCounters.lastLowRisk = 0;
       if (index == 4) mockRiskCounters.lastInfoRisk = 0;
       await dashboard.adjustWithRiskCounters(mockRiskCounters, dom.window.document);
-      
+
       // Assert
       test.value(securityStatus[0].innerHTML)
         .isEqualTo(element);
@@ -217,7 +230,7 @@ describe('Security dashboard', function() {
 
     // Assert
     expect(scanTestMock).toHaveBeenCalled();
-  })
+  });
   it('setMaxInterval should set the max value of the graph interval to the maximum amount of data', async function() {
     // arrange
     const mockRiskCounters = {

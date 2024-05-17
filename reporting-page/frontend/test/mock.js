@@ -17,7 +17,7 @@ export function mockPageFunctions() {
   // Mock retrieveTheme
   jest.unstable_mockModule('../src/js/personalize.js', () => ({
     retrieveTheme: jest.fn(),
-  }));  
+  }));
 }
 
 /** Mock of getLocalization function with no functionality
@@ -27,53 +27,53 @@ export function mockPageFunctions() {
  */
 export function mockGetLocalization(messageID) {
   const myPromise = new Promise(function(myResolve, myReject) {
-     if (messageID !== '') myResolve(messageID) 
-     else myReject(new Error('error'));
-    });
+    if (messageID !== '') myResolve(messageID);
+    else myReject(new Error('error'));
+  });
   return myPromise;
 }
 
 /** Mock of changeLanguage function with no functionality
- * 
+ *
  * @param {bool} bool if set to false will result in error from promise
- * @returns a promise
+ * @return {promise} a promise
  */
 export function mockChangeLanguage(bool) {
   const myPromise = new Promise(function(myResolve, myReject) {
-    if (bool) myResolve() 
+    if (bool) myResolve();
     else myReject(new Error('error'));
-   });
- return myPromise;
+  });
+  return myPromise;
 }
 
-/** Mock of scanNowGo function 
- * 
+/** Mock of scanNowGo function
+ *
  * @param {bool} bool if set to false will result in error from promise
- * @returns a promise with the scanResultMock as a value
+ * @return {promise} a promise with the scanResultMock as a value
  */
 export function mockScanNowGo(bool) {
   const myPromise = new Promise(function(myResolve, myReject) {
-    if (bool) myResolve(scanResultMock); 
+    if (bool) myResolve(scanResultMock);
     else myReject(new Error('error'));
-   });
- return myPromise;
+  });
+  return myPromise;
 }
 
-/** Mock of getDataBaseData function 
- * 
- * @param {bool} bool if set to false will result in error from promise
- * @returns a promise with mocked database results as a value
+/** Mock of getDataBaseData function
+ *
+ * @param {Issue[]} input if set to false will result in error from promise
+ * @return {DataBaseData[]} a promise with mocked database results as a value
  */
 export function mockGetDataBaseData(input) {
-  let databaseList = [];
+  const databaseList = [];
   for (let i = 0; i < input.length; i++) {
     databaseList.push({
       id: input[i].issue_id,
       severity: i,
-      jsonkey: parseInt(input[i].issue_id.toString()+input[i].result_id.toString())
+      jsonkey: parseInt(input[i].issue_id.toString()+input[i].result_id.toString()),
     });
   }
-  return databaseList
+  return databaseList;
 }
 
 // Scan result mock
@@ -81,29 +81,29 @@ export const scanResultMock = [
   { // Privacy, level 0
     issue_id: 21,
     result_id: 0,
-    result: []
+    result: [],
   },
   { // Security, level 1
     issue_id: 3,
     result_id: 0,
-    result: []
+    result: [],
   },
   { // Security, level 2
     issue_id: 4,
     result_id: 0,
-    result: []
+    result: [],
   },
   { // Security, level 3
     issue_id: 18,
     result_id: 2,
-    result: []
+    result: [],
   },
   { // Privacy, level 4
     issue_id: 10,
     result_id: 0,
-    result: []
+    result: [],
   },
-]
+];
 
 /** Mock of Chart constructor and update function from chart.js */
 export function mockChart() {
@@ -118,7 +118,7 @@ export function mockChart() {
         // functions
         update: jest.fn(),
       };
-    })
+    }),
   }));
 }
 
@@ -129,16 +129,16 @@ export function mockGraph() {
     Graph: jest.fn().mockImplementation((context, riskcount) => {
       return {
         // properties
-        graphShowHighRisks : true,
-        graphShowMediumRisks : true,
-        graphShowLowRisks : true,
-        graphShowNoRisks : true,
-        graphShowInfoRisks : true,
-        
-        graphShowAmount : 1,
-        
-        barChart : {},
-        rc : riskcount,
+        graphShowHighRisks: true,
+        graphShowMediumRisks: true,
+        graphShowLowRisks: true,
+        graphShowNoRisks: true,
+        graphShowInfoRisks: true,
+
+        graphShowAmount: 1,
+
+        barChart: {},
+        rc: riskcount,
         // functions
         createGraphChart: jest.fn(),
         changeGraph: jest.fn(),
@@ -147,7 +147,7 @@ export function mockGraph() {
         getData: jest.fn(),
         getOptions: jest.fn(),
       };
-    })
+    }),
   }));
 }
 
@@ -158,7 +158,7 @@ export function mockRiskCounters() {
     RiskCounters: jest.fn().mockImplementation((h, m, l, i, a) => {
       return {
         // properties
-        high : [h],
+        high: [h],
         medium: [m],
         low: [l],
         info: [i],
@@ -171,8 +171,8 @@ export function mockRiskCounters() {
       rc.low.push(l);
       rc.info.push(i);
       rc.acceptable.push(a);
-      return rc
-    })
+      return rc;
+    }),
   }));
 }
 
@@ -197,7 +197,7 @@ export const storageMock = (() => {
     },
     removeItem: (key) => {
       delete store[key];
-    }
+    },
   };
 })();
 

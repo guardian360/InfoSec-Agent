@@ -30,7 +30,7 @@ export class Graph {
    * @param {string} canvas html canvas where bar chart will be placed
    */
   async createGraphChart(canvas) {
-     this.barChart = new Chart(canvas, {
+    this.barChart = new Chart(canvas, {
       type: 'bar',
       data: await this.getData(), // The data for our dataset
       options: await this.getOptions(), // Configuration options go here

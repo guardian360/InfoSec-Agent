@@ -2,20 +2,20 @@ import 'jsdom-global/register.js';
 import test from 'unit.js';
 import {JSDOM} from 'jsdom';
 import {jest} from '@jest/globals';
-import {mockGetLocalization,clickEvent,resizeEvent} from './mock.js';
+import {mockGetLocalization, clickEvent, resizeEvent} from './mock.js';
 
 global.TESTING = true;
 
 // Mock page
 const dom = new JSDOM(`
-  <input type="file" class="personalize-input-invisible" id="faviconInput" accept=".png,.ico"> <!--Use id to dynamically change favicon -->
+  <input type="file" class="personalize-input-invisible" id="faviconInput" accept=".png,.ico"> 
   <div class="header">
     <div class="header-hamburger container">
       <span id="header-hamburger" class="header-hamburger material-symbols-outlined">menu</span>
     </div>
     <div class="header-logo">
       <div id="logo-button" class="logo-name">
-        <img id="logo" alt="logo" src="./src/assets/images/logoTeamA-transformed.png">  <!-- Use id to dynamically change logo -->
+        <img id="logo" alt="logo" src="./src/assets/images/logoTeamA-transformed.png"> 
         <div class="header-name">
           <h1 id="title">Little Brother</h1><!-- Use id to dynamically change title -->
         </div>
@@ -36,16 +36,19 @@ const dom = new JSDOM(`
       <p><span class="material-symbols-outlined">home</span><span class="nav-item lang-home">Home</span></p>
     </div>
     <div id="security-dashboard-button" class="nav-link">
-      <p><span class="material-symbols-outlined">security</span><span class="nav-item lang-security-dashboard">Security Dashboard</span></p>
+      <p><span class="material-symbols-outlined">security</span>
+      <span class="nav-item lang-security-dashboard">Security Dashboard</span></p>
     </div>
     <div id="privacy-dashboard-button" class="nav-link">
-      <p><span class="material-symbols-outlined">lock</span><span class="nav-item lang-privacy-dashboard">Privacy Dashboard</span></p>
+      <p><span class="material-symbols-outlined">lock</span>
+      <span class="nav-item lang-privacy-dashboard">Privacy Dashboard</span></p>
     </div>
     <div id="issues-button" class="nav-link">
       <p><span class="material-symbols-outlined">checklist</span><span class="nav-item lang-issues">Issues</span></p>
     </div>
     <div id="integration-button" class="nav-link">
-      <p><span class="material-symbols-outlined">integration_instructions</span><span class="nav-item lang-integration">Integration</span></p>
+      <p><span class="material-symbols-outlined">integration_instructions</span>
+      <span class="nav-item lang-integration">Integration</span></p>
     </div>
     <div id="about-button" class="nav-link">
       <p><span class="material-symbols-outlined">info</span><span class="nav-item lang-about" >About</span></p>
@@ -158,7 +161,7 @@ describe('Navigation menu', function() {
   });
   it('items are localized', async function() {
     // Arrange
-    const navigationMenu = await import('../src/js/navigation-menu.js');
+    await import('../src/js/navigation-menu.js');
     const navbarItems = [
       'lang-home',
       'lang-security-dashboard',
@@ -181,6 +184,6 @@ describe('Navigation menu', function() {
     // Assert
     expectedNames.forEach((name, index) => {
       test.value(document.getElementsByClassName(navbarItems[index])[0].innerHTML).isEqualTo(name);
-    })
-  })
+    });
+  });
 });

@@ -3,12 +3,17 @@ import test from 'unit.js';
 import {JSDOM} from 'jsdom';
 import {jest} from '@jest/globals';
 import data from '../src/database.json' assert { type: 'json' };
-import {mockPageFunctions,mockGetLocalization,clickEvent,storageMock} from './mock.js';
+import {mockPageFunctions, mockGetLocalization, clickEvent, storageMock} from './mock.js';
 
 global.TESTING = true;
 
-function htmlDecode(input){
-  var e = document.createElement('div');
+/** removes html elements form a string
+ *
+ * @param {string} input string with html elements
+ * @return {string} input without html element
+ */
+function htmlDecode(input) {
+  const e = document.createElement('div');
   e.innerHTML = input;
   return e.childNodes[0].nodeValue;
 }
@@ -47,7 +52,7 @@ describe('Issue page', function() {
   it('openIssuesPage should not add solutions for a non-issue to the page-contents', async function() {
     // Arrange
     const issue = await import('../src/js/issue.js');
-    const nonIssueID = 161
+    const nonIssueID = 161;
     const currentIssue = data[nonIssueID];
 
     // Act
@@ -60,7 +65,6 @@ describe('Issue page', function() {
     test.value(name).isEqualTo(currentIssue.Name);
     test.value(description).isEqualTo(currentIssue.Information);
     test.value(solution).isEqualTo(currentIssue.Solution[0]);
-
   });
   it('clicking on the back button should call openIssuesPage', async function() {
     // Arrange
@@ -103,7 +107,8 @@ describe('Issue page', function() {
     const issue = await import('../src/js/issue.js');
 
     // Act
-    issue.updateSolutionStep(solutionText, solutionScreenshot, currentIssue.Solution, currentIssue.Screenshots, stepCounter);
+    issue.updateSolutionStep(solutionText, solutionScreenshot,
+      currentIssue.Solution, currentIssue.Screenshots, stepCounter);
 
     // Assert
     test.value(htmlDecode(solutionText.innerHTML)).isEqualTo('1. ' + currentIssue.Solution[0]);
@@ -148,7 +153,7 @@ describe('Issue page', function() {
 
     // Assert
     test.value(htmlDecode(solutionText.innerHTML)).isEqualTo('1. ' + currentIssue.Solution[0]);
-    test.value(solutionScreenshot.src).isEqualTo(currentIssue.Screenshots[0]);  
+    test.value(solutionScreenshot.src).isEqualTo(currentIssue.Screenshots[0]);
   });
   it('clicking next step button at last step should not update the current step and screenshot', async function() {
     // Arrange
@@ -156,7 +161,7 @@ describe('Issue page', function() {
     const solutionScreenshot = document.getElementById('step-screenshot');
 
     // Act
-    // starts on step 1. 
+    // starts on step 1.
     // calls nextSolutionStep
     document.getElementById('next-button').dispatchEvent(clickEvent);
     document.getElementById('next-button').dispatchEvent(clickEvent);
@@ -167,27 +172,27 @@ describe('Issue page', function() {
     test.value(solutionText.innerHTML).isEqualTo('3. ' + currentIssue.Solution[2]);
     test.value(solutionScreenshot.src).isEqualTo(currentIssue.Screenshots[2]);
   });
-  
-  // Mock scan results for the parseShowResult function 
-  const issueResult_ids = [
-    [1,1],
-    [2,1],
-    [6,0],
-    [7,0],
-    [8,0],
-    [9,0],
-    [10,0],
-    [11,0],
-    [16,0],
-    [17,3],
-    [20,1],
-    [23,0],
-    [27,1],
-    [31,1],
-    [32,0]];
+
+  // Mock scan results for the parseShowResult function
+  const issueResultIds = [
+    [1, 1],
+    [2, 1],
+    [6, 0],
+    [7, 0],
+    [8, 0],
+    [9, 0],
+    [10, 0],
+    [11, 0],
+    [16, 0],
+    [17, 3],
+    [20, 1],
+    [23, 0],
+    [27, 1],
+    [31, 1],
+    [32, 0]];
   // Mock scan results
-  const mockResult = []
-  issueResult_ids.forEach((ir) => {
+  const mockResult = [];
+  issueResultIds.forEach((ir) => {
     mockResult.push({
       issue_id: ir[0],
       result_id: ir[1],
@@ -196,9 +201,9 @@ describe('Issue page', function() {
         'SYSTEM',
         'CIS registry 1',
         'SOFTWARE',
-        'CIS registry 2',      
-      ]
-    })
+        'CIS registry 2',
+      ],
+    });
   });
 
   it('Should fill page with parseShowResult with a set of resultIDs', async function() {
@@ -208,7 +213,7 @@ describe('Issue page', function() {
     sessionStorage.setItem('ScanResult', JSON.stringify(mockResult));
 
     mockResult.forEach((result, index) => {
-      let jsonkey = result.issue_id.toString() + result.result_id.toString();
+      const jsonkey = result.issue_id.toString() + result.result_id.toString();
       currentIssue = data[jsonkey];
 
       // Act
@@ -216,34 +221,37 @@ describe('Issue page', function() {
       const name = document.getElementsByClassName('issue-name')[0].innerHTML;
       const description = document.getElementById('information').nextElementSibling.innerHTML;
       const solution = document.getElementById('solution-text').innerHTML;
-  
+
       // Assert
       test.value(name).isEqualTo(currentIssue.Name);
       test.value(description).isEqualTo(currentIssue.Information);
       test.value(htmlDecode(solution)).isEqualTo('1. ' + currentIssue.Solution[0]);
-    })
+    });
   });
   it('parseShowResult fills the page with the correct structure for specific results', async function() {
     // Arrange
     const issue = await import('../src/js/issue.js');
     // expectedFindings should be changed if the structure for specific results is changed in the code
     const expectedFindings = [
-      '<li>process: p, port: 1, 2, 3</li><li>SYSTEM</li><li>CIS registry 1</li><li>SOFTWARE</li><li>CIS registry 2</li>',
+      '<li>process: p, port: 1, 2, 3</li><li>SYSTEM</li><li>CIS registry 1</li>' +
+      '<li>SOFTWARE</li><li>CIS registry 2</li>',
       '<thead><tr><th>Process</th><th>Port(s)</th></tr></thead><tbody><tr><td style="width: 30%">p</td>\n' +
       '        <td style="width: 30%">1<br>2<br>3</td></tr></tbody>',
       'You changed your password on: process: p, port: 1, 2, 3You changed your password on: SYSTEM' +
-      'You changed your password on: CIS registry 1You changed your password on: SOFTWAREYou changed your password on: CIS registry 2',
-      '<tbody><tr><td style="width: 30%; word-break: break-all">SYSTEM</td></tr><tr><td style="width: 30%; word-break: break-all">' +
+      'You changed your password on: CIS registry 1You changed your password on: ' +
+      'SOFTWAREYou changed your password on: CIS registry 2',
+      '<tbody><tr><td style="width: 30%; word-break: break-all">SYSTEM</td></tr><tr>' +
+      '<td style="width: 30%; word-break: break-all">' +
       'SOFTWARE</td></tr><tr><td style="width: 30%; word-break: break-all">undefined</td></tr></tbody>',
       '<tbody><tr><td style="width: 30%; word-break: break-all">SYSTEM</td>\n' +
       '        <td>CIS registry 1</td></tr><tr><td style="width: 30%; word-break: break-all">SOFTWARE</td>\n' +
       '        <td>CIS registry 2</td></tr></tbody>',
-    ]
+    ];
 
     sessionStorage.setItem('ScanResult', JSON.stringify(mockResult));
 
     mockResult.forEach((result, index) => {
-      let jsonkey = result.issue_id.toString() + result.result_id.toString();
+      const jsonkey = result.issue_id.toString() + result.result_id.toString();
       currentIssue = data[jsonkey];
 
       // Act
@@ -252,18 +260,18 @@ describe('Issue page', function() {
       if (index < 7 || (index > 8 && index < 12) || index == 13) {
         // called to generateBulletList and permissionShowResults
         const findings = document.getElementById('description').nextElementSibling.innerHTML;
-  
+
         // Assert
         test.value(findings).isEqualTo(expectedFindings[0]);
       } else if (index == 7) {
         // called to processPortsTable
         const findings = document.getElementById('description').nextElementSibling.innerHTML;
-  
+
         // Assert
         test.value(findings).isEqualTo(expectedFindings[1]);
       } else if (index == 8) {
         const findings = document.getElementById('description').innerHTML;
-  
+
         // Assert
         test.value(findings).isEqualTo(expectedFindings[2]);
       } else if (index == 12) {
@@ -280,8 +288,8 @@ describe('Issue page', function() {
         // Assert
         test.value(findings).isEqualTo(expectedFindings[4]);
       }
-    })
-  })
+    });
+  });
   it('parseShowResult keeps findings empty if the issueID is not in the issuesWithResultsShow list', async function() {
     // Arrange
     const issue = await import('../src/js/issue.js');
@@ -291,12 +299,12 @@ describe('Issue page', function() {
         issue_id: 1,
         result_id: 0,
         result: [
-          "findings",        
-        ]
+          'findings',
+        ],
       },
-    ]
+    ];
     sessionStorage.setItem('ScanResult', JSON.stringify(mockResult));
-    let jsonkey = mockResult[0].issue_id.toString() + mockResult[0].result_id.toString();
+    const jsonkey = mockResult[0].issue_id.toString() + mockResult[0].result_id.toString();
     currentIssue = data[jsonkey];
     const pageContents = document.getElementById('page-contents');
 
@@ -305,14 +313,14 @@ describe('Issue page', function() {
     const findings = document.getElementById('description').innerHTML;
 
     // Assert
-    test.value(findings).isEqualTo(''); 
-  })
+    test.value(findings).isEqualTo('');
+  });
   it('checkShowResult should check if an issue name contains "applications with"', async function() {
     // Arrange
     const issue = await import('../src/js/issue.js');
 
     // Act
-    const checked = issue.checkShowResult(data[60])
+    const checked = issue.checkShowResult(data[60]);
 
     // Assert
     test.value(checked).isEqualTo(true);

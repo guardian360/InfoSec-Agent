@@ -2,7 +2,7 @@ import 'jsdom-global/register.js';
 import test from 'unit.js';
 import {JSDOM} from 'jsdom';
 import {jest} from '@jest/globals';
-import {mockPageFunctions,mockGetLocalization,storageMock} from './mock.js';
+import {mockPageFunctions, mockGetLocalization, storageMock} from './mock.js';
 
 global.TESTING = true;
 
@@ -23,37 +23,37 @@ mockPageFunctions();
 
 // Mock Localize function
 jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
-    Localize: jest.fn().mockImplementation((input) => mockGetLocalization(input)),
-  }));
+  Localize: jest.fn().mockImplementation((input) => mockGetLocalization(input)),
+}));
 
 // Mock sessionStorage
 global.sessionStorage = storageMock;
 
 describe('About page', function() {
-    it('openAboutPage opens the about page', async function() {
-        // Arrange
-        const about = await import('../src/js/about.js');
-        const classNames = [
-            'lang-about-title',
-            'lang-infosec-info',
-            'lang-little-brother-info',
-            'lang-contribute-title',
-            'lang-contribute-info',
-          ];
-          const expectedTexts = [
-            'About.about-title',
-            'About.infosec-info',
-            'About.little-brother-info',
-            'About.contribute-title',
-            'About.contribute-info',
-          ];
+  it('openAboutPage opens the about page', async function() {
+    // Arrange
+    const about = await import('../src/js/about.js');
+    const classNames = [
+      'lang-about-title',
+      'lang-infosec-info',
+      'lang-little-brother-info',
+      'lang-contribute-title',
+      'lang-contribute-info',
+    ];
+    const expectedTexts = [
+      'About.about-title',
+      'About.infosec-info',
+      'About.little-brother-info',
+      'About.contribute-title',
+      'About.contribute-info',
+    ];
 
-        // Act
-        await about.openAboutPage();
+    // Act
+    await about.openAboutPage();
 
-        // Assert
-        expectedTexts.forEach((expected, index) => {
-            test.value(document.getElementsByClassName(classNames[index])[0].innerHTML).isEqualTo(expected);
-        })
-    })
+    // Assert
+    expectedTexts.forEach((expected, index) => {
+      test.value(document.getElementsByClassName(classNames[index])[0].innerHTML).isEqualTo(expected);
+    });
+  });
 });
