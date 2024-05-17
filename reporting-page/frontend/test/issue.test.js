@@ -182,6 +182,7 @@ describe('Issue page', function() {
     [17,3],
     [20,1],
     [23,0],
+    [27,1],
     [31,1],
     [32,0]];
   // Mock scan results
@@ -232,6 +233,8 @@ describe('Issue page', function() {
       '        <td style="width: 30%">1<br>2<br>3</td></tr></tbody>',
       'You changed your password on: process: p, port: 1, 2, 3You changed your password on: SYSTEM' +
       'You changed your password on: CIS registry 1You changed your password on: SOFTWAREYou changed your password on: CIS registry 2',
+      '<tbody><tr><td style="width: 30%; word-break: break-all">SYSTEM</td></tr><tr><td style="width: 30%; word-break: break-all">' +
+      'SOFTWARE</td></tr><tr><td style="width: 30%; word-break: break-all">undefined</td></tr></tbody>',
       '<tbody><tr><td style="width: 30%; word-break: break-all">SYSTEM</td>\n' +
       '        <td>CIS registry 1</td></tr><tr><td style="width: 30%; word-break: break-all">SOFTWARE</td>\n' +
       '        <td>CIS registry 2</td></tr></tbody>',
@@ -246,7 +249,7 @@ describe('Issue page', function() {
       // Act
       issue.openIssuePage(jsonkey);
 
-      if (index < 7 || (index > 8 && index < 13)) {
+      if (index < 7 || (index > 8 && index < 12) || index == 13) {
         // called to generateBulletList and permissionShowResults
         const findings = document.getElementById('description').nextElementSibling.innerHTML;
   
@@ -263,12 +266,19 @@ describe('Issue page', function() {
   
         // Assert
         test.value(findings).isEqualTo(expectedFindings[2]);
+      } else if (index == 12) {
+        // called to cookiesTable
+        const findings = document.getElementById('description').nextElementSibling.innerHTML;
+
+        // Assert
+        // console.log(findings);
+        test.value(findings).isEqualTo(expectedFindings[3]);
       } else {
         // called to cisregristryTable
         const findings = document.getElementsByClassName('issues-table')[0].innerHTML;
 
         // Assert
-        test.value(findings).isEqualTo(expectedFindings[3]);
+        test.value(findings).isEqualTo(expectedFindings[4]);
       }
     })
   })
