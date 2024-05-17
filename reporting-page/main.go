@@ -91,7 +91,7 @@ func (h *FileLoader) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 //
 // Returns: None. This function does not return a value as it is the entry point of the application.
 func main() {
-	logger.Setup(0, -1)
+	logger.Setup("reporting-page-log.txt", 0, -1)
 	logger.Log.Info("Reporting page starting")
 
 	// Create a new instance of the app and tray struct
@@ -103,9 +103,10 @@ func main() {
 	lang := usersettings.LoadUserSettings().Language
 	tray.Language = lang
 
+	logger.Log.Debug("Starting wails application")
 	// Create a Wails application with the specified options
 	err := wails.Run(&options.App{
-		Title:       "reporting-page",
+		Title:       "InfoSec Agent Reporting Page",
 		Width:       1024,
 		Height:      768,
 		StartHidden: true,

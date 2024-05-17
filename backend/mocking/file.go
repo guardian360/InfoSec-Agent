@@ -136,6 +136,19 @@ type FileMock struct {
 	FileInfo *FileInfoMock
 }
 
+// ReadDir is a method of the FileMock struct that simulates the behavior of reading a directory.
+// It doesn't actually read a directory, but instead returns a predefined result that can be set for testing purposes.
+//
+// Parameters:
+//   - _: This method ignores its input parameter. The underscore character is a convention in Go for discarding a variable.
+//
+// Returns:
+//   - A slice of os.DirEntry: In this mock implementation, it always returns nil.
+//   - An error: The error that was previously set in the FileMock struct. If no error was set, it returns nil.
+func (f *FileMock) ReadDir(_ string) ([]os.DirEntry, error) {
+	return nil, f.Err
+}
+
 // Close closes the mock file
 //
 // Parameters: _
@@ -163,6 +176,10 @@ func (f *FileMock) Close() error {
 func (f *FileMock) Read(p []byte) (int, error) {
 	if f.Err != nil {
 		return 0, f.Err
+	}
+
+	if len(f.Buffer) == 0 {
+		return 0, io.EOF
 	}
 
 	n := copy(p, f.Buffer)

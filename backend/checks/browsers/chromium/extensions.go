@@ -11,9 +11,9 @@ import (
 	"io"
 	"net/http"
 	"os"
-	"path/filepath"
 	"strings"
 
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/browsers"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
@@ -26,17 +26,14 @@ type Response struct {
 	Name string `json:"name"`
 }
 
-// constants to store information of the browsers
-const edge = "Edge"
-const chrome = "Chrome"
-const edgePath = "Microsoft/Edge"
-const chromePath = "Google/Chrome"
-
 // ExtensionsChromium checks for the presence of an ad blocker extension in a specified Chromium-based browser.
 //
 // Parameters:
 //   - browser: A string representing the name of the Chromium-based browser to check.
 //     Currently, this function supports "Chrome" and "Edge".
+//   - getter: A browsers.DefaultDirGetter object that provides the path to the preferences file for the specified browser.
+//   - getterExtID: An object that implements the ExtensionIDGetter interface.
+//   - nameGetter: An object that implements the ExtensionNameGetter interface.
 //
 // Returns:
 //   - A checks.Check object representing the result of the check. If an ad blocker is installed,
@@ -48,70 +45,137 @@ const chromePath = "Google/Chrome"
 // and checking each installed extension against a list of known ad blocker names.
 // The function uses the extensionNameChromium helper function to fetch the name of each extension from the
 // Chrome Web Store or the Microsoft Edge Addons Store.
-func ExtensionsChromium(browser string) checks.Check {
-	var browserPath string
-	var returnID int
-	// Set the browser path and the return browser name based on the browser to check
-	// Currently, supports checking of Google Chrome and Microsoft Edge
-	if browser == chrome {
-		browserPath = chromePath
-		returnID = checks.ExtensionChromiumID
-	}
-	if browser == edge {
-		browserPath = edgePath
-		returnID = checks.ExtensionEdgeID
-	}
-	var extensionIDs []string
-	var extensionNames []string
-	// Get the current user's home directory, where the extensions are stored
-	user, err := os.UserHomeDir()
+func ExtensionsChromium(browser string, getter browsers.DefaultDirGetter, getterExtID ExtensionIDGetter, nameGetter ExtensionNameGetter) checks.Check {
+	browserPath, returnID := GetBrowserPathAndIDExtension(browser)
+	extensionsDir, err := getter.GetDefaultDir(browserPath)
 	if err != nil {
-		checks.NewCheckErrorf(returnID, "Error: ", err)
+		return checks.NewCheckErrorf(returnID, "Error: ", err)
 	}
 
-	extensionsDir := filepath.Join(user, "AppData", "Local", browserPath, "User Data", "Default", "Extensions")
-	files, err := os.ReadDir(extensionsDir)
+	extensionIDs, err := getterExtID.GetExtensionIDs(extensionsDir + "/Extensions")
 	if err != nil {
-		checks.NewCheckErrorf(returnID, "Error: ", err)
+		return checks.NewCheckErrorf(returnID, "Error: ", err)
 	}
 
-	// Construct a list of all extensions ID's
-	for _, f := range files {
-		if f.IsDir() {
-			extensionIDs = append(extensionIDs, f.Name())
-		}
-	}
+	extensionNames := GetExtensionNames(nameGetter, extensionIDs, browser)
 
-	var extensionName1 string
-	var extensionName2 string
-	for _, id := range extensionIDs {
-		// Get the name of the extension from the Chrome Web Store
-		extensionName1, err = getExtensionNameChromium(id,
-			"https://chromewebstore.google.com/detail/%s", browser)
-		if err != nil {
-			logger.Log.ErrorWithErr("Error getting extension name: ", err)
-		}
-		if strings.Count(extensionName1, "/") > 4 {
-			parts := strings.Split(extensionName1, "/")
-			extensionNames = append(extensionNames, parts[len(parts)-2])
-		}
-		if browser == edge {
-			// Get the name of the extension from the Microsoft Edge Addons Store
-			extensionName2, err = getExtensionNameChromium(id,
-				"https://microsoftedge.microsoft.com/addons/getproductdetailsbycrxid/%s", browser)
-			if err != nil {
-				logger.Log.ErrorWithErr("Error getting extension name: ", err)
-			}
-			extensionNames = append(extensionNames, extensionName2)
-		}
-	}
-	if adblockerInstalled(extensionNames) {
+	if AdblockerInstalled(extensionNames) {
 		return checks.NewCheckResult(returnID, 0)
 	}
 	return checks.NewCheckResult(returnID, 1)
 }
 
-// getExtensionNameChromium fetches the name of an extension from the Chrome Web Store or the Microsoft Edge Addons Store.
+// GetBrowserPathAndIDExtension is a function that takes a browser name as input,
+// and returns the path to the browser's directory and the ID of the browser.
+//
+// Parameters:
+//   - browser: A string representing the name of the browser. Currently, this function supports "Chrome" and "Edge".
+//
+// Returns:
+//   - A string representing the path to the browser's directory.
+//   - An integer representing the ID the check.
+//
+// This function works by checking the provided browser name against known browser names. If the browser is "Chrome",
+// the function returns the path to the Chrome directory and the ID of Chrome. If the browser is "Edge",
+// the function returns the path to the Edge directory and the ID of Edge. If the browser is unknown, the function
+// returns an empty string and 0.
+func GetBrowserPathAndIDExtension(browser string) (string, int) {
+	if browser == browsers.Chrome {
+		return browsers.ChromePath, checks.ExtensionChromiumID
+	}
+	if browser == browsers.Edge {
+		return browsers.EdgePath, checks.ExtensionEdgeID
+	}
+	return "", 0
+}
+
+type ExtensionIDGetter interface {
+	GetExtensionIDs(extensionsDir string) ([]string, error)
+}
+
+type RealExtensionIDGetter struct{}
+
+// GetExtensionIDs is a function that takes the path to the extensions directory as input,
+// and returns a list of extension IDs.
+//
+// Parameters:
+//   - extensionsDir: A string representing the path to the extensions directory.
+//
+// Returns:
+//   - A slice of strings representing the IDs of the extensions.
+//   - An error, which will be nil if the operation was successful.
+//
+// This function works by reading the contents of the provided directory and adding the name of each subdirectory
+// to the list of extension IDs. The name of a subdirectory corresponds to the ID of an extension.
+// If an error occurs while reading the directory, the function returns the error.
+func (r RealExtensionIDGetter) GetExtensionIDs(extensionsDir string) ([]string, error) {
+	files, err := os.ReadDir(extensionsDir)
+	if err != nil {
+		return nil, err
+	}
+
+	var extensionIDs []string
+	for _, f := range files {
+		if f.IsDir() {
+			extensionIDs = append(extensionIDs, f.Name())
+		}
+	}
+	return extensionIDs, nil
+}
+
+// GetExtensionNames is a function that takes a list of extension IDs and a browser name as input,
+// and returns a list of extension names. It fetches the name of each extension from the Chrome Web Store
+// or the Microsoft Edge Addons Store by calling the GetExtensionNameChromium function.
+//
+// Parameters:
+//   - ExtensionNameGetter: An object that implements the ExtensionNameGetter interface.
+//   - extensionIDs: A slice of strings representing the IDs of the extensions.
+//   - browser: A string representing the name of the browser. Currently, this function supports "Chrome" and "Edge".
+//
+// Returns:
+//   - A slice of strings representing the names of the extensions.
+//   - An error, which will be nil if the operation was successful.
+//
+// This function iterates over the provided list of extension IDs. For each ID, it calls the
+// GetExtensionNameChromium function to fetch the name of the extension from the store. If the browser is "Chrome",
+// it splits the returned URL and extracts the extension name from the URL. If the browser is "Edge", it directly
+// appends the returned name to the list of extension names. If an error occurs during the process, the function
+// returns the error.
+func GetExtensionNames(getter ExtensionNameGetter, extensionIDs []string, browser string) []string {
+	var extensionNames []string
+	for _, id := range extensionIDs {
+		if browser == browsers.Chrome {
+			extensionName, err := getter.GetExtensionNameChromium(id,
+				"https://chromewebstore.google.com/detail/%s", browser)
+			if err != nil {
+				logger.Log.ErrorWithErr("Error getting extension name: ", err)
+				continue
+			}
+			if strings.Count(extensionName, "/") > 4 {
+				parts := strings.Split(extensionName, "/")
+				extensionNames = append(extensionNames, parts[len(parts)-2])
+			}
+		}
+		if browser == browsers.Edge {
+			extensionName, err := getter.GetExtensionNameChromium(id,
+				"https://microsoftedge.microsoft.com/addons/getproductdetailsbycrxid/%s", browser)
+			if err != nil {
+				logger.Log.ErrorWithErr("Error getting extension name: ", err)
+				continue
+			}
+			extensionNames = append(extensionNames, extensionName)
+		}
+	}
+	return extensionNames
+}
+
+type ExtensionNameGetter interface {
+	GetExtensionNameChromium(extensionID string, url string, browser string) (string, error)
+}
+
+type ChromeExtensionNameGetter struct{}
+
+// GetExtensionNameChromium fetches the name of an extension from the Chrome Web Store or the Microsoft Edge Addons Store.
 //
 // Parameters:
 //   - extensionID: The unique identifier of the extension.
@@ -125,7 +189,7 @@ func ExtensionsChromium(browser string) checks.Check {
 // This function sends an HTTP request to the store's URL and parses the response to extract the extension name.
 // For Edge, the response is in JSON format and requires decoding.
 // If the HTTP request fails or the browser is unknown, the function returns an error.
-func getExtensionNameChromium(extensionID string, url string, browser string) (string, error) {
+func (c ChromeExtensionNameGetter) GetExtensionNameChromium(extensionID string, url string, browser string) (string, error) {
 	client := &http.Client{}
 	urlToVisit := fmt.Sprintf(url, extensionID)
 	// Generate a new request to visit the extension/addon store
@@ -148,13 +212,13 @@ func getExtensionNameChromium(extensionID string, url string, browser string) (s
 		}
 	}(resp.Body)
 
-	if browser == chrome && resp.StatusCode != http.StatusOK {
+	if browser == browsers.Chrome && resp.StatusCode != http.StatusOK {
 		return "", fmt.Errorf("HTTP request failed with status code: %d", resp.StatusCode)
 	}
-	if browser == chrome {
+	if browser == browsers.Chrome {
 		return resp.Request.URL.String(), nil
 	}
-	if browser == edge {
+	if browser == browsers.Edge {
 		if strings.Contains(resp.Request.URL.String(), "chromewebstore.google.com") {
 			return resp.Request.URL.String(), nil
 		}
@@ -169,7 +233,7 @@ func getExtensionNameChromium(extensionID string, url string, browser string) (s
 	return "", errors.New("unknown browser")
 }
 
-// adblockerInstalled determines whether an ad blocker extension is installed.
+// AdblockerInstalled determines whether an ad blocker extension is installed.
 //
 // Parameters:
 //   - extensionNames: A slice of strings representing the names of the installed extensions.
@@ -178,7 +242,7 @@ func getExtensionNameChromium(extensionID string, url string, browser string) (s
 //   - A boolean value indicating whether an ad blocker is installed. Returns true if an ad blocker is found among the installed extensions, and false otherwise.
 //
 // This function works by iterating over the provided list of extension names and checking each one against a predefined list of known ad blocker names. If a match is found, the function returns true. If no match is found after checking all extension names, the function returns false.
-func adblockerInstalled(extensionNames []string) bool {
+func AdblockerInstalled(extensionNames []string) bool {
 	// List of ad blocker (related) terms to check for in the name of the extension/addon
 	adblockerNames := []string{
 		"adblock",
@@ -192,6 +256,7 @@ func adblockerInstalled(extensionNames []string) bool {
 		"adlock",
 		"privacy badger",
 		"ublock",
+		"ublock origin",
 		"adguard",
 		"adaware",
 		"adaware adblock",

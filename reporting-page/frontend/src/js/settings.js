@@ -22,7 +22,7 @@ async function updateLanguage() {
       console.error(err);
     });
 }
-/** Opens the settings page after window is reloaded after updateLanguage() is called */
+/** Opens the stored page after window is reloaded after updateLanguage() is called */
 if (sessionStorage.getItem('languageChanged') != null) {
   let page = sessionStorage.getItem('savedPage');
   page = parseInt(page);
@@ -49,6 +49,7 @@ if (sessionStorage.getItem('languageChanged') != null) {
     openPersonalizePage();
     break;
   default:
+    openHomePage();
     console.log('Invalid option selected');
   }
   sessionStorage.removeItem('languageChanged');
