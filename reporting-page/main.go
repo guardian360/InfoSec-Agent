@@ -104,18 +104,30 @@ func main() {
 	)
 	if err != nil {
 		logger.Log.ErrorWithErr("Error opening registry key: ", err)
-	}
-	defer k.Close()
-	s, _, err := k.GetStringValue("Path")
-	if err != nil {
-		logger.Log.ErrorWithErr("Error getting path string: ", err)
-	}
+	} else {
+		defer k.Close()
+		s, _, err := k.GetStringValue("Path")
+		if err != nil {
+			logger.Log.ErrorWithErr("Error getting path string: ", err)
+		}
 
-	// Set curent directory to reporting-page
-	err = os.Chdir(s + "/../..")
-	if err != nil {
-		logger.Log.ErrorWithErr("Error changing directory: ", err)
+		// Set curent directory to reporting-page
+		err = os.Chdir(s + "/../..")
+		if err != nil {
+			logger.Log.ErrorWithErr("Error changing directory: ", err)
+		}
 	}
+	// defer k.Close()
+	// s, _, err := k.GetStringValue("Path")
+	// if err != nil {
+	// 	logger.Log.ErrorWithErr("Error getting path string: ", err)
+	// }
+
+	// // Set curent directory to reporting-page
+	// err = os.Chdir(s + "/../..")
+	// if err != nil {
+	// 	logger.Log.ErrorWithErr("Error changing directory: ", err)
+	// }
 
 	// Create a new instance of the app and tray struct
 	app := NewApp()
