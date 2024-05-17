@@ -93,7 +93,7 @@ func (h *FileLoader) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 // Returns: None. This function does not return a value as it is the entry point of the application.
 func main() {
 	// Setup log file
-	os.Chdir(os.Getenv("USERPROFILE")) // When opening the page from the Windows notification we start in C:\Windows\System32, and we cannot open a log file there
+	// os.Chdir(os.Getenv("USERPROFILE")) // When opening the page from the Windows notification we start in C:\Windows\System32, and we cannot open a log file there
 	logger.Setup("reporting-page-log.txt", 0, -1)
 	logger.Log.Info("Reporting page starting")
 

@@ -57,8 +57,13 @@ Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; WorkingD
 Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; WorkingDir: "{app}"; IconFilename: "{app}\icon.ico"; Tasks: desktopicon
 
 [Registry]
-Root: HKLM; Subkey: "Software\{#MyAppName}"; Flags: uninsdeletevalue uninsdeletekeyifempty; Check: IsWin64
-Root: HKLM; Subkey: "Software\{#MyAppName}\Reporting Page"; ValueType: string; ValueName: "exe"; ValueData: "{app}\reporting-page\build\bin\InfoSec-Agent-Reporting-Page.exe"; Flags: uninsdeletevalue uninsdeletekeyifempty; Check: IsWin64
+Root: HKLM; Subkey: "Software\{#MyAppName}"; Flags: uninsdeletevalue uninsdeletekeyifempty
+Root: HKLM; Subkey: "Software\{#MyAppName}\Reporting Page"; ValueType: string; ValueName: "exe"; ValueData: "{app}\reporting-page\build\bin\InfoSec-Agent-Reporting-Page.exe"; Flags: uninsdeletevalue uninsdeletekeyifempty
+Root: HKCR; Subkey: "infosecagent"; ValueType: string; ValueName: ""; ValueData: URL:infosecagent Protocol; Flags: uninsdeletekey
+Root: HKCR; Subkey: "infosecagent"; ValueType: string; ValueName: URL Protocol; Flags: uninsdeletekey
+Root: HKCR; Subkey: "infosecagent\shell\open\command"; ValueType: expandsz; ValueName: ""; ValueData: "{app}\reporting-page\build\bin\InfoSec-Agent-Reporting-Page.exe"; Flags: uninsdeletekey
+Root: HKCU; Subkey: "Software\Microsoft\Windows\CurrentVersion\App Paths\InfoSec-Agent-Reporting-Page.exe"; ValueType: string; ValueName: ""; ValueData: "{app}\reporting-page\build\bin\InfoSec-Agent-Reporting-Page.exe"; Flags: uninsdeletekey
+Root: HKCU; Subkey: "Software\Microsoft\Windows\CurrentVersion\App Paths\InfoSec-Agent-Reporting-Page.exe"; ValueType: string; ValueName: "Path"; ValueData: "{app}\reporting-page\build\bin"; Flags: uninsdeletekey
 
 [UninstallDelete]
 Type: filesandordirs; Name: "{userappdata}\{#MyAppName}"
