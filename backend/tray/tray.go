@@ -270,7 +270,7 @@ func BuildReportingPage(path string) error {
 	buildCmd := exec.Command("wails", "build")
 	buildCmd.Stdout = os.Stdout
 	buildCmd.Stderr = os.Stderr
-	if err := buildCmd.Run(); err != nil {
+	if err = buildCmd.Run(); err != nil {
 		return fmt.Errorf("error building reporting-page: %w", err)
 	}
 	logger.Log.Debug("reporting page built successfully")
