@@ -495,16 +495,13 @@ func PopupMessage(scanResult []checks.Check, path string) string {
 	if severityCounters[3] > 0 {
 		if severityCounters[3] == 1 {
 			return "The privacy and security scan has been completed. You have 1 high risk issue. Open the reporting page to see more information."
-		} else {
-			return fmt.Sprintf("The privacy and security scan has been completed. You have %d high risk issues. Open the reporting page to see more information.", severityCounters[3])
 		}
+		return fmt.Sprintf("The privacy and security scan has been completed. You have %d high risk issues. Open the reporting page to see more information.", severityCounters[3])
 	} else if severityCounters[2] > 0 {
 		if severityCounters[2] == 1 {
 			return "The privacy and security scan has been completed. You have 1 medium risk issue. Open the reporting page to see more information."
-		} else {
-			return fmt.Sprintf("The privacy and security scan has been completed. You have %d medium risk issues. Open the reporting page to see more information.", severityCounters[2])
 		}
-	} else {
-		return "The privacy and security scan has been completed. Open the reporting page to view the results."
+		return fmt.Sprintf("The privacy and security scan has been completed. You have %d medium risk issues. Open the reporting page to see more information.", severityCounters[2])
 	}
+	return "The privacy and security scan has been completed. Open the reporting page to view the results."
 }
