@@ -20,6 +20,11 @@
             "Go to Start > Settings > Bluetooth & devices.", 
             "Here you can see which devices are connected via bluetooth, and you can remove them if necessary."
         ],
+        "SolutionWindows10": 
+        [   
+            "Go to Start > Settings > Devices > Bluetooth & other devices.", 
+            "Here you can see which devices are connected via bluetooth, and you can remove them if necessary."
+        ],
         "Screenshots":
         [
             "frontend/src/assets/images/windows-11/devices-connected-via-bluetooth/bluetooth-devices-1.jpg",
@@ -88,6 +93,13 @@
             "Now select 'remove' and confirm the deletion of the account.",
             "To finish, restart your computer."
         ],
+        "SolutionWindows10": 
+        [   
+            "Go to Start > Settings > Accounts > Family & other users.", 
+            "Here you will see the other accounts, if there is an account you do not know or something called 'guest' click on it.",
+            "Now select 'remove' and confirm the deletion of the account.",
+            "To finish, restart your computer."
+        ],
         "Screenshots":
         [
             "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
@@ -129,6 +141,11 @@
             "Go to Start > Settings > Privacy & Security > General ",
             "Here you can control the advertisement ID settings and turn the feature on/off."
         ],
+        "SolutionWindows10": 
+        [
+            "Go to Start > Settings > Privacy > General.",
+            "Here you can control the advertisement ID settings and turn the feature on/off."
+        ],
         "Screenshots":
         [
             "frontend/src/assets/images/windows-11/network-sharing/nearby-sharing-1.jpg",
@@ -160,6 +177,12 @@
         [   
             "It was not possible to retrieve the status of the network sharing settings. To check the status and potentially solve the issue of the network sharing, follow these steps.",
             "Go to Start > Settings > System > Nearby share settings.", 
+            "Here you can control the network sharing settings and turn the feature off."
+        ],
+        "SolutionWindows10": 
+        [   
+            "It was not possible to retrieve the status of the network sharing settings. To check the status and potentially solve the issue of the network sharing, follow these steps.",
+            "Go to Start > Settings > System > Shared experiences.", 
             "Here you can control the network sharing settings and turn the feature off."
         ],
         "Screenshots":
@@ -216,6 +239,11 @@
             "Select Start > Settings > Privacy & security.", 
             "Here you can select location to see which applications have access, and you can revoke access for certain applications."
         ],
+        "SolutionWindows10": 
+        [   
+            "Go to Start > Settings > Privacy > Location.", 
+            "Here you can select location to see which applications have access, and you can revoke access for certain applications."
+        ],
         "Screenshots":
         [
             "frontend/src/assets/images/windows-11/applications-with-location-permission/location-permissions-1.jpg",
@@ -246,6 +274,11 @@
         "Solution": 
         [   
             "Select Start > Settings > Privacy & security.", 
+            "Here you can select microphone to see which applications have access, and you can revoke access for certain applications."
+        ],
+        "SolutionWindows10": 
+        [   
+            "Go to Start > Settings > Privacy > Microphone.", 
             "Here you can select microphone to see which applications have access, and you can revoke access for certain applications."
         ],
         "Screenshots":
@@ -280,6 +313,11 @@
             "Select Start > Settings > Privacy & security.", 
             "Here you can select webcam to see which applications have access, and you can revoke access for certain applications."
         ],
+        "SolutionWindows10": 
+        [   
+            "Go to Start > Settings > Privacy > Camera.", 
+            "Here you can select webcam to see which applications have access, and you can revoke access for certain applications."
+        ],
         "Screenshots":
         [
             "frontend/src/assets/images/windows-11/applications-with-webcam-permission/webcam-permissions-1.jpg",
@@ -312,6 +350,11 @@
             "Select Start > Settings > Privacy & security.", 
             "Here you can select appointments to see which applications have access, and you can revoke access for certain applications."
         ],
+        "SolutionWindows10": 
+        [   
+            "Go to Start > Settings > Privacy > Calendar.", 
+            "Here you can select appointments to see which applications have access, and you can revoke access for certain applications."
+        ],
         "Screenshots":
         [
             "frontend/src/assets/images/windows-11/applications-with-calendar-permission/calendar-permissions-1.jpg",
@@ -342,6 +385,11 @@
         "Solution": 
         [   
             "Select Start > Settings > Privacy & security.", 
+            "Here you can select contacts to see which applications have access, and you can revoke access for certain applications."
+        ],
+        "SolutionWindows10": 
+        [   
+            "Go to Start > Settings > Privacy > Contacts.", 
             "Here you can select contacts to see which applications have access, and you can revoke access for certain applications."
         ],
         "Screenshots":
@@ -765,7 +813,7 @@
         "Solution": 
         [   
             "Go to start > Change your password", 
-            "Open the 'Password' section and click on the 'change' button.",
+            "Open the 'Password' section and click on the 'Change' button.",
             "You can now change your password to a new unique one."
         ],
         "Screenshots":
