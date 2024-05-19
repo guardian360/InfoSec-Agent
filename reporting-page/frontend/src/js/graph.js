@@ -61,6 +61,7 @@ export class Graph {
       break;
     case 'no':
       this.graphShowNoRisks = !this.graphShowNoRisks;
+      break;
     case 'info':
       this.graphShowInfoRisks = !this.graphShowInfoRisks;
       break;
