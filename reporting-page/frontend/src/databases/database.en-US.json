@@ -22,8 +22,8 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/devices-connected-via-bluetooth/bluetooth-devices-1.jpg",
-            "frontend/src/assets/images/devices-connected-via-bluetooth/bluetooth-devices-2.jpg"
+            "frontend/src/assets/images/windows-11/devices-connected-via-bluetooth/bluetooth-devices-1.jpg",
+            "frontend/src/assets/images/windows-11/devices-connected-via-bluetooth/bluetooth-devices-2.jpg"
         ]
     },
     "20": {
@@ -65,11 +65,11 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/guest-account/guest-account-1.jpg",
-            "frontend/src/assets/images/guest-account/guest-account-1.jpg",
-            "frontend/src/assets/images/guest-account/guest-account-1.jpg",
-            "frontend/src/assets/images/guest-account/guest-account-3.jpg",        
-            "frontend/src/assets/images/guest-account/guest-account-3.jpg"
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-3.jpg",        
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-3.jpg"
         ]
     },
     "31": {
@@ -85,10 +85,10 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/guest-account/guest-account-1.jpg",
-            "frontend/src/assets/images/guest-account/guest-account-1.jpg",
-            "frontend/src/assets/images/guest-account/guest-account-3.jpg",        
-            "frontend/src/assets/images/guest-account/guest-account-3.jpg"
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-3.jpg",        
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-3.jpg"
         ]
     },
     "32": {
@@ -126,8 +126,8 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/network-sharing/nearby-sharing-1.jpg",
-            "frontend/src/assets/images/network-sharing/nearby-sharing-2.jpg"
+            "frontend/src/assets/images/windows-11/network-sharing/nearby-sharing-1.jpg",
+            "frontend/src/assets/images/windows-11/network-sharing/nearby-sharing-2.jpg"
         ]
     },
     "42": {
@@ -154,9 +154,9 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/network-sharing/nearby-sharing-1.jpg",
-            "frontend/src/assets/images/network-sharing/nearby-sharing-1.jpg",
-            "frontend/src/assets/images/network-sharing/nearby-sharing-2.jpg"
+            "frontend/src/assets/images/windows-11/network-sharing/nearby-sharing-1.jpg",
+            "frontend/src/assets/images/windows-11/network-sharing/nearby-sharing-1.jpg",
+            "frontend/src/assets/images/windows-11/network-sharing/nearby-sharing-2.jpg"
         ]
     },
     "50": {
@@ -182,8 +182,8 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/password-manager/password-manager-1.jpg",
-            "frontend/src/assets/images/password-manager/password-manager-1.jpg"
+            "frontend/src/assets/images/windows-11/password-manager/password-manager-1.jpg",
+            "frontend/src/assets/images/windows-11/password-manager/password-manager-1.jpg"
         ]
     },
     "60": {
@@ -197,8 +197,8 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/applications-with-location-permission/location-permissions-1.jpg",
-            "frontend/src/assets/images/applications-with-location-permission/location-permissions-2.jpg"
+            "frontend/src/assets/images/windows-11/applications-with-location-permission/location-permissions-1.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-location-permission/location-permissions-2.jpg"
         ]
     },
     "61": {
@@ -224,8 +224,8 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/applications-with-microphone-permission/microphone-permissions-1.jpg",
-            "frontend/src/assets/images/applications-with-microphone-permission/microphone-permissions-2.jpg"
+            "frontend/src/assets/images/windows-11/applications-with-microphone-permission/microphone-permissions-1.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-microphone-permission/microphone-permissions-2.jpg"
         ]
     },
     "71": {
@@ -251,8 +251,8 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/applications-with-webcam-permission/webcam-permissions-1.jpg",
-            "frontend/src/assets/images/applications-with-webcam-permission/webcam-permissions-2.jpg"
+            "frontend/src/assets/images/windows-11/applications-with-webcam-permission/webcam-permissions-1.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-webcam-permission/webcam-permissions-2.jpg"
         ]
     },
     "81": {
@@ -278,8 +278,8 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/applications-with-calendar-permission/calendar-permissions-1.jpg",
-            "frontend/src/assets/images/applications-with-calendar-permission/calendar-permissions-2.jpg"
+            "frontend/src/assets/images/windows-11/applications-with-calendar-permission/calendar-permissions-1.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-calendar-permission/calendar-permissions-2.jpg"
         ]
     },
     "91": {
@@ -305,8 +305,8 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/applications-with-contacts-permission/contacts-permissions-1.jpg",
-            "frontend/src/assets/images/applications-with-contacts-permission/contacts-permissions-2.jpg"
+            "frontend/src/assets/images/windows-11/applications-with-contacts-permission/contacts-permissions-1.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-contacts-permission/contacts-permissions-2.jpg"
         ]
     },
     "101": {
@@ -334,7 +334,7 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/devices-connected-via-bluetooth/bluetooth-devices-1.jpg"
+            "frontend/src/assets/images/windows-11/devices-connected-via-bluetooth/bluetooth-devices-1.jpg"
         ]
     },
     "120": {
@@ -387,10 +387,10 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/smb-status/smb-2.jpg",
-            "frontend/src/assets/images/smb-status/smb-2.jpg",
-            "frontend/src/assets/images/smb-status/smb-3.jpg",
-            "frontend/src/assets/images/smb-status/smb-3.jpg"
+            "frontend/src/assets/images/windows-11/smb-status/smb-2.jpg",
+            "frontend/src/assets/images/windows-11/smb-status/smb-2.jpg",
+            "frontend/src/assets/images/windows-11/smb-status/smb-3.jpg",
+            "frontend/src/assets/images/windows-11/smb-status/smb-3.jpg"
         ]
     },
     "132": {
@@ -418,10 +418,10 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/smb-status/smb-2.jpg",
-            "frontend/src/assets/images/smb-status/smb-2.jpg",
-            "frontend/src/assets/images/smb-status/smb-3.jpg",
-            "frontend/src/assets/images/smb-status/smb-3.jpg"
+            "frontend/src/assets/images/windows-11/smb-status/smb-2.jpg",
+            "frontend/src/assets/images/windows-11/smb-status/smb-2.jpg",
+            "frontend/src/assets/images/windows-11/smb-status/smb-3.jpg",
+            "frontend/src/assets/images/windows-11/smb-status/smb-3.jpg"
         ]
     },
     "140": {
@@ -439,12 +439,12 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/user-account-control/user-account-control-1.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-2.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-2.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-3.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-5.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-5.jpg"
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-2.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-2.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-3.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-5.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-5.jpg"
         ]
     },
     "141": {
@@ -475,13 +475,13 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/user-account-control/user-account-control-1.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-1.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-2.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-2.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-3.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-5.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-5.jpg"
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-2.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-2.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-3.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-5.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-5.jpg"
         ]
     },
     "143": {
@@ -500,13 +500,13 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/user-account-control/user-account-control-1.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-1.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-2.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-2.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-3.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-5.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-5.jpg"
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-2.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-2.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-3.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-5.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-5.jpg"
         ]
     },
     "150": {
@@ -534,10 +534,10 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg"
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg"
         ]
     },
     "152": {
@@ -553,10 +553,10 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg"
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg"
         ]
     },
     "153": {
@@ -573,10 +573,10 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg"
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg"
         ]
     },
     "154": {
@@ -592,10 +592,10 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg"
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg"
         ]
     },
     "160": {
@@ -610,9 +610,9 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/last-password-change/change-password-1.jpg",
-            "frontend/src/assets/images/last-password-change/change-password-2.jpg",
-            "frontend/src/assets/images/last-password-change/change-password-2.jpg"
+            "frontend/src/assets/images/windows-11/last-password-change/change-password-1.jpg",
+            "frontend/src/assets/images/windows-11/last-password-change/change-password-2.jpg",
+            "frontend/src/assets/images/windows-11/last-password-change/change-password-2.jpg"
         ]
     },
     "161": {
@@ -638,8 +638,8 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-login-method/login-method-1.jpg",
-            "frontend/src/assets/images/windows-login-method/login-method-2.jpg"
+            "frontend/src/assets/images/windows-11/windows-login-method/login-method-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-login-method/login-method-2.jpg"
         ]
     },
     "171": {
@@ -665,8 +665,8 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-login-method/login-method-1.jpg",
-            "frontend/src/assets/images/windows-login-method/login-method-2.jpg"
+            "frontend/src/assets/images/windows-11/windows-login-method/login-method-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-login-method/login-method-2.jpg"
         ]
     },
     "180": {
@@ -692,8 +692,8 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/outdated-windows-version/windows-update-1.jpg",
-            "frontend/src/assets/images/outdated-windows-version/windows-update-2.jpg"
+            "frontend/src/assets/images/windows-11/outdated-windows-version/windows-update-1.jpg",
+            "frontend/src/assets/images/windows-11/outdated-windows-version/windows-update-2.jpg"
         ]
     },
     "182": {
@@ -707,8 +707,8 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/outdated-windows-version/windows-update-1.jpg",
-            "frontend/src/assets/images/outdated-windows-version/windows-update-2.jpg"
+            "frontend/src/assets/images/windows-11/outdated-windows-version/windows-update-1.jpg",
+            "frontend/src/assets/images/windows-11/outdated-windows-version/windows-update-2.jpg"
         ]
     },
     "190": {
@@ -777,8 +777,8 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/applications-which-start-at-boot/boot-apps-1.jpg",
-            "frontend/src/assets/images/applications-which-start-at-boot/boot-apps-2.jpg"
+            "frontend/src/assets/images/windows-11/applications-which-start-at-boot/boot-apps-1.jpg",
+            "frontend/src/assets/images/windows-11/applications-which-start-at-boot/boot-apps-2.jpg"
         ]
     },
     "210": {
@@ -1081,11 +1081,11 @@
             "If you see programs which do not need to run with admin permissions, you can right-click on them and end the task."
         ],"Screenshots":
         [
-            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-1.jpg",
-            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-2.jpg",
-            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-3.jpg",
-            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-4.jpg",
-            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-4.jpg"
+            "frontend/src/assets/images/windows-11/applications-wiht-administrative-privileges/admin-privileges-1.jpg",
+            "frontend/src/assets/images/windows-11/applications-wiht-administrative-privileges/admin-privileges-2.jpg",
+            "frontend/src/assets/images/windows-11/applications-wiht-administrative-privileges/admin-privileges-3.jpg",
+            "frontend/src/assets/images/windows-11/applications-wiht-administrative-privileges/admin-privileges-4.jpg",
+            "frontend/src/assets/images/windows-11/applications-wiht-administrative-privileges/admin-privileges-4.jpg"
         ]
     },
     "999": {
@@ -1101,11 +1101,11 @@
             "If you see programs which do not need to run with admin permissions, you can right-click on them and end the task."
         ],"Screenshots":
         [
-            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-1.jpg",
-            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-2.jpg",
-            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-3.jpg",
-            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-4.jpg",
-            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-4.jpg"
+            "frontend/src/assets/images/windows-11/applications-wiht-administrative-privileges/admin-privileges-1.jpg",
+            "frontend/src/assets/images/windows-11/applications-wiht-administrative-privileges/admin-privileges-2.jpg",
+            "frontend/src/assets/images/windows-11/applications-wiht-administrative-privileges/admin-privileges-3.jpg",
+            "frontend/src/assets/images/windows-11/applications-wiht-administrative-privileges/admin-privileges-4.jpg",
+            "frontend/src/assets/images/windows-11/applications-wiht-administrative-privileges/admin-privileges-4.jpg"
         ]
     }
 }
