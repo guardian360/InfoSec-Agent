@@ -6,7 +6,7 @@ import dataFr from '../databases/database.fr.json' assert { type: 'json' };
 import dataNl from '../databases/database.nl.json' assert { type: 'json' };
 import dataPt from '../databases/database.pt.json' assert { type: 'json' };
 
-import {openIssuesPage,getUserSettings} from './issues.js';
+import {openIssuesPage, getUserSettings} from './issues.js';
 import {getLocalization} from './localize.js';
 import {retrieveTheme} from './personalize.js';
 
