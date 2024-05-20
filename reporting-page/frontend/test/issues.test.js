@@ -394,29 +394,28 @@ describe('Issues table', function() {
     expect(myDropdownTable.classList.contains('show')).toBe(false);
   });
   it('should use the correct data object based on user language settings', async () => {
-    
     // Define the language settings and the corresponding expected data
     const languageSettings = [
-      { language: 0, expectedData: dataDe },
-      { language: 1, expectedData: data },
-      { language: 2, expectedData: dataEnUS },
-      { language: 3, expectedData: dataEs },
-      { language: 4, expectedData: dataFr },
-      { language: 5, expectedData: dataNl },
-      { language: 6, expectedData: dataPt },
-      { language: 999, expectedData: data }, // Default case
+      {language: 0, expectedData: dataDe},
+      {language: 1, expectedData: data},
+      {language: 2, expectedData: dataEnUS},
+      {language: 3, expectedData: dataEs},
+      {language: 4, expectedData: dataFr},
+      {language: 5, expectedData: dataNl},
+      {language: 6, expectedData: dataPt},
+      {language: 999, expectedData: data}, // Default case
     ];
     const loadUserSettingsMock = jest.spyOn(await import('../wailsjs/go/main/App.js'), 'LoadUserSettings');
 
-    for (const { language, expectedData } of languageSettings) {
-      loadUserSettingsMock.mockResolvedValueOnce({ Language: language });
+    for (const {language, expectedData} of languageSettings) {
+      loadUserSettingsMock.mockResolvedValueOnce({Language: language});
       // Prepare the issues array
       const issues = [
-        { id: 1, severity: 1, jsonkey: 51 }, // assuming 51 exists in all datasets
+        {id: 1, severity: 1, jsonkey: 51}, // assuming 51 exists in all datasets
       ];
 
       // Act
-      const { fillTable } = await import('../src/js/issues.js');
+      const {fillTable} = await import('../src/js/issues.js');
       const issueTable = document.createElement('tbody');
       await fillTable(issueTable, issues, true);
 
