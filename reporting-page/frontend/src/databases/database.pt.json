@@ -20,6 +20,11 @@
             "Vá para Iniciar > Configurações > Bluetooth e dispositivos.", 
             "Aqui você pode ver quais dispositivos estão conectados via bluetooth e pode removê-los, se necessário."
         ],
+        "SolutionWindows10": 
+        [   
+            "Vá para Iniciar > Configurações > Dispositivos > Bluetooth e outros dispositivos.", 
+            "Aqui você pode ver quais dispositivos estão conectados via Bluetooth e pode removê-los, se necessário."
+        ],        
         "Screenshots":
         [
             "frontend/src/assets/images/windows-11/devices-connected-via-bluetooth/bluetooth-devices-1.jpg",
@@ -88,6 +93,13 @@
             "Agora selecione 'remover' e confirme a exclusão da conta.",
             "Para finalizar, reinicie o computador."
         ],
+        "SolutionWindows10": 
+        [   
+            "Vá para Iniciar > Configurações > Contas > Família e outros usuários.", 
+            "Aqui você verá as outras contas. Se houver uma conta que você não conhece ou algo chamado 'convidado', clique nela.",
+            "Agora selecione 'remover' e confirme a exclusão da conta.",
+            "Para terminar, reinicie seu computador."
+        ],        
         "Screenshots":
         [
             "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
@@ -129,6 +141,11 @@
             "Vá para Iniciar > Configurações > Privacidade e segurança > Geral.",
             "Aqui você pode controlar as configurações de ID de publicidade e ativar/desativar o recurso."
         ],
+        "SolutionWindows10": 
+        [
+            "Vá para Iniciar > Configurações > Privacidade > Geral.",
+            "Aqui você pode controlar as configurações de ID de publicidade e ativar/desativar o recurso."
+        ],        
         "Screenshots":
         [
             "frontend/src/assets/images/windows-11/network-sharing/nearby-sharing-1.jpg",
@@ -162,6 +179,12 @@
             "Vá para Iniciar > Configurações > Sistema > Configurações de compartilhamento de proximidade.", 
             "Aqui você pode controlar as configurações de compartilhamento de rede e desativar o recurso."
         ],
+        "SolutionWindows10": 
+        [   
+            "Não foi possível recuperar o status das configurações de compartilhamento de rede. Para verificar o status e potencialmente resolver o problema de compartilhamento de rede, siga estas etapas.",
+            "Vá para Iniciar > Configurações > Sistema > Experiências compartilhadas.", 
+            "Aqui você pode controlar as configurações de compartilhamento de rede e desativar o recurso."
+        ],        
         "Screenshots":
         [
             "frontend/src/assets/images/windows-11/network-sharing/nearby-sharing-1.jpg",
@@ -216,6 +239,11 @@
             "Selecione Iniciar > Configurações > Privacidade e segurança.", 
             "Aqui você pode selecionar localização para ver quais aplicativos têm acesso e pode revogar o acesso para determinados aplicativos."
         ],
+        "SolutionWindows10": 
+        [   
+            "Vá para Iniciar > Configurações > Privacidade > Localização.", 
+            "Aqui você pode selecionar a localização para ver quais aplicativos têm acesso, e pode revogar o acesso para certos aplicativos."
+        ],        
         "Screenshots":
         [
             "frontend/src/assets/images/windows-11/applications-with-location-permission/location-permissions-1.jpg",
@@ -247,6 +275,11 @@
         [   
             "Selecione Iniciar > Configurações > Privacidade e segurança.", 
             "Aqui você pode selecionar microfone para ver quais aplicativos têm acesso e pode revogar o acesso para determinados aplicativos."
+        ],
+        "SolutionWindows10": 
+        [   
+            "Vá para Iniciar > Configurações > Privacidade > Microfone.", 
+            "Aqui você pode selecionar o microfone para ver quais aplicativos têm acesso e pode revogar o acesso para determinados aplicativos."
         ],
         "Screenshots":
         [
@@ -280,6 +313,11 @@
             "Selecione Iniciar > Configurações > Privacidade e segurança.", 
             "Aqui você pode selecionar webcam para ver quais aplicativos têm acesso e pode revogar o acesso para determinados aplicativos."
         ],
+        "SolutionWindows10": 
+        [   
+            "Vá para Iniciar > Configurações > Privacidade > Câmera.", 
+            "Aqui você pode selecionar a câmera para ver quais aplicativos têm acesso e pode revogar o acesso para determinados aplicativos."
+        ],
         "Screenshots":
         [
             "frontend/src/assets/images/windows-11/applications-with-webcam-permission/webcam-permissions-1.jpg",
@@ -312,6 +350,11 @@
             "Selecione Iniciar > Configurações > Privacidade e segurança.", 
             "Aqui você pode selecionar compromissos para ver quais aplicativos têm acesso e pode revogar o acesso para determinados aplicativos."
         ],
+        "SolutionWindows10": 
+        [   
+            "Vá para Iniciar > Configurações > Privacidade > Calendário.", 
+            "Aqui você pode selecionar o calendário para ver quais aplicativos têm acesso e pode revogar o acesso para determinados aplicativos."
+        ],
         "Screenshots":
         [
             "frontend/src/assets/images/windows-11/applications-with-calendar-permission/calendar-permissions-1.jpg",
@@ -342,6 +385,11 @@
         "Solution": 
         [   
             "Selecione Iniciar > Configurações > Privacidade e segurança.", 
+            "Aqui você pode selecionar contatos para ver quais aplicativos têm acesso e pode revogar o acesso para determinados aplicativos."
+        ],
+        "SolutionWindows10": 
+        [   
+            "Vá para Iniciar > Configurações > Privacidade > Contatos.", 
             "Aqui você pode selecionar contatos para ver quais aplicativos têm acesso e pode revogar o acesso para determinados aplicativos."
         ],
         "Screenshots":
@@ -501,6 +549,17 @@
             "Aqui você pode mover o controle deslizante para 'Sempre notificar' para ativar o UAC. Se for solicitado pelo UAC, selecione 'Sim' para continuar.",
             "Para finalizar, reinicie o computador."
         ],
+        "SolutionWindows10": 
+        [   
+            "As configurações de controle de conta de usuário estão ativadas para aplicativos, configurá-las para sempre notificar é uma opção mais segura. Para ativar o UAC, siga estas etapas",
+            "No seu teclado, pressione 'Windows+R' para abrir a janela Executar.", 
+            "Digite 'Painel de Controle' e selecione OK.",
+            "Selecione 'Contas de Usuário'.",
+            "Selecione 'Contas de Usuário' novamente.",
+            "Selecione 'Alterar configurações de Controle de Conta de Usuário'. Se o UAC solicitar, selecione 'Sim' para continuar.",
+            "Aqui você pode mover o controle deslizante para 'Sempre notificar' para ativar o UAC. Se o UAC solicitar, selecione 'Sim' para continuar.",
+            "Para finalizar, reinicie seu computador."
+        ],
         "Screenshots":
         [
             "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
@@ -547,7 +606,19 @@
             "Selecione 'Alterar configurações de Controle de Conta de Usuário'. Se for solicitado pelo UAC, selecione 'Sim' para continuar.",
             "Aqui você pode mover o controle deslizante para 'Sempre notificar' para ativar o UAC. Se for solicitado pelo UAC, selecione 'Sim' para continuar.",
             "Para finalizar, reinicie o computador."
-        ],"Screenshots":
+        ],
+        "SolutionWindows10": 
+        [   
+            "As configurações de controle de conta de usuário estão ativadas para aplicativos, configurá-las para sempre notificar é uma opção mais segura. Para ativar o UAC, siga estas etapas",
+            "No seu teclado, pressione 'Windows+R' para abrir a janela Executar.", 
+            "Digite 'Painel de Controle' e selecione OK.",
+            "Selecione 'Contas de Usuário'.",
+            "Selecione 'Contas de Usuário' novamente.",
+            "Selecione 'Alterar configurações de Controle de Conta de Usuário'. Se o UAC solicitar, selecione 'Sim' para continuar.",
+            "Aqui você pode mover o controle deslizante para 'Sempre notificar' para ativar o UAC. Se o UAC solicitar, selecione 'Sim' para continuar.",
+            "Para finalizar, reinicie seu computador."
+        ],
+        "Screenshots":
         [
             "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
             "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
@@ -582,7 +653,19 @@
             "Selecione 'Alterar configurações de Controle de Conta de Usuário'. Se for solicitado pelo UAC, selecione 'Sim' para continuar.",
             "Aqui você pode mover o controle deslizante para 'Sempre notificar' para ativar o UAC. Se for solicitado pelo UAC, selecione 'Sim' para continuar.",
             "Para finalizar, reinicie o computador."
-        ],"Screenshots":
+        ],
+        "SolutionWindows10": 
+        [   
+            "As configurações de controle de conta de usuário estão ativadas para aplicativos, configurá-las para sempre notificar é uma opção mais segura. Para ativar o UAC, siga estas etapas",
+            "No seu teclado, pressione 'Windows+R' para abrir a janela Executar.", 
+            "Digite 'Painel de Controle' e selecione OK.",
+            "Selecione 'Contas de Usuário'.",
+            "Selecione 'Contas de Usuário' novamente.",
+            "Selecione 'Alterar configurações de Controle de Conta de Usuário'. Se o UAC solicitar, selecione 'Sim' para continuar.",
+            "Aqui você pode mover o controle deslizante para 'Sempre notificar' para ativar o UAC. Se o UAC solicitar, selecione 'Sim' para continuar.",
+            "Para finalizar, reinicie seu computador."
+        ],
+        "Screenshots":
         [
             "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
             "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",

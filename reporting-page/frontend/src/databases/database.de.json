@@ -20,6 +20,11 @@
             "Gehen Sie zu Start > Einstellungen > Bluetooth & Geräte.", 
             "Hier können Sie sehen, welche Geräte über Bluetooth verbunden sind, und diese bei Bedarf entfernen."
         ],
+        "SolutionWindows10": 
+        [   
+            "Gehen Sie zu Start > Einstellungen > Geräte > Bluetooth und andere Geräte.", 
+            "Hier können Sie sehen, welche Geräte über Bluetooth verbunden sind, und Sie können sie bei Bedarf entfernen."
+        ],        
         "Screenshots":
         [
             "frontend/src/assets/images/windows-11/devices-connected-via-bluetooth/bluetooth-devices-1.jpg",
@@ -88,6 +93,13 @@
             "Wählen Sie jetzt 'Entfernen' und bestätigen Sie die Löschung des Kontos.",
             "Um abzuschließen, starten Sie Ihren Computer neu."
         ],
+        "SolutionWindows10": 
+        [   
+            "Gehen Sie zu Start > Einstellungen > Konten > Familie & andere Benutzer.", 
+            "Hier sehen Sie die anderen Konten. Wenn es ein Konto gibt, das Sie nicht kennen, oder etwas, das 'Gast' genannt wird, klicken Sie darauf.",
+            "Wählen Sie nun 'Entfernen' und bestätigen Sie das Löschen des Kontos.",
+            "Starten Sie abschließend Ihren Computer neu."
+        ],
         "Screenshots":
         [
             "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
@@ -129,6 +141,11 @@
             "Gehen Sie zu Start > Einstellungen > Datenschutz & Sicherheit > Allgemein",
             "Hier können Sie die Einstellungen der Werbe-ID steuern und die Funktion ein-/ausschalten."
         ],
+        "SolutionWindows10": 
+        [
+            "Gehen Sie zu Start > Einstellungen > Datenschutz > Allgemein.",
+            "Hier können Sie die Einstellungen für die Werbe-ID steuern und die Funktion ein-/ausschalten."
+        ],        
         "Screenshots":
         [
             "frontend/src/assets/images/windows-11/network-sharing/nearby-sharing-1.jpg",
@@ -162,6 +179,12 @@
             "Gehen Sie zu Start > Einstellungen > System > Einstellungen für die Nähefreigabe.", 
             "Hier können Sie die Einstellungen der Netzwerkfreigabe steuern und die Funktion ausschalten."
         ],
+        "SolutionWindows10": 
+        [   
+            "Es war nicht möglich, den Status der Netzwerkfreigabeeinstellungen abzurufen. Um den Status zu überprüfen und möglicherweise das Problem der Netzwerkfreigabe zu lösen, befolgen Sie diese Schritte.",
+            "Gehen Sie zu Start > Einstellungen > System > Geteilte Erfahrungen.", 
+            "Hier können Sie die Netzwerkfreigabeeinstellungen steuern und die Funktion ausschalten."
+        ],        
         "Screenshots":
         [
             "frontend/src/assets/images/windows-11/network-sharing/nearby-sharing-1.jpg",
@@ -216,6 +239,11 @@
             "Wählen Sie Start > Einstellungen > Datenschutz & Sicherheit.", 
             "Hier können Sie den Standort auswählen, um zu sehen, welche Anwendungen Zugriff haben, und den Zugriff für bestimmte Anwendungen widerrufen."
         ],
+        "SolutionWindows10": 
+        [   
+            "Gehen Sie zu Start > Einstellungen > Datenschutz > Ortung.", 
+            "Hier können Sie den Standort auswählen, um zu sehen, welche Anwendungen darauf zugreifen können, und Sie können den Zugriff für bestimmte Anwendungen widerrufen."
+        ],        
         "Screenshots":
         [
             "frontend/src/assets/images/windows-11/applications-with-location-permission/location-permissions-1.jpg",
@@ -247,6 +275,11 @@
         [   
             "Wählen Sie Start > Einstellungen > Datenschutz & Sicherheit.", 
             "Hier können Sie das Mikrofon auswählen, um zu sehen, welche Anwendungen Zugriff haben, und den Zugriff für bestimmte Anwendungen widerrufen."
+        ],
+        "SolutionWindows10": 
+        [   
+            "Gehen Sie zu Start > Einstellungen > Datenschutz > Mikrofon.", 
+            "Hier können Sie das Mikrofon auswählen, um zu sehen, welche Anwendungen darauf zugreifen können, und Sie können den Zugriff für bestimmte Anwendungen widerrufen."
         ],
         "Screenshots":
         [
@@ -280,6 +313,11 @@
             "Wählen Sie Start > Einstellungen > Datenschutz & Sicherheit.", 
             "Hier können Sie die Webcam auswählen, um zu sehen, welche Anwendungen Zugriff haben, und den Zugriff für bestimmte Anwendungen widerrufen."
         ],
+        "SolutionWindows10": 
+        [   
+            "Gehen Sie zu Start > Einstellungen > Datenschutz > Kamera.", 
+            "Hier können Sie die Kamera auswählen, um zu sehen, welche Anwendungen darauf zugreifen können, und Sie können den Zugriff für bestimmte Anwendungen widerrufen."
+        ],
         "Screenshots":
         [
             "frontend/src/assets/images/windows-11/applications-with-webcam-permission/webcam-permissions-1.jpg",
@@ -312,6 +350,11 @@
             "Wählen Sie Start > Einstellungen > Datenschutz & Sicherheit.", 
             "Hier können Sie die Termine auswählen, um zu sehen, welche Anwendungen Zugriff haben, und den Zugriff für bestimmte Anwendungen widerrufen."
         ],
+        "SolutionWindows10": 
+        [   
+            "Gehen Sie zu Start > Einstellungen > Datenschutz > Kalender.", 
+            "Hier können Sie die Kalender auswählen, um zu sehen, welche Anwendungen darauf zugreifen können, und Sie können den Zugriff für bestimmte Anwendungen widerrufen."
+        ],
         "Screenshots":
         [
             "frontend/src/assets/images/windows-11/applications-with-calendar-permission/calendar-permissions-1.jpg",
@@ -343,6 +386,11 @@
         [   
             "Wählen Sie Start > Einstellungen > Datenschutz & Sicherheit.", 
             "Hier können Sie die Kontakte auswählen, um zu sehen, welche Anwendungen Zugriff haben, und den Zugriff für bestimmte Anwendungen widerrufen."
+        ],
+        "SolutionWindows10": 
+        [   
+            "Gehen Sie zu Start > Einstellungen > Datenschutz > Kontakte.", 
+            "Hier können Sie die Kontakte auswählen, um zu sehen, welche Anwendungen darauf zugreifen können, und Sie können den Zugriff für bestimmte Anwendungen widerrufen."
         ],
         "Screenshots":
         [
@@ -501,6 +549,17 @@
             "Hier können Sie den Schieberegler auf 'Immer benachrichtigen' stellen, um die UAC zu aktivieren. Wenn Sie von der UAC aufgefordert werden, wählen Sie 'Ja', um fortzufahren.",
             "Um abzuschließen, starten Sie Ihren Computer neu."
         ],
+        "SolutionWindows10": 
+        [   
+            "Die Einstellungen für die Benutzerkontensteuerung sind für Apps aktiviert, die Einstellung auf 'Immer benachrichtigen' ist eine sicherere Option. Um UAC zu aktivieren, befolgen Sie diese Schritte",
+            "Drücken Sie auf Ihrer Tastatur 'Windows+R', um das Ausführen-Fenster zu öffnen.", 
+            "Geben Sie 'Systemsteuerung' ein und wählen Sie dann OK.",
+            "Wählen Sie 'Benutzerkonten'.",
+            "Wählen Sie erneut 'Benutzerkonten'.",
+            "Wählen Sie 'Einstellungen der Benutzerkontensteuerung ändern'. Wenn Sie von der Benutzerkontensteuerung dazu aufgefordert werden, wählen Sie 'Ja', um fortzufahren.",
+            "Hier können Sie den Schieberegler auf 'Immer benachrichtigen' stellen, um UAC zu aktivieren. Wenn Sie von der Benutzerkontensteuerung dazu aufgefordert werden, wählen Sie 'Ja', um fortzufahren.",
+            "Starten Sie abschließend Ihren Computer neu."
+        ],
         "Screenshots":
         [
             "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
@@ -546,7 +605,19 @@
             "Wählen Sie 'Einstellungen der Benutzerkontensteuerung ändern'. Wenn Sie von der UAC aufgefordert werden, wählen Sie 'Ja', um fortzufahren.",
             "Hier können Sie den Schieberegler auf 'Immer benachrichtigen' stellen, um die UAC zu aktivieren. Wenn Sie von der UAC aufgefordert werden, wählen Sie 'Ja', um fortzufahren.",
             "Um abzuschließen, starten Sie Ihren Computer neu."
-        ],"Screenshots":
+        ],
+        "SolutionWindows10": 
+        [   
+            "Die Einstellungen für die Benutzerkontensteuerung sind für Apps aktiviert, die Einstellung auf 'Immer benachrichtigen' ist eine sicherere Option. Um UAC zu aktivieren, befolgen Sie diese Schritte",
+            "Drücken Sie auf Ihrer Tastatur 'Windows+R', um das Ausführen-Fenster zu öffnen.", 
+            "Geben Sie 'Systemsteuerung' ein und wählen Sie dann OK.",
+            "Wählen Sie 'Benutzerkonten'.",
+            "Wählen Sie erneut 'Benutzerkonten'.",
+            "Wählen Sie 'Einstellungen der Benutzerkontensteuerung ändern'. Wenn Sie von der Benutzerkontensteuerung dazu aufgefordert werden, wählen Sie 'Ja', um fortzufahren.",
+            "Hier können Sie den Schieberegler auf 'Immer benachrichtigen' stellen, um UAC zu aktivieren. Wenn Sie von der Benutzerkontensteuerung dazu aufgefordert werden, wählen Sie 'Ja', um fortzufahren.",
+            "Starten Sie abschließend Ihren Computer neu."
+        ],
+        "Screenshots":
         [
             "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
             "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
@@ -580,7 +651,19 @@
             "Wählen Sie 'Einstellungen der Benutzerkontensteuerung ändern'. Wenn Sie von der UAC aufgefordert werden, wählen Sie 'Ja', um fortzufahren.",
             "Hier können Sie den Schieberegler auf 'Immer benachrichtigen' stellen, um die UAC zu aktivieren. Wenn Sie von der UAC aufgefordert werden, wählen Sie 'Ja', um fortzufahren.",
             "Um abzuschließen, starten Sie Ihren Computer neu."
-        ],"Screenshots":
+        ],
+        "SolutionWindows10": 
+        [   
+            "Die Einstellungen für die Benutzerkontensteuerung sind für Apps aktiviert, die Einstellung auf 'Immer benachrichtigen' ist eine sicherere Option. Um UAC zu aktivieren, befolgen Sie diese Schritte",
+            "Drücken Sie auf Ihrer Tastatur 'Windows+R', um das Ausführen-Fenster zu öffnen.", 
+            "Geben Sie 'Systemsteuerung' ein und wählen Sie dann OK.",
+            "Wählen Sie 'Benutzerkonten'.",
+            "Wählen Sie erneut 'Benutzerkonten'.",
+            "Wählen Sie 'Einstellungen der Benutzerkontensteuerung ändern'. Wenn Sie von der Benutzerkontensteuerung dazu aufgefordert werden, wählen Sie 'Ja', um fortzufahren.",
+            "Hier können Sie den Schieberegler auf 'Immer benachrichtigen' stellen, um UAC zu aktivieren. Wenn Sie von der Benutzerkontensteuerung dazu aufgefordert werden, wählen Sie 'Ja', um fortzufahren.",
+            "Starten Sie abschließend Ihren Computer neu."
+        ],
+        "Screenshots":
         [
             "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
             "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",

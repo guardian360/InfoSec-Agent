@@ -20,6 +20,11 @@
             "Ga naar Start > Instellingen > Bluetooth en apparaten.", 
             "Hier kunt u zien welke apparaten via bluetooth zijn verbonden, en u kunt ze indien nodig verwijderen."
         ],
+        "SolutionWindows10": 
+        [   
+            "Ga naar Start > Instellingen > Apparaten > Bluetooth en andere apparaten.", 
+            "Hier kunt u zien welke apparaten via Bluetooth zijn verbonden en u kunt ze indien nodig verwijderen."
+        ],        
         "Screenshots":
         [
             "frontend/src/assets/images/windows-11/devices-connected-via-bluetooth/bluetooth-devices-1.jpg",
@@ -88,6 +93,13 @@
             "Selecteer nu 'verwijderen' en bevestig de verwijdering van het account.",
             "Start uw computer opnieuw op om af te ronden."
         ],
+        "SolutionWindows10": 
+        [   
+            "Ga naar Start > Instellingen > Accounts > Gezin en andere gebruikers.", 
+            "Hier ziet u de andere accounts. Als er een account is dat u niet kent of iets dat 'gast' heet, klik erop.",
+            "Selecteer nu 'verwijderen' en bevestig het verwijderen van het account.",
+            "Start ten slotte uw computer opnieuw op."
+        ],        
         "Screenshots":
         [
             "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
@@ -129,6 +141,11 @@
             "Ga naar Start > Instellingen > Privacy en beveiliging > Algemeen.",
             "Hier kunt u de instellingen voor advertentie-ID beheren en de functie in- of uitschakelen."
         ],
+        "SolutionWindows10": 
+        [
+            "Ga naar Start > Instellingen > Privacy > Algemeen.",
+            "Hier kunt u de advertentie-ID-instellingen beheren en de functie in-/uitschakelen."
+        ],        
         "Screenshots":
         [
             "frontend/src/assets/images/windows-11/network-sharing/nearby-sharing-1.jpg",
@@ -162,6 +179,12 @@
             "Ga naar Start > Instellingen > Systeem > Instellingen voor dichtbij delen.", 
             "Hier kunt u de netwerkdelingsinstellingen beheren en de functie uitschakelen."
         ],
+        "SolutionWindows10": 
+        [   
+            "Het was niet mogelijk om de status van de netwerkdelingsinstellingen op te halen. Volg deze stappen om de status te controleren en mogelijk het probleem van de netwerkdeling op te lossen.",
+            "Ga naar Start > Instellingen > Systeem > Gedeelde ervaringen.", 
+            "Hier kunt u de netwerkdelingsinstellingen beheren en de functie uitschakelen."
+        ],        
         "Screenshots":
         [
             "frontend/src/assets/images/windows-11/network-sharing/nearby-sharing-1.jpg",
@@ -216,6 +239,11 @@
             "Selecteer Start > Instellingen > Privacy en beveiliging.", 
             "Hier kunt u locatie selecteren om te zien welke applicaties toegang hebben, en u kunt de toegang voor bepaalde applicaties intrekken."
         ],
+        "SolutionWindows10": 
+        [   
+            "Ga naar Start > Instellingen > Privacy > Locatie.", 
+            "Hier kunt u locatie selecteren om te zien welke applicaties toegang hebben, en u kunt de toegang voor bepaalde applicaties intrekken."
+        ],        
         "Screenshots":
         [
             "frontend/src/assets/images/windows-11/applications-with-location-permission/location-permissions-1.jpg",
@@ -246,6 +274,11 @@
         "Solution": 
         [   
             "Selecteer Start > Instellingen > Privacy en beveiliging.", 
+            "Hier kunt u microfoon selecteren om te zien welke applicaties toegang hebben, en u kunt de toegang voor bepaalde applicaties intrekken."
+        ],
+        "SolutionWindows10": 
+        [   
+            "Ga naar Start > Instellingen > Privacy > Microfoon.", 
             "Hier kunt u microfoon selecteren om te zien welke applicaties toegang hebben, en u kunt de toegang voor bepaalde applicaties intrekken."
         ],
         "Screenshots":
@@ -280,6 +313,11 @@
             "Selecteer Start > Instellingen > Privacy en beveiliging.", 
             "Hier kunt u webcam selecteren om te zien welke applicaties toegang hebben, en u kunt de toegang voor bepaalde applicaties intrekken."
         ],
+        "SolutionWindows10": 
+        [   
+            "Ga naar Start > Instellingen > Privacy > Camera.", 
+            "Hier kunt u webcam selecteren om te zien welke applicaties toegang hebben, en u kunt de toegang voor bepaalde applicaties intrekken."
+        ],
         "Screenshots":
         [
             "frontend/src/assets/images/windows-11/applications-with-webcam-permission/webcam-permissions-1.jpg",
@@ -312,6 +350,11 @@
             "Selecteer Start > Instellingen > Privacy en beveiliging.", 
             "Hier kunt u afspraken selecteren om te zien welke applicaties toegang hebben, en u kunt de toegang voor bepaalde applicaties intrekken."
         ],
+        "SolutionWindows10": 
+        [   
+            "Ga naar Start > Instellingen > Privacy > Agenda.", 
+            "Hier kunt u afspraken selecteren om te zien welke applicaties toegang hebben, en u kunt de toegang voor bepaalde applicaties intrekken."
+        ],
         "Screenshots":
         [
             "frontend/src/assets/images/windows-11/applications-with-calendar-permission/calendar-permissions-1.jpg",
@@ -336,13 +379,18 @@
         ]
     },
     "100": {
-        "Name": "Applicaties met contactpersonenpermissie",
+        "Name": "Applicaties met contactenpermissie",
         "Type": "Privacy",
-        "Information": "Begrijpen welke applicaties toegang hebben tot uw contactpersonen op uw Windows-computer is belangrijk voor het beschermen van uw privacy. Het stelt u in staat te controleren wie uw contactinformatie kan bekijken en mogelijk misbruiken, ongeautoriseerde toegang te voorkomen en datagebruik te beheren.",
+        "Information": "Begrijpen welke applicaties toegang hebben tot uw contacten op uw Windows-computer is belangrijk voor het beschermen van uw privacy. Het stelt u in staat te controleren wie uw contactinformatie kan bekijken en mogelijk misbruiken, ongeautoriseerde toegang te voorkomen en datagebruik te beheren.",
         "Solution": 
         [   
             "Selecteer Start > Instellingen > Privacy en beveiliging.", 
-            "Hier kunt u contactpersonen selecteren om te zien welke applicaties toegang hebben, en u kunt de toegang voor bepaalde applicaties intrekken."
+            "Hier kunt u contacten selecteren om te zien welke applicaties toegang hebben, en u kunt de toegang voor bepaalde applicaties intrekken."
+        ],
+        "SolutionWindows10": 
+        [   
+            "Ga naar Start > Instellingen > Privacy > Contacten.", 
+            "Hier kunt u contacten selecteren om te zien welke applicaties toegang hebben, en u kunt de toegang voor bepaalde applicaties intrekken."
         ],
         "Screenshots":
         [
@@ -501,6 +549,17 @@
             "Hier kunt u de schuifregelaar naar 'Altijd melden' verplaatsen om UAC in te schakelen. Als u wordt gevraagd door UAC, selecteer 'Ja' om door te gaan.",
             "Start uw computer opnieuw op om af te ronden."
         ],
+        "SolutionWindows10": 
+        [   
+            "De instellingen voor Gebruikersaccountbeheer zijn ingeschakeld voor apps, het instellen op altijd melden is een veiligere optie. Volg deze stappen om UAC in te schakelen",
+            "Druk op uw toetsenbord op 'Windows+R' om het venster Uitvoeren te openen.", 
+            "Typ 'Configuratiescherm' en selecteer OK.",
+            "Selecteer 'Gebruikersaccounts'.",
+            "Selecteer opnieuw 'Gebruikersaccounts'.",
+            "Selecteer 'Instellingen voor Gebruikersaccountbeheer wijzigen'. Als UAC u hierom vraagt, selecteer 'Ja' om door te gaan.",
+            "Hier kunt u de schuifregelaar naar 'Altijd melden' verplaatsen om UAC in te schakelen. Als UAC u hierom vraagt, selecteer 'Ja' om door te gaan.",
+            "Start ten slotte uw computer opnieuw op."
+        ],
         "Screenshots":
         [
             "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
@@ -546,7 +605,19 @@
             "Selecteer 'Instellingen voor gebruikersaccountbeheer wijzigen'. Als u wordt gevraagd door UAC, selecteer 'Ja' om door te gaan.",
             "Hier kunt u de schuifregelaar naar 'Altijd melden' verplaatsen om UAC in te schakelen. Als u wordt gevraagd door UAC, selecteer 'Ja' om door te gaan.",
             "Start uw computer opnieuw op om af te ronden."
-        ],"Screenshots":
+        ],
+        "SolutionWindows10": 
+        [   
+            "De instellingen voor Gebruikersaccountbeheer zijn ingeschakeld voor apps, het instellen op altijd melden is een veiligere optie. Volg deze stappen om UAC in te schakelen",
+            "Druk op uw toetsenbord op 'Windows+R' om het venster Uitvoeren te openen.", 
+            "Typ 'Configuratiescherm' en selecteer OK.",
+            "Selecteer 'Gebruikersaccounts'.",
+            "Selecteer opnieuw 'Gebruikersaccounts'.",
+            "Selecteer 'Instellingen voor Gebruikersaccountbeheer wijzigen'. Als UAC u hierom vraagt, selecteer 'Ja' om door te gaan.",
+            "Hier kunt u de schuifregelaar naar 'Altijd melden' verplaatsen om UAC in te schakelen. Als UAC u hierom vraagt, selecteer 'Ja' om door te gaan.",
+            "Start ten slotte uw computer opnieuw op."
+        ],
+        "Screenshots":
         [
             "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
             "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
@@ -580,7 +651,19 @@
             "Selecteer 'Instellingen voor gebruikersaccountbeheer wijzigen'. Als u wordt gevraagd door UAC, selecteer 'Ja' om door te gaan.",
             "Hier kunt u de schuifregelaar naar 'Altijd melden' verplaatsen om UAC in te schakelen. Als u wordt gevraagd door UAC, selecteer 'Ja' om door te gaan.",
             "Start uw computer opnieuw op om af te ronden."
-        ],"Screenshots":
+        ],
+        "SolutionWindows10": 
+        [   
+            "De instellingen voor Gebruikersaccountbeheer zijn ingeschakeld voor apps, het instellen op altijd melden is een veiligere optie. Volg deze stappen om UAC in te schakelen",
+            "Druk op uw toetsenbord op 'Windows+R' om het venster Uitvoeren te openen.", 
+            "Typ 'Configuratiescherm' en selecteer OK.",
+            "Selecteer 'Gebruikersaccounts'.",
+            "Selecteer opnieuw 'Gebruikersaccounts'.",
+            "Selecteer 'Instellingen voor Gebruikersaccountbeheer wijzigen'. Als UAC u hierom vraagt, selecteer 'Ja' om door te gaan.",
+            "Hier kunt u de schuifregelaar naar 'Altijd melden' verplaatsen om UAC in te schakelen. Als UAC u hierom vraagt, selecteer 'Ja' om door te gaan.",
+            "Start ten slotte uw computer opnieuw op."
+        ],
+        "Screenshots":
         [
             "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
             "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
