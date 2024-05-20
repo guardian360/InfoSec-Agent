@@ -3,7 +3,7 @@
 // Exported function(s): _
 package main
 
-//go:generate rsrc -ico reporting-page\build\windows\icon.ico -o rsrc.syso
+//go:generate go-winres make --product-version=git-tag --file-version=git-tag
 
 import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/localization"
