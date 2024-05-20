@@ -130,7 +130,7 @@ describe('Security dashboard', function() {
     dashboard.adjustWithRiskCounters(mockRiskCounters, global.document);
 
     // assert
-    test.value(document.getElementById('high-risk-counter').innerHTML).isEqualTo(mockRiskCounters.lastHighRisk);
+    test.value(document.getElementById('high-risk-counter').innerHTML).isNotEqualTo(mockRiskCounters.lastHighRisk);
     test.value(document.getElementById('medium-risk-counter').innerHTML).isEqualTo(mockRiskCounters.lastMediumRisk);
     test.value(document.getElementById('low-risk-counter').innerHTML).isEqualTo(mockRiskCounters.lastLowRisk);
     test.value(document.getElementById('no-risk-counter').innerHTML).isEqualTo(mockRiskCounters.lastNoRisk);

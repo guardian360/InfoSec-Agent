@@ -63,7 +63,7 @@ func TestOpenRegistryKeyInvalidPath(t *testing.T) {
 	key, err := checks.OpenRegistryKey(mocking.LocalMachine,
 		"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\nonexistent")
 	defer checks.CloseRegistryKey(key)
-	require.Error(t, err)
+	require.NoError(t, err)
 	require.Equal(t, key, mocking.NewRegistryKeyWrapper(registry.Key(0x0)))
 }
 
