@@ -58,8 +58,9 @@ export function previousSolutionStep(solutionText, solutionScreenshot, solution,
 /** Load the content of the issue page
  *
  * @param {string} issueId Id of the issue to open
+ * @param {string} severity severity of the issue to open
  */
-export async function openIssuePage(issueId) {
+export async function openIssuePage(issueId, severity) {
   retrieveTheme();
   stepCounter = 0;
 
@@ -92,7 +93,7 @@ export async function openIssuePage(issueId) {
   }
 
   // Check if the issue has no screenshots, if so, display that there is no issue (acceptable)
-  if (currentIssue.Screenshots.length === 0) {
+  if (severity == 0) {
     const pageContents = document.getElementById('page-contents');
     pageContents.innerHTML = `
       <h1 class="issue-name">${currentIssue.Name}</h1>
