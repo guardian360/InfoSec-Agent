@@ -5,9 +5,7 @@ package firefox
 
 import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
-	// Necessary to use the sqlite driver
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/browsers"
-	_ "modernc.org/sqlite"
 )
 
 // CookiesFirefox inspects the cookies stored in the Firefox browser.

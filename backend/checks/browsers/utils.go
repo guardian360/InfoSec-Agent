@@ -8,7 +8,6 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 	"io"
 	"net/http"
 	"os"
@@ -16,8 +15,13 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
+
+	// Necessary to use the sqlite driver
+	_ "modernc.org/sqlite"
 )
 
 // constants to store information of the browsers
@@ -251,9 +255,8 @@ func (r RealDefaultDirGetter) GetDefaultDir(browserPath string) (string, error) 
 // Returns:
 //   - checks.Check: A Check object representing the result of the check. If tracking cookies are found, the result contains a list of cookies along with their host stored in the database.
 func QueryCookieDatabase(checkID int, browser string, databasePath string, queryParams []string, tableName string) checks.Check {
-
 	// Copy the database, so problems don't arise when the file gets locked
-	tempCookieDb := filepath.Join(os.TempDir(), "tempCookieDbchr.sqlite")
+	tempCookieDB := filepath.Join(os.TempDir(), "tempCookieDbchr.sqlite")
 
 	// Clean up the temporary file when the function returns
 	defer func(name string) {
@@ -261,22 +264,22 @@ func QueryCookieDatabase(checkID int, browser string, databasePath string, query
 		if err != nil {
 			logger.Log.ErrorWithErr("Error removing temporary "+browser+" cookie database: ", err)
 		}
-	}(tempCookieDb)
+	}(tempCookieDB)
 
 	// Copy the database to a temporary location
-	copyError := CopyFile(databasePath, tempCookieDb, nil, nil)
+	copyError := CopyFile(databasePath, tempCookieDB, nil, nil)
 	if copyError != nil {
 		return checks.NewCheckErrorf(checkID, "Unable to make a copy of "+browser+" database: ", copyError)
 	}
 
-	db, err := sql.Open("sqlite", tempCookieDb)
+	db, err := sql.Open("sqlite", tempCookieDB)
 	if err != nil {
 		return checks.NewCheckError(checkID, err)
 	}
 	defer func(db *sql.DB) {
 		err = db.Close()
 		if err != nil {
-			logger.Log.ErrorWithErr("Error closing database: ", err)
+			logger.Log.ErrorWithErr("Error closing "+browser+" database: ", err)
 		}
 	}(db)
 
@@ -293,7 +296,7 @@ func QueryCookieDatabase(checkID int, browser string, databasePath string, query
 	defer func(rows *sql.Rows) {
 		err = rows.Close()
 		if err != nil {
-			logger.Log.ErrorWithErr("Error closing rows: ", err)
+			logger.Log.ErrorWithErr("Error closing "+browser+" rows: ", err)
 		}
 	}(rows)
 
