@@ -41,14 +41,14 @@ func CookiesFirefox(profileFinder browsers.FirefoxProfileFinder) checks.Check {
 	defer func(name string) {
 		err = os.Remove(name)
 		if err != nil {
-			logger.Log.ErrorWithErr("Error removing file: ", err)
+			logger.Log.ErrorWithErr("Error removing temporary Firefox cookie database: ", err)
 		}
 	}(tempCookieDbff)
 
 	// Copy the database to a temporary location
 	copyError := browsers.CopyFile(ffdirectory[0]+"\\cookies.sqlite", tempCookieDbff, nil, nil)
 	if copyError != nil {
-		return checks.NewCheckErrorf(checks.CookiesFirefoxID, "Unable to make a copy of the file", copyError)
+		return checks.NewCheckErrorf(checks.CookiesFirefoxID, "Unable to make a copy of Firefox database: ", copyError)
 	}
 
 	db, err := sql.Open("sqlite", tempCookieDbff)
@@ -87,8 +87,8 @@ func CookiesFirefox(profileFinder browsers.FirefoxProfileFinder) checks.Check {
 			return checks.NewCheckError(checks.CookiesFirefoxID, err)
 		}
 		// Check if the cookie is a (possible) tracking cookie
-		// Check is based on the fact that Google Analytics tracking cookies usually contain the substrings "utm" or "ga"
-		if strings.Contains(name, "utm") || strings.Contains(name, "ga") {
+		// Check is based on the fact that Google Analytics tracking cookies usually contain the substrings "_utm" or "_ga"
+		if strings.Contains(name, "_utm") || strings.Contains(name, "_ga") {
 			possibleTrackingCookie = true
 			// Append the cookie to the result list
 			output = append(output, name, host)
