@@ -1,0 +1,1098 @@
+{
+    "10": {
+        "Name": "Geen apparaten verbonden via bluetooth",
+        "Type": "Beveiliging",
+        "Information": "Bluetooth-technologie maakt draadloze gegevensoverdracht en -ontvangst mogelijk. Hoewel deze functionaliteit doorgaans onschadelijk is wanneer deze bedoeld wordt gebruikt, kan het een beveiligingsrisico vormen als het door kwaadwillenden wordt misbruikt. Als een kwaadwillende persoon ongeautoriseerde toegang krijgt tot uw apparaat via een Bluetooth-verbinding, kan hij mogelijk uw gegevens stelen, uw activiteiten afluisteren of zelfs malware naar uw apparaat sturen. Om deze risico's te verminderen, is het cruciaal om uw apparaat alleen te verbinden met bekende en vertrouwde apparaten.",
+        "Solution": 
+        [   
+            "Er zijn geen apparaten verbonden via bluetooth, dus er is geen actie nodig."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "11": {
+        "Name": "Apparaten verbonden via bluetooth",
+        "Type": "Beveiliging",
+        "Information": "Bluetooth-technologie maakt draadloze gegevensoverdracht en -ontvangst mogelijk. Hoewel deze functionaliteit doorgaans onschadelijk is wanneer deze bedoeld wordt gebruikt, kan het een beveiligingsrisico vormen als het door kwaadwillenden wordt misbruikt. Als een kwaadwillende persoon ongeautoriseerde toegang krijgt tot uw apparaat via een Bluetooth-verbinding, kan hij mogelijk uw gegevens stelen, uw activiteiten afluisteren of zelfs malware naar uw apparaat sturen. Om deze risico's te verminderen, is het cruciaal om uw apparaat alleen te verbinden met bekende en vertrouwde apparaten.",
+        "Solution": 
+        [   
+            "Ga naar Start > Instellingen > Bluetooth en apparaten.", 
+            "Hier kunt u zien welke apparaten via bluetooth zijn verbonden, en u kunt ze indien nodig verwijderen."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/devices-connected-via-bluetooth/bluetooth-devices-1.jpg",
+            "frontend/src/assets/images/devices-connected-via-bluetooth/bluetooth-devices-2.jpg"
+        ]
+    },
+    "20": {
+        "Name": "Geen externe apparaten aangesloten",
+        "Type": "Beveiliging",
+        "Information": "Externe apparaten zoals USB-sticks, externe harde schijven en andere randapparatuur kunnen beveiligingsrisico's voor uw computer met zich meebrengen. Malware kan worden verspreid via geïnfecteerde externe apparaten, waardoor de veiligheid en integriteit van uw systeem in gevaar kunnen komen. Door ervoor te zorgen dat er geen externe apparaten op uw computer zijn aangesloten wanneer ze niet in gebruik zijn, verkleint u het risico op malware-infecties en ongeautoriseerde toegang tot uw systeem.",
+        "Solution": 
+        [   
+            "Er zijn geen externe apparaten aangesloten, dus er is geen actie nodig."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "21": {
+        "Name": "Externe apparaten aangesloten",
+        "Type": "Beveiliging",
+        "Information": "Externe apparaten zoals USB-sticks, externe harde schijven en andere randapparatuur kunnen beveiligingsrisico's voor uw computer met zich meebrengen. Malware kan worden verspreid via geïnfecteerde externe apparaten, waardoor de veiligheid en integriteit van uw systeem in gevaar kunnen komen. Door ervoor te zorgen dat er geen externe apparaten op uw computer zijn aangesloten wanneer ze niet in gebruik zijn, verkleint u het risico op malware-infecties en ongeautoriseerde toegang tot uw systeem.",
+        "Solution": 
+        [   
+            "Controleer of er externe apparaten zijn aangesloten op uw computer en koppel ze los als ze niet in gebruik zijn. Voorbeelden van externe apparaten zijn USB-sticks, externe harde schijven, externe microfoons, externe camera's en andere randapparatuur."
+        ],
+        "Screenshots":
+        [
+            "TOBEFILLED"
+        ]
+    },
+    "30": {
+        "Name": "Gastaccountstatus onbekend",
+        "Type": "Beveiliging",
+        "Information": "Het gastaccount is een standaardaccount dat is ontworpen om tijdelijke en beperkte toegang tot het systeem te bieden voor personen zonder reguliere gebruikersaccounts. Als u de enige gebruiker van de computer bent en geen gastaccount nodig heeft, is het raadzaam om dit uit te schakelen. Dit zorgt ervoor dat geen ongeautoriseerde gebruikers toegang hebben tot gegevens op de computer, waardoor de algehele veiligheid en privacy worden verbeterd.",
+        "Solution": 
+        [   
+            "Een onbekende gastaccountstatus kan een beveiligingsrisico vormen. Om de status te controleren en mogelijk het probleem van het gastaccount op te lossen, volgt u deze stappen.",
+            "Ga naar Start > Andere accounts.", 
+            "Hier ziet u de andere accounts. Als er een account is dat u niet kent of een account genaamd 'gast', klik er dan op.",
+            "Selecteer nu 'verwijderen' en bevestig de verwijdering van het account.",
+            "Start uw computer opnieuw op om af te ronden."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/guest-account/guest-account-1.jpg",
+            "frontend/src/assets/images/guest-account/guest-account-1.jpg",
+            "frontend/src/assets/images/guest-account/guest-account-1.jpg",
+            "frontend/src/assets/images/guest-account/guest-account-3.jpg",        
+            "frontend/src/assets/images/guest-account/guest-account-3.jpg"
+        ]
+    },
+    "31": {
+        "Name": "Gastaccount ingeschakeld",
+        "Type": "Beveiliging",
+        "Information": "Het gastaccount is een standaardaccount dat is ontworpen om tijdelijke en beperkte toegang tot het systeem te bieden voor personen zonder reguliere gebruikersaccounts. Als u de enige gebruiker van de computer bent en geen gastaccount nodig heeft, is het raadzaam om dit uit te schakelen. Dit zorgt ervoor dat geen ongeautoriseerde gebruikers toegang hebben tot gegevens op de computer, waardoor de algehele veiligheid en privacy worden verbeterd.",
+        "Solution": 
+        [   
+            "Ga naar Start > Andere accounts.", 
+            "Hier ziet u de andere accounts. Als er een account is dat u niet kent of een account genaamd 'gast', klik er dan op.",
+            "Selecteer nu 'verwijderen' en bevestig de verwijdering van het account.",
+            "Start uw computer opnieuw op om af te ronden."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/guest-account/guest-account-1.jpg",
+            "frontend/src/assets/images/guest-account/guest-account-1.jpg",
+            "frontend/src/assets/images/guest-account/guest-account-3.jpg",        
+            "frontend/src/assets/images/guest-account/guest-account-3.jpg"
+        ]
+    },
+    "32": {
+        "Name": "Gastaccount uitgeschakeld",
+        "Type": "Beveiliging",
+        "Information": "Het gastaccount is een standaardaccount dat is ontworpen om tijdelijke en beperkte toegang tot het systeem te bieden voor personen zonder reguliere gebruikersaccounts. Als u de enige gebruiker van de computer bent en geen gastaccount nodig heeft, is het raadzaam om dit uit te schakelen. Dit zorgt ervoor dat geen ongeautoriseerde gebruikers toegang hebben tot gegevens op de computer, waardoor de algehele veiligheid en privacy worden verbeterd.",
+        "Solution": 
+        [   
+            "Er is geen gastaccount op uw computer, dus er is geen actie nodig."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "40": {
+        "Name": "Delen van advertentie-ID uitgeschakeld",
+        "Type": "Privacy",
+        "Information": "De instelling voor advertentie-ID stelt Windows in staat om u gepersonaliseerde advertenties te sturen. Het is belangrijk om het aantal entiteiten dat uw persoonlijke gegevens heeft te beperken, daarom is het veiliger om deze instelling uit te schakelen.",
+        "Solution": 
+        [
+            "Het delen van advertentie-ID is uitgeschakeld, dus er is geen actie nodig."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "41": {
+        "Name": "Delen van advertentie-ID ingeschakeld",
+        "Type": "Beveiliging",
+        "Information": "De instelling voor advertentie-ID stelt Windows in staat om u gepersonaliseerde advertenties te sturen. Het is belangrijk om het aantal entiteiten dat uw persoonlijke gegevens heeft te beperken, daarom is het veiliger om deze instelling uit te schakelen.",
+        "Solution": 
+        [
+            "Ga naar Start > Instellingen > Privacy en beveiliging > Algemeen.",
+            "Hier kunt u de instellingen voor advertentie-ID beheren en de functie in- of uitschakelen."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/network-sharing/nearby-sharing-1.jpg",
+            "frontend/src/assets/images/network-sharing/nearby-sharing-2.jpg"
+        ]
+    },
+    "42": {
+        "Name": "Netwerkdeling uitgeschakeld",
+        "Type": "Beveiliging",
+        "Information": "Netwerkdeling verwijst naar de mogelijkheid om bronnen, zoals bestanden, mappen, printers en internetverbindingen, te delen tussen meerdere apparaten die zijn verbonden met een netwerk. Het stelt gebruikers in staat om toegang te krijgen tot en samen te werken aan gedeelde bronnen via het netwerk, waardoor gegevensuitwisseling en samenwerking tussen gebruikers en apparaten worden vergemakkelijkt. Machtigingen kunnen worden geconfigureerd om toegang toe te staan of te weigeren aan specifieke gebruikers of groepen, waardoor gevoelige gegevens veilig blijven. Als u netwerkdeling niet nodig heeft, is het veiliger om het uit te schakelen.",
+        "Solution": 
+        [   
+            "Netwerkdeling is uitgeschakeld, dus er is geen actie nodig."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "43": {
+        "Name": "Status van netwerkdeling onbekend",
+        "Type": "Beveiliging",
+        "Information": "Netwerkdeling verwijst naar de mogelijkheid om bronnen, zoals bestanden, mappen, printers en internetverbindingen, te delen tussen meerdere apparaten die zijn verbonden met een netwerk. Het stelt gebruikers in staat om toegang te krijgen tot en samen te werken aan gedeelde bronnen via het netwerk, waardoor gegevensuitwisseling en samenwerking tussen gebruikers en apparaten worden vergemakkelijkt. Machtigingen kunnen worden geconfigureerd om toegang toe te staan of te weigeren aan specifieke gebruikers of groepen, waardoor gevoelige gegevens veilig blijven. Als u netwerkdeling niet nodig heeft, is het veiliger om het uit te schakelen.",
+        "Solution": 
+        [   
+            "Het was niet mogelijk om de status van de netwerkdelingsinstellingen op te halen. Om de status te controleren en mogelijk het probleem van netwerkdeling op te lossen, volgt u deze stappen.",
+            "Ga naar Start > Instellingen > Systeem > Instellingen voor dichtbij delen.", 
+            "Hier kunt u de netwerkdelingsinstellingen beheren en de functie uitschakelen."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/network-sharing/nearby-sharing-1.jpg",
+            "frontend/src/assets/images/network-sharing/nearby-sharing-1.jpg",
+            "frontend/src/assets/images/network-sharing/nearby-sharing-2.jpg"
+        ]
+    },
+    "50": {
+        "Name": "Wachtwoordbeheerder in gebruik",
+        "Type": "Beveiliging",
+        "Information": "Het gebruik van een wachtwoordbeheerder biedt verschillende voordelen voor individuen en organisaties, voornamelijk gericht op het verbeteren van de beveiliging, het gemak en de algehele wachtwoordbeheerpraktijken. Hier zijn enkele belangrijke redenen waarom u een wachtwoordbeheerder zou moeten overwegen. Sterkere wachtwoorden: Wachtwoordbeheerders kunnen complexe, unieke wachtwoorden genereren voor elk van uw accounts. Deze wachtwoorden zijn doorgaans lang, willekeurig en moeilijk te kraken, waardoor de beveiliging van uw online accounts aanzienlijk wordt verbeterd in vergelijking met het gebruik van zwakke of hergebruikte wachtwoorden. Eliminatie van wachtwoordhergebruik: Een van de meest voorkomende beveiligingsproblemen is het hergebruiken van wachtwoorden voor meerdere accounts. Wachtwoordbeheerders stellen u in staat om unieke wachtwoorden voor elk account te genereren en op te slaan, waardoor het risico op ongeautoriseerde toegang wordt verminderd als een account wordt gecompromitteerd. Gemak: Wachtwoordbeheerders stroomlijnen het proces van inloggen op websites en online services door automatisch inloggegevens voor u in te vullen. Dit bespaart tijd en moeite, vooral bij het beheren van talrijke accounts op verschillende platforms. Veilige opslag: Wachtwoordbeheerders versleutelen en slaan uw wachtwoorden op in een beveiligde kluis, waardoor ze worden beschermd tegen ongeautoriseerde toegang. Veel wachtwoordbeheerders bieden ook extra beveiligingsfuncties zoals tweefactorauthenticatie (2FA) en biometrische authenticatie om de bescherming verder te verbeteren.",
+        "Solution": 
+        [   
+            "U gebruikt een wachtwoordbeheerder, dus er is geen actie nodig."    
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "51": {
+        "Name": "Geen wachtwoordbeheerder in gebruik",
+        "Type": "Beveiliging",
+        "Information": "Het gebruik van een wachtwoordbeheerder biedt verschillende voordelen voor individuen en organisaties, voornamelijk gericht op het verbeteren van de beveiliging, het gemak en de algehele wachtwoordbeheerpraktijken. Hier zijn enkele belangrijke redenen waarom u een wachtwoordbeheerder zou moeten overwegen. Sterkere wachtwoorden: Wachtwoordbeheerders kunnen complexe, unieke wachtwoorden genereren voor elk van uw accounts. Deze wachtwoorden zijn doorgaans lang, willekeurig en moeilijk te kraken, waardoor de beveiliging van uw online accounts aanzienlijk wordt verbeterd in vergelijking met het gebruik van zwakke of hergebruikte wachtwoorden. Eliminatie van wachtwoordhergebruik: Een van de meest voorkomende beveiligingsproblemen is het hergebruiken van wachtwoorden voor meerdere accounts. Wachtwoordbeheerders stellen u in staat om unieke wachtwoorden voor elk account te genereren en op te slaan, waardoor het risico op ongeautoriseerde toegang wordt verminderd als een account wordt gecompromitteerd. Gemak: Wachtwoordbeheerders stroomlijnen het proces van inloggen op websites en online services door automatisch inloggegevens voor u in te vullen. Dit bespaart tijd en moeite, vooral bij het beheren van talrijke accounts op verschillende platforms. Veilige opslag: Wachtwoordbeheerders versleutelen en slaan uw wachtwoorden op in een beveiligde kluis, waardoor ze worden beschermd tegen ongeautoriseerde toegang. Veel wachtwoordbeheerders bieden ook extra beveiligingsfuncties zoals tweefactorauthenticatie (2FA) en biometrische authenticatie om de bescherming verder te verbeteren.",
+        "Solution": 
+        [   
+            "Open uw browser en zoek naar een wachtwoordbeheerder zoals: LastPass, Dashlane, Bitwarden of een andere wachtwoordbeheerder van uw voorkeur.", 
+            "Volg de installatie-instructies op de website van de wachtwoordbeheerder."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/password-manager/password-manager-1.jpg",
+            "frontend/src/assets/images/password-manager/password-manager-1.jpg"
+        ]
+    },
+    "60": {
+        "Name": "Applicaties met locatiepermissie",
+        "Type": "Privacy",
+        "Information": "Weten welke applicaties toegang hebben tot uw locatie is belangrijk voor het beschermen van uw privacy. Het helpt u te controleren wie uw locatie kan volgen, veiligheidsrisico's te voorkomen, batterijduur te besparen, datagebruik te beheren, uw app-ervaring aan te passen en te voldoen aan regelgeving.",
+        "Solution": 
+        [   
+            "Selecteer Start > Instellingen > Privacy en beveiliging.", 
+            "Hier kunt u locatie selecteren om te zien welke applicaties toegang hebben, en u kunt de toegang voor bepaalde applicaties intrekken."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/applications-with-location-permission/location-permissions-1.jpg",
+            "frontend/src/assets/images/applications-with-location-permission/location-permissions-2.jpg"
+        ]
+    },
+    "61": {
+        "Name": "Applicaties met locatiepermissie",
+        "Type": "Privacy",
+        "Information": "Weten welke applicaties toegang hebben tot uw locatie is belangrijk voor het beschermen van uw privacy. Het helpt u te controleren wie uw locatie kan volgen, veiligheidsrisico's te voorkomen, batterijduur te besparen, datagebruik te beheren, uw app-ervaring aan te passen en te voldoen aan regelgeving.",
+        "Solution": 
+        [   
+            "Er zijn geen applicaties met locatiepermissie, dus er is geen actie nodig."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "70": {
+        "Name": "Applicaties met microfoonpermissie",
+        "Type": "Privacy",
+        "Information": "Begrijpen welke applicaties toegang hebben tot uw microfoon op uw Windows-computer is belangrijk voor het beschermen van uw privacy en vertrouwelijkheid. Het helpt u te controleren wie naar uw gesprekken kan luisteren, ongeautoriseerde opnames te voorkomen, gevoelige informatie te beschermen en te voldoen aan regelgeving.",
+        "Solution": 
+        [   
+            "Selecteer Start > Instellingen > Privacy en beveiliging.", 
+            "Hier kunt u microfoon selecteren om te zien welke applicaties toegang hebben, en u kunt de toegang voor bepaalde applicaties intrekken."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/applications-with-microphone-permission/microphone-permissions-1.jpg",
+            "frontend/src/assets/images/applications-with-microphone-permission/microphone-permissions-2.jpg"
+        ]
+    },
+    "71": {
+        "Name": "Applicaties met microfoonpermissie",
+        "Type": "Privacy",
+        "Information": "Begrijpen welke applicaties toegang hebben tot uw microfoon op uw Windows-computer is belangrijk voor het beschermen van uw privacy en vertrouwelijkheid. Het helpt u te controleren wie naar uw gesprekken kan luisteren, ongeautoriseerde opnames te voorkomen, gevoelige informatie te beschermen en te voldoen aan regelgeving.",
+        "Solution": 
+        [   
+            "Er zijn geen applicaties met microfoonpermissie, dus er is geen actie nodig."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "80": {
+        "Name": "Applicaties met webcampermissie",
+        "Type": "Privacy",
+        "Information": "Weten welke applicaties toegang hebben tot uw camera helpt ongeautoriseerde toegang te voorkomen. Kwaadaardige software of zelfs legitieme applicaties met slecht geïmplementeerde beveiligingsfuncties kunnen mogelijk toegang krijgen tot uw camera zonder uw medeweten of toestemming. Door te weten welke applicaties toegang hebben, kunt u ongeautoriseerde pogingen identificeren en blokkeren.",
+        "Solution": 
+        [   
+            "Selecteer Start > Instellingen > Privacy en beveiliging.", 
+            "Hier kunt u webcam selecteren om te zien welke applicaties toegang hebben, en u kunt de toegang voor bepaalde applicaties intrekken."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/applications-with-webcam-permission/webcam-permissions-1.jpg",
+            "frontend/src/assets/images/applications-with-webcam-permission/webcam-permissions-2.jpg"
+        ]
+    },
+    "81": {
+        "Name": "Applicaties met webcampermissie",
+        "Type": "Privacy",
+        "Information": "Weten welke applicaties toegang hebben tot uw camera helpt ongeautoriseerde toegang te voorkomen. Kwaadaardige software of zelfs legitieme applicaties met slecht geïmplementeerde beveiligingsfuncties kunnen mogelijk toegang krijgen tot uw camera zonder uw medeweten of toestemming. Door te weten welke applicaties toegang hebben, kunt u ongeautoriseerde pogingen identificeren en blokkeren.",
+        "Solution": 
+        [   
+            "Er zijn geen applicaties met webcampermissie, dus er is geen actie nodig."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "90": {
+        "Name": "Applicaties met afspraakpermissie",
+        "Type": "Privacy",
+        "Information": "Begrijpen welke applicaties toegang hebben tot uw agenda of afspraken is cruciaal voor het beschermen van uw privacy en planning. Het helpt u te controleren wie uw gevoelige afspraakinformatie kan bekijken en mogelijk misbruiken, ongeautoriseerde toegang te voorkomen en datagebruik te beheren.",
+        "Solution": 
+        [   
+            "Selecteer Start > Instellingen > Privacy en beveiliging.", 
+            "Hier kunt u afspraken selecteren om te zien welke applicaties toegang hebben, en u kunt de toegang voor bepaalde applicaties intrekken."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/applications-with-calendar-permission/calendar-permissions-1.jpg",
+            "frontend/src/assets/images/applications-with-calendar-permission/calendar-permissions-2.jpg"
+        ]
+    },
+    "91": {
+        "Name": "Applicaties met afspraakpermissie",
+        "Type": "Privacy",
+        "Information": "Begrijpen welke applicaties toegang hebben tot uw agenda of afspraken is cruciaal voor het beschermen van uw privacy en planning. Het helpt u te controleren wie uw gevoelige afspraakinformatie kan bekijken en mogelijk misbruiken, ongeautoriseerde toegang te voorkomen en datagebruik te beheren.",
+        "Solution": 
+        [   
+            "Er zijn geen applicaties met afspraakpermissie, dus er is geen actie nodig."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "100": {
+        "Name": "Applicaties met contactpersonenpermissie",
+        "Type": "Privacy",
+        "Information": "Begrijpen welke applicaties toegang hebben tot uw contactpersonen op uw Windows-computer is belangrijk voor het beschermen van uw privacy. Het stelt u in staat te controleren wie uw contactinformatie kan bekijken en mogelijk misbruiken, ongeautoriseerde toegang te voorkomen en datagebruik te beheren.",
+        "Solution": 
+        [   
+            "Selecteer Start > Instellingen > Privacy en beveiliging.", 
+            "Hier kunt u contactpersonen selecteren om te zien welke applicaties toegang hebben, en u kunt de toegang voor bepaalde applicaties intrekken."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/applications-with-contacts-permission/contacts-permissions-1.jpg",
+            "frontend/src/assets/images/applications-with-contacts-permission/contacts-permissions-2.jpg"
+        ]
+    },
+    "101": {
+        "Name": "Applicaties met contactpersonenpermissie",
+        "Type": "Privacy",
+        "Information": "Begrijpen welke applicaties toegang hebben tot uw contactpersonen op uw Windows-computer is belangrijk voor het beschermen van uw privacy. Het stelt u in staat te controleren wie uw contactinformatie kan bekijken en mogelijk misbruiken, ongeautoriseerde toegang te voorkomen en datagebruik te beheren.",
+        "Solution": 
+        [   
+            "Er zijn geen applicaties met contactpersonenpermissie, dus er is geen actie nodig."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "110": {
+        "Name": "Open poorten",
+        "Type": "Beveiliging",
+        "Information": "Een open poort is er een die de ontvangst van datapakketten toestaat. Bepaalde applicaties hebben specifieke poorten nodig om gegevens te ontvangen, dus de aanwezigheid van open poorten vormt niet inherent risico's. Sommige poorten kunnen echter onvoldoende bescherming hebben, waardoor ongeautoriseerde communicatie mogelijk is en beveiligingslekken ontstaan. Het is essentieel om poorten alleen open te houden wanneer ze actief in gebruik zijn en ze te sluiten wanneer ze niet nodig zijn. Aangezien talrijke open poorten het aanvalsoppervlak van uw computer kunnen vergroten, is het raadzaam om regelmatig de netwerkpoorten van uw systeem te monitoren en te beveiligen om deze risico's te beperken en een sterke beveiliging te behouden.",
+        "Solution": 
+        [   
+            "Om het risico te verminderen, zorgt u ervoor dat Windows Defender is ingeschakeld. Dit blokkeert bepaalde inkomende of uitgaande verkeersstromen via open poorten. Volg deze instructies om meer inzicht te krijgen in uw open poorten.",
+            "Open een opdrachtprompt door op 'Start' te klikken, 'cmd' te typen en op 'Enter' te drukken.",
+            "Typ nu 'netstat -ab' en u ziet een lijst met open poorten en hun bijbehorende programma's.",
+            "Als u verdachte programma's of poorten ziet, kunt u ze sluiten door het bijbehorende programma af te sluiten."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/devices-connected-via-bluetooth/bluetooth-devices-1.jpg"
+        ]
+    },
+    "120": {
+        "Name": "Externe bureaublad ingeschakeld",
+        "Type": "Beveiliging",
+        "Information": "Externe bureaublad is een ingebouwde functie in het Windows-besturingssysteem waarmee gebruikers op afstand toegang kunnen krijgen tot en controle kunnen uitoefenen over een andere Windows-computer via een netwerk of internet. Het stelt gebruikers in staat om verbinding te maken met een externe computer alsof ze ervoor zitten, met volledige toegang tot het externe bureaublad, applicaties, bestanden en bronnen. Als u deze functie niet gebruikt, is het veiliger om deze uit te schakelen.",
+        "Solution": 
+        [   
+            "Ga naar Start > Instellingen > Systeem > Extern bureaublad.", 
+            "Hier kunt u de instellingen voor extern bureaublad beheren en de functie uitschakelen."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "121": {
+        "Name": "Externe bureaublad uitgeschakeld",
+        "Type": "Beveiliging",
+        "Information": "Externe bureaublad is een ingebouwde functie in het Windows-besturingssysteem waarmee gebruikers op afstand toegang kunnen krijgen tot en controle kunnen uitoefenen over een andere Windows-computer via een netwerk of internet. Het stelt gebruikers in staat om verbinding te maken met een externe computer alsof ze ervoor zitten, met volledige toegang tot het externe bureaublad, applicaties, bestanden en bronnen. Als u deze functie niet gebruikt, is het veiliger om deze uit te schakelen.",
+        "Solution": 
+        [   
+            "Externe bureaublad is uitgeschakeld, dus er is geen actie nodig."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "130": {
+        "Name": "SMB alle versies uitgeschakeld",
+        "Type": "Beveiliging",
+        "Information": "Het SMB (Server Message Block) protocol wordt gebruikt voor het delen van bestanden, printers en andere bronnen tussen apparaten op een netwerk in Windows-omgevingen. Het is cruciaal om ervoor te zorgen dat de SMB-instellingen op uw Windows-computer correct zijn geconfigureerd. De SMBv1 heeft talrijke bekende kwetsbaarheden en mag daarom nooit worden gebruikt. Het gebruik van SMBv2/v3 is de veiligere optie.",
+        "Solution": 
+        [   
+            "Alle versies van SMB zijn uitgeschakeld, dus er is geen actie nodig."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "131": {
+        "Name": "SMB versie 1 ingeschakeld",
+        "Type": "Beveiliging",
+        "Information": "Het SMB (Server Message Block) protocol wordt gebruikt voor het delen van bestanden, printers en andere bronnen tussen apparaten op een netwerk in Windows-omgevingen. Het is cruciaal om ervoor te zorgen dat de SMB-instellingen op uw Windows-computer correct zijn geconfigureerd. De SMBv1 heeft talrijke bekende kwetsbaarheden en mag daarom nooit worden gebruikt. Het gebruik van SMBv2/v3 is de veiligere optie.",
+        "Solution": 
+        [   
+            "Druk op uw toetsenbord op 'Windows+R' om het venster Uitvoeren te openen.", 
+            "Typ 'Powershell', selecteer vervolgens OK.", 
+            "Typ in de Powershell 'Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol' en druk op enter.",
+            "Start uw computer opnieuw op om af te ronden."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/smb-status/smb-2.jpg",
+            "frontend/src/assets/images/smb-status/smb-2.jpg",
+            "frontend/src/assets/images/smb-status/smb-3.jpg",
+            "frontend/src/assets/images/smb-status/smb-3.jpg"
+        ]
+    },
+    "132": {
+        "Name": "SMB versie 2 ingeschakeld",
+        "Type": "Beveiliging",
+        "Information": "Het SMB (Server Message Block) protocol wordt gebruikt voor het delen van bestanden, printers en andere bronnen tussen apparaten op een netwerk in Windows-omgevingen. Het is cruciaal om ervoor te zorgen dat de SMB-instellingen op uw Windows-computer correct zijn geconfigureerd. De SMBv1 heeft talrijke bekende kwetsbaarheden en mag daarom nooit worden gebruikt. Het gebruik van SMBv2/v3 is de veiligere optie.",
+        "Solution": 
+        [   
+            "SMB versie 2 is ingeschakeld, wat een veilige en veelgebruikte versie is, dus er is geen actie nodig."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "133": {
+        "Name": "SMB versie 1 en 2 ingeschakeld",
+        "Type": "Beveiliging",
+        "Information": "Het SMB (Server Message Block) protocol wordt gebruikt voor het delen van bestanden, printers en andere bronnen tussen apparaten op een netwerk in Windows-omgevingen. Het is cruciaal om ervoor te zorgen dat de SMB-instellingen op uw Windows-computer correct zijn geconfigureerd. De SMBv1 heeft talrijke bekende kwetsbaarheden en mag daarom nooit worden gebruikt. Het gebruik van SMBv2/v3 is de veiligere optie.",
+        "Solution": 
+        [   
+            "Druk op uw toetsenbord op 'Windows+R' om het venster Uitvoeren te openen.", 
+            "Typ 'Powershell', selecteer vervolgens OK.", 
+            "Typ in de Powershell 'Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol' en druk op enter.",
+            "Start uw computer opnieuw op om af te ronden."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/smb-status/smb-2.jpg",
+            "frontend/src/assets/images/smb-status/smb-2.jpg",
+            "frontend/src/assets/images/smb-status/smb-3.jpg",
+            "frontend/src/assets/images/smb-status/smb-3.jpg"
+        ]
+    },
+    "140": {
+        "Name": "Gebruikersaccountbeheer",
+        "Type": "Beveiliging",
+        "Information": "Gebruikersaccountbeheer (UAC) is een beveiligingsfunctie die is geïntroduceerd in Windows Vista en aanwezig is in latere versies van het Windows-besturingssysteem. Het primaire doel is om de beveiliging van het besturingssysteem te verbeteren door de privileges van applicaties en processen die worden uitgevoerd met standaardgebruikersrechten te beperken en goedkeuring van de beheerder te vereisen voor taken die verhoogde bevoegdheden vereisen.",
+        "Solution": 
+        [   
+            "Druk op uw toetsenbord op 'Windows+R' om het venster Uitvoeren te openen.", 
+            "Typ 'Configuratiescherm', selecteer vervolgens OK.", 
+            "Selecteer 'Gebruikersaccounts' of 'Gebruikersaccounts en Gezinsveiligheid'.",
+            "Selecteer 'Instellingen voor gebruikersaccountbeheer wijzigen'. Als u wordt gevraagd door UAC, selecteer 'Ja' om door te gaan.",
+            "Hier kunt u de schuifregelaar naar 'Altijd melden' verplaatsen om UAC in te schakelen. Als u wordt gevraagd door UAC, selecteer 'Ja' om door te gaan.",
+            "Start uw computer opnieuw op om af te ronden."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/user-account-control/user-account-control-1.jpg",
+            "frontend/src/assets/images/user-account-control/user-account-control-2.jpg",
+            "frontend/src/assets/images/user-account-control/user-account-control-2.jpg",
+            "frontend/src/assets/images/user-account-control/user-account-control-3.jpg",
+            "frontend/src/assets/images/user-account-control/user-account-control-5.jpg",
+            "frontend/src/assets/images/user-account-control/user-account-control-5.jpg"
+        ]
+    },
+    "141": {
+        "Name": "Gebruikersaccountbeheer",
+        "Type": "Beveiliging",
+        "Information": "Gebruikersaccountbeheer (UAC) is een beveiligingsfunctie die is geïntroduceerd in Windows Vista en aanwezig is in latere versies van het Windows-besturingssysteem. Het primaire doel is om de beveiliging van het besturingssysteem te verbeteren door de privileges van applicaties en processen die worden uitgevoerd met standaardgebruikersrechten te beperken en goedkeuring van de beheerder te vereisen voor taken die verhoogde bevoegdheden vereisen.",
+        "Solution": 
+        [   
+           "De instellingen voor het gebruikersaccountbeheer zijn ingesteld op 'Altijd melden', dus er is geen actie nodig."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "142": {
+        "Name": "Gebruikersaccountbeheer",
+        "Type": "Beveiliging",
+        "Information": "Gebruikersaccountbeheer (UAC) is een beveiligingsfunctie die is geïntroduceerd in Windows Vista en aanwezig is in latere versies van het Windows-besturingssysteem. Het primaire doel is om de beveiliging van het besturingssysteem te verbeteren door de privileges van applicaties en processen die worden uitgevoerd met standaardgebruikersrechten te beperken en goedkeuring van de beheerder te vereisen voor taken die verhoogde bevoegdheden vereisen.",
+        "Solution": 
+        [   "De instellingen voor het gebruikersaccountbeheer zijn ingeschakeld voor apps, het instellen op altijd melden is een veiligere optie. Om UAC in te schakelen, volgt u deze stappen",
+            "Druk op uw toetsenbord op 'Windows+R' om het venster Uitvoeren te openen.", 
+            "Typ 'Configuratiescherm', selecteer vervolgens OK.",
+            "Selecteer 'Gebruikersaccounts' of 'Gebruikersaccounts en Gezinsveiligheid'.",
+            "Selecteer 'Instellingen voor gebruikersaccountbeheer wijzigen'. Als u wordt gevraagd door UAC, selecteer 'Ja' om door te gaan.",
+            "Hier kunt u de schuifregelaar naar 'Altijd melden' verplaatsen om UAC in te schakelen. Als u wordt gevraagd door UAC, selecteer 'Ja' om door te gaan.",
+            "Start uw computer opnieuw op om af te ronden."
+        ],"Screenshots":
+        [
+            "frontend/src/assets/images/user-account-control/user-account-control-1.jpg",
+            "frontend/src/assets/images/user-account-control/user-account-control-1.jpg",
+            "frontend/src/assets/images/user-account-control/user-account-control-2.jpg",
+            "frontend/src/assets/images/user-account-control/user-account-control-2.jpg",
+            "frontend/src/assets/images/user-account-control/user-account-control-3.jpg",
+            "frontend/src/assets/images/user-account-control/user-account-control-5.jpg",
+            "frontend/src/assets/images/user-account-control/user-account-control-5.jpg"
+        ]
+    },
+    "143": {
+        "Name": "Gebruikersaccountbeheer",
+        "Type": "Beveiliging",
+        "Information": "Gebruikersaccountbeheer (UAC) is een beveiligingsfunctie die is geïntroduceerd in Windows Vista en aanwezig is in latere versies van het Windows-besturingssysteem. Het primaire doel is om de beveiliging van het besturingssysteem te verbeteren door de privileges van applicaties en processen die worden uitgevoerd met standaardgebruikersrechten te beperken en goedkeuring van de beheerder te vereisen voor taken die verhoogde bevoegdheden vereisen.",
+        "Solution": 
+        [   "De status van de instellingen voor het gebruikersaccountbeheer is onbekend, om de status te controleren en mogelijk het probleem van het gebruikersaccountbeheer op te lossen, volgt u deze stappen",
+            "Druk op uw toetsenbord op 'Windows+R' om het venster Uitvoeren te openen.", 
+            "Typ 'Configuratiescherm', selecteer vervolgens OK.",
+            "Selecteer 'Gebruikersaccounts' of 'Gebruikersaccounts en Gezinsveiligheid'.",
+            "Selecteer 'Instellingen voor gebruikersaccountbeheer wijzigen'. Als u wordt gevraagd door UAC, selecteer 'Ja' om door te gaan.",
+            "Hier kunt u de schuifregelaar naar 'Altijd melden' verplaatsen om UAC in te schakelen. Als u wordt gevraagd door UAC, selecteer 'Ja' om door te gaan.",
+            "Start uw computer opnieuw op om af te ronden."
+        ],"Screenshots":
+        [
+            "frontend/src/assets/images/user-account-control/user-account-control-1.jpg",
+            "frontend/src/assets/images/user-account-control/user-account-control-1.jpg",
+            "frontend/src/assets/images/user-account-control/user-account-control-2.jpg",
+            "frontend/src/assets/images/user-account-control/user-account-control-2.jpg",
+            "frontend/src/assets/images/user-account-control/user-account-control-3.jpg",
+            "frontend/src/assets/images/user-account-control/user-account-control-5.jpg",
+            "frontend/src/assets/images/user-account-control/user-account-control-5.jpg"
+        ]
+    },
+    "150": {
+        "Name": "Windows Defender en scan ingeschakeld",
+        "Type": "Beveiliging",
+        "Information": "Windows Defender monitort continu uw systeem op verdachte activiteiten, waaronder malware, virussen en andere vormen van kwaadaardige software. Door het ingeschakeld te hebben, heeft u een actieve verdediging tegen mogelijke bedreigingen die uw privacy of veiligheid kunnen compromitteren. Het ontvangt ook regelmatige updates van Microsoft om up-to-date te blijven met de nieuwste beveiligingsbedreigingen en kwetsbaarheden. Door het ingeschakeld te houden, zorgt u ervoor dat uw computer beschermd is tegen nieuw opkomende bedreigingen die bekende beveiligingslekken kunnen uitbuiten.",
+        "Solution": 
+        [
+            "Windows Defender en de periodieke scan zijn ingeschakeld, dus er is geen actie nodig."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "151": {
+        "Name": "Windows Defender scan uitgeschakeld",
+        "Type": "Beveiliging",
+        "Information": "Windows Defender monitort continu uw systeem op verdachte activiteiten, waaronder malware, virussen en andere vormen van kwaadaardige software. Door het ingeschakeld te hebben, heeft u een actieve verdediging tegen mogelijke bedreigingen die uw privacy of veiligheid kunnen compromitteren. Het ontvangt ook regelmatige updates van Microsoft om up-to-date te blijven met de nieuwste beveiligingsbedreigingen en kwetsbaarheden. Door het ingeschakeld te houden, zorgt u ervoor dat uw computer beschermd is tegen nieuw opkomende bedreigingen die bekende beveiligingslekken kunnen uitbuiten.",
+        "Solution": 
+        [
+            "Open de Windows Security app.", 
+            "Selecteer Virus- en bedreigingsbeveiliging.", 
+            "Onder Virus- en bedreigingsbeveiligingsinstellingen, selecteer Beheer instellingen.", 
+            "Schakel de schakelaar onder Real-time beveiliging in om deze in te schakelen."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg"
+        ]
+    },
+    "152": {
+        "Name": "Windows Defender uitgeschakeld",
+        "Type": "Beveiliging",
+        "Information": "Windows Defender monitort continu uw systeem op verdachte activiteiten, waaronder malware, virussen en andere vormen van kwaadaardige software. Door het ingeschakeld te hebben, heeft u een actieve verdediging tegen mogelijke bedreigingen die uw privacy of veiligheid kunnen compromitteren. Het ontvangt ook regelmatige updates van Microsoft om up-to-date te blijven met de nieuwste beveiligingsbedreigingen en kwetsbaarheden. Door het ingeschakeld te houden, zorgt u ervoor dat uw computer beschermd is tegen nieuw opkomende bedreigingen die bekende beveiligingslekken kunnen uitbuiten.",
+        "Solution": 
+        [
+            "Open de Windows Security app.", 
+            "Selecteer Virus- en bedreigingsbeveiliging.", 
+            "Onder Virus- en bedreigingsbeveiligingsinstellingen, selecteer Beheer instellingen.", 
+            "Schakel de schakelaar onder Real-time beveiliging in om deze in te schakelen."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg"
+        ]
+    },
+    "153": {
+        "Name": "Windows Defender uitgeschakeld",
+        "Type": "Beveiliging",
+        "Information": "Windows Defender monitort continu uw systeem op verdachte activiteiten, waaronder malware, virussen en andere vormen van kwaadaardige software. Door het ingeschakeld te hebben, heeft u een actieve verdediging tegen mogelijke bedreigingen die uw privacy of veiligheid kunnen compromitteren. Het ontvangt ook regelmatige updates van Microsoft om up-to-date te blijven met de nieuwste beveiligingsbedreigingen en kwetsbaarheden. Door het ingeschakeld te houden, zorgt u ervoor dat uw computer beschermd is tegen nieuw opkomende bedreigingen die bekende beveiligingslekken kunnen uitbuiten.",
+        "Solution": 
+        [
+            "Open de Windows Security app.", 
+            "Selecteer Virus- en bedreigingsbeveiliging.", 
+            "Onder Virus- en bedreigingsbeveiligingsinstellingen, selecteer Beheer instellingen.", 
+            "Schakel de schakelaar onder Real-time beveiliging in om deze in te schakelen."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg"
+        ]
+    },
+    "154": {
+        "Name": "Windows Defender status onbekend",
+        "Type": "Beveiliging",
+        "Information": "Windows Defender monitort continu uw systeem op verdachte activiteiten, waaronder malware, virussen en andere vormen van kwaadaardige software. Door het ingeschakeld te hebben, heeft u een actieve verdediging tegen mogelijke bedreigingen die uw privacy of veiligheid kunnen compromitteren. Het ontvangt ook regelmatige updates van Microsoft om up-to-date te blijven met de nieuwste beveiligingsbedreigingen en kwetsbaarheden. Door het ingeschakeld te houden, zorgt u ervoor dat uw computer beschermd is tegen nieuw opkomende bedreigingen die bekende beveiligingslekken kunnen uitbuiten.",
+        "Solution": 
+        [
+            "De status van Windows Defender is onbekend, om de status te controleren en mogelijk het probleem van Windows Defender op te lossen, volgt u deze stappen:",
+            "Open de Windows Security app.", 
+            "Selecteer Virus- en bedreigingsbeveiliging.", 
+            "Onder Virus- en bedreigingsbeveiligingsinstellingen, selecteer Beheer instellingen.", 
+            "Schakel de schakelaar onder Real-time beveiliging in om deze in te schakelen."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg"
+        ]
+    },
+    "160": {
+        "Name": "Laatste wachtwoordwijziging langer dan 6 maanden geleden",
+        "Type": "Beveiliging",
+        "Information": "Het regelmatig wijzigen van uw wachtwoord verkleint de kans op ongeautoriseerde toegang tot uw computer of gevoelige informatie. Als iemand erin slaagt uw wachtwoord te bemachtigen, beperkt regelmatig wijzigen de tijd die ze hebben om het te misbruiken. Het is dus een goede gewoonte om uw wachtwoord minstens twee keer per jaar te wijzigen.",
+        "Solution": 
+        [   
+            "Ga naar Start > Wachtwoord wijzigen", 
+            "Open de sectie 'Wachtwoord' en klik op de knop 'wijzigen'.",
+            "U kunt nu uw wachtwoord wijzigen naar een nieuw uniek wachtwoord."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/last-password-change/change-password-1.jpg",
+            "frontend/src/assets/images/last-password-change/change-password-2.jpg",
+            "frontend/src/assets/images/last-password-change/change-password-2.jpg"
+        ]
+    },
+    "161": {
+        "Name": "Laatste wachtwoordwijziging recent",
+        "Type": "Beveiliging",
+        "Information": "Het regelmatig wijzigen van uw wachtwoord verkleint de kans op ongeautoriseerde toegang tot uw computer of gevoelige informatie. Als iemand erin slaagt uw wachtwoord te bemachtigen, beperkt regelmatig wijzigen de tijd die ze hebben om het te misbruiken. Het is dus een goede gewoonte om uw wachtwoord minstens twee keer per jaar te wijzigen.",
+        "Solution": 
+        [   
+            "U heeft uw wachtwoord onlangs gewijzigd, dus er is geen actie nodig."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "170": {
+        "Name": "Geen Windows-inlogmethode ingesteld",
+        "Type": "Beveiliging",
+        "Information": "Het gebruik van een veilige Windows-inlogmethode is belangrijk. Windows ondersteunt verschillende inlogmethoden zoals een wachtwoord, pincode, beveiligingssleutel of vingerafdruk. Het gebruik van een van deze inlogmethoden is belangrijk om uw gegevens veilig te houden. Zonder een van deze inlogmethoden kan iedereen uw apparaat ontgrendelen en toegang krijgen tot uw gegevens. U gebruikt geen inlogmethode / een minder veilige inlogmethode / combinatie van inlogmethoden, het wordt aanbevolen om over te schakelen naar een veiligere inlogmethode zoals wachtwoord of vingerafdruk.",
+        "Solution": 
+        [   
+            "Ga naar Start > Instellingen > Accounts > Aanmeldingsopties.", 
+            "Nu kunt u een van de beschikbare inlogmethoden instellen door de beschreven stappen te volgen."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-login-method/login-method-1.jpg",
+            "frontend/src/assets/images/windows-login-method/login-method-2.jpg"
+        ]
+    },
+    "171": {
+        "Name": "Windows-login met veilige inlogmethode",
+        "Type": "Beveiliging",
+        "Information": "Het gebruik van een veilige Windows-inlogmethode is belangrijk. Windows ondersteunt verschillende inlogmethoden zoals een wachtwoord, pincode, beveiligingssleutel of vingerafdruk. Het gebruik van een van deze inlogmethoden is belangrijk om uw gegevens veilig te houden. Zonder een van deze inlogmethoden kan iedereen uw apparaat ontgrendelen en toegang krijgen tot uw gegevens.",
+        "Solution": 
+        [   
+            "U gebruikt een veilige inlogmethode, er is geen actie nodig."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "173": {
+        "Name": "Windows-login met minder veilige inlogmethode",
+        "Type": "Beveiliging",
+        "Information": "Het gebruik van een veilige Windows-inlogmethode is belangrijk. Windows ondersteunt verschillende inlogmethoden zoals een wachtwoord, pincode, beveiligingssleutel of vingerafdruk. Het gebruik van een van deze inlogmethoden is belangrijk om uw gegevens veilig te houden. Zonder een van deze inlogmethoden kan iedereen uw apparaat ontgrendelen en toegang krijgen tot uw gegevens. U gebruikt een minder veilige inlogmethode / combinatie van inlogmethoden zoals hieronder weergegeven, het wordt aanbevolen om over te schakelen naar een veiligere inlogmethode zoals wachtwoord of vingerafdruk.",
+        "Solution": 
+        [   
+            "Ga naar Start > Instellingen > Accounts > Aanmeldingsopties.", 
+            "Nu kunt u een van de beschikbare inlogmethoden instellen door de beschreven stappen te volgen."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-login-method/login-method-1.jpg",
+            "frontend/src/assets/images/windows-login-method/login-method-2.jpg"
+        ]
+    },
+    "180": {
+        "Name": "Windows-versie up-to-date",
+        "Type": "Beveiliging",
+        "Information": "Verouderde Windows-versies kunnen ongepatchte beveiligingskwetsbaarheden bevatten die door aanvallers kunnen worden misbruikt om het systeem te compromitteren. Hackers zoeken actief naar en exploiteren kwetsbaarheden in verouderde besturingssystemen, wat kan leiden tot ongeautoriseerde toegang, datalekken en malware-infecties.",
+        "Solution": 
+        [
+            "Uw Windows-versie is up-to-date, dus er is geen actie nodig."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "181": {
+        "Name": "Windows-versie enigszins verouderd",
+        "Type": "Beveiliging",
+        "Information": "Verouderde Windows-versies kunnen ongepatchte beveiligingskwetsbaarheden bevatten die door aanvallers kunnen worden misbruikt om het systeem te compromitteren. Hackers zoeken actief naar en exploiteren kwetsbaarheden in verouderde besturingssystemen, wat kan leiden tot ongeautoriseerde toegang, datalekken en malware-infecties.",
+        "Solution": 
+        [
+            "Ga naar Start > Instellingen > Windows Update.",
+            "Hier kunt u updates controleren en updates installeren."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/outdated-windows-version/windows-update-1.jpg",
+            "frontend/src/assets/images/outdated-windows-version/windows-update-2.jpg"
+        ]
+    },
+    "182": {
+        "Name": "Verouderde Windows-versie",
+        "Type": "Beveiliging",
+        "Information": "Verouderde Windows-versies kunnen ongepatchte beveiligingskwetsbaarheden bevatten die door aanvallers kunnen worden misbruikt om het systeem te compromitteren. Hackers zoeken actief naar en exploiteren kwetsbaarheden in verouderde besturingssystemen, wat kan leiden tot ongeautoriseerde toegang, datalekken en malware-infecties.",
+        "Solution": 
+        [
+            "Ga naar Start > Instellingen > Windows Update.",
+            "Hier kunt u updates controleren en updates installeren."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/outdated-windows-version/windows-update-1.jpg",
+            "frontend/src/assets/images/outdated-windows-version/windows-update-2.jpg"
+        ]
+    },
+    "190": {
+        "Name": "Secure boot uitgeschakeld",
+        "Type": "Beveiliging",
+        "Information": "Secure Boot zorgt ervoor dat alleen vertrouwde softwarecomponenten, ondertekend met erkende digitale handtekeningen, worden geladen tijdens het opstartproces. Dit voorkomt dat malware en andere ongeautoriseerde software het opstartproces kunnen manipuleren en de controle over het systeem in een vroeg stadium kunnen overnemen.",
+        "Solution": 
+        [   
+            "Start uw computer opnieuw op en open de BIOS/UEFI-instellingen. Dit doet u meestal door op een specifieke toets te drukken tijdens het opstartproces. Veelgebruikte toetsen om BIOS/UEFI-instellingen te openen zijn F2, Del, Esc of F10. De specifieke toets varieert afhankelijk van de fabrikant van uw computer.", 
+            "Navigeer in de BIOS/UEFI-instellingen naar het gedeelte dat gerelateerd is aan Secure Boot. Dit gedeelte kan anders worden genoemd, afhankelijk van de fabrikant van uw systeem en de BIOS/UEFI-versie.",
+            "In het Secure Boot-gedeelte zou u een optie moeten vinden om Secure Boot in te schakelen. Selecteer deze optie en stel deze in op 'Ingeschakeld'. Sommige systemen vereisen mogelijk dat u een Secure Boot-modus instelt of de optie voor het beheren van Secure Boot-sleutels kiest. Volg de instructies op het scherm om Secure Boot in te schakelen.",
+            "Sla na het inschakelen van Secure Boot de wijzigingen in de BIOS/UEFI-instellingen op en verlaat deze. Meestal kunt u dit doen door de optie 'Opslaan en afsluiten' of 'Afsluiten' uit het BIOS/UEFI-menu te selecteren. Bevestig eventuele meldingen om de wijzigingen op te slaan en start uw computer opnieuw op."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "191": {
+        "Name": "Secure boot ingeschakeld",
+        "Type": "Beveiliging",
+        "Information": "Secure Boot zorgt ervoor dat alleen vertrouwde softwarecomponenten, ondertekend met erkende digitale handtekeningen, worden geladen tijdens het opstartproces. Dit voorkomt dat malware en andere ongeautoriseerde software het opstartproces kunnen manipuleren en de controle over het systeem in een vroeg stadium kunnen overnemen.",
+        "Solution": 
+        [   
+            "Secure Boot is ingeschakeld, dus er is geen actie nodig."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "192": {
+        "Name": "Secure boot status onbekend",
+        "Type": "Beveiliging",
+        "Information": "Secure Boot zorgt ervoor dat alleen vertrouwde softwarecomponenten, ondertekend met erkende digitale handtekeningen, worden geladen tijdens het opstartproces. Dit voorkomt dat malware en andere ongeautoriseerde software het opstartproces kunnen manipuleren en de controle over het systeem in een vroeg stadium kunnen overnemen.",
+        "Solution": 
+        [   
+            "De status van de Secure Boot-instelling is onbekend, om de status te controleren en mogelijk het probleem van Secure Boot op te lossen, volgt u deze stappen:",
+            "Start uw computer opnieuw op en open de BIOS/UEFI-instellingen. Dit doet u meestal door op een specifieke toets te drukken tijdens het opstartproces. Veelgebruikte toetsen om BIOS/UEFI-instellingen te openen zijn F2, Del, Esc of F10. De specifieke toets varieert afhankelijk van de fabrikant van uw computer.", 
+            "Navigeer in de BIOS/UEFI-instellingen naar het gedeelte dat gerelateerd is aan Secure Boot. Dit gedeelte kan anders worden genoemd, afhankelijk van de fabrikant van uw systeem en de BIOS/UEFI-versie.",
+            "In het Secure Boot-gedeelte zou u een optie moeten vinden om Secure Boot in te schakelen. Selecteer deze optie en stel deze in op 'Ingeschakeld'. Sommige systemen vereisen mogelijk dat u een Secure Boot-modus instelt of de optie voor het beheren van Secure Boot-sleutels kiest. Volg de instructies op het scherm om Secure Boot in te schakelen.",
+            "Sla na het inschakelen van Secure Boot de wijzigingen in de BIOS/UEFI-instellingen op en verlaat deze. Meestal kunt u dit doen door de optie 'Opslaan en afsluiten' of 'Afsluiten' uit het BIOS/UEFI-menu te selecteren. Bevestig eventuele meldingen om de wijzigingen op te slaan en start uw computer opnieuw op."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "200": {
+        "Name": "Geen applicaties die bij opstarten starten",
+        "Type": "Beveiliging",
+        "Information": "Wanneer u uw computer opstart, worden verschillende applicaties automatisch gestart. Sommige hiervan zijn essentiële processen voor het correct functioneren van het systeem, terwijl andere handig zijn om bij het opstarten te hebben. Er kunnen echter ook applicaties zijn die tijdens het opstarten starten zonder uw medeweten. Het is verstandig om deze uit te schakelen om ongeautoriseerde acties te voorkomen en de snelheid van het opstartproces van uw computer te verbeteren.",
+        "Solution": 
+        [   
+            "Er zijn geen applicaties die bij opstarten starten, dus er is geen actie nodig."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "201": {
+        "Name": "Applicaties die bij opstarten starten",
+        "Type": "Beveiliging",
+        "Information": "Wanneer u uw computer opstart, worden verschillende applicaties automatisch gestart. Sommige hiervan zijn essentiële processen voor het correct functioneren van het systeem, terwijl andere handig zijn om bij het opstarten te hebben. Er kunnen echter ook applicaties zijn die tijdens het opstarten starten zonder uw medeweten. Het is verstandig om deze uit te schakelen om ongeautoriseerde acties te voorkomen en de snelheid van het opstartproces van uw computer te verbeteren.",
+        "Solution": 
+        [   
+            "Ga naar Start > Instellingen > Apps > Opstarten.", 
+            "Hier kunt u kiezen welke applicaties automatisch starten tijdens het opstarten."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/applications-which-start-at-boot/boot-apps-1.jpg",
+            "frontend/src/assets/images/applications-which-start-at-boot/boot-apps-2.jpg"
+        ]
+    },
+    "210": {
+        "Name": "Google Chrome met een adblocker geïnstalleerd",
+        "Type": "Privacy",
+        "Information": "Adblockers beschermen gebruikers tegen online advertenties. Met hun filters en algoritmen bieden ze een toevluchtsoord van ononderbroken browsen, waardoor gebruikers worden beschermd tegen de visuele rommel en potentiële beveiligingsrisico's die advertenties met zich meebrengen.",
+        "Solution": 
+        [   		
+            "Open Google Chrome en navigeer naar de Chrome Store.", 
+			"Zoek naar een adblocker in de zoekbalk (bijvoorbeeld: AdBlock Plus of uBlock Origin).",
+			"Klik op de knop 'Toevoegen aan Chrome' en herstart de browser."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "211": {
+        "Name": "Google Chrome zonder adblocker geïnstalleerd",
+        "Type": "Privacy",
+        "Information": "Adblockers beschermen gebruikers tegen online advertenties. Met hun filters en algoritmen bieden ze een toevluchtsoord van ononderbroken browsen, waardoor gebruikers worden beschermd tegen de visuele rommel en potentiële beveiligingsrisico's die advertenties met zich meebrengen.",
+        "Solution": 
+        [   		
+            "Open Google Chrome en navigeer naar de Chrome Store.", 
+			"Zoek naar een adblocker in de zoekbalk (bijvoorbeeld: AdBlock Plus of uBlock Origin).",
+			"Klik op de knop 'Toevoegen aan Chrome' en herstart de browser."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "220": {
+        "Name": "Microsoft Edge met een adblocker geïnstalleerd",
+        "Type": "Privacy",
+        "Information": "Adblockers beschermen gebruikers tegen online advertenties. Met hun filters en algoritmen bieden ze een toevluchtsoord van ononderbroken browsen, waardoor gebruikers worden beschermd tegen de visuele rommel en potentiële beveiligingsrisico's die advertenties met zich meebrengen.",
+        "Solution": 
+        [   		
+            "Open Microsoft Edge en navigeer naar Microsoft Edge-extensies.", 
+			"Zoek naar een adblocker in de zoekbalk (bijvoorbeeld: AdBlock Plus of uBlock Origin).",
+			"Klik op de knop 'Downloaden' en herstart de browser."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "221": {
+        "Name": "Microsoft Edge zonder adblocker geïnstalleerd",
+        "Type": "Privacy",
+        "Information": "Adblockers beschermen gebruikers tegen online advertenties. Met hun filters en algoritmen bieden ze een toevluchtsoord van ononderbroken browsen, waardoor gebruikers worden beschermd tegen de visuele rommel en potentiële beveiligingsrisico's die advertenties met zich meebrengen.",
+        "Solution": 
+        [   		
+            "Open Microsoft Edge en navigeer naar Microsoft Edge-extensies.", 
+			"Zoek naar een adblocker in de zoekbalk (bijvoorbeeld: AdBlock Plus of uBlock Origin).",
+			"Klik op de knop 'Downloaden' en herstart de browser."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "230": {
+        "Name": "Potentiële phishingdomeinen gevonden op Google Chrome",
+        "Type": "Privacy",
+        "Information": "Phishingdomeinen zijn nepwebsites die zijn ontworpen om mensen te misleiden zodat ze gevoelige informatie zoals wachtwoorden of creditcardgegevens delen. Ze zien eruit als echte websites en imiteren vertrouwde merken of organisaties. Deze oplichting maakt gebruik van vertrouwen en nieuwsgierigheid om persoonlijke gegevens te stelen.",
+        "Solution": 
+        [   		
+            "Wees voorzichtig bij het browsen op internet, aangezien vertrouwde websites gemakkelijk kunnen worden vervalst. Daarnaast zijn er veel websites met kwaadwillende bedoelingen. In geval van twijfel bij het actief browsen op een mogelijk phishingwebsite, wordt aangeraden om uw wachtwoord te wijzigen."
+        ],
+        "Screenshots":
+        [
+            "TOBEFILLED"
+        ]
+    },	
+    "231": {
+        "Name": "Geen potentiële phishingdomeinen gevonden op Google Chrome",
+        "Type": "Privacy",
+        "Information": "Phishingdomeinen zijn nepwebsites die zijn ontworpen om mensen te misleiden zodat ze gevoelige informatie zoals wachtwoorden of creditcardgegevens delen. Ze zien eruit als echte websites en imiteren vertrouwde merken of organisaties. Deze oplichting maakt gebruik van vertrouwen en nieuwsgierigheid om persoonlijke gegevens te stelen.",
+        "Solution": 
+        [   		
+            "Wees voorzichtig bij het browsen op internet, aangezien vertrouwde websites gemakkelijk kunnen worden vervalst. Daarnaast zijn er veel websites met kwaadwillende bedoelingen. In geval van twijfel bij het actief browsen op een mogelijk phishingwebsite, wordt aangeraden om uw wachtwoord te wijzigen."
+        ],
+        "Screenshots":
+        [
+        ]
+    },	
+    "240": {
+        "Name": "Potentiële phishingdomeinen gevonden op Microsoft Edge",
+        "Type": "Privacy",
+        "Information": "Phishingdomeinen zijn nepwebsites die zijn ontworpen om mensen te misleiden zodat ze gevoelige informatie zoals wachtwoorden of creditcardgegevens delen. Ze zien eruit als echte websites en imiteren vertrouwde merken of organisaties. Deze oplichting maakt gebruik van vertrouwen en nieuwsgierigheid om persoonlijke gegevens te stelen.",
+        "Solution": 
+        [   		
+            "Wees voorzichtig bij het browsen op internet, aangezien vertrouwde websites gemakkelijk kunnen worden vervalst. Daarnaast zijn er veel websites met kwaadwillende bedoelingen. In geval van twijfel bij het actief browsen op een mogelijk phishingwebsite, wordt aangeraden om uw wachtwoord te wijzigen."
+        ],
+        "Screenshots":
+        [
+        ]
+    },	
+    "241": {
+        "Name": "Geen potentiële phishingdomeinen gevonden op Microsoft Edge",
+        "Type": "Privacy",
+        "Information": "Phishingdomeinen zijn nepwebsites die zijn ontworpen om mensen te misleiden zodat ze gevoelige informatie zoals wachtwoorden of creditcardgegevens delen. Ze zien eruit als echte websites en imiteren vertrouwde merken of organisaties. Deze oplichting maakt gebruik van vertrouwen en nieuwsgierigheid om persoonlijke gegevens te stelen.",
+        "Solution": 
+        [   		
+            "Wees voorzichtig bij het browsen op internet, aangezien vertrouwde websites gemakkelijk kunnen worden vervalst. Daarnaast zijn er veel websites met kwaadwillende bedoelingen. In geval van twijfel bij het actief browsen op een mogelijk phishingwebsite, wordt aangeraden om uw wachtwoord te wijzigen."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "250": {
+        "Name": "Standaard zoekmachine in Google Chrome",
+        "Type": "Privacy",
+        "Information": "Een standaard zoekmachine helpt gebruikers informatie op internet te vinden door trefwoorden of zinnen in te voeren. Voorbeelden zijn Google, Bing en Yahoo. Ze krijgen vaak kritiek vanwege hun benadering van privacy.",
+        "Solution": 
+        [   		
+            "Overweeg een zoekmachine te gebruiken met een focus op de privacy van de gebruikers (bijvoorbeeld DuckDuckGo)."
+        ],
+        "Screenshots":
+        [
+        ]
+    },	
+    "260": {
+        "Name": "Standaard zoekmachine in Microsoft Edge",
+        "Type": "Privacy",
+        "Information": "Een standaard zoekmachine helpt gebruikers informatie op internet te vinden door trefwoorden of zinnen in te voeren. Voorbeelden zijn Google, Bing en Yahoo. Ze krijgen vaak kritiek vanwege hun benadering van privacy.",
+        "Solution": 
+        [   		
+            "Overweeg een zoekmachine te gebruiken met een focus op de privacy van de gebruikers (bijvoorbeeld DuckDuckGo)."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "270": {
+        "Name": "Cookies opgeslagen door Mozilla Firefox",
+        "Type": "Privacy",
+        "Information": "Cookies zijn kleine tekstbestanden die door websites die u bezoekt op uw computer worden opgeslagen. Ze worden gebruikt om uw voorkeuren, inloggegevens en andere gegevens te onthouden om uw browse-ervaring te verbeteren. Cookies kunnen echter ook worden gebruikt om uw online activiteiten te volgen en persoonlijke informatie te verzamelen zonder uw toestemming, wat privacyproblemen oproept. Het regelmatig beheren en verwijderen van cookies helpt uw privacy te beschermen en controle te houden over de gegevens die websites over u verzamelen.",
+        "Solution": 
+        [   		
+            "Open Mozilla Firefox en klik op de menuknop (drie horizontale lijnen) in de rechterbovenhoek.",
+            "Selecteer 'Opties' en ga naar het tabblad 'Privacy en beveiliging'.",
+            "Onder 'Cookies en sitegegevens', klik op 'Gegevens beheren'.",
+            "Hier kunt u de door websites opgeslagen cookies bekijken en verwijderen. U kunt ook alle cookies verwijderen door op 'Alles verwijderen' te klikken."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "280": {
+        "Name": "Extensies geïnstalleerd in Mozilla Firefox",
+        "Type": "Privacy",
+        "Information": "Browserextensies verbeteren de functionaliteit van uw webbrowser door functies, tools en aanpassingsopties toe te voegen. Hoewel extensies nuttig kunnen zijn, kunnen ze ook privacy- en beveiligingsrisico's opleveren als ze toegang hebben tot gevoelige gegevens of uw online activiteiten volgen zonder uw toestemming. Het regelmatig beoordelen en beheren van uw browserextensies helpt uw privacy en veiligheid online te beschermen. Verwijder extensies die u niet langer gebruikt of vertrouwt om potentiële risico's te minimaliseren.",
+        "Solution": 
+        [   		
+            "Open Mozilla Firefox en klik op de menuknop (drie horizontale lijnen) in de rechterbovenhoek.",
+            "Selecteer 'Add-ons' en ga naar het tabblad 'Extensies'.",
+            "Hier kunt u de in uw browser geïnstalleerde extensies bekijken en beheren. Schakel extensies uit of verwijder deze die u niet langer gebruikt of vertrouwt."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "290": {
+        "Name": "Mozilla Firefox met een adblocker geïnstalleerd",
+        "Type": "Privacy",
+        "Information": "Adblockers beschermen gebruikers tegen online advertenties. Met hun filters en algoritmen bieden ze een toevluchtsoord van ononderbroken browsen, waardoor gebruikers worden beschermd tegen de visuele rommel en potentiële beveiligingsrisico's die advertenties met zich meebrengen.",
+        "Solution": 
+        [   		
+            "Open Mozilla Firefox en navigeer naar Firefox-extensies.", 
+			"Zoek naar een adblocker in de zoekbalk (bijvoorbeeld: AdBlock Plus of uBlock Origin).",
+			"Klik op de knop 'Downloaden' en herstart de browser."
+        ],
+        "Screenshots":
+        [
+        ]
+    },	
+    "291": {
+        "Name": "Mozilla Firefox zonder adblocker geïnstalleerd",
+        "Type": "Privacy",
+        "Information": "Adblockers beschermen gebruikers tegen online advertenties. Met hun filters en algoritmen bieden ze een toevluchtsoord van ononderbroken browsen, waardoor gebruikers worden beschermd tegen de visuele rommel en potentiële beveiligingsrisico's die advertenties met zich meebrengen.",
+        "Solution": 
+        [   		
+            "Open Mozilla Firefox en navigeer naar Firefox-extensies.", 
+			"Zoek naar een adblocker in de zoekbalk (bijvoorbeeld: AdBlock Plus of uBlock Origin).",
+			"Klik op de knop 'Downloaden' en herstart de browser."
+        ],
+        "Screenshots":
+        [
+        ]
+    },		
+    "300": {
+        "Name": "Standaard zoekmachine in Mozilla Firefox",
+        "Type": "Privacy",
+        "Information": "Een standaard zoekmachine helpt gebruikers informatie op internet te vinden door trefwoorden of zinnen in te voeren. Voorbeelden zijn Google, Bing en Yahoo. Ze krijgen vaak kritiek vanwege hun benadering van privacy.",
+        "Solution": 
+        [   		
+          "Overweeg een zoekmachine te gebruiken met een focus op de privacy van de gebruikers (bijvoorbeeld DuckDuckGo)."
+        ],
+        "Screenshots":
+        [
+        ]
+    },	
+    "310": {
+        "Name": "Geen potentiële phishingdomeinen gevonden op Mozilla Firefox",
+        "Type": "Privacy",
+        "Information": "Phishingdomeinen zijn nepwebsites die zijn ontworpen om mensen te misleiden zodat ze gevoelige informatie zoals wachtwoorden of creditcardgegevens delen. Ze zien eruit als echte websites en imiteren vertrouwde merken of organisaties. Deze oplichting maakt gebruik van vertrouwen en nieuwsgierigheid om persoonlijke gegevens te stelen.",
+        "Solution":
+        [
+        ],
+        "Screenshots":
+        [
+        ]
+    },		
+    "311": {
+        "Name": "Potentiële phishingdomeinen gevonden op Mozilla Firefox",
+        "Type": "Privacy",
+        "Information": "Wees voorzichtig bij het browsen op internet, aangezien vertrouwde websites gemakkelijk kunnen worden vervalst. Daarnaast zijn er veel websites met kwaadwillende bedoelingen. In geval van twijfel bij het actief browsen op een mogelijk phishingwebsite, wordt aangeraden om uw wachtwoord te wijzigen.",
+        "Solution":
+        [
+            "Wees voorzichtig bij het browsen op internet, aangezien vertrouwde websites gemakkelijk kunnen worden vervalst. Daarnaast zijn er veel websites met kwaadwillende bedoelingen. In geval van twijfel bij het actief browsen op een mogelijk phishingwebsite, wordt aangeraden om uw wachtwoord te wijzigen."
+        ],
+        "Screenshots":
+        [
+            "TOBEFILLED"
+        ]
+    },
+    "320": {
+        "Name": "Onjuiste CIS Auditlijst-registerinstellingen",
+        "Type": "Beveiliging",
+        "Information": "Het Center for Internet Security (CIS) biedt een reeks richtlijnen en best practices voor het beveiligen van computersystemen. De CIS Auditlijst-registerinstellingen helpen ervoor te zorgen dat uw systeem is geconfigureerd volgens deze beveiligingsnormen. Onjuiste of verouderde registerinstellingen kunnen uw systeem kwetsbaar maken voor beveiligingsbedreigingen en uw privacy in gevaar brengen.",
+        "Solution":
+        [
+            "Download de CIS Benchmark voor uw besturingssysteem van de officiële CIS-website. Volg de instructies in het benchmarkdocument om de registerinstellingen op uw systeem te beoordelen en bij te werken om te voldoen aan de CIS-beveiligingsnormen. Controleer regelmatig op updates van de CIS Benchmark en pas eventuele wijzigingen of aanbevelingen toe om een veilige configuratie te behouden."
+        ],
+        "Screenshots":
+        [
+            "TOBEFILLED"
+        ]
+    },
+    "321": {
+        "Name": "Correcte CIS Auditlijst-registerinstellingen",
+        "Type": "Beveiliging",
+        "Information": "Het Center for Internet Security (CIS) biedt een reeks richtlijnen en best practices voor het beveiligen van computersystemen. De CIS Auditlijst-registerinstellingen helpen ervoor te zorgen dat uw systeem is geconfigureerd volgens deze beveiligingsnormen. Onjuiste of verouderde registerinstellingen kunnen uw systeem kwetsbaar maken voor beveiligingsbedreigingen en uw privacy in gevaar brengen.",
+        "Solution":
+        [
+            "Alle instellingen voldoen aan de richtlijnen van de CIS Auditlijst, er is geen actie nodig."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "330": {
+        "Name": "Automatische inlog uitgeschakeld",
+        "Type": "Beveiliging",
+        "Information": "Automatische inlog stelt gebruikers in staat toegang te krijgen tot hun accounts zonder elke keer dat ze hun computer opstarten of een specifieke applicatie openen een wachtwoord in te voeren. Hoewel het handig is, brengt automatische inlog beveiligingsrisico's met zich mee, aangezien iedereen met fysieke toegang tot het apparaat toegang kan krijgen tot het account zonder authenticatie. Het uitschakelen van automatische inlog verbetert de beveiliging van uw accounts en voorkomt ongeautoriseerde toegang.",
+        "Solution":
+        [
+            "Automatische inlog is uitgeschakeld, dus er is geen actie nodig."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "331": {
+        "Name": "Automatische inlog ingeschakeld",
+        "Type": "Beveiliging",
+        "Information": "Automatische inlog stelt gebruikers in staat toegang te krijgen tot hun accounts zonder elke keer dat ze hun computer opstarten of een specifieke applicatie openen een wachtwoord in te voeren. Hoewel het handig is, brengt automatische inlog beveiligingsrisico's met zich mee, aangezien iedereen met fysieke toegang tot het apparaat toegang kan krijgen tot het account zonder authenticatie. Het uitschakelen van automatische inlog verbetert de beveiliging van uw accounts en voorkomt ongeautoriseerde toegang.",
+        "Solution":
+        [
+            "Ga naar Start > Instellingen > Accounts > Aanmeldingsopties.",
+            "Selecteer onder 'Aanmelden vereisen' de optie 'Wanneer de pc ontwaakt uit slaapstand'."
+        ],
+        "Screenshots":
+        [
+            "TOBEFILLED"
+        ]
+    },
+    "997": {
+        "Name": "Extensies geïnstalleerd in Google Chrome",
+        "Type": "Privacy",
+        "Information": "Browserextensies verbeteren de functionaliteit van uw webbrowser door functies, tools en aanpassingsopties toe te voegen. Hoewel extensies nuttig kunnen zijn, kunnen ze ook privacy- en beveiligingsrisico's opleveren als ze toegang hebben tot gevoelige gegevens of uw online activiteiten volgen zonder uw toestemming. Het regelmatig beoordelen en beheren van uw browserextensies helpt uw privacy en veiligheid online te beschermen. Verwijder extensies die u niet langer gebruikt of vertrouwt om potentiële risico's te minimaliseren.",
+        "Solution": 
+        [   		
+            "Open Google Chrome en klik op de drie stippen in de rechterbovenhoek.",
+            "Selecteer 'Extensies' en vervolgens 'Extensies beheren'.",
+            "Hier kunt u de in uw browser geïnstalleerde extensies bekijken en beheren. Schakel extensies uit of verwijder deze die u niet langer gebruikt of vertrouwt."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "998": {
+        "Name": "Applicaties met beheerdersrechten",
+        "Type": "Beveiliging",
+        "Information": "Applicaties met beheerdersrechten hebben verhoogde privileges, waardoor ze wijzigingen kunnen aanbrengen in systeeminstellingen, software kunnen installeren of verwijderen, systeembestanden kunnen wijzigen en andere acties kunnen uitvoeren die de beveiliging en stabiliteit van uw computer kunnen beïnvloeden. Weten welke apps beheerdersrechten hebben helpt u potentiële beveiligingsrisico's en kwetsbaarheden te identificeren, zoals kwaadaardige software of ongeautoriseerde applicaties die mogelijk verhoogde toegang hebben verkregen.",
+        "Solution":
+        [
+            "Klik met de rechtermuisknop op de taakbalk en selecteer 'Taakbeheer', of druk op Ctrl + Shift + Esc op uw toetsenbord om Taakbeheer te openen.",
+            "Klik in Taakbeheer op het tabblad 'Details' om een lijst met actieve processen en applicaties te bekijken.",
+            "Klik met de rechtermuisknop op de kolomkop, klik op 'Kolommen selecteren' en zorg ervoor dat 'Verhoogd' is aangevinkt. Klik op OK.",
+            "De kolom 'Verhoogd' toont nu 'Ja' of 'Nee' voor elke applicatie of proces, waarbij 'Ja' aangeeft dat de applicatie beheerdersrechten heeft.",
+            "Hier kunt u de lijst met applicaties bekijken en controleren of er ongeautoriseerde of verdachte applicaties met beheerdersrechten zijn.",
+            "Als u een ongeautoriseerde applicatie met beheerdersrechten vindt, selecteer dan het proces en klik op 'Proces beëindigen' om het te stoppen."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/applications-with-admin-rights/admin-rights-1.jpg",
+            "frontend/src/assets/images/applications-with-admin-rights/admin-rights-2.jpg"
+        ]
+    },
+    "999": {
+        "Name": "Geen specifieke actie vereist",
+        "Type": "Beveiliging",
+        "Information": "Geen actie nodig.",
+        "Solution":
+        [
+        ],
+        "Screenshots":
+        [
+        ]
+    }
+}

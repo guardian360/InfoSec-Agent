@@ -1,9 +1,17 @@
-import data from '../database.json' assert { type: 'json' };
+import dataDe from '../databases/database.de.json' assert { type: 'json' };
+import dataEnGB from '../databases/database.en-GB.json' assert { type: 'json' };
+import dataEnUS from '../databases/database.en-US.json' assert { type: 'json' };
+import dataEs from '../databases/database.es.json' assert { type: 'json' };
+import dataFr from '../databases/database.fr.json' assert { type: 'json' };
+import dataNl from '../databases/database.nl.json' assert { type: 'json' };
+import dataPt from '../databases/database.pt.json' assert { type: 'json' };
+
 import {openIssuePage} from './issue.js';
 import {getLocalization} from './localize.js';
 import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
 import {retrieveTheme} from './personalize.js';
 import {LogError as logError} from '../../wailsjs/go/main/Tray.js';
+import {LoadUserSettings as loadUserSettings} from '../../wailsjs/go/main/App.js';
 
 /** Load the content of the Issues page */
 export function openIssuesPage() {
@@ -147,9 +155,36 @@ export function toRiskLevel(level) {
  * @param {Issue} issues Issues to be filled in
  * @param {Bool} isIssue True for issue table, false for non issue table
  */
-export function fillTable(tbody, issues, isIssue) {
+export async function fillTable(tbody, issues, isIssue) {
+  const language = await getUserSettings();
+  let currentIssue;
+
   issues.forEach((issue) => {
-    const currentIssue = data[issue.jsonkey];
+    switch (language) {
+    case 0:
+      currentIssue = dataDe[issue.jsonkey];
+      break;
+    case 1:
+      currentIssue = dataEnGB[issue.jsonkey];
+      break;
+    case 2:
+      currentIssue = dataEnUS[issue.jsonkey];
+      break;
+    case 3:
+      currentIssue = dataEs[issue.jsonkey];
+      break;
+    case 4:
+      currentIssue = dataFr[issue.jsonkey];
+      break;
+    case 5:
+      currentIssue = dataNl[issue.jsonkey];
+      break;
+    case 6:
+      currentIssue = dataPt[issue.jsonkey];
+      break;
+    default:
+      currentIssue = dataEnGB[issue.jsonkey];
+    }
 
     if (isIssue) {
       if (currentIssue) {
@@ -276,4 +311,31 @@ export function changeTable() {
 
   // Refill tables with filtered issues
   fillTable(issueTable, filteredIssues, true);
+}
+
+/**
+ * Retrieves the user settings including the preferred language.
+ *
+ * This function asynchronously loads user settings and returns the user's
+ * preferred language as an integer. The language is represented by the
+ * following integers:
+ * 0 - German
+ * 1 - English (GB)
+ * 2 - English (US)
+ * 3 - Spanish
+ * 4 - French
+ * 5 - Dutch
+ * 6 - Portuguese
+ *
+ * @function getUserSettings
+ * @return {Promise<number>} A promise that resolves to the user's preferred language as an integer.
+ */
+export async function getUserSettings() {
+  try {
+    const userSettings = await loadUserSettings();
+    const language = userSettings.Language;
+    return language;
+  } catch (error) {
+    logError('Error loading user settings:', error);
+  }
 }
