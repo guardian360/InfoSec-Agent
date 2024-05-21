@@ -1180,6 +1180,20 @@
             "frontend/src/assets/images/windows-11/firefox-cookies/cookies-firefox-4.png"
         ]
     },
+    "271": {
+        "Name": "Possíveis cookies de rastreamento encontrados no Mozilla Firefox",
+        "Type": "Privacidade",
+        "Information": "Cookies são pequenos arquivos de texto armazenados no seu computador pelos sites que você visita. Eles são usados para lembrar suas preferências, informações de login e outros dados para melhorar sua experiência de navegação. No entanto, os cookies também podem ser usados para rastrear suas atividades online e coletar informações pessoais sem o seu consentimento, levantando preocupações com a privacidade. Gerenciar e limpar cookies regularmente ajuda a proteger sua privacidade e controlar os dados que os sites coletam sobre você.",
+        "Solution": 
+        [   		
+            "Abra o Mozilla Firefox e clique no botão de menu (três linhas horizontais) no canto superior direito.",
+            "Selecione 'Configurações' e vá para a aba 'Privacidade e Segurança'.",
+            "A opção 'Proteção aprimorada contra rastreamento' deve estar configurada como 'Padrão' ou 'Personalizado'. O modo personalizado oferece mais controle sobre o que você permite ou bloqueia. Em 'Cookies e dados de sites', você pode excluir seus cookies existentes e gerenciar exceções. É recomendado limpar seus cookies com frequência para proteger sua privacidade."
+        ],
+        "Screenshots":
+        [
+        ]
+    },    
     "280": {
         "Name": "Extensões instaladas no Mozilla Firefox",
         "Type": "Privacidade",

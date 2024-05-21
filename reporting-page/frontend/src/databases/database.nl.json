@@ -1178,6 +1178,20 @@
             "frontend/src/assets/images/windows-11/firefox-cookies/cookies-firefox-4.png"
         ]
     },
+    "271": {
+        "Name": "Mogelijke trackingcookies gevonden in Mozilla Firefox",
+        "Type": "Privacy",
+        "Information": "Cookies zijn kleine tekstbestanden die op uw computer worden opgeslagen door websites die u bezoekt. Ze worden gebruikt om uw voorkeuren, inloggegevens en andere gegevens te onthouden om uw browse-ervaring te verbeteren. Cookies kunnen echter ook worden gebruikt om uw online activiteiten te volgen en persoonlijke informatie te verzamelen zonder uw toestemming, wat privacyproblemen oplevert. Het beheren en regelmatig verwijderen van cookies helpt uw privacy te beschermen en de gegevens die websites over u verzamelen te controleren.",
+        "Solution": 
+        [   		
+            "Open Mozilla Firefox en klik op de menuknop (drie horizontale lijnen) in de rechterbovenhoek.",
+            "Selecteer 'Instellingen' en ga naar het tabblad 'Privacy & Beveiliging'.",
+            "De optie 'Verbeterde bescherming tegen volgen' moet zijn ingesteld op 'Standaard' of 'Aangepast'. Aangepast geeft u meer controle over wat u toestaat of blokkeert. Onder Cookies en sitegegevens kunt u uw bestaande cookies verwijderen en uitzonderingen beheren. Het wordt aanbevolen om uw cookies vaak te verwijderen om uw privacy te beschermen."
+        ],
+        "Screenshots":
+        [
+        ]
+    },    
     "280": {
         "Name": "Extensies geïnstalleerd in Mozilla Firefox",
         "Type": "Privacy",

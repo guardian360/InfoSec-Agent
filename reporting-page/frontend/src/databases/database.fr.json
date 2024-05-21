@@ -1178,6 +1178,20 @@
             "frontend/src/assets/images/windows-11/firefox-cookies/cookies-firefox-4.png"
         ]
     },
+    "271": {
+        "Name": "Cookies de suivi possibles trouvés dans Mozilla Firefox",
+        "Type": "Confidentialité",
+        "Information": "Les cookies sont de petits fichiers texte stockés sur votre ordinateur par les sites Web que vous visitez. Ils sont utilisés pour mémoriser vos préférences, informations de connexion et autres données afin d'améliorer votre expérience de navigation. Cependant, les cookies peuvent également être utilisés pour suivre vos activités en ligne et collecter des informations personnelles sans votre consentement, ce qui soulève des préoccupations en matière de confidentialité. Gérer et supprimer régulièrement les cookies aide à protéger votre vie privée et à contrôler les données collectées par les sites Web à votre sujet.",
+        "Solution": 
+        [   		
+            "Ouvrez Mozilla Firefox et cliquez sur le bouton de menu (trois lignes horizontales) dans le coin supérieur droit.",
+            "Sélectionnez 'Paramètres' et allez à l'onglet 'Vie privée et sécurité'.",
+            "L'option 'Protection renforcée contre le pistage' doit être réglée sur 'Standard' ou 'Personnalisé'. Le mode personnalisé vous donne plus de contrôle sur ce que vous autorisez ou bloquez. Sous 'Cookies et données de sites', vous pouvez supprimer vos cookies existants et gérer les exceptions. Il est recommandé de supprimer souvent vos cookies pour protéger votre vie privée."
+        ],
+        "Screenshots":
+        [
+        ]
+    },    
     "280": {
         "Name": "Extensions installées dans Mozilla Firefox",
         "Type": "Confidentialité",

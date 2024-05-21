@@ -1178,6 +1178,20 @@
             "frontend/src/assets/images/windows-11/firefox-cookies/cookies-firefox-4.png"
         ]
     },
+    "271": {
+        "Name": "Mögliche Tracking-Cookies in Mozilla Firefox gefunden",
+        "Type": "Privatsphäre",
+        "Information": "Cookies sind kleine Textdateien, die von den Websites, die Sie besuchen, auf Ihrem Computer gespeichert werden. Sie werden verwendet, um Ihre Einstellungen, Anmeldeinformationen und andere Daten zu speichern, um Ihr Surferlebnis zu verbessern. Cookies können jedoch auch verwendet werden, um Ihre Online-Aktivitäten zu verfolgen und persönliche Informationen ohne Ihre Zustimmung zu sammeln, was zu Datenschutzbedenken führt. Das regelmäßige Verwalten und Löschen von Cookies hilft, Ihre Privatsphäre zu schützen und die von Websites über Sie gesammelten Daten zu kontrollieren.",
+        "Solution": 
+        [   		
+            "Öffnen Sie Mozilla Firefox und klicken Sie auf die Menütaste (drei horizontale Linien) in der oberen rechten Ecke.",
+            "Wählen Sie 'Einstellungen' und gehen Sie zum Tab 'Datenschutz & Sicherheit'.",
+            "Die Option 'Erweiterter Schutz vor Aktivitätenverfolgung' sollte auf 'Standard' oder 'Benutzerdefiniert' eingestellt sein. Benutzerdefiniert gibt Ihnen mehr Kontrolle darüber, was Sie zulassen oder blockieren. Unter Cookies und Websitedaten können Sie Ihre vorhandenen Cookies löschen und Ausnahmen verwalten. Es wird empfohlen, Ihre Cookies häufig zu löschen, um Ihre Privatsphäre zu schützen."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
     "280": {
         "Name": "Installierte Erweiterungen in Mozilla Firefox",
         "Type": "Privatsphäre",
