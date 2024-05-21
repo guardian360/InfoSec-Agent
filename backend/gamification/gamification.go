@@ -30,7 +30,7 @@ type GameState struct {
 //
 // Returns:
 //   - GameState: The updated game state with the new points amount.
-func PointCalculation(gs GameState, securityChecks []func() checks.Check) GameState {
+func PointCalculation(gs GameState, securityChecks []func() checks.Check) (GameState, error) {
 	gs.Points = 0
 
 	for _, check := range securityChecks {
@@ -38,6 +38,7 @@ func PointCalculation(gs GameState, securityChecks []func() checks.Check) GameSt
 		result.ResultID = 0
 		if result.Error != nil {
 			logger.Log.ErrorWithErr("Error performing security checks", result.Error)
+			return gs, result.Error
 		}
 		db, err := sql.Open("sqlite", "reporting-page/database.db")
 
@@ -45,11 +46,13 @@ func PointCalculation(gs GameState, securityChecks []func() checks.Check) GameSt
 		// This is a potential bug, as the database is created in the current directory, which is not the intended location.
 		if err != nil {
 			logger.Log.ErrorWithErr("Error opening database:", err)
+			return gs, result.Error
 		}
 		sev, err := database.GetSeverity(db, result.IssueID, result.ResultID)
 
 		if err != nil {
 			logger.Log.ErrorWithErr("Error getting severity:", err)
+			return gs, result.Error
 		}
 		logger.Log.Info("Issue ID: " + strconv.Itoa(result.IssueID) + " Severity: " + strconv.Itoa(sev))
 
@@ -60,7 +63,7 @@ func PointCalculation(gs GameState, securityChecks []func() checks.Check) GameSt
 
 		gs.PointsHistory = append(gs.PointsHistory, gs.Points)
 	}
-	return gs
+	return gs, nil
 }
 
 // LighthouseStateTransition determines the lighthouse state based on the user's points (the less points, the better)
