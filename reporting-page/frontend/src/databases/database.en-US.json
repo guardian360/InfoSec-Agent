@@ -1344,19 +1344,19 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/applications-wiht-administrative-privileges/admin-privileges-1.jpg",
-            "frontend/src/assets/images/windows-11/applications-wiht-administrative-privileges/admin-privileges-2.jpg",
-            "frontend/src/assets/images/windows-11/applications-wiht-administrative-privileges/admin-privileges-3.jpg",
-            "frontend/src/assets/images/windows-11/applications-wiht-administrative-privileges/admin-privileges-4.jpg",
-            "frontend/src/assets/images/windows-11/applications-wiht-administrative-privileges/admin-privileges-4.jpg"
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-1.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-2.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-3.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-4.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-4.jpg"
         ],
         "ScreenshotsWindows10":
         [
-            "frontend/src/assets/images/windows-10/applications-wiht-administrative-privileges/admin-privileges-1.png",
-            "frontend/src/assets/images/windows-10/applications-wiht-administrative-privileges/admin-privileges-2.png",
-            "frontend/src/assets/images/windows-10/applications-wiht-administrative-privileges/admin-privileges-3.png",
-            "frontend/src/assets/images/windows-10/applications-wiht-administrative-privileges/admin-privileges-4.png",
-            "frontend/src/assets/images/windows-10/applications-wiht-administrative-privileges/admin-privileges-4.png"
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-1.png",
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-2.png",
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-3.png",
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-4.png",
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-4.png"
         ]
     },
     "999": {
@@ -1373,19 +1373,19 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/applications-wiht-administrative-privileges/admin-privileges-1.jpg",
-            "frontend/src/assets/images/windows-11/applications-wiht-administrative-privileges/admin-privileges-2.jpg",
-            "frontend/src/assets/images/windows-11/applications-wiht-administrative-privileges/admin-privileges-3.jpg",
-            "frontend/src/assets/images/windows-11/applications-wiht-administrative-privileges/admin-privileges-4.jpg",
-            "frontend/src/assets/images/windows-11/applications-wiht-administrative-privileges/admin-privileges-4.jpg"
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-1.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-2.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-3.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-4.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-4.jpg"
         ],
         "ScreenshotsWindows10":
         [
-            "frontend/src/assets/images/windows-10/applications-wiht-administrative-privileges/admin-privileges-1.png",
-            "frontend/src/assets/images/windows-10/applications-wiht-administrative-privileges/admin-privileges-2.png",
-            "frontend/src/assets/images/windows-10/applications-wiht-administrative-privileges/admin-privileges-3.png",
-            "frontend/src/assets/images/windows-10/applications-wiht-administrative-privileges/admin-privileges-4.png",
-            "frontend/src/assets/images/windows-10/applications-wiht-administrative-privileges/admin-privileges-4.png"
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-1.png",
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-2.png",
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-3.png",
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-4.png",
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-4.png"
         ]
     }
 }
