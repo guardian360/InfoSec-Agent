@@ -1053,6 +1053,52 @@
             "TOBEFILLED"
         ]
     },
+    "350": {
+        "Name": "Nenhum cookie de rastreamento possível encontrado no navegador Google Chrome",
+        "Type": "Privacidade",
+        "Information": "Cookies são pequenos arquivos de texto armazenados no seu computador pelos sites que você visita. Eles são usados para lembrar suas preferências, informações de login e outros dados para melhorar sua experiência de navegação. No entanto, os cookies também podem ser usados para rastrear suas atividades online e coletar informações pessoais sem o seu consentimento, levantando preocupações de privacidade. Gerenciar e excluir cookies regularmente ajuda a proteger sua privacidade e controlar os dados que os sites coletam sobre você.",
+        "Solution": [
+            "Nenhum cookie de rastreamento possível encontrado no Google Chrome, portanto, nenhuma ação é necessária."
+        ],
+        "Screenshots": []
+    },
+    "351": {
+        "Name": "Cookies de rastreamento possíveis encontrados no navegador Google Chrome",
+        "Type": "Privacidade",
+        "Information": "Cookies são pequenos arquivos de texto armazenados no seu computador pelos sites que você visita. Eles são usados para lembrar suas preferências, informações de login e outros dados para melhorar sua experiência de navegação. No entanto, os cookies também podem ser usados para rastrear suas atividades online e coletar informações pessoais sem o seu consentimento, levantando preocupações de privacidade. Gerenciar e excluir cookies regularmente ajuda a proteger sua privacidade e controlar os dados que os sites coletam sobre você.",
+        "Solution": [
+            "Abra o Google Chrome e clique nos três pontos no canto superior direito.",
+            "Selecione 'Configurações' e vá para a seção 'Privacidade e segurança'.",
+            "Em 'Cookies de terceiros', clique em 'Ver todos os dados e permissões do site'.",
+            "Aqui você pode visualizar e gerenciar os cookies armazenados pelos sites. Você pode excluir cookies individuais ou limpar todos os dados do site para proteger sua privacidade."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
+    "360": {
+        "Name": "Nenhum cookie de rastreamento possível encontrado no navegador Microsoft Edge",
+        "Type": "Privacidade",
+        "Information": "Cookies são pequenos arquivos de texto armazenados no seu computador pelos sites que você visita. Eles são usados para lembrar suas preferências, informações de login e outros dados para melhorar sua experiência de navegação. No entanto, os cookies também podem ser usados para rastrear suas atividades online e coletar informações pessoais sem o seu consentimento, levantando preocupações de privacidade. Gerenciar e excluir cookies regularmente ajuda a proteger sua privacidade e controlar os dados que os sites coletam sobre você.",
+        "Solution": [
+            "Nenhum cookie de rastreamento possível encontrado no Microsoft Edge, portanto, nenhuma ação é necessária."
+        ],
+        "Screenshots": []
+    },
+    "361": {
+        "Name": "Cookies de rastreamento possíveis encontrados no navegador Microsoft Edge",
+        "Type": "Privacidade",
+        "Information": "Cookies são pequenos arquivos de texto armazenados no seu computador pelos sites que você visita. Eles são usados para lembrar suas preferências, informações de login e outros dados para melhorar sua experiência de navegação. No entanto, os cookies também podem ser usados para rastrear suas atividades online e coletar informações pessoais sem o seu consentimento, levantando preocupações de privacidade. Gerenciar e excluir cookies regularmente ajuda a proteger sua privacidade e controlar os dados que os sites coletam sobre você.",
+        "Solution": [
+            "Abra o Microsoft Edge e clique nos três pontos no canto superior direito.",
+            "Selecione 'Configurações' e vá para a seção 'Cookies e permissões de sites'.",
+            "Em 'Cookies e dados armazenados', clique em 'Gerenciar e excluir cookies e dados de sites'.",
+            "Aqui você pode gerenciar as configurações gerais de cookies. Você pode excluir cookies individuais ou limpar todos os dados do site clicando em 'Ver todos os cookies e dados do site'."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
     "997": {
         "Name": "Extensões instaladas no Google Chrome",
         "Type": "Privacidade",
