@@ -6,6 +6,7 @@ require (
 	github.com/DATA-DOG/go-sqlmock v1.5.2
 	github.com/andrewarchi/browser v0.0.0-20210602185959-ae587407e71c
 	github.com/getlantern/systray v1.2.2
+	github.com/go-toast/toast v0.0.0-20190211030409-01e6764cf0a4
 	github.com/jarcoal/httpmock v1.3.1
 	github.com/ncruces/zenity v0.10.12
 	github.com/nicksnyder/go-i18n/v2 v2.4.0
@@ -24,6 +25,7 @@ require (
 	github.com/go-logr/logr v1.4.1 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/josephspurrier/goversioninfo v1.4.0 // indirect
+	github.com/nu7hatch/gouuid v0.0.0-20131221200532-179d4d0c4d8d // indirect
 	github.com/randall77/makefat v0.0.0-20210315173500-7ddd0e42c844 // indirect
 	github.com/rogpeppe/go-internal v1.12.0 // indirect
 	go.opentelemetry.io/otel v1.24.0 // indirect

@@ -3,6 +3,14 @@ import test from 'unit.js';
 import {JSDOM} from 'jsdom';
 import {jest} from '@jest/globals';
 import data from '../src/databases/database.en-GB.json' assert { type: 'json' };
+import dataDe from '../src/databases/database.de.json' assert { type: 'json' };
+import dataEnUS from '../src/databases/database.en-US.json' assert { type: 'json' };
+import dataEs from '../src/databases/database.es.json' assert { type: 'json' };
+import dataFr from '../src/databases/database.fr.json' assert { type: 'json' };
+import dataNl from '../src/databases/database.nl.json' assert { type: 'json' };
+import dataPt from '../src/databases/database.pt.json' assert { type: 'json' };
+import {mockPageFunctions, clickEvent, storageMock} from './mock.js';
+
 global.TESTING = true;
 
 const dom = new JSDOM(`
@@ -12,21 +20,18 @@ const dom = new JSDOM(`
 global.document = dom.window.document;
 global.window = dom.window;
 
-// Mock sessionStorage
-const sessionStorageMock = (() => {
-  let store = {};
+/** empty the table to have it empty for next tests
+ *
+ * @param {HTMLTableElement} table table to delete all rows from
+ */
+function emptyTable(table) {
+  for (let i = 0; i < table.rows.length; i++) {
+    table.deleteRow(i);
+  }
+}
 
-  return {
-    getItem: (key) => store[key],
-    setItem: (key, value) => {
-      store[key] = value.toString();
-    },
-    clear: () => {
-      store = {};
-    },
-  };
-})();
-global.sessionStorage = sessionStorageMock;
+// Mock sessionStorage
+global.sessionStorage = storageMock;
 
 /** Mock of getLocalizationString function
  *
@@ -63,29 +68,19 @@ function mockGetLocalizationString(messageID) {
   return myPromise;
 }
 
+// Mock often used page functions
+mockPageFunctions();
+
 // Mock Localize function
 jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
   Localize: jest.fn().mockImplementation((input) => mockGetLocalizationString(input)),
   LoadUserSettings: jest.fn(),
 }));
 
-// Mock LogError
-jest.unstable_mockModule('../wailsjs/go/main/Tray.js', () => ({
-  LogError: jest.fn(),
+// Mock openIssuesPage
+jest.unstable_mockModule('../src/js/issue.js', () => ({
+  openIssuePage: jest.fn(),
 }));
-
-// Mock Navigation
-jest.unstable_mockModule('../src/js/navigation-menu.js', () => ({
-  closeNavigation: jest.fn(),
-  markSelectedNavigationItem: jest.fn(),
-  loadPersonalizeNavigation: jest.fn(),
-}));
-
-// Mock retrieveTheme
-jest.unstable_mockModule('../src/js/personalize.js', () => ({
-  retrieveTheme: jest.fn(),
-}));
-
 
 // Test cases
 describe('Issues table', function() {
@@ -112,6 +107,12 @@ describe('Issues table', function() {
     test.value(name).isEqualTo('Name');
     test.value(type).isEqualTo('Type');
     test.value(risk).isEqualTo('Risk');
+
+    // Make issues table empty
+    const issueTable = document.getElementById('issues-table').querySelector('tbody');
+    emptyTable(issueTable);
+    const nonIssueTable = document.getElementById('non-issues-table').querySelector('tbody');
+    emptyTable(nonIssueTable);
   });
   it('toRiskLevel should return the right risk level', async function() {
     // Arrange
@@ -154,8 +155,40 @@ describe('Issues table', function() {
     row = nonIssueTable.rows[0];
     test.value(row.cells[0].textContent).isEqualTo(expectedData[1].Name);
     test.value(row.cells[1].textContent).isEqualTo(expectedData[1].Type);
-  });
 
+    // Make issues table empty
+    emptyTable(issueTable);
+    emptyTable(nonIssueTable);
+  });
+  it('fillTable should not fill the issues table if the data from the JSON array is incorrect', async function() {
+    // Arrange input issues
+    let issues = [];
+    issues = [
+      {id: 0, severity: 1, jsonkey: 55},
+      {id: 123, severity: 0, jsonkey: 1234},
+    ];
+
+    // Arrange expected table data
+    const expectedData = [];
+    expectedData.push(data[issues[0].jsonkey]);
+    expectedData.push(data[issues[1].jsonkey]);
+    const issue = await import('../src/js/issues.js');
+
+    // Act
+    const issueTable = document.getElementById('issues-table').querySelector('tbody');
+    emptyTable(issueTable);
+    issue.fillTable(issueTable, issues, true);
+    const nonIssueTable = document.getElementById('non-issues-table').querySelector('tbody');
+    emptyTable(nonIssueTable);
+    issue.fillTable(nonIssueTable, issues, false);
+
+    // Assert
+    let row = issueTable.rows[0];
+    test.value(row).isEqualTo(undefined);
+
+    row = nonIssueTable.rows[0];
+    test.value(row).isEqualTo(undefined);
+  });
   it('sortTable should sort the issues table', async function() {
     // Arrange table rows
     const table = dom.window.document.getElementById('issues-table');
@@ -178,10 +211,10 @@ describe('Issues table', function() {
       </tr>
     `;
 
-    const issue = await import('../src/js/issues.js');
+    await import('../src/js/issues.js');
 
     // Act
-    issue.sortTable(tbody, 0);
+    document.getElementById('sort-on-issue').dispatchEvent(clickEvent);
 
     // Assert
     let sortedRows = Array.from(tbody.rows);
@@ -189,7 +222,7 @@ describe('Issues table', function() {
     test.array(sortedNames).is(['Camera and microphone access', 'Firewall settings', 'Windows defender']);
 
     // Act
-    issue.sortTable(tbody, 0);
+    document.getElementById('sort-on-issue').dispatchEvent(clickEvent);
 
     // Assert
     let sortedRowsDescending = Array.from(tbody.rows);
@@ -197,7 +230,23 @@ describe('Issues table', function() {
     test.array(sortedNamesDescending).is(['Windows defender', 'Firewall settings', 'Camera and microphone access']);
 
     // Act
-    issue.sortTable(tbody, 2);
+    document.getElementById('sort-on-type').dispatchEvent(clickEvent);
+
+    // Assert
+    sortedRows = Array.from(tbody.rows);
+    const sortedTypes = sortedRows.map((row) => row.cells[1].textContent);
+    test.array(sortedTypes).is(['Privacy', 'Security', 'Security']);
+
+    // Act
+    document.getElementById('sort-on-type').dispatchEvent(clickEvent);
+
+    // Assert
+    sortedRowsDescending = Array.from(tbody.rows);
+    const sortedTypesDescending = sortedRowsDescending.map((row) => row.cells[1].textContent);
+    test.array(sortedTypesDescending).is(['Security', 'Security', 'Privacy']);
+
+    // Act
+    document.getElementById('sort-on-risk').dispatchEvent(clickEvent);
 
     // Assert
     sortedRows = Array.from(tbody.rows);
@@ -205,12 +254,68 @@ describe('Issues table', function() {
     test.array(sortedRisks).is(['High', 'Medium', 'Low']);
 
     // Act
-    issue.sortTable(tbody, 2);
+    document.getElementById('sort-on-risk').dispatchEvent(clickEvent);
 
     // Assert
     sortedRowsDescending = Array.from(tbody.rows);
     const sortedRisksDescending = sortedRowsDescending.map((row) => row.cells[2].textContent);
     test.array(sortedRisksDescending).is(['Low', 'Medium', 'High']);
+  });
+  it('sortTable should sort the non-issues table', async function() {
+    // Arrange table rows
+    const table = dom.window.document.getElementById('non-issues-table');
+    const tbody = table.querySelector('tbody');
+    tbody.innerHTML = `
+      <tr>
+        <td>Windows defender</td>
+        <td>Security</td>
+        <td>High</td>
+      </tr>
+      <tr>
+        <td>Camera and microphone access</td>
+        <td>Privacy</td>
+        <td>Low</td>
+      </tr>
+      <tr>
+        <td>Firewall settings</td>
+        <td>Security</td>
+        <td>Medium</td>
+      </tr>
+    `;
+
+    await import('../src/js/issues.js');
+
+    // Act
+    document.getElementById('sort-on-issue2').dispatchEvent(clickEvent);
+
+    // Assert
+    let sortedRows = Array.from(tbody.rows);
+    const sortedNames = sortedRows.map((row) => row.cells[0].textContent);
+    test.array(sortedNames).is(['Camera and microphone access', 'Firewall settings', 'Windows defender']);
+
+    // Act
+    document.getElementById('sort-on-issue2').dispatchEvent(clickEvent);
+
+    // Assert
+    let sortedRowsDescending = Array.from(tbody.rows);
+    const sortedNamesDescending = sortedRowsDescending.map((row) => row.cells[0].textContent);
+    test.array(sortedNamesDescending).is(['Windows defender', 'Firewall settings', 'Camera and microphone access']);
+
+    // Act
+    document.getElementById('sort-on-type2').dispatchEvent(clickEvent);
+
+    // Assert
+    sortedRows = Array.from(tbody.rows);
+    const sortedTypes = sortedRows.map((row) => row.cells[1].textContent);
+    test.array(sortedTypes).is(['Privacy', 'Security', 'Security']);
+
+    // Act
+    document.getElementById('sort-on-type2').dispatchEvent(clickEvent);
+
+    // Assert
+    sortedRowsDescending = Array.from(tbody.rows);
+    const sortedTypesDescending = sortedRowsDescending.map((row) => row.cells[1].textContent);
+    test.array(sortedTypesDescending).is(['Security', 'Security', 'Privacy']);
   });
   it('changeTable should update the table with selected risks', async function() {
     // Arrange
@@ -238,7 +343,7 @@ describe('Issues table', function() {
       'select-info-risk-table',
     ];
 
-    for (let i = -1; i < issues.length; i++) {
+    for (let i = -1; i < issues.length - 1; i++) {
       // Act
       let issueTable = document.getElementById('issues-table').querySelector('tbody');
       issue.fillTable(issueTable, issues, true);
@@ -256,6 +361,70 @@ describe('Issues table', function() {
           // test.value(row.cells[2].textContent).isEqualTo(issue.toRiskLevel(issues[index].severity));
         }
       });
+    }
+  });
+  it('clicking on an issue should open the issue page', async function() {
+    // Arrange
+    const issue = await import('../src/js/issue.js');
+    const issueLinks = document.querySelectorAll('.issue-link');
+    const openIssuePageMock = jest.spyOn(issue, 'openIssuePage');
+
+    // Assert
+    issueLinks.forEach((link) => {
+      link.dispatchEvent(clickEvent);
+      expect(openIssuePageMock).toHaveBeenCalled();
+    });
+  });
+  it('clicking the select risks toggles show', async function() {
+    // Arrange
+    await import('../src/js/issues.js');
+    const button = document.getElementById('dropbtn-table');
+    const myDropdownTable = document.getElementById('myDropdown-table');
+
+    // Act
+    button.dispatchEvent(clickEvent);
+
+    // Arrange
+    expect(myDropdownTable.classList.contains('show')).toBe(true);
+
+    // Act
+    button.dispatchEvent(clickEvent);
+
+    // Arrange
+    expect(myDropdownTable.classList.contains('show')).toBe(false);
+  });
+  it('should use the correct data object based on user language settings', async () => {
+    // Define the language settings and the corresponding expected data
+    const languageSettings = [
+      {language: 0, expectedData: dataDe},
+      {language: 1, expectedData: data},
+      {language: 2, expectedData: dataEnUS},
+      {language: 3, expectedData: dataEs},
+      {language: 4, expectedData: dataFr},
+      {language: 5, expectedData: dataNl},
+      {language: 6, expectedData: dataPt},
+      {language: 999, expectedData: data}, // Default case
+    ];
+    const loadUserSettingsMock = jest.spyOn(await import('../wailsjs/go/main/App.js'), 'LoadUserSettings');
+
+    for (const {language, expectedData} of languageSettings) {
+      loadUserSettingsMock.mockResolvedValueOnce({Language: language});
+      // Prepare the issues array
+      const issues = [
+        {id: 1, severity: 1, jsonkey: 51}, // assuming 51 exists in all datasets
+      ];
+
+      // Act
+      const {fillTable} = await import('../src/js/issues.js');
+      const issueTable = document.createElement('tbody');
+      await fillTable(issueTable, issues, true);
+
+      // Assert
+      const row = issueTable.rows[0];
+      const currentIssue = expectedData[issues[0].jsonkey];
+      test.value(row.cells[0].textContent).isEqualTo(currentIssue.Name);
+      test.value(row.cells[1].textContent).isEqualTo(currentIssue.Type);
+      test.value(row.cells[2].textContent).isEqualTo('Low'); // Based on toRiskLevel(1)
     }
   });
 });

@@ -3,6 +3,7 @@ import test from 'unit.js';
 import {JSDOM} from 'jsdom';
 import {RiskCounters} from '../src/js/risk-counters.js';
 import {jest} from '@jest/globals';
+import {mockChart} from './mock.js';
 
 global.TESTING = true;
 
@@ -69,64 +70,59 @@ jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
 }));
 
 // Mock Chart constructor
-jest.unstable_mockModule('chart.js/auto', () => ({
-  Chart: jest.fn().mockImplementation((context, config) => {
-    return {
-    // properties
-      type: 'graph',
-      data: config.data || {},
-      options: config.options || {},
-      // functions
-      update: jest.fn(),
-    };
-  })}));
+mockChart();
 
 // test cases
 describe('Risk graph', function() {
   it('toggleRisks should change which risk levels are shown in the risk graph', async function() {
     // arrange
     const graph = await import('../src/js/graph.js');
-    const rc = new RiskCounters(true);
+    const rc = new RiskCounters();
     const g = new graph.Graph('interval-graph', rc);
     await g.createGraphChart();
 
     // act
-    g.toggleRisks('high');
-    g.toggleRisks('medium');
-    g.toggleRisks('low');
-    g.toggleRisks('no');
+    await g.toggleRisks('high');
+    await g.toggleRisks('medium');
+    await g.toggleRisks('low');
+    await g.toggleRisks('no');
+    await g.toggleRisks('info');
 
     // assert
     test.value(g.graphShowHighRisks).isEqualTo(false);
     test.value(g.graphShowMediumRisks).isEqualTo(false);
     test.value(g.graphShowLowRisks).isEqualTo(false);
     test.value(g.graphShowNoRisks).isEqualTo(false);
+    test.value(g.graphShowInfoRisks).isEqualTo(false);
 
     // act
-    g.toggleRisks('high');
-    g.toggleRisks('medium');
-    g.toggleRisks('low');
-    g.toggleRisks('no');
+    await g.toggleRisks('high');
+    await g.toggleRisks('medium');
+    await g.toggleRisks('low');
+    await g.toggleRisks('no');
+    await g.toggleRisks('info');
 
     // assert
     test.value(g.graphShowHighRisks).isEqualTo(true);
     test.value(g.graphShowMediumRisks).isEqualTo(true);
     test.value(g.graphShowLowRisks).isEqualTo(true);
     test.value(g.graphShowNoRisks).isEqualTo(true);
+    test.value(g.graphShowInfoRisks).isEqualTo(true);
 
     // act
-    g.toggleRisks();
+    await g.toggleRisks();
 
     // assert
     test.value(g.graphShowHighRisks).isEqualTo(true);
     test.value(g.graphShowMediumRisks).isEqualTo(true);
     test.value(g.graphShowLowRisks).isEqualTo(true);
     test.value(g.graphShowNoRisks).isEqualTo(true);
+    test.value(g.graphShowInfoRisks).isEqualTo(true);
   });
   it('graphDropdown should show and hide a togglable dropdown button', async function() {
     // arrange
     const graph = await import('../src/js/graph.js');
-    const rc = new RiskCounters(true);
+    const rc = new RiskCounters();
     const g = new graph.Graph(undefined, rc);
 
     // act
@@ -196,7 +192,7 @@ describe('Risk graph', function() {
   it('getOptions should return the correct graph options', async function() {
     // arrange
     const graph = await import('../src/js/graph.js');
-    const rc = new RiskCounters(true);
+    const rc = new RiskCounters();
     const g = new graph.Graph(undefined, rc);
 
     const expectedOptions = {
@@ -227,7 +223,7 @@ describe('Risk graph', function() {
     // arrange
     const graph = await import('../src/js/graph.js');
     const chart = await import('chart.js/auto');
-    const rc = new RiskCounters(true);
+    const rc = new RiskCounters();
     const getDataMock = jest.spyOn(graph.Graph.prototype, 'getData');
     const getOptionsMock = jest.spyOn(graph.Graph.prototype, 'getOptions');
 
