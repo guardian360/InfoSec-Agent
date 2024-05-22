@@ -20,10 +20,20 @@
             "Ga naar Start > Instellingen > Bluetooth en apparaten.", 
             "Hier kunt u zien welke apparaten via bluetooth zijn verbonden, en u kunt ze indien nodig verwijderen."
         ],
+        "SolutionWindows10": 
+        [   
+            "Ga naar Start > Instellingen > Apparaten > Bluetooth en andere apparaten.", 
+            "Hier kunt u zien welke apparaten via Bluetooth zijn verbonden en u kunt ze indien nodig verwijderen."
+        ],        
         "Screenshots":
         [
-            "frontend/src/assets/images/devices-connected-via-bluetooth/bluetooth-devices-1.jpg",
-            "frontend/src/assets/images/devices-connected-via-bluetooth/bluetooth-devices-2.jpg"
+            "frontend/src/assets/images/windows-11/devices-connected-via-bluetooth/bluetooth-devices-1.jpg",
+            "frontend/src/assets/images/windows-11/devices-connected-via-bluetooth/bluetooth-devices-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/devices-connected-via-bluetooth/bluetooth-devices-1.png",
+            "frontend/src/assets/images/windows-10/devices-connected-via-bluetooth/bluetooth-devices-2.png"
         ]
     },
     "20": {
@@ -65,11 +75,11 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/guest-account/guest-account-1.jpg",
-            "frontend/src/assets/images/guest-account/guest-account-1.jpg",
-            "frontend/src/assets/images/guest-account/guest-account-1.jpg",
-            "frontend/src/assets/images/guest-account/guest-account-3.jpg",        
-            "frontend/src/assets/images/guest-account/guest-account-3.jpg"
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-3.jpg",        
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-3.jpg"
         ]
     },
     "31": {
@@ -83,12 +93,19 @@
             "Selecteer nu 'verwijderen' en bevestig de verwijdering van het account.",
             "Start uw computer opnieuw op om af te ronden."
         ],
+        "SolutionWindows10": 
+        [   
+            "Ga naar Start > Instellingen > Accounts > Gezin en andere gebruikers.", 
+            "Hier ziet u de andere accounts. Als er een account is dat u niet kent of iets dat 'gast' heet, klik erop.",
+            "Selecteer nu 'verwijderen' en bevestig het verwijderen van het account.",
+            "Start ten slotte uw computer opnieuw op."
+        ],        
         "Screenshots":
         [
-            "frontend/src/assets/images/guest-account/guest-account-1.jpg",
-            "frontend/src/assets/images/guest-account/guest-account-1.jpg",
-            "frontend/src/assets/images/guest-account/guest-account-3.jpg",        
-            "frontend/src/assets/images/guest-account/guest-account-3.jpg"
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-3.jpg",        
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-3.jpg"
         ]
     },
     "32": {
@@ -124,10 +141,20 @@
             "Ga naar Start > Instellingen > Privacy en beveiliging > Algemeen.",
             "Hier kunt u de instellingen voor advertentie-ID beheren en de functie in- of uitschakelen."
         ],
+        "SolutionWindows10": 
+        [
+            "Ga naar Start > Instellingen > Privacy > Algemeen.",
+            "Hier kunt u de advertentie-ID-instellingen beheren en de functie in-/uitschakelen."
+        ],        
         "Screenshots":
         [
-            "frontend/src/assets/images/network-sharing/nearby-sharing-1.jpg",
-            "frontend/src/assets/images/network-sharing/nearby-sharing-2.jpg"
+            "frontend/src/assets/images/windows-11/network-sharing/nearby-sharing-1.jpg",
+            "frontend/src/assets/images/windows-11/network-sharing/nearby-sharing-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/network-sharing/advertisementid-sharing-1.png",
+            "frontend/src/assets/images/windows-10/network-sharing/advertisementid-sharing-2.png"
         ]
     },
     "42": {
@@ -152,11 +179,23 @@
             "Ga naar Start > Instellingen > Systeem > Instellingen voor dichtbij delen.", 
             "Hier kunt u de netwerkdelingsinstellingen beheren en de functie uitschakelen."
         ],
+        "SolutionWindows10": 
+        [   
+            "Het was niet mogelijk om de status van de netwerkdelingsinstellingen op te halen. Volg deze stappen om de status te controleren en mogelijk het probleem van de netwerkdeling op te lossen.",
+            "Ga naar Start > Instellingen > Systeem > Gedeelde ervaringen.", 
+            "Hier kunt u de netwerkdelingsinstellingen beheren en de functie uitschakelen."
+        ],        
         "Screenshots":
         [
-            "frontend/src/assets/images/network-sharing/nearby-sharing-1.jpg",
-            "frontend/src/assets/images/network-sharing/nearby-sharing-1.jpg",
-            "frontend/src/assets/images/network-sharing/nearby-sharing-2.jpg"
+            "frontend/src/assets/images/windows-11/network-sharing/nearby-sharing-1.jpg",
+            "frontend/src/assets/images/windows-11/network-sharing/nearby-sharing-1.jpg",
+            "frontend/src/assets/images/windows-11/network-sharing/nearby-sharing-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/network-sharing/nearby-sharing-1.png",
+            "frontend/src/assets/images/windows-10/network-sharing/nearby-sharing-1.png",
+            "frontend/src/assets/images/windows-10/network-sharing/nearby-sharing-2.png"
         ]
     },
     "50": {
@@ -182,8 +221,13 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/password-manager/password-manager-1.jpg",
-            "frontend/src/assets/images/password-manager/password-manager-1.jpg"
+            "frontend/src/assets/images/windows-11/password-manager/password-manager-1.jpg",
+            "frontend/src/assets/images/windows-11/password-manager/password-manager-1.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/password-manager/password-manager-1.png",
+            "frontend/src/assets/images/windows-10/password-manager/password-manager-1.png"
         ]
     },
     "60": {
@@ -195,10 +239,20 @@
             "Selecteer Start > Instellingen > Privacy en beveiliging.", 
             "Hier kunt u locatie selecteren om te zien welke applicaties toegang hebben, en u kunt de toegang voor bepaalde applicaties intrekken."
         ],
+        "SolutionWindows10": 
+        [   
+            "Ga naar Start > Instellingen > Privacy > Locatie.", 
+            "Hier kunt u locatie selecteren om te zien welke applicaties toegang hebben, en u kunt de toegang voor bepaalde applicaties intrekken."
+        ],        
         "Screenshots":
         [
-            "frontend/src/assets/images/applications-with-location-permission/location-permissions-1.jpg",
-            "frontend/src/assets/images/applications-with-location-permission/location-permissions-2.jpg"
+            "frontend/src/assets/images/windows-11/applications-with-location-permission/location-permissions-1.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-location-permission/location-permissions-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/applications-with-location-permission/location-permissions-1.png",
+            "frontend/src/assets/images/windows-10/applications-with-location-permission/location-permissions-2.png"
         ]
     },
     "61": {
@@ -222,10 +276,20 @@
             "Selecteer Start > Instellingen > Privacy en beveiliging.", 
             "Hier kunt u microfoon selecteren om te zien welke applicaties toegang hebben, en u kunt de toegang voor bepaalde applicaties intrekken."
         ],
+        "SolutionWindows10": 
+        [   
+            "Ga naar Start > Instellingen > Privacy > Microfoon.", 
+            "Hier kunt u microfoon selecteren om te zien welke applicaties toegang hebben, en u kunt de toegang voor bepaalde applicaties intrekken."
+        ],
         "Screenshots":
         [
-            "frontend/src/assets/images/applications-with-microphone-permission/microphone-permissions-1.jpg",
-            "frontend/src/assets/images/applications-with-microphone-permission/microphone-permissions-2.jpg"
+            "frontend/src/assets/images/windows-11/applications-with-microphone-permission/microphone-permissions-1.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-microphone-permission/microphone-permissions-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/applications-with-microphone-permission/microphone-permissions-1.png",
+            "frontend/src/assets/images/windows-10/applications-with-microphone-permission/microphone-permissions-2.png"
         ]
     },
     "71": {
@@ -249,10 +313,20 @@
             "Selecteer Start > Instellingen > Privacy en beveiliging.", 
             "Hier kunt u webcam selecteren om te zien welke applicaties toegang hebben, en u kunt de toegang voor bepaalde applicaties intrekken."
         ],
+        "SolutionWindows10": 
+        [   
+            "Ga naar Start > Instellingen > Privacy > Camera.", 
+            "Hier kunt u webcam selecteren om te zien welke applicaties toegang hebben, en u kunt de toegang voor bepaalde applicaties intrekken."
+        ],
         "Screenshots":
         [
-            "frontend/src/assets/images/applications-with-webcam-permission/webcam-permissions-1.jpg",
-            "frontend/src/assets/images/applications-with-webcam-permission/webcam-permissions-2.jpg"
+            "frontend/src/assets/images/windows-11/applications-with-webcam-permission/webcam-permissions-1.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-webcam-permission/webcam-permissions-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/applications-with-webcam-permission/webcam-permissions-1.png",
+            "frontend/src/assets/images/windows-10/applications-with-webcam-permission/webcam-permissions-2.png"
         ]
     },
     "81": {
@@ -276,10 +350,20 @@
             "Selecteer Start > Instellingen > Privacy en beveiliging.", 
             "Hier kunt u afspraken selecteren om te zien welke applicaties toegang hebben, en u kunt de toegang voor bepaalde applicaties intrekken."
         ],
+        "SolutionWindows10": 
+        [   
+            "Ga naar Start > Instellingen > Privacy > Agenda.", 
+            "Hier kunt u afspraken selecteren om te zien welke applicaties toegang hebben, en u kunt de toegang voor bepaalde applicaties intrekken."
+        ],
         "Screenshots":
         [
-            "frontend/src/assets/images/applications-with-calendar-permission/calendar-permissions-1.jpg",
-            "frontend/src/assets/images/applications-with-calendar-permission/calendar-permissions-2.jpg"
+            "frontend/src/assets/images/windows-11/applications-with-calendar-permission/calendar-permissions-1.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-calendar-permission/calendar-permissions-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/applications-with-calendar-permission/calendar-permissions-1.png",
+            "frontend/src/assets/images/windows-10/applications-with-calendar-permission/calendar-permissions-2.png"
         ]
     },
     "91": {
@@ -295,18 +379,28 @@
         ]
     },
     "100": {
-        "Name": "Applicaties met contactpersonenpermissie",
+        "Name": "Applicaties met contactenpermissie",
         "Type": "Privacy",
-        "Information": "Begrijpen welke applicaties toegang hebben tot uw contactpersonen op uw Windows-computer is belangrijk voor het beschermen van uw privacy. Het stelt u in staat te controleren wie uw contactinformatie kan bekijken en mogelijk misbruiken, ongeautoriseerde toegang te voorkomen en datagebruik te beheren.",
+        "Information": "Begrijpen welke applicaties toegang hebben tot uw contacten op uw Windows-computer is belangrijk voor het beschermen van uw privacy. Het stelt u in staat te controleren wie uw contactinformatie kan bekijken en mogelijk misbruiken, ongeautoriseerde toegang te voorkomen en datagebruik te beheren.",
         "Solution": 
         [   
             "Selecteer Start > Instellingen > Privacy en beveiliging.", 
-            "Hier kunt u contactpersonen selecteren om te zien welke applicaties toegang hebben, en u kunt de toegang voor bepaalde applicaties intrekken."
+            "Hier kunt u contacten selecteren om te zien welke applicaties toegang hebben, en u kunt de toegang voor bepaalde applicaties intrekken."
+        ],
+        "SolutionWindows10": 
+        [   
+            "Ga naar Start > Instellingen > Privacy > Contacten.", 
+            "Hier kunt u contacten selecteren om te zien welke applicaties toegang hebben, en u kunt de toegang voor bepaalde applicaties intrekken."
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/applications-with-contacts-permission/contacts-permissions-1.jpg",
-            "frontend/src/assets/images/applications-with-contacts-permission/contacts-permissions-2.jpg"
+            "frontend/src/assets/images/windows-11/applications-with-contacts-permission/contacts-permissions-1.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-contacts-permission/contacts-permissions-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/applications-with-contacts-permission/contacts-permissions-1.png",
+            "frontend/src/assets/images/windows-10/applications-with-contacts-permission/contacts-permissions-2.png"
         ]
     },
     "101": {
@@ -334,7 +428,11 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/devices-connected-via-bluetooth/bluetooth-devices-1.jpg"
+            "frontend/src/assets/images/windows-11/devices-connected-via-bluetooth/bluetooth-devices-1.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/devices-connected-via-bluetooth/bluetooth-devices-1.png"
         ]
     },
     "120": {
@@ -387,10 +485,17 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/smb-status/smb-2.jpg",
-            "frontend/src/assets/images/smb-status/smb-2.jpg",
-            "frontend/src/assets/images/smb-status/smb-3.jpg",
-            "frontend/src/assets/images/smb-status/smb-3.jpg"
+            "frontend/src/assets/images/windows-11/smb-status/smb-2.jpg",
+            "frontend/src/assets/images/windows-11/smb-status/smb-2.jpg",
+            "frontend/src/assets/images/windows-11/smb-status/smb-3.jpg",
+            "frontend/src/assets/images/windows-11/smb-status/smb-3.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/smb-status/smb-1.png",
+            "frontend/src/assets/images/windows-10/smb-status/smb-1.png",
+            "frontend/src/assets/images/windows-10/smb-status/smb-2.png",
+            "frontend/src/assets/images/windows-10/smb-status/smb-2.png"
         ]
     },
     "132": {
@@ -418,10 +523,17 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/smb-status/smb-2.jpg",
-            "frontend/src/assets/images/smb-status/smb-2.jpg",
-            "frontend/src/assets/images/smb-status/smb-3.jpg",
-            "frontend/src/assets/images/smb-status/smb-3.jpg"
+            "frontend/src/assets/images/windows-11/smb-status/smb-2.jpg",
+            "frontend/src/assets/images/windows-11/smb-status/smb-2.jpg",
+            "frontend/src/assets/images/windows-11/smb-status/smb-3.jpg",
+            "frontend/src/assets/images/windows-11/smb-status/smb-3.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/smb-status/smb-1.png",
+            "frontend/src/assets/images/windows-10/smb-status/smb-1.png",
+            "frontend/src/assets/images/windows-10/smb-status/smb-2.png",
+            "frontend/src/assets/images/windows-10/smb-status/smb-2.png"
         ]
     },
     "140": {
@@ -437,14 +549,36 @@
             "Hier kunt u de schuifregelaar naar 'Altijd melden' verplaatsen om UAC in te schakelen. Als u wordt gevraagd door UAC, selecteer 'Ja' om door te gaan.",
             "Start uw computer opnieuw op om af te ronden."
         ],
+        "SolutionWindows10": 
+        [   
+            "De instellingen voor Gebruikersaccountbeheer zijn ingeschakeld voor apps, het instellen op altijd melden is een veiligere optie. Volg deze stappen om UAC in te schakelen",
+            "Druk op uw toetsenbord op 'Windows+R' om het venster Uitvoeren te openen.", 
+            "Typ 'Configuratiescherm' en selecteer OK.",
+            "Selecteer 'Gebruikersaccounts'.",
+            "Selecteer opnieuw 'Gebruikersaccounts'.",
+            "Selecteer 'Instellingen voor Gebruikersaccountbeheer wijzigen'. Als UAC u hierom vraagt, selecteer 'Ja' om door te gaan.",
+            "Hier kunt u de schuifregelaar naar 'Altijd melden' verplaatsen om UAC in te schakelen. Als UAC u hierom vraagt, selecteer 'Ja' om door te gaan.",
+            "Start ten slotte uw computer opnieuw op."
+        ],
         "Screenshots":
         [
-            "frontend/src/assets/images/user-account-control/user-account-control-1.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-2.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-2.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-3.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-5.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-5.jpg"
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-2.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-2.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-3.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-5.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-5.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-2.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-3.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-4.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-5.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-5.png"
         ]
     },
     "141": {
@@ -471,15 +605,38 @@
             "Selecteer 'Instellingen voor gebruikersaccountbeheer wijzigen'. Als u wordt gevraagd door UAC, selecteer 'Ja' om door te gaan.",
             "Hier kunt u de schuifregelaar naar 'Altijd melden' verplaatsen om UAC in te schakelen. Als u wordt gevraagd door UAC, selecteer 'Ja' om door te gaan.",
             "Start uw computer opnieuw op om af te ronden."
-        ],"Screenshots":
+        ],
+        "SolutionWindows10": 
+        [   
+            "De instellingen voor Gebruikersaccountbeheer zijn ingeschakeld voor apps, het instellen op altijd melden is een veiligere optie. Volg deze stappen om UAC in te schakelen",
+            "Druk op uw toetsenbord op 'Windows+R' om het venster Uitvoeren te openen.", 
+            "Typ 'Configuratiescherm' en selecteer OK.",
+            "Selecteer 'Gebruikersaccounts'.",
+            "Selecteer opnieuw 'Gebruikersaccounts'.",
+            "Selecteer 'Instellingen voor Gebruikersaccountbeheer wijzigen'. Als UAC u hierom vraagt, selecteer 'Ja' om door te gaan.",
+            "Hier kunt u de schuifregelaar naar 'Altijd melden' verplaatsen om UAC in te schakelen. Als UAC u hierom vraagt, selecteer 'Ja' om door te gaan.",
+            "Start ten slotte uw computer opnieuw op."
+        ],
+        "Screenshots":
         [
-            "frontend/src/assets/images/user-account-control/user-account-control-1.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-1.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-2.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-2.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-3.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-5.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-5.jpg"
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-2.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-2.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-3.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-5.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-5.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-2.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-3.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-4.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-5.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-5.png"
         ]
     },
     "143": {
@@ -494,15 +651,38 @@
             "Selecteer 'Instellingen voor gebruikersaccountbeheer wijzigen'. Als u wordt gevraagd door UAC, selecteer 'Ja' om door te gaan.",
             "Hier kunt u de schuifregelaar naar 'Altijd melden' verplaatsen om UAC in te schakelen. Als u wordt gevraagd door UAC, selecteer 'Ja' om door te gaan.",
             "Start uw computer opnieuw op om af te ronden."
-        ],"Screenshots":
+        ],
+        "SolutionWindows10": 
+        [   
+            "De instellingen voor Gebruikersaccountbeheer zijn ingeschakeld voor apps, het instellen op altijd melden is een veiligere optie. Volg deze stappen om UAC in te schakelen",
+            "Druk op uw toetsenbord op 'Windows+R' om het venster Uitvoeren te openen.", 
+            "Typ 'Configuratiescherm' en selecteer OK.",
+            "Selecteer 'Gebruikersaccounts'.",
+            "Selecteer opnieuw 'Gebruikersaccounts'.",
+            "Selecteer 'Instellingen voor Gebruikersaccountbeheer wijzigen'. Als UAC u hierom vraagt, selecteer 'Ja' om door te gaan.",
+            "Hier kunt u de schuifregelaar naar 'Altijd melden' verplaatsen om UAC in te schakelen. Als UAC u hierom vraagt, selecteer 'Ja' om door te gaan.",
+            "Start ten slotte uw computer opnieuw op."
+        ],
+        "Screenshots":
         [
-            "frontend/src/assets/images/user-account-control/user-account-control-1.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-1.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-2.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-2.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-3.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-5.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-5.jpg"
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-2.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-2.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-3.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-5.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-5.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-2.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-3.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-4.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-5.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-5.png"
         ]
     },
     "150": {
@@ -530,10 +710,17 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg"
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-1.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-2.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-3.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-4.png"
         ]
     },
     "152": {
@@ -549,10 +736,17 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg"
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-1.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-2.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-3.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-4.png"
         ]
     },
     "153": {
@@ -568,10 +762,17 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg"
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-1.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-2.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-3.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-4.png"
         ]
     },
     "154": {
@@ -588,11 +789,19 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg"
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-1.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-1.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-2.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-3.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-4.png"
         ]
     },
     "160": {
@@ -607,9 +816,15 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/last-password-change/change-password-1.jpg",
-            "frontend/src/assets/images/last-password-change/change-password-2.jpg",
-            "frontend/src/assets/images/last-password-change/change-password-2.jpg"
+            "frontend/src/assets/images/windows-11/last-password-change/change-password-1.jpg",
+            "frontend/src/assets/images/windows-11/last-password-change/change-password-2.jpg",
+            "frontend/src/assets/images/windows-11/last-password-change/change-password-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/last-password-change/change-password-1.png",
+            "frontend/src/assets/images/windows-10/last-password-change/change-password-2.png",
+            "frontend/src/assets/images/windows-10/last-password-change/change-password-2.png"
         ]
     },
     "161": {
@@ -635,8 +850,13 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-login-method/login-method-1.jpg",
-            "frontend/src/assets/images/windows-login-method/login-method-2.jpg"
+            "frontend/src/assets/images/windows-11/windows-login-method/login-method-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-login-method/login-method-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/windows-login-method/login-method-1.png",
+            "frontend/src/assets/images/windows-10/windows-login-method/login-method-2.png"
         ]
     },
     "171": {
@@ -662,8 +882,13 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-login-method/login-method-1.jpg",
-            "frontend/src/assets/images/windows-login-method/login-method-2.jpg"
+            "frontend/src/assets/images/windows-11/windows-login-method/login-method-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-login-method/login-method-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/windows-login-method/login-method-1.png",
+            "frontend/src/assets/images/windows-10/windows-login-method/login-method-2.png"
         ]
     },
     "180": {
@@ -689,8 +914,13 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/outdated-windows-version/windows-update-1.jpg",
-            "frontend/src/assets/images/outdated-windows-version/windows-update-2.jpg"
+            "frontend/src/assets/images/windows-11/outdated-windows-version/windows-update-1.jpg",
+            "frontend/src/assets/images/windows-11/outdated-windows-version/windows-update-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/outdated-windows-version/windows-update-1.png",
+            "frontend/src/assets/images/windows-10/outdated-windows-version/windows-update-2.png"
         ]
     },
     "182": {
@@ -704,8 +934,13 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/outdated-windows-version/windows-update-1.jpg",
-            "frontend/src/assets/images/outdated-windows-version/windows-update-2.jpg"
+            "frontend/src/assets/images/windows-11/outdated-windows-version/windows-update-1.jpg",
+            "frontend/src/assets/images/windows-11/outdated-windows-version/windows-update-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/outdated-windows-version/windows-update-1.png",
+            "frontend/src/assets/images/windows-10/outdated-windows-version/windows-update-2.png"
         ]
     },
     "190": {
@@ -774,8 +1009,13 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/applications-which-start-at-boot/boot-apps-1.jpg",
-            "frontend/src/assets/images/applications-which-start-at-boot/boot-apps-2.jpg"
+            "frontend/src/assets/images/windows-11/applications-which-start-at-boot/boot-apps-1.jpg",
+            "frontend/src/assets/images/windows-11/applications-which-start-at-boot/boot-apps-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/applications-which-start-at-boot/boot-apps-1.png",
+            "frontend/src/assets/images/windows-10/applications-which-start-at-boot/boot-apps-2.png"
         ]
     },
     "210": {
@@ -790,6 +1030,9 @@
         ],
         "Screenshots":
         [
+            "frontend/src/assets/images/windows-11/chrome-adblocker/chrome-adblocker-1.png",
+            "frontend/src/assets/images/windows-11/chrome-adblocker/chrome-adblocker-2.png",
+            "frontend/src/assets/images/windows-11/chrome-adblocker/chrome-adblocker-3.png"
         ]
     },
     "211": {
@@ -804,6 +1047,9 @@
         ],
         "Screenshots":
         [
+            "frontend/src/assets/images/windows-11/chrome-adblocker/chrome-adblocker-1.png",
+            "frontend/src/assets/images/windows-11/chrome-adblocker/chrome-adblocker-2.png",
+            "frontend/src/assets/images/windows-11/chrome-adblocker/chrome-adblocker-3.png"
         ]
     },
     "220": {
@@ -818,6 +1064,9 @@
         ],
         "Screenshots":
         [
+            "frontend/src/assets/images/windows-11/edge-adblocker/edge-adblocker-1.png",
+            "frontend/src/assets/images/windows-11/edge-adblocker/edge-adblocker-2.png",
+            "frontend/src/assets/images/windows-11/edge-adblocker/edge-adblocker-3.png"
         ]
     },
     "221": {
@@ -832,6 +1081,9 @@
         ],
         "Screenshots":
         [
+            "frontend/src/assets/images/windows-11/edge-adblocker/edge-adblocker-1.png",
+            "frontend/src/assets/images/windows-11/edge-adblocker/edge-adblocker-2.png",
+            "frontend/src/assets/images/windows-11/edge-adblocker/edge-adblocker-3.png"
         ]
     },
     "230": {
@@ -920,8 +1172,26 @@
         ],
         "Screenshots":
         [
+            "frontend/src/assets/images/windows-11/firefox-cookies/cookies-firefox-1.png",
+            "frontend/src/assets/images/windows-11/firefox-cookies/cookies-firefox-2.png",
+            "frontend/src/assets/images/windows-11/firefox-cookies/cookies-firefox-3.png",
+            "frontend/src/assets/images/windows-11/firefox-cookies/cookies-firefox-4.png"
         ]
     },
+    "271": {
+        "Name": "Mogelijke trackingcookies gevonden in Mozilla Firefox",
+        "Type": "Privacy",
+        "Information": "Cookies zijn kleine tekstbestanden die op uw computer worden opgeslagen door websites die u bezoekt. Ze worden gebruikt om uw voorkeuren, inloggegevens en andere gegevens te onthouden om uw browse-ervaring te verbeteren. Cookies kunnen echter ook worden gebruikt om uw online activiteiten te volgen en persoonlijke informatie te verzamelen zonder uw toestemming, wat privacyproblemen oplevert. Het beheren en regelmatig verwijderen van cookies helpt uw privacy te beschermen en de gegevens die websites over u verzamelen te controleren.",
+        "Solution": 
+        [   		
+            "Open Mozilla Firefox en klik op de menuknop (drie horizontale lijnen) in de rechterbovenhoek.",
+            "Selecteer 'Instellingen' en ga naar het tabblad 'Privacy & Beveiliging'.",
+            "De optie 'Verbeterde bescherming tegen volgen' moet zijn ingesteld op 'Standaard' of 'Aangepast'. Aangepast geeft u meer controle over wat u toestaat of blokkeert. Onder Cookies en sitegegevens kunt u uw bestaande cookies verwijderen en uitzonderingen beheren. Het wordt aanbevolen om uw cookies vaak te verwijderen om uw privacy te beschermen."
+        ],
+        "Screenshots":
+        [
+        ]
+    },    
     "280": {
         "Name": "Extensies geïnstalleerd in Mozilla Firefox",
         "Type": "Privacy",
@@ -934,6 +1204,9 @@
         ],
         "Screenshots":
         [
+            "frontend/src/assets/images/windows-11/firefox-extensions/extensions-firefox-1.png",
+            "frontend/src/assets/images/windows-11/firefox-extensions/extensions-firefox-2.png",
+            "frontend/src/assets/images/windows-11/firefox-extensions/extensions-firefox-3.png"
         ]
     },
     "290": {
@@ -962,6 +1235,11 @@
         ],
         "Screenshots":
         [
+            "frontend/src/assets/images/windows-11/firefox-adblocker/firefox-adblocker-1.png",
+            "frontend/src/assets/images/windows-11/firefox-adblocker/firefox-adblocker-2.png",
+            "frontend/src/assets/images/windows-11/firefox-adblocker/firefox-adblocker-3.png",
+            "frontend/src/assets/images/windows-11/firefox-adblocker/firefox-adblocker-4.png",
+            "frontend/src/assets/images/windows-11/firefox-adblocker/firefox-adblocker-5.png"
         ]
     },		
     "300": {
@@ -1080,8 +1358,19 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/applications-with-admin-rights/admin-rights-1.jpg",
-            "frontend/src/assets/images/applications-with-admin-rights/admin-rights-2.jpg"
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-1.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-2.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-3.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-4.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-4.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-1.png",
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-2.png",
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-3.png",
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-4.png",
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-4.png"
         ]
     },
     "999": {
@@ -1090,9 +1379,28 @@
         "Information": "Geen actie nodig.",
         "Solution":
         [
+            "Klik met de rechtermuisknop op de taakbalk en selecteer 'Taakbeheer', of druk op Ctrl + Shift + Esc op uw toetsenbord om Taakbeheer te openen.",
+            "Klik in Taakbeheer op het tabblad 'Details' om een lijst met actieve processen en applicaties te bekijken.",
+            "Klik met de rechtermuisknop op de kolomkop, klik op 'Kolommen selecteren' en zorg ervoor dat 'Verhoogd' is aangevinkt. Klik op OK.",
+            "De kolom 'Verhoogd' toont nu 'Ja' of 'Nee' voor elke applicatie of proces, waarbij 'Ja' aangeeft dat de applicatie beheerdersrechten heeft.",
+            "Hier kunt u de lijst met applicaties bekijken en controleren of er ongeautoriseerde of verdachte applicaties met beheerdersrechten zijn.",
+            "Als u een ongeautoriseerde applicatie met beheerdersrechten vindt, selecteer dan het proces en klik op 'Proces beëindigen' om het te stoppen."
         ],
         "Screenshots":
         [
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-1.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-2.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-3.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-4.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-4.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-1.png",
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-2.png",
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-3.png",
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-4.png",
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-4.png"
         ]
     }
 }

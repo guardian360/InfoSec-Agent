@@ -20,10 +20,20 @@
             "Gehen Sie zu Start > Einstellungen > Bluetooth & Geräte.", 
             "Hier können Sie sehen, welche Geräte über Bluetooth verbunden sind, und diese bei Bedarf entfernen."
         ],
+        "SolutionWindows10": 
+        [   
+            "Gehen Sie zu Start > Einstellungen > Geräte > Bluetooth und andere Geräte.", 
+            "Hier können Sie sehen, welche Geräte über Bluetooth verbunden sind, und Sie können sie bei Bedarf entfernen."
+        ],        
         "Screenshots":
         [
-            "frontend/src/assets/images/devices-connected-via-bluetooth/bluetooth-devices-1.jpg",
-            "frontend/src/assets/images/devices-connected-via-bluetooth/bluetooth-devices-2.jpg"
+            "frontend/src/assets/images/windows-11/devices-connected-via-bluetooth/bluetooth-devices-1.jpg",
+            "frontend/src/assets/images/windows-11/devices-connected-via-bluetooth/bluetooth-devices-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/devices-connected-via-bluetooth/bluetooth-devices-1.png",
+            "frontend/src/assets/images/windows-10/devices-connected-via-bluetooth/bluetooth-devices-2.png"
         ]
     },
     "20": {
@@ -65,11 +75,11 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/guest-account/guest-account-1.jpg",
-            "frontend/src/assets/images/guest-account/guest-account-1.jpg",
-            "frontend/src/assets/images/guest-account/guest-account-1.jpg",
-            "frontend/src/assets/images/guest-account/guest-account-3.jpg",        
-            "frontend/src/assets/images/guest-account/guest-account-3.jpg"
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-3.jpg",        
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-3.jpg"
         ]
     },
     "31": {
@@ -83,12 +93,19 @@
             "Wählen Sie jetzt 'Entfernen' und bestätigen Sie die Löschung des Kontos.",
             "Um abzuschließen, starten Sie Ihren Computer neu."
         ],
+        "SolutionWindows10": 
+        [   
+            "Gehen Sie zu Start > Einstellungen > Konten > Familie & andere Benutzer.", 
+            "Hier sehen Sie die anderen Konten. Wenn es ein Konto gibt, das Sie nicht kennen, oder etwas, das 'Gast' genannt wird, klicken Sie darauf.",
+            "Wählen Sie nun 'Entfernen' und bestätigen Sie das Löschen des Kontos.",
+            "Starten Sie abschließend Ihren Computer neu."
+        ],
         "Screenshots":
         [
-            "frontend/src/assets/images/guest-account/guest-account-1.jpg",
-            "frontend/src/assets/images/guest-account/guest-account-1.jpg",
-            "frontend/src/assets/images/guest-account/guest-account-3.jpg",        
-            "frontend/src/assets/images/guest-account/guest-account-3.jpg"
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-3.jpg",        
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-3.jpg"
         ]
     },
     "32": {
@@ -124,10 +141,20 @@
             "Gehen Sie zu Start > Einstellungen > Datenschutz & Sicherheit > Allgemein",
             "Hier können Sie die Einstellungen der Werbe-ID steuern und die Funktion ein-/ausschalten."
         ],
+        "SolutionWindows10": 
+        [
+            "Gehen Sie zu Start > Einstellungen > Datenschutz > Allgemein.",
+            "Hier können Sie die Einstellungen für die Werbe-ID steuern und die Funktion ein-/ausschalten."
+        ],        
         "Screenshots":
         [
-            "frontend/src/assets/images/network-sharing/nearby-sharing-1.jpg",
-            "frontend/src/assets/images/network-sharing/nearby-sharing-2.jpg"
+            "frontend/src/assets/images/windows-11/network-sharing/nearby-sharing-1.jpg",
+            "frontend/src/assets/images/windows-11/network-sharing/nearby-sharing-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/network-sharing/advertisementid-sharing-1.png",
+            "frontend/src/assets/images/windows-10/network-sharing/advertisementid-sharing-2.png"
         ]
     },
     "42": {
@@ -152,11 +179,23 @@
             "Gehen Sie zu Start > Einstellungen > System > Einstellungen für die Nähefreigabe.", 
             "Hier können Sie die Einstellungen der Netzwerkfreigabe steuern und die Funktion ausschalten."
         ],
+        "SolutionWindows10": 
+        [   
+            "Es war nicht möglich, den Status der Netzwerkfreigabeeinstellungen abzurufen. Um den Status zu überprüfen und möglicherweise das Problem der Netzwerkfreigabe zu lösen, befolgen Sie diese Schritte.",
+            "Gehen Sie zu Start > Einstellungen > System > Geteilte Erfahrungen.", 
+            "Hier können Sie die Netzwerkfreigabeeinstellungen steuern und die Funktion ausschalten."
+        ],        
         "Screenshots":
         [
-            "frontend/src/assets/images/network-sharing/nearby-sharing-1.jpg",
-            "frontend/src/assets/images/network-sharing/nearby-sharing-1.jpg",
-            "frontend/src/assets/images/network-sharing/nearby-sharing-2.jpg"
+            "frontend/src/assets/images/windows-11/network-sharing/nearby-sharing-1.jpg",
+            "frontend/src/assets/images/windows-11/network-sharing/nearby-sharing-1.jpg",
+            "frontend/src/assets/images/windows-11/network-sharing/nearby-sharing-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/network-sharing/nearby-sharing-1.png",
+            "frontend/src/assets/images/windows-10/network-sharing/nearby-sharing-1.png",
+            "frontend/src/assets/images/windows-10/network-sharing/nearby-sharing-2.png"
         ]
     },
     "50": {
@@ -182,8 +221,13 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/password-manager/password-manager-1.jpg",
-            "frontend/src/assets/images/password-manager/password-manager-1.jpg"
+            "frontend/src/assets/images/windows-11/password-manager/password-manager-1.jpg",
+            "frontend/src/assets/images/windows-11/password-manager/password-manager-1.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/password-manager/password-manager-1.png",
+            "frontend/src/assets/images/windows-10/password-manager/password-manager-1.png"
         ]
     },
     "60": {
@@ -195,10 +239,20 @@
             "Wählen Sie Start > Einstellungen > Datenschutz & Sicherheit.", 
             "Hier können Sie den Standort auswählen, um zu sehen, welche Anwendungen Zugriff haben, und den Zugriff für bestimmte Anwendungen widerrufen."
         ],
+        "SolutionWindows10": 
+        [   
+            "Gehen Sie zu Start > Einstellungen > Datenschutz > Ortung.", 
+            "Hier können Sie den Standort auswählen, um zu sehen, welche Anwendungen darauf zugreifen können, und Sie können den Zugriff für bestimmte Anwendungen widerrufen."
+        ],        
         "Screenshots":
         [
-            "frontend/src/assets/images/applications-with-location-permission/location-permissions-1.jpg",
-            "frontend/src/assets/images/applications-with-location-permission/location-permissions-2.jpg"
+            "frontend/src/assets/images/windows-11/applications-with-location-permission/location-permissions-1.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-location-permission/location-permissions-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/applications-with-location-permission/location-permissions-1.png",
+            "frontend/src/assets/images/windows-10/applications-with-location-permission/location-permissions-2.png"
         ]
     },
     "61": {
@@ -222,10 +276,20 @@
             "Wählen Sie Start > Einstellungen > Datenschutz & Sicherheit.", 
             "Hier können Sie das Mikrofon auswählen, um zu sehen, welche Anwendungen Zugriff haben, und den Zugriff für bestimmte Anwendungen widerrufen."
         ],
+        "SolutionWindows10": 
+        [   
+            "Gehen Sie zu Start > Einstellungen > Datenschutz > Mikrofon.", 
+            "Hier können Sie das Mikrofon auswählen, um zu sehen, welche Anwendungen darauf zugreifen können, und Sie können den Zugriff für bestimmte Anwendungen widerrufen."
+        ],
         "Screenshots":
         [
-            "frontend/src/assets/images/applications-with-microphone-permission/microphone-permissions-1.jpg",
-            "frontend/src/assets/images/applications-with-microphone-permission/microphone-permissions-2.jpg"
+            "frontend/src/assets/images/windows-11/applications-with-microphone-permission/microphone-permissions-1.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-microphone-permission/microphone-permissions-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/applications-with-microphone-permission/microphone-permissions-1.png",
+            "frontend/src/assets/images/windows-10/applications-with-microphone-permission/microphone-permissions-2.png"
         ]
     },
     "71": {
@@ -249,10 +313,20 @@
             "Wählen Sie Start > Einstellungen > Datenschutz & Sicherheit.", 
             "Hier können Sie die Webcam auswählen, um zu sehen, welche Anwendungen Zugriff haben, und den Zugriff für bestimmte Anwendungen widerrufen."
         ],
+        "SolutionWindows10": 
+        [   
+            "Gehen Sie zu Start > Einstellungen > Datenschutz > Kamera.", 
+            "Hier können Sie die Kamera auswählen, um zu sehen, welche Anwendungen darauf zugreifen können, und Sie können den Zugriff für bestimmte Anwendungen widerrufen."
+        ],
         "Screenshots":
         [
-            "frontend/src/assets/images/applications-with-webcam-permission/webcam-permissions-1.jpg",
-            "frontend/src/assets/images/applications-with-webcam-permission/webcam-permissions-2.jpg"
+            "frontend/src/assets/images/windows-11/applications-with-webcam-permission/webcam-permissions-1.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-webcam-permission/webcam-permissions-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/applications-with-webcam-permission/webcam-permissions-1.png",
+            "frontend/src/assets/images/windows-10/applications-with-webcam-permission/webcam-permissions-2.png"
         ]
     },
     "81": {
@@ -276,10 +350,20 @@
             "Wählen Sie Start > Einstellungen > Datenschutz & Sicherheit.", 
             "Hier können Sie die Termine auswählen, um zu sehen, welche Anwendungen Zugriff haben, und den Zugriff für bestimmte Anwendungen widerrufen."
         ],
+        "SolutionWindows10": 
+        [   
+            "Gehen Sie zu Start > Einstellungen > Datenschutz > Kalender.", 
+            "Hier können Sie die Kalender auswählen, um zu sehen, welche Anwendungen darauf zugreifen können, und Sie können den Zugriff für bestimmte Anwendungen widerrufen."
+        ],
         "Screenshots":
         [
-            "frontend/src/assets/images/applications-with-calendar-permission/calendar-permissions-1.jpg",
-            "frontend/src/assets/images/applications-with-calendar-permission/calendar-permissions-2.jpg"
+            "frontend/src/assets/images/windows-11/applications-with-calendar-permission/calendar-permissions-1.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-calendar-permission/calendar-permissions-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/applications-with-calendar-permission/calendar-permissions-1.png",
+            "frontend/src/assets/images/windows-10/applications-with-calendar-permission/calendar-permissions-2.png"
         ]
     },
     "91": {
@@ -303,10 +387,20 @@
             "Wählen Sie Start > Einstellungen > Datenschutz & Sicherheit.", 
             "Hier können Sie die Kontakte auswählen, um zu sehen, welche Anwendungen Zugriff haben, und den Zugriff für bestimmte Anwendungen widerrufen."
         ],
+        "SolutionWindows10": 
+        [   
+            "Gehen Sie zu Start > Einstellungen > Datenschutz > Kontakte.", 
+            "Hier können Sie die Kontakte auswählen, um zu sehen, welche Anwendungen darauf zugreifen können, und Sie können den Zugriff für bestimmte Anwendungen widerrufen."
+        ],
         "Screenshots":
         [
-            "frontend/src/assets/images/applications-with-contacts-permission/contacts-permissions-1.jpg",
-            "frontend/src/assets/images/applications-with-contacts-permission/contacts-permissions-2.jpg"
+            "frontend/src/assets/images/windows-11/applications-with-contacts-permission/contacts-permissions-1.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-contacts-permission/contacts-permissions-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/applications-with-contacts-permission/contacts-permissions-1.png",
+            "frontend/src/assets/images/windows-10/applications-with-contacts-permission/contacts-permissions-2.png"
         ]
     },
     "101": {
@@ -334,7 +428,11 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/devices-connected-via-bluetooth/bluetooth-devices-1.jpg"
+            "frontend/src/assets/images/windows-11/devices-connected-via-bluetooth/bluetooth-devices-1.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/devices-connected-via-bluetooth/bluetooth-devices-1.png"
         ]
     },
     "120": {
@@ -387,10 +485,17 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/smb-status/smb-2.jpg",
-            "frontend/src/assets/images/smb-status/smb-2.jpg",
-            "frontend/src/assets/images/smb-status/smb-3.jpg",
-            "frontend/src/assets/images/smb-status/smb-3.jpg"
+            "frontend/src/assets/images/windows-11/smb-status/smb-2.jpg",
+            "frontend/src/assets/images/windows-11/smb-status/smb-2.jpg",
+            "frontend/src/assets/images/windows-11/smb-status/smb-3.jpg",
+            "frontend/src/assets/images/windows-11/smb-status/smb-3.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/smb-status/smb-1.png",
+            "frontend/src/assets/images/windows-10/smb-status/smb-1.png",
+            "frontend/src/assets/images/windows-10/smb-status/smb-2.png",
+            "frontend/src/assets/images/windows-10/smb-status/smb-2.png"
         ]
     },
     "132": {
@@ -418,10 +523,17 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/smb-status/smb-2.jpg",
-            "frontend/src/assets/images/smb-status/smb-2.jpg",
-            "frontend/src/assets/images/smb-status/smb-3.jpg",
-            "frontend/src/assets/images/smb-status/smb-3.jpg"
+            "frontend/src/assets/images/windows-11/smb-status/smb-2.jpg",
+            "frontend/src/assets/images/windows-11/smb-status/smb-2.jpg",
+            "frontend/src/assets/images/windows-11/smb-status/smb-3.jpg",
+            "frontend/src/assets/images/windows-11/smb-status/smb-3.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/smb-status/smb-1.png",
+            "frontend/src/assets/images/windows-10/smb-status/smb-1.png",
+            "frontend/src/assets/images/windows-10/smb-status/smb-2.png",
+            "frontend/src/assets/images/windows-10/smb-status/smb-2.png"
         ]
     },
     "140": {
@@ -437,14 +549,36 @@
             "Hier können Sie den Schieberegler auf 'Immer benachrichtigen' stellen, um die UAC zu aktivieren. Wenn Sie von der UAC aufgefordert werden, wählen Sie 'Ja', um fortzufahren.",
             "Um abzuschließen, starten Sie Ihren Computer neu."
         ],
+        "SolutionWindows10": 
+        [   
+            "Die Einstellungen für die Benutzerkontensteuerung sind für Apps aktiviert, die Einstellung auf 'Immer benachrichtigen' ist eine sicherere Option. Um UAC zu aktivieren, befolgen Sie diese Schritte",
+            "Drücken Sie auf Ihrer Tastatur 'Windows+R', um das Ausführen-Fenster zu öffnen.", 
+            "Geben Sie 'Systemsteuerung' ein und wählen Sie dann OK.",
+            "Wählen Sie 'Benutzerkonten'.",
+            "Wählen Sie erneut 'Benutzerkonten'.",
+            "Wählen Sie 'Einstellungen der Benutzerkontensteuerung ändern'. Wenn Sie von der Benutzerkontensteuerung dazu aufgefordert werden, wählen Sie 'Ja', um fortzufahren.",
+            "Hier können Sie den Schieberegler auf 'Immer benachrichtigen' stellen, um UAC zu aktivieren. Wenn Sie von der Benutzerkontensteuerung dazu aufgefordert werden, wählen Sie 'Ja', um fortzufahren.",
+            "Starten Sie abschließend Ihren Computer neu."
+        ],
         "Screenshots":
         [
-            "frontend/src/assets/images/user-account-control/user-account-control-1.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-2.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-2.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-3.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-5.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-5.jpg"
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-2.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-2.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-3.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-5.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-5.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-2.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-3.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-4.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-5.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-5.png"
         ]
     },
     "141": {
@@ -471,15 +605,38 @@
             "Wählen Sie 'Einstellungen der Benutzerkontensteuerung ändern'. Wenn Sie von der UAC aufgefordert werden, wählen Sie 'Ja', um fortzufahren.",
             "Hier können Sie den Schieberegler auf 'Immer benachrichtigen' stellen, um die UAC zu aktivieren. Wenn Sie von der UAC aufgefordert werden, wählen Sie 'Ja', um fortzufahren.",
             "Um abzuschließen, starten Sie Ihren Computer neu."
-        ],"Screenshots":
+        ],
+        "SolutionWindows10": 
+        [   
+            "Die Einstellungen für die Benutzerkontensteuerung sind für Apps aktiviert, die Einstellung auf 'Immer benachrichtigen' ist eine sicherere Option. Um UAC zu aktivieren, befolgen Sie diese Schritte",
+            "Drücken Sie auf Ihrer Tastatur 'Windows+R', um das Ausführen-Fenster zu öffnen.", 
+            "Geben Sie 'Systemsteuerung' ein und wählen Sie dann OK.",
+            "Wählen Sie 'Benutzerkonten'.",
+            "Wählen Sie erneut 'Benutzerkonten'.",
+            "Wählen Sie 'Einstellungen der Benutzerkontensteuerung ändern'. Wenn Sie von der Benutzerkontensteuerung dazu aufgefordert werden, wählen Sie 'Ja', um fortzufahren.",
+            "Hier können Sie den Schieberegler auf 'Immer benachrichtigen' stellen, um UAC zu aktivieren. Wenn Sie von der Benutzerkontensteuerung dazu aufgefordert werden, wählen Sie 'Ja', um fortzufahren.",
+            "Starten Sie abschließend Ihren Computer neu."
+        ],
+        "Screenshots":
         [
-            "frontend/src/assets/images/user-account-control/user-account-control-1.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-1.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-2.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-2.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-3.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-5.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-5.jpg"
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-2.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-2.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-3.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-5.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-5.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-2.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-3.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-4.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-5.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-5.png"
         ]
     },
     "143": {
@@ -494,15 +651,38 @@
             "Wählen Sie 'Einstellungen der Benutzerkontensteuerung ändern'. Wenn Sie von der UAC aufgefordert werden, wählen Sie 'Ja', um fortzufahren.",
             "Hier können Sie den Schieberegler auf 'Immer benachrichtigen' stellen, um die UAC zu aktivieren. Wenn Sie von der UAC aufgefordert werden, wählen Sie 'Ja', um fortzufahren.",
             "Um abzuschließen, starten Sie Ihren Computer neu."
-        ],"Screenshots":
+        ],
+        "SolutionWindows10": 
+        [   
+            "Die Einstellungen für die Benutzerkontensteuerung sind für Apps aktiviert, die Einstellung auf 'Immer benachrichtigen' ist eine sicherere Option. Um UAC zu aktivieren, befolgen Sie diese Schritte",
+            "Drücken Sie auf Ihrer Tastatur 'Windows+R', um das Ausführen-Fenster zu öffnen.", 
+            "Geben Sie 'Systemsteuerung' ein und wählen Sie dann OK.",
+            "Wählen Sie 'Benutzerkonten'.",
+            "Wählen Sie erneut 'Benutzerkonten'.",
+            "Wählen Sie 'Einstellungen der Benutzerkontensteuerung ändern'. Wenn Sie von der Benutzerkontensteuerung dazu aufgefordert werden, wählen Sie 'Ja', um fortzufahren.",
+            "Hier können Sie den Schieberegler auf 'Immer benachrichtigen' stellen, um UAC zu aktivieren. Wenn Sie von der Benutzerkontensteuerung dazu aufgefordert werden, wählen Sie 'Ja', um fortzufahren.",
+            "Starten Sie abschließend Ihren Computer neu."
+        ],
+        "Screenshots":
         [
-            "frontend/src/assets/images/user-account-control/user-account-control-1.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-1.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-2.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-2.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-3.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-5.jpg",
-            "frontend/src/assets/images/user-account-control/user-account-control-5.jpg"
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-2.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-2.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-3.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-5.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-5.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-2.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-3.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-4.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-5.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-5.png"
         ]
     },
     "150": {
@@ -530,10 +710,17 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg"
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-1.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-2.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-3.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-4.png"
         ]
     },
     "152": {
@@ -549,10 +736,17 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg"
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-1.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-2.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-3.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-4.png"
         ]
     },
     "153": {
@@ -568,10 +762,17 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg"
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-1.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-2.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-3.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-4.png"
         ]
     },
     "154": {
@@ -588,11 +789,19 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-defender/windows-defender-1.jpg"
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-1.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-1.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-2.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-3.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-4.png"
         ]
     },
     "160": {
@@ -607,9 +816,15 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/last-password-change/change-password-1.jpg",
-            "frontend/src/assets/images/last-password-change/change-password-2.jpg",
-            "frontend/src/assets/images/last-password-change/change-password-2.jpg"
+            "frontend/src/assets/images/windows-11/last-password-change/change-password-1.jpg",
+            "frontend/src/assets/images/windows-11/last-password-change/change-password-2.jpg",
+            "frontend/src/assets/images/windows-11/last-password-change/change-password-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/last-password-change/change-password-1.png",
+            "frontend/src/assets/images/windows-10/last-password-change/change-password-2.png",
+            "frontend/src/assets/images/windows-10/last-password-change/change-password-2.png"
         ]
     },
     "161": {
@@ -635,8 +850,13 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-login-method/login-method-1.jpg",
-            "frontend/src/assets/images/windows-login-method/login-method-2.jpg"
+            "frontend/src/assets/images/windows-11/windows-login-method/login-method-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-login-method/login-method-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/windows-login-method/login-method-1.png",
+            "frontend/src/assets/images/windows-10/windows-login-method/login-method-2.png"
         ]
     },
     "171": {
@@ -662,8 +882,13 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-login-method/login-method-1.jpg",
-            "frontend/src/assets/images/windows-login-method/login-method-2.jpg"
+            "frontend/src/assets/images/windows-11/windows-login-method/login-method-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-login-method/login-method-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/windows-login-method/login-method-1.png",
+            "frontend/src/assets/images/windows-10/windows-login-method/login-method-2.png"
         ]
     },
     "180": {
@@ -689,8 +914,13 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/outdated-windows-version/windows-update-1.jpg",
-            "frontend/src/assets/images/outdated-windows-version/windows-update-2.jpg"
+            "frontend/src/assets/images/windows-11/outdated-windows-version/windows-update-1.jpg",
+            "frontend/src/assets/images/windows-11/outdated-windows-version/windows-update-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/outdated-windows-version/windows-update-1.png",
+            "frontend/src/assets/images/windows-10/outdated-windows-version/windows-update-2.png"
         ]
     },
     "182": {
@@ -704,8 +934,13 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/outdated-windows-version/windows-update-1.jpg",
-            "frontend/src/assets/images/outdated-windows-version/windows-update-2.jpg"
+            "frontend/src/assets/images/windows-11/outdated-windows-version/windows-update-1.jpg",
+            "frontend/src/assets/images/windows-11/outdated-windows-version/windows-update-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/outdated-windows-version/windows-update-1.png",
+            "frontend/src/assets/images/windows-10/outdated-windows-version/windows-update-2.png"
         ]
     },
     "190": {
@@ -774,8 +1009,13 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/applications-which-start-at-boot/boot-apps-1.jpg",
-            "frontend/src/assets/images/applications-which-start-at-boot/boot-apps-2.jpg"
+            "frontend/src/assets/images/windows-11/applications-which-start-at-boot/boot-apps-1.jpg",
+            "frontend/src/assets/images/windows-11/applications-which-start-at-boot/boot-apps-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/applications-which-start-at-boot/boot-apps-1.png",
+            "frontend/src/assets/images/windows-10/applications-which-start-at-boot/boot-apps-2.png"
         ]
     },
     "210": {
@@ -790,6 +1030,9 @@
         ],
         "Screenshots":
         [
+            "frontend/src/assets/images/windows-11/chrome-adblocker/chrome-adblocker-1.png",
+            "frontend/src/assets/images/windows-11/chrome-adblocker/chrome-adblocker-2.png",
+            "frontend/src/assets/images/windows-11/chrome-adblocker/chrome-adblocker-3.png"
         ]
     },
     "211": {
@@ -804,6 +1047,9 @@
         ],
         "Screenshots":
         [
+            "frontend/src/assets/images/windows-11/chrome-adblocker/chrome-adblocker-1.png",
+            "frontend/src/assets/images/windows-11/chrome-adblocker/chrome-adblocker-2.png",
+            "frontend/src/assets/images/windows-11/chrome-adblocker/chrome-adblocker-3.png"
         ]
     },
     "220": {
@@ -818,6 +1064,9 @@
         ],
         "Screenshots":
         [
+            "frontend/src/assets/images/windows-11/edge-adblocker/edge-adblocker-1.png",
+            "frontend/src/assets/images/windows-11/edge-adblocker/edge-adblocker-2.png",
+            "frontend/src/assets/images/windows-11/edge-adblocker/edge-adblocker-3.png"
         ]
     },
     "221": {
@@ -832,6 +1081,9 @@
         ],
         "Screenshots":
         [
+            "frontend/src/assets/images/windows-11/edge-adblocker/edge-adblocker-1.png",
+            "frontend/src/assets/images/windows-11/edge-adblocker/edge-adblocker-2.png",
+            "frontend/src/assets/images/windows-11/edge-adblocker/edge-adblocker-3.png"
         ]
     },
     "230": {
@@ -920,6 +1172,24 @@
         ],
         "Screenshots":
         [
+            "frontend/src/assets/images/windows-11/firefox-cookies/cookies-firefox-1.png",
+            "frontend/src/assets/images/windows-11/firefox-cookies/cookies-firefox-2.png",
+            "frontend/src/assets/images/windows-11/firefox-cookies/cookies-firefox-3.png",
+            "frontend/src/assets/images/windows-11/firefox-cookies/cookies-firefox-4.png"
+        ]
+    },
+    "271": {
+        "Name": "Mögliche Tracking-Cookies in Mozilla Firefox gefunden",
+        "Type": "Privatsphäre",
+        "Information": "Cookies sind kleine Textdateien, die von den Websites, die Sie besuchen, auf Ihrem Computer gespeichert werden. Sie werden verwendet, um Ihre Einstellungen, Anmeldeinformationen und andere Daten zu speichern, um Ihr Surferlebnis zu verbessern. Cookies können jedoch auch verwendet werden, um Ihre Online-Aktivitäten zu verfolgen und persönliche Informationen ohne Ihre Zustimmung zu sammeln, was zu Datenschutzbedenken führt. Das regelmäßige Verwalten und Löschen von Cookies hilft, Ihre Privatsphäre zu schützen und die von Websites über Sie gesammelten Daten zu kontrollieren.",
+        "Solution": 
+        [   		
+            "Öffnen Sie Mozilla Firefox und klicken Sie auf die Menütaste (drei horizontale Linien) in der oberen rechten Ecke.",
+            "Wählen Sie 'Einstellungen' und gehen Sie zum Tab 'Datenschutz & Sicherheit'.",
+            "Die Option 'Erweiterter Schutz vor Aktivitätenverfolgung' sollte auf 'Standard' oder 'Benutzerdefiniert' eingestellt sein. Benutzerdefiniert gibt Ihnen mehr Kontrolle darüber, was Sie zulassen oder blockieren. Unter Cookies und Websitedaten können Sie Ihre vorhandenen Cookies löschen und Ausnahmen verwalten. Es wird empfohlen, Ihre Cookies häufig zu löschen, um Ihre Privatsphäre zu schützen."
+        ],
+        "Screenshots":
+        [
         ]
     },
     "280": {
@@ -934,6 +1204,9 @@
         ],
         "Screenshots":
         [
+            "frontend/src/assets/images/windows-11/firefox-extensions/extensions-firefox-1.png",
+            "frontend/src/assets/images/windows-11/firefox-extensions/extensions-firefox-2.png",
+            "frontend/src/assets/images/windows-11/firefox-extensions/extensions-firefox-3.png"
         ]
     },
     "290": {
@@ -962,6 +1235,11 @@
         ],
         "Screenshots":
         [
+            "frontend/src/assets/images/windows-11/firefox-adblocker/firefox-adblocker-1.png",
+            "frontend/src/assets/images/windows-11/firefox-adblocker/firefox-adblocker-2.png",
+            "frontend/src/assets/images/windows-11/firefox-adblocker/firefox-adblocker-3.png",
+            "frontend/src/assets/images/windows-11/firefox-adblocker/firefox-adblocker-4.png",
+            "frontend/src/assets/images/windows-11/firefox-adblocker/firefox-adblocker-5.png"
         ]
     },		
     "300": {
@@ -1076,13 +1354,22 @@
             "Klicken Sie mit der rechten Maustaste auf die Spaltenüberschrift, klicken Sie auf 'Spalten auswählen' und stellen Sie sicher, dass 'Erhöht' ausgewählt ist. Diese Spalte zeigt an, ob ein Prozess oder eine Anwendung mit Administratorberechtigungen ausgeführt wird.",
             "Scrollen Sie durch die Liste der Prozesse und suchen Sie nach Einträgen mit 'Ja' in der Spalte 'Erhöht'. Diese Prozesse haben Administratorrechte.",
             "Wenn Sie Programme sehen, die nicht mit Administratorrechten ausgeführt werden müssen, können Sie mit der rechten Maustaste darauf klicken und den Task beenden."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
-            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-1.jpg",
-            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-2.jpg",
-            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-3.jpg",
-            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-4.jpg",
-            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-4.jpg"
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-1.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-2.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-3.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-4.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-4.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-1.png",
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-2.png",
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-3.png",
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-4.png",
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-4.png"
         ]
     },
     "999": {
@@ -1096,13 +1383,22 @@
             "Klicken Sie mit der rechten Maustaste auf die Spaltenüberschrift, klicken Sie auf 'Spalten auswählen' und stellen Sie sicher, dass 'Erhöht' ausgewählt ist. Diese Spalte zeigt an, ob ein Prozess oder eine Anwendung mit Administratorberechtigungen ausgeführt wird.",
             "Scrollen Sie durch die Liste der Prozesse und suchen Sie nach Einträgen mit 'Ja' in der Spalte 'Erhöht'. Diese Prozesse haben Administratorrechte.",
             "Wenn Sie Programme sehen, die nicht mit Administratorrechten ausgeführt werden müssen, können Sie mit der rechten Maustaste darauf klicken und den Task beenden."
-        ],"Screenshots":
+        ],
+        "Screenshots":
         [
-            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-1.jpg",
-            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-2.jpg",
-            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-3.jpg",
-            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-4.jpg",
-            "frontend/src/assets/images/applications-wiht-administrative-privileges/admin-privileges-4.jpg"
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-1.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-2.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-3.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-4.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-4.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-1.png",
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-2.png",
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-3.png",
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-4.png",
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-4.png"
         ]
     }
 }
