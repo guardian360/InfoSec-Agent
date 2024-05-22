@@ -1358,6 +1358,62 @@
             "TOBEFILLED"
         ]
     },
+    "350": {
+        "Name": "No possible tracking cookies found in Google Chrome browser",
+        "Type": "Privacy",
+        "Information": "Cookies are small text files stored on your computer by websites you visit. They are used to remember your preferences, login information, and other data to enhance your browsing experience. However, cookies can also be used to track your online activities and gather personal information without your consent, raising privacy concerns. Managing and clearing cookies regularly helps protect your privacy and control the data websites collect about you.",
+        "Solution":
+        [
+            "No possible tracking cookies found in Google Chrome, so there is no action needed."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "351": {
+        "Name": "Possible tracking cookies found in Google Chrome browser",
+        "Type": "Privacy",
+        "Information": "Cookies are small text files stored on your computer by websites you visit. They are used to remember your preferences, login information, and other data to enhance your browsing experience. However, cookies can also be used to track your online activities and gather personal information without your consent, raising privacy concerns. Managing and clearing cookies regularly helps protect your privacy and control the data websites collect about you.",
+        "Solution":
+        [
+            "Open Google Chrome and click on the three dots in the top right corner.",
+            "Select 'Settings' and go to the 'Privacy and security' section.",
+            "Under 'Third-party cookies', click on 'See all site data and permissions'.",
+            "Here you can view and manage the cookies stored by websites. You can delete individual cookies or clear all site data to protect your privacy. "
+        ],
+        "Screenshots":
+        [
+            "TOBEFILLED"
+        ]
+    },
+    "360": {
+        "Name": "No possible tracking cookies found in Microsoft Edge browser",
+        "Type": "Privacy",
+        "Information": "Cookies are small text files stored on your computer by websites you visit. They are used to remember your preferences, login information, and other data to enhance your browsing experience. However, cookies can also be used to track your online activities and gather personal information without your consent, raising privacy concerns. Managing and clearing cookies regularly helps protect your privacy and control the data websites collect about you.",
+        "Solution":
+        [
+            "No possible tracking cookies found in Microsoft Edge, so there is no action needed."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "361": {
+        "Name": "Possible tracking cookies found in Microsoft Edge browser",
+        "Type": "Privacy",
+        "Information": "Cookies are small text files stored on your computer by websites you visit. They are used to remember your preferences, login information, and other data to enhance your browsing experience. However, cookies can also be used to track your online activities and gather personal information without your consent, raising privacy concerns. Managing and clearing cookies regularly helps protect your privacy and control the data websites collect about you.",
+        "Solution":
+        [
+            "Open Microsoft Edge and click on the three dots in the top right corner.",
+            "Select 'Settings' and go to the 'Cookies and site permissions' section.",
+            "Under 'Cookies and data stored', click on 'Manage and delete cookies and site data'.",
+            "Here you can manage general cookie settings. You can delete individual cookies or clear all site data by clicking on 'See all cookies and site data'. "
+        ],
+        "Screenshots":
+        [
+            "TOBEFILLED"
+        ]
+    },
     "997": {
         "Name": "Extensions installed in Google Chrome",
         "Type": "Privacy",

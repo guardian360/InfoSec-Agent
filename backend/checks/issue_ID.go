@@ -36,4 +36,6 @@ const (
 	CISRegistrySettingsID
 	AutoLoginID
 	RemoteRPCID
+	CookiesChromiumID
+	CookiesEdgeID
 )

@@ -1352,6 +1352,52 @@
             "TOBEFILLED"
         ]
     },
+    "350": {
+        "Name": "Geen mogelijke trackingcookies gevonden in de Google Chrome-browser",
+        "Type": "Privacy",
+        "Information": "Cookies zijn kleine tekstbestanden die door websites die je bezoekt op je computer worden opgeslagen. Ze worden gebruikt om je voorkeuren, inloggegevens en andere gegevens te onthouden om je browse-ervaring te verbeteren. Cookies kunnen echter ook worden gebruikt om je online activiteiten te volgen en persoonlijke informatie zonder jouw toestemming te verzamelen, wat privacyproblemen oproept. Het regelmatig beheren en verwijderen van cookies helpt je privacy te beschermen en de gegevens te controleren die websites over je verzamelen.",
+        "Solution": [
+            "Geen mogelijke trackingcookies gevonden in Google Chrome, dus er zijn geen acties nodig."
+        ],
+        "Screenshots": []
+    },
+    "351": {
+        "Name": "Mogelijke trackingcookies gevonden in de Google Chrome-browser",
+        "Type": "Privacy",
+        "Information": "Cookies zijn kleine tekstbestanden die door websites die je bezoekt op je computer worden opgeslagen. Ze worden gebruikt om je voorkeuren, inloggegevens en andere gegevens te onthouden om je browse-ervaring te verbeteren. Cookies kunnen echter ook worden gebruikt om je online activiteiten te volgen en persoonlijke informatie zonder jouw toestemming te verzamelen, wat privacyproblemen oproept. Het regelmatig beheren en verwijderen van cookies helpt je privacy te beschermen en de gegevens te controleren die websites over je verzamelen.",
+        "Solution": [
+            "Open Google Chrome en klik op de drie puntjes in de rechterbovenhoek.",
+            "Selecteer 'Instellingen' en ga naar het gedeelte 'Privacy en beveiliging'.",
+            "Klik onder 'Cookies van derden' op 'Alle sitegegevens en toestemmingen bekijken'.",
+            "Hier kun je de door websites opgeslagen cookies bekijken en beheren. Je kunt individuele cookies verwijderen of alle sitegegevens wissen om je privacy te beschermen."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
+    "360": {
+        "Name": "Geen mogelijke trackingcookies gevonden in de Microsoft Edge-browser",
+        "Type": "Privacy",
+        "Information": "Cookies zijn kleine tekstbestanden die door websites die je bezoekt op je computer worden opgeslagen. Ze worden gebruikt om je voorkeuren, inloggegevens en andere gegevens te onthouden om je browse-ervaring te verbeteren. Cookies kunnen echter ook worden gebruikt om je online activiteiten te volgen en persoonlijke informatie zonder jouw toestemming te verzamelen, wat privacyproblemen oproept. Het regelmatig beheren en verwijderen van cookies helpt je privacy te beschermen en de gegevens te controleren die websites over je verzamelen.",
+        "Solution": [
+            "Geen mogelijke trackingcookies gevonden in Microsoft Edge, dus er zijn geen acties nodig."
+        ],
+        "Screenshots": []
+    },
+    "361": {
+        "Name": "Mogelijke trackingcookies gevonden in de Microsoft Edge-browser",
+        "Type": "Privacy",
+        "Information": "Cookies zijn kleine tekstbestanden die door websites die je bezoekt op je computer worden opgeslagen. Ze worden gebruikt om je voorkeuren, inloggegevens en andere gegevens te onthouden om je browse-ervaring te verbeteren. Cookies kunnen echter ook worden gebruikt om je online activiteiten te volgen en persoonlijke informatie zonder jouw toestemming te verzamelen, wat privacyproblemen oproept. Het regelmatig beheren en verwijderen van cookies helpt je privacy te beschermen en de gegevens te controleren die websites over je verzamelen.",
+        "Solution": [
+            "Open Microsoft Edge en klik op de drie puntjes in de rechterbovenhoek.",
+            "Selecteer 'Instellingen' en ga naar het gedeelte 'Cookies en site-toestemmingen'.",
+            "Klik onder 'Cookies en opgeslagen gegevens' op 'Cookies en sitegegevens beheren en verwijderen'.",
+            "Hier kun je de algemene cookie-instellingen beheren. Je kunt individuele cookies verwijderen of alle sitegegevens wissen door op 'Alle cookies en sitegegevens bekijken' te klikken."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
     "997": {
         "Name": "Extensies geïnstalleerd in Google Chrome",
         "Type": "Privacy",
