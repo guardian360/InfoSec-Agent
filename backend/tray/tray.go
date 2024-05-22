@@ -153,19 +153,7 @@ func OnReady() {
 		case <-sigc:
 			systray.Quit()
 		case <-ticker.C:
-			if time.Now().After(usersettings.LoadUserSettings().NextScan) {
-				result, err := ScanNow()
-				if err != nil {
-					logger.Log.ErrorWithErr("Error performing periodic scan:", err)
-				}
-				// Notify the user that a scan has been completed
-				err = Popup(result, "./reporting-page/database.db")
-				if err != nil {
-					logger.Log.ErrorWithErr("Error notifying user:", err)
-				}
-				// Update the next scan time
-				changeNextScan(settings, scanInterval)
-			}
+			periodicScan(scanInterval)
 		}
 	}
 }
@@ -503,7 +491,38 @@ func PopupMessage(scanResult []checks.Check, path string) string {
 	return "The privacy and security scan has been completed. Open the reporting page to view the results."
 }
 
+// changeNextScan updates the next scan time based on the current time and the scan interval.
+//
+// Parameters:
+//   - settings usersettings.UserSettings: The user settings object containing the current scan interval and next scan time.
+//   - value int: The new scan interval in hours.
+//
+// Returns: None.
 func changeNextScan(settings usersettings.UserSettings, value int) {
 	settings.NextScan = time.Now().Add(time.Duration(value) * time.Hour)
 	usersettings.SaveUserSettings(settings)
+}
+
+// periodicScan checks if a scan is due based on the scan interval and the current time.
+// If a scan is due, it performs a scan and notifies the user using a pop-up.
+//
+// Parameters:
+//   - scanInterval int: The scan interval in hours.
+//
+// Returns: None.
+func periodicScan(scanInterval int) {
+	settings := usersettings.LoadUserSettings()
+	if time.Now().After(settings.NextScan) {
+		result, err := ScanNow()
+		if err != nil {
+			logger.Log.ErrorWithErr("Error performing periodic scan:", err)
+		}
+		// Notify the user that a scan has been completed
+		err = Popup(result, "./reporting-page/database.db")
+		if err != nil {
+			logger.Log.ErrorWithErr("Error notifying user:", err)
+		}
+		// Update the next scan time
+		changeNextScan(settings, scanInterval)
+	}
 }
