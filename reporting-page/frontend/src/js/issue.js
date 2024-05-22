@@ -63,6 +63,11 @@ export function previousSolutionStep(solutionText, solutionScreenshot, solution,
 export async function openIssuePage(issueId, severity) {
   retrieveTheme();
   stepCounter = 0;
+  
+  //to reload on correct page
+  sessionStorage.setItem('savedPage', '8');
+  sessionStorage.setItem('issueId', issueId);
+  sessionStorage.getItem('severity', severity);
 
   const language = await getUserSettings();
   let currentIssue;

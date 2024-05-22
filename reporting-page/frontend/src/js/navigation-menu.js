@@ -14,6 +14,7 @@ export function markSelectedNavigationItem(item) {
     return;
   }
   document.getElementById(item).style.backgroundColor = stylesheet.getPropertyValue('--background-nav-hover');
+  localize();
 }
 
 /** Close the navigation menu when a navigation item is clicked, only when screen size is less than 800px
@@ -48,37 +49,39 @@ export function toggleNavigationResize(appWidth) {
     document.getElementsByClassName('left-nav')[0].style.visibility = 'hidden';
   }
 }
+/** Localizes the navigation menu and sets up event listeners for responsive behavior. */
+function localize() {
+  if (typeof document !== 'undefined') {
+    try {
+      const header = document.getElementById('header-hamburger');
+      header.addEventListener('click', () => toggleNavigationHamburger(document.body.offsetWidth));
+      document.body.onresize = () => toggleNavigationResize(document.body.offsetWidth);
 
-if (typeof document !== 'undefined') {
-  try {
-    const header = document.getElementById('header-hamburger');
-    header.addEventListener('click', () => toggleNavigationHamburger(document.body.offsetWidth));
-    document.body.onresize = () => toggleNavigationResize(document.body.offsetWidth);
-
-    const navbarItems = [
-      'lang-home',
-      'lang-security-dashboard',
-      'lang-privacy-dashboard',
-      'lang-issues',
-      'lang-integration',
-      'lang-about',
-      'lang-personalize-page',
-      'lang-change-language',
-    ];
-    const localizationIds = [
-      'Navigation.Home',
-      'Navigation.SecurityDashboard',
-      'Navigation.PrivacyDashboard',
-      'Navigation.Issues',
-      'Navigation.Integration',
-      'Navigation.About',
-      'Navigation.Personalize',
-      'Navigation.ChangeLanguage',
-    ];
-    for (let i = 0; i < navbarItems.length; i++) {
-      getLocalization(localizationIds[i], navbarItems[i]);
+      const navbarItems = [
+        'lang-home',
+        'lang-security-dashboard',
+        'lang-privacy-dashboard',
+        'lang-issues',
+        'lang-integration',
+        'lang-about',
+        'lang-personalize-page',
+        'lang-change-language',
+      ];
+      const localizationIds = [
+        'Navigation.Home',
+        'Navigation.SecurityDashboard',
+        'Navigation.PrivacyDashboard',
+        'Navigation.Issues',
+        'Navigation.Integration',
+        'Navigation.About',
+        'Navigation.Personalize',
+        'Navigation.ChangeLanguage',
+      ];
+      for (let i = 0; i < navbarItems.length; i++) {
+        getLocalization(localizationIds[i], navbarItems[i]);
+      }
+    } catch (error) {
+      logError('Error in navigation-menu.js: ' + error);
     }
-  } catch (error) {
-    logError('Error in navigation-menu.js: ' + error);
   }
 }
