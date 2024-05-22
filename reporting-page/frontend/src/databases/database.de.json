@@ -1329,6 +1329,29 @@
             "TOBEFILLED"
         ]
     },
+    "340": {
+        "Name": "Remote RPC deaktiviert",
+        "Type": "Sicherheit",
+        "Information": "Remote Procedure Call (RPC) ist ein Protokoll, das es Programmen und Prozessen ermöglicht, über ein Netzwerk miteinander zu kommunizieren. Das Deaktivieren von Remote RPC hilft, unbefugten Zugriff auf Ihren Computer zu verhindern und schützt ihn vor potenziellen Sicherheitsbedrohungen und Schwachstellen.",
+        "Solution": [
+            "Remote RPC ist deaktiviert, daher sind keine Maßnahmen erforderlich."
+        ],
+        "Screenshots": []
+    },
+    "341": {
+        "Name": "Remote RPC aktiviert",
+        "Type": "Sicherheit",
+        "Information": "Remote Procedure Call (RPC) ist ein Protokoll, das es Programmen und Prozessen ermöglicht, über ein Netzwerk miteinander zu kommunizieren. Das Deaktivieren von Remote RPC hilft, unbefugten Zugriff auf Ihren Computer zu verhindern und schützt ihn vor potenziellen Sicherheitsbedrohungen und Schwachstellen.",
+        "Solution": [
+            "Die Remote RPC-Einstellung kann nicht auf herkömmliche Weise geändert werden. Es erfordert eine direkte Bearbeitung der Registrierung.",
+            "Geben Sie in der Windows-Suche 'Registry Editor' ein und öffnen Sie das Programm.",
+            "Navigieren Sie zu \"Computer\\HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\".",
+            "Doppelklicken Sie auf den Schlüssel \"AllowRemoteRPC\" und setzen Sie dessen Wert auf 0."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
     "997": {
         "Name": "Installierte Erweiterungen in Google Chrome",
         "Type": "Privatsphäre",
