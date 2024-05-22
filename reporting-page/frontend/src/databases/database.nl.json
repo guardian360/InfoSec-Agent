@@ -1315,6 +1315,29 @@
         [
         ]
     },
+    "340": {
+        "Name": "Remote RPC uitgeschakeld",
+        "Type": "Beveiliging",
+        "Information": "Remote Procedure Call (RPC) is een protocol waarmee programma's en processen met elkaar kunnen communiceren via een netwerk. Het uitschakelen van Remote RPC helpt om ongeautoriseerde toegang tot uw computer te voorkomen en beschermt deze tegen mogelijke beveiligingsbedreigingen en kwetsbaarheden.",
+        "Solution": [
+            "Remote RPC is uitgeschakeld, dus er is geen actie nodig."
+        ],
+        "Screenshots": []
+    },
+    "341": {
+        "Name": "Remote RPC ingeschakeld",
+        "Type": "Beveiliging",
+        "Information": "Remote Procedure Call (RPC) is een protocol waarmee programma's en processen met elkaar kunnen communiceren via een netwerk. Het uitschakelen van Remote RPC helpt om ongeautoriseerde toegang tot uw computer te voorkomen en beschermt deze tegen mogelijke beveiligingsbedreigingen en kwetsbaarheden.",
+        "Solution": [
+            "De Remote RPC-instelling kan niet op de gebruikelijke manier worden gewijzigd. Het vereist directe bewerking van het register.",
+            "Typ in Windows Zoeken 'Register-editor' en open het programma.",
+            "Navigeer naar \"Computer\\HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\".",
+            "Dubbelklik op de sleutel \"AllowRemoteRPC\" en stel de waarde in op 0."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
     "331": {
         "Name": "Automatische inlog ingeschakeld",
         "Type": "Beveiliging",

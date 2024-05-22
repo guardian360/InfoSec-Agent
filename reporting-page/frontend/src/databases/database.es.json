@@ -1329,6 +1329,29 @@
             "TOBEFILLED"
         ]
     },
+    "340": {
+        "Name": "RPC remoto deshabilitado",
+        "Type": "Seguridad",
+        "Information": "Remote Procedure Call (RPC) es un protocolo que permite que los programas y procesos se comuniquen entre sí en una red. Deshabilitar RPC remoto ayuda a prevenir el acceso no autorizado a su computadora y la protege de posibles amenazas y vulnerabilidades de seguridad.",
+        "Solution": [
+            "RPC remoto está deshabilitado, por lo que no se necesita ninguna acción."
+        ],
+        "Screenshots": []
+    },
+    "341": {
+        "Name": "RPC remoto habilitado",
+        "Type": "Seguridad",
+        "Information": "Remote Procedure Call (RPC) es un protocolo que permite que los programas y procesos se comuniquen entre sí en una red. Deshabilitar RPC remoto ayuda a prevenir el acceso no autorizado a su computadora y la protege de posibles amenazas y vulnerabilidades de seguridad.",
+        "Solution": [
+            "La configuración de RPC remoto no se puede cambiar de manera convencional. Requiere editar el registro directamente.",
+            "En la búsqueda de Windows, escriba Editor del Registro y abra el programa.",
+            "Navegue a \"Equipo\\HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\".",
+            "Haga doble clic en la clave \"AllowRemoteRPC\" y establezca su valor en 0."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
     "350": {
         "Name": "No se encontraron cookies de seguimiento posibles en el navegador Google Chrome",
         "Type": "Privacidad",
