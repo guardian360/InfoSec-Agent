@@ -123,6 +123,7 @@ func OnReady() {
 	signal.Notify(sigc, syscall.SIGTERM, syscall.SIGINT)
 
 	ScanCounter = 0
+	ticker := time.NewTicker(1 * time.Second)
 
 	// Iterate over each menu option/signal
 	for {
@@ -151,21 +152,11 @@ func OnReady() {
 			systray.Quit()
 		case <-sigc:
 			systray.Quit()
-		case <-time.After(time.Until(settings.NextScan)):
-			res, err := zenity.List("The program wants to run a periodic scan,\n run the scan?",
-				[]string{"OK", "Delay"},
-				zenity.Title("Periodic Scan"),
-				zenity.DisallowEmpty())
-			if err != nil {
-				logger.Log.ErrorWithErr("Error creating periodic scan dialog:", err)
-				changeNextScan(settings, scanInterval)
-				continue
-			}
-			switch res {
-			case "OK":
+		case <-ticker.C:
+			if time.Now().After(usersettings.LoadUserSettings().NextScan) {
 				result, err := ScanNow()
 				if err != nil {
-					logger.Log.ErrorWithErr("Error performing period scan:", err)
+					logger.Log.ErrorWithErr("Error performing periodic scan:", err)
 				}
 				// Notify the user that a scan has been completed
 				err = Popup(result, "./reporting-page/database.db")
@@ -174,21 +165,6 @@ func OnReady() {
 				}
 				// Update the next scan time
 				changeNextScan(settings, scanInterval)
-			case "Cancel":
-				changeNextScan(settings, scanInterval)
-				continue
-			case "Delay":
-				delayDur, err := zenity.Entry("Enter the delay duration (in hours):", zenity.Title("Delay Periodic Scan"))
-				if err != nil {
-					logger.Log.ErrorWithErr("Error creating delay dialog:", err)
-					continue
-				}
-				delay, err := strconv.Atoi(delayDur)
-				if err != nil || delay <= 0 {
-					logger.Log.Printf("Invalid input. Using default interval of 24 hours.")
-					delay = scanInterval
-				}
-				changeNextScan(settings, delay)
 			}
 		}
 	}
