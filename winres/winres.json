@@ -4,14 +4,6 @@
       "0000": "..\\reporting-page\\build\\windows\\icon.ico"
     }
   },
-  "RT_MANIFEST": {
-    "#1": {
-      "0409": {
-        "description": "Information Security Agent",
-        "minimum-os": "win10"
-      }
-    }
-  },
   "RT_VERSION": {
     "#1": {
       "0000": {
