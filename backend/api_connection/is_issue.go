@@ -277,4 +277,12 @@ var IssueMap = map[IssueResPair]bool{
 	{34, 0}: false,
 	// Remote RPC: Remote RPC enabled
 	{34, 1}: true,
+	// Chromium Cookies: No tracking cookies found
+	{35, 0}: false,
+	// Chromium Cookies: Tracking cookies found
+	{35, 1}: true,
+	// Edge Cookies: No tracking cookies found
+	{36, 0}: false,
+	// Edge Cookies: Tracking cookies found
+	{36, 1}: true,
 }

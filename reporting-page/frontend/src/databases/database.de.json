@@ -1329,6 +1329,52 @@
             "TOBEFILLED"
         ]
     },
+    "350": {
+        "Name": "Keine möglichen Tracking-Cookies im Google Chrome-Browser gefunden",
+        "Type": "Privatsphäre",
+        "Information": "Cookies sind kleine Textdateien, die von den Websites, die Sie besuchen, auf Ihrem Computer gespeichert werden. Sie werden verwendet, um Ihre Präferenzen, Anmeldeinformationen und andere Daten zu speichern, um Ihr Surferlebnis zu verbessern. Cookies können jedoch auch verwendet werden, um Ihre Online-Aktivitäten zu verfolgen und persönliche Informationen ohne Ihre Zustimmung zu sammeln, was Bedenken hinsichtlich der Privatsphäre aufwirft. Das regelmäßige Verwalten und Löschen von Cookies hilft, Ihre Privatsphäre zu schützen und die Daten zu kontrollieren, die Websites über Sie sammeln.",
+        "Solution": [
+            "Keine möglichen Tracking-Cookies im Google Chrome gefunden, daher sind keine Maßnahmen erforderlich."
+        ],
+        "Screenshots": []
+    },
+    "351": {
+        "Name": "Mögliche Tracking-Cookies im Google Chrome-Browser gefunden",
+        "Type": "Privatsphäre",
+        "Information": "Cookies sind kleine Textdateien, die von den Websites, die Sie besuchen, auf Ihrem Computer gespeichert werden. Sie werden verwendet, um Ihre Präferenzen, Anmeldeinformationen und andere Daten zu speichern, um Ihr Surferlebnis zu verbessern. Cookies können jedoch auch verwendet werden, um Ihre Online-Aktivitäten zu verfolgen und persönliche Informationen ohne Ihre Zustimmung zu sammeln, was Bedenken hinsichtlich der Privatsphäre aufwirft. Das regelmäßige Verwalten und Löschen von Cookies hilft, Ihre Privatsphäre zu schützen und die Daten zu kontrollieren, die Websites über Sie sammeln.",
+        "Solution": [
+            "Öffnen Sie Google Chrome und klicken Sie auf die drei Punkte in der oberen rechten Ecke.",
+            "Wählen Sie 'Einstellungen' und gehen Sie zum Abschnitt 'Datenschutz und Sicherheit'.",
+            "Klicken Sie unter 'Drittanbieter-Cookies' auf 'Alle Website-Daten und Berechtigungen anzeigen'.",
+            "Hier können Sie die von Websites gespeicherten Cookies anzeigen und verwalten. Sie können einzelne Cookies löschen oder alle Website-Daten löschen, um Ihre Privatsphäre zu schützen."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
+    "360": {
+        "Name": "Keine möglichen Tracking-Cookies im Microsoft Edge-Browser gefunden",
+        "Type": "Privatsphäre",
+        "Information": "Cookies sind kleine Textdateien, die von den Websites, die Sie besuchen, auf Ihrem Computer gespeichert werden. Sie werden verwendet, um Ihre Präferenzen, Anmeldeinformationen und andere Daten zu speichern, um Ihr Surferlebnis zu verbessern. Cookies können jedoch auch verwendet werden, um Ihre Online-Aktivitäten zu verfolgen und persönliche Informationen ohne Ihre Zustimmung zu sammeln, was Bedenken hinsichtlich der Privatsphäre aufwirft. Das regelmäßige Verwalten und Löschen von Cookies hilft, Ihre Privatsphäre zu schützen und die Daten zu kontrollieren, die Websites über Sie sammeln.",
+        "Solution": [
+            "Keine möglichen Tracking-Cookies im Microsoft Edge gefunden, daher sind keine Maßnahmen erforderlich."
+        ],
+        "Screenshots": []
+    },
+    "361": {
+        "Name": "Mögliche Tracking-Cookies im Microsoft Edge-Browser gefunden",
+        "Type": "Privatsphäre",
+        "Information": "Cookies sind kleine Textdateien, die von den Websites, die Sie besuchen, auf Ihrem Computer gespeichert werden. Sie werden verwendet, um Ihre Präferenzen, Anmeldeinformationen und andere Daten zu speichern, um Ihr Surferlebnis zu verbessern. Cookies können jedoch auch verwendet werden, um Ihre Online-Aktivitäten zu verfolgen und persönliche Informationen ohne Ihre Zustimmung zu sammeln, was Bedenken hinsichtlich der Privatsphäre aufwirft. Das regelmäßige Verwalten und Löschen von Cookies hilft, Ihre Privatsphäre zu schützen und die Daten zu kontrollieren, die Websites über Sie sammeln.",
+        "Solution": [
+            "Öffnen Sie Microsoft Edge und klicken Sie auf die drei Punkte in der oberen rechten Ecke.",
+            "Wählen Sie 'Einstellungen' und gehen Sie zum Abschnitt 'Cookies und Site-Berechtigungen'.",
+            "Klicken Sie unter 'Cookies und gespeicherte Daten' auf 'Cookies und Site-Daten verwalten und löschen'.",
+            "Hier können Sie allgemeine Cookie-Einstellungen verwalten. Sie können einzelne Cookies löschen oder alle Site-Daten löschen, indem Sie auf 'Alle Cookies und Site-Daten anzeigen' klicken."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
     "997": {
         "Name": "Installierte Erweiterungen in Google Chrome",
         "Type": "Privatsphäre",

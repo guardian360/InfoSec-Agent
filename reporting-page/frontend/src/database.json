@@ -20,9 +20,9 @@
             "Go to Start > Settings > Bluetooth & devices.", 
             "Here you can see which devices are connected via bluetooth, and you can remove them if necessary."
         ],
-        "SolutionWindows10": 
-        [   
-            "Go to Start > Settings > Devices > Bluetooth & other devices.", 
+        "SolutionWindows10":
+        [
+            "Go to Start > Settings > Devices > Bluetooth & other devices.",
             "Here you can see which devices are connected via bluetooth, and you can remove them if necessary."
         ],
         "Screenshots":
@@ -78,7 +78,7 @@
             "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
             "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
             "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
-            "frontend/src/assets/images/windows-11/guest-account/guest-account-3.jpg",        
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-3.jpg",
             "frontend/src/assets/images/windows-11/guest-account/guest-account-3.jpg"
         ]
     },
@@ -93,9 +93,9 @@
             "Now select 'remove' and confirm the deletion of the account.",
             "To finish, restart your computer."
         ],
-        "SolutionWindows10": 
-        [   
-            "Go to Start > Settings > Accounts > Family & other users.", 
+        "SolutionWindows10":
+        [
+            "Go to Start > Settings > Accounts > Family & other users.",
             "Here you will see the other accounts, if there is an account you do not know or something called 'guest' click on it.",
             "Now select 'remove' and confirm the deletion of the account.",
             "To finish, restart your computer."
@@ -104,7 +104,7 @@
         [
             "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
             "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
-            "frontend/src/assets/images/windows-11/guest-account/guest-account-3.jpg",        
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-3.jpg",
             "frontend/src/assets/images/windows-11/guest-account/guest-account-3.jpg"
         ]
     },
@@ -141,7 +141,7 @@
             "Go to Start > Settings > Privacy & Security > General ",
             "Here you can control the advertisement ID settings and turn the feature on/off."
         ],
-        "SolutionWindows10": 
+        "SolutionWindows10":
         [
             "Go to Start > Settings > Privacy > General.",
             "Here you can control the advertisement ID settings and turn the feature on/off."
@@ -179,10 +179,10 @@
             "Go to Start > Settings > System > Nearby share settings.", 
             "Here you can control the network sharing settings and turn the feature off."
         ],
-        "SolutionWindows10": 
-        [   
+        "SolutionWindows10":
+        [
             "It was not possible to retrieve the status of the network sharing settings. To check the status and potentially solve the issue of the network sharing, follow these steps.",
-            "Go to Start > Settings > System > Shared experiences.", 
+            "Go to Start > Settings > System > Shared experiences.",
             "Here you can control the network sharing settings and turn the feature off."
         ],
         "Screenshots":
@@ -239,9 +239,9 @@
             "Select Start > Settings > Privacy & security.", 
             "Here you can select location to see which applications have access, and you can revoke access for certain applications."
         ],
-        "SolutionWindows10": 
-        [   
-            "Go to Start > Settings > Privacy > Location.", 
+        "SolutionWindows10":
+        [
+            "Go to Start > Settings > Privacy > Location.",
             "Here you can select location to see which applications have access, and you can revoke access for certain applications."
         ],
         "Screenshots":
@@ -276,9 +276,9 @@
             "Select Start > Settings > Privacy & security.", 
             "Here you can select microphone to see which applications have access, and you can revoke access for certain applications."
         ],
-        "SolutionWindows10": 
-        [   
-            "Go to Start > Settings > Privacy > Microphone.", 
+        "SolutionWindows10":
+        [
+            "Go to Start > Settings > Privacy > Microphone.",
             "Here you can select microphone to see which applications have access, and you can revoke access for certain applications."
         ],
         "Screenshots":
@@ -313,9 +313,9 @@
             "Select Start > Settings > Privacy & security.", 
             "Here you can select webcam to see which applications have access, and you can revoke access for certain applications."
         ],
-        "SolutionWindows10": 
-        [   
-            "Go to Start > Settings > Privacy > Camera.", 
+        "SolutionWindows10":
+        [
+            "Go to Start > Settings > Privacy > Camera.",
             "Here you can select webcam to see which applications have access, and you can revoke access for certain applications."
         ],
         "Screenshots":
@@ -350,9 +350,9 @@
             "Select Start > Settings > Privacy & security.", 
             "Here you can select appointments to see which applications have access, and you can revoke access for certain applications."
         ],
-        "SolutionWindows10": 
-        [   
-            "Go to Start > Settings > Privacy > Calendar.", 
+        "SolutionWindows10":
+        [
+            "Go to Start > Settings > Privacy > Calendar.",
             "Here you can select appointments to see which applications have access, and you can revoke access for certain applications."
         ],
         "Screenshots":
@@ -387,9 +387,9 @@
             "Select Start > Settings > Privacy & security.", 
             "Here you can select contacts to see which applications have access, and you can revoke access for certain applications."
         ],
-        "SolutionWindows10": 
-        [   
-            "Go to Start > Settings > Privacy > Contacts.", 
+        "SolutionWindows10":
+        [
+            "Go to Start > Settings > Privacy > Contacts.",
             "Here you can select contacts to see which applications have access, and you can revoke access for certain applications."
         ],
         "Screenshots":
@@ -549,10 +549,10 @@
             "Here you can move the slider to 'Always notify' to turn UAC on. If you are prompted by UAC, select 'Yes' to continue.",
             "To finish, restart your computer."
         ],
-        "SolutionWindows10": 
-        [   
+        "SolutionWindows10":
+        [
             "The settings for user account control are turned on for apps, setting it to always notify is a safer option. To turn on UAC follow these steps",
-            "On your keyboard, press 'Windows+R' to open the Run window.", 
+            "On your keyboard, press 'Windows+R' to open the Run window.",
             "Type 'Control Panel', then select OK.",
             "Select 'User Accounts'.",
 			"Select 'User Accounts' again.",
@@ -598,7 +598,7 @@
         "Type": "Security",
         "Information": "User Account Control (UAC) is a security feature introduced in Windows Vista and present in subsequent versions of the Windows operating system. Its primary purpose is to enhance the security of the operating system by limiting the privileges of applications and processes running with standard user rights and requiring administrator approval for tasks that require elevated permissions.",
         "Solution": 
-        [   
+        [
             "The settings for user account control are turned on for apps, setting it to always notify is a safer option. To turn on UAC follow these steps",
             "On your keyboard, press 'Windows+R' to open the Run window.", 
             "Type 'Control Panel', then select OK.",
@@ -607,10 +607,10 @@
             "Here you can move the slider to 'Always notify' to turn UAC on. If you are prompted by UAC, select 'Yes' to continue.",
             "To finish, restart your computer."
         ],
-        "SolutionWindows10": 
-        [   
+        "SolutionWindows10":
+        [
             "The settings for user account control are turned on for apps, setting it to always notify is a safer option. To turn on UAC follow these steps",
-            "On your keyboard, press 'Windows+R' to open the Run window.", 
+            "On your keyboard, press 'Windows+R' to open the Run window.",
             "Type 'Control Panel', then select OK.",
             "Select 'User Accounts'.",
 			"Select 'User Accounts' again.",
@@ -645,7 +645,7 @@
         "Type": "Security",
         "Information": "User Account Control (UAC) is a security feature introduced in Windows Vista and present in subsequent versions of the Windows operating system. Its primary purpose is to enhance the security of the operating system by limiting the privileges of applications and processes running with standard user rights and requiring administrator approval for tasks that require elevated permissions.",
         "Solution": 
-        [   
+        [
             "The status of the user account control settings are unknown, to check the status and potentially solve the issue of the user account control, follow these steps",
             "On your keyboard, press 'Windows+R' to open the Run window.", 
             "Type 'Control Panel', then select OK.",
@@ -654,10 +654,10 @@
             "Here you can move the slider to 'Always notify' to turn UAC on. If you are prompted by UAC, select 'Yes' to continue.",
             "To finish, restart your computer."
         ],
-        "SolutionWindows10": 
-        [   
+        "SolutionWindows10":
+        [
             "The settings for user account control are turned on for apps, setting it to always notify is a safer option. To turn on UAC follow these steps",
-            "On your keyboard, press 'Windows+R' to open the Run window.", 
+            "On your keyboard, press 'Windows+R' to open the Run window.",
             "Type 'Control Panel', then select OK.",
             "Select 'User Accounts'.",
 			"Select 'User Accounts' again.",
@@ -1165,8 +1165,8 @@
         "Name": "Cookies stored by Mozilla Firefox",
         "Type": "Privacy",
         "Information": "Cookies are small text files stored on your computer by websites you visit. They are used to remember your preferences, login information, and other data to enhance your browsing experience. However, cookies can also be used to track your online activities and gather personal information without your consent, raising privacy concerns. Managing and clearing cookies regularly helps protect your privacy and control the data websites collect about you.",
-        "Solution": 
-        [   		
+        "Solution":
+        [
             "Open Mozilla Firefox and click on the menu button (three horizontal lines) in the top right corner.",
             "Select 'Options' and go to the 'Privacy & Security' tab.",
             "Under 'Cookies and Site Data', click on 'Manage Data'.",
@@ -1231,7 +1231,7 @@
         "Information": "Adblockers shield users from online advertisements. With their filters and algorithms, they provide a sanctuary of uninterrupted browsing, sparing users from the visual clutter and potential security risks posed by ads.",
         "Solution": 
         [   		
-            "Open Mozilla Firefox and click on the menu button (three horizontal lines) in the top right corner, and select 'Add-ons and themes'.", 
+            "Open Mozilla Firefox and click on the menu button (three horizontal lines) in the top right corner, and select 'Add-ons and themes'.",
             "Go to the 'Extensions' tab.",
 			"Scroll down and click on the 'Find more add-ons' button.",
 			"Search for an adblocker in the search bar (for example: AdBlock Plus or uBlock Origin)",
@@ -1327,6 +1327,62 @@
         [
             "Go to Start > Settings > Accounts > Sign-in options.",
             "Under 'Require sign-in', select 'When PC wakes up from sleep'."
+        ],
+        "Screenshots":
+        [
+            "TOBEFILLED"
+        ]
+    },
+    "350": {
+        "Name": "No possible tracking cookies found in Google Chrome browser",
+        "Type": "Privacy",
+        "Information": "Cookies are small text files stored on your computer by websites you visit. They are used to remember your preferences, login information, and other data to enhance your browsing experience. However, cookies can also be used to track your online activities and gather personal information without your consent, raising privacy concerns. Managing and clearing cookies regularly helps protect your privacy and control the data websites collect about you.",
+        "Solution":
+        [
+            "No possible tracking cookies found in Google Chrome, so there is no action needed."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "351": {
+        "Name": "Possible tracking cookies found in Google Chrome browser",
+        "Type": "Privacy",
+        "Information": "Cookies are small text files stored on your computer by websites you visit. They are used to remember your preferences, login information, and other data to enhance your browsing experience. However, cookies can also be used to track your online activities and gather personal information without your consent, raising privacy concerns. Managing and clearing cookies regularly helps protect your privacy and control the data websites collect about you.",
+        "Solution":
+        [
+            "Open Google Chrome and click on the three dots in the top right corner.",
+            "Select 'Settings' and go to the 'Privacy and security' section.",
+            "Under 'Third-party cookies', click on 'See all site data and permissions'.",
+            "Here you can view and manage the cookies stored by websites. You can delete individual cookies or clear all site data to protect your privacy. "
+        ],
+        "Screenshots":
+        [
+            "TOBEFILLED"
+        ]
+    },
+    "360": {
+        "Name": "No possible tracking cookies found in Microsoft Edge browser",
+        "Type": "Privacy",
+        "Information": "Cookies are small text files stored on your computer by websites you visit. They are used to remember your preferences, login information, and other data to enhance your browsing experience. However, cookies can also be used to track your online activities and gather personal information without your consent, raising privacy concerns. Managing and clearing cookies regularly helps protect your privacy and control the data websites collect about you.",
+        "Solution":
+        [
+            "No possible tracking cookies found in Microsoft Edge, so there is no action needed."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "361": {
+        "Name": "Possible tracking cookies found in Microsoft Edge browser",
+        "Type": "Privacy",
+        "Information": "Cookies are small text files stored on your computer by websites you visit. They are used to remember your preferences, login information, and other data to enhance your browsing experience. However, cookies can also be used to track your online activities and gather personal information without your consent, raising privacy concerns. Managing and clearing cookies regularly helps protect your privacy and control the data websites collect about you.",
+        "Solution":
+        [
+            "Open Microsoft Edge and click on the three dots in the top right corner.",
+            "Select 'Settings' and go to the 'Cookies and site permissions' section.",
+            "Under 'Cookies and data stored', click on 'Manage and delete cookies and site data'.",
+            "Here you can manage general cookie settings. You can delete individual cookies or clear all site data by clicking on 'See all cookies and site data'. "
         ],
         "Screenshots":
         [

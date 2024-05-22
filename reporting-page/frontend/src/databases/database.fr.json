@@ -1329,6 +1329,52 @@
             "TOBEFILLED"
         ]
     },
+    "350": {
+        "Name": "Aucun cookie de suivi possible trouvé dans le navigateur Google Chrome",
+        "Type": "Confidentialité",
+        "Information": "Les cookies sont de petits fichiers texte stockés sur votre ordinateur par les sites web que vous visitez. Ils sont utilisés pour se souvenir de vos préférences, informations de connexion et autres données afin d'améliorer votre expérience de navigation. Cependant, les cookies peuvent également être utilisés pour suivre vos activités en ligne et recueillir des informations personnelles sans votre consentement, ce qui soulève des préoccupations en matière de confidentialité. Gérer et supprimer régulièrement les cookies aide à protéger votre confidentialité et à contrôler les données que les sites web collectent sur vous.",
+        "Solution": [
+            "Aucun cookie de suivi possible trouvé dans Google Chrome, donc aucune action n'est nécessaire."
+        ],
+        "Screenshots": []
+    },
+    "351": {
+        "Name": "Cookies de suivi possibles trouvés dans le navigateur Google Chrome",
+        "Type": "Confidentialité",
+        "Information": "Les cookies sont de petits fichiers texte stockés sur votre ordinateur par les sites web que vous visitez. Ils sont utilisés pour se souvenir de vos préférences, informations de connexion et autres données afin d'améliorer votre expérience de navigation. Cependant, les cookies peuvent également être utilisés pour suivre vos activités en ligne et recueillir des informations personnelles sans votre consentement, ce qui soulève des préoccupations en matière de confidentialité. Gérer et supprimer régulièrement les cookies aide à protéger votre confidentialité et à contrôler les données que les sites web collectent sur vous.",
+        "Solution": [
+            "Ouvrez Google Chrome et cliquez sur les trois points en haut à droite.",
+            "Sélectionnez 'Paramètres' et allez dans la section 'Confidentialité et sécurité'.",
+            "Sous 'Cookies tiers', cliquez sur 'Voir toutes les données et autorisations du site'.",
+            "Ici, vous pouvez voir et gérer les cookies stockés par les sites web. Vous pouvez supprimer des cookies individuels ou effacer toutes les données du site pour protéger votre confidentialité."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
+    "360": {
+        "Name": "Aucun cookie de suivi possible trouvé dans le navigateur Microsoft Edge",
+        "Type": "Confidentialité",
+        "Information": "Les cookies sont de petits fichiers texte stockés sur votre ordinateur par les sites web que vous visitez. Ils sont utilisés pour se souvenir de vos préférences, informations de connexion et autres données afin d'améliorer votre expérience de navigation. Cependant, les cookies peuvent également être utilisés pour suivre vos activités en ligne et recueillir des informations personnelles sans votre consentement, ce qui soulève des préoccupations en matière de confidentialité. Gérer et supprimer régulièrement les cookies aide à protéger votre confidentialité et à contrôler les données que les sites web collectent sur vous.",
+        "Solution": [
+            "Aucun cookie de suivi possible trouvé dans Microsoft Edge, donc aucune action n'est nécessaire."
+        ],
+        "Screenshots": []
+    },
+    "361": {
+        "Name": "Cookies de suivi possibles trouvés dans le navigateur Microsoft Edge",
+        "Type": "Confidentialité",
+        "Information": "Les cookies sont de petits fichiers texte stockés sur votre ordinateur par les sites web que vous visitez. Ils sont utilisés pour se souvenir de vos préférences, informations de connexion et autres données afin d'améliorer votre expérience de navigation. Cependant, les cookies peuvent également être utilisés pour suivre vos activités en ligne et recueillir des informations personnelles sans votre consentement, ce qui soulève des préoccupations en matière de confidentialité. Gérer et supprimer régulièrement les cookies aide à protéger votre confidentialité et à contrôler les données que les sites web collectent sur vous.",
+        "Solution": [
+            "Ouvrez Microsoft Edge et cliquez sur les trois points en haut à droite.",
+            "Sélectionnez 'Paramètres' et allez dans la section 'Cookies et autorisations de site'.",
+            "Sous 'Cookies et données stockées', cliquez sur 'Gérer et supprimer les cookies et les données de site'.",
+            "Ici, vous pouvez gérer les paramètres généraux des cookies. Vous pouvez supprimer des cookies individuels ou effacer toutes les données de site en cliquant sur 'Voir tous les cookies et données de site'."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
     "997": {
         "Name": "Extensions installées dans Google Chrome",
         "Type": "Confidentialité",
