@@ -228,7 +228,7 @@ func OpenReportingPage(path string) error {
 	//TODO: In a release version, there (should be) no need to build the application, just run it
 	const build = false
 	if build {
-		err := BuildReportingPage()
+		err = BuildReportingPage()
 		if err != nil {
 			return err
 		}
@@ -242,7 +242,7 @@ func OpenReportingPage(path string) error {
 	// Set up a listener for the quit function from the system tray
 	go func() {
 		<-mQuit.ClickedCh
-		if err := runCmd.Process.Kill(); err != nil {
+		if err = runCmd.Process.Kill(); err != nil {
 			logger.Log.ErrorWithErr("error interrupting reporting-page process:", err)
 		}
 		ReportingPageOpen = false
@@ -251,7 +251,7 @@ func OpenReportingPage(path string) error {
 
 	// Run the reporting page executable
 	ReportingPageOpen = true
-	if err := runCmd.Run(); err != nil {
+	if err = runCmd.Run(); err != nil {
 		ReportingPageOpen = false
 		return fmt.Errorf("error running reporting-page: %w", err)
 	}
