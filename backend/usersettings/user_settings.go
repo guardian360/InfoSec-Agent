@@ -6,18 +6,26 @@
 package usersettings
 
 import (
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
+
 	"encoding/json"
+	"errors"
 	"os"
 	"time"
-
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 )
 
+// UserSettings represents the settings for a user in the system.
+//
+// Fields:
+//   - Language: An integer representing the user's preferred language. The specific language each integer represents can vary based on the system's language settings.
+//   - ScanInterval: An integer representing the interval (in hours) at which the system should perform scans.
+//   - Integration: A boolean indicating whether the user has enabled integration with other systems or services.
+//   - NextScan: A time.Time value indicating when the next scan should occur.
 type UserSettings struct {
-	Language     int       `json:"Language"`
-	ScanInterval int       `json:"ScanInterval"`
-	Integration  bool      `json:"Integration"`
-	NextScan     time.Time `json:"NextScan"`
+	Language     int       `json:"Language"`     // User's preferred language
+	ScanInterval int       `json:"ScanInterval"` // Interval for system scans (in hours)
+	Integration  bool      `json:"Integration"`  // Integration status with other systems
+	NextScan     time.Time `json:"NextScan"`     // Time for the next system scan
 }
 
 var DefaultUserSettings = UserSettings{Language: 1, ScanInterval: 24, Integration: false, NextScan: time.Now().Add(time.Hour * 24)}
@@ -35,14 +43,14 @@ func LoadUserSettings() UserSettings {
 	logger.Log.Debug("Getting user config directory")
 	appDataPath, err := os.UserConfigDir()
 	if err != nil {
-		logger.Log.ErrorWithErr("Error getting user config directory:", err)
+		logger.Log.Warning("Error getting user config directory, using default settings")
 		return DefaultUserSettings
 	}
 	dirPath := appDataPath + `\InfoSec-Agent`
 	logger.Log.Debug("Creating/reading directory at:" + dirPath)
 	err = os.MkdirAll(dirPath, os.ModePerm)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error creating directory:", err)
+		logger.Log.Warning("Error creating directory, using default settings")
 		return DefaultUserSettings
 	}
 
@@ -51,7 +59,7 @@ func LoadUserSettings() UserSettings {
 	logger.Log.Debug("Reading user settings from file:" + filePath)
 	data, err := os.ReadFile(filePath)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error reading user settings file:", err)
+		logger.Log.Warning("Error reading user settings file, using default settings")
 		return DefaultUserSettings
 	}
 
@@ -59,7 +67,7 @@ func LoadUserSettings() UserSettings {
 	logger.Log.Debug("Unmarshalling user settings JSON")
 	err = json.Unmarshal(data, &settings)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error unmarshalling user settings JSON:", err)
+		logger.Log.Warning("Error unmarshalling user settings JSON, using default settings")
 		return DefaultUserSettings
 	}
 	logger.Log.Debug("Loaded user settings")
@@ -74,33 +82,41 @@ func LoadUserSettings() UserSettings {
 // Parameters:
 //   - settings (UserSettings): The user settings to be saved.
 //
-// Returns: None
-func SaveUserSettings(settings UserSettings) {
+// Returns: An error if any occurred while saving the user settings. If no error occurred, the function returns nil.
+func SaveUserSettings(settings UserSettings) error {
 	logger.Log.Debug("Getting user config directory")
 	appDataPath, err := os.UserConfigDir()
 	if err != nil {
-		logger.Log.ErrorWithErr("Error getting user config directory:", err)
-		return
+		err = errors.New("Error getting user config directory: " + err.Error())
+		logger.Log.Error(err.Error())
+		return err
 	}
 
 	dirPath := appDataPath + `\InfoSec-Agent`
 	logger.Log.Debug("Creating/reading directory at:" + dirPath)
 	err = os.MkdirAll(dirPath, os.ModePerm)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error creating directory:", err)
-		return
+		err = errors.New("Error creating directory: " + err.Error())
+		logger.Log.Error(err.Error())
+		return err
 	}
 	filePath := dirPath + `\user_settings.json`
 
 	logger.Log.Debug("Marshalling data to JSON")
 	file, err := json.MarshalIndent(settings, "", " ")
 	if err != nil {
-		logger.Log.ErrorWithErr("Error marshalling user settings JSON:", err)
-		return
+		err = errors.New("Error marshalling user settings JSON: " + err.Error())
+		logger.Log.Error(err.Error())
+		return err
 	}
 	logger.Log.Debug("Writing user settings to file:" + filePath)
 	err = os.WriteFile(filePath, file, 0600)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error writing user setting(s) to file:", err)
+		err = errors.New("Error writing user settings to file: " + err.Error())
+		logger.Log.Error(err.Error())
+		return err
 	}
+
+	logger.Log.Debug("User settings saved successfully")
+	return nil
 }
