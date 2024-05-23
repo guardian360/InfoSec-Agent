@@ -38,8 +38,6 @@ func TestMain(m *testing.M) {
 //
 // No return values.
 func TestScan(t *testing.T) {
-	// logger.SetupTests()
-
 	// Display a progress dialog while the scan is running
 	dialog, err := zenity.Progress(
 		zenity.Title("Security/Privacy Scan"))
@@ -69,8 +67,6 @@ func TestScan(t *testing.T) {
 //
 // No return values.
 func TestGetSeverity(t *testing.T) {
-	// logger.SetupTests()
-
 	// Arrange database connection
 	db, err := sql.Open("sqlite", "../../reporting-page/database.db")
 	if err != nil {
@@ -98,8 +94,6 @@ func TestGetSeverity(t *testing.T) {
 //
 // No return values.
 func TestGetJSONKey(t *testing.T) {
-	// logger.SetupTests()
-
 	// Arrange database connection
 	db, err := sql.Open("sqlite", "../../reporting-page/database.db")
 	if err != nil {
@@ -127,8 +121,6 @@ func TestGetJSONKey(t *testing.T) {
 //
 // No return values.
 func TestGetDataBaseData(t *testing.T) {
-	// logger.SetupTests()
-
 	scanResult := []checks.Check{
 		{
 			IssueID:  1,
@@ -191,4 +183,46 @@ func TestGetDataBaseData(t *testing.T) {
 	// Test for invalid database path
 	result, _ := scan.GetDataBaseData(scanResult, "")
 	require.Equal(t, wrongPathExpectedData, result)
+}
+
+// TestDirectoryExists tests the DirectoryExists function to ensure it correctly identifies whether a directory exists.
+//
+// This test function calls the DirectoryExists function with a path to an existing directory and asserts that the function returns true.
+// It also tests the function with a path to a non-existing directory and asserts that the function returns false.
+//
+// Parameters:
+//   - t *testing.T: The testing framework used for assertions.
+//
+// No return values.
+func TestDirectoryExists(t *testing.T) {
+	// Test for existing directory
+	exists := scan.DirectoryExists("../../reporting-page")
+	require.True(t, exists)
+
+	// Test for non-existing directory
+	exists = scan.DirectoryExists("non-existing-directory")
+	require.False(t, exists)
+}
+
+// TestGeneratePath tests the GeneratePath function to ensure it correctly generates the path.
+//
+// This test function calls the GeneratePath function with a given path and asserts that the returned path matches the expected value.
+// It also tests the function with an empty string and asserts that the returned path is the current user's home directory.
+//
+// Parameters:
+//   - t *testing.T: The testing framework used for assertions.
+//
+// No return values.
+func TestGeneratePath(t *testing.T) {
+	// Test for valid generated path
+	path := scan.GeneratePath("\\test")
+	currHomeDir, err := os.UserHomeDir()
+	if err != nil {
+		t.Errorf("Test failed: error getting user home directory: %v", err)
+	}
+	require.Equal(t, currHomeDir+"\\test", path)
+
+	// Test that given no path, it returns the path to the current user's home directory
+	path = scan.GeneratePath("")
+	require.Equal(t, currHomeDir, path)
 }

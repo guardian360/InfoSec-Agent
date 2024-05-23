@@ -31,7 +31,7 @@ func TestIntegrationScanSuccess(t *testing.T) {
 	checks, err := scan.Scan(dialog)
 	require.NotEmpty(t, checks)
 	require.NoError(t, err)
-	require.Equal(t, len(scan.SecurityChecks), len(checks))
+	require.Equal(t, len(scan.ChecksList), len(checks))
 
 	// Get database data
 	data, err := scan.GetDataBaseData(checks, "../../reporting-page/database.db")
