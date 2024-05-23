@@ -8,15 +8,19 @@ package usersettings
 import (
 	"encoding/json"
 	"os"
+	"time"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 )
 
 type UserSettings struct {
-	Language     int  `json:"Language"`
-	ScanInterval int  `json:"ScanInterval"`
-	Integration  bool `json:"Integration"`
+	Language     int       `json:"Language"`
+	ScanInterval int       `json:"ScanInterval"`
+	Integration  bool      `json:"Integration"`
+	NextScan     time.Time `json:"NextScan"`
 }
+
+var DefaultUserSettings = UserSettings{Language: 1, ScanInterval: 24, Integration: false, NextScan: time.Now().Add(time.Hour * 24)}
 
 // LoadUserSettings loads the user settings from a JSON file in the Windows AppData folder.
 //
@@ -32,14 +36,14 @@ func LoadUserSettings() UserSettings {
 	appDataPath, err := os.UserConfigDir()
 	if err != nil {
 		logger.Log.ErrorWithErr("Error getting user config directory:", err)
-		return UserSettings{Language: 1, ScanInterval: 24}
+		return DefaultUserSettings
 	}
 	dirPath := appDataPath + `\InfoSec-Agent`
 	logger.Log.Debug("Creating/reading directory at:" + dirPath)
 	err = os.MkdirAll(dirPath, os.ModePerm)
 	if err != nil {
 		logger.Log.ErrorWithErr("Error creating directory:", err)
-		return UserSettings{Language: 1, ScanInterval: 24}
+		return DefaultUserSettings
 	}
 
 	filePath := dirPath + `\user_settings.json`
@@ -48,7 +52,7 @@ func LoadUserSettings() UserSettings {
 	data, err := os.ReadFile(filePath)
 	if err != nil {
 		logger.Log.ErrorWithErr("Error reading user settings file:", err)
-		return UserSettings{Language: 1, ScanInterval: 24}
+		return DefaultUserSettings
 	}
 
 	var settings UserSettings
@@ -56,7 +60,7 @@ func LoadUserSettings() UserSettings {
 	err = json.Unmarshal(data, &settings)
 	if err != nil {
 		logger.Log.ErrorWithErr("Error unmarshalling user settings JSON:", err)
-		return UserSettings{Language: 1, ScanInterval: 24}
+		return DefaultUserSettings
 	}
 	logger.Log.Debug("Loaded user settings")
 	return settings

@@ -110,14 +110,6 @@ func TestScanNow(t *testing.T) {
 	// Set up initial ScanCounter value
 	initialScanCounter := 0
 
-	tickerAdvanced := make(chan struct{})
-
-	// Listen for ticker advancement
-	go func() {
-		<-tray.ScanTicker.C
-		tickerAdvanced <- struct{}{}
-	}()
-
 	// Run the function
 	_, err := tray.ScanNow()
 	require.NoError(t, err)

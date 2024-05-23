@@ -28,7 +28,6 @@ import (
 )
 
 var ScanCounter int
-var ScanTicker *time.Ticker
 
 // Language is used to represent the index of the currently selected language.
 // The language indices are as follows:
@@ -73,7 +72,7 @@ type MenuItem struct {
 
 // OnReady orchestrates the runtime behavior of the system tray application.
 //
-// This function sets up the system tray with various menu items such as 'Reporting Page', 'Change Scan Interval', 'Scan Now', 'Change Language', and 'Quit'. It also initializes a ticker for scheduled security scans and a signal listener for system termination signals.
+// This function sets up the system tray with various menu items such as 'Reporting Page', 'Change Scan Interval', 'Scan Now', 'Change Language', and 'Quit'.
 // It then enters a loop where it listens for various events such as clicks on the menu items, system termination signals, and elapse of the scan interval. Depending on the event, it performs actions such as opening the reporting page, changing the scan interval, initiating an immediate scan, changing the application language, refreshing the menu, or quitting the application.
 //
 // Parameters: None.
@@ -124,8 +123,7 @@ func OnReady() {
 	signal.Notify(sigc, syscall.SIGTERM, syscall.SIGINT)
 
 	ScanCounter = 0
-	// Set a ticker to run a scan at a set interval (default = 1 week)
-	ScanTicker = time.NewTicker(time.Duration(scanInterval) * time.Hour)
+	ticker := time.NewTicker(30 * time.Minute)
 
 	// Iterate over each menu option/signal
 	for {
@@ -154,19 +152,8 @@ func OnReady() {
 			systray.Quit()
 		case <-sigc:
 			systray.Quit()
-		// Executes each time the ScanTicker has elapsed the set amount of time
-		case <-ScanTicker.C:
-			ScanCounter++
-			logger.Log.Println("Scan:", ScanCounter)
-			result, err := ScanNow()
-			if err != nil {
-				logger.Log.ErrorWithErr("Error scanning:", err)
-			}
-			// Notify the user that a scan has been completed
-			err = Popup(result, "./reporting-page/database.db")
-			if err != nil {
-				logger.Log.ErrorWithErr("Error notifying user:", err)
-			}
+		case <-ticker.C:
+			periodicScan(scanInterval)
 		}
 	}
 }
@@ -288,7 +275,7 @@ func BuildReportingPage() error {
 // Parameters:
 //   - testInput ...string: Optional parameter used for testing. If provided, the function uses this as the user's input instead of displaying the dialog window.
 //
-// Returns: None. The function updates the 'ScanTicker' variable in-place.
+// Returns: None.
 func ChangeScanInterval(testInput ...string) {
 	var res string
 	// If testInput is provided, use it for testing
@@ -312,15 +299,11 @@ func ChangeScanInterval(testInput ...string) {
 		interval = 24
 	}
 
-	// Restart the ticker with the new interval
-	if ScanTicker != nil {
-		ScanTicker.Stop()
-	}
-	ScanTicker = time.NewTicker(time.Duration(interval) * time.Hour)
 	logger.Log.Printf("Scan interval changed to %d hours\n", interval)
 	usersettings.SaveUserSettings(usersettings.UserSettings{
 		Language:     usersettings.LoadUserSettings().Language,
 		ScanInterval: interval,
+		NextScan:     time.Now().Add(time.Duration(interval) * time.Hour),
 	})
 }
 
@@ -479,7 +462,7 @@ func Popup(scanResult []checks.Check, path string) error {
 	return nil
 }
 
-// generatePopupMessage generates a notification message based on the severity of the issues found during the scan.
+// PopupMessage generates a notification message based on the severity of the issues found during the scan.
 //
 // This function takes a slice of checks representing the scan results and generates a notification message based on the number of issues found at each severity level.
 // The message informs the user about the number of issues found during the scan and prompts them to open the reporting page for more information.
@@ -508,4 +491,40 @@ func PopupMessage(scanResult []checks.Check, path string) string {
 		return fmt.Sprintf("The privacy and security scan has been completed. You have %d medium risk issues. Open the reporting page to see more information.", severityCounters[2])
 	}
 	return "The privacy and security scan has been completed. Open the reporting page to view the results."
+}
+
+// changeNextScan updates the next scan time based on the current time and the scan interval.
+//
+// Parameters:
+//   - settings usersettings.UserSettings: The user settings object containing the current scan interval and next scan time.
+//   - value int: The new scan interval in hours.
+//
+// Returns: None.
+func changeNextScan(settings usersettings.UserSettings, value int) {
+	settings.NextScan = time.Now().Add(time.Duration(value) * time.Hour)
+	usersettings.SaveUserSettings(settings)
+}
+
+// periodicScan checks if a scan is due based on the scan interval and the current time.
+// If a scan is due, it performs a scan and notifies the user using a pop-up.
+//
+// Parameters:
+//   - scanInterval int: The scan interval in hours.
+//
+// Returns: None.
+func periodicScan(scanInterval int) {
+	settings := usersettings.LoadUserSettings()
+	if time.Now().After(settings.NextScan) {
+		result, err := ScanNow()
+		if err != nil {
+			logger.Log.ErrorWithErr("Error performing periodic scan:", err)
+		}
+		// Notify the user that a scan has been completed
+		err = Popup(result, "./reporting-page/database.db")
+		if err != nil {
+			logger.Log.ErrorWithErr("Error notifying user:", err)
+		}
+		// Update the next scan time
+		changeNextScan(settings, scanInterval)
+	}
 }
