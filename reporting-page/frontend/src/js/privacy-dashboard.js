@@ -199,7 +199,7 @@ export function openPrivacyDashboardPage() {
     g.rc = rc;
     await g.changeGraph();
   });
-  document.getElementById('suggested-issue').addEventListener('click', () => suggestedIssue());
+  document.getElementById('suggested-issue').addEventListener('click', () => suggestedIssue('Privacy'));
 }
 
 /* istanbul ignore next */

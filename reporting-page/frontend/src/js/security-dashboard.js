@@ -222,7 +222,7 @@ export function openSecurityDashboardPage() {
     g.rc = rc;
     await g.changeGraph();
   });
-  document.getElementById('suggested-issue').addEventListener('click', () => suggestedIssue());
+  document.getElementById('suggested-issue').addEventListener('click', () => suggestedIssue('Security'));
 }
 
 /* istanbul ignore next */

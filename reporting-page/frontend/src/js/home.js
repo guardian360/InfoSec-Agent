@@ -5,6 +5,7 @@ import {retrieveTheme} from './personalize.js';
 import {scanTest} from './database.js';
 import {LogError as logError} from '../../wailsjs/go/main/Tray.js';
 import {openIssuePage} from './issue.js';
+import data from '../databases/database.en-GB.json' assert { type: 'json' };
 
 /** Load the content of the Home page */
 export function openHomePage() {
@@ -91,18 +92,35 @@ export function openHomePage() {
   }
 
   document.getElementById('scan-now').addEventListener('click', () => scanTest());
-  document.getElementById('suggested-issue').addEventListener('click', () => suggestedIssue());
+  document.getElementById('suggested-issue').addEventListener('click', () => suggestedIssue(''));
 }
 
-/** Opens the issue page of the issue with highest risk level */
-export function suggestedIssue() {
+/** Opens the issue page of the issue with highest risk level 
+ * 
+ * @param {string} type Type of issue to open the issue page of (e.g. 'Security', 'Privacy', and '' for all types)
+*/
+export function suggestedIssue(type) {
+  // Get the issues from the database
   const issues = JSON.parse(sessionStorage.getItem('DataBaseData'));
-  let maxSeverityIssue = issues[0];
+
+  // Skip informative issues
+  let issueIndex = 0;
+  let maxSeverityIssue = issues[issueIndex];
+  while (maxSeverityIssue.severity === 4) {
+    issueIndex++;
+    maxSeverityIssue = issues[issueIndex];
+  }
+
+  // Find the issue with the highest severity
   for (let i = 0; i < issues.length; i++) {
     if (maxSeverityIssue.severity < issues[i].severity && issues[i].severity !== 4) {
-      maxSeverityIssue = issues[i];
+      if (type == '' || data[issues[i].jsonkey].Type === type) {
+        maxSeverityIssue = issues[i];
+      }
     }
   }
+
+  // Open the issue page of the issue with the highest severity
   openIssuePage(maxSeverityIssue.jsonkey, maxSeverityIssue.severity);
 }
 
