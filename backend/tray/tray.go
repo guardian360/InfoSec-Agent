@@ -123,7 +123,7 @@ func OnReady() {
 	signal.Notify(sigc, syscall.SIGTERM, syscall.SIGINT)
 
 	ScanCounter = 0
-	ticker := time.NewTicker(1 * time.Second)
+	ticker := time.NewTicker(30 * time.Minute)
 
 	// Iterate over each menu option/signal
 	for {
