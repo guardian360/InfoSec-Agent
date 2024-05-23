@@ -10,6 +10,7 @@ require (
 	github.com/jarcoal/httpmock v1.3.1
 	github.com/ncruces/zenity v0.10.12
 	github.com/nicksnyder/go-i18n/v2 v2.4.0
+	github.com/rodolfoag/gow32 v0.0.0-20230512144032-1e896a3c51aa
 	github.com/stretchr/testify v1.9.0
 	golang.org/x/net v0.24.0
 	golang.org/x/sys v0.19.0
