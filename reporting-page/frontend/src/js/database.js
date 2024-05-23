@@ -8,7 +8,11 @@ import {
 import * as rc from './risk-counters.js';
 import {updateRiskCounter} from './risk-counters.js';
 import data from '../databases/database.en-GB.json' assert { type: 'json' };
-/** Call ScanNow in backend and store result in sessionStorage */
+/**
+ * Initiates a scan and handles the result.
+ *
+ * @param {boolean} dialogPresent - Indicates whether a dialog is present during the scan.
+ */
 export async function scanTest(dialogPresent) {
   try {
     await new Promise((resolve, reject) => {
