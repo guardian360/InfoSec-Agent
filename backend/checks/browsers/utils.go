@@ -256,7 +256,7 @@ func (r RealDefaultDirGetter) GetDefaultDir(browserPath string) (string, error) 
 //   - checks.Check: A Check object representing the result of the check. If tracking cookies are found, the result contains a list of cookies along with their host stored in the database.
 func QueryCookieDatabase(checkID int, browser string, databasePath string, queryParams []string, tableName string) checks.Check {
 	// Copy the database, so problems don't arise when the file gets locked
-	tempCookieDB := filepath.Join(os.TempDir(), "tempCookieDbchr.sqlite")
+	tempCookieDB := filepath.Join(os.TempDir(), "tempCookieDb"+browser+".sqlite")
 
 	// Clean up the temporary file when the function returns
 	defer func(name string) {

@@ -8,7 +8,6 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/usersettings"
 	"github.com/go-toast/toast"
-	"github.com/pkg/errors"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/icon"
@@ -18,6 +17,7 @@ import (
 	"github.com/getlantern/systray"
 	"github.com/ncruces/zenity"
 
+	"errors"
 	"fmt"
 	"os"
 	"os/exec"
@@ -300,11 +300,14 @@ func ChangeScanInterval(testInput ...string) {
 	}
 
 	logger.Log.Printf("Scan interval changed to %d hours\n", interval)
-	usersettings.SaveUserSettings(usersettings.UserSettings{
+	err = usersettings.SaveUserSettings(usersettings.UserSettings{
 		Language:     usersettings.LoadUserSettings().Language,
 		ScanInterval: interval,
 		NextScan:     time.Now().Add(time.Duration(interval) * time.Hour),
 	})
+	if err != nil {
+		logger.Log.Warning("Scan interval setting not saved to file")
+	}
 }
 
 // ScanNow initiates an immediate security scan, bypassing the scheduled intervals.
@@ -411,10 +414,13 @@ func ChangeLanguage(testInput ...string) {
 	if test {
 		return
 	}
-	usersettings.SaveUserSettings(usersettings.UserSettings{
+	err := usersettings.SaveUserSettings(usersettings.UserSettings{
 		Language:     Language,
 		ScanInterval: usersettings.LoadUserSettings().ScanInterval,
 	})
+	if err != nil {
+		logger.Log.Warning("Language setting not saved to file")
+	}
 }
 
 // RefreshMenu updates the system tray menu items to reflect the current language setting.
@@ -502,7 +508,10 @@ func PopupMessage(scanResult []checks.Check, path string) string {
 // Returns: None.
 func changeNextScan(settings usersettings.UserSettings, value int) {
 	settings.NextScan = time.Now().Add(time.Duration(value) * time.Hour)
-	usersettings.SaveUserSettings(settings)
+	err := usersettings.SaveUserSettings(settings)
+	if err != nil {
+		logger.Log.Warning("Next scan time not saved to file")
+	}
 }
 
 // periodicScan checks if a scan is due based on the scan interval and the current time.

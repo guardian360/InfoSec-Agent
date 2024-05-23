@@ -26,26 +26,26 @@ const browserEdge = "Edge"
 // Each function in the slice represents a different security or privacy check that the application can perform.
 // When the Scan function is called, it iterates over this slice and executes each check in turn.
 // The result of each check is then appended to the checkResults slice, which is returned by the Scan function.
-var ChecksList = func() []func() checks.Check {
-	var checks []func() checks.Check
+var ChecksList = func() [][]func() checks.Check {
+	var checks [][]func() checks.Check
 	// Check for the presence of Firefox, Chrome, and Edge profiles. If so, add the corresponding checks
 	firefoxDir := GeneratePath("\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles")
 	chromeDir := GeneratePath("\\AppData\\Local\\Google\\Chrome\\User Data\\Default")
 	edgeDir := GeneratePath("\\AppData\\Local\\Microsoft\\Edge\\User Data\\Default")
 	if DirectoryExists(firefoxDir) {
-		checks = append(checks, mozillaFirefoxChecks...)
+		checks = append(checks, mozillaFirefoxChecks)
 	}
 	if DirectoryExists(chromeDir) {
-		checks = append(checks, googleChromeChecks...)
+		checks = append(checks, googleChromeChecks)
 	}
 	if DirectoryExists(edgeDir) {
-		checks = append(checks, microsoftEdgeChecks...)
+		checks = append(checks, microsoftEdgeChecks)
 	}
-	checks = append(checks, cisChecks...)
-	checks = append(checks, devicesChecks...)
-	checks = append(checks, networkChecks...)
-	checks = append(checks, programsChecks...)
-	checks = append(checks, windowsChecks...)
+	checks = append(checks, cisChecks)
+	checks = append(checks, devicesChecks)
+	checks = append(checks, networkChecks)
+	checks = append(checks, programsChecks)
+	checks = append(checks, windowsChecks)
 
 	return checks
 }()
