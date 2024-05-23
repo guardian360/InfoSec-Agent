@@ -1,21 +1,22 @@
 package chromium_test
 
 import (
-	"errors"
-	"fmt"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/browsers/chromium"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
+
+	"github.com/jarcoal/httpmock"
 	"github.com/stretchr/testify/assert"
+
+	"errors"
+	"fmt"
 	"net/http"
 	"net/url"
 	"os"
 	"path/filepath"
 	"reflect"
 	"testing"
-
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/browsers/chromium"
-	"github.com/jarcoal/httpmock"
 )
 
 func TestMain(m *testing.M) {
@@ -174,7 +175,7 @@ func TestGetExtensionIDs(t *testing.T) {
 	defer os.RemoveAll(tempDir) // clean up
 
 	// Create dummy extension directories
-	for i := range []int{0, 1, 2}{
+	for i := range []int{0, 1, 2} {
 		err := os.Mkdir(filepath.Join(tempDir, fmt.Sprintf("extension%d", i)), 0755)
 		if err != nil {
 			t.Fatalf("Failed to create dummy extension dir: %v", err)
