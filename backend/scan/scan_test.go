@@ -55,6 +55,10 @@ func TestScan(t *testing.T) {
 	// Execute the scan
 	_, err = scan.Scan(dialog)
 	require.NoError(t, err)
+
+	// Execute the scan without a dialog
+	_, err = scan.Scan(nil)
+	require.NoError(t, err)
 }
 
 // TestGetSeverity tests the GetSeverity function to ensure it returns the correct severity level for a given issue ID and result ID pair.
