@@ -110,13 +110,17 @@ func TestScanNow(t *testing.T) {
 	// Set up initial ScanCounter value
 	initialScanCounter := 0
 
-	// Run the function
-	_, err := tray.ScanNow()
+	// Run the function without dialog
+	_, err := tray.ScanNow(false)
+	require.NoError(t, err)
+
+	// Run the function with dialog
+	_, err = tray.ScanNow(true)
 	require.NoError(t, err)
 
 	// Assert that ScanCounter was incremented
 	finalScanCounter := tray.ScanCounter
-	expectedScanCounter := initialScanCounter + 1
+	expectedScanCounter := initialScanCounter + 2
 	require.Equal(t, expectedScanCounter, finalScanCounter)
 }
 

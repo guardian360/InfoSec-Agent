@@ -136,7 +136,7 @@ func OnReady() {
 		case <-mChangeScanInterval.ClickedCh:
 			ChangeScanInterval()
 		case <-mScanNow.ClickedCh:
-			result, err := ScanNow()
+			result, err := ScanNow(true)
 			if err != nil {
 				logger.Log.ErrorWithErr("Error scanning:", err)
 			}
@@ -315,44 +315,41 @@ func ChangeScanInterval(testInput ...string) {
 // This function triggers a security scan regardless of the scheduled intervals. It is useful for situations where an immediate scan is required, such as after a significant system change or when manually requested by the user.
 // During the scan, a progress dialog is displayed to keep the user informed about the scan progress. Once the scan is complete, the dialog is closed and the results of the scan are returned.
 //
-// Parameters: None.
+// Parameters:
+//   - dialogPresent bool: A boolean value indicating whether a progress dialog should be displayed during the scan. If true, a dialog is shown; if false, no dialog is displayed.
 //
 // Returns:
 //   - []checks.Check: A list of checks performed during the scan.
 //   - error: An error object if an error occurred during the scan, otherwise nil.
-func ScanNow() ([]checks.Check, error) {
+func ScanNow(dialogPresent bool) ([]checks.Check, error) {
 	// ScanCounter is not concretely used at the moment
 	// might be useful in the future
 	ScanCounter++
 	logger.Log.Info("Scanning now. Scan:" + strconv.Itoa(ScanCounter))
 
-	// Display a progress dialog while the scan is running
-	dialog, err := zenity.Progress(
-		zenity.Title("Security/Privacy Scan"))
-	if err != nil {
-		logger.Log.ErrorWithErr("Error creating dialog:", err)
-		return nil, err
-	}
-	// Defer closing the dialog until the scan completes
-	defer func(dialog zenity.ProgressDialog) {
-		err = dialog.Close()
+	var result []checks.Check
+	var err error
+	var dialog zenity.ProgressDialog
+	if dialogPresent {
+		dialog, result, err = runScanWithDialog()
 		if err != nil {
-			logger.Log.ErrorWithErr("Error closing dialog:", err)
+			logger.Log.ErrorWithErr("Error running scan with dialog:", err)
+			return result, err
 		}
-	}(dialog)
-
-	result, err := scan.Scan(dialog)
-	if err != nil {
-		logger.Log.ErrorWithErr("Error calling scan:", err)
-		return result, err
+		// Defer closing the dialog until the scan completes
+		defer func(dialog zenity.ProgressDialog) {
+			err = dialog.Close()
+			if err != nil {
+				logger.Log.ErrorWithErr("Error closing dialog:", err)
+			}
+		}(dialog)
+	} else {
+		result, err = scan.Scan(nil)
+		if err != nil {
+			logger.Log.ErrorWithErr("Error calling scan:", err)
+			return result, err
+		}
 	}
-
-	err = dialog.Complete()
-	if err != nil {
-		logger.Log.ErrorWithErr("Error completing dialog:", err)
-		return result, err
-	}
-
 	return result, nil
 }
 
@@ -524,7 +521,7 @@ func changeNextScan(settings usersettings.UserSettings, value int) {
 func periodicScan(scanInterval int) {
 	settings := usersettings.LoadUserSettings()
 	if time.Now().After(settings.NextScan) {
-		result, err := ScanNow()
+		result, err := ScanNow(false)
 		if err != nil {
 			logger.Log.ErrorWithErr("Error performing periodic scan:", err)
 		}
@@ -536,4 +533,33 @@ func periodicScan(scanInterval int) {
 		// Update the next scan time
 		changeNextScan(settings, scanInterval)
 	}
+}
+
+// runScanWithDialog runs a scan with a progress dialog to keep the user informed about the scan progress.
+// It returns the progress dialog, the scan results, and any error that occurred during the scan.
+//
+// Parameters: None.
+//
+// Returns:
+//   - zenity.ProgressDialog: A progress dialog that displays the scan progress to the user.
+//   - []checks.Check: A slice of checks representing the scan results.
+//   - error: An error object that describes the error (if any) that occurred during the scan.
+func runScanWithDialog() (zenity.ProgressDialog, []checks.Check, error) {
+	dialog, err := zenity.Progress(
+		zenity.Title("Security/Privacy Scan"))
+	if err != nil {
+		logger.Log.ErrorWithErr("Error creating dialog:", err)
+	}
+	result, err := scan.Scan(dialog)
+	if err != nil {
+		logger.Log.ErrorWithErr("Error calling scan:", err)
+		return dialog, result, err
+	}
+
+	err = dialog.Complete()
+	if err != nil {
+		logger.Log.ErrorWithErr("Error completing dialog:", err)
+		return dialog, result, err
+	}
+	return dialog, result, err
 }

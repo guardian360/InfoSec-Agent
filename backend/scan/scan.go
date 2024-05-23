@@ -33,6 +33,11 @@ import (
 //   - []checks.Check: A slice of Check objects representing all found issues.
 //   - error: An error object that describes the error (if any) that occurred while running the checks or serializing the results to JSON. If no error occurred, this value is nil.
 func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
+	dialogPresent := false
+	if dialog != nil {
+		dialogPresent = true
+	}
+
 	date := time.Now().Format(time.RFC3339)
 	// TODO: Replace with actual workstation ID and user
 	workStationID := 0
@@ -66,33 +71,7 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 
 	// Start the workers to execute the checks concurrently
 	// Each worker can access the channel and take work from it while it is not closed / there are still checks to execute
-	for range workerAmount {
-		wg.Add(1)
-		go func() {
-			defer wg.Done()
-			for check := range checksChan {
-				result := check()
-				// The following code should only be modified by one worker at a time
-				mu.Lock()
-				checkResults = append(checkResults, result)
-				// Display the currently running check in the progress dialog
-				err := dialog.Text(fmt.Sprintf("Running check %d of %d", counter, totalChecks))
-				if err != nil {
-					logger.Log.ErrorWithErr("Error setting progress text:", err)
-					return
-				}
-				// Update the progress bar within the progress dialog
-				progress := float64(counter) / float64(totalChecks) * 100
-				counter++
-				err = dialog.Value(int(progress))
-				if err != nil {
-					logger.Log.ErrorWithErr("Error setting progress value:", err)
-					return
-				}
-				mu.Unlock()
-			}
-		}()
-	}
+	startWorkers(workerAmount, &wg, checksChan, &mu, &checkResults, dialogPresent, &counter, totalChecks, dialog)
 
 	close(checksChan)
 
@@ -112,4 +91,51 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 		apiconnection.ParseScanResults(apiconnection.Metadata{WorkStationID: workStationID, User: user, Date: date}, checkResults)
 	}
 	return checkResults, nil
+}
+
+// startWorkers creates and starts the specified number of workers to execute the checks concurrently.
+// The workers receive checks from the checksChan channel, execute them, and store the results in the checkResults slice.
+//
+// Parameters:
+//   - workerAmount (int): The number of workers to create and start.
+//   - wg (*sync.WaitGroup): A WaitGroup object that allows the workers to signal when they have completed their work.
+//   - checksChan (chan func() checks.Check): A channel that provides the workers with checks to execute.
+//   - mu (*sync.Mutex): A Mutex object that synchronizes access to the checkResults slice and the progress dialog.
+//   - checkResults (*[]checks.Check): A pointer to a slice of Check objects that stores the results of the executed checks.
+//   - dialogPresent (bool): A boolean value that indicates whether a progress dialog is present.
+//   - counter (*int): A pointer to an integer that represents the current check number.
+//   - totalChecks (int): An integer value that represents the total number of checks to be executed.
+//   - dialog (zenity.ProgressDialog): A dialog window that displays the progress of the scan as it runs.
+//
+// Returns: None.
+func startWorkers(workerAmount int, wg *sync.WaitGroup, checksChan chan func() checks.Check, mu *sync.Mutex,
+	checkResults *[]checks.Check, dialogPresent bool, counter *int, totalChecks int, dialog zenity.ProgressDialog) {
+	for range workerAmount {
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			for check := range checksChan {
+				result := check()
+				mu.Lock()
+				*checkResults = append(*checkResults, result)
+				if dialogPresent {
+					err := dialog.Text(fmt.Sprintf("Running check %d of %d", *counter, totalChecks))
+					if err != nil {
+						logger.Log.ErrorWithErr("Error setting progress text:", err)
+						mu.Unlock()
+						return
+					}
+					progress := float64(*counter) / float64(totalChecks) * 100
+					*counter++
+					err = dialog.Value(int(progress))
+					if err != nil {
+						logger.Log.ErrorWithErr("Error setting progress value:", err)
+						mu.Unlock()
+						return
+					}
+				}
+				mu.Unlock()
+			}
+		}()
+	}
 }

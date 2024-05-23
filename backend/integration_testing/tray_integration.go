@@ -8,7 +8,7 @@ import (
 )
 
 func TestIntegrationScanNowSuccessful(t *testing.T) {
-	result, err := tray.ScanNow()
+	result, err := tray.ScanNow(false)
 	require.NotEmpty(t, result)
 	require.NoError(t, err)
 }
