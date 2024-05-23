@@ -4,6 +4,7 @@ import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js'
 import {retrieveTheme} from './personalize.js';
 import {scanTest} from './database.js';
 import {LogError as logError} from '../../wailsjs/go/main/Tray.js';
+import {openIssuePage} from './issue.js';
 
 /** Load the content of the Home page */
 export function openHomePage() {
@@ -27,7 +28,7 @@ export function openHomePage() {
         <div class="data-segment-header">
           <p class="lang-choose-issue-description"></p>
         </div>
-        <a class="issue-button lang-suggested-issue"></a>
+        <a id="suggested-issue" class="issue-button lang-suggested-issue"></a>
         <a class="issue-button lang-quick-fix"></a>
         <a id="scan-now" class="issue-button lang-scan-now"></a>
       </div>
@@ -90,6 +91,19 @@ export function openHomePage() {
   }
 
   document.getElementById('scan-now').addEventListener('click', () => scanTest());
+  document.getElementById('suggested-issue').addEventListener('click', () => suggestedIssue());
+}
+
+/** Opens the issue page of the issue with highest risk level */
+export function suggestedIssue() {
+  const issues = JSON.parse(sessionStorage.getItem('DataBaseData'));
+  let maxSeverityIssue = issues[0];
+  for (let i = 0; i < issues.length; i++) {
+    if (maxSeverityIssue.severity < issues[i].severity && issues[i].severity !== 4) {
+      maxSeverityIssue = issues[i];
+    }
+  }
+  openIssuePage(maxSeverityIssue.jsonkey, maxSeverityIssue.severity);
 }
 
 

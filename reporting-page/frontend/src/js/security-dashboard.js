@@ -5,6 +5,7 @@ import {LogError as logError} from '../../wailsjs/go/main/Tray.js';
 import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
 import {retrieveTheme} from './personalize.js';
 import {scanTest} from './database.js';
+import {suggestedIssue} from './home.js';
 
 /** Load the content of the Security Dashboard page */
 export function openSecurityDashboardPage() {
@@ -101,7 +102,7 @@ export function openSecurityDashboardPage() {
         <div class="data-segment-header">
           <p class="lang-choose-issue-description"></p>
         </div>
-        <a class="issue-button lang-suggested-issue"><p></p></a>
+        <a id="suggested-issue" class="issue-button lang-suggested-issue"><p></p></a>
         <a class="issue-button lang-quick-fix"><p></p></a>
         <a id="scan-now" class="issue-button lang-scan-now"></a>
       </div>
@@ -221,6 +222,7 @@ export function openSecurityDashboardPage() {
     g.rc = rc;
     await g.changeGraph();
   });
+  document.getElementById('suggested-issue').addEventListener('click', () => suggestedIssue());
 }
 
 /* istanbul ignore next */
