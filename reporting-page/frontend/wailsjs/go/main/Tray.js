@@ -18,6 +18,6 @@ export function LogInfo(arg1) {
   return window['go']['main']['Tray']['LogInfo'](arg1);
 }
 
-export function ScanNow() {
-  return window['go']['main']['Tray']['ScanNow']();
+export function ScanNow(arg1) {
+  return window['go']['main']['Tray']['ScanNow'](arg1);
 }
