@@ -38,7 +38,6 @@ export async function scanTest(dialogPresent) {
 
     // Perform other actions after scanTest is complete
     windowShow();
-    windowMaximise();
     logPrint(sessionStorage.getItem('ScanResult'));
   } catch (err) {
     // Handle any errors that occurred during scanTest or subsequent actions
@@ -70,6 +69,7 @@ async function setAllSeverities(input) {
   await setSeverities(result, 'Privacy');
   if (isFirstScan) {
     openHomePage();
+    windowMaximise();
     isFirstScan = false;
   }
 }
