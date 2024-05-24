@@ -2,7 +2,7 @@ import 'jsdom-global/register.js';
 import test from 'unit.js';
 import {JSDOM} from 'jsdom';
 import {jest} from '@jest/globals';
-import data from '../src/database.json' assert { type: 'json' };
+import data from '../src/databases/database.en-GB.json' assert { type: 'json' };
 import {mockPageFunctions, mockGetLocalization, clickEvent, storageMock} from './mock.js';
 
 global.TESTING = true;
