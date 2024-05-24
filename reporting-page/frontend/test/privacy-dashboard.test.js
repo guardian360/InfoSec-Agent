@@ -40,6 +40,11 @@ jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
   LoadUserSettings: jest.fn(),
 }));
 
+// Mock openIssuesPage
+jest.unstable_mockModule('../src/js/issue.js', () => ({
+  openIssuePage: jest.fn(),
+}));
+
 describe('Privacy dashboard page', function() {
   it('openPrivacyDashboardPage should add the dashboard to the page-contents', async function() {
     // Arrange
@@ -115,5 +120,25 @@ describe('Privacy dashboard page', function() {
 
     // Assert
     expect(scanTestMock).toHaveBeenCalled();
+  });
+  it('suggestedIssue should open the issue page of highest risk privacy issue', async function() {
+    // Arrange
+    const privacyDashboard = await import('../src/js/privacy-dashboard.js');
+    let issues = [];
+    issues = [
+      {id: 1, severity: 4, jsonkey: 10},
+      {id: 5, severity: 1, jsonkey: 51},
+      {id: 15, severity: 0, jsonkey: 150},
+      {id: 4, severity: 2, jsonkey: 41},
+    ];
+    sessionStorage.setItem('DataBaseData', JSON.stringify(issues));
+
+    const issue = await import('../src/js/issue.js');
+    const button = document.getElementById('suggested-issue');
+    const openIssuePageMock = jest.spyOn(issue, 'openIssuePage');
+
+    // Assert
+    button.dispatchEvent(clickEvent);
+    expect(openIssuePageMock).toHaveBeenCalled();
   });
 });
