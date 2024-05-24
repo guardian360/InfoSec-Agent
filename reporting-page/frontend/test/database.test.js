@@ -112,7 +112,7 @@ describe('database functions', function() {
     const database = await import('../src/js/database.js');
 
     // Act
-    await database.scanTest();
+    await database.scanTest(false);
     const rc = JSON.parse(sessionStorage.getItem('RiskCounters'));
     const src = JSON.parse(sessionStorage.getItem('SecurityRiskCounters'));
     const prc = JSON.parse(sessionStorage.getItem('PrivacyRiskCounters'));
@@ -143,7 +143,7 @@ describe('database functions', function() {
     const logErrorMock = jest.spyOn(tray, 'LogError');
 
     // Act
-    await database.scanTest();
+    await database.scanTest(false);
 
     // Assert
     expect(logErrorMock).toHaveBeenCalled();

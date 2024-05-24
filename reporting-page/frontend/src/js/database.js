@@ -8,13 +8,20 @@ import {
 import * as rc from './risk-counters.js';
 import {updateRiskCounter} from './risk-counters.js';
 import data from '../databases/database.en-GB.json' assert { type: 'json' };
-
 let isFirstScan = true;
+
+/**
+ * Initiates a scan and handles the result.
+ *
+ * @param {boolean} dialogPresent - Indicates whether a dialog is present during the scan.
+ */
+export async function scanTest(dialogPresent) {
+
 /** Call ScanNow in backend and store result in sessionStorage */
 export async function scanTest() {
   try {
     await new Promise((resolve, reject) => {
-      scanNowGo()
+      scanNowGo(dialogPresent)
         .then(async (scanResult) => {
           // Handle the scan result
           // For example, save it in session storage
@@ -45,7 +52,7 @@ export async function scanTest() {
 // Check if scanTest has already been called before
 if (sessionStorage.getItem('scanTest') === null || sessionStorage.getItem('scanTest') == undefined) {
   // Call scanTest() only if it hasn't been called before
-  scanTest().then((r) => {});
+  scanTest(false).then((r) => {});
 
   // Set the flag in sessionStorage to indicate that scanTest has been called
   sessionStorage.setItem('scanTest', 'called');

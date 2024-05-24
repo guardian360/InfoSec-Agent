@@ -1,12 +1,10 @@
 package windows
 
 import (
+	"errors"
 	"slices"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
-
-	"github.com/getlantern/errors"
-
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 )
 
