@@ -139,11 +139,12 @@ func OnReady() {
 			result, err := ScanNow(true)
 			if err != nil {
 				logger.Log.ErrorWithErr("Error scanning:", err)
-			}
-			// Notify the user that a scan has been completed
-			err = Popup(result, "./reporting-page/database.db")
-			if err != nil {
-				logger.Log.ErrorWithErr("Error notifying user:", err)
+			} else {
+				// Notify the user that a scan has been completed
+				err = Popup(result, "./reporting-page/database.db")
+				if err != nil {
+					logger.Log.ErrorWithErr("Error notifying user:", err)
+				}
 			}
 		case <-mChangeLanguage.ClickedCh:
 			ChangeLanguage()
@@ -528,11 +529,12 @@ func periodicScan(scanInterval int) {
 		result, err := ScanNow(false)
 		if err != nil {
 			logger.Log.ErrorWithErr("Error performing periodic scan:", err)
-		}
-		// Notify the user that a scan has been completed
-		err = Popup(result, "./reporting-page/database.db")
-		if err != nil {
-			logger.Log.ErrorWithErr("Error notifying user:", err)
+		} else {
+			// Notify the user that a scan has been completed
+			err = Popup(result, "./reporting-page/database.db")
+			if err != nil {
+				logger.Log.ErrorWithErr("Error notifying user:", err)
+			}
 		}
 		// Update the next scan time
 		changeNextScan(settings, scanInterval)
