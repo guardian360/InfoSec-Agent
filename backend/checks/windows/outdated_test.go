@@ -2,10 +2,11 @@ package windows_test
 
 import (
 	"errors"
+	"testing"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/windows"
 	"github.com/stretchr/testify/require"
 	"golang.org/x/net/html"
-	"testing"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
@@ -26,6 +27,9 @@ func TestWindowsOutdated(t *testing.T) {
 	win11HTML := windows.GetURLBody("https://learn.microsoft.com/en-us/windows/release-health/windows11-release-information")
 	latestWin11Build := windows.FindWindowsBuild(win11HTML)
 
+	expected1 := []string{"11", "WinVersion: 22000.000"}
+	expected2 := []string{"10", "WinVersion: 0.0"}
+
 	tests := []struct {
 		name         string
 		mockExecutor *mocking.MockCommandExecutor
@@ -34,22 +38,22 @@ func TestWindowsOutdated(t *testing.T) {
 		{
 			name:         "Windows 11 up-to-date",
 			mockExecutor: &mocking.MockCommandExecutor{Output: "Microsoft Windows [Version 10.0." + latestWin11Build + "]", Err: nil},
-			want:         checks.NewCheckResult(checks.WindowsOutdatedID, 0),
+			want:         checks.NewCheckResult(checks.WindowsOutdatedID, 0, "11"),
 		},
 		{
 			name:         "Windows 11 outdated",
 			mockExecutor: &mocking.MockCommandExecutor{Output: "Microsoft Windows [Version 10.0.22000.000]", Err: nil},
-			want:         checks.NewCheckResult(checks.WindowsOutdatedID, 1, "WinVersion: 22000.000"),
+			want:         checks.NewCheckResult(checks.WindowsOutdatedID, 1, expected1...),
 		},
 		{
 			name:         "Windows 10 up-to-date",
 			mockExecutor: &mocking.MockCommandExecutor{Output: "Microsoft Windows [Version 10.0." + latestWin10Build + "]", Err: nil},
-			want:         checks.NewCheckResult(checks.WindowsOutdatedID, 0),
+			want:         checks.NewCheckResult(checks.WindowsOutdatedID, 0, "10"),
 		},
 		{
 			name:         "Windows 10 outdated",
 			mockExecutor: &mocking.MockCommandExecutor{Output: "Microsoft Windows [Version 10.0.0.0]", Err: nil},
-			want:         checks.NewCheckResult(checks.WindowsOutdatedID, 1, "WinVersion: 0.0"),
+			want:         checks.NewCheckResult(checks.WindowsOutdatedID, 1, expected2...),
 		},
 		{
 			name:         "Unsupported Windows version",

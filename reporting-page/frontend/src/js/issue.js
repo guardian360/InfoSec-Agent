@@ -102,7 +102,7 @@ export async function openIssuePage(issueId, severity) {
         <p id="description">${currentIssue.Information}</p>
         <h2 id="solution">Acceptable</h2>
         <div class="issue-solution">
-          <p id="solution-text">${currentIssue.Solution[stepCounter]}</p>
+          <p id="solution-text">${getVersionSolution(currentIssue, stepCounter)}</p>
         </div>
         <div class="button" id="back-button">Back to issues overview</div>
       </div>
@@ -119,7 +119,7 @@ export async function openIssuePage(issueId, severity) {
           <p>${currentIssue.Information}</p>
           <h2 id="solution" class="lang-solution"></h2>
           <div class="issue-solution">
-            <p id="solution-text">${stepCounter +1}. ${currentIssue.Solution[stepCounter]}</p>
+            <p id="solution-text">${stepCounter +1}. ${getVersionSolution(currentIssue, stepCounter)}</p>
             <img style='display:block; width:750px;height:auto' id="step-screenshot"></img>
             <div class="solution-buttons">
               <div class="button-box">
@@ -132,8 +132,10 @@ export async function openIssuePage(issueId, severity) {
         </div>
       `;
     }
+
+    let screenshot = getVersionScreenshot(currentIssue, stepCounter);
     try {
-      document.getElementById('step-screenshot').src = currentIssue.Screenshots[stepCounter];
+      document.getElementById('step-screenshot').src = screenshot;
     } catch (error) { }
 
     // Add functions to page for navigation
@@ -370,7 +372,7 @@ export function parseShowResult(issueId, currentIssue) {
     <p id="description">${resultLine}</p>
     <h2 id="solution">Solution</h2>
     <div class="issue-solution">
-      <p id="solution-text">${stepCounter +1}. ${currentIssue.Solution[stepCounter]}</p>
+      <p id="solution-text">${stepCounter +1}. ${getVersionSolution(currentIssue, stepCounter)}</p>
       <img style='display:block; width:750px;height:auto' id="step-screenshot"></img>
       <div class="solution-buttons">
         <div class="button-box">
@@ -383,4 +385,48 @@ export function parseShowResult(issueId, currentIssue) {
   </div>
 `;
   return result;
+}
+
+/** 
+ * Get the screenshot for an issue with the correct windows version detected.
+ * If the version is not found, returns windows 11 screenshot.
+ * If the screenshot is not found, returns no path.
+ * @param {string} issue issue of which to get the screenshot
+ * @param {int} index index of the desired screenshot in the list of screenshots
+ * @returns path to the screenshot
+ */
+export function getVersionScreenshot(issue, index) {
+  let screenshot = issue.Screenshots[index];
+  if (screenshot == undefined) screenshot = '';
+  switch (sessionStorage.getItem("WindowsVersion")) {
+    case ('10'):
+      const screenshots = issue.ScreenshotsWindows10;
+      if (screenshots !== undefined) screenshot = screenshots[index];
+      return screenshot;
+    case ('11'):
+      return screenshot;
+    default:
+      return screenshot;
+  }
+}
+
+/** 
+ * Get the solution for an issue with the correct windows version detected.
+ * @param {string} issue issue of which to get the solution
+ * @param {int} index index of the desired solution in the list of solutions
+ * @returns solution
+ */
+export function getVersionSolution(issue, index) {
+  let solution = issue.Solution[index];
+  if (solution == undefined) solution = '';
+  switch (sessionStorage.getItem("WindowsVersion")) {
+    case ('10'):
+      const solutions = issue.SolutionWindows10;
+      if (solutions !== undefined) solution = solutions[index];
+      return solution;
+    case ('11'):
+      return solution;
+    default:
+      return solution;
+  }
 }
