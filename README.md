@@ -56,20 +56,20 @@ The configuration for these linters is already defined in reporting-page/package
 
 To install the linters, open a terminal in the ***InfoSec-Agent/reporting-page/frontend*** directory and run:
 
-```
+```powershell
 npm ci
 ```
 
 ### Usage
 To run ESlint on all JavaScript code, open a terminal in the ***InfoSec-Agent/reporting-page/frontend*** directory and run:
 
-```
+```powershell
 npx eslint **/*.js
 ```
 
 To run Stylelint on all CSS code, open a terminal in the ***InfoSec-Agent/reporting-page/frontend*** directory and run:
 
-```
+```powershell
 npx stylelint **/*.css
 ```
 
@@ -89,7 +89,7 @@ Configuration for these two linters can be found in the reporting-page/frontend/
 To install the golangci-lint binary on Windows run the following commands in ***git bash***
 (not in a cmd or PowerShell terminal):
 
-```
+```bash
 # binary will be $(go env GOPATH)/bin/golangci-lint
 curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.57.1
 ```
@@ -98,7 +98,7 @@ See [golangci-ci install documentation](https://golangci-lint.run/welcome/instal
 
 After installation of the golangci-lint binary, open an ***elevated*** PowerShell and run the following commands:
 
-```
+```powershell
 # This is the default installation path for git for Windows,
 # you may need to change it to your own custom installation path 
 $Env:Path += ";C:\Program Files\Git\usr\bin"
@@ -107,7 +107,7 @@ $Env:Path += ";C:\Program Files\Git\usr\bin"
 
 The linter should now be installed, you can check the version of the linter by opening any terminal and running:
 
-```
+```powershell
 golangci-lint --version
 ```
 
@@ -115,7 +115,7 @@ golangci-lint --version
 
 To run the linter, open a terminal in the ***root*** of the InfoSec-Agent repository and run:
 
-```
+```powershell
 golangci-lint run
 ```
 
@@ -124,12 +124,21 @@ You can format this json using any (online) software you like.
 
 To let the linter fix the found issues it is able to fix, open a terminal in the ***root*** of the InfoSec-Agent repository and run:
 
-```
+```powershell
 golangci-lint run --fix
 ```
 
 This command will change the code files, make sure to inspect the changes before commiting/pushing them.
 Not all found issues can be fixed automatically, you may need to fix some issues yourself.
+
+To run the linter only on new code (changes compared to the last commit) you can add the `--new-from-rev=HEAD~1` flag to the command as well.
+The resulting command would be:
+
+```powershell 
+golangci-lint run --new-from-rev=HEAD~1
+# or
+golangci-lint run --new-from-rev=HEAD~1 --fix
+```
 
 ### Configuration
 
@@ -193,7 +202,7 @@ There is a build.bat script provided to easily do this.
 
 Then, run the following command from the root of the repository:
 
-```
+```powershell
 iscc .\generate-installer.iss /DMyAppVersion=$VERSION
 ```
 

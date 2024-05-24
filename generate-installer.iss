@@ -19,8 +19,10 @@ AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
+AppMutex=InfoSec-Agent,InfoSec-Agent-Reporting-Page
 ArchitecturesAllowed=x64
 ArchitecturesInstallIn64BitMode=x64
+CloseApplications=yes
 DefaultDirName={autopf}\{#MyAppName}
 DisableProgramGroupPage=yes
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
@@ -29,6 +31,7 @@ OutputBaseFilename=InfoSec-Agent-{#MyAppVersion}-Setup
 OutputDir=.
 Compression=lzma
 SetupIconFile=.\reporting-page\build\windows\icon.ico
+SetupMutex=InfoSec-Agent-Setup
 SolidCompression=yes
 UninstallDisplayIcon={app}\icon.ico
 WizardStyle=modern
@@ -56,6 +59,7 @@ Source: "{#SourcePath}\reporting-page\build\windows\icon.ico"; DestDir: "{app}";
 [Icons]
 Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; WorkingDir: "{app}"; IconFilename: "{app}\icon.ico"
 Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; WorkingDir: "{app}"; IconFilename: "{app}\icon.ico"; Tasks: desktopicon
+Name: "{userstartup}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; WorkingDir: "{app}"; IconFilename: "{app}\icon.ico"
 
 [Registry]
 Root: HKLM; Subkey: "Software\{#MyAppName}"; Flags: uninsdeletevalue uninsdeletekeyifempty

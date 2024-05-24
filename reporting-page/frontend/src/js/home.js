@@ -89,7 +89,7 @@ export function openHomePage() {
     getLocalization(localizationIds[i], staticHomePageContent[i]);
   }
 
-  document.getElementById('scan-now').addEventListener('click', () => scanTest());
+  document.getElementById('scan-now').addEventListener('click', () => scanTest(true));
 }
 
 

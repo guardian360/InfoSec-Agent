@@ -48,7 +48,7 @@ func HistoryChromium(browser string) checks.Check {
 	}
 
 	// Copy the database, so problems don't arise when the file gets locked
-	tempHistoryDB := filepath.Join(os.TempDir(), "tempHistoryDB.sqlite")
+	tempHistoryDB := filepath.Join(os.TempDir(), "tempHistoryDB"+browser+".sqlite")
 
 	// Clean up the temporary file when the function returns
 	defer func(name string) {
