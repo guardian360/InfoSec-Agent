@@ -91,7 +91,7 @@ export function openHomePage() {
     getLocalization(localizationIds[i], staticHomePageContent[i]);
   }
 
-  document.getElementById('scan-now').addEventListener('click', () => scanTest());
+  document.getElementById('scan-now').addEventListener('click', () => scanTest(true));
   document.getElementById('suggested-issue').addEventListener('click', () => suggestedIssue(''));
 }
 
@@ -122,6 +122,7 @@ export function suggestedIssue(type) {
 
   // Open the issue page of the issue with the highest severity
   openIssuePage(maxSeverityIssue.jsonkey, maxSeverityIssue.severity);
+  document.getElementById('scan-now').addEventListener('click', () => scanTest(true));
 }
 
 

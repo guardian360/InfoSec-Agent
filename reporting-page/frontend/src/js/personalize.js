@@ -1,4 +1,5 @@
 import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
+import {getLocalization} from './localize.js';
 
 /** Load the content of the Personalize page */
 export function openPersonalizePage() {
@@ -197,4 +198,13 @@ export function resetSettings() {
   const favicon = document.getElementById('favicon');
   favicon.href = logoPhoto;
   localStorage.setItem('theme', theme);
+}
+
+// Localize the static content of the personalize page
+const staticHomePageContent = [
+];
+const localizationIds = [
+];
+for (let i = 0; i < staticHomePageContent.length; i++) {
+  getLocalization(localizationIds[i], staticHomePageContent[i]);
 }

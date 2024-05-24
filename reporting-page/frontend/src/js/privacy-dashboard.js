@@ -192,7 +192,7 @@ export function openPrivacyDashboardPage() {
   const g = new Graph('interval-graph', rc);
   addGraphFunctions(g);
   document.getElementById('scan-now').addEventListener('click', async () => {
-    await scanTest();
+    await scanTest(true);
     rc = JSON.parse(sessionStorage.getItem('PrivacyRiskCounters'));
     adjustWithRiskCounters(rc, document);
     setMaxInterval(rc, document);
