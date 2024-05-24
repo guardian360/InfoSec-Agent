@@ -49,10 +49,11 @@ export function reloadPage() {
       break;
     case 7:
       openPersonalizePage();
+      break;
     case 8:
       const issueId = sessionStorage.getItem('issueId');
       const severity = sessionStorage.getItem('severity');
-      openIssuePage(issueId, severity)
+      openIssuePage(issueId, severity);
       break;
     default:
       logError('Invalid option selected in reloadPage()');

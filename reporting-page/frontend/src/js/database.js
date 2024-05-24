@@ -8,17 +8,14 @@ import {
 import * as rc from './risk-counters.js';
 import {updateRiskCounter} from './risk-counters.js';
 import data from '../databases/database.en-GB.json' assert { type: 'json' };
-let isFirstScan = true;
 
+let isFirstScan = true;
 /**
  * Initiates a scan and handles the result.
  *
  * @param {boolean} dialogPresent - Indicates whether a dialog is present during the scan.
  */
 export async function scanTest(dialogPresent) {
-
-/** Call ScanNow in backend and store result in sessionStorage */
-export async function scanTest() {
   try {
     await new Promise((resolve, reject) => {
       scanNowGo(dialogPresent)
@@ -71,7 +68,6 @@ async function setAllSeverities(input) {
   await setSeverities(result, '');
   await setSeverities(result, 'Security');
   await setSeverities(result, 'Privacy');
-
   if (isFirstScan) {
     openHomePage();
     isFirstScan = false;
