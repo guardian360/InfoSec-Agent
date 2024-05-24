@@ -4,9 +4,9 @@ import {openHomePage} from './home.js';
 import {openSecurityDashboardPage} from './security-dashboard.js';
 import {openPrivacyDashboardPage} from './privacy-dashboard.js';
 import {openIssuesPage} from './issues.js';
+import {openIssuePage} from './issue.js';
 import {openIntegrationPage} from './integration.js';
 import {ChangeLanguage as changeLanguage, LogError as logError} from '../../wailsjs/go/main/Tray.js';
-import * as runtime from '../../wailsjs/runtime/runtime.js';
 
 /**
  * Initiates a language update operation.
@@ -16,14 +16,12 @@ export async function updateLanguage() {
   await changeLanguage()
     .then(async () => {
       sessionStorage.setItem('languageChanged', JSON.stringify(true));
-      runtime.WindowReload();
+      reloadPage();
     })
     .catch((err) => {
       logError('Error changing language:' + err);
     });
 }
-/** Opens the settings page after window is reloaded after updateLanguage() is called */
-reloadPage();
 
 /** opens the page corresponding to the page set in sessionstorage */
 export function reloadPage() {
@@ -51,6 +49,11 @@ export function reloadPage() {
       break;
     case 7:
       openPersonalizePage();
+      break;
+    case 8:
+      const issueId = sessionStorage.getItem('issueId');
+      const severity = sessionStorage.getItem('severity');
+      openIssuePage(issueId, severity);
       break;
     default:
       logError('Invalid option selected in reloadPage()');

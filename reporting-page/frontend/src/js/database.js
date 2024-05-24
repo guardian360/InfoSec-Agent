@@ -8,6 +8,8 @@ import {
 import * as rc from './risk-counters.js';
 import {updateRiskCounter} from './risk-counters.js';
 import data from '../databases/database.en-GB.json' assert { type: 'json' };
+
+let isFirstScan = true;
 /**
  * Initiates a scan and handles the result.
  *
@@ -36,7 +38,6 @@ export async function scanTest(dialogPresent) {
 
     // Perform other actions after scanTest is complete
     windowShow();
-    windowMaximise();
     logPrint(sessionStorage.getItem('ScanResult'));
   } catch (err) {
     // Handle any errors that occurred during scanTest or subsequent actions
@@ -66,6 +67,11 @@ async function setAllSeverities(input) {
   await setSeverities(result, '');
   await setSeverities(result, 'Security');
   await setSeverities(result, 'Privacy');
+  if (isFirstScan) {
+    openHomePage();
+    windowMaximise();
+    isFirstScan = false;
+  }
 }
 
 /** Sets the severities collected from the database in session storage
@@ -88,7 +94,6 @@ async function setSeverities(input, type) {
         sessionStorage.getItem(type + 'RiskCounters') === undefined) {
       sessionStorage.setItem(type + 'RiskCounters',
         JSON.stringify(new rc.RiskCounters(high, medium, low, info, acceptable)));
-      openHomePage();
     } else {
       let riskCounter = JSON.parse(sessionStorage.getItem(type + 'RiskCounters'));
       riskCounter = updateRiskCounter(riskCounter, high, medium, low, info, acceptable);

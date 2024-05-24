@@ -9,6 +9,7 @@ import dataPt from '../databases/database.pt.json' assert { type: 'json' };
 import {openIssuesPage, getUserSettings} from './issues.js';
 import {getLocalization} from './localize.js';
 import {retrieveTheme} from './personalize.js';
+import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
 
 let stepCounter = 0;
 const issuesWithResultsShow =
@@ -62,7 +63,14 @@ export function previousSolutionStep(solutionText, solutionScreenshot, solution,
  */
 export async function openIssuePage(issueId, severity) {
   retrieveTheme();
+  closeNavigation(document.body.offsetWidth);
+  markSelectedNavigationItem('issue-button');
   stepCounter = 0;
+
+  // to reload on correct page
+  sessionStorage.setItem('savedPage', '8');
+  sessionStorage.setItem('issueId', issueId);
+  sessionStorage.setItem('severity', severity);
 
   const language = await getUserSettings();
   let currentIssue;
@@ -90,8 +98,8 @@ export async function openIssuePage(issueId, severity) {
     break;
   default:
     currentIssue = dataEnGB[issueId];
+    break;
   }
-
   // Check if the issue has no screenshots, if so, display that there is no issue (acceptable)
   if (severity == 0) {
     const pageContents = document.getElementById('page-contents');
