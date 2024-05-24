@@ -455,10 +455,10 @@ func Popup(scanResult []checks.Check, path string) error {
 
 	// Create a notification to inform the user that the scan is complete
 	notification := toast.Notification{
-		AppID:   "InfoSec Agent",
-		Title:   "Scan Completed",
-		Message: resultMessage,
-		// Icon:    "",
+		AppID:               "InfoSec Agent",
+		Title:               "Scan Completed",
+		Message:             resultMessage,
+		Icon:                "C:/Program Files/InfoSec-Agent/icon128.ico",
 		ActivationArguments: "infosecagent:",
 		Actions: []toast.Action{
 			{Type: "protocol", Label: "Open Reporting Page", Arguments: "infosecagent:"},

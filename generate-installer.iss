@@ -54,6 +54,7 @@ Source: "{#SourcePath}\backend\localization\localizations_src\*"; DestDir: "{app
 Source: "{#SourcePath}\reporting-page\frontend\src\assets\images\*"; DestDir: "{app}\reporting-page\frontend\src\assets\images\"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "{#SourcePath}\reporting-page\database.db"; DestDir: "{app}\reporting-page"; Flags: ignoreversion
 Source: "{#SourcePath}\reporting-page\build\windows\icon.ico"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#SourcePath}\reporting-page\build\icon128.ico"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
