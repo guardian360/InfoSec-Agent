@@ -32,7 +32,7 @@ mockChart();
 
 // Mock scanTest
 jest.unstable_mockModule('../src/js/database.js', () => ({
-    scanTest: jest.fn(),
+  scanTest: jest.fn(),
 }));
 
 // Mock Localize function
@@ -62,11 +62,12 @@ describe('Home page', function() {
     await homepage.openHomePage();
 
     // Assert
-    test.value(document.getElementsByClassName('lang-piechart-header')[0].innerHTML).isEqualTo('Dashboard.RiskLevelDistribution');
+    test.value(
+      document.getElementsByClassName('lang-piechart-header')[0].innerHTML).isEqualTo('Dashboard.RiskLevelDistribution',
+    );
   });
   it('suggestedIssue should open the issue page of highest risk issue', async function() {
     // Arrange
-    const homepage = await import('../src/js/home.js');
     let issues = [];
     issues = [
       {id: 1, severity: 4, jsonkey: 10},

@@ -95,8 +95,8 @@ export function openHomePage() {
   document.getElementById('suggested-issue').addEventListener('click', () => suggestedIssue(''));
 }
 
-/** Opens the issue page of the issue with highest risk level 
- * 
+/** Opens the issue page of the issue with highest risk level
+ *
  * @param {string} type Type of issue to open the issue page of (e.g. 'Security', 'Privacy', and '' for all types)
 */
 export function suggestedIssue(type) {

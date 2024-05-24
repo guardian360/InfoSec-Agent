@@ -254,7 +254,6 @@ describe('Security dashboard', function() {
   });
   it('suggestedIssue should open the issue page of highest risk security issue', async function() {
     // Arrange
-    const securityDashboard = await import('../src/js/security-dashboard.js');
     let issues = [];
     issues = [
       {id: 1, severity: 4, jsonkey: 10},

@@ -123,7 +123,6 @@ describe('Privacy dashboard page', function() {
   });
   it('suggestedIssue should open the issue page of highest risk privacy issue', async function() {
     // Arrange
-    const privacyDashboard = await import('../src/js/privacy-dashboard.js');
     let issues = [];
     issues = [
       {id: 1, severity: 4, jsonkey: 10},
