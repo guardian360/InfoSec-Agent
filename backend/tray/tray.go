@@ -282,9 +282,13 @@ func ChangeScanInterval(testInput ...string) {
 	if len(testInput) > 0 {
 		res = testInput[0]
 	} else {
+		scanInterval := usersettings.LoadUserSettings().ScanInterval
+
 		// Get user input by creating a dialog window
 		var err error
-		res, err = zenity.Entry("Enter the scan interval (in hours):", zenity.Title("Change Scan Interval"),
+		res, err = zenity.Entry("Enter the scan interval (in hours):",
+			zenity.Title("Change Scan Interval"),
+			zenity.EntryText(strconv.Itoa(scanInterval)),
 			zenity.DefaultItems("24"))
 		if err != nil {
 			logger.Log.ErrorWithErr("Error creating dialog:", err)
