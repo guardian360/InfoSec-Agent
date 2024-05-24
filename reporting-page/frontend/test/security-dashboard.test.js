@@ -27,6 +27,7 @@ global.window = dom.window;
 
 // Mock sessionStorage
 global.sessionStorage = storageMock;
+global.localStorage = storageMock;
 
 // Mock often used page functions
 mockPageFunctions();
@@ -45,6 +46,7 @@ jest.unstable_mockModule('../src/js/database.js', () => ({
 // Mock Localize function
 jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
   Localize: jest.fn().mockImplementation((input) => mockGetLocalization(input)),
+  LoadUserSettings: jest.fn(),
 }));
 
 // test cases
