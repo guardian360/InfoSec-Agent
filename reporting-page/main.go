@@ -132,7 +132,7 @@ func main() {
 	// Create a new instance of the app and tray struct
 	app := NewApp()
 	systemTray := NewTray(logger.Log)
-	database := NewDatabase()
+	database := NewDataBase()
 	customLogger := logger.Log
 	localization.Init("../backend/")
 	lang := usersettings.LoadUserSettings().Language

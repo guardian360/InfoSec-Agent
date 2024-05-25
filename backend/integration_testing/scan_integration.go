@@ -4,7 +4,6 @@ import (
 	"testing"
 
 	apiconnection "github.com/InfoSec-Agent/InfoSec-Agent/backend/api_connection"
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/database"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/scan"
@@ -39,7 +38,7 @@ func TestIntegrationScanSuccess(t *testing.T) {
 	require.Len(t, totalLength, len(checks))
 
 	// Get database data
-	data, err := database.GetData(checks, "../../reporting-page/database.db")
+	data, err := scan.GetDataBaseData(checks, "../../reporting-page/database.db")
 	if err != nil {
 		logger.Log.ErrorWithErr("Error getting database data during test:", err)
 		return

@@ -8,8 +8,8 @@ import (
 	"strconv"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/database"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/scan"
 )
 
 // GameState is a struct that represents the state of the gamification.
@@ -48,7 +48,7 @@ func PointCalculation(gs GameState, securityChecks []func() checks.Check) (GameS
 			logger.Log.ErrorWithErr("Error opening database:", err)
 			return gs, result.Error
 		}
-		sev, err := database.GetSeverity(db, result.IssueID, result.ResultID)
+		sev, err := scan.GetSeverity(db, result.IssueID, result.ResultID)
 
 		if err != nil {
 			logger.Log.ErrorWithErr("Error getting severity:", err)
