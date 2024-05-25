@@ -16,7 +16,7 @@ import (
 //
 // No return values.
 func TestPointCalculation(t *testing.T) {
-	securityChecks := []func() checks.Check{}
+	securityChecks := []checks.Check{}
 
 	tests := []struct {
 		name string

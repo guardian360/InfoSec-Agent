@@ -24,32 +24,26 @@ type GameState struct {
 //
 // Parameters:
 //   - gs (GameState): The current game state, which includes the user's points and lighthouse state.
-//   - securityChecks ([] func() checks.Check): A slice of check functions, which will be executed to calculate the points amount.
+//   - scanResults ([]checks.Check): The results of the scans.
 //
 // TO DO: points based on more factors than only the checks.
 //
 // Returns:
 //   - GameState: The updated game state with the new points amount.
-func PointCalculation(gs GameState, securityChecks []func() checks.Check) (GameState, error) {
+func PointCalculation(gs GameState, scanResults []checks.Check) (GameState, error) {
 	gs.Points = 0
+	db, err := sql.Open("sqlite", "../../reporting-page/database.db")
+	if err != nil {
+		logger.Log.ErrorWithErr("Error opening database:", err)
+		return gs, err
+	}
 
-	for _, check := range securityChecks {
-		result := check()
-		result.ResultID = 0
+	for _, result := range scanResults {
 		if result.Error != nil {
-			logger.Log.ErrorWithErr("Error performing security checks", result.Error)
-			return gs, result.Error
-		}
-		db, err := sql.Open("sqlite", "reporting-page/database.db")
-
-		// Note that due to opening of non-existent database, it will create one, so there can not be an error.
-		// This is a potential bug, as the database is created in the current directory, which is not the intended location.
-		if err != nil {
-			logger.Log.ErrorWithErr("Error opening database:", err)
+			logger.Log.ErrorWithErr("Error reading scan result", result.Error)
 			return gs, result.Error
 		}
 		sev, err := scan.GetSeverity(db, result.IssueID, result.ResultID)
-
 		if err != nil {
 			logger.Log.ErrorWithErr("Error getting severity:", err)
 			return gs, result.Error
@@ -60,7 +54,6 @@ func PointCalculation(gs GameState, securityChecks []func() checks.Check) (GameS
 		if sev != 4 {
 			gs.Points += sev
 		}
-
 		gs.PointsHistory = append(gs.PointsHistory, gs.Points)
 	}
 	return gs, nil
