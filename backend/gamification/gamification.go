@@ -47,7 +47,7 @@ func PointCalculation(gs GameState, scanResults []checks.Check) (GameState, erro
 		sev, err := scan.GetSeverity(db, result.IssueID, result.ResultID)
 		if err != nil {
 			logger.Log.ErrorWithErr("Error getting severity:", err)
-			return gs, result.Error
+			return gs, err
 		}
 		logger.Log.Info("Issue ID: " + strconv.Itoa(result.IssueID) + " Severity: " + strconv.Itoa(sev))
 
