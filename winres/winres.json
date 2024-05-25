@@ -1,0 +1,30 @@
+{
+  "RT_GROUP_ICON": {
+    "#1": {
+      "0000": "..\\reporting-page\\build\\windows\\icon.ico"
+    }
+  },
+  "RT_MANIFEST": {
+    "#1": {
+      "0409": {
+        "description": "Information Security Agent",
+        "minimum-os": "win10"
+      }
+    }
+  },
+  "RT_VERSION": {
+    "#1": {
+      "0000": {
+        "info": {
+          "0409": {
+            "Comments": "",
+            "CompanyName": "Little Brother",
+            "FileDescription": "Information Security Agent",
+            "OriginalFilename": "InfoSec-Agent.exe",
+            "ProductName": "InfoSec-Agent"
+          }
+        }
+      }
+    }
+  }
+}

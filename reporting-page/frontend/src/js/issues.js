@@ -191,7 +191,7 @@ export async function fillTable(tbody, issues, isIssue) {
         if (issue.severity != '0') {
           const row = document.createElement('tr');
           row.innerHTML = `
-              <td class="issue-link">${currentIssue.Name}</td>
+              <td class="issue-link" data-severity="${issue.severity}">${currentIssue.Name}</td>
               <td>${currentIssue.Type}</td>
               <td>${toRiskLevel(issue.severity)}</td>
             `;
@@ -204,7 +204,7 @@ export async function fillTable(tbody, issues, isIssue) {
         if (issue.severity == '0') {
           const row = document.createElement('tr');
           row.innerHTML = `
-              <td class="issue-link">${currentIssue.Name}</td>
+              <td class="issue-link" data-severity="${issue.severity}">${currentIssue.Name}</td>
               <td>${currentIssue.Type}</td>
             `;
           row.cells[0].id = issue.jsonkey;
@@ -217,7 +217,7 @@ export async function fillTable(tbody, issues, isIssue) {
   // Add links to issue information pages
   const issueLinks = document.querySelectorAll('.issue-link');
   issueLinks.forEach((link) => {
-    link.addEventListener('click', () => openIssuePage(link.id));
+    link.addEventListener('click', () => openIssuePage(link.id, link.getAttribute('data-severity')));
   });
 
   // Add buttons to sort on columns

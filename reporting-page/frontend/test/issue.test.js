@@ -43,7 +43,17 @@ jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
 // Mock openIssuesPage
 jest.unstable_mockModule('../src/js/issues.js', () => ({
   openIssuesPage: jest.fn(),
-  getUserSettings: jest.fn().mockImplementation(() => 1),
+  getUserSettings: jest.fn().mockImplementationOnce(() => 1)
+    .mockImplementationOnce(() => 1)
+    .mockImplementationOnce(() => 0)
+    .mockImplementationOnce(() => 1)
+    .mockImplementationOnce(() => 2)
+    .mockImplementationOnce(() => 3)
+    .mockImplementationOnce(() => 4)
+    .mockImplementationOnce(() => 5)
+    .mockImplementationOnce(() => 6)
+    .mockImplementationOnce(() => 7)
+    .mockImplementation(() => 1),
 }));
 
 // Mock sessionStorage
@@ -57,7 +67,7 @@ describe('Issue page', function() {
     const currentIssue = data[nonIssueID];
 
     // Act
-    await issue.openIssuePage(nonIssueID);
+    await issue.openIssuePage(nonIssueID, 0);
     const name = document.getElementsByClassName('issue-name')[0].innerHTML;
     const description = document.getElementById('description').innerHTML;
     const solution = document.getElementById('solution-text').innerHTML;
@@ -174,6 +184,38 @@ describe('Issue page', function() {
     test.value(solutionScreenshot.src).isEqualTo(currentIssue.Screenshots[2]);
   });
 
+  const localizations =[
+    '../src/databases/database.de.json',
+    '../src/databases/database.en-GB.json',
+    '../src/databases/database.en-US.json',
+    '../src/databases/database.es.json',
+    '../src/databases/database.fr.json',
+    '../src/databases/database.nl.json',
+    '../src/databases/database.pt.json',
+    '../src/databases/database.en-GB.json',
+  ];
+
+  it('openIssuePage should open the right localized issue database with localizations', async function() {
+    // Arrange
+    const issue = await import('../src/js/issue.js');
+
+    localizations.forEach(async (database, index) => {
+      // Act
+      const data = await import(database, {assert: {type: 'json'}});
+      currentIssue = data.default[issueID];
+
+      await issue.openIssuePage(issueID);
+      const name = document.getElementsByClassName('issue-name')[0].innerHTML;
+      const description = document.getElementById('information').nextElementSibling.innerHTML;
+      const solution = document.getElementById('solution-text').innerHTML;
+
+      // Assert
+      test.value(name).isEqualTo(currentIssue.Name);
+      test.value(description).isEqualTo(currentIssue.Information);
+      test.value(htmlDecode(solution)).isEqualTo('1. ' + currentIssue.Solution[0]);
+    });
+  });
+
   // Mock scan results for the parseShowResult function
   const issueResultIds = [
     [1, 1],
@@ -228,10 +270,9 @@ describe('Issue page', function() {
       test.value(description).isEqualTo(currentIssue.Information);
       test.value(htmlDecode(solution)).isEqualTo('1. ' + currentIssue.Solution[0]);
     });
-  });/*
+  });
   it('parseShowResult fills the page with the correct structure for specific results', async function() {
     // Arrange
-    const issue = await import('../src/js/issue.js');
     // expectedFindings should be changed if the structure for specific results is changed in the code
     const expectedFindings = [
       '<li>process: p, port: 1, 2, 3</li><li>SYSTEM</li><li>CIS registry 1</li>' +
@@ -249,48 +290,49 @@ describe('Issue page', function() {
       '        <td>CIS registry 2</td></tr></tbody>',
     ];
 
+    // Assert
+    await testParseShowResult('11', expectedFindings[0]);
+    await testParseShowResult('21', expectedFindings[0]);
+    await testParseShowResult('60', expectedFindings[0]);
+    await testParseShowResult('70', expectedFindings[0]);
+    await testParseShowResult('80', expectedFindings[0]);
+    await testParseShowResult('90', expectedFindings[0]);
+    await testParseShowResult('100', expectedFindings[0]);
+    await testParseShowResult('110', expectedFindings[1]);
+    await testParseShowResult('160', expectedFindings[2]);
+    await testParseShowResult('173', expectedFindings[0]);
+    await testParseShowResult('201', expectedFindings[0]);
+    await testParseShowResult('230', expectedFindings[0]);
+    await testParseShowResult('271', expectedFindings[3]);
+    await testParseShowResult('311', expectedFindings[0]);
+    await testParseShowResult('320', expectedFindings[4]);
+  });
+
+  /** helper function for testing the correct structure of parseShowResult
+   *
+   * @param {*} jsonkey key of issue being tested
+   * @param {string} expectedFinding expected result found in the resultline part of parseShowResult
+   */
+  async function testParseShowResult(jsonkey, expectedFinding) {
+    // Arrange
+    const issue = await import('../src/js/issue.js');
     sessionStorage.setItem('ScanResult', JSON.stringify(mockResult));
 
-    mockResult.forEach((result, index) => {
-      const jsonkey = result.issue_id.toString() + result.result_id.toString();
-      currentIssue = data[jsonkey];
+    // Act
+    await issue.openIssuePage(jsonkey);
+    let findings = '';
+    if (jsonkey == 160) {
+      findings = document.getElementById('description').innerHTML;
+    } else if (jsonkey == 320) {
+      findings = document.getElementsByClassName('issues-table')[0].innerHTML;
+    } else {
+      findings = document.getElementById('description').nextElementSibling.innerHTML;
+    }
 
-      // Act
-      issue.openIssuePage(jsonkey);
-      console.log(jsonkey)
-      console.log(document.getElementById('description').nextElementSibling.innerHTML)
-      if (index < 7 || (index > 8 && index < 12) || index == 13) {
-        // called to generateBulletList and permissionShowResults
-        const findings = document.getElementById('description').nextElementSibling.innerHTML;
-        console.log(findings);
+    // Assert
+    test.value(findings).isEqualTo(expectedFinding);
+  }
 
-        // Assert
-        test.value(findings).isEqualTo(expectedFindings[0]);
-      } else if (index == 7) {
-        // called to processPortsTable
-        const findings = document.getElementById('description').nextElementSibling.innerHTML;
-
-        // Assert
-        test.value(findings).isEqualTo(expectedFindings[1]);
-      } else if (index == 8) {
-        const findings = document.getElementById('description').innerHTML;
-
-        // Assert
-        test.value(findings).isEqualTo(expectedFindings[2]);
-      } else if (index == 12) {
-        // called to cookiesTable
-        const findings = document.getElementById('description').nextElementSibling.innerHTML;
-
-        // Assert
-        test.value(findings).isEqualTo(expectedFindings[3]);
-      } else {
-        // called to cisregristryTable
-        const findings = document.getElementsByClassName('issues-table')[0].innerHTML;
-        // Assert
-        test.value(findings).isEqualTo(expectedFindings[4]);
-      }
-    });
-  });*/
   it('parseShowResult keeps findings empty if the issueID is not in the issuesWithResultsShow list', async function() {
     // Arrange
     const issue = await import('../src/js/issue.js');
@@ -327,3 +369,5 @@ describe('Issue page', function() {
     test.value(checked).isEqualTo(true);
   });
 });
+
+
