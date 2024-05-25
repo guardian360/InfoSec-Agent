@@ -73,12 +73,9 @@ func ExtensionsChromium(browser string, getter browsers.DefaultDirGetter, getter
 //
 // Returns:
 //   - A string representing the path to the browser's directory.
-//   - An integer representing the ID the check.
+//   - An integer representing the ID of the check.
 //
-// This function works by checking the provided browser name against known browser names. If the browser is "Chrome",
-// the function returns the path to the Chrome directory and the ID of Chrome. If the browser is "Edge",
-// the function returns the path to the Edge directory and the ID of Edge. If the browser is unknown, the function
-// returns an empty string and 0.
+// If the browser is unknown/unsupported, the function returns an empty string and 0.
 func GetBrowserPathAndIDExtension(browser string) (string, int) {
 	if browser == browsers.Chrome {
 		return browsers.ChromePath, checks.ExtensionChromiumID

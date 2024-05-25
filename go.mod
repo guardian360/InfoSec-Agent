@@ -10,7 +10,7 @@ require (
 	github.com/jarcoal/httpmock v1.3.1
 	github.com/ncruces/zenity v0.10.12
 	github.com/nicksnyder/go-i18n/v2 v2.4.0
-	github.com/pkg/errors v0.9.1
+	github.com/rodolfoag/gow32 v0.0.0-20230512144032-1e896a3c51aa
 	github.com/stretchr/testify v1.9.0
 	golang.org/x/net v0.24.0
 	golang.org/x/sys v0.19.0
@@ -41,7 +41,7 @@ require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/dustin/go-humanize v1.0.1 // indirect
 	github.com/getlantern/context v0.0.0-20220418194847-3d5e7a086201 // indirect
-	github.com/getlantern/errors v1.0.4
+	github.com/getlantern/errors v1.0.4 // indirect
 	github.com/getlantern/golog v0.0.0-20230503153817-8e72de7e0a65 // indirect
 	github.com/getlantern/hex v0.0.0-20220104173244-ad7e4b9194dc // indirect
 	github.com/getlantern/hidden v0.0.0-20220104173330-f221c5a24770 // indirect

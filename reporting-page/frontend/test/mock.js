@@ -221,6 +221,11 @@ export function mockOpenPageFunctions() {
     openPrivacyDashboardPage: jest.fn(),
   }));
 
+  // Mock openIssuePage
+  jest.unstable_mockModule('../src/js/issue.js', () => ({
+    openIssuePage: jest.fn(),
+  }));
+
   // Mock openIssuesPage
   jest.unstable_mockModule('../src/js/issues.js', () => ({
     openIssuesPage: jest.fn(),

@@ -8,11 +8,17 @@ import {
 import * as rc from './risk-counters.js';
 import {updateRiskCounter} from './risk-counters.js';
 import data from '../databases/database.en-GB.json' assert { type: 'json' };
-/** Call ScanNow in backend and store result in sessionStorage */
-export async function scanTest() {
+
+let isFirstScan = true;
+/**
+ * Initiates a scan and handles the result.
+ *
+ * @param {boolean} dialogPresent - Indicates whether a dialog is present during the scan.
+ */
+export async function scanTest(dialogPresent) {
   try {
     await new Promise((resolve, reject) => {
-      scanNowGo()
+      scanNowGo(dialogPresent)
         .then(async (scanResult) => {
           // Handle the scan result
           // For example, save it in session storage
@@ -32,7 +38,6 @@ export async function scanTest() {
 
     // Perform other actions after scanTest is complete
     windowShow();
-    windowMaximise();
     logPrint(sessionStorage.getItem('ScanResult'));
   } catch (err) {
     // Handle any errors that occurred during scanTest or subsequent actions
@@ -43,7 +48,7 @@ export async function scanTest() {
 // Check if scanTest has already been called before
 if (sessionStorage.getItem('scanTest') === null || sessionStorage.getItem('scanTest') == undefined) {
   // Call scanTest() only if it hasn't been called before
-  scanTest().then((r) => {});
+  scanTest(false).then((r) => {});
 
   // Set the flag in sessionStorage to indicate that scanTest has been called
   sessionStorage.setItem('scanTest', 'called');
@@ -62,6 +67,11 @@ async function setAllSeverities(input) {
   await setSeverities(result, '');
   await setSeverities(result, 'Security');
   await setSeverities(result, 'Privacy');
+  if (isFirstScan) {
+    openHomePage();
+    windowMaximise();
+    isFirstScan = false;
+  }
 }
 
 /** Sets the severities collected from the database in session storage
@@ -84,7 +94,6 @@ async function setSeverities(input, type) {
         sessionStorage.getItem(type + 'RiskCounters') === undefined) {
       sessionStorage.setItem(type + 'RiskCounters',
         JSON.stringify(new rc.RiskCounters(high, medium, low, info, acceptable)));
-      openHomePage();
     } else {
       let riskCounter = JSON.parse(sessionStorage.getItem(type + 'RiskCounters'));
       riskCounter = updateRiskCounter(riskCounter, high, medium, low, info, acceptable);

@@ -2,7 +2,7 @@ import 'jsdom-global/register.js';
 import test from 'unit.js';
 import {JSDOM} from 'jsdom';
 import {jest} from '@jest/globals';
-import data from '../src/database.json' assert { type: 'json' };
+import data from '../src/databases/database.en-GB.json' assert { type: 'json' };
 import {mockPageFunctions, mockGetLocalization, clickEvent, storageMock} from './mock.js';
 
 global.TESTING = true;
@@ -92,6 +92,7 @@ describe('Issue page', function() {
 
   // from here on issueID 160 is used for tests up to parseShowResults tests
   const issueID = 160;
+  const severity = 2;
   let currentIssue = data[issueID];
 
   it('openIssuesPage should add the right info about the issue to the page-contents', async function() {
@@ -99,7 +100,7 @@ describe('Issue page', function() {
     const issue = await import('../src/js/issue.js');
 
     // Act
-    await issue.openIssuePage(issueID);
+    await issue.openIssuePage(issueID, severity);
     const name = document.getElementsByClassName('issue-name')[0].innerHTML;
     const description = document.getElementById('information').nextElementSibling.innerHTML;
     const solution = document.getElementById('solution-text').innerHTML;
@@ -184,27 +185,27 @@ describe('Issue page', function() {
     test.value(solutionScreenshot.src).isEqualTo(currentIssue.Screenshots[2]);
   });
 
-  const localizations =[
-    '../src/databases/database.de.json',
-    '../src/databases/database.en-GB.json',
-    '../src/databases/database.en-US.json',
-    '../src/databases/database.es.json',
-    '../src/databases/database.fr.json',
-    '../src/databases/database.nl.json',
-    '../src/databases/database.pt.json',
-    '../src/databases/database.en-GB.json',
-  ];
 
   it('openIssuePage should open the right localized issue database with localizations', async function() {
     // Arrange
     const issue = await import('../src/js/issue.js');
 
-    localizations.forEach(async (database, index) => {
+    const localizations =[
+      {path: '../src/databases/database.de.json', lang: 0},
+      {path: '../src/databases/database.en-GB.json', lang: 1},
+      {path: '../src/databases/database.en-US.json', lang: 2},
+      {path: '../src/databases/database.es.json', lang: 3},
+      {path: '../src/databases/database.fr.json', lang: 4},
+      {path: '../src/databases/database.nl.json', lang: 5},
+      {path: '../src/databases/database.pt.json', lang: 6},
+      {path: '../src/databases/database.en-GB.json', lang: 999},
+    ];
+    for (const localization of localizations) {
       // Act
-      const data = await import(database, {assert: {type: 'json'}});
-      currentIssue = data.default[issueID];
+      const data = await import(localization.path, {assert: {type: 'json'}});
+      const currentIssue = data.default[issueID];
+      await issue.openIssuePage(issueID, severity);
 
-      await issue.openIssuePage(issueID);
       const name = document.getElementsByClassName('issue-name')[0].innerHTML;
       const description = document.getElementById('information').nextElementSibling.innerHTML;
       const solution = document.getElementById('solution-text').innerHTML;
@@ -213,7 +214,7 @@ describe('Issue page', function() {
       test.value(name).isEqualTo(currentIssue.Name);
       test.value(description).isEqualTo(currentIssue.Information);
       test.value(htmlDecode(solution)).isEqualTo('1. ' + currentIssue.Solution[0]);
-    });
+    }
   });
 
   // Mock scan results for the parseShowResult function
@@ -260,7 +261,7 @@ describe('Issue page', function() {
       currentIssue = data[jsonkey];
 
       // Act
-      await issue.openIssuePage(jsonkey);
+      await issue.openIssuePage(jsonkey, severity);
       const name = document.getElementsByClassName('issue-name')[0].innerHTML;
       const description = document.getElementById('information').nextElementSibling.innerHTML;
       const solution = document.getElementById('solution-text').innerHTML;
@@ -319,7 +320,7 @@ describe('Issue page', function() {
     sessionStorage.setItem('ScanResult', JSON.stringify(mockResult));
 
     // Act
-    await issue.openIssuePage(jsonkey);
+    await issue.openIssuePage(jsonkey, severity);
     let findings = '';
     if (jsonkey == 160) {
       findings = document.getElementById('description').innerHTML;

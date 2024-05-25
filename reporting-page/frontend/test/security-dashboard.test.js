@@ -27,6 +27,7 @@ global.window = dom.window;
 
 // Mock sessionStorage
 global.sessionStorage = storageMock;
+global.localStorage = storageMock;
 
 // Mock often used page functions
 mockPageFunctions();
@@ -45,6 +46,12 @@ jest.unstable_mockModule('../src/js/database.js', () => ({
 // Mock Localize function
 jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
   Localize: jest.fn().mockImplementation((input) => mockGetLocalization(input)),
+  LoadUserSettings: jest.fn(),
+}));
+
+// Mock openIssuesPage
+jest.unstable_mockModule('../src/js/issue.js', () => ({
+  openIssuePage: jest.fn(),
 }));
 
 // test cases
@@ -244,5 +251,24 @@ describe('Security dashboard', function() {
 
     // assert
     test.value(dom.window.document.getElementById('graph-interval').max).isEqualTo(mockRiskCounters.count);
+  });
+  it('suggestedIssue should open the issue page of highest risk security issue', async function() {
+    // Arrange
+    let issues = [];
+    issues = [
+      {id: 1, severity: 4, jsonkey: 10},
+      {id: 5, severity: 1, jsonkey: 51},
+      {id: 15, severity: 0, jsonkey: 150},
+      {id: 4, severity: 2, jsonkey: 41},
+    ];
+    sessionStorage.setItem('DataBaseData', JSON.stringify(issues));
+
+    const issue = await import('../src/js/issue.js');
+    const button = document.getElementById('suggested-issue');
+    const openIssuePageMock = jest.spyOn(issue, 'openIssuePage');
+
+    // Assert
+    button.dispatchEvent(clickEvent);
+    expect(openIssuePageMock).toHaveBeenCalled();
   });
 });
