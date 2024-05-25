@@ -31,6 +31,7 @@ type GameState struct {
 // Returns:
 //   - GameState: The updated game state with the new points amount.
 func PointCalculation(gs GameState, scanResults []checks.Check) (GameState, error) {
+	var err error
 	gs.Points = 0
 	db, err := sql.Open("sqlite", "../../reporting-page/database.db")
 	if err != nil {
