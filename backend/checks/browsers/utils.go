@@ -6,6 +6,7 @@ package browsers
 
 import (
 	"context"
+	"errors"
 	"io"
 	"net/http"
 	"os"
@@ -119,6 +120,16 @@ func (m MockProfileFinder) FirefoxFolder() ([]string, error) {
 	return m.MockFirefoxFolder()
 }
 
+// PhishingDomainGetter is an interface that wraps the GetPhishingDomains method.
+type PhishingDomainGetter interface {
+	// GetPhishingDomains retrieves a list of active phishing domains from a remote database.
+	GetPhishingDomains() ([]string, error)
+}
+
+// RealPhishingDomainGetter is a struct that implements the PhishingDomainGetter interface.
+// It provides the real implementation of the GetPhishingDomains method.
+type RealPhishingDomainGetter struct{}
+
 // GetPhishingDomains retrieves a list of active phishing domains from a remote database.
 //
 // This function sends a GET request to the URL of the phishing database hosted on GitHub. It reads the response body,
@@ -127,14 +138,16 @@ func (m MockProfileFinder) FirefoxFolder() ([]string, error) {
 //
 // Returns:
 //   - []string: A slice containing the phishing domains. If an error occurs during the retrieval or parsing of the domains, an empty slice is returned.
-func GetPhishingDomains() []string {
+//   - error: An error object that wraps any error that occurs during the retrieval of the phishing domains. If the domains are retrieved successfully, it returns nil.
+func (r RealPhishingDomainGetter) GetPhishingDomains() ([]string, error) {
 	// Get the phishing domains from up-to-date GitHub list
 	client := &http.Client{}
-	url := "https://raw.githubusercontent.com/mitchellkrogza/Phishing.Database/master/phishing-domains-ACTIVE.txt"
+	url := "https://raw.githubusercontent.com/mitchellkrogza/Phishing.Database/master/ALL-phishing-links.txt"
 	req, err := http.NewRequestWithContext(context.Background(), http.MethodGet, url, nil)
 	req.Header.Add("User-Agent", "Mozilla/5.0")
 	if err != nil {
 		logger.Log.FatalWithErr("Error creating HTTP request:", err)
+		return nil, err
 	}
 	resp, err := client.Do(req)
 	defer func(Body io.ReadCloser) {
@@ -146,14 +159,22 @@ func GetPhishingDomains() []string {
 
 	if resp.StatusCode != http.StatusOK {
 		logger.Log.Printf("HTTP request failed with status code: %d", resp.StatusCode)
+		return nil, errors.New("HTTP request failed")
 	}
 
 	// Parse the response of potential scam domains and split it into a list of domains
 	scamDomainsResponse, err := io.ReadAll(resp.Body)
 	if err != nil {
 		logger.Log.ErrorWithErr("Error reading response body:", err)
+		return nil, err
 	}
-	return strings.Split(string(scamDomainsResponse), "\n")
+
+	if len(scamDomainsResponse) == 0 {
+		logger.Log.ErrorWithErr("Error: Response body is empty", errors.New("no Phising domains list found online"))
+		return nil, errors.New("no Phising domains list found online")
+	}
+
+	return strings.Split(string(scamDomainsResponse), "\n"), nil
 }
 
 // CopyFile is a utility function that copies a file from a source path to a destination path.

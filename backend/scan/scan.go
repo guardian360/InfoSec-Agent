@@ -89,7 +89,9 @@ var SecurityChecks = []func() checks.Check{
 	},
 	func() checks.Check { return devices.ExternalDevices(executor) },
 	func() checks.Check { return windows.Advertisement(mocking.LocalMachine) },
-	func() checks.Check { return chromium.HistoryChromium("Chrome") },
+	func() checks.Check {
+		return chromium.HistoryChromium("Chrome", browsers.RealDefaultDirGetter{}, chromium.RealCopyDBGetter{}, chromium.RealQueryDatabaseGetter{}, chromium.RealProcessQueryResultsGetter{}, browsers.RealPhishingDomainGetter{})
+	},
 	func() checks.Check {
 		return chromium.ExtensionsChromium("Chrome", browsers.RealDefaultDirGetter{}, chromium.RealExtensionIDGetter{}, chromium.ChromeExtensionNameGetter{})
 	},
@@ -99,7 +101,9 @@ var SecurityChecks = []func() checks.Check{
 	func() checks.Check { return firefox.CookiesFirefox(browsers.RealProfileFinder{}) },
 	func() checks.Check { c, _ := firefox.ExtensionFirefox(browsers.RealProfileFinder{}); return c },
 	func() checks.Check { _, c := firefox.ExtensionFirefox(browsers.RealProfileFinder{}); return c },
-	func() checks.Check { return firefox.HistoryFirefox(browsers.RealProfileFinder{}) },
+	func() checks.Check {
+		return firefox.HistoryFirefox(browsers.RealProfileFinder{}, browsers.RealPhishingDomainGetter{})
+	},
 	func() checks.Check {
 		return firefox.SearchEngineFirefox(browsers.RealProfileFinder{}, false, nil, nil)
 	},
