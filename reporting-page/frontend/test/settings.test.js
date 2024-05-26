@@ -35,8 +35,19 @@ const dom = new JSDOM(`
           <div class="dropdown-content">
             <a id="personalize-button">Personalize page</a>
             <a id="language-button">Change Language</a>
+            <a id="windows-version-button" class="">Windows Version</a>
           </div>
         </div>
+      </div>
+    </div>
+    <div id="window-version-modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span id="close-windows-select" class="close">&times;</span>
+          <p>Select windows version</p>
+        </div>
+        <div id="windows-10"><a id="windows-10-button">Windows 10</a></div>
+        <div id="windows-11"><a id="windows-11-button">Windows 11</a></div>
       </div>
     </div>
     <div id="page-contents"></div>
@@ -75,6 +86,12 @@ jest.unstable_mockModule('../wailsjs/go/main/Tray.js', () => ({
   ChangeLanguage: jest.fn().mockImplementationOnce(() => mockChangeLanguage(true))
     .mockImplementation(() => mockChangeLanguage(false)),
   LogError: jest.fn(),
+}));
+
+// Mock scanTest
+jest.unstable_mockModule('../src/js/issues.js', () => ({
+  openIssuesPage: jest.fn(),
+  getUserSettings: jest.fn().mockImplementation(() => 1),
 }));
 
 // Mock session and localStorage
@@ -213,5 +230,55 @@ describe('Settings page', function() {
 
     // Assert
     expect(openPageMock).toHaveBeenCalled();
+  });
+  it('clicking the windows version button should call showWindowsVersion', async function() {
+    // Arrange
+    await import('../src/js/settings.js');
+    sessionStorage.setItem('WindowsVersion', '10');
+
+    // Act
+    document.getElementById('windows-version-button').dispatchEvent(clickEvent);
+    const modal = document.getElementById('window-version-modal');
+    const selected10 = document.getElementById('windows-10-button').classList.contains('selected');
+    const selected11 = document.getElementById('windows-11-button').classList.contains('selected');
+
+    // Arrange
+    test.value(modal.style.display == 'block').isTrue();
+    test.value(selected10).isTrue();
+    test.value(selected11).isFalse();
+  });
+  it('clicking on one of the windows versions selects it', async function() {
+    // Arrange
+    await import('../src/js/settings.js');
+    sessionStorage.setItem('WindowsVersion', '10');
+
+    // Act
+    document.getElementById('windows-10').dispatchEvent(clickEvent);
+    let selected10 = document.getElementById('windows-10-button').classList.contains('selected');
+    let selected11 = document.getElementById('windows-11-button').classList.contains('selected');
+    let version = sessionStorage.getItem('WindowsVersion');
+    let changed = sessionStorage.getItem('WindowsVersionChanged');
+
+    // Arrange
+    test.value(selected10).isTrue();
+    test.value(selected11).isFalse();
+    test.value(version).isEqualTo('10');
+    test.value(changed).isEqualTo('true');
+
+    // clear session storage
+    sessionStorage.removeItem('WindowsVersionChanged');
+
+    // Act
+    document.getElementById('windows-11').dispatchEvent(clickEvent);
+    selected10 = document.getElementById('windows-10-button').classList.contains('selected');
+    selected11 = document.getElementById('windows-11-button').classList.contains('selected');
+    version = sessionStorage.getItem('WindowsVersion');
+    changed = sessionStorage.getItem('WindowsVersionChanged');
+
+    // Arrange
+    test.value(selected10).isFalse();
+    test.value(selected11).isTrue();
+    test.value(version).isEqualTo('11');
+    test.value(changed).isEqualTo('true');
   });
 });
