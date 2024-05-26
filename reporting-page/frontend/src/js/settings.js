@@ -5,7 +5,6 @@ import {openSecurityDashboardPage} from './security-dashboard.js';
 import {openPrivacyDashboardPage} from './privacy-dashboard.js';
 import {openIssuePage} from './issue.js';
 import {openIssuesPage} from './issues.js';
-import {openIssuePage} from './issue.js';
 import {openIntegrationPage} from './integration.js';
 import {ChangeLanguage as changeLanguage, LogError as logError} from '../../wailsjs/go/main/Tray.js';
 
@@ -49,11 +48,6 @@ export function reloadPage() {
       break;
     case '7':
       openPersonalizePage();
-      break;
-    case 8:
-      const issueId = sessionStorage.getItem('issueId');
-      const severity = sessionStorage.getItem('severity');
-      openIssuePage(issueId, severity);
       break;
     default:
       try {

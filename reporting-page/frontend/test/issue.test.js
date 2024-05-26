@@ -120,7 +120,7 @@ describe('Issue page', function() {
 
     // Act
     issue.updateSolutionStep(solutionText, solutionScreenshot,
-      currentIssue.Solution, currentIssue.Screenshots, stepCounter);
+      currentIssue, stepCounter);
 
     // Assert
     test.value(htmlDecode(solutionText.innerHTML)).isEqualTo('1. ' + currentIssue.Solution[0]);
