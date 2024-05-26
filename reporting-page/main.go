@@ -16,6 +16,7 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/tray"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/usersettings"
+	"github.com/rodolfoag/gow32"
 	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/options"
 	"github.com/wailsapp/wails/v2/pkg/options/assetserver"
@@ -92,6 +93,14 @@ func (h *FileLoader) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 //
 // Returns: None. This function does not return a value as it is the entry point of the application.
 func main() {
+	// Create a mutex to ensure only one instance of the application is running
+	// If the mutex already exists, it means another instance of the application is running, so we exit
+	// This also ensures program is not running when uninstalling the application
+	_, mutexErr := gow32.CreateMutex("InfoSec-Agent-Reporting-Page")
+	if mutexErr != nil {
+		return
+	}
+
 	// Setup log file
 	logger.Setup("reporting-page-log.txt", 0, -1)
 	logger.Log.Info("Reporting page starting")
@@ -123,7 +132,7 @@ func main() {
 	// Create a new instance of the app and tray struct
 	app := NewApp()
 	systemTray := NewTray(logger.Log)
-	database := NewDataBase()
+	database := NewDatabase()
 	customLogger := logger.Log
 	localization.Init("../backend/")
 	lang := usersettings.LoadUserSettings().Language

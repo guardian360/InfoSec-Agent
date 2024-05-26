@@ -6,115 +6,18 @@ package scan
 import (
 	"encoding/json"
 	"fmt"
+	"runtime"
+	"sync"
 	"time"
 
 	apiconnection "github.com/InfoSec-Agent/InfoSec-Agent/backend/api_connection"
 
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/browsers"
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/devices"
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/network"
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/programs"
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/windows"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/usersettings"
 
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/cisregistrysettings"
-
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/browsers/chromium"
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/browsers/firefox"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
-	"golang.org/x/sys/windows/registry"
-
 	"github.com/ncruces/zenity"
 )
-
-var executor = &mocking.RealCommandExecutor{}
-
-// SecurityChecks is a slice of functions that return checks.Check objects.
-// Each function in the slice represents a different security or privacy check that the application can perform.
-// When the Scan function is called, it iterates over this slice and executes each check in turn.
-// The result of each check is then appended to the checkResults slice, which is returned by the Scan function.
-var SecurityChecks = []func() checks.Check{
-	func() checks.Check {
-		return programs.PasswordManager(programs.RealProgramLister{})
-	},
-	func() checks.Check {
-		return windows.Defender(mocking.LocalMachine, mocking.LocalMachine)
-	},
-	func() checks.Check {
-		return windows.LastPasswordChange(executor)
-	},
-	func() checks.Check {
-		return windows.LoginMethod(mocking.LocalMachine)
-	},
-	func() checks.Check {
-		return windows.Permission(checks.LocationID, "location", mocking.CurrentUser)
-	},
-	func() checks.Check {
-		return windows.Permission(checks.MicrophoneID, "microphone", mocking.CurrentUser)
-	},
-	func() checks.Check {
-		return windows.Permission(checks.WebcamID, "webcam", mocking.CurrentUser)
-	},
-	func() checks.Check {
-		return windows.Permission(checks.AppointmentsID, "appointments", mocking.CurrentUser)
-	},
-	func() checks.Check {
-		return windows.Permission(checks.ContactsID, "contacts", mocking.CurrentUser)
-	},
-	func() checks.Check {
-		return devices.Bluetooth(mocking.NewRegistryKeyWrapper(registry.LOCAL_MACHINE))
-	},
-	func() checks.Check {
-		return network.OpenPorts(executor, executor)
-	},
-	func() checks.Check { return windows.Outdated(executor) },
-	func() checks.Check {
-		return windows.SecureBoot(mocking.LocalMachine)
-	},
-	func() checks.Check {
-		return network.SmbCheck(executor)
-	},
-	func() checks.Check {
-		return windows.Startup(mocking.CurrentUser, mocking.LocalMachine, mocking.LocalMachine)
-	},
-	func() checks.Check {
-		return windows.GuestAccount(executor, executor,
-			executor, executor)
-	},
-	func() checks.Check { return windows.UACCheck(executor) },
-	func() checks.Check {
-		return windows.RemoteDesktopCheck(mocking.LocalMachine)
-	},
-	func() checks.Check { return devices.ExternalDevices(executor) },
-	func() checks.Check { return windows.Advertisement(mocking.LocalMachine) },
-	func() checks.Check {
-		return chromium.HistoryChromium("Chrome", browsers.RealDefaultDirGetter{}, chromium.RealCopyDBGetter{}, chromium.RealQueryDatabaseGetter{}, chromium.RealProcessQueryResultsGetter{}, browsers.RealPhishingDomainGetter{})
-	},
-	func() checks.Check {
-		return chromium.ExtensionsChromium("Chrome", browsers.RealDefaultDirGetter{}, chromium.RealExtensionIDGetter{}, chromium.ChromeExtensionNameGetter{})
-	},
-	func() checks.Check {
-		return chromium.SearchEngineChromium("Chrome", false, nil, browsers.RealDefaultDirGetter{})
-	},
-	func() checks.Check { return firefox.CookiesFirefox(browsers.RealProfileFinder{}) },
-	func() checks.Check { c, _ := firefox.ExtensionFirefox(browsers.RealProfileFinder{}); return c },
-	func() checks.Check { _, c := firefox.ExtensionFirefox(browsers.RealProfileFinder{}); return c },
-	func() checks.Check {
-		return firefox.HistoryFirefox(browsers.RealProfileFinder{}, browsers.RealPhishingDomainGetter{})
-	},
-	func() checks.Check {
-		return firefox.SearchEngineFirefox(browsers.RealProfileFinder{}, false, nil, nil)
-	},
-	func() checks.Check {
-		return cisregistrysettings.CISRegistrySettings(mocking.LocalMachine, mocking.UserProfiles)
-	},
-	func() checks.Check {
-		return windows.AutomaticLogin(mocking.LocalMachine)
-	},
-	func() checks.Check { return windows.AllowRemoteRPC(mocking.LocalMachine) },
-}
 
 // Scan executes all security/privacy checks, serializes the results to JSON, and returns a list of all found issues.
 //
@@ -130,34 +33,50 @@ var SecurityChecks = []func() checks.Check{
 //   - []checks.Check: A slice of Check objects representing all found issues.
 //   - error: An error object that describes the error (if any) that occurred while running the checks or serializing the results to JSON. If no error occurred, this value is nil.
 func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
+	dialogPresent := false
+	if dialog != nil {
+		dialogPresent = true
+	}
+
 	date := time.Now().Format(time.RFC3339)
 	// TODO: Replace with actual workstation ID and user
 	workStationID := 0
 	user := "user"
+
 	// Define all security/privacy checks that Scan() should execute
-	totalChecks := len(SecurityChecks)
+	totalChecks := 0
+	for _, checkSlice := range ChecksList {
+		totalChecks += len(checkSlice)
+	}
+
+	// Define a channel which serves as a queue for the checks to be executed
+	checksChan := make(chan func() checks.Check, totalChecks)
+	// Determine the amount of workers to use for concurrent execution of the checks based on the amount of available logical cores
+	workerAmount := runtime.NumCPU()
+	// Define a WaitGroup and a Mutex to synchronize the concurrent execution of the checks
+	// The WaitGroup is used to wait for all checks to complete before returning the results
+	// The Mutex is used to synchronize access to the checkResults slice and the progress dialog
+	var wg sync.WaitGroup
+	var mu sync.Mutex
+	counter := 1
 
 	var checkResults []checks.Check
-	// Run all security/privacy checks
-	for i, check := range SecurityChecks {
-		// Display the currently running check in the progress dialog
-		err := dialog.Text(fmt.Sprintf("Running check %d of %d", i+1, totalChecks))
-		if err != nil {
-			logger.Log.ErrorWithErr("Error setting progress text:", err)
-			return checkResults, err
-		}
 
-		result := check()
-		checkResults = append(checkResults, result)
-
-		// Update the progress bar within the progress dialog
-		progress := float64(i+1) / float64(totalChecks) * 100
-		err = dialog.Value(int(progress))
-		if err != nil {
-			logger.Log.ErrorWithErr("Error setting progress value:", err)
-			return checkResults, err
+	// Iterate over all checks and add them to the channel
+	for _, checkSlice := range ChecksList {
+		for _, check := range checkSlice {
+			checksChan <- check
 		}
 	}
+
+	// Start the workers to execute the checks concurrently
+	// Each worker can access the channel and take work from it while it is not closed / there are still checks to execute
+	startWorkers(workerAmount, &wg, checksChan, &mu, &checkResults, dialogPresent, &counter, totalChecks, dialog)
+
+	close(checksChan)
+
+	// Wait until all workers have finished
+	wg.Wait()
 
 	// Serialize check results to JSON
 	jsonData, err := json.MarshalIndent(checkResults, "", "  ")
@@ -172,4 +91,51 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 		apiconnection.ParseScanResults(apiconnection.Metadata{WorkStationID: workStationID, User: user, Date: date}, checkResults)
 	}
 	return checkResults, nil
+}
+
+// startWorkers creates and starts the specified number of workers to execute the checks concurrently.
+// The workers receive checks from the checksChan channel, execute them, and store the results in the checkResults slice.
+//
+// Parameters:
+//   - workerAmount (int): The number of workers to create and start.
+//   - wg (*sync.WaitGroup): A WaitGroup object that allows the workers to signal when they have completed their work.
+//   - checksChan (chan func() checks.Check): A channel that provides the workers with checks to execute.
+//   - mu (*sync.Mutex): A Mutex object that synchronizes access to the checkResults slice and the progress dialog.
+//   - checkResults (*[]checks.Check): A pointer to a slice of Check objects that stores the results of the executed checks.
+//   - dialogPresent (bool): A boolean value that indicates whether a progress dialog is present.
+//   - counter (*int): A pointer to an integer that represents the current check number.
+//   - totalChecks (int): An integer value that represents the total number of checks to be executed.
+//   - dialog (zenity.ProgressDialog): A dialog window that displays the progress of the scan as it runs.
+//
+// Returns: None.
+func startWorkers(workerAmount int, wg *sync.WaitGroup, checksChan chan func() checks.Check, mu *sync.Mutex,
+	checkResults *[]checks.Check, dialogPresent bool, counter *int, totalChecks int, dialog zenity.ProgressDialog) {
+	for range workerAmount {
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			for check := range checksChan {
+				result := check()
+				mu.Lock()
+				*checkResults = append(*checkResults, result)
+				if dialogPresent {
+					err := dialog.Text(fmt.Sprintf("Running check %d of %d", *counter, totalChecks))
+					if err != nil {
+						logger.Log.ErrorWithErr("Error setting progress text:", err)
+						mu.Unlock()
+						return
+					}
+					progress := float64(*counter) / float64(totalChecks) * 100
+					*counter++
+					err = dialog.Value(int(progress))
+					if err != nil {
+						logger.Log.ErrorWithErr("Error setting progress value:", err)
+						mu.Unlock()
+						return
+					}
+				}
+				mu.Unlock()
+			}
+		}()
+	}
 }

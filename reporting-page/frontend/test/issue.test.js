@@ -2,7 +2,7 @@ import 'jsdom-global/register.js';
 import test from 'unit.js';
 import {JSDOM} from 'jsdom';
 import {jest} from '@jest/globals';
-import data from '../src/database.json' assert { type: 'json' };
+import data from '../src/databases/database.en-GB.json' assert { type: 'json' };
 import {mockPageFunctions, mockGetLocalization, clickEvent, storageMock} from './mock.js';
 
 global.TESTING = true;
@@ -43,7 +43,17 @@ jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
 // Mock openIssuesPage
 jest.unstable_mockModule('../src/js/issues.js', () => ({
   openIssuesPage: jest.fn(),
-  getUserSettings: jest.fn().mockImplementation(() => 1),
+  getUserSettings: jest.fn().mockImplementationOnce(() => 1)
+    .mockImplementationOnce(() => 1)
+    .mockImplementationOnce(() => 0)
+    .mockImplementationOnce(() => 1)
+    .mockImplementationOnce(() => 2)
+    .mockImplementationOnce(() => 3)
+    .mockImplementationOnce(() => 4)
+    .mockImplementationOnce(() => 5)
+    .mockImplementationOnce(() => 6)
+    .mockImplementationOnce(() => 7)
+    .mockImplementation(() => 1),
 }));
 
 // Mock sessionStorage
@@ -57,7 +67,7 @@ describe('Issue page', function() {
     const currentIssue = data[nonIssueID];
 
     // Act
-    await issue.openIssuePage(nonIssueID);
+    await issue.openIssuePage(nonIssueID, 0);
     const name = document.getElementsByClassName('issue-name')[0].innerHTML;
     const description = document.getElementById('description').innerHTML;
     const solution = document.getElementById('solution-text').innerHTML;
@@ -82,6 +92,7 @@ describe('Issue page', function() {
 
   // from here on issueID 160 is used for tests up to parseShowResults tests
   const issueID = 160;
+  const severity = 2;
   let currentIssue = data[issueID];
 
   it('openIssuesPage should add the right info about the issue to the page-contents', async function() {
@@ -89,7 +100,7 @@ describe('Issue page', function() {
     const issue = await import('../src/js/issue.js');
 
     // Act
-    await issue.openIssuePage(issueID);
+    await issue.openIssuePage(issueID, severity);
     const name = document.getElementsByClassName('issue-name')[0].innerHTML;
     const description = document.getElementById('information').nextElementSibling.innerHTML;
     const solution = document.getElementById('solution-text').innerHTML;
@@ -109,7 +120,7 @@ describe('Issue page', function() {
 
     // Act
     issue.updateSolutionStep(solutionText, solutionScreenshot,
-      currentIssue.Solution, currentIssue.Screenshots, stepCounter);
+      currentIssue, stepCounter);
 
     // Assert
     test.value(htmlDecode(solutionText.innerHTML)).isEqualTo('1. ' + currentIssue.Solution[0]);
@@ -174,6 +185,38 @@ describe('Issue page', function() {
     test.value(solutionScreenshot.src).isEqualTo(currentIssue.Screenshots[2]);
   });
 
+
+  it('openIssuePage should open the right localized issue database with localizations', async function() {
+    // Arrange
+    const issue = await import('../src/js/issue.js');
+
+    const localizations =[
+      {path: '../src/databases/database.de.json', lang: 0},
+      {path: '../src/databases/database.en-GB.json', lang: 1},
+      {path: '../src/databases/database.en-US.json', lang: 2},
+      {path: '../src/databases/database.es.json', lang: 3},
+      {path: '../src/databases/database.fr.json', lang: 4},
+      {path: '../src/databases/database.nl.json', lang: 5},
+      {path: '../src/databases/database.pt.json', lang: 6},
+      {path: '../src/databases/database.en-GB.json', lang: 999},
+    ];
+    for (const localization of localizations) {
+      // Act
+      const data = await import(localization.path, {assert: {type: 'json'}});
+      const currentIssue = data.default[issueID];
+      await issue.openIssuePage(issueID, severity);
+
+      const name = document.getElementsByClassName('issue-name')[0].innerHTML;
+      const description = document.getElementById('information').nextElementSibling.innerHTML;
+      const solution = document.getElementById('solution-text').innerHTML;
+
+      // Assert
+      test.value(name).isEqualTo(currentIssue.Name);
+      test.value(description).isEqualTo(currentIssue.Information);
+      test.value(htmlDecode(solution)).isEqualTo('1. ' + currentIssue.Solution[0]);
+    }
+  });
+
   // Mock scan results for the parseShowResult function
   const issueResultIds = [
     [1, 1],
@@ -190,7 +233,9 @@ describe('Issue page', function() {
     [23, 0],
     [27, 1],
     [31, 1],
-    [32, 0]];
+    [32, 0],
+    [35, 1],
+    [36, 1]];
   // Mock scan results
   const mockResult = [];
   issueResultIds.forEach((ir) => {
@@ -218,7 +263,7 @@ describe('Issue page', function() {
       currentIssue = data[jsonkey];
 
       // Act
-      await issue.openIssuePage(jsonkey);
+      await issue.openIssuePage(jsonkey, severity);
       const name = document.getElementsByClassName('issue-name')[0].innerHTML;
       const description = document.getElementById('information').nextElementSibling.innerHTML;
       const solution = document.getElementById('solution-text').innerHTML;
@@ -228,10 +273,9 @@ describe('Issue page', function() {
       test.value(description).isEqualTo(currentIssue.Information);
       test.value(htmlDecode(solution)).isEqualTo('1. ' + currentIssue.Solution[0]);
     });
-  });/*
+  });
   it('parseShowResult fills the page with the correct structure for specific results', async function() {
     // Arrange
-    const issue = await import('../src/js/issue.js');
     // expectedFindings should be changed if the structure for specific results is changed in the code
     const expectedFindings = [
       '<li>process: p, port: 1, 2, 3</li><li>SYSTEM</li><li>CIS registry 1</li>' +
@@ -247,50 +291,56 @@ describe('Issue page', function() {
       '<tbody><tr><td style="width: 30%; word-break: break-all">SYSTEM</td>\n' +
       '        <td>CIS registry 1</td></tr><tr><td style="width: 30%; word-break: break-all">SOFTWARE</td>\n' +
       '        <td>CIS registry 2</td></tr></tbody>',
+      '<tbody><tr><td style="width: 30%; word-break: break-all">SYSTEM</td></tr><tr><td style="width: 30%;' +
+      ' word-break: break-all">SOFTWARE</td></tr><tr><td style="width: 30%; word-break: break-all">' +
+      'undefined</td></tr></tbody>',
     ];
 
+    // Assert
+    await testParseShowResult('11', expectedFindings[0]);
+    await testParseShowResult('21', expectedFindings[0]);
+    await testParseShowResult('60', expectedFindings[0]);
+    await testParseShowResult('70', expectedFindings[0]);
+    await testParseShowResult('80', expectedFindings[0]);
+    await testParseShowResult('90', expectedFindings[0]);
+    await testParseShowResult('100', expectedFindings[0]);
+    await testParseShowResult('110', expectedFindings[1]);
+    await testParseShowResult('160', expectedFindings[2]);
+    await testParseShowResult('173', expectedFindings[0]);
+    await testParseShowResult('201', expectedFindings[0]);
+    await testParseShowResult('230', expectedFindings[0]);
+    await testParseShowResult('271', expectedFindings[3]);
+    await testParseShowResult('311', expectedFindings[0]);
+    await testParseShowResult('320', expectedFindings[4]);
+    await testParseShowResult('351', expectedFindings[5]);
+    await testParseShowResult('361', expectedFindings[5]);
+  });
+
+  /** helper function for testing the correct structure of parseShowResult
+   *
+   * @param {*} jsonkey key of issue being tested
+   * @param {string} expectedFinding expected result found in the resultline part of parseShowResult
+   */
+  async function testParseShowResult(jsonkey, expectedFinding) {
+    // Arrange
+    const issue = await import('../src/js/issue.js');
     sessionStorage.setItem('ScanResult', JSON.stringify(mockResult));
 
-    mockResult.forEach((result, index) => {
-      const jsonkey = result.issue_id.toString() + result.result_id.toString();
-      currentIssue = data[jsonkey];
+    // Act
+    await issue.openIssuePage(jsonkey, severity);
+    let findings = '';
+    if (jsonkey == 160) {
+      findings = document.getElementById('description').innerHTML;
+    } else if (jsonkey == 320) {
+      findings = document.getElementsByClassName('issues-table')[0].innerHTML;
+    } else {
+      findings = document.getElementById('description').nextElementSibling.innerHTML;
+    }
 
-      // Act
-      issue.openIssuePage(jsonkey);
-      console.log(jsonkey)
-      console.log(document.getElementById('description').nextElementSibling.innerHTML)
-      if (index < 7 || (index > 8 && index < 12) || index == 13) {
-        // called to generateBulletList and permissionShowResults
-        const findings = document.getElementById('description').nextElementSibling.innerHTML;
-        console.log(findings);
+    // Assert
+    test.value(findings).isEqualTo(expectedFinding);
+  }
 
-        // Assert
-        test.value(findings).isEqualTo(expectedFindings[0]);
-      } else if (index == 7) {
-        // called to processPortsTable
-        const findings = document.getElementById('description').nextElementSibling.innerHTML;
-
-        // Assert
-        test.value(findings).isEqualTo(expectedFindings[1]);
-      } else if (index == 8) {
-        const findings = document.getElementById('description').innerHTML;
-
-        // Assert
-        test.value(findings).isEqualTo(expectedFindings[2]);
-      } else if (index == 12) {
-        // called to cookiesTable
-        const findings = document.getElementById('description').nextElementSibling.innerHTML;
-
-        // Assert
-        test.value(findings).isEqualTo(expectedFindings[3]);
-      } else {
-        // called to cisregristryTable
-        const findings = document.getElementsByClassName('issues-table')[0].innerHTML;
-        // Assert
-        test.value(findings).isEqualTo(expectedFindings[4]);
-      }
-    });
-  });*/
   it('parseShowResult keeps findings empty if the issueID is not in the issuesWithResultsShow list', async function() {
     // Arrange
     const issue = await import('../src/js/issue.js');
@@ -326,4 +376,90 @@ describe('Issue page', function() {
     // Assert
     test.value(checked).isEqualTo(true);
   });
+  it('getVersionScreenshot returns the right screenshot for the detected windows version', async function() {
+    // Arrange
+    const issue = await import('../src/js/issue.js');
+    let testIssue = data['11'];
+
+    // Act
+    // clear sessionstorage
+    sessionStorage.removeItem('WindowsVersion');
+    let result = issue.getVersionScreenshot(testIssue, 0);
+
+    // Assert
+    test.value(result).isEqualTo(testIssue.Screenshots[0]);
+
+    // Act
+    sessionStorage.setItem('WindowsVersion', '10');
+    result = issue.getVersionScreenshot(testIssue, 0);
+
+    // Assert
+    test.value(result).isEqualTo(testIssue.ScreenshotsWindows10[0]);
+
+    // Act
+    sessionStorage.setItem('WindowsVersion', '11');
+    result = issue.getVersionScreenshot(testIssue, 0);
+
+    // Assert
+    test.value(result).isEqualTo(testIssue.Screenshots[0]);
+
+    // Act
+    sessionStorage.setItem('WindowsVersion', '10');
+    testIssue = data['30'];
+    result = issue.getVersionScreenshot(testIssue, 0);
+
+    // Assert
+    test.value(result).isEqualTo(testIssue.Screenshots[0]);
+
+    // Act
+    testIssue = data['310'];
+    result = issue.getVersionScreenshot(testIssue, 0);
+
+    // Assert
+    test.value(result).isEqualTo('');
+  });
+  it('getVersionSolution returns the right solution for the detected windows version', async function() {
+    // Arrange
+    const issue = await import('../src/js/issue.js');
+    let testIssue = data['11'];
+
+    // Act
+    // clear sessionstorage
+    sessionStorage.removeItem('WindowsVersion');
+    let result = issue.getVersionSolution(testIssue, 0);
+
+    // Assert
+    test.value(result).isEqualTo(testIssue.Solution[0]);
+
+    // Act
+    sessionStorage.setItem('WindowsVersion', '10');
+    result = issue.getVersionSolution(testIssue, 0);
+
+    // Assert
+    test.value(result).isEqualTo(testIssue.SolutionWindows10[0]);
+
+    // Act
+    sessionStorage.setItem('WindowsVersion', '11');
+    result = issue.getVersionSolution(testIssue, 0);
+
+    // Assert
+    test.value(result).isEqualTo(testIssue.Solution[0]);
+
+    // Act
+    sessionStorage.setItem('WindowsVersion', '10');
+    testIssue = data['30'];
+    result = issue.getVersionSolution(testIssue, 0);
+
+    // Assert
+    test.value(result).isEqualTo(testIssue.Solution[0]);
+
+    // Act
+    testIssue = data['310'];
+    result = issue.getVersionSolution(testIssue, 0);
+
+    // Assert
+    test.value(result).isEqualTo('');
+  });
 });
+
+

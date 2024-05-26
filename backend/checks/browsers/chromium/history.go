@@ -42,12 +42,20 @@ func HistoryChromium(browser string, getter browsers.DefaultDirGetter, getterCop
 		return checks.NewCheckErrorf(returnID, "Error: ", err)
 	}
 
+	// Copy the database, so problems don't arise when the file gets locked
 	tempHistoryDB, err := getterCopyDB.CopyDatabase(extensionsDir + "/History")
 	if err != nil {
 		logger.Log.ErrorWithErr("Error copying database: ", err)
 		return checks.NewCheckError(returnID, err)
 	}
-	defer os.Remove(tempHistoryDB)
+	
+	// Clean up the temporary file when the function returns
+	defer func(name string) {
+		err = os.Remove(name)
+		if err != nil {
+			logger.Log.ErrorWithErr("Error removing file: ", err)
+		}
+	}(tempHistoryDB)
 
 	// Open the browser history database
 	db, _ := sql.Open("sqlite", tempHistoryDB)

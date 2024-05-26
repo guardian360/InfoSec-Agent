@@ -4,6 +4,8 @@ import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js'
 import {retrieveTheme} from './personalize.js';
 import {scanTest} from './database.js';
 import {LogError as logError} from '../../wailsjs/go/main/Tray.js';
+import {openIssuePage} from './issue.js';
+import data from '../databases/database.en-GB.json' assert { type: 'json' };
 
 /** Load the content of the Home page */
 export function openHomePage() {
@@ -27,7 +29,7 @@ export function openHomePage() {
         <div class="data-segment-header">
           <p class="lang-choose-issue-description"></p>
         </div>
-        <a class="issue-button lang-suggested-issue"></a>
+        <a id="suggested-issue" class="issue-button lang-suggested-issue"></a>
         <a class="issue-button lang-quick-fix"></a>
         <a id="scan-now" class="issue-button lang-scan-now"></a>
       </div>
@@ -89,7 +91,38 @@ export function openHomePage() {
     getLocalization(localizationIds[i], staticHomePageContent[i]);
   }
 
-  document.getElementById('scan-now').addEventListener('click', () => scanTest());
+  document.getElementById('scan-now').addEventListener('click', () => scanTest(true));
+  document.getElementById('suggested-issue').addEventListener('click', () => suggestedIssue(''));
+}
+
+/** Opens the issue page of the issue with highest risk level
+ *
+ * @param {string} type Type of issue to open the issue page of (e.g. 'Security', 'Privacy', and '' for all types)
+*/
+export function suggestedIssue(type) {
+  // Get the issues from the database
+  const issues = JSON.parse(sessionStorage.getItem('DataBaseData'));
+
+  // Skip informative issues
+  let issueIndex = 0;
+  let maxSeverityIssue = issues[issueIndex];
+  while (maxSeverityIssue.severity === 4) {
+    issueIndex++;
+    maxSeverityIssue = issues[issueIndex];
+  }
+
+  // Find the issue with the highest severity
+  for (let i = 0; i < issues.length; i++) {
+    if (maxSeverityIssue.severity < issues[i].severity && issues[i].severity !== 4) {
+      if (type == '' || data[issues[i].jsonkey].Type === type) {
+        maxSeverityIssue = issues[i];
+      }
+    }
+  }
+
+  // Open the issue page of the issue with the highest severity
+  openIssuePage(maxSeverityIssue.jsonkey, maxSeverityIssue.severity);
+  document.getElementById('scan-now').addEventListener('click', () => scanTest(true));
 }
 
 

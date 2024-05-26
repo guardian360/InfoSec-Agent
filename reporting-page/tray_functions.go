@@ -35,8 +35,8 @@ func NewTray(log *logger.CustomLogger) *Tray {
 // Returns:
 //   - []checks.Check: A slice of checks representing the scan results.
 //   - error: An error object that describes the error, if any occurred. nil if no error occurred.
-func (t *Tray) ScanNow() ([]checks.Check, error) {
-	return tray.ScanNow()
+func (t *Tray) ScanNow(dialogPresent bool) ([]checks.Check, error) {
+	return tray.ScanNow(dialogPresent)
 }
 
 // ChangeLanguage is responsible for switching the language of the system tray application.

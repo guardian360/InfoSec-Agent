@@ -6,7 +6,9 @@ package browsers
 
 import (
 	"context"
+	"database/sql"
 	"errors"
+	"fmt"
 	"io"
 	"net/http"
 	"os"
@@ -14,11 +16,17 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
+
+	// Necessary to use the sqlite driver
+	_ "modernc.org/sqlite"
 )
 
 // constants to store information of the browsers
+
 const Edge = "Edge"
 const Chrome = "Chrome"
 const EdgePath = "Microsoft/Edge"
@@ -182,8 +190,8 @@ func (r RealPhishingDomainGetter) GetPhishingDomains() ([]string, error) {
 // Parameters:
 //   - src string: The path to the source file that needs to be copied.
 //   - dst string: The path to the destination where the source file should be copied to.
-//
-// dst - the destination file
+//   - mockSource mocking.File: A mock file object that represents the source file. If this parameter is not nil, the function uses the mock file for the source.
+//   - mockDestination mocking.File: A mock file object that represents the destination file. If this parameter is not nil, the function uses the mock file for the destination.
 //
 // Returns:
 //   - error: An error object that wraps any error that occurs during the file copying process. If the file is copied successfully, it returns nil.
@@ -253,4 +261,85 @@ func (r RealDefaultDirGetter) GetDefaultDir(browserPath string) (string, error) 
 		return "", err
 	}
 	return filepath.Join(userDir, "AppData", "Local", browserPath, "User Data", "Default"), nil
+}
+
+// QueryCookieDatabase is a utility function that queries a cookie database for specific parameters.
+// This function is used by the browser-specific (Firefox, Chrome, and Edge) cookie checks to query the cookie database and check for tracking cookies.
+//
+// Parameters:
+//   - checkID int: The ID of the check that is being performed.
+//   - browser string: The name of the browser for which the check is being performed.
+//   - databasePath string: The path to the cookie database file.
+//   - queryParams []string: A list of parameters to use in the SQL query for the database.
+//   - tableName string: The name of the table in the database to query.
+//
+// Returns:
+//   - checks.Check: A Check object representing the result of the check. If tracking cookies are found, the result contains a list of cookies along with their host stored in the database.
+func QueryCookieDatabase(checkID int, browser string, databasePath string, queryParams []string, tableName string) checks.Check {
+	// Copy the database, so problems don't arise when the file gets locked
+	tempCookieDB := filepath.Join(os.TempDir(), "tempCookieDb"+browser+".sqlite")
+
+	// Clean up the temporary file when the function returns
+	defer func(name string) {
+		err := os.Remove(name)
+		if err != nil {
+			logger.Log.ErrorWithErr("Error removing temporary "+browser+" cookie database: ", err)
+		}
+	}(tempCookieDB)
+
+	// Copy the database to a temporary location
+	copyError := CopyFile(databasePath, tempCookieDB, nil, nil)
+	if copyError != nil {
+		return checks.NewCheckErrorf(checkID, "Unable to make a copy of "+browser+" database: ", copyError)
+	}
+
+	db, err := sql.Open("sqlite", tempCookieDB)
+	if err != nil {
+		return checks.NewCheckError(checkID, err)
+	}
+	defer func(db *sql.DB) {
+		err = db.Close()
+		if err != nil {
+			logger.Log.ErrorWithErr("Error closing "+browser+" database: ", err)
+		}
+	}(db)
+
+	sqlSelectors := strings.Join(queryParams, ", ")
+	// Query the name, origin and when the cookie was created from the database
+	rows, err := db.Query(fmt.Sprintf("SELECT %s FROM %s", sqlSelectors, tableName))
+
+	if rows.Err() != nil {
+		return checks.NewCheckError(checkID, rows.Err())
+	}
+	if err != nil {
+		return checks.NewCheckError(checkID, err)
+	}
+	defer func(rows *sql.Rows) {
+		err = rows.Close()
+		if err != nil {
+			logger.Log.ErrorWithErr("Error closing "+browser+" rows: ", err)
+		}
+	}(rows)
+
+	var possibleTrackingCookie = false
+	var output []string
+	// Iterate over each found cookie
+	for rows.Next() {
+		var name, host string
+		// Scan the row into variables
+		if err = rows.Scan(&name, &host); err != nil {
+			return checks.NewCheckError(checkID, err)
+		}
+		// Check if the cookie is a (possible) tracking cookie
+		// Check is based on the fact that Google Analytics tracking cookies usually contain the substrings "utm" or "ga"
+		if strings.Contains(name, "_utm") || strings.Contains(name, "_ga") {
+			possibleTrackingCookie = true
+			// Append the cookie to the result list
+			output = append(output, name, host)
+		}
+	}
+	if possibleTrackingCookie {
+		return checks.NewCheckResult(checkID, 1, output...)
+	}
+	return checks.NewCheckResult(checkID, 0)
 }

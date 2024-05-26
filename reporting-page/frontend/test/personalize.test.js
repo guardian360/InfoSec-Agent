@@ -4,6 +4,7 @@ import test from 'unit.js';
 import {jest} from '@jest/globals';
 import {fireEvent} from '@testing-library/dom';
 global.TESTING = true;
+import {mockGetLocalization} from './mock.js';
 
 // Mock page
 const dom = new JSDOM(`
@@ -20,6 +21,11 @@ const dom = new JSDOM(`
 `);
 global.document = dom.window.document;
 global.window = dom.window;
+
+// Mock Localize function
+jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
+  Localize: jest.fn().mockImplementation((input) => mockGetLocalization(input)),
+}));
 
 // Mock FileReader
 const fileReaderIco = global.FileReader = class {

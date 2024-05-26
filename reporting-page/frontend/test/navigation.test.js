@@ -89,11 +89,11 @@ describe('Navigation menu', function() {
     test.value(document.getElementById('integration-button').style.backgroundColor).isEqualTo('blue');
 
     // Act
-    navigationMenu.markSelectedNavigationItem('settings-button');
+    navigationMenu.markSelectedNavigationItem('personalize-button');
 
     // Assert
     test.value(document.getElementById('integration-button').style.backgroundColor).isEqualTo('red');
-    test.value(document.getElementsByClassName('settings-button')[0].style.backgroundColor).isNotEqualTo('blue');
+    test.value(document.getElementById('personalize-button').style.backgroundColor).isNotEqualTo('blue');
   });
   it('closeNavigation should close the navigation menu if screen size is small', async function() {
     // Arrange
@@ -121,8 +121,8 @@ describe('Navigation menu', function() {
     // Act
     leftNav.style.visibility = 'visible';
     // click button which calls toggleNavigationHamburger
-    document.getElementById('header-hamburger').dispatchEvent(clickEvent);
 
+    document.getElementById('header-hamburger').dispatchEvent(clickEvent);
     // Assert
     test.value(window.getComputedStyle(leftNav).getPropertyValue('visibility')).isEqualTo('hidden');
 

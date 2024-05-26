@@ -1,15 +1,12 @@
 package scan_test
 
 import (
-	"database/sql"
 	"os"
 	"testing"
 
-	"github.com/ncruces/zenity"
-
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/scan"
+	"github.com/ncruces/zenity"
 	"github.com/stretchr/testify/require"
 )
 
@@ -38,8 +35,6 @@ func TestMain(m *testing.M) {
 //
 // No return values.
 func TestScan(t *testing.T) {
-	// logger.SetupTests()
-
 	// Display a progress dialog while the scan is running
 	dialog, err := zenity.Progress(
 		zenity.Title("Security/Privacy Scan"))
@@ -57,138 +52,50 @@ func TestScan(t *testing.T) {
 	// Execute the scan
 	_, err = scan.Scan(dialog)
 	require.NoError(t, err)
-}
 
-// TestGetSeverity tests the GetSeverity function to ensure it returns the correct severity level for a given issue ID and result ID pair.
-//
-// This test function creates a new SQLite database connection and calls the GetSeverity function with known issue IDs and result IDs.
-// It then asserts that the returned severity level matches the expected value for each issue ID and result ID pair.
-//
-// Parameters:
-//   - t *testing.T: The testing framework used for assertions.
-//
-// No return values.
-func TestGetSeverity(t *testing.T) {
-	// logger.SetupTests()
-
-	// Arrange database connection
-	db, err := sql.Open("sqlite", "../../reporting-page/database.db")
-	if err != nil {
-		t.Errorf("Error occurred: %v", err)
-	}
-
-	// Test for valid issue ID and result ID
-	severity, err := scan.GetSeverity(db, 1, 1)
+	// Execute the scan without a dialog
+	_, err = scan.Scan(nil)
 	require.NoError(t, err)
-	require.Equal(t, 4, severity)
-
-	// Test for invalid issue ID and result ID
-	_, err = scan.GetSeverity(db, 0, 0)
-	require.Error(t, err)
-	require.Equal(t, sql.ErrNoRows.Error(), err.Error())
 }
 
-// TestGetJSONKey tests the GetJSONKey function to ensure it returns the correct JSON key for a given issue ID and result ID pair.
+// TestDirectoryExists tests the DirectoryExists function to ensure it correctly identifies whether a directory exists.
 //
-// This test function creates a new SQLite database connection and calls the GetJSONKey function with known issue IDs and result IDs.
-// It then asserts that the returned JSON key matches the expected value for each issue ID and result ID pair.
+// This test function calls the DirectoryExists function with a path to an existing directory and asserts that the function returns true.
+// It also tests the function with a path to a non-existing directory and asserts that the function returns false.
 //
 // Parameters:
 //   - t *testing.T: The testing framework used for assertions.
 //
 // No return values.
-func TestGetJSONKey(t *testing.T) {
-	// logger.SetupTests()
+func TestDirectoryExists(t *testing.T) {
+	// Test for existing directory
+	exists := scan.DirectoryExists("../../reporting-page")
+	require.True(t, exists)
 
-	// Arrange database connection
-	db, err := sql.Open("sqlite", "../../reporting-page/database.db")
+	// Test for non-existing directory
+	exists = scan.DirectoryExists("non-existing-directory")
+	require.False(t, exists)
+}
+
+// TestGeneratePath tests the GeneratePath function to ensure it correctly generates the path.
+//
+// This test function calls the GeneratePath function with a given path and asserts that the returned path matches the expected value.
+// It also tests the function with an empty string and asserts that the returned path is the current user's home directory.
+//
+// Parameters:
+//   - t *testing.T: The testing framework used for assertions.
+//
+// No return values.
+func TestGeneratePath(t *testing.T) {
+	// Test for valid generated path
+	path := scan.GeneratePath("\\test")
+	currHomeDir, err := os.UserHomeDir()
 	if err != nil {
-		t.Errorf("Error occurred: %v", err)
+		t.Errorf("Test failed: error getting user home directory: %v", err)
 	}
+	require.Equal(t, currHomeDir+"\\test", path)
 
-	// Test for valid issue ID and result ID
-	jsonKey, err := scan.GetJSONKey(db, 1, 1)
-	require.NoError(t, err)
-	require.Equal(t, 11, jsonKey)
-
-	// Test for invalid issue ID and result ID
-	_, err = scan.GetSeverity(db, 0, 0)
-	require.Error(t, err)
-	require.Equal(t, sql.ErrNoRows.Error(), err.Error())
-}
-
-// TestGetDataBaseData tests the GetDataBaseData function to ensure it returns the correct database data for a given list of checks.
-//
-// This test function creates a list of check results and calls the GetDataBaseData function.
-// It then asserts that the returned database data matches the expected data for the given checks.
-//
-// Parameters:
-//   - t *testing.T: The testing framework used for assertions.
-//
-// No return values.
-func TestGetDataBaseData(t *testing.T) {
-	// logger.SetupTests()
-
-	scanResult := []checks.Check{
-		{
-			IssueID:  1,
-			ResultID: 1,
-			Result:   []string{"Issue 1"},
-			Error:    nil,
-			ErrorMSG: "",
-		},
-	}
-	expectedData := []scan.DataBaseData{
-		{
-			CheckID:  1,
-			Severity: 4,
-			JSONKey:  11,
-		},
-	}
-	emptyScanResult := []checks.Check{}
-	emptyExpectedData := []scan.DataBaseData{}
-	invalidScanResult := []checks.Check{
-		{
-			IssueID:  0,
-			ResultID: 0,
-			Result:   []string{"Issue 0"},
-			Error:    nil,
-			ErrorMSG: "",
-		},
-	}
-	invalidExpectedData := []scan.DataBaseData{
-		{
-			CheckID:  0,
-			Severity: 0,
-			JSONKey:  0,
-		},
-	}
-	wrongPathExpectedData := []scan.DataBaseData{
-		{
-			CheckID:  1,
-			Severity: 0,
-			JSONKey:  0,
-		},
-	}
-	testCases := []struct {
-		scanResult   []checks.Check
-		expectedData []scan.DataBaseData
-	}{
-		{scanResult, expectedData},
-		{emptyScanResult, emptyExpectedData},
-		{invalidScanResult, invalidExpectedData},
-	}
-
-	for _, tc := range testCases {
-		data, err := scan.GetDataBaseData(tc.scanResult, "../../reporting-page/database.db")
-		if err != nil {
-			t.Errorf("Error occurred: %v", err)
-		}
-		require.Equal(t, tc.expectedData, data)
-		require.Equal(t, tc.expectedData, data)
-	}
-
-	// Test for invalid database path
-	result, _ := scan.GetDataBaseData(scanResult, "")
-	require.Equal(t, wrongPathExpectedData, result)
+	// Test that given no path, it returns the path to the current user's home directory
+	path = scan.GeneratePath("")
+	require.Equal(t, currHomeDir, path)
 }
