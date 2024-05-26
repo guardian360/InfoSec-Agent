@@ -73,6 +73,7 @@ export function mockGetDataBaseData(input) {
       jsonkey: parseInt(input[i].issue_id.toString()+input[i].result_id.toString()),
     });
   }
+
   return databaseList;
 }
 
@@ -219,6 +220,11 @@ export function mockOpenPageFunctions() {
   // Mock openPrivacyDashboardPage
   jest.unstable_mockModule('../src/js/privacy-dashboard.js', () => ({
     openPrivacyDashboardPage: jest.fn(),
+  }));
+
+  // Mock openIssuesPage
+  jest.unstable_mockModule('../src/js/issue.js', () => ({
+    openIssuePage: jest.fn(),
   }));
 
   // Mock openIssuesPage

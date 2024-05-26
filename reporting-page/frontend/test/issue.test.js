@@ -291,7 +291,8 @@ describe('Issue page', function() {
       '        <td>CIS registry 1</td></tr><tr><td style="width: 30%; word-break: break-all">SOFTWARE</td>\n' +
       '        <td>CIS registry 2</td></tr></tbody>',
       '<tbody><tr><td style="width: 30%; word-break: break-all">SYSTEM</td></tr><tr><td style="width: 30%;' +
-      ' word-break: break-all">SOFTWARE</td></tr><tr><td style="width: 30%; word-break: break-all">undefined</td></tr></tbody>',
+      ' word-break: break-all">SOFTWARE</td></tr><tr><td style="width: 30%; word-break: break-all">' +
+      'undefined</td></tr></tbody>',
     ];
 
     // Assert
@@ -382,40 +383,40 @@ describe('Issue page', function() {
     // Act
     // clear sessionstorage
     sessionStorage.removeItem('WindowsVersion');
-    let result = issue.getVersionScreenshot(testIssue,0);
+    let result = issue.getVersionScreenshot(testIssue, 0);
 
     // Assert
     test.value(result).isEqualTo(testIssue.Screenshots[0]);
 
     // Act
-    sessionStorage.setItem('WindowsVersion','10');
-    result = issue.getVersionScreenshot(testIssue,0);
+    sessionStorage.setItem('WindowsVersion', '10');
+    result = issue.getVersionScreenshot(testIssue, 0);
 
     // Assert
     test.value(result).isEqualTo(testIssue.ScreenshotsWindows10[0]);
 
     // Act
-    sessionStorage.setItem('WindowsVersion','11');
-    result = issue.getVersionScreenshot(testIssue,0);
+    sessionStorage.setItem('WindowsVersion', '11');
+    result = issue.getVersionScreenshot(testIssue, 0);
 
     // Assert
     test.value(result).isEqualTo(testIssue.Screenshots[0]);
 
     // Act
-    sessionStorage.setItem('WindowsVersion','10');
+    sessionStorage.setItem('WindowsVersion', '10');
     testIssue = data['30'];
-    result = issue.getVersionScreenshot(testIssue,0);
+    result = issue.getVersionScreenshot(testIssue, 0);
 
     // Assert
     test.value(result).isEqualTo(testIssue.Screenshots[0]);
 
     // Act
     testIssue = data['310'];
-    result = issue.getVersionScreenshot(testIssue,0);
+    result = issue.getVersionScreenshot(testIssue, 0);
 
     // Assert
     test.value(result).isEqualTo('');
-  })
+  });
   it('getVersionSolution returns the right solution for the detected windows version', async function() {
     // Arrange
     const issue = await import('../src/js/issue.js');
@@ -424,40 +425,40 @@ describe('Issue page', function() {
     // Act
     // clear sessionstorage
     sessionStorage.removeItem('WindowsVersion');
-    let result = issue.getVersionSolution(testIssue,0);
+    let result = issue.getVersionSolution(testIssue, 0);
 
     // Assert
     test.value(result).isEqualTo(testIssue.Solution[0]);
 
     // Act
-    sessionStorage.setItem('WindowsVersion','10');
-    result = issue.getVersionSolution(testIssue,0);
+    sessionStorage.setItem('WindowsVersion', '10');
+    result = issue.getVersionSolution(testIssue, 0);
 
     // Assert
     test.value(result).isEqualTo(testIssue.SolutionWindows10[0]);
 
     // Act
-    sessionStorage.setItem('WindowsVersion','11');
-    result = issue.getVersionSolution(testIssue,0);
+    sessionStorage.setItem('WindowsVersion', '11');
+    result = issue.getVersionSolution(testIssue, 0);
 
     // Assert
     test.value(result).isEqualTo(testIssue.Solution[0]);
 
     // Act
-    sessionStorage.setItem('WindowsVersion','10');
+    sessionStorage.setItem('WindowsVersion', '10');
     testIssue = data['30'];
-    result = issue.getVersionSolution(testIssue,0);
+    result = issue.getVersionSolution(testIssue, 0);
 
     // Assert
     test.value(result).isEqualTo(testIssue.Solution[0]);
 
     // Act
     testIssue = data['310'];
-    result = issue.getVersionSolution(testIssue,0);
+    result = issue.getVersionSolution(testIssue, 0);
 
     // Assert
     test.value(result).isEqualTo('');
-  })
+  });
 });
 
 

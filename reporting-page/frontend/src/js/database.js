@@ -21,11 +21,11 @@ export async function scanTest(dialogPresent) {
           // Handle the scan result
           // For example, save it in session storage
           sessionStorage.setItem('ScanResult', JSON.stringify(scanResult));
-          // set the detected windows version
-          let windowsVersion = scanResult.find(i => i.issue_id === 18);
-          sessionStorage.setItem('WindowsVersion', windowsVersion.result[0]);
           // Set severities in session storage
           await setAllSeverities(scanResult);
+          // set the detected windows version
+          const windowsVersion = scanResult.find((i) => i.issue_id === 18);
+          sessionStorage.setItem('WindowsVersion', windowsVersion.result[0]);
           // Resolve the promise with the scan result
           resolve(scanResult);
         })

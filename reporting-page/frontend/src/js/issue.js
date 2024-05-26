@@ -63,7 +63,7 @@ export function previousSolutionStep(solutionText, solutionScreenshot, solution,
 export async function openIssuePage(issueId, severity) {
   retrieveTheme();
   stepCounter = 0;
-
+  sessionStorage.setItem('savedPage', JSON.stringify([issueId, severity]));
   const language = await getUserSettings();
   let currentIssue;
   switch (language) {
@@ -133,7 +133,7 @@ export async function openIssuePage(issueId, severity) {
       `;
     }
 
-    let screenshot = getVersionScreenshot(currentIssue, stepCounter);
+    const screenshot = getVersionScreenshot(currentIssue, stepCounter);
     try {
       document.getElementById('step-screenshot').src = screenshot;
     } catch (error) { }
@@ -387,46 +387,46 @@ export function parseShowResult(issueId, currentIssue) {
   return result;
 }
 
-/** 
+/**
  * Get the screenshot for an issue with the correct windows version detected.
  * If the version is not found, returns windows 11 screenshot.
  * If the screenshot is not found, returns no path.
  * @param {string} issue issue of which to get the screenshot
  * @param {int} index index of the desired screenshot in the list of screenshots
- * @returns path to the screenshot
+ * @return {string} path to the screenshot
  */
 export function getVersionScreenshot(issue, index) {
   let screenshot = issue.Screenshots[index];
   if (screenshot == undefined) screenshot = '';
-  switch (sessionStorage.getItem("WindowsVersion")) {
-    case ('10'):
-      const screenshots = issue.ScreenshotsWindows10;
-      if (screenshots !== undefined) screenshot = screenshots[index];
-      return screenshot;
-    case ('11'):
-      return screenshot;
-    default:
-      return screenshot;
+  switch (sessionStorage.getItem('WindowsVersion')) {
+  case ('10'):
+    const screenshots = issue.ScreenshotsWindows10;
+    if (screenshots !== undefined) screenshot = screenshots[index];
+    return screenshot;
+  case ('11'):
+    return screenshot;
+  default:
+    return screenshot;
   }
 }
 
-/** 
+/**
  * Get the solution for an issue with the correct windows version detected.
  * @param {string} issue issue of which to get the solution
  * @param {int} index index of the desired solution in the list of solutions
- * @returns solution
+ * @return {string} solution
  */
 export function getVersionSolution(issue, index) {
   let solution = issue.Solution[index];
   if (solution == undefined) solution = '';
-  switch (sessionStorage.getItem("WindowsVersion")) {
-    case ('10'):
-      const solutions = issue.SolutionWindows10;
-      if (solutions !== undefined) solution = solutions[index];
-      return solution;
-    case ('11'):
-      return solution;
-    default:
-      return solution;
+  switch (sessionStorage.getItem('WindowsVersion')) {
+  case ('10'):
+    const solutions = issue.SolutionWindows10;
+    if (solutions !== undefined) solution = solutions[index];
+    return solution;
+  case ('11'):
+    return solution;
+  default:
+    return solution;
   }
 }
