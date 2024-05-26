@@ -9,6 +9,7 @@ import dataPt from '../databases/database.pt.json' assert { type: 'json' };
 import {openIssuesPage, getUserSettings} from './issues.js';
 import {getLocalization} from './localize.js';
 import {retrieveTheme} from './personalize.js';
+import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
 
 let stepCounter = 0;
 const issuesWithResultsShow =
@@ -18,26 +19,24 @@ const issuesWithResultsShow =
  *
  * @param {HTMLParagraphElement} solutionText Element in which textual solution step is shown
  * @param {HTMLImageElement} solutionScreenshot Element in which screenshot of solution step is shown
- * @param {[string]} solution List of textual solution steps
- * @param {[image]} screenshots List of images of solution steps
+ * @param {*} issue Issue to update the solution step for
  * @param {int} stepCounter Counter specifying the current step
  */
-export function updateSolutionStep(solutionText, solutionScreenshot, solution, screenshots, stepCounter) {
-  solutionText.innerHTML = `${stepCounter + 1}. ${solution[stepCounter]}`;
-  solutionScreenshot.src = screenshots[stepCounter].toString();
+export function updateSolutionStep(solutionText, solutionScreenshot, issue, stepCounter) {
+  solutionText.innerHTML = `${stepCounter + 1}. ${getVersionSolution(issue, stepCounter)}`;
+  solutionScreenshot.src = getVersionScreenshot(issue, stepCounter).toString();
 }
 
 /** Go to next step of solution guide
  *
  * @param {HTMLParagraphElement} solutionText Element in which textual solution step is shown
  * @param {HTMLImageElement} solutionScreenshot Element in which screenshot of solution step is shown
- * @param {[string]} solution List of textual solution steps
- * @param {[image]} screenshots List of images of solution steps
+ * @param {*} issue Issue to update the solution step for
  */
-export function nextSolutionStep(solutionText, solutionScreenshot, solution, screenshots) {
-  if (stepCounter < solution.length - 1) {
+export function nextSolutionStep(solutionText, solutionScreenshot, issue) {
+  if (stepCounter < issue.Solution.length - 1) {
     stepCounter++;
-    updateSolutionStep(solutionText, solutionScreenshot, solution, screenshots, stepCounter);
+    updateSolutionStep(solutionText, solutionScreenshot, issue, stepCounter);
   }
 }
 
@@ -45,13 +44,12 @@ export function nextSolutionStep(solutionText, solutionScreenshot, solution, scr
  *
  * @param {HTMLParagraphElement} solutionText Element in which textual solution step is shown
  * @param {HTMLImageElement} solutionScreenshot Element in which screenshot of solution step is shown
- * @param {[string]} solution List of textual solution steps
- * @param {[image]} screenshots List of images of solution steps
+ * @param {*} issue Issue to update the solution step for
  */
-export function previousSolutionStep(solutionText, solutionScreenshot, solution, screenshots) {
+export function previousSolutionStep(solutionText, solutionScreenshot, issue) {
   if (stepCounter > 0) {
     stepCounter--;
-    updateSolutionStep(solutionText, solutionScreenshot, solution, screenshots, stepCounter);
+    updateSolutionStep(solutionText, solutionScreenshot, issue, stepCounter);
   }
 }
 
@@ -62,6 +60,8 @@ export function previousSolutionStep(solutionText, solutionScreenshot, solution,
  */
 export async function openIssuePage(issueId, severity) {
   retrieveTheme();
+  closeNavigation(document.body.offsetWidth);
+  markSelectedNavigationItem('issue-button');
   stepCounter = 0;
   sessionStorage.setItem('savedPage', JSON.stringify([issueId, severity]));
   const language = await getUserSettings();
@@ -90,8 +90,8 @@ export async function openIssuePage(issueId, severity) {
     break;
   default:
     currentIssue = dataEnGB[issueId];
+    break;
   }
-
   // Check if the issue has no screenshots, if so, display that there is no issue (acceptable)
   if (severity == 0) {
     const pageContents = document.getElementById('page-contents');
@@ -142,9 +142,9 @@ export async function openIssuePage(issueId, severity) {
     const solutionText = document.getElementById('solution-text');
     const solutionScreenshot = document.getElementById('step-screenshot');
     document.getElementById('next-button').addEventListener('click', () =>
-      nextSolutionStep(solutionText, solutionScreenshot, currentIssue.Solution, currentIssue.Screenshots));
+      nextSolutionStep(solutionText, solutionScreenshot, currentIssue));
     document.getElementById('previous-button').addEventListener('click', () =>
-      previousSolutionStep(solutionText, solutionScreenshot, currentIssue.Solution, currentIssue.Screenshots));
+      previousSolutionStep(solutionText, solutionScreenshot, currentIssue));
   }
 
   const texts = ['lang-information', 'lang-solution', 'lang-previous-button', 'lang-next-button', 'lang-back-button'];

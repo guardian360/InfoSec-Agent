@@ -139,11 +139,12 @@ func OnReady() {
 			result, err := ScanNow(true)
 			if err != nil {
 				logger.Log.ErrorWithErr("Error scanning:", err)
-			}
-			// Notify the user that a scan has been completed
-			err = Popup(result, "./reporting-page/database.db")
-			if err != nil {
-				logger.Log.ErrorWithErr("Error notifying user:", err)
+			} else {
+				// Notify the user that a scan has been completed
+				err = Popup(result, "./reporting-page/database.db")
+				if err != nil {
+					logger.Log.ErrorWithErr("Error notifying user:", err)
+				}
 			}
 		case <-mChangeLanguage.ClickedCh:
 			ChangeLanguage()
@@ -282,9 +283,13 @@ func ChangeScanInterval(testInput ...string) {
 	if len(testInput) > 0 {
 		res = testInput[0]
 	} else {
+		scanInterval := usersettings.LoadUserSettings().ScanInterval
+
 		// Get user input by creating a dialog window
 		var err error
-		res, err = zenity.Entry("Enter the scan interval (in hours):", zenity.Title("Change Scan Interval"),
+		res, err = zenity.Entry("Enter the scan interval (in hours):",
+			zenity.Title("Change Scan Interval"),
+			zenity.EntryText(strconv.Itoa(scanInterval)),
 			zenity.DefaultItems("24"))
 		if err != nil {
 			logger.Log.ErrorWithErr("Error creating dialog:", err)
@@ -524,11 +529,12 @@ func periodicScan(scanInterval int) {
 		result, err := ScanNow(false)
 		if err != nil {
 			logger.Log.ErrorWithErr("Error performing periodic scan:", err)
-		}
-		// Notify the user that a scan has been completed
-		err = Popup(result, "./reporting-page/database.db")
-		if err != nil {
-			logger.Log.ErrorWithErr("Error notifying user:", err)
+		} else {
+			// Notify the user that a scan has been completed
+			err = Popup(result, "./reporting-page/database.db")
+			if err != nil {
+				logger.Log.ErrorWithErr("Error notifying user:", err)
+			}
 		}
 		// Update the next scan time
 		changeNextScan(settings, scanInterval)

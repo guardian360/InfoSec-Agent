@@ -170,6 +170,55 @@ describe('Settings page', function() {
     // Assert
     expect(logErrorMock).toHaveBeenCalled();
   });
+  it('reloadPage doesnt reload when no page is called', async function() {
+    // Arrange
+    const settings = await import('../src/js/settings.js');
+
+    const tray = await import('../wailsjs/go/main/Tray.js');
+    const logErrorMock = jest.spyOn(tray, 'LogError');
+
+    const paths = [
+      '../src/js/home.js',
+      '../src/js/security-dashboard.js',
+      '../src/js/privacy-dashboard.js',
+      '../src/js/issues.js',
+      '../src/js/integration.js',
+      '../src/js/about.js',
+      '../src/js/personalize.js',
+    ];
+
+    const pageFunctions = [
+      'openHomePage',
+      'openSecurityDashboardPage',
+      'openPrivacyDashboardPage',
+      'openIssuesPage',
+      'openIntegrationPage',
+      'openAboutPage',
+      'openPersonalizePage',
+    ];
+
+    paths.forEach(async (path, index) => {
+      // Arrange
+      const page = await import(path);
+      const openPageMock = jest.spyOn(page, pageFunctions[index]);
+
+      // Act
+      sessionStorage.setItem('languageChanged', true);
+      sessionStorage.setItem('savedPage', index+1);
+      settings.reloadPage();
+
+      // Assert
+      expect(openPageMock).toHaveBeenCalled();
+      test.value(sessionStorage.getItem('languageChanged')).isUndefined();
+    });
+
+    // Act
+    sessionStorage.setItem('savedPage', 0);
+    settings.reloadPage();
+
+    // Assert
+    expect(logErrorMock).toHaveBeenCalled();
+  });
   it('the personalize page can be opened from the settings', async function() {
     // Arrange
     await import('../src/js/settings.js');
