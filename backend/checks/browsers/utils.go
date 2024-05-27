@@ -107,7 +107,7 @@ func (r RealProfileFinder) FirefoxFolder() ([]string, error) {
 	var content []byte
 	// Loop through all the folders to check if they have a logins.json file.
 	for _, folder := range folders {
-		content, err = os.ReadFile(filepath.Clean(profilesDir + "\\" + folder + "\\logins.json"))
+		content, err = os.ReadFile(filepath.Clean(profilesDir + "\\" + folder + "\\addons.json"))
 		if err != nil {
 			continue
 		}
