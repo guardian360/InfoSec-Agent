@@ -21,7 +21,7 @@ func TestAutomaticLogin(t *testing.T) {
 			key: &mocking.MockRegistryKey{
 				SubKeys: []mocking.MockRegistryKey{
 					{KeyName: "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon",
-						IntegerValues: map[string]uint64{"AutoAdminLogon": 1}, Err: nil},
+						StringValues: map[string]string{"AutoAdminLogon": "1"}, Err: nil},
 				},
 			},
 			want: checks.NewCheckResult(checks.AutoLoginID, 1),
@@ -31,7 +31,7 @@ func TestAutomaticLogin(t *testing.T) {
 			key: &mocking.MockRegistryKey{
 				SubKeys: []mocking.MockRegistryKey{
 					{KeyName: "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon",
-						IntegerValues: map[string]uint64{"AutoAdminLogon": 0}, Err: nil},
+						StringValues: map[string]string{"AutoAdminLogon": "0"}, Err: nil},
 				},
 			},
 			want: checks.NewCheckResult(checks.AutoLoginID, 0),

@@ -1,10 +1,11 @@
 package windows
 
 import (
+	"strconv"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
-	"strconv"
 )
 
 // AutomaticLogin checks if automatic log-in is enabled on the system.
