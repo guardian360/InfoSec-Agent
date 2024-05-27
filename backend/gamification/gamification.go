@@ -8,8 +8,8 @@ import (
 	"strconv"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/database"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/scan"
 )
 
 // GameState is a struct that represents the state of the gamification.
@@ -31,7 +31,6 @@ type GameState struct {
 // Returns:
 //   - GameState: The updated game state with the new points amount.
 func PointCalculation(gs GameState, scanResults []checks.Check) (GameState, error) {
-	var err error
 	gs.Points = 0
 	db, err := sql.Open("sqlite", "../../reporting-page/database.db")
 	if err != nil {
@@ -44,10 +43,10 @@ func PointCalculation(gs GameState, scanResults []checks.Check) (GameState, erro
 			logger.Log.ErrorWithErr("Error reading scan result", result.Error)
 			return gs, result.Error
 		}
-		sev, err := scan.GetSeverity(db, result.IssueID, result.ResultID)
-		if err != nil {
-			logger.Log.ErrorWithErr("Error getting severity:", err)
-			return gs, err
+		sev, err1 := database.GetSeverity(db, result.IssueID, result.ResultID)
+		if err1 != nil {
+			logger.Log.ErrorWithErr("Error getting severity:", err1)
+			return gs, err1
 		}
 		logger.Log.Info("Issue ID: " + strconv.Itoa(result.IssueID) + " Severity: " + strconv.Itoa(sev))
 

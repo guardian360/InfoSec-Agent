@@ -8,9 +8,9 @@ import (
 	"github.com/ncruces/zenity"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/database"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/scan"
-	"github.com/ncruces/zenity"
 	"github.com/stretchr/testify/require"
 )
 
@@ -79,12 +79,12 @@ func TestGetSeverity(t *testing.T) {
 	}
 
 	// Test for valid issue ID and result ID
-	severity, err := scan.GetSeverity(db, 1, 1)
+	severity, err := database.GetSeverity(db, 1, 1)
 	require.NoError(t, err)
 	require.Equal(t, 4, severity)
 
 	// Test for invalid issue ID and result ID
-	_, err = scan.GetSeverity(db, 0, 0)
+	_, err = database.GetSeverity(db, 0, 0)
 	require.Error(t, err)
 	require.Equal(t, sql.ErrNoRows.Error(), err.Error())
 }
@@ -106,12 +106,12 @@ func TestGetJSONKey(t *testing.T) {
 	}
 
 	// Test for valid issue ID and result ID
-	jsonKey, err := scan.GetJSONKey(db, 1, 1)
+	jsonKey, err := database.GetJSONKey(db, 1, 1)
 	require.NoError(t, err)
 	require.Equal(t, 11, jsonKey)
 
 	// Test for invalid issue ID and result ID
-	_, err = scan.GetSeverity(db, 0, 0)
+	_, err = database.GetSeverity(db, 0, 0)
 	require.Error(t, err)
 	require.Equal(t, sql.ErrNoRows.Error(), err.Error())
 }
@@ -135,7 +135,7 @@ func TestGetDataBaseData(t *testing.T) {
 			ErrorMSG: "",
 		},
 	}
-	expectedData := []scan.DataBaseData{
+	expectedData := []database.Data{
 		{
 			CheckID:  1,
 			Severity: 4,
@@ -143,7 +143,7 @@ func TestGetDataBaseData(t *testing.T) {
 		},
 	}
 	emptyScanResult := []checks.Check{}
-	emptyExpectedData := []scan.DataBaseData{}
+	emptyExpectedData := []database.Data{}
 	invalidScanResult := []checks.Check{
 		{
 			IssueID:  0,
@@ -153,14 +153,14 @@ func TestGetDataBaseData(t *testing.T) {
 			ErrorMSG: "",
 		},
 	}
-	invalidExpectedData := []scan.DataBaseData{
+	invalidExpectedData := []database.Data{
 		{
 			CheckID:  0,
 			Severity: 0,
 			JSONKey:  0,
 		},
 	}
-	wrongPathExpectedData := []scan.DataBaseData{
+	wrongPathExpectedData := []database.Data{
 		{
 			CheckID:  1,
 			Severity: 0,
@@ -169,7 +169,7 @@ func TestGetDataBaseData(t *testing.T) {
 	}
 	testCases := []struct {
 		scanResult   []checks.Check
-		expectedData []scan.DataBaseData
+		expectedData []database.Data
 	}{
 		{scanResult, expectedData},
 		{emptyScanResult, emptyExpectedData},
@@ -177,7 +177,7 @@ func TestGetDataBaseData(t *testing.T) {
 	}
 
 	for _, tc := range testCases {
-		data, err := scan.GetDataBaseData(tc.scanResult, "../../reporting-page/database.db")
+		data, err := database.GetData(tc.scanResult, "../../reporting-page/database.db")
 		if err != nil {
 			t.Errorf("Error occurred: %v", err)
 		}
@@ -186,7 +186,7 @@ func TestGetDataBaseData(t *testing.T) {
 	}
 
 	// Test for invalid database path
-	result, _ := scan.GetDataBaseData(scanResult, "")
+	result, _ := database.GetData(scanResult, "")
 	require.Equal(t, wrongPathExpectedData, result)
 }
 
