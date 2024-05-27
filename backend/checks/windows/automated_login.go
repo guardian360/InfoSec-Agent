@@ -4,6 +4,7 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
+	"strconv"
 )
 
 // AutomaticLogin checks if automatic log-in is enabled on the system.
@@ -22,11 +23,16 @@ func AutomaticLogin(registryKey mocking.RegistryKey) checks.Check {
 
 	// Read the value of AutoAdminLogon, which contains the information if automatic log-in is enabled on the system.
 	// If the registry key does not exist or its value is 0, then automatic log-in is not enabled.
-	value, _, err := key.GetIntegerValue("AutoAdminLogon")
+	value, _, err := key.GetStringValue("AutoAdminLogon")
 	if err != nil {
 		logger.Log.ErrorWithErr("Error reading AutoAdminLogon value", err)
 		return checks.NewCheckResult(checks.AutoLoginID, 0)
 	}
 
-	return checks.NewCheckResult(checks.AutoLoginID, int(value))
+	intVal, err := strconv.Atoi(value)
+	if err != nil {
+		logger.Log.ErrorWithErr("Error converting AutoAdminLogon value to int", err)
+		return checks.NewCheckResult(checks.AutoLoginID, 0)
+	}
+	return checks.NewCheckResult(checks.AutoLoginID, intVal)
 }
