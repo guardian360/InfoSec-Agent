@@ -25,14 +25,13 @@ type GameState struct {
 // Parameters:
 //   - gs (GameState): The current game state, which includes the user's points and lighthouse state.
 //   - scanResults ([]checks.Check): The results of the scans.
-//
-// TO DO: points based on more factors than only the checks.
+//   - databasePath (string): The path to the database file.
 //
 // Returns:
 //   - GameState: The updated game state with the new points amount.
-func PointCalculation(gs GameState, scanResults []checks.Check) (GameState, error) {
+func PointCalculation(gs GameState, scanResults []checks.Check, databasePath string) (GameState, error) {
 	gs.Points = 0
-	db, err := sql.Open("sqlite", "reporting-page/database.db")
+	db, err := sql.Open("sqlite", databasePath)
 	if err != nil {
 		logger.Log.ErrorWithErr("Error opening database:", err)
 		return gs, err
@@ -56,7 +55,6 @@ func PointCalculation(gs GameState, scanResults []checks.Check) (GameState, erro
 		}
 		gs.PointsHistory = append(gs.PointsHistory, gs.Points)
 	}
-
 	// Close the database
 	logger.Log.Info("Closing database")
 	defer func(db *sql.DB) {
@@ -73,8 +71,6 @@ func PointCalculation(gs GameState, scanResults []checks.Check) (GameState, erro
 //
 // Parameters:
 //   - gs (GameState): The current game state, which includes the user's points and lighthouse state.
-//
-// TO DO: transition based on more factors than only points (time, points history, etc.)
 //
 // Returns:
 //   - GameState: The updated game state with the new lighthouse state.
