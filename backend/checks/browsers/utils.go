@@ -150,7 +150,7 @@ type RealPhishingDomainGetter struct{}
 func (r RealPhishingDomainGetter) GetPhishingDomains() ([]string, error) {
 	// Get the phishing domains from up-to-date GitHub list
 	client := &http.Client{}
-	url := "https://raw.githubusercontent.com/mitchellkrogza/Phishing.Database/master/ALL-phishing-links.txt"
+	url := "https://raw.githubusercontent.com/mitchellkrogza/Phishing.Database/master/phishing-links-ACTIVE-today.txt"
 	req, err := http.NewRequestWithContext(context.Background(), http.MethodGet, url, nil)
 	req.Header.Add("User-Agent", "Mozilla/5.0")
 	if err != nil {
