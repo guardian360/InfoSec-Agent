@@ -48,7 +48,7 @@ func HistoryChromium(browser string, getter browsers.DefaultDirGetter, getterCop
 		logger.Log.ErrorWithErr("Error copying database: ", err)
 		return checks.NewCheckError(returnID, err)
 	}
-	
+
 	// Clean up the temporary file when the function returns
 	defer func(name string) {
 		err = os.Remove(name)
@@ -65,6 +65,9 @@ func HistoryChromium(browser string, getter browsers.DefaultDirGetter, getterCop
 	rows, rowErr := getterQDb.QueryDatabase(db)
 	if rowErr != nil {
 		return checks.NewCheckError(returnID, rowErr)
+	}
+	if rows.Err() != nil {
+		return checks.NewCheckError(returnID, rows.Err())
 	}
 	defer CloseRows(rows)
 
