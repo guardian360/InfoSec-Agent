@@ -70,15 +70,15 @@ func PointCalculation(gs GameState, scanResults []checks.Check) (GameState, erro
 //   - GameState: The updated game state with the new lighthouse state.
 func LighthouseStateTransition(gs GameState) GameState {
 	switch {
-	case (gs.Points < 10):
+	case gs.Points < 10:
 		gs.LighthouseState = 5
-	case (gs.Points < 20):
+	case gs.Points < 20:
 		gs.LighthouseState = 4
-	case (gs.Points < 30):
+	case gs.Points < 30:
 		gs.LighthouseState = 3
-	case (gs.Points < 40):
+	case gs.Points < 40:
 		gs.LighthouseState = 2
-	case (gs.Points < 50):
+	case gs.Points < 50:
 		gs.LighthouseState = 1
 	default:
 		gs.LighthouseState = 0
