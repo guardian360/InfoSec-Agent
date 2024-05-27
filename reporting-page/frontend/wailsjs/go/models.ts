@@ -21,15 +21,15 @@ export namespace checks {
 
 }
 
-export namespace scan {
+export namespace database {
 	
-	export class DataBaseData {
+	export class Data {
 	    id: number;
 	    severity: number;
 	    jsonkey: number;
 	
 	    static createFrom(source: any = {}) {
-	        return new DataBaseData(source);
+	        return new Data(source);
 	    }
 	
 	    constructor(source: any = {}) {

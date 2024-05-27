@@ -1,5 +1,5 @@
 import {ScanNow as scanNowGo, LogError as logError} from '../../wailsjs/go/main/Tray.js';
-import {GetDataBaseData as getDataBaseData} from '../../wailsjs/go/main/DataBase.js';
+import {GetData as getDataBaseData} from '../../wailsjs/go/main/DataBase.js';
 import {openHomePage} from './home.js';
 import {
   WindowShow as windowShow,
