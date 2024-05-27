@@ -81,7 +81,9 @@ func TestCloseFileWhenFileIsNil(t *testing.T) {
 //
 // No return values.
 func TestPhishingDomainsReturnsResults(t *testing.T) {
-	domains := browsers.GetPhishingDomains()
+	getter := browsers.RealPhishingDomainGetter{}
+	domains, _ := getter.GetPhishingDomains()
+
 	require.NotEmpty(t, domains)
 }
 

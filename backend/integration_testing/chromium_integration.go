@@ -97,7 +97,7 @@ func TestIntegrationHistoryChromiumWithoutPhishing(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			result := chromium.HistoryChromium(tt.browser)
+			result := chromium.HistoryChromium(tt.browser, browsers.RealDefaultDirGetter{}, chromium.RealCopyDBGetter{}, chromium.RealQueryDatabaseGetter{}, chromium.RealProcessQueryResultsGetter{}, browsers.RealPhishingDomainGetter{})
 			require.NotEqual(t, -1, result.ResultID)
 			require.NotEmpty(t, result)
 			require.Equal(t, checks.NewCheckResult(result.IssueID, 1), result)
@@ -121,7 +121,7 @@ func TestIntegrationHistoryChromiumWithPhishing(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			result := chromium.HistoryChromium(tt.browser)
+			result := chromium.HistoryChromium(tt.browser, browsers.RealDefaultDirGetter{}, chromium.RealCopyDBGetter{}, chromium.RealQueryDatabaseGetter{}, chromium.RealProcessQueryResultsGetter{}, browsers.RealPhishingDomainGetter{})
 			require.NotEqual(t, -1, result.ResultID)
 			require.NotEmpty(t, result)
 			require.Equal(t, checks.NewCheckResult(result.IssueID, 0), result)
@@ -145,7 +145,7 @@ func TestIntegrationHistoryChromiumNotInstalled(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			result := chromium.HistoryChromium(tt.browser)
+			result := chromium.HistoryChromium(tt.browser, browsers.RealDefaultDirGetter{}, chromium.RealCopyDBGetter{}, chromium.RealQueryDatabaseGetter{}, chromium.RealProcessQueryResultsGetter{}, browsers.RealPhishingDomainGetter{})
 			require.NotEmpty(t, result)
 			require.Equal(t, -1, result.ResultID)
 		})
