@@ -356,7 +356,7 @@ func ScanNow(dialogPresent bool) ([]checks.Check, error) {
 			return result, err
 		}
 	}
-	/* For testing temporarily commented
+	/*// Uncomment for points printing
 
 	//Temporary dummy game state. For future changed to the current saved game state.
 	gsDummy := gamification.GameState{Points: 0, PointsHistory: nil, LighthouseState: 0}
@@ -366,7 +366,9 @@ func ScanNow(dialogPresent bool) ([]checks.Check, error) {
 	if err != nil {
 		logger.Log.ErrorWithErr("Error calculating points:", err)
 		return result, err
-	}*/
+	}
+
+	fmt.Print(gs)*/
 
 	return result, nil
 }
@@ -535,6 +537,7 @@ func changeNextScan(settings usersettings.UserSettings, value int) {
 // Parameters:
 //   - scanInterval int: The scan interval in hours.
 //
+// t
 // Returns: None.
 func periodicScan(scanInterval int) {
 	settings := usersettings.LoadUserSettings()
