@@ -25,6 +25,9 @@ export async function scanTest(dialogPresent) {
           sessionStorage.setItem('ScanResult', JSON.stringify(scanResult));
           // Set severities in session storage
           await setAllSeverities(scanResult);
+          // set the detected windows version
+          const windowsVersion = scanResult.find((i) => i.issue_id === 18);
+          sessionStorage.setItem('WindowsVersion', windowsVersion.result[0]);
           // Resolve the promise with the scan result
           resolve(scanResult);
         })
