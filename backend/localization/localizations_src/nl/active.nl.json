@@ -65,6 +65,7 @@
   "Issues":
   {
     "IssueTable": "Problementabel",
+    "Findings": "bevindingen",
     "AcceptableFindings": "Acceptabele bevindingen",
     "Name": "Naam",
     "Type": "Type",
@@ -73,7 +74,12 @@
     "Solution": "Oplossing",
     "Previous": "&laquo; Vorige stap",
     "Next": "Volgende stap &raquo;",
-    "Back": "Terug naar het overzicht van problemen"
+    "Back": "Terug naar het overzicht van problemen",
+    "Port": "De volgende processen draaien momenteel op uw apparaat op de volgende poorten: ",
+    "Password": "U hebt uw wachtwoord gewijzigd op: ",
+    "Acceptable": "Aanvaardbaar",
+    "Cookies": "(Mogelijke) tracking cookies zijn gevonden van de volgende websites: ",
+    "Permissions": "De volgende applicaties hebben momenteel toestemming gekregen: "
   },
   "About":
   { 

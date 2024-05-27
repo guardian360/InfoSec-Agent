@@ -815,7 +815,7 @@
             "Go to start > Change your password", 
             "Open the 'Password' section and click on the 'Change' button.",
             "You can now change your password to a new unique one."
-        ],
+        ],  
         "Screenshots":
         [
             "frontend/src/assets/images/windows-11/last-password-change/change-password-1.jpg",

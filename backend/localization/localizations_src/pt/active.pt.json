@@ -65,6 +65,7 @@
   "Issues":
   {
     "IssueTable": "Tabela de problemas",
+    "Findings": "Resultados",
     "AcceptableFindings": "Resultados aceitáveis",
     "Name": "Nome",
     "Type": "Tipo",
@@ -73,7 +74,12 @@
     "Solution": "Solução",
     "Previous": "&laquo; Etapa anterior",
     "Next": "Próxima etapa &raquo;",
-    "Back": "Voltar para a visão geral dos problemas"
+    "Back": "Voltar para a visão geral dos problemas",
+    "Port": "Os seguintes processos estão atualmente em execução no seu dispositivo nas seguintes portas: ",
+    "Password": "Você mudou sua senha em: ",
+    "Acceptable": "Aceitável",
+    "Cookies": "(Possíveis) cookies de rastreamento foram encontrados nos seguintes sites: ",
+    "Permissions": "Os seguintes aplicativos atualmente têm permissão: "
   },
   "About": {
     "about-title": "Sobre o Agente Infosec",

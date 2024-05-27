@@ -185,6 +185,10 @@ h1, h2{
   margin-left: 20px;
 }
 
+.information{
+  margin-left: 20px;
+}
+
 #step-screenshot {
   display: block;
   max-width: 100%; /* Make it responsive */

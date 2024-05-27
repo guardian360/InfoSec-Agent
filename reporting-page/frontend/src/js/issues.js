@@ -192,7 +192,7 @@ export async function fillTable(tbody, issues, isIssue) {
           const row = document.createElement('tr');
           row.innerHTML = `
               <td class="issue-link" data-severity="${issue.severity}">${currentIssue.Name}</td>
-              <td>${currentIssue.Type}</td>
+              <td>${currentIssue.Type}</td>   
               <td>${toRiskLevel(issue.severity)}</td>
             `;
           row.cells[0].id = issue.jsonkey;
