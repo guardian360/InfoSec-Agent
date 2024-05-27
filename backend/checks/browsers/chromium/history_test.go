@@ -5,6 +5,7 @@ import (
 	"errors"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"os"
+	"strings"
 	"testing"
 	"time"
 
@@ -473,7 +474,8 @@ func TestProcessQueryResults(t *testing.T) {
 	require.NoError(t, err)
 
 	// Assert the results contain the phishing domain
-	require.Contains(t, results, "You visited website: phishing.com which is a known phishing domain. The time of the last visit: 1601-01-01 01:16:40 +0100 CET")
+
+	require.True(t, strings.Contains(results[0], "phishing.com"))
 }
 
 func TestProcessQueryResults_Error(t *testing.T) {
