@@ -356,17 +356,20 @@ func ScanNow(dialogPresent bool) ([]checks.Check, error) {
 			return result, err
 		}
 	}
-	/* For testing temporarily commented
+	/*// Uncomment for points printing
 
 	//Temporary dummy game state. For future changed to the current saved game state.
-	gsDummy := gamification.GameState{Points: 0, PointsHistory: nil, LighthouseState: 0}
+	//gsDummy := gamification.GameState{Points: 0, PointsHistory: nil, LighthouseState: 0}
+	gsDummy := gamification.GameState{Points: 0, PointsHistory: []int{}, LighthouseState: 0}
 
 	//Calculate points based on the scan results
-	gs, err := gamification.PointCalculation(gsDummy, result)
+	gs, err := gamification.PointCalculation(gsDummy, result, "reporting-page/database.db")
 	if err != nil {
 		logger.Log.ErrorWithErr("Error calculating points:", err)
 		return result, err
-	}*/
+	}
+
+	fmt.Print(gs)*/
 
 	return result, nil
 }
