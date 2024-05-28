@@ -538,7 +538,6 @@ func changeNextScan(settings usersettings.UserSettings, value int) {
 // Parameters:
 //   - scanInterval int: The scan interval in hours.
 //
-// t
 // Returns: None.
 func periodicScan(scanInterval int) {
 	settings := usersettings.LoadUserSettings()

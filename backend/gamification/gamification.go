@@ -56,7 +56,7 @@ func PointCalculation(gs GameState, scanResults []checks.Check, databasePath str
 		gs.PointsHistory = append(gs.PointsHistory, gs.Points)
 	}
 	// Close the database
-	logger.Log.Info("Closing database")
+	logger.Log.Debug("Closing database")
 	defer func(db *sql.DB) {
 		err = db.Close()
 		if err != nil {
