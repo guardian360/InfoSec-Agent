@@ -78,7 +78,11 @@
     "Password": "Você mudou sua senha em: ",
     "Acceptable": "Aceitável",
     "Cookies": "(Possíveis) cookies de rastreamento foram encontrados nos seguintes sites: ",
-    "Permissions": "Os seguintes aplicativos atualmente têm permissão: "
+    "Permissions": "Os seguintes aplicativos atualmente têm permissão: ",
+    "Low": "Baixo",
+    "Medium": "Médio",
+    "High": "Alto",
+    "Info": "Info"
   },
   "About": {
     "about-title": "Sobre o Agente Infosec",

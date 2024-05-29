@@ -78,7 +78,11 @@
     "Password": "Sie haben Ihr Passwort geändert am: ",
     "Acceptable": "Akzeptabel",
     "Cookies": "(Mögliche) Tracking-Cookies wurden von den folgenden Websites gefunden: ",
-    "Permissions": "Die folgenden Anwendungen haben derzeit die Erlaubnis: "
+    "Permissions": "Die folgenden Anwendungen haben derzeit die Erlaubnis: ",
+    "Low": "Niedrig",
+    "Medium": "Mittel",
+    "High": "Hoch",
+    "Info": "Info"
   },
   "About": {
     "about-title": "Über Infosec Agent",

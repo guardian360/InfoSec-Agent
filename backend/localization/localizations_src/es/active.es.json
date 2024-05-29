@@ -77,7 +77,11 @@
     "Password": "Cambiaste tu contraseña en: ",
     "Acceptable": "Aceptable",
     "Cookies": "(Posibles) cookies de seguimiento han sido encontradas en los siguientes sitios web: ",
-    "Permissions": "Las siguientes aplicaciones actualmente tienen permisos concedidos: "
+    "Permissions": "Las siguientes aplicaciones actualmente tienen permisos concedidos: ",    
+    "Low": "Bajo",
+    "Medium": "Medio",
+    "High": "Alto",
+    "Info": "Información"
   },
   "About": {
     "about-title": "Acerca de Infosec Agent",

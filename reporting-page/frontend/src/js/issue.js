@@ -98,9 +98,9 @@ export async function openIssuePage(issueId, severity) {
     pageContents.innerHTML = `
       <h1 class="issue-name">${currentIssue.Name}</h1>
       <div class="issue-information">
-        <h2 class="lang-information"></h2>
-        <p>${currentIssue.Information}</p>
-        <h2 class="lang-acceptable"></h2>
+        <h2 id="information" class="lang-information"></h2>
+        <p id="description">${currentIssue.Information}</p>
+        <h2 id="solution" class="lang-acceptable"></h2>
         <div class="issue-solution">
           <p id="solution-text">${getVersionSolution(currentIssue, stepCounter)}</p>
         </div>
@@ -115,11 +115,11 @@ export async function openIssuePage(issueId, severity) {
       pageContents.innerHTML = `
         <h1 class="issue-name">${currentIssue.Name}</h1>
         <div class="issue-information">
-          <h2 class="lang-information"></h2>
+          <h2 id="information" class="lang-information"></h2>
           <p>${currentIssue.Information}</p>
-          <h2 class="lang-solution"></h2>
+          <h2 id="solution" class="lang-solution"></h2>
           <div class="issue-solution">
-            <p>${stepCounter +1}. ${getVersionSolution(currentIssue, stepCounter)}</p>
+            <p id="solution-text">${stepCounter +1}. ${getVersionSolution(currentIssue, stepCounter)}</p>
             <img style='display:block; width:750px;height:auto' id="step-screenshot"></img>
             <div class="solution-buttons">
               <div class="button-box">
@@ -226,7 +226,7 @@ export function parseShowResult(issueId, currentIssue) {
     generateBulletList(issues, 23);
     break;
   case '271':
-    resultLine += '<p class="lang-cookies"</p>'; // /////TO DO
+    resultLine += '<p class="lang-cookies"</p>';
     resultLine += cookiesTable(issues.find((issue) => issue.issue_id === 27).result);
     break;
   case '311':
@@ -242,11 +242,11 @@ export function parseShowResult(issueId, currentIssue) {
     resultLine += '</table>';
     break;
   case '351':
-    resultLine += '<p class="lang-cookies"</p>'; // /////TO DO
+    resultLine += '<p class="lang-cookies"</p>';
     resultLine += cookiesTable(issues.find((issue) => issue.issue_id === 35).result);
     break;
   case '361':
-    resultLine += '<p class="lang-cookies"</p>'; // /////TO DO
+    resultLine += '<p class="lang-cookies"</p>';
     resultLine += cookiesTable(issues.find((issue) => issue.issue_id === 36).result);
     break;
   default:
@@ -284,7 +284,7 @@ export function parseShowResult(issueId, currentIssue) {
       }
     });
     applications += '</ul>'; // Close the list
-    resultLine += `<p class="lang-permissions"></p>`; // /////TO DO
+    resultLine += `<p class="lang-permissions"></p>`;
     resultLine += `${applications}`;
     return resultLine;
   }
@@ -370,11 +370,11 @@ export function parseShowResult(issueId, currentIssue) {
   const result = `
   <h1 class="issue-name">${currentIssue.Name}</h1>
   <div class="issue-information">
-    <h2 class="lang-information"></h2>
+    <h2 id="information" class="lang-information"></h2>
     <p>${currentIssue.Information}</p>
-    <h2 class="lang-findings"></h2>
-    <p>${resultLine}</p>
-    <h2 class="lang-solution"></h2>
+    <h2 id="information" class="lang-findings"></h2>
+    <p id="description">${resultLine}</p>
+    <h2 id="solution" class="lang-solution"></h2>
     <div class="issue-solution">
       <p id="solution-text">${stepCounter +1}. ${getVersionSolution(currentIssue, stepCounter)}</p>
       <img style='display:block; width:750px;height:auto' id="step-screenshot"></img>

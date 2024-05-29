@@ -77,7 +77,11 @@
     "Password": "Vous avez changé votre mot de passe le: ",
     "Acceptable": "Acceptable",
     "Cookies": "Des cookies de suivi (possibles) ont été trouvés provenant des sites web suivants: ",
-    "Permissions": "Les applications suivantes ont actuellement reçu une autorisation: "
+    "Permissions": "Les applications suivantes ont actuellement reçu une autorisation: ",
+    "Low": "faible",
+    "Medium": "Moyen",
+    "High": "Élevé",
+    "Info": "Info"
   },
   "About": {
     "about-title": "À propos de l'agent Infosec",

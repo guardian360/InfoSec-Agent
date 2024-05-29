@@ -78,7 +78,11 @@
     "Password": "U hebt uw wachtwoord gewijzigd op: ",
     "Acceptable": "Aanvaardbaar",
     "Cookies": "(Mogelijke) tracking cookies zijn gevonden van de volgende websites: ",
-    "Permissions": "De volgende applicaties hebben momenteel toestemming gekregen: "
+    "Permissions": "De volgende applicaties hebben momenteel toestemming gekregen: ",
+    "Low": "Laag",
+    "Medium": "Gemiddeld",
+    "High": "Hoog",
+    "Info": "Info"
   },
   "About":
   { 
