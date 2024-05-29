@@ -12,6 +12,33 @@
     "QuitTitle": "Quit",
     "QuitTooltip": "Quit example tray application"
   },
+  "Dialogs":
+  {
+    "ScanInterval": 
+    {
+      "Title": "Change Scan Interval",
+      "Content": "Enter scan interval (in hours):"
+    },
+    "Scan": 
+    {
+      "Title": "Security/Privacy Scan",
+      "Content": "Running check %d of %d"
+    },
+    "Language": 
+    {
+      "Title": "Change Language",
+      "Content": "Choose a language"
+    },
+    "Popup": {
+      "Title": "Scan Completed",
+      "OneHigh": "The privacy and security scan has been completed. You have 1 high risk issue. Open the reporting page to see more information.",
+      "MultipleHigh": "The privacy and security scan has been completed. You have %d high risk issues. Open the reporting page to see more information.",
+      "OneMedium": "The privacy and security scan has been completed. You have 1 medium risk issue. Open the reporting page to see more information.",
+      "MultipleMedium": "The privacy and security scan has been completed. You have %d medium risk issues. Open the reporting page to see more information.",
+      "Default": "The privacy and security scan has been completed. Open the reporting page to view the results.",
+      "Button": "Open Reporting Page"
+    }
+  },
   "Navigation": 
   {
     "Home": "Home",

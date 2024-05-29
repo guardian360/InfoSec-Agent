@@ -54,11 +54,11 @@ func TestScan(t *testing.T) {
 	}(dialog)
 
 	// Execute the scan
-	_, err = scan.Scan(dialog)
+	_, err = scan.Scan(dialog, 1)
 	require.NoError(t, err)
 
 	// Execute the scan without a dialog
-	_, err = scan.Scan(nil)
+	_, err = scan.Scan(nil, 1)
 	require.NoError(t, err)
 }
 

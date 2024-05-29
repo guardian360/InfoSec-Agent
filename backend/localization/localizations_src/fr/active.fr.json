@@ -12,6 +12,29 @@
     "QuitTitle": "Quitter",
     "QuitTooltip": "Quitter l'application de la barre d'état exemple"
   },
+  "Dialogs": {
+    "ScanInterval": {
+      "Title": "Changer l'intervalle de scan",
+      "Content": "Entrez l'intervalle de scan (en heures) :"
+    },
+    "Scan": {
+      "Title": "Scan de sécurité/confidentialité",
+      "Content": "Exécution de la vérification %d sur %d"
+    },
+    "Language": {
+      "Title": "Changer de langue",
+      "Content": "Choisissez une langue"
+    },
+    "Popup": {
+      "Title": "Scan terminé",
+      "OneHigh": "Le scan de sécurité et de confidentialité est terminé. Vous avez 1 problème à haut risque. Ouvrez la page de rapport pour plus d'informations.",
+      "MultipleHigh": "Le scan de sécurité et de confidentialité est terminé. Vous avez %d problèmes à haut risque. Ouvrez la page de rapport pour plus d'informations.",
+      "OneMedium": "Le scan de sécurité et de confidentialité est terminé. Vous avez 1 problème à risque moyen. Ouvrez la page de rapport pour plus d'informations.",
+      "MultipleMedium": "Le scan de sécurité et de confidentialité est terminé. Vous avez %d problèmes à risque moyen. Ouvrez la page de rapport pour plus d'informations.",
+      "Default": "Le scan de sécurité et de confidentialité est terminé. Ouvrez la page de rapport pour voir les résultats.",
+      "Button": "Ouvrir la page de rapport"
+    }
+  },
   "Navigation": 
   {
     "Home": "Accueil",
