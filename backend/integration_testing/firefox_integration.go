@@ -64,3 +64,17 @@ func TestIntegrationSearchEngineFirefoxNotInstalled(t *testing.T) {
 	require.Equal(t, -1, result.ResultID)
 	require.NotEmpty(t, result)
 }
+
+func TestIntegrationCookiesFirefoxWithCookies(t *testing.T) {
+	result := firefox.CookiesFirefox(browsers.RealProfileFinder{})
+	require.NotEqual(t, -1, result.ResultID)
+	require.NotEmpty(t, result)
+	require.Equal(t, 1, result.ResultID)
+}
+
+func TestIntegrationCookiesFirefoxWithoutCookies(t *testing.T) {
+	result := firefox.CookiesFirefox(browsers.RealProfileFinder{})
+	require.NotEqual(t, -1, result.ResultID)
+	require.Empty(t, result)
+	require.Equal(t, 0, result.ResultID)
+}
