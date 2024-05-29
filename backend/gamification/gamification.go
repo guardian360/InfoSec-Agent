@@ -24,7 +24,7 @@ type GameState struct {
 // PointRecord is a struct that represents the amount of points and the moment they were obtained.
 type PointRecord struct {
 	Points    int
-	DateStamp time.Time
+	TimeStamp time.Time
 }
 
 // PointCalculation calculatese the number of points for the user based on the check results.
@@ -59,7 +59,7 @@ func PointCalculation(gs GameState, scanResults []checks.Check, databasePath str
 		if sev != 4 {
 			gs.Points += sev
 		}
-		gs.PointsHistory = append(gs.PointsHistory, PointRecord{Points: gs.Points, DateStamp: time.Now()})
+		gs.PointsHistory = append(gs.PointsHistory, PointRecord{Points: gs.Points, TimeStamp: time.Now()})
 	}
 	// Close the database
 	logger.Log.Debug("Closing database")
@@ -73,11 +73,19 @@ func PointCalculation(gs GameState, scanResults []checks.Check, databasePath str
 	return gs, nil
 }
 
+// sufficientActivity checks if the user has been active enough to transition to another lighthouse state
+//
+// Parameters:
+//   - history ([]PointRecord): The history of the user's points, with timestamps.
+//   - duration (time.Duration): The duration of time that the user needs to be active.
+//
+// Returns:
+//   - bool: whether the user has been active enough.
 func sufficientActivity(history []PointRecord, duration time.Duration) bool {
 	if len(history) == 0 {
 		return false
 	}
-	oldestRecord := history[0].DateStamp
+	oldestRecord := history[0].TimeStamp
 
 	return time.Since(oldestRecord) > duration
 }
@@ -90,7 +98,9 @@ func sufficientActivity(history []PointRecord, duration time.Duration) bool {
 // Returns:
 //   - GameState: The updated game state with the new lighthouse state.
 func LighthouseStateTransition(gs GameState) GameState {
-	requiredDuration := time.Duration(24)
+	// The duration threshold of which the user has been active
+	// Note that we define active as having performed a security check more than [1 week ago]
+	requiredDuration := time.Duration(7 * 24 * time.Hour)
 
 	switch {
 	case gs.Points < 10 && sufficientActivity(gs.PointsHistory, requiredDuration):

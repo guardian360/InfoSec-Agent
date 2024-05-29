@@ -339,7 +339,6 @@ func ChangeScanInterval(testInput ...string) {
 func ScanNow(dialogPresent bool) ([]checks.Check, error) {
 	// ScanCounter is not concretely used at the moment
 	// might be useful in the future
-	fmt.Print(time.Since(time.Date(2024, 5, 28, 7, 0, 0, 0, time.Now().Location())))
 	ScanCounter++
 	logger.Log.Info("Scanning now. Scan:" + strconv.Itoa(ScanCounter))
 	var result []checks.Check
