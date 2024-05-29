@@ -280,8 +280,9 @@ func BuildReportingPage() error {
 // Returns: None.
 func ChangeScanInterval(testInput ...string) {
 	var res string
+	test := len(testInput) > 0
 	// If testInput is provided, use it for testing
-	if len(testInput) > 0 {
+	if test {
 		res = testInput[0]
 	} else {
 		scanInterval := usersettings.LoadUserSettings().ScanInterval
@@ -300,20 +301,27 @@ func ChangeScanInterval(testInput ...string) {
 
 	// Parse the user input
 	interval, err := strconv.Atoi(res)
+	scanInterval := usersettings.LoadUserSettings().ScanInterval
 	if err != nil || interval <= 0 {
-		logger.Log.Printf("Invalid input. Using default interval of 24 hours.")
-		interval = 24
+		if !test {
+			err = zenity.Info("Invalid input. Using previous interval of "+strconv.Itoa(scanInterval)+" hours.",
+				zenity.Title("Invalid scan interval input"))
+			if err != nil {
+				logger.Log.ErrorWithErr("Error creating invalid interval confirmation dialog:", err)
+			}
+		}
+		interval = scanInterval
+		updateScanInterval(interval, test)
+		return
 	}
-
-	logger.Log.Printf("Scan interval changed to %d hours\n", interval)
-	err = usersettings.SaveUserSettings(usersettings.UserSettings{
-		Language:     usersettings.LoadUserSettings().Language,
-		ScanInterval: interval,
-		NextScan:     time.Now().Add(time.Duration(interval) * time.Hour),
-	})
-	if err != nil {
-		logger.Log.Warning("Scan interval setting not saved to file")
+	if !test {
+		err = zenity.Info("Scan interval changed to "+strconv.Itoa(interval)+" hours",
+			zenity.Title("Scan Interval Changed"))
+		if err != nil {
+			logger.Log.ErrorWithErr("Error creating interval confirmation dialog:", err)
+		}
 	}
+	updateScanInterval(interval, test)
 }
 
 // ScanNow initiates an immediate security scan, bypassing the scheduled intervals.
@@ -584,4 +592,24 @@ func runScanWithDialog() (zenity.ProgressDialog, []checks.Check, error) {
 		return dialog, result, err
 	}
 	return dialog, result, err
+}
+
+// updateScanInterval updates the scan interval in the user settings file.
+//
+// Parameters:
+//   - interval int: The new scan interval in hours.
+//
+// Returns: None.
+func updateScanInterval(interval int, test bool) {
+	logger.Log.Printf("INFO: Scan interval changed to " + strconv.Itoa(interval) + " hours")
+	if !test {
+		err := usersettings.SaveUserSettings(usersettings.UserSettings{
+			Language:     usersettings.LoadUserSettings().Language,
+			ScanInterval: interval,
+			NextScan:     time.Now().Add(time.Duration(interval) * time.Hour),
+		})
+		if err != nil {
+			logger.Log.Warning("Scan interval setting not saved to file")
+		}
+	}
 }
