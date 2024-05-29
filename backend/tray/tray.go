@@ -485,18 +485,24 @@ func Popup(scanResult []checks.Check, path string) error {
 	// Generate notification message based on the severity of the issues found during the scan
 	resultMessage := PopupMessage(scanResult, path)
 
+	// Get the path to the popup icon
+	appDataPath, err := os.UserConfigDir()
+	if err != nil {
+		logger.Log.ErrorWithErr("error getting icon path: error getting user config dir", err)
+	}
+
 	// Create a notification to inform the user that the scan is complete
 	notification := toast.Notification{
-		AppID:   "InfoSec Agent",
-		Title:   localization.Localize(Language, "Dialogs.Popup.Title"),
-		Message: resultMessage,
-		// Icon:    "",
+		AppID:               "InfoSec Agent",
+		Title:               localization.Localize(Language, "Dialogs.Popup.Title"),
+		Message:             resultMessage,
+		Icon:                appDataPath + "/InfoSec-Agent/icon/icon128.ico",
 		ActivationArguments: "infosecagent:",
 		Actions: []toast.Action{
 			{Type: "protocol", Label: localization.Localize(Language, "Dialogs.Popup.Button"), Arguments: "infosecagent:"},
 		},
 	}
-	if err := notification.Push(); err != nil {
+	if err = notification.Push(); err != nil {
 		return fmt.Errorf("error pushing scan notification: %w", err)
 	}
 	return nil
