@@ -15,7 +15,11 @@
   "Dialogs": {
     "ScanInterval": {
       "Title": "Scanintervall ändern",
-      "Content": "Scanintervall eingeben (in Stunden):"
+      "Content": "Scanintervall eingeben (in Stunden):",
+      "ChangedTitle": "Scanintervall geändert",
+      "ChangedContent": "Scanintervall auf %d Stunden geändert.",
+      "InvalidChangeTitle": "Ungültige Eingabe des Scanintervalls",
+      "InvalidChangeContent": "Ungültige Eingabe. Vorheriges Intervall von %d Stunden wird verwendet."
     },
     "Scan": {
       "Title": "Sicherheits-/Datenschutzscan",

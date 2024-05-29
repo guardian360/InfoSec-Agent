@@ -15,7 +15,11 @@
   "Dialogs": {
     "ScanInterval": {
       "Title": "Cambiar intervalo de escaneo",
-      "Content": "Ingrese el intervalo de escaneo (en horas):"
+      "Content": "Ingrese el intervalo de escaneo (en horas):",
+      "ChangedTitle": "Intervalo de escaneo cambiado",
+      "ChangedContent": "Intervalo de escaneo cambiado a %d horas.",
+      "InvalidChangeTitle": "Entrada de intervalo de escaneo inválida",
+      "InvalidChangeContent": "Entrada inválida. Usando el intervalo anterior de %d horas."
     },
     "Scan": {
       "Title": "Escaneo de seguridad/privacidad",

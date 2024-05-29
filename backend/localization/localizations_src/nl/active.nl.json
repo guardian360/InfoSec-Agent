@@ -15,7 +15,11 @@
   "Dialogs": {
     "ScanInterval": {
       "Title": "Scaninterval wijzigen",
-      "Content": "Voer scaninterval in (in uren):"
+      "Content": "Voer scaninterval in (in uren):",
+      "ChangedTitle": "Scaninterval gewijzigd",
+      "ChangedContent": "Scaninterval gewijzigd naar %d uur.",
+      "InvalidChangeTitle": "Ongeldige invoer van scaninterval",
+      "InvalidChangeContent": "Ongeldige invoer. Vorig interval van %d uur wordt gebruikt."
     },
     "Scan": {
       "Title": "Beveiligings-/privacy-scan",

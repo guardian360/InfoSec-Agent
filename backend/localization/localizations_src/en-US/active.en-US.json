@@ -13,9 +13,14 @@
     "QuitTooltip": "Quit example tray application"
   },
   "Dialogs": {
-    "ScanInterval": {
+    "ScanInterval": 
+    {
       "Title": "Change Scan Interval",
-      "Content": "Enter scan interval (in hours):"
+      "Content": "Enter scan interval (in hours):",
+      "ChangedTitle": "Scan Interval Changed",
+      "ChangedContent": "Scan interval changed to %d hours.",
+      "InvalidChangeTitle": "Invalid scan interval input",
+      "InvalidChangeContent": "Invalid input. Using previous interval of %d hours."
     },
     "Scan": {
       "Title": "Security/Privacy Scan",
