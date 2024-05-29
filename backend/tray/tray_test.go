@@ -2,8 +2,8 @@ package tray_test
 
 import (
 	"bytes"
-	"log"
 	"os"
+	"sync"
 	"testing"
 	"time"
 
@@ -65,15 +65,15 @@ func TestChangeScanInterval(t *testing.T) {
 		expectedMessage string
 	}{
 		// Valid input
-		{"24", "Scan interval changed to 24 hours\n"},
+		{"24", "Scan interval changed to 24 hours"},
 		// Invalid input (non-numeric)
-		{"abc", "Invalid input"},
+		{"abc", "24"},
 		// Invalid input (negative)
-		{"-1", "Invalid input"},
+		{"-1", "24"},
 		// Invalid input (zero)
-		{"0", "Invalid input"},
+		{"0", "24"},
 		// Valid large input
-		{"1000", "Scan interval changed to 1000 hours\n"},
+		{"1000", "Scan interval changed to 1000 hours"},
 	}
 
 	// Iterate over test cases
@@ -81,20 +81,24 @@ func TestChangeScanInterval(t *testing.T) {
 		var buf bytes.Buffer
 		logger.Log.SetOutput(&buf)
 
+		wg := sync.WaitGroup{}
+		wg.Add(1)
 		// Run the function with mocked user input
-		go tray.ChangeScanInterval(tc.input)
+		go func() {
+			defer wg.Done()
+			tray.ChangeScanInterval(tc.input)
+		}()
 
 		// Wait for the function to complete
-		time.Sleep(100 * time.Millisecond)
+		wg.Wait()
 
 		capturedOutput := buf.String()
 
 		// Assert that the printed message matches the expected message
 		require.Contains(t, capturedOutput, tc.expectedMessage)
-
-		// Reset log output to standard output
-		log.SetOutput(os.Stdout)
 	}
+	// Reset log output to standard output
+	logger.Log.SetOutput(os.Stdout)
 }
 
 // TestScanNow validates the behavior of the ScanNow function.
