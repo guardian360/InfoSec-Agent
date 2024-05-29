@@ -120,7 +120,6 @@ func startWorkers(workerAmount int, wg *sync.WaitGroup, checksChan chan func() c
 				mu.Lock()
 				*checkResults = append(*checkResults, result)
 				if dialogPresent {
-					//err := dialog.Text(fmt.Sprintf("Running check %d of %d", *counter, totalChecks))
 					err := dialog.Text(fmt.Sprintf(localization.Localize(language, "Dialogs.Scan.Content"), *counter, totalChecks))
 					if err != nil {
 						logger.Log.ErrorWithErr("Error setting progress text:", err)

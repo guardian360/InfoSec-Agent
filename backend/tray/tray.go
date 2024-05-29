@@ -304,7 +304,6 @@ func ChangeScanInterval(testInput ...string) {
 	scanInterval := usersettings.LoadUserSettings().ScanInterval
 	if err != nil || interval <= 0 {
 		if !test {
-			// err = zenity.Info("Invalid input. Using previous interval of "+strconv.Itoa(scanInterval)+" hours.",
 			err = zenity.Info(fmt.Sprintf(localization.Localize(Language, "Dialogs.ScanInterval.InvalidChangeContent"), scanInterval),
 				zenity.Title(localization.Localize(Language, "Dialogs.ScanInterval.InvalidChangeTitle")))
 			if err != nil {
@@ -316,7 +315,6 @@ func ChangeScanInterval(testInput ...string) {
 		return
 	}
 	if !test {
-		// err = zenity.Info("Scan interval changed to "+strconv.Itoa(interval)+" hours",
 		err = zenity.Info(fmt.Sprintf(localization.Localize(Language, "Dialogs.ScanInterval.ChangedContent"), interval),
 			zenity.Title(localization.Localize(Language, "Dialogs.ScanInterval.ChangedTitle")))
 		if err != nil {
