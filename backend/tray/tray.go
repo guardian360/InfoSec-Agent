@@ -5,6 +5,7 @@
 package tray
 
 import (
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/gamification"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/usersettings"
 	"github.com/go-toast/toast"
@@ -338,9 +339,9 @@ func ChangeScanInterval(testInput ...string) {
 func ScanNow(dialogPresent bool) ([]checks.Check, error) {
 	// ScanCounter is not concretely used at the moment
 	// might be useful in the future
+	fmt.Print(time.Since(time.Date(2024, 5, 28, 7, 0, 0, 0, time.Now().Location())))
 	ScanCounter++
 	logger.Log.Info("Scanning now. Scan:" + strconv.Itoa(ScanCounter))
-
 	var result []checks.Check
 	var err error
 	var dialog zenity.ProgressDialog
@@ -364,20 +365,23 @@ func ScanNow(dialogPresent bool) ([]checks.Check, error) {
 			return result, err
 		}
 	}
-	/*// Uncomment for points printing
 
-	//Temporary dummy game state. For future changed to the current saved game state.
-	//gsDummy := gamification.GameState{Points: 0, PointsHistory: nil, LighthouseState: 0}
-	gsDummy := gamification.GameState{Points: 0, PointsHistory: []int{}, LighthouseState: 0}
+	var gs gamification.GameState
 
-	//Calculate points based on the scan results
-	gs, err := gamification.PointCalculation(gsDummy, result, "reporting-page/database.db")
+	// Check if it is the first scan the user has done, so we initialise the gamestate.
+	// Otherwise we update the gamestate.
+	if ScanCounter <= 1 {
+		gs = gamification.GameState{Points: 0, PointsHistory: []gamification.PointRecord{}, LighthouseState: 0}
+		_, err = gamification.PointCalculation(gs, result, "reporting-page/database.db")
+	} else {
+		_, err = gamification.PointCalculation(gs, result, "reporting-page/database.db")
+	}
 	if err != nil {
 		logger.Log.ErrorWithErr("Error calculating points:", err)
 		return result, err
 	}
 
-	fmt.Print(gs)*/
+	//fmt.Print(gs)
 
 	return result, nil
 }

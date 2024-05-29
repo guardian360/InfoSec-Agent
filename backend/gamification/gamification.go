@@ -24,7 +24,7 @@ type GameState struct {
 // PointRecord is a struct that represents the amount of points and the moment they were obtained.
 type PointRecord struct {
 	Points    int
-	TimeStamp time.Time
+	DateStamp time.Time
 }
 
 // PointCalculation calculatese the number of points for the user based on the check results.
@@ -59,7 +59,7 @@ func PointCalculation(gs GameState, scanResults []checks.Check, databasePath str
 		if sev != 4 {
 			gs.Points += sev
 		}
-		gs.PointsHistory = append(gs.PointsHistory, PointRecord{Points: gs.Points, TimeStamp: time.Now()})
+		gs.PointsHistory = append(gs.PointsHistory, PointRecord{Points: gs.Points, DateStamp: time.Now()})
 	}
 	// Close the database
 	logger.Log.Debug("Closing database")
@@ -73,6 +73,15 @@ func PointCalculation(gs GameState, scanResults []checks.Check, databasePath str
 	return gs, nil
 }
 
+func sufficientActivity(history []PointRecord, duration time.Duration) bool {
+	if len(history) == 0 {
+		return false
+	}
+	oldestRecord := history[0].DateStamp
+
+	return time.Since(oldestRecord) > duration
+}
+
 // LighthouseStateTransition determines the lighthouse state based on the user's points (the less points, the better)
 //
 // Parameters:
@@ -81,16 +90,18 @@ func PointCalculation(gs GameState, scanResults []checks.Check, databasePath str
 // Returns:
 //   - GameState: The updated game state with the new lighthouse state.
 func LighthouseStateTransition(gs GameState) GameState {
+	requiredDuration := time.Duration(24)
+
 	switch {
-	case gs.Points < 10:
+	case gs.Points < 10 && sufficientActivity(gs.PointsHistory, requiredDuration):
 		gs.LighthouseState = 5
-	case gs.Points < 20:
+	case gs.Points < 20 && sufficientActivity(gs.PointsHistory, requiredDuration):
 		gs.LighthouseState = 4
-	case gs.Points < 30:
+	case gs.Points < 30 && sufficientActivity(gs.PointsHistory, requiredDuration):
 		gs.LighthouseState = 3
-	case gs.Points < 40:
+	case gs.Points < 40 && sufficientActivity(gs.PointsHistory, requiredDuration):
 		gs.LighthouseState = 2
-	case gs.Points < 50:
+	case gs.Points < 50 && sufficientActivity(gs.PointsHistory, requiredDuration):
 		gs.LighthouseState = 1
 	default:
 		gs.LighthouseState = 0
