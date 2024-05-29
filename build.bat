@@ -3,6 +3,7 @@
 @echo off
 go install github.com/tc-hib/go-winres@latest
 go generate
-go build -buildmode=exe -ldflags -H=windowsgui
+go build -buildmode=exe -ldflags="-H=windowsgui -s -w"
+rm *.syso
 cd reporting-page
 wails build
