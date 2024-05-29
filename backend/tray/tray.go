@@ -300,12 +300,23 @@ func ChangeScanInterval(testInput ...string) {
 
 	// Parse the user input
 	interval, err := strconv.Atoi(res)
+	scanInterval := usersettings.LoadUserSettings().ScanInterval
 	if err != nil || interval <= 0 {
-		logger.Log.Printf("Invalid input. Using default interval of 24 hours.")
-		interval = 24
+		err = zenity.Info("Invalid input. Using previous interval of "+strconv.Itoa(scanInterval)+" hours.",
+			zenity.Title("Invalid scan interval input"))
+		if err != nil {
+			logger.Log.ErrorWithErr("Error creating invalid interval confirmation dialog:", err)
+		}
+		interval = scanInterval
+	} else {
+		err = zenity.Info("Scan interval changed to "+strconv.Itoa(interval)+" hours",
+			zenity.Title("Scan Interval Changed"))
+		if err != nil {
+			logger.Log.ErrorWithErr("Error creating interval confirmation dialog:", err)
+		}
 	}
 
-	logger.Log.Printf("Scan interval changed to %d hours\n", interval)
+	logger.Log.Info("Scan interval changed to " + strconv.Itoa(interval) + " hours")
 	err = usersettings.SaveUserSettings(usersettings.UserSettings{
 		Language:     usersettings.LoadUserSettings().Language,
 		ScanInterval: interval,
