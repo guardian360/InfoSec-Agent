@@ -6,6 +6,7 @@ package gamification
 import (
 	"database/sql"
 	"strconv"
+	"time"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/database"
@@ -16,11 +17,17 @@ import (
 // This consists of the user's points, a history of all previous points, and a lighthouse state.
 type GameState struct {
 	Points          int
-	PointsHistory   []int
+	PointsHistory   []PointRecord
 	LighthouseState int
 }
 
-// PointCalculation calculates the number of points for the user based on the check results.
+// PointRecord is a struct that represents the amount of points and the moment they were obtained.
+type PointRecord struct {
+	Points    int
+	TimeStamp time.Time
+}
+
+// PointCalculation calculatese the number of points for the user based on the check results.
 //
 // Parameters:
 //   - gs (GameState): The current game state, which includes the user's points and lighthouse state.
@@ -48,12 +55,11 @@ func PointCalculation(gs GameState, scanResults []checks.Check, databasePath str
 			return gs, err1
 		}
 		logger.Log.Info("Issue ID: " + strconv.Itoa(result.IssueID) + " Severity: " + strconv.Itoa(sev))
-
 		// When severity is of the Informative level , we do not want to adjust the points
 		if sev != 4 {
 			gs.Points += sev
 		}
-		gs.PointsHistory = append(gs.PointsHistory, gs.Points)
+		gs.PointsHistory = append(gs.PointsHistory, PointRecord{Points: gs.Points, TimeStamp: time.Now()})
 	}
 	// Close the database
 	logger.Log.Debug("Closing database")

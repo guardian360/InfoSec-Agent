@@ -4,6 +4,7 @@ import (
 	"os"
 	"strconv"
 	"testing"
+	"time"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/gamification"
@@ -49,9 +50,9 @@ func TestPointCalculation(t *testing.T) {
 		name string
 		gs   gamification.GameState
 	}{
-		{name: "GameState with no points and no point history", gs: gamification.GameState{Points: 0, PointsHistory: []int{}, LighthouseState: 0}},
-		{name: "GameState with positive points and no point history", gs: gamification.GameState{Points: 29, PointsHistory: []int{}, LighthouseState: 3}},
-		{name: "GameState with positive points and point history", gs: gamification.GameState{Points: 37, PointsHistory: []int{50, 28, 34}, LighthouseState: 2}},
+		{name: "GameState with no points and no point history", gs: gamification.GameState{Points: 0, PointsHistory: []gamification.PointRecord{}, LighthouseState: 0}},
+		{name: "GameState with positive points and no point history", gs: gamification.GameState{Points: 29, PointsHistory: []gamification.PointRecord{}, LighthouseState: 3}},
+		{name: "GameState with positive points and point history", gs: gamification.GameState{Points: 37, PointsHistory: []gamification.PointRecord{{50, time.Now()}, {28, time.Now()}, {34, time.Now()}}, LighthouseState: 2}},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -81,7 +82,7 @@ func TestLighthouseStateTransition(t *testing.T) {
 	}
 	for i, tt := range tests {
 		t.Run("Test "+strconv.Itoa(i), func(t *testing.T) {
-			gs := gamification.GameState{Points: tt.points, PointsHistory: []int{}, LighthouseState: 9}
+			gs := gamification.GameState{Points: tt.points, PointsHistory: []gamification.PointRecord{}, LighthouseState: 9}
 			got := gamification.LighthouseStateTransition(gs)
 			require.Equal(t, tt.expectedLighthouseState, got.LighthouseState)
 		})
