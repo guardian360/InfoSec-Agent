@@ -494,7 +494,7 @@ func Popup(scanResult []checks.Check, path string) error {
 			{Type: "protocol", Label: "Open Reporting Page", Arguments: "infosecagent:"},
 		},
 	}
-	if err := notification.Push(); err != nil {
+	if err = notification.Push(); err != nil {
 		return fmt.Errorf("error pushing scan notification: %w", err)
 	}
 	return nil
