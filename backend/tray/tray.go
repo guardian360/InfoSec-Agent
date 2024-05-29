@@ -7,9 +7,10 @@ package tray
 import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/usersettings"
-	"github.com/pkg/errors"
+	"github.com/go-toast/toast"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/database"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/icon"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/localization"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/scan"
@@ -17,6 +18,7 @@ import (
 	"github.com/getlantern/systray"
 	"github.com/ncruces/zenity"
 
+	"errors"
 	"fmt"
 	"os"
 	"os/exec"
@@ -27,7 +29,6 @@ import (
 )
 
 var ScanCounter int
-var ScanTicker *time.Ticker
 
 // Language is used to represent the index of the currently selected language.
 // The language indices are as follows:
@@ -72,7 +73,7 @@ type MenuItem struct {
 
 // OnReady orchestrates the runtime behavior of the system tray application.
 //
-// This function sets up the system tray with various menu items such as 'Reporting Page', 'Change Scan Interval', 'Scan Now', 'Change Language', and 'Quit'. It also initializes a ticker for scheduled security scans and a signal listener for system termination signals.
+// This function sets up the system tray with various menu items such as 'Reporting Page', 'Change Scan Interval', 'Scan Now', 'Change Language', and 'Quit'.
 // It then enters a loop where it listens for various events such as clicks on the menu items, system termination signals, and elapse of the scan interval. Depending on the event, it performs actions such as opening the reporting page, changing the scan interval, initiating an immediate scan, changing the application language, refreshing the menu, or quitting the application.
 //
 // Parameters: None.
@@ -83,8 +84,9 @@ func OnReady() {
 	systray.SetIcon(icon.Data)
 	systray.SetTooltip("InfoSec Agent")
 
-	Language = usersettings.LoadUserSettings().Language
-	scanInterval := usersettings.LoadUserSettings().ScanInterval
+	settings := usersettings.LoadUserSettings()
+	Language = settings.Language
+	scanInterval := settings.ScanInterval
 
 	// Generate the menu for the system tray application
 	mReportingPage := systray.AddMenuItem(localization.Localize(Language, "Tray.ReportingPageTitle"),
@@ -122,8 +124,7 @@ func OnReady() {
 	signal.Notify(sigc, syscall.SIGTERM, syscall.SIGINT)
 
 	ScanCounter = 0
-	// Set a ticker to run a scan at a set interval (default = 1 week)
-	ScanTicker = time.NewTicker(time.Duration(scanInterval) * time.Hour)
+	ticker := time.NewTicker(30 * time.Minute)
 
 	// Iterate over each menu option/signal
 	for {
@@ -131,14 +132,20 @@ func OnReady() {
 		case <-mReportingPage.ClickedCh:
 			err := OpenReportingPage("")
 			if err != nil {
-				logger.Log.Println(err)
+				logger.Log.ErrorWithErr("Error opening reporting page:", err)
 			}
 		case <-mChangeScanInterval.ClickedCh:
 			ChangeScanInterval()
 		case <-mScanNow.ClickedCh:
-			_, err := ScanNow()
+			result, err := ScanNow(true)
 			if err != nil {
 				logger.Log.ErrorWithErr("Error scanning:", err)
+			} else {
+				// Notify the user that a scan has been completed
+				err = Popup(result, "./reporting-page/database.db")
+				if err != nil {
+					logger.Log.ErrorWithErr("Error notifying user:", err)
+				}
 			}
 		case <-mChangeLanguage.ClickedCh:
 			ChangeLanguage()
@@ -147,14 +154,8 @@ func OnReady() {
 			systray.Quit()
 		case <-sigc:
 			systray.Quit()
-		// Executes each time the ScanTicker has elapsed the set amount of time
-		case <-ScanTicker.C:
-			ScanCounter++
-			logger.Log.Println("Scan:", ScanCounter)
-			_, err := ScanNow()
-			if err != nil {
-				logger.Log.ErrorWithErr("Error scanning:", err)
-			}
+		case <-ticker.C:
+			periodicScan(scanInterval)
 		}
 	}
 }
@@ -187,10 +188,13 @@ func OpenReportingPage(path string) error {
 		return errors.New("reporting-page is already running")
 	}
 
+	logger.Log.Debug("opening reporting page")
+
+	// TODO: use build tags to differentiate between development and release versions
 	// Get the current working directory
-	//TODO: In a release version, there (should be) no need to build the application, just run it
-	//Consideration: Wails can also send (termination) signals to the back-end, might be worth investigating
+	// Consideration: Wails can also send (termination) signals to the back-end, might be worth investigating
 	originalDir, err := os.Getwd()
+	logger.Log.Debug("current directory: " + originalDir)
 	if err != nil {
 		return fmt.Errorf("error getting current directory: %w", err)
 	}
@@ -205,12 +209,13 @@ func OpenReportingPage(path string) error {
 	defer func() {
 		err = os.Chdir(originalDir)
 		if err != nil {
-			logger.Log.ErrorWithErr("Error changing directory:", err)
+			logger.Log.ErrorWithErr("error changing directory:", err)
 		}
 		ReportingPageOpen = false
 	}()
 
-	const build = true
+	//TODO: In a release version, there (should be) no need to build the application, just run it
+	const build = false
 	if build {
 		err = BuildReportingPage()
 		if err != nil {
@@ -227,34 +232,39 @@ func OpenReportingPage(path string) error {
 	go func() {
 		<-mQuit.ClickedCh
 		if err = runCmd.Process.Kill(); err != nil {
-			logger.Log.ErrorWithErr("Error interrupting reporting-page process:", err)
+			logger.Log.ErrorWithErr("error interrupting reporting-page process:", err)
 		}
 		ReportingPageOpen = false
 		systray.Quit()
 	}()
 
-	ReportingPageOpen = true
 	// Run the reporting page executable
+	ReportingPageOpen = true
 	if err = runCmd.Run(); err != nil {
 		ReportingPageOpen = false
 		return fmt.Errorf("error running reporting-page: %w", err)
 	}
+
+	logger.Log.Debug("reporting page opened")
 	return nil
 }
 
 // BuildReportingPage builds the reporting page executable using a Wails application
 //
-// Parameters: _
+// Parameters:
+//   - path string: The relative path to the reporting-page directory. This is used to change the current working directory to the reporting-page directory.
 //
-// Returns: _
+// Returns:
+//   - error: An error object if an error occurred during the process, otherwise nil.
 func BuildReportingPage() error {
-	buildCmd := exec.Command("wails", "build", "-windowsconsole")
-
+	// Build reporting page
+	buildCmd := exec.Command("wails", "build")
 	buildCmd.Stdout = os.Stdout
 	buildCmd.Stderr = os.Stderr
 	if err := buildCmd.Run(); err != nil {
 		return fmt.Errorf("error building reporting-page: %w", err)
 	}
+	logger.Log.Debug("reporting page built successfully")
 	return nil
 }
 
@@ -267,16 +277,20 @@ func BuildReportingPage() error {
 // Parameters:
 //   - testInput ...string: Optional parameter used for testing. If provided, the function uses this as the user's input instead of displaying the dialog window.
 //
-// Returns: None. The function updates the 'ScanTicker' variable in-place.
+// Returns: None.
 func ChangeScanInterval(testInput ...string) {
 	var res string
 	// If testInput is provided, use it for testing
 	if len(testInput) > 0 {
 		res = testInput[0]
 	} else {
+		scanInterval := usersettings.LoadUserSettings().ScanInterval
+
 		// Get user input by creating a dialog window
 		var err error
-		res, err = zenity.Entry("Enter the scan interval (in hours):", zenity.Title("Change Scan Interval"),
+		res, err = zenity.Entry("Enter the scan interval (in hours):",
+			zenity.Title("Change Scan Interval"),
+			zenity.EntryText(strconv.Itoa(scanInterval)),
 			zenity.DefaultItems("24"))
 		if err != nil {
 			logger.Log.ErrorWithErr("Error creating dialog:", err)
@@ -291,16 +305,15 @@ func ChangeScanInterval(testInput ...string) {
 		interval = 24
 	}
 
-	// Restart the ticker with the new interval
-	if ScanTicker != nil {
-		ScanTicker.Stop()
-	}
-	ScanTicker = time.NewTicker(time.Duration(interval) * time.Hour)
 	logger.Log.Printf("Scan interval changed to %d hours\n", interval)
-	usersettings.SaveUserSettings(usersettings.UserSettings{
+	err = usersettings.SaveUserSettings(usersettings.UserSettings{
 		Language:     usersettings.LoadUserSettings().Language,
 		ScanInterval: interval,
+		NextScan:     time.Now().Add(time.Duration(interval) * time.Hour),
 	})
+	if err != nil {
+		logger.Log.Warning("Scan interval setting not saved to file")
+	}
 }
 
 // ScanNow initiates an immediate security scan, bypassing the scheduled intervals.
@@ -308,43 +321,55 @@ func ChangeScanInterval(testInput ...string) {
 // This function triggers a security scan regardless of the scheduled intervals. It is useful for situations where an immediate scan is required, such as after a significant system change or when manually requested by the user.
 // During the scan, a progress dialog is displayed to keep the user informed about the scan progress. Once the scan is complete, the dialog is closed and the results of the scan are returned.
 //
-// Parameters: None.
+// Parameters:
+//   - dialogPresent bool: A boolean value indicating whether a progress dialog should be displayed during the scan. If true, a dialog is shown; if false, no dialog is displayed.
 //
 // Returns:
 //   - []checks.Check: A list of checks performed during the scan.
 //   - error: An error object if an error occurred during the scan, otherwise nil.
-func ScanNow() ([]checks.Check, error) {
+func ScanNow(dialogPresent bool) ([]checks.Check, error) {
 	// ScanCounter is not concretely used at the moment
 	// might be useful in the future
 	ScanCounter++
 	logger.Log.Info("Scanning now. Scan:" + strconv.Itoa(ScanCounter))
 
-	// Display a progress dialog while the scan is running
-	dialog, err := zenity.Progress(
-		zenity.Title("Security/Privacy Scan"))
-	if err != nil {
-		logger.Log.ErrorWithErr("Error creating dialog:", err)
-		return nil, err
-	}
-	// Defer closing the dialog until the scan completes
-	defer func(dialog zenity.ProgressDialog) {
-		err = dialog.Close()
+	var result []checks.Check
+	var err error
+	var dialog zenity.ProgressDialog
+	if dialogPresent {
+		dialog, result, err = runScanWithDialog()
 		if err != nil {
-			logger.Log.ErrorWithErr("Error closing dialog:", err)
+			logger.Log.ErrorWithErr("Error running scan with dialog:", err)
+			return result, err
 		}
-	}(dialog)
+		// Defer closing the dialog until the scan completes
+		defer func(dialog zenity.ProgressDialog) {
+			err = dialog.Close()
+			if err != nil {
+				logger.Log.ErrorWithErr("Error closing dialog:", err)
+			}
+		}(dialog)
+	} else {
+		result, err = scan.Scan(nil)
+		if err != nil {
+			logger.Log.ErrorWithErr("Error calling scan:", err)
+			return result, err
+		}
+	}
+	/*// Uncomment for points printing
 
-	result, err := scan.Scan(dialog)
+	//Temporary dummy game state. For future changed to the current saved game state.
+	//gsDummy := gamification.GameState{Points: 0, PointsHistory: nil, LighthouseState: 0}
+	gsDummy := gamification.GameState{Points: 0, PointsHistory: []int{}, LighthouseState: 0}
+
+	//Calculate points based on the scan results
+	gs, err := gamification.PointCalculation(gsDummy, result, "reporting-page/database.db")
 	if err != nil {
-		logger.Log.ErrorWithErr("Error calling scan:", err)
+		logger.Log.ErrorWithErr("Error calculating points:", err)
 		return result, err
 	}
 
-	err = dialog.Complete()
-	if err != nil {
-		logger.Log.ErrorWithErr("Error completing dialog:", err)
-		return result, err
-	}
+	fmt.Print(gs)*/
 
 	return result, nil
 }
@@ -370,7 +395,8 @@ func ScanNow() ([]checks.Check, error) {
 // Returns: None. The function updates the 'language' variable in-place.
 func ChangeLanguage(testInput ...string) {
 	var res string
-	if len(testInput) > 0 {
+	test := testInput != nil
+	if test {
 		res = testInput[0]
 	} else {
 		var err error
@@ -402,10 +428,17 @@ func ChangeLanguage(testInput ...string) {
 	default:
 		Language = 1
 	}
-	usersettings.SaveUserSettings(usersettings.UserSettings{
+
+	if test {
+		return
+	}
+	err := usersettings.SaveUserSettings(usersettings.UserSettings{
 		Language:     Language,
 		ScanInterval: usersettings.LoadUserSettings().ScanInterval,
 	})
+	if err != nil {
+		logger.Log.Warning("Language setting not saved to file")
+	}
 }
 
 // RefreshMenu updates the system tray menu items to reflect the current language setting.
@@ -422,4 +455,133 @@ func RefreshMenu() {
 		item.sysMenuItem.SetTitle(localization.Localize(Language, item.MenuTitle))
 		item.sysMenuItem.SetTooltip(localization.Localize(Language, item.menuTooltip))
 	}
+}
+
+// Popup displays a notification to the user when a scan is completed.
+//
+// This function creates a notification with a title, message, and icon to inform the user that a scan has been completed.
+// The notification also includes an action button that lets the user open the reporting page.
+//
+// Parameters: scanResult []checks.Check: A slice of checks representing the scan results.
+//
+// Returns: error: An error object if an error occurred during the scan, otherwise nil.
+func Popup(scanResult []checks.Check, path string) error {
+	// Generate notification message based on the severity of the issues found during the scan
+	resultMessage := PopupMessage(scanResult, path)
+
+	// Create a notification to inform the user that the scan is complete
+	notification := toast.Notification{
+		AppID:   "InfoSec Agent",
+		Title:   "Scan Completed",
+		Message: resultMessage,
+		// Icon:    "",
+		ActivationArguments: "infosecagent:",
+		Actions: []toast.Action{
+			{Type: "protocol", Label: "Open Reporting Page", Arguments: "infosecagent:"},
+		},
+	}
+	if err := notification.Push(); err != nil {
+		return fmt.Errorf("error pushing scan notification: %w", err)
+	}
+	return nil
+}
+
+// PopupMessage generates a notification message based on the severity of the issues found during the scan.
+//
+// This function takes a slice of checks representing the scan results and generates a notification message based on the number of issues found at each severity level.
+// The message informs the user about the number of issues found during the scan and prompts them to open the reporting page for more information.
+//
+// Parameters: scanResult []checks.Check: A slice of checks representing the scan results.
+//
+// Returns: string: A notification message based on the severity of the issues found during the scan.
+func PopupMessage(scanResult []checks.Check, path string) string {
+	dbData, err := database.GetData(scanResult, path)
+	if err != nil {
+		logger.Log.ErrorWithErr("Error getting database data:", err)
+	}
+	severityCounters := make(map[int]int)
+	for _, issue := range dbData {
+		severityCounters[issue.Severity]++
+	}
+	if severityCounters[3] > 0 {
+		if severityCounters[3] == 1 {
+			return "The privacy and security scan has been completed. You have 1 high risk issue. Open the reporting page to see more information."
+		}
+		return fmt.Sprintf("The privacy and security scan has been completed. You have %d high risk issues. Open the reporting page to see more information.", severityCounters[3])
+	} else if severityCounters[2] > 0 {
+		if severityCounters[2] == 1 {
+			return "The privacy and security scan has been completed. You have 1 medium risk issue. Open the reporting page to see more information."
+		}
+		return fmt.Sprintf("The privacy and security scan has been completed. You have %d medium risk issues. Open the reporting page to see more information.", severityCounters[2])
+	}
+	return "The privacy and security scan has been completed. Open the reporting page to view the results."
+}
+
+// changeNextScan updates the next scan time based on the current time and the scan interval.
+//
+// Parameters:
+//   - settings usersettings.UserSettings: The user settings object containing the current scan interval and next scan time.
+//   - value int: The new scan interval in hours.
+//
+// Returns: None.
+func changeNextScan(settings usersettings.UserSettings, value int) {
+	settings.NextScan = time.Now().Add(time.Duration(value) * time.Hour)
+	err := usersettings.SaveUserSettings(settings)
+	if err != nil {
+		logger.Log.Warning("Next scan time not saved to file")
+	}
+}
+
+// periodicScan checks if a scan is due based on the scan interval and the current time.
+// If a scan is due, it performs a scan and notifies the user using a pop-up.
+//
+// Parameters:
+//   - scanInterval int: The scan interval in hours.
+//
+// Returns: None.
+func periodicScan(scanInterval int) {
+	settings := usersettings.LoadUserSettings()
+	if time.Now().After(settings.NextScan) {
+		result, err := ScanNow(false)
+		if err != nil {
+			logger.Log.ErrorWithErr("Error performing periodic scan:", err)
+		} else {
+			// Notify the user that a scan has been completed
+			err = Popup(result, "./reporting-page/database.db")
+			if err != nil {
+				logger.Log.ErrorWithErr("Error notifying user:", err)
+			}
+		}
+		// Update the next scan time
+		changeNextScan(settings, scanInterval)
+	}
+}
+
+// runScanWithDialog runs a scan with a progress dialog to keep the user informed about the scan progress.
+// It returns the progress dialog, the scan results, and any error that occurred during the scan.
+//
+// Parameters: None.
+//
+// Returns:
+//   - zenity.ProgressDialog: A progress dialog that displays the scan progress to the user.
+//   - []checks.Check: A slice of checks representing the scan results.
+//   - error: An error object that describes the error (if any) that occurred during the scan.
+func runScanWithDialog() (zenity.ProgressDialog, []checks.Check, error) {
+	dialog, err := zenity.Progress(
+		zenity.Title("Security/Privacy Scan"))
+	if err != nil {
+		logger.Log.ErrorWithErr("Error creating dialog:", err)
+	}
+	result, err := scan.Scan(dialog)
+	if err != nil {
+		logger.Log.ErrorWithErr("Error calling scan:", err)
+		return dialog, result, err
+	}
+
+	err = dialog.Complete()
+	if err != nil {
+		logger.Log.ErrorWithErr("Error completing dialog:", err)
+		return dialog, result, err
+	}
+	return dialog, result, err
 }

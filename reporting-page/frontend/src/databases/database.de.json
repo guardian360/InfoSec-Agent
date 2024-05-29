@@ -1,0 +1,1473 @@
+{
+    "10": {
+        "Name": "Keine Geräte über Bluetooth verbunden",
+        "Type": "Sicherheit",
+        "Information": "Die Bluetooth-Technologie ermöglicht die drahtlose Übertragung und den Empfang von Daten. Während diese Funktionalität bei bestimmungsgemäßem Gebrauch in der Regel harmlos ist, kann sie zu einem Sicherheitsrisiko werden, wenn sie von böswilligen Akteuren ausgenutzt wird. Wenn ein böswilliger Benutzer über eine Bluetooth-Verbindung unbefugten Zugriff auf Ihr Gerät erhält, kann er möglicherweise Ihre Daten stehlen, Ihre Aktivitäten abhören oder sogar Malware auf Ihr Gerät senden. Um diese Risiken zu mindern, ist es wichtig, Ihr Gerät nur mit bekannten und vertrauenswürdigen Geräten zu verbinden.",
+        "Solution": 
+        [   
+            "Es sind keine Geräte über Bluetooth verbunden, daher sind keine Maßnahmen erforderlich."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "11": {
+        "Name": "Geräte über Bluetooth verbunden",
+        "Type": "Sicherheit",
+        "Information": "Die Bluetooth-Technologie ermöglicht die drahtlose Übertragung und den Empfang von Daten. Während diese Funktionalität bei bestimmungsgemäßem Gebrauch in der Regel harmlos ist, kann sie zu einem Sicherheitsrisiko werden, wenn sie von böswilligen Akteuren ausgenutzt wird. Wenn ein böswilliger Benutzer über eine Bluetooth-Verbindung unbefugten Zugriff auf Ihr Gerät erhält, kann er möglicherweise Ihre Daten stehlen, Ihre Aktivitäten abhören oder sogar Malware auf Ihr Gerät senden. Um diese Risiken zu mindern, ist es wichtig, Ihr Gerät nur mit bekannten und vertrauenswürdigen Geräten zu verbinden.",
+        "Solution": 
+        [   
+            "Gehen Sie zu Start > Einstellungen > Bluetooth & Geräte.", 
+            "Hier können Sie sehen, welche Geräte über Bluetooth verbunden sind, und diese bei Bedarf entfernen."
+        ],
+        "SolutionWindows10": 
+        [   
+            "Gehen Sie zu Start > Einstellungen > Geräte > Bluetooth und andere Geräte.", 
+            "Hier können Sie sehen, welche Geräte über Bluetooth verbunden sind, und Sie können sie bei Bedarf entfernen."
+        ],        
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/devices-connected-via-bluetooth/bluetooth-devices-1.jpg",
+            "frontend/src/assets/images/windows-11/devices-connected-via-bluetooth/bluetooth-devices-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/devices-connected-via-bluetooth/bluetooth-devices-1.png",
+            "frontend/src/assets/images/windows-10/devices-connected-via-bluetooth/bluetooth-devices-2.png"
+        ]
+    },
+    "20": {
+        "Name": "Keine externen Geräte angeschlossen",
+        "Type": "Sicherheit",
+        "Information": "Externe Geräte wie USB-Sticks, externe Festplatten und andere Peripheriegeräte können Sicherheitsrisiken für Ihren Computer darstellen. Malware kann durch infizierte externe Geräte verbreitet werden, wodurch die Sicherheit und Integrität Ihres Systems gefährdet wird. Indem Sie sicherstellen, dass keine externen Geräte angeschlossen sind, wenn sie nicht verwendet werden, verringern Sie das Risiko einer Malware-Infektion und eines unbefugten Zugriffs auf Ihr System.",
+        "Solution": 
+        [   
+            "Es sind keine externen Geräte angeschlossen, daher sind keine Maßnahmen erforderlich."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "21": {
+        "Name": "Externe Geräte angeschlossen",
+        "Type": "Sicherheit",
+        "Information": "Externe Geräte wie USB-Sticks, externe Festplatten und andere Peripheriegeräte können Sicherheitsrisiken für Ihren Computer darstellen. Malware kann durch infizierte externe Geräte verbreitet werden, wodurch die Sicherheit und Integrität Ihres Systems gefährdet wird. Indem Sie sicherstellen, dass keine externen Geräte angeschlossen sind, wenn sie nicht verwendet werden, verringern Sie das Risiko einer Malware-Infektion und eines unbefugten Zugriffs auf Ihr System.",
+        "Solution": 
+        [   
+            "Überprüfen Sie, ob externe Geräte an Ihren Computer angeschlossen sind, und trennen Sie diese, wenn sie nicht verwendet werden. Beispiele für externe Geräte sind USB-Sticks, externe Festplatten, externe Mikrofone, externe Kameras und andere Peripheriegeräte."
+        ],
+        "Screenshots":
+        [
+            "TOBEFILLED"
+        ]
+    },
+    "30": {
+        "Name": "Status des Gastkontos unbekannt",
+        "Type": "Sicherheit",
+        "Information": "Das Gastkonto ist ein Standardkonto, das entwickelt wurde, um temporären und eingeschränkten Zugriff auf das System für Personen ohne reguläre Benutzerkonten zu bieten. Wenn Sie der alleinige Benutzer des Computers sind und kein Gastkonto benötigen, empfiehlt es sich, dieses zu deaktivieren. Dies stellt sicher, dass keine unbefugten Benutzer auf Daten auf dem Computer zugreifen können, was die allgemeine Sicherheit und Privatsphäre erhöht.",
+        "Solution": 
+        [   
+            "Ein unbekannter Gastkontostatus kann ein Sicherheitsrisiko darstellen. Um den Status zu überprüfen und möglicherweise das Problem des Gastkontos zu lösen, folgen Sie diesen Schritten.",
+            "Gehen Sie zu Start > Andere Konten.", 
+            "Hier sehen Sie die anderen Konten. Wenn es ein Konto gibt, das Sie nicht kennen, oder ein Konto namens 'Gast', klicken Sie darauf.",
+            "Wählen Sie jetzt 'Entfernen' und bestätigen Sie die Löschung des Kontos.",
+            "Um abzuschließen, starten Sie Ihren Computer neu."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-3.jpg",        
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-3.jpg"
+        ]
+    },
+    "31": {
+        "Name": "Gastkonto aktiviert",
+        "Type": "Sicherheit",
+        "Information": "Das Gastkonto ist ein Standardkonto, das entwickelt wurde, um temporären und eingeschränkten Zugriff auf das System für Personen ohne reguläre Benutzerkonten zu bieten. Wenn Sie der alleinige Benutzer des Computers sind und kein Gastkonto benötigen, empfiehlt es sich, dieses zu deaktivieren. Dies stellt sicher, dass keine unbefugten Benutzer auf Daten auf dem Computer zugreifen können, was die allgemeine Sicherheit und Privatsphäre erhöht.",
+        "Solution": 
+        [   
+            "Gehen Sie zu Start > Andere Konten.", 
+            "Hier sehen Sie die anderen Konten. Wenn es ein Konto gibt, das Sie nicht kennen, oder ein Konto namens 'Gast', klicken Sie darauf.",
+            "Wählen Sie jetzt 'Entfernen' und bestätigen Sie die Löschung des Kontos.",
+            "Um abzuschließen, starten Sie Ihren Computer neu."
+        ],
+        "SolutionWindows10": 
+        [   
+            "Gehen Sie zu Start > Einstellungen > Konten > Familie & andere Benutzer.", 
+            "Hier sehen Sie die anderen Konten. Wenn es ein Konto gibt, das Sie nicht kennen, oder etwas, das 'Gast' genannt wird, klicken Sie darauf.",
+            "Wählen Sie nun 'Entfernen' und bestätigen Sie das Löschen des Kontos.",
+            "Starten Sie abschließend Ihren Computer neu."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-3.jpg",        
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-3.jpg"
+        ]
+    },
+    "32": {
+        "Name": "Gastkonto deaktiviert",
+        "Type": "Sicherheit",
+        "Information": "Das Gastkonto ist ein Standardkonto, das entwickelt wurde, um temporären und eingeschränkten Zugriff auf das System für Personen ohne reguläre Benutzerkonten zu bieten. Wenn Sie der alleinige Benutzer des Computers sind und kein Gastkonto benötigen, empfiehlt es sich, dieses zu deaktivieren. Dies stellt sicher, dass keine unbefugten Benutzer auf Daten auf dem Computer zugreifen können, was die allgemeine Sicherheit und Privatsphäre erhöht.",
+        "Solution": 
+        [   
+            "Es gibt kein Gastkonto auf Ihrem Computer, daher sind keine Maßnahmen erforderlich."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "40": {
+        "Name": "Werbe-ID-Freigabe deaktiviert",
+        "Type": "Privatsphäre",
+        "Information": "Die Einstellung der Werbe-ID ermöglicht es Windows, Ihnen personalisierte Anzeigen zu senden. Es ist wichtig, die Menge an Entitäten, die Ihre persönlichen Daten haben, zu begrenzen, daher ist es sicherer, diese Einstellung zu deaktivieren.",
+        "Solution": 
+        [
+            "Die Werbe-ID-Freigabe ist deaktiviert, daher sind keine Maßnahmen erforderlich."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "41": {
+        "Name": "Werbe-ID-Freigabe aktiviert",
+        "Type": "Sicherheit",
+        "Information": "Die Einstellung der Werbe-ID ermöglicht es Windows, Ihnen personalisierte Anzeigen zu senden. Es ist wichtig, die Menge an Entitäten, die Ihre persönlichen Daten haben, zu begrenzen, daher ist es sicherer, diese Einstellung zu deaktivieren.",
+        "Solution": 
+        [
+            "Gehen Sie zu Start > Einstellungen > Datenschutz & Sicherheit > Allgemein",
+            "Hier können Sie die Einstellungen der Werbe-ID steuern und die Funktion ein-/ausschalten."
+        ],
+        "SolutionWindows10": 
+        [
+            "Gehen Sie zu Start > Einstellungen > Datenschutz > Allgemein.",
+            "Hier können Sie die Einstellungen für die Werbe-ID steuern und die Funktion ein-/ausschalten."
+        ],        
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/network-sharing/nearby-sharing-1.jpg",
+            "frontend/src/assets/images/windows-11/network-sharing/nearby-sharing-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/network-sharing/advertisementid-sharing-1.png",
+            "frontend/src/assets/images/windows-10/network-sharing/advertisementid-sharing-2.png"
+        ]
+    },
+    "42": {
+        "Name": "Netzwerkfreigabe deaktiviert",
+        "Type": "Sicherheit",
+        "Information": "Die Netzwerkfreigabe bezieht sich auf die Möglichkeit, Ressourcen wie Dateien, Ordner, Drucker und Internetverbindungen zwischen mehreren Geräten in einem Netzwerk zu teilen. Sie ermöglicht es Benutzern, auf freigegebene Ressourcen im Netzwerk zuzugreifen und zusammenzuarbeiten, wodurch der Datenaustausch und die Zusammenarbeit zwischen Benutzern und Geräten erleichtert wird. Berechtigungen können konfiguriert werden, um den Zugriff auf bestimmte Benutzer oder Gruppen zu erlauben oder zu verweigern, sodass sensible Daten sicher bleiben. Wenn Sie die Netzwerkfreigabe nicht benötigen, ist es sicherer, sie zu deaktivieren.",
+        "Solution": 
+        [   
+            "Die Netzwerkfreigabe ist deaktiviert, daher sind keine Maßnahmen erforderlich."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "43": {
+        "Name": "Netzwerkfreigabe-Status unbekannt",
+        "Type": "Sicherheit",
+        "Information": "Die Netzwerkfreigabe bezieht sich auf die Möglichkeit, Ressourcen wie Dateien, Ordner, Drucker und Internetverbindungen zwischen mehreren Geräten in einem Netzwerk zu teilen. Sie ermöglicht es Benutzern, auf freigegebene Ressourcen im Netzwerk zuzugreifen und zusammenzuarbeiten, wodurch der Datenaustausch und die Zusammenarbeit zwischen Benutzern und Geräten erleichtert wird. Berechtigungen können konfiguriert werden, um den Zugriff auf bestimmte Benutzer oder Gruppen zu erlauben oder zu verweigern, sodass sensible Daten sicher bleiben. Wenn Sie die Netzwerkfreigabe nicht benötigen, ist es sicherer, sie zu deaktivieren.",
+        "Solution": 
+        [   
+            "Es war nicht möglich, den Status der Netzwerkfreigabeeinstellungen abzurufen. Um den Status zu überprüfen und möglicherweise das Problem der Netzwerkfreigabe zu lösen, folgen Sie diesen Schritten.",
+            "Gehen Sie zu Start > Einstellungen > System > Einstellungen für die Nähefreigabe.", 
+            "Hier können Sie die Einstellungen der Netzwerkfreigabe steuern und die Funktion ausschalten."
+        ],
+        "SolutionWindows10": 
+        [   
+            "Es war nicht möglich, den Status der Netzwerkfreigabeeinstellungen abzurufen. Um den Status zu überprüfen und möglicherweise das Problem der Netzwerkfreigabe zu lösen, befolgen Sie diese Schritte.",
+            "Gehen Sie zu Start > Einstellungen > System > Geteilte Erfahrungen.", 
+            "Hier können Sie die Netzwerkfreigabeeinstellungen steuern und die Funktion ausschalten."
+        ],        
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/network-sharing/nearby-sharing-1.jpg",
+            "frontend/src/assets/images/windows-11/network-sharing/nearby-sharing-1.jpg",
+            "frontend/src/assets/images/windows-11/network-sharing/nearby-sharing-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/network-sharing/nearby-sharing-1.png",
+            "frontend/src/assets/images/windows-10/network-sharing/nearby-sharing-1.png",
+            "frontend/src/assets/images/windows-10/network-sharing/nearby-sharing-2.png"
+        ]
+    },
+    "50": {
+        "Name": "Passwort-Manager in Verwendung",
+        "Type": "Sicherheit",
+        "Information": "Die Verwendung eines Passwort-Managers bietet zahlreiche Vorteile für Einzelpersonen und Organisationen, die hauptsächlich auf die Verbesserung der Sicherheit, Bequemlichkeit und allgemeinen Passwortverwaltungspraktiken abzielen. Hier sind einige wichtige Gründe, warum Sie die Verwendung eines Passwort-Managers in Betracht ziehen sollten. Stärkere Passwörter: Passwort-Manager können komplexe, einzigartige Passwörter für jedes Ihrer Konten generieren. Diese Passwörter sind in der Regel lang, zufällig und schwer zu knacken, was die Sicherheit Ihrer Online-Konten im Vergleich zur Verwendung schwacher oder wiederverwendeter Passwörter erheblich verbessert. Beseitigung der Passwort-Wiederverwendung: Einer der häufigsten Sicherheitsfehler ist die Wiederverwendung von Passwörtern über mehrere Konten hinweg. Passwort-Manager ermöglichen es Ihnen, für jedes Konto einzigartige Passwörter zu generieren und zu speichern, wodurch das Risiko eines unbefugten Zugriffs im Falle einer Kompromittierung eines Kontos verringert wird. Bequemlichkeit: Passwort-Manager vereinfachen den Anmeldeprozess auf Websites und Online-Diensten, indem sie die Anmeldedaten automatisch für Sie ausfüllen. Dies spart Zeit und Aufwand, insbesondere beim Verwalten zahlreicher Konten auf verschiedenen Plattformen. Sichere Speicherung: Passwort-Manager verschlüsseln und speichern Ihre Passwörter in einem sicheren Tresor, der sie vor unbefugtem Zugriff schützt. Viele Passwort-Manager bieten auch zusätzliche Sicherheitsfunktionen wie Zwei-Faktor-Authentifizierung (2FA) und biometrische Authentifizierung, um den Schutz weiter zu verbessern.",
+        "Solution": 
+        [   
+            "Sie verwenden einen Passwort-Manager, daher sind keine Maßnahmen erforderlich."    
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "51": {
+        "Name": "Kein Passwort-Manager in Verwendung",
+        "Type": "Sicherheit",
+        "Information": "Die Verwendung eines Passwort-Managers bietet zahlreiche Vorteile für Einzelpersonen und Organisationen, die hauptsächlich auf die Verbesserung der Sicherheit, Bequemlichkeit und allgemeinen Passwortverwaltungspraktiken abzielen. Hier sind einige wichtige Gründe, warum Sie die Verwendung eines Passwort-Managers in Betracht ziehen sollten. Stärkere Passwörter: Passwort-Manager können komplexe, einzigartige Passwörter für jedes Ihrer Konten generieren. Diese Passwörter sind in der Regel lang, zufällig und schwer zu knacken, was die Sicherheit Ihrer Online-Konten im Vergleich zur Verwendung schwacher oder wiederverwendeter Passwörter erheblich verbessert. Beseitigung der Passwort-Wiederverwendung: Einer der häufigsten Sicherheitsfehler ist die Wiederverwendung von Passwörtern über mehrere Konten hinweg. Passwort-Manager ermöglichen es Ihnen, für jedes Konto einzigartige Passwörter zu generieren und zu speichern, wodurch das Risiko eines unbefugten Zugriffs im Falle einer Kompromittierung eines Kontos verringert wird. Bequemlichkeit: Passwort-Manager vereinfachen den Anmeldeprozess auf Websites und Online-Diensten, indem sie die Anmeldedaten automatisch für Sie ausfüllen. Dies spart Zeit und Aufwand, insbesondere beim Verwalten zahlreicher Konten auf verschiedenen Plattformen. Sichere Speicherung: Passwort-Manager verschlüsseln und speichern Ihre Passwörter in einem sicheren Tresor, der sie vor unbefugtem Zugriff schützt. Viele Passwort-Manager bieten auch zusätzliche Sicherheitsfunktionen wie Zwei-Faktor-Authentifizierung (2FA) und biometrische Authentifizierung, um den Schutz weiter zu verbessern.",
+        "Solution": 
+        [   
+            "Öffnen Sie Ihren Browser und suchen Sie nach einem Passwort-Manager wie: LastPass, Dashlane, Bitwarden oder einem anderen Passwort-Manager Ihrer Wahl.", 
+            "Befolgen Sie die Installationsschritte, die auf der Website des Passwort-Managers beschrieben sind."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/password-manager/password-manager-1.jpg",
+            "frontend/src/assets/images/windows-11/password-manager/password-manager-1.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/password-manager/password-manager-1.png",
+            "frontend/src/assets/images/windows-10/password-manager/password-manager-1.png"
+        ]
+    },
+    "60": {
+        "Name": "Anwendungen mit Standortberechtigung",
+        "Type": "Privatsphäre",
+        "Information": "Zu wissen, welche Anwendungen Zugriff auf Ihren Standort haben, ist wichtig, um Ihre Privatsphäre zu schützen. Es hilft Ihnen zu kontrollieren, wer Ihren Standort verfolgen kann, Sicherheitsrisiken zu vermeiden, die Akkulaufzeit zu schonen, die Datennutzung zu verwalten, Ihr App-Erlebnis anzupassen und die Einhaltung von Vorschriften sicherzustellen.",
+        "Solution": 
+        [   
+            "Wählen Sie Start > Einstellungen > Datenschutz & Sicherheit.", 
+            "Hier können Sie den Standort auswählen, um zu sehen, welche Anwendungen Zugriff haben, und den Zugriff für bestimmte Anwendungen widerrufen."
+        ],
+        "SolutionWindows10": 
+        [   
+            "Gehen Sie zu Start > Einstellungen > Datenschutz > Ortung.", 
+            "Hier können Sie den Standort auswählen, um zu sehen, welche Anwendungen darauf zugreifen können, und Sie können den Zugriff für bestimmte Anwendungen widerrufen."
+        ],        
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/applications-with-location-permission/location-permissions-1.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-location-permission/location-permissions-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/applications-with-location-permission/location-permissions-1.png",
+            "frontend/src/assets/images/windows-10/applications-with-location-permission/location-permissions-2.png"
+        ]
+    },
+    "61": {
+        "Name": "Keine Anwendungen mit Standortberechtigung",
+        "Type": "Privatsphäre",
+        "Information": "Zu wissen, welche Anwendungen Zugriff auf Ihren Standort haben, ist wichtig, um Ihre Privatsphäre zu schützen. Es hilft Ihnen zu kontrollieren, wer Ihren Standort verfolgen kann, Sicherheitsrisiken zu vermeiden, die Akkulaufzeit zu schonen, die Datennutzung zu verwalten, Ihr App-Erlebnis anzupassen und die Einhaltung von Vorschriften sicherzustellen.",
+        "Solution": 
+        [   
+            "Es gibt keine Anwendungen, die Standortberechtigungen haben, daher sind keine Maßnahmen erforderlich."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "70": {
+        "Name": "Anwendungen mit Mikrofonberechtigung",
+        "Type": "Privatsphäre",
+        "Information": "Zu wissen, welche Anwendungen Zugriff auf Ihr Mikrofon auf Ihrem Windows-Computer haben, ist wichtig, um Ihre Privatsphäre und Vertraulichkeit zu schützen. Es hilft Ihnen zu kontrollieren, wer Ihre Gespräche abhören kann, unbefugte Aufnahmen zu verhindern, sensible Informationen zu schützen und die Einhaltung von Vorschriften sicherzustellen.",
+        "Solution": 
+        [   
+            "Wählen Sie Start > Einstellungen > Datenschutz & Sicherheit.", 
+            "Hier können Sie das Mikrofon auswählen, um zu sehen, welche Anwendungen Zugriff haben, und den Zugriff für bestimmte Anwendungen widerrufen."
+        ],
+        "SolutionWindows10": 
+        [   
+            "Gehen Sie zu Start > Einstellungen > Datenschutz > Mikrofon.", 
+            "Hier können Sie das Mikrofon auswählen, um zu sehen, welche Anwendungen darauf zugreifen können, und Sie können den Zugriff für bestimmte Anwendungen widerrufen."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/applications-with-microphone-permission/microphone-permissions-1.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-microphone-permission/microphone-permissions-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/applications-with-microphone-permission/microphone-permissions-1.png",
+            "frontend/src/assets/images/windows-10/applications-with-microphone-permission/microphone-permissions-2.png"
+        ]
+    },
+    "71": {
+        "Name": "Keine Anwendungen mit Mikrofonberechtigung",
+        "Type": "Privatsphäre",
+        "Information": "Zu wissen, welche Anwendungen Zugriff auf Ihr Mikrofon auf Ihrem Windows-Computer haben, ist wichtig, um Ihre Privatsphäre und Vertraulichkeit zu schützen. Es hilft Ihnen zu kontrollieren, wer Ihre Gespräche abhören kann, unbefugte Aufnahmen zu verhindern, sensible Informationen zu schützen und die Einhaltung von Vorschriften sicherzustellen.",
+        "Solution": 
+        [   
+            "Es gibt keine Anwendungen, die Mikrofonberechtigungen haben, daher sind keine Maßnahmen erforderlich."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "80": {
+        "Name": "Anwendungen mit Webcam-Berechtigung",
+        "Type": "Privatsphäre",
+        "Information": "Zu wissen, welche Anwendungen Zugriff auf Ihre Kamera haben, hilft, unbefugten Zugriff zu verhindern. Bösartige Software oder sogar legitime Anwendungen mit schlecht implementierten Sicherheitsfunktionen könnten möglicherweise ohne Ihr Wissen oder Ihre Zustimmung auf Ihre Kamera zugreifen. Indem Sie wissen, welche Anwendungen Zugriff haben, können Sie unbefugte Versuche identifizieren und blockieren.",
+        "Solution": 
+        [   
+            "Wählen Sie Start > Einstellungen > Datenschutz & Sicherheit.", 
+            "Hier können Sie die Webcam auswählen, um zu sehen, welche Anwendungen Zugriff haben, und den Zugriff für bestimmte Anwendungen widerrufen."
+        ],
+        "SolutionWindows10": 
+        [   
+            "Gehen Sie zu Start > Einstellungen > Datenschutz > Kamera.", 
+            "Hier können Sie die Kamera auswählen, um zu sehen, welche Anwendungen darauf zugreifen können, und Sie können den Zugriff für bestimmte Anwendungen widerrufen."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/applications-with-webcam-permission/webcam-permissions-1.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-webcam-permission/webcam-permissions-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/applications-with-webcam-permission/webcam-permissions-1.png",
+            "frontend/src/assets/images/windows-10/applications-with-webcam-permission/webcam-permissions-2.png"
+        ]
+    },
+    "81": {
+        "Name": "Keine Anwendungen mit Webcam-Berechtigung",
+        "Type": "Privatsphäre",
+        "Information": "Zu wissen, welche Anwendungen Zugriff auf Ihre Kamera haben, hilft, unbefugten Zugriff zu verhindern. Bösartige Software oder sogar legitime Anwendungen mit schlecht implementierten Sicherheitsfunktionen könnten möglicherweise ohne Ihr Wissen oder Ihre Zustimmung auf Ihre Kamera zugreifen. Indem Sie wissen, welche Anwendungen Zugriff haben, können Sie unbefugte Versuche identifizieren und blockieren.",
+        "Solution": 
+        [   
+            "Es gibt keine Anwendungen, die Webcam-Berechtigungen haben, daher sind keine Maßnahmen erforderlich."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "90": {
+        "Name": "Anwendungen mit Berechtigung für Termine",
+        "Type": "Privatsphäre",
+        "Information": "Zu wissen, welche Anwendungen Zugriff auf Ihren Kalender oder Ihre Termine haben, ist wichtig, um Ihre Privatsphäre und Ihren Zeitplan zu schützen. Es hilft Ihnen zu kontrollieren, wer Ihre sensiblen Termininformationen einsehen und potenziell missbrauchen kann, unbefugten Zugriff zu verhindern und die Datennutzung zu verwalten.",
+        "Solution": 
+        [   
+            "Wählen Sie Start > Einstellungen > Datenschutz & Sicherheit.", 
+            "Hier können Sie die Termine auswählen, um zu sehen, welche Anwendungen Zugriff haben, und den Zugriff für bestimmte Anwendungen widerrufen."
+        ],
+        "SolutionWindows10": 
+        [   
+            "Gehen Sie zu Start > Einstellungen > Datenschutz > Kalender.", 
+            "Hier können Sie die Kalender auswählen, um zu sehen, welche Anwendungen darauf zugreifen können, und Sie können den Zugriff für bestimmte Anwendungen widerrufen."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/applications-with-calendar-permission/calendar-permissions-1.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-calendar-permission/calendar-permissions-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/applications-with-calendar-permission/calendar-permissions-1.png",
+            "frontend/src/assets/images/windows-10/applications-with-calendar-permission/calendar-permissions-2.png"
+        ]
+    },
+    "91": {
+        "Name": "Keine Anwendungen mit Berechtigung für Termine",
+        "Type": "Privatsphäre",
+        "Information": "Zu wissen, welche Anwendungen Zugriff auf Ihren Kalender oder Ihre Termine haben, ist wichtig, um Ihre Privatsphäre und Ihren Zeitplan zu schützen. Es hilft Ihnen zu kontrollieren, wer Ihre sensiblen Termininformationen einsehen und potenziell missbrauchen kann, unbefugten Zugriff zu verhindern und die Datennutzung zu verwalten.",
+        "Solution": 
+        [   
+            "Es gibt keine Anwendungen, die Berechtigungen für Termine haben, daher sind keine Maßnahmen erforderlich."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "100": {
+        "Name": "Anwendungen mit Berechtigung für Kontakte",
+        "Type": "Privatsphäre",
+        "Information": "Zu wissen, welche Anwendungen Zugriff auf Ihre Kontakte auf Ihrem Windows-Computer haben, ist wichtig, um Ihre Privatsphäre zu schützen. Es ermöglicht Ihnen zu kontrollieren, wer Ihre Kontaktdaten einsehen und potenziell missbrauchen kann, unbefugten Zugriff zu verhindern und die Datennutzung zu verwalten.",
+        "Solution": 
+        [   
+            "Wählen Sie Start > Einstellungen > Datenschutz & Sicherheit.", 
+            "Hier können Sie die Kontakte auswählen, um zu sehen, welche Anwendungen Zugriff haben, und den Zugriff für bestimmte Anwendungen widerrufen."
+        ],
+        "SolutionWindows10": 
+        [   
+            "Gehen Sie zu Start > Einstellungen > Datenschutz > Kontakte.", 
+            "Hier können Sie die Kontakte auswählen, um zu sehen, welche Anwendungen darauf zugreifen können, und Sie können den Zugriff für bestimmte Anwendungen widerrufen."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/applications-with-contacts-permission/contacts-permissions-1.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-contacts-permission/contacts-permissions-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/applications-with-contacts-permission/contacts-permissions-1.png",
+            "frontend/src/assets/images/windows-10/applications-with-contacts-permission/contacts-permissions-2.png"
+        ]
+    },
+    "101": {
+        "Name": "Keine Anwendungen mit Berechtigung für Kontakte",
+        "Type": "Privatsphäre",
+        "Information": "Zu wissen, welche Anwendungen Zugriff auf Ihre Kontakte auf Ihrem Windows-Computer haben, ist wichtig, um Ihre Privatsphäre zu schützen. Es ermöglicht Ihnen zu kontrollieren, wer Ihre Kontaktdaten einsehen und potenziell missbrauchen kann, unbefugten Zugriff zu verhindern und die Datennutzung zu verwalten.",
+        "Solution": 
+        [   
+            "Es gibt keine Anwendungen, die Berechtigungen für Kontakte haben, daher sind keine Maßnahmen erforderlich."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "110": {
+        "Name": "Offene Ports",
+        "Type": "Sicherheit",
+        "Information": "Ein offener Port ist einer, der den Empfang von Datenpaketen erlaubt. Bestimmte Anwendungen benötigen spezifische Ports, um Daten zu empfangen, daher stellt das Vorhandensein offener Ports nicht zwangsläufig ein Risiko dar. Allerdings können einige Ports unzureichend geschützt sein, was unbefugte Kommunikation ermöglicht und Sicherheitslücken einführt. Es ist wichtig, Ports nur dann offen zu halten, wenn sie aktiv genutzt werden, und sie zu schließen, wenn sie nicht benötigt werden. Da zahlreiche offene Ports die Angriffsfläche Ihres Computers vergrößern können, sollten Sie regelmäßig die Netzwerkports Ihres Systems überwachen und sichern, um diese Risiken zu mindern und eine starke Sicherheitslage aufrechtzuerhalten.",
+        "Solution": 
+        [   
+            "Um das Risiko zu reduzieren, stellen Sie sicher, dass Windows Defender aktiviert ist. Dies blockiert bestimmten Datenverkehr in oder aus Ihrem Gerät über offene Ports. Um mehr Einblick in Ihre offenen Ports zu erhalten, folgen Sie diesen Anweisungen.",
+            "Öffnen Sie ein Befehlsfenster, indem Sie auf 'Start' klicken, 'cmd' eingeben und 'Enter' drücken.",
+            "Geben Sie nun 'netstat -ab' ein, und Sie sehen eine Liste der offenen Ports und ihrer entsprechenden Programme.",
+            "Wenn Sie verdächtige Programme oder Ports sehen, können Sie diese schließen, indem Sie das entsprechende Programm beenden."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/devices-connected-via-bluetooth/bluetooth-devices-1.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/devices-connected-via-bluetooth/bluetooth-devices-1.png"
+        ]
+    },
+    "120": {
+        "Name": "Remote-Desktop aktiviert",
+        "Type": "Sicherheit",
+        "Information": "Remote Desktop ist eine integrierte Funktion des Windows-Betriebssystems, die es Benutzern ermöglicht, über ein Netzwerk oder das Internet remote auf einen anderen Windows-Computer zuzugreifen und diesen zu steuern. Sie ermöglicht es Benutzern, sich mit einem Remote-Computer zu verbinden, als ob sie direkt davor sitzen würden, und bietet vollen Zugriff auf den Remote-Desktop, Anwendungen, Dateien und Ressourcen. Wenn Sie diese Funktion nicht verwenden, ist es sicherer, sie zu deaktivieren.",
+        "Solution": 
+        [   
+            "Gehen Sie zu Start > Einstellungen > System > Remote-Desktop.", 
+            "Hier können Sie die Einstellungen für den Remote-Desktop steuern und die Funktion deaktivieren."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "121": {
+        "Name": "Remote-Desktop deaktiviert",
+        "Type": "Sicherheit",
+        "Information": "Remote Desktop ist eine integrierte Funktion des Windows-Betriebssystems, die es Benutzern ermöglicht, über ein Netzwerk oder das Internet remote auf einen anderen Windows-Computer zuzugreifen und diesen zu steuern. Sie ermöglicht es Benutzern, sich mit einem Remote-Computer zu verbinden, als ob sie direkt davor sitzen würden, und bietet vollen Zugriff auf den Remote-Desktop, Anwendungen, Dateien und Ressourcen. Wenn Sie diese Funktion nicht verwenden, ist es sicherer, sie zu deaktivieren.",
+        "Solution": 
+        [   
+            "Remote-Desktop wurde deaktiviert, daher sind keine Maßnahmen erforderlich."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "130": {
+        "Name": "Alle SMB-Versionen deaktiviert",
+        "Type": "Sicherheit",
+        "Information": "Das SMB (Server Message Block)-Protokoll wird zum Teilen von Dateien, Druckern und anderen Ressourcen zwischen Geräten in einem Netzwerk in Windows-Umgebungen verwendet. Die korrekte Konfiguration der SMB-Einstellungen auf Ihrem Windows-Computer ist von entscheidender Bedeutung. Die SMBv1 weist zahlreiche bekannte Sicherheitslücken auf und sollte daher niemals verwendet werden. Die Verwendung von SMBv2/v3 ist die sicherere Option.",
+        "Solution": 
+        [   
+            "Alle Versionen von SMB sind deaktiviert, daher sind keine Maßnahmen erforderlich."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "131": {
+        "Name": "SMB Version 1 aktiviert",
+        "Type": "Sicherheit",
+        "Information": "Das SMB (Server Message Block)-Protokoll wird zum Teilen von Dateien, Druckern und anderen Ressourcen zwischen Geräten in einem Netzwerk in Windows-Umgebungen verwendet. Die korrekte Konfiguration der SMB-Einstellungen auf Ihrem Windows-Computer ist von entscheidender Bedeutung. Die SMBv1 weist zahlreiche bekannte Sicherheitslücken auf und sollte daher niemals verwendet werden. Die Verwendung von SMBv2/v3 ist die sicherere Option.",
+        "Solution": 
+        [   
+            "Drücken Sie auf Ihrer Tastatur 'Windows+R', um das Ausführen-Fenster zu öffnen.", 
+            "Geben Sie 'Powershell' ein und wählen Sie OK.", 
+            "Geben Sie in der Powershell 'Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol' ein und drücken Sie die Eingabetaste.",
+            "Um abzuschließen, starten Sie Ihren Computer neu."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/smb-status/smb-2.jpg",
+            "frontend/src/assets/images/windows-11/smb-status/smb-2.jpg",
+            "frontend/src/assets/images/windows-11/smb-status/smb-3.jpg",
+            "frontend/src/assets/images/windows-11/smb-status/smb-3.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/smb-status/smb-1.png",
+            "frontend/src/assets/images/windows-10/smb-status/smb-1.png",
+            "frontend/src/assets/images/windows-10/smb-status/smb-2.png",
+            "frontend/src/assets/images/windows-10/smb-status/smb-2.png"
+        ]
+    },
+    "132": {
+        "Name": "SMB Version 2 aktiviert",
+        "Type": "Sicherheit",
+        "Information": "Das SMB (Server Message Block)-Protokoll wird zum Teilen von Dateien, Druckern und anderen Ressourcen zwischen Geräten in einem Netzwerk in Windows-Umgebungen verwendet. Die korrekte Konfiguration der SMB-Einstellungen auf Ihrem Windows-Computer ist von entscheidender Bedeutung. Die SMBv1 weist zahlreiche bekannte Sicherheitslücken auf und sollte daher niemals verwendet werden. Die Verwendung von SMBv2/v3 ist die sicherere Option.",
+        "Solution": 
+        [   
+            "SMB Version 2 ist aktiviert, was eine sichere und weit verbreitete Version ist, daher sind keine Maßnahmen erforderlich."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "133": {
+        "Name": "SMB Version 1 und 2 aktiviert",
+        "Type": "Sicherheit",
+        "Information": "Das SMB (Server Message Block)-Protokoll wird zum Teilen von Dateien, Druckern und anderen Ressourcen zwischen Geräten in einem Netzwerk in Windows-Umgebungen verwendet. Die korrekte Konfiguration der SMB-Einstellungen auf Ihrem Windows-Computer ist von entscheidender Bedeutung. Die SMBv1 weist zahlreiche bekannte Sicherheitslücken auf und sollte daher niemals verwendet werden. Die Verwendung von SMBv2/v3 ist die sicherere Option.",
+        "Solution": 
+        [   
+            "Drücken Sie auf Ihrer Tastatur 'Windows+R', um das Ausführen-Fenster zu öffnen.", 
+            "Geben Sie 'Powershell' ein und wählen Sie OK.", 
+            "Geben Sie in der Powershell 'Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol' ein und drücken Sie die Eingabetaste.",
+            "Um abzuschließen, starten Sie Ihren Computer neu."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/smb-status/smb-2.jpg",
+            "frontend/src/assets/images/windows-11/smb-status/smb-2.jpg",
+            "frontend/src/assets/images/windows-11/smb-status/smb-3.jpg",
+            "frontend/src/assets/images/windows-11/smb-status/smb-3.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/smb-status/smb-1.png",
+            "frontend/src/assets/images/windows-10/smb-status/smb-1.png",
+            "frontend/src/assets/images/windows-10/smb-status/smb-2.png",
+            "frontend/src/assets/images/windows-10/smb-status/smb-2.png"
+        ]
+    },
+    "140": {
+        "Name": "Benutzerkontensteuerung",
+        "Type": "Sicherheit",
+        "Information": "Die Benutzerkontensteuerung (User Account Control, UAC) ist eine Sicherheitsfunktion, die in Windows Vista eingeführt wurde und in den nachfolgenden Versionen des Windows-Betriebssystems vorhanden ist. Ihr Hauptzweck besteht darin, die Sicherheit des Betriebssystems zu erhöhen, indem die Privilegien von Anwendungen und Prozessen mit Standardbenutzerrechten beschränkt werden und Administratorgenehmigungen für Aufgaben erforderlich sind, die erhöhte Berechtigungen erfordern.",
+        "Solution": 
+        [   
+            "Drücken Sie auf Ihrer Tastatur 'Windows+R', um das Ausführen-Fenster zu öffnen.", 
+            "Geben Sie 'Systemsteuerung' ein und wählen Sie OK.", 
+            "Wählen Sie 'Benutzerkonten' oder 'Benutzerkonten und Familiensicherheit'.",
+            "Wählen Sie 'Einstellungen der Benutzerkontensteuerung ändern'. Wenn Sie von der UAC aufgefordert werden, wählen Sie 'Ja', um fortzufahren.",
+            "Hier können Sie den Schieberegler auf 'Immer benachrichtigen' stellen, um die UAC zu aktivieren. Wenn Sie von der UAC aufgefordert werden, wählen Sie 'Ja', um fortzufahren.",
+            "Um abzuschließen, starten Sie Ihren Computer neu."
+        ],
+        "SolutionWindows10": 
+        [   
+            "Die Einstellungen für die Benutzerkontensteuerung sind für Apps aktiviert, die Einstellung auf 'Immer benachrichtigen' ist eine sicherere Option. Um UAC zu aktivieren, befolgen Sie diese Schritte",
+            "Drücken Sie auf Ihrer Tastatur 'Windows+R', um das Ausführen-Fenster zu öffnen.", 
+            "Geben Sie 'Systemsteuerung' ein und wählen Sie dann OK.",
+            "Wählen Sie 'Benutzerkonten'.",
+            "Wählen Sie erneut 'Benutzerkonten'.",
+            "Wählen Sie 'Einstellungen der Benutzerkontensteuerung ändern'. Wenn Sie von der Benutzerkontensteuerung dazu aufgefordert werden, wählen Sie 'Ja', um fortzufahren.",
+            "Hier können Sie den Schieberegler auf 'Immer benachrichtigen' stellen, um UAC zu aktivieren. Wenn Sie von der Benutzerkontensteuerung dazu aufgefordert werden, wählen Sie 'Ja', um fortzufahren.",
+            "Starten Sie abschließend Ihren Computer neu."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-2.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-2.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-3.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-5.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-5.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-2.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-3.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-4.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-5.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-5.png"
+        ]
+    },
+    "141": {
+        "Name": "Benutzerkontensteuerung",
+        "Type": "Sicherheit",
+        "Information": "Die Benutzerkontensteuerung (User Account Control, UAC) ist eine Sicherheitsfunktion, die in Windows Vista eingeführt wurde und in den nachfolgenden Versionen des Windows-Betriebssystems vorhanden ist. Ihr Hauptzweck besteht darin, die Sicherheit des Betriebssystems zu erhöhen, indem die Privilegien von Anwendungen und Prozessen mit Standardbenutzerrechten beschränkt werden und Administratorgenehmigungen für Aufgaben erforderlich sind, die erhöhte Berechtigungen erfordern.",
+        "Solution": 
+        [   
+           "Die Einstellungen für die Benutzerkontensteuerung sind auf 'Immer benachrichtigen' eingestellt, daher sind keine Maßnahmen erforderlich."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "142": {
+        "Name": "Benutzerkontensteuerung",
+        "Type": "Sicherheit",
+        "Information": "Die Benutzerkontensteuerung (User Account Control, UAC) ist eine Sicherheitsfunktion, die in Windows Vista eingeführt wurde und in den nachfolgenden Versionen des Windows-Betriebssystems vorhanden ist. Ihr Hauptzweck besteht darin, die Sicherheit des Betriebssystems zu erhöhen, indem die Privilegien von Anwendungen und Prozessen mit Standardbenutzerrechten beschränkt werden und Administratorgenehmigungen für Aufgaben erforderlich sind, die erhöhte Berechtigungen erfordern.",
+        "Solution": 
+        [   "Die Einstellungen für die Benutzerkontensteuerung sind für Apps aktiviert, aber die Einstellung auf 'Immer benachrichtigen' ist eine sicherere Option. Um die UAC zu aktivieren, folgen Sie diesen Schritten",
+            "Drücken Sie auf Ihrer Tastatur 'Windows+R', um das Ausführen-Fenster zu öffnen.", 
+            "Geben Sie 'Systemsteuerung' ein und wählen Sie OK.",
+            "Wählen Sie 'Benutzerkonten' oder 'Benutzerkonten und Familiensicherheit'.",
+            "Wählen Sie 'Einstellungen der Benutzerkontensteuerung ändern'. Wenn Sie von der UAC aufgefordert werden, wählen Sie 'Ja', um fortzufahren.",
+            "Hier können Sie den Schieberegler auf 'Immer benachrichtigen' stellen, um die UAC zu aktivieren. Wenn Sie von der UAC aufgefordert werden, wählen Sie 'Ja', um fortzufahren.",
+            "Um abzuschließen, starten Sie Ihren Computer neu."
+        ],
+        "SolutionWindows10": 
+        [   
+            "Die Einstellungen für die Benutzerkontensteuerung sind für Apps aktiviert, die Einstellung auf 'Immer benachrichtigen' ist eine sicherere Option. Um UAC zu aktivieren, befolgen Sie diese Schritte",
+            "Drücken Sie auf Ihrer Tastatur 'Windows+R', um das Ausführen-Fenster zu öffnen.", 
+            "Geben Sie 'Systemsteuerung' ein und wählen Sie dann OK.",
+            "Wählen Sie 'Benutzerkonten'.",
+            "Wählen Sie erneut 'Benutzerkonten'.",
+            "Wählen Sie 'Einstellungen der Benutzerkontensteuerung ändern'. Wenn Sie von der Benutzerkontensteuerung dazu aufgefordert werden, wählen Sie 'Ja', um fortzufahren.",
+            "Hier können Sie den Schieberegler auf 'Immer benachrichtigen' stellen, um UAC zu aktivieren. Wenn Sie von der Benutzerkontensteuerung dazu aufgefordert werden, wählen Sie 'Ja', um fortzufahren.",
+            "Starten Sie abschließend Ihren Computer neu."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-2.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-2.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-3.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-5.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-5.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-2.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-3.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-4.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-5.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-5.png"
+        ]
+    },
+    "143": {
+        "Name": "Benutzerkontensteuerung",
+        "Type": "Sicherheit",
+        "Information": "Die Benutzerkontensteuerung (User Account Control, UAC) ist eine Sicherheitsfunktion, die in Windows Vista eingeführt wurde und in den nachfolgenden Versionen des Windows-Betriebssystems vorhanden ist. Ihr Hauptzweck besteht darin, die Sicherheit des Betriebssystems zu erhöhen, indem die Privilegien von Anwendungen und Prozessen mit Standardbenutzerrechten beschränkt werden und Administratorgenehmigungen für Aufgaben erforderlich sind, die erhöhte Berechtigungen erfordern.",
+        "Solution": 
+        [   "Der Status der Benutzerkontensteuerungseinstellungen ist unbekannt. Um den Status zu überprüfen und möglicherweise das Problem der Benutzerkontensteuerung zu lösen, folgen Sie diesen Schritten",
+            "Drücken Sie auf Ihrer Tastatur 'Windows+R', um das Ausführen-Fenster zu öffnen.", 
+            "Geben Sie 'Systemsteuerung' ein und wählen Sie OK.",
+            "Wählen Sie 'Benutzerkonten' oder 'Benutzerkonten und Familiensicherheit'.",
+            "Wählen Sie 'Einstellungen der Benutzerkontensteuerung ändern'. Wenn Sie von der UAC aufgefordert werden, wählen Sie 'Ja', um fortzufahren.",
+            "Hier können Sie den Schieberegler auf 'Immer benachrichtigen' stellen, um die UAC zu aktivieren. Wenn Sie von der UAC aufgefordert werden, wählen Sie 'Ja', um fortzufahren.",
+            "Um abzuschließen, starten Sie Ihren Computer neu."
+        ],
+        "SolutionWindows10": 
+        [   
+            "Die Einstellungen für die Benutzerkontensteuerung sind für Apps aktiviert, die Einstellung auf 'Immer benachrichtigen' ist eine sicherere Option. Um UAC zu aktivieren, befolgen Sie diese Schritte",
+            "Drücken Sie auf Ihrer Tastatur 'Windows+R', um das Ausführen-Fenster zu öffnen.", 
+            "Geben Sie 'Systemsteuerung' ein und wählen Sie dann OK.",
+            "Wählen Sie 'Benutzerkonten'.",
+            "Wählen Sie erneut 'Benutzerkonten'.",
+            "Wählen Sie 'Einstellungen der Benutzerkontensteuerung ändern'. Wenn Sie von der Benutzerkontensteuerung dazu aufgefordert werden, wählen Sie 'Ja', um fortzufahren.",
+            "Hier können Sie den Schieberegler auf 'Immer benachrichtigen' stellen, um UAC zu aktivieren. Wenn Sie von der Benutzerkontensteuerung dazu aufgefordert werden, wählen Sie 'Ja', um fortzufahren.",
+            "Starten Sie abschließend Ihren Computer neu."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-2.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-2.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-3.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-5.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-5.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-2.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-3.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-4.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-5.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-5.png"
+        ]
+    },
+    "150": {
+        "Name": "Windows Defender und Scan aktiviert",
+        "Type": "Sicherheit",
+        "Information": "Windows Defender überwacht Ihr System kontinuierlich auf verdächtige Aktivitäten, einschließlich Malware, Viren und anderen Formen von bösartiger Software. Durch die Aktivierung haben Sie eine aktive Verteidigung gegen potenzielle Bedrohungen, die Ihre Privatsphäre oder Sicherheit gefährden könnten. Außerdem erhält es regelmäßig Updates von Microsoft, um mit den neuesten Sicherheitsbedrohungen und Schwachstellen auf dem neuesten Stand zu bleiben. Durch die Aktivierung stellen Sie sicher, dass Ihr Computer gegen neu auftretende Bedrohungen geschützt ist, die bekannte Sicherheitslücken ausnutzen könnten.",
+        "Solution": 
+        [
+            "Windows Defender und der periodische Scan sind aktiviert, daher sind keine Maßnahmen erforderlich."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "151": {
+        "Name": "Windows Defender-Scan deaktiviert",
+        "Type": "Sicherheit",
+        "Information": "Windows Defender überwacht Ihr System kontinuierlich auf verdächtige Aktivitäten, einschließlich Malware, Viren und anderen Formen von bösartiger Software. Durch die Aktivierung haben Sie eine aktive Verteidigung gegen potenzielle Bedrohungen, die Ihre Privatsphäre oder Sicherheit gefährden könnten. Außerdem erhält es regelmäßig Updates von Microsoft, um mit den neuesten Sicherheitsbedrohungen und Schwachstellen auf dem neuesten Stand zu bleiben. Durch die Aktivierung stellen Sie sicher, dass Ihr Computer gegen neu auftretende Bedrohungen geschützt ist, die bekannte Sicherheitslücken ausnutzen könnten.",
+        "Solution": 
+        [
+            "Öffnen Sie die Windows-Sicherheits-App.", 
+            "Wählen Sie 'Virus- & Bedrohungsschutz'.", 
+            "Wählen Sie unter den Einstellungen für den 'Virus- & Bedrohungsschutz' die Option 'Einstellungen verwalten'.", 
+            "Schalten Sie den Schalter unter 'Echtzeitschutz' ein."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-1.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-2.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-3.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-4.png"
+        ]
+    },
+    "152": {
+        "Name": "Windows Defender deaktiviert",
+        "Type": "Sicherheit",
+        "Information": "Windows Defender überwacht Ihr System kontinuierlich auf verdächtige Aktivitäten, einschließlich Malware, Viren und anderen Formen von bösartiger Software. Durch die Aktivierung haben Sie eine aktive Verteidigung gegen potenzielle Bedrohungen, die Ihre Privatsphäre oder Sicherheit gefährden könnten. Außerdem erhält es regelmäßig Updates von Microsoft, um mit den neuesten Sicherheitsbedrohungen und Schwachstellen auf dem neuesten Stand zu bleiben. Durch die Aktivierung stellen Sie sicher, dass Ihr Computer gegen neu auftretende Bedrohungen geschützt ist, die bekannte Sicherheitslücken ausnutzen könnten.",
+        "Solution": 
+        [
+            "Öffnen Sie die Windows-Sicherheits-App.", 
+            "Wählen Sie 'Virus- & Bedrohungsschutz'.", 
+            "Wählen Sie unter den Einstellungen für den 'Virus- & Bedrohungsschutz' die Option 'Einstellungen verwalten'.", 
+            "Schalten Sie den Schalter unter 'Echtzeitschutz' ein."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-1.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-2.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-3.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-4.png"
+        ]
+    },
+    "153": {
+        "Name": "Windows Defender deaktiviert",
+        "Type": "Sicherheit",
+        "Information": "Windows Defender überwacht Ihr System kontinuierlich auf verdächtige Aktivitäten, einschließlich Malware, Viren und anderen Formen von bösartiger Software. Durch die Aktivierung haben Sie eine aktive Verteidigung gegen potenzielle Bedrohungen, die Ihre Privatsphäre oder Sicherheit gefährden könnten. Außerdem erhält es regelmäßig Updates von Microsoft, um mit den neuesten Sicherheitsbedrohungen und Schwachstellen auf dem neuesten Stand zu bleiben. Durch die Aktivierung stellen Sie sicher, dass Ihr Computer gegen neu auftretende Bedrohungen geschützt ist, die bekannte Sicherheitslücken ausnutzen könnten.",
+        "Solution": 
+        [
+            "Öffnen Sie die Windows-Sicherheits-App.", 
+            "Wählen Sie 'Virus- & Bedrohungsschutz'.", 
+            "Wählen Sie unter den Einstellungen für den 'Virus- & Bedrohungsschutz' die Option 'Einstellungen verwalten'.", 
+            "Schalten Sie den Schalter unter 'Echtzeitschutz' ein."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-1.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-2.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-3.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-4.png"
+        ]
+    },
+    "154": {
+        "Name": "Windows Defender-Status unbekannt",
+        "Type": "Sicherheit",
+        "Information": "Windows Defender überwacht Ihr System kontinuierlich auf verdächtige Aktivitäten, einschließlich Malware, Viren und anderen Formen von bösartiger Software. Durch die Aktivierung haben Sie eine aktive Verteidigung gegen potenzielle Bedrohungen, die Ihre Privatsphäre oder Sicherheit gefährden könnten. Außerdem erhält es regelmäßig Updates von Microsoft, um mit den neuesten Sicherheitsbedrohungen und Schwachstellen auf dem neuesten Stand zu bleiben. Durch die Aktivierung stellen Sie sicher, dass Ihr Computer gegen neu auftretende Bedrohungen geschützt ist, die bekannte Sicherheitslücken ausnutzen könnten.",
+        "Solution": 
+        [
+            "Der Status von Windows Defender ist unbekannt. Um den Status zu überprüfen und möglicherweise das Problem von Windows Defender zu lösen, folgen Sie diesen Schritten.",
+            "Öffnen Sie die Windows-Sicherheits-App.", 
+            "Wählen Sie 'Virus- & Bedrohungsschutz'.", 
+            "Wählen Sie unter den Einstellungen für den 'Virus- & Bedrohungsschutz' die Option 'Einstellungen verwalten'.", 
+            "Schalten Sie den Schalter unter 'Echtzeitschutz' ein."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-1.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-1.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-2.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-3.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-4.png"
+        ]
+    },
+    "160": {
+        "Name": "Passwortwechsel vor mehr als 6 Monaten",
+        "Type": "Sicherheit",
+        "Information": "Das regelmäßige Ändern Ihres Passworts verringert die Wahrscheinlichkeit eines unbefugten Zugriffs auf Ihren Computer oder sensible Informationen. Wenn jemand Ihr Passwort erlangt, begrenzt das regelmäßige Ändern die Zeit, die er hat, um es auszunutzen. Es ist daher eine gute Gewohnheit, Ihr Passwort mindestens zweimal im Jahr zu ändern.",
+        "Solution": 
+        [   
+            "Gehen Sie zu Start > Ändern Sie Ihr Passwort", 
+            "Öffnen Sie den Abschnitt 'Passwort' und klicken Sie auf die Schaltfläche 'Ändern'.",
+            "Sie können Ihr Passwort jetzt in ein neues, einzigartiges ändern."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/last-password-change/change-password-1.jpg",
+            "frontend/src/assets/images/windows-11/last-password-change/change-password-2.jpg",
+            "frontend/src/assets/images/windows-11/last-password-change/change-password-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/last-password-change/change-password-1.png",
+            "frontend/src/assets/images/windows-10/last-password-change/change-password-2.png",
+            "frontend/src/assets/images/windows-10/last-password-change/change-password-2.png"
+        ]
+    },
+    "161": {
+        "Name": "Passwortwechsel vor Kurzem",
+        "Type": "Sicherheit",
+        "Information": "Das regelmäßige Ändern Ihres Passworts verringert die Wahrscheinlichkeit eines unbefugten Zugriffs auf Ihren Computer oder sensible Informationen. Wenn jemand Ihr Passwort erlangt, begrenzt das regelmäßige Ändern die Zeit, die er hat, um es auszunutzen. Es ist daher eine gute Gewohnheit, Ihr Passwort mindestens zweimal im Jahr zu ändern.",
+        "Solution": 
+        [   
+            "Sie haben Ihr Passwort kürzlich geändert, daher sind keine Maßnahmen erforderlich."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "170": {
+        "Name": "Keine Windows-Anmeldemethode eingerichtet",
+        "Type": "Sicherheit",
+        "Information": "Die Verwendung einer sicheren Windows-Anmeldemethode ist wichtig. Windows unterstützt verschiedene Anmeldemethoden wie Passwort, PIN, Sicherheitsschlüssel oder Fingerabdruck. Die Verwendung einer dieser Anmeldemethoden ist wichtig, um Ihre Daten sicher zu halten. Ohne eine dieser Anmeldemethoden kann jeder Ihr Gerät entsperren und auf Ihre Daten zugreifen. Sie verwenden keine Anmeldemethode/eine weniger sichere Anmeldemethode/Kombination von Anmeldemethoden, es wird empfohlen, auf eine sicherere Anmeldemethode wie Passwort oder Fingerabdruck umzuschalten.",
+        "Solution": 
+        [   
+            "Gehen Sie zu Start > Einstellungen > Konten > Anmeldeoptionen.", 
+            "Jetzt können Sie eine der verfügbaren Anmeldemethoden einrichten, indem Sie die beschriebenen Schritte befolgen."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/windows-login-method/login-method-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-login-method/login-method-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/windows-login-method/login-method-1.png",
+            "frontend/src/assets/images/windows-10/windows-login-method/login-method-2.png"
+        ]
+    },
+    "171": {
+        "Name": "Windows-Anmeldung mit sicherer Anmeldemethode",
+        "Type": "Sicherheit",
+        "Information": "Die Verwendung einer sicheren Windows-Anmeldemethode ist wichtig. Windows unterstützt verschiedene Anmeldemethoden wie Passwort, PIN, Sicherheitsschlüssel oder Fingerabdruck. Die Verwendung einer dieser Anmeldemethoden ist wichtig, um Ihre Daten sicher zu halten. Ohne eine dieser Anmeldemethoden kann jeder Ihr Gerät entsperren und auf Ihre Daten zugreifen.",
+        "Solution": 
+        [   
+            "Sie verwenden eine sichere Anmeldemethode, daher sind keine Maßnahmen erforderlich."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "173": {
+        "Name": "Windows-Anmeldung mit weniger sicherer Anmeldemethode",
+        "Type": "Sicherheit",
+        "Information": "Die Verwendung einer sicheren Windows-Anmeldemethode ist wichtig. Windows unterstützt verschiedene Anmeldemethoden wie Passwort, PIN, Sicherheitsschlüssel oder Fingerabdruck. Die Verwendung einer dieser Anmeldemethoden ist wichtig, um Ihre Daten sicher zu halten. Ohne eine dieser Anmeldemethoden kann jeder Ihr Gerät entsperren und auf Ihre Daten zugreifen. Sie verwenden eine weniger sichere Anmeldemethode/Kombination von Anmeldemethoden, es wird empfohlen, auf eine sicherere Anmeldemethode wie Passwort oder Fingerabdruck umzuschalten.",
+        "Solution": 
+        [   
+            "Gehen Sie zu Start > Einstellungen > Konten > Anmeldeoptionen.", 
+            "Jetzt können Sie eine der verfügbaren Anmeldemethoden einrichten, indem Sie die beschriebenen Schritte befolgen."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/windows-login-method/login-method-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-login-method/login-method-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/windows-login-method/login-method-1.png",
+            "frontend/src/assets/images/windows-10/windows-login-method/login-method-2.png"
+        ]
+    },
+    "180": {
+        "Name": "Windows-Version auf dem neuesten Stand",
+        "Type": "Sicherheit",
+        "Information": "Veraltete Windows-Versionen können ungepatchte Sicherheitslücken enthalten, die von Angreifern ausgenutzt werden könnten, um das System zu kompromittieren. Hacker suchen aktiv nach Schwachstellen in veralteten Betriebssystemen und nutzen sie aus, was zu unbefugtem Zugriff, Datenverletzungen und Malware-Infektionen führen kann.",
+        "Solution": 
+        [
+            "Ihre Windows-Version ist auf dem neuesten Stand, daher sind keine Maßnahmen erforderlich."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "181": {
+        "Name": "Windows-Version leicht veraltet",
+        "Type": "Sicherheit",
+        "Information": "Veraltete Windows-Versionen können ungepatchte Sicherheitslücken enthalten, die von Angreifern ausgenutzt werden könnten, um das System zu kompromittieren. Hacker suchen aktiv nach Schwachstellen in veralteten Betriebssystemen und nutzen sie aus, was zu unbefugtem Zugriff, Datenverletzungen und Malware-Infektionen führen kann.",
+        "Solution": 
+        [
+            "Gehen Sie zu Start > Einstellungen > Windows Update.",
+            "Hier können Sie nach Updates suchen und diese installieren."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/outdated-windows-version/windows-update-1.jpg",
+            "frontend/src/assets/images/windows-11/outdated-windows-version/windows-update-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/outdated-windows-version/windows-update-1.png",
+            "frontend/src/assets/images/windows-10/outdated-windows-version/windows-update-2.png"
+        ]
+    },
+    "182": {
+        "Name": "Veraltete Windows-Version",
+        "Type": "Sicherheit",
+        "Information": "Veraltete Windows-Versionen können ungepatchte Sicherheitslücken enthalten, die von Angreifern ausgenutzt werden könnten, um das System zu kompromittieren. Hacker suchen aktiv nach Schwachstellen in veralteten Betriebssystemen und nutzen sie aus, was zu unbefugtem Zugriff, Datenverletzungen und Malware-Infektionen führen kann.",
+        "Solution": 
+        [
+            "Gehen Sie zu Start > Einstellungen > Windows Update.",
+            "Hier können Sie nach Updates suchen und diese installieren."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/outdated-windows-version/windows-update-1.jpg",
+            "frontend/src/assets/images/windows-11/outdated-windows-version/windows-update-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/outdated-windows-version/windows-update-1.png",
+            "frontend/src/assets/images/windows-10/outdated-windows-version/windows-update-2.png"
+        ]
+    },
+    "190": {
+        "Name": "Secure Boot deaktiviert",
+        "Type": "Sicherheit",
+        "Information": "Secure Boot stellt sicher, dass während des Startvorgangs nur vertrauenswürdige Softwarekomponenten geladen werden, die mit anerkannten digitalen Signaturen signiert sind. Dies verhindert, dass Malware und andere unbefugte Software den Startvorgang manipulieren und das System in einem frühen Stadium übernehmen.",
+        "Solution": 
+        [   
+            "Starten Sie Ihren Computer neu und greifen Sie auf die BIOS/UEFI-Einstellungen zu. Dies erfolgt in der Regel durch Drücken einer bestimmten Taste während des Startvorgangs. Gängige Tasten zum Zugriff auf die BIOS/UEFI-Einstellungen sind F2, Entf, Esc oder F10. Die spezifische Taste variiert je nach Hersteller Ihres Computers.", 
+            "Sobald Sie sich in den BIOS/UEFI-Einstellungen befinden, navigieren Sie zum Abschnitt, der sich auf Secure Boot bezieht. Dieser Abschnitt kann je nach Systemhersteller und BIOS/UEFI-Version unterschiedlich benannt sein.",
+            "Im Secure Boot-Abschnitt sollten Sie eine Option finden, um Secure Boot zu aktivieren. Wählen Sie diese Option und stellen Sie sie auf 'Aktiviert'. Einige Systeme erfordern möglicherweise die Einstellung eines Secure Boot-Modus oder die Auswahl der Secure Boot-Schlüsselverwaltung. Befolgen Sie die Anweisungen auf dem Bildschirm, um Secure Boot zu aktivieren.",
+            "Nachdem Sie Secure Boot aktiviert haben, speichern Sie die Änderungen in den BIOS/UEFI-Einstellungen und beenden Sie diese. In der Regel können Sie dies tun, indem Sie die Option 'Speichern & Beenden' oder 'Beenden' aus dem BIOS/UEFI-Menü auswählen. Bestätigen Sie alle Aufforderungen zum Speichern der Änderungen und starten Sie Ihren Computer neu."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "191": {
+        "Name": "Secure Boot aktiviert",
+        "Type": "Sicherheit",
+        "Information": "Secure Boot stellt sicher, dass während des Startvorgangs nur vertrauenswürdige Softwarekomponenten geladen werden, die mit anerkannten digitalen Signaturen signiert sind. Dies verhindert, dass Malware und andere unbefugte Software den Startvorgang manipulieren und das System in einem frühen Stadium übernehmen.",
+        "Solution": 
+        [   
+            "Secure Boot ist aktiviert, daher sind keine Maßnahmen erforderlich."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "192": {
+        "Name": "Secure Boot-Status unbekannt",
+        "Type": "Sicherheit",
+        "Information": "Secure Boot stellt sicher, dass während des Startvorgangs nur vertrauenswürdige Softwarekomponenten geladen werden, die mit anerkannten digitalen Signaturen signiert sind. Dies verhindert, dass Malware und andere unbefugte Software den Startvorgang manipulieren und das System in einem frühen Stadium übernehmen.",
+        "Solution": 
+        [   
+            "Der Status der Secure Boot-Einstellung ist unbekannt. Um den Status zu überprüfen und möglicherweise das Problem von Secure Boot zu lösen, folgen Sie diesen Schritten.",
+            "Starten Sie Ihren Computer neu und greifen Sie auf die BIOS/UEFI-Einstellungen zu. Dies erfolgt in der Regel durch Drücken einer bestimmten Taste während des Startvorgangs. Gängige Tasten zum Zugriff auf die BIOS/UEFI-Einstellungen sind F2, Entf, Esc oder F10. Die spezifische Taste variiert je nach Hersteller Ihres Computers.", 
+            "Sobald Sie sich in den BIOS/UEFI-Einstellungen befinden, navigieren Sie zum Abschnitt, der sich auf Secure Boot bezieht. Dieser Abschnitt kann je nach Systemhersteller und BIOS/UEFI-Version unterschiedlich benannt sein.",
+            "Im Secure Boot-Abschnitt sollten Sie eine Option finden, um Secure Boot zu aktivieren. Wählen Sie diese Option und stellen Sie sie auf 'Aktiviert'. Einige Systeme erfordern möglicherweise die Einstellung eines Secure Boot-Modus oder die Auswahl der Secure Boot-Schlüsselverwaltung. Befolgen Sie die Anweisungen auf dem Bildschirm, um Secure Boot zu aktivieren.",
+            "Nachdem Sie Secure Boot aktiviert haben, speichern Sie die Änderungen in den BIOS/UEFI-Einstellungen und beenden Sie diese. In der Regel können Sie dies tun, indem Sie die Option 'Speichern & Beenden' oder 'Beenden' aus dem BIOS/UEFI-Menü auswählen. Bestätigen Sie alle Aufforderungen zum Speichern der Änderungen und starten Sie Ihren Computer neu."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "200": {
+        "Name": "Keine Anwendungen, die beim Start gestartet werden",
+        "Type": "Sicherheit",
+        "Information": "Beim Hochfahren Ihres Computers werden mehrere Anwendungen automatisch gestartet. Einige davon sind wesentliche Prozesse für das ordnungsgemäße Funktionieren des Systems, während andere bequem beim Start vorhanden sind. Es könnte jedoch auch Anwendungen geben, die während des Starts ohne Ihr Wissen gestartet werden. Es ist ratsam, diese zu deaktivieren, um unbefugte Aktionen zu verhindern und die Startgeschwindigkeit Ihres Computers zu verbessern.",
+        "Solution": 
+        [   
+            "Es gibt keine Anwendungen, die beim Start gestartet werden, daher sind keine Maßnahmen erforderlich."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "201": {
+        "Name": "Anwendungen, die beim Start gestartet werden",
+        "Type": "Sicherheit",
+        "Information": "Beim Hochfahren Ihres Computers werden mehrere Anwendungen automatisch gestartet. Einige davon sind wesentliche Prozesse für das ordnungsgemäße Funktionieren des Systems, während andere bequem beim Start vorhanden sind. Es könnte jedoch auch Anwendungen geben, die während des Starts ohne Ihr Wissen gestartet werden. Es ist ratsam, diese zu deaktivieren, um unbefugte Aktionen zu verhindern und die Startgeschwindigkeit Ihres Computers zu verbessern.",
+        "Solution": 
+        [   
+            "Gehen Sie zu Start > Einstellungen > Apps > Start.", 
+            "Hier können Sie auswählen, welche Anwendungen beim Start automatisch gestartet werden."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/applications-which-start-at-boot/boot-apps-1.jpg",
+            "frontend/src/assets/images/windows-11/applications-which-start-at-boot/boot-apps-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/applications-which-start-at-boot/boot-apps-1.png",
+            "frontend/src/assets/images/windows-10/applications-which-start-at-boot/boot-apps-2.png"
+        ]
+    },
+    "210": {
+        "Name": "Google Chrome mit installiertem Adblocker",
+        "Type": "Privatsphäre",
+        "Information": "Adblocker schützen Benutzer vor Online-Werbung. Mit ihren Filtern und Algorithmen bieten sie einen geschützten Raum für ungestörtes Surfen und ersparen den Benutzern die visuelle Unordnung und potenziellen Sicherheitsrisiken, die durch Werbung entstehen.",
+        "Solution": 
+        [   		
+            "Öffnen Sie Google Chrome und navigieren Sie zum Chrome Store.", 
+			"Suchen Sie im Suchfeld nach einem Adblocker (zum Beispiel: AdBlock Plus oder uBlock Origin).",
+			"Klicken Sie auf die Schaltfläche 'Zu Chrome hinzufügen' und starten Sie den Browser neu."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/chrome-adblocker/chrome-adblocker-1.png",
+            "frontend/src/assets/images/windows-11/chrome-adblocker/chrome-adblocker-2.png",
+            "frontend/src/assets/images/windows-11/chrome-adblocker/chrome-adblocker-3.png"
+        ]
+    },
+    "211": {
+        "Name": "Google Chrome ohne installierten Adblocker",
+        "Type": "Privatsphäre",
+        "Information": "Adblocker schützen Benutzer vor Online-Werbung. Mit ihren Filtern und Algorithmen bieten sie einen geschützten Raum für ungestörtes Surfen und ersparen den Benutzern die visuelle Unordnung und potenziellen Sicherheitsrisiken, die durch Werbung entstehen.",
+        "Solution": 
+        [   		
+            "Öffnen Sie Google Chrome und navigieren Sie zum Chrome Store.", 
+			"Suchen Sie im Suchfeld nach einem Adblocker (zum Beispiel: AdBlock Plus oder uBlock Origin).",
+			"Klicken Sie auf die Schaltfläche 'Zu Chrome hinzufügen' und starten Sie den Browser neu."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/chrome-adblocker/chrome-adblocker-1.png",
+            "frontend/src/assets/images/windows-11/chrome-adblocker/chrome-adblocker-2.png",
+            "frontend/src/assets/images/windows-11/chrome-adblocker/chrome-adblocker-3.png"
+        ]
+    },
+    "220": {
+        "Name": "Microsoft Edge mit installiertem Adblocker",
+        "Type": "Privatsphäre",
+        "Information": "Adblocker schützen Benutzer vor Online-Werbung. Mit ihren Filtern und Algorithmen bieten sie einen geschützten Raum für ungestörtes Surfen und ersparen den Benutzern die visuelle Unordnung und potenziellen Sicherheitsrisiken, die durch Werbung entstehen.",
+        "Solution": 
+        [   		
+            "Öffnen Sie Microsoft Edge und navigieren Sie zu Microsoft Edge Extensions.", 
+			"Suchen Sie im Suchfeld nach einem Adblocker (zum Beispiel: AdBlock Plus oder uBlock Origin).",
+			"Klicken Sie auf die Schaltfläche 'Herunterladen' und starten Sie den Browser neu."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/edge-adblocker/edge-adblocker-1.png",
+            "frontend/src/assets/images/windows-11/edge-adblocker/edge-adblocker-2.png",
+            "frontend/src/assets/images/windows-11/edge-adblocker/edge-adblocker-3.png"
+        ]
+    },
+    "221": {
+        "Name": "Microsoft Edge ohne installierten Adblocker",
+        "Type": "Privatsphäre",
+        "Information": "Adblocker schützen Benutzer vor Online-Werbung. Mit ihren Filtern und Algorithmen bieten sie einen geschützten Raum für ungestörtes Surfen und ersparen den Benutzern die visuelle Unordnung und potenziellen Sicherheitsrisiken, die durch Werbung entstehen.",
+        "Solution": 
+        [   		
+            "Öffnen Sie Microsoft Edge und navigieren Sie zu Microsoft Edge Extensions.", 
+			"Suchen Sie im Suchfeld nach einem Adblocker (zum Beispiel: AdBlock Plus oder uBlock Origin).",
+			"Klicken Sie auf die Schaltfläche 'Herunterladen' und starten Sie den Browser neu."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/edge-adblocker/edge-adblocker-1.png",
+            "frontend/src/assets/images/windows-11/edge-adblocker/edge-adblocker-2.png",
+            "frontend/src/assets/images/windows-11/edge-adblocker/edge-adblocker-3.png"
+        ]
+    },
+    "230": {
+        "Name": "Potenzielle Phishing-Domains in Google Chrome gefunden",
+        "Type": "Privatsphäre",
+        "Information": "Phishing-Domains sind gefälschte Websites, die darauf ausgelegt sind, Menschen dazu zu bringen, sensible Informationen wie Passwörter oder Kreditkartendaten zu teilen. Sie sehen echt aus und ahmen vertrauenswürdige Marken oder Organisationen nach. Diese Betrügereien nutzen Vertrauen und Neugier aus, um persönliche Daten zu stehlen.",
+        "Solution": 
+        [   		
+            "Seien Sie beim Surfen im Internet vorsichtig, da vertrauenswürdige Websites leicht gefälscht werden können. Außerdem gibt es viele Websites mit böswilligen Absichten. Im Zweifelsfall oder wenn Sie aktiv auf einer potenziellen Phishing-Website surfen, wird empfohlen, Ihr Passwort zu ändern."
+        ],
+        "Screenshots":
+        [
+            "TOBEFILLED"
+        ]
+    },	
+    "231": {
+        "Name": "Keine potenziellen Phishing-Domains in Google Chrome gefunden",
+        "Type": "Privatsphäre",
+        "Information": "Phishing-Domains sind gefälschte Websites, die darauf ausgelegt sind, Menschen dazu zu bringen, sensible Informationen wie Passwörter oder Kreditkartendaten zu teilen. Sie sehen echt aus und ahmen vertrauenswürdige Marken oder Organisationen nach. Diese Betrügereien nutzen Vertrauen und Neugier aus, um persönliche Daten zu stehlen.",
+        "Solution": 
+        [   		
+            "Seien Sie beim Surfen im Internet vorsichtig, da vertrauenswürdige Websites leicht gefälscht werden können. Außerdem gibt es viele Websites mit böswilligen Absichten. Im Zweifelsfall oder wenn Sie aktiv auf einer potenziellen Phishing-Website surfen, wird empfohlen, Ihr Passwort zu ändern."
+        ],
+        "Screenshots":
+        [
+        ]
+    },	
+    "240": {
+        "Name": "Potenzielle Phishing-Domains in Microsoft Edge gefunden",
+        "Type": "Privatsphäre",
+        "Information": "Phishing-Domains sind gefälschte Websites, die darauf ausgelegt sind, Menschen dazu zu bringen, sensible Informationen wie Passwörter oder Kreditkartendaten zu teilen. Sie sehen echt aus und ahmen vertrauenswürdige Marken oder Organisationen nach. Diese Betrügereien nutzen Vertrauen und Neugier aus, um persönliche Daten zu stehlen.",
+        "Solution": 
+        [   		
+            "Seien Sie beim Surfen im Internet vorsichtig, da vertrauenswürdige Websites leicht gefälscht werden können. Außerdem gibt es viele Websites mit böswilligen Absichten. Im Zweifelsfall oder wenn Sie aktiv auf einer potenziellen Phishing-Website surfen, wird empfohlen, Ihr Passwort zu ändern."
+        ],
+        "Screenshots":
+        [
+        ]
+    },	
+    "241": {
+        "Name": "Keine potenziellen Phishing-Domains in Microsoft Edge gefunden",
+        "Type": "Privatsphäre",
+        "Information": "Phishing-Domains sind gefälschte Websites, die darauf ausgelegt sind, Menschen dazu zu bringen, sensible Informationen wie Passwörter oder Kreditkartendaten zu teilen. Sie sehen echt aus und ahmen vertrauenswürdige Marken oder Organisationen nach. Diese Betrügereien nutzen Vertrauen und Neugier aus, um persönliche Daten zu stehlen.",
+        "Solution": 
+        [   		
+            "Seien Sie beim Surfen im Internet vorsichtig, da vertrauenswürdige Websites leicht gefälscht werden können. Außerdem gibt es viele Websites mit böswilligen Absichten. Im Zweifelsfall oder wenn Sie aktiv auf einer potenziellen Phishing-Website surfen, wird empfohlen, Ihr Passwort zu ändern."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "250": {
+        "Name": "Standard-Suchmaschine in Google Chrome",
+        "Type": "Privatsphäre",
+        "Information": "Eine Standardsuchmaschine hilft Benutzern, Informationen im Internet zu finden, indem sie Schlüsselwörter oder Phrasen eingeben. Beispiele sind Google, Bing und Yahoo. Sie stehen oft wegen ihres Umgangs mit der Privatsphäre in der Kritik.",
+        "Solution": 
+        [   		
+            "Überlegen Sie, eine Suchmaschine zu verwenden, die den Datenschutz der Benutzer in den Vordergrund stellt (zum Beispiel DuckDuckGo)."
+        ],
+        "Screenshots":
+        [
+        ]
+    },	
+    "260": {
+        "Name": "Standard-Suchmaschine in Microsoft Edge",
+        "Type": "Privatsphäre",
+        "Information": "Eine Standardsuchmaschine hilft Benutzern, Informationen im Internet zu finden, indem sie Schlüsselwörter oder Phrasen eingeben. Beispiele sind Google, Bing und Yahoo. Sie stehen oft wegen ihres Umgangs mit der Privatsphäre in der Kritik.",
+        "Solution": 
+        [   		
+            "Überlegen Sie, eine Suchmaschine zu verwenden, die den Datenschutz der Benutzer in den Vordergrund stellt (zum Beispiel DuckDuckGo)."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "270": {
+        "Name": "Cookies, die von Mozilla Firefox gespeichert werden",
+        "Type": "Privatsphäre",
+        "Information": "Cookies sind kleine Textdateien, die von den Websites, die Sie besuchen, auf Ihrem Computer gespeichert werden. Sie werden verwendet, um sich Ihre Präferenzen, Anmeldeinformationen und andere Daten zu merken, um Ihr Surferlebnis zu verbessern. Cookies können jedoch auch verwendet werden, um Ihre Online-Aktivitäten zu verfolgen und persönliche Informationen ohne Ihre Zustimmung zu sammeln, was Bedenken hinsichtlich des Datenschutzes aufwirft. Das regelmäßige Verwalten und Löschen von Cookies hilft, Ihre Privatsphäre zu schützen und zu kontrollieren, welche Daten Websites über Sie sammeln.",
+        "Solution": 
+        [   		
+            "Öffnen Sie Mozilla Firefox und klicken Sie auf die Menüschaltfläche (drei horizontale Linien) in der oberen rechten Ecke.",
+            "Wählen Sie 'Optionen' und gehen Sie zum Tab 'Datenschutz & Sicherheit'.",
+            "Klicken Sie unter 'Cookies und Website-Daten' auf 'Daten verwalten'.",
+            "Hier können Sie die von Websites gespeicherten Cookies anzeigen und entfernen. Sie können auch alle Cookies löschen, indem Sie auf 'Alle entfernen' klicken."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/firefox-cookies/cookies-firefox-1.png",
+            "frontend/src/assets/images/windows-11/firefox-cookies/cookies-firefox-2.png",
+            "frontend/src/assets/images/windows-11/firefox-cookies/cookies-firefox-3.png",
+            "frontend/src/assets/images/windows-11/firefox-cookies/cookies-firefox-4.png"
+        ]
+    },
+    "271": {
+        "Name": "Mögliche Tracking-Cookies in Mozilla Firefox gefunden",
+        "Type": "Privatsphäre",
+        "Information": "Cookies sind kleine Textdateien, die von den Websites, die Sie besuchen, auf Ihrem Computer gespeichert werden. Sie werden verwendet, um Ihre Einstellungen, Anmeldeinformationen und andere Daten zu speichern, um Ihr Surferlebnis zu verbessern. Cookies können jedoch auch verwendet werden, um Ihre Online-Aktivitäten zu verfolgen und persönliche Informationen ohne Ihre Zustimmung zu sammeln, was zu Datenschutzbedenken führt. Das regelmäßige Verwalten und Löschen von Cookies hilft, Ihre Privatsphäre zu schützen und die von Websites über Sie gesammelten Daten zu kontrollieren.",
+        "Solution": 
+        [   		
+            "Öffnen Sie Mozilla Firefox und klicken Sie auf die Menütaste (drei horizontale Linien) in der oberen rechten Ecke.",
+            "Wählen Sie 'Einstellungen' und gehen Sie zum Tab 'Datenschutz & Sicherheit'.",
+            "Die Option 'Erweiterter Schutz vor Aktivitätenverfolgung' sollte auf 'Standard' oder 'Benutzerdefiniert' eingestellt sein. Benutzerdefiniert gibt Ihnen mehr Kontrolle darüber, was Sie zulassen oder blockieren. Unter Cookies und Websitedaten können Sie Ihre vorhandenen Cookies löschen und Ausnahmen verwalten. Es wird empfohlen, Ihre Cookies häufig zu löschen, um Ihre Privatsphäre zu schützen."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "280": {
+        "Name": "Installierte Erweiterungen in Mozilla Firefox",
+        "Type": "Privatsphäre",
+        "Information": "Browser-Erweiterungen verbessern die Funktionalität Ihres Webbrowsers, indem sie Funktionen, Werkzeuge und Anpassungsoptionen hinzufügen. Obwohl Erweiterungen nützlich sein können, können sie auch Datenschutz- und Sicherheitsrisiken darstellen, wenn sie Zugriff auf sensible Daten haben oder Ihre Online-Aktivitäten ohne Ihre Zustimmung verfolgen. Das regelmäßige Überprüfen und Verwalten Ihrer Browser-Erweiterungen hilft, Ihre Privatsphäre und Sicherheit online zu schützen. Entfernen Sie alle Erweiterungen, die Sie nicht mehr verwenden oder denen Sie nicht mehr vertrauen, um potenzielle Risiken zu minimieren.",
+        "Solution": 
+        [   		
+            "Öffnen Sie Mozilla Firefox und klicken Sie auf die Menüschaltfläche (drei horizontale Linien) in der oberen rechten Ecke.",
+            "Wählen Sie 'Add-ons' und gehen Sie zum Tab 'Erweiterungen'.",
+            "Hier können Sie die in Ihrem Browser installierten Erweiterungen anzeigen und verwalten. Deaktivieren oder entfernen Sie alle Erweiterungen, die Sie nicht mehr verwenden oder denen Sie nicht mehr vertrauen."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/firefox-extensions/extensions-firefox-1.png",
+            "frontend/src/assets/images/windows-11/firefox-extensions/extensions-firefox-2.png",
+            "frontend/src/assets/images/windows-11/firefox-extensions/extensions-firefox-3.png"
+        ]
+    },
+    "290": {
+        "Name": "Mozilla Firefox mit installiertem Adblocker",
+        "Type": "Privatsphäre",
+        "Information": "Adblocker schützen Benutzer vor Online-Werbung. Mit ihren Filtern und Algorithmen bieten sie einen geschützten Raum für ungestörtes Surfen und ersparen den Benutzern die visuelle Unordnung und potenziellen Sicherheitsrisiken, die durch Werbung entstehen.",
+        "Solution": 
+        [   		
+            "Öffnen Sie Mozilla Firefox und navigieren Sie zu Firefox Extensions.", 
+			"Suchen Sie im Suchfeld nach einem Adblocker (zum Beispiel: AdBlock Plus oder uBlock Origin).",
+			"Klicken Sie auf die Schaltfläche 'Herunterladen' und starten Sie den Browser neu."
+        ],
+        "Screenshots":
+        [
+        ]
+    },	
+    "291": {
+        "Name": "Mozilla Firefox ohne installierten Adblocker",
+        "Type": "Privatsphäre",
+        "Information": "Adblocker schützen Benutzer vor Online-Werbung. Mit ihren Filtern und Algorithmen bieten sie einen geschützten Raum für ungestörtes Surfen und ersparen den Benutzern die visuelle Unordnung und potenziellen Sicherheitsrisiken, die durch Werbung entstehen.",
+        "Solution": 
+        [   		
+            "Öffnen Sie Mozilla Firefox und navigieren Sie zu Firefox Extensions.", 
+			"Suchen Sie im Suchfeld nach einem Adblocker (zum Beispiel: AdBlock Plus oder uBlock Origin).",
+			"Klicken Sie auf die Schaltfläche 'Herunterladen' und starten Sie den Browser neu."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/firefox-adblocker/firefox-adblocker-1.png",
+            "frontend/src/assets/images/windows-11/firefox-adblocker/firefox-adblocker-2.png",
+            "frontend/src/assets/images/windows-11/firefox-adblocker/firefox-adblocker-3.png",
+            "frontend/src/assets/images/windows-11/firefox-adblocker/firefox-adblocker-4.png",
+            "frontend/src/assets/images/windows-11/firefox-adblocker/firefox-adblocker-5.png"
+        ]
+    },		
+    "300": {
+        "Name": "Standard-Suchmaschine in Mozilla Firefox",
+        "Type": "Privatsphäre",
+        "Information": "Eine Standardsuchmaschine hilft Benutzern, Informationen im Internet zu finden, indem sie Schlüsselwörter oder Phrasen eingeben. Beispiele sind Google, Bing und Yahoo. Sie stehen oft wegen ihres Umgangs mit der Privatsphäre in der Kritik.",
+        "Solution": 
+        [   		
+          "Überlegen Sie, einen Browser zu verwenden, der den Datenschutz der Benutzer in den Vordergrund stellt (zum Beispiel DuckDuckGo)."
+        ],
+        "Screenshots":
+        [
+        ]
+    },	
+    "310": {
+        "Name": "Keine potenziellen Phishing-Domains in Mozilla Firefox gefunden",
+        "Type": "Privatsphäre",
+        "Information": "Phishing-Domains sind gefälschte Websites, die darauf ausgelegt sind, Menschen dazu zu bringen, sensible Informationen wie Passwörter oder Kreditkartendaten zu teilen. Sie sehen echt aus und ahmen vertrauenswürdige Marken oder Organisationen nach. Diese Betrügereien nutzen Vertrauen und Neugier aus, um persönliche Daten zu stehlen.",
+        "Solution":
+        [
+        ],
+        "Screenshots":
+        [
+        ]
+    },		
+    "311": {
+        "Name": "Potenzielle Phishing-Domains in Mozilla Firefox gefunden",
+        "Type": "Privatsphäre",
+        "Information": "Phishing-Domains sind gefälschte Websites, die darauf ausgelegt sind, Menschen dazu zu bringen, sensible Informationen wie Passwörter oder Kreditkartendaten zu teilen. Sie sehen echt aus und ahmen vertrauenswürdige Marken oder Organisationen nach. Diese Betrügereien nutzen Vertrauen und Neugier aus, um persönliche Daten zu stehlen.",
+        "Solution":
+        [
+            "Seien Sie beim Surfen im Internet vorsichtig, da vertrauenswürdige Websites leicht gefälscht werden können. Außerdem gibt es viele Websites mit böswilligen Absichten. Im Zweifelsfall oder wenn Sie aktiv auf einer potenziellen Phishing-Website surfen, wird empfohlen, Ihr Passwort zu ändern."
+        ],
+        "Screenshots":
+        [
+            "TOBEFILLED"
+        ]
+    },
+    "320": {
+        "Name": "Falsche CIS-Audit-Listeneinträge in der Registrierung",
+        "Type": "Sicherheit",
+        "Information": "Das Center for Internet Security (CIS) bietet eine Reihe von Richtlinien und Best Practices zur Sicherung von Computersystemen. Die CIS-Audit-Listeneinträge in der Registrierung helfen sicherzustellen, dass Ihr System gemäß diesen Sicherheitsstandards konfiguriert ist. Falsche oder veraltete Registrierungseinträge können Ihr System anfällig für Sicherheitsbedrohungen machen und Ihre Privatsphäre gefährden.",
+        "Solution":
+        [
+            "Laden Sie das CIS-Benchmark für Ihr Betriebssystem von der offiziellen CIS-Website herunter. Befolgen Sie die Anweisungen im Benchmark-Dokument, um die Registrierungseinträge auf Ihrem System zu überprüfen und zu aktualisieren, damit sie den CIS-Sicherheitsstandards entsprechen. Überprüfen Sie regelmäßig auf Updates des CIS-Benchmarks und wenden Sie alle Änderungen oder Empfehlungen an, um eine sichere Konfiguration aufrechtzuerhalten."
+        ],
+        "Screenshots":
+        [
+            "TOBEFILLED"
+        ]
+    },
+    "321": {
+        "Name": "Korrekte CIS-Audit-Listeneinträge in der Registrierung",
+        "Type": "Sicherheit",
+        "Information": "Das Center for Internet Security (CIS) bietet eine Reihe von Richtlinien und Best Practices zur Sicherung von Computersystemen. Die CIS-Audit-Listeneinträge in der Registrierung helfen sicherzustellen, dass Ihr System gemäß diesen Sicherheitsstandards konfiguriert ist. Falsche oder veraltete Registrierungseinträge können Ihr System anfällig für Sicherheitsbedrohungen machen und Ihre Privatsphäre gefährden.",
+        "Solution":
+        [
+            "Alle Einstellungen entsprechen den Richtlinien der CIS-Audit-Liste, daher sind keine Maßnahmen erforderlich."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "330": {
+        "Name": "Automatische Anmeldung deaktiviert",
+        "Type": "Sicherheit",
+        "Information": "Die automatische Anmeldung ermöglicht es Benutzern, auf ihre Konten zuzugreifen, ohne jedes Mal ein Passwort eingeben zu müssen, wenn sie ihren Computer starten oder eine bestimmte Anwendung öffnen. Obwohl dies bequem ist, birgt die automatische Anmeldung Sicherheitsrisiken, da jeder mit physischem Zugriff auf das Gerät ohne Authentifizierung auf das Konto zugreifen kann. Durch das Deaktivieren der automatischen Anmeldung wird die Sicherheit Ihrer Konten erhöht und unbefugter Zugriff verhindert.",
+        "Solution":
+        [
+            "Die automatische Anmeldung ist deaktiviert, daher sind keine Maßnahmen erforderlich."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "331": {
+        "Name": "Automatische Anmeldung aktiviert",
+        "Type": "Sicherheit",
+        "Information": "Die automatische Anmeldung ermöglicht es Benutzern, auf ihre Konten zuzugreifen, ohne jedes Mal ein Passwort eingeben zu müssen, wenn sie ihren Computer starten oder eine bestimmte Anwendung öffnen. Obwohl dies bequem ist, birgt die automatische Anmeldung Sicherheitsrisiken, da jeder mit physischem Zugriff auf das Gerät ohne Authentifizierung auf das Konto zugreifen kann. Durch das Deaktivieren der automatischen Anmeldung wird die Sicherheit Ihrer Konten erhöht und unbefugter Zugriff verhindert.",
+        "Solution":
+        [
+            "Gehen Sie zu Start > Einstellungen > Konten > Anmeldeoptionen.",
+            "Wählen Sie unter 'Anmeldung erforderlich' die Option 'Wenn der PC aus dem Ruhezustand erwacht'."
+        ],
+        "Screenshots":
+        [
+            "TOBEFILLED"
+        ]
+    },
+    "340": {
+        "Name": "Remote RPC deaktiviert",
+        "Type": "Sicherheit",
+        "Information": "Remote Procedure Call (RPC) ist ein Protokoll, das es Programmen und Prozessen ermöglicht, über ein Netzwerk miteinander zu kommunizieren. Das Deaktivieren von Remote RPC hilft, unbefugten Zugriff auf Ihren Computer zu verhindern und schützt ihn vor potenziellen Sicherheitsbedrohungen und Schwachstellen.",
+        "Solution": [
+            "Remote RPC ist deaktiviert, daher sind keine Maßnahmen erforderlich."
+        ],
+        "Screenshots": []
+    },
+    "341": {
+        "Name": "Remote RPC aktiviert",
+        "Type": "Sicherheit",
+        "Information": "Remote Procedure Call (RPC) ist ein Protokoll, das es Programmen und Prozessen ermöglicht, über ein Netzwerk miteinander zu kommunizieren. Das Deaktivieren von Remote RPC hilft, unbefugten Zugriff auf Ihren Computer zu verhindern und schützt ihn vor potenziellen Sicherheitsbedrohungen und Schwachstellen.",
+        "Solution": [
+            "Die Remote RPC-Einstellung kann nicht auf herkömmliche Weise geändert werden. Es erfordert eine direkte Bearbeitung der Registrierung.",
+            "Geben Sie in der Windows-Suche 'Registry Editor' ein und öffnen Sie das Programm.",
+            "Navigieren Sie zu \"Computer\\HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\".",
+            "Doppelklicken Sie auf den Schlüssel \"AllowRemoteRPC\" und setzen Sie dessen Wert auf 0."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
+    "350": {
+        "Name": "Keine möglichen Tracking-Cookies im Google Chrome-Browser gefunden",
+        "Type": "Privatsphäre",
+        "Information": "Cookies sind kleine Textdateien, die von den Websites, die Sie besuchen, auf Ihrem Computer gespeichert werden. Sie werden verwendet, um Ihre Präferenzen, Anmeldeinformationen und andere Daten zu speichern, um Ihr Surferlebnis zu verbessern. Cookies können jedoch auch verwendet werden, um Ihre Online-Aktivitäten zu verfolgen und persönliche Informationen ohne Ihre Zustimmung zu sammeln, was Bedenken hinsichtlich der Privatsphäre aufwirft. Das regelmäßige Verwalten und Löschen von Cookies hilft, Ihre Privatsphäre zu schützen und die Daten zu kontrollieren, die Websites über Sie sammeln.",
+        "Solution": [
+            "Keine möglichen Tracking-Cookies im Google Chrome gefunden, daher sind keine Maßnahmen erforderlich."
+        ],
+        "Screenshots": []
+    },
+    "351": {
+        "Name": "Mögliche Tracking-Cookies im Google Chrome-Browser gefunden",
+        "Type": "Privatsphäre",
+        "Information": "Cookies sind kleine Textdateien, die von den Websites, die Sie besuchen, auf Ihrem Computer gespeichert werden. Sie werden verwendet, um Ihre Präferenzen, Anmeldeinformationen und andere Daten zu speichern, um Ihr Surferlebnis zu verbessern. Cookies können jedoch auch verwendet werden, um Ihre Online-Aktivitäten zu verfolgen und persönliche Informationen ohne Ihre Zustimmung zu sammeln, was Bedenken hinsichtlich der Privatsphäre aufwirft. Das regelmäßige Verwalten und Löschen von Cookies hilft, Ihre Privatsphäre zu schützen und die Daten zu kontrollieren, die Websites über Sie sammeln.",
+        "Solution": [
+            "Öffnen Sie Google Chrome und klicken Sie auf die drei Punkte in der oberen rechten Ecke.",
+            "Wählen Sie 'Einstellungen' und gehen Sie zum Abschnitt 'Datenschutz und Sicherheit'.",
+            "Klicken Sie unter 'Drittanbieter-Cookies' auf 'Alle Website-Daten und Berechtigungen anzeigen'.",
+            "Hier können Sie die von Websites gespeicherten Cookies anzeigen und verwalten. Sie können einzelne Cookies löschen oder alle Website-Daten löschen, um Ihre Privatsphäre zu schützen."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
+    "360": {
+        "Name": "Keine möglichen Tracking-Cookies im Microsoft Edge-Browser gefunden",
+        "Type": "Privatsphäre",
+        "Information": "Cookies sind kleine Textdateien, die von den Websites, die Sie besuchen, auf Ihrem Computer gespeichert werden. Sie werden verwendet, um Ihre Präferenzen, Anmeldeinformationen und andere Daten zu speichern, um Ihr Surferlebnis zu verbessern. Cookies können jedoch auch verwendet werden, um Ihre Online-Aktivitäten zu verfolgen und persönliche Informationen ohne Ihre Zustimmung zu sammeln, was Bedenken hinsichtlich der Privatsphäre aufwirft. Das regelmäßige Verwalten und Löschen von Cookies hilft, Ihre Privatsphäre zu schützen und die Daten zu kontrollieren, die Websites über Sie sammeln.",
+        "Solution": [
+            "Keine möglichen Tracking-Cookies im Microsoft Edge gefunden, daher sind keine Maßnahmen erforderlich."
+        ],
+        "Screenshots": []
+    },
+    "361": {
+        "Name": "Mögliche Tracking-Cookies im Microsoft Edge-Browser gefunden",
+        "Type": "Privatsphäre",
+        "Information": "Cookies sind kleine Textdateien, die von den Websites, die Sie besuchen, auf Ihrem Computer gespeichert werden. Sie werden verwendet, um Ihre Präferenzen, Anmeldeinformationen und andere Daten zu speichern, um Ihr Surferlebnis zu verbessern. Cookies können jedoch auch verwendet werden, um Ihre Online-Aktivitäten zu verfolgen und persönliche Informationen ohne Ihre Zustimmung zu sammeln, was Bedenken hinsichtlich der Privatsphäre aufwirft. Das regelmäßige Verwalten und Löschen von Cookies hilft, Ihre Privatsphäre zu schützen und die Daten zu kontrollieren, die Websites über Sie sammeln.",
+        "Solution": [
+            "Öffnen Sie Microsoft Edge und klicken Sie auf die drei Punkte in der oberen rechten Ecke.",
+            "Wählen Sie 'Einstellungen' und gehen Sie zum Abschnitt 'Cookies und Site-Berechtigungen'.",
+            "Klicken Sie unter 'Cookies und gespeicherte Daten' auf 'Cookies und Site-Daten verwalten und löschen'.",
+            "Hier können Sie allgemeine Cookie-Einstellungen verwalten. Sie können einzelne Cookies löschen oder alle Site-Daten löschen, indem Sie auf 'Alle Cookies und Site-Daten anzeigen' klicken."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
+    "997": {
+        "Name": "Installierte Erweiterungen in Google Chrome",
+        "Type": "Privatsphäre",
+        "Information": "Browser-Erweiterungen verbessern die Funktionalität Ihres Webbrowsers, indem sie Funktionen, Werkzeuge und Anpassungsoptionen hinzufügen. Obwohl Erweiterungen nützlich sein können, können sie auch Datenschutz- und Sicherheitsrisiken darstellen, wenn sie Zugriff auf sensible Daten haben oder Ihre Online-Aktivitäten ohne Ihre Zustimmung verfolgen. Das regelmäßige Überprüfen und Verwalten Ihrer Browser-Erweiterungen hilft, Ihre Privatsphäre und Sicherheit online zu schützen. Entfernen Sie alle Erweiterungen, die Sie nicht mehr verwenden oder denen Sie nicht mehr vertrauen, um potenzielle Risiken zu minimieren.",
+        "Solution": 
+        [   		
+            "Öffnen Sie Google Chrome und klicken Sie auf die drei Punkte in der oberen rechten Ecke.",
+            "Wählen Sie 'Erweiterungen' und dann 'Erweiterungen verwalten'.",
+            "Hier können Sie die in Ihrem Browser installierten Erweiterungen anzeigen und verwalten. Deaktivieren oder entfernen Sie alle Erweiterungen, die Sie nicht mehr verwenden oder denen Sie nicht mehr vertrauen."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "998": {
+        "Name": "Anwendungen mit Administratorberechtigungen",
+        "Type": "Sicherheit",
+        "Information": "Anwendungen mit Administratorberechtigungen haben erweiterte Rechte, die es ihnen ermöglichen, Änderungen an Systemeinstellungen vorzunehmen, Software zu installieren oder zu deinstallieren, Systemdateien zu ändern und andere Aktionen durchzuführen, die die Sicherheit und Stabilität Ihres Computers beeinträchtigen können. Zu wissen, welche Anwendungen Administratorrechte haben, hilft Ihnen, potenzielle Sicherheitsrisiken und Schwachstellen zu identifizieren, wie z.B. bösartige Software oder unbefugte Anwendungen, die möglicherweise erweiterte Zugriffsrechte erlangt haben.",
+        "Solution":
+        [
+            "Klicken Sie mit der rechten Maustaste auf die Taskleiste und wählen Sie 'Task-Manager' oder drücken Sie Strg + Umschalt + Esc auf Ihrer Tastatur, um den Task-Manager zu öffnen.",
+            "Klicken Sie im Task-Manager auf die Registerkarte 'Details', um eine Liste der laufenden Prozesse und Anwendungen anzuzeigen.",
+            "Klicken Sie mit der rechten Maustaste auf die Spaltenüberschrift, klicken Sie auf 'Spalten auswählen' und stellen Sie sicher, dass 'Erhöht' ausgewählt ist. Diese Spalte zeigt an, ob ein Prozess oder eine Anwendung mit Administratorberechtigungen ausgeführt wird.",
+            "Scrollen Sie durch die Liste der Prozesse und suchen Sie nach Einträgen mit 'Ja' in der Spalte 'Erhöht'. Diese Prozesse haben Administratorrechte.",
+            "Wenn Sie Programme sehen, die nicht mit Administratorrechten ausgeführt werden müssen, können Sie mit der rechten Maustaste darauf klicken und den Task beenden."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-1.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-2.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-3.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-4.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-4.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-1.png",
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-2.png",
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-3.png",
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-4.png",
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-4.png"
+        ]
+    },
+    "999": {
+        "Name": "Anwendungen mit Administratorberechtigungen",
+        "Type": "Sicherheit",
+        "Information": "Anwendungen mit Administratorberechtigungen haben erweiterte Rechte, die es ihnen ermöglichen, Änderungen an Systemeinstellungen vorzunehmen, Software zu installieren oder zu deinstallieren, Systemdateien zu ändern und andere Aktionen durchzuführen, die die Sicherheit und Stabilität Ihres Computers beeinträchtigen können. Zu wissen, welche Anwendungen Administratorrechte haben, hilft Ihnen, potenzielle Sicherheitsrisiken und Schwachstellen zu identifizieren, wie z.B. bösartige Software oder unbefugte Anwendungen, die möglicherweise erweiterte Zugriffsrechte erlangt haben.",
+        "Solution":
+        [
+            "Klicken Sie mit der rechten Maustaste auf die Taskleiste und wählen Sie 'Task-Manager' oder drücken Sie Strg + Umschalt + Esc auf Ihrer Tastatur, um den Task-Manager zu öffnen.",
+            "Klicken Sie im Task-Manager auf die Registerkarte 'Details', um eine Liste der laufenden Prozesse und Anwendungen anzuzeigen.",
+            "Klicken Sie mit der rechten Maustaste auf die Spaltenüberschrift, klicken Sie auf 'Spalten auswählen' und stellen Sie sicher, dass 'Erhöht' ausgewählt ist. Diese Spalte zeigt an, ob ein Prozess oder eine Anwendung mit Administratorberechtigungen ausgeführt wird.",
+            "Scrollen Sie durch die Liste der Prozesse und suchen Sie nach Einträgen mit 'Ja' in der Spalte 'Erhöht'. Diese Prozesse haben Administratorrechte.",
+            "Wenn Sie Programme sehen, die nicht mit Administratorrechten ausgeführt werden müssen, können Sie mit der rechten Maustaste darauf klicken und den Task beenden."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-1.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-2.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-3.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-4.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-4.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-1.png",
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-2.png",
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-3.png",
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-4.png",
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-4.png"
+        ]
+    }
+}

@@ -1,12 +1,15 @@
 import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
 import {retrieveTheme} from './personalize.js';
+import {LogError as logError} from '../../wailsjs/go/main/Tray.js';
 
 export let currentStep = 1;
 /** Load the content of the Integration page */
 export function openIntegrationPage() {
+  retrieveTheme();
   closeNavigation(document.body.offsetWidth);
   markSelectedNavigationItem('integration-button');
   sessionStorage.setItem('savedPage', '5');
+
   document.getElementById('page-contents').innerHTML = `
   <!DOCTYPE html>
   <html lang="en">
@@ -66,7 +69,6 @@ export function openIntegrationPage() {
   document.getElementById('disconnectButton').style.display = 'none';
 
   showStep(currentStep);
-  document.onload = retrieveTheme();
 }
 
 /**
@@ -133,4 +135,11 @@ function disconnectFromAPI() {
   document.getElementById('disconnectButton').style.display = 'none';
 }
 
-document.getElementById('integration-button').addEventListener('click', () => openIntegrationPage());
+/* istanbul ignore next */
+if (typeof document !== 'undefined') {
+  try {
+    document.getElementById('integration-button').addEventListener('click', () => openIntegrationPage());
+  } catch (error) {
+    logError('Error in integration.js: ' + error);
+  }
+}

@@ -34,4 +34,8 @@ const (
 	SearchFirefoxID
 	HistoryFirefoxID
 	CISRegistrySettingsID
+	AutoLoginID
+	RemoteRPCID
+	CookiesChromiumID
+	CookiesEdgeID
 )

@@ -16,10 +16,12 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/tray"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/usersettings"
+	"github.com/rodolfoag/gow32"
 	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/options"
 	"github.com/wailsapp/wails/v2/pkg/options/assetserver"
 	"github.com/wailsapp/wails/v2/pkg/options/windows"
+	"golang.org/x/sys/windows/registry"
 )
 
 //go:embed all:frontend/dist
@@ -91,21 +93,55 @@ func (h *FileLoader) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 //
 // Returns: None. This function does not return a value as it is the entry point of the application.
 func main() {
-	logger.Setup(0, -1)
+	// Create a mutex to ensure only one instance of the application is running
+	// If the mutex already exists, it means another instance of the application is running, so we exit
+	// This also ensures program is not running when uninstalling the application
+	_, mutexErr := gow32.CreateMutex("InfoSec-Agent-Reporting-Page")
+	if mutexErr != nil {
+		return
+	}
+
+	// Setup log file
+	logger.Setup("reporting-page-log.txt", 0, -1)
 	logger.Log.Info("Reporting page starting")
+
+	// Change directory to the reporting page directory.
+	// When opening the reporting page from the Windows notification we start in C:\Windows\System32, and we cannot run the reporting page from there.
+	k, err := registry.OpenKey(
+		registry.CURRENT_USER, `Software\Microsoft\Windows\CurrentVersion\App Paths\InfoSec-Agent-Reporting-Page.exe`,
+		registry.QUERY_VALUE,
+	)
+	if err != nil {
+		logger.Log.ErrorWithErr("Error opening registry key: ", err)
+	} else {
+		defer k.Close()
+
+		// Get reporting page executable path
+		s, _, err2 := k.GetStringValue("Path")
+		if err2 != nil {
+			logger.Log.ErrorWithErr("Error getting path string: ", err)
+		}
+
+		// Set current directory to reporting-page
+		err2 = os.Chdir(s + "/../..")
+		if err2 != nil {
+			logger.Log.ErrorWithErr("Error changing directory: ", err)
+		}
+	}
 
 	// Create a new instance of the app and tray struct
 	app := NewApp()
 	systemTray := NewTray(logger.Log)
-	database := NewDataBase()
+	database := NewDatabase()
 	customLogger := logger.Log
 	localization.Init("../backend/")
 	lang := usersettings.LoadUserSettings().Language
 	tray.Language = lang
 
+	logger.Log.Debug("Starting wails application")
 	// Create a Wails application with the specified options
-	err := wails.Run(&options.App{
-		Title:       "reporting-page",
+	err = wails.Run(&options.App{
+		Title:       "InfoSec Agent Reporting Page",
 		Width:       1024,
 		Height:      768,
 		StartHidden: true,

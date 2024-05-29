@@ -79,16 +79,18 @@ func Outdated(mockExecutor mocking.CommandExecutor) checks.Check {
 	// Depending on the major Windows version (10 or 11), act accordingly
 	switch {
 	case findWindowsVersion(majorVersion, minorVersion) == 11:
+		version := []string{"11", "WinVersion: " + winVer}
 		if winVer == latestWin11Build {
-			return checks.NewCheckResult(checks.WindowsOutdatedID, 0)
+			return checks.NewCheckResult(checks.WindowsOutdatedID, 0, "11")
 		} else {
-			return checks.NewCheckResult(checks.WindowsOutdatedID, 1, "WinVersion: "+winVer)
+			return checks.NewCheckResult(checks.WindowsOutdatedID, 1, version...)
 		}
 	case findWindowsVersion(majorVersion, minorVersion) == 10:
+		version := []string{"10", "WinVersion: " + winVer}
 		if winVer == latestWin10Build {
-			return checks.NewCheckResult(checks.WindowsOutdatedID, 0)
+			return checks.NewCheckResult(checks.WindowsOutdatedID, 0, "10")
 		} else {
-			return checks.NewCheckResult(checks.WindowsOutdatedID, 1, "WinVersion: "+winVer)
+			return checks.NewCheckResult(checks.WindowsOutdatedID, 1, version...)
 		}
 	default:
 		return checks.NewCheckResult(checks.WindowsOutdatedID, 2)

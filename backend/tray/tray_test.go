@@ -2,12 +2,14 @@ package tray_test
 
 import (
 	"bytes"
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/tray"
 	"log"
 	"os"
 	"testing"
 	"time"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/tray"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/localization"
 	"github.com/nicksnyder/go-i18n/v2/i18n"
@@ -108,21 +110,17 @@ func TestScanNow(t *testing.T) {
 	// Set up initial ScanCounter value
 	initialScanCounter := 0
 
-	tickerAdvanced := make(chan struct{})
+	// Run the function without dialog
+	_, err := tray.ScanNow(false)
+	require.NoError(t, err)
 
-	// Listen for ticker advancement
-	go func() {
-		<-tray.ScanTicker.C
-		tickerAdvanced <- struct{}{}
-	}()
-
-	// Run the function
-	_, err := tray.ScanNow()
+	// Run the function with dialog
+	_, err = tray.ScanNow(true)
 	require.NoError(t, err)
 
 	// Assert that ScanCounter was incremented
 	finalScanCounter := tray.ScanCounter
-	expectedScanCounter := initialScanCounter + 1
+	expectedScanCounter := initialScanCounter + 2
 	require.Equal(t, expectedScanCounter, finalScanCounter)
 }
 
@@ -251,4 +249,134 @@ func TestOpenReportingPageWhenAlreadyOpen(t *testing.T) {
 	err := tray.OpenReportingPage("../")
 	require.Error(t, err)
 	require.Equal(t, "reporting-page is already running", err.Error())
+}
+
+// TestPopup verifies the behavior of the Popup function.
+//
+// This test function sets up a scan result and calls the Popup function to display a popup notification with the scan result.
+// It then asserts that the Popup function does not return any errors during its execution.
+//
+// Parameters:
+//   - t *testing.T: The testing framework used for assertions.
+//
+// No return values.
+func TestPopup(t *testing.T) {
+	// Define check result
+	scanResult := []checks.Check{
+		{
+			IssueID:  13,
+			ResultID: 1,
+			Result:   []string{"Issue 1"},
+			Error:    nil,
+			ErrorMSG: "",
+		},
+	}
+
+	// Run the function
+	er := tray.Popup(scanResult, "../../reporting-page/database.db")
+	require.NoError(t, er)
+}
+
+// TestPopupMessage varifies the behavior of the PopupMessage function by entering scan results and verifying that it returns a correct message.
+//
+// This test function sets up a scan result and calls the PopupMessage function to generate a message based on the scan result.
+// It then asserts that the generated message matches the expected message based on the scan result, validating that the PopupMessage function correctly formats messages based on scan results.
+//
+// Parameters:
+//   - t *testing.T: The testing framework used for assertions.
+//
+// No return values.
+func TestPopupMessage(t *testing.T) {
+	// Define test cases with input values and expected results
+	scanResult1 := []checks.Check{
+		{
+			IssueID:  13,
+			ResultID: 1,
+			Result:   []string{"Issue 1"},
+			Error:    nil,
+			ErrorMSG: "",
+		},
+		{
+			IssueID:  13,
+			ResultID: 0,
+			Result:   []string{"Issue 2"},
+			Error:    nil,
+			ErrorMSG: "",
+		},
+	}
+	scanResult2 := []checks.Check{
+		{
+			IssueID:  12,
+			ResultID: 0,
+			Result:   []string{"Issue 1"},
+			Error:    nil,
+			ErrorMSG: "",
+		},
+		{
+			IssueID:  13,
+			ResultID: 1,
+			Result:   []string{"Issue 2"},
+			Error:    nil,
+			ErrorMSG: "",
+		},
+	}
+	scanResult3 := []checks.Check{
+		{
+			IssueID:  3,
+			ResultID: 1,
+			Result:   []string{"Issue 1"},
+			Error:    nil,
+			ErrorMSG: "",
+		},
+	}
+	scanResult4 := []checks.Check{
+		{
+			IssueID:  13,
+			ResultID: 0,
+			Result:   []string{"Issue 1"},
+			Error:    nil,
+			ErrorMSG: "",
+		},
+		{
+			IssueID:  3,
+			ResultID: 1,
+			Result:   []string{"Issue 2"},
+			Error:    nil,
+			ErrorMSG: "",
+		},
+	}
+	scanResult5 := []checks.Check{
+		{
+			IssueID:  1,
+			ResultID: 0,
+			Result:   []string{"Issue 1"},
+			Error:    nil,
+			ErrorMSG: "",
+		},
+	}
+	testCases := []struct {
+		input           []checks.Check
+		expectedMessage string
+	}{
+		// Scanresult with 1 high risk issue and medium risk issues
+		{scanResult1, "The privacy and security scan has been completed. You have 1 high risk issue. Open the reporting page to see more information."},
+		// Scanresult with multiple high risk issues
+		{scanResult2, "The privacy and security scan has been completed. You have 2 high risk issues. Open the reporting page to see more information."},
+		// Scan result with 1 medium risk issue
+		{scanResult3, "The privacy and security scan has been completed. You have 1 medium risk issue. Open the reporting page to see more information."},
+		// Scanresult with no high risk issues an multiple medium risk issues
+		{scanResult4, "The privacy and security scan has been completed. You have 2 medium risk issues. Open the reporting page to see more information."},
+		// Scanresult with no high risk issues an no medium risk issues
+		{scanResult5, "The privacy and security scan has been completed. Open the reporting page to view the results."},
+		// Empty scanresult
+		{[]checks.Check{}, "The privacy and security scan has been completed. Open the reporting page to view the results."},
+	}
+	// Iterate over test cases
+	for _, tc := range testCases {
+		// Run the function with mocked scan
+		result := tray.PopupMessage(tc.input, "../../reporting-page/database.db")
+
+		// Assert that the message matches the expected message
+		require.Equal(t, tc.expectedMessage, result)
+	}
 }

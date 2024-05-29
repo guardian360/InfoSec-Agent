@@ -1,36 +1,42 @@
-import data from '../database.json' assert { type: 'json' };
-import {openIssuesPage} from './issues.js';
+import dataDe from '../databases/database.de.json' assert { type: 'json' };
+import dataEnGB from '../databases/database.en-GB.json' assert { type: 'json' };
+import dataEnUS from '../databases/database.en-US.json' assert { type: 'json' };
+import dataEs from '../databases/database.es.json' assert { type: 'json' };
+import dataFr from '../databases/database.fr.json' assert { type: 'json' };
+import dataNl from '../databases/database.nl.json' assert { type: 'json' };
+import dataPt from '../databases/database.pt.json' assert { type: 'json' };
+
+import {openIssuesPage, getUserSettings} from './issues.js';
 import {getLocalization} from './localize.js';
 import {retrieveTheme} from './personalize.js';
+import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
 
 let stepCounter = 0;
 const issuesWithResultsShow =
-    ['11', '21', '60', '70', '80', '90', '100', '110', '160', '201', '230', '310', '320'];
+    ['11', '21', '60', '70', '80', '90', '100', '110', '160', '173', '201', '230', '271', '311', '320', '351', '361'];
 
 /** Update contents of solution guide
  *
  * @param {HTMLParagraphElement} solutionText Element in which textual solution step is shown
  * @param {HTMLImageElement} solutionScreenshot Element in which screenshot of solution step is shown
- * @param {[string]} solution List of textual solution steps
- * @param {[image]} screenshots List of images of solution steps
+ * @param {*} issue Issue to update the solution step for
  * @param {int} stepCounter Counter specifying the current step
  */
-export function updateSolutionStep(solutionText, solutionScreenshot, solution, screenshots, stepCounter) {
-  solutionText.innerHTML = `${stepCounter + 1}. ${solution[stepCounter]}`;
-  solutionScreenshot.src = screenshots[stepCounter].toString();
+export function updateSolutionStep(solutionText, solutionScreenshot, issue, stepCounter) {
+  solutionText.innerHTML = `${stepCounter + 1}. ${getVersionSolution(issue, stepCounter)}`;
+  solutionScreenshot.src = getVersionScreenshot(issue, stepCounter).toString();
 }
 
 /** Go to next step of solution guide
  *
  * @param {HTMLParagraphElement} solutionText Element in which textual solution step is shown
  * @param {HTMLImageElement} solutionScreenshot Element in which screenshot of solution step is shown
- * @param {[string]} solution List of textual solution steps
- * @param {[image]} screenshots List of images of solution steps
+ * @param {*} issue Issue to update the solution step for
  */
-export function nextSolutionStep(solutionText, solutionScreenshot, solution, screenshots) {
-  if (stepCounter < solution.length - 1) {
+export function nextSolutionStep(solutionText, solutionScreenshot, issue) {
+  if (stepCounter < issue.Solution.length - 1) {
     stepCounter++;
-    updateSolutionStep(solutionText, solutionScreenshot, solution, screenshots, stepCounter);
+    updateSolutionStep(solutionText, solutionScreenshot, issue, stepCounter);
   }
 }
 
@@ -38,25 +44,56 @@ export function nextSolutionStep(solutionText, solutionScreenshot, solution, scr
  *
  * @param {HTMLParagraphElement} solutionText Element in which textual solution step is shown
  * @param {HTMLImageElement} solutionScreenshot Element in which screenshot of solution step is shown
- * @param {[string]} solution List of textual solution steps
- * @param {[image]} screenshots List of images of solution steps
+ * @param {*} issue Issue to update the solution step for
  */
-export function previousSolutionStep(solutionText, solutionScreenshot, solution, screenshots) {
+export function previousSolutionStep(solutionText, solutionScreenshot, issue) {
   if (stepCounter > 0) {
     stepCounter--;
-    updateSolutionStep(solutionText, solutionScreenshot, solution, screenshots, stepCounter);
+    updateSolutionStep(solutionText, solutionScreenshot, issue, stepCounter);
   }
 }
 
 /** Load the content of the issue page
  *
  * @param {string} issueId Id of the issue to open
+ * @param {string} severity severity of the issue to open
  */
-export function openIssuePage(issueId) {
+export async function openIssuePage(issueId, severity) {
+  retrieveTheme();
+  closeNavigation(document.body.offsetWidth);
+  markSelectedNavigationItem('issue-button');
   stepCounter = 0;
-  const currentIssue = data[issueId];
+  sessionStorage.setItem('savedPage', JSON.stringify([issueId, severity]));
+  const language = await getUserSettings();
+  let currentIssue;
+  switch (language) {
+  case 0:
+    currentIssue = dataDe[issueId];
+    break;
+  case 1:
+    currentIssue = dataEnGB[issueId];
+    break;
+  case 2:
+    currentIssue = dataEnUS[issueId];
+    break;
+  case 3:
+    currentIssue = dataEs[issueId];
+    break;
+  case 4:
+    currentIssue = dataFr[issueId];
+    break;
+  case 5:
+    currentIssue = dataNl[issueId];
+    break;
+  case 6:
+    currentIssue = dataPt[issueId];
+    break;
+  default:
+    currentIssue = dataEnGB[issueId];
+    break;
+  }
   // Check if the issue has no screenshots, if so, display that there is no issue (acceptable)
-  if (currentIssue.Screenshots.length === 0) {
+  if (severity == 0) {
     const pageContents = document.getElementById('page-contents');
     pageContents.innerHTML = `
       <h1 class="issue-name">${currentIssue.Name}</h1>
@@ -65,7 +102,7 @@ export function openIssuePage(issueId) {
         <p id="description">${currentIssue.Information}</p>
         <h2 id="solution">Acceptable</h2>
         <div class="issue-solution">
-          <p id="solution-text">${currentIssue.Solution[stepCounter]}</p>
+          <p id="solution-text">${getVersionSolution(currentIssue, stepCounter)}</p>
         </div>
         <div class="button" id="back-button">Back to issues overview</div>
       </div>
@@ -78,38 +115,39 @@ export function openIssuePage(issueId) {
       pageContents.innerHTML = `
         <h1 class="issue-name">${currentIssue.Name}</h1>
         <div class="issue-information">
-          <h2 id="information" class="information">Information</h2>
+          <h2 id="information" class="lang-information"></h2>
           <p>${currentIssue.Information}</p>
-          <h2 id="solution" class="solution">Solution</h2>
+          <h2 id="solution" class="lang-solution"></h2>
           <div class="issue-solution">
-            <p id="solution-text">${stepCounter +1}. ${currentIssue.Solution[stepCounter]}</p>
+            <p id="solution-text">${stepCounter +1}. ${getVersionSolution(currentIssue, stepCounter)}</p>
             <img style='display:block; width:750px;height:auto' id="step-screenshot"></img>
             <div class="solution-buttons">
               <div class="button-box">
-                <div id="previous-button" class="previous-button button">&laquo; Previous step</div>
-                <div id="next-button" class="next-button button">Next step &raquo;</div>
+                <div id="previous-button" class="lang-previous-button button"></div>
+                <div id="next-button" class="lang-next-button button">;</div>
               </div>
             </div>
           </div>
-          <div class="back-button button" id="back-button">Back to issues overview</div>
+          <div class="lang-back-button button" id="back-button"></div>
         </div>
       `;
     }
+
+    const screenshot = getVersionScreenshot(currentIssue, stepCounter);
     try {
-      document.getElementById('step-screenshot').src = currentIssue.Screenshots[stepCounter];
+      document.getElementById('step-screenshot').src = screenshot;
     } catch (error) { }
 
     // Add functions to page for navigation
     const solutionText = document.getElementById('solution-text');
     const solutionScreenshot = document.getElementById('step-screenshot');
     document.getElementById('next-button').addEventListener('click', () =>
-      nextSolutionStep(solutionText, solutionScreenshot, currentIssue.Solution, currentIssue.Screenshots));
+      nextSolutionStep(solutionText, solutionScreenshot, currentIssue));
     document.getElementById('previous-button').addEventListener('click', () =>
-      previousSolutionStep(solutionText, solutionScreenshot, currentIssue.Solution, currentIssue.Screenshots));
+      previousSolutionStep(solutionText, solutionScreenshot, currentIssue));
   }
 
-  document.onload = retrieveTheme();
-  const texts = ['information', 'solution', 'previous-button', 'next-button', 'back-button'];
+  const texts = ['lang-information', 'lang-solution', 'lang-previous-button', 'lang-next-button', 'lang-back-button'];
   const localizationIds = ['Issues.Information', 'Issues.Solution', 'Issues.Previous', 'Issues.Next', 'Issues.Back'];
   for (let i = 0; i < texts.length; i++) {
     getLocalization(localizationIds[i], texts[i]);
@@ -175,13 +213,20 @@ export function parseShowResult(issueId, currentIssue) {
       resultLine += `You changed your password on: ${issue}`;
     });
     break;
+  case '173':
+    generateBulletList(issues, 17);
+    break;
   case '201':
     generateBulletList(issues, 20);
     break;
   case '230':
     generateBulletList(issues, 23);
     break;
-  case '310':
+  case '271':
+    resultLine += '(Possible) tracking cookies have been found from the following websites:';
+    resultLine += cookiesTable(issues.find((issue) => issue.issue_id === 27).result);
+    break;
+  case '311':
     generateBulletList(issues, 31);
     break;
   case '320':
@@ -192,6 +237,14 @@ export function parseShowResult(issueId, currentIssue) {
         <td>${entry.values.join('<br>')}</td></tr>`;
     });
     resultLine += '</table>';
+    break;
+  case '351':
+    resultLine += '(Possible) tracking cookies have been found from the following websites:';
+    resultLine += cookiesTable(issues.find((issue) => issue.issue_id === 35).result);
+    break;
+  case '361':
+    resultLine += '(Possible) tracking cookies have been found from the following websites:';
+    resultLine += cookiesTable(issues.find((issue) => issue.issue_id === 36).result);
     break;
   default:
     break;
@@ -268,7 +321,6 @@ export function parseShowResult(issueId, currentIssue) {
    */
   function processPortsTable(issues) {
     const table = [];
-
     issues.forEach((issue) => {
       const parts = issue.split(/[ ,]+/); // Split on space and comma
       const processIndex = parts.indexOf('process:');
@@ -284,6 +336,33 @@ export function parseShowResult(issueId, currentIssue) {
     return table;
   }
 
+  /**
+   * Create a table to display found (possible) tracking cookies
+   * @param {string} issues list of cookies and their host
+   * @return {string} HTML table with cookies and their host
+   */
+  function cookiesTable(issues) {
+    const cookiesByHost = {};
+    for (let i = 0; i < issues.length; i += 2) {
+      const host = issues[i+1];
+
+      if (!cookiesByHost[host]) {
+        cookiesByHost[host] = true;
+      }
+    }
+
+    // Generate HTML for table
+    let tableHTML = '<table class="issues-table">';
+    for (const host in cookiesByHost) {
+      if (cookiesByHost.hasOwnProperty(host)) {
+        tableHTML += `<tr><td style="width: 30%; word-break: break-all">${host}</td></tr>`;
+      }
+    }
+    tableHTML += '</table>';
+
+    return tableHTML;
+  }
+
   const result = `
   <h1 class="issue-name">${currentIssue.Name}</h1>
   <div class="issue-information">
@@ -293,7 +372,7 @@ export function parseShowResult(issueId, currentIssue) {
     <p id="description">${resultLine}</p>
     <h2 id="solution">Solution</h2>
     <div class="issue-solution">
-      <p id="solution-text">${stepCounter +1}. ${currentIssue.Solution[stepCounter]}</p>
+      <p id="solution-text">${stepCounter +1}. ${getVersionSolution(currentIssue, stepCounter)}</p>
       <img style='display:block; width:750px;height:auto' id="step-screenshot"></img>
       <div class="solution-buttons">
         <div class="button-box">
@@ -306,4 +385,48 @@ export function parseShowResult(issueId, currentIssue) {
   </div>
 `;
   return result;
+}
+
+/**
+ * Get the screenshot for an issue with the correct windows version detected.
+ * If the version is not found, returns windows 11 screenshot.
+ * If the screenshot is not found, returns no path.
+ * @param {string} issue issue of which to get the screenshot
+ * @param {int} index index of the desired screenshot in the list of screenshots
+ * @return {string} path to the screenshot
+ */
+export function getVersionScreenshot(issue, index) {
+  let screenshot = issue.Screenshots[index];
+  if (screenshot == undefined) screenshot = '';
+  switch (sessionStorage.getItem('WindowsVersion')) {
+  case ('10'):
+    const screenshots = issue.ScreenshotsWindows10;
+    if (screenshots !== undefined) screenshot = screenshots[index];
+    return screenshot;
+  case ('11'):
+    return screenshot;
+  default:
+    return screenshot;
+  }
+}
+
+/**
+ * Get the solution for an issue with the correct windows version detected.
+ * @param {string} issue issue of which to get the solution
+ * @param {int} index index of the desired solution in the list of solutions
+ * @return {string} solution
+ */
+export function getVersionSolution(issue, index) {
+  let solution = issue.Solution[index];
+  if (solution == undefined) solution = '';
+  switch (sessionStorage.getItem('WindowsVersion')) {
+  case ('10'):
+    const solutions = issue.SolutionWindows10;
+    if (solutions !== undefined) solution = solutions[index];
+    return solution;
+  case ('11'):
+    return solution;
+  default:
+    return solution;
+  }
 }

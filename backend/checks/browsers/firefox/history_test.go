@@ -35,7 +35,7 @@ func TestHistoryFirefox(t *testing.T) {
 			},
 		}
 
-		check := firefox.HistoryFirefox(Profilefinder)
+		check := firefox.HistoryFirefox(Profilefinder, browsers.RealPhishingDomainGetter{})
 		require.Nil(t, check.Result)
 		require.Error(t, check.Error)
 	})
@@ -48,7 +48,7 @@ func TestHistoryFirefox(t *testing.T) {
 			},
 		}
 
-		check := firefox.HistoryFirefox(Profilefinder)
+		check := firefox.HistoryFirefox(Profilefinder, browsers.RealPhishingDomainGetter{})
 		require.Nil(t, check.Result)
 		require.Error(t, check.Error)
 	})
@@ -190,11 +190,9 @@ func TestProcessQueryResults(t *testing.T) {
 		{
 			name: "with results",
 			results: []firefox.QueryResult{
-				{URL: "http://startpagina.nl/path", LastVisitDate: sql.NullInt64{Int64: 1712580339000000, Valid: true}},
-				{URL: "http://001return.com/path", LastVisitDate: sql.NullInt64{Int64: 1713580339000000, Valid: true}},
-				{URL: "http://012345bet.com/path", LastVisitDate: sql.NullInt64{Int64: 1712580379000000, Valid: true}},
+				{URL: "http://00000000000000000000000000000000000000000.xyz/path", LastVisitDate: sql.NullInt64{Int64: 1713580339000000, Valid: true}},
 			},
-			want: []string{"startpagina.nlGood", "001return.comGood", "012345bet.comGood"},
+			want: []string{"00000000000000000000000000000000000000000.xyzGood"},
 		},
 		{
 			name:    "no results",
@@ -205,7 +203,7 @@ func TestProcessQueryResults(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, _ := firefox.ProcessQueryResults(tt.results)
+			got, _ := firefox.ProcessQueryResults(tt.results, browsers.RealPhishingDomainGetter{})
 			if !compareSlices(got, tt.want) && !compareSlices(got, []string{}) {
 				t.Errorf("processQueryResults() = %v, want %v", got, tt.want)
 			}
@@ -257,4 +255,24 @@ func compareSlices(a, b []string) bool {
 		}
 	}
 	return true
+}
+
+type MockPhishingDomainsGetter struct {
+	GetPhishingDomainsFunc func() ([]string, error)
+}
+
+func (m MockPhishingDomainsGetter) GetPhishingDomains() ([]string, error) {
+	return m.GetPhishingDomainsFunc()
+}
+
+func TestProcessQueryResults_GetPhishingDomainsError(t *testing.T) {
+	mockGetter := MockPhishingDomainsGetter{
+		GetPhishingDomainsFunc: func() ([]string, error) {
+			return nil, errors.New("mock error")
+		},
+	}
+
+	_, err := firefox.ProcessQueryResults([]firefox.QueryResult{}, mockGetter)
+	require.Error(t, err)
+	require.Equal(t, "mock error", err.Error())
 }

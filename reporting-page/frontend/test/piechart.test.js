@@ -1,7 +1,7 @@
 import 'jsdom-global/register.js';
 import test from 'unit.js';
 import {JSDOM} from 'jsdom';
-// import {PieChart} from '../src/js/piechart.js';
+import {mockChart} from './mock.js';
 import {RiskCounters} from '../src/js/risk-counters.js';
 import {jest} from '@jest/globals';
 
@@ -25,7 +25,7 @@ global.window = dom.window;
  */
 function mockGetLocalizationString(messageID) {
   switch (messageID) {
-  case 'Dashboard.Safe':
+  case 'Dashboard.Acceptable':
     return 'Acceptable';
   case 'Dashboard.LowRisk':
     return 'Low';
@@ -49,18 +49,8 @@ jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
   Localize: jest.fn().mockImplementation((input) => mockGetLocalizationString(input)),
 }));
 
-// Mock Chart constructor
-jest.unstable_mockModule('chart.js/auto', () => ({
-  Chart: jest.fn().mockImplementation((context, config) => {
-    return {
-    // properties
-      type: 'pie',
-      data: config.data || {},
-      options: config.options || {},
-      // functions
-      update: jest.fn(),
-    };
-  })}));
+// Mock chart constructor
+mockChart();
 
 // test cases
 describe('Risk level distribution piechart', function() {
@@ -105,7 +95,7 @@ describe('Risk level distribution piechart', function() {
   it('getOptions should return the correct piechart options', async function() {
     // arrange
     const chart = await import('../src/js/piechart.js');
-    const rc = new RiskCounters(true);
+    const rc = new RiskCounters();
     const p = new chart.PieChart(undefined, rc);
 
     const titles = ['Total', 'Security', 'Privacy'];
@@ -131,7 +121,7 @@ describe('Risk level distribution piechart', function() {
     // arrange
     const piechart = await import('../src/js/piechart.js');
     const chart = await import('chart.js/auto');
-    const rc = new RiskCounters(true);
+    const rc = new RiskCounters();
     const getDataMock = jest.spyOn(piechart.PieChart.prototype, 'getData');
     const getOptionsMock = jest.spyOn(piechart.PieChart.prototype, 'getOptions');
 

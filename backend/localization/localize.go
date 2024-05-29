@@ -6,6 +6,7 @@ package localization
 import (
 	"encoding/json"
 
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/nicksnyder/go-i18n/v2/i18n"
 	"golang.org/x/text/language"
 )
@@ -25,6 +26,8 @@ var bundle *i18n.Bundle
 //
 // Note: This function should be called before using the Localize function to ensure that the localizers are properly set up.
 func Init(path string) { //3
+	logger.Log.Debug("Initializing localization files")
+
 	bundle = i18n.NewBundle(language.BritishEnglish)
 
 	bundle.RegisterUnmarshalFunc("json", json.Unmarshal)
@@ -35,6 +38,8 @@ func Init(path string) { //3
 	bundle.MustLoadMessageFile(path + "localization/localizations_src/fr/active.fr.json")
 	bundle.MustLoadMessageFile(path + "localization/localizations_src/nl/active.nl.json")
 	bundle.MustLoadMessageFile(path + "localization/localizations_src/pt/active.pt.json")
+
+	logger.Log.Debug("Localization files initialized successfully")
 
 	// Localizes for each language
 	localizers[0] = i18n.NewLocalizer(bundle, language.German.String())

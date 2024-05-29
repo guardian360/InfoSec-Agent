@@ -19,13 +19,15 @@
     "PrivacyDashboard": "Datenschutz",
     "Issues": "Probleme",
     "Integration": "Integration",
-    "About": "Über"
+    "About": "Über",
+    "Personalize": "Seite personalisieren",
+    "ChangeLanguage": "Sprache ändern"
+    
   },
   "Dashboard": 
   {
     "Issues": "Probleme",
     "SuggestedIssue": "Vorgeschlagenes Problem",
-    "QuickFix": "Schnelle Lösung",
     "ScanNow": "Jetzt Scannen",
     "Medals": "Medaillen",
     "SecurityStatus": "Sicherheitsstatus",
@@ -44,7 +46,7 @@
     "MediumRisk": "Probleme mit mittlerem Risiko",
     "LowRisk": "Probleme mit niedrigem Risiko",
     "InfoRisk": "Informativ",
-    "Safe": "Akzeptable Befunde",
+    "Acceptable": "Akzeptable Befunde",
     "SecurityRiskAreas": "Bereiche mit Sicherheitsrisiken",
     "PrivacyRiskAreas": "Bereiche mit Datenschutzrisiken",    
     "Applications": "Anwendungen",
@@ -76,7 +78,7 @@
     "about-title": "Über Infosec Agent",
     "infosec-info": "Das InfoSec Agent-Projekt zielt darauf ab, die Sicherheit und Privatsphäre von Windows-Computernutzern zu verbessern. Derzeit gibt es Anwendungen, die dies tun, aber sie sind hauptsächlich auf große Unternehmen ausgerichtet. Das Ziel dieses Projekts ist es, dies für jeden zugänglich zu machen. Es wird eine Anwendung entwickelt, die Informationen über das System des Benutzers sammelt, um etwaige Sicherheits- oder Datenschutzprobleme zu entdecken. Die Ergebnisse werden dem Benutzer in einem speziellen Dashboard präsentiert, das den aktuellen Status des Systems zeigt, einschließlich empfohlener Maßnahmen zur Verbesserung.",
     "little-brother-info": "Dieses Projekt ist eine gemeinsame Anstrengung von neun Studenten der Universität Utrecht in den Niederlanden, in Zusammenarbeit mit dem niederländischen IT-Unternehmen Guardian360. Es dient als Softwareprojekt für das Bachelor-Programm in Informatikwissenschaften an der UU.",
-    "about-contribute": "Beitragen",
+    "contribute-title": "Beitragen",
     "contribute-info": "InfoSec-Agent ist ein Open-Source-Projekt, das unter der GPL-3.0-Lizenz lizenziert ist. Aufgrund seiner Herkunft als Aufgabe der Universität Utrecht werden öffentliche Beiträge zu diesem Repository erst nach Abschluss dieser Aufgabe zusammengeführt, der für den 24. Juni 2024 geplant ist. Bitte melden Sie uns alle Fehler oder Probleme, die Sie finden. Ihr Feedback ist wertvoll und hilft dabei, das InfoSec-Agent-Projekt zu verbessern. Sie können uns per E-Mail erreichen unter <a href=\"mailto:infosecagentuu@gmail.com\">infosecagentuu@gmail.com</a>."
   }
 }

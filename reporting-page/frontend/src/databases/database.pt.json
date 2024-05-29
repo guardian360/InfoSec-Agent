@@ -1,0 +1,1475 @@
+{
+    "10": {
+        "Name": "Nenhum dispositivo conectado via bluetooth",
+        "Type": "Segurança",
+        "Information": "A tecnologia Bluetooth permite a transmissão e recepção de dados sem fio. Embora essa funcionalidade seja geralmente inofensiva quando usada conforme o esperado, ela pode se tornar um risco de segurança se explorada por atores maliciosos. Se um indivíduo mal-intencionado obtiver acesso não autorizado ao seu dispositivo através de uma conexão Bluetooth, ele poderá roubar seus dados, espionar suas atividades ou até mesmo enviar malware para o seu dispositivo. Para mitigar esses riscos, é crucial conectar seu dispositivo apenas a dispositivos conhecidos e confiáveis.",
+        "Solution": 
+        [   
+            "Nenhum dispositivo está conectado via bluetooth, então não é necessário tomar nenhuma ação."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "11": {
+        "Name": "Dispositivos conectados via bluetooth",
+        "Type": "Segurança",
+        "Information": "A tecnologia Bluetooth permite a transmissão e recepção de dados sem fio. Embora essa funcionalidade seja geralmente inofensiva quando usada conforme o esperado, ela pode se tornar um risco de segurança se explorada por atores maliciosos. Se um indivíduo mal-intencionado obtiver acesso não autorizado ao seu dispositivo através de uma conexão Bluetooth, ele poderá roubar seus dados, espionar suas atividades ou até mesmo enviar malware para o seu dispositivo. Para mitigar esses riscos, é crucial conectar seu dispositivo apenas a dispositivos conhecidos e confiáveis.",
+        "Solution": 
+        [   
+            "Vá para Iniciar > Configurações > Bluetooth e dispositivos.", 
+            "Aqui você pode ver quais dispositivos estão conectados via bluetooth e pode removê-los, se necessário."
+        ],
+        "SolutionWindows10": 
+        [   
+            "Vá para Iniciar > Configurações > Dispositivos > Bluetooth e outros dispositivos.", 
+            "Aqui você pode ver quais dispositivos estão conectados via Bluetooth e pode removê-los, se necessário."
+        ],        
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/devices-connected-via-bluetooth/bluetooth-devices-1.jpg",
+            "frontend/src/assets/images/windows-11/devices-connected-via-bluetooth/bluetooth-devices-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/devices-connected-via-bluetooth/bluetooth-devices-1.png",
+            "frontend/src/assets/images/windows-10/devices-connected-via-bluetooth/bluetooth-devices-2.png"
+        ]
+    },
+    "20": {
+        "Name": "Nenhum dispositivo externo conectado",
+        "Type": "Segurança",
+        "Information": "Dispositivos externos, como drives USB, discos rígidos externos e outros periféricos, podem introduzir riscos de segurança ao seu computador. Malware pode se espalhar através de dispositivos externos infectados, potencialmente comprometendo a segurança e a integridade do seu sistema. Garantir que nenhum dispositivo externo esteja conectado ao seu computador quando não estiver em uso reduz o risco de infecção por malware e acesso não autorizado ao seu sistema.",
+        "Solution": 
+        [   
+            "Nenhum dispositivo externo está conectado, então não é necessário tomar nenhuma ação."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "21": {
+        "Name": "Dispositivos externos conectados",
+        "Type": "Segurança",
+        "Information": "Dispositivos externos, como drives USB, discos rígidos externos e outros periféricos, podem introduzir riscos de segurança ao seu computador. Malware pode se espalhar através de dispositivos externos infectados, potencialmente comprometendo a segurança e a integridade do seu sistema. Garantir que nenhum dispositivo externo esteja conectado ao seu computador quando não estiver em uso reduz o risco de infecção por malware e acesso não autorizado ao seu sistema.",
+        "Solution": 
+        [   
+            "Verifique se há dispositivos externos conectados ao seu computador e desconecte-os se não estiverem em uso. Exemplos de dispositivos externos incluem drives USB, discos rígidos externos, microfones externos, câmeras externas e outros periféricos."
+        ],
+        "Screenshots":
+        [
+            "TOBEFILLED"
+        ]
+    },
+    "30": {
+        "Name": "Status da conta de convidado desconhecido",
+        "Type": "Segurança",
+        "Information": "A conta de convidado é uma conta padrão projetada para oferecer acesso temporário e restrito ao sistema para indivíduos sem contas de usuário regulares. Se você for o único usuário do computador e não precisar de uma conta de convidado, é aconselhável desativá-la. Isso garante que nenhum usuário não autorizado possa acessar os dados no computador, aumentando a segurança e a privacidade geral.",
+        "Solution": 
+        [   
+            "Um status desconhecido da conta de convidado pode ser um risco de segurança. Para verificar o status e potencialmente resolver o problema da conta de convidado, siga estas etapas.",
+            "Vá para Iniciar > Outras contas.", 
+            "Aqui você verá as outras contas, se houver uma conta que você não conhece ou uma conta chamada 'convidado', clique nela.",
+            "Agora selecione 'remover' e confirme a exclusão da conta.",
+            "Para finalizar, reinicie o computador."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-3.jpg",        
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-3.jpg"
+        ]
+    },
+    "31": {
+        "Name": "Conta de convidado habilitada",
+        "Type": "Segurança",
+        "Information": "A conta de convidado é uma conta padrão projetada para oferecer acesso temporário e restrito ao sistema para indivíduos sem contas de usuário regulares. Se você for o único usuário do computador e não precisar de uma conta de convidado, é aconselhável desativá-la. Isso garante que nenhum usuário não autorizado possa acessar os dados no computador, aumentando a segurança e a privacidade geral.",
+        "Solution": 
+        [   
+            "Vá para Iniciar > Outras contas.", 
+            "Aqui você verá as outras contas, se houver uma conta que você não conhece ou algo chamado 'convidado', clique nela.",
+            "Agora selecione 'remover' e confirme a exclusão da conta.",
+            "Para finalizar, reinicie o computador."
+        ],
+        "SolutionWindows10": 
+        [   
+            "Vá para Iniciar > Configurações > Contas > Família e outros usuários.", 
+            "Aqui você verá as outras contas. Se houver uma conta que você não conhece ou algo chamado 'convidado', clique nela.",
+            "Agora selecione 'remover' e confirme a exclusão da conta.",
+            "Para terminar, reinicie seu computador."
+        ],        
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-3.jpg",        
+            "frontend/src/assets/images/windows-11/guest-account/guest-account-3.jpg"
+        ]
+    },
+    "32": {
+        "Name": "Conta de convidado desativada",
+        "Type": "Segurança",
+        "Information": "A conta de convidado é uma conta padrão projetada para oferecer acesso temporário e restrito ao sistema para indivíduos sem contas de usuário regulares. Se você for o único usuário do computador e não precisar de uma conta de convidado, é aconselhável desativá-la. Isso garante que nenhum usuário não autorizado possa acessar os dados no computador, aumentando a segurança e a privacidade geral.",
+        "Solution": 
+        [   
+            "Não há conta de convidado no seu computador, então não é necessário tomar nenhuma ação."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "40": {
+        "Name": "Compartilhamento de ID de publicidade desativado",
+        "Type": "Privacidade",
+        "Information": "A configuração de ID de publicidade permite que o Windows envie anúncios personalizados para você. É importante limitar a quantidade de entidades que possuem seus dados pessoais, portanto, é mais seguro desativar essa configuração.",
+        "Solution": 
+        [
+            "O compartilhamento de ID de publicidade está desativado, então não é necessário tomar nenhuma ação."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "41": {
+        "Name": "Compartilhamento de ID de publicidade ativado",
+        "Type": "Segurança",
+        "Information": "A configuração de ID de publicidade permite que o Windows envie anúncios personalizados para você. É importante limitar a quantidade de entidades que possuem seus dados pessoais, portanto, é mais seguro desativar essa configuração.",
+        "Solution": 
+        [
+            "Vá para Iniciar > Configurações > Privacidade e segurança > Geral.",
+            "Aqui você pode controlar as configurações de ID de publicidade e ativar/desativar o recurso."
+        ],
+        "SolutionWindows10": 
+        [
+            "Vá para Iniciar > Configurações > Privacidade > Geral.",
+            "Aqui você pode controlar as configurações de ID de publicidade e ativar/desativar o recurso."
+        ],        
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/network-sharing/nearby-sharing-1.jpg",
+            "frontend/src/assets/images/windows-11/network-sharing/nearby-sharing-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/network-sharing/advertisementid-sharing-1.png",
+            "frontend/src/assets/images/windows-10/network-sharing/advertisementid-sharing-2.png"
+        ]
+    },
+    "42": {
+        "Name": "Compartilhamento de rede desativado",
+        "Type": "Segurança",
+        "Information": "O compartilhamento de rede refere-se à capacidade de compartilhar recursos, como arquivos, pastas, impressoras e conexões de internet, entre vários dispositivos conectados a uma rede. Ele permite que os usuários acessem e colaborem em recursos compartilhados na rede, facilitando a troca de dados e a colaboração entre usuários e dispositivos. As permissões podem ser configuradas para permitir ou negar acesso a usuários ou grupos específicos, garantindo que os dados sensíveis permaneçam seguros. Se você não precisar do compartilhamento de rede, é mais seguro desativá-lo.",
+        "Solution": 
+        [   
+            "O compartilhamento de rede está desativado, então não é necessário tomar nenhuma ação."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "43": {
+        "Name": "Status do compartilhamento de rede desconhecido",
+        "Type": "Segurança",
+        "Information": "O compartilhamento de rede refere-se à capacidade de compartilhar recursos, como arquivos, pastas, impressoras e conexões de internet, entre vários dispositivos conectados a uma rede. Ele permite que os usuários acessem e colaborem em recursos compartilhados na rede, facilitando a troca de dados e a colaboração entre usuários e dispositivos. As permissões podem ser configuradas para permitir ou negar acesso a usuários ou grupos específicos, garantindo que os dados sensíveis permaneçam seguros. Se você não precisar do compartilhamento de rede, é mais seguro desativá-lo.",
+        "Solution": 
+        [   
+            "Não foi possível recuperar o status das configurações de compartilhamento de rede. Para verificar o status e potencialmente resolver o problema do compartilhamento de rede, siga estas etapas.",
+            "Vá para Iniciar > Configurações > Sistema > Configurações de compartilhamento de proximidade.", 
+            "Aqui você pode controlar as configurações de compartilhamento de rede e desativar o recurso."
+        ],
+        "SolutionWindows10": 
+        [   
+            "Não foi possível recuperar o status das configurações de compartilhamento de rede. Para verificar o status e potencialmente resolver o problema de compartilhamento de rede, siga estas etapas.",
+            "Vá para Iniciar > Configurações > Sistema > Experiências compartilhadas.", 
+            "Aqui você pode controlar as configurações de compartilhamento de rede e desativar o recurso."
+        ],        
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/network-sharing/nearby-sharing-1.jpg",
+            "frontend/src/assets/images/windows-11/network-sharing/nearby-sharing-1.jpg",
+            "frontend/src/assets/images/windows-11/network-sharing/nearby-sharing-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/network-sharing/nearby-sharing-1.png",
+            "frontend/src/assets/images/windows-10/network-sharing/nearby-sharing-1.png",
+            "frontend/src/assets/images/windows-10/network-sharing/nearby-sharing-2.png"
+        ]
+    },
+    "50": {
+        "Name": "Gerenciador de senhas em uso",
+        "Type": "Segurança",
+        "Information": "Usar um gerenciador de senhas oferece vários benefícios para indivíduos e organizações, principalmente em torno de melhorar a segurança, conveniência e práticas gerais de gerenciamento de senhas. Aqui estão alguns motivos principais para você considerar o uso de um gerenciador de senhas. Senhas mais fortes: os gerenciadores de senhas podem gerar senhas complexas e exclusivas para cada uma de suas contas. Essas senhas são geralmente longas, aleatórias e difíceis de quebrar, melhorando significativamente a segurança de suas contas online em comparação com o uso de senhas fracas ou reutilizadas. Eliminação da reutilização de senhas: um dos problemas de segurança mais comuns é a reutilização de senhas em várias contas. Os gerenciadores de senhas permitem que você gere e armazene senhas exclusivas para cada conta, reduzindo o risco de acesso não autorizado se uma conta for comprometida. Conveniência: os gerenciadores de senhas simplificam o processo de login em sites e serviços online preenchendo automaticamente as credenciais de login para você. Isso economiza tempo e esforço, especialmente ao gerenciar várias contas em várias plataformas. Armazenamento seguro: os gerenciadores de senhas criptografam e armazenam suas senhas em um cofre seguro, protegendo-as contra acesso não autorizado. Muitos gerenciadores de senhas também oferecem recursos adicionais de segurança, como autenticação de dois fatores (2FA) e autenticação biométrica para aumentar ainda mais a proteção.",
+        "Solution": 
+        [   
+            "Você está usando um gerenciador de senhas, então não é necessário tomar nenhuma ação."    
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "51": {
+        "Name": "Nenhum gerenciador de senhas em uso",
+        "Type": "Segurança",
+        "Information": "Usar um gerenciador de senhas oferece vários benefícios para indivíduos e organizações, principalmente em torno de melhorar a segurança, conveniência e práticas gerais de gerenciamento de senhas. Aqui estão alguns motivos principais para você considerar o uso de um gerenciador de senhas. Senhas mais fortes: os gerenciadores de senhas podem gerar senhas complexas e exclusivas para cada uma de suas contas. Essas senhas são geralmente longas, aleatórias e difíceis de quebrar, melhorando significativamente a segurança de suas contas online em comparação com o uso de senhas fracas ou reutilizadas. Eliminação da reutilização de senhas: um dos problemas de segurança mais comuns é a reutilização de senhas em várias contas. Os gerenciadores de senhas permitem que você gere e armazene senhas exclusivas para cada conta, reduzindo o risco de acesso não autorizado se uma conta for comprometida. Conveniência: os gerenciadores de senhas simplificam o processo de login em sites e serviços online preenchendo automaticamente as credenciais de login para você. Isso economiza tempo e esforço, especialmente ao gerenciar várias contas em várias plataformas. Armazenamento seguro: os gerenciadores de senhas criptografam e armazenam suas senhas em um cofre seguro, protegendo-as contra acesso não autorizado. Muitos gerenciadores de senhas também oferecem recursos adicionais de segurança, como autenticação de dois fatores (2FA) e autenticação biométrica para aumentar ainda mais a proteção.",
+        "Solution": 
+        [   
+            "Abra seu navegador e procure por um gerenciador de senhas como: LastPass, Dashlane, Bitwarden ou outro gerenciador de senhas de sua preferência.", 
+            "Siga as etapas de instalação fornecidas pelo site do gerenciador de senhas."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/password-manager/password-manager-1.jpg",
+            "frontend/src/assets/images/windows-11/password-manager/password-manager-1.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/password-manager/password-manager-1.png",
+            "frontend/src/assets/images/windows-10/password-manager/password-manager-1.png"
+        ]
+    },
+    "60": {
+        "Name": "Aplicativos com permissão de localização",
+        "Type": "Privacidade",
+        "Information": "Saber quais aplicativos têm acesso à sua localização é importante para proteger sua privacidade. Isso ajuda a controlar quem pode rastrear sua localização, evitar riscos de segurança, economizar a bateria, gerenciar o uso de dados, personalizar a experiência do aplicativo e garantir conformidade com os regulamentos.",
+        "Solution": 
+        [   
+            "Selecione Iniciar > Configurações > Privacidade e segurança.", 
+            "Aqui você pode selecionar localização para ver quais aplicativos têm acesso e pode revogar o acesso para determinados aplicativos."
+        ],
+        "SolutionWindows10": 
+        [   
+            "Vá para Iniciar > Configurações > Privacidade > Localização.", 
+            "Aqui você pode selecionar a localização para ver quais aplicativos têm acesso, e pode revogar o acesso para certos aplicativos."
+        ],        
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/applications-with-location-permission/location-permissions-1.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-location-permission/location-permissions-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/applications-with-location-permission/location-permissions-1.png",
+            "frontend/src/assets/images/windows-10/applications-with-location-permission/location-permissions-2.png"
+        ]
+    },
+    "61": {
+        "Name": "Aplicativos com permissão de localização",
+        "Type": "Privacidade",
+        "Information": "Saber quais aplicativos têm acesso à sua localização é importante para proteger sua privacidade. Isso ajuda a controlar quem pode rastrear sua localização, evitar riscos de segurança, economizar a bateria, gerenciar o uso de dados, personalizar a experiência do aplicativo e garantir conformidade com os regulamentos.",
+        "Solution": 
+        [   
+            "Não há aplicativos com permissão de localização, então não é necessário tomar nenhuma ação."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "70": {
+        "Name": "Aplicativos com permissão de microfone",
+        "Type": "Privacidade",
+        "Information": "Entender quais aplicativos têm acesso ao seu microfone no seu computador Windows é importante para proteger sua privacidade e confidencialidade. Isso ajuda a controlar quem pode ouvir suas conversas, evitar gravações não autorizadas, proteger informações sensíveis e garantir conformidade com os regulamentos.",
+        "Solution": 
+        [   
+            "Selecione Iniciar > Configurações > Privacidade e segurança.", 
+            "Aqui você pode selecionar microfone para ver quais aplicativos têm acesso e pode revogar o acesso para determinados aplicativos."
+        ],
+        "SolutionWindows10": 
+        [   
+            "Vá para Iniciar > Configurações > Privacidade > Microfone.", 
+            "Aqui você pode selecionar o microfone para ver quais aplicativos têm acesso e pode revogar o acesso para determinados aplicativos."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/applications-with-microphone-permission/microphone-permissions-1.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-microphone-permission/microphone-permissions-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/applications-with-microphone-permission/microphone-permissions-1.png",
+            "frontend/src/assets/images/windows-10/applications-with-microphone-permission/microphone-permissions-2.png"
+        ]
+    },
+    "71": {
+        "Name": "Aplicativos com permissão de microfone",
+        "Type": "Privacidade",
+        "Information": "Entender quais aplicativos têm acesso ao seu microfone no seu computador Windows é importante para proteger sua privacidade e confidencialidade. Isso ajuda a controlar quem pode ouvir suas conversas, evitar gravações não autorizadas, proteger informações sensíveis e garantir conformidade com os regulamentos.",
+        "Solution": 
+        [   
+            "Não há aplicativos com permissão de microfone, então não é necessário tomar nenhuma ação."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "80": {
+        "Name": "Aplicativos com permissão de webcam",
+        "Type": "Privacidade",
+        "Information": "Estar ciente de quais aplicativos têm acesso à sua câmera ajuda a prevenir acessos não autorizados. Software malicioso ou até mesmo aplicativos legítimos com recursos de segurança mal implementados podem potencialmente acessar sua câmera sem o seu conhecimento ou consentimento. Ao saber quais aplicativos têm acesso, você pode identificar e bloquear quaisquer tentativas não autorizadas.",
+        "Solution": 
+        [   
+            "Selecione Iniciar > Configurações > Privacidade e segurança.", 
+            "Aqui você pode selecionar webcam para ver quais aplicativos têm acesso e pode revogar o acesso para determinados aplicativos."
+        ],
+        "SolutionWindows10": 
+        [   
+            "Vá para Iniciar > Configurações > Privacidade > Câmera.", 
+            "Aqui você pode selecionar a câmera para ver quais aplicativos têm acesso e pode revogar o acesso para determinados aplicativos."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/applications-with-webcam-permission/webcam-permissions-1.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-webcam-permission/webcam-permissions-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/applications-with-webcam-permission/webcam-permissions-1.png",
+            "frontend/src/assets/images/windows-10/applications-with-webcam-permission/webcam-permissions-2.png"
+        ]
+    },
+    "81": {
+        "Name": "Aplicativos com permissão de webcam",
+        "Type": "Privacidade",
+        "Information": "Estar ciente de quais aplicativos têm acesso à sua câmera ajuda a prevenir acessos não autorizados. Software malicioso ou até mesmo aplicativos legítimos com recursos de segurança mal implementados podem potencialmente acessar sua câmera sem o seu conhecimento ou consentimento. Ao saber quais aplicativos têm acesso, você pode identificar e bloquear quaisquer tentativas não autorizadas.",
+        "Solution": 
+        [   
+            "Não há aplicativos com permissão de webcam, então não é necessário tomar nenhuma ação."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "90": {
+        "Name": "Aplicativos com permissão de compromissos",
+        "Type": "Privacidade",
+        "Information": "Entender quais aplicativos têm acesso ao seu calendário ou compromissos é crucial para proteger sua privacidade e agenda. Isso ajuda a controlar quem pode visualizar e potencialmente usar indevidamente suas informações sensíveis de compromissos, evitar acesso não autorizado e gerenciar o uso de dados.",
+        "Solution": 
+        [   
+            "Selecione Iniciar > Configurações > Privacidade e segurança.", 
+            "Aqui você pode selecionar compromissos para ver quais aplicativos têm acesso e pode revogar o acesso para determinados aplicativos."
+        ],
+        "SolutionWindows10": 
+        [   
+            "Vá para Iniciar > Configurações > Privacidade > Calendário.", 
+            "Aqui você pode selecionar o calendário para ver quais aplicativos têm acesso e pode revogar o acesso para determinados aplicativos."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/applications-with-calendar-permission/calendar-permissions-1.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-calendar-permission/calendar-permissions-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/applications-with-calendar-permission/calendar-permissions-1.png",
+            "frontend/src/assets/images/windows-10/applications-with-calendar-permission/calendar-permissions-2.png"
+        ]
+    },
+    "91": {
+        "Name": "Aplicativos com permissão de compromissos",
+        "Type": "Privacidade",
+        "Information": "Entender quais aplicativos têm acesso ao seu calendário ou compromissos é crucial para proteger sua privacidade e agenda. Isso ajuda a controlar quem pode visualizar e potencialmente usar indevidamente suas informações sensíveis de compromissos, evitar acesso não autorizado e gerenciar o uso de dados.",
+        "Solution": 
+        [   
+            "Não há aplicativos com permissão de compromissos, então não é necessário tomar nenhuma ação."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "100": {
+        "Name": "Aplicativos com permissão de contatos",
+        "Type": "Privacidade",
+        "Information": "Entender quais aplicativos têm acesso aos seus contatos no seu computador Windows é bom para proteger sua privacidade. Isso permite que você controle quem pode visualizar e potencialmente usar indevidamente suas informações de contato, evitar acesso não autorizado e gerenciar o uso de dados.",
+        "Solution": 
+        [   
+            "Selecione Iniciar > Configurações > Privacidade e segurança.", 
+            "Aqui você pode selecionar contatos para ver quais aplicativos têm acesso e pode revogar o acesso para determinados aplicativos."
+        ],
+        "SolutionWindows10": 
+        [   
+            "Vá para Iniciar > Configurações > Privacidade > Contatos.", 
+            "Aqui você pode selecionar contatos para ver quais aplicativos têm acesso e pode revogar o acesso para determinados aplicativos."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/applications-with-contacts-permission/contacts-permissions-1.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-contacts-permission/contacts-permissions-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/applications-with-contacts-permission/contacts-permissions-1.png",
+            "frontend/src/assets/images/windows-10/applications-with-contacts-permission/contacts-permissions-2.png"
+        ]
+    },
+    "101": {
+        "Name": "Aplicativos com permissão de contatos",
+        "Type": "Privacidade",
+        "Information": "Entender quais aplicativos têm acesso aos seus contatos no seu computador Windows é bom para proteger sua privacidade. Isso permite que você controle quem pode visualizar e potencialmente usar indevidamente suas informações de contato, evitar acesso não autorizado e gerenciar o uso de dados.",
+        "Solution": 
+        [   
+            "Não há aplicativos com permissão de contatos, então não é necessário tomar nenhuma ação."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "110": {
+        "Name": "Portas abertas",
+        "Type": "Segurança",
+        "Information": "Uma porta aberta é aquela que permite a recepção de pacotes de dados. Certos aplicativos exigem portas específicas para receber dados, então a presença de portas abertas não representa inerentemente riscos. No entanto, algumas portas podem não ter proteção adequada, permitindo potencialmente comunicações não autorizadas e introduzindo vulnerabilidades de segurança. É essencial manter as portas abertas apenas quando estiverem ativamente em uso e fechá-las quando não forem necessárias. Como numerosas portas abertas podem aumentar a superfície de ataque do seu computador, é aconselhável monitorar e proteger regularmente as portas de rede do seu sistema para mitigar esses riscos e manter uma postura de segurança forte.",
+        "Solution": 
+        [   
+            "Para reduzir o risco, certifique-se de que o Windows Defender esteja ativado. Isso bloqueará determinados tráfegos de entrada ou saída do seu dispositivo através de portas abertas. Para obter mais informações sobre suas portas abertas, siga as instruções a seguir.",
+            "Abra um prompt de comando clicando em 'Iniciar', digitando 'cmd' e pressionando 'Enter'.",
+            "Agora digite 'netstat -ab' e você verá uma lista de portas abertas e seus programas correspondentes.",
+            "Se você vir algum programa ou porta suspeita, poderá fechá-los encerrando o programa correspondente."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/devices-connected-via-bluetooth/bluetooth-devices-1.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/devices-connected-via-bluetooth/bluetooth-devices-1.png"
+        ]
+    },
+    "120": {
+        "Name": "Área de trabalho remota ativada",
+        "Type": "Segurança",
+        "Information": "A Área de Trabalho Remota é um recurso integrado no sistema operacional Windows que permite aos usuários acessar e controlar remotamente outro computador Windows pela rede ou internet. Ele permite que os usuários se conectem a um computador remoto como se estivessem sentados na frente dele, proporcionando acesso total à área de trabalho remota, aplicativos, arquivos e recursos. Se você não usar esse recurso, é mais seguro desativá-lo.",
+        "Solution": 
+        [   
+            "Vá para Iniciar > Configurações > Sistema > Área de trabalho remota.", 
+            "Aqui você pode controlar as configurações de área de trabalho remota e desativar o recurso."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "121": {
+        "Name": "Área de trabalho remota desativada",
+        "Type": "Segurança",
+        "Information": "A Área de Trabalho Remota é um recurso integrado no sistema operacional Windows que permite aos usuários acessar e controlar remotamente outro computador Windows pela rede ou internet. Ele permite que os usuários se conectem a um computador remoto como se estivessem sentados na frente dele, proporcionando acesso total à área de trabalho remota, aplicativos, arquivos e recursos. Se você não usar esse recurso, é mais seguro desativá-lo.",
+        "Solution": 
+        [   
+            "A área de trabalho remota foi desativada, então não é necessário tomar nenhuma ação."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "130": {
+        "Name": "SMB todas as versões desativadas",
+        "Type": "Segurança",
+        "Information": "O protocolo SMB (Server Message Block) é usado para compartilhar arquivos, impressoras e outros recursos entre dispositivos em uma rede em ambientes Windows. Garantir que as configurações SMB no seu computador Windows estejam configuradas corretamente é crucial. O SMBv1 possui inúmeras vulnerabilidades conhecidas e, portanto, nunca deve ser usado. Usar SMBv2/v3 é a opção mais segura.",
+        "Solution": 
+        [   
+            "Todas as versões do SMB estão desativadas, então não é necessário tomar nenhuma ação."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "131": {
+        "Name": "SMB versão 1 ativado",
+        "Type": "Segurança",
+        "Information": "O protocolo SMB (Server Message Block) é usado para compartilhar arquivos, impressoras e outros recursos entre dispositivos em uma rede em ambientes Windows. Garantir que as configurações SMB no seu computador Windows estejam configuradas corretamente é crucial. O SMBv1 possui inúmeras vulnerabilidades conhecidas e, portanto, nunca deve ser usado. Usar SMBv2/v3 é a opção mais segura.",
+        "Solution": 
+        [   
+            "No seu teclado, pressione 'Windows+R' para abrir a janela Executar.", 
+            "Digite 'Powershell' e selecione OK.", 
+            "No Powershell, digite 'Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol' e pressione enter.",
+            "Para finalizar, reinicie o computador."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/smb-status/smb-2.jpg",
+            "frontend/src/assets/images/windows-11/smb-status/smb-2.jpg",
+            "frontend/src/assets/images/windows-11/smb-status/smb-3.jpg",
+            "frontend/src/assets/images/windows-11/smb-status/smb-3.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/smb-status/smb-1.png",
+            "frontend/src/assets/images/windows-10/smb-status/smb-1.png",
+            "frontend/src/assets/images/windows-10/smb-status/smb-2.png",
+            "frontend/src/assets/images/windows-10/smb-status/smb-2.png"
+        ]
+    },
+    "132": {
+        "Name": "SMB versão 2 ativado",
+        "Type": "Segurança",
+        "Information": "O protocolo SMB (Server Message Block) é usado para compartilhar arquivos, impressoras e outros recursos entre dispositivos em uma rede em ambientes Windows. Garantir que as configurações SMB no seu computador Windows estejam configuradas corretamente é crucial. O SMBv1 possui inúmeras vulnerabilidades conhecidas e, portanto, nunca deve ser usado. Usar SMBv2/v3 é a opção mais segura.",
+        "Solution": 
+        [   
+            "A versão 2 do SMB está ativada, que é uma versão segura e amplamente usada, então não é necessário tomar nenhuma ação."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "133": {
+        "Name": "SMB versão 1 e 2 ativadas",
+        "Type": "Segurança",
+        "Information": "O protocolo SMB (Server Message Block) é usado para compartilhar arquivos, impressoras e outros recursos entre dispositivos em uma rede em ambientes Windows. Garantir que as configurações SMB no seu computador Windows estejam configuradas corretamente é crucial. O SMBv1 possui inúmeras vulnerabilidades conhecidas e, portanto, nunca deve ser usado. Usar SMBv2/v3 é a opção mais segura.",
+        "Solution": 
+        [   
+            "No seu teclado, pressione 'Windows+R' para abrir a janela Executar.", 
+            "Digite 'Powershell' e selecione OK.", 
+            "No Powershell, digite 'Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol' e pressione enter.",
+            "Para finalizar, reinicie o computador."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/smb-status/smb-2.jpg",
+            "frontend/src/assets/images/windows-11/smb-status/smb-2.jpg",
+            "frontend/src/assets/images/windows-11/smb-status/smb-3.jpg",
+            "frontend/src/assets/images/windows-11/smb-status/smb-3.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/smb-status/smb-1.png",
+            "frontend/src/assets/images/windows-10/smb-status/smb-1.png",
+            "frontend/src/assets/images/windows-10/smb-status/smb-2.png",
+            "frontend/src/assets/images/windows-10/smb-status/smb-2.png"
+        ]
+    },
+    "140": {
+        "Name": "Controle de conta de usuário",
+        "Type": "Segurança",
+        "Information": "O Controle de Conta de Usuário (UAC) é um recurso de segurança introduzido no Windows Vista e presente nas versões subsequentes do sistema operacional Windows. Seu objetivo principal é aumentar a segurança do sistema operacional, limitando os privilégios de aplicativos e processos que são executados com direitos de usuário padrão e exigindo a aprovação do administrador para tarefas que exigem permissões elevadas.",
+        "Solution": 
+        [   
+            "No seu teclado, pressione 'Windows+R' para abrir a janela Executar.", 
+            "Digite 'Painel de Controle' e selecione OK.", 
+            "Selecione 'Contas de Usuário' ou 'Contas de Usuário e Segurança da Família'.",
+            "Selecione 'Alterar configurações de Controle de Conta de Usuário'. Se for solicitado pelo UAC, selecione 'Sim' para continuar.",
+            "Aqui você pode mover o controle deslizante para 'Sempre notificar' para ativar o UAC. Se for solicitado pelo UAC, selecione 'Sim' para continuar.",
+            "Para finalizar, reinicie o computador."
+        ],
+        "SolutionWindows10": 
+        [   
+            "As configurações de controle de conta de usuário estão ativadas para aplicativos, configurá-las para sempre notificar é uma opção mais segura. Para ativar o UAC, siga estas etapas",
+            "No seu teclado, pressione 'Windows+R' para abrir a janela Executar.", 
+            "Digite 'Painel de Controle' e selecione OK.",
+            "Selecione 'Contas de Usuário'.",
+            "Selecione 'Contas de Usuário' novamente.",
+            "Selecione 'Alterar configurações de Controle de Conta de Usuário'. Se o UAC solicitar, selecione 'Sim' para continuar.",
+            "Aqui você pode mover o controle deslizante para 'Sempre notificar' para ativar o UAC. Se o UAC solicitar, selecione 'Sim' para continuar.",
+            "Para finalizar, reinicie seu computador."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-2.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-2.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-3.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-5.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-5.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-2.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-3.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-4.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-5.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-5.png"
+        ]
+    },
+    "141": {
+        "Name": "Controle de conta de usuário",
+        "Type": "Segurança",
+        "Information": "O Controle de Conta de Usuário (UAC) é um recurso de segurança introduzido no Windows Vista e presente nas versões subsequentes do sistema operacional Windows. Seu objetivo principal é aumentar a segurança do sistema operacional, limitando os privilégios de aplicativos e processos que são executados com direitos de usuário padrão e exigindo a aprovação do administrador para tarefas que exigem permissões elevadas.",
+        "Solution": 
+        [   
+           "As configurações do controle de conta de usuário estão definidas para 'Sempre notificar', então não é necessário tomar nenhuma ação."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "142": {
+        "Name": "Controle de conta de usuário",
+        "Type": "Segurança",
+        "Information": "O Controle de Conta de Usuário (UAC) é um recurso de segurança introduzido no Windows Vista e presente nas versões subsequentes do sistema operacional Windows. Seu objetivo principal é aumentar a segurança do sistema operacional, limitando os privilégios de aplicativos e processos que são executados com direitos de usuário padrão e exigindo a aprovação do administrador para tarefas que exigem permissões elevadas.",
+        "Solution": 
+        [   
+            "As configurações do controle de conta de usuário estão ativadas para aplicativos, configurá-lo para sempre notificar é uma opção mais segura. Para ativar o UAC, siga estas etapas:",
+            "No seu teclado, pressione 'Windows+R' para abrir a janela Executar.", 
+            "Digite 'Painel de Controle' e selecione OK.",
+            "Selecione 'Contas de Usuário' ou 'Contas de Usuário e Segurança da Família'.",
+            "Selecione 'Alterar configurações de Controle de Conta de Usuário'. Se for solicitado pelo UAC, selecione 'Sim' para continuar.",
+            "Aqui você pode mover o controle deslizante para 'Sempre notificar' para ativar o UAC. Se for solicitado pelo UAC, selecione 'Sim' para continuar.",
+            "Para finalizar, reinicie o computador."
+        ],
+        "SolutionWindows10": 
+        [   
+            "As configurações de controle de conta de usuário estão ativadas para aplicativos, configurá-las para sempre notificar é uma opção mais segura. Para ativar o UAC, siga estas etapas",
+            "No seu teclado, pressione 'Windows+R' para abrir a janela Executar.", 
+            "Digite 'Painel de Controle' e selecione OK.",
+            "Selecione 'Contas de Usuário'.",
+            "Selecione 'Contas de Usuário' novamente.",
+            "Selecione 'Alterar configurações de Controle de Conta de Usuário'. Se o UAC solicitar, selecione 'Sim' para continuar.",
+            "Aqui você pode mover o controle deslizante para 'Sempre notificar' para ativar o UAC. Se o UAC solicitar, selecione 'Sim' para continuar.",
+            "Para finalizar, reinicie seu computador."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-2.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-2.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-3.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-5.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-5.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-2.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-3.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-4.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-5.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-5.png"
+        ]
+    },
+    "143": {
+        "Name": "Controle de conta de usuário",
+        "Type": "Segurança",
+        "Information": "O Controle de Conta de Usuário (UAC) é um recurso de segurança introduzido no Windows Vista e presente nas versões subsequentes do sistema operacional Windows. Seu objetivo principal é aumentar a segurança do sistema operacional, limitando os privilégios de aplicativos e processos que são executados com direitos de usuário padrão e exigindo a aprovação do administrador para tarefas que exigem permissões elevadas.",
+        "Solution": 
+        [   
+            "O status das configurações do controle de conta de usuário é desconhecido, para verificar o status e potencialmente resolver o problema do controle de conta de usuário, siga estas etapas:",
+            "No seu teclado, pressione 'Windows+R' para abrir a janela Executar.", 
+            "Digite 'Painel de Controle' e selecione OK.",
+            "Selecione 'Contas de Usuário' ou 'Contas de Usuário e Segurança da Família'.",
+            "Selecione 'Alterar configurações de Controle de Conta de Usuário'. Se for solicitado pelo UAC, selecione 'Sim' para continuar.",
+            "Aqui você pode mover o controle deslizante para 'Sempre notificar' para ativar o UAC. Se for solicitado pelo UAC, selecione 'Sim' para continuar.",
+            "Para finalizar, reinicie o computador."
+        ],
+        "SolutionWindows10": 
+        [   
+            "As configurações de controle de conta de usuário estão ativadas para aplicativos, configurá-las para sempre notificar é uma opção mais segura. Para ativar o UAC, siga estas etapas",
+            "No seu teclado, pressione 'Windows+R' para abrir a janela Executar.", 
+            "Digite 'Painel de Controle' e selecione OK.",
+            "Selecione 'Contas de Usuário'.",
+            "Selecione 'Contas de Usuário' novamente.",
+            "Selecione 'Alterar configurações de Controle de Conta de Usuário'. Se o UAC solicitar, selecione 'Sim' para continuar.",
+            "Aqui você pode mover o controle deslizante para 'Sempre notificar' para ativar o UAC. Se o UAC solicitar, selecione 'Sim' para continuar.",
+            "Para finalizar, reinicie seu computador."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-2.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-2.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-3.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-5.jpg",
+            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-5.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-2.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-3.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-4.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-5.png",
+            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-5.png"
+        ]
+    },
+    "150": {
+        "Name": "Windows Defender e verificação periódica ativados",
+        "Type": "Segurança",
+        "Information": "O Windows Defender monitora continuamente seu sistema para qualquer atividade suspeita, incluindo malware, vírus e outras formas de software malicioso. Mantendo-o ativado, você possui uma defesa ativa contra possíveis ameaças que poderiam comprometer sua privacidade ou segurança. Ele também recebe atualizações regulares da Microsoft para se manter atualizado com as ameaças e vulnerabilidades de segurança mais recentes. Mantendo-o ativado, você garante que seu computador esteja protegido contra novas ameaças emergentes que poderiam explorar fraquezas de segurança conhecidas.",
+        "Solution": 
+        [
+            "O Windows Defender e a verificação periódica estão ativados, então não é necessário tomar nenhuma ação."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "151": {
+        "Name": "Verificação do Windows Defender desativada",
+        "Type": "Segurança",
+        "Information": "O Windows Defender monitora continuamente seu sistema para qualquer atividade suspeita, incluindo malware, vírus e outras formas de software malicioso. Mantendo-o ativado, você possui uma defesa ativa contra possíveis ameaças que poderiam comprometer sua privacidade ou segurança. Ele também recebe atualizações regulares da Microsoft para se manter atualizado com as ameaças e vulnerabilidades de segurança mais recentes. Mantendo-o ativado, você garante que seu computador esteja protegido contra novas ameaças emergentes que poderiam explorar fraquezas de segurança conhecidas.",
+        "Solution": 
+        [
+            "Abra o aplicativo de Segurança do Windows.", 
+            "Selecione Proteção contra vírus e ameaças.", 
+            "Em Configurações de proteção contra vírus e ameaças, selecione Gerenciar configurações.", 
+            "Ative o interruptor em Proteção em tempo real."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-1.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-2.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-3.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-4.png"
+        ]
+    },
+    "152": {
+        "Name": "Windows Defender win desativado",
+        "Type": "Segurança",
+        "Information": "O Windows Defender monitora continuamente seu sistema para qualquer atividade suspeita, incluindo malware, vírus e outras formas de software malicioso. Mantendo-o ativado, você possui uma defesa ativa contra possíveis ameaças que poderiam comprometer sua privacidade ou segurança. Ele também recebe atualizações regulares da Microsoft para se manter atualizado com as ameaças e vulnerabilidades de segurança mais recentes. Mantendo-o ativado, você garante que seu computador esteja protegido contra novas ameaças emergentes que poderiam explorar fraquezas de segurança conhecidas.",
+        "Solution": 
+        [
+            "Abra o aplicativo de Segurança do Windows.", 
+            "Selecione Proteção contra vírus e ameaças.", 
+            "Em Configurações de proteção contra vírus e ameaças, selecione Gerenciar configurações.", 
+            "Ative o interruptor em Proteção em tempo real."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-1.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-2.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-3.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-4.png"
+        ]
+    },
+    "153": {
+        "Name": "Windows Defender desativado",
+        "Type": "Segurança",
+        "Information": "O Windows Defender monitora continuamente seu sistema para qualquer atividade suspeita, incluindo malware, vírus e outras formas de software malicioso. Mantendo-o ativado, você possui uma defesa ativa contra possíveis ameaças que poderiam comprometer sua privacidade ou segurança. Ele também recebe atualizações regulares da Microsoft para se manter atualizado com as ameaças e vulnerabilidades de segurança mais recentes. Mantendo-o ativado, você garante que seu computador esteja protegido contra novas ameaças emergentes que poderiam explorar fraquezas de segurança conhecidas.",
+        "Solution": 
+        [
+            "Abra o aplicativo de Segurança do Windows.", 
+            "Selecione Proteção contra vírus e ameaças.", 
+            "Em Configurações de proteção contra vírus e ameaças, selecione Gerenciar configurações.", 
+            "Ative o interruptor em Proteção em tempo real."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-1.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-2.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-3.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-4.png"
+        ]
+    },
+    "154": {
+        "Name": "Status do Windows Defender desconhecido",
+        "Type": "Segurança",
+        "Information": "O Windows Defender monitora continuamente seu sistema para qualquer atividade suspeita, incluindo malware, vírus e outras formas de software malicioso. Mantendo-o ativado, você possui uma defesa ativa contra possíveis ameaças que poderiam comprometer sua privacidade ou segurança. Ele também recebe atualizações regulares da Microsoft para se manter atualizado com as ameaças e vulnerabilidades de segurança mais recentes. Mantendo-o ativado, você garante que seu computador esteja protegido contra novas ameaças emergentes que poderiam explorar fraquezas de segurança conhecidas.",
+        "Solution": 
+        [
+            "O status do Windows Defender é desconhecido, para verificar o status e potencialmente resolver o problema do Windows Defender, siga estas etapas:",
+            "Abra o aplicativo de Segurança do Windows.", 
+            "Selecione Proteção contra vírus e ameaças.", 
+            "Em Configurações de proteção contra vírus e ameaças, selecione Gerenciar configurações.", 
+            "Ative o interruptor em Proteção em tempo real."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-1.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-1.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-2.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-3.png",
+            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-4.png"
+        ]
+    },
+    "160": {
+        "Name": "Última alteração de senha há mais de 6 meses",
+        "Type": "Segurança",
+        "Information": "Alterar sua senha regularmente reduz a probabilidade de acesso não autorizado ao seu computador ou informações confidenciais. Se alguém conseguir obter sua senha, alterá-la regularmente limita o tempo que essa pessoa tem para explorá-la. Portanto, é um bom hábito mudar sua senha pelo menos duas vezes por ano.",
+        "Solution": 
+        [   
+            "Vá para Iniciar > Alterar sua senha", 
+            "Abra a seção 'Senha' e clique no botão 'alterar'.",
+            "Você pode agora alterar sua senha para uma nova e única."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/last-password-change/change-password-1.jpg",
+            "frontend/src/assets/images/windows-11/last-password-change/change-password-2.jpg",
+            "frontend/src/assets/images/windows-11/last-password-change/change-password-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/last-password-change/change-password-1.png",
+            "frontend/src/assets/images/windows-10/last-password-change/change-password-2.png",
+            "frontend/src/assets/images/windows-10/last-password-change/change-password-2.png"
+        ]
+    },
+    "161": {
+        "Name": "Última alteração de senha recente",
+        "Type": "Segurança",
+        "Information": "Alterar sua senha regularmente reduz a probabilidade de acesso não autorizado ao seu computador ou informações confidenciais. Se alguém conseguir obter sua senha, alterá-la regularmente limita o tempo que essa pessoa tem para explorá-la. Portanto, é um bom hábito mudar sua senha pelo menos duas vezes por ano.",
+        "Solution": 
+        [   
+            "Você alterou sua senha recentemente, então não é necessário tomar nenhuma ação."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "170": {
+        "Name": "Nenhum método de login do Windows configurado",
+        "Type": "Segurança",
+        "Information": "Usar um método seguro de login no Windows é importante. O Windows suporta vários métodos de login, como senha, PIN, chave de segurança ou impressão digital. Usar um desses métodos de login é importante para manter seus dados seguros. Sem um desses métodos de login, qualquer pessoa poderá desbloquear seu dispositivo e acessar seus dados. Você não está usando um método de login / um método de login menos seguro / combinação de métodos de login, é recomendável mudar para um método de login mais seguro, como senha ou impressão digital.",
+        "Solution": 
+        [   
+            "Vá para Iniciar > Configurações > Contas > Opções de entrada.", 
+            "Agora você pode configurar um dos métodos de login disponíveis seguindo as etapas descritas."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/windows-login-method/login-method-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-login-method/login-method-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/windows-login-method/login-method-1.png",
+            "frontend/src/assets/images/windows-10/windows-login-method/login-method-2.png"
+        ]
+    },
+    "171": {
+        "Name": "Login do Windows com método seguro",
+        "Type": "Segurança",
+        "Information": "Usar um método seguro de login no Windows é importante. O Windows suporta vários métodos de login, como senha, PIN, chave de segurança ou impressão digital. Usar um desses métodos de login é importante para manter seus dados seguros. Sem um desses métodos de login, qualquer pessoa poderá desbloquear seu dispositivo e acessar seus dados.",
+        "Solution": 
+        [   
+            "Você está usando um método de login seguro, então não é necessário tomar nenhuma ação."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "173": {
+        "Name": "Login do Windows com método de login menos seguro",
+        "Type": "Segurança",
+        "Information": "Usar um método seguro de login no Windows é importante. O Windows suporta vários métodos de login, como senha, PIN, chave de segurança ou impressão digital. Usar um desses métodos de login é importante para manter seus dados seguros. Sem um desses métodos de login, qualquer pessoa poderá desbloquear seu dispositivo e acessar seus dados. Você está usando um método de login / combinação de métodos de login menos seguro, como visto abaixo, é recomendável mudar para um método de login mais seguro, como senha ou impressão digital.",
+        "Solution": 
+        [   
+            "Vá para Iniciar > Configurações > Contas > Opções de entrada.", 
+            "Agora você pode configurar um dos métodos de login disponíveis seguindo as etapas descritas."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/windows-login-method/login-method-1.jpg",
+            "frontend/src/assets/images/windows-11/windows-login-method/login-method-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/windows-login-method/login-method-1.png",
+            "frontend/src/assets/images/windows-10/windows-login-method/login-method-2.png"
+        ]
+    },
+    "180": {
+        "Name": "Versão do Windows atualizada",
+        "Type": "Segurança",
+        "Information": "Versões desatualizadas do Windows podem conter vulnerabilidades de segurança não corrigidas que poderiam ser exploradas por invasores para comprometer o sistema. Hackers procuram ativamente e exploram vulnerabilidades em sistemas operacionais desatualizados, o que pode levar a acesso não autorizado, violações de dados e infecções por malware.",
+        "Solution": 
+        [
+            "Sua versão do Windows está atualizada, então não é necessário tomar nenhuma ação."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "181": {
+        "Name": "Versão do Windows ligeiramente desatualizada",
+        "Type": "Segurança",
+        "Information": "Versões desatualizadas do Windows podem conter vulnerabilidades de segurança não corrigidas que poderiam ser exploradas por invasores para comprometer o sistema. Hackers procuram ativamente e exploram vulnerabilidades em sistemas operacionais desatualizados, o que pode levar a acesso não autorizado, violações de dados e infecções por malware.",
+        "Solution": 
+        [
+            "Vá para Iniciar > Configurações > Windows Update.",
+            "Aqui você pode verificar se há atualizações e instalá-las."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/outdated-windows-version/windows-update-1.jpg",
+            "frontend/src/assets/images/windows-11/outdated-windows-version/windows-update-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/outdated-windows-version/windows-update-1.png",
+            "frontend/src/assets/images/windows-10/outdated-windows-version/windows-update-2.png"
+        ]
+    },
+    "182": {
+        "Name": "Versão do Windows desatualizada",
+        "Type": "Segurança",
+        "Information": "Versões desatualizadas do Windows podem conter vulnerabilidades de segurança não corrigidas que poderiam ser exploradas por invasores para comprometer o sistema. Hackers procuram ativamente e exploram vulnerabilidades em sistemas operacionais desatualizados, o que pode levar a acesso não autorizado, violações de dados e infecções por malware.",
+        "Solution": 
+        [
+            "Vá para Iniciar > Configurações > Windows Update.",
+            "Aqui você pode verificar se há atualizações e instalá-las."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/outdated-windows-version/windows-update-1.jpg",
+            "frontend/src/assets/images/windows-11/outdated-windows-version/windows-update-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/outdated-windows-version/windows-update-1.png",
+            "frontend/src/assets/images/windows-10/outdated-windows-version/windows-update-2.png"
+        ]
+    },
+    "190": {
+        "Name": "Inicialização segura desativada",
+        "Type": "Segurança",
+        "Information": "A Inicialização Segura garante que apenas componentes de software confiáveis, assinados com assinaturas digitais reconhecidas, sejam carregados durante o processo de inicialização. Isso impede que malware e outros softwares não autorizados alterem o processo de inicialização e assumam o controle do sistema em um estágio inicial.",
+        "Solution": 
+        [   
+            "Reinicie o computador e acesse as configurações de BIOS/UEFI. Isso geralmente é feito pressionando uma tecla específica durante o processo de inicialização. As teclas comuns para acessar as configurações de BIOS/UEFI incluem F2, Del, Esc ou F10. A tecla específica varia de acordo com o fabricante do seu computador.", 
+            "Uma vez nas configurações de BIOS/UEFI, navegue até a seção relacionada à Inicialização Segura. Esta seção pode ter nomes diferentes dependendo do fabricante do sistema e da versão do BIOS/UEFI.",
+            "Na seção de Inicialização Segura, você deve encontrar uma opção para habilitar a Inicialização Segura. Selecione essa opção e defina-a como 'Ativada'. Alguns sistemas podem exigir que você defina um Modo de Inicialização Segura ou escolha a opção de Gerenciamento de Chaves de Inicialização Segura. Siga as instruções na tela para habilitar a Inicialização Segura.",
+            "Após habilitar a Inicialização Segura, salve as alterações nas configurações de BIOS/UEFI e saia. Normalmente, você pode fazer isso selecionando a opção 'Salvar e sair' ou 'Sair' no menu do BIOS/UEFI. Confirme qualquer solicitação para salvar as alterações e reinicie o computador."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "191": {
+        "Name": "Inicialização segura ativada",
+        "Type": "Segurança",
+        "Information": "A Inicialização Segura garante que apenas componentes de software confiáveis, assinados com assinaturas digitais reconhecidas, sejam carregados durante o processo de inicialização. Isso impede que malware e outros softwares não autorizados alterem o processo de inicialização e assumam o controle do sistema em um estágio inicial.",
+        "Solution": 
+        [   
+            "A inicialização segura está ativada, então não é necessário tomar nenhuma ação."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "192": {
+        "Name": "Status da inicialização segura desconhecido",
+        "Type": "Segurança",
+        "Information": "A Inicialização Segura garante que apenas componentes de software confiáveis, assinados com assinaturas digitais reconhecidas, sejam carregados durante o processo de inicialização. Isso impede que malware e outros softwares não autorizados alterem o processo de inicialização e assumam o controle do sistema em um estágio inicial.",
+        "Solution": 
+        [   
+            "O status da configuração de inicialização segura é desconhecido, para verificar o status e potencialmente resolver o problema da inicialização segura, siga estas etapas:",
+            "Reinicie o computador e acesse as configurações de BIOS/UEFI. Isso geralmente é feito pressionando uma tecla específica durante o processo de inicialização. As teclas comuns para acessar as configurações de BIOS/UEFI incluem F2, Del, Esc ou F10. A tecla específica varia de acordo com o fabricante do seu computador.", 
+            "Uma vez nas configurações de BIOS/UEFI, navegue até a seção relacionada à Inicialização Segura. Esta seção pode ter nomes diferentes dependendo do fabricante do sistema e da versão do BIOS/UEFI.",
+            "Na seção de Inicialização Segura, você deve encontrar uma opção para habilitar a Inicialização Segura. Selecione essa opção e defina-a como 'Ativada'. Alguns sistemas podem exigir que você defina um Modo de Inicialização Segura ou escolha a opção de Gerenciamento de Chaves de Inicialização Segura. Siga as instruções na tela para habilitar a Inicialização Segura.",
+            "Após habilitar a Inicialização Segura, salve as alterações nas configurações de BIOS/UEFI e saia. Normalmente, você pode fazer isso selecionando a opção 'Salvar e sair' ou 'Sair' no menu do BIOS/UEFI. Confirme qualquer solicitação para salvar as alterações e reinicie o computador."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "200": {
+        "Name": "Nenhum aplicativo inicia na inicialização",
+        "Type": "Segurança",
+        "Information": "Quando você inicia seu computador, vários aplicativos são iniciados automaticamente. Alguns desses processos são essenciais para o funcionamento adequado do sistema, enquanto outros são convenientes para ter na inicialização. No entanto, também pode haver aplicativos que iniciam durante a inicialização sem o seu conhecimento. É prudente desativar esses aplicativos para evitar qualquer ação não autorizada e melhorar a velocidade do processo de inicialização do seu computador.",
+        "Solution": 
+        [   
+            "Não há aplicativos que iniciam na inicialização, então não é necessário tomar nenhuma ação."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "201": {
+        "Name": "Aplicativos que iniciam na inicialização",
+        "Type": "Segurança",
+        "Information": "Quando você inicia seu computador, vários aplicativos são iniciados automaticamente. Alguns desses processos são essenciais para o funcionamento adequado do sistema, enquanto outros são convenientes para ter na inicialização. No entanto, também pode haver aplicativos que iniciam durante a inicialização sem o seu conhecimento. É prudente desativar esses aplicativos para evitar qualquer ação não autorizada e melhorar a velocidade do processo de inicialização do seu computador.",
+        "Solution": 
+        [   
+            "Vá para Iniciar > Configurações > Aplicativos > Inicialização.", 
+            "Aqui você pode escolher quais aplicativos iniciarão automaticamente durante a inicialização."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/applications-which-start-at-boot/boot-apps-1.jpg",
+            "frontend/src/assets/images/windows-11/applications-which-start-at-boot/boot-apps-2.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/applications-which-start-at-boot/boot-apps-1.png",
+            "frontend/src/assets/images/windows-10/applications-which-start-at-boot/boot-apps-2.png"
+        ]
+    },
+    "210": {
+        "Name": "Google Chrome com bloqueador de anúncios instalado",
+        "Type": "Privacidade",
+        "Information": "Os bloqueadores de anúncios protegem os usuários de anúncios online. Com seus filtros e algoritmos, eles fornecem um santuário de navegação sem interrupções, poupando os usuários da desordem visual e dos potenciais riscos de segurança representados pelos anúncios.",
+        "Solution": 
+        [   		
+            "Abra o Google Chrome e navegue até a Chrome Store.", 
+			"Procure por um bloqueador de anúncios na barra de pesquisa (por exemplo: AdBlock Plus ou uBlock Origin).",
+			"Clique no botão 'Adicionar ao Chrome' e reinicie o navegador."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/chrome-adblocker/chrome-adblocker-1.png",
+            "frontend/src/assets/images/windows-11/chrome-adblocker/chrome-adblocker-2.png",
+            "frontend/src/assets/images/windows-11/chrome-adblocker/chrome-adblocker-3.png"
+        ]
+    },
+    "211": {
+        "Name": "Google Chrome sem bloqueador de anúncios instalado",
+        "Type": "Privacidade",
+        "Information": "Os bloqueadores de anúncios protegem os usuários de anúncios online. Com seus filtros e algoritmos, eles fornecem um santuário de navegação sem interrupções, poupando os usuários da desordem visual e dos potenciais riscos de segurança representados pelos anúncios.",
+        "Solution": 
+        [   		
+            "Abra o Google Chrome e navegue até a Chrome Store.", 
+			"Procure por um bloqueador de anúncios na barra de pesquisa (por exemplo: AdBlock Plus ou uBlock Origin).",
+			"Clique no botão 'Adicionar ao Chrome' e reinicie o navegador."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/chrome-adblocker/chrome-adblocker-1.png",
+            "frontend/src/assets/images/windows-11/chrome-adblocker/chrome-adblocker-2.png",
+            "frontend/src/assets/images/windows-11/chrome-adblocker/chrome-adblocker-3.png"
+        ]
+    },
+    "220": {
+        "Name": "Microsoft Edge com bloqueador de anúncios instalado",
+        "Type": "Privacidade",
+        "Information": "Os bloqueadores de anúncios protegem os usuários de anúncios online. Com seus filtros e algoritmos, eles fornecem um santuário de navegação sem interrupções, poupando os usuários da desordem visual e dos potenciais riscos de segurança representados pelos anúncios.",
+        "Solution": 
+        [   		
+            "Abra o Microsoft Edge e navegue até as Extensões do Microsoft Edge.", 
+			"Procure por um bloqueador de anúncios na barra de pesquisa (por exemplo: AdBlock Plus ou uBlock Origin).",
+			"Clique no botão 'Download' e reinicie o navegador."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/edge-adblocker/edge-adblocker-1.png",
+            "frontend/src/assets/images/windows-11/edge-adblocker/edge-adblocker-2.png",
+            "frontend/src/assets/images/windows-11/edge-adblocker/edge-adblocker-3.png"
+        ]
+    },
+    "221": {
+        "Name": "Microsoft Edge sem bloqueador de anúncios instalado",
+        "Type": "Privacidade",
+        "Information": "Os bloqueadores de anúncios protegem os usuários de anúncios online. Com seus filtros e algoritmos, eles fornecem um santuário de navegação sem interrupções, poupando os usuários da desordem visual e dos potenciais riscos de segurança representados pelos anúncios.",
+        "Solution": 
+        [   		
+            "Abra o Microsoft Edge e navegue até as Extensões do Microsoft Edge.", 
+			"Procure por um bloqueador de anúncios na barra de pesquisa (por exemplo: AdBlock Plus ou uBlock Origin).",
+			"Clique no botão 'Download' e reinicie o navegador."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/edge-adblocker/edge-adblocker-1.png",
+            "frontend/src/assets/images/windows-11/edge-adblocker/edge-adblocker-2.png",
+            "frontend/src/assets/images/windows-11/edge-adblocker/edge-adblocker-3.png"
+        ]
+    },
+    "230": {
+        "Name": "Domínios de phishing potenciais encontrados no Google Chrome",
+        "Type": "Privacidade",
+        "Information": "Domínios de phishing são sites falsos projetados para enganar as pessoas e fazê-las compartilhar informações sensíveis, como senhas ou detalhes de cartão de crédito. Eles parecem reais, imitando marcas ou organizações confiáveis. Esses golpes exploram a confiança e a curiosidade para roubar dados pessoais.",
+        "Solution": 
+        [   		
+            "Tenha cuidado ao navegar na internet, pois sites confiáveis podem ser facilmente falsificados. Além disso, existem muitos sites com intenções maliciosas. Em caso de dúvida ao navegar em um possível site de phishing, é aconselhável mudar sua senha."
+        ],
+        "Screenshots":
+        [
+            "TOBEFILLED"
+        ]
+    },	
+    "231": {
+        "Name": "Nenhum domínio de phishing potencial encontrado no Google Chrome",
+        "Type": "Privacidade",
+        "Information": "Domínios de phishing são sites falsos projetados para enganar as pessoas e fazê-las compartilhar informações sensíveis, como senhas ou detalhes de cartão de crédito. Eles parecem reais, imitando marcas ou organizações confiáveis. Esses golpes exploram a confiança e a curiosidade para roubar dados pessoais.",
+        "Solution": 
+        [   		
+            "Tenha cuidado ao navegar na internet, pois sites confiáveis podem ser facilmente falsificados. Além disso, existem muitos sites com intenções maliciosas. Em caso de dúvida ao navegar em um possível site de phishing, é aconselhável mudar sua senha."
+        ],
+        "Screenshots":
+        [
+        ]
+    },	
+    "240": {
+        "Name": "Domínios de phishing potenciais encontrados no Microsoft Edge",
+        "Type": "Privacidade",
+        "Information": "Domínios de phishing são sites falsos projetados para enganar as pessoas e fazê-las compartilhar informações sensíveis, como senhas ou detalhes de cartão de crédito. Eles parecem reais, imitando marcas ou organizações confiáveis. Esses golpes exploram a confiança e a curiosidade para roubar dados pessoais.",
+        "Solution": 
+        [   		
+            "Tenha cuidado ao navegar na internet, pois sites confiáveis podem ser facilmente falsificados. Além disso, existem muitos sites com intenções maliciosas. Em caso de dúvida ao navegar em um possível site de phishing, é aconselhável mudar sua senha."
+        ],
+        "Screenshots":
+        [
+        ]
+    },	
+    "241": {
+        "Name": "Nenhum domínio de phishing potencial encontrado no Microsoft Edge",
+        "Type": "Privacidade",
+        "Information": "Domínios de phishing são sites falsos projetados para enganar as pessoas e fazê-las compartilhar informações sensíveis, como senhas ou detalhes de cartão de crédito. Eles parecem reais, imitando marcas ou organizações confiáveis. Esses golpes exploram a confiança e a curiosidade para roubar dados pessoais.",
+        "Solution": 
+        [   		
+            "Tenha cuidado ao navegar na internet, pois sites confiáveis podem ser facilmente falsificados. Além disso, existem muitos sites com intenções maliciosas. Em caso de dúvida ao navegar em um possível site de phishing, é aconselhável mudar sua senha."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "250": {
+        "Name": "Motor de busca padrão no Google Chrome",
+        "Type": "Privacidade",
+        "Information": "Um motor de busca padrão ajuda os usuários a encontrar informações na internet digitando palavras-chave ou frases. Exemplos incluem Google, Bing e Yahoo. Eles geralmente enfrentam críticas por sua abordagem à privacidade.",
+        "Solution": 
+        [   		
+            "Considere usar um motor de busca com foco na privacidade dos usuários (por exemplo: DuckDuckGo)."
+        ],
+        "Screenshots":
+        [
+        ]
+    },	
+    "260": {
+        "Name": "Motor de busca padrão no Microsoft Edge",
+        "Type": "Privacidade",
+        "Information": "Um motor de busca padrão ajuda os usuários a encontrar informações na internet digitando palavras-chave ou frases. Exemplos incluem Google, Bing e Yahoo. Eles geralmente enfrentam críticas por sua abordagem à privacidade.",
+        "Solution": 
+        [   		
+            "Considere usar um motor de busca com foco na privacidade dos usuários (por exemplo: DuckDuckGo)."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "270": {
+        "Name": "Cookies armazenados pelo Mozilla Firefox",
+        "Type": "Privacidade",
+        "Information": "Cookies são pequenos arquivos de texto armazenados no seu computador pelos sites que você visita. Eles são usados para lembrar suas preferências, informações de login e outros dados para melhorar sua experiência de navegação. No entanto, os cookies também podem ser usados para rastrear suas atividades online e coletar informações pessoais sem seu consentimento, levantando preocupações de privacidade. Gerenciar e limpar cookies regularmente ajuda a proteger sua privacidade e controlar os dados que os sites coletam sobre você.",
+        "Solution": 
+        [   		
+            "Abra o Mozilla Firefox e clique no botão de menu (três linhas horizontais) no canto superior direito.",
+            "Selecione 'Opções' e vá para a guia 'Privacidade e Segurança'.",
+            "Em 'Cookies e dados de sites', clique em 'Gerenciar Dados'.",
+            "Aqui você pode visualizar e remover cookies armazenados por sites. Você também pode limpar todos os cookies clicando em 'Remover Tudo'."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/firefox-cookies/cookies-firefox-1.png",
+            "frontend/src/assets/images/windows-11/firefox-cookies/cookies-firefox-2.png",
+            "frontend/src/assets/images/windows-11/firefox-cookies/cookies-firefox-3.png",
+            "frontend/src/assets/images/windows-11/firefox-cookies/cookies-firefox-4.png"
+        ]
+    },
+    "271": {
+        "Name": "Possíveis cookies de rastreamento encontrados no Mozilla Firefox",
+        "Type": "Privacidade",
+        "Information": "Cookies são pequenos arquivos de texto armazenados no seu computador pelos sites que você visita. Eles são usados para lembrar suas preferências, informações de login e outros dados para melhorar sua experiência de navegação. No entanto, os cookies também podem ser usados para rastrear suas atividades online e coletar informações pessoais sem o seu consentimento, levantando preocupações com a privacidade. Gerenciar e limpar cookies regularmente ajuda a proteger sua privacidade e controlar os dados que os sites coletam sobre você.",
+        "Solution": 
+        [   		
+            "Abra o Mozilla Firefox e clique no botão de menu (três linhas horizontais) no canto superior direito.",
+            "Selecione 'Configurações' e vá para a aba 'Privacidade e Segurança'.",
+            "A opção 'Proteção aprimorada contra rastreamento' deve estar configurada como 'Padrão' ou 'Personalizado'. O modo personalizado oferece mais controle sobre o que você permite ou bloqueia. Em 'Cookies e dados de sites', você pode excluir seus cookies existentes e gerenciar exceções. É recomendado limpar seus cookies com frequência para proteger sua privacidade."
+        ],
+        "Screenshots":
+        [
+        ]
+    },    
+    "280": {
+        "Name": "Extensões instaladas no Mozilla Firefox",
+        "Type": "Privacidade",
+        "Information": "As extensões de navegador aumentam a funcionalidade do seu navegador da web, adicionando recursos, ferramentas e opções de personalização. Embora as extensões possam ser úteis, elas também podem representar riscos à privacidade e à segurança se tiverem acesso a dados sensíveis ou rastrearem suas atividades online sem o seu consentimento. Revisar e gerenciar regularmente suas extensões de navegador ajuda a proteger sua privacidade e segurança online. Remova quaisquer extensões que você não use ou confie para minimizar os riscos potenciais.",
+        "Solution": 
+        [   		
+            "Abra o Mozilla Firefox e clique no botão de menu (três linhas horizontais) no canto superior direito.",
+            "Selecione 'Extensões' e vá para a guia 'Extensões'.",
+            "Aqui você pode visualizar e gerenciar as extensões instaladas no seu navegador. Desative ou remova quaisquer extensões que você não use ou confie."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/firefox-extensions/extensions-firefox-1.png",
+            "frontend/src/assets/images/windows-11/firefox-extensions/extensions-firefox-2.png",
+            "frontend/src/assets/images/windows-11/firefox-extensions/extensions-firefox-3.png"
+        ]
+    },
+    "290": {
+        "Name": "Mozilla Firefox com bloqueador de anúncios instalado",
+        "Type": "Privacidade",
+        "Information": "Os bloqueadores de anúncios protegem os usuários de anúncios online. Com seus filtros e algoritmos, eles fornecem um santuário de navegação sem interrupções, poupando os usuários da desordem visual e dos potenciais riscos de segurança representados pelos anúncios.",
+        "Solution": 
+        [   		
+            "Abra o Mozilla Firefox e navegue até as Extensões do Firefox", 
+			"Procure por um bloqueador de anúncios na barra de pesquisa (por exemplo: AdBlock Plus ou uBlock Origin).",
+			"Clique no botão 'Download' e reinicie o navegador."
+        ],
+        "Screenshots":
+        [
+        ]
+    },	
+    "291": {
+        "Name": "Mozilla Firefox sem bloqueador de anúncios instalado",
+        "Type": "Privacidade",
+        "Information": "Os bloqueadores de anúncios protegem os usuários de anúncios online. Com seus filtros e algoritmos, eles fornecem um santuário de navegação sem interrupções, poupando os usuários da desordem visual e dos potenciais riscos de segurança representados pelos anúncios.",
+        "Solution": 
+        [   		
+            "Abra o Mozilla Firefox e navegue até as Extensões do Firefox", 
+			"Procure por um bloqueador de anúncios na barra de pesquisa (por exemplo: AdBlock Plus ou uBlock Origin).",
+			"Clique no botão 'Download' e reinicie o navegador."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/firefox-adblocker/firefox-adblocker-1.png",
+            "frontend/src/assets/images/windows-11/firefox-adblocker/firefox-adblocker-2.png",
+            "frontend/src/assets/images/windows-11/firefox-adblocker/firefox-adblocker-3.png",
+            "frontend/src/assets/images/windows-11/firefox-adblocker/firefox-adblocker-4.png",
+            "frontend/src/assets/images/windows-11/firefox-adblocker/firefox-adblocker-5.png"
+        ]
+    },		
+    "300": {
+        "Name": "Motor de busca padrão no Mozilla Firefox",
+        "Type": "Privacidade",
+        "Information": "Um motor de busca padrão ajuda os usuários a encontrar informações na internet digitando palavras-chave ou frases. Exemplos incluem Google, Bing e Yahoo. Eles geralmente enfrentam críticas por sua abordagem à privacidade.",
+        "Solution": 
+        [   		
+          "Considere usar um navegador com foco na privacidade dos usuários (por exemplo: DuckDuckGo)."
+        ],
+        "Screenshots":
+        [
+        ]
+    },	
+    "310": {
+        "Name": "Nenhum domínio de phishing potencial encontrado no Mozilla Firefox",
+        "Type": "Privacidade",
+        "Information": "Domínios de phishing são sites falsos projetados para enganar as pessoas e fazê-las compartilhar informações sensíveis, como senhas ou detalhes de cartão de crédito. Eles parecem reais, imitando marcas ou organizações confiáveis. Esses golpes exploram a confiança e a curiosidade para roubar dados pessoais.",
+        "Solution":
+        [
+        ],
+        "Screenshots":
+        [
+        ]
+    },		
+    "311": {
+        "Name": "Domínios de phishing potenciais encontrados no Mozilla Firefox",
+        "Type": "Privacidade",
+        "Information": "Domínios de phishing são sites falsos projetados para enganar as pessoas e fazê-las compartilhar informações sensíveis, como senhas ou detalhes de cartão de crédito. Eles parecem reais, imitando marcas ou organizações confiáveis. Esses golpes exploram a confiança e a curiosidade para roubar dados pessoais.",
+        "Solution":
+        [
+            "Tenha cuidado ao navegar na internet, pois sites confiáveis podem ser facilmente falsificados. Além disso, existem muitos sites com intenções maliciosas. Em caso de dúvida ao navegar em um possível site de phishing, é aconselhável mudar sua senha."
+        ],
+        "Screenshots":
+        [
+            "TOBEFILLED"
+        ]
+    },
+    "320": {
+        "Name": "Configurações de registro da lista de auditoria CIS incorretas",
+        "Type": "Segurança",
+        "Information": "O Center for Internet Security (CIS) fornece um conjunto de diretrizes e práticas recomendadas para proteger sistemas de computador. As configurações de registro da lista de auditoria CIS ajudam a garantir que seu sistema esteja configurado de acordo com esses padrões de segurança. Configurações de registro incorretas ou desatualizadas podem deixar seu sistema vulnerável a ameaças de segurança e comprometer sua privacidade.",
+        "Solution":
+        [
+            "Baixe o CIS Benchmark para seu sistema operacional no site oficial do CIS. Siga as instruções no documento de benchmark para revisar e atualizar as configurações de registro no seu sistema para alinhar com os padrões de segurança do CIS. Verifique regularmente as atualizações do CIS Benchmark e aplique quaisquer alterações ou recomendações para manter uma configuração segura."
+        ],
+        "Screenshots":
+        [
+            "TOBEFILLED"
+        ]
+    },
+    "321": {
+        "Name": "Configurações de registro da lista de auditoria CIS corretas",
+        "Type": "Segurança",
+        "Information": "O Center for Internet Security (CIS) fornece um conjunto de diretrizes e práticas recomendadas para proteger sistemas de computador. As configurações de registro da lista de auditoria CIS ajudam a garantir que seu sistema esteja configurado de acordo com esses padrões de segurança. Configurações de registro incorretas ou desatualizadas podem deixar seu sistema vulnerável a ameaças de segurança e comprometer sua privacidade.",
+        "Solution":
+        [
+            "Todas as configurações estão em conformidade com as diretrizes da lista de auditoria CIS, então não é necessário tomar nenhuma ação."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "330": {
+        "Name": "Login automático desativado",
+        "Type": "Segurança",
+        "Information": "O login automático permite que os usuários acessem suas contas sem inserir uma senha cada vez que iniciam o computador ou abrem um aplicativo específico. Embora conveniente, o login automático representa riscos de segurança, pois qualquer pessoa com acesso físico ao dispositivo pode acessar a conta sem autenticação. Desativar o login automático aumenta a segurança das suas contas e evita acessos não autorizados.",
+        "Solution":
+        [
+            "O login automático está desativado, então não é necessário tomar nenhuma ação."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "331": {
+        "Name": "Login automático ativado",
+        "Type": "Segurança",
+        "Information": "O login automático permite que os usuários acessem suas contas sem inserir uma senha cada vez que iniciam o computador ou abrem um aplicativo específico. Embora conveniente, o login automático representa riscos de segurança, pois qualquer pessoa com acesso físico ao dispositivo pode acessar a conta sem autenticação. Desativar o login automático aumenta a segurança das suas contas e evita acessos não autorizados.",
+        "Solution":
+        [
+            "Vá para Iniciar > Configurações > Contas > Opções de entrada.",
+            "Em 'Requerer login', selecione 'Quando o PC despertar do modo de suspensão'."
+        ],
+        "Screenshots":
+        [
+            "TOBEFILLED"
+        ]
+    },
+    "340": {
+        "Name": "RPC Remoto desativado",
+        "Type": "Segurança",
+        "Information": "Remote Procedure Call (RPC) é um protocolo que permite que programas e processos se comuniquem entre si em uma rede. Desativar o RPC Remoto ajuda a prevenir o acesso não autorizado ao seu computador e o protege contra possíveis ameaças e vulnerabilidades de segurança.",
+        "Solution": [
+            "RPC Remoto está desativado, portanto, nenhuma ação é necessária."
+        ],
+        "Screenshots": []
+    },
+    "341": {
+        "Name": "RPC Remoto ativado",
+        "Type": "Segurança",
+        "Information": "Remote Procedure Call (RPC) é um protocolo que permite que programas e processos se comuniquem entre si em uma rede. Desativar o RPC Remoto ajuda a prevenir o acesso não autorizado ao seu computador e o protege contra possíveis ameaças e vulnerabilidades de segurança.",
+        "Solution": [
+            "A configuração de RPC Remoto não pode ser alterada de maneira convencional. É necessário editar o registro diretamente.",
+            "Na pesquisa do Windows, digite Editor do Registro e abra o programa.",
+            "Navegue até \"Computador\\HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\".",
+            "Clique duas vezes na chave \"AllowRemoteRPC\" e defina seu valor para 0."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
+    "350": {
+        "Name": "Nenhum cookie de rastreamento possível encontrado no navegador Google Chrome",
+        "Type": "Privacidade",
+        "Information": "Cookies são pequenos arquivos de texto armazenados no seu computador pelos sites que você visita. Eles são usados para lembrar suas preferências, informações de login e outros dados para melhorar sua experiência de navegação. No entanto, os cookies também podem ser usados para rastrear suas atividades online e coletar informações pessoais sem o seu consentimento, levantando preocupações de privacidade. Gerenciar e excluir cookies regularmente ajuda a proteger sua privacidade e controlar os dados que os sites coletam sobre você.",
+        "Solution": [
+            "Nenhum cookie de rastreamento possível encontrado no Google Chrome, portanto, nenhuma ação é necessária."
+        ],
+        "Screenshots": []
+    },
+    "351": {
+        "Name": "Cookies de rastreamento possíveis encontrados no navegador Google Chrome",
+        "Type": "Privacidade",
+        "Information": "Cookies são pequenos arquivos de texto armazenados no seu computador pelos sites que você visita. Eles são usados para lembrar suas preferências, informações de login e outros dados para melhorar sua experiência de navegação. No entanto, os cookies também podem ser usados para rastrear suas atividades online e coletar informações pessoais sem o seu consentimento, levantando preocupações de privacidade. Gerenciar e excluir cookies regularmente ajuda a proteger sua privacidade e controlar os dados que os sites coletam sobre você.",
+        "Solution": [
+            "Abra o Google Chrome e clique nos três pontos no canto superior direito.",
+            "Selecione 'Configurações' e vá para a seção 'Privacidade e segurança'.",
+            "Em 'Cookies de terceiros', clique em 'Ver todos os dados e permissões do site'.",
+            "Aqui você pode visualizar e gerenciar os cookies armazenados pelos sites. Você pode excluir cookies individuais ou limpar todos os dados do site para proteger sua privacidade."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
+    "360": {
+        "Name": "Nenhum cookie de rastreamento possível encontrado no navegador Microsoft Edge",
+        "Type": "Privacidade",
+        "Information": "Cookies são pequenos arquivos de texto armazenados no seu computador pelos sites que você visita. Eles são usados para lembrar suas preferências, informações de login e outros dados para melhorar sua experiência de navegação. No entanto, os cookies também podem ser usados para rastrear suas atividades online e coletar informações pessoais sem o seu consentimento, levantando preocupações de privacidade. Gerenciar e excluir cookies regularmente ajuda a proteger sua privacidade e controlar os dados que os sites coletam sobre você.",
+        "Solution": [
+            "Nenhum cookie de rastreamento possível encontrado no Microsoft Edge, portanto, nenhuma ação é necessária."
+        ],
+        "Screenshots": []
+    },
+    "361": {
+        "Name": "Cookies de rastreamento possíveis encontrados no navegador Microsoft Edge",
+        "Type": "Privacidade",
+        "Information": "Cookies são pequenos arquivos de texto armazenados no seu computador pelos sites que você visita. Eles são usados para lembrar suas preferências, informações de login e outros dados para melhorar sua experiência de navegação. No entanto, os cookies também podem ser usados para rastrear suas atividades online e coletar informações pessoais sem o seu consentimento, levantando preocupações de privacidade. Gerenciar e excluir cookies regularmente ajuda a proteger sua privacidade e controlar os dados que os sites coletam sobre você.",
+        "Solution": [
+            "Abra o Microsoft Edge e clique nos três pontos no canto superior direito.",
+            "Selecione 'Configurações' e vá para a seção 'Cookies e permissões de sites'.",
+            "Em 'Cookies e dados armazenados', clique em 'Gerenciar e excluir cookies e dados de sites'.",
+            "Aqui você pode gerenciar as configurações gerais de cookies. Você pode excluir cookies individuais ou limpar todos os dados do site clicando em 'Ver todos os cookies e dados do site'."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
+    "997": {
+        "Name": "Extensões instaladas no Google Chrome",
+        "Type": "Privacidade",
+        "Information": "As extensões de navegador aumentam a funcionalidade do seu navegador da web, adicionando recursos, ferramentas e opções de personalização. Embora as extensões possam ser úteis, elas também podem representar riscos à privacidade e à segurança se tiverem acesso a dados sensíveis ou rastrearem suas atividades online sem o seu consentimento. Revisar e gerenciar regularmente suas extensões de navegador ajuda a proteger sua privacidade e segurança online. Remova quaisquer extensões que você não use ou confie para minimizar os riscos potenciais.",
+        "Solution": 
+        [   		
+            "Abra o Google Chrome e clique nos três pontos no canto superior direito.",
+            "Selecione 'Extensões' e depois 'Gerenciar Extensões'.",
+            "Aqui você pode visualizar e gerenciar as extensões instaladas no seu navegador. Desative ou remova quaisquer extensões que você não use ou confie."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "998": {
+        "Name": "Aplicativos com privilégios de administrador",
+        "Type": "Segurança",
+        "Information": "Aplicativos com permissões de administrador têm privilégios elevados, permitindo-lhes fazer alterações nas configurações do sistema, instalar ou desinstalar software, modificar arquivos do sistema e realizar outras ações que podem afetar a segurança e a estabilidade do seu computador. Saber quais aplicativos têm permissões de administrador ajuda a identificar possíveis riscos de segurança e vulnerabilidades, como software malicioso ou aplicativos não autorizados que podem ter obtido acesso elevado.",
+        "Solution":
+        [
+            "Clique com o botão direito na barra de tarefas e selecione 'Gerenciador de Tarefas', ou pressione Ctrl + Shift + Esc no teclado para abrir o Gerenciador de Tarefas.",
+            "No Gerenciador de Tarefas, clique na guia 'Detalhes' para ver uma lista de processos e aplicativos em execução.",
+            "Clique com o botão direito no cabeçalho da coluna, clique em 'Selecionar colunas' e certifique-se de que 'Elevado' esteja marcado. Esta coluna mostra se um processo ou aplicativo está sendo executado com permissões de administrador.",
+            "Role a lista de processos e procure entradas com 'Sim' na coluna 'Elevado'. Esses processos têm privilégios de administrador.",
+            "Se você vir programas que não precisam ser executados com permissões de administrador, você pode clicar com o botão direito neles e encerrar a tarefa."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-1.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-2.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-3.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-4.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-4.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-1.png",
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-2.png",
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-3.png",
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-4.png",
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-4.png"
+        ]
+    },
+    "999": {
+        "Name": "Aplicativos com privilégios de administrador",
+        "Type": "Segurança",
+        "Information": "Aplicativos com permissões de administrador têm privilégios elevados, permitindo-lhes fazer alterações nas configurações do sistema, instalar ou desinstalar software, modificar arquivos do sistema e realizar outras ações que podem afetar a segurança e a estabilidade do seu computador. Saber quais aplicativos têm permissões de administrador ajuda a identificar possíveis riscos de segurança e vulnerabilidades, como software malicioso ou aplicativos não autorizados que podem ter obtido acesso elevado.",
+        "Solution":
+        [
+            "Clique com o botão direito na barra de tarefas e selecione 'Gerenciador de Tarefas', ou pressione Ctrl + Shift + Esc no teclado para abrir o Gerenciador de Tarefas.",
+            "No Gerenciador de Tarefas, clique na guia 'Detalhes' para ver uma lista de processos e aplicativos em execução.",
+            "Clique com o botão direito no cabeçalho da coluna, clique em 'Selecionar colunas' e certifique-se de que 'Elevado' esteja marcado. Esta coluna mostra se um processo ou aplicativo está sendo executado com permissões de administrador.",
+            "Role a lista de processos e procure entradas com 'Sim' na coluna 'Elevado'. Esses processos têm privilégios de administrador.",
+            "Se você vir programas que não precisam ser executados com permissões de administrador, você pode clicar com o botão direito neles e encerrar a tarefa."
+        ],
+        "Screenshots":
+        [
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-1.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-2.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-3.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-4.jpg",
+            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-4.jpg"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-1.png",
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-2.png",
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-3.png",
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-4.png",
+            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-4.png"
+        ]
+    }
+}

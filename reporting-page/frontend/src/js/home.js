@@ -1,13 +1,15 @@
 import {PieChart} from './piechart.js';
 import {getLocalization} from './localize.js';
 import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
-import medal from '../assets/images/img_medal1.png';
 import {retrieveTheme} from './personalize.js';
 import {scanTest} from './database.js';
+import {LogError as logError} from '../../wailsjs/go/main/Tray.js';
+import {openIssuePage} from './issue.js';
+import data from '../databases/database.en-GB.json' assert { type: 'json' };
 
 /** Load the content of the Home page */
 export function openHomePage() {
-  document.onload = retrieveTheme();
+  retrieveTheme();
   closeNavigation(document.body.offsetWidth);
   markSelectedNavigationItem('home-button');
   sessionStorage.setItem('savedPage', 1);
@@ -17,25 +19,24 @@ export function openHomePage() {
     <div class="container-home"> 
       <div class="data-segment">
         <div class="data-segment-header">
-          <p class="piechart-header">Risk level distribution</p>
+          <p class="lang-piechart-header"></p>
         </div>
         <div class="pie-chart-container">
-          <canvas id="pie-chart"></canvas>
+          <canvas class="pie-chart" id="pie-chart-home"></canvas>
         </div>
       </div>
       <div class="data-segment">
         <div class="data-segment-header">
-          <p class="choose-issue-description">Select an issue</p>
+          <p class="lang-choose-issue-description"></p>
         </div>
-        <a class="issue-button suggested-issue"></a>
-        <a class="issue-button quick-fix">Quick Fix</a>
-        <a class="issue-button scan-now">Scan Now</a>
+        <a id="suggested-issue" class="issue-button lang-suggested-issue"></a>
+        <a id="scan-now" class="issue-button lang-scan-now"></a>
       </div>
     </div>
     <div class="container-home"> 
       <div class="data-segment">
         <div class="data-segment-header">
-          <p class="title-medals"></p>
+          <p class="lang-title-medals"></p>
         </div>
         <div class="medals">
           <div class="medal-layout">
@@ -59,52 +60,78 @@ export function openHomePage() {
   </div>
   `;
 
+  const medal = 'frontend/src/assets/images/img_medal1.png';
   document.getElementById('medal').src = medal;
   document.getElementById('medal2').src = medal;
   document.getElementById('medal3').src = medal;
   document.getElementById('medal4').src = medal;
 
   const rc = JSON.parse(sessionStorage.getItem('RiskCounters'));
-  new PieChart('pie-chart', rc, 'Total');
+  new PieChart('pie-chart-home', rc, 'Total');
 
   // Localize the static content of the home page
   const staticHomePageContent = [
-    'piechart-header',
-    'suggested-issue',
-    'quick-fix',
-    'scan-now',
-    'title-medals',
-    'security-status',
-    'high-risk-issues',
-    'medium-risk-issues',
-    'low-risk-issues',
-    'info-risk-issues',
-    'safe-issues',
-    'choose-issue-description',
+    'lang-piechart-header',
+    'lang-suggested-issue',
+    'lang-scan-now',
+    'lang-title-medals',
+    'lang-choose-issue-description',
   ];
   const localizationIds = [
     'Dashboard.RiskLevelDistribution',
     'Dashboard.SuggestedIssue',
-    'Dashboard.QuickFix',
     'Dashboard.ScanNow',
     'Dashboard.Medals',
-    'Dashboard.SecurityStatus',
-    'Dashboard.HighRisk',
-    'Dashboard.MediumRisk',
-    'Dashboard.LowRisk',
-    'Dashboard.InfoRisk',
-    'Dashboard.Safe',
     'Dashboard.ChooseIssueDescription',
   ];
   for (let i = 0; i < staticHomePageContent.length; i++) {
     getLocalization(localizationIds[i], staticHomePageContent[i]);
   }
 
-  document.getElementsByClassName('scan-now')[0].addEventListener('click', () => scanTest());
+  document.getElementById('scan-now').addEventListener('click', () => scanTest(true));
+  document.getElementById('suggested-issue').addEventListener('click', () => suggestedIssue(''));
 }
 
-document.getElementById('logo-button').addEventListener('click', () => openHomePage());
-document.getElementById('home-button').addEventListener('click', () => openHomePage());
+/** Opens the issue page of the issue with highest risk level
+ *
+ * @param {string} type Type of issue to open the issue page of (e.g. 'Security', 'Privacy', and '' for all types)
+*/
+export function suggestedIssue(type) {
+  // Get the issues from the database
+  const issues = JSON.parse(sessionStorage.getItem('DataBaseData'));
+
+  // Skip informative issues
+  let issueIndex = 0;
+  let maxSeverityIssue = issues[issueIndex];
+  while (maxSeverityIssue.severity === 4) {
+    issueIndex++;
+    maxSeverityIssue = issues[issueIndex];
+  }
+
+  // Find the issue with the highest severity
+  for (let i = 0; i < issues.length; i++) {
+    if (maxSeverityIssue.severity < issues[i].severity && issues[i].severity !== 4) {
+      if (type == '' || data[issues[i].jsonkey].Type === type) {
+        maxSeverityIssue = issues[i];
+      }
+    }
+  }
+
+  // Open the issue page of the issue with the highest severity
+  openIssuePage(maxSeverityIssue.jsonkey, maxSeverityIssue.severity);
+  document.getElementById('scan-now').addEventListener('click', () => scanTest(true));
+}
+
+
+if (typeof document !== 'undefined') {
+  try {
+    document.getElementById('logo-button').addEventListener('click', () => openHomePage());
+    document.getElementById('home-button').addEventListener('click', () => openHomePage());
+  } catch (error) {
+    /* istanbul ignore next */
+    logError('Error in security-dashboard.js: ' + error);
+  }
+}
 
 
 window.onload = function() {

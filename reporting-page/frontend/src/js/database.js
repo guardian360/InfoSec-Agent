@@ -1,5 +1,5 @@
 import {ScanNow as scanNowGo, LogError as logError} from '../../wailsjs/go/main/Tray.js';
-import {GetDataBaseData as getDataBaseData} from '../../wailsjs/go/main/DataBase.js';
+import {GetData as getDataBaseData} from '../../wailsjs/go/main/DataBase.js';
 import {openHomePage} from './home.js';
 import {
   WindowShow as windowShow,
@@ -7,18 +7,27 @@ import {
   LogPrint as logPrint} from '../../wailsjs/runtime/runtime.js';
 import * as rc from './risk-counters.js';
 import {updateRiskCounter} from './risk-counters.js';
-import data from '../database.json' assert { type: 'json' };
-/** Call ScanNow in backend and store result in sessionStorage */
-export async function scanTest() {
+import data from '../databases/database.en-GB.json' assert { type: 'json' };
+
+let isFirstScan = true;
+/**
+ * Initiates a scan and handles the result.
+ *
+ * @param {boolean} dialogPresent - Indicates whether a dialog is present during the scan.
+ */
+export async function scanTest(dialogPresent) {
   try {
     await new Promise((resolve, reject) => {
-      scanNowGo()
+      scanNowGo(dialogPresent)
         .then(async (scanResult) => {
           // Handle the scan result
           // For example, save it in session storage
           sessionStorage.setItem('ScanResult', JSON.stringify(scanResult));
           // Set severities in session storage
           await setAllSeverities(scanResult);
+          // set the detected windows version
+          const windowsVersion = scanResult.find((i) => i.issue_id === 18);
+          sessionStorage.setItem('WindowsVersion', windowsVersion.result[0]);
           // Resolve the promise with the scan result
           resolve(scanResult);
         })
@@ -32,7 +41,6 @@ export async function scanTest() {
 
     // Perform other actions after scanTest is complete
     windowShow();
-    windowMaximise();
     logPrint(sessionStorage.getItem('ScanResult'));
   } catch (err) {
     // Handle any errors that occurred during scanTest or subsequent actions
@@ -41,9 +49,9 @@ export async function scanTest() {
 }
 
 // Check if scanTest has already been called before
-if (sessionStorage.getItem('scanTest') === null) {
+if (sessionStorage.getItem('scanTest') === null || sessionStorage.getItem('scanTest') == undefined) {
   // Call scanTest() only if it hasn't been called before
-  scanTest().then((r) => {});
+  scanTest(false).then((r) => {});
 
   // Set the flag in sessionStorage to indicate that scanTest has been called
   sessionStorage.setItem('scanTest', 'called');
@@ -62,7 +70,11 @@ async function setAllSeverities(input) {
   await setSeverities(result, '');
   await setSeverities(result, 'Security');
   await setSeverities(result, 'Privacy');
-  openHomePage();
+  if (isFirstScan) {
+    openHomePage();
+    windowMaximise();
+    isFirstScan = false;
+  }
 }
 
 /** Sets the severities collected from the database in session storage
@@ -91,6 +103,7 @@ async function setSeverities(input, type) {
       sessionStorage.setItem(type + 'RiskCounters', JSON.stringify(riskCounter));
     }
   } catch (err) {
+    /* istanbul ignore next */
     logError(err);
   }
 }
