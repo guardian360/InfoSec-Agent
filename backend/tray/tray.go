@@ -291,6 +291,8 @@ func ChangeScanInterval(testInput ...string) {
 		var err error
 		res, err = zenity.Entry(localization.Localize(Language, "Dialogs.ScanInterval.Content"),
 			zenity.Title(localization.Localize(Language, "Dialogs.ScanInterval.Title")),
+			zenity.OKLabel(localization.Localize(Language, "Dialogs.OK")),
+			zenity.CancelLabel(localization.Localize(Language, "Dialogs.Cancel")),
 			zenity.EntryText(strconv.Itoa(scanInterval)),
 			zenity.DefaultItems("24"))
 		if err != nil {
@@ -305,7 +307,9 @@ func ChangeScanInterval(testInput ...string) {
 	if err != nil || interval <= 0 {
 		if !test {
 			err = zenity.Info(fmt.Sprintf(localization.Localize(Language, "Dialogs.ScanInterval.InvalidChangeContent"), scanInterval),
-				zenity.Title(localization.Localize(Language, "Dialogs.ScanInterval.InvalidChangeTitle")))
+				zenity.Title(localization.Localize(Language, "Dialogs.ScanInterval.InvalidChangeTitle")),
+				zenity.OKLabel(localization.Localize(Language, "Dialogs.OK")),
+				zenity.CancelLabel(localization.Localize(Language, "Dialogs.Cancel")))
 			if err != nil {
 				logger.Log.ErrorWithErr("Error creating invalid interval confirmation dialog:", err)
 			}
@@ -316,7 +320,9 @@ func ChangeScanInterval(testInput ...string) {
 	}
 	if !test {
 		err = zenity.Info(fmt.Sprintf(localization.Localize(Language, "Dialogs.ScanInterval.ChangedContent"), interval),
-			zenity.Title(localization.Localize(Language, "Dialogs.ScanInterval.ChangedTitle")))
+			zenity.Title(localization.Localize(Language, "Dialogs.ScanInterval.ChangedTitle")),
+			zenity.OKLabel(localization.Localize(Language, "Dialogs.OK")),
+			zenity.CancelLabel(localization.Localize(Language, "Dialogs.Cancel")))
 		if err != nil {
 			logger.Log.ErrorWithErr("Error creating interval confirmation dialog:", err)
 		}
@@ -410,7 +416,9 @@ func ChangeLanguage(testInput ...string) {
 		var err error
 		res, err = zenity.List(localization.Localize(Language, "Dialogs.Language.Content"), []string{"German", "British English", "American English",
 			"Spanish", "French", "Dutch", "Portuguese"}, zenity.Title(localization.Localize(Language, "Dialogs.Language.Title")),
-			zenity.DefaultItems("British English"))
+			zenity.DefaultItems("British English"),
+			zenity.OKLabel(localization.Localize(Language, "Dialogs.OK")),
+			zenity.CancelLabel(localization.Localize(Language, "Dialogs.Cancel")))
 		if err != nil {
 			logger.Log.ErrorWithErr("Error creating dialog:", err)
 			return
@@ -576,7 +584,9 @@ func periodicScan(scanInterval int) {
 //   - error: An error object that describes the error (if any) that occurred during the scan.
 func runScanWithDialog() (zenity.ProgressDialog, []checks.Check, error) {
 	dialog, err := zenity.Progress(
-		zenity.Title(localization.Localize(Language, "Dialogs.Scan.Title")))
+		zenity.Title(localization.Localize(Language, "Dialogs.Scan.Title")),
+		zenity.OKLabel(localization.Localize(Language, "Dialogs.OK")),
+		zenity.CancelLabel(localization.Localize(Language, "Dialogs.Cancel")))
 	if err != nil {
 		logger.Log.ErrorWithErr("Error creating dialog:", err)
 	}

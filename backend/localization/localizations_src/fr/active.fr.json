@@ -13,6 +13,8 @@
     "QuitTooltip": "Quitter l'application de la barre d'état exemple"
   },
   "Dialogs": {
+    "OK": "OK",
+    "Cancel": "Annuler",
     "ScanInterval": {
       "Title": "Changer l'intervalle de scan",
       "Content": "Entrez l'intervalle de scan (en heures) :",

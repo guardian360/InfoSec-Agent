@@ -13,6 +13,8 @@
     "QuitTooltip": "Salir de la aplicación de la bandeja de ejemplo"
   },
   "Dialogs": {
+    "OK": "OK",
+    "Cancel": "Cancelar",
     "ScanInterval": {
       "Title": "Cambiar intervalo de escaneo",
       "Content": "Ingrese el intervalo de escaneo (en horas):",

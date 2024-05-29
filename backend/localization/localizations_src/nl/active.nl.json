@@ -13,6 +13,8 @@
     "QuitTooltip": "Sluit voorbeeldbladtoepassing af"
   },
   "Dialogs": {
+    "OK": "OK",
+    "Cancel": "Annuleren",
     "ScanInterval": {
       "Title": "Scaninterval wijzigen",
       "Content": "Voer scaninterval in (in uren):",

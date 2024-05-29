@@ -13,6 +13,8 @@
     "QuitTooltip": "Beenden Sie die Beispiel-Tray-Anwendung"
   },
   "Dialogs": {
+    "OK": "OK",
+    "Cancel": "Abbrechen",
     "ScanInterval": {
       "Title": "Scanintervall ändern",
       "Content": "Scanintervall eingeben (in Stunden):",
