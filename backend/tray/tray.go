@@ -10,6 +10,7 @@ import (
 	"github.com/go-toast/toast"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/database"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/icon"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/localization"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/scan"
@@ -279,8 +280,9 @@ func BuildReportingPage() error {
 // Returns: None.
 func ChangeScanInterval(testInput ...string) {
 	var res string
+	test := len(testInput) > 0
 	// If testInput is provided, use it for testing
-	if len(testInput) > 0 {
+	if test {
 		res = testInput[0]
 	} else {
 		scanInterval := usersettings.LoadUserSettings().ScanInterval
@@ -299,20 +301,27 @@ func ChangeScanInterval(testInput ...string) {
 
 	// Parse the user input
 	interval, err := strconv.Atoi(res)
+	scanInterval := usersettings.LoadUserSettings().ScanInterval
 	if err != nil || interval <= 0 {
-		logger.Log.Printf("Invalid input. Using default interval of 24 hours.")
-		interval = 24
+		if !test {
+			err = zenity.Info("Invalid input. Using previous interval of "+strconv.Itoa(scanInterval)+" hours.",
+				zenity.Title("Invalid scan interval input"))
+			if err != nil {
+				logger.Log.ErrorWithErr("Error creating invalid interval confirmation dialog:", err)
+			}
+		}
+		interval = scanInterval
+		updateScanInterval(interval, test)
+		return
 	}
-
-	logger.Log.Printf("Scan interval changed to %d hours\n", interval)
-	err = usersettings.SaveUserSettings(usersettings.UserSettings{
-		Language:     usersettings.LoadUserSettings().Language,
-		ScanInterval: interval,
-		NextScan:     time.Now().Add(time.Duration(interval) * time.Hour),
-	})
-	if err != nil {
-		logger.Log.Warning("Scan interval setting not saved to file")
+	if !test {
+		err = zenity.Info("Scan interval changed to "+strconv.Itoa(interval)+" hours",
+			zenity.Title("Scan Interval Changed"))
+		if err != nil {
+			logger.Log.ErrorWithErr("Error creating interval confirmation dialog:", err)
+		}
 	}
+	updateScanInterval(interval, test)
 }
 
 // ScanNow initiates an immediate security scan, bypassing the scheduled intervals.
@@ -355,6 +364,21 @@ func ScanNow(dialogPresent bool) ([]checks.Check, error) {
 			return result, err
 		}
 	}
+	/*// Uncomment for points printing
+
+	//Temporary dummy game state. For future changed to the current saved game state.
+	//gsDummy := gamification.GameState{Points: 0, PointsHistory: nil, LighthouseState: 0}
+	gsDummy := gamification.GameState{Points: 0, PointsHistory: []int{}, LighthouseState: 0}
+
+	//Calculate points based on the scan results
+	gs, err := gamification.PointCalculation(gsDummy, result, "reporting-page/database.db")
+	if err != nil {
+		logger.Log.ErrorWithErr("Error calculating points:", err)
+		return result, err
+	}
+
+	fmt.Print(gs)*/
+
 	return result, nil
 }
 
@@ -485,7 +509,7 @@ func Popup(scanResult []checks.Check, path string) error {
 //
 // Returns: string: A notification message based on the severity of the issues found during the scan.
 func PopupMessage(scanResult []checks.Check, path string) string {
-	dbData, err := scan.GetDataBaseData(scanResult, path)
+	dbData, err := database.GetData(scanResult, path)
 	if err != nil {
 		logger.Log.ErrorWithErr("Error getting database data:", err)
 	}
@@ -574,4 +598,24 @@ func runScanWithDialog() (zenity.ProgressDialog, []checks.Check, error) {
 		return dialog, result, err
 	}
 	return dialog, result, err
+}
+
+// updateScanInterval updates the scan interval in the user settings file.
+//
+// Parameters:
+//   - interval int: The new scan interval in hours.
+//
+// Returns: None.
+func updateScanInterval(interval int, test bool) {
+	logger.Log.Printf("INFO: Scan interval changed to " + strconv.Itoa(interval) + " hours")
+	if !test {
+		err := usersettings.SaveUserSettings(usersettings.UserSettings{
+			Language:     usersettings.LoadUserSettings().Language,
+			ScanInterval: interval,
+			NextScan:     time.Now().Add(time.Duration(interval) * time.Hour),
+		})
+		if err != nil {
+			logger.Log.Warning("Scan interval setting not saved to file")
+		}
+	}
 }

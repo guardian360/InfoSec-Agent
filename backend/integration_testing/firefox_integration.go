@@ -33,21 +33,21 @@ func TestIntegrationExtensionsFirefoxNotInstalled(t *testing.T) {
 }
 
 func TestIntegrationHistoryFirefoxWithoutPhishing(t *testing.T) {
-	result := firefox.HistoryFirefox(browsers.RealProfileFinder{})
+	result := firefox.HistoryFirefox(browsers.RealProfileFinder{}, browsers.RealPhishingDomainGetter{})
 	require.NotEqual(t, -1, result.ResultID)
 	require.NotEmpty(t, result)
 	require.Equal(t, 0, result.ResultID)
 }
 
 func TestIntegrationHistoryFirefoxWithPhishing(t *testing.T) {
-	result := firefox.HistoryFirefox(browsers.RealProfileFinder{})
+	result := firefox.HistoryFirefox(browsers.RealProfileFinder{}, browsers.RealPhishingDomainGetter{})
 	require.NotEqual(t, -1, result.ResultID)
 	require.NotEmpty(t, result)
 	require.Equal(t, 1, result.ResultID)
 }
 
 func TestIntegrationHistoryFirefoxNotInstalled(t *testing.T) {
-	result := firefox.HistoryFirefox(browsers.RealProfileFinder{})
+	result := firefox.HistoryFirefox(browsers.RealProfileFinder{}, browsers.RealPhishingDomainGetter{})
 	require.Equal(t, -1, result.ResultID)
 	require.NotEmpty(t, result)
 }
@@ -63,4 +63,18 @@ func TestIntegrationSearchEngineFirefoxNotInstalled(t *testing.T) {
 	result := firefox.SearchEngineFirefox(browsers.RealProfileFinder{}, false, nil, nil)
 	require.Equal(t, -1, result.ResultID)
 	require.NotEmpty(t, result)
+}
+
+func TestIntegrationCookiesFirefoxWithCookies(t *testing.T) {
+	result := firefox.CookiesFirefox(browsers.RealProfileFinder{})
+	require.NotEqual(t, -1, result.ResultID)
+	require.NotEmpty(t, result)
+	require.Equal(t, 1, result.ResultID)
+}
+
+func TestIntegrationCookiesFirefoxWithoutCookies(t *testing.T) {
+	result := firefox.CookiesFirefox(browsers.RealProfileFinder{})
+	require.NotEqual(t, -1, result.ResultID)
+	require.Empty(t, result)
+	require.Equal(t, 0, result.ResultID)
 }

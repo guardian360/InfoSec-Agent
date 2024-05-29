@@ -1,11 +1,9 @@
-package scan_test
+package database_test
 
 import (
 	"database/sql"
 	"os"
 	"testing"
-
-	"github.com/ncruces/zenity"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/database"
@@ -28,38 +26,6 @@ func TestMain(m *testing.M) {
 	// Run tests
 	exitCode := m.Run()
 	os.Exit(exitCode)
-}
-
-// TestScan tests the Scan function to ensure it runs without errors.
-//
-// This test function calls the Scan function and asserts that it does not return an error.
-//
-// Parameters:
-//   - t *testing.T: The testing framework used for assertions.
-//
-// No return values.
-func TestScan(t *testing.T) {
-	// Display a progress dialog while the scan is running
-	dialog, err := zenity.Progress(
-		zenity.Title("Security/Privacy Scan"))
-	if err != nil {
-		logger.Log.ErrorWithErr("Error creating dialog:", err)
-	}
-	// Defer closing the dialog until the scan completes
-	defer func(dialog zenity.ProgressDialog) {
-		err = dialog.Close()
-		if err != nil {
-			logger.Log.ErrorWithErr("Error closing dialog:", err)
-		}
-	}(dialog)
-
-	// Execute the scan
-	_, err = scan.Scan(dialog)
-	require.NoError(t, err)
-
-	// Execute the scan without a dialog
-	_, err = scan.Scan(nil)
-	require.NoError(t, err)
 }
 
 // TestGetSeverity tests the GetSeverity function to ensure it returns the correct severity level for a given issue ID and result ID pair.
@@ -116,16 +82,16 @@ func TestGetJSONKey(t *testing.T) {
 	require.Equal(t, sql.ErrNoRows.Error(), err.Error())
 }
 
-// TestGetDataBaseData tests the GetDataBaseData function to ensure it returns the correct database data for a given list of checks.
+// TestGetData tests the GetData function to ensure it returns the correct database data for a given list of checks.
 //
-// This test function creates a list of check results and calls the GetDataBaseData function.
+// This test function creates a list of check results and calls the GetData function.
 // It then asserts that the returned database data matches the expected data for the given checks.
 //
 // Parameters:
 //   - t *testing.T: The testing framework used for assertions.
 //
 // No return values.
-func TestGetDataBaseData(t *testing.T) {
+func TestGetData(t *testing.T) {
 	scanResult := []checks.Check{
 		{
 			IssueID:  1,

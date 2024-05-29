@@ -1,4 +1,7 @@
-package scan
+// Package database provides functions for interacting with the database.
+//
+// Exported function(s): FillDatabase, GetSeverity, GetJSONKey, GetData
+package database
 
 import (
 	"database/sql"
@@ -12,16 +15,16 @@ import (
 	_ "modernc.org/sqlite"
 )
 
-// DataBaseData is a struct which is used to format extracted information from the database
+// Data is a struct which is used to format extracted information from the database
 //
 // CheckId is used as the identifier to connect the severity level and JSON key to
-type DataBaseData struct {
+type Data struct {
 	CheckID  int `json:"id"`
 	Severity int `json:"severity"`
 	JSONKey  int `json:"jsonkey"`
 }
 
-// FillDataBase clears the existing issues table and populates it with the results from a scan.
+// FillDatabase clears the existing issues table and populates it with the results from a scan.
 //
 // Parameters:
 //   - scanResults ([]checks.Check): A slice of Check objects obtained from a scan. Each Check object represents a security check that has been performed.
@@ -36,7 +39,7 @@ type DataBaseData struct {
 //  6. Closes the connection to the database.
 //
 // Note: This function logs any errors that occur during its execution and does not return any values.
-func FillDataBase(scanResults []checks.Check, path string) {
+func FillDatabase(scanResults []checks.Check, path string) {
 	logger.Log.Info("Opening database")
 	var err error
 	var db *sql.DB
@@ -188,7 +191,7 @@ func GetJSONKey(db *sql.DB, issueID int, resultID int) (int, error) {
 	return result, nil
 }
 
-// GetDataBaseData gets the severities and JSON keys for all checks passed
+// GetData gets the severities and JSON keys for all checks passed
 //
 // Parameters:
 //
@@ -197,7 +200,7 @@ func GetJSONKey(db *sql.DB, issueID int, resultID int) (int, error) {
 // path (string) - the path to the database
 //
 // Returns: list of all severities and JSON keys
-func GetDataBaseData(checks []checks.Check, path string) ([]DataBaseData, error) {
+func GetData(checks []checks.Check, path string) ([]Data, error) {
 	logger.Log.Info("Opening database")
 	// Open the database file. If it doesn't exist, it will be created.
 	db, err := sql.Open("sqlite", path)
@@ -207,7 +210,7 @@ func GetDataBaseData(checks []checks.Check, path string) ([]DataBaseData, error)
 	}
 	logger.Log.Info("Connected to database")
 
-	dbData := make([]DataBaseData, len(checks))
+	dbData := make([]Data, len(checks))
 	for i, s := range checks {
 		sev, err2 := GetSeverity(db, s.IssueID, s.ResultID)
 		if err2 != nil {
@@ -217,7 +220,7 @@ func GetDataBaseData(checks []checks.Check, path string) ([]DataBaseData, error)
 		if err3 != nil {
 			logger.Log.Printf("Error getting severity value for IssueID:%v and ResultID:%v", s.IssueID, s.ResultID)
 		}
-		dbData[i] = DataBaseData{s.IssueID, sev, jsn}
+		dbData[i] = Data{s.IssueID, sev, jsn}
 	}
 
 	logger.Log.Info("Closing database")

@@ -18,10 +18,11 @@ import (
 
 // HistoryFirefox inspects the user's browsing history in the Firefox browser for any visits to known phishing domains within the last week.
 //
-// Parameters:   profileFinder: An object that implements the FirefoxProfileFinder interface. It is used to find the Firefox profile directory.
+// Parameters:   - profileFinder: An object that implements the FirefoxProfileFinder interface. It is used to find the Firefox profile directory.
+//   - getter: An object that implements the PhishingDomainGetter interface. It is used to retrieve the list of known phishing domains.
 //
 // Returns: The phishing domains that the user has visited in the last week and when they visited it
-func HistoryFirefox(profileFinder browsers.FirefoxProfileFinder) checks.Check {
+func HistoryFirefox(profileFinder browsers.FirefoxProfileFinder, getter browsers.PhishingDomainGetter) checks.Check {
 	var output []string
 	ffDirectory, err := profileFinder.FirefoxFolder()
 	if err != nil {
@@ -57,7 +58,7 @@ func HistoryFirefox(profileFinder browsers.FirefoxProfileFinder) checks.Check {
 		return checks.NewCheckError(checks.HistoryFirefoxID, err)
 	}
 
-	output, err = ProcessQueryResults(rows)
+	output, err = ProcessQueryResults(rows, getter)
 	if err != nil {
 		return checks.NewCheckError(checks.HistoryFirefoxID, err)
 	}
@@ -147,15 +148,20 @@ type QueryResult struct {
 //
 // Parameters:
 //   - results []QueryResult: Represents the result set of a database query, which includes the URLs visited by the user in the past week and their respective visit dates.
+//   - getter browsers.PhishingDomainGetter: An object that implements the PhishingDomainGetter interface. It is used to retrieve the list of known phishing domains.
 //
 // Returns:
 //   - []string: A slice of strings, where each string represents a phishing domain that the user has visited in the past week, along with the time of the visit. If no visits to phishing domains are found, the slice will be empty.
 //   - error: An error object that encapsulates any error encountered during the processing of the query results. If no error occurred, this will be nil.
 //
 // This function iterates over each row in the provided result set. For each row, it extracts the URL and last visit date, and checks the URL against a list of known phishing domains. If a match is found, a string is generated that includes the domain name and the time of the visit, and this string is added to the results. If an error occurs during this process, it is returned as well.
-func ProcessQueryResults(results []QueryResult) ([]string, error) {
+func ProcessQueryResults(results []QueryResult, getter browsers.PhishingDomainGetter) ([]string, error) {
 	var output []string
-	phishingDomainList := browsers.GetPhishingDomains()
+	phishingDomainList, err := getter.GetPhishingDomains()
+	if err != nil {
+		logger.Log.ErrorWithErr("Error getting phishing domains: ", err)
+		return nil, err
+	}
 	re := regexp.MustCompile(`(?:https?://)?(?:[^@\n]+@)?(?:www\.)?([^:/\n?]+\.[^:/\n?]+)`)
 
 	for _, result := range results {
@@ -163,7 +169,7 @@ func ProcessQueryResults(results []QueryResult) ([]string, error) {
 
 		matches := re.FindStringSubmatch(result.URL)
 		for _, scamDomain := range phishingDomainList {
-			if len(matches) > 1 && matches[1] == scamDomain {
+			if len(matches) > 1 && matches[0] == scamDomain {
 				domain := matches[1]
 				output = append(output, domain+timeString)
 			}

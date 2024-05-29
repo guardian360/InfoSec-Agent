@@ -36,6 +36,9 @@ var testsValid = []func(t *testing.T){
 	i.TestIntegrationUACFullEnabled,
 	i.TestIntegrationScanNowSuccessful,
 	i.TestIntegrationScanSuccess,
+	i.TestIntegrationCookiesFirefoxWithoutCookies,
+	i.TestIntegrationCookiesChromiumWithoutCookies,
+	i.TestIntegrationRemoteRPCDisabled,
 }
 
 func TestMain(m *testing.M) {

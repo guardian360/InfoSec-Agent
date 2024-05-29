@@ -120,7 +120,7 @@ describe('Issue page', function() {
 
     // Act
     issue.updateSolutionStep(solutionText, solutionScreenshot,
-      currentIssue.Solution, currentIssue.Screenshots, stepCounter);
+      currentIssue, stepCounter);
 
     // Assert
     test.value(htmlDecode(solutionText.innerHTML)).isEqualTo('1. ' + currentIssue.Solution[0]);
@@ -233,7 +233,9 @@ describe('Issue page', function() {
     [23, 0],
     [27, 1],
     [31, 1],
-    [32, 0]];
+    [32, 0],
+    [35, 1],
+    [36, 1]];
   // Mock scan results
   const mockResult = [];
   issueResultIds.forEach((ir) => {
@@ -289,6 +291,9 @@ describe('Issue page', function() {
       '<tbody><tr><td style="width: 30%; word-break: break-all">SYSTEM</td>\n' +
       '        <td>CIS registry 1</td></tr><tr><td style="width: 30%; word-break: break-all">SOFTWARE</td>\n' +
       '        <td>CIS registry 2</td></tr></tbody>',
+      '<tbody><tr><td style="width: 30%; word-break: break-all">SYSTEM</td></tr><tr><td style="width: 30%;' +
+      ' word-break: break-all">SOFTWARE</td></tr><tr><td style="width: 30%; word-break: break-all">' +
+      'undefined</td></tr></tbody>',
     ];
 
     // Assert
@@ -307,6 +312,8 @@ describe('Issue page', function() {
     await testParseShowResult('271', expectedFindings[3]);
     await testParseShowResult('311', expectedFindings[0]);
     await testParseShowResult('320', expectedFindings[4]);
+    await testParseShowResult('351', expectedFindings[5]);
+    await testParseShowResult('361', expectedFindings[5]);
   });
 
   /** helper function for testing the correct structure of parseShowResult
@@ -368,6 +375,90 @@ describe('Issue page', function() {
 
     // Assert
     test.value(checked).isEqualTo(true);
+  });
+  it('getVersionScreenshot returns the right screenshot for the detected windows version', async function() {
+    // Arrange
+    const issue = await import('../src/js/issue.js');
+    let testIssue = data['11'];
+
+    // Act
+    // clear sessionstorage
+    sessionStorage.removeItem('WindowsVersion');
+    let result = issue.getVersionScreenshot(testIssue, 0);
+
+    // Assert
+    test.value(result).isEqualTo(testIssue.Screenshots[0]);
+
+    // Act
+    sessionStorage.setItem('WindowsVersion', '10');
+    result = issue.getVersionScreenshot(testIssue, 0);
+
+    // Assert
+    test.value(result).isEqualTo(testIssue.ScreenshotsWindows10[0]);
+
+    // Act
+    sessionStorage.setItem('WindowsVersion', '11');
+    result = issue.getVersionScreenshot(testIssue, 0);
+
+    // Assert
+    test.value(result).isEqualTo(testIssue.Screenshots[0]);
+
+    // Act
+    sessionStorage.setItem('WindowsVersion', '10');
+    testIssue = data['30'];
+    result = issue.getVersionScreenshot(testIssue, 0);
+
+    // Assert
+    test.value(result).isEqualTo(testIssue.Screenshots[0]);
+
+    // Act
+    testIssue = data['310'];
+    result = issue.getVersionScreenshot(testIssue, 0);
+
+    // Assert
+    test.value(result).isEqualTo('');
+  });
+  it('getVersionSolution returns the right solution for the detected windows version', async function() {
+    // Arrange
+    const issue = await import('../src/js/issue.js');
+    let testIssue = data['11'];
+
+    // Act
+    // clear sessionstorage
+    sessionStorage.removeItem('WindowsVersion');
+    let result = issue.getVersionSolution(testIssue, 0);
+
+    // Assert
+    test.value(result).isEqualTo(testIssue.Solution[0]);
+
+    // Act
+    sessionStorage.setItem('WindowsVersion', '10');
+    result = issue.getVersionSolution(testIssue, 0);
+
+    // Assert
+    test.value(result).isEqualTo(testIssue.SolutionWindows10[0]);
+
+    // Act
+    sessionStorage.setItem('WindowsVersion', '11');
+    result = issue.getVersionSolution(testIssue, 0);
+
+    // Assert
+    test.value(result).isEqualTo(testIssue.Solution[0]);
+
+    // Act
+    sessionStorage.setItem('WindowsVersion', '10');
+    testIssue = data['30'];
+    result = issue.getVersionSolution(testIssue, 0);
+
+    // Assert
+    test.value(result).isEqualTo(testIssue.Solution[0]);
+
+    // Act
+    testIssue = data['310'];
+    result = issue.getVersionSolution(testIssue, 0);
+
+    // Assert
+    test.value(result).isEqualTo('');
   });
 });
 

@@ -56,7 +56,9 @@ var googleChromeChecks = []func() checks.Check{
 	func() checks.Check {
 		return chromium.ExtensionsChromium("Chrome", defaultDirGetter, chromium.RealExtensionIDGetter{}, chromium.ChromeExtensionNameGetter{})
 	},
-	func() checks.Check { return chromium.HistoryChromium(browserChrome) },
+	func() checks.Check {
+		return chromium.HistoryChromium(browserChrome, browsers.RealDefaultDirGetter{}, chromium.RealCopyDBGetter{}, chromium.RealQueryDatabaseGetter{}, chromium.RealProcessQueryResultsGetter{}, browsers.RealPhishingDomainGetter{})
+	},
 	func() checks.Check {
 		return chromium.SearchEngineChromium(browserChrome, false, nil, defaultDirGetter)
 	},
@@ -68,7 +70,9 @@ var microsoftEdgeChecks = []func() checks.Check{
 	func() checks.Check {
 		return chromium.ExtensionsChromium(browserEdge, defaultDirGetter, chromium.RealExtensionIDGetter{}, chromium.ChromeExtensionNameGetter{})
 	},
-	func() checks.Check { return chromium.HistoryChromium(browserEdge) },
+	func() checks.Check {
+		return chromium.HistoryChromium(browserEdge, browsers.RealDefaultDirGetter{}, chromium.RealCopyDBGetter{}, chromium.RealQueryDatabaseGetter{}, chromium.RealProcessQueryResultsGetter{}, browsers.RealPhishingDomainGetter{})
+	},
 	func() checks.Check {
 		return chromium.SearchEngineChromium(browserEdge, false, nil, defaultDirGetter)
 	},
@@ -79,7 +83,7 @@ var mozillaFirefoxChecks = []func() checks.Check{
 	func() checks.Check { return firefox.CookiesFirefox(profileFinder) },
 	func() checks.Check { c, _ := firefox.ExtensionFirefox(profileFinder); return c },
 	func() checks.Check { _, c := firefox.ExtensionFirefox(profileFinder); return c },
-	func() checks.Check { return firefox.HistoryFirefox(profileFinder) },
+	func() checks.Check { return firefox.HistoryFirefox(profileFinder, browsers.RealPhishingDomainGetter{}) },
 	func() checks.Check { return firefox.SearchEngineFirefox(profileFinder, false, nil, nil) },
 }
 

@@ -104,7 +104,6 @@ export function openPrivacyDashboardPage() {
           <p class="lang-choose-issue-description"></p>
         </div>
         <a id="suggested-issue" class="issue-button lang-suggested-issue"><p></p></a>
-        <a class="issue-button lang-quick-fix"><p></p></a>
         <a id="scan-now" class="issue-button lang-scan-now"></a>
       </div>
       <div class="dashboard-segment risk-areas">
@@ -150,7 +149,6 @@ export function openPrivacyDashboardPage() {
     'lang-risk-level-counters',
     'lang-risk-level-distribution',
     'lang-suggested-issue',
-    'lang-quick-fix',
     'lang-scan-now',
     'lang-privacy-risk-areas',
     'lang-permissions',
@@ -172,7 +170,6 @@ export function openPrivacyDashboardPage() {
     'Dashboard.RiskLevelCounters',
     'Dashboard.RiskLevelDistribution',
     'Dashboard.SuggestedIssue',
-    'Dashboard.QuickFix',
     'Dashboard.ScanNow',
     'Dashboard.PrivacyRiskAreas',
     'Dashboard.Permissions',
