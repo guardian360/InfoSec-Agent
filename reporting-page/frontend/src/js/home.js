@@ -5,7 +5,9 @@ import {retrieveTheme} from './personalize.js';
 import {scanTest} from './database.js';
 import {LogError as logError} from '../../wailsjs/go/main/Tray.js';
 import {openIssuePage} from './issue.js';
+import {saveProgress, shareProgress, selectSocialMedia} from './share.js';
 import data from '../databases/database.en-GB.json' assert { type: 'json' };
+import { showModal } from './settings.js';
 
 /** Load the content of the Home page */
 export function openHomePage() {
@@ -32,6 +34,7 @@ export function openHomePage() {
         <a id="suggested-issue" class="issue-button lang-suggested-issue"></a>
         <a class="issue-button lang-quick-fix"></a>
         <a id="scan-now" class="issue-button lang-scan-now"></a>
+        <a id="share-progress" class="issue-button">Share progress</a>
       </div>
     </div>
     <div class="container-home"> 
@@ -56,6 +59,25 @@ export function openHomePage() {
             <p class="medal-name"> Medal 4</p>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+  <div id="share-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span id="close-share-modal" class="close">&times;</span>
+        <p>Share your privacy and security improvement progress</p>
+      </div>
+      <div id="share-node"><img class="api-key-image" src="https://placehold.co/600x315" alt="Step 1 Image"></div>
+      <div id="share-buttons">
+        <a id="share-save-button" class="modal-button share-button">Save</a>
+        <a class="share-button-break">|</a>
+        <a id="select-facebook" class="select-button selected">Facebook</a>
+        <a id="select-x" class="select-button">X</a>
+        <a id="select-linkedin" class="select-button">LinkedIn</a>
+        <a id="select-instagram" class="select-button">Instagram</a>
+        <a class="share-button-break">|</a>
+        <a id="share-button" class="modal-button share-button">Share</a>
       </div>
     </div>
   </div>
@@ -93,6 +115,17 @@ export function openHomePage() {
 
   document.getElementById('scan-now').addEventListener('click', () => scanTest(true));
   document.getElementById('suggested-issue').addEventListener('click', () => suggestedIssue(''));
+  document.getElementById('share-progress').addEventListener('click', () => showModal('share-modal'));
+  document.getElementById('share-save-button').addEventListener('click', 
+    () => saveProgress(document.getElementById('share-node')));
+  document.getElementById('share-button').addEventListener('click', 
+    () => shareProgress(document.getElementById('share-node')));
+
+
+  document.getElementById('select-facebook').addEventListener('click', () => selectSocialMedia('facebook'));
+  document.getElementById('select-x').addEventListener('click', () => selectSocialMedia('x'));
+  document.getElementById('select-linkedin').addEventListener('click', () => selectSocialMedia('linkedin'));
+  document.getElementById('select-instagram').addEventListener('click', () => selectSocialMedia('instagram'));
 }
 
 /** Opens the issue page of the issue with highest risk level
@@ -154,3 +187,5 @@ window.onload = function() {
     favicon.href = savedIcon;
   }
 };
+
+

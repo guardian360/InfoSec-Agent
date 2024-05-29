@@ -5,8 +5,8 @@ go 1.22.0
 require (
 	github.com/InfoSec-Agent/InfoSec-Agent v0.3.2
 	github.com/rodolfoag/gow32 v0.0.0-20230512144032-1e896a3c51aa
-	github.com/wailsapp/wails/v2 v2.8.1
-	golang.org/x/sys v0.19.0
+	github.com/wailsapp/wails/v2 v2.8.2
+	golang.org/x/sys v0.20.0
 )
 
 require (
@@ -64,11 +64,11 @@ require (
 	go.opentelemetry.io/otel/trace v1.24.0 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
 	go.uber.org/zap v1.27.0 // indirect
-	golang.org/x/crypto v0.22.0 // indirect
+	golang.org/x/crypto v0.23.0 // indirect
 	golang.org/x/exp v0.0.0-20240416160154-fe59bbe5cc7f // indirect
 	golang.org/x/image v0.15.0 // indirect
-	golang.org/x/net v0.24.0 // indirect
-	golang.org/x/text v0.14.0 // indirect
+	golang.org/x/net v0.25.0 // indirect
+	golang.org/x/text v0.15.0 // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
 	modernc.org/gc/v3 v3.0.0-20240304020402-f0dba7c97c2b // indirect
 	modernc.org/libc v1.49.0 // indirect
