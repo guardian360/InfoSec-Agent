@@ -3,7 +3,6 @@ package firefox_test
 import (
 	"errors"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/browsers"
-	"os"
 	"testing"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
@@ -15,14 +14,6 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/browsers/firefox"
 	"github.com/stretchr/testify/require"
 )
-
-func TestMain(m *testing.M) {
-	logger.SetupTests()
-	// Run tests
-	exitCode := m.Run()
-
-	os.Exit(exitCode)
-}
 
 var Profilefinder browsers.FirefoxProfileFinder
 

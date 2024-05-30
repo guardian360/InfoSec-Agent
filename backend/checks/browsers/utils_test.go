@@ -1,8 +1,14 @@
 package browsers_test
 
 import (
+	"database/sql"
 	"errors"
+	"fmt"
+	"github.com/DATA-DOG/go-sqlmock"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
+	"github.com/stretchr/testify/assert"
 	"os"
+	"strings"
 	"testing"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/browsers"
@@ -99,7 +105,8 @@ func TestPhishingDomainsReturnsResults(t *testing.T) {
 func TestCopyFileSuccess(t *testing.T) {
 	mockSource := &mocking.FileMock{IsOpen: true, Buffer: []byte{96, 96, 97, 97, 98, 98, 99, 99, 100, 100}, Bytes: 10, Err: nil}
 	mockDestination := &mocking.FileMock{IsOpen: true, Buffer: []byte{96, 96, 97, 97, 98, 98, 99, 99, 100, 100}, Bytes: 10, Err: nil}
-	err := browsers.CopyFile("", "", mockSource, mockDestination)
+	getter := browsers.RealCopyFileGetter{}
+	err := getter.CopyFile("", "", mockSource, mockDestination)
 	require.NoError(t, err)
 }
 
@@ -115,7 +122,8 @@ func TestCopyFileSuccess(t *testing.T) {
 func TestCopyFileFailNonexistentSource(t *testing.T) {
 	mockSource := &mocking.FileMock{IsOpen: true, Bytes: 10, Err: os.ErrNotExist}
 	mockDestination := &mocking.FileMock{IsOpen: true, Bytes: 10, Err: nil}
-	err := browsers.CopyFile("", "", mockSource, mockDestination)
+	getter := browsers.RealCopyFileGetter{}
+	err := getter.CopyFile("", "", mockSource, mockDestination)
 	require.Error(t, err)
 }
 
@@ -131,7 +139,8 @@ func TestCopyFileFailNonexistentSource(t *testing.T) {
 func TestCopyFileFailNonexistentDestination(t *testing.T) {
 	mockSource := &mocking.FileMock{IsOpen: true, Bytes: 10, Err: nil}
 	mockDestination := &mocking.FileMock{IsOpen: true, Bytes: 10, Err: os.ErrNotExist}
-	err := browsers.CopyFile("", "", mockSource, mockDestination)
+	getter := browsers.RealCopyFileGetter{}
+	err := getter.CopyFile("", "", mockSource, mockDestination)
 	require.Error(t, err)
 }
 
@@ -188,4 +197,141 @@ func TestGetDefaultDir(t *testing.T) {
 			}
 		})
 	}
+}
+
+func createTestDatabase(t *testing.T, testData string) string {
+	// Create a temporary file for the SQLite database
+	tempFile, err := os.CreateTemp("", "testdb-*.sqlite")
+	if err != nil {
+		t.Fatalf("Failed to create temp file: %v", err)
+	}
+	defer tempFile.Close()
+
+	// Open the database connection
+	db, err := sql.Open("sqlite", tempFile.Name())
+	if err != nil {
+		t.Fatalf("Failed to open database: %v", err)
+	}
+	defer db.Close()
+
+	pingErr := db.Ping()
+	if pingErr != nil {
+		t.Fatalf("Failed to ping database: %v", pingErr)
+	}
+
+	// Execute the test data SQL statements
+	_, err = db.Exec(testData)
+	if err != nil {
+		t.Fatalf("Failed to execute test data SQL: %v", err)
+	}
+
+	return tempFile.Name()
+}
+
+func TestQueryCookieDatabase(t *testing.T) {
+	// Setup test database
+	testData := `
+CREATE TABLE cookies (name TEXT, host_key TEXT);
+INSERT INTO cookies (name, host_key) VALUES ('_ga', 'example.com');
+INSERT INTO cookies (name, host_key) VALUES ('_utm', 'example.com');
+INSERT INTO cookies (name, host_key) VALUES ('sessionid', 'example.com');
+`
+	dbPath := createTestDatabase(t, testData)
+	dbPathNothing := createTestDatabase(t, "CREATE TABLE cookies (name TEXT, host_key TEXT);")
+	defer os.Remove(dbPath)
+
+	tests := []struct {
+		name         string
+		checkID      int
+		browser      string
+		databasePath string
+		queryParams  []string
+		tableName    string
+		expected     checks.Check
+	}{
+		{
+			name:         "Tracking cookies found",
+			checkID:      1,
+			browser:      "chrome",
+			databasePath: dbPath,
+			queryParams:  []string{"name", "host_key"},
+			tableName:    "cookies",
+			expected:     checks.NewCheckResult(1, 1, "_ga", "example.com", "_utm", "example.com"),
+		},
+		{
+			name:         "No tracking cookies found",
+			checkID:      2,
+			browser:      "chrome",
+			databasePath: dbPathNothing,
+			queryParams:  []string{"name", "host_key"},
+			tableName:    "cookies",
+			expected:     checks.NewCheckResult(2, 0),
+		},
+	}
+	getter := browsers.RealQueryCookieDatabaseGetter{}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			result := getter.QueryCookieDatabase(tt.checkID, tt.browser, tt.databasePath, tt.queryParams, tt.tableName, browsers.RealCopyFileGetter{})
+			assert.Equal(t, tt.expected, result)
+		})
+	}
+}
+
+type MockCopyFileGetter struct {
+	CopyFileFunc func(src, dst string, mockSource mocking.File, mockDestination mocking.File) error
+}
+
+func (m MockCopyFileGetter) CopyFile(src, dst string, mockSource mocking.File, mockDest mocking.File) error {
+	return m.CopyFileFunc(src, dst, mockSource, mockDest)
+}
+
+func TestQueryCookieDatabase_CopyError(t *testing.T) {
+	mockGetter := MockCopyFileGetter{
+		CopyFileFunc: func(_, _ string, _ mocking.File, _ mocking.File) error {
+			return errors.New("mock error")
+		},
+	}
+	getter := browsers.RealQueryCookieDatabaseGetter{}
+	// Call the QueryCookieDatabase function
+	result := getter.QueryCookieDatabase(1, "chrome", "/path/to/database", []string{"name", "host_key"}, "cookies", mockGetter)
+
+	// Assert there was an error
+	assert.Error(t, result.Error)
+}
+
+func TestQueryCookieDatabaseRowsError(t *testing.T) {
+	mockGetter := MockCopyFileGetter{
+		CopyFileFunc: func(_, _ string, _ mocking.File, _ mocking.File) error {
+			return nil
+		},
+	}
+	db, mock, err := sqlmock.New()
+	if err != nil {
+		t.Fatalf("an error '%s' was not expected when opening a stub database connection", err)
+	}
+	defer db.Close()
+
+	checkID := 1
+	browser := "test_browser"
+	databasePath := "test_db_path"
+	queryParams := []string{"name", "host"}
+	tableName := "cookies"
+
+	// Simulate error during query execution
+	mock.ExpectQuery(fmt.Sprintf("SELECT %s FROM %s", strings.Join(queryParams, ", "), tableName)).
+		WillReturnError(errors.New("query execution error"))
+
+	getter := browsers.RealQueryCookieDatabaseGetter{}
+	check := getter.QueryCookieDatabase(checkID, browser, databasePath, queryParams, tableName, mockGetter)
+	require.Error(t, check.Error)
+
+	// Simulate error after retrieving rows
+	rows := sqlmock.NewRows([]string{"name", "host"}).AddRow("cookie_name", "cookie_host")
+	mock.ExpectQuery(fmt.Sprintf("SELECT %s FROM %s", strings.Join(queryParams, ", "), tableName)).
+		WillReturnRows(rows)
+	//
+
+	check = getter.QueryCookieDatabase(checkID, browser, databasePath, queryParams, tableName, mockGetter)
+	require.Error(t, check.Error)
 }

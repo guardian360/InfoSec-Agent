@@ -41,17 +41,15 @@ func HistoryFirefox(profileFinder browsers.FirefoxProfileFinder, getter browsers
 		}
 	}(tempHistoryDbff)
 
+	copyGetter := browsers.RealCopyFileGetter{}
 	// Copy the database to a temporary location
-	copyError := browsers.CopyFile(ffDirectory[0]+"\\places.sqlite", tempHistoryDbff, nil, nil)
+	copyError := copyGetter.CopyFile(ffDirectory[0]+"\\places.sqlite", tempHistoryDbff, nil, nil)
 	if copyError != nil {
 		logger.Log.ErrorWithErr("Unable to make a copy of the file: ", copyError)
 		return checks.NewCheckError(checks.HistoryFirefoxID, copyError)
 	}
 
-	db, err := sql.Open("sqlite", tempHistoryDbff)
-	if err != nil {
-		return checks.NewCheckError(checks.HistoryFirefoxID, err)
-	}
+	db, _ := sql.Open("sqlite", tempHistoryDbff)
 	defer CloseDatabase(db)
 
 	rows, err := QueryDatabase(db)

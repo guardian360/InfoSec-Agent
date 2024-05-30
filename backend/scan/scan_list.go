@@ -18,6 +18,8 @@ import (
 var executor = &mocking.RealCommandExecutor{}
 var profileFinder = browsers.RealProfileFinder{}
 var defaultDirGetter = browsers.RealDefaultDirGetter{}
+var copyFileGetter = browsers.RealCopyFileGetter{}
+var queryDBGetter = browsers.RealQueryCookieDatabaseGetter{}
 
 const browserChrome = "Chrome"
 const browserEdge = "Edge"
@@ -52,7 +54,9 @@ var ChecksList = func() [][]func() checks.Check {
 
 // googleChromeChecks contains all security/privacy checks that are specific to the Google Chrome browser.
 var googleChromeChecks = []func() checks.Check{
-	func() checks.Check { return chromium.CookiesChromium(browserChrome, defaultDirGetter) },
+	func() checks.Check {
+		return chromium.CookiesChromium(browserChrome, defaultDirGetter, copyFileGetter, queryDBGetter)
+	},
 	func() checks.Check {
 		return chromium.ExtensionsChromium("Chrome", defaultDirGetter, chromium.RealExtensionIDGetter{}, chromium.ChromeExtensionNameGetter{})
 	},
@@ -66,7 +70,9 @@ var googleChromeChecks = []func() checks.Check{
 
 // microsoftEdgeChecks contains all security/privacy checks that are specific to the Microsoft Edge browser.
 var microsoftEdgeChecks = []func() checks.Check{
-	func() checks.Check { return chromium.CookiesChromium(browserEdge, defaultDirGetter) },
+	func() checks.Check {
+		return chromium.CookiesChromium(browserEdge, defaultDirGetter, copyFileGetter, queryDBGetter)
+	},
 	func() checks.Check {
 		return chromium.ExtensionsChromium(browserEdge, defaultDirGetter, chromium.RealExtensionIDGetter{}, chromium.ChromeExtensionNameGetter{})
 	},
@@ -80,7 +86,7 @@ var microsoftEdgeChecks = []func() checks.Check{
 
 // mozillaFirefoxChecks contains all security/privacy checks that are specific to the Mozilla Firefox browser.
 var mozillaFirefoxChecks = []func() checks.Check{
-	func() checks.Check { return firefox.CookiesFirefox(profileFinder) },
+	func() checks.Check { return firefox.CookiesFirefox(profileFinder, copyFileGetter, queryDBGetter) },
 	func() checks.Check { c, _ := firefox.ExtensionFirefox(profileFinder); return c },
 	func() checks.Check { _, c := firefox.ExtensionFirefox(profileFinder); return c },
 	func() checks.Check { return firefox.HistoryFirefox(profileFinder, browsers.RealPhishingDomainGetter{}) },
