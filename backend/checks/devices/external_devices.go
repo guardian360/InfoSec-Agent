@@ -22,11 +22,8 @@ func ExternalDevices(executorClass mocking.CommandExecutor) checks.Check {
 	// This list can easily be extended; we refer to the Microsoft documentation for the Get-PnpDevice command
 	// (for example: Biometric, Printer, etc.)
 	classesToCheck := []string{"Mouse", "Camera", "AudioEndpoint", "Keyboard", "Biometric"}
-	output, err := CheckDeviceClasses(classesToCheck, executorClass)
+	output := CheckDeviceClasses(classesToCheck, executorClass)
 
-	if err != nil {
-		return checks.NewCheckErrorf(checks.ExternalDevicesID, "error checking device", err)
-	}
 	if output == nil {
 		return checks.NewCheckResult(checks.ExternalDevicesID, 0)
 	}
@@ -44,7 +41,7 @@ func ExternalDevices(executorClass mocking.CommandExecutor) checks.Check {
 //   - (error): An error object that captures any error that occurred during the command execution. If no devices are found, an error is returned.
 //
 // The main purpose of this function is to identify devices of a specific class that are connected to the system. It runs the Get-PnpDevice command with the specified device class and parses the output to extract the device names. If no devices are found, the function returns an error.
-func CheckDeviceClasses(deviceClasses []string, executorClass mocking.CommandExecutor) ([]string, error) {
+func CheckDeviceClasses(deviceClasses []string, executorClass mocking.CommandExecutor) []string {
 	// Convert the device classes to a string
 	classesString := strings.Join(deviceClasses, ",")
 	// Run the Get-PnpDevice command with the given class
@@ -53,13 +50,13 @@ func CheckDeviceClasses(deviceClasses []string, executorClass mocking.CommandExe
 		"| Where-Object -Property Status -eq 'OK' | Select-Object FriendlyName")
 
 	if err != nil {
-		return nil, err
+		return nil
 	}
 
 	// Get all devices from the output
 	devices := strings.Split(string(output), "\r\n")
 	if len(devices) <= 1 {
-		return nil, nil
+		return nil
 	}
 	devices = devices[3 : len(devices)-3]
 
@@ -68,5 +65,5 @@ func CheckDeviceClasses(deviceClasses []string, executorClass mocking.CommandExe
 		devices[i] = strings.TrimSpace(device)
 	}
 
-	return devices, nil
+	return devices
 }
