@@ -150,6 +150,18 @@ func TestIntegrationRemoteDesktopDisabled(t *testing.T) {
 	require.Equal(t, 0, result.ResultID)
 }
 
+func TestIntegrationRemoteRPCEnabled(t *testing.T) {
+	result := windows.AllowRemoteRPC(mocking.LocalMachine)
+	require.NotEmpty(t, result)
+	require.Equal(t, 1, result.ResultID)
+}
+
+func TestIntegrationRemoteRPCDisabled(t *testing.T) {
+	result := windows.AllowRemoteRPC(mocking.LocalMachine)
+	require.NotEmpty(t, result)
+	require.Equal(t, 0, result.ResultID)
+}
+
 func TestIntegrationSecureBootEnabled(t *testing.T) {
 	result := windows.SecureBoot(mocking.LocalMachine)
 	require.NotEmpty(t, result)

@@ -144,7 +144,8 @@ func main() {
 		Title:       "InfoSec Agent Reporting Page",
 		Width:       1024,
 		Height:      768,
-		StartHidden: true,
+		StartHidden: false,
+		AlwaysOnTop: false,
 		AssetServer: &assetserver.Options{
 			Assets:  assets,
 			Handler: NewFileLoader(),

@@ -12,6 +12,35 @@
     "QuitTitle": "Sair",
     "QuitTooltip": "Sair do aplicativo de exemplo da bandeja"
   },
+  "Dialogs": {
+    "OK": "OK",
+    "Cancel": "Cancelar",
+    "ScanInterval": {
+      "Title": "Alterar intervalo de escaneamento",
+      "Content": "Insira o intervalo de escaneamento (em horas):",
+      "ChangedTitle": "Intervalo de escaneamento alterado",
+      "ChangedContent": "Intervalo de escaneamento alterado para %d horas.",
+      "InvalidChangeTitle": "Entrada de intervalo de escaneamento inválida",
+      "InvalidChangeContent": "Entrada inválida. Usando o intervalo anterior de %d horas."
+    },
+    "Scan": {
+      "Title": "Escaneamento de Segurança/Privacidade",
+      "Content": "Executando verificação %d de %d"
+    },
+    "Language": {
+      "Title": "Mudar idioma",
+      "Content": "Escolha um idioma"
+    },
+    "Popup": {
+      "Title": "Escaneamento concluído",
+      "OneHigh": "O escaneamento de privacidade e segurança foi concluído. Você tem 1 problema de alto risco. Abra a página de relatórios para ver mais informações.",
+      "MultipleHigh": "O escaneamento de privacidade e segurança foi concluído. Você tem %d problemas de alto risco. Abra a página de relatórios para ver mais informações.",
+      "OneMedium": "O escaneamento de privacidade e segurança foi concluído. Você tem 1 problema de risco médio. Abra a página de relatórios para ver mais informações.",
+      "MultipleMedium": "O escaneamento de privacidade e segurança foi concluído. Você tem %d problemas de risco médio. Abra a página de relatórios para ver mais informações.",
+      "Default": "O escaneamento de privacidade e segurança foi concluído. Abra a página de relatórios para ver os resultados.",
+      "Button": "Abrir página de relatórios"
+    }
+  },
   "Navigation": 
   {
     "Home": "Página inicial",
@@ -28,7 +57,6 @@
   {
     "Issues": "Problemas",
     "SuggestedIssue": "Problema Sugerido",
-    "QuickFix": "Solução Rápida",
     "ScanNow": "Escanear Agora",
     "Medals": "Medalhas",
     "SecurityStatus": "Status de Segurança",
@@ -65,6 +93,7 @@
   "Issues":
   {
     "IssueTable": "Tabela de problemas",
+    "Findings": "Resultados",
     "AcceptableFindings": "Resultados aceitáveis",
     "Name": "Nome",
     "Type": "Tipo",
@@ -73,7 +102,16 @@
     "Solution": "Solução",
     "Previous": "&laquo; Etapa anterior",
     "Next": "Próxima etapa &raquo;",
-    "Back": "Voltar para a visão geral dos problemas"
+    "Back": "Voltar para a visão geral dos problemas",
+    "Port": "Os seguintes processos estão atualmente em execução no seu dispositivo nas seguintes portas: ",
+    "Password": "Você mudou sua senha em: ",
+    "Acceptable": "Aceitável",
+    "Cookies": "(Possíveis) cookies de rastreamento foram encontrados nos seguintes sites: ",
+    "Permissions": "Os seguintes aplicativos atualmente têm permissão: ",
+    "Low": "Baixo",
+    "Medium": "Médio",
+    "High": "Alto",
+    "Info": "Info"
   },
   "About": {
     "about-title": "Sobre o Agente Infosec",

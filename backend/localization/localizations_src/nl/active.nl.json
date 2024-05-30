@@ -12,6 +12,35 @@
     "QuitTitle": "Afsluiten",
     "QuitTooltip": "Sluit voorbeeldbladtoepassing af"
   },
+  "Dialogs": {
+    "OK": "OK",
+    "Cancel": "Annuleren",
+    "ScanInterval": {
+      "Title": "Scaninterval wijzigen",
+      "Content": "Voer scaninterval in (in uren):",
+      "ChangedTitle": "Scaninterval gewijzigd",
+      "ChangedContent": "Scaninterval gewijzigd naar %d uur.",
+      "InvalidChangeTitle": "Ongeldige invoer van scaninterval",
+      "InvalidChangeContent": "Ongeldige invoer. Vorig interval van %d uur wordt gebruikt."
+    },
+    "Scan": {
+      "Title": "Beveiligings-/privacy-scan",
+      "Content": "Bezig met controle %d van %d"
+    },
+    "Language": {
+      "Title": "Taal wijzigen",
+      "Content": "Kies een taal"
+    },
+    "Popup": {
+      "Title": "Scan voltooid",
+      "OneHigh": "De privacy- en beveiligingsscan is voltooid. U heeft 1 probleem met hoog risico. Open de rapportpagina voor meer informatie.",
+      "MultipleHigh": "De privacy- en beveiligingsscan is voltooid. U heeft %d problemen met hoog risico. Open de rapportpagina voor meer informatie.",
+      "OneMedium": "De privacy- en beveiligingsscan is voltooid. U heeft 1 probleem met gemiddeld risico. Open de rapportpagina voor meer informatie.",
+      "MultipleMedium": "De privacy- en beveiligingsscan is voltooid. U heeft %d problemen met gemiddeld risico. Open de rapportpagina voor meer informatie.",
+      "Default": "De privacy- en beveiligingsscan is voltooid. Open de rapportpagina om de resultaten te bekijken.",
+      "Button": "Rapportpagina openen"
+    }
+  },
   "Navigation": 
   {
     "Home": "Startpagina",
@@ -28,7 +57,6 @@
   {
     "Issues": "Problemen",
     "SuggestedIssue": "Voorgesteld Probleem",
-    "QuickFix": "Snelle Oplossing",
     "ScanNow": "Nu Scannen",
     "Medals": "Medailles",
     "SecurityStatus": "Veiligheidsstatus",
@@ -65,6 +93,7 @@
   "Issues":
   {
     "IssueTable": "Problementabel",
+    "Findings": "Bevindingen",
     "AcceptableFindings": "Acceptabele bevindingen",
     "Name": "Naam",
     "Type": "Type",
@@ -73,7 +102,16 @@
     "Solution": "Oplossing",
     "Previous": "&laquo; Vorige stap",
     "Next": "Volgende stap &raquo;",
-    "Back": "Terug naar het overzicht van problemen"
+    "Back": "Terug naar het overzicht van problemen",
+    "Port": "De volgende processen draaien momenteel op uw apparaat op de volgende poorten: ",
+    "Password": "U hebt uw wachtwoord gewijzigd op: ",
+    "Acceptable": "Aanvaardbaar",
+    "Cookies": "(Mogelijke) tracking cookies zijn gevonden van de volgende websites: ",
+    "Permissions": "De volgende applicaties hebben momenteel toestemming gekregen: ",
+    "Low": "Laag",
+    "Medium": "Gemiddeld",
+    "High": "Hoog",
+    "Info": "Info"
   },
   "About":
   { 

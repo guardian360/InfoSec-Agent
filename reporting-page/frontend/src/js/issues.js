@@ -19,7 +19,6 @@ export function openIssuesPage() {
   closeNavigation(document.body.offsetWidth);
   markSelectedNavigationItem('issues-button');
   sessionStorage.setItem('savedPage', '4');
-
   document.getElementById('page-contents').innerHTML = `
   <div class="issues-data">
     <div class="table-container">
@@ -84,6 +83,24 @@ export function openIssuesPage() {
   </div>
   `;
 
+
+  // retrieve issues from tray application
+  const issues = JSON.parse(sessionStorage.getItem('DataBaseData'));
+
+  const issueTable = document.getElementById('issues-table').querySelector('tbody');
+  fillTable(issueTable, issues, true);
+
+  const nonIssueTable = document.getElementById('non-issues-table').querySelector('tbody');
+  fillTable(nonIssueTable, issues, false);
+
+
+  const myDropdownTable = document.getElementById('myDropdown-table');
+  document.getElementById('dropbtn-table').addEventListener('click', () => myDropdownTable.classList.toggle('show'));
+  document.getElementById('select-high-risk-table').addEventListener('change', changeTable);
+  document.getElementById('select-medium-risk-table').addEventListener('change', changeTable);
+  document.getElementById('select-low-risk-table').addEventListener('change', changeTable);
+  document.getElementById('select-info-risk-table').addEventListener('change', changeTable);
+
   const tableHeaders = [
     'lang-issue-table',
     'lang-acceptable-findings',
@@ -95,6 +112,11 @@ export function openIssuesPage() {
     'lang-low-risk-issues',
     'lang-info-risk-issues',
     'lang-select-risks',
+    'lang-acceptable',
+    'lang-low',
+    'lang-medium',
+    'lang-high',
+    'lang-info',
   ];
   const localizationIds = [
     'Issues.IssueTable',
@@ -107,26 +129,15 @@ export function openIssuesPage() {
     'Dashboard.LowRisk',
     'Dashboard.InfoRisk',
     'Dashboard.SelectRisks',
+    'Issues.Acceptable',
+    'Issues.Low',
+    'Issues.Medium',
+    'Issues.High',
+    'Issues.Info',
   ];
   for (let i = 0; i < tableHeaders.length; i++) {
     getLocalization(localizationIds[i], tableHeaders[i]);
   }
-
-  // retrieve issues from tray application
-  const issues = JSON.parse(sessionStorage.getItem('DataBaseData'));
-
-  const issueTable = document.getElementById('issues-table').querySelector('tbody');
-  fillTable(issueTable, issues, true);
-
-  const nonIssueTable = document.getElementById('non-issues-table').querySelector('tbody');
-  fillTable(nonIssueTable, issues, false);
-
-  const myDropdownTable = document.getElementById('myDropdown-table');
-  document.getElementById('dropbtn-table').addEventListener('click', () => myDropdownTable.classList.toggle('show'));
-  document.getElementById('select-high-risk-table').addEventListener('change', changeTable);
-  document.getElementById('select-medium-risk-table').addEventListener('change', changeTable);
-  document.getElementById('select-low-risk-table').addEventListener('change', changeTable);
-  document.getElementById('select-info-risk-table').addEventListener('change', changeTable);
 }
 
 /**
@@ -137,15 +148,15 @@ export function openIssuesPage() {
 export function toRiskLevel(level) {
   switch (level) {
   case 0:
-    return 'Acceptable';
+    return '<td class="lang-acceptable"></td>';
   case 1:
-    return 'Low';
+    return '<td class="lang-low"></td>';
   case 2:
-    return 'Medium';
+    return '<td class="lang-medium"></td>';
   case 3:
-    return 'High';
+    return '<td class="lang-high"></td>';
   case 4:
-    return 'Info';
+    return '<td class="lang-info"></td>';
   }
 }
 
@@ -154,8 +165,9 @@ export function toRiskLevel(level) {
  * @param {HTMLTableSectionElement} tbody Table to be filled
  * @param {Issue} issues Issues to be filled in
  * @param {Bool} isIssue True for issue table, false for non issue table
+ * @param {Bool} isListenersAdded True for the first time the eventlisteners is called
  */
-export async function fillTable(tbody, issues, isIssue) {
+export async function fillTable(tbody, issues, isIssue, isListenersAdded=true) {
   const language = await getUserSettings();
   let currentIssue;
 
@@ -189,13 +201,17 @@ export async function fillTable(tbody, issues, isIssue) {
     if (isIssue) {
       if (currentIssue) {
         if (issue.severity != '0') {
+          const riskLevel = toRiskLevel(issue.severity);
           const row = document.createElement('tr');
+
           row.innerHTML = `
               <td class="issue-link" data-severity="${issue.severity}">${currentIssue.Name}</td>
               <td>${currentIssue.Type}</td>
-              <td>${toRiskLevel(issue.severity)}</td>
+              ${riskLevel}
             `;
+
           row.cells[0].id = issue.jsonkey;
+          row.setAttribute('data-severity', issue.severity);
           tbody.appendChild(row);
         }
       }
@@ -221,13 +237,33 @@ export async function fillTable(tbody, issues, isIssue) {
   });
 
   // Add buttons to sort on columns
-  if (isIssue) {
-    document.getElementById('sort-on-issue').addEventListener('click', () => sortTable(tbody, 0));
-    document.getElementById('sort-on-type').addEventListener('click', () => sortTable(tbody, 1));
-    document.getElementById('sort-on-risk').addEventListener('click', () => sortTable(tbody, 2));
-  } else {
-    document.getElementById('sort-on-issue2').addEventListener('click', () => sortTable(tbody, 0));
-    document.getElementById('sort-on-type2').addEventListener('click', () => sortTable(tbody, 1));
+  if (isListenersAdded) {
+    if (isIssue) {
+      document.getElementById('sort-on-issue').addEventListener('click', () => sortTable(tbody, 0));
+      document.getElementById('sort-on-type').addEventListener('click', () => sortTable(tbody, 1));
+      document.getElementById('sort-on-risk').addEventListener('click', () => sortTable(tbody, 2));
+    } else {
+      document.getElementById('sort-on-issue2').addEventListener('click', () => sortTable(tbody, 0));
+      document.getElementById('sort-on-type2').addEventListener('click', () => sortTable(tbody, 1));
+    }
+    isListenersAdded = false;
+  }
+  // Re-apply localization to the dynamically created table rows
+  const tableHeaders = [
+    'lang-low',
+    'lang-medium',
+    'lang-high',
+    'lang-info',
+  ];
+
+  const localizationIds = [
+    'Issues.Low',
+    'Issues.Medium',
+    'Issues.High',
+    'Issues.Info',
+  ];
+  for (let i = 0; i < tableHeaders.length; i++) {
+    getLocalization(localizationIds[i], tableHeaders[i]);
   }
 }
 
@@ -236,10 +272,11 @@ export async function fillTable(tbody, issues, isIssue) {
  * @param {HTMLTableSectionElement} tbody Table to be sorted
  * @param {number} column Column to sort the table on
  */
-export function sortTable(tbody, column) {
+export function sortTable(tbody, column ) {
   const table = tbody.closest('table');
   let direction = table.getAttribute('data-sort-direction');
   direction = direction === 'ascending' ? 'descending' : 'ascending';
+  console.log(direction);
   const rows = Array.from(tbody.rows);
   rows.sort((a, b) => {
     if (column !== 2) {
@@ -252,14 +289,19 @@ export function sortTable(tbody, column) {
         return textB.localeCompare(textA);
       }
     } else {
-      // Custom sorting for the last column
-      const order = {'high': 1, 'medium': 2, 'low': 3, 'info': 4};
-      const textA = a.cells[column].textContent.toLowerCase();
-      const textB = b.cells[column].textContent.toLowerCase();
+      // Change Info to lower severity
+      let severityA = parseInt(a.getAttribute('data-severity'));
+      if (severityA === 4) {
+        severityA = 0;
+      }
+      let severityB = parseInt(b.getAttribute('data-severity'));
+      if (severityB === 4) {
+        severityB = 0;
+      }
       if (direction === 'ascending') {
-        return order[textA] - order[textB];
+        return severityB - severityA;
       } else {
-        return order[textB] - order[textA];
+        return severityA - severityB;
       }
     }
   });
@@ -310,7 +352,7 @@ export function changeTable() {
   issueTable.innerHTML = '';
 
   // Refill tables with filtered issues
-  fillTable(issueTable, filteredIssues, true);
+  fillTable(issueTable, filteredIssues, true, false);
 }
 
 /**

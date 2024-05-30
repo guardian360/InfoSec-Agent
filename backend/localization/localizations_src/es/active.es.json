@@ -12,6 +12,35 @@
     "QuitTitle": "Salir",
     "QuitTooltip": "Salir de la aplicación de la bandeja de ejemplo"
   },
+  "Dialogs": {
+    "OK": "Aceptar",
+    "Cancel": "Cancelar",
+    "ScanInterval": {
+      "Title": "Cambiar intervalo de escaneo",
+      "Content": "Ingrese el intervalo de escaneo (en horas):",
+      "ChangedTitle": "Intervalo de escaneo cambiado",
+      "ChangedContent": "Intervalo de escaneo cambiado a %d horas.",
+      "InvalidChangeTitle": "Entrada de intervalo de escaneo inválida",
+      "InvalidChangeContent": "Entrada inválida. Usando el intervalo anterior de %d horas."
+    },
+    "Scan": {
+      "Title": "Escaneo de seguridad/privacidad",
+      "Content": "Ejecutando verificación %d de %d"
+    },
+    "Language": {
+      "Title": "Cambiar idioma",
+      "Content": "Elija un idioma"
+    },
+    "Popup": {
+      "Title": "Escaneo completado",
+      "OneHigh": "El escaneo de privacidad y seguridad se ha completado. Tienes 1 problema de alto riesgo. Abre la página de informes para ver más información.",
+      "MultipleHigh": "El escaneo de privacidad y seguridad se ha completado. Tienes %d problemas de alto riesgo. Abre la página de informes para ver más información.",
+      "OneMedium": "El escaneo de privacidad y seguridad se ha completado. Tienes 1 problema de riesgo medio. Abre la página de informes para ver más información.",
+      "MultipleMedium": "El escaneo de privacidad y seguridad se ha completado. Tienes %d problemas de riesgo medio. Abre la página de informes para ver más información.",
+      "Default": "El escaneo de privacidad y seguridad se ha completado. Abre la página de informes para ver los resultados.",
+      "Button": "Abrir página de informes"
+    }
+  },
   "Navigation": 
   {
     "Home": "Inicio",
@@ -27,7 +56,6 @@
   {
     "Issues": "Problemas",
     "SuggestedIssue": "Problema Sugerido",
-    "QuickFix": "Solución Rápida",
     "ScanNow": "Escanear Ahora",
     "Medals": "Medallas",
     "SecurityStatus": "Estado de Seguridad",
@@ -64,6 +92,7 @@
   "Issues":
   {
     "IssueTable": "Tabla de problemas",
+    "Findings": "Hallazgos",
     "AcceptableFindings": "Hallazgos aceptables",
     "Name": "Nombre",
     "Type": "Tipo",
@@ -72,7 +101,16 @@
     "Solution": "Solución",
     "Previous": "&laquo; Paso anterior",
     "Next": "Siguiente paso &raquo;",
-    "Back": "Volver a la vista general de problemas"
+    "Back": "Volver a la vista general de problemas",
+    "Port": "Los siguientes procesos se están ejecutando actualmente en su dispositivo en los siguientes puertos: ",
+    "Password": "Cambiaste tu contraseña en: ",
+    "Acceptable": "Aceptable",
+    "Cookies": "(Posibles) cookies de seguimiento han sido encontradas en los siguientes sitios web: ",
+    "Permissions": "Las siguientes aplicaciones actualmente tienen permisos concedidos: ",    
+    "Low": "Bajo",
+    "Medium": "Medio",
+    "High": "Alto",
+    "Info": "Información"
   },
   "About": {
     "about-title": "Acerca de Infosec Agent",

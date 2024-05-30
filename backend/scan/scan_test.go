@@ -9,6 +9,7 @@ import (
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/database"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/localization"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/scan"
 	"github.com/stretchr/testify/require"
@@ -24,6 +25,7 @@ import (
 // Returns: None. The function calls os.Exit with the exit code returned by m.Run().
 func TestMain(m *testing.M) {
 	logger.SetupTests()
+	go localization.Init("../")
 
 	// Run tests
 	exitCode := m.Run()
@@ -54,11 +56,11 @@ func TestScan(t *testing.T) {
 	}(dialog)
 
 	// Execute the scan
-	_, err = scan.Scan(dialog)
+	_, err = scan.Scan(dialog, 1)
 	require.NoError(t, err)
 
 	// Execute the scan without a dialog
-	_, err = scan.Scan(nil)
+	_, err = scan.Scan(nil, 1)
 	require.NoError(t, err)
 }
 
