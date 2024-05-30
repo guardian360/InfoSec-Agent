@@ -13,7 +13,8 @@ import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js'
 
 let stepCounter = 0;
 const issuesWithResultsShow =
-    ['11', '21', '60', '70', '80', '90', '100', '110', '160', '173', '201', '230', '271', '311', '320', '351', '361'];
+    ['11', '21', '60', '70', '80', '90', '100', '110', '160', '173',
+      '201', '230', '250', '260', '271', '300', '311', '320', '351', '361'];
 
 /** Update contents of solution guide
  *
@@ -225,9 +226,18 @@ export function parseShowResult(issueId, currentIssue) {
   case '230':
     generateBulletList(issues, 23);
     break;
+  case '250':
+    generateBulletList(issues, 25);
+    break;
+  case '260':
+    generateBulletList(issues, 26);
+    break;
   case '271':
     resultLine += '<p class="lang-cookies"</p>';
     resultLine += cookiesTable(issues.find((issue) => issue.issue_id === 27).result);
+    break;
+  case '300':
+    generateBulletList(issues, 30);
     break;
   case '311':
     generateBulletList(issues, 31);
