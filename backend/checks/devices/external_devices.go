@@ -1,7 +1,6 @@
 package devices
 
 import (
-	"errors"
 	"strings"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
@@ -60,7 +59,7 @@ func CheckDeviceClasses(deviceClasses []string, executorClass mocking.CommandExe
 	// Get all devices from the output
 	devices := strings.Split(string(output), "\r\n")
 	if len(devices) == 1 {
-		return nil, errors.New("no devices found")
+		return nil, nil
 	}
 	devices = devices[3 : len(devices)-3]
 
