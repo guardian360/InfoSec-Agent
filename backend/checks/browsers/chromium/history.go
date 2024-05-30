@@ -42,8 +42,9 @@ func HistoryChromium(browser string, getter browsers.DefaultDirGetter, getterCop
 		return checks.NewCheckErrorf(returnID, "Error: ", err)
 	}
 
+	copyGetter := browsers.RealCopyFileGetter{}
 	// Copy the database, so problems don't arise when the file gets locked
-	tempHistoryDB, err := getterCopyDB.CopyDatabase(extensionsDir + "/History")
+	tempHistoryDB, err := getterCopyDB.CopyDatabase(extensionsDir+"/History", copyGetter)
 	if err != nil {
 		logger.Log.ErrorWithErr("Error copying database: ", err)
 		return checks.NewCheckError(returnID, err)
@@ -107,7 +108,7 @@ func GetBrowserPathAndIDHistory(browser string) (string, int) {
 }
 
 type CopyDBGetter interface {
-	CopyDatabase(src string) (string, error)
+	CopyDatabase(src string, getter browsers.CopyFileGetter) (string, error)
 }
 
 type RealCopyDBGetter struct{}
@@ -116,15 +117,16 @@ type RealCopyDBGetter struct{}
 //
 // Parameters:
 //   - src: A string representing the path to the source database file.
+//   - getter: A function that copies the source file to the temporary location.
 //
 // Returns:
 //   - A string representing the path to the temporary copy of the database file.
 //   - An error, which will be nil if the operation was successful. If an error occurs while copying the file, that error will be returned.
 //
 // This function works by joining the path to the system's temporary directory with the name of the temporary database file ("tempHistoryDB.sqlite"), and then calling the CopyFile function to copy the source file to the temporary location. If the CopyFile function returns an error, the function returns an empty string and the error. Otherwise, it returns the path to the temporary file and nil.
-func (r RealCopyDBGetter) CopyDatabase(src string) (string, error) {
+func (r RealCopyDBGetter) CopyDatabase(src string, getter browsers.CopyFileGetter) (string, error) {
 	tempDB := filepath.Join(os.TempDir(), "tempHistoryDB.sqlite")
-	err := browsers.CopyFile(src, tempDB, nil, nil)
+	err := getter.CopyFile(src, tempDB, nil, nil)
 	if err != nil {
 		return "", err
 	}
