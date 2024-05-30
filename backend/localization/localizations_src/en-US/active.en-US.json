@@ -115,10 +115,13 @@
     "Info": "Info"
   },
   "About": {
-    "about-title": "About Infosec Agent",
-    "infosec-info": "The InfoSec Agent project aims to improve the security and privacy of Windows computer users. Currently, there are applications available that do this, but they are mainly targeted at large companies. The goal of this project is to make this accessible to everyone. An application is being developed that collects information about the user's system to discover any security or privacy-related vulnerabilities. The results will be presented to the user in a special dashboard, showing the current status of the system, including recommended actions to improve it.",
-    "little-brother-info": "This project is a collaborative effort involving nine students from Utrecht University in The Netherlands, in partnership with the Dutch IT company Guardian360. It serves as the Software Project for the Bachelor's Program in Computing Sciences at the UU.",
-    "contribute-title": "Contribute",
-    "contribute-info": "InfoSec-Agent is an Open-Source project licensed under the GPL-3.0 License. However, due to its origins as a Utrecht University assignment, public contributions to this repository will only be merged after the completion of this assignment, which is scheduled for June 24, 2024. Feel free to report any bugs or issues you encounter. Your feedback is valuable and helps improve the InfoSec-Agent project. You can email us at <a href=\"mailto:infosecagentuu@gmail.com\">infosecagentuu@gmail.com</a>"
+    "AboutTitle": "About Infosec Agent",
+    "AboutInfo": "The InfoSec Agent is a security and privacy tool for Windows 10 and 11.",
+    "SummaryTitle": "Summary",
+    "SummaryInfo": "The InfoSec Agent project aims to improve the security and privacy of Windows computer users. Currently, there are applications available that do this, but they are mainly targeted at large companies. The goal of this project is to make this accessible to everyone. An application is being developed that collects information about the user's system to discover any security or privacy-related vulnerabilities. The results will be presented to the user in a special dashboard, showing the current status of the system, including recommended actions to improve it.",
+    "AffiliationsTitle": "Affiliations",
+    "AffiliationsInfo": "This project is a collaborative effort involving nine students from Utrecht University in The Netherlands, in partnership with the Dutch IT company Guardian360. It serves as the Software Project for the Bachelor's Programme in Computing Sciences at the UU. This project is also supported by funding from the SIDN Fund (Stichting Internet Domeinregistratie Nederland), the Dutch domain name registrar.",
+    "ContributingTitle": "Contributing",
+    "ContributingInfo": "InfoSec-Agent is an Open-Source project licensed under the GPL-3.0 Licence. However, due to its origins as a Utrecht University assignment, public contributions to this repository will only be merged after the completion of this assignment, which is scheduled for 24th June 2024. Feel free to report any bugs or issues you encounter. Your feedback is valuable and helps improve the InfoSec-Agent project. You can email us at <a href=\"mailto:infosecagentuu@gmail.com\">infosecagentuu@gmail.com</a>"
   }
 }

@@ -35,17 +35,23 @@ describe('About page', function() {
     const about = await import('../src/js/about.js');
     const classNames = [
       'lang-about-title',
-      'lang-infosec-info',
-      'lang-little-brother-info',
-      'lang-contribute-title',
-      'lang-contribute-info',
+      'lang-about-info',
+      'lang-summary-title',
+      'lang-summary-info',
+      'lang-affiliations-title',
+      'lang-affiliations-info',
+      'lang-contributing-title',
+      'lang-contributing-info',
     ];
     const expectedTexts = [
-      'About.about-title',
-      'About.infosec-info',
-      'About.little-brother-info',
-      'About.contribute-title',
-      'About.contribute-info',
+      'About.AboutTitle',
+      'About.AboutInfo',
+      'About.SummaryTitle',
+      'About.SummaryInfo',
+      'About.AffiliationsTitle',
+      'About.AffiliationsInfo',
+      'About.ContributingTitle',
+      'About.ContributingInfo',
     ];
 
     // Act
