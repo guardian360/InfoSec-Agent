@@ -10,6 +10,8 @@ import (
 // Parameters:
 //   - browser: A string representing the name of the browser. Currently, this function supports "Chrome" and "Edge".
 //   - getter: A browsers.DefaultDirGetter object that is used to locate the default directory of the browser.
+//   - copyGetter: A browsers.CopyFileGetter object that is used to copy the database file to a temporary location.
+//   - queryGetter: A browsers.QueryCookieDatabaseGetter object that is used to query the database file.
 //
 // Returns:
 //   - A checks.Check object representing the result of the check. The result contains a list of cookies stored in the Chromium based browser. Each cookie is represented as a string that includes the name and the host of the cookie. If an error occurs during the check, the result will contain a description of the error.
