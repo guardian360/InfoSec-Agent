@@ -14,20 +14,20 @@ export function openAboutPage() {
   <div class="container-about">
     <div class="about-header">
         <h1 class="lang-about-title"></h1>
-        p class='lang-about-info'></p>
+        <p class="lang-about-info"></p>
     </div>
     <div class="project">
         <h2 class="lang-summary-title">Infosec Agent</h2>
-        <p class='lang-summary-info'></p>
+        <p class="lang-summary-info"></p>
     </div>
     <div class="project">
         <h2 class="lang-affiliations-title">Little Brother</h2>
-        <p class='lang-affiliations-info'>
+        <p class="lang-affiliations-info">
         </p>
     </div>
     <div class="project">
         <h2 class="lang-contributing-title">Contributing</h2>
-        <p class='lang-contributing-info'></p>
+        <p class="lang-contributing-info"></p>
     </div>
   </div>`;
 
