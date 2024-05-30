@@ -19,11 +19,11 @@ import (
 )
 
 type MockCopyDBGetter struct {
-	CopyDatabaseFunc func(source string) (string, error)
+	CopyDatabaseFunc func(source string, browser string) (string, error)
 }
 
-func (m MockCopyDBGetter) CopyDatabase(source string) (string, error) {
-	return m.CopyDatabaseFunc(source)
+func (m MockCopyDBGetter) CopyDatabase(source string, browser string) (string, error) {
+	return m.CopyDatabaseFunc(source, browser)
 }
 
 type MockQueryDatabaseGetter struct {
@@ -58,7 +58,7 @@ func TestHistoryChromium_Success(t *testing.T) {
 	}
 
 	mockCopyGetter := MockCopyDBGetter{
-		CopyDatabaseFunc: func(_ string) (string, error) {
+		CopyDatabaseFunc: func(_ string, _ string) (string, error) {
 			return "/path/to/temp", nil
 		},
 	}
@@ -112,7 +112,7 @@ func TestHistoryChromium_Success_NoPhishing(t *testing.T) {
 	}
 
 	mockCopyGetter := MockCopyDBGetter{
-		CopyDatabaseFunc: func(_ string) (string, error) {
+		CopyDatabaseFunc: func(_ string, _ string) (string, error) {
 			return "/path/to/temp", nil
 		},
 	}
@@ -166,7 +166,7 @@ func TestHistoryChromium_Error_GetDefaultDir(t *testing.T) {
 	}
 
 	mockCopyGetter := MockCopyDBGetter{
-		CopyDatabaseFunc: func(_ string) (string, error) {
+		CopyDatabaseFunc: func(_ string, _ string) (string, error) {
 			return "/path/to/temp", nil
 		},
 	}
@@ -202,7 +202,7 @@ func TestHistoryChromium_Error_CopyDatabase(t *testing.T) {
 	}
 
 	mockCopyGetter := MockCopyDBGetter{
-		CopyDatabaseFunc: func(_ string) (string, error) {
+		CopyDatabaseFunc: func(_ string, _ string) (string, error) {
 			return "", errors.New("mock error")
 		},
 	}
@@ -238,7 +238,7 @@ func TestHistoryChromium_Error_QueryDb(t *testing.T) {
 	}
 
 	mockCopyGetter := MockCopyDBGetter{
-		CopyDatabaseFunc: func(_ string) (string, error) {
+		CopyDatabaseFunc: func(_ string, _ string) (string, error) {
 			return "/invalid/path", nil
 		},
 	}
@@ -275,7 +275,7 @@ func TestHistoryChromium_Error_ProcessQueryResults(t *testing.T) {
 	}
 
 	mockCopyGetter := MockCopyDBGetter{
-		CopyDatabaseFunc: func(_ string) (string, error) {
+		CopyDatabaseFunc: func(_ string, _ string) (string, error) {
 			return "/path/to/temp", nil
 		},
 	}
@@ -363,7 +363,7 @@ func TestCopyDatabase_Success(t *testing.T) {
 
 	// Call the function
 	getter := chromium.RealCopyDBGetter{}
-	_, err = getter.CopyDatabase(tempFile.Name())
+	_, err = getter.CopyDatabase(tempFile.Name(), "")
 
 	// Assert there was no error
 	require.NoError(t, err)
@@ -375,7 +375,7 @@ func TestCopyDatabase_Error(t *testing.T) {
 
 	// Call the function
 	getter := chromium.RealCopyDBGetter{}
-	_, err := getter.CopyDatabase(invalidFilePath)
+	_, err := getter.CopyDatabase(invalidFilePath, "")
 
 	// Assert there was an error
 	require.Error(t, err)
