@@ -10,7 +10,7 @@
     font-size: 1.5em;
 }
 
-p {
+.about-header p, .project p {
     line-height: 1.6;
     padding: 0 20px;
 }
