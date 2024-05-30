@@ -268,7 +268,7 @@ INSERT INTO cookies (name, host_key) VALUES ('sessionid', 'example.com');
 			expected:     checks.NewCheckResult(2, 0),
 		},
 	}
-	getter := browsers.RealQueryDatabaseGetter{}
+	getter := browsers.RealQueryCookieDatabaseGetter{}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -292,7 +292,7 @@ func TestQueryCookieDatabase_CopyError(t *testing.T) {
 			return errors.New("mock error")
 		},
 	}
-	getter := browsers.RealQueryDatabaseGetter{}
+	getter := browsers.RealQueryCookieDatabaseGetter{}
 	// Call the QueryCookieDatabase function
 	result := getter.QueryCookieDatabase(1, "chrome", "/path/to/database", []string{"name", "host_key"}, "cookies", mockGetter)
 
@@ -322,7 +322,7 @@ func TestQueryCookieDatabaseRowsError(t *testing.T) {
 	mock.ExpectQuery(fmt.Sprintf("SELECT %s FROM %s", strings.Join(queryParams, ", "), tableName)).
 		WillReturnError(errors.New("query execution error"))
 
-	getter := browsers.RealQueryDatabaseGetter{}
+	getter := browsers.RealQueryCookieDatabaseGetter{}
 	check := getter.QueryCookieDatabase(checkID, browser, databasePath, queryParams, tableName, mockGetter)
 	require.Error(t, check.Error)
 

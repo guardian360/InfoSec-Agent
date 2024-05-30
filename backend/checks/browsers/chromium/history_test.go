@@ -23,7 +23,7 @@ type MockCopyDBGetter struct {
 }
 
 func (m MockCopyDBGetter) CopyDatabase(source string, browser string, getter browsers.CopyFileGetter) (string, error) {
-	return m.CopyDatabaseFunc(source, browser)
+	return m.CopyDatabaseFunc(source, browser, getter)
 }
 
 type MockQueryDatabaseGetter struct {
@@ -118,8 +118,8 @@ func TestHistoryChromium_Success_NoPhishing(t *testing.T) {
 	}
 
 	mockQueryDBGetter := MockQueryDatabaseGetter{
-		QueryDatabaseFunc: func(db *sql.DB) (*sql.Rows, error) {
-			db, mock, err := sqlmock.New()
+		QueryDatabaseFunc: func(_ *sql.DB) (*sql.Rows, error) {
+			db, mock, _ := sqlmock.New()
 			defer func() {
 			}()
 

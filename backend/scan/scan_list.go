@@ -19,7 +19,7 @@ var executor = &mocking.RealCommandExecutor{}
 var profileFinder = browsers.RealProfileFinder{}
 var defaultDirGetter = browsers.RealDefaultDirGetter{}
 var copyFileGetter = browsers.RealCopyFileGetter{}
-var queryDBGetter = browsers.RealQueryDatabaseGetter{}
+var queryDBGetter = browsers.RealQueryCookieDatabaseGetter{}
 
 const browserChrome = "Chrome"
 const browserEdge = "Edge"

@@ -303,9 +303,9 @@ type QueryCookieDatabaseGetter interface {
 	QueryCookieDatabase(checkID int, browser string, databasePath string, queryParams []string, tableName string, getter CopyFileGetter) checks.Check
 }
 
-// RealQueryDatabaseGetter is an empty struct that is used as a receiver for the QueryCookieDatabase method.
+// RealQueryCookieDatabaseGetter is an empty struct that is used as a receiver for the QueryCookieDatabase method.
 // This struct is part of the implementation of the QueryCookieDatabaseGetter interface.
-type RealQueryDatabaseGetter struct{}
+type RealQueryCookieDatabaseGetter struct{}
 
 // QueryCookieDatabase is a utility function that queries a cookie database for specific parameters.
 // This function is used by the browser-specific (Firefox, Chrome, and Edge) cookie checks to query the cookie database and check for tracking cookies.
@@ -320,7 +320,7 @@ type RealQueryDatabaseGetter struct{}
 //
 // Returns:
 //   - checks.Check: A Check object representing the result of the check. If tracking cookies are found, the result contains a list of cookies along with their host stored in the database.
-func (r RealQueryDatabaseGetter) QueryCookieDatabase(checkID int, browser string, databasePath string, queryParams []string, tableName string, getter CopyFileGetter) checks.Check {
+func (r RealQueryCookieDatabaseGetter) QueryCookieDatabase(checkID int, browser string, databasePath string, queryParams []string, tableName string, getter CopyFileGetter) checks.Check {
 	// Copy the database, so problems don't arise when the file gets locked
 	tempCookieDB := filepath.Join(os.TempDir(), "tempCookieDb"+browser+".sqlite")
 
