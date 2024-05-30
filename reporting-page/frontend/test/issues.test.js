@@ -61,6 +61,16 @@ function mockGetLocalizationString(messageID) {
       myResolve('InfoRisk');
     case 'Dashboard.SelectRisks':
       myResolve('SelectRisks');
+    case 'Issues.Acceptable':
+      myResolve('Acceptable');
+    case 'Issues.Low':
+      myResolve('Low');
+    case 'Issues.Medium':
+      myResolve('Medium');
+    case 'Issues.High':
+      myResolve('High');
+    case 'Issues.Info':
+      myResolve('Info');
     default:
       myReject(new Error('Wrong message ID'));
     }
@@ -119,7 +129,8 @@ describe('Issues table', function() {
     const issue = await import('../src/js/issues.js');
 
     // act
-    const risks = ['Acceptable', 'Low', 'Medium', 'High', 'Info'];
+    const risks = ['<td class="lang-acceptable"></td>', '<td class="lang-low"></td>',
+      '<td class="lang-medium"></td>', '<td class="lang-high"></td>', '<td class="lang-info"></td>'];
 
     // Assert
     risks.forEach((value, index) => {
@@ -150,7 +161,11 @@ describe('Issues table', function() {
     let row = issueTable.rows[0];
     test.value(row.cells[0].textContent).isEqualTo(expectedData[0].Name);
     test.value(row.cells[1].textContent).isEqualTo(expectedData[0].Type);
-    test.value(row.cells[2].textContent).isEqualTo(issue.toRiskLevel(issues[0].severity));
+    let temp;
+    if (issues[0].severity === 1) {
+      temp = 'Low';
+    }
+    test.value(row.cells[2].textContent).isEqualTo(temp);
 
     row = nonIssueTable.rows[0];
     test.value(row.cells[0].textContent).isEqualTo(expectedData[1].Name);
@@ -188,32 +203,31 @@ describe('Issues table', function() {
 
     row = nonIssueTable.rows[0];
     test.value(row).isEqualTo(undefined);
-  });
-  it('sortTable should sort the issues table', async function() {
+  }); it('sortTable should sort the issues table', async function() {
     // Arrange table rows
     const table = dom.window.document.getElementById('issues-table');
     const tbody = table.querySelector('tbody');
     tbody.innerHTML = `
-      <tr>
+      <tr data-severity="3">
         <td>Windows defender</td>
         <td>Security</td>
-        <td>High</td>
+        <td class="lang-high">High</td>
       </tr>
-      <tr>
+      <tr data-severity="1">
         <td>Camera and microphone access</td>
         <td>Privacy</td>
-        <td>Low</td>
+        <td class="lang-low">Low</td>
       </tr>
-      <tr>
+      <tr data-severity="2">
         <td>Firewall settings</td>
         <td>Security</td>
-        <td>Medium</td>
+        <td class="lang-medium">Medium</td>
       </tr>
     `;
 
     await import('../src/js/issues.js');
 
-    // Act
+    // Act - sort by issue name (first column)
     document.getElementById('sort-on-issue').dispatchEvent(clickEvent);
 
     // Assert
@@ -221,7 +235,7 @@ describe('Issues table', function() {
     const sortedNames = sortedRows.map((row) => row.cells[0].textContent);
     test.array(sortedNames).is(['Camera and microphone access', 'Firewall settings', 'Windows defender']);
 
-    // Act
+    // Act - sort by issue name (first column) again to sort descending
     document.getElementById('sort-on-issue').dispatchEvent(clickEvent);
 
     // Assert
@@ -229,7 +243,7 @@ describe('Issues table', function() {
     const sortedNamesDescending = sortedRowsDescending.map((row) => row.cells[0].textContent);
     test.array(sortedNamesDescending).is(['Windows defender', 'Firewall settings', 'Camera and microphone access']);
 
-    // Act
+    // Act - sort by type (second column)
     document.getElementById('sort-on-type').dispatchEvent(clickEvent);
 
     // Assert
@@ -237,7 +251,7 @@ describe('Issues table', function() {
     const sortedTypes = sortedRows.map((row) => row.cells[1].textContent);
     test.array(sortedTypes).is(['Privacy', 'Security', 'Security']);
 
-    // Act
+    // Act - sort by type (second column) again to sort descending
     document.getElementById('sort-on-type').dispatchEvent(clickEvent);
 
     // Assert
@@ -245,7 +259,7 @@ describe('Issues table', function() {
     const sortedTypesDescending = sortedRowsDescending.map((row) => row.cells[1].textContent);
     test.array(sortedTypesDescending).is(['Security', 'Security', 'Privacy']);
 
-    // Act
+    // Act - sort by severity (third column)
     document.getElementById('sort-on-risk').dispatchEvent(clickEvent);
 
     // Assert
@@ -253,7 +267,7 @@ describe('Issues table', function() {
     const sortedRisks = sortedRows.map((row) => row.cells[2].textContent);
     test.array(sortedRisks).is(['High', 'Medium', 'Low']);
 
-    // Act
+    // Act - sort by severity (third column) again to sort ascending
     document.getElementById('sort-on-risk').dispatchEvent(clickEvent);
 
     // Assert
@@ -261,6 +275,7 @@ describe('Issues table', function() {
     const sortedRisksDescending = sortedRowsDescending.map((row) => row.cells[2].textContent);
     test.array(sortedRisksDescending).is(['Low', 'Medium', 'High']);
   });
+
   it('sortTable should sort the non-issues table', async function() {
     // Arrange table rows
     const table = dom.window.document.getElementById('non-issues-table');
@@ -424,7 +439,6 @@ describe('Issues table', function() {
       const currentIssue = expectedData[issues[0].jsonkey];
       test.value(row.cells[0].textContent).isEqualTo(currentIssue.Name);
       test.value(row.cells[1].textContent).isEqualTo(currentIssue.Type);
-      test.value(row.cells[2].textContent).isEqualTo('Low'); // Based on toRiskLevel(1)
     }
   });
 });

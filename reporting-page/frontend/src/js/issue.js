@@ -98,13 +98,13 @@ export async function openIssuePage(issueId, severity) {
     pageContents.innerHTML = `
       <h1 class="issue-name">${currentIssue.Name}</h1>
       <div class="issue-information">
-        <h2 id="information">Information</h2>
+        <h2 id="information" class="lang-information"></h2>
         <p id="description">${currentIssue.Information}</p>
-        <h2 id="solution">Acceptable</h2>
+        <h2 id="solution" class="lang-acceptable"></h2>
         <div class="issue-solution">
           <p id="solution-text">${getVersionSolution(currentIssue, stepCounter)}</p>
         </div>
-        <div class="button" id="back-button">Back to issues overview</div>
+        <div class="button lang-back-button" id="back-button">Back to issues overview</div>
       </div>
     `;
   } else { // Issue has screenshots, display the solution guide
@@ -124,7 +124,7 @@ export async function openIssuePage(issueId, severity) {
             <div class="solution-buttons">
               <div class="button-box">
                 <div id="previous-button" class="lang-previous-button button"></div>
-                <div id="next-button" class="lang-next-button button">;</div>
+                <div id="next-button" class="lang-next-button button"></div>
               </div>
             </div>
           </div>
@@ -147,8 +147,10 @@ export async function openIssuePage(issueId, severity) {
       previousSolutionStep(solutionText, solutionScreenshot, currentIssue));
   }
 
-  const texts = ['lang-information', 'lang-solution', 'lang-previous-button', 'lang-next-button', 'lang-back-button'];
-  const localizationIds = ['Issues.Information', 'Issues.Solution', 'Issues.Previous', 'Issues.Next', 'Issues.Back'];
+  const texts = ['lang-information', 'lang-findings', 'lang-solution', 'lang-previous-button', 'lang-next-button',
+    'lang-back-button', 'lang-port', 'lang-password', 'lang-acceptable', 'lang-cookies', 'lang-permissions'];
+  const localizationIds = ['Issues.Information', 'Issues.Findings', 'Issues.Solution', 'Issues.Previous', 'Issues.Next',
+    'Issues.Back', 'Issues.Port', 'Issues.Password', 'Issues.Acceptable', 'Issues.Cookies', 'Issues.Permissions'];
   for (let i = 0; i < texts.length; i++) {
     getLocalization(localizationIds[i], texts[i]);
   }
@@ -198,7 +200,7 @@ export function parseShowResult(issueId, currentIssue) {
     resultLine = permissionShowResults(issues);
     break;
   case '110':
-    resultLine += `The following processes are currently running on your device on the following ports: <br>`;
+    resultLine += `<p class="lang-port"></p>`;
     const portTable = processPortsTable(issues.find((issue) => issue.issue_id === 11).result);
     resultLine += `<table class = "issues-table">`;
     resultLine += `<thead><tr><th>Process</th><th>Port(s)</th></tr></thead>`;
@@ -210,7 +212,8 @@ export function parseShowResult(issueId, currentIssue) {
     break;
   case '160':
     issues.find((issue) => issue.issue_id === 16).result.forEach((issue) => {
-      resultLine += `You changed your password on: ${issue}`;
+      resultLine += `<p class="lang-password"></p>`;
+      resultLine += `<p class="information">${issue}</p>`;
     });
     break;
   case '173':
@@ -223,7 +226,7 @@ export function parseShowResult(issueId, currentIssue) {
     generateBulletList(issues, 23);
     break;
   case '271':
-    resultLine += '(Possible) tracking cookies have been found from the following websites:';
+    resultLine += '<p class="lang-cookies"</p>';
     resultLine += cookiesTable(issues.find((issue) => issue.issue_id === 27).result);
     break;
   case '311':
@@ -239,11 +242,11 @@ export function parseShowResult(issueId, currentIssue) {
     resultLine += '</table>';
     break;
   case '351':
-    resultLine += '(Possible) tracking cookies have been found from the following websites:';
+    resultLine += '<p class="lang-cookies"</p>';
     resultLine += cookiesTable(issues.find((issue) => issue.issue_id === 35).result);
     break;
   case '361':
-    resultLine += '(Possible) tracking cookies have been found from the following websites:';
+    resultLine += '<p class="lang-cookies"</p>';
     resultLine += cookiesTable(issues.find((issue) => issue.issue_id === 36).result);
     break;
   default:
@@ -281,7 +284,8 @@ export function parseShowResult(issueId, currentIssue) {
       }
     });
     applications += '</ul>'; // Close the list
-    resultLine = `The following applications currently have been given permission:<br>${applications}`;
+    resultLine += `<p class="lang-permissions"></p>`;
+    resultLine += `${applications}`;
     return resultLine;
   }
 
@@ -366,22 +370,22 @@ export function parseShowResult(issueId, currentIssue) {
   const result = `
   <h1 class="issue-name">${currentIssue.Name}</h1>
   <div class="issue-information">
-    <h2 id="information">Information</h2>
+    <h2 id="information" class="lang-information"></h2>
     <p>${currentIssue.Information}</p>
-    <h2 id="information">Findings</h2>
+    <h2 id="information" class="lang-findings"></h2>
     <p id="description">${resultLine}</p>
-    <h2 id="solution">Solution</h2>
+    <h2 id="solution" class="lang-solution"></h2>
     <div class="issue-solution">
       <p id="solution-text">${stepCounter +1}. ${getVersionSolution(currentIssue, stepCounter)}</p>
       <img style='display:block; width:750px;height:auto' id="step-screenshot"></img>
       <div class="solution-buttons">
         <div class="button-box">
-          <div id="previous-button" class="button">&laquo; Previous step</div>
-          <div id="next-button" class="button">Next step &raquo;</div>
+          <div id="previous-button" class="button lang-previous-button"></div>
+          <div id="next-button" class="button lang-next-button"></div>
         </div>
       </div>
     </div>
-    <div class="button" id="back-button">Back to issues overview</div>
+    <div class="button lang-back-button" id="back-button"></div>
   </div>
 `;
   return result;

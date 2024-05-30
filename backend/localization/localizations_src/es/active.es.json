@@ -92,6 +92,7 @@
   "Issues":
   {
     "IssueTable": "Tabla de problemas",
+    "Findings": "Hallazgos",
     "AcceptableFindings": "Hallazgos aceptables",
     "Name": "Nombre",
     "Type": "Tipo",
@@ -100,7 +101,16 @@
     "Solution": "Solución",
     "Previous": "&laquo; Paso anterior",
     "Next": "Siguiente paso &raquo;",
-    "Back": "Volver a la vista general de problemas"
+    "Back": "Volver a la vista general de problemas",
+    "Port": "Los siguientes procesos se están ejecutando actualmente en su dispositivo en los siguientes puertos: ",
+    "Password": "Cambiaste tu contraseña en: ",
+    "Acceptable": "Aceptable",
+    "Cookies": "(Posibles) cookies de seguimiento han sido encontradas en los siguientes sitios web: ",
+    "Permissions": "Las siguientes aplicaciones actualmente tienen permisos concedidos: ",    
+    "Low": "Bajo",
+    "Medium": "Medio",
+    "High": "Alto",
+    "Info": "Información"
   },
   "About": {
     "about-title": "Acerca de Infosec Agent",

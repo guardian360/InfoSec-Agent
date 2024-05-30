@@ -92,6 +92,7 @@
   "Issues":
   {
     "IssueTable": "Tableau des problèmes",
+    "Findings": "Résultats",
     "AcceptableFindings": "Résultats acceptables",
     "Name": "Nom",
     "Type": "Type",
@@ -100,7 +101,16 @@
     "Solution": "Solution",
     "Previous": "&laquo; Étape précédente",
     "Next": "Étape suivante &raquo;",
-    "Back": "Retour à l'aperçu des problèmes"
+    "Back": "Retour à l'aperçu des problèmes",
+    "Port": "Les processus suivants sont actuellement en cours d'exécution sur votre appareil sur les ports suivants: ",
+    "Password": "Vous avez changé votre mot de passe le: ",
+    "Acceptable": "Acceptable",
+    "Cookies": "Des cookies de suivi (possibles) ont été trouvés provenant des sites web suivants: ",
+    "Permissions": "Les applications suivantes ont actuellement reçu une autorisation: ",
+    "Low": "faible",
+    "Medium": "Moyen",
+    "High": "Élevé",
+    "Info": "Info"
   },
   "About": {
     "about-title": "À propos de l'agent Infosec",
