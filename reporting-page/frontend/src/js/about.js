@@ -15,18 +15,16 @@ export function openAboutPage() {
     <div class="about-header">
         <h1 class="lang-about-title"></h1>
     </div>
-    <div class="project-info">
-        <div class="project">
-            <h2>Infosec Agent</h2>
-            <p class='lang-infosec-info'></p>
-        </div>
-        <div class="project">
-            <h2>Little Brother</h2>
-            <p class='lang-little-brother-info'>
-            </p>
-        </div>
+    <div class="project">
+        <h2>Infosec Agent</h2>
+        <p class='lang-infosec-info'></p>
     </div>
-    <div class="contribute">
+    <div class="project">
+        <h2>Little Brother</h2>
+        <p class='lang-little-brother-info'>
+        </p>
+    </div>
+    <div class="project">
         <h2 class="lang-contribute-title">Contributing</h2>
         <p class='lang-contribute-info'></p>
     </div>
