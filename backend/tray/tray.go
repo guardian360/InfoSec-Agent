@@ -289,8 +289,10 @@ func ChangeScanInterval(testInput ...string) {
 
 		// Get user input by creating a dialog window
 		var err error
-		res, err = zenity.Entry("Enter the scan interval (in hours):",
-			zenity.Title("Change Scan Interval"),
+		res, err = zenity.Entry(localization.Localize(Language, "Dialogs.ScanInterval.Content"),
+			zenity.Title(localization.Localize(Language, "Dialogs.ScanInterval.Title")),
+			zenity.OKLabel(localization.Localize(Language, "Dialogs.OK")),
+			zenity.CancelLabel(localization.Localize(Language, "Dialogs.Cancel")),
 			zenity.EntryText(strconv.Itoa(scanInterval)),
 			zenity.DefaultItems("24"))
 		if err != nil {
@@ -304,8 +306,10 @@ func ChangeScanInterval(testInput ...string) {
 	scanInterval := usersettings.LoadUserSettings().ScanInterval
 	if err != nil || interval <= 0 {
 		if !test {
-			err = zenity.Info("Invalid input. Using previous interval of "+strconv.Itoa(scanInterval)+" hours.",
-				zenity.Title("Invalid scan interval input"))
+			err = zenity.Info(fmt.Sprintf(localization.Localize(Language, "Dialogs.ScanInterval.InvalidChangeContent"), scanInterval),
+				zenity.Title(localization.Localize(Language, "Dialogs.ScanInterval.InvalidChangeTitle")),
+				zenity.OKLabel(localization.Localize(Language, "Dialogs.OK")),
+				zenity.CancelLabel(localization.Localize(Language, "Dialogs.Cancel")))
 			if err != nil {
 				logger.Log.ErrorWithErr("Error creating invalid interval confirmation dialog:", err)
 			}
@@ -315,8 +319,10 @@ func ChangeScanInterval(testInput ...string) {
 		return
 	}
 	if !test {
-		err = zenity.Info("Scan interval changed to "+strconv.Itoa(interval)+" hours",
-			zenity.Title("Scan Interval Changed"))
+		err = zenity.Info(fmt.Sprintf(localization.Localize(Language, "Dialogs.ScanInterval.ChangedContent"), interval),
+			zenity.Title(localization.Localize(Language, "Dialogs.ScanInterval.ChangedTitle")),
+			zenity.OKLabel(localization.Localize(Language, "Dialogs.OK")),
+			zenity.CancelLabel(localization.Localize(Language, "Dialogs.Cancel")))
 		if err != nil {
 			logger.Log.ErrorWithErr("Error creating interval confirmation dialog:", err)
 		}
@@ -358,7 +364,7 @@ func ScanNow(dialogPresent bool) ([]checks.Check, error) {
 			}
 		}(dialog)
 	} else {
-		result, err = scan.Scan(nil)
+		result, err = scan.Scan(nil, Language)
 		if err != nil {
 			logger.Log.ErrorWithErr("Error calling scan:", err)
 			return result, err
@@ -408,9 +414,11 @@ func ChangeLanguage(testInput ...string) {
 		res = testInput[0]
 	} else {
 		var err error
-		res, err = zenity.List("Choose a language", []string{"German", "British English", "American English",
-			"Spanish", "French", "Dutch", "Portuguese"}, zenity.Title("Change Language"),
-			zenity.DefaultItems("British English"))
+		res, err = zenity.List(localization.Localize(Language, "Dialogs.Language.Content"), []string{"German", "British English", "American English",
+			"Spanish", "French", "Dutch", "Portuguese"}, zenity.Title(localization.Localize(Language, "Dialogs.Language.Title")),
+			zenity.DefaultItems("British English"),
+			zenity.OKLabel(localization.Localize(Language, "Dialogs.OK")),
+			zenity.CancelLabel(localization.Localize(Language, "Dialogs.Cancel")))
 		if err != nil {
 			logger.Log.ErrorWithErr("Error creating dialog:", err)
 			return
@@ -486,12 +494,12 @@ func Popup(scanResult []checks.Check, path string) error {
 	// Create a notification to inform the user that the scan is complete
 	notification := toast.Notification{
 		AppID:               "InfoSec Agent",
-		Title:               "Scan Completed",
+		Title:               localization.Localize(Language, "Dialogs.Popup.Title"),
 		Message:             resultMessage,
 		Icon:                appDataPath + "/InfoSec-Agent/icon/icon128.ico",
 		ActivationArguments: "infosecagent:",
 		Actions: []toast.Action{
-			{Type: "protocol", Label: "Open Reporting Page", Arguments: "infosecagent:"},
+			{Type: "protocol", Label: localization.Localize(Language, "Dialogs.Popup.Button"), Arguments: "infosecagent:"},
 		},
 	}
 	if err = notification.Push(); err != nil {
@@ -519,16 +527,16 @@ func PopupMessage(scanResult []checks.Check, path string) string {
 	}
 	if severityCounters[3] > 0 {
 		if severityCounters[3] == 1 {
-			return "The privacy and security scan has been completed. You have 1 high risk issue. Open the reporting page to see more information."
+			return localization.Localize(Language, "Dialogs.Popup.OneHigh")
 		}
-		return fmt.Sprintf("The privacy and security scan has been completed. You have %d high risk issues. Open the reporting page to see more information.", severityCounters[3])
+		return fmt.Sprintf(localization.Localize(Language, "Dialogs.Popup.MultipleHigh"), severityCounters[3])
 	} else if severityCounters[2] > 0 {
 		if severityCounters[2] == 1 {
-			return "The privacy and security scan has been completed. You have 1 medium risk issue. Open the reporting page to see more information."
+			return localization.Localize(Language, "Dialogs.Popup.OneMedium")
 		}
-		return fmt.Sprintf("The privacy and security scan has been completed. You have %d medium risk issues. Open the reporting page to see more information.", severityCounters[2])
+		return fmt.Sprintf(localization.Localize(Language, "Dialogs.Popup.MultipleMedium"), severityCounters[2])
 	}
-	return "The privacy and security scan has been completed. Open the reporting page to view the results."
+	return localization.Localize(Language, "Dialogs.Popup.Default")
 }
 
 // changeNextScan updates the next scan time based on the current time and the scan interval.
@@ -582,11 +590,13 @@ func periodicScan(scanInterval int) {
 //   - error: An error object that describes the error (if any) that occurred during the scan.
 func runScanWithDialog() (zenity.ProgressDialog, []checks.Check, error) {
 	dialog, err := zenity.Progress(
-		zenity.Title("Security/Privacy Scan"))
+		zenity.Title(localization.Localize(Language, "Dialogs.Scan.Title")),
+		zenity.OKLabel(localization.Localize(Language, "Dialogs.OK")),
+		zenity.CancelLabel(localization.Localize(Language, "Dialogs.Cancel")))
 	if err != nil {
 		logger.Log.ErrorWithErr("Error creating dialog:", err)
 	}
-	result, err := scan.Scan(dialog)
+	result, err := scan.Scan(dialog, Language)
 	if err != nil {
 		logger.Log.ErrorWithErr("Error calling scan:", err)
 		return dialog, result, err

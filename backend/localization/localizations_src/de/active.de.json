@@ -12,6 +12,35 @@
     "QuitTitle": "Beenden",
     "QuitTooltip": "Beenden Sie die Beispiel-Tray-Anwendung"
   },
+  "Dialogs": {
+    "OK": "OK",
+    "Cancel": "Abbrechen",
+    "ScanInterval": {
+      "Title": "Scanintervall ändern",
+      "Content": "Scanintervall eingeben (in Stunden):",
+      "ChangedTitle": "Scanintervall geändert",
+      "ChangedContent": "Scanintervall auf %d Stunden geändert.",
+      "InvalidChangeTitle": "Ungültige Eingabe des Scanintervalls",
+      "InvalidChangeContent": "Ungültige Eingabe. Vorheriges Intervall von %d Stunden wird verwendet."
+    },
+    "Scan": {
+      "Title": "Sicherheits-/Datenschutzscan",
+      "Content": "Überprüfung läuft %d von %d"
+    },
+    "Language": {
+      "Title": "Sprache ändern",
+      "Content": "Wählen Sie eine Sprache"
+    },
+    "Popup": {
+      "Title": "Scan abgeschlossen",
+      "OneHigh": "Der Datenschutz- und Sicherheitsscan wurde abgeschlossen. Sie haben 1 hochriskantes Problem. Öffnen Sie die Berichtsseite, um mehr Informationen zu erhalten.",
+      "MultipleHigh": "Der Datenschutz- und Sicherheitsscan wurde abgeschlossen. Sie haben %d hochriskante Probleme. Öffnen Sie die Berichtsseite, um mehr Informationen zu erhalten.",
+      "OneMedium": "Der Datenschutz- und Sicherheitsscan wurde abgeschlossen. Sie haben 1 mittelriskantes Problem. Öffnen Sie die Berichtsseite, um mehr Informationen zu erhalten.",
+      "MultipleMedium": "Der Datenschutz- und Sicherheitsscan wurde abgeschlossen. Sie haben %d mittelriskante Probleme. Öffnen Sie die Berichtsseite, um mehr Informationen zu erhalten.",
+      "Default": "Der Datenschutz- und Sicherheitsscan wurde abgeschlossen. Öffnen Sie die Berichtsseite, um die Ergebnisse anzusehen.",
+      "Button": "Berichtsseite öffnen"
+    }
+  },
   "Navigation": 
   {
     "Home": "Startseite",

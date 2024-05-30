@@ -265,6 +265,7 @@ func TestOpenReportingPageWhenAlreadyOpen(t *testing.T) {
 //
 // No return values.
 func TestPopup(t *testing.T) {
+	tray.ChangeLanguage("British English")
 	// Define check result
 	scanResult := []checks.Check{
 		{
