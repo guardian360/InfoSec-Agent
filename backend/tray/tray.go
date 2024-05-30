@@ -215,7 +215,7 @@ func OpenReportingPage(path string) error {
 	}()
 
 	//TODO: In a release version, there (should be) no need to build the application, just run it
-	const build = true
+	const build = false
 	if build {
 		err = BuildReportingPage()
 		if err != nil {
