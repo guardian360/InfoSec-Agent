@@ -263,7 +263,7 @@ func TestRefreshMenu(t *testing.T) {
 // No return values.
 func TestOpenReportingPageWhenAlreadyOpen(t *testing.T) {
 	tray.ReportingPageOpen = true
-	err := tray.OpenReportingPage("../")
+	err := tray.OpenReportingPage()
 	require.Error(t, err)
 	require.Equal(t, "reporting-page is already running", err.Error())
 }

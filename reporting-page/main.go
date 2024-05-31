@@ -12,6 +12,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/config"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/localization"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/tray"
@@ -102,7 +103,7 @@ func main() {
 	}
 
 	// Setup log file
-	logger.Setup("reporting-page-log.txt", 0, -1)
+	logger.Setup("reporting-page-log.txt", config.LogLevel, config.LogLevelSpecific)
 	logger.Log.Info("Reporting page starting")
 
 	// Change directory to the reporting page directory.
@@ -113,8 +114,18 @@ func main() {
 	)
 	if err != nil {
 		logger.Log.ErrorWithErr("Error opening registry key: ", err)
+		err = os.Chdir("reporting-page")
+		if err != nil {
+			logger.Log.ErrorWithErr("Error changing directory: ", err)
+		}
 	} else {
-		defer k.Close()
+		logger.Log.Debug("Found registry key")
+		defer func(k registry.Key) {
+			err = k.Close()
+			if err != nil {
+				logger.Log.ErrorWithErr("Error closing registry key: ", err)
+			}
+		}(k)
 
 		// Get reporting page executable path
 		s, _, err2 := k.GetStringValue("Path")
@@ -123,10 +134,11 @@ func main() {
 		}
 
 		// Set current directory to reporting-page
-		err2 = os.Chdir(s + "/../..")
+		err2 = os.Chdir(s)
 		if err2 != nil {
 			logger.Log.ErrorWithErr("Error changing directory: ", err)
 		}
+		logger.Log.Debug("Changed directory to " + s)
 	}
 
 	// Create a new instance of the app and tray struct

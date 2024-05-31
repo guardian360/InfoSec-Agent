@@ -6,7 +6,7 @@ $currentDir = Get-Location
 if ($currentDir -like "*scripts") {
     Set-Location ..
 }
-#.\scripts\build-prod.bat
+.\scripts\build-prod.bat
 
 # Generate installer with Inno Setup
 iscc .\scripts\generate-installer.iss /DMyAppVersion=$VERSION
