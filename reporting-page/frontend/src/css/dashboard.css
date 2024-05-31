@@ -202,7 +202,7 @@
 }
 
 /* risk areas */
-.risk-areas {
+.security-area-buttons {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-evenly;

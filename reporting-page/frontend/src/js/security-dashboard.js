@@ -41,41 +41,43 @@ export function openSecurityDashboardPage() {
         <div class="data-segment-header">
           <p class="lang-security-risk-areas"></p>
         </div>
-        <div class="security-area security-button">
-          <a>
-            <p>
-              <span class="lang-applications"></span>
-              <span class="material-symbols-outlined">apps_outage</span>
-            </p>
-          </a>
-        </div>
-        <div class="security-area security-button">
-          <a>
-            <p><span class="lang-browser"></span><span class="material-symbols-outlined">travel_explore</span></p>
-          </a>
-        </div>
-        <div class="security-area security-button">
-          <a>
-            <p><span class="lang-devices"></span><span class="material-symbols-outlined">devices</span></p>
-          </a>
-        </div>
-        <div class="security-area security-button">
-          <a>
-            <p>
-              <span class="lang-operating-system"></span>
-              <span class="material-symbols-outlined">desktop_windows</span>
-            </p>        
-          </a>
-        </div>
-        <div class="security-area security-button">
-          <a>
-            <p><span class="lang-passwords"></span><span class="material-symbols-outlined">key</span></p>
-          </a>
-        </div>
-        <div class="security-area security-button">
-          <a>
-            <p><span class="lang-other"></span><span class="material-symbols-outlined">view_cozy</span></p>
-          </a>
+        <div class="security-area-buttons">
+          <div class="security-area security-button">
+            <a>
+              <p>
+                <span class="lang-applications"></span>
+                <span class="material-symbols-outlined">apps_outage</span>
+              </p>
+            </a>
+          </div>
+          <div class="security-area security-button">
+            <a>
+              <p><span class="lang-browser"></span><span class="material-symbols-outlined">travel_explore</span></p>
+            </a>
+          </div>
+          <div class="security-area security-button">
+            <a>
+              <p><span class="lang-devices"></span><span class="material-symbols-outlined">devices</span></p>
+            </a>
+          </div>
+          <div class="security-area security-button">
+            <a>
+              <p>
+                <span class="lang-operating-system"></span>
+                <span class="material-symbols-outlined">desktop_windows</span>
+              </p>        
+            </a>
+          </div>
+          <div class="security-area security-button">
+            <a>
+              <p><span class="lang-passwords"></span><span class="material-symbols-outlined">key</span></p>
+            </a>
+          </div>
+          <div class="security-area security-button">
+            <a>
+              <p><span class="lang-other"></span><span class="material-symbols-outlined">view_cozy</span></p>
+            </a>
+          </div>
         </div>
       </div>     
     </div>

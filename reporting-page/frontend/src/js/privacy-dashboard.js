@@ -42,23 +42,25 @@ export function openPrivacyDashboardPage() {
         <div class="data-segment-header">
           <p class="lang-privacy-risk-areas"></p>
         </div>
-        <div class="security-area privacy-button">
-          <a>
-            <p>
-              <span class="lang-permissions"></span>
-              <span class="material-symbols-outlined">person_check</span>
-            </p>
-          </a>
-        </div>
-        <div class="security-area privacy-button">
-          <a>
-            <p><span class="lang-browser"></span><span class="material-symbols-outlined">travel_explore</span></p>
-          </a>
-        </div>
-        <div class="security-area privacy-button">
-          <a>
-            <p><span class="lang-other"></span><span class="material-symbols-outlined">view_cozy</span></p>
-          </a>
+        <div class="security-area-buttons">
+          <div class="security-area privacy-button">
+            <a>
+              <p>
+                <span class="lang-permissions"></span>
+                <span class="material-symbols-outlined">person_check</span>
+              </p>
+            </a>
+          </div>
+          <div class="security-area privacy-button">
+            <a>
+              <p><span class="lang-browser"></span><span class="material-symbols-outlined">travel_explore</span></p>
+            </a>
+          </div>
+          <div class="security-area privacy-button">
+            <a>
+              <p><span class="lang-other"></span><span class="material-symbols-outlined">view_cozy</span></p>
+            </a>
+          </div>
         </div>
       </div>    
     </div>
