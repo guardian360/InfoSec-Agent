@@ -6,6 +6,7 @@ export function mockPageFunctions() {
   jest.unstable_mockModule('../wailsjs/go/main/Tray.js', () => ({
     LogError: jest.fn(),
     ChangeLanguage: jest.fn(),
+    ChangeScanInterval: jest.fn(),
   }));
 
   // Mock Navigation

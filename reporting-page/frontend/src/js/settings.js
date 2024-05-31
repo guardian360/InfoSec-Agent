@@ -74,7 +74,7 @@ if (typeof document !== 'undefined') {
   try {
     document.getElementById('personalize-button').addEventListener('click', () => openPersonalizePage());
     document.getElementById('language-button').addEventListener('click', () => updateLanguage());
-    document.getElementById('windows-version-button').addEventListener('click', () => showModal('window-version-modal')));
+    document.getElementById('windows-version-button').addEventListener('click', () => showModal('window-version-modal'));
     document.getElementById('scan-interval-button').addEventListener('click', () => changeScanInterval());
 
     document.getElementById('windows-10').addEventListener('click', () => selectWindowsVersion(10));

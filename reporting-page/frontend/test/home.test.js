@@ -45,6 +45,7 @@ jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
 jest.unstable_mockModule('../wailsjs/go/main/Tray.js', () => ({
   LogError: jest.fn(),
   ChangeLanguage: jest.fn(),
+  ChangeScanInterval: jest.fn(),
 }));
 
 // Mock openIssuesPage

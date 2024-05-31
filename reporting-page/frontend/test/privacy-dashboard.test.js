@@ -55,6 +55,7 @@ jest.unstable_mockModule('../src/js/personalize.js', () => ({
 jest.unstable_mockModule('../wailsjs/go/main/Tray.js', () => ({
   LogError: jest.fn(),
   ChangeLanguage: jest.fn(),
+  ChangeScanInterval: jest.fn(),
 }));
 
 describe('Privacy dashboard page', function() {
