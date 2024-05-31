@@ -26,6 +26,21 @@ const issuesWithResultsShow =
 export function updateSolutionStep(solutionText, solutionScreenshot, issue, stepCounter) {
   solutionText.innerHTML = `${stepCounter + 1}. ${getVersionSolution(issue, stepCounter)}`;
   solutionScreenshot.src = getVersionScreenshot(issue, stepCounter).toString();
+  // Hide/show buttons based on the current step
+  const previousButton = document.getElementById('previous-button');
+  const nextButton = document.getElementById('next-button');
+  if (previousButton && nextButton) {
+    if (stepCounter === 0) {
+      previousButton.style.display = 'none';
+    } else {
+      previousButton.style.display = 'block';
+    }
+    if (stepCounter === issue.Solution.length - 1) {
+      nextButton.style.display = 'none';
+    } else {
+      nextButton.style.display = 'block';
+    }
+  }
 }
 
 /** Go to next step of solution guide
@@ -146,6 +161,9 @@ export async function openIssuePage(issueId, severity) {
       nextSolutionStep(solutionText, solutionScreenshot, currentIssue));
     document.getElementById('previous-button').addEventListener('click', () =>
       previousSolutionStep(solutionText, solutionScreenshot, currentIssue));
+
+    // Initial check to hide/show buttons
+    updateSolutionStep(solutionText, solutionScreenshot, currentIssue, stepCounter);
   }
 
   const texts = ['lang-information', 'lang-findings', 'lang-solution', 'lang-previous-button', 'lang-next-button',
@@ -398,6 +416,7 @@ export function parseShowResult(issueId, currentIssue) {
     <div class="button lang-back-button" id="back-button"></div>
   </div>
 `;
+
   return result;
 }
 
