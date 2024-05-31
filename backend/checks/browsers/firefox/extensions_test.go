@@ -12,15 +12,6 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-// MockProfileFinder is a mock implementation of the FirefoxProfileFinder interface
-type MockProfileFinder struct {
-	FirefoxFolderFunc func() ([]string, error)
-}
-
-func (m *MockProfileFinder) FirefoxFolder() ([]string, error) {
-	return m.FirefoxFolderFunc()
-}
-
 func TestExtensionFirefox(t *testing.T) {
 	t.Run("returns error when no firefox directory found", func(t *testing.T) {
 		profileFinder := &MockProfileFinder{

@@ -5,6 +5,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"strings"
 	"time"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/browsers"
@@ -31,7 +32,7 @@ func HistoryFirefox(profileFinder browsers.FirefoxProfileFinder, getter browsers
 	}
 
 	// Copy the database, so we don't have problems with locked files
-	tempHistoryDbff := filepath.Join(os.TempDir(), "tempHistoryDb.sqlite")
+	tempHistoryDbff := filepath.Join(os.TempDir(), "tempHistoryDBFirefox.sqlite")
 	// Clean up the temporary file when the function returns
 	defer func(name string) {
 		err = os.Remove(name)
@@ -40,17 +41,15 @@ func HistoryFirefox(profileFinder browsers.FirefoxProfileFinder, getter browsers
 		}
 	}(tempHistoryDbff)
 
+	copyGetter := browsers.RealCopyFileGetter{}
 	// Copy the database to a temporary location
-	copyError := browsers.CopyFile(ffDirectory[0]+"\\places.sqlite", tempHistoryDbff, nil, nil)
+	copyError := copyGetter.CopyFile(ffDirectory[0]+"\\places.sqlite", tempHistoryDbff, nil, nil)
 	if copyError != nil {
 		logger.Log.ErrorWithErr("Unable to make a copy of the file: ", copyError)
 		return checks.NewCheckError(checks.HistoryFirefoxID, copyError)
 	}
 
-	db, err := sql.Open("sqlite", tempHistoryDbff)
-	if err != nil {
-		return checks.NewCheckError(checks.HistoryFirefoxID, err)
-	}
+	db, _ := sql.Open("sqlite", tempHistoryDbff)
 	defer CloseDatabase(db)
 
 	rows, err := QueryDatabase(db)
@@ -169,7 +168,7 @@ func ProcessQueryResults(results []QueryResult, getter browsers.PhishingDomainGe
 
 		matches := re.FindStringSubmatch(result.URL)
 		for _, scamDomain := range phishingDomainList {
-			if len(matches) > 1 && matches[0] == scamDomain {
+			if len(matches) > 1 && strings.Contains(scamDomain, matches[1]) {
 				domain := matches[1]
 				output = append(output, domain+timeString)
 			}

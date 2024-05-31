@@ -12,6 +12,39 @@
     "QuitTitle": "Quit",
     "QuitTooltip": "Quit example tray application"
   },
+  "Dialogs":
+  {
+    "OK": "OK",
+    "Cancel": "Cancel",
+    "ScanInterval": 
+    {
+      "Title": "Change Scan Interval",
+      "Content": "Enter scan interval (in hours):",
+      "ChangedTitle": "Scan Interval Changed",
+      "ChangedContent": "Scan interval changed to %d hours.",
+      "InvalidChangeTitle": "Invalid scan interval input",
+      "InvalidChangeContent": "Invalid input. Using previous interval of %d hours."
+    },
+    "Scan": 
+    {
+      "Title": "Security/Privacy Scan",
+      "Content": "Running check %d of %d"
+    },
+    "Language": 
+    {
+      "Title": "Change Language",
+      "Content": "Choose a language"
+    },
+    "Popup": {
+      "Title": "Scan Completed",
+      "OneHigh": "The privacy and security scan has been completed. You have 1 high risk issue. Open the reporting page to see more information.",
+      "MultipleHigh": "The privacy and security scan has been completed. You have %d high risk issues. Open the reporting page to see more information.",
+      "OneMedium": "The privacy and security scan has been completed. You have 1 medium risk issue. Open the reporting page to see more information.",
+      "MultipleMedium": "The privacy and security scan has been completed. You have %d medium risk issues. Open the reporting page to see more information.",
+      "Default": "The privacy and security scan has been completed. Open the reporting page to view the results.",
+      "Button": "Open Reporting Page"
+    }
+  },
   "Navigation": 
   {
     "Home": "Home",
@@ -21,7 +54,10 @@
     "Integration": "Integration",
     "About": "About",
     "Personalize": "Personalize Page",
-    "ChangeLanguage": "Change Language"
+    "ChangeLanguage": "Change Language",
+    "WindowsVersion": "Windows Version",
+    "ScanInterval": "Scan Interval",
+    "SelectVersion": "Select windows version"
   },
   "Dashboard": 
   {
@@ -63,6 +99,7 @@
   "Issues":
   {
     "IssueTable": "Issue table",
+    "Findings": "Findings",
     "AcceptableFindings": "Acceptable findings",
     "Name": "Name",
     "Type": "Type",
@@ -71,13 +108,25 @@
     "Solution": "Solution",
     "Previous": "&laquo; Previous step",
     "Next": "Next step &raquo;",
-    "Back": "Back to issues overview"
+    "Back": "Back to issues overview",
+    "Port": "The following processes are currently running on your device on the following ports: ",
+    "Password": "You changed your password on: ",
+    "Acceptable": "Acceptable",
+    "Cookies": "(Possible) tracking cookies have been found from the following websites: ",
+    "Permissions": "The following applications currently have been given permission: ",
+    "Low": "Low",
+    "Medium": "Medium",
+    "High": "High",
+    "Info": "Info"
   },
   "About": {
-    "about-title": "About Infosec Agent",
-    "infosec-info": "The InfoSec Agent project aims to improve the security and privacy of Windows computer users. Currently, there are applications available that do this, but they are mainly targeted at large companies. The goal of this project is to make this accessible to everyone. An application is being developed that collects information about the user's system to discover any security or privacy-related vulnerabilities. The results will be presented to the user in a special dashboard, showing the current status of the system, including recommended actions to improve it.",
-    "little-brother-info": "This project is a collaborative effort involving nine students from Utrecht University in The Netherlands, in partnership with the Dutch IT company Guardian360. It serves as the Software Project for the Bachelor's Programme in Computing Sciences at the UU.",
-    "contribute-title": "Contribute",
-    "contribute-info": "InfoSec-Agent is an Open-Source project licensed under the GPL-3.0 Licence. However, due to its origins as a Utrecht University assignment, public contributions to this repository will only be merged after the completion of this assignment, which is scheduled for 24th June 2024. Feel free to report any bugs or issues you encounter. Your feedback is valuable and helps improve the InfoSec-Agent project. You can email us at <a href=\"mailto:infosecagentuu@gmail.com\">infosecagentuu@gmail.com</a>"
+    "AboutTitle": "About Infosec Agent",
+    "AboutInfo": "The InfoSec Agent is a security and privacy tool for Windows 10 and 11.",
+    "SummaryTitle": "Summary",
+    "SummaryInfo": "The InfoSec Agent project aims to improve the security and privacy of Windows computer users. Currently, there are applications available that do this, but they are mainly targeted at large companies. The goal of this project is to make this accessible to everyone. An application is being developed that collects information about the user's system to discover any security or privacy-related vulnerabilities. The results will be presented to the user in a special dashboard, showing the current status of the system, including recommended actions to improve it.",
+    "AffiliationsTitle": "Affiliations",
+    "AffiliationsInfo": "This project is a collaborative effort involving nine students from Utrecht University in The Netherlands, in partnership with the Dutch IT company Guardian360. It serves as the Software Project for the Bachelor's Programme in Computing Sciences at the UU. This project is also supported by funding from the SIDN Fund (Stichting Internet Domeinregistratie Nederland), the Dutch domain name registrar.",
+    "ContributingTitle": "Contributing",
+    "ContributingInfo": "InfoSec-Agent is an Open-Source project licensed under the AGPL-3.0 Licence. However, due to its origins as a Utrecht University assignment, public contributions to this repository will only be merged after the completion of this assignment, which is scheduled for 24th June 2024. Feel free to report any bugs or issues you encounter. Your feedback is valuable and helps improve the InfoSec-Agent project. You can email us at <a href=\"mailto:infosecagentuu@gmail.com\">infosecagentuu@gmail.com</a>"
   }
 }

@@ -114,14 +114,27 @@ func TestScanNow(t *testing.T) {
 	// Set up initial ScanCounter value
 	initialScanCounter := 0
 
+	wg := sync.WaitGroup{}
+	wg.Add(2)
+	errSlice := make([]error, 2)
 	// Run the function without dialog
-	_, err := tray.ScanNow(false)
-	require.NoError(t, err)
+	go func() {
+		defer wg.Done()
+		_, err := tray.ScanNow(false)
+		errSlice[0] = err
+	}()
 
 	// Run the function with dialog
-	_, err = tray.ScanNow(true)
-	require.NoError(t, err)
+	go func() {
+		defer wg.Done()
+		_, err := tray.ScanNow(true)
+		errSlice[1] = err
+	}()
 
+	wg.Wait()
+	for _, err := range errSlice {
+		require.NoError(t, err)
+	}
 	// Assert that ScanCounter was incremented
 	finalScanCounter := tray.ScanCounter
 	expectedScanCounter := initialScanCounter + 2
@@ -265,6 +278,7 @@ func TestOpenReportingPageWhenAlreadyOpen(t *testing.T) {
 //
 // No return values.
 func TestPopup(t *testing.T) {
+	tray.ChangeLanguage("British English")
 	// Define check result
 	scanResult := []checks.Check{
 		{

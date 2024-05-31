@@ -213,7 +213,7 @@ func TestIntegrationCookiesChromiumWithCookies(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			result := chromium.CookiesChromium(tt.browser, browsers.RealDefaultDirGetter{})
+			result := chromium.CookiesChromium(tt.browser, browsers.RealDefaultDirGetter{}, browsers.RealCopyFileGetter{}, browsers.RealQueryCookieDatabaseGetter{})
 			require.NotEmpty(t, result)
 			require.NotEqual(t, -1, result.ResultID)
 			require.Equal(t, 1, result.ResultID)
@@ -237,7 +237,7 @@ func TestIntegrationCookiesChromiumWithoutCookies(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			result := chromium.CookiesChromium(tt.browser, browsers.RealDefaultDirGetter{})
+			result := chromium.CookiesChromium(tt.browser, browsers.RealDefaultDirGetter{}, browsers.RealCopyFileGetter{}, browsers.RealQueryCookieDatabaseGetter{})
 			require.Empty(t, result)
 			require.NotEqual(t, -1, result.ResultID)
 			require.Equal(t, 0, result.ResultID)
