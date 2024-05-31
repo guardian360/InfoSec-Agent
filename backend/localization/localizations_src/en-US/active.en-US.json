@@ -39,7 +39,9 @@
       "OneMedium": "The privacy and security scan has been completed. You have 1 medium risk issue. Open the reporting page to see more information.",
       "MultipleMedium": "The privacy and security scan has been completed. You have %d medium risk issues. Open the reporting page to see more information.",
       "Default": "The privacy and security scan has been completed. Open the reporting page to view the results.",
-      "Button": "Open Reporting Page"
+      "Button": "Open Reporting Page",
+      "Startup": "InfoSec Agent has started and is running in the background. Open the system tray to access the application.",
+      "AlreadyRunning": "InfoSec Agent is already running in the background. Open the system tray to access the application."
     }
   },
   "Navigation": 

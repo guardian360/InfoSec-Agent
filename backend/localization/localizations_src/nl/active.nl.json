@@ -38,7 +38,9 @@
       "OneMedium": "De privacy- en beveiligingsscan is voltooid. U heeft 1 probleem met gemiddeld risico. Open de rapportpagina voor meer informatie.",
       "MultipleMedium": "De privacy- en beveiligingsscan is voltooid. U heeft %d problemen met gemiddeld risico. Open de rapportpagina voor meer informatie.",
       "Default": "De privacy- en beveiligingsscan is voltooid. Open de rapportpagina om de resultaten te bekijken.",
-      "Button": "Rapportpagina openen"
+      "Button": "Rapportpagina openen",
+      "Startup": "InfoSec Agent is gestart en draait op de achtergrond. Open de systeembalk om toegang te krijgen tot de applicatie.",
+      "AlreadyRunning": "InfoSec Agent draait al op de achtergrond. Open de systeembalk om toegang te krijgen tot de applicatie."
     }
   },
   "Navigation": 
