@@ -21,14 +21,16 @@ import (
 //   - ScanInterval: An integer representing the interval (in hours) at which the system should perform scans.
 //   - Integration: A boolean indicating whether the user has enabled integration with other systems or services.
 //   - NextScan: A time.Time value indicating when the next scan should occur.
+//   - LighthouseState: An integer representing the gamification lighthouse state.
 type UserSettings struct {
-	Language     int       `json:"Language"`     // User's preferred language
-	ScanInterval int       `json:"ScanInterval"` // Interval for system scans (in hours)
-	Integration  bool      `json:"Integration"`  // Integration status with other systems
-	NextScan     time.Time `json:"NextScan"`     // Time for the next system scan
+	Language        int       `json:"Language"`        // User's preferred language
+	ScanInterval    int       `json:"ScanInterval"`    // Interval for system scans (in hours)
+	Integration     bool      `json:"Integration"`     // Integration status with other systems
+	NextScan        time.Time `json:"NextScan"`        // Time for the next system scan
+	LighthouseState int       `json:"LighthouseState"` // User's game state
 }
 
-var DefaultUserSettings = UserSettings{Language: 1, ScanInterval: 24, Integration: false, NextScan: time.Now().Add(time.Hour * 24)}
+var DefaultUserSettings = UserSettings{Language: 1, ScanInterval: 24, Integration: false, NextScan: time.Now().Add(time.Hour * 24), LighthouseState: 0}
 
 // LoadUserSettings loads the user settings from a JSON file in the Windows AppData folder.
 //

@@ -371,16 +371,10 @@ func ScanNow(dialogPresent bool) ([]checks.Check, error) {
 		}
 	}
 
-	var gs gamification.GameState
-
 	// Check if it is the first scan the user has done, so we initialise the gamestate.
 	// Otherwise we update the gamestate.
-	if ScanCounter <= 1 {
-		gs = gamification.GameState{Points: 0, PointsHistory: []gamification.PointRecord{}, LighthouseState: 0}
-		_, err = gamification.PointCalculation(gs, result, "reporting-page/database.db")
-	} else {
-		_, err = gamification.PointCalculation(gs, result, "reporting-page/database.db")
-	}
+	_, err = gamification.UpdateGameState(result, "reporting-page/database.db")
+
 	if err != nil {
 		logger.Log.ErrorWithErr("Error calculating points:", err)
 		return result, err

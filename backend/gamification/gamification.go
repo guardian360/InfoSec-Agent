@@ -1,6 +1,6 @@
 // Package gamification handles the gamification within the application, to reward users for performing security checks and staying secure.
 //
-// Exported function(s): PointCalculation, LighthouseStateTransition
+// Exported function(s): UpdateGameState, PointCalculation, LighthouseStateTransition
 package gamification
 
 import (
@@ -11,6 +11,7 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/database"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/usersettings"
 )
 
 // GameState is a struct that represents the state of the gamification.
@@ -25,6 +26,36 @@ type GameState struct {
 type PointRecord struct {
 	Points    int
 	TimeStamp time.Time
+}
+
+// UpdateGameState updates the game state based on the scan results and the current game state.
+//
+// Parameters:
+//   - scanResults ([]checks.Check): The results of the scans.
+//   - databasePath (string): The path to the database file.
+//
+// Returns: The updated game state with the new points amount and new lighthouse state.
+func UpdateGameState(scanResults []checks.Check, databasePath string) (GameState, error) {
+	// Loading the game state from the user settings
+	gs := GameState{Points: 0, PointsHistory: []PointRecord{}, LighthouseState: 0}
+	lighthouseState := usersettings.LoadUserSettings().LighthouseState
+	gs.LighthouseState = lighthouseState
+
+	gs, err := PointCalculation(gs, scanResults, databasePath)
+	if err != nil {
+		logger.Log.ErrorWithErr("Error calculating points:", err)
+		return gs, err
+	}
+	gs = LighthouseStateTransition(gs)
+
+	// Saving the game state in the user settings
+	err = usersettings.SaveUserSettings(usersettings.UserSettings{
+		LighthouseState: gs.LighthouseState,
+	})
+	if err != nil {
+		logger.Log.Warning("Language setting not saved to file")
+	}
+	return gs, nil
 }
 
 // PointCalculation calculatese the number of points for the user based on the check results.
@@ -73,23 +104,6 @@ func PointCalculation(gs GameState, scanResults []checks.Check, databasePath str
 	return gs, nil
 }
 
-// sufficientActivity checks if the user has been active enough to transition to another lighthouse state
-//
-// Parameters:
-//   - history ([]PointRecord): The history of the user's points, with timestamps.
-//   - duration (time.Duration): The duration of time that the user needs to be active.
-//
-// Returns:
-//   - bool: whether the user has been active enough.
-func sufficientActivity(history []PointRecord, duration time.Duration) bool {
-	if len(history) == 0 {
-		return false
-	}
-	oldestRecord := history[0].TimeStamp
-
-	return time.Since(oldestRecord) > duration
-}
-
 // LighthouseStateTransition determines the lighthouse state based on the user's points (the less points, the better)
 //
 // Parameters:
@@ -117,4 +131,21 @@ func LighthouseStateTransition(gs GameState) GameState {
 		gs.LighthouseState = 0
 	}
 	return gs
+}
+
+// sufficientActivity checks if the user has been active enough to transition to another lighthouse state
+//
+// Parameters:
+//   - history ([]PointRecord): The history of the user's points, with timestamps.
+//   - duration (time.Duration): The duration of time that the user needs to be active.
+//
+// Returns:
+//   - bool: whether the user has been active enough.
+func sufficientActivity(history []PointRecord, duration time.Duration) bool {
+	if len(history) == 0 {
+		return false
+	}
+	oldestRecord := history[0].TimeStamp
+
+	return time.Since(oldestRecord) > duration
 }
