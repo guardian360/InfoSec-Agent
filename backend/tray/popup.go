@@ -15,6 +15,8 @@ import (
 	"github.com/go-toast/toast"
 )
 
+const iconPath string = "/InfoSec-Agent/icon/icon128.ico"
+
 // Popup displays a notification to the user when a scan is completed.
 //
 // This function creates a notification with a title, message, and icon to inform the user that a scan has been completed.
@@ -38,7 +40,7 @@ func Popup(scanResult []checks.Check, path string) error {
 		AppID:               "InfoSec Agent",
 		Title:               localization.Localize(Language, "Dialogs.Popup.Title"),
 		Message:             resultMessage,
-		Icon:                appDataPath + "/InfoSec-Agent/icon/icon128.ico",
+		Icon:                appDataPath + iconPath,
 		ActivationArguments: "infosecagent:",
 		Actions: []toast.Action{
 			{Type: "protocol", Label: localization.Localize(Language, "Dialogs.Popup.Button"), Arguments: "infosecagent:"},
@@ -101,7 +103,7 @@ func StartPopup() {
 		AppID:   "InfoSec Agent",
 		Title:   localization.Localize(Language, "Dialogs.Popup.StartupTitle"),
 		Message: localization.Localize(Language, "Dialogs.Popup.Startup"),
-		Icon:    appDataPath + "/InfoSec-Agent/icon/icon128.ico",
+		Icon:    appDataPath + iconPath,
 	}
 	if err = notification.Push(); err != nil {
 		logger.Log.ErrorWithErr("error pushing scan notification", err)
@@ -128,7 +130,7 @@ func AlreadyRunningPopup() {
 		AppID:   "InfoSec Agent",
 		Title:   localization.Localize(Language, "Dialogs.Popup.AlreadyRunningTitle"),
 		Message: localization.Localize(Language, "Dialogs.Popup.AlreadyRunning"),
-		Icon:    appDataPath + "/InfoSec-Agent/icon/icon128.ico",
+		Icon:    appDataPath + iconPath,
 	}
 	if err = notification.Push(); err != nil {
 		logger.Log.ErrorWithErr("error pushing scan notification", err)
