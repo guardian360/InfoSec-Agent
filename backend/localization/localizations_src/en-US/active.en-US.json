@@ -51,7 +51,10 @@
     "Integration": "Integration",
     "About": "About",
     "Personalize": "Personalize Page",
-    "ChangeLanguage": "Change Language"
+    "ChangeLanguage": "Change Language",
+    "WindowsVersion": "Windows Version",
+    "ScanInterval": "Scan Interval",
+    "SelectVersion": "Select windows version"
 
   },
   "Dashboard": 

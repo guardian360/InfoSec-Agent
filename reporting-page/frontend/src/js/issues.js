@@ -276,7 +276,6 @@ export function sortTable(tbody, column ) {
   const table = tbody.closest('table');
   let direction = table.getAttribute('data-sort-direction');
   direction = direction === 'ascending' ? 'descending' : 'ascending';
-  console.log(direction);
   const rows = Array.from(tbody.rows);
   rows.sort((a, b) => {
     if (column !== 2) {

@@ -6,7 +6,9 @@ import {openPrivacyDashboardPage} from './privacy-dashboard.js';
 import {openIssuePage} from './issue.js';
 import {openIssuesPage} from './issues.js';
 import {openIntegrationPage} from './integration.js';
-import {ChangeLanguage as changeLanguage, LogError as logError} from '../../wailsjs/go/main/Tray.js';
+import {ChangeLanguage as changeLanguage,
+  ChangeScanInterval as changeScanInterval,
+  LogError as logError} from '../../wailsjs/go/main/Tray.js';
 
 /**
  * Initiates a language update operation.
@@ -68,6 +70,8 @@ if (typeof document !== 'undefined') {
     document.getElementById('personalize-button').addEventListener('click', () => openPersonalizePage());
     document.getElementById('language-button').addEventListener('click', () => updateLanguage());
     document.getElementById('windows-version-button').addEventListener('click', () => showWindowsVersion());
+    document.getElementById('scan-interval-button').addEventListener('click', () => changeScanInterval());
+
     document.getElementById('windows-10').addEventListener('click', () => selectWindowsVersion(10));
     document.getElementById('windows-11').addEventListener('click', () => selectWindowsVersion(11));
   } catch (error) {

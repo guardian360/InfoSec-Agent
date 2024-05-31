@@ -50,8 +50,10 @@
     "Integration": "Integração",
     "About": "Sobre",
     "Personalize": "Personalizar página",
-    "ChangeLanguage": "Mudar idioma"
-    
+    "ChangeLanguage": "Mudar idioma",
+    "WindowsVersion": "Versão do Windows",
+    "ScanInterval": "Intervalo de Verificação",
+    "SelectVersion": "Selecionar versão do Windows"
   },
   "Dashboard": 
   {
