@@ -9,6 +9,7 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/localization"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/tray"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/usersettings"
 	"github.com/getlantern/systray"
 	"github.com/rodolfoag/gow32"
 )
@@ -22,6 +23,10 @@ import (
 //
 // Returns: None. This function does not return a value as it is the entry point of the application.
 func main() {
+	// Initialize localization settings for startup popups
+	localization.Init("backend/")
+	settings := usersettings.LoadUserSettings()
+	tray.Language = settings.Language
 	// Create a mutex to ensure only one instance of the application is running
 	// If the mutex already exists, it means another instance of the application is running, so we exit
 	// This also ensures the program is not running when uninstalling the application

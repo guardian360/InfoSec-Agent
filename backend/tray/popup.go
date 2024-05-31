@@ -99,7 +99,7 @@ func StartPopup() {
 	// Create a notification to inform the user that the tray application has started
 	notification := toast.Notification{
 		AppID:   "InfoSec Agent",
-		Title:   localization.Localize(Language, "Dialogs.Popup.Title"),
+		Title:   localization.Localize(Language, "Dialogs.Popup.StartupTitle"),
 		Message: localization.Localize(Language, "Dialogs.Popup.Startup"),
 		Icon:    appDataPath + "/InfoSec-Agent/icon/icon128.ico",
 	}
@@ -126,7 +126,7 @@ func AlreadyRunningPopup() {
 	// Create a notification to inform the user that the tray application has started
 	notification := toast.Notification{
 		AppID:   "InfoSec Agent",
-		Title:   localization.Localize(Language, "Dialogs.Popup.Title"),
+		Title:   localization.Localize(Language, "Dialogs.Popup.AlreadyRunningTitle"),
 		Message: localization.Localize(Language, "Dialogs.Popup.AlreadyRunning"),
 		Icon:    appDataPath + "/InfoSec-Agent/icon/icon128.ico",
 	}

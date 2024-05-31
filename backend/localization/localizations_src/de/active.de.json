@@ -39,8 +39,10 @@
       "MultipleMedium": "Der Datenschutz- und Sicherheitsscan wurde abgeschlossen. Sie haben %d mittelriskante Probleme. Öffnen Sie die Berichtsseite, um mehr Informationen zu erhalten.",
       "Default": "Der Datenschutz- und Sicherheitsscan wurde abgeschlossen. Öffnen Sie die Berichtsseite, um die Ergebnisse anzusehen.",
       "Button": "Berichtsseite öffnen",
+      "StartupTitle": "InfoSec Agent gestartet",
       "Startup": "InfoSec Agent wurde gestartet und läuft im Hintergrund. Öffnen Sie das System-Tray, um auf die Anwendung zuzugreifen.",
-      "AlreadyRunning": "InfoSec Agent läuft bereits im Hintergrund. Öffnen Sie das System-Tray, um auf die Anwendung zuzugreifen."
+      "AlreadyRunningTitle": "InfoSec Agent läuft bereits",
+      "AlreadyRunning": "InfoSec Agent läuft bereits im Hintergrund. Öffnen Sie das System-Tray, um auf die Anwendung zuzugreifen."      
     }
   },
   "Navigation": 
