@@ -1,3 +1,7 @@
+.modal-body {
+  margin: auto;
+}
+
 .share-button:hover {
   background-color: var(--background-nav-hover);
   color: #fefefe;

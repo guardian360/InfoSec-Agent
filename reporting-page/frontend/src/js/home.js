@@ -66,10 +66,10 @@ export function openHomePage() {
     <div class="modal-content">
       <div class="modal-header">
         <span id="close-share-modal" class="close">&times;</span>
-        <p>Share your privacy and security improvement progress</p>
+        <p>Select where to share your progress, Save and download it, then share it with others!</p>
       </div>
-      <div id="share-node"><img class="api-key-image" src="https://placehold.co/600x315" alt="Step 1 Image"></div>
-      <div id="share-buttons">
+      <div id="share-node" class="modal-body"><img class="api-key-image" src="https://placehold.co/600x315" alt="Step 1 Image"></div>
+      <div id="share-buttons" class="modal-body">
         <a id="share-save-button" class="modal-button share-button">Save</a>
         <a class="share-button-break">|</a>
         <a id="select-facebook" class="select-button selected">Facebook</a>
@@ -118,9 +118,7 @@ export function openHomePage() {
   document.getElementById('share-progress').addEventListener('click', () => showModal('share-modal'));
   document.getElementById('share-save-button').addEventListener('click', 
     () => saveProgress(document.getElementById('share-node')));
-  document.getElementById('share-button').addEventListener('click', 
-    () => shareProgress(document.getElementById('share-node')));
-
+  document.getElementById('share-button').addEventListener('click', () => shareProgress());
 
   document.getElementById('select-facebook').addEventListener('click', () => selectSocialMedia('facebook'));
   document.getElementById('select-x').addEventListener('click', () => selectSocialMedia('x'));

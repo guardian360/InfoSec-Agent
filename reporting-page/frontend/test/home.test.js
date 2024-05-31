@@ -44,11 +44,18 @@ jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
 // Mock LogError
 jest.unstable_mockModule('../wailsjs/go/main/Tray.js', () => ({
   LogError: jest.fn(),
+  ChangeLanguage: jest.fn(),
 }));
 
 // Mock openIssuesPage
 jest.unstable_mockModule('../src/js/issue.js', () => ({
   openIssuePage: jest.fn(),
+}));
+
+// Mock openPersonalizePage
+jest.unstable_mockModule('../src/js/personalize.js', () => ({
+  openPersonalizePage: jest.fn(),
+  retrieveTheme: jest.fn(),
 }));
 
 describe('Home page', function() {

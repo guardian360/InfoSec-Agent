@@ -3,8 +3,14 @@ import imageCompression from 'browser-image-compression';
 import {LogError as logError} from '../../wailsjs/go/main/Tray';
 import {getUserSettings} from './issues';
 
+/**
+ * Create image as an url from an html node
+ * @param {HTMLElement} node html node to turn into an image
+ * @param {Int} width width of the resulting image
+ * @param {Int} height height of the resulting image
+ * @returns {URL} url of created image
+ */
 export async function getImage(node, width, height) {
-  console.log(width,height);
   // create Blob from node
   // facebook standard for shared images is 1200x630 or 600x315 (1.91:1)
   const imageOptions = { width: width, height: height }
@@ -18,59 +24,72 @@ export async function getImage(node, width, height) {
   return window.URL.createObjectURL(compressedFile)
 }
 
+/**
+ * Set the correct image in the share-node
+ * @param {string} social social media to set the image for
+ */
+function setImage(social) {
+  const node = document.getElementById('share-node');
+  node.innerHTML = `
+  <img class="api-key-image" src="https://placehold.co/600x315" alt="Step 1 Image">
+  `
+  if (social == 'instagram') {
+    node.innerHTML = `
+    <img class="api-key-image" src="https://placehold.co/300x300" alt="Step 1 Image">   `
+  }
+}
+
+/**
+ * Save the image created from a node in the downloads folder with selected social media format
+ * @param {HTMLElement} node node to download the image for
+ */
 export async function saveProgress(node) {
   try {
     const social = JSON.parse(sessionStorage.getItem('ShareSocial'));
     const imageUrl = await getImage(node,social.height,social.width);
 
     var nowDate = new Date(); 
-    var date = nowDate.getDate()+'/'+(nowDate.getMonth()+1)+'/'+nowDate.getFullYear();
+    var date = nowDate.getDate()+'-'+(nowDate.getMonth()+1)+'-'+nowDate.getFullYear();
     // change date if localization is en-US
     const language = await getUserSettings();
-    if (language == 2) date = (nowDate.getMonth()+1)+'/'+nowDate.getDate()+'/'+nowDate.getFullYear();
+    if (language == 2) date = (nowDate.getMonth()+1)+'-'+nowDate.getDate()+'-'+nowDate.getFullYear();
 
     // download image
-    const linkElement = document.createElement('a')
-    linkElement.download = 'Info-Sec-Agent_'+date+'.png'
-    linkElement.href = imageUrl
-    linkElement.click()
+    const linkElement = document.createElement('a');
+    linkElement.download = 'Info-Sec-Agent_'+date+'_'+social.name+'.png';
+    linkElement.href = imageUrl;
+    linkElement.click();
   } catch (error) {
     throw new Error(`Something went wrong: ${error}`)
   }
 }
 
-export async function shareProgress(node) {
+/** Open the selected social media page */
+export function shareProgress() {
   const social = JSON.parse(sessionStorage.getItem('ShareSocial'));
-  const imageUrl = await getImage(node,social.height,social.width);
   
-
-  let socialUrl = '';
+  // choose which
   switch (social.name) {
     case 'facebook' :
-      console.log(social.name);
+      window.open('https://www.facebook.com/','Facebook');
       break;
     case 'x' :
-      console.log(social.name);
+      window.open('https://x.com/','X');
       break;
     case 'linkedin' :
-      console.log(social.name);
+      window.open('https://www.linkedin.com/','Linkedin');
       break;
     case 'instagram' :
-      console.log(social.name);
+      window.open('https://www.instagram.com/','Instagram');
       break;
     default:
-      console.log(social.name);
+      logError('Sharing failed: social media link not present');
       break;
   }
-  if (socialUrl == '') {
-    logError('Sharing failed: incorrect url');
-    return
-  }
-
-  // window.open('https://nl.wikipedia.org/wiki/Hoofdpagina','_blank');
 }
 
-const socialMediaSizes = {
+// Different social media's to share to, with specifications for image size
+export const socialMediaSizes = {
   facebook: {
     name: 'facebook',
     height: 600,
@@ -106,7 +125,7 @@ export function selectSocialMedia(social) {
     socials[i].classList.remove('selected');
   };
 
-  console.log(social);
   document.getElementById('select-' + social).classList.add('selected');
+  setImage(social);
   sessionStorage.setItem('ShareSocial', JSON.stringify(socialMediaSizes[social]));
 }

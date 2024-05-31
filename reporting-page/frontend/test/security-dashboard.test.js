@@ -3,6 +3,7 @@ import test from 'unit.js';
 import {JSDOM} from 'jsdom';
 import {jest} from '@jest/globals';
 import {mockPageFunctions,
+  mockOpenPageFunctions,
   mockGetLocalization,
   mockChart,
   mockGraph,
@@ -52,6 +53,12 @@ jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
 // Mock openIssuesPage
 jest.unstable_mockModule('../src/js/issue.js', () => ({
   openIssuePage: jest.fn(),
+}));
+
+// Mock openPersonalizePage
+jest.unstable_mockModule('../src/js/personalize.js', () => ({
+  openPersonalizePage: jest.fn(),
+  retrieveTheme: jest.fn(),
 }));
 
 // test cases
