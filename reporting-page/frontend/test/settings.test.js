@@ -45,7 +45,7 @@ const dom = new JSDOM(`
     <div id="window-version-modal" class="modal">
       <div class="modal-content">
         <div class="modal-header">
-          <span id="close-windows-select" class="close">&times;</span>
+          <span id="close-window-version-modal" class="close">&times;</span>
           <p>Select windows version</p>
         </div>
         <div id="windows-10"><a id="windows-10-button">Windows 10</a></div>
