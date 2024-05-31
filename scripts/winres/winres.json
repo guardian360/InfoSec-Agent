@@ -1,7 +1,7 @@
 {
   "RT_GROUP_ICON": {
     "#1": {
-      "0000": "..\\reporting-page\\build\\windows\\icon.ico"
+      "0000": "..\\..\\reporting-page\\build\\windows\\icon.ico"
     }
   },
   "RT_VERSION": {

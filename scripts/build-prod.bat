@@ -1,6 +1,9 @@
-:: This script is intended to be run from the root of the project
+:: This script is intended to be run from the scripts directory or the root directory
 :: It will build the tray and reporting-page executables for production mode
 @echo off
+
+:: Change to the root directory if the script is run from the scripts directory
+if %cd:~-7%%==scripts cd ..
 
 :: Use go-winres for windows resource file generation
 go install github.com/tc-hib/go-winres@latest

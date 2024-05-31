@@ -3,7 +3,7 @@
 // Exported function(s): _
 package main
 
-//go:generate go-winres make --product-version=git-tag --file-version=git-tag
+//go:generate go-winres make --in scripts/winres/winres.json --product-version=git-tag --file-version=git-tag
 
 import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/localization"

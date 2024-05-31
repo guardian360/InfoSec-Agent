@@ -30,7 +30,7 @@ DisableProgramGroupPage=yes
 OutputBaseFilename=InfoSec-Agent-{#MyAppVersion}-Setup
 OutputDir=.
 Compression=lzma
-SetupIconFile=.\reporting-page\build\windows\icon.ico
+SetupIconFile=..\reporting-page\build\windows\icon.ico
 SetupMutex=InfoSec-Agent-Setup
 SolidCompression=yes
 UninstallDisplayIcon={userappdata}\{#MyAppName}\icon\icon.ico
@@ -48,19 +48,19 @@ Name: "spanish"; MessagesFile: "compiler:Languages\Spanish.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "{#SourcePath}\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#SourcePath}\reporting-page\build\bin\InfoSec-Agent-Reporting-Page.exe"; DestDir: "{app}\reporting-page\build\bin"; Flags: ignoreversion
-Source: "{#SourcePath}\backend\localization\localizations_src\*"; DestDir: "{app}\localization\"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "{#SourcePath}\reporting-page\frontend\src\assets\images\*"; DestDir: "{app}\reporting-page\frontend\src\assets\images\"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "{#SourcePath}\reporting-page\database.db"; DestDir: "{app}\reporting-page"; Flags: ignoreversion
-Source: "{#SourcePath}\reporting-page\build\windows\icon.ico"; DestDir: "{userappdata}\{#MyAppName}\icon"; Flags: ignoreversion
-Source: "{#SourcePath}\reporting-page\build\icon128.ico"; DestDir: "{userappdata}\{#MyAppName}\icon"; Flags: ignoreversion
+Source: "{#SourcePath}\..\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#SourcePath}\..\reporting-page\build\bin\InfoSec-Agent-Reporting-Page.exe"; DestDir: "{app}\reporting-page\build\bin"; Flags: ignoreversion
+Source: "{#SourcePath}\..\backend\localization\localizations_src\*"; DestDir: "{app}\localization\"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "{#SourcePath}\..\reporting-page\frontend\src\assets\images\*"; DestDir: "{app}\reporting-page\frontend\src\assets\images\"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "{#SourcePath}\..\reporting-page\database.db"; DestDir: "{app}\reporting-page"; Flags: ignoreversion
+Source: "{#SourcePath}\..\reporting-page\build\windows\icon.ico"; DestDir: "{userappdata}\{#MyAppName}\icon"; Flags: ignoreversion
+Source: "{#SourcePath}\..\reporting-page\build\icon128.ico"; DestDir: "{userappdata}\{#MyAppName}\icon"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
-Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; WorkingDir: "{app}"; IconFilename: "{#SourcePath}\reporting-page\build\windows\icon.ico"
-Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; WorkingDir: "{app}"; IconFilename: "{#SourcePath}\reporting-page\build\windows\icon.ico"; Tasks: desktopicon
-Name: "{userstartup}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; WorkingDir: "{app}"; IconFilename: "{#SourcePath}\reporting-page\build\windows\icon.ico"
+Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; WorkingDir: "{app}"; IconFilename: "{#SourcePath}\..\reporting-page\build\windows\icon.ico"
+Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; WorkingDir: "{app}"; IconFilename: "{#SourcePath}\..\reporting-page\build\windows\icon.ico"; Tasks: desktopicon
+Name: "{userstartup}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; WorkingDir: "{app}"; IconFilename: "{#SourcePath}\..\reporting-page\build\windows\icon.ico"
 
 [Registry]
 Root: HKLM; Subkey: "Software\{#MyAppName}"; Flags: uninsdeletevalue uninsdeletekeyifempty
