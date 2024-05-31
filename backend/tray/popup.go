@@ -104,7 +104,7 @@ func StartPopup() {
 		Icon:    appDataPath + "/InfoSec-Agent/icon/icon128.ico",
 	}
 	if err = notification.Push(); err != nil {
-		logger.Log.ErrorWithErr("error pushing scan notification: %w", err)
+		logger.Log.ErrorWithErr("error pushing scan notification", err)
 	}
 }
 
@@ -131,6 +131,6 @@ func AlreadyRunningPopup() {
 		Icon:    appDataPath + "/InfoSec-Agent/icon/icon128.ico",
 	}
 	if err = notification.Push(); err != nil {
-		logger.Log.ErrorWithErr("error pushing scan notification: %w", err)
+		logger.Log.ErrorWithErr("error pushing scan notification", err)
 	}
 }
