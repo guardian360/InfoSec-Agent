@@ -35,9 +35,9 @@ var ScanCounter int
 //
 // 0: German
 //
-// 1: British English
+// 1: English (UK)
 //
-// 2: American English
+// 2: English (US)
 //
 // 3: Spanish
 //
@@ -47,7 +47,7 @@ var ScanCounter int
 //
 // 6: Portuguese
 //
-// Default language is British English
+// Default language is English (UK)
 var Language = 1
 
 var MenuItems []MenuItem
@@ -395,8 +395,8 @@ func ScanNow(dialogPresent bool) ([]checks.Check, error) {
 //
 // The language indices are as follows:
 // 0: German
-// 1: British English
-// 2: American English
+// 1: English (UK)
+// 2: English (US)
 // 3: Spanish
 // 4: French
 // 5: Dutch
@@ -414,9 +414,9 @@ func ChangeLanguage(testInput ...string) {
 		res = testInput[0]
 	} else {
 		var err error
-		res, err = zenity.List(localization.Localize(Language, "Dialogs.Language.Content"), []string{"German", "British English", "American English",
-			"Spanish", "French", "Dutch", "Portuguese"}, zenity.Title(localization.Localize(Language, "Dialogs.Language.Title")),
-			zenity.DefaultItems("British English"),
+		res, err = zenity.List(localization.Localize(Language, "Dialogs.Language.Content"), []string{"Dutch", "English (UK)", "English (US)", "French", "German", "Portuguese",
+			"Spanish"}, zenity.Title(localization.Localize(Language, "Dialogs.Language.Title")),
+			zenity.DefaultItems("English (UK)"),
 			zenity.OKLabel(localization.Localize(Language, "Dialogs.OK")),
 			zenity.CancelLabel(localization.Localize(Language, "Dialogs.Cancel")))
 		if err != nil {
@@ -429,9 +429,9 @@ func ChangeLanguage(testInput ...string) {
 	switch res {
 	case "German":
 		Language = 0
-	case "British English":
+	case "English (Uk)":
 		Language = 1
-	case "American English":
+	case "English (US)":
 		Language = 2
 	case "Spanish":
 		Language = 3
