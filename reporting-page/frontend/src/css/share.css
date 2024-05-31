@@ -1,0 +1,25 @@
+.modal-body {
+  margin: auto;
+}
+
+.share-button:hover {
+  background-color: var(--background-nav-hover);
+  color: #fefefe;
+  border-radius: 5px;
+}
+
+.share-background {
+  background-color: var(--background-nav-hover);
+  height: 630px;
+  width: 1200px;
+  display: none;
+}
+
+.share-background p {
+  color: #fefefe;
+}
+
+.select-button {
+  cursor: pointer;
+  padding: 5px;
+}

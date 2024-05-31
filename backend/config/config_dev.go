@@ -10,6 +10,6 @@ const (
 
 	LocalizationPath = "backend/localization/localizations_src/"
 
-	BuildReportingPage = true
+	BuildReportingPage = false
 	ReportingPagePath  = "reporting-page/build/bin/InfoSec-Agent-Reporting-Page"
 )

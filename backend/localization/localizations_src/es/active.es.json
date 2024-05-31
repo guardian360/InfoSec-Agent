@@ -38,7 +38,11 @@
       "OneMedium": "El escaneo de privacidad y seguridad se ha completado. Tienes 1 problema de riesgo medio. Abre la página de informes para ver más información.",
       "MultipleMedium": "El escaneo de privacidad y seguridad se ha completado. Tienes %d problemas de riesgo medio. Abre la página de informes para ver más información.",
       "Default": "El escaneo de privacidad y seguridad se ha completado. Abre la página de informes para ver los resultados.",
-      "Button": "Abrir página de informes"
+      "Button": "Abrir página de informes",
+      "StartupTitle": "InfoSec Agent iniciado",
+      "Startup": "InfoSec Agent se ha iniciado y está ejecutándose en segundo plano. Abra la bandeja del sistema para acceder a la aplicación.",
+      "AlreadyRunningTitle": "InfoSec Agent ya está en ejecución",
+      "AlreadyRunning": "InfoSec Agent ya está ejecutándose en segundo plano. Abra la bandeja del sistema para acceder a la aplicación."      
     }
   },
   "Navigation": 
