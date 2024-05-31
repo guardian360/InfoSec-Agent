@@ -50,7 +50,10 @@
     "Integration": "Integratie",
     "About": "Over",
     "Personalize": "Pagina personaliseren",
-    "ChangeLanguage": "Taal wijzigen"
+    "ChangeLanguage": "Taal wijzigen",
+    "WindowsVersion": "Windows versie",
+    "ScanInterval": "Scan interval",
+    "SelectVersion": "Selecteer windows versie"
     
   },
   "Dashboard": 
