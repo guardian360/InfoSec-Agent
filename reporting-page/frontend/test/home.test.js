@@ -53,6 +53,18 @@ jest.unstable_mockModule('../src/js/issue.js', () => ({
   openIssuePage: jest.fn(),
 }));
 
+// Mock settings
+jest.unstable_mockModule('../src/js/settings.js', () => ({
+  showModal: jest.fn(),
+}));
+
+// Mock share
+jest.unstable_mockModule('../src/js/share.js', () => ({
+  saveProgress: jest.fn(),
+  shareProgress: jest.fn(),
+  selectSocialMedia: jest.fn(),
+}));
+
 // Mock openPersonalizePage
 jest.unstable_mockModule('../src/js/personalize.js', () => ({
   openPersonalizePage: jest.fn(),
@@ -92,5 +104,30 @@ describe('Home page', function() {
     // Assert
     button.dispatchEvent(clickEvent);
     expect(openIssuePageMock).toHaveBeenCalled();
+  });
+  it('clicking on the share modal buttons calls the correct functions', async function() {
+    // Arrange
+    const settings = await import('../src/js/settings.js');
+    const showModalMock = jest.spyOn(settings, 'showModal');
+    const share = await import('../src/js/share.js');
+    const saveProgressMock = jest.spyOn(share, 'saveProgress');
+    const shareProgressMock = jest.spyOn(share, 'shareProgress');
+    const selectSocialMediaMock = jest.spyOn(share, 'selectSocialMedia');
+
+    // Act
+    document.getElementById('share-progress').dispatchEvent(clickEvent);
+    document.getElementById('share-save-button').dispatchEvent(clickEvent);
+    document.getElementById('share-button').dispatchEvent(clickEvent);
+
+    document.getElementById('select-facebook').dispatchEvent(clickEvent);
+    document.getElementById('select-x').dispatchEvent(clickEvent);
+    document.getElementById('select-linkedin').dispatchEvent(clickEvent);
+    document.getElementById('select-instagram').dispatchEvent(clickEvent);
+
+    // Assert
+    expect(showModalMock).toHaveBeenCalled();
+    expect(saveProgressMock).toHaveBeenCalled();
+    expect(shareProgressMock).toHaveBeenCalled();
+    expect(selectSocialMediaMock).toHaveBeenCalledTimes(4);
   });
 });

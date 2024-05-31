@@ -3,7 +3,6 @@ import test from 'unit.js';
 import {JSDOM} from 'jsdom';
 import {jest} from '@jest/globals';
 import {mockPageFunctions,
-  mockOpenPageFunctions,
   mockGetLocalization,
   mockChart,
   mockGraph,

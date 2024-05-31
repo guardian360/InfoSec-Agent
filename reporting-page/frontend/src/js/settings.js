@@ -74,7 +74,8 @@ if (typeof document !== 'undefined') {
   try {
     document.getElementById('personalize-button').addEventListener('click', () => openPersonalizePage());
     document.getElementById('language-button').addEventListener('click', () => updateLanguage());
-    document.getElementById('windows-version-button').addEventListener('click', () => showModal('window-version-modal'));
+    document.getElementById('windows-version-button')
+      .addEventListener('click', () => showModal('window-version-modal'));
     document.getElementById('scan-interval-button').addEventListener('click', () => changeScanInterval());
 
     document.getElementById('windows-10').addEventListener('click', () => selectWindowsVersion(10));
@@ -84,11 +85,14 @@ if (typeof document !== 'undefined') {
   }
 }
 
-/** displays the popup to select the currently used windows version */
+/**
+ * displays the popup to select the currently used windows version
+ * @param {string} id id of modal element
+ */
 export function showModal(id) {
   const open = sessionStorage.getItem('ModalOpen');
   if (open == undefined || open == null) {
-    sessionStorage.setItem('ModalOpen',true);
+    sessionStorage.setItem('ModalOpen', true);
     // Get the modal
     const modal = document.getElementById(id);
 

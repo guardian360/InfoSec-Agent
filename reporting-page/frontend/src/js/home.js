@@ -7,7 +7,7 @@ import {LogError as logError} from '../../wailsjs/go/main/Tray.js';
 import {openIssuePage} from './issue.js';
 import {saveProgress, shareProgress, selectSocialMedia} from './share.js';
 import data from '../databases/database.en-GB.json' assert { type: 'json' };
-import { showModal } from './settings.js';
+import {showModal} from './settings.js';
 
 /** Load the content of the Home page */
 export function openHomePage() {
@@ -67,7 +67,9 @@ export function openHomePage() {
         <span id="close-share-modal" class="close">&times;</span>
         <p>Select where to share your progress, Save and download it, then share it with others!</p>
       </div>
-      <div id="share-node" class="modal-body"><img class="api-key-image" src="https://placehold.co/600x315" alt="Step 1 Image"></div>
+      <div id="share-node" class="modal-body">
+        <img class="api-key-image" src="https://placehold.co/600x315" alt="Step 1 Image">
+      </div>
       <div id="share-buttons" class="modal-body">
         <a id="share-save-button" class="modal-button share-button">Save</a>
         <a class="share-button-break">|</a>
@@ -113,7 +115,7 @@ export function openHomePage() {
   document.getElementById('scan-now').addEventListener('click', () => scanTest(true));
   document.getElementById('suggested-issue').addEventListener('click', () => suggestedIssue(''));
   document.getElementById('share-progress').addEventListener('click', () => showModal('share-modal'));
-  document.getElementById('share-save-button').addEventListener('click', 
+  document.getElementById('share-save-button').addEventListener('click',
     () => saveProgress(document.getElementById('share-node')));
   document.getElementById('share-button').addEventListener('click', () => shareProgress());
 

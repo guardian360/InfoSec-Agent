@@ -8,20 +8,20 @@ import {getUserSettings} from './issues';
  * @param {HTMLElement} node html node to turn into an image
  * @param {Int} width width of the resulting image
  * @param {Int} height height of the resulting image
- * @returns {URL} url of created image
+ * @return {URL} url of created image
  */
 export async function getImage(node, width, height) {
   // create Blob from node
   // facebook standard for shared images is 1200x630 or 600x315 (1.91:1)
-  const imageOptions = { width: width, height: height }
-  const imageBlob = (await htmlToImage.toBlob(node, imageOptions))
+  const imageOptions = {width: width, height: height};
+  const imageBlob = (await htmlToImage.toBlob(node, imageOptions));
 
   // pass Blob and the quality option to be compressed
-  const compressionOptions = { initialQuality: 1 }
-  const compressedFile = await imageCompression(imageBlob, compressionOptions)
+  const compressionOptions = {initialQuality: 1};
+  const compressedFile = await imageCompression(imageBlob, compressionOptions);
 
   // create URL from Blob
-  return window.URL.createObjectURL(compressedFile)
+  return window.URL.createObjectURL(compressedFile);
 }
 
 /**
@@ -32,10 +32,10 @@ function setImage(social) {
   const node = document.getElementById('share-node');
   node.innerHTML = `
   <img class="api-key-image" src="https://placehold.co/600x315" alt="Step 1 Image">
-  `
+  `;
   if (social == 'instagram') {
     node.innerHTML = `
-    <img class="api-key-image" src="https://placehold.co/300x300" alt="Step 1 Image">   `
+    <img class="api-key-image" src="https://placehold.co/300x300" alt="Step 1 Image">   `;
   }
 }
 
@@ -46,10 +46,10 @@ function setImage(social) {
 export async function saveProgress(node) {
   try {
     const social = JSON.parse(sessionStorage.getItem('ShareSocial'));
-    const imageUrl = await getImage(node,social.height,social.width);
+    const imageUrl = await getImage(node, social.height, social.width);
 
-    var nowDate = new Date(); 
-    var date = nowDate.getDate()+'-'+(nowDate.getMonth()+1)+'-'+nowDate.getFullYear();
+    const nowDate = new Date();
+    let date = nowDate.getDate()+'-'+(nowDate.getMonth()+1)+'-'+nowDate.getFullYear();
     // change date if localization is en-US
     const language = await getUserSettings();
     if (language == 2) date = (nowDate.getMonth()+1)+'-'+nowDate.getDate()+'-'+nowDate.getFullYear();
@@ -60,31 +60,31 @@ export async function saveProgress(node) {
     linkElement.href = imageUrl;
     linkElement.click();
   } catch (error) {
-    throw new Error(`Something went wrong: ${error}`)
+    throw new Error(`saveProgress couldn't be completed: ${error}`);
   }
 }
 
 /** Open the selected social media page */
 export function shareProgress() {
   const social = JSON.parse(sessionStorage.getItem('ShareSocial'));
-  
+
   // choose which
   switch (social.name) {
-    case 'facebook' :
-      window.open('https://www.facebook.com/','Facebook');
-      break;
-    case 'x' :
-      window.open('https://x.com/','X');
-      break;
-    case 'linkedin' :
-      window.open('https://www.linkedin.com/','Linkedin');
-      break;
-    case 'instagram' :
-      window.open('https://www.instagram.com/','Instagram');
-      break;
-    default:
-      logError('Sharing failed: social media link not present');
-      break;
+  case 'facebook':
+    window.open('https://www.facebook.com/', 'Facebook');
+    break;
+  case 'x':
+    window.open('https://x.com/', 'X');
+    break;
+  case 'linkedin':
+    window.open('https://www.linkedin.com/', 'Linkedin');
+    break;
+  case 'instagram':
+    window.open('https://www.instagram.com/', 'Instagram');
+    break;
+  default:
+    logError('Sharing failed: social media link not present');
+    break;
   }
 }
 
@@ -110,7 +110,7 @@ export const socialMediaSizes = {
     height: 300,
     width: 300,
   },
-}
+};
 
 // on startup set the social media to share to to facebook
 sessionStorage.setItem('ShareSocial', JSON.stringify(socialMediaSizes['facebook']));
