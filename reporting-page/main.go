@@ -134,7 +134,7 @@ func main() {
 	systemTray := NewTray(logger.Log)
 	database := NewDatabase()
 	customLogger := logger.Log
-	localization.Init("../backend/")
+	localization.Init("../")
 	lang := usersettings.LoadUserSettings().Language
 	tray.Language = lang
 

@@ -4,9 +4,11 @@
 package localization
 
 import (
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/config"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
+
 	"encoding/json"
 
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/nicksnyder/go-i18n/v2/i18n"
 	"golang.org/x/text/language"
 )
@@ -27,17 +29,18 @@ var bundle *i18n.Bundle
 // Note: This function should be called before using the Localize function to ensure that the localizers are properly set up.
 func Init(path string) { //3
 	logger.Log.Debug("Initializing localization files")
+	path += config.LocalizationPath
+	logger.Log.Debug("Localization path: " + path)
 
 	bundle = i18n.NewBundle(language.BritishEnglish)
-
 	bundle.RegisterUnmarshalFunc("json", json.Unmarshal)
-	bundle.MustLoadMessageFile(path + "localization/localizations_src/de/active.de.json")
-	bundle.MustLoadMessageFile(path + "localization/localizations_src/en-GB/active.en-GB.json")
-	bundle.MustLoadMessageFile(path + "localization/localizations_src/en-US/active.en-US.json")
-	bundle.MustLoadMessageFile(path + "localization/localizations_src/es/active.es.json")
-	bundle.MustLoadMessageFile(path + "localization/localizations_src/fr/active.fr.json")
-	bundle.MustLoadMessageFile(path + "localization/localizations_src/nl/active.nl.json")
-	bundle.MustLoadMessageFile(path + "localization/localizations_src/pt/active.pt.json")
+	bundle.MustLoadMessageFile(path + "de/active.de.json")
+	bundle.MustLoadMessageFile(path + "en-GB/active.en-GB.json")
+	bundle.MustLoadMessageFile(path + "en-US/active.en-US.json")
+	bundle.MustLoadMessageFile(path + "es/active.es.json")
+	bundle.MustLoadMessageFile(path + "fr/active.fr.json")
+	bundle.MustLoadMessageFile(path + "nl/active.nl.json")
+	bundle.MustLoadMessageFile(path + "pt/active.pt.json")
 
 	logger.Log.Debug("Localization files initialized successfully")
 

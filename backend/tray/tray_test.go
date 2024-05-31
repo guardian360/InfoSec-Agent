@@ -31,7 +31,7 @@ func TestMain(m *testing.M) {
 	logger.SetupTests()
 
 	// Initialize systray
-	go localization.Init("../")
+	go localization.Init("../../")
 	time.Sleep(100 * time.Millisecond)
 
 	go systray.Run(tray.OnReady, tray.OnQuit)

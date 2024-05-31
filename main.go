@@ -41,6 +41,6 @@ func main() {
 	// If you want to log all levels up to the specified level, pass -1.
 	logger.Setup("log.txt", 0, -1)
 	logger.Log.Info("Starting InfoSec Agent")
-	localization.Init("backend/")
+	localization.Init("")
 	systray.Run(tray.OnReady, tray.OnQuit)
 }
