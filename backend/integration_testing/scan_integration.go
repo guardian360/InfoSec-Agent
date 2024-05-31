@@ -29,7 +29,7 @@ func TestIntegrationScanSuccess(t *testing.T) {
 	}(dialog)
 
 	// Run the scan
-	checks, err := scan.Scan(dialog)
+	checks, err := scan.Scan(dialog, 1)
 	require.NotEmpty(t, checks)
 	require.NoError(t, err)
 	totalLength := 0

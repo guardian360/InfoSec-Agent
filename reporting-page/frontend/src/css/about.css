@@ -1,42 +1,18 @@
 .container-about {
-    margin: 60px auto;
-    max-width: 800px;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgb(0 0 0 / 10%);
-    background: var(--background-color-integration);
-    
-}
-
-.about-header {
-    text-align: center;
 }
 
 .about-header h1 {
     font-size: 2.5em;
 }
 
-.project-info {
-    margin-top: 40px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.project {
-    flex: 1;
-    margin: 0 20px;
-}
-
-.project h2, .contribute h2 {
+.project h2 {
     font-size: 1.5em;
 }
 
-.project p, .contribute p {
+.about-header p, .project p {
     line-height: 1.6;
-}
-
-.contribute {
-    margin-top: 40px;
+    padding: 0 20px;
 }
 
 .container-about a {

@@ -154,7 +154,7 @@ func (r RealPhishingDomainGetter) GetPhishingDomains() ([]string, error) {
 	req, err := http.NewRequestWithContext(context.Background(), http.MethodGet, url, nil)
 	req.Header.Add("User-Agent", "Mozilla/5.0")
 	if err != nil {
-		logger.Log.FatalWithErr("Error creating HTTP request:", err)
+		logger.Log.ErrorWithErr("Error creating HTTP request:", err)
 		return nil, err
 	}
 	resp, err := client.Do(req)
@@ -185,6 +185,29 @@ func (r RealPhishingDomainGetter) GetPhishingDomains() ([]string, error) {
 	return strings.Split(string(scamDomainsResponse), "\n"), nil
 }
 
+// CopyFileGetter is an interface that defines a method for copying a file from a source path to a destination path.
+// This interface is used as a contract that must be fulfilled by any type that wishes to provide functionality
+// for copying files.
+type CopyFileGetter interface {
+	// CopyFile is a method that takes a source file path, a destination file path, a mock source file, and a mock destination file as input.
+	// It copies the source file to the destination path. If the mock source file and mock destination file are provided, it uses them instead of the actual files.
+	// This method is used when there is a need to create a copy of a file.
+	//
+	// Parameters:
+	//   - src string: The path to the source file that needs to be copied.
+	//   - dst string: The path to the destination where the source file should be copied to.
+	//   - mockSource mocking.File: A mock file object that represents the source file. If this parameter is not nil, the function uses the mock file for the source.
+	//   - mockDest mocking.File: A mock file object that represents the destination file. If this parameter is not nil, the function uses the mock file for the destination.
+	//
+	// Returns:
+	//   - error: An error object that wraps any error that occurs during the file copying process. If the file is copied successfully, it returns nil.
+	CopyFile(src, dst string, mockSource mocking.File, mockDest mocking.File) error
+}
+
+// RealCopyFile is a struct that implements the CopyFileGetter interface.
+// It provides the real implementation of the CopyFile method.
+type RealCopyFileGetter struct{}
+
 // CopyFile is a utility function that copies a file from a source path to a destination path.
 //
 // Parameters:
@@ -195,7 +218,7 @@ func (r RealPhishingDomainGetter) GetPhishingDomains() ([]string, error) {
 //
 // Returns:
 //   - error: An error object that wraps any error that occurs during the file copying process. If the file is copied successfully, it returns nil.
-func CopyFile(src, dst string, mockSource mocking.File, mockDestination mocking.File) error {
+func (r RealCopyFileGetter) CopyFile(src, dst string, mockSource mocking.File, mockDestination mocking.File) error {
 	var sourceFile mocking.File
 	var err error
 	if mockSource != nil {
@@ -263,6 +286,27 @@ func (r RealDefaultDirGetter) GetDefaultDir(browserPath string) (string, error) 
 	return filepath.Join(userDir, "AppData", "Local", browserPath, "User Data", "Default"), nil
 }
 
+// QueryCookieDatabaseGetter is an interface that defines a method for querying a cookie database.
+// This interface is used as a contract that must be fulfilled by any type that wishes to provide functionality
+// for querying a cookie database.
+//
+// The QueryCookieDatabase method takes several parameters:
+// - checkID: The ID of the check that is being performed.
+// - browser: The name of the browser for which the check is being performed.
+// - databasePath: The path to the cookie database file.
+// - queryParams: A list of parameters to use in the SQL query for the database.
+// - tableName: The name of the table in the database to query.
+// - getter: An object that implements the CopyFileGetter interface. It is used to copy the database file to a temporary location.
+//
+// The method returns a Check object representing the result of the check. If tracking cookies are found, the result contains a list of cookies along with their host stored in the database.
+type QueryCookieDatabaseGetter interface {
+	QueryCookieDatabase(checkID int, browser string, databasePath string, queryParams []string, tableName string, getter CopyFileGetter) checks.Check
+}
+
+// RealQueryCookieDatabaseGetter is an empty struct that is used as a receiver for the QueryCookieDatabase method.
+// This struct is part of the implementation of the QueryCookieDatabaseGetter interface.
+type RealQueryCookieDatabaseGetter struct{}
+
 // QueryCookieDatabase is a utility function that queries a cookie database for specific parameters.
 // This function is used by the browser-specific (Firefox, Chrome, and Edge) cookie checks to query the cookie database and check for tracking cookies.
 //
@@ -272,10 +316,11 @@ func (r RealDefaultDirGetter) GetDefaultDir(browserPath string) (string, error) 
 //   - databasePath string: The path to the cookie database file.
 //   - queryParams []string: A list of parameters to use in the SQL query for the database.
 //   - tableName string: The name of the table in the database to query.
+//   - getter CopyFileGetter: An object that implements the CopyFileGetter interface. It is used to copy the database file to a temporary location.
 //
 // Returns:
 //   - checks.Check: A Check object representing the result of the check. If tracking cookies are found, the result contains a list of cookies along with their host stored in the database.
-func QueryCookieDatabase(checkID int, browser string, databasePath string, queryParams []string, tableName string) checks.Check {
+func (r RealQueryCookieDatabaseGetter) QueryCookieDatabase(checkID int, browser string, databasePath string, queryParams []string, tableName string, getter CopyFileGetter) checks.Check {
 	// Copy the database, so problems don't arise when the file gets locked
 	tempCookieDB := filepath.Join(os.TempDir(), "tempCookieDb"+browser+".sqlite")
 
@@ -288,15 +333,12 @@ func QueryCookieDatabase(checkID int, browser string, databasePath string, query
 	}(tempCookieDB)
 
 	// Copy the database to a temporary location
-	copyError := CopyFile(databasePath, tempCookieDB, nil, nil)
+	copyError := getter.CopyFile(databasePath, tempCookieDB, nil, nil)
 	if copyError != nil {
 		return checks.NewCheckErrorf(checkID, "Unable to make a copy of "+browser+" database: ", copyError)
 	}
 
 	db, err := sql.Open("sqlite", tempCookieDB)
-	if err != nil {
-		return checks.NewCheckError(checkID, err)
-	}
 	defer func(db *sql.DB) {
 		err = db.Close()
 		if err != nil {
@@ -307,13 +349,13 @@ func QueryCookieDatabase(checkID int, browser string, databasePath string, query
 	sqlSelectors := strings.Join(queryParams, ", ")
 	// Query the name, origin and when the cookie was created from the database
 	rows, err := db.Query(fmt.Sprintf("SELECT %s FROM %s", sqlSelectors, tableName))
-
-	if rows.Err() != nil {
-		return checks.NewCheckError(checkID, rows.Err())
-	}
 	if err != nil {
 		return checks.NewCheckError(checkID, err)
 	}
+	if rows.Err() != nil {
+		return checks.NewCheckError(checkID, rows.Err())
+	}
+
 	defer func(rows *sql.Rows) {
 		err = rows.Close()
 		if err != nil {
