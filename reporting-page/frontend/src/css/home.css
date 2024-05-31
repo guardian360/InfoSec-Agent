@@ -1,5 +1,3 @@
-@import url(color-palette.css);
-
 /* all pages */
 body {
   font-family: "DM Sans", sans-serif;
@@ -7,6 +5,8 @@ body {
   background: var(--background-color);
   color: var(--text-body);
   overflow-x: hidden;
+  position: relative; /* Ensure the body is positioned relative for child absolute elements */
+  height: 100vh; /* Ensure the body takes the full viewport height */
 }
 
 #page-contents {
@@ -16,19 +16,24 @@ body {
 /* Base Styles */
 .home-page {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column; /* Align containers vertically */
+  align-items: flex-start; /* Align containers to the right */
   padding: 10px;
+  position: relative; /* Ensure the home-page is positioned relative for stacking context */
+  z-index: 1; /* Ensure the home-page is above the video background */
 }
 
 .container-home {
-  flex: 1 1 50%;
+  flex: 1;
   box-sizing: border-box;
+  width: 40%; /* Ensure containers take half the width */
 }
 
 .data-segment {
   border: 1px solid #ddd;
   border-radius: 5px;
   margin: 5px;
+  background: rgba(255, 255, 255, 0.5); /* More transparent background */
 }
 
 .data-segment-header {
@@ -41,31 +46,38 @@ body {
   margin: 10px;
 }
 
-/* Pie Chart: see dashboard.css */
-
-/* Issue Buttons: see dashboard.css */
-
-/* Medals */
-.medals {
+/* Pie Chart */
+.pie-chart-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between; /* Adjust this to start if medals stretch unevenly */
-  align-items: center; /* Vertically align medals */
-  margin: 20px 0; /* Top and bottom margin for spacing */
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
 
-.medal-layout {
-  flex: 0 0 24%; /* Change flex-grow to 0 to prevent growth */
-  max-width: 180px;
-  padding: 10px;
-  box-sizing: border-box;
-  margin: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Centralize content within each medal box */
-}
-
-.medal-layout img {
+.pie-chart {
   width: 100%;
-  height: auto; /* Maintain aspect ratio */
+  max-width: 300px;
+  height: auto;
+}
+
+/* Issue Buttons */
+.issue-button {
+  display: block;
+  background-color: #4682b4;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.video-background {
+  position: fixed; /* Fixed position to cover the entire screen */
+  left: 180px; /* Adjusted position to the right */
+  top: 10px; /* Adjusted position downwards */
+  width: 95%;
+  height: auto;
+  z-index: -1; /* Ensure it is behind all other elements */
+  object-fit: cover; /* Ensure the video covers the entire background without distortion */
 }
