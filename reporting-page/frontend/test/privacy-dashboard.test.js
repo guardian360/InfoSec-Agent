@@ -45,6 +45,19 @@ jest.unstable_mockModule('../src/js/issue.js', () => ({
   openIssuePage: jest.fn(),
 }));
 
+// Mock openPersonalizePage
+jest.unstable_mockModule('../src/js/personalize.js', () => ({
+  openPersonalizePage: jest.fn(),
+  retrieveTheme: jest.fn(),
+}));
+
+// Mock Tray
+jest.unstable_mockModule('../wailsjs/go/main/Tray.js', () => ({
+  LogError: jest.fn(),
+  ChangeLanguage: jest.fn(),
+  ChangeScanInterval: jest.fn(),
+}));
+
 describe('Privacy dashboard page', function() {
   it('openPrivacyDashboardPage should add the dashboard to the page-contents', async function() {
     // Arrange
