@@ -1,7 +1,6 @@
 package devices_test
 
 import (
-	"errors"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/devices"
 	"reflect"
 	"strings"
@@ -37,12 +36,6 @@ func TestExternalDevices(t *testing.T) {
 			name:          "External devices connected",
 			executorClass: &mocking.MockCommandExecutor{Output: "\r\nFriendlyName\r\n-\r\nHD WebCam\r\n\r\n\r\n\r\n", Err: nil},
 			want:          checks.NewCheckResult(checks.ExternalDevicesID, 1, "HD WebCam", ""),
-		},
-		{
-			name:          "Error checking device",
-			executorClass: &mocking.MockCommandExecutor{Output: "", Err: errors.New("error checking device")},
-			want: checks.NewCheckErrorf(checks.ExternalDevicesID, "error checking device",
-				errors.New("error checking device")),
 		},
 	}
 	for _, tt := range tests {
@@ -85,17 +78,10 @@ func TestCheckDeviceClasses(t *testing.T) {
 			want:    []string{"HD WebCam", ""},
 			wantErr: nil,
 		},
-		{
-			name:          "Error checking device",
-			deviceClass:   []string{"Camera"},
-			executorClass: &mocking.MockCommandExecutor{Output: "", Err: errors.New("error checking device")},
-			want:          nil,
-			wantErr:       errors.New("error checking device"),
-		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got, _ := devices.CheckDeviceClasses(tt.deviceClass, tt.executorClass); !reflect.DeepEqual(got, tt.want) {
+			if got := devices.CheckDeviceClasses(tt.deviceClass, tt.executorClass); !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("ExternalDevices() = %v, want %v", got, tt.want)
 			}
 		})

@@ -11,6 +11,7 @@ import (
 	"time"
 
 	apiconnection "github.com/InfoSec-Agent/InfoSec-Agent/backend/api_connection"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/localization"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/usersettings"
 
@@ -32,7 +33,7 @@ import (
 // Returns:
 //   - []checks.Check: A slice of Check objects representing all found issues.
 //   - error: An error object that describes the error (if any) that occurred while running the checks or serializing the results to JSON. If no error occurred, this value is nil.
-func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
+func Scan(dialog zenity.ProgressDialog, language int) ([]checks.Check, error) {
 	dialogPresent := false
 	if dialog != nil {
 		dialogPresent = true
@@ -71,7 +72,7 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 
 	// Start the workers to execute the checks concurrently
 	// Each worker can access the channel and take work from it while it is not closed / there are still checks to execute
-	startWorkers(workerAmount, &wg, checksChan, &mu, &checkResults, dialogPresent, &counter, totalChecks, dialog)
+	startWorkers(workerAmount, &wg, checksChan, &mu, &checkResults, dialogPresent, &counter, totalChecks, dialog, language)
 
 	close(checksChan)
 
@@ -109,7 +110,7 @@ func Scan(dialog zenity.ProgressDialog) ([]checks.Check, error) {
 //
 // Returns: None.
 func startWorkers(workerAmount int, wg *sync.WaitGroup, checksChan chan func() checks.Check, mu *sync.Mutex,
-	checkResults *[]checks.Check, dialogPresent bool, counter *int, totalChecks int, dialog zenity.ProgressDialog) {
+	checkResults *[]checks.Check, dialogPresent bool, counter *int, totalChecks int, dialog zenity.ProgressDialog, language int) {
 	for range workerAmount {
 		wg.Add(1)
 		go func() {
@@ -119,7 +120,7 @@ func startWorkers(workerAmount int, wg *sync.WaitGroup, checksChan chan func() c
 				mu.Lock()
 				*checkResults = append(*checkResults, result)
 				if dialogPresent {
-					err := dialog.Text(fmt.Sprintf("Running check %d of %d", *counter, totalChecks))
+					err := dialog.Text(fmt.Sprintf(localization.Localize(language, "Dialogs.Scan.Content"), *counter, totalChecks))
 					if err != nil {
 						logger.Log.ErrorWithErr("Error setting progress text:", err)
 						mu.Unlock()

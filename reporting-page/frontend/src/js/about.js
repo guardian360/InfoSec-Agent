@@ -14,38 +14,43 @@ export function openAboutPage() {
   <div class="container-about">
     <div class="about-header">
         <h1 class="lang-about-title"></h1>
+        <p class="lang-about-info"></p>
     </div>
-    <div class="project-info">
-        <div class="project">
-            <h2>Infosec Agent</h2>
-            <p class='lang-infosec-info'></p>
-        </div>
-        <div class="project">
-            <h2>Little Brother</h2>
-            <p class='lang-little-brother-info'>
-            </p>
-        </div>
+    <div class="project">
+        <h2 class="lang-summary-title">Infosec Agent</h2>
+        <p class="lang-summary-info"></p>
     </div>
-    <div class="contribute">
-        <h2 class="lang-contribute-title">Contributing</h2>
-        <p class='lang-contribute-info'></p>
+    <div class="project">
+        <h2 class="lang-affiliations-title">Little Brother</h2>
+        <p class="lang-affiliations-info">
+        </p>
+    </div>
+    <div class="project">
+        <h2 class="lang-contributing-title">Contributing</h2>
+        <p class="lang-contributing-info"></p>
     </div>
   </div>`;
 
   // Localize the static content of the about page
   const staticAboutPageConent = [
     'lang-about-title',
-    'lang-infosec-info',
-    'lang-little-brother-info',
-    'lang-contribute-title',
-    'lang-contribute-info',
+    'lang-about-info',
+    'lang-summary-title',
+    'lang-summary-info',
+    'lang-affiliations-title',
+    'lang-affiliations-info',
+    'lang-contributing-title',
+    'lang-contributing-info',
   ];
   const localizationIds = [
-    'About.about-title',
-    'About.infosec-info',
-    'About.little-brother-info',
-    'About.contribute-title',
-    'About.contribute-info',
+    'About.AboutTitle',
+    'About.AboutInfo',
+    'About.SummaryTitle',
+    'About.SummaryInfo',
+    'About.AffiliationsTitle',
+    'About.AffiliationsInfo',
+    'About.ContributingTitle',
+    'About.ContributingInfo',
   ];
   for (let i = 0; i < staticAboutPageConent.length; i++) {
     getLocalization(localizationIds[i], staticAboutPageConent[i]);

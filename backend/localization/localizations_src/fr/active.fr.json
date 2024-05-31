@@ -12,6 +12,35 @@
     "QuitTitle": "Quitter",
     "QuitTooltip": "Quitter l'application de la barre d'état exemple"
   },
+  "Dialogs": {
+    "OK": "OK",
+    "Cancel": "Annuler",
+    "ScanInterval": {
+      "Title": "Changer l'intervalle de scan",
+      "Content": "Entrez l'intervalle de scan (en heures) :",
+      "ChangedTitle": "Intervalle de scan modifié",
+      "ChangedContent": "Intervalle de scan modifié à %d heures.",
+      "InvalidChangeTitle": "Entrée d'intervalle de scan invalide",
+      "InvalidChangeContent": "Entrée invalide. Utilisation de l'intervalle précédent de %d heures."
+    },
+    "Scan": {
+      "Title": "Scan de sécurité/confidentialité",
+      "Content": "Exécution de la vérification %d sur %d"
+    },
+    "Language": {
+      "Title": "Changer de langue",
+      "Content": "Choisissez une langue"
+    },
+    "Popup": {
+      "Title": "Scan terminé",
+      "OneHigh": "Le scan de sécurité et de confidentialité est terminé. Vous avez 1 problème à haut risque. Ouvrez la page de rapport pour plus d'informations.",
+      "MultipleHigh": "Le scan de sécurité et de confidentialité est terminé. Vous avez %d problèmes à haut risque. Ouvrez la page de rapport pour plus d'informations.",
+      "OneMedium": "Le scan de sécurité et de confidentialité est terminé. Vous avez 1 problème à risque moyen. Ouvrez la page de rapport pour plus d'informations.",
+      "MultipleMedium": "Le scan de sécurité et de confidentialité est terminé. Vous avez %d problèmes à risque moyen. Ouvrez la page de rapport pour plus d'informations.",
+      "Default": "Le scan de sécurité et de confidentialité est terminé. Ouvrez la page de rapport pour voir les résultats.",
+      "Button": "Ouvrir la page de rapport"
+    }
+  },
   "Navigation": 
   {
     "Home": "Accueil",
@@ -21,13 +50,15 @@
     "Integration": "Intégration",
     "About": "À propos",
     "Personalize": "Personnaliser la page",
-    "ChangeLanguage": "Changer de langue"
+    "ChangeLanguage": "Changer de langue",
+    "WindowsVersion": "Version de Windows",
+    "ScanInterval": "Intervalle de Scan",
+    "SelectVersion": "Sélectionner la version de Windows"
   },
   "Dashboard": 
   {
     "Issues": "Problèmes",
     "SuggestedIssue": "Problème Suggéré",
-    "QuickFix": "Correction Rapide",
     "ScanNow": "Scanner Maintenant",
     "Medals": "Médailles",
     "SecurityStatus": "État de Sécurité",
@@ -64,6 +95,7 @@
   "Issues":
   {
     "IssueTable": "Tableau des problèmes",
+    "Findings": "Résultats",
     "AcceptableFindings": "Résultats acceptables",
     "Name": "Nom",
     "Type": "Type",
@@ -72,13 +104,25 @@
     "Solution": "Solution",
     "Previous": "&laquo; Étape précédente",
     "Next": "Étape suivante &raquo;",
-    "Back": "Retour à l'aperçu des problèmes"
+    "Back": "Retour à l'aperçu des problèmes",
+    "Port": "Les processus suivants sont actuellement en cours d'exécution sur votre appareil sur les ports suivants: ",
+    "Password": "Vous avez changé votre mot de passe le: ",
+    "Acceptable": "Acceptable",
+    "Cookies": "Des cookies de suivi (possibles) ont été trouvés provenant des sites web suivants: ",
+    "Permissions": "Les applications suivantes ont actuellement reçu une autorisation: ",
+    "Low": "faible",
+    "Medium": "Moyen",
+    "High": "Élevé",
+    "Info": "Info"
   },
   "About": {
-    "about-title": "À propos de l'agent Infosec",
-    "infosec-info": "Le projet InfoSec Agent vise à améliorer la sécurité et la confidentialité des utilisateurs d'ordinateurs Windows. Actuellement, il existe des applications disponibles pour cela, mais elles sont principalement destinées aux grandes entreprises. L'objectif de ce projet est de le rendre accessible à tous. Une application est en cours de développement pour collecter des informations sur le système de l'utilisateur afin de découvrir les vulnérabilités liées à la sécurité ou à la confidentialité. Les résultats seront présentés à l'utilisateur dans un tableau de bord spécial, montrant l'état actuel du système, y compris les actions recommandées pour l'améliorer.",
-    "little-brother-info": "Ce projet est un effort collaboratif impliquant neuf étudiants de l'Université d'Utrecht aux Pays-Bas, en partenariat avec la société informatique néerlandaise Guardian360. Il sert de projet logiciel pour le programme de baccalauréat en sciences informatiques à l'UU.",
-    "contribute-title": "Contribuer",
-    "contribute-info": "InfoSec-Agent est un projet open source sous licence GPL-3.0. Cependant, en raison de ses origines en tant que devoir de l'Université d'Utrecht, les contributions publiques à ce dépôt ne seront fusionnées qu'après la fin de ce devoir, prévue pour le 24 juin 2024. N'hésitez pas à signaler tout bogue ou problème que vous rencontrez. Vos retours sont précieux et contribuent à améliorer le projet InfoSec-Agent. Vous pouvez nous envoyer un email à <a href=\"mailto:infosecagentuu@gmail.com\">infosecagentuu@gmail.com</a>."
-  }
+    "AboutTitle": "À propos d'Infosec Agent",
+    "AboutInfo": "L'InfoSec Agent est un outil de sécurité et de confidentialité pour Windows 10 et 11.",
+    "SummaryTitle": "Résumé",
+    "SummaryInfo": "Le projet InfoSec Agent vise à améliorer la sécurité et la confidentialité des utilisateurs d'ordinateurs Windows. Actuellement, il existe des applications qui le font, mais elles sont principalement destinées aux grandes entreprises. L'objectif de ce projet est de rendre cela accessible à tous. Une application est en cours de développement pour collecter des informations sur le système de l'utilisateur afin de découvrir des vulnérabilités liées à la sécurité ou à la confidentialité. Les résultats seront présentés à l'utilisateur dans un tableau de bord spécial, montrant l'état actuel du système, y compris les actions recommandées pour l'améliorer.",
+    "AffiliationsTitle": "Affiliations",
+    "AffiliationsInfo": "Ce projet est un effort collaboratif impliquant neuf étudiants de l'Université d'Utrecht aux Pays-Bas, en partenariat avec la société informatique néerlandaise Guardian360. Il sert de projet logiciel pour le programme de licence en sciences informatiques de l'UU. Ce projet est également soutenu par un financement du fonds SIDN (Stichting Internet Domeinregistratie Nederland), le registre de noms de domaine néerlandais.",
+    "ContributingTitle": "Contribution",
+    "ContributingInfo": "InfoSec-Agent est un projet open-source sous licence AGPL-3.0. Cependant, en raison de son origine en tant que projet assigné par l'Université d'Utrecht, les contributions publiques à ce dépôt ne seront fusionnées qu'après l'achèvement de ce projet, prévu pour le 24 juin 2024. N'hésitez pas à signaler les bogues ou les problèmes que vous rencontrez. Vos commentaires sont précieux et aident à améliorer le projet InfoSec-Agent. Vous pouvez nous envoyer un e-mail à <a href=\"mailto:infosecagentuu@gmail.com\">infosecagentuu@gmail.com</a>"
+  }  
 }

@@ -329,14 +329,23 @@ describe('Issue page', function() {
     // Act
     await issue.openIssuePage(jsonkey, severity);
     let findings = '';
-    if (jsonkey == 160) {
-      findings = document.getElementById('description').innerHTML;
+    if (jsonkey == 60 || jsonkey == 70 || jsonkey == 80 || jsonkey == 90 || jsonkey == 100) {
+      findings = document.getElementById('description').nextElementSibling.innerHTML;
+      expectedFinding = 'Issues.Permissions';
+    } else if (jsonkey == 110) {
+      findings = document.getElementById('description').nextElementSibling.innerHTML;
+      expectedFinding = 'Issues.Port';
+    } else if (jsonkey == 160) {
+      findings = document.getElementById('description').nextElementSibling.innerHTML;
+      expectedFinding = 'Issues.Password';
+    } else if (jsonkey == 271 || jsonkey == 351|| jsonkey == 361) {
+      findings = document.getElementById('description').nextElementSibling.innerHTML;
+      expectedFinding = 'Issues.Cookies';
     } else if (jsonkey == 320) {
       findings = document.getElementsByClassName('issues-table')[0].innerHTML;
     } else {
       findings = document.getElementById('description').nextElementSibling.innerHTML;
     }
-
     // Assert
     test.value(findings).isEqualTo(expectedFinding);
   }

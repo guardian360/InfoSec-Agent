@@ -3,7 +3,6 @@ package chromium_test
 import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/browsers/chromium"
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 
 	"github.com/jarcoal/httpmock"
@@ -18,22 +17,6 @@ import (
 	"reflect"
 	"testing"
 )
-
-func TestMain(m *testing.M) {
-	logger.SetupTests()
-	// Run tests
-	exitCode := m.Run()
-
-	os.Exit(exitCode)
-}
-
-type MockDefaultDirGetter struct {
-	GetDefaultDirFunc func(browserPath string) (string, error)
-}
-
-func (m MockDefaultDirGetter) GetDefaultDir(browserPath string) (string, error) {
-	return m.GetDefaultDirFunc(browserPath)
-}
 
 type MockExtensionIDGetter struct {
 	GetExtensionIDsFunc func(extensionsDir string) ([]string, error)

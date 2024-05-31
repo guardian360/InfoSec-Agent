@@ -32,7 +32,6 @@ export function openHomePage() {
           <p class="lang-choose-issue-description"></p>
         </div>
         <a id="suggested-issue" class="issue-button lang-suggested-issue"></a>
-        <a class="issue-button lang-quick-fix"></a>
         <a id="scan-now" class="issue-button lang-scan-now"></a>
         <a id="share-progress" class="issue-button">Share progress</a>
       </div>
@@ -96,7 +95,6 @@ export function openHomePage() {
   const staticHomePageContent = [
     'lang-piechart-header',
     'lang-suggested-issue',
-    'lang-quick-fix',
     'lang-scan-now',
     'lang-title-medals',
     'lang-choose-issue-description',
@@ -104,7 +102,6 @@ export function openHomePage() {
   const localizationIds = [
     'Dashboard.RiskLevelDistribution',
     'Dashboard.SuggestedIssue',
-    'Dashboard.QuickFix',
     'Dashboard.ScanNow',
     'Dashboard.Medals',
     'Dashboard.ChooseIssueDescription',

@@ -28,6 +28,9 @@ var testsInvalid = []func(t *testing.T){
 	i.TestIntegrationSecureBootDisabled,
 	i.TestIntegrationStartupWithApps,
 	i.TestIntegrationUACDisabled,
+	i.TestIntegrationCookiesFirefoxWithCookies,
+	i.TestIntegrationCookiesChromiumWithCookies,
+	i.TestIntegrationRemoteRPCEnabled,
 }
 
 func TestAllInvalid(t *testing.T) {

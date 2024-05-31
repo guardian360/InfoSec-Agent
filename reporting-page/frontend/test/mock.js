@@ -47,6 +47,19 @@ export function mockChangeLanguage(bool) {
   return myPromise;
 }
 
+/** Mock of ChangeScanInterval function with no functionality
+ *
+ * @param {bool} bool if set to false will result in error from promise
+ * @return {promise} a promise
+ */
+export function mockChangeScanInterval(bool) {
+  const myPromise = new Promise(function(myResolve, myReject) {
+    if (bool) myResolve();
+    else myReject(new Error('error'));
+  });
+  return myPromise;
+}
+
 /** Mock of scanNowGo function
  *
  * @param {bool} bool if set to false will result in error from promise

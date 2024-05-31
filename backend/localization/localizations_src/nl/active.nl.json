@@ -12,6 +12,35 @@
     "QuitTitle": "Afsluiten",
     "QuitTooltip": "Sluit voorbeeldbladtoepassing af"
   },
+  "Dialogs": {
+    "OK": "OK",
+    "Cancel": "Annuleren",
+    "ScanInterval": {
+      "Title": "Scaninterval wijzigen",
+      "Content": "Voer scaninterval in (in uren):",
+      "ChangedTitle": "Scaninterval gewijzigd",
+      "ChangedContent": "Scaninterval gewijzigd naar %d uur.",
+      "InvalidChangeTitle": "Ongeldige invoer van scaninterval",
+      "InvalidChangeContent": "Ongeldige invoer. Vorig interval van %d uur wordt gebruikt."
+    },
+    "Scan": {
+      "Title": "Beveiligings-/privacy-scan",
+      "Content": "Bezig met controle %d van %d"
+    },
+    "Language": {
+      "Title": "Taal wijzigen",
+      "Content": "Kies een taal"
+    },
+    "Popup": {
+      "Title": "Scan voltooid",
+      "OneHigh": "De privacy- en beveiligingsscan is voltooid. U heeft 1 probleem met hoog risico. Open de rapportpagina voor meer informatie.",
+      "MultipleHigh": "De privacy- en beveiligingsscan is voltooid. U heeft %d problemen met hoog risico. Open de rapportpagina voor meer informatie.",
+      "OneMedium": "De privacy- en beveiligingsscan is voltooid. U heeft 1 probleem met gemiddeld risico. Open de rapportpagina voor meer informatie.",
+      "MultipleMedium": "De privacy- en beveiligingsscan is voltooid. U heeft %d problemen met gemiddeld risico. Open de rapportpagina voor meer informatie.",
+      "Default": "De privacy- en beveiligingsscan is voltooid. Open de rapportpagina om de resultaten te bekijken.",
+      "Button": "Rapportpagina openen"
+    }
+  },
   "Navigation": 
   {
     "Home": "Startpagina",
@@ -21,14 +50,16 @@
     "Integration": "Integratie",
     "About": "Over",
     "Personalize": "Pagina personaliseren",
-    "ChangeLanguage": "Taal wijzigen"
+    "ChangeLanguage": "Taal wijzigen",
+    "WindowsVersion": "Windows versie",
+    "ScanInterval": "Scan interval",
+    "SelectVersion": "Selecteer windows versie"
     
   },
   "Dashboard": 
   {
     "Issues": "Problemen",
     "SuggestedIssue": "Voorgesteld Probleem",
-    "QuickFix": "Snelle Oplossing",
     "ScanNow": "Nu Scannen",
     "Medals": "Medailles",
     "SecurityStatus": "Veiligheidsstatus",
@@ -65,6 +96,7 @@
   "Issues":
   {
     "IssueTable": "Problementabel",
+    "Findings": "Bevindingen",
     "AcceptableFindings": "Acceptabele bevindingen",
     "Name": "Naam",
     "Type": "Type",
@@ -73,14 +105,25 @@
     "Solution": "Oplossing",
     "Previous": "&laquo; Vorige stap",
     "Next": "Volgende stap &raquo;",
-    "Back": "Terug naar het overzicht van problemen"
+    "Back": "Terug naar het overzicht van problemen",
+    "Port": "De volgende processen draaien momenteel op uw apparaat op de volgende poorten: ",
+    "Password": "U hebt uw wachtwoord gewijzigd op: ",
+    "Acceptable": "Aanvaardbaar",
+    "Cookies": "(Mogelijke) tracking cookies zijn gevonden van de volgende websites: ",
+    "Permissions": "De volgende applicaties hebben momenteel toestemming gekregen: ",
+    "Low": "Laag",
+    "Medium": "Gemiddeld",
+    "High": "Hoog",
+    "Info": "Info"
   },
-  "About":
-  { 
-    "about-title": "Over Infosec Agent",
-    "infosec-info": "Het InfoSec Agent-project heeft als doel de beveiliging en privacy van Windows-gebruikers te verbeteren. Momenteel zijn er toepassingen beschikbaar die dit doen, maar ze zijn voornamelijk gericht op grote bedrijven. Het doel van dit project is om dit toegankelijk te maken voor iedereen. Er wordt een applicatie ontwikkeld die informatie verzamelt over het systeem van de gebruiker om eventuele beveiligings- of privacygerelateerde kwetsbaarheden te ontdekken. De resultaten worden aan de gebruiker gepresenteerd in een speciaal dashboard, met de huidige status van het systeem, inclusief aanbevolen acties om het te verbeteren.",
-    "little-brother-info": "Dit project is een gezamenlijke inspanning van negen studenten van de Universiteit Utrecht in Nederland, in samenwerking met het Nederlandse IT-bedrijf Guardian360. Het dient als het Softwareproject voor het Bachelorprogramma in Computerwetenschappen aan de UU.",
-    "contribute-title": "Bijdragen",
-    "contribute-info": "InfoSec-Agent is een open-sourceproject dat is gelicentieerd onder de GPL-3.0-licentie. Echter, vanwege de oorsprong als opdracht van de Universiteit Utrecht, zullen openbare bijdragen aan deze repository pas worden samengevoegd na voltooiing van deze opdracht, die gepland staat voor 24 juni 2024. Voel je vrij om eventuele bugs of problemen te melden die je tegenkomt. Jouw feedback is waardevol en helpt het InfoSec-Agent-project te verbeteren. Je kunt ons mailen op <a href=\"mailto:infosecagentuu@gmail.com\">infosecagentuu@gmail.com</a>"
-  }  
+  "About": {
+    "AboutTitle": "Over Infosec Agent",
+    "AboutInfo": "De InfoSec Agent is een beveiligings- en privacytool voor Windows 10 en 11.",
+    "SummaryTitle": "Samenvatting",
+    "SummaryInfo": "Het InfoSec Agent-project heeft als doel de beveiliging en privacy van Windows-computergebruikers te verbeteren. Momenteel zijn er applicaties beschikbaar die dit doen, maar ze zijn voornamelijk gericht op grote bedrijven. Het doel van dit project is om dit voor iedereen toegankelijk te maken. Er wordt een applicatie ontwikkeld die informatie verzamelt over het systeem van de gebruiker om beveiligings- of privacygerelateerde kwetsbaarheden te ontdekken. De resultaten worden aan de gebruiker gepresenteerd in een speciaal dashboard, dat de huidige status van het systeem weergeeft, inclusief aanbevolen acties om het te verbeteren.",
+    "AffiliationsTitle": "Partnerschappen",
+    "AffiliationsInfo": "Dit project is een samenwerking van negen studenten van de Universiteit Utrecht in Nederland, in samenwerking met het Nederlandse IT-bedrijf Guardian360. Het dient als het Softwareproject voor het Bachelorprogramma in Informatiewetenschappen aan de UU. Dit project wordt ook ondersteund door financiering van het SIDN-fonds (Stichting Internet Domeinregistratie Nederland), de Nederlandse domeinregistrator.",
+    "ContributingTitle": "Bijdragen",
+    "ContributingInfo": "InfoSec-Agent is een open-sourceproject dat is gelicenseerd onder de AGPL-3.0-licentie. Vanwege de oorsprong als een opdracht van de Universiteit Utrecht worden openbare bijdragen aan deze repository echter pas samengevoegd na voltooiing van deze opdracht, die gepland staat voor 24 juni 2024. Voel je vrij om eventuele bugs of problemen te melden die je tegenkomt. Jouw feedback is waardevol en helpt het InfoSec-Agent-project te verbeteren. Je kunt ons een e-mail sturen naar <a href=\"mailto:infosecagentuu@gmail.com\">infosecagentuu@gmail.com</a>."
+  }
 }

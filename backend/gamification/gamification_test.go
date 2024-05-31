@@ -1,13 +1,32 @@
 package gamification_test
 
 import (
+	"os"
 	"strconv"
 	"testing"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/gamification"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/stretchr/testify/require"
 )
+
+// TestMain sets up the necessary environment for the gamification tests and runs them.
+//
+// This function sets up the logger for the tests and runs the tests.
+//
+// Parameters:
+//   - m *testing.M: The testing framework that manages and runs the tests.
+//
+// Returns: None. The function calls os.Exit with the exit code returned by m.Run().
+func TestMain(m *testing.M) {
+	logger.SetupTests()
+
+	// Run tests
+	exitCode := m.Run()
+
+	os.Exit(exitCode)
+}
 
 // TestPointCalculation tests the PointCalculation function for certain states
 //
@@ -16,8 +35,16 @@ import (
 //
 // No return values.
 func TestPointCalculation(t *testing.T) {
-	securityChecks := []checks.Check{}
-
+	securityChecks := []checks.Check{
+		{
+			IssueID:  29,
+			ResultID: 0,
+		},
+		{
+			IssueID:  5,
+			ResultID: 1,
+		},
+	}
 	tests := []struct {
 		name string
 		gs   gamification.GameState
@@ -28,7 +55,7 @@ func TestPointCalculation(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			_, err := gamification.PointCalculation(tt.gs, securityChecks)
+			_, err := gamification.PointCalculation(tt.gs, securityChecks, "../../reporting-page/database.db")
 			require.NoError(t, err)
 		})
 	}
