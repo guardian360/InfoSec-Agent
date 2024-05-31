@@ -83,7 +83,6 @@ func OnReady() {
 	systray.SetTooltip("InfoSec Agent")
 
 	settings := usersettings.LoadUserSettings()
-	Language = settings.Language
 	scanInterval := settings.ScanInterval
 
 	// Generate the menu for the system tray application

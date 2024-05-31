@@ -49,6 +49,8 @@ func main() {
 	logger.Setup("log.txt", 0, -1)
 	logger.Log.Info("Starting InfoSec Agent")
 	localization.Init("backend/")
+	settings := usersettings.LoadUserSettings()
+	tray.Language = settings.Language
 	tray.StartPopup()
 	systray.Run(tray.OnReady, tray.OnQuit)
 }
