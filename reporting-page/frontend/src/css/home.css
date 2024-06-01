@@ -46,7 +46,7 @@ body {
   margin: 10px;
 }
 
-/* Pie Chart */
+/* Pie Chart 
 .pie-chart-container {
   display: flex;
   justify-content: center;
@@ -59,6 +59,7 @@ body {
   max-width: 300px;
   height: auto;
 }
+*/
 
 /* Issue Buttons */
 .issue-button {
@@ -74,10 +75,10 @@ body {
 
 .video-background {
   position: fixed; /* Fixed position to cover the entire screen */
-  left: 180px; /* Adjusted position to the right */
-  top: 10px; /* Adjusted position downwards */
-  width: 95%;
-  height: auto;
+  left: 10%; /* Adjusted position to the right */
+  bottom: 0; /* Adjusted position downwards */
+  width: 100vw; /* Set width to cover the viewport width */
+  height: 100vh; /* Set height to cover the viewport height */
   z-index: -1; /* Ensure it is behind all other elements */
   object-fit: cover; /* Ensure the video covers the entire background without distortion */
 }

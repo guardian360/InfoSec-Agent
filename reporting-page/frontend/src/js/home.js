@@ -18,7 +18,7 @@ export function openHomePage() {
   <video autoplay muted loop class="video-background">
         <source id="lighthouse-background" type="video/mp4">
         Your browser does not support HTML5 video.
-    </video>
+  </video>
   <div class="home-page">
     <div class="container-home"> 
       <div class="data-segment">
@@ -44,10 +44,10 @@ export function openHomePage() {
   document.getElementById('lighthouse-background').src = lighthouseState;
 
   const medal = 'frontend/src/assets/images/img_medal1.png';
-  document.getElementById('medal').src = medal;
-  document.getElementById('medal2').src = medal;
-  document.getElementById('medal3').src = medal;
-  document.getElementById('medal4').src = medal;
+  //document.getElementById('medal').src = medal;
+  //document.getElementById('medal2').src = medal;
+  //document.getElementById('medal3').src = medal;
+  //document.getElementById('medal4').src = medal;
 
   const rc = JSON.parse(sessionStorage.getItem('RiskCounters'));
   new PieChart('pie-chart-home', rc, 'Total');
