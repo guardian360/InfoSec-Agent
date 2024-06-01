@@ -5,6 +5,7 @@ import {jest} from '@jest/globals';
 import {mockPageFunctions,
   mockGetLocalization,
   mockChangeLanguage,
+  mockChangeScanInterval,
   storageMock,
   clickEvent,
   mockOpenPageFunctions} from './mock.js';
@@ -36,6 +37,7 @@ const dom = new JSDOM(`
             <a id="personalize-button">Personalize page</a>
             <a id="language-button">Change Language</a>
             <a id="windows-version-button" class="">Windows Version</a>
+            <a id="scan-interval-button" class="lang-scan-interval"></a>
           </div>
         </div>
       </div>
@@ -43,7 +45,7 @@ const dom = new JSDOM(`
     <div id="window-version-modal" class="modal">
       <div class="modal-content">
         <div class="modal-header">
-          <span id="close-windows-select" class="close">&times;</span>
+          <span id="close-window-version-modal" class="close">&times;</span>
           <p>Select windows version</p>
         </div>
         <div id="windows-10"><a id="windows-10-button">Windows 10</a></div>
@@ -85,6 +87,9 @@ jest.unstable_mockModule('../src/js/database.js', () => ({
 jest.unstable_mockModule('../wailsjs/go/main/Tray.js', () => ({
   ChangeLanguage: jest.fn().mockImplementationOnce(() => mockChangeLanguage(true))
     .mockImplementation(() => mockChangeLanguage(false)),
+  LogError: jest.fn(),
+  ChangeScanInterval: jest.fn().mockImplementationOnce(() => mockChangeScanInterval(true))
+    .mockImplementation(() => mockChangeScanInterval(false)),
   LogError: jest.fn(),
 }));
 

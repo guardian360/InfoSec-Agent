@@ -5,6 +5,8 @@ export function mockPageFunctions() {
   // Mock LogError
   jest.unstable_mockModule('../wailsjs/go/main/Tray.js', () => ({
     LogError: jest.fn(),
+    ChangeLanguage: jest.fn(),
+    ChangeScanInterval: jest.fn(),
   }));
 
   // Mock Navigation
@@ -39,6 +41,19 @@ export function mockGetLocalization(messageID) {
  * @return {promise} a promise
  */
 export function mockChangeLanguage(bool) {
+  const myPromise = new Promise(function(myResolve, myReject) {
+    if (bool) myResolve();
+    else myReject(new Error('error'));
+  });
+  return myPromise;
+}
+
+/** Mock of ChangeScanInterval function with no functionality
+ *
+ * @param {bool} bool if set to false will result in error from promise
+ * @return {promise} a promise
+ */
+export function mockChangeScanInterval(bool) {
   const myPromise = new Promise(function(myResolve, myReject) {
     if (bool) myResolve();
     else myReject(new Error('error'));

@@ -38,7 +38,11 @@
       "OneMedium": "Der Datenschutz- und Sicherheitsscan wurde abgeschlossen. Sie haben 1 mittelriskantes Problem. Öffnen Sie die Berichtsseite, um mehr Informationen zu erhalten.",
       "MultipleMedium": "Der Datenschutz- und Sicherheitsscan wurde abgeschlossen. Sie haben %d mittelriskante Probleme. Öffnen Sie die Berichtsseite, um mehr Informationen zu erhalten.",
       "Default": "Der Datenschutz- und Sicherheitsscan wurde abgeschlossen. Öffnen Sie die Berichtsseite, um die Ergebnisse anzusehen.",
-      "Button": "Berichtsseite öffnen"
+      "Button": "Berichtsseite öffnen",
+      "StartupTitle": "InfoSec Agent gestartet",
+      "Startup": "InfoSec Agent wurde gestartet und läuft im Hintergrund. Öffnen Sie das System-Tray, um auf die Anwendung zuzugreifen.",
+      "AlreadyRunningTitle": "InfoSec Agent läuft bereits",
+      "AlreadyRunning": "InfoSec Agent läuft bereits im Hintergrund. Öffnen Sie das System-Tray, um auf die Anwendung zuzugreifen."      
     }
   },
   "Navigation": 
@@ -50,7 +54,10 @@
     "Integration": "Integration",
     "About": "Über",
     "Personalize": "Seite personalisieren",
-    "ChangeLanguage": "Sprache ändern"
+    "ChangeLanguage": "Sprache ändern",
+    "WindowsVersion": "Windows-Version",
+    "ScanInterval": "Scan-Intervall",
+    "SelectVersion": "Windows-Version auswählen"
     
   },
   "Dashboard": 
@@ -121,6 +128,6 @@
     "AffiliationsTitle": "Partnerschaften",
     "AffiliationsInfo": "Dieses Projekt ist eine Zusammenarbeit von neun Studenten der Universität Utrecht in den Niederlanden, in Partnerschaft mit dem niederländischen IT-Unternehmen Guardian360. Es dient als Softwareprojekt für das Bachelor-Programm in Informatik an der UU. Dieses Projekt wird auch durch Mittel des SIDN-Fonds (Stichting Internet Domeinregistratie Nederland), der niederländischen Domain-Registrierungsstelle, unterstützt.",
     "ContributingTitle": "Mitwirken",
-    "ContributingInfo": "InfoSec-Agent ist ein Open-Source-Projekt, das unter der GPL-3.0-Lizenz steht. Aufgrund seiner Ursprünge als Aufgabe der Universität Utrecht werden öffentliche Beiträge zu diesem Repository jedoch erst nach Abschluss dieser Aufgabe am 24. Juni 2024 zusammengeführt. Sie können gerne Fehler oder Probleme melden, auf die Sie stoßen. Ihr Feedback ist wertvoll und hilft, das InfoSec-Agent-Projekt zu verbessern. Sie können uns per E-Mail unter <a href=\"mailto:infosecagentuu@gmail.com\">infosecagentuu@gmail.com</a> erreichen."
+    "ContributingInfo": "InfoSec-Agent ist ein Open-Source-Projekt, das unter der AGPL-3.0-Lizenz steht. Aufgrund seiner Ursprünge als Aufgabe der Universität Utrecht werden öffentliche Beiträge zu diesem Repository jedoch erst nach Abschluss dieser Aufgabe am 24. Juni 2024 zusammengeführt. Sie können gerne Fehler oder Probleme melden, auf die Sie stoßen. Ihr Feedback ist wertvoll und hilft, das InfoSec-Agent-Projekt zu verbessern. Sie können uns per E-Mail unter <a href=\"mailto:infosecagentuu@gmail.com\">infosecagentuu@gmail.com</a> erreichen."
   }  
 }
