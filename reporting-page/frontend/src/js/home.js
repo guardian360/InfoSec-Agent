@@ -67,11 +67,11 @@ export function openHomePage() {
   const lighthouseState = 'src/assets/images/regular1.mp4';
   document.getElementById('lighthouse-background').src = lighthouseState;
 
-  const medal = 'frontend/src/assets/images/img_medal1.png';
-  //document.getElementById('medal').src = medal;
-  //document.getElementById('medal2').src = medal;
-  //document.getElementById('medal3').src = medal;
-  //document.getElementById('medal4').src = medal;
+  // const medal = 'frontend/src/assets/images/img_medal1.png';
+  // document.getElementById('medal').src = medal;
+  // document.getElementById('medal2').src = medal;
+  // document.getElementById('medal3').src = medal;
+  // document.getElementById('medal4').src = medal;
 
   const rc = JSON.parse(sessionStorage.getItem('RiskCounters'));
   new PieChart('pie-chart-home', rc, 'Total');
