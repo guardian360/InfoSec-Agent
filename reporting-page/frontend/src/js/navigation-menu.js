@@ -65,6 +65,7 @@ function localize() {
     'lang-windows-version',
     'lang-scan-interval',
     'lang-select-version',
+    'lang-programs',
   ];
   const localizationIds = [
     'Navigation.Home',
@@ -78,6 +79,7 @@ function localize() {
     'Navigation.WindowsVersion',
     'Navigation.ScanInterval',
     'Navigation.SelectVersion',
+    'Navigation.Programs',
   ];
   for (let i = 0; i < navbarItems.length; i++) {
     getLocalization(localizationIds[i], navbarItems[i]);

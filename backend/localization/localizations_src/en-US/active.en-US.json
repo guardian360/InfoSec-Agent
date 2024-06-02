@@ -58,7 +58,8 @@
     "ChangeLanguage": "Change Language",
     "WindowsVersion": "Windows Version",
     "ScanInterval": "Scan Interval",
-    "SelectVersion": "Select windows version"
+    "SelectVersion": "Select windows version",
+    "Programs": "Programs"
 
   },
   "Dashboard": 
