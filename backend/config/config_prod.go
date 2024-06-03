@@ -8,6 +8,7 @@ const (
 
 	LocalizationPath = "localization/"
 
-	BuildReportingPage = false
-	ReportingPagePath  = "reporting-page/InfoSec-Agent-Reporting-Page"
+	BuildReportingPage    = false
+	ReportingPagePath     = "reporting-page/InfoSec-Agent-Reporting-Page"
+	ReportingPageImageDir = "images/"
 )

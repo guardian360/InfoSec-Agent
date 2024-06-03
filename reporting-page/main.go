@@ -38,7 +38,7 @@ func NewFileLoader() *FileLoader {
 	return &FileLoader{}
 }
 
-// ServeHTTP serves the requested file from the frontend/src/assets/images directory.
+// ServeHTTP serves the requested file from the images directory.
 // It first constructs the full path to the requested file and checks if the file is within the allowed directory.
 //
 // This function reads the file data and writes it to the response writer.
@@ -48,7 +48,6 @@ func NewFileLoader() *FileLoader {
 //
 // Returns: None. This function does not return a value as it serves the requested file.
 func (h *FileLoader) ServeHTTP(res http.ResponseWriter, req *http.Request) {
-	const baseDir = "frontend/src/assets/images" // Base directory for image files
 	requestedPath := req.URL.Path
 	cleanPath := filepath.Clean(requestedPath) // Clean the path to avoid directory traversal
 	newPath := strings.Replace(cleanPath, `\`, ``, 1)
@@ -61,10 +60,10 @@ func (h *FileLoader) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 	}
 
 	// Construct the full path to the file
-	fullPath := filepath.Join(baseDir, cleanPath)
+	fullPath := filepath.Join(config.ReportingPageImageDir, cleanPath)
 
 	// Check if the file is within the allowed directory
-	if !strings.HasPrefix(fullPath, filepath.Clean(baseDir)+string(os.PathSeparator)) {
+	if !strings.HasPrefix(fullPath, filepath.Clean(config.ReportingPageImageDir)+string(os.PathSeparator)) {
 		logger.Log.Error("Access to the file path denied:" + newPath)
 		http.Error(res, "Access denied", http.StatusForbidden)
 		return
