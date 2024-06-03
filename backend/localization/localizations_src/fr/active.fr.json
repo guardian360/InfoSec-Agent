@@ -139,6 +139,8 @@
     "ChangeImage": "Changer l'image",
     "Title": "Titre de navigation",
     "ChangeTitle": "Changer le titre",
-    "Reset": "Réinitialiser les paramètres"
+    "Reset": "Réinitialiser les paramètres",
+    "PersonalizeTitle": "Personnalisez votre expérience",
+    "PickTheme": "Choisissez un thème"
   }
 }

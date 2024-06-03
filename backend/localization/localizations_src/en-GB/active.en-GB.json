@@ -143,6 +143,8 @@
     "ChangeImage": "Change image", 
     "Title": "Navigation title", 
     "ChangeTitle": "Change title", 
-    "Reset": "Reset settings"
+    "Reset": "Reset settings",
+    "PersonalizeTitle": "Personalize Your Experience",
+    "PickTheme": "Pick a theme"
   }
 }
