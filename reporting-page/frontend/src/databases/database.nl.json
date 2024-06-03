@@ -1442,6 +1442,26 @@
             "TOBEFILLED"
         ]
     },
+    "390": {
+        "Name": "Credential Guard ingeschakeld",
+        "Type": "Beveiliging",
+        "Information": "Credential Guard is een beveiligingsfunctie in Windows die helpt om gebruikersreferenties en gevoelige informatie te beschermen tegen ongeautoriseerde toegang en diefstal. Het maakt gebruik van virtualisatie-gebaseerde beveiliging om referentie-informatie te isoleren en te beschermen, waardoor het voor aanvallers moeilijker wordt om wachtwoorden en andere gevoelige gegevens te stelen.",
+        "Solution": [
+            "Credential Guard is ingeschakeld, dus er is geen actie nodig."
+        ],
+        "Screenshots": []
+    },
+    "391": {
+        "Name": "Credential Guard uitgeschakeld",
+        "Type": "Beveiliging",
+        "Information": "Credential Guard is een beveiligingsfunctie in Windows die helpt om gebruikersreferenties en gevoelige informatie te beschermen tegen ongeautoriseerde toegang en diefstal. Het maakt gebruik van virtualisatie-gebaseerde beveiliging om referentie-informatie te isoleren en te beschermen, waardoor het voor aanvallers moeilijker wordt om wachtwoorden en andere gevoelige gegevens te stelen.",
+        "Solution": [
+            "De instelling van Credential Guard wordt beheerd in uw lokale groepsbeleid. Vraag uw netwerkbeheerder om Credential Guard in te schakelen."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
     "997": {
         "Name": "Extensies geïnstalleerd in Google Chrome",
         "Type": "Privacy",
