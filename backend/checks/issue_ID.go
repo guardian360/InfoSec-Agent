@@ -40,4 +40,5 @@ const (
 	CookiesEdgeID
 	FirewallID
 	PasswordComplexityID
+	CredentialGuardID
 )
