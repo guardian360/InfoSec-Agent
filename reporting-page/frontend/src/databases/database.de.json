@@ -1419,6 +1419,29 @@
             "TOBEFILLED"
         ]
     },
+    "380": {
+        "Name": "Mindestpasswortlänge auf mindestens 15 Zeichen festgelegt",
+        "Type": "Sicherheit",
+        "Information": "Das Festlegen einer Mindestpasswortlänge von mindestens 15 Zeichen erhöht die Sicherheit von Benutzerkonten, indem die Komplexität und Stärke der Passwörter erhöht wird. Längere Passwörter sind widerstandsfähiger gegen Brute-Force-Angriffe und bieten besseren Schutz vor unbefugtem Zugriff und Datenverletzungen.",
+        "Solution": [
+            "Die Mindestpasswortlänge ist auf mindestens 15 Zeichen festgelegt, daher sind keine Maßnahmen erforderlich."
+        ],
+        "Screenshots": []
+    },
+    "381": {
+        "Name": "Mindestpasswortlänge nicht auf mindestens 15 Zeichen festgelegt",
+        "Type": "Sicherheit",
+        "Information": "Das Festlegen einer Mindestpasswortlänge von mindestens 15 Zeichen erhöht die Sicherheit von Benutzerkonten, indem die Komplexität und Stärke der Passwörter erhöht wird. Längere Passwörter sind widerstandsfähiger gegen Brute-Force-Angriffe und bieten besseren Schutz vor unbefugtem Zugriff und Datenverletzungen.",
+        "Solution": [
+            "Öffnen Sie eine Eingabeaufforderung mit erhöhten Rechten, indem Sie mit der rechten Maustaste auf die Start-Schaltfläche klicken und 'Terminal (Admin)' auswählen.",
+            "Führen Sie den Befehl 'net accounts' aus, um die aktuellen Passwortrichtlinieneinstellungen einschließlich der Mindestpasswortlänge anzuzeigen.",
+            "Führen Sie den Befehl 'net accounts /minpwlen:15' aus, um die Mindestpasswortlänge auf 15 Zeichen festzulegen.",
+            "Starten Sie Ihren Computer neu, um die Änderungen anzuwenden."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
     "997": {
         "Name": "Installierte Erweiterungen in Google Chrome",
         "Type": "Privatsphäre",

@@ -1419,6 +1419,29 @@
             "TOBEFILLED"
         ]
     },
+    "380": {
+        "Name": "Longitud mínima de la contraseña establecida en al menos 15 caracteres",
+        "Type": "Seguridad",
+        "Information": "Establecer una longitud mínima de la contraseña de al menos 15 caracteres ayuda a mejorar la seguridad de las cuentas de usuario al aumentar la complejidad y la fortaleza de las contraseñas. Las contraseñas más largas son más resistentes a los ataques de fuerza bruta y proporcionan una mejor protección contra el acceso no autorizado y las violaciones de datos.",
+        "Solution": [
+            "La longitud mínima de la contraseña está establecida en al menos 15 caracteres, por lo que no se necesita ninguna acción."
+        ],
+        "Screenshots": []
+    },
+    "381": {
+        "Name": "Longitud mínima de la contraseña no establecida en al menos 15 caracteres",
+        "Type": "Seguridad",
+        "Information": "Establecer una longitud mínima de la contraseña de al menos 15 caracteres ayuda a mejorar la seguridad de las cuentas de usuario al aumentar la complejidad y la fortaleza de las contraseñas. Las contraseñas más largas son más resistentes a los ataques de fuerza bruta y proporcionan una mejor protección contra el acceso no autorizado y las violaciones de datos.",
+        "Solution": [
+            "Abra un símbolo del sistema con privilegios elevados haciendo clic derecho en el botón de Inicio y seleccionando 'Terminal (Administrador)'.",
+            "Ejecute el comando 'net accounts' para ver la configuración actual de la política de contraseñas, incluida la longitud mínima de la contraseña.",
+            "Ejecute el comando 'net accounts /minpwlen:15' para establecer la longitud mínima de la contraseña en 15 caracteres.",
+            "Reinicie su computadora para aplicar los cambios."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
     "997": {
         "Name": "Extensiones instaladas en Google Chrome",
         "Type": "Privacidad",

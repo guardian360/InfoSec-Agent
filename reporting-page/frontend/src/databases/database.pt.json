@@ -1421,6 +1421,29 @@
             "TOBEFILLED"
         ]
     },
+    "380": {
+        "Name": "Comprimento mínimo da senha definido para pelo menos 15 caracteres",
+        "Type": "Segurança",
+        "Information": "Definir um comprimento mínimo de senha de pelo menos 15 caracteres ajuda a aumentar a segurança das contas de usuário, aumentando a complexidade e a força das senhas. Senhas mais longas são mais resistentes a ataques de força bruta e oferecem melhor proteção contra acesso não autorizado e violações de dados.",
+        "Solution": [
+            "O comprimento mínimo da senha está definido para pelo menos 15 caracteres, portanto, nenhuma ação é necessária."
+        ],
+        "Screenshots": []
+    },
+    "381": {
+        "Name": "Comprimento mínimo da senha não definido para pelo menos 15 caracteres",
+        "Type": "Segurança",
+        "Information": "Definir um comprimento mínimo de senha de pelo menos 15 caracteres ajuda a aumentar a segurança das contas de usuário, aumentando a complexidade e a força das senhas. Senhas mais longas são mais resistentes a ataques de força bruta e oferecem melhor proteção contra acesso não autorizado e violações de dados.",
+        "Solution": [
+            "Abra um prompt de comando elevado clicando com o botão direito do mouse no botão Iniciar e selecionando 'Terminal (Admin)'.",
+            "Execute o comando 'net accounts' para visualizar as configurações atuais da política de senha, incluindo o comprimento mínimo da senha.",
+            "Execute o comando 'net accounts /minpwlen:15' para definir o comprimento mínimo da senha para 15 caracteres.",
+            "Reinicie o computador para aplicar as alterações."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
     "997": {
         "Name": "Extensões instaladas no Google Chrome",
         "Type": "Privacidade",
