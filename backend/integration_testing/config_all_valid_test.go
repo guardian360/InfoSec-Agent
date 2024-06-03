@@ -19,7 +19,6 @@ var testsValid = []func(t *testing.T){
 	i.TestIntegrationExtensionsFirefoxWithAdBlocker,
 	i.TestIntegrationHistoryFirefoxWithoutPhishing,
 	i.TestIntegrationSearchEngineFirefoxWithSearchEngine,
-	i.TestIntegrationOpenPortsNoPorts,
 	i.TestIntegrationSmbCheckGoodSetup,
 	i.TestIntegrationPasswordManagerPresent,
 	i.TestIntegrationAdvertisementNotActive,

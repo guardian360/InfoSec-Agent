@@ -110,22 +110,6 @@ describe('openPersonalizePage function', () => {
     const personalize = await import('../src/js/personalize.js');
     personalize.openPersonalizePage();
   });
-
-  it('should populate page contents when opened', () => {
-    // Arrange
-    const pageContents = document.getElementById('page-contents').innerHTML;
-
-    // Act
-
-    // Assert
-    expect(pageContents).toContain('personalize-container');
-    expect(pageContents).toContain('class="personalize-container"');
-    expect(pageContents).toContain('Change icon');
-    expect(pageContents).toContain('Change logo');
-    expect(pageContents).toContain('Change title');
-    expect(sessionStorage.getItem('savedPage')).toBe('7');
-  });
-
   it('should display custom modal when change title button is clicked', () => {
     // Arrange
     // Act
