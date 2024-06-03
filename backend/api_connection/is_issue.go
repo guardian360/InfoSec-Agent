@@ -290,7 +290,7 @@ var IssueMap = map[IssueResPair]bool{
 	// Windows Firewall: Firewall disabled for any/all profile(s)
 	{37, 1}: true,
 	// Password length: Password length less than 15 characters
-	{38, 0}: true,
+	{38, 0}: false,
 	// Password length: Password length at least 15 characters
-	{38, 1}: false,
+	{38, 1}: true,
 }
