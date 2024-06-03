@@ -117,7 +117,8 @@
     "Low": "faible",
     "Medium": "Moyen",
     "High": "Élevé",
-    "Info": "Info"
+    "Info": "Info",
+    "ScanAgain": "Scanner à nouveau"
   },
   "About": {
     "AboutTitle": "À propos d'Infosec Agent",

@@ -10,6 +10,7 @@ import {openIssuesPage, getUserSettings} from './issues.js';
 import {getLocalization} from './localize.js';
 import {retrieveTheme} from './personalize.js';
 import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
+import {scanTest} from './database.js';
 
 let stepCounter = 0;
 const issuesWithResultsShow =
@@ -29,6 +30,8 @@ export function updateSolutionStep(solutionText, solutionScreenshot, issue, step
   // Hide/show buttons based on the current step
   const previousButton = document.getElementById('previous-button');
   const nextButton = document.getElementById('next-button');
+  const scanButton = document.getElementById('scan-button');
+
   if (previousButton && nextButton) {
     if (stepCounter === 0) {
       previousButton.style.display = 'none';
@@ -37,8 +40,10 @@ export function updateSolutionStep(solutionText, solutionScreenshot, issue, step
     }
     if (stepCounter === issue.Solution.length - 1) {
       nextButton.style.display = 'none';
+      scanButton.style.display = ' block';
     } else {
       nextButton.style.display = 'block';
+      scanButton.style.display = 'none';
     }
   }
 }
@@ -120,7 +125,12 @@ export async function openIssuePage(issueId, severity) {
         <div class="issue-solution">
           <p id="solution-text">${getVersionSolution(currentIssue, stepCounter)}</p>
         </div>
-        <div class="button lang-back-button" id="back-button">Back to issues overview</div>
+        <div class="solution-buttons">
+          <div class="button-box">
+            <div class="lang-scan-again button" id="scan-button"></div>
+          </div>
+        </div>
+        <div class="lang-back-button button" id="back-button"></div>
       </div>
     `;
   } else { // Issue has screenshots, display the solution guide
@@ -141,6 +151,7 @@ export async function openIssuePage(issueId, severity) {
               <div class="button-box">
                 <div id="previous-button" class="lang-previous-button button"></div>
                 <div id="next-button" class="lang-next-button button"></div>
+                <div class="lang-scan-again button" id="scan-button"></div>
               </div>
             </div>
           </div>
@@ -166,14 +177,21 @@ export async function openIssuePage(issueId, severity) {
     updateSolutionStep(solutionText, solutionScreenshot, currentIssue, stepCounter);
   }
 
-  const texts = ['lang-information', 'lang-findings', 'lang-solution', 'lang-previous-button', 'lang-next-button',
-    'lang-back-button', 'lang-port', 'lang-password', 'lang-acceptable', 'lang-cookies', 'lang-permissions'];
-  const localizationIds = ['Issues.Information', 'Issues.Findings', 'Issues.Solution', 'Issues.Previous', 'Issues.Next',
-    'Issues.Back', 'Issues.Port', 'Issues.Password', 'Issues.Acceptable', 'Issues.Cookies', 'Issues.Permissions'];
+  const texts = ['lang-information', 'lang-findings', 'lang-solution', 'lang-previous-button',
+    'lang-next-button', 'lang-back-button', 'lang-port', 'lang-password',
+    'lang-acceptable', 'lang-cookies', 'lang-permissions', 'lang-scan-again'];
+  const localizationIds = ['Issues.Information', 'Issues.Findings', 'Issues.Solution', 'Issues.Previous',
+    'Issues.Next', 'Issues.Back', 'Issues.Port', 'Issues.Password',
+    'Issues.Acceptable', 'Issues.Cookies', 'Issues.Permissions', 'Issues.ScanAgain',
+  ];
   for (let i = 0; i < texts.length; i++) {
     getLocalization(localizationIds[i], texts[i]);
   }
   document.getElementById('back-button').addEventListener('click', () => openIssuesPage());
+  document.getElementById('scan-button').addEventListener('click', async () => {
+    await scanTest(true);
+    openIssuePage(issueId, severity);
+  });
 }
 
 /** Check if the issue is a show result issue
@@ -410,10 +428,11 @@ export function parseShowResult(issueId, currentIssue) {
         <div class="button-box">
           <div id="previous-button" class="button lang-previous-button"></div>
           <div id="next-button" class="button lang-next-button"></div>
+          <div class="lang-scan-again button" id="scan-button"></div>
         </div>
       </div>
     </div>
-    <div class="button lang-back-button" id="back-button"></div>
+    <div class="lang-back-button button" id="back-button"></div>
   </div>
 `;
 
