@@ -119,7 +119,8 @@
     "Low": "Low",
     "Medium": "Medium",
     "High": "High",
-    "Info": "Info"
+    "Info": "Info",
+    "ScanAgain": "Scan again"
   },
   "About": {
     "AboutTitle": "About Infosec Agent",

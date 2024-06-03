@@ -40,6 +40,11 @@ jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
   Localize: jest.fn().mockImplementation((input) => mockGetLocalization(input)),
 }));
 
+// Mock scantest function
+jest.unstable_mockModule('../src/js/database.js', () => ({
+  scanTest: jest.fn(),
+}));
+
 // Mock openIssuesPage
 jest.unstable_mockModule('../src/js/issues.js', () => ({
   openIssuesPage: jest.fn(),
