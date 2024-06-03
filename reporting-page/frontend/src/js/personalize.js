@@ -22,7 +22,8 @@ export function openPersonalizePage() {
       <span class="personalize-description">Navigation Image</span>
       <div class="personalize-button-container">
         <button class="personalize-button logo-button lang-change-image" type="button"></button>    
-        <input class="personalize-input-invisible" type="file" id="input-file-picture" accept="image/jpeg, image/png, image/jpg">
+        <input class="personalize-input-invisible" type="file" 
+        id="input-file-picture" accept="image/jpeg, image/png, image/jpg">
       </div>
     </div>
     <hr class="solid">
@@ -120,24 +121,24 @@ export function openPersonalizePage() {
 
   // Localize the static content of the personalize page
   const staticHomePageContent = [
-  "lang-change-favicon",
-  "lang-navigation-image", 
-  "lang-change-image", 
-  "lang-navigation-title", 
-  "lang-change-title", 
-  "lang-reset-button",
-  "lang-personalize-title",
-  "lang-pick-theme"
-];
+    'lang-change-favicon',
+    'lang-navigation-image',
+    'lang-change-image',
+    'lang-navigation-title',
+    'lang-change-title',
+    'lang-reset-button',
+    'lang-personalize-title',
+    'lang-pick-theme',
+  ];
   const localizationIds = [
-    "Personalize.ChangeFavicon", 
-    "Personalize.navImage", 
-    "Personalize.ChangeImage", 
-    "Personalize.Title", 
-    "Personalize.ChangeTitle", 
-    "Personalize.Reset",
-    "Personalize.PersonalizeTitle",
-    "Personalize.PickTheme"
+    'Personalize.ChangeFavicon',
+    'Personalize.navImage',
+    'Personalize.ChangeImage',
+    'Personalize.Title',
+    'Personalize.ChangeTitle',
+    'Personalize.Reset',
+    'Personalize.PersonalizeTitle',
+    'Personalize.PickTheme',
   ];
   for (let i = 0; i < staticHomePageContent.length; i++) {
     getLocalization(localizationIds[i], staticHomePageContent[i]);

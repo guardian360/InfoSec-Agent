@@ -80,7 +80,7 @@ export function openHomePage() {
     'lang-share-button',
     'lang-share-text',
     'lang-save-text',
-    'lang-share'
+    'lang-share',
   ];
   const localizationIds = [
     'Dashboard.RiskLevelDistribution',
@@ -91,7 +91,7 @@ export function openHomePage() {
     'Dashboard.ShareButton',
     'Dashboard.ShareText',
     'Dashboard.SaveText',
-    'Dashboard.Share'
+    'Dashboard.Share',
   ];
   for (let i = 0; i < staticHomePageContent.length; i++) {
     getLocalization(localizationIds[i], staticHomePageContent[i]);
