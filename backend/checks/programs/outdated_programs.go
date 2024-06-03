@@ -4,9 +4,11 @@ import (
 	"fmt"
 	"os/exec"
 	"strings"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 )
 
-func OutdatedSoftware() {
+func OutdatedSoftware() checks.Check {
 	m := make(map[string]software)
 	var softwareList []software
 	var softwareListWinget, softwareList32, softwareList64, softwareListPackages, softwareListAppPackages []software
@@ -14,27 +16,27 @@ func OutdatedSoftware() {
 	softwareListWinget, err = retrieveWingetInstalledPrograms(softwareListWinget)
 	if err != nil {
 		fmt.Println("Error retrieving installed programs:", err)
-		return
+		return checks.NewCheckErrorf(checks.OutdatedSoftwareID, "error listing installed programs in Program Files", err)
 	}
 	softwareList32, err = retrieveInstalled32BitPrograms(softwareList32)
 	if err != nil {
 		fmt.Println("Error retrieving 32-bit installed programs:", err)
-		return
+		return checks.NewCheckErrorf(checks.OutdatedSoftwareID, "error listing installed programs in 32 bit programs", err)
 	}
 	softwareList64, err = retrieveInstalled64BitPrograms(softwareList64)
 	if err != nil {
 		fmt.Println("Error retrieving 64-bit installed programs:", err)
-		return
+		return checks.NewCheckErrorf(checks.OutdatedSoftwareID, "error listing installed programs in 64bit programs", err)
 	}
 	softwareListPackages, err = retrieveInstalledPackages(softwareListPackages)
 	if err != nil {
 		fmt.Println("Error retrieving installed packages:", err)
-		return
+		return checks.NewCheckErrorf(checks.OutdatedSoftwareID, "error listing installed programs in packages", err)
 	}
 	softwareListAppPackages, err = retrieveInstalledAppPackages(softwareListAppPackages)
 	if err != nil {
 		fmt.Println("Error retrieving installed app packages:", err)
-		return
+		return checks.NewCheckErrorf(checks.OutdatedSoftwareID, "error listing installed programs in app packages", err)
 	}
 	softwareList = append(softwareList, softwareListWinget...)
 	softwareList = append(softwareList, softwareList32...)
@@ -196,7 +198,7 @@ func OutdatedSoftware() {
 		fmt.Println("Packages Only:", len(packagesOnlyMap))
 		fmt.Println("App Packages Only:", len(appPackagesOnlyMap))
 
-		var overlapWinget32, overlapWinget64, overlapWingetPackages, overlapWingetAppPackages, overlap3264, overlap32Packages, overlap32AppPackages, overlap64Packages, overlap64AppPackages, overlapPackagesAppPackages map[string]software
+		var overlapWinget32, overlapWinget64, overlapWingetPackages, overlapWingetAppPackages, overlap3264, overlap32Packages, overlap32AppPackages, overlap64Packages, overlap64AppPackages map[string]software
 		overlapWinget32 = make(map[string]software)
 		overlapWinget64 = make(map[string]software)
 		overlapWingetPackages = make(map[string]software)
@@ -206,7 +208,7 @@ func OutdatedSoftware() {
 		overlap32AppPackages = make(map[string]software)
 		overlap64Packages = make(map[string]software)
 		overlap64AppPackages = make(map[string]software)
-		overlapPackagesAppPackages = make(map[string]software)
+		//overlapPackagesAppPackages = make(map[string]software)
 
 		for k, v := range wingetOnlyMap {
 			_, ok := bit32OnlyMap[k]
@@ -250,16 +252,10 @@ func OutdatedSoftware() {
 				overlap64AppPackages[k] = v
 			}
 		}
-		for k, v := range packagesOnlyMap {
-			_, ok := appPackagesOnlyMap[k]
-			if ok {
-				overlapPackagesAppPackages[k] = v
-			}
-		}
+		//for i := range uniqueWingetList {
+		//fmt.Printf("Name: %s | Version: %s | Id: %s \n", uniqueWingetList[i].name, uniqueWingetList[i].version, uniqueWingetList[i].identifier)
+		//}
 
-		for i := range uniqueWingetList {
-			fmt.Printf("Name: %s | Version: %s | Id: %s \n", uniqueWingetList[i].name, uniqueWingetList[i].version, uniqueWingetList[i].identifier)
-		}
 		counter := 0
 		for i := range softwareList {
 			if softwareList[i].version == "" {
@@ -268,7 +264,6 @@ func OutdatedSoftware() {
 		}
 		fmt.Println("Empty string counter:", counter)
 		fmt.Println("Done")
-		return
 	}
 	counter := 0
 	var duplicates []software
@@ -296,9 +291,12 @@ func OutdatedSoftware() {
 	fmt.Println("Installed Programs list:", len(softwareList))
 	fmt.Println("Installed Programs map: ", len(m))
 	fmt.Println("Duplicates of type empty string: ", counter)
+	resultArray := make([]string, 0)
 	for _, v := range duplicates {
-		fmt.Printf("Name: %s | Version: %s | Id: %s | Vendor: %s | whereFrom: %s \n", v.name, v.version, v.identifier, v.vendor, v.whereFrom)
+		//fmt.Printf("Name: %s | Version: %s | Id: %s | Vendor: %s | whereFrom: %s \n", v.name, v.version, v.identifier, v.vendor, v.whereFrom)
+		resultArray = append(resultArray, fmt.Sprintf("%s | %s", v.name, v.version))
 	}
+	return checks.NewCheckResult(checks.OutdatedSoftwareID, checks.OutdatedSoftwareID, resultArray...)
 }
 
 // this function takes the list and combines the elements that are the same

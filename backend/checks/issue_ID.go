@@ -38,4 +38,5 @@ const (
 	RemoteRPCID
 	CookiesChromiumID
 	CookiesEdgeID
+	OutdatedSoftwareID
 )
