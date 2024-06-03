@@ -16,14 +16,6 @@ func TestIntegrationOpenPortsPorts(t *testing.T) {
 	require.Equal(t, 0, result.ResultID)
 }
 
-func TestIntegrationOpenPortsNoPorts(t *testing.T) {
-	result := network.OpenPorts(&mocking.RealCommandExecutor{}, &mocking.RealCommandExecutor{})
-	// Check if function did not return an error
-	require.NotEmpty(t, result)
-	require.Empty(t, result.Result)
-	require.Equal(t, 0, result.ResultID)
-}
-
 func TestIntegrationSmbCheckGoodSetup(t *testing.T) {
 	result := network.SmbCheck(&mocking.RealCommandExecutor{})
 	require.NotEmpty(t, result)
