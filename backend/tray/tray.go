@@ -33,9 +33,9 @@ var ScanCounter int
 //
 // 0: German
 //
-// 1: British English
+// 1: English (UK)
 //
-// 2: American English
+// 2: English (US)
 //
 // 3: Spanish
 //
@@ -45,7 +45,7 @@ var ScanCounter int
 //
 // 6: Portuguese
 //
-// Default language is British English
+// Default language is English (UK)
 var Language = 1
 
 var MenuItems []MenuItem
@@ -391,13 +391,13 @@ func ScanNow(dialogPresent bool) ([]checks.Check, error) {
 // The function maps each language to an index, which is used internally for localization. If the function is called with a test input, it uses the test input instead of displaying the dialog window.
 //
 // The language indices are as follows:
-// 0: German
-// 1: British English
-// 2: American English
-// 3: Spanish
-// 4: French
-// 5: Dutch
-// 6: Portuguese
+// 0: Deutsch
+// 1: English (UK)
+// 2: English (US)
+// 3: Español
+// 4: Français
+// 5: Nederlands
+// 6: Português
 //
 // Parameters:
 //
@@ -410,10 +410,13 @@ func ChangeLanguage(testInput ...string) {
 	if test {
 		res = testInput[0]
 	} else {
+		languages := []string{"Deutsch", "English (UK)", "English (US)", "Español", "Français", "Nederlands", "Português"}
+		defaultLanguage := languages[Language]
+
 		var err error
-		res, err = zenity.List(localization.Localize(Language, "Dialogs.Language.Content"), []string{"German", "British English", "American English",
-			"Spanish", "French", "Dutch", "Portuguese"}, zenity.Title(localization.Localize(Language, "Dialogs.Language.Title")),
-			zenity.DefaultItems("British English"),
+		res, err = zenity.List(localization.Localize(Language, "Dialogs.Language.Content"), languages,
+			zenity.Title(localization.Localize(Language, "Dialogs.Language.Title")),
+			zenity.DefaultItems(defaultLanguage),
 			zenity.OKLabel(localization.Localize(Language, "Dialogs.OK")),
 			zenity.CancelLabel(localization.Localize(Language, "Dialogs.Cancel")))
 		if err != nil {
@@ -424,19 +427,19 @@ func ChangeLanguage(testInput ...string) {
 
 	// Assign each language to an index for the localization package
 	switch res {
-	case "German":
+	case "Deutsch":
 		Language = 0
-	case "British English":
+	case "English (UK)":
 		Language = 1
-	case "American English":
+	case "English (US)":
 		Language = 2
-	case "Spanish":
+	case "Español":
 		Language = 3
-	case "French":
+	case "Français":
 		Language = 4
-	case "Dutch":
+	case "Nederlands":
 		Language = 5
-	case "Portuguese":
+	case "Português":
 		Language = 6
 	default:
 		Language = 1
