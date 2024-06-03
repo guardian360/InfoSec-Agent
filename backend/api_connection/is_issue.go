@@ -285,4 +285,8 @@ var IssueMap = map[IssueResPair]bool{
 	{36, 0}: false,
 	// Edge Cookies: Tracking cookies found
 	{36, 1}: true,
+	// Windows Firewall: Firewall enabled for all profiles
+	{37, 0}: false,
+	// Windows Firewall: Firewall disabled for any/all profile(s)
+	{37, 1}: true,
 }

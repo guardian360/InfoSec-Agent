@@ -193,8 +193,6 @@ export function retrieveTheme() {
  * Resets the settings by clearing localStorage and restoring default values.
  */
 export function resetSettings() {
-  const theme = localStorage.getItem('theme');
-
   localStorage.clear();
   const logoPhoto = 'frontend/src/assets/images/logoTeamA-transformed.png';
   const logo = document.getElementById('logo');
@@ -205,6 +203,14 @@ export function resetSettings() {
 
   const favicon = document.getElementById('favicon');
   favicon.href = logoPhoto;
-  localStorage.setItem('theme', theme);
+
+  // Reset theme to light mode
+  document.documentElement.className = 'normal';
+  localStorage.setItem('theme', 'normal');
+
+  // Update the radio button to reflect the light theme
+  const themeRadioButton = document.getElementById('normal');
+  themeRadioButton.checked = true;
+  markSelectedNavigationItem('personalize-button');
 }
 
