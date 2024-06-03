@@ -214,13 +214,13 @@ func TestChangeLang(t *testing.T) {
 		expectedIndex int
 	}{
 		// Valid input
-		{"German", 0},
+		{"Deutsch", 0},
 		{"English (UK)", 1},
 		{"English (US)", 2},
-		{"Spanish", 3},
-		{"French", 4},
-		{"Dutch", 5},
-		{"Portuguese", 6},
+		{"Español", 3},
+		{"Français", 4},
+		{"Nederlands", 5},
+		{"Português", 6},
 		// Invalid input, should return the default index ( English (UK))
 		{"Italian", 1},
 	}

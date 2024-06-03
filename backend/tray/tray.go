@@ -391,13 +391,13 @@ func ScanNow(dialogPresent bool) ([]checks.Check, error) {
 // The function maps each language to an index, which is used internally for localization. If the function is called with a test input, it uses the test input instead of displaying the dialog window.
 //
 // The language indices are as follows:
-// 0: German
+// 0: Deutsch
 // 1: English (UK)
 // 2: English (US)
-// 3: Spanish
-// 4: French
-// 5: Dutch
-// 6: Portuguese
+// 3: Español
+// 4: Français
+// 5: Nederlands
+// 6: Português
 //
 // Parameters:
 //
