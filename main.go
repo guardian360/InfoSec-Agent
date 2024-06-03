@@ -9,6 +9,7 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/localization"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/tray"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/usersettings"
 	"github.com/getlantern/systray"
 	"github.com/rodolfoag/gow32"
 )
@@ -27,6 +28,12 @@ func main() {
 	// This also ensures the program is not running when uninstalling the application
 	_, mutexErr := gow32.CreateMutex("InfoSec-Agent")
 	if mutexErr != nil {
+		// Initialize localization settings for startup popups
+		logger.SetupTests()
+		localization.Init("backend/")
+		settings := usersettings.LoadUserSettings()
+		tray.Language = settings.Language
+		tray.AlreadyRunningPopup()
 		return
 	}
 
@@ -42,5 +49,8 @@ func main() {
 	logger.Setup("log.txt", 0, -1)
 	logger.Log.Info("Starting InfoSec Agent")
 	localization.Init("backend/")
+	settings := usersettings.LoadUserSettings()
+	tray.Language = settings.Language
+	tray.StartPopup()
 	systray.Run(tray.OnReady, tray.OnQuit)
 }

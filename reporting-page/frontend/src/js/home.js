@@ -5,7 +5,9 @@ import {retrieveTheme} from './personalize.js';
 import {scanTest} from './database.js';
 import {LogError as logError} from '../../wailsjs/go/main/Tray.js';
 import {openIssuePage} from './issue.js';
+import {saveProgress, shareProgress, selectSocialMedia} from './share.js';
 import data from '../databases/database.en-GB.json' assert { type: 'json' };
+import {showModal} from './settings.js';
 
 /** Load the content of the Home page */
 export function openHomePage() {
@@ -15,6 +17,10 @@ export function openHomePage() {
   sessionStorage.setItem('savedPage', 1);
 
   document.getElementById('page-contents').innerHTML = `
+  <video autoplay muted loop class="video-background">
+        <source id="lighthouse-background" type="video/mp4">
+        Your browser does not support HTML5 video.
+  </video>
   <div class="home-page">
     <div class="container-home"> 
       <div class="data-segment">
@@ -31,40 +37,41 @@ export function openHomePage() {
         </div>
         <a id="suggested-issue" class="issue-button lang-suggested-issue"></a>
         <a id="scan-now" class="issue-button lang-scan-now"></a>
+        <a id="share-progress" class="issue-button"></a>
       </div>
     </div>
-    <div class="container-home"> 
-      <div class="data-segment">
-        <div class="data-segment-header">
-          <p class="lang-title-medals"></p>
-        </div>
-        <div class="medals">
-          <div class="medal-layout">
-            <img id="medal" alt="Photo of medal"></img>
-            <p class="medal-name"> Medal 1</p>
-          </div>
-          <div class="medal-layout">
-            <img id="medal2" alt="Photo of medal"></img>
-            <p class="medal-name"> Medal 2</p>
-          </div>
-          <div class="medal-layout">
-            <img id="medal3" alt="Photo of medal"></img>
-            <p class="medal-name"> Medal 3</p>
-          </div><div class="medal-layout">
-            <img id="medal4" alt="Photo of medal"></img>
-            <p class="medal-name"> Medal 4</p>
-          </div>
-        </div>
+  </div>
+  <div id="share-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span id="close-share-modal" class="close">&times;</span>
+        <p>Select where to share your progress, Save and download it, then share it with others!</p>
+      </div>
+      <div id="share-node" class="modal-body">
+        <img class="api-key-image" src="https://placehold.co/600x315" alt="Step 1 Image">
+      </div>
+      <div id="share-buttons" class="modal-body">
+        <a id="share-save-button" class="modal-button share-button">Save</a>
+        <a class="share-button-break">|</a>
+        <a id="select-facebook" class="select-button selected">Facebook</a>
+        <a id="select-x" class="select-button">X</a>
+        <a id="select-linkedin" class="select-button">LinkedIn</a>
+        <a id="select-instagram" class="select-button">Instagram</a>
+        <a class="share-button-break">|</a>
+        <a id="share-button" class="modal-button share-button">Share</a>
       </div>
     </div>
   </div>
   `;
 
-  const medal = 'frontend/src/assets/images/img_medal1.png';
-  document.getElementById('medal').src = medal;
-  document.getElementById('medal2').src = medal;
-  document.getElementById('medal3').src = medal;
-  document.getElementById('medal4').src = medal;
+  const lighthouseState = 'src/assets/images/regular1.mp4';
+  document.getElementById('lighthouse-background').src = lighthouseState;
+
+  // const medal = 'frontend/src/assets/images/img_medal1.png';
+  // document.getElementById('medal').src = medal;
+  // document.getElementById('medal2').src = medal;
+  // document.getElementById('medal3').src = medal;
+  // document.getElementById('medal4').src = medal;
 
   const rc = JSON.parse(sessionStorage.getItem('RiskCounters'));
   new PieChart('pie-chart-home', rc, 'Total');
@@ -90,6 +97,15 @@ export function openHomePage() {
 
   document.getElementById('scan-now').addEventListener('click', () => scanTest(true));
   document.getElementById('suggested-issue').addEventListener('click', () => suggestedIssue(''));
+  document.getElementById('share-progress').addEventListener('click', () => showModal('share-modal'));
+  document.getElementById('share-save-button').addEventListener('click',
+    () => saveProgress(document.getElementById('share-node')));
+  document.getElementById('share-button').addEventListener('click', () => shareProgress());
+
+  document.getElementById('select-facebook').addEventListener('click', () => selectSocialMedia('facebook'));
+  document.getElementById('select-x').addEventListener('click', () => selectSocialMedia('x'));
+  document.getElementById('select-linkedin').addEventListener('click', () => selectSocialMedia('linkedin'));
+  document.getElementById('select-instagram').addEventListener('click', () => selectSocialMedia('instagram'));
 }
 
 /** Opens the issue page of the issue with highest risk level
@@ -151,3 +167,5 @@ window.onload = function() {
     favicon.href = savedIcon;
   }
 };
+
+

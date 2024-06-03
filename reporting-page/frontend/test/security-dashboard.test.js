@@ -54,6 +54,12 @@ jest.unstable_mockModule('../src/js/issue.js', () => ({
   openIssuePage: jest.fn(),
 }));
 
+// Mock openPersonalizePage
+jest.unstable_mockModule('../src/js/personalize.js', () => ({
+  openPersonalizePage: jest.fn(),
+  retrieveTheme: jest.fn(),
+}));
+
 // test cases
 describe('Security dashboard', function() {
   it('openSecurityDashboardPage should add the dashboard to the page-contents with graph functions', async function() {
