@@ -27,7 +27,7 @@ var testsValid = []func(t *testing.T){
 	i.TestIntegrationGuestAccountNotActive,
 	i.TestIntegrationLastPasswordChangeValid,
 	i.TestIntegrationLoginMethodPasswordOnly,
-	//i.TestIntegrationOutdatedWin11UpToDate,
+	// i.TestIntegrationOutdatedWin11UpToDate,
 	i.TestIntegrationPermissionWithoutApps,
 	i.TestIntegrationRemoteDesktopDisabled,
 	i.TestIntegrationSecureBootEnabled,

@@ -15,7 +15,7 @@ var testsNotPresent = []func(t *testing.T){
 	i.TestIntegrationExtensionsFirefoxNotInstalled,
 	i.TestIntegrationDefenderPeriodicScanActive,
 	i.TestIntegrationLoginMethodPasswordAndPIN,
-	//i.TestIntegrationOutdatedWin10UpToDate,
+	// i.TestIntegrationOutdatedWin10UpToDate,
 	i.TestIntegrationUACPartialEnabled,
 }
 

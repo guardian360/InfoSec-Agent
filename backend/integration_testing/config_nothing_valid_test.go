@@ -20,7 +20,7 @@ var testsInvalid = []func(t *testing.T){
 	i.TestIntegrationGuestAccountActive,
 	i.TestIntegrationLastPasswordChangeInvalid,
 	i.TestIntegrationLoginMethodPINOnly,
-	//i.TestIntegrationOutdatedWin11NotUpToDate,
+	// i.TestIntegrationOutdatedWin11NotUpToDate,
 	i.TestIntegrationPermissionWithApps,
 	i.TestIntegrationRemoteDesktopEnabled,
 	i.TestIntegrationSecureBootDisabled,
