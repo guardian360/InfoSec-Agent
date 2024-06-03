@@ -1398,6 +1398,27 @@
             "TOBEFILLED"
         ]
     },
+    "370": {
+        "Name": "Windows-Firewall für alle Profile aktiviert",
+        "Type": "Sicherheit",
+        "Information": "Die Windows-Firewall ist eine integrierte Sicherheitsfunktion, die Ihren Computer vor unbefugtem Zugriff und schädlicher Software schützt, indem sie den ein- und ausgehenden Netzwerkverkehr überwacht und kontrolliert. Das Aktivieren der Windows-Firewall für alle Netzwerkprofile (öffentlich, privat und Domäne) trägt zur Verbesserung der Systemsicherheit bei und verhindert potenzielle Sicherheitsbedrohungen.",
+        "Solution": [
+            "Die Windows-Firewall ist für alle Profile aktiviert, daher sind keine Maßnahmen erforderlich."
+        ],
+        "Screenshots": []
+    },
+    "371": {
+        "Name": "Windows-Firewall nicht für alle Profile aktiviert",
+        "Type": "Sicherheit",
+        "Information": "Die Windows-Firewall ist eine integrierte Sicherheitsfunktion, die Ihren Computer vor unbefugtem Zugriff und schädlicher Software schützt, indem sie den ein- und ausgehenden Netzwerkverkehr überwacht und kontrolliert. Das Aktivieren der Windows-Firewall für alle Netzwerkprofile (öffentlich, privat und Domäne) trägt zur Verbesserung der Systemsicherheit bei und verhindert potenzielle Sicherheitsbedrohungen.",
+        "Solution": [
+            "Gehen Sie zu Start > Einstellungen > Update & Sicherheit > Windows-Sicherheit > Firewall- & Netzwerkschutz.",
+            "Stellen Sie unter 'Firewall- & Netzwerkschutz' sicher, dass die Windows-Firewall für alle Netzwerkprofile (öffentlich, privat und Domäne) aktiviert ist. Wenn sie deaktiviert ist, klicken Sie auf 'Einschalten', um die Firewall für das ausgewählte Profil zu aktivieren."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
     "997": {
         "Name": "Installierte Erweiterungen in Google Chrome",
         "Type": "Privatsphäre",
