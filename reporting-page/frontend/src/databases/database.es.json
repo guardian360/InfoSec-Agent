@@ -1398,6 +1398,70 @@
             "TOBEFILLED"
         ]
     },
+    "370": {
+        "Name": "Firewall de Windows habilitado para todos los perfiles",
+        "Type": "Seguridad",
+        "Information": "El firewall de Windows es una función de seguridad incorporada que ayuda a proteger su computadora del acceso no autorizado y del software malicioso al monitorear y controlar el tráfico de red entrante y saliente. Habilitar el firewall de Windows para todos los perfiles de red (público, privado y de dominio) ayuda a mejorar la seguridad de su sistema y prevenir posibles amenazas de seguridad.",
+        "Solution": [
+            "El firewall de Windows está habilitado para todos los perfiles, por lo que no se necesita ninguna acción."
+        ],
+        "Screenshots": []
+    },
+    "371": {
+        "Name": "Firewall de Windows no habilitado para todos los perfiles",
+        "Type": "Seguridad",
+        "Information": "El firewall de Windows es una función de seguridad incorporada que ayuda a proteger su computadora del acceso no autorizado y del software malicioso al monitorear y controlar el tráfico de red entrante y saliente. Habilitar el firewall de Windows para todos los perfiles de red (público, privado y de dominio) ayuda a mejorar la seguridad de su sistema y prevenir posibles amenazas de seguridad.",
+        "Solution": [
+            "Vaya a Inicio > Configuración > Actualización y seguridad > Seguridad de Windows > Protección de firewall y red.",
+            "En 'Protección de firewall y red', asegúrese de que el firewall de Windows esté activado para todos los perfiles de red (público, privado y de dominio). Si está desactivado, haga clic en 'Activar' para habilitar el firewall para el perfil seleccionado."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
+    "380": {
+        "Name": "Longitud mínima de la contraseña establecida en al menos 15 caracteres",
+        "Type": "Seguridad",
+        "Information": "Establecer una longitud mínima de la contraseña de al menos 15 caracteres ayuda a mejorar la seguridad de las cuentas de usuario al aumentar la complejidad y la fortaleza de las contraseñas. Las contraseñas más largas son más resistentes a los ataques de fuerza bruta y proporcionan una mejor protección contra el acceso no autorizado y las violaciones de datos.",
+        "Solution": [
+            "La longitud mínima de la contraseña está establecida en al menos 15 caracteres, por lo que no se necesita ninguna acción."
+        ],
+        "Screenshots": []
+    },
+    "381": {
+        "Name": "Longitud mínima de la contraseña no establecida en al menos 15 caracteres",
+        "Type": "Seguridad",
+        "Information": "Establecer una longitud mínima de la contraseña de al menos 15 caracteres ayuda a mejorar la seguridad de las cuentas de usuario al aumentar la complejidad y la fortaleza de las contraseñas. Las contraseñas más largas son más resistentes a los ataques de fuerza bruta y proporcionan una mejor protección contra el acceso no autorizado y las violaciones de datos.",
+        "Solution": [
+            "Abra un símbolo del sistema con privilegios elevados haciendo clic derecho en el botón de Inicio y seleccionando 'Terminal (Administrador)'.",
+            "Ejecute el comando 'net accounts' para ver la configuración actual de la política de contraseñas, incluida la longitud mínima de la contraseña.",
+            "Ejecute el comando 'net accounts /minpwlen:15' para establecer la longitud mínima de la contraseña en 15 caracteres.",
+            "Reinicie su computadora para aplicar los cambios."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
+    "390": {
+        "Name": "Credential Guard habilitado",
+        "Type": "Seguridad",
+        "Information": "Credential Guard es una función de seguridad en Windows que ayuda a proteger las credenciales de los usuarios y la información sensible contra el acceso no autorizado y el robo. Utiliza seguridad basada en virtualización para aislar y proteger la información de las credenciales, lo que dificulta que los atacantes roben contraseñas y otros datos sensibles.",
+        "Solution": [
+            "Credential Guard está habilitado, por lo que no se necesita ninguna acción."
+        ],
+        "Screenshots": []
+    },
+    "391": {
+        "Name": "Credential Guard deshabilitado",
+        "Type": "Seguridad",
+        "Information": "Credential Guard es una función de seguridad en Windows que ayuda a proteger las credenciales de los usuarios y la información sensible contra el acceso no autorizado y el robo. Utiliza seguridad basada en virtualización para aislar y proteger la información de las credenciales, lo que dificulta que los atacantes roben contraseñas y otros datos sensibles.",
+        "Solution": [
+            "La configuración de Credential Guard se gestiona en su directiva de grupo local. Pida a su administrador de red que habilite Credential Guard."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
     "997": {
         "Name": "Extensiones instaladas en Google Chrome",
         "Type": "Privacidad",

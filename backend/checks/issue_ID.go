@@ -38,4 +38,7 @@ const (
 	RemoteRPCID
 	CookiesChromiumID
 	CookiesEdgeID
+	FirewallID
+	PasswordComplexityID
+	CredentialGuardID
 )

@@ -285,4 +285,16 @@ var IssueMap = map[IssueResPair]bool{
 	{36, 0}: false,
 	// Edge Cookies: Tracking cookies found
 	{36, 1}: true,
+	// Windows Firewall: Firewall enabled for all profiles
+	{37, 0}: false,
+	// Windows Firewall: Firewall disabled for any/all profile(s)
+	{37, 1}: true,
+	// Password length: Password length at least 15 characters
+	{38, 0}: false,
+	// Password length: Password length less than 15 characters
+	{38, 1}: true,
+	// Credential Guard: Credential Guard running
+	{39, 0}: false,
+	// Credential Guard: Credential Guard not running
+	{39, 1}: true,
 }

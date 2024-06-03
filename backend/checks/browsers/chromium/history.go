@@ -4,7 +4,6 @@ import (
 	"database/sql"
 	"os"
 	"path/filepath"
-	"regexp"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/browsers"
 
@@ -206,11 +205,11 @@ type RealProcessQueryResultsGetter struct{}
 // This function works by iterating over the rows, extracting the URL from each row, and checking the domain part of the URL against a list of known phishing domains. If a match is found, a string is generated that includes the domain name and the time of the last visit, and this string is added to the results. The function uses the utils.GetPhishingDomains helper function to fetch the list of known phishing domains and a regular expression to extract the domain part of the URL.
 func (r RealProcessQueryResultsGetter) ProcessQueryResults(rows *sql.Rows, getter browsers.PhishingDomainGetter) ([]string, error) {
 	var results []string
-	phishingDomainList, err := getter.GetPhishingDomains()
+	creator := browsers.RealRequestCreator{}
+	phishingDomainList, err := getter.GetPhishingDomains(creator)
 	if err != nil {
 		return nil, err
 	}
-	re := regexp.MustCompile(`(?:https?://)?(?:[^@\n]+@)?(?:www\.)?([^:/\n?]+\.[^:/\n?]+)`)
 
 	for rows.Next() {
 		var url, title string
@@ -220,13 +219,10 @@ func (r RealProcessQueryResultsGetter) ProcessQueryResults(rows *sql.Rows, gette
 			return nil, scanErr
 		}
 
-		matches := re.FindStringSubmatch(url)
 		for _, scamDomain := range phishingDomainList {
-			if len(matches) > 1 && strings.Contains(scamDomain, matches[1]) {
-				domain := matches[1]
-				results = append(results, "You visited website: "+domain+" which is a known phishing domain. "+
-					"The time of the last visit: "+
-					""+time.UnixMicro(int64(lastVisitTime)).AddDate(-369, 0, 0).String())
+			if strings.Contains(scamDomain, url) {
+				domain := url
+				results = append(results, domain+time.UnixMicro(int64(lastVisitTime)).AddDate(-369, 0, 0).String())
 			}
 		}
 	}

@@ -23,6 +23,10 @@ Should later on be able to be changed by user, with help of js
   --background-piechart: hsl(var(--hueleft-analogous) 40% 90%); /* changes background pie-chart */
   --background-color-table-header: white;
   --background-color-integration: #f4f4f4;
+  --background-security-button: #946CB2;
+  --background-security-button-hover: #644878;
+  --background-privacy-button: #4E869B;
+  --background-privacy-button-hover: #427385;
 
   /* colors for text */
   --text-body: #333;                                  /* main text color */

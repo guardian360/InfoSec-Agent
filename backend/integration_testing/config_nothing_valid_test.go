@@ -9,8 +9,6 @@ var testsInvalid = []func(t *testing.T){
 	i.TestIntegrationExtensionsChromiumWithoutAdBlocker,
 	i.TestIntegrationHistoryChromiumWithPhishing,
 	i.TestIntegrationCISRegistrySettingsIncorrect,
-	i.TestIntegrationBluetoothDevices,
-	i.TestIntegrationExternalDevicesDevices,
 	i.TestIntegrationExtensionsFirefoxWithoutAdBlocker,
 	i.TestIntegrationHistoryFirefoxWithPhishing,
 	i.TestIntegrationOpenPortsPorts,

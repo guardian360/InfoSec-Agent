@@ -252,7 +252,7 @@ type MockPhishingDomainsGetter struct {
 	GetPhishingDomainsFunc func() ([]string, error)
 }
 
-func (m MockPhishingDomainsGetter) GetPhishingDomains() ([]string, error) {
+func (m MockPhishingDomainsGetter) GetPhishingDomains(_ browsers.RequestCreator) ([]string, error) {
 	return m.GetPhishingDomainsFunc()
 }
 

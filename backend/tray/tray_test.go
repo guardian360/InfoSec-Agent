@@ -202,7 +202,7 @@ func TestTranslation(t *testing.T) {
 //
 // This test function iterates over a set of test cases that include valid language inputs and an invalid language input.
 // For each test case, it calls the ChangeLanguage function with the test input and asserts that the language index returned by the Language function matches the expected index.
-// This validates that the ChangeLanguage function correctly updates the language index for valid inputs and defaults to the index for "British English" for invalid inputs.
+// This validates that the ChangeLanguage function correctly updates the language index for valid inputs and defaults to the index for "English (UK)" for invalid inputs.
 //
 // Parameters:
 //   - t *testing.T: The testing framework used for assertions.
@@ -214,14 +214,14 @@ func TestChangeLang(t *testing.T) {
 		expectedIndex int
 	}{
 		// Valid input
-		{"German", 0},
-		{"British English", 1},
-		{"American English", 2},
-		{"Spanish", 3},
-		{"French", 4},
-		{"Dutch", 5},
-		{"Portuguese", 6},
-		// Invalid input, should return the default index (British English)
+		{"Deutsch", 0},
+		{"English (UK)", 1},
+		{"English (US)", 2},
+		{"Español", 3},
+		{"Français", 4},
+		{"Nederlands", 5},
+		{"Português", 6},
+		// Invalid input, should return the default index ( English (UK))
 		{"Italian", 1},
 	}
 
@@ -243,7 +243,7 @@ func TestChangeLang(t *testing.T) {
 func TestRefreshMenu(t *testing.T) {
 	value1 := tray.MenuItems[0].MenuTitle
 	translation1 := localization.Localize(tray.Language, value1)
-	tray.ChangeLanguage("Spanish")
+	tray.ChangeLanguage("Español")
 	// Refresh the menu, then check if the translation is different
 	// RefreshMenu(MenuItems)
 	value2 := tray.MenuItems[0].MenuTitle
@@ -278,7 +278,7 @@ func TestOpenReportingPageWhenAlreadyOpen(t *testing.T) {
 //
 // No return values.
 func TestPopup(t *testing.T) {
-	tray.ChangeLanguage("British English")
+	tray.ChangeLanguage("English (UK)")
 	// Define check result
 	scanResult := []checks.Check{
 		{

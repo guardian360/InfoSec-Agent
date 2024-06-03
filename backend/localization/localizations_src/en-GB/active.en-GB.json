@@ -42,7 +42,11 @@
       "OneMedium": "The privacy and security scan has been completed. You have 1 medium risk issue. Open the reporting page to see more information.",
       "MultipleMedium": "The privacy and security scan has been completed. You have %d medium risk issues. Open the reporting page to see more information.",
       "Default": "The privacy and security scan has been completed. Open the reporting page to view the results.",
-      "Button": "Open Reporting Page"
+      "Button": "Open Reporting Page",
+      "StartupTitle": "InfoSec Agent Started",
+      "Startup": "InfoSec Agent has started and is running in the background. Open the system tray to access the application.",
+      "AlreadyRunningTitle": "InfoSec Agent Already Running",
+      "AlreadyRunning": "InfoSec Agent is already running in the background. Open the system tray to access the application."
     }
   },
   "Navigation": 
@@ -94,7 +98,11 @@
     "ChooseIssueDescription": "Actions",
     "BarGraphDescription": "This graph shows the distribution of issues of different risk levels found over the past 5 scans.",
     "SelectRisks": "Select risks",
-    "ChangeInterval": "Change interval"
+    "ChangeInterval": "Change interval",
+    "ShareButton": "Share progress",
+    "ShareText": "Select where to share your progress, save and download it, then share it with others!",
+    "SaveText": "Save",
+    "Share": "Share"
   },
   "Issues":
   {
@@ -117,7 +125,8 @@
     "Low": "Low",
     "Medium": "Medium",
     "High": "High",
-    "Info": "Info"
+    "Info": "Info",
+    "ScanAgain": "Scan again"
   },
   "About": {
     "AboutTitle": "About Infosec Agent",
@@ -128,5 +137,15 @@
     "AffiliationsInfo": "This project is a collaborative effort involving nine students from Utrecht University in The Netherlands, in partnership with the Dutch IT company Guardian360. It serves as the Software Project for the Bachelor's Programme in Computing Sciences at the UU. This project is also supported by funding from the SIDN Fund (Stichting Internet Domeinregistratie Nederland), the Dutch domain name registrar.",
     "ContributingTitle": "Contributing",
     "ContributingInfo": "InfoSec-Agent is an Open-Source project licensed under the AGPL-3.0 Licence. However, due to its origins as a Utrecht University assignment, public contributions to this repository will only be merged after the completion of this assignment, which is scheduled for 24th June 2024. Feel free to report any bugs or issues you encounter. Your feedback is valuable and helps improve the InfoSec-Agent project. You can email us at <a href=\"mailto:infosecagentuu@gmail.com\">infosecagentuu@gmail.com</a>"
+  },  
+  "Personalize": {
+    "ChangeFavicon": "Change favicon", 
+    "navImage": "Navigation image", 
+    "ChangeImage": "Change image", 
+    "Title": "Navigation title", 
+    "ChangeTitle": "Change title", 
+    "Reset": "Reset settings",
+    "PersonalizeTitle": "Personalize Your Experience",
+    "PickTheme": "Pick a theme"
   }
 }

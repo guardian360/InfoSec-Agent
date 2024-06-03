@@ -127,7 +127,7 @@
 }
 
 /* Specific Styles for Navigation Buttons */
-#back-button, #next-button, #previous-button {
+#back-button, #next-button, #previous-button, #scan-button{
   width: auto; /* Auto width based on content */
   padding: 10px 15px; /* Sufficient padding for touch targets */
   float: none; /* Remove float property */
@@ -144,7 +144,7 @@
 
 /* Responsive design */
 @media (width <= 768px) {
-  .button, #back-button, #next-button, #previous-button {
+  .button, #back-button, #next-button, #previous-button, #scan-button {
     width: 100%; /* Full width on small screens */
     margin-top: 10px; /* Space out stacked buttons */
   }

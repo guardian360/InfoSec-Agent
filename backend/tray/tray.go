@@ -7,10 +7,8 @@ package tray
 import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/usersettings"
-	"github.com/go-toast/toast"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/database"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/icon"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/localization"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/scan"
@@ -35,9 +33,9 @@ var ScanCounter int
 //
 // 0: German
 //
-// 1: British English
+// 1: English (UK)
 //
-// 2: American English
+// 2: English (US)
 //
 // 3: Spanish
 //
@@ -47,7 +45,7 @@ var ScanCounter int
 //
 // 6: Portuguese
 //
-// Default language is British English
+// Default language is English (UK)
 var Language = 1
 
 var MenuItems []MenuItem
@@ -85,7 +83,6 @@ func OnReady() {
 	systray.SetTooltip("InfoSec Agent")
 
 	settings := usersettings.LoadUserSettings()
-	Language = settings.Language
 	scanInterval := settings.ScanInterval
 
 	// Generate the menu for the system tray application
@@ -394,13 +391,13 @@ func ScanNow(dialogPresent bool) ([]checks.Check, error) {
 // The function maps each language to an index, which is used internally for localization. If the function is called with a test input, it uses the test input instead of displaying the dialog window.
 //
 // The language indices are as follows:
-// 0: German
-// 1: British English
-// 2: American English
-// 3: Spanish
-// 4: French
-// 5: Dutch
-// 6: Portuguese
+// 0: Deutsch
+// 1: English (UK)
+// 2: English (US)
+// 3: Español
+// 4: Français
+// 5: Nederlands
+// 6: Português
 //
 // Parameters:
 //
@@ -413,10 +410,13 @@ func ChangeLanguage(testInput ...string) {
 	if test {
 		res = testInput[0]
 	} else {
+		languages := []string{"Deutsch", "English (UK)", "English (US)", "Español", "Français", "Nederlands", "Português"}
+		defaultLanguage := languages[Language]
+
 		var err error
-		res, err = zenity.List(localization.Localize(Language, "Dialogs.Language.Content"), []string{"German", "British English", "American English",
-			"Spanish", "French", "Dutch", "Portuguese"}, zenity.Title(localization.Localize(Language, "Dialogs.Language.Title")),
-			zenity.DefaultItems("British English"),
+		res, err = zenity.List(localization.Localize(Language, "Dialogs.Language.Content"), languages,
+			zenity.Title(localization.Localize(Language, "Dialogs.Language.Title")),
+			zenity.DefaultItems(defaultLanguage),
 			zenity.OKLabel(localization.Localize(Language, "Dialogs.OK")),
 			zenity.CancelLabel(localization.Localize(Language, "Dialogs.Cancel")))
 		if err != nil {
@@ -427,19 +427,19 @@ func ChangeLanguage(testInput ...string) {
 
 	// Assign each language to an index for the localization package
 	switch res {
-	case "German":
+	case "Deutsch":
 		Language = 0
-	case "British English":
+	case "English (UK)":
 		Language = 1
-	case "American English":
+	case "English (US)":
 		Language = 2
-	case "Spanish":
+	case "Español":
 		Language = 3
-	case "French":
+	case "Français":
 		Language = 4
-	case "Dutch":
+	case "Nederlands":
 		Language = 5
-	case "Portuguese":
+	case "Português":
 		Language = 6
 	default:
 		Language = 1
@@ -471,72 +471,6 @@ func RefreshMenu() {
 		item.sysMenuItem.SetTitle(localization.Localize(Language, item.MenuTitle))
 		item.sysMenuItem.SetTooltip(localization.Localize(Language, item.menuTooltip))
 	}
-}
-
-// Popup displays a notification to the user when a scan is completed.
-//
-// This function creates a notification with a title, message, and icon to inform the user that a scan has been completed.
-// The notification also includes an action button that lets the user open the reporting page.
-//
-// Parameters: scanResult []checks.Check: A slice of checks representing the scan results.
-//
-// Returns: error: An error object if an error occurred during the scan, otherwise nil.
-func Popup(scanResult []checks.Check, path string) error {
-	// Generate notification message based on the severity of the issues found during the scan
-	resultMessage := PopupMessage(scanResult, path)
-
-	// Get the path to the popup icon
-	appDataPath, err := os.UserConfigDir()
-	if err != nil {
-		logger.Log.ErrorWithErr("error getting icon path: error getting user config dir", err)
-	}
-
-	// Create a notification to inform the user that the scan is complete
-	notification := toast.Notification{
-		AppID:               "InfoSec Agent",
-		Title:               localization.Localize(Language, "Dialogs.Popup.Title"),
-		Message:             resultMessage,
-		Icon:                appDataPath + "/InfoSec-Agent/icon/icon128.ico",
-		ActivationArguments: "infosecagent:",
-		Actions: []toast.Action{
-			{Type: "protocol", Label: localization.Localize(Language, "Dialogs.Popup.Button"), Arguments: "infosecagent:"},
-		},
-	}
-	if err = notification.Push(); err != nil {
-		return fmt.Errorf("error pushing scan notification: %w", err)
-	}
-	return nil
-}
-
-// PopupMessage generates a notification message based on the severity of the issues found during the scan.
-//
-// This function takes a slice of checks representing the scan results and generates a notification message based on the number of issues found at each severity level.
-// The message informs the user about the number of issues found during the scan and prompts them to open the reporting page for more information.
-//
-// Parameters: scanResult []checks.Check: A slice of checks representing the scan results.
-//
-// Returns: string: A notification message based on the severity of the issues found during the scan.
-func PopupMessage(scanResult []checks.Check, path string) string {
-	dbData, err := database.GetData(scanResult, path)
-	if err != nil {
-		logger.Log.ErrorWithErr("Error getting database data:", err)
-	}
-	severityCounters := make(map[int]int)
-	for _, issue := range dbData {
-		severityCounters[issue.Severity]++
-	}
-	if severityCounters[3] > 0 {
-		if severityCounters[3] == 1 {
-			return localization.Localize(Language, "Dialogs.Popup.OneHigh")
-		}
-		return fmt.Sprintf(localization.Localize(Language, "Dialogs.Popup.MultipleHigh"), severityCounters[3])
-	} else if severityCounters[2] > 0 {
-		if severityCounters[2] == 1 {
-			return localization.Localize(Language, "Dialogs.Popup.OneMedium")
-		}
-		return fmt.Sprintf(localization.Localize(Language, "Dialogs.Popup.MultipleMedium"), severityCounters[2])
-	}
-	return localization.Localize(Language, "Dialogs.Popup.Default")
 }
 
 // changeNextScan updates the next scan time based on the current time and the scan interval.
