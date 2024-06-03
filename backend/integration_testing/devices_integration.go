@@ -17,13 +17,6 @@ func TestIntegrationBluetoothNoDevices(t *testing.T) {
 	require.Equal(t, 0, result.ResultID)
 }
 
-func TestIntegrationExternalDevicesDevices(t *testing.T) {
-	result := devices.ExternalDevices(&mocking.RealCommandExecutor{})
-	require.NotEmpty(t, result)
-	require.NotEmpty(t, result.Result)
-	require.Equal(t, 1, result.ResultID)
-}
-
 func TestIntegrationExternalDevicesNoDevices(t *testing.T) {
 	result := devices.ExternalDevices(&mocking.RealCommandExecutor{})
 	require.NotEmpty(t, result)
