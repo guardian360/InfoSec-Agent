@@ -1471,6 +1471,31 @@
             "TOBEFILLED"
         ]
     },
+    "390": {
+        "Name": "Credential Guard enabled",
+        "Type": "Security",
+        "Information": "Credential Guard is a security feature in Windows that helps protect user credentials and sensitive information from unauthorized access and theft. It uses virtualization-based security to isolate and protect credential information, making it more difficult for attackers to steal passwords and other sensitive data.",
+        "Solution":
+        [
+            "Credential Guard is enabled, so there is no action needed."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "391": {
+        "Name": "Credential Guard disabled",
+        "Type": "Security",
+        "Information": "Credential Guard is a security feature in Windows that helps protect user credentials and sensitive information from unauthorized access and theft. It uses virtualization-based security to isolate and protect credential information, making it more difficult for attackers to steal passwords and other sensitive data.",
+        "Solution":
+        [
+            "The setting of Credential Guard is handled in your local group policy. Ask your network administrator to enable Credential Guard."
+        ],
+        "Screenshots":
+        [
+            "TOBEFILLED"
+        ]
+    },
     "997": {
         "Name": "Extensions installed in Google Chrome",
         "Type": "Privacy",
