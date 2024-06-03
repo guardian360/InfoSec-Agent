@@ -140,6 +140,7 @@ var windowsChecks = []func() checks.Check{
 		return windows.Startup(mocking.CurrentUser, mocking.LocalMachine, mocking.LocalMachine)
 	},
 	func() checks.Check { return windows.UACCheck(executor) },
+	func() checks.Check { return windows.FirewallEnabled(executor) },
 }
 
 // DirectoryExists checks if a directory exists at the specified path.

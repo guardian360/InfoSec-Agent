@@ -1398,6 +1398,27 @@
             "TOBEFILLED"
         ]
     },
+    "370": {
+        "Name": "Pare-feu Windows activé pour tous les profils",
+        "Type": "Sécurité",
+        "Information": "Le pare-feu Windows est une fonctionnalité de sécurité intégrée qui aide à protéger votre ordinateur contre les accès non autorisés et les logiciels malveillants en surveillant et en contrôlant le trafic réseau entrant et sortant. Activer le pare-feu Windows pour tous les profils réseau (public, privé et domaine) contribue à renforcer la sécurité de votre système et à prévenir les menaces potentielles.",
+        "Solution": [
+            "Le pare-feu Windows est activé pour tous les profils, aucune action n'est donc nécessaire."
+        ],
+        "Screenshots": []
+    },
+    "371": {
+        "Name": "Pare-feu Windows non activé pour tous les profils",
+        "Type": "Sécurité",
+        "Information": "Le pare-feu Windows est une fonctionnalité de sécurité intégrée qui aide à protéger votre ordinateur contre les accès non autorisés et les logiciels malveillants en surveillant et en contrôlant le trafic réseau entrant et sortant. Activer le pare-feu Windows pour tous les profils réseau (public, privé et domaine) contribue à renforcer la sécurité de votre système et à prévenir les menaces potentielles.",
+        "Solution": [
+            "Allez à Démarrer > Paramètres > Mise à jour et sécurité > Sécurité Windows > Protection contre les menaces et réseau.",
+            "Sous 'Protection contre les menaces et réseau', assurez-vous que le pare-feu Windows est activé pour tous les profils réseau (public, privé et domaine). S'il est désactivé, cliquez sur 'Activer' pour activer le pare-feu pour le profil sélectionné."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
     "997": {
         "Name": "Extensions installées dans Google Chrome",
         "Type": "Confidentialité",
