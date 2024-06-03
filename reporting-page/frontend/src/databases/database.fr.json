@@ -1419,6 +1419,29 @@
             "TOBEFILLED"
         ]
     },
+    "380": {
+        "Name": "Longueur minimale du mot de passe définie à au moins 15 caractères",
+        "Type": "Sécurité",
+        "Information": "Le fait de définir une longueur minimale de mot de passe d'au moins 15 caractères contribue à renforcer la sécurité des comptes utilisateur en augmentant la complexité et la force des mots de passe. Les mots de passe plus longs sont plus résistants aux attaques par force brute et offrent une meilleure protection contre les accès non autorisés et les violations de données.",
+        "Solution": [
+            "La longueur minimale du mot de passe est définie à au moins 15 caractères, donc aucune action n'est nécessaire."
+        ],
+        "Screenshots": []
+    },
+    "381": {
+        "Name": "Longueur minimale du mot de passe non définie à au moins 15 caractères",
+        "Type": "Sécurité",
+        "Information": "Le fait de définir une longueur minimale de mot de passe d'au moins 15 caractères contribue à renforcer la sécurité des comptes utilisateur en augmentant la complexité et la force des mots de passe. Les mots de passe plus longs sont plus résistants aux attaques par force brute et offrent une meilleure protection contre les accès non autorisés et les violations de données.",
+        "Solution": [
+            "Ouvrez une invite de commandes avec élévation de privilèges en cliquant avec le bouton droit sur le bouton Démarrer et en sélectionnant 'Terminal (Admin)'.",
+            "Exécutez la commande 'net accounts' pour afficher les paramètres de politique de mot de passe actuels, y compris la longueur minimale du mot de passe.",
+            "Exécutez la commande 'net accounts /minpwlen:15' pour définir la longueur minimale du mot de passe à 15 caractères.",
+            "Redémarrez votre ordinateur pour appliquer les modifications."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
     "997": {
         "Name": "Extensions installées dans Google Chrome",
         "Type": "Confidentialité",
