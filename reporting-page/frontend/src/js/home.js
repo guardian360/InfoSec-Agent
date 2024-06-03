@@ -25,7 +25,7 @@ export function openHomePage() {
     <div class="container-home"> 
       <div class="data-segment">
         <div class="data-segment-header">
-          <p class="lang-piechart-header">Risk level distribution</p>
+          <p class="lang-piechart-header"></p>
         </div>
         <div class="pie-chart-container">
           <canvas class="pie-chart" id="pie-chart-home"></canvas>
