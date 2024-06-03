@@ -1400,6 +1400,27 @@
             "TOBEFILLED"
         ]
     },
+    "370": {
+        "Name": "Firewall do Windows habilitado para todos os perfis",
+        "Type": "Segurança",
+        "Information": "O Firewall do Windows é um recurso de segurança integrado que ajuda a proteger seu computador contra acesso não autorizado e software malicioso, monitorando e controlando o tráfego de rede de entrada e saída. Habilitar o Firewall do Windows para todos os perfis de rede (público, privado e de domínio) ajuda a melhorar a segurança do seu sistema e a prevenir possíveis ameaças de segurança.",
+        "Solution": [
+            "O Firewall do Windows está habilitado para todos os perfis, portanto, nenhuma ação é necessária."
+        ],
+        "Screenshots": []
+    },
+    "371": {
+        "Name": "Firewall do Windows não habilitado para todos os perfis",
+        "Type": "Segurança",
+        "Information": "O Firewall do Windows é um recurso de segurança integrado que ajuda a proteger seu computador contra acesso não autorizado e software malicioso, monitorando e controlando o tráfego de rede de entrada e saída. Habilitar o Firewall do Windows para todos os perfis de rede (público, privado e de domínio) ajuda a melhorar a segurança do seu sistema e a prevenir possíveis ameaças de segurança.",
+        "Solution": [
+            "Vá para Iniciar > Configurações > Atualização e segurança > Segurança do Windows > Proteção contra ameaças e rede.",
+            "Em 'Proteção contra ameaças e rede', certifique-se de que o Firewall do Windows esteja ativado para todos os perfis de rede (público, privado e de domínio). Se estiver desativado, clique em 'Ativar' para habilitar o firewall para o perfil selecionado."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
     "997": {
         "Name": "Extensões instaladas no Google Chrome",
         "Type": "Privacidade",

@@ -1398,6 +1398,27 @@
             "TOBEFILLED"
         ]
     },
+    "370": {
+        "Name": "Windows-firewall ingeschakeld voor alle profielen",
+        "Type": "Beveiliging",
+        "Information": "De Windows-firewall is een ingebouwde beveiligingsfunctie die uw computer helpt te beschermen tegen ongeautoriseerde toegang en schadelijke software door inkomend en uitgaand netwerkverkeer te monitoren en te controleren. Het inschakelen van de Windows-firewall voor alle netwerkprofielen (openbaar, privé en domein) helpt de beveiliging van uw systeem te verbeteren en mogelijke beveiligingsdreigingen te voorkomen.",
+        "Solution": [
+            "De Windows-firewall is ingeschakeld voor alle profielen, dus er is geen actie nodig."
+        ],
+        "Screenshots": []
+    },
+    "371": {
+        "Name": "Windows-firewall niet ingeschakeld voor alle profielen",
+        "Type": "Beveiliging",
+        "Information": "De Windows-firewall is een ingebouwde beveiligingsfunctie die uw computer helpt te beschermen tegen ongeautoriseerde toegang en schadelijke software door inkomend en uitgaand netwerkverkeer te monitoren en te controleren. Het inschakelen van de Windows-firewall voor alle netwerkprofielen (openbaar, privé en domein) helpt de beveiliging van uw systeem te verbeteren en mogelijke beveiligingsdreigingen te voorkomen.",
+        "Solution": [
+            "Ga naar Start > Instellingen > Bijwerken en beveiliging > Windows-beveiliging > Firewall- en netwerkbeveiliging.",
+            "Zorg er onder 'Firewall- en netwerkbeveiliging' voor dat de Windows-firewall is ingeschakeld voor alle netwerkprofielen (openbaar, privé en domein). Als deze is uitgeschakeld, klik dan op 'Inschakelen' om de firewall voor het geselecteerde profiel in te schakelen."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
     "997": {
         "Name": "Extensies geïnstalleerd in Google Chrome",
         "Type": "Privacy",

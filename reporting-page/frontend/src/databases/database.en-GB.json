@@ -1417,6 +1417,32 @@
             "TOBEFILLED"
         ]
     },
+    "370": {
+        "Name": "Windows firewall enabled for all profiles",
+        "Type": "Security",
+        "Information": "The Windows Firewall is a built-in security feature that helps protect your computer from unauthorized access and malicious software by monitoring and controlling incoming and outgoing network traffic. Enabling the Windows Firewall for all network profiles (public, private, and domain) helps enhance the security of your system and prevent potential security threats.",
+        "Solution":
+        [
+            "Windows Firewall is enabled for all profiles, so there is no action needed."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "371": {
+        "Name": "Windows firewall not enabled for all profiles",
+        "Type": "Security",
+        "Information": "The Windows Firewall is a built-in security feature that helps protect your computer from unauthorized access and malicious software by monitoring and controlling incoming and outgoing network traffic. Enabling the Windows Firewall for all network profiles (public, private, and domain) helps enhance the security of your system and prevent potential security threats.",
+        "Solution":
+        [
+            "Go to Start > Settings > Update & Security > Windows Security > Firewall & network protection.",
+            "Under 'Firewall & network protection', make sure that the Windows Firewall is turned on for all network profiles (public, private, and domain). If it is disabled, click on 'Turn on' to enable the firewall for the selected profile."
+        ],
+        "Screenshots":
+        [
+            "TOBEFILLED"
+        ]
+    },
     "997": {
         "Name": "Extensions installed in Google Chrome",
         "Type": "Privacy",
