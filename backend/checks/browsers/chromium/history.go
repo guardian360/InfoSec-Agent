@@ -222,9 +222,7 @@ func (r RealProcessQueryResultsGetter) ProcessQueryResults(rows *sql.Rows, gette
 		for _, scamDomain := range phishingDomainList {
 			if strings.Contains(scamDomain, url) {
 				domain := url
-				results = append(results, "You visited website: "+domain+" which is a known phishing domain. "+
-					"The time of the last visit: "+
-					""+time.UnixMicro(int64(lastVisitTime)).AddDate(-369, 0, 0).String())
+				results = append(results, domain+time.UnixMicro(int64(lastVisitTime)).AddDate(-369, 0, 0).String())
 			}
 		}
 	}

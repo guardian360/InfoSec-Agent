@@ -167,8 +167,7 @@ func ProcessQueryResults(results []QueryResult, getter browsers.PhishingDomainGe
 
 		for _, scamDomain := range phishingDomainList {
 			if strings.Contains(scamDomain, result.URL) {
-				domain := result.URL
-				output = append(output, domain+timeString)
+				output = append(output, result.URL+timeString)
 			}
 		}
 	}

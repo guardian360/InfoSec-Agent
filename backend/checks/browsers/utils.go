@@ -136,10 +136,24 @@ type RequestCreator interface {
 	NewRequestWithContext(ctx context.Context, method, url string, body io.Reader) (*http.Request, error)
 }
 
+// RealRequestCreator is a struct that implements the RequestCreator interface.
+// It provides the real implementation of the NewRequestWithContext method.
 type RealRequestCreator struct {
 	Client Doer
 }
 
+// NewRequestWithContext is a method of RealRequestCreator that creates a new HTTP request with the provided context, method, URL, and body.
+// It uses the http.NewRequestWithContext function from the net/http package to create the request.
+//
+// Parameters:
+//   - ctx context.Context: The context to use for the request. This context will be used for timeout and cancellation signals, and for passing request-scoped values.
+//   - method string: The HTTP method to use for the request (e.g., "GET", "POST").
+//   - url string: The URL to use for the request.
+//   - body io.Reader: The body of the request. This can be nil for methods that do not require a body (like GET).
+//
+// Returns:
+//   - *http.Request: The created HTTP request.
+//   - error: An error object that wraps any error that occurs during the creation of the request. If the request is created successfully, it returns nil.
 func (r RealRequestCreator) NewRequestWithContext(ctx context.Context, method, url string, body io.Reader) (*http.Request, error) {
 	return http.NewRequestWithContext(ctx, method, url, body)
 }
@@ -156,6 +170,14 @@ type RealPhishingDomainGetter struct {
 	Client Doer
 }
 
+// NewRealPhishingDomainGetter is a constructor function for the RealPhishingDomainGetter struct.
+// It takes a Doer interface as an argument, which is used to make HTTP requests.
+//
+// Parameters:
+//   - client Doer: An object that implements the Doer interface. This object is used to make HTTP requests.
+//
+// Returns:
+//   - RealPhishingDomainGetter: A new instance of RealPhishingDomainGetter with the provided client.
 func NewRealPhishingDomainGetter(client Doer) RealPhishingDomainGetter {
 	return RealPhishingDomainGetter{Client: client}
 }
@@ -212,8 +234,8 @@ func (r RealPhishingDomainGetter) GetPhishingDomains(creator RequestCreator) ([]
 	}
 
 	if len(scamDomainsResponse) == 0 {
-		logger.Log.ErrorWithErr("Error: Response body is empty", errors.New("no Phishing domains list found online"))
-		return nil, errors.New("no Phishing domains list found online")
+		logger.Log.ErrorWithErr("Error: Response body is empty", errors.New("no phishing domains list found online"))
+		return nil, errors.New("no phishing domains list found online")
 	}
 
 	return strings.Split(string(scamDomainsResponse), "\n"), nil
