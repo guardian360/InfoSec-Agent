@@ -27,14 +27,9 @@
         ],        
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/devices-connected-via-bluetooth/bluetooth-devices-1.jpg",
-            "frontend/src/assets/images/windows-11/devices-connected-via-bluetooth/bluetooth-devices-2.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/devices-connected-via-bluetooth/bluetooth-devices-1.png",
-            "frontend/src/assets/images/windows-10/devices-connected-via-bluetooth/bluetooth-devices-2.png"
-        ]
+            "devices-connected-via-bluetooth/bluetooth-devices-1.jpg",
+            "devices-connected-via-bluetooth/bluetooth-devices-2.jpg"
+        ] 
     },
     "20": {
         "Name": "Keine externen Geräte angeschlossen",
@@ -75,11 +70,11 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
-            "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
-            "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
-            "frontend/src/assets/images/windows-11/guest-account/guest-account-3.jpg",        
-            "frontend/src/assets/images/windows-11/guest-account/guest-account-3.jpg"
+            "guest-account/guest-account-1.jpg",
+            "guest-account/guest-account-1.jpg",
+            "guest-account/guest-account-1.jpg",
+            "guest-account/guest-account-3.jpg",        
+            "guest-account/guest-account-3.jpg"
         ]
     },
     "31": {
@@ -102,10 +97,10 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
-            "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
-            "frontend/src/assets/images/windows-11/guest-account/guest-account-3.jpg",        
-            "frontend/src/assets/images/windows-11/guest-account/guest-account-3.jpg"
+            "guest-account/guest-account-1.jpg",
+            "guest-account/guest-account-1.jpg",
+            "guest-account/guest-account-3.jpg",        
+            "guest-account/guest-account-3.jpg"
         ]
     },
     "32": {
@@ -148,14 +143,9 @@
         ],        
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/network-sharing/nearby-sharing-1.jpg",
-            "frontend/src/assets/images/windows-11/network-sharing/nearby-sharing-2.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/network-sharing/advertisementid-sharing-1.png",
-            "frontend/src/assets/images/windows-10/network-sharing/advertisementid-sharing-2.png"
-        ]
+            "network-sharing/nearby-sharing-1.jpg",
+            "network-sharing/nearby-sharing-2.jpg"
+        ] 
     },
     "42": {
         "Name": "Netzwerkfreigabe deaktiviert",
@@ -187,16 +177,10 @@
         ],        
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/network-sharing/nearby-sharing-1.jpg",
-            "frontend/src/assets/images/windows-11/network-sharing/nearby-sharing-1.jpg",
-            "frontend/src/assets/images/windows-11/network-sharing/nearby-sharing-2.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/network-sharing/nearby-sharing-1.png",
-            "frontend/src/assets/images/windows-10/network-sharing/nearby-sharing-1.png",
-            "frontend/src/assets/images/windows-10/network-sharing/nearby-sharing-2.png"
-        ]
+            "network-sharing/nearby-sharing-1.jpg",
+            "network-sharing/nearby-sharing-1.jpg",
+            "network-sharing/nearby-sharing-2.jpg"
+        ] 
     },
     "50": {
         "Name": "Passwort-Manager in Verwendung",
@@ -221,14 +205,9 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/password-manager/password-manager-1.jpg",
-            "frontend/src/assets/images/windows-11/password-manager/password-manager-1.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/password-manager/password-manager-1.png",
-            "frontend/src/assets/images/windows-10/password-manager/password-manager-1.png"
-        ]
+            "password-manager/password-manager-1.jpg",
+            "password-manager/password-manager-1.jpg"
+        ] 
     },
     "60": {
         "Name": "Anwendungen mit Standortberechtigung",
@@ -246,14 +225,9 @@
         ],        
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/applications-with-location-permission/location-permissions-1.jpg",
-            "frontend/src/assets/images/windows-11/applications-with-location-permission/location-permissions-2.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/applications-with-location-permission/location-permissions-1.png",
-            "frontend/src/assets/images/windows-10/applications-with-location-permission/location-permissions-2.png"
-        ]
+            "applications-with-location-permission/location-permissions-1.jpg",
+            "applications-with-location-permission/location-permissions-2.jpg"
+        ] 
     },
     "61": {
         "Name": "Keine Anwendungen mit Standortberechtigung",
@@ -283,14 +257,9 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/applications-with-microphone-permission/microphone-permissions-1.jpg",
-            "frontend/src/assets/images/windows-11/applications-with-microphone-permission/microphone-permissions-2.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/applications-with-microphone-permission/microphone-permissions-1.png",
-            "frontend/src/assets/images/windows-10/applications-with-microphone-permission/microphone-permissions-2.png"
-        ]
+            "applications-with-microphone-permission/microphone-permissions-1.jpg",
+            "applications-with-microphone-permission/microphone-permissions-2.jpg"
+        ] 
     },
     "71": {
         "Name": "Keine Anwendungen mit Mikrofonberechtigung",
@@ -320,14 +289,9 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/applications-with-webcam-permission/webcam-permissions-1.jpg",
-            "frontend/src/assets/images/windows-11/applications-with-webcam-permission/webcam-permissions-2.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/applications-with-webcam-permission/webcam-permissions-1.png",
-            "frontend/src/assets/images/windows-10/applications-with-webcam-permission/webcam-permissions-2.png"
-        ]
+            "applications-with-webcam-permission/webcam-permissions-1.jpg",
+            "applications-with-webcam-permission/webcam-permissions-2.jpg"
+        ] 
     },
     "81": {
         "Name": "Keine Anwendungen mit Webcam-Berechtigung",
@@ -357,14 +321,9 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/applications-with-calendar-permission/calendar-permissions-1.jpg",
-            "frontend/src/assets/images/windows-11/applications-with-calendar-permission/calendar-permissions-2.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/applications-with-calendar-permission/calendar-permissions-1.png",
-            "frontend/src/assets/images/windows-10/applications-with-calendar-permission/calendar-permissions-2.png"
-        ]
+            "applications-with-calendar-permission/calendar-permissions-1.jpg",
+            "applications-with-calendar-permission/calendar-permissions-2.jpg"
+        ] 
     },
     "91": {
         "Name": "Keine Anwendungen mit Berechtigung für Termine",
@@ -394,14 +353,9 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/applications-with-contacts-permission/contacts-permissions-1.jpg",
-            "frontend/src/assets/images/windows-11/applications-with-contacts-permission/contacts-permissions-2.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/applications-with-contacts-permission/contacts-permissions-1.png",
-            "frontend/src/assets/images/windows-10/applications-with-contacts-permission/contacts-permissions-2.png"
-        ]
+            "applications-with-contacts-permission/contacts-permissions-1.jpg",
+            "applications-with-contacts-permission/contacts-permissions-2.jpg"
+        ] 
     },
     "101": {
         "Name": "Keine Anwendungen mit Berechtigung für Kontakte",
@@ -428,12 +382,8 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/devices-connected-via-bluetooth/bluetooth-devices-1.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/devices-connected-via-bluetooth/bluetooth-devices-1.png"
-        ]
+            "devices-connected-via-bluetooth/bluetooth-devices-1.jpg"
+        ] 
     },
     "120": {
         "Name": "Remote-Desktop aktiviert",
@@ -485,18 +435,11 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/smb-status/smb-2.jpg",
-            "frontend/src/assets/images/windows-11/smb-status/smb-2.jpg",
-            "frontend/src/assets/images/windows-11/smb-status/smb-3.jpg",
-            "frontend/src/assets/images/windows-11/smb-status/smb-3.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/smb-status/smb-1.png",
-            "frontend/src/assets/images/windows-10/smb-status/smb-1.png",
-            "frontend/src/assets/images/windows-10/smb-status/smb-2.png",
-            "frontend/src/assets/images/windows-10/smb-status/smb-2.png"
-        ]
+            "smb-status/smb-2.jpg",
+            "smb-status/smb-2.jpg",
+            "smb-status/smb-3.jpg",
+            "smb-status/smb-3.jpg"
+        ] 
     },
     "132": {
         "Name": "SMB Version 2 aktiviert",
@@ -523,18 +466,11 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/smb-status/smb-2.jpg",
-            "frontend/src/assets/images/windows-11/smb-status/smb-2.jpg",
-            "frontend/src/assets/images/windows-11/smb-status/smb-3.jpg",
-            "frontend/src/assets/images/windows-11/smb-status/smb-3.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/smb-status/smb-1.png",
-            "frontend/src/assets/images/windows-10/smb-status/smb-1.png",
-            "frontend/src/assets/images/windows-10/smb-status/smb-2.png",
-            "frontend/src/assets/images/windows-10/smb-status/smb-2.png"
-        ]
+            "smb-status/smb-2.jpg",
+            "smb-status/smb-2.jpg",
+            "smb-status/smb-3.jpg",
+            "smb-status/smb-3.jpg"
+        ] 
     },
     "140": {
         "Name": "Benutzerkontensteuerung",
@@ -562,24 +498,13 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
-            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-2.jpg",
-            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-2.jpg",
-            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-3.jpg",
-            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-5.jpg",
-            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-5.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-2.png",
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-3.png",
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-4.png",
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-5.png",
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-5.png"
-        ]
+            "user-account-control/user-account-control-1.jpg",
+            "user-account-control/user-account-control-2.jpg",
+            "user-account-control/user-account-control-2.jpg",
+            "user-account-control/user-account-control-3.jpg",
+            "user-account-control/user-account-control-5.jpg",
+            "user-account-control/user-account-control-5.jpg"
+        ] 
     },
     "141": {
         "Name": "Benutzerkontensteuerung",
@@ -619,25 +544,14 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
-            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
-            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-2.jpg",
-            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-2.jpg",
-            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-3.jpg",
-            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-5.jpg",
-            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-5.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-2.png",
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-3.png",
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-4.png",
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-5.png",
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-5.png"
-        ]
+            "user-account-control/user-account-control-1.jpg",
+            "user-account-control/user-account-control-1.jpg",
+            "user-account-control/user-account-control-2.jpg",
+            "user-account-control/user-account-control-2.jpg",
+            "user-account-control/user-account-control-3.jpg",
+            "user-account-control/user-account-control-5.jpg",
+            "user-account-control/user-account-control-5.jpg"
+        ] 
     },
     "143": {
         "Name": "Benutzerkontensteuerung",
@@ -665,25 +579,14 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
-            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
-            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-2.jpg",
-            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-2.jpg",
-            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-3.jpg",
-            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-5.jpg",
-            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-5.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-2.png",
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-3.png",
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-4.png",
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-5.png",
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-5.png"
-        ]
+            "user-account-control/user-account-control-1.jpg",
+            "user-account-control/user-account-control-1.jpg",
+            "user-account-control/user-account-control-2.jpg",
+            "user-account-control/user-account-control-2.jpg",
+            "user-account-control/user-account-control-3.jpg",
+            "user-account-control/user-account-control-5.jpg",
+            "user-account-control/user-account-control-5.jpg"
+        ] 
     },
     "150": {
         "Name": "Windows Defender und Scan aktiviert",
@@ -710,18 +613,11 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-1.png",
-            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-2.png",
-            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-3.png",
-            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-4.png"
-        ]
+            "windows-defender/windows-defender-1.jpg",
+            "windows-defender/windows-defender-1.jpg",
+            "windows-defender/windows-defender-1.jpg",
+            "windows-defender/windows-defender-1.jpg"
+        ] 
     },
     "152": {
         "Name": "Windows Defender deaktiviert",
@@ -736,18 +632,11 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-1.png",
-            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-2.png",
-            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-3.png",
-            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-4.png"
-        ]
+            "windows-defender/windows-defender-1.jpg",
+            "windows-defender/windows-defender-1.jpg",
+            "windows-defender/windows-defender-1.jpg",
+            "windows-defender/windows-defender-1.jpg"
+        ] 
     },
     "153": {
         "Name": "Windows Defender deaktiviert",
@@ -762,18 +651,11 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-1.png",
-            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-2.png",
-            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-3.png",
-            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-4.png"
-        ]
+            "windows-defender/windows-defender-1.jpg",
+            "windows-defender/windows-defender-1.jpg",
+            "windows-defender/windows-defender-1.jpg",
+            "windows-defender/windows-defender-1.jpg"
+        ] 
     },
     "154": {
         "Name": "Windows Defender-Status unbekannt",
@@ -789,20 +671,12 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-1.png",
-            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-1.png",
-            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-2.png",
-            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-3.png",
-            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-4.png"
-        ]
+            "windows-defender/windows-defender-1.jpg",
+            "windows-defender/windows-defender-1.jpg",
+            "windows-defender/windows-defender-1.jpg",
+            "windows-defender/windows-defender-1.jpg",
+            "windows-defender/windows-defender-1.jpg"
+        ] 
     },
     "160": {
         "Name": "Passwortwechsel vor mehr als 6 Monaten",
@@ -816,16 +690,10 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/last-password-change/change-password-1.jpg",
-            "frontend/src/assets/images/windows-11/last-password-change/change-password-2.jpg",
-            "frontend/src/assets/images/windows-11/last-password-change/change-password-2.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/last-password-change/change-password-1.png",
-            "frontend/src/assets/images/windows-10/last-password-change/change-password-2.png",
-            "frontend/src/assets/images/windows-10/last-password-change/change-password-2.png"
-        ]
+            "last-password-change/change-password-1.jpg",
+            "last-password-change/change-password-2.jpg",
+            "last-password-change/change-password-2.jpg"
+        ] 
     },
     "161": {
         "Name": "Passwortwechsel vor Kurzem",
@@ -850,14 +718,9 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/windows-login-method/login-method-1.jpg",
-            "frontend/src/assets/images/windows-11/windows-login-method/login-method-2.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/windows-login-method/login-method-1.png",
-            "frontend/src/assets/images/windows-10/windows-login-method/login-method-2.png"
-        ]
+            "windows-login-method/login-method-1.jpg",
+            "windows-login-method/login-method-2.jpg"
+        ] 
     },
     "171": {
         "Name": "Windows-Anmeldung mit sicherer Anmeldemethode",
@@ -882,14 +745,9 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/windows-login-method/login-method-1.jpg",
-            "frontend/src/assets/images/windows-11/windows-login-method/login-method-2.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/windows-login-method/login-method-1.png",
-            "frontend/src/assets/images/windows-10/windows-login-method/login-method-2.png"
-        ]
+            "windows-login-method/login-method-1.jpg",
+            "windows-login-method/login-method-2.jpg"
+        ] 
     },
     "180": {
         "Name": "Windows-Version auf dem neuesten Stand",
@@ -914,14 +772,9 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/outdated-windows-version/windows-update-1.jpg",
-            "frontend/src/assets/images/windows-11/outdated-windows-version/windows-update-2.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/outdated-windows-version/windows-update-1.png",
-            "frontend/src/assets/images/windows-10/outdated-windows-version/windows-update-2.png"
-        ]
+            "outdated-windows-version/windows-update-1.jpg",
+            "outdated-windows-version/windows-update-2.jpg"
+        ] 
     },
     "182": {
         "Name": "Veraltete Windows-Version",
@@ -934,14 +787,9 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/outdated-windows-version/windows-update-1.jpg",
-            "frontend/src/assets/images/windows-11/outdated-windows-version/windows-update-2.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/outdated-windows-version/windows-update-1.png",
-            "frontend/src/assets/images/windows-10/outdated-windows-version/windows-update-2.png"
-        ]
+            "outdated-windows-version/windows-update-1.jpg",
+            "outdated-windows-version/windows-update-2.jpg"
+        ] 
     },
     "190": {
         "Name": "Secure Boot deaktiviert",
@@ -1009,14 +857,9 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/applications-which-start-at-boot/boot-apps-1.jpg",
-            "frontend/src/assets/images/windows-11/applications-which-start-at-boot/boot-apps-2.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/applications-which-start-at-boot/boot-apps-1.png",
-            "frontend/src/assets/images/windows-10/applications-which-start-at-boot/boot-apps-2.png"
-        ]
+            "applications-which-start-at-boot/boot-apps-1.jpg",
+            "applications-which-start-at-boot/boot-apps-2.jpg"
+        ] 
     },
     "210": {
         "Name": "Google Chrome mit installiertem Adblocker",
@@ -1030,9 +873,9 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/chrome-adblocker/chrome-adblocker-1.png",
-            "frontend/src/assets/images/windows-11/chrome-adblocker/chrome-adblocker-2.png",
-            "frontend/src/assets/images/windows-11/chrome-adblocker/chrome-adblocker-3.png"
+            "chrome-adblocker/chrome-adblocker-1.png",
+            "chrome-adblocker/chrome-adblocker-2.png",
+            "chrome-adblocker/chrome-adblocker-3.png"
         ]
     },
     "211": {
@@ -1047,9 +890,9 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/chrome-adblocker/chrome-adblocker-1.png",
-            "frontend/src/assets/images/windows-11/chrome-adblocker/chrome-adblocker-2.png",
-            "frontend/src/assets/images/windows-11/chrome-adblocker/chrome-adblocker-3.png"
+            "chrome-adblocker/chrome-adblocker-1.png",
+            "chrome-adblocker/chrome-adblocker-2.png",
+            "chrome-adblocker/chrome-adblocker-3.png"
         ]
     },
     "220": {
@@ -1064,9 +907,9 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/edge-adblocker/edge-adblocker-1.png",
-            "frontend/src/assets/images/windows-11/edge-adblocker/edge-adblocker-2.png",
-            "frontend/src/assets/images/windows-11/edge-adblocker/edge-adblocker-3.png"
+            "edge-adblocker/edge-adblocker-1.png",
+            "edge-adblocker/edge-adblocker-2.png",
+            "edge-adblocker/edge-adblocker-3.png"
         ]
     },
     "221": {
@@ -1081,9 +924,9 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/edge-adblocker/edge-adblocker-1.png",
-            "frontend/src/assets/images/windows-11/edge-adblocker/edge-adblocker-2.png",
-            "frontend/src/assets/images/windows-11/edge-adblocker/edge-adblocker-3.png"
+            "edge-adblocker/edge-adblocker-1.png",
+            "edge-adblocker/edge-adblocker-2.png",
+            "edge-adblocker/edge-adblocker-3.png"
         ]
     },
     "230": {
@@ -1172,10 +1015,10 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/firefox-cookies/cookies-firefox-1.png",
-            "frontend/src/assets/images/windows-11/firefox-cookies/cookies-firefox-2.png",
-            "frontend/src/assets/images/windows-11/firefox-cookies/cookies-firefox-3.png",
-            "frontend/src/assets/images/windows-11/firefox-cookies/cookies-firefox-4.png"
+            "firefox-cookies/cookies-firefox-1.png",
+            "firefox-cookies/cookies-firefox-2.png",
+            "firefox-cookies/cookies-firefox-3.png",
+            "firefox-cookies/cookies-firefox-4.png"
         ]
     },
     "271": {
@@ -1204,9 +1047,9 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/firefox-extensions/extensions-firefox-1.png",
-            "frontend/src/assets/images/windows-11/firefox-extensions/extensions-firefox-2.png",
-            "frontend/src/assets/images/windows-11/firefox-extensions/extensions-firefox-3.png"
+            "firefox-extensions/extensions-firefox-1.png",
+            "firefox-extensions/extensions-firefox-2.png",
+            "firefox-extensions/extensions-firefox-3.png"
         ]
     },
     "290": {
@@ -1235,11 +1078,11 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/firefox-adblocker/firefox-adblocker-1.png",
-            "frontend/src/assets/images/windows-11/firefox-adblocker/firefox-adblocker-2.png",
-            "frontend/src/assets/images/windows-11/firefox-adblocker/firefox-adblocker-3.png",
-            "frontend/src/assets/images/windows-11/firefox-adblocker/firefox-adblocker-4.png",
-            "frontend/src/assets/images/windows-11/firefox-adblocker/firefox-adblocker-5.png"
+            "firefox-adblocker/firefox-adblocker-1.png",
+            "firefox-adblocker/firefox-adblocker-2.png",
+            "firefox-adblocker/firefox-adblocker-3.png",
+            "firefox-adblocker/firefox-adblocker-4.png",
+            "firefox-adblocker/firefox-adblocker-5.png"
         ]
     },		
     "300": {
@@ -1426,20 +1269,12 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-1.jpg",
-            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-2.jpg",
-            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-3.jpg",
-            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-4.jpg",
-            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-4.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-1.png",
-            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-2.png",
-            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-3.png",
-            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-4.png",
-            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-4.png"
-        ]
+            "applications-with-administrative-privileges/admin-privileges-1.jpg",
+            "applications-with-administrative-privileges/admin-privileges-2.jpg",
+            "applications-with-administrative-privileges/admin-privileges-3.jpg",
+            "applications-with-administrative-privileges/admin-privileges-4.jpg",
+            "applications-with-administrative-privileges/admin-privileges-4.jpg"
+        ] 
     },
     "999": {
         "Name": "Anwendungen mit Administratorberechtigungen",
@@ -1455,19 +1290,11 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-1.jpg",
-            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-2.jpg",
-            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-3.jpg",
-            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-4.jpg",
-            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-4.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-1.png",
-            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-2.png",
-            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-3.png",
-            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-4.png",
-            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-4.png"
-        ]
+            "applications-with-administrative-privileges/admin-privileges-1.jpg",
+            "applications-with-administrative-privileges/admin-privileges-2.jpg",
+            "applications-with-administrative-privileges/admin-privileges-3.jpg",
+            "applications-with-administrative-privileges/admin-privileges-4.jpg",
+            "applications-with-administrative-privileges/admin-privileges-4.jpg"
+        ] 
     }
 }

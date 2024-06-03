@@ -4,13 +4,14 @@ import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js'
 import {retrieveTheme} from './personalize.js';
 import {scanTest} from './database.js';
 import {LogError as logError} from '../../wailsjs/go/main/Tray.js';
+import {GetImagePath as getImagePath} from '../../wailsjs/go/main/App.js';
 import {openIssuePage} from './issue.js';
 import {saveProgress, shareProgress, selectSocialMedia} from './share.js';
 import data from '../databases/database.en-GB.json' assert { type: 'json' };
 import {showModal} from './settings.js';
 
 /** Load the content of the Home page */
-export function openHomePage() {
+export async function openHomePage() {
   retrieveTheme();
   closeNavigation(document.body.offsetWidth);
   markSelectedNavigationItem('home-button');
@@ -84,7 +85,7 @@ export function openHomePage() {
   </div>
   `;
 
-  const medal = 'frontend/src/assets/images/img_medal1.png';
+  const medal = await getImagePath('img_medal1.png');
   document.getElementById('medal').src = medal;
   document.getElementById('medal2').src = medal;
   document.getElementById('medal3').src = medal;
@@ -125,7 +126,7 @@ export function openHomePage() {
   document.getElementById('select-instagram').addEventListener('click', () => selectSocialMedia('instagram'));
 }
 
-/** Opens the issue page of the issue with highest risk level
+/** Opens the issue page of the issue with the highest risk level
  *
  * @param {string} type Type of issue to open the issue page of (e.g. 'Security', 'Privacy', and '' for all types)
 */
