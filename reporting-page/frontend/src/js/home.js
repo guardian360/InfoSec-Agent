@@ -17,6 +17,10 @@ export function openHomePage() {
   sessionStorage.setItem('savedPage', 1);
 
   document.getElementById('page-contents').innerHTML = `
+  <video autoplay muted loop class="video-background">
+        <source id="lighthouse-background" type="video/mp4">
+        Your browser does not support HTML5 video.
+  </video>
   <div class="home-page">
     <div class="container-home"> 
       <div class="data-segment">
@@ -33,31 +37,7 @@ export function openHomePage() {
         </div>
         <a id="suggested-issue" class="issue-button lang-suggested-issue"></a>
         <a id="scan-now" class="issue-button lang-scan-now"></a>
-        <a id="share-progress" class="issue-button">Share progress</a>
-      </div>
-    </div>
-    <div class="container-home"> 
-      <div class="data-segment">
-        <div class="data-segment-header">
-          <p class="lang-title-medals"></p>
-        </div>
-        <div class="medals">
-          <div class="medal-layout">
-            <img id="medal" alt="Photo of medal"></img>
-            <p class="medal-name"> Medal 1</p>
-          </div>
-          <div class="medal-layout">
-            <img id="medal2" alt="Photo of medal"></img>
-            <p class="medal-name"> Medal 2</p>
-          </div>
-          <div class="medal-layout">
-            <img id="medal3" alt="Photo of medal"></img>
-            <p class="medal-name"> Medal 3</p>
-          </div><div class="medal-layout">
-            <img id="medal4" alt="Photo of medal"></img>
-            <p class="medal-name"> Medal 4</p>
-          </div>
-        </div>
+        <a id="share-progress" class="issue-button"></a>
       </div>
     </div>
   </div>
@@ -84,11 +64,14 @@ export function openHomePage() {
   </div>
   `;
 
-  const medal = 'frontend/src/assets/images/img_medal1.png';
-  document.getElementById('medal').src = medal;
-  document.getElementById('medal2').src = medal;
-  document.getElementById('medal3').src = medal;
-  document.getElementById('medal4').src = medal;
+  const lighthouseState = 'src/assets/images/regular1.mp4';
+  document.getElementById('lighthouse-background').src = lighthouseState;
+
+  // const medal = 'frontend/src/assets/images/img_medal1.png';
+  // document.getElementById('medal').src = medal;
+  // document.getElementById('medal2').src = medal;
+  // document.getElementById('medal3').src = medal;
+  // document.getElementById('medal4').src = medal;
 
   const rc = JSON.parse(sessionStorage.getItem('RiskCounters'));
   new PieChart('pie-chart-home', rc, 'Total');

@@ -38,7 +38,11 @@
       "OneMedium": "Le scan de sécurité et de confidentialité est terminé. Vous avez 1 problème à risque moyen. Ouvrez la page de rapport pour plus d'informations.",
       "MultipleMedium": "Le scan de sécurité et de confidentialité est terminé. Vous avez %d problèmes à risque moyen. Ouvrez la page de rapport pour plus d'informations.",
       "Default": "Le scan de sécurité et de confidentialité est terminé. Ouvrez la page de rapport pour voir les résultats.",
-      "Button": "Ouvrir la page de rapport"
+      "Button": "Ouvrir la page de rapport",
+      "StartupTitle": "InfoSec Agent démarré",
+      "Startup": "InfoSec Agent a démarré et fonctionne en arrière-plan. Ouvrez la barre d'état système pour accéder à l'application.",
+      "AlreadyRunningTitle": "InfoSec Agent déjà en cours d'exécution",
+      "AlreadyRunning": "InfoSec Agent fonctionne déjà en arrière-plan. Ouvrez la barre d'état système pour accéder à l'application."      
     }
   },
   "Navigation": 
