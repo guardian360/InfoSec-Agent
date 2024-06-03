@@ -118,7 +118,8 @@
     "Low": "Laag",
     "Medium": "Gemiddeld",
     "High": "Hoog",
-    "Info": "Info"
+    "Info": "Info",
+    "ScanAgain": "Opnieuw scannen"
   },
   "About": {
     "AboutTitle": "Over Infosec Agent",
