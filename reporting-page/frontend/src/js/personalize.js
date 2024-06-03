@@ -9,47 +9,50 @@ export function openPersonalizePage() {
 
   document.getElementById('page-contents').innerHTML = `  
   <div class="personalize-container">
-    <span class="personalize-description favicon-title ">Favicon</span>
-    <div class="personalize-button-container">
-      <button class="personalize-button icon-button" type="button">Change icon </button>    
-      <input class="personalize-input-invisible" type="file" id="input-file-icon" accept=".ico, .png">
+    <h2 class="lang-personalize-title"></h2>
+    <div class="personalize-item">
+      <span class="personalize-description">Favicon</span>
+      <div class="personalize-button-container">
+        <button class="personalize-button icon-button lang-change-favicon" type="button"></button>    
+        <input class="personalize-input-invisible" type="file" id="input-file-icon" accept=".ico, .png">
+      </div>
     </div>
-  </div>
-  <hr class="solid">
-  <div class="personalize-container">
-    <span class="personalize-description">Navigation image</span>
-    <div class="personalize-button-container">
-      <button class="personalize-button logo-button" type="button">Change logo </button>    
-      <input class="personalize-input-invisible"
-      type="file" 
-      id="input-file-picture" 
-      accept="image/jpeg, image/png, image/jpg">
+    <hr class="solid">
+    <div class="personalize-item">
+      <span class="personalize-description">Navigation Image</span>
+      <div class="personalize-button-container">
+        <button class="personalize-button logo-button lang-change-image" type="button"></button>    
+        <input class="personalize-input-invisible" type="file" 
+        id="input-file-picture" accept="image/jpeg, image/png, image/jpg">
+      </div>
     </div>
-  </div>
-  <hr class="solid">
-  <div class="personalize-container">
-    <span class="personalize-description">Navigation title</span>
-    <div class="personalize-button-container">
-      <button class="personalize-button title-button" type="button">Change title </button>
-      <div id="custom-modal" class="modal">
-        <div class="modal-content">
-          <input type="text" id="new-title-input">
-          <button id="saveTitleButton">Save</button>
+    <hr class="solid">
+    <div class="personalize-item">
+      <span class="personalize-description">Navigation Title</span>
+      <div class="personalize-button-container">
+        <button class="personalize-button title-button lang-change-title" type="button"></button>
+        <div id="custom-modal" class="modal">
+          <div class="modal-content">
+            <input type="text" id="new-title-input" placeholder="Enter new title">
+            <button id="saveTitleButton">Save</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <hr class="solid">
-  <div class="personalize-container">
-    <form action="" class="color-picker>
-      <fieldset>
-        <legend>Pick a theme</legend>
-        <label for="normal">Light</label>
-        <input type="radio" name="theme" id="normal" checked>
-        <label for="dark">Dark</label>
-        <input type="radio" name="theme" id="dark">
+    <hr class="solid">
+    <div class="personalize-item">
+      <form action="" class="color-picker">
+        <fieldset>
+          <legend class="lang-pick-theme"></legend>
+          <label for="normal">Light</label>
+          <input type="radio" name="theme" id="normal" checked>
+          <label for="dark">Dark</label>
+          <input type="radio" name="theme" id="dark">
+        </fieldset>
+      </form>
+    </div>
     <div class="personalize-button-container">
-      <button class="personalize-button reset-button" type="button">Reset settings</button>    
+      <button class="personalize-button reset-button lang-reset-button" type="button">Reset to Default</button>    
     </div>
   </div>
   `;
@@ -115,6 +118,31 @@ export function openPersonalizePage() {
   changeResetButton.addEventListener('click', function() {
     resetSettings();
   });
+
+  // Localize the static content of the personalize page
+  const staticHomePageContent = [
+    'lang-change-favicon',
+    'lang-navigation-image',
+    'lang-change-image',
+    'lang-navigation-title',
+    'lang-change-title',
+    'lang-reset-button',
+    'lang-personalize-title',
+    'lang-pick-theme',
+  ];
+  const localizationIds = [
+    'Personalize.ChangeFavicon',
+    'Personalize.navImage',
+    'Personalize.ChangeImage',
+    'Personalize.Title',
+    'Personalize.ChangeTitle',
+    'Personalize.Reset',
+    'Personalize.PersonalizeTitle',
+    'Personalize.PickTheme',
+  ];
+  for (let i = 0; i < staticHomePageContent.length; i++) {
+    getLocalization(localizationIds[i], staticHomePageContent[i]);
+  }
 }
 
 /**
@@ -206,11 +234,3 @@ export function resetSettings() {
   markSelectedNavigationItem('personalize-button');
 }
 
-// Localize the static content of the personalize page
-const staticHomePageContent = [
-];
-const localizationIds = [
-];
-for (let i = 0; i < staticHomePageContent.length; i++) {
-  getLocalization(localizationIds[i], staticHomePageContent[i]);
-}
