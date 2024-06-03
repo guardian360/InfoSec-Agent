@@ -33,11 +33,11 @@ export function openHomePage() {
       </div>
       <div class="data-segment">
         <div class="data-segment-header">
-          <p class="lang-choose-issue-description">Actions</p>
+          <p class="lang-choose-issue-description"></p>
         </div>
-        <a id="suggested-issue" class="issue-button lang-suggested-issue">Suggested Issue</a>
-        <a id="scan-now" class="issue-button lang-scan-now">Scan Now</a>
-        <a id="share-progress" class="issue-button">Share progress</a>
+        <a id="suggested-issue" class="issue-button lang-suggested-issue"></a>
+        <a id="scan-now" class="issue-button lang-scan-now"></a>
+        <a id="share-progress" class="issue-button"></a>
       </div>
     </div>
   </div>
