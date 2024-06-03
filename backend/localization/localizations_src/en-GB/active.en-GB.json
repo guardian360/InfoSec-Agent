@@ -132,5 +132,13 @@
     "AffiliationsInfo": "This project is a collaborative effort involving nine students from Utrecht University in The Netherlands, in partnership with the Dutch IT company Guardian360. It serves as the Software Project for the Bachelor's Programme in Computing Sciences at the UU. This project is also supported by funding from the SIDN Fund (Stichting Internet Domeinregistratie Nederland), the Dutch domain name registrar.",
     "ContributingTitle": "Contributing",
     "ContributingInfo": "InfoSec-Agent is an Open-Source project licensed under the AGPL-3.0 Licence. However, due to its origins as a Utrecht University assignment, public contributions to this repository will only be merged after the completion of this assignment, which is scheduled for 24th June 2024. Feel free to report any bugs or issues you encounter. Your feedback is valuable and helps improve the InfoSec-Agent project. You can email us at <a href=\"mailto:infosecagentuu@gmail.com\">infosecagentuu@gmail.com</a>"
+  },  
+  "Personalize": {
+    "ChangeFavicon": "Change favicon", 
+    "navImage": "Navigation image", 
+    "ChangeImage": "Change image", 
+    "Title": "Navigation title", 
+    "ChangeTitle": "Change title", 
+    "Reset": "Reset settings"
   }
 }
