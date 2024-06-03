@@ -100,7 +100,7 @@ func PasswordManager(pl ProgramLister) checks.Check {
 	}
 	for _, program := range programs {
 		for _, passwordManager := range passwordManagerNames {
-			if strings.Contains(strings.ToLower(program), passwordManager) {
+			if strings.Contains(strings.ToLower(program), strings.ToLower(passwordManager)) {
 				return checks.NewCheckResult(checks.PasswordManagerID, 0, passwordManager)
 			}
 		}
