@@ -1,12 +1,15 @@
 package browsers_test
 
 import (
+	"context"
 	"database/sql"
 	"errors"
 	"fmt"
 	"github.com/DATA-DOG/go-sqlmock"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 	"github.com/stretchr/testify/assert"
+	"io"
+	"net/http"
 	"os"
 	"strings"
 	"testing"
@@ -88,9 +91,143 @@ func TestCloseFileWhenFileIsNil(t *testing.T) {
 // No return values.
 func TestPhishingDomainsReturnsResults(t *testing.T) {
 	getter := browsers.RealPhishingDomainGetter{}
-	domains, _ := getter.GetPhishingDomains()
+	requestCreator := browsers.RealRequestCreator{}
+	domains, _ := getter.GetPhishingDomains(requestCreator)
 
 	require.NotEmpty(t, domains)
+}
+
+type MockRequestCreator struct {
+	NewRequestWithContextFunc func(ctx context.Context, method, url string, body io.Reader) (*http.Request, error)
+}
+
+func (m MockRequestCreator) NewRequestWithContext(ctx context.Context, method, url string, body io.Reader) (*http.Request, error) {
+	return m.NewRequestWithContextFunc(ctx, method, url, body)
+}
+
+func TestGetPhishingDomains_NewRequestError(t *testing.T) {
+	// Mock the http.NewRequestWithContext function to return an error
+	mockRequestCreator := MockRequestCreator{
+		NewRequestWithContextFunc: func(_ context.Context, _, _ string, _ io.Reader) (*http.Request, error) {
+			return nil, errors.New("mock error")
+		},
+	}
+
+	getter := browsers.RealPhishingDomainGetter{}
+	requestCreator := mockRequestCreator
+	domains, err := getter.GetPhishingDomains(requestCreator)
+
+	// Assert there was an error and no domains were returned
+	require.Error(t, err)
+	require.Nil(t, domains)
+}
+
+type MockReadCloser struct {
+	io.Reader
+}
+
+func (MockReadCloser) Close() error {
+	return errors.New("mock error")
+}
+
+type MockClient struct {
+	DoFunc func(req *http.Request) (*http.Response, error)
+}
+
+func (m MockClient) Do(req *http.Request) (*http.Response, error) {
+	return m.DoFunc(req)
+}
+
+func TestGetPhishingDomains_ResponseHandling(t *testing.T) {
+	// Define test cases
+	tests := []struct {
+		name           string
+		respStatusCode int
+		respBody       string
+		expectError    bool
+		respError      error
+	}{
+		{
+			name:           "Client Do method error",
+			respStatusCode: http.StatusOK,
+			respBody:       "",
+			expectError:    true,
+			respError:      errors.New("mock error"),
+		},
+		{
+			name:           "HTTP request failed",
+			respStatusCode: http.StatusNotFound,
+			respBody:       "",
+			expectError:    true,
+		},
+		{
+			name:           "Error reading response body",
+			respStatusCode: http.StatusOK,
+			respBody:       "",
+			expectError:    true,
+		},
+		{
+			name:           "Response body is empty",
+			respStatusCode: http.StatusOK,
+			respBody:       "",
+			expectError:    true,
+		},
+		{
+			name:           "Successful request",
+			respStatusCode: http.StatusOK,
+			respBody:       "domain1\ndomain2\n",
+			expectError:    false,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			// Mock the http.Client's Do function to return a custom response
+			mockClient := MockClient{
+				DoFunc: func(*http.Request) (*http.Response, error) {
+					return &http.Response{
+						StatusCode: tt.respStatusCode,
+						Body:       MockReadCloser{strings.NewReader(tt.respBody)},
+					}, tt.respError // Use the respError here
+				},
+			}
+
+			getter := browsers.RealPhishingDomainGetter{Client: &mockClient}
+			_, err := getter.GetPhishingDomains(browsers.RealRequestCreator{})
+
+			// Assert the expected behavior
+			if tt.expectError {
+				assert.Error(t, err)
+			} else {
+				assert.NoError(t, err)
+			}
+		})
+	}
+}
+
+type ErrorReadCloser struct{}
+
+func (ErrorReadCloser) Read(_ []byte) (int, error) {
+	return 0, errors.New("mock read error")
+}
+
+func (ErrorReadCloser) Close() error {
+	return nil
+}
+
+type MockDoer struct{}
+
+func (MockDoer) Do(_ *http.Request) (*http.Response, error) {
+	return &http.Response{
+		StatusCode: http.StatusOK,
+		Body:       ErrorReadCloser{},
+	}, nil
+}
+
+func TestGetPhishingDomains_ReadError(t *testing.T) {
+	getter := browsers.RealPhishingDomainGetter{Client: MockDoer{}}
+	_, err := getter.GetPhishingDomains(browsers.RealRequestCreator{})
+	assert.Error(t, err)
 }
 
 // TestCopyFileSuccess validates the behavior of the CopyFile function when provided with a valid source and destination file.

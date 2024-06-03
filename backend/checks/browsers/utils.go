@@ -128,42 +128,98 @@ func (m MockProfileFinder) FirefoxFolder() ([]string, error) {
 	return m.MockFirefoxFolder()
 }
 
+type Doer interface {
+	Do(req *http.Request) (*http.Response, error)
+}
+
+type RequestCreator interface {
+	NewRequestWithContext(ctx context.Context, method, url string, body io.Reader) (*http.Request, error)
+}
+
+// RealRequestCreator is a struct that implements the RequestCreator interface.
+// It provides the real implementation of the NewRequestWithContext method.
+type RealRequestCreator struct {
+	Client Doer
+}
+
+// NewRequestWithContext is a method of RealRequestCreator that creates a new HTTP request with the provided context, method, URL, and body.
+// It uses the http.NewRequestWithContext function from the net/http package to create the request.
+//
+// Parameters:
+//   - ctx context.Context: The context to use for the request. This context will be used for timeout and cancellation signals, and for passing request-scoped values.
+//   - method string: The HTTP method to use for the request (e.g., "GET", "POST").
+//   - url string: The URL to use for the request.
+//   - body io.Reader: The body of the request. This can be nil for methods that do not require a body (like GET).
+//
+// Returns:
+//   - *http.Request: The created HTTP request.
+//   - error: An error object that wraps any error that occurs during the creation of the request. If the request is created successfully, it returns nil.
+func (r RealRequestCreator) NewRequestWithContext(ctx context.Context, method, url string, body io.Reader) (*http.Request, error) {
+	return http.NewRequestWithContext(ctx, method, url, body)
+}
+
 // PhishingDomainGetter is an interface that wraps the GetPhishingDomains method.
 type PhishingDomainGetter interface {
 	// GetPhishingDomains retrieves a list of active phishing domains from a remote database.
-	GetPhishingDomains() ([]string, error)
+	GetPhishingDomains(creator RequestCreator) ([]string, error)
 }
 
 // RealPhishingDomainGetter is a struct that implements the PhishingDomainGetter interface.
 // It provides the real implementation of the GetPhishingDomains method.
-type RealPhishingDomainGetter struct{}
+type RealPhishingDomainGetter struct {
+	Client Doer
+}
+
+// NewRealPhishingDomainGetter is a constructor function for the RealPhishingDomainGetter struct.
+// It takes a Doer interface as an argument, which is used to make HTTP requests.
+//
+// Parameters:
+//   - client Doer: An object that implements the Doer interface. This object is used to make HTTP requests.
+//
+// Returns:
+//   - RealPhishingDomainGetter: A new instance of RealPhishingDomainGetter with the provided client.
+func NewRealPhishingDomainGetter(client Doer) RealPhishingDomainGetter {
+	return RealPhishingDomainGetter{Client: client}
+}
 
 // GetPhishingDomains retrieves a list of active phishing domains from a remote database.
 //
 // This function sends a GET request to the URL of the phishing database hosted on GitHub. It reads the response body,
 // which contains a list of active phishing domains, each on a new line. The function then splits this response into a slice
 // of strings, where each string represents a single phishing domain.
+// Parameters:
+//   - creator RequestCreator: An object that implements the RequestCreator interface. It is used to create an HTTP request to fetch the phishing domains.
 //
 // Returns:
 //   - []string: A slice containing the phishing domains. If an error occurs during the retrieval or parsing of the domains, an empty slice is returned.
 //   - error: An error object that wraps any error that occurs during the retrieval of the phishing domains. If the domains are retrieved successfully, it returns nil.
-func (r RealPhishingDomainGetter) GetPhishingDomains() ([]string, error) {
+func (r RealPhishingDomainGetter) GetPhishingDomains(creator RequestCreator) ([]string, error) {
+	if r.Client == nil {
+		r.Client = http.DefaultClient
+	}
 	// Get the phishing domains from up-to-date GitHub list
-	client := &http.Client{}
 	url := "https://raw.githubusercontent.com/mitchellkrogza/Phishing.Database/master/phishing-links-ACTIVE-today.txt"
-	req, err := http.NewRequestWithContext(context.Background(), http.MethodGet, url, nil)
-	req.Header.Add("User-Agent", "Mozilla/5.0")
+	req, err := creator.NewRequestWithContext(context.Background(), http.MethodGet, url, nil)
 	if err != nil {
 		logger.Log.ErrorWithErr("Error creating HTTP request:", err)
 		return nil, err
 	}
-	resp, err := client.Do(req)
-	defer func(Body io.ReadCloser) {
-		err = Body.Close()
-		if err != nil {
-			logger.Log.ErrorWithErr("Error closing response body: %v", err)
+	req.Header.Add("User-Agent", "Mozilla/5.0")
+
+	resp, err := r.Client.Do(req)
+	if err != nil {
+		logger.Log.ErrorWithErr("Error sending HTTP request:", err)
+		return nil, err
+	}
+	// Ensure the response body is closed properly
+	defer func() {
+		if resp != nil && resp.Body != nil {
+			resErr := resp.Body.Close()
+			if resErr != nil {
+				logger.Log.ErrorWithErr("Error closing response body:", err)
+			}
 		}
-	}(resp.Body)
+	}()
 
 	if resp.StatusCode != http.StatusOK {
 		logger.Log.Printf("HTTP request failed with status code: %d", resp.StatusCode)
@@ -178,8 +234,8 @@ func (r RealPhishingDomainGetter) GetPhishingDomains() ([]string, error) {
 	}
 
 	if len(scamDomainsResponse) == 0 {
-		logger.Log.ErrorWithErr("Error: Response body is empty", errors.New("no Phising domains list found online"))
-		return nil, errors.New("no Phising domains list found online")
+		logger.Log.ErrorWithErr("Error: Response body is empty", errors.New("no phishing domains list found online"))
+		return nil, errors.New("no phishing domains list found online")
 	}
 
 	return strings.Split(string(scamDomainsResponse), "\n"), nil
