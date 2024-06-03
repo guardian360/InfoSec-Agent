@@ -1,14 +1,16 @@
 import {getLocalization} from './localize.js';
 import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
 import {retrieveTheme} from './personalize.js';
+import { sortTable } from './issues.js';
 import {LogError as logError} from '../../wailsjs/go/main/Tray.js';
+import { fillTable } from './issues.js';
 
 /** Load the content of the Home page */
 export function openProgramsPage() {
     retrieveTheme();
     closeNavigation(document.body.offsetWidth);
     markSelectedNavigationItem('programs-button');
-    sessionStorage.setItem('savedPage', 1);
+    sessionStorage.setItem('savedPage', 5);
 
     document.getElementById('page-contents').innerHTML = `
     <div class="program-data">
@@ -33,6 +35,19 @@ export function openProgramsPage() {
     </div>
     `;
 
+    const programsJson = JSON.parse(sessionStorage.getItem('ScanResult'));
+    const issueTableHtml = document.getElementById('program-table').querySelector('tbody');
+    const foundObject = programsJson.find(obj => obj.issue_id === 37);
+  
+    // Check if the object was found
+    if (foundObject) {
+      fillProgamTable(issueTableHtml, foundObject.result);
+    } else {
+      console.log(`Object with ID ${targetId} not found.`);
+    }
+
+    document.getElementById('sort-on-issue').addEventListener('click', () => sortTable(issueTableHtml, 0));
+
     const tableHeaders = [
         'lang-program-table',
         'lang-name',
@@ -53,5 +68,19 @@ if (typeof document !== 'undefined') {
     } catch (error) {
     logError('Error in programs.js: ' + error);
     }
+}
+
+export function fillProgamTable(tbody, programs) {
+    programs.forEach((program) => {
+        const row = document.createElement('tr');
+        const name= program.split(' | ')[0];
+        const version = program.split(' | ')[1]
+
+        row.innerHTML = `
+            <td class="issue-link">${name}</td>
+            <td>${version}</td>
+        `;
+        tbody.appendChild(row);
+    });
 }
 

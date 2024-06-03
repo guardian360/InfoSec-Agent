@@ -8,7 +8,7 @@ export function openIntegrationPage() {
   retrieveTheme();
   closeNavigation(document.body.offsetWidth);
   markSelectedNavigationItem('integration-button');
-  sessionStorage.setItem('savedPage', '5');
+  sessionStorage.setItem('savedPage', '6');
 
   document.getElementById('page-contents').innerHTML = `
   <!DOCTYPE html>

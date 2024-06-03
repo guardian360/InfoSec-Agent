@@ -321,21 +321,20 @@ func retrieveWingetInstalledPrograms(softwareList []software) ([]software, error
 		for _, line := range lines[2:] { // Skip the header lines
 			//fmt.Println(line)
 			if len(line) != 0 { //Don't handle the last empty line, and maybe other empty lines
-				name := line[:idIndex]
+				name := substr(line, 0, idIndex)
 				name = strings.TrimSpace(name)
 				//fmt.Println(name)
-				id := line[idIndex : versionIndex-idIndex]
+				id := substr(line, idIndex, versionIndex-idIndex)
 				id = strings.TrimSpace(id)
 				//fmt.Println(id)
-				version := line[versionIndex : availableIndex-versionIndex]
+				version := substr(line, versionIndex, availableIndex-versionIndex)
 				version = strings.TrimSpace(version)
 				//fmt.Println(version)
-				available := line[availableIndex : sourcesIndex-availableIndex]
+				available := substr(line, availableIndex, sourcesIndex-availableIndex)
 				available = strings.TrimSpace(available)
 				//fmt.Println(available)
-				source := line[sourcesIndex : len(line)-sourcesIndex]
+				source := substr(line, sourcesIndex, len(line)-sourcesIndex)
 				source = strings.TrimSpace(source)
-				//fmt.Println(source)
 				softwareList = append(softwareList, software{
 					name:         name,
 					identifier:   id,
@@ -533,4 +532,18 @@ type software struct {
 	lastUpdated  string
 	sourceWinget string // For possibly updating the software
 	whereFrom    string // tmp for which function found this software
+}
+
+func substr(input string, start int, length int) string {
+	asRunes := []rune(input)
+
+	if start >= len(asRunes) {
+		return ""
+	}
+
+	if start+length > len(asRunes) {
+		length = len(asRunes) - start
+	}
+
+	return string(asRunes[start : start+length])
 }
