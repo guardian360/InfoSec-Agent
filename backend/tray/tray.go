@@ -410,10 +410,13 @@ func ChangeLanguage(testInput ...string) {
 	if test {
 		res = testInput[0]
 	} else {
+		languages := []string{"Deutsch", "English (UK)", "English (US)", "Español", "Français", "Nederlands", "Português"}
+		defaultLanguage := languages[Language]
+
 		var err error
-		res, err = zenity.List(localization.Localize(Language, "Dialogs.Language.Content"), []string{"Dutch", "English (UK)", "English (US)", "French", "German", "Portuguese",
-			"Spanish"}, zenity.Title(localization.Localize(Language, "Dialogs.Language.Title")),
-			zenity.DefaultItems("English (UK)"),
+		res, err = zenity.List(localization.Localize(Language, "Dialogs.Language.Content"), languages,
+			zenity.Title(localization.Localize(Language, "Dialogs.Language.Title")),
+			zenity.DefaultItems(defaultLanguage),
 			zenity.OKLabel(localization.Localize(Language, "Dialogs.OK")),
 			zenity.CancelLabel(localization.Localize(Language, "Dialogs.Cancel")))
 		if err != nil {
@@ -424,19 +427,19 @@ func ChangeLanguage(testInput ...string) {
 
 	// Assign each language to an index for the localization package
 	switch res {
-	case "German":
+	case "Deutsch":
 		Language = 0
-	case "English (Uk)":
+	case "English (UK)":
 		Language = 1
 	case "English (US)":
 		Language = 2
-	case "Spanish":
+	case "Español":
 		Language = 3
-	case "French":
+	case "Français":
 		Language = 4
-	case "Dutch":
+	case "Nederlands":
 		Language = 5
-	case "Portuguese":
+	case "Português":
 		Language = 6
 	default:
 		Language = 1
