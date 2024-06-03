@@ -94,7 +94,11 @@
     "ChooseIssueDescription": "Acciones",
     "BarGraphDescription": "Este gráfico muestra la distribución de problemas de diferentes niveles de riesgo encontrados en los últimos 5 escaneos.",
     "SelectRisks": "Seleccionar riesgos",
-    "ChangeInterval": "Cambiar intervalo"
+    "ChangeInterval": "Cambiar intervalo",
+    "ShareButton": "Compartir progreso",
+    "ShareText": "Selecciona dónde compartir tu progreso, guárdalo y descárgalo, ¡luego compártelo con otros!",
+    "SaveText": "Guardar",
+    "Share": "Compartir"
   },
   "Issues":
   {

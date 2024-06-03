@@ -37,7 +37,7 @@ export function openHomePage() {
         </div>
         <a id="suggested-issue" class="issue-button lang-suggested-issue"></a>
         <a id="scan-now" class="issue-button lang-scan-now"></a>
-        <a id="share-progress" class="issue-button"></a>
+        <a id="share-progress" class="issue-button lang-share-button"></a>
       </div>
     </div>
   </div>
@@ -45,20 +45,20 @@ export function openHomePage() {
     <div class="modal-content">
       <div class="modal-header">
         <span id="close-share-modal" class="close">&times;</span>
-        <p>Select where to share your progress, Save and download it, then share it with others!</p>
+        <p class="lang-share-text"></p>
       </div>
       <div id="share-node" class="modal-body">
         <img class="api-key-image" src="https://placehold.co/600x315" alt="Step 1 Image">
       </div>
       <div id="share-buttons" class="modal-body">
-        <a id="share-save-button" class="modal-button share-button">Save</a>
+        <a id="share-save-button" class="modal-button share-button lang-save-text"></a>
         <a class="share-button-break">|</a>
         <a id="select-facebook" class="select-button selected">Facebook</a>
         <a id="select-x" class="select-button">X</a>
         <a id="select-linkedin" class="select-button">LinkedIn</a>
         <a id="select-instagram" class="select-button">Instagram</a>
         <a class="share-button-break">|</a>
-        <a id="share-button" class="modal-button share-button">Share</a>
+        <a id="share-button" class="modal-button share-button lang-share"></a>
       </div>
     </div>
   </div>
@@ -66,12 +66,6 @@ export function openHomePage() {
 
   const lighthouseState = 'src/assets/images/regular1.mp4';
   document.getElementById('lighthouse-background').src = lighthouseState;
-
-  // const medal = 'frontend/src/assets/images/img_medal1.png';
-  // document.getElementById('medal').src = medal;
-  // document.getElementById('medal2').src = medal;
-  // document.getElementById('medal3').src = medal;
-  // document.getElementById('medal4').src = medal;
 
   const rc = JSON.parse(sessionStorage.getItem('RiskCounters'));
   new PieChart('pie-chart-home', rc, 'Total');
@@ -83,6 +77,10 @@ export function openHomePage() {
     'lang-scan-now',
     'lang-title-medals',
     'lang-choose-issue-description',
+    'lang-share-button',
+    'lang-share-text',
+    'lang-save-text',
+    'lang-share'
   ];
   const localizationIds = [
     'Dashboard.RiskLevelDistribution',
@@ -90,6 +88,10 @@ export function openHomePage() {
     'Dashboard.ScanNow',
     'Dashboard.Medals',
     'Dashboard.ChooseIssueDescription',
+    'Dashboard.ShareButton',
+    'Dashboard.ShareText',
+    'Dashboard.SaveText',
+    'Dashboard.Share'
   ];
   for (let i = 0; i < staticHomePageContent.length; i++) {
     getLocalization(localizationIds[i], staticHomePageContent[i]);

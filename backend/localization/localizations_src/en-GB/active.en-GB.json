@@ -98,7 +98,11 @@
     "ChooseIssueDescription": "Actions",
     "BarGraphDescription": "This graph shows the distribution of issues of different risk levels found over the past 5 scans.",
     "SelectRisks": "Select risks",
-    "ChangeInterval": "Change interval"
+    "ChangeInterval": "Change interval",
+    "ShareButton": "Share progress",
+    "ShareText": "Select where to share your progress, save and download it, then share it with others!",
+    "SaveText": "Save",
+    "Share": "Share"
   },
   "Issues":
   {

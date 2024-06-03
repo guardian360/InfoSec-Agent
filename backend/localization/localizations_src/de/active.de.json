@@ -95,7 +95,11 @@
     "ChooseIssueDescription": "Aktionen",
     "BarGraphDescription": "Dieses Diagramm zeigt die Verteilung von Problemen unterschiedlicher Risikostufen, die in den letzten 5 Scans gefunden wurden.",
     "SelectRisks": "Risiken auswählen",
-    "ChangeInterval": "Intervall ändern"
+    "ChangeInterval": "Intervall ändern",
+    "ShareButton": "Fortschritt teilen",
+    "ShareText": "Wählen Sie, wo Sie Ihren Fortschritt teilen möchten, speichern und herunterladen, dann mit anderen teilen!",
+    "SaveText": "Speichern",
+    "Share": "Teilen"
   },
   "Issues":
   {
