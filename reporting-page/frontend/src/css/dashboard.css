@@ -13,7 +13,7 @@
 }
 
 .dashboard-segment {
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-border);
   border-radius: 5px;
   margin: 5px;
   flex: 1;
@@ -212,7 +212,7 @@
   height: 80px;
   flex: 1;
   background-color: var(--background-color-left-nav);
-  border-radius: 10px;
+  border-radius: 5px;
   margin: 0 10px 10px;
   text-align: center;
 }
@@ -235,18 +235,41 @@
 
 /* button colors */
 
+.privacy-button {
+  display: block;
+  background: var(--background-privacy-button);
+  color: var(--text-left-nav);
+  text-align: center;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
 .security-button {
+  display: block;
+  background: var(--background-security-button);
+  color: var(--text-left-nav);
+  text-align: center;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.security-button:hover, .security-risk-button:hover {
+  background: var(--background-security-button-hover);
+  cursor: pointer;
+}
+
+.privacy-button:hover, .privacy-risk-button:hover {
+  background: var(--background-privacy-button-hover);
+  cursor: pointer;
+}
+
+.security-risk-button {
   background: var(--background-security-button);
 }
-
-.security-button:hover {
-  background: var(--background-security-button-hover);
-}
-
-.privacy-button {
+.privacy-risk-button {
   background: var(--background-privacy-button);
-}
-
-.privacy-button:hover {
-  background: var(--background-privacy-button-hover);
 }

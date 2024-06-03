@@ -34,15 +34,15 @@ export function openSecurityDashboardPage() {
         <div class="data-segment-header">
           <p class="lang-choose-issue-description"></p>
         </div>
-        <a id="suggested-issue" class="issue-button security-button lang-suggested-issue"><p></p></a>
-        <a id="scan-now" class="issue-button security-button lang-scan-now"></a>
+        <a id="suggested-issue" class="security-button lang-suggested-issue"><p></p></a>
+        <a id="scan-now" class="security-button lang-scan-now"></a>
       </div>
       <div class="dashboard-segment risk-areas"> <!-- informative buttons segment -->
         <div class="data-segment-header">
           <p class="lang-security-risk-areas"></p>
         </div>
         <div class="security-area-buttons">
-          <div class="security-area security-button">
+          <div class="security-area security-risk-button">
             <a>
               <p>
                 <span class="lang-applications"></span>
@@ -50,17 +50,17 @@ export function openSecurityDashboardPage() {
               </p>
             </a>
           </div>
-          <div class="security-area security-button">
+          <div class="security-area security-risk-button">
             <a>
               <p><span class="lang-browser"></span><span class="material-symbols-outlined">travel_explore</span></p>
             </a>
           </div>
-          <div class="security-area security-button">
+          <div class="security-area security-risk-button">
             <a>
               <p><span class="lang-devices"></span><span class="material-symbols-outlined">devices</span></p>
             </a>
           </div>
-          <div class="security-area security-button">
+          <div class="security-area security-risk-button">
             <a>
               <p>
                 <span class="lang-operating-system"></span>
@@ -68,12 +68,12 @@ export function openSecurityDashboardPage() {
               </p>        
             </a>
           </div>
-          <div class="security-area security-button">
+          <div class="security-area security-risk-button">
             <a>
               <p><span class="lang-passwords"></span><span class="material-symbols-outlined">key</span></p>
             </a>
           </div>
-          <div class="security-area security-button">
+          <div class="security-area security-risk-button">
             <a>
               <p><span class="lang-other"></span><span class="material-symbols-outlined">view_cozy</span></p>
             </a>
@@ -250,6 +250,12 @@ export function adjustWithRiskCounters(rc, doc) {
   doc.getElementById('low-risk-counter').innerHTML = rc.lastLowRisk;
   doc.getElementById('info-risk-counter').innerHTML = rc.lastInfoRisk;
   doc.getElementById('no-risk-counter').innerHTML = rc.lastNoRisk;
+
+  rc.highRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--high-risk-color');
+  rc.mediumRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--medium-risk-color');
+  rc.lowRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--low-risk-color');
+  rc.infoColor = getComputedStyle(document.documentElement).getPropertyValue('--info-color');
+  rc.noRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--no-risk-color');
 
   const securityStatus = doc.getElementsByClassName('status-descriptor')[0];
   if (rc.lastHighRisk > 1) {
