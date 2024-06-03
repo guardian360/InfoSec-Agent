@@ -18,14 +18,9 @@ import (
 // This consists of the user's points, a history of all previous points, and a lighthouse state.
 type GameState struct {
 	Points          int
-	PointsHistory   []PointRecord
+	PointsHistory   []int
+	TimeStamps      []time.Time
 	LighthouseState int
-}
-
-// PointRecord is a struct that represents the amount of points and the moment they were obtained.
-type PointRecord struct {
-	Points    int
-	TimeStamp time.Time
 }
 
 // UpdateGameState updates the game state based on the scan results and the current game state.
@@ -36,9 +31,16 @@ type PointRecord struct {
 //
 // Returns: The updated game state with the new points amount and new lighthouse state.
 func UpdateGameState(scanResults []checks.Check, databasePath string) (GameState, error) {
-	// Loading the game state from the user settings
-	gs := GameState{Points: 0, PointsHistory: []PointRecord{}, LighthouseState: 0}
+	gs := GameState{Points: 0, PointsHistory: nil, TimeStamps: nil, LighthouseState: 0}
+
+	// Loading the game state from the user settings and putting it in the game state struct
+	points := usersettings.LoadUserSettings().Points
+	pointsHistory := usersettings.LoadUserSettings().PointsHistory
+	timeStamps := usersettings.LoadUserSettings().TimeStamps
 	lighthouseState := usersettings.LoadUserSettings().LighthouseState
+	gs.Points = points
+	gs.PointsHistory = pointsHistory
+	gs.TimeStamps = timeStamps
 	gs.LighthouseState = lighthouseState
 
 	gs, err := PointCalculation(gs, scanResults, databasePath)
@@ -50,6 +52,9 @@ func UpdateGameState(scanResults []checks.Check, databasePath string) (GameState
 
 	// Saving the game state in the user settings
 	err = usersettings.SaveUserSettings(usersettings.UserSettings{
+		Points:          gs.Points,
+		PointsHistory:   gs.PointsHistory,
+		TimeStamps:      gs.TimeStamps,
 		LighthouseState: gs.LighthouseState,
 	})
 	if err != nil {
@@ -90,8 +95,10 @@ func PointCalculation(gs GameState, scanResults []checks.Check, databasePath str
 		if sev != 4 {
 			gs.Points += sev
 		}
-		gs.PointsHistory = append(gs.PointsHistory, PointRecord{Points: gs.Points, TimeStamp: time.Now()})
 	}
+	gs.PointsHistory = append(gs.PointsHistory, gs.Points)
+	gs.TimeStamps = append(gs.TimeStamps, time.Now())
+
 	// Close the database
 	logger.Log.Debug("Closing database")
 	defer func(db *sql.DB) {
@@ -117,15 +124,15 @@ func LighthouseStateTransition(gs GameState) GameState {
 	requiredDuration := time.Duration(7 * 24 * time.Hour)
 
 	switch {
-	case gs.Points < 10 && sufficientActivity(gs.PointsHistory, requiredDuration):
+	case gs.Points < 10 && sufficientActivity(gs, requiredDuration):
 		gs.LighthouseState = 5
-	case gs.Points < 20 && sufficientActivity(gs.PointsHistory, requiredDuration):
+	case gs.Points < 20 && sufficientActivity(gs, requiredDuration):
 		gs.LighthouseState = 4
-	case gs.Points < 30 && sufficientActivity(gs.PointsHistory, requiredDuration):
+	case gs.Points < 30 && sufficientActivity(gs, requiredDuration):
 		gs.LighthouseState = 3
-	case gs.Points < 40 && sufficientActivity(gs.PointsHistory, requiredDuration):
+	case gs.Points < 40 && sufficientActivity(gs, requiredDuration):
 		gs.LighthouseState = 2
-	case gs.Points < 50 && sufficientActivity(gs.PointsHistory, requiredDuration):
+	case gs.Points < 50 && sufficientActivity(gs, requiredDuration):
 		gs.LighthouseState = 1
 	default:
 		gs.LighthouseState = 0
@@ -136,16 +143,16 @@ func LighthouseStateTransition(gs GameState) GameState {
 // sufficientActivity checks if the user has been active enough to transition to another lighthouse state
 //
 // Parameters:
-//   - history ([]PointRecord): The history of the user's points, with timestamps.
+//   - gs (GameState): The game state of the user.
 //   - duration (time.Duration): The duration of time that the user needs to be active.
 //
 // Returns:
 //   - bool: whether the user has been active enough.
-func sufficientActivity(history []PointRecord, duration time.Duration) bool {
-	if len(history) == 0 {
+func sufficientActivity(gs GameState, duration time.Duration) bool {
+	if len(gs.TimeStamps) == 0 {
 		return false
 	}
-	oldestRecord := history[0].TimeStamp
+	oldestRecord := gs.TimeStamps[0]
 
 	return time.Since(oldestRecord) > duration
 }

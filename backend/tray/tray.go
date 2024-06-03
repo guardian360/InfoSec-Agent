@@ -367,9 +367,7 @@ func ScanNow(dialogPresent bool) ([]checks.Check, error) {
 			return result, err
 		}
 	}
-
-	// Check if it is the first scan the user has done, so we initialise the gamestate.
-	// Otherwise we update the gamestate.
+	// Update the game state based on the scan results
 	_, err = gamification.UpdateGameState(result, "reporting-page/database.db")
 
 	if err != nil {
