@@ -4,7 +4,6 @@ import (
 	"database/sql"
 	"os"
 	"path/filepath"
-	"regexp"
 	"strings"
 	"time"
 
@@ -156,20 +155,19 @@ type QueryResult struct {
 // This function iterates over each row in the provided result set. For each row, it extracts the URL and last visit date, and checks the URL against a list of known phishing domains. If a match is found, a string is generated that includes the domain name and the time of the visit, and this string is added to the results. If an error occurs during this process, it is returned as well.
 func ProcessQueryResults(results []QueryResult, getter browsers.PhishingDomainGetter) ([]string, error) {
 	var output []string
-	phishingDomainList, err := getter.GetPhishingDomains()
+	creator := browsers.RealRequestCreator{}
+	phishingDomainList, err := getter.GetPhishingDomains(creator)
 	if err != nil {
 		logger.Log.ErrorWithErr("Error getting phishing domains: ", err)
 		return nil, err
 	}
-	re := regexp.MustCompile(`(?:https?://)?(?:[^@\n]+@)?(?:www\.)?([^:/\n?]+\.[^:/\n?]+)`)
 
 	for _, result := range results {
 		timeString := FormatTime(result.LastVisitDate)
 
-		matches := re.FindStringSubmatch(result.URL)
 		for _, scamDomain := range phishingDomainList {
-			if len(matches) > 1 && strings.Contains(scamDomain, matches[1]) {
-				domain := matches[1]
+			if strings.Contains(scamDomain, result.URL) {
+				domain := result.URL
 				output = append(output, domain+timeString)
 			}
 		}

@@ -46,7 +46,7 @@ type MockPhishingDomainsGetter struct {
 	GetPhishingDomainsFunc func() ([]string, error)
 }
 
-func (m MockPhishingDomainsGetter) GetPhishingDomains() ([]string, error) {
+func (m MockPhishingDomainsGetter) GetPhishingDomains(_ browsers.RequestCreator) ([]string, error) {
 	return m.GetPhishingDomainsFunc()
 }
 
@@ -460,7 +460,7 @@ func TestProcessQueryResults(t *testing.T) {
 	// Mock the GetPhishingDomains function to return a list containing "phishing.com"
 	mockGetter := MockPhishingDomainsGetter{
 		GetPhishingDomainsFunc: func() ([]string, error) {
-			return []string{"phishing.com"}, nil
+			return []string{"http://phishing.com"}, nil
 		},
 	}
 	getter := chromium.RealProcessQueryResultsGetter{}
