@@ -11,7 +11,7 @@ import {getLocalization} from './localize.js';
 import {retrieveTheme} from './personalize.js';
 import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
 import {GetImagePath as getImagePath} from '../../wailsjs/go/main/App.js';
-import {LogError as logError, LogDebug as logDebug} from "../../wailsjs/go/main/Tray.js";
+import {LogError as logError, LogDebug as logDebug} from '../../wailsjs/go/main/Tray.js';
 import {scanTest} from './database.js';
 
 let stepCounter = 0;
@@ -175,8 +175,7 @@ export async function openIssuePage(issueId, severity) {
     // Initial check to hide/show buttons
     try {
       await updateSolutionStep(solutionText, solutionScreenshot, currentIssue, stepCounter);
-    }
-    catch (error) {
+    } catch (error) {
       logError('Error in updateSolutionStep: ' + error);
     }
   }
@@ -452,18 +451,20 @@ export function parseShowResult(issueId, currentIssue) {
  * @return {string} path to the screenshot
  */
 export async function getVersionScreenshot(issue, index) {
-  let imagesDirectory = await getImagePath('');
-  let version = 'windows-' + sessionStorage.getItem('WindowsVersion') + '/';
+  const imagesDirectory = await getImagePath('');
+  const version = 'windows-' + sessionStorage.getItem('WindowsVersion') + '/';
 
   let screenshot;
-  if (version === 'windows-10/' && issue.ScreenshotsWindows10 !== undefined)
+  if (version === 'windows-10/' && issue.ScreenshotsWindows10 !== undefined) {
     screenshot = issue.ScreenshotsWindows10[index];
-  else
+  } else {
     screenshot = issue.Screenshots[index];
+  }
 
   // Return empty source if no screenshot is found
-  if (screenshot == undefined)
+  if (screenshot == undefined) {
     return '';
+  }
 
   // Construct full image path
   return imagesDirectory + version + screenshot;
