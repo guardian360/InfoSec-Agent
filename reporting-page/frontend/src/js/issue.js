@@ -436,9 +436,13 @@ export async function getVersionScreenshot(issue, index) {
   let imagesDirectory = await getImagePath('');
   let version = 'windows-' + sessionStorage.getItem('WindowsVersion') + '/';
 
-  let screenshot = issue.Screenshots[index];
+  let screenshot;
+  if (version === 'windows-10/' && issue.ScreenshotsWindows10 !== undefined)
+    screenshot = issue.ScreenshotsWindows10[index];
+  else
+    screenshot = issue.Screenshots[index];
 
-  // Return empty source if there are no screenshots
+  // Return empty source if no screenshot is found
   if (screenshot == undefined)
     return '';
 
