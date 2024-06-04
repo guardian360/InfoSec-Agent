@@ -3,7 +3,7 @@ import {getLocalization} from './localize.js';
 import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
 import {retrieveTheme} from './personalize.js';
 import {scanTest} from './database.js';
-import {LogError as logError} from '../../wailsjs/go/main/Tray.js';
+import {LogError as logError, LogDebug as logDebug} from '../../wailsjs/go/main/Tray.js';
 import {GetImagePath as getImagePath} from '../../wailsjs/go/main/App.js';
 import {openIssuePage} from './issue.js';
 import {saveProgress, shareProgress, selectSocialMedia} from './share.js';
@@ -18,6 +18,10 @@ export async function openHomePage() {
   sessionStorage.setItem('savedPage', 1);
 
   document.getElementById('page-contents').innerHTML = `
+  <video autoplay muted loop class="video-background">
+        <source id="lighthouse-background" type="video/mp4">
+        Your browser does not support HTML5 video.
+  </video>
   <div class="home-page">
     <div class="container-home"> 
       <div class="data-segment">
@@ -34,31 +38,7 @@ export async function openHomePage() {
         </div>
         <a id="suggested-issue" class="issue-button lang-suggested-issue"></a>
         <a id="scan-now" class="issue-button lang-scan-now"></a>
-        <a id="share-progress" class="issue-button">Share progress</a>
-      </div>
-    </div>
-    <div class="container-home"> 
-      <div class="data-segment">
-        <div class="data-segment-header">
-          <p class="lang-title-medals"></p>
-        </div>
-        <div class="medals">
-          <div class="medal-layout">
-            <img id="medal" alt="Photo of medal"></img>
-            <p class="medal-name"> Medal 1</p>
-          </div>
-          <div class="medal-layout">
-            <img id="medal2" alt="Photo of medal"></img>
-            <p class="medal-name"> Medal 2</p>
-          </div>
-          <div class="medal-layout">
-            <img id="medal3" alt="Photo of medal"></img>
-            <p class="medal-name"> Medal 3</p>
-          </div><div class="medal-layout">
-            <img id="medal4" alt="Photo of medal"></img>
-            <p class="medal-name"> Medal 4</p>
-          </div>
-        </div>
+        <a id="share-progress" class="issue-button lang-share-button"></a>
       </div>
     </div>
   </div>
@@ -66,30 +46,28 @@ export async function openHomePage() {
     <div class="modal-content">
       <div class="modal-header">
         <span id="close-share-modal" class="close">&times;</span>
-        <p>Select where to share your progress, Save and download it, then share it with others!</p>
+        <p class="lang-share-text"></p>
       </div>
       <div id="share-node" class="modal-body">
         <img class="api-key-image" src="https://placehold.co/600x315" alt="Step 1 Image">
       </div>
       <div id="share-buttons" class="modal-body">
-        <a id="share-save-button" class="modal-button share-button">Save</a>
+        <a id="share-save-button" class="modal-button share-button lang-save-text"></a>
         <a class="share-button-break">|</a>
         <a id="select-facebook" class="select-button selected">Facebook</a>
         <a id="select-x" class="select-button">X</a>
         <a id="select-linkedin" class="select-button">LinkedIn</a>
         <a id="select-instagram" class="select-button">Instagram</a>
         <a class="share-button-break">|</a>
-        <a id="share-button" class="modal-button share-button">Share</a>
+        <a id="share-button" class="modal-button share-button lang-share"></a>
       </div>
     </div>
   </div>
   `;
 
-  const medal = await getImagePath('img_medal1.png');
-  document.getElementById('medal').src = medal;
-  document.getElementById('medal2').src = medal;
-  document.getElementById('medal3').src = medal;
-  document.getElementById('medal4').src = medal;
+  const lighthouseState = await getImagePath('regular1.mp4');
+  logDebug('lighthouseState: ' + lighthouseState);
+  document.getElementById('lighthouse-background').src = lighthouseState;
 
   const rc = JSON.parse(sessionStorage.getItem('RiskCounters'));
   new PieChart('pie-chart-home', rc, 'Total');
@@ -101,6 +79,10 @@ export async function openHomePage() {
     'lang-scan-now',
     'lang-title-medals',
     'lang-choose-issue-description',
+    'lang-share-button',
+    'lang-share-text',
+    'lang-save-text',
+    'lang-share',
   ];
   const localizationIds = [
     'Dashboard.RiskLevelDistribution',
@@ -108,6 +90,10 @@ export async function openHomePage() {
     'Dashboard.ScanNow',
     'Dashboard.Medals',
     'Dashboard.ChooseIssueDescription',
+    'Dashboard.ShareButton',
+    'Dashboard.ShareText',
+    'Dashboard.SaveText',
+    'Dashboard.Share',
   ];
   for (let i = 0; i < staticHomePageContent.length; i++) {
     getLocalization(localizationIds[i], staticHomePageContent[i]);

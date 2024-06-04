@@ -1270,6 +1270,70 @@
             "TOBEFILLED"
         ]
     },
+    "370": {
+        "Name": "Pare-feu Windows activé pour tous les profils",
+        "Type": "Sécurité",
+        "Information": "Le pare-feu Windows est une fonctionnalité de sécurité intégrée qui aide à protéger votre ordinateur contre les accès non autorisés et les logiciels malveillants en surveillant et en contrôlant le trafic réseau entrant et sortant. Activer le pare-feu Windows pour tous les profils réseau (public, privé et domaine) contribue à renforcer la sécurité de votre système et à prévenir les menaces potentielles.",
+        "Solution": [
+            "Le pare-feu Windows est activé pour tous les profils, aucune action n'est donc nécessaire."
+        ],
+        "Screenshots": []
+    },
+    "371": {
+        "Name": "Pare-feu Windows non activé pour tous les profils",
+        "Type": "Sécurité",
+        "Information": "Le pare-feu Windows est une fonctionnalité de sécurité intégrée qui aide à protéger votre ordinateur contre les accès non autorisés et les logiciels malveillants en surveillant et en contrôlant le trafic réseau entrant et sortant. Activer le pare-feu Windows pour tous les profils réseau (public, privé et domaine) contribue à renforcer la sécurité de votre système et à prévenir les menaces potentielles.",
+        "Solution": [
+            "Allez à Démarrer > Paramètres > Mise à jour et sécurité > Sécurité Windows > Protection contre les menaces et réseau.",
+            "Sous 'Protection contre les menaces et réseau', assurez-vous que le pare-feu Windows est activé pour tous les profils réseau (public, privé et domaine). S'il est désactivé, cliquez sur 'Activer' pour activer le pare-feu pour le profil sélectionné."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
+    "380": {
+        "Name": "Longueur minimale du mot de passe définie à au moins 15 caractères",
+        "Type": "Sécurité",
+        "Information": "Le fait de définir une longueur minimale de mot de passe d'au moins 15 caractères contribue à renforcer la sécurité des comptes utilisateur en augmentant la complexité et la force des mots de passe. Les mots de passe plus longs sont plus résistants aux attaques par force brute et offrent une meilleure protection contre les accès non autorisés et les violations de données.",
+        "Solution": [
+            "La longueur minimale du mot de passe est définie à au moins 15 caractères, donc aucune action n'est nécessaire."
+        ],
+        "Screenshots": []
+    },
+    "381": {
+        "Name": "Longueur minimale du mot de passe non définie à au moins 15 caractères",
+        "Type": "Sécurité",
+        "Information": "Le fait de définir une longueur minimale de mot de passe d'au moins 15 caractères contribue à renforcer la sécurité des comptes utilisateur en augmentant la complexité et la force des mots de passe. Les mots de passe plus longs sont plus résistants aux attaques par force brute et offrent une meilleure protection contre les accès non autorisés et les violations de données.",
+        "Solution": [
+            "Ouvrez une invite de commandes avec élévation de privilèges en cliquant avec le bouton droit sur le bouton Démarrer et en sélectionnant 'Terminal (Admin)'.",
+            "Exécutez la commande 'net accounts' pour afficher les paramètres de politique de mot de passe actuels, y compris la longueur minimale du mot de passe.",
+            "Exécutez la commande 'net accounts /minpwlen:15' pour définir la longueur minimale du mot de passe à 15 caractères.",
+            "Redémarrez votre ordinateur pour appliquer les modifications."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
+    "390": {
+        "Name": "Credential Guard activé",
+        "Type": "Sécurité",
+        "Information": "Credential Guard est une fonctionnalité de sécurité dans Windows qui aide à protéger les informations d'identification des utilisateurs et les informations sensibles contre l'accès non autorisé et le vol. Il utilise la sécurité basée sur la virtualisation pour isoler et protéger les informations d'identification, rendant plus difficile pour les attaquants de voler des mots de passe et d'autres données sensibles.",
+        "Solution": [
+            "Credential Guard est activé, donc aucune action n'est nécessaire."
+        ],
+        "Screenshots": []
+    },
+    "391": {
+        "Name": "Credential Guard désactivé",
+        "Type": "Sécurité",
+        "Information": "Credential Guard est une fonctionnalité de sécurité dans Windows qui aide à protéger les informations d'identification des utilisateurs et les informations sensibles contre l'accès non autorisé et le vol. Il utilise la sécurité basée sur la virtualisation pour isoler et protéger les informations d'identification, rendant plus difficile pour les attaquants de voler des mots de passe et d'autres données sensibles.",
+        "Solution": [
+            "La configuration de Credential Guard est gérée dans votre stratégie de groupe locale. Demandez à votre administrateur réseau d'activer Credential Guard."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
     "997": {
         "Name": "Extensions installées dans Google Chrome",
         "Type": "Confidentialité",

@@ -1270,6 +1270,70 @@
             "TOBEFILLED"
         ]
     },
+    "370": {
+        "Name": "Windows-Firewall für alle Profile aktiviert",
+        "Type": "Sicherheit",
+        "Information": "Die Windows-Firewall ist eine integrierte Sicherheitsfunktion, die Ihren Computer vor unbefugtem Zugriff und schädlicher Software schützt, indem sie den ein- und ausgehenden Netzwerkverkehr überwacht und kontrolliert. Das Aktivieren der Windows-Firewall für alle Netzwerkprofile (öffentlich, privat und Domäne) trägt zur Verbesserung der Systemsicherheit bei und verhindert potenzielle Sicherheitsbedrohungen.",
+        "Solution": [
+            "Die Windows-Firewall ist für alle Profile aktiviert, daher sind keine Maßnahmen erforderlich."
+        ],
+        "Screenshots": []
+    },
+    "371": {
+        "Name": "Windows-Firewall nicht für alle Profile aktiviert",
+        "Type": "Sicherheit",
+        "Information": "Die Windows-Firewall ist eine integrierte Sicherheitsfunktion, die Ihren Computer vor unbefugtem Zugriff und schädlicher Software schützt, indem sie den ein- und ausgehenden Netzwerkverkehr überwacht und kontrolliert. Das Aktivieren der Windows-Firewall für alle Netzwerkprofile (öffentlich, privat und Domäne) trägt zur Verbesserung der Systemsicherheit bei und verhindert potenzielle Sicherheitsbedrohungen.",
+        "Solution": [
+            "Gehen Sie zu Start > Einstellungen > Update & Sicherheit > Windows-Sicherheit > Firewall- & Netzwerkschutz.",
+            "Stellen Sie unter 'Firewall- & Netzwerkschutz' sicher, dass die Windows-Firewall für alle Netzwerkprofile (öffentlich, privat und Domäne) aktiviert ist. Wenn sie deaktiviert ist, klicken Sie auf 'Einschalten', um die Firewall für das ausgewählte Profil zu aktivieren."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
+    "380": {
+        "Name": "Mindestpasswortlänge auf mindestens 15 Zeichen festgelegt",
+        "Type": "Sicherheit",
+        "Information": "Das Festlegen einer Mindestpasswortlänge von mindestens 15 Zeichen erhöht die Sicherheit von Benutzerkonten, indem die Komplexität und Stärke der Passwörter erhöht wird. Längere Passwörter sind widerstandsfähiger gegen Brute-Force-Angriffe und bieten besseren Schutz vor unbefugtem Zugriff und Datenverletzungen.",
+        "Solution": [
+            "Die Mindestpasswortlänge ist auf mindestens 15 Zeichen festgelegt, daher sind keine Maßnahmen erforderlich."
+        ],
+        "Screenshots": []
+    },
+    "381": {
+        "Name": "Mindestpasswortlänge nicht auf mindestens 15 Zeichen festgelegt",
+        "Type": "Sicherheit",
+        "Information": "Das Festlegen einer Mindestpasswortlänge von mindestens 15 Zeichen erhöht die Sicherheit von Benutzerkonten, indem die Komplexität und Stärke der Passwörter erhöht wird. Längere Passwörter sind widerstandsfähiger gegen Brute-Force-Angriffe und bieten besseren Schutz vor unbefugtem Zugriff und Datenverletzungen.",
+        "Solution": [
+            "Öffnen Sie eine Eingabeaufforderung mit erhöhten Rechten, indem Sie mit der rechten Maustaste auf die Start-Schaltfläche klicken und 'Terminal (Admin)' auswählen.",
+            "Führen Sie den Befehl 'net accounts' aus, um die aktuellen Passwortrichtlinieneinstellungen einschließlich der Mindestpasswortlänge anzuzeigen.",
+            "Führen Sie den Befehl 'net accounts /minpwlen:15' aus, um die Mindestpasswortlänge auf 15 Zeichen festzulegen.",
+            "Starten Sie Ihren Computer neu, um die Änderungen anzuwenden."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
+    "390": {
+        "Name": "Credential Guard aktiviert",
+        "Type": "Sicherheit",
+        "Information": "Credential Guard ist eine Sicherheitsfunktion in Windows, die hilft, Benutzeranmeldeinformationen und sensible Informationen vor unbefugtem Zugriff und Diebstahl zu schützen. Es verwendet virtualisierungsbasierte Sicherheit, um Anmeldeinformationen zu isolieren und zu schützen, wodurch es für Angreifer schwieriger wird, Passwörter und andere sensible Daten zu stehlen.",
+        "Solution": [
+            "Credential Guard ist aktiviert, daher sind keine Maßnahmen erforderlich."
+        ],
+        "Screenshots": []
+    },
+    "391": {
+        "Name": "Credential Guard deaktiviert",
+        "Type": "Sicherheit",
+        "Information": "Credential Guard ist eine Sicherheitsfunktion in Windows, die hilft, Benutzeranmeldeinformationen und sensible Informationen vor unbefugtem Zugriff und Diebstahl zu schützen. Es verwendet virtualisierungsbasierte Sicherheit, um Anmeldeinformationen zu isolieren und zu schützen, wodurch es für Angreifer schwieriger wird, Passwörter und andere sensible Daten zu stehlen.",
+        "Solution": [
+            "Die Einstellung von Credential Guard wird in Ihrer lokalen Gruppenrichtlinie verwaltet. Bitten Sie Ihren Netzwerkadministrator, Credential Guard zu aktivieren."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
     "997": {
         "Name": "Installierte Erweiterungen in Google Chrome",
         "Type": "Privatsphäre",

@@ -1272,6 +1272,68 @@
             "TOBEFILLED"
         ]
     },
+    "370": {
+        "Name": "Firewall do Windows habilitado para todos os perfis",
+        "Type": "Segurança",
+        "Information": "O Firewall do Windows é um recurso de segurança integrado que ajuda a proteger seu computador contra acesso não autorizado e software malicioso, monitorando e controlando o tráfego de rede de entrada e saída. Habilitar o Firewall do Windows para todos os perfis de rede (público, privado e de domínio) ajuda a melhorar a segurança do seu sistema e a prevenir possíveis ameaças de segurança.",
+        "Solution": [
+            "O Firewall do Windows está habilitado para todos os perfis, portanto, nenhuma ação é necessária."
+        ],
+        "Screenshots": []
+    },
+    "371": {
+        "Name": "Firewall do Windows não habilitado para todos os perfis",
+        "Type": "Segurança",
+        "Information": "O Firewall do Windows é um recurso de segurança integrado que ajuda a proteger seu computador contra acesso não autorizado e software malicioso, monitorando e controlando o tráfego de rede de entrada e saída. Habilitar o Firewall do Windows para todos os perfis de rede (público, privado e de domínio) ajuda a melhorar a segurança do seu sistema e a prevenir possíveis ameaças de segurança.",
+        "Solution": [
+            "Vá para Iniciar > Configurações > Atualização e segurança > Segurança do Windows > Proteção contra ameaças e rede.",
+            "Em 'Proteção contra ameaças e rede', certifique-se de que o Firewall do Windows esteja ativado para todos os perfis de rede (público, privado e de domínio). Se estiver desativado, clique em 'Ativar' para habilitar o firewall para o perfil selecionado."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
+    "380": {
+        "Name": "Comprimento mínimo da senha definido para pelo menos 15 caracteres",
+        "Type": "Segurança",
+        "Information": "Definir um comprimento mínimo de senha de pelo menos 15 caracteres ajuda a aumentar a segurança das contas de usuário, aumentando a complexidade e a força das senhas. Senhas mais longas são mais resistentes a ataques de força bruta e oferecem melhor proteção contra acesso não autorizado e violações de dados.",
+        "Solution": [
+            "O comprimento mínimo da senha está definido para pelo menos 15 caracteres, portanto, nenhuma ação é necessária."
+        ],
+        "Screenshots": []
+    },
+    "381": {
+        "Name": "Comprimento mínimo da senha não definido para pelo menos 15 caracteres",
+        "Type": "Segurança",
+        "Information": "Definir um comprimento mínimo de senha de pelo menos 15 caracteres ajuda a aumentar a segurança das contas de usuário, aumentando a complexidade e a força das senhas. Senhas mais longas são mais resistentes a ataques de força bruta e oferecem melhor proteção contra acesso não autorizado e violações de dados.",
+        "Solution": [
+            "Abra um prompt de comando elevado clicando com o botão direito do mouse no botão Iniciar e selecionando 'Terminal (Admin)'.",
+            "Execute o comando 'net accounts' para visualizar as configurações atuais da política de senha, incluindo o comprimento mínimo da senha.",
+            "Execute o comando 'net accounts /minpwlen:15' para definir o comprimento mínimo da senha para 15 caracteres.",
+            "Reinicie o computador para aplicar as alterações."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
+    "390": {
+        "Name": "Credential Guard habilitado",
+        "Type": "Segurança",
+        "Information": "Credential Guard é um recurso de segurança no Windows que ajuda a proteger as credenciais dos usuários e informações sensíveis contra acesso não autorizado e roubo. Ele utiliza segurança baseada em virtualização para isolar e proteger as informações de credenciais, tornando mais difícil para os atacantes roubarem senhas e outros dados sensíveis.",
+        "Solution": [
+            "Credential Guard está habilitado, portanto, nenhuma ação é necessária."
+        ],
+        "Screenshots": []
+    },
+    "391": {
+        "Name": "Credential Guard desabilitado",
+        "Type": "Segurança",
+        "Information": "Credential Guard é um recurso de segurança no Windows que ajuda a proteger as credenciais dos usuários e informações sensíveis contra acesso não autorizado e roubo. Ele utiliza segurança baseada em virtualização para isolar e proteger as informações de credenciais, tornando mais difícil para os atacantes roubarem senhas e outros dados sensíveis.",
+        "Solution": [
+            "A configuração do Credential Guard é gerenciada na sua política de grupo local. Peça ao administrador da rede para habilitar o Credential Guard."
+        ],
+        "Screenshots": []
+    },
     "997": {
         "Name": "Extensões instaladas no Google Chrome",
         "Type": "Privacidade",
