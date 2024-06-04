@@ -27,8 +27,8 @@
         ],        
         "Screenshots":
         [
-            "devices-connected-via-bluetooth/bluetooth-devices-1.jpg",
-            "devices-connected-via-bluetooth/bluetooth-devices-2.jpg"
+            "devices-connected-via-bluetooth/bluetooth-devices-1.png",
+            "devices-connected-via-bluetooth/bluetooth-devices-2.png"
         ] 
     },
     "20": {
@@ -70,11 +70,11 @@
         ],
         "Screenshots":
         [
-            "guest-account/guest-account-1.jpg",
-            "guest-account/guest-account-1.jpg",
-            "guest-account/guest-account-1.jpg",
-            "guest-account/guest-account-3.jpg",        
-            "guest-account/guest-account-3.jpg"
+            "guest-account/guest-account-1.png",
+            "guest-account/guest-account-1.png",
+            "guest-account/guest-account-1.png",
+            "guest-account/guest-account-3.png",        
+            "guest-account/guest-account-3.png"
         ]
     },
     "31": {
@@ -97,10 +97,10 @@
         ],
         "Screenshots":
         [
-            "guest-account/guest-account-1.jpg",
-            "guest-account/guest-account-1.jpg",
-            "guest-account/guest-account-3.jpg",        
-            "guest-account/guest-account-3.jpg"
+            "guest-account/guest-account-1.png",
+            "guest-account/guest-account-1.png",
+            "guest-account/guest-account-3.png",        
+            "guest-account/guest-account-3.png"
         ]
     },
     "32": {
@@ -143,8 +143,8 @@
         ],        
         "Screenshots":
         [
-            "network-sharing/nearby-sharing-1.jpg",
-            "network-sharing/nearby-sharing-2.jpg"
+            "network-sharing/nearby-sharing-1.png",
+            "network-sharing/nearby-sharing-2.png"
         ] 
     },
     "42": {
@@ -177,9 +177,9 @@
         ],        
         "Screenshots":
         [
-            "network-sharing/nearby-sharing-1.jpg",
-            "network-sharing/nearby-sharing-1.jpg",
-            "network-sharing/nearby-sharing-2.jpg"
+            "network-sharing/nearby-sharing-1.png",
+            "network-sharing/nearby-sharing-1.png",
+            "network-sharing/nearby-sharing-2.png"
         ] 
     },
     "50": {
@@ -205,8 +205,8 @@
         ],
         "Screenshots":
         [
-            "password-manager/password-manager-1.jpg",
-            "password-manager/password-manager-1.jpg"
+            "password-manager/password-manager-1.png",
+            "password-manager/password-manager-1.png"
         ] 
     },
     "60": {
@@ -225,8 +225,8 @@
         ],        
         "Screenshots":
         [
-            "applications-with-location-permission/location-permissions-1.jpg",
-            "applications-with-location-permission/location-permissions-2.jpg"
+            "applications-with-location-permission/location-permissions-1.png",
+            "applications-with-location-permission/location-permissions-2.png"
         ] 
     },
     "61": {
@@ -257,8 +257,8 @@
         ],
         "Screenshots":
         [
-            "applications-with-microphone-permission/microphone-permissions-1.jpg",
-            "applications-with-microphone-permission/microphone-permissions-2.jpg"
+            "applications-with-microphone-permission/microphone-permissions-1.png",
+            "applications-with-microphone-permission/microphone-permissions-2.png"
         ] 
     },
     "71": {
@@ -289,8 +289,8 @@
         ],
         "Screenshots":
         [
-            "applications-with-webcam-permission/webcam-permissions-1.jpg",
-            "applications-with-webcam-permission/webcam-permissions-2.jpg"
+            "applications-with-webcam-permission/webcam-permissions-1.png",
+            "applications-with-webcam-permission/webcam-permissions-2.png"
         ] 
     },
     "81": {
@@ -321,8 +321,8 @@
         ],
         "Screenshots":
         [
-            "applications-with-calendar-permission/calendar-permissions-1.jpg",
-            "applications-with-calendar-permission/calendar-permissions-2.jpg"
+            "applications-with-calendar-permission/calendar-permissions-1.png",
+            "applications-with-calendar-permission/calendar-permissions-2.png"
         ] 
     },
     "91": {
@@ -353,8 +353,8 @@
         ],
         "Screenshots":
         [
-            "applications-with-contacts-permission/contacts-permissions-1.jpg",
-            "applications-with-contacts-permission/contacts-permissions-2.jpg"
+            "applications-with-contacts-permission/contacts-permissions-1.png",
+            "applications-with-contacts-permission/contacts-permissions-2.png"
         ] 
     },
     "101": {
@@ -382,7 +382,7 @@
         ],
         "Screenshots":
         [
-            "devices-connected-via-bluetooth/bluetooth-devices-1.jpg"
+            "devices-connected-via-bluetooth/bluetooth-devices-1.png"
         ] 
     },
     "120": {
@@ -435,10 +435,10 @@
         ],
         "Screenshots":
         [
-            "smb-status/smb-2.jpg",
-            "smb-status/smb-2.jpg",
-            "smb-status/smb-3.jpg",
-            "smb-status/smb-3.jpg"
+            "smb-status/smb-1.png",
+            "smb-status/smb-1.png",
+            "smb-status/smb-2.png",
+            "smb-status/smb-2.png"
         ] 
     },
     "132": {
@@ -466,10 +466,10 @@
         ],
         "Screenshots":
         [
-            "smb-status/smb-2.jpg",
-            "smb-status/smb-2.jpg",
-            "smb-status/smb-3.jpg",
-            "smb-status/smb-3.jpg"
+            "smb-status/smb-1.png",
+            "smb-status/smb-1.png",
+            "smb-status/smb-2.png",
+            "smb-status/smb-2.png"
         ] 
     },
     "140": {
@@ -498,12 +498,12 @@
         ],
         "Screenshots":
         [
-            "user-account-control/user-account-control-1.jpg",
-            "user-account-control/user-account-control-2.jpg",
-            "user-account-control/user-account-control-2.jpg",
-            "user-account-control/user-account-control-3.jpg",
-            "user-account-control/user-account-control-5.jpg",
-            "user-account-control/user-account-control-5.jpg"
+            "user-account-control/user-account-control-1.png",
+            "user-account-control/user-account-control-2.png",
+            "user-account-control/user-account-control-2.png",
+            "user-account-control/user-account-control-3.png",
+            "user-account-control/user-account-control-5.png",
+            "user-account-control/user-account-control-5.png"
         ] 
     },
     "141": {
@@ -544,13 +544,13 @@
         ],
         "Screenshots":
         [
-            "user-account-control/user-account-control-1.jpg",
-            "user-account-control/user-account-control-1.jpg",
-            "user-account-control/user-account-control-2.jpg",
-            "user-account-control/user-account-control-2.jpg",
-            "user-account-control/user-account-control-3.jpg",
-            "user-account-control/user-account-control-5.jpg",
-            "user-account-control/user-account-control-5.jpg"
+            "user-account-control/user-account-control-1.png",
+            "user-account-control/user-account-control-1.png",
+            "user-account-control/user-account-control-2.png",
+            "user-account-control/user-account-control-2.png",
+            "user-account-control/user-account-control-3.png",
+            "user-account-control/user-account-control-5.png",
+            "user-account-control/user-account-control-5.png"
         ] 
     },
     "143": {
@@ -579,13 +579,13 @@
         ],
         "Screenshots":
         [
-            "user-account-control/user-account-control-1.jpg",
-            "user-account-control/user-account-control-1.jpg",
-            "user-account-control/user-account-control-2.jpg",
-            "user-account-control/user-account-control-2.jpg",
-            "user-account-control/user-account-control-3.jpg",
-            "user-account-control/user-account-control-5.jpg",
-            "user-account-control/user-account-control-5.jpg"
+            "user-account-control/user-account-control-1.png",
+            "user-account-control/user-account-control-1.png",
+            "user-account-control/user-account-control-2.png",
+            "user-account-control/user-account-control-2.png",
+            "user-account-control/user-account-control-3.png",
+            "user-account-control/user-account-control-5.png",
+            "user-account-control/user-account-control-5.png"
         ] 
     },
     "150": {
@@ -613,11 +613,18 @@
         ],
         "Screenshots":
         [
-            "windows-defender/windows-defender-1.jpg",
-            "windows-defender/windows-defender-1.jpg",
-            "windows-defender/windows-defender-1.jpg",
-            "windows-defender/windows-defender-1.jpg"
-        ] 
+            "windows-defender/windows-defender-1.png",
+            "windows-defender/windows-defender-1.png",
+            "windows-defender/windows-defender-1.png",
+            "windows-defender/windows-defender-1.png"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "windows-defender/windows-defender-1.png",
+            "windows-defender/windows-defender-2.png",
+            "windows-defender/windows-defender-3.png",
+            "windows-defender/windows-defender-4.png"
+        ]
     },
     "152": {
         "Name": "Windows Defender deaktiviert",
@@ -632,11 +639,18 @@
         ],
         "Screenshots":
         [
-            "windows-defender/windows-defender-1.jpg",
-            "windows-defender/windows-defender-1.jpg",
-            "windows-defender/windows-defender-1.jpg",
-            "windows-defender/windows-defender-1.jpg"
-        ] 
+            "windows-defender/windows-defender-1.png",
+            "windows-defender/windows-defender-1.png",
+            "windows-defender/windows-defender-1.png",
+            "windows-defender/windows-defender-1.png"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "windows-defender/windows-defender-1.png",
+            "windows-defender/windows-defender-2.png",
+            "windows-defender/windows-defender-3.png",
+            "windows-defender/windows-defender-4.png"
+        ]
     },
     "153": {
         "Name": "Windows Defender deaktiviert",
@@ -651,11 +665,18 @@
         ],
         "Screenshots":
         [
-            "windows-defender/windows-defender-1.jpg",
-            "windows-defender/windows-defender-1.jpg",
-            "windows-defender/windows-defender-1.jpg",
-            "windows-defender/windows-defender-1.jpg"
-        ] 
+            "windows-defender/windows-defender-1.png",
+            "windows-defender/windows-defender-1.png",
+            "windows-defender/windows-defender-1.png",
+            "windows-defender/windows-defender-1.png"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "windows-defender/windows-defender-1.png",
+            "windows-defender/windows-defender-2.png",
+            "windows-defender/windows-defender-3.png",
+            "windows-defender/windows-defender-4.png"
+        ]
     },
     "154": {
         "Name": "Windows Defender-Status unbekannt",
@@ -671,12 +692,20 @@
         ],
         "Screenshots":
         [
-            "windows-defender/windows-defender-1.jpg",
-            "windows-defender/windows-defender-1.jpg",
-            "windows-defender/windows-defender-1.jpg",
-            "windows-defender/windows-defender-1.jpg",
-            "windows-defender/windows-defender-1.jpg"
-        ] 
+            "windows-defender/windows-defender-1.png",
+            "windows-defender/windows-defender-1.png",
+            "windows-defender/windows-defender-1.png",
+            "windows-defender/windows-defender-1.png",
+            "windows-defender/windows-defender-1.png"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "windows-defender/windows-defender-1.png",
+            "windows-defender/windows-defender-1.png",
+            "windows-defender/windows-defender-2.png",
+            "windows-defender/windows-defender-3.png",
+            "windows-defender/windows-defender-4.png"
+        ]
     },
     "160": {
         "Name": "Passwortwechsel vor mehr als 6 Monaten",
@@ -690,9 +719,9 @@
         ],
         "Screenshots":
         [
-            "last-password-change/change-password-1.jpg",
-            "last-password-change/change-password-2.jpg",
-            "last-password-change/change-password-2.jpg"
+            "last-password-change/change-password-1.png",
+            "last-password-change/change-password-2.png",
+            "last-password-change/change-password-2.png"
         ] 
     },
     "161": {
@@ -718,8 +747,8 @@
         ],
         "Screenshots":
         [
-            "windows-login-method/login-method-1.jpg",
-            "windows-login-method/login-method-2.jpg"
+            "windows-login-method/login-method-1.png",
+            "windows-login-method/login-method-2.png"
         ] 
     },
     "171": {
@@ -745,8 +774,8 @@
         ],
         "Screenshots":
         [
-            "windows-login-method/login-method-1.jpg",
-            "windows-login-method/login-method-2.jpg"
+            "windows-login-method/login-method-1.png",
+            "windows-login-method/login-method-2.png"
         ] 
     },
     "180": {
@@ -772,8 +801,8 @@
         ],
         "Screenshots":
         [
-            "outdated-windows-version/windows-update-1.jpg",
-            "outdated-windows-version/windows-update-2.jpg"
+            "outdated-windows-version/windows-update-1.png",
+            "outdated-windows-version/windows-update-2.png"
         ] 
     },
     "182": {
@@ -787,8 +816,8 @@
         ],
         "Screenshots":
         [
-            "outdated-windows-version/windows-update-1.jpg",
-            "outdated-windows-version/windows-update-2.jpg"
+            "outdated-windows-version/windows-update-1.png",
+            "outdated-windows-version/windows-update-2.png"
         ] 
     },
     "190": {
@@ -857,8 +886,8 @@
         ],
         "Screenshots":
         [
-            "applications-which-start-at-boot/boot-apps-1.jpg",
-            "applications-which-start-at-boot/boot-apps-2.jpg"
+            "applications-which-start-at-boot/boot-apps-1.png",
+            "applications-which-start-at-boot/boot-apps-2.png"
         ] 
     },
     "210": {
@@ -1269,12 +1298,20 @@
         ],
         "Screenshots":
         [
-            "applications-with-administrative-privileges/admin-privileges-1.jpg",
-            "applications-with-administrative-privileges/admin-privileges-2.jpg",
-            "applications-with-administrative-privileges/admin-privileges-3.jpg",
-            "applications-with-administrative-privileges/admin-privileges-4.jpg",
-            "applications-with-administrative-privileges/admin-privileges-4.jpg"
-        ] 
+            "applications-with-administrative-privileges/admin-privileges-1.png",
+            "applications-with-administrative-privileges/admin-privileges-2.png",
+            "applications-with-administrative-privileges/admin-privileges-3.png",
+            "applications-with-administrative-privileges/admin-privileges-4.png",
+            "applications-with-administrative-privileges/admin-privileges-4.png"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "applications-with-administrative-privileges/admin-privileges-1.png",
+            "applications-with-administrative-privileges/admin-privileges-2.png",
+            "applications-with-administrative-privileges/admin-privileges-3.png",
+            "applications-with-administrative-privileges/admin-privileges-4.png",
+            "applications-with-administrative-privileges/admin-privileges-5.png"
+        ]
     },
     "999": {
         "Name": "Anwendungen mit Administratorberechtigungen",
@@ -1290,11 +1327,19 @@
         ],
         "Screenshots":
         [
-            "applications-with-administrative-privileges/admin-privileges-1.jpg",
-            "applications-with-administrative-privileges/admin-privileges-2.jpg",
-            "applications-with-administrative-privileges/admin-privileges-3.jpg",
-            "applications-with-administrative-privileges/admin-privileges-4.jpg",
-            "applications-with-administrative-privileges/admin-privileges-4.jpg"
-        ] 
+            "applications-with-administrative-privileges/admin-privileges-1.png",
+            "applications-with-administrative-privileges/admin-privileges-2.png",
+            "applications-with-administrative-privileges/admin-privileges-3.png",
+            "applications-with-administrative-privileges/admin-privileges-4.png",
+            "applications-with-administrative-privileges/admin-privileges-4.png"
+        ],
+        "ScreenshotsWindows10":
+        [
+            "applications-with-administrative-privileges/admin-privileges-1.png",
+            "applications-with-administrative-privileges/admin-privileges-2.png",
+            "applications-with-administrative-privileges/admin-privileges-3.png",
+            "applications-with-administrative-privileges/admin-privileges-4.png",
+            "applications-with-administrative-privileges/admin-privileges-5.png"
+        ]
     }
 }

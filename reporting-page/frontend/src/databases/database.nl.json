@@ -435,10 +435,10 @@
         ],
         "Screenshots":
         [
+            "smb-status/smb-1.png",
+            "smb-status/smb-1.png",
             "smb-status/smb-2.png",
-            "smb-status/smb-2.png",
-            "smb-status/smb-3.png",
-            "smb-status/smb-3.png"
+            "smb-status/smb-2.png"
         ] 
     },
     "132": {
@@ -466,10 +466,10 @@
         ],
         "Screenshots":
         [
+            "smb-status/smb-1.png",
+            "smb-status/smb-1.png",
             "smb-status/smb-2.png",
-            "smb-status/smb-2.png",
-            "smb-status/smb-3.png",
-            "smb-status/smb-3.png"
+            "smb-status/smb-2.png"
         ] 
     },
     "140": {
@@ -617,7 +617,14 @@
             "windows-defender/windows-defender-1.png",
             "windows-defender/windows-defender-1.png",
             "windows-defender/windows-defender-1.png"
-        ] 
+        ],
+        "ScreenshotsWindows10":
+        [
+            "windows-defender/windows-defender-1.png",
+            "windows-defender/windows-defender-2.png",
+            "windows-defender/windows-defender-3.png",
+            "windows-defender/windows-defender-4.png"
+        ]
     },
     "152": {
         "Name": "Windows Defender uitgeschakeld",
@@ -636,7 +643,14 @@
             "windows-defender/windows-defender-1.png",
             "windows-defender/windows-defender-1.png",
             "windows-defender/windows-defender-1.png"
-        ] 
+        ],
+        "ScreenshotsWindows10":
+        [
+            "windows-defender/windows-defender-1.png",
+            "windows-defender/windows-defender-2.png",
+            "windows-defender/windows-defender-3.png",
+            "windows-defender/windows-defender-4.png"
+        ]
     },
     "153": {
         "Name": "Windows Defender uitgeschakeld",
@@ -655,7 +669,14 @@
             "windows-defender/windows-defender-1.png",
             "windows-defender/windows-defender-1.png",
             "windows-defender/windows-defender-1.png"
-        ] 
+        ],
+        "ScreenshotsWindows10":
+        [
+            "windows-defender/windows-defender-1.png",
+            "windows-defender/windows-defender-2.png",
+            "windows-defender/windows-defender-3.png",
+            "windows-defender/windows-defender-4.png"
+        ]
     },
     "154": {
         "Name": "Windows Defender status onbekend",
@@ -676,7 +697,15 @@
             "windows-defender/windows-defender-1.png",
             "windows-defender/windows-defender-1.png",
             "windows-defender/windows-defender-1.png"
-        ] 
+        ],
+        "ScreenshotsWindows10":
+        [
+            "windows-defender/windows-defender-1.png",
+            "windows-defender/windows-defender-1.png",
+            "windows-defender/windows-defender-2.png",
+            "windows-defender/windows-defender-3.png",
+            "windows-defender/windows-defender-4.png"
+        ]
     },
     "160": {
         "Name": "Laatste wachtwoordwijziging langer dan 6 maanden geleden",
@@ -1275,7 +1304,15 @@
             "applications-with-administrative-privileges/admin-privileges-3.png",
             "applications-with-administrative-privileges/admin-privileges-4.png",
             "applications-with-administrative-privileges/admin-privileges-4.png"
-        ] 
+        ],
+        "ScreenshotsWindows10":
+        [
+            "applications-with-administrative-privileges/admin-privileges-1.png",
+            "applications-with-administrative-privileges/admin-privileges-2.png",
+            "applications-with-administrative-privileges/admin-privileges-3.png",
+            "applications-with-administrative-privileges/admin-privileges-4.png",
+            "applications-with-administrative-privileges/admin-privileges-5.png"
+        ]
     },
     "999": {
         "Name": "Geen specifieke actie vereist",
@@ -1297,6 +1334,14 @@
             "applications-with-administrative-privileges/admin-privileges-3.png",
             "applications-with-administrative-privileges/admin-privileges-4.png",
             "applications-with-administrative-privileges/admin-privileges-4.png"
-        ] 
+        ],
+        "ScreenshotsWindows10":
+        [
+            "applications-with-administrative-privileges/admin-privileges-1.png",
+            "applications-with-administrative-privileges/admin-privileges-2.png",
+            "applications-with-administrative-privileges/admin-privileges-3.png",
+            "applications-with-administrative-privileges/admin-privileges-4.png",
+            "applications-with-administrative-privileges/admin-privileges-5.png"
+        ]
     }
 }
