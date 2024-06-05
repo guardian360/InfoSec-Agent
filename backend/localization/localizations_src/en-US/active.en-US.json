@@ -134,6 +134,7 @@
   },  
   "Programs": {
     "Name":"Name",
-    "ProgramTable": "Installed programs"    
+    "ProgramTable": "Installed programs",
+    "Search": "Search" 
   }
 }

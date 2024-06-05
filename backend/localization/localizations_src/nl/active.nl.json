@@ -133,6 +133,7 @@
   },  
   "Programs": {
     "Name":"Naam",
-    "ProgramTable": "Geïnstalleerde programma's"    
+    "ProgramTable": "Geïnstalleerde programma's",
+    "Search": "Zoeken"
   }
 }

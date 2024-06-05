@@ -12,6 +12,7 @@
   max-width: 800px; /* Limit the width of the table container */
   margin-bottom: 20px;
   border-radius: 8px;
+  padding: 10px;
   box-shadow: 0 0 10px rgb(0 0 0 / 10%); /* Add shadow for depth */
   overflow: hidden; /* Hide overflow content */
 }
@@ -196,4 +197,14 @@ h1, h2{
   max-width: 100%; /* Make it responsive */
   height: auto;
   margin-top: 20px;
+}
+
+#searchInput {
+  width: 100%;
+  padding: 10px;
+  margin: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 18px;
 }

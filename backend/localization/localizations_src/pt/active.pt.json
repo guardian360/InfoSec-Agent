@@ -132,6 +132,7 @@
   },  
   "Programs": {
     "Name":"Nome",
-    "ProgramTable": "Programas instalados"    
+    "ProgramTable": "Programas instalados",
+    "Search": "Procurar"    
   }
 }

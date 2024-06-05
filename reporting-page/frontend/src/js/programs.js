@@ -57,14 +57,15 @@ export function openProgramsPage() {
     const tableHeaders = [
         'lang-program-table',
         'lang-name',
-      ];
-      const localizationIds = [
-        'Programs.ProgramTable',
-        'Programs.Name',
-      ];
-      for (let i = 0; i < tableHeaders.length; i++) {
-        getLocalization(localizationIds[i], tableHeaders[i]);
-      }
+    ];
+    const localizationIds = [
+      'Programs.ProgramTable',
+      'Programs.Name',
+      'Programs.Search',
+    ];
+    for (let i = 0; i < tableHeaders.length; i++) {
+      getLocalization(localizationIds[i], tableHeaders[i]);
+    }
 }
 
 /* istanbul ignore next */
