@@ -1462,6 +1462,32 @@
             "TOBEFILLED"
         ]
     },
+    "400": {
+        "Name": "NetBIOS über TCP/IP deaktiviert",
+        "Type": "Sicherheit",
+        "Information": "NetBIOS über TCP/IP ist ein veraltetes Netzwerkprotokoll, das es Computern ermöglicht, in einem lokalen Netzwerk zu kommunizieren. Das Deaktivieren von NetBIOS über TCP/IP hilft, die Angriffsfläche Ihres Systems zu reduzieren und potenzielle Sicherheitslücken im Zusammenhang mit diesem Protokoll zu verhindern.",
+        "Solution": [
+            "NetBIOS über TCP/IP ist deaktiviert, daher ist keine Aktion erforderlich."
+        ],
+        "Screenshots": []
+    },
+    "401": {
+        "Name": "NetBIOS über TCP/IP aktiviert",
+        "Type": "Sicherheit",
+        "Information": "NetBIOS über TCP/IP ist ein veraltetes Netzwerkprotokoll, das es Computern ermöglicht, in einem lokalen Netzwerk zu kommunizieren. Das Deaktivieren von NetBIOS über TCP/IP hilft, die Angriffsfläche Ihres Systems zu reduzieren und potenzielle Sicherheitslücken im Zusammenhang mit diesem Protokoll zu verhindern.",
+        "Solution": [
+            "Öffnen Sie die Systemsteuerung und gehen Sie zu 'Netzwerk und Internet' -> 'Netzwerk- und Freigabecenter'.",
+            "Klicken Sie im linken Bereich auf 'Adaptereinstellungen ändern'.",
+            "Klicken Sie mit der rechten Maustaste auf Ihre Netzwerkverbindung und wählen Sie 'Eigenschaften'.",
+            "Scrollen Sie im Reiter 'Netzwerk' nach unten zu 'Internetprotokoll Version 4 (TCP/IPv4)' und klicken Sie auf 'Eigenschaften'.",
+            "Klicken Sie auf 'Erweitert' und gehen Sie zum Reiter 'WINS'.",
+            "Wählen Sie unter 'NetBIOS-Einstellung' die Option 'NetBIOS über TCP/IP deaktivieren'.",
+            "Klicken Sie auf 'OK', um die Änderungen zu speichern."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
     "997": {
         "Name": "Installierte Erweiterungen in Google Chrome",
         "Type": "Privatsphäre",

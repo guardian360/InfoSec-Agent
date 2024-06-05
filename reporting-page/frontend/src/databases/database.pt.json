@@ -1462,6 +1462,32 @@
         ],
         "Screenshots": []
     },
+    "400": {
+        "Name": "NetBIOS sobre TCP/IP desativado",
+        "Type": "Segurança",
+        "Information": "NetBIOS sobre TCP/IP é um protocolo de rede legado que permite aos computadores se comunicarem em uma rede local. Desativar o NetBIOS sobre TCP/IP ajuda a reduzir a superfície de ataque do seu sistema e a prevenir possíveis vulnerabilidades de segurança associadas a este protocolo.",
+        "Solution": [
+            "NetBIOS sobre TCP/IP está desativado, portanto, nenhuma ação é necessária."
+        ],
+        "Screenshots": []
+    },
+    "401": {
+        "Name": "NetBIOS sobre TCP/IP ativado",
+        "Type": "Segurança",
+        "Information": "NetBIOS sobre TCP/IP é um protocolo de rede legado que permite aos computadores se comunicarem em uma rede local. Desativar o NetBIOS sobre TCP/IP ajuda a reduzir a superfície de ataque do seu sistema e a prevenir possíveis vulnerabilidades de segurança associadas a este protocolo.",
+        "Solution": [
+            "Abra o Painel de Controle e vá para 'Rede e Internet' -> 'Central de Rede e Compartilhamento'.",
+            "Clique em 'Alterar as configurações do adaptador' no painel à esquerda.",
+            "Clique com o botão direito na sua conexão de rede e selecione 'Propriedades'.",
+            "Na guia 'Rede', role para baixo até 'Protocolo de Internet Versão 4 (TCP/IPv4)' e clique em 'Propriedades'.",
+            "Clique em 'Avançado' e vá para a guia 'WINS'.",
+            "Em 'Configuração de NetBIOS', selecione 'Desativar NetBIOS sobre TCP/IP'.",
+            "Clique em 'OK' para salvar as alterações."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
     "997": {
         "Name": "Extensões instaladas no Google Chrome",
         "Type": "Privacidade",
