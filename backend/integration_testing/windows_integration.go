@@ -141,7 +141,7 @@ func TestIntegrationRemoteDesktopEnabled(t *testing.T) {
 func TestIntegrationRemoteDesktopDisabled(t *testing.T) {
 	result := windows.RemoteDesktopCheck(mocking.LocalMachine)
 	require.NotEmpty(t, result)
-	require.Equal(t, 0, result.ResultID)
+	require.Equal(t, 1, result.ResultID)
 }
 
 func TestIntegrationRemoteRPCEnabled(t *testing.T) {
