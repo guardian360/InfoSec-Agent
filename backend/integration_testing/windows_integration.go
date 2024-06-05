@@ -159,13 +159,13 @@ func TestIntegrationRemoteRPCDisabled(t *testing.T) {
 func TestIntegrationSecureBootEnabled(t *testing.T) {
 	result := windows.SecureBoot(mocking.LocalMachine)
 	require.NotEmpty(t, result)
-	require.Equal(t, 0, result.ResultID)
+	require.Equal(t, 1, result.ResultID)
 }
 
 func TestIntegrationSecureBootDisabled(t *testing.T) {
 	result := windows.SecureBoot(mocking.LocalMachine)
 	require.NotEmpty(t, result)
-	require.Equal(t, 1, result.ResultID)
+	require.Equal(t, 0, result.ResultID)
 }
 
 func TestIntegrationStartupWithApps(t *testing.T) {
