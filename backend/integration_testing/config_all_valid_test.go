@@ -31,7 +31,7 @@ var testsValid = []func(t *testing.T){
 	// i.TestIntegrationOutdatedWin11UpToDate,
 	i.TestIntegrationPermissionWithoutApps,
 	// TODO: turn back on when the test is fixed
-	// i.TestIntegrationRemoteDesktopDisabled,
+	i.TestIntegrationRemoteDesktopDisabled,
 	i.TestIntegrationSecureBootEnabled,
 	i.TestIntegrationStartupWithoutApps,
 	i.TestIntegrationUACFullEnabled,
