@@ -1488,6 +1488,29 @@
             "TOBEFILLED"
         ]
     },
+    "410": {
+        "Name": "WPAD-service uitgeschakeld",
+        "Type": "Beveiliging",
+        "Information": "Web Proxy Auto-Discovery (WPAD) is een protocol waarmee webbrowsers automatisch proxyservers in een netwerk kunnen ontdekken. Het uitschakelen van de WPAD-service helpt mogelijke beveiligingsrisico's in verband met automatische proxyconfiguratie te voorkomen en beschermt uw systeem tegen ongeautoriseerde ontdekking en configuratie van proxyservers.",
+        "Solution": [
+            "WPAD-service is uitgeschakeld, dus er is geen actie nodig."
+        ],
+        "Screenshots": []
+    },
+    "411": {
+        "Name": "WPAD-service ingeschakeld",
+        "Type": "Beveiliging",
+        "Information": "Web Proxy Auto-Discovery (WPAD) is een protocol waarmee webbrowsers automatisch proxyservers in een netwerk kunnen ontdekken. Het uitschakelen van de WPAD-service helpt mogelijke beveiligingsrisico's in verband met automatische proxyconfiguratie te voorkomen en beschermt uw systeem tegen ongeautoriseerde ontdekking en configuratie van proxyservers.",
+        "Solution": [
+            "Open een verhoogde opdrachtprompt door met de rechtermuisknop op de startknop te klikken en 'Terminal (beheerder)' te selecteren.",
+            "Voer de opdracht 'netsh winhttp show proxy' uit om de huidige proxy-instellingen te controleren.",
+            "Als WPAD is ingeschakeld, voer de opdracht 'netsh winhttp reset proxy' uit om WPAD uit te schakelen en de proxy-instellingen opnieuw in te stellen.",
+            "Start uw computer opnieuw op om de wijzigingen toe te passen."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
     "997": {
         "Name": "Extensies geïnstalleerd in Google Chrome",
         "Type": "Privacy",

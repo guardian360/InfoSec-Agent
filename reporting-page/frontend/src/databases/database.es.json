@@ -1488,6 +1488,29 @@
             "TOBEFILLED"
         ]
     },
+    "410": {
+        "Name": "Servicio WPAD deshabilitado",
+        "Type": "Seguridad",
+        "Information": "Web Proxy Auto-Discovery (WPAD) es un protocolo que permite a los navegadores web descubrir automáticamente servidores proxy en una red. Deshabilitar el servicio WPAD ayuda a prevenir posibles riesgos de seguridad asociados con la configuración automática de proxy y protege su sistema de la detección y configuración no autorizada de servidores proxy.",
+        "Solution": [
+            "El servicio WPAD está deshabilitado, por lo que no se necesita ninguna acción."
+        ],
+        "Screenshots": []
+    },
+    "411": {
+        "Name": "Servicio WPAD habilitado",
+        "Type": "Seguridad",
+        "Information": "Web Proxy Auto-Discovery (WPAD) es un protocolo que permite a los navegadores web descubrir automáticamente servidores proxy en una red. Deshabilitar el servicio WPAD ayuda a prevenir posibles riesgos de seguridad asociados con la configuración automática de proxy y protege su sistema de la detección y configuración no autorizada de servidores proxy.",
+        "Solution": [
+            "Abra un símbolo del sistema con privilegios elevados haciendo clic derecho en el botón de inicio y seleccionando 'Terminal (Administrador)'.",
+            "Ejecute el comando 'netsh winhttp show proxy' para verificar la configuración actual del proxy.",
+            "Si WPAD está habilitado, ejecute el comando 'netsh winhttp reset proxy' para deshabilitar WPAD y restablecer la configuración del proxy.",
+            "Reinicie su computadora para aplicar los cambios."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
     "997": {
         "Name": "Extensiones instaladas en Google Chrome",
         "Type": "Privacidad",

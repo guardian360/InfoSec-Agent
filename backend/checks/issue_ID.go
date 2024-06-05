@@ -42,4 +42,5 @@ const (
 	PasswordComplexityID
 	CredentialGuardID
 	NetBIOSID
+	WPADID
 )
