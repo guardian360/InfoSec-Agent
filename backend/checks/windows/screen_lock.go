@@ -38,7 +38,7 @@ func ScreenLockEnabled(registryKey mocking.RegistryKey) checks.Check {
 	}
 	ssInterval, _, err := key.GetStringValue("ScreenSaveTimeOut")
 	if err != nil {
-		checks.NewCheckResult(checks.ScreenLockID, 1)
+		return checks.NewCheckResult(checks.ScreenLockID, 1)
 	}
 	ssIntInterval, err := strconv.Atoi(ssInterval)
 	if err != nil {
