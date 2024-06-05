@@ -1511,6 +1511,28 @@
             "TOBEFILLED"
         ]
     },
+    "420": {
+        "Name": "Bloqueio automático de tela do Windows ativado",
+        "Type": "Segurança",
+        "Information": "O bloqueio de tela é uma função de segurança que requer que os usuários insiram uma senha, PIN ou autenticação biométrica para desbloquear seu dispositivo e acessar a área de trabalho. Ativar o bloqueio de tela ajuda a proteger seus dados e privacidade caso seu computador seja deixado sem supervisão ou seja roubado.",
+        "Solution": [
+            "O bloqueio automático de tela do Windows está ativado, portanto, nenhuma ação é necessária."
+        ],
+        "Screenshots": []
+    },
+    "421": {
+        "Name": "Bloqueio automático de tela do Windows desativado",
+        "Type": "Segurança",
+        "Information": "O bloqueio de tela é uma função de segurança que requer que os usuários insiram uma senha, PIN ou autenticação biométrica para desbloquear seu dispositivo e acessar a área de trabalho. Ativar o bloqueio de tela ajuda a proteger seus dados e privacidade caso seu computador seja deixado sem supervisão ou seja roubado.",
+        "Solution": [
+            "Vá para Iniciar > Configurações > Personalização > Tela de bloqueio.",
+            "Abra a janela 'Protetor de tela'.",
+            "Marque a caixa 'Na retomada, exibir tela de logon' e defina o tempo de 'Espera' para um intervalo curto (2 minutos ou menos)."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
     "997": {
         "Name": "Extensões instaladas no Google Chrome",
         "Type": "Privacidade",

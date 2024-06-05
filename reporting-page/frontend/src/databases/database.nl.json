@@ -1511,6 +1511,28 @@
             "TOBEFILLED"
         ]
     },
+    "420": {
+        "Name": "Automatische schermvergrendeling van Windows ingeschakeld",
+        "Type": "Beveiliging",
+        "Information": "Schermvergrendeling is een beveiligingsfunctie die vereist dat gebruikers een wachtwoord, pincode of biometrische authenticatie invoeren om hun apparaat te ontgrendelen en toegang te krijgen tot het bureaublad. Door de schermvergrendeling in te schakelen, worden uw gegevens en privacy beschermd in geval van onbeheerd achterlaten of diefstal van uw computer.",
+        "Solution": [
+            "De automatische schermvergrendeling van Windows is ingeschakeld, dus er is geen actie vereist."
+        ],
+        "Screenshots": []
+    },
+    "421": {
+        "Name": "Automatische schermvergrendeling van Windows uitgeschakeld",
+        "Type": "Beveiliging",
+        "Information": "Schermvergrendeling is een beveiligingsfunctie die vereist dat gebruikers een wachtwoord, pincode of biometrische authenticatie invoeren om hun apparaat te ontgrendelen en toegang te krijgen tot het bureaublad. Door de schermvergrendeling in te schakelen, worden uw gegevens en privacy beschermd in geval van onbeheerd achterlaten of diefstal van uw computer.",
+        "Solution": [
+            "Ga naar Start > Instellingen > Persoonlijke instellingen > Vergrendelscherm.",
+            "Open het 'Schermbeveiliging'-venster.",
+            "Schakel het selectievakje 'Bij hervat weergave aanmeldingsscherm' in en stel de 'Wacht' tijd in op een korte interval (2 minuten of minder)."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
     "997": {
         "Name": "Extensies geïnstalleerd in Google Chrome",
         "Type": "Privacy",

@@ -1511,6 +1511,28 @@
             "TOBEFILLED"
         ]
     },
+    "420": {
+        "Name": "Bloqueo automático de pantalla de Windows activado",
+        "Type": "Seguridad",
+        "Information": "El bloqueo de pantalla es una función de seguridad que requiere que los usuarios ingresen una contraseña, PIN o autenticación biométrica para desbloquear su dispositivo y acceder al escritorio. Activar el bloqueo de pantalla ayuda a proteger sus datos y privacidad en caso de que su computadora quede desatendida o sea robada.",
+        "Solution": [
+            "El bloqueo automático de pantalla de Windows está activado, por lo que no se necesita ninguna acción."
+        ],
+        "Screenshots": []
+    },
+    "421": {
+        "Name": "Bloqueo automático de pantalla de Windows desactivado",
+        "Type": "Seguridad",
+        "Information": "El bloqueo de pantalla es una función de seguridad que requiere que los usuarios ingresen una contraseña, PIN o autenticación biométrica para desbloquear su dispositivo y acceder al escritorio. Activar el bloqueo de pantalla ayuda a proteger sus datos y privacidad en caso de que su computadora quede desatendida o sea robada.",
+        "Solution": [
+            "Vaya a Inicio > Configuración > Personalización > Pantalla de bloqueo.",
+            "Abra la ventana de 'Protector de pantalla'.",
+            "Marque la casilla 'Al reanudar, mostrar pantalla de inicio de sesión' y establezca el tiempo de 'Espera' en un intervalo corto (2 minutos o menos)."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
     "997": {
         "Name": "Extensiones instaladas en Google Chrome",
         "Type": "Privacidad",

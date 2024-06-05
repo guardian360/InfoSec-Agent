@@ -145,6 +145,7 @@ var windowsChecks = []func() checks.Check{
 	func() checks.Check { return windows.FirewallEnabled(executor) },
 	func() checks.Check { return windows.PasswordLength(executor) },
 	func() checks.Check { return windows.CredentialGuardRunning(executor) },
+	func() checks.Check { return windows.ScreenLockEnabled(mocking.CurrentUser) },
 }
 
 // DirectoryExists checks if a directory exists at the specified path.

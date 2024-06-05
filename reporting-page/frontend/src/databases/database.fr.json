@@ -1511,6 +1511,28 @@
             "TOBEFILLED"
         ]
     },
+    "420": {
+        "Name": "Verrouillage automatique de l'écran de Windows activé",
+        "Type": "Sécurité",
+        "Information": "Le verrouillage de l'écran est une fonction de sécurité qui nécessite que les utilisateurs saisissent un mot de passe, un code PIN ou une authentification biométrique pour déverrouiller leur appareil et accéder au bureau. Activer le verrouillage de l'écran aide à protéger vos données et votre vie privée en cas de laissé sans surveillance ou de vol de votre ordinateur.",
+        "Solution": [
+            "Le verrouillage automatique de l'écran de Windows est activé, donc aucune action n'est nécessaire."
+        ],
+        "Screenshots": []
+    },
+    "421": {
+        "Name": "Verrouillage automatique de l'écran de Windows désactivé",
+        "Type": "Sécurité",
+        "Information": "Le verrouillage de l'écran est une fonction de sécurité qui nécessite que les utilisateurs saisissent un mot de passe, un code PIN ou une authentification biométrique pour déverrouiller leur appareil et accéder au bureau. Activer le verrouillage de l'écran aide à protéger vos données et votre vie privée en cas de laissé sans surveillance ou de vol de votre ordinateur.",
+        "Solution": [
+            "Allez à Démarrer > Paramètres > Personnalisation > Écran de verrouillage.",
+            "Ouvrez la fenêtre 'Économiseur d'écran'.",
+            "Cochez la case 'À la reprise, afficher l'écran de connexion' et réglez le 'Délai' sur un intervalle court (2 minutes ou moins)."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
     "997": {
         "Name": "Extensions installées dans Google Chrome",
         "Type": "Confidentialité",

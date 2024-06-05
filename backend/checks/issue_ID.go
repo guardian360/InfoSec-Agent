@@ -43,4 +43,5 @@ const (
 	CredentialGuardID
 	NetBIOSID
 	WPADID
+	ScreenLockID
 )
