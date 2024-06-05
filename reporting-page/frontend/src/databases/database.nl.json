@@ -1462,6 +1462,32 @@
             "TOBEFILLED"
         ]
     },
+    "400": {
+        "Name": "NetBIOS over TCP/IP uitgeschakeld",
+        "Type": "Beveiliging",
+        "Information": "NetBIOS over TCP/IP is een verouderd netwerkprotocol waarmee computers in een lokaal netwerk kunnen communiceren. Het uitschakelen van NetBIOS over TCP/IP helpt het aanvalsoppervlak van uw systeem te verkleinen en mogelijke beveiligingsproblemen in verband met dit protocol te voorkomen.",
+        "Solution": [
+            "NetBIOS over TCP/IP is uitgeschakeld, dus er is geen actie nodig."
+        ],
+        "Screenshots": []
+    },
+    "401": {
+        "Name": "NetBIOS over TCP/IP ingeschakeld",
+        "Type": "Beveiliging",
+        "Information": "NetBIOS over TCP/IP is een verouderd netwerkprotocol waarmee computers in een lokaal netwerk kunnen communiceren. Het uitschakelen van NetBIOS over TCP/IP helpt het aanvalsoppervlak van uw systeem te verkleinen en mogelijke beveiligingsproblemen in verband met dit protocol te voorkomen.",
+        "Solution": [
+            "Open het Configuratiescherm en ga naar 'Netwerk en internet' -> 'Netwerkcentrum'.",
+            "Klik in het linkerpaneel op 'Adapterinstellingen wijzigen'.",
+            "Klik met de rechtermuisknop op uw netwerkverbinding en selecteer 'Eigenschappen'.",
+            "Scroll in het tabblad 'Netwerk' naar beneden naar 'Internet Protocol versie 4 (TCP/IPv4)' en klik op 'Eigenschappen'.",
+            "Klik op 'Geavanceerd' en ga naar het tabblad 'WINS'.",
+            "Selecteer onder 'NetBIOS-instelling' de optie 'NetBIOS over TCP/IP uitschakelen'.",
+            "Klik op 'OK' om de wijzigingen op te slaan."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
     "997": {
         "Name": "Extensies geïnstalleerd in Google Chrome",
         "Type": "Privacy",
