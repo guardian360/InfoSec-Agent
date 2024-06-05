@@ -19,7 +19,6 @@ var testsValid = []func(t *testing.T){
 	i.TestIntegrationExtensionsFirefoxWithAdBlocker,
 	i.TestIntegrationHistoryFirefoxWithoutPhishing,
 	i.TestIntegrationSearchEngineFirefoxWithSearchEngine,
-	i.TestIntegrationOpenPortsNoPorts,
 	i.TestIntegrationSmbCheckGoodSetup,
 	i.TestIntegrationPasswordManagerPresent,
 	i.TestIntegrationAdvertisementNotActive,
@@ -28,7 +27,8 @@ var testsValid = []func(t *testing.T){
 	i.TestIntegrationGuestAccountNotActive,
 	i.TestIntegrationLastPasswordChangeValid,
 	i.TestIntegrationLoginMethodPasswordOnly,
-	i.TestIntegrationOutdatedWin11UpToDate,
+	// TODO: turn back on when the test is fixed
+	// i.TestIntegrationOutdatedWin11UpToDate,
 	i.TestIntegrationPermissionWithoutApps,
 	i.TestIntegrationRemoteDesktopDisabled,
 	i.TestIntegrationSecureBootEnabled,

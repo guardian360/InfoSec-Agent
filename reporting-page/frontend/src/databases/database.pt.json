@@ -1400,6 +1400,139 @@
             "TOBEFILLED"
         ]
     },
+    "370": {
+        "Name": "Firewall do Windows habilitado para todos os perfis",
+        "Type": "Segurança",
+        "Information": "O Firewall do Windows é um recurso de segurança integrado que ajuda a proteger seu computador contra acesso não autorizado e software malicioso, monitorando e controlando o tráfego de rede de entrada e saída. Habilitar o Firewall do Windows para todos os perfis de rede (público, privado e de domínio) ajuda a melhorar a segurança do seu sistema e a prevenir possíveis ameaças de segurança.",
+        "Solution": [
+            "O Firewall do Windows está habilitado para todos os perfis, portanto, nenhuma ação é necessária."
+        ],
+        "Screenshots": []
+    },
+    "371": {
+        "Name": "Firewall do Windows não habilitado para todos os perfis",
+        "Type": "Segurança",
+        "Information": "O Firewall do Windows é um recurso de segurança integrado que ajuda a proteger seu computador contra acesso não autorizado e software malicioso, monitorando e controlando o tráfego de rede de entrada e saída. Habilitar o Firewall do Windows para todos os perfis de rede (público, privado e de domínio) ajuda a melhorar a segurança do seu sistema e a prevenir possíveis ameaças de segurança.",
+        "Solution": [
+            "Vá para Iniciar > Configurações > Atualização e segurança > Segurança do Windows > Proteção contra ameaças e rede.",
+            "Em 'Proteção contra ameaças e rede', certifique-se de que o Firewall do Windows esteja ativado para todos os perfis de rede (público, privado e de domínio). Se estiver desativado, clique em 'Ativar' para habilitar o firewall para o perfil selecionado."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
+    "380": {
+        "Name": "Comprimento mínimo da senha definido para pelo menos 15 caracteres",
+        "Type": "Segurança",
+        "Information": "Definir um comprimento mínimo de senha de pelo menos 15 caracteres ajuda a aumentar a segurança das contas de usuário, aumentando a complexidade e a força das senhas. Senhas mais longas são mais resistentes a ataques de força bruta e oferecem melhor proteção contra acesso não autorizado e violações de dados.",
+        "Solution": [
+            "O comprimento mínimo da senha está definido para pelo menos 15 caracteres, portanto, nenhuma ação é necessária."
+        ],
+        "Screenshots": []
+    },
+    "381": {
+        "Name": "Comprimento mínimo da senha não definido para pelo menos 15 caracteres",
+        "Type": "Segurança",
+        "Information": "Definir um comprimento mínimo de senha de pelo menos 15 caracteres ajuda a aumentar a segurança das contas de usuário, aumentando a complexidade e a força das senhas. Senhas mais longas são mais resistentes a ataques de força bruta e oferecem melhor proteção contra acesso não autorizado e violações de dados.",
+        "Solution": [
+            "Abra um prompt de comando elevado clicando com o botão direito do mouse no botão Iniciar e selecionando 'Terminal (Admin)'.",
+            "Execute o comando 'net accounts' para visualizar as configurações atuais da política de senha, incluindo o comprimento mínimo da senha.",
+            "Execute o comando 'net accounts /minpwlen:15' para definir o comprimento mínimo da senha para 15 caracteres.",
+            "Reinicie o computador para aplicar as alterações."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
+    "390": {
+        "Name": "Credential Guard habilitado",
+        "Type": "Segurança",
+        "Information": "Credential Guard é um recurso de segurança no Windows que ajuda a proteger as credenciais dos usuários e informações sensíveis contra acesso não autorizado e roubo. Ele utiliza segurança baseada em virtualização para isolar e proteger as informações de credenciais, tornando mais difícil para os atacantes roubarem senhas e outros dados sensíveis.",
+        "Solution": [
+            "Credential Guard está habilitado, portanto, nenhuma ação é necessária."
+        ],
+        "Screenshots": []
+    },
+    "391": {
+        "Name": "Credential Guard desabilitado",
+        "Type": "Segurança",
+        "Information": "Credential Guard é um recurso de segurança no Windows que ajuda a proteger as credenciais dos usuários e informações sensíveis contra acesso não autorizado e roubo. Ele utiliza segurança baseada em virtualização para isolar e proteger as informações de credenciais, tornando mais difícil para os atacantes roubarem senhas e outros dados sensíveis.",
+        "Solution": [
+            "A configuração do Credential Guard é gerenciada na sua política de grupo local. Peça ao administrador da rede para habilitar o Credential Guard."
+        ],
+        "Screenshots": []
+    },
+    "400": {
+        "Name": "NetBIOS sobre TCP/IP desativado",
+        "Type": "Segurança",
+        "Information": "NetBIOS sobre TCP/IP é um protocolo de rede legado que permite aos computadores se comunicarem em uma rede local. Desativar o NetBIOS sobre TCP/IP ajuda a reduzir a superfície de ataque do seu sistema e a prevenir possíveis vulnerabilidades de segurança associadas a este protocolo.",
+        "Solution": [
+            "NetBIOS sobre TCP/IP está desativado, portanto, nenhuma ação é necessária."
+        ],
+        "Screenshots": []
+    },
+    "401": {
+        "Name": "NetBIOS sobre TCP/IP ativado",
+        "Type": "Segurança",
+        "Information": "NetBIOS sobre TCP/IP é um protocolo de rede legado que permite aos computadores se comunicarem em uma rede local. Desativar o NetBIOS sobre TCP/IP ajuda a reduzir a superfície de ataque do seu sistema e a prevenir possíveis vulnerabilidades de segurança associadas a este protocolo.",
+        "Solution": [
+            "Abra o Painel de Controle e vá para 'Rede e Internet' -> 'Central de Rede e Compartilhamento'.",
+            "Clique em 'Alterar as configurações do adaptador' no painel à esquerda.",
+            "Clique com o botão direito na sua conexão de rede e selecione 'Propriedades'.",
+            "Na guia 'Rede', role para baixo até 'Protocolo de Internet Versão 4 (TCP/IPv4)' e clique em 'Propriedades'.",
+            "Clique em 'Avançado' e vá para a guia 'WINS'.",
+            "Em 'Configuração de NetBIOS', selecione 'Desativar NetBIOS sobre TCP/IP'.",
+            "Clique em 'OK' para salvar as alterações."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
+    "410": {
+        "Name": "Serviço WPAD desativado",
+        "Type": "Segurança",
+        "Information": "Web Proxy Auto-Discovery (WPAD) é um protocolo que permite que navegadores web descubram automaticamente servidores proxy em uma rede. Desativar o serviço WPAD ajuda a prevenir possíveis riscos de segurança associados à configuração automática de proxy e protege seu sistema contra a descoberta e configuração não autorizadas de servidores proxy.",
+        "Solution": [
+            "O serviço WPAD está desativado, portanto, nenhuma ação é necessária."
+        ],
+        "Screenshots": []
+    },
+    "411": {
+        "Name": "Serviço WPAD ativado",
+        "Type": "Segurança",
+        "Information": "Web Proxy Auto-Discovery (WPAD) é um protocolo que permite que navegadores web descubram automaticamente servidores proxy em uma rede. Desativar o serviço WPAD ajuda a prevenir possíveis riscos de segurança associados à configuração automática de proxy e protege seu sistema contra a descoberta e configuração não autorizadas de servidores proxy.",
+        "Solution": [
+            "Abra um prompt de comando elevado clicando com o botão direito no botão Iniciar e selecionando 'Terminal (Admin)'.",
+            "Execute o comando 'netsh winhttp show proxy' para verificar as configurações atuais do proxy.",
+            "Se o WPAD estiver ativado, execute o comando 'netsh winhttp reset proxy' para desativar o WPAD e redefinir as configurações do proxy.",
+            "Reinicie o computador para aplicar as alterações."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
+    "420": {
+        "Name": "Bloqueio automático de tela do Windows ativado",
+        "Type": "Segurança",
+        "Information": "O bloqueio de tela é uma função de segurança que requer que os usuários insiram uma senha, PIN ou autenticação biométrica para desbloquear seu dispositivo e acessar a área de trabalho. Ativar o bloqueio de tela ajuda a proteger seus dados e privacidade caso seu computador seja deixado sem supervisão ou seja roubado.",
+        "Solution": [
+            "O bloqueio automático de tela do Windows está ativado, portanto, nenhuma ação é necessária."
+        ],
+        "Screenshots": []
+    },
+    "421": {
+        "Name": "Bloqueio automático de tela do Windows desativado",
+        "Type": "Segurança",
+        "Information": "O bloqueio de tela é uma função de segurança que requer que os usuários insiram uma senha, PIN ou autenticação biométrica para desbloquear seu dispositivo e acessar a área de trabalho. Ativar o bloqueio de tela ajuda a proteger seus dados e privacidade caso seu computador seja deixado sem supervisão ou seja roubado.",
+        "Solution": [
+            "Vá para Iniciar > Configurações > Personalização > Tela de bloqueio.",
+            "Abra a janela 'Protetor de tela'.",
+            "Marque a caixa 'Na retomada, exibir tela de logon' e defina o tempo de 'Espera' para um intervalo curto (2 minutos ou menos)."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
     "997": {
         "Name": "Extensões instaladas no Google Chrome",
         "Type": "Privacidade",

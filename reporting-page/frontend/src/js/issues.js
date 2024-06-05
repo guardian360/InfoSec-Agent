@@ -361,7 +361,7 @@ export function changeTable() {
  * preferred language as an integer. The language is represented by the
  * following integers:
  * 0 - German
- * 1 - English (GB)
+ * 1 - English (UK)
  * 2 - English (US)
  * 3 - Spanish
  * 4 - French
