@@ -33,11 +33,4 @@ Should later on be able to be changed by user, with help of js
   --text-navigation: hsl(var(--hue-complement) 5% 30%);  /* left side navigation text */
   --text-settings-hover: #646464;                     /* hover over settings text color */
   --text-left-nav: #e7e7e7;                           /* text color left navigation */
-
-  /* colors for the different risks */
-  /* --high-risk-color: #e06666;
-  --medium-risk-color: #f6b26b;
-  --low-risk-color: #ffd966;
-  --no-risk-color: #93c47d;
-  --info-color: #80d8db; */
 }
