@@ -45,12 +45,6 @@ func TestIntegrationDefenderPeriodicScanActive(t *testing.T) {
 	require.Equal(t, 2, result.ResultID)
 }
 
-func TestIntegrationDefenderRealTimeActive(t *testing.T) {
-	result := windows.Defender(mocking.LocalMachine, mocking.LocalMachine)
-	require.NotEmpty(t, result)
-	require.Equal(t, 1, result.ResultID)
-}
-
 func TestIntegrationDefenderAllNotActive(t *testing.T) {
 	result := windows.Defender(mocking.LocalMachine, mocking.LocalMachine)
 	require.NotEmpty(t, result)

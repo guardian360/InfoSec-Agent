@@ -110,7 +110,7 @@ describe('database functions', function() {
   it('calling scanTest again fill sessionstorage with additional data', async function() {
     // Arrange
     const database = await import('../src/js/database.js');
-
+    sessionStorage.setItem('isScanning', 'false');
     // Act
     await database.scanTest(false);
     const rc = JSON.parse(sessionStorage.getItem('RiskCounters'));
