@@ -10,13 +10,13 @@ import (
 )
 
 func TestIntegrationAdvertisementActive(t *testing.T) {
-	result := windows.Advertisement(mocking.LocalMachine)
+	result := windows.Advertisement(mocking.CurrentUser)
 	require.NotEmpty(t, result)
 	require.Equal(t, 1, result.ResultID)
 }
 
 func TestIntegrationAdvertisementNotActive(t *testing.T) {
-	result := windows.Advertisement(mocking.LocalMachine)
+	result := windows.Advertisement(mocking.CurrentUser)
 	require.NotEmpty(t, result)
 	require.Equal(t, 0, result.ResultID)
 }
