@@ -143,7 +143,8 @@ var windowsChecks = []func() checks.Check{
 	func() checks.Check { return windows.FirewallEnabled(executor) },
 	func() checks.Check { return windows.PasswordLength(executor) },
 	func() checks.Check { return windows.CredentialGuardRunning(executor) },
-	func() checks.Check { return windows.NetBIOSEnabled(executor) },
+	func() checks.Check { return network.NetBIOSEnabled(executor) },
+	func() checks.Check { return network.WPADEnabled(executor) },
 }
 
 // DirectoryExists checks if a directory exists at the specified path.
