@@ -10,7 +10,7 @@ var testsNotPresent = []func(t *testing.T){
 	// TODO: turn back on when the test is fixed
 	// i.TestIntegrationExtensionsChromiumNotInstalled,
 	// TODO: turn back on when the test is fixed
-	//i.TestIntegrationHistoryChromiumNotInstalled,
+	// i.TestIntegrationHistoryChromiumNotInstalled,
 	// TODO: turn back on when the test is fixed
 	// i.TestIntegrationSearchEngineChromiumNotInstalled,
 	i.TestIntegrationSearchEngineFirefoxNotInstalled,
