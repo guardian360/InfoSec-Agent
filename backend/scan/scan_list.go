@@ -89,7 +89,9 @@ var mozillaFirefoxChecks = []func() checks.Check{
 	func() checks.Check { return firefox.CookiesFirefox(profileFinder, copyFileGetter, queryDBGetter) },
 	func() checks.Check { c, _ := firefox.ExtensionFirefox(profileFinder); return c },
 	func() checks.Check { _, c := firefox.ExtensionFirefox(profileFinder); return c },
-	func() checks.Check { return firefox.HistoryFirefox(profileFinder, browsers.RealPhishingDomainGetter{}) },
+	func() checks.Check {
+		return firefox.HistoryFirefox(profileFinder, browsers.RealPhishingDomainGetter{}, firefox.RealQueryDatabaseGetter{}, firefox.RealProcessQueryResultsGetter{}, firefox.RealCopyDBGetter{})
+	},
 	func() checks.Check { return firefox.SearchEngineFirefox(profileFinder, false, nil, nil) },
 }
 
@@ -110,6 +112,8 @@ var devicesChecks = []func() checks.Check{
 var networkChecks = []func() checks.Check{
 	func() checks.Check { return network.OpenPorts(executor, executor) },
 	func() checks.Check { return network.SmbCheck(executor) },
+	func() checks.Check { return network.NetBIOSEnabled(executor) },
+	func() checks.Check { return network.WPADEnabled(executor) },
 }
 
 // programsChecks contains all security/privacy checks that are specific to installed programs.
@@ -119,7 +123,7 @@ var programsChecks = []func() checks.Check{
 
 // windowsChecks contains all security/privacy checks that are specific to Windows (registry) settings.
 var windowsChecks = []func() checks.Check{
-	func() checks.Check { return windows.Advertisement(mocking.LocalMachine) },
+	func() checks.Check { return windows.Advertisement(mocking.CurrentUser) },
 	func() checks.Check { return windows.AllowRemoteRPC(mocking.LocalMachine) },
 	func() checks.Check { return windows.AutomaticLogin(mocking.LocalMachine) },
 	func() checks.Check { return windows.Defender(mocking.LocalMachine, mocking.LocalMachine) },
@@ -143,7 +147,7 @@ var windowsChecks = []func() checks.Check{
 	func() checks.Check { return windows.FirewallEnabled(executor) },
 	func() checks.Check { return windows.PasswordLength(executor) },
 	func() checks.Check { return windows.CredentialGuardRunning(executor) },
-	func() checks.Check { return windows.NetBIOSEnabled(executor) },
+	func() checks.Check { return windows.ScreenLockEnabled(mocking.CurrentUser) },
 }
 
 // DirectoryExists checks if a directory exists at the specified path.
