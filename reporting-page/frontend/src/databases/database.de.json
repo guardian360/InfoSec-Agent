@@ -1488,6 +1488,28 @@
             "TOBEFILLED"
         ]
     },
+    "410": {
+        "Name": "Automatische Bildschirmsperre von Windows aktiviert",
+        "Type": "Sicherheit",
+        "Information": "Die Bildschirmsperre ist eine Sicherheitsfunktion, die Benutzer dazu zwingt, ein Passwort, eine PIN oder eine biometrische Authentifizierung einzugeben, um ihr Gerät zu entsperren und auf den Desktop zuzugreifen. Durch Aktivieren der Bildschirmsperre wird Ihre Daten und Privatsphäre geschützt, falls Ihr Computer unbeaufsichtigt gelassen oder gestohlen wird.",
+        "Solution": [
+            "Die automatische Bildschirmsperre von Windows ist aktiviert, daher ist keine Aktion erforderlich."
+        ],
+        "Screenshots": []
+    },
+    "411": {
+        "Name": "Automatische Bildschirmsperre von Windows deaktiviert",
+        "Type": "Sicherheit",
+        "Information": "Die Bildschirmsperre ist eine Sicherheitsfunktion, die Benutzer dazu zwingt, ein Passwort, eine PIN oder eine biometrische Authentifizierung einzugeben, um ihr Gerät zu entsperren und auf den Desktop zuzugreifen. Durch Aktivieren der Bildschirmsperre wird Ihre Daten und Privatsphäre geschützt, falls Ihr Computer unbeaufsichtigt gelassen oder gestohlen wird.",
+        "Solution": [
+            "Gehen Sie zu Start > Einstellungen > Personalisierung > Sperrbildschirm.",
+            "Öffnen Sie das Fenster 'Bildschirmschoner'.",
+            "Aktivieren Sie das Kontrollkästchen 'Beim Fortsetzen Bildschirmanmeldung anzeigen' und stellen Sie die 'Wartezeit' auf einen kurzen Intervall (2 Minuten oder weniger) ein."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
     "997": {
         "Name": "Installierte Erweiterungen in Google Chrome",
         "Type": "Privatsphäre",
