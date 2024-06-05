@@ -1419,6 +1419,75 @@
             "TOBEFILLED"
         ]
     },
+    "380": {
+        "Name": "Minimum wachtwoordlengte ingesteld op minstens 15 tekens",
+        "Type": "Beveiliging",
+        "Information": "Door een minimum wachtwoordlengte van minstens 15 tekens in te stellen, wordt de beveiliging van gebruikersaccounts verbeterd door de complexiteit en sterkte van wachtwoorden te vergroten. Langere wachtwoorden zijn beter bestand tegen brute-force aanvallen en bieden betere bescherming tegen ongeoorloofde toegang en datalekken.",
+        "Solution": [
+            "De minimum wachtwoordlengte is ingesteld op minstens 15 tekens, dus er is geen actie vereist."
+        ],
+        "Screenshots": []
+    },
+    "381": {
+        "Name": "Minimum wachtwoordlengte niet ingesteld op minstens 15 tekens",
+        "Type": "Beveiliging",
+        "Information": "Door een minimum wachtwoordlengte van minstens 15 tekens in te stellen, wordt de beveiliging van gebruikersaccounts verbeterd door de complexiteit en sterkte van wachtwoorden te vergroten. Langere wachtwoorden zijn beter bestand tegen brute-force aanvallen en bieden betere bescherming tegen ongeoorloofde toegang en datalekken.",
+        "Solution": [
+            "Open een verhoogde opdrachtprompt door met de rechtermuisknop op de Start-knop te klikken en 'Terminal (Admin)' te selecteren.",
+            "Voer het commando 'net accounts' uit om de huidige wachtwoordbeleidsinstellingen, inclusief de minimum wachtwoordlengte, te bekijken.",
+            "Voer het commando 'net accounts /minpwlen:15' uit om de minimum wachtwoordlengte in te stellen op 15 tekens.",
+            "Herstart uw computer om de wijzigingen toe te passen."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
+    "390": {
+        "Name": "Credential Guard ingeschakeld",
+        "Type": "Beveiliging",
+        "Information": "Credential Guard is een beveiligingsfunctie in Windows die helpt om gebruikersreferenties en gevoelige informatie te beschermen tegen ongeautoriseerde toegang en diefstal. Het maakt gebruik van virtualisatie-gebaseerde beveiliging om referentie-informatie te isoleren en te beschermen, waardoor het voor aanvallers moeilijker wordt om wachtwoorden en andere gevoelige gegevens te stelen.",
+        "Solution": [
+            "Credential Guard is ingeschakeld, dus er is geen actie nodig."
+        ],
+        "Screenshots": []
+    },
+    "391": {
+        "Name": "Credential Guard uitgeschakeld",
+        "Type": "Beveiliging",
+        "Information": "Credential Guard is een beveiligingsfunctie in Windows die helpt om gebruikersreferenties en gevoelige informatie te beschermen tegen ongeautoriseerde toegang en diefstal. Het maakt gebruik van virtualisatie-gebaseerde beveiliging om referentie-informatie te isoleren en te beschermen, waardoor het voor aanvallers moeilijker wordt om wachtwoorden en andere gevoelige gegevens te stelen.",
+        "Solution": [
+            "De instelling van Credential Guard wordt beheerd in uw lokale groepsbeleid. Vraag uw netwerkbeheerder om Credential Guard in te schakelen."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
+    "400": {
+        "Name": "NetBIOS over TCP/IP uitgeschakeld",
+        "Type": "Beveiliging",
+        "Information": "NetBIOS over TCP/IP is een verouderd netwerkprotocol waarmee computers in een lokaal netwerk kunnen communiceren. Het uitschakelen van NetBIOS over TCP/IP helpt het aanvalsoppervlak van uw systeem te verkleinen en mogelijke beveiligingsproblemen in verband met dit protocol te voorkomen.",
+        "Solution": [
+            "NetBIOS over TCP/IP is uitgeschakeld, dus er is geen actie nodig."
+        ],
+        "Screenshots": []
+    },
+    "401": {
+        "Name": "NetBIOS over TCP/IP ingeschakeld",
+        "Type": "Beveiliging",
+        "Information": "NetBIOS over TCP/IP is een verouderd netwerkprotocol waarmee computers in een lokaal netwerk kunnen communiceren. Het uitschakelen van NetBIOS over TCP/IP helpt het aanvalsoppervlak van uw systeem te verkleinen en mogelijke beveiligingsproblemen in verband met dit protocol te voorkomen.",
+        "Solution": [
+            "Open het Configuratiescherm en ga naar 'Netwerk en internet' -> 'Netwerkcentrum'.",
+            "Klik in het linkerpaneel op 'Adapterinstellingen wijzigen'.",
+            "Klik met de rechtermuisknop op uw netwerkverbinding en selecteer 'Eigenschappen'.",
+            "Scroll in het tabblad 'Netwerk' naar beneden naar 'Internet Protocol versie 4 (TCP/IPv4)' en klik op 'Eigenschappen'.",
+            "Klik op 'Geavanceerd' en ga naar het tabblad 'WINS'.",
+            "Selecteer onder 'NetBIOS-instelling' de optie 'NetBIOS over TCP/IP uitschakelen'.",
+            "Klik op 'OK' om de wijzigingen op te slaan."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
     "997": {
         "Name": "Extensies geïnstalleerd in Google Chrome",
         "Type": "Privacy",

@@ -1419,6 +1419,75 @@
             "TOBEFILLED"
         ]
     },
+    "380": {
+        "Name": "Longueur minimale du mot de passe définie à au moins 15 caractères",
+        "Type": "Sécurité",
+        "Information": "Le fait de définir une longueur minimale de mot de passe d'au moins 15 caractères contribue à renforcer la sécurité des comptes utilisateur en augmentant la complexité et la force des mots de passe. Les mots de passe plus longs sont plus résistants aux attaques par force brute et offrent une meilleure protection contre les accès non autorisés et les violations de données.",
+        "Solution": [
+            "La longueur minimale du mot de passe est définie à au moins 15 caractères, donc aucune action n'est nécessaire."
+        ],
+        "Screenshots": []
+    },
+    "381": {
+        "Name": "Longueur minimale du mot de passe non définie à au moins 15 caractères",
+        "Type": "Sécurité",
+        "Information": "Le fait de définir une longueur minimale de mot de passe d'au moins 15 caractères contribue à renforcer la sécurité des comptes utilisateur en augmentant la complexité et la force des mots de passe. Les mots de passe plus longs sont plus résistants aux attaques par force brute et offrent une meilleure protection contre les accès non autorisés et les violations de données.",
+        "Solution": [
+            "Ouvrez une invite de commandes avec élévation de privilèges en cliquant avec le bouton droit sur le bouton Démarrer et en sélectionnant 'Terminal (Admin)'.",
+            "Exécutez la commande 'net accounts' pour afficher les paramètres de politique de mot de passe actuels, y compris la longueur minimale du mot de passe.",
+            "Exécutez la commande 'net accounts /minpwlen:15' pour définir la longueur minimale du mot de passe à 15 caractères.",
+            "Redémarrez votre ordinateur pour appliquer les modifications."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
+    "390": {
+        "Name": "Credential Guard activé",
+        "Type": "Sécurité",
+        "Information": "Credential Guard est une fonctionnalité de sécurité dans Windows qui aide à protéger les informations d'identification des utilisateurs et les informations sensibles contre l'accès non autorisé et le vol. Il utilise la sécurité basée sur la virtualisation pour isoler et protéger les informations d'identification, rendant plus difficile pour les attaquants de voler des mots de passe et d'autres données sensibles.",
+        "Solution": [
+            "Credential Guard est activé, donc aucune action n'est nécessaire."
+        ],
+        "Screenshots": []
+    },
+    "391": {
+        "Name": "Credential Guard désactivé",
+        "Type": "Sécurité",
+        "Information": "Credential Guard est une fonctionnalité de sécurité dans Windows qui aide à protéger les informations d'identification des utilisateurs et les informations sensibles contre l'accès non autorisé et le vol. Il utilise la sécurité basée sur la virtualisation pour isoler et protéger les informations d'identification, rendant plus difficile pour les attaquants de voler des mots de passe et d'autres données sensibles.",
+        "Solution": [
+            "La configuration de Credential Guard est gérée dans votre stratégie de groupe locale. Demandez à votre administrateur réseau d'activer Credential Guard."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
+    "400": {
+        "Name": "NetBIOS sur TCP/IP désactivé",
+        "Type": "Sécurité",
+        "Information": "NetBIOS sur TCP/IP est un protocole réseau hérité qui permet aux ordinateurs de communiquer sur un réseau local. Désactiver NetBIOS sur TCP/IP aide à réduire la surface d'attaque de votre système et à prévenir les vulnérabilités de sécurité potentielles associées à ce protocole.",
+        "Solution": [
+            "NetBIOS sur TCP/IP est désactivé, il n'y a donc aucune action à entreprendre."
+        ],
+        "Screenshots": []
+    },
+    "401": {
+        "Name": "NetBIOS sur TCP/IP activé",
+        "Type": "Sécurité",
+        "Information": "NetBIOS sur TCP/IP est un protocole réseau hérité qui permet aux ordinateurs de communiquer sur un réseau local. Désactiver NetBIOS sur TCP/IP aide à réduire la surface d'attaque de votre système et à prévenir les vulnérabilités de sécurité potentielles associées à ce protocole.",
+        "Solution": [
+            "Ouvrez le Panneau de configuration et allez dans 'Réseau et Internet' -> 'Centre Réseau et partage'.",
+            "Cliquez sur 'Modifier les paramètres de l'adaptateur' dans le volet de gauche.",
+            "Cliquez avec le bouton droit sur votre connexion réseau et sélectionnez 'Propriétés'.",
+            "Dans l'onglet 'Réseau', faites défiler jusqu'à 'Protocole Internet version 4 (TCP/IPv4)' et cliquez sur 'Propriétés'.",
+            "Cliquez sur 'Avancé' et allez dans l'onglet 'WINS'.",
+            "Sous 'Paramètre NetBIOS', sélectionnez 'Désactiver NetBIOS sur TCP/IP'.",
+            "Cliquez sur 'OK' pour enregistrer les modifications."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
     "997": {
         "Name": "Extensions installées dans Google Chrome",
         "Type": "Confidentialité",

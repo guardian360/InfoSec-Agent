@@ -1440,6 +1440,90 @@
             "TOBEFILLED"
         ]
     },
+    "380":{
+        "Name": "Minimum password length set to at least 15 characters",
+        "Type": "Security",
+        "Information": "Setting a minimum password length of at least 15 characters helps enhance the security of user accounts by increasing the complexity and strength of passwords. Longer passwords are more resistant to brute-force attacks and provide better protection against unauthorized access and data breaches.",
+        "Solution":
+        [
+            "The minimum password length is set to at least 15 characters, so there is no action needed."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "381":{
+        "Name": "Minimum password length not set to at least 15 characters",
+        "Type": "Security",
+        "Information": "Setting a minimum password length of at least 15 characters helps enhance the security of user accounts by increasing the complexity and strength of passwords. Longer passwords are more resistant to brute-force attacks and provide better protection against unauthorized access and data breaches.",
+        "Solution":
+        [
+            "Open an elevated command prompt by right-clicking on the Start button and selecting 'Terminal (Admin)'.",
+            "Run the command 'net accounts' to view the current password policy settings, including the minimum password length.",
+            "Run the command 'net accounts /minpwlen:15' to set the minimum password length to 15 characters.",
+            "Restart your computer to apply the changes."
+        ],
+        "Screenshots":
+        [
+            "TOBEFILLED"
+        ]
+    },
+    "390": {
+        "Name": "Credential Guard enabled",
+        "Type": "Security",
+        "Information": "Credential Guard is a security feature in Windows that helps protect user credentials and sensitive information from unauthorized access and theft. It uses virtualization-based security to isolate and protect credential information, making it more difficult for attackers to steal passwords and other sensitive data.",
+        "Solution":
+        [
+            "Credential Guard is enabled, so there is no action needed."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "391": {
+        "Name": "Credential Guard disabled",
+        "Type": "Security",
+        "Information": "Credential Guard is a security feature in Windows that helps protect user credentials and sensitive information from unauthorized access and theft. It uses virtualization-based security to isolate and protect credential information, making it more difficult for attackers to steal passwords and other sensitive data.",
+        "Solution":
+        [
+            "The setting of Credential Guard is handled in your local group policy. Ask your network administrator to enable Credential Guard."
+        ],
+        "Screenshots":
+        [
+            "TOBEFILLED"
+        ]
+    },
+    "400": {
+        "Name": "NetBIOS over TCP/IP disabled",
+        "Type": "Security",
+        "Information": "NetBIOS over TCP/IP is a legacy networking protocol that allows computers to communicate on a local network. Disabling NetBIOS over TCP/IP helps reduce the attack surface of your system and prevent potential security vulnerabilities associated with this protocol.",
+        "Solution":
+        [
+            "NetBIOS over TCP/IP is disabled, so there is no action needed."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "401": {
+        "Name": "NetBIOS over TCP/IP enabled",
+        "Type": "Security",
+        "Information": "NetBIOS over TCP/IP is a legacy networking protocol that allows computers to communicate on a local network. Disabling NetBIOS over TCP/IP helps reduce the attack surface of your system and prevent potential security vulnerabilities associated with this protocol.",
+        "Solution":
+        [
+            "Open the Control Panel and go to 'Network and Internet' -> 'Network and Sharing Center'.",
+            "Click on 'Change adapter settings' in the left pane.",
+            "Right-click on your network connection and select 'Properties'.",
+            "In the 'Networking' tab, scroll down to 'Internet Protocol Version 4 (TCP/IPv4)' and click on 'Properties'.",
+            "Click on 'Advanced' and go to the 'WINS' tab.",
+            "Under 'NetBIOS setting', select 'Disable NetBIOS over TCP/IP'.",
+            "Click 'OK' to save the changes."
+        ],
+        "Screenshots":
+        [
+            "TOBEFILLED"
+        ]
+    },
     "997": {
         "Name": "Extensions installed in Google Chrome",
         "Type": "Privacy",

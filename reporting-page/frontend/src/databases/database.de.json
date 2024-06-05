@@ -1419,6 +1419,75 @@
             "TOBEFILLED"
         ]
     },
+    "380": {
+        "Name": "Mindestpasswortlänge auf mindestens 15 Zeichen festgelegt",
+        "Type": "Sicherheit",
+        "Information": "Das Festlegen einer Mindestpasswortlänge von mindestens 15 Zeichen erhöht die Sicherheit von Benutzerkonten, indem die Komplexität und Stärke der Passwörter erhöht wird. Längere Passwörter sind widerstandsfähiger gegen Brute-Force-Angriffe und bieten besseren Schutz vor unbefugtem Zugriff und Datenverletzungen.",
+        "Solution": [
+            "Die Mindestpasswortlänge ist auf mindestens 15 Zeichen festgelegt, daher sind keine Maßnahmen erforderlich."
+        ],
+        "Screenshots": []
+    },
+    "381": {
+        "Name": "Mindestpasswortlänge nicht auf mindestens 15 Zeichen festgelegt",
+        "Type": "Sicherheit",
+        "Information": "Das Festlegen einer Mindestpasswortlänge von mindestens 15 Zeichen erhöht die Sicherheit von Benutzerkonten, indem die Komplexität und Stärke der Passwörter erhöht wird. Längere Passwörter sind widerstandsfähiger gegen Brute-Force-Angriffe und bieten besseren Schutz vor unbefugtem Zugriff und Datenverletzungen.",
+        "Solution": [
+            "Öffnen Sie eine Eingabeaufforderung mit erhöhten Rechten, indem Sie mit der rechten Maustaste auf die Start-Schaltfläche klicken und 'Terminal (Admin)' auswählen.",
+            "Führen Sie den Befehl 'net accounts' aus, um die aktuellen Passwortrichtlinieneinstellungen einschließlich der Mindestpasswortlänge anzuzeigen.",
+            "Führen Sie den Befehl 'net accounts /minpwlen:15' aus, um die Mindestpasswortlänge auf 15 Zeichen festzulegen.",
+            "Starten Sie Ihren Computer neu, um die Änderungen anzuwenden."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
+    "390": {
+        "Name": "Credential Guard aktiviert",
+        "Type": "Sicherheit",
+        "Information": "Credential Guard ist eine Sicherheitsfunktion in Windows, die hilft, Benutzeranmeldeinformationen und sensible Informationen vor unbefugtem Zugriff und Diebstahl zu schützen. Es verwendet virtualisierungsbasierte Sicherheit, um Anmeldeinformationen zu isolieren und zu schützen, wodurch es für Angreifer schwieriger wird, Passwörter und andere sensible Daten zu stehlen.",
+        "Solution": [
+            "Credential Guard ist aktiviert, daher sind keine Maßnahmen erforderlich."
+        ],
+        "Screenshots": []
+    },
+    "391": {
+        "Name": "Credential Guard deaktiviert",
+        "Type": "Sicherheit",
+        "Information": "Credential Guard ist eine Sicherheitsfunktion in Windows, die hilft, Benutzeranmeldeinformationen und sensible Informationen vor unbefugtem Zugriff und Diebstahl zu schützen. Es verwendet virtualisierungsbasierte Sicherheit, um Anmeldeinformationen zu isolieren und zu schützen, wodurch es für Angreifer schwieriger wird, Passwörter und andere sensible Daten zu stehlen.",
+        "Solution": [
+            "Die Einstellung von Credential Guard wird in Ihrer lokalen Gruppenrichtlinie verwaltet. Bitten Sie Ihren Netzwerkadministrator, Credential Guard zu aktivieren."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
+    "400": {
+        "Name": "NetBIOS über TCP/IP deaktiviert",
+        "Type": "Sicherheit",
+        "Information": "NetBIOS über TCP/IP ist ein veraltetes Netzwerkprotokoll, das es Computern ermöglicht, in einem lokalen Netzwerk zu kommunizieren. Das Deaktivieren von NetBIOS über TCP/IP hilft, die Angriffsfläche Ihres Systems zu reduzieren und potenzielle Sicherheitslücken im Zusammenhang mit diesem Protokoll zu verhindern.",
+        "Solution": [
+            "NetBIOS über TCP/IP ist deaktiviert, daher ist keine Aktion erforderlich."
+        ],
+        "Screenshots": []
+    },
+    "401": {
+        "Name": "NetBIOS über TCP/IP aktiviert",
+        "Type": "Sicherheit",
+        "Information": "NetBIOS über TCP/IP ist ein veraltetes Netzwerkprotokoll, das es Computern ermöglicht, in einem lokalen Netzwerk zu kommunizieren. Das Deaktivieren von NetBIOS über TCP/IP hilft, die Angriffsfläche Ihres Systems zu reduzieren und potenzielle Sicherheitslücken im Zusammenhang mit diesem Protokoll zu verhindern.",
+        "Solution": [
+            "Öffnen Sie die Systemsteuerung und gehen Sie zu 'Netzwerk und Internet' -> 'Netzwerk- und Freigabecenter'.",
+            "Klicken Sie im linken Bereich auf 'Adaptereinstellungen ändern'.",
+            "Klicken Sie mit der rechten Maustaste auf Ihre Netzwerkverbindung und wählen Sie 'Eigenschaften'.",
+            "Scrollen Sie im Reiter 'Netzwerk' nach unten zu 'Internetprotokoll Version 4 (TCP/IPv4)' und klicken Sie auf 'Eigenschaften'.",
+            "Klicken Sie auf 'Erweitert' und gehen Sie zum Reiter 'WINS'.",
+            "Wählen Sie unter 'NetBIOS-Einstellung' die Option 'NetBIOS über TCP/IP deaktivieren'.",
+            "Klicken Sie auf 'OK', um die Änderungen zu speichern."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
     "997": {
         "Name": "Installierte Erweiterungen in Google Chrome",
         "Type": "Privatsphäre",

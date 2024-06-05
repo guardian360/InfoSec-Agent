@@ -39,4 +39,7 @@ const (
 	CookiesChromiumID
 	CookiesEdgeID
 	FirewallID
+	PasswordComplexityID
+	CredentialGuardID
+	NetBIOSID
 )
