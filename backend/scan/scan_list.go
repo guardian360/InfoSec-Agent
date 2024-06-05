@@ -89,7 +89,9 @@ var mozillaFirefoxChecks = []func() checks.Check{
 	func() checks.Check { return firefox.CookiesFirefox(profileFinder, copyFileGetter, queryDBGetter) },
 	func() checks.Check { c, _ := firefox.ExtensionFirefox(profileFinder); return c },
 	func() checks.Check { _, c := firefox.ExtensionFirefox(profileFinder); return c },
-	func() checks.Check { return firefox.HistoryFirefox(profileFinder, browsers.RealPhishingDomainGetter{}) },
+	func() checks.Check {
+		return firefox.HistoryFirefox(profileFinder, browsers.RealPhishingDomainGetter{}, firefox.RealQueryDatabaseGetter{}, firefox.RealProcessQueryResultsGetter{}, firefox.RealCopyDBGetter{})
+	},
 	func() checks.Check { return firefox.SearchEngineFirefox(profileFinder, false, nil, nil) },
 }
 
