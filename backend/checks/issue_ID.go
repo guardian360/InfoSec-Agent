@@ -41,4 +41,5 @@ const (
 	FirewallID
 	PasswordComplexityID
 	CredentialGuardID
+	NetBIOSID
 )

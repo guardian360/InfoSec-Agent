@@ -297,4 +297,8 @@ var IssueMap = map[IssueResPair]bool{
 	{39, 0}: false,
 	// Credential Guard: Credential Guard not running
 	{39, 1}: true,
+	// NetBIOS over TCP/IP: NetBIOS disabled
+	{40, 0}: false,
+	// NetBIOS over TCP/IP: NetBIOS enabled
+	{40, 1}: true,
 }
