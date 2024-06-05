@@ -16,6 +16,7 @@ export function openProgramsPage() {
     <div class="program-data">
         <div class="program-container">
         <h2 class="lang-program-table"></h2>
+        <input type="text" id="searchInput" placeholder="Search software...">
         <table class="program-table" id="program-table">
             <thead>
             <tr>
@@ -47,6 +48,11 @@ export function openProgramsPage() {
     }
 
     document.getElementById('sort-on-issue').addEventListener('click', () => sortTable(issueTableHtml, 0));
+
+    document.getElementById('searchInput').addEventListener('input', function () {
+      const query = this.value;
+      searchTable(issueTableHtml, query);
+    });
 
     const tableHeaders = [
         'lang-program-table',
@@ -82,5 +88,27 @@ export function fillProgamTable(tbody, programs) {
         `;
         tbody.appendChild(row);
     });
+}
+
+/**
+ * Filters the table based on the search query
+ *
+ * @param {HTMLTableSectionElement} tbody Table body to be filtered
+ * @param {string} query Search query
+ */
+export function searchTable(tbody, query) {
+  const rows = tbody.querySelectorAll('tr'); // Alternative to tbody.rows
+  const lowerCaseQuery = query.toLowerCase();
+
+  rows.forEach(row => {
+    const nameCell = row.cells[0]; // Assuming the name is in the first column
+    const nameText = nameCell.textContent.toLowerCase();
+
+    if (nameText.includes(lowerCaseQuery)) {
+      row.style.display = ''; // Show row
+    } else {
+      row.style.display = 'none'; // Hide row
+    }
+  });
 }
 
