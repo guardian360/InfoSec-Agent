@@ -30,15 +30,15 @@ func ScreenLockEnabled(registryKey mocking.RegistryKey) checks.Check {
 	// ScreenSaveTimeOut indicates the time in minutes before the screen saver activates
 	ssOn, _, err := key.GetStringValue("ScreenSaveActive")
 	if err != nil {
-		return checks.NewCheckErrorf(checks.ScreenLockID, "error reading ScreenSaveActive", err)
+		return checks.NewCheckResult(checks.ScreenLockID, 1)
 	}
 	ssSecure, _, err := key.GetStringValue("ScreenSaverIsSecure")
 	if err != nil {
-		return checks.NewCheckErrorf(checks.ScreenLockID, "error reading ScreenSaverIsSecure", err)
+		return checks.NewCheckResult(checks.ScreenLockID, 1)
 	}
 	ssInterval, _, err := key.GetStringValue("ScreenSaveTimeOut")
 	if err != nil {
-		return checks.NewCheckErrorf(checks.ScreenLockID, "error reading ScreenSaveTimeOut", err)
+		checks.NewCheckResult(checks.ScreenLockID, 1)
 	}
 	ssIntInterval, err := strconv.Atoi(ssInterval)
 	if err != nil {
