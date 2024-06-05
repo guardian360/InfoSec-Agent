@@ -32,7 +32,7 @@ func TestMain(m *testing.M) {
 func TestTrayFunctionality(t *testing.T) {
 
 	// Change the language to Spanish
-	tray.ChangeLanguage("Spanish")
+	tray.ChangeLanguage("Español")
 
 	// Check that the language was correctly changed to Spanish
 	require.Equal(t, 3, tray.Language)
