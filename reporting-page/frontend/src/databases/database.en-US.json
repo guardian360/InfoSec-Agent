@@ -1525,6 +1525,34 @@
         ]
     },
     "410": {
+        "Name": "WPAD service disabled",
+        "Type": "Security",
+        "Information": "Web Proxy Auto-Discovery (WPAD) is a protocol that allows web browsers to automatically discover proxy servers on a network. Disabling the WPAD service helps prevent potential security risks associated with automatic proxy configuration and protects your system from unauthorized proxy server discovery and configuration.",
+        "Solution":
+        [
+            "WPAD service is disabled, so there is no action needed."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "411": {
+        "Name": "WPAD service enabled",
+        "Type": "Security",
+        "Information": "Web Proxy Auto-Discovery (WPAD) is a protocol that allows web browsers to automatically discover proxy servers on a network. Disabling the WPAD service helps prevent potential security risks associated with automatic proxy configuration and protects your system from unauthorized proxy server discovery and configuration.",
+        "Solution":
+        [
+            "Open an elevated command prompt by right-clicking on the Start button and selecting 'Terminal (Admin)'.",
+            "Run the command 'netsh winhttp show proxy' to check the current proxy settings.",
+            "If WPAD is enabled, run the command 'netsh winhttp reset proxy' to disable WPAD and reset the proxy settings.",
+            "Restart your computer to apply the changes."
+        ],
+        "Screenshots":
+        [
+            "TOBEFILLED"
+        ]
+    },
+    "420": {
         "Name": "Windows automatic Screen Lock enabled",
         "Type": "Security",
         "Information": "Screen lock is a security feature that requires users to enter a password, PIN, or biometric authentication to unlock their device and access the desktop. Enabling screen lock helps protect your data and privacy in case your computer is left unattended or stolen.",
@@ -1536,7 +1564,7 @@
         [
         ]
     },
-    "411": {
+    "421": {
         "Name": "Windows automatic Screen Lock disabled",
         "Type": "Security",
         "Information": "Screen lock is a security feature that requires users to enter a password, PIN, or biometric authentication to unlock their device and access the desktop. Enabling screen lock helps protect your data and privacy in case your computer is left unattended or stolen.",

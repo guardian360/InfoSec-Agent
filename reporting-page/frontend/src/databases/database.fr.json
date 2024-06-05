@@ -1489,6 +1489,29 @@
         ]
     },
     "410": {
+        "Name": "Service WPAD désactivé",
+        "Type": "Sécurité",
+        "Information": "Web Proxy Auto-Discovery (WPAD) est un protocole qui permet aux navigateurs web de découvrir automatiquement des serveurs proxy sur un réseau. Désactiver le service WPAD aide à prévenir les risques de sécurité potentiels associés à la configuration automatique des proxys et protège votre système contre la découverte et la configuration non autorisées de serveurs proxy.",
+        "Solution": [
+            "Le service WPAD est désactivé, donc aucune action n'est nécessaire."
+        ],
+        "Screenshots": []
+    },
+    "411": {
+        "Name": "Service WPAD activé",
+        "Type": "Sécurité",
+        "Information": "Web Proxy Auto-Discovery (WPAD) est un protocole qui permet aux navigateurs web de découvrir automatiquement des serveurs proxy sur un réseau. Désactiver le service WPAD aide à prévenir les risques de sécurité potentiels associés à la configuration automatique des proxys et protège votre système contre la découverte et la configuration non autorisées de serveurs proxy.",
+        "Solution": [
+            "Ouvrez une invite de commandes avec élévation de privilèges en cliquant avec le bouton droit sur le bouton Démarrer et en sélectionnant 'Terminal (Admin)'.",
+            "Exécutez la commande 'netsh winhttp show proxy' pour vérifier les paramètres proxy actuels.",
+            "Si WPAD est activé, exécutez la commande 'netsh winhttp reset proxy' pour désactiver WPAD et réinitialiser les paramètres proxy.",
+            "Redémarrez votre ordinateur pour appliquer les modifications."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
+    "420": {
         "Name": "Verrouillage automatique de l'écran de Windows activé",
         "Type": "Sécurité",
         "Information": "Le verrouillage de l'écran est une fonction de sécurité qui nécessite que les utilisateurs saisissent un mot de passe, un code PIN ou une authentification biométrique pour déverrouiller leur appareil et accéder au bureau. Activer le verrouillage de l'écran aide à protéger vos données et votre vie privée en cas de laissé sans surveillance ou de vol de votre ordinateur.",
@@ -1497,7 +1520,7 @@
         ],
         "Screenshots": []
     },
-    "411": {
+    "421": {
         "Name": "Verrouillage automatique de l'écran de Windows désactivé",
         "Type": "Sécurité",
         "Information": "Le verrouillage de l'écran est une fonction de sécurité qui nécessite que les utilisateurs saisissent un mot de passe, un code PIN ou une authentification biométrique pour déverrouiller leur appareil et accéder au bureau. Activer le verrouillage de l'écran aide à protéger vos données et votre vie privée en cas de laissé sans surveillance ou de vol de votre ordinateur.",
