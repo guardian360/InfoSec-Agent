@@ -48,8 +48,7 @@ func TestScreenLockEnabled(t *testing.T) {
 			key: &mocking.MockRegistryKey{
 				SubKeys: []mocking.MockRegistryKey{
 					{KeyName: "Control Panel\\Desktop"}}},
-			want: checks.NewCheckErrorf(checks.ScreenLockID, "", nil),
-			err:  true,
+			want: checks.NewCheckResult(checks.ScreenLockID, 1),
 		},
 		{
 			name: "Error reading registry value 2",
@@ -59,8 +58,7 @@ func TestScreenLockEnabled(t *testing.T) {
 						StringValues: map[string]string{"ScreenSaveActive": "0"}, Err: nil},
 				},
 			},
-			want: checks.NewCheckErrorf(checks.ScreenLockID, "", nil),
-			err:  true,
+			want: checks.NewCheckResult(checks.ScreenLockID, 1),
 		},
 		{
 			name: "Error reading registry value 3",
@@ -70,8 +68,7 @@ func TestScreenLockEnabled(t *testing.T) {
 						StringValues: map[string]string{"ScreenSaveActive": "0", "ScreenSaverIsSecure": "0"}, Err: nil},
 				},
 			},
-			want: checks.NewCheckErrorf(checks.ScreenLockID, "", nil),
-			err:  true,
+			want: checks.NewCheckResult(checks.ScreenLockID, 1),
 		},
 		{
 			name: "Error parsing interval",
