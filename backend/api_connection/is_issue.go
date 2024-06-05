@@ -305,4 +305,8 @@ var IssueMap = map[IssueResPair]bool{
 	{41, 0}: false,
 	// WPAD: WPAD service enabled
 	{41, 1}: true,
+	// Screen Lock: Screen lock correctly enabled
+	{42, 0}: false,
+	// Screen Lock: Screen lock not correctly enabled
+	{42, 1}: true,
 }

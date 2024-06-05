@@ -1552,6 +1552,33 @@
             "TOBEFILLED"
         ]
     },
+    "420": {
+        "Name": "Windows automatic Screen Lock enabled",
+        "Type": "Security",
+        "Information": "Screen lock is a security feature that requires users to enter a password, PIN, or biometric authentication to unlock their device and access the desktop. Enabling screen lock helps protect your data and privacy in case your computer is left unattended or stolen.",
+        "Solution":
+        [
+            "Windows automatic Screen Lock is enabled, so there is no action needed."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "421": {
+        "Name": "Windows automatic Screen Lock disabled",
+        "Type": "Security",
+        "Information": "Screen lock is a security feature that requires users to enter a password, PIN, or biometric authentication to unlock their device and access the desktop. Enabling screen lock helps protect your data and privacy in case your computer is left unattended or stolen.",
+        "Solution":
+        [
+            "Go to Start > Settings > Personalization > Lock screen.",
+            "Open the 'Screen saver' window.",
+            "Check the box 'On resume, display logon screen' and set the 'Wait' time to a short interval (2 minutes or less)."
+        ],
+        "Screenshots":
+        [
+            "TOBEFILLED"
+        ]
+    },
     "997": {
         "Name": "Extensions installed in Google Chrome",
         "Type": "Privacy",
