@@ -1,9 +1,10 @@
 package windows
 
 import (
+	"strconv"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
-	"strconv"
 )
 
 // ScreenLockEnabled is a function that checks if the screen lock is enabled on the system and set to secure settings.
