@@ -110,6 +110,8 @@ var devicesChecks = []func() checks.Check{
 var networkChecks = []func() checks.Check{
 	func() checks.Check { return network.OpenPorts(executor, executor) },
 	func() checks.Check { return network.SmbCheck(executor) },
+	func() checks.Check { return network.NetBIOSEnabled(executor) },
+	func() checks.Check { return network.WPADEnabled(executor) },
 }
 
 // programsChecks contains all security/privacy checks that are specific to installed programs.
@@ -143,8 +145,6 @@ var windowsChecks = []func() checks.Check{
 	func() checks.Check { return windows.FirewallEnabled(executor) },
 	func() checks.Check { return windows.PasswordLength(executor) },
 	func() checks.Check { return windows.CredentialGuardRunning(executor) },
-	func() checks.Check { return network.NetBIOSEnabled(executor) },
-	func() checks.Check { return network.WPADEnabled(executor) },
 }
 
 // DirectoryExists checks if a directory exists at the specified path.

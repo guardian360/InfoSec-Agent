@@ -1,13 +1,21 @@
-package windows_test
+package network_test
 
 import (
 	"errors"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/windows"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/network"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 	"github.com/stretchr/testify/require"
+	"os"
 	"testing"
 )
+
+func TestMain(m *testing.M) {
+	logger.SetupTests()
+	exitCode := m.Run()
+	os.Exit(exitCode)
+}
 
 func TestNetBIOSEnabled(t *testing.T) {
 	tests := []struct {
@@ -40,7 +48,7 @@ func TestNetBIOSEnabled(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := windows.NetBIOSEnabled(tt.executor)
+			got := network.NetBIOSEnabled(tt.executor)
 			require.Equal(t, tt.want, got)
 		})
 	}
