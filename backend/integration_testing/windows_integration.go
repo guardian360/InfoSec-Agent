@@ -134,7 +134,7 @@ func TestIntegrationPermissionWithApps(t *testing.T) {
 func TestIntegrationPermissionWithoutApps(t *testing.T) {
 	result := windows.Permission(checks.MicrophoneID, "microphone", mocking.CurrentUser)
 	require.NotEmpty(t, result)
-	require.NotEmpty(t, result.Result)
+	require.Empty(t, result.Result)
 	require.Equal(t, 1, result.ResultID)
 }
 
