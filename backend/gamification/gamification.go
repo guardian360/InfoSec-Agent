@@ -119,7 +119,6 @@ func PointCalculation(gs GameState, scanResults []checks.Check, databasePath str
 // Returns:
 //   - GameState: The updated game state with the new lighthouse state.
 func LighthouseStateTransition(gs GameState) GameState {
-
 	switch {
 	case gs.Points < 10 && sufficientActivity(gs):
 		gs.LighthouseState = 5 // The best state
