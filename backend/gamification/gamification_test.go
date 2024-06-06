@@ -2,6 +2,7 @@ package gamification_test
 
 import (
 	"os"
+	"reflect"
 	"strconv"
 	"testing"
 	"time"
@@ -9,6 +10,7 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/gamification"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/usersettings"
 	"github.com/stretchr/testify/require"
 )
 
@@ -27,6 +29,44 @@ func TestMain(m *testing.M) {
 	exitCode := m.Run()
 
 	os.Exit(exitCode)
+}
+
+// TestUpdateGameState tests the UpdateGameState function for various inputs.
+//
+// Parameters:
+//   - t (*testing.T): A pointer to an instance of the testing framework, used for reporting test results.
+//
+// No return values.
+func TestUpdateGameState(t *testing.T) {
+	// Mock the user settings
+	MockLoadUserSettings := func() usersettings.UserSettings {
+		return usersettings.UserSettings{
+			Points:          10,
+			PointsHistory:   []int{5, 5},
+			TimeStamps:      []time.Time{time.Date(2024, 6, 6, 12, 0, 0, 0, time.Now().Local().Location())},
+			LighthouseState: 1,
+		}
+	}
+
+	// Mock the database path
+	MockDatabasePath := "/path/to/database"
+
+	// Mock the scan results
+	MockScanResults := []checks.Check{}
+
+	gs, err := gamification.UpdateGameState(MockScanResults, MockDatabasePath)
+	if err != nil {
+		t.Errorf("UpdateGameState returned an error: %v", err)
+	}
+	expectedGs := gamification.GameState{
+		MockLoadUserSettings().Points,
+		MockLoadUserSettings().PointsHistory,
+		MockLoadUserSettings().TimeStamps,
+		MockLoadUserSettings().LighthouseState,
+	}
+	if !reflect.DeepEqual(gs, expectedGs) {
+		t.Errorf("UpdateGameState returned incorrect game state: got %v, want %v", gs, expectedGs)
+	}
 }
 
 // TestPointCalculation tests the PointCalculation function for certain states
@@ -62,7 +102,7 @@ func TestPointCalculation(t *testing.T) {
 	}
 }
 
-// TestLighthouseStateTransition tests the LighthouseStateTransition function for various points inputs.
+// TestLighthouseStateTransition tests the LighthouseStateTransition function for various time stamps and points input.
 //
 // Parameters:
 //   - t (*testing.T): A pointer to an instance of the testing framework, used for reporting test results.
@@ -71,18 +111,20 @@ func TestPointCalculation(t *testing.T) {
 func TestLighthouseStateTransition(t *testing.T) {
 	tests := []struct {
 		points                  int
+		timestamps              []time.Time
 		expectedLighthouseState int
 	}{
-		{points: 4, expectedLighthouseState: 5},
-		{points: 13, expectedLighthouseState: 4},
-		{points: 26, expectedLighthouseState: 3},
-		{points: 35, expectedLighthouseState: 2},
-		{points: 44, expectedLighthouseState: 1},
-		{points: 70, expectedLighthouseState: 0},
+		{points: 4, timestamps: []time.Time{time.Date(2023, 6, 18, 12, 0, 0, 0, time.Now().Local().Location())}, expectedLighthouseState: 5},
+		{points: 13, timestamps: []time.Time{time.Date(2023, 5, 14, 12, 0, 0, 0, time.Now().Local().Location())}, expectedLighthouseState: 4},
+		{points: 26, timestamps: []time.Time{time.Date(2023, 2, 23, 12, 0, 0, 0, time.Now().Local().Location())}, expectedLighthouseState: 3},
+		{points: 35, timestamps: []time.Time{time.Date(2023, 6, 7, 12, 0, 0, 0, time.Now().Local().Location())}, expectedLighthouseState: 2},
+		{points: 44, timestamps: []time.Time{time.Date(2023, 1, 3, 12, 0, 0, 0, time.Now().Local().Location())}, expectedLighthouseState: 1},
+		{points: 70, timestamps: []time.Time{time.Date(2023, 11, 24, 12, 0, 0, 0, time.Now().Local().Location())}, expectedLighthouseState: 1},
+		{points: 13, timestamps: []time.Time{time.Now()}, expectedLighthouseState: 1},
 	}
 	for i, tt := range tests {
 		t.Run("Test "+strconv.Itoa(i), func(t *testing.T) {
-			gs := gamification.GameState{Points: tt.points, PointsHistory: nil, TimeStamps: nil, LighthouseState: 9}
+			gs := gamification.GameState{Points: tt.points, PointsHistory: nil, TimeStamps: tt.timestamps, LighthouseState: 9}
 			got := gamification.LighthouseStateTransition(gs)
 			require.Equal(t, tt.expectedLighthouseState, got.LighthouseState)
 		})

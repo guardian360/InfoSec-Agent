@@ -125,7 +125,7 @@ func LighthouseStateTransition(gs GameState) GameState {
 
 	switch {
 	case gs.Points < 10 && sufficientActivity(gs, requiredDuration):
-		gs.LighthouseState = 5
+		gs.LighthouseState = 5 // The best state
 	case gs.Points < 20 && sufficientActivity(gs, requiredDuration):
 		gs.LighthouseState = 4
 	case gs.Points < 30 && sufficientActivity(gs, requiredDuration):
@@ -135,7 +135,7 @@ func LighthouseStateTransition(gs GameState) GameState {
 	case gs.Points < 50 && sufficientActivity(gs, requiredDuration):
 		gs.LighthouseState = 1
 	default:
-		gs.LighthouseState = 0
+		gs.LighthouseState = 1
 	}
 	return gs
 }
@@ -152,7 +152,7 @@ func sufficientActivity(gs GameState, duration time.Duration) bool {
 	if len(gs.TimeStamps) == 0 {
 		return false
 	}
-	oldestRecord := gs.TimeStamps[0]
+	oldestRecord := gs.TimeStamps[0] // The oldest record is the first timestamp made
 
 	return time.Since(oldestRecord) > duration
 }
