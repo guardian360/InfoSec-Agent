@@ -37,8 +37,8 @@ func TestMain(m *testing.M) {
 // No return values.
 func TestUpdateGameState(t *testing.T) {
 	// Mock the following functions and variables
-	MockDatabasePath := "../../reporting-page/database.db"
-	MockScanResults := []checks.Check{
+	mockDatabasePath := "../../reporting-page/database.db"
+	mockScanResults := []checks.Check{
 		{
 			IssueID:  29,
 			ResultID: 1, // severity 2
@@ -49,7 +49,7 @@ func TestUpdateGameState(t *testing.T) {
 		},
 	}
 	t.Run("Test", func(t *testing.T) {
-		_, err := gamification.UpdateGameState(MockScanResults, MockDatabasePath)
+		_, err := gamification.UpdateGameState(mockScanResults, mockDatabasePath)
 		require.NoError(t, err)
 	})
 }
