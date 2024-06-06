@@ -2,6 +2,7 @@ package windows
 
 import (
 	"errors"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"regexp"
 	"strings"
 	"time"
@@ -26,6 +27,14 @@ func LastPasswordChange(executor mocking.CommandExecutor) checks.Check {
 	if err != nil {
 		return checks.NewCheckErrorf(checks.LastPasswordChangeID, "error retrieving username", err)
 	}
+
+	dateOutput, dateErr := executor.Execute("powershell", "(Get-Culture).DateTimeFormat.ShortDatePattern")
+	if dateErr != nil {
+		logger.Log.ErrorWithErr("Error getting date format", dateErr)
+	}
+
+	dateFormat := strings.TrimSpace(string(dateOutput))
+	logger.Log.Debug("Date format: " + string(dateFormat))
 
 	output, err := executor.Execute("net", "user", username)
 	if err != nil {
