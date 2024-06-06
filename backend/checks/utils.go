@@ -68,13 +68,32 @@ func FindEntries(entries []string, key mocking.RegistryKey) []string {
 
 		// Check the binary values to make sure we only return the programs that are ENABLED on startup
 		// This is because the registry lists all programs that are related to the start-up,
-		// including those that are disabled
-		if val[4] == 0 && val[5] == 0 && val[6] == 0 {
+		// including those that are disabled.
+		// Start up programs that are enabled have a binary signature of non-zero at index 0 and zero at the rest of the indices.
+		if val[0] == 0 {
+			continue
+		}
+		if CheckAllZero(val[1:]) {
 			elements = append(elements, element)
 		}
 	}
-
 	return elements
+}
+
+// CheckAllZero is a helper function that checks if all elements in a byte slice are zero.
+//
+// Parameters:
+//   - entries: A byte slice representing the elements to be checked.
+//
+// Returns:
+//   - A boolean value indicating whether all elements in the byte slice are zero. If all elements are zero, the function returns true; otherwise, it returns false.
+func CheckAllZero(entries []byte) bool {
+	for _, entry := range entries {
+		if entry != 0 {
+			return false
+		}
+	}
+	return true
 }
 
 // CheckKey retrieves the value of a specified element within a given registry key.
