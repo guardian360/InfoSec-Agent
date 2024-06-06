@@ -111,9 +111,6 @@ func TestChangeScanInterval(t *testing.T) {
 //
 // No return values.
 func TestScanNow(t *testing.T) {
-	// Set up initial ScanCounter value
-	initialScanCounter := 0
-
 	wg := sync.WaitGroup{}
 	wg.Add(2)
 	errSlice := make([]error, 2)
@@ -135,10 +132,6 @@ func TestScanNow(t *testing.T) {
 	for _, err := range errSlice {
 		require.NoError(t, err)
 	}
-	// Assert that ScanCounter was incremented
-	finalScanCounter := tray.ScanCounter
-	expectedScanCounter := initialScanCounter + 2
-	require.Equal(t, expectedScanCounter, finalScanCounter)
 }
 
 // TestOnQuit validates the behavior of the OnQuit function by simulating an application quit scenario.

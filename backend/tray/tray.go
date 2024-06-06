@@ -27,8 +27,6 @@ import (
 	"time"
 )
 
-var ScanCounter int
-
 // Language is used to represent the index of the currently selected language.
 // The language indices are as follows:
 //
@@ -121,7 +119,6 @@ func OnReady() {
 	sigc := make(chan os.Signal, 1)
 	signal.Notify(sigc, syscall.SIGTERM, syscall.SIGINT)
 
-	ScanCounter = 0
 	ticker := time.NewTicker(30 * time.Minute)
 
 	// Iterate over each menu option/signal
@@ -344,6 +341,7 @@ func ScanNow(dialogPresent bool) ([]checks.Check, error) {
 	// might be useful in the future
 	ScanCounter++
 	logger.Log.Info("Scanning now. Scan:" + strconv.Itoa(ScanCounter))
+
 	var result []checks.Check
 	var err error
 	var dialog zenity.ProgressDialog
