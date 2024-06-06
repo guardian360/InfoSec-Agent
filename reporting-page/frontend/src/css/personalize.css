@@ -136,6 +136,21 @@ hr.solid {
   --text-settings-hover: #646464; 
   --text-left-nav: #e7e7e7; 
   --background-color-integration: #f4f4f4;
+  --color-border: hsl(var(--hue) 20% 85%);
+  --transparant-background: rgb(255 255 255 / 50%);
+
+  /* button */
+  --background-security-button: #946CB2;
+  --background-security-button-hover: #644878;
+  --background-privacy-button: #4E869B;
+  --background-privacy-button-hover: #427385;
+
+  /* colors for the different risks */
+  --high-risk-color: #e06666;
+  --medium-risk-color: #f6b26b;
+  --low-risk-color: #ffd966;
+  --no-risk-color: #93c47d;
+  --info-color: #80d8db;
 }
 
 /* Dark Theme */
@@ -153,4 +168,19 @@ hr.solid {
   --text-settings-hover: #798d8a;
   --text-left-nav: #d6cdcd; 
   --background-color-integration: #181818;
+  --color-border: #383636;
+  --transparant-background: rgb(50 50 50 / 50%);
+
+  /* button */
+  --background-security-button: #3d2143;
+  --background-security-button-hover: #502d58;
+  --background-privacy-button: #3d2143;
+  --background-privacy-button-hover: #502d58;
+  
+  /* colors for the different risks */
+  --high-risk-color: #922323;
+  --medium-risk-color: #af5622;
+  --low-risk-color: #c69027;
+  --no-risk-color: #245829;
+  --info-color: #103060;
 }

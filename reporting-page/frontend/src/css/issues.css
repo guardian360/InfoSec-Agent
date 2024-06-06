@@ -167,7 +167,7 @@
 /* Additional styles for better visual */
 .issue-information, .issue-solution {
   box-shadow: 0 4px 8px rgb(0 0 0 / 10%); /* Add shadow for depth */
-  border: 1px solid #dcdcdc; /* Light border for definition */
+  border: 1px solid var(--border-color); /* Light border for definition */
   margin: 20px; /* Add space around the elements */
   background-color: var(--background-color-top-nav); /* Light background color */
   border-radius: 10px; /* Rounded corners for a softer look */
