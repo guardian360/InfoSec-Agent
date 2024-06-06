@@ -154,5 +154,5 @@ func sufficientActivity(gs GameState, requiredDuration time.Duration) bool {
 	}
 	oldestRecord := gs.TimeStamps[0] // The oldest record is the first timestamp made
 
-	return time.Since(oldestRecord) > duration
+	return time.Since(oldestRecord) > requiredDuration
 }
