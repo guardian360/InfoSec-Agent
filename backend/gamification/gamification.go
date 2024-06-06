@@ -119,20 +119,17 @@ func PointCalculation(gs GameState, scanResults []checks.Check, databasePath str
 // Returns:
 //   - GameState: The updated game state with the new lighthouse state.
 func LighthouseStateTransition(gs GameState) GameState {
-	// The duration threshold of which the user has been active
-	// Note that we define active as having performed a security check more than [1 week ago]
-	requiredDuration := 7 * 24 * time.Hour
 
 	switch {
-	case gs.Points < 10 && sufficientActivity(gs, requiredDuration):
+	case gs.Points < 10 && sufficientActivity(gs):
 		gs.LighthouseState = 5 // The best state
-	case gs.Points < 20 && sufficientActivity(gs, requiredDuration):
+	case gs.Points < 20 && sufficientActivity(gs):
 		gs.LighthouseState = 4
-	case gs.Points < 30 && sufficientActivity(gs, requiredDuration):
+	case gs.Points < 30 && sufficientActivity(gs):
 		gs.LighthouseState = 3
-	case gs.Points < 40 && sufficientActivity(gs, requiredDuration):
+	case gs.Points < 40 && sufficientActivity(gs):
 		gs.LighthouseState = 2
-	case gs.Points < 50 && sufficientActivity(gs, requiredDuration):
+	case gs.Points < 50 && sufficientActivity(gs):
 		gs.LighthouseState = 1
 	default:
 		gs.LighthouseState = 1
@@ -148,7 +145,11 @@ func LighthouseStateTransition(gs GameState) GameState {
 //
 // Returns:
 //   - bool: whether the user has been active enough.
-func sufficientActivity(gs GameState, requiredDuration time.Duration) bool {
+func sufficientActivity(gs GameState) bool {
+	// The duration threshold of which the user has been active
+	// Note that we define active as having performed a security check more than [1 week ago]
+	requiredDuration := 7 * 24 * time.Hour
+
 	if len(gs.TimeStamps) == 0 {
 		return false
 	}
