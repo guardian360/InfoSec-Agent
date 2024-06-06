@@ -65,13 +65,17 @@ body {
 /* Issue Buttons */
 .issue-button {
   display: block;
-  background-color: #4682b4;
+  background-color: var(--background-security-button);
   color: var(--text-left-nav);
   text-align: center;
   padding: 15px;
   margin: 10px;
   border-radius: 5px;
   text-decoration: none;
+}
+.issue-button:hover {
+  background-color: var(--background-security-button-hover);
+  cursor: pointer;
 }
 
 .video-background {
