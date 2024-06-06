@@ -467,3 +467,11 @@ func TestHistoryFirefox_Success(t *testing.T) {
 	require.NoError(t, check.Error)
 	require.Equal(t, checks.NewCheckResult(checks.HistoryFirefoxID, 1, "phishing.com"), check)
 }
+
+func TestHistoryFirefox(t *testing.T) {
+	Profilefinder = browsers.RealProfileFinder{}
+
+	check := firefox.HistoryFirefox(Profilefinder, browsers.RealPhishingDomainGetter{}, firefox.RealQueryDatabaseGetter{}, firefox.RealProcessQueryResultsGetter{}, firefox.RealCopyDBGetter{})
+	require.Error(t, check.Error)
+	require.Equal(t, "mock error", check.Error.Error())
+}
