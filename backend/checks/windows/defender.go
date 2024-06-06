@@ -43,7 +43,7 @@ func Defender(scanKey mocking.RegistryKey, defenderKey mocking.RegistryKey) chec
 
 	// Based on the values of these keys, we can determine if Windows Defender and the periodic scan
 	// are enabled or disabled
-	if err != nil {
+	if err != nil || realTimeDefender == 0 {
 		if antiVirusPeriodic == 1 {
 			return checks.NewCheckResult(checks.WindowsDefenderID, 1)
 		}

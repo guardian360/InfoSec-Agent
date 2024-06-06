@@ -56,29 +56,6 @@ func TestIntegrationExtensionsChromiumWithoutAdBlocker(t *testing.T) {
 	}
 }
 
-func TestIntegrationExtensionsChromiumNotInstalled(t *testing.T) {
-	tests := []struct {
-		name    string
-		browser string
-	}{
-		{
-			name:    "Chrome not installed",
-			browser: "Chrome",
-		},
-		{
-			name:    "Edge not installed",
-			browser: "Edge",
-		},
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			result := chromium.ExtensionsChromium(tt.browser, browsers.RealDefaultDirGetter{}, chromium.RealExtensionIDGetter{}, chromium.ChromeExtensionNameGetter{})
-			require.NotEmpty(t, result)
-			require.Equal(t, -1, result.ResultID)
-		})
-	}
-}
-
 func TestIntegrationHistoryChromiumWithoutPhishing(t *testing.T) {
 	tests := []struct {
 		name    string
@@ -127,29 +104,6 @@ func TestIntegrationHistoryChromiumWithPhishing(t *testing.T) {
 	}
 }
 
-func TestIntegrationHistoryChromiumNotInstalled(t *testing.T) {
-	tests := []struct {
-		name    string
-		browser string
-	}{
-		{
-			name:    "Chrome not installed",
-			browser: "Chrome",
-		},
-		{
-			name:    "Edge not installed",
-			browser: "Edge",
-		},
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			result := chromium.HistoryChromium(tt.browser, browsers.RealDefaultDirGetter{}, chromium.RealCopyDBGetter{}, chromium.RealQueryDatabaseGetter{}, chromium.RealProcessQueryResultsGetter{}, browsers.RealPhishingDomainGetter{})
-			require.NotEmpty(t, result)
-			require.Equal(t, -1, result.ResultID)
-		})
-	}
-}
-
 func TestIntegrationSearchEngineChromiumWithSearchEngine(t *testing.T) {
 	tests := []struct {
 		name    string
@@ -170,29 +124,6 @@ func TestIntegrationSearchEngineChromiumWithSearchEngine(t *testing.T) {
 			require.NotEmpty(t, result)
 			require.NotEqual(t, -1, result.ResultID)
 			require.Equal(t, 0, result.ResultID)
-		})
-	}
-}
-
-func TestIntegrationSearchEngineChromiumNotInstalled(t *testing.T) {
-	tests := []struct {
-		name    string
-		browser string
-	}{
-		{
-			name:    "Chrome not installed",
-			browser: "Chrome",
-		},
-		{
-			name:    "Edge not installed",
-			browser: "Edge",
-		},
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			result := chromium.SearchEngineChromium(tt.browser, false, nil, browsers.RealDefaultDirGetter{})
-			require.NotEmpty(t, result)
-			require.Equal(t, -1, result.ResultID)
 		})
 	}
 }

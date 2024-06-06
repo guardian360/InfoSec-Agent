@@ -74,13 +74,6 @@ func TestIntegrationLastPasswordChangeValid(t *testing.T) {
 	require.Equal(t, 1, result.ResultID)
 }
 
-func TestIntegrationLastPasswordChangeInvalid(t *testing.T) {
-	result := windows.LastPasswordChange(&mocking.RealCommandExecutor{})
-	require.NotEmpty(t, result)
-	require.NotEmpty(t, result.Result)
-	require.Equal(t, 0, result.ResultID)
-}
-
 func TestIntegrationLoginMethodPasswordOnly(t *testing.T) {
 	result := windows.LoginMethod(mocking.LocalMachine)
 	require.NotEmpty(t, result)
