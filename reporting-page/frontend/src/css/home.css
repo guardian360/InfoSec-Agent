@@ -66,7 +66,7 @@ body {
 .issue-button {
   display: block;
   background-color: #4682b4;
-  color: white;
+  color: var(--text-left-nav);
   text-align: center;
   padding: 15px;
   margin: 10px;

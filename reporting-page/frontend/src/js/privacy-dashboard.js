@@ -139,7 +139,7 @@ export function openPrivacyDashboardPage() {
   `;
   // Set counters on the page to the right values
   let rc = JSON.parse(sessionStorage.getItem('PrivacyRiskCounters'));
-  adjustWithRiskCounters(rc, document);
+  adjustWithRiskCounters(rc, document, true);
   setMaxInterval(rc, document);
 
   // Localize the static content of the dashboard
@@ -198,7 +198,7 @@ export function openPrivacyDashboardPage() {
   document.getElementById('scan-now').addEventListener('click', async () => {
     await scanTest(true);
     rc = JSON.parse(sessionStorage.getItem('PrivacyRiskCounters'));
-    adjustWithRiskCounters(rc, document);
+    adjustWithRiskCounters(rc, document, true);
     setMaxInterval(rc, document);
     g.rc = rc;
     await g.changeGraph();

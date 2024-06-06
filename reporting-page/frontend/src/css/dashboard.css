@@ -141,7 +141,7 @@
   padding: 14px 16px;
   margin-top: 10px;
   background-color: var(--background-color-left-nav);
-  color: white;
+  color: var(--text-left-nav);
   font-family: inherit;
   min-width: 192px;
   border-radius: 10px;
@@ -270,6 +270,7 @@
 .security-risk-button {
   background: var(--background-security-button);
 }
+
 .privacy-risk-button {
   background: var(--background-privacy-button);
 }

@@ -146,32 +146,32 @@ describe('Risk graph', function() {
       'datasets': [{
         'label': 'Acceptable',
         'data': [3, 4, 5, 6, 4],
-        'backgroundColor': 'rgb(255, 255, 0)',
+        'backgroundColor': '',
       }, {
         'label': 'Low',
         'data': [3, 4, 5, 6, 3],
-        'backgroundColor': 'rgb(255, 0, 0)',
+        'backgroundColor': '',
       }, {
         'label': 'Medium',
         'data': [3, 4, 5, 6, 2],
-        'backgroundColor': 'rgb(0, 0, 255)',
+        'backgroundColor': '',
       }, {
         'label': 'High',
         'data': [3, 4, 5, 6, 1],
-        'backgroundColor': 'rgb(0, 255, 255)',
+        'backgroundColor': '',
       }, {
         'label': 'Info',
         'data': [3, 4, 5, 6, 5],
-        'backgroundColor': 'rgb(255, 255, 255)',
+        'backgroundColor': '',
       }],
     };
 
     const mockRiskCounters = {
-      highRiskColor: 'rgb(0, 255, 255)',
-      mediumRiskColor: 'rgb(0, 0, 255)',
-      lowRiskColor: 'rgb(255, 0, 0)',
-      noRiskColor: 'rgb(255, 255, 0)',
-      infoColor: 'rgb(255, 255, 255)',
+      highRiskColor: '',
+      mediumRiskColor: '',
+      lowRiskColor: '',
+      noRiskColor: '',
+      infoColor: '',
 
       allHighRisks: [1, 2, 3, 4, 5, 6, 1],
       allMediumRisks: [1, 2, 3, 4, 5, 6, 2],

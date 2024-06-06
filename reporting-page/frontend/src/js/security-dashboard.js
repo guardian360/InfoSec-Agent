@@ -156,7 +156,7 @@ export function openSecurityDashboardPage() {
   `;
   // Set counters on the page to the right values
   let rc = JSON.parse(sessionStorage.getItem('SecurityRiskCounters'));
-  adjustWithRiskCounters(rc, document);
+  adjustWithRiskCounters(rc, document, true);
   setMaxInterval(rc, document);
 
   // Localize the static content of the dashboard
@@ -221,7 +221,7 @@ export function openSecurityDashboardPage() {
   document.getElementById('scan-now').addEventListener('click', async () => {
     await scanTest(true);
     rc = JSON.parse(sessionStorage.getItem('SecurityRiskCounters'));
-    adjustWithRiskCounters(rc, document);
+    adjustWithRiskCounters(rc, document, true);
     setMaxInterval(rc, document);
     g.rc = rc;
     await g.changeGraph();
@@ -242,8 +242,9 @@ if (typeof document !== 'undefined') {
  *
  * @param {RiskCounters} rc Risk counters from which the data is taken
  * @param {Document} doc Document in which the counters are located
+ * @param {boolean} retrieveStyling Boolean to determine if the colors of the risk levels should be retrieved
  */
-export function adjustWithRiskCounters(rc, doc) {
+export function adjustWithRiskCounters(rc, doc, retrieveStyling) {
   // change counters according to collected data
   doc.getElementById('high-risk-counter').innerHTML = rc.lastHighRisk;
   doc.getElementById('medium-risk-counter').innerHTML = rc.lastMediumRisk;
@@ -251,11 +252,13 @@ export function adjustWithRiskCounters(rc, doc) {
   doc.getElementById('info-risk-counter').innerHTML = rc.lastInfoRisk;
   doc.getElementById('no-risk-counter').innerHTML = rc.lastNoRisk;
 
-  rc.highRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--high-risk-color');
-  rc.mediumRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--medium-risk-color');
-  rc.lowRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--low-risk-color');
-  rc.infoColor = getComputedStyle(document.documentElement).getPropertyValue('--info-color');
-  rc.noRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--no-risk-color');
+  if (retrieveStyling) {
+    rc.highRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--high-risk-color');
+    rc.mediumRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--medium-risk-color');
+    rc.lowRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--low-risk-color');
+    rc.infoColor = getComputedStyle(document.documentElement).getPropertyValue('--info-color');
+    rc.noRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--no-risk-color');
+  }
 
   const securityStatus = doc.getElementsByClassName('status-descriptor')[0];
   if (rc.lastHighRisk > 1) {

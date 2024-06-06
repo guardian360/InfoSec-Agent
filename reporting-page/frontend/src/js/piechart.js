@@ -59,7 +59,7 @@ export class PieChart {
     this.rc.lowRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--low-risk-color');
     this.rc.infoColor = getComputedStyle(document.documentElement).getPropertyValue('--info-color');
     this.rc.noRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--no-risk-color');
-    
+
     const barColors = [this.rc.noRiskColor, this.rc.lowRiskColor,
       this.rc.mediumRiskColor, this.rc.highRiskColor, this.rc.infoColor];
 
