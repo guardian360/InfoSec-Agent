@@ -36,7 +36,7 @@ func TestIntegrationScanSuccess(t *testing.T) {
 	for _, checkSlice := range scan.ChecksList {
 		totalLength += len(checkSlice)
 	}
-	require.Len(t, totalLength, len(checks))
+	require.Len(t, checks, totalLength)
 
 	// Get database data
 	data, err := database.GetData(checks, "../../reporting-page/database.db")
