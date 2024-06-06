@@ -368,8 +368,6 @@ func ScanNow(dialogPresent bool) ([]checks.Check, error) {
 		return result, err
 	}
 
-	//fmt.Print(gs)
-
 	return result, nil
 }
 

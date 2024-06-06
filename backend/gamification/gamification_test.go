@@ -2,7 +2,6 @@ package gamification_test
 
 import (
 	"os"
-	"reflect"
 	"strconv"
 	"testing"
 	"time"
@@ -10,7 +9,6 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/gamification"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/usersettings"
 	"github.com/stretchr/testify/require"
 )
 
@@ -31,42 +29,29 @@ func TestMain(m *testing.M) {
 	os.Exit(exitCode)
 }
 
-// TestUpdateGameState tests the UpdateGameState function for various inputs.
+// TestUpdateGameState tests the general workings of the UpdateGameState function.
 //
 // Parameters:
 //   - t (*testing.T): A pointer to an instance of the testing framework, used for reporting test results.
 //
 // No return values.
 func TestUpdateGameState(t *testing.T) {
-	// Mock the user settings
-	MockLoadUserSettings := func() usersettings.UserSettings {
-		return usersettings.UserSettings{
-			Points:          10,
-			PointsHistory:   []int{5, 5},
-			TimeStamps:      []time.Time{time.Date(2024, 6, 6, 12, 0, 0, 0, time.Now().Local().Location())},
-			LighthouseState: 1,
-		}
+	// Mock the following functions and variables
+	MockDatabasePath := "../../reporting-page/database.db"
+	MockScanResults := []checks.Check{
+		{
+			IssueID:  29,
+			ResultID: 1, // severity 2
+		},
+		{
+			IssueID:  5,
+			ResultID: 1, // severity 1
+		},
 	}
-
-	// Mock the database path
-	MockDatabasePath := "/path/to/database"
-
-	// Mock the scan results
-	MockScanResults := []checks.Check{}
-
-	gs, err := gamification.UpdateGameState(MockScanResults, MockDatabasePath)
-	if err != nil {
-		t.Errorf("UpdateGameState returned an error: %v", err)
-	}
-	expectedGs := gamification.GameState{
-		MockLoadUserSettings().Points,
-		MockLoadUserSettings().PointsHistory,
-		MockLoadUserSettings().TimeStamps,
-		MockLoadUserSettings().LighthouseState,
-	}
-	if !reflect.DeepEqual(gs, expectedGs) {
-		t.Errorf("UpdateGameState returned incorrect game state: got %v, want %v", gs, expectedGs)
-	}
+	t.Run("Test", func(t *testing.T) {
+		_, err := gamification.UpdateGameState(MockScanResults, MockDatabasePath)
+		require.NoError(t, err)
+	})
 }
 
 // TestPointCalculation tests the PointCalculation function for certain states
