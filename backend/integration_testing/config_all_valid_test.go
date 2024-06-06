@@ -33,8 +33,7 @@ var testsValid = []func(t *testing.T){
 	// i.TestIntegrationPermissionWithoutApps,
 	i.TestIntegrationRemoteDesktopDisabled,
 	i.TestIntegrationSecureBootEnabled,
-	// TODO: turn back on when the test is fixed
-	// i.TestIntegrationStartupWithoutApps,
+	i.TestIntegrationStartupWithoutApps,
 	i.TestIntegrationUACFullEnabled,
 	i.TestIntegrationScanNowSuccessful,
 	i.TestIntegrationScanSuccess,
