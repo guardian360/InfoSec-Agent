@@ -163,3 +163,15 @@ func TestCurrentUsernameReturnsResult(t *testing.T) {
 	require.NoError(t, err)
 	require.NotEmpty(t, username)
 }
+
+func TestCheckAllZero(t *testing.T) {
+	entries := []byte{0, 0, 0, 0}
+	result := checks.CheckAllZero(entries)
+	require.True(t, result)
+	entries = []byte{0, 0, 0, 1}
+	result = checks.CheckAllZero(entries)
+	require.False(t, result)
+	entries = []byte{}
+	result = checks.CheckAllZero(entries)
+	require.True(t, result)
+}
