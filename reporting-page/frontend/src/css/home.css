@@ -73,6 +73,7 @@ body {
   border-radius: 5px;
   text-decoration: none;
 }
+
 .issue-button:hover {
   background-color: var(--background-security-button-hover);
   cursor: pointer;
