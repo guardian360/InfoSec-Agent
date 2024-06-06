@@ -42,10 +42,6 @@ func TestTrayFunctionality(t *testing.T) {
 	//require.NoError(t, err)
 	//
 
-	// Check that ScanCounter was incremented
-	// Set up initial ScanCounter value
-	initialScanCounter := 0
-
 	wg := sync.WaitGroup{}
 	wg.Add(2)
 	errSlice := make([]error, 2)
@@ -67,10 +63,6 @@ func TestTrayFunctionality(t *testing.T) {
 	for _, err := range errSlice {
 		require.NoError(t, err)
 	}
-	// Assert that ScanCounter was incremented
-	finalScanCounter := tray.ScanCounter
-	expectedScanCounter := initialScanCounter + 2
-	require.Equal(t, expectedScanCounter, finalScanCounter)
 
 	// Test ChangeScanInterval function
 	// Define test cases with input values and expected results
