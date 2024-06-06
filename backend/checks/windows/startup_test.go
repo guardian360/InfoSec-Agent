@@ -1,6 +1,7 @@
 package windows_test
 
 import (
+	"errors"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/windows"
 	"testing"
 
@@ -38,7 +39,7 @@ func TestStartup(t *testing.T) {
 		name: "Startup programs found",
 		key1: &mocking.MockRegistryKey{SubKeys: []mocking.MockRegistryKey{{
 			KeyName:      "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\StartupApproved\\Run",
-			BinaryValues: map[string][]byte{"MockProgram": {1, 2, 3, 4, 0, 0, 0}}, Err: nil}}},
+			BinaryValues: map[string][]byte{"MockProgram": {1, 0, 0, 0, 0, 0, 0}}, Err: nil}}},
 		key2: &mocking.MockRegistryKey{SubKeys: []mocking.MockRegistryKey{{
 			KeyName:      "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\StartupApproved\\Run",
 			BinaryValues: map[string][]byte{"MockProgram2": {0, 0, 0, 0, 1, 0, 0}}, Err: nil}}},
@@ -46,13 +47,15 @@ func TestStartup(t *testing.T) {
 			KeyName:      "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\StartupApproved\\Run32",
 			BinaryValues: map[string][]byte{"MockProgram3": {0, 0, 0, 0, 0, 1, 0}}, Err: nil}}},
 		want: checks.NewCheckResult(checks.StartupID, 1, "MockProgram"),
-	}} /*,{
-		name: "Error finding startup programs",
-		key1:
-		key2:
-		key3:
-		want:
-	}}*/
+	},
+		{
+			name: "Error opening registry keys",
+			key1: &mocking.MockRegistryKey{},
+			key2: &mocking.MockRegistryKey{},
+			key3: &mocking.MockRegistryKey{},
+			want: checks.NewCheckError(checks.StartupID, errors.New("error opening registry keys")),
+		},
+	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

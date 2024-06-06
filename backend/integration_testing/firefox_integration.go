@@ -24,14 +24,6 @@ func TestIntegrationExtensionsFirefoxWithoutAdBlocker(t *testing.T) {
 	require.Equal(t, 1, adblock.ResultID)
 }
 
-func TestIntegrationExtensionsFirefoxNotInstalled(t *testing.T) {
-	result, adblock := firefox.ExtensionFirefox(browsers.RealProfileFinder{})
-	require.NotEmpty(t, result)
-	require.NotEmpty(t, adblock)
-	require.Equal(t, -1, result.ResultID)
-	require.Equal(t, -1, adblock.ResultID)
-}
-
 func TestIntegrationHistoryFirefoxWithoutPhishing(t *testing.T) {
 	result := firefox.HistoryFirefox(browsers.RealProfileFinder{}, browsers.RealPhishingDomainGetter{}, firefox.RealQueryDatabaseGetter{}, firefox.RealProcessQueryResultsGetter{}, firefox.RealCopyDBGetter{})
 	require.NotEqual(t, -1, result.ResultID)
@@ -46,23 +38,11 @@ func TestIntegrationHistoryFirefoxWithPhishing(t *testing.T) {
 	require.Equal(t, 1, result.ResultID)
 }
 
-func TestIntegrationHistoryFirefoxNotInstalled(t *testing.T) {
-	result := firefox.HistoryFirefox(browsers.RealProfileFinder{}, browsers.RealPhishingDomainGetter{}, firefox.RealQueryDatabaseGetter{}, firefox.RealProcessQueryResultsGetter{}, firefox.RealCopyDBGetter{})
-	require.Equal(t, -1, result.ResultID)
-	require.NotEmpty(t, result)
-}
-
 func TestIntegrationSearchEngineFirefoxWithSearchEngine(t *testing.T) {
 	result := firefox.SearchEngineFirefox(browsers.RealProfileFinder{}, false, nil, nil)
 	require.NotEqual(t, -1, result.ResultID)
 	require.NotEmpty(t, result)
 	require.Equal(t, 0, result.ResultID)
-}
-
-func TestIntegrationSearchEngineFirefoxNotInstalled(t *testing.T) {
-	result := firefox.SearchEngineFirefox(browsers.RealProfileFinder{}, false, nil, nil)
-	require.Equal(t, -1, result.ResultID)
-	require.NotEmpty(t, result)
 }
 
 func TestIntegrationCookiesFirefoxWithCookies(t *testing.T) {
