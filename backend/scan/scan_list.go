@@ -31,16 +31,13 @@ const browserEdge = "Edge"
 var ChecksList = func() [][]func() checks.Check {
 	var checks [][]func() checks.Check
 	// Check for the presence of Firefox, Chrome, and Edge profiles. If so, add the corresponding checks
-	firefoxDir := GeneratePath("\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles")
-	chromeDir := GeneratePath("\\AppData\\Local\\Google\\Chrome\\User Data\\Default")
-	edgeDir := GeneratePath("\\AppData\\Local\\Microsoft\\Edge\\User Data\\Default")
-	if DirectoryExists(firefoxDir) {
+	if CheckInstalled(mocking.LocalMachine, "firefox.exe") {
 		checks = append(checks, mozillaFirefoxChecks)
 	}
-	if DirectoryExists(chromeDir) {
+	if CheckInstalled(mocking.LocalMachine, "chrome.exe") {
 		checks = append(checks, googleChromeChecks)
 	}
-	if DirectoryExists(edgeDir) {
+	if CheckInstalled(mocking.LocalMachine, "msedge.exe") {
 		checks = append(checks, microsoftEdgeChecks)
 	}
 	checks = append(checks, cisChecks)
@@ -180,4 +177,17 @@ func GeneratePath(path string) string {
 		return ""
 	}
 	return homeDir + path
+}
+
+// CheckInstalled is a function that checks if a specific path is installed on the system.
+//
+// Parameters:
+//   - registryKey (mocking.RegistryKey): A mocker of a Windows registry key. This is used to simulate the behavior of the Windows registry for testing purposes.
+//   - path (string): The path to check for installation.
+//
+// Returns:
+//   - bool: A boolean value indicating whether the path is installed on the system or not.
+func CheckInstalled(registryKey mocking.RegistryKey, path string) bool {
+	_, err := checks.OpenRegistryKey(registryKey, `SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\`+path)
+	return err == nil
 }
