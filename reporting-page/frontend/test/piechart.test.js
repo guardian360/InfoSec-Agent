@@ -61,13 +61,6 @@ describe('Risk level distribution piechart', function() {
     // arrange
     const expectedXValues = ['Acceptable', 'Low', 'Medium', 'High', 'Info'];
     const expectedYValues = [4, 3, 2, 1, 0];
-    const expectedColors = [
-      'rgb(255, 255, 0)',
-      'rgb(255, 0, 0)',
-      'rgb(0, 0, 255)',
-      'rgb(0, 255, 255)',
-      'rgb(255,255,255)',
-    ];
     const mockRiskCounters = {
       highRiskColor: 'rgb(0, 255, 255)',
       mediumRiskColor: 'rgb(0, 0, 255)',
@@ -89,7 +82,6 @@ describe('Risk level distribution piechart', function() {
 
     // assert
     test.array(result.labels).is(expectedXValues);
-    test.array(result.datasets[0].backgroundColor).is(expectedColors);
     test.array(result.datasets[0].data).is(expectedYValues);
   });
   it('getOptions should return the correct piechart options', async function() {

@@ -140,7 +140,7 @@ describe('Security dashboard', function() {
     const dashboard = await import('../src/js/security-dashboard.js');
 
     // act
-    dashboard.adjustWithRiskCounters(mockRiskCounters, global.document);
+    dashboard.adjustWithRiskCounters(mockRiskCounters, global.document, false);
 
     // assert
     test.value(document.getElementById('high-risk-counter').innerHTML).isEqualTo(mockRiskCounters.lastHighRisk);
@@ -170,7 +170,7 @@ describe('Security dashboard', function() {
 
     expectedColors.forEach((element, index) => {
       // act
-      dashboard.adjustWithRiskCounters(mockRiskCounters, dom.window.document);
+      dashboard.adjustWithRiskCounters(mockRiskCounters, dom.window.document, false);
 
       // assert
       test.value(dom.window.document.getElementById('high-risk-counter').innerHTML)
@@ -225,7 +225,7 @@ describe('Security dashboard', function() {
       if (index == 2) mockRiskCounters.lastMediumRisk = 0;
       if (index == 3) mockRiskCounters.lastLowRisk = 0;
       if (index == 4) mockRiskCounters.lastInfoRisk = 0;
-      await dashboard.adjustWithRiskCounters(mockRiskCounters, dom.window.document);
+      await dashboard.adjustWithRiskCounters(mockRiskCounters, dom.window.document, false);
 
       // Assert
       test.value(securityStatus[0].innerHTML)
