@@ -3,7 +3,7 @@ module github.com/InfoSec-Agent/InfoSec-Agent/reporting-page
 go 1.22.0
 
 require (
-	github.com/InfoSec-Agent/InfoSec-Agent v0.4.0
+	github.com/InfoSec-Agent/InfoSec-Agent v0.4.1
 	github.com/rodolfoag/gow32 v0.0.0-20230512144032-1e896a3c51aa
 	github.com/wailsapp/wails/v2 v2.8.2
 	golang.org/x/sys v0.20.0
@@ -78,5 +78,3 @@ require (
 	modernc.org/strutil v1.2.0 // indirect
 	modernc.org/token v1.1.0 // indirect
 )
-
-replace github.com/InfoSec-Agent/InfoSec-Agent v0.4.0 => ..
