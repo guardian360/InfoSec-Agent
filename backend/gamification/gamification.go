@@ -34,14 +34,11 @@ func UpdateGameState(scanResults []checks.Check, databasePath string) (GameState
 	gs := GameState{Points: 0, PointsHistory: nil, TimeStamps: nil, LighthouseState: 0}
 
 	// Loading the game state from the user settings and putting it in the game state struct
-	points := usersettings.LoadUserSettings().Points
-	pointsHistory := usersettings.LoadUserSettings().PointsHistory
-	timeStamps := usersettings.LoadUserSettings().TimeStamps
-	lighthouseState := usersettings.LoadUserSettings().LighthouseState
-	gs.Points = points
-	gs.PointsHistory = pointsHistory
-	gs.TimeStamps = timeStamps
-	gs.LighthouseState = lighthouseState
+	userSettings := usersettings.LoadUserSettings()
+	gs.Points = userSettings.Points
+	gs.PointsHistory = userSettings.PointsHistory
+	gs.TimeStamps = userSettings.TimeStamps
+	gs.LighthouseState = userSettings.LighthouseState
 
 	gs, err := PointCalculation(gs, scanResults, databasePath)
 	if err != nil {
@@ -63,7 +60,7 @@ func UpdateGameState(scanResults []checks.Check, databasePath string) (GameState
 	return gs, nil
 }
 
-// PointCalculation calculatese the number of points for the user based on the check results.
+// PointCalculation calculates the number of points for the user based on the check results.
 //
 // Parameters:
 //   - gs (GameState): The current game state, which includes the user's points and lighthouse state.
