@@ -39,6 +39,7 @@ jest.unstable_mockModule('../src/js/database.js', () => ({
 jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
   Localize: jest.fn().mockImplementation((input) => mockGetLocalization(input)),
   LoadUserSettings: jest.fn(),
+  GetImagePath: jest.fn(),
 }));
 
 // Mock LogError
@@ -46,6 +47,7 @@ jest.unstable_mockModule('../wailsjs/go/main/Tray.js', () => ({
   LogError: jest.fn(),
   ChangeLanguage: jest.fn(),
   ChangeScanInterval: jest.fn(),
+  LogDebug: jest.fn(),
 }));
 
 // Mock openIssuesPage
