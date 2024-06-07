@@ -297,4 +297,16 @@ var IssueMap = map[IssueResPair]bool{
 	{39, 0}: false,
 	// Credential Guard: Credential Guard not running
 	{39, 1}: true,
+	// NetBIOS over TCP/IP: NetBIOS disabled
+	{40, 0}: false,
+	// NetBIOS over TCP/IP: NetBIOS enabled
+	{40, 1}: true,
+	// WPAD: WPAD service disabled
+	{41, 0}: false,
+	// WPAD: WPAD service enabled
+	{41, 1}: true,
+	// Screen Lock: Screen lock correctly enabled
+	{42, 0}: false,
+	// Screen Lock: Screen lock not correctly enabled
+	{42, 1}: true,
 }

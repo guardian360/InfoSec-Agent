@@ -2,7 +2,10 @@ package firefox_test
 
 import (
 	"errors"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/browsers"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
+	"github.com/stretchr/testify/require"
 	"testing"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
@@ -12,12 +15,11 @@ import (
 
 	"github.com/DATA-DOG/go-sqlmock"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/browsers/firefox"
-	"github.com/stretchr/testify/require"
 )
 
 var Profilefinder browsers.FirefoxProfileFinder
 
-func TestHistoryFirefox(t *testing.T) {
+func TestHistoryFirefoxFailure(t *testing.T) {
 	t.Run("success", func(t *testing.T) {
 		// Mock the FirefoxFolder function to return a valid directory and no error
 		Profilefinder = browsers.MockProfileFinder{
@@ -26,8 +28,7 @@ func TestHistoryFirefox(t *testing.T) {
 			},
 		}
 
-		check := firefox.HistoryFirefox(Profilefinder, browsers.RealPhishingDomainGetter{})
-		require.Nil(t, check.Result)
+		check := firefox.HistoryFirefox(Profilefinder, browsers.RealPhishingDomainGetter{}, firefox.RealQueryDatabaseGetter{}, firefox.RealProcessQueryResultsGetter{}, firefox.RealCopyDBGetter{})
 		require.Error(t, check.Error)
 	})
 
@@ -39,8 +40,7 @@ func TestHistoryFirefox(t *testing.T) {
 			},
 		}
 
-		check := firefox.HistoryFirefox(Profilefinder, browsers.RealPhishingDomainGetter{})
-		require.Nil(t, check.Result)
+		check := firefox.HistoryFirefox(Profilefinder, browsers.RealPhishingDomainGetter{}, firefox.RealQueryDatabaseGetter{}, firefox.RealProcessQueryResultsGetter{}, firefox.RealCopyDBGetter{})
 		require.Error(t, check.Error)
 	})
 }
@@ -49,7 +49,8 @@ func TestOpenAndQueryDatabase_OpenFailure(t *testing.T) {
 	db, err := sql.Open("sqlite", "/invalid/path")
 	require.NoError(t, err)
 
-	_, err = firefox.QueryDatabase(db)
+	getter := firefox.RealQueryDatabaseGetter{}
+	_, err = getter.QueryDatabase(db)
 	require.Error(t, err)
 }
 
@@ -75,7 +76,8 @@ func TestQueryDatabase(t *testing.T) {
 		WithArgs(lastWeek).
 		WillReturnRows(rows)
 
-	results, err := firefox.QueryDatabase(db)
+	getter := firefox.RealQueryDatabaseGetter{}
+	results, err := getter.QueryDatabase(db)
 	require.NoError(t, err)
 
 	expected := []firefox.QueryResult{
@@ -104,7 +106,8 @@ func TestQueryDatabase_Error(t *testing.T) {
 		WithArgs(lastWeek).
 		WillReturnError(errors.New("mock error"))
 
-	_, err = firefox.QueryDatabase(db)
+	getter := firefox.RealQueryDatabaseGetter{}
+	_, err = getter.QueryDatabase(db)
 	require.Error(t, err)
 	require.Equal(t, "mock error", err.Error())
 }
@@ -132,7 +135,8 @@ func TestQueryDatabase_RowError(t *testing.T) {
 		WithArgs(lastWeek).
 		WillReturnRows(rows)
 
-	_, err = firefox.QueryDatabase(db)
+	getter := firefox.RealQueryDatabaseGetter{}
+	_, err = getter.QueryDatabase(db)
 	require.Error(t, err)
 	require.Equal(t, "mock row error", err.Error())
 }
@@ -160,7 +164,8 @@ func TestQueryDatabase_ScanError(t *testing.T) {
 		WithArgs(lastWeek).
 		WillReturnRows(rows)
 
-	_, err = firefox.QueryDatabase(db)
+	getter := firefox.RealQueryDatabaseGetter{}
+	_, err = getter.QueryDatabase(db)
 	require.Error(t, err)
 	require.Equal(t, "mock scan error", err.Error())
 }
@@ -191,10 +196,11 @@ func TestProcessQueryResults(t *testing.T) {
 			want:    nil,
 		},
 	}
+	getter := firefox.RealProcessQueryResultsGetter{}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, _ := firefox.ProcessQueryResults(tt.results, browsers.RealPhishingDomainGetter{})
+			got, _ := getter.ProcessQueryResults(tt.results, browsers.RealPhishingDomainGetter{})
 			if !compareSlices(got, tt.want) && !compareSlices(got, []string{}) {
 				t.Errorf("processQueryResults() = %v, want %v", got, tt.want)
 			}
@@ -263,7 +269,201 @@ func TestProcessQueryResults_GetPhishingDomainsError(t *testing.T) {
 		},
 	}
 
-	_, err := firefox.ProcessQueryResults([]firefox.QueryResult{}, mockGetter)
+	getter := firefox.RealProcessQueryResultsGetter{}
+	_, err := getter.ProcessQueryResults([]firefox.QueryResult{}, mockGetter)
 	require.Error(t, err)
 	require.Equal(t, "mock error", err.Error())
+}
+
+type MockDB struct{}
+
+func (MockDB) QueryDatabase() ([]firefox.QueryResult, error) {
+	return []firefox.QueryResult{}, nil
+}
+
+func TestCopyDatabase_Success(t *testing.T) {
+	mockCopyGetter := &MockCopyFileGetter{
+		CopyFileFunc: func(_ string, _ string, _ mocking.File, _ mocking.File) error {
+			return nil
+		},
+	}
+
+	copyDBGetter := firefox.RealCopyDBGetter{}
+	err := copyDBGetter.CopyDatabase(mockCopyGetter, "/valid/directory", "/temp/directory")
+
+	require.NoError(t, err)
+}
+
+type MockCopyDBGetter struct {
+	CopyDatabaseFunc func(copyGetter browsers.CopyFileGetter, ffDirectory string, tempHistoryDbff string) error
+}
+
+func (m MockCopyDBGetter) CopyDatabase(copyGetter browsers.CopyFileGetter, ffDirectory string, tempHistoryDbff string) error {
+	return m.CopyDatabaseFunc(copyGetter, ffDirectory, tempHistoryDbff)
+}
+
+func TestHistoryFirefox_CopyDatabaseError(t *testing.T) {
+	copyDBGetter := MockCopyDBGetter{
+		CopyDatabaseFunc: func(_ browsers.CopyFileGetter, _ string, _ string) error {
+			// Simulate an error during the copy operation
+			return errors.New("mock error")
+		},
+	}
+
+	Profilefinder = browsers.MockProfileFinder{
+		MockFirefoxFolder: func() ([]string, error) {
+			return []string{"/valid/directory"}, nil
+		},
+	}
+
+	check := firefox.HistoryFirefox(Profilefinder, browsers.RealPhishingDomainGetter{}, firefox.RealQueryDatabaseGetter{}, firefox.RealProcessQueryResultsGetter{}, copyDBGetter)
+	require.Equal(t, "mock error", check.Error.Error())
+}
+
+type MockQueryDatabaseGetter struct {
+	QueryDatabaseFunc func(db *sql.DB) ([]firefox.QueryResult, error)
+}
+
+func (m MockQueryDatabaseGetter) QueryDatabase(db *sql.DB) ([]firefox.QueryResult, error) {
+	return m.QueryDatabaseFunc(db)
+}
+
+type MockProcessQueryResultsGetter struct {
+	ProcessQueryResultsFunc func(results []firefox.QueryResult, getter browsers.PhishingDomainGetter) ([]string, error)
+}
+
+func (m MockProcessQueryResultsGetter) ProcessQueryResults(results []firefox.QueryResult, getter browsers.PhishingDomainGetter) ([]string, error) {
+	return m.ProcessQueryResultsFunc(results, getter)
+}
+
+func TestHistoryFirefox_QueryDatabaseError(t *testing.T) {
+	Profilefinder = browsers.MockProfileFinder{
+		MockFirefoxFolder: func() ([]string, error) {
+			return []string{"/valid/directory"}, nil
+		},
+	}
+	mockCopyDB := &MockCopyDBGetter{
+		CopyDatabaseFunc: func(_ browsers.CopyFileGetter, _ string, _ string) error {
+			return nil
+		},
+	}
+	queryGetter := MockQueryDatabaseGetter{
+		QueryDatabaseFunc: func(_ *sql.DB) ([]firefox.QueryResult, error) {
+			// Simulate an error during the query operation
+			return nil, errors.New("mock error")
+		},
+	}
+
+	check := firefox.HistoryFirefox(Profilefinder, browsers.RealPhishingDomainGetter{}, queryGetter, firefox.RealProcessQueryResultsGetter{}, mockCopyDB)
+	require.Equal(t, "mock error", check.Error.Error())
+}
+
+func TestHistoryFirefox_ProcessQueryResultsError(t *testing.T) {
+	Profilefinder = browsers.MockProfileFinder{
+		MockFirefoxFolder: func() ([]string, error) {
+			return []string{"/valid/directory"}, nil
+		},
+	}
+	mockCopyDB := &MockCopyDBGetter{
+		CopyDatabaseFunc: func(_ browsers.CopyFileGetter, _ string, _ string) error {
+			return nil
+		},
+	}
+	queryGetter := MockQueryDatabaseGetter{
+		QueryDatabaseFunc: func(_ *sql.DB) ([]firefox.QueryResult, error) {
+			// Simulate a successful query operation
+			return []firefox.QueryResult{
+				{
+					URL: "http://example.com",
+					LastVisitDate: sql.NullInt64{
+						Int64: time.Now().Unix(),
+						Valid: true,
+					},
+				},
+			}, nil
+		},
+	}
+	processGetter := MockProcessQueryResultsGetter{
+		ProcessQueryResultsFunc: func(_ []firefox.QueryResult, _ browsers.PhishingDomainGetter) ([]string, error) {
+			// Simulate an error during the process operation
+			return nil, errors.New("mock error")
+		},
+	}
+
+	check := firefox.HistoryFirefox(Profilefinder, browsers.RealPhishingDomainGetter{}, queryGetter, processGetter, mockCopyDB)
+	require.Equal(t, "mock error", check.Error.Error())
+}
+
+func TestHistoryFirefox_ProcessQueryResultsNil(t *testing.T) {
+	Profilefinder = browsers.MockProfileFinder{
+		MockFirefoxFolder: func() ([]string, error) {
+			return []string{"/valid/directory"}, nil
+		},
+	}
+	mockCopyDB := &MockCopyDBGetter{
+		CopyDatabaseFunc: func(_ browsers.CopyFileGetter, _ string, _ string) error {
+			return nil
+		},
+	}
+	queryGetter := MockQueryDatabaseGetter{
+		QueryDatabaseFunc: func(_ *sql.DB) ([]firefox.QueryResult, error) {
+			// Simulate a successful query operation
+			return []firefox.QueryResult{
+				{
+					URL: "http://example.com",
+					LastVisitDate: sql.NullInt64{
+						Int64: time.Now().Unix(),
+						Valid: true,
+					},
+				},
+			}, nil
+		},
+	}
+	processGetter := MockProcessQueryResultsGetter{
+		ProcessQueryResultsFunc: func(_ []firefox.QueryResult, _ browsers.PhishingDomainGetter) ([]string, error) {
+			// Simulate a nil output during the process operation
+			return nil, nil
+		},
+	}
+
+	check := firefox.HistoryFirefox(Profilefinder, browsers.RealPhishingDomainGetter{}, queryGetter, processGetter, mockCopyDB)
+	require.NoError(t, check.Error)
+	require.Equal(t, checks.NewCheckResult(checks.HistoryFirefoxID, 0), check)
+}
+
+func TestHistoryFirefox_Success(t *testing.T) {
+	Profilefinder = browsers.MockProfileFinder{
+		MockFirefoxFolder: func() ([]string, error) {
+			return []string{"/valid/directory"}, nil
+		},
+	}
+	mockCopyDB := &MockCopyDBGetter{
+		CopyDatabaseFunc: func(_ browsers.CopyFileGetter, _ string, _ string) error {
+			return nil
+		},
+	}
+	queryGetter := MockQueryDatabaseGetter{
+		QueryDatabaseFunc: func(_ *sql.DB) ([]firefox.QueryResult, error) {
+			// Simulate a successful query operation
+			return []firefox.QueryResult{
+				{
+					URL: "http://example.com",
+					LastVisitDate: sql.NullInt64{
+						Int64: time.Now().Unix(),
+						Valid: true,
+					},
+				},
+			}, nil
+		},
+	}
+	processGetter := MockProcessQueryResultsGetter{
+		ProcessQueryResultsFunc: func(_ []firefox.QueryResult, _ browsers.PhishingDomainGetter) ([]string, error) {
+			// Simulate a successful process operation
+			return []string{"phishing.com"}, nil
+		},
+	}
+
+	check := firefox.HistoryFirefox(Profilefinder, browsers.RealPhishingDomainGetter{}, queryGetter, processGetter, mockCopyDB)
+	require.NoError(t, check.Error)
+	require.Equal(t, checks.NewCheckResult(checks.HistoryFirefoxID, 1, "phishing.com"), check)
 }

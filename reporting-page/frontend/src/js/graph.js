@@ -90,6 +90,12 @@ export class Graph {
       labels.push(i.toString());
     }
 
+    this.rc.highRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--high-risk-color');
+    this.rc.mediumRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--medium-risk-color');
+    this.rc.lowRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--low-risk-color');
+    this.rc.infoColor = getComputedStyle(document.documentElement).getPropertyValue('--info-color');
+    this.rc.noRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--no-risk-color');
+
     const noRiskData = {
       label: await getLocalizationString('Dashboard.Acceptable'),
       data: this.rc.allNoRisks.slice(Math.max(this.rc.allNoRisks.length - this.graphShowAmount, 0)),

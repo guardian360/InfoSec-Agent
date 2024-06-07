@@ -30,10 +30,11 @@ body {
 }
 
 .data-segment {
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-border);
   border-radius: 5px;
   margin: 5px;
-  background: rgb(255 255 255 / 50%); /* More transparent background */
+  margin-bottom: 10px;
+  background: var(--transparant-background); /* More transparent background */
 }
 
 .data-segment-header {
@@ -64,13 +65,18 @@ body {
 /* Issue Buttons */
 .issue-button {
   display: block;
-  background-color: #4682b4;
-  color: white;
+  background-color: var(--background-security-button);
+  color: var(--text-left-nav);
   text-align: center;
   padding: 15px;
   margin: 10px;
   border-radius: 5px;
   text-decoration: none;
+}
+
+.issue-button:hover {
+  background-color: var(--background-security-button-hover);
+  cursor: pointer;
 }
 
 .video-background {

@@ -1334,6 +1334,77 @@
             "TOBEFILLED"
         ]
     },
+    "400": {
+        "Name": "NetBIOS über TCP/IP deaktiviert",
+        "Type": "Sicherheit",
+        "Information": "NetBIOS über TCP/IP ist ein veraltetes Netzwerkprotokoll, das es Computern ermöglicht, in einem lokalen Netzwerk zu kommunizieren. Das Deaktivieren von NetBIOS über TCP/IP hilft, die Angriffsfläche Ihres Systems zu reduzieren und potenzielle Sicherheitslücken im Zusammenhang mit diesem Protokoll zu verhindern.",
+        "Solution": [
+            "NetBIOS über TCP/IP ist deaktiviert, daher ist keine Aktion erforderlich."
+        ],
+        "Screenshots": []
+    },
+    "401": {
+        "Name": "NetBIOS über TCP/IP aktiviert",
+        "Type": "Sicherheit",
+        "Information": "NetBIOS über TCP/IP ist ein veraltetes Netzwerkprotokoll, das es Computern ermöglicht, in einem lokalen Netzwerk zu kommunizieren. Das Deaktivieren von NetBIOS über TCP/IP hilft, die Angriffsfläche Ihres Systems zu reduzieren und potenzielle Sicherheitslücken im Zusammenhang mit diesem Protokoll zu verhindern.",
+        "Solution": [
+            "Öffnen Sie die Systemsteuerung und gehen Sie zu 'Netzwerk und Internet' -> 'Netzwerk- und Freigabecenter'.",
+            "Klicken Sie im linken Bereich auf 'Adaptereinstellungen ändern'.",
+            "Klicken Sie mit der rechten Maustaste auf Ihre Netzwerkverbindung und wählen Sie 'Eigenschaften'.",
+            "Scrollen Sie im Reiter 'Netzwerk' nach unten zu 'Internetprotokoll Version 4 (TCP/IPv4)' und klicken Sie auf 'Eigenschaften'.",
+            "Klicken Sie auf 'Erweitert' und gehen Sie zum Reiter 'WINS'.",
+            "Wählen Sie unter 'NetBIOS-Einstellung' die Option 'NetBIOS über TCP/IP deaktivieren'.",
+            "Klicken Sie auf 'OK', um die Änderungen zu speichern."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
+    "410": {
+        "Name": "WPAD-Dienst deaktiviert",
+        "Type": "Sicherheit",
+        "Information": "Web Proxy Auto-Discovery (WPAD) ist ein Protokoll, das es Webbrowsern ermöglicht, Proxy-Server in einem Netzwerk automatisch zu erkennen. Das Deaktivieren des WPAD-Dienstes hilft, potenzielle Sicherheitsrisiken im Zusammenhang mit der automatischen Proxy-Konfiguration zu verhindern und schützt Ihr System vor der unbefugten Erkennung und Konfiguration von Proxy-Servern.",
+        "Solution": [
+            "WPAD-Dienst ist deaktiviert, daher ist keine Aktion erforderlich."
+        ],
+        "Screenshots": []
+    },
+    "411": {
+        "Name": "WPAD-Dienst aktiviert",
+        "Type": "Sicherheit",
+        "Information": "Web Proxy Auto-Discovery (WPAD) ist ein Protokoll, das es Webbrowsern ermöglicht, Proxy-Server in einem Netzwerk automatisch zu erkennen. Das Deaktivieren des WPAD-Dienstes hilft, potenzielle Sicherheitsrisiken im Zusammenhang mit der automatischen Proxy-Konfiguration zu verhindern und schützt Ihr System vor der unbefugten Erkennung und Konfiguration von Proxy-Servern.",
+        "Solution": [
+            "Öffnen Sie eine erhöhte Eingabeaufforderung, indem Sie mit der rechten Maustaste auf die Start-Schaltfläche klicken und 'Terminal (Admin)' auswählen.",
+            "Führen Sie den Befehl 'netsh winhttp show proxy' aus, um die aktuellen Proxy-Einstellungen zu überprüfen.",
+            "Wenn WPAD aktiviert ist, führen Sie den Befehl 'netsh winhttp reset proxy' aus, um WPAD zu deaktivieren und die Proxy-Einstellungen zurückzusetzen.",
+            "Starten Sie Ihren Computer neu, um die Änderungen zu übernehmen."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
+    "420": {
+        "Name": "Automatische Bildschirmsperre von Windows aktiviert",
+        "Type": "Sicherheit",
+        "Information": "Die Bildschirmsperre ist eine Sicherheitsfunktion, die Benutzer dazu zwingt, ein Passwort, eine PIN oder eine biometrische Authentifizierung einzugeben, um ihr Gerät zu entsperren und auf den Desktop zuzugreifen. Durch Aktivieren der Bildschirmsperre wird Ihre Daten und Privatsphäre geschützt, falls Ihr Computer unbeaufsichtigt gelassen oder gestohlen wird.",
+        "Solution": [
+            "Die automatische Bildschirmsperre von Windows ist aktiviert, daher ist keine Aktion erforderlich."
+        ],
+        "Screenshots": []
+    },
+    "421": {
+        "Name": "Automatische Bildschirmsperre von Windows deaktiviert",
+        "Type": "Sicherheit",
+        "Information": "Die Bildschirmsperre ist eine Sicherheitsfunktion, die Benutzer dazu zwingt, ein Passwort, eine PIN oder eine biometrische Authentifizierung einzugeben, um ihr Gerät zu entsperren und auf den Desktop zuzugreifen. Durch Aktivieren der Bildschirmsperre wird Ihre Daten und Privatsphäre geschützt, falls Ihr Computer unbeaufsichtigt gelassen oder gestohlen wird.",
+        "Solution": [
+            "Gehen Sie zu Start > Einstellungen > Personalisierung > Sperrbildschirm.",
+            "Öffnen Sie das Fenster 'Bildschirmschoner'.",
+            "Aktivieren Sie das Kontrollkästchen 'Beim Fortsetzen Bildschirmanmeldung anzeigen' und stellen Sie die 'Wartezeit' auf einen kurzen Intervall (2 Minuten oder weniger) ein."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
     "997": {
         "Name": "Installierte Erweiterungen in Google Chrome",
         "Type": "Privatsphäre",

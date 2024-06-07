@@ -6,6 +6,8 @@ import (
 	"strings"
 	"time"
 
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
@@ -26,6 +28,13 @@ func LastPasswordChange(executor mocking.CommandExecutor) checks.Check {
 	if err != nil {
 		return checks.NewCheckErrorf(checks.LastPasswordChangeID, "error retrieving username", err)
 	}
+	// Get the date format from the system
+	dateOutput, dateErr := executor.Execute("powershell", "(Get-Culture).DateTimeFormat.ShortDatePattern")
+	if dateErr != nil {
+		logger.Log.ErrorWithErr("Error getting date format", dateErr)
+	}
+	// Trim the output to remove any leading or trailing whitespace
+	dateFormat := strings.TrimSpace(string(dateOutput))
 
 	output, err := executor.Execute("net", "user", username)
 	if err != nil {
@@ -39,27 +48,41 @@ func LastPasswordChange(executor mocking.CommandExecutor) checks.Check {
 	// Find the date in the output
 	match := regex.FindString(lines[8])
 
-	var date time.Time
-	// Define different valid date formats
-	dateFormats := []string{"2/1/2006", "2-1-2006", "1/2/2006", "1-2-2006", "2/1/06", "2-1-06", "1/2/06", "1-2-06"}
+	// Split the string on both "-" and "/"
+	parts := strings.Split(match, "-")
+	if len(parts) < 3 {
+		parts = strings.Split(match, "/")
+	}
 
-	// Try parsing the date with different formats
-	for _, format := range dateFormats {
-		date, err = time.Parse(format, match)
-
-		// Stop on successful parse
-		if err == nil {
-			break
+	// Check each part and add a leading zero if the length is 1
+	for i, part := range parts {
+		if len(part) == 1 {
+			parts[i] = "0" + part
 		}
 	}
 
+	// Join the parts back together
+	formattedDate := strings.Join(parts, "-")
+
+	var goDateFormat string
+	switch dateFormat {
+	case "d-M-yyyy":
+		goDateFormat = "02-01-2006"
+	case "M-d-yyyy":
+		goDateFormat = "01-02-2006"
+	default:
+		logger.Log.Error("Unknown date format:")
+		goDateFormat = "02-01-2006"
+	}
+	parsedDate, err := time.Parse(goDateFormat, formattedDate)
 	if err != nil {
+		logger.Log.ErrorWithErr("Error parsing date", err)
 		return checks.NewCheckError(checks.LastPasswordChangeID, errors.New("error parsing date"))
 	}
 
 	// Get the current time
 	currentTime := time.Now()
-	difference := currentTime.Sub(date)
+	difference := currentTime.Sub(parsedDate)
 	// Define the duration of half a year
 	halfYear := 365 / 2 * 24 * time.Hour
 	// If it has been more than half a year since the password was last changed, return a warning

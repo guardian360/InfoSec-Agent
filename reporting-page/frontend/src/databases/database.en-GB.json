@@ -1346,7 +1346,7 @@
             "TOBEFILLED"
         ]
     },
-    "390": {
+    "390":{
         "Name": "Credential Guard enabled",
         "Type": "Security",
         "Information": "Credential Guard is a security feature in Windows that helps protect user credentials and sensitive information from unauthorized access and theft. It uses virtualization-based security to isolate and protect credential information, making it more difficult for attackers to steal passwords and other sensitive data.",
@@ -1365,6 +1365,92 @@
         "Solution":
         [
             "The setting of Credential Guard is handled in your local group policy. Ask your network administrator to enable Credential Guard."
+        ],
+        "Screenshots":
+        [
+            "TOBEFILLED"
+        ]
+    },
+    "400": {
+        "Name": "NetBIOS over TCP/IP disabled",
+        "Type": "Security",
+        "Information": "NetBIOS over TCP/IP is a legacy networking protocol that allows computers to communicate on a local network. Disabling NetBIOS over TCP/IP helps reduce the attack surface of your system and prevent potential security vulnerabilities associated with this protocol.",
+        "Solution":
+        [
+            "NetBIOS over TCP/IP is disabled, so there is no action needed."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "401": {
+        "Name": "NetBIOS over TCP/IP enabled",
+        "Type": "Security",
+        "Information": "NetBIOS over TCP/IP is a legacy networking protocol that allows computers to communicate on a local network. Disabling NetBIOS over TCP/IP helps reduce the attack surface of your system and prevent potential security vulnerabilities associated with this protocol.",
+        "Solution":
+        [
+            "Open the Control Panel and go to 'Network and Internet' -> 'Network and Sharing Center'.",
+            "Click on 'Change adapter settings' in the left pane.",
+            "Right-click on your network connection and select 'Properties'.",
+            "In the 'Networking' tab, scroll down to 'Internet Protocol Version 4 (TCP/IPv4)' and click on 'Properties'.",
+            "Click on 'Advanced' and go to the 'WINS' tab.",
+            "Under 'NetBIOS setting', select 'Disable NetBIOS over TCP/IP'.",
+            "Click 'OK' to save the changes."
+        ],
+        "Screenshots":
+        [
+            "TOBEFILLED"
+        ]
+    },
+    "410": {
+        "Name": "WPAD service disabled",
+        "Type": "Security",
+        "Information": "Web Proxy Auto-Discovery (WPAD) is a protocol that allows web browsers to automatically discover proxy servers on a network. Disabling the WPAD service helps prevent potential security risks associated with automatic proxy configuration and protects your system from unauthorized proxy server discovery and configuration.",
+        "Solution":
+        [
+            "WPAD service is disabled, so there is no action needed."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "411": {
+        "Name": "WPAD service enabled",
+        "Type": "Security",
+        "Information": "Web Proxy Auto-Discovery (WPAD) is a protocol that allows web browsers to automatically discover proxy servers on a network. Disabling the WPAD service helps prevent potential security risks associated with automatic proxy configuration and protects your system from unauthorized proxy server discovery and configuration.",
+        "Solution":
+        [
+            "Open an elevated command prompt by right-clicking on the Start button and selecting 'Terminal (Admin)'.",
+            "Run the command 'netsh winhttp show proxy' to check the current proxy settings.",
+            "If WPAD is enabled, run the command 'netsh winhttp reset proxy' to disable WPAD and reset the proxy settings.",
+            "Restart your computer to apply the changes."
+        ],
+        "Screenshots":
+        [
+            "TOBEFILLED"
+        ]
+    },
+    "420": {
+        "Name": "Windows automatic Screen Lock enabled",
+        "Type": "Security",
+        "Information": "Screen lock is a security feature that requires users to enter a password, PIN, or biometric authentication to unlock their device and access the desktop. Enabling screen lock helps protect your data and privacy in case your computer is left unattended or stolen.",
+        "Solution":
+        [
+            "Windows automatic Screen Lock is enabled, so there is no action needed."
+        ],
+        "Screenshots":
+        [
+        ]
+    },
+    "421": {
+        "Name": "Windows automatic Screen Lock disabled",
+        "Type": "Security",
+        "Information": "Screen lock is a security feature that requires users to enter a password, PIN, or biometric authentication to unlock their device and access the desktop. Enabling screen lock helps protect your data and privacy in case your computer is left unattended or stolen.",
+        "Solution":
+        [
+            "Go to Start > Settings > Personalisation > Lock screen.",
+            "Open the 'Screen saver' window.",
+            "Check the box 'On resume, display logon screen' and set the 'Wait' time to a short interval (2 minutes or less)."
         ],
         "Screenshots":
         [
