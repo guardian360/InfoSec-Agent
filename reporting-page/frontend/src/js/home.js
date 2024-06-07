@@ -12,6 +12,10 @@ import {showModal} from './settings.js';
 
 /** Load the content of the Home page */
 export async function openHomePage() {
+  // Load the video background path
+  const lighthouseState = await getImagePath('regular1.mp4');
+  logDebug('lighthouseState: ' + lighthouseState);
+
   retrieveTheme();
   closeNavigation(document.body.offsetWidth);
   markSelectedNavigationItem('home-button');
@@ -65,8 +69,6 @@ export async function openHomePage() {
   </div>
   `;
 
-  const lighthouseState = await getImagePath('regular1.mp4');
-  logDebug('lighthouseState: ' + lighthouseState);
   document.getElementById('lighthouse-background').src = lighthouseState;
 
   const rc = JSON.parse(sessionStorage.getItem('RiskCounters'));
