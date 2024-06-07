@@ -6,7 +6,7 @@ import data from '../src/databases/database.en-GB.json' assert { type: 'json' };
 import {mockPageFunctions, mockGetLocalization, clickEvent, storageMock} from './mock.js';
 
 global.TESTING = true;
-
+const prefix = 'windows-10/';
 /** removes html elements form a string
  *
  * @param {string} input string with html elements
@@ -38,6 +38,13 @@ mockPageFunctions();
 // Mock Localize function
 jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
   Localize: jest.fn().mockImplementation((input) => mockGetLocalization(input)),
+  GetImagePath: jest.fn().mockImplementation(() => ''),
+}));
+
+// Mock logdebug function
+jest.unstable_mockModule('../wailsjs/go/main/tray.js', () => ({
+  LogError: jest.fn(),
+  LogDebug: jest.fn(),
 }));
 
 // Mock scantest function
@@ -60,6 +67,16 @@ jest.unstable_mockModule('../src/js/issues.js', () => ({
     .mockImplementationOnce(() => 7)
     .mockImplementation(() => 1),
 }));
+
+/**
+ * Pauses execution for a specified duration.
+ *
+ * @param {number} milliseconds - The amount of time to wait, in milliseconds.
+ * @return {Promise<void>} A promise that resolves after the specified duration.
+ *
+ */function waitFor(milliseconds) {
+  return new Promise((resolve) => setTimeout(resolve, milliseconds));
+}
 
 // Mock sessionStorage
 global.sessionStorage = storageMock;
@@ -101,6 +118,7 @@ describe('Issue page', function() {
   let currentIssue = data[issueID];
 
   it('openIssuesPage should add the right info about the issue to the page-contents', async function() {
+    sessionStorage.setItem('WindowsVersion', '10');
     // Arrange
     const issue = await import('../src/js/issue.js');
 
@@ -129,7 +147,7 @@ describe('Issue page', function() {
 
     // Assert
     test.value(htmlDecode(solutionText.innerHTML)).isEqualTo('1. ' + currentIssue.Solution[0]);
-    test.value(solutionScreenshot.src).isEqualTo(currentIssue.Screenshots[0]);
+    test.value(solutionScreenshot.src).isEqualTo(prefix+currentIssue.Screenshots[0]);
   });
 
   it('nextSolutionStep should update the current step and screenshot', async function() {
@@ -141,9 +159,10 @@ describe('Issue page', function() {
     // calls nextSolutionStep
     document.getElementById('next-button').dispatchEvent(clickEvent);
 
+    await waitFor(1000);
     // Assert
     test.value(solutionText.innerHTML).isEqualTo('2. ' + currentIssue.Solution[1]);
-    test.value(solutionScreenshot.src).isEqualTo(currentIssue.Screenshots[1]);
+    test.value(solutionScreenshot.src).isEqualTo(prefix+currentIssue.Screenshots[1]);
   });
   it('previousSolutionStep should update the current step and screenshot', async function() {
     // Arrange
@@ -153,10 +172,11 @@ describe('Issue page', function() {
     // Act
     // calls previousSolutionStep
     document.getElementById('previous-button').dispatchEvent(clickEvent);
+    await waitFor(1000);
 
     // Assert
     test.value(htmlDecode(solutionText.innerHTML)).isEqualTo('1. ' + currentIssue.Solution[0]);
-    test.value(solutionScreenshot.src).isEqualTo(currentIssue.Screenshots[0]);
+    test.value(solutionScreenshot.src).isEqualTo(prefix+currentIssue.Screenshots[0]);
   });
 
   it('clicking previous step button on first step should not update the current step and screenshot', async function() {
@@ -167,10 +187,11 @@ describe('Issue page', function() {
     // Act
     // calls previousSolutionStep
     document.getElementById('previous-button').dispatchEvent(clickEvent);
+    await waitFor(1000);
 
     // Assert
     test.value(htmlDecode(solutionText.innerHTML)).isEqualTo('1. ' + currentIssue.Solution[0]);
-    test.value(solutionScreenshot.src).isEqualTo(currentIssue.Screenshots[0]);
+    test.value(solutionScreenshot.src).isEqualTo(prefix+currentIssue.Screenshots[0]);
   });
   it('clicking next step button at last step should not update the current step and screenshot', async function() {
     // Arrange
@@ -184,10 +205,11 @@ describe('Issue page', function() {
     document.getElementById('next-button').dispatchEvent(clickEvent);
     // At step 3 now, click next one more time.
     document.getElementById('next-button').dispatchEvent(clickEvent);
+    await waitFor(1000);
 
     // Assert
     test.value(solutionText.innerHTML).isEqualTo('3. ' + currentIssue.Solution[2]);
-    test.value(solutionScreenshot.src).isEqualTo(currentIssue.Screenshots[2]);
+    test.value(solutionScreenshot.src).isEqualTo(prefix+currentIssue.Screenshots[2]);
   });
 
 
@@ -396,38 +418,29 @@ describe('Issue page', function() {
     let testIssue = data['11'];
 
     // Act
-    // clear sessionstorage
-    sessionStorage.removeItem('WindowsVersion');
-    let result = issue.getVersionScreenshot(testIssue, 0);
-
+    sessionStorage.clear();
+    let result = await issue.getVersionScreenshot(testIssue, 0);
     // Assert
-    test.value(result).isEqualTo(testIssue.Screenshots[0]);
-
-    // Act
-    sessionStorage.setItem('WindowsVersion', '10');
-    result = issue.getVersionScreenshot(testIssue, 0);
-
-    // Assert
-    test.value(result).isEqualTo(testIssue.ScreenshotsWindows10[0]);
+    test.value(result).isEqualTo('windows-undefined/' + testIssue.Screenshots[0]);
 
     // Act
     sessionStorage.setItem('WindowsVersion', '11');
-    result = issue.getVersionScreenshot(testIssue, 0);
+    result = await issue.getVersionScreenshot(testIssue, 0);
 
     // Assert
-    test.value(result).isEqualTo(testIssue.Screenshots[0]);
+    test.value(result).isEqualTo('windows-11/' + testIssue.Screenshots[0]);
 
     // Act
     sessionStorage.setItem('WindowsVersion', '10');
     testIssue = data['30'];
-    result = issue.getVersionScreenshot(testIssue, 0);
+    result = await issue.getVersionScreenshot(testIssue, 0);
 
     // Assert
-    test.value(result).isEqualTo(testIssue.Screenshots[0]);
+    test.value(result).isEqualTo(prefix + testIssue.Screenshots[0]);
 
     // Act
     testIssue = data['310'];
-    result = issue.getVersionScreenshot(testIssue, 0);
+    result = await issue.getVersionScreenshot(testIssue, 0);
 
     // Assert
     test.value(result).isEqualTo('');

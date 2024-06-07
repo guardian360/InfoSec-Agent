@@ -465,7 +465,6 @@ export async function getVersionScreenshot(issue, index) {
   if (screenshot == undefined) {
     return '';
   }
-
   // Construct full image path
   return imagesDirectory + version + screenshot;
 }
