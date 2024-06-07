@@ -238,7 +238,7 @@ func (r RealProcessQueryResultsGetter) ProcessQueryResults(results []QueryResult
 		timeString := FormatTime(result.LastVisitDate)
 
 		for _, scamDomain := range phishingDomainList {
-			if strings.Contains(scamDomain, result.URL) {
+			if strings.Contains(result.URL, scamDomain) {
 				output = append(output, result.URL+timeString)
 			}
 		}

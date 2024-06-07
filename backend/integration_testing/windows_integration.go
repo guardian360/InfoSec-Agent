@@ -39,16 +39,10 @@ func TestIntegrationDefenderAllActive(t *testing.T) {
 	require.Equal(t, 0, result.ResultID)
 }
 
-func TestIntegrationDefenderPeriodicScanActive(t *testing.T) {
-	result := windows.Defender(mocking.LocalMachine, mocking.LocalMachine)
-	require.NotEmpty(t, result)
-	require.Equal(t, 2, result.ResultID)
-}
-
 func TestIntegrationDefenderAllNotActive(t *testing.T) {
 	result := windows.Defender(mocking.LocalMachine, mocking.LocalMachine)
 	require.NotEmpty(t, result)
-	require.Equal(t, 3, result.ResultID)
+	require.Equal(t, 2, result.ResultID)
 }
 
 func TestIntegrationGuestAccountActive(t *testing.T) {

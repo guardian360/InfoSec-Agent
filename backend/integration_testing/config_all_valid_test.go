@@ -2,6 +2,7 @@ package integration_test
 
 import (
 	i "github.com/InfoSec-Agent/InfoSec-Agent/backend/integration_testing"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/localization"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"os"
 	"testing"
@@ -44,7 +45,7 @@ var testsValid = []func(t *testing.T){
 
 func TestMain(m *testing.M) {
 	logger.SetupTests()
-
+	go localization.Init("../../")
 	// Run tests
 	exitCode := m.Run()
 

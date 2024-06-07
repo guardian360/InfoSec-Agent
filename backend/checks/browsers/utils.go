@@ -238,7 +238,17 @@ func (r RealPhishingDomainGetter) GetPhishingDomains(creator RequestCreator) ([]
 		return nil, errors.New("no phishing domains list found online")
 	}
 
-	return strings.Split(string(scamDomainsResponse), "\n"), nil
+	// Split the response into a list of domains and remove the http:// and https:// prefixes
+	domains := strings.Split(string(scamDomainsResponse), "\n")
+	var result []string
+	for _, domain := range domains {
+		trimmedDomain := strings.TrimPrefix(domain, "http://")
+		trimmedDomain = strings.TrimPrefix(trimmedDomain, "https://")
+		if trimmedDomain != "" {
+			result = append(result, trimmedDomain)
+		}
+	}
+	return result, nil
 }
 
 // CopyFileGetter is an interface that defines a method for copying a file from a source path to a destination path.
