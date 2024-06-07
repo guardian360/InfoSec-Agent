@@ -140,10 +140,10 @@ hr.solid {
   --transparant-background: rgb(255 255 255 / 50%);
 
   /* button */
-  --background-security-button: #946CB2;
-  --background-security-button-hover: #644878;
-  --background-privacy-button: #4E869B;
-  --background-privacy-button-hover: #427385;
+  --background-security-button:  	#64a9ee;
+  --background-security-button-hover:  	#338ee9;
+  --background-privacy-button: #5141a7bd;
+  --background-privacy-button-hover: #37259eec;
 
   /* colors for the different risks */
   --high-risk-color: #e06666;
@@ -172,10 +172,10 @@ hr.solid {
   --transparant-background: rgb(50 50 50 / 50%);
 
   /* button */
-  --background-security-button: #3d2143;
-  --background-security-button-hover: #502d58;
-  --background-privacy-button: #3d2143;
-  --background-privacy-button-hover: #502d58;
+  --background-security-button:  	#21405f;
+  --background-security-button-hover:  	#163a5e;
+  --background-privacy-button: #2913a5bd;
+  --background-privacy-button-hover: #220aa8ec;
   
   /* colors for the different risks */
   --high-risk-color: #922323;
