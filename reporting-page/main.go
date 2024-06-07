@@ -107,16 +107,13 @@ func main() {
 
 	// Change directory to the reporting page directory.
 	// When opening the reporting page from the Windows notification we start in C:\Windows\System32, and we cannot run the reporting page from there.
+	var path string
 	k, err := registry.OpenKey(
 		registry.CURRENT_USER, `Software\Microsoft\Windows\CurrentVersion\App Paths\InfoSec-Agent-Reporting-Page.exe`,
 		registry.QUERY_VALUE,
 	)
 	if err != nil {
 		logger.Log.ErrorWithErr("Error opening registry key: ", err)
-		err = os.Chdir("reporting-page")
-		if err != nil {
-			logger.Log.ErrorWithErr("Error changing directory: ", err)
-		}
 	} else {
 		logger.Log.Debug("Found registry key")
 		defer func(k registry.Key) {
@@ -127,18 +124,12 @@ func main() {
 		}(k)
 
 		// Get reporting page executable path
-		s, _, err2 := k.GetStringValue("Path")
-		if err2 != nil {
+		path, _, err = k.GetStringValue("Path")
+		if err != nil {
 			logger.Log.ErrorWithErr("Error getting path string: ", err)
 		}
-
-		// Set current directory to reporting-page
-		err2 = os.Chdir(s)
-		if err2 != nil {
-			logger.Log.ErrorWithErr("Error changing directory: ", err)
-		}
-		logger.Log.Debug("Changed directory to " + s)
 	}
+	changeDirectory(path)
 
 	// Create a new instance of the app and tray struct
 	app := NewApp()
@@ -184,4 +175,25 @@ func main() {
 	if err != nil {
 		logger.Log.ErrorWithErr("Error creating Wails application:", err)
 	}
+}
+
+// changeDirectory attempts to change the current working directory to the specified path.
+// If the config ReportingPagePath contains "build/bin", it sets the path to "reporting-page" to run the reporting page from the development environment.
+// If changing the directory is successful, a debug message is logged indicating the new directory.
+// If an error occurs during the directory change, the error is logged with an error level.
+//
+// Parameters: path: A string representing the target directory path.
+//
+// Returns: None.
+func changeDirectory(path string) {
+	// If the config ReportingPagePath contains "build/bin", we are running the reporting page from the development environment
+	if strings.Contains(config.ReportingPagePath, "build/bin") {
+		path = "reporting-page"
+	}
+
+	err := os.Chdir(path)
+	if err != nil {
+		logger.Log.ErrorWithErr("Error changing directory: ", err)
+	}
+	logger.Log.Debug("Changed directory to " + path)
 }
