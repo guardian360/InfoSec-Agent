@@ -38,7 +38,7 @@ jobs:
         run: New-Item -Force reporting-page/frontend/dist/index.html
 
       - name: Setup Go workspace
-        run: ./setup_go_work.bat
+        run: ./scripts/setup_go_work.bat
 
       - name: Run linter on InfoSec-Agent backend
         uses: golangci/golangci-lint-action@v4
