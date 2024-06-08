@@ -23,9 +23,22 @@ InfoSec-Agent is an Open-Source project licensed under the AGPL-3.0 License. How
 Feel free to report any bugs or issues you encounter. Your feedback is valuable and helps improve the InfoSec-Agent project.
 
 # Program instructions
+## Building the program
+The tray application and the reporting-page have to be built seperately.
+
+Depending on the supplied build tags, the program can be built for development or production mode.
+Suppling the `prod` build tag buils for production, otherwise it will build for development.
+Building for production is only relevant when generating the installer for the program, explained further down this document.
+
+In the scripts folder there are scripts located to easly build both applications for the desired mode.
+
+To build the tray application for development, the default `go build` command can be used.
+To build the reporting-page application for development, change the directory to the reporting-page and use `wails build`.
+During development of the reporting-page, `wails dev` will build the application and run it, and then will watch for any modifications to the source code and rebuild/re-run on change. 
+
 ## Running/Using the program
 From the terminal, within the InfoSec-Agent folder, run the command `go run .`
-This will start the program and a new icon should appear in your system tray.
+This will build and start the program and a new icon should appear in your system tray.
 
 Clicking on the icon will show a menu containing actions that the program can execute.
 Any confirmations/messages/errors that the application sends will be sent to the log file located in the %AppData%/InfoSec-Agent directory.
@@ -188,7 +201,7 @@ To generate the installer the following software has to be installed:
 
 ## Creating installer executable
 How the installer executable is generated is defined in the generate-installer.iss Inno Setup Script file.
-There is a generate-installer.ps1 PowerShell script to easily generate the installer.
+There is a generate-installer.ps1 PowerShell script, located in the scripts directory, to easily generate the installer.
 The easiest way to generate the installer is to run this script in a PowerShell instance.
 
 To be able to execute the script, your PowerShell execution policy has to allow running scripts on your device (by default this is disabled in Windows).
@@ -197,8 +210,10 @@ For more information about PowerShell execution policies, read the [Microsoft do
 The version of the software is set using a parameter given to the iscc command.
 The PowerShell scripts obtains the version information from the most recent git tag, as the tags indicate version numbers.
 
-To generate the installer yourself, without using the provided PowerShell script, you first need to build both the tray and reporting-page executables.
-There is a build.bat script provided to easily do this.
+To generate the installer yourself, without using the provided PowerShell script, you first need to build both the tray and reporting-page executables for production.
+There is a build-prod.bat script provided to easily do this.
+To build for production, first run `go generate` to generate the .syso file, required to add the icon and version information to the binary.
+After this you can build the executables with the `prod` build tag supplied.
 
 Then, run the following command from the root of the repository:
 
