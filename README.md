@@ -3,7 +3,7 @@
 [![Go Reference](https://pkg.go.dev/badge/github.com/InfoSec-Agent/InfoSec-Agent.svg)](https://pkg.go.dev/github.com/InfoSec-Agent/InfoSec-Agent)
 [![Go Report Card](https://goreportcard.com/badge/github.com/InfoSec-Agent/InfoSec-Agent)](https://goreportcard.com/report/github.com/InfoSec-Agent/InfoSec-Agent)
 [![Open Source Insights](https://img.shields.io/badge/Open%20Source%20Insights-2ea5b3)](https://deps.dev/go/github.com%2FInfoSec-Agent%2FInfoSec-Agent/)
-[![GPL Licence](https://badges.frapsoft.com/os/gpl/gpl.svg?v=103)](LICENSE)
+[![AGPL Licence](https://badges.frapsoft.com/os/gpl/gpl.svg?v=103)](LICENSE)
 
 # InfoSec Agent
 The InfoSec Agent is a security and privacy tool for Windows 10 and 11.
