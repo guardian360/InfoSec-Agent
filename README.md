@@ -27,7 +27,7 @@ Feel free to report any bugs or issues you encounter. Your feedback is valuable 
 The tray application and the reporting-page have to be built seperately.
 
 Depending on the supplied build tags, the program can be built for development or production mode.
-Suppling the `prod` build tag buils for production, otherwise it will build for development.
+Supplying the `prod` build tag buils for production, otherwise it will build for development.
 Building for production is only relevant when generating the installer for the program, explained further down this document.
 
 In the scripts folder there are scripts located to easly build both applications for the desired mode.
