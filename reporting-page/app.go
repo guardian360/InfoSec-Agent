@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/config"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/localization"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/tray"
@@ -65,4 +66,17 @@ func (a *App) PrintFromFrontend(message string) {
 
 func (a *App) LoadUserSettings() usersettings.UserSettings {
 	return usersettings.LoadUserSettings()
+}
+
+// GetImagePath constructs the full path for a given image file.
+//
+// This method is used to generate the full path of an image file based on the provided relative path.
+// The full path depends on the build configuration, handled by the config package.
+// It concatenates the base directory for reporting page images (stored in the config) with the provided relative path.
+//
+// Parameters: imagePath (string) - The relative path of the image file.
+//
+// Returns: string: The full path of the image file.
+func (a *App) GetImagePath(imagePath string) string {
+	return config.ReportingPageImageDir + imagePath
 }
