@@ -2,7 +2,6 @@ package windows
 
 import (
 	"errors"
-	"slices"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
@@ -46,14 +45,13 @@ func Startup(key1 mocking.RegistryKey, key2 mocking.RegistryKey, key3 mocking.Re
 		return checks.NewCheckError(checks.StartupID, errors.New("error reading value names"))
 	}
 
-	if len(slices.Concat(cuValueNames, lmValueNames, lm2ValueNames)) == 0 {
-		return checks.NewCheckResult(checks.StartupID, 0)
-	}
-
 	output := make([]string, 0)
 	output = append(output, checks.FindEntries(cuValueNames, cuKey)...)
 	output = append(output, checks.FindEntries(lmValueNames, lmKey)...)
 	output = append(output, checks.FindEntries(lm2ValueNames, lmKey2)...)
 
+	if len(output) == 0 {
+		return checks.NewCheckResult(checks.StartupID, 0)
+	}
 	return checks.NewCheckResult(checks.StartupID, 1, output...)
 }

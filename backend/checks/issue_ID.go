@@ -41,4 +41,7 @@ const (
 	FirewallID
 	PasswordComplexityID
 	CredentialGuardID
+	NetBIOSID
+	WPADID
+	ScreenLockID
 )

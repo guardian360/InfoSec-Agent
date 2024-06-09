@@ -2,6 +2,7 @@ package scan_test
 
 import (
 	"database/sql"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 	"os"
 	"testing"
 
@@ -25,7 +26,7 @@ import (
 // Returns: None. The function calls os.Exit with the exit code returned by m.Run().
 func TestMain(m *testing.M) {
 	logger.SetupTests()
-	go localization.Init("../")
+	go localization.Init("../../")
 
 	// Run tests
 	exitCode := m.Run()
@@ -232,4 +233,40 @@ func TestGeneratePath(t *testing.T) {
 	// Test that given no path, it returns the path to the current user's home directory
 	path = scan.GeneratePath("")
 	require.Equal(t, currHomeDir, path)
+}
+
+func TestCheckInstalled(t *testing.T) {
+	tests := []struct {
+		name string
+		key  mocking.RegistryKey
+		path string
+		want bool
+	}{
+		{
+			name: "Path that exists",
+			key: &mocking.MockRegistryKey{
+				SubKeys: []mocking.MockRegistryKey{
+					{KeyName: "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\msedge.exe"}},
+			},
+			path: "msedge.exe",
+			want: true,
+		},
+		{
+			name: "Path that does not exist",
+			key: &mocking.MockRegistryKey{
+				SubKeys: []mocking.MockRegistryKey{
+					{KeyName: "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\msedge.exe"}},
+			},
+			path: "chrome.exe",
+			want: false,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got := scan.CheckInstalled(tt.key, tt.path)
+			if got != tt.want {
+				t.Errorf("CheckInstalled() = %v, want %v", got, tt.want)
+			}
+		})
+	}
 }

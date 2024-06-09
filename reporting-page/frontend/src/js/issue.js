@@ -10,6 +10,8 @@ import {openIssuesPage, getUserSettings} from './issues.js';
 import {getLocalization} from './localize.js';
 import {retrieveTheme} from './personalize.js';
 import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
+import {GetImagePath as getImagePath} from '../../wailsjs/go/main/App.js';
+import {LogError as logError, LogDebug as logDebug} from '../../wailsjs/go/main/Tray.js';
 import {scanTest} from './database.js';
 import {openAllChecksPage} from './all-checks.js';
 
@@ -25,9 +27,11 @@ const issuesWithResultsShow =
  * @param {*} issue Issue to update the solution step for
  * @param {int} stepCounter Counter specifying the current step
  */
-export function updateSolutionStep(solutionText, solutionScreenshot, issue, stepCounter) {
+export async function updateSolutionStep(solutionText, solutionScreenshot, issue, stepCounter) {
   solutionText.innerHTML = `${stepCounter + 1}. ${getVersionSolution(issue, stepCounter)}`;
-  solutionScreenshot.src = getVersionScreenshot(issue, stepCounter).toString();
+  const screenshot = await getVersionScreenshot(issue, stepCounter);
+  logDebug('screenshot source updateSolutionStep: ' + screenshot);
+  solutionScreenshot.src = screenshot;
   // Hide/show buttons based on the current step
   const previousButton = document.getElementById('previous-button');
   const nextButton = document.getElementById('next-button');
@@ -161,11 +165,6 @@ export async function openIssuePage(issueId, severity, back = undefined) {
       `;
     }
 
-    const screenshot = getVersionScreenshot(currentIssue, stepCounter);
-    try {
-      document.getElementById('step-screenshot').src = screenshot;
-    } catch (error) { }
-
     // Add functions to page for navigation
     const solutionText = document.getElementById('solution-text');
     const solutionScreenshot = document.getElementById('step-screenshot');
@@ -175,7 +174,11 @@ export async function openIssuePage(issueId, severity, back = undefined) {
       previousSolutionStep(solutionText, solutionScreenshot, currentIssue));
 
     // Initial check to hide/show buttons
-    updateSolutionStep(solutionText, solutionScreenshot, currentIssue, stepCounter);
+    try {
+      await updateSolutionStep(solutionText, solutionScreenshot, currentIssue, stepCounter);
+    } catch (error) {
+      logError('Error in updateSolutionStep: ' + error);
+    }
   }
 
   if (back == undefined) {
@@ -456,19 +459,23 @@ export function parseShowResult(issueId, currentIssue) {
  * @param {int} index index of the desired screenshot in the list of screenshots
  * @return {string} path to the screenshot
  */
-export function getVersionScreenshot(issue, index) {
-  let screenshot = issue.Screenshots[index];
-  if (screenshot == undefined) screenshot = '';
-  switch (sessionStorage.getItem('WindowsVersion')) {
-  case ('10'):
-    const screenshots = issue.ScreenshotsWindows10;
-    if (screenshots !== undefined) screenshot = screenshots[index];
-    return screenshot;
-  case ('11'):
-    return screenshot;
-  default:
-    return screenshot;
+export async function getVersionScreenshot(issue, index) {
+  const imagesDirectory = await getImagePath('');
+  const version = 'windows-' + sessionStorage.getItem('WindowsVersion') + '/';
+
+  let screenshot;
+  if (version === 'windows-10/' && issue.ScreenshotsWindows10 !== undefined) {
+    screenshot = issue.ScreenshotsWindows10[index];
+  } else {
+    screenshot = issue.Screenshots[index];
   }
+
+  // Return empty source if no screenshot is found
+  if (screenshot == undefined) {
+    return '';
+  }
+  // Construct full image path
+  return imagesDirectory + version + screenshot;
 }
 
 /**

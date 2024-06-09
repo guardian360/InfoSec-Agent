@@ -38,6 +38,7 @@ jest.unstable_mockModule('../src/js/database.js', () => ({
 jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
   Localize: jest.fn().mockImplementation((input) => mockGetLocalization(input)),
   LoadUserSettings: jest.fn(),
+  GetImagePath: jest.fn(),
 }));
 
 // Mock openIssuesPage
@@ -56,6 +57,7 @@ jest.unstable_mockModule('../wailsjs/go/main/Tray.js', () => ({
   LogError: jest.fn(),
   ChangeLanguage: jest.fn(),
   ChangeScanInterval: jest.fn(),
+  LogDebug: jest.fn(),
 }));
 
 describe('Privacy dashboard page', function() {
@@ -113,7 +115,7 @@ describe('Privacy dashboard page', function() {
       if (index == 2) mockRiskCounters.lastMediumRisk = 0;
       if (index == 3) mockRiskCounters.lastLowRisk = 0;
       if (index == 4) mockRiskCounters.lastInfoRisk = 0;
-      sDashboard.adjustWithRiskCounters(mockRiskCounters, dom.window.document);
+      sDashboard.adjustWithRiskCounters(mockRiskCounters, dom.window.document, false);
 
       // Assert
       test.value(securityStatus.style.backgroundColor)

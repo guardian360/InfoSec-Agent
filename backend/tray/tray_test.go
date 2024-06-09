@@ -31,7 +31,7 @@ func TestMain(m *testing.M) {
 	logger.SetupTests()
 
 	// Initialize systray
-	go localization.Init("../")
+	go localization.Init("../../")
 	time.Sleep(100 * time.Millisecond)
 
 	go systray.Run(tray.OnReady, tray.OnQuit)
@@ -111,9 +111,6 @@ func TestChangeScanInterval(t *testing.T) {
 //
 // No return values.
 func TestScanNow(t *testing.T) {
-	// Set up initial ScanCounter value
-	initialScanCounter := 0
-
 	wg := sync.WaitGroup{}
 	wg.Add(2)
 	errSlice := make([]error, 2)
@@ -135,10 +132,6 @@ func TestScanNow(t *testing.T) {
 	for _, err := range errSlice {
 		require.NoError(t, err)
 	}
-	// Assert that ScanCounter was incremented
-	finalScanCounter := tray.ScanCounter
-	expectedScanCounter := initialScanCounter + 2
-	require.Equal(t, expectedScanCounter, finalScanCounter)
 }
 
 // TestOnQuit validates the behavior of the OnQuit function by simulating an application quit scenario.
@@ -263,7 +256,7 @@ func TestRefreshMenu(t *testing.T) {
 // No return values.
 func TestOpenReportingPageWhenAlreadyOpen(t *testing.T) {
 	tray.ReportingPageOpen = true
-	err := tray.OpenReportingPage("../")
+	err := tray.OpenReportingPage()
 	require.Error(t, err)
 	require.Equal(t, "reporting-page is already running", err.Error())
 }

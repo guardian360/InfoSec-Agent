@@ -36,15 +36,15 @@ export function openPrivacyDashboardPage() {
         <div class="data-segment-header">
           <p class="lang-choose-issue-description"></p>
         </div>
-        <a id="suggested-issue" class="issue-button privacy-button lang-suggested-issue"><p></p></a>
-        <a id="scan-now" class="issue-button privacy-button lang-scan-now"></a>
+        <a id="suggested-issue" class="privacy-button lang-suggested-issue"><p></p></a>
+        <a id="scan-now" class="privacy-button lang-scan-now"></a>
       </div>
       <div class="dashboard-segment risk-areas">
         <div class="data-segment-header">
           <p class="lang-privacy-risk-areas"></p>
         </div>
         <div class="security-area-buttons">
-          <div class="security-area privacy-button" id="privacy-button-permissions">
+          <div class="security-area privacy-risk-button" id="privacy-button-permissions">
             <a>
               <p>
                 <span class="lang-permissions"></span>
@@ -52,12 +52,12 @@ export function openPrivacyDashboardPage() {
               </p>
             </a>
           </div>
-          <div class="security-area privacy-button" id="privacy-button-browser">
+          <div class="security-area privacy-risk-button" id="privacy-button-browser">
             <a>
               <p><span class="lang-browser"></span><span class="material-symbols-outlined">travel_explore</span></p>
             </a>
           </div>
-          <div class="security-area privacy-button" id="privacy-button-other">
+          <div class="security-area privacy-risk-button" id="privacy-button-other">
             <a>
               <p><span class="lang-other"></span><span class="material-symbols-outlined">view_cozy</span></p>
             </a>
@@ -140,7 +140,7 @@ export function openPrivacyDashboardPage() {
   `;
   // Set counters on the page to the right values
   let rc = JSON.parse(sessionStorage.getItem('PrivacyRiskCounters'));
-  adjustWithRiskCounters(rc, document);
+  adjustWithRiskCounters(rc, document, true);
   setMaxInterval(rc, document);
 
   // Localize the static content of the dashboard
@@ -199,7 +199,7 @@ export function openPrivacyDashboardPage() {
   document.getElementById('scan-now').addEventListener('click', async () => {
     await scanTest(true);
     rc = JSON.parse(sessionStorage.getItem('PrivacyRiskCounters'));
-    adjustWithRiskCounters(rc, document);
+    adjustWithRiskCounters(rc, document, true);
     setMaxInterval(rc, document);
     g.rc = rc;
     await g.changeGraph();
