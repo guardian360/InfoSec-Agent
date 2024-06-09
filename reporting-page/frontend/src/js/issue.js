@@ -11,6 +11,7 @@ import {getLocalization} from './localize.js';
 import {retrieveTheme} from './personalize.js';
 import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
 import {scanTest} from './database.js';
+import {openAllChecksPage} from './all-checks.js';
 
 let stepCounter = 0;
 const issuesWithResultsShow =
@@ -79,7 +80,7 @@ export function previousSolutionStep(solutionText, solutionScreenshot, issue) {
  * @param {string} issueId Id of the issue to open
  * @param {string} severity severity of the issue to open
  */
-export async function openIssuePage(issueId, severity) {
+export async function openIssuePage(issueId, severity, back = undefined) {
   retrieveTheme();
   closeNavigation(document.body.offsetWidth);
   markSelectedNavigationItem('issue-button');
@@ -130,7 +131,7 @@ export async function openIssuePage(issueId, severity) {
             <div class="lang-scan-again button" id="scan-button"></div>
           </div>
         </div>
-        <div class="lang-back-button button" id="back-button"></div>
+        <div class="button" id="back-button"></div>
       </div>
     `;
   } else { // Issue has screenshots, display the solution guide
@@ -155,7 +156,7 @@ export async function openIssuePage(issueId, severity) {
               </div>
             </div>
           </div>
-          <div class="lang-back-button button" id="back-button"></div>
+          <div class="button" id="back-button"></div>
         </div>
       `;
     }
@@ -177,17 +178,25 @@ export async function openIssuePage(issueId, severity) {
     updateSolutionStep(solutionText, solutionScreenshot, currentIssue, stepCounter);
   }
 
+  if (back == undefined) {
+    document.getElementById('back-button').addEventListener('click', () => openIssuesPage());
+    document.getElementById('back-button').classList.add('lang-back-button-issues');
+  } else {
+    document.getElementById('back-button').addEventListener('click', () => openAllChecksPage(back));
+    document.getElementById('back-button').classList.add('lang-back-button-checks');
+  }
+
   const texts = ['lang-information', 'lang-findings', 'lang-solution', 'lang-previous-button',
-    'lang-next-button', 'lang-back-button', 'lang-port', 'lang-password',
+    'lang-next-button', 'lang-back-button-issues', 'lang-back-button-checks', 'lang-port', 'lang-password',
     'lang-acceptable', 'lang-cookies', 'lang-permissions', 'lang-scan-again'];
   const localizationIds = ['Issues.Information', 'Issues.Findings', 'Issues.Solution', 'Issues.Previous',
-    'Issues.Next', 'Issues.Back', 'Issues.Port', 'Issues.Password',
+    'Issues.Next', 'Issues.BackIssues', 'Issues.BackChecks', 'Issues.Port', 'Issues.Password',
     'Issues.Acceptable', 'Issues.Cookies', 'Issues.Permissions', 'Issues.ScanAgain',
   ];
   for (let i = 0; i < texts.length; i++) {
     getLocalization(localizationIds[i], texts[i]);
   }
-  document.getElementById('back-button').addEventListener('click', () => openIssuesPage());
+  
   document.getElementById('scan-button').addEventListener('click', async () => {
     await scanTest(true);
     openIssuePage(issueId, severity);

@@ -6,6 +6,7 @@ import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js'
 import {retrieveTheme} from './personalize.js';
 import {scanTest} from './database.js';
 import {suggestedIssue} from './home.js';
+import {openAllChecksPage} from './all-checks.js';
 
 /** Load the content of the Security Dashboard page */
 export function openSecurityDashboardPage() {
@@ -42,7 +43,7 @@ export function openSecurityDashboardPage() {
           <p class="lang-security-risk-areas"></p>
         </div>
         <div class="security-area-buttons">
-          <div class="security-area security-button">
+          <div class="security-area security-button" id="security-button-applications">
             <a>
               <p>
                 <span class="lang-applications"></span>
@@ -50,17 +51,17 @@ export function openSecurityDashboardPage() {
               </p>
             </a>
           </div>
-          <div class="security-area security-button">
-            <a>
-              <p><span class="lang-browser"></span><span class="material-symbols-outlined">travel_explore</span></p>
-            </a>
-          </div>
-          <div class="security-area security-button">
+          <div class="security-area security-button" id="security-button-devices">
             <a>
               <p><span class="lang-devices"></span><span class="material-symbols-outlined">devices</span></p>
             </a>
           </div>
-          <div class="security-area security-button">
+          <div class="security-area security-button" id="security-button-network">
+          <a>
+            <p><span class="lang-network"></span><span class="material-symbols-outlined">lan</span></p>
+          </a>
+        </div>
+          <div class="security-area security-button" id="security-button-os">
             <a>
               <p>
                 <span class="lang-operating-system"></span>
@@ -68,12 +69,12 @@ export function openSecurityDashboardPage() {
               </p>        
             </a>
           </div>
-          <div class="security-area security-button">
+          <div class="security-area security-button" id="security-button-passwords">
             <a>
               <p><span class="lang-passwords"></span><span class="material-symbols-outlined">key</span></p>
             </a>
           </div>
-          <div class="security-area security-button">
+          <div class="security-area security-button" id="security-button-other">
             <a>
               <p><span class="lang-other"></span><span class="material-symbols-outlined">view_cozy</span></p>
             </a>
@@ -175,8 +176,8 @@ export function openSecurityDashboardPage() {
     'lang-scan-now',
     'lang-security-risk-areas',
     'lang-applications',
-    'lang-browser',
     'lang-devices',
+    'lang-network',
     'lang-operating-system',
     'lang-passwords',
     'lang-other',
@@ -200,8 +201,8 @@ export function openSecurityDashboardPage() {
     'Dashboard.ScanNow',
     'Dashboard.SecurityRiskAreas',
     'Dashboard.Applications',
-    'Dashboard.Browser',
     'Dashboard.Devices',
+    'Dashboard.Network',
     'Dashboard.OperatingSystem',
     'Dashboard.Passwords',
     'Dashboard.Other',
@@ -227,6 +228,14 @@ export function openSecurityDashboardPage() {
     await g.changeGraph();
   });
   document.getElementById('suggested-issue').addEventListener('click', () => suggestedIssue('Security'));
+
+  // Add links to checks page
+  document.getElementById('security-button-applications').addEventListener('click', () => openAllChecksPage('applications'));
+  document.getElementById('security-button-devices').addEventListener('click', () => openAllChecksPage('devices'));
+  document.getElementById('security-button-network').addEventListener('click', () => openAllChecksPage('network'));
+  document.getElementById('security-button-os').addEventListener('click', () => openAllChecksPage('os'));
+  document.getElementById('security-button-passwords').addEventListener('click', () => openAllChecksPage('passwords'));
+  document.getElementById('security-button-other').addEventListener('click', () => openAllChecksPage('security-other'));
 }
 
 /* istanbul ignore next */

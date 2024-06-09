@@ -31,3 +31,8 @@
   font-size: 18px;
   font-weight: bold;
 }
+
+.all-checks-check:hover {
+  cursor: pointer;
+  color: var(--text-settings-hover);
+}
