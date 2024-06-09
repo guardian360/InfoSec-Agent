@@ -45,7 +45,7 @@ var testsValid = []func(t *testing.T){
 
 func TestMain(m *testing.M) {
 	logger.SetupTests()
-	go localization.Init("../")
+	go localization.Init("../../")
 	// Run tests
 	exitCode := m.Run()
 

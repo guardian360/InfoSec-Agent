@@ -31,7 +31,7 @@ func TestMain(m *testing.M) {
 	logger.SetupTests()
 
 	// Initialize systray
-	go localization.Init("../")
+	go localization.Init("../../")
 	time.Sleep(100 * time.Millisecond)
 
 	go systray.Run(tray.OnReady, tray.OnQuit)
@@ -256,7 +256,7 @@ func TestRefreshMenu(t *testing.T) {
 // No return values.
 func TestOpenReportingPageWhenAlreadyOpen(t *testing.T) {
 	tray.ReportingPageOpen = true
-	err := tray.OpenReportingPage("../")
+	err := tray.OpenReportingPage()
 	require.Error(t, err)
 	require.Equal(t, "reporting-page is already running", err.Error())
 }
