@@ -56,7 +56,7 @@ export function openSecurityDashboardPage() {
               <p><span class="lang-devices"></span><span class="material-symbols-outlined">devices</span></p>
             </a>
           </div>
-          <div class="security-area security-button" id="security-button-network">
+          <div class="security-area security-risk-button" id="security-button-network">
           <a>
             <p><span class="lang-network"></span><span class="material-symbols-outlined">lan</span></p>
           </a>
@@ -230,12 +230,18 @@ export function openSecurityDashboardPage() {
   document.getElementById('suggested-issue').addEventListener('click', () => suggestedIssue('Security'));
 
   // Add links to checks page
-  document.getElementById('security-button-applications').addEventListener('click', () => openAllChecksPage('applications'));
-  document.getElementById('security-button-devices').addEventListener('click', () => openAllChecksPage('devices'));
-  document.getElementById('security-button-network').addEventListener('click', () => openAllChecksPage('network'));
-  document.getElementById('security-button-os').addEventListener('click', () => openAllChecksPage('os'));
-  document.getElementById('security-button-passwords').addEventListener('click', () => openAllChecksPage('passwords'));
-  document.getElementById('security-button-other').addEventListener('click', () => openAllChecksPage('security-other'));
+  document.getElementById('security-button-applications').addEventListener('click',
+    () => openAllChecksPage('applications'));
+  document.getElementById('security-button-devices').addEventListener('click',
+    () => openAllChecksPage('devices'));
+  document.getElementById('security-button-network').addEventListener('click',
+    () => openAllChecksPage('network'));
+  document.getElementById('security-button-os').addEventListener('click',
+    () => openAllChecksPage('os'));
+  document.getElementById('security-button-passwords').addEventListener('click',
+    () => openAllChecksPage('passwords'));
+  document.getElementById('security-button-other').addEventListener('click',
+    () => openAllChecksPage('security-other'));
 }
 
 /* istanbul ignore next */

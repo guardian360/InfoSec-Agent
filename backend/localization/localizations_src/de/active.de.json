@@ -209,6 +209,9 @@
     "Id36":"Microsoft Edge cookies stored",
     "Id37":"Windows Firewall enabled/disabled",
     "Id38":"Windows password length",
-    "Id39":"Credential Guard enabled/disabled"
+    "Id39":"Credential Guard enabled/disabled",
+    "Id40":"NetBIOS over TCP/IP enabled/disabled",
+    "Id41":"WPAD service enabled/disabled",
+    "Id42":"Windows automatic Screen Lock enabled/disabled"
   }
 }

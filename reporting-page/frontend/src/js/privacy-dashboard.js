@@ -207,9 +207,12 @@ export function openPrivacyDashboardPage() {
   document.getElementById('suggested-issue').addEventListener('click', () => suggestedIssue('Privacy'));
 
   // Add links to checks page
-  document.getElementById('privacy-button-permissions').addEventListener('click', () => openAllChecksPage('permissions'));
-  document.getElementById('privacy-button-browser').addEventListener('click', () => openAllChecksPage('browser'));
-  document.getElementById('privacy-button-other').addEventListener('click', () => openAllChecksPage('privacy-other'));
+  document.getElementById('privacy-button-permissions').addEventListener('click',
+    () => openAllChecksPage('permissions'));
+  document.getElementById('privacy-button-browser').addEventListener('click',
+    () => openAllChecksPage('browser'));
+  document.getElementById('privacy-button-other').addEventListener('click',
+    () => openAllChecksPage('privacy-other'));
 }
 
 /* istanbul ignore next */

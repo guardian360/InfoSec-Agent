@@ -140,7 +140,7 @@ export function suggestedIssue(type) {
   }
 
   // Open the issue page of the issue with the highest severity
-  openIssuePage(maxSeverityIssue.jsonkey, maxSeverityIssue.severity, undefined);
+  openIssuePage(maxSeverityIssue.jsonkey, maxSeverityIssue.severity);
   document.getElementById('scan-now').addEventListener('click', () => scanTest(true));
 }
 

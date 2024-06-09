@@ -83,6 +83,7 @@ export function previousSolutionStep(solutionText, solutionScreenshot, issue) {
  *
  * @param {string} issueId Id of the issue to open
  * @param {string} severity severity of the issue to open
+ * @param {string} back if not undefined, back navigation to allChecksPage enabled
  */
 export async function openIssuePage(issueId, severity, back = undefined) {
   retrieveTheme();
@@ -199,7 +200,7 @@ export async function openIssuePage(issueId, severity, back = undefined) {
   for (let i = 0; i < texts.length; i++) {
     getLocalization(localizationIds[i], texts[i]);
   }
-  
+
   document.getElementById('scan-button').addEventListener('click', async () => {
     await scanTest(true);
     openIssuePage(issueId, severity);
@@ -497,4 +498,13 @@ export function getVersionSolution(issue, index) {
   default:
     return solution;
   }
+}
+
+/**
+ * Function to scroll to an element
+ * @param {HTMLElement} element node to scroll to
+ */
+export function scrollToElement(element) {
+  /* istanbul ignore next */
+  element.scrollIntoView({behavior: 'smooth', block: 'center', inline: 'nearest'});
 }

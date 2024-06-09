@@ -1,10 +1,13 @@
 import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
 import {retrieveTheme} from './personalize.js';
-import {getLocalization,getLocalizationString} from './localize.js';
+import {getLocalization, getLocalizationString} from './localize.js';
 import {LogError as logError} from '../../wailsjs/go/main/Tray.js';
-import {openIssuePage} from './issue.js';
+import {openIssuePage, scrollToElement} from './issue.js';
 
-/** Load the content of the About page */
+/**
+ * Load the content of the About page
+ * @param {String} area area to scroll to on the page when opened
+ */
 export async function openAllChecksPage(area) {
   retrieveTheme();
   closeNavigation(document.body.offsetWidth);
@@ -23,7 +26,9 @@ export async function openAllChecksPage(area) {
         </div>
         <p class="all-checks-segment-text lang-all-checks-applications-text">
         </p>
-        <p class="all-checks-segment-line" id="AllChecks.Applications">Here are some checks we run regarding your browser:</p>
+        <p class="all-checks-segment-line" id="AllChecks.Applications">
+          Here are some checks we run regarding your browser:
+        </p>
         <div class="checksList" id="securityApplications"></div>
       </div>
       <div class="all-checks-segment" id="devices"> 
@@ -32,7 +37,9 @@ export async function openAllChecksPage(area) {
         </div>
         <p class="all-checks-segment-text lang-all-checks-devices-text">
         </p>
-        <p class="all-checks-segment-line" id="AllChecks.Devices">Here are some checks we run regarding your browser:</p>
+        <p class="all-checks-segment-line" id="AllChecks.Devices">
+          Here are some checks we run regarding your browser:
+        </p>
         <div class="checksList" id="securityDevices"></div>
       </div>
       <div class="all-checks-segment" id="network">
@@ -41,7 +48,9 @@ export async function openAllChecksPage(area) {
         </div>
         <p class="all-checks-segment-text lang-all-checks-network-text">
         </p>
-        <p class="all-checks-segment-line" id="AllChecks.Network">Here are some checks we run regarding your browser:</p>
+        <p class="all-checks-segment-line" id="AllChecks.Network">
+          Here are some checks we run regarding your browser:
+        </p>
         <div class="checksList" id="securityNetwork"></div>
       </div>
       <div class="all-checks-segment"id="os">
@@ -50,7 +59,9 @@ export async function openAllChecksPage(area) {
         </div>
         <p class="all-checks-segment-text lang-all-checks-os-text">
         </p>
-        <p class="all-checks-segment-line" id="AllChecks.OS">Here are some checks we run regarding your browser:</p>
+        <p class="all-checks-segment-line" id="AllChecks.OS">
+          Here are some checks we run regarding your browser:
+        </p>
         <div class="checksList" id="securityOS"></div>
       </div>
       <div class="all-checks-segment" id="passwords">
@@ -59,7 +70,9 @@ export async function openAllChecksPage(area) {
         </div>
         <p class="all-checks-segment-text lang-all-checks-passwords-text">
         </p>
-        <p class="all-checks-segment-line" id="AllChecks.Passwords">Here are some checks we run regarding your browser:</p>
+        <p class="all-checks-segment-line" id="AllChecks.Passwords">
+          Here are some checks we run regarding your browser:
+        </p>
         <div class="checksList" id="securityPasswords" data-area="passwords"></div>
       </div>
       <div class="all-checks-segment" id="security-other">
@@ -68,7 +81,9 @@ export async function openAllChecksPage(area) {
         </div>
         <p class="all-checks-segment-text lang-all-checks-other-security-text">
         </p>
-        <p class="all-checks-segment-line" id="AllChecks.Security">Here are some checks we run regarding your browser:</p>
+        <p class="all-checks-segment-line" id="AllChecks.Security">
+          Here are some checks we run regarding your browser:
+        </p>
         <div class="checksList" id="securityOther" data-area="security-other"></div>
       </div>
       <div class="all-checks-segment all-checks-title"> <!-- title bottom segment -->
@@ -80,7 +95,9 @@ export async function openAllChecksPage(area) {
         </div>
         <p class="all-checks-segment-text lang-all-checks-permissions-text">
         </p>
-        <p class="all-checks-segment-line" id="AllChecks.Permissions">Here are some checks we run regarding your browser:</p>
+        <p class="all-checks-segment-line" id="AllChecks.Permissions">
+          Here are some checks we run regarding your browser:
+        </p>
         <div class="checksList" id="privacyPermissions" data-area="permissions"></div>
       </div>
       <div class="all-checks-segment" id="browser">
@@ -89,7 +106,9 @@ export async function openAllChecksPage(area) {
         </div>
         <p class="all-checks-segment-text lang-all-checks-browser-text"> 
         </p>
-        <p class="all-checks-segment-line" id="AllChecks.Browser">Here are some checks we run regarding your browser:</p>
+        <p class="all-checks-segment-line" id="AllChecks.Browser">
+          Here are some checks we run regarding your browser:
+        </p>
         <div class="all-checks-segment-header">
           <p>Google Chrome</p>
         </div>
@@ -109,7 +128,9 @@ export async function openAllChecksPage(area) {
         </div>
         <p class="all-checks-segment-text lang-all-checks-other-privacy-text">
         </p>
-        <p class="all-checks-segment-line" id="AllChecks.Privacy">Here are some checks we run regarding your browser:</p>
+        <p class="all-checks-segment-line" id="AllChecks.Privacy">
+          Here are some checks we run regarding your browser:
+        </p>
         <div class="checksList" id="privacyOther" data-area="privacy-other"></div>
       </div>
     </div>
@@ -131,7 +152,8 @@ export async function openAllChecksPage(area) {
   const checks = document.getElementsByClassName('all-checks-check');
   for (let i = 0; i < checks.length; i++) {
     const issue = issues.find((issue) => issue.id == checks[i].id);
-    checks[i].addEventListener('click', () => openIssuePage(issue.jsonkey,issue.severity,checks[i].parentElement.parentElement.parentElement.id));
+    checks[i].addEventListener('click',
+      () => openIssuePage(issue.jsonkey, issue.severity, checks[i].parentElement.parentElement.parentElement.id));
   }
 
   // Localize the static content of the about page
@@ -181,68 +203,65 @@ export async function openAllChecksPage(area) {
     'AllChecks.BrowserText',
     'AllChecks.OtherPrivacyText',
   ];
-  for (let ids = 1; ids < 40; ids++) {
+  for (let ids = 1; ids < 43; ids++) {
     staticAboutPageConent.push('lang-id'+ids.toString());
-    localizationIds.push('AllChecks.Id'+ids.toString())
+    localizationIds.push('AllChecks.Id'+ids.toString());
   }
-  console.log(staticAboutPageConent);
-  console.log(localizationIds);
+
   for (let i = 0; i < staticAboutPageConent.length; i++) {
     getLocalization(localizationIds[i], staticAboutPageConent[i]);
   }
 
   // Add the right suffix to the lines before the bullet lists
   const lines = document.getElementsByClassName('all-checks-segment-line');
-  console.log(lines.length);
   for (let i = 0; i < lines.length; i++) {
     const text = await getLocalizationString(lines[i].id);
-    console.log(text);
     lines[i].innerHTML += text.toLowerCase() + ':';
   }
 
   const element = getViewedElement(area);
-  element.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+  scrollToElement(element);
 }
 
 /**
  * Get the node of the page you want to view when opening the page.
  * @param {String} area Area on the page to view
- * @returns {HTMLElement} Node where to view the page one
+ * @return {HTMLElement} Node where to view the page one
  */
-function getViewedElement(area) {
+export function getViewedElement(area) {
   let element;
   switch (area) {
-    case 'applications' :
-      element = document.getElementById('applications');
-      break;
-    case 'devices' :
-      element = document.getElementById('devices');
-      break;
-    case 'network' :
-      element = document.getElementById('network');
-      break;
-    case 'os' :
-      element = document.getElementById('os');
-      break;
-    case 'passwords' :
-      element = document.getElementById('passwords');
-      break;
-    case 'security-other' :
-      element = document.getElementById('security-other');
-      break;
-    case 'permissions' :
-      element = document.getElementById('permissions');
-      break;
-    case 'browser' :
-      element = document.getElementById('browser');
-      break;
-    case 'privacy-other' :
-      element = document.getElementById('privacy-other');
-      break;
-    default :
-      element = document.getElementById('top');
+  case 'applications':
+    element = document.getElementById('applications');
+    break;
+  case 'devices':
+    element = document.getElementById('devices');
+    break;
+  case 'network':
+    element = document.getElementById('network');
+    break;
+  case 'os':
+    element = document.getElementById('os');
+    break;
+  case 'passwords':
+    element = document.getElementById('passwords');
+    break;
+  case 'security-other':
+    element = document.getElementById('security-other');
+    break;
+  case 'permissions':
+    element = document.getElementById('permissions');
+    break;
+  case 'browser':
+    element = document.getElementById('browser');
+    break;
+  case 'privacy-other':
+    element = document.getElementById('privacy-other');
+    break;
+  default:
+    element = document.getElementById('top');
   }
-  return element
+  return element;
 }
 
 /* istanbul ignore next */
@@ -254,25 +273,26 @@ if (typeof document !== 'undefined') {
   }
 }
 
-const areaLists = {
+export const areaLists = {
   'securityApplications': [20],
-  'securityDevices': [1,2],
-  'securityNetwork': [11,13],
-  'securityOS': [14,15,17,18,19,33,37],
-  'securityPasswords': [5,16,38],
-  'securityOther': [3,12,32,34,39],
-  'privacyPermissions': [6,7,8,9,10],
-  'privacyBrowserChrome': [21,23,25,35],
-  'privacyBrowserEdge': [22,24,26,36],
-  'privacyBrowserFirefox': [29,31,30,27,28],
-  'privacyOther': [4]
-}
+  'securityDevices': [1, 2],
+  'securityNetwork': [11, 13, 40, 41],
+  'securityOS': [14, 15, 17, 18, 19, 33, 37],
+  'securityPasswords': [5, 16, 38],
+  'securityOther': [3, 12, 32, 34, 39, 42],
+  'privacyPermissions': [6, 7, 8, 9, 10],
+  'privacyBrowserChrome': [21, 23, 25, 35],
+  'privacyBrowserEdge': [22, 24, 26, 36],
+  'privacyBrowserFirefox': [29, 31, 30, 27, 28],
+  'privacyOther': [4],
+};
 
 /**
    * create a bullet list for each entry of a security or privacy area
-   * @param {string} listID id of the list to create a bullet list for
+   * @param {string} listId id of the list to create a bullet list for
+   * @return {string} returns an html list
    */
-function createBulletList(listId) {
+export function createBulletList(listId) {
   const list = areaLists[listId];
   let resultLine = `<ul>`;
   list.forEach((check) => {
