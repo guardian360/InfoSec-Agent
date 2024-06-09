@@ -98,7 +98,8 @@
     "ShareButton": "Partager les progrès",
     "ShareText": "Sélectionnez où partager vos progrès, enregistrez et téléchargez-le, puis partagez-le avec d'autres !",
     "SaveText": "Enregistrer",
-    "Share": "Partager"
+    "Share": "Partager",
+    "LighthouseProgress":"Progrès"
   },
   "Issues":
   {

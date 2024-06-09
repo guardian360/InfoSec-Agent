@@ -10,10 +10,25 @@ import {saveProgress, shareProgress, selectSocialMedia} from './share.js';
 import data from '../databases/database.en-GB.json' assert { type: 'json' };
 import {showModal} from './settings.js';
 
+var lighthousePath;
 /** Load the content of the Home page */
 export async function openHomePage() {
   // Load the video background path
-  const lighthouseState = await getImagePath('regular1.mp4');
+  switch(sessionStorage.getItem('savedPage')) {
+    case '0':
+      lighthousePath = 'first-state.mkv'
+      break;
+    case '1':
+      lighthousePath = 'almost-state.mkv'
+      break;
+    case '2':
+      lighthousePath = 'final-state.mkv'
+      break;
+    default:
+      lighthousePath = 'first-state.mkv'
+  }
+
+  const lighthouseState = await getImagePath(lighthousePath);
   logDebug('lighthouseState: ' + lighthouseState);
 
   retrieveTheme();
@@ -43,6 +58,15 @@ export async function openHomePage() {
         <a id="suggested-issue" class="issue-button lang-suggested-issue"></a>
         <a id="scan-now" class="issue-button lang-scan-now"></a>
         <a id="share-progress" class="issue-button lang-share-button"></a>
+      </div>
+      <div class="data-segment">
+        <div class="data-segment-header">
+          <p class="lang-lighthouse-progress"></p>
+        </div>
+        <div class="progress-container">
+        <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <p id="progress-text"></p>
       </div>
     </div>
   </div>
@@ -85,6 +109,7 @@ export async function openHomePage() {
     'lang-share-text',
     'lang-save-text',
     'lang-share',
+    'lang-lighthouse-progress',
   ];
   const localizationIds = [
     'Dashboard.RiskLevelDistribution',
@@ -96,6 +121,7 @@ export async function openHomePage() {
     'Dashboard.ShareText',
     'Dashboard.SaveText',
     'Dashboard.Share',
+    'Dashboard.LighthouseProgress'
   ];
   for (let i = 0; i < staticHomePageContent.length; i++) {
     getLocalization(localizationIds[i], staticHomePageContent[i]);
@@ -112,6 +138,23 @@ export async function openHomePage() {
   document.getElementById('select-x').addEventListener('click', () => selectSocialMedia('x'));
   document.getElementById('select-linkedin').addEventListener('click', () => selectSocialMedia('linkedin'));
   document.getElementById('select-instagram').addEventListener('click', () => selectSocialMedia('instagram'));
+
+  //Progress bar
+  document.addEventListener('DOMContentLoaded', () => {
+    const progressBar = document.getElementById('progress-bar');
+    const progressText = document.getElementById('progress-text');
+
+    // Assuming the points are stored in local storage under the key 'userPoints'
+    const userPoints = parseInt(localStorage.getItem('userPoints')) || 0;
+    const pointsToNextState = 100; // The points required to reach the next state
+
+    // Calculate the progress percentage
+    const progressPercentage = Math.min((userPoints / pointsToNextState) * 100, 100);
+
+    // Update the progress bar width and text
+    progressBar.style.width = progressPercentage + '%';
+    progressText.textContent = `${userPoints} / ${pointsToNextState} (${progressPercentage.toFixed(2)}%)`;
+  });
 }
 
 /** Opens the issue page of the issue with the highest risk level

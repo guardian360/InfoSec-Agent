@@ -88,3 +88,23 @@ body {
   z-index: -1; /* Ensure it is behind all other elements */
   object-fit: cover; /* Ensure the video covers the entire background without distortion */
 }
+
+.progress-container {
+  width: 90%;
+  background-color: #e0e0e0;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+}
+
+.progress-bar {
+  height: 30px;
+  background-color: #76c7c0;
+  width: 0;
+}
+
+#progress-text {
+  font-size: 1.2em;
+  color: #333;
+}
