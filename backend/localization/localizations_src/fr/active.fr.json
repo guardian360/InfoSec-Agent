@@ -17,11 +17,11 @@
     "Cancel": "Annuler",
     "ScanInterval": {
       "Title": "Changer l'intervalle de scan",
-      "Content": "Entrez l'intervalle de scan (en heures) :",
+      "Content": "Entrez l'intervalle de scan (en jours) :",
       "ChangedTitle": "Intervalle de scan modifié",
-      "ChangedContent": "Intervalle de scan modifié à %d heures.",
+      "ChangedContent": "Intervalle de scan modifié à %d jour(s).",
       "InvalidChangeTitle": "Entrée d'intervalle de scan invalide",
-      "InvalidChangeContent": "Entrée invalide. Utilisation de l'intervalle précédent de %d heures."
+      "InvalidChangeContent": "Entrée invalide. Utilisation de l'intervalle précédent de %d jour(s)."
     },
     "Scan": {
       "Title": "Scan de sécurité/confidentialité",
