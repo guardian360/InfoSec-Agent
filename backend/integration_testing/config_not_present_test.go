@@ -8,8 +8,6 @@ import (
 var testsNotPresent = []func(t *testing.T){
 	i.TestIntegrationFirefoxFolderNotExists,
 	// TODO: turn back on when the test is fixed
-	// i.TestIntegrationLoginMethodPasswordAndPIN,
-	// TODO: turn back on when the test is fixed
 	// i.TestIntegrationOutdatedWin10UpToDate,
 	i.TestIntegrationUACPartialEnabled,
 }
