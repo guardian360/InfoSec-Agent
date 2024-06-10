@@ -7,6 +7,7 @@ package tray
 import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/config"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/gamification"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/icon"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/localization"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
@@ -351,20 +352,11 @@ func ScanNow(dialogPresent bool) ([]checks.Check, error) {
 			return result, err
 		}
 	}
-	/*// Uncomment for points printing
-
-	//Temporary dummy game state. For future changed to the current saved game state.
-	//gsDummy := gamification.GameState{Points: 0, PointsHistory: nil, LighthouseState: 0}
-	gsDummy := gamification.GameState{Points: 0, PointsHistory: []int{}, LighthouseState: 0}
-
-	//Calculate points based on the scan results
-	gs, err := gamification.PointCalculation(gsDummy, result, "reporting-page/database.db")
+	// Update the game state based on the scan results
+	_, err = gamification.UpdateGameState(result, "../../reporting-page/database.db")
 	if err != nil {
 		logger.Log.ErrorWithErr("Error calculating points:", err)
-		return result, err
 	}
-
-	fmt.Print(gs)*/
 
 	return result, nil
 }

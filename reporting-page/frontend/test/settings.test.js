@@ -38,6 +38,9 @@ const dom = new JSDOM(`
             <a id="language-button">Change Language</a>
             <a id="windows-version-button" class="">Windows Version</a>
             <a id="scan-interval-button" class="lang-scan-interval"></a>
+            <a id="state-button-0">Change state to 0</a>
+            <a id="state-button-1">Change state to 1</a>
+            <a id="state-button-2">Change state to 2</a>
           </div>
         </div>
       </div>

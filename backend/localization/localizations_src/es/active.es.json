@@ -100,7 +100,8 @@
     "ShareButton": "Compartir progreso",
     "ShareText": "Selecciona dónde compartir tu progreso, guárdalo y descárgalo, ¡luego compártelo con otros!",
     "SaveText": "Guardar",
-    "Share": "Compartir"
+    "Share": "Compartir",
+    "LighthouseProgress":"Progreso"
   },
   "Issues":
   {
