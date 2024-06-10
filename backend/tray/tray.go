@@ -281,7 +281,7 @@ func ChangeScanInterval(testInput ...string) {
 			zenity.OKLabel(localization.Localize(Language, "Dialogs.OK")),
 			zenity.CancelLabel(localization.Localize(Language, "Dialogs.Cancel")),
 			zenity.EntryText(strconv.Itoa(scanInterval)),
-			zenity.DefaultItems("24"))
+			zenity.DefaultItems("7"))
 		if err != nil {
 			logger.Log.ErrorWithErr("Error creating dialog:", err)
 			return
@@ -526,7 +526,7 @@ func runScanWithDialog() (zenity.ProgressDialog, []checks.Check, error) {
 //
 // Returns: None.
 func updateScanInterval(interval int, test bool) {
-	logger.Log.Printf("INFO: Scan interval changed to " + strconv.Itoa(interval) + " hours")
+	logger.Log.Printf("INFO: Scan interval changed to " + strconv.Itoa(interval) + " day(s)")
 	if !test {
 		current := usersettings.LoadUserSettings()
 		current.ScanInterval = interval

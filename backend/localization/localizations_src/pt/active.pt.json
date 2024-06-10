@@ -16,12 +16,12 @@
     "OK": "OK",
     "Cancel": "Cancelar",
     "ScanInterval": {
-      "Title": "Alterar intervalo de escaneamento",
-      "Content": "Insira o intervalo de escaneamento (em horas):",
-      "ChangedTitle": "Intervalo de escaneamento alterado",
-      "ChangedContent": "Intervalo de escaneamento alterado para %d horas.",
-      "InvalidChangeTitle": "Entrada de intervalo de escaneamento inválida",
-      "InvalidChangeContent": "Entrada inválida. Usando o intervalo anterior de %d horas."
+      "Title": "Alterar Intervalo de Varredura",
+      "Content": "Insira o intervalo de varredura (em dias):",
+      "ChangedTitle": "Intervalo de Varredura Alterado",
+      "ChangedContent": "Intervalo de varredura alterado para %d dia(s).",
+      "InvalidChangeTitle": "Entrada de intervalo de varredura inválida",
+      "InvalidChangeContent": "Entrada inválida. Usando intervalo anterior de %d dia(s)."
     },
     "Scan": {
       "Title": "Escaneamento de Segurança/Privacidade",
