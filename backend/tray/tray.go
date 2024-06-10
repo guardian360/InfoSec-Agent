@@ -356,7 +356,6 @@ func ScanNow(dialogPresent bool) ([]checks.Check, error) {
 	_, err = gamification.UpdateGameState(result, "../../reporting-page/database.db")
 	if err != nil {
 		logger.Log.ErrorWithErr("Error calculating points:", err)
-		return result, err
 	}
 
 	return result, nil
