@@ -80,7 +80,7 @@ func PointCalculation(gs GameState, scanResults []checks.Check, databasePath str
 	for _, result := range scanResults {
 		if result.Error != nil {
 			logger.Log.ErrorWithErr("Error reading scan result", result.Error)
-			return gs, result.Error
+			continue
 		}
 		sev, err1 := database.GetSeverity(db, result.IssueID, result.ResultID)
 		if err1 != nil {
