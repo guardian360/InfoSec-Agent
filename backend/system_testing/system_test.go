@@ -37,11 +37,6 @@ func TestTrayFunctionality(t *testing.T) {
 	// Check that the language was correctly changed to Spanish
 	require.Equal(t, 3, tray.Language)
 
-	//// Run a scan
-	//_, err := tray.ScanNow(false)
-	//require.NoError(t, err)
-	//
-
 	wg := sync.WaitGroup{}
 	wg.Add(2)
 	errSlice := make([]error, 2)
@@ -87,7 +82,7 @@ func TestTrayFunctionality(t *testing.T) {
 		var buf bytes.Buffer
 		logger.Log.SetOutput(&buf)
 
-		wg := sync.WaitGroup{}
+		wg = sync.WaitGroup{}
 		wg.Add(1)
 		// Run the function with mocked user input
 		go func() {
