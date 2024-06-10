@@ -10,22 +10,22 @@ import {saveProgress, shareProgress, selectSocialMedia} from './share.js';
 import data from '../databases/database.en-GB.json' assert { type: 'json' };
 import {showModal} from './settings.js';
 
-var lighthousePath;
+let lighthousePath;
 /** Load the content of the Home page */
 export async function openHomePage() {
   // Load the video background path
-  switch(sessionStorage.getItem('savedPage')) {
-    case '0':
-      lighthousePath = 'first-state.mkv'
-      break;
-    case '1':
-      lighthousePath = 'almost-state.mkv'
-      break;
-    case '2':
-      lighthousePath = 'final-state.mkv'
-      break;
-    default:
-      lighthousePath = 'first-state.mkv'
+  switch (sessionStorage.getItem('state')) {
+  case '0':
+    lighthousePath = 'first-state.mkv';
+    break;
+  case '1':
+    lighthousePath = 'almost-state.mkv';
+    break;
+  case '2':
+    lighthousePath = 'final-state.mkv';
+    break;
+  default:
+    lighthousePath = 'first-state.mkv';
   }
 
   const lighthouseState = await getImagePath(lighthousePath);
@@ -121,7 +121,7 @@ export async function openHomePage() {
     'Dashboard.ShareText',
     'Dashboard.SaveText',
     'Dashboard.Share',
-    'Dashboard.LighthouseProgress'
+    'Dashboard.LighthouseProgress',
   ];
   for (let i = 0; i < staticHomePageContent.length; i++) {
     getLocalization(localizationIds[i], staticHomePageContent[i]);
@@ -139,7 +139,7 @@ export async function openHomePage() {
   document.getElementById('select-linkedin').addEventListener('click', () => selectSocialMedia('linkedin'));
   document.getElementById('select-instagram').addEventListener('click', () => selectSocialMedia('instagram'));
 
-  //Progress bar
+  // Progress bar
   document.addEventListener('DOMContentLoaded', () => {
     const progressBar = document.getElementById('progress-bar');
     const progressText = document.getElementById('progress-text');

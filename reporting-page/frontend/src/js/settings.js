@@ -80,6 +80,9 @@ if (typeof document !== 'undefined') {
     document.getElementById('windows-version-button')
       .addEventListener('click', () => showModal('window-version-modal'));
     document.getElementById('scan-interval-button').addEventListener('click', () => changeScanInterval());
+    document.getElementById('state-button-0').addEventListener('click', () => changeState(0));
+    document.getElementById('state-button-1').addEventListener('click', () => changeState(1));
+    document.getElementById('state-button-2').addEventListener('click', () => changeState(2));
 
     document.getElementById('windows-10').addEventListener('click', () => selectWindowsVersion(10));
     document.getElementById('windows-11').addEventListener('click', () => selectWindowsVersion(11));
@@ -141,4 +144,13 @@ export function selectWindowsVersion(version) {
   }
   sessionStorage.setItem('WindowsVersion', version);
   sessionStorage.setItem('WindowsVersionChanged', JSON.stringify(true));
+}
+
+/**
+ * Select state lighthouse
+ * @param {string} state state to select
+ */
+function changeState(state) {
+  sessionStorage.setItem('state', state);
+  openHomePage();
 }
