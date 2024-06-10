@@ -30,7 +30,6 @@ func TestMain(m *testing.M) {
 }
 
 func TestTrayFunctionality(t *testing.T) {
-
 	// Change the language to Spanish
 	tray.ChangeLanguage("Español")
 
