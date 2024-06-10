@@ -353,7 +353,7 @@ func ScanNow(dialogPresent bool) ([]checks.Check, error) {
 		}
 	}
 	// Update the game state based on the scan results
-	_, err = gamification.UpdateGameState(result, "../../reporting-page/database.db")
+	_, err = gamification.UpdateGameState(result, "reporting-page/database.db")
 	if err != nil {
 		logger.Log.ErrorWithErr("Error calculating points:", err)
 	}
@@ -424,10 +424,9 @@ func ChangeLanguage(testInput ...string) {
 	if test {
 		return
 	}
-	err := usersettings.SaveUserSettings(usersettings.UserSettings{
-		Language:     Language,
-		ScanInterval: usersettings.LoadUserSettings().ScanInterval,
-	})
+	current := usersettings.LoadUserSettings()
+	current.Language = Language
+	err := usersettings.SaveUserSettings(current)
 	if err != nil {
 		logger.Log.Warning("Language setting not saved to file")
 	}
@@ -529,11 +528,10 @@ func runScanWithDialog() (zenity.ProgressDialog, []checks.Check, error) {
 func updateScanInterval(interval int, test bool) {
 	logger.Log.Printf("INFO: Scan interval changed to " + strconv.Itoa(interval) + " day(s)")
 	if !test {
-		err := usersettings.SaveUserSettings(usersettings.UserSettings{
-			Language:     usersettings.LoadUserSettings().Language,
-			ScanInterval: interval,
-			NextScan:     time.Now().Add(time.Duration(interval) * (time.Hour * 24)),
-		})
+		current := usersettings.LoadUserSettings()
+		current.ScanInterval = interval
+		current.NextScan = time.Now().Add(time.Duration(interval) * time.Hour)
+		err := usersettings.SaveUserSettings(current)
 		if err != nil {
 			logger.Log.Warning("Scan interval setting not saved to file")
 		}
