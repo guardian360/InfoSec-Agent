@@ -48,14 +48,14 @@ func UpdateGameState(scanResults []checks.Check, databasePath string) (GameState
 	gs = LighthouseStateTransition(gs)
 
 	// Saving the game state in the user settings
-	err = usersettings.SaveUserSettings(usersettings.UserSettings{
-		Points:          gs.Points,
-		PointsHistory:   gs.PointsHistory,
-		TimeStamps:      gs.TimeStamps,
-		LighthouseState: gs.LighthouseState,
-	})
+	current := usersettings.LoadUserSettings()
+	current.Points = gs.Points
+	current.PointsHistory = gs.PointsHistory
+	current.TimeStamps = gs.TimeStamps
+	current.LighthouseState = gs.LighthouseState
+	err = usersettings.SaveUserSettings(current)
 	if err != nil {
-		logger.Log.Warning("Language setting not saved to file")
+		logger.Log.Warning("Gamification settings not saved to file")
 	}
 	return gs, nil
 }
