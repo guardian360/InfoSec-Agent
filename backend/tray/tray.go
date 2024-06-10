@@ -5,13 +5,13 @@
 package tray
 
 import (
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/usersettings"
-
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/config"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/icon"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/localization"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/scan"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/usersettings"
 
 	"github.com/getlantern/systray"
 	"github.com/ncruces/zenity"
@@ -124,7 +124,7 @@ func OnReady() {
 	for {
 		select {
 		case <-mReportingPage.ClickedCh:
-			err := OpenReportingPage("")
+			err := OpenReportingPage()
 			if err != nil {
 				logger.Log.ErrorWithErr("Error opening reporting page:", err)
 			}
@@ -177,64 +177,42 @@ func OnQuit() {
 //
 // Returns:
 //   - error: An error object if an error occurred during the process, otherwise nil.
-func OpenReportingPage(path string) error {
+func OpenReportingPage() error {
 	if ReportingPageOpen {
 		return errors.New("reporting-page is already running")
 	}
 
 	logger.Log.Debug("opening reporting page")
 
-	// TODO: use build tags to differentiate between development and release versions
-	// Get the current working directory
-	// Consideration: Wails can also send (termination) signals to the back-end, might be worth investigating
-	originalDir, err := os.Getwd()
-	logger.Log.Debug("current directory: " + originalDir)
-	if err != nil {
-		return fmt.Errorf("error getting current directory: %w", err)
-	}
-
-	// Change directory to reporting-page folder
-	err = os.Chdir(path + "reporting-page")
-	if err != nil {
-		return fmt.Errorf("error changing directory: %w", err)
-	}
-
-	// Restore the original working directory
-	defer func() {
-		err = os.Chdir(originalDir)
-		if err != nil {
-			logger.Log.ErrorWithErr("error changing directory:", err)
-		}
-		ReportingPageOpen = false
-	}()
-
-	//TODO: In a release version, there (should be) no need to build the application, just run it
-	const build = false
-	if build {
-		err = BuildReportingPage()
+	if config.BuildReportingPage {
+		err := BuildReportingPage()
 		if err != nil {
 			return err
 		}
 	}
 
 	// Set up the reporting-page executable
-	runCmd := exec.Command("build/bin/InfoSec-Agent-Reporting-Page")
+	runCmd := exec.Command(config.ReportingPagePath) // #nosec G204
 	runCmd.Stdout = os.Stdout
 	runCmd.Stderr = os.Stderr
 
 	// Set up a listener for the quit function from the system tray
 	go func() {
 		<-mQuit.ClickedCh
-		if err = runCmd.Process.Kill(); err != nil {
+		if err := runCmd.Process.Kill(); err != nil {
 			logger.Log.ErrorWithErr("error interrupting reporting-page process:", err)
 		}
 		ReportingPageOpen = false
 		systray.Quit()
 	}()
 
+	defer func() {
+		ReportingPageOpen = false
+	}()
+
 	// Run the reporting page executable
 	ReportingPageOpen = true
-	if err = runCmd.Run(); err != nil {
+	if err := runCmd.Run(); err != nil {
 		ReportingPageOpen = false
 		return fmt.Errorf("error running reporting-page: %w", err)
 	}
@@ -251,11 +229,25 @@ func OpenReportingPage(path string) error {
 // Returns:
 //   - error: An error object if an error occurred during the process, otherwise nil.
 func BuildReportingPage() error {
+	// Change directory to reporting-page folder
+	err := os.Chdir("reporting-page")
+	if err != nil {
+		return fmt.Errorf("error changing directory: %w", err)
+	}
+
+	// Restore the original working directory
+	defer func() {
+		err = os.Chdir("..")
+		if err != nil {
+			logger.Log.ErrorWithErr("error changing directory:", err)
+		}
+	}()
+
 	// Build reporting page
 	buildCmd := exec.Command("wails", "build")
 	buildCmd.Stdout = os.Stdout
 	buildCmd.Stderr = os.Stderr
-	if err := buildCmd.Run(); err != nil {
+	if err = buildCmd.Run(); err != nil {
 		return fmt.Errorf("error building reporting-page: %w", err)
 	}
 	logger.Log.Debug("reporting page built successfully")

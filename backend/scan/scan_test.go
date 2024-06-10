@@ -26,7 +26,7 @@ import (
 // Returns: None. The function calls os.Exit with the exit code returned by m.Run().
 func TestMain(m *testing.M) {
 	logger.SetupTests()
-	go localization.Init("../")
+	go localization.Init("../../")
 
 	// Run tests
 	exitCode := m.Run()
