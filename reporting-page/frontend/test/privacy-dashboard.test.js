@@ -38,11 +38,32 @@ jest.unstable_mockModule('../src/js/database.js', () => ({
 jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
   Localize: jest.fn().mockImplementation((input) => mockGetLocalization(input)),
   LoadUserSettings: jest.fn(),
+  GetImagePath: jest.fn(),
 }));
 
 // Mock openIssuesPage
 jest.unstable_mockModule('../src/js/issue.js', () => ({
   openIssuePage: jest.fn(),
+  scrollToElement: jest.fn(),
+}));
+
+// Mock openPersonalizePage
+jest.unstable_mockModule('../src/js/personalize.js', () => ({
+  openPersonalizePage: jest.fn(),
+  retrieveTheme: jest.fn(),
+}));
+
+// Mock suggestedIssue
+jest.unstable_mockModule('../src/js/home.js', () => ({
+  suggestedIssue: jest.fn(),
+}));
+
+// Mock Tray
+jest.unstable_mockModule('../wailsjs/go/main/Tray.js', () => ({
+  LogError: jest.fn(),
+  ChangeLanguage: jest.fn(),
+  ChangeScanInterval: jest.fn(),
+  LogDebug: jest.fn(),
 }));
 
 describe('Privacy dashboard page', function() {
@@ -100,7 +121,7 @@ describe('Privacy dashboard page', function() {
       if (index == 2) mockRiskCounters.lastMediumRisk = 0;
       if (index == 3) mockRiskCounters.lastLowRisk = 0;
       if (index == 4) mockRiskCounters.lastInfoRisk = 0;
-      sDashboard.adjustWithRiskCounters(mockRiskCounters, dom.window.document);
+      sDashboard.adjustWithRiskCounters(mockRiskCounters, dom.window.document, false);
 
       // Assert
       test.value(securityStatus.style.backgroundColor)
@@ -132,12 +153,13 @@ describe('Privacy dashboard page', function() {
     ];
     sessionStorage.setItem('DataBaseData', JSON.stringify(issues));
 
-    const issue = await import('../src/js/issue.js');
+    const home = await import('../src/js/home.js');
     const button = document.getElementById('suggested-issue');
-    const openIssuePageMock = jest.spyOn(issue, 'openIssuePage');
+    const suggestedIssueMock = jest.spyOn(home, 'suggestedIssue');
 
     // Assert
     button.dispatchEvent(clickEvent);
-    expect(openIssuePageMock).toHaveBeenCalled();
+
+    expect(suggestedIssueMock).toHaveBeenCalled();
   });
 });

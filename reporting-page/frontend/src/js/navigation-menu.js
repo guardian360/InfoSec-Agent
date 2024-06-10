@@ -58,20 +58,28 @@ function localize() {
     'lang-security-dashboard',
     'lang-privacy-dashboard',
     'lang-issues',
+    'lang-checks',
     'lang-integration',
     'lang-about',
     'lang-personalize-page',
     'lang-change-language',
+    'lang-windows-version',
+    'lang-scan-interval',
+    'lang-select-version',
   ];
   const localizationIds = [
     'Navigation.Home',
     'Navigation.SecurityDashboard',
     'Navigation.PrivacyDashboard',
     'Navigation.Issues',
+    'Navigation.Checks',
     'Navigation.Integration',
     'Navigation.About',
     'Navigation.Personalize',
     'Navigation.ChangeLanguage',
+    'Navigation.WindowsVersion',
+    'Navigation.ScanInterval',
+    'Navigation.SelectVersion',
   ];
   for (let i = 0; i < navbarItems.length; i++) {
     getLocalization(localizationIds[i], navbarItems[i]);

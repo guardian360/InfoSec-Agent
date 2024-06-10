@@ -53,6 +53,13 @@ export class PieChart {
     ];
     const yValues = [this.rc.lastNoRisk, this.rc.lastLowRisk,
       this.rc.lastMediumRisk, this.rc.lastHighRisk, this.rc.lastInfoRisk];
+
+    this.rc.highRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--high-risk-color');
+    this.rc.mediumRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--medium-risk-color');
+    this.rc.lowRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--low-risk-color');
+    this.rc.infoColor = getComputedStyle(document.documentElement).getPropertyValue('--info-color');
+    this.rc.noRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--no-risk-color');
+
     const barColors = [this.rc.noRiskColor, this.rc.lowRiskColor,
       this.rc.mediumRiskColor, this.rc.highRiskColor, this.rc.infoColor];
 

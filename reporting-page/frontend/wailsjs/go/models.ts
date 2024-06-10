@@ -50,6 +50,10 @@ export namespace usersettings {
 	    Integration: boolean;
 	    // Go type: time
 	    NextScan: any;
+	    Points: number;
+	    PointsHistory: number[];
+	    TimeStamps: time.Time[];
+	    LighthouseState: number;
 	
 	    static createFrom(source: any = {}) {
 	        return new UserSettings(source);
@@ -61,13 +65,17 @@ export namespace usersettings {
 	        this.ScanInterval = source["ScanInterval"];
 	        this.Integration = source["Integration"];
 	        this.NextScan = this.convertValues(source["NextScan"], null);
+	        this.Points = source["Points"];
+	        this.PointsHistory = source["PointsHistory"];
+	        this.TimeStamps = this.convertValues(source["TimeStamps"], time.Time);
+	        this.LighthouseState = source["LighthouseState"];
 	    }
 	
 		convertValues(a: any, classs: any, asMap: boolean = false): any {
 		    if (!a) {
 		        return a;
 		    }
-		    if (a.slice) {
+		    if (a.slice && a.map) {
 		        return (a as any[]).map(elem => this.convertValues(elem, classs));
 		    } else if ("object" === typeof a) {
 		        if (asMap) {

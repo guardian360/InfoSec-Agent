@@ -10,10 +10,15 @@ import {openIssuesPage, getUserSettings} from './issues.js';
 import {getLocalization} from './localize.js';
 import {retrieveTheme} from './personalize.js';
 import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
+import {GetImagePath as getImagePath} from '../../wailsjs/go/main/App.js';
+import {LogError as logError, LogDebug as logDebug} from '../../wailsjs/go/main/Tray.js';
+import {scanTest} from './database.js';
+import {openAllChecksPage} from './all-checks.js';
 
 let stepCounter = 0;
 const issuesWithResultsShow =
-    ['11', '21', '60', '70', '80', '90', '100', '110', '160', '173', '201', '230', '271', '311', '320', '351', '361'];
+    ['11', '21', '60', '70', '80', '90', '100', '110', '160', '173',
+      '201', '230', '250', '260', '271', '300', '311', '320', '351', '361'];
 
 /** Update contents of solution guide
  *
@@ -22,9 +27,30 @@ const issuesWithResultsShow =
  * @param {*} issue Issue to update the solution step for
  * @param {int} stepCounter Counter specifying the current step
  */
-export function updateSolutionStep(solutionText, solutionScreenshot, issue, stepCounter) {
+export async function updateSolutionStep(solutionText, solutionScreenshot, issue, stepCounter) {
   solutionText.innerHTML = `${stepCounter + 1}. ${getVersionSolution(issue, stepCounter)}`;
-  solutionScreenshot.src = getVersionScreenshot(issue, stepCounter).toString();
+  const screenshot = await getVersionScreenshot(issue, stepCounter);
+  logDebug('screenshot source updateSolutionStep: ' + screenshot);
+  solutionScreenshot.src = screenshot;
+  // Hide/show buttons based on the current step
+  const previousButton = document.getElementById('previous-button');
+  const nextButton = document.getElementById('next-button');
+  const scanButton = document.getElementById('scan-button');
+
+  if (previousButton && nextButton) {
+    if (stepCounter === 0) {
+      previousButton.style.display = 'none';
+    } else {
+      previousButton.style.display = 'block';
+    }
+    if (stepCounter === issue.Solution.length - 1) {
+      nextButton.style.display = 'none';
+      scanButton.style.display = ' block';
+    } else {
+      nextButton.style.display = 'block';
+      scanButton.style.display = 'none';
+    }
+  }
 }
 
 /** Go to next step of solution guide
@@ -57,8 +83,9 @@ export function previousSolutionStep(solutionText, solutionScreenshot, issue) {
  *
  * @param {string} issueId Id of the issue to open
  * @param {string} severity severity of the issue to open
+ * @param {string} back if not undefined, back navigation to allChecksPage enabled
  */
-export async function openIssuePage(issueId, severity) {
+export async function openIssuePage(issueId, severity, back = undefined) {
   retrieveTheme();
   closeNavigation(document.body.offsetWidth);
   markSelectedNavigationItem('issue-button');
@@ -98,13 +125,18 @@ export async function openIssuePage(issueId, severity) {
     pageContents.innerHTML = `
       <h1 class="issue-name">${currentIssue.Name}</h1>
       <div class="issue-information">
-        <h2 id="information">Information</h2>
+        <h2 id="information" class="lang-information"></h2>
         <p id="description">${currentIssue.Information}</p>
-        <h2 id="solution">Acceptable</h2>
+        <h2 id="solution" class="lang-acceptable"></h2>
         <div class="issue-solution">
           <p id="solution-text">${getVersionSolution(currentIssue, stepCounter)}</p>
         </div>
-        <div class="button" id="back-button">Back to issues overview</div>
+        <div class="solution-buttons">
+          <div class="button-box">
+            <div class="lang-scan-again button" id="scan-button"></div>
+          </div>
+        </div>
+        <div class="button" id="back-button"></div>
       </div>
     `;
   } else { // Issue has screenshots, display the solution guide
@@ -124,19 +156,15 @@ export async function openIssuePage(issueId, severity) {
             <div class="solution-buttons">
               <div class="button-box">
                 <div id="previous-button" class="lang-previous-button button"></div>
-                <div id="next-button" class="lang-next-button button">;</div>
+                <div id="next-button" class="lang-next-button button"></div>
+                <div class="lang-scan-again button" id="scan-button"></div>
               </div>
             </div>
           </div>
-          <div class="lang-back-button button" id="back-button"></div>
+          <div class="button" id="back-button"></div>
         </div>
       `;
     }
-
-    const screenshot = getVersionScreenshot(currentIssue, stepCounter);
-    try {
-      document.getElementById('step-screenshot').src = screenshot;
-    } catch (error) { }
 
     // Add functions to page for navigation
     const solutionText = document.getElementById('solution-text');
@@ -145,14 +173,38 @@ export async function openIssuePage(issueId, severity) {
       nextSolutionStep(solutionText, solutionScreenshot, currentIssue));
     document.getElementById('previous-button').addEventListener('click', () =>
       previousSolutionStep(solutionText, solutionScreenshot, currentIssue));
+
+    // Initial check to hide/show buttons
+    try {
+      await updateSolutionStep(solutionText, solutionScreenshot, currentIssue, stepCounter);
+    } catch (error) {
+      logError('Error in updateSolutionStep: ' + error);
+    }
   }
 
-  const texts = ['lang-information', 'lang-solution', 'lang-previous-button', 'lang-next-button', 'lang-back-button'];
-  const localizationIds = ['Issues.Information', 'Issues.Solution', 'Issues.Previous', 'Issues.Next', 'Issues.Back'];
+  if (back == undefined) {
+    document.getElementById('back-button').addEventListener('click', () => openIssuesPage());
+    document.getElementById('back-button').classList.add('lang-back-button-issues');
+  } else {
+    document.getElementById('back-button').addEventListener('click', () => openAllChecksPage(back));
+    document.getElementById('back-button').classList.add('lang-back-button-checks');
+  }
+
+  const texts = ['lang-information', 'lang-findings', 'lang-solution', 'lang-previous-button',
+    'lang-next-button', 'lang-back-button-issues', 'lang-back-button-checks', 'lang-port', 'lang-password',
+    'lang-acceptable', 'lang-cookies', 'lang-permissions', 'lang-scan-again'];
+  const localizationIds = ['Issues.Information', 'Issues.Findings', 'Issues.Solution', 'Issues.Previous',
+    'Issues.Next', 'Issues.BackIssues', 'Issues.BackChecks', 'Issues.Port', 'Issues.Password',
+    'Issues.Acceptable', 'Issues.Cookies', 'Issues.Permissions', 'Issues.ScanAgain',
+  ];
   for (let i = 0; i < texts.length; i++) {
     getLocalization(localizationIds[i], texts[i]);
   }
-  document.getElementById('back-button').addEventListener('click', () => openIssuesPage());
+
+  document.getElementById('scan-button').addEventListener('click', async () => {
+    await scanTest(true);
+    openIssuePage(issueId, severity);
+  });
 }
 
 /** Check if the issue is a show result issue
@@ -198,7 +250,7 @@ export function parseShowResult(issueId, currentIssue) {
     resultLine = permissionShowResults(issues);
     break;
   case '110':
-    resultLine += `The following processes are currently running on your device on the following ports: <br>`;
+    resultLine += `<p class="lang-port"></p>`;
     const portTable = processPortsTable(issues.find((issue) => issue.issue_id === 11).result);
     resultLine += `<table class = "issues-table">`;
     resultLine += `<thead><tr><th>Process</th><th>Port(s)</th></tr></thead>`;
@@ -210,7 +262,8 @@ export function parseShowResult(issueId, currentIssue) {
     break;
   case '160':
     issues.find((issue) => issue.issue_id === 16).result.forEach((issue) => {
-      resultLine += `You changed your password on: ${issue}`;
+      resultLine += `<p class="lang-password"></p>`;
+      resultLine += `<p class="information">${issue}</p>`;
     });
     break;
   case '173':
@@ -222,9 +275,18 @@ export function parseShowResult(issueId, currentIssue) {
   case '230':
     generateBulletList(issues, 23);
     break;
+  case '250':
+    generateBulletList(issues, 25);
+    break;
+  case '260':
+    generateBulletList(issues, 26);
+    break;
   case '271':
-    resultLine += '(Possible) tracking cookies have been found from the following websites:';
+    resultLine += '<p class="lang-cookies"</p>';
     resultLine += cookiesTable(issues.find((issue) => issue.issue_id === 27).result);
+    break;
+  case '300':
+    generateBulletList(issues, 30);
     break;
   case '311':
     generateBulletList(issues, 31);
@@ -239,11 +301,11 @@ export function parseShowResult(issueId, currentIssue) {
     resultLine += '</table>';
     break;
   case '351':
-    resultLine += '(Possible) tracking cookies have been found from the following websites:';
+    resultLine += '<p class="lang-cookies"</p>';
     resultLine += cookiesTable(issues.find((issue) => issue.issue_id === 35).result);
     break;
   case '361':
-    resultLine += '(Possible) tracking cookies have been found from the following websites:';
+    resultLine += '<p class="lang-cookies"</p>';
     resultLine += cookiesTable(issues.find((issue) => issue.issue_id === 36).result);
     break;
   default:
@@ -281,7 +343,8 @@ export function parseShowResult(issueId, currentIssue) {
       }
     });
     applications += '</ul>'; // Close the list
-    resultLine = `The following applications currently have been given permission:<br>${applications}`;
+    resultLine += `<p class="lang-permissions"></p>`;
+    resultLine += `${applications}`;
     return resultLine;
   }
 
@@ -366,24 +429,26 @@ export function parseShowResult(issueId, currentIssue) {
   const result = `
   <h1 class="issue-name">${currentIssue.Name}</h1>
   <div class="issue-information">
-    <h2 id="information">Information</h2>
+    <h2 id="information" class="lang-information"></h2>
     <p>${currentIssue.Information}</p>
-    <h2 id="information">Findings</h2>
+    <h2 id="information" class="lang-findings"></h2>
     <p id="description">${resultLine}</p>
-    <h2 id="solution">Solution</h2>
+    <h2 id="solution" class="lang-solution"></h2>
     <div class="issue-solution">
       <p id="solution-text">${stepCounter +1}. ${getVersionSolution(currentIssue, stepCounter)}</p>
       <img style='display:block; width:750px;height:auto' id="step-screenshot"></img>
       <div class="solution-buttons">
         <div class="button-box">
-          <div id="previous-button" class="button">&laquo; Previous step</div>
-          <div id="next-button" class="button">Next step &raquo;</div>
+          <div id="previous-button" class="button lang-previous-button"></div>
+          <div id="next-button" class="button lang-next-button"></div>
+          <div class="lang-scan-again button" id="scan-button"></div>
         </div>
       </div>
     </div>
-    <div class="button" id="back-button">Back to issues overview</div>
+    <div class="lang-back-button button" id="back-button"></div>
   </div>
 `;
+
   return result;
 }
 
@@ -395,19 +460,23 @@ export function parseShowResult(issueId, currentIssue) {
  * @param {int} index index of the desired screenshot in the list of screenshots
  * @return {string} path to the screenshot
  */
-export function getVersionScreenshot(issue, index) {
-  let screenshot = issue.Screenshots[index];
-  if (screenshot == undefined) screenshot = '';
-  switch (sessionStorage.getItem('WindowsVersion')) {
-  case ('10'):
-    const screenshots = issue.ScreenshotsWindows10;
-    if (screenshots !== undefined) screenshot = screenshots[index];
-    return screenshot;
-  case ('11'):
-    return screenshot;
-  default:
-    return screenshot;
+export async function getVersionScreenshot(issue, index) {
+  const imagesDirectory = await getImagePath('');
+  const version = 'windows-' + sessionStorage.getItem('WindowsVersion') + '/';
+
+  let screenshot;
+  if (version === 'windows-10/' && issue.ScreenshotsWindows10 !== undefined) {
+    screenshot = issue.ScreenshotsWindows10[index];
+  } else {
+    screenshot = issue.Screenshots[index];
   }
+
+  // Return empty source if no screenshot is found
+  if (screenshot == undefined) {
+    return '';
+  }
+  // Construct full image path
+  return imagesDirectory + version + screenshot;
 }
 
 /**
@@ -429,4 +498,13 @@ export function getVersionSolution(issue, index) {
   default:
     return solution;
   }
+}
+
+/**
+ * Function to scroll to an element
+ * @param {HTMLElement} element node to scroll to
+ */
+export function scrollToElement(element) {
+  /* istanbul ignore next */
+  element.scrollIntoView({behavior: 'smooth', block: 'center', inline: 'nearest'});
 }

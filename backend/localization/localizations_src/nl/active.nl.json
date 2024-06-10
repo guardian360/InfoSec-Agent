@@ -12,16 +12,53 @@
     "QuitTitle": "Afsluiten",
     "QuitTooltip": "Sluit voorbeeldbladtoepassing af"
   },
+  "Dialogs": {
+    "OK": "OK",
+    "Cancel": "Annuleren",
+    "ScanInterval": {
+      "Title": "Scaninterval wijzigen",
+      "Content": "Voer scaninterval in (in uren):",
+      "ChangedTitle": "Scaninterval gewijzigd",
+      "ChangedContent": "Scaninterval gewijzigd naar %d uur.",
+      "InvalidChangeTitle": "Ongeldige invoer van scaninterval",
+      "InvalidChangeContent": "Ongeldige invoer. Vorig interval van %d uur wordt gebruikt."
+    },
+    "Scan": {
+      "Title": "Beveiligings-/privacy-scan",
+      "Content": "Bezig met controle %d van %d"
+    },
+    "Language": {
+      "Title": "Taal wijzigen",
+      "Content": "Kies een taal"
+    },
+    "Popup": {
+      "Title": "Scan voltooid",
+      "OneHigh": "De privacy- en beveiligingsscan is voltooid. U heeft 1 probleem met hoog risico. Open de rapportpagina voor meer informatie.",
+      "MultipleHigh": "De privacy- en beveiligingsscan is voltooid. U heeft %d problemen met hoog risico. Open de rapportpagina voor meer informatie.",
+      "OneMedium": "De privacy- en beveiligingsscan is voltooid. U heeft 1 probleem met gemiddeld risico. Open de rapportpagina voor meer informatie.",
+      "MultipleMedium": "De privacy- en beveiligingsscan is voltooid. U heeft %d problemen met gemiddeld risico. Open de rapportpagina voor meer informatie.",
+      "Default": "De privacy- en beveiligingsscan is voltooid. Open de rapportpagina om de resultaten te bekijken.",
+      "Button": "Rapportpagina openen",
+      "StartupTitle": "InfoSec Agent gestart",
+      "Startup": "InfoSec Agent is gestart en draait op de achtergrond. Open de systeembalk om toegang te krijgen tot de applicatie.",
+      "AlreadyRunningTitle": "InfoSec Agent draait al",
+      "AlreadyRunning": "InfoSec Agent draait al op de achtergrond. Open de systeembalk om toegang te krijgen tot de applicatie."      
+    }
+  },
   "Navigation": 
   {
     "Home": "Startpagina",
     "SecurityDashboard": "Beveiligingsdashboard",
     "PrivacyDashboard": "Privacydashboard",
     "Issues": "Problemen",
+    "Checks": "Controles",
     "Integration": "Integratie",
     "About": "Over",
     "Personalize": "Pagina personaliseren",
-    "ChangeLanguage": "Taal wijzigen"
+    "ChangeLanguage": "Taal wijzigen",
+    "WindowsVersion": "Windows versie",
+    "ScanInterval": "Scan interval",
+    "SelectVersion": "Selecteer windows versie"
     
   },
   "Dashboard": 
@@ -52,6 +89,7 @@
     "Applications": "Applicaties",
     "Browser": "Browser",
     "Devices": "Apparaten",
+    "Network": "Netwerk",
     "OperatingSystem": "Besturingssysteem",
     "Passwords": "Wachtwoorden",
     "Permissions": "Machtigingen",
@@ -59,11 +97,17 @@
     "ChooseIssueDescription": "Acties",
     "BarGraphDescription": "Deze grafiek toont de verdeling van problemen van verschillende risiconiveaus die in de afgelopen 5 scans zijn gevonden.",
     "SelectRisks": "Risico's selecteren",
-    "ChangeInterval": "Interval wijzigen"
+    "ChangeInterval": "Interval wijzigen",
+    "ShareButton": "Voortgang delen",
+    "ShareText": "Selecteer waar u uw voortgang wilt delen, sla het op en download het, deel het vervolgens met anderen!",
+    "SaveText": "Opslaan",
+    "Share": "Delen",
+    "LighthouseProgress":"Vooruitgang"
   },
   "Issues":
   {
     "IssueTable": "Problementabel",
+    "Findings": "Bevindingen",
     "AcceptableFindings": "Acceptabele bevindingen",
     "Name": "Naam",
     "Type": "Type",
@@ -72,14 +116,103 @@
     "Solution": "Oplossing",
     "Previous": "&laquo; Vorige stap",
     "Next": "Volgende stap &raquo;",
-    "Back": "Terug naar het overzicht van problemen"
+    "BackIssues": "Terug naar het overzicht van problemen",
+    "BackChecks": "Terug naar het overzicht van controles",
+    "Port": "De volgende processen draaien momenteel op uw apparaat op de volgende poorten: ",
+    "Password": "U hebt uw wachtwoord gewijzigd op: ",
+    "Acceptable": "Aanvaardbaar",
+    "Cookies": "(Mogelijke) tracking cookies zijn gevonden van de volgende websites: ",
+    "Permissions": "De volgende applicaties hebben momenteel toestemming gekregen: ",
+    "Low": "Laag",
+    "Medium": "Gemiddeld",
+    "High": "Hoog",
+    "Info": "Info",
+    "ScanAgain": "Opnieuw scannen"
   },
-  "About":
-  { 
-    "about-title": "Over Infosec Agent",
-    "infosec-info": "Het InfoSec Agent-project heeft als doel de beveiliging en privacy van Windows-gebruikers te verbeteren. Momenteel zijn er toepassingen beschikbaar die dit doen, maar ze zijn voornamelijk gericht op grote bedrijven. Het doel van dit project is om dit toegankelijk te maken voor iedereen. Er wordt een applicatie ontwikkeld die informatie verzamelt over het systeem van de gebruiker om eventuele beveiligings- of privacygerelateerde kwetsbaarheden te ontdekken. De resultaten worden aan de gebruiker gepresenteerd in een speciaal dashboard, met de huidige status van het systeem, inclusief aanbevolen acties om het te verbeteren.",
-    "little-brother-info": "Dit project is een gezamenlijke inspanning van negen studenten van de Universiteit Utrecht in Nederland, in samenwerking met het Nederlandse IT-bedrijf Guardian360. Het dient als het Softwareproject voor het Bachelorprogramma in Computerwetenschappen aan de UU.",
-    "contribute-title": "Bijdragen",
-    "contribute-info": "InfoSec-Agent is een open-sourceproject dat is gelicentieerd onder de GPL-3.0-licentie. Echter, vanwege de oorsprong als opdracht van de Universiteit Utrecht, zullen openbare bijdragen aan deze repository pas worden samengevoegd na voltooiing van deze opdracht, die gepland staat voor 24 juni 2024. Voel je vrij om eventuele bugs of problemen te melden die je tegenkomt. Jouw feedback is waardevol en helpt het InfoSec-Agent-project te verbeteren. Je kunt ons mailen op <a href=\"mailto:infosecagentuu@gmail.com\">infosecagentuu@gmail.com</a>"
-  }  
+  "About": {
+    "AboutTitle": "Over Infosec Agent",
+    "AboutInfo": "De InfoSec Agent is een beveiligings- en privacytool voor Windows 10 en 11.",
+    "SummaryTitle": "Samenvatting",
+    "SummaryInfo": "Het InfoSec Agent-project heeft als doel de beveiliging en privacy van Windows-computergebruikers te verbeteren. Momenteel zijn er applicaties beschikbaar die dit doen, maar ze zijn voornamelijk gericht op grote bedrijven. Het doel van dit project is om dit voor iedereen toegankelijk te maken. Er wordt een applicatie ontwikkeld die informatie verzamelt over het systeem van de gebruiker om beveiligings- of privacygerelateerde kwetsbaarheden te ontdekken. De resultaten worden aan de gebruiker gepresenteerd in een speciaal dashboard, dat de huidige status van het systeem weergeeft, inclusief aanbevolen acties om het te verbeteren.",
+    "AffiliationsTitle": "Partnerschappen",
+    "AffiliationsInfo": "Dit project is een samenwerking van negen studenten van de Universiteit Utrecht in Nederland, in samenwerking met het Nederlandse IT-bedrijf Guardian360. Het dient als het Softwareproject voor het Bachelorprogramma in Informatiewetenschappen aan de UU. Dit project wordt ook ondersteund door financiering van het SIDN-fonds (Stichting Internet Domeinregistratie Nederland), de Nederlandse domeinregistrator.",
+    "ContributingTitle": "Bijdragen",
+    "ContributingInfo": "InfoSec-Agent is een open-sourceproject dat is gelicenseerd onder de AGPL-3.0-licentie. Vanwege de oorsprong als een opdracht van de Universiteit Utrecht worden openbare bijdragen aan deze repository echter pas samengevoegd na voltooiing van deze opdracht, die gepland staat voor 24 juni 2024. Voel je vrij om eventuele bugs of problemen te melden die je tegenkomt. Jouw feedback is waardevol en helpt het InfoSec-Agent-project te verbeteren. Je kunt ons een e-mail sturen naar <a href=\"mailto:infosecagentuu@gmail.com\">infosecagentuu@gmail.com</a>."
+  },  
+  "Personalize": {
+    "ChangeFavicon": "Favicon wijzigen",
+    "navImage": "Navigatieafbeelding",
+    "ChangeImage": "Afbeelding wijzigen",
+    "Title": "Navigatietitel",
+    "ChangeTitle": "Titel wijzigen",
+    "Reset": "Instellingen resetten",
+    "PersonalizeTitle": "Personaliseer uw ervaring",
+    "PickTheme": "Kies een thema"
+  },
+  "AllChecks": {
+    "Security": "Security",
+    "Privacy": "Privacy",
+    "MultipleLines": "Here are some checks we run regarding your ",
+    "SingleLine": "Here is a check we run regarding your ",
+    "Applications": "Applications",
+    "Devices": "Devices",
+    "Network": "Network",
+    "OS": "Operating System",
+    "Passwords": "Passwords",
+    "Other": "Other",
+    "Permissions": "Permissions",
+    "Browser": "Browsers",
+    "ApplicationsText": "Applications are computer software made for users with a certain functionality. Most applications are not malicious when installed from the right place, but as a user you have to be aware of what you are downloading and using.",
+    "DevicesText": "Your computer is a device, but it can also be connected to other devices. These devices are mostly tools like a mouse, keyboard and headset. But because these devices are connected directly to your computer, they have a lot of access to it. To make sure no malicious devices, used to steal data or comprimise the security of you computer, you need to check whether you know the devices connected to your PC.",
+    "NetworkText": "Most of your data will be stored on your computer, but some data will be transferred across networks. Malicious users can intercept your data if it is not transferred in a secure manner.",
+    "OSText": "The Operating System is the backbone of computers. It therefore plays an integral part in keeping your computer secure. When setting up your OS, it already enables and disables some features to keep your computer secure, but not all settings are preferable.",
+    "PasswordsText": "Passwords are keys which prevent malicious users from having access to your computer or accounts. Having a password is almost always required when creating an account somewhere, but having a password does not always mean it is secure enough. Easy passwords can be guessed, but hard ones may be hard to remember.",
+    "OtherSecurityText": "Keeping your computer secure can also be done in some other ways.",
+    "PermissionsText": "Applications installed on your computer want to have access to or permission to use certain features or devices connected to your PC. It is your responsibility as a user to give those permissions to certain applications or not. It is therefore recommended to search on the internet if an application you use should or should not have certain permissions.",
+    "BrowserText": "To have access to the internet, you use a browser. While a browser is really useful, it is not always keeping your data private. To stay safe while browsing on the internet, you have to always keep in mind what you are clicking on.",
+    "OtherPrivacyText": "Keeping your data private can also be done in some other ways.",
+
+    "Id1":"Devices connected via bluetooth",
+    "Id2":"Devices connected via USB ports",
+    "Id3":"Guest account enabled/disabled",
+    "Id4":"Advertisement ID/Network sharing enabled/disabled",
+    "Id5":"Password manager installed",
+    "Id6":"Applications with location permissions",
+    "Id7":"Applications with microphone permissions",
+    "Id8":"Applications with webcam permissions",
+    "Id9":"Applications with appointments permissions",
+    "Id10":"Applications with contacts permissions",
+    "Id11":"Open ports used by applications",
+    "Id12":"Remote desktop enabled/disabled",
+    "Id13":"System Message Block enabled/disabled",
+    "Id14":"User Account Control enabled/disabled",
+    "Id15":"Windows Defender enabled/disabled",
+    "Id16":"Last Windows password changed",
+    "Id17":"Windows login method",
+    "Id18":"Windows version up to date",
+    "Id19":"Secure boot enabled/disabled",
+    "Id20":"Applications that start at system boot",
+    "Id21":"Google Chrome has an adblocker installed",
+    "Id22":"Microsoft Edge has an adblocker installed",
+    "Id23":"Phishing domains found in Google Chrome history",
+    "Id24":"Phishing domains found in Microsoft Edge history",
+    "Id25":"Google Chrome search engine in use",
+    "Id26":"Microsoft Edge search engine in use",
+    "Id27":"Mozilla Firefox cookies stored",
+    "Id28":"Mozilla Firefox extensions installed",
+    "Id29":"Mozilla Firefox has an adblocker installed",
+    "Id30":"Mozilla Firefox search engine in use",
+    "Id31":"Phishing domains found in Mozilla Firefox history",
+    "Id32":"CIS Audit list registry settings",
+    "Id33":"Automatic log in enabled/disabled",
+    "Id34":"Remote Procedure Call enabled/disabled",
+    "Id35":"Google Chrome cookies stored",
+    "Id36":"Microsoft Edge cookies stored",
+    "Id37":"Windows Firewall enabled/disabled",
+    "Id38":"Windows password length",
+    "Id39":"Credential Guard enabled/disabled",
+    "Id40":"NetBIOS over TCP/IP enabled/disabled",
+    "Id41":"WPAD service enabled/disabled",
+    "Id42":"Windows automatic Screen Lock enabled/disabled"
+  }
 }

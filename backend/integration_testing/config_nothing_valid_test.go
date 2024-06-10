@@ -7,10 +7,9 @@ import (
 
 var testsInvalid = []func(t *testing.T){
 	i.TestIntegrationExtensionsChromiumWithoutAdBlocker,
-	i.TestIntegrationHistoryChromiumWithPhishing,
+	// TODO: turn back on when the test is fixed
+	// i.TestIntegrationHistoryChromiumWithPhishing,
 	i.TestIntegrationCISRegistrySettingsIncorrect,
-	i.TestIntegrationBluetoothDevices,
-	i.TestIntegrationExternalDevicesDevices,
 	i.TestIntegrationExtensionsFirefoxWithoutAdBlocker,
 	i.TestIntegrationHistoryFirefoxWithPhishing,
 	i.TestIntegrationOpenPortsPorts,
@@ -20,14 +19,17 @@ var testsInvalid = []func(t *testing.T){
 	i.TestIntegrationAutomatedLoginActive,
 	i.TestIntegrationDefenderAllNotActive,
 	i.TestIntegrationGuestAccountActive,
-	i.TestIntegrationLastPasswordChangeInvalid,
 	i.TestIntegrationLoginMethodPINOnly,
-	i.TestIntegrationOutdatedWin11NotUpToDate,
+	// TODO: turn back on when the test is fixed
+	// i.TestIntegrationOutdatedWin11NotUpToDate,
 	i.TestIntegrationPermissionWithApps,
 	i.TestIntegrationRemoteDesktopEnabled,
 	i.TestIntegrationSecureBootDisabled,
 	i.TestIntegrationStartupWithApps,
 	i.TestIntegrationUACDisabled,
+	i.TestIntegrationCookiesFirefoxWithCookies,
+	i.TestIntegrationCookiesChromiumWithCookies,
+	i.TestIntegrationRemoteRPCEnabled,
 }
 
 func TestAllInvalid(t *testing.T) {

@@ -27,14 +27,9 @@
         ],        
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/devices-connected-via-bluetooth/bluetooth-devices-1.jpg",
-            "frontend/src/assets/images/windows-11/devices-connected-via-bluetooth/bluetooth-devices-2.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/devices-connected-via-bluetooth/bluetooth-devices-1.png",
-            "frontend/src/assets/images/windows-10/devices-connected-via-bluetooth/bluetooth-devices-2.png"
-        ]
+            "devices-connected-via-bluetooth/bluetooth-devices-1.png",
+            "devices-connected-via-bluetooth/bluetooth-devices-2.png"
+        ] 
     },
     "20": {
         "Name": "Geen externe apparaten aangesloten",
@@ -75,11 +70,11 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
-            "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
-            "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
-            "frontend/src/assets/images/windows-11/guest-account/guest-account-3.jpg",        
-            "frontend/src/assets/images/windows-11/guest-account/guest-account-3.jpg"
+            "guest-account/guest-account-1.png",
+            "guest-account/guest-account-1.png",
+            "guest-account/guest-account-1.png",
+            "guest-account/guest-account-3.png",
+            "guest-account/guest-account-3.png"
         ]
     },
     "31": {
@@ -102,10 +97,10 @@
         ],        
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
-            "frontend/src/assets/images/windows-11/guest-account/guest-account-1.jpg",
-            "frontend/src/assets/images/windows-11/guest-account/guest-account-3.jpg",        
-            "frontend/src/assets/images/windows-11/guest-account/guest-account-3.jpg"
+            "guest-account/guest-account-1.png",
+            "guest-account/guest-account-1.png",
+            "guest-account/guest-account-3.png",
+            "guest-account/guest-account-3.png"
         ]
     },
     "32": {
@@ -148,14 +143,9 @@
         ],        
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/network-sharing/nearby-sharing-1.jpg",
-            "frontend/src/assets/images/windows-11/network-sharing/nearby-sharing-2.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/network-sharing/advertisementid-sharing-1.png",
-            "frontend/src/assets/images/windows-10/network-sharing/advertisementid-sharing-2.png"
-        ]
+            "network-sharing/nearby-sharing-1.png",
+            "network-sharing/nearby-sharing-2.png"
+        ] 
     },
     "42": {
         "Name": "Netwerkdeling uitgeschakeld",
@@ -187,16 +177,10 @@
         ],        
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/network-sharing/nearby-sharing-1.jpg",
-            "frontend/src/assets/images/windows-11/network-sharing/nearby-sharing-1.jpg",
-            "frontend/src/assets/images/windows-11/network-sharing/nearby-sharing-2.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/network-sharing/nearby-sharing-1.png",
-            "frontend/src/assets/images/windows-10/network-sharing/nearby-sharing-1.png",
-            "frontend/src/assets/images/windows-10/network-sharing/nearby-sharing-2.png"
-        ]
+            "network-sharing/nearby-sharing-1.png",
+            "network-sharing/nearby-sharing-1.png",
+            "network-sharing/nearby-sharing-2.png"
+        ] 
     },
     "50": {
         "Name": "Wachtwoordbeheerder in gebruik",
@@ -204,7 +188,7 @@
         "Information": "Het gebruik van een wachtwoordbeheerder biedt verschillende voordelen voor individuen en organisaties, voornamelijk gericht op het verbeteren van de beveiliging, het gemak en de algehele wachtwoordbeheerpraktijken. Hier zijn enkele belangrijke redenen waarom u een wachtwoordbeheerder zou moeten overwegen. Sterkere wachtwoorden: Wachtwoordbeheerders kunnen complexe, unieke wachtwoorden genereren voor elk van uw accounts. Deze wachtwoorden zijn doorgaans lang, willekeurig en moeilijk te kraken, waardoor de beveiliging van uw online accounts aanzienlijk wordt verbeterd in vergelijking met het gebruik van zwakke of hergebruikte wachtwoorden. Eliminatie van wachtwoordhergebruik: Een van de meest voorkomende beveiligingsproblemen is het hergebruiken van wachtwoorden voor meerdere accounts. Wachtwoordbeheerders stellen u in staat om unieke wachtwoorden voor elk account te genereren en op te slaan, waardoor het risico op ongeautoriseerde toegang wordt verminderd als een account wordt gecompromitteerd. Gemak: Wachtwoordbeheerders stroomlijnen het proces van inloggen op websites en online services door automatisch inloggegevens voor u in te vullen. Dit bespaart tijd en moeite, vooral bij het beheren van talrijke accounts op verschillende platforms. Veilige opslag: Wachtwoordbeheerders versleutelen en slaan uw wachtwoorden op in een beveiligde kluis, waardoor ze worden beschermd tegen ongeautoriseerde toegang. Veel wachtwoordbeheerders bieden ook extra beveiligingsfuncties zoals tweefactorauthenticatie (2FA) en biometrische authenticatie om de bescherming verder te verbeteren.",
         "Solution": 
         [   
-            "U gebruikt een wachtwoordbeheerder, dus er is geen actie nodig."    
+            "U gebruikt een wachtwoordbeheerder, dus er is geen actie nodig."
         ],
         "Screenshots":
         [
@@ -221,14 +205,9 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/password-manager/password-manager-1.jpg",
-            "frontend/src/assets/images/windows-11/password-manager/password-manager-1.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/password-manager/password-manager-1.png",
-            "frontend/src/assets/images/windows-10/password-manager/password-manager-1.png"
-        ]
+            "password-manager/password-manager-1.png",
+            "password-manager/password-manager-1.png"
+        ] 
     },
     "60": {
         "Name": "Applicaties met locatiepermissie",
@@ -246,14 +225,9 @@
         ],        
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/applications-with-location-permission/location-permissions-1.jpg",
-            "frontend/src/assets/images/windows-11/applications-with-location-permission/location-permissions-2.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/applications-with-location-permission/location-permissions-1.png",
-            "frontend/src/assets/images/windows-10/applications-with-location-permission/location-permissions-2.png"
-        ]
+            "applications-with-location-permission/location-permissions-1.png",
+            "applications-with-location-permission/location-permissions-2.png"
+        ] 
     },
     "61": {
         "Name": "Applicaties met locatiepermissie",
@@ -283,14 +257,9 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/applications-with-microphone-permission/microphone-permissions-1.jpg",
-            "frontend/src/assets/images/windows-11/applications-with-microphone-permission/microphone-permissions-2.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/applications-with-microphone-permission/microphone-permissions-1.png",
-            "frontend/src/assets/images/windows-10/applications-with-microphone-permission/microphone-permissions-2.png"
-        ]
+            "applications-with-microphone-permission/microphone-permissions-1.png",
+            "applications-with-microphone-permission/microphone-permissions-2.png"
+        ] 
     },
     "71": {
         "Name": "Applicaties met microfoonpermissie",
@@ -320,14 +289,9 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/applications-with-webcam-permission/webcam-permissions-1.jpg",
-            "frontend/src/assets/images/windows-11/applications-with-webcam-permission/webcam-permissions-2.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/applications-with-webcam-permission/webcam-permissions-1.png",
-            "frontend/src/assets/images/windows-10/applications-with-webcam-permission/webcam-permissions-2.png"
-        ]
+            "applications-with-webcam-permission/webcam-permissions-1.png",
+            "applications-with-webcam-permission/webcam-permissions-2.png"
+        ] 
     },
     "81": {
         "Name": "Applicaties met webcampermissie",
@@ -357,14 +321,9 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/applications-with-calendar-permission/calendar-permissions-1.jpg",
-            "frontend/src/assets/images/windows-11/applications-with-calendar-permission/calendar-permissions-2.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/applications-with-calendar-permission/calendar-permissions-1.png",
-            "frontend/src/assets/images/windows-10/applications-with-calendar-permission/calendar-permissions-2.png"
-        ]
+            "applications-with-calendar-permission/calendar-permissions-1.png",
+            "applications-with-calendar-permission/calendar-permissions-2.png"
+        ] 
     },
     "91": {
         "Name": "Applicaties met afspraakpermissie",
@@ -394,14 +353,9 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/applications-with-contacts-permission/contacts-permissions-1.jpg",
-            "frontend/src/assets/images/windows-11/applications-with-contacts-permission/contacts-permissions-2.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/applications-with-contacts-permission/contacts-permissions-1.png",
-            "frontend/src/assets/images/windows-10/applications-with-contacts-permission/contacts-permissions-2.png"
-        ]
+            "applications-with-contacts-permission/contacts-permissions-1.png",
+            "applications-with-contacts-permission/contacts-permissions-2.png"
+        ] 
     },
     "101": {
         "Name": "Applicaties met contactpersonenpermissie",
@@ -428,12 +382,8 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/devices-connected-via-bluetooth/bluetooth-devices-1.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/devices-connected-via-bluetooth/bluetooth-devices-1.png"
-        ]
+            "devices-connected-via-bluetooth/bluetooth-devices-1.png"
+        ] 
     },
     "120": {
         "Name": "Externe bureaublad ingeschakeld",
@@ -485,18 +435,11 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/smb-status/smb-2.jpg",
-            "frontend/src/assets/images/windows-11/smb-status/smb-2.jpg",
-            "frontend/src/assets/images/windows-11/smb-status/smb-3.jpg",
-            "frontend/src/assets/images/windows-11/smb-status/smb-3.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/smb-status/smb-1.png",
-            "frontend/src/assets/images/windows-10/smb-status/smb-1.png",
-            "frontend/src/assets/images/windows-10/smb-status/smb-2.png",
-            "frontend/src/assets/images/windows-10/smb-status/smb-2.png"
-        ]
+            "smb-status/smb-1.png",
+            "smb-status/smb-1.png",
+            "smb-status/smb-2.png",
+            "smb-status/smb-2.png"
+        ] 
     },
     "132": {
         "Name": "SMB versie 2 ingeschakeld",
@@ -523,18 +466,11 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/smb-status/smb-2.jpg",
-            "frontend/src/assets/images/windows-11/smb-status/smb-2.jpg",
-            "frontend/src/assets/images/windows-11/smb-status/smb-3.jpg",
-            "frontend/src/assets/images/windows-11/smb-status/smb-3.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/smb-status/smb-1.png",
-            "frontend/src/assets/images/windows-10/smb-status/smb-1.png",
-            "frontend/src/assets/images/windows-10/smb-status/smb-2.png",
-            "frontend/src/assets/images/windows-10/smb-status/smb-2.png"
-        ]
+            "smb-status/smb-1.png",
+            "smb-status/smb-1.png",
+            "smb-status/smb-2.png",
+            "smb-status/smb-2.png"
+        ] 
     },
     "140": {
         "Name": "Gebruikersaccountbeheer",
@@ -562,24 +498,13 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
-            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-2.jpg",
-            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-2.jpg",
-            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-3.jpg",
-            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-5.jpg",
-            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-5.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-2.png",
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-3.png",
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-4.png",
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-5.png",
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-5.png"
-        ]
+            "user-account-control/user-account-control-1.png",
+            "user-account-control/user-account-control-2.png",
+            "user-account-control/user-account-control-2.png",
+            "user-account-control/user-account-control-3.png",
+            "user-account-control/user-account-control-5.png",
+            "user-account-control/user-account-control-5.png"
+        ] 
     },
     "141": {
         "Name": "Gebruikersaccountbeheer",
@@ -619,25 +544,14 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
-            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
-            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-2.jpg",
-            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-2.jpg",
-            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-3.jpg",
-            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-5.jpg",
-            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-5.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-2.png",
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-3.png",
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-4.png",
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-5.png",
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-5.png"
-        ]
+            "user-account-control/user-account-control-1.png",
+            "user-account-control/user-account-control-1.png",
+            "user-account-control/user-account-control-2.png",
+            "user-account-control/user-account-control-2.png",
+            "user-account-control/user-account-control-3.png",
+            "user-account-control/user-account-control-5.png",
+            "user-account-control/user-account-control-5.png"
+        ] 
     },
     "143": {
         "Name": "Gebruikersaccountbeheer",
@@ -665,25 +579,14 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
-            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-1.jpg",
-            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-2.jpg",
-            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-2.jpg",
-            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-3.jpg",
-            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-5.jpg",
-            "frontend/src/assets/images/windows-11/user-account-control/user-account-control-5.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-1.png",
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-2.png",
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-3.png",
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-4.png",
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-5.png",
-            "frontend/src/assets/images/windows-10/user-account-control/user-account-control-5.png"
-        ]
+            "user-account-control/user-account-control-1.png",
+            "user-account-control/user-account-control-1.png",
+            "user-account-control/user-account-control-2.png",
+            "user-account-control/user-account-control-2.png",
+            "user-account-control/user-account-control-3.png",
+            "user-account-control/user-account-control-5.png",
+            "user-account-control/user-account-control-5.png"
+        ] 
     },
     "150": {
         "Name": "Windows Defender en scan ingeschakeld",
@@ -710,17 +613,17 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg"
+            "windows-defender/windows-defender-1.png",
+            "windows-defender/windows-defender-1.png",
+            "windows-defender/windows-defender-1.png",
+            "windows-defender/windows-defender-1.png"
         ],
         "ScreenshotsWindows10":
         [
-            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-1.png",
-            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-2.png",
-            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-3.png",
-            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-4.png"
+            "windows-defender/windows-defender-1.png",
+            "windows-defender/windows-defender-2.png",
+            "windows-defender/windows-defender-3.png",
+            "windows-defender/windows-defender-4.png"
         ]
     },
     "152": {
@@ -736,17 +639,17 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg"
+            "windows-defender/windows-defender-1.png",
+            "windows-defender/windows-defender-1.png",
+            "windows-defender/windows-defender-1.png",
+            "windows-defender/windows-defender-1.png"
         ],
         "ScreenshotsWindows10":
         [
-            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-1.png",
-            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-2.png",
-            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-3.png",
-            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-4.png"
+            "windows-defender/windows-defender-1.png",
+            "windows-defender/windows-defender-2.png",
+            "windows-defender/windows-defender-3.png",
+            "windows-defender/windows-defender-4.png"
         ]
     },
     "153": {
@@ -762,17 +665,17 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg"
+            "windows-defender/windows-defender-1.png",
+            "windows-defender/windows-defender-1.png",
+            "windows-defender/windows-defender-1.png",
+            "windows-defender/windows-defender-1.png"
         ],
         "ScreenshotsWindows10":
         [
-            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-1.png",
-            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-2.png",
-            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-3.png",
-            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-4.png"
+            "windows-defender/windows-defender-1.png",
+            "windows-defender/windows-defender-2.png",
+            "windows-defender/windows-defender-3.png",
+            "windows-defender/windows-defender-4.png"
         ]
     },
     "154": {
@@ -789,19 +692,19 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg",
-            "frontend/src/assets/images/windows-11/windows-defender/windows-defender-1.jpg"
+            "windows-defender/windows-defender-1.png",
+            "windows-defender/windows-defender-1.png",
+            "windows-defender/windows-defender-1.png",
+            "windows-defender/windows-defender-1.png",
+            "windows-defender/windows-defender-1.png"
         ],
         "ScreenshotsWindows10":
         [
-            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-1.png",
-            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-1.png",
-            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-2.png",
-            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-3.png",
-            "frontend/src/assets/images/windows-10/windows-defender/windows-defender-4.png"
+            "windows-defender/windows-defender-1.png",
+            "windows-defender/windows-defender-1.png",
+            "windows-defender/windows-defender-2.png",
+            "windows-defender/windows-defender-3.png",
+            "windows-defender/windows-defender-4.png"
         ]
     },
     "160": {
@@ -816,16 +719,10 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/last-password-change/change-password-1.jpg",
-            "frontend/src/assets/images/windows-11/last-password-change/change-password-2.jpg",
-            "frontend/src/assets/images/windows-11/last-password-change/change-password-2.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/last-password-change/change-password-1.png",
-            "frontend/src/assets/images/windows-10/last-password-change/change-password-2.png",
-            "frontend/src/assets/images/windows-10/last-password-change/change-password-2.png"
-        ]
+            "last-password-change/change-password-1.png",
+            "last-password-change/change-password-2.png",
+            "last-password-change/change-password-2.png"
+        ] 
     },
     "161": {
         "Name": "Laatste wachtwoordwijziging recent",
@@ -850,14 +747,9 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/windows-login-method/login-method-1.jpg",
-            "frontend/src/assets/images/windows-11/windows-login-method/login-method-2.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/windows-login-method/login-method-1.png",
-            "frontend/src/assets/images/windows-10/windows-login-method/login-method-2.png"
-        ]
+            "windows-login-method/login-method-1.png",
+            "windows-login-method/login-method-2.png"
+        ] 
     },
     "171": {
         "Name": "Windows-login met veilige inlogmethode",
@@ -882,14 +774,9 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/windows-login-method/login-method-1.jpg",
-            "frontend/src/assets/images/windows-11/windows-login-method/login-method-2.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/windows-login-method/login-method-1.png",
-            "frontend/src/assets/images/windows-10/windows-login-method/login-method-2.png"
-        ]
+            "windows-login-method/login-method-1.png",
+            "windows-login-method/login-method-2.png"
+        ] 
     },
     "180": {
         "Name": "Windows-versie up-to-date",
@@ -914,14 +801,9 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/outdated-windows-version/windows-update-1.jpg",
-            "frontend/src/assets/images/windows-11/outdated-windows-version/windows-update-2.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/outdated-windows-version/windows-update-1.png",
-            "frontend/src/assets/images/windows-10/outdated-windows-version/windows-update-2.png"
-        ]
+            "outdated-windows-version/windows-update-1.png",
+            "outdated-windows-version/windows-update-2.png"
+        ] 
     },
     "182": {
         "Name": "Verouderde Windows-versie",
@@ -934,14 +816,9 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/outdated-windows-version/windows-update-1.jpg",
-            "frontend/src/assets/images/windows-11/outdated-windows-version/windows-update-2.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/outdated-windows-version/windows-update-1.png",
-            "frontend/src/assets/images/windows-10/outdated-windows-version/windows-update-2.png"
-        ]
+            "outdated-windows-version/windows-update-1.png",
+            "outdated-windows-version/windows-update-2.png"
+        ] 
     },
     "190": {
         "Name": "Secure boot uitgeschakeld",
@@ -1009,14 +886,9 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/applications-which-start-at-boot/boot-apps-1.jpg",
-            "frontend/src/assets/images/windows-11/applications-which-start-at-boot/boot-apps-2.jpg"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "frontend/src/assets/images/windows-10/applications-which-start-at-boot/boot-apps-1.png",
-            "frontend/src/assets/images/windows-10/applications-which-start-at-boot/boot-apps-2.png"
-        ]
+            "applications-which-start-at-boot/boot-apps-1.png",
+            "applications-which-start-at-boot/boot-apps-2.png"
+        ] 
     },
     "210": {
         "Name": "Google Chrome met een adblocker geïnstalleerd",
@@ -1030,9 +902,9 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/chrome-adblocker/chrome-adblocker-1.png",
-            "frontend/src/assets/images/windows-11/chrome-adblocker/chrome-adblocker-2.png",
-            "frontend/src/assets/images/windows-11/chrome-adblocker/chrome-adblocker-3.png"
+            "chrome-adblocker/chrome-adblocker-1.png",
+            "chrome-adblocker/chrome-adblocker-2.png",
+            "chrome-adblocker/chrome-adblocker-3.png"
         ]
     },
     "211": {
@@ -1047,9 +919,9 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/chrome-adblocker/chrome-adblocker-1.png",
-            "frontend/src/assets/images/windows-11/chrome-adblocker/chrome-adblocker-2.png",
-            "frontend/src/assets/images/windows-11/chrome-adblocker/chrome-adblocker-3.png"
+            "chrome-adblocker/chrome-adblocker-1.png",
+            "chrome-adblocker/chrome-adblocker-2.png",
+            "chrome-adblocker/chrome-adblocker-3.png"
         ]
     },
     "220": {
@@ -1064,9 +936,9 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/edge-adblocker/edge-adblocker-1.png",
-            "frontend/src/assets/images/windows-11/edge-adblocker/edge-adblocker-2.png",
-            "frontend/src/assets/images/windows-11/edge-adblocker/edge-adblocker-3.png"
+            "edge-adblocker/edge-adblocker-1.png",
+            "edge-adblocker/edge-adblocker-2.png",
+            "edge-adblocker/edge-adblocker-3.png"
         ]
     },
     "221": {
@@ -1081,9 +953,9 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/edge-adblocker/edge-adblocker-1.png",
-            "frontend/src/assets/images/windows-11/edge-adblocker/edge-adblocker-2.png",
-            "frontend/src/assets/images/windows-11/edge-adblocker/edge-adblocker-3.png"
+            "edge-adblocker/edge-adblocker-1.png",
+            "edge-adblocker/edge-adblocker-2.png",
+            "edge-adblocker/edge-adblocker-3.png"
         ]
     },
     "230": {
@@ -1172,10 +1044,10 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/firefox-cookies/cookies-firefox-1.png",
-            "frontend/src/assets/images/windows-11/firefox-cookies/cookies-firefox-2.png",
-            "frontend/src/assets/images/windows-11/firefox-cookies/cookies-firefox-3.png",
-            "frontend/src/assets/images/windows-11/firefox-cookies/cookies-firefox-4.png"
+            "firefox-cookies/cookies-firefox-1.png",
+            "firefox-cookies/cookies-firefox-2.png",
+            "firefox-cookies/cookies-firefox-3.png",
+            "firefox-cookies/cookies-firefox-4.png"
         ]
     },
     "271": {
@@ -1204,9 +1076,9 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/firefox-extensions/extensions-firefox-1.png",
-            "frontend/src/assets/images/windows-11/firefox-extensions/extensions-firefox-2.png",
-            "frontend/src/assets/images/windows-11/firefox-extensions/extensions-firefox-3.png"
+            "firefox-extensions/extensions-firefox-1.png",
+            "firefox-extensions/extensions-firefox-2.png",
+            "firefox-extensions/extensions-firefox-3.png"
         ]
     },
     "290": {
@@ -1235,11 +1107,11 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/firefox-adblocker/firefox-adblocker-1.png",
-            "frontend/src/assets/images/windows-11/firefox-adblocker/firefox-adblocker-2.png",
-            "frontend/src/assets/images/windows-11/firefox-adblocker/firefox-adblocker-3.png",
-            "frontend/src/assets/images/windows-11/firefox-adblocker/firefox-adblocker-4.png",
-            "frontend/src/assets/images/windows-11/firefox-adblocker/firefox-adblocker-5.png"
+            "firefox-adblocker/firefox-adblocker-1.png",
+            "firefox-adblocker/firefox-adblocker-2.png",
+            "firefox-adblocker/firefox-adblocker-3.png",
+            "firefox-adblocker/firefox-adblocker-4.png",
+            "firefox-adblocker/firefox-adblocker-5.png"
         ]
     },		
     "300": {
@@ -1398,6 +1270,141 @@
             "TOBEFILLED"
         ]
     },
+    "370": {
+        "Name": "Windows-firewall ingeschakeld voor alle profielen",
+        "Type": "Beveiliging",
+        "Information": "De Windows-firewall is een ingebouwde beveiligingsfunctie die uw computer helpt te beschermen tegen ongeautoriseerde toegang en schadelijke software door inkomend en uitgaand netwerkverkeer te monitoren en te controleren. Het inschakelen van de Windows-firewall voor alle netwerkprofielen (openbaar, privé en domein) helpt de beveiliging van uw systeem te verbeteren en mogelijke beveiligingsdreigingen te voorkomen.",
+        "Solution": [
+            "De Windows-firewall is ingeschakeld voor alle profielen, dus er is geen actie nodig."
+        ],
+        "Screenshots": []
+    },
+    "371": {
+        "Name": "Windows-firewall niet ingeschakeld voor alle profielen",
+        "Type": "Beveiliging",
+        "Information": "De Windows-firewall is een ingebouwde beveiligingsfunctie die uw computer helpt te beschermen tegen ongeautoriseerde toegang en schadelijke software door inkomend en uitgaand netwerkverkeer te monitoren en te controleren. Het inschakelen van de Windows-firewall voor alle netwerkprofielen (openbaar, privé en domein) helpt de beveiliging van uw systeem te verbeteren en mogelijke beveiligingsdreigingen te voorkomen.",
+        "Solution": [
+            "Ga naar Start > Instellingen > Bijwerken en beveiliging > Windows-beveiliging > Firewall- en netwerkbeveiliging.",
+            "Zorg er onder 'Firewall- en netwerkbeveiliging' voor dat de Windows-firewall is ingeschakeld voor alle netwerkprofielen (openbaar, privé en domein). Als deze is uitgeschakeld, klik dan op 'Inschakelen' om de firewall voor het geselecteerde profiel in te schakelen."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
+    "380": {
+        "Name": "Minimum wachtwoordlengte ingesteld op minstens 15 tekens",
+        "Type": "Beveiliging",
+        "Information": "Door een minimum wachtwoordlengte van minstens 15 tekens in te stellen, wordt de beveiliging van gebruikersaccounts verbeterd door de complexiteit en sterkte van wachtwoorden te vergroten. Langere wachtwoorden zijn beter bestand tegen brute-force aanvallen en bieden betere bescherming tegen ongeoorloofde toegang en datalekken.",
+        "Solution": [
+            "De minimum wachtwoordlengte is ingesteld op minstens 15 tekens, dus er is geen actie vereist."
+        ],
+        "Screenshots": []
+    },
+    "381": {
+        "Name": "Minimum wachtwoordlengte niet ingesteld op minstens 15 tekens",
+        "Type": "Beveiliging",
+        "Information": "Door een minimum wachtwoordlengte van minstens 15 tekens in te stellen, wordt de beveiliging van gebruikersaccounts verbeterd door de complexiteit en sterkte van wachtwoorden te vergroten. Langere wachtwoorden zijn beter bestand tegen brute-force aanvallen en bieden betere bescherming tegen ongeoorloofde toegang en datalekken.",
+        "Solution": [
+            "Open een verhoogde opdrachtprompt door met de rechtermuisknop op de Start-knop te klikken en 'Terminal (Admin)' te selecteren.",
+            "Voer het commando 'net accounts' uit om de huidige wachtwoordbeleidsinstellingen, inclusief de minimum wachtwoordlengte, te bekijken.",
+            "Voer het commando 'net accounts /minpwlen:15' uit om de minimum wachtwoordlengte in te stellen op 15 tekens.",
+            "Herstart uw computer om de wijzigingen toe te passen."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
+    "390": {
+        "Name": "Credential Guard ingeschakeld",
+        "Type": "Beveiliging",
+        "Information": "Credential Guard is een beveiligingsfunctie in Windows die helpt om gebruikersreferenties en gevoelige informatie te beschermen tegen ongeautoriseerde toegang en diefstal. Het maakt gebruik van virtualisatie-gebaseerde beveiliging om referentie-informatie te isoleren en te beschermen, waardoor het voor aanvallers moeilijker wordt om wachtwoorden en andere gevoelige gegevens te stelen.",
+        "Solution": [
+            "Credential Guard is ingeschakeld, dus er is geen actie nodig."
+        ],
+        "Screenshots": []
+    },
+    "391": {
+        "Name": "Credential Guard uitgeschakeld",
+        "Type": "Beveiliging",
+        "Information": "Credential Guard is een beveiligingsfunctie in Windows die helpt om gebruikersreferenties en gevoelige informatie te beschermen tegen ongeautoriseerde toegang en diefstal. Het maakt gebruik van virtualisatie-gebaseerde beveiliging om referentie-informatie te isoleren en te beschermen, waardoor het voor aanvallers moeilijker wordt om wachtwoorden en andere gevoelige gegevens te stelen.",
+        "Solution": [
+            "De instelling van Credential Guard wordt beheerd in uw lokale groepsbeleid. Vraag uw netwerkbeheerder om Credential Guard in te schakelen."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
+    "400": {
+        "Name": "NetBIOS over TCP/IP uitgeschakeld",
+        "Type": "Beveiliging",
+        "Information": "NetBIOS over TCP/IP is een verouderd netwerkprotocol waarmee computers in een lokaal netwerk kunnen communiceren. Het uitschakelen van NetBIOS over TCP/IP helpt het aanvalsoppervlak van uw systeem te verkleinen en mogelijke beveiligingsproblemen in verband met dit protocol te voorkomen.",
+        "Solution": [
+            "NetBIOS over TCP/IP is uitgeschakeld, dus er is geen actie nodig."
+        ],
+        "Screenshots": []
+    },
+    "401": {
+        "Name": "NetBIOS over TCP/IP ingeschakeld",
+        "Type": "Beveiliging",
+        "Information": "NetBIOS over TCP/IP is een verouderd netwerkprotocol waarmee computers in een lokaal netwerk kunnen communiceren. Het uitschakelen van NetBIOS over TCP/IP helpt het aanvalsoppervlak van uw systeem te verkleinen en mogelijke beveiligingsproblemen in verband met dit protocol te voorkomen.",
+        "Solution": [
+            "Open het Configuratiescherm en ga naar 'Netwerk en internet' -> 'Netwerkcentrum'.",
+            "Klik in het linkerpaneel op 'Adapterinstellingen wijzigen'.",
+            "Klik met de rechtermuisknop op uw netwerkverbinding en selecteer 'Eigenschappen'.",
+            "Scroll in het tabblad 'Netwerk' naar beneden naar 'Internet Protocol versie 4 (TCP/IPv4)' en klik op 'Eigenschappen'.",
+            "Klik op 'Geavanceerd' en ga naar het tabblad 'WINS'.",
+            "Selecteer onder 'NetBIOS-instelling' de optie 'NetBIOS over TCP/IP uitschakelen'.",
+            "Klik op 'OK' om de wijzigingen op te slaan."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
+    "410": {
+        "Name": "WPAD-service uitgeschakeld",
+        "Type": "Beveiliging",
+        "Information": "Web Proxy Auto-Discovery (WPAD) is een protocol waarmee webbrowsers automatisch proxyservers in een netwerk kunnen ontdekken. Het uitschakelen van de WPAD-service helpt mogelijke beveiligingsrisico's in verband met automatische proxyconfiguratie te voorkomen en beschermt uw systeem tegen ongeautoriseerde ontdekking en configuratie van proxyservers.",
+        "Solution": [
+            "WPAD-service is uitgeschakeld, dus er is geen actie nodig."
+        ],
+        "Screenshots": []
+    },
+    "411": {
+        "Name": "WPAD-service ingeschakeld",
+        "Type": "Beveiliging",
+        "Information": "Web Proxy Auto-Discovery (WPAD) is een protocol waarmee webbrowsers automatisch proxyservers in een netwerk kunnen ontdekken. Het uitschakelen van de WPAD-service helpt mogelijke beveiligingsrisico's in verband met automatische proxyconfiguratie te voorkomen en beschermt uw systeem tegen ongeautoriseerde ontdekking en configuratie van proxyservers.",
+        "Solution": [
+            "Open een verhoogde opdrachtprompt door met de rechtermuisknop op de startknop te klikken en 'Terminal (beheerder)' te selecteren.",
+            "Voer de opdracht 'netsh winhttp show proxy' uit om de huidige proxy-instellingen te controleren.",
+            "Als WPAD is ingeschakeld, voer de opdracht 'netsh winhttp reset proxy' uit om WPAD uit te schakelen en de proxy-instellingen opnieuw in te stellen.",
+            "Start uw computer opnieuw op om de wijzigingen toe te passen."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
+    "420": {
+        "Name": "Automatische schermvergrendeling van Windows ingeschakeld",
+        "Type": "Beveiliging",
+        "Information": "Schermvergrendeling is een beveiligingsfunctie die vereist dat gebruikers een wachtwoord, pincode of biometrische authenticatie invoeren om hun apparaat te ontgrendelen en toegang te krijgen tot het bureaublad. Door de schermvergrendeling in te schakelen, worden uw gegevens en privacy beschermd in geval van onbeheerd achterlaten of diefstal van uw computer.",
+        "Solution": [
+            "De automatische schermvergrendeling van Windows is ingeschakeld, dus er is geen actie vereist."
+        ],
+        "Screenshots": []
+    },
+    "421": {
+        "Name": "Automatische schermvergrendeling van Windows uitgeschakeld",
+        "Type": "Beveiliging",
+        "Information": "Schermvergrendeling is een beveiligingsfunctie die vereist dat gebruikers een wachtwoord, pincode of biometrische authenticatie invoeren om hun apparaat te ontgrendelen en toegang te krijgen tot het bureaublad. Door de schermvergrendeling in te schakelen, worden uw gegevens en privacy beschermd in geval van onbeheerd achterlaten of diefstal van uw computer.",
+        "Solution": [
+            "Ga naar Start > Instellingen > Persoonlijke instellingen > Vergrendelscherm.",
+            "Open het 'Schermbeveiliging'-venster.",
+            "Schakel het selectievakje 'Bij hervat weergave aanmeldingsscherm' in en stel de 'Wacht' tijd in op een korte interval (2 minuten of minder)."
+        ],
+        "Screenshots": [
+            "TOBEFILLED"
+        ]
+    },
     "997": {
         "Name": "Extensies geïnstalleerd in Google Chrome",
         "Type": "Privacy",
@@ -1427,19 +1434,19 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-1.jpg",
-            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-2.jpg",
-            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-3.jpg",
-            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-4.jpg",
-            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-4.jpg"
+            "applications-with-administrative-privileges/admin-privileges-1.png",
+            "applications-with-administrative-privileges/admin-privileges-2.png",
+            "applications-with-administrative-privileges/admin-privileges-3.png",
+            "applications-with-administrative-privileges/admin-privileges-4.png",
+            "applications-with-administrative-privileges/admin-privileges-4.png"
         ],
         "ScreenshotsWindows10":
         [
-            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-1.png",
-            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-2.png",
-            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-3.png",
-            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-4.png",
-            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-4.png"
+            "applications-with-administrative-privileges/admin-privileges-1.png",
+            "applications-with-administrative-privileges/admin-privileges-2.png",
+            "applications-with-administrative-privileges/admin-privileges-3.png",
+            "applications-with-administrative-privileges/admin-privileges-4.png",
+            "applications-with-administrative-privileges/admin-privileges-5.png"
         ]
     },
     "999": {
@@ -1457,19 +1464,19 @@
         ],
         "Screenshots":
         [
-            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-1.jpg",
-            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-2.jpg",
-            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-3.jpg",
-            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-4.jpg",
-            "frontend/src/assets/images/windows-11/applications-with-administrative-privileges/admin-privileges-4.jpg"
+            "applications-with-administrative-privileges/admin-privileges-1.png",
+            "applications-with-administrative-privileges/admin-privileges-2.png",
+            "applications-with-administrative-privileges/admin-privileges-3.png",
+            "applications-with-administrative-privileges/admin-privileges-4.png",
+            "applications-with-administrative-privileges/admin-privileges-4.png"
         ],
         "ScreenshotsWindows10":
         [
-            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-1.png",
-            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-2.png",
-            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-3.png",
-            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-4.png",
-            "frontend/src/assets/images/windows-10/applications-with-administrative-privileges/admin-privileges-4.png"
+            "applications-with-administrative-privileges/admin-privileges-1.png",
+            "applications-with-administrative-privileges/admin-privileges-2.png",
+            "applications-with-administrative-privileges/admin-privileges-3.png",
+            "applications-with-administrative-privileges/admin-privileges-4.png",
+            "applications-with-administrative-privileges/admin-privileges-5.png"
         ]
     }
 }

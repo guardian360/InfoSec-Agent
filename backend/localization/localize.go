@@ -4,9 +4,11 @@
 package localization
 
 import (
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/config"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
+
 	"encoding/json"
 
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/nicksnyder/go-i18n/v2/i18n"
 	"golang.org/x/text/language"
 )
@@ -17,7 +19,7 @@ var bundle *i18n.Bundle
 // Init is a function that sets up the localization bundle and localizers for different languages.
 //
 // It loads localization files from a specified path and creates localizers for each supported language.
-// The supported languages are German, British English, American English, Spanish, French, Dutch, and Portuguese.
+// The supported languages are German, English (UK), English (US), Spanish, French, Dutch, and Portuguese.
 //
 // Parameter:
 //   - path: A string representing the path to the directory containing the localization files. Each file should be named as "active.<language_code>.json".
@@ -25,19 +27,20 @@ var bundle *i18n.Bundle
 // Returns: None. This function initializes global variables within the package.
 //
 // Note: This function should be called before using the Localize function to ensure that the localizers are properly set up.
-func Init(path string) { //3
+func Init(path string) {
 	logger.Log.Debug("Initializing localization files")
+	path += config.LocalizationPath
+	logger.Log.Debug("Localization path: " + path)
 
 	bundle = i18n.NewBundle(language.BritishEnglish)
-
 	bundle.RegisterUnmarshalFunc("json", json.Unmarshal)
-	bundle.MustLoadMessageFile(path + "localization/localizations_src/de/active.de.json")
-	bundle.MustLoadMessageFile(path + "localization/localizations_src/en-GB/active.en-GB.json")
-	bundle.MustLoadMessageFile(path + "localization/localizations_src/en-US/active.en-US.json")
-	bundle.MustLoadMessageFile(path + "localization/localizations_src/es/active.es.json")
-	bundle.MustLoadMessageFile(path + "localization/localizations_src/fr/active.fr.json")
-	bundle.MustLoadMessageFile(path + "localization/localizations_src/nl/active.nl.json")
-	bundle.MustLoadMessageFile(path + "localization/localizations_src/pt/active.pt.json")
+	bundle.MustLoadMessageFile(path + "de/active.de.json")
+	bundle.MustLoadMessageFile(path + "en-GB/active.en-GB.json")
+	bundle.MustLoadMessageFile(path + "en-US/active.en-US.json")
+	bundle.MustLoadMessageFile(path + "es/active.es.json")
+	bundle.MustLoadMessageFile(path + "fr/active.fr.json")
+	bundle.MustLoadMessageFile(path + "nl/active.nl.json")
+	bundle.MustLoadMessageFile(path + "pt/active.pt.json")
 
 	logger.Log.Debug("Localization files initialized successfully")
 
@@ -54,7 +57,7 @@ func Init(path string) { //3
 // Localize is a function that retrieves and returns a localized string based on the provided language and message ID.
 //
 // Parameters:
-//   - language: An integer representing the index of the language in the localizers array. The language should correspond to one of the supported languages (0: German, 1: British English, 2: American English, 3: Spanish, 4: French, 5: Dutch, 6: Portuguese).
+//   - language: An integer representing the index of the language in the localizers array. The language should correspond to one of the supported languages (0: German, 1: English (UK), 2: English (US), 3: Spanish, 4: French, 5: Dutch, 6: Portuguese).
 //   - messageID: A string representing the ID of the message to be localized. This ID should correspond to a key in the localization files.
 //
 // Returns:
@@ -70,7 +73,7 @@ func Localize(language int, messageID string) string {
 // Parameters: None.
 //
 // Returns:
-//   - An array of pointers to i18n.Localizer objects. Each localizer corresponds to a supported language (0: German, 1: British English, 2: American English, 3: Spanish, 4: French, 5: Dutch, 6: Portuguese).
+//   - An array of pointers to i18n.Localizer objects. Each localizer corresponds to a supported language (0: German, 1: English (UK), 2: English (US), 3: Spanish, 4: French, 5: Dutch, 6: Portuguese).
 //
 // Note: The Init function should be called before using this function to ensure that the localizers are properly set up.
 func Localizers() [7]*i18n.Localizer {

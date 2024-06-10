@@ -12,6 +12,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/config"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/localization"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/tray"
@@ -37,7 +38,7 @@ func NewFileLoader() *FileLoader {
 	return &FileLoader{}
 }
 
-// ServeHTTP serves the requested file from the frontend/src/assets/images directory.
+// ServeHTTP serves the requested file from the images directory.
 // It first constructs the full path to the requested file and checks if the file is within the allowed directory.
 //
 // This function reads the file data and writes it to the response writer.
@@ -47,7 +48,6 @@ func NewFileLoader() *FileLoader {
 //
 // Returns: None. This function does not return a value as it serves the requested file.
 func (h *FileLoader) ServeHTTP(res http.ResponseWriter, req *http.Request) {
-	const baseDir = "frontend/src/assets/images" // Base directory for image files
 	requestedPath := req.URL.Path
 	cleanPath := filepath.Clean(requestedPath) // Clean the path to avoid directory traversal
 	newPath := strings.Replace(cleanPath, `\`, ``, 1)
@@ -60,10 +60,10 @@ func (h *FileLoader) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 	}
 
 	// Construct the full path to the file
-	fullPath := filepath.Join(baseDir, cleanPath)
+	fullPath := filepath.Join(config.ReportingPageImageDir, cleanPath)
 
 	// Check if the file is within the allowed directory
-	if !strings.HasPrefix(fullPath, filepath.Clean(baseDir)+string(os.PathSeparator)) {
+	if !strings.HasPrefix(fullPath, filepath.Clean(config.ReportingPageImageDir)+string(os.PathSeparator)) {
 		logger.Log.Error("Access to the file path denied:" + newPath)
 		http.Error(res, "Access denied", http.StatusForbidden)
 		return
@@ -102,11 +102,12 @@ func main() {
 	}
 
 	// Setup log file
-	logger.Setup("reporting-page-log.txt", 0, -1)
+	logger.Setup("reporting-page-log.txt", config.LogLevel, config.LogLevelSpecific)
 	logger.Log.Info("Reporting page starting")
 
 	// Change directory to the reporting page directory.
 	// When opening the reporting page from the Windows notification we start in C:\Windows\System32, and we cannot run the reporting page from there.
+	var path string
 	k, err := registry.OpenKey(
 		registry.CURRENT_USER, `Software\Microsoft\Windows\CurrentVersion\App Paths\InfoSec-Agent-Reporting-Page.exe`,
 		registry.QUERY_VALUE,
@@ -114,27 +115,28 @@ func main() {
 	if err != nil {
 		logger.Log.ErrorWithErr("Error opening registry key: ", err)
 	} else {
-		defer k.Close()
+		logger.Log.Debug("Found registry key")
+		defer func(k registry.Key) {
+			err = k.Close()
+			if err != nil {
+				logger.Log.ErrorWithErr("Error closing registry key: ", err)
+			}
+		}(k)
 
 		// Get reporting page executable path
-		s, _, err2 := k.GetStringValue("Path")
-		if err2 != nil {
+		path, _, err = k.GetStringValue("Path")
+		if err != nil {
 			logger.Log.ErrorWithErr("Error getting path string: ", err)
 		}
-
-		// Set current directory to reporting-page
-		err2 = os.Chdir(s + "/../..")
-		if err2 != nil {
-			logger.Log.ErrorWithErr("Error changing directory: ", err)
-		}
 	}
+	changeDirectory(path)
 
 	// Create a new instance of the app and tray struct
 	app := NewApp()
 	systemTray := NewTray(logger.Log)
 	database := NewDatabase()
 	customLogger := logger.Log
-	localization.Init("../backend/")
+	localization.Init("../")
 	lang := usersettings.LoadUserSettings().Language
 	tray.Language = lang
 
@@ -144,7 +146,8 @@ func main() {
 		Title:       "InfoSec Agent Reporting Page",
 		Width:       1024,
 		Height:      768,
-		StartHidden: true,
+		StartHidden: false,
+		AlwaysOnTop: false,
 		AssetServer: &assetserver.Options{
 			Assets:  assets,
 			Handler: NewFileLoader(),
@@ -172,4 +175,25 @@ func main() {
 	if err != nil {
 		logger.Log.ErrorWithErr("Error creating Wails application:", err)
 	}
+}
+
+// changeDirectory attempts to change the current working directory to the specified path.
+// If the config ReportingPagePath contains "build/bin", it sets the path to "reporting-page" to run the reporting page from the development environment.
+// If changing the directory is successful, a debug message is logged indicating the new directory.
+// If an error occurs during the directory change, the error is logged with an error level.
+//
+// Parameters: path: A string representing the target directory path.
+//
+// Returns: None.
+func changeDirectory(path string) {
+	// If the config ReportingPagePath contains "build/bin", we are running the reporting page from the development environment
+	if strings.Contains(config.ReportingPagePath, "build/bin") {
+		path = "reporting-page"
+	}
+
+	err := os.Chdir(path)
+	if err != nil {
+		logger.Log.ErrorWithErr("Error changing directory: ", err)
+	}
+	logger.Log.Debug("Changed directory to " + path)
 }

@@ -285,4 +285,28 @@ var IssueMap = map[IssueResPair]bool{
 	{36, 0}: false,
 	// Edge Cookies: Tracking cookies found
 	{36, 1}: true,
+	// Windows Firewall: Firewall enabled for all profiles
+	{37, 0}: false,
+	// Windows Firewall: Firewall disabled for any/all profile(s)
+	{37, 1}: true,
+	// Password length: Password length at least 15 characters
+	{38, 0}: false,
+	// Password length: Password length less than 15 characters
+	{38, 1}: true,
+	// Credential Guard: Credential Guard running
+	{39, 0}: false,
+	// Credential Guard: Credential Guard not running
+	{39, 1}: true,
+	// NetBIOS over TCP/IP: NetBIOS disabled
+	{40, 0}: false,
+	// NetBIOS over TCP/IP: NetBIOS enabled
+	{40, 1}: true,
+	// WPAD: WPAD service disabled
+	{41, 0}: false,
+	// WPAD: WPAD service enabled
+	{41, 1}: true,
+	// Screen Lock: Screen lock correctly enabled
+	{42, 0}: false,
+	// Screen Lock: Screen lock not correctly enabled
+	{42, 1}: true,
 }

@@ -4,7 +4,6 @@ import (
 	"database/sql"
 	"os"
 	"path/filepath"
-	"regexp"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/browsers"
 
@@ -42,8 +41,9 @@ func HistoryChromium(browser string, getter browsers.DefaultDirGetter, getterCop
 		return checks.NewCheckErrorf(returnID, "Error: ", err)
 	}
 
+	copyGetter := browsers.RealCopyFileGetter{}
 	// Copy the database, so problems don't arise when the file gets locked
-	tempHistoryDB, err := getterCopyDB.CopyDatabase(extensionsDir + "/History")
+	tempHistoryDB, err := getterCopyDB.CopyDatabase(extensionsDir+"/History", browser, copyGetter)
 	if err != nil {
 		logger.Log.ErrorWithErr("Error copying database: ", err)
 		return checks.NewCheckError(returnID, err)
@@ -107,7 +107,7 @@ func GetBrowserPathAndIDHistory(browser string) (string, int) {
 }
 
 type CopyDBGetter interface {
-	CopyDatabase(src string) (string, error)
+	CopyDatabase(src string, browser string, getter browsers.CopyFileGetter) (string, error)
 }
 
 type RealCopyDBGetter struct{}
@@ -116,15 +116,16 @@ type RealCopyDBGetter struct{}
 //
 // Parameters:
 //   - src: A string representing the path to the source database file.
+//   - getter: A function that copies the source file to the temporary location.
 //
 // Returns:
 //   - A string representing the path to the temporary copy of the database file.
 //   - An error, which will be nil if the operation was successful. If an error occurs while copying the file, that error will be returned.
 //
 // This function works by joining the path to the system's temporary directory with the name of the temporary database file ("tempHistoryDB.sqlite"), and then calling the CopyFile function to copy the source file to the temporary location. If the CopyFile function returns an error, the function returns an empty string and the error. Otherwise, it returns the path to the temporary file and nil.
-func (r RealCopyDBGetter) CopyDatabase(src string) (string, error) {
-	tempDB := filepath.Join(os.TempDir(), "tempHistoryDB.sqlite")
-	err := browsers.CopyFile(src, tempDB, nil, nil)
+func (r RealCopyDBGetter) CopyDatabase(src string, browser string, getter browsers.CopyFileGetter) (string, error) {
+	tempDB := filepath.Join(os.TempDir(), "tempHistoryDB"+browser+".sqlite")
+	err := getter.CopyFile(src, tempDB, nil, nil)
 	if err != nil {
 		return "", err
 	}
@@ -204,11 +205,11 @@ type RealProcessQueryResultsGetter struct{}
 // This function works by iterating over the rows, extracting the URL from each row, and checking the domain part of the URL against a list of known phishing domains. If a match is found, a string is generated that includes the domain name and the time of the last visit, and this string is added to the results. The function uses the utils.GetPhishingDomains helper function to fetch the list of known phishing domains and a regular expression to extract the domain part of the URL.
 func (r RealProcessQueryResultsGetter) ProcessQueryResults(rows *sql.Rows, getter browsers.PhishingDomainGetter) ([]string, error) {
 	var results []string
-	phishingDomainList, err := getter.GetPhishingDomains()
+	creator := browsers.RealRequestCreator{}
+	phishingDomainList, err := getter.GetPhishingDomains(creator)
 	if err != nil {
 		return nil, err
 	}
-	re := regexp.MustCompile(`(?:https?://)?(?:[^@\n]+@)?(?:www\.)?([^:/\n?]+\.[^:/\n?]+)`)
 
 	for rows.Next() {
 		var url, title string
@@ -218,13 +219,10 @@ func (r RealProcessQueryResultsGetter) ProcessQueryResults(rows *sql.Rows, gette
 			return nil, scanErr
 		}
 
-		matches := re.FindStringSubmatch(url)
 		for _, scamDomain := range phishingDomainList {
-			if len(matches) > 1 && matches[1] == scamDomain {
-				domain := matches[1]
-				results = append(results, "You visited website: "+domain+" which is a known phishing domain. "+
-					"The time of the last visit: "+
-					""+time.UnixMicro(int64(lastVisitTime)).AddDate(-369, 0, 0).String())
+			if strings.Contains(url, scamDomain) {
+				domain := url
+				results = append(results, domain+time.UnixMicro(int64(lastVisitTime)).AddDate(-369, 0, 0).String())
 			}
 		}
 	}

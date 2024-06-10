@@ -30,8 +30,10 @@
     "vite": "^3.2.10"
   },
   "dependencies": {
+    "browser-image-compression": "^2.0.2",
     "canvas": "^2.11.2",
     "chart.js": "^4.4.2",
+    "html-to-image": "^1.11.11",
     "jsdom": "^24.0.0",
     "mocha": "^10.4.0",
     "mock-require": "^3.0.3",

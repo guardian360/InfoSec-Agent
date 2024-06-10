@@ -128,42 +128,98 @@ func (m MockProfileFinder) FirefoxFolder() ([]string, error) {
 	return m.MockFirefoxFolder()
 }
 
+type Doer interface {
+	Do(req *http.Request) (*http.Response, error)
+}
+
+type RequestCreator interface {
+	NewRequestWithContext(ctx context.Context, method, url string, body io.Reader) (*http.Request, error)
+}
+
+// RealRequestCreator is a struct that implements the RequestCreator interface.
+// It provides the real implementation of the NewRequestWithContext method.
+type RealRequestCreator struct {
+	Client Doer
+}
+
+// NewRequestWithContext is a method of RealRequestCreator that creates a new HTTP request with the provided context, method, URL, and body.
+// It uses the http.NewRequestWithContext function from the net/http package to create the request.
+//
+// Parameters:
+//   - ctx context.Context: The context to use for the request. This context will be used for timeout and cancellation signals, and for passing request-scoped values.
+//   - method string: The HTTP method to use for the request (e.g., "GET", "POST").
+//   - url string: The URL to use for the request.
+//   - body io.Reader: The body of the request. This can be nil for methods that do not require a body (like GET).
+//
+// Returns:
+//   - *http.Request: The created HTTP request.
+//   - error: An error object that wraps any error that occurs during the creation of the request. If the request is created successfully, it returns nil.
+func (r RealRequestCreator) NewRequestWithContext(ctx context.Context, method, url string, body io.Reader) (*http.Request, error) {
+	return http.NewRequestWithContext(ctx, method, url, body)
+}
+
 // PhishingDomainGetter is an interface that wraps the GetPhishingDomains method.
 type PhishingDomainGetter interface {
 	// GetPhishingDomains retrieves a list of active phishing domains from a remote database.
-	GetPhishingDomains() ([]string, error)
+	GetPhishingDomains(creator RequestCreator) ([]string, error)
 }
 
 // RealPhishingDomainGetter is a struct that implements the PhishingDomainGetter interface.
 // It provides the real implementation of the GetPhishingDomains method.
-type RealPhishingDomainGetter struct{}
+type RealPhishingDomainGetter struct {
+	Client Doer
+}
+
+// NewRealPhishingDomainGetter is a constructor function for the RealPhishingDomainGetter struct.
+// It takes a Doer interface as an argument, which is used to make HTTP requests.
+//
+// Parameters:
+//   - client Doer: An object that implements the Doer interface. This object is used to make HTTP requests.
+//
+// Returns:
+//   - RealPhishingDomainGetter: A new instance of RealPhishingDomainGetter with the provided client.
+func NewRealPhishingDomainGetter(client Doer) RealPhishingDomainGetter {
+	return RealPhishingDomainGetter{Client: client}
+}
 
 // GetPhishingDomains retrieves a list of active phishing domains from a remote database.
 //
 // This function sends a GET request to the URL of the phishing database hosted on GitHub. It reads the response body,
 // which contains a list of active phishing domains, each on a new line. The function then splits this response into a slice
 // of strings, where each string represents a single phishing domain.
+// Parameters:
+//   - creator RequestCreator: An object that implements the RequestCreator interface. It is used to create an HTTP request to fetch the phishing domains.
 //
 // Returns:
 //   - []string: A slice containing the phishing domains. If an error occurs during the retrieval or parsing of the domains, an empty slice is returned.
 //   - error: An error object that wraps any error that occurs during the retrieval of the phishing domains. If the domains are retrieved successfully, it returns nil.
-func (r RealPhishingDomainGetter) GetPhishingDomains() ([]string, error) {
+func (r RealPhishingDomainGetter) GetPhishingDomains(creator RequestCreator) ([]string, error) {
+	if r.Client == nil {
+		r.Client = http.DefaultClient
+	}
 	// Get the phishing domains from up-to-date GitHub list
-	client := &http.Client{}
 	url := "https://raw.githubusercontent.com/mitchellkrogza/Phishing.Database/master/phishing-links-ACTIVE-today.txt"
-	req, err := http.NewRequestWithContext(context.Background(), http.MethodGet, url, nil)
-	req.Header.Add("User-Agent", "Mozilla/5.0")
+	req, err := creator.NewRequestWithContext(context.Background(), http.MethodGet, url, nil)
 	if err != nil {
-		logger.Log.FatalWithErr("Error creating HTTP request:", err)
+		logger.Log.ErrorWithErr("Error creating HTTP request:", err)
 		return nil, err
 	}
-	resp, err := client.Do(req)
-	defer func(Body io.ReadCloser) {
-		err = Body.Close()
-		if err != nil {
-			logger.Log.ErrorWithErr("Error closing response body: %v", err)
+	req.Header.Add("User-Agent", "Mozilla/5.0")
+
+	resp, err := r.Client.Do(req)
+	if err != nil {
+		logger.Log.ErrorWithErr("Error sending HTTP request:", err)
+		return nil, err
+	}
+	// Ensure the response body is closed properly
+	defer func() {
+		if resp != nil && resp.Body != nil {
+			resErr := resp.Body.Close()
+			if resErr != nil {
+				logger.Log.ErrorWithErr("Error closing response body:", err)
+			}
 		}
-	}(resp.Body)
+	}()
 
 	if resp.StatusCode != http.StatusOK {
 		logger.Log.Printf("HTTP request failed with status code: %d", resp.StatusCode)
@@ -178,12 +234,45 @@ func (r RealPhishingDomainGetter) GetPhishingDomains() ([]string, error) {
 	}
 
 	if len(scamDomainsResponse) == 0 {
-		logger.Log.ErrorWithErr("Error: Response body is empty", errors.New("no Phising domains list found online"))
-		return nil, errors.New("no Phising domains list found online")
+		logger.Log.ErrorWithErr("Error: Response body is empty", errors.New("no phishing domains list found online"))
+		return nil, errors.New("no phishing domains list found online")
 	}
 
-	return strings.Split(string(scamDomainsResponse), "\n"), nil
+	// Split the response into a list of domains and remove the http:// and https:// prefixes
+	domains := strings.Split(string(scamDomainsResponse), "\n")
+	var result []string
+	for _, domain := range domains {
+		trimmedDomain := strings.TrimPrefix(domain, "http://")
+		trimmedDomain = strings.TrimPrefix(trimmedDomain, "https://")
+		if trimmedDomain != "" {
+			result = append(result, trimmedDomain)
+		}
+	}
+	return result, nil
 }
+
+// CopyFileGetter is an interface that defines a method for copying a file from a source path to a destination path.
+// This interface is used as a contract that must be fulfilled by any type that wishes to provide functionality
+// for copying files.
+type CopyFileGetter interface {
+	// CopyFile is a method that takes a source file path, a destination file path, a mock source file, and a mock destination file as input.
+	// It copies the source file to the destination path. If the mock source file and mock destination file are provided, it uses them instead of the actual files.
+	// This method is used when there is a need to create a copy of a file.
+	//
+	// Parameters:
+	//   - src string: The path to the source file that needs to be copied.
+	//   - dst string: The path to the destination where the source file should be copied to.
+	//   - mockSource mocking.File: A mock file object that represents the source file. If this parameter is not nil, the function uses the mock file for the source.
+	//   - mockDest mocking.File: A mock file object that represents the destination file. If this parameter is not nil, the function uses the mock file for the destination.
+	//
+	// Returns:
+	//   - error: An error object that wraps any error that occurs during the file copying process. If the file is copied successfully, it returns nil.
+	CopyFile(src, dst string, mockSource mocking.File, mockDest mocking.File) error
+}
+
+// RealCopyFile is a struct that implements the CopyFileGetter interface.
+// It provides the real implementation of the CopyFile method.
+type RealCopyFileGetter struct{}
 
 // CopyFile is a utility function that copies a file from a source path to a destination path.
 //
@@ -195,7 +284,7 @@ func (r RealPhishingDomainGetter) GetPhishingDomains() ([]string, error) {
 //
 // Returns:
 //   - error: An error object that wraps any error that occurs during the file copying process. If the file is copied successfully, it returns nil.
-func CopyFile(src, dst string, mockSource mocking.File, mockDestination mocking.File) error {
+func (r RealCopyFileGetter) CopyFile(src, dst string, mockSource mocking.File, mockDestination mocking.File) error {
 	var sourceFile mocking.File
 	var err error
 	if mockSource != nil {
@@ -263,6 +352,27 @@ func (r RealDefaultDirGetter) GetDefaultDir(browserPath string) (string, error) 
 	return filepath.Join(userDir, "AppData", "Local", browserPath, "User Data", "Default"), nil
 }
 
+// QueryCookieDatabaseGetter is an interface that defines a method for querying a cookie database.
+// This interface is used as a contract that must be fulfilled by any type that wishes to provide functionality
+// for querying a cookie database.
+//
+// The QueryCookieDatabase method takes several parameters:
+// - checkID: The ID of the check that is being performed.
+// - browser: The name of the browser for which the check is being performed.
+// - databasePath: The path to the cookie database file.
+// - queryParams: A list of parameters to use in the SQL query for the database.
+// - tableName: The name of the table in the database to query.
+// - getter: An object that implements the CopyFileGetter interface. It is used to copy the database file to a temporary location.
+//
+// The method returns a Check object representing the result of the check. If tracking cookies are found, the result contains a list of cookies along with their host stored in the database.
+type QueryCookieDatabaseGetter interface {
+	QueryCookieDatabase(checkID int, browser string, databasePath string, queryParams []string, tableName string, getter CopyFileGetter) checks.Check
+}
+
+// RealQueryCookieDatabaseGetter is an empty struct that is used as a receiver for the QueryCookieDatabase method.
+// This struct is part of the implementation of the QueryCookieDatabaseGetter interface.
+type RealQueryCookieDatabaseGetter struct{}
+
 // QueryCookieDatabase is a utility function that queries a cookie database for specific parameters.
 // This function is used by the browser-specific (Firefox, Chrome, and Edge) cookie checks to query the cookie database and check for tracking cookies.
 //
@@ -272,10 +382,11 @@ func (r RealDefaultDirGetter) GetDefaultDir(browserPath string) (string, error) 
 //   - databasePath string: The path to the cookie database file.
 //   - queryParams []string: A list of parameters to use in the SQL query for the database.
 //   - tableName string: The name of the table in the database to query.
+//   - getter CopyFileGetter: An object that implements the CopyFileGetter interface. It is used to copy the database file to a temporary location.
 //
 // Returns:
 //   - checks.Check: A Check object representing the result of the check. If tracking cookies are found, the result contains a list of cookies along with their host stored in the database.
-func QueryCookieDatabase(checkID int, browser string, databasePath string, queryParams []string, tableName string) checks.Check {
+func (r RealQueryCookieDatabaseGetter) QueryCookieDatabase(checkID int, browser string, databasePath string, queryParams []string, tableName string, getter CopyFileGetter) checks.Check {
 	// Copy the database, so problems don't arise when the file gets locked
 	tempCookieDB := filepath.Join(os.TempDir(), "tempCookieDb"+browser+".sqlite")
 
@@ -288,15 +399,12 @@ func QueryCookieDatabase(checkID int, browser string, databasePath string, query
 	}(tempCookieDB)
 
 	// Copy the database to a temporary location
-	copyError := CopyFile(databasePath, tempCookieDB, nil, nil)
+	copyError := getter.CopyFile(databasePath, tempCookieDB, nil, nil)
 	if copyError != nil {
 		return checks.NewCheckErrorf(checkID, "Unable to make a copy of "+browser+" database: ", copyError)
 	}
 
 	db, err := sql.Open("sqlite", tempCookieDB)
-	if err != nil {
-		return checks.NewCheckError(checkID, err)
-	}
 	defer func(db *sql.DB) {
 		err = db.Close()
 		if err != nil {
@@ -307,13 +415,13 @@ func QueryCookieDatabase(checkID int, browser string, databasePath string, query
 	sqlSelectors := strings.Join(queryParams, ", ")
 	// Query the name, origin and when the cookie was created from the database
 	rows, err := db.Query(fmt.Sprintf("SELECT %s FROM %s", sqlSelectors, tableName))
-
-	if rows.Err() != nil {
-		return checks.NewCheckError(checkID, rows.Err())
-	}
 	if err != nil {
 		return checks.NewCheckError(checkID, err)
 	}
+	if rows.Err() != nil {
+		return checks.NewCheckError(checkID, rows.Err())
+	}
+
 	defer func(rows *sql.Rows) {
 		err = rows.Close()
 		if err != nil {

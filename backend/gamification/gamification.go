@@ -1,15 +1,17 @@
 // Package gamification handles the gamification within the application, to reward users for performing security checks and staying secure.
 //
-// Exported function(s): PointCalculation, LighthouseStateTransition
+// Exported function(s): UpdateGameState, PointCalculation, LighthouseStateTransition
 package gamification
 
 import (
 	"database/sql"
 	"strconv"
+	"time"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/database"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/usersettings"
 )
 
 // GameState is a struct that represents the state of the gamification.
@@ -17,7 +19,45 @@ import (
 type GameState struct {
 	Points          int
 	PointsHistory   []int
+	TimeStamps      []time.Time
 	LighthouseState int
+}
+
+// UpdateGameState updates the game state based on the scan results and the current game state.
+//
+// Parameters:
+//   - scanResults ([]checks.Check): The results of the scans.
+//   - databasePath (string): The path to the database file.
+//
+// Returns: The updated game state with the new points amount and new lighthouse state.
+func UpdateGameState(scanResults []checks.Check, databasePath string) (GameState, error) {
+	gs := GameState{Points: 0, PointsHistory: nil, TimeStamps: nil, LighthouseState: 0}
+
+	// Loading the game state from the user settings and putting it in the game state struct
+	userSettings := usersettings.LoadUserSettings()
+	gs.Points = userSettings.Points
+	gs.PointsHistory = userSettings.PointsHistory
+	gs.TimeStamps = userSettings.TimeStamps
+	gs.LighthouseState = userSettings.LighthouseState
+
+	gs, err := PointCalculation(gs, scanResults, databasePath)
+	if err != nil {
+		logger.Log.ErrorWithErr("Error calculating points:", err)
+		return gs, err
+	}
+	gs = LighthouseStateTransition(gs)
+
+	// Saving the game state in the user settings
+	current := usersettings.LoadUserSettings()
+	current.Points = gs.Points
+	current.PointsHistory = gs.PointsHistory
+	current.TimeStamps = gs.TimeStamps
+	current.LighthouseState = gs.LighthouseState
+	err = usersettings.SaveUserSettings(current)
+	if err != nil {
+		logger.Log.Warning("Gamification settings not saved to file")
+	}
+	return gs, nil
 }
 
 // PointCalculation calculates the number of points for the user based on the check results.
@@ -40,7 +80,7 @@ func PointCalculation(gs GameState, scanResults []checks.Check, databasePath str
 	for _, result := range scanResults {
 		if result.Error != nil {
 			logger.Log.ErrorWithErr("Error reading scan result", result.Error)
-			return gs, result.Error
+			continue
 		}
 		sev, err1 := database.GetSeverity(db, result.IssueID, result.ResultID)
 		if err1 != nil {
@@ -48,13 +88,14 @@ func PointCalculation(gs GameState, scanResults []checks.Check, databasePath str
 			return gs, err1
 		}
 		logger.Log.Info("Issue ID: " + strconv.Itoa(result.IssueID) + " Severity: " + strconv.Itoa(sev))
-
 		// When severity is of the Informative level , we do not want to adjust the points
 		if sev != 4 {
 			gs.Points += sev
 		}
-		gs.PointsHistory = append(gs.PointsHistory, gs.Points)
 	}
+	gs.PointsHistory = append(gs.PointsHistory, gs.Points)
+	gs.TimeStamps = append(gs.TimeStamps, time.Now())
+
 	// Close the database
 	logger.Log.Debug("Closing database")
 	defer func(db *sql.DB) {
@@ -76,18 +117,39 @@ func PointCalculation(gs GameState, scanResults []checks.Check, databasePath str
 //   - GameState: The updated game state with the new lighthouse state.
 func LighthouseStateTransition(gs GameState) GameState {
 	switch {
-	case gs.Points < 10:
-		gs.LighthouseState = 5
-	case gs.Points < 20:
+	case gs.Points < 10 && sufficientActivity(gs):
+		gs.LighthouseState = 5 // The best state
+	case gs.Points < 20 && sufficientActivity(gs):
 		gs.LighthouseState = 4
-	case gs.Points < 30:
+	case gs.Points < 30 && sufficientActivity(gs):
 		gs.LighthouseState = 3
-	case gs.Points < 40:
+	case gs.Points < 40 && sufficientActivity(gs):
 		gs.LighthouseState = 2
-	case gs.Points < 50:
+	case gs.Points < 50 && sufficientActivity(gs):
 		gs.LighthouseState = 1
 	default:
-		gs.LighthouseState = 0
+		gs.LighthouseState = 1
 	}
 	return gs
+}
+
+// sufficientActivity checks if the user has been active enough to transition to another lighthouse state
+//
+// Parameters:
+//   - gs (GameState): The game state of the user.
+//   - duration (time.Duration): The duration of time that the user needs to be active.
+//
+// Returns:
+//   - bool: whether the user has been active enough.
+func sufficientActivity(gs GameState) bool {
+	// The duration threshold of which the user has been active
+	// Note that we define active as having performed a security check more than [1 week ago]
+	requiredDuration := 7 * 24 * time.Hour
+
+	if len(gs.TimeStamps) == 0 {
+		return false
+	}
+	oldestRecord := gs.TimeStamps[0] // The oldest record is the first timestamp made
+
+	return time.Since(oldestRecord) > requiredDuration
 }

@@ -127,7 +127,7 @@
 }
 
 /* Specific Styles for Navigation Buttons */
-#back-button, #next-button, #previous-button {
+#back-button, #next-button, #previous-button, #scan-button{
   width: auto; /* Auto width based on content */
   padding: 10px 15px; /* Sufficient padding for touch targets */
   float: none; /* Remove float property */
@@ -144,7 +144,7 @@
 
 /* Responsive design */
 @media (width <= 768px) {
-  .button, #back-button, #next-button, #previous-button {
+  .button, #back-button, #next-button, #previous-button, #scan-button {
     width: 100%; /* Full width on small screens */
     margin-top: 10px; /* Space out stacked buttons */
   }
@@ -167,7 +167,7 @@
 /* Additional styles for better visual */
 .issue-information, .issue-solution {
   box-shadow: 0 4px 8px rgb(0 0 0 / 10%); /* Add shadow for depth */
-  border: 1px solid #dcdcdc; /* Light border for definition */
+  border: 1px solid var(--border-color); /* Light border for definition */
   margin: 20px; /* Add space around the elements */
   background-color: var(--background-color-top-nav); /* Light background color */
   border-radius: 10px; /* Rounded corners for a softer look */
@@ -182,6 +182,10 @@ h1, h2{
 }
 
 .issue-information > p{
+  margin-left: 20px;
+}
+
+.information{
   margin-left: 20px;
 }
 

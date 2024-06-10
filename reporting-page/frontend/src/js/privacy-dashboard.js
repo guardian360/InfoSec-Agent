@@ -7,6 +7,7 @@ import {retrieveTheme} from './personalize.js';
 import {adjustWithRiskCounters, setMaxInterval, addGraphFunctions} from './security-dashboard.js';
 import {scanTest} from './database.js';
 import {suggestedIssue} from './home.js';
+import {openAllChecksPage} from './all-checks.js';
 
 /** Load the content of the Privacy Dashboard page */
 export function openPrivacyDashboardPage() {
@@ -17,16 +18,55 @@ export function openPrivacyDashboardPage() {
 
   document.getElementById('page-contents').innerHTML = `
   <div class="dashboard">
-    <div class="container-dashboard">
-      <div class="dashboard-segment">
+    <div class="container-dashboard"> <!-- title top container -->
+      <div class="dashboard-segment dashboard-title"> <!-- title top segment -->
+        <p class="lang-privacy-dashboard"><p> 
+      </div>
+    </div>
+    <div class="container-dashboard"> <!-- top container -->
+      <div class="dashboard-segment"> <!-- Privacy status segment -->
         <div class="data-segment-header">
           <p class="lang-privacy-stat"></p>
         </div>
         <div class="security-status">
           <p class="status-descriptor"></p>
         </div>
-      </div>
+      </div> 
       <div class="dashboard-segment">
+        <div class="data-segment-header">
+          <p class="lang-choose-issue-description"></p>
+        </div>
+        <a id="suggested-issue" class="privacy-button lang-suggested-issue"><p></p></a>
+        <a id="scan-now" class="privacy-button lang-scan-now"></a>
+      </div>
+      <div class="dashboard-segment risk-areas">
+        <div class="data-segment-header">
+          <p class="lang-privacy-risk-areas"></p>
+        </div>
+        <div class="security-area-buttons">
+          <div class="security-area privacy-risk-button" id="privacy-button-permissions">
+            <a>
+              <p>
+                <span class="lang-permissions"></span>
+                <span class="material-symbols-outlined">person_check</span>
+              </p>
+            </a>
+          </div>
+          <div class="security-area privacy-risk-button" id="privacy-button-browser">
+            <a>
+              <p><span class="lang-browser"></span><span class="material-symbols-outlined">travel_explore</span></p>
+            </a>
+          </div>
+          <div class="security-area privacy-risk-button" id="privacy-button-other">
+            <a>
+              <p><span class="lang-other"></span><span class="material-symbols-outlined">view_cozy</span></p>
+            </a>
+          </div>
+        </div>
+      </div>    
+    </div>
+    <div class="container-dashboard"> <!-- bottom container -->
+      <div class="dashboard-segment"> <!-- Privacy risk counters segment -->
         <div class="data-segment-header">
           <p class="lang-risk-level-counters"></p>
         </div>
@@ -50,10 +90,8 @@ export function openPrivacyDashboardPage() {
           <div><p class="lang-acceptable-issues"></p></div>
           <div><p id="no-risk-counter">0</p></div>
         </div>
-      </div>      
-    </div>
-    <div class="container-dashboard">
-      <div class="dashboard-segment">
+      </div> 
+      <div class="dashboard-segment"> <!-- pie chart segment -->
         <div class="data-segment-header">
             <p class="lang-risk-level-distribution piechart-header"></p>
         </div>
@@ -61,7 +99,7 @@ export function openPrivacyDashboardPage() {
           <canvas class="pie-chart" id="pie-chart-privacy"></canvas>
         </div>
       </div>
-      <div class="dashboard-segment">
+      <div class="dashboard-segment"> <!-- graph segement -->
         <div class="data-segment-header">
           <p class="lang-risk-level-distribution"></p>
         </div>
@@ -69,7 +107,7 @@ export function openPrivacyDashboardPage() {
           <div class="graph-buttons">
             <p class="lang-bar-graph-description">
             </p>
-            <button id="dropbtn" class="dropbtn"><span class="lang-select-risks"></span></button>
+            <button id="dropbtn" class="dropbtn privacy-button"><span class="lang-select-risks"></span></button>
             <div class="dropdown-selector" id="myDropdown">
               <p><input type="checkbox" checked="true" value="true" id="select-high-risk">
                 <label for="select-high-risk" class="lang-high-risk-issues"></label><br>
@@ -98,47 +136,16 @@ export function openPrivacyDashboardPage() {
         </div>
       </div>
     </div>
-    <div class="container-dashboard">
-      <div class="dashboard-segment">
-        <div class="data-segment-header">
-          <p class="lang-choose-issue-description"></p>
-        </div>
-        <a id="suggested-issue" class="issue-button lang-suggested-issue"><p></p></a>
-        <a id="scan-now" class="issue-button lang-scan-now"></a>
-      </div>
-      <div class="dashboard-segment risk-areas">
-        <div class="data-segment-header">
-          <p class="lang-privacy-risk-areas"></p>
-        </div>
-        <div class="security-area">
-          <a>
-            <p>
-              <span class="lang-permissions"></span>
-              <span class="material-symbols-outlined">person_check</span>
-            </p>
-          </a>
-        </div>
-        <div class="security-area">
-          <a>
-            <p><span class="lang-browser"></span><span class="material-symbols-outlined">travel_explore</span></p>
-          </a>
-        </div>
-        <div class="security-area">
-          <a>
-            <p><span class="lang-other"></span><span class="material-symbols-outlined">view_cozy</span></p>
-          </a>
-        </div>
-      </div>
-    </div>
   </div>
   `;
   // Set counters on the page to the right values
   let rc = JSON.parse(sessionStorage.getItem('PrivacyRiskCounters'));
-  adjustWithRiskCounters(rc, document);
+  adjustWithRiskCounters(rc, document, true);
   setMaxInterval(rc, document);
 
   // Localize the static content of the dashboard
   const staticDashboardContent = [
+    'lang-privacy-dashboard',
     'lang-issues',
     'lang-high-risk-issues',
     'lang-medium-risk-issues',
@@ -160,6 +167,7 @@ export function openPrivacyDashboardPage() {
     'lang-bar-graph-description',
   ];
   const localizationIds = [
+    'Navigation.PrivacyDashboard',
     'Dashboard.Issues',
     'Dashboard.HighRisk',
     'Dashboard.MediumRisk',
@@ -191,12 +199,20 @@ export function openPrivacyDashboardPage() {
   document.getElementById('scan-now').addEventListener('click', async () => {
     await scanTest(true);
     rc = JSON.parse(sessionStorage.getItem('PrivacyRiskCounters'));
-    adjustWithRiskCounters(rc, document);
+    adjustWithRiskCounters(rc, document, true);
     setMaxInterval(rc, document);
     g.rc = rc;
     await g.changeGraph();
   });
   document.getElementById('suggested-issue').addEventListener('click', () => suggestedIssue('Privacy'));
+
+  // Add links to checks page
+  document.getElementById('privacy-button-permissions').addEventListener('click',
+    () => openAllChecksPage('permissions'));
+  document.getElementById('privacy-button-browser').addEventListener('click',
+    () => openAllChecksPage('browser'));
+  document.getElementById('privacy-button-other').addEventListener('click',
+    () => openAllChecksPage('privacy-other'));
 }
 
 /* istanbul ignore next */
@@ -204,6 +220,6 @@ if (typeof document !== 'undefined') {
   try {
     document.getElementById('privacy-dashboard-button').addEventListener('click', () => openPrivacyDashboardPage());
   } catch (error) {
-    logError('Error in security-dashboard.js: ' + error);
+    logError('Error in privacy-dashboard.js: ' + error);
   }
 }

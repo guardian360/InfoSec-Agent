@@ -43,19 +43,21 @@ func SearchEngineFirefox(profileFinder browsers.FirefoxProfileFinder, boolMock b
 	defer func(name string) {
 		err = os.Remove(name)
 		if err != nil {
-			log.Println("Error deleting temporary file")
+			log.Println("Error deleting temporary search Engine file Firefox")
 		}
 	}(tempSearch)
 
+	copyGetter := browsers.RealCopyFileGetter{}
+
 	if !boolMock {
 		// Copy the compressed json to a temporary location
-		copyError := browsers.CopyFile(filePath, tempSearch, nil, nil)
+		copyError := copyGetter.CopyFile(filePath, tempSearch, nil, nil)
 		if copyError != nil {
 			return checks.NewCheckErrorf(checks.SearchFirefoxID, "Unable to make a copy of the file", copyError)
 		}
 	} else {
 		// Copy the compressed json to a temporary location
-		copyError := browsers.CopyFile(filePath, tempSearch, mockSource, mockDest)
+		copyError := copyGetter.CopyFile(filePath, tempSearch, mockSource, mockDest)
 		if copyError != nil {
 			return checks.NewCheckErrorf(checks.SearchFirefoxID, "Unable to make a copy of the file", copyError)
 		}

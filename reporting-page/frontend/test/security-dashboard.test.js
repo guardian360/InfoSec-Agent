@@ -47,11 +47,32 @@ jest.unstable_mockModule('../src/js/database.js', () => ({
 jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
   Localize: jest.fn().mockImplementation((input) => mockGetLocalization(input)),
   LoadUserSettings: jest.fn(),
+  GetImagePath: jest.fn(),
+}));
+
+// Mock Tray
+jest.unstable_mockModule('../wailsjs/go/main/Tray.js', () => ({
+  LogError: jest.fn(),
+  ChangeLanguage: jest.fn(),
+  ChangeScanInterval: jest.fn(),
+  LogDebug: jest.fn(),
 }));
 
 // Mock openIssuesPage
 jest.unstable_mockModule('../src/js/issue.js', () => ({
   openIssuePage: jest.fn(),
+  scrollToElement: jest.fn(),
+}));
+
+// Mock suggestedIssue
+jest.unstable_mockModule('../src/js/home.js', () => ({
+  suggestedIssue: jest.fn(),
+}));
+
+// Mock openPersonalizePage
+jest.unstable_mockModule('../src/js/personalize.js', () => ({
+  openPersonalizePage: jest.fn(),
+  retrieveTheme: jest.fn(),
 }));
 
 // test cases
@@ -134,7 +155,7 @@ describe('Security dashboard', function() {
     const dashboard = await import('../src/js/security-dashboard.js');
 
     // act
-    dashboard.adjustWithRiskCounters(mockRiskCounters, global.document);
+    dashboard.adjustWithRiskCounters(mockRiskCounters, global.document, false);
 
     // assert
     test.value(document.getElementById('high-risk-counter').innerHTML).isEqualTo(mockRiskCounters.lastHighRisk);
@@ -164,7 +185,7 @@ describe('Security dashboard', function() {
 
     expectedColors.forEach((element, index) => {
       // act
-      dashboard.adjustWithRiskCounters(mockRiskCounters, dom.window.document);
+      dashboard.adjustWithRiskCounters(mockRiskCounters, dom.window.document, false);
 
       // assert
       test.value(dom.window.document.getElementById('high-risk-counter').innerHTML)
@@ -219,7 +240,7 @@ describe('Security dashboard', function() {
       if (index == 2) mockRiskCounters.lastMediumRisk = 0;
       if (index == 3) mockRiskCounters.lastLowRisk = 0;
       if (index == 4) mockRiskCounters.lastInfoRisk = 0;
-      await dashboard.adjustWithRiskCounters(mockRiskCounters, dom.window.document);
+      await dashboard.adjustWithRiskCounters(mockRiskCounters, dom.window.document, false);
 
       // Assert
       test.value(securityStatus[0].innerHTML)
@@ -263,12 +284,12 @@ describe('Security dashboard', function() {
     ];
     sessionStorage.setItem('DataBaseData', JSON.stringify(issues));
 
-    const issue = await import('../src/js/issue.js');
+    const home = await import('../src/js/home.js');
     const button = document.getElementById('suggested-issue');
-    const openIssuePageMock = jest.spyOn(issue, 'openIssuePage');
+    const suggestedIssueMockMock = jest.spyOn(home, 'suggestedIssue');
 
     // Assert
     button.dispatchEvent(clickEvent);
-    expect(openIssuePageMock).toHaveBeenCalled();
+    expect(suggestedIssueMockMock).toHaveBeenCalled();
   });
 });

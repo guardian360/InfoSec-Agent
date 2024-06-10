@@ -19,11 +19,11 @@ import (
 )
 
 type MockCopyDBGetter struct {
-	CopyDatabaseFunc func(source string) (string, error)
+	CopyDatabaseFunc func(source string, browser string, getter browsers.CopyFileGetter) (string, error)
 }
 
-func (m MockCopyDBGetter) CopyDatabase(source string) (string, error) {
-	return m.CopyDatabaseFunc(source)
+func (m MockCopyDBGetter) CopyDatabase(source string, browser string, getter browsers.CopyFileGetter) (string, error) {
+	return m.CopyDatabaseFunc(source, browser, getter)
 }
 
 type MockQueryDatabaseGetter struct {
@@ -46,7 +46,7 @@ type MockPhishingDomainsGetter struct {
 	GetPhishingDomainsFunc func() ([]string, error)
 }
 
-func (m MockPhishingDomainsGetter) GetPhishingDomains() ([]string, error) {
+func (m MockPhishingDomainsGetter) GetPhishingDomains(_ browsers.RequestCreator) ([]string, error) {
 	return m.GetPhishingDomainsFunc()
 }
 
@@ -58,7 +58,7 @@ func TestHistoryChromium_Success(t *testing.T) {
 	}
 
 	mockCopyGetter := MockCopyDBGetter{
-		CopyDatabaseFunc: func(_ string) (string, error) {
+		CopyDatabaseFunc: func(_ string, _ string, _ browsers.CopyFileGetter) (string, error) {
 			return "/path/to/temp", nil
 		},
 	}
@@ -112,19 +112,15 @@ func TestHistoryChromium_Success_NoPhishing(t *testing.T) {
 	}
 
 	mockCopyGetter := MockCopyDBGetter{
-		CopyDatabaseFunc: func(_ string) (string, error) {
+		CopyDatabaseFunc: func(_ string, _ string, _ browsers.CopyFileGetter) (string, error) {
 			return "/path/to/temp", nil
 		},
 	}
 
 	mockQueryDBGetter := MockQueryDatabaseGetter{
-		QueryDatabaseFunc: func(db *sql.DB) (*sql.Rows, error) {
-			db, mock, err := sqlmock.New()
-			if err != nil {
-				return nil, err
-			}
+		QueryDatabaseFunc: func(_ *sql.DB) (*sql.Rows, error) {
+			db, mock, _ := sqlmock.New()
 			defer func() {
-				_ = db.Close()
 			}()
 
 			rows := sqlmock.NewRows([]string{"url", "title", "visit_count", "last_visit_time"})
@@ -166,7 +162,7 @@ func TestHistoryChromium_Error_GetDefaultDir(t *testing.T) {
 	}
 
 	mockCopyGetter := MockCopyDBGetter{
-		CopyDatabaseFunc: func(_ string) (string, error) {
+		CopyDatabaseFunc: func(_ string, _ string, _ browsers.CopyFileGetter) (string, error) {
 			return "/path/to/temp", nil
 		},
 	}
@@ -202,7 +198,7 @@ func TestHistoryChromium_Error_CopyDatabase(t *testing.T) {
 	}
 
 	mockCopyGetter := MockCopyDBGetter{
-		CopyDatabaseFunc: func(_ string) (string, error) {
+		CopyDatabaseFunc: func(_ string, _ string, _ browsers.CopyFileGetter) (string, error) {
 			return "", errors.New("mock error")
 		},
 	}
@@ -238,7 +234,7 @@ func TestHistoryChromium_Error_QueryDb(t *testing.T) {
 	}
 
 	mockCopyGetter := MockCopyDBGetter{
-		CopyDatabaseFunc: func(_ string) (string, error) {
+		CopyDatabaseFunc: func(_ string, _ string, _ browsers.CopyFileGetter) (string, error) {
 			return "/invalid/path", nil
 		},
 	}
@@ -275,7 +271,7 @@ func TestHistoryChromium_Error_ProcessQueryResults(t *testing.T) {
 	}
 
 	mockCopyGetter := MockCopyDBGetter{
-		CopyDatabaseFunc: func(_ string) (string, error) {
+		CopyDatabaseFunc: func(_ string, _ string, _ browsers.CopyFileGetter) (string, error) {
 			return "/path/to/temp", nil
 		},
 	}
@@ -363,7 +359,7 @@ func TestCopyDatabase_Success(t *testing.T) {
 
 	// Call the function
 	getter := chromium.RealCopyDBGetter{}
-	_, err = getter.CopyDatabase(tempFile.Name())
+	_, err = getter.CopyDatabase(tempFile.Name(), "", browsers.RealCopyFileGetter{})
 
 	// Assert there was no error
 	require.NoError(t, err)
@@ -375,7 +371,7 @@ func TestCopyDatabase_Error(t *testing.T) {
 
 	// Call the function
 	getter := chromium.RealCopyDBGetter{}
-	_, err := getter.CopyDatabase(invalidFilePath)
+	_, err := getter.CopyDatabase(invalidFilePath, "", browsers.RealCopyFileGetter{})
 
 	// Assert there was an error
 	require.Error(t, err)
@@ -464,7 +460,7 @@ func TestProcessQueryResults(t *testing.T) {
 	// Mock the GetPhishingDomains function to return a list containing "phishing.com"
 	mockGetter := MockPhishingDomainsGetter{
 		GetPhishingDomainsFunc: func() ([]string, error) {
-			return []string{"phishing.com"}, nil
+			return []string{"http://phishing.com"}, nil
 		},
 	}
 	getter := chromium.RealProcessQueryResultsGetter{}

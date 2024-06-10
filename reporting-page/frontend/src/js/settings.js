@@ -6,13 +6,21 @@ import {openPrivacyDashboardPage} from './privacy-dashboard.js';
 import {openIssuePage} from './issue.js';
 import {openIssuesPage} from './issues.js';
 import {openIntegrationPage} from './integration.js';
-import {ChangeLanguage as changeLanguage, LogError as logError} from '../../wailsjs/go/main/Tray.js';
+import {openAllChecksPage} from './all-checks.js';
+import {ChangeLanguage as changeLanguage,
+  ChangeScanInterval as changeScanInterval,
+  LogError as logError} from '../../wailsjs/go/main/Tray.js';
+
+// On reload makes sure modal is openable
+sessionStorage.removeItem('ModalOpen');
 
 /**
  * Initiates a language update operation.
  * Calls the ChangeLanguage function and handles the result or error.
  */
 export async function updateLanguage() {
+  // remove modal is open flag if it exists
+  sessionStorage.removeItem('ModalOpen');
   await changeLanguage()
     .then(async () => {
       sessionStorage.setItem('languageChanged', JSON.stringify(true));
@@ -49,6 +57,8 @@ export function reloadPage() {
     case '7':
       openPersonalizePage();
       break;
+    case '8':
+      openAllChecksPage();
     default:
       try {
         const issuepage = JSON.parse(page);
@@ -67,7 +77,13 @@ if (typeof document !== 'undefined') {
   try {
     document.getElementById('personalize-button').addEventListener('click', () => openPersonalizePage());
     document.getElementById('language-button').addEventListener('click', () => updateLanguage());
-    document.getElementById('windows-version-button').addEventListener('click', () => showWindowsVersion());
+    document.getElementById('windows-version-button')
+      .addEventListener('click', () => showModal('window-version-modal'));
+    document.getElementById('scan-interval-button').addEventListener('click', () => changeScanInterval());
+    document.getElementById('state-button-0').addEventListener('click', () => changeState(0));
+    document.getElementById('state-button-1').addEventListener('click', () => changeState(1));
+    document.getElementById('state-button-2').addEventListener('click', () => changeState(2));
+
     document.getElementById('windows-10').addEventListener('click', () => selectWindowsVersion(10));
     document.getElementById('windows-11').addEventListener('click', () => selectWindowsVersion(11));
   } catch (error) {
@@ -75,32 +91,43 @@ if (typeof document !== 'undefined') {
   }
 }
 
-/** displays the popup to select the currently used windows version */
-export function showWindowsVersion() {
-  // Get the modal
-  const modal = document.getElementById('window-version-modal');
+/**
+ * displays the popup to select the currently used windows version
+ * @param {string} id id of modal element
+ */
+export function showModal(id) {
+  const open = sessionStorage.getItem('ModalOpen');
+  if (open == undefined || open == null) {
+    sessionStorage.setItem('ModalOpen', true);
+    // Get the modal
+    const modal = document.getElementById(id);
 
-  modal.style.display = 'block';
+    modal.style.display = 'block';
 
-  // Get the <span> element that closes the modal
-  const close = document.getElementById('close-windows-select');
+    // Get the <span> element that closes the modal
+    const close = document.getElementById('close-' + id);
 
-  // When the user clicks on <span> (x), close the modal
-  close.onclick = function() {
-    reloadPage();
-    modal.style.display = 'none';
-  };
-
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
-    if (event.target == modal) {
+    // When the user clicks on <span> (x), close the modal
+    close.onclick = function() {
       reloadPage();
       modal.style.display = 'none';
-    }
-  };
+      sessionStorage.removeItem('ModalOpen');
+    };
 
-  const version = sessionStorage.getItem('WindowsVersion');
-  document.getElementById('windows-' + version + '-button').classList.add('selected');
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        reloadPage();
+        modal.style.display = 'none';
+        sessionStorage.removeItem('ModalOpen');
+      }
+    };
+
+    if (id == 'window-version-modal') {
+      const version = sessionStorage.getItem('WindowsVersion');
+      document.getElementById('windows-' + version + '-button').classList.add('selected');
+    }
+  }
 }
 
 /**
@@ -117,4 +144,13 @@ export function selectWindowsVersion(version) {
   }
   sessionStorage.setItem('WindowsVersion', version);
   sessionStorage.setItem('WindowsVersionChanged', JSON.stringify(true));
+}
+
+/**
+ * Select state lighthouse
+ * @param {string} state state to select
+ */
+function changeState(state) {
+  sessionStorage.setItem('state', state);
+  openHomePage();
 }

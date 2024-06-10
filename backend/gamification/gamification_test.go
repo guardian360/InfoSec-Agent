@@ -4,6 +4,7 @@ import (
 	"os"
 	"strconv"
 	"testing"
+	"time"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/gamification"
@@ -28,6 +29,31 @@ func TestMain(m *testing.M) {
 	os.Exit(exitCode)
 }
 
+// TestUpdateGameState tests the general workings of the UpdateGameState function.
+//
+// Parameters:
+//   - t (*testing.T): A pointer to an instance of the testing framework, used for reporting test results.
+//
+// No return values.
+func TestUpdateGameState(t *testing.T) {
+	// Mock the following functions and variables
+	mockDatabasePath := "../../reporting-page/database.db"
+	mockScanResults := []checks.Check{
+		{
+			IssueID:  29,
+			ResultID: 1, // severity 2
+		},
+		{
+			IssueID:  5,
+			ResultID: 1, // severity 1
+		},
+	}
+	t.Run("Test", func(t *testing.T) {
+		_, err := gamification.UpdateGameState(mockScanResults, mockDatabasePath)
+		require.NoError(t, err)
+	})
+}
+
 // TestPointCalculation tests the PointCalculation function for certain states
 //
 // Parameters:
@@ -49,9 +75,9 @@ func TestPointCalculation(t *testing.T) {
 		name string
 		gs   gamification.GameState
 	}{
-		{name: "GameState with no points and no point history", gs: gamification.GameState{Points: 0, PointsHistory: []int{}, LighthouseState: 0}},
-		{name: "GameState with positive points and no point history", gs: gamification.GameState{Points: 29, PointsHistory: []int{}, LighthouseState: 3}},
-		{name: "GameState with positive points and point history", gs: gamification.GameState{Points: 37, PointsHistory: []int{50, 28, 34}, LighthouseState: 2}},
+		{name: "GameState with no points and no point history", gs: gamification.GameState{Points: 0, PointsHistory: nil, TimeStamps: nil, LighthouseState: 0}},
+		{name: "GameState with positive points and no point history", gs: gamification.GameState{Points: 29, PointsHistory: nil, TimeStamps: nil, LighthouseState: 3}},
+		{name: "GameState with positive points and point history", gs: gamification.GameState{Points: 37, PointsHistory: []int{50, 28, 34}, TimeStamps: []time.Time{time.Now(), time.Now(), time.Now()}, LighthouseState: 2}},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -61,7 +87,7 @@ func TestPointCalculation(t *testing.T) {
 	}
 }
 
-// TestLighthouseStateTransition tests the LighthouseStateTransition function for various points inputs.
+// TestLighthouseStateTransition tests the LighthouseStateTransition function for various time stamps and points input.
 //
 // Parameters:
 //   - t (*testing.T): A pointer to an instance of the testing framework, used for reporting test results.
@@ -70,18 +96,20 @@ func TestPointCalculation(t *testing.T) {
 func TestLighthouseStateTransition(t *testing.T) {
 	tests := []struct {
 		points                  int
+		timestamps              []time.Time
 		expectedLighthouseState int
 	}{
-		{points: 4, expectedLighthouseState: 5},
-		{points: 13, expectedLighthouseState: 4},
-		{points: 26, expectedLighthouseState: 3},
-		{points: 35, expectedLighthouseState: 2},
-		{points: 44, expectedLighthouseState: 1},
-		{points: 70, expectedLighthouseState: 0},
+		{points: 4, timestamps: []time.Time{time.Date(2023, 6, 18, 12, 0, 0, 0, time.Now().Local().Location())}, expectedLighthouseState: 5},
+		{points: 13, timestamps: []time.Time{time.Date(2023, 5, 14, 12, 0, 0, 0, time.Now().Local().Location())}, expectedLighthouseState: 4},
+		{points: 26, timestamps: []time.Time{time.Date(2023, 2, 23, 12, 0, 0, 0, time.Now().Local().Location())}, expectedLighthouseState: 3},
+		{points: 35, timestamps: []time.Time{time.Date(2023, 6, 7, 12, 0, 0, 0, time.Now().Local().Location())}, expectedLighthouseState: 2},
+		{points: 44, timestamps: []time.Time{time.Date(2023, 1, 3, 12, 0, 0, 0, time.Now().Local().Location())}, expectedLighthouseState: 1},
+		{points: 70, timestamps: []time.Time{time.Date(2023, 11, 24, 12, 0, 0, 0, time.Now().Local().Location())}, expectedLighthouseState: 1},
+		{points: 13, timestamps: []time.Time{time.Now()}, expectedLighthouseState: 1},
 	}
 	for i, tt := range tests {
 		t.Run("Test "+strconv.Itoa(i), func(t *testing.T) {
-			gs := gamification.GameState{Points: tt.points, PointsHistory: []int{}, LighthouseState: 9}
+			gs := gamification.GameState{Points: tt.points, PointsHistory: nil, TimeStamps: tt.timestamps, LighthouseState: 9}
 			got := gamification.LighthouseStateTransition(gs)
 			require.Equal(t, tt.expectedLighthouseState, got.LighthouseState)
 		})

@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
     <link rel="stylesheet" href="./src/css/about.css">
+    <link rel="stylesheet" href="./src/css/all-checks.css">
     <link rel="stylesheet" href="./src/css/color-palette.css">
     <link rel="stylesheet" href="./src/css/dashboard.css">
     <link rel="stylesheet" href="./src/css/home.css">
@@ -13,10 +14,12 @@
     <link rel="stylesheet" href="./src/css/navigation.css">
     <link rel="stylesheet" href="./src/css/personalize.css">
     <link rel="stylesheet" href="./src/css/responsive.css">
+    <link rel="stylesheet" href="./src/css/share.css">
 
     <link rel="icon" id="favicon" href="./src/assets/images/logoTeamA-transformed.png" >
     
     <script src="./src/js/about.js" type="module" defer></script>
+    <script src="./src/js/all-checks.js" type="module" defer></script>
     <script src="./src/js/database.js" type="module" defer></script>
     <script src="./src/js/home.js" type="module" defer></script>
     <script src="./src/js/integration.js" type="module" defer></script>
@@ -26,6 +29,7 @@
     <script src="./src/js/privacy-dashboard.js" type="module" defer></script>
     <script src="./src/js/security-dashboard.js" type="module" defer></script>
     <script src="./src/js/settings.js" type="module" defer></script>
+    <script src="./src/js/share.js" type="module" defer></script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <title>InfoSec-Agent Reporting Page</title>
   </head>
@@ -47,9 +51,13 @@
         <div class="nav-link settings-button">
           <span><span class="material-symbols-outlined">settings</span></span>
           <div class="dropdown-content">
-            <a id="personalize-button" class="lang-personalize-page">Personalize page</a>
-            <a id="language-button" class="lang-change-language">Change Language</a>
-            <a id="windows-version-button" class="">Windows Version</a>
+            <a id="personalize-button" class="lang-personalize-page"></a>
+            <a id="language-button" class="lang-change-language"></a>
+            <a id="windows-version-button" class="lang-windows-version"></a>
+            <a id="scan-interval-button" class="lang-scan-interval"></a>
+            <a id="state-button-0">Change state to 0</a>
+            <a id="state-button-1">Change state to 1</a>
+            <a id="state-button-2">Change state to 2</a>
           </div>
         </div>
       </div>
@@ -67,6 +75,9 @@
       <div id="issues-button" class="nav-link">
         <p><span class="material-symbols-outlined">checklist</span><span class="nav-item lang-issues">Issues</span></p>
       </div>
+      <div id="all-checks-button" class="nav-link">
+        <p><span class="material-symbols-outlined">list_alt</span><span class="nav-item lang-checks">Checks</span></p>
+      </div>
       <div id="integration-button" class="nav-link">
         <p><span class="material-symbols-outlined">integration_instructions</span><span class="nav-item lang-integration">Integration</span></p>
       </div>
@@ -77,11 +88,11 @@
     <div id="window-version-modal" class="modal">
       <div class="modal-content">
         <div class="modal-header">
-          <span id="close-windows-select" class="close">&times;</span>
-          <p>Select windows version</p>
+          <span id="close-window-version-modal" class="close">&times;</span>
+          <p class="lang-select-version"></p>
         </div>
-        <div id="windows-10"><a id="windows-10-button">Windows 10</a></div>
-        <div id="windows-11"><a id="windows-11-button">Windows 11</a></div>
+        <div id="windows-10"><a id="windows-10-button" class="modal-button">Windows 10</a></div>
+        <div id="windows-11"><a id="windows-11-button" class="modal-button">Windows 11</a></div>
       </div>
     </div>
     <div id="page-contents"></div>

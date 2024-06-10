@@ -1,48 +1,65 @@
 @import url(color-palette.css);
 
-/* Setting box */
+/* General Layout */
 .personalize-container {
   padding: 20px;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   color: var(--text-body);
+  background-color: var(--background-color);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 10%);
 }
 
-.personalize-description {
-    float: left;
-    width: 200px;
-}
-
-.personalize-label{
-  display: block;
-  position: relative;
-  background-color: var(--background-color-left-nav);
-  cursor: pointer;
+.personalize-container h2 {
+  margin-bottom: 20px;
+  color: var(--text-body);
   text-align: center;
 }
 
-.personalize-button{
-  float: right;
-  width: 100px;
+.personalize-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
 }
 
-.personalize-button-container{
-  position: relative;
-  width: 80px; /* 60 */
-  height: 22px; /* 34 */
-  float: right;
-  margin-left: auto;
-  margin-right: 10px;
+.personalize-description {
+  flex: 1;
+  color: var(--text-body);
 }
 
-.personalize-input-invisible{
-  display:none;
+.personalize-button-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.personalize-button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--background-color-left-nav);
+  color: var(--text-body);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.personalize-button:hover {
+  background-color: var(--background-nav-hover);
+}
+
+.personalize-input-invisible {
+  display: none;
 }
 
 hr.solid {
   border-top: 1px solid #ddd;
-  margin: 10px;
+  margin: 10px 0;
 }
 
+/* Modal */
 .modal {
   display: none;
   position: fixed;
@@ -52,6 +69,7 @@ hr.solid {
   width: 100%;
   height: 100%;
   overflow: auto;
+  background-color: rgb(0 0 0 / 50%);
 }
 
 .modal-content {
@@ -60,48 +78,53 @@ hr.solid {
   padding: 20px;
   border: 1px solid #888;
   width: 50%;
+  border-radius: 8px;
 }
 
 #new-title-input {
   width: 100%;
   margin-bottom: 10px;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
 }
 
 /* Theme selector */
-.color-picker > fieldset{
+.color-picker fieldset {
   border: 0;
   display: flex;
   gap: 2rem;
-  float: left;
-  width: 70%;
-  background: #fff;
-  padding: 1rem 3rem;
-  margin-inline: auto;
-  border-radius: 0 0 1rem 1rem;
+  padding: 1rem;
+  margin: 0;
+  background: var(--background-color);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
 }
 
-.color-picker input[type="radio"]{
+.color-picker input[type="radio"] {
   appearance: none;
   width: 1rem;
   height: 1rem;
   border: 3px solid var(--radio-color, currentColor);
-  border-radius: 50%
+  border-radius: 50%;
+  cursor: pointer;
 }
 
-.color-picker input[type="radio"]:checked{
+.color-picker input[type="radio"]:checked {
   background-color: var(--radio-color);
 }
 
-.color-picker input[type="radio"]#normal{
+.color-picker input[type="radio"]#normal {
   --radio-color: #fff;
 }
 
-.color-picker input[type="radio"]#dark{
+.color-picker input[type="radio"]#dark {
   --radio-color: black;
 }
 
+/* Light Theme */
 .normal,
-:root:has(#normal:checked){
+:root:has(#normal:checked) {
   --background-color: #fffafa;
   --background-color-top-nav: #DFEEF1; 
   --background-color-left-nav: #4E869B;
@@ -113,11 +136,26 @@ hr.solid {
   --text-settings-hover: #646464; 
   --text-left-nav: #e7e7e7; 
   --background-color-integration: #f4f4f4;
+  --color-border: hsl(var(--hue) 20% 85%);
+  --transparant-background: rgb(255 255 255 / 50%);
 
+  /* button */
+  --background-security-button:  	#64a9ee;
+  --background-security-button-hover:  	#338ee9;
+  --background-privacy-button: #5141a7bd;
+  --background-privacy-button-hover: #37259eec;
+
+  /* colors for the different risks */
+  --high-risk-color: #e06666;
+  --medium-risk-color: #f6b26b;
+  --low-risk-color: #ffd966;
+  --no-risk-color: #93c47d;
+  --info-color: #80d8db;
 }
 
+/* Dark Theme */
 .dark,
-:root:has(#dark:checked){
+:root:has(#dark:checked) {
   --background-color: rgb(32 31 31);
   --background-color-top-nav: rgb(22 22 22);
   --background-color-left-nav: rgb(19 20 20); 
@@ -130,4 +168,19 @@ hr.solid {
   --text-settings-hover: #798d8a;
   --text-left-nav: #d6cdcd; 
   --background-color-integration: #181818;
+  --color-border: #383636;
+  --transparant-background: rgb(50 50 50 / 50%);
+
+  /* button */
+  --background-security-button:  	#21405f;
+  --background-security-button-hover:  	#163a5e;
+  --background-privacy-button: #2913a5bd;
+  --background-privacy-button-hover: #220aa8ec;
+  
+  /* colors for the different risks */
+  --high-risk-color: #922323;
+  --medium-risk-color: #af5622;
+  --low-risk-color: #c69027;
+  --no-risk-color: #245829;
+  --info-color: #103060;
 }
