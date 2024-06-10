@@ -170,7 +170,6 @@ func TestIntegrationCookiesChromiumWithoutCookies(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			result := chromium.CookiesChromium(tt.browser, browsers.RealDefaultDirGetter{}, browsers.RealCopyFileGetter{}, browsers.RealQueryCookieDatabaseGetter{})
 			require.Empty(t, result.Result)
-			require.NotEqual(t, -1, result.ResultID)
 			require.Equal(t, 0, result.ResultID)
 		})
 	}
