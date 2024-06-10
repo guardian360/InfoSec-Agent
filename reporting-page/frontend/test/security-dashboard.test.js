@@ -61,6 +61,12 @@ jest.unstable_mockModule('../wailsjs/go/main/Tray.js', () => ({
 // Mock openIssuesPage
 jest.unstable_mockModule('../src/js/issue.js', () => ({
   openIssuePage: jest.fn(),
+  scrollToElement: jest.fn(),
+}));
+
+// Mock suggestedIssue
+jest.unstable_mockModule('../src/js/home.js', () => ({
+  suggestedIssue: jest.fn(),
 }));
 
 // Mock openPersonalizePage
@@ -278,12 +284,12 @@ describe('Security dashboard', function() {
     ];
     sessionStorage.setItem('DataBaseData', JSON.stringify(issues));
 
-    const issue = await import('../src/js/issue.js');
+    const home = await import('../src/js/home.js');
     const button = document.getElementById('suggested-issue');
-    const openIssuePageMock = jest.spyOn(issue, 'openIssuePage');
+    const suggestedIssueMockMock = jest.spyOn(home, 'suggestedIssue');
 
     // Assert
     button.dispatchEvent(clickEvent);
-    expect(openIssuePageMock).toHaveBeenCalled();
+    expect(suggestedIssueMockMock).toHaveBeenCalled();
   });
 });

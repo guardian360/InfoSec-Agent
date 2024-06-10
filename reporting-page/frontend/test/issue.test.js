@@ -52,10 +52,16 @@ jest.unstable_mockModule('../src/js/database.js', () => ({
   scanTest: jest.fn(),
 }));
 
+// Mock openAllChecksPage
+jest.unstable_mockModule('../src/js/all-checks.js', () => ({
+  openAllChecksPage: jest.fn(),
+}));
+
 // Mock openIssuesPage
 jest.unstable_mockModule('../src/js/issues.js', () => ({
   openIssuesPage: jest.fn(),
   getUserSettings: jest.fn().mockImplementationOnce(() => 1)
+    .mockImplementationOnce(() => 1)
     .mockImplementationOnce(() => 1)
     .mockImplementationOnce(() => 0)
     .mockImplementationOnce(() => 1)
@@ -99,17 +105,28 @@ describe('Issue page', function() {
     test.value(description).isEqualTo(currentIssue.Information);
     test.value(solution).isEqualTo(currentIssue.Solution[0]);
   });
-  it('clicking on the back button should call openIssuesPage', async function() {
+  it('clicking on the back button should call openIssuesPage or openAllChecksPage', async function() {
     // Arrange
+    const issue = await import('../src/js/issue.js');
     const issues = await import('../src/js/issues.js');
-    const button = document.getElementById('back-button');
+    let button = document.getElementById('back-button');
     const openIssuesPageMock = jest.spyOn(issues, 'openIssuesPage');
+    const checks = await import('../src/js/all-checks.js');
+    const openAllChecksPageMock = jest.spyOn(checks, 'openAllChecksPage');
 
     // Act
     button.dispatchEvent(clickEvent);
 
     // Assert
     expect(openIssuesPageMock).toHaveBeenCalled();
+
+    // Act
+    await issue.openIssuePage(161, 0, 'top');
+    button = document.getElementById('back-button');
+    await button.dispatchEvent(clickEvent);
+
+    // Assert
+    expect(openAllChecksPageMock).toHaveBeenCalled();
   });
 
   // from here on issueID 160 is used for tests up to parseShowResults tests

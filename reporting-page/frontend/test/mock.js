@@ -5,6 +5,7 @@ export function mockPageFunctions() {
   // Mock LogError
   jest.unstable_mockModule('../wailsjs/go/main/Tray.js', () => ({
     LogError: jest.fn(),
+    LogDebug: jest.fn(),
     ChangeLanguage: jest.fn(),
     ChangeScanInterval: jest.fn(),
   }));
@@ -245,6 +246,7 @@ export function mockOpenPageFunctions() {
   // Mock openIssuesPage
   jest.unstable_mockModule('../src/js/issue.js', () => ({
     openIssuePage: jest.fn(),
+    scrollToElement: jest.fn(),
   }));
 
   // Mock openIssuesPage
