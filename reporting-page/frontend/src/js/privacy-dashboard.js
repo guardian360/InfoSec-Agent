@@ -7,6 +7,7 @@ import {retrieveTheme} from './personalize.js';
 import {adjustWithRiskCounters, setMaxInterval, addGraphFunctions} from './security-dashboard.js';
 import {scanTest} from './database.js';
 import {suggestedIssue} from './home.js';
+import {openAllChecksPage} from './all-checks.js';
 
 /** Load the content of the Privacy Dashboard page */
 export function openPrivacyDashboardPage() {
@@ -43,7 +44,7 @@ export function openPrivacyDashboardPage() {
           <p class="lang-privacy-risk-areas"></p>
         </div>
         <div class="security-area-buttons">
-          <div class="security-area privacy-risk-button">
+          <div class="security-area privacy-risk-button" id="privacy-button-permissions">
             <a>
               <p>
                 <span class="lang-permissions"></span>
@@ -51,12 +52,12 @@ export function openPrivacyDashboardPage() {
               </p>
             </a>
           </div>
-          <div class="security-area privacy-risk-button">
+          <div class="security-area privacy-risk-button" id="privacy-button-browser">
             <a>
               <p><span class="lang-browser"></span><span class="material-symbols-outlined">travel_explore</span></p>
             </a>
           </div>
-          <div class="security-area privacy-risk-button">
+          <div class="security-area privacy-risk-button" id="privacy-button-other">
             <a>
               <p><span class="lang-other"></span><span class="material-symbols-outlined">view_cozy</span></p>
             </a>
@@ -144,7 +145,7 @@ export function openPrivacyDashboardPage() {
 
   // Localize the static content of the dashboard
   const staticDashboardContent = [
-    'lang-privacy-dashboard',
+    'lang-security-dashboard',
     'lang-issues',
     'lang-high-risk-issues',
     'lang-medium-risk-issues',
@@ -204,6 +205,14 @@ export function openPrivacyDashboardPage() {
     await g.changeGraph();
   });
   document.getElementById('suggested-issue').addEventListener('click', () => suggestedIssue('Privacy'));
+
+  // Add links to checks page
+  document.getElementById('privacy-button-permissions').addEventListener('click',
+    () => openAllChecksPage('permissions'));
+  document.getElementById('privacy-button-browser').addEventListener('click',
+    () => openAllChecksPage('browser'));
+  document.getElementById('privacy-button-other').addEventListener('click',
+    () => openAllChecksPage('privacy-other'));
 }
 
 /* istanbul ignore next */
@@ -211,6 +220,6 @@ if (typeof document !== 'undefined') {
   try {
     document.getElementById('privacy-dashboard-button').addEventListener('click', () => openPrivacyDashboardPage());
   } catch (error) {
-    logError('Error in privacy-dashboard.js: ' + error);
+    logError('Error in security-dashboard.js: ' + error);
   }
 }
