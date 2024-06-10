@@ -43,7 +43,7 @@ func SearchEngineFirefox(profileFinder browsers.FirefoxProfileFinder, boolMock b
 	defer func(name string) {
 		err = os.Remove(name)
 		if err != nil {
-			log.Println("Error deleting temporary file")
+			log.Println("Error deleting temporary search Engine file Firefox")
 		}
 	}(tempSearch)
 

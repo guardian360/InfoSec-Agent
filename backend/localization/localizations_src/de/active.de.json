@@ -101,7 +101,8 @@
     "ShareButton": "Fortschritt teilen",
     "ShareText": "Wählen Sie, wo Sie Ihren Fortschritt teilen möchten, speichern und herunterladen, dann mit anderen teilen!",
     "SaveText": "Speichern",
-    "Share": "Teilen"
+    "Share": "Teilen",
+    "LighthouseProgress":"Fortschritt"
   },
   "Issues":
   {

@@ -102,7 +102,8 @@
     "ShareButton": "Share Progress",
     "ShareText": "Select where to share your progress, save and download it, then share it with others!",
     "SaveText": "Save",
-    "Share": "Share"
+    "Share": "Share",
+    "LighthouseProgress":"Progress"
   },
   "Issues":
   {
