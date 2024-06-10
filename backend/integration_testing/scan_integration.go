@@ -33,7 +33,7 @@ func TestIntegrationScanSuccess(t *testing.T) {
 	require.NotEmpty(t, checks)
 	require.NoError(t, err)
 	totalLength := len(scan.ChecksList)
-	require.Len(t, totalLength, len(checks))
+	require.Len(t, checks, totalLength)
 
 	// Get database data
 	data, err := database.GetData(checks, "../../reporting-page/database.db")
