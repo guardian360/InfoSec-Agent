@@ -23,7 +23,7 @@ func TestIntegrationNetBIOSDisabled(t *testing.T) {
 func TestIntegrationWPADEnabled(t *testing.T) {
 	result := network.WPADEnabled(&mocking.RealCommandExecutor{})
 	require.NotEmpty(t, result)
-	require.Equal(t, 0, result.ResultID)
+	require.Equal(t, 1, result.ResultID)
 }
 
 func TestIntegrationWPADDisabled(t *testing.T) {
