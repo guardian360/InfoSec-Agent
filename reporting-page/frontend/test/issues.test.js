@@ -239,7 +239,7 @@ describe('Issues table', function() {
     // Assert
     let sortedRows = Array.from(tbody.rows);
     const sortedNames = sortedRows.map((row) => row.cells[0].textContent);
-    test.array(sortedNames).is(['Camera and microphone access', 'Firewall settings', 'Windows defender']);
+    test.array(sortedNames).is(['Windows defender', 'Firewall settings', 'Camera and microphone access']);
 
     // Act - sort by issue name (first column) again to sort descending
     document.getElementById('sort-on-issue').dispatchEvent(clickEvent);
@@ -247,7 +247,7 @@ describe('Issues table', function() {
     // Assert
     let sortedRowsDescending = Array.from(tbody.rows);
     const sortedNamesDescending = sortedRowsDescending.map((row) => row.cells[0].textContent);
-    test.array(sortedNamesDescending).is(['Windows defender', 'Firewall settings', 'Camera and microphone access']);
+    test.array(sortedNamesDescending).is(['Camera and microphone access', 'Firewall settings', 'Windows defender']);
 
     // Act - sort by type (second column)
     document.getElementById('sort-on-type').dispatchEvent(clickEvent);
@@ -255,7 +255,7 @@ describe('Issues table', function() {
     // Assert
     sortedRows = Array.from(tbody.rows);
     const sortedTypes = sortedRows.map((row) => row.cells[1].textContent);
-    test.array(sortedTypes).is(['Privacy', 'Security', 'Security']);
+    test.array(sortedTypes).is(['Security', 'Security', 'Privacy']);
 
     // Act - sort by type (second column) again to sort descending
     document.getElementById('sort-on-type').dispatchEvent(clickEvent);
@@ -263,7 +263,7 @@ describe('Issues table', function() {
     // Assert
     sortedRowsDescending = Array.from(tbody.rows);
     const sortedTypesDescending = sortedRowsDescending.map((row) => row.cells[1].textContent);
-    test.array(sortedTypesDescending).is(['Security', 'Security', 'Privacy']);
+    test.array(sortedTypesDescending).is(['Privacy', 'Security', 'Security']);
 
     // Act - sort by severity (third column)
     document.getElementById('sort-on-risk').dispatchEvent(clickEvent);
@@ -271,7 +271,7 @@ describe('Issues table', function() {
     // Assert
     sortedRows = Array.from(tbody.rows);
     const sortedRisks = sortedRows.map((row) => row.cells[2].textContent);
-    test.array(sortedRisks).is(['High', 'Medium', 'Low']);
+    test.array(sortedRisks).is(['Low', 'Medium', 'High']);
 
     // Act - sort by severity (third column) again to sort ascending
     document.getElementById('sort-on-risk').dispatchEvent(clickEvent);
@@ -279,7 +279,7 @@ describe('Issues table', function() {
     // Assert
     sortedRowsDescending = Array.from(tbody.rows);
     const sortedRisksDescending = sortedRowsDescending.map((row) => row.cells[2].textContent);
-    test.array(sortedRisksDescending).is(['Low', 'Medium', 'High']);
+    test.array(sortedRisksDescending).is(['High', 'Medium', 'Low']);
   });
 
   it('sortTable should sort the non-issues table', async function() {
@@ -312,7 +312,7 @@ describe('Issues table', function() {
     // Assert
     let sortedRows = Array.from(tbody.rows);
     const sortedNames = sortedRows.map((row) => row.cells[0].textContent);
-    test.array(sortedNames).is(['Camera and microphone access', 'Firewall settings', 'Windows defender']);
+    test.array(sortedNames).is(['Windows defender', 'Firewall settings', 'Camera and microphone access']);
 
     // Act
     document.getElementById('sort-on-issue2').dispatchEvent(clickEvent);
@@ -320,7 +320,7 @@ describe('Issues table', function() {
     // Assert
     let sortedRowsDescending = Array.from(tbody.rows);
     const sortedNamesDescending = sortedRowsDescending.map((row) => row.cells[0].textContent);
-    test.array(sortedNamesDescending).is(['Windows defender', 'Firewall settings', 'Camera and microphone access']);
+    test.array(sortedNamesDescending).is(['Camera and microphone access', 'Firewall settings', 'Windows defender']);
 
     // Act
     document.getElementById('sort-on-type2').dispatchEvent(clickEvent);
@@ -328,7 +328,7 @@ describe('Issues table', function() {
     // Assert
     sortedRows = Array.from(tbody.rows);
     const sortedTypes = sortedRows.map((row) => row.cells[1].textContent);
-    test.array(sortedTypes).is(['Privacy', 'Security', 'Security']);
+    test.array(sortedTypes).is(['Security', 'Security', 'Privacy']);
 
     // Act
     document.getElementById('sort-on-type2').dispatchEvent(clickEvent);
@@ -336,7 +336,7 @@ describe('Issues table', function() {
     // Assert
     sortedRowsDescending = Array.from(tbody.rows);
     const sortedTypesDescending = sortedRowsDescending.map((row) => row.cells[1].textContent);
-    test.array(sortedTypesDescending).is(['Security', 'Security', 'Privacy']);
+    test.array(sortedTypesDescending).is(['Privacy', 'Security', 'Security']);
   });
   it('changeTable should update the table with selected risks', async function() {
     // Arrange

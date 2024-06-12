@@ -265,14 +265,15 @@ export async function fillTable(tbody, issues, isIssue, isListenersAdded=true) {
     getLocalization(localizationIds[i], tableHeaders[i]);
   }
 
-  console.log(sessionStorage.getItem('IssuesSorted'));
+  // Sort the table in descending order of risk severity
   const sorting = JSON.parse(sessionStorage.getItem('IssuesSorted'));
   if (sorting) {
     const table = tbody.closest('table');
-    const direction = sorting.direction === 'ascending' ? 'descending' : 'ascending';
-    table.setAttribute('data-sort-direction', direction);
-    console.log(sorting);
-    sortTable(tbody, parseInt(sorting.column));
+    if (table) {
+      const direction = sorting.direction === 'ascending' ? 'descending' : 'ascending';
+      table.setAttribute('data-sort-direction', direction);
+      sortTable(tbody, parseInt(sorting.column));
+    }
   }
 }
 
