@@ -321,8 +321,8 @@ export function sortTable(tbody, column) {
     tbody.appendChild(row);
   });
   table.setAttribute('data-sort-direction', direction);
-  let columnValue = column.toString();
-  sessionStorage.setItem('IssuesSorted', JSON.stringify({"column": columnValue, "direction": direction}));
+  const columnValue = column.toString();
+  sessionStorage.setItem('IssuesSorted', JSON.stringify({'column': columnValue, 'direction': direction}));
 }
 
 /* istanbul ignore next */

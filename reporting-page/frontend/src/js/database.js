@@ -74,9 +74,9 @@ async function setAllSeverities(input) {
   sessionStorage.setItem('DataBaseData', JSON.stringify(result));
   sessionStorage.setItem('IssuesSorted', JSON.stringify(
     {
-      "column": "2",
-      "direction": "ascending"
-    }
+      'column': '2',
+      'direction': 'ascending',
+    },
   ));
   await setSeverities(result, '');
   await setSeverities(result, 'Security');
