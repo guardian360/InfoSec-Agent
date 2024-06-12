@@ -96,7 +96,7 @@
     "ChooseIssueDescription": "Ações",
     "BarGraphDescription": "Este gráfico mostra a distribuição de problemas de diferentes níveis de risco encontrados nos últimos 5 scans.",
     "SelectRisks": "Selecionar riscos",
-    "ChangeInterval": "Alterar intervalo",
+    "ChangeInterval": "Alterar o intervalo de scans:",
     "ShareButton": "Compartilhar progresso",
     "ShareText": "Selecione onde compartilhar seu progresso, salve e faça o download, depois compartilhe com os outros!",
     "SaveText": "Salvar",

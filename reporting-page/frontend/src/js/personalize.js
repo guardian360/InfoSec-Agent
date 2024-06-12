@@ -219,7 +219,7 @@ export function resetSettings() {
   logo.src = logoPhoto;
 
   const title = document.getElementById('title');
-  title.textContent = 'Little Brother';
+  title.textContent = 'Infosec Agent';
 
   const favicon = document.getElementById('favicon');
   favicon.href = logoPhoto;
