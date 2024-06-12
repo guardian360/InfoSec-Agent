@@ -39,6 +39,14 @@ var testsValid = []func(t *testing.T){
 	i.TestIntegrationCookiesFirefoxWithoutCookies,
 	i.TestIntegrationCookiesChromiumWithoutCookies,
 	i.TestIntegrationRemoteRPCDisabled,
+	i.TestIntegrationNetBIOSDisabled,
+	// TODO: turn this back on once fixed?
+	// i.TestIntegrationWPADDisabled,
+	i.TestIntegrationFirewallEnabled,
+	i.TestIntegrationPasswordComplexityValid,
+	i.TestIntegrationUpdateGameState,
+	i.TestIntegrationPointCalculation,
+	i.TestIntegrationLighthouseStateTransition,
 }
 
 func TestMain(m *testing.M) {

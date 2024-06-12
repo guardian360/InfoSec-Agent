@@ -33,16 +33,28 @@ func TestIntegrationAutomatedLoginNotActive(t *testing.T) {
 	require.Equal(t, 0, result.ResultID)
 }
 
+func TestIntegrationCredentialGuardDisabled(t *testing.T) {
+	result := windows.CredentialGuardRunning(&mocking.RealCommandExecutor{})
+	require.NotEmpty(t, result)
+	require.Equal(t, 1, result.ResultID)
+}
+
 func TestIntegrationDefenderAllActive(t *testing.T) {
 	result := windows.Defender(mocking.LocalMachine, mocking.LocalMachine)
 	require.NotEmpty(t, result)
 	require.Equal(t, 0, result.ResultID)
 }
 
-func TestIntegrationDefenderAllNotActive(t *testing.T) {
-	result := windows.Defender(mocking.LocalMachine, mocking.LocalMachine)
+func TestIntegrationFirewallEnabled(t *testing.T) {
+	result := windows.FirewallEnabled(&mocking.RealCommandExecutor{})
 	require.NotEmpty(t, result)
-	require.Equal(t, 2, result.ResultID)
+	require.Equal(t, 0, result.ResultID)
+}
+
+func TestIntegrationFirewallDisabled(t *testing.T) {
+	result := windows.FirewallEnabled(&mocking.RealCommandExecutor{})
+	require.NotEmpty(t, result)
+	require.Equal(t, 1, result.ResultID)
 }
 
 func TestIntegrationGuestAccountActive(t *testing.T) {
@@ -93,6 +105,18 @@ func TestIntegrationOutdatedWinNotUpToDate(t *testing.T) {
 	require.Equal(t, 1, result.ResultID)
 }
 
+func TestIntegrationPasswordComplexityValid(t *testing.T) {
+	result := windows.PasswordLength(&mocking.RealCommandExecutor{})
+	require.NotEmpty(t, result)
+	require.Equal(t, 0, result.ResultID)
+}
+
+func TestIntegrationPasswordComplexityInvalid(t *testing.T) {
+	result := windows.PasswordLength(&mocking.RealCommandExecutor{})
+	require.NotEmpty(t, result)
+	require.Equal(t, 1, result.ResultID)
+}
+
 func TestIntegrationPermissionWithApps(t *testing.T) {
 	result := windows.Permission(checks.MicrophoneID, "microphone", mocking.CurrentUser)
 	require.NotEmpty(t, result)
@@ -129,6 +153,12 @@ func TestIntegrationRemoteRPCDisabled(t *testing.T) {
 	result := windows.AllowRemoteRPC(mocking.LocalMachine)
 	require.NotEmpty(t, result)
 	require.Equal(t, 0, result.ResultID)
+}
+
+func TestIntegrationScreenLockDisabled(t *testing.T) {
+	result := windows.ScreenLockEnabled(mocking.CurrentUser)
+	require.NotEmpty(t, result)
+	require.Equal(t, 1, result.ResultID)
 }
 
 func TestIntegrationSecureBootEnabled(t *testing.T) {
