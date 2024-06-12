@@ -28,9 +28,9 @@ func TestIntegrationUpdateGameState(t *testing.T) {
 	gs, err := gamification.UpdateGameState(mockScanResults, mockDatabasePath)
 	require.NoError(t, err)
 
-	// Verify that the points, points history, timestamps, and lighthouse state are correctly updated
+	// Verify that the points, points history, and lighthouse state are correctly updated
 	expectedPoints := 3
-	var expectedPointsHistory []int
+	expectedPointsHistory := []int{3, 3}
 	expectedLighthouseState := 1
 
 	require.Equal(t, expectedPoints, gs.Points)
