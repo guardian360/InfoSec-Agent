@@ -62,16 +62,17 @@ func TestIntegrationPointCalculation(t *testing.T) {
 	gs := gamification.GameState{Points: 0, PointsHistory: nil, TimeStamps: nil, LighthouseState: 0}
 
 	// Run PointCalculation
-	points, err := gamification.PointCalculation(gs, mockScanResults, mockDatabasePath)
+	var err error
+	gs, err = gamification.PointCalculation(gs, mockScanResults, mockDatabasePath)
 	require.NoError(t, err)
 
 	// Verify that the points are correctly calculated
 	expectedPoints := 3
-	require.Equal(t, expectedPoints, points)
+	require.Equal(t, expectedPoints, gs.Points)
 
 	// Verify that the points history and timestamps are correctly updated in the database
 	userSettings := usersettings.LoadUserSettings()
-	require.Contains(t, userSettings.PointsHistory, points)
+	require.Contains(t, userSettings.PointsHistory, gs.Points)
 	require.Len(t, userSettings.TimeStamps, 1)
 }
 
