@@ -1,1527 +1,1205 @@
 {
-    "10": {
-        "Name": "No devices connected via Bluetooth",
-        "Type": "Security",
-        "Information": "Bluetooth technology enables wireless data transmission and reception. While this functionality is typically harmless when used as intended, it can become a security risk if exploited by malicious actors. If a malicious individual gains unauthorized access to your device through a Bluetooth connection, they can potentially steal your data, eavesdrop on your activities, or even send malware to your device. To mitigate these risks, it's crucial to only connect your device to known and trusted devices.",
-        "Solution": 
-        [   
-            "No devices are connected via Bluetooth, so no action is needed."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "11": {
-        "Name": "Devices connected via Bluetooth",
-        "Type": "Security",
-        "Information": "Bluetooth technology enables wireless data transmission and reception. While this functionality is typically harmless when used as intended, it can become a security risk if exploited by malicious actors. If a malicious individual gains unauthorized access to your device through a Bluetooth connection, they can potentially steal your data, eavesdrop on your activities, or even send malware to your device. To mitigate these risks, it's crucial to only connect your device to known and trusted devices.",
-        "Solution": 
-        [   
-            "Go to Start > Settings > Bluetooth & devices.", 
-            "Here you can see which devices are connected via Bluetooth, and you can remove them if necessary."
-        ],
-        "SolutionWindows10": 
-        [   
-            "Go to Start > Settings > Devices > Bluetooth & other devices.", 
-            "Here you can see which devices are connected via Bluetooth, and you can remove them if necessary."
-        ],        
-        "Screenshots":
-        [
-            "devices-connected-via-bluetooth/bluetooth-devices-1.png",
-            "devices-connected-via-bluetooth/bluetooth-devices-2.png"
-        ] 
-    },
-    "20": {
-        "Name": "No external devices connected",
-        "Type": "Security",
-        "Information": "External devices such as USB drives, external hard drives, and other peripherals can introduce security risks to your computer. Malware can be spread through infected external devices, potentially compromising the security and integrity of your system. By ensuring that no external devices are connected to your computer when not in use, you reduce the risk of malware infection and unauthorized access to your system.",
-        "Solution": 
-        [   
-            "No external devices are connected, so no action is needed."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "21": {
-        "Name": "External devices connected",
-        "Type": "Security",
-        "Information": "External devices such as USB drives, external hard drives, and other peripherals can introduce security risks to your computer. Malware can be spread through infected external devices, potentially compromising the security and integrity of your system. By ensuring that no external devices are connected to your computer when not in use, you reduce the risk of malware infection and unauthorized access to your system.",
-        "Solution": 
-        [   
-            "Check if any external devices are connected to your computer, and disconnect them if not in use. Examples of external devices include USB drives, external hard drives, external microphones, external cameras, and other peripherals."
-        ],
-        "Screenshots":
-        [
-            "TOBEFILLED"
-        ]
-    },
-    "30": {
-        "Name": "Guest account status unknown",
-        "Type": "Security",
-        "Information": "The guest account is a default account designed to offer temporary and restricted access to the system for individuals without regular user accounts. If you are the sole user of the computer and do not require a guest account, it's advisable to disable it. This ensures that no unauthorized users can access data on the computer, enhancing overall security and privacy.",
-        "Solution": 
-        [   
-            "An unknown guest account status can be a security risk. To check the status and potentially solve the issue of the guest account, follow these steps.",
-            "Go to Start > Other accounts.", 
-            "Here you will see the other accounts, if there is an account you do not know or an account called 'guest', click on it.",
-            "Now select 'remove' and confirm the deletion of the account.",
-            "To finish, restart your computer."
-        ],
-        "Screenshots":
-        [
-            "guest-account/guest-account-1.png",
-            "guest-account/guest-account-1.png",
-            "guest-account/guest-account-1.png",
-            "guest-account/guest-account-3.png",
-            "guest-account/guest-account-3.png"
-        ]
-    },
-    "31": {
-        "Name": "Guest account enabled",
-        "Type": "Security",
-        "Information": "The guest account is a default account designed to offer temporary and restricted access to the system for individuals without regular user accounts. If you are the sole user of the computer and do not require a guest account, it's advisable to disable it. This ensures that no unauthorized users can access data on the computer, enhancing overall security and privacy.",
-        "Solution": 
-        [   
-            "Go to Start > Other accounts.", 
-            "Here you will see the other accounts, if there is an account you do not know or something called 'guest', click on it.",
-            "Now select 'remove' and confirm the deletion of the account.",
-            "To finish, restart your computer."
-        ],
-        "SolutionWindows10": 
-        [   
-            "Go to Start > Settings > Accounts > Family & other users.", 
-            "Here you will see the other accounts. If there is an account you do not know or something called 'guest', click on it.",
-            "Now select 'remove' and confirm the deletion of the account.",
-            "To finish, restart your computer."
-        ],        
-        "Screenshots":
-        [
-            "guest-account/guest-account-1.png",
-            "guest-account/guest-account-1.png",
-            "guest-account/guest-account-3.png",
-            "guest-account/guest-account-3.png"
-        ]
-    },
-    "32": {
-        "Name": "Guest account disabled",
-        "Type": "Security",
-        "Information": "The guest account is a default account designed to offer temporary and restricted access to the system for individuals without regular user accounts. If you are the sole user of the computer and do not require a guest account, it's advisable to disable it. This ensures that no unauthorized users can access data on the computer, enhancing overall security and privacy.",
-        "Solution": 
-        [   
-            "There is no guest account on your computer, so no action is needed."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "40": {
-        "Name": "Advertisement ID sharing disabled",
-        "Type": "Privacy",
-        "Information": "The advertisement ID setting allows Windows to send you personalized ads. It is important to limit the number of entities that have your personal data; therefore it is safer to turn this setting off.",
-        "Solution": 
-        [
-            "Advertisement ID sharing is disabled, so no action is needed."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "41": {
-        "Name": "Advertisement ID sharing enabled",
-        "Type": "Security",
-        "Information": "The advertisement ID setting allows Windows to send you personalized ads. It is important to limit the number of entities that have your personal data; therefore it is safer to turn this setting off.",
-        "Solution": 
-        [
-            "Go to Start > Settings > Privacy & Security > General ",
-            "Here you can control the advertisement ID settings and turn the feature on/off."
-        ],
-        "SolutionWindows10": 
-        [
-            "Go to Start > Settings > Privacy > General.",
-            "Here you can control the advertisement ID settings and turn the feature on/off."
-        ],        
-        "Screenshots":
-        [
-            "network-sharing/nearby-sharing-1.png",
-            "network-sharing/nearby-sharing-2.png"
-        ] 
-    },
-    "42": {
-        "Name": "Network sharing disabled",
-        "Type": "Security",
-        "Information": "Network sharing refers to the ability to share resources, such as files, folders, printers, and internet connections, between multiple devices connected to a network. It allows users to access and collaborate on shared resources across the network, facilitating data exchange and collaboration among users and devices. Permissions can be configured to allow or deny access to specific users or groups, ensuring that sensitive data remains secure. If you do not need network sharing, it is safer to turn it off.",
-        "Solution": 
-        [   
-            "Network sharing is disabled, so no action is needed."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "43": {
-        "Name": "Network sharing status unknown",
-        "Type": "Security",
-        "Information": "Network sharing refers to the ability to share resources, such as files, folders, printers, and internet connections, between multiple devices connected to a network. It allows users to access and collaborate on shared resources across the network, facilitating data exchange and collaboration among users and devices. Permissions can be configured to allow or deny access to specific users or groups, ensuring that sensitive data remains secure. If you do not need network sharing, it is safer to turn it off.",
-        "Solution": 
-        [   
-            "It was not possible to retrieve the status of the network sharing settings. To check the status and potentially solve the issue of network sharing, follow these steps.",
-            "Go to Start > Settings > System > Nearby share settings.", 
-            "Here you can control the network sharing settings and turn the feature off."
-        ],
-        "SolutionWindows10": 
-        [   
-            "It was not possible to retrieve the status of the network sharing settings. To check the status and potentially solve the issue of network sharing, follow these steps.",
-            "Go to Start > Settings > System > Shared experiences.", 
-            "Here you can control the network sharing settings and turn the feature off."
-        ],        
-        "Screenshots":
-        [
-            "network-sharing/nearby-sharing-1.png",
-            "network-sharing/nearby-sharing-1.png",
-            "network-sharing/nearby-sharing-2.png"
-        ] 
-    },
-    "50": {
-        "Name": "Password manager in use",
-        "Type": "Security",
-        "Information": "Using a password manager offers several benefits for individuals and organizations, primarily revolving around enhancing security, convenience, and overall password management practices. Here are some key reasons why you should consider using a password manager. Stronger Passwords: Password managers can generate complex, unique passwords for each of your accounts. These passwords are typically long, random, and difficult to crack, significantly improving the security of your online accounts compared to using weak or reused passwords. Elimination of Password Reuse: One of the most common security pitfalls is reusing passwords across multiple accounts. Password managers allow you to generate and store unique passwords for each account, reducing the risk of unauthorized access if one account is compromised. Convenience: Password managers streamline the process of logging into websites and online services by automatically filling in login credentials for you. This saves time and effort, especially when managing numerous accounts across various platforms. Secure Storage: Password managers encrypt and store your passwords in a secure vault, protecting them from unauthorized access. Many password managers also offer additional security features such as two-factor authentication (2FA) and biometric authentication to further enhance protection.",
-        "Solution": 
-        [   
-            "You are using a password manager, so no action is needed."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "51": {
-        "Name": "No password manager in use",
-        "Type": "Security",
-        "Information": "Using a password manager offers several benefits for individuals and organizations, primarily revolving around enhancing security, convenience, and overall password management practices. Here are some key reasons why you should consider using a password manager. Stronger Passwords: Password managers can generate complex, unique passwords for each of your accounts. These passwords are typically long, random, and difficult to crack, significantly improving the security of your online accounts compared to using weak or reused passwords. Elimination of Password Reuse: One of the most common security pitfalls is reusing passwords across multiple accounts. Password managers allow you to generate and store unique passwords for each account, reducing the risk of unauthorized access if one account is compromised. Convenience: Password managers streamline the process of logging into websites and online services by automatically filling in login credentials for you. This saves time and effort, especially when managing numerous accounts across various platforms. Secure Storage: Password managers encrypt and store your passwords in a secure vault, protecting them from unauthorized access. Many password managers also offer additional security features such as two-factor authentication (2FA) and biometric authentication to further enhance protection.",
-        "Solution": 
-        [   
-            "Open your browser and look for a password manager like: LastPass, Dashlane, Bitwarden or another password manager you prefer.", 
-            "Follow the installation steps provided by the website of the password manager."
-        ],
-        "Screenshots":
-        [
-            "password-manager/password-manager-1.png",
-            "password-manager/password-manager-1.png"
-        ] 
-    },
-    "60": {
-        "Name": "Applications with location permission",
-        "Type": "Privacy",
-        "Information": "Knowing which applications have access to your location is important for protecting your privacy. It helps you control who can track your location, prevent security risks, conserve battery life, manage data usage, customize your app experience, and ensure compliance with regulations.",
-        "Solution": 
-        [   
-            "Select Start > Settings > Privacy & Security.", 
-            "Here you can select Location to see which applications have access, and you can revoke access for certain applications."
-        ],
-        "SolutionWindows10": 
-        [   
-            "Go to Start > Settings > Privacy > Location.", 
-            "Here you can select location to see which applications have access, and you can revoke access for certain applications."
-        ],        
-        "Screenshots":
-        [
-            "applications-with-location-permission/location-permissions-1.png",
-            "applications-with-location-permission/location-permissions-2.png"
-        ] 
-    },
-    "61": {
-        "Name": "Applications with location permission",
-        "Type": "Privacy",
-        "Information": "Knowing which applications have access to your location is important for protecting your privacy. It helps you control who can track your location, prevent security risks, conserve battery life, manage data usage, customize your app experience, and ensure compliance with regulations.",
-        "Solution": 
-        [   
-            "There are no applications which have location permission, so no action is needed."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "70": {
-        "Name": "Applications with microphone permission",
-        "Type": "Privacy",
-        "Information": "Understanding which applications have access to your microphone on your Windows computer is important for protecting your privacy and confidentiality. It helps you control who can listen to your conversations, prevent unauthorized recording, safeguard sensitive information, and ensure compliance with regulations.",
-        "Solution": 
-        [   
-            "Select Start > Settings > Privacy & Security.", 
-            "Here you can select Microphone to see which applications have access, and you can revoke access for certain applications."
-        ],
-        "SolutionWindows10": 
-        [   
-            "Go to Start > Settings > Privacy > Microphone.", 
-            "Here you can select Microphone to see which applications have access, and you can revoke access for certain applications."
-        ],
-        "Screenshots":
-        [
-            "applications-with-microphone-permission/microphone-permissions-1.png",
-            "applications-with-microphone-permission/microphone-permissions-2.png"
-        ] 
-    },
-    "71": {
-        "Name": "Applications with microphone permission",
-        "Type": "Privacy",
-        "Information": "Understanding which applications have access to your microphone on your Windows computer is important for protecting your privacy and confidentiality. It helps you control who can listen to your conversations, prevent unauthorized recording, safeguard sensitive information, and ensure compliance with regulations.",
-        "Solution": 
-        [   
-            "There are no applications which have microphone permission, so no action is needed."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "80": {
-        "Name": "Applications with webcam permission",
-        "Type": "Privacy",
-        "Information": "Being aware of which applications have access to your camera helps prevent unauthorized access. Malicious software or even legitimate applications with poorly implemented security features could potentially access your camera without your knowledge or consent. By knowing which applications have access, you can identify and block any unauthorized attempts.",
-        "Solution": 
-        [   
-            "Select Start > Settings > Privacy & Security.", 
-            "Here you can select Webcam to see which applications have access, and you can revoke access for certain applications."
-        ],
-        "SolutionWindows10": 
-        [   
-            "Go to Start > Settings > Privacy > Camera.", 
-            "Here you can select Camera to see which applications have access, and you can revoke access for certain applications."
-        ],
-        "Screenshots":
-        [
-            "applications-with-webcam-permission/webcam-permissions-1.png",
-            "applications-with-webcam-permission/webcam-permissions-2.png"
-        ] 
-    },
-    "81": {
-        "Name": "Applications with webcam permission",
-        "Type": "Privacy",
-        "Information": "Being aware of which applications have access to your camera helps prevent unauthorized access. Malicious software or even legitimate applications with poorly implemented security features could potentially access your camera without your knowledge or consent. By knowing which applications have access, you can identify and block any unauthorized attempts.",
-        "Solution": 
-        [   
-            "There are no applications which have webcam permission, so no action is needed."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "90": {
-        "Name": "Applications with appointments permission",
-        "Type": "Privacy",
-        "Information": "Understanding which applications have access to your calendar or appointments is crucial for protecting your privacy, and schedule. It helps you control who can view and potentially misuse your sensitive appointment information, prevent unauthorized access and manage data usage.",
-        "Solution": 
-        [   
-            "Select Start > Settings > Privacy & Security.", 
-            "Here you can select Appointments to see which applications have access, and you can revoke access for certain applications."
-        ],
-        "SolutionWindows10": 
-        [   
-            "Go to Start > Settings > Privacy > Calendar.", 
-            "Here you can select Calendar to see which applications have access, and you can revoke access for certain applications."
-        ],
-        "Screenshots":
-        [
-            "applications-with-calendar-permission/calendar-permissions-1.png",
-            "applications-with-calendar-permission/calendar-permissions-2.png"
-        ] 
-    },
-    "91": {
-        "Name": "Applications with appointments permission",
-        "Type": "Privacy",
-        "Information": "Understanding which applications have access to your calendar or appointments is crucial for protecting your privacy, and schedule. It helps you control who can view and potentially misuse your sensitive appointment information, prevent unauthorized access and manage data usage.",
-        "Solution": 
-        [   
-            "There are no applications which have appointments permission, so no action is needed."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "100": {
-        "Name": "Applications with contacts permission",
-        "Type": "Privacy",
-        "Information": "Understanding which applications have access to your contacts on your Windows computer is good for safeguarding your privacy. It allows you to control who can view and potentially misuse your contact information, prevent unauthorized access and manage data usage.",
-        "Solution": 
-        [   
-            "Select Start > Settings > Privacy & Security.", 
-            "Here you can select Contacts to see which applications have access, and you can revoke access for certain applications."
-        ],
-        "SolutionWindows10": 
-        [   
-            "Go to Start > Settings > Privacy > Contacts.", 
-            "Here you can select Contacts to see which applications have access, and you can revoke access for certain applications."
-        ],
-        "Screenshots":
-        [
-            "applications-with-contacts-permission/contacts-permissions-1.png",
-            "applications-with-contacts-permission/contacts-permissions-2.png"
-        ] 
-    },
-    "101": {
-        "Name": "Applications with contacts permission",
-        "Type": "Privacy",
-        "Information": "Understanding which applications have access to your contacts on your Windows computer is good for safeguarding your privacy. It allows you to control who can view and potentially misuse your contact information, prevent unauthorized access and manage data usage.",
-        "Solution": 
-        [   
-            "There are no applications which have contacts permission, so no action is needed."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "110": {
-        "Name": "Open ports",
-        "Type": "Security",
-        "Information": "An open port is one that permits the receipt of data packets. Certain applications require specific ports to receive data so the presence of open ports does not inherently pose risks. However, some ports may lack adequate protection, potentially allowing unauthorized communication and introducing security vulnerabilities. It is essential to keep ports open only when actively in use and close them when not needed. Given that numerous open ports can expand the attack surface of your computer, it's advisable to routinely monitor and secure your system's network ports to mitigate these risks and maintain a strong security posture.",
-        "Solution": 
-        [   
-            "To reduce risk, make sure that Windows Defender is enabled. This will block certain traffic into or out of your device via open ports. To gain more insight into your open ports, follow these instructions.",
-            "Open a command prompt by clicking 'Start', typing 'cmd', and pressing 'Enter'.",
-            "Now type 'netstat -ab' and you will see a list of open ports and their corresponding programs.",
-            "If you see any suspicious programs or ports, you can close them by shutting down the corresponding program."
-        ],
-        "Screenshots":
-        [
-            "devices-connected-via-bluetooth/bluetooth-devices-1.png"
-        ] 
-    },
-    "120": {
-        "Name": "Remote desktop enabled",
-        "Type": "Security",
-        "Information": "Remote Desktop is a built-in feature in the Windows operating system that allows users to remotely access and control another Windows computer over a network or the internet. It enables users to connect to a remote computer as if they were sitting in front of it, providing full access to the remote desktop, applications, files, and resources. If you do not use this feature, it is safer to turn it off.",
-        "Solution": 
-        [   
-            "Go to Start > Settings > System > Remote Desktop.", 
-            "Here you can control the remote desktop settings and turn the feature off."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "121": {
-        "Name": "Remote desktop disabled",
-        "Type": "Security",
-        "Information": "Remote Desktop is a built-in feature in the Windows operating system that allows users to remotely access and control another Windows computer over a network or the internet. It enables users to connect to a remote computer as if they were sitting in front of it, providing full access to the remote desktop, applications, files, and resources. If you do not use this feature, it is safer to turn it off.",
-        "Solution": 
-        [   
-            "Remote desktop has been disabled, so no action is needed."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "130": {
-        "Name": "SMB all versions disabled",
-        "Type": "Security",
-        "Information": "The SMB (Server Message Block) protocol is used for sharing files, printers, and other resources between devices on a network in Windows environments. Ensuring that SMB settings on your Windows computer are configured correctly is crucial. The SMBv1 has numerous known vulnerabilities and therefore should never be used. Using SMBv2/v3 instead is the safer option.",
-        "Solution": 
-        [   
-            "All versions of SMB are disabled, so no action is needed."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "131": {
-        "Name": "SMB version 1 enabled",
-        "Type": "Security",
-        "Information": "The SMB (Server Message Block) protocol is used for sharing files, printers, and other resources between devices on a network in Windows environments. Ensuring that SMB settings on your Windows computer are configured correctly is crucial. The SMBv1 has numerous known vulnerabilities and therefore should never be used. Using SMBv2/v3 instead is the safer option.",
-        "Solution": 
-        [   
-            "On your keyboard, press 'Windows+R' to open the Run window.", 
-            "Type 'Powershell', then select OK.", 
-            "In the PowerShell, type 'Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol' and hit enter.",
-            "To finish, restart your computer."
-        ],
-        "Screenshots":
-        [
-            "smb-status/smb-1.png",
-            "smb-status/smb-1.png",
-            "smb-status/smb-2.png",
-            "smb-status/smb-2.png"
-        ] 
-    },
-    "132": {
-        "Name": "SMB version 2 enabled",
-        "Type": "Security",
-        "Information": "The SMB (Server Message Block) protocol is used for sharing files, printers, and other resources between devices on a network in Windows environments. Ensuring that SMB settings on your Windows computer are configured correctly is crucial. The SMBv1 has numerous known vulnerabilities and therefore should never be used. Using SMBv2/v3 instead is the safer option.",
-        "Solution": 
-        [   
-            "SMB version 2 is enabled which is a secure and widely used version, so no action is needed."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "133": {
-        "Name": "SMB version 1 and 2 enabled",
-        "Type": "Security",
-        "Information": "The SMB (Server Message Block) protocol is used for sharing files, printers, and other resources between devices on a network in Windows environments. Ensuring that SMB settings on your Windows computer are configured correctly is crucial. The SMBv1 has numerous known vulnerabilities and therefore should never be used. Using SMBv2/v3 instead is the safer option.",
-        "Solution": 
-        [   
-            "On your keyboard, press 'Windows+R' to open the Run window.", 
-            "Type 'Powershell', then select OK.", 
-            "In the PowerShell, type 'Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol' and hit enter.",
-            "To finish, restart your computer."
-        ],
-        "Screenshots":
-        [
-            "smb-status/smb-1.png",
-            "smb-status/smb-1.png",
-            "smb-status/smb-2.png",
-            "smb-status/smb-2.png"
-        ] 
-    },
-    "140": {
-        "Name": "User account control",
-        "Type": "Security",
-        "Information": "User Account Control (UAC) is a security feature introduced in Windows Vista and present in subsequent versions of the Windows operating system. Its primary purpose is to enhance the security of the operating system by limiting the privileges of applications and processes running with standard user rights and requiring administrator approval for tasks that require elevated permissions.",
-        "Solution": 
-        [   
-            "On your keyboard, press 'Windows+R' to open the Run window.", 
-            "Type 'Control Panel', then select OK.", 
-            "Select 'User Accounts' or 'User Accounts and Family Safety'.",
-            "Select 'Change User Account Control settings'. If you are prompted by UAC, select 'Yes' to continue.",
-            "Here you can move the slider to 'Always notify' to turn UAC on. If you are prompted by UAC, select 'Yes' to continue.",
-            "To finish, restart your computer."
-        ],
-        "SolutionWindows10": 
-        [   
-            "The settings for user account control are turned on for apps, setting it to always notify is a safer option. To turn on UAC follow these steps",
-            "On your keyboard, press 'Windows+R' to open the Run window.", 
-            "Type 'Control Panel', then select OK.",
-            "Select 'User Accounts'.",
-            "Select 'User Accounts' again.",
-            "Select 'Change User Account Control settings'. If you are prompted by UAC, select 'Yes' to continue.",
-            "Here you can move the slider to 'Always notify' to turn UAC on. If you are prompted by UAC, select 'Yes' to continue.",
-            "To finish, restart your computer."
-        ],
-        "Screenshots":
-        [
-            "user-account-control/user-account-control-1.png",
-            "user-account-control/user-account-control-2.png",
-            "user-account-control/user-account-control-2.png",
-            "user-account-control/user-account-control-3.png",
-            "user-account-control/user-account-control-5.png",
-            "user-account-control/user-account-control-5.png"
-        ] 
-    },
-    "141": {
-        "Name": "User account control",
-        "Type": "Security",
-        "Information": "User Account Control (UAC) is a security feature introduced in Windows Vista and present in subsequent versions of the Windows operating system. Its primary purpose is to enhance the security of the operating system by limiting the privileges of applications and processes running with standard user rights and requiring administrator approval for tasks that require elevated permissions.",
-        "Solution": 
-        [   
-           "The settings for the user account control are set to 'Always notify', so no action is needed."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "142": {
-        "Name": "User account control",
-        "Type": "Security",
-        "Information": "User Account Control (UAC) is a security feature introduced in Windows Vista and present in subsequent versions of the Windows operating system. Its primary purpose is to enhance the security of the operating system by limiting the privileges of applications and processes running with standard user rights and requiring administrator approval for tasks that require elevated permissions.",
-        "Solution": 
-        [   
-            "The settings for user account control are turned on for apps; setting it to always notify is a safer option. To turn on UAC, follow these steps:",
-            "On your keyboard, press 'Windows+R' to open the Run window.", 
-            "Type 'Control Panel', then select OK.",
-            "Select 'User Accounts' or 'User Accounts and Family Safety'.",
-            "Select 'Change User Account Control settings'. If you are prompted by UAC, select 'Yes' to continue.",
-            "Here you can move the slider to 'Always notify' to turn UAC on. If you are prompted by UAC, select 'Yes' to continue.",
-            "To finish, restart your computer."
-        ],
-        "SolutionWindows10": 
-        [   
-            "The settings for user account control are turned on for apps, setting it to always notify is a safer option. To turn on UAC follow these steps",
-            "On your keyboard, press 'Windows+R' to open the Run window.", 
-            "Type 'Control Panel', then select OK.",
-            "Select 'User Accounts'.",
-            "Select 'User Accounts' again.",
-            "Select 'Change User Account Control settings'. If you are prompted by UAC, select 'Yes' to continue.",
-            "Here you can move the slider to 'Always notify' to turn UAC on. If you are prompted by UAC, select 'Yes' to continue.",
-            "To finish, restart your computer."
-        ],
-        "Screenshots":
-        [
-            "user-account-control/user-account-control-1.png",
-            "user-account-control/user-account-control-1.png",
-            "user-account-control/user-account-control-2.png",
-            "user-account-control/user-account-control-2.png",
-            "user-account-control/user-account-control-3.png",
-            "user-account-control/user-account-control-5.png",
-            "user-account-control/user-account-control-5.png"
-        ] 
-    },
-    "143": {
-        "Name": "User account control",
-        "Type": "Security",
-        "Information": "User Account Control (UAC) is a security feature introduced in Windows Vista and present in subsequent versions of the Windows operating system. Its primary purpose is to enhance the security of the operating system by limiting the privileges of applications and processes running with standard user rights and requiring administrator approval for tasks that require elevated permissions.",
-        "Solution": 
-        [   
-            "The status of the user account control settings is unknown. To check the status and potentially solve the issue of the user account control, follow these steps:",
-            "On your keyboard, press 'Windows+R' to open the Run window.", 
-            "Type 'Control Panel', then select OK.",
-            "Select 'User Accounts' or 'User Accounts and Family Safety'.",
-            "Select 'Change User Account Control settings'. If you are prompted by UAC, select 'Yes' to continue.",
-            "Here you can move the slider to 'Always notify' to turn UAC on. If you are prompted by UAC, select 'Yes' to continue.",
-            "To finish, restart your computer."
-        ],
-        "SolutionWindows10": 
-        [   
-            "The settings for user account control are turned on for apps, setting it to always notify is a safer option. To turn on UAC follow these steps",
-            "On your keyboard, press 'Windows+R' to open the Run window.", 
-            "Type 'Control Panel', then select OK.",
-            "Select 'User Accounts'.",
-            "Select 'User Accounts' again.",
-            "Select 'Change User Account Control settings'. If you are prompted by UAC, select 'Yes' to continue.",
-            "Here you can move the slider to 'Always notify' to turn UAC on. If you are prompted by UAC, select 'Yes' to continue.",
-            "To finish, restart your computer."
-        ],
-        "Screenshots":
-        [
-            "user-account-control/user-account-control-1.png",
-            "user-account-control/user-account-control-1.png",
-            "user-account-control/user-account-control-2.png",
-            "user-account-control/user-account-control-2.png",
-            "user-account-control/user-account-control-3.png",
-            "user-account-control/user-account-control-5.png",
-            "user-account-control/user-account-control-5.png"
-        ] 
-    },
-    "150": {
-        "Name": "Windows Defender enabled and scan enabled",
-        "Type": "Security",
-        "Information": "Windows Defender continuously monitors your system for any suspicious activity, including malware, viruses, and other forms of malicious software. By having it enabled, you have an active defense against potential threats that could compromise your privacy or security. It also receives regular updates from Microsoft to stay up-to-date with the latest security threats and vulnerabilities. By keeping it enabled, you ensure that your computer is protected against newly emerging threats that could exploit known security weaknesses.",
-        "Solution": 
-        [
-            "Windows Defender and the periodic scan are enabled, so no action is needed."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "151": {
-        "Name": "Windows Defender scan disabled",
-        "Type": "Security",
-        "Information": "Windows Defender continuously monitors your system for any suspicious activity, including malware, viruses, and other forms of malicious software. By having it enabled, you have an active defense against potential threats that could compromise your privacy or security. It also receives regular updates from Microsoft to stay up-to-date with the latest security threats and vulnerabilities. By keeping it enabled, you ensure that your computer is protected against newly emerging threats that could exploit known security weaknesses.",
-        "Solution": 
-        [
-            "Open the Windows Security app.", 
-            "Select Virus & threat protection.", 
-            "Under Virus & threat protection settings, select Manage settings.", 
-            "Flip the switch under Real-time protection to turn it on."
-        ],
-        "Screenshots":
-        [
-            "windows-defender/windows-defender-1.png",
-            "windows-defender/windows-defender-1.png",
-            "windows-defender/windows-defender-1.png",
-            "windows-defender/windows-defender-1.png"
-        ],
-        "SceeenshotsWindows10":
-        [
-            "windows-defender/windows-defender-1.png",
-            "windows-defender/windows-defender-2.png",
-            "windows-defender/windows-defender-3.png",
-            "windows-defender/windows-defender-4.png"
-        ]
-    },
-    "152": {
-        "Name": "Windows Defender disabled",
-        "Type": "Security",
-        "Information": "Windows Defender continuously monitors your system for any suspicious activity, including malware, viruses, and other forms of malicious software. By having it enabled, you have an active defense against potential threats that could compromise your privacy or security. It also receives regular updates from Microsoft to stay up-to-date with the latest security threats and vulnerabilities. By keeping it enabled, you ensure that your computer is protected against newly emerging threats that could exploit known security weaknesses.",
-        "Solution": 
-        [
-            "Open the Windows Security app.", 
-            "Select Virus & threat protection.", 
-            "Under Virus & threat protection settings, select Manage settings.", 
-            "Flip the switch under Real-time protection to turn it on."
-        ],
-        "Screenshots":
-        [
-            "windows-defender/windows-defender-1.png",
-            "windows-defender/windows-defender-1.png",
-            "windows-defender/windows-defender-1.png",
-            "windows-defender/windows-defender-1.png"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "windows-defender/windows-defender-1.png",
-            "windows-defender/windows-defender-2.png",
-            "windows-defender/windows-defender-3.png",
-            "windows-defender/windows-defender-4.png"
-        ]
-    },
-    "153": {
-        "Name": "Windows Defender status unknown",
-        "Type": "Security",
-        "Information": "Windows Defender continuously monitors your system for any suspicious activity, including malware, viruses, and other forms of malicious software. By having it enabled, you have an active defense against potential threats that could compromise your privacy or security. It also receives regular updates from Microsoft to stay up-to-date with the latest security threats and vulnerabilities. By keeping it enabled, you ensure that your computer is protected against newly emerging threats that could exploit known security weaknesses.",
-        "Solution": 
-        [
-            "The Windows Defender status is unknown. To check the status and potentially solve the issue of Windows Defender, follow these steps:",
-            "Open the Windows Security app.", 
-            "Select Virus & threat protection.", 
-            "Under Virus & threat protection settings, select Manage settings.", 
-            "Flip the switch under Real-time protection to turn it on."
-        ],
-        "Screenshots":
-        [
-            "windows-defender/windows-defender-1.png",
-            "windows-defender/windows-defender-1.png",
-            "windows-defender/windows-defender-1.png",
-            "windows-defender/windows-defender-1.png",
-            "windows-defender/windows-defender-1.png"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "windows-defender/windows-defender-1.png",
-            "windows-defender/windows-defender-1.png",
-            "windows-defender/windows-defender-2.png",
-            "windows-defender/windows-defender-3.png",
-            "windows-defender/windows-defender-4.png"
-        ]
-    },
-    "154": {
-        "Name": "Windows Defender disabled",
-        "Type": "Security",
-        "Information": "Windows Defender continuously monitors your system for any suspicious activity, including malware, viruses, and other forms of malicious software. By having it enabled, you have an active defense against potential threats that could compromise your privacy or security. It also receives regular updates from Microsoft to stay up-to-date with the latest security threats and vulnerabilities. By keeping it enabled, you ensure that your computer is protected against newly emerging threats that could exploit known security weaknesses.",
-        "Solution": 
-        [
-            "Open the Windows Security app.", 
-            "Select Virus & threat protection.", 
-            "Under Virus & threat protection settings, select Manage settings.", 
-            "Flip the switch under Real-time protection to turn it on."
-        ],
-        "Screenshots":
-        [
-            "windows-defender/windows-defender-1.png",
-            "windows-defender/windows-defender-1.png",
-            "windows-defender/windows-defender-1.png",
-            "windows-defender/windows-defender-1.png"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "windows-defender/windows-defender-1.png",
-            "windows-defender/windows-defender-2.png",
-            "windows-defender/windows-defender-3.png",
-            "windows-defender/windows-defender-4.png"
-        ]
-    },
-    "160": {
-        "Name": "Last password change more than 6 months ago",
-        "Type": "Security",
-        "Information": "Regularly changing your password reduces the likelihood of unauthorized access to your computer or sensitive information. If someone does manage to obtain your password, changing it regularly limits the time they have to exploit it. So it is a good habit to change your password at least twice a year.",
-        "Solution": 
-        [   
-            "Go to Start > Change your password", 
-            "Open the 'Password' section and click on the 'Change' button.",
-            "You can now change your password to a new unique one."
-        ],
-        "Screenshots":
-        [
-            "last-password-change/change-password-1.png",
-            "last-password-change/change-password-2.png",
-            "last-password-change/change-password-2.png"
-        ] 
-    },
-    "161": {
-        "Name": "Last password change recent",
-        "Type": "Security",
-        "Information": "Regularly changing your password reduces the likelihood of unauthorized access to your computer or sensitive information. If someone does manage to obtain your password, changing it regularly limits the time they have to exploit it. So it is a good habit to change your password at least twice a year.",
-        "Solution": 
-        [   
-            "You changed your password recently, so no action is needed."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "170": {
-        "Name": "No Windows login method set up",
-        "Type": "Security",
-        "Information": "Using a secure Windows login method is important. Windows supports various login methods like a password, PIN, security key, or fingerprint. Using one of these login methods is important to keep your data safe. Without one of these login methods, anyone is able to unlock your device and access your data. You are not using a login method / a less secure login method / combination of login methods, it is recommended to switch to a more secure login method like password or fingerprint.",
-        "Solution": 
-        [   
-            "Go to Start > Settings > Accounts > Sign-in options.", 
-            "Now you can set up one of the available login methods by following the steps described."
-        ],
-        "Screenshots":
-        [
-            "windows-login-method/login-method-1.png",
-            "windows-login-method/login-method-2.png"
-        ] 
-    },
-    "171": {
-        "Name": "Windows login with secure login method",
-        "Type": "Security",
-        "Information": "Using a secure Windows login method is important. Windows supports various login methods like a password, PIN, security key, or fingerprint. Using one of these login methods is important to keep your data safe. Without one of these login methods, anyone is able to unlock your device and access your data.",
-        "Solution": 
-        [   
-            "You are using a secure login method, so no action is needed."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "173": {
-        "Name": "Windows login with less secure login method",
-        "Type": "Security",
-        "Information": "Using a secure Windows login method is important. Windows supports various login methods like a password, PIN, security key, or fingerprint. Using one of these login methods is important to keep your data safe. Without one of these login methods, anyone is able to unlock your device and access your data. You are using a less secure login method / combination of login methods as seen below, it is recommended to switch to a more secure login method like password or fingerprint.",
-        "Solution": 
-        [   
-            "Go to Start > Settings > Accounts > Sign-in options.", 
-            "Now you can set up one of the available login methods by following the steps described."
-        ],
-        "Screenshots":
-        [
-            "windows-login-method/login-method-1.png",
-            "windows-login-method/login-method-2.png"
-        ] 
-    },
-    "180": {
-        "Name": "Windows version up to date",
-        "Type": "Security",
-        "Information": "Outdated Windows versions may contain unpatched security vulnerabilities that could be exploited by attackers to compromise the system. Hackers actively search for and exploit vulnerabilities in outdated operating systems, potentially leading to unauthorized access, data breaches, and malware infections.",
-        "Solution": 
-        [
-            "Your Windows version is up-to-date, so no action is needed."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "181": {
-        "Name": "Windows version slightly outdated",
-        "Type": "Security",
-        "Information": "Outdated Windows versions may contain unpatched security vulnerabilities that could be exploited by attackers to compromise the system. Hackers actively search for and exploit vulnerabilities in outdated operating systems, potentially leading to unauthorized access, data breaches, and malware infections.",
-        "Solution": 
-        [
-            "Go to Start > Settings > Windows Update.",
-            "Here you can check for updates and install updates."
-        ],
-        "Screenshots":
-        [
-            "outdated-windows-version/windows-update-1.png",
-            "outdated-windows-version/windows-update-2.png"
-        ] 
-    },
-    "182": {
-        "Name": "Outdated Windows version",
-        "Type": "Security",
-        "Information": "Outdated Windows versions may contain unpatched security vulnerabilities that could be exploited by attackers to compromise the system. Hackers actively search for and exploit vulnerabilities in outdated operating systems, potentially leading to unauthorized access, data breaches, and malware infections.",
-        "Solution": 
-        [
-            "Go to Start > Settings > Windows Update.",
-            "Here you can check for updates and install updates."
-        ],
-        "Screenshots":
-        [
-            "outdated-windows-version/windows-update-1.png",
-            "outdated-windows-version/windows-update-2.png"
-        ] 
-    },
-    "190": {
-        "Name": "Secure boot disabled",
-        "Type": "Security",
-        "Information": "Secure Boot ensures that only trusted software components, signed with recognized digital signatures, are loaded during the boot process. This prevents malware and other unauthorized software from tampering with the boot process and gaining control of the system at an early stage.",
-        "Solution": 
-        [   
-            "Restart your computer and access the BIOS/UEFI settings. This is usually done by pressing a specific key during the boot process. Common keys to access BIOS/UEFI settings include F2, Del, Esc, or F10. The specific key varies depending on your computer's manufacturer.", 
-            "Once you are in the BIOS/UEFI settings, navigate to the section related to Secure Boot. This section may be named differently depending on your system manufacturer and BIOS/UEFI version.",
-            "In the Secure Boot section, you should find an option to enable Secure Boot. Select this option and set it to 'Enabled.' Some systems may require you to set a Secure Boot Mode or choose the Secure Boot Key Management option. Follow the on-screen instructions to enable Secure Boot.",
-            "After enabling Secure Boot, save the changes to the BIOS/UEFI settings and exit. Usually, you can do this by selecting the 'Save & Exit' or 'Exit' option from the BIOS/UEFI menu. Confirm any prompts to save the changes and restart your computer."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "191": {
-        "Name": "Secure boot enabled",
-        "Type": "Security",
-        "Information": "Secure Boot ensures that only trusted software components, signed with recognized digital signatures, are loaded during the boot process. This prevents malware and other unauthorized software from tampering with the boot process and gaining control of the system at an early stage.",
-        "Solution": 
-        [   
-            "Secure boot is enabled, so no action is needed."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "192": {
-        "Name": "Secure boot status unknown",
-        "Type": "Security",
-        "Information": "Secure Boot ensures that only trusted software components, signed with recognized digital signatures, are loaded during the boot process. This prevents malware and other unauthorized software from tampering with the boot process and gaining control of the system at an early stage.",
-        "Solution": 
-        [   
-            "The status of the secure boot setting is unknown. To check the status and potentially solve the issue of the secure boot, follow these steps:",
-            "Restart your computer and access the BIOS/UEFI settings. This is usually done by pressing a specific key during the boot process. Common keys to access BIOS/UEFI settings include F2, Del, Esc, or F10. The specific key varies depending on your computer's manufacturer.", 
-            "Once you are in the BIOS/UEFI settings, navigate to the section related to Secure Boot. This section may be named differently depending on your system manufacturer and BIOS/UEFI version.",
-            "In the Secure Boot section, you should find an option to enable Secure Boot. Select this option and set it to 'Enabled.' Some systems may require you to set a Secure Boot Mode or choose the Secure Boot Key Management option. Follow the on-screen instructions to enable Secure Boot.",
-            "After enabling Secure Boot, save the changes to the BIOS/UEFI settings and exit. Usually, you can do this by selecting the 'Save & Exit' or 'Exit' option from the BIOS/UEFI menu. Confirm any prompts to save the changes and restart your computer."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "200": {
-        "Name": "No applications start at boot",
-        "Type": "Security",
-        "Information": "When you boot up your computer, several applications automatically launch. Some of these are essential processes for the system to function properly, while others are convenient to have at startup. However, there might also be applications that start during boot without your knowledge. It's wise to disable these to prevent any unauthorized actions and to improve the speed of your computer's startup process.",
-        "Solution": 
-        [   
-            "No applications start at boot, so no action is needed."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "201": {
-        "Name": "Applications which start at boot",
-        "Type": "Security",
-        "Information": "When you boot up your computer, several applications automatically launch. Some of these are essential processes for the system to function properly, while others are convenient to have at startup. However, there might also be applications that start during boot without your knowledge. It's wise to disable these to prevent any unauthorized actions and to improve the speed of your computer's startup process.",
-        "Solution": 
-        [   
-            "Go to Start > Settings > Apps > Startup.", 
-            "Here you can choose which applications will automatically start during boot."
-        ],
-        "Screenshots":
-        [
-            "applications-which-start-at-boot/boot-apps-1.png",
-            "applications-which-start-at-boot/boot-apps-2.png"
-        ] 
-    },
-    "210": {
-        "Name": "Google Chrome with an ad blocker installed",
-        "Type": "Privacy",
-        "Information": "Ad blockers shield users from online advertisements. With their filters and algorithms, they provide a sanctuary of uninterrupted browsing, sparing users from the visual clutter and potential security risks posed by ads.",
-        "Solution": 
-        [   		
-            "Open Google Chrome and navigate to the Chrome Store.", 
-			"Search for an ad blocker in the search bar (for example: AdBlock Plus or uBlock Origin).",
-			"Click on the 'Add to Chrome' button and restart the browser."
-        ],
-        "Screenshots":
-        [
-            "chrome-adblocker/chrome-adblocker-1.png",
-            "chrome-adblocker/chrome-adblocker-2.png",
-            "chrome-adblocker/chrome-adblocker-3.png"
-        ]
-    },
-    "211": {
-        "Name": "Google Chrome with no ad blocker installed",
-        "Type": "Privacy",
-        "Information": "Ad blockers shield users from online advertisements. With their filters and algorithms, they provide a sanctuary of uninterrupted browsing, sparing users from the visual clutter and potential security risks posed by ads.",
-        "Solution": 
-        [   		
-            "Open Google Chrome and navigate to the Chrome Store.", 
-			"Search for an ad blocker in the search bar (for example: AdBlock Plus or uBlock Origin).",
-			"Click on the 'Add to Chrome' button and restart the browser."
-        ],
-        "Screenshots":
-        [
-            "chrome-adblocker/chrome-adblocker-1.png",
-            "chrome-adblocker/chrome-adblocker-2.png",
-            "chrome-adblocker/chrome-adblocker-3.png"
-        ]
-    },
-    "220": {
-        "Name": "Microsoft Edge with an ad blocker installed",
-        "Type": "Privacy",
-        "Information": "Ad blockers shield users from online advertisements. With their filters and algorithms, they provide a sanctuary of uninterrupted browsing, sparing users from the visual clutter and potential security risks posed by ads.",
-        "Solution": 
-        [   		
-            "Open Microsoft Edge and navigate to Microsoft Edge Extensions", 
-			"Search for an ad blocker in the search bar (for example: AdBlock Plus or uBlock Origin)",
-			"Click on the 'Download' button and restart the browser."
-        ],
-        "Screenshots":
-        [
-            "edge-adblocker/edge-adblocker-1.png",
-            "edge-adblocker/edge-adblocker-2.png",
-            "edge-adblocker/edge-adblocker-3.png"
-        ]
-    },
-    "221": {
-        "Name": "Microsoft Edge with no ad blocker installed",
-        "Type": "Privacy",
-        "Information": "Ad blockers shield users from online advertisements. With their filters and algorithms, they provide a sanctuary of uninterrupted browsing, sparing users from the visual clutter and potential security risks posed by ads.",
-        "Solution": 
-        [   		
-            "Open Microsoft Edge and navigate to Microsoft Edge Extensions", 
-			"Search for an ad blocker in the search bar (for example: AdBlock Plus or uBlock Origin)",
-			"Click on the 'Download' button and restart the browser."
-        ],
-        "Screenshots":
-        [
-            "edge-adblocker/edge-adblocker-1.png",
-            "edge-adblocker/edge-adblocker-2.png",
-            "edge-adblocker/edge-adblocker-3.png"
-        ]
-    },
-    "230": {
-        "Name": "Potential phishing domains found on Google Chrome",
-        "Type": "Privacy",
-        "Information": "Phishing domains are fake websites designed to trick people into sharing sensitive information like passwords or credit card details. They look real, mimicking trusted brands or organizations. These scams exploit trust and curiosity to steal personal data.",
-        "Solution": 
-        [   		
-            "Be careful browsing the internet as trusted websites could be spoofed easily. Furthermore, there are a lot of websites with malicious intentions. In case of doubt of actively browsing on a potential phishing website, it is advised to change your password."
-        ],
-        "Screenshots":
-        [
-            "TOBEFILLED"
-        ]
-    },	
-    "231": {
-        "Name": "No potential phishing domains found on Google Chrome",
-        "Type": "Privacy",
-        "Information": "Phishing domains are fake websites designed to trick people into sharing sensitive information like passwords or credit card details. They look real, mimicking trusted brands or organizations. These scams exploit trust and curiosity to steal personal data.",
-        "Solution": 
-        [   		
-            "Be careful browsing the internet as trusted websites could be spoofed easily. Furthermore, there are a lot of websites with malicious intentions. In case of doubt of actively browsing on a potential phishing website, it is advised to change your password."
-        ],
-        "Screenshots":
-        [
-        ]
-    },	
-    "240": {
-        "Name": "Potential phishing domains found on Microsoft Edge",
-        "Type": "Privacy",
-        "Information": "Phishing domains are fake websites designed to trick people into sharing sensitive information like passwords or credit card details. They look real, mimicking trusted brands or organizations. These scams exploit trust and curiosity to steal personal data.",
-        "Solution": 
-        [   		
-            "Be careful browsing the internet as trusted websites could be spoofed easily. Furthermore, there are a lot of websites with malicious intentions. In case of doubt of actively browsing on a potential phishing website, it is advised to change your password."
-        ],
-        "Screenshots":
-        [
-        ]
-    },	
-    "241": {
-        "Name": "No potential phishing domains found on Microsoft Edge",
-        "Type": "Privacy",
-        "Information": "Phishing domains are fake websites designed to trick people into sharing sensitive information like passwords or credit card details. They look real, mimicking trusted brands or organizations. These scams exploit trust and curiosity to steal personal data.",
-        "Solution": 
-        [   		
-            "Be careful browsing the internet as trusted websites could be spoofed easily. Furthermore, there are a lot of websites with malicious intentions. In case of doubt of actively browsing on a potential phishing website, it is advised to change your password."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "250": {
-        "Name": "Standard search engine in Google Chrome",
-        "Type": "Privacy",
-        "Information": "A standard search engine helps users find information on the internet by entering keywords or phrases. Examples include Google, Bing, and Yahoo. They often face criticism for their approach to privacy.",
-        "Solution": 
-        [   		
-            "Consider using a search engine with a focus on the privacy of the users (for example DuckDuckGo)."
-        ],
-        "Screenshots":
-        [
-        ]
-    },	
-    "260": {
-        "Name": "Standard search engine in Microsoft Edge",
-        "Type": "Privacy",
-        "Information": "A standard search engine helps users find information on the internet by entering keywords or phrases. Examples include Google, Bing, and Yahoo. They often face criticism for their approach to privacy.",
-        "Solution": 
-        [   		
-            "Consider using a search engine with a focus on the privacy of the users (for example DuckDuckGo)."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "270": {
-        "Name": "Cookies stored by Mozilla Firefox",
-        "Type": "Privacy",
-        "Information": "Cookies are small text files stored on your computer by websites you visit. They are used to remember your preferences, login information, and other data to enhance your browsing experience. However, cookies can also be used to track your online activities and gather personal information without your consent, raising privacy concerns. Managing and clearing cookies regularly helps protect your privacy and control the data websites collect about you.",
-        "Solution": 
-        [   		
-            "Open Mozilla Firefox and click on the menu button (three horizontal lines) in the top right corner.",
-            "Select 'Options' and go to the 'Privacy & Security' tab.",
-            "Under 'Cookies and Site Data', click on 'Manage Data'.",
-            "Here you can view and remove cookies stored by websites. You can also clear all cookies by clicking on 'Remove All'."
-        ],
-        "Screenshots":
-        [
-            "firefox-cookies/cookies-firefox-1.png",
-            "firefox-cookies/cookies-firefox-2.png",
-            "firefox-cookies/cookies-firefox-3.png",
-            "firefox-cookies/cookies-firefox-4.png"
-        ]
-    },
-    "271": {
-        "Name": "Possible tracking cookies found in Mozilla Firefox",
-        "Type": "Privacy",
-        "Information": "Cookies are small text files stored on your computer by websites you visit. They are used to remember your preferences, login information, and other data to enhance your browsing experience. However, cookies can also be used to track your online activities and gather personal information without your consent, raising privacy concerns. Managing and clearing cookies regularly helps protect your privacy and control the data websites collect about you.",
-        "Solution": 
-        [   		
-            "Open Mozilla Firefox and click on the menu button (three horizontal lines) in the top right corner.",
-            "Select 'Settings' and go to the 'Privacy & Security' tab.",
-            "The 'Enhanced Tracking Protection' option should be set to 'Standard' or 'Custom'. Custom gives you more control over what you allow or block. Under Cookies and Site Data, you can delete your existing cookies and manage exceptions. It is recommended to clear your cookies often to protect your privacy."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "280": {
-        "Name": "Extensions installed in Mozilla Firefox",
-        "Type": "Privacy",
-        "Information": "Browser extensions enhance the functionality of your web browser by adding features, tools, and customization options. While extensions can be useful, they can also pose privacy and security risks if they have access to sensitive data or track your online activities without your consent. Regularly reviewing and managing your browser extensions helps protect your privacy and security online. Remove any extensions that you no longer use or trust to minimize potential risks.",
-        "Solution": 
-        [   		
-            "Open Mozilla Firefox and click on the menu button (three horizontal lines) in the top right corner.",
-            "Select 'Add-ons' and go to the 'Extensions' tab.",
-            "Here you can view and manage the extensions installed in your browser. Disable or remove any extensions that you no longer use or trust."
-        ],
-        "Screenshots":
-        [
-            "firefox-extensions/extensions-firefox-1.png",
-            "firefox-extensions/extensions-firefox-2.png",
-            "firefox-extensions/extensions-firefox-3.png"
-        ]
-    },
-    "290": {
-        "Name": "Mozilla Firefox with an ad blocker installed",
-        "Type": "Privacy",
-        "Information": "Ad blockers shield users from online advertisements. With their filters and algorithms, they provide a sanctuary of uninterrupted browsing, sparing users from the visual clutter and potential security risks posed by ads.",
-        "Solution": 
-        [   		
-            "Open Mozilla Firefox and navigate to Firefox Extensions", 
-			"Search for an ad blocker in the search bar (for example: AdBlock Plus or uBlock Origin)",
-			"Click on the 'Download' button and restart the browser."
-        ],
-        "Screenshots":
-        [
-        ]
-    },	
-    "291": {
-        "Name": "Mozilla Firefox with no ad blocker installed",
-        "Type": "Privacy",
-        "Information": "Ad blockers shield users from online advertisements. With their filters and algorithms, they provide a sanctuary of uninterrupted browsing, sparing users from the visual clutter and potential security risks posed by ads.",
-        "Solution": 
-        [   		
-            "Open Mozilla Firefox and navigate to Firefox Extensions", 
-			"Search for an ad blocker in the search bar (for example: AdBlock Plus or uBlock Origin)",
-			"Click on the 'Download' button and restart the browser."
-        ],
-        "Screenshots":
-        [
-            "firefox-adblocker/firefox-adblocker-1.png",
-            "firefox-adblocker/firefox-adblocker-2.png",
-            "firefox-adblocker/firefox-adblocker-3.png",
-            "firefox-adblocker/firefox-adblocker-4.png",
-            "firefox-adblocker/firefox-adblocker-5.png"
-        ]
-    },		
-    "300": {
-        "Name": "Standard search engine in Mozilla Firefox",
-        "Type": "Privacy",
-        "Information": "A standard search engine helps users find information on the internet by entering keywords or phrases. Examples include Google, Bing, and Yahoo. They often face criticism for their approach to privacy.",
-        "Solution": 
-        [   		
-          "Consider using a browser with a focus on the privacy of the users (for example DuckDuckGo)."
-        ],
-        "Screenshots":
-        [
-        ]
-    },	
-    "310": {
-        "Name": "No potential phishing domains found on Mozilla Firefox",
-        "Type": "Privacy",
-        "Information": "Phishing domains are fake websites designed to trick people into sharing sensitive information like passwords or credit card details. They look real, mimicking trusted brands or organizations. These scams exploit trust and curiosity to steal personal data.",
-        "Solution":
-        [
-        ],
-        "Screenshots":
-        [
-        ]
-    },		
-    "311": {
-        "Name": "Potential phishing domains found on Mozilla Firefox",
-        "Type": "Privacy",
-        "Information": "Be careful browsing the internet as trusted websites could be spoofed easily. Furthermore, there are a lot of websites with malicious intentions. In case of doubt of actively browsing on a potential phishing website, it is advised to change your password.",
-        "Solution":
-        [
-            "Be careful browsing the internet as trusted websites could be spoofed easily. Furthermore, there are a lot of websites with malicious intentions. In case of doubt of actively browsing on a potential phishing website, it is advised to change your password."
-        ],
-        "Screenshots":
-        [
-            "TOBEFILLED"
-        ]
-    },
-    "320": {
-        "Name": "Incorrect CIS Audit list registry settings",
-        "Type": "Security",
-        "Information": "The Center for Internet Security (CIS) provides a set of guidelines and best practices for securing computer systems. The CIS Audit list registry settings help ensure that your system is configured according to these security standards. Incorrect or outdated registry settings may leave your system vulnerable to security threats and compromise your privacy.",
-        "Solution":
-        [
-            "Download the CIS Benchmark for your operating system from the official CIS website. Follow the instructions in the benchmark document to review and update the registry settings on your system to align with the CIS security standards. Regularly check for updates to the CIS Benchmark and apply any changes or recommendations to maintain a secure configuration."
-        ],
-        "Screenshots":
-        [
-            "TOBEFILLED"
-        ]
-    },
-    "321": {
-        "Name": "Correct CIS Audit list registry settings",
-        "Type": "Security",
-        "Information": "The Center for Internet Security (CIS) provides a set of guidelines and best practices for securing computer systems. The CIS Audit list registry settings help ensure that your system is configured according to these security standards. Incorrect or outdated registry settings may leave your system vulnerable to security threats and compromise your privacy.",
-        "Solution":
-        [
-            "All settings adhere to the CIS Audit list guidelines, no action is needed."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "330": {
-        "Name": "Automatic log-in disabled",
-        "Type": "Security",
-        "Information": "Automatic log-in allows users to access their accounts without entering a password each time they start their computer or open a specific application. While convenient, automatic log-in poses security risks, as anyone with physical access to the device can access the account without authentication. Disabling automatic log-in enhances the security of your accounts and prevents unauthorized access.",
-        "Solution":
-        [
-            "Automatic log-in is disabled, so no action is needed."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "331": {
-        "Name": "Automatic log-in enabled",
-        "Type": "Security",
-        "Information": "Automatic log-in allows users to access their accounts without entering a password each time they start their computer or open a specific application. While convenient, automatic log-in poses security risks, as anyone with physical access to the device can access the account without authentication. Disabling automatic log-in enhances the security of your accounts and prevents unauthorized access.",
-        "Solution":
-        [
-            "Go to Start > Settings > Accounts > Sign-in options.",
-            "Under 'Require sign-in', select 'When PC wakes up from sleep'."
-        ],
-        "Screenshots":
-        [
-            "TOBEFILLED"
-        ]
-    },
-    "340": {
-        "Name": "Remote RPC disabled",
-        "Type": "Security",
-        "Information": "Remote Procedure Call (RPC) is a protocol that allows programs and processes to communicate with each other on a network. Disabling Remote RPC helps prevent unauthorized access to your computer and protects it from potential security threats and vulnerabilities.",
-        "Solution":
-        [
-            "Remote RPC is disabled, so there is no action needed."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "341": {
-        "Name": "Remote RPC enabled",
-        "Type": "Security",
-        "Information": "Remote Procedure Call (RPC) is a protocol that allows programs and processes to communicate with each other on a network. Disabling Remote RPC helps prevent unauthorized access to your computer and protects it from potential security threats and vulnerabilities.",
-        "Solution":
-        [
-            "The Remote RPC setting can not be changed in a conventional way. It requires editing of the registry directly.",
-            "In Windows Search, type in Registry Editor and open the program.",
-            "Navigate to \"Computer\\HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server.",
-            "Double click on the \"AllowRemoteRPC\" key and set its value to 0."
-        ],
-        "Screenshots":
-        [
-            "TOBEFILLED"
-        ]
-    },
-    "350": {
-        "Name": "No possible tracking cookies found in Google Chrome browser",
-        "Type": "Privacy",
-        "Information": "Cookies are small text files stored on your computer by websites you visit. They are used to remember your preferences, login information, and other data to enhance your browsing experience. However, cookies can also be used to track your online activities and gather personal information without your consent, raising privacy concerns. Managing and clearing cookies regularly helps protect your privacy and control the data websites collect about you.",
-        "Solution":
-        [
-            "No possible tracking cookies found in Google Chrome, so there is no action needed."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "351": {
-        "Name": "Possible tracking cookies found in Google Chrome browser",
-        "Type": "Privacy",
-        "Information": "Cookies are small text files stored on your computer by websites you visit. They are used to remember your preferences, login information, and other data to enhance your browsing experience. However, cookies can also be used to track your online activities and gather personal information without your consent, raising privacy concerns. Managing and clearing cookies regularly helps protect your privacy and control the data websites collect about you.",
-        "Solution":
-        [
-            "Open Google Chrome and click on the three dots in the top right corner.",
-            "Select 'Settings' and go to the 'Privacy and security' section.",
-            "Under 'Third-party cookies', click on 'See all site data and permissions'.",
-            "Here you can view and manage the cookies stored by websites. You can delete individual cookies or clear all site data to protect your privacy. "
-        ],
-        "Screenshots":
-        [
-            "TOBEFILLED"
-        ]
-    },
-    "360": {
-        "Name": "No possible tracking cookies found in Microsoft Edge browser",
-        "Type": "Privacy",
-        "Information": "Cookies are small text files stored on your computer by websites you visit. They are used to remember your preferences, login information, and other data to enhance your browsing experience. However, cookies can also be used to track your online activities and gather personal information without your consent, raising privacy concerns. Managing and clearing cookies regularly helps protect your privacy and control the data websites collect about you.",
-        "Solution":
-        [
-            "No possible tracking cookies found in Microsoft Edge, so there is no action needed."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "361": {
-        "Name": "Possible tracking cookies found in Microsoft Edge browser",
-        "Type": "Privacy",
-        "Information": "Cookies are small text files stored on your computer by websites you visit. They are used to remember your preferences, login information, and other data to enhance your browsing experience. However, cookies can also be used to track your online activities and gather personal information without your consent, raising privacy concerns. Managing and clearing cookies regularly helps protect your privacy and control the data websites collect about you.",
-        "Solution":
-        [
-            "Open Microsoft Edge and click on the three dots in the top right corner.",
-            "Select 'Settings' and go to the 'Cookies and site permissions' section.",
-            "Under 'Cookies and data stored', click on 'Manage and delete cookies and site data'.",
-            "Here you can manage general cookie settings. You can delete individual cookies or clear all site data by clicking on 'See all cookies and site data'. "
-        ],
-        "Screenshots":
-        [
-            "TOBEFILLED"
-        ]
-    },
-    "370": {
-        "Name": "Windows firewall enabled for all profiles",
-        "Type": "Security",
-        "Information": "The Windows Firewall is a built-in security feature that helps protect your computer from unauthorized access and malicious software by monitoring and controlling incoming and outgoing network traffic. Enabling the Windows Firewall for all network profiles (public, private, and domain) helps enhance the security of your system and prevent potential security threats.",
-        "Solution":
-        [
-            "Windows Firewall is enabled for all profiles, so there is no action needed."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "371": {
-        "Name": "Windows firewall not enabled for all profiles",
-        "Type": "Security",
-        "Information": "The Windows Firewall is a built-in security feature that helps protect your computer from unauthorized access and malicious software by monitoring and controlling incoming and outgoing network traffic. Enabling the Windows Firewall for all network profiles (public, private, and domain) helps enhance the security of your system and prevent potential security threats.",
-        "Solution":
-        [
-            "Go to Start > Settings > Update & Security > Windows Security > Firewall & network protection.",
-            "Under 'Firewall & network protection', make sure that the Windows Firewall is turned on for all network profiles (public, private, and domain). If it is disabled, click on 'Turn on' to enable the firewall for the selected profile."
-        ],
-        "Screenshots":
-        [
-            "TOBEFILLED"
-        ]
-    },
-    "380":{
-        "Name": "Minimum password length set to at least 15 characters",
-        "Type": "Security",
-        "Information": "Setting a minimum password length of at least 15 characters helps enhance the security of user accounts by increasing the complexity and strength of passwords. Longer passwords are more resistant to brute-force attacks and provide better protection against unauthorized access and data breaches.",
-        "Solution":
-        [
-            "The minimum password length is set to at least 15 characters, so there is no action needed."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "381":{
-        "Name": "Minimum password length not set to at least 15 characters",
-        "Type": "Security",
-        "Information": "Setting a minimum password length of at least 15 characters helps enhance the security of user accounts by increasing the complexity and strength of passwords. Longer passwords are more resistant to brute-force attacks and provide better protection against unauthorized access and data breaches.",
-        "Solution":
-        [
-            "Open an elevated command prompt by right-clicking on the Start button and selecting 'Terminal (Admin)'.",
-            "Run the command 'net accounts' to view the current password policy settings, including the minimum password length.",
-            "Run the command 'net accounts /minpwlen:15' to set the minimum password length to 15 characters.",
-            "Restart your computer to apply the changes."
-        ],
-        "Screenshots":
-        [
-            "TOBEFILLED"
-        ]
-    },
-    "390": {
-        "Name": "Credential Guard enabled",
-        "Type": "Security",
-        "Information": "Credential Guard is a security feature in Windows that helps protect user credentials and sensitive information from unauthorized access and theft. It uses virtualization-based security to isolate and protect credential information, making it more difficult for attackers to steal passwords and other sensitive data.",
-        "Solution":
-        [
-            "Credential Guard is enabled, so there is no action needed."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "391": {
-        "Name": "Credential Guard disabled",
-        "Type": "Security",
-        "Information": "Credential Guard is a security feature in Windows that helps protect user credentials and sensitive information from unauthorized access and theft. It uses virtualization-based security to isolate and protect credential information, making it more difficult for attackers to steal passwords and other sensitive data.",
-        "Solution":
-        [
-            "The setting of Credential Guard is handled in your local group policy. Ask your network administrator to enable Credential Guard."
-        ],
-        "Screenshots":
-        [
-            "TOBEFILLED"
-        ]
-    },
-    "400": {
-        "Name": "NetBIOS over TCP/IP disabled",
-        "Type": "Security",
-        "Information": "NetBIOS over TCP/IP is a legacy networking protocol that allows computers to communicate on a local network. Disabling NetBIOS over TCP/IP helps reduce the attack surface of your system and prevent potential security vulnerabilities associated with this protocol.",
-        "Solution":
-        [
-            "NetBIOS over TCP/IP is disabled, so there is no action needed."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "401": {
-        "Name": "NetBIOS over TCP/IP enabled",
-        "Type": "Security",
-        "Information": "NetBIOS over TCP/IP is a legacy networking protocol that allows computers to communicate on a local network. Disabling NetBIOS over TCP/IP helps reduce the attack surface of your system and prevent potential security vulnerabilities associated with this protocol.",
-        "Solution":
-        [
-            "Open the Control Panel and go to 'Network and Internet' -> 'Network and Sharing Center'.",
-            "Click on 'Change adapter settings' in the left pane.",
-            "Right-click on your network connection and select 'Properties'.",
-            "In the 'Networking' tab, scroll down to 'Internet Protocol Version 4 (TCP/IPv4)' and click on 'Properties'.",
-            "Click on 'Advanced' and go to the 'WINS' tab.",
-            "Under 'NetBIOS setting', select 'Disable NetBIOS over TCP/IP'.",
-            "Click 'OK' to save the changes."
-        ],
-        "Screenshots":
-        [
-            "TOBEFILLED"
-        ]
-    },
-    "410": {
-        "Name": "WPAD service disabled",
-        "Type": "Security",
-        "Information": "Web Proxy Auto-Discovery (WPAD) is a protocol that allows web browsers to automatically discover proxy servers on a network. Disabling the WPAD service helps prevent potential security risks associated with automatic proxy configuration and protects your system from unauthorized proxy server discovery and configuration.",
-        "Solution":
-        [
-            "WPAD service is disabled, so there is no action needed."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "411": {
-        "Name": "WPAD service enabled",
-        "Type": "Security",
-        "Information": "Web Proxy Auto-Discovery (WPAD) is a protocol that allows web browsers to automatically discover proxy servers on a network. Disabling the WPAD service helps prevent potential security risks associated with automatic proxy configuration and protects your system from unauthorized proxy server discovery and configuration.",
-        "Solution":
-        [
-            "Open an elevated command prompt by right-clicking on the Start button and selecting 'Terminal (Admin)'.",
-            "Run the command 'netsh winhttp show proxy' to check the current proxy settings.",
-            "If WPAD is enabled, run the command 'netsh winhttp reset proxy' to disable WPAD and reset the proxy settings.",
-            "Restart your computer to apply the changes."
-        ],
-        "Screenshots":
-        [
-            "TOBEFILLED"
-        ]
-    },
-    "420": {
-        "Name": "Windows automatic Screen Lock enabled",
-        "Type": "Security",
-        "Information": "Screen lock is a security feature that requires users to enter a password, PIN, or biometric authentication to unlock their device and access the desktop. Enabling screen lock helps protect your data and privacy in case your computer is left unattended or stolen.",
-        "Solution":
-        [
-            "Windows automatic Screen Lock is enabled, so there is no action needed."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "421": {
-        "Name": "Windows automatic Screen Lock disabled",
-        "Type": "Security",
-        "Information": "Screen lock is a security feature that requires users to enter a password, PIN, or biometric authentication to unlock their device and access the desktop. Enabling screen lock helps protect your data and privacy in case your computer is left unattended or stolen.",
-        "Solution":
-        [
-            "Go to Start > Settings > Personalization > Lock screen.",
-            "Open the 'Screen saver' window.",
-            "Check the box 'On resume, display logon screen' and set the 'Wait' time to a short interval (2 minutes or less)."
-        ],
-        "Screenshots":
-        [
-            "TOBEFILLED"
-        ]
-    },
-    "997": {
-        "Name": "Extensions installed in Google Chrome",
-        "Type": "Privacy",
-        "Information": "Browser extensions enhance the functionality of your web browser by adding features, tools, and customization options. While extensions can be useful, they can also pose privacy and security risks if they have access to sensitive data or track your online activities without your consent. Regularly reviewing and managing your browser extensions helps protect your privacy and security online. Remove any extensions that you no longer use or trust to minimize potential risks.",
-        "Solution": 
-        [   		
-            "Open Google Chrome and click on the three dots in the top right corner.",
-            "Select 'Extensions' and then 'Manage Extensions'.",
-            "Here you can view and manage the extensions installed in your browser. Disable or remove any extensions that you no longer use or trust."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "998": {
-        "Name": "Applications with administrator privileges",
-        "Type": "Security",
-        "Information": "Applications with administrator permissions have elevated privileges, allowing them to make changes to system settings, install or uninstall software, modify system files, and perform other actions that can affect the security and stability of your computer. Knowing which apps have admin permissions helps you identify potential security risks and vulnerabilities, such as malicious software or unauthorized applications that may have gained elevated access.",
-        "Solution":
-        [
-            "Right-click on the taskbar and select 'Task Manager', or press Ctrl + Shift + Esc on your keyboard to open Task Manager.",
-            "In Task Manager, click on the 'Details' tab to view a list of running processes and applications.",
-            "Right-click on the column header, click 'Select columns', and make sure that 'Elevated' is checked. This column shows whether a process or application is running with admin permissions.",
-            "Scroll through the list of processes and look for entries with 'Yes' in the 'Elevated' column. These processes have admin privileges.",
-            "If you see programs which do not need to run with admin permissions, you can right-click on them and end the task."
-        ],
-        "Screenshots":
-        [
-            "applications-with-administrative-privileges/admin-privileges-1.png",
-            "applications-with-administrative-privileges/admin-privileges-2.png",
-            "applications-with-administrative-privileges/admin-privileges-3.png",
-            "applications-with-administrative-privileges/admin-privileges-4.png",
-            "applications-with-administrative-privileges/admin-privileges-4.png"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "applications-with-administrative-privileges/admin-privileges-1.png",
-            "applications-with-administrative-privileges/admin-privileges-2.png",
-            "applications-with-administrative-privileges/admin-privileges-3.png",
-            "applications-with-administrative-privileges/admin-privileges-4.png",
-            "applications-with-administrative-privileges/admin-privileges-5.png"
-        ]
-    },
-    "999": {
-        "Name": "Applications with administrator privileges",
-        "Type": "Security",
-        "Information": "Applications with administrator permissions have elevated privileges, allowing them to make changes to system settings, install or uninstall software, modify system files, and perform other actions that can affect the security and stability of your computer. Knowing which apps have admin permissions helps you identify potential security risks and vulnerabilities, such as malicious software or unauthorized applications that may have gained elevated access.",
-        "Solution":
-        [
-            "Right-click on the taskbar and select 'Task Manager', or press Ctrl + Shift + Esc on your keyboard to open Task Manager.",
-            "In Task Manager, click on the 'Details' tab to view a list of running processes and applications.",
-            "Right-click on the column header, click 'Select columns', and make sure that 'Elevated' is checked. This column shows whether a process or application is running with admin permissions.",
-            "Scroll through the list of processes and look for entries with 'Yes' in the 'Elevated' column. These processes have admin privileges.",
-            "If you see programs which do not need to run with admin permissions, you can right-click on them and end the task."
-        ],
-        "Screenshots":
-        [
-            "applications-with-administrative-privileges/admin-privileges-1.png",
-            "applications-with-administrative-privileges/admin-privileges-2.png",
-            "applications-with-administrative-privileges/admin-privileges-3.png",
-            "applications-with-administrative-privileges/admin-privileges-4.png",
-            "applications-with-administrative-privileges/admin-privileges-4.png"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "applications-with-administrative-privileges/admin-privileges-1.png",
-            "applications-with-administrative-privileges/admin-privileges-2.png",
-            "applications-with-administrative-privileges/admin-privileges-3.png",
-            "applications-with-administrative-privileges/admin-privileges-4.png",
-            "applications-with-administrative-privileges/admin-privileges-5.png"
-        ]
-    }
+  "1": {
+    "0": {
+      "Severity": 4,
+      "Name": "No devices connected via bluetooth",
+      "Solution": [
+        "No devices are connected via bluetooth, so there is no action needed."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 4,
+      "Name": "Devices connected via bluetooth",
+      "Solution": [
+        "Go to Start > Settings > Bluetooth & devices.",
+        "Here you can see which devices are connected via bluetooth, and you can remove them if necessary."
+      ],
+      "Screenshots": [
+        "devices-connected-via-bluetooth/bluetooth-devices-1.png",
+        "devices-connected-via-bluetooth/bluetooth-devices-2.png"
+      ]
+    },
+    "Type": "Security",
+    "Information": "Bluetooth technology enables wireless data transmission and reception. While this functionality is typically harmless when used as intended, it can become a security risk if exploited by malicious actors. If a malicious individual gains unauthorized access to your device through a Bluetooth connection, they can potentially steal your data, eavesdrop on your activities, or even send malware to your device. To mitigate these risks, it's crucial to only connect your device to known and trusted devices."
+  },
+  "2": {
+    "0": {
+      "Severity": 4,
+      "Name": "No external devices connected",
+      "Solution": [
+        "No external devices are connected, so there is no action needed."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 4,
+      "Name": "External devices connected",
+      "Solution": [
+        "Check if any external devices are connected to your computer, and disconnect them if not in use. Examples of external devices include USB drives, external hard drives, external microphones, external cameras, and other peripherals."
+      ],
+      "Screenshots": [
+        "TOBEFILLED"
+      ]
+    },
+    "Type": "Security",
+    "Information": "External devices such as USB drives, external hard drives, and other peripherals can introduce security risks to your computer. Malware can be spread through infected external devices, potentially compromising the security and integrity of your system. By ensuring that no external devices are connected to your computer when not in use, you reduce the risk of malware infection and unauthorized access to your system."
+  },
+  "3": {
+    "0": {
+      "Severity": 1,
+      "Name": "Guest account status unknown",
+      "Solution": [
+        "An unknown guest account status can be a security risk. To check the status and potentially solve the issue of the guest account, follow these steps.",
+        "Go to start > Other accounts.",
+        "Here you will see the other accounts, if there is an account you do not know or an account called 'guest', click on it.",
+        "Now select 'remove' and confirm the deletion of the account.",
+        "To finish, restart your computer."
+      ],
+      "Screenshots": [
+        "guest-account/guest-account-1.png",
+        "guest-account/guest-account-1.png",
+        "guest-account/guest-account-1.png",
+        "guest-account/guest-account-3.png",
+        "guest-account/guest-account-3.png"
+      ]
+    },
+    "1": {
+      "Severity": 2,
+      "Name": "Guest account enabled",
+      "Solution": [
+        "Go to start > Other accounts.",
+        "Here you will see the other accounts, if there is an account you do not know or something called 'guest' click on it.",
+        "Now select 'remove' and confirm the deletion of the account.",
+        "To finish, restart your computer."
+      ],
+      "SolutionWindows10": [
+        "Go to Start > Settings > Accounts > Family & other users.",
+        "Here you will see the other accounts, if there is an account you do not know or something called 'guest' click on it.",
+        "Now select 'remove' and confirm the deletion of the account.",
+        "To finish, restart your computer."
+      ],
+      "Screenshots": [
+        "guest-account/guest-account-1.png",
+        "guest-account/guest-account-1.png",
+        "guest-account/guest-account-3.png",
+        "guest-account/guest-account-3.png"
+      ]
+    },
+    "2": {
+      "Severity": 0,
+      "Name": "Guest account disabled",
+      "Solution": [
+        "There is no guest account on your computer, so there is no action needed."
+      ],
+      "Screenshots": []
+    },
+    "Type": "Security",
+    "Information": "The guest account is a default account designed to offer temporary and restricted access to the system for individuals without regular user accounts. If you are the sole user of the computer and do not require a guest account, it's advisable to disable it. This ensures that no unauthorized users can access data on the computer, enhancing overall security and privacy."
+  },
+  "4": {
+    "0": {
+      "Severity": 0,
+      "Name": "Advertisement ID sharing disabled",
+      "Solution": [
+        "Advertisement ID sharing is disabled, so there is no action needed."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 2,
+      "Name": "Advertisement ID sharing enabled",
+      "Solution": [
+        "Go to Start > Settings > Privacy & Security > General ",
+        "Here you can control the advertisement ID settings and turn the feature on/off."
+      ],
+      "SolutionWindows10": [
+        "Go to Start > Settings > Privacy > General.",
+        "Here you can control the advertisement ID settings and turn the feature on/off."
+      ],
+      "Screenshots": [
+        "network-sharing/nearby-sharing-1.png",
+        "network-sharing/nearby-sharing-2.png"
+      ]
+    },
+    "Type": "Privacy",
+    "Information": "The advertisement ID setting allows windows to send you personalized ads. It is important to limit the amount of entities that have your personal data, therefore it is safer to turn this setting off."
+  },
+  "5": {
+    "0": {
+      "Severity": 0,
+      "Name": "Password manager in use",
+      "Solution": [
+        "You are using a password manager, so there is no action needed."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 1,
+      "Name": "No password manager in use",
+      "Solution": [
+        "Open your browser and look for a password manager like: LastPass, Dashlane, Bitwarden or another password manager you prefer.",
+        "Follow the installation steps provided by the website of the password manager."
+      ],
+      "Screenshots": [
+        "password-manager/password-manager-1.png",
+        "password-manager/password-manager-1.png"
+      ]
+    },
+    "Type": "Security",
+    "Information": "Using a password manager offers several benefits for individuals and organizations, primarily revolving around enhancing security, convenience, and overall password management practices. Here are some key reasons why you should consider using a password manager. Stronger Passwords: Password managers can generate complex, unique passwords for each of your accounts. These passwords are typically long, random, and difficult to crack, significantly improving the security of your online accounts compared to using weak or reused passwords. Elimination of Password Reuse: One of the most common security pitfalls is reusing passwords across multiple accounts. Password managers allow you to generate and store unique passwords for each account, reducing the risk of unauthorized access if one account is compromised. Convenience: Password managers streamline the process of logging into websites and online services by automatically filling in login credentials for you. This saves time and effort, especially when managing numerous accounts across various platforms. Secure Storage: Password managers encrypt and store your passwords in a secure vault, protecting them from unauthorized access. Many password managers also offer additional security features such as two-factor authentication (2FA) and biometric authentication to further enhance protection."
+  },
+  "6": {
+    "0": {
+      "Severity": 4,
+      "Name": "Applications with location permission",
+      "Solution": [
+        "Select Start > Settings > Privacy & security.",
+        "Here you can select location to see which applications have access, and you can revoke access for certain applications."
+      ],
+      "SolutionWindows10": [
+        "Go to Start > Settings > Privacy > Location.",
+        "Here you can select location to see which applications have access, and you can revoke access for certain applications."
+      ],
+      "Screenshots": [
+        "applications-with-location-permission/location-permissions-1.png",
+        "applications-with-location-permission/location-permissions-2.png"
+      ]
+    },
+    "1": {
+      "Severity": 0,
+      "Name": "No applications with location permission",
+      "Solution": [
+        "There are no applications which have location permission, so there is no action needed."
+      ],
+      "Screenshots": []
+    },
+    "Type": "Privacy",
+    "Information": "Knowing which applications have access to your location is important for protecting your privacy. It helps you control who can track your location, prevent security risks, conserve battery life, manage data usage, customize your app experience, and ensure compliance with regulations."
+  },
+  "7": {
+    "0": {
+      "Severity": 4,
+      "Name": "Applications with microphone permission",
+      "Solution": [
+        "Select Start > Settings > Privacy & security.",
+        "Here you can select microphone to see which applications have access, and you can revoke access for certain applications."
+      ],
+      "SolutionWindows10": [
+        "Go to Start > Settings > Privacy > Microphone.",
+        "Here you can select microphone to see which applications have access, and you can revoke access for certain applications."
+      ],
+      "Screenshots": [
+        "applications-with-microphone-permission/microphone-permissions-1.png",
+        "applications-with-microphone-permission/microphone-permissions-2.png"
+      ]
+    },
+    "1": {
+      "Severity": 0,
+      "Name": "No applications with microphone permission",
+      "Solution": [
+        "There are no applications which have microphone permission, so there is no action needed."
+      ],
+      "Screenshots": []
+    },
+    "Type": "Privacy",
+    "Information": "Understanding which applications have access to your microphone on your Windows computer is important for protecting your privacy and confidentiality. It helps you control who can listen to your conversations, prevent unauthorized recording, safeguard sensitive information, and ensure compliance with regulations."
+  },
+  "8": {
+    "0": {
+      "Severity": 4,
+      "Name": "Applications with webcam permission",
+      "Solution": [
+        "Select Start > Settings > Privacy & security.",
+        "Here you can select webcam to see which applications have access, and you can revoke access for certain applications."
+      ],
+      "SolutionWindows10": [
+        "Go to Start > Settings > Privacy > Camera.",
+        "Here you can select webcam to see which applications have access, and you can revoke access for certain applications."
+      ],
+      "Screenshots": [
+        "applications-with-webcam-permission/webcam-permissions-1.png",
+        "applications-with-webcam-permission/webcam-permissions-2.png"
+      ]
+    },
+    "1": {
+      "Severity": 0,
+      "Name": "No applications with webcam permission",
+      "Solution": [
+        "There are no applications which have webcam permission, so there is no action needed."
+      ],
+      "Screenshots": []
+    },
+    "Type": "Privacy",
+    "Information": "Being aware of which applications have access to your camera helps prevent unauthorized access. Malicious software or even legitimate applications with poorly implemented security features could potentially access your camera without your knowledge or consent. By knowing which applications have access, you can identify and block any unauthorized attempts."
+  },
+  "9": {
+    "0": {
+      "Severity": 4,
+      "Name": "Applications with appointments permission",
+      "Solution": [
+        "Select Start > Settings > Privacy & security.",
+        "Here you can select appointments to see which applications have access, and you can revoke access for certain applications."
+      ],
+      "SolutionWindows10": [
+        "Go to Start > Settings > Privacy > Calendar.",
+        "Here you can select appointments to see which applications have access, and you can revoke access for certain applications."
+      ],
+      "Screenshots": [
+        "applications-with-calendar-permission/calendar-permissions-1.png",
+        "applications-with-calendar-permission/calendar-permissions-2.png"
+      ]
+    },
+    "1": {
+      "Severity": 0,
+      "Name": "No applications with appointments permission",
+      "Solution": [
+        "There are no applications which have appointments permission, so there is no action needed."
+      ],
+      "Screenshots": []
+    },
+    "Type": "Privacy",
+    "Information": "Understanding which applications have access to your calendar or appointments is crucial for protecting your privacy, and schedule. It helps you control who can view and potentially misuse your sensitive appointment information, prevent unauthorized access and manage data usage."
+  },
+  "10": {
+    "0": {
+      "Severity": 4,
+      "Name": "Applications with contacts permission",
+      "Solution": [
+        "Select Start > Settings > Privacy & security.",
+        "Here you can select contacts to see which applications have access, and you can revoke access for certain applications."
+      ],
+      "SolutionWindows10": [
+        "Go to Start > Settings > Privacy > Contacts.",
+        "Here you can select contacts to see which applications have access, and you can revoke access for certain applications."
+      ],
+      "Screenshots": [
+        "applications-with-contacts-permission/contacts-permissions-1.png",
+        "applications-with-contacts-permission/contacts-permissions-2.png"
+      ]
+    },
+    "1": {
+      "Severity": 0,
+      "Name": "No applications with contacts permission",
+      "Solution": [
+        "There are no applications which have contacts permission, so there is no action needed."
+      ],
+      "Screenshots": []
+    },
+    "Type": "Privacy",
+    "Information": "Understanding which applications have access to your contacts on your Windows computer is good for safeguarding your privacy. It allows you to control who can view and potentially misuse your contact information, prevent unauthorized access and manage data usage."
+  },
+  "11": {
+    "0": {
+      "Severity": 4,
+      "Name": "Open ports",
+      "Solution": [
+        "To reduce risk, make sure that Windows Defender is enabled. This will block certain traffic into or out of your device via open ports. To gain more insight in your open ports following the following instructions.",
+        "Open a command prompt by clicking 'Start', typing 'cmd', and pressing 'Enter'.",
+        "Now type 'netstat -ab' and you will see a list of open ports and their corresponding programs.",
+        "If you see any suspicious programs or ports, you can close them by by shutting down the corresponding program."
+      ],
+      "Screenshots": [
+        "devices-connected-via-bluetooth/bluetooth-devices-1.png",
+        "devices-connected-via-bluetooth/bluetooth-devices-1.png",
+        "devices-connected-via-bluetooth/bluetooth-devices-1.png",
+        "devices-connected-via-bluetooth/bluetooth-devices-1.png"
+      ]
+    },
+    "Type": "Security",
+    "Information": "An open port is one that permits the receipt of data packets. Certain applications require specific ports to receive data so the presence of open ports does not inherently pose risks. However, some ports may lack adequate protection, potentially allowing unauthorized communication and introducing security vulnerabilities. It is essential to keep ports open only when actively in use and close them when not needed. Given that numerous open ports can expand the attack surface of your computer, it's advisable to routinely monitor and secure your system's network ports to mitigate these risks and maintain a strong security posture."
+  },
+  "12": {
+    "0": {
+      "Severity": 3,
+      "Name": "Remote desktop enabled",
+      "Solution": [
+        "Go to Start > Settings > System > Remote Desktop.",
+        "Here you can control the remote desktop settings and turn the feature off."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 0,
+      "Name": "Remote desktop disabled",
+      "Solution": [
+        "Remote desktop has been disabled, so there is no action needed."
+      ],
+      "Screenshots": []
+    },
+    "Type": "Security",
+    "Information": "Remote Desktop is a built-in feature in the Windows operating system that allows users to remotely access and control another Windows computer over a network or the internet. It enables users to connect to a remote computer as if they were sitting in front of it, providing full access to the remote desktop, applications, files, and resources. If you do not use this feature, it is safer to turn it off."
+  },
+  "13": {
+    "0": {
+      "Severity": 2,
+      "Name": "SMB all versions disabled",
+      "Solution": [
+        "TODO"
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 3,
+      "Name": "SMB version 1 enabled",
+      "Solution": [
+        "On your keyboard, press 'Windows+R' to open the Run window.",
+        "Type 'Powershell', then select OK.",
+        "In the Powershell, type 'Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol' and hit enter.",
+        "To finish, restart your computer."
+      ],
+      "Screenshots": [
+        "smb-status/smb-1.png",
+        "smb-status/smb-1.png",
+        "smb-status/smb-2.png",
+        "smb-status/smb-2.png"
+      ]
+    },
+    "2": {
+      "Severity": 0,
+      "Name": "SMB version 2 enabled",
+      "Solution": [
+        "SMB version 2 is enabled which is a secure and widely used version, so there is no action needed."
+      ],
+      "Screenshots": []
+    },
+    "3": {
+      "Severity": 3,
+      "Name": "SMB version 1 and 2 enabled",
+      "Solution": [
+        "On your keyboard, press 'Windows+R' to open the Run window.",
+        "Type 'Powershell', then select OK.",
+        "In the Powershell, type 'Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol' and hit enter.",
+        "To finish, restart your computer."
+      ],
+      "Screenshots": [
+        "smb-status/smb-1.png",
+        "smb-status/smb-1.png",
+        "smb-status/smb-2.png",
+        "smb-status/smb-2.png"
+      ]
+    },
+    "Type": "Security",
+    "Information": "The SMB (Server Message Block) protocol is used for sharing files, printers, and other resources between devices on a network in Windows environments. Ensuring that SMB settings on your Windows computer are configured correctly is crucial. The SMBv1 has numerous known vulnerabilities and therefore should never be used. Using SMBv2/v3 instead is the safer option."
+  },
+  "14": {
+    "0": {
+      "Severity": 3,
+      "Name": "User account control turned off",
+      "Solution": [
+        "On your keyboard, press 'Windows+R' to open the Run window.",
+        "Type 'Control Panel', then select OK.",
+        "Select 'User Accounts' or 'User Accounts and Family Safety'.",
+        "Select 'Change User Account Control settings'. If you are prompted by UAC, select 'Yes' to continue.",
+        "Here you can move the slider to 'Always notify' to turn UAC on. If you are prompted by UAC, select 'Yes' to continue.",
+        "To finish, restart your computer."
+      ],
+      "SolutionWindows10": [
+        "The settings for user account control are turned on for apps, setting it to always notify is a safer option. To turn on UAC follow these steps",
+        "On your keyboard, press 'Windows+R' to open the Run window.",
+        "Type 'Control Panel', then select OK.",
+        "Select 'User Accounts'.",
+        "Select 'User Accounts' again.",
+        "Select 'Change User Account Control settings'. If you are prompted by UAC, select 'Yes' to continue.",
+        "Here you can move the slider to 'Always notify' to turn UAC on. If you are prompted by UAC, select 'Yes' to continue.",
+        "To finish, restart your computer."
+      ],
+      "Screenshots": [
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-3.png",
+        "user-account-control/user-account-control-5.png",
+        "user-account-control/user-account-control-5.png"
+      ]
+    },
+    "1": {
+      "Severity": 0,
+      "Name": "User account control on for everything",
+      "Solution": [
+        "The settings for the user account control are set to 'Always notify', so there is no action needed."
+      ],
+      "Screenshots": []
+    },
+    "2": {
+      "Severity": 0,
+      "Name": "User account control turned on for apps",
+      "Solution": [
+        "The settings for user account control are turned on for apps, setting it to always notify is a safer option. To turn on UAC follow these steps",
+        "On your keyboard, press 'Windows+R' to open the Run window.",
+        "Type 'Control Panel', then select OK.",
+        "Select 'User Accounts' or 'User Accounts and Family Safety'.",
+        "Select 'Change User Account Control settings'. If you are prompted by UAC, select 'Yes' to continue.",
+        "Here you can move the slider to 'Always notify' to turn UAC on. If you are prompted by UAC, select 'Yes' to continue.",
+        "To finish, restart your computer."
+      ],
+      "SolutionWindows10": [
+        "The settings for user account control are turned on for apps, setting it to always notify is a safer option. To turn on UAC follow these steps",
+        "On your keyboard, press 'Windows+R' to open the Run window.",
+        "Type 'Control Panel', then select OK.",
+        "Select 'User Accounts'.",
+        "Select 'User Accounts' again.",
+        "Select 'Change User Account Control settings'. If you are prompted by UAC, select 'Yes' to continue.",
+        "Here you can move the slider to 'Always notify' to turn UAC on. If you are prompted by UAC, select 'Yes' to continue.",
+        "To finish, restart your computer."
+      ],
+      "Screenshots": [
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-3.png",
+        "user-account-control/user-account-control-5.png",
+        "user-account-control/user-account-control-5.png"
+      ]
+    },
+    "3": {
+      "Severity": -1,
+      "Name": "Unknown user account control",
+      "Solution": [
+        "The status of the user account control settings are unknown, to check the status and potentially solve the issue of the user account control, follow these steps",
+        "On your keyboard, press 'Windows+R' to open the Run window.",
+        "Type 'Control Panel', then select OK.",
+        "Select 'User Accounts' or 'User Accounts and Family Safety'.",
+        "Select 'Change User Account Control settings'. If you are prompted by UAC, select 'Yes' to continue.",
+        "Here you can move the slider to 'Always notify' to turn UAC on. If you are prompted by UAC, select 'Yes' to continue.",
+        "To finish, restart your computer."
+      ],
+      "SolutionWindows10": [
+        "The settings for user account control are turned on for apps, setting it to always notify is a safer option. To turn on UAC follow these steps",
+        "On your keyboard, press 'Windows+R' to open the Run window.",
+        "Type 'Control Panel', then select OK.",
+        "Select 'User Accounts'.",
+        "Select 'User Accounts' again.",
+        "Select 'Change User Account Control settings'. If you are prompted by UAC, select 'Yes' to continue.",
+        "Here you can move the slider to 'Always notify' to turn UAC on. If you are prompted by UAC, select 'Yes' to continue.",
+        "To finish, restart your computer."
+      ],
+      "Screenshots": [
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-3.png",
+        "user-account-control/user-account-control-5.png",
+        "user-account-control/user-account-control-5.png"
+      ]
+    },
+    "Type": "Security",
+    "Information": "User Account Control (UAC) is a security feature introduced in Windows Vista and present in subsequent versions of the Windows operating system. Its primary purpose is to enhance the security of the operating system by limiting the privileges of applications and processes running with standard user rights and requiring administrator approval for tasks that require elevated permissions."
+  },
+  "15": {
+    "0": {
+      "Severity": 0,
+      "Name": "Windows Defender is enabled",
+      "Solution": [
+        "Windows Defender is configured correctly, so there is no action needed"
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 3,
+      "Name": "Windows Defender is disabled",
+      "Solution": [
+        "Open the Windows Security app.",
+        "Select Virus & threat protection.",
+        "Under Virus & threat protection settings, select Manage settings.",
+        "Flip the switch under Real-time protection to turn it on."
+      ],
+      "Screenshots": [
+        "windows-defender/windows-defender-1.png",
+        "windows-defender/windows-defender-1.png",
+        "windows-defender/windows-defender-1.png",
+        "windows-defender/windows-defender-1.png"
+      ],
+      "ScreenshotsWindows10": [
+        "windows-defender/windows-defender-1.png",
+        "windows-defender/windows-defender-2.png",
+        "windows-defender/windows-defender-3.png",
+        "windows-defender/windows-defender-4.png"
+      ]
+    },
+    "2": {
+      "Severity": -1,
+      "Name": "Windows Defender Status is unknown",
+      "Solution": [
+        "We couldn't find the status of Windows Defender on this device."
+      ],
+      "Screenshots": [],
+      "ScreenshotsWindows10": [
+        "windows-defender/windows-defender-1.png",
+        "windows-defender/windows-defender-1.png",
+        "windows-defender/windows-defender-2.png",
+        "windows-defender/windows-defender-3.png",
+        "windows-defender/windows-defender-4.png"
+      ]
+    },
+    "Type": "Security",
+    "Information": "Windows Defender continuously monitors your system for any suspicious activity, including malware, viruses, and other forms of malicious software. By having it enabled, you have an active defense against potential threats that could compromise your privacy or security. It also receives regular updates from Microsoft to stay up-to-date with the latest security threats and vulnerabilities. By keeping it enabled, you ensure that your computer is protected against newly emerging threats that could exploit known security weaknesses."
+  },
+  "16": {
+    "0": {
+      "Severity": 2,
+      "Name": "Last password change was more than 6 months ago",
+      "Solution": [
+        "Go to start > Change your password",
+        "Open the 'Password' section and click on the 'Change' button.",
+        "You can now change your password to a new unique one."
+      ],
+      "Screenshots": [
+        "last-password-change/change-password-1.png",
+        "last-password-change/change-password-2.png",
+        "last-password-change/change-password-2.png"
+      ]
+    },
+    "1": {
+      "Severity": 0,
+      "Name": "Last password change was recent",
+      "Solution": [
+        "You changed your password recently, so there is no action needed."
+      ],
+      "Screenshots": []
+    },
+    "Type": "Security",
+    "Information": "Regularly changing your password reduces the likelihood of unauthorized access to your computer or sensitive information. If someone does manage to obtain your password, changing it regularly limits the time they have to exploit it.  So it is a good habit to change your password at least twice a year."
+  },
+  "17": {
+    "0": {
+      "Severity": 3,
+      "Name": "No windows login method set up",
+      "Solution": [
+        "Go to Start > Settings > Accounts > Sign-in options.",
+        "Now you can set up one of the available login methods by following the steps described."
+      ],
+      "Screenshots": [
+        "windows-login-method/login-method-1.png",
+        "windows-login-method/login-method-2.png"
+      ]
+    },
+    "1": {
+      "Severity": 0,
+      "Name": "Windows login with a secure login method",
+      "Solution": [
+        "You are using a secure login method, no action is needed."
+      ],
+      "Screenshots": []
+    },
+    "2": {
+      "Severity": 1,
+      "Name": "Windows login with a less secure login method",
+      "Solution": [
+        "Go to Start > Settings > Accounts > Sign-in options.",
+        "Now you can set up a secure login method by using either the password or the fingerprint as login method."
+      ],
+      "Screenshots": [
+        "windows-login-method/login-method-1.png",
+        "windows-login-method/login-method-2.png"
+      ]
+    },
+    "3": {
+      "Severity": 3,
+      "Name": "Windows login using the least secure login method",
+      "Solution": [
+        "Go to Start > Settings > Accounts > Sign-in options.",
+        "Now you can set up a secure login method by using either the password or the fingerprint as login method."
+      ],
+      "Screenshots": [
+        "windows-login-method/login-method-1.png",
+        "windows-login-method/login-method-2.png"
+      ]
+    },
+    "Type": "Security",
+    "Information": "Using a secure windows login method is important. Windows supports various login methods like a password, PIN, security key or fingerprint. Using one of these login methods is important to keep your data safe. Without one of these login methods anyone is able to unlock your device and access your data. You are not using a login method / a less secure login method / combination of login methods, it is recommended to switch to a more secure login method like password or fingerprint."
+  },
+  "18": {
+    "0": {
+      "Severity": 0,
+      "Name": "Windows version is up to date",
+      "Solution": [
+        "Your windows version is up-to-date, so there is no action needed."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 2,
+      "Name": "Windows version slightly outdated",
+      "Solution": [
+        "Go to Start > Settings > Windows Update.",
+        "Here you can check for updates and install updates."
+      ],
+      "Screenshots": [
+        "outdated-windows-version/windows-update-1.png",
+        "outdated-windows-version/windows-update-2.png"
+      ]
+    },
+    "2": {
+      "Severity": 3,
+      "Name": "Using an unsupported windows version. Please update to windows 10 or 11.",
+      "Solution": [
+        "Go to Start > Settings > Windows Update.",
+        "Here you can check for updates and install updates."
+      ],
+      "Screenshots": [
+        "outdated-windows-version/windows-update-1.png",
+        "outdated-windows-version/windows-update-2.png"
+      ]
+    },
+    "Type": "Security",
+    "Information": "Outdated Windows versions may contain unpatched security vulnerabilities that could be exploited by attackers to compromise the system. Hackers actively search for and exploit vulnerabilities in outdated operating systems, potentially leading to unauthorized access, data breaches, and malware infections."
+  },
+  "19": {
+    "0": {
+      "Severity": 1,
+      "Name": "Secure boot is disabled",
+      "Solution": [
+        "Restart your computer and access the BIOS/UEFI settings. This is usually done by pressing a specific key during the boot process. Common keys to access BIOS/UEFI settings include F2, Del, Esc, or F10. The specific key varies depending on your computer's manufacturer.",
+        "Once you are in the BIOS/UEFI settings, navigate to the section related to Secure Boot. This section may be named differently depending on your system manufacturer and BIOS/UEFI version.",
+        "In the Secure Boot section, you should find an option to enable Secure Boot. Select this option and set it to 'Enabled.' Some systems may require you to set a Secure Boot Mode or choose the Secure Boot Key Management option. Follow the on-screen instructions to enable Secure Boot.",
+        "After enabling Secure Boot, save the changes to the BIOS/UEFI settings and exit. Usually, you can do this by selecting the 'Save & Exit' or 'Exit' option from the BIOS/UEFI menu. Confirm any prompts to save the changes and restart your computer."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 0,
+      "Name": "Secure boot is enabled",
+      "Solution": [
+        "Secure boot is enabled, so there is no action needed."
+      ],
+      "Screenshots": []
+    },
+    "2": {
+      "Severity": -1,
+      "Name": "Secure boot status is unknown",
+      "Solution": [
+        "We couldn't find the status of Secure boot on this device."
+      ],
+      "Screenshots": []
+    },
+    "Type": "Security",
+    "Information": "Secure Boot ensures that only trusted software components, signed with recognized digital signatures, are loaded during the boot process. This prevents malware and other unauthorized software from tampering with the boot process and gaining control of the system at an early stage."
+  },
+  "20": {
+    "0": {
+      "Severity": 0,
+      "Name": "No applications which start at boot",
+      "Solution": [
+        "There are no applications which start at boot, so there is no action needed."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 4,
+      "Name": "Applications which start at boot",
+      "Solution": [
+        "Go to Start > Settings > Apps > Startup.",
+        "Here you can choose which applications will automatically start during boot."
+      ],
+      "Screenshots": [
+        "applications-which-start-at-boot/boot-apps-1.png",
+        "applications-which-start-at-boot/boot-apps-2.png"
+      ]
+    },
+    "Type": "Security",
+    "Information": "When you boot up your computer, several applications automatically launch. Some of these are essential processes for the system to function properly, while others are convenient to have at startup. However, there might also be applications that start during boot without your knowledge. It's wise to disable these to prevent any unauthorized actions and to improve the speed of your computer's startup process."
+  },
+  "21": {
+    "0": {
+      "Severity": 0,
+      "Name": "Google Chrome with an adblocker installed",
+      "Solution": [
+        "You are using an adblocker, so no action is needed."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 2,
+      "Name": "Google Chrome with no adblocker installed",
+      "Solution": [
+        "Open Google Chrome and navigate to the Chrome Store.",
+        "Search for an adblocker in the search bar (for example: AdBlock Plus or uBlock Origin",
+        "Click on the 'Add to Chrome' button and restart the browser."
+      ],
+      "Screenshots": [
+        "chrome-adblocker/chrome-adblocker-1.png",
+        "chrome-adblocker/chrome-adblocker-2.png",
+        "chrome-adblocker/chrome-adblocker-3.png"
+      ]
+    },
+    "Type": "Privacy",
+    "Information": "Adblockers shield users from online advertisements. With their filters and algorithms, they provide a sanctuary of uninterrupted browsing, sparing users from the visual clutter and potential security risks posed by ads."
+  },
+  "22": {
+    "0": {
+      "Severity": 0,
+      "Name": "Microsoft Edge with an adblocker installed",
+      "Solution": [
+        "You are using an adblocker, so no action is needed."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 2,
+      "Name": "Microsoft Edge with no adblocker installed",
+      "Solution": [
+        "Open Microsoft Edge and navigate to Microsoft Edge Extensions",
+        "Search for an adblocker in the search bar (for example: AdBlock Plus or uBlock Origin)",
+        "Click on the 'Download' button and restart the browser."
+      ],
+      "Screenshots": [
+        "edge-adblocker/edge-adblocker-1.png",
+        "edge-adblocker/edge-adblocker-2.png",
+        "edge-adblocker/edge-adblocker-3.png"
+      ]
+    },
+    "Type": "Privacy",
+    "Information": "Adblockers shield users from online advertisements. With their filters and algorithms, they provide a sanctuary of uninterrupted browsing, sparing users from the visual clutter and potential security risks posed by ads."
+  },
+  "23": {
+    "0": {
+      "Severity": 2,
+      "Name": "Potential phishing domains found on Google Chrome",
+      "Solution": [
+        "Be careful browsing the internet as trusted websites could be spoofed easily. Furthermore there are a lot of websites with malicious intentions. In case of doubt of actively browsing on a potential phishing website, it is advised to change your password."
+      ],
+      "Screenshots": [
+        "TOBEFILLED"
+      ]
+    },
+    "1": {
+      "Severity": 0,
+      "Name": "No potential phishing domains found on Google Chrome",
+      "Solution": [
+        "You have not visited any phishing domains recently, so no action is needed."
+      ],
+      "Screenshots": []
+    },
+    "Type": "Privacy",
+    "Information": "Phishing domains are fake websites designed to trick people into sharing sensitive information like passwords or credit card details. They look real, mimicking trusted brands or organizations. These scams exploit trust and curiosity to steal personal data."
+  },
+  "24": {
+    "0": {
+      "Severity": 2,
+      "Name": "Potential phishing domains found on Microsoft Edge",
+      "Solution": [
+        "Be careful browsing the internet as trusted websites could be spoofed easily. Furthermore there are a lot of websites with malicious intentions. In case of doubt of actively browsing on a potential phishing website, it is advised to change your password."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 0,
+      "Name": "No potential phishing domains found on Microsoft Edge",
+      "Solution": [
+        "You have not visited any phishing domains recently, so no action is needed."
+      ],
+      "Screenshots": []
+    },
+    "Type": "Privacy",
+    "Information": "Phishing domains are fake websites designed to trick people into sharing sensitive information like passwords or credit card details. They look real, mimicking trusted brands or organizations. These scams exploit trust and curiosity to steal personal data."
+  },
+  "25": {
+    "0": {
+      "Severity": 4,
+      "Name": "Standard search engine used in Google Chrome",
+      "Solution": [
+        "Consider using a search engine with a focus on the privacy of the users (for example DuckDuckGo)."
+      ],
+      "Screenshots": [
+        "TOBEFILLED"
+      ]
+    },
+    "Type": "Privacy",
+    "Information": "A standard search engine helps users find information on the internet by entering keywords or phrases. Examples include Google, Bing, and Yahoo. They often face criticism for their approach to privacy."
+  },
+  "26": {
+    "0": {
+      "Severity": 4,
+      "Name": "Standard search engine used in Microsoft Edge",
+      "Solution": [
+        "Consider using a search engine with a focus on the privacy of the users (for example DuckDuckGo)."
+      ],
+      "Screenshots": [
+        "TOBEFILLED"
+      ]
+    },
+    "Type": "Privacy",
+    "Information": "A standard search engine helps users find information on the internet by entering keywords or phrases. Examples include Google, Bing, and Yahoo. They often face criticism for their approach to privacy."
+  },
+  "27": {
+    "0": {
+      "Severity": 0,
+      "Name": "No tracking cookies found in Mozilla Firefox",
+      "Solution": [
+        "There were no tracking cookies found in Mozilla Firefox, so no action is needed."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 2,
+      "Name": "Possible tracking cookies found in Mozilla Firefox",
+      "Solution": [
+        "Open Mozilla Firefox and click on the menu button (three horizontal lines) in the top right corner.",
+        "Select 'Settings' and go to the 'Privacy & Security' tab.",
+        "The 'Enhanced Tracking Protection' option should be set to 'Standard' or 'Custom'. Custom gives you more control over what you allow or block. Under Cookies and Site Data, you can delete your existing cookies and manage exceptions. It is recommended to clear your cookies often to protect your privacy."
+      ],
+      "Screenshots": [
+        "firefox-cookies/cookies-firefox-1.png",
+        "firefox-cookies/cookies-firefox-2.png",
+        "firefox-cookies/cookies-firefox-3.png",
+        "firefox-cookies/cookies-firefox-4.png"
+      ]
+    },
+    "Type": "Privacy",
+    "Information": "Cookies are small text files stored on your computer by websites you visit. They are used to remember your preferences, login information, and other data to enhance your browsing experience. However, cookies can also be used to track your online activities and gather personal information without your consent, raising privacy concerns. Managing and clearing cookies regularly helps protect your privacy and control the data websites collect about you."
+  },
+  "28": {
+    "0": {
+      "Severity": 4,
+      "Name": "Extensions installed in Mozilla Firefox",
+      "Solution": [
+        "Open Mozilla Firefox and click on the menu button (three horizontal lines) in the top right corner.",
+        "Select 'Add-ons' and go to the 'Extensions' tab.",
+        "Here you can view and manage the extensions installed in your browser. Disable or remove any extensions that you no longer use or trust."
+      ],
+      "Screenshots": [
+        "firefox-extensions/extensions-firefox-1.png",
+        "firefox-extensions/extensions-firefox-2.png",
+        "firefox-extensions/extensions-firefox-3.png"
+      ]
+    },
+    "Type": "Privacy",
+    "Information": "Browser extensions enhance the functionality of your web browser by adding features, tools, and customization options. While extensions can be useful, they can also pose privacy and security risks if they have access to sensitive data or track your online activities without your consent. Regularly reviewing and managing your browser extensions helps protect your privacy and security online. Remove any extensions that you no longer use or trust to minimize potential risks."
+  },
+  "29": {
+    "0": {
+      "Severity": 0,
+      "Name": "Mozilla Firefox with an adblocker installed",
+      "Solution": [
+        "You are using an adblocker, so no action is needed."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 2,
+      "Name": "Mozilla Firefox with no adblocker installed",
+      "Solution": [
+        "Open Mozilla Firefox and click on the menu button (three horizontal lines) in the top right corner, and select 'Add-ons and themes'.",
+        "Go to the 'Extensions' tab.",
+        "Scroll down and click on the 'Find more add-ons' button.",
+        "Search for an adblocker in the search bar (for example: AdBlock Plus or uBlock Origin)",
+        "Click on the 'Add to Firefox' button and restart the browser."
+      ],
+      "Screenshots": [
+        "firefox-adblocker/firefox-adblocker-1.png",
+        "firefox-adblocker/firefox-adblocker-2.png",
+        "firefox-adblocker/firefox-adblocker-3.png",
+        "firefox-adblocker/firefox-adblocker-4.png",
+        "firefox-adblocker/firefox-adblocker-5.png"
+      ]
+    },
+    "Type": "Privacy",
+    "Information": "Adblockers shield users from online advertisements. With their filters and algorithms, they provide a sanctuary of uninterrupted browsing, sparing users from the visual clutter and potential security risks posed by ads."
+  },
+  "30": {
+    "0": {
+      "Severity": 4,
+      "Name": "Standard search engine in Mozilla Firefox",
+      "Solution": [
+        "Consider using a browser with a focus on the privacy of the users (for example DuckDuckGo)"
+      ],
+      "Screenshots": [
+        "TOBEFILLED"
+      ]
+    },
+    "Type": "Privacy",
+    "Information": "A standard search engine helps users find information on the internet by entering keywords or phrases. Examples include Google, Bing, and Yahoo. They often face criticism for their approach to privacy."
+  },
+  "31": {
+    "0": {
+      "Severity": 0,
+      "Name": "No potential phishing domains found on Mozilla Firefox",
+      "Solution": [
+        "You have not visited any phishing domains recently, so no action is needed."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 2,
+      "Name": "Potential phishing domains found on Mozilla Firefox",
+      "Solution": [
+        "Be careful browsing the internet as trusted websites could be spoofed easily. Furthermore there are a lot of websites with malicious intentions. In case of doubt of actively browsing on a potential phishing website, it is advised to change your password."
+      ],
+      "Screenshots": [
+        "TOBEFILLED"
+      ]
+    },
+    "Type": "Privacy",
+    "Information": "Phishing domains are fake websites designed to trick people into sharing sensitive information like passwords or credit card details. They look real, mimicking trusted brands or organizations. These scams exploit trust and curiosity to steal personal data."
+  },
+  "32": {
+    "0": {
+      "Severity": 1,
+      "Name": "Incorrect CIS Audit list registry settings",
+      "Solution": [
+        "Download the CIS Benchmark for your operating system from the official CIS website. Follow the instructions in the benchmark document to review and update the registry settings on your system to align with the CIS security standards. Regularly check for updates to the CIS Benchmark and apply any changes or recommendations to maintain a secure configuration."
+      ],
+      "Screenshots": [
+        "TOBEFILLED"
+      ]
+    },
+    "1": {
+      "Severity": 0,
+      "Name": "Correct CIS Audit list registry settings",
+      "Solution": [
+        "All settings adhere to the CIS Audit list guidelines, no action is needed."
+      ],
+      "Screenshots": []
+    },
+    "Type": "Security",
+    "Information": "The Center for Internet Security (CIS) provides a set of guidelines and best practices for securing computer systems. The CIS Audit list registry settings help ensure that your system is configured according to these security standards. Incorrect or outdated registry settings may leave your system vulnerable to security threats and compromise your privacy."
+  },
+  "33": {
+    "0": {
+      "Severity": 0,
+      "Name": "Automatic log-in disabled",
+      "Solution": [
+        "Automatic log-in is disabled, so there is no action needed."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 3,
+      "Name": "Automatic log-in enabled",
+      "Solution": [
+        "Go to Start > Settings > Accounts > Sign-in options.",
+        "Under 'Require sign-in', select 'When PC wakes up from sleep'."
+      ],
+      "Screenshots": [
+        "TOBEFILLED"
+      ]
+    },
+    "Type": "Security",
+    "Information": "Automatic log-in allows users to access their accounts without entering a password each time they start their computer or open a specific application. While convenient, automatic log-in poses security risks, as anyone with physical access to the device can access the account without authentication. Disabling automatic log-in enhances the security of your accounts and prevents unauthorized access."
+  },
+  "34": {
+    "0": {
+      "Severity": 0,
+      "Name": "Remote RPC disabled",
+      "Solution": [
+        "Remote RPC is disabled, so there is no action needed."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 3,
+      "Name": "Remote RPC enabled",
+      "Solution": [
+        "The Remote RPC setting can not be changed in a conventional way. It requires editing of the registry directly.",
+        "In Windows Search, type in Registry Editor and open the program.",
+        "Navigate to \"Computer\\HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server.",
+        "Double click on the \"AllowRemoteRPC\" key and set its value to 0."
+      ],
+      "Screenshots": [
+        "TOBEFILLED"
+      ]
+    },
+    "Type": "Security",
+    "Information": "Remote Procedure Call (RPC) is a protocol that allows programs and processes to communicate with each other on a network. Disabling Remote RPC helps prevent unauthorized access to your computer and protects it from potential security threats and vulnerabilities."
+  },
+  "35": {
+    "0": {
+      "Severity": 0,
+      "Name": "No possible tracking cookies found in Google Chrome browser",
+      "Solution": [
+        "No possible tracking cookies found in Google Chrome, so there is no action needed."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 2,
+      "Name": "Possible tracking cookies found in Google Chrome browser",
+      "Solution": [
+        "Open Google Chrome and click on the three dots in the top right corner.",
+        "Select 'Settings' and go to the 'Privacy and security' section.",
+        "Under 'Third-party cookies', click on 'See all site data and permissions'.",
+        "Here you can view and manage the cookies stored by websites. You can delete individual cookies or clear all site data to protect your privacy. "
+      ],
+      "Screenshots": [
+        "TOBEFILLED"
+      ]
+    },
+    "Type": "Privacy",
+    "Information": "Cookies are small text files stored on your computer by websites you visit. They are used to remember your preferences, login information, and other data to enhance your browsing experience. However, cookies can also be used to track your online activities and gather personal information without your consent, raising privacy concerns. Managing and clearing cookies regularly helps protect your privacy and control the data websites collect about you."
+  },
+  "36": {
+    "0": {
+      "Severity": 0,
+      "Name": "No possible tracking cookies found in Microsoft Edge browser",
+      "Solution": [
+        "No possible tracking cookies found in Microsoft Edge, so there is no action needed."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 2,
+      "Name": "Possible tracking cookies found in Microsoft Edge browser",
+      "Solution": [
+        "Open Microsoft Edge and click on the three dots in the top right corner.",
+        "Select 'Settings' and go to the 'Cookies and site permissions' section.",
+        "Under 'Cookies and data stored', click on 'Manage and delete cookies and site data'.",
+        "Here you can manage general cookie settings. You can delete individual cookies or clear all site data by clicking on 'See all cookies and site data'. "
+      ],
+      "Screenshots": [
+        "TOBEFILLED"
+      ]
+    },
+    "Type": "Privacy",
+    "Information": "Cookies are small text files stored on your computer by websites you visit. They are used to remember your preferences, login information, and other data to enhance your browsing experience. However, cookies can also be used to track your online activities and gather personal information without your consent, raising privacy concerns. Managing and clearing cookies regularly helps protect your privacy and control the data websites collect about you."
+  },
+  "37": {
+    "0": {
+      "Severity": 0,
+      "Name": "Windows firewall is enabled for all profiles",
+      "Solution": [
+        "Windows Firewall is enabled for all profiles, so there is no action needed."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 2,
+      "Name": "Windows firewall is not enabled for all profiles",
+      "Solution": [
+        "Go to Start > Settings > Update & Security > Windows Security > Firewall & network protection.",
+        "Under 'Firewall & network protection', make sure that the Windows Firewall is turned on for all network profiles (public, private, and domain). If it is disabled, click on 'Turn on' to enable the firewall for the selected profile."
+      ],
+      "Screenshots": [
+        "TOBEFILLED"
+      ]
+    },
+    "Type": "Security",
+    "Information": "The Windows Firewall is a built-in security feature that helps protect your computer from unauthorized access and malicious software by monitoring and controlling incoming and outgoing network traffic. Enabling the Windows Firewall for all network profiles (public, private, and domain) helps enhance the security of your system and prevent potential security threats."
+  },
+  "38": {
+    "0": {
+      "Severity": 0,
+      "Name": "Minimum password length is set to at least 15 characters",
+      "Solution": [
+        "The minimum password length is set to at least 15 characters, so there is no action needed."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 3,
+      "Name": "Minimum password length is not set to at least 15 characters",
+      "Solution": [
+        "Open an elevated command prompt by right-clicking on the Start button and selecting 'Terminal (Admin)'.",
+        "Run the command 'net accounts' to view the current password policy settings, including the minimum password length.",
+        "Run the command 'net accounts /minpwlen:15' to set the minimum password length to 15 characters.",
+        "Restart your computer to apply the changes."
+      ],
+      "Screenshots": [
+        "TOBEFILLED"
+      ]
+    },
+    "Type": "Security",
+    "Information": "Setting a minimum password length of at least 15 characters helps enhance the security of user accounts by increasing the complexity and strength of passwords. Longer passwords are more resistant to brute-force attacks and provide better protection against unauthorized access and data breaches."
+  },
+  "39": {
+    "0": {
+      "Severity": 0,
+      "Name": "Credential Guard is enabled",
+      "Solution": [
+        "Credential Guard is enabled, so there is no action needed."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 2,
+      "Name": "Credential Guard is disabled",
+      "Solution": [
+        "The setting of Credential Guard is handled in your local group policy. Ask your network administrator to enable Credential Guard."
+      ],
+      "Screenshots": [
+        "TOBEFILLED"
+      ]
+    },
+    "Type": "Security",
+    "Information": "Credential Guard is a security feature in Windows that helps protect user credentials and sensitive information from unauthorized access and theft. It uses virtualization-based security to isolate and protect credential information, making it more difficult for attackers to steal passwords and other sensitive data."
+  },
+  "40": {
+    "0": {
+      "Severity": 0,
+      "Name": "NetBIOS over TCP/IP is disabled",
+      "Solution": [
+        "NetBIOS over TCP/IP is disabled, so there is no action needed."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 2,
+      "Name": "NetBIOS over TCP/IP is enabled",
+      "Solution": [
+        "Open the Control Panel and go to 'Network and Internet' -> 'Network and Sharing Center'.",
+        "Click on 'Change adapter settings' in the left pane.",
+        "Right-click on your network connection and select 'Properties'.",
+        "In the 'Networking' tab, scroll down to 'Internet Protocol Version 4 (TCP/IPv4)' and click on 'Properties'.",
+        "Click on 'Advanced' and go to the 'WINS' tab.",
+        "Under 'NetBIOS setting', select 'Disable NetBIOS over TCP/IP'.",
+        "Click 'OK' to save the changes."
+      ],
+      "Screenshots": [
+        "TOBEFILLED"
+      ]
+    },
+    "Type": "Security",
+    "Information": "NetBIOS over TCP/IP is a legacy networking protocol that allows computers to communicate on a local network. Disabling NetBIOS over TCP/IP helps reduce the attack surface of your system and prevent potential security vulnerabilities associated with this protocol."
+  },
+  "41": {
+    "0": {
+      "Severity": 0,
+      "Name": "WPAD service is disabled",
+      "Solution": [
+        "WPAD service is disabled, so there is no action needed."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 2,
+      "Name": "WPAD service is enabled",
+      "Solution": [
+        "Open an elevated command prompt by right-clicking on the Start button and selecting 'Terminal (Admin)'.",
+        "Run the command 'netsh winhttp show proxy' to check the current proxy settings.",
+        "If WPAD is enabled, run the command 'netsh winhttp reset proxy' to disable WPAD and reset the proxy settings.",
+        "Restart your computer to apply the changes."
+      ],
+      "Screenshots": [
+        "TOBEFILLED"
+      ]
+    },
+    "Type": "Security",
+    "Information": "Web Proxy Auto-Discovery (WPAD) is a protocol that allows web browsers to automatically discover proxy servers on a network. Disabling the WPAD service helps prevent potential security risks associated with automatic proxy configuration and protects your system from unauthorized proxy server discovery and configuration."
+  },
+  "42": {
+    "0": {
+      "Severity": 0,
+      "Name": "Windows automatic Screen Lock is enabled",
+      "Solution": [
+        "Windows automatic Screen Lock is enabled, so there is no action needed."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 3,
+      "Name": "Windows automatic Screen Lock disabled",
+      "Solution": [
+        "Go to Start > Settings > Personalisation > Lock screen.",
+        "Open the 'Screen saver' window.",
+        "Check the box 'On resume, display logon screen' and set the 'Wait' time to a short interval (2 minutes or less)."
+      ],
+      "Screenshots": [
+        "TOBEFILLED"
+      ]
+    },
+    "Type": "Security",
+    "Information": "Screen lock is a security feature that requires users to enter a password, PIN, or biometric authentication to unlock their device and access the desktop. Enabling screen lock helps protect your data and privacy in case your computer is left unattended or stolen."
+  }
 }
