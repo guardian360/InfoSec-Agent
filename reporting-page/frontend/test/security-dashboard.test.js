@@ -206,14 +206,14 @@ describe('Security dashboard', function() {
       'Dashboard.Critical',
       'Dashboard.MediumConcern',
       'Dashboard.LowConcern',
-      'Dashboard.InfoConcern',
+      'Dashboard.NoConcern',
       'Dashboard.NoConcern',
     ];
     const mockRiskCounters = {
       highRiskColor: 'rgb(0, 255, 255)',
       mediumRiskColor: 'rgb(0, 0, 255)',
       lowRiskColor: 'rgb(255, 0, 0)',
-      infoColor: 'rgb(255, 255, 0)',
+      infoColor: 'rgb(255, 255, 255)',
       noRiskColor: 'rgb(255, 255, 255)',
 
       lastHighRisk: 10,
@@ -239,7 +239,6 @@ describe('Security dashboard', function() {
       if (index == 1) mockRiskCounters.lastHighRisk = 0;
       if (index == 2) mockRiskCounters.lastMediumRisk = 0;
       if (index == 3) mockRiskCounters.lastLowRisk = 0;
-      if (index == 4) mockRiskCounters.lastInfoRisk = 0;
       await dashboard.adjustWithRiskCounters(mockRiskCounters, dom.window.document, false);
 
       // Assert
