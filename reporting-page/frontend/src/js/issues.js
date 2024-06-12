@@ -197,35 +197,19 @@ export async function fillTable(tbody, issues, isIssue, isListenersAdded=true) {
       currentIssue = dataEnGB[issue.jsonkey];
     }
 
-    if (isIssue) {
-      if (currentIssue) {
-        if (issue.severity != '0') {
-          const riskLevel = toRiskLevel(issue.severity);
-          const row = document.createElement('tr');
+    if (currentIssue) {
+      const riskLevel = toRiskLevel(issue.severity);
+      const row = document.createElement('tr');
 
-          row.innerHTML = `
-              <td class="issue-link" data-severity="${issue.severity}">${currentIssue.Name}</td>
-              <td>${currentIssue.Type}</td>
-              ${riskLevel}
-            `;
+      row.innerHTML = `
+        <td class="issue-link" data-severity="${issue.severity}">${currentIssue.Name}</td>
+        <td>${currentIssue.Type}</td>
+        ${riskLevel}
+      `;
 
-          row.cells[0].id = issue.jsonkey;
-          row.setAttribute('data-severity', issue.severity);
-          tbody.appendChild(row);
-        }
-      }
-    } else {
-      if (currentIssue) {
-        if (issue.severity == '0') {
-          const row = document.createElement('tr');
-          row.innerHTML = `
-              <td class="issue-link" data-severity="${issue.severity}">${currentIssue.Name}</td>
-              <td>${currentIssue.Type}</td>
-            `;
-          row.cells[0].id = issue.jsonkey;
-          tbody.appendChild(row);
-        }
-      }
+      row.cells[0].id = issue.jsonkey;
+      row.setAttribute('data-severity', issue.severity);
+      tbody.appendChild(row);
     }
   });
 
@@ -249,6 +233,7 @@ export async function fillTable(tbody, issues, isIssue, isListenersAdded=true) {
   }
   // Re-apply localization to the dynamically created table rows
   const tableHeaders = [
+    'lang-acceptable',
     'lang-low',
     'lang-medium',
     'lang-high',
@@ -256,6 +241,7 @@ export async function fillTable(tbody, issues, isIssue, isListenersAdded=true) {
   ];
 
   const localizationIds = [
+    'Issues.Acceptable',
     'Issues.Low',
     'Issues.Medium',
     'Issues.High',
@@ -301,11 +287,11 @@ export function sortTable(tbody, column) {
       // Change Info to lower severity
       let severityA = parseInt(a.getAttribute('data-severity'));
       if (severityA === 4) {
-        severityA = 0;
+        severityA = -1;
       }
       let severityB = parseInt(b.getAttribute('data-severity'));
       if (severityB === 4) {
-        severityB = 0;
+        severityB = -1;
       }
       if (direction === 'ascending') {
         return severityB - severityA;
