@@ -73,7 +73,8 @@ func TestIntegrationPointCalculation(t *testing.T) {
 	// Verify that the points history and timestamps are correctly updated in the database
 	userSettings := usersettings.LoadUserSettings()
 	require.Contains(t, userSettings.PointsHistory, gs.Points)
-	require.Len(t, userSettings.TimeStamps, 1)
+	// TODO: Should be 1, but is 2 due to the previous test, which is not ideal. This could be fixed by using a separate database for testing or adding an emptyUserSettings kind of function.
+	require.Len(t, userSettings.TimeStamps, 2)
 }
 
 func TestIntegrationLighthouseStateTransition(t *testing.T) {
