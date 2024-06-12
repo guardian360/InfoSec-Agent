@@ -153,6 +153,15 @@ func checkGeneralSetting(key mocking.RegistryKey, permission string) (bool, erro
 	return true, nil
 }
 
+// checkApplications is a helper function that checks if the applications have been granted the specified permission.
+//
+// Parameters:
+//   - applicationNames []string: A slice of strings representing the names of applications.
+//   - key (mocking.RegistryKey): The registry key to use for the check.
+//
+// Returns:
+//   - []string: A slice of strings representing the names of applications that have been granted the specified permission.
+//   - error: An error object that describes the error, if any occurred during the operation.
 func checkApplications(applicationNames []string, key mocking.RegistryKey) ([]string, error) {
 	var val string
 	var nonPackagedApplicationNames []string
