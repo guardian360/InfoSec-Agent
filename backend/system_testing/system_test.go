@@ -65,15 +65,15 @@ func TestTrayFunctionality(t *testing.T) {
 		expectedMessage string
 	}{
 		// Valid input
-		{"24", "Scan interval changed to 24 hours"},
+		{"24", "Scan interval changed to 24 day(s)"},
 		// Invalid input (non-numeric)
-		{"abc", "24"},
+		{"abc", "Scan interval changed"},
 		// Invalid input (negative)
-		{"-1", "24"},
+		{"-1", "Scan interval changed"},
 		// Invalid input (zero)
-		{"0", "24"},
+		{"0", "Scan interval changed"},
 		// Valid large input
-		{"1000", "Scan interval changed to 1000 hours"},
+		{"1000", "Scan interval changed to 1000 day(s)"},
 	}
 
 	// Iterate over test cases

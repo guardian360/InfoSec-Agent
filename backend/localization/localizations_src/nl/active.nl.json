@@ -17,11 +17,11 @@
     "Cancel": "Annuleren",
     "ScanInterval": {
       "Title": "Scaninterval wijzigen",
-      "Content": "Voer scaninterval in (in uren):",
+      "Content": "Voer scaninterval in (in dagen):",
       "ChangedTitle": "Scaninterval gewijzigd",
-      "ChangedContent": "Scaninterval gewijzigd naar %d uur.",
+      "ChangedContent": "Scaninterval gewijzigd naar %d dag(en).",
       "InvalidChangeTitle": "Ongeldige invoer van scaninterval",
-      "InvalidChangeContent": "Ongeldige invoer. Vorig interval van %d uur wordt gebruikt."
+      "InvalidChangeContent": "Ongeldige invoer. Vorig interval van %d dag(en) wordt gebruikt."
     },
     "Scan": {
       "Title": "Beveiligings-/privacy-scan",

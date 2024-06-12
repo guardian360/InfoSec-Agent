@@ -16,12 +16,12 @@
     "OK": "OK",
     "Cancel": "Abbrechen",
     "ScanInterval": {
-      "Title": "Scanintervall ändern",
-      "Content": "Scanintervall eingeben (in Stunden):",
-      "ChangedTitle": "Scanintervall geändert",
-      "ChangedContent": "Scanintervall auf %d Stunden geändert.",
-      "InvalidChangeTitle": "Ungültige Eingabe des Scanintervalls",
-      "InvalidChangeContent": "Ungültige Eingabe. Vorheriges Intervall von %d Stunden wird verwendet."
+      "Title": "Scan-Intervall ändern",
+      "Content": "Geben Sie das Scan-Intervall (in Tagen) ein:",
+      "ChangedTitle": "Scan-Intervall geändert",
+      "ChangedContent": "Scan-Intervall auf %d Tag(e) geändert.",
+      "InvalidChangeTitle": "Ungültige Scan-Intervall-Eingabe",
+      "InvalidChangeContent": "Ungültige Eingabe. Vorheriges Intervall von %d Tag(en) wird verwendet."
     },
     "Scan": {
       "Title": "Sicherheits-/Datenschutzscan",
