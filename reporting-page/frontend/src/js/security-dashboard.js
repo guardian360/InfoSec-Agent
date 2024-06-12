@@ -299,8 +299,7 @@ export function adjustWithRiskCounters(rc, doc, retrieveStyling) {
       securityStatus.innerHTML = 'Low concern';
     }
     securityStatus.style.backgroundColor = rc.lowRiskColor;
-  } 
-  else {
+  } else {
     try {
       getLocalization('Dashboard.NoConcern', 'status-descriptor');
     } catch (error) {
@@ -335,11 +334,11 @@ export function addGraphFunctions(g) {
   document.getElementById('select-no-risk').addEventListener('change', () => g.toggleRisks('no'));
 }
 
-  // Close dropdown when clicking outside
-  document.addEventListener('click', function(event) {
-    const dropdown = document.getElementById('myDropdown');
-    const dropbtn = document.getElementById('dropbtn');
-    if (dropdown && dropbtn && !dropbtn.contains(event.target)) {
-      dropdown.classList.remove('show');
-    }
-  });
+// Close dropdown when clicking outside
+document.addEventListener('click', function(event) {
+  const dropdown = document.getElementById('myDropdown');
+  const dropbtn = document.getElementById('dropbtn');
+  if (dropdown && dropbtn && !dropbtn.contains(event.target)) {
+    dropdown.classList.remove('show');
+  }
+});
