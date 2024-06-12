@@ -54,20 +54,20 @@ func (p ParseResult) String() string {
 func ParseScanResults(metaData Metadata, checks []checks.Check) ParseResult {
 	var result []IssueData
 	for _, check := range checks {
-		result = append(result, parseCheckResult(check))
+		result = append(result, ParseCheckResult(check))
 	}
 	parseResult := ParseResult{Metadata: metaData, Results: result}
 	return parseResult
 }
 
-// parseCheckResult parses the result of a single security or privacy check into an IssueData struct.
+// ParseCheckResult parses the result of a single security or privacy check into an IssueData struct.
 //
 // Parameters:
 // - check (checks.Check): A Check object representing the result of a security or privacy check.
 //
 // Returns:
 // - IssueData: An IssueData struct that encapsulates the data for the checked issue.
-func parseCheckResult(check checks.Check) IssueData {
+func ParseCheckResult(check checks.Check) IssueData {
 	if check.Error != nil {
 		return IssueData{IssueID: check.IssueID, Detected: false}
 	}
