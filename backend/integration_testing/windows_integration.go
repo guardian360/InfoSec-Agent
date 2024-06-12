@@ -48,13 +48,13 @@ func TestIntegrationDefenderAllActive(t *testing.T) {
 func TestIntegrationFirewallEnabled(t *testing.T) {
 	result := windows.FirewallEnabled(&mocking.RealCommandExecutor{})
 	require.NotEmpty(t, result)
-	require.Equal(t, 1, result.ResultID)
+	require.Equal(t, 0, result.ResultID)
 }
 
 func TestIntegrationFirewallDisabled(t *testing.T) {
 	result := windows.FirewallEnabled(&mocking.RealCommandExecutor{})
 	require.NotEmpty(t, result)
-	require.Equal(t, 0, result.ResultID)
+	require.Equal(t, 1, result.ResultID)
 }
 
 func TestIntegrationGuestAccountActive(t *testing.T) {
