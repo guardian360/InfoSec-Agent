@@ -47,6 +47,9 @@ var testsValid = []func(t *testing.T){
 	i.TestIntegrationFirewallEnabled,
 	i.TestIntegrationPasswordComplexityValid,
 	i.TestIntegrationScreenLockEnabled,
+	i.TestIntegrationUpdateGameState,
+	i.TestIntegrationPointCalculation,
+	i.TestIntegrationLighthouseStateTransition,
 }
 
 func TestMain(m *testing.M) {
