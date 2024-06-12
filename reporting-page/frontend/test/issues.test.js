@@ -105,6 +105,12 @@ describe('Issues table', function() {
     ];
 
     sessionStorage.setItem('DataBaseData', JSON.stringify(issues));
+    sessionStorage.setItem('IssuesSorted', JSON.stringify(
+      {
+        column: '2',
+        direction: 'ascending',
+      },
+    ));
 
     // Act
     await issue.openIssuesPage();
