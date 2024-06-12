@@ -284,7 +284,6 @@ export function adjustWithRiskCounters(rc, doc, retrieveStyling) {
       securityStatus.innerHTML = 'Critical';
     }
     securityStatus.style.backgroundColor = rc.highRiskColor;
-    securityStatus.style.color = 'rgb(255, 255, 255)';
   } else if (rc.lastMediumRisk > 1) {
     try {
       getLocalization('Dashboard.MediumConcern', 'status-descriptor');
@@ -293,7 +292,6 @@ export function adjustWithRiskCounters(rc, doc, retrieveStyling) {
       securityStatus.innerHTML = 'Medium concern';
     }
     securityStatus.style.backgroundColor = rc.mediumRiskColor;
-    securityStatus.style.color = 'rgb(255, 255, 255)';
   } else if (rc.lastLowRisk > 1) {
     try {
       getLocalization('Dashboard.LowConcern', 'status-descriptor');
@@ -302,7 +300,6 @@ export function adjustWithRiskCounters(rc, doc, retrieveStyling) {
       securityStatus.innerHTML = 'Low concern';
     }
     securityStatus.style.backgroundColor = rc.lowRiskColor;
-    securityStatus.style.color = 'rgb(0, 0, 0)';
   } else if (rc.lastInfoRisk > 1) {
     try {
       getLocalization('Dashboard.InfoConcern', 'status-descriptor');
@@ -311,7 +308,6 @@ export function adjustWithRiskCounters(rc, doc, retrieveStyling) {
       securityStatus.innerHTML = 'Informative';
     }
     securityStatus.style.backgroundColor = rc.infoColor;
-    securityStatus.style.color = 'rgb(0, 0, 0)';
   } else {
     try {
       getLocalization('Dashboard.NoConcern', 'status-descriptor');
@@ -320,8 +316,8 @@ export function adjustWithRiskCounters(rc, doc, retrieveStyling) {
       securityStatus.innerHTML = 'Acceptable';
     }
     securityStatus.style.backgroundColor = rc.noRiskColor;
-    securityStatus.style.color = 'rgb(0, 0, 0)';
   }
+  securityStatus.style.color = 'rgb(255, 255, 255)';
 }
 
 /** Set the max number input of the 'graph-interval' element
