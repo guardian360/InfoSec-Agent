@@ -11,5 +11,5 @@ func TestIntegrationCurrentUsernameFound(t *testing.T) {
 	result, err := checks.CurrentUsername()
 	require.NotEmpty(t, result)
 	require.NoError(t, err)
-	require.Equal(t, result, "Test")
+	require.Equal(t, "Test", result)
 }

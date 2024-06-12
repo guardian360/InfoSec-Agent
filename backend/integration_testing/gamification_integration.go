@@ -1,12 +1,13 @@
 package integration
 
 import (
+	"testing"
+	"time"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/gamification"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/usersettings"
 	"github.com/stretchr/testify/require"
-	"testing"
-	"time"
 )
 
 func TestIntegrationUpdateGameState(t *testing.T) {
