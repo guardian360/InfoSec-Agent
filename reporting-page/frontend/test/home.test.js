@@ -62,6 +62,7 @@ jest.unstable_mockModule('../src/js/settings.js', () => ({
 
 // Mock share
 jest.unstable_mockModule('../src/js/share.js', () => ({
+  setImage: jest.fn(),
   saveProgress: jest.fn(),
   shareProgress: jest.fn(),
   selectSocialMedia: jest.fn(),

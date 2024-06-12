@@ -2,6 +2,7 @@ import * as htmlToImage from 'html-to-image';
 import imageCompression from 'browser-image-compression';
 import {LogError as logError} from '../../wailsjs/go/main/Tray';
 import {getUserSettings} from './issues';
+import {GetImagePath as getImagePath} from '../../wailsjs/go/main/App.js';
 
 /**
  * Create image as an url from an html node
@@ -28,14 +29,48 @@ export async function getImage(node, width, height) {
  * Set the correct image in the share-node
  * @param {string} social social media to set the image for
  */
-function setImage(social) {
+export async function setImage(social,progress) {
+  let lighthousePath
+  switch (sessionStorage.getItem('state')) {
+    case '0':
+      lighthousePath = 'final-state.png';
+      break;
+    case '1':
+      lighthousePath = 'final-state.png';
+      break;
+    case '2':
+      lighthousePath = 'final-state.png';
+      break;
+    default:
+      lighthousePath = 'final-state.png';
+    }
+  const lighthouseState = await getImagePath(lighthousePath);
   const node = document.getElementById('share-node');
+  const socialStyle = JSON.parse(sessionStorage.getItem('ShareSocial'));
+  // Set the background to the current state
+  node.style.width = socialStyle.width + "px";
+  node.style.height = socialStyle.height + "px";
+  node.style.backgroundImage = 'url(' + lighthouseState + ')';
+  node.style.backgroundSize = 'cover';
+  node.style.backgroundPosition = 'center';
+
   node.innerHTML = `
-  <img class="api-key-image" src="https://placehold.co/600x315" alt="Step 1 Image">
+  <div class="image-header">
+    <p class="image-link">github.com/InfoSec-Agent/InfoSec-Agent</p>
+  </div>
+  <div class="image-footer">
+    <div class="image-left">
+      ${progress.innerHTML}
+    </div>
+    <div class="image-right" id="image-right">
+      <p id="image-logo-text">InfoSec-Agent</p>
+      <img id="logo" alt="logo" src="./src/assets/images/logoTeamA-transformed.png" style="width: 75px; height: 75px;">
+    </div>
+  </div>
   `;
   if (social == 'instagram') {
-    node.innerHTML = `
-    <img class="api-key-image" src="https://placehold.co/300x300" alt="Step 1 Image">   `;
+    document.getElementById('image-logo-text').innerHTML = '';
+    document.getElementById('image-right').style.marginTop = '30px'
   }
 }
 
@@ -46,7 +81,8 @@ function setImage(social) {
 export async function saveProgress(node) {
   try {
     const social = JSON.parse(sessionStorage.getItem('ShareSocial'));
-    const imageUrl = await getImage(node, social.height, social.width);
+    const imageUrl = await getImage(node, social.width, social.height);
+    console.log(imageUrl);
 
     const nowDate = new Date();
     let date = nowDate.getDate()+'-'+(nowDate.getMonth()+1)+'-'+nowDate.getFullYear();
@@ -92,18 +128,18 @@ export function shareProgress() {
 export const socialMediaSizes = {
   facebook: {
     name: 'facebook',
-    height: 600,
-    width: 315,
+    height: 315,
+    width: 600,
   },
   x: {
     name: 'x',
-    height: 600,
-    width: 315,
+    height: 315,
+    width: 600,
   },
   linkedin: {
     name: 'linkedin',
-    height: 600,
-    width: 315,
+    height: 315,
+    width: 600,
   },
   instagram: {
     name: 'instagram',
@@ -126,6 +162,6 @@ export function selectSocialMedia(social) {
   };
 
   document.getElementById('select-' + social).classList.add('selected');
-  setImage(social);
+  setImage(social,document.getElementById('progress-segment'));
   sessionStorage.setItem('ShareSocial', JSON.stringify(socialMediaSizes[social]));
 }

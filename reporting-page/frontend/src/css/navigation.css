@@ -222,7 +222,7 @@
   width: 50%; /* Could be more or less, depending on screen size */
 }
 
-.modal-content div {
+.modal-content > div {
   margin: 10px;
 }
 

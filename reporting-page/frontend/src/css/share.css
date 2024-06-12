@@ -23,3 +23,52 @@
   cursor: pointer;
   padding: 5px;
 }
+
+.share-image {
+  display: inline-block;
+  height: 100%;
+  position: relative;
+}
+
+.image-header {
+  position: absolute;
+  margin: auto 10px;
+}
+
+.image-footer {
+  position: absolute;
+  bottom: 0;
+  display: table-row;
+  width: 100%;
+}
+
+.image-left {
+  margin-top: 50px;
+  float: left;
+  display: table-cell;
+  width: 50%;
+}
+
+.image-progress-container {
+  position: relative;
+  bottom: 0;
+}
+
+.image-right {
+  float: right;
+  display: table-cell;
+  text-align: right;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.image-right img {
+  background-color: #e0e0e0;
+  border-radius: 5px;
+}
+
+.share-image p {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--text-left-nav);
+}
