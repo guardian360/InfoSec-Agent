@@ -88,13 +88,13 @@ func TestIntegrationLighthouseStateTransition(t *testing.T) {
 	gs := gamification.GameState{Points: mockPoints, PointsHistory: mockPointsHistory, TimeStamps: mockTimeStamps, LighthouseState: 0}
 
 	// Run LighthouseStateTransition
-	lighthouseState := gamification.LighthouseStateTransition(gs)
+	gs = gamification.LighthouseStateTransition(gs)
 
 	// Verify that the lighthouse state is correctly updated
 	expectedLighthouseState := 1
-	require.Equal(t, expectedLighthouseState, lighthouseState)
+	require.Equal(t, expectedLighthouseState, gs.LighthouseState)
 
 	// Verify that the updated lighthouse state is correctly saved to the user settings
 	userSettings := usersettings.LoadUserSettings()
-	require.Equal(t, lighthouseState, userSettings.LighthouseState)
+	require.Equal(t, gs.LighthouseState, userSettings.LighthouseState)
 }
