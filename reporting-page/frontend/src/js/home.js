@@ -6,7 +6,7 @@ import {scanTest} from './database.js';
 import {LogError as logError, LogDebug as logDebug} from '../../wailsjs/go/main/Tray.js';
 import {GetImagePath as getImagePath} from '../../wailsjs/go/main/App.js';
 import {openIssuePage} from './issue.js';
-import {saveProgress, shareProgress, selectSocialMedia, setImage} from './share.js';
+import {saveProgress, shareProgress, selectSocialMedia, setImage, socialMediaSizes} from './share.js';
 import data from '../databases/database.en-GB.json' assert { type: 'json' };
 import {showModal} from './settings.js';
 
@@ -155,6 +155,8 @@ export async function openHomePage() {
     progressText.textContent = `${userPoints} / ${pointsToNextState} (${progressPercentage.toFixed(2)}%)`;
   });
 
+  // on startup set the social media to share to facebook
+  sessionStorage.setItem('ShareSocial', JSON.stringify(socialMediaSizes['facebook']));
   setImage(document.getElementById('share-node'), document.getElementById('progress-segment'));
 }
 

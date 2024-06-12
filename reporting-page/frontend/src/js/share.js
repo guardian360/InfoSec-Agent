@@ -150,7 +150,7 @@ export const socialMediaSizes = {
   },
 };
 
-// on startup set the social media to share to to facebook
+// on startup set the social media to share to facebook
 sessionStorage.setItem('ShareSocial', JSON.stringify(socialMediaSizes['facebook']));
 
 /**
