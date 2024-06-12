@@ -61,25 +61,6 @@ export function openIssuesPage() {
         </p>
       </div>
     </div>
-    <div class="table-container">
-      <h2 class="lang-acceptable-findings"></h2>
-      <table class="issues-table" id="non-issues-table">
-        <thead>
-          <tr>
-          <th class="issue-column">
-            <span class="table-header lang-name"></span>
-            <span class="material-symbols-outlined" id="sort-on-issue2">swap_vert</span>
-          </th>
-          <th class="type-column">
-            <span class="table-header lang-type"></span>
-            <span class="material-symbols-outlined" id="sort-on-type2">swap_vert</span>
-          </th>
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
-    </div>
   </div>
   `;
 
@@ -89,9 +70,6 @@ export function openIssuesPage() {
 
   const issueTable = document.getElementById('issues-table').querySelector('tbody');
   fillTable(issueTable, issues, true);
-
-  const nonIssueTable = document.getElementById('non-issues-table').querySelector('tbody');
-  fillTable(nonIssueTable, issues, false);
 
   const myDropdownTable = document.getElementById('myDropdown-table');
   document.getElementById('dropbtn-table').addEventListener('click', () => myDropdownTable.classList.toggle('show'));
