@@ -38,7 +38,6 @@ func TestIntegrationWPADDisabled(t *testing.T) {
 
 func TestIntegrationOpenPortsPorts(t *testing.T) {
 	result := network.OpenPorts(&mocking.RealCommandExecutor{}, &mocking.RealCommandExecutor{})
-	// Check if function did not return an error
 	require.NotEmpty(t, result)
 	require.NotEmpty(t, result.Result)
 	require.Equal(t, 0, result.ResultID)
