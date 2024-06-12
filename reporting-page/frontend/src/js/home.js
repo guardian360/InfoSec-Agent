@@ -52,7 +52,7 @@ export async function openHomePage() {
         </div>
       </div>
       <div class="data-segment">
-        <div class="data-segment-header">
+        <div class="data-segment-header"><img id="lighthouse-progress-tooltip">
           <p class="lang-choose-issue-description"></p>
         </div>
         <a id="suggested-issue" class="issue-button lang-suggested-issue"></a>
@@ -93,6 +93,9 @@ export async function openHomePage() {
   `;
 
   document.getElementById('lighthouse-background').src = lighthouseState;
+
+  const tooltip = await getImagePath('tooltip.png');
+  document.getElementById('lighthouse-progress-tooltip').src = tooltip;
 
   const rc = JSON.parse(sessionStorage.getItem('RiskCounters'));
   new PieChart('pie-chart-home', rc, 'Total');

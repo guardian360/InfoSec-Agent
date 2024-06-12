@@ -37,6 +37,10 @@ body {
   background: var(--transparant-background); /* More transparent background */
 }
 
+.data-segment p {
+  margin: 10px;
+}
+
 .data-segment-header {
   width: 100%;
   font-size: 18px;
@@ -108,3 +112,5 @@ body {
   font-size: 1.2em;
   color: #333;
 }
+
+/* Tooltip */
