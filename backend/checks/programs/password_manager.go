@@ -2,51 +2,11 @@
 package programs
 
 import (
-	"os"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 	"strings"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 )
-
-// ProgramLister is an interface that defines a method for listing installed programs.
-//
-// The ListInstalledPrograms method takes a directory path as input and returns a slice of strings representing the names of installed programs, or an error if the operation fails.
-//
-// This interface is used in the PasswordManager function to abstract the operation of listing installed programs, allowing for different implementations that can be swapped out as needed. This is particularly useful for testing, as a mock implementation can be used to simulate different scenarios.
-type ProgramLister interface {
-	ListInstalledPrograms(directory string) ([]string, error)
-}
-
-// RealProgramLister is a struct that implements the ProgramLister interface.
-//
-// It provides a real-world implementation of the ListInstalledPrograms method, which lists all installed programs in a given directory by reading the directory's contents and returning the names of all subdirectories, which represent installed programs.
-//
-// This struct is used in the PasswordManager function to list installed programs when checking for the presence of known password managers.
-type RealProgramLister struct{}
-
-// ListInstalledPrograms is a method of the RealProgramLister struct that lists all installed programs in a given directory.
-//
-// Parameters:
-//   - directory (string): The path of the directory to list the installed programs from.
-//
-// Returns:
-//   - []string: A slice of strings representing the names of installed programs.
-//   - error: An error object that describes the error, if any occurred.
-//
-// This method reads the contents of the specified directory and returns the names of all subdirectories, which represent installed programs. If an error occurs during the operation, it returns the error.
-func (rpl RealProgramLister) ListInstalledPrograms(directory string) ([]string, error) {
-	var programs []string
-	files, err := os.ReadDir(directory)
-	if err != nil {
-		return nil, err
-	}
-	for _, file := range files {
-		if file.IsDir() {
-			programs = append(programs, file.Name())
-		}
-	}
-	return programs, nil
-}
 
 // PasswordManager is a function that checks for the presence of known password managers on the system.
 //
@@ -59,7 +19,7 @@ func (rpl RealProgramLister) ListInstalledPrograms(directory string) ([]string, 
 //   - "No password manager found" if no known password managers are found.
 //
 // This function uses the ListInstalledPrograms method of the provided ProgramLister to list installed programs in the 'Program Files' and 'Program Files (x86)' directories. It then checks if any of the listed programs match the names of known password managers. If a match is found, it returns a Check instance with the name of the password manager. If no match is found, it returns a Check instance with the message "No password manager found".
-func PasswordManager(pl ProgramLister) checks.Check {
+func PasswordManager(pl mocking.ProgramLister) checks.Check {
 	// List of known password manager registry keys
 	passwordManagerNames := []string{
 		`LastPass`,
