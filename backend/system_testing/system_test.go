@@ -37,7 +37,7 @@ func TestTrayFunctionality(t *testing.T) {
 	require.Equal(t, 3, tray.Language)
 
 	wg := sync.WaitGroup{}
-	wg.Add(2)
+	wg.Add(1)
 	errSlice := make([]error, 2)
 	// Run the function without dialog
 	go func() {
@@ -45,6 +45,9 @@ func TestTrayFunctionality(t *testing.T) {
 		_, err := tray.ScanNow(false)
 		errSlice[0] = err
 	}()
+
+	wg.Wait()
+	wg.Add(1)
 
 	// Run the function with dialog
 	go func() {
