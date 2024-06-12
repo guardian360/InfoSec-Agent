@@ -8,11 +8,11 @@ import (
 var testsInvalid = []func(t *testing.T){
 	i.TestIntegrationExtensionsChromiumWithoutAdBlocker,
 	// TODO: Look into this
-	// i.TestIntegrationHistoryChromiumWithPhishing,
+	i.TestIntegrationHistoryChromiumWithPhishing,
 	i.TestIntegrationCISRegistrySettingsIncorrect,
 	i.TestIntegrationExtensionsFirefoxWithoutAdBlocker,
 	// TODO: Look into this
-	// i.TestIntegrationHistoryFirefoxWithPhishing,
+	i.TestIntegrationHistoryFirefoxWithPhishing,
 	i.TestIntegrationOpenPortsPorts,
 	i.TestIntegrationSmbCheckBadSetup,
 	i.TestIntegrationPasswordManagerNotPresent,
