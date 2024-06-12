@@ -155,7 +155,7 @@ export async function openHomePage() {
     progressText.textContent = `${userPoints} / ${pointsToNextState} (${progressPercentage.toFixed(2)}%)`;
   });
 
-  setImage(document.getElementById('share-node'),document.getElementById('progress-segment'));
+  setImage(document.getElementById('share-node'), document.getElementById('progress-segment'));
 }
 
 /** Opens the issue page of the issue with the highest risk level

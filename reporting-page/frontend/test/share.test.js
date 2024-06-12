@@ -192,15 +192,15 @@ describe('share functions', function() {
     // Arrange
     const share = await import('../src/js/share.js');
     // Should be changed when images of all states are available
-    const states = ['url(final-state.png)','url(final-state.png)','url(final-state.png)']
+    const states = ['url(first-state.png)', 'url(second-state.png)', 'url(third-state.png)', 'url(fourth-state.png)'];
 
     for (let i = 0; i < states.length; i++) {
       // Act
-      sessionStorage.setItem('state',i)
-      share.setImage('facebook',document.getElementById('progress-segment'));
+      sessionStorage.setItem('state', i);
+      await share.setImage('facebook', document.getElementById('progress-segment'));
 
       // Arrange
-      test.value(document.getElementById('share-node').style.backgroundImage).isEqualTo(states[i])
+      test.value(document.getElementById('share-node').style.backgroundImage).isEqualTo(states[i]);
     }
   });
 });

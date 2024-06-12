@@ -28,28 +28,32 @@ export async function getImage(node, width, height) {
 /**
  * Set the correct image in the share-node
  * @param {string} social social media to set the image for
+ * @param {HTMLElement} progress html element of the progress bar with text above it
  */
-export async function setImage(social,progress) {
-  let lighthousePath
+export async function setImage(social, progress) {
+  let lighthousePath;
   switch (sessionStorage.getItem('state')) {
-    case '0':
-      lighthousePath = 'final-state.png';
-      break;
-    case '1':
-      lighthousePath = 'final-state.png';
-      break;
-    case '2':
-      lighthousePath = 'final-state.png';
-      break;
-    default:
-      lighthousePath = 'final-state.png';
-    }
+  case '0':
+    lighthousePath = 'first-state.png';
+    break;
+  case '1':
+    lighthousePath = 'second-state.png';
+    break;
+  case '2':
+    lighthousePath = 'third-state.png';
+    break;
+  case '3':
+    lighthousePath = 'fourth-state.png';
+    break;
+  default:
+    lighthousePath = 'first-state.png';
+  }
   const lighthouseState = await getImagePath(lighthousePath);
   const node = document.getElementById('share-node');
   const socialStyle = JSON.parse(sessionStorage.getItem('ShareSocial'));
   // Set the background to the current state
-  node.style.width = socialStyle.width + "px";
-  node.style.height = socialStyle.height + "px";
+  node.style.width = socialStyle.width + 'px';
+  node.style.height = socialStyle.height + 'px';
   node.style.backgroundImage = 'url(' + lighthouseState + ')';
   node.style.backgroundSize = 'cover';
   node.style.backgroundPosition = 'center';
@@ -59,18 +63,17 @@ export async function setImage(social,progress) {
     <p class="image-link">github.com/InfoSec-Agent/InfoSec-Agent</p>
   </div>
   <div class="image-footer">
-    <div class="image-left">
+    <div class="image-left" id="image-left">
       ${progress.innerHTML}
     </div>
-    <div class="image-right" id="image-right">
-      <p id="image-logo-text">InfoSec-Agent</p>
+    <div class="image-right">
+      <p id="image-logo-text"></p>
       <img id="logo" alt="logo" src="./src/assets/images/logoTeamA-transformed.png" style="width: 75px; height: 75px;">
     </div>
   </div>
   `;
   if (social == 'instagram') {
-    document.getElementById('image-logo-text').innerHTML = '';
-    document.getElementById('image-right').style.marginTop = '30px'
+    document.getElementById('image-left').style.marginTop = '50px';
   }
 }
 
@@ -82,7 +85,6 @@ export async function saveProgress(node) {
   try {
     const social = JSON.parse(sessionStorage.getItem('ShareSocial'));
     const imageUrl = await getImage(node, social.width, social.height);
-    console.log(imageUrl);
 
     const nowDate = new Date();
     let date = nowDate.getDate()+'-'+(nowDate.getMonth()+1)+'-'+nowDate.getFullYear();
@@ -101,10 +103,10 @@ export async function saveProgress(node) {
 }
 
 /** Open the selected social media page */
-export function shareProgress() {
+export async function shareProgress() {
   const social = JSON.parse(sessionStorage.getItem('ShareSocial'));
 
-  // choose which
+  // choose which social media page to open
   switch (social.name) {
   case 'facebook':
     window.open('https://www.facebook.com/', 'Facebook');
@@ -162,6 +164,6 @@ export function selectSocialMedia(social) {
   };
 
   document.getElementById('select-' + social).classList.add('selected');
-  setImage(social,document.getElementById('progress-segment'));
+  setImage(social, document.getElementById('progress-segment'));
   sessionStorage.setItem('ShareSocial', JSON.stringify(socialMediaSizes[social]));
 }
