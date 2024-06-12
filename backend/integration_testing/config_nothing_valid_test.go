@@ -30,6 +30,12 @@ var testsInvalid = []func(t *testing.T){
 	i.TestIntegrationCookiesFirefoxWithCookies,
 	i.TestIntegrationCookiesChromiumWithCookies,
 	i.TestIntegrationRemoteRPCEnabled,
+	i.TestIntegrationNetBIOSDisabled,
+	i.TestIntegrationWPADDisabled,
+	i.TestIntegrationCredentialGuardDisabled,
+	i.TestIntegrationFirewallDisabled,
+	i.TestIntegrationPasswordComplexityInvalid,
+	i.TestIntegrationScreenLockDisabled,
 }
 
 func TestAllInvalid(t *testing.T) {
