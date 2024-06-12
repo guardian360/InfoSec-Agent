@@ -19,11 +19,11 @@
     "ScanInterval": 
     {
       "Title": "Change Scan Interval",
-      "Content": "Enter scan interval (in hours):",
+      "Content": "Enter scan interval (in days):",
       "ChangedTitle": "Scan Interval Changed",
-      "ChangedContent": "Scan interval changed to %d hours.",
+      "ChangedContent": "Scan interval changed to %d day(s).",
       "InvalidChangeTitle": "Invalid scan interval input",
-      "InvalidChangeContent": "Invalid input. Using previous interval of %d hours."
+      "InvalidChangeContent": "Invalid input. Using previous interval of %d day(s)."
     },
     "Scan": 
     {

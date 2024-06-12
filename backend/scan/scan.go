@@ -44,11 +44,7 @@ func Scan(dialog zenity.ProgressDialog, language int) ([]checks.Check, error) {
 	workStationID := 0
 	user := "user"
 
-	// Define all security/privacy checks that Scan() should execute
-	totalChecks := 0
-	for _, checkSlice := range ChecksList {
-		totalChecks += len(checkSlice)
-	}
+	totalChecks := len(ChecksList)
 
 	// Define a channel which serves as a queue for the checks to be executed
 	checksChan := make(chan func() checks.Check, totalChecks)
@@ -64,10 +60,8 @@ func Scan(dialog zenity.ProgressDialog, language int) ([]checks.Check, error) {
 	var checkResults []checks.Check
 
 	// Iterate over all checks and add them to the channel
-	for _, checkSlice := range ChecksList {
-		for _, check := range checkSlice {
-			checksChan <- check
-		}
+	for _, check := range ChecksList {
+		checksChan <- check
 	}
 
 	// Start the workers to execute the checks concurrently
