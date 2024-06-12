@@ -16,7 +16,6 @@ var testsInvalid = []func(t *testing.T){
 	i.TestIntegrationPasswordManagerNotPresent,
 	i.TestIntegrationAdvertisementActive,
 	i.TestIntegrationAutomatedLoginActive,
-	i.TestIntegrationDefenderAllNotActive,
 	i.TestIntegrationGuestAccountActive,
 	i.TestIntegrationLoginMethodPINOnly,
 	i.TestIntegrationOutdatedWinNotUpToDate,

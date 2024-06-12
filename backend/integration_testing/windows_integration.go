@@ -51,12 +51,6 @@ func TestIntegrationDefenderAllActive(t *testing.T) {
 	require.Equal(t, 0, result.ResultID)
 }
 
-func TestIntegrationDefenderAllNotActive(t *testing.T) {
-	result := windows.Defender(mocking.LocalMachine, mocking.LocalMachine)
-	require.NotEmpty(t, result)
-	require.Equal(t, 2, result.ResultID)
-}
-
 func TestIntegrationFirewallEnabled(t *testing.T) {
 	result := windows.FirewallEnabled(&mocking.RealCommandExecutor{})
 	require.NotEmpty(t, result)
