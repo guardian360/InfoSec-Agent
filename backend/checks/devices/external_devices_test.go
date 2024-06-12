@@ -1,6 +1,7 @@
 package devices_test
 
 import (
+	"errors"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/devices"
 	"reflect"
 	"strings"
@@ -29,8 +30,8 @@ func TestExternalDevices(t *testing.T) {
 	}{
 		{
 			name:          "No external devices connected",
-			executorClass: &mocking.MockCommandExecutor{Output: "\r\nFriendlyName\r\n-\r\n\r\n\r\n\r\n", Err: nil},
-			want:          checks.NewCheckResult(checks.ExternalDevicesID, 1, ""),
+			executorClass: &mocking.MockCommandExecutor{Output: "", Err: nil},
+			want:          checks.NewCheckResult(checks.ExternalDevicesID, 0),
 		},
 		{
 			name:          "External devices connected",
@@ -61,27 +62,34 @@ func TestCheckDeviceClasses(t *testing.T) {
 		deviceClass   []string
 		executorClass *mocking.MockCommandExecutor
 		want          []string
-		wantErr       error
+		error         bool
 	}{
 		{
 			name:          "No devices of the specified class",
 			deviceClass:   []string{"Mouse"},
 			executorClass: &mocking.MockCommandExecutor{Output: "\r\nFriendlyName\r\n-\r\n\r\n\r\n\r\n", Err: nil},
 			want:          []string{""},
-			wantErr:       nil,
 		},
 		{
 			name:        "Devices of the specified class",
 			deviceClass: []string{"Camera"},
 			executorClass: &mocking.MockCommandExecutor{
 				Output: "\r\nFriendlyName\r\n-\r\nHD WebCam\r\n\r\n\r\n\r\n", Err: nil},
-			want:    []string{"HD WebCam", ""},
-			wantErr: nil,
+			want: []string{"HD WebCam", ""},
+		},
+		{
+			name:        "Error executing command",
+			deviceClass: []string{"Camera"},
+			executorClass: &mocking.MockCommandExecutor{
+				Output: "", Err: errors.New("error")},
+			want:  nil,
+			error: true,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := devices.CheckDeviceClasses(tt.deviceClass, tt.executorClass); !reflect.DeepEqual(got, tt.want) {
+			got := devices.CheckDeviceClasses(tt.deviceClass, tt.executorClass)
+			if !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("ExternalDevices() = %v, want %v", got, tt.want)
 			}
 		})

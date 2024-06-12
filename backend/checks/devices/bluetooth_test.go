@@ -34,6 +34,7 @@ func TestBluetooth(t *testing.T) {
 		name string
 		key  mocking.RegistryKey
 		want checks.Check
+		err  bool
 	}{
 		{
 			name: "No Devices found",
@@ -64,11 +65,20 @@ func TestBluetooth(t *testing.T) {
 				}},
 			want: checks.NewCheckResult(checks.BluetoothID, 1),
 		},
+		{
+			name: "Error opening registry key",
+			key:  &mocking.MockRegistryKey{},
+			err:  true,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got := devices.Bluetooth(tt.key)
-			require.Equal(t, tt.want, got)
+			if tt.err {
+				require.Error(t, got.Error)
+			} else {
+				require.Equal(t, tt.want, got)
+			}
 		})
 	}
 }
