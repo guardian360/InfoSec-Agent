@@ -136,7 +136,6 @@ func RemoveDuplicateStr(strSlice []string) []string {
 // Parameters:
 //   - key (mocking.RegistryKey): The registry key to use for the check.
 //   - permission (string): The specific permission to check.
-//   - permissionID (int): The ID of the permission check.
 //
 // Returns:
 //   - bool: A boolean value indicating whether the general permission setting is set to "Allow".
