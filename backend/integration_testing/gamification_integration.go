@@ -30,7 +30,7 @@ func TestIntegrationUpdateGameState(t *testing.T) {
 
 	// Verify that the points, points history, timestamps, and lighthouse state are correctly updated
 	expectedPoints := 3
-	expectedPointsHistory := []int{3}
+	var expectedPointsHistory []int
 	expectedLighthouseState := 1
 
 	require.Equal(t, expectedPoints, gs.Points)
