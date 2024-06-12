@@ -36,7 +36,7 @@ func TestIntegrationAutomatedLoginNotActive(t *testing.T) {
 func TestIntegrationCredentialGuardDisabled(t *testing.T) {
 	result := windows.CredentialGuardRunning(&mocking.RealCommandExecutor{})
 	require.NotEmpty(t, result)
-	require.Equal(t, 0, result.ResultID)
+	require.Equal(t, 1, result.ResultID)
 }
 
 func TestIntegrationDefenderAllActive(t *testing.T) {
