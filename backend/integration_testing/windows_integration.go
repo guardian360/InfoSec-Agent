@@ -104,25 +104,13 @@ func TestIntegrationLoginMethodPINOnly(t *testing.T) {
 	require.Equal(t, 1, result.ResultID)
 }
 
-func TestIntegrationLoginMethodPasswordAndPIN(t *testing.T) {
-	result := windows.LoginMethod(mocking.LocalMachine)
-	require.NotEmpty(t, result)
-	require.Equal(t, 5, result.ResultID)
-}
-
-func TestIntegrationOutdatedWin11UpToDate(t *testing.T) {
+func TestIntegrationOutdatedWinUpToDate(t *testing.T) {
 	result := windows.Outdated(&mocking.RealCommandExecutor{})
 	require.NotEmpty(t, result)
 	require.Equal(t, 0, result.ResultID)
 }
 
-func TestIntegrationOutdatedWin10UpToDate(t *testing.T) {
-	result := windows.Outdated(&mocking.RealCommandExecutor{})
-	require.NotEmpty(t, result)
-	require.Equal(t, 0, result.ResultID)
-}
-
-func TestIntegrationOutdatedWin11NotUpToDate(t *testing.T) {
+func TestIntegrationOutdatedWinNotUpToDate(t *testing.T) {
 	result := windows.Outdated(&mocking.RealCommandExecutor{})
 	require.NotEmpty(t, result)
 	require.NotEmpty(t, result.Result)

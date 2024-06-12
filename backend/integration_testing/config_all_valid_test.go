@@ -28,10 +28,8 @@ var testsValid = []func(t *testing.T){
 	i.TestIntegrationGuestAccountNotActive,
 	i.TestIntegrationLastPasswordChangeValid,
 	i.TestIntegrationLoginMethodPasswordOnly,
-	// TODO: turn back on when the test is fixed
-	// i.TestIntegrationOutdatedWin11UpToDate,
-	// TODO: turn back on when the test is fixed
-	// i.TestIntegrationPermissionWithoutApps,
+	i.TestIntegrationOutdatedWinUpToDate,
+	i.TestIntegrationPermissionWithoutApps,
 	i.TestIntegrationRemoteDesktopDisabled,
 	i.TestIntegrationSecureBootEnabled,
 	i.TestIntegrationStartupWithoutApps,

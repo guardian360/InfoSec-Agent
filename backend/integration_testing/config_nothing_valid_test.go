@@ -7,8 +7,7 @@ import (
 
 var testsInvalid = []func(t *testing.T){
 	i.TestIntegrationExtensionsChromiumWithoutAdBlocker,
-	// TODO: turn back on when the test is fixed
-	// i.TestIntegrationHistoryChromiumWithPhishing,
+	i.TestIntegrationHistoryChromiumWithPhishing,
 	i.TestIntegrationCISRegistrySettingsIncorrect,
 	i.TestIntegrationExtensionsFirefoxWithoutAdBlocker,
 	i.TestIntegrationHistoryFirefoxWithPhishing,
@@ -20,8 +19,7 @@ var testsInvalid = []func(t *testing.T){
 	i.TestIntegrationDefenderAllNotActive,
 	i.TestIntegrationGuestAccountActive,
 	i.TestIntegrationLoginMethodPINOnly,
-	// TODO: turn back on when the test is fixed
-	// i.TestIntegrationOutdatedWin11NotUpToDate,
+	i.TestIntegrationOutdatedWinNotUpToDate,
 	i.TestIntegrationPermissionWithApps,
 	i.TestIntegrationRemoteDesktopEnabled,
 	i.TestIntegrationSecureBootDisabled,
