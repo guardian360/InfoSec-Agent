@@ -19,7 +19,6 @@ var testsInvalid = []func(t *testing.T){
 	i.TestIntegrationDefenderAllNotActive,
 	i.TestIntegrationGuestAccountActive,
 	i.TestIntegrationLoginMethodPINOnly,
-	// TODO: turn back on when the test is fixed
 	i.TestIntegrationOutdatedWinNotUpToDate,
 	i.TestIntegrationPermissionWithApps,
 	i.TestIntegrationRemoteDesktopEnabled,
