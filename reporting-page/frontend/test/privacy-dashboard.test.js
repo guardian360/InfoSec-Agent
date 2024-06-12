@@ -119,7 +119,6 @@ describe('Privacy dashboard page', function() {
       if (index == 1) mockRiskCounters.lastHighRisk = 0;
       if (index == 2) mockRiskCounters.lastMediumRisk = 0;
       if (index == 3) mockRiskCounters.lastLowRisk = 0;
-      if (index == 4) mockRiskCounters.noRiskColor = 0;
       sDashboard.adjustWithRiskCounters(mockRiskCounters, dom.window.document, false);
 
       // Assert
