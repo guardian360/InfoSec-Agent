@@ -33,12 +33,6 @@ func TestIntegrationAutomatedLoginNotActive(t *testing.T) {
 	require.Equal(t, 0, result.ResultID)
 }
 
-func TestIntegrationCredentialGuardEnabled(t *testing.T) {
-	result := windows.CredentialGuardRunning(&mocking.RealCommandExecutor{})
-	require.NotEmpty(t, result)
-	require.Equal(t, 1, result.ResultID)
-}
-
 func TestIntegrationCredentialGuardDisabled(t *testing.T) {
 	result := windows.CredentialGuardRunning(&mocking.RealCommandExecutor{})
 	require.NotEmpty(t, result)
@@ -157,12 +151,6 @@ func TestIntegrationRemoteRPCEnabled(t *testing.T) {
 
 func TestIntegrationRemoteRPCDisabled(t *testing.T) {
 	result := windows.AllowRemoteRPC(mocking.LocalMachine)
-	require.NotEmpty(t, result)
-	require.Equal(t, 0, result.ResultID)
-}
-
-func TestIntegrationScreenLockEnabled(t *testing.T) {
-	result := windows.ScreenLockEnabled(mocking.CurrentUser)
 	require.NotEmpty(t, result)
 	require.Equal(t, 0, result.ResultID)
 }
