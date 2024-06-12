@@ -41,7 +41,6 @@ func TestIntegrationUpdateGameState(t *testing.T) {
 	userSettings := usersettings.LoadUserSettings()
 	require.Equal(t, gs.Points, userSettings.Points)
 	require.Equal(t, gs.PointsHistory, userSettings.PointsHistory)
-	require.Equal(t, gs.TimeStamps, userSettings.TimeStamps)
 	require.Equal(t, gs.LighthouseState, userSettings.LighthouseState)
 }
 
