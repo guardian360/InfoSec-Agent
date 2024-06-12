@@ -104,7 +104,7 @@ func TestChangeScanInterval(t *testing.T) {
 // No return values.
 func TestScanNow(t *testing.T) {
 	wg := sync.WaitGroup{}
-	wg.Add(2)
+	wg.Add(1)
 	errSlice := make([]error, 2)
 	// Run the function without dialog
 	go func() {
@@ -113,6 +113,8 @@ func TestScanNow(t *testing.T) {
 		errSlice[0] = err
 	}()
 
+	wg.Wait()
+	wg.Add(1)
 	// Run the function with dialog
 	go func() {
 		defer wg.Done()
