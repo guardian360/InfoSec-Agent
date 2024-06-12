@@ -3,26 +3,22 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px; /* Add space at the top */
+  margin: 20px; /* Add padding around the content */
 }
 
 /* Table container */
 .table-container {
   width: 100%;
-  max-width: 800px; /* Limit the width of the table container */
-  margin-bottom: 20px;
-  border-radius: 8px;
   box-shadow: 0 0 10px rgb(0 0 0 / 10%); /* Add shadow for depth */
   overflow: hidden; /* Hide overflow content */
 }
 
 /* Table titles */
-.issues-data h2 {
+/* .issues-data h2 {
   padding: 10px 20px;
-  background-color: var(--background-color-left-nav); /* Green background color */
-  margin-bottom: 10px; /* Add space below titles */
-  border-radius: 8px 8px 0 0; /* Rounded corners for top */
-}
+  background-color: var(--background-color-left-nav);
+  margin-bottom: 10px;
+} */
 
 /* Button container */
 .issues-data .button-container {
@@ -77,17 +73,46 @@
 .issues-table td {
   padding: 8px;
   text-align: left;
-  border: 1px solid #8b8b8b; /* Gray border bottom */
+  border: 1px solid #8b8b8b;
 }
 
 /* Alternate row background color */
-.issues-table tbody tr:nth-child(even) {
+/* .issues-table tbody tr:nth-child(even) {
   background-color: var(--background-color-top-nav);
+} */
+
+.issues-table tbody tr:hover {
+  background-color: var(--background-color-top-nav); /* Light blue on hover */
+}
+
+.issue-link:hover {
+  cursor: pointer;
 }
 
 .issues-table th {
   background-color: var(--background-color-table-header);
   text-align: left;
+}
+
+.issues-table tr[data-severity="3"] td:nth-child(3) {
+  background-color: #ff6d6d;
+  color: #4d0000;
+}
+.issues-table tr[data-severity="2"] td:nth-child(3) {
+  background-color: #ffbe5c;
+  color: #533200;
+}
+.issues-table tr[data-severity="1"] td:nth-child(3) {
+  background-color: #fff45f;
+  color: #4b4600;
+}
+.issues-table tr[data-severity="0"] td:nth-child(3) {
+  background-color: #9aff8f;
+  color: #063c00;
+}
+.issues-table tr[data-severity="4"] td:nth-child(3) {
+  background-color: #adbaff;
+  color: #000c46;
 }
 
 /* Sort icon */
@@ -97,11 +122,6 @@
 }
 
 .material-symbols-outlined:hover {
-  cursor: pointer;
-}
-
-.issue-link:hover {
-  color: var(--text-settings-hover);
   cursor: pointer;
 }
 
