@@ -264,12 +264,18 @@ export function sortTable(tbody, column) {
     } else {
       // Change Info to lower severity
       let severityA = parseInt(a.getAttribute('data-severity'));
-      if (severityA === 4) {
+      if (severityA === 0) {
         severityA = -1;
       }
+      if (severityA === 4) {
+        severityA = 0;
+      }
       let severityB = parseInt(b.getAttribute('data-severity'));
-      if (severityB === 4) {
+      if (severityB === 0) {
         severityB = -1;
+      }
+      if (severityB === 4) {
+        severityB = 0;
       }
       if (direction === 'ascending') {
         return severityB - severityA;
