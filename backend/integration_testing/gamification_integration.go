@@ -82,8 +82,8 @@ func TestIntegrationLighthouseStateTransition(t *testing.T) {
 	mockPointsHistory := []int{50, 28, 34}
 	threeWeeksAgo := time.Now().AddDate(0, 0, -21) // Subtract 21 days from the current time
 	twelveDaysAgo := time.Now().AddDate(0, 0, -12) // Subtract 12 days from the current time
-
-	mockTimeStamps := []time.Time{threeWeeksAgo, twelveDaysAgo, time.Now()}
+	now := time.Now()
+	mockTimeStamps := []time.Time{threeWeeksAgo, twelveDaysAgo, now}
 	gs := gamification.GameState{Points: mockPoints, PointsHistory: mockPointsHistory, TimeStamps: mockTimeStamps, LighthouseState: 0}
 
 	// Run LighthouseStateTransition
