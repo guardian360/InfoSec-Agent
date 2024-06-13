@@ -140,12 +140,11 @@
     "ContributingTitle": "Contribuindo",
     "ContributingInfo": "O InfoSec-Agent é um projeto de código aberto licenciado sob a Licença AGPL-3.0. No entanto, devido às suas origens como uma tarefa da Universidade de Utrecht, as contribuições públicas para este repositório só serão mescladas após a conclusão desta tarefa, programada para 24 de junho de 2024. Sinta-se à vontade para relatar quaisquer bugs ou problemas que encontrar. Seus comentários são valiosos e ajudam a melhorar o projeto InfoSec-Agent. Você pode nos enviar um e-mail para <a href=\"mailto:infosecagentuu@gmail.com\">infosecagentuu@gmail.com</a>."
   },  
-<<<<<<< HEAD
   "Programs": {
     "Name":"Nome",
     "ProgramTable": "Programas instalados",
     "Search": "Procurar"    
-=======
+  },
   "Personalize": {
     "ChangeFavicon": "Alterar favicon",
     "navImage": "Imagem de navegação",
@@ -221,6 +220,5 @@
     "Id40":"NetBIOS sobre TCP/IP habilitado/desabilitado",
     "Id41":"Serviço WPAD habilitado/desabilitado",
     "Id42":"Bloqueio automático de tela do Windows habilitado/desabilitado"
->>>>>>> b399f5543b888e01d20135f0e954ff180bd13832
   }
 }

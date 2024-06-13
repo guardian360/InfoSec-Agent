@@ -141,12 +141,11 @@
     "ContributingTitle": "Bijdragen",
     "ContributingInfo": "InfoSec-Agent is een open-sourceproject dat is gelicenseerd onder de AGPL-3.0-licentie. Vanwege de oorsprong als een opdracht van de Universiteit Utrecht worden openbare bijdragen aan deze repository echter pas samengevoegd na voltooiing van deze opdracht, die gepland staat voor 24 juni 2024. Voel je vrij om eventuele bugs of problemen te melden die je tegenkomt. Jouw feedback is waardevol en helpt het InfoSec-Agent-project te verbeteren. Je kunt ons een e-mail sturen naar <a href=\"mailto:infosecagentuu@gmail.com\">infosecagentuu@gmail.com</a>."
   },  
-<<<<<<< HEAD
   "Programs": {
     "Name":"Naam",
     "ProgramTable": "Geïnstalleerde programma's",
     "Search": "Zoeken"
-=======
+  },
   "Personalize": {
     "ChangeFavicon": "Favicon wijzigen",
     "navImage": "Navigatieafbeelding",
@@ -222,6 +221,5 @@
     "Id40":"NetBIOS over TCP/IP ingeschakeld/uitgeschakeld",
     "Id41":"WPAD service ingeschakeld/uitgeschakeld",
     "Id42":"Automatisch scherm vergrendelen in Windows ingeschakeld/uitgeschakeld"
->>>>>>> b399f5543b888e01d20135f0e954ff180bd13832
   }
 }
