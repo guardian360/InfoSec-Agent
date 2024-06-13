@@ -12,6 +12,15 @@ const dom = new JSDOM(`
 <html>
 <body>
     <div id="page-contents">
+        <div id="progress-segment" class="data-segment">
+          <div class="data-segment-header">
+            <p class="lang-lighthouse-progress"></p>
+          </div>
+          <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+          </div>
+          <p id="progress-text"></p>
+        </div>
         <div id="share-modal" class="modal">
             <div class="modal-content">
               <div class="modal-header">
@@ -70,6 +79,10 @@ jest.unstable_mockModule('../src/js/issues.js', () => ({
   getUserSettings: jest.fn().mockImplementationOnce(() => 2),
 }));
 
+// Mock Localize function
+jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
+  GetImagePath: jest.fn().mockImplementation((input) => input),
+}));
 
 describe('share functions', function() {
   beforeAll(() => {
@@ -174,9 +187,20 @@ describe('share functions', function() {
       test.value(inStorage.height).isEqualTo(share.socialMediaSizes[social].height);
       test.value(inStorage.width).isEqualTo(share.socialMediaSizes[social].width);
     });
+  });
+  it('setImage should set the right image as the background of the share image', async function() {
+    // Arrange
+    const share = await import('../src/js/share.js');
+    // Should be changed when images of all states are available
+    const states = ['url(first-state.png)', 'url(second-state.png)', 'url(third-state.png)', 'url(fourth-state.png)'];
 
-    // Act
+    for (let i = 0; i < states.length; i++) {
+      // Act
+      sessionStorage.setItem('state', i);
+      await share.setImage('facebook', document.getElementById('progress-segment'));
 
-    // Assert
+      // Arrange
+      test.value(document.getElementById('share-node').style.backgroundImage).isEqualTo(states[i]);
+    }
   });
 });
