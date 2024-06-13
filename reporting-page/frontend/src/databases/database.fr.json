@@ -16,8 +16,8 @@
         "Ici, vous pouvez voir quels appareils sont connectés via Bluetooth et vous pouvez les supprimer si nécessaire."
       ],
       "Screenshots": [
-        "appareils-connectés-via-bluetooth/bluetooth-devices-1.png",
-        "appareils-connectés-via-bluetooth/bluetooth-devices-2.png"
+        "devices-connected-via-bluetooth/bluetooth-devices-1.png",
+        "devices-connected-via-bluetooth/bluetooth-devices-2.png"
       ]
     },
     "Type": "Sécurité",
@@ -47,7 +47,7 @@
   },
   "3": {
     "0": {
-      "Severity": 1,
+      "Severity": -1,
       "Name": "Statut du compte invité inconnu",
       "Solution": [
         "Un statut de compte invité inconnu peut constituer un risque pour la sécurité. ",
@@ -57,11 +57,11 @@
         "Pour terminer, redémarrez votre ordinateur."
       ],
       "Screenshots": [
-        "compte-invité/compte-invité-1.png",
-        "compte-invité/compte-invité-1.png",
-        "compte-invité/compte-invité-1.png",
-        "compte-invité/compte-invité-3.png",
-        "compte-invité/compte-invité-3.png"
+        "guest-account/guest-account-1.png",
+        "guest-account/guest-account-1.png",
+        "guest-account/guest-account-1.png",
+        "guest-account/guest-account-3.png",
+        "guest-account/guest-account-3.png"
       ]
     },
     "1": {
@@ -80,10 +80,10 @@
         "Pour terminer, redémarrez votre ordinateur."
       ],
       "Screenshots": [
-        "compte-invité/compte-invité-1.png",
-        "compte-invité/compte-invité-1.png",
-        "compte-invité/compte-invité-3.png",
-        "compte-invité/compte-invité-3.png"
+        "guest-account/guest-account-1.png",
+        "guest-account/guest-account-1.png",
+        "guest-account/guest-account-3.png",
+        "guest-account/guest-account-3.png"
       ]
     },
     "2": {
@@ -118,8 +118,7 @@
         "Ici, vous pouvez contrôler les paramètres d'identification de la publicité et activer/désactiver la fonctionnalité."
       ],
       "Screenshots": [
-        "partage-réseau/partage-à proximité-1.png",
-        "partage-réseau/partage-à proximité-2.png"
+        "TOBEFILLED"
       ]
     },
     "Type": "Confidentialité",
@@ -142,8 +141,8 @@
         "Suivez les étapes d'installation fournies par le site Web du gestionnaire de mots de passe."
       ],
       "Screenshots": [
-        "gestionnaire de mots de passe/gestionnaire de mots de passe-1.png",
-        "gestionnaire de mots de passe/gestionnaire de mots de passe-1.png"
+        "password-manager/password-manager-1.png",
+        "password-manager/password-manager-1.png"
       ]
     },
     "Type": "Sécurité",
@@ -162,8 +161,8 @@
         "Ici, vous pouvez sélectionner l'emplacement pour voir quelles applications ont accès et vous pouvez révoquer l'accès à certaines applications."
       ],
       "Screenshots": [
-        "applications-avec-autorisation-de-localisation/location-permissions-1.png",
-        "applications-avec-autorisation-de-localisation/location-permissions-2.png"
+        "applications-with-location-permission/location-permissions-1.png",
+        "applications-with-location-permission/location-permissions-2.png"
       ]
     },
     "1": {
@@ -190,8 +189,8 @@
         "Ici, vous pouvez sélectionner le microphone pour voir quelles applications ont accès et vous pouvez révoquer l'accès à certaines applications."
       ],
       "Screenshots": [
-        "applications-avec-permission-microphone/permissions-microphone-1.png",
-        "applications-avec-permission-microphone/microphone-permissions-2.png"
+        "applications-with-microphone-permission/microphone-permissions-1.png",
+        "applications-with-microphone-permission/microphone-permissions-2.png"
       ]
     },
     "1": {
@@ -218,8 +217,8 @@
         "Ici, vous pouvez sélectionner la webcam pour voir quelles applications ont accès et vous pouvez révoquer l'accès à certaines applications."
       ],
       "Screenshots": [
-        "applications-avec-autorisation-webcam/webcam-permissions-1.png",
-        "applications-avec-autorisation-webcam/webcam-permissions-2.png"
+        "applications-with-webcam-permission/webcam-permissions-1.png",
+        "applications-with-webcam-permission/webcam-permissions-2.png"
       ]
     },
     "1": {
@@ -246,8 +245,8 @@
         "Ici, vous pouvez sélectionner des rendez-vous pour voir quelles applications ont accès et vous pouvez révoquer l'accès pour certaines applications."
       ],
       "Screenshots": [
-        "applications-avec-permission-de-calendrier/calendar-permissions-1.png",
-        "applications-avec-permission-de-calendrier/calendar-permissions-2.png"
+        "applications-with-calendar-permission/calendar-permissions-1.png",
+        "applications-with-calendar-permission/calendar-permissions-2.png"
       ]
     },
     "1": {
@@ -274,8 +273,8 @@
         "Ici, vous pouvez sélectionner des contacts pour voir quelles applications ont accès et vous pouvez révoquer l'accès à certaines applications."
       ],
       "Screenshots": [
-        "applications-avec-autorisation-contacts/contacts-permissions-1.png",
-        "applications-avec-permission-de-contacts/contacts-permissions-2.png"
+        "applications-with-contacts-permission/contacts-permissions-1.png",
+        "applications-with-contacts-permission/contacts-permissions-2.png"
       ]
     },
     "1": {
@@ -300,10 +299,7 @@
         "Si vous voyez des programmes ou des ports suspects, vous pouvez les fermer en arrêtant le programme correspondant."
       ],
       "Screenshots": [
-        "appareils-connectés-via-bluetooth/bluetooth-devices-1.png",
-        "appareils-connectés-via-bluetooth/bluetooth-devices-1.png",
-        "appareils-connectés-via-bluetooth/bluetooth-devices-1.png",
-        "appareils-connectés-via-bluetooth/bluetooth-devices-1.png"
+        "TOBEFILLED"
       ]
     },
     "Type": "Sécurité",
@@ -349,10 +345,10 @@
         "Pour terminer, redémarrez votre ordinateur."
       ],
       "Screenshots": [
-        "statut-smb/smb-1.png",
-        "statut-smb/smb-1.png",
-        "statut-smb/smb-2.png",
-        "statut-smb/smb-2.png"
+        "smb-status/smb-1.png",
+        "smb-status/smb-1.png",
+        "smb-status/smb-2.png",
+        "smb-status/smb-2.png"
       ]
     },
     "2": {
@@ -373,10 +369,10 @@
         "Pour terminer, redémarrez votre ordinateur."
       ],
       "Screenshots": [
-        "statut-smb/smb-1.png",
-        "statut-smb/smb-1.png",
-        "statut-smb/smb-2.png",
-        "statut-smb/smb-2.png"
+        "smb-status/smb-1.png",
+        "smb-status/smb-1.png",
+        "smb-status/smb-2.png",
+        "smb-status/smb-2.png"
       ]
     },
     "Type": "Sécurité",
@@ -405,12 +401,12 @@
         "Pour terminer, redémarrez votre ordinateur."
       ],
       "Screenshots": [
-        "contrôle-de-compte-utilisateur/contrôle-de-compte-utilisateur-1.png",
-        "contrôle-de-compte-utilisateur/contrôle-de-compte-utilisateur-2.png",
-        "contrôle-de-compte-utilisateur/contrôle-de-compte-utilisateur-2.png",
-        "contrôle-de-compte-utilisateur/contrôle-de-compte-utilisateur-3.png",
-        "contrôle-de-compte-utilisateur/contrôle-de-compte-utilisateur-5.png",
-        "contrôle-de-compte-utilisateur/contrôle-de-compte-utilisateur-5.png"
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-3.png",
+        "user-account-control/user-account-control-5.png",
+        "user-account-control/user-account-control-5.png"
       ]
     },
     "1": {
@@ -444,13 +440,13 @@
         "Pour terminer, redémarrez votre ordinateur."
       ],
       "Screenshots": [
-        "contrôle-de-compte-utilisateur/contrôle-de-compte-utilisateur-1.png",
-        "contrôle-de-compte-utilisateur/contrôle-de-compte-utilisateur-1.png",
-        "contrôle-de-compte-utilisateur/contrôle-de-compte-utilisateur-2.png",
-        "contrôle-de-compte-utilisateur/contrôle-de-compte-utilisateur-2.png",
-        "contrôle-de-compte-utilisateur/contrôle-de-compte-utilisateur-3.png",
-        "contrôle-de-compte-utilisateur/contrôle-de-compte-utilisateur-5.png",
-        "contrôle-de-compte-utilisateur/contrôle-de-compte-utilisateur-5.png"
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-3.png",
+        "user-account-control/user-account-control-5.png",
+        "user-account-control/user-account-control-5.png"
       ]
     },
     "3": {
@@ -476,13 +472,13 @@
         "Pour terminer, redémarrez votre ordinateur."
       ],
       "Screenshots": [
-        "contrôle-de-compte-utilisateur/contrôle-de-compte-utilisateur-1.png",
-        "contrôle-de-compte-utilisateur/contrôle-de-compte-utilisateur-1.png",
-        "contrôle-de-compte-utilisateur/contrôle-de-compte-utilisateur-2.png",
-        "contrôle-de-compte-utilisateur/contrôle-de-compte-utilisateur-2.png",
-        "contrôle-de-compte-utilisateur/contrôle-de-compte-utilisateur-3.png",
-        "contrôle-de-compte-utilisateur/contrôle-de-compte-utilisateur-5.png",
-        "contrôle-de-compte-utilisateur/contrôle-de-compte-utilisateur-5.png"
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-3.png",
+        "user-account-control/user-account-control-5.png",
+        "user-account-control/user-account-control-5.png"
       ]
     },
     "Type": "Sécurité",
@@ -547,9 +543,9 @@
         "Vous pouvez maintenant remplacer votre mot de passe par un nouveau mot de passe unique."
       ],
       "Screenshots": [
-        "dernier-mot-de-passe-change/change-password-1.png",
-        "dernier-mot-de-passe-change/change-password-2.png",
-        "dernier-mot-de-passe-change/change-password-2.png"
+        "last-password-change/change-password-1.png",
+        "last-password-change/change-password-2.png",
+        "last-password-change/change-password-2.png"
       ]
     },
     "1": {
@@ -572,8 +568,8 @@
         "Vous pouvez maintenant configurer l'une des méthodes de connexion disponibles en suivant les étapes décrites."
       ],
       "Screenshots": [
-        "méthode de connexion Windows/méthode de connexion-1.png",
-        "méthode de connexion Windows/méthode de connexion-2.png"
+        "windows-login-method/login-method-1.png",
+        "windows-login-method/login-method-2.png"
       ]
     },
     "1": {
@@ -592,8 +588,8 @@
         "Vous pouvez désormais configurer une méthode de connexion sécurisée en utilisant le mot de passe ou l'empreinte digitale comme méthode de connexion."
       ],
       "Screenshots": [
-        "méthode de connexion Windows/méthode de connexion-1.png",
-        "méthode de connexion Windows/méthode de connexion-2.png"
+        "windows-login-method/login-method-1.png",
+        "windows-login-method/login-method-2.png"
       ]
     },
     "3": {
@@ -604,8 +600,8 @@
         "Vous pouvez désormais configurer une méthode de connexion sécurisée en utilisant le mot de passe ou l'empreinte digitale comme méthode de connexion."
       ],
       "Screenshots": [
-        "méthode de connexion Windows/méthode de connexion-1.png",
-        "méthode de connexion Windows/méthode de connexion-2.png"
+        "windows-login-method/login-method-1.png",
+        "windows-login-method/login-method-2.png"
       ]
     },
     "Type": "Sécurité",
@@ -628,8 +624,8 @@
         "Ici, vous pouvez rechercher des mises à jour et installer des mises à jour."
       ],
       "Screenshots": [
-        "version-windows-obsolète/windows-update-1.png",
-        "version-windows-obsolète/windows-update-2.png"
+        "outdated-windows-version/windows-update-1.png",
+        "outdated-windows-version/windows-update-2.png"
       ]
     },
     "2": {
@@ -640,8 +636,8 @@
         "Ici, vous pouvez rechercher des mises à jour et installer des mises à jour."
       ],
       "Screenshots": [
-        "version-windows-obsolète/windows-update-1.png",
-        "version-windows-obsolète/windows-update-2.png"
+        "outdated-windows-version/windows-update-1.png",
+        "outdated-windows-version/windows-update-2.png"
       ]
     },
     "Type": "Sécurité",
@@ -695,8 +691,8 @@
         "Ici, vous pouvez choisir quelles applications démarreront automatiquement au démarrage."
       ],
       "Screenshots": [
-        "applications-qui-démarrent-au-démarrage/boot-apps-1.png",
-        "applications-qui-démarrent-au-démarrage/boot-apps-2.png"
+        "applications-which-start-at-boot/boot-apps-1.png",
+        "applications-which-start-at-boot/boot-apps-2.png"
       ]
     },
     "Type": "Sécurité",

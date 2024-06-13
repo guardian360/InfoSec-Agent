@@ -16,8 +16,8 @@
         "Hier zie je welke apparaten via bluetooth zijn verbonden en kun je deze indien nodig verwijderen."
       ],
       "Screenshots": [
-        "apparaten-verbonden-via-bluetooth/bluetooth-apparaten-1.png",
-        "apparaten-verbonden-via-bluetooth/bluetooth-apparaten-2.png"
+        "devices-connected-via-bluetooth/bluetooth-devices-1.png",
+        "devices-connected-via-bluetooth/bluetooth-devices-2.png"
       ]
     },
     "Type": "Beveiliging",
@@ -47,7 +47,7 @@
   },
   "3": {
     "0": {
-      "Severity": 1,
+      "Severity": -1,
       "Name": "Status van gastaccount onbekend",
       "Solution": [
         "Een onbekende gastaccountstatus kan een veiligheidsrisico vormen. ",
@@ -57,11 +57,11 @@
         "Start uw computer opnieuw op om te voltooien."
       ],
       "Screenshots": [
-        "gast-account/gast-account-1.png",
-        "gast-account/gast-account-1.png",
-        "gast-account/gast-account-1.png",
-        "gast-account/gast-account-3.png",
-        "gast-account/gast-account-3.png"
+        "guest-account/guest-account-1.png",
+        "guest-account/guest-account-1.png",
+        "guest-account/guest-account-1.png",
+        "guest-account/guest-account-3.png",
+        "guest-account/guest-account-3.png"
       ]
     },
     "1": {
@@ -80,10 +80,10 @@
         "Start uw computer opnieuw op om te voltooien."
       ],
       "Screenshots": [
-        "gast-account/gast-account-1.png",
-        "gast-account/gast-account-1.png",
-        "gast-account/gast-account-3.png",
-        "gast-account/gast-account-3.png"
+        "guest-account/guest-account-1.png",
+        "guest-account/guest-account-1.png",
+        "guest-account/guest-account-3.png",
+        "guest-account/guest-account-3.png"
       ]
     },
     "2": {
@@ -118,9 +118,8 @@
         "Hier kunt u de advertentie-ID-instellingen beheren en de functie in-/uitschakelen."
       ],
       "Screenshots": [
-        "netwerk-delen/dichtbij-delen-1.png",
-        "netwerk-delen/dichtbij-delen-2.png"
-      ]
+        "TOBEFILLED"
+        ]
     },
     "Type": "Privacy",
     "Information": "Met de advertentie-ID-instelling kan Windows u gepersonaliseerde advertenties sturen. "
@@ -142,8 +141,8 @@
         "Volg de installatiestappen van de website van de wachtwoordbeheerder."
       ],
       "Screenshots": [
-        "wachtwoordbeheerder/wachtwoordmanager-1.png",
-        "wachtwoordbeheerder/wachtwoordmanager-1.png"
+        "password-manager/password-manager-1.png",
+        "password-manager/password-manager-1.png"
       ]
     },
     "Type": "Beveiliging",
@@ -162,8 +161,8 @@
         "Hier kunt u een locatie selecteren om te zien welke applicaties toegang hebben, en u kunt voor bepaalde applicaties de toegang intrekken."
       ],
       "Screenshots": [
-        "applicaties-met-locatie-toestemming/locatie-permissies-1.png",
-        "applicaties-met-locatie-toestemming/locatie-permissies-2.png"
+        "applications-with-location-permission/location-permissions-1.png",
+        "applications-with-location-permission/location-permissions-2.png"
       ]
     },
     "1": {
@@ -190,8 +189,8 @@
         "Hier kunt u de microfoon selecteren om te zien welke applicaties toegang hebben, en u kunt de toegang voor bepaalde applicaties intrekken."
       ],
       "Screenshots": [
-        "applicaties-met-microfoon-toestemming/microfoon-permissies-1.png",
-        "applicaties-met-microfoon-toestemming/microfoon-permissies-2.png"
+        "applications-with-microphone-permission/microphone-permissions-1.png",
+        "applications-with-microphone-permission/microphone-permissions-2.png"
       ]
     },
     "1": {
@@ -218,8 +217,8 @@
         "Hier kunt u webcam selecteren om te zien welke applicaties toegang hebben, en u kunt voor bepaalde applicaties de toegang intrekken."
       ],
       "Screenshots": [
-        "applicaties-met-webcam-toestemming/webcam-toestemmingen-1.png",
-        "applicaties-met-webcam-toestemming/webcam-toestemmingen-2.png"
+        "applications-with-webcam-permission/webcam-permissions-1.png",
+        "applications-with-webcam-permission/webcam-permissions-2.png"
       ]
     },
     "1": {
@@ -246,8 +245,8 @@
         "Hier kunt u afspraken selecteren om te zien welke applicaties toegang hebben en voor bepaalde applicaties kunt u de toegang intrekken."
       ],
       "Screenshots": [
-        "applicaties-met-kalender-machtiging/kalender-machtigingen-1.png",
-        "applicaties-met-kalender-machtiging/kalender-machtigingen-2.png"
+        "applications-with-calendar-permission/calendar-permissions-1.png",
+        "applications-with-calendar-permission/calendar-permissions-2.png"
       ]
     },
     "1": {
@@ -274,8 +273,8 @@
         "Hier kunt u contacten selecteren om te zien welke applicaties toegang hebben, en voor bepaalde applicaties kunt u de toegang intrekken."
       ],
       "Screenshots": [
-        "applicaties-met-contacten-toestemming/contacten-toestemmingen-1.png",
-        "applicaties-met-contacten-toestemming/contacten-toestemmingen-2.png"
+        "applications-with-contacts-permission/contacts-permissions-1.png",
+        "applications-with-contacts-permission/contacts-permissions-2.png"
       ]
     },
     "1": {
@@ -300,10 +299,7 @@
         "Als u verdachte programma's of poorten ziet, kunt u deze sluiten door het bijbehorende programma af te sluiten."
       ],
       "Screenshots": [
-        "apparaten-verbonden-via-bluetooth/bluetooth-apparaten-1.png",
-        "apparaten-verbonden-via-bluetooth/bluetooth-apparaten-1.png",
-        "apparaten-verbonden-via-bluetooth/bluetooth-apparaten-1.png",
-        "apparaten-verbonden-via-bluetooth/bluetooth-apparaten-1.png"
+        "TOBEFILLED"
       ]
     },
     "Type": "Beveiliging",
@@ -405,19 +401,19 @@
         "Start uw computer opnieuw op om te voltooien."
       ],
       "Screenshots": [
-        "gebruikersaccountbeheer/gebruikersaccountbeheer-1.png",
-        "gebruikersaccountbeheer/gebruikersaccountbeheer-2.png",
-        "gebruikersaccountbeheer/gebruikersaccountbeheer-2.png",
-        "gebruikersaccountcontrole/gebruikersaccountcontrole-3.png",
-        "gebruikersaccountcontrole/gebruikersaccountcontrole-5.png",
-        "gebruikersaccountcontrole/gebruikersaccountcontrole-5.png"
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-3.png",
+        "user-account-control/user-account-control-5.png",
+        "user-account-control/user-account-control-5.png"
       ]
     },
     "1": {
       "Severity": 0,
       "Name": "Gebruikersaccountbeheer voor alles ingeschakeld",
       "Solution": [
-        "De instellingen voor het gebruikersaccountbeheer staan ​​op 'Altijd melden', er is dus geen actie nodig."
+        "De instellingen voor het gebruikersaccountbeheer staan op 'Altijd melden', er is dus geen actie nodig."
       ],
       "Screenshots": []
     },
@@ -444,13 +440,13 @@
         "Start uw computer opnieuw op om te voltooien."
       ],
       "Screenshots": [
-        "gebruikersaccountbeheer/gebruikersaccountbeheer-1.png",
-        "gebruikersaccountbeheer/gebruikersaccountbeheer-1.png",
-        "gebruikersaccountbeheer/gebruikersaccountbeheer-2.png",
-        "gebruikersaccountbeheer/gebruikersaccountbeheer-2.png",
-        "gebruikersaccountcontrole/gebruikersaccountcontrole-3.png",
-        "gebruikersaccountcontrole/gebruikersaccountcontrole-5.png",
-        "gebruikersaccountcontrole/gebruikersaccountcontrole-5.png"
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-3.png",
+        "user-account-control/user-account-control-5.png",
+        "user-account-control/user-account-control-5.png"
       ]
     },
     "3": {
@@ -476,13 +472,13 @@
         "Start uw computer opnieuw op om te voltooien."
       ],
       "Screenshots": [
-        "gebruikersaccountbeheer/gebruikersaccountbeheer-1.png",
-        "gebruikersaccountbeheer/gebruikersaccountbeheer-1.png",
-        "gebruikersaccountbeheer/gebruikersaccountbeheer-2.png",
-        "gebruikersaccountbeheer/gebruikersaccountbeheer-2.png",
-        "gebruikersaccountcontrole/gebruikersaccountcontrole-3.png",
-        "gebruikersaccountcontrole/gebruikersaccountcontrole-5.png",
-        "gebruikersaccountcontrole/gebruikersaccountcontrole-5.png"
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-3.png",
+        "user-account-control/user-account-control-5.png",
+        "user-account-control/user-account-control-5.png"
       ]
     },
     "Type": "Beveiliging",
@@ -547,9 +543,9 @@
         "U kunt nu uw wachtwoord wijzigen in een nieuw, uniek wachtwoord."
       ],
       "Screenshots": [
-        "laatste-wachtwoord-wijziging/wijzig-wachtwoord-1.png",
-        "laatste-wachtwoord-wijziging/wijzig-wachtwoord-2.png",
-        "laatste-wachtwoord-wijziging/wijzig-wachtwoord-2.png"
+        "last-password-change/change-password-1.png",
+        "last-password-change/change-password-2.png",
+        "last-password-change/change-password-2.png"
       ]
     },
     "1": {
@@ -572,8 +568,8 @@
         "Nu kunt u een van de beschikbare inlogmethoden instellen door de beschreven stappen te volgen."
       ],
       "Screenshots": [
-        "windows-login-methode/login-methode-1.png",
-        "windows-login-methode/login-methode-2.png"
+        "windows-login-method/login-method-1.png",
+        "windows-login-method/login-method-2.png"
       ]
     },
     "1": {
@@ -592,8 +588,8 @@
         "Nu kunt u een veilige inlogmethode instellen door het wachtwoord of de vingerafdruk als inlogmethode te gebruiken."
       ],
       "Screenshots": [
-        "windows-login-methode/login-methode-1.png",
-        "windows-login-methode/login-methode-2.png"
+        "windows-login-method/login-method-1.png",
+        "windows-login-method/login-method-2.png"
       ]
     },
     "3": {
@@ -604,8 +600,8 @@
         "Nu kunt u een veilige inlogmethode instellen door het wachtwoord of de vingerafdruk als inlogmethode te gebruiken."
       ],
       "Screenshots": [
-        "windows-login-methode/login-methode-1.png",
-        "windows-login-methode/login-methode-2.png"
+        "windows-login-method/login-method-1.png",
+        "windows-login-method/login-method-2.png"
       ]
     },
     "Type": "Beveiliging",
@@ -628,8 +624,8 @@
         "Hier kunt u controleren op updates en updates installeren."
       ],
       "Screenshots": [
-        "verouderde-windows-versie/windows-update-1.png",
-        "verouderde-windows-versie/windows-update-2.png"
+        "outdated-windows-version/windows-update-1.png",
+        "outdated-windows-version/windows-update-2.png"
       ]
     },
     "2": {
@@ -640,8 +636,8 @@
         "Hier kunt u controleren op updates en updates installeren."
       ],
       "Screenshots": [
-        "verouderde-windows-versie/windows-update-1.png",
-        "verouderde-windows-versie/windows-update-2.png"
+        "outdated-windows-version/windows-update-1.png",
+        "outdated-windows-version/windows-update-2.png"
       ]
     },
     "Type": "Beveiliging",
@@ -695,8 +691,8 @@
         "Hier kunt u kiezen welke applicaties automatisch starten tijdens het opstarten."
       ],
       "Screenshots": [
-        "applicaties-die-starten-bij-boot/boot-apps-1.png",
-        "applicaties-die-starten-bij-boot/boot-apps-2.png"
+        "applications-which-start-at-boot/boot-apps-1.png",
+        "applications-which-start-at-boot/boot-apps-2.png"
       ]
     },
     "Type": "Beveiliging",
@@ -861,9 +857,9 @@
         "Hier kunt u de in uw browser geïnstalleerde extensies bekijken en beheren. "
       ],
       "Screenshots": [
-        "firefox-extensies/extensies-firefox-1.png",
-        "firefox-extensies/extensies-firefox-2.png",
-        "firefox-extensies/extensies-firefox-3.png"
+        "firefox-extensions/extensions-firefox-1.png",
+        "firefox-extensions/extensions-firefox-2.png",
+        "firefox-extensions/extensions-firefox-3.png"
       ]
     },
     "Type": "Privacy",

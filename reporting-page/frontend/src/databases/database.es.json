@@ -16,8 +16,8 @@
         "Aquí puedes ver qué dispositivos están conectados mediante bluetooth y puedes eliminarlos si es necesario."
       ],
       "Screenshots": [
-        "dispositivos-conectados-a-traves-de-bluetooth/dispositivos-bluetooth-1.png",
-        "dispositivos-conectados-a-traves-de-bluetooth/dispositivos-bluetooth-2.png"
+        "devices-connected-via-bluetooth/bluetooth-devices-1.png",
+        "devices-connected-via-bluetooth/bluetooth-devices-2.png"
       ]
     },
     "Type": "Seguridad",
@@ -47,7 +47,7 @@
   },
   "3": {
     "0": {
-      "Severity": 1,
+      "Severity": -1,
       "Name": "Estado de la cuenta de invitado desconocido",
       "Solution": [
         "Un estado de cuenta de invitado desconocido puede representar un riesgo para la seguridad. ",
@@ -57,11 +57,11 @@
         "Para finalizar, reinicia tu computadora."
       ],
       "Screenshots": [
-        "cuenta-invitado/cuenta-invitado-1.png",
-        "cuenta-invitado/cuenta-invitado-1.png",
-        "cuenta-invitado/cuenta-invitado-1.png",
-        "cuenta-invitado/cuenta-invitado-3.png",
-        "cuenta-invitado/cuenta-invitado-3.png"
+        "guest-account/guest-account-1.png",
+        "guest-account/guest-account-1.png",
+        "guest-account/guest-account-1.png",
+        "guest-account/guest-account-3.png",
+        "guest-account/guest-account-3.png"
       ]
     },
     "1": {
@@ -80,10 +80,10 @@
         "Para finalizar, reinicia tu computadora."
       ],
       "Screenshots": [
-        "cuenta-invitado/cuenta-invitado-1.png",
-        "cuenta-invitado/cuenta-invitado-1.png",
-        "cuenta-invitado/cuenta-invitado-3.png",
-        "cuenta-invitado/cuenta-invitado-3.png"
+        "guest-account/guest-account-1.png",
+        "guest-account/guest-account-1.png",
+        "guest-account/guest-account-1.png",
+        "guest-account/guest-account-1.png"
       ]
     },
     "2": {
@@ -118,8 +118,7 @@
         "Aquí puede controlar la configuración del ID de publicidad y activar o desactivar la función."
       ],
       "Screenshots": [
-        "compartir-red/compartir-cerca-1.png",
-        "compartir-red/compartir-cercano-2.png"
+        "TOBEFILLED"
       ]
     },
     "Type": "Privacidad",
@@ -142,8 +141,8 @@
         "Siga los pasos de instalación proporcionados por el sitio web del administrador de contraseñas."
       ],
       "Screenshots": [
-        "administrador-de-contraseñas/administrador-de-contraseñas-1.png",
-        "administrador-de-contraseñas/administrador-de-contraseñas-1.png"
+        "password-manager/password-manager-1.png",
+        "password-manager/password-manager-1.png"
       ]
     },
     "Type": "Seguridad",
@@ -162,8 +161,8 @@
         "Aquí puede seleccionar la ubicación para ver qué aplicaciones tienen acceso y puede revocar el acceso para determinadas aplicaciones."
       ],
       "Screenshots": [
-        "aplicaciones-con-permiso-de-ubicación/permisos-de-ubicación-1.png",
-        "aplicaciones-con-permiso-de-ubicación/permisos-de-ubicación-2.png"
+        "applications-with-location-permission/location-permissions-1.png",
+        "applications-with-location-permission/location-permissions-2.png"
       ]
     },
     "1": {
@@ -190,8 +189,8 @@
         "Aquí puede seleccionar el micrófono para ver qué aplicaciones tienen acceso y puede revocar el acceso a determinadas aplicaciones."
       ],
       "Screenshots": [
-        "aplicaciones-con-permiso-de-micrófono/permisos-de-micrófono-1.png",
-        "aplicaciones-con-permiso-de-micrófono/permisos-de-micrófono-2.png"
+        "applications-with-microphone-permission/microphone-permissions-1.png",
+        "applications-with-microphone-permission/microphone-permissions-2.png"
       ]
     },
     "1": {
@@ -218,8 +217,8 @@
         "Aquí puede seleccionar la cámara web para ver qué aplicaciones tienen acceso y puede revocar el acceso a determinadas aplicaciones."
       ],
       "Screenshots": [
-        "aplicaciones-con-permiso-de-cámara web/permisos-de-cámara-web-1.png",
-        "aplicaciones-con-permiso-de-cámara web/permisos-de-cámara-web-2.png"
+        "applications-with-webcam-permission/webcam-permissions-1.png",
+        "applications-with-webcam-permission/webcam-permissions-2.png"
       ]
     },
     "1": {
@@ -246,8 +245,8 @@
         "Aquí puede seleccionar citas para ver qué aplicaciones tienen acceso y puede revocar el acceso para determinadas aplicaciones."
       ],
       "Screenshots": [
-        "aplicaciones-con-permiso-de-calendario/permisos-de-calendario-1.png",
-        "aplicaciones-con-permiso-de-calendario/permisos-de-calendario-2.png"
+        "applications-with-calendar-permission/calendar-permissions-1.png",
+        "applications-with-calendar-permission/calendar-permissions-2.png"
       ]
     },
     "1": {
@@ -274,8 +273,8 @@
         "Aquí puede seleccionar contactos para ver qué aplicaciones tienen acceso y puede revocar el acceso para determinadas aplicaciones."
       ],
       "Screenshots": [
-        "aplicaciones-con-permiso-de-contactos/contactos-permisos-1.png",
-        "aplicaciones-con-permiso-de-contactos/permisos-de-contactos-2.png"
+        "applications-with-contacts-permission/contacts-permissions-1.png",
+        "applications-with-contacts-permission/contacts-permissions-2.png"
       ]
     },
     "1": {
@@ -300,10 +299,7 @@
         "Si ve algún programa o puerto sospechoso, puede cerrarlo cerrando el programa correspondiente."
       ],
       "Screenshots": [
-        "dispositivos-conectados-a-traves-de-bluetooth/dispositivos-bluetooth-1.png",
-        "dispositivos-conectados-a-traves-de-bluetooth/dispositivos-bluetooth-1.png",
-        "dispositivos-conectados-a-traves-de-bluetooth/dispositivos-bluetooth-1.png",
-        "dispositivos-conectados-a-traves-de-bluetooth/dispositivos-bluetooth-1.png"
+        "TOBEFILLED"
       ]
     },
     "Type": "Seguridad",
@@ -349,8 +345,8 @@
         "Para finalizar, reinicia tu computadora."
       ],
       "Screenshots": [
-        "smb-estado/smb-1.png",
-        "smb-estado/smb-1.png",
+        "smb-status/smb-1.png",
+        "smb-status/smb-1.png",
         "smb-status/smb-2.png",
         "smb-status/smb-2.png"
       ]
@@ -373,8 +369,8 @@
         "Para finalizar, reinicia tu computadora."
       ],
       "Screenshots": [
-        "smb-estado/smb-1.png",
-        "smb-estado/smb-1.png",
+        "smb-status/smb-1.png",
+        "smb-status/smb-1.png",
         "smb-status/smb-2.png",
         "smb-status/smb-2.png"
       ]
@@ -405,12 +401,12 @@
         "Para finalizar, reinicia tu computadora."
       ],
       "Screenshots": [
-        "control-de-cuenta-de-usuario/control-de-cuenta-de-usuario-1.png",
-        "control-de-cuenta-de-usuario/control-de-cuenta-de-usuario-2.png",
-        "control-de-cuenta-de-usuario/control-de-cuenta-de-usuario-2.png",
-        "control-de-cuenta-de-usuario/control-de-cuenta-de-usuario-3.png",
-        "control-de-cuenta-de-usuario/control-de-cuenta-de-usuario-5.png",
-        "control-de-cuenta-de-usuario/control-de-cuenta-de-usuario-5.png"
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-3.png",
+        "user-account-control/user-account-control-5.png",
+        "user-account-control/user-account-control-5.png"
       ]
     },
     "1": {
@@ -444,13 +440,13 @@
         "Para finalizar, reinicia tu computadora."
       ],
       "Screenshots": [
-        "control-de-cuenta-de-usuario/control-de-cuenta-de-usuario-1.png",
-        "control-de-cuenta-de-usuario/control-de-cuenta-de-usuario-1.png",
-        "control-de-cuenta-de-usuario/control-de-cuenta-de-usuario-2.png",
-        "control-de-cuenta-de-usuario/control-de-cuenta-de-usuario-2.png",
-        "control-de-cuenta-de-usuario/control-de-cuenta-de-usuario-3.png",
-        "control-de-cuenta-de-usuario/control-de-cuenta-de-usuario-5.png",
-        "control-de-cuenta-de-usuario/control-de-cuenta-de-usuario-5.png"
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-3.png",
+        "user-account-control/user-account-control-5.png",
+        "user-account-control/user-account-control-5.png"
       ]
     },
     "3": {
@@ -476,13 +472,13 @@
         "Para finalizar, reinicia tu computadora."
       ],
       "Screenshots": [
-        "control-de-cuenta-de-usuario/control-de-cuenta-de-usuario-1.png",
-        "control-de-cuenta-de-usuario/control-de-cuenta-de-usuario-1.png",
-        "control-de-cuenta-de-usuario/control-de-cuenta-de-usuario-2.png",
-        "control-de-cuenta-de-usuario/control-de-cuenta-de-usuario-2.png",
-        "control-de-cuenta-de-usuario/control-de-cuenta-de-usuario-3.png",
-        "control-de-cuenta-de-usuario/control-de-cuenta-de-usuario-5.png",
-        "control-de-cuenta-de-usuario/control-de-cuenta-de-usuario-5.png"
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-3.png",
+        "user-account-control/user-account-control-5.png",
+        "user-account-control/user-account-control-5.png"
       ]
     },
     "Type": "Seguridad",
@@ -547,9 +543,9 @@
         "Ahora puede cambiar su contraseña por una nueva y única."
       ],
       "Screenshots": [
-        "último-cambio-de-contraseña/cambiar-contraseña-1.png",
-        "último-cambio-de-contraseña/cambiar-contraseña-2.png",
-        "último-cambio-de-contraseña/cambiar-contraseña-2.png"
+        "last-password-change/change-password-1.png",
+        "last-password-change/change-password-2.png",
+        "last-password-change/change-password-2.png"
       ]
     },
     "1": {
@@ -572,8 +568,8 @@
         "Ahora puede configurar uno de los métodos de inicio de sesión disponibles siguiendo los pasos descritos."
       ],
       "Screenshots": [
-        "método-de-inicio-de-sesión-de-Windows/método-de-inicio-de-sesión-1.png",
-        "método-de-inicio-de-sesión-de-windows/método-de-inicio-de-sesión-2.png"
+        "windows-login-method/login-method-1.png",
+        "windows-login-method/login-method-2.png"
       ]
     },
     "1": {
@@ -592,8 +588,8 @@
         "Ahora puede configurar un método de inicio de sesión seguro utilizando la contraseña o la huella digital como método de inicio de sesión."
       ],
       "Screenshots": [
-        "método-de-inicio-de-sesión-de-Windows/método-de-inicio-de-sesión-1.png",
-        "método-de-inicio-de-sesión-de-windows/método-de-inicio-de-sesión-2.png"
+        "windows-login-method/login-method-1.png",
+        "windows-login-method/login-method-2.png"
       ]
     },
     "3": {
@@ -604,8 +600,8 @@
         "Ahora puede configurar un método de inicio de sesión seguro utilizando la contraseña o la huella digital como método de inicio de sesión."
       ],
       "Screenshots": [
-        "método-de-inicio-de-sesión-de-Windows/método-de-inicio-de-sesión-1.png",
-        "método-de-inicio-de-sesión-de-windows/método-de-inicio-de-sesión-2.png"
+        "windows-login-method/login-method-1.png",
+        "windows-login-method/login-method-2.png"
       ]
     },
     "Type": "Seguridad",
@@ -628,8 +624,8 @@
         "Aquí puede buscar actualizaciones e instalarlas."
       ],
       "Screenshots": [
-        "versión-desactualizada-de-windows/windows-update-1.png",
-        "versión-desactualizada-de-windows/windows-update-2.png"
+        "outdated-windows-version/windows-update-1.png",
+        "outdated-windows-version/windows-update-2.png"
       ]
     },
     "2": {
@@ -640,8 +636,8 @@
         "Aquí puede buscar actualizaciones e instalarlas."
       ],
       "Screenshots": [
-        "versión-desactualizada-de-windows/windows-update-1.png",
-        "versión-desactualizada-de-windows/windows-update-2.png"
+        "outdated-windows-version/windows-update-1.png",
+        "outdated-windows-version/windows-update-2.png"
       ]
     },
     "Type": "Seguridad",
@@ -695,8 +691,8 @@
         "Aquí puede elegir qué aplicaciones se iniciarán automáticamente durante el arranque."
       ],
       "Screenshots": [
-        "aplicaciones-que-se-inician-en-el-arranque/boot-apps-1.png",
-        "aplicaciones-que-se-inician-en-el-arranque/boot-apps-2.png"
+        "applications-which-start-at-boot/boot-apps-1.png",
+        "applications-which-start-at-boot/boot-apps-2.png"
       ]
     },
     "Type": "Seguridad",
@@ -746,9 +742,9 @@
         "Haga clic en el botón 'Descargar' y reinicie el navegador."
       ],
       "Screenshots": [
-        "borde-adblocker/edge-adblocker-1.png",
-        "borde-adblocker/edge-adblocker-2.png",
-        "borde-adblocker/edge-adblocker-3.png"
+        "edge-adblocker/edge-adblocker-1.png",
+        "edge-adblocker/edge-adblocker-2.png",
+        "edge-adblocker/edge-adblocker-3.png"
       ]
     },
     "Type": "Privacidad",
@@ -842,10 +838,10 @@
         "La opción \"Protección de seguimiento mejorada\" debe configurarse en \"Estándar\" o \"Personalizado\". "
       ],
       "Screenshots": [
-        "cookies-de-firefox/cookies-firefox-1.png",
-        "cookies-de-firefox/cookies-firefox-2.png",
-        "cookies-de-firefox/cookies-firefox-3.png",
-        "cookies-de-firefox/cookies-firefox-4.png"
+        "firefox-cookies/cookies-firefox-1.png",
+        "firefox-cookies/cookies-firefox-2.png",
+        "firefox-cookies/cookies-firefox-3.png",
+        "firefox-cookies/cookies-firefox-4.png"
       ]
     },
     "Type": "Privacidad",
@@ -861,9 +857,9 @@
         "Aquí puede ver y administrar las extensiones instaladas en su navegador. "
       ],
       "Screenshots": [
-        "extensiones-de-firefox/extensiones-firefox-1.png",
-        "extensiones-de-firefox/extensiones-firefox-2.png",
-        "extensiones-de-firefox/extensiones-firefox-3.png"
+        "firefox-extensions/extensions-firefox-1.png",
+        "firefox-extensions/extensions-firefox-2.png",
+        "firefox-extensions/extensions-firefox-3.png"
       ]
     },
     "Type": "Privacidad",

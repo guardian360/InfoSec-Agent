@@ -47,7 +47,7 @@
   },
   "3": {
     "0": {
-      "Severity": 1,
+      "Severity": -1,
       "Name": "Guest account status unknown",
       "Solution": [
         "An unknown guest account status can be a security risk. To check the status and potentially solve the issue of the guest account, follow these steps.",
@@ -118,8 +118,7 @@
         "Here you can control the advertisement ID settings and turn the feature on/off."
       ],
       "Screenshots": [
-        "network-sharing/nearby-sharing-1.png",
-        "network-sharing/nearby-sharing-2.png"
+        "TOBEFILLED"
       ]
     },
     "Type": "Privacy",
@@ -300,10 +299,7 @@
         "If you see any suspicious programs or ports, you can close them by by shutting down the corresponding program."
       ],
       "Screenshots": [
-        "devices-connected-via-bluetooth/bluetooth-devices-1.png",
-        "devices-connected-via-bluetooth/bluetooth-devices-1.png",
-        "devices-connected-via-bluetooth/bluetooth-devices-1.png",
-        "devices-connected-via-bluetooth/bluetooth-devices-1.png"
+        "TOBEFILLED"
       ]
     },
     "Type": "Security",

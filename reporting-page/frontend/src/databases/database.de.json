@@ -47,7 +47,7 @@
   },
   "3": {
     "0": {
-      "Severity": 1,
+      "Severity": -1,
       "Name": "Status des Gastkontos unbekannt",
       "Solution": [
         "Ein unbekannter Gastkontostatus kann ein Sicherheitsrisiko darstellen. ",
@@ -57,11 +57,11 @@
         "Zum Abschluss starten Sie Ihren Computer neu."
       ],
       "Screenshots": [
-        "Gastkonto/Gastkonto-1.png",
-        "Gastkonto/Gastkonto-1.png",
-        "Gastkonto/Gastkonto-1.png",
-        "Gastkonto/Gastkonto-3.png",
-        "Gastkonto/Gastkonto-3.png"
+        "guest-account/guest-account-1.png",
+        "guest-account/guest-account-1.png",
+        "guest-account/guest-account-1.png",
+        "guest-account/guest-account-3.png",
+        "guest-account/guest-account-3.png"
       ]
     },
     "1": {
@@ -80,10 +80,10 @@
         "Zum Abschluss starten Sie Ihren Computer neu."
       ],
       "Screenshots": [
-        "Gastkonto/Gastkonto-1.png",
-        "Gastkonto/Gastkonto-1.png",
-        "Gastkonto/Gastkonto-3.png",
-        "Gastkonto/Gastkonto-3.png"
+        "guest-account/guest-account-1.png",
+        "guest-account/guest-account-1.png",
+        "guest-account/guest-account-3.png",
+        "guest-account/guest-account-3.png"
       ]
     },
     "2": {
@@ -118,8 +118,7 @@
         "Hier können Sie die Werbe-ID-Einstellungen steuern und die Funktion ein-/ausschalten."
       ],
       "Screenshots": [
-        "Netzwerkfreigabe/Nearby-Sharing-1.png",
-        "Netzwerkfreigabe/Nearby-Sharing-2.png"
+        "TOBEFILLED"
       ]
     },
     "Type": "Privatsphäre",
@@ -300,10 +299,7 @@
         "Wenn Sie verdächtige Programme oder Ports sehen, können Sie diese schließen, indem Sie das entsprechende Programm herunterfahren."
       ],
       "Screenshots": [
-        "devices-connected-via-bluetooth/bluetooth-devices-1.png",
-        "devices-connected-via-bluetooth/bluetooth-devices-1.png",
-        "devices-connected-via-bluetooth/bluetooth-devices-1.png",
-        "devices-connected-via-bluetooth/bluetooth-devices-1.png"
+        "TOBEFILLED"
       ]
     },
     "Type": "Sicherheit",
@@ -405,12 +401,12 @@
         "Zum Abschluss starten Sie Ihren Computer neu."
       ],
       "Screenshots": [
-        "Benutzerkontosteuerung/Benutzerkontosteuerung-1.png",
-        "Benutzerkontosteuerung/Benutzerkontosteuerung-2.png",
-        "Benutzerkontosteuerung/Benutzerkontosteuerung-2.png",
-        "Benutzerkontosteuerung/Benutzerkontosteuerung-3.png",
-        "Benutzerkontosteuerung/Benutzerkontosteuerung-5.png",
-        "Benutzerkontosteuerung/Benutzerkontosteuerung-5.png"
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-3.png",
+        "user-account-control/user-account-control-5.png",
+        "user-account-control/user-account-control-5.png"
       ]
     },
     "1": {
@@ -444,13 +440,13 @@
         "Zum Abschluss starten Sie Ihren Computer neu."
       ],
       "Screenshots": [
-        "Benutzerkontosteuerung/Benutzerkontosteuerung-1.png",
-        "Benutzerkontosteuerung/Benutzerkontosteuerung-1.png",
-        "Benutzerkontosteuerung/Benutzerkontosteuerung-2.png",
-        "Benutzerkontosteuerung/Benutzerkontosteuerung-2.png",
-        "Benutzerkontosteuerung/Benutzerkontosteuerung-3.png",
-        "Benutzerkontosteuerung/Benutzerkontosteuerung-5.png",
-        "Benutzerkontosteuerung/Benutzerkontosteuerung-5.png"
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-3.png",
+        "user-account-control/user-account-control-5.png",
+        "user-account-control/user-account-control-5.png"
       ]
     },
     "3": {
@@ -476,13 +472,13 @@
         "Zum Abschluss starten Sie Ihren Computer neu."
       ],
       "Screenshots": [
-        "Benutzerkontosteuerung/Benutzerkontosteuerung-1.png",
-        "Benutzerkontosteuerung/Benutzerkontosteuerung-1.png",
-        "Benutzerkontosteuerung/Benutzerkontosteuerung-2.png",
-        "Benutzerkontosteuerung/Benutzerkontosteuerung-2.png",
-        "Benutzerkontosteuerung/Benutzerkontosteuerung-3.png",
-        "Benutzerkontosteuerung/Benutzerkontosteuerung-5.png",
-        "Benutzerkontosteuerung/Benutzerkontosteuerung-5.png"
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-3.png",
+        "user-account-control/user-account-control-5.png",
+        "user-account-control/user-account-control-5.png"
       ]
     },
     "Type": "Sicherheit",
@@ -547,9 +543,9 @@
         "Sie können Ihr Passwort jetzt in ein neues, eindeutiges Passwort ändern."
       ],
       "Screenshots": [
-        "Letzte-Passwort-Änderung/Änderung-Passwort-1.png",
-        "Letzte-Passwort-Änderung/Änderung-Passwort-2.png",
-        "Letzte-Passwort-Änderung/Änderung-Passwort-2.png"
+        "last-password-change/change-password-1.png",
+        "last-password-change/change-password-2.png",
+        "last-password-change/change-password-2.png"
       ]
     },
     "1": {
@@ -572,8 +568,8 @@
         "Nun können Sie eine der verfügbaren Anmeldemethoden einrichten, indem Sie den beschriebenen Schritten folgen."
       ],
       "Screenshots": [
-        "Windows-Login-Methode/Login-Methode-1.png",
-        "Windows-Login-Methode/Login-Methode-2.png"
+        "windows-login-method/login-method-1.png",
+        "windows-login-method/login-method-2.png"
       ]
     },
     "1": {
@@ -592,8 +588,8 @@
         "Jetzt können Sie eine sichere Anmeldemethode einrichten, indem Sie entweder das Passwort oder den Fingerabdruck als Anmeldemethode verwenden."
       ],
       "Screenshots": [
-        "Windows-Login-Methode/Login-Methode-1.png",
-        "Windows-Login-Methode/Login-Methode-2.png"
+        "windows-login-method/login-method-1.png",
+        "windows-login-method/login-method-2.png"
       ]
     },
     "3": {
@@ -604,8 +600,8 @@
         "Jetzt können Sie eine sichere Anmeldemethode einrichten, indem Sie entweder das Passwort oder den Fingerabdruck als Anmeldemethode verwenden."
       ],
       "Screenshots": [
-        "Windows-Login-Methode/Login-Methode-1.png",
-        "Windows-Login-Methode/Login-Methode-2.png"
+        "windows-login-method/login-method-1.png",
+        "windows-login-method/login-method-2.png"
       ]
     },
     "Type": "Sicherheit",
@@ -628,8 +624,8 @@
         "Hier können Sie nach Updates suchen und Updates installieren."
       ],
       "Screenshots": [
-        "veraltete-Windows-Version/Windows-Update-1.png",
-        "veraltete-Windows-Version/Windows-Update-2.png"
+        "outdated-windows-version/windows-update-1.png",
+        "outdated-windows-version/windows-update-2.png"
       ]
     },
     "2": {
@@ -640,8 +636,8 @@
         "Hier können Sie nach Updates suchen und Updates installieren."
       ],
       "Screenshots": [
-        "veraltete-Windows-Version/Windows-Update-1.png",
-        "veraltete-Windows-Version/Windows-Update-2.png"
+        "outdated-windows-version/windows-update-1.png",
+        "outdated-windows-version/windows-update-2.png"
       ]
     },
     "Type": "Sicherheit",
@@ -695,8 +691,8 @@
         "Hier können Sie auswählen, welche Anwendungen beim Booten automatisch gestartet werden."
       ],
       "Screenshots": [
-        "apps-which-start-at-boot/boot-apps-1.png",
-        "apps-which-start-at-boot/boot-apps-2.png"
+        "applications-which-start-at-boot/boot-apps-1.png",
+        "applications-which-start-at-boot/boot-apps-2.png"
       ]
     },
     "Type": "Sicherheit",
@@ -861,9 +857,9 @@
         "Hier können Sie die in Ihrem Browser installierten Erweiterungen einsehen und verwalten. "
       ],
       "Screenshots": [
-        "Firefox-Erweiterungen/extensions-firefox-1.png",
-        "Firefox-Erweiterungen/extensions-firefox-2.png",
-        "Firefox-Erweiterungen/extensions-firefox-3.png"
+        "firefox-extensions/extensions-firefox-1.png",
+        "firefox-extensions/extensions-firefox-2.png",
+        "firefox-extensions/extensions-firefox-3.png"
       ]
     },
     "Type": "Privatsphäre",

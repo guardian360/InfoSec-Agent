@@ -16,8 +16,8 @@
         "Aqui você pode ver quais dispositivos estão conectados via bluetooth e removê-los, se necessário."
       ],
       "Screenshots": [
-        "dispositivos-conectados-via-bluetooth/bluetooth-devices-1.png",
-        "dispositivos-conectados-via-bluetooth/bluetooth-devices-2.png"
+        "devices-connected-via-bluetooth/bluetooth-devices-1.png",
+        "devices-connected-via-bluetooth/bluetooth-devices-2.png"
       ]
     },
     "Type": "Segurança",
@@ -47,7 +47,7 @@
   },
   "3": {
     "0": {
-      "Severity": 1,
+      "Severity": -1,
       "Name": "Status da conta de convidado desconhecido",
       "Solution": [
         "O status desconhecido de uma conta de convidado pode ser um risco à segurança. ",
@@ -57,11 +57,11 @@
         "Para finalizar, reinicie o seu computador."
       ],
       "Screenshots": [
-        "conta-convidado/conta-convidada-1.png",
-        "conta-convidado/conta-convidada-1.png",
-        "conta-convidado/conta-convidada-1.png",
-        "conta-convidado/conta-convidada-3.png",
-        "conta-convidado/conta-convidada-3.png"
+        "guest-account/guest-account-1.png",
+        "guest-account/guest-account-1.png",
+        "guest-account/guest-account-1.png",
+        "guest-account/guest-account-3.png",
+        "guest-account/guest-account-3.png"
       ]
     },
     "1": {
@@ -80,10 +80,10 @@
         "Para finalizar, reinicie o seu computador."
       ],
       "Screenshots": [
-        "conta-convidado/conta-convidada-1.png",
-        "conta-convidado/conta-convidada-1.png",
-        "conta-convidado/conta-convidada-3.png",
-        "conta-convidado/conta-convidada-3.png"
+        "guest-account/guest-account-1.png",
+        "guest-account/guest-account-1.png",
+        "guest-account/guest-account-3.png",
+        "guest-account/guest-account-3.png"
       ]
     },
     "2": {
@@ -118,8 +118,7 @@
         "Aqui você pode controlar as configurações de ID do anúncio e ativar/desativar o recurso."
       ],
       "Screenshots": [
-        "compartilhamento de rede/compartilhamento próximo-1.png",
-        "compartilhamento de rede/compartilhamento próximo-2.png"
+        "TOBEFILLED"
       ]
     },
     "Type": "Privacidade",
@@ -142,8 +141,8 @@
         "Siga as etapas de instalação fornecidas pelo site do gerenciador de senhas."
       ],
       "Screenshots": [
-        "gerenciador de senhas/gerenciador de senhas-1.png",
-        "gerenciador de senhas/gerenciador de senhas-1.png"
+        "password-manager/password-manager-1.png",
+        "password-manager/password-manager-1.png"
       ]
     },
     "Type": "Segurança",
@@ -162,8 +161,8 @@
         "Aqui você pode selecionar o local para ver quais aplicativos têm acesso e pode revogar o acesso para determinados aplicativos."
       ],
       "Screenshots": [
-        "aplicativos com permissão de localização/permissões de localização-1.png",
-        "aplicativos com permissão de localização/permissões de localização-2.png"
+        "applications-with-location-permission/location-permissions-1.png",
+        "applications-with-location-permission/location-permissions-2.png"
       ]
     },
     "1": {
@@ -190,8 +189,8 @@
         "Aqui você pode selecionar o microfone para ver quais aplicativos têm acesso e pode revogar o acesso para determinados aplicativos."
       ],
       "Screenshots": [
-        "aplicativos com permissão de microfone/permissões de microfone-1.png",
-        "aplicativos com permissão de microfone/permissões de microfone-2.png"
+        "applications-with-microphone-permission/microphone-permissions-1.png",
+        "applications-with-microphone-permission/microphone-permissions-2.png"
       ]
     },
     "1": {
@@ -218,8 +217,8 @@
         "Aqui você pode selecionar a webcam para ver quais aplicativos têm acesso e pode revogar o acesso para determinados aplicativos."
       ],
       "Screenshots": [
-        "aplicativos com permissão de webcam/permissões de webcam-1.png",
-        "aplicativos com permissão de webcam/permissões de webcam-2.png"
+        "applications-with-webcam-permission/webcam-permissions-1.png",
+        "applications-with-webcam-permission/webcam-permissions-2.png"
       ]
     },
     "1": {
@@ -246,8 +245,8 @@
         "Aqui você pode selecionar compromissos para ver quais aplicativos têm acesso e pode revogar o acesso para determinados aplicativos."
       ],
       "Screenshots": [
-        "aplicativos com permissão de calendário/permissões de calendário-1.png",
-        "aplicativos com permissão de calendário/permissões de calendário-2.png"
+        "applications-with-calendar-permission/calendar-permissions-1.png",
+        "applications-with-calendar-permission/calendar-permissions-2.png"
       ]
     },
     "1": {
@@ -274,8 +273,8 @@
         "Aqui você pode selecionar contatos para ver quais aplicativos têm acesso e pode revogar o acesso de determinados aplicativos."
       ],
       "Screenshots": [
-        "aplicativos-com-permissão-de-contatos/permissões-de-contatos-1.png",
-        "aplicativos-com-permissão-de-contatos/permissões-de-contatos-2.png"
+        "applications-with-contacts-permission/contacts-permissions-1.png",
+        "applications-with-contacts-permission/contacts-permissions-2.png"
       ]
     },
     "1": {
@@ -300,10 +299,7 @@
         "Se você encontrar algum programa ou porta suspeito, poderá fechá-lo desligando o programa correspondente."
       ],
       "Screenshots": [
-        "dispositivos-conectados-via-bluetooth/bluetooth-devices-1.png",
-        "dispositivos-conectados-via-bluetooth/bluetooth-devices-1.png",
-        "dispositivos-conectados-via-bluetooth/bluetooth-devices-1.png",
-        "dispositivos-conectados-via-bluetooth/bluetooth-devices-1.png"
+        "TOBEFILLED"
       ]
     },
     "Type": "Segurança",
@@ -405,12 +401,12 @@
         "Para finalizar, reinicie o seu computador."
       ],
       "Screenshots": [
-        "controle de conta de usuário/controle de conta de usuário-1.png",
-        "controle de conta de usuário/controle de conta de usuário-2.png",
-        "controle de conta de usuário/controle de conta de usuário-2.png",
-        "controle de conta de usuário/controle de conta de usuário-3.png",
-        "controle de conta de usuário/controle de conta de usuário-5.png",
-        "controle de conta de usuário/controle de conta de usuário-5.png"
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-3.png",
+        "user-account-control/user-account-control-5.png",
+        "user-account-control/user-account-control-5.png"
       ]
     },
     "1": {
@@ -444,13 +440,13 @@
         "Para finalizar, reinicie o seu computador."
       ],
       "Screenshots": [
-        "controle de conta de usuário/controle de conta de usuário-1.png",
-        "controle de conta de usuário/controle de conta de usuário-1.png",
-        "controle de conta de usuário/controle de conta de usuário-2.png",
-        "controle de conta de usuário/controle de conta de usuário-2.png",
-        "controle de conta de usuário/controle de conta de usuário-3.png",
-        "controle de conta de usuário/controle de conta de usuário-5.png",
-        "controle de conta de usuário/controle de conta de usuário-5.png"
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-3.png",
+        "user-account-control/user-account-control-5.png",
+        "user-account-control/user-account-control-5.png"
       ]
     },
     "3": {
@@ -476,13 +472,13 @@
         "Para finalizar, reinicie o seu computador."
       ],
       "Screenshots": [
-        "controle de conta de usuário/controle de conta de usuário-1.png",
-        "controle de conta de usuário/controle de conta de usuário-1.png",
-        "controle de conta de usuário/controle de conta de usuário-2.png",
-        "controle de conta de usuário/controle de conta de usuário-2.png",
-        "controle de conta de usuário/controle de conta de usuário-3.png",
-        "controle de conta de usuário/controle de conta de usuário-5.png",
-        "controle de conta de usuário/controle de conta de usuário-5.png"
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-3.png",
+        "user-account-control/user-account-control-5.png",
+        "user-account-control/user-account-control-5.png"
       ]
     },
     "Type": "Segurança",
@@ -547,9 +543,9 @@
         "Agora você pode alterar sua senha para uma nova e exclusiva."
       ],
       "Screenshots": [
-        "última alteração de senha/alterar senha-1.png",
-        "última alteração de senha/alterar senha-2.png",
-        "última alteração de senha/alterar senha-2.png"
+        "last-password-change/change-password-1.png",
+        "last-password-change/change-password-2.png",
+        "last-password-change/change-password-2.png"
       ]
     },
     "1": {
@@ -572,8 +568,8 @@
         "Agora você pode configurar um dos métodos de login disponíveis seguindo as etapas descritas."
       ],
       "Screenshots": [
-        "método de login do windows/método de login-1.png",
-        "método de login do windows/método de login-2.png"
+        "windows-login-method/login-method-1.png",
+        "windows-login-method/login-method-2.png"
       ]
     },
     "1": {
@@ -592,8 +588,8 @@
         "Agora você pode configurar um método de login seguro usando a senha ou a impressão digital como método de login."
       ],
       "Screenshots": [
-        "método de login do windows/método de login-1.png",
-        "método de login do windows/método de login-2.png"
+        "windows-login-method/login-method-1.png",
+        "windows-login-method/login-method-2.png"
       ]
     },
     "3": {
@@ -604,8 +600,8 @@
         "Agora você pode configurar um método de login seguro usando a senha ou a impressão digital como método de login."
       ],
       "Screenshots": [
-        "método de login do windows/método de login-1.png",
-        "método de login do windows/método de login-2.png"
+        "windows-login-method/login-method-1.png",
+        "windows-login-method/login-method-2.png"
       ]
     },
     "Type": "Segurança",
@@ -628,8 +624,8 @@
         "Aqui você pode verificar se há atualizações e instalar atualizações."
       ],
       "Screenshots": [
-        "versão do Windows desatualizada/windows-update-1.png",
-        "versão do Windows desatualizada/windows-update-2.png"
+        "outdated-windows-version/windows-update-1.png",
+        "outdated-windows-version/windows-update-2.png"
       ]
     },
     "2": {
@@ -640,8 +636,8 @@
         "Aqui você pode verificar se há atualizações e instalar atualizações."
       ],
       "Screenshots": [
-        "versão do Windows desatualizada/windows-update-1.png",
-        "versão do Windows desatualizada/windows-update-2.png"
+        "outdated-windows-version/windows-update-1.png",
+        "outdated-windows-version/windows-update-2.png"
       ]
     },
     "Type": "Segurança",
@@ -861,9 +857,9 @@
         "Aqui você pode visualizar e gerenciar as extensões instaladas em seu navegador. "
       ],
       "Screenshots": [
-        "extensões-firefox/extensões-firefox-1.png",
-        "extensões-firefox/extensões-firefox-2.png",
-        "extensões-firefox/extensões-firefox-3.png"
+        "firefox-extensions/extensions-firefox-1.png",
+        "firefox-extensions/extensions-firefox-2.png",
+        "firefox-extensions/extensions-firefox-3.png"
       ]
     },
     "Type": "Privacidade",
