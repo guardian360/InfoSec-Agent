@@ -29,6 +29,7 @@ var bundle *i18n.Bundle
 // Note: This function should be called before using the Localize function to ensure that the localizers are properly set up.
 func Init(path string) {
 	logger.Log.Debug("Initializing localization files")
+
 	path += config.LocalizationPath
 	logger.Log.Debug("Localization path: " + path)
 

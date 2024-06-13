@@ -59,21 +59,22 @@ func TestMain(m *testing.M) {
 //
 // No return values.
 func TestChangeScanInterval(t *testing.T) {
+	logger.Log.LogLevelSpecific = -1
 	// Define test cases with input values and expected results
 	testCases := []struct {
 		input           string
 		expectedMessage string
 	}{
 		// Valid input
-		{"24", "Scan interval changed to 24 day(s)"},
+		{"24", "Changing scan interval to 24 day(s)"},
 		// Invalid input (non-numeric)
-		{"abc", "Scan interval changed"},
+		{"abc", "Invalid scan interval input"},
 		// Invalid input (negative)
-		{"-1", "Scan interval changed"},
+		{"-1", "Invalid scan interval input"},
 		// Invalid input (zero)
-		{"0", "Scan interval changed"},
+		{"0", "Invalid scan interval input"},
 		// Valid large input
-		{"1000", "Scan interval changed to 1000 day(s)"},
+		{"1000", "Changing scan interval to 1000 day(s)"},
 	}
 
 	// Iterate over test cases
@@ -89,8 +90,9 @@ func TestChangeScanInterval(t *testing.T) {
 		// Assert that the printed message matches the expected message
 		require.Contains(t, capturedOutput, tc.expectedMessage)
 	}
-	// Reset log output to standard output
+	// Reset logger
 	logger.Log.SetOutput(os.Stdout)
+	logger.Log.LogLevelSpecific = 0
 }
 
 // TestScanNow validates the behavior of the ScanNow function.

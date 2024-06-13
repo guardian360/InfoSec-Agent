@@ -34,7 +34,7 @@ import (
 //   - error: An error object that describes the error (if any) that occurred while running the checks or serializing the results to JSON. If no error occurred, this value is nil.
 func Scan(dialog zenity.ProgressDialog, language int) ([]checks.Check, error) {
 	logger.Log.Trace("Running scan")
-	
+
 	dialogPresent := false
 	if dialog != nil {
 		dialogPresent = true
