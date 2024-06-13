@@ -125,15 +125,20 @@ export function openIssuesPage() {
 export function toRiskLevel(level) {
   switch (level) {
   case 0:
-    return '<td class="lang-acceptable"></td>';
+    // return '<td class="lang-acceptable"></td>';
+    return '<td><span class="table-risk-level lang-acceptable"></span></td>';
   case 1:
-    return '<td class="lang-low"></td>';
+    // return '<td class="lang-low"></td>';
+    return '<td><span class="table-risk-level lang-low"></span></td>';
   case 2:
-    return '<td class="lang-medium"></td>';
+    // return '<td class="lang-medium"></td>';
+    return '<td><span class="table-risk-level lang-medium"></span></td>';
   case 3:
-    return '<td class="lang-high"></td>';
+    // return '<td class="lang-high"></td>';
+    return '<td><span class="table-risk-level lang-high"></span></td>';
   case 4:
-    return '<td class="lang-info"></td>';
+    // return '<td class="lang-info"></td>';
+    return '<td><span class="table-risk-level lang-info"></span></td>';
   }
 }
 

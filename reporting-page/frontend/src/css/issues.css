@@ -67,6 +67,8 @@
   width: 100%;
   overflow-x: auto; /* Allows table to scroll on small screens */
   box-shadow: 0 0 20px rgb(0 0 0 / 10%);
+  border: 1px solid #8b8b8b;
+  border-collapse: collapse;
 }
 
 .issues-table th,
@@ -79,6 +81,7 @@
 /* Alternate row background color */
 /* .issues-table tbody tr:nth-child(even) {
   background-color: var(--background-color-top-nav);
+  border: 1px solid #8b8b8b;
 } */
 
 .issues-table tbody tr:hover {
@@ -94,30 +97,40 @@
   text-align: left;
 }
 
-.issues-table tr[data-severity="3"] td:nth-child(3) {
-  background-color: #ff6d6d;
-  color: #4d0000;
+.issues-table tr[data-severity="3"] .table-risk-level {
+  background-color: var(--high-risk-color);
+  border-radius: 8px;
+  padding: 3px 5px;
+  color: var(--text-body);
 }
-.issues-table tr[data-severity="2"] td:nth-child(3) {
-  background-color: #ffbe5c;
-  color: #533200;
+.issues-table tr[data-severity="2"] .table-risk-level {
+  background-color: var(--medium-risk-color);
+  border-radius: 8px;
+  padding: 3px 5px;
+  color: var(--text-body);
 }
-.issues-table tr[data-severity="1"] td:nth-child(3) {
-  background-color: #fff45f;
-  color: #4b4600;
+.issues-table tr[data-severity="1"] .table-risk-level {
+  background-color: var(--low-risk-color);
+  border-radius: 8px;
+  padding: 3px 5px;
+  color: var(--text-body);
 }
-.issues-table tr[data-severity="0"] td:nth-child(3) {
-  background-color: #9aff8f;
-  color: #063c00;
+.issues-table tr[data-severity="0"] .table-risk-level {
+  background-color: var(--no-risk-color);
+  border-radius: 8px;
+  padding: 3px 5px;
+  color: var(--text-body);
 }
-.issues-table tr[data-severity="4"] td:nth-child(3) {
-  background-color: #adbaff;
-  color: #000c46;
+.issues-table tr[data-severity="4"] .table-risk-level {
+  background-color: var(--info-color);
+  border-radius: 8px;
+  padding: 3px 5px;
+  color: var(--text-body);
 }
 
 /* Sort icon */
 .material-symbols-outlined {
-  float: none; /* Avoid using float and instead use flex or grid */
+  float: right;
   margin-left: auto; /* Align icon to the right using margin */
 }
 
