@@ -133,19 +133,14 @@ export function openIssuesPage() {
 export function toRiskLevel(level) {
   switch (level) {
   case 0:
-    // return '<td class="lang-acceptable"></td>';
     return '<td><span class="table-risk-level lang-acceptable"></span></td>';
   case 1:
-    // return '<td class="lang-low"></td>';
     return '<td><span class="table-risk-level lang-low"></span></td>';
   case 2:
-    // return '<td class="lang-medium"></td>';
     return '<td><span class="table-risk-level lang-medium"></span></td>';
   case 3:
-    // return '<td class="lang-high"></td>';
     return '<td><span class="table-risk-level lang-high"></span></td>';
   case 4:
-    // return '<td class="lang-info"></td>';
     return '<td><span class="table-risk-level lang-info"></span></td>';
   }
 }
@@ -157,7 +152,7 @@ export function toRiskLevel(level) {
  * @param {Bool} isIssue True for issue table, false for non issue table
  * @param {Bool} isListenersAdded True for the first time the eventlisteners is called
  */
-export async function fillTable(tbody, issues, isIssue, isListenersAdded=true) {
+export async function fillTable(tbody, issues, isListenersAdded=true) {
   const language = await getUserSettings();
   let currentIssue;
 
@@ -212,14 +207,9 @@ export async function fillTable(tbody, issues, isIssue, isListenersAdded=true) {
 
   // Add buttons to sort on columns
   if (isListenersAdded) {
-    if (isIssue) {
-      document.getElementById('sort-on-issue').addEventListener('click', () => sortTable(tbody, 0));
-      document.getElementById('sort-on-type').addEventListener('click', () => sortTable(tbody, 1));
-      document.getElementById('sort-on-risk').addEventListener('click', () => sortTable(tbody, 2));
-    } else {
-      document.getElementById('sort-on-issue2').addEventListener('click', () => sortTable(tbody, 0));
-      document.getElementById('sort-on-type2').addEventListener('click', () => sortTable(tbody, 1));
-    }
+    document.getElementById('sort-on-issue').addEventListener('click', () => sortTable(tbody, 0));
+    document.getElementById('sort-on-type').addEventListener('click', () => sortTable(tbody, 1));
+    document.getElementById('sort-on-risk').addEventListener('click', () => sortTable(tbody, 2));
     isListenersAdded = false;
   }
   // Re-apply localization to the dynamically created table rows
@@ -348,7 +338,7 @@ export function changeTable() {
   issueTable.innerHTML = '';
 
   // Refill tables with filtered issues
-  fillTable(issueTable, filteredIssues, true, false);
+  fillTable(issueTable, filteredIssues, false);
 }
 
 /**
