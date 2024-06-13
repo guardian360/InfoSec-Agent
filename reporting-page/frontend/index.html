@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
     <link rel="stylesheet" href="./src/css/about.css">
+    <link rel="stylesheet" href="./src/css/all-checks.css">
     <link rel="stylesheet" href="./src/css/color-palette.css">
     <link rel="stylesheet" href="./src/css/dashboard.css">
     <link rel="stylesheet" href="./src/css/home.css">
@@ -18,6 +19,7 @@
     <link rel="icon" id="favicon" href="./src/assets/images/logoTeamA-transformed.png" >
     
     <script src="./src/js/about.js" type="module" defer></script>
+    <script src="./src/js/all-checks.js" type="module" defer></script>
     <script src="./src/js/database.js" type="module" defer></script>
     <script src="./src/js/home.js" type="module" defer></script>
     <script src="./src/js/integration.js" type="module" defer></script>
@@ -42,20 +44,11 @@
         <div id="logo-button" class="logo-name">
           <img id="logo" alt="logo" src="./src/assets/images/logoTeamA-transformed.png">  <!-- Use id to dynamically change logo -->
           <div class="header-name">
-            <h1 id="title">Little Brother</h1><!-- Use id to dynamically change title -->
+            <h1 id="title">InfoSec Agent</h1><!-- Use id to dynamically change title -->
           </div>
         </div>
       </div>
       <div class="header-settings">
-        <div class="nav-link settings-button">
-          <span><span class="material-symbols-outlined">settings</span></span>
-          <div class="dropdown-content">
-            <a id="personalize-button" class="lang-personalize-page"></a>
-            <a id="language-button" class="lang-change-language"></a>
-            <a id="windows-version-button" class="lang-windows-version"></a>
-            <a id="scan-interval-button" class="lang-scan-interval"></a>
-          </div>
-        </div>
       </div>
     </div> 
     <div class="left-nav">
@@ -71,14 +64,28 @@
       <div id="issues-button" class="nav-link">
         <p><span class="material-symbols-outlined">checklist</span><span class="nav-item lang-issues">Issues</span></p>
       </div>
+<<<<<<< HEAD
       <div id="programs-button" class="nav-link">
         <p><span class="material-symbols-outlined">Wysiwyg</span><span class="nav-item lang-programs">Programs</span></p>
+=======
+      <div id="all-checks-button" class="nav-link">
+        <p><span class="material-symbols-outlined">list_alt</span><span class="nav-item lang-checks">Checks</span></p>
+>>>>>>> b399f5543b888e01d20135f0e954ff180bd13832
       </div>
       <div id="integration-button" class="nav-link">
         <p><span class="material-symbols-outlined">integration_instructions</span><span class="nav-item lang-integration">Integration</span></p>
       </div>
       <div id="about-button" class="nav-link">
         <p><span class="material-symbols-outlined">info</span><span class="nav-item lang-about" >About</span></p>
+      </div>
+      <div id="settings-button" class="nav-link">
+        <p><span class="material-symbols-outlined">settings</span><span class="nav-item lang-settings">Settings</span><span id="arrow" class="material-symbols-outlined">keyboard_arrow_right</span></p>
+        <div class="dropdown-content">
+            <a id="personalize-button" class="lang-personalize-page"></a>
+            <a id="language-button" class="lang-change-language"></a>
+            <a id="windows-version-button" class="lang-windows-version"></a>
+            <a id="scan-interval-button" class="lang-scan-interval"></a>
+        </div>
       </div>
     </div>
     <div id="window-version-modal" class="modal">

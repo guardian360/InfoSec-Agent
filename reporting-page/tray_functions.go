@@ -62,8 +62,18 @@ func (t *Tray) ChangeScanInterval() {
 	tray.ChangeScanInterval()
 }
 
-// LogInfo logs an Info level message to the log file. This function is used for logging messages from the front-end JS
-// TODO: fix this docstring according to new documentation standard
+// LogDebug logs a Debug level message to the log file.
+// This function is used for logging messages from the front-end JS.
+//
+// Parameters: t (*Tray) - a pointer to the Tray struct
+//
+// Returns: _
+func (t *Tray) LogDebug(message string) {
+	t.Log.Debug(message)
+}
+
+// LogInfo logs an Info level message to the log file.
+// This function is used for logging messages from the front-end JS.
 // Parameters: t (*Tray) - a pointer to the Tray struct
 //
 // Returns: _
@@ -71,9 +81,8 @@ func (t *Tray) LogInfo(message string) {
 	t.Log.Info(message)
 }
 
-// LogError logs an error level message to the existing log file.
+// LogError logs an error level message to the log file.
 // This function is used for logging messages from the front-end JS.
-// TODO: fix this docstring according to new documentation standard
 // Parameters: t (*Tray) - a pointer to the Tray struct
 //
 // Returns: _

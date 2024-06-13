@@ -48,10 +48,10 @@ func TestWindowsDefender(t *testing.T) {
 			name: "Unknown status",
 			scanKey: &mocking.MockRegistryKey{SubKeys: []mocking.MockRegistryKey{{
 				KeyName:       "SOFTWARE\\Microsoft\\Windows Defender",
-				IntegerValues: map[string]uint64{"DisableAntiVirus": 0}, Err: nil}}},
+				IntegerValues: map[string]uint64{"DisableAntiVirus": 2}, Err: nil}}},
 			defenderKey: &mocking.MockRegistryKey{SubKeys: []mocking.MockRegistryKey{{
 				KeyName:       "SOFTWARE\\Microsoft\\Windows Defender\\Real-Time Protection",
-				IntegerValues: map[string]uint64{"DisableRealtimeMonitoring": 0}, Err: nil}}},
+				IntegerValues: map[string]uint64{"DisableRealtimeMonitoring": 2}, Err: nil}}},
 			want: checks.NewCheckResult(checks.WindowsDefenderID, 4),
 		},
 	}

@@ -3,6 +3,8 @@ package windows
 import (
 	"strings"
 
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
@@ -23,8 +25,7 @@ const nonPackaged = "NonPackaged"
 // This function opens the registry key for the given permission and retrieves the names of all sub-keys, which represent applications. It then iterates through these applications, checking if they have been granted the specified permission. If the permission value is "Allow", the application name is added to the results. The function also handles non-packaged applications separately. Finally, it removes any duplicate results before returning them.
 func Permission(permissionID int, permission string, registryKey mocking.RegistryKey) checks.Check {
 	var err error
-	var appKey mocking.RegistryKey
-	var nonPackagedApplicationNames []string
+
 	// Open the registry key for the given permission
 	key, err := checks.OpenRegistryKey(registryKey,
 		`Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\`+permission)
@@ -34,44 +35,26 @@ func Permission(permissionID int, permission string, registryKey mocking.Registr
 	// Close the key after we have received all relevant information
 	defer checks.CloseRegistryKey(key)
 
+	generalSetting, err := checkGeneralSetting(key, permission)
+	if err != nil {
+		return checks.NewCheckErrorf(permissionID, "error checking general setting", err)
+	}
+	if !generalSetting {
+		return checks.NewCheckResult(permissionID, 1)
+	}
+
 	// Get the names of all sub-keys (which represent applications)
 	applicationNames, err := key.ReadSubKeyNames(-1)
 	if err != nil {
 		return checks.NewCheckErrorf(permissionID, "error reading sub-key names", err)
 	}
 
-	var results []string
-	var val string
 	// Iterate through the application names and append them to the results
-	for _, appName := range applicationNames {
-		appKey, err = checks.OpenRegistryKey(key, appKeyName(appName))
-		defer checks.CloseRegistryKey(appKey)
-		if err != nil {
-			return checks.NewCheckErrorf(permissionID, "error opening registry key", err)
-		}
-		if appName == nonPackaged {
-			val, _, err = key.GetStringValue("Value")
-		} else {
-			val, _, err = appKey.GetStringValue("Value")
-		}
-		if err != nil {
-			continue
-		}
-		// If the value is not "Allow", the application does not have permission
-		if val != "Allow" {
-			continue
-		}
-		if appName == nonPackaged {
-			nonPackagedApplicationNames, err = nonPackagedAppNames(appKey)
-			if err != nil {
-				return checks.NewCheckErrorf(permissionID, "error reading sub-key names", err)
-			}
-			results = append(results, nonPackagedApplicationNames...)
-		} else {
-			winApp := strings.Split(appName, "_")
-			results = append(results, winApp[0])
-		}
+	results, err := checkApplications(applicationNames, key)
+	if err != nil {
+		return checks.NewCheckErrorf(permissionID, "error checking applications", err)
 	}
+
 	// Remove duplicate results
 	filteredResults := RemoveDuplicateStr(results)
 	var prettyResults []string
@@ -144,4 +127,73 @@ func RemoveDuplicateStr(strSlice []string) []string {
 		}
 	}
 	return list
+}
+
+// checkGeneralSetting is a helper function that checks the general permission setting for a specific permission.
+// This setting can be off which means that no application has permission to use the specific permission.
+// Even if off, apps can still appear to have the permission, but it is not granted until this setting is turned back on.
+//
+// Parameters:
+//   - key (mocking.RegistryKey): The registry key to use for the check.
+//   - permission (string): The specific permission to check.
+//
+// Returns:
+//   - bool: A boolean value indicating whether the general permission setting is set to "Allow".
+//   - error: An error object that describes the error, if any occurred during the operation.
+func checkGeneralSetting(key mocking.RegistryKey, permission string) (bool, error) {
+	generalSetting, _, err := key.GetStringValue("Value")
+	if err != nil {
+		logger.Log.ErrorWithErr("error reading"+permission+"registry key", err)
+		return false, err
+	}
+	if generalSetting != "Allow" {
+		return false, nil
+	}
+	return true, nil
+}
+
+// checkApplications is a helper function that checks if the applications have been granted the specified permission.
+//
+// Parameters:
+//   - applicationNames []string: A slice of strings representing the names of applications.
+//   - key (mocking.RegistryKey): The registry key to use for the check.
+//
+// Returns:
+//   - []string: A slice of strings representing the names of applications that have been granted the specified permission.
+//   - error: An error object that describes the error, if any occurred during the operation.
+func checkApplications(applicationNames []string, key mocking.RegistryKey) ([]string, error) {
+	var val string
+	var nonPackagedApplicationNames []string
+	var results []string
+
+	for _, appName := range applicationNames {
+		appKey, err := checks.OpenRegistryKey(key, appKeyName(appName))
+		defer checks.CloseRegistryKey(appKey)
+		if err != nil {
+			return []string{}, err
+		}
+		if appName == nonPackaged {
+			val, _, err = key.GetStringValue("Value")
+		} else {
+			val, _, err = appKey.GetStringValue("Value")
+		}
+		if err != nil {
+			continue
+		}
+		// If the value is not "Allow", the application does not have permission
+		if val != "Allow" {
+			continue
+		}
+		if appName == nonPackaged {
+			nonPackagedApplicationNames, err = nonPackagedAppNames(appKey)
+			if err != nil {
+				return []string{}, err
+			}
+			results = append(results, nonPackagedApplicationNames...)
+		} else {
+			winApp := strings.Split(appName, "_")
+			results = append(results, winApp[0])
+		}
+	}
+	return results, nil
 }

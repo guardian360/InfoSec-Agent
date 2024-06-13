@@ -8,7 +8,7 @@ export function markSelectedNavigationItem(item) {
   localize();
   const navItems = document.getElementsByClassName('nav-link');
   const stylesheet = getComputedStyle(document.documentElement);
-  for (let i = 1; i < navItems.length; i++) {
+  for (let i = 0; i < navItems.length; i++) {
     navItems[i].style.backgroundColor = stylesheet.getPropertyValue('--background-color-left-nav');
   }
 
@@ -58,8 +58,10 @@ function localize() {
     'lang-security-dashboard',
     'lang-privacy-dashboard',
     'lang-issues',
+    'lang-checks',
     'lang-integration',
     'lang-about',
+    'lang-settings',
     'lang-personalize-page',
     'lang-change-language',
     'lang-windows-version',
@@ -72,8 +74,10 @@ function localize() {
     'Navigation.SecurityDashboard',
     'Navigation.PrivacyDashboard',
     'Navigation.Issues',
+    'Navigation.Checks',
     'Navigation.Integration',
     'Navigation.About',
+    'Navigation.Settings',
     'Navigation.Personalize',
     'Navigation.ChangeLanguage',
     'Navigation.WindowsVersion',
@@ -92,6 +96,14 @@ if (typeof document !== 'undefined') {
     const header = document.getElementById('header-hamburger');
     header.addEventListener('click', () => toggleNavigationHamburger(document.body.offsetWidth));
     document.body.onresize = () => toggleNavigationResize(document.body.offsetWidth);
+
+    document.getElementById('settings-button').addEventListener('mouseover', function() {
+      document.getElementById('arrow').textContent = 'keyboard_arrow_down';
+    });
+
+    document.getElementById('settings-button').addEventListener('mouseout', function() {
+      document.getElementById('arrow').textContent = 'keyboard_arrow_right';
+    });
   } catch (error) {
     logError('Error in navigation-menu.js: ' + error);
   }

@@ -3,9 +3,10 @@
 // Exported function(s): _
 package main
 
-//go:generate go-winres make --product-version=git-tag --file-version=git-tag
+//go:generate go-winres make --in scripts/winres/winres.json --product-version=git-tag --file-version=git-tag
 
 import (
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/config"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/localization"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/tray"
@@ -30,7 +31,7 @@ func main() {
 	if mutexErr != nil {
 		// Initialize localization settings for startup popups
 		logger.SetupTests()
-		localization.Init("backend/")
+		localization.Init("")
 		settings := usersettings.LoadUserSettings()
 		tray.Language = settings.Language
 		tray.AlreadyRunningPopup()
@@ -46,11 +47,15 @@ func main() {
 	// 5 - Fatal
 	// The second argument is the specific log-level you want to log, giving this a value will only log that level.
 	// If you want to log all levels up to the specified level, pass -1.
-	logger.Setup("log.txt", 0, -1)
+	logger.Setup("log.txt", config.LogLevel, config.LogLevelSpecific)
 	logger.Log.Info("Starting InfoSec Agent")
-	localization.Init("backend/")
+
+	// Initialize localization settings
+	localization.Init("")
 	settings := usersettings.LoadUserSettings()
 	tray.Language = settings.Language
+
+	// Start Tray
 	tray.StartPopup()
 	systray.Run(tray.OnReady, tray.OnQuit)
 }

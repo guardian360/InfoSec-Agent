@@ -1,7 +1,9 @@
 package windows_test
 
 import (
+	"errors"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/windows"
+	"golang.org/x/sys/windows/registry"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -38,7 +40,7 @@ func TestStartup(t *testing.T) {
 		name: "Startup programs found",
 		key1: &mocking.MockRegistryKey{SubKeys: []mocking.MockRegistryKey{{
 			KeyName:      "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\StartupApproved\\Run",
-			BinaryValues: map[string][]byte{"MockProgram": {1, 2, 3, 4, 0, 0, 0}}, Err: nil}}},
+			BinaryValues: map[string][]byte{"MockProgram": {1, 0, 0, 0, 0, 0, 0}}, Err: nil}}},
 		key2: &mocking.MockRegistryKey{SubKeys: []mocking.MockRegistryKey{{
 			KeyName:      "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\StartupApproved\\Run",
 			BinaryValues: map[string][]byte{"MockProgram2": {0, 0, 0, 0, 1, 0, 0}}, Err: nil}}},
@@ -46,13 +48,15 @@ func TestStartup(t *testing.T) {
 			KeyName:      "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\StartupApproved\\Run32",
 			BinaryValues: map[string][]byte{"MockProgram3": {0, 0, 0, 0, 0, 1, 0}}, Err: nil}}},
 		want: checks.NewCheckResult(checks.StartupID, 1, "MockProgram"),
-	}} /*,{
-		name: "Error finding startup programs",
-		key1:
-		key2:
-		key3:
-		want:
-	}}*/
+	},
+		{
+			name: "Error opening registry keys",
+			key1: &mocking.MockRegistryKey{},
+			key2: &mocking.MockRegistryKey{},
+			key3: &mocking.MockRegistryKey{},
+			want: checks.NewCheckError(checks.StartupID, errors.New("error opening registry keys")),
+		},
+	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -60,4 +64,29 @@ func TestStartup(t *testing.T) {
 			require.Equal(t, tt.want, got)
 		})
 	}
+}
+
+// TestFindEntriesInvalidInput is a test function that validates the behavior of the FindEntries function when provided with invalid (empty) input.
+//
+// Parameter:
+//   - t *testing.T: The testing framework instance used to run the test and report the results.
+//
+// This function does not return any values. It uses the testing framework to assert that the FindEntries function behaves as expected when provided with an empty list of entries and an invalid registry key. Specifically, it checks that the function returns an empty list of entries. If the FindEntries function does not behave as expected, this test function will cause the test run to fail.
+func TestFindEntriesInvalidInput(t *testing.T) {
+	key := registry.Key(0x0)
+	var entries []string
+	elements := windows.FindEntries(entries, mocking.NewRegistryKeyWrapper(key))
+	require.Empty(t, elements)
+}
+
+func TestCheckAllZero(t *testing.T) {
+	entries := []byte{0, 0, 0, 0}
+	result := windows.CheckAllZero(entries)
+	require.True(t, result)
+	entries = []byte{0, 0, 0, 1}
+	result = windows.CheckAllZero(entries)
+	require.False(t, result)
+	entries = []byte{}
+	result = windows.CheckAllZero(entries)
+	require.True(t, result)
 }

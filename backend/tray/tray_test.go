@@ -31,7 +31,7 @@ func TestMain(m *testing.M) {
 	logger.SetupTests()
 
 	// Initialize systray
-	go localization.Init("../")
+	go localization.Init("../../")
 	time.Sleep(100 * time.Millisecond)
 
 	go systray.Run(tray.OnReady, tray.OnQuit)
@@ -65,15 +65,15 @@ func TestChangeScanInterval(t *testing.T) {
 		expectedMessage string
 	}{
 		// Valid input
-		{"24", "Scan interval changed to 24 hours"},
+		{"24", "Scan interval changed to 24 day(s)"},
 		// Invalid input (non-numeric)
-		{"abc", "24"},
+		{"abc", "Scan interval changed"},
 		// Invalid input (negative)
-		{"-1", "24"},
+		{"-1", "Scan interval changed"},
 		// Invalid input (zero)
-		{"0", "24"},
+		{"0", "Scan interval changed"},
 		// Valid large input
-		{"1000", "Scan interval changed to 1000 hours"},
+		{"1000", "Scan interval changed to 1000 day(s)"},
 	}
 
 	// Iterate over test cases
@@ -81,16 +81,8 @@ func TestChangeScanInterval(t *testing.T) {
 		var buf bytes.Buffer
 		logger.Log.SetOutput(&buf)
 
-		wg := sync.WaitGroup{}
-		wg.Add(1)
 		// Run the function with mocked user input
-		go func() {
-			defer wg.Done()
-			tray.ChangeScanInterval(tc.input)
-		}()
-
-		// Wait for the function to complete
-		wg.Wait()
+		tray.ChangeScanInterval(tc.input)
 
 		capturedOutput := buf.String()
 
@@ -111,11 +103,8 @@ func TestChangeScanInterval(t *testing.T) {
 //
 // No return values.
 func TestScanNow(t *testing.T) {
-	// Set up initial ScanCounter value
-	initialScanCounter := 0
-
 	wg := sync.WaitGroup{}
-	wg.Add(2)
+	wg.Add(1)
 	errSlice := make([]error, 2)
 	// Run the function without dialog
 	go func() {
@@ -124,6 +113,8 @@ func TestScanNow(t *testing.T) {
 		errSlice[0] = err
 	}()
 
+	wg.Wait()
+	wg.Add(1)
 	// Run the function with dialog
 	go func() {
 		defer wg.Done()
@@ -135,10 +126,6 @@ func TestScanNow(t *testing.T) {
 	for _, err := range errSlice {
 		require.NoError(t, err)
 	}
-	// Assert that ScanCounter was incremented
-	finalScanCounter := tray.ScanCounter
-	expectedScanCounter := initialScanCounter + 2
-	require.Equal(t, expectedScanCounter, finalScanCounter)
 }
 
 // TestOnQuit validates the behavior of the OnQuit function by simulating an application quit scenario.
@@ -202,7 +189,7 @@ func TestTranslation(t *testing.T) {
 //
 // This test function iterates over a set of test cases that include valid language inputs and an invalid language input.
 // For each test case, it calls the ChangeLanguage function with the test input and asserts that the language index returned by the Language function matches the expected index.
-// This validates that the ChangeLanguage function correctly updates the language index for valid inputs and defaults to the index for "British English" for invalid inputs.
+// This validates that the ChangeLanguage function correctly updates the language index for valid inputs and defaults to the index for "English (UK)" for invalid inputs.
 //
 // Parameters:
 //   - t *testing.T: The testing framework used for assertions.
@@ -214,14 +201,14 @@ func TestChangeLang(t *testing.T) {
 		expectedIndex int
 	}{
 		// Valid input
-		{"German", 0},
-		{"British English", 1},
-		{"American English", 2},
-		{"Spanish", 3},
-		{"French", 4},
-		{"Dutch", 5},
-		{"Portuguese", 6},
-		// Invalid input, should return the default index (British English)
+		{"Deutsch", 0},
+		{"English (UK)", 1},
+		{"English (US)", 2},
+		{"Español", 3},
+		{"Français", 4},
+		{"Nederlands", 5},
+		{"Português", 6},
+		// Invalid input, should return the default index ( English (UK))
 		{"Italian", 1},
 	}
 
@@ -243,7 +230,7 @@ func TestChangeLang(t *testing.T) {
 func TestRefreshMenu(t *testing.T) {
 	value1 := tray.MenuItems[0].MenuTitle
 	translation1 := localization.Localize(tray.Language, value1)
-	tray.ChangeLanguage("Spanish")
+	tray.ChangeLanguage("Español")
 	// Refresh the menu, then check if the translation is different
 	// RefreshMenu(MenuItems)
 	value2 := tray.MenuItems[0].MenuTitle
@@ -263,7 +250,7 @@ func TestRefreshMenu(t *testing.T) {
 // No return values.
 func TestOpenReportingPageWhenAlreadyOpen(t *testing.T) {
 	tray.ReportingPageOpen = true
-	err := tray.OpenReportingPage("../")
+	err := tray.OpenReportingPage()
 	require.Error(t, err)
 	require.Equal(t, "reporting-page is already running", err.Error())
 }
@@ -278,7 +265,7 @@ func TestOpenReportingPageWhenAlreadyOpen(t *testing.T) {
 //
 // No return values.
 func TestPopup(t *testing.T) {
-	tray.ChangeLanguage("British English")
+	tray.ChangeLanguage("English (UK)")
 	// Define check result
 	scanResult := []checks.Check{
 		{

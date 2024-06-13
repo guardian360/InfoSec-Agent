@@ -24,5 +24,4 @@ jobs:
 
     - name: Run tests
       # skip the integration_testing directory, because these tests are run on VM's with custom configurations
-      # skip TestFindEntriesValidInput because it opens the registry, which is different in the GitHub Actions runner
-      run: go test -cover $(go list ./... | grep -v /backend/integration_testing)
+      run: go test -cover $(go list ./... | grep -v /backend/integration_testing | grep -v /backend/system_testing)

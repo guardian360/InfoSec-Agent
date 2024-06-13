@@ -39,6 +39,7 @@ jest.unstable_mockModule('../src/js/database.js', () => ({
 jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
   Localize: jest.fn().mockImplementation((input) => mockGetLocalization(input)),
   LoadUserSettings: jest.fn(),
+  GetImagePath: jest.fn(),
 }));
 
 // Mock LogError
@@ -46,6 +47,7 @@ jest.unstable_mockModule('../wailsjs/go/main/Tray.js', () => ({
   LogError: jest.fn(),
   ChangeLanguage: jest.fn(),
   ChangeScanInterval: jest.fn(),
+  LogDebug: jest.fn(),
 }));
 
 // Mock openIssuesPage
@@ -58,11 +60,21 @@ jest.unstable_mockModule('../src/js/settings.js', () => ({
   showModal: jest.fn(),
 }));
 
+const socialMediaSizesMock = {
+  facebook: {
+    name: 'facebook',
+    height: 315,
+    width: 600,
+  },
+};
+
 // Mock share
 jest.unstable_mockModule('../src/js/share.js', () => ({
+  setImage: jest.fn(),
   saveProgress: jest.fn(),
   shareProgress: jest.fn(),
   selectSocialMedia: jest.fn(),
+  socialMediaSizes: socialMediaSizesMock,
 }));
 
 // Mock openPersonalizePage

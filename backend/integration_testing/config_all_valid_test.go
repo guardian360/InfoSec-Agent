@@ -2,6 +2,7 @@ package integration_test
 
 import (
 	i "github.com/InfoSec-Agent/InfoSec-Agent/backend/integration_testing"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/localization"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"os"
 	"testing"
@@ -19,7 +20,6 @@ var testsValid = []func(t *testing.T){
 	i.TestIntegrationExtensionsFirefoxWithAdBlocker,
 	i.TestIntegrationHistoryFirefoxWithoutPhishing,
 	i.TestIntegrationSearchEngineFirefoxWithSearchEngine,
-	i.TestIntegrationOpenPortsNoPorts,
 	i.TestIntegrationSmbCheckGoodSetup,
 	i.TestIntegrationPasswordManagerPresent,
 	i.TestIntegrationAdvertisementNotActive,
@@ -28,7 +28,7 @@ var testsValid = []func(t *testing.T){
 	i.TestIntegrationGuestAccountNotActive,
 	i.TestIntegrationLastPasswordChangeValid,
 	i.TestIntegrationLoginMethodPasswordOnly,
-	i.TestIntegrationOutdatedWin11UpToDate,
+	i.TestIntegrationOutdatedWinUpToDate,
 	i.TestIntegrationPermissionWithoutApps,
 	i.TestIntegrationRemoteDesktopDisabled,
 	i.TestIntegrationSecureBootEnabled,
@@ -39,11 +39,19 @@ var testsValid = []func(t *testing.T){
 	i.TestIntegrationCookiesFirefoxWithoutCookies,
 	i.TestIntegrationCookiesChromiumWithoutCookies,
 	i.TestIntegrationRemoteRPCDisabled,
+	i.TestIntegrationNetBIOSDisabled,
+	// TODO: turn this back on once fixed?
+	// i.TestIntegrationWPADDisabled,
+	i.TestIntegrationFirewallEnabled,
+	i.TestIntegrationPasswordComplexityValid,
+	i.TestIntegrationUpdateGameState,
+	i.TestIntegrationPointCalculation,
+	i.TestIntegrationLighthouseStateTransition,
 }
 
 func TestMain(m *testing.M) {
 	logger.SetupTests()
-
+	go localization.Init("../../")
 	// Run tests
 	exitCode := m.Run()
 

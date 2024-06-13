@@ -16,40 +16,45 @@ let isFirstScan = true;
  * @param {boolean} dialogPresent - Indicates whether a dialog is present during the scan.
  */
 export async function scanTest(dialogPresent) {
-  try {
-    await new Promise((resolve, reject) => {
-      scanNowGo(dialogPresent)
-        .then(async (scanResult) => {
+  if (sessionStorage.getItem('isScanning') === null ||
+      sessionStorage.getItem('isScanning') === undefined ||
+      sessionStorage.getItem('isScanning') === 'false') {
+    sessionStorage.setItem('isScanning', 'true');
+    try {
+      await new Promise((resolve, reject) => {
+        scanNowGo(dialogPresent)
+          .then(async (scanResult) => {
           // Handle the scan result
           // For example, save it in session storage
-          sessionStorage.setItem('ScanResult', JSON.stringify(scanResult));
-          // Set severities in session storage
-          await setAllSeverities(scanResult);
-          // set the detected windows version
-          const windowsVersion = scanResult.find((i) => i.issue_id === 18);
-          sessionStorage.setItem('WindowsVersion', windowsVersion.result[0]);
-          // Resolve the promise with the scan result
-          resolve(scanResult);
-        })
-        .catch((err) => {
+            sessionStorage.setItem('ScanResult', JSON.stringify(scanResult));
+            // Set severities in session storage
+            await setAllSeverities(scanResult);
+            // set the detected windows version
+            const windowsVersion = scanResult.find((i) => i.issue_id === 18);
+            sessionStorage.setItem('WindowsVersion', windowsVersion.result[0]);
+            // Resolve the promise with the scan result
+            resolve(scanResult);
+            sessionStorage.setItem('isScanning', 'false');
+          })
+          .catch((err) => {
           // Log any errors from scanNowGo
-          logError('Error in scanNowGo: ' + err);
-          // Reject the promise with the error
-          reject(err);
-        });
-    });
-
-    // Perform other actions after scanTest is complete
-    windowShow();
-    logPrint(sessionStorage.getItem('ScanResult'));
-  } catch (err) {
-    // Handle any errors that occurred during scanTest or subsequent actions
-    logError('Error in scanTest: ' + err);
+            logError('Error in scanNowGo: ' + err);
+            // Reject the promise with the error
+            reject(err);
+          });
+      });
+      // Perform other actions after scanTest is complete
+      windowShow();
+      logPrint(sessionStorage.getItem('ScanResult'));
+    } catch (err) {
+      // Handle any errors that occurred during scanTest or subsequent actions
+      logError('Error in scanTest: ' + err);
+    }
   }
 }
 
 // Check if scanTest has already been called before
-if (sessionStorage.getItem('scanTest') === null || sessionStorage.getItem('scanTest') == undefined) {
+if (sessionStorage.getItem('scanTest') === null || sessionStorage.getItem('scanTest') === undefined) {
   // Call scanTest() only if it hasn't been called before
   scanTest(false).then((r) => {});
 
@@ -67,6 +72,12 @@ const countOccurrences = (severities, level) => severities.filter((item) => item
 async function setAllSeverities(input) {
   const result = await getDataBaseData(input);
   sessionStorage.setItem('DataBaseData', JSON.stringify(result));
+  sessionStorage.setItem('IssuesSorted', JSON.stringify(
+    {
+      'column': '2',
+      'direction': 'ascending',
+    },
+  ));
   await setSeverities(result, '');
   await setSeverities(result, 'Security');
   await setSeverities(result, 'Privacy');

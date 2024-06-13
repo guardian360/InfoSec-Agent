@@ -3,7 +3,6 @@ package windows_test
 import (
 	"errors"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/windows"
-
 	"github.com/stretchr/testify/require"
 
 	"testing"
@@ -88,6 +87,12 @@ func TestLastPasswordChange(t *testing.T) {
 					"                                         *Prestatielogboekgebru\nLidmaatschap globale groep" +
 					"               *Geen\nDe opdracht is voltooid.", Err: nil},
 			want: checks.NewCheckResult(checks.LastPasswordChangeID, 1, "1-1-2024"),
+		},
+		{
+			name: "Error executing net user",
+			executorClass: &mocking.MockCommandExecutor{
+				Output: ".", Err: errors.New("error executing net user")},
+			want: checks.NewCheckErrorf(checks.LastPasswordChangeID, "error executing net user", errors.New("error executing net user")),
 		},
 	}
 	for _, tt := range tests {

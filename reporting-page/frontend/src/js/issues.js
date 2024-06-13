@@ -93,7 +93,6 @@ export function openIssuesPage() {
   const nonIssueTable = document.getElementById('non-issues-table').querySelector('tbody');
   fillTable(nonIssueTable, issues, false);
 
-
   const myDropdownTable = document.getElementById('myDropdown-table');
   document.getElementById('dropbtn-table').addEventListener('click', () => myDropdownTable.classList.toggle('show'));
   document.getElementById('select-high-risk-table').addEventListener('change', changeTable);
@@ -265,6 +264,17 @@ export async function fillTable(tbody, issues, isIssue, isListenersAdded=true) {
   for (let i = 0; i < tableHeaders.length; i++) {
     getLocalization(localizationIds[i], tableHeaders[i]);
   }
+
+  // Sort the table in descending order of risk severity
+  const sorting = JSON.parse(sessionStorage.getItem('IssuesSorted'));
+  if (sorting) {
+    const table = tbody.closest('table');
+    if (table) {
+      const direction = sorting.direction === 'ascending' ? 'descending' : 'ascending';
+      table.setAttribute('data-sort-direction', direction);
+      sortTable(tbody, parseInt(sorting.column));
+    }
+  }
 }
 
 /** Sorts the table
@@ -272,7 +282,7 @@ export async function fillTable(tbody, issues, isIssue, isListenersAdded=true) {
  * @param {HTMLTableSectionElement} tbody Table to be sorted
  * @param {number} column Column to sort the table on
  */
-export function sortTable(tbody, column ) {
+export function sortTable(tbody, column) {
   const table = tbody.closest('table');
   let direction = table.getAttribute('data-sort-direction');
   direction = direction === 'ascending' ? 'descending' : 'ascending';
@@ -311,6 +321,8 @@ export function sortTable(tbody, column ) {
     tbody.appendChild(row);
   });
   table.setAttribute('data-sort-direction', direction);
+  const columnValue = column.toString();
+  sessionStorage.setItem('IssuesSorted', JSON.stringify({'column': columnValue, 'direction': direction}));
 }
 
 /* istanbul ignore next */
@@ -361,7 +373,7 @@ export function changeTable() {
  * preferred language as an integer. The language is represented by the
  * following integers:
  * 0 - German
- * 1 - English (GB)
+ * 1 - English (UK)
  * 2 - English (US)
  * 3 - Spanish
  * 4 - French

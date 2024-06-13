@@ -3,14 +3,34 @@ import {getLocalization} from './localize.js';
 import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
 import {retrieveTheme} from './personalize.js';
 import {scanTest} from './database.js';
-import {LogError as logError} from '../../wailsjs/go/main/Tray.js';
+import {LogError as logError, LogDebug as logDebug} from '../../wailsjs/go/main/Tray.js';
+import {GetImagePath as getImagePath} from '../../wailsjs/go/main/App.js';
 import {openIssuePage} from './issue.js';
-import {saveProgress, shareProgress, selectSocialMedia} from './share.js';
+import {saveProgress, shareProgress, selectSocialMedia, setImage, socialMediaSizes} from './share.js';
 import data from '../databases/database.en-GB.json' assert { type: 'json' };
 import {showModal} from './settings.js';
 
+let lighthousePath;
 /** Load the content of the Home page */
-export function openHomePage() {
+export async function openHomePage() {
+  // Load the video background path
+  switch (sessionStorage.getItem('state')) {
+  case '0':
+    lighthousePath = 'first-state.mkv';
+    break;
+  case '1':
+    lighthousePath = 'almost-state.mkv';
+    break;
+  case '2':
+    lighthousePath = 'final-state.mkv';
+    break;
+  default:
+    lighthousePath = 'first-state.mkv';
+  }
+
+  const lighthouseState = await getImagePath(lighthousePath);
+  logDebug('lighthouseState: ' + lighthouseState);
+
   retrieveTheme();
   closeNavigation(document.body.offsetWidth);
   markSelectedNavigationItem('home-button');
@@ -25,7 +45,7 @@ export function openHomePage() {
     <div class="container-home"> 
       <div class="data-segment">
         <div class="data-segment-header">
-          <p class="lang-piechart-header">Risk level distribution</p>
+          <p class="lang-piechart-header"></p>
         </div>
         <div class="pie-chart-container">
           <canvas class="pie-chart" id="pie-chart-home"></canvas>
@@ -33,11 +53,20 @@ export function openHomePage() {
       </div>
       <div class="data-segment">
         <div class="data-segment-header">
-          <p class="lang-choose-issue-description">Actions</p>
+          <p class="lang-choose-issue-description"></p>
         </div>
-        <a id="suggested-issue" class="issue-button lang-suggested-issue">Suggested Issue</a>
-        <a id="scan-now" class="issue-button lang-scan-now">Scan Now</a>
-        <a id="share-progress" class="issue-button">Share progress</a>
+        <a id="suggested-issue" class="issue-button lang-suggested-issue"></a>
+        <a id="scan-now" class="issue-button lang-scan-now"></a>
+        <a id="share-progress" class="issue-button lang-share-button"></a>
+      </div>
+      <div id="progress-segment" class="data-segment">
+        <div class="data-segment-header">
+          <p class="lang-lighthouse-progress"></p>
+        </div>
+        <div class="progress-container">
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <p id="progress-text"></p>
       </div>
     </div>
   </div>
@@ -45,33 +74,25 @@ export function openHomePage() {
     <div class="modal-content">
       <div class="modal-header">
         <span id="close-share-modal" class="close">&times;</span>
-        <p>Select where to share your progress, Save and download it, then share it with others!</p>
+        <p class="lang-share-text"></p>
       </div>
-      <div id="share-node" class="modal-body">
-        <img class="api-key-image" src="https://placehold.co/600x315" alt="Step 1 Image">
+      <div id="share-node" class="modal-body share-image">
       </div>
       <div id="share-buttons" class="modal-body">
-        <a id="share-save-button" class="modal-button share-button">Save</a>
+        <a id="share-save-button" class="modal-button share-button lang-save-text"></a>
         <a class="share-button-break">|</a>
         <a id="select-facebook" class="select-button selected">Facebook</a>
         <a id="select-x" class="select-button">X</a>
         <a id="select-linkedin" class="select-button">LinkedIn</a>
         <a id="select-instagram" class="select-button">Instagram</a>
         <a class="share-button-break">|</a>
-        <a id="share-button" class="modal-button share-button">Share</a>
+        <a id="share-button" class="modal-button share-button lang-share"></a>
       </div>
     </div>
   </div>
   `;
 
-  const lighthouseState = 'src/assets/images/regular1.mp4';
   document.getElementById('lighthouse-background').src = lighthouseState;
-
-  // const medal = 'frontend/src/assets/images/img_medal1.png';
-  // document.getElementById('medal').src = medal;
-  // document.getElementById('medal2').src = medal;
-  // document.getElementById('medal3').src = medal;
-  // document.getElementById('medal4').src = medal;
 
   const rc = JSON.parse(sessionStorage.getItem('RiskCounters'));
   new PieChart('pie-chart-home', rc, 'Total');
@@ -83,6 +104,11 @@ export function openHomePage() {
     'lang-scan-now',
     'lang-title-medals',
     'lang-choose-issue-description',
+    'lang-share-button',
+    'lang-share-text',
+    'lang-save-text',
+    'lang-share',
+    'lang-lighthouse-progress',
   ];
   const localizationIds = [
     'Dashboard.RiskLevelDistribution',
@@ -90,6 +116,11 @@ export function openHomePage() {
     'Dashboard.ScanNow',
     'Dashboard.Medals',
     'Dashboard.ChooseIssueDescription',
+    'Dashboard.ShareButton',
+    'Dashboard.ShareText',
+    'Dashboard.SaveText',
+    'Dashboard.Share',
+    'Dashboard.LighthouseProgress',
   ];
   for (let i = 0; i < staticHomePageContent.length; i++) {
     getLocalization(localizationIds[i], staticHomePageContent[i]);
@@ -106,9 +137,30 @@ export function openHomePage() {
   document.getElementById('select-x').addEventListener('click', () => selectSocialMedia('x'));
   document.getElementById('select-linkedin').addEventListener('click', () => selectSocialMedia('linkedin'));
   document.getElementById('select-instagram').addEventListener('click', () => selectSocialMedia('instagram'));
+
+  // Progress bar
+  document.addEventListener('DOMContentLoaded', () => {
+    const progressBar = document.getElementById('progress-bar');
+    const progressText = document.getElementById('progress-text');
+
+    // Assuming the points are stored in local storage under the key 'userPoints'
+    const userPoints = parseInt(localStorage.getItem('userPoints')) || 0;
+    const pointsToNextState = 100; // The points required to reach the next state
+
+    // Calculate the progress percentage
+    const progressPercentage = Math.min((userPoints / pointsToNextState) * 100, 100);
+
+    // Update the progress bar width and text
+    progressBar.style.width = progressPercentage + '%';
+    progressText.textContent = `${userPoints} / ${pointsToNextState} (${progressPercentage.toFixed(2)}%)`;
+  });
+
+  // on startup set the social media to share to facebook
+  sessionStorage.setItem('ShareSocial', JSON.stringify(socialMediaSizes['facebook']));
+  setImage(document.getElementById('share-node'), document.getElementById('progress-segment'));
 }
 
-/** Opens the issue page of the issue with highest risk level
+/** Opens the issue page of the issue with the highest risk level
  *
  * @param {string} type Type of issue to open the issue page of (e.g. 'Security', 'Privacy', and '' for all types)
 */

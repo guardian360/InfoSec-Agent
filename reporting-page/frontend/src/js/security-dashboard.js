@@ -6,6 +6,7 @@ import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js'
 import {retrieveTheme} from './personalize.js';
 import {scanTest} from './database.js';
 import {suggestedIssue} from './home.js';
+import {openAllChecksPage} from './all-checks.js';
 
 /** Load the content of the Security Dashboard page */
 export function openSecurityDashboardPage() {
@@ -34,15 +35,15 @@ export function openSecurityDashboardPage() {
         <div class="data-segment-header">
           <p class="lang-choose-issue-description"></p>
         </div>
-        <a id="suggested-issue" class="issue-button security-button lang-suggested-issue"><p></p></a>
-        <a id="scan-now" class="issue-button security-button lang-scan-now"></a>
+        <a id="suggested-issue" class="security-button lang-suggested-issue"><p></p></a>
+        <a id="scan-now" class="security-button lang-scan-now"></a>
       </div>
       <div class="dashboard-segment risk-areas"> <!-- informative buttons segment -->
         <div class="data-segment-header">
           <p class="lang-security-risk-areas"></p>
         </div>
         <div class="security-area-buttons">
-          <div class="security-area security-button">
+          <div class="security-area security-risk-button" id="security-button-applications">
             <a>
               <p>
                 <span class="lang-applications"></span>
@@ -50,17 +51,17 @@ export function openSecurityDashboardPage() {
               </p>
             </a>
           </div>
-          <div class="security-area security-button">
-            <a>
-              <p><span class="lang-browser"></span><span class="material-symbols-outlined">travel_explore</span></p>
-            </a>
-          </div>
-          <div class="security-area security-button">
+          <div class="security-area security-risk-button" id="security-button-devices">
             <a>
               <p><span class="lang-devices"></span><span class="material-symbols-outlined">devices</span></p>
             </a>
           </div>
-          <div class="security-area security-button">
+          <div class="security-area security-risk-button" id="security-button-network">
+          <a>
+            <p><span class="lang-network"></span><span class="material-symbols-outlined">lan</span></p>
+          </a>
+        </div>
+          <div class="security-area security-risk-button" id="security-button-os">
             <a>
               <p>
                 <span class="lang-operating-system"></span>
@@ -68,12 +69,12 @@ export function openSecurityDashboardPage() {
               </p>        
             </a>
           </div>
-          <div class="security-area security-button">
+          <div class="security-area security-risk-button" id="security-button-passwords">
             <a>
               <p><span class="lang-passwords"></span><span class="material-symbols-outlined">key</span></p>
             </a>
           </div>
-          <div class="security-area security-button">
+          <div class="security-area security-risk-button" id="security-button-other">
             <a>
               <p><span class="lang-other"></span><span class="material-symbols-outlined">view_cozy</span></p>
             </a>
@@ -156,7 +157,7 @@ export function openSecurityDashboardPage() {
   `;
   // Set counters on the page to the right values
   let rc = JSON.parse(sessionStorage.getItem('SecurityRiskCounters'));
-  adjustWithRiskCounters(rc, document);
+  adjustWithRiskCounters(rc, document, true);
   setMaxInterval(rc, document);
 
   // Localize the static content of the dashboard
@@ -175,8 +176,8 @@ export function openSecurityDashboardPage() {
     'lang-scan-now',
     'lang-security-risk-areas',
     'lang-applications',
-    'lang-browser',
     'lang-devices',
+    'lang-network',
     'lang-operating-system',
     'lang-passwords',
     'lang-other',
@@ -200,8 +201,8 @@ export function openSecurityDashboardPage() {
     'Dashboard.ScanNow',
     'Dashboard.SecurityRiskAreas',
     'Dashboard.Applications',
-    'Dashboard.Browser',
     'Dashboard.Devices',
+    'Dashboard.Network',
     'Dashboard.OperatingSystem',
     'Dashboard.Passwords',
     'Dashboard.Other',
@@ -221,12 +222,26 @@ export function openSecurityDashboardPage() {
   document.getElementById('scan-now').addEventListener('click', async () => {
     await scanTest(true);
     rc = JSON.parse(sessionStorage.getItem('SecurityRiskCounters'));
-    adjustWithRiskCounters(rc, document);
+    adjustWithRiskCounters(rc, document, true);
     setMaxInterval(rc, document);
     g.rc = rc;
     await g.changeGraph();
   });
   document.getElementById('suggested-issue').addEventListener('click', () => suggestedIssue('Security'));
+
+  // Add links to checks page
+  document.getElementById('security-button-applications').addEventListener('click',
+    () => openAllChecksPage('applications'));
+  document.getElementById('security-button-devices').addEventListener('click',
+    () => openAllChecksPage('devices'));
+  document.getElementById('security-button-network').addEventListener('click',
+    () => openAllChecksPage('network'));
+  document.getElementById('security-button-os').addEventListener('click',
+    () => openAllChecksPage('os'));
+  document.getElementById('security-button-passwords').addEventListener('click',
+    () => openAllChecksPage('passwords'));
+  document.getElementById('security-button-other').addEventListener('click',
+    () => openAllChecksPage('security-other'));
 }
 
 /* istanbul ignore next */
@@ -242,14 +257,22 @@ if (typeof document !== 'undefined') {
  *
  * @param {RiskCounters} rc Risk counters from which the data is taken
  * @param {Document} doc Document in which the counters are located
+ * @param {boolean} retrieveStyling Boolean to determine if the colors of the risk levels should be retrieved
  */
-export function adjustWithRiskCounters(rc, doc) {
+export function adjustWithRiskCounters(rc, doc, retrieveStyling) {
   // change counters according to collected data
   doc.getElementById('high-risk-counter').innerHTML = rc.lastHighRisk;
   doc.getElementById('medium-risk-counter').innerHTML = rc.lastMediumRisk;
   doc.getElementById('low-risk-counter').innerHTML = rc.lastLowRisk;
   doc.getElementById('info-risk-counter').innerHTML = rc.lastInfoRisk;
   doc.getElementById('no-risk-counter').innerHTML = rc.lastNoRisk;
+
+  if (retrieveStyling) {
+    rc.highRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--high-risk-color');
+    rc.mediumRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--medium-risk-color');
+    rc.lowRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--low-risk-color');
+    rc.noRiskColor = getComputedStyle(document.documentElement).getPropertyValue('--no-risk-color');
+  }
 
   const securityStatus = doc.getElementsByClassName('status-descriptor')[0];
   if (rc.lastHighRisk > 1) {
@@ -260,8 +283,7 @@ export function adjustWithRiskCounters(rc, doc) {
       securityStatus.innerHTML = 'Critical';
     }
     securityStatus.style.backgroundColor = rc.highRiskColor;
-    securityStatus.style.color = 'rgb(255, 255, 255)';
-  } else if (rc.lastMediumRisk > 1) {
+  } else if (rc.lastMediumRisk > 1 || rc.lastHighRisk === 1) {
     try {
       getLocalization('Dashboard.MediumConcern', 'status-descriptor');
     } catch (error) {
@@ -269,8 +291,7 @@ export function adjustWithRiskCounters(rc, doc) {
       securityStatus.innerHTML = 'Medium concern';
     }
     securityStatus.style.backgroundColor = rc.mediumRiskColor;
-    securityStatus.style.color = 'rgb(255, 255, 255)';
-  } else if (rc.lastLowRisk > 1) {
+  } else if (rc.lastLowRisk > 1 || rc.lastMediumRisk === 1) {
     try {
       getLocalization('Dashboard.LowConcern', 'status-descriptor');
     } catch (error) {
@@ -278,16 +299,6 @@ export function adjustWithRiskCounters(rc, doc) {
       securityStatus.innerHTML = 'Low concern';
     }
     securityStatus.style.backgroundColor = rc.lowRiskColor;
-    securityStatus.style.color = 'rgb(0, 0, 0)';
-  } else if (rc.lastInfoRisk > 1) {
-    try {
-      getLocalization('Dashboard.InfoConcern', 'status-descriptor');
-    } catch (error) {
-      /* istanbul ignore next */
-      securityStatus.innerHTML = 'Informative';
-    }
-    securityStatus.style.backgroundColor = rc.infoColor;
-    securityStatus.style.color = 'rgb(0, 0, 0)';
   } else {
     try {
       getLocalization('Dashboard.NoConcern', 'status-descriptor');
@@ -296,8 +307,8 @@ export function adjustWithRiskCounters(rc, doc) {
       securityStatus.innerHTML = 'Acceptable';
     }
     securityStatus.style.backgroundColor = rc.noRiskColor;
-    securityStatus.style.color = 'rgb(0, 0, 0)';
   }
+  securityStatus.style.color = 'rgb(255, 255, 255)';
 }
 
 /** Set the max number input of the 'graph-interval' element
@@ -322,3 +333,12 @@ export function addGraphFunctions(g) {
   document.getElementById('select-info-risk').addEventListener('change', () => g.toggleRisks('info'));
   document.getElementById('select-no-risk').addEventListener('change', () => g.toggleRisks('no'));
 }
+
+// Close dropdown when clicking outside
+document.addEventListener('click', function(event) {
+  const dropdown = document.getElementById('myDropdown');
+  const dropbtn = document.getElementById('dropbtn');
+  if (dropdown && dropbtn && !dropbtn.contains(event.target)) {
+    dropdown.classList.remove('show');
+  }
+});

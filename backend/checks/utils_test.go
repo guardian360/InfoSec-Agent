@@ -92,19 +92,6 @@ func TestCloseRegistryKeyInvalidKey(_ *testing.T) {
 	checks.CloseRegistryKey(key)
 }
 
-// TestFindEntriesInvalidInput is a test function that validates the behavior of the FindEntries function when provided with invalid (empty) input.
-//
-// Parameter:
-//   - t *testing.T: The testing framework instance used to run the test and report the results.
-//
-// This function does not return any values. It uses the testing framework to assert that the FindEntries function behaves as expected when provided with an empty list of entries and an invalid registry key. Specifically, it checks that the function returns an empty list of entries. If the FindEntries function does not behave as expected, this test function will cause the test run to fail.
-func TestFindEntriesInvalidInput(t *testing.T) {
-	key := registry.Key(0x0)
-	var entries []string
-	elements := checks.FindEntries(entries, mocking.NewRegistryKeyWrapper(key))
-	require.Empty(t, elements)
-}
-
 // TestCheckKeyValidInput is a test function that validates the behavior of the CheckKey function when provided with valid input.
 //
 // Parameter:

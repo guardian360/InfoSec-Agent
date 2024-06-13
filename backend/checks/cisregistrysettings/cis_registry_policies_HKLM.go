@@ -765,7 +765,6 @@ func policiesNetworkConnections(registryKey mocking.RegistryKey) {
 // policiesNetworkProvider is a helper function that checks the registry to determine if the system is configured with the correct settings for the network provider.
 //
 // CIS Benchmark Audit list index: 18.5.14.1
-// TODO: NEEDS CHECKING, IF THIS WORKS AS INTENDED, COULD NOT TEST DUE TO NON-EXISTENT REGISTRY KEY
 func policiesNetworkProvider(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows\NetworkProvider\HardenedPaths`
 

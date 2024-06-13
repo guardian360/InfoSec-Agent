@@ -8,19 +8,34 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestIntegrationOpenPortsPorts(t *testing.T) {
-	result := network.OpenPorts(&mocking.RealCommandExecutor{}, &mocking.RealCommandExecutor{})
-	// Check if function did not return an error
+func TestIntegrationNetBIOSEnabled(t *testing.T) {
+	result := network.NetBIOSEnabled(&mocking.RealCommandExecutor{})
 	require.NotEmpty(t, result)
-	require.NotEmpty(t, result.Result)
+	require.Equal(t, 1, result.ResultID)
+}
+
+func TestIntegrationNetBIOSDisabled(t *testing.T) {
+	result := network.NetBIOSEnabled(&mocking.RealCommandExecutor{})
+	require.NotEmpty(t, result)
 	require.Equal(t, 0, result.ResultID)
 }
 
-func TestIntegrationOpenPortsNoPorts(t *testing.T) {
-	result := network.OpenPorts(&mocking.RealCommandExecutor{}, &mocking.RealCommandExecutor{})
-	// Check if function did not return an error
+func TestIntegrationWPADEnabled(t *testing.T) {
+	result := network.WPADEnabled(&mocking.RealCommandExecutor{})
 	require.NotEmpty(t, result)
-	require.Empty(t, result.Result)
+	require.Equal(t, 1, result.ResultID)
+}
+
+func TestIntegrationWPADDisabled(t *testing.T) {
+	result := network.WPADEnabled(&mocking.RealCommandExecutor{})
+	require.NotEmpty(t, result)
+	require.Equal(t, 0, result.ResultID)
+}
+
+func TestIntegrationOpenPortsPorts(t *testing.T) {
+	result := network.OpenPorts(&mocking.RealCommandExecutor{}, &mocking.RealCommandExecutor{})
+	require.NotEmpty(t, result)
+	require.NotEmpty(t, result.Result)
 	require.Equal(t, 0, result.ResultID)
 }
 

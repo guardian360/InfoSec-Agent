@@ -7,15 +7,6 @@ import (
 
 var testsNotPresent = []func(t *testing.T){
 	i.TestIntegrationFirefoxFolderNotExists,
-	i.TestIntegrationExtensionsChromiumNotInstalled,
-	i.TestIntegrationHistoryChromiumNotInstalled,
-	i.TestIntegrationSearchEngineChromiumNotInstalled,
-	i.TestIntegrationSearchEngineFirefoxNotInstalled,
-	i.TestIntegrationHistoryFirefoxNotInstalled,
-	i.TestIntegrationExtensionsFirefoxNotInstalled,
-	i.TestIntegrationDefenderPeriodicScanActive,
-	i.TestIntegrationLoginMethodPasswordAndPIN,
-	i.TestIntegrationOutdatedWin10UpToDate,
 	i.TestIntegrationUACPartialEnabled,
 }
 

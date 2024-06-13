@@ -6,6 +6,7 @@ import {openPrivacyDashboardPage} from './privacy-dashboard.js';
 import {openIssuePage} from './issue.js';
 import {openIssuesPage} from './issues.js';
 import {openIntegrationPage} from './integration.js';
+import {openAllChecksPage} from './all-checks.js';
 import {ChangeLanguage as changeLanguage,
   ChangeScanInterval as changeScanInterval,
   LogError as logError} from '../../wailsjs/go/main/Tray.js';
@@ -56,6 +57,8 @@ export function reloadPage() {
     case '7':
       openPersonalizePage();
       break;
+    case '8':
+      openAllChecksPage();
     default:
       try {
         const issuepage = JSON.parse(page);
