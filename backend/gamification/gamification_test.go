@@ -127,7 +127,7 @@ func TestSufficienActivityFail(t *testing.T) {
 
 type MockPointCalculationGetter struct{}
 
-func (m MockPointCalculationGetter) PointCalculation(gs gamification.GameState, scanResults []checks.Check, filePath string) (gamification.GameState, error) {
+func (m MockPointCalculationGetter) PointCalculation(gs gamification.GameState, _ []checks.Check, _ string) (gamification.GameState, error) {
 	return gs, errors.New("mock error")
 }
 
@@ -151,7 +151,7 @@ func TestUpdateGameState_Error(t *testing.T) {
 
 type MockSaveUserSettingsGetter struct{}
 
-func (m MockSaveUserSettingsGetter) SaveUserSettings(settings usersettings.UserSettings) error {
+func (m MockSaveUserSettingsGetter) SaveUserSettings(_ usersettings.UserSettings) error {
 	return errors.New("mock error")
 }
 
@@ -264,12 +264,12 @@ func TestPointCalculation_SeverityNotFound(t *testing.T) {
 
 	// Write some JSON data to the file
 	text := `{"9999": {"9999": {}}}`
-	if _, err := tmpfile.WriteString(text); err != nil {
+	if _, fileErr := tmpfile.WriteString(text); fileErr != nil {
 		tmpfile.Close()
-		t.Fatal(err)
+		t.Fatal(fileErr)
 	}
-	if err := tmpfile.Close(); err != nil {
-		t.Fatal(err)
+	if closeErr := tmpfile.Close(); closeErr != nil {
+		t.Fatal(closeErr)
 	}
 
 	// Call PointCalculation method
