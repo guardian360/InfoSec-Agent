@@ -53,7 +53,7 @@
         ],
         "Screenshots":
         [
-            "TOBEFILLED"
+            "NOSCREENSHOTNEEDED?"
         ]
     },
     "30": {
@@ -970,7 +970,7 @@
         ],
         "Screenshots":
         [
-            "TOBEFILLED"
+            "NOSCREENSHOTNEEDED?"
         ]
     },	
     "231": {
@@ -1039,8 +1039,8 @@
         "Information": "Cookies are small text files stored on your computer by websites you visit. They are used to remember your preferences, login information, and other data to enhance your browsing experience. However, cookies can also be used to track your online activities and gather personal information without your consent, raising privacy concerns. Managing and clearing cookies regularly helps protect your privacy and control the data websites collect about you.",
         "Solution": 
         [   		
-            "Open Mozilla Firefox and click on the menu button (three horizontal lines) in the top right corner.",
-            "Select 'Options' and go to the 'Privacy & Security' tab.",
+            "Open Mozilla Firefox and click on the menu button (three horizontal lines) in the top right corner, and select 'Settings'.",
+            "Go to the 'Privacy & Security' tab.",
             "Under 'Cookies and Site Data', click on 'Manage Data'.",
             "Here you can view and remove cookies stored by websites. You can also clear all cookies by clicking on 'Remove All'."
         ],
@@ -1149,7 +1149,7 @@
         ],
         "Screenshots":
         [
-            "TOBEFILLED"
+            "NOSCREENSHOTNEEDED?"
         ]
     },
     "320": {
@@ -1162,7 +1162,7 @@
         ],
         "Screenshots":
         [
-            "TOBEFILLED"
+            "cis-benchmark/cis-benchmark-1.png"
         ]
     },
     "321": {
@@ -1200,7 +1200,8 @@
         ],
         "Screenshots":
         [
-            "TOBEFILLED"
+            "automatic-login/automatic-login-1.png",
+            "automatic-login/automatic-login-2.png"
         ]
     },
     "340": {
@@ -1228,7 +1229,10 @@
         ],
         "Screenshots":
         [
-            "TOBEFILLED"
+            "remote-rpc/remote-rpc-1.png",
+            "remote-rpc/remote-rpc-2.png",
+            "remote-rpc/remote-rpc-3.png",
+            "remote-rpc/remote-rpc-4.png"
         ]
     },
     "350": {
@@ -1250,13 +1254,18 @@
         "Solution":
         [
             "Open Google Chrome and click on the three dots in the top right corner.",
-            "Select 'Settings' and go to the 'Privacy and security' section.",
+            "Select 'Settings' from the drop down menu",
+            "Go to the 'Privacy and security' section.",	
             "Under 'Third-party cookies', click on 'See all site data and permissions'.",
             "Here you can view and manage the cookies stored by websites. You can delete individual cookies or clear all site data to protect your privacy. "
         ],
         "Screenshots":
         [
-            "TOBEFILLED"
+            "chrome-cookies/cookies-chrome-1.png",
+            "chrome-cookies/cookies-chrome-2.png",
+            "chrome-cookies/cookies-chrome-3.png",
+            "chrome-cookies/cookies-chrome-4.png",
+            "chrome-cookies/cookies-chrome-5.png"
         ]
     },
     "360": {
@@ -1278,13 +1287,18 @@
         "Solution":
         [
             "Open Microsoft Edge and click on the three dots in the top right corner.",
-            "Select 'Settings' and go to the 'Cookies and site permissions' section.",
+            "Select 'Settings' from the drop down menu",
+            "Go to the 'Cookies and site permissions' section.",
             "Under 'Cookies and data stored', click on 'Manage and delete cookies and site data'.",
             "Here you can manage general cookie settings. You can delete individual cookies or clear all site data by clicking on 'See all cookies and site data'. "
         ],
         "Screenshots":
         [
-            "TOBEFILLED"
+            "edge-cookies/cookies-edge-1.png",
+            "edge-cookies/cookies-edge-2.png",
+            "edge-cookies/cookies-edge-3.png",
+            "edge-cookies/cookies-edge-4.png",
+            "edge-cookies/cookies-edge-5.png"
         ]
     },
     "370": {
@@ -1310,7 +1324,8 @@
         ],
         "Screenshots":
         [
-            "TOBEFILLED"
+            "firewall/firewall-1.png",
+            "firewall/firewall-2.png"
         ]
     },
     "380":{
@@ -1331,14 +1346,17 @@
         "Information": "Setting a minimum password length of at least 15 characters helps enhance the security of user accounts by increasing the complexity and strength of passwords. Longer passwords are more resistant to brute-force attacks and provide better protection against unauthorized access and data breaches.",
         "Solution":
         [
-            "Open an elevated command prompt by right-clicking on the Start button and selecting 'Terminal (Admin)'.",
+            "Open a command prompt by clicking 'Start', type 'cmd', press right-click on it and select 'Run as administrator'.",
             "Run the command 'net accounts' to view the current password policy settings, including the minimum password length.",
             "Run the command 'net accounts /minpwlen:15' to set the minimum password length to 15 characters.",
             "Restart your computer to apply the changes."
         ],
         "Screenshots":
         [
-            "TOBEFILLED"
+            "minimum-password-length/minimum-password-length-1.png",
+            "minimum-password-length/minimum-password-length-2.png",
+            "minimum-password-length/minimum-password-length-3.png",
+            "minimum-password-length/minimum-password-length-4.png"
         ]
     },
     "390": {
@@ -1363,7 +1381,7 @@
         ],
         "Screenshots":
         [
-            "TOBEFILLED"
+            "NOSCREENSHOTNEEDED?"
         ]
     },
     "400": {
@@ -1384,17 +1402,25 @@
         "Information": "NetBIOS over TCP/IP is a legacy networking protocol that allows computers to communicate on a local network. Disabling NetBIOS over TCP/IP helps reduce the attack surface of your system and prevent potential security vulnerabilities associated with this protocol.",
         "Solution":
         [
-            "Open the Control Panel and go to 'Network and Internet' -> 'Network and Sharing Center'.",
+            "Open the Control Panel and go to 'Network and Internet'.",
+            "Go to 'Network and Sharing Center'",
             "Click on 'Change adapter settings' in the left pane.",
             "Right-click on your network connection and select 'Properties'.",
             "In the 'Networking' tab, scroll down to 'Internet Protocol Version 4 (TCP/IPv4)' and click on 'Properties'.",
-            "Click on 'Advanced' and go to the 'WINS' tab.",
-            "Under 'NetBIOS setting', select 'Disable NetBIOS over TCP/IP'.",
+            "Click on 'Advanced'",
+            "Go to the 'WINS' tab and select 'Disable NetBIOS over TCP/IP'.",
             "Click 'OK' to save the changes."
         ],
         "Screenshots":
         [
-            "TOBEFILLED"
+            "netbios/netbios-1.png",
+            "netbios/netbios-2.png",
+            "netbios/netbios-3.png",
+            "netbios/netbios-4.png",
+            "netbios/netbios-5.png",
+            "netbios/netbios-6.png",
+            "netbios/netbios-7.png",
+            "netbios/netbios-8.png"
         ]
     },
     "410": {
@@ -1415,14 +1441,17 @@
         "Information": "Web Proxy Auto-Discovery (WPAD) is a protocol that allows web browsers to automatically discover proxy servers on a network. Disabling the WPAD service helps prevent potential security risks associated with automatic proxy configuration and protects your system from unauthorized proxy server discovery and configuration.",
         "Solution":
         [
-            "Open an elevated command prompt by right-clicking on the Start button and selecting 'Terminal (Admin)'.",
+            "Open a command prompt by clicking 'Start', type 'cmd', press right-click on it and select 'Run as administrator'.",
             "Run the command 'netsh winhttp show proxy' to check the current proxy settings.",
             "If WPAD is enabled, run the command 'netsh winhttp reset proxy' to disable WPAD and reset the proxy settings.",
             "Restart your computer to apply the changes."
         ],
         "Screenshots":
         [
-            "TOBEFILLED"
+            "wpad/wpad-1.png",
+            "wpad/wpad-2.png",
+            "wpad/wpad-3.png",
+            "wpad/wpad-4.png"
         ]
     },
     "420": {
@@ -1445,11 +1474,13 @@
         [
             "Go to Start > Settings > Personalization > Lock screen.",
             "Open the 'Screen saver' window.",
-            "Check the box 'On resume, display logon screen' and set the 'Wait' time to a short interval (2 minutes or less)."
+            "Check the box 'On resume, display logon screen' and set the 'Wait' time to a short interval (2 minutes or less). Then press 'OK'."
         ],
         "Screenshots":
         [
-            "TOBEFILLED"
+            "automatic-screen-lock/automatic-screen-lock-1.png",
+            "automatic-screen-lock/automatic-screen-lock-2.png",
+            "automatic-screen-lock/automatic-screen-lock-3.png"
         ]
     },
     "997": {
