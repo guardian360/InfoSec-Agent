@@ -31,6 +31,7 @@ type GameState struct {
 //
 // Returns: The updated game state with the new points amount and new lighthouse state.
 func UpdateGameState(scanResults []checks.Check, databasePath string) (GameState, error) {
+	logger.Log.Trace("Updating game state")
 	gs := GameState{Points: 0, PointsHistory: nil, TimeStamps: nil, LighthouseState: 0}
 
 	// Loading the game state from the user settings and putting it in the game state struct
@@ -87,12 +88,13 @@ func PointCalculation(gs GameState, scanResults []checks.Check, databasePath str
 			logger.Log.ErrorWithErr("Error getting severity:", err1)
 			return gs, err1
 		}
-		logger.Log.Info("Issue ID: " + strconv.Itoa(result.IssueID) + " Severity: " + strconv.Itoa(sev))
+		logger.Log.Debug("Issue ID: " + strconv.Itoa(result.IssueID) + " Severity: " + strconv.Itoa(sev))
 		// When severity is of the Informative level , we do not want to adjust the points
 		if sev != 4 {
 			gs.Points += sev
 		}
 	}
+	logger.Log.Trace("Calculated points: " + strconv.Itoa(gs.Points))
 	gs.PointsHistory = append(gs.PointsHistory, gs.Points)
 	gs.TimeStamps = append(gs.TimeStamps, time.Now())
 
@@ -130,6 +132,7 @@ func LighthouseStateTransition(gs GameState) GameState {
 	default:
 		gs.LighthouseState = 1
 	}
+	logger.Log.Trace("Calculated lighthouse state: " + strconv.Itoa(gs.LighthouseState))
 	return gs
 }
 
@@ -149,7 +152,8 @@ func sufficientActivity(gs GameState) bool {
 	if len(gs.TimeStamps) == 0 {
 		return false
 	}
-	oldestRecord := gs.TimeStamps[0] // The oldest record is the first timestamp made
 
+	// The oldest record is the first timestamp made
+	oldestRecord := gs.TimeStamps[0]
 	return time.Since(oldestRecord) > requiredDuration
 }
