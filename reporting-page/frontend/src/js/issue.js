@@ -203,6 +203,8 @@ export async function openIssuePage(issueId, severity, back = undefined) {
 
   document.getElementById('scan-button').addEventListener('click', async () => {
     await scanTest(true);
+
+    sessionStorage.setItem('savedPage', JSON.stringify([issueId, severity]));
     openIssuePage(issueId, severity);
   });
 }
