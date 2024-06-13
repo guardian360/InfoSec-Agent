@@ -22,7 +22,29 @@ export function openIssuesPage() {
   document.getElementById('page-contents').innerHTML = `
   <div class="issues-data">
     <div class="table-container">
-      <h2 class="lang-issue-table"></h2>
+      <div class="table-header-container">
+        <h2 class="lang-issue-table"></h2>
+        <div class="dropdown-container">
+        <button id="dropbtn-table" class="dropbtn-table"><span class="lang-select-risks"></span></button>
+        <div class="dropdown-selector-table" id="myDropdown-table">
+          <p><input type="checkbox" checked="true" value="true" id="select-high-risk-table">
+            <label for="select-high-risk" class="lang-high-risk-issues"></label><br>
+          </p>
+          <p><input type="checkbox" checked="true" value="true" id="select-medium-risk-table">
+            <label for="select-medium-risk" class="lang-medium-risk-issues"></label>
+          </p>
+          <p><input type="checkbox" checked="true" value="true" id="select-low-risk-table">
+            <label for="select-low-risk" class="lang-low-risk-issues"></label>
+          </p>
+          <p><input type="checkbox" checked="true" value="true" id="select-acceptable-risk-table">
+            <label for="select-acceptable-risk" class="lang-acceptable-risk-issues"></label>
+          </p>
+          <p><input type="checkbox" checked="true" value="true" id="select-info-risk-table">
+            <label for="select-info-risk" class="lang-info-risk-issues"></label>
+          </p>
+        </div>
+      </div>
+    </div>
       <table class="issues-table" id="issues-table">
         <thead>
           <tr>
@@ -44,23 +66,6 @@ export function openIssuesPage() {
         </tbody>
       </table>
     </div>
-    <div class="dropdown-container">
-      <button id="dropbtn-table" class="dropbtn-table"><span class="lang-select-risks"></span></button>
-      <div class="dropdown-selector-table" id="myDropdown-table">
-        <p><input type="checkbox" checked="true" value="true" id="select-high-risk-table">
-          <label for="select-high-risk" class="lang-high-risk-issues"></label><br>
-        </p>
-        <p><input type="checkbox" checked="true" value="true" id="select-medium-risk-table">
-          <label for="select-medium-risk" class="lang-medium-risk-issues"></label>
-        </p>
-        <p><input type="checkbox" checked="true" value="true" id="select-low-risk-table">
-          <label for="select-low-risk" class="lang-low-risk-issues"></label>
-        </p>
-        <p><input type="checkbox" checked="true" value="true" id="select-info-risk-table">
-          <label for="select-info-risk" class="lang-info-risk-issues"></label>
-        </p>
-      </div>
-    </div>
   </div>
   `;
 
@@ -76,6 +81,7 @@ export function openIssuesPage() {
   document.getElementById('select-high-risk-table').addEventListener('change', changeTable);
   document.getElementById('select-medium-risk-table').addEventListener('change', changeTable);
   document.getElementById('select-low-risk-table').addEventListener('change', changeTable);
+  document.getElementById('select-acceptable-risk-table').addEventListener('change', changeTable);
   document.getElementById('select-info-risk-table').addEventListener('change', changeTable);
 
   const tableHeaders = [
@@ -87,6 +93,7 @@ export function openIssuesPage() {
     'lang-high-risk-issues',
     'lang-medium-risk-issues',
     'lang-low-risk-issues',
+    'lang-acceptable-risk-issues',
     'lang-info-risk-issues',
     'lang-select-risks',
     'lang-acceptable',
@@ -104,6 +111,7 @@ export function openIssuesPage() {
     'Dashboard.HighRisk',
     'Dashboard.MediumRisk',
     'Dashboard.LowRisk',
+    'Dashboard.Acceptable',
     'Dashboard.InfoRisk',
     'Dashboard.SelectRisks',
     'Issues.Acceptable',
@@ -199,7 +207,7 @@ export async function fillTable(tbody, issues, isIssue, isListenersAdded=true) {
   // Add links to issue information pages
   const issueLinks = document.querySelectorAll('.issue-link');
   issueLinks.forEach((link) => {
-    link.addEventListener('click', () => openIssuePage(link.id, link.getAttribute('data-severity')));
+    link.parentElement.addEventListener('click', () => openIssuePage(link.id, link.getAttribute('data-severity')));
   });
 
   // Add buttons to sort on columns
@@ -318,6 +326,7 @@ export function changeTable() {
   const selectedHigh = document.getElementById('select-high-risk-table').checked;
   const selectedMedium = document.getElementById('select-medium-risk-table').checked;
   const selectedLow = document.getElementById('select-low-risk-table').checked;
+  const selectedAcceptable = document.getElementById('select-acceptable-risk-table').checked;
   const selectedInfo = document.getElementById('select-info-risk-table').checked;
 
   const issues = JSON.parse(sessionStorage.getItem('DataBaseData'));
@@ -327,6 +336,7 @@ export function changeTable() {
   // Filter issues based on the selected risk levels
   const filteredIssues = issues.filter((issue) => {
     return (
+      (selectedAcceptable && issue.severity === 0) ||
       (selectedLow && issue.severity === 1) ||
       (selectedMedium && issue.severity === 2) ||
       (selectedHigh && issue.severity === 3) ||

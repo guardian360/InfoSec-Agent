@@ -9,22 +9,30 @@
 /* Table container */
 .table-container {
   width: 100%;
-  box-shadow: 0 0 10px rgb(0 0 0 / 10%); /* Add shadow for depth */
   overflow: hidden; /* Hide overflow content */
+  margin: 20px 0; /* Add space above the table */
+  padding: 0px;
+  min-height: 300px;
+}
+
+.table-header-container {
+  display: flex;
+  justify-content: space-between; /* Space out the elements */
+  align-items: center; /* Center vertically */
+  padding: 0; /* Add padding around the header */
+  /* border: 1px solid var(--color-border); Light border for definition */
 }
 
 /* Table titles */
-/* .issues-data h2 {
-  padding: 10px 20px;
-  background-color: var(--background-color-left-nav);
-  margin-bottom: 10px;
-} */
+.issues-data h2 {
+  padding: 0px;
+}
 
 /* Button container */
 .issues-data .button-container {
   display: flex;
-  justify-content: center; /* Center the button horizontally */
-  margin-bottom: 20px; /* Add space below the button */
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
 /* Dropdown container */
@@ -35,7 +43,7 @@
 
 /* Dropdown button */
 .dropbtn-table {
-  background-color: var(--background-color-left-nav);
+  background-color: var(--background-color);
   color: var(--text-body);
   padding: 16px;
   font-size: 16px;
@@ -47,14 +55,14 @@
 .dropdown-selector-table {
   display: none;
   position: absolute;
-  background-color: var(--background-color-left-nav);
+  background-color: var(--background-color);
   color: var(--text-body);
-  min-width: 160px;
+  min-width: 200px;
   box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%);
-  border-radius: 8px;
+  padding-left: 10px;
   z-index: 1;
-  top: 100%; /* Position below the button */
-  right: 0; /* Align with the right side of the button */
+  /* top: 100%; */
+  right: 0;
 }
 
 /* Show dropdown content when hovering over dropdown container */
@@ -66,8 +74,7 @@
 .issues-table {
   width: 100%;
   overflow-x: auto; /* Allows table to scroll on small screens */
-  box-shadow: 0 0 20px rgb(0 0 0 / 10%);
-  border: 1px solid #8b8b8b;
+  /* box-shadow: 0 0 20px rgb(0 0 0 / 10%); */
   border-collapse: collapse;
 }
 
@@ -75,26 +82,16 @@
 .issues-table td {
   padding: 8px;
   text-align: left;
-  border: 1px solid #8b8b8b;
-}
-
-/* Alternate row background color */
-/* .issues-table tbody tr:nth-child(even) {
-  background-color: var(--background-color-top-nav);
-  border: 1px solid #8b8b8b;
-} */
-
-.issues-table tbody tr:hover {
-  background-color: var(--background-color-top-nav); /* Light blue on hover */
-}
-
-.issue-link:hover {
-  cursor: pointer;
+  border: 1px solid var(--color-border); /* Light border for definition */
 }
 
 .issues-table th {
-  background-color: var(--background-color-table-header);
-  text-align: left;
+  align-items: center; /* Center vertically */
+}
+
+.issues-table tbody tr:hover {
+  background-color: var(--background-color-top-nav); /* Light blue on hover */
+  cursor: pointer; /* Indicate that it's clickable */
 }
 
 .issues-table tr[data-severity="3"] .table-risk-level {
@@ -137,6 +134,8 @@
 .material-symbols-outlined:hover {
   cursor: pointer;
 }
+
+/* Issue pages */
 
 /* Button styles */
 .button {
