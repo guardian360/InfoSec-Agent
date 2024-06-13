@@ -18,21 +18,21 @@ import (
 // The function works by opening and reading the values of the Windows Defender and Real-Time Protection registry keys. Based on these values, it determines the status of Windows Defender and its periodic scan feature. The function returns a Check instance containing a string that describes the status of Windows Defender and its periodic scan feature.
 func Defender(scanKey mocking.RegistryKey, defenderKey mocking.RegistryKey) checks.Check {
 	// Open the Windows Defender registry key
-	windowsDefenderKey, err := checks.OpenRegistryKey(scanKey, `SOFTWARE\Microsoft\Windows Defender`)
+	windowsDefenderKey, err := mocking.OpenRegistryKey(scanKey, `SOFTWARE\Microsoft\Windows Defender`)
 	if err != nil {
 		return checks.NewCheckErrorf(checks.WindowsDefenderID, "error opening registry key", err)
 	}
 	// Close the key after we have received all relevant information
-	defer checks.CloseRegistryKey(windowsDefenderKey)
+	defer mocking.CloseRegistryKey(windowsDefenderKey)
 
 	// Open the Windows Defender real-time protection registry key, representing the periodic scan
-	realTimeKey, err := checks.OpenRegistryKey(defenderKey,
+	realTimeKey, err := mocking.OpenRegistryKey(defenderKey,
 		`SOFTWARE\Microsoft\Windows Defender\Real-Time Protection`)
 	if err != nil {
 		return checks.NewCheckErrorf(checks.WindowsDefenderID, "error opening registry key", err)
 	}
 	// Close the key after we have received all relevant information
-	defer checks.CloseRegistryKey(realTimeKey)
+	defer mocking.CloseRegistryKey(realTimeKey)
 
 	// Read the value of the registry keys
 	antiVirusPeriodic, _, err := windowsDefenderKey.GetIntegerValue("DisableAntiVirus")

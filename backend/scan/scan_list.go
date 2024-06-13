@@ -188,6 +188,6 @@ func GeneratePath(path string) string {
 // Returns:
 //   - bool: A boolean value indicating whether the path is installed on the system or not.
 func CheckInstalled(registryKey mocking.RegistryKey, path string) bool {
-	_, err := checks.OpenRegistryKey(registryKey, `SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\`+path)
+	_, err := mocking.OpenRegistryKey(registryKey, `SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\`+path)
 	return err == nil
 }

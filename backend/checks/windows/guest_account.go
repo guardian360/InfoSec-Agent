@@ -25,6 +25,7 @@ func GuestAccount(
 	executorLocalGroupMembers mocking.CommandExecutor,
 	executorYesWord mocking.CommandExecutor,
 	executorNetUser mocking.CommandExecutor,
+	usernameRetriever mocking.UsernameRetriever,
 ) checks.Check {
 	// Get localgroup name using GetWmiObject
 	// output, err := GuestAccountLocalGroup(executorLocalGroup)
@@ -68,7 +69,7 @@ func GuestAccount(
 	}
 
 	// Retrieve current username
-	currentUser, err := checks.CurrentUsername()
+	currentUser, err := usernameRetriever.CurrentUsername()
 	if err != nil {
 		return checks.NewCheckErrorf(checks.GuestAccountID, "error retrieving current username", err)
 	}

@@ -19,9 +19,10 @@ import (
 // This function tests the SecureBoot function with different scenarios. It uses a mock implementation of the RegistryKey interface to simulate the behavior of the Secure Boot registry key. Each test case checks if the SecureBoot function correctly identifies the status of Secure Boot (enabled, disabled, or unknown) based on the simulated registry key value. The function asserts that the returned Check instance contains the expected results.
 func TestSecureBoot(t *testing.T) {
 	tests := []struct {
-		name string
-		key  mocking.RegistryKey
-		want checks.Check
+		name  string
+		key   mocking.RegistryKey
+		want  checks.Check
+		error bool
 	}{
 		{
 			name: "SecureBootEnabled",
@@ -36,6 +37,13 @@ func TestSecureBoot(t *testing.T) {
 				KeyName:       "SYSTEM\\CurrentControlSet\\Control\\SecureBoot\\State",
 				IntegerValues: map[string]uint64{"UEFISecureBootEnabled": 0}, Err: nil}}},
 			want: checks.NewCheckResult(checks.SecureBootID, 0),
+		},
+		{
+			name: "SecureBootUnknown",
+			key: &mocking.MockRegistryKey{SubKeys: []mocking.MockRegistryKey{{
+				KeyName:       "SYSTEM\\CurrentControlSet\\Control\\SecureBoot\\State",
+				IntegerValues: map[string]uint64{"UEFISecureBootEnabled": 2}, Err: nil}}},
+			want: checks.NewCheckResult(checks.SecureBootID, 2),
 		},
 		{
 			name: "SecureBootUnknown",

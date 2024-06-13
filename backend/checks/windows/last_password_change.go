@@ -22,9 +22,9 @@ import (
 //   - Check: A struct containing the result of the check. The result indicates the date when the password was last changed.
 //
 // The function works by executing a 'net user' command to get the user's password last set date. It then parses the output of the command to extract the date. The function compares this date with the current date and if the difference is more than half a year, it returns a warning suggesting the user to change the password. Otherwise, it returns a message indicating that the password was changed recently.
-func LastPasswordChange(executor mocking.CommandExecutor) checks.Check {
+func LastPasswordChange(executor mocking.CommandExecutor, usernameRetriever mocking.UsernameRetriever) checks.Check {
 	// Get the current Windows username
-	username, err := checks.CurrentUsername()
+	username, err := usernameRetriever.CurrentUsername()
 	if err != nil {
 		return checks.NewCheckErrorf(checks.LastPasswordChangeID, "error retrieving username", err)
 	}
@@ -45,6 +45,21 @@ func LastPasswordChange(executor mocking.CommandExecutor) checks.Check {
 	// Define the regex pattern for the date
 	datePattern := `\b(\d{1,2}(-|/)\d{1,2}(-|/)\d{4})\b`
 	regex := regexp.MustCompile(datePattern)
+
+	// Determine the current user's date format
+	var goDateFormat string
+	switch dateFormat {
+	case "d-M-yyyy":
+		goDateFormat = "02-01-2006"
+	case "M-d-yyyy":
+		goDateFormat = "01-02-2006"
+	default:
+		logger.Log.Error("Unknown date format:")
+		goDateFormat = "02-01-2006"
+	}
+	if len(lines) < 9 {
+		return checks.NewCheckError(checks.LastPasswordChangeID, errors.New("error parsing output"))
+	}
 	// Find the date in the output
 	match := regex.FindString(lines[8])
 
@@ -63,17 +78,6 @@ func LastPasswordChange(executor mocking.CommandExecutor) checks.Check {
 
 	// Join the parts back together
 	formattedDate := strings.Join(parts, "-")
-
-	var goDateFormat string
-	switch dateFormat {
-	case "d-M-yyyy":
-		goDateFormat = "02-01-2006"
-	case "M-d-yyyy":
-		goDateFormat = "01-02-2006"
-	default:
-		logger.Log.Error("Unknown date format:")
-		goDateFormat = "02-01-2006"
-	}
 	parsedDate, err := time.Parse(goDateFormat, formattedDate)
 	if err != nil {
 		logger.Log.ErrorWithErr("Error parsing date", err)

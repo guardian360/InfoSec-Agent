@@ -14,11 +14,11 @@ import (
 // Returns:
 //   - Check: A struct containing the result of the check. The result indicates whether the settings to allow remote computers to execute code on your device is enabled.
 func AllowRemoteRPC(registryKey mocking.RegistryKey) checks.Check {
-	key, err := checks.OpenRegistryKey(registryKey, `SYSTEM\CurrentControlSet\Control\Terminal Server`)
+	key, err := mocking.OpenRegistryKey(registryKey, `SYSTEM\CurrentControlSet\Control\Terminal Server`)
 	if err != nil {
 		return checks.NewCheckError(checks.RemoteRPCID, err)
 	}
-	defer checks.CloseRegistryKey(key)
+	defer mocking.CloseRegistryKey(key)
 
 	// Read the value of AllowRemoteRPC, which contains the information if the setting to allow remote computers to execute code on your device is enabled.
 	value, _, err := key.GetIntegerValue("AllowRemoteRPC")

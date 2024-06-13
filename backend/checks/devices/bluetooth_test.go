@@ -1,6 +1,7 @@
 package devices_test
 
 import (
+	"errors"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/devices"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/stretchr/testify/require"
@@ -69,6 +70,31 @@ func TestBluetooth(t *testing.T) {
 			name: "Error opening registry key",
 			key:  &mocking.MockRegistryKey{},
 			err:  true,
+		},
+		{
+			name: "Error reading sub key names",
+			key: &mocking.MockRegistryKey{
+				SubKeys: []mocking.MockRegistryKey{
+					{KeyName: "SYSTEM\\CurrentControlSet\\Services\\BTHPORT\\Parameters\\Devices",
+						SubKeys: []mocking.MockRegistryKey{
+							{KeyName: "4dbndas2", StringValues: map[string]string{"test": "test"},
+								BinaryValues: map[string][]byte{"Name": []byte("Device1")}, Err: nil}},
+					},
+				}, Err: nil},
+			want: checks.NewCheckError(checks.BluetoothID, errors.New("error")),
+			err:  true,
+		},
+		{
+			name: "Error opening sub key",
+			key: &mocking.MockRegistryKey{
+				SubKeys: []mocking.MockRegistryKey{
+					{KeyName: "SYSTEM\\CurrentControlSet\\Services\\BTHPORT\\Parameters\\Devices",
+						SubKeys: []mocking.MockRegistryKey{
+							{KeyName: "4dbndas2", IntegerValues: map[string]uint64{"test": 1},
+								BinaryValues: map[string][]byte{"Name": []byte("Device1")}, Err: nil}},
+					},
+				}, Err: nil},
+			want: checks.NewCheckResult(checks.BluetoothID, 1),
 		},
 	}
 	for _, tt := range tests {
