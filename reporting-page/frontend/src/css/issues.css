@@ -99,31 +99,31 @@
 .issues-table tr[data-severity="3"] .table-risk-level {
   background-color: var(--high-risk-color);
   border-radius: 8px;
-  padding: 3px 5px;
+  padding: 2px 7px;
   color: var(--text-body);
 }
 .issues-table tr[data-severity="2"] .table-risk-level {
   background-color: var(--medium-risk-color);
   border-radius: 8px;
-  padding: 3px 5px;
+  padding: 2px 7px;
   color: var(--text-body);
 }
 .issues-table tr[data-severity="1"] .table-risk-level {
   background-color: var(--low-risk-color);
   border-radius: 8px;
-  padding: 3px 5px;
+  padding: 2px 7px;
   color: var(--text-body);
 }
 .issues-table tr[data-severity="0"] .table-risk-level {
   background-color: var(--no-risk-color);
   border-radius: 8px;
-  padding: 3px 5px;
+  padding: 2px 7px;
   color: var(--text-body);
 }
 .issues-table tr[data-severity="4"] .table-risk-level {
   background-color: var(--info-color);
   border-radius: 8px;
-  padding: 3px 5px;
+  padding: 2px 7px;
   color: var(--text-body);
 }
 
