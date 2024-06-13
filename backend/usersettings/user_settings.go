@@ -79,6 +79,21 @@ func LoadUserSettings() UserSettings {
 	return settings
 }
 
+// SaveUserSettingsGetter is an interface that defines a method for saving user settings.
+//
+// The SaveUserSettings method takes a UserSettings struct as input, which contains the user settings to be saved.
+// It returns an error if any occurred while saving the user settings. If no error occurred, the method returns nil.
+//
+// This interface is implemented by any type that needs to save user settings for the system.
+type SaveUserSettingsGetter interface {
+	SaveUserSettings(settings UserSettings) error
+}
+
+// RealSaveUserSettingsGetter is a struct that implements the SaveUserSettingsGetter interface.
+//
+// It provides a real-world implementation of the SaveUserSettings method, which saves the user settings to a JSON file in the Windows AppData\Roaming folder.
+type RealSaveUserSettingsGetter struct{}
+
 // SaveUserSettings saves the user settings to a JSON file in the Windows AppData\Roaming folder.
 //
 // The function takes a UserSettings struct as input, which contains the user settings to be saved.
@@ -88,7 +103,7 @@ func LoadUserSettings() UserSettings {
 //   - settings (UserSettings): The user settings to be saved.
 //
 // Returns: An error if any occurred while saving the user settings. If no error occurred, the function returns nil.
-func SaveUserSettings(settings UserSettings) error {
+func (r RealSaveUserSettingsGetter) SaveUserSettings(settings UserSettings) error {
 	logger.Log.Debug("Getting user config directory")
 	appDataPath, err := os.UserConfigDir()
 	if err != nil {

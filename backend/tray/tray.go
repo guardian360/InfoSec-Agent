@@ -137,7 +137,7 @@ func OnReady() {
 				logger.Log.ErrorWithErr("Error scanning:", err)
 			} else {
 				// Notify the user that a scan has been completed
-				err = Popup(result, "./reporting-page/database.db")
+				err = Popup(result, "./reporting-page/frontend/src/databases/database.en-GB.json")
 				if err != nil {
 					logger.Log.ErrorWithErr("Error notifying user:", err)
 				}
@@ -353,7 +353,7 @@ func ScanNow(dialogPresent bool) ([]checks.Check, error) {
 		}
 	}
 	// Update the game state based on the scan results
-	_, err = gamification.UpdateGameState(result, "reporting-page/database.db")
+	_, err = gamification.UpdateGameState(result, "reporting-page/frontend/src/databases/database.en-GB.json", gamification.RealPointCalculationGetter{}, usersettings.RealSaveUserSettingsGetter{})
 	if err != nil {
 		logger.Log.ErrorWithErr("Error calculating points:", err)
 	}
@@ -424,9 +424,10 @@ func ChangeLanguage(testInput ...string) {
 	if test {
 		return
 	}
+	getter := usersettings.RealSaveUserSettingsGetter{}
 	current := usersettings.LoadUserSettings()
 	current.Language = Language
-	err := usersettings.SaveUserSettings(current)
+	err := getter.SaveUserSettings(current)
 	if err != nil {
 		logger.Log.Warning("Language setting not saved to file")
 	}
@@ -457,7 +458,8 @@ func RefreshMenu() {
 // Returns: None.
 func changeNextScan(settings usersettings.UserSettings, value int) {
 	settings.NextScan = time.Now().Add(time.Duration(value) * time.Hour)
-	err := usersettings.SaveUserSettings(settings)
+	getter := usersettings.RealSaveUserSettingsGetter{}
+	err := getter.SaveUserSettings(settings)
 	if err != nil {
 		logger.Log.Warning("Next scan time not saved to file")
 	}
@@ -478,7 +480,7 @@ func periodicScan(scanInterval int) {
 			logger.Log.ErrorWithErr("Error performing periodic scan:", err)
 		} else {
 			// Notify the user that a scan has been completed
-			err = Popup(result, "./reporting-page/database.db")
+			err = Popup(result, "./reporting-page/frontend/src/databases/database.en-GB.json")
 			if err != nil {
 				logger.Log.ErrorWithErr("Error notifying user:", err)
 			}
@@ -531,7 +533,8 @@ func updateScanInterval(interval int, test bool) {
 		current := usersettings.LoadUserSettings()
 		current.ScanInterval = interval
 		current.NextScan = time.Now().Add(time.Duration(interval) * time.Hour)
-		err := usersettings.SaveUserSettings(current)
+		getter := usersettings.RealSaveUserSettingsGetter{}
+		err := getter.SaveUserSettings(current)
 		if err != nil {
 			logger.Log.Warning("Scan interval setting not saved to file")
 		}
