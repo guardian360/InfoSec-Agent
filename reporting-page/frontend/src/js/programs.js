@@ -37,7 +37,7 @@ export function openProgramsPage() {
 
   const programsJson = JSON.parse(sessionStorage.getItem('ScanResult'));
   const issueTableHtml = document.getElementById('program-table').querySelector('tbody');
-  const foundObject = programsJson.find((obj) => obj.issue_id === 37);
+  const foundObject = programsJson.find((obj) => obj.issue_id === 43);
 
   // Check if the object was found
   if (foundObject) {

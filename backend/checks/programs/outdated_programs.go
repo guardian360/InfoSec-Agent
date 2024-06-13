@@ -7,6 +7,7 @@ import (
 	"unicode"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 )
 
 // OutdatedSoftware function checks for outdated software on the system
@@ -118,10 +119,16 @@ func compareVersions(v1, v2 string) int {
 	for i := range maxLen {
 		var num1, num2 int
 		if i < len(parts1) {
-			fmt.Sscanf(parts1[i], "%d", &num1)
+			_, err := fmt.Sscanf(parts1[i], "%d", &num1)
+			if err != nil {
+				logger.Log.ErrorWithErr("error parsing version number", err)
+			}
 		}
 		if i < len(parts2) {
-			fmt.Sscanf(parts2[i], "%d", &num2)
+			_, err := fmt.Sscanf(parts2[i], "%d", &num2)
+			if err != nil {
+				logger.Log.ErrorWithErr("error parsing version number", err)
+			}
 		}
 
 		if num1 > num2 {
