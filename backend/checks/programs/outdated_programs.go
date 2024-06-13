@@ -9,18 +9,24 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 )
 
+// OutdatedSoftware function checks for outdated software on the system
 func OutdatedSoftware() checks.Check {
+	// Collect all software lists
 	softwareList, err := collectAllSoftwareLists()
 	if softwareList == nil {
 		return err
 	}
 
+	// Filter and deduplicate the software list
 	uniqueSoftware := filterAndDeduplicateSoftware(softwareList)
+	// Format the result array
 	resultArray := formatResultArray(uniqueSoftware)
 
+	// Return the check result
 	return checks.NewCheckResult(checks.OutdatedSoftwareID, checks.OutdatedSoftwareID, resultArray...)
 }
 
+// collectAllSoftwareLists function collects all software lists from different sources
 func collectAllSoftwareLists() ([]software, checks.Check) {
 	var (
 		softwareList       []software
@@ -30,20 +36,25 @@ func collectAllSoftwareLists() ([]software, checks.Check) {
 		err                error
 	)
 
+	// Retrieve installed programs from winget
 	if softwareListWinget, err = retrieveWingetInstalledPrograms(softwareList); err != nil {
 		return nil, checks.NewCheckErrorf(checks.OutdatedSoftwareID, "error listing installed programs in Program Files", err)
 	}
+	// Retrieve installed 32 bit programs
 	if softwareList32, err = retrieveInstalled32BitPrograms(softwareList); err != nil {
 		return nil, checks.NewCheckErrorf(checks.OutdatedSoftwareID, "error listing installed programs in 32 bit programs", err)
 	}
+	// Retrieve installed 64 bit programs
 	if softwareList64, err = retrieveInstalled64BitPrograms(softwareList, "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\*"); err != nil {
 		return nil, checks.NewCheckErrorf(checks.OutdatedSoftwareID, "error listing installed programs in 64bit programs", err)
 	}
 
+	// Append all software lists
 	softwareList = append(softwareList, softwareListWinget...)
 	softwareList = append(softwareList, softwareList32...)
 	softwareList = append(softwareList, softwareList64...)
 
+	// Format the result array
 	resultArray := make([]string, 0)
 	for _, v := range softwareList {
 		resultArray = append(resultArray, fmt.Sprintf("%s | %s", v.name, v.version))
@@ -52,6 +63,7 @@ func collectAllSoftwareLists() ([]software, checks.Check) {
 	return softwareList, checks.NewCheckResult(checks.OutdatedSoftwareID, checks.OutdatedSoftwareID, resultArray...)
 }
 
+// filterAndDeduplicateSoftware function filters and deduplicates the software list
 func filterAndDeduplicateSoftware(softwareList []software) map[string]software {
 	uniqueSoftware := make(map[string]software)
 	for _, sw := range softwareList {
@@ -70,6 +82,7 @@ func filterAndDeduplicateSoftware(softwareList []software) map[string]software {
 	return uniqueSoftware
 }
 
+// formatResultArray function formats the result array
 func formatResultArray(uniqueSoftware map[string]software) []string {
 	resultArray := make([]string, 0, len(uniqueSoftware))
 	for _, v := range uniqueSoftware {
@@ -120,12 +133,14 @@ func compareVersions(v1, v2 string) int {
 	return 0
 }
 
-// This function retrieves all installed packages found with the winget package manager
+// retrieveWingetInstalledPrograms function retrieves all installed packages found with the winget package manager
 func retrieveWingetInstalledPrograms(softwareList []software) ([]software, error) {
-	out, err := exec.Command("winget", "list").Output()
+	// Execute the winget list command
+	out, err := exec.Command("winget", "list", "--accept-source-agreements").Output()
 	if err != nil {
 		return softwareList, err
 	}
+	// Process the output
 	lines := strings.Split(string(out), "\r\n")
 	lines[0] = lines[0][strings.Index(lines[0], "Name")+1:] // Remove the first part of the header
 	idIndex := strings.Index(lines[0], "Id")
@@ -134,6 +149,7 @@ func retrieveWingetInstalledPrograms(softwareList []software) ([]software, error
 	sourcesIndex := strings.Index(lines[0], "Source")
 	for _, line := range lines[2:] { // Skip the header lines
 		if len(line) != 0 { // Don't handle the last empty line, and maybe other empty lines
+			// Extract the software details
 			name := substr(line, 0, idIndex)
 			name = strings.TrimSpace(name)
 			id := substr(line, idIndex, versionIndex-idIndex)
@@ -144,6 +160,7 @@ func retrieveWingetInstalledPrograms(softwareList []software) ([]software, error
 			available = strings.TrimSpace(available)
 			source := substr(line, sourcesIndex, len(line)-sourcesIndex)
 			source = strings.TrimSpace(source)
+			// Append the software to the list
 			softwareList = append(softwareList, software{
 				name:         name,
 				identifier:   id,
@@ -159,23 +176,24 @@ func retrieveWingetInstalledPrograms(softwareList []software) ([]software, error
 	return softwareList, nil
 }
 
-// this function returns all the installed 32-bit programs found using registry query
-// command run: Get-ItemProperty "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*" | Select-Object DisplayName, PSChildName, DisplayVersion, Publisher | Sort-Object DisplayName | Format-List
+// retrieveInstalled32BitPrograms function returns all the installed 32-bit programs found using registry query
 func retrieveInstalled32BitPrograms(softwareList []software) ([]software, error) {
 	return retrieveInstalled64BitPrograms(softwareList, "\"HKLM:\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\*\"")
 }
 
-// this function returns all the installed 64-bit programs found using registry query
-// command run: Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*" | Select-Object DisplayName, PSChildName, DisplayVersion, Publisher | Sort-Object DisplayName | Format-List
+// retrieveInstalled64BitPrograms function returns all the installed 64-bit programs found using registry query
 func retrieveInstalled64BitPrograms(softwareList []software, bits string) ([]software, error) {
+	// Execute the powershell command to get the installed programs
 	output, err := exec.Command("powershell", "Get-ItemProperty ", bits, "| Select-Object DisplayName, PSChildName, DisplayVersion, Publisher | Sort-Object DisplayName | Format-List").Output()
 	if err != nil {
 		return softwareList, err
 	}
+	// Process the output
 	outputString := strings.Split(string(output), "\r\n")
 	var name, identifier, version, vendor string
 	for i, line := range outputString[2:] {
 		line = strings.TrimSpace(line)
+		// Extract the software details
 		if strings.Contains(line, "DisplayName") {
 			name = strings.Split(line, ":")[1]
 			name = strings.TrimSpace(name)
@@ -192,6 +210,7 @@ func retrieveInstalled64BitPrograms(softwareList []software, bits string) ([]sof
 			vendor = strings.Split(line, ":")[1]
 			vendor = strings.TrimSpace(vendor)
 		}
+		// Append the software to the list
 		if i%5 == 4 {
 			softwareList = append(softwareList, software{
 				name:         name,
@@ -209,6 +228,7 @@ func retrieveInstalled64BitPrograms(softwareList []software, bits string) ([]sof
 	return softwareList, nil
 }
 
+// software struct represents a software
 type software struct {
 	name         string
 	identifier   string
@@ -220,6 +240,7 @@ type software struct {
 	whereFrom    string // tmp for which function found this software
 }
 
+// substr function returns a substring from the input string
 func substr(input string, start int, length int) string {
 	asRunes := []rune(input)
 
