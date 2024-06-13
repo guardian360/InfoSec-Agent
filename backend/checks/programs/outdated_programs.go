@@ -9,105 +9,6 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 )
 
-// func OutdatedSoftware() checks.Check {
-// 	var softwareList []software
-// 	var err error
-
-// 	softwareListWinget, err := retrieveSoftwareList(retrieveWingetInstalledPrograms, "error listing installed programs in Program Files")
-// 	if err != nil {
-// 		return checks.NewCheckErrorf(checks.OutdatedSoftwareID, "error listing installed programs in Program Files", err)
-// 	}
-// 	softwareList32, err = retrieveInstalled32BitPrograms(softwareList32)
-// 	if err != nil {
-// 		return checks.NewCheckErrorf(checks.OutdatedSoftwareID, "error listing installed programs in 32 bit programs", err)
-// 	}
-// 	softwareList64, err = retrieveInstalled64BitPrograms(softwareList64, "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\*")
-// 	if err != nil {
-// 		return checks.NewCheckErrorf(checks.OutdatedSoftwareID, "error listing installed programs in 64bit programs", err)
-// 	}
-// 	softwareListPackages, err = retrieveInstalledPackages(softwareListPackages, "Get-Package | Select-Object Name, TagId, Version | Sort-Object Name | Format-List")
-// 	if err != nil {
-// 		return checks.NewCheckErrorf(checks.OutdatedSoftwareID, "error listing installed programs in packages", err)
-// 	}
-// 	softwareListAppPackages, err = retrieveInstalledAppPackages(softwareListAppPackages)
-// 	if err != nil {
-// 		return checks.NewCheckErrorf(checks.OutdatedSoftwareID, "error listing installed programs in app packages", err)
-// 	}
-
-// 	softwareList = appendSoftwareLists(softwareList, softwareListWinget, softwareList32, softwareList64, softwareListPackages, softwareListAppPackages)
-
-// 	everythingBut := generateEverythingButLists(softwareListWinget, softwareList32, softwareList64, softwareListPackages, softwareListAppPackages)
-
-// 	uniqueSoftware := filterUniqueSoftware(softwareList)
-
-// 	resultArray := formatSoftwareList(uniqueSoftware)
-
-// 	return checks.NewCheckResult(checks.OutdatedSoftwareID, checks.OutdatedSoftwareID, resultArray...)
-// }
-
-// func retrieveSoftwareList(retrieveFunc func([]software) ([]software, error), errMsg string, args ...string) ([]software, error) {
-// 	var list []software
-// 	var err error
-// 	if len(args) > 0 {
-// 		list, err = retrieveFunc(list, args[0])
-// 	} else {
-// 		list, err = retrieveFunc(list)
-// 	}
-// 	if err != nil {
-// 		return nil, checks.NewCheckErrorf(checks.OutdatedSoftwareID, errMsg, err)
-// 	}
-// 	return list, nil
-// }
-
-// func appendSoftwareLists(lists ...[]software) []software {
-// 	var combined []software
-// 	for _, list := range lists {
-// 		combined = append(combined, list...)
-// 	}
-// 	return combined
-// }
-
-// func generateEverythingButLists(softwareListWinget, softwareList32, softwareList64, softwareListPackages, softwareListAppPackages []software) map[string][]software {
-// 	everythingBut := make(map[string][]software)
-// 	everythingBut["winget"] = append(append(append(append([]software{}, softwareList32...), softwareList64...), softwareListPackages...), softwareListAppPackages...)
-// 	everythingBut["32"] = append(append(append(append([]software{}, softwareListWinget...), softwareList64...), softwareListPackages...), softwareListAppPackages...)
-// 	everythingBut["64"] = append(append(append(append([]software{}, softwareListWinget...), softwareList32...), softwareListPackages...), softwareListAppPackages...)
-// 	everythingBut["packages"] = append(append(append(append([]software{}, softwareListWinget...), softwareList32...), softwareList64...), softwareListAppPackages...)
-// 	everythingBut["appPackages"] = append(append(append(append([]software{}, softwareListWinget...), softwareList32...), softwareList64...), softwareListPackages...)
-
-// 	return everythingBut
-// }
-
-// func filterUniqueSoftware(softwareList []software) map[string]software {
-// 	uniqueSoftware := make(map[string]software)
-
-// 	for _, sw := range softwareList {
-// 		if sw.name == "" || sw.version == "" || strings.Contains(strings.ToLower(sw.name), "microsoft defender") {
-// 			continue
-// 		}
-
-// 		normalized := normalize(sw.name)
-
-// 		if existing, exists := uniqueSoftware[normalized]; exists {
-// 			if compareVersions(sw.version, existing.version) > 0 {
-// 				uniqueSoftware[normalized] = sw
-// 			}
-// 		} else {
-// 			uniqueSoftware[normalized] = sw
-// 		}
-// 	}
-
-// 	return uniqueSoftware
-// }
-
-// func formatSoftwareList(uniqueSoftware map[string]software) []string {
-// 	resultArray := make([]string, 0)
-// 	for _, v := range uniqueSoftware {
-// 		resultArray = append(resultArray, fmt.Sprintf("%s | %s", v.name, v.version))
-// 	}
-// 	return resultArray
-// }
-
 func OutdatedSoftware() checks.Check {
 	softwareList, err := collectAllSoftwareLists()
 	if softwareList == nil {
@@ -223,7 +124,6 @@ func compareVersions(v1, v2 string) int {
 func retrieveWingetInstalledPrograms(softwareList []software) ([]software, error) {
 	out, err := exec.Command("winget", "list").Output()
 	if err != nil {
-		// fmt.Printf("%s \n", err)
 		return softwareList, err
 	}
 	lines := strings.Split(string(out), "\r\n")
@@ -233,20 +133,15 @@ func retrieveWingetInstalledPrograms(softwareList []software) ([]software, error
 	availableIndex := strings.Index(lines[0], "Available")
 	sourcesIndex := strings.Index(lines[0], "Source")
 	for _, line := range lines[2:] { // Skip the header lines
-		// fmt.Println(line)
 		if len(line) != 0 { // Don't handle the last empty line, and maybe other empty lines
 			name := substr(line, 0, idIndex)
 			name = strings.TrimSpace(name)
-			// fmt.Println(name)
 			id := substr(line, idIndex, versionIndex-idIndex)
 			id = strings.TrimSpace(id)
-			// fmt.Println(id)
 			version := substr(line, versionIndex, availableIndex-versionIndex)
 			version = strings.TrimSpace(version)
-			// fmt.Println(version)
 			available := substr(line, availableIndex, sourcesIndex-availableIndex)
 			available = strings.TrimSpace(available)
-			// fmt.Println(available)
 			source := substr(line, sourcesIndex, len(line)-sourcesIndex)
 			source = strings.TrimSpace(source)
 			softwareList = append(softwareList, software{
@@ -275,7 +170,6 @@ func retrieveInstalled32BitPrograms(softwareList []software) ([]software, error)
 func retrieveInstalled64BitPrograms(softwareList []software, bits string) ([]software, error) {
 	output, err := exec.Command("powershell", "Get-ItemProperty ", bits, "| Select-Object DisplayName, PSChildName, DisplayVersion, Publisher | Sort-Object DisplayName | Format-List").Output()
 	if err != nil {
-		// fmt.Println("Error retrieving 64-bit installed programs:", err)
 		return softwareList, err
 	}
 	outputString := strings.Split(string(output), "\r\n")
