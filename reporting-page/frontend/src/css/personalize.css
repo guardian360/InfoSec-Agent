@@ -130,7 +130,8 @@ hr.solid {
   --background-color-left-nav: #4E869B;
   --background-nav-hover: #427385;
   --background-color-second-row: hsl(var(--hue-right-analogous) 40% 95%);
-  --background-color-table-header: white;
+  --background-color-table-header: #e9e9e9;
+  --button-color-table-header: white;
   --text-body: #333; 
   --text-navigation: hsl(var(--hue-complement) 5% 30%);
   --text-settings-hover: #646464; 
@@ -162,7 +163,7 @@ hr.solid {
   --background-nav-hover: rgb(0 0 0);
   --background-color-second-row: #302d2d;
   --background-piechart: #302d2d;
-  --background-color-table-header: black;
+  --background-color-table-header: rgb(18, 18, 18);
   --text-body: #d6cdcd;
   --text-navigation: #383636;
   --text-settings-hover: #798d8a;

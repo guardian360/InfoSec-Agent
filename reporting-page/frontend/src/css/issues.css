@@ -26,6 +26,7 @@
 /* Table titles */
 .issues-data h2 {
   padding: 0px;
+  margin-left: 0px;
 }
 
 /* Button container */
@@ -87,6 +88,7 @@
 
 .issues-table th {
   align-items: center; /* Center vertically */
+  background-color: var(--background-color-table-header); /* Light background color */
 }
 
 .issues-table tbody tr:hover {
@@ -126,7 +128,8 @@
 }
 
 /* Sort icon */
-.material-symbols-outlined {
+.issues-table .material-symbols-outlined {
+  font-size: 1.2em;
   float: right;
   margin-left: auto; /* Align icon to the right using margin */
 }
