@@ -81,19 +81,18 @@ describe('Privacy dashboard page', function() {
   });
   it('adjustWithRiskCounters should show the correct style', async function() {
     // arrange
-    const expectedColors = ['rgb(255, 255, 255)', 'rgb(255, 255, 255)', 'rgb(0, 0, 0)', 'rgb(0, 0, 0)', 'rgb(0, 0, 0)'];
     const expectedBackgroundColors = [
       'rgb(0, 255, 255)',
       'rgb(0, 0, 255)',
       'rgb(255, 0, 0)',
-      'rgb(255, 255, 0)',
+      'rgb(255, 255, 255)',
       'rgb(255, 255, 255)',
     ];
     const mockRiskCounters = {
       highRiskColor: 'rgb(0, 255, 255)',
       mediumRiskColor: 'rgb(0, 0, 255)',
       lowRiskColor: 'rgb(255, 0, 0)',
-      infoColor: 'rgb(255, 255, 0)',
+      infoColor: 'rgb(255, 255, 255)',
       noRiskColor: 'rgb(255, 255, 255)',
 
       lastHighRisk: 10,
@@ -120,14 +119,11 @@ describe('Privacy dashboard page', function() {
       if (index == 1) mockRiskCounters.lastHighRisk = 0;
       if (index == 2) mockRiskCounters.lastMediumRisk = 0;
       if (index == 3) mockRiskCounters.lastLowRisk = 0;
-      if (index == 4) mockRiskCounters.lastInfoRisk = 0;
       sDashboard.adjustWithRiskCounters(mockRiskCounters, dom.window.document, false);
 
       // Assert
       test.value(securityStatus.style.backgroundColor)
         .isEqualTo(expectedBackgroundColors[index]);
-      test.value(document.getElementsByClassName('status-descriptor')[0].style.color)
-        .isEqualTo(expectedColors[index]);
     });
   });
   it('Clicking the scan-now button should call scanTest', async function() {

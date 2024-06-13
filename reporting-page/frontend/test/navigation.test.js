@@ -21,15 +21,6 @@ const dom = new JSDOM(`
         </div>
       </div>
     </div>
-    <div class="header-settings">
-      <div class="nav-link settings-button">
-        <span><span class="material-symbols-outlined">settings</span></span>
-        <div class="dropdown-content">
-          <a id="personalize-button" class="lang-personalize-page">Personalize page</a>
-          <a id="language-button" class="lang-change-language">Change Language</a>
-        </div>
-      </div>
-    </div>
   </div> 
   <div class="left-nav">
     <div id="home-button" class="nav-link">
@@ -52,6 +43,19 @@ const dom = new JSDOM(`
     </div>
     <div id="about-button" class="nav-link">
       <p><span class="material-symbols-outlined">info</span><span class="nav-item lang-about" >About</span></p>
+    </div>
+    <div id="settings-button" class="nav-link">
+      <p>
+        <span class="material-symbols-outlined">settings</span>
+        <span class="nav-item lang-settings">Settings</span>
+        <span id="arrow" class="material-symbols-outlined">keyboard_arrow_right</span>
+      </p>
+      <div class="dropdown-content">
+        <a id="personalize-button" class="lang-personalize-page"></a>
+        <a id="language-button" class="lang-change-language"></a>
+        <a id="windows-version-button" class="lang-windows-version"></a>
+        <a id="scan-interval-button" class="lang-scan-interval"></a>
+      </div>
     </div>
   </div>
   <div id="page-contents"></div>

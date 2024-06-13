@@ -33,7 +33,7 @@ type UserSettings struct {
 	LighthouseState int         `json:"LighthouseState"` // User's game state
 }
 
-var DefaultUserSettings = UserSettings{Language: 1, ScanInterval: 24, Integration: false, NextScan: time.Now().Add(time.Hour * 24), Points: 0, PointsHistory: nil, TimeStamps: nil, LighthouseState: 0}
+var DefaultUserSettings = UserSettings{Language: 1, ScanInterval: 7, Integration: false, NextScan: time.Now().Add((time.Hour * 24) * 7), Points: 0, PointsHistory: nil, TimeStamps: nil, LighthouseState: 0}
 
 // LoadUserSettings loads the user settings from a JSON file in the Windows AppData folder.
 //
