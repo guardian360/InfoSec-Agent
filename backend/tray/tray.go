@@ -278,7 +278,6 @@ func ChangeScanInterval(testInput ...string) {
 	if test {
 		res = testInput[0]
 	} else {
-
 		// Get user input by creating a dialog window
 		var err error
 		logger.Log.Trace("Creating dialog")
