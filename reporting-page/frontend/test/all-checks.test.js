@@ -63,16 +63,12 @@ describe('Checks page', function() {
   it('openAllChecksPage opens the checks page with all checks', async function() {
     // Arrange
     const allChecks = await import('../src/js/all-checks.js');
-    const dataBaseData = [
-      {id: 21, severity: 0, jsonkey: 210},
-      {id: 3, severity: 1, jsonkey: 30},
-      {id: 4, severity: 2, jsonkey: 40},
-      {id: 18, severity: 3, jsonkey: 182},
-      {id: 10, severity: 4, jsonkey: 100},
-    ];
+    const mockScanResult = [{issue_id: 3, result_id: 1, result: []},
+                            {issue_id: 4, result_id: 1, result: []},
+                            {issue_id: 5, result_id: 1, result: []}];
 
     // Act
-    sessionStorage.setItem('DataBaseData', JSON.stringify(dataBaseData));
+    sessionStorage.setItem('ScanResult',JSON.stringify(mockScanResult))
     await allChecks.openAllChecksPage();
     const foundChecks = document.getElementsByClassName('all-checks-check');
 
@@ -82,26 +78,22 @@ describe('Checks page', function() {
   it('Checks found in the database have a link to an openIssuePage function', async function() {
     // Arrange
     const allChecks = await import('../src/js/all-checks.js');
-    const dataBaseData = [
-      {id: 21, severity: 0, jsonkey: 210},
-      {id: 3, severity: 1, jsonkey: 30},
-      {id: 4, severity: 2, jsonkey: 40},
-      {id: 18, severity: 3, jsonkey: 182},
-      {id: 10, severity: 4, jsonkey: 100},
-    ];
+    const mockScanResult = [{issue_id: 3, result_id: 1, result: []},
+                            {issue_id: 4, result_id: 1, result: []},
+                            {issue_id: 5, result_id: 1, result: []}];
     const issue = await import('../src/js/issue.js');
     const openIssuePageMock = jest.spyOn(issue, 'openIssuePage');
 
     // Act
-    sessionStorage.setItem('DataBaseData', JSON.stringify(dataBaseData));
+    sessionStorage.setItem('ScanResult',JSON.stringify(mockScanResult))
     await allChecks.openAllChecksPage();
 
-    dataBaseData.forEach((issue) => {
-      document.getElementById(issue.id).dispatchEvent(clickEvent);
+    mockScanResult.forEach((issue) => {
+      document.getElementById(issue.issue_id).dispatchEvent(clickEvent);
     });
 
     // Assert
-    expect(openIssuePageMock).toHaveBeenCalledTimes(dataBaseData.length);
+    expect(openIssuePageMock).toHaveBeenCalledTimes(mockScanResult.length);
   });
   it('getViewedElement returns the right node', async function() {
     // Arrange

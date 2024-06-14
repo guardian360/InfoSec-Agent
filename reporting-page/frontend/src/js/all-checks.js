@@ -153,7 +153,7 @@ export async function openAllChecksPage(area) {
   for (let i = 0; i < checks.length; i++) {
     const issue = issues.find((issue) => issue.issue_id == checks[i].id);
     checks[i].addEventListener('click',
-      () => openIssuePage(issue.jsonkey, issue.severity, checks[i].parentElement.parentElement.parentElement.id));
+      () => openIssuePage(issue.issue_id, issue.result_id, checks[i].parentElement.parentElement.parentElement.id));
   }
 
   // Localize the static content of the about page

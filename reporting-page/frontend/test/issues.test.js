@@ -9,7 +9,7 @@ import dataEs from '../src/databases/database.es.json' assert { type: 'json' };
 import dataFr from '../src/databases/database.fr.json' assert { type: 'json' };
 import dataNl from '../src/databases/database.nl.json' assert { type: 'json' };
 import dataPt from '../src/databases/database.pt.json' assert { type: 'json' };
-import {mockPageFunctions, clickEvent, storageMock} from './mock.js';
+import {mockPageFunctions, clickEvent, storageMock, scanResultMock} from './mock.js';
 
 global.TESTING = true;
 
@@ -25,8 +25,8 @@ global.window = dom.window;
  * @param {HTMLTableElement} table table to delete all rows from
  */
 function emptyTable(table) {
-  for (let i = 0; i < table.rows.length; i++) {
-    table.deleteRow(i);
+  while (table.rows.length > 0) {
+    table.deleteRow(0);
   }
 }
 
@@ -98,13 +98,9 @@ describe('Issues table', function() {
     // Arrange
     const issue = await import('../src/js/issues.js');
     // Arrange input issues
-    let issues = [];
-    issues = [
-      {id: 5, severity: 1, jsonkey: 51},
-      {id: 15, severity: 0, jsonkey: 150},
-    ];
+    let issues = scanResultMock;
 
-    sessionStorage.setItem('DataBaseData', JSON.stringify(issues));
+    sessionStorage.setItem('ScanResult', JSON.stringify(issues));
     sessionStorage.setItem('IssuesSorted', JSON.stringify(
       {
         column: '2',
@@ -145,15 +141,11 @@ describe('Issues table', function() {
   });
   it('fillTable should fill the issues table with information from the provided JSON array', async function() {
     // Arrange input issues
-    let issues = [];
-    issues = [
-      {id: 5, severity: 1, jsonkey: 51},
-      {id: 15, severity: 0, jsonkey: 150},
-    ];
+    let issues = scanResultMock;
     // Arrange expected table data
     const expectedData = [];
-    expectedData.push(data[issues[0].jsonkey]);
-    expectedData.push(data[issues[1].jsonkey]);
+    expectedData.push(data[issues[0].issue_id]);
+    expectedData.push(data[issues[1].issue_id]);
 
     const issue = await import('../src/js/issues.js');
 
@@ -165,17 +157,17 @@ describe('Issues table', function() {
     issue.fillTable(nonIssueTable, issues, false);
     // Assert
     let row = issueTable.rows[0];
-    test.value(row.cells[0].textContent).isEqualTo(expectedData[0].Name);
-    test.value(row.cells[1].textContent).isEqualTo(expectedData[0].Type);
+    test.value(row.cells[0].textContent).isEqualTo(expectedData[1][issues[1].result_id].Name);
+    test.value(row.cells[1].textContent).isEqualTo(expectedData[1].Type);
     let temp;
-    if (issues[0].severity === 1) {
+    if (expectedData[1][issues[1].result_id].Severity === 1) {
       temp = 'Low';
     }
     test.value(row.cells[2].textContent).isEqualTo(temp);
 
     row = nonIssueTable.rows[0];
-    test.value(row.cells[0].textContent).isEqualTo(expectedData[1].Name);
-    test.value(row.cells[1].textContent).isEqualTo(expectedData[1].Type);
+    test.value(row.cells[0].textContent).isEqualTo(expectedData[0][issues[0].result_id].Name);
+    test.value(row.cells[1].textContent).isEqualTo(expectedData[0].Type);
 
     // Make issues table empty
     emptyTable(issueTable);
@@ -183,16 +175,9 @@ describe('Issues table', function() {
   });
   it('fillTable should not fill the issues table if the data from the JSON array is incorrect', async function() {
     // Arrange input issues
-    let issues = [];
-    issues = [
-      {id: 0, severity: 1, jsonkey: 55},
-      {id: 123, severity: 0, jsonkey: 1234},
-    ];
+    let issues = [{issue_id: -1, result_id: -1, result: []}];
 
     // Arrange expected table data
-    const expectedData = [];
-    expectedData.push(data[issues[0].jsonkey]);
-    expectedData.push(data[issues[1].jsonkey]);
     const issue = await import('../src/js/issues.js');
 
     // Act
@@ -343,19 +328,13 @@ describe('Issues table', function() {
     const issue = await import('../src/js/issues.js');
 
     // Arrange input issues
-    let issues = [];
-    issues = [
-      {id: 5, severity: 1, jsonkey: 51},
-      {id: 16, severity: 2, jsonkey: 160},
-      {id: 18, severity: 3, jsonkey: 182},
-      {id: 6, severity: 4, jsonkey: 60},
-    ];
+    let issues = scanResultMock;
     // Arrange expected table data
     const expectedData = [];
     issues.forEach((issue) => {
       expectedData.push(data[issue.jsonkey]);
     });
-    sessionStorage.setItem('DataBaseData', JSON.stringify(issues));
+    sessionStorage.setItem('ScanResult', JSON.stringify(issues));
 
     const ids = [
       'select-low-risk-table',
@@ -432,7 +411,7 @@ describe('Issues table', function() {
       loadUserSettingsMock.mockResolvedValueOnce({Language: language});
       // Prepare the issues array
       const issues = [
-        {id: 1, severity: 1, jsonkey: 51}, // assuming 51 exists in all datasets
+        {issue_id: 5, result_id: 1, result: []}, // assuming 51 exists in all datasets
       ];
 
       // Act
@@ -442,8 +421,8 @@ describe('Issues table', function() {
 
       // Assert
       const row = issueTable.rows[0];
-      const currentIssue = expectedData[issues[0].jsonkey];
-      test.value(row.cells[0].textContent).isEqualTo(currentIssue.Name);
+      const currentIssue = expectedData[issues[0].issue_id];
+      test.value(row.cells[0].textContent).isEqualTo(currentIssue[issues[0].result_id].Name);
       test.value(row.cells[1].textContent).isEqualTo(currentIssue.Type);
     }
   });

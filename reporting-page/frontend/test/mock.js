@@ -101,8 +101,8 @@ export const scanResultMock = [
     result: [],
   },
   { // Security, level 1
-    issue_id: 3,
-    result_id: 0,
+    issue_id: 5,
+    result_id: 1,
     result: [],
   },
   { // Security, level 2
@@ -268,6 +268,11 @@ export function mockOpenPageFunctions() {
   jest.unstable_mockModule('../src/js/personalize.js', () => ({
     openPersonalizePage: jest.fn(),
     retrieveTheme: jest.fn(),
+  }));
+
+  // Mock openAllChecksPage
+  jest.unstable_mockModule('../src/js/all-checks.js', () => ({
+    openAllChecksPage: jest.fn(),
   }));
 }
 

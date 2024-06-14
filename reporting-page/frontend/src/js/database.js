@@ -75,9 +75,9 @@ async function setAllSeverities(input) {
       'direction': 'ascending',
     },
   ));
-  await setSeverities(result, '');
-  await setSeverities(result, 'Security');
-  await setSeverities(result, 'Privacy');
+  await setSeverities(input, '');
+  await setSeverities(input, 'Security');
+  await setSeverities(input, 'Privacy');
   if (isFirstScan) {
     openHomePage();
     windowMaximise();

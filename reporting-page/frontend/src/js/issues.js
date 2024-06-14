@@ -198,7 +198,7 @@ export async function fillTable(tbody, issues, isIssue, isListenersAdded=true) {
     }
 
     if (isIssue) {
-      if (currentIssue[issue.result_id]) {
+      if (currentIssue && currentIssue[issue.result_id]) {
         const issueData = currentIssue[issue.result_id];
         if (issueData.Severity != '0') {
           const riskLevel = toRiskLevel(issueData.Severity);
@@ -216,7 +216,7 @@ export async function fillTable(tbody, issues, isIssue, isListenersAdded=true) {
         }
       }
     } else {
-      if (currentIssue[issue.result_id]) {
+      if (currentIssue && currentIssue[issue.result_id]) {
         const issueData = currentIssue[issue.result_id];
         if (issueData.Severity == '0') {
           const row = document.createElement('tr');

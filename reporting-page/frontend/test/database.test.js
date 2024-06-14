@@ -67,13 +67,6 @@ describe('database functions', function() {
   it('scanTest is called which calls scanNowGo and fills sessionstorage with data', async function() {
     // Arrange
     await import('../src/js/database.js');
-    const expectedDataBaseData = [
-      {id: 21, severity: 0, jsonkey: 210},
-      {id: 3, severity: 1, jsonkey: 30},
-      {id: 4, severity: 2, jsonkey: 40},
-      {id: 18, severity: 3, jsonkey: 182},
-      {id: 10, severity: 4, jsonkey: 100},
-    ];
 
     // Act
     const scanResult = JSON.parse(sessionStorage.getItem('ScanResult'));
@@ -159,13 +152,11 @@ describe('database functions', function() {
     // Act
     const scanResult = sessionStorage.getItem('ScanResult');
     const called = sessionStorage.getItem('scanTest');
-    const dataBaseData = sessionStorage.getItem('DataBaseData');
     const rc = sessionStorage.getItem('RiskCounters');
 
     // Assert
     test.value(scanResult).isUndefined();
     test.value(called).isEqualTo('called');
-    test.value(dataBaseData).isUndefined();
     test.value(rc).isUndefined();
   });
 });
