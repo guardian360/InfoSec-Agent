@@ -1254,8 +1254,7 @@
         "Solution":
         [
             "Open Google Chrome and click on the three dots in the top right corner.",
-            "Select 'Settings' from the drop down menu",
-            "Go to the 'Privacy and security' section.",	
+            "Select 'Settings' and go to the 'Cookies and site permissions' section.",	
             "Under 'Third-party cookies', click on 'See all site data and permissions'.",
             "Here you can view and manage the cookies stored by websites. You can delete individual cookies or clear all site data to protect your privacy. "
         ],
@@ -1264,8 +1263,7 @@
             "chrome-cookies/cookies-chrome-1.png",
             "chrome-cookies/cookies-chrome-2.png",
             "chrome-cookies/cookies-chrome-3.png",
-            "chrome-cookies/cookies-chrome-4.png",
-            "chrome-cookies/cookies-chrome-5.png"
+            "chrome-cookies/cookies-chrome-4.png"
         ]
     },
     "360": {
@@ -1287,8 +1285,7 @@
         "Solution":
         [
             "Open Microsoft Edge and click on the three dots in the top right corner.",
-            "Select 'Settings' from the drop down menu",
-            "Go to the 'Cookies and site permissions' section.",
+            "Select 'Settings' and go to the 'Cookies and site permissions' section.",
             "Under 'Cookies and data stored', click on 'Manage and delete cookies and site data'.",
             "Here you can manage general cookie settings. You can delete individual cookies or clear all site data by clicking on 'See all cookies and site data'. "
         ],
@@ -1297,8 +1294,7 @@
             "edge-cookies/cookies-edge-1.png",
             "edge-cookies/cookies-edge-2.png",
             "edge-cookies/cookies-edge-3.png",
-            "edge-cookies/cookies-edge-4.png",
-            "edge-cookies/cookies-edge-5.png"
+            "edge-cookies/cookies-edge-4.png"
         ]
     },
     "370": {
