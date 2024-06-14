@@ -148,10 +148,10 @@ export async function openAllChecksPage(area) {
       elements[i].parentElement.childNodes[5].classList.add('lang-all-check-text-line-single');
     }
   }
-  const issues = JSON.parse(sessionStorage.getItem('DataBaseData'));
+  const issues = JSON.parse(sessionStorage.getItem('ScanResult'));
   const checks = document.getElementsByClassName('all-checks-check');
   for (let i = 0; i < checks.length; i++) {
-    const issue = issues.find((issue) => issue.id == checks[i].id);
+    const issue = issues.find((issue) => issue.issue_id == checks[i].id);
     checks[i].addEventListener('click',
       () => openIssuePage(issue.jsonkey, issue.severity, checks[i].parentElement.parentElement.parentElement.id));
   }

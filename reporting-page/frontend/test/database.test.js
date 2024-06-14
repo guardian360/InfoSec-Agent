@@ -78,7 +78,6 @@ describe('database functions', function() {
     // Act
     const scanResult = JSON.parse(sessionStorage.getItem('ScanResult'));
     const called = sessionStorage.getItem('scanTest');
-    const dataBaseData = JSON.parse(sessionStorage.getItem('DataBaseData'));
     const rc = JSON.parse(sessionStorage.getItem('RiskCounters'));
     const src = JSON.parse(sessionStorage.getItem('SecurityRiskCounters'));
     const prc = JSON.parse(sessionStorage.getItem('PrivacyRiskCounters'));
@@ -86,9 +85,10 @@ describe('database functions', function() {
     // Assert
     test.array(scanResult).is(scanResultMock);
     test.value(called).isEqualTo('called');
-    test.array(dataBaseData).is(expectedDataBaseData);
 
     // risk counters have the right values
+    // if amount is not correct, first change scanResultMock in mock.js
+    // to correctly return issues covering every severity once
     test.array(rc.high).is([1]);
     test.array(rc.medium).is([1]);
     test.array(rc.low).is([1]);

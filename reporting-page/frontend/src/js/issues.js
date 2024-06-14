@@ -85,7 +85,7 @@ export function openIssuesPage() {
 
 
   // retrieve issues from tray application
-  const issues = JSON.parse(sessionStorage.getItem('DataBaseData'));
+  const issues = JSON.parse(sessionStorage.getItem('ScanResult'));
 
   const issueTable = document.getElementById('issues-table').querySelector('tbody');
   fillTable(issueTable, issues, true);
@@ -174,56 +174,58 @@ export async function fillTable(tbody, issues, isIssue, isListenersAdded=true) {
   issues.forEach((issue) => {
     switch (language) {
     case 0:
-      currentIssue = dataDe[issue.jsonkey];
+      currentIssue = dataDe[issue.issue_id];
       break;
     case 1:
-      currentIssue = dataEnGB[issue.jsonkey];
+      currentIssue = dataEnGB[issue.issue_id];
       break;
     case 2:
-      currentIssue = dataEnUS[issue.jsonkey];
+      currentIssue = dataEnUS[issue.issue_id];
       break;
     case 3:
-      currentIssue = dataEs[issue.jsonkey];
+      currentIssue = dataEs[issue.issue_id];
       break;
     case 4:
-      currentIssue = dataFr[issue.jsonkey];
+      currentIssue = dataFr[issue.issue_id];
       break;
     case 5:
-      currentIssue = dataNl[issue.jsonkey];
+      currentIssue = dataNl[issue.issue_id];
       break;
     case 6:
-      currentIssue = dataPt[issue.jsonkey];
+      currentIssue = dataPt[issue.issue_id];
       break;
     default:
-      currentIssue = dataEnGB[issue.jsonkey];
+      currentIssue = dataEnGB[issue.issue_id];
     }
 
     if (isIssue) {
-      if (currentIssue) {
-        if (issue.severity != '0') {
-          const riskLevel = toRiskLevel(issue.severity);
+      if (currentIssue[issue.result_id]) {
+        const issueData = currentIssue[issue.result_id];
+        if (issueData.Severity != '0') {
+          const riskLevel = toRiskLevel(issueData.Severity);
           const row = document.createElement('tr');
 
           row.innerHTML = `
-              <td class="issue-link" data-severity="${issue.severity}">${currentIssue.Name}</td>
+              <td class="issue-link" data-result-id="${issue.result_id}">${issueData.Name}</td>
               <td>${currentIssue.Type}</td>
               ${riskLevel}
             `;
 
-          row.cells[0].id = issue.jsonkey;
-          row.setAttribute('data-severity', issue.severity);
+          row.cells[0].id = issue.issue_id;
+          row.setAttribute('data-result-id', issue.result_id);
           tbody.appendChild(row);
         }
       }
     } else {
-      if (currentIssue) {
-        if (issue.severity == '0') {
+      if (currentIssue[issue.result_id]) {
+        const issueData = currentIssue[issue.result_id];
+        if (issueData.Severity == '0') {
           const row = document.createElement('tr');
           row.innerHTML = `
-              <td class="issue-link" data-severity="${issue.severity}">${currentIssue.Name}</td>
+              <td class="issue-link" data-result-id="${issue.result_id}">${issueData.Name}</td>
               <td>${currentIssue.Type}</td>
             `;
-          row.cells[0].id = issue.jsonkey;
+          row.cells[0].id = issue.issue_id;
           tbody.appendChild(row);
         }
       }
@@ -233,7 +235,7 @@ export async function fillTable(tbody, issues, isIssue, isListenersAdded=true) {
   // Add links to issue information pages
   const issueLinks = document.querySelectorAll('.issue-link');
   issueLinks.forEach((link) => {
-    link.addEventListener('click', () => openIssuePage(link.id, link.getAttribute('data-severity')));
+    link.addEventListener('click', () => openIssuePage(link.id, link.getAttribute('data-result-id')));
   });
 
   // Add buttons to sort on columns
@@ -333,18 +335,22 @@ export function changeTable() {
   const selectedLow = document.getElementById('select-low-risk-table').checked;
   const selectedInfo = document.getElementById('select-info-risk-table').checked;
 
-  const issues = JSON.parse(sessionStorage.getItem('DataBaseData'));
+  const issues = JSON.parse(sessionStorage.getItem('ScanResult'));
 
   const issueTable = document.getElementById('issues-table').querySelector('tbody');
 
   // Filter issues based on the selected risk levels
   const filteredIssues = issues.filter((issue) => {
-    return (
-      (selectedLow && issue.severity === 1) ||
-      (selectedMedium && issue.severity === 2) ||
-      (selectedHigh && issue.severity === 3) ||
-      (selectedInfo && issue.severity === 4)
-    );
+    const issueData = dataEnGB[issue.issue_id][issue.result_id];
+    if (issueData) { // Until checks that return an error are added to database
+      return (
+        (selectedLow && issueData.Severity === 1) ||
+        (selectedMedium && issueData.Severity === 2) ||
+        (selectedHigh && issueData.Severity === 3) ||
+        (selectedInfo && issueData.Severity === 4)
+      );
+    }
+    return false
   });
 
   // Clear existing table rows

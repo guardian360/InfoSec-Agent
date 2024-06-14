@@ -107,7 +107,7 @@ export const scanResultMock = [
   },
   { // Security, level 2
     issue_id: 4,
-    result_id: 0,
+    result_id: 1,
     result: [],
   },
   { // Security, level 3

@@ -163,28 +163,46 @@ export async function openHomePage() {
 */
 export function suggestedIssue(type) {
   // Get the issues from the database
-  const issues = JSON.parse(sessionStorage.getItem('DataBaseData'));
+  const issues = JSON.parse(sessionStorage.getItem('ScanResult'));
 
   // Skip informative issues
   let issueIndex = 0;
-  let maxSeverityIssue = issues[issueIndex];
-  while (maxSeverityIssue.severity === 4) {
+  let maxSeverityIssue = issues[issueIndex].issue_id;
+  let maxSeverityResult = issues[issueIndex].result_id;
+  while (getSeverity(maxSeverityIssue, maxSeverityResult) === 4
+        || getSeverity(maxSeverityIssue, maxSeverityResult) === undefined) {
     issueIndex++;
-    maxSeverityIssue = issues[issueIndex];
+    maxSeverityIssue = issues[issueIndex].issue_id;
+    maxSeverityResult = issues[issueIndex].result_id;
   }
 
   // Find the issue with the highest severity
   for (let i = 0; i < issues.length; i++) {
-    if (maxSeverityIssue.severity < issues[i].severity && issues[i].severity !== 4) {
-      if (type == '' || data[issues[i].jsonkey].Type === type) {
-        maxSeverityIssue = issues[i];
-      }
+    const severity = getSeverity(issues[i].issue_id,issues[i].result_id)
+    if (getSeverity(maxSeverityIssue, maxSeverityResult) < severity 
+      && severity !== 4) {
+    if (type == '' || data[issues[i].issue_id].Type === type) {
+      maxSeverityIssue = issues[i].issue_id;
+      maxSeverityResult = issues[i].result_id;
+    }
     }
   }
 
   // Open the issue page of the issue with the highest severity
-  openIssuePage(maxSeverityIssue.jsonkey, maxSeverityIssue.severity);
+  openIssuePage(maxSeverityIssue, maxSeverityResult, 'home');
   document.getElementById('scan-now').addEventListener('click', () => scanTest(true));
+
+  /**
+   * Gets the severity of an issue
+   * @param {string} issue_id issue id for which to get the severity
+   * @param {string} result_id result id for which to get the severity
+   * @returns 
+   */
+  function getSeverity(issue_id,result_id) {
+    const issueData = data[issue_id][result_id]
+    if (issueData == undefined) return undefined
+    return issueData.Severity
+  }
 }
 
 

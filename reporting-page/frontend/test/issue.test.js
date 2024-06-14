@@ -45,6 +45,8 @@ jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
 jest.unstable_mockModule('../wailsjs/go/main/tray.js', () => ({
   LogError: jest.fn(),
   LogDebug: jest.fn(),
+  ChangeLanguage: jest.fn(),
+  ChangeScanInterval: jest.fn(),
 }));
 
 // Mock scantest function
