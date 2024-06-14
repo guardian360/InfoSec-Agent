@@ -1017,6 +1017,7 @@
         ],
         "Screenshots":
         [
+            "chrome-search-engine/search-engine-chrome-1.png"
         ]
     },	
     "260": {
@@ -1029,6 +1030,7 @@
         ],
         "Screenshots":
         [
+            "edge-search-engine/search-engine-edge-1.png"
         ]
     },
     "270": {
@@ -1062,6 +1064,9 @@
         ],
         "Screenshots":
         [
+            "firefox-tracking-cookies/tracking-cookies-firefox-1.png",
+            "firefox-tracking-cookies/tracking-cookies-firefox-2.png",
+            "firefox-tracking-cookies/tracking-cookies-firefox-3.png"
         ]
     },
     "280": {
@@ -1124,6 +1129,7 @@
         ],
         "Screenshots":
         [
+            "firefox-search-engine/search-engine-firefox-1.png"
         ]
     },	
     "310": {
