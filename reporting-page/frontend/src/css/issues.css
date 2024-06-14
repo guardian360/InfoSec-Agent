@@ -134,6 +134,7 @@
   border-radius: 8px;
   padding: 2px 7px;
   color: var(--text-body);
+}
 
 /* Sort icon */
 .issues-table .material-symbols-outlined {
