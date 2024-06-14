@@ -14,7 +14,7 @@ import {LogError as logError} from '../../wailsjs/go/main/Tray.js';
 import {LoadUserSettings as loadUserSettings} from '../../wailsjs/go/main/App.js';
 
 /** Load the content of the Issues page */
-export function openIssuesPage() {
+export async function openIssuesPage() {
   retrieveTheme();
   closeNavigation(document.body.offsetWidth);
   markSelectedNavigationItem('issues-button');
@@ -70,7 +70,7 @@ export function openIssuesPage() {
   `;
 
   // Fill the table with issues
-  var issues = getIssues();
+  const issues = await getIssues();
   if (issues) {
     sessionStorage.setItem('IssuesList', JSON.stringify(issues));
     const issueTable = document.getElementById('issues-table').querySelector('tbody');
@@ -145,16 +145,17 @@ export function openIssuesPage() {
 }
 
 /** Get the issues from the database
- * 
- * @returns {Issue[]} List of issues
+ *
+ * @param {number} language - The user's preferred language
+ * @return {Issue[]} List of issues
  * */
-export function getIssues() {
+export async function getIssues() {
   // Get checks results from session storage
   const issues = JSON.parse(sessionStorage.getItem('DataBaseData'));
-  
+
   // Get issue information in the user's preferred language
-  var issueList = [];
-  const language = getUserSettings();
+  const language = await getUserSettings();
+  const issueList = [];
   let currentIssue;
   issues.forEach((issue) => {
     switch (language) {
@@ -190,7 +191,7 @@ export function getIssues() {
       const severity = issue.severity;
       const jsonkey = issue.jsonkey;
 
-      issueList.push({"name": name, "type": type, "severity": severity, "jsonkey": jsonkey});
+      issueList.push({'name': name, 'type': type, 'severity': severity, 'jsonkey': jsonkey});
     }
   });
   return issueList;
@@ -204,11 +205,12 @@ export function getIssues() {
  * @param {Bool} isListenersAdded True for the first time the eventlisteners is called
  */
 export function fillTable(tbody, issues) {
-  var filter = JSON.parse(sessionStorage.getItem('IssuesFilter'));
+  const filter = JSON.parse(sessionStorage.getItem('IssuesFilter'));
 
   // Add a table row for each issue
   issues.forEach((issue) => {
     const riskLevel = toRiskLevel(issue.severity);
+
     if (filter) {
       if (!filter.high && issue.severity === 3) return;
       if (!filter.medium && issue.severity === 2) return;
@@ -264,8 +266,8 @@ export function fillTable(tbody, issues) {
  */
 export function sortTable(column) {
   // Update sorting method
-  var sortingMethod = JSON.parse(sessionStorage.getItem('IssuesSorting'));
-  var direction = sortingMethod.direction;
+  let sortingMethod = JSON.parse(sessionStorage.getItem('IssuesSorting'));
+  let direction = sortingMethod.direction;
   direction = direction === 'ascending' ? 'descending' : 'ascending';
   sortingMethod = {'column': column, 'direction': direction};
   sessionStorage.setItem('IssuesSorting', JSON.stringify(sortingMethod));
@@ -286,19 +288,26 @@ export function refillTable(tbody, sortingMethod) {
   const direction = sortingMethod.direction;
 
   // Sort the table rows
-  const table = tbody.closest('table');
   const rows = Array.from(tbody.rows);
   rows.sort((a, b) => {
     const nameA = a.cells[0].textContent.toLowerCase();
     const nameB = b.cells[0].textContent.toLowerCase();
     const typeA = a.cells[1].textContent.toLowerCase();
     const typeB = b.cells[1].textContent.toLowerCase();
-    var severityA = parseInt(a.getAttribute('data-severity'));
-    if (severityA === 0) {severityA = -1;}
-    if (severityA === 4) {severityA = 0;}
-    var severityB = parseInt(b.getAttribute('data-severity'));
-    if (severityB === 0) {severityB = -1;}
-    if (severityB === 4) {severityB = 0;}
+    let severityA = parseInt(a.getAttribute('data-severity'));
+    if (severityA === 0) {
+      severityA = -1;
+    }
+    if (severityA === 4) {
+      severityA = 0;
+    }
+    let severityB = parseInt(b.getAttribute('data-severity'));
+    if (severityB === 0) {
+      severityB = -1;
+    }
+    if (severityB === 4) {
+      severityB = 0;
+    }
     // Sort on issue name
     if (column === 0) {
       if (direction === 'ascending') {
@@ -306,23 +315,19 @@ export function refillTable(tbody, sortingMethod) {
       } else {
         return nameB.localeCompare(nameA) || severityB - severityA || typeA.localeCompare(typeB);
       }
-    } 
-    // Sort on issue type
-    else if (column === 1) {
+    } else if (column === 1) { // Sort on issue type
       if (direction === 'ascending') {
         return typeA.localeCompare(typeB) || severityB - severityA || nameA.localeCompare(nameB);
       } else {
         return typeB.localeCompare(typeA) || severityB - severityA || nameA.localeCompare(nameB);
       }
-    } 
-    // Sort on risk level
-    else if (column === 2) {
+    } else if (column === 2) { // Sort on risk level
       if (direction === 'ascending') {
         return severityA - severityB || typeB.localeCompare(typeA) || nameA.localeCompare(nameB);
       } else {
         return severityB - severityA || typeB.localeCompare(typeA) || nameA.localeCompare(nameB);
       }
-    } 
+    }
   });
 
   // Clear the table and refill it with the sorted rows
@@ -336,7 +341,7 @@ export function refillTable(tbody, sortingMethod) {
 
 /**
  * Returns the risk level based on the given numeric level.
- * 
+ *
  * @param {number} level - The numeric representation of the risk level.
  * @return {string} The risk level corresponding to the numeric input:
  */
@@ -369,16 +374,16 @@ export function changeTable() {
   const selectedInfo = document.getElementById('select-info-risk-table').checked ? 1 : 0;
   sessionStorage.setItem('IssuesFilter', JSON.stringify(
     {
-      "high": selectedHigh,
-      "medium": selectedMedium,
-      "low": selectedLow,
-      "acceptable": selectedAcceptable,
-      "info": selectedInfo
-    }
+      'high': selectedHigh,
+      'medium': selectedMedium,
+      'low': selectedLow,
+      'acceptable': selectedAcceptable,
+      'info': selectedInfo,
+    },
   ));
 
   // Get issues list from session storage
-  var issues = JSON.parse(sessionStorage.getItem('IssuesList'));
+  const issues = JSON.parse(sessionStorage.getItem('IssuesList'));
 
   // Filter issues based on the selected risk levels
   const filteredIssues = issues.filter((issue) => {

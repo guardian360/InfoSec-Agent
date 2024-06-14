@@ -75,11 +75,11 @@ async function setAllSeverities(input) {
   sessionStorage.setItem('IssuesSorting', JSON.stringify(
     {
       'column': 2,
-      'direction': 'descending'
+      'direction': 'descending',
     },
   ));
   sessionStorage.setItem('IssuesFilter', JSON.stringify(
-    {'high': 1,'medium': 1, 'low': 1, 'acceptable': 1, 'info': 1}
+    {'high': 1, 'medium': 1, 'low': 1, 'acceptable': 1, 'info': 1},
   ));
   await setSeverities(result, '');
   await setSeverities(result, 'Security');
