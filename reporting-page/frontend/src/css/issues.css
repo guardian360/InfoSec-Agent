@@ -1,5 +1,5 @@
 /* Container for the entire page content */
-.issues-data {
+.issues-data, .program-data {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,17 +7,18 @@
 }
 
 /* Table container */
-.table-container {
+.table-container, .program-container {
   width: 100%;
   max-width: 800px; /* Limit the width of the table container */
   margin-bottom: 20px;
   border-radius: 8px;
+  padding: 10px;
   box-shadow: 0 0 10px rgb(0 0 0 / 10%); /* Add shadow for depth */
   overflow: hidden; /* Hide overflow content */
 }
 
 /* Table titles */
-.issues-data h2 {
+.issues-data h2, .program-container h2 {
   padding: 10px 20px;
   background-color: var(--background-color-left-nav); /* Green background color */
   margin-bottom: 10px; /* Add space below titles */
@@ -67,25 +68,27 @@
 }
 
 /* Table styles */
-.issues-table {
+.issues-table, .program-table {
   width: 100%;
   overflow-x: auto; /* Allows table to scroll on small screens */
   box-shadow: 0 0 20px rgb(0 0 0 / 10%);
 }
 
 .issues-table th,
-.issues-table td {
+.issues-table td,
+.program-table th,
+.program-table td {
   padding: 8px;
   text-align: left;
   border: 1px solid #8b8b8b; /* Gray border bottom */
 }
 
 /* Alternate row background color */
-.issues-table tbody tr:nth-child(even) {
+.issues-table tbody tr:nth-child(even), .program-table tbody tr:nth-child(even) {
   background-color: var(--background-color-top-nav);
 }
 
-.issues-table th {
+.issues-table th, .program-table th{
   background-color: var(--background-color-table-header);
   text-align: left;
 }
@@ -194,4 +197,14 @@ h1, h2{
   max-width: 100%; /* Make it responsive */
   height: auto;
   margin-top: 20px;
+}
+
+#search-input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 18px;
 }

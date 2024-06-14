@@ -93,10 +93,11 @@ jest.unstable_mockModule('../wailsjs/go/main/Tray.js', () => ({
   LogError: jest.fn(),
 }));
 
-// Mock scanTest
+// Mock issues
 jest.unstable_mockModule('../src/js/issues.js', () => ({
   openIssuesPage: jest.fn(),
   getUserSettings: jest.fn().mockImplementation(() => 1),
+  sortTable: jest.fn(),
 }));
 
 // Mock session and localStorage
@@ -137,6 +138,8 @@ describe('Settings page', function() {
       '../src/js/security-dashboard.js',
       '../src/js/privacy-dashboard.js',
       '../src/js/issues.js',
+      '../src/js/programs.js',
+      '../src/js/all-checks.js',
       '../src/js/integration.js',
       '../src/js/about.js',
       '../src/js/personalize.js',
@@ -147,6 +150,8 @@ describe('Settings page', function() {
       'openSecurityDashboardPage',
       'openPrivacyDashboardPage',
       'openIssuesPage',
+      'openProgramsPage',
+      'openAllChecksPage',
       'openIntegrationPage',
       'openAboutPage',
       'openPersonalizePage',
@@ -187,6 +192,8 @@ describe('Settings page', function() {
       '../src/js/security-dashboard.js',
       '../src/js/privacy-dashboard.js',
       '../src/js/issues.js',
+      '../src/js/programs.js',
+      '../src/js/all-checks.js',
       '../src/js/integration.js',
       '../src/js/about.js',
       '../src/js/personalize.js',
@@ -197,6 +204,8 @@ describe('Settings page', function() {
       'openSecurityDashboardPage',
       'openPrivacyDashboardPage',
       'openIssuesPage',
+      'openProgramsPage',
+      'openAllChecksPage',
       'openIntegrationPage',
       'openAboutPage',
       'openPersonalizePage',
