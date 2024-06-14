@@ -78,6 +78,9 @@ async function setAllSeverities(input) {
       'direction': 'descending'
     },
   ));
+  sessionStorage.setItem('IssuesFilter', JSON.stringify(
+    {'high': '1','medium': '1', 'low': '1', 'acceptable': '1', 'info': '1'}
+  ));
   await setSeverities(result, '');
   await setSeverities(result, 'Security');
   await setSeverities(result, 'Privacy');

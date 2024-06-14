@@ -80,7 +80,6 @@ export function openIssuesPage() {
     if (sortingMethod) {
       refillTable(issueTable, sortingMethod);
     } else {
-      console.log("IssuesSorting not found, setting default sorting method");
       const defaultSorting = {'column': 2, 'direction': 'descending'};
       sessionStorage.setItem('IssuesSorting', JSON.stringify(defaultSorting));
       refillTable(issueTable, defaultSorting);
@@ -103,7 +102,7 @@ export function openIssuesPage() {
   document.getElementById('sort-on-type').addEventListener('click', () => sortTable(1));
   document.getElementById('sort-on-risk').addEventListener('click', () => sortTable(2));
 
-  // Add localization to the page
+  // Translate the page contents
   const tableHeaders = [
     'lang-issue-table',
     'lang-acceptable-findings',
@@ -157,7 +156,6 @@ export function getIssues() {
   var issueList = [];
   const language = getUserSettings();
   let currentIssue;
-  console.log("Issues in getIssues:", issues);
   issues.forEach((issue) => {
     switch (language) {
     case 0:
@@ -206,17 +204,25 @@ export function getIssues() {
  * @param {Bool} isListenersAdded True for the first time the eventlisteners is called
  */
 export function fillTable(tbody, issues) {
+  var filter = JSON.parse(sessionStorage.getItem('IssuesFilter'));
+
   // Add a table row for each issue
   issues.forEach((issue) => {
     const riskLevel = toRiskLevel(issue.severity);
-    const row = document.createElement('tr');
+    if (filter) {
+      if (filter.high === '0' && issue.severity === 3) return;
+      if (filter.medium === '0' && issue.severity === 2) return;
+      if (filter.low === '0' && issue.severity === 1) return;
+      if (filter.acceptable === '0' && issue.severity === 0) return;
+      if (filter.info === '0' && issue.severity === 4) return;
+    }
 
+    const row = document.createElement('tr');
     row.innerHTML = `
       <td class="issue-link" data-severity="${issue.severity}">${issue.name}</td>
       <td>${issue.type}</td>
       ${riskLevel}
     `;
-
     row.cells[0].id = issue.jsonkey;
     row.setAttribute('data-severity', issue.severity);
     tbody.appendChild(row);
@@ -290,11 +296,9 @@ export function refillTable(tbody, sortingMethod) {
     var severityA = parseInt(a.getAttribute('data-severity'));
     if (severityA === 0) {severityA = -1;}
     if (severityA === 4) {severityA = 0;}
-    console.log("Severity A: ", severityA);
     var severityB = parseInt(b.getAttribute('data-severity'));
     if (severityB === 0) {severityB = -1;}
     if (severityB === 4) {severityB = 0;}
-    console.log("Severity B: ", severityB);
     // Sort on issue name
     if (column === 0) {
       if (direction === 'ascending') {
@@ -357,15 +361,24 @@ export function toRiskLevel(level) {
  * and updates the table with the filtered data.
  */
 export function changeTable() {
-  const selectedHigh = document.getElementById('select-high-risk-table').checked;
-  const selectedMedium = document.getElementById('select-medium-risk-table').checked;
-  const selectedLow = document.getElementById('select-low-risk-table').checked;
-  const selectedAcceptable = document.getElementById('select-acceptable-risk-table').checked;
-  const selectedInfo = document.getElementById('select-info-risk-table').checked;
+  // Check which risk levels are selected
+  const selectedHigh = document.getElementById('select-high-risk-table').checked ? 1 : 0;
+  const selectedMedium = document.getElementById('select-medium-risk-table').checked ? 1 : 0;
+  const selectedLow = document.getElementById('select-low-risk-table').checked ? 1 : 0;
+  const selectedAcceptable = document.getElementById('select-acceptable-risk-table').checked ? 1 : 0;
+  const selectedInfo = document.getElementById('select-info-risk-table').checked ? 1 : 0;
+  sessionStorage.setItem('IssuesFilter', JSON.stringify(
+    {
+      "high": selectedHigh.toString(),
+      "medium": selectedMedium.toString(),
+      "low": selectedLow.toString(),
+      "acceptable": selectedAcceptable.toString(),
+      "info": selectedInfo.toString()
+    }
+  ));
 
+  // Get issues list from session storage
   var issues = JSON.parse(sessionStorage.getItem('IssuesList'));
-
-  const issueTable = document.getElementById('issues-table').querySelector('tbody');
 
   // Filter issues based on the selected risk levels
   const filteredIssues = issues.filter((issue) => {
@@ -379,164 +392,12 @@ export function changeTable() {
   });
 
   // Clear existing table rows
+  const issueTable = document.getElementById('issues-table').querySelector('tbody');
   issueTable.innerHTML = '';
 
   // Refill tables with filtered issues
   fillTable(issueTable, filteredIssues);
 }
-
-// /** Fill the table with issues
-//  *
-//  * @param {HTMLTableSectionElement} tbody Table to be filled
-//  * @param {Issue} issues Issues to be filled in
-//  * @param {Bool} isIssue True for issue table, false for non issue table
-//  * @param {Bool} isListenersAdded True for the first time the eventlisteners is called
-//  */
-// export async function fillTable(tbody, issues, isListenersAdded=true) {
-//   // Add a table row for each issue
-//   const language = await getUserSettings();
-//   let currentIssue;
-//   issues.forEach((issue) => {
-//     switch (language) {
-//     case 0:
-//       currentIssue = dataDe[issue.jsonkey];
-//       break;
-//     case 1:
-//       currentIssue = dataEnGB[issue.jsonkey];
-//       break;
-//     case 2:
-//       currentIssue = dataEnUS[issue.jsonkey];
-//       break;
-//     case 3:
-//       currentIssue = dataEs[issue.jsonkey];
-//       break;
-//     case 4:
-//       currentIssue = dataFr[issue.jsonkey];
-//       break;
-//     case 5:
-//       currentIssue = dataNl[issue.jsonkey];
-//       break;
-//     case 6:
-//       currentIssue = dataPt[issue.jsonkey];
-//       break;
-//     default:
-//       currentIssue = dataEnGB[issue.jsonkey];
-//     }
-
-//     if (currentIssue) {
-//       const riskLevel = toRiskLevel(issue.severity);
-//       const row = document.createElement('tr');
-
-//       row.innerHTML = `
-//         <td class="issue-link" data-severity="${issue.severity}">${currentIssue.Name}</td>
-//         <td>${currentIssue.Type}</td>
-//         ${riskLevel}
-//       `;
-
-//       row.cells[0].id = issue.jsonkey;
-//       row.setAttribute('data-severity', issue.severity);
-//       tbody.appendChild(row);
-//     }
-//   });
-
-//   // Add links to issue information pages
-//   const issueLinks = document.querySelectorAll('.issue-link');
-//   issueLinks.forEach((link) => {
-//     link.parentElement.addEventListener('click', () => openIssuePage(link.id, link.getAttribute('data-severity')));
-//   });
-
-//   // Add buttons to sort on columns
-//   if (isListenersAdded) {
-//     document.getElementById('sort-on-issue').addEventListener('click', () => sortTable(tbody, 0));
-//     document.getElementById('sort-on-type').addEventListener('click', () => sortTable(tbody, 1));
-//     document.getElementById('sort-on-risk').addEventListener('click', () => sortTable(tbody, 2));
-//     isListenersAdded = false;
-//   }
-
-//   // Re-apply localization to the dynamically created table rows
-//   const tableHeaders = [
-//     'lang-acceptable',
-//     'lang-low',
-//     'lang-medium',
-//     'lang-high',
-//     'lang-info',
-//   ];
-//   const localizationIds = [
-//     'Issues.Acceptable',
-//     'Issues.Low',
-//     'Issues.Medium',
-//     'Issues.High',
-//     'Issues.Info',
-//   ];
-//   for (let i = 0; i < tableHeaders.length; i++) {
-//     getLocalization(localizationIds[i], tableHeaders[i]);
-//   }
-
-//   // Sort the table in descending order of risk severity
-//   const sorting = JSON.parse(sessionStorage.getItem('IssuesSorting'));
-//   if (sorting) {
-//     const table = tbody.closest('table');
-//     if (table) {
-//       const direction = sorting.direction === 'ascending' ? 'descending' : 'ascending';
-//       table.setAttribute('data-sort-direction', direction);
-//       sortTable(tbody, parseInt(sorting.column));
-//     }
-//   }
-// }
-
-// /** Sorts the table
-//  *
-//  * @param {HTMLTableSectionElement} tbody Table to be sorted
-//  * @param {number} column Column to sort the table on
-//  */
-// export function sortTable(tbody, column) {
-//   const table = tbody.closest('table');
-//   let direction = table.getAttribute('data-sort-direction');
-//   direction = direction === 'ascending' ? 'descending' : 'ascending';
-//   const rows = Array.from(tbody.rows);
-//   rows.sort((a, b) => {
-//     if (column !== 2) {
-//       // Alphabetical sorting for other columns
-//       const textA = a.cells[column].textContent.toLowerCase();
-//       const textB = b.cells[column].textContent.toLowerCase();
-//       if (direction === 'ascending') {
-//         return textA.localeCompare(textB);
-//       } else {
-//         return textB.localeCompare(textA);
-//       }
-//     } else {
-//       // Change Info to lower severity
-//       let severityA = parseInt(a.getAttribute('data-severity'));
-//       if (severityA === 0) {
-//         severityA = -1;
-//       }
-//       if (severityA === 4) {
-//         severityA = 0;
-//       }
-//       let severityB = parseInt(b.getAttribute('data-severity'));
-//       if (severityB === 0) {
-//         severityB = -1;
-//       }
-//       if (severityB === 4) {
-//         severityB = 0;
-//       }
-//       if (direction === 'ascending') {
-//         return severityB - severityA;
-//       } else {
-//         return severityA - severityB;
-//       }
-//     }
-//   });
-//   while (tbody.rows.length > 0) {
-//     tbody.deleteRow(0);
-//   }
-//   rows.forEach((row) => {
-//     tbody.appendChild(row);
-//   });
-//   table.setAttribute('data-sort-direction', direction);
-//   const columnValue = column.toString();
-//   sessionStorage.setItem('IssuesSorting', JSON.stringify({'column': columnValue, 'direction': direction}));
-// }
 
 /**
  * Retrieves the user settings including the preferred language.
