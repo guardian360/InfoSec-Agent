@@ -1,5 +1,5 @@
 /* Container for the entire page content */
-.issues-data {
+.issues-data, .program-data {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,7 +7,7 @@
 }
 
 /* Table container */
-.table-container {
+.table-container, .program-container {
   width: 100%;
   overflow: hidden; /* Hide overflow content */
   margin: 20px 0; /* Add space above the table */
@@ -74,7 +74,7 @@
 }
 
 /* Table styles */
-.issues-table {
+.issues-table, .program-table {
   width: 100%;
   overflow-x: auto; /* Allows table to scroll on small screens */
 
@@ -83,7 +83,9 @@
 }
 
 .issues-table th,
-.issues-table td {
+.issues-table td,
+.program-table th,
+.program-table td {
   padding: 8px;
   text-align: left;
   border: 1px solid var(--color-border); /* Light border for definition */
@@ -132,7 +134,6 @@
   border-radius: 8px;
   padding: 2px 7px;
   color: var(--text-body);
-}
 
 /* Sort icon */
 .issues-table .material-symbols-outlined {
@@ -236,4 +237,14 @@ h1, h2{
   max-width: 100%; /* Make it responsive */
   height: auto;
   margin-top: 20px;
+}
+
+#search-input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 18px;
 }

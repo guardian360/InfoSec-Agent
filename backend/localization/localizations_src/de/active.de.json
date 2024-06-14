@@ -59,7 +59,8 @@
     "ChangeLanguage": "Sprache ändern",
     "WindowsVersion": "Windows-Version",
     "ScanInterval": "Scan-Intervall",
-    "SelectVersion": "Windows-Version auswählen"
+    "SelectVersion": "Windows-Version auswählen",
+    "Programs": "Programme"
     
   },
   "Dashboard": 
@@ -139,7 +140,12 @@
     "AffiliationsInfo": "Dieses Projekt ist eine Zusammenarbeit von neun Studenten der Universität Utrecht in den Niederlanden, in Partnerschaft mit dem niederländischen IT-Unternehmen Guardian360. Es dient als Softwareprojekt für das Bachelor-Programm in Informatik an der UU. Dieses Projekt wird auch durch Mittel des SIDN-Fonds (Stichting Internet Domeinregistratie Nederland), der niederländischen Domain-Registrierungsstelle, unterstützt.",
     "ContributingTitle": "Mitwirken",
     "ContributingInfo": "InfoSec-Agent ist ein Open-Source-Projekt, das unter der AGPL-3.0-Lizenz steht. Aufgrund seiner Ursprünge als Aufgabe der Universität Utrecht werden öffentliche Beiträge zu diesem Repository jedoch erst nach Abschluss dieser Aufgabe am 24. Juni 2024 zusammengeführt. Sie können gerne Fehler oder Probleme melden, auf die Sie stoßen. Ihr Feedback ist wertvoll und hilft, das InfoSec-Agent-Projekt zu verbessern. Sie können uns per E-Mail unter <a href=\"mailto:infosecagentuu@gmail.com\">infosecagentuu@gmail.com</a> erreichen."
-  }, 
+  },  
+  "Programs": {
+    "Name":"Name",
+    "ProgramTable": "Installierte Programme",
+    "Search": "Suchen"
+  },  
   "Personalize": {
     "ChangeFavicon": "Favicon ändern",
     "navImage": "Navigationsbild",
