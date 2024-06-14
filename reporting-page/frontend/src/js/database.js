@@ -72,10 +72,10 @@ const countOccurrences = (severities, level) => severities.filter((item) => item
 async function setAllSeverities(input) {
   const result = await getDataBaseData(input);
   sessionStorage.setItem('DataBaseData', JSON.stringify(result));
-  sessionStorage.setItem('IssuesSorted', JSON.stringify(
+  sessionStorage.setItem('IssuesSorting', JSON.stringify(
     {
       'column': '2',
-      'direction': 'ascending',
+      'direction': 'descending'
     },
   ));
   await setSeverities(result, '');
