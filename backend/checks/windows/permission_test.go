@@ -52,6 +52,7 @@ func TestPermission(t *testing.T) {
 			key: &mocking.MockRegistryKey{
 				SubKeys: []mocking.MockRegistryKey{
 					{KeyName: "Software\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\webcam",
+						StringValues: map[string]string{"Value": "Allow"},
 						SubKeys: []mocking.MockRegistryKey{
 							{KeyName: "microsoft.webcam", StringValues: map[string]string{"Value": "Allow"}},
 						},
@@ -59,6 +60,19 @@ func TestPermission(t *testing.T) {
 				},
 			},
 			want: checks.NewCheckResult(checks.WebcamID, 0, "microsoft webcam"),
+		},
+		{
+			name:       "No apps with webcam permission",
+			permission: "webcam",
+			key: &mocking.MockRegistryKey{
+				SubKeys: []mocking.MockRegistryKey{
+					{KeyName: "Software\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\webcam",
+						StringValues: map[string]string{"Value": "Deny"},
+						SubKeys:      []mocking.MockRegistryKey{},
+					},
+				},
+			},
+			want: checks.NewCheckResult(checks.WebcamID, 1),
 		},
 	}
 

@@ -51,7 +51,7 @@
         "Type": "Security",
         "Information": "The guest account is a default account designed to offer temporary and restricted access to the system for individuals without regular user accounts. If you are the sole user of the computer and do not require a guest account, it's advisable to disable it. This ensures that no unauthorized users can access data on the computer, enhancing overall security and privacy.",
         "0": {
-            "Severity": 1,
+            "Severity": -1,
             "Name": "Guest account status unknown",
             "Solution": [
                 "An unknown guest account status can be a security risk. To check the status and potentially solve the issue of the guest account, follow these steps.",
@@ -124,8 +124,7 @@
                 "Here you can control the advertisement ID settings and turn the feature on/off."
             ],
             "Screenshots": [
-                "network-sharing/nearby-sharing-1.png",
-                "network-sharing/nearby-sharing-2.png"
+                "TOBEFILLED"
             ]
         }
     },
@@ -312,10 +311,7 @@
                 "If you see any suspicious programs or ports, you can close them by by shutting down the corresponding program."
             ],
             "Screenshots": [
-                "devices-connected-via-bluetooth/bluetooth-devices-1.png",
-                "devices-connected-via-bluetooth/bluetooth-devices-1.png",
-                "devices-connected-via-bluetooth/bluetooth-devices-1.png",
-                "devices-connected-via-bluetooth/bluetooth-devices-1.png"
+                "TOBEFILLED"
             ]
         }
     },
@@ -680,6 +676,7 @@
             "After enabling Secure Boot, save the changes to the BIOS/UEFI settings and exit. Usually, you can do this by selecting the 'Save & Exit' or 'Exit' option from the BIOS/UEFI menu. Confirm any prompts to save the changes and restart your computer."
         ],
         "Screenshots": [
+            "TOBEFILLED"
         ]
     },
     "1": {

@@ -137,7 +137,7 @@ func OnReady() {
 				logger.Log.ErrorWithErr("Error scanning:", err)
 			} else {
 				// Notify the user that a scan has been completed
-				err = Popup(result, "./reporting-page/database.db")
+				err = Popup(result, "./reporting-page/frontend/src/databases/database.en-GB.json")
 				if err != nil {
 					logger.Log.ErrorWithErr("Error notifying user:", err)
 				}
@@ -281,7 +281,7 @@ func ChangeScanInterval(testInput ...string) {
 			zenity.OKLabel(localization.Localize(Language, "Dialogs.OK")),
 			zenity.CancelLabel(localization.Localize(Language, "Dialogs.Cancel")),
 			zenity.EntryText(strconv.Itoa(scanInterval)),
-			zenity.DefaultItems("24"))
+			zenity.DefaultItems("7"))
 		if err != nil {
 			logger.Log.ErrorWithErr("Error creating dialog:", err)
 			return
@@ -353,7 +353,7 @@ func ScanNow(dialogPresent bool) ([]checks.Check, error) {
 		}
 	}
 	// Update the game state based on the scan results
-	_, err = gamification.UpdateGameState(result, "../../reporting-page/database.db")
+	_, err = gamification.UpdateGameState(result, "reporting-page/frontend/src/databases/database.en-GB.json", gamification.RealPointCalculationGetter{}, usersettings.RealSaveUserSettingsGetter{})
 	if err != nil {
 		logger.Log.ErrorWithErr("Error calculating points:", err)
 	}
@@ -424,10 +424,10 @@ func ChangeLanguage(testInput ...string) {
 	if test {
 		return
 	}
-	err := usersettings.SaveUserSettings(usersettings.UserSettings{
-		Language:     Language,
-		ScanInterval: usersettings.LoadUserSettings().ScanInterval,
-	})
+	getter := usersettings.RealSaveUserSettingsGetter{}
+	current := usersettings.LoadUserSettings()
+	current.Language = Language
+	err := getter.SaveUserSettings(current)
 	if err != nil {
 		logger.Log.Warning("Language setting not saved to file")
 	}
@@ -458,7 +458,8 @@ func RefreshMenu() {
 // Returns: None.
 func changeNextScan(settings usersettings.UserSettings, value int) {
 	settings.NextScan = time.Now().Add(time.Duration(value) * time.Hour)
-	err := usersettings.SaveUserSettings(settings)
+	getter := usersettings.RealSaveUserSettingsGetter{}
+	err := getter.SaveUserSettings(settings)
 	if err != nil {
 		logger.Log.Warning("Next scan time not saved to file")
 	}
@@ -479,7 +480,7 @@ func periodicScan(scanInterval int) {
 			logger.Log.ErrorWithErr("Error performing periodic scan:", err)
 		} else {
 			// Notify the user that a scan has been completed
-			err = Popup(result, "./reporting-page/database.db")
+			err = Popup(result, "./reporting-page/frontend/src/databases/database.en-GB.json")
 			if err != nil {
 				logger.Log.ErrorWithErr("Error notifying user:", err)
 			}
@@ -527,13 +528,13 @@ func runScanWithDialog() (zenity.ProgressDialog, []checks.Check, error) {
 //
 // Returns: None.
 func updateScanInterval(interval int, test bool) {
-	logger.Log.Printf("INFO: Scan interval changed to " + strconv.Itoa(interval) + " hours")
+	logger.Log.Printf("INFO: Scan interval changed to " + strconv.Itoa(interval) + " day(s)")
 	if !test {
-		err := usersettings.SaveUserSettings(usersettings.UserSettings{
-			Language:     usersettings.LoadUserSettings().Language,
-			ScanInterval: interval,
-			NextScan:     time.Now().Add(time.Duration(interval) * time.Hour),
-		})
+		current := usersettings.LoadUserSettings()
+		current.ScanInterval = interval
+		current.NextScan = time.Now().Add(time.Duration(interval) * time.Hour)
+		getter := usersettings.RealSaveUserSettingsGetter{}
+		err := getter.SaveUserSettings(current)
 		if err != nil {
 			logger.Log.Warning("Scan interval setting not saved to file")
 		}

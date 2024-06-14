@@ -145,7 +145,7 @@ export function openPrivacyDashboardPage() {
 
   // Localize the static content of the dashboard
   const staticDashboardContent = [
-    'lang-security-dashboard',
+    'lang-privacy-dashboard',
     'lang-issues',
     'lang-high-risk-issues',
     'lang-medium-risk-issues',
@@ -220,6 +220,6 @@ if (typeof document !== 'undefined') {
   try {
     document.getElementById('privacy-dashboard-button').addEventListener('click', () => openPrivacyDashboardPage());
   } catch (error) {
-    logError('Error in security-dashboard.js: ' + error);
+    logError('Error in privacy-dashboard.js: ' + error);
   }
 }

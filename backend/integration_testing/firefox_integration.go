@@ -55,6 +55,6 @@ func TestIntegrationCookiesFirefoxWithCookies(t *testing.T) {
 func TestIntegrationCookiesFirefoxWithoutCookies(t *testing.T) {
 	result := firefox.CookiesFirefox(browsers.RealProfileFinder{}, browsers.RealCopyFileGetter{}, browsers.RealQueryCookieDatabaseGetter{})
 	require.NotEqual(t, -1, result.ResultID)
-	require.Empty(t, result)
+	require.Empty(t, result.Result)
 	require.Equal(t, 0, result.ResultID)
 }
