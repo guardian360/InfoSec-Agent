@@ -77,31 +77,10 @@ jest.unstable_mockModule('../src/js/personalize.js', () => ({
   retrieveTheme: jest.fn(),
 }));
 
-// Define openAllChecksPage function for the tests
-global.openAllChecksPage = jest.fn();
-
-// Add links to checks page
-document.getElementById('security-button-applications').addEventListener('click',
-  () => openAllChecksPage('applications'));
-document.getElementById('security-button-devices').addEventListener('click',
-  () => openAllChecksPage('devices'));
-document.getElementById('security-button-network').addEventListener('click',
-  () => openAllChecksPage('network'));
-document.getElementById('security-button-os').addEventListener('click',
-  () => openAllChecksPage('os'));
-document.getElementById('security-button-passwords').addEventListener('click',
-  () => openAllChecksPage('passwords'));
-document.getElementById('security-button-other').addEventListener('click',
-  () => openAllChecksPage('security-other'));
-
-// Close dropdown when clicking outside
-document.addEventListener('click', function(event) {
-  const dropdown = document.getElementById('myDropdown');
-  const dropbtn = document.getElementById('dropbtn');
-  if (dropdown && dropbtn && !dropbtn.contains(event.target)) {
-    dropdown.classList.remove('show');
-  }
-});
+// Mock openAllChecksPage
+jest.unstable_mockModule('../src/js/all-checks.js', () => ({
+  openAllChecksPage: jest.fn(),
+}));
 
 // test cases
 describe('Security dashboard', function() {
@@ -333,6 +312,7 @@ describe('Security dashboard', function() {
     const buttonOS = document.getElementById('security-button-os');
     const buttonPass = document.getElementById('security-button-passwords');
     const buttonOther = document.getElementById('security-button-other');
+    const allChecks = await import('../src/js/all-checks.js');
 
     // Act
     buttonApp.dispatchEvent(clickEvent);
@@ -343,12 +323,12 @@ describe('Security dashboard', function() {
     buttonOther.dispatchEvent(clickEvent);
 
     // Assert
-    expect(global.openAllChecksPage).toHaveBeenCalledWith('applications');
-    expect(global.openAllChecksPage).toHaveBeenCalledWith('devices');
-    expect(global.openAllChecksPage).toHaveBeenCalledWith('network');
-    expect(global.openAllChecksPage).toHaveBeenCalledWith('os');
-    expect(global.openAllChecksPage).toHaveBeenCalledWith('passwords');
-    expect(global.openAllChecksPage).toHaveBeenCalledWith('security-other');
+    expect(allChecks.openAllChecksPage).toHaveBeenCalledWith('applications');
+    expect(allChecks.openAllChecksPage).toHaveBeenCalledWith('devices');
+    expect(allChecks.openAllChecksPage).toHaveBeenCalledWith('network');
+    expect(allChecks.openAllChecksPage).toHaveBeenCalledWith('os');
+    expect(allChecks.openAllChecksPage).toHaveBeenCalledWith('passwords');
+    expect(allChecks.openAllChecksPage).toHaveBeenCalledWith('security-other');
 
   });
   it('Clicking outside the dropdown should close it', async function() {
