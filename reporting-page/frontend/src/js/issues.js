@@ -210,11 +210,11 @@ export function fillTable(tbody, issues) {
   issues.forEach((issue) => {
     const riskLevel = toRiskLevel(issue.severity);
     if (filter) {
-      if (filter.high === '0' && issue.severity === 3) return;
-      if (filter.medium === '0' && issue.severity === 2) return;
-      if (filter.low === '0' && issue.severity === 1) return;
-      if (filter.acceptable === '0' && issue.severity === 0) return;
-      if (filter.info === '0' && issue.severity === 4) return;
+      if (!filter.high && issue.severity === 3) return;
+      if (!filter.medium && issue.severity === 2) return;
+      if (!filter.low && issue.severity === 1) return;
+      if (!filter.acceptable && issue.severity === 0) return;
+      if (!filter.info && issue.severity === 4) return;
     }
 
     const row = document.createElement('tr');
@@ -318,9 +318,9 @@ export function refillTable(tbody, sortingMethod) {
     // Sort on risk level
     else if (column === 2) {
       if (direction === 'ascending') {
-        return severityB - severityA || typeB.localeCompare(typeA) || nameA.localeCompare(nameB);
-      } else {
         return severityA - severityB || typeB.localeCompare(typeA) || nameA.localeCompare(nameB);
+      } else {
+        return severityB - severityA || typeB.localeCompare(typeA) || nameA.localeCompare(nameB);
       }
     } 
   });
@@ -369,11 +369,11 @@ export function changeTable() {
   const selectedInfo = document.getElementById('select-info-risk-table').checked ? 1 : 0;
   sessionStorage.setItem('IssuesFilter', JSON.stringify(
     {
-      "high": selectedHigh.toString(),
-      "medium": selectedMedium.toString(),
-      "low": selectedLow.toString(),
-      "acceptable": selectedAcceptable.toString(),
-      "info": selectedInfo.toString()
+      "high": selectedHigh,
+      "medium": selectedMedium,
+      "low": selectedLow,
+      "acceptable": selectedAcceptable,
+      "info": selectedInfo
     }
   ));
 
