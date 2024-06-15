@@ -2,7 +2,8 @@ import 'jsdom-global/register.js';
 import test from 'unit.js';
 import {JSDOM} from 'jsdom';
 import {jest} from '@jest/globals';
-import {mockPageFunctions, mockGetLocalization, mockChart, mockGraph, clickEvent, changeEvent, storageMock} from './mock.js';
+import {mockPageFunctions, mockGetLocalization, mockChart,
+  mockGraph, clickEvent, changeEvent, storageMock} from './mock.js';
 import {RiskCounters} from '../src/js/risk-counters.js';
 
 global.TESTING = true;
@@ -316,7 +317,7 @@ describe('Security dashboard', function() {
 
     // Act
     buttonApp.dispatchEvent(clickEvent);
-    buttonDevices.dispatchEvent(clickEvent)
+    buttonDevices.dispatchEvent(clickEvent);
     buttonNet.dispatchEvent(clickEvent);
     buttonOS.dispatchEvent(clickEvent);
     buttonPass.dispatchEvent(clickEvent);
@@ -329,7 +330,6 @@ describe('Security dashboard', function() {
     expect(allChecks.openAllChecksPage).toHaveBeenCalledWith('os');
     expect(allChecks.openAllChecksPage).toHaveBeenCalledWith('passwords');
     expect(allChecks.openAllChecksPage).toHaveBeenCalledWith('security-other');
-
   });
   it('Clicking outside the dropdown should close it', async function() {
     // Arrange
@@ -337,7 +337,7 @@ describe('Security dashboard', function() {
     dropdown.classList.add('show'); // Make sure the dropdown is initially open
 
     // Act
-    document.body.dispatchEvent(new dom.window.Event('click', { bubbles: true }));
+    document.body.dispatchEvent(new dom.window.Event('click', {bubbles: true}));
 
     // Assert
     expect(dropdown.classList.contains('show')).toBe(false);
@@ -349,7 +349,7 @@ describe('Security dashboard', function() {
     dropdown.classList.add('show'); // Make sure the dropdown is initially open
 
     // Act
-    dropbtn.dispatchEvent(new dom.window.Event('click', { bubbles: true }));
+    dropbtn.dispatchEvent(new dom.window.Event('click', {bubbles: true}));
 
     // Assert
     expect(dropdown.classList.contains('show')).toBe(true);
