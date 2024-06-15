@@ -84,16 +84,8 @@ func TestTrayFunctionality(t *testing.T) {
 		var buf bytes.Buffer
 		logger.Log.SetOutput(&buf)
 
-		wg = sync.WaitGroup{}
-		wg.Add(1)
 		// Run the function with mocked user input
-		go func() {
-			defer wg.Done()
-			tray.ChangeScanInterval(tc.input)
-		}()
-
-		// Wait for the function to complete
-		wg.Wait()
+		tray.ChangeScanInterval(tc.input)
 
 		capturedOutput := buf.String()
 
