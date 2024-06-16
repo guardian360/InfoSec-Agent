@@ -159,13 +159,12 @@ describe('Issue page', function() {
   // from here on issueID 160 is used for tests up to parseShowResults tests
   const issueID = 16;
   const resultID = 0;
-  const severity = 2;
   let currentIssue = data[issueID];
   const mockScanResult = [{issue_id: issueID, result_id: resultID, result: []}];
 
   it('openIssuesPage should add the right info about the issue to the page-contents', async function() {
     sessionStorage.setItem('WindowsVersion', '10');
-    sessionStorage.setItem('ScanResult',JSON.stringify(mockScanResult))
+    sessionStorage.setItem('ScanResult', JSON.stringify(mockScanResult));
     // Arrange
     const issue = await import('../src/js/issue.js');
 
@@ -182,7 +181,7 @@ describe('Issue page', function() {
   });
   it('updateSolutionStep should update the solution step', async function() {
     // Arrange
-    
+
     const solutionScreenshot = document.getElementById('step-screenshot');
     stepCounter = 0;
 

@@ -64,11 +64,11 @@ describe('Checks page', function() {
     // Arrange
     const allChecks = await import('../src/js/all-checks.js');
     const mockScanResult = [{issue_id: 3, result_id: 1, result: []},
-                            {issue_id: 4, result_id: 1, result: []},
-                            {issue_id: 5, result_id: 1, result: []}];
+      {issue_id: 4, result_id: 1, result: []},
+      {issue_id: 5, result_id: 1, result: []}];
 
     // Act
-    sessionStorage.setItem('ScanResult',JSON.stringify(mockScanResult))
+    sessionStorage.setItem('ScanResult', JSON.stringify(mockScanResult));
     await allChecks.openAllChecksPage();
     const foundChecks = document.getElementsByClassName('all-checks-check');
 
@@ -79,13 +79,13 @@ describe('Checks page', function() {
     // Arrange
     const allChecks = await import('../src/js/all-checks.js');
     const mockScanResult = [{issue_id: 3, result_id: 1, result: []},
-                            {issue_id: 4, result_id: 1, result: []},
-                            {issue_id: 5, result_id: 1, result: []}];
+      {issue_id: 4, result_id: 1, result: []},
+      {issue_id: 5, result_id: 1, result: []}];
     const issue = await import('../src/js/issue.js');
     const openIssuePageMock = jest.spyOn(issue, 'openIssuePage');
 
     // Act
-    sessionStorage.setItem('ScanResult',JSON.stringify(mockScanResult))
+    sessionStorage.setItem('ScanResult', JSON.stringify(mockScanResult));
     await allChecks.openAllChecksPage();
 
     mockScanResult.forEach((issue) => {

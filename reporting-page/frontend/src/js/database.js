@@ -62,7 +62,8 @@ if (sessionStorage.getItem('scanTest') === null || sessionStorage.getItem('scanT
 }
 
 // counts the occurrences of each level: 0 = acceptable, 1 = low, 2 = medium, 3 = high
-const countOccurrences = (severities, level) => severities.filter((item) => data[item.issue_id][item.result_id].Severity === level).length;
+const countOccurrences = (severities, level) =>
+  severities.filter((item) => data[item.issue_id][item.result_id].Severity === level).length;
 
 /** Sets the severities collected from the checks and database in session storage of all types
  *
@@ -96,8 +97,8 @@ async function setAllSeverities(input) {
 async function setSeverities(input, type) {
   try {
     input = input.filter((item) => item.result_id !== -1);
+    input = input.filter((item) => data[item.issue_id] !== undefined);
     if (type !== '') {
-      input = input.filter((item) => data[item.issue_id] !== undefined);
       input = input.filter((item) => data[item.issue_id].Type === type);
     }
     const info = countOccurrences(input, 4);

@@ -23,7 +23,7 @@ const issuesWithResultsShow =
 // const issuesWithResultsShow =
 //     ['1', '2', '6', '7', '8', '9', '10', '11', '16', '17',
 //       '20', '23', '25', '26', '27', '30', '31', '32', '35', '36'];
-  
+
 /** Update contents of solution guide
  *
  * @param {HTMLParagraphElement} solutionText Element in which textual solution step is shown
@@ -192,17 +192,17 @@ export async function openIssuePage(issueId, resultId, back = undefined) {
     document.getElementById('back-button').classList.add('lang-back-button-issues');
   } else if (back == 'home') {
     document.getElementById('back-button').addEventListener('click', () => openHomePage());
-    document.getElementById('back-button').classList.add('lang-back-button-issues');
+    document.getElementById('back-button').classList.add('lang-back-button-home');
   } else {
     document.getElementById('back-button').addEventListener('click', () => openAllChecksPage(back));
     document.getElementById('back-button').classList.add('lang-back-button-checks');
   }
 
   const texts = ['lang-information', 'lang-findings', 'lang-solution', 'lang-previous-button',
-    'lang-next-button', 'lang-back-button-issues', 'lang-back-button-checks', 'lang-port', 'lang-password',
-    'lang-acceptable', 'lang-cookies', 'lang-permissions', 'lang-scan-again'];
+    'lang-next-button', 'lang-back-button-issues', 'lang-back-button-home', 'lang-back-button-checks', 'lang-port',
+    'lang-password', 'lang-acceptable', 'lang-cookies', 'lang-permissions', 'lang-scan-again'];
   const localizationIds = ['Issues.Information', 'Issues.Findings', 'Issues.Solution', 'Issues.Previous',
-    'Issues.Next', 'Issues.BackIssues', 'Issues.BackChecks', 'Issues.Port', 'Issues.Password',
+    'Issues.Next', 'Issues.BackIssues', 'Issues.BackHome', 'Issues.BackChecks', 'Issues.Port', 'Issues.Password',
     'Issues.Acceptable', 'Issues.Cookies', 'Issues.Permissions', 'Issues.ScanAgain',
   ];
   for (let i = 0; i < texts.length; i++) {

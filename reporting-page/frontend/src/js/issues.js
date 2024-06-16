@@ -151,7 +151,7 @@ export async function openIssuesPage() {
  * */
 export async function getIssues() {
   // Get checks results from session storage
-  const issues = JSON.parse(sessionStorage.getItem('DataBaseData'));
+  const issues = JSON.parse(sessionStorage.getItem('ScanResult'));
 
   // Get issue information in the user's preferred language
   const language = await getUserSettings();
@@ -185,13 +185,13 @@ export async function getIssues() {
     }
 
     // Add issue to list
-    if (currentIssue) {
-      const name = currentIssue.Name;
+    if (currentIssue && issue.result_id >= 0) {
+      const name = currentIssue[issue.result_id].Name;
       const type = currentIssue.Type;
-      const severity = issue.severity;
-      const jsonkey = issue.jsonkey;
+      const issueId = issue.issue_id;
+      const resultId = issue.result_id;
 
-      issueList.push({'name': name, 'type': type, 'severity': severity, 'jsonkey': jsonkey});
+      issueList.push({'name': name, 'type': type, 'issue_id': issueId, 'result_id': resultId});
     }
   });
   return issueList;
@@ -209,31 +209,33 @@ export function fillTable(tbody, issues) {
 
   // Add a table row for each issue
   issues.forEach((issue) => {
-    const riskLevel = toRiskLevel(issue.severity);
+    const severity = dataEnGB[issue.issue_id][issue.result_id].Severity;
+    const riskLevel = toRiskLevel(severity);
 
     if (filter) {
-      if (!filter.high && issue.severity === 3) return;
-      if (!filter.medium && issue.severity === 2) return;
-      if (!filter.low && issue.severity === 1) return;
-      if (!filter.acceptable && issue.severity === 0) return;
-      if (!filter.info && issue.severity === 4) return;
+      if (!filter.high && severity === 3) return;
+      if (!filter.medium && severity === 2) return;
+      if (!filter.low && severity === 1) return;
+      if (!filter.acceptable && severity === 0) return;
+      if (!filter.info && severity === 4) return;
     }
 
     const row = document.createElement('tr');
     row.innerHTML = `
-      <td class="issue-link" data-severity="${issue.severity}">${issue.name}</td>
+      <td class="issue-link" data-result-id="${issue.result_id}" data-severity="${severity}">${issue.name}</td>
       <td>${issue.type}</td>
       ${riskLevel}
     `;
-    row.cells[0].id = issue.jsonkey;
-    row.setAttribute('data-severity', issue.severity);
+    row.cells[0].id = issue.issue_id;
+    row.setAttribute('data-result-id', issue.result_id);
+    row.setAttribute('data-severity', severity);
     tbody.appendChild(row);
   });
 
   // Add links to issue information pages
   const issueLinks = document.querySelectorAll('.issue-link');
   issueLinks.forEach((link) => {
-    link.parentElement.addEventListener('click', () => openIssuePage(link.id, link.getAttribute('data-severity')));
+    link.parentElement.addEventListener('click', () => openIssuePage(link.id, link.getAttribute('data-result-id')));
   });
 
   // Re-apply localization to the dynamically created table rows
@@ -387,12 +389,13 @@ export function changeTable() {
 
   // Filter issues based on the selected risk levels
   const filteredIssues = issues.filter((issue) => {
+    const severity = dataEnGB[issue.issue_id][issue.result_id].Severity;
     return (
-      (selectedAcceptable && issue.severity === 0) ||
-      (selectedLow && issue.severity === 1) ||
-      (selectedMedium && issue.severity === 2) ||
-      (selectedHigh && issue.severity === 3) ||
-      (selectedInfo && issue.severity === 4)
+      (selectedAcceptable && severity === 0) ||
+      (selectedLow && severity === 1) ||
+      (selectedMedium && severity === 2) ||
+      (selectedHigh && severity === 3) ||
+      (selectedInfo && severity === 4)
     );
   });
 

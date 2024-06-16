@@ -178,8 +178,8 @@ export function suggestedIssue(type) {
   let issueIndex = 0;
   let maxSeverityIssue = issues[issueIndex].issue_id;
   let maxSeverityResult = issues[issueIndex].result_id;
-  while (getSeverity(maxSeverityIssue, maxSeverityResult) === 4
-        || getSeverity(maxSeverityIssue, maxSeverityResult) === undefined) {
+  while (getSeverity(maxSeverityIssue, maxSeverityResult) === 4 ||
+        getSeverity(maxSeverityIssue, maxSeverityResult) === undefined) {
     issueIndex++;
     maxSeverityIssue = issues[issueIndex].issue_id;
     maxSeverityResult = issues[issueIndex].result_id;
@@ -187,33 +187,35 @@ export function suggestedIssue(type) {
 
   // Find the issue with the highest severity
   for (let i = 0; i < issues.length; i++) {
-    const severity = getSeverity(issues[i].issue_id,issues[i].result_id)
-    if (getSeverity(maxSeverityIssue, maxSeverityResult) < severity 
-      && severity !== 4) {
-    if (type == '' || data[issues[i].issue_id].Type === type) {
-      maxSeverityIssue = issues[i].issue_id;
-      maxSeverityResult = issues[i].result_id;
-    }
+    const severity = getSeverity(issues[i].issue_id, issues[i].result_id);
+    if (getSeverity(maxSeverityIssue, maxSeverityResult) < severity &&
+      severity !== 4) {
+      if (type == '' || data[issues[i].issue_id].Type === type) {
+        maxSeverityIssue = issues[i].issue_id;
+        maxSeverityResult = issues[i].result_id;
+      }
     }
   }
 
   // Open the issue page of the issue with the highest severity
   openIssuePage(maxSeverityIssue, maxSeverityResult, 'home');
   document.getElementById('scan-now').addEventListener('click', () => scanTest(true));
-
-  /**
-   * Gets the severity of an issue
-   * @param {string} issue_id issue id for which to get the severity
-   * @param {string} result_id result id for which to get the severity
-   * @returns 
-   */
-  function getSeverity(issue_id,result_id) {
-    const issueData = data[issue_id][result_id]
-    if (issueData == undefined) return undefined
-    return issueData.Severity
-  }
 }
 
+/**
+ * Gets the severity of an issue
+ * @param {string} issueId id of the issue
+ * @param {string} resultId result id of the issue
+ *
+ * @return {string} severity
+ */
+function getSeverity(issueId, resultId) {
+  const issue = data[issueId];
+  if (issue == undefined) return undefined;
+  const issueData = issue[resultId];
+  if (issueData == undefined) return undefined;
+  return issueData.Severity;
+}
 
 if (typeof document !== 'undefined') {
   try {

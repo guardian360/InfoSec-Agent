@@ -100,7 +100,7 @@ describe('Issues table', function() {
     // Arrange
     const issue = await import('../src/js/issues.js');
     // Arrange input issues
-    let issues = scanResultMock;
+    const issues = scanResultMock;
 
     sessionStorage.setItem('ScanResult', JSON.stringify(issues));
     sessionStorage.setItem('IssuesSorting', JSON.stringify(
@@ -149,23 +149,21 @@ describe('Issues table', function() {
   });
   it('fillTable should fill the issues table with information from the provided JSON array', async function() {
     // Arrange input issues
-    let issues = scanResultMock;
-    // Arrange expected table data
-    const expectedData = [];
-    expectedData.push(data[issues[0].issue_id]);
-    expectedData.push(data[issues[1].issue_id]);
+    const result = scanResultMock;
+    sessionStorage.setItem('ScanResult', JSON.stringify(result));
 
     const issue = await import('../src/js/issues.js');
+    const issues = await issue.getIssues();
 
     // Act
     const issueTable = document.getElementById('issues-table').querySelector('tbody');
-    issue.fillTable(issueTable, issues, true);
+    issue.fillTable(issueTable, issues);
 
     // Assert
     const row = issueTable.rows[0];
-    test.value(row.cells[0].textContent).isEqualTo(expectedData[0].Name);
-    test.value(row.cells[1].textContent).isEqualTo(expectedData[0].Type);
-    test.value(row.cells[2].textContent).isEqualTo('Acceptable');
+    test.value(row.cells[0].textContent).isEqualTo(issues[0].name);
+    test.value(row.cells[1].textContent).isEqualTo(issues[0].type);
+    test.value(row.cells[2].childNodes[0].classList.contains('lang-acceptable')).isTrue();
 
     // Make issues table empty
     emptyTable(issueTable);
@@ -247,7 +245,7 @@ describe('Issues table', function() {
     const issue = await import('../src/js/issues.js');
 
     // Arrange input issues
-    let issues = scanResultMock;
+    const issues = scanResultMock;
     // Arrange expected table data
     const expectedData = [];
     issues.forEach((issue) => {
@@ -313,6 +311,10 @@ describe('Issues table', function() {
     expect(myDropdownTable.classList.contains('show')).toBe(false);
   });
   it('should use the correct data object based on user language settings', async () => {
+    // make sure filters are on
+    const filters = {high: 1, medium: 1, low: 1, acceptable: 1, info: 1};
+    sessionStorage.setItem('IssuesFilter', JSON.stringify(filters));
+
     // Define the language settings and the corresponding expected data
     const languageSettings = [
       {language: 0, expectedData: dataDe},
