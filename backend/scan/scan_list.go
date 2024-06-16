@@ -116,6 +116,7 @@ var networkChecks = []func() checks.Check{
 // programsChecks contains all security/privacy checks that are specific to installed programs.
 var programsChecks = []func() checks.Check{
 	func() checks.Check { return programs.PasswordManager(programs.RealProgramLister{}) },
+	programs.OutdatedSoftware,
 }
 
 // windowsChecks contains all security/privacy checks that are specific to Windows (registry) settings.

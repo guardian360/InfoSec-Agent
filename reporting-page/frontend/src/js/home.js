@@ -16,16 +16,22 @@ export async function openHomePage() {
   // Load the video background path
   switch (sessionStorage.getItem('state')) {
   case '0':
-    lighthousePath = 'first-state.mkv';
+    lighthousePath = 'state0.mkv';
     break;
   case '1':
-    lighthousePath = 'almost-state.mkv';
+    lighthousePath = 'state1.mkv';
     break;
   case '2':
-    lighthousePath = 'final-state.mkv';
+    lighthousePath = 'state2.mkv';
+    break;
+  case '3':
+    lighthousePath = 'state3.mkv';
+    break;
+  case '4':
+    lighthousePath = 'state4.mkv';
     break;
   default:
-    lighthousePath = 'first-state.mkv';
+    lighthousePath = 'state0.mkv';
   }
 
   const lighthouseState = await getImagePath(lighthousePath);

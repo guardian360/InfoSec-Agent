@@ -69,11 +69,14 @@ const countOccurrences = (severities, level) => severities.filter((item) => data
  * @param {Check[]} input Checks to get severities from
  */
 async function setAllSeverities(input) {
-  sessionStorage.setItem('IssuesSorted', JSON.stringify(
+  sessionStorage.setItem('IssuesSorting', JSON.stringify(
     {
-      'column': '2',
-      'direction': 'ascending',
+      'column': 2,
+      'direction': 'descending',
     },
+  ));
+  sessionStorage.setItem('IssuesFilter', JSON.stringify(
+    {'high': 1, 'medium': 1, 'low': 1, 'acceptable': 1, 'info': 1},
   ));
   await setSeverities(input, '');
   await setSeverities(input, 'Security');
