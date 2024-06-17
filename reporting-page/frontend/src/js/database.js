@@ -21,7 +21,7 @@ export async function scanTest(dialogPresent) {
     sessionStorage.setItem('isScanning', 'true');
     try {
       await new Promise((resolve, reject) => {
-        scanNowGo(dialogPresent)
+        scanNowGo(dialogPresent, 'frontend/src/databases/database.en-GB.json')
           .then(async (scanResult) => {
           // Handle the scan result
           // For example, save it in session storage

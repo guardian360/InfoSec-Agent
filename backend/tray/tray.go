@@ -132,7 +132,7 @@ func OnReady() {
 		case <-mChangeScanInterval.ClickedCh:
 			ChangeScanInterval()
 		case <-mScanNow.ClickedCh:
-			result, err := ScanNow(true)
+			result, err := ScanNow(true, "reporting-page/frontend/src/databases/database.en-GB.json")
 			if err != nil {
 				logger.Log.ErrorWithErr("Error scanning:", err)
 			} else {
@@ -328,7 +328,7 @@ func ChangeScanInterval(testInput ...string) {
 // Returns:
 //   - []checks.Check: A list of checks performed during the scan.
 //   - error: An error object if an error occurred during the scan, otherwise nil.
-func ScanNow(dialogPresent bool) ([]checks.Check, error) {
+func ScanNow(dialogPresent bool, databasePath string) ([]checks.Check, error) {
 	var result []checks.Check
 	var err error
 	var dialog zenity.ProgressDialog
@@ -353,7 +353,7 @@ func ScanNow(dialogPresent bool) ([]checks.Check, error) {
 		}
 	}
 	// Update the game state based on the scan results
-	_, err = gamification.UpdateGameState(result, "reporting-page/frontend/src/databases/database.en-GB.json", gamification.RealPointCalculationGetter{}, usersettings.RealSaveUserSettingsGetter{})
+	_, err = gamification.UpdateGameState(result, databasePath, gamification.RealPointCalculationGetter{}, usersettings.RealSaveUserSettingsGetter{})
 	if err != nil {
 		logger.Log.ErrorWithErr("Error calculating points:", err)
 	}
@@ -475,7 +475,7 @@ func changeNextScan(settings usersettings.UserSettings, value int) {
 func periodicScan(scanInterval int) {
 	settings := usersettings.LoadUserSettings()
 	if time.Now().After(settings.NextScan) {
-		result, err := ScanNow(false)
+		result, err := ScanNow(false, "reporting-page/frontend/src/databases/database.en-GB.json")
 		if err != nil {
 			logger.Log.ErrorWithErr("Error performing periodic scan:", err)
 		} else {
