@@ -44,7 +44,7 @@ func OpenRegistryKey(k mocking.RegistryKey, path string) (mocking.RegistryKey, e
 func CloseRegistryKey(key mocking.RegistryKey) {
 	err := key.Close()
 	if err != nil {
-		logger.Log.ErrorWithErr("Error closing registry key:", err)
+		logger.Log.ErrorWithErr("Error closing registry key", err)
 	}
 }
 

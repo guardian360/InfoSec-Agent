@@ -227,7 +227,7 @@ func (l *CustomLogger) Error(message string) {
 // Returns: None
 func (l *CustomLogger) ErrorWithErr(message string, err error) {
 	if l.LogLevelSpecific == -1 && l.LogLevel <= ErrorLevel || l.LogLevelSpecific == ErrorLevel {
-		l.Println("ERROR: " + message + " " + err.Error())
+		l.Println("ERROR: " + message + ": " + err.Error())
 	}
 }
 

@@ -46,13 +46,13 @@ func TestScan(t *testing.T) {
 	dialog, err := zenity.Progress(
 		zenity.Title("Security/Privacy Scan"))
 	if err != nil {
-		logger.Log.ErrorWithErr("Error creating dialog:", err)
+		logger.Log.ErrorWithErr("Error creating dialog", err)
 	}
 	// Defer closing the dialog until the scan completes
 	defer func(dialog zenity.ProgressDialog) {
 		err = dialog.Close()
 		if err != nil {
-			logger.Log.ErrorWithErr("Error closing dialog:", err)
+			logger.Log.ErrorWithErr("Error closing dialog", err)
 		}
 	}(dialog)
 

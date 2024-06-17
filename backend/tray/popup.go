@@ -67,7 +67,7 @@ func PopupMessage(scanResult []checks.Check, path string) string {
 
 	dbData, err := database.GetData(scanResult, path)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error getting database data:", err)
+		logger.Log.ErrorWithErr("Error getting database data", err)
 		return localization.Localize(Language, "Dialogs.Popup.Default")
 	}
 

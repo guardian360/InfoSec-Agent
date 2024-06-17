@@ -81,7 +81,7 @@ func Scan(dialog zenity.ProgressDialog, language int) ([]checks.Check, error) {
 	logger.Log.Trace("Serializing scan results to JSON")
 	jsonData, err := json.MarshalIndent(checkResults, "", "  ")
 	if err != nil {
-		logger.Log.ErrorWithErr("Error marshalling JSON:", err)
+		logger.Log.ErrorWithErr("Error marshalling JSON", err)
 		return checkResults, err
 	}
 	logger.Log.Debug(string(jsonData))
@@ -122,7 +122,7 @@ func startWorkers(workerAmount int, wg *sync.WaitGroup, checksChan chan func() c
 				if dialogPresent {
 					err := dialog.Text(fmt.Sprintf(localization.Localize(language, "Dialogs.Scan.Content"), *counter, totalChecks))
 					if err != nil {
-						logger.Log.ErrorWithErr("Error setting progress text:", err)
+						logger.Log.ErrorWithErr("Error setting progress text", err)
 						mu.Unlock()
 						return
 					}
@@ -130,7 +130,7 @@ func startWorkers(workerAmount int, wg *sync.WaitGroup, checksChan chan func() c
 					*counter++
 					err = dialog.Value(int(progress))
 					if err != nil {
-						logger.Log.ErrorWithErr("Error setting progress value:", err)
+						logger.Log.ErrorWithErr("Error setting progress value", err)
 						mu.Unlock()
 						return
 					}

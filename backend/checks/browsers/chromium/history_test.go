@@ -430,7 +430,7 @@ func TestQueryDatabase_Error(t *testing.T) {
 		return
 	}
 	if rows.Err() != nil {
-		logger.Log.ErrorWithErr("Error closing rows: ", rows.Err())
+		logger.Log.ErrorWithErr("Error closing rows", rows.Err())
 	}
 }
 
@@ -451,7 +451,7 @@ func TestProcessQueryResults(t *testing.T) {
 	// Execute the query to get *sql.Rows
 	realRows, err := db.Query("SELECT * FROM websites")
 	if realRows.Err() != nil {
-		logger.Log.ErrorWithErr("Error closing rows: ", realRows.Err())
+		logger.Log.ErrorWithErr("Error closing rows", realRows.Err())
 	}
 	if err != nil {
 		t.Fatalf("an error '%s' was not expected while querying", err)
@@ -491,7 +491,7 @@ func TestProcessQueryResults_Error(t *testing.T) {
 	// Execute the query to get *sql.Rows
 	realRows, err := db.Query("SELECT * FROM websites")
 	if realRows.Err() != nil {
-		logger.Log.ErrorWithErr("Error closing rows: ", realRows.Err())
+		logger.Log.ErrorWithErr("Error closing rows", realRows.Err())
 	}
 	if err != nil {
 		t.Fatalf("an error '%s' was not expected while querying", err)

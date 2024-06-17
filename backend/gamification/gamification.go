@@ -43,7 +43,7 @@ func UpdateGameState(scanResults []checks.Check, databasePath string) (GameState
 
 	gs, err := PointCalculation(gs, scanResults, databasePath)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error calculating points:", err)
+		logger.Log.ErrorWithErr("Error calculating points", err)
 		return gs, err
 	}
 	gs = LighthouseStateTransition(gs)
@@ -71,10 +71,11 @@ func UpdateGameState(scanResults []checks.Check, databasePath string) (GameState
 // Returns:
 //   - GameState: The updated game state with the new points amount.
 func PointCalculation(gs GameState, scanResults []checks.Check, databasePath string) (GameState, error) {
+	logger.Log.Trace("Calculating gamification points")
 	gs.Points = 0
 	db, err := sql.Open("sqlite", databasePath)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error opening database:", err)
+		logger.Log.ErrorWithErr("Error opening database", err)
 		return gs, err
 	}
 
@@ -85,7 +86,7 @@ func PointCalculation(gs GameState, scanResults []checks.Check, databasePath str
 		}
 		sev, err1 := database.GetSeverity(db, result.IssueID, result.ResultID)
 		if err1 != nil {
-			logger.Log.ErrorWithErr("Error getting severity:", err1)
+			logger.Log.ErrorWithErr("Error getting severity", err1)
 			return gs, err1
 		}
 		logger.Log.Debug("Issue ID: " + strconv.Itoa(result.IssueID) + " Severity: " + strconv.Itoa(sev))
@@ -103,7 +104,7 @@ func PointCalculation(gs GameState, scanResults []checks.Check, databasePath str
 	defer func(db *sql.DB) {
 		err = db.Close()
 		if err != nil {
-			logger.Log.ErrorWithErr("Error closing database:", err)
+			logger.Log.ErrorWithErr("Error closing database", err)
 		}
 	}(db)
 

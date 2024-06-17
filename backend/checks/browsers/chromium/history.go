@@ -45,7 +45,7 @@ func HistoryChromium(browser string, getter browsers.DefaultDirGetter, getterCop
 	// Copy the database, so problems don't arise when the file gets locked
 	tempHistoryDB, err := getterCopyDB.CopyDatabase(extensionsDir+"/History", browser, copyGetter)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error copying database: ", err)
+		logger.Log.ErrorWithErr("Error copying chromium database", err)
 		return checks.NewCheckError(returnID, err)
 	}
 
@@ -53,7 +53,7 @@ func HistoryChromium(browser string, getter browsers.DefaultDirGetter, getterCop
 	defer func(name string) {
 		err = os.Remove(name)
 		if err != nil {
-			logger.Log.ErrorWithErr("Error removing file: ", err)
+			logger.Log.ErrorWithErr("Error removing file", err)
 		}
 	}(tempHistoryDB)
 
@@ -141,7 +141,7 @@ func (r RealCopyDBGetter) CopyDatabase(src string, browser string, getter browse
 // It does not return any value.
 func CloseDatabase(db *sql.DB) {
 	if err := db.Close(); err != nil {
-		logger.Log.ErrorWithErr("Error closing database: ", err)
+		logger.Log.ErrorWithErr("Error closing database", err)
 	}
 }
 
@@ -182,7 +182,7 @@ func (r RealQueryDatabaseGetter) QueryDatabase(db *sql.DB) (*sql.Rows, error) {
 // It does not return any value.
 func CloseRows(rows *sql.Rows) {
 	if err := rows.Close(); err != nil {
-		logger.Log.ErrorWithErr("Error closing rows: ", err)
+		logger.Log.ErrorWithErr("Error closing rows", err)
 	}
 }
 
