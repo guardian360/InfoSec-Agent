@@ -29,8 +29,6 @@ func Startup(key1 mocking.RegistryKey, key2 mocking.RegistryKey, key3 mocking.Re
 	lmKey2, err3 := mocking.OpenRegistryKey(key3,
 		`SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run32`)
 
-	println(lmKey2 == nil)
-	println(err3.Error())
 	if err3 != nil {
 		if WinVersion != 11 {
 			return checks.NewCheckError(checks.StartupID, errors.New("error opening registry keys"))
@@ -43,8 +41,11 @@ func Startup(key1 mocking.RegistryKey, key2 mocking.RegistryKey, key3 mocking.Re
 	// Close the keys after we have received all relevant information
 	defer mocking.CloseRegistryKey(cuKey)
 	defer mocking.CloseRegistryKey(lmKey)
-	if lmKey2 != nil {
+	if err3 != nil {
 		var lm2ValueNames []string
+		if lmKey2 == nil {
+			return checks.NewCheckError(checks.StartupID, errors.New("error opening registry keys"))
+		}
 		defer mocking.CloseRegistryKey(lmKey2)
 		lm2ValueNames, err3 = lmKey2.ReadValueNames(0)
 		if err3 != nil {
@@ -57,7 +58,7 @@ func Startup(key1 mocking.RegistryKey, key2 mocking.RegistryKey, key3 mocking.Re
 	cuValueNames, err1 := cuKey.ReadValueNames(0)
 	lmValueNames, err2 := lmKey.ReadValueNames(0)
 
-	if err1 != nil || err2 != nil || err3 != nil {
+	if err1 != nil || err2 != nil {
 		return checks.NewCheckError(checks.StartupID, errors.New("error reading value names"))
 	}
 
