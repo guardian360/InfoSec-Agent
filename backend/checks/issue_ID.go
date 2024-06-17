@@ -44,4 +44,5 @@ const (
 	NetBIOSID
 	WPADID
 	ScreenLockID
+	OutdatedSoftwareID
 )
