@@ -183,7 +183,7 @@ func OpenReportingPage() error {
 		return errors.New("reporting-page is already running")
 	}
 
-	logger.Log.Debug("Opening reporting page")
+	logger.Log.Info("Opening reporting page")
 
 	if config.BuildReportingPage {
 		err := BuildReportingPage()
