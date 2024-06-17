@@ -36,7 +36,7 @@ func TestIntegrationScanSuccess(t *testing.T) {
 	require.Len(t, checks, totalLength)
 
 	// Get database data
-	data, err := database.GetData(checks, "../../reporting-page/database.db")
+	data, err := database.GetData("./reporting-page/frontend/src/databases/database.en-GB.json", checks)
 	if err != nil {
 		logger.Log.ErrorWithErr("Error getting database data during test:", err)
 		return
