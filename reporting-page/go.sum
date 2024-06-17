@@ -175,8 +175,8 @@ github.com/wailsapp/go-webview2 v1.0.10 h1:PP5Hug6pnQEAhfRzLCoOh2jJaPdrqeRgJKZhy
 github.com/wailsapp/go-webview2 v1.0.10/go.mod h1:Uk2BePfCRzttBBjFrBmqKGJd41P6QIHeV9kTgIeOZNo=
 github.com/wailsapp/mimetype v1.4.1 h1:pQN9ycO7uo4vsUUuPeHEYoUkLVkaRntMnHJxVwYhwHs=
 github.com/wailsapp/mimetype v1.4.1/go.mod h1:9aV5k31bBOv5z6u+QP8TltzvNGJPmNJD4XlAL3U+j3o=
-github.com/wailsapp/wails/v2 v2.9.0 h1:YAyMwj9WoW0cvvnOkcHCXwZ1AtSI7UYsHp20WyituzQ=
-github.com/wailsapp/wails/v2 v2.9.0/go.mod h1:7maJV2h+Egl11Ak8QZN/jlGLj2wg05bsQS+ywJPT0gI=
+github.com/wailsapp/wails/v2 v2.8.2 h1:rYOn9p+7bJiZuFSi2wDyq8rBLHrIX/FoUxov+RpdUOI=
+github.com/wailsapp/wails/v2 v2.8.2/go.mod h1:5pTURIST4yZ/wRcmqDUtnM0Mk+caNax/oS610hFiy74=
 github.com/yuin/goldmark v1.3.5/go.mod h1:mwnBkeHKe2W/ZEtQ+71ViKU8L12m81fl3OWwC1Zlc8k=
 go.opentelemetry.io/otel v1.9.0/go.mod h1:np4EoPGzoPs3O67xUVNoPPcmSvsfOxNlNA4F4AC+0Eo=
 go.opentelemetry.io/otel v1.27.0 h1:9BZoF3yMK/O1AafMiQTVu0YDj5Ea4hPhxCs7sGva+cg=
