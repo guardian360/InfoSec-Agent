@@ -17,6 +17,7 @@ import (
 //
 // Parameters:
 //   - executor mocking.CommandExecutor: An executor to run the command for retrieving the last password change date.
+//   - usernameRetriever mocking.UsernameRetriever: An instance of UsernameRetriever used to retrieve the current username.
 //
 // Returns:
 //   - Check: A struct containing the result of the check. The result indicates the date when the password was last changed.

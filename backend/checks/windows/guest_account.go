@@ -15,6 +15,7 @@ import (
 //   - executorLocalGroupMembers (commandmock.CommandExecutor): An instance of CommandExecutor used to execute the 'net localgroup' command to retrieve local group members.
 //   - executorYesWord (commandmock.CommandExecutor): An instance of CommandExecutor used to execute the 'net user' command to retrieve the word for 'yes' in the current user's language.
 //   - executorNetUser (commandmock.CommandExecutor): An instance of CommandExecutor used to execute the 'net user' command to retrieve all users.
+//   - usernameRetriever (mocking.UsernameRetriever): An instance of UsernameRetriever used to retrieve the current username.
 //
 // Returns:
 //   - Check: A Check instance encapsulating the results of the guest account check. If the guest account is active, the Result field of the Check instance will contain the message "Guest account is active". If the guest account is not active, the Result field will contain the message "Guest account is not active". If an error occurs during the check, it is encapsulated in the Error and ErrorMSG fields of the Check instance.
