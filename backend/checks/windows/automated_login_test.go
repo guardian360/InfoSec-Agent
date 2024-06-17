@@ -52,6 +52,16 @@ func TestAutomaticLogin(t *testing.T) {
 			},
 			want: checks.NewCheckResult(checks.AutoLoginID, 0),
 		},
+		{
+			name: "Error converting string",
+			key: &mocking.MockRegistryKey{
+				SubKeys: []mocking.MockRegistryKey{
+					{KeyName: "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon",
+						StringValues: map[string]string{"AutoAdminLogon": "test"}, Err: nil},
+				},
+			},
+			want: checks.NewCheckResult(checks.AutoLoginID, 0),
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

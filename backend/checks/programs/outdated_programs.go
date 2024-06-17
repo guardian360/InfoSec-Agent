@@ -1,6 +1,7 @@
 package programs
 
 import (
+	"errors"
 	"fmt"
 	"os/exec"
 	"strings"
@@ -149,7 +150,17 @@ func retrieveWingetInstalledPrograms(softwareList []software) ([]software, error
 	}
 	// Process the output
 	lines := strings.Split(string(out), "\r\n")
-	lines[0] = lines[0][strings.Index(lines[0], "Name")+1:] // Remove the first part of the header
+	indexN := -2
+	for i, line := range lines {
+		if strings.Contains(line, "N") {
+			indexN = i
+			break
+		}
+	}
+	if indexN < 0 {
+		return softwareList, errors.New("error parsing winget output")
+	}
+	lines[0] = lines[0][strings.Index(lines[indexN], "Name")+1:] // Remove the first part of the header
 	idIndex := strings.Index(lines[0], "Id")
 	versionIndex := strings.Index(lines[0], "Version")
 	availableIndex := strings.Index(lines[0], "Available")
