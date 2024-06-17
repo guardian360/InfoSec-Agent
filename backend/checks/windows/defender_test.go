@@ -23,6 +23,7 @@ func TestWindowsDefender(t *testing.T) {
 		scanKey     mocking.RegistryKey
 		defenderKey mocking.RegistryKey
 		want        checks.Check
+		error       bool
 	}{
 		{
 			name: "Windows Defender disabled and periodic scan disabled",
@@ -45,6 +46,26 @@ func TestWindowsDefender(t *testing.T) {
 			want: checks.NewCheckResult(checks.WindowsDefenderID, 2),
 		},
 		{
+			name: "All disabled",
+			scanKey: &mocking.MockRegistryKey{SubKeys: []mocking.MockRegistryKey{{
+				KeyName:       "SOFTWARE\\Microsoft\\Windows Defender",
+				IntegerValues: map[string]uint64{"DisableAntiVirus": 0}, Err: nil}}},
+			defenderKey: &mocking.MockRegistryKey{SubKeys: []mocking.MockRegistryKey{{
+				KeyName:       "SOFTWARE\\Microsoft\\Windows Defender\\Real-Time Protection",
+				IntegerValues: map[string]uint64{"DisableRealtimeMonitoring": 0}, Err: nil}}},
+			want: checks.NewCheckResult(checks.WindowsDefenderID, 0),
+		},
+		{
+			name: "1 disabled",
+			scanKey: &mocking.MockRegistryKey{SubKeys: []mocking.MockRegistryKey{{
+				KeyName:       "SOFTWARE\\Microsoft\\Windows Defender",
+				IntegerValues: map[string]uint64{"DisableAntiVirus": 1}, Err: nil}}},
+			defenderKey: &mocking.MockRegistryKey{SubKeys: []mocking.MockRegistryKey{{
+				KeyName:       "SOFTWARE\\Microsoft\\Windows Defender\\Real-Time Protection",
+				IntegerValues: map[string]uint64{"DisableRealtimeMonitoring": 0}, Err: nil}}},
+			want: checks.NewCheckResult(checks.WindowsDefenderID, 1),
+		},
+		{
 			name: "Unknown status",
 			scanKey: &mocking.MockRegistryKey{SubKeys: []mocking.MockRegistryKey{{
 				KeyName:       "SOFTWARE\\Microsoft\\Windows Defender",
@@ -54,12 +75,42 @@ func TestWindowsDefender(t *testing.T) {
 				IntegerValues: map[string]uint64{"DisableRealtimeMonitoring": 2}, Err: nil}}},
 			want: checks.NewCheckResult(checks.WindowsDefenderID, 4),
 		},
+		{
+			name:        "Error opening scan registry key",
+			scanKey:     &mocking.MockRegistryKey{},
+			defenderKey: &mocking.MockRegistryKey{},
+			want:        checks.NewCheckErrorf(checks.WindowsDefenderID, "error opening registry key", nil),
+			error:       true,
+		},
+		{
+			name: "Error opening defender registry key",
+			scanKey: &mocking.MockRegistryKey{SubKeys: []mocking.MockRegistryKey{{
+				KeyName: "SOFTWARE\\Microsoft\\Windows Defender"}}},
+			defenderKey: &mocking.MockRegistryKey{},
+			want:        checks.NewCheckErrorf(checks.WindowsDefenderID, "error opening registry key", nil),
+			error:       true,
+		},
+		{
+			name: "Error reading value",
+			scanKey: &mocking.MockRegistryKey{SubKeys: []mocking.MockRegistryKey{{
+				KeyName: "SOFTWARE\\Microsoft\\Windows Defender",
+			}}},
+			defenderKey: &mocking.MockRegistryKey{SubKeys: []mocking.MockRegistryKey{{
+				KeyName: "SOFTWARE\\Microsoft\\Windows Defender\\Real-Time Protection",
+			}}},
+			want:  checks.NewCheckResult(checks.WindowsDefenderID, -1),
+			error: true,
+		},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got := windows.Defender(tt.scanKey, tt.defenderKey)
-			require.Equal(t, tt.want, got)
+			if tt.error {
+				require.Equal(t, -1, got.ResultID)
+			} else {
+				require.Equal(t, tt.want, got)
+			}
 		})
 	}
 }

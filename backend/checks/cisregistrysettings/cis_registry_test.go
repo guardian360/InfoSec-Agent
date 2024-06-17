@@ -3,6 +3,7 @@ package cisregistrysettings_test
 import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/cisregistrysettings"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/windows"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 	"os"
@@ -452,8 +453,26 @@ func TestCISRegistrySettings(t *testing.T) {
 			usrKey: &mocking.MockRegistryKey{},
 			want:   checks.NewCheckResult(checks.CISRegistrySettingsID, 0),
 		},
+		{
+			name:   "Check win10",
+			lmKey:  &mocking.MockRegistryKey{},
+			usrKey: &mocking.MockRegistryKey{},
+			want:   checks.NewCheckResult(checks.CISRegistrySettingsID, 0),
+		},
+		{
+			name:   "Check win11",
+			lmKey:  &mocking.MockRegistryKey{},
+			usrKey: &mocking.MockRegistryKey{},
+			want:   checks.NewCheckResult(checks.CISRegistrySettingsID, 0),
+		},
 	}
-	for _, tt := range tests {
+	for i, tt := range tests {
+		if i == 1 {
+			windows.WinVersion = 10
+		}
+		if i == 2 {
+			windows.WinVersion = 11
+		}
 		cisregistrysettings.RegistrySettingsMap = map[string]bool{}
 		t.Run(tt.name, func(t *testing.T) {
 			got := cisregistrysettings.CISRegistrySettings(tt.lmKey, tt.usrKey)
@@ -687,6 +706,15 @@ func TestCheckIntegerValue(t *testing.T) {
 			stringSetting:   "EnumerateAdministrators",
 			expectedInteger: uint64(0),
 			want:            true,
+		},
+		{
+			name: "Default from switch case",
+			key: &mocking.MockRegistryKey{
+				IntegerValues: map[string]uint64{"EnumerateAdministrators": uint64(0)},
+			},
+			stringSetting:   "EnumerateAdministrators",
+			expectedInteger: "1",
+			want:            false,
 		},
 	}
 	for _, tt := range tests {

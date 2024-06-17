@@ -32,9 +32,9 @@ func TestMain(m *testing.M) {
 //
 // This function does not return any values. It uses the testing framework to assert that the OpenRegistryKey function behaves as expected when provided with a valid registry key and path. If the OpenRegistryKey function does not behave as expected, this test function will cause the test run to fail.
 func TestOpenRegistryKeyValidInput(t *testing.T) {
-	key, err := checks.OpenRegistryKey(mocking.LocalMachine,
+	key, err := mocking.OpenRegistryKey(mocking.LocalMachine,
 		"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run")
-	defer checks.CloseRegistryKey(key)
+	defer mocking.CloseRegistryKey(key)
 	require.NoError(t, err)
 	require.NotNil(t, key)
 }
@@ -46,9 +46,9 @@ func TestOpenRegistryKeyValidInput(t *testing.T) {
 //
 // This function does not return any values. It uses the testing framework to assert that the OpenRegistryKey function behaves as expected when provided with an invalid registry key. Specifically, it checks that the function returns an error and that the returned key is equivalent to the invalid input key. If the OpenRegistryKey function does not behave as expected, this test function will cause the test run to fail.
 func TestOpenRegistryKeyInvalidKey(t *testing.T) {
-	key, err := checks.OpenRegistryKey(mocking.NewRegistryKeyWrapper(registry.Key(0x0)),
+	key, err := mocking.OpenRegistryKey(mocking.NewRegistryKeyWrapper(registry.Key(0x0)),
 		"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run")
-	defer checks.CloseRegistryKey(key)
+	defer mocking.CloseRegistryKey(key)
 	require.Error(t, err)
 	require.Equal(t, key, mocking.NewRegistryKeyWrapper(registry.Key(0x0)))
 }
@@ -60,9 +60,9 @@ func TestOpenRegistryKeyInvalidKey(t *testing.T) {
 //
 // This function does not return any values. It uses the testing framework to assert that the OpenRegistryKey function behaves as expected when provided with an invalid path. Specifically, it checks that the function returns an error and that the returned key is equivalent to a null key. If the OpenRegistryKey function does not behave as expected, this test function will cause the test run to fail.
 func TestOpenRegistryKeyInvalidPath(t *testing.T) {
-	key, err := checks.OpenRegistryKey(mocking.LocalMachine,
+	key, err := mocking.OpenRegistryKey(mocking.LocalMachine,
 		"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\nonexistent")
-	defer checks.CloseRegistryKey(key)
+	defer mocking.CloseRegistryKey(key)
 	require.Error(t, err)
 	require.Equal(t, key, mocking.NewRegistryKeyWrapper(registry.Key(0x0)))
 }
@@ -74,11 +74,11 @@ func TestOpenRegistryKeyInvalidPath(t *testing.T) {
 //
 // This function does not return any values. It uses the testing framework to assert that the CloseRegistryKey function behaves as expected when provided with a valid registry key. Specifically, it checks that the function does not return an error and that the key is successfully closed. If the CloseRegistryKey function does not behave as expected, this test function will cause the test run to fail.
 func TestCloseRegistryKeyValidInput(t *testing.T) {
-	key, err := checks.OpenRegistryKey(mocking.LocalMachine,
+	key, err := mocking.OpenRegistryKey(mocking.LocalMachine,
 		"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run")
 	require.NoError(t, err)
 	require.NotNil(t, key)
-	checks.CloseRegistryKey(key)
+	mocking.CloseRegistryKey(key)
 }
 
 // TestCloseRegistryKeyInvalidKey is a test function that verifies the behavior of the CloseRegistryKey function when provided with an invalid registry key.
@@ -89,7 +89,7 @@ func TestCloseRegistryKeyValidInput(t *testing.T) {
 // This function does not return any values. It uses the testing framework to assert that the CloseRegistryKey function does not panic when provided with an invalid registry key. As the function only logs potential errors and does not return them, this test function checks for unexpected panics as an indication of error handling.
 func TestCloseRegistryKeyInvalidKey(_ *testing.T) {
 	key := mocking.NewRegistryKeyWrapper(registry.Key(0x0))
-	checks.CloseRegistryKey(key)
+	mocking.CloseRegistryKey(key)
 }
 
 // TestCheckKeyValidInput is a test function that validates the behavior of the CheckKey function when provided with valid input.
@@ -99,9 +99,9 @@ func TestCloseRegistryKeyInvalidKey(_ *testing.T) {
 //
 // This function does not return any values. It uses the testing framework to assert that the CheckKey function behaves as expected when provided with a valid registry key and a valid element. Specifically, it checks that the function returns the correct value of the specified element within the registry key. If the CheckKey function does not behave as expected, this test function will cause the test run to fail.
 func TestCheckKeyValidInput(t *testing.T) {
-	key, err := checks.OpenRegistryKey(mocking.LocalMachine,
+	key, err := mocking.OpenRegistryKey(mocking.LocalMachine,
 		`SOFTWARE\Microsoft\Windows NT\CurrentVersion`)
-	defer checks.CloseRegistryKey(key)
+	defer mocking.CloseRegistryKey(key)
 	require.NoError(t, err)
 
 	// This test might fail if the element does not exist on the machine where the test is run
@@ -128,9 +128,9 @@ func TestCheckKeyInvalidKey(t *testing.T) {
 //
 // This function does not return any values. It uses the testing framework to assert that the CheckKey function behaves as expected when provided with a valid registry key and a non-existent element. Specifically, it checks that the function returns "-1", indicating that the element does not exist within the registry key. If the CheckKey function does not behave as expected, this test function will cause the test run to fail.
 func TestCheckKeyInvalidElement(t *testing.T) {
-	key, err := checks.OpenRegistryKey(mocking.LocalMachine,
+	key, err := mocking.OpenRegistryKey(mocking.LocalMachine,
 		`SOFTWARE\Microsoft\Windows NT\CurrentVersion`)
-	defer checks.CloseRegistryKey(key)
+	defer mocking.CloseRegistryKey(key)
 	require.NoError(t, err)
 	val := checks.CheckKey(key, "Nonexistent")
 	require.Equal(t, "-1", val)
@@ -146,7 +146,7 @@ func TestCheckKeyInvalidElement(t *testing.T) {
 //
 // No return values.
 func TestCurrentUsernameReturnsResult(t *testing.T) {
-	username, err := checks.CurrentUsername()
+	username, err := mocking.CurrentUsername()
 	require.NoError(t, err)
 	require.NotEmpty(t, username)
 }

@@ -23,13 +23,13 @@ func Bluetooth(registryKey mocking.RegistryKey) checks.Check {
 	var deviceNames []string
 	var deviceNameValue []byte
 	// Open the registry key for bluetooth devices
-	key, err := checks.OpenRegistryKey(registryKey,
+	key, err := mocking.OpenRegistryKey(registryKey,
 		`SYSTEM\CurrentControlSet\Services\BTHPORT\Parameters\Devices`)
 	if err != nil {
 		return checks.NewCheckError(checks.BluetoothID, err)
 	}
 	// Close the key after we have received all relevant information
-	defer checks.CloseRegistryKey(key)
+	defer mocking.CloseRegistryKey(key)
 
 	// Get the names of all sub keys (which represent bluetooth devices)
 	deviceNames, err = key.ReadSubKeyNames(-1)
@@ -44,13 +44,13 @@ func Bluetooth(registryKey mocking.RegistryKey) checks.Check {
 	result := checks.NewCheckResult(checks.BluetoothID, 1)
 	// Open each device sub key within the registry
 	for _, deviceName := range deviceNames {
-		deviceKey, err = checks.OpenRegistryKey(key, deviceName)
+		deviceKey, err = mocking.OpenRegistryKey(key, deviceName)
 		if err != nil {
 			logger.Log.Error("Error opening device subkey " + deviceName)
 			continue
 		}
 
-		defer checks.CloseRegistryKey(deviceKey)
+		defer mocking.CloseRegistryKey(deviceKey)
 
 		// Get the device name
 		deviceNameValue, _, err = deviceKey.GetBinaryValue("Name")
