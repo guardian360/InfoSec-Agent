@@ -122,7 +122,7 @@ export async function openHomePage() {
     'lang-save-text',
     'lang-share',
     'lang-lighthouse-progress',
-    'lang-tooltip-text'
+    'lang-tooltip-text',
   ];
   const localizationIds = [
     'Dashboard.RiskLevelDistribution',
@@ -135,7 +135,7 @@ export async function openHomePage() {
     'Dashboard.SaveText',
     'Dashboard.Share',
     'Dashboard.LighthouseProgress',
-    'Dashboard.TooltipText'
+    'Dashboard.TooltipText',
   ];
   for (let i = 0; i < staticHomePageContent.length; i++) {
     getLocalization(localizationIds[i], staticHomePageContent[i]);
