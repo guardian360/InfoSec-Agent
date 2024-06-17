@@ -29,6 +29,8 @@ func Startup(key1 mocking.RegistryKey, key2 mocking.RegistryKey, key3 mocking.Re
 	lmKey2, err3 := mocking.OpenRegistryKey(key3,
 		`SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run32`)
 
+	println(lmKey2)
+	println(err3)
 	if err3 != nil {
 		if WinVersion != 11 {
 			return checks.NewCheckError(checks.StartupID, errors.New("error opening registry keys"))
