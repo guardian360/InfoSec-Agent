@@ -103,7 +103,8 @@
     "ShareText": "Selecciona dónde compartir tu progreso, guárdalo y descárgalo, ¡luego compártelo con otros!",
     "SaveText": "Guardar",
     "Share": "Compartir",
-    "LighthouseProgress":"Progreso"
+    "LighthouseProgress":"Progreso", 
+    "TooltipText": "Cuanto más activo seas en la resolución de problemas, más estarás trabajando para volverte más seguro. Esto se muestra con la construcción de tu faro. Al principio no habrá mucho, pero si te mantienes constante en el uso de InfoSec Agent, podrás construir un hermoso faro. Para pasar al siguiente estado del faro, la barra de progreso debe estar completa."
   },
   "Issues":
   {
@@ -118,6 +119,7 @@
     "Previous": "&laquo; Paso anterior",
     "Next": "Siguiente paso &raquo;",
     "BackIssues": "Volver a la vista general de problemas",
+    "BackHome": "Volver a la página de inicio",
     "BackChecks": "Volver al resumen de controles",
     "Port": "Los siguientes procesos se están ejecutando actualmente en su dispositivo en los siguientes puertos: ",
     "Password": "Cambiaste tu contraseña en: ",
@@ -142,8 +144,9 @@
   },  
   "Programs": {
     "Name":"Nombre",
+    "Version": "Versión",
     "ProgramTable": "Programas instalados",
-    "Search": "Buscar"
+    "Search": "Buscar..."
   },
   "Personalize": {
     "ChangeFavicon": "Cambiar favicon",

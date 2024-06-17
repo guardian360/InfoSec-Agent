@@ -118,6 +118,7 @@ describe('share functions', function() {
     jest.spyOn(document, 'createElement').mockImplementation(() => linkElement);
 
     // Act
+    sessionStorage.setItem('ShareSocial', JSON.stringify(share.socialMediaSizes['facebook']));
     const node = document.getElementById('share-node');
     await share.saveProgress(node);
 
@@ -132,7 +133,7 @@ describe('share functions', function() {
     jest.spyOn(window, 'open');
 
     // Act
-    share.shareProgress();
+    await share.shareProgress();
 
     // Assert
     expect(window.open).toHaveBeenCalledTimes(1);

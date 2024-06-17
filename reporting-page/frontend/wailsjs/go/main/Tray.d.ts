@@ -12,4 +12,4 @@ export function LogError(arg1:string):Promise<void>;
 
 export function LogInfo(arg1:string):Promise<void>;
 
-export function ScanNow(arg1:boolean):Promise<Array<checks.Check>>;
+export function ScanNow(arg1:boolean,arg2:string):Promise<Array<checks.Check>>;

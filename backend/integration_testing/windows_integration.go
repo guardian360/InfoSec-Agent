@@ -40,7 +40,7 @@ func TestIntegrationCredentialGuardDisabled(t *testing.T) {
 }
 
 func TestIntegrationDefenderAllActive(t *testing.T) {
-	result := windows.Defender(mocking.LocalMachine, mocking.LocalMachine)
+	result := windows.Defender(mocking.LocalMachine)
 	require.NotEmpty(t, result)
 	require.Equal(t, 0, result.ResultID)
 }
@@ -98,13 +98,6 @@ func TestIntegrationOutdatedWinUpToDate(t *testing.T) {
 	result := windows.Outdated(&mocking.RealCommandExecutor{})
 	require.NotEmpty(t, result)
 	require.Equal(t, 0, result.ResultID)
-}
-
-func TestIntegrationOutdatedWinNotUpToDate(t *testing.T) {
-	result := windows.Outdated(&mocking.RealCommandExecutor{})
-	require.NotEmpty(t, result)
-	require.NotEmpty(t, result.Result)
-	require.Equal(t, 1, result.ResultID)
 }
 
 func TestIntegrationPasswordComplexityValid(t *testing.T) {

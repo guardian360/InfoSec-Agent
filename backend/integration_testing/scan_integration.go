@@ -17,14 +17,14 @@ func TestIntegrationScanSuccess(t *testing.T) {
 	dialog, err := zenity.Progress(
 		zenity.Title("Security/Privacy Scan"))
 	if err != nil {
-		logger.Log.ErrorWithErr("Error creating dialog during test:", err)
+		logger.Log.ErrorWithErr("Error creating dialog during test", err)
 		return
 	}
 	// Defer closing the dialog until the scan completes
 	defer func(dialog zenity.ProgressDialog) {
 		err = dialog.Close()
 		if err != nil {
-			logger.Log.ErrorWithErr("Error closing dialog during test:", err)
+			logger.Log.ErrorWithErr("Error closing dialog during test", err)
 		}
 	}(dialog)
 
@@ -36,9 +36,9 @@ func TestIntegrationScanSuccess(t *testing.T) {
 	require.Len(t, checks, totalLength)
 
 	// Get database data
-	data, err := database.GetData(checks, "../../reporting-page/database.db")
+	data, err := database.GetData("./reporting-page/frontend/src/databases/database.en-GB.json", checks)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error getting database data during test:", err)
+		logger.Log.ErrorWithErr("Error getting database data during test", err)
 		return
 	}
 	require.NotEmpty(t, data)

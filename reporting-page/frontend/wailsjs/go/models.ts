@@ -21,27 +21,6 @@ export namespace checks {
 
 }
 
-export namespace database {
-	
-	export class Data {
-	    id: number;
-	    severity: number;
-	    jsonkey: number;
-	
-	    static createFrom(source: any = {}) {
-	        return new Data(source);
-	    }
-	
-	    constructor(source: any = {}) {
-	        if ('string' === typeof source) source = JSON.parse(source);
-	        this.id = source["id"];
-	        this.severity = source["severity"];
-	        this.jsonkey = source["jsonkey"];
-	    }
-	}
-
-}
-
 export namespace usersettings {
 	
 	export class UserSettings {

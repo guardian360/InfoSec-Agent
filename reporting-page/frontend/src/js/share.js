@@ -150,9 +150,6 @@ export const socialMediaSizes = {
   },
 };
 
-// on startup set the social media to share to facebook
-sessionStorage.setItem('ShareSocial', JSON.stringify(socialMediaSizes['facebook']));
-
 /**
  * Select the social media and set it in sessionstorage
  * @param {string} social social media to share to

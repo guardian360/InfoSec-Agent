@@ -1,5 +1,4 @@
 import {ScanNow as scanNowGo, LogError as logError} from '../../wailsjs/go/main/Tray.js';
-import {GetData as getDataBaseData} from '../../wailsjs/go/main/DataBase.js';
 import {openHomePage} from './home.js';
 import {
   WindowShow as windowShow,
@@ -22,7 +21,7 @@ export async function scanTest(dialogPresent) {
     sessionStorage.setItem('isScanning', 'true');
     try {
       await new Promise((resolve, reject) => {
-        scanNowGo(dialogPresent)
+        scanNowGo(dialogPresent, 'frontend/src/databases/database.en-GB.json')
           .then(async (scanResult) => {
           // Handle the scan result
           // For example, save it in session storage
@@ -63,15 +62,14 @@ if (sessionStorage.getItem('scanTest') === null || sessionStorage.getItem('scanT
 }
 
 // counts the occurrences of each level: 0 = acceptable, 1 = low, 2 = medium, 3 = high
-const countOccurrences = (severities, level) => severities.filter((item) => item.severity === level).length;
+const countOccurrences = (severities, level) =>
+  severities.filter((item) => data[item.issue_id][item.result_id].Severity === level).length;
 
 /** Sets the severities collected from the checks and database in session storage of all types
  *
  * @param {Check[]} input Checks to get severities from
  */
 async function setAllSeverities(input) {
-  const result = await getDataBaseData(input);
-  sessionStorage.setItem('DataBaseData', JSON.stringify(result));
   sessionStorage.setItem('IssuesSorting', JSON.stringify(
     {
       'column': 2,
@@ -81,9 +79,9 @@ async function setAllSeverities(input) {
   sessionStorage.setItem('IssuesFilter', JSON.stringify(
     {'high': 1, 'medium': 1, 'low': 1, 'acceptable': 1, 'info': 1},
   ));
-  await setSeverities(result, '');
-  await setSeverities(result, 'Security');
-  await setSeverities(result, 'Privacy');
+  await setSeverities(input, '');
+  await setSeverities(input, 'Security');
+  await setSeverities(input, 'Privacy');
   if (isFirstScan) {
     openHomePage();
     windowMaximise();
@@ -91,16 +89,17 @@ async function setAllSeverities(input) {
   }
 }
 
-/** Sets the severities collected from the database in session storage
+/** Sets the severities collected from the scan in session storage
  *
- * @param {DataBaseData[]} input DataBaseData retrieved from database
+ * @param {Checks[]} input Scan data retrieved from a scan
  * @param {string} type Type of issues to set the severities of in session storage
  */
 async function setSeverities(input, type) {
   try {
+    input = input.filter((item) => item.result_id !== -1);
+    input = input.filter((item) => data[item.issue_id] !== undefined);
     if (type !== '') {
-      input = input.filter((item) => data[item.jsonkey] !== undefined);
-      input = input.filter((item) => data[item.jsonkey].Type === type);
+      input = input.filter((item) => data[item.issue_id].Type === type);
     }
     const info = countOccurrences(input, 4);
     const high = countOccurrences(input, 3);

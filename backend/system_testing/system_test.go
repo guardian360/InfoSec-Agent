@@ -37,19 +37,22 @@ func TestTrayFunctionality(t *testing.T) {
 	require.Equal(t, 3, tray.Language)
 
 	wg := sync.WaitGroup{}
-	wg.Add(2)
+	wg.Add(1)
 	errSlice := make([]error, 2)
 	// Run the function without dialog
 	go func() {
 		defer wg.Done()
-		_, err := tray.ScanNow(false)
+		_, err := tray.ScanNow(false, "reporting-page/frontend/src/databases/database.en-GB.json")
 		errSlice[0] = err
 	}()
+
+	wg.Wait()
+	wg.Add(1)
 
 	// Run the function with dialog
 	go func() {
 		defer wg.Done()
-		_, err := tray.ScanNow(true)
+		_, err := tray.ScanNow(true, "reporting-page/frontend/src/databases/database.en-GB.json")
 		errSlice[1] = err
 	}()
 
@@ -82,16 +85,8 @@ func TestTrayFunctionality(t *testing.T) {
 		logger.Log.SetOutput(&buf)
 		logger.Log.LogLevelSpecific = -1
 
-		wg = sync.WaitGroup{}
-		wg.Add(1)
 		// Run the function with mocked user input
-		go func() {
-			defer wg.Done()
-			tray.ChangeScanInterval(tc.input)
-		}()
-
-		// Wait for the function to complete
-		wg.Wait()
+		tray.ChangeScanInterval(tc.input)
 
 		capturedOutput := buf.String()
 

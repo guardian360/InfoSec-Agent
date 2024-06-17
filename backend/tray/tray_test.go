@@ -111,7 +111,7 @@ func TestScanNow(t *testing.T) {
 	// Run the function without dialog
 	go func() {
 		defer wg.Done()
-		_, err := tray.ScanNow(false)
+		_, err := tray.ScanNow(false, "reporting-page/frontend/src/databases/database.en-GB.json")
 		errSlice[0] = err
 	}()
 
@@ -120,7 +120,7 @@ func TestScanNow(t *testing.T) {
 	// Run the function with dialog
 	go func() {
 		defer wg.Done()
-		_, err := tray.ScanNow(true)
+		_, err := tray.ScanNow(true, "reporting-page/frontend/src/databases/database.en-GB.json")
 		errSlice[1] = err
 	}()
 
@@ -381,7 +381,7 @@ func TestPopupMessage(t *testing.T) {
 	// Iterate over test cases
 	for _, tc := range testCases {
 		// Run the function with mocked scan
-		result := tray.PopupMessage(tc.input, "../../reporting-page/database.db")
+		result := tray.PopupMessage(tc.input, "./../../reporting-page/frontend/src/databases/database.en-GB.json")
 
 		// Assert that the message matches the expected message
 		require.Equal(t, tc.expectedMessage, result)

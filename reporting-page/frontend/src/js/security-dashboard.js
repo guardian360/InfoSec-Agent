@@ -220,7 +220,7 @@ export function openSecurityDashboardPage() {
   const g = new Graph('interval-graph', rc);
   addGraphFunctions(g);
   document.getElementById('scan-now').addEventListener('click', async () => {
-    await scanTest(true);
+    await scanTest(true, '../databases/database.en-GB.json');
     rc = JSON.parse(sessionStorage.getItem('SecurityRiskCounters'));
     adjustWithRiskCounters(rc, document, true);
     setMaxInterval(rc, document);

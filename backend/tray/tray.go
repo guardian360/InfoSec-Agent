@@ -132,12 +132,12 @@ func OnReady() {
 		case <-mChangeScanInterval.ClickedCh:
 			ChangeScanInterval()
 		case <-mScanNow.ClickedCh:
-			result, err := ScanNow(true)
+			result, err := ScanNow(true, "reporting-page/frontend/src/databases/database.en-GB.json")
 			if err != nil {
 				logger.Log.ErrorWithErr("Error scanning", err)
 			} else {
 				// Notify the user that a scan has been completed
-				err = Popup(result, "./reporting-page/database.db")
+				err = Popup(result, "./reporting-page/frontend/src/databases/database.en-GB.json")
 				if err != nil {
 					logger.Log.ErrorWithErr("Error notifying user", err)
 				}
@@ -333,7 +333,7 @@ func ChangeScanInterval(testInput ...string) {
 // Returns:
 //   - []checks.Check: A list of checks performed during the scan.
 //   - error: An error object if an error occurred during the scan, otherwise nil.
-func ScanNow(dialogPresent bool) ([]checks.Check, error) {
+func ScanNow(dialogPresent bool, databasePath string) ([]checks.Check, error) {
 	var result []checks.Check
 	var err error
 	var dialog zenity.ProgressDialog
@@ -358,7 +358,7 @@ func ScanNow(dialogPresent bool) ([]checks.Check, error) {
 		}
 	}
 	// Update the game state based on the scan results
-	_, err = gamification.UpdateGameState(result, "reporting-page/database.db")
+	_, err = gamification.UpdateGameState(result, databasePath, gamification.RealPointCalculationGetter{}, usersettings.RealSaveUserSettingsGetter{})
 	if err != nil {
 		logger.Log.ErrorWithErr("Error calculating points", err)
 	}
@@ -431,9 +431,10 @@ func ChangeLanguage(testInput ...string) {
 	if test {
 		return
 	}
+	getter := usersettings.RealSaveUserSettingsGetter{}
 	current := usersettings.LoadUserSettings()
 	current.Language = Language
-	err := usersettings.SaveUserSettings(current)
+	err := getter.SaveUserSettings(current)
 	if err != nil {
 		logger.Log.Warning("Language setting not saved to user settings file")
 	}
@@ -464,7 +465,8 @@ func RefreshMenu() {
 // Returns: None.
 func changeNextScan(settings usersettings.UserSettings, value int) {
 	settings.NextScan = time.Now().Add(time.Duration(value) * time.Hour)
-	err := usersettings.SaveUserSettings(settings)
+	getter := usersettings.RealSaveUserSettingsGetter{}
+	err := getter.SaveUserSettings(settings)
 	if err != nil {
 		logger.Log.Warning("Next scan time not saved to user settings file")
 	}
@@ -480,13 +482,13 @@ func changeNextScan(settings usersettings.UserSettings, value int) {
 func periodicScan(scanInterval int) {
 	settings := usersettings.LoadUserSettings()
 	if time.Now().After(settings.NextScan) {
-		logger.Log.Trace("Running periodic scan")
-		result, err := ScanNow(false)
+		logger.Log.Debug("Running periodic scan")
+		result, err := ScanNow(false, "reporting-page/frontend/src/databases/database.en-GB.json")
 		if err != nil {
 			logger.Log.ErrorWithErr("Error performing periodic scan", err)
 		} else {
 			// Notify the user that a scan has been completed
-			err = Popup(result, "./reporting-page/database.db")
+			err = Popup(result, "./reporting-page/frontend/src/databases/database.en-GB.json")
 			if err != nil {
 				logger.Log.ErrorWithErr("Error notifying user", err)
 			}
@@ -543,7 +545,8 @@ func updateScanInterval(interval int, test bool) {
 	current.ScanInterval = interval
 	current.NextScan = time.Now().Add(time.Duration(interval) * time.Hour)
 
-	err := usersettings.SaveUserSettings(current)
+	getter := usersettings.RealSaveUserSettingsGetter{}
+	err := getter.SaveUserSettings(current)
 	if err != nil {
 		logger.Log.Warning("Scan interval setting not saved to file")
 	} else {

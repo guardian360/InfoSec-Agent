@@ -134,7 +134,6 @@ func main() {
 	// Create a new instance of the app and tray struct
 	app := NewApp()
 	systemTray := NewTray(logger.Log)
-	database := NewDatabase()
 	customLogger := logger.Log
 	localization.Init("../")
 	lang := usersettings.LoadUserSettings().Language
@@ -157,7 +156,6 @@ func main() {
 		Bind: []interface{}{
 			app,
 			systemTray,
-			database,
 		},
 		Logger: customLogger,
 		Windows: &windows.Options{
