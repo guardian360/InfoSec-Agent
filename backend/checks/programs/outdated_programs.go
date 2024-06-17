@@ -144,7 +144,6 @@ func compareVersions(v1, v2 string) int {
 // retrieveWingetInstalledPrograms function retrieves all installed packages found with the winget package manager
 func retrieveWingetInstalledPrograms(softwareList []software) ([]software, error) {
 	// Execute the winget list command
-	// winget list | Out-String -Stream | ForEach-Object { [System.Text.Encoding]::UTF8.GetString([System.Text.Encoding]::Default.GetBytes($_)) }
 	out, err := exec.Command("powershell", "winget list| Out-String -Stream | ForEach-Object { [System.Text.Encoding]::UTF8.GetString([System.Text.Encoding]::Default.GetBytes($_)) }").Output()
 	if err != nil {
 		return softwareList, err
