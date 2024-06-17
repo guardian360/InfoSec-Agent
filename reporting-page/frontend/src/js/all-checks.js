@@ -112,14 +112,17 @@ export async function openAllChecksPage(area) {
         <div class="all-checks-segment-header">
           <p>Google Chrome</p>
         </div>
+        <p class="zero-found" id="privacyBrowserChromeZero"></p>
         <div class="checksList" id="privacyBrowserChrome" data-area="browser"></div>
         <div class="all-checks-segment-header">
           <p>Microsoft Edge</p>
         </div>
+        <p class="zero-found" id="privacyBrowserEdgeZero"></p>
         <div class="checksList" id="privacyBrowserEdge" data-area="browser"></div>
         <div class="all-checks-segment-header">
           <p>Mozilla Firefox</p>
         </div>
+        <p class="zero-found" id="privacyBrowserFirefoxZero"></p>
         <div class="checksList" id="privacyBrowserFirefox" data-area="browser"></div>
       </div>
       <div class="all-checks-segment" id="privacy-other">
@@ -152,9 +155,24 @@ export async function openAllChecksPage(area) {
   const checks = document.getElementsByClassName('all-checks-check');
   for (let i = 0; i < checks.length; i++) {
     const issue = issues.find((issue) => issue.id == checks[i].id);
-    checks[i].addEventListener('click',
+    if (issue) {
+      checks[i].classList.add('clickable');
+      checks[i].addEventListener('click',
       () => openIssuePage(issue.jsonkey, issue.severity, checks[i].parentElement.parentElement.parentElement.id));
+    }
   }
+
+  const browsers = ['privacyBrowserChrome','privacyBrowserEdge','privacyBrowserFirefox'];
+  browsers.forEach((browser) => {
+    const checks = areaLists[browser];
+    let oneFound = true;
+    for (let i = 0; i < checks.length; i++) {
+      oneFound = oneFound && issues.find((issue) => issue.id == checks[i]);
+    }
+    if (!oneFound) {
+      document.getElementById(browser + 'Zero').classList.add('lang-all-checks-browser-zero');
+    }
+  })
 
   // Localize the static content of the about page
   const staticAboutPageConent = [
@@ -179,6 +197,7 @@ export async function openAllChecksPage(area) {
     'lang-all-checks-permissions-text',
     'lang-all-checks-browser-text',
     'lang-all-checks-other-privacy-text',
+    'lang-all-checks-browser-zero',
   ];
   const localizationIds = [
     'Dashboard.SecurityRiskAreas',
@@ -202,6 +221,7 @@ export async function openAllChecksPage(area) {
     'AllChecks.PermissionsText',
     'AllChecks.BrowserText',
     'AllChecks.OtherPrivacyText',
+    'AllChecks.BrowserZeroFound',
   ];
   for (let ids = 1; ids < 43; ids++) {
     staticAboutPageConent.push('lang-id'+ids.toString());

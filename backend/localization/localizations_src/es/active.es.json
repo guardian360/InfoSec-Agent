@@ -177,6 +177,7 @@
     "PermissionsText": "Las aplicaciones instaladas en su computadora quieren tener acceso o permiso para usar ciertas funciones o dispositivos conectados a su PC. Es su responsabilidad como usuario dar esos permisos a ciertas aplicaciones o no. Por lo tanto, se recomienda buscar en internet si una aplicación que utiliza debe o no tener ciertos permisos.",
     "BrowserText": "Para tener acceso a internet, utiliza un navegador. Aunque un navegador es muy útil, no siempre mantiene sus datos privados. Para mantenerse seguro mientras navega en internet, debe tener siempre en cuenta en qué está haciendo clic.",
     "OtherPrivacyText": "Mantener sus datos privados también se puede hacer de otras maneras.",
+    "BrowserZeroFound" : "No se pudieron realizar estas comprobaciones, ya que el navegador probablemente no está instalado.",
 
     "Id1":"Dispositivos conectados vía bluetooth",
     "Id2":"Dispositivos conectados vía puertos USB",
