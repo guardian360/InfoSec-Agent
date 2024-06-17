@@ -99,3 +99,47 @@ func TestParseScanResults(t *testing.T) {
 		})
 	}
 }
+
+func TestParseString(t *testing.T) {
+	tests := []struct {
+		name string
+		p    apiconnection.ParseResult
+		want string
+	}{
+		{
+			name: "Empty results",
+			p: apiconnection.ParseResult{
+				Metadata: apiconnection.Metadata{
+					WorkStationID: 1,
+					User:          "test",
+					Date:          "2021-01-01",
+				},
+				Results: nil,
+			},
+			want: "Metadata: {1 test 2021-01-01}, Results: []",
+		},
+		{
+			name: "Non-empty results",
+			p: apiconnection.ParseResult{
+				Metadata: apiconnection.Metadata{
+					WorkStationID: 1,
+					User:          "test",
+					Date:          "2021-01-01",
+				},
+				Results: []apiconnection.IssueData{
+					{
+						IssueID:  3,
+						Detected: true,
+					},
+				},
+			},
+			want: "Metadata: {1 test 2021-01-01}, Results: [{3 true []}]",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got := tt.p.String()
+			require.Equal(t, tt.want, got)
+		})
+	}
+}
