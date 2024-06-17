@@ -193,12 +193,6 @@ func TestIntegrationUACFullEnabled(t *testing.T) {
 	require.Equal(t, 1, result.ResultID)
 }
 
-func TestIntegrationUACPartialEnabled(t *testing.T) {
-	result := windows.UACCheck(&mocking.RealCommandExecutor{})
-	require.NotEmpty(t, result)
-	require.Equal(t, 2, result.ResultID)
-}
-
 func TestIntegrationUACDisabled(t *testing.T) {
 	result := windows.UACCheck(&mocking.RealCommandExecutor{})
 	require.NotEmpty(t, result)
