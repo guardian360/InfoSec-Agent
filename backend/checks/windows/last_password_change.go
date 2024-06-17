@@ -49,14 +49,21 @@ func LastPasswordChange(executor mocking.CommandExecutor, usernameRetriever mock
 
 	// Determine the current user's date format
 	var goDateFormat string
+	internationalDate := "02-01-2006"
+	usDate := "01-02-2006"
 	switch dateFormat {
 	case "d-M-yyyy":
-		goDateFormat = "02-01-2006"
+		goDateFormat = internationalDate
 	case "M-d-yyyy":
-		goDateFormat = "01-02-2006"
+		goDateFormat = usDate
+	// FIXME: temp fix, check jira bug
+	case "M/d/yyyy":
+		goDateFormat = usDate
+	case "d/M/yyyy":
+		goDateFormat = internationalDate
 	default:
 		logger.Log.Error("Unknown date format:")
-		goDateFormat = "02-01-2006"
+		goDateFormat = internationalDate
 	}
 	if len(lines) < 9 {
 		return checks.NewCheckError(checks.LastPasswordChangeID, errors.New("error parsing output"))
