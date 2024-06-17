@@ -144,8 +144,9 @@
   },  
   "Programs": {
     "Name":"Name",
+    "Version":"Version",
     "ProgramTable": "Installed programs",
-    "Search": "Search" 
+    "Search": "Search..."
   },
   "Personalize": {
     "ChangeFavicon": "Change favicon", 

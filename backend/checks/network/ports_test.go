@@ -52,12 +52,13 @@ func TestOpenPorts(t *testing.T) {
 				Output: "	\r\n Image Name	PID	Session Name	Session#	" +
 					"Mem Usage\r\n	\r\n" +
 					"System Idle Process  0  Services  0  8 K\r\n" +
-					"System2  1 Services 0 8 K\r\nSystem3  2 Services 0 8 K\r\n",
+					"System2  1 Services 0 8 K\r\nSystem3  2 Services 0 8 K\r\n" +
+					"System4  3 Services 0 8 K\r\n",
 				Err: nil},
 			executornetstat: &mocking.MockCommandExecutor{
 				Output: " \r\n Active Connections \r\n	\r\n	Proto	Local Address	Foreign Address	State\r\n" +
-					"TCP 123.0.0.1:8080 123:123 ESTABLISHED 0\r\n" + "TCP 123.0.0.1:8081 123:123 ESTABLISHED 1\r\n" +
-					"TCP 123.0.0.1:8082 123:123 ESTABLISHED 2\r\n", Err: nil},
+					"PP 123.0.0.1:8080 123:123 0\r\n" + "TCP 123.0.0.1:8081 123:123 ESTABLISHED 1\r\n" +
+					"TCP 123.0.0.1:8082 123:123 ESTABLISHED 2\r\n" + "TCP 0.0.0.0 123:123 2\r\n", Err: nil},
 			want: checks.NewCheckResult(checks.PortsID, 0,
 				"process: System Idle Process, port: 8080",
 				"process: System2, port: 8081",

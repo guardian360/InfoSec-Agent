@@ -88,6 +88,14 @@ export async function openIssuesPage() {
     logError('Error in issues.js: Issues not found');
   }
 
+  // Set filter checks to the last selected values
+  const filter = JSON.parse(sessionStorage.getItem('IssuesFilter'));
+  document.getElementById('select-high-risk-table').checked = filter.high;
+  document.getElementById('select-medium-risk-table').checked = filter.medium;
+  document.getElementById('select-low-risk-table').checked = filter.low;
+  document.getElementById('select-acceptable-risk-table').checked = filter.acceptable;
+  document.getElementById('select-info-risk-table').checked = filter.info;
+
   // Add event listeners for the table filter menu
   const myDropdownTable = document.getElementById('myDropdown-table');
   document.getElementById('dropbtn-table').addEventListener('click', () => myDropdownTable.classList.toggle('show'));
@@ -205,6 +213,10 @@ export async function getIssues() {
  * @param {Bool} isListenersAdded True for the first time the eventlisteners is called
  */
 export function fillTable(tbody, issues) {
+  // Clear the table
+  tbody.innerHTML = '';
+
+  // Get the filter settings
   const filter = JSON.parse(sessionStorage.getItem('IssuesFilter'));
 
   // Add a table row for each issue

@@ -274,6 +274,11 @@ export function mockOpenPageFunctions() {
     openPersonalizePage: jest.fn(),
     retrieveTheme: jest.fn(),
   }));
+
+  // Mock openAllChecks
+  jest.unstable_mockModule('../src/js/all-checks.js', () => ({
+    openAllChecksPage: jest.fn(),
+  }));
 }
 
 

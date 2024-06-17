@@ -27,7 +27,7 @@ func TestAllowRemoteRPC(t *testing.T) {
 			want: checks.NewCheckResult(checks.RemoteRPCID, 1),
 		},
 		{
-			name: "Automatic log-in disabled",
+			name: "Remote RPC disabled",
 			key: &mocking.MockRegistryKey{
 				SubKeys: []mocking.MockRegistryKey{
 					{KeyName: "SYSTEM\\CurrentControlSet\\Control\\Terminal Server",

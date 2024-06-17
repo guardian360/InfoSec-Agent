@@ -2,6 +2,9 @@ package mocking
 
 import (
 	"errors"
+	"fmt"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 
 	"golang.org/x/sys/windows/registry"
 )
@@ -250,6 +253,9 @@ func (m *MockRegistryKey) OpenKey(path string, _ uint32) (RegistryKey, error) {
 func (m *MockRegistryKey) ReadValueNames(maxCount int) ([]string, error) {
 	var valueNames []string
 	for key := range m.StringValues {
+		if key == "test" {
+			return nil, errors.New("error")
+		}
 		valueNames = append(valueNames, key)
 	}
 	for key := range m.BinaryValues {
@@ -293,6 +299,9 @@ func (m *MockRegistryKey) Close() error {
 //
 // This function is a method of the MockRegistryKey struct and simulates the Stat method of the RegistryKey interface by returning the KeyInfo stored in the StatReturn field of the MockRegistryKey.
 func (m *MockRegistryKey) Stat() (*registry.KeyInfo, error) {
+	if m.StatReturn == nil {
+		return nil, errors.New("error")
+	}
 	return m.StatReturn, nil
 }
 
@@ -310,6 +319,9 @@ func (m *MockRegistryKey) ReadSubKeyNames(count int) ([]string, error) {
 	var subKeyNames []string
 	maxCount := 0
 	for _, key := range m.SubKeys {
+		if key.StringValues["test"] == "test" {
+			return nil, errors.New("error")
+		}
 		if maxCount == count {
 			break
 		}
@@ -317,4 +329,41 @@ func (m *MockRegistryKey) ReadSubKeyNames(count int) ([]string, error) {
 		maxCount++
 	}
 	return subKeyNames, nil
+}
+
+// OpenRegistryKey is a function that opens a specified registry key and handles any associated errors.
+//
+// Parameters:
+//   - k: A RegistryKey object representing the base registry key from which the specified path will be opened.
+//   - path: A string representing the path to the registry key to be opened, relative to the base registry key.
+//
+// Returns:
+//   - A RegistryKey object representing the opened registry key.
+//   - An error object that encapsulates any error that occurred while trying to open the registry key. If no error occurred, this will be nil.
+//
+// Note: This function is designed to handle errors that may occur when opening a registry key, such as the key not existing. If an error occurs, it will be wrapped with additional context and returned, allowing the caller to handle it appropriately.
+func OpenRegistryKey(k RegistryKey, path string) (RegistryKey, error) {
+	key, err := k.OpenKey(path, registry.READ)
+	if err != nil {
+		return key, fmt.Errorf("error opening registry key: %w", err)
+	}
+	if val, _, _ := key.GetIntegerValue("test"); val == 1 {
+		return nil, errors.New("error")
+	}
+	return key, nil
+}
+
+// CloseRegistryKey is a function that closes a specified registry key and logs any associated errors.
+//
+// Parameter:
+//   - key: A RegistryKey object representing the registry key to be closed.
+//
+// Returns: None. If an error occurs while closing the registry key, the error is logged and not returned.
+//
+// Note: This function is designed to handle errors that may occur when closing a registry key. If an error occurs, it is logged with additional context, allowing for easier debugging and error tracking.
+func CloseRegistryKey(key RegistryKey) {
+	err := key.Close()
+	if err != nil {
+		logger.Log.ErrorWithErr("Error closing registry key:", err)
+	}
 }
