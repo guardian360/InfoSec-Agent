@@ -1,20 +1,21 @@
-import {getLocalization} from './localize.js';
+import {getLocalization, getLocalizationString} from './localize.js';
 import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
 import {retrieveTheme} from './personalize.js';
 import {LogError as logError} from '../../wailsjs/go/main/Tray.js';
 
 /** Load the content of the Home page */
-export function openProgramsPage() {
+export async function openProgramsPage() {
   retrieveTheme();
   closeNavigation(document.body.offsetWidth);
   markSelectedNavigationItem('programs-button');
   sessionStorage.setItem('savedPage', 5);
+  const searchTranslation = await getLocalizationString('Programs.Search');
 
   document.getElementById('page-contents').innerHTML = `
   <div class="program-data">
       <div class="program-container">
       <h2 class="lang-program-table"></h2>
-      <input type="text" id="search-input" class="lang-search-software" placeholder="Search software...">
+      <input type="text" id="search-input" placeholder="${searchTranslation}">
       <table class="program-table" id="program-table">
           <thead>
           <tr>
@@ -54,13 +55,11 @@ export function openProgramsPage() {
     'lang-program-table',
     'lang-name',
     'lang-version',
-    'lang-search-software',
   ];
   const localizationIds = [
     'Programs.ProgramTable',
     'Programs.Name',
     'Programs.Version',
-    'Programs.Search',
   ];
   for (let i = 0; i < tableHeaders.length; i++) {
     getLocalization(localizationIds[i], tableHeaders[i]);
