@@ -41,7 +41,7 @@ func Startup(key1 mocking.RegistryKey, key2 mocking.RegistryKey, key3 mocking.Re
 	// Close the keys after we have received all relevant information
 	defer mocking.CloseRegistryKey(cuKey)
 	defer mocking.CloseRegistryKey(lmKey)
-	if err3 != nil && WinVersion == 10 {
+	if (err3 != nil && WinVersion == 10) || (err3 == nil && WinVersion == 11 || WinVersion == 10) {
 		var lm2ValueNames []string
 		if lmKey2 == nil {
 			return checks.NewCheckError(checks.StartupID, errors.New("error opening registry keys"))
