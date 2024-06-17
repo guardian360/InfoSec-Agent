@@ -54,7 +54,6 @@ func TestGetData(t *testing.T) {
 
 	// Assert that the points are calculated correctly
 	require.Equal(t, expected, got)
-
 }
 
 func TestGetData_UnmarshalError(t *testing.T) {

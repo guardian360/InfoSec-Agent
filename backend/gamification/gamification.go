@@ -4,8 +4,9 @@
 package gamification
 
 import (
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/database"
 	"time"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/database"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
