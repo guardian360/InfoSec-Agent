@@ -49,12 +49,12 @@ func ExtensionsChromium(browser string, getter browsers.DefaultDirGetter, getter
 	browserPath, returnID := GetBrowserPathAndIDExtension(browser)
 	extensionsDir, err := getter.GetDefaultDir(browserPath)
 	if err != nil {
-		return checks.NewCheckErrorf(returnID, "Error: ", err)
+		return checks.NewCheckErrorf(returnID, "error getting preferences directory", err)
 	}
 
 	extensionIDs, err := getterExtID.GetExtensionIDs(extensionsDir + "/Extensions")
 	if err != nil {
-		return checks.NewCheckErrorf(returnID, "Error: ", err)
+		return checks.NewCheckErrorf(returnID, "error getting extension ids", err)
 	}
 
 	extensionNames := GetExtensionNames(nameGetter, extensionIDs, browser)

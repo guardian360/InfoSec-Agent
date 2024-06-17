@@ -402,7 +402,7 @@ func (r RealQueryCookieDatabaseGetter) QueryCookieDatabase(checkID int, browser 
 	// Copy the database to a temporary location
 	copyError := getter.CopyFile(databasePath, tempCookieDB, nil, nil)
 	if copyError != nil {
-		return checks.NewCheckErrorf(checkID, "Unable to make a copy of "+browser+" database: ", copyError)
+		return checks.NewCheckErrorf(checkID, "Unable to make a copy of "+browser+" database", copyError)
 	}
 
 	db, err := sql.Open("sqlite", tempCookieDB)

@@ -38,7 +38,7 @@ func HistoryChromium(browser string, getter browsers.DefaultDirGetter, getterCop
 	browserPath, returnID := GetBrowserPathAndIDHistory(browser)
 	extensionsDir, err := getter.GetDefaultDir(browserPath)
 	if err != nil {
-		return checks.NewCheckErrorf(returnID, "Error: ", err)
+		return checks.NewCheckErrorf(returnID, "error getting preferences directory", err)
 	}
 
 	copyGetter := browsers.RealCopyFileGetter{}

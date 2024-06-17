@@ -187,7 +187,7 @@ func TestHistoryChromium_Error_GetDefaultDir(t *testing.T) {
 
 	result := chromium.HistoryChromium("Chrome", mockGetter, mockCopyGetter, mockQueryDBGetter, mockGetterQR, mockPhishingGetter)
 
-	assert.Equal(t, checks.NewCheckErrorf(checks.HistoryChromiumID, "Error: ", errors.New("mock error")), result)
+	assert.Equal(t, checks.NewCheckErrorf(checks.HistoryChromiumID, "error getting preferences directory", errors.New("mock error")), result)
 }
 
 func TestHistoryChromium_Error_CopyDatabase(t *testing.T) {
