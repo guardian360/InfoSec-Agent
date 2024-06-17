@@ -91,8 +91,9 @@ func SetupTests() {
 func NewCustomLogger(test bool, fileName string, logLevel int, logLevelSpecific int) *CustomLogger {
 	if test {
 		return &CustomLogger{
-			Logger:   log.New(os.Stdout, "", log.LstdFlags),
-			LogLevel: logLevel,
+			Logger:           log.New(os.Stdout, "", log.LstdFlags),
+			LogLevel:         logLevel,
+			LogLevelSpecific: logLevelSpecific,
 		}
 	}
 	appDataPath, err := os.UserConfigDir()
