@@ -104,7 +104,8 @@
     "ShareText": "Wählen Sie, wo Sie Ihren Fortschritt teilen möchten, speichern und herunterladen, dann mit anderen teilen!",
     "SaveText": "Speichern",
     "Share": "Teilen",
-    "LighthouseProgress":"Fortschritt"
+    "LighthouseProgress":"Fortschritt",
+    "TooltipText": "Je aktiver du bei der Lösung von Problemen bist, desto mehr arbeitest du daran, sicherer zu werden! Dies wird durch den Bau deines Leuchtturms angezeigt. Am Anfang wird nicht viel zu sehen sein, aber wenn du den InfoSec Agent konsequent nutzt, wirst du einen wunderschönen Leuchtturm bauen können. Um in den nächsten Zustand des Leuchtturms überzugehen, muss die Fortschrittsanzeige voll sein."
   },
   "Issues":
   {
@@ -119,6 +120,7 @@
     "Previous": "&laquo; Vorheriger Schritt",
     "Next": "Nächster Schritt &raquo;",
     "BackIssues": "Zurück zur Übersicht der Probleme",
+    "BackHome": "Zurück zur Startseite",
     "BackChecks": "Zurück zur Übersicht der Überprüfungen",
     "Port": "Die folgenden Prozesse laufen derzeit auf Ihrem Gerät auf den folgenden Ports: ",
     "Password": "Sie haben Ihr Passwort geändert am: ",

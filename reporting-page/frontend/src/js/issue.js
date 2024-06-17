@@ -14,11 +14,15 @@ import {GetImagePath as getImagePath} from '../../wailsjs/go/main/App.js';
 import {LogError as logError, LogDebug as logDebug} from '../../wailsjs/go/main/Tray.js';
 import {scanTest} from './database.js';
 import {openAllChecksPage} from './all-checks.js';
+import {openHomePage} from './home.js';
 
 let stepCounter = 0;
 const issuesWithResultsShow =
-    ['11', '21', '60', '70', '80', '90', '100', '110', '160', '173',
+    ['11', '21', '60', '70', '80', '90', '100', '110', '160', '172', '173',
       '201', '230', '250', '260', '271', '300', '311', '320', '351', '361'];
+// const issuesWithResultsShow =
+//     ['1', '2', '6', '7', '8', '9', '10', '11', '16', '17',
+//       '20', '23', '25', '26', '27', '30', '31', '32', '35', '36'];
 
 /** Update contents of solution guide
  *
@@ -82,15 +86,15 @@ export function previousSolutionStep(solutionText, solutionScreenshot, issue) {
 /** Load the content of the issue page
  *
  * @param {string} issueId Id of the issue to open
- * @param {string} severity severity of the issue to open
+ * @param {string} resultId result of the issue to open
  * @param {string} back if not undefined, back navigation to allChecksPage enabled
  */
-export async function openIssuePage(issueId, severity, back = undefined) {
+export async function openIssuePage(issueId, resultId, back = undefined) {
   retrieveTheme();
   closeNavigation(document.body.offsetWidth);
   markSelectedNavigationItem('issue-button');
   stepCounter = 0;
-  sessionStorage.setItem('savedPage', JSON.stringify([issueId, severity]));
+  sessionStorage.setItem('savedPage', JSON.stringify([issueId, resultId]));
   const language = await getUserSettings();
   let currentIssue;
   switch (language) {
@@ -119,17 +123,18 @@ export async function openIssuePage(issueId, severity, back = undefined) {
     currentIssue = dataEnGB[issueId];
     break;
   }
+  const issueData = currentIssue[resultId];
   // Check if the issue has no screenshots, if so, display that there is no issue (acceptable)
-  if (severity == 0) {
+  if (issueData.Severity == 0) {
     const pageContents = document.getElementById('page-contents');
     pageContents.innerHTML = `
-      <h1 class="issue-name">${currentIssue.Name}</h1>
+      <h1 class="issue-name">${issueData.Name}</h1>
       <div class="issue-information">
         <h2 id="information" class="lang-information"></h2>
         <p id="description">${currentIssue.Information}</p>
         <h2 id="solution" class="lang-acceptable"></h2>
         <div class="issue-solution">
-          <p id="solution-text">${getVersionSolution(currentIssue, stepCounter)}</p>
+          <p id="solution-text">${getVersionSolution(issueData, stepCounter)}</p>
         </div>
         <div class="solution-buttons">
           <div class="button-box">
@@ -141,17 +146,17 @@ export async function openIssuePage(issueId, severity, back = undefined) {
     `;
   } else { // Issue has screenshots, display the solution guide
     const pageContents = document.getElementById('page-contents');
-    if (issuesWithResultsShow.includes(issueId)) {
-      pageContents.innerHTML = parseShowResult(issueId, currentIssue);
+    if (issuesWithResultsShow.includes(issueId.toString() + resultId.toString())) {
+      pageContents.innerHTML = parseShowResult(issueId, resultId, currentIssue);
     } else {
       pageContents.innerHTML = `
-        <h1 class="issue-name">${currentIssue.Name}</h1>
+        <h1 class="issue-name">${issueData.Name}</h1>
         <div class="issue-information">
           <h2 id="information" class="lang-information"></h2>
           <p>${currentIssue.Information}</p>
           <h2 id="solution" class="lang-solution"></h2>
           <div class="issue-solution">
-            <p id="solution-text">${stepCounter +1}. ${getVersionSolution(currentIssue, stepCounter)}</p>
+            <p id="solution-text">${stepCounter +1}. ${getVersionSolution(issueData, stepCounter)}</p>
             <img style='display:block; width:750px;height:auto' id="step-screenshot"></img>
             <div class="solution-buttons">
               <div class="button-box">
@@ -170,13 +175,13 @@ export async function openIssuePage(issueId, severity, back = undefined) {
     const solutionText = document.getElementById('solution-text');
     const solutionScreenshot = document.getElementById('step-screenshot');
     document.getElementById('next-button').addEventListener('click', () =>
-      nextSolutionStep(solutionText, solutionScreenshot, currentIssue));
+      nextSolutionStep(solutionText, solutionScreenshot, issueData));
     document.getElementById('previous-button').addEventListener('click', () =>
-      previousSolutionStep(solutionText, solutionScreenshot, currentIssue));
+      previousSolutionStep(solutionText, solutionScreenshot, issueData));
 
     // Initial check to hide/show buttons
     try {
-      await updateSolutionStep(solutionText, solutionScreenshot, currentIssue, stepCounter);
+      await updateSolutionStep(solutionText, solutionScreenshot, issueData, stepCounter);
     } catch (error) {
       logError('Error in updateSolutionStep: ' + error);
     }
@@ -185,16 +190,19 @@ export async function openIssuePage(issueId, severity, back = undefined) {
   if (back == undefined) {
     document.getElementById('back-button').addEventListener('click', () => openIssuesPage());
     document.getElementById('back-button').classList.add('lang-back-button-issues');
+  } else if (back == 'home') {
+    document.getElementById('back-button').addEventListener('click', () => openHomePage());
+    document.getElementById('back-button').classList.add('lang-back-button-home');
   } else {
     document.getElementById('back-button').addEventListener('click', () => openAllChecksPage(back));
     document.getElementById('back-button').classList.add('lang-back-button-checks');
   }
 
   const texts = ['lang-information', 'lang-findings', 'lang-solution', 'lang-previous-button',
-    'lang-next-button', 'lang-back-button-issues', 'lang-back-button-checks', 'lang-port', 'lang-password',
-    'lang-acceptable', 'lang-cookies', 'lang-permissions', 'lang-scan-again'];
+    'lang-next-button', 'lang-back-button-issues', 'lang-back-button-home', 'lang-back-button-checks', 'lang-port',
+    'lang-password', 'lang-acceptable', 'lang-cookies', 'lang-permissions', 'lang-scan-again'];
   const localizationIds = ['Issues.Information', 'Issues.Findings', 'Issues.Solution', 'Issues.Previous',
-    'Issues.Next', 'Issues.BackIssues', 'Issues.BackChecks', 'Issues.Port', 'Issues.Password',
+    'Issues.Next', 'Issues.BackIssues', 'Issues.BackHome', 'Issues.BackChecks', 'Issues.Port', 'Issues.Password',
     'Issues.Acceptable', 'Issues.Cookies', 'Issues.Permissions', 'Issues.ScanAgain',
   ];
   for (let i = 0; i < texts.length; i++) {
@@ -204,8 +212,8 @@ export async function openIssuePage(issueId, severity, back = undefined) {
   document.getElementById('scan-button').addEventListener('click', async () => {
     await scanTest(true);
 
-    sessionStorage.setItem('savedPage', JSON.stringify([issueId, severity]));
-    openIssuePage(issueId, severity);
+    sessionStorage.setItem('savedPage', JSON.stringify([issueId, resultId]));
+    openIssuePage(issueId, resultId);
   });
 }
 
@@ -221,15 +229,16 @@ export function checkShowResult(issue) {
 /** Parse the show result of an issue
  *
  * @param {string} issueId of the issue
- * @param {string} currentIssue of the issue we are looking at
+ * @param {string} resultId of the issue we are looking at
+ * @param {string} currentIssue current issue we are looking at
  * @return {string} result of the show result
  */
-export function parseShowResult(issueId, currentIssue) {
+export function parseShowResult(issueId, resultId, currentIssue) {
   let issues = [];
   issues = JSON.parse(sessionStorage.getItem('ScanResult'));
   let resultLine = '';
 
-  switch (issueId) {
+  switch (issueId.toString() + resultId.toString()) {
   case '11':
     generateBulletList(issues, 1);
     break;
@@ -267,6 +276,9 @@ export function parseShowResult(issueId, currentIssue) {
       resultLine += `<p class="lang-password"></p>`;
       resultLine += `<p class="information">${issue}</p>`;
     });
+    break;
+  case '172':
+    generateBulletList(issues, 17);
     break;
   case '173':
     generateBulletList(issues, 17);
@@ -322,7 +334,7 @@ export function parseShowResult(issueId, currentIssue) {
    */
   function generateBulletList(issues, issueId) {
     resultLine += `<ul>`;
-    issues.find((issue) => issue.issue_id === issueId).result.forEach((issue) => {
+    issues.find((issue) => issue.issue_id == issueId).result.forEach((issue) => {
       resultLine += `<li>${issue}</li>`;
     });
     resultLine += `</ul>`;
@@ -337,7 +349,7 @@ export function parseShowResult(issueId, currentIssue) {
   function permissionShowResults(issues) {
     let applications = '<ul>';
     issues.forEach((issue) => {
-      if (issue.issue_id.toString() + issue.result_id.toString() === issueId.toString()) {
+      if (issue.issue_id.toString() === issueId.toString()) {
         const issueResult = issue.result;
         issueResult.forEach((application) => {
           applications += `<li>${application}</li>`;
@@ -428,8 +440,9 @@ export function parseShowResult(issueId, currentIssue) {
     return tableHTML;
   }
 
+  const issueData = currentIssue[resultId];
   const result = `
-  <h1 class="issue-name">${currentIssue.Name}</h1>
+  <h1 class="issue-name">${issueData.Name}</h1>
   <div class="issue-information">
     <h2 id="information" class="lang-information"></h2>
     <p>${currentIssue.Information}</p>
@@ -437,7 +450,7 @@ export function parseShowResult(issueId, currentIssue) {
     <p id="description">${resultLine}</p>
     <h2 id="solution" class="lang-solution"></h2>
     <div class="issue-solution">
-      <p id="solution-text">${stepCounter +1}. ${getVersionSolution(currentIssue, stepCounter)}</p>
+      <p id="solution-text">${stepCounter +1}. ${getVersionSolution(issueData, stepCounter)}</p>
       <img style='display:block; width:750px;height:auto' id="step-screenshot"></img>
       <div class="solution-buttons">
         <div class="button-box">

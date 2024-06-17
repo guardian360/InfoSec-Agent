@@ -144,7 +144,7 @@ func compareVersions(v1, v2 string) int {
 // retrieveWingetInstalledPrograms function retrieves all installed packages found with the winget package manager
 func retrieveWingetInstalledPrograms(softwareList []software) ([]software, error) {
 	// Execute the winget list command
-	out, err := exec.Command("winget", "list", "--accept-source-agreements").Output()
+	out, err := exec.Command("powershell", "winget list| Out-String -Stream | ForEach-Object { [System.Text.Encoding]::UTF8.GetString([System.Text.Encoding]::Default.GetBytes($_)) }").Output()
 	if err != nil {
 		return softwareList, err
 	}
@@ -160,12 +160,12 @@ func retrieveWingetInstalledPrograms(softwareList []software) ([]software, error
 	if indexN < 0 {
 		return softwareList, errors.New("error parsing winget output")
 	}
-	lines[0] = lines[0][strings.Index(lines[indexN], "Name")+1:] // Remove the first part of the header
+	lines[0] = lines[indexN][strings.Index(lines[indexN], "Name")+1:] // Remove the first part of the header
 	idIndex := strings.Index(lines[0], "Id")
 	versionIndex := strings.Index(lines[0], "Version")
 	availableIndex := strings.Index(lines[0], "Available")
 	sourcesIndex := strings.Index(lines[0], "Source")
-	for _, line := range lines[2:] { // Skip the header lines
+	for _, line := range lines[indexN+2:] { // Skip the header lines
 		if len(line) != 0 { // Don't handle the last empty line, and maybe other empty lines
 			// Extract the software details
 			name := substr(line, 0, idIndex)
