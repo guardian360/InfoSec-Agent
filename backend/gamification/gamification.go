@@ -4,9 +4,7 @@
 package gamification
 
 import (
-	"encoding/json"
-	"os"
-	"strconv"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/database"
 	"time"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
@@ -91,45 +89,15 @@ type RealPointCalculationGetter struct{}
 func (r RealPointCalculationGetter) PointCalculation(gs GameState, scanResults []checks.Check, jsonFilePath string) (GameState, error) {
 	gs.Points = 0
 
-	byteValue, _ := os.ReadFile(jsonFilePath)
-
-	var data map[string]map[string]interface{}
-	err := json.Unmarshal(byteValue, &data)
+	dataList, err := database.GetData(jsonFilePath, scanResults)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error parsing JSON:", err)
+		logger.Log.ErrorWithErr("Error getting data from database:", err)
 		return gs, err
 	}
-
-	for _, result := range scanResults {
-		if result.Error != nil {
-			logger.Log.ErrorWithErr("Error reading scan result", result.Error)
-			continue
-		}
-
-		// Convert IssueID and ResultID to string to access JSON data
-		issueKey := strconv.Itoa(result.IssueID)
-		resultKey := strconv.Itoa(result.ResultID)
-
-		// Get the severity from JSON
-		issueData, ok := data[issueKey]
-		if !ok {
-			logger.Log.Debug("IssueID not found in JSON:" + strconv.Itoa(result.IssueID))
-			continue
-		}
-		resultData, ok := issueData[resultKey].(map[string]interface{})
-		if !ok {
-			logger.Log.Debug("ResultID not found in JSON: " + strconv.Itoa(result.ResultID))
-			continue
-		}
-		sev, ok := resultData["Severity"].(float64)
-		if !ok {
-			logger.Log.Debug("Severity not found or invalid for IssueID:" + strconv.Itoa(result.IssueID) + "ResultID:" + strconv.Itoa(result.ResultID))
-			continue
-		}
-
-		// When severity is of the Informative level, we do not want to adjust the points
-		if int(sev) != 4 {
-			gs.Points += int(sev)
+	for _, data := range dataList {
+		sev := data.Severity
+		if sev >= 0 && sev < 4 {
+			gs.Points += sev
 		}
 	}
 	gs.PointsHistory = append(gs.PointsHistory, gs.Points)
