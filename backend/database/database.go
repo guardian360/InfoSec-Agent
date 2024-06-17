@@ -93,7 +93,7 @@ func GetData(jsonFilePath string, checkResults []checks.Check) ([]Data, error) {
 		return nil, err
 	}
 	defer file.Close()
-
+	interface 
 	// Decode the JSON data
 	var jsonData JSONData
 	decoder := json.NewDecoder(file)

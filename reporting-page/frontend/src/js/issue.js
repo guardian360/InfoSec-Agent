@@ -211,6 +211,8 @@ export async function openIssuePage(issueId, resultId, back = undefined) {
 
   document.getElementById('scan-button').addEventListener('click', async () => {
     await scanTest(true);
+
+    sessionStorage.setItem('savedPage', JSON.stringify([issueId, resultId]));
     openIssuePage(issueId, resultId);
   });
 }

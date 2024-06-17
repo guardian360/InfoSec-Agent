@@ -13,6 +13,11 @@ const dom = new JSDOM(`
 <html>
 <body>
     <div id="page-contents"></div>
+    <button id="privacy-button-permissions"></button>
+    <button id="privacy-button-browser"></button>
+    <button id="privacy-button-other"></button>
+    <div id="dropbtn">Dropdown Button</div>
+    <div id="myDropdown" class="dropdown-content show">Dropdown Content</div>
 </body>
 </html>
 `);
@@ -64,6 +69,11 @@ jest.unstable_mockModule('../wailsjs/go/main/Tray.js', () => ({
   ChangeLanguage: jest.fn(),
   ChangeScanInterval: jest.fn(),
   LogDebug: jest.fn(),
+}));
+
+// Mock openAllChecksPage
+jest.unstable_mockModule('../src/js/all-checks.js', () => ({
+  openAllChecksPage: jest.fn(),
 }));
 
 describe('Privacy dashboard page', function() {
@@ -151,4 +161,21 @@ describe('Privacy dashboard page', function() {
 
     expect(suggestedIssueMock).toHaveBeenCalled();
   });
+});
+it('Clicking the buttons should call openAllChecksPage on the right place', async function() {
+  // Arrange
+  const buttonPerm = document.getElementById('privacy-button-permissions');
+  const buttonBrowser = document.getElementById('privacy-button-browser');
+  const buttonOther = document.getElementById('privacy-button-other');
+  const allChecks = await import('../src/js/all-checks.js');
+
+  // Act
+  buttonPerm.dispatchEvent(clickEvent);
+  buttonBrowser.dispatchEvent(clickEvent);
+  buttonOther.dispatchEvent(clickEvent);
+
+  // Assert
+  expect(allChecks.openAllChecksPage).toHaveBeenCalledWith('permissions');
+  expect(allChecks.openAllChecksPage).toHaveBeenCalledWith('browser');
+  expect(allChecks.openAllChecksPage).toHaveBeenCalledWith('privacy-other');
 });

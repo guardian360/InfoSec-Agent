@@ -1,6 +1,7 @@
 package programs
 
 import (
+	"errors"
 	"fmt"
 	"os/exec"
 	"strings"
@@ -143,19 +144,29 @@ func compareVersions(v1, v2 string) int {
 // retrieveWingetInstalledPrograms function retrieves all installed packages found with the winget package manager
 func retrieveWingetInstalledPrograms(softwareList []software) ([]software, error) {
 	// Execute the winget list command
-	//winget list | Out-String -Stream | ForEach-Object { [System.Text.Encoding]::UTF8.GetString([System.Text.Encoding]::Default.GetBytes($_)) }
+	// winget list | Out-String -Stream | ForEach-Object { [System.Text.Encoding]::UTF8.GetString([System.Text.Encoding]::Default.GetBytes($_)) }
 	out, err := exec.Command("powershell", "winget list| Out-String -Stream | ForEach-Object { [System.Text.Encoding]::UTF8.GetString([System.Text.Encoding]::Default.GetBytes($_)) }").Output()
 	if err != nil {
 		return softwareList, err
 	}
 	// Process the output
 	lines := strings.Split(string(out), "\r\n")
-	lines[0] = lines[0][strings.Index(lines[9], "Name")+1:] // Remove the first part of the header
-	idIndex := strings.Index(lines[9], "Id")
-	versionIndex := strings.Index(lines[9], "Version")
-	availableIndex := strings.Index(lines[9], "Available")
-	sourcesIndex := strings.Index(lines[9], "Source")
-	for _, line := range lines[2:] { // Skip the header lines
+	indexN := -2
+	for i, line := range lines {
+		if strings.Contains(line, "N") {
+			indexN = i
+			break
+		}
+	}
+	if indexN < 0 {
+		return softwareList, errors.New("error parsing winget output")
+	}
+	lines[0] = lines[indexN][strings.Index(lines[indexN], "Name"):] // Remove the first part of the header
+	idIndex := strings.Index(lines[0], "Id")
+	versionIndex := strings.Index(lines[0], "Version")
+	availableIndex := strings.Index(lines[0], "Available")
+	sourcesIndex := strings.Index(lines[0], "Source")
+	for _, line := range lines[indexN+2:] { // Skip the header lines
 		if len(line) != 0 { // Don't handle the last empty line, and maybe other empty lines
 			// Extract the software details
 			name := substr(line, 0, idIndex)
