@@ -60,11 +60,21 @@ jest.unstable_mockModule('../src/js/settings.js', () => ({
   showModal: jest.fn(),
 }));
 
+const socialMediaSizesMock = {
+  facebook: {
+    name: 'facebook',
+    height: 315,
+    width: 600,
+  },
+};
+
 // Mock share
 jest.unstable_mockModule('../src/js/share.js', () => ({
+  setImage: jest.fn(),
   saveProgress: jest.fn(),
   shareProgress: jest.fn(),
   selectSocialMedia: jest.fn(),
+  socialMediaSizes: socialMediaSizesMock,
 }));
 
 // Mock openPersonalizePage

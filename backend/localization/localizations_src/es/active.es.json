@@ -54,11 +54,13 @@
     "Checks": "Controles",
     "Integration": "Integración",
     "About": "Acerca de",
+    "Settings": "Ajustes",
     "Personalize": "Personalizar la página",
     "ChangeLanguage": "Cambiar idioma",
     "WindowsVersion": "Versión de Windows",
     "ScanInterval": "Intervalo de Escaneo",
-    "SelectVersion": "Seleccionar versión de Windows"
+    "SelectVersion": "Seleccionar versión de Windows",
+    "Programs": "Programas"
   },
   "Dashboard": 
   {
@@ -94,9 +96,9 @@
     "Permissions": "Permisos",
     "Other": "Otros",
     "ChooseIssueDescription": "Acciones",
-    "BarGraphDescription": "Este gráfico muestra la distribución de problemas de diferentes niveles de riesgo encontrados en los últimos 5 escaneos.",
+    "BarGraphDescription": "Este gráfico muestra la distribución de problemas de diferentes niveles de riesgo encontrados en los últimos escaneos.",
     "SelectRisks": "Seleccionar riesgos",
-    "ChangeInterval": "Cambiar intervalo",
+    "ChangeInterval": "Cambiar el rango de escaneos:",
     "ShareButton": "Compartir progreso",
     "ShareText": "Selecciona dónde compartir tu progreso, guárdalo y descárgalo, ¡luego compártelo con otros!",
     "SaveText": "Guardar",
@@ -137,6 +139,11 @@
     "AffiliationsInfo": "Este proyecto es un esfuerzo colaborativo que involucra a nueve estudiantes de la Universidad de Utrecht en los Países Bajos, en asociación con la empresa de TI holandesa Guardian360. Sirve como Proyecto de Software para el Programa de Licenciatura en Ciencias de la Computación en la UU. Este proyecto también cuenta con el apoyo financiero del Fondo SIDN (Stichting Internet Domeinregistratie Nederland), el registrador de dominios holandés.",
     "ContributingTitle": "Contribuir",
     "ContributingInfo": "InfoSec-Agent es un proyecto de código abierto con licencia bajo la Licencia AGPL-3.0. Sin embargo, debido a sus orígenes como asignación de la Universidad de Utrecht, las contribuciones públicas a este repositorio solo se fusionarán después de la finalización de esta asignación, programada para el 24 de junio de 2024. Siéntase libre de reportar cualquier error o problema que encuentre. Sus comentarios son valiosos y ayudan a mejorar el proyecto InfoSec-Agent. Puede enviarnos un correo electrónico a <a href=\"mailto:infosecagentuu@gmail.com\">infosecagentuu@gmail.com</a>."
+  },  
+  "Programs": {
+    "Name":"Nombre",
+    "ProgramTable": "Programas instalados",
+    "Search": "Buscar"
   },
   "Personalize": {
     "ChangeFavicon": "Cambiar favicon",

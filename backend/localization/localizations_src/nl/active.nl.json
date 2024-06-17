@@ -54,11 +54,13 @@
     "Checks": "Controles",
     "Integration": "Integratie",
     "About": "Over",
+    "Settings": "Instellingen",
     "Personalize": "Pagina personaliseren",
     "ChangeLanguage": "Taal wijzigen",
     "WindowsVersion": "Windows versie",
     "ScanInterval": "Scan interval",
-    "SelectVersion": "Selecteer windows versie"
+    "SelectVersion": "Selecteer windows versie",
+    "Programs": "Programma's"
     
   },
   "Dashboard": 
@@ -95,9 +97,9 @@
     "Permissions": "Machtigingen",
     "Other": "Andere",
     "ChooseIssueDescription": "Acties",
-    "BarGraphDescription": "Deze grafiek toont de verdeling van problemen van verschillende risiconiveaus die in de afgelopen 5 scans zijn gevonden.",
+    "BarGraphDescription": "Deze grafiek toont de verdeling van problemen van verschillende risiconiveaus die in de afgelopen scans zijn gevonden.",
     "SelectRisks": "Risico's selecteren",
-    "ChangeInterval": "Interval wijzigen",
+    "ChangeInterval": "Scan hoeveelheid wijzigen:",
     "ShareButton": "Voortgang delen",
     "ShareText": "Selecteer waar u uw voortgang wilt delen, sla het op en download het, deel het vervolgens met anderen!",
     "SaveText": "Opslaan",
@@ -139,6 +141,11 @@
     "ContributingTitle": "Bijdragen",
     "ContributingInfo": "InfoSec-Agent is een open-sourceproject dat is gelicenseerd onder de AGPL-3.0-licentie. Vanwege de oorsprong als een opdracht van de Universiteit Utrecht worden openbare bijdragen aan deze repository echter pas samengevoegd na voltooiing van deze opdracht, die gepland staat voor 24 juni 2024. Voel je vrij om eventuele bugs of problemen te melden die je tegenkomt. Jouw feedback is waardevol en helpt het InfoSec-Agent-project te verbeteren. Je kunt ons een e-mail sturen naar <a href=\"mailto:infosecagentuu@gmail.com\">infosecagentuu@gmail.com</a>."
   },  
+  "Programs": {
+    "Name":"Naam",
+    "ProgramTable": "Geïnstalleerde programma's",
+    "Search": "Zoeken"
+  },
   "Personalize": {
     "ChangeFavicon": "Favicon wijzigen",
     "navImage": "Navigatieafbeelding",

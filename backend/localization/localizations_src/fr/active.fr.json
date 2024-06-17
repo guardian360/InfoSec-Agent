@@ -54,11 +54,13 @@
     "Checks": "Contrôles",
     "Integration": "Intégration",
     "About": "À propos",
+    "Settings": "Paramètres",
     "Personalize": "Personnaliser la page",
     "ChangeLanguage": "Changer de langue",
     "WindowsVersion": "Version de Windows",
     "ScanInterval": "Intervalle de Scan",
-    "SelectVersion": "Sélectionner la version de Windows"
+    "SelectVersion": "Sélectionner la version de Windows",
+    "Programs": "Programmes"
   },
   "Dashboard": 
   {
@@ -94,9 +96,9 @@
     "Permissions": "Autorisations",
     "Other": "Autre",
     "ChooseIssueDescription": "Actions",
-    "BarGraphDescription": "Ce graphique montre la répartition des problèmes de différents niveaux de risque trouvés lors des 5 derniers scans.",
+    "BarGraphDescription": "Ce graphique montre la répartition des problèmes de différents niveaux de risque trouvés lors des derniers scans.",
     "SelectRisks": "Sélectionner les risques",
-    "ChangeInterval": "Changer l'intervalle",
+    "ChangeInterval": "Modifier la plage de balayages:",
     "ShareButton": "Partager les progrès",
     "ShareText": "Sélectionnez où partager vos progrès, enregistrez et téléchargez-le, puis partagez-le avec d'autres !",
     "SaveText": "Enregistrer",
@@ -137,6 +139,11 @@
     "AffiliationsInfo": "Ce projet est un effort collaboratif impliquant neuf étudiants de l'Université d'Utrecht aux Pays-Bas, en partenariat avec la société informatique néerlandaise Guardian360. Il sert de projet logiciel pour le programme de licence en sciences informatiques de l'UU. Ce projet est également soutenu par un financement du fonds SIDN (Stichting Internet Domeinregistratie Nederland), le registre de noms de domaine néerlandais.",
     "ContributingTitle": "Contribution",
     "ContributingInfo": "InfoSec-Agent est un projet open-source sous licence AGPL-3.0. Cependant, en raison de son origine en tant que projet assigné par l'Université d'Utrecht, les contributions publiques à ce dépôt ne seront fusionnées qu'après l'achèvement de ce projet, prévu pour le 24 juin 2024. N'hésitez pas à signaler les bogues ou les problèmes que vous rencontrez. Vos commentaires sont précieux et aident à améliorer le projet InfoSec-Agent. Vous pouvez nous envoyer un e-mail à <a href=\"mailto:infosecagentuu@gmail.com\">infosecagentuu@gmail.com</a>"
+  },  
+  "Programs": {
+    "Name":"Nom",
+    "ProgramTable": "Programmes installés",
+    "Search": "Chercher"
   },
   "Personalize": {
     "ChangeFavicon": "Changer le favicon",

@@ -16,7 +16,6 @@ var testsInvalid = []func(t *testing.T){
 	i.TestIntegrationPasswordManagerNotPresent,
 	i.TestIntegrationAdvertisementActive,
 	i.TestIntegrationAutomatedLoginActive,
-	i.TestIntegrationDefenderAllNotActive,
 	i.TestIntegrationGuestAccountActive,
 	i.TestIntegrationLoginMethodPINOnly,
 	i.TestIntegrationOutdatedWinNotUpToDate,
@@ -28,6 +27,12 @@ var testsInvalid = []func(t *testing.T){
 	i.TestIntegrationCookiesFirefoxWithCookies,
 	i.TestIntegrationCookiesChromiumWithCookies,
 	i.TestIntegrationRemoteRPCEnabled,
+	i.TestIntegrationNetBIOSEnabled,
+	i.TestIntegrationWPADEnabled,
+	i.TestIntegrationCredentialGuardDisabled,
+	i.TestIntegrationFirewallDisabled,
+	i.TestIntegrationPasswordComplexityInvalid,
+	i.TestIntegrationScreenLockDisabled,
 }
 
 func TestAllInvalid(t *testing.T) {

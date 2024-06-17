@@ -2,9 +2,10 @@ package mocking
 
 import (
 	"errors"
-	"github.com/stretchr/testify/mock"
 	"os/user"
 	"strings"
+
+	"github.com/stretchr/testify/mock"
 )
 
 // UsernameRetriever is an interface that defines a method for retrieving the current username (CurrentUsername).

@@ -2,8 +2,9 @@
 package programs
 
 import (
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 	"strings"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 )

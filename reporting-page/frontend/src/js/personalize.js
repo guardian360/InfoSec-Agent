@@ -5,7 +5,7 @@ import {getLocalization} from './localize.js';
 export function openPersonalizePage() {
   closeNavigation();
   markSelectedNavigationItem('personalize-button');
-  sessionStorage.setItem('savedPage', '7');
+  sessionStorage.setItem('savedPage', '9');
 
   document.getElementById('page-contents').innerHTML = `  
   <div class="personalize-container">
@@ -219,7 +219,7 @@ export function resetSettings() {
   logo.src = logoPhoto;
 
   const title = document.getElementById('title');
-  title.textContent = 'Little Brother';
+  title.textContent = 'Infosec Agent';
 
   const favicon = document.getElementById('favicon');
   favicon.href = logoPhoto;

@@ -3,6 +3,7 @@ package mocking
 import (
 	"errors"
 	"fmt"
+
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 
 	"golang.org/x/sys/windows/registry"

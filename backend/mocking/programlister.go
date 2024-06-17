@@ -1,8 +1,9 @@
 package mocking
 
 import (
-	"github.com/stretchr/testify/mock"
 	"os"
+
+	"github.com/stretchr/testify/mock"
 )
 
 // ProgramLister is an interface that defines a method for listing installed programs.

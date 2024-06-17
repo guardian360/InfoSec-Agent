@@ -7,6 +7,8 @@ import {openIssuePage} from './issue.js';
 import {openIssuesPage} from './issues.js';
 import {openIntegrationPage} from './integration.js';
 import {openAllChecksPage} from './all-checks.js';
+import {openProgramsPage} from './programs.js';
+
 import {ChangeLanguage as changeLanguage,
   ChangeScanInterval as changeScanInterval,
   LogError as logError} from '../../wailsjs/go/main/Tray.js';
@@ -49,16 +51,19 @@ export function reloadPage() {
       openIssuesPage();
       break;
     case '5':
-      openIntegrationPage();
+      openProgramsPage();
       break;
     case '6':
-      openAboutPage();
+      openAllChecksPage();
       break;
     case '7':
-      openPersonalizePage();
+      openIntegrationPage();
       break;
     case '8':
-      openAllChecksPage();
+      openAboutPage();
+      break;
+    case '9':
+      openPersonalizePage();
     default:
       try {
         const issuepage = JSON.parse(page);
@@ -80,9 +85,6 @@ if (typeof document !== 'undefined') {
     document.getElementById('windows-version-button')
       .addEventListener('click', () => showModal('window-version-modal'));
     document.getElementById('scan-interval-button').addEventListener('click', () => changeScanInterval());
-    document.getElementById('state-button-0').addEventListener('click', () => changeState(0));
-    document.getElementById('state-button-1').addEventListener('click', () => changeState(1));
-    document.getElementById('state-button-2').addEventListener('click', () => changeState(2));
 
     document.getElementById('windows-10').addEventListener('click', () => selectWindowsVersion(10));
     document.getElementById('windows-11').addEventListener('click', () => selectWindowsVersion(11));
@@ -144,13 +146,4 @@ export function selectWindowsVersion(version) {
   }
   sessionStorage.setItem('WindowsVersion', version);
   sessionStorage.setItem('WindowsVersionChanged', JSON.stringify(true));
-}
-
-/**
- * Select state lighthouse
- * @param {string} state state to select
- */
-function changeState(state) {
-  sessionStorage.setItem('state', state);
-  openHomePage();
 }

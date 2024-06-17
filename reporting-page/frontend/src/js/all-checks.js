@@ -12,7 +12,7 @@ export async function openAllChecksPage(area) {
   retrieveTheme();
   closeNavigation(document.body.offsetWidth);
   markSelectedNavigationItem('all-checks-button');
-  sessionStorage.setItem('savedPage', '8');
+  sessionStorage.setItem('savedPage', '6');
 
   document.getElementById('page-contents').innerHTML = `
   <div class="all-checks">

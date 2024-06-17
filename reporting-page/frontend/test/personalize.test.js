@@ -211,7 +211,7 @@ describe('openPersonalizePage function', () => {
     expect(logo).not.toBeNull();
     expect(logo.src).toContain('frontend/src/assets/images/logoTeamA-transformed.png');
     expect(title).not.toBeNull();
-    expect(title.textContent).toBe('Little Brother');
+    expect(title.textContent).toBe('Infosec Agent');
     expect(favicon).not.toBeNull();
     expect(favicon.href).toContain('frontend/src/assets/images/logoTeamA-transformed.png');
   });

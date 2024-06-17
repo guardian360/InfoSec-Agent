@@ -6,7 +6,7 @@ import {scanTest} from './database.js';
 import {LogError as logError, LogDebug as logDebug} from '../../wailsjs/go/main/Tray.js';
 import {GetImagePath as getImagePath} from '../../wailsjs/go/main/App.js';
 import {openIssuePage} from './issue.js';
-import {saveProgress, shareProgress, selectSocialMedia} from './share.js';
+import {saveProgress, shareProgress, selectSocialMedia, setImage, socialMediaSizes} from './share.js';
 import data from '../databases/database.en-GB.json' assert { type: 'json' };
 import {showModal} from './settings.js';
 
@@ -16,16 +16,22 @@ export async function openHomePage() {
   // Load the video background path
   switch (sessionStorage.getItem('state')) {
   case '0':
-    lighthousePath = 'first-state.mkv';
+    lighthousePath = 'state0.mkv';
     break;
   case '1':
-    lighthousePath = 'almost-state.mkv';
+    lighthousePath = 'state1.mkv';
     break;
   case '2':
-    lighthousePath = 'final-state.mkv';
+    lighthousePath = 'state2.mkv';
+    break;
+  case '3':
+    lighthousePath = 'state3.mkv';
+    break;
+  case '4':
+    lighthousePath = 'state4.mkv';
     break;
   default:
-    lighthousePath = 'first-state.mkv';
+    lighthousePath = 'state0.mkv';
   }
 
   const lighthouseState = await getImagePath(lighthousePath);
@@ -59,12 +65,12 @@ export async function openHomePage() {
         <a id="scan-now" class="issue-button lang-scan-now"></a>
         <a id="share-progress" class="issue-button lang-share-button"></a>
       </div>
-      <div class="data-segment">
+      <div id="progress-segment" class="data-segment">
         <div class="data-segment-header">
           <p class="lang-lighthouse-progress"></p>
         </div>
         <div class="progress-container">
-        <div class="progress-bar" id="progress-bar"></div>
+          <div class="progress-bar" id="progress-bar"></div>
         </div>
         <p id="progress-text"></p>
       </div>
@@ -76,8 +82,7 @@ export async function openHomePage() {
         <span id="close-share-modal" class="close">&times;</span>
         <p class="lang-share-text"></p>
       </div>
-      <div id="share-node" class="modal-body">
-        <img class="api-key-image" src="https://placehold.co/600x315" alt="Step 1 Image">
+      <div id="share-node" class="modal-body share-image">
       </div>
       <div id="share-buttons" class="modal-body">
         <a id="share-save-button" class="modal-button share-button lang-save-text"></a>
@@ -155,6 +160,10 @@ export async function openHomePage() {
     progressBar.style.width = progressPercentage + '%';
     progressText.textContent = `${userPoints} / ${pointsToNextState} (${progressPercentage.toFixed(2)}%)`;
   });
+
+  // on startup set the social media to share to facebook
+  sessionStorage.setItem('ShareSocial', JSON.stringify(socialMediaSizes['facebook']));
+  setImage(document.getElementById('share-node'), document.getElementById('progress-segment'));
 }
 
 /** Opens the issue page of the issue with the highest risk level

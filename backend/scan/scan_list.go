@@ -20,6 +20,7 @@ var profileFinder = browsers.RealProfileFinder{}
 var defaultDirGetter = browsers.RealDefaultDirGetter{}
 var copyFileGetter = browsers.RealCopyFileGetter{}
 var queryDBGetter = browsers.RealQueryCookieDatabaseGetter{}
+var userNameRetriever = &mocking.RealUsernameRetriever{}
 
 const browserChrome = "Chrome"
 const browserEdge = "Edge"
@@ -116,6 +117,7 @@ var networkChecks = []func() checks.Check{
 // programsChecks contains all security/privacy checks that are specific to installed programs.
 var programsChecks = []func() checks.Check{
 	func() checks.Check { return programs.PasswordManager(mocking.RealProgramLister{}) },
+	programs.OutdatedSoftware,
 }
 
 // windowsChecks contains all security/privacy checks that are specific to Windows (registry) settings.
@@ -124,8 +126,10 @@ var windowsChecks = []func() checks.Check{
 	func() checks.Check { return windows.AllowRemoteRPC(mocking.LocalMachine) },
 	func() checks.Check { return windows.AutomaticLogin(mocking.LocalMachine) },
 	func() checks.Check { return windows.Defender(mocking.LocalMachine, mocking.LocalMachine) },
-	func() checks.Check { return windows.GuestAccount(executor, executor, executor, executor) },
-	func() checks.Check { return windows.LastPasswordChange(executor) },
+	func() checks.Check {
+		return windows.GuestAccount(executor, executor, executor, executor, userNameRetriever)
+	},
+	func() checks.Check { return windows.LastPasswordChange(executor, userNameRetriever) },
 	func() checks.Check { return windows.LoginMethod(mocking.LocalMachine) },
 	func() checks.Check { return windows.Outdated(executor) },
 	func() checks.Check {

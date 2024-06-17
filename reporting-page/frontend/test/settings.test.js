@@ -38,9 +38,6 @@ const dom = new JSDOM(`
             <a id="language-button">Change Language</a>
             <a id="windows-version-button" class="">Windows Version</a>
             <a id="scan-interval-button" class="lang-scan-interval"></a>
-            <a id="state-button-0">Change state to 0</a>
-            <a id="state-button-1">Change state to 1</a>
-            <a id="state-button-2">Change state to 2</a>
           </div>
         </div>
       </div>
@@ -96,10 +93,11 @@ jest.unstable_mockModule('../wailsjs/go/main/Tray.js', () => ({
   LogError: jest.fn(),
 }));
 
-// Mock scanTest
+// Mock issues
 jest.unstable_mockModule('../src/js/issues.js', () => ({
   openIssuesPage: jest.fn(),
   getUserSettings: jest.fn().mockImplementation(() => 1),
+  sortTable: jest.fn(),
 }));
 
 // Mock session and localStorage
@@ -140,6 +138,8 @@ describe('Settings page', function() {
       '../src/js/security-dashboard.js',
       '../src/js/privacy-dashboard.js',
       '../src/js/issues.js',
+      '../src/js/programs.js',
+      '../src/js/all-checks.js',
       '../src/js/integration.js',
       '../src/js/about.js',
       '../src/js/personalize.js',
@@ -150,6 +150,8 @@ describe('Settings page', function() {
       'openSecurityDashboardPage',
       'openPrivacyDashboardPage',
       'openIssuesPage',
+      'openProgramsPage',
+      'openAllChecksPage',
       'openIntegrationPage',
       'openAboutPage',
       'openPersonalizePage',
@@ -190,6 +192,8 @@ describe('Settings page', function() {
       '../src/js/security-dashboard.js',
       '../src/js/privacy-dashboard.js',
       '../src/js/issues.js',
+      '../src/js/programs.js',
+      '../src/js/all-checks.js',
       '../src/js/integration.js',
       '../src/js/about.js',
       '../src/js/personalize.js',
@@ -200,6 +204,8 @@ describe('Settings page', function() {
       'openSecurityDashboardPage',
       'openPrivacyDashboardPage',
       'openIssuesPage',
+      'openProgramsPage',
+      'openAllChecksPage',
       'openIntegrationPage',
       'openAboutPage',
       'openPersonalizePage',
