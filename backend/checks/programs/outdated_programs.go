@@ -161,7 +161,7 @@ func retrieveWingetInstalledPrograms(softwareList []software) ([]software, error
 	if indexN < 0 {
 		return softwareList, errors.New("error parsing winget output")
 	}
-	lines[0] = lines[indexN][strings.Index(lines[indexN], "Name"):] // Remove the first part of the header
+	lines[0] = lines[indexN][strings.Index(lines[indexN], "Name")+1:] // Remove the first part of the header
 	idIndex := strings.Index(lines[0], "Id")
 	versionIndex := strings.Index(lines[0], "Version")
 	availableIndex := strings.Index(lines[0], "Available")
