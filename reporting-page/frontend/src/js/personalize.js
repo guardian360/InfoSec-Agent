@@ -11,7 +11,7 @@ export function openPersonalizePage() {
   <div class="personalize-container">
     <h2 class="lang-personalize-title"></h2>
     <div class="personalize-item">
-      <span class="personalize-description">Favicon</span>
+      <span class="personalize-description lang-favicon"></span>
       <div class="personalize-button-container">
         <button class="personalize-button icon-button lang-change-favicon" type="button"></button>    
         <input class="personalize-input-invisible" type="file" id="input-file-icon" accept=".ico, .png">
@@ -19,7 +19,7 @@ export function openPersonalizePage() {
     </div>
     <hr class="solid">
     <div class="personalize-item">
-      <span class="personalize-description">Navigation Image</span>
+      <span class="personalize-description lang-nav-image"></span>
       <div class="personalize-button-container">
         <button class="personalize-button logo-button lang-change-image" type="button"></button>    
         <input class="personalize-input-invisible" type="file" 
@@ -28,7 +28,7 @@ export function openPersonalizePage() {
     </div>
     <hr class="solid">
     <div class="personalize-item">
-      <span class="personalize-description">Navigation Title</span>
+      <span class="personalize-description lang-nav-title"></span>
       <div class="personalize-button-container">
         <button class="personalize-button title-button lang-change-title" type="button"></button>
         <div id="custom-modal" class="modal">
@@ -129,6 +129,9 @@ export function openPersonalizePage() {
     'lang-reset-button',
     'lang-personalize-title',
     'lang-pick-theme',
+    'lang-favicon',
+    'lang-nav-image',
+    'lang-nav-title',
   ];
   const localizationIds = [
     'Personalize.ChangeFavicon',
@@ -139,6 +142,9 @@ export function openPersonalizePage() {
     'Personalize.Reset',
     'Personalize.PersonalizeTitle',
     'Personalize.PickTheme',
+    'Personalize.Favicon',
+    'Personalize.NavImage',
+    'Personalize.NavTitle'
   ];
   for (let i = 0; i < staticHomePageContent.length; i++) {
     getLocalization(localizationIds[i], staticHomePageContent[i]);

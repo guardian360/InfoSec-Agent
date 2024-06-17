@@ -154,7 +154,10 @@
     "ChangeTitle": "Titel wijzigen",
     "Reset": "Instellingen resetten",
     "PersonalizeTitle": "Personaliseer uw ervaring",
-    "PickTheme": "Kies een thema"
+    "PickTheme": "Kies een thema",
+    "Favicon": "Favicon",
+    "NavImage": "Navigatie afbeelding",
+    "NavTitle": "Navigatietitel"
   },
   "AllChecks": {
     "Security": "Beveiliging",

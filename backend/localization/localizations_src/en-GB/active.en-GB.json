@@ -157,7 +157,10 @@
     "ChangeTitle": "Change title", 
     "Reset": "Reset settings",
     "PersonalizeTitle": "Personalize Your Experience",
-    "PickTheme": "Pick a theme"
+    "PickTheme": "Pick a theme",
+    "Favicon": "Favicon",
+    "NavImage": "Navigation image",
+    "NavTitle": "Navigation title"
   },
   "AllChecks": {
     "Security": "Security",
