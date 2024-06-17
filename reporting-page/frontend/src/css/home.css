@@ -42,6 +42,8 @@ body {
 }
 
 .data-segment-header {
+  display:flex;
+  align-items:center;
   width: 100%;
   font-size: 18px;
   font-weight: bold;
@@ -114,3 +116,27 @@ body {
 }
 
 /* Tooltip */
+#lighthouse-progress-tooltip {
+  width:5%;
+  height:5%;
+}
+
+.lighthouse-progress-tooltip-text {
+    visibility: hidden;
+    font-size: 16px;
+    width: 50%;
+    background: var(--background-hover);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */    
+    position: absolute;
+    z-index: 1;
+    bottom: 12%;
+}
+
+#lighthouse-progress-tooltip:hover + .lighthouse-progress-tooltip-text {
+  visibility:visible;
+}
