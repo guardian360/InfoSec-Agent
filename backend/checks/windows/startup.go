@@ -30,6 +30,8 @@ func Startup(key1 mocking.RegistryKey, key2 mocking.RegistryKey, key3 mocking.Re
 		`SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run32`)
 
 	if err3 != nil {
+		// In Windows 11, the registry key for 32-bit startup programs is not present,
+		// because 32-bit programs are no longer supported
 		if WinVersion != 11 {
 			return checks.NewCheckError(checks.StartupID, errors.New("error opening registry keys"))
 		}
@@ -41,7 +43,7 @@ func Startup(key1 mocking.RegistryKey, key2 mocking.RegistryKey, key3 mocking.Re
 	// Close the keys after we have received all relevant information
 	defer mocking.CloseRegistryKey(cuKey)
 	defer mocking.CloseRegistryKey(lmKey)
-	if (err3 != nil && WinVersion == 10) || (err3 == nil && WinVersion == 11 || WinVersion == 10) {
+	if !(err3 != nil && WinVersion == 11) {
 		var lm2ValueNames []string
 		if lmKey2 == nil {
 			return checks.NewCheckError(checks.StartupID, errors.New("error opening registry keys"))
