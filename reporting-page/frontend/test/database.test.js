@@ -54,11 +54,6 @@ jest.unstable_mockModule('../wailsjs/go/main/Tray.js', () => ({
   LogError: jest.fn(),
 }));
 
-// Mock getDataBaseData
-jest.unstable_mockModule('../wailsjs/go/main/DataBase.js', () => ({
-  GetData: jest.fn().mockImplementation((input) => mockGetDataBaseData(input)),
-}));
-
 // Mock session and localStorage
 global.sessionStorage = storageMock;
 global.localStorage = storageMock;
