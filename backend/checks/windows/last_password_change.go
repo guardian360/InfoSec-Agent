@@ -70,6 +70,11 @@ func LastPasswordChange(executor mocking.CommandExecutor) checks.Check {
 		goDateFormat = "02-01-2006"
 	case "M-d-yyyy":
 		goDateFormat = "01-02-2006"
+	// FIXME: temp fix, check jira bug
+	case "M/d/yyyy":
+		goDateFormat = "01-02-2006"
+	case "d/M/yyyy":
+		goDateFormat = "02-01-2006"
 	default:
 		logger.Log.Error("Unknown date format:")
 		goDateFormat = "02-01-2006"
