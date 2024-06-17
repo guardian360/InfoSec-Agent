@@ -68,6 +68,10 @@ export async function openHomePage() {
       <div id="progress-segment" class="data-segment">
         <div class="data-segment-header">
           <p class="lang-lighthouse-progress"></p>
+          <div id="lighthouse-progress-hoverbox">
+            <img id="lighthouse-progress-tooltip">
+            <p class="lighthouse-progress-tooltip-text lang-tooltip-text"></p>
+          </div>
         </div>
         <div class="progress-container">
           <div class="progress-bar" id="progress-bar"></div>
@@ -100,6 +104,9 @@ export async function openHomePage() {
 
   document.getElementById('lighthouse-background').src = lighthouseState;
 
+  const tooltip = await getImagePath('tooltip.png');
+  document.getElementById('lighthouse-progress-tooltip').src = tooltip;
+
   const rc = JSON.parse(sessionStorage.getItem('RiskCounters'));
   new PieChart('pie-chart-home', rc, 'Total');
 
@@ -115,6 +122,7 @@ export async function openHomePage() {
     'lang-save-text',
     'lang-share',
     'lang-lighthouse-progress',
+    'lang-tooltip-text',
   ];
   const localizationIds = [
     'Dashboard.RiskLevelDistribution',
@@ -127,6 +135,7 @@ export async function openHomePage() {
     'Dashboard.SaveText',
     'Dashboard.Share',
     'Dashboard.LighthouseProgress',
+    'Dashboard.TooltipText',
   ];
   for (let i = 0; i < staticHomePageContent.length; i++) {
     getLocalization(localizationIds[i], staticHomePageContent[i]);
