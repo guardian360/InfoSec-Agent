@@ -5,7 +5,6 @@ package database
 
 import (
 	"encoding/json"
-	"errors"
 	"os"
 	"strconv"
 
@@ -37,40 +36,6 @@ type Data struct {
 	Severity int
 }
 
-// GetSeverity is a function that retrieves the severity level of a specific issue from the JSON data.
-// It takes three parameters:
-// - data: a JSONData object that represents the structure of the JSON data.
-// - issueID: an integer that represents the ID of the issue.
-// - resultID: an integer that represents the ID of the result.
-//
-// The function first converts the issueID and resultID to strings. It then retrieves the issue from the JSON data
-// using the issueID. If the issue does not exist, it returns 0 and an error indicating that the issue was not found.
-//
-// If the issue exists, the function then retrieves the result from the issue using the resultID. If the result does
-// not exist, it returns 0 and an error indicating that the result was not found.
-//
-// If both the issue and the result exist, the function returns the severity level of the result and nil for the error.
-func GetSeverity(data JSONData, issueID int, resultID int) (int, error) {
-	// Convert issueID and resultID to string
-	issueKey := strconv.Itoa(issueID)
-	resultKey := strconv.Itoa(resultID)
-
-	// Retrieve the issue from the JSON data
-	issue, exists := data[issueKey]
-	if !exists {
-		return 0, errors.New("issue not found")
-	}
-
-	// Retrieve the result from the issue
-	result, exists := issue.Results[resultKey]
-	if !exists {
-		return 0, errors.New("result not found")
-	}
-
-	// Return the severity level
-	return result.Severity, nil
-}
-
 // GetData is a function that computes the severity for all found checks and puts them into a list of Data.
 // It takes two parameters:
 // - jsonFilePath: a string that represents the path to the JSON file.
@@ -87,18 +52,12 @@ func GetSeverity(data JSONData, issueID int, resultID int) (int, error) {
 //
 // After iterating through all check results, the function returns the dataList and nil for the error.
 func GetData(jsonFilePath string, checkResults []checks.Check) ([]Data, error) {
-	// Open the JSON file
-	file, err := os.Open(jsonFilePath)
+	byteValue, _ := os.ReadFile(jsonFilePath)
+
+	var data map[string]map[string]interface{}
+	err := json.Unmarshal(byteValue, &data)
 	if err != nil {
-		return nil, err
-	}
-	defer file.Close()
-	interface 
-	// Decode the JSON data
-	var jsonData JSONData
-	decoder := json.NewDecoder(file)
-	err = decoder.Decode(&jsonData)
-	if err != nil {
+		logger.Log.ErrorWithErr("Error parsing JSON:", err)
 		return nil, err
 	}
 
@@ -107,17 +66,32 @@ func GetData(jsonFilePath string, checkResults []checks.Check) ([]Data, error) {
 
 	// Iterate through all check results to compute the severities
 	for _, checkResult := range checkResults {
-		issueID := checkResult.IssueID
-		resultID := checkResult.ResultID
-
-		// Compute the severity
-		severity, sevErr := GetSeverity(jsonData, issueID, resultID)
-		if sevErr != nil {
-			logger.Log.ErrorWithErr("Error getting severity:", sevErr)
-			continue // Skip if there's an error retrieving severity
+		if checkResult.Error != nil {
+			logger.Log.ErrorWithErr("Error reading scan result", checkResult.Error)
+			continue
 		}
-		// Add to the dataList
-		dataList = append(dataList, Data{IssueID: issueID, Severity: severity})
+
+		// Convert IssueID and ResultID to string to access JSON data
+		issueKey := strconv.Itoa(checkResult.IssueID)
+		resultKey := strconv.Itoa(checkResult.ResultID)
+
+		// Get the severity from JSON
+		issueData, ok := data[issueKey]
+		if !ok {
+			logger.Log.Debug("IssueID not found in JSON:" + strconv.Itoa(checkResult.IssueID))
+			continue
+		}
+		resultData, ok := issueData[resultKey].(map[string]interface{})
+		if !ok {
+			logger.Log.Debug("ResultID not found in JSON: " + strconv.Itoa(checkResult.ResultID))
+			continue
+		}
+		sev, ok := resultData["Severity"].(float64)
+		if !ok {
+			logger.Log.Debug("Severity not found or invalid for IssueID:" + strconv.Itoa(checkResult.IssueID) + "ResultID:" + strconv.Itoa(checkResult.ResultID))
+			continue
+		}
+		dataList = append(dataList, Data{IssueID: checkResult.IssueID, Severity: int(sev)})
 	}
 
 	return dataList, nil
