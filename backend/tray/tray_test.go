@@ -379,7 +379,7 @@ func TestPopupMessage(t *testing.T) {
 	// Iterate over test cases
 	for _, tc := range testCases {
 		// Run the function with mocked scan
-		result := tray.PopupMessage(tc.input, "../../reporting-page/database.db")
+		result := tray.PopupMessage(tc.input, "./../../reporting-page/frontend/src/databases/database.en-GB.json")
 
 		// Assert that the message matches the expected message
 		require.Equal(t, tc.expectedMessage, result)

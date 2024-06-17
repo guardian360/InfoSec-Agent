@@ -61,7 +61,7 @@ func Popup(scanResult []checks.Check, path string) error {
 //
 // Returns: string: A notification message based on the severity of the issues found during the scan.
 func PopupMessage(scanResult []checks.Check, path string) string {
-	dbData, err := database.GetData(scanResult, path)
+	dbData, err := database.GetData(path, scanResult)
 	if err != nil {
 		logger.Log.ErrorWithErr("Error getting database data:", err)
 	}

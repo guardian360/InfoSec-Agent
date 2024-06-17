@@ -45,6 +45,8 @@ jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
 jest.unstable_mockModule('../wailsjs/go/main/tray.js', () => ({
   LogError: jest.fn(),
   LogDebug: jest.fn(),
+  ChangeLanguage: jest.fn(),
+  ChangeScanInterval: jest.fn(),
 }));
 
 // Mock scantest function
@@ -52,15 +54,28 @@ jest.unstable_mockModule('../src/js/database.js', () => ({
   scanTest: jest.fn(),
 }));
 
+// Mock personalize
+jest.unstable_mockModule('../src/js/personalize.js', () => ({
+  openPersonalizePage: jest.fn(),
+  retrieveTheme: jest.fn(),
+}));
+
 // Mock openAllChecksPage
 jest.unstable_mockModule('../src/js/all-checks.js', () => ({
   openAllChecksPage: jest.fn(),
+}));
+
+// Mock openHomePage
+jest.unstable_mockModule('../src/js/home.js', () => ({
+  openHomePage: jest.fn(),
 }));
 
 // Mock openIssuesPage
 jest.unstable_mockModule('../src/js/issues.js', () => ({
   openIssuesPage: jest.fn(),
   getUserSettings: jest.fn().mockImplementationOnce(() => 1)
+    .mockImplementationOnce(() => 1)
+    .mockImplementationOnce(() => 1)
     .mockImplementationOnce(() => 1)
     .mockImplementationOnce(() => 1)
     .mockImplementationOnce(() => 0)
@@ -86,31 +101,35 @@ jest.unstable_mockModule('../src/js/issues.js', () => ({
 
 // Mock sessionStorage
 global.sessionStorage = storageMock;
+global.localStorage = storageMock;
 
 describe('Issue page', function() {
   it('openIssuesPage should not add solutions for a non-issue to the page-contents', async function() {
     // Arrange
     const issue = await import('../src/js/issue.js');
-    const nonIssueID = 161;
+    const nonIssueID = 16;
+    const nonResultID = 1;
     const currentIssue = data[nonIssueID];
 
     // Act
-    await issue.openIssuePage(nonIssueID, 0);
+    await issue.openIssuePage(nonIssueID, nonResultID);
     const name = document.getElementsByClassName('issue-name')[0].innerHTML;
     const description = document.getElementById('description').innerHTML;
     const solution = document.getElementById('solution-text').innerHTML;
 
     // Assert
-    test.value(name).isEqualTo(currentIssue.Name);
+    test.value(name).isEqualTo(currentIssue[nonResultID].Name);
     test.value(description).isEqualTo(currentIssue.Information);
-    test.value(solution).isEqualTo(currentIssue.Solution[0]);
+    test.value(solution).isEqualTo(currentIssue[nonResultID].Solution[0]);
   });
-  it('clicking on the back button should call openIssuesPage or openAllChecksPage', async function() {
+  it('clicking on the back button should call openIssuesPage, openHomePage or openAllChecksPage', async function() {
     // Arrange
     const issue = await import('../src/js/issue.js');
     const issues = await import('../src/js/issues.js');
     let button = document.getElementById('back-button');
     const openIssuesPageMock = jest.spyOn(issues, 'openIssuesPage');
+    const home = await import('../src/js/home.js');
+    const openHomePageMock = jest.spyOn(home, 'openHomePage');
     const checks = await import('../src/js/all-checks.js');
     const openAllChecksPageMock = jest.spyOn(checks, 'openAllChecksPage');
 
@@ -121,7 +140,15 @@ describe('Issue page', function() {
     expect(openIssuesPageMock).toHaveBeenCalled();
 
     // Act
-    await issue.openIssuePage(161, 0, 'top');
+    await issue.openIssuePage(16, 1, 'home');
+    button = document.getElementById('back-button');
+    await button.dispatchEvent(clickEvent);
+
+    // Assert
+    expect(openHomePageMock).toHaveBeenCalled();
+
+    // Act
+    await issue.openIssuePage(16, 1, 'top');
     button = document.getElementById('back-button');
     await button.dispatchEvent(clickEvent);
 
@@ -130,41 +157,45 @@ describe('Issue page', function() {
   });
 
   // from here on issueID 160 is used for tests up to parseShowResults tests
-  const issueID = 160;
-  const severity = 2;
+  const issueID = 16;
+  const resultID = 0;
   let currentIssue = data[issueID];
+  const mockScanResult = [{issue_id: issueID, result_id: resultID, result: []}];
 
   it('openIssuesPage should add the right info about the issue to the page-contents', async function() {
     sessionStorage.setItem('WindowsVersion', '10');
+    sessionStorage.setItem('ScanResult', JSON.stringify(mockScanResult));
     // Arrange
     const issue = await import('../src/js/issue.js');
 
     // Act
-    await issue.openIssuePage(issueID, severity);
+    await issue.openIssuePage(issueID, resultID);
     const name = document.getElementsByClassName('issue-name')[0].innerHTML;
     const description = document.getElementById('information').nextElementSibling.innerHTML;
     const solution = document.getElementById('solution-text').innerHTML;
 
     // Assert
-    test.value(name).isEqualTo(currentIssue.Name);
+    test.value(name).isEqualTo(currentIssue[resultID].Name);
     test.value(description).isEqualTo(currentIssue.Information);
-    test.value(htmlDecode(solution)).isEqualTo('1. ' + currentIssue.Solution[0]);
+    test.value(htmlDecode(solution)).isEqualTo('1. ' + currentIssue[resultID].Solution[0]);
   });
   it('updateSolutionStep should update the solution step', async function() {
     // Arrange
-    const solutionText = document.getElementById('solution-text');
+
     const solutionScreenshot = document.getElementById('step-screenshot');
     stepCounter = 0;
 
     const issue = await import('../src/js/issue.js');
+    await issue.openIssuePage(issueID, resultID);
+    const solutionText = document.getElementById('solution-text');
 
     // Act
     issue.updateSolutionStep(solutionText, solutionScreenshot,
-      currentIssue, stepCounter);
+      currentIssue[resultID], stepCounter);
 
     // Assert
-    test.value(htmlDecode(solutionText.innerHTML)).isEqualTo('1. ' + currentIssue.Solution[0]);
-    test.value(solutionScreenshot.src).isEqualTo(prefix+currentIssue.Screenshots[0]);
+    test.value(htmlDecode(solutionText.innerHTML)).isEqualTo('1. ' + currentIssue[resultID].Solution[0]);
+    test.value(solutionScreenshot.src).isEqualTo(prefix+currentIssue[resultID].Screenshots[0]);
   });
 
   it('nextSolutionStep should update the current step and screenshot', async function() {
@@ -178,8 +209,8 @@ describe('Issue page', function() {
 
     await waitFor(1000);
     // Assert
-    test.value(solutionText.innerHTML).isEqualTo('2. ' + currentIssue.Solution[1]);
-    test.value(solutionScreenshot.src).isEqualTo(prefix+currentIssue.Screenshots[1]);
+    test.value(solutionText.innerHTML).isEqualTo('2. ' + currentIssue[resultID].Solution[1]);
+    test.value(solutionScreenshot.src).isEqualTo(prefix+currentIssue[resultID].Screenshots[1]);
   });
   it('previousSolutionStep should update the current step and screenshot', async function() {
     // Arrange
@@ -192,8 +223,8 @@ describe('Issue page', function() {
     await waitFor(1000);
 
     // Assert
-    test.value(htmlDecode(solutionText.innerHTML)).isEqualTo('1. ' + currentIssue.Solution[0]);
-    test.value(solutionScreenshot.src).isEqualTo(prefix+currentIssue.Screenshots[0]);
+    test.value(htmlDecode(solutionText.innerHTML)).isEqualTo('1. ' + currentIssue[resultID].Solution[0]);
+    test.value(solutionScreenshot.src).isEqualTo(prefix+currentIssue[resultID].Screenshots[0]);
   });
 
   it('clicking previous step button on first step should not update the current step and screenshot', async function() {
@@ -207,8 +238,8 @@ describe('Issue page', function() {
     await waitFor(1000);
 
     // Assert
-    test.value(htmlDecode(solutionText.innerHTML)).isEqualTo('1. ' + currentIssue.Solution[0]);
-    test.value(solutionScreenshot.src).isEqualTo(prefix+currentIssue.Screenshots[0]);
+    test.value(htmlDecode(solutionText.innerHTML)).isEqualTo('1. ' + currentIssue[resultID].Solution[0]);
+    test.value(solutionScreenshot.src).isEqualTo(prefix+currentIssue[resultID].Screenshots[0]);
   });
   it('clicking next step button at last step should not update the current step and screenshot', async function() {
     // Arrange
@@ -225,8 +256,8 @@ describe('Issue page', function() {
     await waitFor(1000);
 
     // Assert
-    test.value(solutionText.innerHTML).isEqualTo('3. ' + currentIssue.Solution[2]);
-    test.value(solutionScreenshot.src).isEqualTo(prefix+currentIssue.Screenshots[2]);
+    test.value(solutionText.innerHTML).isEqualTo('3. ' + currentIssue[resultID].Solution[2]);
+    test.value(solutionScreenshot.src).isEqualTo(prefix+currentIssue[resultID].Screenshots[2]);
   });
 
 
@@ -248,16 +279,16 @@ describe('Issue page', function() {
       // Act
       const data = await import(localization.path, {assert: {type: 'json'}});
       const currentIssue = data.default[issueID];
-      await issue.openIssuePage(issueID, severity);
+      await issue.openIssuePage(issueID, resultID);
 
       const name = document.getElementsByClassName('issue-name')[0].innerHTML;
       const description = document.getElementById('information').nextElementSibling.innerHTML;
       const solution = document.getElementById('solution-text').innerHTML;
 
       // Assert
-      test.value(name).isEqualTo(currentIssue.Name);
+      test.value(name).isEqualTo(currentIssue[resultID].Name);
       test.value(description).isEqualTo(currentIssue.Information);
-      test.value(htmlDecode(solution)).isEqualTo('1. ' + currentIssue.Solution[0]);
+      test.value(htmlDecode(solution)).isEqualTo('1. ' + currentIssue[resultID].Solution[0]);
     }
   });
 
@@ -295,31 +326,9 @@ describe('Issue page', function() {
       ],
     });
   });
-
-  it('Should fill page with parseShowResult with a set of resultIDs', async function() {
+  it('parseShowResult fills the page with the correct structure and text for specific results', async function() {
     // Arrange
-    const issue = await import('../src/js/issue.js');
-
-    sessionStorage.setItem('ScanResult', JSON.stringify(mockResult));
-
-    mockResult.forEach(async (result, index) => {
-      const jsonkey = result.issue_id.toString() + result.result_id.toString();
-      currentIssue = data[jsonkey];
-
-      // Act
-      await issue.openIssuePage(jsonkey, severity);
-      const name = document.getElementsByClassName('issue-name')[0].innerHTML;
-      const description = document.getElementById('information').nextElementSibling.innerHTML;
-      const solution = document.getElementById('solution-text').innerHTML;
-
-      // Assert
-      test.value(name).isEqualTo(currentIssue.Name);
-      test.value(description).isEqualTo(currentIssue.Information);
-      test.value(htmlDecode(solution)).isEqualTo('1. ' + currentIssue.Solution[0]);
-    });
-  });
-  it('parseShowResult fills the page with the correct structure for specific results', async function() {
-    // Arrange
+    sessionStorage.setItem('WindowsVersion', '11');
     // expectedFindings should be changed if the structure for specific results is changed in the code
     const expectedFindings = [
       '<li>process: p, port: 1, 2, 3</li><li>SYSTEM</li><li>CIS registry 1</li>' +
@@ -341,56 +350,65 @@ describe('Issue page', function() {
     ];
 
     // Assert
-    await testParseShowResult('11', expectedFindings[0]);
-    await testParseShowResult('21', expectedFindings[0]);
-    await testParseShowResult('60', expectedFindings[0]);
-    await testParseShowResult('70', expectedFindings[0]);
-    await testParseShowResult('80', expectedFindings[0]);
-    await testParseShowResult('90', expectedFindings[0]);
-    await testParseShowResult('100', expectedFindings[0]);
-    await testParseShowResult('110', expectedFindings[1]);
-    await testParseShowResult('160', expectedFindings[2]);
-    await testParseShowResult('173', expectedFindings[0]);
-    await testParseShowResult('201', expectedFindings[0]);
-    await testParseShowResult('230', expectedFindings[0]);
-    await testParseShowResult('271', expectedFindings[3]);
-    await testParseShowResult('311', expectedFindings[0]);
-    await testParseShowResult('320', expectedFindings[4]);
-    await testParseShowResult('351', expectedFindings[5]);
-    await testParseShowResult('361', expectedFindings[5]);
+    await testParseShowResult('1', '1', expectedFindings[0]);
+    await testParseShowResult('2', '1', expectedFindings[0]);
+    await testParseShowResult('6', '0', expectedFindings[0]);
+    await testParseShowResult('7', '0', expectedFindings[0]);
+    await testParseShowResult('8', '0', expectedFindings[0]);
+    await testParseShowResult('9', '0', expectedFindings[0]);
+    await testParseShowResult('10', '0', expectedFindings[0]);
+    await testParseShowResult('11', '0', expectedFindings[1]);
+    await testParseShowResult('16', '0', expectedFindings[2]);
+    await testParseShowResult('17', '3', expectedFindings[0]);
+    await testParseShowResult('20', '1', expectedFindings[0]);
+    await testParseShowResult('23', '0', expectedFindings[0]);
+    await testParseShowResult('27', '1', expectedFindings[3]);
+    await testParseShowResult('31', '1', expectedFindings[0]);
+    await testParseShowResult('32', '0', expectedFindings[4]);
+    await testParseShowResult('35', '1', expectedFindings[5]);
+    await testParseShowResult('36', '1', expectedFindings[5]);
   });
 
   /** helper function for testing the correct structure of parseShowResult
    *
-   * @param {*} jsonkey key of issue being tested
+   * @param {string} issueId id of issue being tested
+   * @param {string} resultId result id of issue being tested
    * @param {string} expectedFinding expected result found in the resultline part of parseShowResult
    */
-  async function testParseShowResult(jsonkey, expectedFinding) {
+  async function testParseShowResult(issueId, resultId, expectedFinding) {
     // Arrange
     const issue = await import('../src/js/issue.js');
     sessionStorage.setItem('ScanResult', JSON.stringify(mockResult));
 
     // Act
-    await issue.openIssuePage(jsonkey, severity);
+    await issue.openIssuePage(issueId, resultId);
+    const name = document.getElementsByClassName('issue-name')[0].innerHTML;
+    const description = document.getElementById('information').nextElementSibling.innerHTML;
+    const solution = document.getElementById('solution-text').innerHTML;
+
     let findings = '';
-    if (jsonkey == 60 || jsonkey == 70 || jsonkey == 80 || jsonkey == 90 || jsonkey == 100) {
+    if (issueId == 6 || issueId == 7 || issueId == 8 || issueId == 9 || issueId == 10) {
       findings = document.getElementById('description').nextElementSibling.innerHTML;
       expectedFinding = 'Issues.Permissions';
-    } else if (jsonkey == 110) {
+    } else if (issueId == 11) {
       findings = document.getElementById('description').nextElementSibling.innerHTML;
       expectedFinding = 'Issues.Port';
-    } else if (jsonkey == 160) {
+    } else if (issueId == 16) {
       findings = document.getElementById('description').nextElementSibling.innerHTML;
       expectedFinding = 'Issues.Password';
-    } else if (jsonkey == 271 || jsonkey == 351|| jsonkey == 361) {
+    } else if (issueId == 27 || issueId == 35|| issueId == 36) {
       findings = document.getElementById('description').nextElementSibling.innerHTML;
       expectedFinding = 'Issues.Cookies';
-    } else if (jsonkey == 320) {
+    } else if (issueId == 32) {
       findings = document.getElementsByClassName('issues-table')[0].innerHTML;
     } else {
       findings = document.getElementById('description').nextElementSibling.innerHTML;
     }
     // Assert
+    test.value(name).isEqualTo(data[issueId][resultId].Name);
+    test.value(description).isEqualTo(data[issueId].Information);
+    test.value(htmlDecode(solution)).isEqualTo('1. ' + data[issueId][resultId].Solution[0]);
+
     test.value(findings).isEqualTo(expectedFinding);
   }
 
@@ -408,12 +426,12 @@ describe('Issue page', function() {
       },
     ];
     sessionStorage.setItem('ScanResult', JSON.stringify(mockResult));
-    const jsonkey = mockResult[0].issue_id.toString() + mockResult[0].result_id.toString();
-    currentIssue = data[jsonkey];
+    // const issueId = mockResult[0].issue_id.toString() + mockResult[0].result_id.toString();
+    currentIssue = data[mockResult[0].issue_id];
     const pageContents = document.getElementById('page-contents');
 
     // Act
-    pageContents.innerHTML = issue.parseShowResult(jsonkey, currentIssue);
+    pageContents.innerHTML = issue.parseShowResult(mockResult[0].issue_id, mockResult[0].result_id, currentIssue);
     const findings = document.getElementById('description').innerHTML;
 
     // Assert
@@ -424,7 +442,7 @@ describe('Issue page', function() {
     const issue = await import('../src/js/issue.js');
 
     // Act
-    const checked = issue.checkShowResult(data[60]);
+    const checked = issue.checkShowResult(data[6][0]);
 
     // Assert
     test.value(checked).isEqualTo(true);
@@ -432,7 +450,7 @@ describe('Issue page', function() {
   it('getVersionScreenshot returns the right screenshot for the detected windows version', async function() {
     // Arrange
     const issue = await import('../src/js/issue.js');
-    let testIssue = data['11'];
+    let testIssue = data[1][1];
 
     // Act
     sessionStorage.clear();
@@ -449,14 +467,14 @@ describe('Issue page', function() {
 
     // Act
     sessionStorage.setItem('WindowsVersion', '10');
-    testIssue = data['30'];
+    testIssue = data[3][0];
     result = await issue.getVersionScreenshot(testIssue, 0);
 
     // Assert
     test.value(result).isEqualTo(prefix + testIssue.Screenshots[0]);
 
     // Act
-    testIssue = data['310'];
+    testIssue = data[31][0];
     result = await issue.getVersionScreenshot(testIssue, 0);
 
     // Assert
@@ -465,7 +483,7 @@ describe('Issue page', function() {
   it('getVersionSolution returns the right solution for the detected windows version', async function() {
     // Arrange
     const issue = await import('../src/js/issue.js');
-    let testIssue = data['11'];
+    let testIssue = data[3][1];
 
     // Act
     // clear sessionstorage
@@ -491,18 +509,11 @@ describe('Issue page', function() {
 
     // Act
     sessionStorage.setItem('WindowsVersion', '10');
-    testIssue = data['30'];
+    testIssue = data[3][0];
     result = issue.getVersionSolution(testIssue, 0);
 
     // Assert
     test.value(result).isEqualTo(testIssue.Solution[0]);
-
-    // Act
-    testIssue = data['310'];
-    result = issue.getVersionSolution(testIssue, 0);
-
-    // Assert
-    test.value(result).isEqualTo('');
   });
 });
 

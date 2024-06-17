@@ -17,13 +17,13 @@ import (
 func LoginMethod(registryKey mocking.RegistryKey) checks.Check {
 	resultID := 0
 	// Open the registry key related to log-in methods
-	key, err := checks.OpenRegistryKey(registryKey,
+	key, err := mocking.OpenRegistryKey(registryKey,
 		`SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\UserTile`)
 	if err != nil {
 		return checks.NewCheckErrorf(checks.LoginMethodID, "error opening registry key", err)
 	}
 	// Close the key after we have received all relevant information
-	defer checks.CloseRegistryKey(key)
+	defer mocking.CloseRegistryKey(key)
 
 	// Read the info of the key
 	keyInfo, err := key.Stat()
@@ -44,22 +44,22 @@ func LoginMethod(registryKey mocking.RegistryKey) checks.Check {
 	for _, element := range names {
 		switch {
 		case checks.CheckKey(key, element) == "{D6886603-9D2F-4EB2-B667-1971041FA96B}":
-			resultID |= 1 << 0
+			resultID = max(resultID, 2)
 			resultString = append(resultString, "PIN")
 		case checks.CheckKey(key, element) == "{2135F72A-90B5-4ED3-A7F1-8BB705AC276A}":
-			resultID |= 1 << 1
+			resultID = max(resultID, 3)
 			resultString = append(resultString, "Picture Logon")
 		case checks.CheckKey(key, element) == "{60B78E88-EAD8-445C-9CFD-0B87F74EA6CD}":
-			resultID |= 1 << 2
+			resultID = max(resultID, 1)
 			resultString = append(resultString, "Password")
 		case checks.CheckKey(key, element) == "{BEC09223-B018-416D-A0AC-523971B639F5}":
-			resultID |= 1 << 3
+			resultID = max(resultID, 1)
 			resultString = append(resultString, "Fingerprint")
 		case checks.CheckKey(key, element) == "{8AF662BF-65A0-4D0A-A540-A338A999D36F}":
-			resultID |= 1 << 4
+			resultID = max(resultID, 2)
 			resultString = append(resultString, "Facial recognition")
 		case checks.CheckKey(key, element) == "{27FBDB57-B613-4AF2-9D7E-4FA7A66C21AD}":
-			resultID |= 1 << 5
+			resultID = max(resultID, 2)
 			resultString = append(resultString, "Trust signal")
 		default:
 			return checks.NewCheckErrorf(checks.LoginMethodID, "error reading value", err)

@@ -16,12 +16,6 @@ func TestIntegrationFirefoxFolderExists(t *testing.T) {
 	require.NoError(t, err)
 }
 
-func TestIntegrationFirefoxFolderNotExists(t *testing.T) {
-	result, err := browsers.RealProfileFinder{}.FirefoxFolder()
-	require.Empty(t, result)
-	require.Error(t, err)
-}
-
 func TestIntegrationGetDefaultDirExists(t *testing.T) {
 	tests := []struct {
 		name    string
