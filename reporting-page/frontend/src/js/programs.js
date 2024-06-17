@@ -14,16 +14,15 @@ export function openProgramsPage() {
   <div class="program-data">
       <div class="program-container">
       <h2 class="lang-program-table"></h2>
-      <input type="text" id="search-input" placeholder="Search software...">
+      <input type="text" id="search-input" class="lang-search-software" placeholder="Search software...">
       <table class="program-table" id="program-table">
           <thead>
           <tr>
           <th class="program-column">
               <span class="table-header lang-name"></span>
-              <span class="material-symbols-outlined" id="sort-on-issue">swap_vert</span>
           </th>
           <th class="version-column">
-              <span class="table-header"></span>
+              <span class="table-header lang-version"></span>
           </th>
           </tr>
           </thead>
@@ -45,7 +44,6 @@ export function openProgramsPage() {
   }
 
   // Add event listeners for sorting and searching
-  document.getElementById('sort-on-issue').addEventListener('click', () => sortProgramTable(issueTableHtml, 'ascending'));
   document.getElementById('search-input').addEventListener('input', function(event) {
     const query = event.target.value;
     searchTable(issueTableHtml, query);
@@ -55,10 +53,13 @@ export function openProgramsPage() {
   const tableHeaders = [
     'lang-program-table',
     'lang-name',
+    'lang-version',
+    'lang-search-software',
   ];
   const localizationIds = [
     'Programs.ProgramTable',
     'Programs.Name',
+    'Programs.Version',
     'Programs.Search',
   ];
   for (let i = 0; i < tableHeaders.length; i++) {

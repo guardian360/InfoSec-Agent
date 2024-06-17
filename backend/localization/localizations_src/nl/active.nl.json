@@ -143,6 +143,7 @@
   },  
   "Programs": {
     "Name":"Naam",
+    "Version": "Versie",
     "ProgramTable": "Geïnstalleerde programma's",
     "Search": "Zoeken"
   },
