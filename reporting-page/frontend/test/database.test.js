@@ -7,7 +7,6 @@ import {mockPageFunctions,
   storageMock,
   mockScanNowGo,
   mockRiskCounters,
-  mockGetDataBaseData,
   scanResultMock,
   mockOpenPageFunctions} from './mock.js';
 

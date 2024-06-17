@@ -75,24 +75,6 @@ export function mockScanNowGo(bool) {
   return myPromise;
 }
 
-/** Mock of getDataBaseData function
- *
- * @param {Issue[]} input if set to false will result in error from promise
- * @return {DataBaseData[]} a promise with mocked database results as a value
- */
-export function mockGetDataBaseData(input) {
-  const databaseList = [];
-  for (let i = 0; i < input.length; i++) {
-    databaseList.push({
-      id: input[i].issue_id,
-      severity: i,
-      jsonkey: parseInt(input[i].issue_id.toString()+input[i].result_id.toString()),
-    });
-  }
-
-  return databaseList;
-}
-
 // Scan result mock
 export const scanResultMock = [
   { // Privacy, level 0
