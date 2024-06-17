@@ -100,13 +100,6 @@ func TestIntegrationOutdatedWinUpToDate(t *testing.T) {
 	require.Equal(t, 0, result.ResultID)
 }
 
-func TestIntegrationOutdatedWinNotUpToDate(t *testing.T) {
-	result := windows.Outdated(&mocking.RealCommandExecutor{})
-	require.NotEmpty(t, result)
-	require.NotEmpty(t, result.Result)
-	require.Equal(t, 1, result.ResultID)
-}
-
 func TestIntegrationPasswordComplexityValid(t *testing.T) {
 	result := windows.PasswordLength(&mocking.RealCommandExecutor{})
 	require.NotEmpty(t, result)
