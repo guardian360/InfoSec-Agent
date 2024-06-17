@@ -60,7 +60,8 @@
     "ChangeLanguage": "Change Language",
     "WindowsVersion": "Windows Version",
     "ScanInterval": "Scan Interval",
-    "SelectVersion": "Select windows version"
+    "SelectVersion": "Select windows version",
+    "Programs": "Programs"
 
   },
   "Dashboard": 
@@ -98,7 +99,7 @@
     "Other": "Other",
     "ChooseIssueDescription": "Actions",
     "BarGraphDescription": "This graph shows the distribution of issues of different risk levels found over the past scans.",
-    "SelectRisks": "Select risks",
+    "SelectRisks": "Filter risk levels",
     "ChangeInterval": "Change range of scans:",
     "ShareButton": "Share Progress",
     "ShareText": "Select where to share your progress, save and download it, then share it with others!",
@@ -108,7 +109,7 @@
   },
   "Issues":
   {
-    "IssueTable": "Issue table",
+    "IssueTable": "Issues",
     "Findings": "Findings",
     "AcceptableFindings": "Acceptable findings",
     "Name": "Name",
@@ -141,6 +142,11 @@
     "ContributingTitle": "Contributing",
     "ContributingInfo": "InfoSec-Agent is an Open-Source project licensed under the AGPL-3.0 Licence. However, due to its origins as a Utrecht University assignment, public contributions to this repository will only be merged after the completion of this assignment, which is scheduled for 24th June 2024. Feel free to report any bugs or issues you encounter. Your feedback is valuable and helps improve the InfoSec-Agent project. You can email us at <a href=\"mailto:infosecagentuu@gmail.com\">infosecagentuu@gmail.com</a>"
   },  
+  "Programs": {
+    "Name":"Name",
+    "ProgramTable": "Installed programs",
+    "Search": "Search" 
+  },
   "Personalize": {
     "ChangeFavicon": "Change favicon", 
     "navImage": "Navigation image", 

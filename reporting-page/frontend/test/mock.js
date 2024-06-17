@@ -241,17 +241,22 @@ export function mockOpenPageFunctions() {
   // Mock openIssuePage
   jest.unstable_mockModule('../src/js/issue.js', () => ({
     openIssuePage: jest.fn(),
-  }));
-
-  // Mock openIssuesPage
-  jest.unstable_mockModule('../src/js/issue.js', () => ({
-    openIssuePage: jest.fn(),
     scrollToElement: jest.fn(),
   }));
 
   // Mock openIssuesPage
   jest.unstable_mockModule('../src/js/issues.js', () => ({
     openIssuesPage: jest.fn(),
+  }));
+
+  // Mock openProgramsPage
+  jest.unstable_mockModule('../src/js/programs.js', () => ({
+    openProgramsPage: jest.fn(),
+  }));
+
+  // Mock openAllChecks
+  jest.unstable_mockModule('../src/js/all-checks.js', () => ({
+    openAllChecksPage: jest.fn(),
   }));
 
   // Mock openIntegrationPage
@@ -268,6 +273,11 @@ export function mockOpenPageFunctions() {
   jest.unstable_mockModule('../src/js/personalize.js', () => ({
     openPersonalizePage: jest.fn(),
     retrieveTheme: jest.fn(),
+  }));
+
+  // Mock openAllChecks
+  jest.unstable_mockModule('../src/js/all-checks.js', () => ({
+    openAllChecksPage: jest.fn(),
   }));
 }
 

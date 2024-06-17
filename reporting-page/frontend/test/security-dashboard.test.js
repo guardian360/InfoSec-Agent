@@ -2,13 +2,8 @@ import 'jsdom-global/register.js';
 import test from 'unit.js';
 import {JSDOM} from 'jsdom';
 import {jest} from '@jest/globals';
-import {mockPageFunctions,
-  mockGetLocalization,
-  mockChart,
-  mockGraph,
-  clickEvent,
-  changeEvent,
-  storageMock} from './mock.js';
+import {mockPageFunctions, mockGetLocalization, mockChart,
+  mockGraph, clickEvent, changeEvent, storageMock} from './mock.js';
 import {RiskCounters} from '../src/js/risk-counters.js';
 
 global.TESTING = true;
@@ -19,6 +14,14 @@ const dom = new JSDOM(`
 <html>
 <body>
     <div id="page-contents"></div>
+    <button id="security-button-applications"></button>
+    <button id="security-button-devices"></button>
+    <button id="security-button-network"></button>
+    <button id="security-button-os"></button>
+    <button id="security-button-passwords"></button>
+    <button id="security-button-other"></button>
+    <div id="dropbtn">Dropdown Button</div>
+    <div id="myDropdown" class="dropdown-content show">Dropdown Content</div>
 </body>
 </html>
 `);
@@ -73,6 +76,11 @@ jest.unstable_mockModule('../src/js/home.js', () => ({
 jest.unstable_mockModule('../src/js/personalize.js', () => ({
   openPersonalizePage: jest.fn(),
   retrieveTheme: jest.fn(),
+}));
+
+// Mock openAllChecksPage
+jest.unstable_mockModule('../src/js/all-checks.js', () => ({
+  openAllChecksPage: jest.fn(),
 }));
 
 // test cases
@@ -164,6 +172,7 @@ describe('Security dashboard', function() {
     test.value(document.getElementById('no-risk-counter').innerHTML).isEqualTo(mockRiskCounters.lastNoRisk);
     test.value(document.getElementById('info-risk-counter').innerHTML).isEqualTo(mockRiskCounters.lastInfoRisk);
   });
+
   it('Should display the right security status', async function() {
     // arrange
     const expectedColors = ['rgb(255, 255, 255)', 'rgb(255, 255, 255)', 'rgb(0, 0, 0)', 'rgb(0, 0, 0)'];
@@ -200,6 +209,7 @@ describe('Security dashboard', function() {
         .isEqualTo(mockRiskCounters.lastInfoRisk);
     });
   });
+
   it('adjustWithRiskCounters should display the right security status', async function() {
     // Arrange
     const expectedText = [
@@ -246,6 +256,7 @@ describe('Security dashboard', function() {
         .isEqualTo(element);
     });
   });
+
   it('Clicking the scan-now button should call scanTest', async function() {
     // Arrange
     const database = await import('../src/js/database.js');
@@ -258,6 +269,7 @@ describe('Security dashboard', function() {
     // Assert
     expect(scanTestMock).toHaveBeenCalled();
   });
+
   it('setMaxInterval should set the max value of the graph interval to the maximum amount of data', async function() {
     // arrange
     const mockRiskCounters = {
@@ -272,6 +284,7 @@ describe('Security dashboard', function() {
     // assert
     test.value(dom.window.document.getElementById('graph-interval').max).isEqualTo(mockRiskCounters.count);
   });
+
   it('suggestedIssue should open the issue page of highest risk security issue', async function() {
     // Arrange
     let issues = [];
@@ -290,5 +303,55 @@ describe('Security dashboard', function() {
     // Assert
     button.dispatchEvent(clickEvent);
     expect(suggestedIssueMockMock).toHaveBeenCalled();
+  });
+
+  it('Clicking the buttons should call openAllChecksPage on the right place', async function() {
+    // Arrange
+    const buttonApp = document.getElementById('security-button-applications');
+    const buttonDevices = document.getElementById('security-button-devices');
+    const buttonNet = document.getElementById('security-button-network');
+    const buttonOS = document.getElementById('security-button-os');
+    const buttonPass = document.getElementById('security-button-passwords');
+    const buttonOther = document.getElementById('security-button-other');
+    const allChecks = await import('../src/js/all-checks.js');
+
+    // Act
+    buttonApp.dispatchEvent(clickEvent);
+    buttonDevices.dispatchEvent(clickEvent);
+    buttonNet.dispatchEvent(clickEvent);
+    buttonOS.dispatchEvent(clickEvent);
+    buttonPass.dispatchEvent(clickEvent);
+    buttonOther.dispatchEvent(clickEvent);
+
+    // Assert
+    expect(allChecks.openAllChecksPage).toHaveBeenCalledWith('applications');
+    expect(allChecks.openAllChecksPage).toHaveBeenCalledWith('devices');
+    expect(allChecks.openAllChecksPage).toHaveBeenCalledWith('network');
+    expect(allChecks.openAllChecksPage).toHaveBeenCalledWith('os');
+    expect(allChecks.openAllChecksPage).toHaveBeenCalledWith('passwords');
+    expect(allChecks.openAllChecksPage).toHaveBeenCalledWith('security-other');
+  });
+  it('Clicking outside the dropdown should close it', async function() {
+    // Arrange
+    const dropdown = document.getElementById('myDropdown');
+    dropdown.classList.add('show'); // Make sure the dropdown is initially open
+
+    // Act
+    document.body.dispatchEvent(new dom.window.Event('click', {bubbles: true}));
+
+    // Assert
+    expect(dropdown.classList.contains('show')).toBe(false);
+  });
+  it('Clicking inside the dropdown should not close it', async function() {
+    // Arrange
+    const dropdown = document.getElementById('myDropdown');
+    const dropbtn = document.getElementById('dropbtn');
+    dropdown.classList.add('show'); // Make sure the dropdown is initially open
+
+    // Act
+    dropbtn.dispatchEvent(new dom.window.Event('click', {bubbles: true}));
+
+    // Assert
+    expect(dropdown.classList.contains('show')).toBe(true);
   });
 });
