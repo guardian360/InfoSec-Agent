@@ -5,7 +5,7 @@
 package config
 
 const (
-	LogLevel         = 0
+	LogLevel         = 2
 	LogLevelSpecific = -1
 
 	LocalizationPath = "backend/localization/localizations_src/"

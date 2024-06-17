@@ -5,16 +5,18 @@ import {retrieveTheme} from './personalize.js';
 import {scanTest} from './database.js';
 import {LogError as logError, LogDebug as logDebug} from '../../wailsjs/go/main/Tray.js';
 import {GetImagePath as getImagePath} from '../../wailsjs/go/main/App.js';
+import {LoadUserSettings as loadUserSettings} from '../../wailsjs/go/main/App.js';
 import {openIssuePage} from './issue.js';
 import {saveProgress, shareProgress, selectSocialMedia, setImage, socialMediaSizes} from './share.js';
 import data from '../databases/database.en-GB.json' assert { type: 'json' };
 import {showModal} from './settings.js';
 
 let lighthousePath;
+let usersettings = loadUserSettings();
 /** Load the content of the Home page */
 export async function openHomePage() {
   // Load the video background path
-  switch (sessionStorage.getItem('state')) {
+  switch (usersettings.LighthouseState) {
   case '0':
     lighthousePath = 'state0.mkv';
     break;
@@ -145,21 +147,19 @@ export async function openHomePage() {
   document.getElementById('select-instagram').addEventListener('click', () => selectSocialMedia('instagram'));
 
   // Progress bar
-  document.addEventListener('DOMContentLoaded', () => {
-    const progressBar = document.getElementById('progress-bar');
-    const progressText = document.getElementById('progress-text');
+  const progressBar = document.getElementById('progress-bar');
+  const progressText = document.getElementById('progress-text');
 
-    // Assuming the points are stored in local storage under the key 'userPoints'
-    const userPoints = parseInt(localStorage.getItem('userPoints')) || 0;
-    const pointsToNextState = 100; // The points required to reach the next state
+  // Assuming the points are stored in local storage under the key 'userPoints'
+  const userPoints = parseInt(usersettings.Points) || 50;
+  const pointsToNextState = 10; // The points required to reach the next state
 
-    // Calculate the progress percentage
-    const progressPercentage = Math.min((userPoints / pointsToNextState) * 100, 100);
+  // Calculate the progress percentage
+  const progressPercentage = Math.min((50 % userPoints / pointsToNextState) * 100, 100);
 
-    // Update the progress bar width and text
-    progressBar.style.width = progressPercentage + '%';
-    progressText.textContent = `${userPoints} / ${pointsToNextState} (${progressPercentage.toFixed(2)}%)`;
-  });
+  // Update the progress bar width and text
+  progressBar.style.width = progressPercentage + '%';
+  progressText.textContent = `${progressPercentage.toFixed(2)} % completed to the next state.`;
 
   // on startup set the social media to share to facebook
   sessionStorage.setItem('ShareSocial', JSON.stringify(socialMediaSizes['facebook']));

@@ -118,13 +118,13 @@ func PointCalculation(gs GameState, scanResults []checks.Check, databasePath str
 func LighthouseStateTransition(gs GameState) GameState {
 	switch {
 	case gs.Points < 10 && sufficientActivity(gs):
-		gs.LighthouseState = 5 // The best state
+		gs.LighthouseState = 4 // The best state
 	case gs.Points < 20 && sufficientActivity(gs):
-		gs.LighthouseState = 4
-	case gs.Points < 30 && sufficientActivity(gs):
 		gs.LighthouseState = 3
-	case gs.Points < 40 && sufficientActivity(gs):
+	case gs.Points < 30 && sufficientActivity(gs):
 		gs.LighthouseState = 2
+	case gs.Points < 40 && sufficientActivity(gs):
+		gs.LighthouseState = 1
 	case gs.Points < 50 && sufficientActivity(gs):
 		gs.LighthouseState = 1
 	default:
