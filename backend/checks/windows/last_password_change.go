@@ -36,6 +36,7 @@ func LastPasswordChange(executor mocking.CommandExecutor, usernameRetriever mock
 	}
 	// Trim the output to remove any leading or trailing whitespace
 	dateFormat := strings.TrimSpace(string(dateOutput))
+	dateFormat = strings.ReplaceAll(dateFormat, "/", "-")
 
 	output, err := executor.Execute("net", "user", username)
 	if err != nil {
@@ -56,11 +57,6 @@ func LastPasswordChange(executor mocking.CommandExecutor, usernameRetriever mock
 		goDateFormat = internationalDate
 	case "M-d-yyyy":
 		goDateFormat = usDate
-	// FIXME: temp fix, check jira bug
-	case "M/d/yyyy":
-		goDateFormat = usDate
-	case "d/M/yyyy":
-		goDateFormat = internationalDate
 	default:
 		logger.Log.Error("Unknown date format:")
 		goDateFormat = internationalDate
@@ -70,12 +66,10 @@ func LastPasswordChange(executor mocking.CommandExecutor, usernameRetriever mock
 	}
 	// Find the date in the output
 	match := regex.FindString(lines[8])
+	match = strings.ReplaceAll(match, "/", "-")
 
 	// Split the string on both "-" and "/"
 	parts := strings.Split(match, "-")
-	if len(parts) < 3 {
-		parts = strings.Split(match, "/")
-	}
 
 	// Check each part and add a leading zero if the length is 1
 	for i, part := range parts {
