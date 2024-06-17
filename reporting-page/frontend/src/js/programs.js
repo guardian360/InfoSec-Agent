@@ -69,7 +69,7 @@ export function openProgramsPage() {
 
 /**
  * Fills the program table with the given programs
- * 
+ *
  * @param {HTMLTableSectionElement} tbody Table body to be filled
  * @param {Array} programs Programs to be added to the table
  * @return {void}
