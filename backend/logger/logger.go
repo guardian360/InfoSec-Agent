@@ -93,7 +93,6 @@ func NewCustomLogger(test bool, fileName string, logLevel int, logLevelSpecific 
 		return &CustomLogger{
 			Logger:           log.New(os.Stdout, "", log.LstdFlags),
 			LogLevel:         logLevel,
-			LogLevelSpecific: logLevelSpecific,
 		}
 	}
 	appDataPath, err := os.UserConfigDir()
