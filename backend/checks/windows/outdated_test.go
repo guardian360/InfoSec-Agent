@@ -34,6 +34,7 @@ func TestWindowsOutdated(t *testing.T) {
 		name         string
 		mockExecutor *mocking.MockCommandExecutor
 		want         checks.Check
+		error        bool
 	}{
 		{
 			name:         "Windows 11 up-to-date",
@@ -65,11 +66,20 @@ func TestWindowsOutdated(t *testing.T) {
 			mockExecutor: &mocking.MockCommandExecutor{Output: "", Err: errors.New("command error")},
 			want:         checks.NewCheckError(checks.WindowsOutdatedID, errors.New("command error")),
 		},
+		{
+			name:         "Match not long enough",
+			mockExecutor: &mocking.MockCommandExecutor{Output: "Microsoft Windows [Version 10.0.0]", Err: nil},
+			want:         checks.NewCheckError(checks.WindowsOutdatedID, errors.New("error parsing Windows version string")),
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got := windows.Outdated(tt.mockExecutor)
-			require.Equal(t, tt.want, got)
+			if tt.error {
+				require.Equal(t, -1, got.ResultID)
+			} else {
+				require.Equal(t, tt.want, got)
+			}
 		})
 	}
 }

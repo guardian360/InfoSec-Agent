@@ -1,6 +1,7 @@
 package windows_test
 
 import (
+	"errors"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/windows"
 	"testing"
 
@@ -20,9 +21,10 @@ import (
 // This function tests the LoginMethod function with different scenarios. It uses a mock implementation of the RegistryKey interface to simulate the behavior of the Windows login methods registry key. Each test case checks if the LoginMethod function correctly identifies the enabled login methods based on the simulated registry key values. The function asserts that the returned Check instance contains the expected results.
 func TestLoginMethod(t *testing.T) {
 	tests := []struct {
-		name string
-		key  mocking.RegistryKey
-		want checks.Check
+		name  string
+		key   mocking.RegistryKey
+		want  checks.Check
+		error bool
 	}{
 		{
 			name: "Login method is PIN",
@@ -90,11 +92,41 @@ func TestLoginMethod(t *testing.T) {
 						StatReturn:   &registry.KeyInfo{ValueCount: 1}, Err: nil}}},
 			want: checks.NewCheckErrorf(checks.LoginMethodID, "error reading value", nil),
 		},
+		{
+			name:  "Error opening registry key",
+			key:   &mocking.MockRegistryKey{},
+			want:  checks.NewCheckErrorf(checks.LoginMethodID, "error reading value", nil),
+			error: true,
+		},
+		{
+			name: "Error getting key statistics",
+			key: &mocking.MockRegistryKey{
+				SubKeys: []mocking.MockRegistryKey{
+					{KeyName: "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Authentication\\LogonUI\\UserTile",
+						StringValues: map[string]string{"": "unknown"},
+						StatReturn:   nil}}},
+			want:  checks.NewCheckError(checks.LoginMethodID, errors.New("error")),
+			error: true,
+		},
+		{
+			name: "Error reading value names",
+			key: &mocking.MockRegistryKey{
+				SubKeys: []mocking.MockRegistryKey{
+					{KeyName: "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Authentication\\LogonUI\\UserTile",
+						StringValues: map[string]string{"test": "test"},
+						StatReturn:   &registry.KeyInfo{ValueCount: 1}, Err: nil}}},
+			want:  checks.NewCheckError(checks.LoginMethodID, errors.New("error")),
+			error: true,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got := windows.LoginMethod(tt.key)
-			require.Equal(t, tt.want, got)
+			if tt.error {
+				require.Equal(t, -1, got.ResultID)
+			} else {
+				require.Equal(t, tt.want, got)
+			}
 		})
 	}
 }

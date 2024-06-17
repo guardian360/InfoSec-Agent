@@ -1,6 +1,7 @@
 package windows_test
 
 import (
+	"errors"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/windows"
 	"reflect"
 	"testing"
@@ -21,9 +22,10 @@ import (
 // This function tests the RemoteDesktopCheck function with different scenarios. It uses a mock implementation of the RegistryKey interface to simulate the behavior of the Windows registry. Each test case checks if the RemoteDesktopCheck function correctly identifies the status of the Remote Desktop feature based on the simulated registry key values. The function asserts that the returned Check instance contains the expected results.
 func TestRemoteDesktopCheck(t *testing.T) {
 	tests := []struct {
-		name string
-		key  mocking.RegistryKey
-		want checks.Check
+		name  string
+		key   mocking.RegistryKey
+		want  checks.Check
+		error bool
 	}{
 		{
 			name: "Remote Desktop enabled",
@@ -55,11 +57,30 @@ func TestRemoteDesktopCheck(t *testing.T) {
 			},
 			want: checks.NewCheckResult(checks.RemoteDesktopID, 1),
 		},
+		{
+			name:  "Error opening registry key",
+			key:   &mocking.MockRegistryKey{},
+			want:  checks.NewCheckError(checks.RemoteDesktopID, errors.New("error opening registry key")),
+			error: true,
+		},
+		{
+			name: "Error reading integer value",
+			key: &mocking.MockRegistryKey{
+				SubKeys: []mocking.MockRegistryKey{
+					{KeyName: "System\\CurrentControlSet\\Control\\Terminal Server"}},
+			},
+			want:  checks.NewCheckError(checks.RemoteDesktopID, errors.New("error opening registry key")),
+			error: true,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got := windows.RemoteDesktopCheck(tt.key)
-			require.Equal(t, tt.want, got)
+			if tt.error {
+				require.Equal(t, -1, got.ResultID)
+			} else {
+				require.Equal(t, tt.want, got)
+			}
 		})
 	}
 }

@@ -39,6 +39,10 @@ func Outdated(mockExecutor mocking.CommandExecutor) checks.Check {
 	// Using regular expression to extract numbers after the second dot
 	re := regexp.MustCompile(`(\d+)\.\d+\.(\d+)\.(\d+)`)
 	match := re.FindStringSubmatch(versionString)
+	if len(match) < 4 {
+		logger.Log.Error("Error parsing Windows version string")
+		return checks.NewCheckError(checks.WindowsOutdatedID, errors.New("error parsing Windows version string"))
+	}
 
 	majorVersion, err := strconv.Atoi(match[1])
 	if err != nil {

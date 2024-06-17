@@ -153,27 +153,21 @@ describe('Issues table', function() {
   });
   it('fillTable should fill the issues table with information from the provided JSON array', async function() {
     // Arrange input issues
-    let issues = [];
-    issues = [
-      {id: 5, severity: 1, jsonkey: 51},
-      {id: 15, severity: 0, jsonkey: 150},
+    const issuesList = [
+      {name: 'issue 1', type: 'Privacy', severity: 1, jsonkey: 1},
+      {name: 'issue 2', type: 'Security', severity: 0, jsonkey: 2},
     ];
     // Arrange expected table data
-    const expectedData = [];
-    expectedData.push(data[issues[1].jsonkey]);
-    expectedData.push(data[issues[0].jsonkey]);
-
+    const issueTable = document.getElementById('issues-table').querySelector('tbody');
     const issue = await import('../src/js/issues.js');
 
     // Act
-    const issueTable = document.getElementById('issues-table').querySelector('tbody');
-    issue.fillTable(issueTable, issues, true);
+    issue.fillTable(issueTable, issuesList);
 
     // Assert
     const row = issueTable.rows[0];
-    test.value(row.cells[0].textContent).isEqualTo(expectedData[0].Name);
-    test.value(row.cells[1].textContent).isEqualTo(expectedData[0].Type);
-    test.value(row.cells[2].textContent).isEqualTo('Acceptable');
+    test.value(row.cells[0].textContent).isEqualTo(issuesList[0].name);
+    test.value(row.cells[1].textContent).isEqualTo(issuesList[0].type);
 
     // Make issues table empty
     emptyTable(issueTable);

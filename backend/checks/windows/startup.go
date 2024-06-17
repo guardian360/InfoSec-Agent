@@ -21,20 +21,20 @@ import (
 func Startup(key1 mocking.RegistryKey, key2 mocking.RegistryKey, key3 mocking.RegistryKey) checks.Check {
 	// Start-up programs can be found in different locations within the registry
 	// Both the current user and local machine registry keys are checked
-	cuKey, err1 := checks.OpenRegistryKey(key1,
+	cuKey, err1 := mocking.OpenRegistryKey(key1,
 		`SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run`)
-	lmKey, err2 := checks.OpenRegistryKey(key2,
+	lmKey, err2 := mocking.OpenRegistryKey(key2,
 		`SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run`)
-	lmKey2, err3 := checks.OpenRegistryKey(key3,
+	lmKey2, err3 := mocking.OpenRegistryKey(key3,
 		`SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run32`)
 	if err1 != nil || err2 != nil || err3 != nil {
 		return checks.NewCheckError(checks.StartupID, errors.New("error opening registry keys"))
 	}
 
 	// Close the keys after we have received all relevant information
-	defer checks.CloseRegistryKey(cuKey)
-	defer checks.CloseRegistryKey(lmKey)
-	defer checks.CloseRegistryKey(lmKey2)
+	defer mocking.CloseRegistryKey(cuKey)
+	defer mocking.CloseRegistryKey(lmKey)
+	defer mocking.CloseRegistryKey(lmKey2)
 
 	// Read the entries within the registry key
 	cuValueNames, err1 := cuKey.ReadValueNames(0)
