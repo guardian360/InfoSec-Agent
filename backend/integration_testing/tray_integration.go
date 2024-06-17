@@ -8,7 +8,7 @@ import (
 )
 
 func TestIntegrationScanNowSuccessful(t *testing.T) {
-	result, err := tray.ScanNow(false)
+	result, err := tray.ScanNow(false, "reporting-page/frontend/src/databases/database.en-GB.json")
 	require.NotEmpty(t, result)
 	require.NoError(t, err)
 }

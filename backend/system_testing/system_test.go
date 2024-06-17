@@ -42,7 +42,7 @@ func TestTrayFunctionality(t *testing.T) {
 	// Run the function without dialog
 	go func() {
 		defer wg.Done()
-		_, err := tray.ScanNow(false)
+		_, err := tray.ScanNow(false, "reporting-page/frontend/src/databases/database.en-GB.json")
 		errSlice[0] = err
 	}()
 
@@ -52,7 +52,7 @@ func TestTrayFunctionality(t *testing.T) {
 	// Run the function with dialog
 	go func() {
 		defer wg.Done()
-		_, err := tray.ScanNow(true)
+		_, err := tray.ScanNow(true, "reporting-page/frontend/src/databases/database.en-GB.json")
 		errSlice[1] = err
 	}()
 
