@@ -20,12 +20,10 @@
   justify-content: space-between; /* Space out the elements */
   align-items: center; /* Center vertically */
   padding: 0; /* Add padding around the header */
-
-  /* border: 1px solid var(--color-border); Light border for definition */
 }
 
 /* Table titles */
-.issues-data h2 {
+.issues-data h2, .program-data h2 {
   padding: 0;
   margin-left: 0;
 }
@@ -63,8 +61,6 @@
   box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%);
   padding-left: 10px;
   z-index: 1;
-
-  /* top: 100%; */
   right: 0;
 }
 
@@ -77,8 +73,6 @@
 .issues-table, .program-table {
   width: 100%;
   overflow-x: auto; /* Allows table to scroll on small screens */
-
-  /* box-shadow: 0 0 20px rgb(0 0 0 / 10%); */
   border-collapse: collapse;
 }
 
@@ -91,7 +85,7 @@
   border: 1px solid var(--color-border); /* Light border for definition */
 }
 
-.issues-table th {
+.issues-table th, .program-table th {
   align-items: center; /* Center vertically */
   background-color: var(--background-color-table-header); /* Light background color */
 }
@@ -243,7 +237,7 @@ h1, h2{
 #search-input {
   width: 100%;
   padding: 10px;
-  margin: 10px;
+  margin: 10px 0;
   box-sizing: border-box;
   border: 1px solid #ccc;
   border-radius: 4px;
