@@ -17,13 +17,13 @@ import (
 func LoginMethod(registryKey mocking.RegistryKey) checks.Check {
 	resultID := 0
 	// Open the registry key related to log-in methods
-	key, err := checks.OpenRegistryKey(registryKey,
+	key, err := mocking.OpenRegistryKey(registryKey,
 		`SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\UserTile`)
 	if err != nil {
 		return checks.NewCheckErrorf(checks.LoginMethodID, "error opening registry key", err)
 	}
 	// Close the key after we have received all relevant information
-	defer checks.CloseRegistryKey(key)
+	defer mocking.CloseRegistryKey(key)
 
 	// Read the info of the key
 	keyInfo, err := key.Stat()

@@ -27,13 +27,13 @@ func Permission(permissionID int, permission string, registryKey mocking.Registr
 	var err error
 
 	// Open the registry key for the given permission
-	key, err := checks.OpenRegistryKey(registryKey,
+	key, err := mocking.OpenRegistryKey(registryKey,
 		`Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\`+permission)
 	if err != nil {
 		return checks.NewCheckErrorf(permissionID, "error opening registry key", err)
 	}
 	// Close the key after we have received all relevant information
-	defer checks.CloseRegistryKey(key)
+	defer mocking.CloseRegistryKey(key)
 
 	generalSetting, err := checkGeneralSetting(key, permission)
 	if err != nil {
@@ -167,11 +167,11 @@ func checkApplications(applicationNames []string, key mocking.RegistryKey) ([]st
 	var results []string
 
 	for _, appName := range applicationNames {
-		appKey, err := checks.OpenRegistryKey(key, appKeyName(appName))
-		defer checks.CloseRegistryKey(appKey)
+		appKey, err := mocking.OpenRegistryKey(key, appKeyName(appName))
 		if err != nil {
 			return []string{}, err
 		}
+		defer mocking.CloseRegistryKey(appKey)
 		if appName == nonPackaged {
 			val, _, err = key.GetStringValue("Value")
 		} else {

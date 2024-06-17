@@ -22,12 +22,15 @@ import (
 //
 // This function is part of the test suite for the "checks" package. It is used to verify that the GuestAccount function correctly identifies the status of the guest account on the Windows system and handles errors as expected.
 func TestGuestAccount(t *testing.T) {
+	usernameRetriever := new(mocking.MockUsernameRetriever)
+	usernameRetriever.On("CurrentUsername").Return("", errors.New("current username error"))
 	tests := []struct {
 		name                      string
 		executorLocalGroup        mocking.CommandExecutor
 		executorLocalGroupMembers mocking.CommandExecutor
 		executorYesWord           mocking.CommandExecutor
 		executorNetUser           mocking.CommandExecutor
+		usernameRetriever         mocking.UsernameRetriever
 		want                      checks.Check
 	}{
 		{
@@ -37,6 +40,7 @@ func TestGuestAccount(t *testing.T) {
 			executorLocalGroupMembers: &mocking.MockCommandExecutor{Output: "", Err: nil},
 			executorYesWord:           &mocking.MockCommandExecutor{Output: "", Err: nil},
 			executorNetUser:           &mocking.MockCommandExecutor{Output: "", Err: nil},
+			usernameRetriever:         &mocking.RealUsernameRetriever{},
 			want: checks.NewCheckErrorf(checks.GuestAccountID,
 				"error executing command Get-WmiObject", errors.New("Get-WmiObject error")),
 		},
@@ -46,6 +50,7 @@ func TestGuestAccount(t *testing.T) {
 			executorLocalGroupMembers: &mocking.MockCommandExecutor{Output: "", Err: nil},
 			executorYesWord:           &mocking.MockCommandExecutor{Output: "", Err: nil},
 			executorNetUser:           &mocking.MockCommandExecutor{Output: "", Err: nil},
+			usernameRetriever:         &mocking.RealUsernameRetriever{},
 			want:                      checks.NewCheckResult(checks.GuestAccountID, 0),
 		},
 		{
@@ -53,8 +58,9 @@ func TestGuestAccount(t *testing.T) {
 			executorLocalGroup: &mocking.MockCommandExecutor{Output: "             S-1-5-32-546", Err: nil},
 			executorLocalGroupMembers: &mocking.MockCommandExecutor{Output: "",
 				Err: errors.New("net localgroup error")},
-			executorYesWord: &mocking.MockCommandExecutor{Output: "", Err: nil},
-			executorNetUser: &mocking.MockCommandExecutor{Output: "", Err: nil},
+			executorYesWord:   &mocking.MockCommandExecutor{Output: "", Err: nil},
+			executorNetUser:   &mocking.MockCommandExecutor{Output: "", Err: nil},
+			usernameRetriever: &mocking.RealUsernameRetriever{},
 			want: checks.NewCheckErrorf(checks.GuestAccountID,
 				"error executing command net localgroup", errors.New("net localgroup error")),
 		},
@@ -63,9 +69,10 @@ func TestGuestAccount(t *testing.T) {
 			executorLocalGroup: &mocking.MockCommandExecutor{Output: "             S-1-5-32-546", Err: nil},
 			executorLocalGroupMembers: &mocking.MockCommandExecutor{Output: "The command completed successfully.",
 				Err: nil},
-			executorYesWord: &mocking.MockCommandExecutor{Output: "", Err: nil},
-			executorNetUser: &mocking.MockCommandExecutor{Output: "", Err: nil},
-			want:            checks.NewCheckResult(checks.GuestAccountID, 0),
+			executorYesWord:   &mocking.MockCommandExecutor{Output: "", Err: nil},
+			executorNetUser:   &mocking.MockCommandExecutor{Output: "", Err: nil},
+			usernameRetriever: &mocking.RealUsernameRetriever{},
+			want:              checks.NewCheckResult(checks.GuestAccountID, 0),
 		},
 		{
 			name:                      "YesWordError",
@@ -73,7 +80,8 @@ func TestGuestAccount(t *testing.T) {
 			executorLocalGroupMembers: &mocking.MockCommandExecutor{Output: "-----\r\nguest", Err: nil},
 			executorYesWord: &mocking.MockCommandExecutor{Output: "",
 				Err: errors.New("net user yesWord error")},
-			executorNetUser: &mocking.MockCommandExecutor{Output: "", Err: nil},
+			executorNetUser:   &mocking.MockCommandExecutor{Output: "", Err: nil},
+			usernameRetriever: &mocking.RealUsernameRetriever{},
 			want: checks.NewCheckErrorf(checks.GuestAccountID,
 				"error executing command net user", errors.New("net user yesWord error")),
 		},
@@ -84,6 +92,7 @@ func TestGuestAccount(t *testing.T) {
 			executorYesWord:           &mocking.MockCommandExecutor{Output: "\r\n\r\n\r\n\r\n\r\nno yes", Err: nil},
 			executorNetUser: &mocking.MockCommandExecutor{Output: "",
 				Err: errors.New("net user error")},
+			usernameRetriever: &mocking.RealUsernameRetriever{},
 			want: checks.NewCheckErrorf(checks.GuestAccountID,
 				"error executing command net user", errors.New("net user error")),
 		},
@@ -93,6 +102,7 @@ func TestGuestAccount(t *testing.T) {
 			executorLocalGroupMembers: &mocking.MockCommandExecutor{Output: "-----\r\nguest", Err: nil},
 			executorYesWord:           &mocking.MockCommandExecutor{Output: "\r\n\r\n\r\n\r\n\r\nno yes", Err: nil},
 			executorNetUser:           &mocking.MockCommandExecutor{Output: "\r\n\r\n\r\n\r\n\r\nyes", Err: nil},
+			usernameRetriever:         &mocking.RealUsernameRetriever{},
 			want:                      checks.NewCheckResult(checks.GuestAccountID, 1),
 		},
 		{
@@ -101,7 +111,17 @@ func TestGuestAccount(t *testing.T) {
 			executorLocalGroupMembers: &mocking.MockCommandExecutor{Output: "-----\r\nguest", Err: nil},
 			executorYesWord:           &mocking.MockCommandExecutor{Output: "\r\n\r\n\r\n\r\n\r\nno yes", Err: nil},
 			executorNetUser:           &mocking.MockCommandExecutor{Output: "\r\n\r\n\r\n\r\n\r\nno", Err: nil},
+			usernameRetriever:         &mocking.RealUsernameRetriever{},
 			want:                      checks.NewCheckResult(checks.GuestAccountID, 2),
+		},
+		{
+			name:                      "CurrentUsername error",
+			executorLocalGroup:        &mocking.MockCommandExecutor{Output: "             S-1-5-32-546", Err: nil},
+			executorLocalGroupMembers: &mocking.MockCommandExecutor{Output: "-----\r\nguest", Err: nil},
+			executorYesWord:           &mocking.MockCommandExecutor{Output: "\r\n\r\n\r\n\r\n\r\nno yes", Err: nil},
+			executorNetUser:           &mocking.MockCommandExecutor{Output: "\r\n\r\n\r\n\r\n\r\nno", Err: nil},
+			usernameRetriever:         usernameRetriever,
+			want:                      checks.NewCheckErrorf(checks.GuestAccountID, "error retrieving current username", errors.New("current username error")),
 		},
 	}
 	for _, tt := range tests {
@@ -111,6 +131,7 @@ func TestGuestAccount(t *testing.T) {
 				tt.executorLocalGroupMembers,
 				tt.executorYesWord,
 				tt.executorNetUser,
+				tt.usernameRetriever,
 			)
 			require.Equal(t, tt.want, got)
 		})
