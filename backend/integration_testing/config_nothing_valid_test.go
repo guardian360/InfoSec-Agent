@@ -2,6 +2,7 @@ package integration_test
 
 import (
 	i "github.com/InfoSec-Agent/InfoSec-Agent/backend/integration_testing"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"testing"
 )
 
@@ -36,6 +37,7 @@ var testsInvalid = []func(t *testing.T){
 }
 
 func TestAllInvalid(t *testing.T) {
+	logger.SetupTests()
 	for _, test := range testsInvalid {
 		test(t)
 	}
