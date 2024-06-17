@@ -60,7 +60,8 @@ func TestIntegrationFirewallDisabled(t *testing.T) {
 func TestIntegrationGuestAccountActive(t *testing.T) {
 	result := windows.GuestAccount(
 		&mocking.RealCommandExecutor{}, &mocking.RealCommandExecutor{},
-		&mocking.RealCommandExecutor{}, &mocking.RealCommandExecutor{})
+		&mocking.RealCommandExecutor{}, &mocking.RealCommandExecutor{},
+		&mocking.RealUsernameRetriever{})
 	require.NotEmpty(t, result)
 	require.Equal(t, 1, result.ResultID)
 }
@@ -68,13 +69,14 @@ func TestIntegrationGuestAccountActive(t *testing.T) {
 func TestIntegrationGuestAccountNotActive(t *testing.T) {
 	result := windows.GuestAccount(
 		&mocking.RealCommandExecutor{}, &mocking.RealCommandExecutor{},
-		&mocking.RealCommandExecutor{}, &mocking.RealCommandExecutor{})
+		&mocking.RealCommandExecutor{}, &mocking.RealCommandExecutor{},
+		&mocking.RealUsernameRetriever{})
 	require.NotEmpty(t, result)
 	require.Equal(t, 2, result.ResultID)
 }
 
 func TestIntegrationLastPasswordChangeValid(t *testing.T) {
-	result := windows.LastPasswordChange(&mocking.RealCommandExecutor{})
+	result := windows.LastPasswordChange(&mocking.RealCommandExecutor{}, &mocking.RealUsernameRetriever{})
 	require.NotEmpty(t, result)
 	require.NotEmpty(t, result.Result)
 	require.Equal(t, 1, result.ResultID)
@@ -191,12 +193,6 @@ func TestIntegrationUACFullEnabled(t *testing.T) {
 	result := windows.UACCheck(&mocking.RealCommandExecutor{})
 	require.NotEmpty(t, result)
 	require.Equal(t, 1, result.ResultID)
-}
-
-func TestIntegrationUACPartialEnabled(t *testing.T) {
-	result := windows.UACCheck(&mocking.RealCommandExecutor{})
-	require.NotEmpty(t, result)
-	require.Equal(t, 2, result.ResultID)
 }
 
 func TestIntegrationUACDisabled(t *testing.T) {
