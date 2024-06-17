@@ -1,6 +1,6 @@
-// Package database provides functions for interacting with the database.
+// Package database provides functionality for interacting with the JSON database.
 //
-// Exported function(s): FillDatabase, GetSeverity, GetJSONKey, GetData
+// Exported function(s): GetData
 package database
 
 import (

@@ -8,14 +8,14 @@ import (
 	"time"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/config"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/localization"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/tray"
 
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/localization"
+	"github.com/getlantern/systray"
 	"github.com/nicksnyder/go-i18n/v2/i18n"
 	"github.com/stretchr/testify/require"
-
-	"github.com/getlantern/systray"
 )
 
 // TestMain sets up the necessary environment for the system tray application tests and executes them.
@@ -111,7 +111,7 @@ func TestScanNow(t *testing.T) {
 	// Run the function without dialog
 	go func() {
 		defer wg.Done()
-		_, err := tray.ScanNow(false, "reporting-page/frontend/src/databases/database.en-GB.json")
+		_, err := tray.ScanNow(false, config.DatabasePath)
 		errSlice[0] = err
 	}()
 
@@ -120,7 +120,7 @@ func TestScanNow(t *testing.T) {
 	// Run the function with dialog
 	go func() {
 		defer wg.Done()
-		_, err := tray.ScanNow(true, "reporting-page/frontend/src/databases/database.en-GB.json")
+		_, err := tray.ScanNow(true, config.DatabasePath)
 		errSlice[1] = err
 	}()
 
@@ -381,7 +381,7 @@ func TestPopupMessage(t *testing.T) {
 	// Iterate over test cases
 	for _, tc := range testCases {
 		// Run the function with mocked scan
-		result := tray.PopupMessage(tc.input, "./../../reporting-page/frontend/src/databases/database.en-GB.json")
+		result := tray.PopupMessage(tc.input, "../../"+config.DatabasePath)
 
 		// Assert that the message matches the expected message
 		require.Equal(t, tc.expectedMessage, result)

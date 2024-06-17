@@ -132,12 +132,12 @@ func OnReady() {
 		case <-mChangeScanInterval.ClickedCh:
 			ChangeScanInterval()
 		case <-mScanNow.ClickedCh:
-			result, err := ScanNow(true, "reporting-page/frontend/src/databases/database.en-GB.json")
+			result, err := ScanNow(true, config.DatabasePath)
 			if err != nil {
 				logger.Log.ErrorWithErr("Error scanning", err)
 			} else {
 				// Notify the user that a scan has been completed
-				err = Popup(result, "./reporting-page/frontend/src/databases/database.en-GB.json")
+				err = Popup(result, config.DatabasePath)
 				if err != nil {
 					logger.Log.ErrorWithErr("Error notifying user", err)
 				}
@@ -483,12 +483,12 @@ func periodicScan(scanInterval int) {
 	settings := usersettings.LoadUserSettings()
 	if time.Now().After(settings.NextScan) {
 		logger.Log.Debug("Running periodic scan")
-		result, err := ScanNow(false, "reporting-page/frontend/src/databases/database.en-GB.json")
+		result, err := ScanNow(false, config.DatabasePath)
 		if err != nil {
 			logger.Log.ErrorWithErr("Error performing periodic scan", err)
 		} else {
 			// Notify the user that a scan has been completed
-			err = Popup(result, "./reporting-page/frontend/src/databases/database.en-GB.json")
+			err = Popup(result, config.DatabasePath)
 			if err != nil {
 				logger.Log.ErrorWithErr("Error notifying user", err)
 			}
