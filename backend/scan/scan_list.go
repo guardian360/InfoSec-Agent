@@ -125,7 +125,7 @@ var windowsChecks = []func() checks.Check{
 	func() checks.Check { return windows.Advertisement(mocking.CurrentUser) },
 	func() checks.Check { return windows.AllowRemoteRPC(mocking.LocalMachine) },
 	func() checks.Check { return windows.AutomaticLogin(mocking.LocalMachine) },
-	func() checks.Check { return windows.Defender(mocking.LocalMachine, mocking.LocalMachine) },
+	func() checks.Check { return windows.Defender(mocking.LocalMachine) },
 	func() checks.Check {
 		return windows.GuestAccount(executor, executor, executor, executor, userNameRetriever)
 	},

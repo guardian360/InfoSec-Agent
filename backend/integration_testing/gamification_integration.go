@@ -25,7 +25,7 @@ func TestIntegrationUpdateGameState(t *testing.T) {
 	mockDatabasePath := "../../reporting-page/database.db"
 
 	// Run UpdateGameState
-	gs, err := gamification.UpdateGameState(mockScanResults, mockDatabasePath)
+	gs, err := gamification.UpdateGameState(mockScanResults, mockDatabasePath, gamification.RealPointCalculationGetter{}, usersettings.RealSaveUserSettingsGetter{})
 	require.NoError(t, err)
 
 	// Verify that the points, points history, and lighthouse state are correctly updated
@@ -62,8 +62,9 @@ func TestIntegrationPointCalculation(t *testing.T) {
 	gs := gamification.GameState{Points: 0, PointsHistory: nil, TimeStamps: nil, LighthouseState: 0}
 
 	// Run PointCalculation
+	getter := gamification.RealPointCalculationGetter{}
 	var err error
-	gs, err = gamification.PointCalculation(gs, mockScanResults, mockDatabasePath)
+	gs, err = getter.PointCalculation(gs, mockScanResults, mockDatabasePath)
 	require.NoError(t, err)
 
 	// Verify that the points are correctly calculated

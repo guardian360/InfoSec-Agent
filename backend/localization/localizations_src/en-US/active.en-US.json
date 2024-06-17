@@ -121,6 +121,7 @@
     "Previous": "&laquo; Previous step",
     "Next": "Next step &raquo;",
     "BackIssues": "Back to issues overview",
+    "BackHome": "Back to home page",
     "BackChecks": "Back to checks overview",
     "Port": "The following processes are currently running on your device on the following ports: ",
     "Password": "You changed your password on: ",

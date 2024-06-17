@@ -40,7 +40,7 @@ func TestIntegrationCredentialGuardDisabled(t *testing.T) {
 }
 
 func TestIntegrationDefenderAllActive(t *testing.T) {
-	result := windows.Defender(mocking.LocalMachine, mocking.LocalMachine)
+	result := windows.Defender(mocking.LocalMachine)
 	require.NotEmpty(t, result)
 	require.Equal(t, 0, result.ResultID)
 }

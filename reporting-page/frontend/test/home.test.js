@@ -2,7 +2,7 @@ import 'jsdom-global/register.js';
 import test from 'unit.js';
 import {JSDOM} from 'jsdom';
 import {jest} from '@jest/globals';
-import {mockPageFunctions, mockGetLocalization, clickEvent, storageMock, mockChart} from './mock.js';
+import {mockPageFunctions, mockGetLocalization, clickEvent, storageMock, mockChart, scanResultMock} from './mock.js';
 import {RiskCounters} from '../src/js/risk-counters.js';
 // import {suggestedIssue} from '../src/js/home.js';
 
@@ -100,14 +100,7 @@ describe('Home page', function() {
   });
   it('suggestedIssue should open the issue page of highest risk issue', async function() {
     // Arrange
-    let issues = [];
-    issues = [
-      {id: 1, severity: 4, jsonkey: 10},
-      {id: 5, severity: 1, jsonkey: 51},
-      {id: 15, severity: 0, jsonkey: 150},
-      {id: 4, severity: 2, jsonkey: 41},
-    ];
-    sessionStorage.setItem('DataBaseData', JSON.stringify(issues));
+    sessionStorage.setItem('ScanResult', JSON.stringify(scanResultMock));
 
     const issue = await import('../src/js/issue.js');
     const button = document.getElementById('suggested-issue');
