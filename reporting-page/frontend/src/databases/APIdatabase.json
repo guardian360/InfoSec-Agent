@@ -1,0 +1,339 @@
+[
+  {
+    "id": "1",
+    "name": "Devices connected via bluetooth",
+    "information": "Bluetooth technology enables wireless data transmission and reception. While this functionality is typically harmless when used as intended, it can become a security risk if exploited by malicious actors. If a malicious individual gains unauthorized access to your device through a Bluetooth connection, they can potentially steal your data, eavesdrop on your activities, or even send malware to your device. To mitigate these risks, it's crucial to only connect your device to known and trusted devices.",
+    "solution": [
+      "Go to Start > Settings > Bluetooth & devices.",
+      "Here you can see which devices are connected via bluetooth, and you can remove them if necessary."
+    ]
+  },
+  {
+    "id": "2",
+    "name": "External devices connected",
+    "information": "External devices such as USB drives, external hard drives, and other peripherals can introduce security risks to your computer. Malware can be spread through infected external devices, potentially compromising the security and integrity of your system. By ensuring that no external devices are connected to your computer when not in use, you reduce the risk of malware infection and unauthorized access to your system.",
+    "solution": [
+      "Check if any external devices are connected to your computer, and disconnect them if not in use. Examples of external devices include USB drives, external hard drives, external microphones, external cameras, and other peripherals."
+    ]
+  },
+  {
+    "id": "3",
+    "name": "Guest account enabled",
+    "information": "The guest account is a default account designed to offer temporary and restricted access to the system for individuals without regular user accounts. If you are the sole user of the computer and do not require a guest account, it's advisable to disable it. This ensures that no unauthorized users can access data on the computer, enhancing overall security and privacy.",
+    "solution": [
+      "Go to start > Other accounts.",
+      "Here you will see the other accounts, if there is an account you do not know or something called 'guest' click on it.",
+      "Now select 'remove' and confirm the deletion of the account.",
+      "To finish, restart your computer."
+    ]
+  },
+  {
+    "id": "4",
+    "name": "Advertisement ID sharing enabled",
+    "information": "The advertisement ID setting allows windows to send you personalized ads. It is important to limit the amount of entities that have your personal data, therefore it is safer to turn this setting off.",
+    "solution": [
+      "Go to Start > Settings > Privacy & Security > General ",
+      "Here you can control the advertisement ID settings and turn the feature on/off."
+    ]
+  },
+  {
+    "id": "5",
+    "name": "No password manager in use",
+    "information": "Using a password manager offers several benefits for individuals and organizations, primarily revolving around enhancing security, convenience, and overall password management practices. Here are some key reasons why you should consider using a password manager. Stronger Passwords: Password managers can generate complex, unique passwords for each of your accounts. These passwords are typically long, random, and difficult to crack, significantly improving the security of your online accounts compared to using weak or reused passwords. Elimination of Password Reuse: One of the most common security pitfalls is reusing passwords across multiple accounts. Password managers allow you to generate and store unique passwords for each account, reducing the risk of unauthorized access if one account is compromised. Convenience: Password managers streamline the process of logging into websites and online services by automatically filling in login credentials for you. This saves time and effort, especially when managing numerous accounts across various platforms. Secure Storage: Password managers encrypt and store your passwords in a secure vault, protecting them from unauthorized access. Many password managers also offer additional security features such as two-factor authentication (2FA) and biometric authentication to further enhance protection.",
+    "solution": [
+      "Open your browser and look for a password manager like: LastPass, Dashlane, Bitwarden or another password manager you prefer.",
+      "Follow the installation steps provided by the website of the password manager."
+    ]
+  },
+  {
+    "id": "12",
+    "name": "Remote desktop enabled",
+    "information": "Remote Desktop is a built-in feature in the Windows operating system that allows users to remotely access and control another Windows computer over a network or the internet. It enables users to connect to a remote computer as if they were sitting in front of it, providing full access to the remote desktop, applications, files, and resources. If you do not use this feature, it is safer to turn it off.",
+    "solution": [
+      "Go to Start > Settings > System > Remote Desktop.",
+      "Here you can control the remote desktop settings and turn the feature off."
+    ]
+  },
+  {
+    "id": "13",
+    "name": "SMB version 1 enabled",
+    "information": "The SMB (Server Message Block) protocol is used for sharing files, printers, and other resources between devices on a network in Windows environments. Ensuring that SMB settings on your Windows computer are configured correctly is crucial. The SMBv1 has numerous known vulnerabilities and therefore should never be used. Using SMBv2/v3 instead is the safer option.",
+    "solution": [
+      "On your keyboard, press 'Windows+R' to open the Run window.",
+      "Type 'Powershell', then select OK.",
+      "In the Powershell, type 'Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol' and hit enter.",
+      "To finish, restart your computer."
+    ]
+  },
+  {
+    "id": "13",
+    "name": "SMB version 1 and 2 enabled",
+    "information": "The SMB (Server Message Block) protocol is used for sharing files, printers, and other resources between devices on a network in Windows environments. Ensuring that SMB settings on your Windows computer are configured correctly is crucial. The SMBv1 has numerous known vulnerabilities and therefore should never be used. Using SMBv2/v3 instead is the safer option.",
+    "solution": [
+      "On your keyboard, press 'Windows+R' to open the Run window.",
+      "Type 'Powershell', then select OK.",
+      "In the Powershell, type 'Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol' and hit enter.",
+      "To finish, restart your computer."
+    ]
+  },
+  {
+    "id": "14",
+    "name": "User account control turned off",
+    "information": "User Account Control (UAC) is a security feature introduced in Windows Vista and present in subsequent versions of the Windows operating system. Its primary purpose is to enhance the security of the operating system by limiting the privileges of applications and processes running with standard user rights and requiring administrator approval for tasks that require elevated permissions.",
+    "solution": [
+      "On your keyboard, press 'Windows+R' to open the Run window.",
+      "Type 'Control Panel', then select OK.",
+      "Select 'User Accounts' or 'User Accounts and Family Safety'.",
+      "Select 'Change User Account Control settings'. If you are prompted by UAC, select 'Yes' to continue.",
+      "Here you can move the slider to 'Always notify' to turn UAC on. If you are prompted by UAC, select 'Yes' to continue.",
+      "To finish, restart your computer."
+    ]
+  },
+  {
+    "id": "15",
+    "name": "Windows Defender is disabled",
+    "information": "Windows Defender continuously monitors your system for any suspicious activity, including malware, viruses, and other forms of malicious software. By having it enabled, you have an active defense against potential threats that could compromise your privacy or security. It also receives regular updates from Microsoft to stay up-to-date with the latest security threats and vulnerabilities. By keeping it enabled, you ensure that your computer is protected against newly emerging threats that could exploit known security weaknesses.",
+    "solution": [
+      "Open the Windows Security app.",
+      "Select Virus & threat protection.",
+      "Under Virus & threat protection settings, select Manage settings.",
+      "Flip the switch under Real-time protection to turn it on."
+    ]
+  },
+  {
+    "id": "16",
+    "name": "Last password change was more than 6 months ago",
+    "information": "Regularly changing your password reduces the likelihood of unauthorized access to your computer or sensitive information. If someone does manage to obtain your password, changing it regularly limits the time they have to exploit it.  So it is a good habit to change your password at least twice a year.",
+    "solution": [
+      "Go to start > Change your password",
+      "Open the 'Password' section and click on the 'Change' button.",
+      "You can now change your password to a new unique one."
+    ]
+  },
+  {
+    "id": "17",
+    "name": "No windows login method set up",
+    "information": "Using a secure windows login method is important. Windows supports various login methods like a password, PIN, security key or fingerprint. Using one of these login methods is important to keep your data safe. Without one of these login methods anyone is able to unlock your device and access your data. You are not using a login method / a less secure login method / combination of login methods, it is recommended to switch to a more secure login method like password or fingerprint.",
+    "solution": [
+      "Go to Start > Settings > Accounts > Sign-in options.",
+      "Now you can set up one of the available login methods by following the steps described."
+    ]
+  },
+  {
+    "id": "17",
+    "name": "Windows login with a less secure login method",
+    "information": "Using a secure windows login method is important. Windows supports various login methods like a password, PIN, security key or fingerprint. Using one of these login methods is important to keep your data safe. Without one of these login methods anyone is able to unlock your device and access your data. You are not using a login method / a less secure login method / combination of login methods, it is recommended to switch to a more secure login method like password or fingerprint.",
+    "solution": [
+      "Go to Start > Settings > Accounts > Sign-in options.",
+      "Now you can set up a secure login method by using either the password or the fingerprint as login method."
+    ]
+  },
+  {
+    "id": "18",
+    "name": "Windows version slightly outdated",
+    "information": "Outdated Windows versions may contain unpatched security vulnerabilities that could be exploited by attackers to compromise the system. Hackers actively search for and exploit vulnerabilities in outdated operating systems, potentially leading to unauthorized access, data breaches, and malware infections.",
+    "solution": [
+      "Go to Start > Settings > Windows Update.",
+      "Here you can check for updates and install updates."
+    ]
+  },
+  {
+    "id": "18",
+    "name": "Using an unsupported windows version. Please update to windows 10 or 11.",
+    "information": "Outdated Windows versions may contain unpatched security vulnerabilities that could be exploited by attackers to compromise the system. Hackers actively search for and exploit vulnerabilities in outdated operating systems, potentially leading to unauthorized access, data breaches, and malware infections.",
+    "solution": [
+      "Go to Start > Settings > Windows Update.",
+      "Here you can check for updates and install updates."
+    ]
+  },
+  {
+    "id": "19",
+    "name": "Secure boot is disabled",
+    "information": "Secure Boot ensures that only trusted software components, signed with recognized digital signatures, are loaded during the boot process. This prevents malware and other unauthorized software from tampering with the boot process and gaining control of the system at an early stage.",
+    "solution": [
+      "Restart your computer and access the BIOS/UEFI settings. This is usually done by pressing a specific key during the boot process. Common keys to access BIOS/UEFI settings include F2, Del, Esc, or F10. The specific key varies depending on your computer's manufacturer.",
+      "Once you are in the BIOS/UEFI settings, navigate to the section related to Secure Boot. This section may be named differently depending on your system manufacturer and BIOS/UEFI version.",
+      "In the Secure Boot section, you should find an option to enable Secure Boot. Select this option and set it to 'Enabled.' Some systems may require you to set a Secure Boot Mode or choose the Secure Boot Key Management option. Follow the on-screen instructions to enable Secure Boot.",
+      "After enabling Secure Boot, save the changes to the BIOS/UEFI settings and exit. Usually, you can do this by selecting the 'Save & Exit' or 'Exit' option from the BIOS/UEFI menu. Confirm any prompts to save the changes and restart your computer."
+    ]
+  },
+  {
+    "id": "21",
+    "name": "Google Chrome with no adblocker installed",
+    "information": "Adblockers shield users from online advertisements. With their filters and algorithms, they provide a sanctuary of uninterrupted browsing, sparing users from the visual clutter and potential security risks posed by ads.",
+    "solution": [
+      "Open Google Chrome and navigate to the Chrome Store.",
+      "Search for an adblocker in the search bar (for example: AdBlock Plus or uBlock Origin",
+      "Click on the 'Add to Chrome' button and restart the browser."
+    ]
+  },
+  {
+    "id": "22",
+    "name": "Microsoft Edge with no adblocker installed",
+    "information": "Adblockers shield users from online advertisements. With their filters and algorithms, they provide a sanctuary of uninterrupted browsing, sparing users from the visual clutter and potential security risks posed by ads.",
+    "solution": [
+      "Open Microsoft Edge and navigate to Microsoft Edge Extensions",
+      "Search for an adblocker in the search bar (for example: AdBlock Plus or uBlock Origin)",
+      "Click on the 'Download' button and restart the browser."
+    ]
+  },
+  {
+    "id": "23",
+    "name": "Potential phishing domains found on Google Chrome",
+    "information": "Phishing domains are fake websites designed to trick people into sharing sensitive information like passwords or credit card details. They look real, mimicking trusted brands or organizations. These scams exploit trust and curiosity to steal personal data.",
+    "solution": [
+      "Be careful browsing the internet as trusted websites could be spoofed easily. Furthermore there are a lot of websites with malicious intentions. In case of doubt of actively browsing on a potential phishing website, it is advised to change your password."
+    ]
+  },
+  {
+    "id": "24",
+    "name": "Potential phishing domains found on Microsoft Edge",
+    "information": "Phishing domains are fake websites designed to trick people into sharing sensitive information like passwords or credit card details. They look real, mimicking trusted brands or organizations. These scams exploit trust and curiosity to steal personal data.",
+    "solution": [
+      "Be careful browsing the internet as trusted websites could be spoofed easily. Furthermore there are a lot of websites with malicious intentions. In case of doubt of actively browsing on a potential phishing website, it is advised to change your password."
+    ]
+  },
+  {
+    "id": "27",
+    "name": "Possible tracking cookies found in Mozilla Firefox",
+    "information": "Cookies are small text files stored on your computer by websites you visit. They are used to remember your preferences, login information, and other data to enhance your browsing experience. However, cookies can also be used to track your online activities and gather personal information without your consent, raising privacy concerns. Managing and clearing cookies regularly helps protect your privacy and control the data websites collect about you.",
+    "solution": [
+      "Open Mozilla Firefox and click on the menu button (three horizontal lines) in the top right corner.",
+      "Select 'Settings' and go to the 'Privacy & Security' tab.",
+      "The 'Enhanced Tracking Protection' option should be set to 'Standard' or 'Custom'. Custom gives you more control over what you allow or block. Under Cookies and Site Data, you can delete your existing cookies and manage exceptions. It is recommended to clear your cookies often to protect your privacy."
+    ]
+  },
+  {
+    "id": "29",
+    "name": "Mozilla Firefox with no adblocker installed",
+    "information": "Adblockers shield users from online advertisements. With their filters and algorithms, they provide a sanctuary of uninterrupted browsing, sparing users from the visual clutter and potential security risks posed by ads.",
+    "solution": [
+      "Open Mozilla Firefox and click on the menu button (three horizontal lines) in the top right corner, and select 'Add-ons and themes'.",
+      "Go to the 'Extensions' tab.",
+      "Scroll down and click on the 'Find more add-ons' button.",
+      "Search for an adblocker in the search bar (for example: AdBlock Plus or uBlock Origin)",
+      "Click on the 'Add to Firefox' button and restart the browser."
+    ]
+  },
+  {
+    "id": "31",
+    "name": "Potential phishing domains found on Mozilla Firefox",
+    "information": "Phishing domains are fake websites designed to trick people into sharing sensitive information like passwords or credit card details. They look real, mimicking trusted brands or organizations. These scams exploit trust and curiosity to steal personal data.",
+    "solution": [
+      "Be careful browsing the internet as trusted websites could be spoofed easily. Furthermore there are a lot of websites with malicious intentions. In case of doubt of actively browsing on a potential phishing website, it is advised to change your password."
+    ]
+  },
+  {
+    "id": "32",
+    "name": "Incorrect CIS Audit list registry settings",
+    "information": "The Center for Internet Security (CIS) provides a set of guidelines and best practices for securing computer systems. The CIS Audit list registry settings help ensure that your system is configured according to these security standards. Incorrect or outdated registry settings may leave your system vulnerable to security threats and compromise your privacy.",
+    "solution": [
+      "Download the CIS Benchmark for your operating system from the official CIS website. Follow the instructions in the benchmark document to review and update the registry settings on your system to align with the CIS security standards. Regularly check for updates to the CIS Benchmark and apply any changes or recommendations to maintain a secure configuration."
+    ]
+  },
+  {
+    "id": "33",
+    "name": "Automatic log-in enabled",
+    "information": "Automatic log-in allows users to access their accounts without entering a password each time they start their computer or open a specific application. While convenient, automatic log-in poses security risks, as anyone with physical access to the device can access the account without authentication. Disabling automatic log-in enhances the security of your accounts and prevents unauthorized access.",
+    "solution": [
+      "Go to Start > Settings > Accounts > Sign-in options.",
+      "Under 'Require sign-in', select 'When PC wakes up from sleep'."
+    ]
+  },
+  {
+    "id": "34",
+    "name": "Remote RPC enabled",
+    "information": "Remote Procedure Call (RPC) is a protocol that allows programs and processes to communicate with each other on a network. Disabling Remote RPC helps prevent unauthorized access to your computer and protects it from potential security threats and vulnerabilities.",
+    "solution": [
+      "The Remote RPC setting can not be changed in a conventional way. It requires editing of the registry directly.",
+      "In Windows Search, type in Registry Editor and open the program.",
+      "Navigate to \"Computer\\HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server.",
+      "Double click on the \"AllowRemoteRPC\" key and set its value to 0."
+    ]
+  },
+  {
+    "id": "35",
+    "name": "Possible tracking cookies found in Google Chrome browser",
+    "information": "Cookies are small text files stored on your computer by websites you visit. They are used to remember your preferences, login information, and other data to enhance your browsing experience. However, cookies can also be used to track your online activities and gather personal information without your consent, raising privacy concerns. Managing and clearing cookies regularly helps protect your privacy and control the data websites collect about you.",
+    "solution": [
+      "Open Google Chrome and click on the three dots in the top right corner.",
+      "Select 'Settings' and go to the 'Privacy and security' section.",
+      "Under 'Third-party cookies', click on 'See all site data and permissions'.",
+      "Here you can view and manage the cookies stored by websites. You can delete individual cookies or clear all site data to protect your privacy. "
+    ]
+  },
+  {
+    "id": "36",
+    "name": "Possible tracking cookies found in Microsoft Edge browser",
+    "information": "Cookies are small text files stored on your computer by websites you visit. They are used to remember your preferences, login information, and other data to enhance your browsing experience. However, cookies can also be used to track your online activities and gather personal information without your consent, raising privacy concerns. Managing and clearing cookies regularly helps protect your privacy and control the data websites collect about you.",
+    "solution": [
+      "Open Microsoft Edge and click on the three dots in the top right corner.",
+      "Select 'Settings' and go to the 'Cookies and site permissions' section.",
+      "Under 'Cookies and data stored', click on 'Manage and delete cookies and site data'.",
+      "Here you can manage general cookie settings. You can delete individual cookies or clear all site data by clicking on 'See all cookies and site data'. "
+    ]
+  },
+  {
+    "id": "37",
+    "name": "Windows firewall is not enabled for all profiles",
+    "information": "The Windows Firewall is a built-in security feature that helps protect your computer from unauthorized access and malicious software by monitoring and controlling incoming and outgoing network traffic. Enabling the Windows Firewall for all network profiles (public, private, and domain) helps enhance the security of your system and prevent potential security threats.",
+    "solution": [
+      "Go to Start > Settings > Update & Security > Windows Security > Firewall & network protection.",
+      "Under 'Firewall & network protection', make sure that the Windows Firewall is turned on for all network profiles (public, private, and domain). If it is disabled, click on 'Turn on' to enable the firewall for the selected profile."
+    ]
+  },
+  {
+    "id": "38",
+    "name": "Minimum password length is not set to at least 15 characters",
+    "information": "Setting a minimum password length of at least 15 characters helps enhance the security of user accounts by increasing the complexity and strength of passwords. Longer passwords are more resistant to brute-force attacks and provide better protection against unauthorized access and data breaches.",
+    "solution": [
+      "Open an elevated command prompt by right-clicking on the Start button and selecting 'Terminal (Admin)'.",
+      "Run the command 'net accounts' to view the current password policy settings, including the minimum password length.",
+      "Run the command 'net accounts /minpwlen:15' to set the minimum password length to 15 characters.",
+      "Restart your computer to apply the changes."
+    ]
+  },
+  {
+    "id": "39",
+    "name": "Credential Guard is disabled",
+    "information": "Credential Guard is a security feature in Windows that helps protect user credentials and sensitive information from unauthorized access and theft. It uses virtualization-based security to isolate and protect credential information, making it more difficult for attackers to steal passwords and other sensitive data.",
+    "solution": [
+      "The setting of Credential Guard is handled in your local group policy. Ask your network administrator to enable Credential Guard."
+    ]
+  },
+  {
+    "id": "40",
+    "name": "NetBIOS over TCP/IP is enabled",
+    "information": "NetBIOS over TCP/IP is a legacy networking protocol that allows computers to communicate on a local network. Disabling NetBIOS over TCP/IP helps reduce the attack surface of your system and prevent potential security vulnerabilities associated with this protocol.",
+    "solution": [
+      "Open the Control Panel and go to 'Network and Internet' -> 'Network and Sharing Center'.",
+      "Click on 'Change adapter settings' in the left pane.",
+      "Right-click on your network connection and select 'Properties'.",
+      "In the 'Networking' tab, scroll down to 'Internet Protocol Version 4 (TCP/IPv4)' and click on 'Properties'.",
+      "Click on 'Advanced' and go to the 'WINS' tab.",
+      "Under 'NetBIOS setting', select 'Disable NetBIOS over TCP/IP'.",
+      "Click 'OK' to save the changes."
+    ]
+  },
+  {
+    "id": "41",
+    "name": "WPAD service is enabled",
+    "information": "Web Proxy Auto-Discovery (WPAD) is a protocol that allows web browsers to automatically discover proxy servers on a network. Disabling the WPAD service helps prevent potential security risks associated with automatic proxy configuration and protects your system from unauthorized proxy server discovery and configuration.",
+    "solution": [
+      "Open an elevated command prompt by right-clicking on the Start button and selecting 'Terminal (Admin)'.",
+      "Run the command 'netsh winhttp show proxy' to check the current proxy settings.",
+      "If WPAD is enabled, run the command 'netsh winhttp reset proxy' to disable WPAD and reset the proxy settings.",
+      "Restart your computer to apply the changes."
+    ]
+  },
+  {
+    "id": "42",
+    "name": "Windows automatic Screen Lock disabled",
+    "information": "Screen lock is a security feature that requires users to enter a password, PIN, or biometric authentication to unlock their device and access the desktop. Enabling screen lock helps protect your data and privacy in case your computer is left unattended or stolen.",
+    "solution": [
+      "Go to Start > Settings > Personalisation > Lock screen.",
+      "Open the 'Screen saver' window.",
+      "Check the box 'On resume, display logon screen' and set the 'Wait' time to a short interval (2 minutes or less)."
+    ]
+  }
+]

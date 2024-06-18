@@ -1,6 +1,7 @@
 import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
 import {retrieveTheme} from './personalize.js';
 import {LogError as logError} from '../../wailsjs/go/main/Tray.js';
+import {LoadUserSettings as loadUserSettings} from '../../wailsjs/go/main/App.js';
 
 export let currentStep = 1;
 /** Load the content of the Integration page */
@@ -25,7 +26,7 @@ export function openIntegrationPage() {
 
       <div class="api-key-step" id="step1">
         <h3>Step 1: Register for an account</h3>
-        <p>Visit our website and register for a new account.</p>
+        <p>Login to your account on https://lighthouse.guardian360.nl and go to the settings</p>
         <div class="api-key-image-container">
           <img class="api-key-image" src="https://via.placeholder.com/400" alt="Step 1 Image">
         </div>
@@ -33,7 +34,7 @@ export function openIntegrationPage() {
 
       <div class="api-key-step" id="step2">
         <h3>Step 2: Navigate to API Settings</h3>
-        <p>Once logged in, navigate to your account settings and find the API section.</p>
+        <p>Go to the API section and create a new token</p>
         <div class="api-key-image-container">
           <img class="api-key-image" src="https://via.placeholder.com/400" alt="Step 2 Image">
         </div>
@@ -41,7 +42,7 @@ export function openIntegrationPage() {
 
       <div class="api-key-step" id="step3">
         <h3>Step 3: Generate API Key</h3>
-        <p>Generate a new API key and copy it.</p>
+        <p>Copy the token and paste it in the field below, you can then click on the 'connect' button</p>
         <div class="api-key-image-container">
           <img class="api-key-image" src="https://via.placeholder.com/400" alt="Step 3 Image">
         </div>
@@ -66,7 +67,15 @@ export function openIntegrationPage() {
   document.getElementById('prevBtn').addEventListener('click', () => prevStep());
   document.getElementById('apiKeyButtonClick').addEventListener('click', () => connectToAPI());
   document.getElementById('disconnectButton').addEventListener('click', () => disconnectFromAPI());
-  document.getElementById('disconnectButton').style.display = 'none';
+  const userSettings = loadUserSettings();
+  if (userSettings.IntegrationKey !== '') {
+    document.getElementById('apiKeyButtonClick').style.display = 'none';
+    document.getElementById('disconnectButton').style.display = 'inline-block';
+    document.getElementById('apiKeyInput').value = userSettings.IntegrationKey;
+  } else {
+    document.getElementById('apiKeyButtonClick').style.display = 'inline-block';
+    document.getElementById('disconnectButton').style.display = 'none';
+  }
 
   showStep(currentStep);
 }
@@ -105,7 +114,6 @@ function prevStep() {
  */
 function connectToAPI() {
   const apiKey = document.getElementById('apiKeyInput').value;
-  // Dummy API connection logic
   setTimeout(() => {
     const status = document.getElementById('status');
     if (apiKey.trim() === '') {

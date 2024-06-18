@@ -1,9 +1,15 @@
 package apiconnection
 
 import (
+	"bytes"
+	"encoding/json"
 	"fmt"
+	"net/http"
+	"time"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/usersettings"
 )
 
 // ParseResult is a struct that encapsulates the results of parsing a scan.
@@ -75,4 +81,42 @@ func ParseCheckResult(check checks.Check) IssueData {
 		IssueID:        check.IssueID,
 		Detected:       IssueMap[IssueResPair{check.IssueID, check.ResultID}],
 		AdditionalData: check.Result}
+}
+
+// SendResultsToAPI sends the results of a scan to the Guardian360 Lighthouse API.
+//
+// Parameters: result ParseResult: The result of parsing the scan.
+//
+// Returns: None.
+func SendResultsToAPI(result ParseResult) {
+	url := "https://localhost"
+	jsonData, err := json.Marshal(result)
+	if err != nil {
+		logger.Log.ErrorWithErr("Error marshalling JSON:", err)
+		return
+	}
+
+	buffer := bytes.NewBuffer(jsonData)
+	req, err := http.NewRequest("POST", url, buffer)
+	if err != nil {
+		logger.Log.ErrorWithErr("Error creating request:", err)
+		return
+	}
+
+	settings := usersettings.LoadUserSettings()
+	req.Header.Set("Content-Type", "application/json")
+	req.Header.Set("Authorization", "Bearer "+settings.IntegrationKey)
+	req.Header.Set("Content-Length", fmt.Sprintf("%d", buffer.Len()))
+
+	client := &http.Client{
+		Timeout: 60 * time.Second, // Increase timeout for large payloads
+	}
+	resp, err := client.Do(req)
+	if err != nil {
+		logger.Log.ErrorWithErr("Error sending request:", err)
+		return
+	}
+	defer resp.Body.Close()
+
+	logger.Log.Info("Response Status:" + resp.Status)
 }

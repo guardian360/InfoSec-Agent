@@ -31,9 +31,10 @@ type UserSettings struct {
 	PointsHistory   []int       `json:"PointsHistory"`   // Points history for each scan
 	TimeStamps      []time.Time `json:"TimeStamps"`      // Time stamps for each scan
 	LighthouseState int         `json:"LighthouseState"` // User's game state
+	IntegrationKey  string      `json:"IntegrationKey"`  // Integration key for external systems
 }
 
-var DefaultUserSettings = UserSettings{Language: 1, ScanInterval: 7, Integration: false, NextScan: time.Now().Add((time.Hour * 24) * 7), Points: 0, PointsHistory: nil, TimeStamps: nil, LighthouseState: 0}
+var DefaultUserSettings = UserSettings{Language: 1, ScanInterval: 7, Integration: false, NextScan: time.Now().Add((time.Hour * 24) * 7), Points: 0, PointsHistory: nil, TimeStamps: nil, LighthouseState: 0, IntegrationKey: ""}
 
 // LoadUserSettings loads the user settings from a JSON file in the Windows AppData folder.
 //
