@@ -61,7 +61,7 @@ func TestQueryDatabase(t *testing.T) {
 	defer func(db *sql.DB) {
 		err = db.Close()
 		if err != nil {
-			logger.Log.ErrorWithErr("Error closing database: ", err)
+			logger.Log.ErrorWithErr("Error closing database", err)
 		}
 	}(db)
 
@@ -96,7 +96,7 @@ func TestQueryDatabase_Error(t *testing.T) {
 	defer func(db *sql.DB) {
 		err = db.Close()
 		if err != nil {
-			logger.Log.ErrorWithErr("Error closing database: ", err)
+			logger.Log.ErrorWithErr("Error closing database", err)
 		}
 	}(db)
 
@@ -119,7 +119,7 @@ func TestQueryDatabase_RowError(t *testing.T) {
 	defer func(db *sql.DB) {
 		err = db.Close()
 		if err != nil {
-			logger.Log.ErrorWithErr("Error closing database: ", err)
+			logger.Log.ErrorWithErr("Error closing database", err)
 		}
 	}(db)
 
@@ -148,7 +148,7 @@ func TestQueryDatabase_ScanError(t *testing.T) {
 	defer func(db *sql.DB) {
 		err = db.Close()
 		if err != nil {
-			logger.Log.ErrorWithErr("Error closing database: ", err)
+			logger.Log.ErrorWithErr("Error closing database", err)
 		}
 	}(db)
 

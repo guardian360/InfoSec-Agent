@@ -1,6 +1,6 @@
-// Package database provides functions for interacting with the database.
+// Package database provides functionality for interacting with the JSON database.
 //
-// Exported function(s): FillDatabase, GetSeverity, GetJSONKey, GetData
+// Exported function(s): GetData
 package database
 
 import (
@@ -52,12 +52,17 @@ type Data struct {
 //
 // After iterating through all check results, the function returns the dataList and nil for the error.
 func GetData(jsonFilePath string, checkResults []checks.Check) ([]Data, error) {
-	byteValue, _ := os.ReadFile(jsonFilePath)
+	logger.Log.Trace("Getting data from JSON file " + jsonFilePath)
+	byteValue, err := os.ReadFile(jsonFilePath)
+	if err != nil {
+		logger.Log.ErrorWithErr("Error reading JSON file "+jsonFilePath, err)
+		return nil, err
+	}
 
 	var data map[string]map[string]interface{}
-	err := json.Unmarshal(byteValue, &data)
+	err = json.Unmarshal(byteValue, &data)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error parsing JSON:", err)
+		logger.Log.ErrorWithErr("Error parsing JSON", err)
 		return nil, err
 	}
 
@@ -67,7 +72,7 @@ func GetData(jsonFilePath string, checkResults []checks.Check) ([]Data, error) {
 	// Iterate through all check results to compute the severities
 	for _, checkResult := range checkResults {
 		if checkResult.Error != nil {
-			logger.Log.ErrorWithErr("Error reading scan result", checkResult.Error)
+			logger.Log.Debug("Error reading scan result for IssueID " + strconv.Itoa(checkResult.IssueID) + ": " + checkResult.ErrorMSG)
 			continue
 		}
 
@@ -78,7 +83,7 @@ func GetData(jsonFilePath string, checkResults []checks.Check) ([]Data, error) {
 		// Get the severity from JSON
 		issueData, ok := data[issueKey]
 		if !ok {
-			logger.Log.Debug("IssueID not found in JSON:" + strconv.Itoa(checkResult.IssueID))
+			logger.Log.Debug("IssueID " + strconv.Itoa(checkResult.IssueID) + " not found in JSON")
 			continue
 		}
 		resultData, ok := issueData[resultKey].(map[string]interface{})
@@ -88,7 +93,7 @@ func GetData(jsonFilePath string, checkResults []checks.Check) ([]Data, error) {
 		}
 		sev, ok := resultData["Severity"].(float64)
 		if !ok {
-			logger.Log.Debug("Severity not found or invalid for IssueID:" + strconv.Itoa(checkResult.IssueID) + "ResultID:" + strconv.Itoa(checkResult.ResultID))
+			logger.Log.Debug("Severity not found or invalid for IssueID " + strconv.Itoa(checkResult.IssueID) + "ResultID:" + strconv.Itoa(checkResult.ResultID))
 			continue
 		}
 		dataList = append(dataList, Data{IssueID: checkResult.IssueID, Severity: int(sev)})

@@ -68,7 +68,7 @@ func Setup(fileName string, logLevel int, logLevelSpecific int) {
 //
 // Returns: None
 func SetupTests() {
-	Log = NewCustomLogger(true, "", 0, -1)
+	Log = NewCustomLogger(true, "", 0, 0)
 }
 
 // NewCustomLogger creates a new CustomLogger struct.
@@ -91,8 +91,9 @@ func SetupTests() {
 func NewCustomLogger(test bool, fileName string, logLevel int, logLevelSpecific int) *CustomLogger {
 	if test {
 		return &CustomLogger{
-			Logger:   log.New(os.Stdout, "", log.LstdFlags),
-			LogLevel: logLevel,
+			Logger:           log.New(os.Stdout, "", log.LstdFlags),
+			LogLevel:         logLevel,
+			LogLevelSpecific: logLevelSpecific,
 		}
 	}
 	appDataPath, err := os.UserConfigDir()
@@ -226,7 +227,7 @@ func (l *CustomLogger) Error(message string) {
 // Returns: None
 func (l *CustomLogger) ErrorWithErr(message string, err error) {
 	if l.LogLevelSpecific == -1 && l.LogLevel <= ErrorLevel || l.LogLevelSpecific == ErrorLevel {
-		l.Println("ERROR: " + message + " " + err.Error())
+		l.Println("ERROR: " + message + ": " + err.Error())
 	}
 }
 

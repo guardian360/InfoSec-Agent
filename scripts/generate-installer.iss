@@ -52,7 +52,7 @@ Source: "{#SourcePath}\..\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversi
 Source: "{#SourcePath}\..\reporting-page\build\bin\InfoSec-Agent-Reporting-Page.exe"; DestDir: "{app}\reporting-page\"; Flags: ignoreversion
 Source: "{#SourcePath}\..\backend\localization\localizations_src\*"; DestDir: "{app}\localization\"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "{#SourcePath}\..\reporting-page\frontend\src\assets\images\*"; DestDir: "{app}\reporting-page\images\"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "{#SourcePath}\..\reporting-page\database.db"; DestDir: "{app}\reporting-page"; Flags: ignoreversion
+Source: "{#SourcePath}\..\reporting-page\frontend\src\databases\database.en-GB.json"; DestDir: "{app}\localization\en-GB"; Flags: ignoreversion
 Source: "{#SourcePath}\..\reporting-page\build\windows\icon.ico"; DestDir: "{userappdata}\{#MyAppName}\icon"; Flags: ignoreversion
 Source: "{#SourcePath}\..\reporting-page\build\icon128.ico"; DestDir: "{userappdata}\{#MyAppName}\icon"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files

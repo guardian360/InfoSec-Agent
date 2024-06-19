@@ -34,7 +34,7 @@ export async function openHomePage() {
     lighthousePath = 'state0.mkv';
   }
 
-  const lighthouseState = await getImagePath(lighthousePath);
+  const lighthouseState = await getImagePath('gamification/' + lighthousePath);
   logDebug('lighthouseState: ' + lighthouseState);
 
   retrieveTheme();

@@ -157,7 +157,12 @@
     "ChangeTitle": "Titel ändern",
     "Reset": "Einstellungen zurücksetzen",
     "PersonalizeTitle": "Personalisieren Sie Ihr Erlebnis",
-    "PickTheme": "Wählen Sie ein Thema"
+    "PickTheme": "Wählen Sie ein Thema",
+    "Favicon": "Favicon",
+    "NavImage": "Navigationsbild",
+    "NavTitle": "Navigationstitel",
+    "Light": "Licht",
+    "Dark": "Dunkel"
   },
   "AllChecks": {
     "Security": "Sicherheit",

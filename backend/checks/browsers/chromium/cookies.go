@@ -19,7 +19,7 @@ func CookiesChromium(browser string, getter browsers.DefaultDirGetter, copyGette
 	browserPath, returnID := GetBrowserPathAndIDCookie(browser)
 	userDataDir, err := getter.GetDefaultDir(browserPath)
 	if err != nil {
-		return checks.NewCheckErrorf(returnID, "Error: ", err)
+		return checks.NewCheckErrorf(returnID, "error getting user data dir", err)
 	}
 	cookiesDir := userDataDir + "\\Network\\Cookies"
 
