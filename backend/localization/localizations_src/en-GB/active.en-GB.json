@@ -198,7 +198,7 @@
     "Id10":"Applications with contacts permissions",
     "Id11":"Open ports used by applications",
     "Id12":"Remote desktop enabled/disabled",
-    "Id13":"System Message Block enabled/disabled",
+    "Id13":"Server Message Block enabled/disabled",
     "Id14":"User Account Control enabled/disabled",
     "Id15":"Windows Defender enabled/disabled",
     "Id16":"Last Windows password changed",

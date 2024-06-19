@@ -158,16 +158,17 @@ export async function openAllChecksPage(area) {
     if (issue) {
       checks[i].classList.add('clickable');
       checks[i].addEventListener('click',
-      () => openIssuePage(issue.jsonkey, issue.severity, checks[i].parentElement.parentElement.parentElement.id));
+      () => openIssuePage(issue.issue_id, issue.result_id, checks[i].parentElement.parentElement.parentElement.id));
     }
   }
 
+  // Check if all checks failed for a browser --> browser not installed
   const browsers = ['privacyBrowserChrome','privacyBrowserEdge','privacyBrowserFirefox'];
   browsers.forEach((browser) => {
     const checks = areaLists[browser];
     let oneFound = true;
     for (let i = 0; i < checks.length; i++) {
-      oneFound = oneFound && issues.find((issue) => issue.id == checks[i]);
+      oneFound = oneFound && issues.find((issue) => issue.issue_id == checks[i]);
     }
     if (!oneFound) {
       document.getElementById(browser + 'Zero').classList.add('lang-all-checks-browser-zero');

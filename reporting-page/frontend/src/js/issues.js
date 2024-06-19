@@ -77,13 +77,7 @@ export async function openIssuesPage() {
     fillTable(issueTable, issues);
 
     const sortingMethod = JSON.parse(sessionStorage.getItem('IssuesSorting'));
-    if (sortingMethod) {
-      refillTable(issueTable, sortingMethod);
-    } else {
-      const defaultSorting = {'column': 2, 'direction': 'descending'};
-      sessionStorage.setItem('IssuesSorting', JSON.stringify(defaultSorting));
-      refillTable(issueTable, defaultSorting);
-    }
+    refillTable(issueTable, sortingMethod);
   } else {
     logError('Error in issues.js: Issues not found');
   }
@@ -193,7 +187,7 @@ export async function getIssues() {
     }
 
     // Add issue to list
-    if (currentIssue && issue.result_id >= 0) {
+    if (currentIssue ) {
       const name = currentIssue[issue.result_id].Name;
       const type = currentIssue.Type;
       const issueId = issue.issue_id;
@@ -238,7 +232,11 @@ export function fillTable(tbody, issues) {
       <td>${issue.type}</td>
       ${riskLevel}
     `;
+
     row.cells[0].id = issue.issue_id;
+    if (issue.result_id < 0) {
+      row.cells[0].classList.add('issue-check-failed');
+    }
     row.setAttribute('data-result-id', issue.result_id);
     row.setAttribute('data-severity', severity);
     tbody.appendChild(row);
@@ -270,8 +268,14 @@ export function fillTable(tbody, issues) {
   }
 
   // Sort the table
-  const sortingMethod = JSON.parse(sessionStorage.getItem('IssuesSorting'));
-  refillTable(tbody, sortingMethod);
+  const sortingMethod = sessionStorage.getItem('IssuesSorting');
+  if (sortingMethod) {
+    refillTable(tbody, JSON.parse(sortingMethod));
+  } else {
+    const defaultSorting = {'column': 2, 'direction': 'descending'};
+    sessionStorage.setItem('IssuesSorting', JSON.stringify(defaultSorting));
+    refillTable(tbody, defaultSorting);
+  }
 }
 
 /** Updates the sorting method and sorts the table

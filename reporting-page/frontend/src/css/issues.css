@@ -137,6 +137,10 @@
   margin-left: auto; /* Align icon to the right using margin */
 }
 
+.issue-check-failed {
+  font-style: italic;
+}
+
 .material-symbols-outlined:hover {
   cursor: pointer;
 }

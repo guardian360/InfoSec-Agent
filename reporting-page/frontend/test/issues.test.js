@@ -103,12 +103,6 @@ describe('Issues table', function() {
     const issues = scanResultMock;
 
     sessionStorage.setItem('ScanResult', JSON.stringify(issues));
-    sessionStorage.setItem('IssuesSorting', JSON.stringify(
-      {
-        column: '2',
-        direction: 'ascending',
-      },
-    ));
     sessionStorage.setItem('IssuesFilter', JSON.stringify(
       {'high': 1, 'medium': 1, 'low': 1, 'acceptable': 1, 'info': 1},
     ));
@@ -120,10 +114,14 @@ describe('Issues table', function() {
     const type = document.getElementsByClassName('lang-type')[0].innerHTML;
     const risk = document.getElementsByClassName('lang-risk')[0].innerHTML;
 
+    const sorting = JSON.parse(sessionStorage.getItem('IssuesSorting'));
+
     // Assert
     test.value(name).isEqualTo('Name');
     test.value(type).isEqualTo('Type');
     test.value(risk).isEqualTo('Risk');
+    test.value(sorting.column).isEqualTo(2);
+    test.value(sorting.direction).isEqualTo('descending');
 
     // Make issues table empty
     const issueTable = document.getElementById('issues-table').querySelector('tbody');
@@ -151,6 +149,9 @@ describe('Issues table', function() {
     // Arrange input issues
     const result = scanResultMock;
     sessionStorage.setItem('ScanResult', JSON.stringify(result));
+
+    const defaultSorting = {'column': 2, 'direction': 'ascending'};
+    sessionStorage.setItem('IssuesSorting', JSON.stringify(defaultSorting));
 
     const issue = await import('../src/js/issues.js');
     const issues = await issue.getIssues();
@@ -310,6 +311,28 @@ describe('Issues table', function() {
     // Arrange
     expect(myDropdownTable.classList.contains('show')).toBe(false);
   });
+  it('should show when a check has failed', async function() {
+    // make sure filters are on
+    const filters = {high: 1, medium: 1, low: 1, acceptable: 1, info: 1};
+    sessionStorage.setItem('IssuesFilter', JSON.stringify(filters));
+
+    // Arrange input issues
+    const result = [{issue_id: 1, result_id: -1, result: []}];
+    sessionStorage.setItem('ScanResult', JSON.stringify(result));
+
+    const issue = await import('../src/js/issues.js');
+    const issues = await issue.getIssues();
+
+    // Act
+    const issueTable = document.getElementById('issues-table').querySelector('tbody');
+    issue.fillTable(issueTable, issues);
+
+    // Assert
+    const row = issueTable.rows[0];
+    test.value(row.cells[0].textContent).isEqualTo(issues[0].name);
+    test.value(row.cells[1].textContent).isEqualTo(issues[0].type);
+    test.value(row.cells[0].classList.contains('issue-check-failed')).isTrue();
+  })
   it('should use the correct data object based on user language settings', async () => {
     // make sure filters are on
     const filters = {high: 1, medium: 1, low: 1, acceptable: 1, info: 1};

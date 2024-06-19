@@ -96,6 +96,7 @@ export async function openIssuePage(issueId, resultId, back = undefined) {
   stepCounter = 0;
   sessionStorage.setItem('savedPage', JSON.stringify([issueId, resultId]));
   const language = await getUserSettings();
+
   let currentIssue;
   switch (language) {
   case 0:
@@ -124,8 +125,28 @@ export async function openIssuePage(issueId, resultId, back = undefined) {
     break;
   }
   const issueData = currentIssue[resultId];
-  // Check if the issue has no screenshots, if so, display that there is no issue (acceptable)
-  if (issueData.Severity == 0) {
+  if (resultId < 0) {
+    console.log(issueData)
+    const pageContents = document.getElementById('page-contents');
+    pageContents.innerHTML = `
+      <h1 class="issue-name">${issueData.Name}</h1>
+      <div class="issue-information">
+        <h2 id="information" class="lang-information"></h2>
+        <p id="description">${currentIssue.Information}</p>
+        <h2 id="solution">${issueData.Failed}</h2>
+        <div class="issue-solution">
+          <p id="solution-text">${getVersionSolution(issueData, stepCounter)}</p>
+        </div>
+        <div class="solution-buttons">
+          <div class="button-box">
+            <div class="lang-scan-again button" id="scan-button"></div>
+          </div>
+        </div>
+        <div class="button" id="back-button"></div>
+      </div>
+    `;
+  } else if (issueData.Severity == 0) {
+    // Check if the issue has no screenshots, if so, display that there is no issue (acceptable)
     const pageContents = document.getElementById('page-contents');
     pageContents.innerHTML = `
       <h1 class="issue-name">${issueData.Name}</h1>
