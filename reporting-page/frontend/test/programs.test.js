@@ -2,14 +2,7 @@ import 'jsdom-global/register.js';
 import test from 'unit.js';
 import {JSDOM} from 'jsdom';
 import {jest} from '@jest/globals';
-// import data from '../src/databases/database.en-GB.json' assert { type: 'json' };
-// import dataDe from '../src/databases/database.de.json' assert { type: 'json' };
-// import dataEnUS from '../src/databases/database.en-US.json' assert { type: 'json' };
-// import dataEs from '../src/databases/database.es.json' assert { type: 'json' };
-// import dataFr from '../src/databases/database.fr.json' assert { type: 'json' };
-// import dataNl from '../src/databases/database.nl.json' assert { type: 'json' };
-// import dataPt from '../src/databases/database.pt.json' assert { type: 'json' };
-import {mockPageFunctions, clickEvent, storageMock, scanResultMock} from './mock.js';
+import {mockPageFunctions, storageMock} from './mock.js';
 
 global.TESTING = true;
 
@@ -71,7 +64,21 @@ describe('Programs table', function() {
     // Arrange
     const programs = await import('../src/js/programs.js');
     // Arrange input issues
-    const issues = scanResultMock;
+    const issues = [
+      { // Privacy, level 0
+        issue_id: 21,
+        result_id: 0,
+        result: [],
+      },
+      { // Programs, level 0
+        issue_id: 43,
+        result_id: 0,
+        result: [
+          'Program 1 | 1.0.0',
+          'Program 2 | 2.0.0',
+        ],
+      },
+    ];
 
     sessionStorage.setItem('ScanResult', JSON.stringify(issues));
 
@@ -85,14 +92,28 @@ describe('Programs table', function() {
     test.value(name).isEqualTo('Name');
     test.value(version).isEqualTo('Version');
 
-    // Make issues table empty
+    // Make programs table empty
     const programsTable = document.getElementById('program-table').querySelector('tbody');
     emptyTable(programsTable);
   });
   it('fillProgramTable should fill the programs table with information from the provided JSON array', async function() {
     // Arrange input issues
-    const result = scanResultMock;
-    const foundObject = result.find((obj) => obj.issue_id === 43);
+    const issues = [
+      { // Privacy, level 0
+        issue_id: 21,
+        result_id: 0,
+        result: [],
+      },
+      { // Programs, level 0
+        issue_id: 43,
+        result_id: 0,
+        result: [
+          'Program 1 | 1.0.0',
+          'Program 2 | 2.0.0',
+        ],
+      },
+    ]; ;
+    const foundObject = await issues.find((obj) => obj.issue_id === 43);
     const programsTable = document.getElementById('program-table').querySelector('tbody');
     const programs = await import('../src/js/programs.js');
 
@@ -104,12 +125,12 @@ describe('Programs table', function() {
     test.value(row.cells[0].textContent).isEqualTo(foundObject.result[0].split(' | ')[0]);
     test.value(row.cells[1].textContent).isEqualTo(foundObject.result[0].split(' | ')[1]);
 
-    // Make issues table empty
+    // Make programs table empty
     emptyTable(programsTable);
   });
   it('sortProgramTable should sort the programs table', async function() {
     // Arrange table rows
-    const table = dom.window.document.getElementById('issues-table');
+    const table = dom.window.document.getElementById('program-table');
     const tbody = table.querySelector('tbody');
     tbody.innerHTML = `
       <tr data-severity="3">
@@ -132,7 +153,7 @@ describe('Programs table', function() {
     programs.sortProgramTable(tbody, 'ascending');
 
     // Assert
-    let sortedRows = Array.from(tbody.rows);
+    const sortedRows = Array.from(tbody.rows);
     const sortedNames = sortedRows.map((row) => row.cells[0].textContent);
     test.array(sortedNames).is(['Program A', 'Program B', 'Program C']);
 
@@ -140,8 +161,43 @@ describe('Programs table', function() {
     programs.sortProgramTable(tbody, 'descending');
 
     // Assert
-    let sortedRowsDescending = Array.from(tbody.rows);
+    const sortedRowsDescending = Array.from(tbody.rows);
     const sortedNamesDescending = sortedRowsDescending.map((row) => row.cells[0].textContent);
     test.array(sortedNamesDescending).is(['Program C', 'Program B', 'Program A']);
+  });
+  it('searchTable should filter the table based on the search query', async function() {
+    // Arrange table rows
+    const table = dom.window.document.getElementById('program-table');
+    const tbody = table.querySelector('tbody');
+    tbody.innerHTML = `
+      <tr>
+        <td>Program A</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>Program B</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>Program C</td>
+        <td>3</td>
+      </tr>
+    `;
+
+    const programs = await import('../src/js/programs.js');
+
+    // Act
+    programs.searchTable(tbody, 'Program B');
+
+    // Assert
+    test.value(tbody.rows[0].style.display).isEqualTo('none');
+    test.value(tbody.rows[1].style.display).isEqualTo('');
+
+    // Act
+    programs.searchTable(tbody, 'Program');
+
+    // Assert
+    test.value(tbody.rows[0].style.display).isEqualTo('');
+    test.value(tbody.rows[1].style.display).isEqualTo('');
   });
 });
