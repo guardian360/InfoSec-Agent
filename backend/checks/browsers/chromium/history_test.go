@@ -187,7 +187,7 @@ func TestHistoryChromium_Error_GetDefaultDir(t *testing.T) {
 
 	result := chromium.HistoryChromium("Chrome", mockGetter, mockCopyGetter, mockQueryDBGetter, mockGetterQR, mockPhishingGetter)
 
-	assert.Equal(t, checks.NewCheckErrorf(checks.HistoryChromiumID, "Error: ", errors.New("mock error")), result)
+	assert.Equal(t, checks.NewCheckErrorf(checks.HistoryChromiumID, "error getting preferences directory", errors.New("mock error")), result)
 }
 
 func TestHistoryChromium_Error_CopyDatabase(t *testing.T) {
@@ -430,7 +430,7 @@ func TestQueryDatabase_Error(t *testing.T) {
 		return
 	}
 	if rows.Err() != nil {
-		logger.Log.ErrorWithErr("Error closing rows: ", rows.Err())
+		logger.Log.ErrorWithErr("Error closing rows", rows.Err())
 	}
 }
 
@@ -451,7 +451,7 @@ func TestProcessQueryResults(t *testing.T) {
 	// Execute the query to get *sql.Rows
 	realRows, err := db.Query("SELECT * FROM websites")
 	if realRows.Err() != nil {
-		logger.Log.ErrorWithErr("Error closing rows: ", realRows.Err())
+		logger.Log.ErrorWithErr("Error closing rows", realRows.Err())
 	}
 	if err != nil {
 		t.Fatalf("an error '%s' was not expected while querying", err)
@@ -491,7 +491,7 @@ func TestProcessQueryResults_Error(t *testing.T) {
 	// Execute the query to get *sql.Rows
 	realRows, err := db.Query("SELECT * FROM websites")
 	if realRows.Err() != nil {
-		logger.Log.ErrorWithErr("Error closing rows: ", realRows.Err())
+		logger.Log.ErrorWithErr("Error closing rows", realRows.Err())
 	}
 	if err != nil {
 		t.Fatalf("an error '%s' was not expected while querying", err)

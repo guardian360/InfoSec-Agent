@@ -364,6 +364,6 @@ func OpenRegistryKey(k RegistryKey, path string) (RegistryKey, error) {
 func CloseRegistryKey(key RegistryKey) {
 	err := key.Close()
 	if err != nil {
-		logger.Log.ErrorWithErr("Error closing registry key:", err)
+		logger.Log.ErrorWithErr("Error closing registry key", err)
 	}
 }

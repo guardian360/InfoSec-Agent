@@ -127,19 +127,19 @@ func OnReady() {
 		case <-mReportingPage.ClickedCh:
 			err := OpenReportingPage()
 			if err != nil {
-				logger.Log.ErrorWithErr("Error opening reporting page:", err)
+				logger.Log.ErrorWithErr("Error opening reporting page", err)
 			}
 		case <-mChangeScanInterval.ClickedCh:
 			ChangeScanInterval()
 		case <-mScanNow.ClickedCh:
-			result, err := ScanNow(true, "reporting-page/frontend/src/databases/database.en-GB.json")
+			result, err := ScanNow(true, config.DatabasePath)
 			if err != nil {
-				logger.Log.ErrorWithErr("Error scanning:", err)
+				logger.Log.ErrorWithErr("Error scanning", err)
 			} else {
 				// Notify the user that a scan has been completed
-				err = Popup(result, "./reporting-page/frontend/src/databases/database.en-GB.json")
+				err = Popup(result, config.DatabasePath)
 				if err != nil {
-					logger.Log.ErrorWithErr("Error notifying user:", err)
+					logger.Log.ErrorWithErr("Error notifying user", err)
 				}
 			}
 		case <-mChangeLanguage.ClickedCh:
@@ -183,7 +183,7 @@ func OpenReportingPage() error {
 		return errors.New("reporting-page is already running")
 	}
 
-	logger.Log.Debug("opening reporting page")
+	logger.Log.Info("Opening reporting page")
 
 	if config.BuildReportingPage {
 		err := BuildReportingPage()
@@ -201,7 +201,7 @@ func OpenReportingPage() error {
 	go func() {
 		<-mQuit.ClickedCh
 		if err := runCmd.Process.Kill(); err != nil {
-			logger.Log.ErrorWithErr("error interrupting reporting-page process:", err)
+			logger.Log.ErrorWithErr("error interrupting reporting-page process", err)
 		}
 		ReportingPageOpen = false
 		systray.Quit()
@@ -212,13 +212,14 @@ func OpenReportingPage() error {
 	}()
 
 	// Run the reporting page executable
+	logger.Log.Trace("Running reporting page command")
 	ReportingPageOpen = true
 	if err := runCmd.Run(); err != nil {
 		ReportingPageOpen = false
 		return fmt.Errorf("error running reporting-page: %w", err)
 	}
 
-	logger.Log.Debug("reporting page opened")
+	logger.Log.Debug("Reporting page opened")
 	return nil
 }
 
@@ -230,6 +231,8 @@ func OpenReportingPage() error {
 // Returns:
 //   - error: An error object if an error occurred during the process, otherwise nil.
 func BuildReportingPage() error {
+	logger.Log.Debug("Building reporting page")
+
 	// Change directory to reporting-page folder
 	err := os.Chdir("reporting-page")
 	if err != nil {
@@ -240,7 +243,7 @@ func BuildReportingPage() error {
 	defer func() {
 		err = os.Chdir("..")
 		if err != nil {
-			logger.Log.ErrorWithErr("error changing directory:", err)
+			logger.Log.ErrorWithErr("Error changing directory", err)
 		}
 	}()
 
@@ -251,7 +254,7 @@ func BuildReportingPage() error {
 	if err = buildCmd.Run(); err != nil {
 		return fmt.Errorf("error building reporting-page: %w", err)
 	}
-	logger.Log.Debug("reporting page built successfully")
+	logger.Log.Debug("Reporting page built successfully")
 	return nil
 }
 
@@ -266,16 +269,18 @@ func BuildReportingPage() error {
 //
 // Returns: None.
 func ChangeScanInterval(testInput ...string) {
+	logger.Log.Trace("Changing scan interval")
+
+	scanInterval := usersettings.LoadUserSettings().ScanInterval
 	var res string
 	test := len(testInput) > 0
 	// If testInput is provided, use it for testing
 	if test {
 		res = testInput[0]
 	} else {
-		scanInterval := usersettings.LoadUserSettings().ScanInterval
-
 		// Get user input by creating a dialog window
 		var err error
+		logger.Log.Trace("Creating dialog")
 		res, err = zenity.Entry(localization.Localize(Language, "Dialogs.ScanInterval.Content"),
 			zenity.Title(localization.Localize(Language, "Dialogs.ScanInterval.Title")),
 			zenity.OKLabel(localization.Localize(Language, "Dialogs.OK")),
@@ -283,35 +288,35 @@ func ChangeScanInterval(testInput ...string) {
 			zenity.EntryText(strconv.Itoa(scanInterval)),
 			zenity.DefaultItems("7"))
 		if err != nil {
-			logger.Log.ErrorWithErr("Error creating dialog:", err)
+			logger.Log.ErrorWithErr("Error creating dialog", err)
 			return
 		}
 	}
 
 	// Parse the user input
 	interval, err := strconv.Atoi(res)
-	scanInterval := usersettings.LoadUserSettings().ScanInterval
 	if err != nil || interval <= 0 {
+		logger.Log.Error("Invalid scan interval input")
 		if !test {
+			logger.Log.Trace("Creating invalid interval dialog")
 			err = zenity.Info(fmt.Sprintf(localization.Localize(Language, "Dialogs.ScanInterval.InvalidChangeContent"), scanInterval),
 				zenity.Title(localization.Localize(Language, "Dialogs.ScanInterval.InvalidChangeTitle")),
 				zenity.OKLabel(localization.Localize(Language, "Dialogs.OK")),
 				zenity.CancelLabel(localization.Localize(Language, "Dialogs.Cancel")))
 			if err != nil {
-				logger.Log.ErrorWithErr("Error creating invalid interval confirmation dialog:", err)
+				logger.Log.ErrorWithErr("Error creating invalid interval confirmation dialog", err)
 			}
 		}
-		interval = scanInterval
-		updateScanInterval(interval, test)
 		return
 	}
 	if !test {
+		logger.Log.Trace("Creating interval changed confirmation dialog")
 		err = zenity.Info(fmt.Sprintf(localization.Localize(Language, "Dialogs.ScanInterval.ChangedContent"), interval),
 			zenity.Title(localization.Localize(Language, "Dialogs.ScanInterval.ChangedTitle")),
 			zenity.OKLabel(localization.Localize(Language, "Dialogs.OK")),
 			zenity.CancelLabel(localization.Localize(Language, "Dialogs.Cancel")))
 		if err != nil {
-			logger.Log.ErrorWithErr("Error creating interval confirmation dialog:", err)
+			logger.Log.ErrorWithErr("Error creating interval confirmation dialog", err)
 		}
 	}
 	updateScanInterval(interval, test)
@@ -335,27 +340,27 @@ func ScanNow(dialogPresent bool, databasePath string) ([]checks.Check, error) {
 	if dialogPresent {
 		dialog, result, err = runScanWithDialog()
 		if err != nil {
-			logger.Log.ErrorWithErr("Error running scan with dialog:", err)
+			logger.Log.ErrorWithErr("Error running scan with dialog", err)
 			return result, err
 		}
 		// Defer closing the dialog until the scan completes
 		defer func(dialog zenity.ProgressDialog) {
 			err = dialog.Close()
 			if err != nil {
-				logger.Log.ErrorWithErr("Error closing dialog:", err)
+				logger.Log.ErrorWithErr("Error closing dialog", err)
 			}
 		}(dialog)
 	} else {
 		result, err = scan.Scan(nil, Language)
 		if err != nil {
-			logger.Log.ErrorWithErr("Error calling scan:", err)
+			logger.Log.ErrorWithErr("Error calling scan", err)
 			return result, err
 		}
 	}
 	// Update the game state based on the scan results
 	_, err = gamification.UpdateGameState(result, databasePath, gamification.RealPointCalculationGetter{}, usersettings.RealSaveUserSettingsGetter{})
 	if err != nil {
-		logger.Log.ErrorWithErr("Error calculating points:", err)
+		logger.Log.ErrorWithErr("Error calculating points", err)
 	}
 
 	return result, nil
@@ -381,6 +386,7 @@ func ScanNow(dialogPresent bool, databasePath string) ([]checks.Check, error) {
 //
 // Returns: None. The function updates the 'language' variable in-place.
 func ChangeLanguage(testInput ...string) {
+	logger.Log.Trace("Changing language")
 	var res string
 	test := testInput != nil
 	if test {
@@ -396,7 +402,7 @@ func ChangeLanguage(testInput ...string) {
 			zenity.OKLabel(localization.Localize(Language, "Dialogs.OK")),
 			zenity.CancelLabel(localization.Localize(Language, "Dialogs.Cancel")))
 		if err != nil {
-			logger.Log.ErrorWithErr("Error creating dialog:", err)
+			logger.Log.ErrorWithErr("Error creating dialog", err)
 			return
 		}
 	}
@@ -420,6 +426,7 @@ func ChangeLanguage(testInput ...string) {
 	default:
 		Language = 1
 	}
+	logger.Log.Info("Language changed to " + res)
 
 	if test {
 		return
@@ -429,7 +436,7 @@ func ChangeLanguage(testInput ...string) {
 	current.Language = Language
 	err := getter.SaveUserSettings(current)
 	if err != nil {
-		logger.Log.Warning("Language setting not saved to file")
+		logger.Log.Warning("Language setting not saved to user settings file")
 	}
 }
 
@@ -461,7 +468,7 @@ func changeNextScan(settings usersettings.UserSettings, value int) {
 	getter := usersettings.RealSaveUserSettingsGetter{}
 	err := getter.SaveUserSettings(settings)
 	if err != nil {
-		logger.Log.Warning("Next scan time not saved to file")
+		logger.Log.Warning("Next scan time not saved to user settings file")
 	}
 }
 
@@ -475,14 +482,15 @@ func changeNextScan(settings usersettings.UserSettings, value int) {
 func periodicScan(scanInterval int) {
 	settings := usersettings.LoadUserSettings()
 	if time.Now().After(settings.NextScan) {
-		result, err := ScanNow(false, "reporting-page/frontend/src/databases/database.en-GB.json")
+		logger.Log.Debug("Running periodic scan")
+		result, err := ScanNow(false, config.DatabasePath)
 		if err != nil {
-			logger.Log.ErrorWithErr("Error performing periodic scan:", err)
+			logger.Log.ErrorWithErr("Error performing periodic scan", err)
 		} else {
 			// Notify the user that a scan has been completed
-			err = Popup(result, "./reporting-page/frontend/src/databases/database.en-GB.json")
+			err = Popup(result, config.DatabasePath)
 			if err != nil {
-				logger.Log.ErrorWithErr("Error notifying user:", err)
+				logger.Log.ErrorWithErr("Error notifying user", err)
 			}
 		}
 		// Update the next scan time
@@ -505,17 +513,17 @@ func runScanWithDialog() (zenity.ProgressDialog, []checks.Check, error) {
 		zenity.OKLabel(localization.Localize(Language, "Dialogs.OK")),
 		zenity.CancelLabel(localization.Localize(Language, "Dialogs.Cancel")))
 	if err != nil {
-		logger.Log.ErrorWithErr("Error creating dialog:", err)
+		logger.Log.ErrorWithErr("Error creating dialog", err)
 	}
 	result, err := scan.Scan(dialog, Language)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error calling scan:", err)
+		logger.Log.ErrorWithErr("Error calling scan", err)
 		return dialog, result, err
 	}
 
 	err = dialog.Complete()
 	if err != nil {
-		logger.Log.ErrorWithErr("Error completing dialog:", err)
+		logger.Log.ErrorWithErr("Error completing dialog", err)
 		return dialog, result, err
 	}
 	return dialog, result, err
@@ -528,15 +536,20 @@ func runScanWithDialog() (zenity.ProgressDialog, []checks.Check, error) {
 //
 // Returns: None.
 func updateScanInterval(interval int, test bool) {
-	logger.Log.Printf("INFO: Scan interval changed to " + strconv.Itoa(interval) + " day(s)")
-	if !test {
-		current := usersettings.LoadUserSettings()
-		current.ScanInterval = interval
-		current.NextScan = time.Now().Add(time.Duration(interval) * time.Hour)
-		getter := usersettings.RealSaveUserSettingsGetter{}
-		err := getter.SaveUserSettings(current)
-		if err != nil {
-			logger.Log.Warning("Scan interval setting not saved to file")
-		}
+	logger.Log.Trace("Changing scan interval to " + strconv.Itoa(interval) + " day(s)")
+	if test {
+		return
+	}
+
+	current := usersettings.LoadUserSettings()
+	current.ScanInterval = interval
+	current.NextScan = time.Now().Add(time.Duration(interval) * time.Hour)
+
+	getter := usersettings.RealSaveUserSettingsGetter{}
+	err := getter.SaveUserSettings(current)
+	if err != nil {
+		logger.Log.Warning("Scan interval setting not saved to file")
+	} else {
+		logger.Log.Info("Scan interval changed to " + strconv.Itoa(interval) + " day(s)")
 	}
 }

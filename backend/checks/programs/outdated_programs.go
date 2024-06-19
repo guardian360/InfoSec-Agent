@@ -167,13 +167,13 @@ func compareVersions(v1, v2 string) int {
 		if i < len(parts1) {
 			_, err := fmt.Sscanf(parts1[i], "%d", &num1)
 			if err != nil {
-				logger.Log.ErrorWithErr("error parsing version number", err)
+				logger.Log.ErrorWithErr("Error parsing version number", err)
 			}
 		}
 		if i < len(parts2) {
 			_, err := fmt.Sscanf(parts2[i], "%d", &num2)
 			if err != nil {
-				logger.Log.ErrorWithErr("error parsing version number", err)
+				logger.Log.ErrorWithErr("Error parsing version number", err)
 			}
 		}
 

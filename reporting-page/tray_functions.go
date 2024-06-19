@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/config"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/tray"
 )
@@ -30,13 +31,13 @@ func NewTray(log *logger.CustomLogger) *Tray {
 //
 // This method is a bridge between the front-end and the tray package's ScanNow function. It triggers an immediate scan operation, bypassing the regular scan interval. The scan results, represented as a slice of checks, are returned along with any error that might occur during the scan.
 //
-// Parameters: None. The method uses the receiver (*Tray) to call the function.
+// Parameters: dialogPresent (bool) - A boolean value that indicates whether a dialog should be displayed during the scan operation.
 //
 // Returns:
 //   - []checks.Check: A slice of checks representing the scan results.
 //   - error: An error object that describes the error, if any occurred. nil if no error occurred.
-func (t *Tray) ScanNow(dialogPresent bool, databasePath string) ([]checks.Check, error) {
-	return tray.ScanNow(dialogPresent, databasePath)
+func (t *Tray) ScanNow(dialogPresent bool) ([]checks.Check, error) {
+	return tray.ScanNow(dialogPresent, "../"+config.DatabasePath)
 }
 
 // ChangeLanguage is responsible for switching the language of the system tray application.
