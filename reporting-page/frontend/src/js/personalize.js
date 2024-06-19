@@ -1,6 +1,6 @@
 import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
 import {getLocalization} from './localize.js';
-import {GetImagePath as getImagePath} from "../../wailsjs/go/main/App.js";
+import {GetImagePath as getImagePath} from '../../wailsjs/go/main/App.js';
 
 /** Load the content of the Personalize page */
 export function openPersonalizePage() {

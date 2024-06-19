@@ -4,7 +4,7 @@ import test from 'unit.js';
 import {jest} from '@jest/globals';
 import {fireEvent} from '@testing-library/dom';
 global.TESTING = true;
-import {mockGetLocalization} from './mock.js';
+import {mockGetImagePath, mockGetLocalization} from './mock.js';
 
 // Mock page
 const dom = new JSDOM(`
@@ -25,6 +25,7 @@ global.window = dom.window;
 // Mock Localize function
 jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
   Localize: jest.fn().mockImplementation((input) => mockGetLocalization(input)),
+  GetImagePath: jest.fn().mockImplementation((input) => mockGetImagePath(input)),
 }));
 
 // Mock FileReader
@@ -202,16 +203,16 @@ describe('openPersonalizePage function', () => {
     const setItemMock = jest.spyOn(localStorage, 'setItem').mockImplementation(() => {});
 
     // Act
-    resetButton.click();
+    await resetButton.click();
 
     setItemMock.mockRestore();
-    // Arrange
+    // Assert
     expect(localStorage.getItem('favicon')) === null;
     expect(localStorage.getItem('title')) === null;
     expect(logo).not.toBeNull();
     expect(logo.src).toContain('frontend/src/assets/images/InfoSec-Agent-logo.png');
     expect(title).not.toBeNull();
-    expect(title.textContent).toBe('Infosec Agent');
+    expect(title.textContent).toBe('InfoSec Agent');
     expect(favicon).not.toBeNull();
     expect(favicon.href).toContain('frontend/src/assets/images/InfoSec-Agent-logo.png');
   });
