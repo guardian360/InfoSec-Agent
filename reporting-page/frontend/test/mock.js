@@ -102,6 +102,14 @@ export const scanResultMock = [
     result_id: 0,
     result: [],
   },
+  { // Programs, level 0
+    issue_id: 43,
+    result_id: 0,
+    result: [
+      'Program 1 | 1.0.0',
+      'Program 2 | 2.0.0',
+    ],
+  },
 ];
 
 /** Mock of Chart constructor and update function from chart.js */
