@@ -1,5 +1,13 @@
 {
   "1": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Geräte verbunden über Bluetooth",
+      "Failed": "Wir konnten nicht überprüfen, ob Geräte über Bluetooth verbunden sind.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Keine über Bluetooth verbundenen Geräte",

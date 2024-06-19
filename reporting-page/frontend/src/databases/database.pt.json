@@ -1,5 +1,13 @@
 {
   "1": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Dispositivos conectados via bluetooth",
+      "Failed": "Não foi possível verificar se há dispositivos conectados via bluetooth.",
+      "Solution": [
+        "Verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não conseguimos concluir a verificação."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Nenhum dispositivo conectado via bluetooth",

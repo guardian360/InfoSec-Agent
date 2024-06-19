@@ -126,7 +126,6 @@ export async function openIssuePage(issueId, resultId, back = undefined) {
   }
   const issueData = currentIssue[resultId];
   if (resultId < 0) {
-    console.log(issueData)
     const pageContents = document.getElementById('page-contents');
     pageContents.innerHTML = `
       <h1 class="issue-name">${issueData.Name}</h1>

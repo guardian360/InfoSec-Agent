@@ -1,5 +1,13 @@
 {
   "1": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: Apparaten verbonden via bluetooth",
+      "Failed": "We konden niet controleren of er apparaten via bluetooth zijn verbonden.",
+      "Solution": [
+        "Controleer of het Windows-register direct wordt gebruikt. Wanneer de sleutel voor deze controle in gebruik is, kunnen we de controle niet voltooien."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Geen apparaten verbonden via Bluetooth",

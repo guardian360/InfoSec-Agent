@@ -166,9 +166,9 @@ export async function openAllChecksPage(area) {
   const browsers = ['privacyBrowserChrome','privacyBrowserEdge','privacyBrowserFirefox'];
   browsers.forEach((browser) => {
     const checks = areaLists[browser];
-    let oneFound = true;
+    let oneFound = false;
     for (let i = 0; i < checks.length; i++) {
-      oneFound = oneFound && issues.find((issue) => issue.issue_id == checks[i]);
+      oneFound = oneFound || (issues.find((issue) => issue.issue_id == checks[i]) != undefined);
     }
     if (!oneFound) {
       document.getElementById(browser + 'Zero').classList.add('lang-all-checks-browser-zero');

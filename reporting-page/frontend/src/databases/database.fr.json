@@ -1,5 +1,13 @@
 {
   "1": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Appareils connectés via Bluetooth",
+      "Failed": "Nous n'avons pas pu vérifier s'il y a des appareils connectés via Bluetooth.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Aucun appareil connecté via Bluetooth",
