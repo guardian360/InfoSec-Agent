@@ -332,7 +332,7 @@ describe('Issues table', function() {
     test.value(row.cells[0].textContent).isEqualTo(issues[0].name);
     test.value(row.cells[1].textContent).isEqualTo(issues[0].type);
     test.value(row.cells[0].classList.contains('issue-check-failed')).isTrue();
-  })
+  });
   it('should use the correct data object based on user language settings', async () => {
     // make sure filters are on
     const filters = {high: 1, medium: 1, low: 1, acceptable: 1, info: 1};

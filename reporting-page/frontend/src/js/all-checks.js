@@ -3,6 +3,7 @@ import {retrieveTheme} from './personalize.js';
 import {getLocalization, getLocalizationString} from './localize.js';
 import {LogError as logError} from '../../wailsjs/go/main/Tray.js';
 import {openIssuePage, scrollToElement} from './issue.js';
+import data from '../databases/database.en-GB.json' assert { type: 'json' };
 
 /**
  * Load the content of the About page
@@ -158,12 +159,12 @@ export async function openAllChecksPage(area) {
     if (issue) {
       checks[i].classList.add('clickable');
       checks[i].addEventListener('click',
-      () => openIssuePage(issue.issue_id, issue.result_id, checks[i].parentElement.parentElement.parentElement.id));
+        () => openIssuePage(issue.issue_id, issue.result_id, checks[i].parentElement.parentElement.parentElement.id));
     }
   }
 
   // Check if all checks failed for a browser --> browser not installed
-  const browsers = ['privacyBrowserChrome','privacyBrowserEdge','privacyBrowserFirefox'];
+  const browsers = ['privacyBrowserChrome', 'privacyBrowserEdge', 'privacyBrowserFirefox'];
   browsers.forEach((browser) => {
     const checks = areaLists[browser];
     let oneFound = false;
@@ -173,7 +174,7 @@ export async function openAllChecksPage(area) {
     if (!oneFound) {
       document.getElementById(browser + 'Zero').classList.add('lang-all-checks-browser-zero');
     }
-  })
+  });
 
   // Localize the static content of the about page
   const staticAboutPageConent = [
@@ -224,7 +225,11 @@ export async function openAllChecksPage(area) {
     'AllChecks.OtherPrivacyText',
     'AllChecks.BrowserZeroFound',
   ];
-  for (let ids = 1; ids < 43; ids++) {
+  let maxId = 0;
+  while (data[maxId+1]) {
+    maxId++;
+  }
+  for (let ids = 1; ids <= maxId; ids++) {
     staticAboutPageConent.push('lang-id'+ids.toString());
     localizationIds.push('AllChecks.Id'+ids.toString());
   }
