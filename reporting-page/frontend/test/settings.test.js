@@ -24,7 +24,7 @@ const dom = new JSDOM(`
       </div>
       <div class="header-logo">
         <div id="logo-button" class="logo-name">
-          <img id="logo" alt="logo" src="./src/assets/images/logoTeamA-transformed.png">  
+          <img id="logo" alt="logo" src="../src/assets/images/InfoSec-Agent-logo.png">  
           <div class="header-name">
             <h1 id="title">Little Brother</h1><!-- Use id to dynamically change title -->
           </div>
