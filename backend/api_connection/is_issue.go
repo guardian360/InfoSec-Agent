@@ -73,16 +73,10 @@ var IssueMap = map[IssueResPair]bool{
 	{14, 2}: false,
 	// UAC: Unknown UAC level
 	{14, 3}: false,
-	// Defender: Real-time and scan enabled
+	// Defender: Real-time enabled
 	{15, 0}: false,
-	// Defender: Real-time enabled, scan disabled
+	// Defender: Real-time disabled
 	{15, 1}: true,
-	// Defender: Real-time disabled, scan enabled
-	{15, 2}: true,
-	// Defender: Real-time and scan disabled
-	{15, 3}: true,
-	// Defender: No data found
-	{15, 4}: false,
 	// Last Password Change: Password changed more than half a year ago
 	{16, 0}: true,
 	// Last Password Change: Password changed recently

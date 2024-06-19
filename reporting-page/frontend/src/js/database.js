@@ -1,10 +1,8 @@
 import {ScanNow as scanNowGo, LogError as logError} from '../../wailsjs/go/main/Tray.js';
-import {GetData as getDataBaseData} from '../../wailsjs/go/main/DataBase.js';
 import {openHomePage} from './home.js';
 import {
   WindowShow as windowShow,
-  WindowMaximise as windowMaximise,
-  LogPrint as logPrint} from '../../wailsjs/runtime/runtime.js';
+  WindowMaximise as windowMaximise} from '../../wailsjs/runtime/runtime.js';
 import * as rc from './risk-counters.js';
 import {updateRiskCounter} from './risk-counters.js';
 import data from '../databases/database.en-GB.json' assert { type: 'json' };
@@ -24,12 +22,11 @@ export async function scanTest(dialogPresent) {
       await new Promise((resolve, reject) => {
         scanNowGo(dialogPresent)
           .then(async (scanResult) => {
-          // Handle the scan result
-          // For example, save it in session storage
+            // Save scan result in session storage
             sessionStorage.setItem('ScanResult', JSON.stringify(scanResult));
             // Set severities in session storage
             await setAllSeverities(scanResult);
-            // set the detected windows version
+            // Set the detected windows version
             const windowsVersion = scanResult.find((i) => i.issue_id === 18);
             sessionStorage.setItem('WindowsVersion', windowsVersion.result[0]);
             // Resolve the promise with the scan result
@@ -45,7 +42,6 @@ export async function scanTest(dialogPresent) {
       });
       // Perform other actions after scanTest is complete
       windowShow();
-      logPrint(sessionStorage.getItem('ScanResult'));
     } catch (err) {
       // Handle any errors that occurred during scanTest or subsequent actions
       logError('Error in scanTest: ' + err);
@@ -63,15 +59,14 @@ if (sessionStorage.getItem('scanTest') === null || sessionStorage.getItem('scanT
 }
 
 // counts the occurrences of each level: 0 = acceptable, 1 = low, 2 = medium, 3 = high
-const countOccurrences = (severities, level) => severities.filter((item) => item.severity === level).length;
+const countOccurrences = (severities, level) =>
+  severities.filter((item) => data[item.issue_id][item.result_id].Severity === level).length;
 
 /** Sets the severities collected from the checks and database in session storage of all types
  *
  * @param {Check[]} input Checks to get severities from
  */
 async function setAllSeverities(input) {
-  const result = await getDataBaseData(input);
-  sessionStorage.setItem('DataBaseData', JSON.stringify(result));
   sessionStorage.setItem('IssuesSorting', JSON.stringify(
     {
       'column': 2,
@@ -81,26 +76,27 @@ async function setAllSeverities(input) {
   sessionStorage.setItem('IssuesFilter', JSON.stringify(
     {'high': 1, 'medium': 1, 'low': 1, 'acceptable': 1, 'info': 1},
   ));
-  await setSeverities(result, '');
-  await setSeverities(result, 'Security');
-  await setSeverities(result, 'Privacy');
+  await setSeverities(input, '');
+  await setSeverities(input, 'Security');
+  await setSeverities(input, 'Privacy');
   if (isFirstScan) {
-    openHomePage();
+    await openHomePage();
     windowMaximise();
     isFirstScan = false;
   }
 }
 
-/** Sets the severities collected from the database in session storage
+/** Sets the severities collected from the scan in session storage
  *
- * @param {DataBaseData[]} input DataBaseData retrieved from database
+ * @param {Checks[]} input Scan data retrieved from a scan
  * @param {string} type Type of issues to set the severities of in session storage
  */
 async function setSeverities(input, type) {
   try {
+    input = input.filter((item) => item.result_id !== -1);
+    input = input.filter((item) => data[item.issue_id] !== undefined);
     if (type !== '') {
-      input = input.filter((item) => data[item.jsonkey] !== undefined);
-      input = input.filter((item) => data[item.jsonkey].Type === type);
+      input = input.filter((item) => data[item.issue_id].Type === type);
     }
     const info = countOccurrences(input, 4);
     const high = countOccurrences(input, 3);

@@ -3,18 +3,28 @@ package programs
 import (
 	"errors"
 	"fmt"
-	"os/exec"
 	"strings"
 	"unicode"
+
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 )
 
-// OutdatedSoftware function checks for outdated software on the system
-func OutdatedSoftware() checks.Check {
+// OutdatedSoftware is a function that checks for outdated software on the system.
+// It uses a CommandExecutor to execute system commands for retrieving the list of installed software.
+// The function collects all software lists, filters and deduplicates the software list, and formats the result array.
+// It returns a Check object that represents the result of the check for outdated software.
+//
+// Parameters:
+// executor: A CommandExecutor that is used to execute system commands for retrieving the list of installed software.
+//
+// Returns:
+// checks.Check: A Check object that represents the result of the check for outdated software.
+func OutdatedSoftware(executor mocking.CommandExecutor) checks.Check {
 	// Collect all software lists
-	softwareList, err := collectAllSoftwareLists()
+	softwareList, err := collectAllSoftwareLists(executor)
 	if softwareList == nil {
 		return err
 	}
@@ -28,8 +38,18 @@ func OutdatedSoftware() checks.Check {
 	return checks.NewCheckResult(checks.OutdatedSoftwareID, checks.OutdatedSoftwareID, resultArray...)
 }
 
-// collectAllSoftwareLists function collects all software lists from different sources
-func collectAllSoftwareLists() ([]software, checks.Check) {
+// collectAllSoftwareLists is a function that collects all software lists from different sources.
+// It uses a CommandExecutor to execute system commands for retrieving the list of installed software.
+// The function retrieves installed programs from winget, installed 32 bit programs, and installed 64 bit programs.
+// It then appends all software lists and formats the result array.
+//
+// Parameters:
+// executor: A CommandExecutor that is used to execute system commands for retrieving the list of installed software.
+//
+// Returns:
+//   - []software: A slice of software objects that represents the list of all installed software.
+//   - checks.Check: A Check object that represents the result of the check for installed software. If an error occurs during the retrieval of the software list, it returns a CheckError object.
+func collectAllSoftwareLists(executor mocking.CommandExecutor) ([]software, checks.Check) {
 	var (
 		softwareList       []software
 		softwareListWinget []software
@@ -39,15 +59,15 @@ func collectAllSoftwareLists() ([]software, checks.Check) {
 	)
 
 	// Retrieve installed programs from winget
-	if softwareListWinget, err = retrieveWingetInstalledPrograms(softwareList); err != nil {
+	if softwareListWinget, err = retrieveWingetInstalledPrograms(softwareList, executor); err != nil {
 		return nil, checks.NewCheckErrorf(checks.OutdatedSoftwareID, "error listing installed programs in Program Files", err)
 	}
 	// Retrieve installed 32 bit programs
-	if softwareList32, err = retrieveInstalled32BitPrograms(softwareList); err != nil {
+	if softwareList32, err = retrieveInstalled32BitPrograms(softwareList, executor); err != nil {
 		return nil, checks.NewCheckErrorf(checks.OutdatedSoftwareID, "error listing installed programs in 32 bit programs", err)
 	}
 	// Retrieve installed 64 bit programs
-	if softwareList64, err = retrieveInstalled64BitPrograms(softwareList, "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\*"); err != nil {
+	if softwareList64, err = retrieveInstalled64BitPrograms(softwareList, executor, "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\*"); err != nil {
 		return nil, checks.NewCheckErrorf(checks.OutdatedSoftwareID, "error listing installed programs in 64bit programs", err)
 	}
 
@@ -65,7 +85,14 @@ func collectAllSoftwareLists() ([]software, checks.Check) {
 	return softwareList, checks.NewCheckResult(checks.OutdatedSoftwareID, checks.OutdatedSoftwareID, resultArray...)
 }
 
-// filterAndDeduplicateSoftware function filters and deduplicates the software list
+// filterAndDeduplicateSoftware is a function that filters and deduplicates a list of software.
+// It uses the software name as the key in a map to ensure uniqueness. If duplicate software is found, the existing software is kept in the map.
+//
+// Parameters:
+// softwareList: A slice of software objects that represents the list of all installed software.
+//
+// Returns:
+// map[string]software: A map where the key is the normalized software name and the value is the software object. This ensures that each software in the map is unique.
 func filterAndDeduplicateSoftware(softwareList []software) map[string]software {
 	uniqueSoftware := make(map[string]software)
 	for _, sw := range softwareList {
@@ -84,7 +111,14 @@ func filterAndDeduplicateSoftware(softwareList []software) map[string]software {
 	return uniqueSoftware
 }
 
-// formatResultArray function formats the result array
+// formatResultArray is a function that formats the result array of unique software.
+// It iterates over the uniqueSoftware map and appends each software's name and version to the result array.
+//
+// Parameters:
+// uniqueSoftware: A map where the key is the normalized software name and the value is the software object. This ensures that each software in the map is unique.
+//
+// Returns:
+// []string: A slice of strings where each string represents a unique software in the format "name | version".
 func formatResultArray(uniqueSoftware map[string]software) []string {
 	resultArray := make([]string, 0, len(uniqueSoftware))
 	for _, v := range uniqueSoftware {
@@ -108,7 +142,18 @@ func normalize(name string) string {
 	return strings.TrimSpace(string(cleaned))
 }
 
-// compareVersions function to compare two version strings
+// compareVersions is a function that compares two version strings.
+// It splits the version strings by the dot character and compares each corresponding part as an integer.
+// If a part in v1 is greater than the corresponding part in v2, it returns 1.
+// If a part in v1 is less than the corresponding part in v2, it returns -1.
+// If all parts are equal, it returns 0.
+//
+// Parameters:
+// v1: A string that represents the first version to be compared.
+// v2: A string that represents the second version to be compared.
+//
+// Returns:
+// int: An integer that indicates the result of the comparison. If v1 is greater than v2, it returns 1. If v1 is less than v2, it returns -1. If v1 is equal to v2, it returns 0.
 func compareVersions(v1, v2 string) int {
 	parts1 := strings.Split(v1, ".")
 	parts2 := strings.Split(v2, ".")
@@ -122,13 +167,13 @@ func compareVersions(v1, v2 string) int {
 		if i < len(parts1) {
 			_, err := fmt.Sscanf(parts1[i], "%d", &num1)
 			if err != nil {
-				logger.Log.ErrorWithErr("error parsing version number", err)
+				logger.Log.ErrorWithErr("Error parsing version number", err)
 			}
 		}
 		if i < len(parts2) {
 			_, err := fmt.Sscanf(parts2[i], "%d", &num2)
 			if err != nil {
-				logger.Log.ErrorWithErr("error parsing version number", err)
+				logger.Log.ErrorWithErr("Error parsing version number", err)
 			}
 		}
 
@@ -141,10 +186,20 @@ func compareVersions(v1, v2 string) int {
 	return 0
 }
 
-// retrieveWingetInstalledPrograms function retrieves all installed packages found with the winget package manager
-func retrieveWingetInstalledPrograms(softwareList []software) ([]software, error) {
+// retrieveWingetInstalledPrograms is a function that retrieves all installed packages found with the winget package manager.
+// It uses a CommandExecutor to execute the winget list command and processes the output to extract the software details.
+// The function appends each software to the softwareList and returns the updated softwareList.
+//
+// Parameters:
+// softwareList: A slice of software objects that represents the list of all installed software.
+// executor: A CommandExecutor that is used to execute the winget list command.
+//
+// Returns:
+//   - []software: A slice of software objects that represents the updated list of all installed software.
+//   - error: An error object that represents any error that occurred during the execution of the winget list command or the processing of the output. If no error occurred, it returns nil.
+func retrieveWingetInstalledPrograms(softwareList []software, executor mocking.CommandExecutor) ([]software, error) {
 	// Execute the winget list command
-	out, err := exec.Command("winget", "list", "--accept-source-agreements").Output()
+	out, err := executor.Execute("powershell", "winget list| Out-String -Stream | ForEach-Object { [System.Text.Encoding]::UTF8.GetString([System.Text.Encoding]::Default.GetBytes($_)) }")
 	if err != nil {
 		return softwareList, err
 	}
@@ -160,12 +215,12 @@ func retrieveWingetInstalledPrograms(softwareList []software) ([]software, error
 	if indexN < 0 {
 		return softwareList, errors.New("error parsing winget output")
 	}
-	lines[0] = lines[0][strings.Index(lines[indexN], "Name")+1:] // Remove the first part of the header
+	lines[0] = lines[indexN][strings.Index(lines[indexN], "Name")+1:] // Remove the first part of the header
 	idIndex := strings.Index(lines[0], "Id")
 	versionIndex := strings.Index(lines[0], "Version")
 	availableIndex := strings.Index(lines[0], "Available")
 	sourcesIndex := strings.Index(lines[0], "Source")
-	for _, line := range lines[2:] { // Skip the header lines
+	for _, line := range lines[indexN+2:] { // Skip the header lines
 		if len(line) != 0 { // Don't handle the last empty line, and maybe other empty lines
 			// Extract the software details
 			name := substr(line, 0, idIndex)
@@ -194,15 +249,36 @@ func retrieveWingetInstalledPrograms(softwareList []software) ([]software, error
 	return softwareList, nil
 }
 
-// retrieveInstalled32BitPrograms function returns all the installed 32-bit programs found using registry query
-func retrieveInstalled32BitPrograms(softwareList []software) ([]software, error) {
-	return retrieveInstalled64BitPrograms(softwareList, "\"HKLM:\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\*\"")
+// retrieveInstalled32BitPrograms is a function that retrieves all installed 32-bit programs found using a registry query.
+// It uses a CommandExecutor to execute the registry query command and processes the output to extract the software details.
+// The function appends each software to the softwareList and returns the updated softwareList.
+//
+// Parameters:
+// softwareList: A slice of software objects that represents the list of all installed software.
+// executor: A CommandExecutor that is used to execute the registry query command.
+//
+// Returns:
+//   - []software: A slice of software objects that represents the updated list of all installed software.
+//   - error: An error object that represents any error that occurred during the execution of the registry query command or the processing of the output. If no error occurred, it returns nil.
+func retrieveInstalled32BitPrograms(softwareList []software, executor mocking.CommandExecutor) ([]software, error) {
+	return retrieveInstalled64BitPrograms(softwareList, executor, "\"HKLM:\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\*\"")
 }
 
-// retrieveInstalled64BitPrograms function returns all the installed 64-bit programs found using registry query
-func retrieveInstalled64BitPrograms(softwareList []software, bits string) ([]software, error) {
+// retrieveInstalled64BitPrograms is a function that retrieves all installed 64-bit programs found using a registry query.
+// It uses a CommandExecutor to execute the registry query command and processes the output to extract the software details.
+// The function appends each software to the softwareList and returns the updated softwareList.
+//
+// Parameters:
+// softwareList: A slice of software objects that represents the list of all installed software.
+// executor: A CommandExecutor that is used to execute the registry query command.
+// bits: A string that represents the registry key to be queried for installed software.
+//
+// Returns:
+//   - []software: A slice of software objects that represents the updated list of all installed software.
+//   - error: An error object that represents any error that occurred during the execution of the registry query command or the processing of the output. If no error occurred, it returns nil.
+func retrieveInstalled64BitPrograms(softwareList []software, executor mocking.CommandExecutor, bits string) ([]software, error) {
 	// Execute the powershell command to get the installed programs
-	output, err := exec.Command("powershell", "Get-ItemProperty ", bits, "| Select-Object DisplayName, PSChildName, DisplayVersion, Publisher | Sort-Object DisplayName | Format-List").Output()
+	output, err := executor.Execute("powershell", "Get-ItemProperty ", bits, "| Select-Object DisplayName, PSChildName, DisplayVersion, Publisher | Sort-Object DisplayName | Format-List")
 	if err != nil {
 		return softwareList, err
 	}
@@ -246,7 +322,16 @@ func retrieveInstalled64BitPrograms(softwareList []software, bits string) ([]sof
 	return softwareList, nil
 }
 
-// software struct represents a software
+// software is a struct that represents a software installed on the system.
+// It contains the following fields:
+// - name: A string that represents the name of the software.
+// - identifier: A string that represents the identifier of the software.
+// - version: A string that represents the version of the software.
+// - newVersion: A string that represents the new version of the software if available.
+// - vendor: A string that represents the vendor of the software.
+// - lastUpdated: A string that represents the last updated date of the software.
+// - sourceWinget: A string that represents the source of the software if it was installed using the winget package manager.
+// - whereFrom: A string that represents the source of the software (e.g., "64-bit", "winget").
 type software struct {
 	name         string
 	identifier   string
@@ -258,7 +343,19 @@ type software struct {
 	whereFrom    string // tmp for which function found this software
 }
 
-// substr function returns a substring from the input string
+// substr is a function that returns a substring from the input string.
+// It first converts the input string to a slice of runes to handle multi-byte characters correctly.
+// It then slices the rune slice from the start index to the start index plus the length.
+// If the start index is greater than the length of the rune slice, it returns an empty string.
+// If the start index plus the length is greater than the length of the rune slice, it adjusts the length to the end of the rune slice.
+//
+// Parameters:
+// input: A string that represents the input string.
+// start: An integer that represents the start index of the substring.
+// length: An integer that represents the length of the substring.
+//
+// Returns:
+// string: A string that represents the substring.
 func substr(input string, start int, length int) string {
 	asRunes := []rune(input)
 

@@ -23,7 +23,7 @@ func FirewallEnabled(executor mocking.CommandExecutor) checks.Check {
 	firewallCommand := "netsh advfirewall show allprofiles state"
 	output, err := executor.Execute("cmd", "/c", firewallCommand)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error executing firewall command: ", err)
+		logger.Log.ErrorWithErr("Error executing firewall command", err)
 		return checks.NewCheckError(checks.FirewallID, err)
 	}
 

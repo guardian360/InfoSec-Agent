@@ -26,6 +26,8 @@ const iconPath string = "/InfoSec-Agent/icon/icon128.ico"
 //
 // Returns: error: An error object if an error occurred during the scan, otherwise nil.
 func Popup(scanResult []checks.Check, path string) error {
+	logger.Log.Trace("Displaying popup for scan result")
+
 	// Generate notification message based on the severity of the issues found during the scan
 	resultMessage := PopupMessage(scanResult, path)
 
@@ -61,14 +63,21 @@ func Popup(scanResult []checks.Check, path string) error {
 //
 // Returns: string: A notification message based on the severity of the issues found during the scan.
 func PopupMessage(scanResult []checks.Check, path string) string {
-	dbData, err := database.GetData(scanResult, path)
+	logger.Log.Trace("Generating popup message")
+
+	dbData, err := database.GetData(path, scanResult)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error getting database data:", err)
+		logger.Log.ErrorWithErr("Error getting database data", err)
+		return localization.Localize(Language, "Dialogs.Popup.Default")
 	}
+
+	// Count the number of issues at each severity level
 	severityCounters := make(map[int]int)
 	for _, issue := range dbData {
 		severityCounters[issue.Severity]++
 	}
+
+	// Generate the notification message based on the number of issues found at each severity level
 	if severityCounters[3] > 0 {
 		if severityCounters[3] == 1 {
 			return localization.Localize(Language, "Dialogs.Popup.OneHigh")

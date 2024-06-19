@@ -1,5 +1,6 @@
 import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
 import {getLocalization} from './localize.js';
+import {GetImagePath as getImagePath} from '../../wailsjs/go/main/App.js';
 
 /** Load the content of the Personalize page */
 export function openPersonalizePage() {
@@ -115,8 +116,8 @@ export function openPersonalizePage() {
   // add event-listener for changing Favicon
   const changeResetButton = document.getElementsByClassName('reset-button')[0];
 
-  changeResetButton.addEventListener('click', function() {
-    resetSettings();
+  changeResetButton.addEventListener('click', async function() {
+    await resetSettings();
   });
 
   // Localize the static content of the personalize page
@@ -218,14 +219,14 @@ export function retrieveTheme() {
 /**
  * Resets the settings by clearing localStorage and restoring default values.
  */
-export function resetSettings() {
+export async function resetSettings() {
   localStorage.clear();
-  const logoPhoto = 'frontend/src/assets/images/logoTeamA-transformed.png';
+  const logoPhoto = await getImagePath('InfoSec-Agent-logo.png');
   const logo = document.getElementById('logo');
   logo.src = logoPhoto;
 
   const title = document.getElementById('title');
-  title.textContent = 'Infosec Agent';
+  title.textContent = 'InfoSec Agent';
 
   const favicon = document.getElementById('favicon');
   favicon.href = logoPhoto;

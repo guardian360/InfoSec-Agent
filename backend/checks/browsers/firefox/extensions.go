@@ -42,7 +42,7 @@ func ExtensionFirefox(profileFinder browsers.FirefoxProfileFinder) (checks.Check
 	defer func(content *os.File) {
 		err = content.Close()
 		if err != nil {
-			logger.Log.ErrorWithErr("Error closing file: ", err)
+			logger.Log.ErrorWithErr("Error closing file", err)
 		}
 	}(content)
 

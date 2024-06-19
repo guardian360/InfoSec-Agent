@@ -103,7 +103,8 @@
     "ShareText": "Sélectionnez où partager vos progrès, enregistrez et téléchargez-le, puis partagez-le avec d'autres !",
     "SaveText": "Enregistrer",
     "Share": "Partager",
-    "LighthouseProgress":"Progrès"
+    "LighthouseProgress":"Progrès",
+    "TooltipText": "Plus vous êtes actif dans la résolution des problèmes, plus vous travaillez à devenir plus sécurisé ! Cela se manifeste par la construction de votre phare. Au début, il n'y aura pas beaucoup, mais rester cohérent dans l'utilisation de l'Agent InfoSec vous permettra de construire un magnifique phare. Pour passer à l'état suivant du phare, la barre de progression doit être pleine."
   },
   "Issues":
   {
@@ -118,6 +119,7 @@
     "Previous": "&laquo; Étape précédente",
     "Next": "Étape suivante &raquo;",
     "BackIssues": "Retour à l'aperçu des problèmes",
+    "BackHome": "Retour à la page d'accueil",
     "BackChecks": "Retour à l'aperçu des contrôles",
     "Port": "Les processus suivants sont actuellement en cours d'exécution sur votre appareil sur les ports suivants: ",
     "Password": "Vous avez changé votre mot de passe le: ",
@@ -142,8 +144,9 @@
   },  
   "Programs": {
     "Name":"Nom",
+    "Version":"Version",
     "ProgramTable": "Programmes installés",
-    "Search": "Chercher"
+    "Search": "Rechercher..."
   },
   "Personalize": {
     "ChangeFavicon": "Changer le favicon",

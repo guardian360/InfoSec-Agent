@@ -71,13 +71,13 @@ func (h *FileLoader) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 
 	fileData, err := os.ReadFile(newPath)
 	if err != nil {
-		logger.Log.ErrorWithErr("Could not load file:"+newPath, err)
+		logger.Log.ErrorWithErr("Could not load file: "+newPath, err)
 		http.Error(res, "File not found", http.StatusNotFound)
 		return
 	}
 
 	if _, err = res.Write(fileData); err != nil {
-		logger.Log.ErrorWithErr("Could not write file:"+newPath, err)
+		logger.Log.ErrorWithErr("Could not write file: "+newPath, err)
 		http.Error(res, "Failed to serve file", http.StatusInternalServerError)
 	}
 }
@@ -113,20 +113,20 @@ func main() {
 		registry.QUERY_VALUE,
 	)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error opening registry key: ", err)
+		logger.Log.ErrorWithErr("Error opening registry key", err)
 	} else {
 		logger.Log.Debug("Found registry key")
 		defer func(k registry.Key) {
 			err = k.Close()
 			if err != nil {
-				logger.Log.ErrorWithErr("Error closing registry key: ", err)
+				logger.Log.ErrorWithErr("Error closing registry key", err)
 			}
 		}(k)
 
 		// Get reporting page executable path
 		path, _, err = k.GetStringValue("Path")
 		if err != nil {
-			logger.Log.ErrorWithErr("Error getting path string: ", err)
+			logger.Log.ErrorWithErr("Error getting path string", err)
 		}
 	}
 	changeDirectory(path)
@@ -134,7 +134,6 @@ func main() {
 	// Create a new instance of the app and tray struct
 	app := NewApp()
 	systemTray := NewTray(logger.Log)
-	database := NewDatabase()
 	customLogger := logger.Log
 	localization.Init("../")
 	lang := usersettings.LoadUserSettings().Language
@@ -157,7 +156,6 @@ func main() {
 		Bind: []interface{}{
 			app,
 			systemTray,
-			database,
 		},
 		Logger: customLogger,
 		Windows: &windows.Options{
@@ -173,7 +171,7 @@ func main() {
 		},
 	})
 	if err != nil {
-		logger.Log.ErrorWithErr("Error creating Wails application:", err)
+		logger.Log.ErrorWithErr("Error creating Wails application", err)
 	}
 }
 
@@ -193,7 +191,8 @@ func changeDirectory(path string) {
 
 	err := os.Chdir(path)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error changing directory: ", err)
+		logger.Log.ErrorWithErr("Error changing directory", err)
+	} else {
+		logger.Log.Debug("Changed directory to " + path)
 	}
-	logger.Log.Debug("Changed directory to " + path)
 }

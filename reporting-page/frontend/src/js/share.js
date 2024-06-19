@@ -68,7 +68,7 @@ export async function setImage(social, progress) {
     </div>
     <div class="image-right">
       <p id="image-logo-text"></p>
-      <img id="logo" alt="logo" src="./src/assets/images/logoTeamA-transformed.png" style="width: 75px; height: 75px;">
+      <img id="logo" alt="logo" src="./src/assets/images/InfoSec-Agent-logo.png" style="width: 75px; height: 75px;">
     </div>
   </div>
   `;
@@ -149,9 +149,6 @@ export const socialMediaSizes = {
     width: 300,
   },
 };
-
-// on startup set the social media to share to facebook
-sessionStorage.setItem('ShareSocial', JSON.stringify(socialMediaSizes['facebook']));
 
 /**
  * Select the social media and set it in sessionstorage

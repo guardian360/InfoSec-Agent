@@ -117,7 +117,7 @@ var networkChecks = []func() checks.Check{
 // programsChecks contains all security/privacy checks that are specific to installed programs.
 var programsChecks = []func() checks.Check{
 	func() checks.Check { return programs.PasswordManager(mocking.RealProgramLister{}) },
-	programs.OutdatedSoftware,
+	func() checks.Check { return programs.OutdatedSoftware(executor) },
 }
 
 // windowsChecks contains all security/privacy checks that are specific to Windows (registry) settings.
@@ -125,7 +125,7 @@ var windowsChecks = []func() checks.Check{
 	func() checks.Check { return windows.Advertisement(mocking.CurrentUser) },
 	func() checks.Check { return windows.AllowRemoteRPC(mocking.LocalMachine) },
 	func() checks.Check { return windows.AutomaticLogin(mocking.LocalMachine) },
-	func() checks.Check { return windows.Defender(mocking.LocalMachine, mocking.LocalMachine) },
+	func() checks.Check { return windows.Defender(mocking.LocalMachine) },
 	func() checks.Check {
 		return windows.GuestAccount(executor, executor, executor, executor, userNameRetriever)
 	},

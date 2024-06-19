@@ -67,7 +67,7 @@ func CISRegistrySettings(localMachineKey mocking.RegistryKey, usersKey mocking.R
 func CheckIntegerValue(openKey mocking.RegistryKey, value string, expected interface{}) bool {
 	val, _, err := openKey.GetIntegerValue(value)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error reading registry value of "+value, err)
+		logger.Log.Trace("Error reading registry value of " + value + ": " + err.Error())
 		return false
 	}
 	// Determine functionality based on the value type of the expected parameter
@@ -104,7 +104,7 @@ func CheckIntegerValue(openKey mocking.RegistryKey, value string, expected inter
 func CheckStringValue(openKey mocking.RegistryKey, value string, expected string) bool {
 	val, _, err := openKey.GetStringValue(value)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error reading registry value of "+value, err)
+		logger.Log.Trace("Error reading registry value of " + value + ": " + err.Error())
 		return false
 	}
 	return val == expected
@@ -122,7 +122,7 @@ func CheckStringValue(openKey mocking.RegistryKey, value string, expected string
 func OpenRegistryKeyWithErrHandling(registryKey mocking.RegistryKey, path string) (mocking.RegistryKey, error) {
 	key, err := mocking.OpenRegistryKey(registryKey, path)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error opening registry key for CIS Audit list", err)
+		logger.Log.Trace("Error opening registry key for CIS Audit list: " + err.Error())
 	}
 	return key, err
 }
@@ -141,8 +141,8 @@ func CheckIntegerRegistrySettings(registryKey mocking.RegistryKey, registryPath 
 	if err != nil {
 		for _, setting := range settings {
 			RegistrySettingsMap[registryPath+"\\"+setting] = false
-			return
 		}
+		return
 	}
 	defer mocking.CloseRegistryKey(key)
 

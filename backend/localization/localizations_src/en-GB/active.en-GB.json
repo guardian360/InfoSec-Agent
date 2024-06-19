@@ -107,7 +107,8 @@
     "ShareText": "Select where to share your progress, save and download it, then share it with others!",
     "SaveText": "Save",
     "Share": "Share",
-    "LighthouseProgress":"Progress"
+    "LighthouseProgress":"Progress",
+    "TooltipText": "The more active you are in resolving issues, the more you are working towards becoming more secure! This is displayed by the building of your lighthouse. At the beginning there won't be much, but staying consistent in the use of InfoSec Agent will let you build a beautiful lighthouse. To transition to the next lighthouse state, the progress bar needs to be full."
   },
   "Issues":
   {
@@ -122,6 +123,7 @@
     "Previous": "&laquo; Previous step",
     "Next": "Next step &raquo;",
     "BackIssues": "Back to issues overview",
+    "BackHome": "Back to home page",
     "BackChecks": "Back to checks overview",
     "Port": "The following processes are currently running on your device on the following ports: ",
     "Password": "You changed your password on: ",
@@ -146,8 +148,9 @@
   },  
   "Programs": {
     "Name":"Name",
+    "Version":"Version",
     "ProgramTable": "Installed programs",
-    "Search": "Search"
+    "Search": "Search..."
   },
   "Personalize": {
     "ChangeFavicon": "Change favicon", 
