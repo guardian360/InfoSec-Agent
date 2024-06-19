@@ -209,11 +209,11 @@ describe('openPersonalizePage function', () => {
     expect(localStorage.getItem('favicon')) === null;
     expect(localStorage.getItem('title')) === null;
     expect(logo).not.toBeNull();
-    expect(logo.src).toContain('frontend/src/assets/images/logoTeamA-transformed.png');
+    expect(logo.src).toContain('frontend/src/assets/images/InfoSec-Agent-logo.png');
     expect(title).not.toBeNull();
     expect(title.textContent).toBe('Infosec Agent');
     expect(favicon).not.toBeNull();
-    expect(favicon.href).toContain('frontend/src/assets/images/logoTeamA-transformed.png');
+    expect(favicon.href).toContain('frontend/src/assets/images/InfoSec-Agent-logo.png');
   });
 
   it('should save selected theme to localStorage on theme change', () => {
