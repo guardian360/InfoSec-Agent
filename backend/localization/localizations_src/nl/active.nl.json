@@ -160,7 +160,9 @@
     "PickTheme": "Kies een thema",
     "Favicon": "Favicon",
     "NavImage": "Navigatie afbeelding",
-    "NavTitle": "Navigatietitel"
+    "NavTitle": "Navigatietitel",
+    "Light": "Licht",
+    "Dark": "Donker"
   },
   "AllChecks": {
     "Security": "Beveiliging",

@@ -64,6 +64,7 @@ export function reloadPage() {
       break;
     case '9':
       openPersonalizePage();
+      break;
     default:
       try {
         const issuepage = JSON.parse(page);

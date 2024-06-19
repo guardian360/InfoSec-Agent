@@ -90,6 +90,7 @@ export function previousSolutionStep(solutionText, solutionScreenshot, issue) {
  * @param {string} back if not undefined, back navigation to allChecksPage enabled
  */
 export async function openIssuePage(issueId, resultId, back = undefined) {
+  console.log('test');
   retrieveTheme();
   closeNavigation(document.body.offsetWidth);
   markSelectedNavigationItem('issue-button');

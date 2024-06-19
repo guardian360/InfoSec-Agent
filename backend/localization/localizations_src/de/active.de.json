@@ -160,7 +160,9 @@
     "PickTheme": "Wählen Sie ein Thema",
     "Favicon": "Favicon",
     "NavImage": "Navigationsbild",
-    "NavTitle": "Navigationstitel"
+    "NavTitle": "Navigationstitel",
+    "Light": "Licht",
+    "Dark": "Dunkel"
   },
   "AllChecks": {
     "Security": "Sicherheit",

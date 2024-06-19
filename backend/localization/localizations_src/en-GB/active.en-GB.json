@@ -163,7 +163,9 @@
     "PickTheme": "Pick a theme",
     "Favicon": "Favicon",
     "NavImage": "Navigation image",
-    "NavTitle": "Navigation title"
+    "NavTitle": "Navigation title",
+    "Light": "Light",
+    "Dark": "Dark"
   },
   "AllChecks": {
     "Security": "Security",
