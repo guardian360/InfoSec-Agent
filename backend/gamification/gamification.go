@@ -89,21 +89,23 @@ type RealPointCalculationGetter struct{}
 // Returns:
 //   - GameState: The updated game state with the new points amount.
 func (r RealPointCalculationGetter) PointCalculation(gs GameState, scanResults []checks.Check, jsonFilePath string) (GameState, error) {
-	logger.Log.Trace("Calculating gamification points")
-	gs.Points = 0
+	logger.Log.Trace("Calculating gamification points ")
+	newPoints := 0
 
 	dataList, err := database.GetData(jsonFilePath, scanResults)
 	if err != nil {
 		logger.Log.ErrorWithErr("Error getting data from database", err)
 		return gs, err
 	}
+
 	for _, data := range dataList {
 		sev := data.Severity
 		if sev >= 0 && sev < 4 {
-			gs.Points += sev
+			newPoints += sev
 		}
 	}
-	logger.Log.Trace("Calculated points: " + strconv.Itoa(gs.Points))
+	logger.Log.Trace("Calculated gamification points: " + strconv.Itoa(newPoints))
+	gs.Points = newPoints
 	gs.PointsHistory = append(gs.PointsHistory, gs.Points)
 	gs.TimeStamps = append(gs.TimeStamps, time.Now())
 
@@ -136,7 +138,7 @@ func LighthouseStateTransition(gs GameState) GameState {
 	return gs
 }
 
-// sufficientActivity checks if the user has been active enough to transition to another lighthouse state
+// SufficientActivity checks if the user has been active enough to transition to another lighthouse state
 //
 // Parameters:
 //   - gs (GameState): The game state of the user.
