@@ -5,7 +5,7 @@ go 1.22.0
 require (
 	github.com/InfoSec-Agent/InfoSec-Agent v0.4.1
 	github.com/rodolfoag/gow32 v0.0.0-20230512144032-1e896a3c51aa
-	github.com/wailsapp/wails/v2 v2.9.1
+	github.com/wailsapp/wails/v2 v2.9.0
 	golang.org/x/sys v0.20.0
 )
 
