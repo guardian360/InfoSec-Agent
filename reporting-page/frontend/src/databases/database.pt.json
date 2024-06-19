@@ -32,6 +32,14 @@
     "Information": "A tecnologia Bluetooth permite a transmissão e recepção de dados sem fio. "
   },
   "2": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Dispositivos conectados via portas USB",
+      "Failed": "Não foi possível verificar se há dispositivos conectados via portas USB.",
+      "Solution": [
+        "Verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não conseguimos concluir a verificação."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Nenhum dispositivo externo conectado",
@@ -54,6 +62,14 @@
     "Information": "Dispositivos externos, como unidades USB, discos rígidos externos e outros periféricos, podem apresentar riscos de segurança ao seu computador. "
   },
   "3": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Conta de convidado ativada/desativada",
+      "Failed": "Não foi possível verificar se há uma conta de convidado ativada.",
+      "Solution": [
+        "Verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não conseguimos concluir a verificação."
+      ]
+    },
     "0": {
       "Severity": -1,
       "Name": "Status da conta de convidado desconhecido",
@@ -106,6 +122,14 @@
     "Information": "A conta de convidado é uma conta padrão projetada para oferecer acesso temporário e restrito ao sistema para indivíduos sem contas de usuário regulares. "
   },
   "4": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: ID de publicidade ativada/desativada",
+      "Failed": "Não foi possível verificar se a ID de publicidade é compartilhada com aplicativos.",
+      "Solution": [
+        "Verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não conseguimos concluir a verificação."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Compartilhamento de ID de anúncio desativado",
@@ -133,6 +157,14 @@
     "Information": "A configuração do ID do anúncio permite que o Windows envie anúncios personalizados. "
   },
   "5": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Gerenciador de senhas instalado",
+      "Failed": "Não foi possível verificar se um gerenciador de senhas está instalado.",
+      "Solution": [
+        "Verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não conseguimos concluir a verificação."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Gerenciador de senhas em uso",
@@ -157,6 +189,14 @@
     "Information": "O uso de um gerenciador de senhas oferece vários benefícios para indivíduos e organizações, principalmente relacionados ao aprimoramento da segurança, conveniência e práticas gerais de gerenciamento de senhas. "
   },
   "6": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Aplicativos com permissões de localização",
+      "Failed": "Não foi possível verificar quais aplicativos têm permissões de localização.",
+      "Solution": [
+        "Verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não conseguimos concluir a verificação."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Aplicativos com permissão de localização",
@@ -185,6 +225,14 @@
     "Information": "Saber quais aplicativos têm acesso à sua localização é importante para proteger sua privacidade. "
   },
   "7": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Aplicativos com permissões de microfone",
+      "Failed": "Não foi possível verificar quais aplicativos têm permissões de microfone.",
+      "Solution": [
+        "Verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não conseguimos concluir a verificação."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Aplicativos com permissão de microfone",
@@ -213,6 +261,14 @@
     "Information": "Compreender quais aplicativos têm acesso ao microfone do computador Windows é importante para proteger sua privacidade e confidencialidade. "
   },
   "8": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Aplicativos com permissões de webcam",
+      "Failed": "Não foi possível verificar quais aplicativos têm permissões de webcam.",
+      "Solution": [
+        "Verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não conseguimos concluir a verificação."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Aplicativos com permissão de webcam",
@@ -241,6 +297,14 @@
     "Information": "Estar ciente de quais aplicativos têm acesso à sua câmera ajuda a impedir o acesso não autorizado. "
   },
   "9": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Aplicativos com permissões de compromissos",
+      "Failed": "Não foi possível verificar quais aplicativos têm permissões de compromissos.",
+      "Solution": [
+        "Verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não conseguimos concluir a verificação."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Aplicativos com permissão de agendamento",
@@ -269,6 +333,14 @@
     "Information": "Compreender quais aplicativos têm acesso ao seu calendário ou compromissos é crucial para proteger sua privacidade e sua programação. "
   },
   "10": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Aplicativos com permissões de contatos",
+      "Failed": "Não foi possível verificar quais aplicativos têm permissões de contatos.",
+      "Solution": [
+        "Verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não conseguimos concluir a verificação."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Aplicativos com permissão de contatos",
@@ -297,6 +369,14 @@
     "Information": "Entender quais aplicativos têm acesso aos seus contatos no computador Windows é bom para proteger sua privacidade. "
   },
   "11": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Portas abertas usadas por aplicativos",
+      "Failed": "Não foi possível verificar quais portas estão abertas.",
+      "Solution": [
+        "Verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não conseguimos concluir a verificação."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Portas abertas",
@@ -314,6 +394,14 @@
     "Information": "Uma porta aberta é aquela que permite o recebimento de pacotes de dados. "
   },
   "12": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Área de trabalho remota ativada/desativada",
+      "Failed": "Não foi possível verificar se a função de Área de trabalho remota está ativada.",
+      "Solution": [
+        "Verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não conseguimos concluir a verificação."
+      ]
+    },
     "0": {
       "Severity": 3,
       "Name": "Área de trabalho remota habilitada",
@@ -335,6 +423,14 @@
     "Information": "A Área de Trabalho Remota é um recurso integrado ao sistema operacional Windows que permite aos usuários acessar e controlar remotamente outro computador Windows por meio de uma rede ou da Internet. "
   },
   "13": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Bloco de Mensagens do Servidor ativado/desativado",
+      "Failed": "Não foi possível verificar os estados do protocolo SMB.",
+      "Solution": [
+        "Verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não conseguimos concluir a verificação."
+      ]
+    },
     "0": {
       "Severity": 2,
       "Name": "SMB todas as versões desativadas",
@@ -387,6 +483,14 @@
     "Information": "O protocolo SMB (Server Message Block) é usado para compartilhar arquivos, impressoras e outros recursos entre dispositivos em uma rede em ambientes Windows. "
   },
   "14": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Controle de Conta de Usuário ativado/desativado",
+      "Failed": "Não foi possível verificar o nível de UAC em seu sistema.",
+      "Solution": [
+        "Verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não conseguimos concluir a verificação."
+      ]
+    },
     "0": {
       "Severity": 3,
       "Name": "Controle de conta de usuário desativado",
@@ -493,6 +597,14 @@
     "Information": "O Controle de Conta de Usuário (UAC) é um recurso de segurança introduzido no Windows Vista e presente em versões subsequentes do sistema operacional Windows. "
   },
   "15": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Windows Defender ativado/desativado",
+      "Failed": "Não foi possível verificar o status do Windows Defender.",
+      "Solution": [
+        "Verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não conseguimos concluir a verificação."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "O Windows Defender está ativado",
@@ -542,6 +654,14 @@
     "Information": "O Windows Defender monitora continuamente seu sistema em busca de qualquer atividade suspeita, incluindo malware, vírus e outras formas de software malicioso. "
   },
   "16": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Última senha do Windows alterada",
+      "Failed": "Não foi possível verificar quando a última alteração de senha ocorreu.",
+      "Solution": [
+        "Verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não conseguimos concluir a verificação."
+      ]
+    },
     "0": {
       "Severity": 2,
       "Name": "A última alteração de senha foi há mais de 6 meses",
@@ -568,6 +688,14 @@
     "Information": "A alteração regular da sua senha reduz a probabilidade de acesso não autorizado ao seu computador ou a informações confidenciais. "
   },
   "17": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Método de login do Windows",
+      "Failed": "Não foi possível verificar quais métodos de login são usados.",
+      "Solution": [
+        "Verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não conseguimos concluir a verificação."
+      ]
+    },
     "0": {
       "Severity": 3,
       "Name": "Nenhum método de login do Windows configurado",
@@ -616,6 +744,14 @@
     "Information": "Usar um método de login seguro do Windows é importante. "
   },
   "18": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Versão do Windows atualizada",
+      "Failed": "Não foi possível verificar quando a última alteração de senha ocorreu.",
+      "Solution": [
+        "Verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não conseguimos concluir a verificação."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "A versão do Windows está atualizada",
@@ -652,6 +788,14 @@
     "Information": "Versões desatualizadas do Windows podem conter vulnerabilidades de segurança não corrigidas que podem ser exploradas por invasores para comprometer o sistema. "
   },
   "19": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Inicialização segura ativada/desativada",
+      "Failed": "Não foi possível verificar se a Inicialização segura está ativada.",
+      "Solution": [
+        "Verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não conseguimos concluir a verificação."
+      ]
+    },
     "0": {
       "Severity": 1,
       "Name": "A inicialização segura está desativada",
@@ -683,6 +827,14 @@
     "Information": "A inicialização segura garante que apenas componentes de software confiáveis, assinados com assinaturas digitais reconhecidas, sejam carregados durante o processo de inicialização. "
   },
   "20": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Aplicativos que iniciam no boot do sistema",
+      "Failed": "Não foi possível verificar quais aplicativos iniciam no boot do sistema.",
+      "Solution": [
+        "Verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não conseguimos concluir a verificação."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Nenhum aplicativo que inicia na inicialização",
@@ -707,6 +859,14 @@
     "Information": "Quando você inicializa o computador, vários aplicativos são iniciados automaticamente. "
   },
   "21": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Google Chrome tem um bloqueador de anúncios instalado",
+      "Failed": "Não foi possível verificar se o seu navegador tem um bloqueador de anúncios instalado.",
+      "Solution": [
+        "Certifique-se de que seu navegador esteja fechado, esta verificação pode não poder ser concluída devido ao navegador estar aberto."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Google Chrome com bloqueador de anúncios instalado",
@@ -733,6 +893,14 @@
     "Information": "Adblockers protegem os usuários de anúncios online. "
   },
   "22": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Microsoft Edge tem um bloqueador de anúncios instalado",
+      "Failed": "Não foi possível verificar se o seu navegador tem um bloqueador de anúncios instalado.",
+      "Solution": [
+        "Certifique-se de que seu navegador esteja fechado, esta verificação pode não poder ser concluída devido ao navegador estar aberto."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Microsoft Edge com um bloqueador de anúncios instalado",
@@ -759,6 +927,14 @@
     "Information": "Adblockers protegem os usuários de anúncios online. "
   },
   "23": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Domínios de phishing encontrados no histórico do Google Chrome",
+      "Failed": "Não foi possível verificar o histórico do seu navegador.",
+      "Solution": [
+        "Certifique-se de que seu navegador esteja fechado, esta verificação pode não poder ser concluída devido ao navegador estar aberto."
+      ]
+    },
     "0": {
       "Severity": 2,
       "Name": "Possíveis domínios de phishing encontrados no Google Chrome",
@@ -781,6 +957,14 @@
     "Information": "Domínios de phishing são sites falsos projetados para induzir as pessoas a compartilhar informações confidenciais, como senhas ou detalhes de cartão de crédito. "
   },
   "24": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Domínios de phishing encontrados no histórico do Microsoft Edge",
+      "Failed": "Não foi possível verificar o histórico do seu navegador.",
+      "Solution": [
+        "Certifique-se de que seu navegador esteja fechado, esta verificação pode não poder ser concluída devido ao navegador estar aberto."
+      ]
+    },
     "0": {
       "Severity": 2,
       "Name": "Possíveis domínios de phishing encontrados no Microsoft Edge",
@@ -801,6 +985,14 @@
     "Information": "Domínios de phishing são sites falsos projetados para induzir as pessoas a compartilhar informações confidenciais, como senhas ou detalhes de cartão de crédito. "
   },
   "25": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Motor de busca do Google Chrome em uso",
+      "Failed": "Não foi possível verificar o motor de busca do seu navegador.",
+      "Solution": [
+        "Certifique-se de que seu navegador esteja fechado, esta verificação pode não poder ser concluída devido ao navegador estar aberto."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Mecanismo de pesquisa padrão usado no Google Chrome",
@@ -815,6 +1007,14 @@
     "Information": "Um mecanismo de pesquisa padrão ajuda os usuários a encontrar informações na Internet inserindo palavras-chave ou frases. "
   },
   "26": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Motor de busca do Microsoft Edge em uso",
+      "Failed": "Não foi possível verificar o motor de busca do seu navegador.",
+      "Solution": [
+        "Certifique-se de que seu navegador esteja fechado, esta verificação pode não poder ser concluída devido ao navegador estar aberto."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Mecanismo de pesquisa padrão usado no Microsoft Edge",
@@ -829,6 +1029,14 @@
     "Information": "Um mecanismo de pesquisa padrão ajuda os usuários a encontrar informações na Internet inserindo palavras-chave ou frases. "
   },
   "27": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Cookies armazenados no Mozilla Firefox",
+      "Failed": "Não foi possível verificar os cookies do seu navegador.",
+      "Solution": [
+        "Certifique-se de que seu navegador esteja fechado, esta verificação pode não poder ser concluída devido ao navegador estar aberto."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Nenhum cookie de rastreamento encontrado no Mozilla Firefox",
@@ -856,6 +1064,14 @@
     "Information": "Cookies são pequenos arquivos de texto armazenados no seu computador pelos sites que você visita. "
   },
   "28": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Extensões instaladas no Mozilla Firefox",
+      "Failed": "Não foi possível verificar as extensões do seu navegador.",
+      "Solution": [
+        "Certifique-se de que seu navegador esteja fechado, esta verificação pode não poder ser concluída devido ao navegador estar aberto."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Extensões instaladas no Mozilla Firefox",
@@ -874,6 +1090,14 @@
     "Information": "As extensões do navegador aprimoram a funcionalidade do seu navegador adicionando recursos, ferramentas e opções de personalização. "
   },
   "29": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Mozilla Firefox tem um bloqueador de anúncios instalado",
+      "Failed": "Não foi possível verificar se o seu navegador tem um bloqueador de anúncios instalado.",
+      "Solution": [
+        "Certifique-se de que seu navegador esteja fechado, esta verificação pode não poder ser concluída devido ao navegador estar aberto."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Mozilla Firefox com um bloqueador de anúncios instalado",
@@ -904,6 +1128,14 @@
     "Information": "Adblockers protegem os usuários de anúncios online. "
   },
   "30": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Motor de busca do Mozilla Firefox em uso",
+      "Failed": "Não foi possível verificar o motor de busca do seu navegador.",
+      "Solution": [
+        "Certifique-se de que seu navegador esteja fechado, esta verificação pode não poder ser concluída devido ao navegador estar aberto."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Mecanismo de pesquisa padrão no Mozilla Firefox",
@@ -918,6 +1150,14 @@
     "Information": "Um mecanismo de pesquisa padrão ajuda os usuários a encontrar informações na Internet inserindo palavras-chave ou frases. "
   },
   "31": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Domínios de phishing encontrados no histórico do Mozilla Firefox",
+      "Failed": "Não foi possível verificar o histórico do seu navegador.",
+      "Solution": [
+        "Certifique-se de que seu navegador esteja fechado, esta verificação pode não poder ser concluída devido ao navegador estar aberto."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Nenhum domínio de phishing em potencial encontrado no Mozilla Firefox",
@@ -940,6 +1180,14 @@
     "Information": "Domínios de phishing são sites falsos projetados para induzir as pessoas a compartilhar informações confidenciais, como senhas ou detalhes de cartão de crédito. "
   },
   "32": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Configurações do registro da lista de auditoria CIS",
+      "Failed": "Não foi possível verificar as configurações do registro da lista de auditoria CIS.",
+      "Solution": [
+        "Por favor, verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não podemos completar a verificação."
+      ]
+    },
     "0": {
       "Severity": 1,
       "Name": "Configurações incorretas do registro da lista de auditoria do CIS",
@@ -962,6 +1210,14 @@
     "Information": "O Center for Internet Security (CIS) fornece um conjunto de diretrizes e práticas recomendadas para proteger sistemas de computador. "
   },
   "33": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Logon automático ativado/desativado",
+      "Failed": "Não foi possível verificar se o logon automático está ativado.",
+      "Solution": [
+        "Por favor, verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não podemos completar a verificação."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Login automático desativado",
@@ -985,6 +1241,14 @@
     "Information": "O login automático permite que os usuários acessem suas contas sem inserir uma senha sempre que iniciarem o computador ou abrirem um aplicativo específico. "
   },
   "34": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Chamada de procedimento remoto ativada/desativada",
+      "Failed": "Não foi possível verificar se RPC está ativado em seu dispositivo.",
+      "Solution": [
+        "Por favor, verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não podemos completar a verificação."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "RPC remoto desativado",
@@ -1010,6 +1274,14 @@
     "Information": "Chamada de procedimento remoto (RPC) é um protocolo que permite que programas e processos se comuniquem entre si em uma rede. "
   },
   "35": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Cookies armazenados no Google Chrome",
+      "Failed": "Não foi possível verificar os cookies do seu navegador.",
+      "Solution": [
+        "Certifique-se de que seu navegador esteja fechado, esta verificação pode não poder ser concluída devido ao navegador estar aberto."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Nenhum possível cookie de rastreamento encontrado no navegador Google Chrome",
@@ -1035,6 +1307,14 @@
     "Information": "Cookies são pequenos arquivos de texto armazenados no seu computador pelos sites que você visita. "
   },
   "36": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Cookies armazenados no Microsoft Edge",
+      "Failed": "Não foi possível verificar os cookies do seu navegador.",
+      "Solution": [
+        "Certifique-se de que seu navegador esteja fechado, esta verificação pode não poder ser concluída devido ao navegador estar aberto."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Nenhum possível cookie de rastreamento encontrado no navegador Microsoft Edge",
@@ -1060,6 +1340,14 @@
     "Information": "Cookies são pequenos arquivos de texto armazenados no seu computador pelos sites que você visita. "
   },
   "37": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Firewall do Windows ativado/desativado",
+      "Failed": "Não foi possível verificar o status do firewall do Windows.",
+      "Solution": [
+        "Por favor, verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não podemos completar a verificação."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "O firewall do Windows está habilitado para todos os perfis",
@@ -1083,6 +1371,14 @@
     "Information": "O Firewall do Windows é um recurso de segurança integrado que ajuda a proteger seu computador contra acesso não autorizado e software mal-intencionado, monitorando e controlando o tráfego de rede de entrada e saída. "
   },
   "38": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Comprimento da senha do Windows",
+      "Failed": "Não foi possível verificar a complexidade da sua senha.",
+      "Solution": [
+        "Por favor, verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não podemos completar a verificação."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "O comprimento mínimo da senha está definido para pelo menos 15 caracteres",
@@ -1108,6 +1404,14 @@
     "Information": "Definir um comprimento mínimo de senha de pelo menos 15 caracteres ajuda a melhorar a segurança das contas de usuário, aumentando a complexidade e a força das senhas. "
   },
   "39": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Guarda de credenciais ativada/desativada",
+      "Failed": "Não foi possível verificar se a Guarda de credenciais está ativada.",
+      "Solution": [
+        "Por favor, verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não podemos completar a verificação."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "O Credential Guard está ativado",
@@ -1130,6 +1434,14 @@
     "Information": "Credential Guard é um recurso de segurança do Windows que ajuda a proteger as credenciais do usuário e informações confidenciais contra acesso não autorizado e roubo. "
   },
   "40": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: NetBIOS sobre TCP/IP ativado/desativado",
+      "Failed": "Não foi possível verificar o estado do NetBIOS.",
+      "Solution": [
+        "Por favor, verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não podemos completar a verificação."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "NetBIOS sobre TCP/IP está desabilitado",
@@ -1158,6 +1470,14 @@
     "Information": "NetBIOS sobre TCP/IP é um protocolo de rede legado que permite que computadores se comuniquem em uma rede local. "
   },
   "41": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Serviço WPAD ativado/desativado",
+      "Failed": "Não foi possível verificar o status do WPAD.",
+      "Solution": [
+        "Por favor, verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não podemos completar a verificação."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "O serviço WPAD está desativado",
@@ -1183,6 +1503,14 @@
     "Information": "Web Proxy Auto-Discovery (WPAD) é um protocolo que permite que navegadores da web descubram automaticamente servidores proxy em uma rede. "
   },
   "42": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Bloqueio automático de tela do Windows ativado/desativado",
+      "Failed": "Não foi possível verificar se o bloqueio de tela está ativado.",
+      "Solution": [
+        "Por favor, verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não podemos completar a verificação."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "O bloqueio automático de tela do Windows está ativado",

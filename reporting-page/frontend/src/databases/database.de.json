@@ -32,6 +32,14 @@
     "Information": "Die Bluetooth-Technologie ermöglicht die drahtlose Übertragung und den Empfang von Daten. "
   },
   "2": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Geräte verbunden über USB-Anschlüsse",
+      "Failed": "Wir konnten nicht überprüfen, ob Geräte über USB-Anschlüsse verbunden sind.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Keine externen Geräte angeschlossen",
@@ -54,6 +62,14 @@
     "Information": "Externe Geräte wie USB-Laufwerke, externe Festplatten und andere Peripheriegeräte können ein Sicherheitsrisiko für Ihren Computer darstellen. "
   },
   "3": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Gastkonto aktiviert/deaktiviert",
+      "Failed": "Wir konnten nicht überprüfen, ob ein Gastkonto aktiviert ist.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": -1,
       "Name": "Status des Gastkontos unbekannt",
@@ -106,6 +122,14 @@
     "Information": "Das Gastkonto ist ein Standardkonto, das Personen ohne reguläre Benutzerkonten vorübergehenden und eingeschränkten Zugriff auf das System bietet. "
   },
   "4": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Werbe-ID aktiviert/deaktiviert",
+      "Failed": "Wir konnten nicht überprüfen, ob die Werbe-ID mit Apps geteilt wird.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Freigabe der Werbe-ID deaktiviert",
@@ -133,6 +157,14 @@
     "Information": "Die Einstellung der Werbe-ID ermöglicht es Windows, Ihnen personalisierte Werbung zu senden. "
   },
   "5": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Passwort-Manager installiert",
+      "Failed": "Wir konnten nicht überprüfen, ob ein Passwort-Manager installiert ist.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Passwortmanager im Einsatz",
@@ -157,6 +189,14 @@
     "Information": "Die Verwendung eines Passwort-Managers bietet Einzelpersonen und Organisationen mehrere Vorteile, die sich vor allem auf die Verbesserung der Sicherheit, des Komforts und der gesamten Passwortverwaltungspraktiken beziehen. "
   },
   "6": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Anwendungen mit Standortberechtigungen",
+      "Failed": "Wir konnten nicht überprüfen, welche Anwendungen Standortberechtigungen haben.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Bewerbungen mit Standortgenehmigung",
@@ -185,6 +225,14 @@
     "Information": "Für den Schutz Ihrer Privatsphäre ist es wichtig zu wissen, welche Anwendungen Zugriff auf Ihren Standort haben. "
   },
   "7": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Anwendungen mit Mikrofonberechtigungen",
+      "Failed": "Wir konnten nicht überprüfen, welche Anwendungen Mikrofonberechtigungen haben.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Anwendungen mit Mikrofonerlaubnis",
@@ -213,6 +261,14 @@
     "Information": "Für den Schutz Ihrer Privatsphäre und Vertraulichkeit ist es wichtig zu wissen, welche Anwendungen Zugriff auf Ihr Mikrofon auf Ihrem Windows-Computer haben. "
   },
   "8": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Anwendungen mit Kameraberechtigungen",
+      "Failed": "Wir konnten nicht überprüfen, welche Anwendungen Kameraberechtigungen haben.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Anwendungen mit Webcam-Erlaubnis",
@@ -241,6 +297,14 @@
     "Information": "Wenn Sie wissen, welche Anwendungen Zugriff auf Ihre Kamera haben, können Sie unbefugten Zugriff verhindern. "
   },
   "9": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Anwendungen mit Terminberechtigungen",
+      "Failed": "Wir konnten nicht überprüfen, welche Anwendungen Terminberechtigungen haben.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Bewerbungen mit Terminerlaubnis",
@@ -269,6 +333,14 @@
     "Information": "Für den Schutz Ihrer Privatsphäre und Ihres Zeitplans ist es von entscheidender Bedeutung, zu wissen, welche Anwendungen Zugriff auf Ihren Kalender oder Ihre Termine haben. "
   },
   "10": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Anwendungen mit Kontaktberechtigungen",
+      "Failed": "Wir konnten nicht überprüfen, welche Anwendungen Kontaktberechtigungen haben.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Bewerbungen mit Kontakterlaubnis",
@@ -297,6 +369,14 @@
     "Information": "Um Ihre Privatsphäre zu schützen, sollten Sie wissen, welche Anwendungen Zugriff auf Ihre Kontakte auf Ihrem Windows-Computer haben. "
   },
   "11": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Von Anwendungen verwendete offene Ports",
+      "Failed": "Wir konnten nicht überprüfen, welche Ports geöffnet sind.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Offene Ports",
@@ -314,6 +394,14 @@
     "Information": "Ein offener Port ist ein Port, der den Empfang von Datenpaketen ermöglicht. "
   },
   "12": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Fernzugriff aktiviert/deaktiviert",
+      "Failed": "Wir konnten nicht überprüfen, ob die Funktion für den Remote-Desktop aktiviert ist.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 3,
       "Name": "Remotedesktop aktiviert",
@@ -335,6 +423,14 @@
     "Information": "Remotedesktop ist eine integrierte Funktion des Windows-Betriebssystems, mit der Benutzer über ein Netzwerk oder das Internet remote auf einen anderen Windows-Computer zugreifen und diesen steuern können. "
   },
   "13": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Servernachrichtenblock aktiviert/deaktiviert",
+      "Failed": "Wir konnten die Status des SMB-Protokolls nicht überprüfen.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 2,
       "Name": "SMB alle Versionen deaktiviert",
@@ -387,6 +483,14 @@
     "Information": "Das SMB-Protokoll (Server Message Block) wird für die gemeinsame Nutzung von Dateien, Druckern und anderen Ressourcen zwischen Geräten in einem Netzwerk in Windows-Umgebungen verwendet. "
   },
   "14": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Benutzerkontensteuerung aktiviert/deaktiviert",
+      "Failed": "Wir konnten die UAC-Stufe auf Ihrem System nicht überprüfen.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 3,
       "Name": "Benutzerkontensteuerung deaktiviert",
@@ -493,6 +597,14 @@
     "Information": "Die Benutzerkontensteuerung (UAC) ist eine Sicherheitsfunktion, die in Windows Vista eingeführt wurde und in nachfolgenden Versionen des Windows-Betriebssystems verfügbar ist. "
   },
   "15": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Windows Defender aktiviert/deaktiviert",
+      "Failed": "Wir konnten den Status von Windows Defender nicht überprüfen.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Windows Defender ist aktiviert",
@@ -542,6 +654,14 @@
     "Information": "Windows Defender überwacht Ihr System kontinuierlich auf verdächtige Aktivitäten, einschließlich Malware, Viren und andere Formen schädlicher Software. "
   },
   "16": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Letzte Änderung des Windows-Passworts",
+      "Failed": "Wir konnten nicht überprüfen, wann die letzte Passwortänderung erfolgte.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 2,
       "Name": "Die letzte Passwortänderung liegt mehr als 6 Monate zurück",
@@ -568,6 +688,14 @@
     "Information": "Wenn Sie Ihr Passwort regelmäßig ändern, verringert sich die Wahrscheinlichkeit eines unbefugten Zugriffs auf Ihren Computer oder vertrauliche Informationen. "
   },
   "17": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Windows-Anmeldeverfahren",
+      "Failed": "Wir konnten nicht überprüfen, welche Anmeldeverfahren verwendet werden.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 3,
       "Name": "Keine Windows-Anmeldemethode eingerichtet",
@@ -616,6 +744,14 @@
     "Information": "Es ist wichtig, eine sichere Windows-Anmeldemethode zu verwenden. "
   },
   "18": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Windows-Version aktuell",
+      "Failed": "Wir konnten nicht überprüfen, wann die letzte Passwortänderung erfolgte.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Die Windows-Version ist aktuell",
@@ -652,6 +788,14 @@
     "Information": "Veraltete Windows-Versionen können ungepatchte Sicherheitslücken enthalten, die von Angreifern ausgenutzt werden könnten, um das System zu gefährden. "
   },
   "19": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Secure Boot aktiviert/deaktiviert",
+      "Failed": "Wir konnten nicht überprüfen, ob Secure Boot aktiviert ist.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 1,
       "Name": "Secure Boot ist deaktiviert",
@@ -683,6 +827,14 @@
     "Information": "Secure Boot stellt sicher, dass während des Bootvorgangs nur vertrauenswürdige Softwarekomponenten geladen werden, die mit anerkannten digitalen Signaturen signiert sind. "
   },
   "20": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Anwendungen, die beim Systemstart gestartet werden",
+      "Failed": "Wir konnten nicht überprüfen, welche Anwendungen beim Systemstart gestartet werden.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Keine Anwendungen, die beim Booten starten",
@@ -707,6 +859,14 @@
     "Information": "Wenn Sie Ihren Computer hochfahren, werden automatisch mehrere Anwendungen gestartet. "
   },
   "21": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Google Chrome hat einen Adblocker installiert",
+      "Failed": "Wir konnten nicht überprüfen, ob Ihr Browser einen Adblocker installiert hat.",
+      "Solution": [
+        "Bitte stellen Sie sicher, dass Ihr Browser geschlossen ist. Diese Überprüfung kann aufgrund des geöffneten Browsers möglicherweise nicht abgeschlossen werden."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Google Chrome mit installiertem Adblocker",
@@ -733,6 +893,14 @@
     "Information": "Adblocker schützen Nutzer vor Online-Werbung. "
   },
   "22": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Microsoft Edge hat einen Adblocker installiert",
+      "Failed": "Wir konnten nicht überprüfen, ob Ihr Browser einen Adblocker installiert hat.",
+      "Solution": [
+        "Bitte stellen Sie sicher, dass Ihr Browser geschlossen ist. Diese Überprüfung kann aufgrund des geöffneten Browsers möglicherweise nicht abgeschlossen werden."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Microsoft Edge mit installiertem Adblocker",
@@ -759,6 +927,14 @@
     "Information": "Adblocker schützen Nutzer vor Online-Werbung. "
   },
   "23": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Phishing-Domains im Verlauf von Google Chrome gefunden",
+      "Failed": "Wir konnten Ihren Browserverlauf nicht überprüfen.",
+      "Solution": [
+        "Bitte stellen Sie sicher, dass Ihr Browser geschlossen ist. Diese Überprüfung kann aufgrund des geöffneten Browsers möglicherweise nicht abgeschlossen werden."
+      ]
+    },
     "0": {
       "Severity": 2,
       "Name": "Potenzielle Phishing-Domains in Google Chrome gefunden",
@@ -781,6 +957,14 @@
     "Information": "Phishing-Domains sind gefälschte Websites, die darauf abzielen, Menschen dazu zu verleiten, vertrauliche Informationen wie Passwörter oder Kreditkartendaten weiterzugeben. "
   },
   "24": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Phishing-Domains im Verlauf von Microsoft Edge gefunden",
+      "Failed": "Wir konnten Ihren Browserverlauf nicht überprüfen.",
+      "Solution": [
+        "Bitte stellen Sie sicher, dass Ihr Browser geschlossen ist. Diese Überprüfung kann aufgrund des geöffneten Browsers möglicherweise nicht abgeschlossen werden."
+      ]
+    },
     "0": {
       "Severity": 2,
       "Name": "Potenzielle Phishing-Domänen auf Microsoft Edge gefunden",
@@ -801,6 +985,14 @@
     "Information": "Phishing-Domains sind gefälschte Websites, die darauf abzielen, Menschen dazu zu verleiten, vertrauliche Informationen wie Passwörter oder Kreditkartendaten weiterzugeben. "
   },
   "25": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Google Chrome Suchmaschine in Benutzung",
+      "Failed": "Wir konnten Ihre Browser-Suchmaschine nicht überprüfen.",
+      "Solution": [
+        "Bitte stellen Sie sicher, dass Ihr Browser geschlossen ist. Diese Überprüfung kann aufgrund des geöffneten Browsers möglicherweise nicht abgeschlossen werden."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Standardsuchmaschine, die in Google Chrome verwendet wird",
@@ -815,6 +1007,14 @@
     "Information": "Eine Standardsuchmaschine hilft Benutzern, Informationen im Internet zu finden, indem sie Schlüsselwörter oder Phrasen eingeben. "
   },
   "26": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Microsoft Edge Suchmaschine in Benutzung",
+      "Failed": "Wir konnten Ihre Browser-Suchmaschine nicht überprüfen.",
+      "Solution": [
+        "Bitte stellen Sie sicher, dass Ihr Browser geschlossen ist. Diese Überprüfung kann aufgrund des geöffneten Browsers möglicherweise nicht abgeschlossen werden."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Standardsuchmaschine, die in Microsoft Edge verwendet wird",
@@ -829,6 +1029,14 @@
     "Information": "Eine Standardsuchmaschine hilft Benutzern, Informationen im Internet zu finden, indem sie Schlüsselwörter oder Phrasen eingeben. "
   },
   "27": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Mozilla Firefox Cookies gespeichert",
+      "Failed": "Wir konnten Ihre Browser-Cookies nicht überprüfen.",
+      "Solution": [
+        "Bitte stellen Sie sicher, dass Ihr Browser geschlossen ist. Diese Überprüfung kann aufgrund des geöffneten Browsers möglicherweise nicht abgeschlossen werden."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "In Mozilla Firefox wurden keine Tracking-Cookies gefunden",
@@ -856,6 +1064,14 @@
     "Information": "Cookies sind kleine Textdateien, die von den von Ihnen besuchten Websites auf Ihrem Computer gespeichert werden. "
   },
   "28": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Mozilla Firefox Erweiterungen installiert",
+      "Failed": "Wir konnten Ihre Browser-Erweiterungen nicht überprüfen.",
+      "Solution": [
+        "Bitte stellen Sie sicher, dass Ihr Browser geschlossen ist. Diese Überprüfung kann aufgrund des geöffneten Browsers möglicherweise nicht abgeschlossen werden."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "In Mozilla Firefox installierte Erweiterungen",
@@ -874,6 +1090,14 @@
     "Information": "Browsererweiterungen erweitern die Funktionalität Ihres Webbrowsers, indem sie Funktionen, Tools und Anpassungsoptionen hinzufügen. "
   },
   "29": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Mozilla Firefox hat einen Werbeblocker installiert",
+      "Failed": "Wir konnten nicht überprüfen, ob Ihr Browser einen Werbeblocker installiert hat.",
+      "Solution": [
+        "Bitte stellen Sie sicher, dass Ihr Browser geschlossen ist. Diese Überprüfung kann aufgrund des geöffneten Browsers möglicherweise nicht abgeschlossen werden."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Mozilla Firefox mit installiertem Adblocker",
@@ -904,6 +1128,14 @@
     "Information": "Adblocker schützen Nutzer vor Online-Werbung. "
   },
   "30": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Mozilla Firefox Suchmaschine in Benutzung",
+      "Failed": "Wir konnten Ihre Browser-Suchmaschine nicht überprüfen.",
+      "Solution": [
+        "Bitte stellen Sie sicher, dass Ihr Browser geschlossen ist. Diese Überprüfung kann aufgrund des geöffneten Browsers möglicherweise nicht abgeschlossen werden."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Standardsuchmaschine in Mozilla Firefox",
@@ -918,6 +1150,14 @@
     "Information": "Eine Standardsuchmaschine hilft Benutzern, Informationen im Internet zu finden, indem sie Schlüsselwörter oder Phrasen eingeben. "
   },
   "31": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Phishing-Domains in der Mozilla Firefox-History gefunden",
+      "Failed": "Wir konnten Ihre Browser-History nicht überprüfen.",
+      "Solution": [
+        "Bitte stellen Sie sicher, dass Ihr Browser geschlossen ist. Diese Überprüfung kann aufgrund des geöffneten Browsers möglicherweise nicht abgeschlossen werden."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "In Mozilla Firefox wurden keine potenziellen Phishing-Domänen gefunden",
@@ -940,6 +1180,14 @@
     "Information": "Phishing-Domains sind gefälschte Websites, die darauf abzielen, Menschen dazu zu verleiten, vertrauliche Informationen wie Passwörter oder Kreditkartendaten weiterzugeben. "
   },
   "32": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: CIS-Audit-Listenregistereinstellungen",
+      "Failed": "Wir konnten die CIS-Audit-Listenregistereinstellungen nicht überprüfen.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 1,
       "Name": "Falsche Registrierungseinstellungen für die CIS-Überwachungsliste",
@@ -962,6 +1210,14 @@
     "Information": "Das Center for Internet Security (CIS) stellt eine Reihe von Richtlinien und Best Practices zur Sicherung von Computersystemen bereit. "
   },
   "33": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Automatischer Anmeldevorgang aktiviert/deaktiviert",
+      "Failed": "Wir konnten nicht überprüfen, ob die automatische Anmeldung aktiviert ist.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Automatische Anmeldung deaktiviert",
@@ -985,6 +1241,14 @@
     "Information": "Durch die automatische Anmeldung können Benutzer jedes Mal, wenn sie ihren Computer starten oder eine bestimmte Anwendung öffnen, auf ihre Konten zugreifen, ohne ein Passwort eingeben zu müssen. "
   },
   "34": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Remote Procedure Call aktiviert/deaktiviert",
+      "Failed": "Wir konnten nicht überprüfen, ob RPC auf Ihrem Gerät aktiviert ist.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Remote-RPC deaktiviert",
@@ -1010,6 +1274,14 @@
     "Information": "Remote Procedure Call (RPC) ist ein Protokoll, das es Programmen und Prozessen ermöglicht, in einem Netzwerk miteinander zu kommunizieren. "
   },
   "35": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Google Chrome Cookies gespeichert",
+      "Failed": "Wir konnten Ihre Browser-Cookies nicht überprüfen.",
+      "Solution": [
+        "Bitte stellen Sie sicher, dass Ihr Browser geschlossen ist. Diese Überprüfung kann aufgrund des geöffneten Browsers möglicherweise nicht abgeschlossen werden."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Im Google Chrome-Browser wurden keine möglichen Tracking-Cookies gefunden",
@@ -1035,6 +1307,14 @@
     "Information": "Cookies sind kleine Textdateien, die von den von Ihnen besuchten Websites auf Ihrem Computer gespeichert werden. "
   },
   "36": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Microsoft Edge Cookies gespeichert",
+      "Failed": "Wir konnten Ihre Browser-Cookies nicht überprüfen.",
+      "Solution": [
+        "Bitte stellen Sie sicher, dass Ihr Browser geschlossen ist. Diese Überprüfung kann aufgrund des geöffneten Browsers möglicherweise nicht abgeschlossen werden."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Im Microsoft Edge-Browser wurden keine möglichen Tracking-Cookies gefunden",
@@ -1060,6 +1340,14 @@
     "Information": "Cookies sind kleine Textdateien, die von den von Ihnen besuchten Websites auf Ihrem Computer gespeichert werden. "
   },
   "37": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Windows Firewall aktiviert/deaktiviert",
+      "Failed": "Wir konnten den Status der Windows-Firewall nicht überprüfen.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Die Windows-Firewall ist für alle Profile aktiviert",
@@ -1083,6 +1371,14 @@
     "Information": "Die Windows-Firewall ist eine integrierte Sicherheitsfunktion, die Ihren Computer vor unbefugtem Zugriff und schädlicher Software schützt, indem sie den ein- und ausgehenden Netzwerkverkehr überwacht und steuert. "
   },
   "38": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Windows-Passwortlänge",
+      "Failed": "Wir konnten die Komplexität Ihres Passworts nicht überprüfen.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Die Mindestlänge des Passworts beträgt mindestens 15 Zeichen",
@@ -1108,6 +1404,14 @@
     "Information": "Das Festlegen einer Mindestlänge von mindestens 15 Zeichen für Passwörter trägt dazu bei, die Sicherheit von Benutzerkonten zu erhöhen, indem die Komplexität und Stärke von Passwörtern erhöht wird. "
   },
   "39": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Credential Guard aktiviert/deaktiviert",
+      "Failed": "Wir konnten nicht überprüfen, ob Credential Guard aktiviert ist.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Credential Guard ist aktiviert",
@@ -1130,6 +1434,14 @@
     "Information": "Credential Guard ist eine Sicherheitsfunktion in Windows, die dabei hilft, Benutzeranmeldeinformationen und vertrauliche Informationen vor unbefugtem Zugriff und Diebstahl zu schützen. "
   },
   "40": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: NetBIOS über TCP/IP aktiviert/deaktiviert",
+      "Failed": "Wir konnten den Zustand des NetBIOS nicht überprüfen.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "NetBIOS über TCP/IP ist deaktiviert",
@@ -1158,6 +1470,14 @@
     "Information": "NetBIOS über TCP/IP ist ein älteres Netzwerkprotokoll, das es Computern ermöglicht, in einem lokalen Netzwerk zu kommunizieren. "
   },
   "41": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: WPAD-Dienst aktiviert/deaktiviert",
+      "Failed": "Wir konnten den Status des WPAD nicht überprüfen.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Der WPAD-Dienst ist deaktiviert",
@@ -1183,6 +1503,14 @@
     "Information": "Web Proxy Auto-Discovery (WPAD) ist ein Protokoll, das es Webbrowsern ermöglicht, Proxyserver in einem Netzwerk automatisch zu erkennen. "
   },
   "42": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Automatische Bildschirmsperre von Windows aktiviert/deaktiviert",
+      "Failed": "Wir konnten nicht überprüfen, ob die Bildschirmsperre aktiviert ist.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Die automatische Bildschirmsperre von Windows ist aktiviert",

@@ -32,6 +32,14 @@
     "Information": "La technologie Bluetooth permet la transmission et la réception de données sans fil. "
   },
   "2": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Appareils connectés via ports USB",
+      "Failed": "Nous n'avons pas pu vérifier s'il y a des appareils connectés via ports USB.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Aucun périphérique externe connecté",
@@ -54,6 +62,14 @@
     "Information": "Les périphériques externes tels que les clés USB, les disques durs externes et autres périphériques peuvent présenter des risques de sécurité pour votre ordinateur. "
   },
   "3": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Compte invité activé/désactivé",
+      "Failed": "Nous n'avons pas pu vérifier si un compte invité est activé.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
     "0": {
       "Severity": -1,
       "Name": "Statut du compte invité inconnu",
@@ -106,6 +122,14 @@
     "Information": "Le compte invité est un compte par défaut conçu pour offrir un accès temporaire et restreint au système aux personnes sans compte d'utilisateur régulier. "
   },
   "4": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : ID de publicité activée/désactivée",
+      "Failed": "Nous n'avons pas pu vérifier si l'ID de publicité est partagée avec des applications.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Partage d'identifiant d'annonce désactivé",
@@ -133,6 +157,14 @@
     "Information": "Le paramètre d'identification de publicité permet à Windows de vous envoyer des publicités personnalisées. "
   },
   "5": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Gestionnaire de mots de passe installé",
+      "Failed": "Nous n'avons pas pu vérifier si un gestionnaire de mots de passe est installé.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Gestionnaire de mots de passe utilisé",
@@ -157,6 +189,14 @@
     "Information": "L'utilisation d'un gestionnaire de mots de passe offre plusieurs avantages aux particuliers et aux organisations, principalement liés à l'amélioration de la sécurité, de la commodité et des pratiques globales de gestion des mots de passe. "
   },
   "6": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Applications avec autorisations de localisation",
+      "Failed": "Nous n'avons pas pu vérifier quelles applications ont des autorisations de localisation.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Applications avec autorisation de localisation",
@@ -185,6 +225,14 @@
     "Information": "Savoir quelles applications ont accès à votre localisation est important pour protéger votre vie privée. "
   },
   "7": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Applications avec autorisations de microphone",
+      "Failed": "Nous n'avons pas pu vérifier quelles applications ont des autorisations de microphone.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Applications avec autorisation de microphone",
@@ -213,6 +261,14 @@
     "Information": "Comprendre quelles applications ont accès à votre microphone sur votre ordinateur Windows est important pour protéger votre vie privée et votre confidentialité. "
   },
   "8": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Applications avec autorisations de webcam",
+      "Failed": "Nous n'avons pas pu vérifier quelles applications ont des autorisations de webcam.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Applications avec autorisation webcam",
@@ -241,6 +297,14 @@
     "Information": "Savoir quelles applications ont accès à votre caméra permet d'empêcher tout accès non autorisé. "
   },
   "9": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Applications avec autorisations de rendez-vous",
+      "Failed": "Nous n'avons pas pu vérifier quelles applications ont des autorisations de rendez-vous.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Applications avec autorisation de rendez-vous",
@@ -269,6 +333,14 @@
     "Information": "Comprendre quelles applications ont accès à votre calendrier ou à vos rendez-vous est crucial pour protéger votre vie privée et votre emploi du temps. "
   },
   "10": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Applications avec autorisations de contacts",
+      "Failed": "Nous n'avons pas pu vérifier quelles applications ont des autorisations de contacts.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Applications avec autorisation de contacts",
@@ -297,6 +369,14 @@
     "Information": "Comprendre quelles applications ont accès à vos contacts sur votre ordinateur Windows est bon pour protéger votre vie privée. "
   },
   "11": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Ports ouverts utilisés par les applications",
+      "Failed": "Nous n'avons pas pu vérifier quels ports sont ouverts.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Ports ouverts",
@@ -314,6 +394,14 @@
     "Information": "Un port ouvert est un port qui permet la réception de paquets de données. "
   },
   "12": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Bureau à distance activé/désactivé",
+      "Failed": "Nous n'avons pas pu vérifier si la fonctionnalité Bureau à distance est activée.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
     "0": {
       "Severity": 3,
       "Name": "Bureau à distance activé",
@@ -335,6 +423,14 @@
     "Information": "Le Bureau à distance est une fonctionnalité intégrée au système d'exploitation Windows qui permet aux utilisateurs d'accéder et de contrôler à distance un autre ordinateur Windows via un réseau ou Internet. "
   },
   "13": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Bloc de messages serveur activé/désactivé",
+      "Failed": "Nous n'avons pas pu vérifier les statuts du protocole SMB.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
     "0": {
       "Severity": 2,
       "Name": "SMB toutes les versions désactivées",
@@ -387,6 +483,14 @@
     "Information": "Le protocole SMB (Server Message Block) est utilisé pour partager des fichiers, des imprimantes et d'autres ressources entre des appareils sur un réseau dans des environnements Windows. "
   },
   "14": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Contrôle des comptes d'utilisateur activé/désactivé",
+      "Failed": "Nous n'avons pas pu vérifier le niveau de contrôle de compte utilisateur sur votre système.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
     "0": {
       "Severity": 3,
       "Name": "Contrôle du compte utilisateur désactivé",
@@ -493,6 +597,14 @@
     "Information": "Le contrôle de compte d'utilisateur (UAC) est une fonctionnalité de sécurité introduite dans Windows Vista et présente dans les versions ultérieures du système d'exploitation Windows. "
   },
   "15": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Windows Defender activé/désactivé",
+      "Failed": "Nous n'avons pas pu vérifier le statut de Windows Defender.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Windows Defender est activé",
@@ -542,6 +654,14 @@
     "Information": "Windows Defender surveille en permanence votre système pour détecter toute activité suspecte, notamment les logiciels malveillants, les virus et autres formes de logiciels malveillants. "
   },
   "16": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Dernière modification du mot de passe Windows",
+      "Failed": "Nous n'avons pas pu vérifier quand la dernière modification de mot de passe a été effectuée.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
     "0": {
       "Severity": 2,
       "Name": "Le dernier changement de mot de passe remonte à plus de 6 mois",
@@ -568,6 +688,14 @@
     "Information": "Changer régulièrement votre mot de passe réduit le risque d'accès non autorisé à votre ordinateur ou à vos informations sensibles. "
   },
   "17": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Méthode de connexion Windows",
+      "Failed": "Nous n'avons pas pu vérifier les méthodes de connexion utilisées.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
     "0": {
       "Severity": 3,
       "Name": "Aucune méthode de connexion Windows configurée",
@@ -616,6 +744,14 @@
     "Information": "Il est important d’utiliser une méthode de connexion Windows sécurisée. "
   },
   "18": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Version de Windows à jour",
+      "Failed": "Nous n'avons pas pu vérifier quand la dernière modification de mot de passe a été effectuée.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },  
     "0": {
       "Severity": 0,
       "Name": "La version Windows est à jour",
@@ -652,6 +788,14 @@
     "Information": "Les versions obsolètes de Windows peuvent contenir des failles de sécurité non corrigées qui pourraient être exploitées par des attaquants pour compromettre le système. "
   },
   "19": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Sécurité de démarrage activée/désactivée",
+      "Failed": "Nous n'avons pas pu vérifier si la Sécurité de démarrage est activée.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
     "0": {
       "Severity": 1,
       "Name": "Le démarrage sécurisé est désactivé",
@@ -683,6 +827,14 @@
     "Information": "Secure Boot garantit que seuls les composants logiciels fiables, signés avec des signatures numériques reconnues, sont chargés pendant le processus de démarrage. "
   },
   "20": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Applications démarrées au démarrage du système",
+      "Failed": "Nous n'avons pas pu vérifier quelles applications démarrent au démarrage du système.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Aucune application qui démarre au démarrage",
@@ -707,6 +859,14 @@
     "Information": "Lorsque vous démarrez votre ordinateur, plusieurs applications se lancent automatiquement. "
   },
   "21": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Google Chrome a un bloqueur de publicités installé",
+      "Failed": "Nous n'avons pas pu vérifier si votre navigateur dispose d'un bloqueur de publicités installé.",
+      "Solution": [
+        "Veuillez vous assurer que votre navigateur est fermé. Cette vérification peut être impossible à effectuer si le navigateur est ouvert."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Google Chrome avec un bloqueur de publicité installé",
@@ -733,6 +893,14 @@
     "Information": "Les bloqueurs de publicités protègent les utilisateurs des publicités en ligne. "
   },
   "22": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Microsoft Edge a un bloqueur de publicités installé",
+      "Failed": "Nous n'avons pas pu vérifier si votre navigateur dispose d'un bloqueur de publicités installé.",
+      "Solution": [
+        "Veuillez vous assurer que votre navigateur est fermé. Cette vérification peut être impossible à effectuer si le navigateur est ouvert."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Microsoft Edge avec un bloqueur de publicité installé",
@@ -759,6 +927,14 @@
     "Information": "Les bloqueurs de publicités protègent les utilisateurs des publicités en ligne. "
   },
   "23": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Domaines de phishing trouvés dans l'historique de Google Chrome",
+      "Failed": "Nous n'avons pas pu vérifier l'historique de votre navigateur.",
+      "Solution": [
+        "Veuillez vous assurer que votre navigateur est fermé. Cette vérification peut être impossible à effectuer si le navigateur est ouvert."
+      ]
+    },
     "0": {
       "Severity": 2,
       "Name": "Domaines de phishing potentiels trouvés sur Google Chrome",
@@ -781,6 +957,14 @@
     "Information": "Les domaines de phishing sont de faux sites Web conçus pour inciter les gens à partager des informations sensibles telles que des mots de passe ou des informations de carte de crédit. "
   },
   "24": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Domaines de phishing trouvés dans l'historique de Microsoft Edge",
+      "Failed": "Nous n'avons pas pu vérifier l'historique de votre navigateur.",
+      "Solution": [
+        "Veuillez vous assurer que votre navigateur est fermé. Cette vérification peut être impossible à effectuer si le navigateur est ouvert."
+      ]
+    },
     "0": {
       "Severity": 2,
       "Name": "Domaines de phishing potentiels trouvés sur Microsoft Edge",
@@ -801,6 +985,14 @@
     "Information": "Les domaines de phishing sont de faux sites Web conçus pour inciter les gens à partager des informations sensibles telles que des mots de passe ou des informations de carte de crédit. "
   },
   "25": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Moteur de recherche de Google Chrome en cours d'utilisation",
+      "Failed": "Nous n'avons pas pu vérifier le moteur de recherche de votre navigateur.",
+      "Solution": [
+        "Veuillez vous assurer que votre navigateur est fermé. Cette vérification peut être impossible à effectuer si le navigateur est ouvert."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Moteur de recherche standard utilisé dans Google Chrome",
@@ -815,6 +1007,14 @@
     "Information": "Un moteur de recherche standard aide les utilisateurs à trouver des informations sur Internet en saisissant des mots-clés ou des expressions. "
   },
   "26": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Moteur de recherche de Microsoft Edge en cours d'utilisation",
+      "Failed": "Nous n'avons pas pu vérifier le moteur de recherche de votre navigateur.",
+      "Solution": [
+        "Veuillez vous assurer que votre navigateur est fermé. Cette vérification peut être impossible à effectuer si le navigateur est ouvert."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Moteur de recherche standard utilisé dans Microsoft Edge",
@@ -829,6 +1029,14 @@
     "Information": "Un moteur de recherche standard aide les utilisateurs à trouver des informations sur Internet en saisissant des mots-clés ou des expressions. "
   },
   "27": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Cookies stockés dans Mozilla Firefox",
+      "Failed": "Nous n'avons pas pu vérifier les cookies de votre navigateur.",
+      "Solution": [
+        "Veuillez vous assurer que votre navigateur est fermé. Cette vérification peut être impossible à effectuer si le navigateur est ouvert."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Aucun cookie de suivi trouvé dans Mozilla Firefox",
@@ -856,6 +1064,14 @@
     "Information": "Les cookies sont de petits fichiers texte stockés sur votre ordinateur par les sites Web que vous visitez. "
   },
   "28": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Extensions installées dans Mozilla Firefox",
+      "Failed": "Nous n'avons pas pu vérifier les extensions de votre navigateur.",
+      "Solution": [
+        "Veuillez vous assurer que votre navigateur est fermé. Cette vérification peut être impossible à effectuer si le navigateur est ouvert."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Extensions installées dans Mozilla Firefox",
@@ -874,6 +1090,14 @@
     "Information": "Les extensions de navigateur améliorent les fonctionnalités de votre navigateur Web en ajoutant des fonctionnalités, des outils et des options de personnalisation. "
   },
   "29": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Mozilla Firefox a un bloqueur de publicités installé",
+      "Failed": "Nous n'avons pas pu vérifier si votre navigateur a un bloqueur de publicités installé.",
+      "Solution": [
+        "Veuillez vous assurer que votre navigateur est fermé. Cette vérification peut être impossible à effectuer si le navigateur est ouvert."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Mozilla Firefox avec un bloqueur de publicité installé",
@@ -904,6 +1128,14 @@
     "Information": "Les bloqueurs de publicités protègent les utilisateurs des publicités en ligne. "
   },
   "30": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Moteur de recherche de Mozilla Firefox en cours d'utilisation",
+      "Failed": "Nous n'avons pas pu vérifier le moteur de recherche de votre navigateur.",
+      "Solution": [
+        "Veuillez vous assurer que votre navigateur est fermé. Cette vérification peut être impossible à effectuer si le navigateur est ouvert."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Moteur de recherche standard dans Mozilla Firefox",
@@ -918,6 +1150,14 @@
     "Information": "Un moteur de recherche standard aide les utilisateurs à trouver des informations sur Internet en saisissant des mots-clés ou des expressions. "
   },
   "31": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Domaines de phishing trouvés dans l'historique de Mozilla Firefox",
+      "Failed": "Nous n'avons pas pu vérifier l'historique de votre navigateur.",
+      "Solution": [
+        "Veuillez vous assurer que votre navigateur est fermé. Cette vérification peut être impossible à effectuer si le navigateur est ouvert."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Aucun domaine de phishing potentiel trouvé sur Mozilla Firefox",
@@ -940,6 +1180,14 @@
     "Information": "Les domaines de phishing sont de faux sites Web conçus pour inciter les gens à partager des informations sensibles telles que des mots de passe ou des informations de carte de crédit. "
   },
   "32": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Paramètres du registre de la liste de vérification CIS",
+      "Failed": "Nous n'avons pas pu vérifier les paramètres du registre de la liste de vérification CIS.",
+      "Solution": [
+        "Veuillez vérifier si le registre de Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas compléter la vérification."
+      ]
+    },
     "0": {
       "Severity": 1,
       "Name": "Paramètres de registre de la liste d'audit CIS incorrects",
@@ -962,6 +1210,14 @@
     "Information": "Le Center for Internet Security (CIS) fournit un ensemble de lignes directrices et de bonnes pratiques pour sécuriser les systèmes informatiques. "
   },
   "33": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Connexion automatique activée/désactivée",
+      "Failed": "Nous n'avons pas pu vérifier si la connexion automatique est activée.",
+      "Solution": [
+        "Veuillez vérifier si le registre de Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas compléter la vérification."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Connexion automatique désactivée",
@@ -985,6 +1241,14 @@
     "Information": "La connexion automatique permet aux utilisateurs d'accéder à leurs comptes sans saisir de mot de passe à chaque fois qu'ils démarrent leur ordinateur ou ouvrent une application spécifique. "
   },
   "34": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Appel de procédure distant activé/désactivé",
+      "Failed": "Nous n'avons pas pu vérifier si RPC est activé sur votre appareil.",
+      "Solution": [
+        "Veuillez vérifier si le registre de Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas compléter la vérification."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "RPC distant désactivé",
@@ -1010,6 +1274,14 @@
     "Information": "L'appel de procédure à distance (RPC) est un protocole qui permet aux programmes et aux processus de communiquer entre eux sur un réseau. "
   },
   "35": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Cookies stockés dans Google Chrome",
+      "Failed": "Nous n'avons pas pu vérifier les cookies de votre navigateur.",
+      "Solution": [
+        "Veuillez vous assurer que votre navigateur est fermé. Cette vérification peut être impossible à effectuer si le navigateur est ouvert."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Aucun cookie de suivi possible trouvé dans le navigateur Google Chrome",
@@ -1035,6 +1307,14 @@
     "Information": "Les cookies sont de petits fichiers texte stockés sur votre ordinateur par les sites Web que vous visitez. "
   },
   "36": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Cookies stockés dans Microsoft Edge",
+      "Failed": "Nous n'avons pas pu vérifier les cookies de votre navigateur.",
+      "Solution": [
+        "Veuillez vous assurer que votre navigateur est fermé. Cette vérification peut être impossible à effectuer si le navigateur est ouvert."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Aucun cookie de suivi possible trouvé dans le navigateur Microsoft Edge",
@@ -1060,6 +1340,14 @@
     "Information": "Les cookies sont de petits fichiers texte stockés sur votre ordinateur par les sites Web que vous visitez. "
   },
   "37": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Pare-feu Windows activé/désactivé",
+      "Failed": "Nous n'avons pas pu vérifier l'état du pare-feu Windows.",
+      "Solution": [
+        "Veuillez vérifier si le registre de Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas compléter la vérification."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Le pare-feu Windows est activé pour tous les profils",
@@ -1083,6 +1371,14 @@
     "Information": "Le pare-feu Windows est une fonctionnalité de sécurité intégrée qui permet de protéger votre ordinateur contre les accès non autorisés et les logiciels malveillants en surveillant et en contrôlant le trafic réseau entrant et sortant. "
   },
   "38": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Longueur du mot de passe Windows",
+      "Failed": "Nous n'avons pas pu vérifier la complexité de votre mot de passe.",
+      "Solution": [
+        "Veuillez vérifier si le registre de Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas compléter la vérification."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "La longueur minimale du mot de passe est définie sur au moins 15 caractères",
@@ -1108,6 +1404,14 @@
     "Information": "La définition d'une longueur minimale de mot de passe d'au moins 15 caractères contribue à améliorer la sécurité des comptes d'utilisateurs en augmentant la complexité et la force des mots de passe. "
   },
   "39": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Garde des informations d'identification activée/désactivée",
+      "Failed": "Nous n'avons pas pu vérifier si la Garde des informations d'identification est activée.",
+      "Solution": [
+        "Veuillez vérifier si le registre de Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas compléter la vérification."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Credential Guard est activé",
@@ -1130,6 +1434,14 @@
     "Information": "Credential Guard est une fonctionnalité de sécurité de Windows qui permet de protéger les informations d'identification des utilisateurs et les informations sensibles contre les accès non autorisés et le vol. "
   },
   "40": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : NetBIOS sur TCP/IP activé/désactivé",
+      "Failed": "Nous n'avons pas pu vérifier l'état du NetBIOS.",
+      "Solution": [
+        "Veuillez vérifier si le registre de Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas compléter la vérification."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "NetBIOS sur TCP/IP est désactivé",
@@ -1158,6 +1470,14 @@
     "Information": "NetBIOS sur TCP/IP est un protocole réseau existant qui permet aux ordinateurs de communiquer sur un réseau local. "
   },
   "41": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Service WPAD activé/désactivé",
+      "Failed": "Nous n'avons pas pu vérifier l'état de WPAD.",
+      "Solution": [
+        "Veuillez vérifier si le registre de Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas compléter la vérification."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Le service WPAD est désactivé",
@@ -1183,6 +1503,14 @@
     "Information": "Web Proxy Auto-Discovery (WPAD) est un protocole qui permet aux navigateurs Web de découvrir automatiquement les serveurs proxy sur un réseau. "
   },
   "42": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Verrouillage automatique de l'écran de Windows activé/désactivé",
+      "Failed": "Nous n'avons pas pu vérifier si le verrouillage de l'écran est activé.",
+      "Solution": [
+        "Veuillez vérifier si le registre de Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas compléter la vérification."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Le verrouillage automatique de l'écran de Windows est activé",
