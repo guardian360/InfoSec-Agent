@@ -72,7 +72,7 @@ func GetData(jsonFilePath string, checkResults []checks.Check) ([]Data, error) {
 	// Iterate through all check results to compute the severities
 	for _, checkResult := range checkResults {
 		if checkResult.Error != nil {
-			logger.Log.ErrorWithErr("Error reading scan result for IssueID "+strconv.Itoa(checkResult.IssueID), checkResult.Error)
+			logger.Log.Debug("Error reading scan result for IssueID " + strconv.Itoa(checkResult.IssueID) + ": " + checkResult.ErrorMSG)
 			continue
 		}
 
