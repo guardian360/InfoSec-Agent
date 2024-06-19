@@ -48,7 +48,7 @@ export async function setImage(social, progress) {
   default:
     lighthousePath = 'first-state.png';
   }
-  const lighthouseState = await getImagePath(lighthousePath);
+  const lighthouseState = await getImagePath('sharing/' + lighthousePath);
   const node = document.getElementById('share-node');
   const socialStyle = JSON.parse(sessionStorage.getItem('ShareSocial'));
   // Set the background to the current state
