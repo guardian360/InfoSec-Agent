@@ -12,7 +12,7 @@ export function openPersonalizePage() {
   <div class="personalize-container">
     <h2 class="lang-personalize-title"></h2>
     <div class="personalize-item">
-      <span class="personalize-description">Favicon</span>
+      <span class="personalize-description lang-favicon"></span>
       <div class="personalize-button-container">
         <button class="personalize-button icon-button lang-change-favicon" type="button"></button>    
         <input class="personalize-input-invisible" type="file" id="input-file-icon" accept=".ico, .png">
@@ -20,7 +20,7 @@ export function openPersonalizePage() {
     </div>
     <hr class="solid">
     <div class="personalize-item">
-      <span class="personalize-description">Navigation Image</span>
+      <span class="personalize-description lang-nav-image"></span>
       <div class="personalize-button-container">
         <button class="personalize-button logo-button lang-change-image" type="button"></button>    
         <input class="personalize-input-invisible" type="file" 
@@ -29,7 +29,7 @@ export function openPersonalizePage() {
     </div>
     <hr class="solid">
     <div class="personalize-item">
-      <span class="personalize-description">Navigation Title</span>
+      <span class="personalize-description lang-nav-title"></span>
       <div class="personalize-button-container">
         <button class="personalize-button title-button lang-change-title" type="button"></button>
         <div id="custom-modal" class="modal">
@@ -45,9 +45,9 @@ export function openPersonalizePage() {
       <form action="" class="color-picker">
         <fieldset>
           <legend class="lang-pick-theme"></legend>
-          <label for="normal">Light</label>
+          <label for="normal" class="lang-light"></label>
           <input type="radio" name="theme" id="normal" checked>
-          <label for="dark">Dark</label>
+          <label for="dark" class="lang-dark"></label>
           <input type="radio" name="theme" id="dark">
         </fieldset>
       </form>
@@ -57,6 +57,42 @@ export function openPersonalizePage() {
     </div>
   </div>
   `;
+
+  // Localize the static content of the personalize page
+  const staticPersonalizePageContent = [
+    'lang-change-favicon',
+    'lang-navigation-image',
+    'lang-change-image',
+    'lang-navigation-title',
+    'lang-change-title',
+    'lang-reset-button',
+    'lang-personalize-title',
+    'lang-pick-theme',
+    'lang-favicon',
+    'lang-nav-image',
+    'lang-nav-title',
+    'lang-light',
+    'lang-dark',
+  ];
+  const localizationIds = [
+    'Personalize.ChangeFavicon',
+    'Personalize.navImage',
+    'Personalize.ChangeImage',
+    'Personalize.Title',
+    'Personalize.ChangeTitle',
+    'Personalize.Reset',
+    'Personalize.PersonalizeTitle',
+    'Personalize.PickTheme',
+    'Personalize.Favicon',
+    'Personalize.NavImage',
+    'Personalize.NavTitle',
+    'Personalize.Light',
+    'Personalize.Dark',
+  ];
+  for (let i = 0; i < staticPersonalizePageContent.length; i++) {
+    getLocalization(localizationIds[i], staticPersonalizePageContent[i]);
+  }
+
   // add event-listener for changing Favicon
   const changeIconButton = document.getElementsByClassName('icon-button')[0];
   const inputFileIcon = document.getElementById('input-file-icon');
@@ -119,31 +155,6 @@ export function openPersonalizePage() {
   changeResetButton.addEventListener('click', async function() {
     await resetSettings();
   });
-
-  // Localize the static content of the personalize page
-  const staticHomePageContent = [
-    'lang-change-favicon',
-    'lang-navigation-image',
-    'lang-change-image',
-    'lang-navigation-title',
-    'lang-change-title',
-    'lang-reset-button',
-    'lang-personalize-title',
-    'lang-pick-theme',
-  ];
-  const localizationIds = [
-    'Personalize.ChangeFavicon',
-    'Personalize.navImage',
-    'Personalize.ChangeImage',
-    'Personalize.Title',
-    'Personalize.ChangeTitle',
-    'Personalize.Reset',
-    'Personalize.PersonalizeTitle',
-    'Personalize.PickTheme',
-  ];
-  for (let i = 0; i < staticHomePageContent.length; i++) {
-    getLocalization(localizationIds[i], staticHomePageContent[i]);
-  }
 }
 
 /**
