@@ -21,7 +21,7 @@
       ]
     },
     "Type": "Beveiliging",
-    "Information": "Bluetooth-technologie maakt draadloze gegevensoverdracht en -ontvangst mogelijk. "
+    "Information": "Bluetooth-technologie maakt draadloze gegevensoverdracht en -ontvangst mogelijk. Hoewel deze functionaliteit meestal onschadelijk is wanneer deze wordt gebruikt zoals bedoeld, kan het een beveiligingsrisico worden als het wordt misbruikt door kwaadwillende actoren. Als een kwaadwillende persoon ongeautoriseerde toegang krijgt tot uw apparaat via een Bluetooth-verbinding, kan hij mogelijk uw gegevens stelen, uw activiteiten afluisteren of zelfs malware naar uw apparaat sturen. Om deze risico's te verminderen, is het cruciaal om uw apparaat alleen met bekende en vertrouwde apparaten te verbinden."
   },
   "2": {
     "0": {
@@ -38,12 +38,10 @@
       "Solution": [
         "Controleer of er externe apparaten op uw computer zijn aangesloten en koppel deze los als u ze niet gebruikt. "
       ],
-      "Screenshots": [
-        "OM TE VULLEN"
-      ]
+      "Screenshots": []
     },
     "Type": "Beveiliging",
-    "Information": "Externe apparaten zoals USB-drives, externe harde schijven en andere randapparatuur kunnen beveiligingsrisico's voor uw computer met zich meebrengen. "
+    "Information": "Externe apparaten zoals USB-sticks, externe harde schijven en andere randapparatuur kunnen veiligheidsrisico's voor uw computer vormen. Malware kan worden verspreid via geïnfecteerde externe apparaten, wat de veiligheid en integriteit van uw systeem kan compromitteren. Door ervoor te zorgen dat er geen externe apparaten zijn aangesloten op uw computer wanneer deze niet in gebruik zijn, vermindert u het risico op malware-infectie en ongeautoriseerde toegang tot uw systeem."
   },
   "3": {
     "0": {
@@ -95,7 +93,7 @@
       "Screenshots": []
     },
     "Type": "Beveiliging",
-    "Information": "Het gastaccount is een standaardaccount dat is ontworpen om tijdelijke en beperkte toegang tot het systeem te bieden aan personen zonder reguliere gebruikersaccounts. "
+    "Information": "Het gastaccount is een standaardaccount dat is ontworpen om tijdelijke en beperkte toegang tot het systeem te bieden voor personen zonder reguliere gebruikersaccounts. Als u de enige gebruiker van de computer bent en geen gastaccount nodig heeft, is het raadzaam om het uit te schakelen. Dit zorgt ervoor dat geen ongeautoriseerde gebruikers toegang hebben tot gegevens op de computer, wat de algehele veiligheid en privacy verbetert."
   },
   "4": {
     "0": {
@@ -122,7 +120,7 @@
         ]
     },
     "Type": "Privacy",
-    "Information": "Met de advertentie-ID-instelling kan Windows u gepersonaliseerde advertenties sturen. "
+    "Information": "De advertentie-ID-instelling stelt Windows in staat om u gepersonaliseerde advertenties te sturen. Het is belangrijk om het aantal entiteiten dat uw persoonlijke gegevens bezit te beperken, daarom is het veiliger om deze instelling uit te schakelen."
   },
   "5": {
     "0": {
@@ -146,7 +144,7 @@
       ]
     },
     "Type": "Beveiliging",
-    "Information": "Het gebruik van een wachtwoordbeheerder biedt verschillende voordelen voor individuen en organisaties, die voornamelijk betrekking hebben op het verbeteren van de beveiliging, het gemak en de algehele wachtwoordbeheerpraktijken. "
+    "Information": "Het gebruik van een wachtwoordmanager biedt verschillende voordelen voor individuen en organisaties, voornamelijk op het gebied van verbeterde beveiliging, gemak en algemene wachtwoordbeheerpraktijken. Hier zijn enkele belangrijke redenen waarom u zou moeten overwegen een wachtwoordmanager te gebruiken. Sterkere wachtwoorden: Wachtwoordmanagers kunnen complexe, unieke wachtwoorden voor elk van uw accounts genereren. Deze wachtwoorden zijn doorgaans lang, willekeurig en moeilijk te kraken, waardoor de beveiliging van uw online accounts aanzienlijk wordt verbeterd in vergelijking met het gebruik van zwakke of hergebruikte wachtwoorden. Eliminatie van wachtwoordhergebruik: Een van de meest voorkomende beveiligingsvalkuilen is het hergebruiken van wachtwoorden op meerdere accounts. Wachtwoordmanagers stellen u in staat unieke wachtwoorden voor elk account te genereren en op te slaan, waardoor het risico op ongeoorloofde toegang wordt verminderd als een account wordt gecompromitteerd. Gemak: Wachtwoordmanagers stroomlijnen het inlogproces op websites en online diensten door automatisch inloggegevens voor u in te vullen. Dit bespaart tijd en moeite, vooral bij het beheren van talrijke accounts op verschillende platforms. Veilige opslag: Wachtwoordmanagers versleutelen en bewaren uw wachtwoorden in een veilige kluis, waardoor ze worden beschermd tegen ongeoorloofde toegang. Veel wachtwoordmanagers bieden ook extra beveiligingsfuncties zoals tweefactorauthenticatie (2FA) en biometrische authenticatie om de bescherming verder te verbeteren."
   },
   "6": {
     "0": {
@@ -174,7 +172,7 @@
       "Screenshots": []
     },
     "Type": "Privacy",
-    "Information": "Weten welke applicaties toegang hebben tot uw locatie is belangrijk voor het beschermen van uw privacy. "
+    "Information": "Weten welke toepassingen toegang hebben tot uw locatie is belangrijk voor het beschermen van uw privacy. Het helpt u te controleren wie uw locatie kan volgen, veiligheidsrisico's te voorkomen, de levensduur van de batterij te verlengen, het datagebruik te beheren, uw app-ervaring aan te passen en ervoor te zorgen dat u voldoet aan de regelgeving."
   },
   "7": {
     "0": {
@@ -202,7 +200,7 @@
       "Screenshots": []
     },
     "Type": "Privacy",
-    "Information": "Het is belangrijk om te begrijpen welke applicaties toegang hebben tot uw microfoon op uw Windows-computer om uw privacy en vertrouwelijkheid te beschermen. "
+    "Information": "Begrijpen welke toepassingen toegang hebben tot uw microfoon op uw Windows-computer is belangrijk voor het beschermen van uw privacy en vertrouwelijkheid. Het helpt u te controleren wie uw gesprekken kan afluisteren, ongeoorloofd opnemen te voorkomen, gevoelige informatie te beschermen en naleving van regelgeving te waarborgen."
   },
   "8": {
     "0": {
@@ -230,7 +228,7 @@
       "Screenshots": []
     },
     "Type": "Privacy",
-    "Information": "Als u weet welke applicaties toegang hebben tot uw camera, voorkomt u ongeautoriseerde toegang. "
+    "Information": "Weten welke toepassingen toegang hebben tot uw camera helpt ongeoorloofde toegang te voorkomen. Kwaadaardige software of zelfs legitieme toepassingen met slecht geïmplementeerde beveiligingsfuncties kunnen mogelijk zonder uw medeweten of toestemming toegang krijgen tot uw camera. Door te weten welke toepassingen toegang hebben, kunt u ongeoorloofde pogingen identificeren en blokkeren."
   },
   "9": {
     "0": {
@@ -258,7 +256,7 @@
       "Screenshots": []
     },
     "Type": "Privacy",
-    "Information": "Inzicht in welke applicaties toegang hebben tot uw agenda of afspraken is van cruciaal belang voor het beschermen van uw privacy en planning. "
+    "Information": "Begrijpen welke toepassingen toegang hebben tot uw agenda of afspraken is cruciaal voor het beschermen van uw privacy en schema. Het helpt u te controleren wie uw gevoelige afspraakinformatie kan bekijken en mogelijk misbruiken, ongeoorloofde toegang te voorkomen en het datagebruik te beheren."
   },
   "10": {
     "0": {
@@ -286,7 +284,7 @@
       "Screenshots": []
     },
     "Type": "Privacy",
-    "Information": "Inzicht in welke applicaties toegang hebben tot uw contacten op uw Windows-computer is goed voor het beschermen van uw privacy. "
+    "Information": "Begrijpen welke toepassingen toegang hebben tot uw contacten op uw Windows-computer is goed voor het beschermen van uw privacy. Het stelt u in staat te controleren wie uw contactgegevens kan bekijken en mogelijk misbruiken, ongeoorloofde toegang te voorkomen en het datagebruik te beheren."
   },
   "11": {
     "0": {
@@ -298,12 +296,10 @@
         "Typ nu 'netstat -ab' en je ziet een lijst met open poorten en de bijbehorende programma's.",
         "Als u verdachte programma's of poorten ziet, kunt u deze sluiten door het bijbehorende programma af te sluiten."
       ],
-      "Screenshots": [
-        "TOBEFILLED"
-      ]
+      "Screenshots": []
     },
     "Type": "Beveiliging",
-    "Information": "Een open poort is een poort die de ontvangst van datapakketten mogelijk maakt. "
+    "Information": "Een open poort is er een die de ontvangst van datapakketten mogelijk maakt. Bepaalde toepassingen hebben specifieke poorten nodig om gegevens te ontvangen, dus het hebben van open poorten op zich vormt geen intrinsiek risico. Sommige poorten kunnen echter onvoldoende bescherming bieden, wat mogelijk ongeoorloofde communicatie toestaat en beveiligingskwetsbaarheden introduceert. Het is essentieel om poorten alleen open te houden wanneer ze actief in gebruik zijn en ze te sluiten wanneer ze niet nodig zijn. Aangezien talrijke open poorten het aanvalsoppervlak van uw computer kunnen vergroten, is het raadzaam om de netwerkpoorten van uw systeem regelmatig te controleren en te beveiligen om deze risico's te verminderen en een sterke beveiligingspositie te behouden."
   },
   "12": {
     "0": {
@@ -324,7 +320,7 @@
       "Screenshots": []
     },
     "Type": "Beveiliging",
-    "Information": "Remote Desktop is een ingebouwde functie in het Windows-besturingssysteem waarmee gebruikers op afstand toegang kunnen krijgen tot een andere Windows-computer en deze kunnen bedienen via een netwerk of internet. "
+    "Information": "Remote Desktop is een ingebouwde functie in het Windows-besturingssysteem waarmee gebruikers op afstand toegang kunnen krijgen tot en controle kunnen hebben over een andere Windows-computer via een netwerk of internet. Het stelt gebruikers in staat om verbinding te maken met een externe computer alsof ze ervoor zitten, met volledige toegang tot het externe bureaublad, applicaties, bestanden en bronnen. Als u deze functie niet gebruikt, is het veiliger om deze uit te schakelen."
   },
   "13": {
     "0": {
@@ -376,7 +372,7 @@
       ]
     },
     "Type": "Beveiliging",
-    "Information": "Het SMB-protocol (Server Message Block) wordt gebruikt voor het delen van bestanden, printers en andere bronnen tussen apparaten in een netwerk in Windows-omgevingen. "
+    "Information": "Het SMB (Server Message Block)-protocol wordt gebruikt voor het delen van bestanden, printers en andere bronnen tussen apparaten op een netwerk in Windows-omgevingen. Het is essentieel om ervoor te zorgen dat de SMB-instellingen op uw Windows-computer correct zijn geconfigureerd. Het SMBv1-protocol heeft talrijke bekende kwetsbaarheden en moet daarom nooit worden gebruikt. Het gebruik van SMBv2/v3 is de veiligere optie."
   },
   "14": {
     "0": {
@@ -482,7 +478,7 @@
       ]
     },
     "Type": "Beveiliging",
-    "Information": "Gebruikersaccountbeheer (UAC) is een beveiligingsfunctie die is geïntroduceerd in Windows Vista en aanwezig is in volgende versies van het Windows-besturingssysteem. "
+    "Information": "User Account Control (UAC) is een beveiligingsfunctie die geïntroduceerd is in Windows Vista en aanwezig is in latere versies van het Windows-besturingssysteem. Het hoofddoel is om de beveiliging van het besturingssysteem te verbeteren door de privileges van applicaties en processen die draaien met standaard gebruikersrechten te beperken en voor taken die verhoogde rechten vereisen, goedkeuring van de beheerder te vereisen."
   },
   "15": {
     "0": {
@@ -521,17 +517,10 @@
       "Solution": [
         "We konden de status van Windows Defender niet vinden op dit apparaat."
       ],
-      "Screenshots": [],
-      "ScreenshotsWindows10": [
-        "windows-defender/windows-defender-1.png",
-        "windows-defender/windows-defender-1.png",
-        "windows-defender/windows-defender-2.png",
-        "windows-defender/windows-defender-3.png",
-        "windows-defender/windows-defender-4.png"
-      ]
+      "Screenshots": []
     },
     "Type": "Beveiliging",
-    "Information": "Windows Defender controleert uw systeem voortdurend op verdachte activiteiten, waaronder malware, virussen en andere vormen van schadelijke software. "
+    "Information": "Windows Defender bewaakt continu uw systeem op verdachte activiteiten, waaronder malware, virussen en andere vormen van schadelijke software. Door het ingeschakeld te hebben, heeft u een actieve verdediging tegen potentiële bedreigingen die uw privacy of beveiliging kunnen compromitteren. Het ontvangt ook regelmatige updates van Microsoft om op de hoogte te blijven van de nieuwste beveiligingsdreigingen en kwetsbaarheden. Door het ingeschakeld te houden, zorgt u ervoor dat uw computer beschermd is tegen nieuw opkomende bedreigingen die bekende beveiligingszwakheden kunnen misbruiken."
   },
   "16": {
     "0": {
@@ -557,7 +546,7 @@
       "Screenshots": []
     },
     "Type": "Beveiliging",
-    "Information": "Door uw wachtwoord regelmatig te wijzigen, verkleint u de kans op ongeautoriseerde toegang tot uw computer of gevoelige informatie. "
+    "Information": "Regelmatig uw wachtwoord wijzigen vermindert de kans op ongeoorloofde toegang tot uw computer of gevoelige informatie. Als iemand er toch in slaagt uw wachtwoord te verkrijgen, beperkt regelmatig wijzigen de tijd die ze hebben om het te misbruiken. Het is daarom een goede gewoonte om uw wachtwoord minstens twee keer per jaar te wijzigen."
   },
   "17": {
     "0": {
@@ -605,7 +594,7 @@
       ]
     },
     "Type": "Beveiliging",
-    "Information": "Het is belangrijk om een ​​veilige Windows-inlogmethode te gebruiken. "
+    "Information": "Het gebruik van een veilige Windows aanmeldingsmethode is belangrijk. Windows ondersteunt verschillende aanmeldingsmethoden zoals wachtwoord, PIN, beveiligingssleutel of vingerafdruk. Het gebruik van een van deze aanmeldingsmethoden is belangrijk om uw gegevens veilig te houden. Zonder een van deze aanmeldingsmethoden kan iedereen uw apparaat ontgrendelen en toegang krijgen tot uw gegevens. Als u geen aanmeldingsmethode gebruikt / een minder veilige aanmeldingsmethode gebruikt / een combinatie van aanmeldingsmethoden gebruikt, wordt aangeraden over te stappen naar een veiligere aanmeldingsmethode zoals een wachtwoord of vingerafdruk."
   },
   "18": {
     "0": {
@@ -641,7 +630,7 @@
       ]
     },
     "Type": "Beveiliging",
-    "Information": "Verouderde Windows-versies kunnen niet-gepatchte beveiligingsproblemen bevatten die door aanvallers kunnen worden uitgebuit om het systeem binnen te dringen. "
+    "Information": "Verouderde Windows-versies kunnen ongepatchte beveiligingslekken bevatten die door aanvallers kunnen worden misbruikt om het systeem te compromitteren. Hackers zoeken actief naar en misbruiken kwetsbaarheden in verouderde besturingssystemen, wat kan leiden tot ongeautoriseerde toegang, datalekken en malware-infecties."
   },
   "19": {
     "0": {
@@ -672,7 +661,7 @@
       "Screenshots": []
     },
     "Type": "Beveiliging",
-    "Information": "Secure Boot zorgt ervoor dat alleen vertrouwde softwarecomponenten, ondertekend met erkende digitale handtekeningen, worden geladen tijdens het opstartproces. "
+    "Information": "Secure Boot zorgt ervoor dat alleen vertrouwde softwarecomponenten, ondertekend met erkende digitale handtekeningen, worden geladen tijdens het opstartproces. Dit voorkomt dat malware en andere ongeautoriseerde software het opstartproces manipuleren en controle over het systeem krijgen in een vroeg stadium."
   },
   "20": {
     "0": {
@@ -696,7 +685,7 @@
       ]
     },
     "Type": "Beveiliging",
-    "Information": "Wanneer u uw computer opstart, worden er automatisch verschillende toepassingen gestart. "
+    "Information": "Bij het opstarten van uw computer starten automatisch verschillende applicaties op. Sommige daarvan zijn essentiële processen voor een goed functionerend systeem, terwijl andere handig zijn om bij het opstarten beschikbaar te hebben. Er kunnen echter ook applicaties zijn die bij het opstarten starten zonder dat u het weet. Het is verstandig om deze uit te schakelen om ongeautoriseerde acties te voorkomen en de opstartsnelheid van uw computer te verbeteren."
   },
   "21": {
     "0": {
@@ -722,7 +711,7 @@
       ]
     },
     "Type": "Privacy",
-    "Information": "Adblockers beschermen gebruikers tegen online advertenties. "
+    "Information": "Adblockers beschermen gebruikers tegen online advertenties. Met hun filters en algoritmes bieden ze een toevluchtsoord van ononderbroken browsen, waardoor gebruikers worden gespaard van visuele rommel en potentiële beveiligingsrisico's die advertenties met zich meebrengen."
   },
   "22": {
     "0": {
@@ -748,7 +737,7 @@
       ]
     },
     "Type": "Privacy",
-    "Information": "Adblockers beschermen gebruikers tegen online advertenties. "
+    "Information": "Adblockers beschermen gebruikers tegen online advertenties. Met hun filters en algoritmes bieden ze een toevluchtsoord van ononderbroken browsen, waardoor gebruikers worden gespaard van visuele rommel en potentiële beveiligingsrisico's die advertenties met zich meebrengen."
   },
   "23": {
     "0": {
@@ -757,9 +746,7 @@
       "Solution": [
         "Wees voorzichtig bij het surfen op internet, aangezien vertrouwde websites gemakkelijk kunnen worden vervalst. "
       ],
-      "Screenshots": [
-        "OM TE VULLEN"
-      ]
+      "Screenshots": []
     },
     "1": {
       "Severity": 0,
@@ -770,7 +757,7 @@
       "Screenshots": []
     },
     "Type": "Privacy",
-    "Information": "Phishing-domeinen zijn nepwebsites die zijn ontworpen om mensen te misleiden om gevoelige informatie zoals wachtwoorden of creditcardgegevens te delen. "
+    "Information": "Phishing-domeinen zijn nepwebsites die zijn ontworpen om mensen te misleiden zodat ze gevoelige informatie zoals wachtwoorden of creditcardgegevens delen. Ze zien er echt uit en bootsen vertrouwde merken of organisaties na. Deze oplichting maakt gebruik van vertrouwen en nieuwsgierigheid om persoonlijke gegevens te stelen."
   },
   "24": {
     "0": {
@@ -790,7 +777,7 @@
       "Screenshots": []
     },
     "Type": "Privacy",
-    "Information": "Phishing-domeinen zijn nepwebsites die zijn ontworpen om mensen te misleiden om gevoelige informatie zoals wachtwoorden of creditcardgegevens te delen. "
+    "Information": "Phishing-domeinen zijn nepwebsites die zijn ontworpen om mensen te misleiden zodat ze gevoelige informatie zoals wachtwoorden of creditcardgegevens delen. Ze zien er echt uit en bootsen vertrouwde merken of organisaties na. Deze oplichting maakt gebruik van vertrouwen en nieuwsgierigheid om persoonlijke gegevens te stelen."
   },
   "25": {
     "0": {
@@ -799,12 +786,10 @@
       "Solution": [
         "Overweeg het gebruik van een zoekmachine die zich richt op de privacy van de gebruikers (bijvoorbeeld DuckDuckGo)."
       ],
-      "Screenshots": [
-        "OM TE VULLEN"
-      ]
+      "Screenshots": []
     },
     "Type": "Privacy",
-    "Information": "Een standaardzoekmachine helpt gebruikers informatie op internet te vinden door trefwoorden of zinsdelen in te voeren. "
+    "Information": "Een standaard zoekmachine helpt gebruikers informatie op internet te vinden door zoekwoorden of zinnen in te voeren. Voorbeelden zijn Google, Bing en Yahoo. Ze worden vaak bekritiseerd vanwege hun benadering van privacy."
   },
   "26": {
     "0": {
@@ -813,12 +798,10 @@
       "Solution": [
         "Overweeg het gebruik van een zoekmachine die zich richt op de privacy van de gebruikers (bijvoorbeeld DuckDuckGo)."
       ],
-      "Screenshots": [
-        "OM TE VULLEN"
-      ]
+      "Screenshots": []
     },
     "Type": "Privacy",
-    "Information": "Een standaardzoekmachine helpt gebruikers informatie op internet te vinden door trefwoorden of zinsdelen in te voeren. "
+    "Information": "Een standaard zoekmachine helpt gebruikers informatie op internet te vinden door zoekwoorden of zinnen in te voeren. Voorbeelden zijn Google, Bing en Yahoo. Ze worden vaak bekritiseerd vanwege hun benadering van privacy."
   },
   "27": {
     "0": {
@@ -845,7 +828,7 @@
       ]
     },
     "Type": "Privacy",
-    "Information": "Cookies zijn kleine tekstbestanden die op uw computer worden opgeslagen door websites die u bezoekt. "
+    "Information": "Cookies zijn kleine tekstbestanden die door websites die u bezoekt op uw computer worden opgeslagen. Ze worden gebruikt om uw voorkeuren, aanmeldingsgegevens en andere gegevens te onthouden om uw surfervaring te verbeteren. Cookies kunnen echter ook worden gebruikt om uw online activiteiten te volgen en persoonlijke informatie te verzamelen zonder uw toestemming, wat privacyzorgen oproept. Het regelmatig beheren en wissen van cookies helpt uw privacy te beschermen en controle te houden over de gegevens die websites over u verzamelen."
   },
   "28": {
     "0": {
@@ -863,7 +846,7 @@
       ]
     },
     "Type": "Privacy",
-    "Information": "Browserextensies verbeteren de functionaliteit van uw webbrowser door functies, hulpmiddelen en aanpassingsopties toe te voegen. "
+    "Information": "Browserextensies verbeteren de functionaliteit van uw webbrowser door functies, tools en aanpassingsopties toe te voegen. Hoewel extensies nuttig kunnen zijn, kunnen ze ook privacy- en beveiligingsrisico's vormen als ze toegang hebben tot gevoelige gegevens of uw online activiteiten volgen zonder uw toestemming. Door regelmatig uw browserextensies te controleren en te beheren, beschermt u uw privacy en veiligheid online. Verwijder extensies die u niet meer gebruikt of vertrouwt om mogelijke risico's te minimaliseren."
   },
   "29": {
     "0": {
@@ -893,7 +876,7 @@
       ]
     },
     "Type": "Privacy",
-    "Information": "Adblockers beschermen gebruikers tegen online advertenties. "
+    "Information": "Adblockers beschermen gebruikers tegen online advertenties. Met hun filters en algoritmes bieden ze een toevluchtsoord van ononderbroken browsen, waardoor gebruikers worden gespaard van visuele rommel en potentiële beveiligingsrisico's die advertenties met zich meebrengen."
   },
   "30": {
     "0": {
@@ -902,12 +885,10 @@
       "Solution": [
         "Overweeg het gebruik van een browser waarbij de privacy van de gebruikers centraal staat (bijvoorbeeld DuckDuckGo)"
       ],
-      "Screenshots": [
-        "OM TE VULLEN"
-      ]
+      "Screenshots": []
     },
     "Type": "Privacy",
-    "Information": "Een standaardzoekmachine helpt gebruikers informatie op internet te vinden door trefwoorden of zinsdelen in te voeren. "
+    "Information": "Een standaard zoekmachine helpt gebruikers informatie op internet te vinden door zoekwoorden of zinnen in te voeren. Voorbeelden zijn Google, Bing en Yahoo. Ze worden vaak bekritiseerd vanwege hun benadering van privacy."
   },
   "31": {
     "0": {
@@ -924,12 +905,10 @@
       "Solution": [
         "Wees voorzichtig bij het surfen op internet, aangezien vertrouwde websites gemakkelijk kunnen worden vervalst. "
       ],
-      "Screenshots": [
-        "OM TE VULLEN"
-      ]
+      "Screenshots": []
     },
     "Type": "Privacy",
-    "Information": "Phishing-domeinen zijn nepwebsites die zijn ontworpen om mensen te misleiden om gevoelige informatie zoals wachtwoorden of creditcardgegevens te delen. "
+    "Information": "Phishing-domeinen zijn nepwebsites die zijn ontworpen om mensen te misleiden zodat ze gevoelige informatie zoals wachtwoorden of creditcardgegevens delen. Ze zien er echt uit en bootsen vertrouwde merken of organisaties na. Deze oplichting maakt gebruik van vertrouwen en nieuwsgierigheid om persoonlijke gegevens te stelen."
   },
   "32": {
     "0": {
@@ -951,7 +930,7 @@
       "Screenshots": []
     },
     "Type": "Beveiliging",
-    "Information": "Het Center for Internet Security (CIS) biedt een reeks richtlijnen en best practices voor het beveiligen van computersystemen. "
+    "Information": "Het Center for Internet Security (CIS) biedt richtlijnen en best practices voor het beveiligen van computersystemen. De CIS Audit-lijst met registerinstellingen helpt ervoor te zorgen dat uw systeem is geconfigureerd volgens deze beveiligingsnormen. Onjuiste of verouderde registerinstellingen kunnen uw systeem kwetsbaar maken voor beveiligingsbedreigingen en uw privacy compromitteren."
   },
   "33": {
     "0": {
@@ -974,7 +953,7 @@
       ]
     },
     "Type": "Beveiliging",
-    "Information": "Door automatisch in te loggen hebben gebruikers toegang tot hun accounts zonder telkens een wachtwoord in te voeren wanneer ze hun computer opstarten of een specifieke toepassing openen. "
+    "Information": "Automatisch inloggen stelt gebruikers in staat om toegang te krijgen tot hun accounts zonder telkens een wachtwoord in te voeren wanneer ze hun computer starten of een specifieke toepassing openen. Hoewel handig, brengt automatisch inloggen veiligheidsrisico's met zich mee, omdat iedereen met fysieke toegang tot het apparaat toegang tot het account kan krijgen zonder verificatie. Het uitschakelen van automatisch inloggen verbetert de beveiliging van uw accounts en voorkomt ongeautoriseerde toegang."
   },
   "34": {
     "0": {
@@ -999,7 +978,7 @@
       ]
     },
     "Type": "Beveiliging",
-    "Information": "Remote Procedure Call (RPC) is een protocol waarmee programma's en processen op een netwerk met elkaar kunnen communiceren. "
+    "Information": "Remote Procedure Call (RPC) is een protocol waarmee programma's en processen met elkaar kunnen communiceren op een netwerk. Het uitschakelen van Remote RPC helpt ongeautoriseerde toegang tot uw computer te voorkomen en beschermt deze tegen mogelijke beveiligingsrisico's en kwetsbaarheden."
   },
   "35": {
     "0": {
@@ -1024,7 +1003,7 @@
       ]
     },
     "Type": "Privacy",
-    "Information": "Cookies zijn kleine tekstbestanden die op uw computer worden opgeslagen door websites die u bezoekt. "
+    "Information": "Cookies zijn kleine tekstbestanden die door websites worden opgeslagen op uw computer wanneer u ze bezoekt. Ze worden gebruikt om uw voorkeuren, aanmeldingsinformatie en andere gegevens te onthouden om uw browse-ervaring te verbeteren. Echter, cookies kunnen ook worden gebruikt om uw online activiteiten te volgen en persoonlijke informatie te verzamelen zonder uw toestemming, wat privacyzorgen oproept. Het regelmatig beheren en wissen van cookies helpt uw privacy te beschermen en controle te houden over de gegevens die websites over u verzamelen."
   },
   "36": {
     "0": {
@@ -1049,7 +1028,7 @@
       ]
     },
     "Type": "Privacy",
-    "Information": "Cookies zijn kleine tekstbestanden die op uw computer worden opgeslagen door websites die u bezoekt. "
+    "Information": "Cookies zijn kleine tekstbestanden die door websites worden opgeslagen op uw computer wanneer u ze bezoekt. Ze worden gebruikt om uw voorkeuren, aanmeldingsinformatie en andere gegevens te onthouden om uw browse-ervaring te verbeteren. Echter, cookies kunnen ook worden gebruikt om uw online activiteiten te volgen en persoonlijke informatie te verzamelen zonder uw toestemming, wat privacyzorgen oproept. Het regelmatig beheren en wissen van cookies helpt uw privacy te beschermen en controle te houden over de gegevens die websites over u verzamelen."
   },
   "37": {
     "0": {
@@ -1072,7 +1051,7 @@
       ]
     },
     "Type": "Beveiliging",
-    "Information": "De Windows Firewall is een ingebouwde beveiligingsfunctie die uw computer helpt beschermen tegen ongeoorloofde toegang en schadelijke software door inkomend en uitgaand netwerkverkeer te bewaken en te controleren. "
+    "Information": "De Windows Firewall is een ingebouwde beveiligingsfunctie die uw computer beschermt tegen ongeautoriseerde toegang en kwaadaardige software door inkomend en uitgaand netwerkverkeer te monitoren en te controleren. Door de Windows Firewall in te schakelen voor alle netwerkprofielen (openbaar, privé en domein), wordt de beveiliging van uw systeem verbeterd en worden potentiële beveiligingsrisico's voorkomen."
   },
   "38": {
     "0": {
@@ -1097,7 +1076,7 @@
       ]
     },
     "Type": "Beveiliging",
-    "Information": "Het instellen van een minimale wachtwoordlengte van minimaal 15 tekens helpt de beveiliging van gebruikersaccounts te verbeteren door de complexiteit en sterkte van wachtwoorden te vergroten. "
+    "Information": "Het instellen van een minimum wachtwoordlengte van minimaal 15 tekens helpt de beveiliging van gebruikersaccounts te verbeteren door de complexiteit en sterkte van wachtwoorden te vergroten. Langere wachtwoorden zijn beter bestand tegen brute-force-aanvallen en bieden betere bescherming tegen ongeautoriseerde toegang en gegevenslekken."
   },
   "39": {
     "0": {
@@ -1119,7 +1098,7 @@
       ]
     },
     "Type": "Beveiliging",
-    "Information": "Credential Guard is een beveiligingsfunctie in Windows die gebruikersreferenties en gevoelige informatie helpt beschermen tegen ongeoorloofde toegang en diefstal. "
+    "Information": "Credential Guard is een beveiligingsfunctie in Windows die helpt bij het beschermen van gebruikersreferenties en gevoelige informatie tegen ongeautoriseerde toegang en diefstal. Het maakt gebruik van virtualisatiegebaseerde beveiliging om referentiegegevens te isoleren en te beschermen, waardoor het moeilijker wordt voor aanvallers om wachtwoorden en andere gevoelige gegevens te stelen."
   },
   "40": {
     "0": {
@@ -1147,7 +1126,7 @@
       ]
     },
     "Type": "Beveiliging",
-    "Information": "NetBIOS via TCP/IP is een verouderd netwerkprotocol waarmee computers op een lokaal netwerk kunnen communiceren. "
+    "Information": "NetBIOS via TCP/IP is een verouderd netwerkprotocol waarmee computers kunnen communiceren in een lokaal netwerk. Het uitschakelen van NetBIOS via TCP/IP helpt het aanvalsoppervlak van uw systeem te verminderen en potentiële beveiligingsproblemen die met dit protocol samenhangen te voorkomen."
   },
   "41": {
     "0": {
@@ -1172,7 +1151,7 @@
       ]
     },
     "Type": "Beveiliging",
-    "Information": "Web Proxy Auto-Discovery (WPAD) is een protocol waarmee webbrowsers automatisch proxyservers in een netwerk kunnen ontdekken. "
+    "Information": "Web Proxy Auto-Discovery (WPAD) is een protocol waarmee webbrowsers automatisch proxy-servers op een netwerk kunnen ontdekken. Het uitschakelen van de WPAD-service helpt potentiële beveiligingsrisico's te voorkomen die samenhangen met automatische proxyconfiguratie, en beschermt uw systeem tegen ongeautoriseerde ontdekking en configuratie van proxy-servers."
   },
   "42": {
     "0": {
@@ -1196,6 +1175,6 @@
       ]
     },
     "Type": "Beveiliging",
-    "Information": "Schermvergrendeling is een beveiligingsfunctie waarbij gebruikers een wachtwoord, pincode of biometrische authenticatie moeten invoeren om hun apparaat te ontgrendelen en toegang te krijgen tot het bureaublad. "
+    "Information": "Schermvergrendeling is een beveiligingsfunctie die vereist dat gebruikers een wachtwoord, PIN-code of biometrische authenticatie invoeren om hun apparaat te ontgrendelen en toegang te krijgen tot het bureaublad. Door de schermvergrendeling in te schakelen, worden uw gegevens en privacy beschermd als uw computer onbeheerd wordt achtergelaten of gestolen wordt."
   }
 }
