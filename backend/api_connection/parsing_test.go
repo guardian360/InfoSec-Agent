@@ -1,11 +1,20 @@
 package apiconnection_test
 
 import (
+	"bytes"
+	"encoding/json"
 	"errors"
+	"fmt"
+	"net/http"
+	"net/http/httptest"
+	"testing"
+	"time"
+
 	apiconnection "github.com/InfoSec-Agent/InfoSec-Agent/backend/api_connection"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/usersettings"
+	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
 )
 
 func TestParseCheckResult(t *testing.T) {
@@ -142,4 +151,67 @@ func TestParseString(t *testing.T) {
 			require.Equal(t, tt.want, got)
 		})
 	}
+}
+
+// Mock implementation of UserSettings
+type MockUserSettings struct{}
+
+func (m *MockUserSettings) LoadUserSettings() usersettings.UserSettings {
+	return usersettings.UserSettings{
+		IntegrationKey: "mock-integration-key",
+	}
+}
+
+var oldLoadUserSettings func() usersettings.UserSettings
+
+// Create a ParseResult instance
+type ParseResult struct {
+	Status string `json:"status"`
+}
+
+func TestSendResultsToAPI(t *testing.T) {
+	// Create a test server
+	testServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		assert.Equal(t, "application/json", r.Header.Get("Content-Type"))
+		assert.Equal(t, "Bearer mock-integration-key", r.Header.Get("Authorization"))
+
+		var result ParseResult
+		err := json.NewDecoder(r.Body).Decode(&result)
+		assert.NoError(t, err)
+
+		// Send a response
+		w.WriteHeader(http.StatusOK)
+	}))
+	defer testServer.Close()
+
+	// Override the URL for the test
+	url := testServer.URL
+
+	result := ParseResult{
+		Status: "success",
+	}
+
+	// Convert result to JSON
+	jsonData, err := json.Marshal(result)
+	assert.NoError(t, err)
+
+	// Act
+	buffer := bytes.NewBuffer(jsonData)
+	req, err := http.NewRequest("POST", url, buffer)
+	assert.NoError(t, err)
+
+	settings := usersettings.LoadUserSettings()
+	req.Header.Set("Content-Type", "application/json")
+	req.Header.Set("Authorization", "Bearer "+settings.IntegrationKey)
+	req.Header.Set("Content-Length", fmt.Sprintf("%d", buffer.Len()))
+
+	client := &http.Client{
+		Timeout: 60 * time.Second,
+	}
+	resp, err := client.Do(req)
+	assert.NoError(t, err)
+	defer resp.Body.Close()
+
+	// Assert
+	assert.Equal(t, http.StatusOK, resp.StatusCode)
 }
