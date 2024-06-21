@@ -15,7 +15,6 @@ let lighthousePath;
 export async function openHomePage() {
   // Load the video background path
   const lighthouseState = await getLighthouseState();
-  console.log('Lighthouse State:', lighthouseState);
   switch (lighthouseState) {
   case 0:
     lighthousePath = 'state0.mkv';
@@ -35,8 +34,6 @@ export async function openHomePage() {
   default:
     lighthousePath = 'state0.mkv';
   }
-
-  console.log('Lighthouse Path:', lighthousePath);
 
   const lighthouseFullPath = await getImagePath('gamification/' + lighthousePath);
   logDebug('lighthouseState: ' + lighthouseFullPath);
