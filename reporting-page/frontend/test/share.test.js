@@ -197,7 +197,7 @@ describe('share functions', function() {
     // Act
     await share.setImage('facebook', document.getElementById('progress-segment'));
 
-    // Arrange
+    // Assert
     test.value(document.getElementById('share-node').style.backgroundImage).isEqualTo('url(sharing/first-state.png)');
   });
 });
