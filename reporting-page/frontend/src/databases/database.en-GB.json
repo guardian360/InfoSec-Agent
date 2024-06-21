@@ -8,8 +8,7 @@
       "Solution": [
         "No devices are connected via bluetooth, so there is no action needed."
       ],
-      "Screenshots": [
-      ]
+      "Screenshots": []
     },
     "1": {
       "Severity": 4,
@@ -313,7 +312,8 @@
         "Here you can control the remote desktop settings and turn the feature off."
       ],
       "Screenshots": [
-        "TOBEFILLED"
+        "remote-desktop/remote-desktop-1.png",
+        "remote-desktop/remote-desktop-1.png"
       ]
     },
     "1": {
@@ -925,7 +925,7 @@
         "Download the CIS Benchmark for your operating system from the official CIS website. Follow the instructions in the benchmark document to review and update the registry settings on your system to align with the CIS security standards. Regularly check for updates to the CIS Benchmark and apply any changes or recommendations to maintain a secure configuration."
       ],
       "Screenshots": [
-        "TOBEFILLED"
+        "cis-benchmark/cis-benchmark-1.png"
       ]
     },
     "1": {
@@ -956,7 +956,8 @@
         "Under 'Require sign-in', select 'When PC wakes up from sleep'."
       ],
       "Screenshots": [
-        "TOBEFILLED"
+        "automatic-login/automatic-login-1.png",
+        "automatic-login/automatic-login-2.png"
       ]
     }
   },
@@ -981,7 +982,10 @@
         "Double click on the \"AllowRemoteRPC\" key and set its value to 0."
       ],
       "Screenshots": [
-        "TOBEFILLED"
+        "remote-rpc/remote-rpc-1.png",
+        "remote-rpc/remote-rpc-2.png",
+        "remote-rpc/remote-rpc-3.png",
+        "remote-rpc/remote-rpc-4.png"
       ]
     }
   },
@@ -1054,7 +1058,8 @@
         "Under 'Firewall & network protection', make sure that the Windows Firewall is turned on for all network profiles (public, private, and domain). If it is disabled, click on 'Turn on' to enable the firewall for the selected profile."
       ],
       "Screenshots": [
-        "TOBEFILLED"
+        "firewall/firewall-1.png",
+        "firewall/firewall-1.png"
       ]
     }
   },
@@ -1079,7 +1084,10 @@
         "Restart your computer to apply the changes."
       ],
       "Screenshots": [
-        "TOBEFILLED"
+        "minimum-password-length/minimum-password-length-1.png",
+        "minimum-password-length/minimum-password-length-2.png",
+        "minimum-password-length/minimum-password-length-3.png",
+        "minimum-password-length/minimum-password-length-3.png"
       ]
     }
   },
@@ -1100,9 +1108,7 @@
       "Solution": [
         "The setting of Credential Guard is handled in your local group policy. Ask your network administrator to enable Credential Guard."
       ],
-      "Screenshots": [
-        "TOBEFILLED"
-      ]
+      "Screenshots": []
     }
   },
   "40": {
@@ -1129,7 +1135,13 @@
         "Click 'OK' to save the changes."
       ],
       "Screenshots": [
-        "TOBEFILLED"
+        "netbios/netbios-1.png",
+        "netbios/netbios-2.png",
+        "netbios/netbios-3.png",
+        "netbios/netbios-4.png",
+        "netbios/netbios-5.png",
+        "netbios/netbios-6.png",
+        "netbios/netbios-7.png"
       ]
     }
   },
@@ -1154,7 +1166,10 @@
         "Restart your computer to apply the changes."
       ],
       "Screenshots": [
-        "TOBEFILLED"
+        "wpad/wpad-1.png",
+        "wpad/wpad-2.png",
+        "wpad/wpad-3.png",
+        "wpad/wpad-3.png"
       ]
     }
   },
@@ -1178,7 +1193,9 @@
         "Check the box 'On resume, display logon screen' and set the 'Wait' time to a short interval (2 minutes or less)."
       ],
       "Screenshots": [
-        "TOBEFILLED"
+        "automatic-screen-lock/automatic-screen-lock-1.png",
+        "automatic-screen-lock/automatic-screen-lock-2.png",
+        "automatic-screen-lock/automatic-screen-lock-3.png"
       ]
     }
   }
