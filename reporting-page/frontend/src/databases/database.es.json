@@ -116,7 +116,8 @@
         "Aquí puede controlar la configuración del ID de publicidad y activar o desactivar la función."
       ],
       "Screenshots": [
-        "TOBEFILLED"
+        "advertisement-id/advertisement-id-1.png",
+        "advertisement-id/advertisement-id-2.png"
       ]
     },
     "Type": "Privacidad",
@@ -327,7 +328,7 @@
       "Severity": 2,
       "Name": "SMB todas las versiones deshabilitadas",
       "Solution": [
-        "HACER"
+        "Ambas versiones de SMB están deshabilitadas, por lo que no se necesita ninguna acción."
       ],
       "Screenshots": []
     },
@@ -918,7 +919,7 @@
         "Descargue CIS Benchmark para su sistema operativo desde el sitio web oficial de CIS. "
       ],
       "Screenshots": [
-        "POR LLENAR"
+        "cis-benchmark/cis-benchmark-1.png"
       ]
     },
     "1": {
@@ -949,7 +950,8 @@
         "En \"Requerir inicio de sesión\", seleccione \"Cuando la PC se despierta del modo de suspensión\"."
       ],
       "Screenshots": [
-        "POR LLENAR"
+        "automatic-login/automatic-login-1.png",
+        "automatic-login/automatic-login-2.png"
       ]
     },
     "Type": "Seguridad",
@@ -974,7 +976,10 @@
         "Haga doble clic en la clave \"AllowRemoteRPC\" y establezca su valor en 0."
       ],
       "Screenshots": [
-        "POR LLENAR"
+        "remote-rpc/remote-rpc-1.png",
+        "remote-rpc/remote-rpc-2.png",
+        "remote-rpc/remote-rpc-3.png",
+        "remote-rpc/remote-rpc-4.png"
       ]
     },
     "Type": "Seguridad",
@@ -999,7 +1004,10 @@
         "Aquí puede ver y gestionar las cookies almacenadas por los sitios web.  "
       ],
       "Screenshots": [
-        "POR LLENAR"
+        "chrome-cookies/cookies-chrome-1.png",
+        "chrome-cookies/cookies-chrome-2.png",
+        "chrome-cookies/cookies-chrome-3.png",
+        "chrome-cookies/cookies-chrome-4.png"
       ]
     },
     "Type": "Privacidad",
@@ -1024,7 +1032,10 @@
         "Aquí puede gestionar la configuración general de cookies.  "
       ],
       "Screenshots": [
-        "POR LLENAR"
+        "edge-cookies/cookies-edge-1.png",
+        "edge-cookies/cookies-edge-2.png",
+        "edge-cookies/cookies-edge-2.png",
+        "edge-cookies/cookies-edge-2.png"
       ]
     },
     "Type": "Privacidad",
@@ -1047,7 +1058,8 @@
         "En \"Firewall y protección de red\", asegúrese de que el Firewall de Windows esté activado para todos los perfiles de red (público, privado y de dominio). "
       ],
       "Screenshots": [
-        "POR LLENAR"
+        "firewall/firewall-1.png",
+        "firewall/firewall-1.png"
       ]
     },
     "Type": "Seguridad",
@@ -1072,7 +1084,10 @@
         "Reinicie su computadora para aplicar los cambios."
       ],
       "Screenshots": [
-        "POR LLENAR"
+        "minimum-password-length/minimum-password-length-1.png",
+        "minimum-password-length/minimum-password-length-2.png",
+        "minimum-password-length/minimum-password-length-3.png",
+        "minimum-password-length/minimum-password-length-3.png"
       ]
     },
     "Type": "Seguridad",
@@ -1093,9 +1108,7 @@
       "Solution": [
         "La configuración de Credential Guard se maneja en su política de grupo local. "
       ],
-      "Screenshots": [
-        "POR LLENAR"
-      ]
+      "Screenshots": []
     },
     "Type": "Seguridad",
     "Information": "Credential Guard es una función de seguridad en Windows que ayuda a proteger las credenciales de usuario y la información sensible contra el acceso no autorizado y el robo. Utiliza seguridad basada en virtualización para aislar y proteger la información de credenciales, lo que dificulta que los atacantes roben contraseñas y otros datos sensibles."
@@ -1122,7 +1135,13 @@
         "Haga clic en 'Aceptar' para guardar los cambios."
       ],
       "Screenshots": [
-        "POR LLENAR"
+        "netbios/netbios-1.png",
+        "netbios/netbios-2.png",
+        "netbios/netbios-3.png",
+        "netbios/netbios-4.png",
+        "netbios/netbios-5.png",
+        "netbios/netbios-6.png",
+        "netbios/netbios-7.png"
       ]
     },
     "Type": "Seguridad",
@@ -1147,7 +1166,10 @@
         "Reinicie su computadora para aplicar los cambios."
       ],
       "Screenshots": [
-        "POR LLENAR"
+        "wpad/wpad-1.png",
+        "wpad/wpad-2.png",
+        "wpad/wpad-3.png",
+        "wpad/wpad-3.png"
       ]
     },
     "Type": "Seguridad",
@@ -1171,7 +1193,9 @@
         "Marque la casilla \"Al reanudar, mostrar la pantalla de inicio de sesión\" y establezca el tiempo de \"espera\" en un intervalo corto (2 minutos o menos)."
       ],
       "Screenshots": [
-        "POR LLENAR"
+        "automatic-screen-lock/automatic-screen-lock-1.png",
+        "automatic-screen-lock/automatic-screen-lock-2.png",
+        "automatic-screen-lock/automatic-screen-lock-3.png"
       ]
     },
     "Type": "Seguridad",
