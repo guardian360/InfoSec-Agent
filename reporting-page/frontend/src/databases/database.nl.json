@@ -116,7 +116,8 @@
         "Hier kunt u de advertentie-ID-instellingen beheren en de functie in-/uitschakelen."
       ],
       "Screenshots": [
-        "TOBEFILLED"
+        "advertisement-id/advertisement-id-1.png",
+        "advertisement-id/advertisement-id-2.png"
         ]
     },
     "Type": "Privacy",
@@ -1003,7 +1004,10 @@
         "Hier kunt u de door websites opgeslagen cookies bekijken en beheren.  "
       ],
       "Screenshots": [
-        "OM TE VULLEN"
+        "chrome-cookies/cookies-chrome-1.png",
+        "chrome-cookies/cookies-chrome-2.png",
+        "chrome-cookies/cookies-chrome-3.png",
+        "chrome-cookies/cookies-chrome-4.png"
       ]
     },
     "Type": "Privacy",
@@ -1028,7 +1032,10 @@
         "Hier kunt u algemene cookie-instellingen beheren.  "
       ],
       "Screenshots": [
-        "OM TE VULLEN"
+        "edge-cookies/cookies-edge-1.png",
+        "edge-cookies/cookies-edge-2.png",
+        "edge-cookies/cookies-edge-2.png",
+        "edge-cookies/cookies-edge-2.png"
       ]
     },
     "Type": "Privacy",

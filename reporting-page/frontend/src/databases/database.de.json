@@ -116,7 +116,8 @@
         "Hier können Sie die Werbe-ID-Einstellungen steuern und die Funktion ein-/ausschalten."
       ],
       "Screenshots": [
-        "TOBEFILLED"
+        "advertisement-id/advertisement-id-1.png",
+        "advertisement-id/advertisement-id-2.png"
       ]
     },
     "Type": "Privatsphäre",
@@ -1005,7 +1006,10 @@
         "Hier können Sie die von Websites gespeicherten Cookies einsehen und verwalten.  "
       ],
       "Screenshots": [
-        "VOLL SEIN"
+        "chrome-cookies/cookies-chrome-1.png",
+        "chrome-cookies/cookies-chrome-2.png",
+        "chrome-cookies/cookies-chrome-3.png",
+        "chrome-cookies/cookies-chrome-4.png"
       ]
     },
     "Type": "Privatsphäre",
@@ -1024,13 +1028,16 @@
       "Severity": 2,
       "Name": "Mögliche Tracking-Cookies im Microsoft Edge-Browser",
       "Solution": [
-        "Öffnen Sie Microsoft Edge und klicken Sie auf die drei Punkte in der oberen rechten Ecke.",
-        "Wählen Sie „Einstellungen“ und gehen Sie zum Abschnitt „Cookies und Website-Berechtigungen“.",
+        "Öffnen Sie Microsoft Edge und klicken Sie auf die drei Punkte in der oberen rechten Ecke, wählen Sie „Einstellungen“",
+        "Gehen Sie zum Abschnitt „Cookies und Website-Berechtigungen“.",
         "Klicken Sie unter „Cookies und gespeicherte Daten“ auf „Cookies und Websitedaten verwalten und löschen“.",
         "Hier können Sie allgemeine Cookie-Einstellungen verwalten.  "
       ],
       "Screenshots": [
-        "VOLL SEIN"
+        "edge-cookies/cookies-edge-1.png",
+        "edge-cookies/cookies-edge-2.png",
+        "edge-cookies/cookies-edge-2.png",
+        "edge-cookies/cookies-edge-2.png"
       ]
     },
     "Type": "Privatsphäre",

@@ -116,7 +116,8 @@
         "Here you can control the advertisement ID settings and turn the feature on/off."
       ],
       "Screenshots": [
-        "TOBEFILLED"
+        "advertisement-id/advertisement-id-1.png",
+        "advertisement-id/advertisement-id-2.png"
       ]
     },
     "Type": "Privacy",
@@ -1003,7 +1004,10 @@
         "Here you can view and manage the cookies stored by websites. You can delete individual cookies or clear all site data to protect your privacy. "
       ],
       "Screenshots": [
-        "TOBEFILLED"
+        "chrome-cookies/cookies-chrome-1.png",
+        "chrome-cookies/cookies-chrome-2.png",
+        "chrome-cookies/cookies-chrome-3.png",
+        "chrome-cookies/cookies-chrome-4.png"
       ]
     },
     "Type": "Privacy",
@@ -1028,7 +1032,10 @@
         "Here you can manage general cookie settings. You can delete individual cookies or clear all site data by clicking on 'See all cookies and site data'. "
       ],
       "Screenshots": [
-        "TOBEFILLED"
+        "edge-cookies/cookies-edge-1.png",
+        "edge-cookies/cookies-edge-2.png",
+        "edge-cookies/cookies-edge-2.png",
+        "edge-cookies/cookies-edge-2.png"
       ]
     },
     "Type": "Privacy",

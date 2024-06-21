@@ -116,7 +116,8 @@
         "Aqui você pode controlar as configurações de ID do anúncio e ativar/desativar o recurso."
       ],
       "Screenshots": [
-        "TOBEFILLED"
+        "advertisement-id/advertisement-id-1.png",
+        "advertisement-id/advertisement-id-2.png"
       ]
     },
     "Type": "Privacidade",
@@ -1003,7 +1004,10 @@
         "Aqui você pode visualizar e gerenciar os cookies armazenados pelos sites.  "
       ],
       "Screenshots": [
-        "SER PREENCHIDO"
+        "chrome-cookies/cookies-chrome-1.png",
+        "chrome-cookies/cookies-chrome-2.png",
+        "chrome-cookies/cookies-chrome-3.png",
+        "chrome-cookies/cookies-chrome-4.png"
       ]
     },
     "Type": "Privacidade",
@@ -1028,7 +1032,10 @@
         "Aqui você pode gerenciar as configurações gerais de cookies.  "
       ],
       "Screenshots": [
-        "SER PREENCHIDO"
+        "edge-cookies/cookies-edge-1.png",
+        "edge-cookies/cookies-edge-2.png",
+        "edge-cookies/cookies-edge-2.png",
+        "edge-cookies/cookies-edge-2.png"
       ]
     },
     "Type": "Privacidade",

@@ -118,7 +118,8 @@
         "Here you can control the advertisement ID settings and turn the feature on/off."
       ],
       "Screenshots": [
-        "TOBEFILLED"
+        "advertisement-id/advertisement-id-1.png",
+        "advertisement-id/advertisement-id-2.png"
       ]
     }
   },
@@ -1002,13 +1003,16 @@
       "Severity": 2,
       "Name": "Possible tracking cookies found in Google Chrome browser",
       "Solution": [
-        "Open Google Chrome and click on the three dots in the top right corner.",
-        "Select 'Settings' and go to the 'Privacy and security' section.",
+        "Open Google Chrome and click on the three dots in the top right corner, then select 'Settings'.",
+        "Go to the 'Privacy and security' section.",
         "Under 'Third-party cookies', click on 'See all site data and permissions'.",
         "Here you can view and manage the cookies stored by websites. You can delete individual cookies or clear all site data to protect your privacy. "
       ],
       "Screenshots": [
-        "TOBEFILLED"
+        "chrome-cookies/cookies-chrome-1.png",
+        "chrome-cookies/cookies-chrome-2.png",
+        "chrome-cookies/cookies-chrome-3.png",
+        "chrome-cookies/cookies-chrome-4.png"
       ]
     }
   },
@@ -1033,7 +1037,10 @@
         "Here you can manage general cookie settings. You can delete individual cookies or clear all site data by clicking on 'See all cookies and site data'. "
       ],
       "Screenshots": [
-        "TOBEFILLED"
+        "edge-cookies/cookies-edge-1.png",
+        "edge-cookies/cookies-edge-2.png",
+        "edge-cookies/cookies-edge-2.png",
+        "edge-cookies/cookies-edge-2.png"
       ]
     }
   },
