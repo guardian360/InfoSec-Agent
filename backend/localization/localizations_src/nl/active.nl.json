@@ -151,7 +151,6 @@
     "Search": "Zoeken..."
   },
   "Personalize": {
-    "ChangeFavicon": "Favicon wijzigen",
     "navImage": "Navigatieafbeelding",
     "ChangeImage": "Afbeelding wijzigen",
     "Title": "Navigatietitel",
@@ -159,7 +158,6 @@
     "Reset": "Instellingen resetten",
     "PersonalizeTitle": "Personaliseer uw ervaring",
     "PickTheme": "Kies een thema",
-    "Favicon": "Favicon",
     "NavImage": "Navigatie afbeelding",
     "NavTitle": "Navigatietitel",
     "Light": "Licht",

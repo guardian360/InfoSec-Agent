@@ -150,7 +150,6 @@
     "Search": "Rechercher..."
   },
   "Personalize": {
-    "ChangeFavicon": "Changer le favicon",
     "navImage": "Image de navigation",
     "ChangeImage": "Changer l'image",
     "Title": "Titre de navigation",
@@ -158,7 +157,6 @@
     "Reset": "Réinitialiser les paramètres",
     "PersonalizeTitle": "Personnalisez votre expérience",
     "PickTheme": "Choisissez un thème",
-    "Favicon": "Favicon",
     "NavImage": "Image de navigation",
     "NavTitle": "Titre de navigation",
     "Light": "Lumière",

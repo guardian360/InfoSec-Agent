@@ -240,7 +240,6 @@ if (typeof document !== 'undefined') {
 window.onload = function() {
   const savedImage = localStorage.getItem('picture');
   const savedText = localStorage.getItem('title');
-  const savedIcon = localStorage.getItem('favicon');
   if (savedImage) {
     const logo = document.getElementById('logo');
     logo.src = savedImage;
@@ -248,10 +247,6 @@ window.onload = function() {
   if (savedText) {
     const title = document.getElementById('title');
     title.textContent = savedText;
-  }
-  if (savedIcon) {
-    const favicon = document.getElementById('favicon');
-    favicon.href = savedIcon;
   }
 };
 
