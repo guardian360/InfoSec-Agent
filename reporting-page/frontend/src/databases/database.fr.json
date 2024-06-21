@@ -116,7 +116,8 @@
         "Ici, vous pouvez contrôler les paramètres d'identification de la publicité et activer/désactiver la fonctionnalité."
       ],
       "Screenshots": [
-        "TOBEFILLED"
+        "advertisement-id/advertisement-id-1.png",
+        "advertisement-id/advertisement-id-2.png"
       ]
     },
     "Type": "Confidentialité",
@@ -327,7 +328,7 @@
       "Severity": 2,
       "Name": "SMB toutes les versions désactivées",
       "Solution": [
-        "FAIRE"
+        "Les deux versions de SMB sont désactivées, donc aucune action n'est nécessaire."
       ],
       "Screenshots": []
     },
@@ -918,7 +919,7 @@
         "Téléchargez le CIS Benchmark pour votre système d'exploitation sur le site officiel de CIS. "
       ],
       "Screenshots": [
-        "ÊTRE REMPLI"
+        "cis-benchmark/cis-benchmark-1.png"
       ]
     },
     "1": {
@@ -949,7 +950,8 @@
         "Sous « Exiger une connexion », sélectionnez « Lorsque le PC sort du mode veille »."
       ],
       "Screenshots": [
-        "ÊTRE REMPLI"
+        "automatic-login/automatic-login-1.png",
+        "automatic-login/automatic-login-2.png"
       ]
     },
     "Type": "Sécurité",
@@ -974,7 +976,10 @@
         "Double-cliquez sur la clé \"AllowRemoteRPC\" et définissez sa valeur sur 0."
       ],
       "Screenshots": [
-        "ÊTRE REMPLI"
+        "remote-rpc/remote-rpc-1.png",
+        "remote-rpc/remote-rpc-2.png",
+        "remote-rpc/remote-rpc-3.png",
+        "remote-rpc/remote-rpc-4.png"
       ]
     },
     "Type": "Sécurité",
@@ -999,7 +1004,10 @@
         "Ici, vous pouvez visualiser et gérer les cookies stockés par les sites Web.  "
       ],
       "Screenshots": [
-        "ÊTRE REMPLI"
+        "chrome-cookies/cookies-chrome-1.png",
+        "chrome-cookies/cookies-chrome-2.png",
+        "chrome-cookies/cookies-chrome-3.png",
+        "chrome-cookies/cookies-chrome-4.png"
       ]
     },
     "Type": "Confidentialité",
@@ -1024,7 +1032,10 @@
         "Ici, vous pouvez gérer les paramètres généraux des cookies.  "
       ],
       "Screenshots": [
-        "ÊTRE REMPLI"
+        "edge-cookies/cookies-edge-1.png",
+        "edge-cookies/cookies-edge-2.png",
+        "edge-cookies/cookies-edge-2.png",
+        "edge-cookies/cookies-edge-2.png"
       ]
     },
     "Type": "Confidentialité",
@@ -1047,7 +1058,8 @@
         "Sous « Pare-feu et protection du réseau », assurez-vous que le pare-feu Windows est activé pour tous les profils réseau (public, privé et domaine). "
       ],
       "Screenshots": [
-        "ÊTRE REMPLI"
+        "firewall/firewall-1.png",
+        "firewall/firewall-1.png"
       ]
     },
     "Type": "Sécurité",
@@ -1072,7 +1084,10 @@
         "Redémarrez votre ordinateur pour appliquer les modifications."
       ],
       "Screenshots": [
-        "ÊTRE REMPLI"
+        "minimum-password-length/minimum-password-length-1.png",
+        "minimum-password-length/minimum-password-length-2.png",
+        "minimum-password-length/minimum-password-length-3.png",
+        "minimum-password-length/minimum-password-length-3.png"
       ]
     },
     "Type": "Sécurité",
@@ -1093,9 +1108,7 @@
       "Solution": [
         "Le paramètre Credential Guard est géré dans votre stratégie de groupe locale. "
       ],
-      "Screenshots": [
-        "ÊTRE REMPLI"
-      ]
+      "Screenshots": []
     },
     "Type": "Sécurité",
     "Information": "Credential Guard est une fonctionnalité de sécurité de Windows qui aide à protéger les informations d'identification des utilisateurs et les informations sensibles contre l'accès non autorisé et le vol. Elle utilise la sécurité basée sur la virtualisation pour isoler et protéger les informations d'identification, rendant ainsi plus difficile aux attaquants de voler des mots de passe et d'autres données sensibles."
@@ -1122,7 +1135,13 @@
         "Cliquez sur « OK » pour enregistrer les modifications."
       ],
       "Screenshots": [
-        "ÊTRE REMPLI"
+        "netbios/netbios-1.png",
+        "netbios/netbios-2.png",
+        "netbios/netbios-3.png",
+        "netbios/netbios-4.png",
+        "netbios/netbios-5.png",
+        "netbios/netbios-6.png",
+        "netbios/netbios-7.png"
       ]
     },
     "Type": "Sécurité",
@@ -1147,7 +1166,10 @@
         "Redémarrez votre ordinateur pour appliquer les modifications."
       ],
       "Screenshots": [
-        "ÊTRE REMPLI"
+        "wpad/wpad-1.png",
+        "wpad/wpad-2.png",
+        "wpad/wpad-3.png",
+        "wpad/wpad-3.png"
       ]
     },
     "Type": "Sécurité",
@@ -1171,7 +1193,9 @@
         "Cochez la case « À la reprise, afficher l'écran de connexion » et réglez le temps « d'attente » sur un intervalle court (2 minutes ou moins)."
       ],
       "Screenshots": [
-        "ÊTRE REMPLI"
+        "automatic-screen-lock/automatic-screen-lock-1.png",
+        "automatic-screen-lock/automatic-screen-lock-2.png",
+        "automatic-screen-lock/automatic-screen-lock-3.png"
       ]
     },
     "Type": "Sécurité",
