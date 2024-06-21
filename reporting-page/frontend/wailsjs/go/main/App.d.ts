@@ -4,6 +4,8 @@ import {usersettings} from '../models';
 
 export function GetImagePath(arg1:string):Promise<string>;
 
+export function GetLighthouseState():Promise<number>;
+
 export function LoadUserSettings():Promise<usersettings.UserSettings>;
 
 export function Localize(arg1:string):Promise<string>;

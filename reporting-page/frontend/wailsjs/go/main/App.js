@@ -6,6 +6,10 @@ export function GetImagePath(arg1) {
   return window['go']['main']['App']['GetImagePath'](arg1);
 }
 
+export function GetLighthouseState() {
+  return window['go']['main']['App']['GetLighthouseState']();
+}
+
 export function LoadUserSettings() {
   return window['go']['main']['App']['LoadUserSettings']();
 }

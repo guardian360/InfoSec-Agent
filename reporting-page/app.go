@@ -80,3 +80,11 @@ func (a *App) LoadUserSettings() usersettings.UserSettings {
 func (a *App) GetImagePath(imagePath string) string {
 	return config.ReportingPageImageDir + imagePath
 }
+
+// LighthouseState returns the current state of the lighthouse in the system tray application.
+//
+// This method retrieves the current state of the lighthouse from the user settings. The lighthouse state is an integer value that represents the current state of the lighthouse in the system tray application.
+func (a *App) GetLighthouseState() int {
+	userSettings := usersettings.LoadUserSettings()
+	return userSettings.LighthouseState
+}
