@@ -32,7 +32,13 @@
   font-weight: bold;
 }
 
-.all-checks-check:hover {
+.clickable:hover {
   cursor: pointer;
   color: var(--text-settings-hover);
+}
+
+.zero-found {
+  width: 100%;
+  font-size: 12px;
+  font-style: italic;
 }

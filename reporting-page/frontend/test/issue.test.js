@@ -303,10 +303,14 @@ describe('Issue page', function() {
     [10, 0],
     [11, 0],
     [16, 0],
+    [17, 2],
     [17, 3],
     [20, 1],
     [23, 0],
+    [25, 0],
+    [26, 0],
     [27, 1],
+    [30, 0],
     [31, 1],
     [32, 0],
     [35, 1],
@@ -359,10 +363,14 @@ describe('Issue page', function() {
     await testParseShowResult('10', '0', expectedFindings[0]);
     await testParseShowResult('11', '0', expectedFindings[1]);
     await testParseShowResult('16', '0', expectedFindings[2]);
+    await testParseShowResult('17', '2', expectedFindings[0]);
     await testParseShowResult('17', '3', expectedFindings[0]);
     await testParseShowResult('20', '1', expectedFindings[0]);
     await testParseShowResult('23', '0', expectedFindings[0]);
+    await testParseShowResult('25', '0', expectedFindings[0]);
+    await testParseShowResult('26', '0', expectedFindings[0]);
     await testParseShowResult('27', '1', expectedFindings[3]);
+    await testParseShowResult('30', '0', expectedFindings[0]);
     await testParseShowResult('31', '1', expectedFindings[0]);
     await testParseShowResult('32', '0', expectedFindings[4]);
     await testParseShowResult('35', '1', expectedFindings[5]);

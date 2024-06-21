@@ -1,5 +1,13 @@
 {
   "1": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Appareils connectés via Bluetooth",
+      "Failed": "Nous n'avons pas pu vérifier s'il y a des appareils connectés via Bluetooth.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Aucun appareil connecté via Bluetooth",
@@ -24,6 +32,14 @@
     "Information": "La technologie Bluetooth permet la transmission et la réception de données sans fil. Bien que cette fonctionnalité soit généralement inoffensive lorsqu'elle est utilisée comme prévu, elle peut devenir un risque pour la sécurité si elle est exploitée par des acteurs malveillants. Si une personne malveillante obtient un accès non autorisé à votre appareil via une connexion Bluetooth, elle peut potentiellement voler vos données, écouter vos activités ou même envoyer des logiciels malveillants à votre appareil. Pour atténuer ces risques, il est crucial de ne connecter votre appareil qu'à des dispositifs connus et de confiance."
   },
   "2": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Appareils connectés via ports USB",
+      "Failed": "Nous n'avons pas pu vérifier s'il y a des appareils connectés via ports USB.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Aucun périphérique externe connecté",
@@ -44,6 +60,14 @@
     "Information": "Les périphériques externes tels que les clés USB, les disques durs externes et autres périphériques peuvent introduire des risques de sécurité pour votre ordinateur. Les logiciels malveillants peuvent se propager via des périphériques externes infectés, compromettant potentiellement la sécurité et l'intégrité de votre système. En veillant à ce qu'aucun périphérique externe ne soit connecté à votre ordinateur lorsqu'il n'est pas utilisé, vous réduisez le risque d'infection par des logiciels malveillants et d'accès non autorisé à votre système."
   },
   "3": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Compte invité activé/désactivé",
+      "Failed": "Nous n'avons pas pu vérifier si un compte invité est activé.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
     "0": {
       "Severity": -1,
       "Name": "Statut du compte invité inconnu",
@@ -96,6 +120,14 @@
     "Information": "Le compte invité est un compte par défaut conçu pour offrir un accès temporaire et restreint au système pour les personnes sans comptes utilisateurs réguliers. Si vous êtes le seul utilisateur de l'ordinateur et n'avez pas besoin d'un compte invité, il est conseillé de le désactiver. Cela garantit qu'aucun utilisateur non autorisé ne puisse accéder aux données de l'ordinateur, améliorant ainsi la sécurité et la confidentialité globales."
   },
   "4": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : ID de publicité activée/désactivée",
+      "Failed": "Nous n'avons pas pu vérifier si l'ID de publicité est partagée avec des applications.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Partage d'identifiant d'annonce désactivé",
@@ -124,6 +156,14 @@
     "Information": "Le paramètre d'ID publicitaire permet à Windows de vous envoyer des annonces personnalisées. Il est important de limiter le nombre d'entités qui ont accès à vos données personnelles, il est donc plus sûr de désactiver ce paramètre."
   },
   "5": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Gestionnaire de mots de passe installé",
+      "Failed": "Nous n'avons pas pu vérifier si un gestionnaire de mots de passe est installé.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Gestionnaire de mots de passe utilisé",
@@ -148,6 +188,14 @@
     "Information": "L'utilisation d'un gestionnaire de mots de passe offre plusieurs avantages pour les individus et les organisations, principalement autour de l'amélioration de la sécurité, de la commodité et des pratiques générales de gestion des mots de passe. Voici quelques raisons clés pour lesquelles vous devriez envisager d'utiliser un gestionnaire de mots de passe. Mots de passe plus forts: Les gestionnaires de mots de passe peuvent générer des mots de passe complexes et uniques pour chacun de vos comptes. Ces mots de passe sont généralement longs, aléatoires et difficiles à craquer, améliorant considérablement la sécurité de vos comptes en ligne par rapport à l'utilisation de mots de passe faibles ou réutilisés. Élimination de la réutilisation des mots de passe: L'un des pièges de sécurité les plus courants est la réutilisation des mots de passe sur plusieurs comptes. Les gestionnaires de mots de passe vous permettent de générer et de stocker des mots de passe uniques pour chaque compte, réduisant ainsi le risque d'accès non autorisé si un compte est compromis. Commodité: Les gestionnaires de mots de passe simplifient le processus de connexion aux sites Web et aux services en ligne en remplissant automatiquement les informations de connexion pour vous. Cela permet de gagner du temps et des efforts, en particulier lors de la gestion de nombreux comptes sur diverses plateformes. Stockage sécurisé: Les gestionnaires de mots de passe cryptent et stockent vos mots de passe dans un coffre-fort sécurisé, les protégeant contre les accès non autorisés. De nombreux gestionnaires de mots de passe offrent également des fonctionnalités de sécurité supplémentaires telles que l'authentification à deux facteurs (2FA) et l'authentification biométrique pour renforcer davantage la protection."
   },
   "6": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Applications avec autorisations de localisation",
+      "Failed": "Nous n'avons pas pu vérifier quelles applications ont des autorisations de localisation.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Applications avec autorisation de localisation",
@@ -176,6 +224,14 @@
     "Information": "Savoir quelles applications ont accès à votre emplacement est important pour protéger votre vie privée. Cela vous aide à contrôler qui peut suivre votre emplacement, à prévenir les risques de sécurité, à économiser la batterie, à gérer l'utilisation des données, à personnaliser votre expérience des applications et à assurer la conformité avec les réglementations."
   },
   "7": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Applications avec autorisations de microphone",
+      "Failed": "Nous n'avons pas pu vérifier quelles applications ont des autorisations de microphone.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Applications avec autorisation de microphone",
@@ -204,6 +260,14 @@
     "Information": "Comprendre quelles applications ont accès à votre microphone sur votre ordinateur Windows est important pour protéger votre vie privée et la confidentialité. Cela vous aide à contrôler qui peut écouter vos conversations, à prévenir les enregistrements non autorisés, à protéger les informations sensibles et à assurer la conformité avec les réglementations."
   },
   "8": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Applications avec autorisations de webcam",
+      "Failed": "Nous n'avons pas pu vérifier quelles applications ont des autorisations de webcam.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Applications avec autorisation webcam",
@@ -232,6 +296,14 @@
     "Information": "Savoir quelles applications ont accès à votre caméra aide à prévenir les accès non autorisés. Les logiciels malveillants ou même les applications légitimes avec des fonctionnalités de sécurité mal implémentées pourraient potentiellement accéder à votre caméra sans votre connaissance ni votre consentement. En sachant quelles applications ont accès, vous pouvez identifier et bloquer toute tentative non autorisée."
   },
   "9": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Applications avec autorisations de rendez-vous",
+      "Failed": "Nous n'avons pas pu vérifier quelles applications ont des autorisations de rendez-vous.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Applications avec autorisation de rendez-vous",
@@ -260,6 +332,14 @@
     "Information": "Comprendre quelles applications ont accès à votre calendrier ou à vos rendez-vous est crucial pour protéger votre vie privée et votre emploi du temps. Cela vous aide à contrôler qui peut voir et potentiellement abuser de vos informations sensibles de rendez-vous, à prévenir les accès non autorisés et à gérer l'utilisation des données."
   },
   "10": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Applications avec autorisations de contacts",
+      "Failed": "Nous n'avons pas pu vérifier quelles applications ont des autorisations de contacts.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Applications avec autorisation de contacts",
@@ -288,6 +368,14 @@
     "Information": "Comprendre quelles applications ont accès à vos contacts sur votre ordinateur Windows est bon pour protéger votre vie privée. Cela vous permet de contrôler qui peut voir et potentiellement abuser de vos informations de contact, de prévenir les accès non autorisés et de gérer l'utilisation des données."
   },
   "11": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Ports ouverts utilisés par les applications",
+      "Failed": "Nous n'avons pas pu vérifier quels ports sont ouverts.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Ports ouverts",
@@ -303,6 +391,14 @@
     "Information": "Un port ouvert est celui qui permet la réception de paquets de données. Certaines applications nécessitent des ports spécifiques pour recevoir des données, de sorte que la présence de ports ouverts ne pose pas intrinsèquement de risques. Cependant, certains ports peuvent manquer de protection adéquate, ce qui pourrait permettre des communications non autorisées et introduire des vulnérabilités de sécurité. Il est essentiel de maintenir les ports ouverts uniquement lorsqu'ils sont activement utilisés et de les fermer lorsqu'ils ne sont pas nécessaires. Étant donné que de nombreux ports ouverts peuvent étendre la surface d'attaque de votre ordinateur, il est conseillé de surveiller régulièrement et de sécuriser les ports réseau de votre système pour atténuer ces risques et maintenir une posture de sécurité solide."
   },
   "12": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Bureau à distance activé/désactivé",
+      "Failed": "Nous n'avons pas pu vérifier si la fonctionnalité Bureau à distance est activée.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
     "0": {
       "Severity": 3,
       "Name": "Bureau à distance activé",
@@ -324,6 +420,14 @@
     "Information": "Le Bureau à distance est une fonction intégrée dans le système d'exploitation Windows qui permet aux utilisateurs d'accéder et de contrôler à distance un autre ordinateur Windows via un réseau ou Internet. Il permet aux utilisateurs de se connecter à un ordinateur distant comme s'ils étaient devant lui, offrant un accès complet au bureau à distance, aux applications, fichiers et ressources. Si vous n'utilisez pas cette fonction, il est conseillé de la désactiver."
   },
   "13": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Bloc de messages serveur activé/désactivé",
+      "Failed": "Nous n'avons pas pu vérifier les statuts du protocole SMB.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
     "0": {
       "Severity": 2,
       "Name": "SMB toutes les versions désactivées",
@@ -376,6 +480,14 @@
     "Information": "Le protocole SMB (Server Message Block) est utilisé dans les environnements Windows pour le partage de fichiers, d'imprimantes et d'autres ressources entre appareils sur un réseau. Il est crucial de s'assurer que les paramètres SMB sur votre ordinateur Windows sont correctement configurés. Le protocole SMBv1 présente de nombreuses vulnérabilités connues et ne devrait donc jamais être utilisé. Utiliser SMBv2/v3 est une option plus sûre."
   },
   "14": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Contrôle des comptes d'utilisateur activé/désactivé",
+      "Failed": "Nous n'avons pas pu vérifier le niveau de contrôle de compte utilisateur sur votre système.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
     "0": {
       "Severity": 3,
       "Name": "Contrôle du compte utilisateur désactivé",
@@ -482,6 +594,14 @@
     "Information": "Le Contrôle de compte utilisateur (User Account Control, UAC) est une fonctionnalité de sécurité introduite dans Windows Vista et présente dans les versions ultérieures du système d'exploitation Windows. Son objectif principal est d'améliorer la sécurité du système d'exploitation en limitant les privilèges des applications et des processus fonctionnant avec des droits d'utilisateur standard, et en exigeant l'approbation de l'administrateur pour les tâches nécessitant des permissions élevées."
   },
   "15": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Windows Defender activé/désactivé",
+      "Failed": "Nous n'avons pas pu vérifier le statut de Windows Defender.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Windows Defender est activé",
@@ -524,6 +644,14 @@
     "Information": "Windows Defender surveille en continu votre système à la recherche d'activités suspectes, notamment les logiciels malveillants, les virus et autres formes de logiciels malveillants. En l'activant, vous bénéficiez d'une défense active contre les menaces potentielles susceptibles de compromettre votre vie privée ou votre sécurité. Il reçoit également des mises à jour régulières de Microsoft pour rester à jour concernant les dernières menaces de sécurité et vulnérabilités. En le laissant activé, vous vous assurez que votre ordinateur est protégé contre les nouvelles menaces émergentes qui pourraient exploiter des failles de sécurité connues."
   },
   "16": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Dernière modification du mot de passe Windows",
+      "Failed": "Nous n'avons pas pu vérifier quand la dernière modification de mot de passe a été effectuée.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
     "0": {
       "Severity": 2,
       "Name": "Le dernier changement de mot de passe remonte à plus de 6 mois",
@@ -550,6 +678,14 @@
     "Information": "Changer régulièrement votre mot de passe réduit la probabilité d'accès non autorisé à votre ordinateur ou à des informations sensibles. Si quelqu'un parvient à obtenir votre mot de passe, le changer régulièrement limite le temps qu'il a pour l'exploiter. Il est donc conseillé de changer votre mot de passe au moins deux fois par an."
   },
   "17": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Méthode de connexion Windows",
+      "Failed": "Nous n'avons pas pu vérifier les méthodes de connexion utilisées.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
     "0": {
       "Severity": 3,
       "Name": "Aucune méthode de connexion Windows configurée",
@@ -598,6 +734,14 @@
     "Information": "Utiliser une méthode de connexion sécurisée sur Windows est important. Windows supporte diverses méthodes de connexion telles que le mot de passe, le code PIN, la clé de sécurité ou l'empreinte digitale. Utiliser l'une de ces méthodes de connexion est essentiel pour sécuriser vos données. Sans l'une de ces méthodes de connexion, n'importe qui peut déverrouiller votre appareil et accéder à vos données. Si vous n'utilisez pas de méthode de connexion / utilisez une méthode de connexion moins sécurisée / une combinaison de méthodes de connexion, il est recommandé de passer à une méthode de connexion plus sécurisée comme le mot de passe ou l'empreinte digitale."
   },
   "18": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Version de Windows à jour",
+      "Failed": "Nous n'avons pas pu vérifier quand la dernière modification de mot de passe a été effectuée.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },  
     "0": {
       "Severity": 0,
       "Name": "La version Windows est à jour",
@@ -634,6 +778,14 @@
     "Information": "Les versions obsolètes de Windows peuvent contenir des vulnérabilités de sécurité non corrigées qui pourraient être exploitées par des attaquants pour compromettre le système. Les hackers recherchent activement et exploitent les vulnérabilités dans les systèmes d'exploitation obsolètes, ce qui pourrait conduire à un accès non autorisé, des violations de données et des infections par des logiciels malveillants."
   },
   "19": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Sécurité de démarrage activée/désactivée",
+      "Failed": "Nous n'avons pas pu vérifier si la Sécurité de démarrage est activée.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
     "0": {
       "Severity": 1,
       "Name": "Le démarrage sécurisé est désactivé",
@@ -665,6 +817,14 @@
     "Information": "Le démarrage sécurisé garantit que seuls les composants logiciels de confiance, signés avec des signatures numériques reconnues, sont chargés lors du processus de démarrage. Cela empêche les logiciels malveillants et autres logiciels non autorisés de manipuler le processus de démarrage et de prendre le contrôle du système dès les premières étapes."
   },
   "20": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Applications démarrées au démarrage du système",
+      "Failed": "Nous n'avons pas pu vérifier quelles applications démarrent au démarrage du système.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Aucune application qui démarre au démarrage",
@@ -689,6 +849,14 @@
     "Information": "Lorsque vous démarrez votre ordinateur, plusieurs applications se lancent automatiquement. Certaines sont des processus essentiels au bon fonctionnement du système, tandis que d'autres sont pratiques à avoir au démarrage. Cependant, il peut également y avoir des applications qui se lancent au démarrage sans que vous le sachiez. Il est prudent de les désactiver pour éviter toute action non autorisée et pour améliorer la vitesse du démarrage de votre ordinateur."
   },
   "21": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Google Chrome a un bloqueur de publicités installé",
+      "Failed": "Nous n'avons pas pu vérifier si votre navigateur dispose d'un bloqueur de publicités installé.",
+      "Solution": [
+        "Veuillez vous assurer que votre navigateur est fermé. Cette vérification peut être impossible à effectuer si le navigateur est ouvert."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Google Chrome avec un bloqueur de publicité installé",
@@ -715,6 +883,14 @@
     "Information": "Les bloqueurs de publicités protègent les utilisateurs contre les annonces en ligne. Avec leurs filtres et algorithmes, ils offrent un sanctuaire de navigation sans interruption, épargnant aux utilisateurs le désordre visuel et les risques potentiels pour la sécurité posés par les publicités."
   },
   "22": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Microsoft Edge a un bloqueur de publicités installé",
+      "Failed": "Nous n'avons pas pu vérifier si votre navigateur dispose d'un bloqueur de publicités installé.",
+      "Solution": [
+        "Veuillez vous assurer que votre navigateur est fermé. Cette vérification peut être impossible à effectuer si le navigateur est ouvert."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Microsoft Edge avec un bloqueur de publicité installé",
@@ -741,6 +917,14 @@
     "Information": "Les bloqueurs de publicités protègent les utilisateurs contre les annonces en ligne. Avec leurs filtres et algorithmes, ils offrent un sanctuaire de navigation sans interruption, épargnant aux utilisateurs le désordre visuel et les risques potentiels pour la sécurité posés par les publicités."
   },
   "23": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Domaines de phishing trouvés dans l'historique de Google Chrome",
+      "Failed": "Nous n'avons pas pu vérifier l'historique de votre navigateur.",
+      "Solution": [
+        "Veuillez vous assurer que votre navigateur est fermé. Cette vérification peut être impossible à effectuer si le navigateur est ouvert."
+      ]
+    },
     "0": {
       "Severity": 2,
       "Name": "Domaines de phishing potentiels trouvés sur Google Chrome",
@@ -761,6 +945,14 @@
     "Information": "Les domaines de phishing sont des sites web frauduleux conçus pour tromper les gens afin qu'ils partagent des informations sensibles telles que des mots de passe ou des détails de carte de crédit. Ils ont l'air réels, imitant des marques ou des organisations de confiance. Ces arnaques exploitent la confiance et la curiosité pour voler des données personnelles."
   },
   "24": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Domaines de phishing trouvés dans l'historique de Microsoft Edge",
+      "Failed": "Nous n'avons pas pu vérifier l'historique de votre navigateur.",
+      "Solution": [
+        "Veuillez vous assurer que votre navigateur est fermé. Cette vérification peut être impossible à effectuer si le navigateur est ouvert."
+      ]
+    },
     "0": {
       "Severity": 2,
       "Name": "Domaines de phishing potentiels trouvés sur Microsoft Edge",
@@ -781,6 +973,14 @@
     "Information": "Les domaines de phishing sont des sites web frauduleux conçus pour tromper les gens afin qu'ils partagent des informations sensibles telles que des mots de passe ou des détails de carte de crédit. Ils ont l'air réels, imitant des marques ou des organisations de confiance. Ces arnaques exploitent la confiance et la curiosité pour voler des données personnelles."
   },
   "25": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Moteur de recherche de Google Chrome en cours d'utilisation",
+      "Failed": "Nous n'avons pas pu vérifier le moteur de recherche de votre navigateur.",
+      "Solution": [
+        "Veuillez vous assurer que votre navigateur est fermé. Cette vérification peut être impossible à effectuer si le navigateur est ouvert."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Moteur de recherche standard utilisé dans Google Chrome",
@@ -793,6 +993,14 @@
     "Information": "Un moteur de recherche standard aide les utilisateurs à trouver des informations sur Internet en entrant des mots-clés ou des phrases. Les exemples incluent Google, Bing et Yahoo. Ils sont souvent critiqués pour leur approche en matière de vie privée."
   },
   "26": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Moteur de recherche de Microsoft Edge en cours d'utilisation",
+      "Failed": "Nous n'avons pas pu vérifier le moteur de recherche de votre navigateur.",
+      "Solution": [
+        "Veuillez vous assurer que votre navigateur est fermé. Cette vérification peut être impossible à effectuer si le navigateur est ouvert."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Moteur de recherche standard utilisé dans Microsoft Edge",
@@ -805,6 +1013,14 @@
     "Information": "Un moteur de recherche standard aide les utilisateurs à trouver des informations sur Internet en entrant des mots-clés ou des phrases. Les exemples incluent Google, Bing et Yahoo. Ils sont souvent critiqués pour leur approche en matière de vie privée."
   },
   "27": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Cookies stockés dans Mozilla Firefox",
+      "Failed": "Nous n'avons pas pu vérifier les cookies de votre navigateur.",
+      "Solution": [
+        "Veuillez vous assurer que votre navigateur est fermé. Cette vérification peut être impossible à effectuer si le navigateur est ouvert."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Aucun cookie de suivi trouvé dans Mozilla Firefox",
@@ -832,6 +1048,14 @@
     "Information": "Les cookies sont de petits fichiers texte stockés sur votre ordinateur par les sites web que vous visitez. Ils servent à mémoriser vos préférences, informations de connexion et autres données pour améliorer votre expérience de navigation. Cependant, les cookies peuvent également être utilisés pour suivre vos activités en ligne et recueillir des informations personnelles sans votre consentement, soulevant des préoccupations en matière de confidentialité. Gérer et effacer régulièrement les cookies permet de protéger votre vie privée et de contrôler les données collectées par les sites web à votre sujet."
   },
   "28": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Extensions installées dans Mozilla Firefox",
+      "Failed": "Nous n'avons pas pu vérifier les extensions de votre navigateur.",
+      "Solution": [
+        "Veuillez vous assurer que votre navigateur est fermé. Cette vérification peut être impossible à effectuer si le navigateur est ouvert."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Extensions installées dans Mozilla Firefox",
@@ -850,6 +1074,14 @@
     "Information": "Les extensions de navigateur améliorent les fonctionnalités de votre navigateur web en ajoutant des fonctionnalités, des outils et des options de personnalisation. Bien que les extensions puissent être utiles, elles peuvent également poser des risques en termes de confidentialité et de sécurité si elles ont accès à des données sensibles ou suivent vos activités en ligne sans votre consentement. Examiner régulièrement et gérer vos extensions de navigateur contribue à protéger votre vie privée et votre sécurité en ligne. Supprimez toutes les extensions que vous n'utilisez plus ou en lesquelles vous n'avez plus confiance pour minimiser les risques potentiels."
   },
   "29": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Mozilla Firefox a un bloqueur de publicités installé",
+      "Failed": "Nous n'avons pas pu vérifier si votre navigateur a un bloqueur de publicités installé.",
+      "Solution": [
+        "Veuillez vous assurer que votre navigateur est fermé. Cette vérification peut être impossible à effectuer si le navigateur est ouvert."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Mozilla Firefox avec un bloqueur de publicité installé",
@@ -880,6 +1112,14 @@
     "Information": "Les bloqueurs de publicités protègent les utilisateurs contre les annonces en ligne. Avec leurs filtres et algorithmes, ils offrent un sanctuaire de navigation sans interruption, épargnant aux utilisateurs le désordre visuel et les risques potentiels pour la sécurité posés par les publicités."
   },
   "30": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Moteur de recherche de Mozilla Firefox en cours d'utilisation",
+      "Failed": "Nous n'avons pas pu vérifier le moteur de recherche de votre navigateur.",
+      "Solution": [
+        "Veuillez vous assurer que votre navigateur est fermé. Cette vérification peut être impossible à effectuer si le navigateur est ouvert."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Moteur de recherche standard dans Mozilla Firefox",
@@ -892,6 +1132,14 @@
     "Information": "Un moteur de recherche standard aide les utilisateurs à trouver des informations sur Internet en entrant des mots-clés ou des phrases. Les exemples incluent Google, Bing et Yahoo. Ils sont souvent critiqués pour leur approche en matière de vie privée."
   },
   "31": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Domaines de phishing trouvés dans l'historique de Mozilla Firefox",
+      "Failed": "Nous n'avons pas pu vérifier l'historique de votre navigateur.",
+      "Solution": [
+        "Veuillez vous assurer que votre navigateur est fermé. Cette vérification peut être impossible à effectuer si le navigateur est ouvert."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Aucun domaine de phishing potentiel trouvé sur Mozilla Firefox",
@@ -912,6 +1160,14 @@
     "Information": "Les domaines de phishing sont des sites web frauduleux conçus pour tromper les gens afin qu'ils partagent des informations sensibles telles que des mots de passe ou des détails de carte de crédit. Ils ont l'air réels, imitant des marques ou des organisations de confiance. Ces arnaques exploitent la confiance et la curiosité pour voler des données personnelles."
   },
   "32": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Paramètres du registre de la liste de vérification CIS",
+      "Failed": "Nous n'avons pas pu vérifier les paramètres du registre de la liste de vérification CIS.",
+      "Solution": [
+        "Veuillez vérifier si le registre de Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas compléter la vérification."
+      ]
+    },
     "0": {
       "Severity": 1,
       "Name": "Paramètres de registre de la liste d'audit CIS incorrects",
@@ -934,6 +1190,14 @@
     "Information": "Le Center for Internet Security (CIS) propose des lignes directrices et des meilleures pratiques pour sécuriser les systèmes informatiques. La liste d'audit CIS des paramètres du registre aide à garantir que votre système est configuré selon ces normes de sécurité. Des paramètres de registre incorrects ou obsolètes peuvent rendre votre système vulnérable aux menaces de sécurité et compromettre votre vie privée."
   },
   "33": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Connexion automatique activée/désactivée",
+      "Failed": "Nous n'avons pas pu vérifier si la connexion automatique est activée.",
+      "Solution": [
+        "Veuillez vérifier si le registre de Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas compléter la vérification."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Connexion automatique désactivée",
@@ -958,6 +1222,14 @@
     "Information": "La connexion automatique permet aux utilisateurs d'accéder à leurs comptes sans avoir à saisir un mot de passe à chaque fois qu'ils démarrent leur ordinateur ou ouvrent une application spécifique. Bien que pratique, la connexion automatique présente des risques de sécurité, car toute personne ayant un accès physique à l'appareil peut accéder au compte sans authentification. Désactiver la connexion automatique renforce la sécurité de vos comptes et empêche l'accès non autorisé."
   },
   "34": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Appel de procédure distant activé/désactivé",
+      "Failed": "Nous n'avons pas pu vérifier si RPC est activé sur votre appareil.",
+      "Solution": [
+        "Veuillez vérifier si le registre de Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas compléter la vérification."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "RPC distant désactivé",
@@ -986,6 +1258,14 @@
     "Information": "Remote Procedure Call (RPC) est un protocole qui permet à des programmes et des processus de communiquer entre eux sur un réseau. Désactiver le RPC à distance aide à prévenir l'accès non autorisé à votre ordinateur et le protège contre les menaces potentielles et les vulnérabilités de sécurité."
   },
   "35": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Cookies stockés dans Google Chrome",
+      "Failed": "Nous n'avons pas pu vérifier les cookies de votre navigateur.",
+      "Solution": [
+        "Veuillez vous assurer que votre navigateur est fermé. Cette vérification peut être impossible à effectuer si le navigateur est ouvert."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Aucun cookie de suivi possible trouvé dans le navigateur Google Chrome",
@@ -1014,6 +1294,14 @@
     "Information": "Les cookies sont de petits fichiers texte stockés sur votre ordinateur par les sites web que vous visitez. Ils servent à mémoriser vos préférences, vos informations de connexion et d'autres données pour améliorer votre expérience de navigation. Cependant, les cookies peuvent également être utilisés pour suivre vos activités en ligne et recueillir des informations personnelles sans votre consentement, ce qui soulève des préoccupations en matière de confidentialité. Gérer et effacer régulièrement les cookies contribue à protéger votre vie privée et à contrôler les données collectées par les sites web à votre sujet."
   },
   "36": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Cookies stockés dans Microsoft Edge",
+      "Failed": "Nous n'avons pas pu vérifier les cookies de votre navigateur.",
+      "Solution": [
+        "Veuillez vous assurer que votre navigateur est fermé. Cette vérification peut être impossible à effectuer si le navigateur est ouvert."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Aucun cookie de suivi possible trouvé dans le navigateur Microsoft Edge",
@@ -1042,6 +1330,14 @@
     "Information": "Les cookies sont de petits fichiers texte stockés sur votre ordinateur par les sites web que vous visitez. Ils servent à mémoriser vos préférences, vos informations de connexion et d'autres données pour améliorer votre expérience de navigation. Cependant, les cookies peuvent également être utilisés pour suivre vos activités en ligne et recueillir des informations personnelles sans votre consentement, ce qui soulève des préoccupations en matière de confidentialité. Gérer et effacer régulièrement les cookies contribue à protéger votre vie privée et à contrôler les données collectées par les sites web à votre sujet."
   },
   "37": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Pare-feu Windows activé/désactivé",
+      "Failed": "Nous n'avons pas pu vérifier l'état du pare-feu Windows.",
+      "Solution": [
+        "Veuillez vérifier si le registre de Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas compléter la vérification."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Le pare-feu Windows est activé pour tous les profils",
@@ -1066,6 +1362,14 @@
     "Information": "Le pare-feu Windows est une fonctionnalité de sécurité intégrée qui aide à protéger votre ordinateur contre les accès non autorisés et les logiciels malveillants en surveillant et contrôlant le trafic réseau entrant et sortant. Activer le pare-feu Windows pour tous les profils réseau (public, privé et domaine) contribue à renforcer la sécurité de votre système et à prévenir les menaces potentielles."
   },
   "38": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Longueur du mot de passe Windows",
+      "Failed": "Nous n'avons pas pu vérifier la complexité de votre mot de passe.",
+      "Solution": [
+        "Veuillez vérifier si le registre de Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas compléter la vérification."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "La longueur minimale du mot de passe est définie sur au moins 15 caractères",
@@ -1094,6 +1398,14 @@
     "Information": "Définir une longueur minimale de mot de passe d'au moins 15 caractères contribue à renforcer la sécurité des comptes utilisateurs en augmentant la complexité et la robustesse des mots de passe. Les mots de passe plus longs sont plus résistants aux attaques par force brute et offrent une meilleure protection contre les accès non autorisés et les violations de données."
   },
   "39": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Garde des informations d'identification activée/désactivée",
+      "Failed": "Nous n'avons pas pu vérifier si la Garde des informations d'identification est activée.",
+      "Solution": [
+        "Veuillez vérifier si le registre de Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas compléter la vérification."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Credential Guard est activé",
@@ -1114,6 +1426,14 @@
     "Information": "Credential Guard est une fonctionnalité de sécurité de Windows qui aide à protéger les informations d'identification des utilisateurs et les informations sensibles contre l'accès non autorisé et le vol. Elle utilise la sécurité basée sur la virtualisation pour isoler et protéger les informations d'identification, rendant ainsi plus difficile aux attaquants de voler des mots de passe et d'autres données sensibles."
   },
   "40": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : NetBIOS sur TCP/IP activé/désactivé",
+      "Failed": "Nous n'avons pas pu vérifier l'état du NetBIOS.",
+      "Solution": [
+        "Veuillez vérifier si le registre de Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas compléter la vérification."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "NetBIOS sur TCP/IP est désactivé",
@@ -1148,6 +1468,14 @@
     "Information": "NetBIOS sur TCP/IP est un protocole de réseau hérité qui permet aux ordinateurs de communiquer sur un réseau local. Désactiver NetBIOS sur TCP/IP contribue à réduire la surface d'attaque de votre système et à prévenir les vulnérabilités potentielles de sécurité associées à ce protocole."
   },
   "41": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Service WPAD activé/désactivé",
+      "Failed": "Nous n'avons pas pu vérifier l'état de WPAD.",
+      "Solution": [
+        "Veuillez vérifier si le registre de Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas compléter la vérification."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Le service WPAD est désactivé",
@@ -1176,6 +1504,14 @@
     "Information": "Web Proxy Auto-Discovery (WPAD) est un protocole qui permet aux navigateurs web de découvrir automatiquement les serveurs proxy sur un réseau. Désactiver le service WPAD aide à prévenir les risques potentiels de sécurité associés à la configuration automatique de proxy et protège votre système contre la découverte et la configuration non autorisées de serveurs proxy."
   },
   "42": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Verrouillage automatique de l'écran de Windows activé/désactivé",
+      "Failed": "Nous n'avons pas pu vérifier si le verrouillage de l'écran est activé.",
+      "Solution": [
+        "Veuillez vérifier si le registre de Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas compléter la vérification."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Le verrouillage automatique de l'écran de Windows est activé",

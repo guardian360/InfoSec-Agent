@@ -1,5 +1,13 @@
 {
   "1": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: Apparaten verbonden via bluetooth",
+      "Failed": "We konden niet controleren of er apparaten via bluetooth zijn verbonden.",
+      "Solution": [
+        "Controleer of het Windows-register direct wordt gebruikt. Wanneer de sleutel voor deze controle in gebruik is, kunnen we de controle niet voltooien."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Geen apparaten verbonden via Bluetooth",
@@ -24,6 +32,14 @@
     "Information": "Bluetooth-technologie maakt draadloze gegevensoverdracht en -ontvangst mogelijk. Hoewel deze functionaliteit meestal onschadelijk is wanneer deze wordt gebruikt zoals bedoeld, kan het een beveiligingsrisico worden als het wordt misbruikt door kwaadwillende actoren. Als een kwaadwillende persoon ongeautoriseerde toegang krijgt tot uw apparaat via een Bluetooth-verbinding, kan hij mogelijk uw gegevens stelen, uw activiteiten afluisteren of zelfs malware naar uw apparaat sturen. Om deze risico's te verminderen, is het cruciaal om uw apparaat alleen met bekende en vertrouwde apparaten te verbinden."
   },
   "2": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: Apparaten verbonden via USB-poorten",
+      "Failed": "We konden niet controleren of er apparaten via USB-poorten zijn verbonden.",
+      "Solution": [
+        "Controleer of het Windows-register direct wordt gebruikt. Wanneer de sleutel voor deze controle in gebruik is, kunnen we de controle niet voltooien."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Geen externe apparaten aangesloten",
@@ -44,6 +60,14 @@
     "Information": "Externe apparaten zoals USB-sticks, externe harde schijven en andere randapparatuur kunnen veiligheidsrisico's voor uw computer vormen. Malware kan worden verspreid via geïnfecteerde externe apparaten, wat de veiligheid en integriteit van uw systeem kan compromitteren. Door ervoor te zorgen dat er geen externe apparaten zijn aangesloten op uw computer wanneer deze niet in gebruik zijn, vermindert u het risico op malware-infectie en ongeautoriseerde toegang tot uw systeem."
   },
   "3": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: Gastaccount ingeschakeld/uitgeschakeld",
+      "Failed": "We konden niet controleren of er een gastaccount is ingeschakeld.",
+      "Solution": [
+        "Controleer of het Windows-register direct wordt gebruikt. Wanneer de sleutel voor deze controle in gebruik is, kunnen we de controle niet voltooien."
+      ]
+    },
     "0": {
       "Severity": -1,
       "Name": "Status van gastaccount onbekend",
@@ -96,6 +120,14 @@
     "Information": "Het gastaccount is een standaardaccount dat is ontworpen om tijdelijke en beperkte toegang tot het systeem te bieden voor personen zonder reguliere gebruikersaccounts. Als u de enige gebruiker van de computer bent en geen gastaccount nodig heeft, is het raadzaam om het uit te schakelen. Dit zorgt ervoor dat geen ongeautoriseerde gebruikers toegang hebben tot gegevens op de computer, wat de algehele veiligheid en privacy verbetert."
   },
   "4": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: Advertentie-ID ingeschakeld/uitgeschakeld",
+      "Failed": "We konden niet controleren of de advertentie-ID wordt gedeeld met apps.",
+      "Solution": [
+        "Controleer of het Windows-register direct wordt gebruikt. Wanneer de sleutel voor deze controle in gebruik is, kunnen we de controle niet voltooien."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Het delen van advertentie-ID's is uitgeschakeld",
@@ -124,6 +156,14 @@
     "Information": "De advertentie-ID-instelling stelt Windows in staat om u gepersonaliseerde advertenties te sturen. Het is belangrijk om het aantal entiteiten dat uw persoonlijke gegevens bezit te beperken, daarom is het veiliger om deze instelling uit te schakelen."
   },
   "5": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: Wachtwoordbeheerder geïnstalleerd",
+      "Failed": "We konden niet controleren of er een wachtwoordbeheerder is geïnstalleerd.",
+      "Solution": [
+        "Controleer of het Windows-register direct wordt gebruikt. Wanneer de sleutel voor deze controle in gebruik is, kunnen we de controle niet voltooien."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Wachtwoordbeheerder in gebruik",
@@ -148,6 +188,14 @@
     "Information": "Het gebruik van een wachtwoordmanager biedt verschillende voordelen voor individuen en organisaties, voornamelijk op het gebied van verbeterde beveiliging, gemak en algemene wachtwoordbeheerpraktijken. Hier zijn enkele belangrijke redenen waarom u zou moeten overwegen een wachtwoordmanager te gebruiken. Sterkere wachtwoorden: Wachtwoordmanagers kunnen complexe, unieke wachtwoorden voor elk van uw accounts genereren. Deze wachtwoorden zijn doorgaans lang, willekeurig en moeilijk te kraken, waardoor de beveiliging van uw online accounts aanzienlijk wordt verbeterd in vergelijking met het gebruik van zwakke of hergebruikte wachtwoorden. Eliminatie van wachtwoordhergebruik: Een van de meest voorkomende beveiligingsvalkuilen is het hergebruiken van wachtwoorden op meerdere accounts. Wachtwoordmanagers stellen u in staat unieke wachtwoorden voor elk account te genereren en op te slaan, waardoor het risico op ongeoorloofde toegang wordt verminderd als een account wordt gecompromitteerd. Gemak: Wachtwoordmanagers stroomlijnen het inlogproces op websites en online diensten door automatisch inloggegevens voor u in te vullen. Dit bespaart tijd en moeite, vooral bij het beheren van talrijke accounts op verschillende platforms. Veilige opslag: Wachtwoordmanagers versleutelen en bewaren uw wachtwoorden in een veilige kluis, waardoor ze worden beschermd tegen ongeoorloofde toegang. Veel wachtwoordmanagers bieden ook extra beveiligingsfuncties zoals tweefactorauthenticatie (2FA) en biometrische authenticatie om de bescherming verder te verbeteren."
   },
   "6": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: applicaties met locatierechten",
+      "Failed": "We konden niet controleren welke applicaties locatierechten hebben.",
+      "Solution": [
+        "Controleer of het Windows-register direct wordt gebruikt. Wanneer de sleutel voor deze controle in gebruik is, kunnen we de controle niet voltooien."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Applicaties met locatietoestemming",
@@ -176,6 +224,14 @@
     "Information": "Weten welke toepassingen toegang hebben tot uw locatie is belangrijk voor het beschermen van uw privacy. Het helpt u te controleren wie uw locatie kan volgen, veiligheidsrisico's te voorkomen, de levensduur van de batterij te verlengen, het datagebruik te beheren, uw app-ervaring aan te passen en ervoor te zorgen dat u voldoet aan de regelgeving."
   },
   "7": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: applicaties met microfoonrechten",
+      "Failed": "We konden niet controleren welke applicaties microfoonrechten hebben.",
+      "Solution": [
+        "Controleer of het Windows-register direct wordt gebruikt. Wanneer de sleutel voor deze controle in gebruik is, kunnen we de controle niet voltooien."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Applicaties met microfoontoestemming",
@@ -204,6 +260,14 @@
     "Information": "Begrijpen welke toepassingen toegang hebben tot uw microfoon op uw Windows-computer is belangrijk voor het beschermen van uw privacy en vertrouwelijkheid. Het helpt u te controleren wie uw gesprekken kan afluisteren, ongeoorloofd opnemen te voorkomen, gevoelige informatie te beschermen en naleving van regelgeving te waarborgen."
   },
   "8": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: applicaties met webcamrechten",
+      "Failed": "We konden niet controleren welke applicaties webcamrechten hebben.",
+      "Solution": [
+        "Controleer of het Windows-register direct wordt gebruikt. Wanneer de sleutel voor deze controle in gebruik is, kunnen we de controle niet voltooien."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Applicaties met webcamtoestemming",
@@ -232,6 +296,14 @@
     "Information": "Weten welke toepassingen toegang hebben tot uw camera helpt ongeoorloofde toegang te voorkomen. Kwaadaardige software of zelfs legitieme toepassingen met slecht geïmplementeerde beveiligingsfuncties kunnen mogelijk zonder uw medeweten of toestemming toegang krijgen tot uw camera. Door te weten welke toepassingen toegang hebben, kunt u ongeoorloofde pogingen identificeren en blokkeren."
   },
   "9": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: applicaties met afsprakenrechten",
+      "Failed": "We konden niet controleren welke applicaties afsprakenrechten hebben.",
+      "Solution": [
+        "Controleer of het Windows-register direct wordt gebruikt. Wanneer de sleutel voor deze controle in gebruik is, kunnen we de controle niet voltooien."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Aanvragen met toestemming voor afspraken",
@@ -260,6 +332,14 @@
     "Information": "Begrijpen welke toepassingen toegang hebben tot uw agenda of afspraken is cruciaal voor het beschermen van uw privacy en schema. Het helpt u te controleren wie uw gevoelige afspraakinformatie kan bekijken en mogelijk misbruiken, ongeoorloofde toegang te voorkomen en het datagebruik te beheren."
   },
   "10": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: applicaties met contactrechten",
+      "Failed": "We konden niet controleren welke applicaties contactrechten hebben.",
+      "Solution": [
+        "Controleer of het Windows-register direct wordt gebruikt. Wanneer de sleutel voor deze controle in gebruik is, kunnen we de controle niet voltooien."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Applicaties met toestemming voor contacten",
@@ -288,6 +368,14 @@
     "Information": "Begrijpen welke toepassingen toegang hebben tot uw contacten op uw Windows-computer is goed voor het beschermen van uw privacy. Het stelt u in staat te controleren wie uw contactgegevens kan bekijken en mogelijk misbruiken, ongeoorloofde toegang te voorkomen en het datagebruik te beheren."
   },
   "11": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: Openstaande poorten gebruikt door applicaties",
+      "Failed": "We konden niet controleren welke poorten open zijn.",
+      "Solution": [
+        "Controleer of het Windows-register direct wordt gebruikt. Wanneer de sleutel voor deze controle in gebruik is, kunnen we de controle niet voltooien."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Open poorten",
@@ -303,6 +391,14 @@
     "Information": "Een open poort is er een die de ontvangst van datapakketten mogelijk maakt. Bepaalde toepassingen hebben specifieke poorten nodig om gegevens te ontvangen, dus het hebben van open poorten op zich vormt geen intrinsiek risico. Sommige poorten kunnen echter onvoldoende bescherming bieden, wat mogelijk ongeoorloofde communicatie toestaat en beveiligingskwetsbaarheden introduceert. Het is essentieel om poorten alleen open te houden wanneer ze actief in gebruik zijn en ze te sluiten wanneer ze niet nodig zijn. Aangezien talrijke open poorten het aanvalsoppervlak van uw computer kunnen vergroten, is het raadzaam om de netwerkpoorten van uw systeem regelmatig te controleren en te beveiligen om deze risico's te verminderen en een sterke beveiligingspositie te behouden."
   },
   "12": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: Extern bureaublad ingeschakeld/uitgeschakeld",
+      "Failed": "We konden niet controleren of de functie voor Extern bureaublad is ingeschakeld.",
+      "Solution": [
+        "Controleer of het Windows-register direct wordt gebruikt. Wanneer de sleutel voor deze controle in gebruik is, kunnen we de controle niet voltooien."
+      ]
+    },
     "0": {
       "Severity": 3,
       "Name": "Extern bureaublad ingeschakeld",
@@ -324,6 +420,14 @@
     "Information": "Remote Desktop is een ingebouwde functie in het Windows-besturingssysteem waarmee gebruikers op afstand toegang kunnen krijgen tot en controle kunnen hebben over een andere Windows-computer via een netwerk of internet. Het stelt gebruikers in staat om verbinding te maken met een externe computer alsof ze ervoor zitten, met volledige toegang tot het externe bureaublad, applicaties, bestanden en bronnen. Als u deze functie niet gebruikt, is het veiliger om deze uit te schakelen."
   },
   "13": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: Serverberichtblok ingeschakeld/uitgeschakeld",
+      "Failed": "We konden de statussen van het SMB-protocol niet controleren.",
+      "Solution": [
+        "Controleer of het Windows-register direct wordt gebruikt. Wanneer de sleutel voor deze controle in gebruik is, kunnen we de controle niet voltooien."
+      ]
+    },
     "0": {
       "Severity": 2,
       "Name": "SMB alle versies uitgeschakeld",
@@ -376,6 +480,14 @@
     "Information": "Het SMB (Server Message Block)-protocol wordt gebruikt voor het delen van bestanden, printers en andere bronnen tussen apparaten op een netwerk in Windows-omgevingen. Het is essentieel om ervoor te zorgen dat de SMB-instellingen op uw Windows-computer correct zijn geconfigureerd. Het SMBv1-protocol heeft talrijke bekende kwetsbaarheden en moet daarom nooit worden gebruikt. Het gebruik van SMBv2/v3 is de veiligere optie."
   },
   "14": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: Gebruikersaccountbeheer ingeschakeld/uitgeschakeld",
+      "Failed": "We konden het UAC-niveau op uw systeem niet controleren.",
+      "Solution": [
+        "Controleer of het Windows-register direct wordt gebruikt. Wanneer de sleutel voor deze controle in gebruik is, kunnen we de controle niet voltooien."
+      ]
+    },
     "0": {
       "Severity": 3,
       "Name": "Gebruikersaccountbeheer uitgeschakeld",
@@ -482,6 +594,14 @@
     "Information": "User Account Control (UAC) is een beveiligingsfunctie die geïntroduceerd is in Windows Vista en aanwezig is in latere versies van het Windows-besturingssysteem. Het hoofddoel is om de beveiliging van het besturingssysteem te verbeteren door de privileges van applicaties en processen die draaien met standaard gebruikersrechten te beperken en voor taken die verhoogde rechten vereisen, goedkeuring van de beheerder te vereisen."
   },
   "15": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: Windows Defender ingeschakeld/uitgeschakeld",
+      "Failed": "We konden de status van Windows Defender niet controleren.",
+      "Solution": [
+        "Controleer of het Windows-register direct wordt gebruikt. Wanneer de sleutel voor deze controle in gebruik is, kunnen we de controle niet voltooien."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Windows Defender is ingeschakeld",
@@ -524,6 +644,14 @@
     "Information": "Windows Defender bewaakt continu uw systeem op verdachte activiteiten, waaronder malware, virussen en andere vormen van schadelijke software. Door het ingeschakeld te hebben, heeft u een actieve verdediging tegen potentiële bedreigingen die uw privacy of beveiliging kunnen compromitteren. Het ontvangt ook regelmatige updates van Microsoft om op de hoogte te blijven van de nieuwste beveiligingsdreigingen en kwetsbaarheden. Door het ingeschakeld te houden, zorgt u ervoor dat uw computer beschermd is tegen nieuw opkomende bedreigingen die bekende beveiligingszwakheden kunnen misbruiken."
   },
   "16": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: Laatste wijziging van het Windows-wachtwoord",
+      "Failed": "We konden niet controleren wanneer de laatste wachtwoordwijziging was.",
+      "Solution": [
+        "Controleer of het Windows-register direct wordt gebruikt. Wanneer de sleutel voor deze controle in gebruik is, kunnen we de controle niet voltooien."
+      ]
+    },
     "0": {
       "Severity": 2,
       "Name": "De laatste wachtwoordwijziging was meer dan 6 maanden geleden",
@@ -550,6 +678,14 @@
     "Information": "Regelmatig uw wachtwoord wijzigen vermindert de kans op ongeoorloofde toegang tot uw computer of gevoelige informatie. Als iemand er toch in slaagt uw wachtwoord te verkrijgen, beperkt regelmatig wijzigen de tijd die ze hebben om het te misbruiken. Het is daarom een goede gewoonte om uw wachtwoord minstens twee keer per jaar te wijzigen."
   },
   "17": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: Windows aanmeldmethode",
+      "Failed": "We konden niet controleren welke aanmeldmethoden worden gebruikt.",
+      "Solution": [
+        "Controleer of het Windows-register direct wordt gebruikt. Wanneer de sleutel voor deze controle in gebruik is, kunnen we de controle niet voltooien."
+      ]
+    },
     "0": {
       "Severity": 3,
       "Name": "Er is geen Windows-inlogmethode ingesteld",
@@ -598,6 +734,14 @@
     "Information": "Het gebruik van een veilige Windows aanmeldingsmethode is belangrijk. Windows ondersteunt verschillende aanmeldingsmethoden zoals wachtwoord, PIN, beveiligingssleutel of vingerafdruk. Het gebruik van een van deze aanmeldingsmethoden is belangrijk om uw gegevens veilig te houden. Zonder een van deze aanmeldingsmethoden kan iedereen uw apparaat ontgrendelen en toegang krijgen tot uw gegevens. Als u geen aanmeldingsmethode gebruikt / een minder veilige aanmeldingsmethode gebruikt / een combinatie van aanmeldingsmethoden gebruikt, wordt aangeraden over te stappen naar een veiligere aanmeldingsmethode zoals een wachtwoord of vingerafdruk."
   },
   "18": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: Windows-versie up-to-date",
+      "Failed": "We konden niet controleren wanneer de laatste wachtwoordwijziging was.",
+      "Solution": [
+        "Controleer of het Windows-register direct wordt gebruikt. Wanneer de sleutel voor deze controle in gebruik is, kunnen we de controle niet voltooien."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Windows-versie is up-to-date",
@@ -634,6 +778,14 @@
     "Information": "Verouderde Windows-versies kunnen ongepatchte beveiligingslekken bevatten die door aanvallers kunnen worden misbruikt om het systeem te compromitteren. Hackers zoeken actief naar en misbruiken kwetsbaarheden in verouderde besturingssystemen, wat kan leiden tot ongeautoriseerde toegang, datalekken en malware-infecties."
   },
   "19": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: Secure boot ingeschakeld/uitgeschakeld",
+      "Failed": "We konden niet controleren of Secure boot is ingeschakeld.",
+      "Solution": [
+        "Controleer of het Windows-register direct wordt gebruikt. Wanneer de sleutel voor deze controle in gebruik is, kunnen we de controle niet voltooien."
+      ]
+    },
     "0": {
       "Severity": 1,
       "Name": "Veilig opstarten is uitgeschakeld",
@@ -665,6 +817,14 @@
     "Information": "Secure Boot zorgt ervoor dat alleen vertrouwde softwarecomponenten, ondertekend met erkende digitale handtekeningen, worden geladen tijdens het opstartproces. Dit voorkomt dat malware en andere ongeautoriseerde software het opstartproces manipuleren en controle over het systeem krijgen in een vroeg stadium."
   },
   "20": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: applicaties die bij het opstarten van het systeem worden gestart",
+      "Failed": "We konden niet controleren welke applicaties bij het opstarten van het systeem worden gestart.",
+      "Solution": [
+        "Controleer of het Windows-register direct wordt gebruikt. Wanneer de sleutel voor deze controle in gebruik is, kunnen we de controle niet voltooien."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Geen applicaties die starten bij het opstarten",
@@ -689,6 +849,14 @@
     "Information": "Bij het opstarten van uw computer starten automatisch verschillende applicaties op. Sommige daarvan zijn essentiële processen voor een goed functionerend systeem, terwijl andere handig zijn om bij het opstarten beschikbaar te hebben. Er kunnen echter ook applicaties zijn die bij het opstarten starten zonder dat u het weet. Het is verstandig om deze uit te schakelen om ongeautoriseerde acties te voorkomen en de opstartsnelheid van uw computer te verbeteren."
   },
   "21": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: Google Chrome heeft een adblocker geïnstalleerd",
+      "Failed": "We konden niet controleren of uw browser een adblocker heeft geïnstalleerd.",
+      "Solution": [
+        "Zorg ervoor dat uw browser gesloten is, deze controle kan niet worden voltooid als de browser geopend is."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Google Chrome met een adblocker geïnstalleerd",
@@ -715,6 +883,14 @@
     "Information": "Adblockers beschermen gebruikers tegen online advertenties. Met hun filters en algoritmes bieden ze een toevluchtsoord van ononderbroken browsen, waardoor gebruikers worden gespaard van visuele rommel en potentiële beveiligingsrisico's die advertenties met zich meebrengen."
   },
   "22": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: Microsoft Edge heeft een adblocker geïnstalleerd",
+      "Failed": "We konden niet controleren of uw browser een adblocker heeft geïnstalleerd.",
+      "Solution": [
+        "Zorg ervoor dat uw browser gesloten is, deze controle kan niet worden voltooid als de browser geopend is."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Microsoft Edge met een geïnstalleerde adblocker",
@@ -741,6 +917,14 @@
     "Information": "Adblockers beschermen gebruikers tegen online advertenties. Met hun filters en algoritmes bieden ze een toevluchtsoord van ononderbroken browsen, waardoor gebruikers worden gespaard van visuele rommel en potentiële beveiligingsrisico's die advertenties met zich meebrengen."
   },
   "23": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: Phishing-domeinen gevonden in de geschiedenis van Google Chrome",
+      "Failed": "We konden uw browsergeschiedenis niet controleren.",
+      "Solution": [
+        "Zorg ervoor dat uw browser gesloten is, deze controle kan niet worden voltooid als de browser geopend is."
+      ]
+    },
     "0": {
       "Severity": 2,
       "Name": "Potentiële phishing-domeinen gevonden op Google Chrome",
@@ -761,6 +945,14 @@
     "Information": "Phishing-domeinen zijn nepwebsites die zijn ontworpen om mensen te misleiden zodat ze gevoelige informatie zoals wachtwoorden of creditcardgegevens delen. Ze zien er echt uit en bootsen vertrouwde merken of organisaties na. Deze oplichting maakt gebruik van vertrouwen en nieuwsgierigheid om persoonlijke gegevens te stelen."
   },
   "24": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: Phishing-domeinen gevonden in de geschiedenis van Microsoft Edge",
+      "Failed": "We konden uw browsergeschiedenis niet controleren.",
+      "Solution": [
+        "Zorg ervoor dat uw browser gesloten is, deze controle kan niet worden voltooid als de browser geopend is."
+      ]
+    },
     "0": {
       "Severity": 2,
       "Name": "Potentiële phishing-domeinen gevonden op Microsoft Edge",
@@ -781,6 +973,14 @@
     "Information": "Phishing-domeinen zijn nepwebsites die zijn ontworpen om mensen te misleiden zodat ze gevoelige informatie zoals wachtwoorden of creditcardgegevens delen. Ze zien er echt uit en bootsen vertrouwde merken of organisaties na. Deze oplichting maakt gebruik van vertrouwen en nieuwsgierigheid om persoonlijke gegevens te stelen."
   },
   "25": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: Google Chrome-zoekmachine in gebruik",
+      "Failed": "We konden uw browserzoekmachine niet controleren.",
+      "Solution": [
+        "Zorg ervoor dat uw browser gesloten is, deze controle kan niet worden voltooid als de browser geopend is."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Standaardzoekmachine gebruikt in Google Chrome",
@@ -793,6 +993,14 @@
     "Information": "Een standaard zoekmachine helpt gebruikers informatie op internet te vinden door zoekwoorden of zinnen in te voeren. Voorbeelden zijn Google, Bing en Yahoo. Ze worden vaak bekritiseerd vanwege hun benadering van privacy."
   },
   "26": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: Microsoft Edge-zoekmachine in gebruik",
+      "Failed": "We konden uw browserzoekmachine niet controleren.",
+      "Solution": [
+        "Zorg ervoor dat uw browser gesloten is, deze controle kan niet worden voltooid als de browser geopend is."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Standaardzoekmachine gebruikt in Microsoft Edge",
@@ -805,6 +1013,14 @@
     "Information": "Een standaard zoekmachine helpt gebruikers informatie op internet te vinden door zoekwoorden of zinnen in te voeren. Voorbeelden zijn Google, Bing en Yahoo. Ze worden vaak bekritiseerd vanwege hun benadering van privacy."
   },
   "27": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: Mozilla Firefox-cookies opgeslagen",
+      "Failed": "We konden uw browsercookies niet controleren.",
+      "Solution": [
+        "Zorg ervoor dat uw browser gesloten is, deze controle kan niet worden voltooid als de browser geopend is."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Er zijn geen trackingcookies gevonden in Mozilla Firefox",
@@ -832,6 +1048,14 @@
     "Information": "Cookies zijn kleine tekstbestanden die door websites die u bezoekt op uw computer worden opgeslagen. Ze worden gebruikt om uw voorkeuren, aanmeldingsgegevens en andere gegevens te onthouden om uw surfervaring te verbeteren. Cookies kunnen echter ook worden gebruikt om uw online activiteiten te volgen en persoonlijke informatie te verzamelen zonder uw toestemming, wat privacyzorgen oproept. Het regelmatig beheren en wissen van cookies helpt uw privacy te beschermen en controle te houden over de gegevens die websites over u verzamelen."
   },
   "28": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: Mozilla Firefox-extensies geïnstalleerd",
+      "Failed": "We konden uw browserextensies niet controleren.",
+      "Solution": [
+        "Zorg ervoor dat uw browser gesloten is, deze controle kan niet worden voltooid als de browser geopend is."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Extensies geïnstalleerd in Mozilla Firefox",
@@ -850,6 +1074,14 @@
     "Information": "Browserextensies verbeteren de functionaliteit van uw webbrowser door functies, tools en aanpassingsopties toe te voegen. Hoewel extensies nuttig kunnen zijn, kunnen ze ook privacy- en beveiligingsrisico's vormen als ze toegang hebben tot gevoelige gegevens of uw online activiteiten volgen zonder uw toestemming. Door regelmatig uw browserextensies te controleren en te beheren, beschermt u uw privacy en veiligheid online. Verwijder extensies die u niet meer gebruikt of vertrouwt om mogelijke risico's te minimaliseren."
   },
   "29": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: Mozilla Firefox heeft een adblocker geïnstalleerd",
+      "Failed": "We konden niet controleren of uw browser een adblocker heeft geïnstalleerd.",
+      "Solution": [
+        "Zorg ervoor dat uw browser gesloten is, deze controle kan niet worden voltooid als de browser geopend is."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Mozilla Firefox met een adblocker geïnstalleerd",
@@ -880,6 +1112,14 @@
     "Information": "Adblockers beschermen gebruikers tegen online advertenties. Met hun filters en algoritmes bieden ze een toevluchtsoord van ononderbroken browsen, waardoor gebruikers worden gespaard van visuele rommel en potentiële beveiligingsrisico's die advertenties met zich meebrengen."
   },
   "30": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: Mozilla Firefox-zoekmachine in gebruik",
+      "Failed": "We konden uw browserzoekmachine niet controleren.",
+      "Solution": [
+        "Zorg ervoor dat uw browser gesloten is, deze controle kan niet worden voltooid als de browser geopend is."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Standaardzoekmachine in Mozilla Firefox",
@@ -892,6 +1132,14 @@
     "Information": "Een standaard zoekmachine helpt gebruikers informatie op internet te vinden door zoekwoorden of zinnen in te voeren. Voorbeelden zijn Google, Bing en Yahoo. Ze worden vaak bekritiseerd vanwege hun benadering van privacy."
   },
   "31": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: Phishing-domeinen gevonden in de Mozilla Firefox-geschiedenis",
+      "Failed": "We konden uw browsergeschiedenis niet controleren.",
+      "Solution": [
+        "Zorg ervoor dat uw browser gesloten is, deze controle kan niet worden voltooid als de browser geopend is."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Geen potentiële phishing-domeinen gevonden in Mozilla Firefox",
@@ -912,6 +1160,14 @@
     "Information": "Phishing-domeinen zijn nepwebsites die zijn ontworpen om mensen te misleiden zodat ze gevoelige informatie zoals wachtwoorden of creditcardgegevens delen. Ze zien er echt uit en bootsen vertrouwde merken of organisaties na. Deze oplichting maakt gebruik van vertrouwen en nieuwsgierigheid om persoonlijke gegevens te stelen."
   },
   "32": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: CIS-auditlijst registerinstellingen",
+      "Failed": "We konden de registerinstellingen voor de CIS-auditlijst niet controleren.",
+      "Solution": [
+        "Controleer of het Windows-register rechtstreeks wordt gebruikt. Als de sleutel voor deze controle wordt gebruikt, kunnen we de controle niet voltooien."
+      ]
+    },
     "0": {
       "Severity": 1,
       "Name": "Onjuiste registerinstellingen voor de CIS-auditlijst",
@@ -934,6 +1190,14 @@
     "Information": "Het Center for Internet Security (CIS) biedt richtlijnen en best practices voor het beveiligen van computersystemen. De CIS Audit-lijst met registerinstellingen helpt ervoor te zorgen dat uw systeem is geconfigureerd volgens deze beveiligingsnormen. Onjuiste of verouderde registerinstellingen kunnen uw systeem kwetsbaar maken voor beveiligingsbedreigingen en uw privacy compromitteren."
   },
   "33": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: Automatisch inloggen ingeschakeld/uitgeschakeld",
+      "Failed": "We konden niet controleren of automatisch inloggen is ingeschakeld.",
+      "Solution": [
+        "Controleer of het Windows-register rechtstreeks wordt gebruikt. Als de sleutel voor deze controle wordt gebruikt, kunnen we de controle niet voltooien."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Automatisch inloggen uitgeschakeld",
@@ -958,6 +1222,14 @@
     "Information": "Automatisch inloggen stelt gebruikers in staat om toegang te krijgen tot hun accounts zonder telkens een wachtwoord in te voeren wanneer ze hun computer starten of een specifieke toepassing openen. Hoewel handig, brengt automatisch inloggen veiligheidsrisico's met zich mee, omdat iedereen met fysieke toegang tot het apparaat toegang tot het account kan krijgen zonder verificatie. Het uitschakelen van automatisch inloggen verbetert de beveiliging van uw accounts en voorkomt ongeautoriseerde toegang."
   },
   "34": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: Remote Procedure Call ingeschakeld/uitgeschakeld",
+      "Failed": "We konden niet controleren of RPC is ingeschakeld op uw apparaat.",
+      "Solution": [
+        "Controleer of het Windows-register rechtstreeks wordt gebruikt. Als de sleutel voor deze controle wordt gebruikt, kunnen we de controle niet voltooien."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Externe RPC uitgeschakeld",
@@ -986,6 +1258,14 @@
     "Information": "Remote Procedure Call (RPC) is een protocol waarmee programma's en processen met elkaar kunnen communiceren op een netwerk. Het uitschakelen van Remote RPC helpt ongeautoriseerde toegang tot uw computer te voorkomen en beschermt deze tegen mogelijke beveiligingsrisico's en kwetsbaarheden."
   },
   "35": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: Google Chrome-cookies opgeslagen",
+      "Failed": "We konden uw browsercookies niet controleren.",
+      "Solution": [
+        "Zorg ervoor dat uw browser gesloten is, deze controle kan niet worden voltooid als de browser geopend is."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Geen mogelijke tracking cookies gevonden in de Google Chrome browser",
@@ -1014,6 +1294,14 @@
     "Information": "Cookies zijn kleine tekstbestanden die door websites worden opgeslagen op uw computer wanneer u ze bezoekt. Ze worden gebruikt om uw voorkeuren, aanmeldingsinformatie en andere gegevens te onthouden om uw browse-ervaring te verbeteren. Echter, cookies kunnen ook worden gebruikt om uw online activiteiten te volgen en persoonlijke informatie te verzamelen zonder uw toestemming, wat privacyzorgen oproept. Het regelmatig beheren en wissen van cookies helpt uw privacy te beschermen en controle te houden over de gegevens die websites over u verzamelen."
   },
   "36": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: Microsoft Edge-cookies opgeslagen",
+      "Failed": "We konden uw browsercookies niet controleren.",
+      "Solution": [
+        "Zorg ervoor dat uw browser gesloten is, deze controle kan niet worden voltooid als de browser geopend is."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Geen mogelijke tracking cookies gevonden in Microsoft Edge browser",
@@ -1042,6 +1330,14 @@
     "Information": "Cookies zijn kleine tekstbestanden die door websites worden opgeslagen op uw computer wanneer u ze bezoekt. Ze worden gebruikt om uw voorkeuren, aanmeldingsinformatie en andere gegevens te onthouden om uw browse-ervaring te verbeteren. Echter, cookies kunnen ook worden gebruikt om uw online activiteiten te volgen en persoonlijke informatie te verzamelen zonder uw toestemming, wat privacyzorgen oproept. Het regelmatig beheren en wissen van cookies helpt uw privacy te beschermen en controle te houden over de gegevens die websites over u verzamelen."
   },
   "37": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: Windows Firewall ingeschakeld/uitgeschakeld",
+      "Failed": "We konden de status van de Windows Firewall niet controleren.",
+      "Solution": [
+        "Controleer of het Windows-register rechtstreeks wordt gebruikt. Als de sleutel voor deze controle wordt gebruikt, kunnen we de controle niet voltooien."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Windows Firewall is ingeschakeld voor alle profielen",
@@ -1066,6 +1362,14 @@
     "Information": "De Windows Firewall is een ingebouwde beveiligingsfunctie die uw computer beschermt tegen ongeautoriseerde toegang en kwaadaardige software door inkomend en uitgaand netwerkverkeer te monitoren en te controleren. Door de Windows Firewall in te schakelen voor alle netwerkprofielen (openbaar, privé en domein), wordt de beveiliging van uw systeem verbeterd en worden potentiële beveiligingsrisico's voorkomen."
   },
   "38": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: Lengte van het Windows-wachtwoord",
+      "Failed": "We konden de complexiteit van uw wachtwoord niet controleren.",
+      "Solution": [
+        "Controleer of het Windows-register rechtstreeks wordt gebruikt. Als de sleutel voor deze controle wordt gebruikt, kunnen we de controle niet voltooien."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "De minimale wachtwoordlengte is ingesteld op minimaal 15 tekens",
@@ -1094,6 +1398,14 @@
     "Information": "Het instellen van een minimum wachtwoordlengte van minimaal 15 tekens helpt de beveiliging van gebruikersaccounts te verbeteren door de complexiteit en sterkte van wachtwoorden te vergroten. Langere wachtwoorden zijn beter bestand tegen brute-force-aanvallen en bieden betere bescherming tegen ongeautoriseerde toegang en gegevenslekken."
   },
   "39": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: Credential Guard ingeschakeld/uitgeschakeld",
+      "Failed": "We konden niet controleren of Credential Guard is ingeschakeld.",
+      "Solution": [
+        "Controleer of het Windows-register rechtstreeks wordt gebruikt. Als de sleutel voor deze controle wordt gebruikt, kunnen we de controle niet voltooien."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Credential Guard is ingeschakeld",
@@ -1114,6 +1426,14 @@
     "Information": "Credential Guard is een beveiligingsfunctie in Windows die helpt bij het beschermen van gebruikersreferenties en gevoelige informatie tegen ongeautoriseerde toegang en diefstal. Het maakt gebruik van virtualisatiegebaseerde beveiliging om referentiegegevens te isoleren en te beschermen, waardoor het moeilijker wordt voor aanvallers om wachtwoorden en andere gevoelige gegevens te stelen."
   },
   "40": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: NetBIOS via TCP/IP ingeschakeld/uitgeschakeld",
+      "Failed": "We konden de staat van de NetBIOS niet controleren.",
+      "Solution": [
+        "Controleer of het Windows-register rechtstreeks wordt gebruikt. Als de sleutel voor deze controle wordt gebruikt, kunnen we de controle niet voltooien."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "NetBIOS via TCP/IP is uitgeschakeld",
@@ -1148,6 +1468,14 @@
     "Information": "NetBIOS via TCP/IP is een verouderd netwerkprotocol waarmee computers kunnen communiceren in een lokaal netwerk. Het uitschakelen van NetBIOS via TCP/IP helpt het aanvalsoppervlak van uw systeem te verminderen en potentiële beveiligingsproblemen die met dit protocol samenhangen te voorkomen."
   },
   "41": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: WPAD-service ingeschakeld/uitgeschakeld",
+      "Failed": "We konden de status van WPAD niet controleren.",
+      "Solution": [
+        "Controleer of het Windows-register rechtstreeks wordt gebruikt. Als de sleutel voor deze controle wordt gebruikt, kunnen we de controle niet voltooien."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "WPAD-service is uitgeschakeld",
@@ -1176,6 +1504,14 @@
     "Information": "Web Proxy Auto-Discovery (WPAD) is een protocol waarmee webbrowsers automatisch proxy-servers op een netwerk kunnen ontdekken. Het uitschakelen van de WPAD-service helpt potentiële beveiligingsrisico's te voorkomen die samenhangen met automatische proxyconfiguratie, en beschermt uw systeem tegen ongeautoriseerde ontdekking en configuratie van proxy-servers."
   },
   "42": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Controle mislukt: Automatische schermvergrendeling van Windows ingeschakeld/uitgeschakeld",
+      "Failed": "We konden niet controleren of de schermvergrendeling is ingeschakeld.",
+      "Solution": [
+        "Controleer of het Windows-register rechtstreeks wordt gebruikt. Als de sleutel voor deze controle wordt gebruikt, kunnen we de controle niet voltooien."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Automatische schermvergrendeling van Windows is ingeschakeld",
