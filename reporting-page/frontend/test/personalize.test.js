@@ -28,16 +28,6 @@ jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
   GetImagePath: jest.fn().mockImplementation((input) => mockGetImagePath(input)),
 }));
 
-// Mock FileReader
-const fileReaderIco = global.FileReader = class {
-  /**
-   * Simulates the behavior of the FileReader's readAsDataURL method by triggering the onload event with a mock result.
-   * This method is used for testing purposes to mimic the behavior of FileReader.
-   */
-  readAsDataURL() {
-    this.onload({target: {result: 'data:image/x-icon'}});
-  }
-};
 const fileReaderPng = global.FileReader = class { /**
  * Simulates the behavior of the FileReader's readAsDataURL method by triggering the onload event with a mock result.
  * This method is used for testing purposes to mimic the behavior of FileReader.
