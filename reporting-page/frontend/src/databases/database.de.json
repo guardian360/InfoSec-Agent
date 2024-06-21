@@ -920,7 +920,7 @@
         "Laden Sie den CIS-Benchmark für Ihr Betriebssystem von der offiziellen CIS-Website herunter. "
       ],
       "Screenshots": [
-        "VOLL SEIN"
+        "cis-benchmark/cis-benchmark-1.png"
       ]
     },
     "1": {
@@ -951,7 +951,8 @@
         "Wählen Sie unter „Anmeldung erforderlich“ die Option „Wenn der PC aus dem Ruhezustand aufwacht“ aus."
       ],
       "Screenshots": [
-        "VOLL SEIN"
+        "automatic-login/automatic-login-1.png",
+        "automatic-login/automatic-login-2.png"
       ]
     },
     "Type": "Sicherheit",
@@ -976,7 +977,10 @@
         "Doppelklicken Sie auf den Schlüssel „AllowRemoteRPC“ und setzen Sie seinen Wert auf 0."
       ],
       "Screenshots": [
-        "VOLL SEIN"
+        "remote-rpc/remote-rpc-1.png",
+        "remote-rpc/remote-rpc-2.png",
+        "remote-rpc/remote-rpc-3.png",
+        "remote-rpc/remote-rpc-4.png"
       ]
     },
     "Type": "Sicherheit",
@@ -1049,7 +1053,8 @@
         "Stellen Sie unter „Firewall- und Netzwerkschutz“ sicher, dass die Windows-Firewall für alle Netzwerkprofile (öffentlich, privat und Domäne) aktiviert ist. "
       ],
       "Screenshots": [
-        "VOLL SEIN"
+        "firewall/firewall-1.png",
+        "firewall/firewall-1.png"
       ]
     },
     "Type": "Sicherheit",
@@ -1074,7 +1079,10 @@
         "Starten Sie Ihren Computer neu, um die Änderungen zu übernehmen."
       ],
       "Screenshots": [
-        "VOLL SEIN"
+        "minimum-password-length/minimum-password-length-1.png",
+        "minimum-password-length/minimum-password-length-2.png",
+        "minimum-password-length/minimum-password-length-3.png",
+        "minimum-password-length/minimum-password-length-3.png"
       ]
     },
     "Type": "Sicherheit",
@@ -1095,9 +1103,7 @@
       "Solution": [
         "Die Einstellung von Credential Guard wird in Ihrer lokalen Gruppenrichtlinie verwaltet. "
       ],
-      "Screenshots": [
-        "VOLL SEIN"
-      ]
+      "Screenshots": []
     },
     "Type": "Sicherheit",
     "Information": "Credential Guard ist eine Sicherheitsfunktion in Windows, die dazu beiträgt, Benutzeranmeldeinformationen und sensible Informationen vor unbefugtem Zugriff und Diebstahl zu schützen. Sie verwendet sicherheitsorientierte Virtualisierung, um Anmeldeinformationen zu isolieren und zu schützen, was es Angreifern erschwert, Passwörter und andere sensible Daten zu stehlen."
@@ -1124,7 +1130,13 @@
         "Klicken Sie auf „OK“, um die Änderungen zu speichern."
       ],
       "Screenshots": [
-        "VOLL SEIN"
+        "netbios/netbios-1.png",
+        "netbios/netbios-2.png",
+        "netbios/netbios-3.png",
+        "netbios/netbios-4.png",
+        "netbios/netbios-5.png",
+        "netbios/netbios-6.png",
+        "netbios/netbios-7.png"
       ]
     },
     "Type": "Sicherheit",
@@ -1149,7 +1161,10 @@
         "Starten Sie Ihren Computer neu, um die Änderungen zu übernehmen."
       ],
       "Screenshots": [
-        "VOLL SEIN"
+        "wpad/wpad-1.png",
+        "wpad/wpad-2.png",
+        "wpad/wpad-3.png",
+        "wpad/wpad-3.png"
       ]
     },
     "Type": "Sicherheit",
@@ -1173,7 +1188,9 @@
         "Aktivieren Sie das Kontrollkästchen „Beim Fortsetzen Anmeldebildschirm anzeigen“ und stellen Sie die „Wartezeit“ auf ein kurzes Intervall (2 Minuten oder weniger) ein."
       ],
       "Screenshots": [
-        "VOLL SEIN"
+        "automatic-screen-lock/automatic-screen-lock-1.png",
+        "automatic-screen-lock/automatic-screen-lock-2.png",
+        "automatic-screen-lock/automatic-screen-lock-3.png"
       ]
     },
     "Type": "Sicherheit",
