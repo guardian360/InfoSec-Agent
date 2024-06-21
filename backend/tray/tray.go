@@ -1,7 +1,7 @@
 // Package tray implements the basic functionality of the system tray application
+// It provides functions to handle system tray events such as opening the reporting page, changing the scan interval, initiating an immediate scan, changing the application language, and quitting the application
 //
-// Exported function(s): OnReady, OnQuit, ChangeScanInterval, ScanNow, ChangeLanguage,
-// RefreshMenu
+// Exported function(s): OnReady, OnQuit, OpenReportingPage, ChangeScanInterval, ScanNow, ChangeLanguage, RefreshMenu
 package tray
 
 import (
@@ -186,7 +186,7 @@ func OpenReportingPage() error {
 	logger.Log.Info("Opening reporting page")
 
 	if config.BuildReportingPage {
-		err := BuildReportingPage()
+		err := buildReportingPage()
 		if err != nil {
 			return err
 		}
@@ -223,14 +223,14 @@ func OpenReportingPage() error {
 	return nil
 }
 
-// BuildReportingPage builds the reporting page executable using a Wails application
+// buildReportingPage builds the reporting page executable using a Wails application
 //
 // Parameters:
 //   - path string: The relative path to the reporting-page directory. This is used to change the current working directory to the reporting-page directory.
 //
 // Returns:
 //   - error: An error object if an error occurred during the process, otherwise nil.
-func BuildReportingPage() error {
+func buildReportingPage() error {
 	logger.Log.Debug("Building reporting page")
 
 	// Change directory to reporting-page folder

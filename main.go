@@ -1,6 +1,12 @@
-// Package main contains the entry point of the tray application.
+// The InfoSec Agent is a security and privacy tool for Windows 10 and 11.
+// This module is a lightweight, user-friendly system tray application that identifies security and privacy weaknesses.
+// It does this by scanning the device and programs for vulnerabilities and misconfigurations.
 //
-// Exported function(s): _
+// This package links together with the reporting page module, which is a wails application that displays the results of the scan and provides insights and solutions.
+//
+// This project is a collaborative effort involving nine students from Utrecht University in The Netherlands, in partnership with the Dutch IT company Guardian360.
+// It serves as the Software Project for the Bachelor's Programme in Computing Sciences at the UU.
+// This project is also supported by funding from the SIDN Fund (Stichting Internet Domeinregistratie Nederland), the Dutch domain name registrar.
 package main
 
 //go:generate go-winres make --in scripts/winres/winres.json --product-version=git-tag --file-version=git-tag

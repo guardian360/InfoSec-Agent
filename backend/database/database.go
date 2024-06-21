@@ -1,6 +1,8 @@
 // Package database provides functionality for interacting with the JSON database.
 //
 // Exported function(s): GetData
+//
+// Exported type(s): JSONData, Issue, Result, Data
 package database
 
 import (

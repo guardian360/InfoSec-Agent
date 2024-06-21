@@ -1,6 +1,8 @@
 // Package gamification handles the gamification within the application, to reward users for performing security checks and staying secure.
 //
-// Exported function(s): UpdateGameState, PointCalculation, LighthouseStateTransition
+// Exported function(s): UpdateGameState, PointCalculationGetter.PointCalculation, LighthouseStateTransition, SufficientActivity
+//
+// Exported types(s): GameState, PointCalculationGetter
 package gamification
 
 import (
