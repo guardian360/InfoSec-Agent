@@ -2,7 +2,7 @@
 // This module is a lightweight, user-friendly system tray application that identifies security and privacy weaknesses.
 // It does this by scanning the device and programs for vulnerabilities and misconfigurations.
 //
-// This package links together with the reporting page module, which is a wails application that displays the results of the scan and provides insights and solutions.
+// This package links together with the Reporting Page module, which is a wails application that displays the results of the scan and provides insights and solutions.
 //
 // This project is a collaborative effort involving nine students from Utrecht University in The Netherlands, in partnership with the Dutch IT company Guardian360.
 // It serves as the Software Project for the Bachelor's Programme in Computing Sciences at the UU.
