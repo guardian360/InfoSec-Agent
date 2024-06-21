@@ -8,6 +8,7 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 )
 
+// TODO: Update documentation
 // UACCheck is a function that checks the User Account Control (UAC) level on the system.
 //
 // Parameters:

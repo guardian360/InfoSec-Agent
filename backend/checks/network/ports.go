@@ -11,6 +11,7 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 )
 
+// TODO: Update documentation
 // OpenPorts is a function that checks for open ports on the system and identifies the processes that are using them.
 //
 // Parameters:

@@ -14,6 +14,7 @@ import (
 	"time"
 )
 
+// TODO: Update documentation
 // UserSettings represents the settings for a user in the system.
 //
 // Fields:
@@ -35,6 +36,7 @@ type UserSettings struct {
 
 var defaultUserSettings = UserSettings{Language: 1, ScanInterval: 7, Integration: false, NextScan: time.Now().Add((time.Hour * 24) * 7), Points: 0, PointsHistory: nil, TimeStamps: nil, LighthouseState: 0}
 
+// TODO: Update documentation
 // LoadUserSettings loads the user settings from a JSON file in the Windows AppData folder.
 //
 // The function uses the os package to get the path to the AppData folder, and reads the user settings from a file named "user_settings.json" in this folder.
@@ -81,6 +83,7 @@ func LoadUserSettings() UserSettings {
 	return settings
 }
 
+// TODO: Update documentation
 // SaveUserSettingsGetter is an interface that defines a method for saving user settings.
 //
 // The SaveUserSettings method takes a UserSettings struct as input, which contains the user settings to be saved.
@@ -91,11 +94,13 @@ type SaveUserSettingsGetter interface {
 	SaveUserSettings(settings UserSettings) error
 }
 
+// TODO: Update documentation
 // RealSaveUserSettingsGetter is a struct that implements the SaveUserSettingsGetter interface.
 //
 // It provides a real-world implementation of the SaveUserSettings method, which saves the user settings to a JSON file in the Windows AppData\Roaming folder.
 type RealSaveUserSettingsGetter struct{}
 
+// TODO: Update documentation
 // SaveUserSettings saves the user settings to a JSON file in the Windows AppData\Roaming folder.
 //
 // The function takes a UserSettings struct as input, which contains the user settings to be saved.

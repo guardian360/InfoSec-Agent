@@ -16,6 +16,7 @@ import (
 	"github.com/pierrec/lz4"
 )
 
+// TODO: Update documentation
 // SearchEngineFirefox is a function that retrieves the default search engine used in the Firefox browser.
 //
 // Parameters:
@@ -117,6 +118,7 @@ func SearchEngineFirefox(profileFinder browsers.FirefoxProfileFinder, boolMock b
 	return checks.NewCheckResult(checks.SearchFirefoxID, 0, Results(data))
 }
 
+// TODO: Update documentation
 // Results is a utility function used within the SearchEngineFirefox function.
 // It processes the output string from the decompressed 'search.json.mozlz4' file to identify the default search engine.
 //
@@ -151,6 +153,7 @@ func Results(data []byte) string {
 	return result
 }
 
+// TODO: Update documentation
 // OpenAndStatFile is a function that opens a file and retrieves its size.
 //
 // Parameters:

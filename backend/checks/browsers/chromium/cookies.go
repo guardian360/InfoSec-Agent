@@ -6,6 +6,7 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/browsers"
 )
 
+// TODO: Update documentation
 // CookiesChromium inspects the cookies stored in Chromium based browsers.
 // It does so by using the browsers.QueryCookieDatabase function to query the Cookies database in the specific browser User Data directory.
 // Parameters:
@@ -27,6 +28,7 @@ func CookiesChromium(browser string, getter browsers.DefaultDirGetter, copyGette
 	return queryGetter.QueryCookieDatabase(returnID, browser, cookiesDir, []string{"name", "host_key"}, "cookies", copyGetter)
 }
 
+// TODO: Update documentation
 // GetBrowserPathAndIDCookie is a function that takes a browser name as input,
 // and returns the path to the browser's directory and the ID of the browser for the cookie check.
 //

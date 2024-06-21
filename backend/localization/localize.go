@@ -17,6 +17,7 @@ import (
 var localizers [7]*i18n.Localizer
 var bundle *i18n.Bundle
 
+// TODO: Update documentation
 // Init is a function that sets up the localization bundle and localizers for different languages.
 //
 // It loads localization files from a specified path and creates localizers for each supported language.
@@ -63,6 +64,7 @@ func Init(path string) {
 	localizers[6] = i18n.NewLocalizer(bundle, language.Portuguese.String())
 }
 
+// TODO: Update documentation
 // Localize is a function that retrieves and returns a localized string based on the provided language and message ID.
 //
 // Parameters:
@@ -77,6 +79,7 @@ func Localize(language int, messageID string) string {
 	return localizers[language].MustLocalize(&i18n.LocalizeConfig{MessageID: messageID})
 }
 
+// TODO: Update documentation
 // Localizers is a function that provides access to the array of localizer objects used for string localization.
 //
 // Parameters: None.

@@ -5,6 +5,7 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 )
 
+// TODO: Update documentation
 // RemoteDesktopCheck is a function that checks if the Remote Desktop feature is enabled on the system.
 //
 // Parameters:

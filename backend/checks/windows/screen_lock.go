@@ -7,6 +7,7 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 )
 
+// TODO: Update documentation
 // ScreenLockEnabled is a function that checks if the screen lock is enabled on the system and set to secure settings.
 // The function reads the registry key for the screen lock settings and checks if the screen saver is active, requires a log-in, and has a timeout of 2 minutes or less.
 //

@@ -12,6 +12,7 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 )
 
+// TODO: Update documentation
 // OutdatedSoftware is a function that checks for outdated software on the system.
 // It uses a CommandExecutor to execute system commands for retrieving the list of installed software.
 // The function collects all software lists, filters and deduplicates the software list, and formats the result array.
@@ -38,6 +39,7 @@ func OutdatedSoftware(executor mocking.CommandExecutor) checks.Check {
 	return checks.NewCheckResult(checks.OutdatedSoftwareID, checks.OutdatedSoftwareID, resultArray...)
 }
 
+// TODO: Update documentation
 // collectAllSoftwareLists is a function that collects all software lists from different sources.
 // It uses a CommandExecutor to execute system commands for retrieving the list of installed software.
 // The function retrieves installed programs from winget, installed 32 bit programs, and installed 64 bit programs.
@@ -85,6 +87,7 @@ func collectAllSoftwareLists(executor mocking.CommandExecutor) ([]software, chec
 	return softwareList, checks.NewCheckResult(checks.OutdatedSoftwareID, checks.OutdatedSoftwareID, resultArray...)
 }
 
+// TODO: Update documentation
 // filterAndDeduplicateSoftware is a function that filters and deduplicates a list of software.
 // It uses the software name as the key in a map to ensure uniqueness. If duplicate software is found, the existing software is kept in the map.
 //
@@ -111,6 +114,7 @@ func filterAndDeduplicateSoftware(softwareList []software) map[string]software {
 	return uniqueSoftware
 }
 
+// TODO: Update documentation
 // formatResultArray is a function that formats the result array of unique software.
 // It iterates over the uniqueSoftware map and appends each software's name and version to the result array.
 //
@@ -127,6 +131,7 @@ func formatResultArray(uniqueSoftware map[string]software) []string {
 	return resultArray
 }
 
+// TODO: Update documentation
 // normalize function to clean and standardize software names
 func normalize(name string) string {
 	// Convert to lowercase
@@ -142,6 +147,7 @@ func normalize(name string) string {
 	return strings.TrimSpace(string(cleaned))
 }
 
+// TODO: Update documentation
 // compareVersions is a function that compares two version strings.
 // It splits the version strings by the dot character and compares each corresponding part as an integer.
 // If a part in v1 is greater than the corresponding part in v2, it returns 1.
@@ -186,6 +192,7 @@ func compareVersions(v1, v2 string) int {
 	return 0
 }
 
+// TODO: Update documentation
 // retrieveWingetInstalledPrograms is a function that retrieves all installed packages found with the winget package manager.
 // It uses a CommandExecutor to execute the winget list command and processes the output to extract the software details.
 // The function appends each software to the softwareList and returns the updated softwareList.
@@ -249,6 +256,7 @@ func retrieveWingetInstalledPrograms(softwareList []software, executor mocking.C
 	return softwareList, nil
 }
 
+// TODO: Update documentation
 // retrieveInstalled32BitPrograms is a function that retrieves all installed 32-bit programs found using a registry query.
 // It uses a CommandExecutor to execute the registry query command and processes the output to extract the software details.
 // The function appends each software to the softwareList and returns the updated softwareList.
@@ -264,6 +272,7 @@ func retrieveInstalled32BitPrograms(softwareList []software, executor mocking.Co
 	return retrieveInstalled64BitPrograms(softwareList, executor, "\"HKLM:\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\*\"")
 }
 
+// TODO: Update documentation
 // retrieveInstalled64BitPrograms is a function that retrieves all installed 64-bit programs found using a registry query.
 // It uses a CommandExecutor to execute the registry query command and processes the output to extract the software details.
 // The function appends each software to the softwareList and returns the updated softwareList.
@@ -322,6 +331,7 @@ func retrieveInstalled64BitPrograms(softwareList []software, executor mocking.Co
 	return softwareList, nil
 }
 
+// TODO: Update documentation
 // software is a struct that represents a software installed on the system.
 // It contains the following fields:
 // - name: A string that represents the name of the software.
@@ -343,6 +353,7 @@ type software struct {
 	whereFrom    string // tmp for which function found this software
 }
 
+// TODO: Update documentation
 // substr is a function that returns a substring from the input string.
 // It first converts the input string to a slice of runes to handle multi-byte characters correctly.
 // It then slices the rune slice from the start index to the start index plus the length.

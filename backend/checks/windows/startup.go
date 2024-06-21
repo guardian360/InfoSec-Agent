@@ -7,6 +7,7 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 )
 
+// TODO: Update documentation
 // Startup is a function that checks the Windows registry for startup programs.
 //
 // Parameters:
@@ -73,6 +74,7 @@ func Startup(key1 mocking.RegistryKey, key2 mocking.RegistryKey, key3 mocking.Re
 	return checks.NewCheckResult(checks.StartupID, 1, output...)
 }
 
+// TODO: Update documentation
 // FindEntries scans a specified registry key for a list of entries and returns the values of those entries.
 //
 // Parameters:
@@ -103,6 +105,7 @@ func FindEntries(entries []string, key mocking.RegistryKey) []string {
 	return elements
 }
 
+// TODO: Update documentation
 // CheckAllZero is a helper function that checks if all elements in a byte slice are zero.
 //
 // Parameters:

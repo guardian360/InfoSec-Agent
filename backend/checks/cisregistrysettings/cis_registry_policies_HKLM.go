@@ -2,6 +2,7 @@ package cisregistrysettings
 
 import "github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 
+// TODO: Update documentation
 // CheckPoliciesHKLM is a function that checks various registry settings related to different policies
 // to ensure they adhere to the CIS Benchmark standards.
 // It takes a RegistryKey object as an argument, which represents the root key from which the registry settings will be checked.
@@ -18,6 +19,7 @@ func CheckPoliciesHKLM(registryKey mocking.RegistryKey) {
 	}
 }
 
+// TODO: Update documentation
 // policyChecksHKLM is a collection of registry checks related to different policies.
 // Each function in the collection represents a different policy check that the application can perform.
 // The registry settings get checked against the CIS Benchmark recommendations.
@@ -71,6 +73,7 @@ var policyChecksHKLM = []func(mocking.RegistryKey){
 	policiesEarlyLaunch,
 }
 
+// TODO: Update documentation
 // policiesCredui is a helper function that checks the registry to determine if the system is configured to enumerate administrator accounts.
 //
 // CIS Benchmark Audit list index: 18.9.16.2
@@ -84,6 +87,7 @@ func policiesCredui(registryKey mocking.RegistryKey) {
 	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
+// TODO: Update documentation
 // policiesExplorerHKLM is a helper function that checks the registry to determine if the system is configured with the correct settings for Explorer policies.
 //
 // CIS Benchmark Audit list indices: 18.8.22.1.6, 18.9.8.2, 18.9.8.3, 18.9.31.4
@@ -102,6 +106,7 @@ func policiesExplorerHKLM(registryKey mocking.RegistryKey) {
 	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
+// TODO: Update documentation
 // policiesSystem is a helper function that checks the registry to determine if the system is configured with the correct settings for system policies.
 //
 // CIS Benchmark Audit list indices: 2.3.1.2, 2.3.7.1-3, 2.3.11.4, 2.3.17.1-8, 18.3.1, 18.8.3.1, 18.8.4.1, 18.9.6.1, 18.9.91.1
@@ -153,6 +158,7 @@ func policiesSystem(registryKey mocking.RegistryKey) {
 	}
 }
 
+// TODO: Update documentation
 // policiesAdmPwd is a helper function that checks the registry to determine if the system is configured with the correct settings for the administrator password.
 //
 // CIS Benchmark Audit list indices: 18.2.2-6
@@ -172,6 +178,7 @@ func policiesAdmPwd(registryKey mocking.RegistryKey) {
 	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
+// TODO: Update documentation
 // policiesFacialFeatures is a helper function that checks the registry to determine if the system is configured with the correct settings for enhanced anti-spoofing.
 //
 // CIS Benchmark Audit list index: 18.9.10.1.1
@@ -185,6 +192,7 @@ func policiesFacialFeatures(registryKey mocking.RegistryKey) {
 	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
+// TODO: Update documentation
 // policiesDsh is a helper function that checks the registry to determine if the system is configured to allow widgets.
 //
 // CIS Benchmark Audit list index: 18.9.81.1
@@ -198,6 +206,7 @@ func policiesDsh(registryKey mocking.RegistryKey) {
 	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
+// TODO: Update documentation
 // policiesInputPersonalization is a helper function that checks the registry to determine if the system is configured to allow online speech recognition services.
 //
 // CIS Benchmark Audit list index: 18.1.2.2
@@ -211,6 +220,7 @@ func policiesInputPersonalization(registryKey mocking.RegistryKey) {
 	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
+// TODO: Update documentation
 // policiesIEFeeds is a helper function that checks the registry to determine if the system is configured to download enclosures.
 //
 // CIS Benchmark Audit list index: 18.9.66.1
@@ -224,6 +234,7 @@ func policiesIEFeeds(registryKey mocking.RegistryKey) {
 	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
+// TODO: Update documentation
 // policiesMicrosoftAccount is a helper function that checks the registry to determine if the system is configured to block consumer user authentication.
 //
 // CIS Benchmark Audit list index: 18.9.46.1
@@ -237,6 +248,7 @@ func policiesMicrosoftAccount(registryKey mocking.RegistryKey) {
 	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
+// TODO: Update documentation
 // policiesPhishingFilter is a helper function that checks the registry to determine if the system is configured with the correct settings for the phishing filter.
 //
 // CIS Benchmark Audit list indices: 18.9.85.2.1-2
@@ -250,6 +262,7 @@ func policiesPhishingFilter(registryKey mocking.RegistryKey) {
 	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
+// TODO: Update documentation
 // policiesPowerSettings is a helper function that checks the registry to determine if the system is configured with the correct power settings.
 //
 // CIS Benchmark Audit list indices: 18.8.34.6.1-2, 18.8.34.6.5-6

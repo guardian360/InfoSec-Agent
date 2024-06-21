@@ -14,6 +14,7 @@ import (
 	"github.com/andrewarchi/browser/firefox"
 )
 
+// TODO: Update documentation
 // ExtensionFirefox inspects the extensions installed in the Firefox browser and checks for the presence of an ad blocker.
 //
 // Parameters: profileFinder: An object that implements the FirefoxProfileFinder interface. It is used to find the Firefox profile directory.
@@ -67,6 +68,7 @@ func ExtensionFirefox(profileFinder browsers.FirefoxProfileFinder) (checks.Check
 		checks.NewCheckResult(checks.AdblockFirefoxID, resultID)
 }
 
+// TODO: Update documentation
 // AdblockerFirefox determines whether the provided Firefox extension functions as an adblocker.
 //
 // Parameters:

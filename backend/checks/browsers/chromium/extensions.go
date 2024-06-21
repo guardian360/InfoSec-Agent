@@ -16,6 +16,7 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 )
 
+// TODO: Update documentation
 // Response is a struct that represents the JSON response from the Microsoft Edge Addons Store
 //
 // Fields: Name (string) - The name of the extension
@@ -23,6 +24,7 @@ type Response struct {
 	Name string `json:"name"`
 }
 
+// TODO: Update documentation
 // ExtensionsChromium checks for the presence of an ad blocker extension in a specified Chromium-based browser.
 //
 // Parameters:
@@ -62,6 +64,7 @@ func ExtensionsChromium(browser string, getter browsers.DefaultDirGetter, getter
 	return checks.NewCheckResult(returnID, 1)
 }
 
+// TODO: Update documentation
 // GetBrowserPathAndIDExtension is a function that takes a browser name as input,
 // and returns the path to the browser's directory and the ID of the browser.
 //
@@ -89,6 +92,7 @@ type ExtensionIDGetter interface {
 
 type RealExtensionIDGetter struct{}
 
+// TODO: Update documentation
 // GetExtensionIDs is a function that takes the path to the extensions directory as input,
 // and returns a list of extension IDs.
 //
@@ -117,6 +121,7 @@ func (r RealExtensionIDGetter) GetExtensionIDs(extensionsDir string) ([]string, 
 	return extensionIDs, nil
 }
 
+// TODO: Update documentation
 // GetExtensionNames is a function that takes a list of extension IDs and a browser name as input,
 // and returns a list of extension names. It fetches the name of each extension from the Chrome Web Store
 // or the Microsoft Edge Addons Store by calling the GetExtensionNameChromium function.
@@ -169,6 +174,7 @@ type ExtensionNameGetter interface {
 
 type ChromeExtensionNameGetter struct{}
 
+// TODO: Update documentation
 // GetExtensionNameChromium fetches the name of an extension from the Chrome Web Store or the Microsoft Edge Addons Store.
 //
 // Parameters:
@@ -227,6 +233,7 @@ func (c ChromeExtensionNameGetter) GetExtensionNameChromium(extensionID string, 
 	return "", errors.New("unknown browser")
 }
 
+// TODO: Update documentation
 // AdblockerInstalled determines whether an ad blocker extension is installed.
 //
 // Parameters:

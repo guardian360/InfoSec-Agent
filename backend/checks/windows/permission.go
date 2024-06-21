@@ -12,6 +12,7 @@ import (
 
 const nonPackaged = "NonPackaged"
 
+// TODO: Update documentation
 // Permission is a function that checks if a user has granted a specific permission to an application.
 //
 // Parameters:
@@ -69,6 +70,7 @@ func Permission(permissionID int, permission string, registryKey mocking.Registr
 	return checks.NewCheckResult(permissionID, 0, prettyResults...)
 }
 
+// TODO: Update documentation
 // appKeyName is a helper function that returns the appropriate registry key name for a given application name.
 //
 // Parameters:
@@ -85,6 +87,7 @@ func appKeyName(appName string) string {
 	return appName
 }
 
+// TODO: Update documentation
 // nonPackagedAppNames is a helper function that retrieves the names of non-packaged applications from a given registry key.
 //
 // Parameters:
@@ -108,6 +111,7 @@ func nonPackagedAppNames(appKey mocking.RegistryKey) ([]string, error) {
 	return results, nil
 }
 
+// TODO: Update documentation
 // RemoveDuplicateStr is a utility function that eliminates duplicate string values from a given slice.
 //
 // Parameters:
@@ -129,6 +133,7 @@ func RemoveDuplicateStr(strSlice []string) []string {
 	return list
 }
 
+// TODO: Update documentation
 // checkGeneralSetting is a helper function that checks the general permission setting for a specific permission.
 // This setting can be off which means that no application has permission to use the specific permission.
 // Even if off, apps can still appear to have the permission, but it is not granted until this setting is turned back on.
@@ -152,6 +157,7 @@ func checkGeneralSetting(key mocking.RegistryKey, permission string) (bool, erro
 	return true, nil
 }
 
+// TODO: Update documentation
 // checkApplications is a helper function that checks if the applications have been granted the specified permission.
 //
 // Parameters:

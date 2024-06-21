@@ -33,6 +33,7 @@ const ChromePath = "Google/Chrome"
 
 var UserHomeDirFunc = os.UserHomeDir
 
+// TODO: Update documentation
 // CloseFile is a utility function that closes a given file and logs any errors that occur during the process.
 //
 // Parameters:
@@ -49,14 +50,17 @@ func CloseFile(file mocking.File) error {
 	return nil
 }
 
+// TODO: Update documentation
 // FirefoxProfileFinder is an interface that wraps the FirefoxFolder method
 type FirefoxProfileFinder interface {
 	FirefoxFolder() ([]string, error)
 }
 
+// TODO: Update documentation
 // RealProfileFinder is a struct that implements the FirefoxProfileFinder interface
 type RealProfileFinder struct{}
 
+// TODO: Update documentation
 // FirefoxFolder retrieves the paths to all Firefox profile folders for the currently logged-in user.
 //
 // This function uses the os/user package to access the current user's information and constructs the path to the Firefox profile directory.
@@ -117,11 +121,13 @@ func (r RealProfileFinder) FirefoxFolder() ([]string, error) {
 	return profileList, nil
 }
 
+// TODO: Update documentation
 // MockProfileFinder is a struct that implements the FirefoxProfileFinder interface for testing
 type MockProfileFinder struct {
 	MockFirefoxFolder func() ([]string, error)
 }
 
+// TODO: Update documentation
 // FirefoxFolder is a mock function
 func (m MockProfileFinder) FirefoxFolder() ([]string, error) {
 	return m.MockFirefoxFolder()
@@ -135,12 +141,14 @@ type RequestCreator interface {
 	NewRequestWithContext(ctx context.Context, method, url string, body io.Reader) (*http.Request, error)
 }
 
+// TODO: Update documentation
 // RealRequestCreator is a struct that implements the RequestCreator interface.
 // It provides the real implementation of the NewRequestWithContext method.
 type RealRequestCreator struct {
 	Client Doer
 }
 
+// TODO: Update documentation
 // NewRequestWithContext is a method of RealRequestCreator that creates a new HTTP request with the provided context, method, URL, and body.
 // It uses the http.NewRequestWithContext function from the net/http package to create the request.
 //
@@ -157,18 +165,21 @@ func (r RealRequestCreator) NewRequestWithContext(ctx context.Context, method, u
 	return http.NewRequestWithContext(ctx, method, url, body)
 }
 
+// TODO: Update documentation
 // PhishingDomainGetter is an interface that wraps the GetPhishingDomains method.
 type PhishingDomainGetter interface {
 	// GetPhishingDomains retrieves a list of active phishing domains from a remote database.
 	GetPhishingDomains(creator RequestCreator) ([]string, error)
 }
 
+// TODO: Update documentation
 // RealPhishingDomainGetter is a struct that implements the PhishingDomainGetter interface.
 // It provides the real implementation of the GetPhishingDomains method.
 type RealPhishingDomainGetter struct {
 	Client Doer
 }
 
+// TODO: Update documentation
 // NewRealPhishingDomainGetter is a constructor function for the RealPhishingDomainGetter struct.
 // It takes a Doer interface as an argument, which is used to make HTTP requests.
 //
@@ -181,6 +192,7 @@ func NewRealPhishingDomainGetter(client Doer) RealPhishingDomainGetter {
 	return RealPhishingDomainGetter{Client: client}
 }
 
+// TODO: Update documentation
 // GetPhishingDomains retrieves a list of active phishing domains from a remote database.
 //
 // This function sends a GET request to the URL of the phishing database hosted on GitHub. It reads the response body,
@@ -250,6 +262,7 @@ func (r RealPhishingDomainGetter) GetPhishingDomains(creator RequestCreator) ([]
 	return result, nil
 }
 
+// TODO: Update documentation
 // CopyFileGetter is an interface that defines a method for copying a file from a source path to a destination path.
 // This interface is used as a contract that must be fulfilled by any type that wishes to provide functionality
 // for copying files.
@@ -269,10 +282,12 @@ type CopyFileGetter interface {
 	CopyFile(src, dst string, mockSource mocking.File, mockDest mocking.File) error
 }
 
+// TODO: Update documentation
 // RealCopyFile is a struct that implements the CopyFileGetter interface.
 // It provides the real implementation of the CopyFile method.
 type RealCopyFileGetter struct{}
 
+// TODO: Update documentation
 // CopyFile is a utility function that copies a file from a source path to a destination path.
 //
 // Parameters:
@@ -328,6 +343,7 @@ func (r RealCopyFileGetter) CopyFile(src, dst string, mockSource mocking.File, m
 	return nil
 }
 
+// TODO: Update documentation
 // DefaultDirGetter is an interface that wraps the GetPreferencesDir method.
 // It provides a way to get the default directory of a specific browser.
 type DefaultDirGetter interface {
@@ -336,10 +352,12 @@ type DefaultDirGetter interface {
 	GetDefaultDir(browser string) (string, error)
 }
 
+// TODO: Update documentation
 // RealDefaultDirGetter is a struct that implements the DefaultDirGetter interface.
 // It provides the real implementation of the GetDefaultDir method.
 type RealDefaultDirGetter struct{}
 
+// TODO: Update documentation
 // GetDefaultDir is a method of RealDefaultDirGetter that gets the default directory of a specific browser.
 // It takes a browser name as input and returns the path to the default directory of the browser.
 // It returns an error if there is any issue in getting the default directory.
@@ -351,6 +369,7 @@ func (r RealDefaultDirGetter) GetDefaultDir(browserPath string) (string, error) 
 	return filepath.Join(userDir, "AppData", "Local", browserPath, "User Data", "Default"), nil
 }
 
+// TODO: Update documentation
 // QueryCookieDatabaseGetter is an interface that defines a method for querying a cookie database.
 // This interface is used as a contract that must be fulfilled by any type that wishes to provide functionality
 // for querying a cookie database.
@@ -368,10 +387,12 @@ type QueryCookieDatabaseGetter interface {
 	QueryCookieDatabase(checkID int, browser string, databasePath string, queryParams []string, tableName string, getter CopyFileGetter) checks.Check
 }
 
+// TODO: Update documentation
 // RealQueryCookieDatabaseGetter is an empty struct that is used as a receiver for the QueryCookieDatabase method.
 // This struct is part of the implementation of the QueryCookieDatabaseGetter interface.
 type RealQueryCookieDatabaseGetter struct{}
 
+// TODO: Update documentation
 // QueryCookieDatabase is a utility function that queries a cookie database for specific parameters.
 // This function is used by the browser-specific (Firefox, Chrome, and Edge) cookie checks to query the cookie database and check for tracking cookies.
 //

@@ -7,6 +7,7 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 )
 
+// TODO: Update documentation
 // CredentialGuardRunning is a function that checks if Credential Guard is currently running on the Windows machine.
 // Credential Guard is a security feature that helps to protect credentials on a Windows machine from being stolen by malware.
 //

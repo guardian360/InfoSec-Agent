@@ -6,6 +6,7 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 )
 
+// TODO: Update documentation
 // ParseResult is a struct that encapsulates the results of parsing a scan.
 // This parsing is done to convert the results of security and privacy checks into a format that
 // can be sent to the Guardian360 Lighthouse API.
@@ -14,6 +15,7 @@ type ParseResult struct {
 	Results  []IssueData
 }
 
+// TODO: Update documentation
 // Metadata is a struct that contains metadata about the scan.
 // This metadata includes the workstation ID, the user who initiated the scan, and the date of the scan.
 type Metadata struct {
@@ -22,6 +24,7 @@ type Metadata struct {
 	Date          string
 }
 
+// TODO: Update documentation
 // IssueData is a struct that encapsulates the data for a checked issue.
 // This data includes the issue ID, whether the issue is considered a problem, and any additional data related to the
 // issue.
@@ -31,6 +34,7 @@ type IssueData struct {
 	AdditionalData []string
 }
 
+// TODO: Update documentation
 // String returns a string representation of the ParseResult struct.
 //
 // Parameters: None.
@@ -41,6 +45,7 @@ func (p ParseResult) String() string {
 	return fmt.Sprintf("Metadata: %v, Results: %v", p.Metadata, p.Results)
 }
 
+// TODO: Update documentation
 // ParseScanResults parses the results of a scan into a ParseResult struct.
 // This function takes the metadata of the scan and the results of the security and privacy checks and creates a
 // ParseResult struct that encapsulates this data.
@@ -60,6 +65,7 @@ func ParseScanResults(metaData Metadata, checks []checks.Check) ParseResult {
 	return parseResult
 }
 
+// TODO: Update documentation
 // ParseCheckResult parses the result of a single security or privacy check into an IssueData struct.
 //
 // Parameters:

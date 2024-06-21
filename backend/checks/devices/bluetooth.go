@@ -8,6 +8,7 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 )
 
+// TODO: Update documentation
 // Bluetooth is a function that checks for Bluetooth devices which are currently connected or have been previously connected to the system.
 //
 // Parameters:

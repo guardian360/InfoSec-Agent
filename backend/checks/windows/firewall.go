@@ -8,6 +8,7 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 )
 
+// TODO: Update documentation
 // FirewallEnabled is a function that checks if the Windows firewall is enabled for all 3 profile types (private, public, and domain).
 // It does this by executing a command to show the state of the firewall for all profiles.
 //

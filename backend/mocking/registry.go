@@ -35,6 +35,7 @@ func NewRegistryKeyWrapper(key registry.Key) *RegistryKeyWrapper {
 	return &RegistryKeyWrapper{key: key}
 }
 
+// TODO: Update documentation
 // GetStringValue retrieves the string value of a specified name from the Windows registry key.
 //
 // Parameters:
@@ -50,6 +51,7 @@ func (r *RegistryKeyWrapper) GetStringValue(name string) (string, uint32, error)
 	return r.key.GetStringValue(name)
 }
 
+// TODO: Update documentation
 // GetBinaryValue retrieves the binary value of a specified name from the Windows registry key.
 //
 // Parameters:
@@ -65,6 +67,7 @@ func (r *RegistryKeyWrapper) GetBinaryValue(name string) ([]byte, uint32, error)
 	return r.key.GetBinaryValue(name)
 }
 
+// TODO: Update documentation
 // GetIntegerValue retrieves the integer value of a specified name from the Windows registry key.
 //
 // Parameters:
@@ -80,6 +83,7 @@ func (r *RegistryKeyWrapper) GetIntegerValue(name string) (uint64, uint32, error
 	return r.key.GetIntegerValue(name)
 }
 
+// TODO: Update documentation
 // OpenKey opens a registry key with a path relative to the current key and the specified access rights.
 //
 // Parameters:
@@ -96,6 +100,7 @@ func (r *RegistryKeyWrapper) OpenKey(path string, access uint32) (RegistryKey, e
 	return &RegistryKeyWrapper{key: newKey}, err
 }
 
+// TODO: Update documentation
 // ReadValueNames retrieves the names of the values in the Windows registry key.
 //
 // Parameters:
@@ -110,6 +115,7 @@ func (r *RegistryKeyWrapper) ReadValueNames(count int) ([]string, error) {
 	return r.key.ReadValueNames(count)
 }
 
+// TODO: Update documentation
 // Close closes the Windows registry key.
 //
 // Returns:
@@ -120,6 +126,7 @@ func (r *RegistryKeyWrapper) Close() error {
 	return r.key.Close()
 }
 
+// TODO: Update documentation
 // Stat retrieves the information about the Windows registry key.
 //
 // Returns:
@@ -131,6 +138,7 @@ func (r *RegistryKeyWrapper) Stat() (*registry.KeyInfo, error) {
 	return r.key.Stat()
 }
 
+// TODO: Update documentation
 // ReadSubKeyNames retrieves the names of the sub-keys in the Windows registry key.
 //
 // Parameters:
@@ -145,6 +153,7 @@ func (r *RegistryKeyWrapper) ReadSubKeyNames(count int) ([]string, error) {
 	return r.key.ReadSubKeyNames(count)
 }
 
+// TODO: Update documentation
 // MockRegistryKey is a struct that provides a mock implementation of the RegistryKey interface.
 // It is designed for testing purposes and allows for the simulation of registry key operations
 // without interacting with the actual Windows registry.
@@ -165,6 +174,7 @@ type MockRegistryKey struct {
 	Err           error
 }
 
+// TODO: Update documentation
 // GetStringValue retrieves the string value associated with a specified name from the MockRegistryKey.
 //
 // Parameters:
@@ -183,6 +193,7 @@ func (m *MockRegistryKey) GetStringValue(name string) (string, uint32, error) {
 	return m.StringValues[name], 0, nil
 }
 
+// TODO: Update documentation
 // GetBinaryValue retrieves the binary value associated with a specified name from the MockRegistryKey.
 //
 // Parameters:
@@ -201,6 +212,7 @@ func (m *MockRegistryKey) GetBinaryValue(name string) ([]byte, uint32, error) {
 	return m.BinaryValues[name], 0, nil
 }
 
+// TODO: Update documentation
 // GetIntegerValue retrieves the integer value associated with a specified name from the MockRegistryKey.
 //
 // Parameters:
@@ -220,6 +232,7 @@ func (m *MockRegistryKey) GetIntegerValue(name string) (uint64, uint32, error) {
 	return 0, 0, errors.New("")
 }
 
+// TODO: Update documentation
 // OpenKey opens a sub-key with a specified path relative to the current key in the MockRegistryKey.
 //
 // Parameters:
@@ -240,6 +253,7 @@ func (m *MockRegistryKey) OpenKey(path string, _ uint32) (RegistryKey, error) {
 	return m, errors.New("key not found")
 }
 
+// TODO: Update documentation
 // ReadValueNames retrieves the names of the values stored in the MockRegistryKey.
 //
 // Parameters:
@@ -279,6 +293,7 @@ func (m *MockRegistryKey) ReadValueNames(maxCount int) ([]string, error) {
 	return uniqueValueNames[:maxCount], nil
 }
 
+// TODO: Update documentation
 // Close terminates the connection to the MockRegistryKey.
 //
 // This function is a method of the MockRegistryKey struct and simulates the Close method of the RegistryKey interface.
@@ -291,6 +306,7 @@ func (m *MockRegistryKey) Close() error {
 	return nil
 }
 
+// TODO: Update documentation
 // Stat retrieves the information about the MockRegistryKey.
 //
 // Returns:
@@ -305,6 +321,7 @@ func (m *MockRegistryKey) Stat() (*registry.KeyInfo, error) {
 	return m.StatReturn, nil
 }
 
+// TODO: Update documentation
 // ReadSubKeyNames retrieves the names of the sub-keys in the MockRegistryKey.
 //
 // Parameters:
@@ -331,6 +348,7 @@ func (m *MockRegistryKey) ReadSubKeyNames(count int) ([]string, error) {
 	return subKeyNames, nil
 }
 
+// TODO: Update documentation
 // OpenRegistryKey is a function that opens a specified registry key and handles any associated errors.
 //
 // Parameters:
@@ -353,6 +371,7 @@ func OpenRegistryKey(k RegistryKey, path string) (RegistryKey, error) {
 	return key, nil
 }
 
+// TODO: Update documentation
 // CloseRegistryKey is a function that closes a specified registry key and logs any associated errors.
 //
 // Parameter:

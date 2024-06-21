@@ -17,6 +17,7 @@ import (
 
 var OpenFileFunc = os.Open
 
+// TODO: Update documentation
 // SearchEngineChromium inspects the default search engine setting in Chromium-based browsers.
 //
 // Parameters:
@@ -67,6 +68,7 @@ func SearchEngineChromium(browser string, mockBool bool, mockFile mocking.File, 
 	return checks.NewCheckResult(returnID, 0, defaultSE)
 }
 
+// TODO: Update documentation
 // GetBrowserPathAndIDSearch is a function that takes a browser name as input,
 // and returns the path to the browser's directory and the ID of the browser.
 //
@@ -91,6 +93,7 @@ func GetBrowserPathAndIDSearch(browser string) (string, int) {
 	return "", 0
 }
 
+// TODO: Update documentation
 // ParsePreferencesFile is a function that reads and parses a preferences file.
 //
 // Parameters:
@@ -114,6 +117,7 @@ func ParsePreferencesFile(file mocking.File) (map[string]interface{}, error) {
 	return dev, nil
 }
 
+// TODO: Update documentation
 // GetDefaultSearchEngine is a function that retrieves the default search engine from a parsed preferences file.
 //
 // Parameters:

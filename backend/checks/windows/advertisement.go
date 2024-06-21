@@ -8,6 +8,7 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 )
 
+// TODO: Update documentation
 // Advertisement is a function that checks if the Advertisement ID is set to be shared with apps.
 //
 // Parameters:

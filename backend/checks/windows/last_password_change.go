@@ -13,6 +13,7 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 )
 
+// TODO: Update documentation
 // LastPasswordChange is a function that checks the last time the Windows password was changed.
 //
 // Parameters:

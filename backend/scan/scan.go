@@ -19,6 +19,7 @@ import (
 	"github.com/ncruces/zenity"
 )
 
+// TODO: Update documentation
 // Scan executes all security/privacy checks, serializes the results to JSON, and returns a list of all found issues.
 //
 // Parameters:
@@ -94,6 +95,7 @@ func Scan(dialog zenity.ProgressDialog, language int) ([]checks.Check, error) {
 	return checkResults, nil
 }
 
+// TODO: Update documentation
 // startWorkers creates and starts the specified number of workers to execute the checks concurrently.
 // The workers receive checks from the checksChan channel, execute them, and store the results in the checkResults slice.
 //

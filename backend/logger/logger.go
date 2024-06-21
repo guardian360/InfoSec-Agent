@@ -7,6 +7,7 @@ import (
 	"os"
 )
 
+// TODO: Update documentation
 // Constants representing the log levels for the logger.
 // These constants are used to set the LogLevel and LogLevelSpecific fields of the CustomLogger struct.
 // TraceLevel represents the lowest level of logs, used for detailed information about program execution.
@@ -28,6 +29,7 @@ var (
 	Log *CustomLogger
 )
 
+// TODO: Update documentation
 // CustomLogger is a custom logger struct that wraps the standard logger.
 // It implements 6 error levels: Trace, Debug, Info, Warning, Error, and Fatal.
 // LogLevel determines the maximum level of messages that will be logged.
@@ -40,6 +42,7 @@ type CustomLogger struct {
 	LogLevelSpecific int
 }
 
+// TODO: Update documentation
 // Setup initializes a new logger for the runtime of the application
 //
 // This function is used to set up the logger with a specific log level and a specific log level filter.
@@ -58,6 +61,7 @@ func Setup(fileName string, logLevel int, logLevelSpecific int) {
 	Log = NewCustomLogger(false, fileName, logLevel, logLevelSpecific)
 }
 
+// TODO: Update documentation
 // SetupTests initializes a logger for the runtime of the tests.
 //
 // This function is used to set up the logger with a specific log level and a specific log level filter.
@@ -71,6 +75,7 @@ func SetupTests() {
 	Log = NewCustomLogger(true, "", 0, 0)
 }
 
+// TODO: Update documentation
 // NewCustomLogger creates a new CustomLogger struct.
 //
 // This function is used to create a new CustomLogger with a specific log level and a specific log level filter.
@@ -120,6 +125,7 @@ func NewCustomLogger(test bool, fileName string, logLevel int, logLevelSpecific 
 	}
 }
 
+// TODO: Update documentation
 // Print writes a general message to the log file.
 //
 // This method is used to write a message to the log file. The message is not associated with any specific log level.
@@ -133,6 +139,7 @@ func (l *CustomLogger) Print(message string) {
 	l.Println(message)
 }
 
+// TODO: Update documentation
 // Trace writes a trace level message to the log file.
 //
 // The message will only be logged if the LogLevelSpecific of the logger is set to TraceLevel,
@@ -149,6 +156,7 @@ func (l *CustomLogger) Trace(message string) {
 	}
 }
 
+// TODO: Update documentation
 // Debug writes a debug level message to the log file.
 //
 // The message will only be logged if the LogLevelSpecific of the logger is set to DebugLevel,
@@ -165,6 +173,7 @@ func (l *CustomLogger) Debug(message string) {
 	}
 }
 
+// TODO: Update documentation
 // Info writes an info level message to the log file.
 //
 // The message will only be logged if the LogLevelSpecific of the logger is set to InfoLevel,
@@ -181,6 +190,7 @@ func (l *CustomLogger) Info(message string) {
 	}
 }
 
+// TODO: Update documentation
 // Warning writes a warning level message to the log file.
 //
 // The message will only be logged if the LogLevelSpecific of the logger is set to WarningLevel,
@@ -197,6 +207,7 @@ func (l *CustomLogger) Warning(message string) {
 	}
 }
 
+// TODO: Update documentation
 // Error writes an error level message to the log file.
 //
 // The message will only be logged if the LogLevelSpecific of the logger is set to ErrorLevel,
@@ -213,6 +224,7 @@ func (l *CustomLogger) Error(message string) {
 	}
 }
 
+// TODO: Update documentation
 // ErrorWithErr writes an error level message to the log file, including the error variable.
 //
 // The message and the error variable will only be logged if the LogLevelSpecific of the logger is set to ErrorLevel,
@@ -231,6 +243,7 @@ func (l *CustomLogger) ErrorWithErr(message string, err error) {
 	}
 }
 
+// TODO: Update documentation
 // Fatal writes a fatal level message to the log file, including the error variable.
 //
 // The message and the error variable will only be logged if the LogLevelSpecific of the logger is set to FatalLevel,
@@ -247,6 +260,7 @@ func (l *CustomLogger) Fatal(message string) {
 	}
 }
 
+// TODO: Update documentation
 // FatalWithErr writes a fatal level message to the log file, including the error variable.
 //
 // The message and the error variable will only be logged if the LogLevelSpecific of the logger is set to FatalLevel,

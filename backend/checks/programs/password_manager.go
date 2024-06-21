@@ -9,6 +9,7 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 )
 
+// TODO: Update documentation
 // PasswordManager is a function that checks for the presence of known password managers on the system.
 //
 // Parameters:

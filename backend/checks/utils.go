@@ -4,6 +4,7 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 )
 
+// TODO: Update documentation
 // CheckKey retrieves the value of a specified element within a given registry key.
 //
 // Parameters:

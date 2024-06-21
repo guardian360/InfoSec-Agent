@@ -18,6 +18,7 @@ import (
 	_ "modernc.org/sqlite"
 )
 
+// TODO: Update documentation
 // HistoryChromium checks the browsing history in a specified Chromium-based browser for visits to phishing domains.
 //
 // Parameters:
@@ -82,6 +83,7 @@ func HistoryChromium(browser string, getter browsers.DefaultDirGetter, getterCop
 	return checks.NewCheckResult(returnID, 1)
 }
 
+// TODO: Update documentation
 // GetBrowserPathAndIDHistory is a function that takes a browser name as input,
 // and returns the path to the browser's directory and the ID of the browser.
 //
@@ -112,6 +114,7 @@ type CopyDBGetter interface {
 
 type RealCopyDBGetter struct{}
 
+// TODO: Update documentation
 // CopyDatabase creates a temporary copy of the database file at the given source path.
 //
 // Parameters:
@@ -132,6 +135,7 @@ func (r RealCopyDBGetter) CopyDatabase(src string, browser string, getter browse
 	return tempDB, nil
 }
 
+// TODO: Update documentation
 // CloseDatabase safely closes the provided database connection.
 //
 // Parameters:
@@ -151,6 +155,7 @@ type QueryDatabaseGetter interface {
 
 type RealQueryDatabaseGetter struct{}
 
+// TODO: Update documentation
 // QueryDatabase retrieves the browsing history from the provided database connection.
 //
 // Parameters:
@@ -173,6 +178,7 @@ func (r RealQueryDatabaseGetter) QueryDatabase(db *sql.DB) (*sql.Rows, error) {
 	return rows, nil
 }
 
+// TODO: Update documentation
 // CloseRows safely closes the provided sql.Rows object.
 //
 // Parameters:
@@ -192,6 +198,7 @@ type ProcessQueryResultsGetter interface {
 
 type RealProcessQueryResultsGetter struct{}
 
+// TODO: Update documentation
 // ProcessQueryResults processes the result set of a query to the browsing history database, checking each URL against a list of known phishing domains.
 //
 // Parameters:

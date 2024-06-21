@@ -9,6 +9,7 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 )
 
+// TODO: Update documentation
 // NetBIOSEnabled is a function that checks if NetBIOS over TCP/IP is enabled.
 // It does this by executing a command to show the state of NetBIOS over TCP/IP.
 //

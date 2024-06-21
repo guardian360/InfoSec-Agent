@@ -27,6 +27,7 @@ import (
 	"time"
 )
 
+// TODO: Update documentation
 // Language is used to represent the index of the currently selected language.
 // The language indices are as follows:
 //
@@ -51,6 +52,7 @@ var MenuItems []MenuItem
 var ReportingPageOpen = false
 var mQuit *systray.MenuItem
 
+// TODO: Update documentation
 // MenuItem represents a single item in the system tray menu.
 //
 // This struct encapsulates the title, tooltip text, and the actual system tray menu item object for a single menu item.
@@ -68,6 +70,7 @@ type MenuItem struct {
 	sysMenuItem *systray.MenuItem
 }
 
+// TODO: Update documentation
 // OnReady orchestrates the runtime behavior of the system tray application.
 //
 // This function sets up the system tray with various menu items such as 'Reporting Page', 'Change Scan Interval', 'Scan Now', 'Change Language', and 'Quit'.
@@ -155,6 +158,7 @@ func OnReady() {
 	}
 }
 
+// TODO: Update documentation
 // OnQuit manages the cleanup operations that need to be performed when the application is about to terminate.
 //
 // This function is called when the application is exiting. It is responsible for performing any necessary cleanup operations such as closing open files, terminating active connections, or releasing resources. The specific cleanup operations depend on the resources and services used by the application.
@@ -168,6 +172,7 @@ func OnQuit() {
 	logger.Log.Info("Quitting the application")
 }
 
+// TODO: Update documentation
 // OpenReportingPage launches the reporting page of the application using a Wails application.
 //
 // This function checks if a reporting page is already open. If it is, it returns an error. If not, it changes the current working directory to the reporting page directory and builds the reporting-page executable using the Wails framework.
@@ -223,6 +228,7 @@ func OpenReportingPage() error {
 	return nil
 }
 
+// TODO: Update documentation
 // buildReportingPage builds the reporting page executable using a Wails application
 //
 // Parameters:
@@ -258,6 +264,7 @@ func buildReportingPage() error {
 	return nil
 }
 
+// TODO: Update documentation
 // ChangeScanInterval prompts the user to set a new scan interval through a dialog window.
 //
 // This function displays a dialog window asking the user to input the desired scan interval in hours. If the user input is valid, the function updates the scan interval accordingly. If the input is invalid or less than or equal to zero, the function defaults to a 24-hour interval.
@@ -322,6 +329,7 @@ func ChangeScanInterval(testInput ...string) {
 	updateScanInterval(interval, test)
 }
 
+// TODO: Update documentation
 // ScanNow initiates an immediate security scan, bypassing the scheduled intervals.
 //
 // This function triggers a security scan regardless of the scheduled intervals. It is useful for situations where an immediate scan is required, such as after a significant system change or when manually requested by the user.
@@ -366,6 +374,7 @@ func ScanNow(dialogPresent bool, databasePath string) ([]checks.Check, error) {
 	return result, nil
 }
 
+// TODO: Update documentation
 // ChangeLanguage allows the user to select a new language for the application via a dialog window.
 //
 // This function presents a dialog window with a list of available languages. The user can select a language from this list, and the application's language setting is updated accordingly.
@@ -440,6 +449,7 @@ func ChangeLanguage(testInput ...string) {
 	}
 }
 
+// TODO: Update documentation
 // RefreshMenu updates the system tray menu items to reflect the current language setting.
 //
 // This function iterates over each menu item in the system tray and updates its title and tooltip text to match the current language setting.
@@ -456,6 +466,7 @@ func RefreshMenu() {
 	}
 }
 
+// TODO: Update documentation
 // changeNextScan updates the next scan time based on the current time and the scan interval.
 //
 // Parameters:
@@ -472,6 +483,7 @@ func changeNextScan(settings usersettings.UserSettings, value int) {
 	}
 }
 
+// TODO: Update documentation
 // periodicScan checks if a scan is due based on the scan interval and the current time.
 // If a scan is due, it performs a scan and notifies the user using a pop-up.
 //
@@ -498,6 +510,7 @@ func periodicScan(scanInterval int) {
 	}
 }
 
+// TODO: Update documentation
 // runScanWithDialog runs a scan with a progress dialog to keep the user informed about the scan progress.
 // It returns the progress dialog, the scan results, and any error that occurred during the scan.
 //
@@ -529,6 +542,7 @@ func runScanWithDialog() (zenity.ProgressDialog, []checks.Check, error) {
 	return dialog, result, err
 }
 
+// TODO: Update documentation
 // updateScanInterval updates the scan interval in the user settings file.
 //
 // Parameters:

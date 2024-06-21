@@ -19,6 +19,7 @@ import (
 
 var WinVersion int
 
+// TODO: Update documentation
 // Outdated is a function that checks if the currently installed Windows version is outdated.
 //
 // Parameters:
@@ -101,6 +102,7 @@ func Outdated(mockExecutor mocking.CommandExecutor) checks.Check {
 	}
 }
 
+// TODO: Update documentation
 // GetURLBody fetches and parses the HTML content of a given URL.
 //
 // This function makes an HTTP GET request to the provided URL and parses the HTML content of the response.
@@ -140,6 +142,7 @@ func GetURLBody(urlStr string) *html.Node {
 	return doc
 }
 
+// TODO: Update documentation
 // FindWindowsBuild searches for the latest Windows build in the HTML content of a given URL.
 //
 // This function iterates over the children of the provided HTML node. If the node is a table body (tbody),
@@ -182,6 +185,7 @@ func FindWindowsBuild(n *html.Node) string {
 	return ""
 }
 
+// TODO: Update documentation
 // checkTableTDs is a helper function that iterates over the children of a given HTML node,
 // looking for 'td' elements. It counts the number of 'td' elements and when it finds the fifth one,
 // it extracts and returns the data as a string.
@@ -206,6 +210,7 @@ func checkTableTDs(child *html.Node) string {
 	return ""
 }
 
+// TODO: Update documentation
 // findWindowsVersion is a function that determines the Windows version based on the major and minor version numbers.
 // It uses the versioning scheme of Windows 10 and Windows 11, where Windows 11 is identified by a minor version number of 22000 or higher.
 //

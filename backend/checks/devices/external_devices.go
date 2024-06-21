@@ -8,6 +8,7 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 )
 
+// TODO: Update documentation
 // ExternalDevices is a function that conducts a security assessment for any external devices connected to the system.
 //
 // Parameters:
@@ -30,6 +31,7 @@ func ExternalDevices(executorClass mocking.CommandExecutor) checks.Check {
 	return checks.NewCheckResult(checks.ExternalDevicesID, 1, output...)
 }
 
+// TODO: Update documentation
 // CheckDeviceClasses is a function that runs the Get-PnpDevice command for device classes.
 //
 // Parameters:

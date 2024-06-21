@@ -5,6 +5,7 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 )
 
+// TODO: Update documentation
 // LoginMethod is a function that checks and returns the login methods enabled by the user on a Windows system.
 //
 // Parameters:

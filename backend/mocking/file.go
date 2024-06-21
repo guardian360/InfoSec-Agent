@@ -18,6 +18,7 @@ type File interface {
 	Copy(source File, destination File) (int64, error)
 }
 
+// TODO: Update documentation
 // FileWrapper is a wrapper for the os.File type
 type FileWrapper struct {
 	file   *os.File
@@ -27,6 +28,7 @@ type FileWrapper struct {
 	Reader *os.File
 }
 
+// TODO: Update documentation
 // Wrap creates a new FileWrapper struct
 //
 // Parameters: file - the file to wrap
@@ -46,6 +48,7 @@ func Wrap(file *os.File) *FileWrapper {
 	}
 }
 
+// TODO: Update documentation
 // Close is a method of the FileWrapper struct that closes the underlying os.File.
 //
 // It calls the Close method of the os.File that the FileWrapper is wrapping.
@@ -56,6 +59,7 @@ func (f *FileWrapper) Close() error {
 	return f.file.Close()
 }
 
+// TODO: Update documentation
 // Read is a method of the FileWrapper struct that reads from the underlying os.File.
 //
 // It calls the Read method of the os.File that the FileWrapper is wrapping.
@@ -71,6 +75,7 @@ func (f *FileWrapper) Read(p []byte) (int, error) {
 	return f.file.Read(p)
 }
 
+// TODO: Update documentation
 // Seek is a method of the FileWrapper struct that sets the offset for the next Read or Write operation on the underlying os.File.
 //
 // It calls the Seek method of the os.File that the FileWrapper is wrapping.
@@ -87,6 +92,7 @@ func (f *FileWrapper) Seek(offset int64, whence int) (int64, error) {
 	return f.file.Seek(offset, whence)
 }
 
+// TODO: Update documentation
 // Write is a method of the FileWrapper struct that writes to the underlying os.File.
 //
 // It calls the Write method of the os.File that the FileWrapper is wrapping.
@@ -102,6 +108,7 @@ func (f *FileWrapper) Write(p []byte) (int, error) {
 	return f.file.Write(p)
 }
 
+// TODO: Update documentation
 // Copy is a method of the FileWrapper struct that copies data from a source File to a destination File.
 //
 // It reads from the source File into the FileWrapper's Buffer, then writes from the Buffer to the destination File.
@@ -131,6 +138,7 @@ func (f *FileWrapper) Copy(source File, destination File) (int64, error) {
 	return int64(bytesWritten), nil
 }
 
+// TODO: Update documentation
 // Stat is a method of the FileWrapper struct that retrieves the file descriptor's metadata.
 //
 // It calls the Stat method of the os.File that the FileWrapper is wrapping.
@@ -142,6 +150,7 @@ func (f *FileWrapper) Stat() (os.FileInfo, error) {
 	return f.file.Stat()
 }
 
+// TODO: Update documentation
 // FileInfoMock is a struct that mocks the os.FileInfo interface for testing purposes.
 //
 // It contains a single field, file, which is a pointer to a FileMock. This allows the FileInfoMock to return
@@ -150,6 +159,7 @@ type FileInfoMock struct {
 	file *FileMock
 }
 
+// TODO: Update documentation
 // Size returns the length of the buffer in the FileMock that FileInfoMock is associated with.
 // Name returns an empty string as it's not relevant in this mock implementation.
 // Mode returns 0 as it's not relevant in this mock implementation.
@@ -165,6 +175,7 @@ func (f *FileInfoMock) ModTime() time.Time { return time.Time{} }
 func (f *FileInfoMock) IsDir() bool        { return false }
 func (f *FileInfoMock) Sys() interface{}   { return nil }
 
+// TODO: Update documentation
 // FileMock is a struct that mocks the File interface for testing purposes.
 //
 // It contains the following fields:
@@ -184,6 +195,7 @@ type FileMock struct {
 	FileInfo *FileInfoMock
 }
 
+// TODO: Update documentation
 // ReadDir is a method of the FileMock struct that simulates the behavior of reading a directory.
 // It doesn't actually read a directory, but instead returns a predefined result that can be set for testing purposes.
 //
@@ -197,6 +209,7 @@ func (f *FileMock) ReadDir(_ string) ([]os.DirEntry, error) {
 	return nil, f.Err
 }
 
+// TODO: Update documentation
 // Close is a method of the FileMock struct that simulates the behavior of closing a file.
 //
 // It checks if the FileMock is nil or if the file is already closed, and returns an appropriate error in each case.
@@ -218,6 +231,7 @@ func (f *FileMock) Close() error {
 	return f.Err
 }
 
+// TODO: Update documentation
 // Read is a method of the FileMock struct that simulates the behavior of reading from a file.
 //
 // It checks if there is an error set in the FileMock. If there is, it returns 0 and the error.
@@ -245,6 +259,7 @@ func (f *FileMock) Read(p []byte) (int, error) {
 	return n, nil
 }
 
+// TODO: Update documentation
 // Write is a method of the FileMock struct that simulates the behavior of writing to a file.
 //
 // It ignores its input parameter and instead returns the number of bytes that were previously set in the FileMock struct.
@@ -261,6 +276,7 @@ func (f *FileMock) Write(_ []byte) (int, error) {
 	return f.Bytes, f.Err
 }
 
+// TODO: Update documentation
 // Seek is a method of the FileMock struct that simulates the behavior of setting the offset for the next Read or Write operation on a file.
 //
 // It checks if there is an error set in the FileMock. If there is, it returns 0 and the error.
@@ -303,6 +319,7 @@ func (f *FileMock) Seek(offset int64, whence int) (int64, error) {
 	return int64(len(f.Buffer)), nil
 }
 
+// TODO: Update documentation
 // Copy is a method of the FileMock struct that simulates the behavior of copying data from a source File to a destination File.
 //
 // It reads from the source File and writes to the destination File. The actual data transfer is not simulated in this mock implementation.
@@ -330,6 +347,7 @@ func (f *FileMock) Copy(source File, destination File) (int64, error) {
 	return int64(f.Bytes), f.Err
 }
 
+// TODO: Update documentation
 // Stat is a method of the FileMock struct that simulates the behavior of retrieving the file descriptor's metadata.
 //
 // It returns the FileInfo and error that were previously set in the FileMock struct. This allows you to control the behavior of the Stat method for testing purposes.

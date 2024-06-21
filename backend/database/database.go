@@ -17,6 +17,7 @@ import (
 // JSONData represents the structure of the JSON data
 type JSONData map[string]Issue
 
+// TODO: Update documentation
 // Issue represents the structure of an issue in the JSON data
 type Issue struct {
 	Type        string            `json:"Type"`
@@ -24,6 +25,7 @@ type Issue struct {
 	Results     map[string]Result `json:"Results"`
 }
 
+// TODO: Update documentation
 // Result represents the structure of a result in the JSON data
 type Result struct {
 	Severity    int      `json:"Severity"`
@@ -32,12 +34,14 @@ type Result struct {
 	Screenshots []string `json:"Screenshots"`
 }
 
+// TODO: Update documentation
 // Data represents a simplified structure with issueID and severity
 type Data struct {
 	IssueID  int
 	Severity int
 }
 
+// TODO: Update documentation
 // GetData is a function that computes the severity for all found checks and puts them into a list of Data.
 // It takes two parameters:
 // - jsonFilePath: a string that represents the path to the JSON file.

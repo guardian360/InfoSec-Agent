@@ -8,6 +8,7 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 )
 
+// TODO: Update documentation
 // SmbCheck is a function that checks the status of SMB1 (Server Message Block) and SMB2 protocols on the system.
 //
 // Parameters:

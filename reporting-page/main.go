@@ -34,11 +34,13 @@ type FileLoader struct {
 	http.Handler
 }
 
+// TODO: Update documentation
 // NewFileLoader creates a new instance of the FileLoader struct.
 func NewFileLoader() *FileLoader {
 	return &FileLoader{}
 }
 
+// TODO: Update documentation
 // ServeHTTP serves the requested file from the images directory.
 // It first constructs the full path to the requested file and checks if the file is within the allowed directory.
 //
@@ -83,6 +85,7 @@ func (h *FileLoader) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 	}
 }
 
+// TODO: Update documentation
 // main is the entry point of the reporting page application. It initializes the localization settings, creates a new instance of the application, tray, and database, and starts the Wails application.
 //
 // This function first calls the Init function from the localization package to set up the localization settings for the application. It then creates new instances of the App, Tray, and DataBase structs.
@@ -176,6 +179,7 @@ func main() {
 	}
 }
 
+// TODO: Update documentation
 // changeDirectory attempts to change the current working directory to the specified path.
 // If the config ReportingPagePath contains "build/bin", it sets the path to "reporting-page" to run the reporting page from the development environment.
 // If changing the directory is successful, a debug message is logged indicating the new directory.

@@ -7,6 +7,7 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 )
 
+// TODO: Update documentation
 // Defender is a function that checks the status of the Windows Defender.
 //
 // Parameters:

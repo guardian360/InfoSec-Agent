@@ -5,6 +5,7 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 )
 
+// TODO: Update documentation
 // SecureBoot is a function that checks if Windows Secure Boot is enabled on the system.
 //
 // Parameters:
