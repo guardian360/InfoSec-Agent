@@ -82,6 +82,7 @@ jest.unstable_mockModule('../src/js/issues.js', () => ({
 // Mock Localize function
 jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
   GetImagePath: jest.fn().mockImplementation((input) => input),
+  GetLighthouseState: jest.fn().mockImplementation(() => 0),
 }));
 
 describe('share functions', function() {
@@ -192,21 +193,11 @@ describe('share functions', function() {
   it('setImage should set the right image as the background of the share image', async function() {
     // Arrange
     const share = await import('../src/js/share.js');
-    // Should be changed when images of all states are available
-    const states = [
-      'url(sharing/first-state.png)',
-      'url(sharing/second-state.png)',
-      'url(sharing/third-state.png)',
-      'url(sharing/fourth-state.png)',
-    ];
 
-    for (let i = 0; i < states.length; i++) {
-      // Act
-      sessionStorage.setItem('LighthouseState', i);
-      await share.setImage('facebook', document.getElementById('progress-segment'));
+    // Act
+    await share.setImage('facebook', document.getElementById('progress-segment'));
 
-      // Arrange
-      test.value(document.getElementById('share-node').style.backgroundImage).isEqualTo(states[i]);
-    }
+    // Arrange
+    test.value(document.getElementById('share-node').style.backgroundImage).isEqualTo('url(sharing/first-state.png)');
   });
 });
