@@ -1,6 +1,5 @@
 // Package integration contains integration tests for the entire project.
-// The integration tests are run on Virtual Machines with a custom configuration and are not meant
-// to succeed on any machine.
+// The integration tests are run on Virtual Machines with a custom configuration to ensure that the project works as expected in different environments.
 package integration
 
 import (

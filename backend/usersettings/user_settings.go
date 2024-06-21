@@ -1,8 +1,8 @@
-// Package usersettings contains functions for loading and saving user settings
+// Package usersettings contains functions for loading and saving user settings in the users AppData directory.
 //
-// Exported function(s): NewUserSettings, LoadUserSettings, SaveUserSettings
+// Exported function(s): LoadUserSettings, SaveUserSettingsGetter.SaveUserSettings
 //
-// Exported type(s): UserSettings
+// Exported type(s): UserSettings, SaveUserSettingsGetter
 package usersettings
 
 import (
@@ -33,7 +33,7 @@ type UserSettings struct {
 	LighthouseState int         `json:"LighthouseState"` // User's game state
 }
 
-var DefaultUserSettings = UserSettings{Language: 1, ScanInterval: 7, Integration: false, NextScan: time.Now().Add((time.Hour * 24) * 7), Points: 0, PointsHistory: nil, TimeStamps: nil, LighthouseState: 0}
+var defaultUserSettings = UserSettings{Language: 1, ScanInterval: 7, Integration: false, NextScan: time.Now().Add((time.Hour * 24) * 7), Points: 0, PointsHistory: nil, TimeStamps: nil, LighthouseState: 0}
 
 // LoadUserSettings loads the user settings from a JSON file in the Windows AppData folder.
 //
@@ -51,14 +51,14 @@ func LoadUserSettings() UserSettings {
 	appDataPath, err := os.UserConfigDir()
 	if err != nil {
 		logger.Log.Warning("Error getting user config directory, using default settings")
-		return DefaultUserSettings
+		return defaultUserSettings
 	}
 	dirPath := appDataPath + `\InfoSec-Agent`
 	logger.Log.Trace("Creating/reading directory at:" + dirPath)
 	err = os.MkdirAll(dirPath, os.ModePerm)
 	if err != nil {
 		logger.Log.Warning("Error creating directory, using default settings")
-		return DefaultUserSettings
+		return defaultUserSettings
 	}
 
 	filePath := dirPath + `\user_settings.json`
@@ -67,7 +67,7 @@ func LoadUserSettings() UserSettings {
 	data, err := os.ReadFile(filePath)
 	if err != nil {
 		logger.Log.Warning("Error reading user settings file, using default settings")
-		return DefaultUserSettings
+		return defaultUserSettings
 	}
 
 	var settings UserSettings
@@ -75,7 +75,7 @@ func LoadUserSettings() UserSettings {
 	err = json.Unmarshal(data, &settings)
 	if err != nil {
 		logger.Log.Warning("Error unmarshalling user settings JSON, using default settings")
-		return DefaultUserSettings
+		return defaultUserSettings
 	}
 	logger.Log.Debug("Loaded user settings")
 	return settings

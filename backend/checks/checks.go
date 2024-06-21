@@ -1,8 +1,11 @@
-// Package checks implements different security/privacy checks
+// Package checks implements different security/privacy checks.
 //
-// Exported function(s): PasswordManager, WindowsDefender, LastPasswordChange, LoginMethod, Permission, Bluetooth,
-// OpenPorts, WindowsOutdated, SecureBoot, SmbCheck, Startup, GuestAccount, UACCheck, RemoteDesktopCheck,
-// ExternalDevices, NetworkSharing
+// This package provides a set of functions and types that are used to perform various security and privacy checks.
+// The checks themselves are implemented in separate subpackages.
+// All checks have an associated issue ID, which is used to identify the check and its results, defined as constants in this package.
+//
+// The main type is the Check struct, which represents the outcome of a check.
+// This package provides several constructor functions for creating instances of the Check struct.
 package checks
 
 import "fmt"

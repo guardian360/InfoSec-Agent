@@ -1,3 +1,4 @@
+// Package chromium is responsible for running checks on Chromium based browsers.
 package chromium
 
 import (
