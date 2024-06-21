@@ -327,7 +327,7 @@
       "Severity": 2,
       "Name": "SMB all versions disabled",
       "Solution": [
-        "TODO"
+        "Both SMB versions are disabled, so there is no action needed."
       ],
       "Screenshots": []
     },

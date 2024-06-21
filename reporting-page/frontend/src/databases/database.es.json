@@ -327,7 +327,7 @@
       "Severity": 2,
       "Name": "SMB todas las versiones deshabilitadas",
       "Solution": [
-        "HACER"
+        "Ambas versiones de SMB están deshabilitadas, por lo que no se necesita ninguna acción."
       ],
       "Screenshots": []
     },

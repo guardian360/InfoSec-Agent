@@ -327,7 +327,7 @@
       "Severity": 2,
       "Name": "SMB alle versies uitgeschakeld",
       "Solution": [
-        "TE DOEN"
+        "Beide SMB-versies zijn uitgeschakeld, dus er is geen actie nodig."
       ],
       "Screenshots": []
     },
