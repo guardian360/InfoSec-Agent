@@ -130,6 +130,7 @@
     "Medium": "Médio",
     "High": "Alto",
     "Info": "Info",
+    "Failed": "Falhado",
     "ScanAgain": "Escanear novamente"
   },
   "About": {
@@ -183,6 +184,7 @@
     "PermissionsText": "Aplicativos instalados no seu computador querem ter acesso ou permissão para usar certos recursos ou dispositivos conectados ao seu PC. É sua responsabilidade como usuário dar essas permissões a certos aplicativos ou não. Portanto, é recomendável pesquisar na internet se um aplicativo que você usa deve ou não ter certas permissões.",
     "BrowserText": "Para ter acesso à internet, você usa um navegador. Embora um navegador seja muito útil, nem sempre mantém seus dados privados. Para se manter seguro enquanto navega na internet, você deve sempre ter em mente no que está clicando.",
     "OtherPrivacyText": "Manter seus dados privados também pode ser feito de outras maneiras.",
+    "BrowserZeroFound" : "Essas verificações não puderam ser feitas, pois o navegador provavelmente não está instalado.",
 
     "Id1":"Dispositivos conectados via bluetooth",
     "Id2":"Dispositivos conectados via portas USB",
@@ -196,7 +198,7 @@
     "Id10":"Aplicativos com permissões de contatos",
     "Id11":"Portas abertas usadas por aplicativos",
     "Id12":"Área de trabalho remota habilitada/desabilitada",
-    "Id13":"Bloco de mensagens do sistema habilitado/desabilitado",
+    "Id13":"Bloco de mensagens do servidor habilitado/desabilitado",
     "Id14":"Controle de Conta de Usuário habilitado/desabilitado",
     "Id15":"Windows Defender habilitado/desabilitado",
     "Id16":"Última senha do Windows alterada",

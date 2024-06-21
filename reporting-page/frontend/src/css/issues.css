@@ -130,11 +130,22 @@
   color: var(--text-body);
 }
 
+.issues-table tr[data-result-id="-1"] .table-risk-level {
+  background-color: var(--text-body);
+  border-radius: 8px;
+  padding: 2px 7px;
+  color: var(--background-color);
+}
+
 /* Sort icon */
 .issues-table .material-symbols-outlined {
   font-size: 1.2em;
   float: right;
   margin-left: auto; /* Align icon to the right using margin */
+}
+
+.issue-check-failed {
+  font-style: italic;
 }
 
 .material-symbols-outlined:hover {

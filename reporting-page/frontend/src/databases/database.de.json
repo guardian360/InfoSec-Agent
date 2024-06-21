@@ -1,5 +1,13 @@
 {
   "1": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Geräte verbunden über Bluetooth",
+      "Failed": "Wir konnten nicht überprüfen, ob Geräte über Bluetooth verbunden sind.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Keine über Bluetooth verbundenen Geräte",
@@ -24,6 +32,14 @@
     "Information": "Bluetooth-Technologie ermöglicht die drahtlose Übertragung und den Empfang von Daten. Während diese Funktionalität in der Regel harmlos ist, wenn sie wie vorgesehen verwendet wird, kann sie zu einem Sicherheitsrisiko werden, wenn sie von böswilligen Akteuren ausgenutzt wird. Wenn eine böswillige Person über eine Bluetooth-Verbindung unbefugten Zugriff auf Ihr Gerät erlangt, kann sie möglicherweise Ihre Daten stehlen, Ihre Aktivitäten abhören oder sogar Malware auf Ihr Gerät senden. Um diese Risiken zu minimieren, ist es wichtig, Ihr Gerät nur mit bekannten und vertrauenswürdigen Geräten zu verbinden."
   },
   "2": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Geräte verbunden über USB-Anschlüsse",
+      "Failed": "Wir konnten nicht überprüfen, ob Geräte über USB-Anschlüsse verbunden sind.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Keine externen Geräte angeschlossen",
@@ -44,6 +60,14 @@
     "Information": "Externe Geräte wie USB-Laufwerke, externe Festplatten und andere Peripheriegeräte können Sicherheitsrisiken für Ihren Computer darstellen. Malware kann über infizierte externe Geräte verbreitet werden und möglicherweise die Sicherheit und Integrität Ihres Systems gefährden. Indem Sie sicherstellen, dass keine externen Geräte mit Ihrem Computer verbunden sind, wenn sie nicht verwendet werden, verringern Sie das Risiko einer Malware-Infektion und unbefugten Zugriffs auf Ihr System."
   },
   "3": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Gastkonto aktiviert/deaktiviert",
+      "Failed": "Wir konnten nicht überprüfen, ob ein Gastkonto aktiviert ist.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": -1,
       "Name": "Status des Gastkontos unbekannt",
@@ -96,6 +120,14 @@
     "Information": "Das Gastkonto ist ein Standardkonto, das entwickelt wurde, um temporären und eingeschränkten Zugriff auf das System für Personen ohne reguläre Benutzerkonten zu bieten. Wenn Sie der einzige Benutzer des Computers sind und kein Gastkonto benötigen, ist es ratsam, es zu deaktivieren. Dies stellt sicher, dass keine unbefugten Benutzer auf Daten auf dem Computer zugreifen können, was die allgemeine Sicherheit und Privatsphäre verbessert."
   },
   "4": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Werbe-ID aktiviert/deaktiviert",
+      "Failed": "Wir konnten nicht überprüfen, ob die Werbe-ID mit Apps geteilt wird.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Freigabe der Werbe-ID deaktiviert",
@@ -124,6 +156,14 @@
     "Information": "Die Einstellung der Werbe-ID ermöglicht es Windows, Ihnen personalisierte Werbung zu senden. Es ist wichtig, die Anzahl der Entitäten zu begrenzen, die über Ihre persönlichen Daten verfügen. Daher ist es sicherer, diese Einstellung auszuschalten."
   },
   "5": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Passwort-Manager installiert",
+      "Failed": "Wir konnten nicht überprüfen, ob ein Passwort-Manager installiert ist.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Passwortmanager im Einsatz",
@@ -148,6 +188,14 @@
     "Information": "Die Verwendung eines Passwort-Managers bietet sowohl für Einzelpersonen als auch für Organisationen mehrere Vorteile, die hauptsächlich auf die Verbesserung der Sicherheit, Bequemlichkeit und der allgemeinen Passwortverwaltungspraktiken abzielen. Hier sind einige wichtige Gründe, warum Sie die Verwendung eines Passwort-Managers in Betracht ziehen sollten. Stärkere Passwörter: Passwort-Manager können komplexe, einzigartige Passwörter für jedes Ihrer Konten generieren. Diese Passwörter sind in der Regel lang, zufällig und schwer zu knacken, was die Sicherheit Ihrer Online-Konten im Vergleich zur Verwendung schwacher oder wiederverwendeter Passwörter erheblich verbessert. Eliminierung der Passwort-Wiederverwendung: Eine der häufigsten Sicherheitsfallen ist die Wiederverwendung von Passwörtern über mehrere Konten hinweg. Passwort-Manager ermöglichen es Ihnen, einzigartige Passwörter für jedes Konto zu generieren und zu speichern, wodurch das Risiko eines unbefugten Zugriffs verringert wird, falls ein Konto kompromittiert wird. Bequemlichkeit: Passwort-Manager vereinfachen den Prozess der Anmeldung bei Websites und Online-Diensten, indem sie automatisch Anmeldeinformationen für Sie ausfüllen. Dies spart Zeit und Mühe, insbesondere bei der Verwaltung zahlreicher Konten auf verschiedenen Plattformen. Sichere Speicherung: Passwort-Manager verschlüsseln und speichern Ihre Passwörter in einem sicheren Tresor und schützen sie vor unbefugtem Zugriff. Viele Passwort-Manager bieten auch zusätzliche Sicherheitsfunktionen wie Zwei-Faktor-Authentifizierung (2FA) und biometrische Authentifizierung, um den Schutz weiter zu verbessern."
   },
   "6": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Anwendungen mit Standortberechtigungen",
+      "Failed": "Wir konnten nicht überprüfen, welche Anwendungen Standortberechtigungen haben.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Bewerbungen mit Standortgenehmigung",
@@ -176,6 +224,14 @@
     "Information": "Zu wissen, welche Anwendungen Zugriff auf Ihren Standort haben, ist wichtig, um Ihre Privatsphäre zu schützen. Es hilft Ihnen, zu kontrollieren, wer Ihren Standort verfolgen kann, Sicherheitsrisiken zu vermeiden, die Akkulaufzeit zu schonen, den Datenverbrauch zu verwalten, Ihre App-Erfahrung anzupassen und die Einhaltung von Vorschriften sicherzustellen."
   },
   "7": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Anwendungen mit Mikrofonberechtigungen",
+      "Failed": "Wir konnten nicht überprüfen, welche Anwendungen Mikrofonberechtigungen haben.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Anwendungen mit Mikrofonerlaubnis",
@@ -204,6 +260,14 @@
     "Information": "Zu verstehen, welche Anwendungen auf Ihrem Windows-Computer Zugriff auf Ihr Mikrofon haben, ist wichtig, um Ihre Privatsphäre und Vertraulichkeit zu schützen. Es hilft Ihnen zu kontrollieren, wer Ihre Gespräche mithören kann, unbefugte Aufnahmen zu verhindern, sensible Informationen zu schützen und die Einhaltung von Vorschriften sicherzustellen."
   },
   "8": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Anwendungen mit Kameraberechtigungen",
+      "Failed": "Wir konnten nicht überprüfen, welche Anwendungen Kameraberechtigungen haben.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Anwendungen mit Webcam-Erlaubnis",
@@ -232,6 +296,14 @@
     "Information": "Zu wissen, welche Anwendungen Zugriff auf Ihre Kamera haben, hilft, unbefugten Zugriff zu verhindern. Bösartige Software oder sogar legitime Anwendungen mit schlecht implementierten Sicherheitsfunktionen könnten möglicherweise ohne Ihr Wissen oder Ihre Zustimmung auf Ihre Kamera zugreifen. Indem Sie wissen, welche Anwendungen Zugriff haben, können Sie unbefugte Versuche identifizieren und blockieren."
   },
   "9": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Anwendungen mit Terminberechtigungen",
+      "Failed": "Wir konnten nicht überprüfen, welche Anwendungen Terminberechtigungen haben.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Bewerbungen mit Terminerlaubnis",
@@ -260,6 +332,14 @@
     "Information": "Zu verstehen, welche Anwendungen Zugriff auf Ihren Kalender oder Ihre Termine haben, ist entscheidend für den Schutz Ihrer Privatsphäre und Ihres Zeitplans. Es hilft Ihnen zu kontrollieren, wer Ihre sensiblen Termininformationen einsehen und potenziell missbrauchen kann, unbefugten Zugriff zu verhindern und die Datennutzung zu verwalten."
   },
   "10": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Anwendungen mit Kontaktberechtigungen",
+      "Failed": "Wir konnten nicht überprüfen, welche Anwendungen Kontaktberechtigungen haben.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Bewerbungen mit Kontakterlaubnis",
@@ -288,6 +368,14 @@
     "Information": "Zu verstehen, welche Anwendungen auf Ihrem Windows-Computer Zugriff auf Ihre Kontakte haben, ist gut, um Ihre Privatsphäre zu schützen. Es ermöglicht Ihnen zu kontrollieren, wer Ihre Kontaktinformationen einsehen und potenziell missbrauchen kann, unbefugten Zugriff zu verhindern und die Datennutzung zu verwalten."
   },
   "11": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Von Anwendungen verwendete offene Ports",
+      "Failed": "Wir konnten nicht überprüfen, welche Ports geöffnet sind.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Offene Ports",
@@ -303,6 +391,14 @@
     "Information": "Ein offener Port ist einer, der den Empfang von Datenpaketen ermöglicht. Bestimmte Anwendungen benötigen spezifische Ports zum Empfang von Daten, daher stellen offene Ports an sich keine Gefahr dar. Einige Ports können jedoch unzureichend geschützt sein und unbefugte Kommunikation ermöglichen sowie Sicherheitslücken einführen. Es ist wichtig, Ports nur offen zu halten, wenn sie aktiv genutzt werden, und sie zu schließen, wenn sie nicht benötigt werden. Da zahlreiche offene Ports die Angriffsfläche Ihres Computers erweitern können, ist es ratsam, die Netzwerkports Ihres Systems regelmäßig zu überwachen und zu sichern, um diese Risiken zu minimieren und eine starke Sicherheitslage aufrechtzuerhalten."
   },
   "12": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Fernzugriff aktiviert/deaktiviert",
+      "Failed": "Wir konnten nicht überprüfen, ob die Funktion für den Remote-Desktop aktiviert ist.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 3,
       "Name": "Remotedesktop aktiviert",
@@ -324,6 +420,14 @@
     "Information": "Remote Desktop ist eine integrierte Funktion im Windows-Betriebssystem, die es Benutzern ermöglicht, einen anderen Windows-Computer über ein Netzwerk oder das Internet fernzusteuern und zu steuern. Sie ermöglicht es Benutzern, sich mit einem entfernten Computer zu verbinden, als säßen sie davor, und bietet vollen Zugriff auf den Remote-Desktop, Anwendungen, Dateien und Ressourcen. Wenn Sie diese Funktion nicht verwenden, ist es sicherer, sie auszuschalten."
   },
   "13": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Servernachrichtenblock aktiviert/deaktiviert",
+      "Failed": "Wir konnten die Status des SMB-Protokolls nicht überprüfen.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 2,
       "Name": "SMB alle Versionen deaktiviert",
@@ -376,6 +480,14 @@
     "Information": "Das SMB (Server Message Block)-Protokoll wird in Windows-Umgebungen zum Teilen von Dateien, Druckern und anderen Ressourcen zwischen Geräten in einem Netzwerk verwendet. Es ist entscheidend sicherzustellen, dass die SMB-Einstellungen auf Ihrem Windows-Computer korrekt konfiguriert sind. Das SMBv1-Protokoll weist zahlreiche bekannte Sicherheitslücken auf und sollte daher niemals verwendet werden. Die Verwendung von SMBv2/v3 ist die sicherere Option."
   },
   "14": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Benutzerkontensteuerung aktiviert/deaktiviert",
+      "Failed": "Wir konnten die UAC-Stufe auf Ihrem System nicht überprüfen.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 3,
       "Name": "Benutzerkontensteuerung deaktiviert",
@@ -482,6 +594,14 @@
     "Information": "Die Benutzerkontensteuerung (User Account Control, UAC) ist eine Sicherheitsfunktion, die in Windows Vista eingeführt wurde und in späteren Versionen des Windows-Betriebssystems vorhanden ist. Ihr Hauptzweck besteht darin, die Sicherheit des Betriebssystems zu erhöhen, indem die Privilegien von Anwendungen und Prozessen mit Standardbenutzerrechten eingeschränkt werden und für Aufgaben, die erhöhte Berechtigungen erfordern, eine Administratorzustimmung erforderlich ist."
   },
   "15": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Windows Defender aktiviert/deaktiviert",
+      "Failed": "Wir konnten den Status von Windows Defender nicht überprüfen.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Windows Defender ist aktiviert",
@@ -524,6 +644,14 @@
     "Information": "Windows Defender überwacht kontinuierlich Ihr System auf verdächtige Aktivitäten, einschließlich Malware, Viren und anderen Formen von bösartiger Software. Durch die Aktivierung haben Sie einen aktiven Schutz gegen potenzielle Bedrohungen, die Ihre Privatsphäre oder Sicherheit gefährden könnten. Er erhält auch regelmäßige Updates von Microsoft, um immer auf dem neuesten Stand bezüglich der neuesten Sicherheitsbedrohungen und Schwachstellen zu sein. Indem Sie ihn aktiviert lassen, stellen Sie sicher, dass Ihr Computer vor neu auftretenden Bedrohungen geschützt ist, die bekannte Sicherheitslücken ausnutzen könnten."
   },
   "16": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Letzte Änderung des Windows-Passworts",
+      "Failed": "Wir konnten nicht überprüfen, wann die letzte Passwortänderung erfolgte.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 2,
       "Name": "Die letzte Passwortänderung liegt mehr als 6 Monate zurück",
@@ -550,6 +678,14 @@
     "Information": "Das regelmäßige Ändern Ihres Passworts verringert die Wahrscheinlichkeit eines unbefugten Zugriffs auf Ihren Computer oder sensible Informationen. Wenn jemand Ihr Passwort doch erlangt, beschränkt das regelmäßige Ändern die Zeit, die sie haben, um es auszunutzen. Es ist daher eine gute Gewohnheit, Ihr Passwort mindestens zweimal im Jahr zu ändern."
   },
   "17": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Windows-Anmeldeverfahren",
+      "Failed": "Wir konnten nicht überprüfen, welche Anmeldeverfahren verwendet werden.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 3,
       "Name": "Keine Windows-Anmeldemethode eingerichtet",
@@ -598,6 +734,14 @@
     "Information": "Die Verwendung einer sicheren Windows-Anmeldeoption ist wichtig. Windows unterstützt verschiedene Anmeldeoptionen wie Passwort, PIN, Sicherheitsschlüssel oder Fingerabdruck. Die Verwendung einer dieser Anmeldeoptionen ist wichtig, um Ihre Daten sicher zu halten. Ohne eine dieser Anmeldeoptionen kann jeder Ihr Gerät entsperren und auf Ihre Daten zugreifen. Falls Sie keine Anmeldeoption verwenden / eine weniger sichere Anmeldeoption verwenden / eine Kombination von Anmeldeoptionen verwenden, wird empfohlen, zu einer sichereren Anmeldeoption wie Passwort oder Fingerabdruck zu wechseln."
   },
   "18": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Windows-Version aktuell",
+      "Failed": "Wir konnten nicht überprüfen, wann die letzte Passwortänderung erfolgte.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Die Windows-Version ist aktuell",
@@ -634,6 +778,14 @@
     "Information": "Veraltete Windows-Versionen können ungepatchte Sicherheitslücken enthalten, die von Angreifern ausgenutzt werden können, um das System zu kompromittieren. Hacker suchen aktiv nach und nutzen Schwachstellen in veralteten Betriebssystemen aus, was zu unbefugtem Zugriff, Datenlecks und Malware-Infektionen führen kann."
   },
   "19": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Secure Boot aktiviert/deaktiviert",
+      "Failed": "Wir konnten nicht überprüfen, ob Secure Boot aktiviert ist.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 1,
       "Name": "Secure Boot ist deaktiviert",
@@ -665,6 +817,14 @@
     "Information": "Sicheres Boot stellt sicher, dass nur vertrauenswürdige Softwarekomponenten, die mit anerkannten digitalen Signaturen signiert sind, während des Bootvorgangs geladen werden. Dies verhindert, dass Malware und andere nicht autorisierte Software den Bootvorgang manipulieren und frühzeitig die Kontrolle über das System erlangen."
   },
   "20": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Anwendungen, die beim Systemstart gestartet werden",
+      "Failed": "Wir konnten nicht überprüfen, welche Anwendungen beim Systemstart gestartet werden.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Keine Anwendungen, die beim Booten starten",
@@ -689,6 +849,14 @@
     "Information": "Beim Starten Ihres Computers werden mehrere Anwendungen automatisch gestartet. Einige davon sind essentielle Prozesse, die für das ordnungsgemäße Funktionieren des Systems erforderlich sind, während andere praktisch sind, um sie beim Start zur Verfügung zu haben. Es kann jedoch auch Anwendungen geben, die beim Booten ohne Ihr Wissen gestartet werden. Es ist ratsam, diese zu deaktivieren, um unbefugte Aktionen zu verhindern und die Geschwindigkeit des Startvorgangs Ihres Computers zu verbessern."
   },
   "21": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Google Chrome hat einen Adblocker installiert",
+      "Failed": "Wir konnten nicht überprüfen, ob Ihr Browser einen Adblocker installiert hat.",
+      "Solution": [
+        "Bitte stellen Sie sicher, dass Ihr Browser geschlossen ist. Diese Überprüfung kann aufgrund des geöffneten Browsers möglicherweise nicht abgeschlossen werden."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Google Chrome mit installiertem Adblocker",
@@ -715,6 +883,14 @@
     "Information": "Adblocker schützen Benutzer vor Online-Werbung. Mit ihren Filtern und Algorithmen bieten sie einen Zufluchtsort für ununterbrochenes Surfen und verschonen Benutzer vor visuellem Ballast sowie potenziellen Sicherheitsrisiken durch Werbung."
   },
   "22": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Microsoft Edge hat einen Adblocker installiert",
+      "Failed": "Wir konnten nicht überprüfen, ob Ihr Browser einen Adblocker installiert hat.",
+      "Solution": [
+        "Bitte stellen Sie sicher, dass Ihr Browser geschlossen ist. Diese Überprüfung kann aufgrund des geöffneten Browsers möglicherweise nicht abgeschlossen werden."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Microsoft Edge mit installiertem Adblocker",
@@ -741,6 +917,14 @@
     "Information": "Adblocker schützen Benutzer vor Online-Werbung. Mit ihren Filtern und Algorithmen bieten sie einen Zufluchtsort für ununterbrochenes Surfen und verschonen Benutzer vor visuellem Ballast sowie potenziellen Sicherheitsrisiken durch Werbung."
   },
   "23": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Phishing-Domains im Verlauf von Google Chrome gefunden",
+      "Failed": "Wir konnten Ihren Browserverlauf nicht überprüfen.",
+      "Solution": [
+        "Bitte stellen Sie sicher, dass Ihr Browser geschlossen ist. Diese Überprüfung kann aufgrund des geöffneten Browsers möglicherweise nicht abgeschlossen werden."
+      ]
+    },
     "0": {
       "Severity": 2,
       "Name": "Potenzielle Phishing-Domains in Google Chrome gefunden",
@@ -761,6 +945,14 @@
     "Information": "Phishing-Domains sind gefälschte Websites, die darauf abzielen, Menschen zu täuschen und sie dazu zu bringen, sensible Informationen wie Passwörter oder Kreditkartendaten preiszugeben. Sie sehen echt aus und ahmen vertrauenswürdige Marken oder Organisationen nach. Diese Betrügereien nutzen Vertrauen und Neugierde aus, um persönliche Daten zu stehlen."
   },
   "24": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Phishing-Domains im Verlauf von Microsoft Edge gefunden",
+      "Failed": "Wir konnten Ihren Browserverlauf nicht überprüfen.",
+      "Solution": [
+        "Bitte stellen Sie sicher, dass Ihr Browser geschlossen ist. Diese Überprüfung kann aufgrund des geöffneten Browsers möglicherweise nicht abgeschlossen werden."
+      ]
+    },
     "0": {
       "Severity": 2,
       "Name": "Potenzielle Phishing-Domänen auf Microsoft Edge gefunden",
@@ -781,6 +973,14 @@
     "Information": "Phishing-Domains sind gefälschte Websites, die darauf abzielen, Menschen zu täuschen und sie dazu zu bringen, sensible Informationen wie Passwörter oder Kreditkartendaten preiszugeben. Sie sehen echt aus und ahmen vertrauenswürdige Marken oder Organisationen nach. Diese Betrügereien nutzen Vertrauen und Neugierde aus, um persönliche Daten zu stehlen."
   },
   "25": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Google Chrome Suchmaschine in Benutzung",
+      "Failed": "Wir konnten Ihre Browser-Suchmaschine nicht überprüfen.",
+      "Solution": [
+        "Bitte stellen Sie sicher, dass Ihr Browser geschlossen ist. Diese Überprüfung kann aufgrund des geöffneten Browsers möglicherweise nicht abgeschlossen werden."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Standardsuchmaschine, die in Google Chrome verwendet wird",
@@ -793,6 +993,14 @@
     "Information": "Eine Standard-Suchmaschine hilft Benutzern, Informationen im Internet zu finden, indem sie Schlüsselwörter oder Phrasen eingeben. Beispiele sind Google, Bing und Yahoo. Sie stehen oft in der Kritik für ihren Umgang mit Datenschutz."
   },
   "26": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Microsoft Edge Suchmaschine in Benutzung",
+      "Failed": "Wir konnten Ihre Browser-Suchmaschine nicht überprüfen.",
+      "Solution": [
+        "Bitte stellen Sie sicher, dass Ihr Browser geschlossen ist. Diese Überprüfung kann aufgrund des geöffneten Browsers möglicherweise nicht abgeschlossen werden."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Standardsuchmaschine, die in Microsoft Edge verwendet wird",
@@ -805,6 +1013,14 @@
     "Information": "Eine Standard-Suchmaschine hilft Benutzern, Informationen im Internet zu finden, indem sie Schlüsselwörter oder Phrasen eingeben. Beispiele sind Google, Bing und Yahoo. Sie stehen oft in der Kritik für ihren Umgang mit Datenschutz."
   },
   "27": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Mozilla Firefox Cookies gespeichert",
+      "Failed": "Wir konnten Ihre Browser-Cookies nicht überprüfen.",
+      "Solution": [
+        "Bitte stellen Sie sicher, dass Ihr Browser geschlossen ist. Diese Überprüfung kann aufgrund des geöffneten Browsers möglicherweise nicht abgeschlossen werden."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "In Mozilla Firefox wurden keine Tracking-Cookies gefunden",
@@ -832,6 +1048,14 @@
     "Information": "Cookies sind kleine Textdateien, die von den Websites gespeichert werden, die Sie besuchen. Sie dienen dazu, Ihre Einstellungen, Anmeldeinformationen und andere Daten zu speichern, um Ihr Surferlebnis zu verbessern. Allerdings können Cookies auch dazu verwendet werden, Ihre Online-Aktivitäten zu verfolgen und persönliche Informationen ohne Ihre Zustimmung zu sammeln, was Datenschutzbedenken aufwirft. Das regelmäßige Verwalten und Löschen von Cookies hilft Ihnen, Ihre Privatsphäre zu schützen und die Daten zu kontrollieren, die Websites über Sie sammeln."
   },
   "28": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Mozilla Firefox Erweiterungen installiert",
+      "Failed": "Wir konnten Ihre Browser-Erweiterungen nicht überprüfen.",
+      "Solution": [
+        "Bitte stellen Sie sicher, dass Ihr Browser geschlossen ist. Diese Überprüfung kann aufgrund des geöffneten Browsers möglicherweise nicht abgeschlossen werden."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "In Mozilla Firefox installierte Erweiterungen",
@@ -850,6 +1074,14 @@
     "Information": "Browser-Erweiterungen verbessern die Funktionalität Ihres Webbrowsers durch Hinzufügen von Funktionen, Tools und Anpassungsoptionen. Während Erweiterungen nützlich sein können, können sie auch Datenschutz- und Sicherheitsrisiken darstellen, wenn sie Zugriff auf sensible Daten haben oder Ihre Online-Aktivitäten ohne Ihre Zustimmung verfolgen. Durch regelmäßige Überprüfung und Verwaltung Ihrer Browser-Erweiterungen schützen Sie Ihre Privatsphäre und Sicherheit online. Entfernen Sie alle Erweiterungen, die Sie nicht mehr verwenden oder denen Sie nicht mehr vertrauen, um potenzielle Risiken zu minimieren."
   },
   "29": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Mozilla Firefox hat einen Werbeblocker installiert",
+      "Failed": "Wir konnten nicht überprüfen, ob Ihr Browser einen Werbeblocker installiert hat.",
+      "Solution": [
+        "Bitte stellen Sie sicher, dass Ihr Browser geschlossen ist. Diese Überprüfung kann aufgrund des geöffneten Browsers möglicherweise nicht abgeschlossen werden."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Mozilla Firefox mit installiertem Adblocker",
@@ -880,6 +1112,14 @@
     "Information": "Adblocker schützen Benutzer vor Online-Werbung. Mit ihren Filtern und Algorithmen bieten sie einen Zufluchtsort für ununterbrochenes Surfen und verschonen Benutzer vor visuellem Ballast sowie potenziellen Sicherheitsrisiken durch Werbung."
   },
   "30": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Mozilla Firefox Suchmaschine in Benutzung",
+      "Failed": "Wir konnten Ihre Browser-Suchmaschine nicht überprüfen.",
+      "Solution": [
+        "Bitte stellen Sie sicher, dass Ihr Browser geschlossen ist. Diese Überprüfung kann aufgrund des geöffneten Browsers möglicherweise nicht abgeschlossen werden."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Standardsuchmaschine in Mozilla Firefox",
@@ -894,6 +1134,14 @@
     "Information": "Eine Standard-Suchmaschine hilft Benutzern, Informationen im Internet zu finden, indem sie Schlüsselwörter oder Phrasen eingeben. Beispiele sind Google, Bing und Yahoo. Sie stehen oft in der Kritik für ihren Umgang mit Datenschutz."
   },
   "31": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Phishing-Domains in der Mozilla Firefox-History gefunden",
+      "Failed": "Wir konnten Ihre Browser-History nicht überprüfen.",
+      "Solution": [
+        "Bitte stellen Sie sicher, dass Ihr Browser geschlossen ist. Diese Überprüfung kann aufgrund des geöffneten Browsers möglicherweise nicht abgeschlossen werden."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "In Mozilla Firefox wurden keine potenziellen Phishing-Domänen gefunden",
@@ -914,6 +1162,14 @@
     "Information": "Phishing-Domains sind gefälschte Websites, die darauf abzielen, Menschen zu täuschen und sie dazu zu bringen, sensible Informationen wie Passwörter oder Kreditkartendaten preiszugeben. Sie sehen echt aus und ahmen vertrauenswürdige Marken oder Organisationen nach. Diese Betrügereien nutzen Vertrauen und Neugierde aus, um persönliche Daten zu stehlen."
   },
   "32": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: CIS-Audit-Listenregistereinstellungen",
+      "Failed": "Wir konnten die CIS-Audit-Listenregistereinstellungen nicht überprüfen.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 1,
       "Name": "Falsche Registrierungseinstellungen für die CIS-Überwachungsliste",
@@ -936,6 +1192,14 @@
     "Information": "Das Center for Internet Security (CIS) bietet Richtlinien und bewährte Verfahren zur Sicherung von Computersystemen an. Die CIS-Audit-Liste für Registrierungseinstellungen hilft sicherzustellen, dass Ihr System gemäß diesen Sicherheitsstandards konfiguriert ist. Falsche oder veraltete Registrierungseinstellungen können Ihr System anfällig für Sicherheitsbedrohungen machen und Ihre Privatsphäre gefährden."
   },
   "33": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Automatischer Anmeldevorgang aktiviert/deaktiviert",
+      "Failed": "Wir konnten nicht überprüfen, ob die automatische Anmeldung aktiviert ist.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Automatische Anmeldung deaktiviert",
@@ -960,6 +1224,14 @@
     "Information": "Die automatische Anmeldung ermöglicht es Benutzern, auf ihre Konten zuzugreifen, ohne jedes Mal ein Passwort eingeben zu müssen, wenn sie ihren Computer starten oder eine bestimmte Anwendung öffnen. Obwohl praktisch, birgt die automatische Anmeldung Sicherheitsrisiken, da jeder mit physischem Zugang zum Gerät auf das Konto zugreifen kann, ohne sich zu authentifizieren. Das Deaktivieren der automatischen Anmeldung erhöht die Sicherheit Ihrer Konten und verhindert unbefugten Zugriff."
   },
   "34": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Remote Procedure Call aktiviert/deaktiviert",
+      "Failed": "Wir konnten nicht überprüfen, ob RPC auf Ihrem Gerät aktiviert ist.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Remote-RPC deaktiviert",
@@ -988,6 +1260,14 @@
     "Information": "Remote Procedure Call (RPC) ist ein Protokoll, das es Programmen und Prozessen ermöglicht, miteinander in einem Netzwerk zu kommunizieren. Das Deaktivieren von Remote RPC hilft, unbefugten Zugriff auf Ihren Computer zu verhindern und schützt ihn vor potenziellen Sicherheitsbedrohungen und Schwachstellen."
   },
   "35": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Google Chrome Cookies gespeichert",
+      "Failed": "Wir konnten Ihre Browser-Cookies nicht überprüfen.",
+      "Solution": [
+        "Bitte stellen Sie sicher, dass Ihr Browser geschlossen ist. Diese Überprüfung kann aufgrund des geöffneten Browsers möglicherweise nicht abgeschlossen werden."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Im Google Chrome-Browser wurden keine möglichen Tracking-Cookies gefunden",
@@ -1016,6 +1296,14 @@
     "Information": "Cookies sind kleine Textdateien, die von den Websites gespeichert werden, die Sie besuchen. Sie dienen dazu, Ihre Einstellungen, Login-Informationen und andere Daten zu speichern, um Ihr Surferlebnis zu verbessern. Allerdings können Cookies auch verwendet werden, um Ihre Online-Aktivitäten zu verfolgen und persönliche Informationen ohne Ihre Zustimmung zu sammeln, was Datenschutzbedenken aufwirft. Durch regelmäßiges Verwalten und Löschen von Cookies können Sie Ihre Privatsphäre schützen und kontrollieren, welche Daten von Websites über Sie gesammelt werden."
   },
   "36": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Microsoft Edge Cookies gespeichert",
+      "Failed": "Wir konnten Ihre Browser-Cookies nicht überprüfen.",
+      "Solution": [
+        "Bitte stellen Sie sicher, dass Ihr Browser geschlossen ist. Diese Überprüfung kann aufgrund des geöffneten Browsers möglicherweise nicht abgeschlossen werden."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Im Microsoft Edge-Browser wurden keine möglichen Tracking-Cookies gefunden",
@@ -1044,6 +1332,14 @@
     "Information": "Cookies sind kleine Textdateien, die von den Websites gespeichert werden, die Sie besuchen. Sie dienen dazu, Ihre Einstellungen, Login-Informationen und andere Daten zu speichern, um Ihr Surferlebnis zu verbessern. Allerdings können Cookies auch verwendet werden, um Ihre Online-Aktivitäten zu verfolgen und persönliche Informationen ohne Ihre Zustimmung zu sammeln, was Datenschutzbedenken aufwirft. Durch regelmäßiges Verwalten und Löschen von Cookies können Sie Ihre Privatsphäre schützen und kontrollieren, welche Daten von Websites über Sie gesammelt werden."
   },
   "37": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Windows Firewall aktiviert/deaktiviert",
+      "Failed": "Wir konnten den Status der Windows-Firewall nicht überprüfen.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Die Windows-Firewall ist für alle Profile aktiviert",
@@ -1068,6 +1364,14 @@
     "Information": "Die Windows-Firewall ist eine integrierte Sicherheitsfunktion, die Ihren Computer durch Überwachung und Kontrolle des ein- und ausgehenden Netzwerkverkehrs vor unbefugtem Zugriff und bösartiger Software schützt. Das Aktivieren der Windows-Firewall für alle Netzwerkprofile (öffentlich, privat und Domäne) trägt dazu bei, die Sicherheit Ihres Systems zu erhöhen und potenzielle Sicherheitsbedrohungen zu verhindern."
   },
   "38": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Windows-Passwortlänge",
+      "Failed": "Wir konnten die Komplexität Ihres Passworts nicht überprüfen.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Die Mindestlänge des Passworts beträgt mindestens 15 Zeichen",
@@ -1096,6 +1400,14 @@
     "Information": "Das Festlegen einer Mindestpasswortlänge von mindestens 15 Zeichen trägt dazu bei, die Sicherheit von Benutzerkonten zu erhöhen, indem die Komplexität und Stärke der Passwörter erhöht werden. Längere Passwörter sind widerstandsfähiger gegen Brute-Force-Angriffe und bieten besseren Schutz vor unbefugtem Zugriff und Datenverlust."
   },
   "39": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Credential Guard aktiviert/deaktiviert",
+      "Failed": "Wir konnten nicht überprüfen, ob Credential Guard aktiviert ist.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Credential Guard ist aktiviert",
@@ -1116,6 +1428,14 @@
     "Information": "Credential Guard ist eine Sicherheitsfunktion in Windows, die dazu beiträgt, Benutzeranmeldeinformationen und sensible Informationen vor unbefugtem Zugriff und Diebstahl zu schützen. Sie verwendet sicherheitsorientierte Virtualisierung, um Anmeldeinformationen zu isolieren und zu schützen, was es Angreifern erschwert, Passwörter und andere sensible Daten zu stehlen."
   },
   "40": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: NetBIOS über TCP/IP aktiviert/deaktiviert",
+      "Failed": "Wir konnten den Zustand des NetBIOS nicht überprüfen.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "NetBIOS über TCP/IP ist deaktiviert",
@@ -1150,6 +1470,14 @@
     "Information": "NetBIOS über TCP/IP ist ein veraltetes Netzwerkprotokoll, das Computern die Kommunikation in einem lokalen Netzwerk ermöglicht. Die Deaktivierung von NetBIOS über TCP/IP trägt dazu bei, die Angriffsfläche Ihres Systems zu verringern und potenzielle Sicherheitslücken im Zusammenhang mit diesem Protokoll zu verhindern."
   },
   "41": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: WPAD-Dienst aktiviert/deaktiviert",
+      "Failed": "Wir konnten den Status des WPAD nicht überprüfen.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Der WPAD-Dienst ist deaktiviert",
@@ -1178,6 +1506,14 @@
     "Information": "Web Proxy Auto-Discovery (WPAD) ist ein Protokoll, das Webbrowsern ermöglicht, Proxyserver in einem Netzwerk automatisch zu entdecken. Durch Deaktivieren des WPAD-Dienstes können potenzielle Sicherheitsrisiken vermieden werden, die mit der automatischen Proxy-Konfiguration verbunden sind, und Ihr System vor der unbefugten Entdeckung und Konfiguration von Proxyservern geschützt werden."
   },
   "42": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Überprüfung fehlgeschlagen: Automatische Bildschirmsperre von Windows aktiviert/deaktiviert",
+      "Failed": "Wir konnten nicht überprüfen, ob die Bildschirmsperre aktiviert ist.",
+      "Solution": [
+        "Bitte überprüfen Sie, ob die Windows-Registrierung direkt verwendet wird. Wenn der Schlüssel für diese Überprüfung verwendet wird, können wir die Überprüfung nicht abschließen."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Die automatische Bildschirmsperre von Windows ist aktiviert",
