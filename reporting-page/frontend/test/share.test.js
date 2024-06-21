@@ -202,7 +202,7 @@ describe('share functions', function() {
 
     for (let i = 0; i < states.length; i++) {
       // Act
-      sessionStorage.setItem('state', i);
+      sessionStorage.setItem('LighthouseState', i);
       await share.setImage('facebook', document.getElementById('progress-segment'));
 
       // Arrange

@@ -4,7 +4,7 @@ import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js'
 import {retrieveTheme} from './personalize.js';
 import {scanTest} from './database.js';
 import {LogError as logError, LogDebug as logDebug} from '../../wailsjs/go/main/Tray.js';
-import {GetImagePath as getImagePath} from '../../wailsjs/go/main/App.js';
+import {GetImagePath as getImagePath, GetLighthouseState as getLighthouseState} from '../../wailsjs/go/main/App.js';
 import {openIssuePage} from './issue.js';
 import {saveProgress, shareProgress, selectSocialMedia, setImage, socialMediaSizes} from './share.js';
 import data from '../databases/database.en-GB.json' assert { type: 'json' };
@@ -14,28 +14,32 @@ let lighthousePath;
 /** Load the content of the Home page */
 export async function openHomePage() {
   // Load the video background path
-  switch (sessionStorage.getItem('state')) {
-  case '0':
+  const lighthouseState = await getLighthouseState();
+  console.log("Lighthouse State:", lighthouseState);
+  switch (lighthouseState) {
+  case 0:
     lighthousePath = 'state0.mkv';
     break;
-  case '1':
+  case 1:
     lighthousePath = 'state1.mkv';
     break;
-  case '2':
+  case 2:
     lighthousePath = 'state2.mkv';
     break;
-  case '3':
+  case 3:
     lighthousePath = 'state3.mkv';
     break;
-  case '4':
+  case 4:
     lighthousePath = 'state4.mkv';
     break;
   default:
     lighthousePath = 'state0.mkv';
   }
 
-  const lighthouseState = await getImagePath('gamification/' + lighthousePath);
-  logDebug('lighthouseState: ' + lighthouseState);
+  console.log("Lighthouse Path:", lighthousePath);
+
+  const lighthouseFullPath = await getImagePath('gamification/' + lighthousePath);
+  logDebug('lighthouseState: ' + lighthouseFullPath);
 
   retrieveTheme();
   closeNavigation(document.body.offsetWidth);
@@ -102,7 +106,7 @@ export async function openHomePage() {
   </div>
   `;
 
-  document.getElementById('lighthouse-background').src = lighthouseState;
+  document.getElementById('lighthouse-background').src = lighthouseFullPath;
 
   const tooltip = await getImagePath('tooltip.png');
   document.getElementById('lighthouse-progress-tooltip').src = tooltip;
