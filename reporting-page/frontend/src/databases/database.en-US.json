@@ -38,9 +38,7 @@
       "Solution": [
         "Check if any external devices are connected to your computer, and disconnect them if not in use. Examples of external devices include USB drives, external hard drives, external microphones, external cameras, and other peripherals."
       ],
-      "Screenshots": [
-        "TOBEFILLED"
-      ]
+      "Screenshots": []
     },
     "Type": "Security",
     "Information": "External devices such as USB drives, external hard drives, and other peripherals can introduce security risks to your computer. Malware can be spread through infected external devices, potentially compromising the security and integrity of your system. By ensuring that no external devices are connected to your computer when not in use, you reduce the risk of malware infection and unauthorized access to your system."
@@ -122,7 +120,7 @@
       ]
     },
     "Type": "Privacy",
-    "Information": "The advertisement ID setting allows windows to send you personalized ads. It is important to limit the amount of entities that have your personal data, therefore it is safer to turn this setting off."
+    "Information": "The advertisement ID setting allows Windows to send you personalized ads. It is important to limit the amount of entities that have your personal data, therefore it is safer to turn this setting off."
   },
   "5": {
     "0": {
@@ -298,9 +296,7 @@
         "Now type 'netstat -ab' and you will see a list of open ports and their corresponding programs.",
         "If you see any suspicious programs or ports, you can close them by by shutting down the corresponding program."
       ],
-      "Screenshots": [
-        "TOBEFILLED"
-      ]
+      "Screenshots": []
     },
     "Type": "Security",
     "Information": "An open port is one that permits the receipt of data packets. Certain applications require specific ports to receive data so the presence of open ports does not inherently pose risks. However, some ports may lack adequate protection, potentially allowing unauthorized communication and introducing security vulnerabilities. It is essential to keep ports open only when actively in use and close them when not needed. Given that numerous open ports can expand the attack surface of your computer, it's advisable to routinely monitor and secure your system's network ports to mitigate these risks and maintain a strong security posture."
@@ -521,14 +517,7 @@
       "Solution": [
         "We couldn't find the status of Windows Defender on this device."
       ],
-      "Screenshots": [],
-      "ScreenshotsWindows10": [
-        "windows-defender/windows-defender-1.png",
-        "windows-defender/windows-defender-1.png",
-        "windows-defender/windows-defender-2.png",
-        "windows-defender/windows-defender-3.png",
-        "windows-defender/windows-defender-4.png"
-      ]
+      "Screenshots": []
     },
     "Type": "Security",
     "Information": "Windows Defender continuously monitors your system for any suspicious activity, including malware, viruses, and other forms of malicious software. By having it enabled, you have an active defense against potential threats that could compromise your privacy or security. It also receives regular updates from Microsoft to stay up-to-date with the latest security threats and vulnerabilities. By keeping it enabled, you ensure that your computer is protected against newly emerging threats that could exploit known security weaknesses."
@@ -757,9 +746,7 @@
       "Solution": [
         "Be careful browsing the internet as trusted websites could be spoofed easily. Furthermore there are a lot of websites with malicious intentions. In case of doubt of actively browsing on a potential phishing website, it is advised to change your password."
       ],
-      "Screenshots": [
-        "TOBEFILLED"
-      ]
+      "Screenshots": []
     },
     "1": {
       "Severity": 0,
@@ -799,9 +786,7 @@
       "Solution": [
         "Consider using a search engine with a focus on the privacy of the users (for example DuckDuckGo)."
       ],
-      "Screenshots": [
-        "TOBEFILLED"
-      ]
+      "Screenshots": []
     },
     "Type": "Privacy",
     "Information": "A standard search engine helps users find information on the internet by entering keywords or phrases. Examples include Google, Bing, and Yahoo. They often face criticism for their approach to privacy."
@@ -813,9 +798,7 @@
       "Solution": [
         "Consider using a search engine with a focus on the privacy of the users (for example DuckDuckGo)."
       ],
-      "Screenshots": [
-        "TOBEFILLED"
-      ]
+      "Screenshots": []
     },
     "Type": "Privacy",
     "Information": "A standard search engine helps users find information on the internet by entering keywords or phrases. Examples include Google, Bing, and Yahoo. They often face criticism for their approach to privacy."
@@ -902,9 +885,7 @@
       "Solution": [
         "Consider using a browser with a focus on the privacy of the users (for example DuckDuckGo)"
       ],
-      "Screenshots": [
-        "TOBEFILLED"
-      ]
+      "Screenshots": []
     },
     "Type": "Privacy",
     "Information": "A standard search engine helps users find information on the internet by entering keywords or phrases. Examples include Google, Bing, and Yahoo. They often face criticism for their approach to privacy."
@@ -924,9 +905,7 @@
       "Solution": [
         "Be careful browsing the internet as trusted websites could be spoofed easily. Furthermore there are a lot of websites with malicious intentions. In case of doubt of actively browsing on a potential phishing website, it is advised to change your password."
       ],
-      "Screenshots": [
-        "TOBEFILLED"
-      ]
+      "Screenshots": []
     },
     "Type": "Privacy",
     "Information": "Phishing domains are fake websites designed to trick people into sharing sensitive information like passwords or credit card details. They look real, mimicking trusted brands or organizations. These scams exploit trust and curiosity to steal personal data."

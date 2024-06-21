@@ -12,14 +12,6 @@ export function openPersonalizePage() {
   <div class="personalize-container">
     <h2 class="lang-personalize-title"></h2>
     <div class="personalize-item">
-      <span class="personalize-description lang-favicon"></span>
-      <div class="personalize-button-container">
-        <button class="personalize-button icon-button lang-change-favicon" type="button"></button>    
-        <input class="personalize-input-invisible" type="file" id="input-file-icon" accept=".ico, .png">
-      </div>
-    </div>
-    <hr class="solid">
-    <div class="personalize-item">
       <span class="personalize-description lang-nav-image"></span>
       <div class="personalize-button-container">
         <button class="personalize-button logo-button lang-change-image" type="button"></button>    
@@ -60,7 +52,6 @@ export function openPersonalizePage() {
 
   // Localize the static content of the personalize page
   const staticPersonalizePageContent = [
-    'lang-change-favicon',
     'lang-navigation-image',
     'lang-change-image',
     'lang-navigation-title',
@@ -68,14 +59,12 @@ export function openPersonalizePage() {
     'lang-reset-button',
     'lang-personalize-title',
     'lang-pick-theme',
-    'lang-favicon',
     'lang-nav-image',
     'lang-nav-title',
     'lang-light',
     'lang-dark',
   ];
   const localizationIds = [
-    'Personalize.ChangeFavicon',
     'Personalize.navImage',
     'Personalize.ChangeImage',
     'Personalize.Title',
@@ -83,7 +72,6 @@ export function openPersonalizePage() {
     'Personalize.Reset',
     'Personalize.PersonalizeTitle',
     'Personalize.PickTheme',
-    'Personalize.Favicon',
     'Personalize.NavImage',
     'Personalize.NavTitle',
     'Personalize.Light',
@@ -92,16 +80,6 @@ export function openPersonalizePage() {
   for (let i = 0; i < staticPersonalizePageContent.length; i++) {
     getLocalization(localizationIds[i], staticPersonalizePageContent[i]);
   }
-
-  // add event-listener for changing Favicon
-  const changeIconButton = document.getElementsByClassName('icon-button')[0];
-  const inputFileIcon = document.getElementById('input-file-icon');
-
-  changeIconButton.addEventListener('click', function() {
-    inputFileIcon.click();
-  });
-
-  inputFileIcon.addEventListener('change', handleFaviconChange);
 
   // add event-listener for changing navigation picture
   const changeLogoButton = document.getElementsByClassName('logo-button')[0];
@@ -149,39 +127,11 @@ export function openPersonalizePage() {
   });
   document.documentElement.className= activeTheme;
 
-  // add event-listener for changing Favicon
+  // add event-listener for resetting settings
   const changeResetButton = document.getElementsByClassName('reset-button')[0];
-
   changeResetButton.addEventListener('click', async function() {
     await resetSettings();
   });
-}
-
-/**
- * Handles the change event when selecting a new favicon file.
- * Updates the favicon of the document with the selected image.
- * Saves the selected image URL in the localStorage.
- * @param {Event} icon - The event object representing the change of the favicon input.
- */
-export function handleFaviconChange(icon) {
-  const file = icon.target.files[0]; // Get the selected file
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = function(e) {
-      const picture = e.target.result;
-      const favicon = document.querySelector('link[rel="icon"]');
-      if (favicon) {
-        favicon.href = picture;
-      } else {
-        const newFavicon = document.createElement('link');
-        newFavicon.rel = 'icon';
-        newFavicon.href = picture.toString();
-        document.head.appendChild(newFavicon);
-      }
-      localStorage.setItem('favicon', picture.toString());
-    };
-    reader.readAsDataURL(file); // Read the selected file as a Data URL
-  }
 }
 
 /**
@@ -232,9 +182,6 @@ export async function resetSettings() {
 
   const title = document.getElementById('title');
   title.textContent = 'InfoSec Agent';
-
-  const favicon = document.getElementById('favicon');
-  favicon.href = logoPhoto;
 
   // Reset theme to light mode
   document.documentElement.className = 'normal';

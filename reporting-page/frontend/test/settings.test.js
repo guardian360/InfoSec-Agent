@@ -17,7 +17,6 @@ const dom = new JSDOM(`
 <!DOCTYPE html>
 <html>
 <body>
-    <input type="file" class="personalize-input-invisible" id="faviconInput" accept=".png,.ico"> 
     <div class="header">
       <div class="header-hamburger container">
         <span id="header-hamburger" class="header-hamburger material-symbols-outlined">menu</span>

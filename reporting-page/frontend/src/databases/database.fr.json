@@ -4,7 +4,7 @@
       "Severity": 4,
       "Name": "Aucun appareil connecté via Bluetooth",
       "Solution": [
-        "Aucun appareil n’est connecté via Bluetooth, aucune action n’est donc nécessaire."
+        "Aucun appareil n'est connecté via Bluetooth, aucune action n'est donc nécessaire."
       ],
       "Screenshots": []
     },
@@ -21,14 +21,14 @@
       ]
     },
     "Type": "Sécurité",
-    "Information": "La technologie Bluetooth permet la transmission et la réception de données sans fil. "
+    "Information": "La technologie Bluetooth permet la transmission et la réception de données sans fil. Bien que cette fonctionnalité soit généralement inoffensive lorsqu'elle est utilisée comme prévu, elle peut devenir un risque pour la sécurité si elle est exploitée par des acteurs malveillants. Si une personne malveillante obtient un accès non autorisé à votre appareil via une connexion Bluetooth, elle peut potentiellement voler vos données, écouter vos activités ou même envoyer des logiciels malveillants à votre appareil. Pour atténuer ces risques, il est crucial de ne connecter votre appareil qu'à des dispositifs connus et de confiance."
   },
   "2": {
     "0": {
       "Severity": 4,
       "Name": "Aucun périphérique externe connecté",
       "Solution": [
-        "Aucun périphérique externe n’est connecté, aucune action n’est donc nécessaire."
+        "Aucun périphérique externe n'est connecté, aucune action n'est donc nécessaire."
       ],
       "Screenshots": []
     },
@@ -38,12 +38,10 @@
       "Solution": [
         "Vérifiez si des périphériques externes sont connectés à votre ordinateur et déconnectez-les s'ils ne sont pas utilisés. "
       ],
-      "Screenshots": [
-        "ÊTRE REMPLI"
-      ]
+      "Screenshots": []
     },
     "Type": "Sécurité",
-    "Information": "Les périphériques externes tels que les clés USB, les disques durs externes et autres périphériques peuvent présenter des risques de sécurité pour votre ordinateur. "
+    "Information": "Les périphériques externes tels que les clés USB, les disques durs externes et autres périphériques peuvent introduire des risques de sécurité pour votre ordinateur. Les logiciels malveillants peuvent se propager via des périphériques externes infectés, compromettant potentiellement la sécurité et l'intégrité de votre système. En veillant à ce qu'aucun périphérique externe ne soit connecté à votre ordinateur lorsqu'il n'est pas utilisé, vous réduisez le risque d'infection par des logiciels malveillants et d'accès non autorisé à votre système."
   },
   "3": {
     "0": {
@@ -90,19 +88,19 @@
       "Severity": 0,
       "Name": "Compte invité désactivé",
       "Solution": [
-        "Il n’y a pas de compte invité sur votre ordinateur, aucune action n’est donc nécessaire."
+        "Il n'y a pas de compte invité sur votre ordinateur, aucune action n'est donc nécessaire."
       ],
       "Screenshots": []
     },
     "Type": "Sécurité",
-    "Information": "Le compte invité est un compte par défaut conçu pour offrir un accès temporaire et restreint au système aux personnes sans compte d'utilisateur régulier. "
+    "Information": "Le compte invité est un compte par défaut conçu pour offrir un accès temporaire et restreint au système pour les personnes sans comptes utilisateurs réguliers. Si vous êtes le seul utilisateur de l'ordinateur et n'avez pas besoin d'un compte invité, il est conseillé de le désactiver. Cela garantit qu'aucun utilisateur non autorisé ne puisse accéder aux données de l'ordinateur, améliorant ainsi la sécurité et la confidentialité globales."
   },
   "4": {
     "0": {
       "Severity": 0,
       "Name": "Partage d'identifiant d'annonce désactivé",
       "Solution": [
-        "Le partage des identifiants de publicité est désactivé. Aucune action n’est donc nécessaire."
+        "Le partage des identifiants de publicité est désactivé. Aucune action n'est donc nécessaire."
       ],
       "Screenshots": []
     },
@@ -122,14 +120,14 @@
       ]
     },
     "Type": "Confidentialité",
-    "Information": "Le paramètre d'identification de publicité permet à Windows de vous envoyer des publicités personnalisées. "
+    "Information": "Le paramètre d'ID publicitaire permet à Windows de vous envoyer des annonces personnalisées. Il est important de limiter le nombre d'entités qui ont accès à vos données personnelles, il est donc plus sûr de désactiver ce paramètre."
   },
   "5": {
     "0": {
       "Severity": 0,
       "Name": "Gestionnaire de mots de passe utilisé",
       "Solution": [
-        "Vous utilisez un gestionnaire de mots de passe, aucune action n’est requise."
+        "Vous utilisez un gestionnaire de mots de passe, aucune action n'est requise."
       ],
       "Screenshots": []
     },
@@ -146,7 +144,7 @@
       ]
     },
     "Type": "Sécurité",
-    "Information": "L'utilisation d'un gestionnaire de mots de passe offre plusieurs avantages aux particuliers et aux organisations, principalement liés à l'amélioration de la sécurité, de la commodité et des pratiques globales de gestion des mots de passe. "
+    "Information": "L'utilisation d'un gestionnaire de mots de passe offre plusieurs avantages pour les individus et les organisations, principalement autour de l'amélioration de la sécurité, de la commodité et des pratiques générales de gestion des mots de passe. Voici quelques raisons clés pour lesquelles vous devriez envisager d'utiliser un gestionnaire de mots de passe. Mots de passe plus forts: Les gestionnaires de mots de passe peuvent générer des mots de passe complexes et uniques pour chacun de vos comptes. Ces mots de passe sont généralement longs, aléatoires et difficiles à craquer, améliorant considérablement la sécurité de vos comptes en ligne par rapport à l'utilisation de mots de passe faibles ou réutilisés. Élimination de la réutilisation des mots de passe: L'un des pièges de sécurité les plus courants est la réutilisation des mots de passe sur plusieurs comptes. Les gestionnaires de mots de passe vous permettent de générer et de stocker des mots de passe uniques pour chaque compte, réduisant ainsi le risque d'accès non autorisé si un compte est compromis. Commodité: Les gestionnaires de mots de passe simplifient le processus de connexion aux sites Web et aux services en ligne en remplissant automatiquement les informations de connexion pour vous. Cela permet de gagner du temps et des efforts, en particulier lors de la gestion de nombreux comptes sur diverses plateformes. Stockage sécurisé: Les gestionnaires de mots de passe cryptent et stockent vos mots de passe dans un coffre-fort sécurisé, les protégeant contre les accès non autorisés. De nombreux gestionnaires de mots de passe offrent également des fonctionnalités de sécurité supplémentaires telles que l'authentification à deux facteurs (2FA) et l'authentification biométrique pour renforcer davantage la protection."
   },
   "6": {
     "0": {
@@ -169,12 +167,12 @@
       "Severity": 0,
       "Name": "Aucune application avec autorisation de localisation",
       "Solution": [
-        "Aucune application ne dispose d’une autorisation de localisation, aucune action n’est donc nécessaire."
+        "Aucune application ne dispose d'une autorisation de localisation, aucune action n'est donc nécessaire."
       ],
       "Screenshots": []
     },
     "Type": "Confidentialité",
-    "Information": "Savoir quelles applications ont accès à votre localisation est important pour protéger votre vie privée. "
+    "Information": "Savoir quelles applications ont accès à votre emplacement est important pour protéger votre vie privée. Cela vous aide à contrôler qui peut suivre votre emplacement, à prévenir les risques de sécurité, à économiser la batterie, à gérer l'utilisation des données, à personnaliser votre expérience des applications et à assurer la conformité avec les réglementations."
   },
   "7": {
     "0": {
@@ -197,12 +195,12 @@
       "Severity": 0,
       "Name": "Aucune application avec autorisation de microphone",
       "Solution": [
-        "Aucune application ne dispose d’une autorisation de microphone, aucune action n’est donc nécessaire."
+        "Aucune application ne dispose d'une autorisation de microphone, aucune action n'est donc nécessaire."
       ],
       "Screenshots": []
     },
     "Type": "Confidentialité",
-    "Information": "Comprendre quelles applications ont accès à votre microphone sur votre ordinateur Windows est important pour protéger votre vie privée et votre confidentialité. "
+    "Information": "Comprendre quelles applications ont accès à votre microphone sur votre ordinateur Windows est important pour protéger votre vie privée et la confidentialité. Cela vous aide à contrôler qui peut écouter vos conversations, à prévenir les enregistrements non autorisés, à protéger les informations sensibles et à assurer la conformité avec les réglementations."
   },
   "8": {
     "0": {
@@ -225,12 +223,12 @@
       "Severity": 0,
       "Name": "Aucune application avec autorisation webcam",
       "Solution": [
-        "Aucune application ne dispose d’une autorisation de webcam, aucune action n’est donc nécessaire."
+        "Aucune application ne dispose d'une autorisation de webcam, aucune action n'est donc nécessaire."
       ],
       "Screenshots": []
     },
     "Type": "Confidentialité",
-    "Information": "Savoir quelles applications ont accès à votre caméra permet d'empêcher tout accès non autorisé. "
+    "Information": "Savoir quelles applications ont accès à votre caméra aide à prévenir les accès non autorisés. Les logiciels malveillants ou même les applications légitimes avec des fonctionnalités de sécurité mal implémentées pourraient potentiellement accéder à votre caméra sans votre connaissance ni votre consentement. En sachant quelles applications ont accès, vous pouvez identifier et bloquer toute tentative non autorisée."
   },
   "9": {
     "0": {
@@ -253,12 +251,12 @@
       "Severity": 0,
       "Name": "Aucune candidature avec autorisation de rendez-vous",
       "Solution": [
-        "Aucune application ne dispose d’une autorisation de rendez-vous, aucune action n’est donc nécessaire."
+        "Aucune application ne dispose d'une autorisation de rendez-vous, aucune action n'est donc nécessaire."
       ],
       "Screenshots": []
     },
     "Type": "Confidentialité",
-    "Information": "Comprendre quelles applications ont accès à votre calendrier ou à vos rendez-vous est crucial pour protéger votre vie privée et votre emploi du temps. "
+    "Information": "Comprendre quelles applications ont accès à votre calendrier ou à vos rendez-vous est crucial pour protéger votre vie privée et votre emploi du temps. Cela vous aide à contrôler qui peut voir et potentiellement abuser de vos informations sensibles de rendez-vous, à prévenir les accès non autorisés et à gérer l'utilisation des données."
   },
   "10": {
     "0": {
@@ -281,12 +279,12 @@
       "Severity": 0,
       "Name": "Aucune application avec autorisation de contacts",
       "Solution": [
-        "Aucune application ne dispose d’une autorisation de contact, aucune action n’est donc nécessaire."
+        "Aucune application ne dispose d'une autorisation de contact, aucune action n'est donc nécessaire."
       ],
       "Screenshots": []
     },
     "Type": "Confidentialité",
-    "Information": "Comprendre quelles applications ont accès à vos contacts sur votre ordinateur Windows est bon pour protéger votre vie privée. "
+    "Information": "Comprendre quelles applications ont accès à vos contacts sur votre ordinateur Windows est bon pour protéger votre vie privée. Cela vous permet de contrôler qui peut voir et potentiellement abuser de vos informations de contact, de prévenir les accès non autorisés et de gérer l'utilisation des données."
   },
   "11": {
     "0": {
@@ -298,12 +296,10 @@
         "Tapez maintenant « netstat -ab » et vous verrez une liste des ports ouverts et de leurs programmes correspondants.",
         "Si vous voyez des programmes ou des ports suspects, vous pouvez les fermer en arrêtant le programme correspondant."
       ],
-      "Screenshots": [
-        "TOBEFILLED"
-      ]
+      "Screenshots": []
     },
     "Type": "Sécurité",
-    "Information": "Un port ouvert est un port qui permet la réception de paquets de données. "
+    "Information": "Un port ouvert est celui qui permet la réception de paquets de données. Certaines applications nécessitent des ports spécifiques pour recevoir des données, de sorte que la présence de ports ouverts ne pose pas intrinsèquement de risques. Cependant, certains ports peuvent manquer de protection adéquate, ce qui pourrait permettre des communications non autorisées et introduire des vulnérabilités de sécurité. Il est essentiel de maintenir les ports ouverts uniquement lorsqu'ils sont activement utilisés et de les fermer lorsqu'ils ne sont pas nécessaires. Étant donné que de nombreux ports ouverts peuvent étendre la surface d'attaque de votre ordinateur, il est conseillé de surveiller régulièrement et de sécuriser les ports réseau de votre système pour atténuer ces risques et maintenir une posture de sécurité solide."
   },
   "12": {
     "0": {
@@ -319,12 +315,12 @@
       "Severity": 0,
       "Name": "Bureau à distance désactivé",
       "Solution": [
-        "Le bureau à distance a été désactivé, aucune action n’est donc nécessaire."
+        "Le bureau à distance a été désactivé, aucune action n'est donc nécessaire."
       ],
       "Screenshots": []
     },
     "Type": "Sécurité",
-    "Information": "Le Bureau à distance est une fonctionnalité intégrée au système d'exploitation Windows qui permet aux utilisateurs d'accéder et de contrôler à distance un autre ordinateur Windows via un réseau ou Internet. "
+    "Information": "Le Bureau à distance est une fonction intégrée dans le système d'exploitation Windows qui permet aux utilisateurs d'accéder et de contrôler à distance un autre ordinateur Windows via un réseau ou Internet. Il permet aux utilisateurs de se connecter à un ordinateur distant comme s'ils étaient devant lui, offrant un accès complet au bureau à distance, aux applications, fichiers et ressources. Si vous n'utilisez pas cette fonction, il est conseillé de la désactiver."
   },
   "13": {
     "0": {
@@ -376,7 +372,7 @@
       ]
     },
     "Type": "Sécurité",
-    "Information": "Le protocole SMB (Server Message Block) est utilisé pour partager des fichiers, des imprimantes et d'autres ressources entre des appareils sur un réseau dans des environnements Windows. "
+    "Information": "Le protocole SMB (Server Message Block) est utilisé dans les environnements Windows pour le partage de fichiers, d'imprimantes et d'autres ressources entre appareils sur un réseau. Il est crucial de s'assurer que les paramètres SMB sur votre ordinateur Windows sont correctement configurés. Le protocole SMBv1 présente de nombreuses vulnérabilités connues et ne devrait donc jamais être utilisé. Utiliser SMBv2/v3 est une option plus sûre."
   },
   "14": {
     "0": {
@@ -482,7 +478,7 @@
       ]
     },
     "Type": "Sécurité",
-    "Information": "Le contrôle de compte d'utilisateur (UAC) est une fonctionnalité de sécurité introduite dans Windows Vista et présente dans les versions ultérieures du système d'exploitation Windows. "
+    "Information": "Le Contrôle de compte utilisateur (User Account Control, UAC) est une fonctionnalité de sécurité introduite dans Windows Vista et présente dans les versions ultérieures du système d'exploitation Windows. Son objectif principal est d'améliorer la sécurité du système d'exploitation en limitant les privilèges des applications et des processus fonctionnant avec des droits d'utilisateur standard, et en exigeant l'approbation de l'administrateur pour les tâches nécessitant des permissions élevées."
   },
   "15": {
     "0": {
@@ -500,7 +496,7 @@
         "Ouvrez l'application de sécurité Windows.",
         "Sélectionnez Protection contre les virus et les menaces.",
         "Sous Paramètres de protection contre les virus et les menaces, sélectionnez Gérer les paramètres.",
-        "Basculez le commutateur sous Protection en temps réel pour l’activer."
+        "Basculez le commutateur sous Protection en temps réel pour l'activer."
       ],
       "Screenshots": [
         "windows-defender/windows-defender-1.png",
@@ -521,17 +517,10 @@
       "Solution": [
         "Nous n'avons pas pu trouver l'état de Windows Defender sur cet appareil."
       ],
-      "Screenshots": [],
-      "ScreenshotsWindows10": [
-        "windows-defender/windows-defender-1.png",
-        "windows-defender/windows-defender-1.png",
-        "windows-defender/windows-defender-2.png",
-        "windows-defender/windows-defender-3.png",
-        "windows-defender/windows-defender-4.png"
-      ]
+      "Screenshots": []
     },
     "Type": "Sécurité",
-    "Information": "Windows Defender surveille en permanence votre système pour détecter toute activité suspecte, notamment les logiciels malveillants, les virus et autres formes de logiciels malveillants. "
+    "Information": "Windows Defender surveille en continu votre système à la recherche d'activités suspectes, notamment les logiciels malveillants, les virus et autres formes de logiciels malveillants. En l'activant, vous bénéficiez d'une défense active contre les menaces potentielles susceptibles de compromettre votre vie privée ou votre sécurité. Il reçoit également des mises à jour régulières de Microsoft pour rester à jour concernant les dernières menaces de sécurité et vulnérabilités. En le laissant activé, vous vous assurez que votre ordinateur est protégé contre les nouvelles menaces émergentes qui pourraient exploiter des failles de sécurité connues."
   },
   "16": {
     "0": {
@@ -557,7 +546,7 @@
       "Screenshots": []
     },
     "Type": "Sécurité",
-    "Information": "Changer régulièrement votre mot de passe réduit le risque d'accès non autorisé à votre ordinateur ou à vos informations sensibles. "
+    "Information": "Changer régulièrement votre mot de passe réduit la probabilité d'accès non autorisé à votre ordinateur ou à des informations sensibles. Si quelqu'un parvient à obtenir votre mot de passe, le changer régulièrement limite le temps qu'il a pour l'exploiter. Il est donc conseillé de changer votre mot de passe au moins deux fois par an."
   },
   "17": {
     "0": {
@@ -605,14 +594,14 @@
       ]
     },
     "Type": "Sécurité",
-    "Information": "Il est important d’utiliser une méthode de connexion Windows sécurisée. "
+    "Information": "Utiliser une méthode de connexion sécurisée sur Windows est important. Windows supporte diverses méthodes de connexion telles que le mot de passe, le code PIN, la clé de sécurité ou l'empreinte digitale. Utiliser l'une de ces méthodes de connexion est essentiel pour sécuriser vos données. Sans l'une de ces méthodes de connexion, n'importe qui peut déverrouiller votre appareil et accéder à vos données. Si vous n'utilisez pas de méthode de connexion / utilisez une méthode de connexion moins sécurisée / une combinaison de méthodes de connexion, il est recommandé de passer à une méthode de connexion plus sécurisée comme le mot de passe ou l'empreinte digitale."
   },
   "18": {
     "0": {
       "Severity": 0,
       "Name": "La version Windows est à jour",
       "Solution": [
-        "Votre version de Windows est à jour, aucune action n’est requise."
+        "Votre version de Windows est à jour, aucune action n'est requise."
       ],
       "Screenshots": []
     },
@@ -641,7 +630,7 @@
       ]
     },
     "Type": "Sécurité",
-    "Information": "Les versions obsolètes de Windows peuvent contenir des failles de sécurité non corrigées qui pourraient être exploitées par des attaquants pour compromettre le système. "
+    "Information": "Les versions obsolètes de Windows peuvent contenir des vulnérabilités de sécurité non corrigées qui pourraient être exploitées par des attaquants pour compromettre le système. Les hackers recherchent activement et exploitent les vulnérabilités dans les systèmes d'exploitation obsolètes, ce qui pourrait conduire à un accès non autorisé, des violations de données et des infections par des logiciels malveillants."
   },
   "19": {
     "0": {
@@ -659,7 +648,7 @@
       "Severity": 0,
       "Name": "Le démarrage sécurisé est activé",
       "Solution": [
-        "Le démarrage sécurisé est activé, aucune action n’est donc nécessaire."
+        "Le démarrage sécurisé est activé, aucune action n'est donc nécessaire."
       ],
       "Screenshots": []
     },
@@ -672,14 +661,14 @@
       "Screenshots": []
     },
     "Type": "Sécurité",
-    "Information": "Secure Boot garantit que seuls les composants logiciels fiables, signés avec des signatures numériques reconnues, sont chargés pendant le processus de démarrage. "
+    "Information": "Le démarrage sécurisé garantit que seuls les composants logiciels de confiance, signés avec des signatures numériques reconnues, sont chargés lors du processus de démarrage. Cela empêche les logiciels malveillants et autres logiciels non autorisés de manipuler le processus de démarrage et de prendre le contrôle du système dès les premières étapes."
   },
   "20": {
     "0": {
       "Severity": 0,
       "Name": "Aucune application qui démarre au démarrage",
       "Solution": [
-        "Aucune application ne démarre au démarrage, aucune action n’est donc nécessaire."
+        "Aucune application ne démarre au démarrage, aucune action n'est donc nécessaire."
       ],
       "Screenshots": []
     },
@@ -696,7 +685,7 @@
       ]
     },
     "Type": "Sécurité",
-    "Information": "Lorsque vous démarrez votre ordinateur, plusieurs applications se lancent automatiquement. "
+    "Information": "Lorsque vous démarrez votre ordinateur, plusieurs applications se lancent automatiquement. Certaines sont des processus essentiels au bon fonctionnement du système, tandis que d'autres sont pratiques à avoir au démarrage. Cependant, il peut également y avoir des applications qui se lancent au démarrage sans que vous le sachiez. Il est prudent de les désactiver pour éviter toute action non autorisée et pour améliorer la vitesse du démarrage de votre ordinateur."
   },
   "21": {
     "0": {
@@ -722,7 +711,7 @@
       ]
     },
     "Type": "Confidentialité",
-    "Information": "Les bloqueurs de publicités protègent les utilisateurs des publicités en ligne. "
+    "Information": "Les bloqueurs de publicités protègent les utilisateurs contre les annonces en ligne. Avec leurs filtres et algorithmes, ils offrent un sanctuaire de navigation sans interruption, épargnant aux utilisateurs le désordre visuel et les risques potentiels pour la sécurité posés par les publicités."
   },
   "22": {
     "0": {
@@ -748,7 +737,7 @@
       ]
     },
     "Type": "Confidentialité",
-    "Information": "Les bloqueurs de publicités protègent les utilisateurs des publicités en ligne. "
+    "Information": "Les bloqueurs de publicités protègent les utilisateurs contre les annonces en ligne. Avec leurs filtres et algorithmes, ils offrent un sanctuaire de navigation sans interruption, épargnant aux utilisateurs le désordre visuel et les risques potentiels pour la sécurité posés par les publicités."
   },
   "23": {
     "0": {
@@ -757,20 +746,18 @@
       "Solution": [
         "Soyez prudent en naviguant sur Internet, car les sites Web de confiance pourraient facilement être usurpés. "
       ],
-      "Screenshots": [
-        "ÊTRE REMPLI"
-      ]
+      "Screenshots": []
     },
     "1": {
       "Severity": 0,
       "Name": "Aucun domaine de phishing potentiel trouvé sur Google Chrome",
       "Solution": [
-        "Vous n’avez visité aucun domaine de phishing récemment, aucune action n’est donc requise."
+        "Vous n'avez visité aucun domaine de phishing récemment, aucune action n'est donc requise."
       ],
       "Screenshots": []
     },
     "Type": "Confidentialité",
-    "Information": "Les domaines de phishing sont de faux sites Web conçus pour inciter les gens à partager des informations sensibles telles que des mots de passe ou des informations de carte de crédit. "
+    "Information": "Les domaines de phishing sont des sites web frauduleux conçus pour tromper les gens afin qu'ils partagent des informations sensibles telles que des mots de passe ou des détails de carte de crédit. Ils ont l'air réels, imitant des marques ou des organisations de confiance. Ces arnaques exploitent la confiance et la curiosité pour voler des données personnelles."
   },
   "24": {
     "0": {
@@ -785,12 +772,12 @@
       "Severity": 0,
       "Name": "Aucun domaine de phishing potentiel trouvé sur Microsoft Edge",
       "Solution": [
-        "Vous n’avez visité aucun domaine de phishing récemment, aucune action n’est donc requise."
+        "Vous n'avez visité aucun domaine de phishing récemment, aucune action n'est donc requise."
       ],
       "Screenshots": []
     },
     "Type": "Confidentialité",
-    "Information": "Les domaines de phishing sont de faux sites Web conçus pour inciter les gens à partager des informations sensibles telles que des mots de passe ou des informations de carte de crédit. "
+    "Information": "Les domaines de phishing sont des sites web frauduleux conçus pour tromper les gens afin qu'ils partagent des informations sensibles telles que des mots de passe ou des détails de carte de crédit. Ils ont l'air réels, imitant des marques ou des organisations de confiance. Ces arnaques exploitent la confiance et la curiosité pour voler des données personnelles."
   },
   "25": {
     "0": {
@@ -799,12 +786,10 @@
       "Solution": [
         "Pensez à utiliser un moteur de recherche axé sur la confidentialité des utilisateurs (par exemple DuckDuckGo)."
       ],
-      "Screenshots": [
-        "ÊTRE REMPLI"
-      ]
+      "Screenshots": []
     },
     "Type": "Confidentialité",
-    "Information": "Un moteur de recherche standard aide les utilisateurs à trouver des informations sur Internet en saisissant des mots-clés ou des expressions. "
+    "Information": "Un moteur de recherche standard aide les utilisateurs à trouver des informations sur Internet en entrant des mots-clés ou des phrases. Les exemples incluent Google, Bing et Yahoo. Ils sont souvent critiqués pour leur approche en matière de vie privée."
   },
   "26": {
     "0": {
@@ -813,12 +798,10 @@
       "Solution": [
         "Pensez à utiliser un moteur de recherche axé sur la confidentialité des utilisateurs (par exemple DuckDuckGo)."
       ],
-      "Screenshots": [
-        "ÊTRE REMPLI"
-      ]
+      "Screenshots": []
     },
     "Type": "Confidentialité",
-    "Information": "Un moteur de recherche standard aide les utilisateurs à trouver des informations sur Internet en saisissant des mots-clés ou des expressions. "
+    "Information": "Un moteur de recherche standard aide les utilisateurs à trouver des informations sur Internet en entrant des mots-clés ou des phrases. Les exemples incluent Google, Bing et Yahoo. Ils sont souvent critiqués pour leur approche en matière de vie privée."
   },
   "27": {
     "0": {
@@ -845,7 +828,7 @@
       ]
     },
     "Type": "Confidentialité",
-    "Information": "Les cookies sont de petits fichiers texte stockés sur votre ordinateur par les sites Web que vous visitez. "
+    "Information": "Les cookies sont de petits fichiers texte stockés sur votre ordinateur par les sites web que vous visitez. Ils servent à mémoriser vos préférences, informations de connexion et autres données pour améliorer votre expérience de navigation. Cependant, les cookies peuvent également être utilisés pour suivre vos activités en ligne et recueillir des informations personnelles sans votre consentement, soulevant des préoccupations en matière de confidentialité. Gérer et effacer régulièrement les cookies permet de protéger votre vie privée et de contrôler les données collectées par les sites web à votre sujet."
   },
   "28": {
     "0": {
@@ -863,7 +846,7 @@
       ]
     },
     "Type": "Confidentialité",
-    "Information": "Les extensions de navigateur améliorent les fonctionnalités de votre navigateur Web en ajoutant des fonctionnalités, des outils et des options de personnalisation. "
+    "Information": "Les extensions de navigateur améliorent les fonctionnalités de votre navigateur web en ajoutant des fonctionnalités, des outils et des options de personnalisation. Bien que les extensions puissent être utiles, elles peuvent également poser des risques en termes de confidentialité et de sécurité si elles ont accès à des données sensibles ou suivent vos activités en ligne sans votre consentement. Examiner régulièrement et gérer vos extensions de navigateur contribue à protéger votre vie privée et votre sécurité en ligne. Supprimez toutes les extensions que vous n'utilisez plus ou en lesquelles vous n'avez plus confiance pour minimiser les risques potentiels."
   },
   "29": {
     "0": {
@@ -893,7 +876,7 @@
       ]
     },
     "Type": "Confidentialité",
-    "Information": "Les bloqueurs de publicités protègent les utilisateurs des publicités en ligne. "
+    "Information": "Les bloqueurs de publicités protègent les utilisateurs contre les annonces en ligne. Avec leurs filtres et algorithmes, ils offrent un sanctuaire de navigation sans interruption, épargnant aux utilisateurs le désordre visuel et les risques potentiels pour la sécurité posés par les publicités."
   },
   "30": {
     "0": {
@@ -902,19 +885,17 @@
       "Solution": [
         "Pensez à utiliser un navigateur axé sur la confidentialité des utilisateurs (par exemple DuckDuckGo)"
       ],
-      "Screenshots": [
-        "ÊTRE REMPLI"
-      ]
+      "Screenshots": []
     },
     "Type": "Confidentialité",
-    "Information": "Un moteur de recherche standard aide les utilisateurs à trouver des informations sur Internet en saisissant des mots-clés ou des expressions. "
+    "Information": "Un moteur de recherche standard aide les utilisateurs à trouver des informations sur Internet en entrant des mots-clés ou des phrases. Les exemples incluent Google, Bing et Yahoo. Ils sont souvent critiqués pour leur approche en matière de vie privée."
   },
   "31": {
     "0": {
       "Severity": 0,
       "Name": "Aucun domaine de phishing potentiel trouvé sur Mozilla Firefox",
       "Solution": [
-        "Vous n’avez visité aucun domaine de phishing récemment, aucune action n’est donc requise."
+        "Vous n'avez visité aucun domaine de phishing récemment, aucune action n'est donc requise."
       ],
       "Screenshots": []
     },
@@ -924,12 +905,10 @@
       "Solution": [
         "Soyez prudent en naviguant sur Internet, car les sites Web de confiance pourraient facilement être usurpés. "
       ],
-      "Screenshots": [
-        "ÊTRE REMPLI"
-      ]
+      "Screenshots": []
     },
     "Type": "Confidentialité",
-    "Information": "Les domaines de phishing sont de faux sites Web conçus pour inciter les gens à partager des informations sensibles telles que des mots de passe ou des informations de carte de crédit. "
+    "Information": "Les domaines de phishing sont des sites web frauduleux conçus pour tromper les gens afin qu'ils partagent des informations sensibles telles que des mots de passe ou des détails de carte de crédit. Ils ont l'air réels, imitant des marques ou des organisations de confiance. Ces arnaques exploitent la confiance et la curiosité pour voler des données personnelles."
   },
   "32": {
     "0": {
@@ -951,14 +930,14 @@
       "Screenshots": []
     },
     "Type": "Sécurité",
-    "Information": "Le Center for Internet Security (CIS) fournit un ensemble de lignes directrices et de bonnes pratiques pour sécuriser les systèmes informatiques. "
+    "Information": "Le Center for Internet Security (CIS) propose des lignes directrices et des meilleures pratiques pour sécuriser les systèmes informatiques. La liste d'audit CIS des paramètres du registre aide à garantir que votre système est configuré selon ces normes de sécurité. Des paramètres de registre incorrects ou obsolètes peuvent rendre votre système vulnérable aux menaces de sécurité et compromettre votre vie privée."
   },
   "33": {
     "0": {
       "Severity": 0,
       "Name": "Connexion automatique désactivée",
       "Solution": [
-        "La connexion automatique est désactivée, aucune action n’est donc nécessaire."
+        "La connexion automatique est désactivée, aucune action n'est donc nécessaire."
       ],
       "Screenshots": []
     },
@@ -974,14 +953,14 @@
       ]
     },
     "Type": "Sécurité",
-    "Information": "La connexion automatique permet aux utilisateurs d'accéder à leurs comptes sans saisir de mot de passe à chaque fois qu'ils démarrent leur ordinateur ou ouvrent une application spécifique. "
+    "Information": "La connexion automatique permet aux utilisateurs d'accéder à leurs comptes sans avoir à saisir un mot de passe à chaque fois qu'ils démarrent leur ordinateur ou ouvrent une application spécifique. Bien que pratique, la connexion automatique présente des risques de sécurité, car toute personne ayant un accès physique à l'appareil peut accéder au compte sans authentification. Désactiver la connexion automatique renforce la sécurité de vos comptes et empêche l'accès non autorisé."
   },
   "34": {
     "0": {
       "Severity": 0,
       "Name": "RPC distant désactivé",
       "Solution": [
-        "Le RPC distant est désactivé, aucune action n’est donc nécessaire."
+        "Le RPC distant est désactivé, aucune action n'est donc nécessaire."
       ],
       "Screenshots": []
     },
@@ -999,7 +978,7 @@
       ]
     },
     "Type": "Sécurité",
-    "Information": "L'appel de procédure à distance (RPC) est un protocole qui permet aux programmes et aux processus de communiquer entre eux sur un réseau. "
+    "Information": "Remote Procedure Call (RPC) est un protocole qui permet à des programmes et des processus de communiquer entre eux sur un réseau. Désactiver le RPC à distance aide à prévenir l'accès non autorisé à votre ordinateur et le protège contre les menaces potentielles et les vulnérabilités de sécurité."
   },
   "35": {
     "0": {
@@ -1024,7 +1003,7 @@
       ]
     },
     "Type": "Confidentialité",
-    "Information": "Les cookies sont de petits fichiers texte stockés sur votre ordinateur par les sites Web que vous visitez. "
+    "Information": "Les cookies sont de petits fichiers texte stockés sur votre ordinateur par les sites web que vous visitez. Ils servent à mémoriser vos préférences, vos informations de connexion et d'autres données pour améliorer votre expérience de navigation. Cependant, les cookies peuvent également être utilisés pour suivre vos activités en ligne et recueillir des informations personnelles sans votre consentement, ce qui soulève des préoccupations en matière de confidentialité. Gérer et effacer régulièrement les cookies contribue à protéger votre vie privée et à contrôler les données collectées par les sites web à votre sujet."
   },
   "36": {
     "0": {
@@ -1049,7 +1028,7 @@
       ]
     },
     "Type": "Confidentialité",
-    "Information": "Les cookies sont de petits fichiers texte stockés sur votre ordinateur par les sites Web que vous visitez. "
+    "Information": "Les cookies sont de petits fichiers texte stockés sur votre ordinateur par les sites web que vous visitez. Ils servent à mémoriser vos préférences, vos informations de connexion et d'autres données pour améliorer votre expérience de navigation. Cependant, les cookies peuvent également être utilisés pour suivre vos activités en ligne et recueillir des informations personnelles sans votre consentement, ce qui soulève des préoccupations en matière de confidentialité. Gérer et effacer régulièrement les cookies contribue à protéger votre vie privée et à contrôler les données collectées par les sites web à votre sujet."
   },
   "37": {
     "0": {
@@ -1072,7 +1051,7 @@
       ]
     },
     "Type": "Sécurité",
-    "Information": "Le pare-feu Windows est une fonctionnalité de sécurité intégrée qui permet de protéger votre ordinateur contre les accès non autorisés et les logiciels malveillants en surveillant et en contrôlant le trafic réseau entrant et sortant. "
+    "Information": "Le pare-feu Windows est une fonctionnalité de sécurité intégrée qui aide à protéger votre ordinateur contre les accès non autorisés et les logiciels malveillants en surveillant et contrôlant le trafic réseau entrant et sortant. Activer le pare-feu Windows pour tous les profils réseau (public, privé et domaine) contribue à renforcer la sécurité de votre système et à prévenir les menaces potentielles."
   },
   "38": {
     "0": {
@@ -1097,14 +1076,14 @@
       ]
     },
     "Type": "Sécurité",
-    "Information": "La définition d'une longueur minimale de mot de passe d'au moins 15 caractères contribue à améliorer la sécurité des comptes d'utilisateurs en augmentant la complexité et la force des mots de passe. "
+    "Information": "Définir une longueur minimale de mot de passe d'au moins 15 caractères contribue à renforcer la sécurité des comptes utilisateurs en augmentant la complexité et la robustesse des mots de passe. Les mots de passe plus longs sont plus résistants aux attaques par force brute et offrent une meilleure protection contre les accès non autorisés et les violations de données."
   },
   "39": {
     "0": {
       "Severity": 0,
       "Name": "Credential Guard est activé",
       "Solution": [
-        "Credential Guard est activé, aucune action n’est donc nécessaire."
+        "Credential Guard est activé, aucune action n'est donc nécessaire."
       ],
       "Screenshots": []
     },
@@ -1119,7 +1098,7 @@
       ]
     },
     "Type": "Sécurité",
-    "Information": "Credential Guard est une fonctionnalité de sécurité de Windows qui permet de protéger les informations d'identification des utilisateurs et les informations sensibles contre les accès non autorisés et le vol. "
+    "Information": "Credential Guard est une fonctionnalité de sécurité de Windows qui aide à protéger les informations d'identification des utilisateurs et les informations sensibles contre l'accès non autorisé et le vol. Elle utilise la sécurité basée sur la virtualisation pour isoler et protéger les informations d'identification, rendant ainsi plus difficile aux attaquants de voler des mots de passe et d'autres données sensibles."
   },
   "40": {
     "0": {
@@ -1147,14 +1126,14 @@
       ]
     },
     "Type": "Sécurité",
-    "Information": "NetBIOS sur TCP/IP est un protocole réseau existant qui permet aux ordinateurs de communiquer sur un réseau local. "
+    "Information": "NetBIOS sur TCP/IP est un protocole de réseau hérité qui permet aux ordinateurs de communiquer sur un réseau local. Désactiver NetBIOS sur TCP/IP contribue à réduire la surface d'attaque de votre système et à prévenir les vulnérabilités potentielles de sécurité associées à ce protocole."
   },
   "41": {
     "0": {
       "Severity": 0,
       "Name": "Le service WPAD est désactivé",
       "Solution": [
-        "Le service WPAD est désactivé, aucune action n’est donc nécessaire."
+        "Le service WPAD est désactivé, aucune action n'est donc nécessaire."
       ],
       "Screenshots": []
     },
@@ -1172,7 +1151,7 @@
       ]
     },
     "Type": "Sécurité",
-    "Information": "Web Proxy Auto-Discovery (WPAD) est un protocole qui permet aux navigateurs Web de découvrir automatiquement les serveurs proxy sur un réseau. "
+    "Information": "Web Proxy Auto-Discovery (WPAD) est un protocole qui permet aux navigateurs web de découvrir automatiquement les serveurs proxy sur un réseau. Désactiver le service WPAD aide à prévenir les risques potentiels de sécurité associés à la configuration automatique de proxy et protège votre système contre la découverte et la configuration non autorisées de serveurs proxy."
   },
   "42": {
     "0": {
@@ -1196,6 +1175,6 @@
       ]
     },
     "Type": "Sécurité",
-    "Information": "Le verrouillage de l'écran est une fonctionnalité de sécurité qui oblige les utilisateurs à saisir un mot de passe, un code PIN ou une authentification biométrique pour déverrouiller leur appareil et accéder au bureau. "
+    "Information": "Le verrouillage de l'écran est une fonctionnalité de sécurité qui demande aux utilisateurs de saisir un mot de passe, un code PIN ou une authentification biométrique pour déverrouiller leur appareil et accéder au bureau. Activer le verrouillage de l'écran contribue à protéger vos données et votre vie privée en cas d'abandon ou de vol de votre ordinateur."
   }
 }
