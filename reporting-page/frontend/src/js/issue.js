@@ -300,7 +300,7 @@ export function parseShowResult(issueId, resultId, currentIssue) {
   case '110':
     resultLine += `<p class="lang-port"></p>`;
     const portTable = processPortsTable(issues.find((issue) => issue.issue_id === 11).result);
-    resultLine += `<table class = "issues-table">`;
+    resultLine += `<table class="issues-table">`;
     resultLine += `<thead><tr><th>Process</th><th>Port(s)</th></tr></thead>`;
     portTable.forEach((entry) => {
       resultLine += `<tr><td style="width: 30%">${entry.portProcess}</td>

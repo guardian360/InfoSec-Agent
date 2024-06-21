@@ -90,7 +90,7 @@
   background-color: var(--background-color-table-header); /* Light background color */
 }
 
-.issues-table tbody tr:hover {
+#issues-table tbody tr:hover {
   background-color: var(--background-color-top-nav); /* Light blue on hover */
   cursor: pointer; /* Indicate that it's clickable */
 }
