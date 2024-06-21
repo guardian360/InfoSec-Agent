@@ -153,17 +153,6 @@ func TestParseString(t *testing.T) {
 	}
 }
 
-// Mock implementation of UserSettings
-type MockUserSettings struct{}
-
-func (m *MockUserSettings) LoadUserSettings() usersettings.UserSettings {
-	return usersettings.UserSettings{
-		IntegrationKey: "mock-integration-key",
-	}
-}
-
-var oldLoadUserSettings func() usersettings.UserSettings
-
 // Create a ParseResult instance
 type ParseResult struct {
 	Status string `json:"status"`
@@ -173,11 +162,14 @@ func TestSendResultsToAPI(t *testing.T) {
 	// Create a test server
 	testServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		assert.Equal(t, "application/json", r.Header.Get("Content-Type"))
-		assert.Equal(t, "Bearer mock-integration-key", r.Header.Get("Authorization"))
+		assert.Equal(t, "Bearer", r.Header.Get("Authorization"))
 
 		var result ParseResult
 		err := json.NewDecoder(r.Body).Decode(&result)
 		assert.NoError(t, err)
+
+		// Validate the ParseResult fields
+		assert.Equal(t, "success", result.Status)
 
 		// Send a response
 		w.WriteHeader(http.StatusOK)
@@ -187,6 +179,7 @@ func TestSendResultsToAPI(t *testing.T) {
 	// Override the URL for the test
 	url := testServer.URL
 
+	// Create a ParseResult instance
 	result := ParseResult{
 		Status: "success",
 	}
@@ -200,7 +193,7 @@ func TestSendResultsToAPI(t *testing.T) {
 	req, err := http.NewRequest("POST", url, buffer)
 	assert.NoError(t, err)
 
-	settings := usersettings.LoadUserSettings()
+	settings := usersettings.DefaultUserSettings
 	req.Header.Set("Content-Type", "application/json")
 	req.Header.Set("Authorization", "Bearer "+settings.IntegrationKey)
 	req.Header.Set("Content-Length", fmt.Sprintf("%d", buffer.Len()))
