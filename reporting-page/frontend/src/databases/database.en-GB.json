@@ -2,6 +2,14 @@
   "1": {
     "Type": "Security",
     "Information": "Bluetooth technology enables wireless data transmission and reception. While this functionality is typically harmless when used as intended, it can become a security risk if exploited by malicious actors. If a malicious individual gains unauthorized access to your device through a Bluetooth connection, they can potentially steal your data, eavesdrop on your activities, or even send malware to your device. To mitigate these risks, it's crucial to only connect your device to known and trusted devices.",
+    "-1": {
+      "Severity": 4,
+      "Name": "Failed to check: Devices connected via bluetooth",
+      "Failed": "We were unable to check if there are devices connected via bluetooth.",
+      "Solution": [
+        "Please check if the windows registry is directly being used, when the key for this check is in use, we are unable to complete the check."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "No devices connected via bluetooth",
@@ -27,6 +35,14 @@
   "2": {
     "Type": "Security",
     "Information": "External devices such as USB drives, external hard drives, and other peripherals can introduce security risks to your computer. Malware can be spread through infected external devices, potentially compromising the security and integrity of your system. By ensuring that no external devices are connected to your computer when not in use, you reduce the risk of malware infection and unauthorized access to your system.",
+    "-1": {
+      "Severity": 4,
+      "Name": "Failed to check: Devices connected via USB ports",
+      "Failed": "We were unable to check if there are devices connected via USB ports.",
+      "Solution": [
+        "Please check if the windows registry is directly being used, when the key for this check is in use, we are unable to complete the check."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "No external devices connected",
@@ -47,6 +63,14 @@
   "3": {
     "Type": "Security",
     "Information": "The guest account is a default account designed to offer temporary and restricted access to the system for individuals without regular user accounts. If you are the sole user of the computer and do not require a guest account, it's advisable to disable it. This ensures that no unauthorized users can access data on the computer, enhancing overall security and privacy.",
+    "-1": {
+      "Severity": 4,
+      "Name": "Failed to check: Guest account enabled/disabled",
+      "Failed": "We were unable to check if there a guest account is enabled.",
+      "Solution": [
+        "Please check if the windows registry is directly being used, when the key for this check is in use, we are unable to complete the check."
+      ]
+    },
     "0": {
       "Severity": -1,
       "Name": "Guest account status unknown",
@@ -99,6 +123,14 @@
   "4": {
     "Type": "Privacy",
     "Information": "The advertisement ID setting allows windows to send you personalized ads. It is important to limit the amount of entities that have your personal data, therefore it is safer to turn this setting off.",
+    "-1": {
+      "Severity": 4,
+      "Name": "Failed to check: Advertisement ID enabled/disabled",
+      "Failed": "We were unable to check if the advertisement ID is shared with apps or not.",
+      "Solution": [
+        "Please check if the windows registry is directly being used, when the key for this check is in use, we are unable to complete the check."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Advertisement ID sharing disabled",
@@ -126,6 +158,14 @@
   "5": {
     "Type": "Security",
     "Information": "Using a password manager offers several benefits for individuals and organizations, primarily revolving around enhancing security, convenience, and overall password management practices. Here are some key reasons why you should consider using a password manager. Stronger Passwords: Password managers can generate complex, unique passwords for each of your accounts. These passwords are typically long, random, and difficult to crack, significantly improving the security of your online accounts compared to using weak or reused passwords. Elimination of Password Reuse: One of the most common security pitfalls is reusing passwords across multiple accounts. Password managers allow you to generate and store unique passwords for each account, reducing the risk of unauthorized access if one account is compromised. Convenience: Password managers streamline the process of logging into websites and online services by automatically filling in login credentials for you. This saves time and effort, especially when managing numerous accounts across various platforms. Secure Storage: Password managers encrypt and store your passwords in a secure vault, protecting them from unauthorized access. Many password managers also offer additional security features such as two-factor authentication (2FA) and biometric authentication to further enhance protection.",
+    "-1": {
+      "Severity": 4,
+      "Name": "Failed to check: Password manager installed",
+      "Failed": "We were unable to check if a password manager is installed.",
+      "Solution": [
+        "Please check if the windows registry is directly being used, when the key for this check is in use, we are unable to complete the check."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Password manager in use",
@@ -147,37 +187,53 @@
       ]
     }
   },
-"6": {
-  "Type": "Privacy",
-  "Information": "Knowing which applications have access to your location is important for protecting your privacy. It helps you control who can track your location, prevent security risks, conserve battery life, manage data usage, customize your app experience, and ensure compliance with regulations.",
-  "0": {
-    "Severity": 4,
-    "Name": "Applications with location permission",
-    "Solution": [
-      "Select Start > Settings > Privacy & security.",
-      "Here you can select location to see which applications have access, and you can revoke access for certain applications."
-    ],
-    "SolutionWindows10": [
-      "Go to Start > Settings > Privacy > Location.",
-      "Here you can select location to see which applications have access, and you can revoke access for certain applications."
-    ],
-    "Screenshots": [
-      "applications-with-location-permission/location-permissions-1.png",
-      "applications-with-location-permission/location-permissions-2.png"
-    ]
+  "6": {
+    "Type": "Privacy",
+    "Information": "Knowing which applications have access to your location is important for protecting your privacy. It helps you control who can track your location, prevent security risks, conserve battery life, manage data usage, customize your app experience, and ensure compliance with regulations.",
+    "-1": {
+      "Severity": 4,
+      "Name": "Failed to check: Applications with location permissions",
+      "Failed": "We were unable to check which applications have location permissions.",
+      "Solution": [
+        "Please check if the windows registry is directly being used, when the key for this check is in use, we are unable to complete the check."
+      ]
+    },
+    "0": {
+      "Severity": 4,
+      "Name": "Applications with location permission",
+      "Solution": [
+        "Select Start > Settings > Privacy & security.",
+        "Here you can select location to see which applications have access, and you can revoke access for certain applications."
+      ],
+      "SolutionWindows10": [
+        "Go to Start > Settings > Privacy > Location.",
+        "Here you can select location to see which applications have access, and you can revoke access for certain applications."
+      ],
+      "Screenshots": [
+        "applications-with-location-permission/location-permissions-1.png",
+        "applications-with-location-permission/location-permissions-2.png"
+      ]
+    },
+    "1": {
+      "Severity": 0,
+      "Name": "No applications with location permission",
+      "Solution": [
+        "There are no applications which have location permission, so there is no action needed."
+      ],
+      "Screenshots": []
+    }
   },
-  "1": {
-    "Severity": 0,
-    "Name": "No applications with location permission",
-    "Solution": [
-      "There are no applications which have location permission, so there is no action needed."
-    ],
-    "Screenshots": []
-  }
-},
   "7": {
     "Type": "Privacy",
     "Information": "Understanding which applications have access to your microphone on your Windows computer is important for protecting your privacy and confidentiality. It helps you control who can listen to your conversations, prevent unauthorized recording, safeguard sensitive information, and ensure compliance with regulations.",
+    "-1": {
+      "Severity": 4,
+      "Name": "Failed to check: Applications with microphone permissions",
+      "Failed": "We were unable to check which applications have microphone permissions.",
+      "Solution": [
+        "Please check if the windows registry is directly being used, when the key for this check is in use, we are unable to complete the check."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Applications with microphone permission",
@@ -206,6 +262,14 @@
   "8": {
     "Type": "Privacy",
     "Information": "Being aware of which applications have access to your camera helps prevent unauthorized access. Malicious software or even legitimate applications with poorly implemented security features could potentially access your camera without your knowledge or consent. By knowing which applications have access, you can identify and block any unauthorized attempts.",
+    "-1": {
+      "Severity": 4,
+      "Name": "Failed to check: Applications with webcam permissions",
+      "Failed": "We were unable to check which applications have webcam permissions.",
+      "Solution": [
+        "Please check if the windows registry is directly being used, when the key for this check is in use, we are unable to complete the check."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Applications with webcam permission",
@@ -234,6 +298,14 @@
   "9": {
     "Type": "Privacy",
     "Information": "Understanding which applications have access to your calendar or appointments is crucial for protecting your privacy, and schedule. It helps you control who can view and potentially misuse your sensitive appointment information, prevent unauthorized access and manage data usage.",
+    "-1": {
+      "Severity": 4,
+      "Name": "Failed to check: Applications with appointments permissions",
+      "Failed": "We were unable to check which applications have appointments permissions.",
+      "Solution": [
+        "Please check if the windows registry is directly being used, when the key for this check is in use, we are unable to complete the check."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Applications with appointments permission",
@@ -262,6 +334,14 @@
   "10": {
     "Type": "Privacy",
     "Information": "Understanding which applications have access to your contacts on your Windows computer is good for safeguarding your privacy. It allows you to control who can view and potentially misuse your contact information, prevent unauthorized access and manage data usage.",
+    "-1": {
+      "Severity": 4,
+      "Name": "Failed to check: Applications with contacts permissions",
+      "Failed": "We were unable to check which applications have contacts permissions.",
+      "Solution": [
+        "Please check if the windows registry is directly being used, when the key for this check is in use, we are unable to complete the check."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Applications with contacts permission",
@@ -290,6 +370,14 @@
   "11": {
     "Type": "Security",
     "Information": "An open port is one that permits the receipt of data packets. Certain applications require specific ports to receive data so the presence of open ports does not inherently pose risks. However, some ports may lack adequate protection, potentially allowing unauthorized communication and introducing security vulnerabilities. It is essential to keep ports open only when actively in use and close them when not needed. Given that numerous open ports can expand the attack surface of your computer, it's advisable to routinely monitor and secure your system's network ports to mitigate these risks and maintain a strong security posture.",
+    "-1": {
+      "Severity": 4,
+      "Name": "Failed to check: Open ports used by applications",
+      "Failed": "We were unable to check which ports are open.",
+      "Solution": [
+        "Please check if the windows registry is directly being used, when the key for this check is in use, we are unable to complete the check."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Open ports",
@@ -305,6 +393,14 @@
   "12": {
     "Type": "Security",
     "Information": "Remote Desktop is a built-in feature in the Windows operating system that allows users to remotely access and control another Windows computer over a network or the internet. It enables users to connect to a remote computer as if they were sitting in front of it, providing full access to the remote desktop, applications, files, and resources. If you do not use this feature, it is safer to turn it off.",
+    "-1": {
+      "Severity": 4,
+      "Name": "Failed to check: Remote desktop enabled/disabled",
+      "Failed": "We were unable to check if the Remote Desktop feature is enabled.",
+      "Solution": [
+        "Please check if the windows registry is directly being used, when the key for this check is in use, we are unable to complete the check."
+      ]
+    },
     "0": {
       "Severity": 3,
       "Name": "Remote desktop enabled",
@@ -328,6 +424,14 @@
   "13": {
     "Type": "Security",
     "Information": "The SMB (Server Message Block) protocol is used for sharing files, printers, and other resources between devices on a network in Windows environments. Ensuring that SMB settings on your Windows computer are configured correctly is crucial. The SMBv1 has numerous known vulnerabilities and therefore should never be used. Using SMBv2/v3 instead is the safer option.",
+    "-1": {
+      "Severity": 4,
+      "Name": "Failed to check: Server Message Block enabled/disabled",
+      "Failed": "We were unable to check the SMB protocol statuses.",
+      "Solution": [
+          "Please check if the windows registry is directly being used, when the key for this check is in use, we are unable to complete the check."
+      ]
+    },
     "0": {
       "Severity": 2,
       "Name": "SMB all versions disabled",
@@ -382,6 +486,14 @@
   "14": {
     "Type": "Security",
     "Information": "User Account Control (UAC) is a security feature introduced in Windows Vista and present in subsequent versions of the Windows operating system. Its primary purpose is to enhance the security of the operating system by limiting the privileges of applications and processes running with standard user rights and requiring administrator approval for tasks that require elevated permissions.",
+    "-1": {
+      "Severity": 4,
+      "Name": "Failed to check: User Account Control enabled/disabled",
+      "Failed": "We were unable to check the UAC level on your system.",
+      "Solution": [
+        "Please check if the windows registry is directly being used, when the key for this check is in use, we are unable to complete the check."
+      ]
+    },
     "0": {
       "Severity": 3,
       "Name": "User account control turned off",
@@ -488,6 +600,14 @@
   "15": {
     "Type": "Security",
     "Information": "Windows Defender continuously monitors your system for any suspicious activity, including malware, viruses, and other forms of malicious software. By having it enabled, you have an active defense against potential threats that could compromise your privacy or security. It also receives regular updates from Microsoft to stay up-to-date with the latest security threats and vulnerabilities. By keeping it enabled, you ensure that your computer is protected against newly emerging threats that could exploit known security weaknesses.",
+    "-1": {
+      "Severity": 4,
+      "Name": "Failed to check: Windows Defender enabled/disabled",
+      "Failed": "We were unable to check the windows defender status.",
+      "Solution": [
+        "Please check if the windows registry is directly being used, when the key for this check is in use, we are unable to complete the check."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Windows Defender is enabled",
@@ -530,6 +650,14 @@
   "16": {
     "Type": "Security",
     "Information": "Regularly changing your password reduces the likelihood of unauthorized access to your computer or sensitive information. If someone does manage to obtain your password, changing it regularly limits the time they have to exploit it.  So it is a good habit to change your password at least twice a year.",
+    "-1": {
+      "Severity": 4,
+      "Name": "Failed to check: Last Windows password changed",
+      "Failed": "We were unable to check when the last password change was.",
+      "Solution": [
+        "Please check if the windows registry is directly being used, when the key for this check is in use, we are unable to complete the check."
+      ]
+    },
     "0": {
       "Severity": 2,
       "Name": "Last password change was more than 6 months ago",
@@ -556,6 +684,14 @@
   "17": {
     "Type": "Security",
     "Information": "Using a secure windows login method is important. Windows supports various login methods like a password, PIN, security key or fingerprint. Using one of these login methods is important to keep your data safe. Without one of these login methods anyone is able to unlock your device and access your data. You are not using a login method / a less secure login method / combination of login methods, it is recommended to switch to a more secure login method like password or fingerprint.",
+    "-1": {
+      "Severity": 4,
+      "Name": "Failed to check: Windows login method",
+      "Failed": "We were unable to check which login methods are used.",
+      "Solution": [
+        "Please check if the windows registry is directly being used, when the key for this check is in use, we are unable to complete the check."
+      ]
+    },
     "0": {
       "Severity": 3,
       "Name": "No windows login method set up",
@@ -604,6 +740,14 @@
   "18": {
     "Type": "Security",
     "Information": "Outdated Windows versions may contain unpatched security vulnerabilities that could be exploited by attackers to compromise the system. Hackers actively search for and exploit vulnerabilities in outdated operating systems, potentially leading to unauthorized access, data breaches, and malware infections.",
+    "-1": {
+      "Severity": 4,
+      "Name": "Failed to check: Windows version up to date",
+      "Failed": "We were unable to check when the last password change was.",
+      "Solution": [
+        "Please check if the windows registry is directly being used, when the key for this check is in use, we are unable to complete the check."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Windows version is up to date",
@@ -641,12 +785,12 @@
     "Type": "Security",
     "Information": "Secure Boot ensures that only trusted software components, signed with recognized digital signatures, are loaded during the boot process. This prevents malware and other unauthorized software from tampering with the boot process and gaining control of the system at an early stage.",
     "-1": {
-        "Severity": 4,
-        "Name": "Failed to check: Secure boot enabled/disabled",
-        "Failed": "We were unable to check if Secure boot is enabled.",
-        "Solution": [
-            "Please check if the windows registry is directly being used, when the key for this check is in use, we are unable to complete the check."
-        ]
+      "Severity": 4,
+      "Name": "Failed to check: Secure boot enabled/disabled",
+      "Failed": "We were unable to check if Secure boot is enabled.",
+      "Solution": [
+        "Please check if the windows registry is directly being used, when the key for this check is in use, we are unable to complete the check."
+      ]
     },
     "0": {
       "Severity": 1,
@@ -679,6 +823,14 @@
   "20": {
     "Type": "Security",
     "Information": "When you boot up your computer, several applications automatically launch. Some of these are essential processes for the system to function properly, while others are convenient to have at startup. However, there might also be applications that start during boot without your knowledge. It's wise to disable these to prevent any unauthorized actions and to improve the speed of your computer's startup process.",
+    "-1": {
+      "Severity": 4,
+      "Name": "Failed to check: Applications that start at system boot",
+      "Failed": "We were unable to check which applications start at system boot.",
+      "Solution": [
+        "Please check if the windows registry is directly being used, when the key for this check is in use, we are unable to complete the check."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "No applications which start at boot",
@@ -703,6 +855,14 @@
   "21": {
     "Type": "Privacy",
     "Information": "Adblockers shield users from online advertisements. With their filters and algorithms, they provide a sanctuary of uninterrupted browsing, sparing users from the visual clutter and potential security risks posed by ads.",
+    "-1": {
+      "Severity": 4,
+      "Name": "Failed to check: Google Chrome has an adblocker installed",
+      "Failed": "We were unable to check if your browser has an adblocker installed.",
+      "Solution": [
+        "Please make sure your browser is closed, this check may be unable to be completed due to the browser being opened."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Google Chrome with an adblocker installed",
@@ -729,6 +889,14 @@
   "22": {
     "Type": "Privacy",
     "Information": "Adblockers shield users from online advertisements. With their filters and algorithms, they provide a sanctuary of uninterrupted browsing, sparing users from the visual clutter and potential security risks posed by ads.",
+    "-1": {
+      "Severity": 4,
+      "Name": "Failed to check: Microsoft Edge has an adblocker installed",
+      "Failed": "We were unable to check if your browser has an adblocker installed.",
+      "Solution": [
+        "Please make sure your browser is closed, this check may be unable to be completed due to the browser being opened."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Microsoft Edge with an adblocker installed",
@@ -756,12 +924,12 @@
     "Type": "Privacy",
     "Information": "Phishing domains are fake websites designed to trick people into sharing sensitive information like passwords or credit card details. They look real, mimicking trusted brands or organizations. These scams exploit trust and curiosity to steal personal data.",
     "-1": {
-        "Severity": 4,
-        "Name": "Failed to check: Phishing domains found in Microsoft Edge history",
-        "Failed": "We were unable to check your browser history.",
-        "Solution": [
-            "Please make sure your browser is closed, this check may be unable to be completed due to the browser being opened."
-        ]
+      "Severity": 4,
+      "Name": "Failed to check: Phishing domains found in Google Chrome history",
+      "Failed": "We were unable to check your browser history.",
+      "Solution": [
+        "Please make sure your browser is closed, this check may be unable to be completed due to the browser being opened."
+      ]
     },
     "0": {
       "Severity": 2,
@@ -783,6 +951,14 @@
   "24": {
     "Type": "Privacy",
     "Information": "Phishing domains are fake websites designed to trick people into sharing sensitive information like passwords or credit card details. They look real, mimicking trusted brands or organizations. These scams exploit trust and curiosity to steal personal data.",
+    "-1": {
+      "Severity": 4,
+      "Name": "Failed to check: Phishing domains found in Microsoft Edge history",
+      "Failed": "We were unable to check your browser history.",
+      "Solution": [
+        "Please make sure your browser is closed, this check may be unable to be completed due to the browser being opened."
+      ]
+    },
     "0": {
       "Severity": 2,
       "Name": "Potential phishing domains found on Microsoft Edge",
@@ -803,6 +979,14 @@
   "25": {
     "Type": "Privacy",
     "Information": "A standard search engine helps users find information on the internet by entering keywords or phrases. Examples include Google, Bing, and Yahoo. They often face criticism for their approach to privacy.",
+    "-1": {
+      "Severity": 4,
+      "Name": "Failed to check: Google Chrome search engine in use",
+      "Failed": "We were unable to check your browser search engine.",
+      "Solution": [
+        "Please make sure your browser is closed, this check may be unable to be completed due to the browser being opened."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Standard search engine used in Google Chrome",
@@ -815,6 +999,14 @@
   "26": {
     "Type": "Privacy",
     "Information": "A standard search engine helps users find information on the internet by entering keywords or phrases. Examples include Google, Bing, and Yahoo. They often face criticism for their approach to privacy.",
+    "-1": {
+      "Severity": 4,
+      "Name": "Failed to check: Microsoft Edge search engine in use",
+      "Failed": "We were unable to check your browser search engine.",
+      "Solution": [
+        "Please make sure your browser is closed, this check may be unable to be completed due to the browser being opened."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Standard search engine used in Microsoft Edge",
@@ -827,6 +1019,14 @@
   "27": {
     "Type": "Privacy",
     "Information": "Cookies are small text files stored on your computer by websites you visit. They are used to remember your preferences, login information, and other data to enhance your browsing experience. However, cookies can also be used to track your online activities and gather personal information without your consent, raising privacy concerns. Managing and clearing cookies regularly helps protect your privacy and control the data websites collect about you.",
+    "-1": {
+      "Severity": 4,
+      "Name": "Failed to check: Mozilla Firefox cookies stored",
+      "Failed": "We were unable to check your browser cookies.",
+      "Solution": [
+        "Please make sure your browser is closed, this check may be unable to be completed due to the browser being opened."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "No tracking cookies found in Mozilla Firefox",
@@ -854,6 +1054,14 @@
   "28": {
     "Type": "Privacy",
     "Information": "Browser extensions enhance the functionality of your web browser by adding features, tools, and customization options. While extensions can be useful, they can also pose privacy and security risks if they have access to sensitive data or track your online activities without your consent. Regularly reviewing and managing your browser extensions helps protect your privacy and security online. Remove any extensions that you no longer use or trust to minimize potential risks.",
+    "-1": {
+      "Severity": 4,
+      "Name": "Failed to check: Mozilla Firefox extensions installed",
+      "Failed": "We were unable to check your browser extensions.",
+      "Solution": [
+        "Please make sure your browser is closed, this check may be unable to be completed due to the browser being opened."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Extensions installed in Mozilla Firefox",
@@ -872,6 +1080,14 @@
   "29": {
     "Type": "Privacy",
     "Information": "Adblockers shield users from online advertisements. With their filters and algorithms, they provide a sanctuary of uninterrupted browsing, sparing users from the visual clutter and potential security risks posed by ads.",
+    "-1": {
+      "Severity": 4,
+      "Name": "Failed to check: Mozilla Firefox has an adblocker installed",
+      "Failed": "We were unable to check if your browser has an adblocker installed.",
+      "Solution": [
+        "Please make sure your browser is closed, this check may be unable to be completed due to the browser being opened."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Mozilla Firefox with an adblocker installed",
@@ -902,6 +1118,14 @@
   "30": {
     "Type": "Privacy",
     "Information": "A standard search engine helps users find information on the internet by entering keywords or phrases. Examples include Google, Bing, and Yahoo. They often face criticism for their approach to privacy.",
+    "-1": {
+      "Severity": 4,
+      "Name": "Failed to check: Mozilla Firefox search engine in use",
+      "Failed": "We were unable to check your browser search engine.",
+      "Solution": [
+        "Please make sure your browser is closed, this check may be unable to be completed due to the browser being opened."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Standard search engine in Mozilla Firefox",
@@ -914,6 +1138,14 @@
   "31": {
     "Type": "Privacy",
     "Information": "Phishing domains are fake websites designed to trick people into sharing sensitive information like passwords or credit card details. They look real, mimicking trusted brands or organizations. These scams exploit trust and curiosity to steal personal data.",
+    "-1": {
+      "Severity": 4,
+      "Name": "Failed to check: Phishing domains found in Mozilla Firefox history",
+      "Failed": "We were unable to check your browser history.",
+      "Solution": [
+        "Please make sure your browser is closed, this check may be unable to be completed due to the browser being opened."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "No potential phishing domains found on Mozilla Firefox",
@@ -934,6 +1166,14 @@
   "32": {
     "Type": "Security",
     "Information": "The Center for Internet Security (CIS) provides a set of guidelines and best practices for securing computer systems. The CIS Audit list registry settings help ensure that your system is configured according to these security standards. Incorrect or outdated registry settings may leave your system vulnerable to security threats and compromise your privacy.",
+    "-1": {
+      "Severity": 4,
+      "Name": "Failed to check: CIS Audit list registry settings",
+      "Failed": "We were unable to check the CIS Audit list registry settings.",
+      "Solution": [
+        "Please check if the windows registry is directly being used, when the key for this check is in use, we are unable to complete the check."
+      ]
+    },
     "0": {
       "Severity": 1,
       "Name": "Incorrect CIS Audit list registry settings",
@@ -956,6 +1196,14 @@
   "33": {
     "Type": "Security",
     "Information": "Automatic log-in allows users to access their accounts without entering a password each time they start their computer or open a specific application. While convenient, automatic log-in poses security risks, as anyone with physical access to the device can access the account without authentication. Disabling automatic log-in enhances the security of your accounts and prevents unauthorized access.",
+    "-1": {
+      "Severity": 4,
+      "Name": "Failed to check: Automatic log in enabled/disabled",
+      "Failed": "We were unable to check if automatic log-in is enabled.",
+      "Solution": [
+        "Please check if the windows registry is directly being used, when the key for this check is in use, we are unable to complete the check."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Automatic log-in disabled",
@@ -979,6 +1227,14 @@
   "34": {
     "Type": "Security",
     "Information": "Remote Procedure Call (RPC) is a protocol that allows programs and processes to communicate with each other on a network. Disabling Remote RPC helps prevent unauthorized access to your computer and protects it from potential security threats and vulnerabilities.",
+    "-1": {
+      "Severity": 4,
+      "Name": "Failed to check: Remote Procedure Call enabled/disabled",
+      "Failed": "We were unable to check if RPC is enabled on your device.",
+      "Solution": [
+        "Please check if the windows registry is directly being used, when the key for this check is in use, we are unable to complete the check."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Remote RPC disabled",
@@ -1004,6 +1260,14 @@
   "35": {
     "Type": "Privacy",
     "Information": "Cookies are small text files stored on your computer by websites you visit. They are used to remember your preferences, login information, and other data to enhance your browsing experience. However, cookies can also be used to track your online activities and gather personal information without your consent, raising privacy concerns. Managing and clearing cookies regularly helps protect your privacy and control the data websites collect about you.",
+    "-1": {
+      "Severity": 4,
+      "Name": "Failed to check: Google Chrome cookies stored",
+      "Failed": "We were unable to check your browser cookies.",
+      "Solution": [
+        "Please make sure your browser is closed, this check may be unable to be completed due to the browser being opened."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "No possible tracking cookies found in Google Chrome browser",
@@ -1029,6 +1293,14 @@
   "36": {
     "Type": "Privacy",
     "Information": "Cookies are small text files stored on your computer by websites you visit. They are used to remember your preferences, login information, and other data to enhance your browsing experience. However, cookies can also be used to track your online activities and gather personal information without your consent, raising privacy concerns. Managing and clearing cookies regularly helps protect your privacy and control the data websites collect about you.",
+    "-1": {
+      "Severity": 4,
+      "Name": "Failed to check: Microsoft Edge cookies stored",
+      "Failed": "We were unable to check your browser cookies.",
+      "Solution": [
+        "Please make sure your browser is closed, this check may be unable to be completed due to the browser being opened."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "No possible tracking cookies found in Microsoft Edge browser",
@@ -1054,6 +1326,14 @@
   "37": {
     "Type": "Security",
     "Information": "The Windows Firewall is a built-in security feature that helps protect your computer from unauthorized access and malicious software by monitoring and controlling incoming and outgoing network traffic. Enabling the Windows Firewall for all network profiles (public, private, and domain) helps enhance the security of your system and prevent potential security threats.",
+    "-1": {
+      "Severity": 4,
+      "Name": "Failed to check: Windows Firewall enabled/disabled",
+      "Failed": "We were unable to check the status of the windows firewall.",
+      "Solution": [
+        "Please check if the windows registry is directly being used, when the key for this check is in use, we are unable to complete the check."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Windows firewall is enabled for all profiles",
@@ -1077,6 +1357,14 @@
   "38": {
     "Type": "Security",
     "Information": "Setting a minimum password length of at least 15 characters helps enhance the security of user accounts by increasing the complexity and strength of passwords. Longer passwords are more resistant to brute-force attacks and provide better protection against unauthorized access and data breaches.",
+    "-1": {
+      "Severity": 4,
+      "Name": "Failed to check: Windows password length",
+      "Failed": "We were unable to check the complexity of your password.",
+      "Solution": [
+        "Please check if the windows registry is directly being used, when the key for this check is in use, we are unable to complete the check."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Minimum password length is set to at least 15 characters",
@@ -1102,6 +1390,14 @@
   "39": {
     "Type": "Security",
     "Information": "Credential Guard is a security feature in Windows that helps protect user credentials and sensitive information from unauthorized access and theft. It uses virtualization-based security to isolate and protect credential information, making it more difficult for attackers to steal passwords and other sensitive data.",
+    "-1": {
+      "Severity": 4,
+      "Name": "Failed to check: Credential Guard enabled/disabled",
+      "Failed": "We were unable to check if credential guard is enabled.",
+      "Solution": [
+        "Please check if the windows registry is directly being used, when the key for this check is in use, we are unable to complete the check."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Credential Guard is enabled",
@@ -1124,6 +1420,14 @@
   "40": {
     "Type": "Security",
     "Information": "NetBIOS over TCP/IP is a legacy networking protocol that allows computers to communicate on a local network. Disabling NetBIOS over TCP/IP helps reduce the attack surface of your system and prevent potential security vulnerabilities associated with this protocol.",
+    "-1": {
+      "Severity": 4,
+      "Name": "Failed to check: NetBIOS over TCP/IP enabled/disabled",
+      "Failed": "We were unable to check the state of the NetBIOS.",
+      "Solution": [
+        "Please check if the windows registry is directly being used, when the key for this check is in use, we are unable to complete the check."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "NetBIOS over TCP/IP is disabled",
@@ -1152,6 +1456,14 @@
   "41": {
     "Type": "Security",
     "Information": "Web Proxy Auto-Discovery (WPAD) is a protocol that allows web browsers to automatically discover proxy servers on a network. Disabling the WPAD service helps prevent potential security risks associated with automatic proxy configuration and protects your system from unauthorized proxy server discovery and configuration.",
+    "-1": {
+      "Severity": 4,
+      "Name": "Failed to check: WPAD service enabled/disabled",
+      "Failed": "We were unable to check the WPAD status.",
+      "Solution": [
+        "Please check if the windows registry is directly being used, when the key for this check is in use, we are unable to complete the check."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "WPAD service is disabled",
@@ -1177,6 +1489,14 @@
   "42": {
     "Type": "Security",
     "Information": "Screen lock is a security feature that requires users to enter a password, PIN, or biometric authentication to unlock their device and access the desktop. Enabling screen lock helps protect your data and privacy in case your computer is left unattended or stolen.",
+    "-1": {
+      "Severity": 4,
+      "Name": "Failed to check: Windows automatic Screen Lock enabled/disabled",
+      "Failed": "We were unable to check if the screen lock is enabled.",
+      "Solution": [
+        "Please check if the windows registry is directly being used, when the key for this check is in use, we are unable to complete the check."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Windows automatic Screen Lock is enabled",
@@ -1198,4 +1518,4 @@
       ]
     }
   }
-}
+  }

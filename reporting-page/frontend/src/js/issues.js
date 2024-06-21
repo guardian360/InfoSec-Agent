@@ -241,7 +241,7 @@ export function fillTable(tbody, issues) {
       row.cells[2].childNodes[0].classList.remove('lang-info');
       row.cells[2].childNodes[0].classList.add('lang-failed');
     }
-    
+
     tbody.appendChild(row);
   });
 
