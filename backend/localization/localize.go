@@ -1,4 +1,5 @@
 // Package localization is responsible for localizing strings for different languages.
+// The supported languages are German, English (UK), English (US), Spanish, French, Dutch, and Portuguese.
 //
 // Exported function(s): Init, Localize, Localizers
 package localization
@@ -29,20 +30,28 @@ var bundle *i18n.Bundle
 // Note: This function should be called before using the Localize function to ensure that the localizers are properly set up.
 func Init(path string) {
 	logger.Log.Debug("Initializing localization files")
+
 	path += config.LocalizationPath
 	logger.Log.Debug("Localization path: " + path)
 
 	bundle = i18n.NewBundle(language.BritishEnglish)
 	bundle.RegisterUnmarshalFunc("json", json.Unmarshal)
-	bundle.MustLoadMessageFile(path + "de/active.de.json")
-	bundle.MustLoadMessageFile(path + "en-GB/active.en-GB.json")
-	bundle.MustLoadMessageFile(path + "en-US/active.en-US.json")
-	bundle.MustLoadMessageFile(path + "es/active.es.json")
-	bundle.MustLoadMessageFile(path + "fr/active.fr.json")
-	bundle.MustLoadMessageFile(path + "nl/active.nl.json")
-	bundle.MustLoadMessageFile(path + "pt/active.pt.json")
 
-	logger.Log.Debug("Localization files initialized successfully")
+	messageFiles := []string{
+		"de/active.de.json",
+		"en-GB/active.en-GB.json",
+		"en-US/active.en-US.json",
+		"es/active.es.json",
+		"fr/active.fr.json",
+		"nl/active.nl.json",
+		"pt/active.pt.json",
+	}
+	for _, file := range messageFiles {
+		if _, err := bundle.LoadMessageFile(path + file); err != nil {
+			logger.Log.ErrorWithErr("Error loading localization file "+file, err)
+		}
+	}
+	logger.Log.Debug("Localization files initialized")
 
 	// Localizes for each language
 	localizers[0] = i18n.NewLocalizer(bundle, language.German.String())

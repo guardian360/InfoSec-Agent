@@ -1,3 +1,5 @@
+// Package system_test provides system tests for the functionality of the system tray application.
+// The system tests are run in a controlled virtual machine environment to ensure the application behaves as expected.
 package system_test
 
 import (
@@ -68,21 +70,22 @@ func TestTrayFunctionality(t *testing.T) {
 		expectedMessage string
 	}{
 		// Valid input
-		{"24", "Scan interval changed to 24 day(s)"},
+		{"24", "Changing scan interval to 24 day(s)"},
 		// Invalid input (non-numeric)
-		{"abc", "Scan interval changed"},
+		{"abc", "Invalid scan interval input"},
 		// Invalid input (negative)
-		{"-1", "Scan interval changed"},
+		{"-1", "Invalid scan interval input"},
 		// Invalid input (zero)
-		{"0", "Scan interval changed"},
+		{"0", "Invalid scan interval input"},
 		// Valid large input
-		{"1000", "Scan interval changed to 1000 day(s)"},
+		{"1000", "Changing scan interval to 1000 day(s)"},
 	}
 
 	// Iterate over test cases
 	for _, tc := range testCases {
 		var buf bytes.Buffer
 		logger.Log.SetOutput(&buf)
+		logger.Log.LogLevelSpecific = -1
 
 		// Run the function with mocked user input
 		tray.ChangeScanInterval(tc.input)
@@ -94,6 +97,7 @@ func TestTrayFunctionality(t *testing.T) {
 	}
 	// Reset log output to standard output
 	logger.Log.SetOutput(os.Stdout)
+	logger.Log.LogLevelSpecific = 0
 
 	// Test OpenReportingPage function
 	tray.ReportingPageOpen = true

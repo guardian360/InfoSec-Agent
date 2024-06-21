@@ -1,8 +1,9 @@
-// Package (reporting page) main contains the entry point of the reporting page application
+// The InfoSec Agent Reporting Page is a Wails application that presents the results of the InfoSec Agent scans in a user-friendly format.
+// It serves as a frontend for the [InfoSec-Agent] package.
 //
-// Exported function(s): NewApp, NewTray
+// This package is responsible for initializing the application and creating the link between the Go backend and JavaScript frontend.
 //
-// Exported struct(s): App
+// [InfoSec-Agent]: https://github.com/InfoSec-Agent/InfoSec-Agent/
 package main
 
 import (
@@ -71,13 +72,13 @@ func (h *FileLoader) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 
 	fileData, err := os.ReadFile(newPath)
 	if err != nil {
-		logger.Log.ErrorWithErr("Could not load file:"+newPath, err)
+		logger.Log.ErrorWithErr("Could not load file: "+newPath, err)
 		http.Error(res, "File not found", http.StatusNotFound)
 		return
 	}
 
 	if _, err = res.Write(fileData); err != nil {
-		logger.Log.ErrorWithErr("Could not write file:"+newPath, err)
+		logger.Log.ErrorWithErr("Could not write file: "+newPath, err)
 		http.Error(res, "Failed to serve file", http.StatusInternalServerError)
 	}
 }
@@ -113,20 +114,20 @@ func main() {
 		registry.QUERY_VALUE,
 	)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error opening registry key: ", err)
+		logger.Log.ErrorWithErr("Error opening registry key", err)
 	} else {
 		logger.Log.Debug("Found registry key")
 		defer func(k registry.Key) {
 			err = k.Close()
 			if err != nil {
-				logger.Log.ErrorWithErr("Error closing registry key: ", err)
+				logger.Log.ErrorWithErr("Error closing registry key", err)
 			}
 		}(k)
 
 		// Get reporting page executable path
 		path, _, err = k.GetStringValue("Path")
 		if err != nil {
-			logger.Log.ErrorWithErr("Error getting path string: ", err)
+			logger.Log.ErrorWithErr("Error getting path string", err)
 		}
 	}
 	changeDirectory(path)
@@ -171,7 +172,7 @@ func main() {
 		},
 	})
 	if err != nil {
-		logger.Log.ErrorWithErr("Error creating Wails application:", err)
+		logger.Log.ErrorWithErr("Error creating Wails application", err)
 	}
 }
 
@@ -191,7 +192,8 @@ func changeDirectory(path string) {
 
 	err := os.Chdir(path)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error changing directory: ", err)
+		logger.Log.ErrorWithErr("Error changing directory", err)
+	} else {
+		logger.Log.Debug("Changed directory to " + path)
 	}
-	logger.Log.Debug("Changed directory to " + path)
 }

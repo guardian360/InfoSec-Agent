@@ -1,7 +1,5 @@
 // Package browsers provides utility functions for handling browser-related operations.
 // These functions are used in the context of performing security checks on a system.
-//
-// Exported function(s): CloseFile, FirefoxFolder, GetPhishingDomains, CopyFile
 package browsers
 
 import (
@@ -14,6 +12,7 @@ import (
 	"os"
 	"os/user"
 	"path/filepath"
+	"strconv"
 	"strings"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
@@ -44,7 +43,7 @@ var UserHomeDirFunc = os.UserHomeDir
 func CloseFile(file mocking.File) error {
 	err := file.Close()
 	if err != nil {
-		logger.Log.ErrorWithErr("Error closing file: %s", err)
+		logger.Log.ErrorWithErr("Error closing file", err)
 		return err
 	}
 	return nil
@@ -71,7 +70,7 @@ func (r RealProfileFinder) FirefoxFolder() ([]string, error) {
 	// Get the current user
 	currentUser, err := user.Current()
 	if err != nil {
-		logger.Log.ErrorWithErr("Error getting current user:", err)
+		logger.Log.ErrorWithErr("Error getting current user", err)
 		return nil, err
 	}
 	// Specify the path to the firefox profile directory
@@ -79,20 +78,20 @@ func (r RealProfileFinder) FirefoxFolder() ([]string, error) {
 
 	dir, err := os.Open(filepath.Clean(profilesDir))
 	if err != nil {
-		logger.Log.ErrorWithErr("Error getting profiles directory:", err)
+		logger.Log.ErrorWithErr("Error getting profiles directory", err)
 		return nil, err
 	}
 	defer func(dir *os.File) {
 		err = dir.Close()
 		if err != nil {
-			logger.Log.ErrorWithErr("Error closing directory: %v", err)
+			logger.Log.ErrorWithErr("Error closing directory", err)
 		}
 	}(dir)
 
 	// Read the contents of the directory
 	files, err := dir.Readdir(0)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error reading contents:", err)
+		logger.Log.ErrorWithErr("Error reading contents", err)
 		return nil, err
 	}
 
@@ -201,14 +200,14 @@ func (r RealPhishingDomainGetter) GetPhishingDomains(creator RequestCreator) ([]
 	url := "https://raw.githubusercontent.com/mitchellkrogza/Phishing.Database/master/phishing-links-ACTIVE-today.txt"
 	req, err := creator.NewRequestWithContext(context.Background(), http.MethodGet, url, nil)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error creating HTTP request:", err)
+		logger.Log.ErrorWithErr("Error creating HTTP request", err)
 		return nil, err
 	}
 	req.Header.Add("User-Agent", "Mozilla/5.0")
 
 	resp, err := r.Client.Do(req)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error sending HTTP request:", err)
+		logger.Log.ErrorWithErr("Error sending HTTP request", err)
 		return nil, err
 	}
 	// Ensure the response body is closed properly
@@ -216,25 +215,25 @@ func (r RealPhishingDomainGetter) GetPhishingDomains(creator RequestCreator) ([]
 		if resp != nil && resp.Body != nil {
 			resErr := resp.Body.Close()
 			if resErr != nil {
-				logger.Log.ErrorWithErr("Error closing response body:", err)
+				logger.Log.ErrorWithErr("Error closing response body", err)
 			}
 		}
 	}()
 
 	if resp.StatusCode != http.StatusOK {
-		logger.Log.Printf("HTTP request failed with status code: %d", resp.StatusCode)
+		logger.Log.Error("HTTP request failed with status code: " + strconv.Itoa(resp.StatusCode))
 		return nil, errors.New("HTTP request failed")
 	}
 
 	// Parse the response of potential scam domains and split it into a list of domains
 	scamDomainsResponse, err := io.ReadAll(resp.Body)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error reading response body:", err)
+		logger.Log.ErrorWithErr("Error reading response body", err)
 		return nil, err
 	}
 
 	if len(scamDomainsResponse) == 0 {
-		logger.Log.ErrorWithErr("Error: Response body is empty", errors.New("no phishing domains list found online"))
+		logger.Log.Error("Response body is empty, no phishing domains list found online")
 		return nil, errors.New("no phishing domains list found online")
 	}
 
@@ -300,7 +299,7 @@ func (r RealCopyFileGetter) CopyFile(src, dst string, mockSource mocking.File, m
 	defer func(sourceFile mocking.File) {
 		err = sourceFile.Close()
 		if err != nil {
-			logger.Log.ErrorWithErr("Error closing source file:", err)
+			logger.Log.ErrorWithErr("Error closing source file", err)
 		}
 	}(sourceFile)
 	var destinationFile mocking.File
@@ -317,13 +316,13 @@ func (r RealCopyFileGetter) CopyFile(src, dst string, mockSource mocking.File, m
 	defer func(destinationFile mocking.File) {
 		err = destinationFile.Close()
 		if err != nil {
-			logger.Log.ErrorWithErr("Error closing destination file:", err)
+			logger.Log.ErrorWithErr("Error closing destination file", err)
 		}
 	}(destinationFile)
 
 	_, err = sourceFile.Copy(sourceFile, destinationFile)
 	if err != nil {
-		logger.Log.Println("Error copying file:", err)
+		logger.Log.ErrorWithErr("Error copying file", err)
 		return err
 	}
 	return nil
@@ -394,21 +393,21 @@ func (r RealQueryCookieDatabaseGetter) QueryCookieDatabase(checkID int, browser 
 	defer func(name string) {
 		err := os.Remove(name)
 		if err != nil {
-			logger.Log.ErrorWithErr("Error removing temporary "+browser+" cookie database: ", err)
+			logger.Log.ErrorWithErr("Error removing temporary "+browser+" cookie database", err)
 		}
 	}(tempCookieDB)
 
 	// Copy the database to a temporary location
 	copyError := getter.CopyFile(databasePath, tempCookieDB, nil, nil)
 	if copyError != nil {
-		return checks.NewCheckErrorf(checkID, "Unable to make a copy of "+browser+" database: ", copyError)
+		return checks.NewCheckErrorf(checkID, "Unable to make a copy of "+browser+" database", copyError)
 	}
 
 	db, err := sql.Open("sqlite", tempCookieDB)
 	defer func(db *sql.DB) {
 		err = db.Close()
 		if err != nil {
-			logger.Log.ErrorWithErr("Error closing "+browser+" database: ", err)
+			logger.Log.ErrorWithErr("Error closing "+browser+" database", err)
 		}
 	}(db)
 
@@ -425,7 +424,7 @@ func (r RealQueryCookieDatabaseGetter) QueryCookieDatabase(checkID int, browser 
 	defer func(rows *sql.Rows) {
 		err = rows.Close()
 		if err != nil {
-			logger.Log.ErrorWithErr("Error closing "+browser+" rows: ", err)
+			logger.Log.ErrorWithErr("Error closing "+browser+" rows", err)
 		}
 	}(rows)
 

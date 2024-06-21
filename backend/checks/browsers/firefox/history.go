@@ -29,7 +29,7 @@ func HistoryFirefox(profileFinder browsers.FirefoxProfileFinder, getter browsers
 	var output []string
 	ffDirectory, err := profileFinder.FirefoxFolder()
 	if err != nil {
-		logger.Log.ErrorWithErr("No firefox directory found: ", err)
+		logger.Log.ErrorWithErr("No firefox directory found", err)
 		return checks.NewCheckErrorf(checks.HistoryFirefoxID, "No firefox directory found", err)
 	}
 
@@ -39,7 +39,7 @@ func HistoryFirefox(profileFinder browsers.FirefoxProfileFinder, getter browsers
 	defer func(name string) {
 		err = os.Remove(name)
 		if err != nil {
-			logger.Log.ErrorWithErr("Error removing file: ", err)
+			logger.Log.ErrorWithErr("Error removing file", err)
 		}
 	}(tempHistoryDbff)
 
@@ -98,7 +98,7 @@ func (r RealCopyDBGetter) CopyDatabase(copyGetter browsers.CopyFileGetter, ffDir
 	// Copy the database to a temporary location
 	copyError := copyGetter.CopyFile(ffDirectory+"\\places.sqlite", tempHistoryDbff, nil, nil)
 	if copyError != nil {
-		logger.Log.ErrorWithErr("Unable to make a copy of the file: ", copyError)
+		logger.Log.ErrorWithErr("Unable to make a copy of the file", copyError)
 		return copyError
 	}
 	return nil
@@ -113,7 +113,7 @@ func (r RealCopyDBGetter) CopyDatabase(copyGetter browsers.CopyFileGetter, ffDir
 // Returns: _
 func CloseDatabase(db *sql.DB) {
 	if err := db.Close(); err != nil {
-		logger.Log.ErrorWithErr("Error closing database: ", err)
+		logger.Log.ErrorWithErr("Error closing database", err)
 	}
 }
 
@@ -151,7 +151,7 @@ func (r RealQueryDatabaseGetter) QueryDatabase(db *sql.DB) ([]QueryResult, error
 		"SELECT url, last_visit_date FROM moz_places WHERE last_visit_date >= ? ORDER BY last_visit_date DESC",
 		lastWeek)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error querying database: ", err)
+		logger.Log.ErrorWithErr("Error querying database", err)
 		return nil, err
 	}
 
@@ -161,14 +161,14 @@ func (r RealQueryDatabaseGetter) QueryDatabase(db *sql.DB) ([]QueryResult, error
 	for rows.Next() {
 		var result QueryResult
 		if err = rows.Scan(&result.URL, &result.LastVisitDate); err != nil {
-			logger.Log.ErrorWithErr("Error scanning row: ", err)
+			logger.Log.ErrorWithErr("Error scanning row", err)
 			return nil, err
 		}
 		results = append(results, result)
 	}
 
 	if err = rows.Err(); err != nil {
-		logger.Log.ErrorWithErr("Error iterating over rows: ", err)
+		logger.Log.ErrorWithErr("Error iterating over rows", err)
 		return nil, err
 	}
 
@@ -185,7 +185,7 @@ func (r RealQueryDatabaseGetter) QueryDatabase(db *sql.DB) ([]QueryResult, error
 // it will be logged for debugging purposes.
 func CloseRows(rows *sql.Rows) {
 	if err := rows.Close(); err != nil {
-		logger.Log.ErrorWithErr("Error closing rows: ", err)
+		logger.Log.ErrorWithErr("Error closing rows", err)
 	}
 }
 
@@ -230,7 +230,7 @@ func (r RealProcessQueryResultsGetter) ProcessQueryResults(results []QueryResult
 	creator := browsers.RealRequestCreator{}
 	phishingDomainList, err := getter.GetPhishingDomains(creator)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error getting phishing domains: ", err)
+		logger.Log.ErrorWithErr("Error getting phishing domains", err)
 		return nil, err
 	}
 

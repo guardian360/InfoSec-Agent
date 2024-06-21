@@ -75,7 +75,7 @@ func TestExtensionsChromium(t *testing.T) {
 			mockGetExtensionNamesFunc: func(_ string, _ string, _ string) (string, error) {
 				return "", nil
 			},
-			expectedResult: checks.NewCheckErrorf(checks.ExtensionChromiumID, "Error: ", errors.New("mock error")),
+			expectedResult: checks.NewCheckErrorf(checks.ExtensionChromiumID, "error getting preferences directory", errors.New("mock error")),
 		},
 		{
 			name:    "Test with error in GetExtensionIDs",
@@ -89,7 +89,7 @@ func TestExtensionsChromium(t *testing.T) {
 			mockGetExtensionNamesFunc: func(_ string, _ string, _ string) (string, error) {
 				return "", nil
 			},
-			expectedResult: checks.NewCheckErrorf(checks.ExtensionChromiumID, "Error: ", errors.New("mock error")),
+			expectedResult: checks.NewCheckErrorf(checks.ExtensionChromiumID, "error getting extension ids", errors.New("mock error")),
 		},
 	}
 

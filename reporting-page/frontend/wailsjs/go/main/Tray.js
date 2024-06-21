@@ -22,6 +22,6 @@ export function LogInfo(arg1) {
   return window['go']['main']['Tray']['LogInfo'](arg1);
 }
 
-export function ScanNow(arg1, arg2) {
-  return window['go']['main']['Tray']['ScanNow'](arg1, arg2);
+export function ScanNow(arg1) {
+  return window['go']['main']['Tray']['ScanNow'](arg1);
 }

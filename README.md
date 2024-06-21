@@ -1,4 +1,4 @@
-<img src="https://github.com/InfoSec-Agent/InfoSec-Agent/raw/main/reporting-page/frontend/src/assets/images/logoTeamA-transformed.png" alt="InfoSec-Agent" height="192" />
+<img src="https://github.com/InfoSec-Agent/InfoSec-Agent/raw/main/reporting-page/frontend/src/assets/images/InfoSec-Agent-logo.png" alt="InfoSec-Agent logo" height="192" />
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/InfoSec-Agent/InfoSec-Agent.svg)](https://pkg.go.dev/github.com/InfoSec-Agent/InfoSec-Agent)
 [![Go Report Card](https://goreportcard.com/badge/github.com/InfoSec-Agent/InfoSec-Agent)](https://goreportcard.com/report/github.com/InfoSec-Agent/InfoSec-Agent)

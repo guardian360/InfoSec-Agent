@@ -1,4 +1,3 @@
-// Package windows provides functions related to security/privacy checks of windows settings
 package windows
 
 import (

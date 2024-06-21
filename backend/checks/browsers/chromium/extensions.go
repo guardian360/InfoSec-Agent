@@ -1,6 +1,3 @@
-// Package chromium is responsible for running checks on Chromium based browsers.
-//
-// Exported function(s): ExtensionsChromium, HistoryChromium
 package chromium
 
 import (
@@ -49,12 +46,12 @@ func ExtensionsChromium(browser string, getter browsers.DefaultDirGetter, getter
 	browserPath, returnID := GetBrowserPathAndIDExtension(browser)
 	extensionsDir, err := getter.GetDefaultDir(browserPath)
 	if err != nil {
-		return checks.NewCheckErrorf(returnID, "Error: ", err)
+		return checks.NewCheckErrorf(returnID, "error getting preferences directory", err)
 	}
 
 	extensionIDs, err := getterExtID.GetExtensionIDs(extensionsDir + "/Extensions")
 	if err != nil {
-		return checks.NewCheckErrorf(returnID, "Error: ", err)
+		return checks.NewCheckErrorf(returnID, "error getting extension ids", err)
 	}
 
 	extensionNames := GetExtensionNames(nameGetter, extensionIDs, browser)
@@ -145,7 +142,7 @@ func GetExtensionNames(getter ExtensionNameGetter, extensionIDs []string, browse
 			extensionName, err := getter.GetExtensionNameChromium(id,
 				"https://chromewebstore.google.com/detail/%s", browser)
 			if err != nil {
-				logger.Log.ErrorWithErr("Error getting extension name: ", err)
+				logger.Log.ErrorWithErr("Error getting extension name", err)
 				continue
 			}
 			if strings.Count(extensionName, "/") > 4 {
@@ -157,7 +154,7 @@ func GetExtensionNames(getter ExtensionNameGetter, extensionIDs []string, browse
 			extensionName, err := getter.GetExtensionNameChromium(id,
 				"https://microsoftedge.microsoft.com/addons/getproductdetailsbycrxid/%s", browser)
 			if err != nil {
-				logger.Log.ErrorWithErr("Error getting extension name: ", err)
+				logger.Log.ErrorWithErr("Error getting extension name", err)
 				continue
 			}
 			extensionNames = append(extensionNames, extensionName)
@@ -192,20 +189,20 @@ func (c ChromeExtensionNameGetter) GetExtensionNameChromium(extensionID string, 
 	// Generate a new request to visit the extension/addon store
 	req, err := http.NewRequestWithContext(context.Background(), http.MethodGet, urlToVisit, nil)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error creating request: ", err)
+		logger.Log.ErrorWithErr("Error creating request", err)
 		return "", err
 	}
 	req.Header.Add("User-Agent", "Mozilla/5.0")
 	resp, err := client.Do(req)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error sending request: ", err)
+		logger.Log.ErrorWithErr("Error sending request", err)
 		return "", err
 	}
 	// Close the response body after the necessary data is retrieved
 	defer func(Body io.ReadCloser) {
 		err = Body.Close()
 		if err != nil {
-			logger.Log.ErrorWithErr("Error closing body: ", err)
+			logger.Log.ErrorWithErr("Error closing body", err)
 		}
 	}(resp.Body)
 
