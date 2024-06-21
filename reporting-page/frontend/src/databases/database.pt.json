@@ -148,7 +148,8 @@
         "Aqui você pode controlar as configurações de ID do anúncio e ativar/desativar o recurso."
       ],
       "Screenshots": [
-        "TOBEFILLED"
+        "advertisement-id/advertisement-id-1.png",
+        "advertisement-id/advertisement-id-2.png"
       ]
     },
     "Type": "Privacidade",
@@ -431,7 +432,7 @@
       "Severity": 2,
       "Name": "SMB todas as versões desativadas",
       "Solution": [
-        "PENDÊNCIA"
+        "Ambas as versões de SMB estão desativadas, portanto, não é necessária nenhuma ação."
       ],
       "Screenshots": []
     },
@@ -1174,7 +1175,7 @@
         "Baixe o CIS Benchmark para o seu sistema operacional no site oficial do CIS. "
       ],
       "Screenshots": [
-        "SER PREENCHIDO"
+        "cis-benchmark/cis-benchmark-1.png"
       ]
     },
     "1": {
@@ -1213,7 +1214,8 @@
         "Em 'Exigir login', selecione 'Quando o PC sair do modo de suspensão'."
       ],
       "Screenshots": [
-        "SER PREENCHIDO"
+        "automatic-login/automatic-login-1.png",
+        "automatic-login/automatic-login-2.png"
       ]
     },
     "Type": "Segurança",
@@ -1246,7 +1248,10 @@
         "Clique duas vezes na chave \"AllowRemoteRPC\" e defina seu valor como 0."
       ],
       "Screenshots": [
-        "SER PREENCHIDO"
+        "remote-rpc/remote-rpc-1.png",
+        "remote-rpc/remote-rpc-2.png",
+        "remote-rpc/remote-rpc-3.png",
+        "remote-rpc/remote-rpc-4.png"
       ]
     },
     "Type": "Segurança",
@@ -1279,7 +1284,10 @@
         "Aqui você pode visualizar e gerenciar os cookies armazenados pelos sites.  "
       ],
       "Screenshots": [
-        "SER PREENCHIDO"
+        "chrome-cookies/cookies-chrome-1.png",
+        "chrome-cookies/cookies-chrome-2.png",
+        "chrome-cookies/cookies-chrome-3.png",
+        "chrome-cookies/cookies-chrome-4.png"
       ]
     },
     "Type": "Privacidade",
@@ -1312,7 +1320,10 @@
         "Aqui você pode gerenciar as configurações gerais de cookies.  "
       ],
       "Screenshots": [
-        "SER PREENCHIDO"
+        "edge-cookies/cookies-edge-1.png",
+        "edge-cookies/cookies-edge-2.png",
+        "edge-cookies/cookies-edge-2.png",
+        "edge-cookies/cookies-edge-2.png"
       ]
     },
     "Type": "Privacidade",
@@ -1343,7 +1354,8 @@
         "Em 'Firewall e proteção de rede', certifique-se de que o Firewall do Windows esteja ativado para todos os perfis de rede (público, privado e domínio). "
       ],
       "Screenshots": [
-        "SER PREENCHIDO"
+        "firewall/firewall-1.png",
+        "firewall/firewall-1.png"
       ]
     },
     "Type": "Segurança",
@@ -1376,7 +1388,10 @@
         "Reinicie o seu computador para aplicar as alterações."
       ],
       "Screenshots": [
-        "SER PREENCHIDO"
+        "minimum-password-length/minimum-password-length-1.png",
+        "minimum-password-length/minimum-password-length-2.png",
+        "minimum-password-length/minimum-password-length-3.png",
+        "minimum-password-length/minimum-password-length-3.png"
       ]
     },
     "Type": "Segurança",
@@ -1405,9 +1420,7 @@
       "Solution": [
         "A configuração do Credential Guard é tratada na sua política de grupo local. "
       ],
-      "Screenshots": [
-        "SER PREENCHIDO"
-      ]
+      "Screenshots": []
     },
     "Type": "Segurança",
     "Information": "O Credential Guard é um recurso de segurança no Windows que ajuda a proteger credenciais de usuário e informações sensíveis contra acesso não autorizado e roubo. Ele utiliza segurança baseada em virtualização para isolar e proteger informações de credenciais, tornando mais difícil para atacantes roubar senhas e outros dados sensíveis."
@@ -1442,7 +1455,13 @@
         "Clique em 'OK' para salvar as alterações."
       ],
       "Screenshots": [
-        "SER PREENCHIDO"
+        "netbios/netbios-1.png",
+        "netbios/netbios-2.png",
+        "netbios/netbios-3.png",
+        "netbios/netbios-4.png",
+        "netbios/netbios-5.png",
+        "netbios/netbios-6.png",
+        "netbios/netbios-7.png"
       ]
     },
     "Type": "Segurança",
@@ -1475,7 +1494,10 @@
         "Reinicie o seu computador para aplicar as alterações."
       ],
       "Screenshots": [
-        "SER PREENCHIDO"
+        "wpad/wpad-1.png",
+        "wpad/wpad-2.png",
+        "wpad/wpad-3.png",
+        "wpad/wpad-3.png"
       ]
     },
     "Type": "Segurança",
@@ -1507,7 +1529,9 @@
         "Marque a caixa 'Ao retomar, exibir tela de logon' e defina o tempo de 'Espera' para um intervalo curto (2 minutos ou menos)."
       ],
       "Screenshots": [
-        "SER PREENCHIDO"
+        "automatic-screen-lock/automatic-screen-lock-1.png",
+        "automatic-screen-lock/automatic-screen-lock-2.png",
+        "automatic-screen-lock/automatic-screen-lock-3.png"
       ]
     },
     "Type": "Segurança",

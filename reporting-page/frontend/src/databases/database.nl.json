@@ -148,7 +148,8 @@
         "Hier kunt u de advertentie-ID-instellingen beheren en de functie in-/uitschakelen."
       ],
       "Screenshots": [
-        "TOBEFILLED"
+        "advertisement-id/advertisement-id-1.png",
+        "advertisement-id/advertisement-id-2.png"
         ]
     },
     "Type": "Privacy",
@@ -431,7 +432,7 @@
       "Severity": 2,
       "Name": "SMB alle versies uitgeschakeld",
       "Solution": [
-        "TE DOEN"
+        "Beide SMB-versies zijn uitgeschakeld, dus er is geen actie nodig."
       ],
       "Screenshots": []
     },
@@ -1174,7 +1175,7 @@
         "Download de CIS Benchmark voor uw besturingssysteem van de officiële CIS-website. "
       ],
       "Screenshots": [
-        "OM TE VULLEN"
+        "cis-benchmark/cis-benchmark-1.png"
       ]
     },
     "1": {
@@ -1213,7 +1214,8 @@
         "Selecteer onder 'Inloggen vereisen' de optie 'Als de pc uit de slaapstand ontwaakt'."
       ],
       "Screenshots": [
-        "OM TE VULLEN"
+        "automatic-login/automatic-login-1.png",
+        "automatic-login/automatic-login-2.png"
       ]
     },
     "Type": "Beveiliging",
@@ -1246,7 +1248,10 @@
         "Dubbelklik op de sleutel \"AllowRemoteRPC\" en stel de waarde in op 0."
       ],
       "Screenshots": [
-        "OM TE VULLEN"
+        "remote-rpc/remote-rpc-1.png",
+        "remote-rpc/remote-rpc-2.png",
+        "remote-rpc/remote-rpc-3.png",
+        "remote-rpc/remote-rpc-4.png"
       ]
     },
     "Type": "Beveiliging",
@@ -1279,7 +1284,10 @@
         "Hier kunt u de door websites opgeslagen cookies bekijken en beheren.  "
       ],
       "Screenshots": [
-        "OM TE VULLEN"
+        "chrome-cookies/cookies-chrome-1.png",
+        "chrome-cookies/cookies-chrome-2.png",
+        "chrome-cookies/cookies-chrome-3.png",
+        "chrome-cookies/cookies-chrome-4.png"
       ]
     },
     "Type": "Privacy",
@@ -1312,7 +1320,10 @@
         "Hier kunt u algemene cookie-instellingen beheren.  "
       ],
       "Screenshots": [
-        "OM TE VULLEN"
+        "edge-cookies/cookies-edge-1.png",
+        "edge-cookies/cookies-edge-2.png",
+        "edge-cookies/cookies-edge-2.png",
+        "edge-cookies/cookies-edge-2.png"
       ]
     },
     "Type": "Privacy",
@@ -1343,7 +1354,8 @@
         "Zorg ervoor dat Windows Firewall onder 'Firewall- en netwerkbeveiliging' is ingeschakeld voor alle netwerkprofielen (openbaar, privé en domein). "
       ],
       "Screenshots": [
-        "OM TE VULLEN"
+        "firewall/firewall-1.png",
+        "firewall/firewall-1.png"
       ]
     },
     "Type": "Beveiliging",
@@ -1376,7 +1388,10 @@
         "Start uw computer opnieuw op om de wijzigingen toe te passen."
       ],
       "Screenshots": [
-        "OM TE VULLEN"
+        "minimum-password-length/minimum-password-length-1.png",
+        "minimum-password-length/minimum-password-length-2.png",
+        "minimum-password-length/minimum-password-length-3.png",
+        "minimum-password-length/minimum-password-length-3.png"
       ]
     },
     "Type": "Beveiliging",
@@ -1405,9 +1420,7 @@
       "Solution": [
         "De instelling van Credential Guard wordt afgehandeld in uw lokale groepsbeleid. "
       ],
-      "Screenshots": [
-        "OM TE VULLEN"
-      ]
+      "Screenshots": []
     },
     "Type": "Beveiliging",
     "Information": "Credential Guard is een beveiligingsfunctie in Windows die helpt bij het beschermen van gebruikersreferenties en gevoelige informatie tegen ongeautoriseerde toegang en diefstal. Het maakt gebruik van virtualisatiegebaseerde beveiliging om referentiegegevens te isoleren en te beschermen, waardoor het moeilijker wordt voor aanvallers om wachtwoorden en andere gevoelige gegevens te stelen."
@@ -1442,7 +1455,13 @@
         "Klik op 'OK' om de wijzigingen op te slaan."
       ],
       "Screenshots": [
-        "OM TE VULLEN"
+        "netbios/netbios-1.png",
+        "netbios/netbios-2.png",
+        "netbios/netbios-3.png",
+        "netbios/netbios-4.png",
+        "netbios/netbios-5.png",
+        "netbios/netbios-6.png",
+        "netbios/netbios-7.png"
       ]
     },
     "Type": "Beveiliging",
@@ -1475,7 +1494,10 @@
         "Start uw computer opnieuw op om de wijzigingen toe te passen."
       ],
       "Screenshots": [
-        "OM TE VULLEN"
+        "wpad/wpad-1.png",
+        "wpad/wpad-2.png",
+        "wpad/wpad-3.png",
+        "wpad/wpad-3.png"
       ]
     },
     "Type": "Beveiliging",
@@ -1507,7 +1529,9 @@
         "Vink het vakje 'Bij hervatten, aanmeldingsscherm weergeven' aan en stel de 'Wacht'-tijd in op een kort interval (2 minuten of minder)."
       ],
       "Screenshots": [
-        "OM TE VULLEN"
+        "automatic-screen-lock/automatic-screen-lock-1.png",
+        "automatic-screen-lock/automatic-screen-lock-2.png",
+        "automatic-screen-lock/automatic-screen-lock-3.png"
       ]
     },
     "Type": "Beveiliging",

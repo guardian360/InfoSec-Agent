@@ -148,7 +148,8 @@
         "Hier können Sie die Werbe-ID-Einstellungen steuern und die Funktion ein-/ausschalten."
       ],
       "Screenshots": [
-        "TOBEFILLED"
+        "advertisement-id/advertisement-id-1.png",
+        "advertisement-id/advertisement-id-2.png"
       ]
     },
     "Type": "Privatsphäre",
@@ -431,7 +432,7 @@
       "Severity": 2,
       "Name": "SMB alle Versionen deaktiviert",
       "Solution": [
-        "MACHEN"
+        "Beide SMB-Versionen sind deaktiviert, daher ist keine Aktion erforderlich."
       ],
       "Screenshots": []
     },
@@ -1176,7 +1177,7 @@
         "Laden Sie den CIS-Benchmark für Ihr Betriebssystem von der offiziellen CIS-Website herunter. "
       ],
       "Screenshots": [
-        "VOLL SEIN"
+        "cis-benchmark/cis-benchmark-1.png"
       ]
     },
     "1": {
@@ -1215,7 +1216,8 @@
         "Wählen Sie unter „Anmeldung erforderlich“ die Option „Wenn der PC aus dem Ruhezustand aufwacht“ aus."
       ],
       "Screenshots": [
-        "VOLL SEIN"
+        "automatic-login/automatic-login-1.png",
+        "automatic-login/automatic-login-2.png"
       ]
     },
     "Type": "Sicherheit",
@@ -1248,7 +1250,10 @@
         "Doppelklicken Sie auf den Schlüssel „AllowRemoteRPC“ und setzen Sie seinen Wert auf 0."
       ],
       "Screenshots": [
-        "VOLL SEIN"
+        "remote-rpc/remote-rpc-1.png",
+        "remote-rpc/remote-rpc-2.png",
+        "remote-rpc/remote-rpc-3.png",
+        "remote-rpc/remote-rpc-4.png"
       ]
     },
     "Type": "Sicherheit",
@@ -1281,7 +1286,10 @@
         "Hier können Sie die von Websites gespeicherten Cookies einsehen und verwalten.  "
       ],
       "Screenshots": [
-        "VOLL SEIN"
+        "chrome-cookies/cookies-chrome-1.png",
+        "chrome-cookies/cookies-chrome-2.png",
+        "chrome-cookies/cookies-chrome-3.png",
+        "chrome-cookies/cookies-chrome-4.png"
       ]
     },
     "Type": "Privatsphäre",
@@ -1308,13 +1316,16 @@
       "Severity": 2,
       "Name": "Mögliche Tracking-Cookies im Microsoft Edge-Browser",
       "Solution": [
-        "Öffnen Sie Microsoft Edge und klicken Sie auf die drei Punkte in der oberen rechten Ecke.",
-        "Wählen Sie „Einstellungen“ und gehen Sie zum Abschnitt „Cookies und Website-Berechtigungen“.",
+        "Öffnen Sie Microsoft Edge und klicken Sie auf die drei Punkte in der oberen rechten Ecke, wählen Sie „Einstellungen“",
+        "Gehen Sie zum Abschnitt „Cookies und Website-Berechtigungen“.",
         "Klicken Sie unter „Cookies und gespeicherte Daten“ auf „Cookies und Websitedaten verwalten und löschen“.",
         "Hier können Sie allgemeine Cookie-Einstellungen verwalten.  "
       ],
       "Screenshots": [
-        "VOLL SEIN"
+        "edge-cookies/cookies-edge-1.png",
+        "edge-cookies/cookies-edge-2.png",
+        "edge-cookies/cookies-edge-2.png",
+        "edge-cookies/cookies-edge-2.png"
       ]
     },
     "Type": "Privatsphäre",
@@ -1345,7 +1356,8 @@
         "Stellen Sie unter „Firewall- und Netzwerkschutz“ sicher, dass die Windows-Firewall für alle Netzwerkprofile (öffentlich, privat und Domäne) aktiviert ist. "
       ],
       "Screenshots": [
-        "VOLL SEIN"
+        "firewall/firewall-1.png",
+        "firewall/firewall-1.png"
       ]
     },
     "Type": "Sicherheit",
@@ -1378,7 +1390,10 @@
         "Starten Sie Ihren Computer neu, um die Änderungen zu übernehmen."
       ],
       "Screenshots": [
-        "VOLL SEIN"
+        "minimum-password-length/minimum-password-length-1.png",
+        "minimum-password-length/minimum-password-length-2.png",
+        "minimum-password-length/minimum-password-length-3.png",
+        "minimum-password-length/minimum-password-length-3.png"
       ]
     },
     "Type": "Sicherheit",
@@ -1407,9 +1422,7 @@
       "Solution": [
         "Die Einstellung von Credential Guard wird in Ihrer lokalen Gruppenrichtlinie verwaltet. "
       ],
-      "Screenshots": [
-        "VOLL SEIN"
-      ]
+      "Screenshots": []
     },
     "Type": "Sicherheit",
     "Information": "Credential Guard ist eine Sicherheitsfunktion in Windows, die dazu beiträgt, Benutzeranmeldeinformationen und sensible Informationen vor unbefugtem Zugriff und Diebstahl zu schützen. Sie verwendet sicherheitsorientierte Virtualisierung, um Anmeldeinformationen zu isolieren und zu schützen, was es Angreifern erschwert, Passwörter und andere sensible Daten zu stehlen."
@@ -1444,7 +1457,13 @@
         "Klicken Sie auf „OK“, um die Änderungen zu speichern."
       ],
       "Screenshots": [
-        "VOLL SEIN"
+        "netbios/netbios-1.png",
+        "netbios/netbios-2.png",
+        "netbios/netbios-3.png",
+        "netbios/netbios-4.png",
+        "netbios/netbios-5.png",
+        "netbios/netbios-6.png",
+        "netbios/netbios-7.png"
       ]
     },
     "Type": "Sicherheit",
@@ -1477,7 +1496,10 @@
         "Starten Sie Ihren Computer neu, um die Änderungen zu übernehmen."
       ],
       "Screenshots": [
-        "VOLL SEIN"
+        "wpad/wpad-1.png",
+        "wpad/wpad-2.png",
+        "wpad/wpad-3.png",
+        "wpad/wpad-3.png"
       ]
     },
     "Type": "Sicherheit",
@@ -1509,7 +1531,9 @@
         "Aktivieren Sie das Kontrollkästchen „Beim Fortsetzen Anmeldebildschirm anzeigen“ und stellen Sie die „Wartezeit“ auf ein kurzes Intervall (2 Minuten oder weniger) ein."
       ],
       "Screenshots": [
-        "VOLL SEIN"
+        "automatic-screen-lock/automatic-screen-lock-1.png",
+        "automatic-screen-lock/automatic-screen-lock-2.png",
+        "automatic-screen-lock/automatic-screen-lock-3.png"
       ]
     },
     "Type": "Sicherheit",

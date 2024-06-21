@@ -148,7 +148,8 @@
         "Here you can control the advertisement ID settings and turn the feature on/off."
       ],
       "Screenshots": [
-        "TOBEFILLED"
+        "advertisement-id/advertisement-id-1.png",
+        "advertisement-id/advertisement-id-2.png"
       ]
     },
     "Type": "Privacy",
@@ -431,7 +432,7 @@
       "Severity": 2,
       "Name": "SMB all versions disabled",
       "Solution": [
-        "TODO"
+        "Both SMB versions are disabled, so there is no action needed."
       ],
       "Screenshots": []
     },
@@ -1174,7 +1175,7 @@
         "Download the CIS Benchmark for your operating system from the official CIS website. Follow the instructions in the benchmark document to review and update the registry settings on your system to align with the CIS security standards. Regularly check for updates to the CIS Benchmark and apply any changes or recommendations to maintain a secure configuration."
       ],
       "Screenshots": [
-        "TOBEFILLED"
+        "cis-benchmark/cis-benchmark-1.png"
       ]
     },
     "1": {
@@ -1213,7 +1214,8 @@
         "Under 'Require sign-in', select 'When PC wakes up from sleep'."
       ],
       "Screenshots": [
-        "TOBEFILLED"
+        "automatic-login/automatic-login-1.png",
+        "automatic-login/automatic-login-2.png"
       ]
     },
     "Type": "Security",
@@ -1246,7 +1248,10 @@
         "Double click on the \"AllowRemoteRPC\" key and set its value to 0."
       ],
       "Screenshots": [
-        "TOBEFILLED"
+        "remote-rpc/remote-rpc-1.png",
+        "remote-rpc/remote-rpc-2.png",
+        "remote-rpc/remote-rpc-3.png",
+        "remote-rpc/remote-rpc-4.png"
       ]
     },
     "Type": "Security",
@@ -1279,7 +1284,10 @@
         "Here you can view and manage the cookies stored by websites. You can delete individual cookies or clear all site data to protect your privacy. "
       ],
       "Screenshots": [
-        "TOBEFILLED"
+        "chrome-cookies/cookies-chrome-1.png",
+        "chrome-cookies/cookies-chrome-2.png",
+        "chrome-cookies/cookies-chrome-3.png",
+        "chrome-cookies/cookies-chrome-4.png"
       ]
     },
     "Type": "Privacy",
@@ -1312,7 +1320,10 @@
         "Here you can manage general cookie settings. You can delete individual cookies or clear all site data by clicking on 'See all cookies and site data'. "
       ],
       "Screenshots": [
-        "TOBEFILLED"
+        "edge-cookies/cookies-edge-1.png",
+        "edge-cookies/cookies-edge-2.png",
+        "edge-cookies/cookies-edge-2.png",
+        "edge-cookies/cookies-edge-2.png"
       ]
     },
     "Type": "Privacy",
@@ -1343,7 +1354,8 @@
         "Under 'Firewall & network protection', make sure that the Windows Firewall is turned on for all network profiles (public, private, and domain). If it is disabled, click on 'Turn on' to enable the firewall for the selected profile."
       ],
       "Screenshots": [
-        "TOBEFILLED"
+        "firewall/firewall-1.png",
+        "firewall/firewall-1.png"
       ]
     },
     "Type": "Security",
@@ -1376,7 +1388,10 @@
         "Restart your computer to apply the changes."
       ],
       "Screenshots": [
-        "TOBEFILLED"
+        "minimum-password-length/minimum-password-length-1.png",
+        "minimum-password-length/minimum-password-length-2.png",
+        "minimum-password-length/minimum-password-length-3.png",
+        "minimum-password-length/minimum-password-length-3.png"
       ]
     },
     "Type": "Security",
@@ -1405,9 +1420,7 @@
       "Solution": [
         "The setting of Credential Guard is handled in your local group policy. Ask your network administrator to enable Credential Guard."
       ],
-      "Screenshots": [
-        "TOBEFILLED"
-      ]
+      "Screenshots": []
     },
     "Type": "Security",
     "Information": "Credential Guard is a security feature in Windows that helps protect user credentials and sensitive information from unauthorized access and theft. It uses virtualization-based security to isolate and protect credential information, making it more difficult for attackers to steal passwords and other sensitive data."
@@ -1442,7 +1455,13 @@
         "Click 'OK' to save the changes."
       ],
       "Screenshots": [
-        "TOBEFILLED"
+        "netbios/netbios-1.png",
+        "netbios/netbios-2.png",
+        "netbios/netbios-3.png",
+        "netbios/netbios-4.png",
+        "netbios/netbios-5.png",
+        "netbios/netbios-6.png",
+        "netbios/netbios-7.png"
       ]
     },
     "Type": "Security",
@@ -1475,7 +1494,10 @@
         "Restart your computer to apply the changes."
       ],
       "Screenshots": [
-        "TOBEFILLED"
+        "wpad/wpad-1.png",
+        "wpad/wpad-2.png",
+        "wpad/wpad-3.png",
+        "wpad/wpad-3.png"
       ]
     },
     "Type": "Security",
@@ -1507,7 +1529,9 @@
         "Check the box 'On resume, display logon screen' and set the 'Wait' time to a short interval (2 minutes or less)."
       ],
       "Screenshots": [
-        "TOBEFILLED"
+        "automatic-screen-lock/automatic-screen-lock-1.png",
+        "automatic-screen-lock/automatic-screen-lock-2.png",
+        "automatic-screen-lock/automatic-screen-lock-3.png"
       ]
     },
     "Type": "Security",
