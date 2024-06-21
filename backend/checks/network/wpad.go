@@ -20,7 +20,7 @@ import (
 func WPADEnabled(executor mocking.CommandExecutor) checks.Check {
 	output, err := executor.Execute("cmd", "/c", "sc query winhttpautoproxysvc")
 	if err != nil {
-		logger.Log.ErrorWithErr("Error executing WPAD command: ", err)
+		logger.Log.ErrorWithErr("Error executing WPAD command", err)
 		return checks.NewCheckError(checks.WPADID, err)
 	}
 

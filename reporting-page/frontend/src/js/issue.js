@@ -211,10 +211,27 @@ export async function openIssuePage(issueId, resultId, back = undefined) {
 
   document.getElementById('scan-button').addEventListener('click', async () => {
     await scanTest(true);
-
+    const issueData = JSON.parse(sessionStorage.getItem('ScanResult'));
+    const resultId = findResultId(issueData, issueId);
     sessionStorage.setItem('savedPage', JSON.stringify([issueId, resultId]));
     openIssuePage(issueId, resultId);
   });
+}
+
+/**
+ * Finds the result_id corresponding to the given issueId in the provided data array.
+ *
+ * @param {Array} data - An array of objects where each object contains an issue_id and a result_id.
+ * @param {number|string} issueId - The issue ID to search for in the data array. This can be a number or a string.
+ * @return {number|null} The result_id corresponding to the provided issueId, or null if not found.
+ */
+function findResultId(data, issueId) {
+  for (const item of data) {
+    if (parseInt(item.issue_id) === parseInt(issueId)) {
+      return item.result_id;
+    }
+  }
+  return null;
 }
 
 /** Check if the issue is a show result issue

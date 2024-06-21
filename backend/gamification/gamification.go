@@ -4,12 +4,11 @@
 package gamification
 
 import (
-	"encoding/json"
-	"os"
 	"strconv"
 	"time"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/database"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/usersettings"
 )
@@ -33,6 +32,7 @@ type GameState struct {
 //
 // Returns: The updated game state with the new points amount and new lighthouse state.
 func UpdateGameState(scanResults []checks.Check, databasePath string, getter PointCalculationGetter, userGetter usersettings.SaveUserSettingsGetter) (GameState, error) {
+	logger.Log.Trace("Updating game state")
 	gs := GameState{Points: 0, PointsHistory: nil, TimeStamps: nil, LighthouseState: 0}
 
 	// Loading the game state from the user settings and putting it in the game state struct
@@ -44,7 +44,7 @@ func UpdateGameState(scanResults []checks.Check, databasePath string, getter Poi
 
 	gs, err := getter.PointCalculation(gs, scanResults, databasePath)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error calculating points:", err)
+		logger.Log.ErrorWithErr("Error calculating points", err)
 		return gs, err
 	}
 	gs = LighthouseStateTransition(gs)
@@ -89,49 +89,23 @@ type RealPointCalculationGetter struct{}
 // Returns:
 //   - GameState: The updated game state with the new points amount.
 func (r RealPointCalculationGetter) PointCalculation(gs GameState, scanResults []checks.Check, jsonFilePath string) (GameState, error) {
-	gs.Points = 0
+	logger.Log.Trace("Calculating gamification points ")
+	newPoints := 0
 
-	byteValue, _ := os.ReadFile(jsonFilePath)
-
-	var data map[string]map[string]interface{}
-	err := json.Unmarshal(byteValue, &data)
+	dataList, err := database.GetData(jsonFilePath, scanResults)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error parsing JSON:", err)
+		logger.Log.ErrorWithErr("Error getting data from database", err)
 		return gs, err
 	}
 
-	for _, result := range scanResults {
-		if result.Error != nil {
-			logger.Log.ErrorWithErr("Error reading scan result", result.Error)
-			continue
-		}
-
-		// Convert IssueID and ResultID to string to access JSON data
-		issueKey := strconv.Itoa(result.IssueID)
-		resultKey := strconv.Itoa(result.ResultID)
-
-		// Get the severity from JSON
-		issueData, ok := data[issueKey]
-		if !ok {
-			logger.Log.Debug("IssueID not found in JSON:" + strconv.Itoa(result.IssueID))
-			continue
-		}
-		resultData, ok := issueData[resultKey].(map[string]interface{})
-		if !ok {
-			logger.Log.Debug("ResultID not found in JSON: " + strconv.Itoa(result.ResultID))
-			continue
-		}
-		sev, ok := resultData["Severity"].(float64)
-		if !ok {
-			logger.Log.Debug("Severity not found or invalid for IssueID:" + strconv.Itoa(result.IssueID) + "ResultID:" + strconv.Itoa(result.ResultID))
-			continue
-		}
-
-		// When severity is of the Informative level, we do not want to adjust the points
-		if int(sev) != 4 {
-			gs.Points += int(sev)
+	for _, data := range dataList {
+		sev := data.Severity
+		if sev >= 0 && sev < 4 {
+			newPoints += sev
 		}
 	}
+	logger.Log.Trace("Calculated gamification points: " + strconv.Itoa(newPoints))
+	gs.Points = newPoints
 	gs.PointsHistory = append(gs.PointsHistory, gs.Points)
 	gs.TimeStamps = append(gs.TimeStamps, time.Now())
 
@@ -160,10 +134,11 @@ func LighthouseStateTransition(gs GameState) GameState {
 	default:
 		gs.LighthouseState = 1
 	}
+	logger.Log.Trace("Calculated lighthouse state: " + strconv.Itoa(gs.LighthouseState))
 	return gs
 }
 
-// sufficientActivity checks if the user has been active enough to transition to another lighthouse state
+// SufficientActivity checks if the user has been active enough to transition to another lighthouse state
 //
 // Parameters:
 //   - gs (GameState): The game state of the user.
@@ -179,7 +154,8 @@ func SufficientActivity(gs GameState) bool {
 	if len(gs.TimeStamps) == 0 {
 		return false
 	}
-	oldestRecord := gs.TimeStamps[0] // The oldest record is the first timestamp made
 
+	// The oldest record is the first timestamp made
+	oldestRecord := gs.TimeStamps[0]
 	return time.Since(oldestRecord) > requiredDuration
 }

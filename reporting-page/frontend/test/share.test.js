@@ -193,7 +193,12 @@ describe('share functions', function() {
     // Arrange
     const share = await import('../src/js/share.js');
     // Should be changed when images of all states are available
-    const states = ['url(first-state.png)', 'url(second-state.png)', 'url(third-state.png)', 'url(fourth-state.png)'];
+    const states = [
+      'url(sharing/first-state.png)',
+      'url(sharing/second-state.png)',
+      'url(sharing/third-state.png)',
+      'url(sharing/fourth-state.png)',
+    ];
 
     for (let i = 0; i < states.length; i++) {
       // Act

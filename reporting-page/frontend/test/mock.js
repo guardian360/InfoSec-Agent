@@ -36,6 +36,19 @@ export function mockGetLocalization(messageID) {
   return myPromise;
 }
 
+/** Mock of getImagePath function with no functionality
+ *
+ * @param {string} path - The path of the image to be loaded.
+ * @return {string} The full path of the image.
+ */
+export function mockGetImagePath(path) {
+  const myPromise = new Promise(function(myResolve, myReject) {
+    if (path !== '') myResolve('frontend/src/assets/images/' + path);
+    else myReject(new Error('error'));
+  });
+  return myPromise;
+}
+
 /** Mock of changeLanguage function with no functionality
  *
  * @param {bool} bool if set to false will result in error from promise

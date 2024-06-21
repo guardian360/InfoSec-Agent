@@ -2,8 +2,7 @@ import {ScanNow as scanNowGo, LogError as logError} from '../../wailsjs/go/main/
 import {openHomePage} from './home.js';
 import {
   WindowShow as windowShow,
-  WindowMaximise as windowMaximise,
-  LogPrint as logPrint} from '../../wailsjs/runtime/runtime.js';
+  WindowMaximise as windowMaximise} from '../../wailsjs/runtime/runtime.js';
 import * as rc from './risk-counters.js';
 import {updateRiskCounter} from './risk-counters.js';
 import data from '../databases/database.en-GB.json' assert { type: 'json' };
@@ -23,12 +22,11 @@ export async function scanTest(dialogPresent) {
       await new Promise((resolve, reject) => {
         scanNowGo(dialogPresent)
           .then(async (scanResult) => {
-          // Handle the scan result
-          // For example, save it in session storage
+            // Save scan result in session storage
             sessionStorage.setItem('ScanResult', JSON.stringify(scanResult));
             // Set severities in session storage
             await setAllSeverities(scanResult);
-            // set the detected windows version
+            // Set the detected windows version
             const windowsVersion = scanResult.find((i) => i.issue_id === 18);
             sessionStorage.setItem('WindowsVersion', windowsVersion.result[0]);
             // Resolve the promise with the scan result
@@ -44,7 +42,6 @@ export async function scanTest(dialogPresent) {
       });
       // Perform other actions after scanTest is complete
       windowShow();
-      logPrint(sessionStorage.getItem('ScanResult'));
     } catch (err) {
       // Handle any errors that occurred during scanTest or subsequent actions
       logError('Error in scanTest: ' + err);
@@ -83,7 +80,7 @@ async function setAllSeverities(input) {
   await setSeverities(input, 'Security');
   await setSeverities(input, 'Privacy');
   if (isFirstScan) {
-    openHomePage();
+    await openHomePage();
     windowMaximise();
     isFirstScan = false;
   }
