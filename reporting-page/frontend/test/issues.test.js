@@ -73,6 +73,8 @@ function mockGetLocalizationString(messageID) {
       myResolve('High');
     case 'Issues.Info':
       myResolve('Info');
+    case 'Issues.Failed':
+      myResolve('Failed');
     default:
       myReject(new Error('Wrong message ID'));
     }

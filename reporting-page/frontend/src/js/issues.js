@@ -234,11 +234,14 @@ export function fillTable(tbody, issues) {
     `;
 
     row.cells[0].id = issue.issue_id;
-    if (issue.result_id < 0) {
-      row.cells[0].classList.add('issue-check-failed');
-    }
     row.setAttribute('data-result-id', issue.result_id);
     row.setAttribute('data-severity', severity);
+    if (issue.result_id < 0) {
+      row.cells[0].classList.add('issue-check-failed');
+      row.cells[2].childNodes[0].classList.remove('lang-info');
+      row.cells[2].childNodes[0].classList.add('lang-failed');
+    }
+    
     tbody.appendChild(row);
   });
 
@@ -255,6 +258,7 @@ export function fillTable(tbody, issues) {
     'lang-medium',
     'lang-high',
     'lang-info',
+    'lang-failed',
   ];
   const localizationIds = [
     'Issues.Acceptable',
@@ -262,6 +266,7 @@ export function fillTable(tbody, issues) {
     'Issues.Medium',
     'Issues.High',
     'Issues.Info',
+    'Issues.Failed',
   ];
   for (let i = 0; i < tableHeaders.length; i++) {
     getLocalization(localizationIds[i], tableHeaders[i]);
