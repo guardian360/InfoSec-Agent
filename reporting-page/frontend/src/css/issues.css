@@ -245,3 +245,16 @@ h1, h2{
   border-radius: 4px;
   font-size: 18px;
 }
+
+/* Add zoom function */
+.zoom-img {
+  cursor: zoom-in;
+  transition: transform 0.2s, top 0.2s, left 0.2s;
+  position: relative;
+  display: block;
+  margin: 0 auto;
+}
+
+.zoom-img:hover {
+  transform: scale(2);
+}

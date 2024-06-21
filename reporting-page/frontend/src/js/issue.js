@@ -157,7 +157,7 @@ export async function openIssuePage(issueId, resultId, back = undefined) {
           <h2 id="solution" class="lang-solution"></h2>
           <div class="issue-solution">
             <p id="solution-text">${stepCounter +1}. ${getVersionSolution(issueData, stepCounter)}</p>
-            <img style='display:block; width:750px;height:auto' id="step-screenshot"></img>
+            <img class="zoom-img" style='display:block; width:750px;height:auto' id="step-screenshot"></img>
             <div class="solution-buttons">
               <div class="button-box">
                 <div id="previous-button" class="lang-previous-button button"></div>
@@ -468,7 +468,7 @@ export function parseShowResult(issueId, resultId, currentIssue) {
     <h2 id="solution" class="lang-solution"></h2>
     <div class="issue-solution">
       <p id="solution-text">${stepCounter +1}. ${getVersionSolution(issueData, stepCounter)}</p>
-      <img style='display:block; width:750px;height:auto' id="step-screenshot"></img>
+      <img class="zoom-img" style='display:block; width:750px;height:auto' id="step-screenshot"></img>
       <div class="solution-buttons">
         <div class="button-box">
           <div id="previous-button" class="button lang-previous-button"></div>
