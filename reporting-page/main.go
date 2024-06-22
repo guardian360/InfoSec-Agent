@@ -1,8 +1,9 @@
-// Package (reporting page) main contains the entry point of the reporting page application
+// The InfoSec Agent Reporting Page is a Wails application that presents the results of the InfoSec Agent scans in a user-friendly format.
+// It serves as a frontend for the [InfoSec-Agent] package.
 //
-// Exported function(s): NewApp, NewTray
+// This package is responsible for initializing the application and creating the link between the Go backend and JavaScript frontend.
 //
-// Exported struct(s): App
+// [InfoSec-Agent]: https://github.com/InfoSec-Agent/InfoSec-Agent/
 package main
 
 import (

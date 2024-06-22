@@ -130,6 +130,7 @@
     "Medium": "Medio",
     "High": "Alto",
     "Info": "Información",
+    "Failed": "Fallido",
     "ScanAgain": "Escanear de nuevo"
   },
   "About": {
@@ -149,14 +150,17 @@
     "Search": "Buscar..."
   },
   "Personalize": {
-    "ChangeFavicon": "Cambiar favicon",
     "navImage": "Imagen de navegación",
     "ChangeImage": "Cambiar imagen",
     "Title": "Título de navegación",
     "ChangeTitle": "Cambiar título",
     "Reset": "Restablecer configuración",
     "PersonalizeTitle": "Personaliza tu experiencia",
-    "PickTheme": "Elige un tema"
+    "PickTheme": "Elige un tema",
+    "NavImage": "Imagen de navegación",
+    "NavTitle": "Título de navegación",
+    "Light": "Ligero",
+    "Dark": "Oscuro"
   },
   "AllChecks": {
     "Security": "Seguridad",
@@ -180,6 +184,7 @@
     "PermissionsText": "Las aplicaciones instaladas en su computadora quieren tener acceso o permiso para usar ciertas funciones o dispositivos conectados a su PC. Es su responsabilidad como usuario dar esos permisos a ciertas aplicaciones o no. Por lo tanto, se recomienda buscar en internet si una aplicación que utiliza debe o no tener ciertos permisos.",
     "BrowserText": "Para tener acceso a internet, utiliza un navegador. Aunque un navegador es muy útil, no siempre mantiene sus datos privados. Para mantenerse seguro mientras navega en internet, debe tener siempre en cuenta en qué está haciendo clic.",
     "OtherPrivacyText": "Mantener sus datos privados también se puede hacer de otras maneras.",
+    "BrowserZeroFound" : "No se pudieron realizar estas comprobaciones, ya que el navegador probablemente no está instalado.",
 
     "Id1":"Dispositivos conectados vía bluetooth",
     "Id2":"Dispositivos conectados vía puertos USB",
@@ -193,7 +198,7 @@
     "Id10":"Aplicaciones con permisos de contactos",
     "Id11":"Puertos abiertos utilizados por aplicaciones",
     "Id12":"Escritorio remoto habilitado/deshabilitado",
-    "Id13":"Bloque de mensajes del sistema habilitado/deshabilitado",
+    "Id13":"Bloque de mensajes del servidor habilitado/deshabilitado",
     "Id14":"Control de cuentas de usuario habilitado/deshabilitado",
     "Id15":"Windows Defender habilitado/deshabilitado",
     "Id16":"Última contraseña de Windows cambiada",

@@ -17,14 +17,13 @@ const dom = new JSDOM(`
 <!DOCTYPE html>
 <html>
 <body>
-    <input type="file" class="personalize-input-invisible" id="faviconInput" accept=".png,.ico"> 
     <div class="header">
       <div class="header-hamburger container">
         <span id="header-hamburger" class="header-hamburger material-symbols-outlined">menu</span>
       </div>
       <div class="header-logo">
         <div id="logo-button" class="logo-name">
-          <img id="logo" alt="logo" src="./src/assets/images/logoTeamA-transformed.png">  
+          <img id="logo" alt="logo" src="../src/assets/images/InfoSec-Agent-logo.png">  
           <div class="header-name">
             <h1 id="title">Little Brother</h1><!-- Use id to dynamically change title -->
           </div>

@@ -1,5 +1,13 @@
 {
   "1": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Dispositivos conectados via bluetooth",
+      "Failed": "Não foi possível verificar se há dispositivos conectados via bluetooth.",
+      "Solution": [
+        "Verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não conseguimos concluir a verificação."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Nenhum dispositivo conectado via bluetooth",
@@ -21,9 +29,17 @@
       ]
     },
     "Type": "Segurança",
-    "Information": "A tecnologia Bluetooth permite a transmissão e recepção de dados sem fio. "
+    "Information": "A tecnologia Bluetooth permite a transmissão e recepção de dados sem fio. Embora essa funcionalidade seja tipicamente inofensiva quando usada conforme pretendido, ela pode se tornar um risco de segurança se explorada por atores mal-intencionados. Se um indivíduo mal-intencionado obtiver acesso não autorizado ao seu dispositivo por meio de uma conexão Bluetooth, ele pode potencialmente roubar seus dados, espionar suas atividades ou até mesmo enviar malware para o seu dispositivo. Para mitigar esses riscos, é crucial conectar seu dispositivo apenas a dispositivos conhecidos e confiáveis."
   },
   "2": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Dispositivos conectados via portas USB",
+      "Failed": "Não foi possível verificar se há dispositivos conectados via portas USB.",
+      "Solution": [
+        "Verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não conseguimos concluir a verificação."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Nenhum dispositivo externo conectado",
@@ -38,22 +54,28 @@
       "Solution": [
         "Verifique se algum dispositivo externo está conectado ao seu computador e desconecte-o se não estiver em uso. "
       ],
-      "Screenshots": [
-        "SER PREENCHIDO"
-      ]
+      "Screenshots": []
     },
     "Type": "Segurança",
-    "Information": "Dispositivos externos, como unidades USB, discos rígidos externos e outros periféricos, podem apresentar riscos de segurança ao seu computador. "
+    "Information": "Dispositivos externos, como unidades USB, discos rígidos externos e outros periféricos, podem introduzir riscos de segurança para o seu computador. O malware pode se espalhar através de dispositivos externos infectados, comprometendo potencialmente a segurança e a integridade do seu sistema. Ao garantir que nenhum dispositivo externo esteja conectado ao seu computador quando não estiver em uso, você reduz o risco de infecção por malware e acesso não autorizado ao seu sistema."
   },
   "3": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Conta de convidado ativada/desativada",
+      "Failed": "Não foi possível verificar se há uma conta de convidado ativada.",
+      "Solution": [
+        "Verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não conseguimos concluir a verificação."
+      ]
+    },
     "0": {
       "Severity": -1,
       "Name": "Status da conta de convidado desconhecido",
       "Solution": [
         "O status desconhecido de uma conta de convidado pode ser um risco à segurança. ",
         "Vá para iniciar> Outras contas.",
-        "Aqui você verá as demais contas, se houver uma conta que você não conhece ou uma conta chamada ‘convidado’, clique nela.",
-        "Agora selecione ‘remover’ e confirme a exclusão da conta.",
+        "Aqui você verá as demais contas, se houver uma conta que você não conhece ou uma conta chamada 'convidado', clique nela.",
+        "Agora selecione 'remover' e confirme a exclusão da conta.",
         "Para finalizar, reinicie o seu computador."
       ],
       "Screenshots": [
@@ -69,14 +91,14 @@
       "Name": "Conta de convidado ativada",
       "Solution": [
         "Vá para iniciar> Outras contas.",
-        "Aqui você verá as outras contas, se houver uma conta que você não conhece ou algo chamado ‘convidado’ clique nela.",
-        "Agora selecione ‘remover’ e confirme a exclusão da conta.",
+        "Aqui você verá as outras contas, se houver uma conta que você não conhece ou algo chamado 'convidado' clique nela.",
+        "Agora selecione 'remover' e confirme a exclusão da conta.",
         "Para finalizar, reinicie o seu computador."
       ],
       "SolutionWindows10": [
         "Vá para Iniciar > Configurações > Contas > Família e outros usuários.",
-        "Aqui você verá as outras contas, se houver uma conta que você não conhece ou algo chamado ‘convidado’ clique nela.",
-        "Agora selecione ‘remover’ e confirme a exclusão da conta.",
+        "Aqui você verá as outras contas, se houver uma conta que você não conhece ou algo chamado 'convidado' clique nela.",
+        "Agora selecione 'remover' e confirme a exclusão da conta.",
         "Para finalizar, reinicie o seu computador."
       ],
       "Screenshots": [
@@ -95,9 +117,17 @@
       "Screenshots": []
     },
     "Type": "Segurança",
-    "Information": "A conta de convidado é uma conta padrão projetada para oferecer acesso temporário e restrito ao sistema para indivíduos sem contas de usuário regulares. "
+    "Information": "A conta de convidado é uma conta padrão projetada para oferecer acesso temporário e restrito ao sistema para indivíduos sem contas de usuário regulares. Se você é o único usuário do computador e não precisa de uma conta de convidado, é recomendável desativá-la. Isso garante que nenhum usuário não autorizado possa acessar os dados no computador, aumentando a segurança e a privacidade geral."
   },
   "4": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: ID de publicidade ativada/desativada",
+      "Failed": "Não foi possível verificar se a ID de publicidade é compartilhada com aplicativos.",
+      "Solution": [
+        "Verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não conseguimos concluir a verificação."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Compartilhamento de ID de anúncio desativado",
@@ -118,13 +148,22 @@
         "Aqui você pode controlar as configurações de ID do anúncio e ativar/desativar o recurso."
       ],
       "Screenshots": [
-        "TOBEFILLED"
+        "advertisement-id/advertisement-id-1.png",
+        "advertisement-id/advertisement-id-2.png"
       ]
     },
     "Type": "Privacidade",
-    "Information": "A configuração do ID do anúncio permite que o Windows envie anúncios personalizados. "
+    "Information": "A configuração de ID de publicidade permite que o Windows envie anúncios personalizados para você. É importante limitar a quantidade de entidades que possuem seus dados pessoais, portanto, é mais seguro desativar essa configuração."
   },
   "5": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Gerenciador de senhas instalado",
+      "Failed": "Não foi possível verificar se um gerenciador de senhas está instalado.",
+      "Solution": [
+        "Verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não conseguimos concluir a verificação."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Gerenciador de senhas em uso",
@@ -146,9 +185,17 @@
       ]
     },
     "Type": "Segurança",
-    "Information": "O uso de um gerenciador de senhas oferece vários benefícios para indivíduos e organizações, principalmente relacionados ao aprimoramento da segurança, conveniência e práticas gerais de gerenciamento de senhas. "
+    "Information": "Usar um gerenciador de senhas oferece vários benefícios para indivíduos e organizações, principalmente em torno de melhorar a segurança, a conveniência e as práticas gerais de gerenciamento de senhas. Aqui estão algumas razões importantes pelas quais você deve considerar usar um gerenciador de senhas. Senhas mais fortes: Os gerenciadores de senhas podem gerar senhas complexas e exclusivas para cada uma de suas contas. Essas senhas são tipicamente longas, aleatórias e difíceis de quebrar, melhorando significativamente a segurança de suas contas online em comparação ao uso de senhas fracas ou reutilizadas. Eliminação da reutilização de senhas: Uma das armadilhas de segurança mais comuns é reutilizar senhas em várias contas. Os gerenciadores de senhas permitem que você gere e armazene senhas exclusivas para cada conta, reduzindo o risco de acesso não autorizado se uma conta for comprometida. Conveniência: Os gerenciadores de senhas simplificam o processo de login em sites e serviços online preenchendo automaticamente as credenciais de login para você. Isso economiza tempo e esforço, especialmente ao gerenciar várias contas em várias plataformas. Armazenamento seguro: Os gerenciadores de senhas criptografam e armazenam suas senhas em um cofre seguro, protegendo-as contra acesso não autorizado. Muitos gerenciadores de senhas também oferecem recursos de segurança adicionais, como autenticação de dois fatores (2FA) e autenticação biométrica para melhorar ainda mais a proteção."
   },
   "6": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Aplicativos com permissões de localização",
+      "Failed": "Não foi possível verificar quais aplicativos têm permissões de localização.",
+      "Solution": [
+        "Verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não conseguimos concluir a verificação."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Aplicativos com permissão de localização",
@@ -174,9 +221,17 @@
       "Screenshots": []
     },
     "Type": "Privacidade",
-    "Information": "Saber quais aplicativos têm acesso à sua localização é importante para proteger sua privacidade. "
+    "Information": "Saber quais aplicativos têm acesso à sua localização é importante para proteger sua privacidade. Ajuda a controlar quem pode rastrear sua localização, prevenir riscos de segurança, conservar a vida útil da bateria, gerenciar o uso de dados, personalizar sua experiência com o aplicativo e garantir a conformidade com os regulamentos."
   },
   "7": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Aplicativos com permissões de microfone",
+      "Failed": "Não foi possível verificar quais aplicativos têm permissões de microfone.",
+      "Solution": [
+        "Verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não conseguimos concluir a verificação."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Aplicativos com permissão de microfone",
@@ -202,9 +257,17 @@
       "Screenshots": []
     },
     "Type": "Privacidade",
-    "Information": "Compreender quais aplicativos têm acesso ao microfone do computador Windows é importante para proteger sua privacidade e confidencialidade. "
+    "Information": "Compreender quais aplicativos têm acesso ao seu microfone no seu computador Windows é importante para proteger sua privacidade e confidencialidade. Ajuda a controlar quem pode ouvir suas conversas, prevenir gravações não autorizadas, proteger informações sensíveis e garantir a conformidade com os regulamentos."
   },
   "8": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Aplicativos com permissões de webcam",
+      "Failed": "Não foi possível verificar quais aplicativos têm permissões de webcam.",
+      "Solution": [
+        "Verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não conseguimos concluir a verificação."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Aplicativos com permissão de webcam",
@@ -230,9 +293,17 @@
       "Screenshots": []
     },
     "Type": "Privacidade",
-    "Information": "Estar ciente de quais aplicativos têm acesso à sua câmera ajuda a impedir o acesso não autorizado. "
+    "Information": "Estar ciente de quais aplicativos têm acesso à sua câmera ajuda a prevenir o acesso não autorizado. Software malicioso ou até mesmo aplicativos legítimos com recursos de segurança mal implementados podem acessar sua câmera sem seu conhecimento ou consentimento. Sabendo quais aplicativos têm acesso, você pode identificar e bloquear quaisquer tentativas não autorizadas."
   },
   "9": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Aplicativos com permissões de compromissos",
+      "Failed": "Não foi possível verificar quais aplicativos têm permissões de compromissos.",
+      "Solution": [
+        "Verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não conseguimos concluir a verificação."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Aplicativos com permissão de agendamento",
@@ -258,9 +329,17 @@
       "Screenshots": []
     },
     "Type": "Privacidade",
-    "Information": "Compreender quais aplicativos têm acesso ao seu calendário ou compromissos é crucial para proteger sua privacidade e sua programação. "
+    "Information": "Compreender quais aplicativos têm acesso ao seu calendário ou compromissos é crucial para proteger sua privacidade e agenda. Ajuda a controlar quem pode visualizar e potencialmente usar indevidamente suas informações confidenciais de compromissos, prevenir o acesso não autorizado e gerenciar o uso de dados."
   },
   "10": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Aplicativos com permissões de contatos",
+      "Failed": "Não foi possível verificar quais aplicativos têm permissões de contatos.",
+      "Solution": [
+        "Verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não conseguimos concluir a verificação."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Aplicativos com permissão de contatos",
@@ -286,26 +365,40 @@
       "Screenshots": []
     },
     "Type": "Privacidade",
-    "Information": "Entender quais aplicativos têm acesso aos seus contatos no computador Windows é bom para proteger sua privacidade. "
+    "Information": "Compreender quais aplicativos têm acesso aos seus contatos no seu computador com Windows é bom para proteger sua privacidade. Permite que você controle quem pode ver e potencialmente usar indevidamente suas informações de contato, prevenir o acesso não autorizado e gerenciar o uso de dados."
   },
   "11": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Portas abertas usadas por aplicativos",
+      "Failed": "Não foi possível verificar quais portas estão abertas.",
+      "Solution": [
+        "Verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não conseguimos concluir a verificação."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Portas abertas",
       "Solution": [
         "Para reduzir o risco, certifique-se de que o Windows Defender esteja ativado. ",
         "Abra um prompt de comando clicando em “Iniciar”, digitando “cmd” e pressionando “Enter”.",
-        "Agora digite ‘netstat -ab’ e você verá uma lista de portas abertas e seus programas correspondentes.",
+        "Agora digite 'netstat -ab' e você verá uma lista de portas abertas e seus programas correspondentes.",
         "Se você encontrar algum programa ou porta suspeito, poderá fechá-lo desligando o programa correspondente."
       ],
-      "Screenshots": [
-        "TOBEFILLED"
-      ]
+      "Screenshots": []
     },
     "Type": "Segurança",
-    "Information": "Uma porta aberta é aquela que permite o recebimento de pacotes de dados. "
+    "Information": "Uma porta aberta é aquela que permite a recepção de pacotes de dados. Certas aplicações requerem portas específicas para receber dados, então a presença de portas abertas não representa riscos inerentes. No entanto, algumas portas podem não ter proteção adequada, potencialmente permitindo comunicação não autorizada e introduzindo vulnerabilidades de segurança. É essencial manter as portas abertas apenas quando estão em uso ativo e fechá-las quando não são necessárias. Dado que numerosas portas abertas podem expandir a superfície de ataque do seu computador, é aconselhável monitorar e garantir regularmente as portas de rede do seu sistema para mitigar esses riscos e manter uma postura de segurança forte."
   },
   "12": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Área de trabalho remota ativada/desativada",
+      "Failed": "Não foi possível verificar se a função de Área de trabalho remota está ativada.",
+      "Solution": [
+        "Verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não conseguimos concluir a verificação."
+      ]
+    },
     "0": {
       "Severity": 3,
       "Name": "Área de trabalho remota habilitada",
@@ -324,14 +417,22 @@
       "Screenshots": []
     },
     "Type": "Segurança",
-    "Information": "A Área de Trabalho Remota é um recurso integrado ao sistema operacional Windows que permite aos usuários acessar e controlar remotamente outro computador Windows por meio de uma rede ou da Internet. "
+    "Information": "Área de Trabalho Remota é um recurso integrado no sistema operacional Windows que permite aos usuários acessar e controlar remotamente outro computador com Windows através de uma rede ou internet. Ele permite que os usuários se conectem a um computador remoto como se estivessem na frente dele, fornecendo acesso completo à área de trabalho remota, aplicativos, arquivos e recursos. Se você não utiliza este recurso, é mais seguro desativá-lo."
   },
   "13": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Bloco de Mensagens do Servidor ativado/desativado",
+      "Failed": "Não foi possível verificar os estados do protocolo SMB.",
+      "Solution": [
+        "Verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não conseguimos concluir a verificação."
+      ]
+    },
     "0": {
       "Severity": 2,
       "Name": "SMB todas as versões desativadas",
       "Solution": [
-        "PENDÊNCIA"
+        "Ambas as versões de SMB estão desativadas, portanto, não é necessária nenhuma ação."
       ],
       "Screenshots": []
     },
@@ -339,7 +440,7 @@
       "Severity": 3,
       "Name": "SMB versão 1 ativada",
       "Solution": [
-        "No teclado, pressione ‘Windows+R’ para abrir a janela Executar.",
+        "No teclado, pressione 'Windows+R' para abrir a janela Executar.",
         "Digite 'Powershell' e selecione OK.",
         "No Powershell, digite 'Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol' e pressione Enter.",
         "Para finalizar, reinicie o seu computador."
@@ -363,7 +464,7 @@
       "Severity": 3,
       "Name": "SMB versões 1 e 2 habilitadas",
       "Solution": [
-        "No teclado, pressione ‘Windows+R’ para abrir a janela Executar.",
+        "No teclado, pressione 'Windows+R' para abrir a janela Executar.",
         "Digite 'Powershell' e selecione OK.",
         "No Powershell, digite 'Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol' e pressione Enter.",
         "Para finalizar, reinicie o seu computador."
@@ -376,28 +477,36 @@
       ]
     },
     "Type": "Segurança",
-    "Information": "O protocolo SMB (Server Message Block) é usado para compartilhar arquivos, impressoras e outros recursos entre dispositivos em uma rede em ambientes Windows. "
+    "Information": "O protocolo SMB (Server Message Block) é utilizado em ambientes Windows para compartilhar arquivos, impressoras e outros recursos entre dispositivos em uma rede. É crucial garantir que as configurações SMB no seu computador com Windows estejam configuradas corretamente. O protocolo SMBv1 possui diversas vulnerabilidades conhecidas e, portanto, nunca deve ser utilizado. Utilizar SMBv2/v3 é a opção mais segura."
   },
   "14": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Controle de Conta de Usuário ativado/desativado",
+      "Failed": "Não foi possível verificar o nível de UAC em seu sistema.",
+      "Solution": [
+        "Verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não conseguimos concluir a verificação."
+      ]
+    },
     "0": {
       "Severity": 3,
       "Name": "Controle de conta de usuário desativado",
       "Solution": [
-        "No teclado, pressione ‘Windows+R’ para abrir a janela Executar.",
+        "No teclado, pressione 'Windows+R' para abrir a janela Executar.",
         "Digite 'Painel de Controle' e selecione OK.",
-        "Selecione ‘Contas de usuário’ ou ‘Contas de usuário e segurança familiar’.",
-        "Selecione ‘Alterar configurações de controle de conta de usuário’. ",
-        "Aqui você pode mover o controle deslizante para ‘Sempre notificar’ para ativar o UAC. ",
+        "Selecione 'Contas de usuário' ou 'Contas de usuário e segurança familiar'.",
+        "Selecione 'Alterar configurações de controle de conta de usuário'. ",
+        "Aqui você pode mover o controle deslizante para 'Sempre notificar' para ativar o UAC. ",
         "Para finalizar, reinicie o seu computador."
       ],
       "SolutionWindows10": [
         "As configurações de controle de conta de usuário estão ativadas para aplicativos, configurá-lo para sempre notificar é uma opção mais segura. ",
-        "No teclado, pressione ‘Windows+R’ para abrir a janela Executar.",
+        "No teclado, pressione 'Windows+R' para abrir a janela Executar.",
         "Digite 'Painel de Controle' e selecione OK.",
         "Selecione 'Contas de usuário'.",
         "Selecione 'Contas de usuário' novamente.",
-        "Selecione ‘Alterar configurações de controle de conta de usuário’. ",
-        "Aqui você pode mover o controle deslizante para ‘Sempre notificar’ para ativar o UAC. ",
+        "Selecione 'Alterar configurações de controle de conta de usuário'. ",
+        "Aqui você pode mover o controle deslizante para 'Sempre notificar' para ativar o UAC. ",
         "Para finalizar, reinicie o seu computador."
       ],
       "Screenshots": [
@@ -422,21 +531,21 @@
       "Name": "Controle de conta de usuário ativado para aplicativos",
       "Solution": [
         "As configurações de controle de conta de usuário estão ativadas para aplicativos, configurá-lo para sempre notificar é uma opção mais segura. ",
-        "No teclado, pressione ‘Windows+R’ para abrir a janela Executar.",
+        "No teclado, pressione 'Windows+R' para abrir a janela Executar.",
         "Digite 'Painel de Controle' e selecione OK.",
-        "Selecione ‘Contas de usuário’ ou ‘Contas de usuário e segurança familiar’.",
-        "Selecione ‘Alterar configurações de controle de conta de usuário’. ",
-        "Aqui você pode mover o controle deslizante para ‘Sempre notificar’ para ativar o UAC. ",
+        "Selecione 'Contas de usuário' ou 'Contas de usuário e segurança familiar'.",
+        "Selecione 'Alterar configurações de controle de conta de usuário'. ",
+        "Aqui você pode mover o controle deslizante para 'Sempre notificar' para ativar o UAC. ",
         "Para finalizar, reinicie o seu computador."
       ],
       "SolutionWindows10": [
         "As configurações de controle de conta de usuário estão ativadas para aplicativos, configurá-lo para sempre notificar é uma opção mais segura. ",
-        "No teclado, pressione ‘Windows+R’ para abrir a janela Executar.",
+        "No teclado, pressione 'Windows+R' para abrir a janela Executar.",
         "Digite 'Painel de Controle' e selecione OK.",
         "Selecione 'Contas de usuário'.",
         "Selecione 'Contas de usuário' novamente.",
-        "Selecione ‘Alterar configurações de controle de conta de usuário’. ",
-        "Aqui você pode mover o controle deslizante para ‘Sempre notificar’ para ativar o UAC. ",
+        "Selecione 'Alterar configurações de controle de conta de usuário'. ",
+        "Aqui você pode mover o controle deslizante para 'Sempre notificar' para ativar o UAC. ",
         "Para finalizar, reinicie o seu computador."
       ],
       "Screenshots": [
@@ -454,21 +563,21 @@
       "Name": "Controle de conta de usuário desconhecido",
       "Solution": [
         "O status das configurações de controle de conta de usuário é desconhecido. Para verificar o status e potencialmente resolver o problema do controle de conta de usuário, siga estas etapas",
-        "No teclado, pressione ‘Windows+R’ para abrir a janela Executar.",
+        "No teclado, pressione 'Windows+R' para abrir a janela Executar.",
         "Digite 'Painel de Controle' e selecione OK.",
-        "Selecione ‘Contas de usuário’ ou ‘Contas de usuário e segurança familiar’.",
-        "Selecione ‘Alterar configurações de controle de conta de usuário’. ",
-        "Aqui você pode mover o controle deslizante para ‘Sempre notificar’ para ativar o UAC. ",
+        "Selecione 'Contas de usuário' ou 'Contas de usuário e segurança familiar'.",
+        "Selecione 'Alterar configurações de controle de conta de usuário'. ",
+        "Aqui você pode mover o controle deslizante para 'Sempre notificar' para ativar o UAC. ",
         "Para finalizar, reinicie o seu computador."
       ],
       "SolutionWindows10": [
         "As configurações de controle de conta de usuário estão ativadas para aplicativos, configurá-lo para sempre notificar é uma opção mais segura. ",
-        "No teclado, pressione ‘Windows+R’ para abrir a janela Executar.",
+        "No teclado, pressione 'Windows+R' para abrir a janela Executar.",
         "Digite 'Painel de Controle' e selecione OK.",
         "Selecione 'Contas de usuário'.",
         "Selecione 'Contas de usuário' novamente.",
-        "Selecione ‘Alterar configurações de controle de conta de usuário’. ",
-        "Aqui você pode mover o controle deslizante para ‘Sempre notificar’ para ativar o UAC. ",
+        "Selecione 'Alterar configurações de controle de conta de usuário'. ",
+        "Aqui você pode mover o controle deslizante para 'Sempre notificar' para ativar o UAC. ",
         "Para finalizar, reinicie o seu computador."
       ],
       "Screenshots": [
@@ -482,9 +591,17 @@
       ]
     },
     "Type": "Segurança",
-    "Information": "O Controle de Conta de Usuário (UAC) é um recurso de segurança introduzido no Windows Vista e presente em versões subsequentes do sistema operacional Windows. "
+    "Information": "O Controle de Conta de Usuário (User Account Control, UAC) é um recurso de segurança introduzido no Windows Vista e presente em versões subsequentes do sistema operacional Windows. Seu principal objetivo é aumentar a segurança do sistema operacional limitando os privilégios de aplicativos e processos que são executados com direitos de usuário padrão e exigindo a aprovação do administrador para tarefas que exigem permissões elevadas."
   },
   "15": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Windows Defender ativado/desativado",
+      "Failed": "Não foi possível verificar o status do Windows Defender.",
+      "Solution": [
+        "Verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não conseguimos concluir a verificação."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "O Windows Defender está ativado",
@@ -521,25 +638,26 @@
       "Solution": [
         "Não foi possível encontrar o status do Windows Defender neste dispositivo."
       ],
-      "Screenshots": [],
-      "ScreenshotsWindows10": [
-        "windows-defender/windows-defender-1.png",
-        "windows-defender/windows-defender-1.png",
-        "windows-defender/windows-defender-2.png",
-        "windows-defender/windows-defender-3.png",
-        "windows-defender/windows-defender-4.png"
-      ]
+      "Screenshots": []
     },
     "Type": "Segurança",
-    "Information": "O Windows Defender monitora continuamente seu sistema em busca de qualquer atividade suspeita, incluindo malware, vírus e outras formas de software malicioso. "
+    "Information": "O Windows Defender monitora continuamente o seu sistema em busca de qualquer atividade suspeita, incluindo malware, vírus e outras formas de software malicioso. Ao mantê-lo ativado, você tem uma defesa ativa contra ameaças potenciais que poderiam comprometer sua privacidade ou segurança. Ele também recebe atualizações regulares da Microsoft para se manter atualizado com as últimas ameaças de segurança e vulnerabilidades. Mantendo-o ativado, você garante que seu computador esteja protegido contra novas ameaças emergentes que poderiam explorar falhas de segurança conhecidas."
   },
   "16": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Última senha do Windows alterada",
+      "Failed": "Não foi possível verificar quando a última alteração de senha ocorreu.",
+      "Solution": [
+        "Verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não conseguimos concluir a verificação."
+      ]
+    },
     "0": {
       "Severity": 2,
       "Name": "A última alteração de senha foi há mais de 6 meses",
       "Solution": [
         "Vá para iniciar> Alterar sua senha",
-        "Abra a seção ‘Senha’ e clique no botão ‘Alterar’.",
+        "Abra a seção 'Senha' e clique no botão 'Alterar'.",
         "Agora você pode alterar sua senha para uma nova e exclusiva."
       ],
       "Screenshots": [
@@ -557,9 +675,17 @@
       "Screenshots": []
     },
     "Type": "Segurança",
-    "Information": "A alteração regular da sua senha reduz a probabilidade de acesso não autorizado ao seu computador ou a informações confidenciais. "
+    "Information": "Mudar regularmente sua senha reduz a probabilidade de acesso não autorizado ao seu computador ou informações sensíveis. Se alguém conseguir obter sua senha, mudá-la regularmente limita o tempo que têm para explorá-la. Portanto, é um bom hábito mudar sua senha pelo menos duas vezes por ano."
   },
   "17": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Método de login do Windows",
+      "Failed": "Não foi possível verificar quais métodos de login são usados.",
+      "Solution": [
+        "Verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não conseguimos concluir a verificação."
+      ]
+    },
     "0": {
       "Severity": 3,
       "Name": "Nenhum método de login do Windows configurado",
@@ -605,9 +731,17 @@
       ]
     },
     "Type": "Segurança",
-    "Information": "Usar um método de login seguro do Windows é importante. "
+    "Information": "Utilizar um método seguro de login no Windows é importante. O Windows suporta vários métodos de login como senha, PIN, chave de segurança ou impressão digital. Utilizar um desses métodos de login é fundamental para manter seus dados seguros. Sem um desses métodos de login, qualquer pessoa pode desbloquear seu dispositivo e acessar seus dados. Se você não está utilizando um método de login / está utilizando um método de login menos seguro / uma combinação de métodos de login, é recomendado mudar para um método de login mais seguro como senha ou impressão digital."
   },
   "18": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Versão do Windows atualizada",
+      "Failed": "Não foi possível verificar quando a última alteração de senha ocorreu.",
+      "Solution": [
+        "Verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não conseguimos concluir a verificação."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "A versão do Windows está atualizada",
@@ -641,9 +775,17 @@
       ]
     },
     "Type": "Segurança",
-    "Information": "Versões desatualizadas do Windows podem conter vulnerabilidades de segurança não corrigidas que podem ser exploradas por invasores para comprometer o sistema. "
+    "Information": "Versões desatualizadas do Windows podem conter vulnerabilidades de segurança não corrigidas que podem ser exploradas por atacantes para comprometer o sistema. Hackers procuram ativamente e exploram vulnerabilidades em sistemas operacionais desatualizados, podendo resultar em acesso não autorizado, violações de dados e infecções por malware."
   },
   "19": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Inicialização segura ativada/desativada",
+      "Failed": "Não foi possível verificar se a Inicialização segura está ativada.",
+      "Solution": [
+        "Verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não conseguimos concluir a verificação."
+      ]
+    },
     "0": {
       "Severity": 1,
       "Name": "A inicialização segura está desativada",
@@ -672,9 +814,17 @@
       "Screenshots": []
     },
     "Type": "Segurança",
-    "Information": "A inicialização segura garante que apenas componentes de software confiáveis, assinados com assinaturas digitais reconhecidas, sejam carregados durante o processo de inicialização. "
+    "Information": "O Secure Boot garante que apenas componentes de software confiáveis, assinados com assinaturas digitais reconhecidas, sejam carregados durante o processo de inicialização. Isso impede que malware e outro software não autorizado manipulem o processo de inicialização e ganhem controle do sistema em um estágio inicial."
   },
   "20": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Aplicativos que iniciam no boot do sistema",
+      "Failed": "Não foi possível verificar quais aplicativos iniciam no boot do sistema.",
+      "Solution": [
+        "Verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não conseguimos concluir a verificação."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Nenhum aplicativo que inicia na inicialização",
@@ -696,9 +846,17 @@
       ]
     },
     "Type": "Segurança",
-    "Information": "Quando você inicializa o computador, vários aplicativos são iniciados automaticamente. "
+    "Information": "Quando você inicializa seu computador, vários aplicativos são iniciados automaticamente. Alguns desses são processos essenciais para o funcionamento adequado do sistema, enquanto outros são convenientes de ter no início. No entanto, pode haver também aplicativos que iniciam durante o boot sem o seu conhecimento. É prudente desativar esses aplicativos para evitar ações não autorizadas e melhorar a velocidade do processo de inicialização do seu computador."
   },
   "21": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Google Chrome tem um bloqueador de anúncios instalado",
+      "Failed": "Não foi possível verificar se o seu navegador tem um bloqueador de anúncios instalado.",
+      "Solution": [
+        "Certifique-se de que seu navegador esteja fechado, esta verificação pode não poder ser concluída devido ao navegador estar aberto."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Google Chrome com bloqueador de anúncios instalado",
@@ -713,7 +871,7 @@
       "Solution": [
         "Abra o Google Chrome e navegue até a Chrome Store.",
         "Procure um adblocker na barra de pesquisa (por exemplo: AdBlock Plus ou uBlock Origin",
-        "Clique no botão ‘Adicionar ao Chrome’ e reinicie o navegador."
+        "Clique no botão 'Adicionar ao Chrome' e reinicie o navegador."
       ],
       "Screenshots": [
         "chrome-adblocker/chrome-adblocker-1.png",
@@ -722,9 +880,17 @@
       ]
     },
     "Type": "Privacidade",
-    "Information": "Adblockers protegem os usuários de anúncios online. "
+    "Information": "Os bloqueadores de anúncios protegem os usuários de anúncios online. Com seus filtros e algoritmos, proporcionam um santuário de navegação sem interrupções, poupando os usuários da confusão visual e dos potenciais riscos de segurança apresentados por anúncios."
   },
   "22": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Microsoft Edge tem um bloqueador de anúncios instalado",
+      "Failed": "Não foi possível verificar se o seu navegador tem um bloqueador de anúncios instalado.",
+      "Solution": [
+        "Certifique-se de que seu navegador esteja fechado, esta verificação pode não poder ser concluída devido ao navegador estar aberto."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Microsoft Edge com um bloqueador de anúncios instalado",
@@ -739,7 +905,7 @@
       "Solution": [
         "Abra o Microsoft Edge e navegue até Extensões do Microsoft Edge",
         "Procure um adblocker na barra de pesquisa (por exemplo: AdBlock Plus ou uBlock Origin)",
-        "Clique no botão ‘Download’ e reinicie o navegador."
+        "Clique no botão 'Download' e reinicie o navegador."
       ],
       "Screenshots": [
         "edge-adblocker/edge-adblocker-1.png",
@@ -748,18 +914,24 @@
       ]
     },
     "Type": "Privacidade",
-    "Information": "Adblockers protegem os usuários de anúncios online. "
+    "Information": "Os bloqueadores de anúncios protegem os usuários de anúncios online. Com seus filtros e algoritmos, proporcionam um santuário de navegação sem interrupções, poupando os usuários da confusão visual e dos potenciais riscos de segurança apresentados por anúncios."
   },
   "23": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Domínios de phishing encontrados no histórico do Google Chrome",
+      "Failed": "Não foi possível verificar o histórico do seu navegador.",
+      "Solution": [
+        "Certifique-se de que seu navegador esteja fechado, esta verificação pode não poder ser concluída devido ao navegador estar aberto."
+      ]
+    },
     "0": {
       "Severity": 2,
       "Name": "Possíveis domínios de phishing encontrados no Google Chrome",
       "Solution": [
         "Tenha cuidado ao navegar na Internet, pois sites confiáveis ​​podem ser facilmente falsificados. "
       ],
-      "Screenshots": [
-        "SER PREENCHIDO"
-      ]
+      "Screenshots": []
     },
     "1": {
       "Severity": 0,
@@ -770,9 +942,17 @@
       "Screenshots": []
     },
     "Type": "Privacidade",
-    "Information": "Domínios de phishing são sites falsos projetados para induzir as pessoas a compartilhar informações confidenciais, como senhas ou detalhes de cartão de crédito. "
+    "Information": "Domínios de phishing são sites falsos projetados para enganar as pessoas a compartilhar informações sensíveis como senhas ou detalhes de cartão de crédito. Eles parecem reais, imitando marcas ou organizações confiáveis. Esses golpes exploram a confiança e a curiosidade para roubar dados pessoais."
   },
   "24": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Domínios de phishing encontrados no histórico do Microsoft Edge",
+      "Failed": "Não foi possível verificar o histórico do seu navegador.",
+      "Solution": [
+        "Certifique-se de que seu navegador esteja fechado, esta verificação pode não poder ser concluída devido ao navegador estar aberto."
+      ]
+    },
     "0": {
       "Severity": 2,
       "Name": "Possíveis domínios de phishing encontrados no Microsoft Edge",
@@ -790,37 +970,57 @@
       "Screenshots": []
     },
     "Type": "Privacidade",
-    "Information": "Domínios de phishing são sites falsos projetados para induzir as pessoas a compartilhar informações confidenciais, como senhas ou detalhes de cartão de crédito. "
+    "Information": "Domínios de phishing são sites falsos projetados para enganar as pessoas a compartilhar informações sensíveis como senhas ou detalhes de cartão de crédito. Eles parecem reais, imitando marcas ou organizações confiáveis. Esses golpes exploram a confiança e a curiosidade para roubar dados pessoais."
   },
   "25": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Motor de busca do Google Chrome em uso",
+      "Failed": "Não foi possível verificar o motor de busca do seu navegador.",
+      "Solution": [
+        "Certifique-se de que seu navegador esteja fechado, esta verificação pode não poder ser concluída devido ao navegador estar aberto."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Mecanismo de pesquisa padrão usado no Google Chrome",
       "Solution": [
         "Considere usar um mecanismo de busca com foco na privacidade dos usuários (por exemplo DuckDuckGo)."
       ],
-      "Screenshots": [
-        "SER PREENCHIDO"
-      ]
+      "Screenshots": []
     },
     "Type": "Privacidade",
-    "Information": "Um mecanismo de pesquisa padrão ajuda os usuários a encontrar informações na Internet inserindo palavras-chave ou frases. "
+    "Information": "Um mecanismo de busca padrão ajuda os usuários a encontrar informações na internet ao inserir palavras-chave ou frases. Exemplos incluem Google, Bing e Yahoo. Eles frequentemente enfrentam críticas por sua abordagem à privacidade."
   },
   "26": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Motor de busca do Microsoft Edge em uso",
+      "Failed": "Não foi possível verificar o motor de busca do seu navegador.",
+      "Solution": [
+        "Certifique-se de que seu navegador esteja fechado, esta verificação pode não poder ser concluída devido ao navegador estar aberto."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Mecanismo de pesquisa padrão usado no Microsoft Edge",
       "Solution": [
         "Considere usar um mecanismo de busca com foco na privacidade dos usuários (por exemplo DuckDuckGo)."
       ],
-      "Screenshots": [
-        "SER PREENCHIDO"
-      ]
+      "Screenshots": []
     },
     "Type": "Privacidade",
-    "Information": "Um mecanismo de pesquisa padrão ajuda os usuários a encontrar informações na Internet inserindo palavras-chave ou frases. "
+    "Information": "Um mecanismo de busca padrão ajuda os usuários a encontrar informações na internet ao inserir palavras-chave ou frases. Exemplos incluem Google, Bing e Yahoo. Eles frequentemente enfrentam críticas por sua abordagem à privacidade."
   },
   "27": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Cookies armazenados no Mozilla Firefox",
+      "Failed": "Não foi possível verificar os cookies do seu navegador.",
+      "Solution": [
+        "Certifique-se de que seu navegador esteja fechado, esta verificação pode não poder ser concluída devido ao navegador estar aberto."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Nenhum cookie de rastreamento encontrado no Mozilla Firefox",
@@ -834,8 +1034,8 @@
       "Name": "Possíveis cookies de rastreamento encontrados no Mozilla Firefox",
       "Solution": [
         "Abra o Mozilla Firefox e clique no botão de menu (três linhas horizontais) no canto superior direito.",
-        "Selecione ‘Configurações’ e vá para a guia ‘Privacidade e segurança’.",
-        "A opção ‘Proteção aprimorada contra rastreamento’ deve ser definida como ‘Padrão’ ou ‘Personalizado’. "
+        "Selecione 'Configurações' e vá para a guia 'Privacidade e segurança'.",
+        "A opção 'Proteção aprimorada contra rastreamento' deve ser definida como 'Padrão' ou 'Personalizado'. "
       ],
       "Screenshots": [
         "firefox-cookies/cookies-firefox-1.png",
@@ -845,15 +1045,23 @@
       ]
     },
     "Type": "Privacidade",
-    "Information": "Cookies são pequenos arquivos de texto armazenados no seu computador pelos sites que você visita. "
+    "Information": "Cookies são pequenos arquivos de texto armazenados no seu computador pelos sites que você visita. Eles são usados para lembrar suas preferências, informações de login e outros dados para melhorar sua experiência de navegação. No entanto, os cookies também podem ser usados para rastrear suas atividades online e coletar informações pessoais sem seu consentimento, levantando preocupações com a privacidade. Gerenciar e limpar cookies regularmente ajuda a proteger sua privacidade e controlar os dados que os sites coletam sobre você."
   },
   "28": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Extensões instaladas no Mozilla Firefox",
+      "Failed": "Não foi possível verificar as extensões do seu navegador.",
+      "Solution": [
+        "Certifique-se de que seu navegador esteja fechado, esta verificação pode não poder ser concluída devido ao navegador estar aberto."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Extensões instaladas no Mozilla Firefox",
       "Solution": [
         "Abra o Mozilla Firefox e clique no botão de menu (três linhas horizontais) no canto superior direito.",
-        "Selecione ‘Complementos’ e vá para a guia ‘Extensões’.",
+        "Selecione 'Complementos' e vá para a guia 'Extensões'.",
         "Aqui você pode visualizar e gerenciar as extensões instaladas em seu navegador. "
       ],
       "Screenshots": [
@@ -863,9 +1071,17 @@
       ]
     },
     "Type": "Privacidade",
-    "Information": "As extensões do navegador aprimoram a funcionalidade do seu navegador adicionando recursos, ferramentas e opções de personalização. "
+    "Information": "As extensões do navegador melhoram a funcionalidade do seu navegador web adicionando recursos, ferramentas e opções de personalização. Embora as extensões possam ser úteis, elas também podem representar riscos de privacidade e segurança se tiverem acesso a dados sensíveis ou rastrearem suas atividades online sem o seu consentimento. Revisar e gerenciar regularmente suas extensões de navegador ajuda a proteger sua privacidade e segurança online. Remova qualquer extensão que você não usa mais ou não confia para minimizar os riscos potenciais."
   },
   "29": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Mozilla Firefox tem um bloqueador de anúncios instalado",
+      "Failed": "Não foi possível verificar se o seu navegador tem um bloqueador de anúncios instalado.",
+      "Solution": [
+        "Certifique-se de que seu navegador esteja fechado, esta verificação pode não poder ser concluída devido ao navegador estar aberto."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Mozilla Firefox com um bloqueador de anúncios instalado",
@@ -878,11 +1094,11 @@
       "Severity": 2,
       "Name": "Mozilla Firefox sem adblocker instalado",
       "Solution": [
-        "Abra o Mozilla Firefox e clique no botão de menu (três linhas horizontais) no canto superior direito e selecione ‘Complementos e temas’.",
-        "Vá para a guia ‘Extensões’.",
-        "Role para baixo e clique no botão ‘Encontrar mais complementos’.",
+        "Abra o Mozilla Firefox e clique no botão de menu (três linhas horizontais) no canto superior direito e selecione 'Complementos e temas'.",
+        "Vá para a guia 'Extensões'.",
+        "Role para baixo e clique no botão 'Encontrar mais complementos'.",
         "Procure um adblocker na barra de pesquisa (por exemplo: AdBlock Plus ou uBlock Origin)",
-        "Clique no botão ‘Adicionar ao Firefox’ e reinicie o navegador."
+        "Clique no botão 'Adicionar ao Firefox' e reinicie o navegador."
       ],
       "Screenshots": [
         "firefox-adblocker/firefox-adblocker-1.png",
@@ -893,23 +1109,37 @@
       ]
     },
     "Type": "Privacidade",
-    "Information": "Adblockers protegem os usuários de anúncios online. "
+    "Information": "Os bloqueadores de anúncios protegem os usuários de anúncios online. Com seus filtros e algoritmos, proporcionam um santuário de navegação sem interrupções, poupando os usuários da confusão visual e dos potenciais riscos de segurança apresentados por anúncios."
   },
   "30": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Motor de busca do Mozilla Firefox em uso",
+      "Failed": "Não foi possível verificar o motor de busca do seu navegador.",
+      "Solution": [
+        "Certifique-se de que seu navegador esteja fechado, esta verificação pode não poder ser concluída devido ao navegador estar aberto."
+      ]
+    },
     "0": {
       "Severity": 4,
       "Name": "Mecanismo de pesquisa padrão no Mozilla Firefox",
       "Solution": [
         "Considere usar um navegador com foco na privacidade dos usuários (por exemplo DuckDuckGo)"
       ],
-      "Screenshots": [
-        "SER PREENCHIDO"
-      ]
+      "Screenshots": []
     },
     "Type": "Privacidade",
-    "Information": "Um mecanismo de pesquisa padrão ajuda os usuários a encontrar informações na Internet inserindo palavras-chave ou frases. "
+    "Information": "Um mecanismo de busca padrão ajuda os usuários a encontrar informações na internet ao inserir palavras-chave ou frases. Exemplos incluem Google, Bing e Yahoo. Eles frequentemente enfrentam críticas por sua abordagem à privacidade."
   },
   "31": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Domínios de phishing encontrados no histórico do Mozilla Firefox",
+      "Failed": "Não foi possível verificar o histórico do seu navegador.",
+      "Solution": [
+        "Certifique-se de que seu navegador esteja fechado, esta verificação pode não poder ser concluída devido ao navegador estar aberto."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Nenhum domínio de phishing em potencial encontrado no Mozilla Firefox",
@@ -924,14 +1154,20 @@
       "Solution": [
         "Tenha cuidado ao navegar na Internet, pois sites confiáveis ​​podem ser facilmente falsificados. "
       ],
-      "Screenshots": [
-        "SER PREENCHIDO"
-      ]
+      "Screenshots": []
     },
     "Type": "Privacidade",
-    "Information": "Domínios de phishing são sites falsos projetados para induzir as pessoas a compartilhar informações confidenciais, como senhas ou detalhes de cartão de crédito. "
+    "Information": "Domínios de phishing são sites falsos projetados para enganar as pessoas a compartilhar informações sensíveis como senhas ou detalhes de cartão de crédito. Eles parecem reais, imitando marcas ou organizações confiáveis. Esses golpes exploram a confiança e a curiosidade para roubar dados pessoais."
   },
   "32": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Configurações do registro da lista de auditoria CIS",
+      "Failed": "Não foi possível verificar as configurações do registro da lista de auditoria CIS.",
+      "Solution": [
+        "Por favor, verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não podemos completar a verificação."
+      ]
+    },
     "0": {
       "Severity": 1,
       "Name": "Configurações incorretas do registro da lista de auditoria do CIS",
@@ -939,7 +1175,7 @@
         "Baixe o CIS Benchmark para o seu sistema operacional no site oficial do CIS. "
       ],
       "Screenshots": [
-        "SER PREENCHIDO"
+        "cis-benchmark/cis-benchmark-1.png"
       ]
     },
     "1": {
@@ -951,9 +1187,17 @@
       "Screenshots": []
     },
     "Type": "Segurança",
-    "Information": "O Center for Internet Security (CIS) fornece um conjunto de diretrizes e práticas recomendadas para proteger sistemas de computador. "
+    "Information": "O Center for Internet Security (CIS) fornece um conjunto de diretrizes e melhores práticas para garantir a segurança de sistemas de computador. A lista de auditoria CIS de configurações de registro ajuda a garantir que seu sistema esteja configurado de acordo com esses padrões de segurança. Configurações de registro incorretas ou desatualizadas podem deixar seu sistema vulnerável a ameaças de segurança e comprometer sua privacidade."
   },
   "33": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Logon automático ativado/desativado",
+      "Failed": "Não foi possível verificar se o logon automático está ativado.",
+      "Solution": [
+        "Por favor, verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não podemos completar a verificação."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Login automático desativado",
@@ -967,16 +1211,25 @@
       "Name": "Login automático ativado",
       "Solution": [
         "Vá para Iniciar > Configurações > Contas > Opções de login.",
-        "Em ‘Exigir login’, selecione ‘Quando o PC sair do modo de suspensão’."
+        "Em 'Exigir login', selecione 'Quando o PC sair do modo de suspensão'."
       ],
       "Screenshots": [
-        "SER PREENCHIDO"
+        "automatic-login/automatic-login-1.png",
+        "automatic-login/automatic-login-2.png"
       ]
     },
     "Type": "Segurança",
-    "Information": "O login automático permite que os usuários acessem suas contas sem inserir uma senha sempre que iniciarem o computador ou abrirem um aplicativo específico. "
+    "Information": "O login automático permite que os usuários acessem suas contas sem precisar inserir uma senha cada vez que iniciam seu computador ou abrem um aplicativo específico. Embora conveniente, o login automático apresenta riscos de segurança, pois qualquer pessoa com acesso físico ao dispositivo pode acessar a conta sem autenticação. Desativar o login automático melhora a segurança de suas contas e previne acesso não autorizado."
   },
   "34": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Chamada de procedimento remoto ativada/desativada",
+      "Failed": "Não foi possível verificar se RPC está ativado em seu dispositivo.",
+      "Solution": [
+        "Por favor, verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não podemos completar a verificação."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "RPC remoto desativado",
@@ -995,13 +1248,24 @@
         "Clique duas vezes na chave \"AllowRemoteRPC\" e defina seu valor como 0."
       ],
       "Screenshots": [
-        "SER PREENCHIDO"
+        "remote-rpc/remote-rpc-1.png",
+        "remote-rpc/remote-rpc-2.png",
+        "remote-rpc/remote-rpc-3.png",
+        "remote-rpc/remote-rpc-4.png"
       ]
     },
     "Type": "Segurança",
-    "Information": "Chamada de procedimento remoto (RPC) é um protocolo que permite que programas e processos se comuniquem entre si em uma rede. "
+    "Information": "Remote Procedure Call (RPC) é um protocolo que permite que programas e processos se comuniquem entre si em uma rede. Desativar o RPC remoto ajuda a prevenir acesso não autorizado ao seu computador e protege-o contra possíveis ameaças e vulnerabilidades de segurança."
   },
   "35": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Cookies armazenados no Google Chrome",
+      "Failed": "Não foi possível verificar os cookies do seu navegador.",
+      "Solution": [
+        "Certifique-se de que seu navegador esteja fechado, esta verificação pode não poder ser concluída devido ao navegador estar aberto."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Nenhum possível cookie de rastreamento encontrado no navegador Google Chrome",
@@ -1015,18 +1279,29 @@
       "Name": "Possíveis cookies de rastreamento encontrados no navegador Google Chrome",
       "Solution": [
         "Abra o Google Chrome e clique nos três pontos no canto superior direito.",
-        "Selecione ‘Configurações’ e vá para a seção ‘Privacidade e segurança’.",
-        "Em ‘Cookies de terceiros’, clique em ‘Ver todos os dados e permissões do site’.",
+        "Selecione 'Configurações' e vá para a seção 'Privacidade e segurança'.",
+        "Em 'Cookies de terceiros', clique em 'Ver todos os dados e permissões do site'.",
         "Aqui você pode visualizar e gerenciar os cookies armazenados pelos sites.  "
       ],
       "Screenshots": [
-        "SER PREENCHIDO"
+        "chrome-cookies/cookies-chrome-1.png",
+        "chrome-cookies/cookies-chrome-2.png",
+        "chrome-cookies/cookies-chrome-3.png",
+        "chrome-cookies/cookies-chrome-4.png"
       ]
     },
     "Type": "Privacidade",
-    "Information": "Cookies são pequenos arquivos de texto armazenados no seu computador pelos sites que você visita. "
+    "Information": "Cookies são pequenos arquivos de texto armazenados no seu computador pelos sites que você visita. Eles são usados para lembrar suas preferências, informações de login e outros dados para melhorar sua experiência de navegação. No entanto, os cookies também podem ser usados para rastrear suas atividades online e coletar informações pessoais sem seu consentimento, levantando preocupações com a privacidade. Gerenciar e limpar regularmente os cookies ajuda a proteger sua privacidade e controlar os dados que os sites coletam sobre você."
   },
   "36": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Cookies armazenados no Microsoft Edge",
+      "Failed": "Não foi possível verificar os cookies do seu navegador.",
+      "Solution": [
+        "Certifique-se de que seu navegador esteja fechado, esta verificação pode não poder ser concluída devido ao navegador estar aberto."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "Nenhum possível cookie de rastreamento encontrado no navegador Microsoft Edge",
@@ -1040,18 +1315,29 @@
       "Name": "Possíveis cookies de rastreamento encontrados no navegador Microsoft Edge",
       "Solution": [
         "Abra o Microsoft Edge e clique nos três pontos no canto superior direito.",
-        "Selecione ‘Configurações’ e vá para a seção ‘Cookies e permissões de sites’.",
-        "Em ‘Cookies e dados armazenados’, clique em ‘Gerenciar e excluir cookies e dados de sites’.",
+        "Selecione 'Configurações' e vá para a seção 'Cookies e permissões de sites'.",
+        "Em 'Cookies e dados armazenados', clique em 'Gerenciar e excluir cookies e dados de sites'.",
         "Aqui você pode gerenciar as configurações gerais de cookies.  "
       ],
       "Screenshots": [
-        "SER PREENCHIDO"
+        "edge-cookies/cookies-edge-1.png",
+        "edge-cookies/cookies-edge-2.png",
+        "edge-cookies/cookies-edge-2.png",
+        "edge-cookies/cookies-edge-2.png"
       ]
     },
     "Type": "Privacidade",
-    "Information": "Cookies são pequenos arquivos de texto armazenados no seu computador pelos sites que você visita. "
+    "Information": "Cookies são pequenos arquivos de texto armazenados no seu computador pelos sites que você visita. Eles são usados para lembrar suas preferências, informações de login e outros dados para melhorar sua experiência de navegação. No entanto, os cookies também podem ser usados para rastrear suas atividades online e coletar informações pessoais sem seu consentimento, levantando preocupações com a privacidade. Gerenciar e limpar regularmente os cookies ajuda a proteger sua privacidade e controlar os dados que os sites coletam sobre você."
   },
   "37": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Firewall do Windows ativado/desativado",
+      "Failed": "Não foi possível verificar o status do firewall do Windows.",
+      "Solution": [
+        "Por favor, verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não podemos completar a verificação."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "O firewall do Windows está habilitado para todos os perfis",
@@ -1065,16 +1351,25 @@
       "Name": "O firewall do Windows não está habilitado para todos os perfis",
       "Solution": [
         "Vá para Iniciar > Configurações > Atualização e segurança > Segurança do Windows > Firewall e proteção de rede.",
-        "Em ‘Firewall e proteção de rede’, certifique-se de que o Firewall do Windows esteja ativado para todos os perfis de rede (público, privado e domínio). "
+        "Em 'Firewall e proteção de rede', certifique-se de que o Firewall do Windows esteja ativado para todos os perfis de rede (público, privado e domínio). "
       ],
       "Screenshots": [
-        "SER PREENCHIDO"
+        "firewall/firewall-1.png",
+        "firewall/firewall-1.png"
       ]
     },
     "Type": "Segurança",
-    "Information": "O Firewall do Windows é um recurso de segurança integrado que ajuda a proteger seu computador contra acesso não autorizado e software mal-intencionado, monitorando e controlando o tráfego de rede de entrada e saída. "
+    "Information": "O Firewall do Windows é um recurso de segurança integrado que ajuda a proteger seu computador contra acesso não autorizado e software malicioso ao monitorar e controlar o tráfego de rede de entrada e saída. Habilitar o Firewall do Windows para todos os perfis de rede (público, privado e de domínio) ajuda a aumentar a segurança do seu sistema e prevenir potenciais ameaças de segurança."
   },
   "38": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Comprimento da senha do Windows",
+      "Failed": "Não foi possível verificar a complexidade da sua senha.",
+      "Solution": [
+        "Por favor, verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não podemos completar a verificação."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "O comprimento mínimo da senha está definido para pelo menos 15 caracteres",
@@ -1087,19 +1382,30 @@
       "Severity": 3,
       "Name": "O comprimento mínimo da senha não está definido para pelo menos 15 caracteres",
       "Solution": [
-        "Abra um prompt de comando elevado clicando com o botão direito no botão Iniciar e selecionando ‘Terminal (Admin)’.",
+        "Abra um prompt de comando elevado clicando com o botão direito no botão Iniciar e selecionando 'Terminal (Admin)'.",
         "Execute o comando 'net accounts' para visualizar as configurações atuais da política de senha, incluindo o comprimento mínimo da senha.",
         "Execute o comando 'net accounts /minpwlen:15' para definir o comprimento mínimo da senha para 15 caracteres.",
         "Reinicie o seu computador para aplicar as alterações."
       ],
       "Screenshots": [
-        "SER PREENCHIDO"
+        "minimum-password-length/minimum-password-length-1.png",
+        "minimum-password-length/minimum-password-length-2.png",
+        "minimum-password-length/minimum-password-length-3.png",
+        "minimum-password-length/minimum-password-length-3.png"
       ]
     },
     "Type": "Segurança",
-    "Information": "Definir um comprimento mínimo de senha de pelo menos 15 caracteres ajuda a melhorar a segurança das contas de usuário, aumentando a complexidade e a força das senhas. "
+    "Information": "Definir um comprimento mínimo de senha de pelo menos 15 caracteres ajuda a aumentar a segurança das contas de usuário ao aumentar a complexidade e a força das senhas. Senhas mais longas são mais resistentes a ataques de força bruta e oferecem melhor proteção contra acesso não autorizado e violações de dados."
   },
   "39": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Guarda de credenciais ativada/desativada",
+      "Failed": "Não foi possível verificar se a Guarda de credenciais está ativada.",
+      "Solution": [
+        "Por favor, verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não podemos completar a verificação."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "O Credential Guard está ativado",
@@ -1114,14 +1420,20 @@
       "Solution": [
         "A configuração do Credential Guard é tratada na sua política de grupo local. "
       ],
-      "Screenshots": [
-        "SER PREENCHIDO"
-      ]
+      "Screenshots": []
     },
     "Type": "Segurança",
-    "Information": "Credential Guard é um recurso de segurança do Windows que ajuda a proteger as credenciais do usuário e informações confidenciais contra acesso não autorizado e roubo. "
+    "Information": "O Credential Guard é um recurso de segurança no Windows que ajuda a proteger credenciais de usuário e informações sensíveis contra acesso não autorizado e roubo. Ele utiliza segurança baseada em virtualização para isolar e proteger informações de credenciais, tornando mais difícil para atacantes roubar senhas e outros dados sensíveis."
   },
   "40": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: NetBIOS sobre TCP/IP ativado/desativado",
+      "Failed": "Não foi possível verificar o estado do NetBIOS.",
+      "Solution": [
+        "Por favor, verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não podemos completar a verificação."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "NetBIOS sobre TCP/IP está desabilitado",
@@ -1134,22 +1446,36 @@
       "Severity": 2,
       "Name": "NetBIOS sobre TCP/IP está habilitado",
       "Solution": [
-        "Abra o Painel de Controle e vá em ‘Rede e Internet’ -> ‘Centro de Rede e Compartilhamento’.",
-        "Clique em ‘Alterar configurações do adaptador’ no painel esquerdo.",
-        "Clique com o botão direito na sua conexão de rede e selecione ‘Propriedades’.",
-        "Na guia ‘Rede’, role para baixo até ‘Protocolo de Internet Versão 4 (TCP/IPv4)’ e clique em ‘Propriedades’.",
-        "Clique em ‘Avançado’ e vá para a aba ‘WINS’.",
+        "Abra o Painel de Controle e vá em 'Rede e Internet' -> 'Centro de Rede e Compartilhamento'.",
+        "Clique em 'Alterar configurações do adaptador' no painel esquerdo.",
+        "Clique com o botão direito na sua conexão de rede e selecione 'Propriedades'.",
+        "Na guia 'Rede', role para baixo até 'Protocolo de Internet Versão 4 (TCP/IPv4)' e clique em 'Propriedades'.",
+        "Clique em 'Avançado' e vá para a aba 'WINS'.",
         "Em 'Configuração NetBIOS', selecione 'Desativar NetBIOS sobre TCP/IP'.",
         "Clique em 'OK' para salvar as alterações."
       ],
       "Screenshots": [
-        "SER PREENCHIDO"
+        "netbios/netbios-1.png",
+        "netbios/netbios-2.png",
+        "netbios/netbios-3.png",
+        "netbios/netbios-4.png",
+        "netbios/netbios-5.png",
+        "netbios/netbios-6.png",
+        "netbios/netbios-7.png"
       ]
     },
     "Type": "Segurança",
-    "Information": "NetBIOS sobre TCP/IP é um protocolo de rede legado que permite que computadores se comuniquem em uma rede local. "
+    "Information": "NetBIOS sobre TCP/IP é um protocolo de rede legado que permite que computadores se comuniquem em uma rede local. Desativar o NetBIOS sobre TCP/IP ajuda a reduzir a superfície de ataque do seu sistema e a prevenir potenciais vulnerabilidades de segurança associadas a este protocolo."
   },
   "41": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Serviço WPAD ativado/desativado",
+      "Failed": "Não foi possível verificar o status do WPAD.",
+      "Solution": [
+        "Por favor, verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não podemos completar a verificação."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "O serviço WPAD está desativado",
@@ -1162,19 +1488,30 @@
       "Severity": 2,
       "Name": "O serviço WPAD está ativado",
       "Solution": [
-        "Abra um prompt de comando elevado clicando com o botão direito no botão Iniciar e selecionando ‘Terminal (Admin)’.",
+        "Abra um prompt de comando elevado clicando com o botão direito no botão Iniciar e selecionando 'Terminal (Admin)'.",
         "Execute o comando 'netsh winhttp show proxy' para verificar as configurações de proxy atuais.",
         "Se o WPAD estiver habilitado, execute o comando 'netsh winhttp reset proxy' para desabilitar o WPAD e redefinir as configurações de proxy.",
         "Reinicie o seu computador para aplicar as alterações."
       ],
       "Screenshots": [
-        "SER PREENCHIDO"
+        "wpad/wpad-1.png",
+        "wpad/wpad-2.png",
+        "wpad/wpad-3.png",
+        "wpad/wpad-3.png"
       ]
     },
     "Type": "Segurança",
-    "Information": "Web Proxy Auto-Discovery (WPAD) é um protocolo que permite que navegadores da web descubram automaticamente servidores proxy em uma rede. "
+    "Information": "Web Proxy Auto-Discovery (WPAD) é um protocolo que permite aos navegadores da web descobrir automaticamente servidores proxy em uma rede. Desativar o serviço WPAD ajuda a prevenir potenciais riscos de segurança associados à configuração automática de proxy e protege seu sistema contra a descoberta e configuração não autorizadas de servidores proxy."
   },
   "42": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Falha ao verificar: Bloqueio automático de tela do Windows ativado/desativado",
+      "Failed": "Não foi possível verificar se o bloqueio de tela está ativado.",
+      "Solution": [
+        "Por favor, verifique se o registro do Windows está sendo usado diretamente. Quando a chave para esta verificação está em uso, não podemos completar a verificação."
+      ]
+    },
     "0": {
       "Severity": 0,
       "Name": "O bloqueio automático de tela do Windows está ativado",
@@ -1188,14 +1525,16 @@
       "Name": "Bloqueio de tela automático do Windows desativado",
       "Solution": [
         "Vá para Iniciar > Configurações > Personalização > Tela de bloqueio.",
-        "Abra a janela ‘Proteção de tela’.",
+        "Abra a janela 'Proteção de tela'.",
         "Marque a caixa 'Ao retomar, exibir tela de logon' e defina o tempo de 'Espera' para um intervalo curto (2 minutos ou menos)."
       ],
       "Screenshots": [
-        "SER PREENCHIDO"
+        "automatic-screen-lock/automatic-screen-lock-1.png",
+        "automatic-screen-lock/automatic-screen-lock-2.png",
+        "automatic-screen-lock/automatic-screen-lock-3.png"
       ]
     },
     "Type": "Segurança",
-    "Information": "O bloqueio de tela é um recurso de segurança que exige que os usuários insiram uma senha, PIN ou autenticação biométrica para desbloquear o dispositivo e acessar a área de trabalho. "
+    "Information": "O bloqueio de tela é uma função de segurança que requer que os usuários insiram uma senha, PIN ou autenticação biométrica para desbloquear seu dispositivo e acessar a área de trabalho. Habilitar o bloqueio de tela ajuda a proteger seus dados e privacidade caso seu computador seja deixado sem vigilância ou roubado."
   }
 }

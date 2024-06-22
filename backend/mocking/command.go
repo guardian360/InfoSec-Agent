@@ -1,6 +1,11 @@
-// Package mocking contains different Windows mocking implementations
+// Package mocking contains different mocking implementations for various components of Windows.
 //
-// Currently contains mocking implementations for: Windows version, Windows registry, and command execution
+// It contains mocking implementations for:
+//   - command execution
+//   - file reading and writing
+//   - installed programs listing
+//   - Windows registry access
+//   - username retrieval
 package mocking
 
 import (

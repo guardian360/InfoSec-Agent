@@ -96,6 +96,7 @@ export async function openIssuePage(issueId, resultId, back = undefined) {
   stepCounter = 0;
   sessionStorage.setItem('savedPage', JSON.stringify([issueId, resultId]));
   const language = await getUserSettings();
+
   let currentIssue;
   switch (language) {
   case 0:
@@ -124,8 +125,27 @@ export async function openIssuePage(issueId, resultId, back = undefined) {
     break;
   }
   const issueData = currentIssue[resultId];
-  // Check if the issue has no screenshots, if so, display that there is no issue (acceptable)
-  if (issueData.Severity == 0) {
+  if (resultId < 0) {
+    const pageContents = document.getElementById('page-contents');
+    pageContents.innerHTML = `
+      <h1 class="issue-name">${issueData.Name}</h1>
+      <div class="issue-information">
+        <h2 id="information" class="lang-information"></h2>
+        <p id="description">${currentIssue.Information}</p>
+        <h2 id="solution">${issueData.Failed}</h2>
+        <div class="issue-solution">
+          <p id="solution-text">${getVersionSolution(issueData, stepCounter)}</p>
+        </div>
+        <div class="solution-buttons">
+          <div class="button-box">
+            <div class="lang-scan-again button" id="scan-button"></div>
+          </div>
+        </div>
+        <div class="button" id="back-button"></div>
+      </div>
+    `;
+  } else if (issueData.Severity == 0) {
+    // Check if the issue has no screenshots, if so, display that there is no issue (acceptable)
     const pageContents = document.getElementById('page-contents');
     pageContents.innerHTML = `
       <h1 class="issue-name">${issueData.Name}</h1>
@@ -157,7 +177,7 @@ export async function openIssuePage(issueId, resultId, back = undefined) {
           <h2 id="solution" class="lang-solution"></h2>
           <div class="issue-solution">
             <p id="solution-text">${stepCounter +1}. ${getVersionSolution(issueData, stepCounter)}</p>
-            <img style='display:block; width:750px;height:auto' id="step-screenshot"></img>
+            <img class="zoom-img" style='display:block; width:750px;height:auto' id="step-screenshot"></img>
             <div class="solution-buttons">
               <div class="button-box">
                 <div id="previous-button" class="lang-previous-button button"></div>
@@ -280,7 +300,7 @@ export function parseShowResult(issueId, resultId, currentIssue) {
   case '110':
     resultLine += `<p class="lang-port"></p>`;
     const portTable = processPortsTable(issues.find((issue) => issue.issue_id === 11).result);
-    resultLine += `<table class = "issues-table">`;
+    resultLine += `<table class="issues-table">`;
     resultLine += `<thead><tr><th>Process</th><th>Port(s)</th></tr></thead>`;
     portTable.forEach((entry) => {
       resultLine += `<tr><td style="width: 30%">${entry.portProcess}</td>
@@ -468,7 +488,7 @@ export function parseShowResult(issueId, resultId, currentIssue) {
     <h2 id="solution" class="lang-solution"></h2>
     <div class="issue-solution">
       <p id="solution-text">${stepCounter +1}. ${getVersionSolution(issueData, stepCounter)}</p>
-      <img style='display:block; width:750px;height:auto' id="step-screenshot"></img>
+      <img class="zoom-img" style='display:block; width:750px;height:auto' id="step-screenshot"></img>
       <div class="solution-buttons">
         <div class="button-box">
           <div id="previous-button" class="button lang-previous-button"></div>

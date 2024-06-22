@@ -103,7 +103,7 @@
     "BarGraphDescription": "This graph shows the distribution of issues of different risk levels found over the past scans.",
     "SelectRisks": "Filter risk levels",
     "ChangeInterval": "Change range of scans:",
-    "ShareButton": "Share progress",
+    "ShareButton": "Share Progress",
     "ShareText": "Select where to share your progress, save and download it, then share it with others!",
     "SaveText": "Save",
     "Share": "Share",
@@ -134,6 +134,7 @@
     "Medium": "Medium",
     "High": "High",
     "Info": "Info",
+    "Failed": "Failed",
     "ScanAgain": "Scan again"
   },
   "About": {
@@ -153,14 +154,17 @@
     "Search": "Search..."
   },
   "Personalize": {
-    "ChangeFavicon": "Change favicon", 
     "navImage": "Navigation image", 
     "ChangeImage": "Change image", 
     "Title": "Navigation title", 
     "ChangeTitle": "Change title", 
     "Reset": "Reset settings",
-    "PersonalizeTitle": "Personalize Your Experience",
-    "PickTheme": "Pick a theme"
+    "PersonalizeTitle": "Personalize your experience",
+    "PickTheme": "Pick a theme",
+    "NavImage": "Navigation image",
+    "NavTitle": "Navigation title",
+    "Light": "Light",
+    "Dark": "Dark"
   },
   "AllChecks": {
     "Security": "Security",
@@ -184,6 +188,7 @@
     "PermissionsText": "Applications installed on your computer want to have access to or permission to use certain features or devices connected to your PC. It is your responsibility as a user to give those permissions to certain applications or not. It is therefore recommended to search on the internet if an application you use should or should not have certain permissions.",
     "BrowserText": "To have access to the internet, you use a browser. While a browser is really useful, it is not always keeping your data private. To stay safe while browsing on the internet, you have to always keep in mind what you are clicking on.",
     "OtherPrivacyText": "Keeping your data private can also be done in some other ways.",
+    "BrowserZeroFound" : "These checks could not be done, since the browser is probably not installed.",
 
     "Id1":"Devices connected via bluetooth",
     "Id2":"Devices connected via USB ports",
@@ -197,7 +202,7 @@
     "Id10":"Applications with contacts permissions",
     "Id11":"Open ports used by applications",
     "Id12":"Remote desktop enabled/disabled",
-    "Id13":"System Message Block enabled/disabled",
+    "Id13":"Server Message Block enabled/disabled",
     "Id14":"User Account Control enabled/disabled",
     "Id15":"Windows Defender enabled/disabled",
     "Id16":"Last Windows password changed",

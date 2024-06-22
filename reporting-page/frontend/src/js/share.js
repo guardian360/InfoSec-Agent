@@ -2,7 +2,7 @@ import * as htmlToImage from 'html-to-image';
 import imageCompression from 'browser-image-compression';
 import {LogError as logError} from '../../wailsjs/go/main/Tray';
 import {getUserSettings} from './issues';
-import {GetImagePath as getImagePath} from '../../wailsjs/go/main/App.js';
+import {GetImagePath as getImagePath, GetLighthouseState as getLighthouseState} from '../../wailsjs/go/main/App.js';
 
 /**
  * Create image as an url from an html node
@@ -32,29 +32,33 @@ export async function getImage(node, width, height) {
  */
 export async function setImage(social, progress) {
   let lighthousePath;
-  switch (sessionStorage.getItem('state')) {
-  case '0':
+  const lighthouseState = await getLighthouseState();
+  switch (lighthouseState) {
+  case 0:
     lighthousePath = 'first-state.png';
     break;
-  case '1':
+  case 1:
     lighthousePath = 'second-state.png';
     break;
-  case '2':
+  case 2:
     lighthousePath = 'third-state.png';
     break;
-  case '3':
+  case 3:
     lighthousePath = 'fourth-state.png';
+    break;
+  case 4:
+    lighthousePath = 'fifth-state.png';
     break;
   default:
     lighthousePath = 'first-state.png';
   }
-  const lighthouseState = await getImagePath(lighthousePath);
+  const lighthouseFullPath = await getImagePath('sharing/' + lighthousePath);
   const node = document.getElementById('share-node');
   const socialStyle = JSON.parse(sessionStorage.getItem('ShareSocial'));
   // Set the background to the current state
   node.style.width = socialStyle.width + 'px';
   node.style.height = socialStyle.height + 'px';
-  node.style.backgroundImage = 'url(' + lighthouseState + ')';
+  node.style.backgroundImage = 'url(' + lighthouseFullPath + ')';
   node.style.backgroundSize = 'cover';
   node.style.backgroundPosition = 'center';
 
@@ -68,7 +72,7 @@ export async function setImage(social, progress) {
     </div>
     <div class="image-right">
       <p id="image-logo-text"></p>
-      <img id="logo" alt="logo" src="./src/assets/images/logoTeamA-transformed.png" style="width: 75px; height: 75px;">
+      <img id="logo" alt="logo" src="./src/assets/images/InfoSec-Agent-logo.png" style="width: 75px; height: 75px;">
     </div>
   </div>
   `;

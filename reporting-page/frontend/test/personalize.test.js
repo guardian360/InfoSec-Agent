@@ -4,7 +4,7 @@ import test from 'unit.js';
 import {jest} from '@jest/globals';
 import {fireEvent} from '@testing-library/dom';
 global.TESTING = true;
-import {mockGetLocalization} from './mock.js';
+import {mockGetImagePath, mockGetLocalization} from './mock.js';
 
 // Mock page
 const dom = new JSDOM(`
@@ -25,18 +25,9 @@ global.window = dom.window;
 // Mock Localize function
 jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
   Localize: jest.fn().mockImplementation((input) => mockGetLocalization(input)),
+  GetImagePath: jest.fn().mockImplementation((input) => mockGetImagePath(input)),
 }));
 
-// Mock FileReader
-const fileReaderIco = global.FileReader = class {
-  /**
-   * Simulates the behavior of the FileReader's readAsDataURL method by triggering the onload event with a mock result.
-   * This method is used for testing purposes to mimic the behavior of FileReader.
-   */
-  readAsDataURL() {
-    this.onload({target: {result: 'data:image/x-icon'}});
-  }
-};
 const fileReaderPng = global.FileReader = class { /**
  * Simulates the behavior of the FileReader's readAsDataURL method by triggering the onload event with a mock result.
  * This method is used for testing purposes to mimic the behavior of FileReader.
@@ -143,20 +134,6 @@ describe('openPersonalizePage function', () => {
     expect(document.getElementById('custom-modal').style.display).toBe('block');
   });
 
-  it('should attach a click event listener to the icon button', () => {
-    // Arrange
-    const iconButton = document.querySelector('.icon-button');
-    const mockClick = jest.fn();
-
-    // Act
-    expect(iconButton).not.toBeNull();
-    iconButton.addEventListener('click', mockClick);
-    iconButton.click();
-
-    // Assert
-    expect(mockClick).toHaveBeenCalled();
-  });
-
   it('should attach a click event listener to the logo button', () => {
     // Arrange
     const logoButton = document.querySelector('.logo-button');
@@ -186,7 +163,6 @@ describe('openPersonalizePage function', () => {
   });
   it('should call resetSettings function on reset button click', async () => {
     // Arrange
-    localStorage.setItem('favicon', 'custom.ico');
     localStorage.setItem('title', 'tempTitle');
     const resetButton = document.querySelector('.reset-button');
 
@@ -194,26 +170,21 @@ describe('openPersonalizePage function', () => {
       <img id="logo" src="">
       <input type="text" id="newTitle" value="New Page Title">
       <h1 id="title">Old Title</h1>
-      <link rel="icon" id="favicon" href="">
     `;
     const logo = document.getElementById('logo');
     const title = document.getElementById('title');
-    const favicon = document.getElementById('favicon');
     const setItemMock = jest.spyOn(localStorage, 'setItem').mockImplementation(() => {});
 
     // Act
-    resetButton.click();
+    await resetButton.click();
 
     setItemMock.mockRestore();
-    // Arrange
-    expect(localStorage.getItem('favicon')) === null;
+    // Assert
     expect(localStorage.getItem('title')) === null;
     expect(logo).not.toBeNull();
-    expect(logo.src).toContain('frontend/src/assets/images/logoTeamA-transformed.png');
+    expect(logo.src).toContain('frontend/src/assets/images/InfoSec-Agent-logo.png');
     expect(title).not.toBeNull();
-    expect(title.textContent).toBe('Infosec Agent');
-    expect(favicon).not.toBeNull();
-    expect(favicon.href).toContain('frontend/src/assets/images/logoTeamA-transformed.png');
+    expect(title.textContent).toBe('InfoSec Agent');
   });
 
   it('should save selected theme to localStorage on theme change', () => {
@@ -241,77 +212,6 @@ describe('openPersonalizePage function', () => {
     expect(document.getElementById('dark').checked).toBe(true);
     expect(document.documentElement.className).toBe('dark');
     expect(document.getElementById('normal').checked).toBe(false);
-  });
-});
-
-describe('handleFaviconSelect', () => {
-  it('should do nothing if no file is selected', async () => {
-    // Arrange
-    const personalize = await import('../src/js/personalize.js');
-    const iconEvent = {target: {files: []}}; // No file is selected
-
-    // Spy on FileReader to check if it's called
-    const spyFileReader = jest.spyOn(window, 'FileReader');
-
-    // Act
-    personalize.handleFaviconChange(iconEvent);
-
-    // Assert
-    expect(spyFileReader).not.toHaveBeenCalled(); // FileReader should not be instantiated
-    expect(document.querySelector('link[rel="icon"]')).toBeNull(); // No favicon link element should be added
-  });
-  it('should change the favicon when a valid .ico file is selected', async () => {
-    // Arrange
-    const head = global.document.querySelector('head');
-    const personalize = await import('../src/js/personalize.js');
-
-    // Act
-    FileReader = fileReaderIco;
-    const blob = new Blob(['dummy'], {type: 'image/x-icon'});
-    personalize.handleFaviconChange({target: {files: [blob]}});
-
-    // Assert
-    const newFavicon = head.querySelector('link[rel="icon"]');
-    test.value(newFavicon.href).isEqualTo('data:image/x-icon');
-  });
-
-  it('should change the favicon when a valid .png file is selected', async () => {
-    // Arrange
-    const personalize = await import('../src/js/personalize.js');
-    const head = document.querySelector('head');
-
-    // Act
-    FileReader = fileReaderPng;
-    const blob = new Blob(['dummy'], {type: 'image/png'});
-    personalize.handleFaviconChange({target: {files: [blob]}});
-
-    // Assert
-    const newFavicon = head.querySelector('link[rel="icon"]');
-    test.value(newFavicon.href).isEqualTo('data:image/png');
-  });
-  it('saves valid .ico favicon in localStorage', async () => {
-    // Arrange
-    const personalize = await import('../src/js/personalize.js');
-    // Act
-    FileReader = fileReaderIco;
-    const blob = new Blob(['dummy'], {type: 'image/x-icon'});
-    personalize.handleFaviconChange({target: {files: [blob]}});
-
-    // Assert
-    const favicon = localStorageMock.getItem('favicon');
-    const expectedValue = 'data:image/x-icon';
-    test.value(favicon).isEqualTo(expectedValue);
-  });
-  it('saves valid .png favicon in localStorage', async () => {
-    // Arrange
-    const personalize = await import('../src/js/personalize.js');
-    // Act
-    FileReader = fileReaderPng;
-    const blob = new Blob(['dummy'], {type: 'image/png'});
-    personalize.handleFaviconChange({target: {files: [blob]}});
-
-    // Assert
-    test.value(localStorageMock.getItem('favicon')).isEqualTo('data:image/png');
   });
 });
 

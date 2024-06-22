@@ -130,6 +130,7 @@
     "Medium": "Moyen",
     "High": "Élevé",
     "Info": "Info",
+    "Failed": "Échoué",
     "ScanAgain": "Scanner à nouveau"
   },
   "About": {
@@ -149,14 +150,17 @@
     "Search": "Rechercher..."
   },
   "Personalize": {
-    "ChangeFavicon": "Changer le favicon",
     "navImage": "Image de navigation",
     "ChangeImage": "Changer l'image",
     "Title": "Titre de navigation",
     "ChangeTitle": "Changer le titre",
     "Reset": "Réinitialiser les paramètres",
     "PersonalizeTitle": "Personnalisez votre expérience",
-    "PickTheme": "Choisissez un thème"
+    "PickTheme": "Choisissez un thème",
+    "NavImage": "Image de navigation",
+    "NavTitle": "Titre de navigation",
+    "Light": "Lumière",
+    "Dark": "Sombre"
   },
   "AllChecks": {
     "Security": "Sécurité",
@@ -180,6 +184,7 @@
     "PermissionsText": "Les applications installées sur votre ordinateur souhaitent avoir accès à certaines fonctionnalités ou à certains appareils connectés à votre PC. Il est de votre responsabilité en tant qu'utilisateur de donner ces autorisations à certaines applications ou non. Il est donc recommandé de rechercher sur Internet si une application que vous utilisez doit ou non avoir certaines autorisations.",
     "BrowserText": "Pour avoir accès à Internet, vous utilisez un navigateur. Bien qu'un navigateur soit très utile, il ne protège pas toujours vos données privées. Pour rester en sécurité lors de la navigation sur Internet, vous devez toujours garder à l'esprit sur quoi vous cliquez.",
     "OtherPrivacyText": "Garder vos données privées peut également se faire d'autres manières.",
+    "BrowserZeroFound" : "Ces vérifications n'ont pas pu être effectuées, car le navigateur n'est probablement pas installé.",
 
     "Id1":"Appareils connectés via bluetooth",
     "Id2":"Appareils connectés via ports USB",
@@ -193,7 +198,7 @@
     "Id10":"Applications avec autorisations de contacts",
     "Id11":"Ports ouverts utilisés par des applications",
     "Id12":"Bureau à distance activé/désactivé",
-    "Id13":"Bloc de messages système activé/désactivé",
+    "Id13":"Bloc de messages serveur activé/désactivé",
     "Id14":"Contrôle de compte utilisateur activé/désactivé",
     "Id15":"Windows Defender activé/désactivé",
     "Id16":"Dernier changement de mot de passe Windows",

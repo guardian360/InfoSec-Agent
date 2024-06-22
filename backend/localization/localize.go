@@ -1,4 +1,5 @@
 // Package localization is responsible for localizing strings for different languages.
+// The supported languages are German, English (UK), English (US), Spanish, French, Dutch, and Portuguese.
 //
 // Exported function(s): Init, Localize, Localizers
 package localization

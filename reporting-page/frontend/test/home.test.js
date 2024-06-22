@@ -40,6 +40,7 @@ jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
   Localize: jest.fn().mockImplementation((input) => mockGetLocalization(input)),
   LoadUserSettings: jest.fn(),
   GetImagePath: jest.fn(),
+  GetLighthouseState: jest.fn(),
 }));
 
 // Mock LogError

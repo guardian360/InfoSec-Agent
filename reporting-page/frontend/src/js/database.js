@@ -93,7 +93,6 @@ async function setAllSeverities(input) {
  */
 async function setSeverities(input, type) {
   try {
-    input = input.filter((item) => item.result_id !== -1);
     input = input.filter((item) => data[item.issue_id] !== undefined);
     if (type !== '') {
       input = input.filter((item) => data[item.issue_id].Type === type);

@@ -1,5 +1,5 @@
-// Package logger provides a logging mechanism for the application.
-// The logging mechanism writes to a log.txt file in the root folder of the application.
+// Package logger provides a logging mechanism for the InfoSec Agent.
+// The logging mechanism writes to a txt file in the user's AppData directory.
 package logger
 
 import (
