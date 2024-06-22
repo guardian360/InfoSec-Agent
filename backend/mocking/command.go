@@ -4,6 +4,7 @@
 package mocking
 
 import (
+	"errors"
 	"os/exec"
 	"syscall"
 )
@@ -37,6 +38,9 @@ type MockCommandExecutor struct {
 //
 // This method allows tests to control the outcomes of command execution, ensuring that the code under test can handle various scenarios correctly.
 func (m *MockCommandExecutor) Execute(_ string, _ ...string) ([]byte, error) {
+	if m.Output == "test1" {
+		return nil, errors.New("test error")
+	}
 	return []byte(m.Output), m.Err
 }
 

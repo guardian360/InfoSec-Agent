@@ -56,7 +56,7 @@ func TestGetData(t *testing.T) {
 	require.Equal(t, expected, got)
 }
 
-func TestGetData_UnmarshalError(t *testing.T) {
+func TestGetData_ReadFileError(t *testing.T) {
 	scanResults := []checks.Check{}
 	invalidJSONFilePath := "../../invalid.json"
 
@@ -141,4 +141,23 @@ func TestGetData_SeverityNotFound(t *testing.T) {
 	var dataList []database.Data
 	// Assert that the points remain the same as the initial GameState
 	require.Equal(t, dataList, got)
+}
+
+func TestGetData_UnMarshall(t *testing.T) {
+	// Create a temporary file
+	tempFile, err := os.CreateTemp("", "test.json")
+	require.NoError(t, err)
+	defer os.Remove(tempFile.Name())
+
+	// Write invalid JSON content to the file
+	_, err = tempFile.WriteString("invalid json content")
+	require.NoError(t, err)
+	err = tempFile.Close()
+	require.NoError(t, err)
+
+	// Call the GetData function with the temporary file
+	_, err = database.GetData(tempFile.Name(), []checks.Check{})
+
+	// Assert that an error was returned
+	require.Error(t, err)
 }
