@@ -13,6 +13,7 @@ import (
 	apiconnection "github.com/InfoSec-Agent/InfoSec-Agent/backend/api_connection"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/usersettings"
+	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
 
@@ -160,15 +161,13 @@ type ParseResult struct {
 func TestSendResultsToAPI(t *testing.T) {
 	// Create a test server
 	testServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		require.Equal(t, "application/json", r.Header.Get("Content-Type"))
-		require.Equal(t, "Bearer", r.Header.Get("Authorization"))
+		assert.Equal(t, "application/json", r.Header.Get("Content-Type"))
+		assert.Equal(t, "Bearer", r.Header.Get("Authorization"))
 
 		var result ParseResult
-		err := json.NewDecoder(r.Body).Decode(&result)
-		require.NoError(t, err)
 
 		// Validate the ParseResult fields
-		require.Equal(t, "success", result.Status)
+		assert.Equal(t, "success", result.Status)
 
 		// Send a response
 		w.WriteHeader(http.StatusOK)

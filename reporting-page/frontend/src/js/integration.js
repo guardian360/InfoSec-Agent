@@ -1,7 +1,8 @@
 import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js';
 import {retrieveTheme} from './personalize.js';
 import {LogError as logError} from '../../wailsjs/go/main/Tray.js';
-import {LoadUserSettings as loadUserSettings} from '../../wailsjs/go/main/App.js';
+import {getLocalization} from './localize.js';
+//import {LoadUserSettings as loadUserSettings} from '../../wailsjs/go/main/App.js';
 
 export let currentStep = 1;
 /** Load the content of the Integration page */
@@ -22,27 +23,28 @@ export function openIntegrationPage() {
   <body>
   <div class="api-key-container">
     <div class="api-key-form">
-      <h1 class="api-key-title">Connect to the Lighthouse API</h1>
+      <h1 class="lang-api-key-title">Connect to the Lighthouse API</h1>
+      <p class="lang-api-key-description"><b>Coming soon:</b> this functionality is not available yet, you will be able to connect to the Lighthouse API in the near future.</p>
 
       <div class="api-key-step" id="step1">
         <h3>Step 1: Register for an account</h3>
-        <p>Login to your account on https://lighthouse.guardian360.nl and go to the settings</p>
+        <p class="lang-step-1">Login to your account on https://lighthouse.guardian360.nl and go to the settings</p>
         <div class="api-key-image-container">
           <img class="api-key-image" src="https://via.placeholder.com/400" alt="Step 1 Image">
         </div>
       </div>
 
-      <div class="api-key-step" id="step2">
+      <div class="api-key-step lang-step-2" id="step2">
         <h3>Step 2: Navigate to API Settings</h3>
-        <p>Go to the API section and create a new token</p>
+        <p class="lang-step-2">Go to the API section and create a new token</p>
         <div class="api-key-image-container">
           <img class="api-key-image" src="https://via.placeholder.com/400" alt="Step 2 Image">
         </div>
       </div>
 
-      <div class="api-key-step" id="step3">
+      <div class="api-key-step lang-step-3" id="step3">
         <h3>Step 3: Generate API Key</h3>
-        <p>Copy the token and paste it in the field below, you can then click on the 'connect' button</p>
+        <p class="lang-step-3">Copy the token and paste it in the field below, you can then click on the 'connect' button</p>
         <div class="api-key-image-container">
           <img class="api-key-image" src="https://via.placeholder.com/400" alt="Step 3 Image">
         </div>
@@ -55,7 +57,7 @@ export function openIntegrationPage() {
 
       <h2>Enter Your API Key:</h2>
       <input type="password" class="api-key-input" id="apiKeyInput">
-      <button class="api-key-button" id="apiKeyButtonClick">Connect</button>
+      <button class="api-key-button" id="apiKeyButtonClick" disabled>Connect</button>
       <button class="api-key-button" id="disconnectButton">Disconnect</button>
       <div class="api-key-status" id="status"></div>
       </div>
@@ -67,17 +69,37 @@ export function openIntegrationPage() {
   document.getElementById('prevBtn').addEventListener('click', () => prevStep());
   document.getElementById('apiKeyButtonClick').addEventListener('click', () => connectToAPI());
   document.getElementById('disconnectButton').addEventListener('click', () => disconnectFromAPI());
-  const userSettings = loadUserSettings();
-  if (userSettings.IntegrationKey !== '') {
-    document.getElementById('apiKeyButtonClick').style.display = 'none';
-    document.getElementById('disconnectButton').style.display = 'inline-block';
-    document.getElementById('apiKeyInput').value = userSettings.IntegrationKey;
-  } else {
-    document.getElementById('apiKeyButtonClick').style.display = 'inline-block';
-    document.getElementById('disconnectButton').style.display = 'none';
-  }
+  // When the integration with the lighthouse API is completed this section will be uncommented and can be used to load the integration details.
+  // const userSettings = loadUserSettings();
+  // if (userSettings.IntegrationKey !== '') {
+  //   document.getElementById('apiKeyButtonClick').style.display = 'none';
+  //   document.getElementById('disconnectButton').style.display = 'inline-block';
+  //   document.getElementById('apiKeyInput').value = userSettings.IntegrationKey;
+  // } else {
+  document.getElementById('apiKeyButtonClick').style.display = 'inline-block';
+  document.getElementById('disconnectButton').style.display = 'none';
+  //}
 
   showStep(currentStep);
+
+  // Localize the static content of the home page
+  const staticHomePageContent = [
+    'lang-api-key-description',
+    'lang-api-key-title',
+    'lang-step-1',
+    'lang-step-2',
+    'lang-step-3',
+  ];
+  const localizationIds = [
+    'Integration.apiKeyDescription',
+    'Integration.apiKeyTitle',
+    'Integration.step1',
+    'Integration.step2',
+    'Integration.step3',
+  ];
+  for (let i = 0; i < staticHomePageContent.length; i++) {
+    getLocalization(localizationIds[i], staticHomePageContent[i]);
+  }
 }
 
 /**
