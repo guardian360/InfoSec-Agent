@@ -125,7 +125,7 @@ export async function openIssuePage(issueId, resultId, back = undefined) {
     break;
   }
   const issueData = currentIssue[resultId];
-  if (resultId < 0) {
+  if (resultId < 0 && issueData) {
     const pageContents = document.getElementById('page-contents');
     pageContents.innerHTML = `
       <h1 class="issue-name">${issueData.Name}</h1>
@@ -144,8 +144,8 @@ export async function openIssuePage(issueId, resultId, back = undefined) {
         <div class="button" id="back-button"></div>
       </div>
     `;
-  } else if (issueData.Severity == 0) {
-    // Check if the issue has no screenshots, if so, display that there is no issue (acceptable)
+  } else if (issueData.Severity == 0 && issueData.Screenshots.length == 0) {
+    // Check issue severity and if the issue has no screenshots, if so, display that there is no issue (acceptable)
     const pageContents = document.getElementById('page-contents');
     pageContents.innerHTML = `
       <h1 class="issue-name">${issueData.Name}</h1>
