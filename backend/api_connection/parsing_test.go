@@ -4,16 +4,15 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
-	"fmt"
 	"net/http"
 	"net/http/httptest"
+	"strconv"
 	"testing"
 	"time"
 
 	apiconnection "github.com/InfoSec-Agent/InfoSec-Agent/backend/api_connection"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/usersettings"
-	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
 
@@ -161,15 +160,15 @@ type ParseResult struct {
 func TestSendResultsToAPI(t *testing.T) {
 	// Create a test server
 	testServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		assert.Equal(t, "application/json", r.Header.Get("Content-Type"))
-		assert.Equal(t, "Bearer", r.Header.Get("Authorization"))
+		require.Equal(t, "application/json", r.Header.Get("Content-Type"))
+		require.Equal(t, "Bearer", r.Header.Get("Authorization"))
 
 		var result ParseResult
 		err := json.NewDecoder(r.Body).Decode(&result)
-		assert.NoError(t, err)
+		require.NoError(t, err)
 
 		// Validate the ParseResult fields
-		assert.Equal(t, "success", result.Status)
+		require.Equal(t, "success", result.Status)
 
 		// Send a response
 		w.WriteHeader(http.StatusOK)
@@ -186,25 +185,25 @@ func TestSendResultsToAPI(t *testing.T) {
 
 	// Convert result to JSON
 	jsonData, err := json.Marshal(result)
-	assert.NoError(t, err)
+	require.NoError(t, err)
 
 	// Act
 	buffer := bytes.NewBuffer(jsonData)
-	req, err := http.NewRequest("POST", url, buffer)
-	assert.NoError(t, err)
+	req, err := http.NewRequest(http.MethodPost, url, buffer)
+	require.NoError(t, err)
 
 	settings := usersettings.DefaultUserSettings
 	req.Header.Set("Content-Type", "application/json")
 	req.Header.Set("Authorization", "Bearer "+settings.IntegrationKey)
-	req.Header.Set("Content-Length", fmt.Sprintf("%d", buffer.Len()))
+	req.Header.Set("Content-Length", strconv.Itoa(buffer.Len()))
 
 	client := &http.Client{
 		Timeout: 60 * time.Second,
 	}
 	resp, err := client.Do(req)
-	assert.NoError(t, err)
+	require.NoError(t, err)
 	defer resp.Body.Close()
 
 	// Assert
-	assert.Equal(t, http.StatusOK, resp.StatusCode)
+	require.Equal(t, http.StatusOK, resp.StatusCode)
 }

@@ -2,9 +2,11 @@ package apiconnection
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"strconv"
 	"time"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
@@ -16,25 +18,25 @@ import (
 // This parsing is done to convert the results of security and privacy checks into a format that
 // can be sent to the Guardian360 Lighthouse API.
 type ParseResult struct {
-	Metadata Metadata
-	Results  []IssueData
+	Metadata Metadata    `json:"metadata"`
+	Results  []IssueData `json:"results"`
 }
 
 // Metadata is a struct that contains metadata about the scan.
 // This metadata includes the workstation ID, the user who initiated the scan, and the date of the scan.
 type Metadata struct {
-	WorkStationID int
-	User          string
-	Date          string
+	WorkStationID int    `json:"workStationID"`
+	User          string `json:"user"`
+	Date          string `json:"date"`
 }
 
 // IssueData is a struct that encapsulates the data for a checked issue.
 // This data includes the issue ID, whether the issue is considered a problem, and any additional data related to the
 // issue.
 type IssueData struct {
-	IssueID        int
-	Detected       bool
-	AdditionalData []string
+	IssueID        int      `json:"issueID"`
+	Detected       bool     `json:"detected"`
+	AdditionalData []string `json:"additionalData"`
 }
 
 // String returns a string representation of the ParseResult struct.
@@ -97,7 +99,10 @@ func SendResultsToAPI(result ParseResult) {
 	}
 
 	buffer := bytes.NewBuffer(jsonData)
-	req, err := http.NewRequest("POST", url, buffer)
+	ctx, cancel := context.WithTimeout(context.Background(), 60*time.Second)
+	defer cancel()
+
+	req, err := http.NewRequestWithContext(ctx, http.MethodPost, url, buffer)
 	if err != nil {
 		logger.Log.ErrorWithErr("Error creating request:", err)
 		return
@@ -106,7 +111,7 @@ func SendResultsToAPI(result ParseResult) {
 	settings := usersettings.LoadUserSettings()
 	req.Header.Set("Content-Type", "application/json")
 	req.Header.Set("Authorization", "Bearer "+settings.IntegrationKey)
-	req.Header.Set("Content-Length", fmt.Sprintf("%d", buffer.Len()))
+	req.Header.Set("Content-Length", strconv.Itoa(buffer.Len()))
 
 	client := &http.Client{
 		Timeout: 60 * time.Second, // Increase timeout for large payloads

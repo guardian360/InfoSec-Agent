@@ -52,14 +52,14 @@ func LoadUserSettings() UserSettings {
 	appDataPath, err := os.UserConfigDir()
 	if err != nil {
 		logger.Log.Warning("Error getting user config directory, using default settings")
-		return defaultUserSettings
+		return DefaultUserSettings
 	}
 	dirPath := appDataPath + `\InfoSec-Agent`
 	logger.Log.Trace("Creating/reading directory at:" + dirPath)
 	err = os.MkdirAll(dirPath, os.ModePerm)
 	if err != nil {
 		logger.Log.Warning("Error creating directory, using default settings")
-		return defaultUserSettings
+		return DefaultUserSettings
 	}
 
 	filePath := dirPath + `\user_settings.json`
@@ -68,7 +68,7 @@ func LoadUserSettings() UserSettings {
 	data, err := os.ReadFile(filePath)
 	if err != nil {
 		logger.Log.Warning("Error reading user settings file, using default settings")
-		return defaultUserSettings
+		return DefaultUserSettings
 	}
 
 	var settings UserSettings
@@ -76,7 +76,7 @@ func LoadUserSettings() UserSettings {
 	err = json.Unmarshal(data, &settings)
 	if err != nil {
 		logger.Log.Warning("Error unmarshalling user settings JSON, using default settings")
-		return defaultUserSettings
+		return DefaultUserSettings
 	}
 	logger.Log.Debug("Loaded user settings")
 	return settings
