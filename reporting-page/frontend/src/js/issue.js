@@ -20,9 +20,6 @@ let stepCounter = 0;
 const issuesWithResultsShow =
     ['11', '21', '60', '70', '80', '90', '100', '110', '160', '172', '173',
       '201', '230', '250', '260', '271', '300', '311', '320', '351', '361'];
-// const issuesWithResultsShow =
-//     ['1', '2', '6', '7', '8', '9', '10', '11', '16', '17',
-//       '20', '23', '25', '26', '27', '30', '31', '32', '35', '36'];
 
 /** Update contents of solution guide
  *
@@ -128,9 +125,11 @@ export async function openIssuePage(issueId, resultId, back = undefined) {
   if (resultId < 0) {
     const pageContents = document.getElementById('page-contents');
     pageContents.innerHTML = `
-      <h1 class="issue-name">${issueData.Name}</h1>
+    <div class="issue-data">
+      <div class="issue-page-header" data-severity="${issueData.Severity}">
+        <h2 class="issue-name">${issueData.Name}</h2>
+      </div>
       <div class="issue-information">
-        <h2 id="information" class="lang-information"></h2>
         <p id="description">${currentIssue.Information}</p>
         <h2 id="solution">${issueData.Failed}</h2>
         <div class="issue-solution">
@@ -143,14 +142,17 @@ export async function openIssuePage(issueId, resultId, back = undefined) {
         </div>
         <div class="button" id="back-button"></div>
       </div>
+    </div>
     `;
   } else if (issueData.Severity == 0) {
     // Check if the issue has no screenshots, if so, display that there is no issue (acceptable)
     const pageContents = document.getElementById('page-contents');
     pageContents.innerHTML = `
-      <h1 class="issue-name">${issueData.Name}</h1>
+    <div class="issue-data">
+      <div class="issue-page-header" data-severity="${issueData.Severity}">
+        <h2 class="issue-name">${issueData.Name}</h2>
+      </div>
       <div class="issue-information">
-        <h2 id="information" class="lang-information"></h2>
         <p id="description">${currentIssue.Information}</p>
         <h2 id="solution" class="lang-acceptable"></h2>
         <div class="issue-solution">
@@ -163,6 +165,7 @@ export async function openIssuePage(issueId, resultId, back = undefined) {
         </div>
         <div class="button" id="back-button"></div>
       </div>
+    </div>
     `;
   } else { // Issue has screenshots, display the solution guide
     const pageContents = document.getElementById('page-contents');
@@ -170,9 +173,11 @@ export async function openIssuePage(issueId, resultId, back = undefined) {
       pageContents.innerHTML = parseShowResult(issueId, resultId, currentIssue);
     } else {
       pageContents.innerHTML = `
-        <h1 class="issue-name">${issueData.Name}</h1>
+      <div class="issue-data">
+        <div class="issue-page-header" data-severity="${issueData.Severity}">
+          <h2 class="issue-name">${issueData.Name}</h2>
+        </div>
         <div class="issue-information">
-          <h2 id="information" class="lang-information"></h2>
           <p>${currentIssue.Information}</p>
           <h2 id="solution" class="lang-solution"></h2>
           <div class="issue-solution">
@@ -188,6 +193,7 @@ export async function openIssuePage(issueId, resultId, back = undefined) {
           </div>
           <div class="button" id="back-button"></div>
         </div>
+      </div>
       `;
     }
 
@@ -218,10 +224,10 @@ export async function openIssuePage(issueId, resultId, back = undefined) {
     document.getElementById('back-button').classList.add('lang-back-button-checks');
   }
 
-  const texts = ['lang-information', 'lang-findings', 'lang-solution', 'lang-previous-button',
+  const texts = ['lang-findings', 'lang-solution', 'lang-previous-button',
     'lang-next-button', 'lang-back-button-issues', 'lang-back-button-home', 'lang-back-button-checks', 'lang-port',
     'lang-password', 'lang-acceptable', 'lang-cookies', 'lang-permissions', 'lang-scan-again'];
-  const localizationIds = ['Issues.Information', 'Issues.Findings', 'Issues.Solution', 'Issues.Previous',
+  const localizationIds = ['Issues.Findings', 'Issues.Solution', 'Issues.Previous',
     'Issues.Next', 'Issues.BackIssues', 'Issues.BackHome', 'Issues.BackChecks', 'Issues.Port', 'Issues.Password',
     'Issues.Acceptable', 'Issues.Cookies', 'Issues.Permissions', 'Issues.ScanAgain',
   ];
@@ -300,7 +306,7 @@ export function parseShowResult(issueId, resultId, currentIssue) {
   case '110':
     resultLine += `<p class="lang-port"></p>`;
     const portTable = processPortsTable(issues.find((issue) => issue.issue_id === 11).result);
-    resultLine += `<table class="issues-table">`;
+    resultLine += `<table class="issues-table ports-table">`;
     resultLine += `<thead><tr><th>Process</th><th>Port(s)</th></tr></thead>`;
     portTable.forEach((entry) => {
       resultLine += `<tr><td style="width: 30%">${entry.portProcess}</td>
@@ -479,27 +485,30 @@ export function parseShowResult(issueId, resultId, currentIssue) {
 
   const issueData = currentIssue[resultId];
   const result = `
-  <h1 class="issue-name">${issueData.Name}</h1>
-  <div class="issue-information">
-    <h2 id="information" class="lang-information"></h2>
-    <p>${currentIssue.Information}</p>
-    <h2 id="information" class="lang-findings"></h2>
-    <p id="description">${resultLine}</p>
-    <h2 id="solution" class="lang-solution"></h2>
-    <div class="issue-solution">
-      <p id="solution-text">${stepCounter +1}. ${getVersionSolution(issueData, stepCounter)}</p>
-      <img class="zoom-img" style='display:block; width:750px;height:auto' id="step-screenshot"></img>
-      <div class="solution-buttons">
-        <div class="button-box">
-          <div id="previous-button" class="button lang-previous-button"></div>
-          <div id="next-button" class="button lang-next-button"></div>
-          <div class="lang-scan-again button" id="scan-button"></div>
+  <div class="issue-data">
+    <div class="issue-page-header" data-severity="${issueData.Severity}">
+      <h2 class="issue-name">${issueData.Name}</h2>
+    </div>
+    <div class="issue-information">
+      <p>${currentIssue.Information}</p>
+      <h2 id="information" class="lang-findings"></h2>
+      <p id="description">${resultLine}</p>
+      <h2 id="solution" class="lang-solution"></h2>
+      <div class="issue-solution">
+        <p id="solution-text">${stepCounter +1}. ${getVersionSolution(issueData, stepCounter)}</p>
+        <img class="zoom-img" style='display:block; width:750px;height:auto' id="step-screenshot"></img>
+        <div class="solution-buttons">
+          <div class="button-box">
+            <div id="previous-button" class="button lang-previous-button"></div>
+            <div id="next-button" class="button lang-next-button"></div>
+            <div class="lang-scan-again button" id="scan-button"></div>
+          </div>
         </div>
       </div>
+      <div class="lang-back-button button" id="back-button"></div>
     </div>
-    <div class="lang-back-button button" id="back-button"></div>
   </div>
-`;
+  `;
 
   return result;
 }
