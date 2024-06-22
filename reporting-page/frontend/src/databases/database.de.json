@@ -1490,6 +1490,16 @@
         "Wählen Sie unter „NetBIOS-Einstellung“ die Option „NetBIOS über TCP/IP deaktivieren“.",
         "Klicken Sie auf „OK“, um die Änderungen zu speichern."
       ],
+      "SolutionWindows10": [
+        "Öffnen Sie die Systemsteuerung und gehen Sie zu „Netzwerk und Internet“.",
+        "Gehe zu „Netzwerk- und Freigabecenter“.",
+        "Klicken Sie im linken Bereich auf „Adaptereinstellungen ändern“.",
+        "Klicken Sie mit der rechten Maustaste auf Ihre Netzwerkverbindung und wählen Sie „Eigenschaften“.",
+        "Scrollen Sie im Reiter „Netzwerk“ nach unten zu „Internet Protocol Version 4 (TCP/IPv4)“ und klicken Sie auf „Eigenschaften“.",
+        "Klicken Sie auf „Erweitert“ und gehen Sie zur Registerkarte „WINS“.",
+        "Wählen Sie unter „NetBIOS-Einstellung“ die Option „NetBIOS über TCP/IP deaktivieren“.",
+        "Klicken Sie auf „OK“, um die Änderungen zu speichern."
+      ],
       "Screenshots": [
         "netbios/netbios-1.png",
         "netbios/netbios-2.png",

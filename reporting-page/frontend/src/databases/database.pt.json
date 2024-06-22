@@ -1488,6 +1488,16 @@
         "Em 'Configuração NetBIOS', selecione 'Desativar NetBIOS sobre TCP/IP'.",
         "Clique em 'OK' para salvar as alterações."
       ],
+      "SolutionWindows10": [
+        "Abra o Painel de Controle e vá em 'Rede e Internet'.",
+        "Vá para 'Centro de Rede e Compartilhamento'.",
+        "Clique em 'Alterar configurações do adaptador' no painel esquerdo.",
+        "Clique com o botão direito na sua conexão de rede e selecione 'Propriedades'.",
+        "Na guia 'Rede', role para baixo até 'Protocolo de Internet Versão 4 (TCP/IPv4)' e clique em 'Propriedades'.",
+        "Clique em 'Avançado' e vá para a aba 'WINS'.",
+        "Em 'Configuração NetBIOS', selecione 'Desativar NetBIOS sobre TCP/IP'.",
+        "Clique em 'OK' para salvar as alterações."
+      ],
       "Screenshots": [
         "netbios/netbios-1.png",
         "netbios/netbios-2.png",
@@ -1496,6 +1506,16 @@
         "netbios/netbios-5.png",
         "netbios/netbios-6.png",
         "netbios/netbios-7.png"
+      ],
+      "ScreenshotsWindows10": [
+        "netbios/netbios-1.png",
+        "netbios/netbios-2.png",
+        "netbios/netbios-3.png",
+        "netbios/netbios-4.png",
+        "netbios/netbios-5.png",
+        "netbios/netbios-6.png",
+        "netbios/netbios-7.png",
+        "netbios/netbios-8.png"
       ]
     },
     "Type": "Segurança",
