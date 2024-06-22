@@ -2,7 +2,7 @@ import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js'
 import {retrieveTheme} from './personalize.js';
 import {LogError as logError} from '../../wailsjs/go/main/Tray.js';
 import {getLocalization} from './localize.js';
-//import {LoadUserSettings as loadUserSettings} from '../../wailsjs/go/main/App.js';
+// import {LoadUserSettings as loadUserSettings} from '../../wailsjs/go/main/App.js';
 
 export let currentStep = 1;
 /** Load the content of the Integration page */
@@ -24,7 +24,8 @@ export function openIntegrationPage() {
   <div class="api-key-container">
     <div class="api-key-form">
       <h1 class="lang-api-key-title">Connect to the Lighthouse API</h1>
-      <p class="lang-api-key-description"><b>Coming soon:</b> this functionality is not available yet, you will be able to connect to the Lighthouse API in the near future.</p>
+      <p class="lang-api-key-description"><b>Coming soon:</b> this functionality is not available yet, 
+      you will be able to connect to the Lighthouse API in the near future.</p>
 
       <div class="api-key-step" id="step1">
         <h3>Step 1: Register for an account</h3>
@@ -44,7 +45,8 @@ export function openIntegrationPage() {
 
       <div class="api-key-step lang-step-3" id="step3">
         <h3>Step 3: Generate API Key</h3>
-        <p class="lang-step-3">Copy the token and paste it in the field below, you can then click on the 'connect' button</p>
+        <p class="lang-step-3">Copy the token and paste it in the field below, 
+        you can then click on the 'connect' button</p>
         <div class="api-key-image-container">
           <img class="api-key-image" src="https://via.placeholder.com/400" alt="Step 3 Image">
         </div>
@@ -69,7 +71,8 @@ export function openIntegrationPage() {
   document.getElementById('prevBtn').addEventListener('click', () => prevStep());
   document.getElementById('apiKeyButtonClick').addEventListener('click', () => connectToAPI());
   document.getElementById('disconnectButton').addEventListener('click', () => disconnectFromAPI());
-  // When the integration with the lighthouse API is completed this section will be uncommented and can be used to load the integration details.
+  // When the integration with the lighthouse API is completed this section will be uncommented
+  // and can be used to load the integration details.
   // const userSettings = loadUserSettings();
   // if (userSettings.IntegrationKey !== '') {
   //   document.getElementById('apiKeyButtonClick').style.display = 'none';
@@ -78,7 +81,7 @@ export function openIntegrationPage() {
   // } else {
   document.getElementById('apiKeyButtonClick').style.display = 'inline-block';
   document.getElementById('disconnectButton').style.display = 'none';
-  //}
+  // }
 
   showStep(currentStep);
 

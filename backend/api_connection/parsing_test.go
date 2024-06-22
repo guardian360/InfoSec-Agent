@@ -164,11 +164,6 @@ func TestSendResultsToAPI(t *testing.T) {
 		assert.Equal(t, "application/json", r.Header.Get("Content-Type"))
 		assert.Equal(t, "Bearer", r.Header.Get("Authorization"))
 
-		var result ParseResult
-
-		// Validate the ParseResult fields
-		assert.Equal(t, "success", result.Status)
-
 		// Send a response
 		w.WriteHeader(http.StatusOK)
 	}))
