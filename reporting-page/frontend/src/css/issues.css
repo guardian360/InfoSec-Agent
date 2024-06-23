@@ -20,12 +20,10 @@
   justify-content: space-between; /* Space out the elements */
   align-items: center; /* Center vertically */
   padding: 0; /* Add padding around the header */
-
-  /* border: 1px solid var(--color-border); Light border for definition */
 }
 
 /* Table titles */
-.issues-data h2 {
+.issues-data h2, .program-data h2 {
   padding: 0;
   margin-left: 0;
 }
@@ -63,8 +61,6 @@
   box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%);
   padding-left: 10px;
   z-index: 1;
-
-  /* top: 100%; */
   right: 0;
 }
 
@@ -77,8 +73,6 @@
 .issues-table, .program-table {
   width: 100%;
   overflow-x: auto; /* Allows table to scroll on small screens */
-
-  /* box-shadow: 0 0 20px rgb(0 0 0 / 10%); */
   border-collapse: collapse;
 }
 
@@ -91,12 +85,12 @@
   border: 1px solid var(--color-border); /* Light border for definition */
 }
 
-.issues-table th {
+.issues-table th, .program-table th {
   align-items: center; /* Center vertically */
   background-color: var(--background-color-table-header); /* Light background color */
 }
 
-.issues-table tbody tr:hover {
+#issues-table tbody tr:hover {
   background-color: var(--background-color-top-nav); /* Light blue on hover */
   cursor: pointer; /* Indicate that it's clickable */
 }
@@ -136,11 +130,22 @@
   color: var(--text-body);
 }
 
+.issues-table tr[data-result-id="-1"] .table-risk-level {
+  background-color: var(--text-body);
+  border-radius: 8px;
+  padding: 2px 7px;
+  color: var(--background-color);
+}
+
 /* Sort icon */
 .issues-table .material-symbols-outlined {
   font-size: 1.2em;
   float: right;
   margin-left: auto; /* Align icon to the right using margin */
+}
+
+.issue-check-failed {
+  font-style: italic;
 }
 
 .material-symbols-outlined:hover {
@@ -243,9 +248,24 @@ h1, h2{
 #search-input {
   width: 100%;
   padding: 10px;
-  margin: 10px;
+  margin: 10px 0;
   box-sizing: border-box;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-color);
+  background-color: var(--background-color-table-header);
+  color: var(--text-body);
   border-radius: 4px;
   font-size: 18px;
+}
+
+/* Add zoom function */
+.zoom-img {
+  cursor: zoom-in;
+  transition: transform 0.2s, top 0.2s, left 0.2s;
+  position: relative;
+  display: block;
+  margin: 0 auto;
+}
+
+.zoom-img:hover {
+  transform: scale(2);
 }

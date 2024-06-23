@@ -1,8 +1,8 @@
-// Package usersettings contains functions for loading and saving user settings
+// Package usersettings contains functions for loading and saving user settings in the users AppData directory.
 //
-// Exported function(s): NewUserSettings, LoadUserSettings, SaveUserSettings
+// Exported function(s): LoadUserSettings, SaveUserSettingsGetter.SaveUserSettings
 //
-// Exported type(s): UserSettings
+// Exported type(s): UserSettings, SaveUserSettingsGetter
 package usersettings
 
 import (
@@ -33,7 +33,7 @@ type UserSettings struct {
 	LighthouseState int         `json:"LighthouseState"` // User's game state
 }
 
-var DefaultUserSettings = UserSettings{Language: 1, ScanInterval: 7, Integration: false, NextScan: time.Now().Add((time.Hour * 24) * 7), Points: 0, PointsHistory: nil, TimeStamps: nil, LighthouseState: 0}
+var defaultUserSettings = UserSettings{Language: 1, ScanInterval: 7, Integration: false, NextScan: time.Now().Add((time.Hour * 24) * 7), Points: 0, PointsHistory: nil, TimeStamps: nil, LighthouseState: 0}
 
 // LoadUserSettings loads the user settings from a JSON file in the Windows AppData folder.
 //
@@ -45,39 +45,56 @@ var DefaultUserSettings = UserSettings{Language: 1, ScanInterval: 7, Integration
 // Returns:
 //   - settings (UserSettings): The loaded user settings. This is a UserSettings struct.
 func LoadUserSettings() UserSettings {
-	logger.Log.Debug("Getting user config directory")
+	logger.Log.Debug("Loading user settings")
+
+	logger.Log.Trace("Getting user config directory")
 	appDataPath, err := os.UserConfigDir()
 	if err != nil {
 		logger.Log.Warning("Error getting user config directory, using default settings")
-		return DefaultUserSettings
+		return defaultUserSettings
 	}
 	dirPath := appDataPath + `\InfoSec-Agent`
-	logger.Log.Debug("Creating/reading directory at:" + dirPath)
+	logger.Log.Trace("Creating/reading directory at:" + dirPath)
 	err = os.MkdirAll(dirPath, os.ModePerm)
 	if err != nil {
 		logger.Log.Warning("Error creating directory, using default settings")
-		return DefaultUserSettings
+		return defaultUserSettings
 	}
 
 	filePath := dirPath + `\user_settings.json`
 
-	logger.Log.Debug("Reading user settings from file:" + filePath)
+	logger.Log.Trace("Reading user settings from file:" + filePath)
 	data, err := os.ReadFile(filePath)
 	if err != nil {
 		logger.Log.Warning("Error reading user settings file, using default settings")
-		return DefaultUserSettings
+		return defaultUserSettings
 	}
 
 	var settings UserSettings
-	logger.Log.Debug("Unmarshalling user settings JSON")
+	logger.Log.Trace("Unmarshalling user settings JSON")
 	err = json.Unmarshal(data, &settings)
 	if err != nil {
 		logger.Log.Warning("Error unmarshalling user settings JSON, using default settings")
-		return DefaultUserSettings
+		return defaultUserSettings
 	}
 	logger.Log.Debug("Loaded user settings")
 	return settings
 }
+
+// SaveUserSettingsGetter is an interface that defines a method for saving user settings.
+//
+// The SaveUserSettings method takes a UserSettings struct as input, which contains the user settings to be saved.
+// It returns an error if any occurred while saving the user settings. If no error occurred, the method returns nil.
+//
+// This interface is implemented by any type that needs to save user settings for the system.
+type SaveUserSettingsGetter interface {
+	SaveUserSettings(settings UserSettings) error
+}
+
+// RealSaveUserSettingsGetter is a struct that implements the SaveUserSettingsGetter interface.
+//
+// It provides a real-world implementation of the SaveUserSettings method, which saves the user settings to a JSON file in the Windows AppData\Roaming folder.
+type RealSaveUserSettingsGetter struct{}
 
 // SaveUserSettings saves the user settings to a JSON file in the Windows AppData\Roaming folder.
 //
@@ -88,8 +105,10 @@ func LoadUserSettings() UserSettings {
 //   - settings (UserSettings): The user settings to be saved.
 //
 // Returns: An error if any occurred while saving the user settings. If no error occurred, the function returns nil.
-func SaveUserSettings(settings UserSettings) error {
-	logger.Log.Debug("Getting user config directory")
+func (r RealSaveUserSettingsGetter) SaveUserSettings(settings UserSettings) error {
+	logger.Log.Debug("Saving user settings")
+
+	logger.Log.Trace("Getting user config directory")
 	appDataPath, err := os.UserConfigDir()
 	if err != nil {
 		err = errors.New("Error getting user config directory: " + err.Error())
@@ -98,23 +117,24 @@ func SaveUserSettings(settings UserSettings) error {
 	}
 
 	dirPath := appDataPath + `\InfoSec-Agent`
-	logger.Log.Debug("Creating/reading directory at:" + dirPath)
+	logger.Log.Trace("Creating/reading directory at:" + dirPath)
 	err = os.MkdirAll(dirPath, os.ModePerm)
 	if err != nil {
 		err = errors.New("Error creating directory: " + err.Error())
 		logger.Log.Error(err.Error())
 		return err
 	}
-	filePath := dirPath + `\user_settings.json`
 
-	logger.Log.Debug("Marshalling data to JSON")
+	logger.Log.Trace("Marshalling data to JSON")
 	file, err := json.MarshalIndent(settings, "", " ")
 	if err != nil {
 		err = errors.New("Error marshalling user settings JSON: " + err.Error())
 		logger.Log.Error(err.Error())
 		return err
 	}
-	logger.Log.Debug("Writing user settings to file:" + filePath)
+
+	filePath := dirPath + `\user_settings.json`
+	logger.Log.Trace("Writing user settings to file:" + filePath)
 	err = os.WriteFile(filePath, file, 0600)
 	if err != nil {
 		err = errors.New("Error writing user settings to file: " + err.Error())

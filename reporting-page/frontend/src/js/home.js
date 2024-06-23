@@ -4,8 +4,7 @@ import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js'
 import {retrieveTheme} from './personalize.js';
 import {scanTest} from './database.js';
 import {LogError as logError, LogDebug as logDebug} from '../../wailsjs/go/main/Tray.js';
-import {GetImagePath as getImagePath} from '../../wailsjs/go/main/App.js';
-import {LoadUserSettings as loadUserSettings} from '../../wailsjs/go/main/App.js';
+import {GetImagePath as getImagePath, GetLighthouseState as getLighthouseState} from '../../wailsjs/go/main/App.js';
 import {openIssuePage} from './issue.js';
 import {saveProgress, shareProgress, selectSocialMedia, setImage, socialMediaSizes} from './share.js';
 import data from '../databases/database.en-GB.json' assert { type: 'json' };
@@ -16,28 +15,29 @@ let usersettings = loadUserSettings();
 /** Load the content of the Home page */
 export async function openHomePage() {
   // Load the video background path
-  switch (usersettings.LighthouseState) {
-  case '0':
+  const lighthouseState = await getLighthouseState();
+  switch (lighthouseState) {
+  case 0:
     lighthousePath = 'state0.mkv';
     break;
-  case '1':
+  case 1:
     lighthousePath = 'state1.mkv';
     break;
-  case '2':
+  case 2:
     lighthousePath = 'state2.mkv';
     break;
-  case '3':
+  case 3:
     lighthousePath = 'state3.mkv';
     break;
-  case '4':
+  case 4:
     lighthousePath = 'state4.mkv';
     break;
   default:
     lighthousePath = 'state0.mkv';
   }
 
-  const lighthouseState = await getImagePath(lighthousePath);
-  logDebug('lighthouseState: ' + lighthouseState);
+  const lighthouseFullPath = await getImagePath('gamification/' + lighthousePath);
+  logDebug('lighthouseState: ' + lighthouseFullPath);
 
   retrieveTheme();
   closeNavigation(document.body.offsetWidth);
@@ -70,6 +70,10 @@ export async function openHomePage() {
       <div id="progress-segment" class="data-segment">
         <div class="data-segment-header">
           <p class="lang-lighthouse-progress"></p>
+          <div id="lighthouse-progress-hoverbox">
+            <img id="lighthouse-progress-tooltip">
+            <p class="lighthouse-progress-tooltip-text lang-tooltip-text"></p>
+          </div>
         </div>
         <div class="progress-container">
           <div class="progress-bar" id="progress-bar"></div>
@@ -100,7 +104,10 @@ export async function openHomePage() {
   </div>
   `;
 
-  document.getElementById('lighthouse-background').src = lighthouseState;
+  document.getElementById('lighthouse-background').src = lighthouseFullPath;
+
+  const tooltip = await getImagePath('tooltip.png');
+  document.getElementById('lighthouse-progress-tooltip').src = tooltip;
 
   const rc = JSON.parse(sessionStorage.getItem('RiskCounters'));
   new PieChart('pie-chart-home', rc, 'Total');
@@ -117,6 +124,7 @@ export async function openHomePage() {
     'lang-save-text',
     'lang-share',
     'lang-lighthouse-progress',
+    'lang-tooltip-text',
   ];
   const localizationIds = [
     'Dashboard.RiskLevelDistribution',
@@ -129,6 +137,7 @@ export async function openHomePage() {
     'Dashboard.SaveText',
     'Dashboard.Share',
     'Dashboard.LighthouseProgress',
+    'Dashboard.TooltipText',
   ];
   for (let i = 0; i < staticHomePageContent.length; i++) {
     getLocalization(localizationIds[i], staticHomePageContent[i]);
@@ -172,30 +181,50 @@ export async function openHomePage() {
 */
 export function suggestedIssue(type) {
   // Get the issues from the database
-  const issues = JSON.parse(sessionStorage.getItem('DataBaseData'));
+  const issues = JSON.parse(sessionStorage.getItem('ScanResult'));
 
   // Skip informative issues
   let issueIndex = 0;
-  let maxSeverityIssue = issues[issueIndex];
-  while (maxSeverityIssue.severity === 4) {
+  let maxSeverityIssue = issues[issueIndex].issue_id;
+  let maxSeverityResult = issues[issueIndex].result_id;
+  while (getSeverity(maxSeverityIssue, maxSeverityResult) === 4 ||
+        getSeverity(maxSeverityIssue, maxSeverityResult) === undefined) {
     issueIndex++;
-    maxSeverityIssue = issues[issueIndex];
+    maxSeverityIssue = issues[issueIndex].issue_id;
+    maxSeverityResult = issues[issueIndex].result_id;
   }
 
   // Find the issue with the highest severity
   for (let i = 0; i < issues.length; i++) {
-    if (maxSeverityIssue.severity < issues[i].severity && issues[i].severity !== 4) {
-      if (type == '' || data[issues[i].jsonkey].Type === type) {
-        maxSeverityIssue = issues[i];
+    const severity = getSeverity(issues[i].issue_id, issues[i].result_id);
+    if (getSeverity(maxSeverityIssue, maxSeverityResult) < severity &&
+      severity !== 4) {
+      if (type == '' || data[issues[i].issue_id].Type === type) {
+        maxSeverityIssue = issues[i].issue_id;
+        maxSeverityResult = issues[i].result_id;
       }
     }
   }
 
   // Open the issue page of the issue with the highest severity
-  openIssuePage(maxSeverityIssue.jsonkey, maxSeverityIssue.severity);
+  openIssuePage(maxSeverityIssue, maxSeverityResult, 'home');
   document.getElementById('scan-now').addEventListener('click', () => scanTest(true));
 }
 
+/**
+ * Gets the severity of an issue
+ * @param {string} issueId id of the issue
+ * @param {string} resultId result id of the issue
+ *
+ * @return {string} severity
+ */
+function getSeverity(issueId, resultId) {
+  const issue = data[issueId];
+  if (issue == undefined) return undefined;
+  const issueData = issue[resultId];
+  if (issueData == undefined) return undefined;
+  return issueData.Severity;
+}
 
 if (typeof document !== 'undefined') {
   try {
@@ -211,7 +240,6 @@ if (typeof document !== 'undefined') {
 window.onload = function() {
   const savedImage = localStorage.getItem('picture');
   const savedText = localStorage.getItem('title');
-  const savedIcon = localStorage.getItem('favicon');
   if (savedImage) {
     const logo = document.getElementById('logo');
     logo.src = savedImage;
@@ -219,10 +247,6 @@ window.onload = function() {
   if (savedText) {
     const title = document.getElementById('title');
     title.textContent = savedText;
-  }
-  if (savedIcon) {
-    const favicon = document.getElementById('favicon');
-    favicon.href = savedIcon;
   }
 };
 

@@ -9,6 +9,7 @@ const (
 	LogLevelSpecific = -1
 
 	LocalizationPath = "backend/localization/localizations_src/"
+	DatabasePath     = "reporting-page/frontend/src/databases/database.en-GB.json"
 
 	BuildReportingPage    = false
 	ReportingPagePath     = "reporting-page/build/bin/InfoSec-Agent-Reporting-Page"

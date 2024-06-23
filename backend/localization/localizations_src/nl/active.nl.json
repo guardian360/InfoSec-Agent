@@ -104,7 +104,8 @@
     "ShareText": "Selecteer waar u uw voortgang wilt delen, sla het op en download het, deel het vervolgens met anderen!",
     "SaveText": "Opslaan",
     "Share": "Delen",
-    "LighthouseProgress":"Vooruitgang"
+    "LighthouseProgress":"Vooruitgang",
+    "TooltipText": "Hoe actiever je bent met de applicatie, hoe meer je werkt aan je veiligheid! Je voortgang wordt laten zien door het bouwen van een vuurtoren. Wanneer het voortgangs-balkje hieronder vol zit, gaat je vuurtoren naar een nieuwe staat."
   },
   "Issues":
   {
@@ -119,6 +120,7 @@
     "Previous": "&laquo; Vorige stap",
     "Next": "Volgende stap &raquo;",
     "BackIssues": "Terug naar het overzicht van problemen",
+    "BackHome": "Terug naar de startpagina",
     "BackChecks": "Terug naar het overzicht van controles",
     "Port": "De volgende processen draaien momenteel op uw apparaat op de volgende poorten: ",
     "Password": "U hebt uw wachtwoord gewijzigd op: ",
@@ -129,6 +131,7 @@
     "Medium": "Gemiddeld",
     "High": "Hoog",
     "Info": "Info",
+    "Failed": "Mislukt",
     "ScanAgain": "Opnieuw scannen"
   },
   "About": {
@@ -143,18 +146,22 @@
   },  
   "Programs": {
     "Name":"Naam",
+    "Version": "Versie",
     "ProgramTable": "Geïnstalleerde programma's",
-    "Search": "Zoeken"
+    "Search": "Zoeken..."
   },
   "Personalize": {
-    "ChangeFavicon": "Favicon wijzigen",
     "navImage": "Navigatieafbeelding",
     "ChangeImage": "Afbeelding wijzigen",
     "Title": "Navigatietitel",
     "ChangeTitle": "Titel wijzigen",
     "Reset": "Instellingen resetten",
     "PersonalizeTitle": "Personaliseer uw ervaring",
-    "PickTheme": "Kies een thema"
+    "PickTheme": "Kies een thema",
+    "NavImage": "Navigatie afbeelding",
+    "NavTitle": "Navigatietitel",
+    "Light": "Licht",
+    "Dark": "Donker"
   },
   "AllChecks": {
     "Security": "Beveiliging",
@@ -178,6 +185,7 @@
     "PermissionsText": "Applicaties die op uw computer zijn geïnstalleerd, willen toegang hebben tot of toestemming hebben om bepaalde functies of apparaten die met uw pc zijn verbonden te gebruiken. Het is uw verantwoordelijkheid als gebruiker om deze toestemmingen aan bepaalde applicaties te geven of niet. Het wordt daarom aanbevolen om op internet te zoeken of een toepassing die u gebruikt bepaalde toestemmingen moet hebben of niet.",
     "BrowserText": "Om toegang te krijgen tot internet, gebruikt u een browser. Hoewel een browser erg nuttig is, houdt het uw gegevens niet altijd privé. Om veilig te blijven tijdens het surfen op internet, moet u altijd in gedachten houden waar u op klikt.",
     "OtherPrivacyText": "Het privé houden van uw gegevens kan ook op andere manieren worden gedaan.",
+    "BrowserZeroFound" : "Deze controles konden niet worden uitgevoerd, omdat de browser waarschijnlijk niet is geïnstalleerd.",
 
     "Id1":"Apparaten verbonden via bluetooth",
     "Id2":"Apparaten verbonden via USB-poorten",
@@ -191,7 +199,7 @@
     "Id10":"Applicaties met contacten machtigingen",
     "Id11":"Open poorten gebruikt door applicaties",
     "Id12":"Extern bureaublad ingeschakeld/uitgeschakeld",
-    "Id13":"Systeembericht blok ingeschakeld/uitgeschakeld",
+    "Id13":"Serverbericht blok ingeschakeld/uitgeschakeld",
     "Id14":"Gebruikersaccountbeheer ingeschakeld/uitgeschakeld",
     "Id15":"Windows Defender ingeschakeld/uitgeschakeld",
     "Id16":"Laatste Windows wachtwoord gewijzigd",

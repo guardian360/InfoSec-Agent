@@ -1,8 +1,6 @@
-// Package cisregistrysettings provides a set of functions to check various registry settings
-// to ensure they adhere to the CIS Benchmark standards. Each function takes a RegistryKey object
-// as an argument, which represents the root key from which the registry settings will be checked.
-// The functions return a slice of boolean values, where each boolean represents whether a particular
-// registry setting adheres to the CIS Benchmark standards.
+// Package cisregistrysettings provides a set of functions to check various registry settings to ensure they adhere to the CIS Benchmark standards.
+// Each function takes a RegistryKey object as an argument, which represents the root key from which the registry settings will be checked.
+// The functions return a slice of boolean values, where each boolean represents whether a particular registry setting adheres to the CIS Benchmark standards.
 package cisregistrysettings
 
 import (
@@ -67,7 +65,7 @@ func CISRegistrySettings(localMachineKey mocking.RegistryKey, usersKey mocking.R
 func CheckIntegerValue(openKey mocking.RegistryKey, value string, expected interface{}) bool {
 	val, _, err := openKey.GetIntegerValue(value)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error reading registry value of "+value, err)
+		logger.Log.Trace("Error reading registry value of " + value + ": " + err.Error())
 		return false
 	}
 	// Determine functionality based on the value type of the expected parameter
@@ -104,7 +102,7 @@ func CheckIntegerValue(openKey mocking.RegistryKey, value string, expected inter
 func CheckStringValue(openKey mocking.RegistryKey, value string, expected string) bool {
 	val, _, err := openKey.GetStringValue(value)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error reading registry value of "+value, err)
+		logger.Log.Trace("Error reading registry value of " + value + ": " + err.Error())
 		return false
 	}
 	return val == expected
@@ -120,9 +118,9 @@ func CheckStringValue(openKey mocking.RegistryKey, value string, expected string
 //   - mocking.RegistryKey: The opened registry key.
 //   - error: An error object that describes the error (if any) that occurred while opening the registry key. If no error occurred, this value is nil.
 func OpenRegistryKeyWithErrHandling(registryKey mocking.RegistryKey, path string) (mocking.RegistryKey, error) {
-	key, err := checks.OpenRegistryKey(registryKey, path)
+	key, err := mocking.OpenRegistryKey(registryKey, path)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error opening registry key for CIS Audit list", err)
+		logger.Log.Trace("Error opening registry key for CIS Audit list: " + err.Error())
 	}
 	return key, err
 }
@@ -141,10 +139,10 @@ func CheckIntegerRegistrySettings(registryKey mocking.RegistryKey, registryPath 
 	if err != nil {
 		for _, setting := range settings {
 			RegistrySettingsMap[registryPath+"\\"+setting] = false
-			return
 		}
+		return
 	}
-	defer checks.CloseRegistryKey(key)
+	defer mocking.CloseRegistryKey(key)
 
 	for i, setting := range settings {
 		RegistrySettingsMap[registryPath+"\\"+setting] = CheckIntegerValue(key, setting, expectedValues[i])
@@ -168,7 +166,7 @@ func CheckStringRegistrySettings(registryKey mocking.RegistryKey, registryPath s
 			return
 		}
 	}
-	defer checks.CloseRegistryKey(key)
+	defer mocking.CloseRegistryKey(key)
 
 	for i, setting := range settings {
 		RegistrySettingsMap[registryPath+"\\"+setting] = CheckStringValue(key, setting, expectedValues[i])
@@ -199,7 +197,7 @@ func CheckIntegerStringRegistrySettings(registryKey mocking.RegistryKey, registr
 		}
 		return
 	}
-	defer checks.CloseRegistryKey(key)
+	defer mocking.CloseRegistryKey(key)
 
 	for i, integerSetting := range integerSettings {
 		RegistrySettingsMap[registryPath+"\\"+integerSetting] = CheckIntegerValue(key, integerSetting, expectedIntegers[i])

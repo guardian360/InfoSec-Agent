@@ -7,7 +7,6 @@ import {mockPageFunctions,
   storageMock,
   mockScanNowGo,
   mockRiskCounters,
-  mockGetDataBaseData,
   scanResultMock,
   mockOpenPageFunctions} from './mock.js';
 
@@ -54,11 +53,6 @@ jest.unstable_mockModule('../wailsjs/go/main/Tray.js', () => ({
   LogError: jest.fn(),
 }));
 
-// Mock getDataBaseData
-jest.unstable_mockModule('../wailsjs/go/main/DataBase.js', () => ({
-  GetData: jest.fn().mockImplementation((input) => mockGetDataBaseData(input)),
-}));
-
 // Mock session and localStorage
 global.sessionStorage = storageMock;
 global.localStorage = storageMock;
@@ -67,18 +61,10 @@ describe('database functions', function() {
   it('scanTest is called which calls scanNowGo and fills sessionstorage with data', async function() {
     // Arrange
     await import('../src/js/database.js');
-    const expectedDataBaseData = [
-      {id: 21, severity: 0, jsonkey: 210},
-      {id: 3, severity: 1, jsonkey: 30},
-      {id: 4, severity: 2, jsonkey: 40},
-      {id: 18, severity: 3, jsonkey: 182},
-      {id: 10, severity: 4, jsonkey: 100},
-    ];
 
     // Act
     const scanResult = JSON.parse(sessionStorage.getItem('ScanResult'));
     const called = sessionStorage.getItem('scanTest');
-    const dataBaseData = JSON.parse(sessionStorage.getItem('DataBaseData'));
     const rc = JSON.parse(sessionStorage.getItem('RiskCounters'));
     const src = JSON.parse(sessionStorage.getItem('SecurityRiskCounters'));
     const prc = JSON.parse(sessionStorage.getItem('PrivacyRiskCounters'));
@@ -86,9 +72,10 @@ describe('database functions', function() {
     // Assert
     test.array(scanResult).is(scanResultMock);
     test.value(called).isEqualTo('called');
-    test.array(dataBaseData).is(expectedDataBaseData);
 
     // risk counters have the right values
+    // if amount is not correct, first change scanResultMock in mock.js
+    // to correctly return issues covering every severity once
     test.array(rc.high).is([1]);
     test.array(rc.medium).is([1]);
     test.array(rc.low).is([1]);
@@ -159,13 +146,11 @@ describe('database functions', function() {
     // Act
     const scanResult = sessionStorage.getItem('ScanResult');
     const called = sessionStorage.getItem('scanTest');
-    const dataBaseData = sessionStorage.getItem('DataBaseData');
     const rc = sessionStorage.getItem('RiskCounters');
 
     // Assert
     test.value(scanResult).isUndefined();
     test.value(called).isEqualTo('called');
-    test.value(dataBaseData).isUndefined();
     test.value(rc).isUndefined();
   });
 });

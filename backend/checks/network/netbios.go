@@ -1,3 +1,4 @@
+// Package network provides functions related to security/privacy checks of network settings
 package network
 
 import (
@@ -19,7 +20,7 @@ import (
 func NetBIOSEnabled(executor mocking.CommandExecutor) checks.Check {
 	output, err := executor.Execute("cmd", "/c", "ipconfig /all")
 	if err != nil {
-		logger.Log.ErrorWithErr("Error executing netBIOS command: ", err)
+		logger.Log.ErrorWithErr("Error executing netBIOS command", err)
 		return checks.NewCheckError(checks.NetBIOSID, err)
 	}
 

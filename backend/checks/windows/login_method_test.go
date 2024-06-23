@@ -1,6 +1,7 @@
 package windows_test
 
 import (
+	"errors"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/windows"
 	"testing"
 
@@ -20,9 +21,10 @@ import (
 // This function tests the LoginMethod function with different scenarios. It uses a mock implementation of the RegistryKey interface to simulate the behavior of the Windows login methods registry key. Each test case checks if the LoginMethod function correctly identifies the enabled login methods based on the simulated registry key values. The function asserts that the returned Check instance contains the expected results.
 func TestLoginMethod(t *testing.T) {
 	tests := []struct {
-		name string
-		key  mocking.RegistryKey
-		want checks.Check
+		name  string
+		key   mocking.RegistryKey
+		want  checks.Check
+		error bool
 	}{
 		{
 			name: "Login method is PIN",
@@ -34,7 +36,7 @@ func TestLoginMethod(t *testing.T) {
 				},
 			},
 			},
-			want: checks.NewCheckResult(checks.LoginMethodID, 1, "PIN"),
+			want: checks.NewCheckResult(checks.LoginMethodID, 2, "PIN"),
 		},
 		{
 			name: "Login method is Picture",
@@ -43,7 +45,7 @@ func TestLoginMethod(t *testing.T) {
 					StringValues: map[string]string{"": "{2135F72A-90B5-4ED3-A7F1-8BB705AC276A}"},
 					StatReturn:   &registry.KeyInfo{ValueCount: 1},
 					Err:          nil}}},
-			want: checks.NewCheckResult(checks.LoginMethodID, 2, "Picture Logon"),
+			want: checks.NewCheckResult(checks.LoginMethodID, 3, "Picture Logon"),
 		},
 		{
 			name: "Login method is Password",
@@ -52,7 +54,7 @@ func TestLoginMethod(t *testing.T) {
 					{KeyName: "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Authentication\\LogonUI\\UserTile",
 						StringValues: map[string]string{"": "{60B78E88-EAD8-445C-9CFD-0B87F74EA6CD}"},
 						StatReturn:   &registry.KeyInfo{ValueCount: 1}, Err: nil}}},
-			want: checks.NewCheckResult(checks.LoginMethodID, 4, "Password"),
+			want: checks.NewCheckResult(checks.LoginMethodID, 1, "Password"),
 		},
 		{
 			name: "Login method is Fingerprint",
@@ -61,7 +63,7 @@ func TestLoginMethod(t *testing.T) {
 					{KeyName: "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Authentication\\LogonUI\\UserTile",
 						StringValues: map[string]string{"": "{BEC09223-B018-416D-A0AC-523971B639F5}"},
 						StatReturn:   &registry.KeyInfo{ValueCount: 1}, Err: nil}}},
-			want: checks.NewCheckResult(checks.LoginMethodID, 8, "Fingerprint"),
+			want: checks.NewCheckResult(checks.LoginMethodID, 1, "Fingerprint"),
 		},
 		{
 			name: "Login method is Facial recognition",
@@ -70,7 +72,7 @@ func TestLoginMethod(t *testing.T) {
 					{KeyName: "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Authentication\\LogonUI\\UserTile",
 						StringValues: map[string]string{"": "{8AF662BF-65A0-4D0A-A540-A338A999D36F}"},
 						StatReturn:   &registry.KeyInfo{ValueCount: 1}, Err: nil}}},
-			want: checks.NewCheckResult(checks.LoginMethodID, 16, "Facial recognition"),
+			want: checks.NewCheckResult(checks.LoginMethodID, 2, "Facial recognition"),
 		},
 		{
 			name: "Login method is Trust signal",
@@ -79,7 +81,7 @@ func TestLoginMethod(t *testing.T) {
 					{KeyName: "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Authentication\\LogonUI\\UserTile",
 						StringValues: map[string]string{"": "{27FBDB57-B613-4AF2-9D7E-4FA7A66C21AD}"},
 						StatReturn:   &registry.KeyInfo{ValueCount: 1}, Err: nil}}},
-			want: checks.NewCheckResult(checks.LoginMethodID, 32, "Trust signal"),
+			want: checks.NewCheckResult(checks.LoginMethodID, 2, "Trust signal"),
 		},
 		{
 			name: "Login method is unknown",
@@ -90,11 +92,41 @@ func TestLoginMethod(t *testing.T) {
 						StatReturn:   &registry.KeyInfo{ValueCount: 1}, Err: nil}}},
 			want: checks.NewCheckErrorf(checks.LoginMethodID, "error reading value", nil),
 		},
+		{
+			name:  "Error opening registry key",
+			key:   &mocking.MockRegistryKey{},
+			want:  checks.NewCheckErrorf(checks.LoginMethodID, "error reading value", nil),
+			error: true,
+		},
+		{
+			name: "Error getting key statistics",
+			key: &mocking.MockRegistryKey{
+				SubKeys: []mocking.MockRegistryKey{
+					{KeyName: "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Authentication\\LogonUI\\UserTile",
+						StringValues: map[string]string{"": "unknown"},
+						StatReturn:   nil}}},
+			want:  checks.NewCheckError(checks.LoginMethodID, errors.New("error")),
+			error: true,
+		},
+		{
+			name: "Error reading value names",
+			key: &mocking.MockRegistryKey{
+				SubKeys: []mocking.MockRegistryKey{
+					{KeyName: "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Authentication\\LogonUI\\UserTile",
+						StringValues: map[string]string{"test": "test"},
+						StatReturn:   &registry.KeyInfo{ValueCount: 1}, Err: nil}}},
+			want:  checks.NewCheckError(checks.LoginMethodID, errors.New("error")),
+			error: true,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got := windows.LoginMethod(tt.key)
-			require.Equal(t, tt.want, got)
+			if tt.error {
+				require.Equal(t, -1, got.ResultID)
+			} else {
+				require.Equal(t, tt.want, got)
+			}
 		})
 	}
 }

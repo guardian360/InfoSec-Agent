@@ -17,14 +17,13 @@ const dom = new JSDOM(`
 <!DOCTYPE html>
 <html>
 <body>
-    <input type="file" class="personalize-input-invisible" id="faviconInput" accept=".png,.ico"> 
     <div class="header">
       <div class="header-hamburger container">
         <span id="header-hamburger" class="header-hamburger material-symbols-outlined">menu</span>
       </div>
       <div class="header-logo">
         <div id="logo-button" class="logo-name">
-          <img id="logo" alt="logo" src="./src/assets/images/logoTeamA-transformed.png">  
+          <img id="logo" alt="logo" src="../src/assets/images/InfoSec-Agent-logo.png">  
           <div class="header-name">
             <h1 id="title">Little Brother</h1><!-- Use id to dynamically change title -->
           </div>
@@ -294,5 +293,64 @@ describe('Settings page', function() {
     test.value(selected11).isTrue();
     test.value(version).isEqualTo('11');
     test.value(changed).isEqualTo('true');
+
+    // clear session storage
+    sessionStorage.removeItem('WindowsVersionChanged');
+  });
+  it('clicking the close button should close the modal', async function() {
+    // Arrange
+    await import('../src/js/settings.js');
+    sessionStorage.setItem('ModalOpen', 'true');
+    const modal = document.getElementById('window-version-modal');
+    modal.style.display = 'block';
+
+    // Act
+    document.getElementById('close-window-version-modal').dispatchEvent(clickEvent);
+
+    // Assert
+    test.value(modal.style.display).isEqualTo('none');
+    test.value(sessionStorage.getItem('ModalOpen')).isUndefined();
+  });
+  it('clicking outside the modal should close it', async function() {
+    // Arrange
+    await import('../src/js/settings.js');
+    sessionStorage.setItem('ModalOpen', 'true');
+    const modal = document.getElementById('window-version-modal');
+    modal.style.display = 'block';
+
+    // Act
+    const event = new window.MouseEvent('click', {
+      view: window,
+      bubbles: true,
+      cancelable: true,
+    });
+    modal.dispatchEvent(event);
+
+    // Assert
+    test.value(modal.style.display).isEqualTo('none');
+
+    // Act
+    document.dispatchEvent(event);
+
+    // Assert
+    test.value(modal.style.display).isEqualTo('none');
+  });
+  it('should not open the modal if it is already open', async function() {
+    // Arrange
+    await import('../src/js/settings.js');
+    sessionStorage.setItem('ModalOpen', 'true');
+    const modal = document.getElementById('window-version-modal');
+    modal.style.display = 'none';
+
+    // Act
+    document.getElementById('windows-version-button').dispatchEvent(clickEvent);
+
+    // Assert
+    test.value(modal.style.display).isEqualTo('none');
+
+    // Act
+    document.getElementById('windows-10').dispatchEvent(clickEvent);
+    // Assert
+    test.value(modal.style.display).isEqualTo('none');
   });
 });

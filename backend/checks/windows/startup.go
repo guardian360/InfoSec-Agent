@@ -19,36 +19,53 @@ import (
 //
 // The function works by opening three different registry keys where startup programs can be located. It reads the entries within each registry key and concatenates the results. If any startup programs are found, the function returns a Check instance containing a list of the startup programs. If no startup programs are found, the function returns a Check instance with a message indicating that no startup programs were found. If the function encounters an error while opening the registry keys or reading the entries, it returns a Check instance containing an error message.
 func Startup(key1 mocking.RegistryKey, key2 mocking.RegistryKey, key3 mocking.RegistryKey) checks.Check {
+	output := make([]string, 0)
 	// Start-up programs can be found in different locations within the registry
 	// Both the current user and local machine registry keys are checked
-	cuKey, err1 := checks.OpenRegistryKey(key1,
+	cuKey, err1 := mocking.OpenRegistryKey(key1,
 		`SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run`)
-	lmKey, err2 := checks.OpenRegistryKey(key2,
+	lmKey, err2 := mocking.OpenRegistryKey(key2,
 		`SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run`)
-	lmKey2, err3 := checks.OpenRegistryKey(key3,
+	lmKey2, err3 := mocking.OpenRegistryKey(key3,
 		`SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run32`)
-	if err1 != nil || err2 != nil || err3 != nil {
+
+	if err3 != nil {
+		// In Windows 11, the registry key for 32-bit startup programs is not present,
+		// because 32-bit programs are no longer supported
+		if WinVersion != 11 {
+			return checks.NewCheckError(checks.StartupID, errors.New("error opening registry keys"))
+		}
+	}
+	if err1 != nil || err2 != nil {
 		return checks.NewCheckError(checks.StartupID, errors.New("error opening registry keys"))
 	}
 
 	// Close the keys after we have received all relevant information
-	defer checks.CloseRegistryKey(cuKey)
-	defer checks.CloseRegistryKey(lmKey)
-	defer checks.CloseRegistryKey(lmKey2)
+	defer mocking.CloseRegistryKey(cuKey)
+	defer mocking.CloseRegistryKey(lmKey)
+	if !(err3 != nil && WinVersion == 11) {
+		var lm2ValueNames []string
+		if lmKey2 == nil {
+			return checks.NewCheckError(checks.StartupID, errors.New("error opening registry keys"))
+		}
+		defer mocking.CloseRegistryKey(lmKey2)
+		lm2ValueNames, err3 = lmKey2.ReadValueNames(0)
+		if err3 != nil {
+			return checks.NewCheckError(checks.StartupID, errors.New("error reading value names"))
+		}
+		output = append(output, FindEntries(lm2ValueNames, lmKey2)...)
+	}
 
 	// Read the entries within the registry key
 	cuValueNames, err1 := cuKey.ReadValueNames(0)
 	lmValueNames, err2 := lmKey.ReadValueNames(0)
-	lm2ValueNames, err3 := lmKey2.ReadValueNames(0)
 
-	if err1 != nil || err2 != nil || err3 != nil {
+	if err1 != nil || err2 != nil {
 		return checks.NewCheckError(checks.StartupID, errors.New("error reading value names"))
 	}
 
-	output := make([]string, 0)
 	output = append(output, FindEntries(cuValueNames, cuKey)...)
 	output = append(output, FindEntries(lmValueNames, lmKey)...)
-	output = append(output, FindEntries(lm2ValueNames, lmKey2)...)
 
 	if len(output) == 0 {
 		return checks.NewCheckResult(checks.StartupID, 0)

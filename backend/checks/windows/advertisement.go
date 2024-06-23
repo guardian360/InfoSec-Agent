@@ -1,3 +1,4 @@
+// Package windows provides functions related to security/privacy checks of windows settings
 package windows
 
 import (
@@ -15,11 +16,11 @@ import (
 // Returns:
 //   - Check: A struct containing the result of the check. The result indicates whether Advertisement ID is shared with apps or not.
 func Advertisement(registryKey mocking.RegistryKey) checks.Check {
-	key, err := checks.OpenRegistryKey(registryKey, `SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo`)
+	key, err := mocking.OpenRegistryKey(registryKey, `SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo`)
 	if err != nil {
 		return checks.NewCheckError(checks.AdvertisementID, err)
 	}
-	defer checks.CloseRegistryKey(key)
+	defer mocking.CloseRegistryKey(key)
 
 	// Read the value of Enabled, which contains the information if Advertisement ID is shared with apps or not
 	value, _, err := key.GetIntegerValue("Enabled")

@@ -115,10 +115,12 @@ hr.solid {
 }
 
 .color-picker input[type="radio"]#normal {
+  --radio-border-color: #000;
   --radio-color: #fff;
 }
 
 .color-picker input[type="radio"]#dark {
+  --radio-border-color: #fff;
   --radio-color: black;
 }
 

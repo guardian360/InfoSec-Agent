@@ -1,6 +1,8 @@
 package gamification_test
 
 import (
+	"errors"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/usersettings"
 	"os"
 	"strconv"
 	"testing"
@@ -37,7 +39,7 @@ func TestMain(m *testing.M) {
 // No return values.
 func TestUpdateGameState(t *testing.T) {
 	// Mock the following functions and variables
-	mockDatabasePath := "../../reporting-page/database.db"
+	mockDatabasePath := "../../reporting-page/frontend/src/databases/database.en-GB.json"
 	mockScanResults := []checks.Check{
 		{
 			IssueID:  29,
@@ -49,7 +51,7 @@ func TestUpdateGameState(t *testing.T) {
 		},
 	}
 	t.Run("Test", func(t *testing.T) {
-		_, err := gamification.UpdateGameState(mockScanResults, mockDatabasePath)
+		_, err := gamification.UpdateGameState(mockScanResults, mockDatabasePath, gamification.RealPointCalculationGetter{}, usersettings.RealSaveUserSettingsGetter{})
 		require.NoError(t, err)
 	})
 }
@@ -79,9 +81,10 @@ func TestPointCalculation(t *testing.T) {
 		{name: "GameState with positive points and no point history", gs: gamification.GameState{Points: 29, PointsHistory: nil, TimeStamps: nil, LighthouseState: 3}},
 		{name: "GameState with positive points and point history", gs: gamification.GameState{Points: 37, PointsHistory: []int{50, 28, 34}, TimeStamps: []time.Time{time.Now(), time.Now(), time.Now()}, LighthouseState: 2}},
 	}
+	getter := gamification.RealPointCalculationGetter{}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			_, err := gamification.PointCalculation(tt.gs, securityChecks, "../../reporting-page/database.db")
+			_, err := getter.PointCalculation(tt.gs, securityChecks, "../../reporting-page/frontend/src/databases/database.en-GB.json")
 			require.NoError(t, err)
 		})
 	}
@@ -114,4 +117,70 @@ func TestLighthouseStateTransition(t *testing.T) {
 			require.Equal(t, tt.expectedLighthouseState, got.LighthouseState)
 		})
 	}
+}
+
+func TestSufficienActivityFail(t *testing.T) {
+	testGamestate := gamification.GameState{Points: 0, PointsHistory: nil, TimeStamps: nil, LighthouseState: 0}
+	got := gamification.SufficientActivity(testGamestate)
+	require.False(t, got)
+}
+
+type MockPointCalculationGetter struct{}
+
+func (m MockPointCalculationGetter) PointCalculation(gs gamification.GameState, _ []checks.Check, _ string) (gamification.GameState, error) {
+	return gs, errors.New("mock error")
+}
+
+func TestUpdateGameState_Error(t *testing.T) {
+	mockDatabasePath := "../../reporting-page/frontend/src/databases/database.en-GB.json"
+	mockScanResults := []checks.Check{
+		{
+			IssueID:  29,
+			ResultID: 1, // severity 2
+		},
+		{
+			IssueID:  5,
+			ResultID: 1, // severity 1
+		},
+	}
+	getter := MockPointCalculationGetter{}
+	_, err := gamification.UpdateGameState(mockScanResults, mockDatabasePath, getter, usersettings.RealSaveUserSettingsGetter{})
+	require.Error(t, err)
+	require.Equal(t, "mock error", err.Error())
+}
+
+type MockSaveUserSettingsGetter struct{}
+
+func (m MockSaveUserSettingsGetter) SaveUserSettings(_ usersettings.UserSettings) error {
+	return errors.New("mock error")
+}
+
+func TestUpdateGameState_SaveSettingsError(t *testing.T) {
+	mockDatabasePath := "../../reporting-page/frontend/src/databases/database.en-GB.json"
+	mockScanResults := []checks.Check{
+		{
+			IssueID:  29,
+			ResultID: 1, // severity 2
+		},
+		{
+			IssueID:  5,
+			ResultID: 1, // severity 1
+		},
+	}
+	getter := gamification.RealPointCalculationGetter{}
+	userGetter := MockSaveUserSettingsGetter{}
+	got, _ := gamification.UpdateGameState(mockScanResults, mockDatabasePath, getter, userGetter)
+	require.NotNil(t, got)
+}
+
+func TestPointCalculation_UnmarshalError(t *testing.T) {
+	getter := gamification.RealPointCalculationGetter{}
+	gs := gamification.GameState{Points: 0, PointsHistory: nil, TimeStamps: nil, LighthouseState: 0}
+
+	scanResults := []checks.Check{}
+	invalidJSONFilePath := "../../invalid.json"
+
+	_, err := getter.PointCalculation(gs, scanResults, invalidJSONFilePath)
+
+	require.Error(t, err)
 }

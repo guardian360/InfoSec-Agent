@@ -64,6 +64,7 @@ export function reloadPage() {
       break;
     case '9':
       openPersonalizePage();
+      break;
     default:
       try {
         const issuepage = JSON.parse(page);
@@ -125,7 +126,7 @@ export function showModal(id) {
       }
     };
 
-    if (id == 'window-version-modal') {
+    if (id === 'window-version-modal') {
       const version = sessionStorage.getItem('WindowsVersion');
       document.getElementById('windows-' + version + '-button').classList.add('selected');
     }
@@ -140,7 +141,7 @@ export function selectWindowsVersion(version) {
   if (version == '10') {
     document.getElementById('windows-10-button').classList.add('selected');
     document.getElementById('windows-11-button').classList.remove('selected');
-  } else if (version == '11') {
+  } else {
     document.getElementById('windows-11-button').classList.add('selected');
     document.getElementById('windows-10-button').classList.remove('selected');
   }

@@ -104,7 +104,8 @@
     "ShareText": "Wählen Sie, wo Sie Ihren Fortschritt teilen möchten, speichern und herunterladen, dann mit anderen teilen!",
     "SaveText": "Speichern",
     "Share": "Teilen",
-    "LighthouseProgress":"Fortschritt"
+    "LighthouseProgress":"Fortschritt",
+    "TooltipText": "Je aktiver du bei der Lösung von Problemen bist, desto mehr arbeitest du daran, sicherer zu werden! Dies wird durch den Bau deines Leuchtturms angezeigt. Am Anfang wird nicht viel zu sehen sein, aber wenn du den InfoSec Agent konsequent nutzt, wirst du einen wunderschönen Leuchtturm bauen können. Um in den nächsten Zustand des Leuchtturms überzugehen, muss die Fortschrittsanzeige voll sein."
   },
   "Issues":
   {
@@ -119,6 +120,7 @@
     "Previous": "&laquo; Vorheriger Schritt",
     "Next": "Nächster Schritt &raquo;",
     "BackIssues": "Zurück zur Übersicht der Probleme",
+    "BackHome": "Zurück zur Startseite",
     "BackChecks": "Zurück zur Übersicht der Überprüfungen",
     "Port": "Die folgenden Prozesse laufen derzeit auf Ihrem Gerät auf den folgenden Ports: ",
     "Password": "Sie haben Ihr Passwort geändert am: ",
@@ -129,6 +131,7 @@
     "Medium": "Mittel",
     "High": "Hoch",
     "Info": "Info",
+    "Failed": "Gescheitert",
     "ScanAgain": "Erneut scannen"
   },
   "About": {
@@ -143,18 +146,22 @@
   },  
   "Programs": {
     "Name":"Name",
+    "Version":"Ausführung",
     "ProgramTable": "Installierte Programme",
-    "Search": "Suchen"
+    "Search": "Suchen..."
   },  
   "Personalize": {
-    "ChangeFavicon": "Favicon ändern",
     "navImage": "Navigationsbild",
     "ChangeImage": "Bild ändern",
     "Title": "Navigationstitel",
     "ChangeTitle": "Titel ändern",
     "Reset": "Einstellungen zurücksetzen",
     "PersonalizeTitle": "Personalisieren Sie Ihr Erlebnis",
-    "PickTheme": "Wählen Sie ein Thema"
+    "PickTheme": "Wählen Sie ein Thema",
+    "NavImage": "Navigationsbild",
+    "NavTitle": "Navigationstitel",
+    "Light": "Licht",
+    "Dark": "Dunkel"
   },
   "AllChecks": {
     "Security": "Sicherheit",
@@ -178,6 +185,7 @@
     "PermissionsText": "Auf Ihrem Computer installierte Anwendungen möchten auf bestimmte Funktionen oder Geräte, die mit Ihrem PC verbunden sind, zugreifen oder Berechtigungen dafür erhalten. Es liegt in Ihrer Verantwortung als Benutzer, diesen Anwendungen Berechtigungen zu erteilen oder nicht. Es wird daher empfohlen, im Internet zu recherchieren, ob eine Anwendung, die Sie verwenden, bestimmte Berechtigungen haben sollte oder nicht.",
     "BrowserText": "Um Zugang zum Internet zu haben, verwenden Sie einen Browser. Während ein Browser sehr nützlich ist, schützt er Ihre Daten nicht immer. Um beim Surfen im Internet sicher zu bleiben, müssen Sie immer darauf achten, worauf Sie klicken.",
     "OtherPrivacyText": "Es gibt auch andere Möglichkeiten, Ihre Daten privat zu halten.",
+    "BrowserZeroFound" : "Diese Überprüfungen konnten nicht durchgeführt werden, da der Browser wahrscheinlich nicht installiert ist.",
 
     "Id1":"Über Bluetooth verbundene Geräte",
     "Id2":"Über USB-Ports verbundene Geräte",
@@ -191,7 +199,7 @@
     "Id10":"Anwendungen mit Kontaktberechtigungen",
     "Id11":"Von Anwendungen verwendete offene Ports",
     "Id12":"Remote-Desktop aktiviert/deaktiviert",
-    "Id13":"System Message Block aktiviert/deaktiviert",
+    "Id13":"Server Message Block aktiviert/deaktiviert",
     "Id14":"Benutzerkontensteuerung aktiviert/deaktiviert",
     "Id15":"Windows Defender aktiviert/deaktiviert",
     "Id16":"Letzte Passwortänderung bei Windows",

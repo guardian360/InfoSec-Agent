@@ -31,7 +31,7 @@ var WinVersion int
 func Outdated(mockExecutor mocking.CommandExecutor) checks.Check {
 	versionData, err := mockExecutor.Execute("cmd", "/c", "ver")
 	if err != nil {
-		logger.Log.ErrorWithErr("Error executing command: ", err)
+		logger.Log.ErrorWithErr("Error executing command", err)
 		return checks.NewCheckError(checks.WindowsOutdatedID, err)
 	}
 
@@ -39,10 +39,14 @@ func Outdated(mockExecutor mocking.CommandExecutor) checks.Check {
 	// Using regular expression to extract numbers after the second dot
 	re := regexp.MustCompile(`(\d+)\.\d+\.(\d+)\.(\d+)`)
 	match := re.FindStringSubmatch(versionString)
+	if len(match) < 4 {
+		logger.Log.Error("Error parsing Windows version string")
+		return checks.NewCheckError(checks.WindowsOutdatedID, errors.New("error parsing Windows version string"))
+	}
 
 	majorVersion, err := strconv.Atoi(match[1])
 	if err != nil {
-		logger.Log.ErrorWithErr("Error converting major version to integer: ", err)
+		logger.Log.ErrorWithErr("Error converting major version to integer", err)
 		return checks.NewCheckError(checks.WindowsOutdatedID, err)
 	}
 
@@ -50,7 +54,7 @@ func Outdated(mockExecutor mocking.CommandExecutor) checks.Check {
 	minorVersion, err := strconv.Atoi(match[2])
 	WinVersion = findWindowsVersion(majorVersion, minorVersion)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error converting minor version to integer: ", err)
+		logger.Log.ErrorWithErr("Error converting minor version to integer", err)
 		return checks.NewCheckError(checks.WindowsOutdatedID, err)
 	}
 
@@ -113,25 +117,25 @@ func GetURLBody(urlStr string) *html.Node {
 	ctx := context.Background()
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, urlStr, nil)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error creating HTTP request: ", err)
+		logger.Log.ErrorWithErr("Error creating HTTP request", err)
 		return nil
 	}
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error getting response: ", err)
+		logger.Log.ErrorWithErr("Error getting response", err)
 		return nil
 	}
 	defer func(Body io.ReadCloser) {
 		err = Body.Close()
 		if err != nil {
-			logger.Log.ErrorWithErr("Error closing response body: ", err)
+			logger.Log.ErrorWithErr("Error closing response body", err)
 		}
 	}(resp.Body)
 
 	// Parse HTML
 	doc, err := html.Parse(resp.Body)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error parsing HTML: ", err)
+		logger.Log.ErrorWithErr("Error parsing HTML", err)
 	}
 	return doc
 }

@@ -1,4 +1,3 @@
-// Package network provides functions related to security/privacy checks of network settings
 package network
 
 import (
@@ -94,7 +93,7 @@ func OpenPorts(tasklistexecutor, netstatexecutor mocking.CommandExecutor) checks
 	// Sort the keys
 	sort.Strings(keys)
 
-	// Iterate over the sorted keys and construct the ouput strings
+	// Iterate over the sorted keys and construct the output strings
 	for _, name := range keys {
 		ports := processPorts[name]
 		result.Result = append(result.Result, fmt.Sprintf("process: %s, port: %s", name, strings.Join(ports, ", ")))

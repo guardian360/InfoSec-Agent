@@ -27,6 +27,7 @@ Should later on be able to be changed by user, with help of js
   --background-security-button-hover: #644878;
   --background-privacy-button: #4E869B;
   --background-privacy-button-hover: #427385;
+  --background-hover: rgb(50 50 50 / 90%);
 
   /* colors for text */
   --text-body: #333;                                  /* main text color */
