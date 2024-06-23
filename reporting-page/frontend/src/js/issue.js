@@ -123,7 +123,7 @@ export async function openIssuePage(issueId, resultId, back = undefined) {
   }
   const issueData = currentIssue[resultId];
   var riskLevel = '';
-  if (issueData.Severity == 0) riskLevel = '<span class="risk-indicator lang-acceptable" data-severity="0"></span>';
+  if (issueData.Severity == 0) riskLevel = '<span class="risk-indicator lang-acceptable-risk" data-severity="0"></span>';
   else if (issueData.Severity == 1) riskLevel = '<span class="risk-indicator lang-low" data-severity="1"></span>';
   else if (issueData.Severity == 2) riskLevel = '<span class="risk-indicator lang-medium" data-severity="2"></span>';
   else if (issueData.Severity == 3) riskLevel = '<span class="risk-indicator lang-high" data-severity="3"></span>';
@@ -187,7 +187,7 @@ export async function openIssuePage(issueId, resultId, back = undefined) {
           ${riskLevel}
         </div>
         <div class="issue-information">
-          <p>${currentIssue.Information}</p>
+          <p id="description">${currentIssue.Information}</p>
           <h2 id="solution" class="lang-solution"></h2>
           <div class="issue-solution">
             <p id="solution-text">${stepCounter +1}. ${getVersionSolution(issueData, stepCounter)}</p>
@@ -239,11 +239,12 @@ export async function openIssuePage(issueId, resultId, back = undefined) {
   const texts = ['lang-findings', 'lang-solution', 'lang-previous-button',
     'lang-next-button', 'lang-back-button-issues', 'lang-back-button-home', 'lang-back-button-checks', 'lang-port',
     'lang-password', 'lang-acceptable', 'lang-cookies', 'lang-permissions', 'lang-scan-again',
-    'lang-info', 'lang-medium', 'lang-high', 'lang-low'];
+    'lang-info', 'lang-medium', 'lang-high', 'lang-low', 'lang-acceptable-risk'
+  ];
   const localizationIds = ['Issues.Findings', 'Issues.Solution', 'Issues.Previous',
     'Issues.Next', 'Issues.BackIssues', 'Issues.BackHome', 'Issues.BackChecks', 'Issues.Port', 'Issues.Password',
     'Issues.Acceptable', 'Issues.Cookies', 'Issues.Permissions', 'Issues.ScanAgain',
-    'Issues.Info', 'Issues.Medium', 'Issues.High', 'Issues.Low'
+    'Dashboard.InfoRisk', 'Dashboard.MediumRisk', 'Dashboard.HighRisk', 'Dashboard.LowRisk', 'Dashboard.Acceptable'
   ];
   for (let i = 0; i < texts.length; i++) {
     getLocalization(localizationIds[i], texts[i]);
@@ -499,7 +500,7 @@ export function parseShowResult(issueId, resultId, currentIssue) {
 
   const issueData = currentIssue[resultId];
   var riskLevel = '';
-  if (issueData.Severity == 0) riskLevel = '<span class="risk-indicator lang-acceptable" data-severity="0"></span>';
+  if (issueData.Severity == 0) riskLevel = '<span class="risk-indicator lang-acceptable-risk" data-severity="0"></span>';
   else if (issueData.Severity == 1) riskLevel = '<span class="risk-indicator lang-low" data-severity="1"></span>';
   else if (issueData.Severity == 2) riskLevel = '<span class="risk-indicator lang-medium" data-severity="2"></span>';
   else if (issueData.Severity == 3) riskLevel = '<span class="risk-indicator lang-high" data-severity="3"></span>';
@@ -511,9 +512,9 @@ export function parseShowResult(issueId, resultId, currentIssue) {
       ${riskLevel}
     </div>
     <div class="issue-information">
-      <p>${currentIssue.Information}</p>
+      <p id="description">${currentIssue.Information}</p>
       <h2 id="information" class="lang-findings"></h2>
-      <p id="description">${resultLine}</p>
+      <p id="findings">${resultLine}</p>
       <h2 id="solution" class="lang-solution"></h2>
       <div class="issue-solution">
         <p id="solution-text">${stepCounter +1}. ${getVersionSolution(issueData, stepCounter)}</p>
