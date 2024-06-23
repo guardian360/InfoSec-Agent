@@ -214,6 +214,12 @@ h2 {
 } */
 
 /* Button styles */
+.button-box{
+  width: 350px;
+  display: flex;
+  flex-wrap: wrap; /* Allow buttons to wrap */
+}
+
 .button {
   background-color: var(--background-color-left-nav);
   color: #fff;
@@ -237,16 +243,18 @@ h2 {
 #back-button, #next-button, #previous-button, #scan-button{
   width: auto; /* Auto width based on content */
   padding: 10px 15px; /* Sufficient padding for touch targets */
-  float: none; /* Remove float property */
 }
 
 /* Ensure buttons don't line up against each other */
 #next-button, #scan-button {
   margin-left: 10px; /* Add space between buttons */
+  float: right;
+  margin-left: auto;
 }
 
 #previous-button {
   margin-right: 10px; /* Add space between buttons */
+  float: left;
 }
 
 /* Responsive design */
@@ -263,10 +271,4 @@ h2 {
   display: flex;
   justify-content: center; /* Center buttons in the container */
   flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
-}
-
-.button-box {
-  display: flex;
-  justify-content: center; /* Center buttons horizontally */
-  flex-wrap: wrap; /* Allow buttons to wrap */
 }
