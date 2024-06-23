@@ -88,7 +88,7 @@ describe('Integration page', function() {
     test.value(steps[2].style.display).isEqualTo('none');
   });
   it('nextStep does not do anything when the final step is shown', async function() {
-      // Arrange
+    // Arrange
     await import('../src/js/integration.js');
 
     // Act
@@ -119,7 +119,7 @@ describe('Integration page', function() {
 
     // Act
     // API key given
-    document.getElementById('apiKeyInput').value = 'abcd'
+    document.getElementById('apiKeyInput').value = 'abcd';
     keyButton.dispatchEvent(clickEvent);
     status = document.getElementById('status');
     keyButton = document.getElementById('apiKeyButtonClick');
@@ -142,7 +142,7 @@ describe('Integration page', function() {
     const status = document.getElementById('status');
 
     // Assert
-    test.value(status.innerHTML).isEqualTo('Disconnected from API.')
+    test.value(status.innerHTML).isEqualTo('Disconnected from API.');
     test.value(disconnectButton.style.display).isEqualTo('none');
     test.value(keyButton.style.display).isEqualTo('inline-block');
   });

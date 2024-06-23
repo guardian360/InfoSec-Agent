@@ -244,12 +244,10 @@ window.onload = function() {
   if (savedImage) {
     const logo = document.getElementById('logo');
     logo.src = savedImage;
-    console.log("image");
   }
   if (savedText) {
     const title = document.getElementById('title');
     title.textContent = savedText;
-    console.log("text");
   }
 };
 

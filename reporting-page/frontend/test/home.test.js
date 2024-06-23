@@ -47,12 +47,12 @@ jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
   LoadUserSettings: jest.fn(),
   GetImagePath: jest.fn().mockImplementation((input) => input),
   GetLighthouseState: jest.fn().mockImplementationOnce(() => 0)
-  .mockImplementationOnce(() => 1)
-  .mockImplementationOnce(() => 2)
-  .mockImplementationOnce(() => 3)
-  .mockImplementationOnce(() => 4)
-  .mockImplementationOnce(() => 5)
-  .mockImplementation(() => 0),
+    .mockImplementationOnce(() => 1)
+    .mockImplementationOnce(() => 2)
+    .mockImplementationOnce(() => 3)
+    .mockImplementationOnce(() => 4)
+    .mockImplementationOnce(() => 5)
+    .mockImplementation(() => 0),
 }));
 
 // Mock LogError
@@ -103,13 +103,13 @@ describe('Home page', function() {
     const rc = new RiskCounters(1, 1, 1, 1, 1);
     sessionStorage.setItem('RiskCounters', JSON.stringify(rc));
     const backgroundVideos = [
-      "gamification/state0.mkv",
-      "gamification/state1.mkv",
-      "gamification/state2.mkv",
-      "gamification/state3.mkv",
-      "gamification/state4.mkv",
-      "gamification/state0.mkv",
-    ]
+      'gamification/state0.mkv',
+      'gamification/state1.mkv',
+      'gamification/state2.mkv',
+      'gamification/state3.mkv',
+      'gamification/state4.mkv',
+      'gamification/state0.mkv',
+    ];
 
     // Act
     await homepage.openHomePage();
@@ -162,7 +162,7 @@ describe('Home page', function() {
         result_id: 0,
         result: [],
       },
-    ]
+    ];
     sessionStorage.setItem('ScanResult', JSON.stringify(scanResultBegin.concat(scanResultMock)));
 
     const issue = await import('../src/js/issue.js');
@@ -182,10 +182,10 @@ describe('Home page', function() {
         result_id: 1,
         result: [],
       },
-    ]
+    ];
     sessionStorage.setItem('ScanResult', JSON.stringify(scanResultBegin.concat(scanResultMock)));
-    const scanResult = JSON.parse(sessionStorage.getItem('ScanResult'))
-    
+    const scanResult = JSON.parse(sessionStorage.getItem('ScanResult'));
+
     const issue = await import('../src/js/issue.js');
     const openIssuePageMock = jest.spyOn(issue, 'openIssuePage');
 
@@ -194,33 +194,33 @@ describe('Home page', function() {
     const securityIssue = scanResult[4];
 
     // Assert
-    expect(openIssuePageMock).toHaveBeenCalledWith(securityIssue.issue_id,securityIssue.result_id, "home");
+    expect(openIssuePageMock).toHaveBeenCalledWith(securityIssue.issue_id, securityIssue.result_id, 'home');
 
     // Act
     home.suggestedIssue('Privacy');
     const privacyIssue = scanResult[0];
 
     // Assert
-    expect(openIssuePageMock).toHaveBeenCalledWith(privacyIssue.issue_id,privacyIssue.result_id, "home");
+    expect(openIssuePageMock).toHaveBeenCalledWith(privacyIssue.issue_id, privacyIssue.result_id, 'home');
   });
   it('getSeverity has a correct return value', async function() {
     // Arrange
     const home = await import('../src/js/home.js');
 
     // Act
-    let severity = home.getSeverity(0,0);
+    let severity = home.getSeverity(0, 0);
 
     // Assert
     test.value(severity).isUndefined();
 
     // Act
-    severity = home.getSeverity(1,10);
+    severity = home.getSeverity(1, 10);
 
     // Assert
     test.value(severity).isUndefined();
 
     // Act
-    severity = home.getSeverity(1,0);
+    severity = home.getSeverity(1, 0);
 
     // Assert
     test.value(severity).isEqualTo(data[1][0].Severity);
@@ -264,8 +264,8 @@ describe('Home page', function() {
   });
   it('The logo and title are loaded when the window is loaded', async function() {
     // Arrange
-    localStorage.setItem('picture','picturePath');
-    localStorage.setItem('title','titlePath');
+    localStorage.setItem('picture', 'picturePath');
+    localStorage.setItem('title', 'titlePath');
 
     // Act
     window.dispatchEvent(new Event('load'));
@@ -273,5 +273,5 @@ describe('Home page', function() {
     // Assert
     test.value(document.getElementById('logo').src).isEqualTo('picturePath');
     test.value(document.getElementById('title').textContent).isEqualTo('titlePath');
-  })
+  });
 });
