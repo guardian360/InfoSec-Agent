@@ -206,16 +206,24 @@ h2 {
 }
 
 .zoom-img {
-  cursor: zoom-in;
-  transition: transform 0.2s, top 0.2s, left 0.2s;
   position: relative;
   display: block;
   margin: 0 auto;
 }
 
-/* .zoom-img:hover {
-  transform: scale(2);
-} */
+#zoomCheck {
+  display: none;
+}
+
+.zoom-img {
+  transition: transform 0.25s ease;
+  cursor: zoom-in;
+}
+
+#zoomCheck:checked ~ label > img {
+  transform: scale(1.5);
+  cursor: zoom-out;
+}
 
 /* Button styles */
 .button-box{
