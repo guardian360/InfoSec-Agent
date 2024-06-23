@@ -193,6 +193,10 @@ h2 {
   padding: 20px; /* Add padding for space inside the elements */
 }
 
+#solution-text {
+  margin-left: 10px;
+}
+
 /* Step screenshots */
 #step-screenshot {
   display: block;
