@@ -122,12 +122,19 @@ export async function openIssuePage(issueId, resultId, back = undefined) {
     break;
   }
   const issueData = currentIssue[resultId];
+  var riskLevel = '';
+  if (issueData.Severity == 0) riskLevel = '<span class="risk-indicator lang-acceptable" data-severity="0"></span>';
+  else if (issueData.Severity == 1) riskLevel = '<span class="risk-indicator lang-low" data-severity="1"></span>';
+  else if (issueData.Severity == 2) riskLevel = '<span class="risk-indicator lang-medium" data-severity="2"></span>';
+  else if (issueData.Severity == 3) riskLevel = '<span class="risk-indicator lang-high" data-severity="3"></span>';
+  else riskLevel = '<span class="risk-indicator lang-info" data-severity="4"></span>';
   if (resultId < 0) {
     const pageContents = document.getElementById('page-contents');
     pageContents.innerHTML = `
     <div class="issue-data">
       <div class="issue-page-header" data-severity="${issueData.Severity}">
         <h2 class="issue-name">${issueData.Name}</h2>
+        ${riskLevel}
       </div>
       <div class="issue-information">
         <p id="description">${currentIssue.Information}</p>
@@ -151,6 +158,7 @@ export async function openIssuePage(issueId, resultId, back = undefined) {
     <div class="issue-data">
       <div class="issue-page-header" data-severity="${issueData.Severity}">
         <h2 class="issue-name">${issueData.Name}</h2>
+        ${riskLevel}
       </div>
       <div class="issue-information">
         <p id="description">${currentIssue.Information}</p>
@@ -176,6 +184,7 @@ export async function openIssuePage(issueId, resultId, back = undefined) {
       <div class="issue-data">
         <div class="issue-page-header" data-severity="${issueData.Severity}">
           <h2 class="issue-name">${issueData.Name}</h2>
+          ${riskLevel}
         </div>
         <div class="issue-information">
           <p>${currentIssue.Information}</p>
@@ -229,10 +238,12 @@ export async function openIssuePage(issueId, resultId, back = undefined) {
 
   const texts = ['lang-findings', 'lang-solution', 'lang-previous-button',
     'lang-next-button', 'lang-back-button-issues', 'lang-back-button-home', 'lang-back-button-checks', 'lang-port',
-    'lang-password', 'lang-acceptable', 'lang-cookies', 'lang-permissions', 'lang-scan-again'];
+    'lang-password', 'lang-acceptable', 'lang-cookies', 'lang-permissions', 'lang-scan-again',
+    'lang-info', 'lang-medium', 'lang-high', 'lang-low'];
   const localizationIds = ['Issues.Findings', 'Issues.Solution', 'Issues.Previous',
     'Issues.Next', 'Issues.BackIssues', 'Issues.BackHome', 'Issues.BackChecks', 'Issues.Port', 'Issues.Password',
     'Issues.Acceptable', 'Issues.Cookies', 'Issues.Permissions', 'Issues.ScanAgain',
+    'Issues.Info', 'Issues.Medium', 'Issues.High', 'Issues.Low'
   ];
   for (let i = 0; i < texts.length; i++) {
     getLocalization(localizationIds[i], texts[i]);
@@ -487,10 +498,17 @@ export function parseShowResult(issueId, resultId, currentIssue) {
   }
 
   const issueData = currentIssue[resultId];
+  var riskLevel = '';
+  if (issueData.Severity == 0) riskLevel = '<span class="risk-indicator lang-acceptable" data-severity="0"></span>';
+  else if (issueData.Severity == 1) riskLevel = '<span class="risk-indicator lang-low" data-severity="1"></span>';
+  else if (issueData.Severity == 2) riskLevel = '<span class="risk-indicator lang-medium" data-severity="2"></span>';
+  else if (issueData.Severity == 3) riskLevel = '<span class="risk-indicator lang-high" data-severity="3"></span>';
+  else riskLevel = '<span class="risk-indicator lang-info" data-severity="4"></span>';
   const result = `
   <div class="issue-data">
     <div class="issue-page-header" data-severity="${issueData.Severity}">
       <h2 class="issue-name">${issueData.Name}</h2>
+      ${riskLevel}
     </div>
     <div class="issue-information">
       <p>${currentIssue.Information}</p>

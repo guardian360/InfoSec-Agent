@@ -170,6 +170,52 @@
   padding: 20px; /* Add padding around the content */
 }
 
+.issue-page-header {
+  display: flex;
+  justify-content: space-between; /* Space out the elements */
+  align-items: center; /* Center vertically */
+}
+
+.risk-indicator {
+  margin-right: 20px;
+  font-size: 18px;
+}
+
+.risk-indicator[data-severity="3"] {
+  background-color: var(--high-risk-color);
+  border-radius: 8px;
+  padding: 4px 10px;
+  color: var(--text-body);
+}
+
+.risk-indicator[data-severity="2"] {
+  background-color: var(--medium-risk-color);
+  border-radius: 8px;
+  padding: 4px 10px;
+  color: var(--text-body);
+}
+
+.risk-indicator[data-severity="1"] {
+  background-color: var(--low-risk-color);
+  border-radius: 8px;
+  padding: 4px 10px;
+  color: var(--text-body);
+}
+
+.risk-indicator[data-severity="0"] {
+  background-color: var(--no-risk-color);
+  border-radius: 8px;
+  padding: 4px 10px;
+  color: var(--text-body);
+}
+
+.risk-indicator[data-severity="4"] {
+  background-color: var(--info-color);
+  border-radius: 8px;
+  padding: 4px 10px;
+  color: var(--text-body);
+}
+
 .issue-name {
   margin-top: 10px;
 }
@@ -205,12 +251,6 @@ h2 {
   margin-top: 20px;
 }
 
-.zoom-img {
-  position: relative;
-  display: block;
-  margin: 0 auto;
-}
-
 #zoomCheck {
   display: none;
 }
@@ -218,6 +258,9 @@ h2 {
 .zoom-img {
   transition: transform 0.25s ease;
   cursor: zoom-in;
+  position: relative;
+  display: block;
+  margin: 0 auto;
 }
 
 #zoomCheck:checked ~ label > img {
