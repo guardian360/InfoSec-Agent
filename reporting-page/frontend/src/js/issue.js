@@ -157,10 +157,10 @@ export async function openIssuePage(issueId, resultId, back = undefined) {
         <h2 id="solution" class="lang-acceptable"></h2>
         <div class="issue-solution">
           <p id="solution-text">${getVersionSolution(issueData, stepCounter)}</p>
-        </div>
-        <div class="solution-buttons">
-          <div class="button-box">
-            <div class="lang-scan-again button" id="scan-button"></div>
+          <div class="solution-buttons">
+            <div class="button-box">
+              <div class="lang-scan-again button" id="scan-button"></div>
+            </div>
           </div>
         </div>
         <div class="button" id="back-button"></div>

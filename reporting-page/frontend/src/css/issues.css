@@ -219,7 +219,7 @@ h2 {
 
 /* Button styles */
 .button-box{
-  width: 350px;
+  width: 100%;
   display: flex;
   flex-wrap: wrap; /* Allow buttons to wrap */
 }
@@ -251,13 +251,11 @@ h2 {
 
 /* Ensure buttons don't line up against each other */
 #next-button, #scan-button {
-  margin-left: 10px; /* Add space between buttons */
   float: right;
   margin-left: auto;
 }
 
 #previous-button {
-  margin-right: 10px; /* Add space between buttons */
   float: left;
 }
 
