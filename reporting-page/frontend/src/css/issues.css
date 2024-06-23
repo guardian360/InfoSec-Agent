@@ -266,6 +266,7 @@ h1, h2{
   margin: 0 auto;
 }
 
-.zoom-img:hover {
+.zoom-img.zoomed {
   transform: scale(2);
+  cursor: zoom-out;
 }

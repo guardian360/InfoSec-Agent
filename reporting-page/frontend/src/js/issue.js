@@ -236,6 +236,15 @@ export async function openIssuePage(issueId, resultId, back = undefined) {
     sessionStorage.setItem('savedPage', JSON.stringify([issueId, resultId]));
     openIssuePage(issueId, resultId);
   });
+
+  const image = document.getElementsByClassName('zoom-img');
+  image[0].addEventListener('click', function() {
+    if (image[0].classList.contains('zoomed')) {
+      image[0].classList.remove('zoomed');
+    } else {
+      image[0].classList.add('zoomed');
+    }
+  });
 }
 
 /**
