@@ -238,13 +238,15 @@ export async function openIssuePage(issueId, resultId, back = undefined) {
   });
 
   const image = document.getElementsByClassName('zoom-img');
-  image[0].addEventListener('click', function() {
-    if (image[0].classList.contains('zoomed')) {
-      image[0].classList.remove('zoomed');
-    } else {
-      image[0].classList.add('zoomed');
-    }
-  });
+  if (image.length > 0) {
+    image[0].addEventListener('click', function() {
+      if (image[0].classList.contains('zoomed')) {
+        image[0].classList.remove('zoomed');
+      } else {
+        image[0].classList.add('zoomed');
+      }
+    });
+  }
 }
 
 /**
