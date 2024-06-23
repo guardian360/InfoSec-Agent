@@ -174,6 +174,7 @@
   display: flex;
   justify-content: space-between; /* Space out the elements */
   align-items: center; /* Center vertically */
+  width: auto;
 }
 
 .risk-indicator {
@@ -226,10 +227,6 @@ h2 {
   padding: 0; /* Add some padding to create space around the titles */
 }
 
-.issue-page-header {
-  width: auto;
-}
-
 .issue-solution {
   box-shadow: 0 4px 8px rgb(0 0 0 / 10%); /* Add shadow for depth */
   border: 1px solid var(--border-color); /* Light border for definition */
@@ -251,7 +248,7 @@ h2 {
   margin-top: 20px;
 }
 
-#zoomCheck {
+#zoom-check {
   display: none;
 }
 
@@ -263,7 +260,7 @@ h2 {
   margin: 0 auto;
 }
 
-#zoomCheck:checked ~ label > img {
+#zoom-check:checked ~ label > img {
   transform: scale(1.5);
   cursor: zoom-out;
 }
