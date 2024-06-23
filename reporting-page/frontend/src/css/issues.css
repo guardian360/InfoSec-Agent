@@ -322,3 +322,67 @@ h2 {
   justify-content: center; /* Center buttons in the container */
   flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
 }
+
+.button-box {
+  display: flex;
+  justify-content: center; /* Center buttons horizontally */
+  flex-wrap: wrap; /* Allow buttons to wrap */
+}
+
+/* Additional styles for better visual */
+.issue-information, .issue-solution {
+  box-shadow: 0 4px 8px rgb(0 0 0 / 10%); /* Add shadow for depth */
+  border: 1px solid var(--border-color); /* Light border for definition */
+  margin: 20px; /* Add space around the elements */
+  background-color: var(--background-color-top-nav); /* Light background color */
+  border-radius: 10px; /* Rounded corners for a softer look */
+  padding: 10px; /* Add padding for space inside the elements */
+}
+
+/* Additional styles for other elements */
+h1, h2{
+  color: var(--text-body);
+  margin: 10px;
+  padding: 10px 0 10px 10px; /* Add some padding to create space around the titles */
+}
+
+.issue-information > p{
+  margin-left: 20px;
+}
+
+.information{
+  margin-left: 20px;
+}
+
+#step-screenshot {
+  display: block;
+  max-width: 100%; /* Make it responsive */
+  height: auto;
+  margin-top: 20px;
+}
+
+#search-input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  box-sizing: border-box;
+  border: 1px solid var(--border-color);
+  background-color: var(--background-color-table-header);
+  color: var(--text-body);
+  border-radius: 4px;
+  font-size: 18px;
+}
+
+/* Add zoom function */
+.zoom-img {
+  cursor: zoom-in;
+  transition: transform 0.2s, top 0.2s, left 0.2s;
+  position: relative;
+  display: block;
+  margin: 0 auto;
+}
+
+.zoom-img.zoomed {
+  transform: scale(2);
+  cursor: zoom-out;
+}
