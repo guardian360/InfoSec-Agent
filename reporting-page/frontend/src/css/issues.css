@@ -152,99 +152,6 @@
   cursor: pointer;
 }
 
-/* Issue pages */
-
-/* Button styles */
-.button {
-  background-color: var(--background-color-left-nav);
-  color: #fff;
-  padding: 12px 20px;
-  text-align: center;
-  text-decoration: none; /* Remove underline from links styled as buttons */
-  display: inline-block; /* Allows padding and width to take effect */
-  border-radius: 5px;
-  transition: background-color 0.2s, color 0.2s;
-  cursor: pointer; /* Indicate that it's clickable */
-  border: none; /* Remove borders for flat design */
-  font-size: 16px; /* Increase font size for readability */
-  margin: 5px; /* Add some space around buttons */
-}
-
-.button:hover {
-  background-color: #0056b3; /* Slightly darker blue on hover */
-  color: #dcdcdc; /* Light grey text color on hover for better contrast */
-}
-
-/* Specific Styles for Navigation Buttons */
-#back-button, #next-button, #previous-button, #scan-button{
-  width: auto; /* Auto width based on content */
-  padding: 10px 15px; /* Sufficient padding for touch targets */
-  float: none; /* Remove float property */
-}
-
-/* Ensure buttons don't line up against each other */
-#next-button {
-  margin-left: 10px; /* Add space between buttons */
-}
-
-#previous-button {
-  margin-right: 10px; /* Add space between buttons */
-}
-
-/* Responsive design */
-@media (width <= 768px) {
-  .button, #back-button, #next-button, #previous-button, #scan-button {
-    width: 100%; /* Full width on small screens */
-    margin-top: 10px; /* Space out stacked buttons */
-  }
-}
-
-/* Solution Buttons Container */
-.solution-buttons {
-  margin-top: 10px;
-  display: flex;
-  justify-content: center; /* Center buttons in the container */
-  flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
-}
-
-.button-box {
-  display: flex;
-  justify-content: center; /* Center buttons horizontally */
-  flex-wrap: wrap; /* Allow buttons to wrap */
-}
-
-/* Additional styles for better visual */
-.issue-information, .issue-solution {
-  box-shadow: 0 4px 8px rgb(0 0 0 / 10%); /* Add shadow for depth */
-  border: 1px solid var(--border-color); /* Light border for definition */
-  margin: 20px; /* Add space around the elements */
-  background-color: var(--background-color-top-nav); /* Light background color */
-  border-radius: 10px; /* Rounded corners for a softer look */
-  padding: 10px; /* Add padding for space inside the elements */
-}
-
-/* Additional styles for other elements */
-h1, h2{
-  color: var(--text-body);
-  margin: 10px;
-  padding: 10px 0 10px 10px; /* Add some padding to create space around the titles */
-}
-
-.issue-information > p{
-  margin-left: 20px;
-}
-
-.information{
-  margin-left: 20px;
-}
-
-#step-screenshot {
-  display: block;
-  max-width: 100%; /* Make it responsive */
-  height: auto;
-  margin-top: 20px;
-}
-
 #search-input {
   width: 100%;
   padding: 10px;
@@ -257,16 +164,153 @@ h1, h2{
   font-size: 18px;
 }
 
-/* Add zoom function */
+/* Issue pages */
+
+.issue-data {
+  padding: 20px; /* Add padding around the content */
+}
+
+.issue-page-header {
+  display: flex;
+  justify-content: space-between; /* Space out the elements */
+  align-items: center; /* Center vertically */
+  width: auto;
+}
+
+.risk-indicator {
+  margin-right: 20px;
+  font-size: 18px;
+}
+
+.risk-indicator[data-severity="3"] {
+  background-color: var(--high-risk-color);
+  border-radius: 8px;
+  padding: 4px 10px;
+  color: var(--text-body);
+}
+
+.risk-indicator[data-severity="2"] {
+  background-color: var(--medium-risk-color);
+  border-radius: 8px;
+  padding: 4px 10px;
+  color: var(--text-body);
+}
+
+.risk-indicator[data-severity="1"] {
+  background-color: var(--low-risk-color);
+  border-radius: 8px;
+  padding: 4px 10px;
+  color: var(--text-body);
+}
+
+.risk-indicator[data-severity="0"] {
+  background-color: var(--no-risk-color);
+  border-radius: 8px;
+  padding: 4px 10px;
+  color: var(--text-body);
+}
+
+.risk-indicator[data-severity="4"] {
+  background-color: var(--info-color);
+  border-radius: 8px;
+  padding: 4px 10px;
+  color: var(--text-body);
+}
+
+.issue-name {
+  margin-top: 10px;
+}
+
+h2 {
+  color: var(--text-body);
+  margin-top: 10px;
+  padding: 0; /* Add some padding to create space around the titles */
+}
+
+.issue-solution {
+  box-shadow: 0 4px 8px rgb(0 0 0 / 10%); /* Add shadow for depth */
+  border: 1px solid var(--border-color); /* Light border for definition */
+  margin-bottom: 20px; /* Add space around the elements */
+  background-color: var(--background-color-top-nav); /* Light background color */
+  border-radius: 10px; /* Rounded corners for a softer look */
+  padding: 20px; /* Add padding for space inside the elements */
+}
+
+#solution-text {
+  margin-left: 10px;
+}
+
+/* Step screenshots */
+#step-screenshot {
+  display: block;
+  max-width: 100%; /* Make it responsive */
+  height: auto;
+  margin-top: 20px;
+}
+
+#zoom-check {
+  display: none;
+}
+
 .zoom-img {
+  transition: transform 0.25s ease;
   cursor: zoom-in;
-  transition: transform 0.2s, top 0.2s, left 0.2s;
   position: relative;
   display: block;
   margin: 0 auto;
 }
 
-.zoom-img.zoomed {
-  transform: scale(2);
+#zoom-check:checked ~ label > img {
+  transform: scale(1.5);
   cursor: zoom-out;
+}
+
+/* Button styles */
+.button-box{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap; /* Allow buttons to wrap */
+}
+
+.button {
+  background-color: var(--background-color-left-nav);
+  color: #fff;
+  padding: 12px 20px;
+  text-align: center;
+  text-decoration: none; /* Remove underline from links styled as buttons */
+  display: inline-block; /* Allows padding and width to take effect */
+  border-radius: 5px;
+  transition: background-color 0.2s, color 0.2s;
+  cursor: pointer; /* Indicate that it's clickable */
+  border: none; /* Remove borders for flat design */
+  font-size: 16px; /* Increase font size for readability */
+}
+
+.button:hover {
+  background-color: var(--background-nav-hover); /* Slightly darker blue on hover */
+  color: #dcdcdc; /* Light grey text color on hover for better contrast */
+}
+
+/* Specific Styles for Navigation Buttons */
+#back-button, #next-button, #previous-button, #scan-button{
+  width: auto; /* Auto width based on content */
+  padding: 10px 15px; /* Sufficient padding for touch targets */
+}
+
+/* Ensure buttons don't line up against each other */
+#next-button, #scan-button {
+  float: right;
+  margin-left: auto;
+}
+
+#previous-button {
+  float: left;
+}
+
+/* Responsive design */
+@media (width <= 768px) {
+  .button, #back-button, #next-button, #previous-button, #scan-button {
+    width: 100%; /* Full width on small screens */
+    margin-top: 10px; /* Space out stacked buttons */
+  }
 }
