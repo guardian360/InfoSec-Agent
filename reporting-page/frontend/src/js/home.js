@@ -219,7 +219,7 @@ export function suggestedIssue(type) {
  *
  * @return {string} severity
  */
-function getSeverity(issueId, resultId) {
+export function getSeverity(issueId, resultId) {
   const issue = data[issueId];
   if (issue == undefined) return undefined;
   const issueData = issue[resultId];
@@ -227,12 +227,12 @@ function getSeverity(issueId, resultId) {
   return issueData.Severity;
 }
 
+/* istanbul ignore next */
 if (typeof document !== 'undefined') {
   try {
     document.getElementById('logo-button').addEventListener('click', () => openHomePage());
     document.getElementById('home-button').addEventListener('click', () => openHomePage());
   } catch (error) {
-    /* istanbul ignore next */
     logError('Error in security-dashboard.js: ' + error);
   }
 }
