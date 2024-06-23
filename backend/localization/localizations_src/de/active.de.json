@@ -105,7 +105,9 @@
     "SaveText": "Speichern",
     "Share": "Teilen",
     "LighthouseProgress":"Fortschritt",
-    "TooltipText": "Je aktiver du bei der Lösung von Problemen bist, desto mehr arbeitest du daran, sicherer zu werden! Dies wird durch den Bau deines Leuchtturms angezeigt. Am Anfang wird nicht viel zu sehen sein, aber wenn du den InfoSec Agent konsequent nutzt, wirst du einen wunderschönen Leuchtturm bauen können. Um in den nächsten Zustand des Leuchtturms überzugehen, muss die Fortschrittsanzeige voll sein."
+    "TooltipText": "Je aktiver du bei der Lösung von Problemen bist, desto mehr arbeitest du daran, sicherer zu werden! Dies wird durch den Bau deines Leuchtturms angezeigt. Am Anfang wird nicht viel zu sehen sein, aber wenn du den InfoSec Agent konsequent nutzt, wirst du einen wunderschönen Leuchtturm bauen können. Um in den nächsten Zustand des Leuchtturms überzugehen, muss die Fortschrittsanzeige voll sein.",
+    "ProgressText": " abgeschlossen zum nächsten Zustand.",
+    "ProgressTextAlmost": " Mach weiter, fast geschafft!"
   },
   "Issues":
   {

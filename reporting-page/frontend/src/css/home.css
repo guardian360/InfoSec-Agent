@@ -106,14 +106,15 @@ body {
 
 .progress-bar {
   height: 30px;
-  background-color: #76c7c0;
+  background-color: #64a9ee;
   width: 0;
 }
 
-#progress-text {
+#progress-text, #progress-percentage-text {
   font-size: 1.2em;
   color: #333;
-  text-align: center;
+  display: inline-block;
+  margin-left: 10px;
 }
 
 /* Tooltip */
