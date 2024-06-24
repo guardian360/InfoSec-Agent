@@ -18,7 +18,7 @@ func TestMain(m *testing.M) {
 	os.Exit(exitCode)
 }
 
-func TestOutdatedPrograms(t *testing.T) {
+func TestInstalledPrograms(t *testing.T) {
 	tests := []struct {
 		name     string
 		executor mocking.MockCommandExecutor
@@ -268,7 +268,7 @@ func TestOutdatedPrograms(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := programs.OutdatedSoftware(&tt.executor, tt.key)
+			got := programs.InstalledSoftware(&tt.executor, tt.key)
 			if tt.list {
 				require.Contains(t, got.Result, "Canon Inkjet Print Utility | Ǫ 3.1.0.0", "Device1 | 1.0.0")
 			} else {

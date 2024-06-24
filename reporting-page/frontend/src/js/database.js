@@ -1,4 +1,5 @@
-import {ScanNow as scanNowGo, LogError as logError} from '../../wailsjs/go/main/Tray.js';
+import {ScanNow as scanNowGo, LogError as logError,
+  GetInstalledPrograms as getProgramList} from '../../wailsjs/go/main/Tray.js';
 import {openHomePage} from './home.js';
 import {
   WindowShow as windowShow,
@@ -42,6 +43,8 @@ export async function scanTest(dialogPresent) {
       });
       // Perform other actions after scanTest is complete
       windowShow();
+      const programResult = await getProgramList();
+      sessionStorage.setItem('ProgramList', JSON.stringify(programResult));
     } catch (err) {
       // Handle any errors that occurred during scanTest or subsequent actions
       logError('Error in scanTest: ' + err);

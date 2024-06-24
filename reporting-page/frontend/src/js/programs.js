@@ -35,14 +35,10 @@ export async function openProgramsPage() {
   `;
 
   // Find the result of the programs check
-  const programsJson = JSON.parse(sessionStorage.getItem('ScanResult'));
-  const foundObject = programsJson.find((obj) => obj.issue_id === 43);
+  const programsJson = JSON.parse(sessionStorage.getItem('ProgramList'));
+  logError('Programs JSON: ' + JSON.stringify(programsJson));
   const issueTableHtml = document.getElementById('program-table').querySelector('tbody');
-  if (foundObject) {
-    fillProgamTable(issueTableHtml, foundObject.result);
-  } else {
-    console.log(`Object with ID ${targetId} not found.`);
-  }
+  fillProgamTable(issueTableHtml, programsJson.result);
 
   // Add event listeners for sorting and searching
   document.getElementById('search-input').addEventListener('input', function(event) {

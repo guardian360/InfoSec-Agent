@@ -12,7 +12,7 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 )
 
-// OutdatedSoftware is a function that checks for outdated software on the system.
+// InstalledSoftware is a function that checks for outdated software on the system.
 // It uses a CommandExecutor to execute system commands for retrieving the list of installed software.
 // The function collects all software lists, filters and deduplicates the software list, and formats the result array.
 // It returns a Check object that represents the result of the check for outdated software.
@@ -23,7 +23,7 @@ import (
 //
 // Returns:
 // checks.Check: A Check object that represents the result of the check for outdated software.
-func OutdatedSoftware(executor mocking.CommandExecutor, registryKey mocking.RegistryKey) checks.Check {
+func InstalledSoftware(executor mocking.CommandExecutor, registryKey mocking.RegistryKey) checks.Check {
 	// Collect all software lists
 	softwareList, err := collectAllSoftwareLists(executor, registryKey)
 	if softwareList == nil {

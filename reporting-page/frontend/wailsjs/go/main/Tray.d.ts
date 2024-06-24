@@ -6,6 +6,8 @@ export function ChangeLanguage():Promise<void>;
 
 export function ChangeScanInterval():Promise<void>;
 
+export function GetInstalledPrograms():Promise<checks.Check>;
+
 export function LogDebug(arg1:string):Promise<void>;
 
 export function LogError(arg1:string):Promise<void>;
