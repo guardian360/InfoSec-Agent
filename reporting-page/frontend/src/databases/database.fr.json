@@ -1542,22 +1542,14 @@
       "Severity": 2,
       "Name": "Le service WPAD est activé",
       "Solution": [
-        "Ouvrez une invite de commande élevée en cliquant avec le bouton droit sur le bouton Démarrer et en sélectionnant « Terminal (Admin) ».",
-        "Exécutez la commande « netsh winhttp show proxy » pour vérifier les paramètres de proxy actuels.",
-        "Si WPAD est activé, exécutez la commande « netsh winhttp reset proxy » pour désactiver WPAD et réinitialiser les paramètres du proxy.",
-        "Redémarrez votre ordinateur pour appliquer les modifications."
+        "Ouvrez l'éditeur de registre en recherchant register",
+        "Computer\\HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\Wpad",
+        "Si la clé WpadOverride n'existe pas, créez une clé en faisant un clic droit -> nouveau -> DWORD et donnez-lui le nom : WpadOverride",
+        "Changez la valeur de ce nouveau DWORD en 1."
       ],
       "Screenshots": [
-        "wpad/wpad-1.png",
-        "wpad/wpad-2.png",
-        "wpad/wpad-3.png",
-        "wpad/wpad-3.png"
       ],
       "ScreenshotsWindows10": [
-        "wpad/wpad-1.png",
-        "wpad/wpad-2.png",
-        "wpad/wpad-3.png",
-        "wpad/wpad-4.png"
       ]
     },
     "Type": "Sécurité",

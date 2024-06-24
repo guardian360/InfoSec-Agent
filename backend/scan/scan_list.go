@@ -111,7 +111,7 @@ var networkChecks = []func() checks.Check{
 	func() checks.Check { return network.OpenPorts(executor, executor) },
 	func() checks.Check { return network.SmbCheck(executor) },
 	func() checks.Check { return network.NetBIOSEnabled(executor) },
-	// func() checks.Check { return network.WPADEnabled(executor) },
+	// func() checks.Check { return network.WPADEnabled(mocking.CurrentUser) },
 }
 
 // programsChecks contains all security/privacy checks that are specific to installed programs.
