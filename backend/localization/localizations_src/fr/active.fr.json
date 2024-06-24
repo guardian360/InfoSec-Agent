@@ -104,7 +104,9 @@
     "SaveText": "Enregistrer",
     "Share": "Partager",
     "LighthouseProgress":"Progrès",
-    "TooltipText": "Plus vous êtes actif dans la résolution des problèmes, plus vous travaillez à devenir plus sécurisé ! Cela se manifeste par la construction de votre phare. Au début, il n'y aura pas beaucoup, mais rester cohérent dans l'utilisation de l'Agent InfoSec vous permettra de construire un magnifique phare. Pour passer à l'état suivant du phare, la barre de progression doit être pleine."
+    "TooltipText": "Plus vous êtes actif dans la résolution des problèmes, plus vous travaillez à devenir plus sécurisé ! Cela se manifeste par la construction de votre phare. Au début, il n'y aura pas beaucoup, mais rester cohérent dans l'utilisation de l'Agent InfoSec vous permettra de construire un magnifique phare. Pour passer à l'état suivant du phare, la barre de progression doit être pleine.",
+    "ProgressText": " terminé pour passer à l'état suivant.",
+    "ProgressTextAlmost": " Continuez, vous y êtes presque !"
   },
   "Issues":
   {

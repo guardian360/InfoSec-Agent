@@ -44,7 +44,7 @@ jest.unstable_mockModule('../src/js/database.js', () => ({
 // Mock Localize function
 jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
   Localize: jest.fn().mockImplementation((input) => mockGetLocalization(input)),
-  LoadUserSettings: jest.fn(),
+  LoadUserSettings: jest.fn().mockImplementation((input) => 10),
   GetImagePath: jest.fn().mockImplementation((input) => input),
   GetLighthouseState: jest.fn().mockImplementationOnce(() => 0)
     .mockImplementationOnce(() => 1)
