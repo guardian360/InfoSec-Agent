@@ -185,20 +185,20 @@ export async function openHomePage() {
   // Update the progress bar width and text
   if (lighthouseState === 4) {
     progressBar.style.width = '100%';
-    progressText.style.visibility = "hidden";
-    progressAlmostText.style.visibility= "hidden";
-    progressDoneText.style.visibility = "visible";
+    progressText.style.visibility = 'hidden';
+    progressAlmostText.style.visibility= 'hidden';
+    progressDoneText.style.visibility = 'visible';
   } else if (progressPercentage === 99) {
     progressBar.style.width = '99%';
-    progressText.style.visibility = "hidden";
-    progressAlmostText.style.visibility = "vissible";
-    progressDoneText.style.visibility = "hidden";
+    progressText.style.visibility = 'hidden';
+    progressAlmostText.style.visibility = 'vissible';
+    progressDoneText.style.visibility = 'hidden';
   } else {
     progressPercentageText.textContent = `${progressPercentage.toFixed(2)} %`;
     progressBar.style.width = `${progressPercentage}%`;
-    progressText.style.visibility = "visible";
-    progressAlmostText.style.visibility = "hidden";
-    progressDoneText.style.visibility  = "hidden";
+    progressText.style.visibility = 'visible';
+    progressAlmostText.style.visibility = 'hidden';
+    progressDoneText.style.visibility = 'hidden';
   }
 
   // on startup set the social media to share to facebook
