@@ -152,8 +152,8 @@ export async function openIssuePage(issueId, resultId, back = undefined) {
       </div>
     </div>
     `;
-  } else if (issueData.Severity == 0) {
-    // Check if the issue has no screenshots, if so, display that there is no issue (acceptable)
+  } else if (issueData.Severity == 0 && issueData.Screenshots.length == 0) {
+    // Check issue severity and if the issue has no screenshots, if so, display that there is no issue (acceptable)
     const pageContents = document.getElementById('page-contents');
     pageContents.innerHTML = `
     <div class="issue-data">
