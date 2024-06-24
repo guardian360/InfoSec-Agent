@@ -24,7 +24,7 @@ func TestOutdatedPrograms(t *testing.T) {
 		executor mocking.MockCommandExecutor
 		key      mocking.RegistryKey
 		want     checks.Check
-		err      bool
+		list     bool
 	}{
 		{
 			name: "Winget program",
@@ -126,6 +126,7 @@ func TestOutdatedPrograms(t *testing.T) {
 			},
 
 			want: checks.NewCheckResult(checks.OutdatedSoftwareID, checks.OutdatedSoftwareID, []string{"Canon Inkjet Print Utility | Ǫ 3.1.0.0", "Device1 | 1.0.0"}...),
+			list: true,
 		},
 		{
 			name: "error reading subkeyNames",
@@ -268,8 +269,8 @@ func TestOutdatedPrograms(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got := programs.OutdatedSoftware(&tt.executor, tt.key)
-			if tt.err {
-				require.Error(t, got.Error)
+			if tt.list {
+				require.Contains(t, got.Result, "Canon Inkjet Print Utility | Ǫ 3.1.0.0", "Device1 | 1.0.0")
 			} else {
 				require.Equal(t, tt.want, got)
 			}
