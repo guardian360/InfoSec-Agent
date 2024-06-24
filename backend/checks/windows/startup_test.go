@@ -77,7 +77,6 @@ func TestStartup(t *testing.T) {
 			key4: &mocking.MockRegistryKey{SubKeys: []mocking.MockRegistryKey{{
 				KeyName:      "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\StartupApproved\\Run32",
 				BinaryValues: map[string][]byte{"MockProgram3": {0, 0, 0, 0, 0, 1, 0}}, Err: nil}}},
-			// BinaryValues: 00 00 00 00 00 00 00 00 00 00 00 00
 			want:  checks.NewCheckError(checks.StartupID, errors.New("error")),
 			error: true,
 		},
