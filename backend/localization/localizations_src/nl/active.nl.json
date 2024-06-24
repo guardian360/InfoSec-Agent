@@ -165,6 +165,13 @@
     "Light": "Licht",
     "Dark": "Donker"
   },
+  "Integration": {
+    "apiKeyTitle": "Verbinden met de Lighthouse API",
+    "apiKeyDescription": "<b>Komt binnenkort:</b> deze functionaliteit is nog niet beschikbaar, u zult binnenkort verbinding kunnen maken met de Lighthouse API.",
+    "step1": "Log in op uw account op https://lighthouse.guardian360.nl en ga naar de instellingen",
+    "step2": "Ga naar de API-sectie en maak een nieuw token aan",
+    "step3": "Kopieer het token en plak het in het veld hieronder, daarna kunt u op de knop 'verbinden' klikken"
+  },
   "AllChecks": {
     "Security": "Beveiliging",
     "Privacy": "Privacy",
