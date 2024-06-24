@@ -149,7 +149,9 @@
     "Name":"Nom",
     "Version":"Version",
     "ProgramTable": "Programmes installés",
-    "Search": "Rechercher..."
+    "Search": "Rechercher...",
+    "ReloadText": "La liste des programmes n'a pas été chargée, veuillez essayer de recharger la page",
+    "ReloadButton": "Recharger la page"
   },
   "Personalize": {
     "navImage": "Image de navigation",

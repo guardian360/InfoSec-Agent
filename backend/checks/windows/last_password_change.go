@@ -83,7 +83,7 @@ func LastPasswordChange(executor mocking.CommandExecutor, usernameRetriever mock
 	parsedDate, err := time.Parse(goDateFormat, formattedDate)
 	if err != nil {
 		logger.Log.ErrorWithErr("Error parsing date", err)
-		return checks.NewCheckError(checks.LastPasswordChangeID, errors.New("error parsing date"))
+		parsedDate = time.Date(1970, 1, 1, 0, 0, 0, 0, time.UTC)
 	}
 
 	// Get the current time

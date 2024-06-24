@@ -150,7 +150,9 @@
     "Name":"Naam",
     "Version": "Versie",
     "ProgramTable": "Geïnstalleerde programma's",
-    "Search": "Zoeken..."
+    "Search": "Zoeken...",
+    "ReloadText": "De programmalijst is niet ingeladen, probeer de pagina opnieuw te laden",
+    "ReloadButton": "Pagina opnieuw laden"
   },
   "Personalize": {
     "navImage": "Navigatieafbeelding",

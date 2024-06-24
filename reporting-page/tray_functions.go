@@ -2,8 +2,10 @@ package main
 
 import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/programs"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/config"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/tray"
 )
 
@@ -38,6 +40,20 @@ func NewTray(log *logger.CustomLogger) *Tray {
 //   - error: An error object that describes the error, if any occurred. nil if no error occurred.
 func (t *Tray) ScanNow(dialogPresent bool) ([]checks.Check, error) {
 	return tray.ScanNow(dialogPresent, "../"+config.DatabasePath)
+}
+
+// GetInstalledPrograms is a method of the Tray struct that retrieves a list of installed programs on the local machine.
+// It uses the InstalledSoftware function from the programs package to perform this operation.
+// The InstalledSoftware function is called with a RealCommandExecutor and the LocalMachine as arguments.
+// The RealCommandExecutor is an implementation of the CommandExecutor interface that executes real commands on the local machine.
+// The LocalMachine is a predefined constant that represents the local machine in the context of registry operations.
+//
+// This method does not take any parameters.
+//
+// Returns:
+//   - checks.Check: A Check object representing the result of the InstalledSoftware function. This object contains information about the installed programs.
+func (t *Tray) GetInstalledPrograms() checks.Check {
+	return programs.InstalledSoftware(&mocking.RealCommandExecutor{}, mocking.LocalMachine)
 }
 
 // ChangeLanguage is responsible for switching the language of the system tray application.

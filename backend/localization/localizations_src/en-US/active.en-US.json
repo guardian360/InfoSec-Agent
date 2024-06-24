@@ -151,7 +151,9 @@
     "Name":"Name",
     "Version":"Version",
     "ProgramTable": "Installed programs",
-    "Search": "Search..."
+    "Search": "Search...",
+    "ReloadText": "The program list hasn't loaded, please try to reload the page",
+    "ReloadButton": "Reload page"
   },
   "Personalize": {
     "navImage": "Navigation image", 

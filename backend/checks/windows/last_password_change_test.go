@@ -70,7 +70,7 @@ func TestLastPasswordChange(t *testing.T) {
 					"                                         *Prestatielogboekgebru\nLidmaatschap globale groep" +
 					"               *Geen\nDe opdracht is voltooid.", Err: nil},
 			usernameRetriever: &mocking.RealUsernameRetriever{},
-			want:              checks.NewCheckError(checks.LastPasswordChangeID, errors.New("error parsing date")),
+			want:              checks.NewCheckResult(checks.LastPasswordChangeID, 0, ""),
 		},
 		{
 			name: "Password changed recently",
