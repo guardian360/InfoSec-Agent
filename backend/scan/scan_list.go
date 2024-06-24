@@ -111,13 +111,13 @@ var networkChecks = []func() checks.Check{
 	func() checks.Check { return network.OpenPorts(executor, executor) },
 	func() checks.Check { return network.SmbCheck(executor) },
 	func() checks.Check { return network.NetBIOSEnabled(executor) },
-	func() checks.Check { return network.WPADEnabled(executor) },
+	// func() checks.Check { return network.WPADEnabled(executor) },
 }
 
 // programsChecks contains all security/privacy checks that are specific to installed programs.
 var programsChecks = []func() checks.Check{
 	func() checks.Check { return programs.PasswordManager(mocking.RealProgramLister{}) },
-	func() checks.Check { return programs.OutdatedSoftware(executor) },
+	func() checks.Check { return programs.OutdatedSoftware(executor, mocking.LocalMachine) },
 }
 
 // windowsChecks contains all security/privacy checks that are specific to Windows (registry) settings.
