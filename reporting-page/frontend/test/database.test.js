@@ -51,6 +51,7 @@ jest.unstable_mockModule('../wailsjs/go/main/Tray.js', () => ({
     .mockImplementationOnce(() => mockScanNowGo(true))
     .mockImplementation(() => mockScanNowGo(false)),
   LogError: jest.fn(),
+  GetInstalledPrograms: jest.fn(),
 }));
 
 // Mock session and localStorage
