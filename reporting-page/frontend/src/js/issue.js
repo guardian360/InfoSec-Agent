@@ -122,6 +122,13 @@ export async function openIssuePage(issueId, resultId, back = undefined) {
     break;
   }
   const issueData = currentIssue[resultId];
+  let riskLevel = '';
+  if (issueData.Severity == 0) {
+    riskLevel = '<span class="risk-indicator lang-acceptable-risk" data-severity="0"></span>';
+  } else if (issueData.Severity == 1) riskLevel = '<span class="risk-indicator lang-low" data-severity="1"></span>';
+  else if (issueData.Severity == 2) riskLevel = '<span class="risk-indicator lang-medium" data-severity="2"></span>';
+  else if (issueData.Severity == 3) riskLevel = '<span class="risk-indicator lang-high" data-severity="3"></span>';
+  else riskLevel = '<span class="risk-indicator lang-info" data-severity="4"></span>';
   if (resultId < 0) {
     const pageContents = document.getElementById('page-contents');
     pageContents.innerHTML = `
