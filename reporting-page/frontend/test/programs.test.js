@@ -64,7 +64,7 @@ describe('Programs table', function() {
     // Arrange
     const programs = await import('../src/js/programs.js');
     // Arrange input issues
-    const list = 
+    const list =
       { // Programs, level 0
         issue_id: 43,
         result_id: 0,
