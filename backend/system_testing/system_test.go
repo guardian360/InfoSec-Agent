@@ -1,3 +1,5 @@
+// Package system_test provides system tests for the functionality of the system tray application.
+// The system tests are run in a controlled virtual machine environment to ensure the application behaves as expected.
 package system_test
 
 import (

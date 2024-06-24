@@ -1,6 +1,8 @@
 // Package gamification handles the gamification within the application, to reward users for performing security checks and staying secure.
 //
-// Exported function(s): UpdateGameState, PointCalculation, LighthouseStateTransition
+// Exported function(s): UpdateGameState, PointCalculationGetter.PointCalculation, LighthouseStateTransition, SufficientActivity
+//
+// Exported types(s): GameState, PointCalculationGetter
 package gamification
 
 import (
@@ -121,13 +123,13 @@ func (r RealPointCalculationGetter) PointCalculation(gs GameState, scanResults [
 //   - GameState: The updated game state with the new lighthouse state.
 func LighthouseStateTransition(gs GameState) GameState {
 	switch {
-	case gs.Points < 10 && SufficientActivity(gs):
+	case gs.Points <= 10 && SufficientActivity(gs):
 		gs.LighthouseState = 5 // The best state
-	case gs.Points < 20 && SufficientActivity(gs):
+	case gs.Points <= 20 && SufficientActivity(gs) || gs.Points <= 10:
 		gs.LighthouseState = 4
-	case gs.Points < 30 && SufficientActivity(gs):
+	case gs.Points < 30 && SufficientActivity(gs) || gs.Points <= 20:
 		gs.LighthouseState = 3
-	case gs.Points < 40 && SufficientActivity(gs):
+	case gs.Points < 40 && SufficientActivity(gs) || gs.Points <= 30:
 		gs.LighthouseState = 2
 	case gs.Points < 50 && SufficientActivity(gs):
 		gs.LighthouseState = 1

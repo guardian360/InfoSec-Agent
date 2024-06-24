@@ -1,7 +1,3 @@
-// Package tray implements the basic functionality of the system tray application
-//
-// Exported function(s): OnReady, OnQuit, ChangeScanInterval, ScanNow, ChangeLanguage,
-// RefreshMenu
 package tray
 
 import (

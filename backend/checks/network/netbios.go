@@ -1,3 +1,4 @@
+// Package network provides functions related to security/privacy checks of network settings
 package network
 
 import (

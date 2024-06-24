@@ -1,6 +1,3 @@
-// Package chromium is responsible for running checks on Chromium based browsers.
-//
-// Exported function(s): ExtensionsChromium, HistoryChromium
 package chromium
 
 import (

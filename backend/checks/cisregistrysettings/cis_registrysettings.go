@@ -1,8 +1,6 @@
-// Package cisregistrysettings provides a set of functions to check various registry settings
-// to ensure they adhere to the CIS Benchmark standards. Each function takes a RegistryKey object
-// as an argument, which represents the root key from which the registry settings will be checked.
-// The functions return a slice of boolean values, where each boolean represents whether a particular
-// registry setting adheres to the CIS Benchmark standards.
+// Package cisregistrysettings provides a set of functions to check various registry settings to ensure they adhere to the CIS Benchmark standards.
+// Each function takes a RegistryKey object as an argument, which represents the root key from which the registry settings will be checked.
+// The functions return a slice of boolean values, where each boolean represents whether a particular registry setting adheres to the CIS Benchmark standards.
 package cisregistrysettings
 
 import (
