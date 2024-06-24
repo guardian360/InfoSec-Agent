@@ -162,6 +162,13 @@
     "Light": "Lumière",
     "Dark": "Sombre"
   },
+  "Integration": {
+    "apiKeyTitle": "Se connecter à l'API Lighthouse",
+    "apiKeyDescription": "<b>Bientôt disponible :</b> cette fonctionnalité n'est pas encore disponible, vous pourrez vous connecter à l'API Lighthouse dans un avenir proche.",
+    "step1": "Connectez-vous à votre compte sur https://lighthouse.guardian360.nl et allez dans les paramètres",
+    "step2": "Allez dans la section API et créez un nouveau jeton",
+    "step3": "Copiez le jeton et collez-le dans le champ ci-dessous, vous pouvez ensuite cliquer sur le bouton 'connecter'"
+  },
   "AllChecks": {
     "Security": "Sécurité",
     "Privacy": "Confidentialité",
