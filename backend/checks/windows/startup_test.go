@@ -26,6 +26,7 @@ func TestStartup(t *testing.T) {
 		key1  mocking.RegistryKey
 		key2  mocking.RegistryKey
 		key3  mocking.RegistryKey
+		key4  mocking.RegistryKey
 		want  checks.Check
 		error bool
 	}{{
@@ -48,6 +49,9 @@ func TestStartup(t *testing.T) {
 		key3: &mocking.MockRegistryKey{SubKeys: []mocking.MockRegistryKey{{
 			KeyName:      "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\StartupApproved\\Run32",
 			BinaryValues: map[string][]byte{"MockProgram3": {0, 0, 0, 0, 0, 1, 0}}, Err: nil}}},
+		key4: &mocking.MockRegistryKey{SubKeys: []mocking.MockRegistryKey{{
+			KeyName:      "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\StartupApproved\\Run32",
+			BinaryValues: map[string][]byte{"MockProgram3": {0, 0, 0, 0, 0, 0, 0}}, Err: nil}}},
 		want: checks.NewCheckResult(checks.StartupID, 1, "MockProgram"),
 	},
 		{
@@ -55,6 +59,7 @@ func TestStartup(t *testing.T) {
 			key1:  &mocking.MockRegistryKey{},
 			key2:  &mocking.MockRegistryKey{},
 			key3:  &mocking.MockRegistryKey{},
+			key4:  &mocking.MockRegistryKey{},
 			want:  checks.NewCheckError(checks.StartupID, errors.New("error")),
 			error: true,
 		},
@@ -67,6 +72,9 @@ func TestStartup(t *testing.T) {
 				KeyName:      "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\StartupApproved\\Run",
 				BinaryValues: map[string][]byte{"MockProgram2": {0, 0, 0, 0, 1, 0, 0}}, Err: nil}}},
 			key3: &mocking.MockRegistryKey{SubKeys: []mocking.MockRegistryKey{{
+				KeyName:      "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\StartupApproved\\Run32",
+				BinaryValues: map[string][]byte{"MockProgram3": {0, 0, 0, 0, 0, 1, 0}}, Err: nil}}},
+			key4: &mocking.MockRegistryKey{SubKeys: []mocking.MockRegistryKey{{
 				KeyName:      "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\StartupApproved\\Run32",
 				BinaryValues: map[string][]byte{"MockProgram3": {0, 0, 0, 0, 0, 1, 0}}, Err: nil}}},
 			want:  checks.NewCheckError(checks.StartupID, errors.New("error")),
