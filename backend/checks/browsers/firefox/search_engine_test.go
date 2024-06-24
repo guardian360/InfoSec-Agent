@@ -1,6 +1,7 @@
 package firefox_test
 
 import (
+	"errors"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/browsers"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"io"
@@ -229,4 +230,63 @@ func TestYourFunctiontooUnCompressFile(t *testing.T) {
 
 	// Assert the result
 	require.Equal(t, expected, result)
+}
+
+func TestSearchEngineFirefox_WithProfileFinderError(t *testing.T) {
+	// Mock the FirefoxFolder function to return an error
+	Profilefinder = browsers.MockProfileFinder{
+		MockFirefoxFolder: func() ([]string, error) {
+			return nil, errors.New("mock error")
+		},
+	}
+	expected := checks.NewCheckErrorf(checks.SearchFirefoxID, "No firefox directory found", errors.New("mock error"))
+
+	check := firefox.SearchEngineFirefox(Profilefinder, false, nil, nil)
+	require.Nil(t, check.Result)
+	require.Error(t, check.Error)
+	require.Equal(t, expected, check)
+}
+
+func TestSearchEngineFirefox_WithOpenAndStatFileError(t *testing.T) {
+	// Mock the OpenAndStatFile function to return an error
+	originalOpenAndStatFile := firefox.OpenAndStatFile
+	defer func() { firefox.OpenAndStatFile = originalOpenAndStatFile }()
+	firefox.OpenAndStatFile = func(_ string) (mocking.File, int64, error) {
+		return nil, 0, errors.New("mock error")
+	}
+
+	profilefinder := browsers.MockProfileFinder{
+		MockFirefoxFolder: func() ([]string, error) {
+			return []string{"\\valid\\directory"}, nil
+		},
+	}
+	buff := []byte{0x6D, 0x6F, 0x7A, 0x4C, 0x7A, 0x34, 0x30, 0x00,
+		0x08, 0x00, 0x00, 0x00, 0x6D, 0x6F, 0x7A, 0x4C,
+		0x6D, 0x6F, 0x7A, 0x4C, 0x7A, 0x34, 0x30, 0x00,
+		0x80, 0x54, 0x65, 0x73, 0x74, 0x69, 0x6e, 0x67,
+		0x00, 0x00, 0x00, 0x00, 0x54, 0x3a, 0x00, 0xbe}
+
+	mockFile := &mocking.FileMock{
+		FileName: "mockfile",
+		IsOpen:   true,
+		Buffer:   buff,
+		Bytes:    28,
+		FileInfo: &mocking.FileInfoMock{},
+		Err:      nil,
+	}
+	// Create a destination mock file
+	mockDestinationFile := &mocking.FileMock{
+		FileName: "\\valid\\directory\\destination.json.mozlz4",
+		IsOpen:   true,
+		Buffer:   buff,
+		Bytes:    28,
+		FileInfo: &mocking.FileInfoMock{},
+		Err:      nil,
+	}
+	expected := checks.NewCheckErrorf(checks.SearchFirefoxID, "Unable to open the file", errors.New("mock error"))
+
+	check := firefox.SearchEngineFirefox(profilefinder, true, mockFile, mockDestinationFile)
+	require.Nil(t, check.Result)
+	require.Error(t, check.Error)
+	require.Equal(t, expected, check)
 }

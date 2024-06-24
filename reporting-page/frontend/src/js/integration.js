@@ -103,28 +103,26 @@ function prevStep() {
 /**
  * This function connects to the API using the entered API key
  */
-function connectToAPI() {
+export function connectToAPI() {
   const apiKey = document.getElementById('apiKeyInput').value;
-  // Dummy API connection logic
-  setTimeout(() => {
-    const status = document.getElementById('status');
-    if (apiKey.trim() === '') {
-      status.innerHTML = 'Please enter your API key.';
-      status.style.color = 'red';
-    } else {
-      status.innerHTML = 'Connected to API.';
-      status.style.color = 'green';
-      // Hide API key input after connection
-      document.getElementById('apiKeyButtonClick').style.display = 'none';
-      document.getElementById('disconnectButton').style.display = 'inline-block';
-    }
-  }, 1000);
+
+  const status = document.getElementById('status');
+  if (apiKey.trim() === '') {
+    status.innerHTML = 'Please enter your API key.';
+    status.style.color = 'red';
+  } else {
+    status.innerHTML = 'Connected to API.';
+    status.style.color = 'green';
+    // Hide API key input after connection
+    document.getElementById('apiKeyButtonClick').style.display = 'none';
+    document.getElementById('disconnectButton').style.display = 'inline-block';
+  }
 }
 
 /**
  * This function disconnects from the API
  */
-function disconnectFromAPI() {
+export function disconnectFromAPI() {
   // Dummy disconnect logic
   const status = document.getElementById('status');
   status.innerHTML = 'Disconnected from API.';
