@@ -19,12 +19,13 @@ import (
 //
 // Parameters:
 // executor: A CommandExecutor that is used to execute system commands for retrieving the list of installed software.
+// registryKey: A RegistryKey that is used to access the system's registry.
 //
 // Returns:
 // checks.Check: A Check object that represents the result of the check for outdated software.
-func OutdatedSoftware(executor mocking.CommandExecutor) checks.Check {
+func OutdatedSoftware(executor mocking.CommandExecutor, registryKey mocking.RegistryKey) checks.Check {
 	// Collect all software lists
-	softwareList, err := collectAllSoftwareLists(executor)
+	softwareList, err := collectAllSoftwareLists(executor, registryKey)
 	if softwareList == nil {
 		return err
 	}
@@ -45,11 +46,12 @@ func OutdatedSoftware(executor mocking.CommandExecutor) checks.Check {
 //
 // Parameters:
 // executor: A CommandExecutor that is used to execute system commands for retrieving the list of installed software.
+// registryKey: A RegistryKey that is used to access the system's registry.
 //
 // Returns:
 //   - []software: A slice of software objects that represents the list of all installed software.
 //   - checks.Check: A Check object that represents the result of the check for installed software. If an error occurs during the retrieval of the software list, it returns a CheckError object.
-func collectAllSoftwareLists(executor mocking.CommandExecutor) ([]software, checks.Check) {
+func collectAllSoftwareLists(executor mocking.CommandExecutor, registryKey mocking.RegistryKey) ([]software, checks.Check) {
 	var (
 		softwareList       []software
 		softwareListWinget []software
@@ -60,15 +62,15 @@ func collectAllSoftwareLists(executor mocking.CommandExecutor) ([]software, chec
 
 	// Retrieve installed programs from winget
 	if softwareListWinget, err = retrieveWingetInstalledPrograms(softwareList, executor); err != nil {
-		return nil, checks.NewCheckErrorf(checks.OutdatedSoftwareID, "error listing installed programs in Program Files", err)
+		logger.Log.Debug("Error retrieving winget installed programs")
 	}
 	// Retrieve installed 32 bit programs
-	if softwareList32, err = retrieveInstalled32BitPrograms(softwareList, executor); err != nil {
-		return nil, checks.NewCheckErrorf(checks.OutdatedSoftwareID, "error listing installed programs in 32 bit programs", err)
+	if softwareList32, err = retrieveInstalled32BitPrograms(softwareList, registryKey); err != nil {
+		logger.Log.Debug("Error retrieving 32 bit installed programs")
 	}
 	// Retrieve installed 64 bit programs
-	if softwareList64, err = retrieveInstalled64BitPrograms(softwareList, executor, "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\*"); err != nil {
-		return nil, checks.NewCheckErrorf(checks.OutdatedSoftwareID, "error listing installed programs in 64bit programs", err)
+	if softwareList64, err = retrieveInstalled64BitPrograms(softwareList, registryKey); err != nil {
+		logger.Log.Debug("Error retrieving 64 bit installed programs")
 	}
 
 	// Append all software lists
@@ -255,13 +257,13 @@ func retrieveWingetInstalledPrograms(softwareList []software, executor mocking.C
 //
 // Parameters:
 // softwareList: A slice of software objects that represents the list of all installed software.
-// executor: A CommandExecutor that is used to execute the registry query command.
+// registryKey: A RegistryKey that is used to access the system's registry.
 //
 // Returns:
 //   - []software: A slice of software objects that represents the updated list of all installed software.
 //   - error: An error object that represents any error that occurred during the execution of the registry query command or the processing of the output. If no error occurred, it returns nil.
-func retrieveInstalled32BitPrograms(softwareList []software, executor mocking.CommandExecutor) ([]software, error) {
-	return retrieveInstalled64BitPrograms(softwareList, executor, "\"HKLM:\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\*\"")
+func retrieveInstalled32BitPrograms(softwareList []software, registryKey mocking.RegistryKey) ([]software, error) {
+	return retrieveInstalledPrograms(softwareList, registryKey, "SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall", "32-bit")
 }
 
 // retrieveInstalled64BitPrograms is a function that retrieves all installed 64-bit programs found using a registry query.
@@ -270,54 +272,82 @@ func retrieveInstalled32BitPrograms(softwareList []software, executor mocking.Co
 //
 // Parameters:
 // softwareList: A slice of software objects that represents the list of all installed software.
-// executor: A CommandExecutor that is used to execute the registry query command.
-// bits: A string that represents the registry key to be queried for installed software.
+// registryKey: A RegistryKey that is used to access the system's registry.
 //
 // Returns:
 //   - []software: A slice of software objects that represents the updated list of all installed software.
 //   - error: An error object that represents any error that occurred during the execution of the registry query command or the processing of the output. If no error occurred, it returns nil.
-func retrieveInstalled64BitPrograms(softwareList []software, executor mocking.CommandExecutor, bits string) ([]software, error) {
-	// Execute the powershell command to get the installed programs
-	output, err := executor.Execute("powershell", "Get-ItemProperty ", bits, "| Select-Object DisplayName, PSChildName, DisplayVersion, Publisher | Sort-Object DisplayName | Format-List")
+func retrieveInstalled64BitPrograms(softwareList []software, registryKey mocking.RegistryKey) ([]software, error) {
+	return retrieveInstalledPrograms(softwareList, registryKey, "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall", "64-bit")
+}
+
+// retrieveInstalledPrograms is a function that retrieves all installed programs found using a registry query.
+// It uses a RegistryKey to access the system's registry and processes the output to extract the software details.
+// The function appends each software to the softwareList and returns the updated softwareList.
+//
+// Parameters:
+// softwareList: A slice of software objects that represents the list of all installed software.
+// registryKey: A RegistryKey that is used to access the system's registry.
+// path: A string that represents the registry key to be queried for installed software.
+// bitOrigin: A string that represents the origin of the software (e.g., "32-bit", "64-bit").
+//
+// Returns:
+//   - []software: A slice of software objects that represents the updated list of all installed software.
+//   - error: An error object that represents any error that occurred during the execution of the registry query command or the processing of the output. If no error occurred, it returns nil.
+func retrieveInstalledPrograms(softwareList []software, registryKey mocking.RegistryKey, path string, bitOrigin string) ([]software, error) {
+	// Open the registry key
+	key, err := mocking.OpenRegistryKey(registryKey, path)
 	if err != nil {
 		return softwareList, err
 	}
-	// Process the output
-	outputString := strings.Split(string(output), "\r\n")
-	var name, identifier, version, vendor string
-	for i, line := range outputString[2:] {
-		line = strings.TrimSpace(line)
-		// Extract the software details
-		if strings.Contains(line, "DisplayName") {
-			name = strings.Split(line, ":")[1]
-			name = strings.TrimSpace(name)
+	// Close the key after we have received all relevant information
+	defer mocking.CloseRegistryKey(key)
+
+	// Read the names of all subkeys
+	psChildNames, subErr := key.ReadSubKeyNames(-1)
+	if subErr != nil {
+		return softwareList, subErr
+	}
+	// Iterate over each subkey
+	for _, psChildName := range psChildNames {
+		// Open the subkey
+		childKey, childErr := mocking.OpenRegistryKey(key, psChildName)
+		if childErr != nil {
+			logger.Log.Error("Error opening device subkey " + psChildName)
+			continue
 		}
-		if strings.Contains(line, "PSChildName") {
-			identifier = strings.Split(line, ":")[1]
-			identifier = strings.TrimSpace(identifier)
+
+		// Close the subkey after we have received all relevant information
+		defer mocking.CloseRegistryKey(childKey)
+		// Read the DisplayName value
+		name, _, nameErr := childKey.GetStringValue("DisplayName")
+		if nameErr != nil {
+			logger.Log.Debug("Error reading program name " + psChildName)
+			continue
 		}
-		if strings.Contains(line, "DisplayVersion") {
-			version = strings.Split(line, ":")[1]
-			version = strings.TrimSpace(version)
+		// Read the DisplayVersion value
+		version, _, versionErr := childKey.GetStringValue("DisplayVersion")
+		if versionErr != nil {
+			logger.Log.Debug("Error reading program version " + psChildName)
+			continue
 		}
-		if strings.Contains(line, "Publisher") {
-			vendor = strings.Split(line, ":")[1]
-			vendor = strings.TrimSpace(vendor)
+		// Read the Publisher value
+		publisher, _, publisherErr := childKey.GetStringValue("Publisher")
+		if publisherErr != nil {
+			logger.Log.Debug("Error reading program publisher " + psChildName)
+			continue
 		}
 		// Append the software to the list
-		if i%5 == 4 {
-			softwareList = append(softwareList, software{
-				name:         name,
-				identifier:   identifier,
-				version:      version,
-				newVersion:   "",
-				vendor:       vendor,
-				lastUpdated:  "",
-				sourceWinget: "",
-				whereFrom:    "64-bit",
-			})
-			name, identifier, version, vendor = "", "", "", ""
-		}
+		softwareList = append(softwareList, software{
+			name:         name,
+			identifier:   psChildName,
+			version:      version,
+			newVersion:   "",
+			vendor:       publisher,
+			lastUpdated:  "",
+			sourceWinget: "",
+			whereFrom:    bitOrigin,
+		})
 	}
 	return softwareList, nil
 }

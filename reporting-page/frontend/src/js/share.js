@@ -46,6 +46,9 @@ export async function setImage(social, progress) {
   case 3:
     lighthousePath = 'fourth-state.png';
     break;
+  case 4:
+    lighthousePath = 'fifth-state.png';
+    break;
   default:
     lighthousePath = 'first-state.png';
   }

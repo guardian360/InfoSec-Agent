@@ -137,7 +137,7 @@ function prevStep() {
 /**
  * This function connects to the API using the entered API key
  */
-function connectToAPI() {
+export function connectToAPI() {
   const apiKey = document.getElementById('apiKeyInput').value;
   setTimeout(() => {
     const status = document.getElementById('status');
@@ -157,7 +157,7 @@ function connectToAPI() {
 /**
  * This function disconnects from the API
  */
-function disconnectFromAPI() {
+export function disconnectFromAPI() {
   // Dummy disconnect logic
   const status = document.getElementById('status');
   status.innerHTML = 'Disconnected from API.';

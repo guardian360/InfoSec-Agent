@@ -123,5 +123,5 @@ func SendResultsToAPI(result ParseResult) {
 	}
 	defer resp.Body.Close()
 
-	logger.Log.Info("Response Status:" + resp.Status)
+	logger.Log.Debug("Response Status:" + resp.Status)
 }
