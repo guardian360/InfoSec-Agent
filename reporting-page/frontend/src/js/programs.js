@@ -11,51 +11,69 @@ export async function openProgramsPage() {
   sessionStorage.setItem('savedPage', 5);
   const searchTranslation = await getLocalizationString('Programs.Search');
 
-  document.getElementById('page-contents').innerHTML = `
-  <div class="program-data">
-      <div class="program-container">
-      <h2 class="lang-program-table"></h2>
-      <input type="text" id="search-input" placeholder="${searchTranslation}">
-      <table class="program-table" id="program-table">
-          <thead>
-          <tr>
-          <th class="program-column">
-              <span class="table-header lang-name"></span>
-          </th>
-          <th class="version-column">
-              <span class="table-header lang-version"></span>
-          </th>
-          </tr>
-          </thead>
-          <tbody>
-          </tbody>
-      </table>
-      </div>
-  </div>
-  `;
-
   // Find the result of the programs check
-  const programsJson = JSON.parse(sessionStorage.getItem('ProgramList'));
-  logError('Programs JSON: ' + JSON.stringify(programsJson));
-  const issueTableHtml = document.getElementById('program-table').querySelector('tbody');
-  fillProgamTable(issueTableHtml, programsJson.result);
+  const programsFromStorage = sessionStorage.getItem('ProgramList');
+  if (!programsFromStorage) {
+    document.getElementById('page-contents').innerHTML = `
+    <div class="reload-container">
+      <div class="reload-segment">
+        <p class="lang-reload-text"><p>
+        <div class="button lang-reload-button" id="reload-button"></div>
+      </div>
+    </div>
+    `;
+    document.getElementById('reload-button').addEventListener('click', () => openProgramsPage());
+  } else {
+    const programsJson = JSON.parse(programsFromStorage);
+    logError('Programs JSON: ' + JSON.stringify(programsJson));
 
-  // Add event listeners for sorting and searching
-  document.getElementById('search-input').addEventListener('input', function(event) {
-    const query = event.target.value;
-    searchTable(issueTableHtml, query);
-  });
+    document.getElementById('page-contents').innerHTML = `
+    <div class="program-data">
+        <div class="program-container">
+        <h2 class="lang-program-table"></h2>
+        <input type="text" id="search-input" placeholder="${searchTranslation}">
+        <table class="program-table" id="program-table">
+            <thead>
+            <tr>
+            <th class="program-column">
+                <span class="table-header lang-name"></span>
+            </th>
+            <th class="version-column">
+                <span class="table-header lang-version"></span>
+            </th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        </div>
+    </div>
+    `;
+
+    const issueTableHtml = document.getElementById('program-table').querySelector('tbody');
+    fillProgamTable(issueTableHtml, programsJson.result);
+
+    // Add event listeners for sorting and searching
+    document.getElementById('search-input').addEventListener('input', function(event) {
+      const query = event.target.value;
+      searchTable(issueTableHtml, query);
+    });
+  }
 
   // Translate the page contents
   const tableHeaders = [
     'lang-program-table',
     'lang-name',
     'lang-version',
+    'lang-reload-text',
+    'lang-reload-button',
   ];
   const localizationIds = [
     'Programs.ProgramTable',
     'Programs.Name',
     'Programs.Version',
+    'Programs.ReloadText',
+    'Programs.ReloadButton',
   ];
   for (let i = 0; i < tableHeaders.length; i++) {
     getLocalization(localizationIds[i], tableHeaders[i]);

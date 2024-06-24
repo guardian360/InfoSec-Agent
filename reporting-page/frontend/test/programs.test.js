@@ -42,6 +42,10 @@ function mockGetLocalizationString(messageID) {
       myResolve('Version');
     case 'Programs.Search':
       myResolve('Search...');
+    case 'Programs.ReloadText':
+      myResolve('ReloadText');
+    case 'Programs.ReloadButton':
+      myResolve('Reload page');
     default:
       myReject(new Error('Wrong message ID'));
     }

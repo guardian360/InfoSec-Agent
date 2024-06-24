@@ -314,3 +314,15 @@ h2 {
     margin-top: 10px; /* Space out stacked buttons */
   }
 }
+
+/* Program page css if programs have not loaded */
+.reload-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 25%;
+}
+
+.reload-segment {
+  text-align: center;
+}

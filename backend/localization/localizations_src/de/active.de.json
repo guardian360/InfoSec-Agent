@@ -148,7 +148,9 @@
     "Name":"Name",
     "Version":"Ausführung",
     "ProgramTable": "Installierte Programme",
-    "Search": "Suchen..."
+    "Search": "Suchen...",
+    "ReloadText": "Die Programmliste wurde nicht geladen, bitte versuchen Sie, die Seite neu zu laden",
+    "ReloadButton": "Seite neu laden"
   },  
   "Personalize": {
     "navImage": "Navigationsbild",
