@@ -1542,22 +1542,14 @@
       "Severity": 2,
       "Name": "WPAD-service is ingeschakeld",
       "Solution": [
-        "Open een opdrachtprompt met verhoogde bevoegdheid door met de rechtermuisknop op de Start-knop te klikken en 'Terminal (Admin)' te selecteren.",
-        "Voer het commando 'netsh winhttp show proxy' uit om de huidige proxy-instellingen te controleren.",
-        "Als WPAD is ingeschakeld, voert u de opdracht 'netsh winhttp reset proxy' uit om WPAD uit te schakelen en de proxy-instellingen opnieuw in te stellen.",
-        "Start uw computer opnieuw op om de wijzigingen toe te passen."
+        "Open de register editor door te zoeken naar register.",
+        "Ga naar Computer\\HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\Wpad.",
+        "Als de sleutel WpadOverride niet bestaat, maak dan een sleutel door rechts te klikken -> nieuw -> DWORD en geef deze de naam: WpadOverride",
+        "Verander de waarde van deze nieuwe DWORD in 1."
       ],
       "Screenshots": [
-        "wpad/wpad-1.png",
-        "wpad/wpad-2.png",
-        "wpad/wpad-3.png",
-        "wpad/wpad-3.png"
       ],
       "ScreenshotsWindows10": [
-        "wpad/wpad-1.png",
-        "wpad/wpad-2.png",
-        "wpad/wpad-3.png",
-        "wpad/wpad-4.png"
       ]
     },
     "Type": "Beveiliging",
