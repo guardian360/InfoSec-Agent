@@ -171,12 +171,14 @@ export async function openHomePage() {
   const userPoints = parseInt(usersettings.Points) || 50;
   const pointsToNextState = 10; // The points required to reach the next state
   let modResult = userPoints % pointsToNextState;
+
   if (modResult === 0) {
     modResult = 0.1;
   }
+  const progressPercentage = 100 - (modResult / 10 * 100);
 
   // Calculate the progress percentage
-  const progressPercentage = Math.min((modResult / pointsToNextState) * 100, 100);
+  //const progressPercentage = Math.min((modResult * 10), 100);
 
   // Update the progress bar width and text
   if (progressPercentage === 100) {
