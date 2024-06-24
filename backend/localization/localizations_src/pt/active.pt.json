@@ -166,11 +166,22 @@
     "Dark": "Escuro"
   },
   "Integration": {
-    "apiKeyTitle": "Conectar à API Lighthouse",
-    "apiKeyDescription": "<b>Em breve:</b> esta funcionalidade ainda não está disponível, você poderá se conectar à API Lighthouse em breve.",
-    "step1": "Faça login na sua conta em https://lighthouse.guardian360.nl e vá para as configurações",
-    "step2": "Vá para a seção de API e crie um novo token",
-    "step3": "Copie o token e cole-o no campo abaixo, depois você pode clicar no botão 'conectar'"
+    "ApiKeyTitle": "Conectar à API Lighthouse",
+    "ApiKeyDescription": "<b>Em breve:</b> esta funcionalidade ainda não está disponível, você poderá se conectar à API Lighthouse em breve.",
+    "Step1Title": "Passo 1: Cadastre-se para uma conta",
+    "Step2Title": "Passo 2: Navegue até Configurações da API",
+    "Step3Title": "Passo 3: Gere a chave API",
+    "Step1": "Faça login na sua conta em https://lighthouse.guardian360.nl e vá para as configurações",
+    "Step2": "Vá para a seção de API e crie um novo token",
+    "Step3": "Copie o token e cole-o no campo abaixo, depois você pode clicar no botão 'conectar'",
+    "Previous": "&#8249; Anterior",
+    "Next": "Próximo &#8250;",
+    "EnterApi": "Insira sua chave API:",
+    "Connect": "Conectar",
+    "Disconnect": "Desconectar",
+    "ConnectedApi": "Conectado à API.",
+    "DisconnectedApi": "Desconectado da API",
+    "PleaseEnterApi": "Por favor, insira sua chave API."
   },
   "AllChecks": {
     "Security": "Segurança",

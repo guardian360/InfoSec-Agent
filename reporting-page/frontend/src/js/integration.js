@@ -23,44 +23,42 @@ export function openIntegrationPage() {
   <body>
   <div class="api-key-container">
     <div class="api-key-form">
-      <h1 class="lang-api-key-title">Connect to the Lighthouse API</h1>
-      <p class="lang-api-key-description"><b>Coming soon:</b> this functionality is not available yet, 
-      you will be able to connect to the Lighthouse API in the near future.</p>
+      <h1 class="lang-api-key-title"></h1>
+      <p class="lang-api-key-description"></p>
 
       <div class="api-key-step" id="step1">
-        <h3>Step 1: Register for an account</h3>
-        <p class="lang-step-1">Login to your account on https://lighthouse.guardian360.nl and go to the settings</p>
+        <h3 class="lang-step-1-title"></h3>
+        <p class="lang-step-1"></p>
         <div class="api-key-image-container">
           <img class="api-key-image" src="https://via.placeholder.com/400" alt="Step 1 Image">
         </div>
       </div>
 
-      <div class="api-key-step lang-step-2" id="step2">
-        <h3>Step 2: Navigate to API Settings</h3>
-        <p class="lang-step-2">Go to the API section and create a new token</p>
+      <div class="api-key-step" id="step2">
+        <h3 class="lang-step-2-title"></h3>
+        <p class="lang-step-2"></p>
         <div class="api-key-image-container">
           <img class="api-key-image" src="https://via.placeholder.com/400" alt="Step 2 Image">
         </div>
       </div>
 
-      <div class="api-key-step lang-step-3" id="step3">
-        <h3>Step 3: Generate API Key</h3>
-        <p class="lang-step-3">Copy the token and paste it in the field below, 
-        you can then click on the 'connect' button</p>
+      <div class="api-key-step" id="step3">
+        <h3 class="lang-step-3-title"></h3>
+        <p class="lang-step-3"></p>
         <div class="api-key-image-container">
           <img class="api-key-image" src="https://via.placeholder.com/400" alt="Step 3 Image">
         </div>
       </div>
 
       <div id="steps">
-      <button class="api-key-button" id="prevBtn">&#8249; Previous</button>
-      <button class="api-key-button" id="nextBtn">Next &#8250;</button>
+      <button class="api-key-button lang-previous" id="prevBtn"></button>
+      <button class="api-key-button lang-next" id="nextBtn"></button>
       </div>
 
-      <h2>Enter Your API Key:</h2>
+      <h2 class="lang-enter-api"></h2>
       <input type="password" class="api-key-input" id="apiKeyInput">
-      <button class="api-key-button" id="apiKeyButtonClick" disabled>Connect</button>
-      <button class="api-key-button" id="disconnectButton">Disconnect</button>
+      <button class="api-key-button lang-connect" id="apiKeyButtonClick" disabled></button>
+      <button class="api-key-button lang-disconnect" id="disconnectButton"></button>
       <div class="api-key-status" id="status"></div>
       </div>
     </div>
@@ -89,16 +87,38 @@ export function openIntegrationPage() {
   const staticHomePageContent = [
     'lang-api-key-description',
     'lang-api-key-title',
+    'lang-step-1-title',
+    'lang-step-2-title',
+    'lang-step-3-title',
     'lang-step-1',
     'lang-step-2',
     'lang-step-3',
+    'lang-previous',
+    'lang-next',
+    'lang-enter-api',
+    'lang-connect',
+    'lang-disconnect',
+    'lang-connected-api',
+    'lang-disconnected-api',
+    'lang-please-enter-api',
   ];
   const localizationIds = [
-    'Integration.apiKeyDescription',
-    'Integration.apiKeyTitle',
-    'Integration.step1',
-    'Integration.step2',
-    'Integration.step3',
+    'Integration.ApiKeyDescription',
+    'Integration.ApiKeyTitle',
+    'Integration.Step1Title',
+    'Integration.Step2Title',
+    'Integration.Step3Title',
+    'Integration.Step1',
+    'Integration.Step2',
+    'Integration.Step3',
+    'Integration.Previous',
+    'Integration.Next',
+    'Integration.EnterApi',
+    'Integration.Connect',
+    'Integration.Disconnect',
+    'Integration.ConnectedApi',
+    'Integration.DisconnectedApi',
+    'Integration.PleaseEnterApi',
   ];
   for (let i = 0; i < staticHomePageContent.length; i++) {
     getLocalization(localizationIds[i], staticHomePageContent[i]);
@@ -142,10 +162,14 @@ export function connectToAPI() {
 
   const status = document.getElementById('status');
   if (apiKey.trim() === '') {
-    status.innerHTML = 'Please enter your API key.';
+    status.classList.remove('lang-connected-api');
+    status.classList.remove('lang-disconnected-api');
+    status.classList.add('lang-please-enter-api');
     status.style.color = 'red';
   } else {
-    status.innerHTML = 'Connected to API.';
+    status.classList.remove('lang-please-enter-api');
+    status.classList.remove('lang-disconnected-api');
+    status.classList.add('lang-connected-api');
     status.style.color = 'green';
     // Hide API key input after connection
     document.getElementById('apiKeyButtonClick').style.display = 'none';
@@ -159,7 +183,9 @@ export function connectToAPI() {
 export function disconnectFromAPI() {
   // Dummy disconnect logic
   const status = document.getElementById('status');
-  status.innerHTML = 'Disconnected from API.';
+  status.classList.remove('lang-please-enter-api');
+  status.classList.remove('lang-connected-api');
+  status.classList.add('lang-disconnected-api');
   status.style.color = 'red';
   // Show API key input
   document.getElementById('apiKeyButtonClick').style.display = 'inline-block';

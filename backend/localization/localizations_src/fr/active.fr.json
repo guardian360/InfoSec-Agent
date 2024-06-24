@@ -167,11 +167,22 @@
     "Dark": "Sombre"
   },
   "Integration": {
-    "apiKeyTitle": "Se connecter à l'API Lighthouse",
-    "apiKeyDescription": "<b>Bientôt disponible :</b> cette fonctionnalité n'est pas encore disponible, vous pourrez vous connecter à l'API Lighthouse dans un avenir proche.",
-    "step1": "Connectez-vous à votre compte sur https://lighthouse.guardian360.nl et allez dans les paramètres",
-    "step2": "Allez dans la section API et créez un nouveau jeton",
-    "step3": "Copiez le jeton et collez-le dans le champ ci-dessous, vous pouvez ensuite cliquer sur le bouton 'connecter'"
+    "ApiKeyTitle": "Se connecter à l'API Lighthouse",
+    "ApiKeyDescription": "<b>Bientôt disponible :</b> cette fonctionnalité n'est pas encore disponible, vous pourrez vous connecter à l'API Lighthouse dans un avenir proche.",
+    "Step1Title": "Étape 1: Inscrivez-vous pour un compte",
+    "Step2Title": "Étape 2: Accédez aux paramètres de l'API",
+    "Step3Title": "Étape 3: Générez une clé API",
+    "Step1": "Connectez-vous à votre compte sur https://lighthouse.guardian360.nl et allez dans les paramètres",
+    "Step2": "Allez dans la section API et créez un nouveau jeton",
+    "Step3": "Copiez le jeton et collez-le dans le champ ci-dessous, vous pouvez ensuite cliquer sur le bouton 'connecter'",
+    "Previous": "&#8249; Précédent",
+    "Next": "Suivant &#8250;",
+    "EnterApi": "Entrez votre clé API:",
+    "Connect": "Connecter",
+    "Disconnect": "Déconnecter",
+    "ConnectedApi": "Connecté à l'API.",
+    "DisconnectedApi": "Déconnecté de l'API",
+    "PleaseEnterApi": "Veuillez entrer votre clé API."
   },
   "AllChecks": {
     "Security": "Sécurité",

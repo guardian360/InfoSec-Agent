@@ -115,7 +115,7 @@ describe('Integration page', function() {
     let keyButton = document.getElementById('apiKeyButtonClick');
 
     // Assert
-    test.value(status.innerHTML).isEqualTo('Please enter your API key.');
+    test.value(status.classList.contains('lang-please-enter-api')).isTrue();
 
     // Act
     // API key given
@@ -126,7 +126,7 @@ describe('Integration page', function() {
     const disconnectButton = document.getElementById('disconnectButton');
 
     // Assert
-    test.value(status.innerHTML).isEqualTo('Connected to API.');
+    test.value(status.classList.contains('lang-connected-api')).isTrue();
     test.value(keyButton.style.display).isEqualTo('none');
     test.value(disconnectButton.style.display).isEqualTo('inline-block');
   });
@@ -142,7 +142,7 @@ describe('Integration page', function() {
     const status = document.getElementById('status');
 
     // Assert
-    test.value(status.innerHTML).isEqualTo('Disconnected from API.');
+    test.value(status.classList.contains('lang-disconnected-api')).isTrue();
     test.value(disconnectButton.style.display).isEqualTo('none');
     test.value(keyButton.style.display).isEqualTo('inline-block');
   });
