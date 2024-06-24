@@ -172,14 +172,14 @@ export async function openHomePage() {
   const pointsToNextState = 10; // The points required to reach the next state
   let modResult = userPoints % pointsToNextState;
 
-  if (modResult === 0) {
+  if (modResult === 0 && lighthouseState < 4) {
     modResult = 0.1;
   }
   const progressPercentage = 100 - (modResult / 10 * 100);
 
   // Update the progress bar width and text
   if (progressPercentage === 100) {
-    progressBar.style.width = '99 %';
+    progressBar.style.width = '100%';
     progressText.hidden = true;
     progressAlmostText.hidden = false;
   } else {
