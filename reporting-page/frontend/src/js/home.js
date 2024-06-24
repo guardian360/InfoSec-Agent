@@ -177,9 +177,6 @@ export async function openHomePage() {
   }
   const progressPercentage = 100 - (modResult / 10 * 100);
 
-  // Calculate the progress percentage
-  //const progressPercentage = Math.min((modResult * 10), 100);
-
   // Update the progress bar width and text
   if (progressPercentage === 100) {
     progressBar.style.width = '99 %';
