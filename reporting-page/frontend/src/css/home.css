@@ -35,10 +35,12 @@ body {
   margin: 5px;
   margin-bottom: 10px;
   background: var(--transparant-background); /* More transparent background */
+  color: var(--text-body);
 }
 
 .data-segment p {
   margin: 10px;
+  
 }
 
 .data-segment-header {
@@ -52,21 +54,6 @@ body {
 .data-segment-header p {
   margin: 10px;
 }
-
-/* Pie Chart 
-.pie-chart-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
-
-.pie-chart {
-  width: 100%;
-  max-width: 300px;
-  height: auto;
-}
-*/
 
 /* Issue Buttons */
 .issue-button {
@@ -110,17 +97,18 @@ body {
   width: 0;
 }
 
-#progress-text, #progress-percentage-text {
+#gamification-text {
   font-size: 1.2em;
-  color: #333;
   display: inline-block;
   margin-left: 10px;
+  color: var(--text-body);
 }
 
 /* Tooltip */
 #lighthouse-progress-tooltip {
   width: 20%;
   height:20%;
+
 }
 
 .lighthouse-progress-tooltip-text {

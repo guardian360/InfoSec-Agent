@@ -78,9 +78,10 @@ export async function openHomePage() {
         <div class="progress-container">
           <div class="progress-bar" id="progress-bar"></div>
         </div>
-        <p id="progress-percentage-text"><p id="progress-text" class="lang-progress-text">
-        <p id="progress-almost-text" class="lang-progress-almost-text"></p></p>
-        <p id="progress-done-text" class = "lang-progress-done-text"</p>
+        <p id="progress-percentage-text" class="gamification-text"></p>
+        <p id="progress-text" class="lang-progress-text gamification-text"></p>
+        <p id="progress-almost-text" class="lang-progress-almost-text gamification-text"></p></p>
+        <p id="progress-done-text" class="lang-progress-done-text gamification-text"</p>
       </div>
     </div> 
   </div>
@@ -184,20 +185,20 @@ export async function openHomePage() {
   // Update the progress bar width and text
   if (lighthouseState === 4) {
     progressBar.style.width = '100%';
-    progressText.hidden = true;
-    progressAlmostText.hidden = true;
-    progressDoneText.hidden = false;
+    progressText.style.visibility = "hidden";
+    progressAlmostText.style.visibility= "hidden";
+    progressDoneText.style.visibility = "visible";
   } else if (progressPercentage === 99) {
     progressBar.style.width = '99%';
-    progressText.hidden = true;
-    progressAlmostText.hidden = false;
-    progressDoneText.hidden = true;
+    progressText.style.visibility = "hidden";
+    progressAlmostText.style.visibility = "vissible";
+    progressDoneText.style.visibility = "hidden";
   } else {
     progressPercentageText.textContent = `${progressPercentage.toFixed(2)} %`;
     progressBar.style.width = `${progressPercentage}%`;
-    progressText.hidden = false;
-    progressAlmostText.hidden = true;
-    progressDoneText.hidden = true;
+    progressText.style.visibility = "visible";
+    progressAlmostText.style.visibility = "hidden";
+    progressDoneText.style.visibility  = "hidden";
   }
 
   // on startup set the social media to share to facebook
