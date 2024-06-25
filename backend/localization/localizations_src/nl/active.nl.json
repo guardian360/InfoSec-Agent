@@ -107,7 +107,8 @@
     "LighthouseProgress":"Vooruitgang",
     "TooltipText": "Hoe actiever je bent met de applicatie, hoe meer je werkt aan je veiligheid! Je voortgang wordt laten zien door het bouwen van een vuurtoren. Wanneer het voortgangs-balkje hieronder vol zit, gaat je vuurtoren naar een nieuwe staat.",
     "ProgressText": " voltooid naar de volgende staat.",
-    "ProgressTextAlmost": " Ga door, bijna daar!"
+    "ProgressTextAlmost": " Ga door, bijna daar!",
+    "ProgressTextDone": "U heeft het hoogste niveau vuurtoren behaald!"
   },
   "Issues":
   {

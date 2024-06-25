@@ -106,7 +106,9 @@
     "LighthouseProgress":"Progreso", 
     "TooltipText": "Cuanto más activo seas en la resolución de problemas, más estarás trabajando para volverte más seguro. Esto se muestra con la construcción de tu faro. Al principio no habrá mucho, pero si te mantienes constante en el uso de InfoSec Agent, podrás construir un hermoso faro. Para pasar al siguiente estado del faro, la barra de progreso debe estar completa.",
     "ProgressText": " completado para el siguiente estado.",
-    "ProgressTextAlmost": " ¡Sigue así, casi llegas!"},
+    "ProgressTextAlmost": " ¡Sigue así, casi llegas!",
+    "ProgressTextDone": "¡Has alcanzado el nivel más alto!"
+  },
   "Issues":
   {
     "IssueTable": "Tabla de problemas",
