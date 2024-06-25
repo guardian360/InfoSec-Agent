@@ -13,15 +13,16 @@ import (
 
 const iconPath string = "/InfoSec-Agent/icon/icon128.ico"
 
-// TODO: Update documentation
 // Popup displays a notification to the user when a scan is completed.
 //
 // This function creates a notification with a title, message, and icon to inform the user that a scan has been completed.
 // The notification also includes an action button that lets the user open the reporting page.
 //
-// Parameters: scanResult []checks.Check: A slice of checks representing the scan results.
+// Parameters:
+//   - scanResult ([]checks.Check): A slice of checks representing the scan results.
 //
-// Returns: error: An error object if an error occurred during the scan, otherwise nil.
+// Returns:
+//   - error: An error object if an error occurred during the scan, otherwise nil.
 func Popup(scanResult []checks.Check, path string) error {
 	logger.Log.Trace("Displaying popup for scan result")
 
@@ -51,15 +52,16 @@ func Popup(scanResult []checks.Check, path string) error {
 	return nil
 }
 
-// TODO: Update documentation
 // PopupMessage generates a notification message based on the severity of the issues found during the scan.
 //
 // This function takes a slice of checks representing the scan results and generates a notification message based on the number of issues found at each severity level.
 // The message informs the user about the number of issues found during the scan and prompts them to open the reporting page for more information.
 //
-// Parameters: scanResult []checks.Check: A slice of checks representing the scan results.
+// Parameters:
+//   - scanResult ([]checks.Check): A slice of checks representing the scan results.
 //
-// Returns: string: A notification message based on the severity of the issues found during the scan.
+// Returns:
+//   - string: A notification message based on the severity of the issues found during the scan.
 func PopupMessage(scanResult []checks.Check, path string) string {
 	logger.Log.Trace("Generating popup message")
 
@@ -90,7 +92,6 @@ func PopupMessage(scanResult []checks.Check, path string) string {
 	return localization.Localize(Language, "Dialogs.Popup.Default")
 }
 
-// TODO: Update documentation
 // StartPopup displays a notification to the user when the tray application starts.
 //
 // This function creates a notification with a title, message, and icon to inform the user that the tray application has started.
@@ -118,7 +119,6 @@ func StartPopup() {
 	}
 }
 
-// TODO: Update documentation
 // AlreadyRunningPopup displays a notification to the user when the tray application is already running.
 //
 // This function creates a notification with a title, message, and icon to inform the user that the tray application is already running in the background.

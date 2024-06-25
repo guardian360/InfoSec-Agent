@@ -16,15 +16,14 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 )
 
-// TODO: Update documentation
 // Response is a struct that represents the JSON response from the Microsoft Edge Addons Store
 //
-// Fields: Name (string) - The name of the extension
+// Fields:
+//   - Name (string): The name of the extension
 type Response struct {
 	Name string `json:"name"`
 }
 
-// TODO: Update documentation
 // ExtensionsChromium checks for the presence of an ad blocker extension in a specified Chromium-based browser.
 //
 // Parameters:
@@ -64,7 +63,6 @@ func ExtensionsChromium(browser string, getter browsers.DefaultDirGetter, getter
 	return checks.NewCheckResult(returnID, 1)
 }
 
-// TODO: Update documentation
 // GetBrowserPathAndIDExtension is a function that takes a browser name as input,
 // and returns the path to the browser's directory and the ID of the browser.
 //
@@ -86,13 +84,24 @@ func GetBrowserPathAndIDExtension(browser string) (string, int) {
 	return "", 0
 }
 
+// ExtensionIDGetter is an interface that defines the GetExtensionIDs method.
+// This method is used to retrieve the IDs of the installed extensions in the specified browser.
 type ExtensionIDGetter interface {
+	// GetExtensionIDs is a function that takes the path to the extensions directory as input,
+	// and returns a list of extension IDs.
+	//
+	// Parameters:
+	//   - extensionsDir: A string representing the path to the extensions directory.
+	//
+	// Returns:
+	//   - A slice of strings representing the IDs of the extensions.
+	//   - An error, which will be nil if the operation was successful.
 	GetExtensionIDs(extensionsDir string) ([]string, error)
 }
 
+// RealExtensionIDGetter is a struct that implements the ExtensionIDGetter interface.
 type RealExtensionIDGetter struct{}
 
-// TODO: Update documentation
 // GetExtensionIDs is a function that takes the path to the extensions directory as input,
 // and returns a list of extension IDs.
 //
@@ -121,7 +130,6 @@ func (r RealExtensionIDGetter) GetExtensionIDs(extensionsDir string) ([]string, 
 	return extensionIDs, nil
 }
 
-// TODO: Update documentation
 // GetExtensionNames is a function that takes a list of extension IDs and a browser name as input,
 // and returns a list of extension names. It fetches the name of each extension from the Chrome Web Store
 // or the Microsoft Edge Addons Store by calling the GetExtensionNameChromium function.
@@ -168,13 +176,26 @@ func GetExtensionNames(getter ExtensionNameGetter, extensionIDs []string, browse
 	return extensionNames
 }
 
+// ExtensionNameGetter is an interface that defines the GetExtensionNameChromium method.
+// This method is used to retrieve the name of an extension from the Chrome Web Store or the Microsoft Edge Addons Store.
 type ExtensionNameGetter interface {
+	// GetExtensionNameChromium is a function that takes the extension ID, the URL template of the store to visit,
+	// and the browser name as input, and returns the name of the extension.
+	//
+	// Parameters:
+	//   - extensionID: A string representing the unique identifier of the extension.
+	//   - url: A string representing the URL template of the store to visit, where the extension ID will be inserted.
+	//   - browser: A string representing the name of the browser to check (either "Chrome" or "Edge").
+	//
+	// Returns:
+	//   - A string representing the name of the extension.
+	//   - An error, which will be nil if the operation was successful.
 	GetExtensionNameChromium(extensionID string, url string, browser string) (string, error)
 }
 
+// ChromeExtensionNameGetter is a struct that implements the ExtensionNameGetter interface.
 type ChromeExtensionNameGetter struct{}
 
-// TODO: Update documentation
 // GetExtensionNameChromium fetches the name of an extension from the Chrome Web Store or the Microsoft Edge Addons Store.
 //
 // Parameters:
@@ -233,7 +254,6 @@ func (c ChromeExtensionNameGetter) GetExtensionNameChromium(extensionID string, 
 	return "", errors.New("unknown browser")
 }
 
-// TODO: Update documentation
 // AdblockerInstalled determines whether an ad blocker extension is installed.
 //
 // Parameters:

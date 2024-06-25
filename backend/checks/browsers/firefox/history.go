@@ -16,10 +16,13 @@ import (
 	_ "modernc.org/sqlite"
 )
 
-// TODO: Update documentation
 // HistoryFirefox inspects the user's browsing history in the Firefox browser for any visits to known phishing domains within the last week.
+// It does so by querying the Firefox history database to retrieve the URLs visited by the user in the past week.
+// It then checks each URL against a list of known phishing domains to identify any matches.
+// If a match is found, the function generates a string that includes the domain name and the time of the visit.
 //
-// Parameters:   - profileFinder: An object that implements the FirefoxProfileFinder interface. It is used to find the Firefox profile directory.
+// Parameters:
+//   - profileFinder: An object that implements the FirefoxProfileFinder interface. It is used to find the Firefox profile directory.
 //   - getter: An object that implements the PhishingDomainGetter interface. It is used to retrieve the list of known phishing domains.
 //   - queryGetter: An object that implements the QueryDatabaseGetter interface. It is used to query the Firefox history database.
 //   - processGetter: An object that implements the ProcessQueryResultsGetter interface. It is used to process the results of the database query.
@@ -69,7 +72,6 @@ func HistoryFirefox(profileFinder browsers.FirefoxProfileFinder, getter browsers
 	return checks.NewCheckResult(checks.HistoryFirefoxID, 1, output...)
 }
 
-// TODO: Update documentation
 // CopyDBGetter is an interface that wraps the CopyDatabase method.
 // It provides a way to abstract the operation of copying the database, allowing for different implementations.
 // This can be useful for testing, where a mock implementation can be used.
@@ -85,7 +87,6 @@ type CopyDBGetter interface {
 // It provides the real implementation of the CopyDatabase method.
 type RealCopyDBGetter struct{}
 
-// TODO: Update documentation
 // CopyDatabase is a method that copies the Firefox history database to a temporary location.
 // It takes a CopyFileGetter interface, a string representing the Firefox directory,
 // and a string representing the temporary history database as parameters.
@@ -94,9 +95,16 @@ type RealCopyDBGetter struct{}
 // The CopyFileGetter interface is used to copy the file.
 // The Firefox directory string represents the directory where the Firefox history database is located.
 // The temporary history database string represents the location where the database will be copied to.
-//
 // If an error occurs during the copy operation, it is logged and returned.
 // If the copy operation is successful, nil is returned.
+//
+// Parameters:
+//   - copyGetter (browsers.CopyFileGetter): An object that implements the CopyFileGetter interface. It is used to copy the database file to a temporary location.
+//   - ffDirectory (string): A string representing the directory where the Firefox history database is located.
+//   - tempHistoryDbff (string): A string representing the location where the database will be copied to.
+//
+// Returns:
+//   - An error if any occurs during the copy operation.
 func (r RealCopyDBGetter) CopyDatabase(copyGetter browsers.CopyFileGetter, ffDirectory string, tempHistoryDbff string) error {
 	// Copy the database to a temporary location
 	copyError := copyGetter.CopyFile(ffDirectory+"\\places.sqlite", tempHistoryDbff, nil, nil)
@@ -107,21 +115,19 @@ func (r RealCopyDBGetter) CopyDatabase(copyGetter browsers.CopyFileGetter, ffDir
 	return nil
 }
 
-// TODO: Update documentation
 // CloseDatabase is a utility function that is utilized within the HistoryFirefox function.
 // It is responsible for terminating the established database connection.
 //
 // Parameters:
 //   - db (*sql.DB): Represents the active database connection that needs to be closed.
 //
-// Returns: _
+// Returns: None.
 func CloseDatabase(db *sql.DB) {
 	if err := db.Close(); err != nil {
 		logger.Log.ErrorWithErr("Error closing database", err)
 	}
 }
 
-// TODO: Update documentation
 // QueryDatabaseGetter is an interface that wraps the QueryDatabase method.
 // It provides a way to abstract the database querying operation, allowing for different implementations.
 // This can be useful for testing, where a mock implementation can be used.
@@ -134,12 +140,10 @@ type QueryDatabaseGetter interface {
 	QueryDatabase(db *sql.DB) ([]QueryResult, error)
 }
 
-// TODO: Update documentation
 // RealQueryDatabaseGetter is a struct that implements the QueryDatabaseGetter interface.
 // It provides the real implementation of the QueryDatabase method.
 type RealQueryDatabaseGetter struct{}
 
-// TODO: Update documentation
 // QueryDatabase is a helper function that is utilized within the HistoryFirefox function.
 // It performs a query on the Firefox history database to retrieve the user's browsing history from the past week.
 //
@@ -182,12 +186,13 @@ func (r RealQueryDatabaseGetter) QueryDatabase(db *sql.DB) ([]QueryResult, error
 	return results, nil
 }
 
-// TODO: Update documentation
 // CloseRows is a utility function used within the HistoryFirefox function.
 // It is responsible for closing the result set of a database query.
 //
 // Parameters:
 //   - rows (*sql.Rows): Represents the result set of a database query that needs to be closed.
+//
+// Returns: None.
 //
 // This function does not return any value. However, if an error occurs during the closure of the result set,
 // it will be logged for debugging purposes.
@@ -197,14 +202,16 @@ func CloseRows(rows *sql.Rows) {
 	}
 }
 
-// TODO: Update documentation
 // QueryResult is a struct used by the HistoryFirefox function to store the results of the query.
+//
+// Fields:
+//   - URL (string): The URL visited by the user.
+//   - LastVisitDate (sql.NullInt64): The Unix timestamp of the last visit date of the URL. This value can be null.
 type QueryResult struct {
 	URL           string
 	LastVisitDate sql.NullInt64
 }
 
-// TODO: Update documentation
 // ProcessQueryResultsGetter is an interface that wraps the ProcessQueryResults method.
 // It provides a way to abstract the operation of processing query results, allowing for different implementations.
 // This can be useful for testing, where a mock implementation can be used.
@@ -219,12 +226,10 @@ type ProcessQueryResultsGetter interface {
 	ProcessQueryResults(results []QueryResult, getter browsers.PhishingDomainGetter) ([]string, error)
 }
 
-// TODO: Update documentation
 // RealProcessQueryResultsGetter is a struct that implements the ProcessQueryResultsGetter interface.
 // It provides the real implementation of the ProcessQueryResults method.
 type RealProcessQueryResultsGetter struct{}
 
-// TODO: Update documentation
 // ProcessQueryResults is a function used within the HistoryFirefox function.
 // It processes the results of a database query and identifies any visited phishing domains from the past week.
 //
@@ -259,24 +264,22 @@ func (r RealProcessQueryResultsGetter) ProcessQueryResults(results []QueryResult
 	return output, nil
 }
 
-// TODO: Update documentation
 // TimeFormatter is an interface that wraps the FormatTime function.
 type TimeFormatter interface {
 	FormatTime(lastVisitDate sql.NullInt64) string
 }
 
-// TODO: Update documentation
 // RealTimeFormatter is a type that implements TimeFormatter using the real FormatTime function.
 type RealTimeFormatter struct{}
 
-// TODO: Update documentation
 // FormatTime  is a helper function used by the processQueryResults function.
 // It formats the last visit date of a website to a human-readable string.
 //
 // Parameters:
 //   - lastVisitDate (sql.NullInt64): Represents the Unix timestamp of the last visit date of a website. This value can be null.
 //
-// Returns: The last visit date of a website as a human-readable string
+// Returns:
+//   - string: A human-readable string representing the last visit date of the website. If the last visit date is not valid or is zero, the string will represent the epoch time.
 func (RealTimeFormatter) FormatTime(lastVisitDate sql.NullInt64) string {
 	if lastVisitDate.Valid && lastVisitDate.Int64 > 0 {
 		return time.UnixMicro(lastVisitDate.Int64).String()
@@ -284,11 +287,9 @@ func (RealTimeFormatter) FormatTime(lastVisitDate sql.NullInt64) string {
 	return time.UnixMicro(0).String()
 }
 
-// TODO: Update documentation
 // TimeFormat timeFormatter is the TimeFormatter currently in use. It can be reassigned to a mock in tests.
 var TimeFormat TimeFormatter = RealTimeFormatter{}
 
-// TODO: Update documentation
 // FormatTime is a function that calls the FormatTime method of the current TimeFormatter.
 func FormatTime(lastVisitDate sql.NullInt64) string {
 	return TimeFormat.FormatTime(lastVisitDate)

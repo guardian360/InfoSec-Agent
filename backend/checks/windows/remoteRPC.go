@@ -6,7 +6,6 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 )
 
-// TODO: Update documentation
 // AllowRemoteRPC checks if the setting to allow remote computers to execute code on your device is enabled.
 //
 // Parameters:

@@ -8,11 +8,10 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 )
 
-// TODO: Update documentation
 // UACCheck is a function that checks the User Account Control (UAC) level on the system.
 //
 // Parameters:
-//   - uacExecutor commandmock.CommandExecutor: An executor to run the command for checking the UAC level.
+//   - uacExecutor (commandmock.CommandExecutor): An executor to run the command for checking the UAC level.
 //
 // Returns:
 //   - Check: A struct containing the result of the check. The result indicates the level at which the UAC is enabled.

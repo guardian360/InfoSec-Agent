@@ -16,7 +16,6 @@ import (
 	"github.com/pierrec/lz4"
 )
 
-// TODO: Update documentation
 // SearchEngineFirefox is a function that retrieves the default search engine used in the Firefox browser.
 //
 // Parameters:
@@ -28,7 +27,10 @@ import (
 // Returns:
 //   - checks.Check: A Check object that encapsulates the result of the search engine check. The Check object includes a string that represents the default search engine in the Firefox browser. If an error occurs during the check, the Check object will encapsulate this error.
 //
-// This function first determines the directory in which the Firefox profile is stored. It then opens and reads the 'search.json.mozlz4' file, which contains information about the default search engine. The function decompresses the file, extracts the default search engine information, and returns this information as a Check object. If an error occurs at any point during this process, it is encapsulated in the Check object and returned.
+// This function first determines the directory in which the Firefox profile is stored.
+// It then opens and reads the 'search.json.mozlz4' file, which contains information about the default search engine.
+// The function decompresses the file, extracts the default search engine information, and returns this information as a Check object.
+// If an error occurs at any point during this process, it is encapsulated in the Check object and returned.
 func SearchEngineFirefox(profileFinder browsers.FirefoxProfileFinder, boolMock bool, mockSource mocking.File, mockDest mocking.File) checks.Check {
 	// Determine the directory in which the Firefox profile is stored
 	var ffDirectory []string
@@ -118,7 +120,6 @@ func SearchEngineFirefox(profileFinder browsers.FirefoxProfileFinder, boolMock b
 	return checks.NewCheckResult(checks.SearchFirefoxID, 0, Results(data))
 }
 
-// TODO: Update documentation
 // Results is a utility function used within the SearchEngineFirefox function.
 // It processes the output string from the decompressed 'search.json.mozlz4' file to identify the default search engine.
 //
@@ -128,7 +129,9 @@ func SearchEngineFirefox(profileFinder browsers.FirefoxProfileFinder, boolMock b
 // Returns:
 //   - string: A string that represents the default search engine in the Firefox browser. If the defaultEngineId is empty, the function returns "Google". If the defaultEngineId matches known search engines (ddg, bing, ebay, wikipedia, amazon), the function returns the name of the matched search engine. If the defaultEngineId does not match any known search engines, the function returns "Other Search Engine".
 //
-// This function first checks if the defaultEngineId in the output string is empty, which indicates that the default search engine is Google. If the defaultEngineId is not empty, the function checks if it matches the ids of other known search engines. If a match is found, the function returns the name of the matched search engine. If no match is found, the function returns "Other Search Engine".
+// This function first checks if the defaultEngineId in the output string is empty, which indicates that the default search engine is Google.
+// If the defaultEngineId is not empty, the function checks if it matches the ids of other known search engines.
+// If a match is found, the function returns the name of the matched search engine. If no match is found, the function returns "Other Search Engine".
 func Results(data []byte) string {
 	output := string(data)
 	var result string
@@ -153,7 +156,6 @@ func Results(data []byte) string {
 	return result
 }
 
-// TODO: Update documentation
 // OpenAndStatFile is a function that opens a file and retrieves its size.
 //
 // Parameters:

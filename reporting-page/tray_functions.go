@@ -9,34 +9,36 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/tray"
 )
 
-// TODO: Update documentation
 // Tray serves as an interface between the user interface and the system tray operations.
 //
-// It provides methods to perform actions such as initiating an immediate scan, changing the language, and altering the scan interval of the system tray application. It does not contain any fields as it is primarily used as a receiver for these methods.
+// It provides methods to perform actions such as initiating an immediate scan, changing the language, and altering the scan interval of the system tray application.
+//
+// Fields:
+//   - Log (*logger.CustomLogger): A pointer to a CustomLogger instance that handles logging operations.
 type Tray struct {
 	Log *logger.CustomLogger
 }
 
-// TODO: Update documentation
 // NewTray is a constructor that returns a pointer to a Tray instance.
 //
 // The Tray instance serves as a bridge between the front-end and the system tray functions, enabling the invocation of system tray operations.
 //
 // Parameters: None.
 //
-// Returns: *Tray: A pointer to a Tray instance.
+// Returns:
+//   - *Tray: A pointer to a Tray instance that provides methods to interact with the system tray application.
 func NewTray(log *logger.CustomLogger) *Tray {
 	return &Tray{
 		Log: log,
 	}
 }
 
-// TODO: Update documentation
 // ScanNow initiates an immediate scan operation via the system tray application.
 //
 // This method is a bridge between the front-end and the tray package's ScanNow function. It triggers an immediate scan operation, bypassing the regular scan interval. The scan results, represented as a slice of checks, are returned along with any error that might occur during the scan.
 //
-// Parameters: dialogPresent (bool) - A boolean value that indicates whether a dialog should be displayed during the scan operation.
+// Parameters:
+//   - dialogPresent (bool): A boolean value indicating whether a dialog is present during the scan operation.
 //
 // Returns:
 //   - []checks.Check: A slice of checks representing the scan results.
@@ -46,12 +48,13 @@ func (t *Tray) ScanNow(dialogPresent bool) ([]checks.Check, error) {
 }
 
 // GetInstalledPrograms is a method of the Tray struct that retrieves a list of installed programs on the local machine.
+//
 // It uses the InstalledSoftware function from the programs package to perform this operation.
 // The InstalledSoftware function is called with a RealCommandExecutor and the LocalMachine as arguments.
 // The RealCommandExecutor is an implementation of the CommandExecutor interface that executes real commands on the local machine.
 // The LocalMachine is a predefined constant that represents the local machine in the context of registry operations.
 //
-// This method does not take any parameters.
+// Parameters: None.
 //
 // Returns:
 //   - checks.Check: A Check object representing the result of the InstalledSoftware function. This object contains information about the installed programs.
@@ -71,7 +74,6 @@ func (t *Tray) ChangeLanguage() {
 	tray.RefreshMenu()
 }
 
-// TODO: Update documentation
 // ChangeScanInterval triggers a change in the scanning interval of the system tray application.
 //
 // This method invokes the ChangeScanInterval function from the tray package, which is responsible for altering the frequency at which the system tray application performs its checks. The change in scanning interval is applied immediately upon invocation.
@@ -83,33 +85,35 @@ func (t *Tray) ChangeScanInterval() {
 	tray.ChangeScanInterval()
 }
 
-// TODO: Update documentation
 // LogDebug logs a Debug level message to the log file.
 // This function is used for logging messages from the front-end JS.
 //
-// Parameters: t (*Tray) - a pointer to the Tray struct
+// Parameters:
+//   - message (string): The message to be logged.
 //
-// Returns: _
+// Returns: None.
 func (t *Tray) LogDebug(message string) {
 	t.Log.Debug(message)
 }
 
-// TODO: Update documentation
 // LogInfo logs an Info level message to the log file.
 // This function is used for logging messages from the front-end JS.
-// Parameters: t (*Tray) - a pointer to the Tray struct
 //
-// Returns: _
+// Parameters:
+//   - message (string): The message to be logged.
+//
+// Returns: None.
 func (t *Tray) LogInfo(message string) {
 	t.Log.Info(message)
 }
 
-// TODO: Update documentation
 // LogError logs an error level message to the log file.
 // This function is used for logging messages from the front-end JS.
-// Parameters: t (*Tray) - a pointer to the Tray struct
 //
-// Returns: _
+// Parameters:
+//   - message (string): The error message to be logged.
+//
+// Returns: None.
 func (t *Tray) LogError(message string) {
 	t.Log.Error(message)
 }

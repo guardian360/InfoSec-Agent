@@ -6,7 +6,6 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 )
 
-// TODO: Update documentation
 // WPADEnabled checks if the WPAD service is enabled.
 // The WPAD service is used to automatically configure proxy settings for a network.
 // If the service is running, it is possible that an attacker could use it to redirect traffic.

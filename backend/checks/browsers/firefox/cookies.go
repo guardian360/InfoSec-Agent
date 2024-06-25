@@ -6,9 +6,9 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/browsers"
 )
 
-// TODO: Update documentation
 // CookiesFirefox inspects the cookies stored in the Firefox browser.
 // It does so by using the browsers.QueryCookieDatabase function to query the cookies.sqlite database in the Firefox profile directory.
+//
 // Parameters:
 //   - profileFinder: A browsers.FirefoxProfileFinder object that is used to locate the Firefox profile directory.
 //   - copyGetter: A browsers.CopyFileGetter object that is used to copy the database file to a temporary location.

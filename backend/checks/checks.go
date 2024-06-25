@@ -10,7 +10,6 @@ package checks
 
 import "fmt"
 
-// TODO: Update documentation
 // Check is a struct that encapsulates the outcome of a security or privacy check.
 //
 // Fields:
@@ -34,7 +33,6 @@ type Check struct {
 	ErrorMSG string   `json:"error,omitempty"`
 }
 
-// TODO: Update documentation
 // NewCheckResult is a constructor function that creates and returns a new instance of the Check struct.
 // It sets the IssueID, ResultID, and Result fields of the Check struct, leaving the Error and ErrorMSG fields as their zero values.
 //
@@ -51,7 +49,6 @@ func NewCheckResult(issID int, resID int, result ...string) Check {
 	return Check{IssueID: issID, ResultID: resID, Result: result}
 }
 
-// TODO: Update documentation
 // NewCheckError is a constructor function that creates and returns a new instance of the Check struct.
 // It sets the ID, Error, and ErrorMSG fields of the Check struct, leaving the Result field as its zero value.
 //
@@ -67,7 +64,6 @@ func NewCheckError(id int, err error) Check {
 	return Check{IssueID: id, ResultID: -1, Error: err, ErrorMSG: err.Error()}
 }
 
-// TODO: Update documentation
 // NewCheckErrorf is a constructor function that creates and returns a new instance of the Check struct.
 // It sets the ID, Error, and ErrorMSG fields of the Check struct, leaving the Result field as its zero value.
 //

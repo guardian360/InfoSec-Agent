@@ -15,9 +15,14 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/usersettings"
 )
 
-// TODO: Update documentation
 // GameState is a struct that represents the state of the gamification.
 // This consists of the user's points, a history of all previous points, and a lighthouse state.
+//
+// Fields:
+//   - Points (int): The number of points the user has.
+//   - PointsHistory ([]int): A list of all previous points the user has had.
+//   - TimeStamps ([]time.Time): A list of timestamps for when the user has received points.
+//   - LighthouseState (int): The current state of the lighthouse.
 type GameState struct {
 	Points          int
 	PointsHistory   []int
@@ -25,7 +30,6 @@ type GameState struct {
 	LighthouseState int
 }
 
-// TODO: Update documentation
 // UpdateGameState updates the game state based on the scan results and the current game state.
 //
 // Parameters:
@@ -34,7 +38,8 @@ type GameState struct {
 //   - getter (PointCalculationGetter): An object that implements the PointCalculationGetter interface.
 //   - userGetter (usersettings.SaveUserSettingsGetter): An object that implements the SaveUserSettingsGetter interface.
 //
-// Returns: The updated game state with the new points amount and new lighthouse state.
+// Returns:
+//   - The updated game state with the new points amount and new lighthouse state.
 func UpdateGameState(scanResults []checks.Check, databasePath string, getter PointCalculationGetter, userGetter usersettings.SaveUserSettingsGetter) (GameState, error) {
 	logger.Log.Trace("Updating game state")
 	gs := GameState{Points: 0, PointsHistory: nil, TimeStamps: nil, LighthouseState: 0}
@@ -66,7 +71,6 @@ func UpdateGameState(scanResults []checks.Check, databasePath string, getter Poi
 	return gs, nil
 }
 
-// TODO: Update documentation
 // PointCalculationGetter is an interface that defines a method for calculating points
 // based on the game state, scan results, and a file path.
 //
@@ -78,7 +82,6 @@ type PointCalculationGetter interface {
 	PointCalculation(gs GameState, scanResults []checks.Check, filePath string) (GameState, error)
 }
 
-// TODO: Update documentation
 // RealPointCalculationGetter is a struct that implements the PointCalculationGetter interface.
 //
 // It provides a real-world implementation of the PointCalculation method, which calculates the number of points
@@ -118,7 +121,6 @@ func (r RealPointCalculationGetter) PointCalculation(gs GameState, scanResults [
 	return gs, nil
 }
 
-// TODO: Update documentation
 // LighthouseStateTransition determines the lighthouse state based on the user's points (the less points, the better)
 //
 // Parameters:
@@ -143,7 +145,6 @@ func LighthouseStateTransition(gs GameState) GameState {
 	return gs
 }
 
-// TODO: Update documentation
 // SufficientActivity checks if the user has been active enough to transition to another lighthouse state
 //
 // Parameters:

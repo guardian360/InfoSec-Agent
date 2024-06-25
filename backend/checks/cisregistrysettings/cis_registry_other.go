@@ -2,7 +2,6 @@ package cisregistrysettings
 
 import "github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 
-// TODO: Update documentation
 // CheckOtherRegistrySettings is a function that checks various registry settings related to different (unrelated) registry keys
 // to ensure they adhere to the CIS Benchmark standards.
 // It takes a RegistryKey object as an argument, which represents the root key from which the registry settings will be checked.
@@ -11,14 +10,13 @@ import "github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 // Parameters:
 //   - registryKey (mocking.RegistryKey): The root key from which the registry settings will be checked. Should be HKEY_LOCAL_MACHINE for this function.
 //
-// Returns: None
+// Returns: None.
 func CheckOtherRegistrySettings(registryKey mocking.RegistryKey) {
 	for _, check := range generalRegistryChecks {
 		check(registryKey)
 	}
 }
 
-// TODO: Update documentation
 // generalRegistryChecks is a collection of registry checks related to different (unrelated) registry keys.
 // Each function in the collection represents a different registry setting check that the application can perform.
 // The registry settings get checked against the CIS Benchmark recommendations.
@@ -32,7 +30,6 @@ var generalRegistryChecks = []func(mocking.RegistryKey){
 	CheckSessionManager,
 }
 
-// TODO: Update documentation
 // CheckAutoConnectHotspot is a helper function that checks the registry to determine if the system is configured to automatically connect to hotspots.
 //
 // CIS Benchmark Audit list index: 18.5.23.2.1
@@ -46,7 +43,6 @@ func CheckAutoConnectHotspot(registryKey mocking.RegistryKey) {
 	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
-// TODO: Update documentation
 // CheckCurrentVersionRegistry is a helper function that checks the registry to determine if the system is configured with the correct settings for the current version.
 //
 // CIS Benchmark Audit list indices: 2.3.4.1, 2.3.7.8, 2.3.7.9, 18.2.1, 18.4.1, 18.4.10
@@ -75,7 +71,6 @@ func CheckCurrentVersionRegistry(registryKey mocking.RegistryKey) {
 	CheckStringRegistrySettings(registryKey, registryPath, settings, expectedStringValues)
 }
 
-// TODO: Update documentation
 // CheckControlLsa is a helper function that checks the registry to determine if the system is configured with the correct settings for Control Lsa.
 //
 // CIS Benchmark Audit list indices: 2.3.1.4, 2.3.2.1-2, 2.3.10.2-5, 2.3.10.10, 2.3.10.12,
@@ -95,7 +90,6 @@ func CheckControlLsa(registryKey mocking.RegistryKey) {
 	checkLsapku2u(registryKey)
 }
 
-// TODO: Update documentation
 // checkLsaMSV is a helper function that checks the registry to determine if the system is configured with the correct settings for Lsa MSV.
 //
 // CIS Benchmark Audit list indices: 2.3.11.2, 2.3.11.9-10
@@ -109,7 +103,6 @@ func checkLsaMSV(registryKey mocking.RegistryKey) {
 	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
-// TODO: Update documentation
 // checkLsapku2u is a helper function that checks the registry to determine if the system is configured with the correct settings for Lsa pku2u.
 //
 // CIS Benchmark Audit list index: 2.3.11.3
@@ -123,7 +116,6 @@ func checkLsapku2u(registryKey mocking.RegistryKey) {
 	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
-// TODO: Update documentation
 // CheckControlSAM is a helper function that checks the registry to determine if the system is configured with the correct settings for Control SAM.
 //
 // CIS Benchmark Audit list index: 1.1.6
@@ -137,7 +129,6 @@ func CheckControlSAM(registryKey mocking.RegistryKey) {
 	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
-// TODO: Update documentation
 // CheckSecurePipeServers is a helper function that checks the registry to determine if the system is configured with the correct settings for secure pipe servers.
 //
 // CIS Benchmark Audit list indices: 2.3.10.7-8
@@ -146,7 +137,6 @@ func CheckSecurePipeServers(registryKey mocking.RegistryKey) {
 	securePipeServersPaths(registryKey)
 }
 
-// TODO: Update documentation
 // securePipeServersExactPaths is a helper function that checks the registry to determine if the system is configured with the correct settings for secure pipe servers exact paths.
 //
 // CIS Benchmark Audit list index: 2.3.10.7
@@ -162,7 +152,6 @@ func securePipeServersExactPaths(registryKey mocking.RegistryKey) {
 	CheckStringRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
-// TODO: Update documentation
 // securePipeServersPaths is a helper function that checks the registry to determine if the system is configured with the correct settings for secure pipe servers paths.
 //
 // CIS Benchmark Audit list index: 2.3.10.8
@@ -182,7 +171,6 @@ func securePipeServersPaths(registryKey mocking.RegistryKey) {
 	CheckStringRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
-// TODO: Update documentation
 // CheckWDigest is a helper function that checks the registry to determine if the system is configured with the correct settings for WDigest.
 //
 // CIS Benchmark Audit list index: 18.3.7
@@ -196,7 +184,6 @@ func CheckWDigest(registryKey mocking.RegistryKey) {
 	CheckIntegerRegistrySettings(registryKey, registryPath, settings, expectedValues)
 }
 
-// TODO: Update documentation
 // CheckSessionManager is a helper function that checks the registry to determine if the system is configured with the correct settings for the session manager.
 //
 // CIS Benchmark Audit list indices: 2.3.15.1-2, 18.3.4, 18.4.9
@@ -211,7 +198,6 @@ func CheckSessionManager(registryKey mocking.RegistryKey) {
 	sessionManagerKernel(registryKey)
 }
 
-// TODO: Update documentation
 // sessionManagerKernel is a helper function that checks the registry to determine if the system is configured with the correct settings for the session manager kernel.
 //
 // CIS Benchmark Audit list indices: 2.3.15.1, 18.3.4

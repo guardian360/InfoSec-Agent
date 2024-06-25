@@ -14,35 +14,42 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/usersettings"
 )
 
-// TODO: Update documentation
 // ParseResult is a struct that encapsulates the results of parsing a scan.
 // This parsing is done to convert the results of security and privacy checks into a format that
 // can be sent to the Guardian360 Lighthouse API.
+//
+// Fields:
+//   - Metadata (Metadata): The metadata of the scan, including the workstation ID, user, and date.
+//   - Results ([]IssueData): A slice of IssueData objects representing the results of the security and privacy checks.
 type ParseResult struct {
 	Metadata Metadata    `json:"metadata"`
 	Results  []IssueData `json:"results"`
 }
 
-// TODO: Update documentation
 // Metadata is a struct that contains metadata about the scan.
-// This metadata includes the workstation ID, the user who initiated the scan, and the date of the scan.
+//
+// Fields:
+//   - WorkStationID (int): The ID of the workstation where the scan was performed.
+//   - User (string): The user who initiated the scan.
+//   - Date (string): The date and time when the scan was performed.
 type Metadata struct {
 	WorkStationID int    `json:"workStationID"`
 	User          string `json:"user"`
 	Date          string `json:"date"`
 }
 
-// TODO: Update documentation
 // IssueData is a struct that encapsulates the data for a checked issue.
-// This data includes the issue ID, whether the issue is considered a problem, and any additional data related to the
-// issue.
+//
+// Fields:
+//   - IssueID (int): A unique identifier for the issue. This value is used to distinguish between different checks.
+//   - Detected (bool): A boolean value indicating whether the issue was detected.
+//   - AdditionalData ([]string): Additional data related to the issue. This could be a list of strings representing various details.
 type IssueData struct {
 	IssueID        int      `json:"issueID"`
 	Detected       bool     `json:"detected"`
 	AdditionalData []string `json:"additionalData"`
 }
 
-// TODO: Update documentation
 // String returns a string representation of the ParseResult struct.
 //
 // Parameters: None.
@@ -53,7 +60,6 @@ func (p ParseResult) String() string {
 	return fmt.Sprintf("Metadata: %v, Results: %v", p.Metadata, p.Results)
 }
 
-// TODO: Update documentation
 // ParseScanResults parses the results of a scan into a ParseResult struct.
 // This function takes the metadata of the scan and the results of the security and privacy checks and creates a
 // ParseResult struct that encapsulates this data.
@@ -73,14 +79,15 @@ func ParseScanResults(metaData Metadata, checks []checks.Check) ParseResult {
 	return parseResult
 }
 
-// TODO: Update documentation
 // ParseCheckResult parses the result of a single security or privacy check into an IssueData struct.
+// This function takes a Check object representing the result of a security or privacy check and creates an IssueData
+// struct that encapsulates the data for the checked issue.
 //
 // Parameters:
-// - check (checks.Check): A Check object representing the result of a security or privacy check.
+//   - check (checks.Check): A Check object representing the result of a security or privacy check.
 //
 // Returns:
-// - IssueData: An IssueData struct that encapsulates the data for the checked issue.
+//   - IssueData: An IssueData struct that encapsulates the data for the checked issue.
 func ParseCheckResult(check checks.Check) IssueData {
 	if check.Error != nil {
 		return IssueData{IssueID: check.IssueID, Detected: false}
@@ -92,8 +99,11 @@ func ParseCheckResult(check checks.Check) IssueData {
 }
 
 // SendResultsToAPI sends the results of a scan to the Guardian360 Lighthouse API.
+// This function takes a ParseResult struct representing the results of a scan and sends this data to the Guardian360
+// Lighthouse API. The data is sent as a JSON payload in an HTTP POST request.
 //
-// Parameters: result ParseResult: The result of parsing the scan.
+// Parameters:
+//   - result (ParseResult): A ParseResult struct representing the results of a scan.
 //
 // Returns: None.
 func SendResultsToAPI(result ParseResult) {

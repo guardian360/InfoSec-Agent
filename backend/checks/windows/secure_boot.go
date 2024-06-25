@@ -5,11 +5,10 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 )
 
-// TODO: Update documentation
-// SecureBoot is a function that checks if Windows Secure Boot is enabled on the system.
+// SecureBoot checks if Windows Secure Boot is enabled on the system.
 //
 // Parameters:
-//   - registryKey mocking.RegistryKey: A registry key object for accessing the Windows Secure Boot registry key.
+//   - registryKey (mocking.RegistryKey): A registry key object for accessing the Windows Secure Boot registry key.
 //
 // Returns:
 //   - Check: A struct containing the result of the check. The result indicates whether Windows Secure Boot is enabled or not.

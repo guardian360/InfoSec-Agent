@@ -8,7 +8,6 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 )
 
-// TODO: Update documentation
 // GuestAccount checks the status of the Windows guest account.
 //
 // Parameters:

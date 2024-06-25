@@ -10,7 +10,6 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 )
 
-// TODO: Update documentation
 // PasswordLength is a function that checks if the minimum password length is at least 15 characters.
 // It does this by executing a command to show information about the password complexity settings and parsing the output.
 //

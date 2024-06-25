@@ -8,7 +8,6 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 )
 
-// TODO: Update documentation
 // Advertisement is a function that checks if the Advertisement ID is set to be shared with apps.
 //
 // Parameters:
@@ -16,6 +15,10 @@ import (
 //
 // Returns:
 //   - Check: A struct containing the result of the check. The result indicates whether Advertisement ID is shared with apps or not.
+//
+// The function works by opening and reading the value of the AdvertisingInfo registry key.
+// Based on this value, it determines if the Advertisement ID is shared with apps.
+// The function returns a Check instance containing a string that describes the status of the Advertisement ID.
 func Advertisement(registryKey mocking.RegistryKey) checks.Check {
 	key, err := mocking.OpenRegistryKey(registryKey, `SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo`)
 	if err != nil {

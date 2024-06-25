@@ -8,7 +8,6 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 )
 
-// TODO: Update documentation
 // AutomaticLogin checks if automatic log-in is enabled on the system.
 //
 // Parameters:
@@ -16,6 +15,10 @@ import (
 //
 // Returns:
 //   - Check: A struct containing the result of the check. The result indicates whether automatic log-in is enabled on the system.
+//
+// The function works by opening and reading the value of the Winlogon registry key.
+// Based on this value, it determines if automatic log-in is enabled on the system.
+// The function returns a Check instance containing a string that describes the status of automatic log-in.
 func AutomaticLogin(registryKey mocking.RegistryKey) checks.Check {
 	key, err := mocking.OpenRegistryKey(registryKey, `SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon`)
 	if err != nil {

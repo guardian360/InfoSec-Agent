@@ -5,16 +5,18 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 )
 
-// TODO: Update documentation
 // LoginMethod is a function that checks and returns the login methods enabled by the user on a Windows system.
 //
 // Parameters:
-//   - registryKey mocking.RegistryKey: A registry key object for accessing the Windows login methods registry key.
+//   - registryKey (mocking.RegistryKey): A registry key object for accessing the Windows login methods registry key.
 //
 // Returns:
 //   - Check: A struct containing the result of the check. The result is a list of enabled login methods such as PIN, Picture Logon, Password, Fingerprint, Facial recognition, and Trust signal.
 //
-// The function works by opening and reading the values of the Windows login methods registry key. Each login method corresponds to a unique GUID. The function checks whether the GUID is present in the registry key, and if it is, that login method is considered enabled. The function returns a Check instance containing a list of enabled login methods.
+// The function works by opening and reading the values of the Windows login methods registry key.
+// Each login method corresponds to a unique GUID.
+// The function checks whether the GUID is present in the registry key, and if it is, that login method is considered enabled.
+// The function returns a Check instance containing a list of enabled login methods.
 func LoginMethod(registryKey mocking.RegistryKey) checks.Check {
 	resultID := 0
 	// Open the registry key related to log-in methods

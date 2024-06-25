@@ -14,14 +14,16 @@ import (
 	"time"
 )
 
-// TODO: Update documentation
 // UserSettings represents the settings for a user in the system.
 //
 // Fields:
-//   - Language: An integer representing the user's preferred language. The specific language each integer represents can vary based on the system's language settings.
-//   - ScanInterval: An integer representing the interval (in hours) at which the system should perform scans.
-//   - Integration: A boolean indicating whether the user has enabled integration with other systems or services.
-//   - NextScan: A time.Time value indicating when the next scan should occur.
+//   - Language (int): An integer representing the user's preferred language. The specific language each integer represents can vary based on the system's language settings.
+//   - ScanInterval (int): An integer representing the interval (in hours) at which the system should perform scans.
+//   - Integration (bool): A boolean indicating whether the user has enabled integration with other systems or services.
+//   - NextScan (time.Time): A time.Time value indicating when the next scan should occur.
+//   - Points (int): An integer representing the user's current points amount.
+//   - PointsHistory ([]int): A slice of integers representing the user's points history for each scan.
+//   - TimeStamps ([]time.Time): A slice of time.Time values representing the time stamps for each scan.
 //   - LighthouseState: An integer representing the gamification lighthouse state.
 type UserSettings struct {
 	Language        int         `json:"Language"`        // User's preferred language
@@ -37,7 +39,6 @@ type UserSettings struct {
 
 var DefaultUserSettings = UserSettings{Language: 1, ScanInterval: 7, Integration: false, NextScan: time.Now().Add((time.Hour * 24) * 7), Points: 0, PointsHistory: nil, TimeStamps: nil, LighthouseState: 0, IntegrationKey: ""}
 
-// TODO: Update documentation
 // LoadUserSettings loads the user settings from a JSON file in the Windows AppData folder.
 //
 // The function uses the os package to get the path to the AppData folder, and reads the user settings from a file named "user_settings.json" in this folder.
@@ -46,7 +47,7 @@ var DefaultUserSettings = UserSettings{Language: 1, ScanInterval: 7, Integration
 // Parameters: None
 //
 // Returns:
-//   - settings (UserSettings): The loaded user settings. This is a UserSettings struct.
+//   - UserSettings: The loaded user settings. This is a UserSettings struct.
 func LoadUserSettings() UserSettings {
 	logger.Log.Debug("Loading user settings")
 
@@ -84,7 +85,6 @@ func LoadUserSettings() UserSettings {
 	return settings
 }
 
-// TODO: Update documentation
 // SaveUserSettingsGetter is an interface that defines a method for saving user settings.
 //
 // The SaveUserSettings method takes a UserSettings struct as input, which contains the user settings to be saved.
@@ -95,13 +95,11 @@ type SaveUserSettingsGetter interface {
 	SaveUserSettings(settings UserSettings) error
 }
 
-// TODO: Update documentation
 // RealSaveUserSettingsGetter is a struct that implements the SaveUserSettingsGetter interface.
 //
 // It provides a real-world implementation of the SaveUserSettings method, which saves the user settings to a JSON file in the Windows AppData\Roaming folder.
 type RealSaveUserSettingsGetter struct{}
 
-// TODO: Update documentation
 // SaveUserSettings saves the user settings to a JSON file in the Windows AppData\Roaming folder.
 //
 // The function takes a UserSettings struct as input, which contains the user settings to be saved.
@@ -110,7 +108,8 @@ type RealSaveUserSettingsGetter struct{}
 // Parameters:
 //   - settings (UserSettings): The user settings to be saved.
 //
-// Returns: An error if any occurred while saving the user settings. If no error occurred, the function returns nil.
+// Returns:
+//   - An error if any occurred while saving the user settings. If no error occurred, the function returns nil.
 func (r RealSaveUserSettingsGetter) SaveUserSettings(settings UserSettings) error {
 	logger.Log.Debug("Saving user settings")
 
