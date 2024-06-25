@@ -500,7 +500,6 @@
         "Start uw computer opnieuw op om te voltooien."
       ],
       "SolutionWindows10": [
-        "De instellingen voor gebruikersaccountbeheer zijn ingeschakeld voor apps, het is een veiligere optie om deze altijd op de hoogte te stellen. ",
         "Druk op uw toetsenbord op 'Windows+R' om het venster Uitvoeren te openen.",
         "Typ 'Configuratiescherm' en selecteer vervolgens OK.",
         "Selecteer 'Gebruikersaccounts'.",
@@ -511,9 +510,18 @@
       ],
       "Screenshots": [
         "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-1.png",
         "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-4.png",
+        "user-account-control/user-account-control-5.png",
+        "user-account-control/user-account-control-5.png"
+      ],
+      "ScreenshotsWindows10": [
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-1.png",
         "user-account-control/user-account-control-2.png",
         "user-account-control/user-account-control-3.png",
+        "user-account-control/user-account-control-4.png",
         "user-account-control/user-account-control-5.png",
         "user-account-control/user-account-control-5.png"
       ]
@@ -551,9 +559,19 @@
       "Screenshots": [
         "user-account-control/user-account-control-1.png",
         "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-1.png",
         "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-4.png",
+        "user-account-control/user-account-control-5.png",
+        "user-account-control/user-account-control-5.png"
+      ],
+      "ScreenshotsWindows10": [
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-1.png",
         "user-account-control/user-account-control-2.png",
         "user-account-control/user-account-control-3.png",
+        "user-account-control/user-account-control-4.png",
         "user-account-control/user-account-control-5.png",
         "user-account-control/user-account-control-5.png"
       ]
@@ -583,9 +601,19 @@
       "Screenshots": [
         "user-account-control/user-account-control-1.png",
         "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-1.png",
         "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-4.png",
+        "user-account-control/user-account-control-5.png",
+        "user-account-control/user-account-control-5.png"
+      ],
+      "ScreenshotsWindows10": [
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-1.png",
         "user-account-control/user-account-control-2.png",
         "user-account-control/user-account-control-3.png",
+        "user-account-control/user-account-control-4.png",
         "user-account-control/user-account-control-5.png",
         "user-account-control/user-account-control-5.png"
       ]
@@ -1355,7 +1383,7 @@
       ],
       "Screenshots": [
         "firewall/firewall-1.png",
-        "firewall/firewall-1.png"
+        "firewall/firewall-2.png"
       ]
     },
     "Type": "Beveiliging",
@@ -1392,6 +1420,12 @@
         "minimum-password-length/minimum-password-length-2.png",
         "minimum-password-length/minimum-password-length-3.png",
         "minimum-password-length/minimum-password-length-3.png"
+      ],
+      "ScreenshotsWindows10": [
+        "minimum-password-length/minimum-password-length-1.png",
+        "minimum-password-length/minimum-password-length-2.png",
+        "minimum-password-length/minimum-password-length-3.png",
+        "minimum-password-length/minimum-password-length-4.png"
       ]
     },
     "Type": "Beveiliging",
@@ -1454,6 +1488,16 @@
         "Selecteer onder 'NetBIOS-instelling' de optie 'NetBIOS via TCP/IP uitschakelen'.",
         "Klik op 'OK' om de wijzigingen op te slaan."
       ],
+      "SolutionWindows10": [
+        "Open het Configuratiescherm en ga naar 'Netwerk en internet'.",
+        "Ga naar 'Netwerkcentrum'.",
+        "Klik op 'Adapterinstellingen wijzigen' in het linkerdeelvenster.",
+        "Klik met de rechtermuisknop op uw netwerkverbinding en selecteer 'Eigenschappen'.",
+        "Scroll op het tabblad 'Netwerken' omlaag naar 'Internet Protocol versie 4 (TCP/IPv4)' en klik op 'Eigenschappen'.",
+        "Klik op 'Geavanceerd' en ga naar het tabblad 'WINS'.",
+        "Selecteer onder 'NetBIOS-instelling' de optie 'NetBIOS via TCP/IP uitschakelen'.",
+        "Klik op 'OK' om de wijzigingen op te slaan."
+      ],
       "Screenshots": [
         "netbios/netbios-1.png",
         "netbios/netbios-2.png",
@@ -1462,6 +1506,16 @@
         "netbios/netbios-5.png",
         "netbios/netbios-6.png",
         "netbios/netbios-7.png"
+      ],
+      "ScreenshotsWindows10": [
+        "netbios/netbios-1.png",
+        "netbios/netbios-2.png",
+        "netbios/netbios-3.png",
+        "netbios/netbios-4.png",
+        "netbios/netbios-5.png",
+        "netbios/netbios-6.png",
+        "netbios/netbios-7.png",
+        "netbios/netbios-8.png"
       ]
     },
     "Type": "Beveiliging",
@@ -1488,16 +1542,14 @@
       "Severity": 2,
       "Name": "WPAD-service is ingeschakeld",
       "Solution": [
-        "Open een opdrachtprompt met verhoogde bevoegdheid door met de rechtermuisknop op de Start-knop te klikken en 'Terminal (Admin)' te selecteren.",
-        "Voer het commando 'netsh winhttp show proxy' uit om de huidige proxy-instellingen te controleren.",
-        "Als WPAD is ingeschakeld, voert u de opdracht 'netsh winhttp reset proxy' uit om WPAD uit te schakelen en de proxy-instellingen opnieuw in te stellen.",
-        "Start uw computer opnieuw op om de wijzigingen toe te passen."
+        "Open de register editor door te zoeken naar register.",
+        "Ga naar Computer\\HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\Wpad.",
+        "Als de sleutel WpadOverride niet bestaat, maak dan een sleutel door rechts te klikken -> nieuw -> DWORD en geef deze de naam: WpadOverride",
+        "Verander de waarde van deze nieuwe DWORD in 1."
       ],
       "Screenshots": [
-        "wpad/wpad-1.png",
-        "wpad/wpad-2.png",
-        "wpad/wpad-3.png",
-        "wpad/wpad-3.png"
+      ],
+      "ScreenshotsWindows10": [
       ]
     },
     "Type": "Beveiliging",

@@ -1,11 +1,20 @@
 package apiconnection_test
 
 import (
+	"bytes"
+	"encoding/json"
 	"errors"
+	"net/http"
+	"net/http/httptest"
+	"strconv"
+	"testing"
+	"time"
+
 	apiconnection "github.com/InfoSec-Agent/InfoSec-Agent/backend/api_connection"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/usersettings"
+	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
 )
 
 func TestParseCheckResult(t *testing.T) {
@@ -142,4 +151,53 @@ func TestParseString(t *testing.T) {
 			require.Equal(t, tt.want, got)
 		})
 	}
+}
+
+// Create a ParseResult instance
+type ParseResult struct {
+	Status string `json:"status"`
+}
+
+func TestSendResultsToAPI(t *testing.T) {
+	// Create a test server
+	testServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		assert.Equal(t, "application/json", r.Header.Get("Content-Type"))
+		assert.Equal(t, "Bearer", r.Header.Get("Authorization"))
+
+		// Send a response
+		w.WriteHeader(http.StatusOK)
+	}))
+	defer testServer.Close()
+
+	// Override the URL for the test
+	url := testServer.URL
+
+	// Create a ParseResult instance
+	result := ParseResult{
+		Status: "success",
+	}
+
+	// Convert result to JSON
+	jsonData, err := json.Marshal(result)
+	require.NoError(t, err)
+
+	// Act
+	buffer := bytes.NewBuffer(jsonData)
+	req, err := http.NewRequest(http.MethodPost, url, buffer)
+	require.NoError(t, err)
+
+	settings := usersettings.DefaultUserSettings
+	req.Header.Set("Content-Type", "application/json")
+	req.Header.Set("Authorization", "Bearer "+settings.IntegrationKey)
+	req.Header.Set("Content-Length", strconv.Itoa(buffer.Len()))
+
+	client := &http.Client{
+		Timeout: 60 * time.Second,
+	}
+	resp, err := client.Do(req)
+	require.NoError(t, err)
+	defer resp.Body.Close()
+
+	// Assert
+	require.Equal(t, http.StatusOK, resp.StatusCode)
 }

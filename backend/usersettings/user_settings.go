@@ -32,9 +32,10 @@ type UserSettings struct {
 	PointsHistory   []int       `json:"PointsHistory"`   // Points history for each scan
 	TimeStamps      []time.Time `json:"TimeStamps"`      // Time stamps for each scan
 	LighthouseState int         `json:"LighthouseState"` // User's game state
+	IntegrationKey  string      `json:"IntegrationKey"`  // Integration key for external systems
 }
 
-var defaultUserSettings = UserSettings{Language: 1, ScanInterval: 7, Integration: false, NextScan: time.Now().Add((time.Hour * 24) * 7), Points: 0, PointsHistory: nil, TimeStamps: nil, LighthouseState: 0}
+var DefaultUserSettings = UserSettings{Language: 1, ScanInterval: 7, Integration: false, NextScan: time.Now().Add((time.Hour * 24) * 7), Points: 0, PointsHistory: nil, TimeStamps: nil, LighthouseState: 0, IntegrationKey: ""}
 
 // TODO: Update documentation
 // LoadUserSettings loads the user settings from a JSON file in the Windows AppData folder.
@@ -53,14 +54,14 @@ func LoadUserSettings() UserSettings {
 	appDataPath, err := os.UserConfigDir()
 	if err != nil {
 		logger.Log.Warning("Error getting user config directory, using default settings")
-		return defaultUserSettings
+		return DefaultUserSettings
 	}
 	dirPath := appDataPath + `\InfoSec-Agent`
 	logger.Log.Trace("Creating/reading directory at:" + dirPath)
 	err = os.MkdirAll(dirPath, os.ModePerm)
 	if err != nil {
 		logger.Log.Warning("Error creating directory, using default settings")
-		return defaultUserSettings
+		return DefaultUserSettings
 	}
 
 	filePath := dirPath + `\user_settings.json`
@@ -69,7 +70,7 @@ func LoadUserSettings() UserSettings {
 	data, err := os.ReadFile(filePath)
 	if err != nil {
 		logger.Log.Warning("Error reading user settings file, using default settings")
-		return defaultUserSettings
+		return DefaultUserSettings
 	}
 
 	var settings UserSettings
@@ -77,7 +78,7 @@ func LoadUserSettings() UserSettings {
 	err = json.Unmarshal(data, &settings)
 	if err != nil {
 		logger.Log.Warning("Error unmarshalling user settings JSON, using default settings")
-		return defaultUserSettings
+		return DefaultUserSettings
 	}
 	logger.Log.Debug("Loaded user settings")
 	return settings

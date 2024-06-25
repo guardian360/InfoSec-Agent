@@ -4,7 +4,8 @@ import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js'
 import {retrieveTheme} from './personalize.js';
 import {scanTest} from './database.js';
 import {LogError as logError, LogDebug as logDebug} from '../../wailsjs/go/main/Tray.js';
-import {GetImagePath as getImagePath, GetLighthouseState as getLighthouseState} from '../../wailsjs/go/main/App.js';
+import {GetImagePath as getImagePath, GetLighthouseState as getLighthouseState,
+  LoadUserSettings as getUserSettings} from '../../wailsjs/go/main/App.js';
 import {openIssuePage} from './issue.js';
 import {saveProgress, shareProgress, selectSocialMedia, setImage, socialMediaSizes} from './share.js';
 import data from '../databases/database.en-GB.json' assert { type: 'json' };
@@ -77,9 +78,10 @@ export async function openHomePage() {
         <div class="progress-container">
           <div class="progress-bar" id="progress-bar"></div>
         </div>
-        <p id="progress-text"></p>
+        <p id="progress-percentage-text"><p id="progress-text" class="lang-progress-text">
+        <p id="progress-almost-text" class="lang-progress-almost-text"></p></p>
       </div>
-    </div>
+    </div> 
   </div>
   <div id="share-modal" class="modal">
     <div class="modal-content">
@@ -124,6 +126,8 @@ export async function openHomePage() {
     'lang-share',
     'lang-lighthouse-progress',
     'lang-tooltip-text',
+    'lang-progress-text',
+    'lang-progress-almost-text',
   ];
   const localizationIds = [
     'Dashboard.RiskLevelDistribution',
@@ -137,6 +141,8 @@ export async function openHomePage() {
     'Dashboard.Share',
     'Dashboard.LighthouseProgress',
     'Dashboard.TooltipText',
+    'Dashboard.ProgressText',
+    'Dashboard.ProgressTextAlmost',
   ];
   for (let i = 0; i < staticHomePageContent.length; i++) {
     getLocalization(localizationIds[i], staticHomePageContent[i]);
@@ -155,21 +161,33 @@ export async function openHomePage() {
   document.getElementById('select-instagram').addEventListener('click', () => selectSocialMedia('instagram'));
 
   // Progress bar
-  document.addEventListener('DOMContentLoaded', () => {
-    const progressBar = document.getElementById('progress-bar');
-    const progressText = document.getElementById('progress-text');
+  const progressBar = document.getElementById('progress-bar');
+  const progressPercentageText = document.getElementById('progress-percentage-text');
+  const progressText = document.getElementById('progress-text');
+  const progressAlmostText = document.getElementById('progress-almost-text');
 
-    // Assuming the points are stored in local storage under the key 'userPoints'
-    const userPoints = parseInt(localStorage.getItem('userPoints')) || 0;
-    const pointsToNextState = 100; // The points required to reach the next state
+  // Assuming the points are stored in local storage under the key 'userPoints'
+  const usersettings = await getUserSettings();
+  const userPoints = parseInt(usersettings.Points) || 50;
+  const pointsToNextState = 10; // The points required to reach the next state
+  let modResult = userPoints % pointsToNextState;
 
-    // Calculate the progress percentage
-    const progressPercentage = Math.min((userPoints / pointsToNextState) * 100, 100);
+  if (modResult === 0 && lighthouseState < 4) {
+    modResult = 0.1;
+  }
+  const progressPercentage = 100 - (modResult / 10 * 100);
 
-    // Update the progress bar width and text
-    progressBar.style.width = progressPercentage + '%';
-    progressText.textContent = `${userPoints} / ${pointsToNextState} (${progressPercentage.toFixed(2)}%)`;
-  });
+  // Update the progress bar width and text
+  if (progressPercentage === 100) {
+    progressBar.style.width = '100%';
+    progressText.hidden = true;
+    progressAlmostText.hidden = false;
+  } else {
+    progressPercentageText.textContent = `${progressPercentage.toFixed(2)} %`;
+    progressBar.style.width = `${progressPercentage}%`;
+    progressText.hidden = false;
+    progressAlmostText.hidden = true;
+  }
 
   // on startup set the social media to share to facebook
   sessionStorage.setItem('ShareSocial', JSON.stringify(socialMediaSizes['facebook']));
@@ -219,7 +237,7 @@ export function suggestedIssue(type) {
  *
  * @return {string} severity
  */
-function getSeverity(issueId, resultId) {
+export function getSeverity(issueId, resultId) {
   const issue = data[issueId];
   if (issue == undefined) return undefined;
   const issueData = issue[resultId];
@@ -227,12 +245,12 @@ function getSeverity(issueId, resultId) {
   return issueData.Severity;
 }
 
+/* istanbul ignore next */
 if (typeof document !== 'undefined') {
   try {
     document.getElementById('logo-button').addEventListener('click', () => openHomePage());
     document.getElementById('home-button').addEventListener('click', () => openHomePage());
   } catch (error) {
-    /* istanbul ignore next */
     logError('Error in security-dashboard.js: ' + error);
   }
 }

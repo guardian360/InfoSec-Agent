@@ -42,6 +42,10 @@ function mockGetLocalizationString(messageID) {
       myResolve('Version');
     case 'Programs.Search':
       myResolve('Search...');
+    case 'Programs.ReloadText':
+      myResolve('ReloadText');
+    case 'Programs.ReloadButton':
+      myResolve('Reload page');
     default:
       myReject(new Error('Wrong message ID'));
     }
@@ -60,16 +64,11 @@ jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
 
 // Test cases
 describe('Programs table', function() {
-  it('openPrgramsPage should add the programs to the page-contents', async function() {
+  it('openProgramsPage should add the programs to the page-contents', async function() {
     // Arrange
     const programs = await import('../src/js/programs.js');
     // Arrange input issues
-    const issues = [
-      { // Privacy, level 0
-        issue_id: 21,
-        result_id: 0,
-        result: [],
-      },
+    const list =
       { // Programs, level 0
         issue_id: 43,
         result_id: 0,
@@ -77,10 +76,9 @@ describe('Programs table', function() {
           'Program 1 | 1.0.0',
           'Program 2 | 2.0.0',
         ],
-      },
-    ];
+      };
 
-    sessionStorage.setItem('ScanResult', JSON.stringify(issues));
+    sessionStorage.setItem('ProgramList', JSON.stringify(list));
 
     // Act
     await programs.openProgramsPage();

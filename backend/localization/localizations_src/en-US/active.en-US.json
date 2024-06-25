@@ -106,7 +106,9 @@
     "SaveText": "Save",
     "Share": "Share",
     "LighthouseProgress":"Progress",
-    "TooltipText": "The more active you are in resolving issues, the more you are working towards becoming more secure! This is displayed by the building of your lighthouse. At the beginning there won't be much, but staying consistent in the use of InfoSec Agent will let you build a beautiful lighthouse. To transition to the next lighthouse state, the progress bar needs to be full."
+    "TooltipText": "The more active you are in resolving issues, the more you are working towards becoming more secure! This is displayed by the building of your lighthouse. At the beginning there won't be much, but staying consistent in the use of InfoSec Agent will let you build a beautiful lighthouse. To transition to the next lighthouse state, the progress bar needs to be full.",
+    "ProgressText":" completed to the next state.",
+    "ProgressTextAlmost": " Keep going, almost there!"
   },
   "Issues":
   {
@@ -149,7 +151,9 @@
     "Name":"Name",
     "Version":"Version",
     "ProgramTable": "Installed programs",
-    "Search": "Search..."
+    "Search": "Search...",
+    "ReloadText": "The program list hasn't loaded, please try to reload the page",
+    "ReloadButton": "Reload page"
   },
   "Personalize": {
     "navImage": "Navigation image", 
@@ -157,12 +161,30 @@
     "Title": "Navigation title", 
     "ChangeTitle": "Change title", 
     "Reset": "Reset settings",
-    "PersonalizeTitle": "Personalize Your Experience",
+    "PersonalizeTitle": "Personalize your experience",
     "PickTheme": "Pick a theme",
     "NavImage": "Navigation image",
     "NavTitle": "Navigation title",
     "Light": "Light",
     "Dark": "Dark"
+  },
+  "Integration": {
+    "ApiKeyTitle": "Connect to the Lighthouse API",
+    "ApiKeyDescription": "<b>Coming soon:</b> this functionality is not available yet, you will be able to connect to the Lighthouse API in the near future.",
+    "Step1Title": "Step 1: Register for an account",
+    "Step2Title": "Step 2: Navigate to API Settings",
+    "Step3Title": "Step 3: Generate API Key",
+    "Step1": "Login to your account on https://lighthouse.guardian360.nl and go to the settings",
+    "Step2": "Go to the API section and create a new token",
+    "Step3": "Copy the token and paste it in the field below, you can then click on the 'connect' button",
+    "Previous": "&#8249; Previous",
+    "Next": "Next &#8250;",
+    "EnterApi": "Enter Your API Key:",
+    "Connect": "Connect",
+    "Disconnect": "Disconnect",
+    "ConnectedApi": "Connected to API.",
+    "DisconnectedApi": "Disconnected from API",
+    "PleaseEnterApi": "Please enter your API key."
   },
   "AllChecks": {
     "Security": "Security",

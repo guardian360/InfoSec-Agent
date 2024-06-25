@@ -105,7 +105,9 @@
     "SaveText": "Opslaan",
     "Share": "Delen",
     "LighthouseProgress":"Vooruitgang",
-    "TooltipText": "Hoe actiever je bent met de applicatie, hoe meer je werkt aan je veiligheid! Je voortgang wordt laten zien door het bouwen van een vuurtoren. Wanneer het voortgangs-balkje hieronder vol zit, gaat je vuurtoren naar een nieuwe staat."
+    "TooltipText": "Hoe actiever je bent met de applicatie, hoe meer je werkt aan je veiligheid! Je voortgang wordt laten zien door het bouwen van een vuurtoren. Wanneer het voortgangs-balkje hieronder vol zit, gaat je vuurtoren naar een nieuwe staat.",
+    "ProgressText": " voltooid naar de volgende staat.",
+    "ProgressTextAlmost": " Ga door, bijna daar!"
   },
   "Issues":
   {
@@ -148,7 +150,9 @@
     "Name":"Naam",
     "Version": "Versie",
     "ProgramTable": "Geïnstalleerde programma's",
-    "Search": "Zoeken..."
+    "Search": "Zoeken...",
+    "ReloadText": "De programmalijst is niet ingeladen, probeer de pagina opnieuw te laden",
+    "ReloadButton": "Pagina opnieuw laden"
   },
   "Personalize": {
     "navImage": "Navigatieafbeelding",
@@ -162,6 +166,24 @@
     "NavTitle": "Navigatietitel",
     "Light": "Licht",
     "Dark": "Donker"
+  },
+  "Integration": {
+    "ApiKeyTitle": "Verbinden met de Lighthouse API",
+    "ApiKeyDescription": "<b>Komt binnenkort:</b> deze functionaliteit is nog niet beschikbaar, u zult binnenkort verbinding kunnen maken met de Lighthouse API.",
+    "Step1Title": "Stap 1: Registreer voor een account",
+    "Step2Title": "Stap 2: Ga naar API-instellingen",
+    "Step3Title": "Stap 3: Genereer API-sleutel",
+    "Step1": "Log in op uw account op https://lighthouse.guardian360.nl en ga naar de instellingen",
+    "Step2": "Ga naar de API-sectie en maak een nieuw token aan",
+    "Step3": "Kopieer het token en plak het in het veld hieronder, daarna kunt u op de knop 'verbinden' klikken",
+    "Previous": "&#8249; Vorige",
+    "Next": "Volgende &#8250;",
+    "EnterApi": "Voer uw API-sleutel in:",
+    "Connect": "Verbinden",
+    "Disconnect": "Verbreken",
+    "ConnectedApi": "Verbonden met API.",
+    "DisconnectedApi": "Verbroken van API",
+    "PleaseEnterApi": "Voer uw API-sleutel in."
   },
   "AllChecks": {
     "Security": "Beveiliging",

@@ -71,6 +71,16 @@ func TestListInstalledPrograms(t *testing.T) {
 			directory: "C:\\Program Files",
 			want:      []string{},
 		},
+		{
+			name:      "With Programs86",
+			directory: "C:\\Program Files (x86)",
+			want:      []string{"Program1", "Program2"},
+		},
+		{
+			name:      "No Programs86",
+			directory: "C:\\Program Files (x86)",
+			want:      []string{},
+		},
 	}
 
 	for _, tt := range tests {

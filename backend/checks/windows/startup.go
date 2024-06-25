@@ -44,8 +44,8 @@ func Startup(key1 mocking.RegistryKey, key2 mocking.RegistryKey, key3 mocking.Re
 	// Close the keys after we have received all relevant information
 	defer mocking.CloseRegistryKey(cuKey)
 	defer mocking.CloseRegistryKey(lmKey)
+	var lm2ValueNames []string
 	if !(err3 != nil && WinVersion == 11) {
-		var lm2ValueNames []string
 		if lmKey2 == nil {
 			return checks.NewCheckError(checks.StartupID, errors.New("error opening registry keys"))
 		}
@@ -67,7 +67,9 @@ func Startup(key1 mocking.RegistryKey, key2 mocking.RegistryKey, key3 mocking.Re
 
 	output = append(output, FindEntries(cuValueNames, cuKey)...)
 	output = append(output, FindEntries(lmValueNames, lmKey)...)
-
+	if len(lm2ValueNames) > 0 {
+		output = append(output, FindEntries(lm2ValueNames, lmKey2)...)
+	}
 	if len(output) == 0 {
 		return checks.NewCheckResult(checks.StartupID, 0)
 	}
@@ -94,10 +96,7 @@ func FindEntries(entries []string, key mocking.RegistryKey) []string {
 		// Check the binary values to make sure we only return the programs that are ENABLED on startup
 		// This is because the registry lists all programs that are related to the start-up,
 		// including those that are disabled.
-		// Start up programs that are enabled have a binary signature of non-zero at index 0 and zero at the rest of the indices.
-		if val[0] == 0 {
-			continue
-		}
+		// Start up programs that are enabled have a binary signature of all-zero at the second index.
 		if CheckAllZero(val[1:]) {
 			elements = append(elements, element)
 		}

@@ -171,7 +171,7 @@ describe('Issue page', function() {
     // Act
     await issue.openIssuePage(issueID, resultID);
     const name = document.getElementsByClassName('issue-name')[0].innerHTML;
-    const description = document.getElementById('information').nextElementSibling.innerHTML;
+    const description = document.getElementById('description').innerHTML;
     const solution = document.getElementById('solution-text').innerHTML;
 
     // Assert
@@ -282,7 +282,7 @@ describe('Issue page', function() {
       await issue.openIssuePage(issueID, resultID);
 
       const name = document.getElementsByClassName('issue-name')[0].innerHTML;
-      const description = document.getElementById('information').nextElementSibling.innerHTML;
+      const description = document.getElementById('description').innerHTML;
       const solution = document.getElementById('solution-text').innerHTML;
 
       // Assert
@@ -391,26 +391,26 @@ describe('Issue page', function() {
     // Act
     await issue.openIssuePage(issueId, resultId);
     const name = document.getElementsByClassName('issue-name')[0].innerHTML;
-    const description = document.getElementById('information').nextElementSibling.innerHTML;
+    const description = document.getElementById('description').innerHTML;
     const solution = document.getElementById('solution-text').innerHTML;
 
     let findings = '';
     if (issueId == 6 || issueId == 7 || issueId == 8 || issueId == 9 || issueId == 10) {
-      findings = document.getElementById('description').nextElementSibling.innerHTML;
+      findings = document.getElementById('findings').nextElementSibling.innerHTML;
       expectedFinding = 'Issues.Permissions';
     } else if (issueId == 11) {
-      findings = document.getElementById('description').nextElementSibling.innerHTML;
+      findings = document.getElementById('findings').nextElementSibling.innerHTML;
       expectedFinding = 'Issues.Port';
     } else if (issueId == 16) {
-      findings = document.getElementById('description').nextElementSibling.innerHTML;
+      findings = document.getElementById('findings').nextElementSibling.innerHTML;
       expectedFinding = 'Issues.Password';
     } else if (issueId == 27 || issueId == 35|| issueId == 36) {
-      findings = document.getElementById('description').nextElementSibling.innerHTML;
+      findings = document.getElementById('findings').nextElementSibling.innerHTML;
       expectedFinding = 'Issues.Cookies';
     } else if (issueId == 32) {
       findings = document.getElementsByClassName('issues-table')[0].innerHTML;
     } else {
-      findings = document.getElementById('description').nextElementSibling.innerHTML;
+      findings = document.getElementById('findings').nextElementSibling.innerHTML;
     }
     // Assert
     test.value(name).isEqualTo(data[issueId][resultId].Name);
@@ -440,7 +440,7 @@ describe('Issue page', function() {
 
     // Act
     pageContents.innerHTML = issue.parseShowResult(mockResult[0].issue_id, mockResult[0].result_id, currentIssue);
-    const findings = document.getElementById('description').innerHTML;
+    const findings = document.getElementById('findings').innerHTML;
 
     // Assert
     test.value(findings).isEqualTo('');

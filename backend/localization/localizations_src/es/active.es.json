@@ -104,8 +104,9 @@
     "SaveText": "Guardar",
     "Share": "Compartir",
     "LighthouseProgress":"Progreso", 
-    "TooltipText": "Cuanto más activo seas en la resolución de problemas, más estarás trabajando para volverte más seguro. Esto se muestra con la construcción de tu faro. Al principio no habrá mucho, pero si te mantienes constante en el uso de InfoSec Agent, podrás construir un hermoso faro. Para pasar al siguiente estado del faro, la barra de progreso debe estar completa."
-  },
+    "TooltipText": "Cuanto más activo seas en la resolución de problemas, más estarás trabajando para volverte más seguro. Esto se muestra con la construcción de tu faro. Al principio no habrá mucho, pero si te mantienes constante en el uso de InfoSec Agent, podrás construir un hermoso faro. Para pasar al siguiente estado del faro, la barra de progreso debe estar completa.",
+    "ProgressText": " completado para el siguiente estado.",
+    "ProgressTextAlmost": " ¡Sigue así, casi llegas!"},
   "Issues":
   {
     "IssueTable": "Tabla de problemas",
@@ -147,7 +148,9 @@
     "Name":"Nombre",
     "Version": "Versión",
     "ProgramTable": "Programas instalados",
-    "Search": "Buscar..."
+    "Search": "Buscar...",
+    "ReloadText": "La lista de programas no se ha cargado, por favor intente recargar la página",
+    "ReloadButton": "Recargar página"
   },
   "Personalize": {
     "navImage": "Imagen de navegación",
@@ -161,6 +164,24 @@
     "NavTitle": "Título de navegación",
     "Light": "Ligero",
     "Dark": "Oscuro"
+  },
+  "Integration": {
+    "ApiKeyTitle": "Conectar a la API de Lighthouse",
+    "ApiKeyDescription": "<b>Próximamente:</b> esta funcionalidad aún no está disponible, podrá conectarse a la API de Lighthouse en un futuro cercano.",
+    "Step1Title": "Paso 1: Regístrese para obtener una cuenta",
+    "Step2Title": "Paso 2: Navegue a la Configuración de API",
+    "Step3Title": "Paso 3: Genere una clave API",
+    "Step1": "Inicie sesión en su cuenta en https://lighthouse.guardian360.nl y vaya a la configuración",
+    "Step2": "Vaya a la sección de API y cree un nuevo token",
+    "Step3": "Copie el token y péguelo en el campo a continuación, luego puede hacer clic en el botón 'conectar'",
+    "Previous": "&#8249; Anterior",
+    "Next": "Siguiente &#8250;",
+    "EnterApi": "Ingrese su clave API:",
+    "Connect": "Conectar",
+    "Disconnect": "Desconectar",
+    "ConnectedApi": "Conectado a la API.",
+    "DisconnectedApi": "Desconectado de la API",
+    "PleaseEnterApi": "Por favor, ingrese su clave API."
   },
   "AllChecks": {
     "Security": "Seguridad",

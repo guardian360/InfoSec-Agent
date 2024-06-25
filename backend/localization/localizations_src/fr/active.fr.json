@@ -104,7 +104,9 @@
     "SaveText": "Enregistrer",
     "Share": "Partager",
     "LighthouseProgress":"Progrès",
-    "TooltipText": "Plus vous êtes actif dans la résolution des problèmes, plus vous travaillez à devenir plus sécurisé ! Cela se manifeste par la construction de votre phare. Au début, il n'y aura pas beaucoup, mais rester cohérent dans l'utilisation de l'Agent InfoSec vous permettra de construire un magnifique phare. Pour passer à l'état suivant du phare, la barre de progression doit être pleine."
+    "TooltipText": "Plus vous êtes actif dans la résolution des problèmes, plus vous travaillez à devenir plus sécurisé ! Cela se manifeste par la construction de votre phare. Au début, il n'y aura pas beaucoup, mais rester cohérent dans l'utilisation de l'Agent InfoSec vous permettra de construire un magnifique phare. Pour passer à l'état suivant du phare, la barre de progression doit être pleine.",
+    "ProgressText": " terminé pour passer à l'état suivant.",
+    "ProgressTextAlmost": " Continuez, vous y êtes presque !"
   },
   "Issues":
   {
@@ -147,7 +149,9 @@
     "Name":"Nom",
     "Version":"Version",
     "ProgramTable": "Programmes installés",
-    "Search": "Rechercher..."
+    "Search": "Rechercher...",
+    "ReloadText": "La liste des programmes n'a pas été chargée, veuillez essayer de recharger la page",
+    "ReloadButton": "Recharger la page"
   },
   "Personalize": {
     "navImage": "Image de navigation",
@@ -161,6 +165,24 @@
     "NavTitle": "Titre de navigation",
     "Light": "Lumière",
     "Dark": "Sombre"
+  },
+  "Integration": {
+    "ApiKeyTitle": "Se connecter à l'API Lighthouse",
+    "ApiKeyDescription": "<b>Bientôt disponible :</b> cette fonctionnalité n'est pas encore disponible, vous pourrez vous connecter à l'API Lighthouse dans un avenir proche.",
+    "Step1Title": "Étape 1: Inscrivez-vous pour un compte",
+    "Step2Title": "Étape 2: Accédez aux paramètres de l'API",
+    "Step3Title": "Étape 3: Générez une clé API",
+    "Step1": "Connectez-vous à votre compte sur https://lighthouse.guardian360.nl et allez dans les paramètres",
+    "Step2": "Allez dans la section API et créez un nouveau jeton",
+    "Step3": "Copiez le jeton et collez-le dans le champ ci-dessous, vous pouvez ensuite cliquer sur le bouton 'connecter'",
+    "Previous": "&#8249; Précédent",
+    "Next": "Suivant &#8250;",
+    "EnterApi": "Entrez votre clé API:",
+    "Connect": "Connecter",
+    "Disconnect": "Déconnecter",
+    "ConnectedApi": "Connecté à l'API.",
+    "DisconnectedApi": "Déconnecté de l'API",
+    "PleaseEnterApi": "Veuillez entrer votre clé API."
   },
   "AllChecks": {
     "Security": "Sécurité",

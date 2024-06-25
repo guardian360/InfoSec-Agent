@@ -105,7 +105,9 @@
     "SaveText": "Speichern",
     "Share": "Teilen",
     "LighthouseProgress":"Fortschritt",
-    "TooltipText": "Je aktiver du bei der Lösung von Problemen bist, desto mehr arbeitest du daran, sicherer zu werden! Dies wird durch den Bau deines Leuchtturms angezeigt. Am Anfang wird nicht viel zu sehen sein, aber wenn du den InfoSec Agent konsequent nutzt, wirst du einen wunderschönen Leuchtturm bauen können. Um in den nächsten Zustand des Leuchtturms überzugehen, muss die Fortschrittsanzeige voll sein."
+    "TooltipText": "Je aktiver du bei der Lösung von Problemen bist, desto mehr arbeitest du daran, sicherer zu werden! Dies wird durch den Bau deines Leuchtturms angezeigt. Am Anfang wird nicht viel zu sehen sein, aber wenn du den InfoSec Agent konsequent nutzt, wirst du einen wunderschönen Leuchtturm bauen können. Um in den nächsten Zustand des Leuchtturms überzugehen, muss die Fortschrittsanzeige voll sein.",
+    "ProgressText": " abgeschlossen zum nächsten Zustand.",
+    "ProgressTextAlmost": " Mach weiter, fast geschafft!"
   },
   "Issues":
   {
@@ -148,7 +150,9 @@
     "Name":"Name",
     "Version":"Ausführung",
     "ProgramTable": "Installierte Programme",
-    "Search": "Suchen..."
+    "Search": "Suchen...",
+    "ReloadText": "Die Programmliste wurde nicht geladen, bitte versuchen Sie, die Seite neu zu laden",
+    "ReloadButton": "Seite neu laden"
   },  
   "Personalize": {
     "navImage": "Navigationsbild",
@@ -162,6 +166,24 @@
     "NavTitle": "Navigationstitel",
     "Light": "Licht",
     "Dark": "Dunkel"
+  },
+  "Integration": {
+    "ApiKeyTitle": "Mit der Lighthouse-API verbinden",
+    "ApiKeyDescription": "<b>Kommt bald:</b> Diese Funktionalität ist noch nicht verfügbar, Sie werden sich in naher Zukunft mit der Lighthouse-API verbinden können.",
+    "Step1Title": "Schritt 1: Registrieren Sie sich für ein Konto",
+    "Step2Title": "Schritt 2: Navigieren Sie zu den API-Einstellungen",
+    "Step3Title": "Schritt 3: API-Schlüssel generieren",
+    "Step1": "Melden Sie sich bei Ihrem Konto auf https://lighthouse.guardian360.nl an und gehen Sie zu den Einstellungen",
+    "Step2": "Gehen Sie zum API-Bereich und erstellen Sie ein neues Token",
+    "Step3": "Kopieren Sie das Token und fügen Sie es in das Feld unten ein, dann können Sie auf die Schaltfläche 'Verbinden' klicken",
+    "Previous": "&#8249; Zurück",
+    "Next": "Weiter &#8250;",
+    "EnterApi": "Geben Sie Ihren API-Schlüssel ein:",
+    "Connect": "Verbinden",
+    "Disconnect": "Trennen",
+    "ConnectedApi": "Mit API verbunden.",
+    "DisconnectedApi": "Von API getrennt",
+    "PleaseEnterApi": "Bitte geben Sie Ihren API-Schlüssel ein."
   },
   "AllChecks": {
     "Security": "Sicherheit",

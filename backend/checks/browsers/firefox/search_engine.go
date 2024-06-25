@@ -64,9 +64,9 @@ func SearchEngineFirefox(profileFinder browsers.FirefoxProfileFinder, boolMock b
 		}
 	}
 
-	file, fileSize, err := OpenAndStatFile(tempSearch)
-	if err != nil {
-		return checks.NewCheckErrorf(checks.SearchFirefoxID, "Unable to open the file", err)
+	file, fileSize, fErr := OpenAndStatFile(tempSearch)
+	if fErr != nil {
+		return checks.NewCheckErrorf(checks.SearchFirefoxID, "Unable to open the file", fErr)
 	}
 	defer func(file mocking.File) {
 		err = browsers.CloseFile(file)

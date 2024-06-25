@@ -500,7 +500,6 @@
         "Zum Abschluss starten Sie Ihren Computer neu."
       ],
       "SolutionWindows10": [
-        "Die Einstellungen zur Benutzerkontensteuerung sind für Apps aktiviert. Die Einstellung „Immer benachrichtigen“ ist eine sicherere Option. ",
         "Drücken Sie auf Ihrer Tastatur „Windows+R“, um das Fenster „Ausführen“ zu öffnen.",
         "Geben Sie „Systemsteuerung“ ein und wählen Sie dann „OK“.",
         "Wählen Sie „Benutzerkonten“.",
@@ -511,9 +510,18 @@
       ],
       "Screenshots": [
         "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-1.png",
         "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-4.png",
+        "user-account-control/user-account-control-5.png",
+        "user-account-control/user-account-control-5.png"
+      ],
+      "ScreenshotsWindows10": [
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-1.png",
         "user-account-control/user-account-control-2.png",
         "user-account-control/user-account-control-3.png",
+        "user-account-control/user-account-control-4.png",
         "user-account-control/user-account-control-5.png",
         "user-account-control/user-account-control-5.png"
       ]
@@ -551,9 +559,19 @@
       "Screenshots": [
         "user-account-control/user-account-control-1.png",
         "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-1.png",
         "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-4.png",
+        "user-account-control/user-account-control-5.png",
+        "user-account-control/user-account-control-5.png"
+      ],
+      "ScreenshotsWindows10": [
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-1.png",
         "user-account-control/user-account-control-2.png",
         "user-account-control/user-account-control-3.png",
+        "user-account-control/user-account-control-4.png",
         "user-account-control/user-account-control-5.png",
         "user-account-control/user-account-control-5.png"
       ]
@@ -583,9 +601,19 @@
       "Screenshots": [
         "user-account-control/user-account-control-1.png",
         "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-1.png",
         "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-4.png",
+        "user-account-control/user-account-control-5.png",
+        "user-account-control/user-account-control-5.png"
+      ],
+      "ScreenshotsWindows10": [
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-1.png",
         "user-account-control/user-account-control-2.png",
         "user-account-control/user-account-control-3.png",
+        "user-account-control/user-account-control-4.png",
         "user-account-control/user-account-control-5.png",
         "user-account-control/user-account-control-5.png"
       ]
@@ -1357,7 +1385,7 @@
       ],
       "Screenshots": [
         "firewall/firewall-1.png",
-        "firewall/firewall-1.png"
+        "firewall/firewall-2.png"
       ]
     },
     "Type": "Sicherheit",
@@ -1394,6 +1422,12 @@
         "minimum-password-length/minimum-password-length-2.png",
         "minimum-password-length/minimum-password-length-3.png",
         "minimum-password-length/minimum-password-length-3.png"
+      ],
+      "ScreenshotsWindows10": [
+        "minimum-password-length/minimum-password-length-1.png",
+        "minimum-password-length/minimum-password-length-2.png",
+        "minimum-password-length/minimum-password-length-3.png",
+        "minimum-password-length/minimum-password-length-4.png"
       ]
     },
     "Type": "Sicherheit",
@@ -1456,6 +1490,16 @@
         "Wählen Sie unter „NetBIOS-Einstellung“ die Option „NetBIOS über TCP/IP deaktivieren“.",
         "Klicken Sie auf „OK“, um die Änderungen zu speichern."
       ],
+      "SolutionWindows10": [
+        "Öffnen Sie die Systemsteuerung und gehen Sie zu „Netzwerk und Internet“.",
+        "Gehe zu „Netzwerk- und Freigabecenter“.",
+        "Klicken Sie im linken Bereich auf „Adaptereinstellungen ändern“.",
+        "Klicken Sie mit der rechten Maustaste auf Ihre Netzwerkverbindung und wählen Sie „Eigenschaften“.",
+        "Scrollen Sie im Reiter „Netzwerk“ nach unten zu „Internet Protocol Version 4 (TCP/IPv4)“ und klicken Sie auf „Eigenschaften“.",
+        "Klicken Sie auf „Erweitert“ und gehen Sie zur Registerkarte „WINS“.",
+        "Wählen Sie unter „NetBIOS-Einstellung“ die Option „NetBIOS über TCP/IP deaktivieren“.",
+        "Klicken Sie auf „OK“, um die Änderungen zu speichern."
+      ],
       "Screenshots": [
         "netbios/netbios-1.png",
         "netbios/netbios-2.png",
@@ -1490,16 +1534,14 @@
       "Severity": 2,
       "Name": "Der WPAD-Dienst ist aktiviert",
       "Solution": [
-        "Öffnen Sie eine Eingabeaufforderung mit erhöhten Rechten, indem Sie mit der rechten Maustaste auf die Schaltfläche „Start“ klicken und „Terminal (Admin)“ auswählen.",
-        "Führen Sie den Befehl „netsh winhttp show Proxy“ aus, um die aktuellen Proxy-Einstellungen zu überprüfen.",
-        "Wenn WPAD aktiviert ist, führen Sie den Befehl „netsh winhttp reset Proxy“ aus, um WPAD zu deaktivieren und die Proxy-Einstellungen zurückzusetzen.",
-        "Starten Sie Ihren Computer neu, um die Änderungen zu übernehmen."
+        "Öffnen Sie den Registrierungseditor, indem Sie nach register suchen",
+        "Gehen Sie zu Computer\\HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\Wpad.",
+        "Wenn der Schlüssel WpadOverride nicht vorhanden ist, erstellen Sie einen Schlüssel, indem Sie mit der rechten Maustaste klicken -> Neu -> DWORD und ihm den Namen WpadOverride geben",
+        "Ändern Sie den Wert dieses neuen DWORD auf 1."
       ],
       "Screenshots": [
-        "wpad/wpad-1.png",
-        "wpad/wpad-2.png",
-        "wpad/wpad-3.png",
-        "wpad/wpad-3.png"
+      ],
+      "ScreenshotsWindows10": [
       ]
     },
     "Type": "Sicherheit",
