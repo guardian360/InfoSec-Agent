@@ -106,7 +106,9 @@
     "LighthouseProgress":"Progresso",
     "TooltipText": "Quanto mais ativo você estiver na resolução de problemas, mais estará trabalhando para se tornar mais seguro! Isso é evidenciado pela construção do seu farol. No início, não haverá muito, mas manter-se consistente no uso do Agente InfoSec permitirá que você construa um belo farol. Para fazer a transição para o próximo estado do farol, a barra de progresso precisa estar cheia.",
     "ProgressText": " concluído para o próximo estado.",
-    "ProgressTextAlmost": " Continue, quase lá!"},
+    "ProgressTextAlmost": " Continue, quase lá!",
+    "ProgressTextDone": "Você alcançou o nível mais alto do farol!"
+  },
   "Issues":
   {
     "IssueTable": "Tabela de problemas",
