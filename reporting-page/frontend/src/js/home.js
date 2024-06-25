@@ -69,13 +69,13 @@ export async function openHomePage() {
       </div>
       <div id="progress-segment" class="data-segment">
         <div class="data-segment-header">
-          <p class="lang-lighthouse-progress"></p>
+          <p id="lighthouse-progress-header" class="lang-lighthouse-progress"></p>
           <div id="lighthouse-progress-hoverbox">
             <img id="lighthouse-progress-tooltip">
             <p class="lighthouse-progress-tooltip-text lang-tooltip-text"></p>
           </div>
         </div>
-        <div class="progress-container">
+        <div id="progress-bar-container" class="progress-container">
           <div class="progress-bar" id="progress-bar"></div>
         </div>
         <p id="progress-percentage-text" class="gamification-text"></p>
