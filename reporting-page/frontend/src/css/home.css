@@ -97,7 +97,7 @@ body {
   width: 0;
 }
 
-#gamification-text {
+.gamification-text {
   font-size: 1.2em;
   display: inline-block;
   margin-left: 10px;
