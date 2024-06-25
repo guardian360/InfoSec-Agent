@@ -8,10 +8,9 @@ import "github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 // The function returns a slice of boolean values, where each boolean represents whether a particular registry setting adheres to the CIS Benchmark standards.
 //
 // Parameters:
-//
 //   - registryKey (mocking.RegistryKey): The root key from which the registry settings will be checked. Should be HKEY_LOCAL_MACHINE for this function.
 //
-// Returns: None
+// Returns: None.
 func CheckPoliciesHKLM(registryKey mocking.RegistryKey) {
 	for _, check := range policyChecksHKLM {
 		check(registryKey)

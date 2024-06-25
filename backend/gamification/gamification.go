@@ -17,6 +17,12 @@ import (
 
 // GameState is a struct that represents the state of the gamification.
 // This consists of the user's points, a history of all previous points, and a lighthouse state.
+//
+// Fields:
+//   - Points (int): The number of points the user has.
+//   - PointsHistory ([]int): A list of all previous points the user has had.
+//   - TimeStamps ([]time.Time): A list of timestamps for when the user has received points.
+//   - LighthouseState (int): The current state of the lighthouse.
 type GameState struct {
 	Points          int
 	PointsHistory   []int
@@ -32,7 +38,8 @@ type GameState struct {
 //   - getter (PointCalculationGetter): An object that implements the PointCalculationGetter interface.
 //   - userGetter (usersettings.SaveUserSettingsGetter): An object that implements the SaveUserSettingsGetter interface.
 //
-// Returns: The updated game state with the new points amount and new lighthouse state.
+// Returns:
+//   - The updated game state with the new points amount and new lighthouse state.
 func UpdateGameState(scanResults []checks.Check, databasePath string, getter PointCalculationGetter, userGetter usersettings.SaveUserSettingsGetter) (GameState, error) {
 	logger.Log.Trace("Updating game state")
 	gs := GameState{Points: 0, PointsHistory: nil, TimeStamps: nil, LighthouseState: 0}

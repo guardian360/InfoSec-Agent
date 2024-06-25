@@ -30,6 +30,9 @@ import (
 var assets embed.FS
 
 // FileLoader is a struct that implements the http.Handler interface to serve files from the frontend/src/assets/images directory.
+//
+// Fields
+//   - Handler (http.Handler): The handler that serves the requested file.
 type FileLoader struct {
 	http.Handler
 }
@@ -45,7 +48,9 @@ func NewFileLoader() *FileLoader {
 // This function reads the file data and writes it to the response writer.
 // If an error occurs during the file reading or writing process, it logs the error and returns an appropriate HTTP error response.
 //
-// Parameters: The response writer and the HTTP request.
+// Parameters:
+//   - res (http.ResponseWriter): The response writer to write the file data to.
+//   - req (*http.Request): The request object containing information about the requested file.
 //
 // Returns: None. This function does not return a value as it serves the requested file.
 func (h *FileLoader) ServeHTTP(res http.ResponseWriter, req *http.Request) {
@@ -181,7 +186,8 @@ func main() {
 // If changing the directory is successful, a debug message is logged indicating the new directory.
 // If an error occurs during the directory change, the error is logged with an error level.
 //
-// Parameters: path: A string representing the target directory path.
+// Parameters:
+//   - path (string): The path to change the current working directory to.
 //
 // Returns: None.
 func changeDirectory(path string) {

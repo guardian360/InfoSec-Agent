@@ -27,6 +27,9 @@ type RealProgramLister struct{}
 // allowing us to test how our code interacts with the ProgramLister interface.
 // This is particularly useful for testing the PasswordManager function, as it allows us to
 // simulate different scenarios of installed programs on a system.
+//
+// Fields:
+//   - Output ([]string): A slice of strings representing the predefined output of the simulated program listing.
 type MockProgramLister struct {
 	mock.Mock
 }

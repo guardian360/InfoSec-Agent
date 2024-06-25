@@ -111,7 +111,7 @@ func nonPackagedAppNames(appKey mocking.RegistryKey) ([]string, error) {
 // RemoveDuplicateStr is a utility function that eliminates duplicate string values from a given slice.
 //
 // Parameters:
-//   - strSlice []string: The input slice from which duplicate string values need to be removed.
+//   - strSlice ([]string): The input slice from which duplicate string values need to be removed.
 //
 // Returns:
 //   - []string: A new slice that contains the unique string values from the input slice. The order of the elements is preserved based on their first occurrence in the input slice.
@@ -155,7 +155,7 @@ func checkGeneralSetting(key mocking.RegistryKey, permission string) (bool, erro
 // checkApplications is a helper function that checks if the applications have been granted the specified permission.
 //
 // Parameters:
-//   - applicationNames []string: A slice of strings representing the names of applications.
+//   - applicationNames ([]string): A slice of strings representing the names of applications.
 //   - key (mocking.RegistryKey): The registry key to use for the check.
 //
 // Returns:

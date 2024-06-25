@@ -7,7 +7,7 @@ type IssueResPair struct {
 }
 
 // IssueMap is a map that maps an issue ID and result ID pair to a boolean value.
-// This map is used to determine whether a given issue is considered a problem based on the result of a security or privacy check.
+// The boolean value indicates whether the issue is considered a problem based on the result of a security or privacy check.
 var IssueMap = map[IssueResPair]bool{
 	// Bluetooth: No devices found
 	{1, 0}: false,

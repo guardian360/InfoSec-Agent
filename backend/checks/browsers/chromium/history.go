@@ -106,10 +106,13 @@ func GetBrowserPathAndIDHistory(browser string) (string, int) {
 	return "", 0
 }
 
+// CopyDBGetter is an interface that defines the CopyDatabase method.
+// This method is used to create a temporary copy of the database file at the given source path.
 type CopyDBGetter interface {
 	CopyDatabase(src string, browser string, getter browsers.CopyFileGetter) (string, error)
 }
 
+// RealCopyDBGetter is a struct that implements the CopyDBGetter interface.
 type RealCopyDBGetter struct{}
 
 // CopyDatabase creates a temporary copy of the database file at the given source path.
@@ -137,6 +140,8 @@ func (r RealCopyDBGetter) CopyDatabase(src string, browser string, getter browse
 // Parameters:
 //   - db: A pointer to a sql.DB object representing the database connection to close.
 //
+// Returns: None.
+//
 // This function attempts to close the provided database connection and logs an error if the operation fails.
 // It does not return any value.
 func CloseDatabase(db *sql.DB) {
@@ -145,10 +150,13 @@ func CloseDatabase(db *sql.DB) {
 	}
 }
 
+// QueryDatabaseGetter is an interface that defines the QueryDatabase method.
+// This method is used to query the browsing history from the provided database connection.
 type QueryDatabaseGetter interface {
 	QueryDatabase(db *sql.DB) (*sql.Rows, error)
 }
 
+// RealQueryDatabaseGetter is a struct that implements the QueryDatabaseGetter interface.
 type RealQueryDatabaseGetter struct{}
 
 // QueryDatabase retrieves the browsing history from the provided database connection.
@@ -178,6 +186,8 @@ func (r RealQueryDatabaseGetter) QueryDatabase(db *sql.DB) (*sql.Rows, error) {
 // Parameters:
 //   - rows: A pointer to a sql.Rows object that needs to be closed.
 //
+// Returns: None.
+//
 // This function attempts to close the provided sql.Rows object and logs an error if the operation fails.
 // It does not return any value.
 func CloseRows(rows *sql.Rows) {
@@ -186,10 +196,13 @@ func CloseRows(rows *sql.Rows) {
 	}
 }
 
+// ProcessQueryResultsGetter is an interface that defines the ProcessQueryResults method.
+// This method is used to process the result set of a query to the browsing history database.
 type ProcessQueryResultsGetter interface {
 	ProcessQueryResults(rows *sql.Rows, getter browsers.PhishingDomainGetter) ([]string, error)
 }
 
+// RealProcessQueryResultsGetter is a struct that implements the ProcessQueryResultsGetter interface.
 type RealProcessQueryResultsGetter struct{}
 
 // ProcessQueryResults processes the result set of a query to the browsing history database, checking each URL against a list of known phishing domains.

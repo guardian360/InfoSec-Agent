@@ -7,12 +7,12 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 )
 
-// Startup is a function that checks the Windows registry for startup programs.
+// Startup checks the Windows registry for startup programs.
 //
 // Parameters:
-//   - key1 mocking.RegistryKey: A registry key object for accessing the first registry key location for startup programs.
-//   - key2 mocking.RegistryKey: A registry key object for accessing the second registry key location for startup programs.
-//   - key3 mocking.RegistryKey: A registry key object for accessing the third registry key location for startup programs.
+//   - key1 (mocking.RegistryKey): A registry key object for accessing the first registry key location for startup programs.
+//   - key2 (mocking.RegistryKey): A registry key object for accessing the second registry key location for startup programs.
+//   - key3 (mocking.RegistryKey): A registry key object for accessing the third registry key location for startup programs.
 //
 // Returns:
 //   - Check: A struct containing the result of the check. The result includes a list of startup programs if any are found, or a message indicating that no startup programs were found.
@@ -78,8 +78,8 @@ func Startup(key1 mocking.RegistryKey, key2 mocking.RegistryKey, key3 mocking.Re
 // FindEntries scans a specified registry key for a list of entries and returns the values of those entries.
 //
 // Parameters:
-//   - entries: A slice of strings representing the names of the entries to be checked within the registry key.
-//   - key: A RegistryKey object representing the registry key to be scanned.
+//   - entries ([]string): A slice of strings representing the names of the entries to be checked within the registry key.
+//   - key (mocking.RegistryKey): A RegistryKey object representing the registry key to be scanned.
 //
 // Returns:
 //   - A slice of strings containing the values of the specified entries within the registry key. Only entries that are enabled on startup are included. This is determined by checking the binary values of the entries; entries with a binary value of 0 at indices 4, 5, and 6 are considered enabled.
@@ -105,7 +105,7 @@ func FindEntries(entries []string, key mocking.RegistryKey) []string {
 // CheckAllZero is a helper function that checks if all elements in a byte slice are zero.
 //
 // Parameters:
-//   - entries: A byte slice representing the elements to be checked.
+//   - entries ([]byte): A byte slice representing the elements to be checked.
 //
 // Returns:
 //   - A boolean value indicating whether all elements in the byte slice are zero. If all elements are zero, the function returns true; otherwise, it returns false.

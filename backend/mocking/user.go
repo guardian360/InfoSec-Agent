@@ -18,6 +18,9 @@ type UsernameRetriever interface {
 // MockUsernameRetriever is a struct that implements the UsernameRetriever interface.
 // It uses the testify/mock package to simulate the behavior of the CurrentUsername method,
 // allowing for controlled testing scenarios.
+//
+// Fields:
+//   - Mock (mock.Mock): A mock object that provides methods for controlling the behavior of the simulated username retrieval.
 type MockUsernameRetriever struct {
 	mock.Mock
 }
@@ -28,6 +31,9 @@ type RealUsernameRetriever struct{}
 
 // CurrentUsername is a method of the RealUsernameRetriever struct that implements the UsernameRetriever interface.
 // It provides a real implementation for retrieving the username of the currently logged-in user.
+//
+// Parameters: None.
+//
 // Returns:
 //   - string: The username of the currently logged-in user. If the username cannot be retrieved, an empty string is returned.
 //   - error: An error object that wraps any error that occurs during the retrieval of the username. If the username is retrieved successfully, it returns nil.
@@ -38,6 +44,9 @@ func (r *RealUsernameRetriever) CurrentUsername() (string, error) {
 // CurrentUsername is a method of the MockUsernameRetriever struct that implements the UsernameRetriever interface.
 // It simulates the retrieval of the username of the currently logged-in user for testing purposes.
 // This method uses the testify/mock package to control the return values of the method call, allowing for controlled testing scenarios.
+//
+// Parameters: None.
+//
 // Returns:
 //   - string: The simulated username of the currently logged-in user. If the username cannot be retrieved, an empty string is returned.
 //   - error: An error object that wraps any error that occurs during the simulated retrieval of the username. If the username is retrieved successfully, it returns nil.
@@ -50,6 +59,8 @@ func (m *MockUsernameRetriever) CurrentUsername() (string, error) {
 //
 // This function uses the os/user package to access the current user's information.
 // It then parses the Username field to extract the actual username, discarding the domain if present.
+//
+// Parameters: None.
 //
 // Returns:
 //   - string: The username of the currently logged-in user. If the username cannot be retrieved, an empty string is returned.

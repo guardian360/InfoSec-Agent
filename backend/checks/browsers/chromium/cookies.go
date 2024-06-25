@@ -8,6 +8,7 @@ import (
 
 // CookiesChromium inspects the cookies stored in Chromium based browsers.
 // It does so by using the browsers.QueryCookieDatabase function to query the Cookies database in the specific browser User Data directory.
+//
 // Parameters:
 //   - browser: A string representing the name of the browser. Currently, this function supports "Chrome" and "Edge".
 //   - getter: A browsers.DefaultDirGetter object that is used to locate the default directory of the browser.
@@ -15,7 +16,7 @@ import (
 //   - queryGetter: A browsers.QueryCookieDatabaseGetter object that is used to query the database file.
 //
 // Returns:
-//   - A checks.Check object representing the result of the check. The result contains a list of cookies stored in the Chromium based browser. Each cookie is represented as a string that includes the name and the host of the cookie. If an error occurs during the check, the result will contain a description of the error.
+//   - checks.Check: A check object representing the result of the check. The result contains a list of cookies stored in the Chromium based browser. Each cookie is represented as a string that includes the name and the host of the cookie. If an error occurs during the check, the result will contain a description of the error.
 func CookiesChromium(browser string, getter browsers.DefaultDirGetter, copyGetter browsers.CopyFileGetter, queryGetter browsers.QueryCookieDatabaseGetter) checks.Check {
 	browserPath, returnID := GetBrowserPathAndIDCookie(browser)
 	userDataDir, err := getter.GetDefaultDir(browserPath)
@@ -34,8 +35,8 @@ func CookiesChromium(browser string, getter browsers.DefaultDirGetter, copyGette
 //   - browser: A string representing the name of the browser. Currently, this function supports "Chrome" and "Edge".
 //
 // Returns:
-//   - A string representing the path to the browser's directory.
-//   - An integer representing the ID of the check.
+//   - string: The path to the browser's directory.
+//   - int: The ID of the browser for the cookie check.
 //
 // If the browser is unknown/unsupported, the function returns an empty string and 0.
 func GetBrowserPathAndIDCookie(browser string) (string, int) {

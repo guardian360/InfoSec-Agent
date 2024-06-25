@@ -38,7 +38,7 @@ func NewRegistryKeyWrapper(key registry.Key) *RegistryKeyWrapper {
 // GetStringValue retrieves the string value of a specified name from the Windows registry key.
 //
 // Parameters:
-//   - name string: The name of the value to retrieve.
+//   - name (string): The name of the value to retrieve.
 //
 // Returns:
 //   - string: The string value associated with the specified name.
@@ -53,7 +53,7 @@ func (r *RegistryKeyWrapper) GetStringValue(name string) (string, uint32, error)
 // GetBinaryValue retrieves the binary value of a specified name from the Windows registry key.
 //
 // Parameters:
-//   - name string: The name of the value to retrieve.
+//   - name (string): The name of the value to retrieve.
 //
 // Returns:
 //   - []byte: The binary value associated with the specified name.
@@ -68,7 +68,7 @@ func (r *RegistryKeyWrapper) GetBinaryValue(name string) ([]byte, uint32, error)
 // GetIntegerValue retrieves the integer value of a specified name from the Windows registry key.
 //
 // Parameters:
-//   - name string: The name of the value to retrieve.
+//   - name (string): The name of the value to retrieve.
 //
 // Returns:
 //   - uint64: The integer value associated with the specified name.
@@ -83,8 +83,8 @@ func (r *RegistryKeyWrapper) GetIntegerValue(name string) (uint64, uint32, error
 // OpenKey opens a registry key with a path relative to the current key and the specified access rights.
 //
 // Parameters:
-//   - path string: The path of the registry key to open, relative to the current key.
-//   - access uint32: The access rights to use when opening the key.
+//   - path (string): The path of the registry key to open, relative to the current key.
+//   - access (uint32): The access rights to use when opening the key.
 //
 // Returns:
 //   - RegistryKey: A RegistryKey object representing the opened key.
@@ -99,7 +99,7 @@ func (r *RegistryKeyWrapper) OpenKey(path string, access uint32) (RegistryKey, e
 // ReadValueNames retrieves the names of the values in the Windows registry key.
 //
 // Parameters:
-//   - count int: The maximum number of value names to retrieve. If count is less than or equal to zero, all value names are retrieved.
+//   - count (int): The maximum number of value names to retrieve. If count is less than or equal to zero, all value names are retrieved.
 //
 // Returns:
 //   - []string: A slice of strings containing the names of the values in the registry key. The length of the slice is the least of the number of values in the key and the count parameter.
@@ -112,6 +112,8 @@ func (r *RegistryKeyWrapper) ReadValueNames(count int) ([]string, error) {
 
 // Close closes the Windows registry key.
 //
+// Parameters: None
+//
 // Returns:
 //   - error: An error object if an error occurred while closing the key. Otherwise, nil.
 //
@@ -121,6 +123,8 @@ func (r *RegistryKeyWrapper) Close() error {
 }
 
 // Stat retrieves the information about the Windows registry key.
+//
+// Parameters: None
 //
 // Returns:
 //   - *registry.KeyInfo: A pointer to a KeyInfo object that contains information about the registry key.
@@ -134,7 +138,7 @@ func (r *RegistryKeyWrapper) Stat() (*registry.KeyInfo, error) {
 // ReadSubKeyNames retrieves the names of the sub-keys in the Windows registry key.
 //
 // Parameters:
-//   - count int: The maximum number of sub-key names to retrieve. If count is less than or equal to zero, all subkey names are retrieved.
+//   - count (int): The maximum number of sub-key names to retrieve. If count is less than or equal to zero, all subkey names are retrieved.
 //
 // Returns:
 //   - []string: A slice of strings containing the names of the sub-keys in the registry key. The length of the slice is the least of the number of subkeys in the key and the count parameter.
@@ -149,9 +153,14 @@ func (r *RegistryKeyWrapper) ReadSubKeyNames(count int) ([]string, error) {
 // It is designed for testing purposes and allows for the simulation of registry key operations
 // without interacting with the actual Windows registry.
 //
-// The struct contains fields that represent the possible values a registry key can hold,
-// including string, binary, and integer values. It also includes a list of sub-keys,
-// allowing for the simulation of a registry key hierarchy.
+// Fields:
+//   - KeyName (string): The name of the registry key.
+//   - StringValues (map[string]string): A map of string values associated with their names.
+//   - BinaryValues (map[string][]byte): A map of binary values associated with their names.
+//   - IntegerValues (map[string]uint64): A map of integer values associated with their names.
+//   - SubKeys ([]MockRegistryKey): A slice of MockRegistryKey objects representing sub-keys of the current key.
+//   - StatReturn (*registry.KeyInfo): A pointer to a KeyInfo object that contains information about the key.
+//   - Err (error): An error object that can be used to simulate errors during key operations.
 //
 // The methods of this struct mimic the behavior of their counterparts in the RegistryKey interface,
 // returning the values stored in the struct fields instead of interacting with the Windows registry.
@@ -168,7 +177,7 @@ type MockRegistryKey struct {
 // GetStringValue retrieves the string value associated with a specified name from the MockRegistryKey.
 //
 // Parameters:
-//   - name string: The name of the value to retrieve.
+//   - name (string): The name of the value to retrieve.
 //
 // Returns:
 //   - string: The string value associated with the specified name. If the name does not exist in the StringValues map, an empty string is returned.
@@ -186,7 +195,7 @@ func (m *MockRegistryKey) GetStringValue(name string) (string, uint32, error) {
 // GetBinaryValue retrieves the binary value associated with a specified name from the MockRegistryKey.
 //
 // Parameters:
-//   - name string: The name of the value to retrieve.
+//   - name (string): The name of the value to retrieve.
 //
 // Returns:
 //   - []byte: The binary value associated with the specified name. If the name does not exist in the BinaryValues map, nil is returned.
@@ -204,7 +213,7 @@ func (m *MockRegistryKey) GetBinaryValue(name string) ([]byte, uint32, error) {
 // GetIntegerValue retrieves the integer value associated with a specified name from the MockRegistryKey.
 //
 // Parameters:
-//   - name string: The name of the value to retrieve.
+//   - name (string): The name of the value to retrieve.
 //
 // Returns:
 //   - uint64: The integer value associated with the specified name. If the name does not exist in the IntegerValues map, zero is returned.
@@ -223,8 +232,8 @@ func (m *MockRegistryKey) GetIntegerValue(name string) (uint64, uint32, error) {
 // OpenKey opens a sub-key with a specified path relative to the current key in the MockRegistryKey.
 //
 // Parameters:
-//   - path string: The path of the sub-key to open, relative to the current key.
-//   - _ uint32: This parameter is ignored in the MockRegistryKey implementation as no access rights are required to open a mock key.
+//   - path (string): The path of the sub-key to open, relative to the current key.
+//   - _ (uint32): This parameter is ignored in the MockRegistryKey implementation as no access rights are required to open a mock key.
 //
 // Returns:
 //   - RegistryKey: A RegistryKey object representing the opened sub-key. If the specified path does not exist in the SubKeys slice, the method returns the current key.
@@ -243,7 +252,7 @@ func (m *MockRegistryKey) OpenKey(path string, _ uint32) (RegistryKey, error) {
 // ReadValueNames retrieves the names of the values stored in the MockRegistryKey.
 //
 // Parameters:
-//   - maxCount int: The maximum number of value names to retrieve. If maxCount is less than or equal to zero, all value names are retrieved.
+//   - maxCount (int): The maximum number of value names to retrieve. If maxCount is less than or equal to zero, all value names are retrieved.
 //
 // Returns:
 //   - []string: A slice of strings containing the names of the values in the MockRegistryKey. The length of the slice is the least of the number of values in the key and the maxCount parameter.
@@ -285,6 +294,8 @@ func (m *MockRegistryKey) ReadValueNames(maxCount int) ([]string, error) {
 // It is used to clean up any resources associated with the MockRegistryKey.
 // In the context of the MockRegistryKey, this function does not perform any operations as there are no resources to release.
 //
+// Parameters: None
+//
 // Returns:
 //   - error: Always returns nil as there are no resources to release in the MockRegistryKey.
 func (m *MockRegistryKey) Close() error {
@@ -292,6 +303,8 @@ func (m *MockRegistryKey) Close() error {
 }
 
 // Stat retrieves the information about the MockRegistryKey.
+//
+// Parameters: None
 //
 // Returns:
 //   - *registry.KeyInfo: A pointer to a KeyInfo object that contains information about the MockRegistryKey. This includes the number of sub-keys and values, and the time of the last write operation.
@@ -308,7 +321,7 @@ func (m *MockRegistryKey) Stat() (*registry.KeyInfo, error) {
 // ReadSubKeyNames retrieves the names of the sub-keys in the MockRegistryKey.
 //
 // Parameters:
-//   - count int: The maximum number of sub-key names to retrieve. If count is less than or equal to zero, all sub-key names are retrieved.
+//   - count (int): The maximum number of sub-key names to retrieve. If count is less than or equal to zero, all sub-key names are retrieved.
 //
 // Returns:
 //   - []string: A slice of strings containing the names of the sub-keys in the MockRegistryKey. The length of the slice is the least of the number of sub-keys in the key and the count parameter.
@@ -334,8 +347,8 @@ func (m *MockRegistryKey) ReadSubKeyNames(count int) ([]string, error) {
 // OpenRegistryKey is a function that opens a specified registry key and handles any associated errors.
 //
 // Parameters:
-//   - k: A RegistryKey object representing the base registry key from which the specified path will be opened.
-//   - path: A string representing the path to the registry key to be opened, relative to the base registry key.
+//   - k (RegistryKey): A RegistryKey object representing the base registry key from which the specified path will be opened.
+//   - path (string): A string representing the path to the registry key to be opened, relative to the base registry key.
 //
 // Returns:
 //   - A RegistryKey object representing the opened registry key.
@@ -356,7 +369,7 @@ func OpenRegistryKey(k RegistryKey, path string) (RegistryKey, error) {
 // CloseRegistryKey is a function that closes a specified registry key and logs any associated errors.
 //
 // Parameter:
-//   - key: A RegistryKey object representing the registry key to be closed.
+//   - key (RegistryKey): A RegistryKey object representing the registry key to be closed.
 //
 // Returns: None. If an error occurs while closing the registry key, the error is logged and not returned.
 //

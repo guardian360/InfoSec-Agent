@@ -15,6 +15,7 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 )
 
+// OpenFileFunc is a variable that holds the function used to open a file.
 var OpenFileFunc = os.Open
 
 // SearchEngineChromium inspects the default search engine setting in Chromium-based browsers.

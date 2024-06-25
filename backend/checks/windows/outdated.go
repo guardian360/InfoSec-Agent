@@ -19,15 +19,19 @@ import (
 
 var WinVersion int
 
-// Outdated is a function that checks if the currently installed Windows version is outdated.
+// Outdated checks if the currently installed Windows version is outdated.
 //
 // Parameters:
-//   - mockOS mocking.WindowsVersion: A mock object for retrieving the Windows version information.
+//   - mockOS (mocking.WindowsVersion): A mock object for retrieving the Windows version information.
 //
 // Returns:
 //   - Check: A struct containing the result of the check. The result indicates whether the Windows version is up-to-date or if updates are available.
 //
-// The function works by retrieving the Windows version information using the provided mock object. It then compares the build number of the installed Windows version with the build numbers of the latest Windows 10 and Windows 11 versions. If the installed version's build number matches the latest build number for its major version (10 or 11), the function returns a message indicating that the Windows version is up-to-date. If the build number does not match, the function returns a message indicating that updates are available. If the major version is neither 10 nor 11, the function returns a message suggesting to update to Windows 10 or Windows 11.
+// The function works by retrieving the Windows version information using the provided mock object.
+// It then compares the build number of the installed Windows version with the build numbers of the latest Windows 10 and Windows 11 versions.
+// If the installed version's build number matches the latest build number for its major version (10 or 11), the function returns a message indicating that the Windows version is up-to-date.
+// If the build number does not match, the function returns a message indicating that updates are available.
+// If the major version is neither 10 nor 11, the function returns a message suggesting to update to Windows 10 or Windows 11.
 func Outdated(mockExecutor mocking.CommandExecutor) checks.Check {
 	versionData, err := mockExecutor.Execute("cmd", "/c", "ver")
 	if err != nil {
@@ -109,9 +113,10 @@ func Outdated(mockExecutor mocking.CommandExecutor) checks.Check {
 //
 // Parameters:
 //
-//   - url string - The URL to fetch and parse the HTML content from.
+//   - url (string): The URL to fetch and parse the HTML content from.
 //
-// Returns: The root node of the parsed HTML document.
+// Returns:
+//   - The root node of the parsed HTML document.
 func GetURLBody(urlStr string) *html.Node {
 	// Make HTTP GET request
 	ctx := context.Background()
@@ -153,11 +158,10 @@ func GetURLBody(urlStr string) *html.Node {
 // Should this layout change, the function may need to be updated to reflect the new structure.
 //
 // Parameters:
+//   - n (*html.Node): The HTML node to search for the data element.
 //
-//   - n *html.Node - The HTML node to search for the data element.
-//
-// Returns: The data from the fifth td element in the first tr of the tbody of the provided HTML node.
-// If no such data element is found, the function returns an empty string.
+// Returns:
+//   - The data from the fifth td element in the first tr of the tbody of the provided HTML node. If no such data element is found, the function returns an empty string.
 func FindWindowsBuild(n *html.Node) string {
 	if n.Type == html.ElementNode && n.Data == "tbody" {
 		// Iterate over tbody children
@@ -187,10 +191,10 @@ func FindWindowsBuild(n *html.Node) string {
 // it extracts and returns the data as a string.
 //
 // Parameters:
-//   - child *html.Node: The HTML node to search for 'td' elements.
+//   - child (*html.Node): The HTML node to search for 'td' elements.
 //
-// Returns: The data from the fifth 'td' element in the provided HTML node.
-// If no such 'td' element is found, the function returns an empty string.
+// Returns:
+//   - The data from the fifth 'td' element in the provided HTML node. If no such 'td' element is found, the function returns an empty string.
 func checkTableTDs(child *html.Node) string {
 	tdCount := 0
 	for td := child.FirstChild; td != nil; td = td.NextSibling {
@@ -206,7 +210,7 @@ func checkTableTDs(child *html.Node) string {
 	return ""
 }
 
-// findWindowsVersion is a function that determines the Windows version based on the major and minor version numbers.
+// findWindowsVersion determines the Windows version based on the major and minor version numbers.
 // It uses the versioning scheme of Windows 10 and Windows 11, where Windows 11 is identified by a minor version number of 22000 or higher.
 //
 // Parameters:

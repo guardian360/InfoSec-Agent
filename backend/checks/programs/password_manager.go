@@ -15,11 +15,12 @@ import (
 //   - pl (ProgramLister): An instance of ProgramLister used to list installed programs.
 //
 // Returns:
-//   - Check: A Check instance encapsulating the results of the password manager check. The Result field of the Check instance will contain one of the following messages:
-//   - The name of the password manager if found.
-//   - "No password manager found" if no known password managers are found.
+//   - Check: A Check instance encapsulating the results of the password manager check.
 //
-// This function uses the ListInstalledPrograms method of the provided ProgramLister to list installed programs in the 'Program Files' and 'Program Files (x86)' directories. It then checks if any of the listed programs match the names of known password managers. If a match is found, it returns a Check instance with the name of the password manager. If no match is found, it returns a Check instance with the message "No password manager found".
+// This function uses the ListInstalledPrograms method of the provided ProgramLister to list installed programs in the 'Program Files' and 'Program Files (x86)' directories.
+// It then checks if any of the listed programs match the names of known password managers.
+// If a match is found, it returns a Check instance with the name of the password manager.
+// If no match is found, it returns a Check instance with the message "No password manager found".
 func PasswordManager(pl mocking.ProgramLister) checks.Check {
 	// List of known password manager registry keys
 	passwordManagerNames := []string{

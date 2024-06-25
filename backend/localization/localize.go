@@ -17,13 +17,13 @@ import (
 var localizers [7]*i18n.Localizer
 var bundle *i18n.Bundle
 
-// Init is a function that sets up the localization bundle and localizers for different languages.
+// Init sets up the localization bundle and localizers for different languages.
 //
 // It loads localization files from a specified path and creates localizers for each supported language.
 // The supported languages are German, English (UK), English (US), Spanish, French, Dutch, and Portuguese.
 //
 // Parameter:
-//   - path: A string representing the path to the directory containing the localization files. Each file should be named as "active.<language_code>.json".
+//   - path (string): A string representing the path to the directory containing the localization files. Each file should be named as "active.<language_code>.json".
 //
 // Returns: None. This function initializes global variables within the package.
 //
@@ -66,8 +66,8 @@ func Init(path string) {
 // Localize is a function that retrieves and returns a localized string based on the provided language and message ID.
 //
 // Parameters:
-//   - language: An integer representing the index of the language in the localizers array. The language should correspond to one of the supported languages (0: German, 1: English (UK), 2: English (US), 3: Spanish, 4: French, 5: Dutch, 6: Portuguese).
-//   - messageID: A string representing the ID of the message to be localized. This ID should correspond to a key in the localization files.
+//   - language (int): An integer representing the index of the language in the localizers array. The language should correspond to one of the supported languages (0: German, 1: English (UK), 2: English (US), 3: Spanish, 4: French, 5: Dutch, 6: Portuguese).
+//   - messageID (string): A string representing the ID of the message to be localized. This ID should correspond to a key in the localization files.
 //
 // Returns:
 //   - A string containing the localized message corresponding to the provided message ID and language. If the message ID does not exist in the localization files for the specified language, the function will return the message ID as is.

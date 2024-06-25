@@ -34,6 +34,11 @@ var (
 // LogLevelSpecific determines the specific level of messages that will be logged.
 // If LogLevelSpecific is set to a log-level value, then only that log-level will be written to the log file.
 // If LogLevelSpecific is set to -1, then all log-levels up to the specified LogLevel will be written to the log file.
+//
+// Fields:
+//   - Logger (*log.Logger): The standard logger object.
+//   - LogLevel (int): The log level to log up to.
+//   - LogLevelSpecific (int): The specific log level to log.
 type CustomLogger struct {
 	*log.Logger
 	LogLevel         int
@@ -45,13 +50,9 @@ type CustomLogger struct {
 // This function is used to set up the logger with a specific log level and a specific log level filter.
 //
 // Parameters:
-//
-// fileName string - The name of the log file to write to.
-//
-// logLevel int - The log level to log up to. This should be a value between 0 (TraceLevel) and 5 (FatalLevel).
-//
-// logLevelSpecific int - The specific log level to log. This should be a value between
-// 0 (TraceLevel) and 5 (FatalLevel), or -1 to log all levels up to the specified log level.
+//   - fileName (string): The name of the log file to write to.
+//   - logLevel (int) - The log level to log up to. This should be a value between 0 (TraceLevel) and 5 (FatalLevel).
+//   - logLevelSpecific (int) - The specific log level to log. This should be a value between 0 (TraceLevel) and 5 (FatalLevel), or -1 to log all levels up to the specified log level.
 //
 // Returns: None
 func Setup(fileName string, logLevel int, logLevelSpecific int) {
@@ -78,16 +79,12 @@ func SetupTests() {
 // During testing, we wish for the logger to write to standard output.
 //
 // Parameters:
+//   - test (bool): A boolean value that specifies whether the logger is used for testing.
+//   - fileName (string): The name of the log file to write to.
+//   - logLevel (int): The log level to log up to. This should be a value between 0 (TraceLevel) and 5 (FatalLevel).
+//   - logLevelSpecific (int): The specific log level to log. This should be a value between 0 (TraceLevel) and 5 (FatalLevel), or -1 to log all levels up to the specified log level.
 //
-// test bool - A boolean value that specifies whether the logger is used for testing.
-//
-// fileName string - The name of the log file to write to.
-//
-// logLevel int - The log level to log up to. This should be a value between 0 (TraceLevel) and 5 (FatalLevel).
-//
-// logLevelSpecific int - The specific log level to log. This should be a value between 0 (TraceLevel) and 5 (FatalLevel), or -1 to log all levels up to the specified log level.
-//
-// Returns: a pointer to a new CustomLogger struct
+// Returns: A pointer to a new CustomLogger struct.
 func NewCustomLogger(test bool, fileName string, logLevel int, logLevelSpecific int) *CustomLogger {
 	if test {
 		return &CustomLogger{
@@ -125,8 +122,7 @@ func NewCustomLogger(test bool, fileName string, logLevel int, logLevelSpecific 
 // This method is used to write a message to the log file. The message is not associated with any specific log level.
 //
 // Parameters:
-//
-// message string - The message to write to the log file.
+//   - message (string): The message to write to the log file.
 //
 // Returns: None
 func (l *CustomLogger) Print(message string) {
@@ -139,8 +135,7 @@ func (l *CustomLogger) Print(message string) {
 // or if the LogLevelSpecific is set to -1 and the LogLevel is less than or equal to TraceLevel.
 //
 // Parameters:
-//
-// message string - The message to write to the log file.
+//   - message (string): The message to write to the log file.
 //
 // Returns: None
 func (l *CustomLogger) Trace(message string) {
@@ -155,8 +150,7 @@ func (l *CustomLogger) Trace(message string) {
 // or if the LogLevelSpecific is set to -1 and the LogLevel is less than or equal to DebugLevel.
 //
 // Parameters:
-//
-// message string - The message to write to the log file.
+//   - message (string): The message to write to the log file.
 //
 // Returns: None
 func (l *CustomLogger) Debug(message string) {
@@ -171,8 +165,7 @@ func (l *CustomLogger) Debug(message string) {
 // or if the LogLevelSpecific is set to -1 and the LogLevel is less than or equal to Info.
 //
 // Parameters:
-//
-// message string - The message to write to the log file.
+//   - message (string): The message to write to the log file.
 //
 // Returns: None
 func (l *CustomLogger) Info(message string) {
@@ -187,8 +180,7 @@ func (l *CustomLogger) Info(message string) {
 // or if the LogLevelSpecific is set to -1 and the LogLevel is less than or equal to WarningLevel.
 //
 // Parameters:
-//
-// message string - The message to write to the log file.
+//   - message (string): The message to write to the log file.
 //
 // Returns: None
 func (l *CustomLogger) Warning(message string) {
@@ -203,8 +195,7 @@ func (l *CustomLogger) Warning(message string) {
 // or if the LogLevelSpecific is set to -1 and the LogLevel is less than or equal to ErrorLevel.
 //
 // Parameters:
-//
-// message string - The message to write to the log file.
+//   - message (string): The message to write to the log file.
 //
 // Returns: None
 func (l *CustomLogger) Error(message string) {
@@ -219,10 +210,8 @@ func (l *CustomLogger) Error(message string) {
 // or if the LogLevelSpecific is set to -1 and the LogLevel is less than or equal to ErrorLevel.
 //
 // Parameters:
-//
-// message string - The message to write to the log file.
-//
-// err error - The error variable to write to the log file.
+//   - message (string): The message to write to the log file.
+//   - err (error): The error variable to write to the log file.
 //
 // Returns: None
 func (l *CustomLogger) ErrorWithErr(message string, err error) {
@@ -237,8 +226,7 @@ func (l *CustomLogger) ErrorWithErr(message string, err error) {
 // or if the LogLevelSpecific is set to -1 and the LogLevel is less than or equal to FatalLevel.
 //
 // Parameters:
-//
-// message string - The message to write to the log file.
+//   - message (string): The message to write to the log file.
 //
 // Returns: None
 func (l *CustomLogger) Fatal(message string) {
@@ -253,10 +241,8 @@ func (l *CustomLogger) Fatal(message string) {
 // or if the LogLevelSpecific is set to -1 and the LogLevel is less than or equal to FatalLevel.
 //
 // Parameters:
-//
-// message string - The message to write to the log file.
-//
-// err error - The error variable to write to the log file.
+//   - message (string): The message to write to the log file.
+//   - err (error): The error variable to write to the log file.
 //
 // Returns: None
 func (l *CustomLogger) FatalWithErr(message string, err error) {

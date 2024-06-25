@@ -16,7 +16,8 @@ import (
 
 // ExtensionFirefox inspects the extensions installed in the Firefox browser and checks for the presence of an ad blocker.
 //
-// Parameters: profileFinder: An object that implements the FirefoxProfileFinder interface. It is used to find the Firefox profile directory.
+// Parameters:
+//   - profileFinder: An object that implements the FirefoxProfileFinder interface. It is used to find the Firefox profile directory.
 //
 // Returns:
 //   - A checks.Check object representing the result of the check. The result contains a list of installed extensions in the Firefox browser. Each extension is represented as a string that includes the name, type, creator, and its active status.

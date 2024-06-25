@@ -37,10 +37,12 @@ func ExternalDevices(executorClass mocking.CommandExecutor) checks.Check {
 //   - executorClass (commandmock.CommandExecutor): An instance of CommandExecutor that is responsible for executing system-level commands.
 //
 // Returns:
-//   - ([]string): A list of devices that belong to the specified device class. Each string in the list represents a device name.
-//   - (error): An error object that captures any error that occurred during the command execution. If no devices are found, an error is returned.
+//   - []string: A list of devices that belong to the specified device class. Each string in the list represents a device name.
+//   - error: An error object that captures any error that occurred during the command execution. If no devices are found, an error is returned.
 //
-// The main purpose of this function is to identify devices of a specific class that are connected to the system. It runs the Get-PnpDevice command with the specified device class and parses the output to extract the device names. If no devices are found, the function returns an error.
+// The purpose of this function is to identify devices of a specific class that are connected to the system.
+// It runs the Get-PnpDevice command with the specified device class and parses the output to extract the device names.
+// If no devices are found, the function returns an error.
 func CheckDeviceClasses(deviceClasses []string, executorClass mocking.CommandExecutor) []string {
 	// Convert the device classes to a string
 	classesString := strings.Join(deviceClasses, ",")

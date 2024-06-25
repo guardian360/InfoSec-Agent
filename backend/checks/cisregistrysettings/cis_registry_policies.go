@@ -10,7 +10,7 @@ import "github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 // Parameters:
 //   - registryKey (mocking.RegistryKey): The root key from which the registry settings will be checked. Should be HKEY_USERS for this function.
 //
-// Returns: None
+// Returns: None.
 func CheckPoliciesHKU(registryKey mocking.RegistryKey) {
 	for _, check := range policyChecksHKU {
 		check(registryKey)

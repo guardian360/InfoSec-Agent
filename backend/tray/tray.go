@@ -59,9 +59,9 @@ var mQuit *systray.MenuItem
 // The 'sysMenuItem' field is a pointer to a systray.MenuItem object. This is the actual menu item object that is added to the system tray menu.
 //
 // Fields:
-//   - MenuTitle string: The title of the menu item. This is the text that is displayed in the system tray menu.
-//   - menuTooltip string: The tooltip text for the menu item. This is the text that is displayed when the user hovers over the menu item in the system tray menu.
-//   - sysMenuItem *systray.MenuItem: The actual menu item object that is added to the system tray menu.
+//   - MenuTitle (string): The title of the menu item. This is the text that is displayed in the system tray menu.
+//   - menuTooltip (string): The tooltip text for the menu item. This is the text that is displayed when the user hovers over the menu item in the system tray menu.
+//   - sysMenuItem (*systray.MenuItem): The actual menu item object that is added to the system tray menu.
 type MenuItem struct {
 	MenuTitle   string
 	menuTooltip string
@@ -174,7 +174,7 @@ func OnQuit() {
 // It then runs the executable, opening the reporting page. If the 'Quit' option is selected from the system tray while the reporting page is open, the function kills the reporting-page process and sets the ReportingPageOpen flag to false.
 //
 // Parameters:
-//   - path string: The relative path to the reporting-page directory. This is used to change the current working directory to the reporting-page directory.
+//   - path (string): The relative path to the reporting-page directory. This is used to change the current working directory to the reporting-page directory.
 //
 // Returns:
 //   - error: An error object if an error occurred during the process, otherwise nil.
@@ -223,10 +223,10 @@ func OpenReportingPage() error {
 	return nil
 }
 
-// buildReportingPage builds the reporting page executable using a Wails application
+// buildReportingPage builds the reporting page executable using a Wails application.
 //
 // Parameters:
-//   - path string: The relative path to the reporting-page directory. This is used to change the current working directory to the reporting-page directory.
+//   - path (string): The relative path to the reporting-page directory. This is used to change the current working directory to the reporting-page directory.
 //
 // Returns:
 //   - error: An error object if an error occurred during the process, otherwise nil.
@@ -265,7 +265,7 @@ func buildReportingPage() error {
 // For testing purposes, an optional string parameter 'testInput' can be provided. If 'testInput' is provided, the function uses this as the user's input instead of displaying the dialog window.
 //
 // Parameters:
-//   - testInput ...string: Optional parameter used for testing. If provided, the function uses this as the user's input instead of displaying the dialog window.
+//   - testInput (...string): Optional parameter used for testing. If provided, the function uses this as the user's input instead of displaying the dialog window.
 //
 // Returns: None.
 func ChangeScanInterval(testInput ...string) {
@@ -328,7 +328,7 @@ func ChangeScanInterval(testInput ...string) {
 // During the scan, a progress dialog is displayed to keep the user informed about the scan progress. Once the scan is complete, the dialog is closed and the results of the scan are returned.
 //
 // Parameters:
-//   - dialogPresent bool: A boolean value indicating whether a progress dialog should be displayed during the scan. If true, a dialog is shown; if false, no dialog is displayed.
+//   - dialogPresent (bool): A boolean value indicating whether a progress dialog should be displayed during the scan. If true, a dialog is shown; if false, no dialog is displayed.
 //
 // Returns:
 //   - []checks.Check: A list of checks performed during the scan.
@@ -381,8 +381,7 @@ func ScanNow(dialogPresent bool, databasePath string) ([]checks.Check, error) {
 // 6: Português
 //
 // Parameters:
-//
-//   - testInput ...string: Optional parameter used for testing. If provided, the function uses this as the user's language selection instead of displaying the dialog window.
+//   - testInput (...string): Optional parameter used for testing. If provided, the function uses this as the user's language selection instead of displaying the dialog window.
 //
 // Returns: None. The function updates the 'language' variable in-place.
 func ChangeLanguage(testInput ...string) {
@@ -459,8 +458,8 @@ func RefreshMenu() {
 // changeNextScan updates the next scan time based on the current time and the scan interval.
 //
 // Parameters:
-//   - settings usersettings.UserSettings: The user settings object containing the current scan interval and next scan time.
-//   - value int: The new scan interval in hours.
+//   - settings (usersettings.UserSettings): The user settings object containing the current scan interval and next scan time.
+//   - value (int): The new scan interval in hours.
 //
 // Returns: None.
 func changeNextScan(settings usersettings.UserSettings, value int) {
@@ -476,7 +475,7 @@ func changeNextScan(settings usersettings.UserSettings, value int) {
 // If a scan is due, it performs a scan and notifies the user using a pop-up.
 //
 // Parameters:
-//   - scanInterval int: The scan interval in hours.
+//   - scanInterval (int): The scan interval in hours.
 //
 // Returns: None.
 func periodicScan(scanInterval int) {
@@ -532,7 +531,7 @@ func runScanWithDialog() (zenity.ProgressDialog, []checks.Check, error) {
 // updateScanInterval updates the scan interval in the user settings file.
 //
 // Parameters:
-//   - interval int: The new scan interval in hours.
+//   - interval (int): The new scan interval in hours.
 //
 // Returns: None.
 func updateScanInterval(interval int, test bool) {
