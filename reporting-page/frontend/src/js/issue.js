@@ -194,7 +194,7 @@ export async function openIssuePage(issueId, resultId, back = undefined) {
             <p id="solution-text">${stepCounter +1}. ${getVersionSolution(issueData, stepCounter)}</p>
             <input type="checkbox" id="zoom-check">
             <label for="zoom-check">
-              <img class="zoom-img" style='display:block; width:750px;height:auto' id="step-screenshot"></img>
+              <img class="zoom-img" style='display:block; width:65%;height:auto' id="step-screenshot"></img>
             </label>
             <div class="solution-buttons">
               <div class="button-box">
@@ -533,7 +533,7 @@ export function parseShowResult(issueId, resultId, currentIssue) {
         <p id="solution-text">${stepCounter +1}. ${getVersionSolution(issueData, stepCounter)}</p>
         <input type="checkbox" id="zoom-check">
         <label for="zoom-check">
-          <img class="zoom-img" style='display:block; width:750px;height:auto' id="step-screenshot"></img>
+          <img class="zoom-img" style='display:block; width:65%;height:auto' id="step-screenshot"></img>
         </label>
         <div class="solution-buttons">
           <div class="button-box">
