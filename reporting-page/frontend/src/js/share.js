@@ -28,9 +28,8 @@ export async function getImage(node, width, height) {
 /**
  * Set the correct image in the share-node
  * @param {string} social social media to set the image for
- * @param {HTMLElement} progress html element of the progress bar with text above it
  */
-export async function setImage(social, progress) {
+export async function setImage(social) {
   let lighthousePath;
   const lighthouseState = await getLighthouseState();
   switch (lighthouseState) {
@@ -61,6 +60,18 @@ export async function setImage(social, progress) {
   node.style.backgroundImage = 'url(' + lighthouseFullPath + ')';
   node.style.backgroundSize = 'cover';
   node.style.backgroundPosition = 'center';
+  // Create the progress bar element for the image
+  const progress = document.createElement('div');
+  const progressText = document.getElementById('lighthouse-progress-header');
+  const progressBar = document.getElementById('progress-bar-container');
+  progress.innerHTML = `
+  <div class="data-segment-header">
+    <p class="lang-lighthouse-progress">${progressText.innerHTML}</p>
+  </div>
+  <div class="progress-container">
+    ${progressBar.innerHTML}
+  </div>
+  `;
 
   node.innerHTML = `
   <div class="image-header">
@@ -165,6 +176,6 @@ export function selectSocialMedia(social) {
   };
 
   document.getElementById('select-' + social).classList.add('selected');
-  setImage(social, document.getElementById('progress-segment'));
+  setImage(social);
   sessionStorage.setItem('ShareSocial', JSON.stringify(socialMediaSizes[social]));
 }

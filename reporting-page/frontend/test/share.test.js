@@ -12,15 +12,22 @@ const dom = new JSDOM(`
 <html>
 <body>
     <div id="page-contents">
-        <div id="progress-segment" class="data-segment">
-          <div class="data-segment-header">
-            <p class="lang-lighthouse-progress"></p>
+      <div id="progress-segment" class="data-segment">
+        <div class="data-segment-header">
+          <p id="lighthouse-progress-header" class="lang-lighthouse-progress"></p>
+          <div id="lighthouse-progress-hoverbox">
+            <img id="lighthouse-progress-tooltip">
+            <p class="lighthouse-progress-tooltip-text lang-tooltip-text"></p>
           </div>
-          <div class="progress-container">
-            <div class="progress-bar" id="progress-bar"></div>
-          </div>
-          <p id="progress-text"></p>
         </div>
+        <div id="progress-bar-container" class="progress-container">
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <p id="progress-percentage-text" class="gamification-text"></p>
+        <p id="progress-text" class="lang-progress-text gamification-text"></p>
+        <p id="progress-almost-text" class="lang-progress-almost-text gamification-text"></p></p>
+        <p id="progress-done-text" class="lang-progress-done-text gamification-text"</p>
+      </div>
         <div id="share-modal" class="modal">
             <div class="modal-content">
               <div class="modal-header">
@@ -107,37 +114,37 @@ describe('share functions', function() {
 
     // Act
     sessionStorage.setItem('ShareSocial', JSON.stringify(share.socialMediaSizes['facebook']));
-    await share.setImage('facebook', document.getElementById('progress-segment'));
+    await share.setImage('facebook');
 
     // Assert
     test.value(document.getElementById('share-node').style.backgroundImage).isEqualTo('url(sharing/first-state.png)');
 
     // Act
-    await share.setImage('facebook', document.getElementById('progress-segment'));
+    await share.setImage('facebook');
 
     // Assert
     test.value(document.getElementById('share-node').style.backgroundImage).isEqualTo('url(sharing/second-state.png)');
 
     // Act
-    await share.setImage('facebook', document.getElementById('progress-segment'));
+    await share.setImage('facebook');
 
     // Assert
     test.value(document.getElementById('share-node').style.backgroundImage).isEqualTo('url(sharing/third-state.png)');
 
     // Act
-    await share.setImage('facebook', document.getElementById('progress-segment'));
+    await share.setImage('facebook');
 
     // Assert
     test.value(document.getElementById('share-node').style.backgroundImage).isEqualTo('url(sharing/fourth-state.png)');
 
     // Act
-    await share.setImage('facebook', document.getElementById('progress-segment'));
+    await share.setImage('facebook');
 
     // Assert
     test.value(document.getElementById('share-node').style.backgroundImage).isEqualTo('url(sharing/fifth-state.png)');
 
     // Act
-    await share.setImage('facebook', document.getElementById('progress-segment'));
+    await share.setImage('facebook');
 
     // Assert
     test.value(document.getElementById('share-node').style.backgroundImage).isEqualTo('url(sharing/first-state.png)');
