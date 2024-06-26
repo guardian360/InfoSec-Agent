@@ -1,3 +1,5 @@
+// Package system_test provides system tests for the functionality of the system tray application.
+// The system tests are run in a controlled virtual machine environment to ensure the application behaves as expected.
 package system_test
 
 import (
@@ -37,19 +39,22 @@ func TestTrayFunctionality(t *testing.T) {
 	require.Equal(t, 3, tray.Language)
 
 	wg := sync.WaitGroup{}
-	wg.Add(2)
+	wg.Add(1)
 	errSlice := make([]error, 2)
 	// Run the function without dialog
 	go func() {
 		defer wg.Done()
-		_, err := tray.ScanNow(false)
+		_, err := tray.ScanNow(false, "reporting-page/frontend/src/databases/database.en-GB.json")
 		errSlice[0] = err
 	}()
+
+	wg.Wait()
+	wg.Add(1)
 
 	// Run the function with dialog
 	go func() {
 		defer wg.Done()
-		_, err := tray.ScanNow(true)
+		_, err := tray.ScanNow(true, "reporting-page/frontend/src/databases/database.en-GB.json")
 		errSlice[1] = err
 	}()
 
@@ -65,32 +70,25 @@ func TestTrayFunctionality(t *testing.T) {
 		expectedMessage string
 	}{
 		// Valid input
-		{"24", "Scan interval changed to 24 hours"},
+		{"24", "Changing scan interval to 24 day(s)"},
 		// Invalid input (non-numeric)
-		{"abc", "24"},
+		{"abc", "Invalid scan interval input"},
 		// Invalid input (negative)
-		{"-1", "24"},
+		{"-1", "Invalid scan interval input"},
 		// Invalid input (zero)
-		{"0", "24"},
+		{"0", "Invalid scan interval input"},
 		// Valid large input
-		{"1000", "Scan interval changed to 1000 hours"},
+		{"1000", "Changing scan interval to 1000 day(s)"},
 	}
 
 	// Iterate over test cases
 	for _, tc := range testCases {
 		var buf bytes.Buffer
 		logger.Log.SetOutput(&buf)
+		logger.Log.LogLevelSpecific = -1
 
-		wg = sync.WaitGroup{}
-		wg.Add(1)
 		// Run the function with mocked user input
-		go func() {
-			defer wg.Done()
-			tray.ChangeScanInterval(tc.input)
-		}()
-
-		// Wait for the function to complete
-		wg.Wait()
+		tray.ChangeScanInterval(tc.input)
 
 		capturedOutput := buf.String()
 
@@ -99,6 +97,7 @@ func TestTrayFunctionality(t *testing.T) {
 	}
 	// Reset log output to standard output
 	logger.Log.SetOutput(os.Stdout)
+	logger.Log.LogLevelSpecific = 0
 
 	// Test OpenReportingPage function
 	tray.ReportingPageOpen = true

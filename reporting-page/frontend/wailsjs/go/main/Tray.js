@@ -10,6 +10,10 @@ export function ChangeScanInterval() {
   return window['go']['main']['Tray']['ChangeScanInterval']();
 }
 
+export function GetInstalledPrograms() {
+  return window['go']['main']['Tray']['GetInstalledPrograms']();
+}
+
 export function LogDebug(arg1) {
   return window['go']['main']['Tray']['LogDebug'](arg1);
 }

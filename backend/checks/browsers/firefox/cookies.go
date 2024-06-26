@@ -1,6 +1,4 @@
 // Package firefox is responsible for running checks on Firefox.
-//
-// Exported function(s): CookieFirefox, ExtensionFirefox, HistoryFirefox, PasswordFirefox
 package firefox
 
 import (
@@ -10,6 +8,7 @@ import (
 
 // CookiesFirefox inspects the cookies stored in the Firefox browser.
 // It does so by using the browsers.QueryCookieDatabase function to query the cookies.sqlite database in the Firefox profile directory.
+//
 // Parameters:
 //   - profileFinder: A browsers.FirefoxProfileFinder object that is used to locate the Firefox profile directory.
 //   - copyGetter: A browsers.CopyFileGetter object that is used to copy the database file to a temporary location.

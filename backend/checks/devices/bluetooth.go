@@ -16,20 +16,23 @@ import (
 // Returns:
 //   - Check: A Check object that encapsulates the results of the Bluetooth check. The Check object includes a list of strings, where each string represents a Bluetooth device that is currently or was previously connected to the system. If an error occurs during the Bluetooth check, the Check object will encapsulate this error.
 //
-// This function first opens the registry key for Bluetooth devices. It then reads the names of all sub-keys, which represent Bluetooth devices. For each device, the function opens the device sub-key, retrieves the device name, and adds it to the results. If an error occurs at any point during this process, it is encapsulated in the Check object and returned.
+// This function first opens the registry key for Bluetooth devices.
+// It then reads the names of all sub-keys, which represent Bluetooth devices.
+// For each device, the function opens the device sub-key, retrieves the device name, and adds it to the results.
+// If an error occurs at any point during this process, it is encapsulated in the Check object and returned.
 func Bluetooth(registryKey mocking.RegistryKey) checks.Check {
 	var err error
 	var deviceKey mocking.RegistryKey
 	var deviceNames []string
 	var deviceNameValue []byte
 	// Open the registry key for bluetooth devices
-	key, err := checks.OpenRegistryKey(registryKey,
+	key, err := mocking.OpenRegistryKey(registryKey,
 		`SYSTEM\CurrentControlSet\Services\BTHPORT\Parameters\Devices`)
 	if err != nil {
 		return checks.NewCheckError(checks.BluetoothID, err)
 	}
 	// Close the key after we have received all relevant information
-	defer checks.CloseRegistryKey(key)
+	defer mocking.CloseRegistryKey(key)
 
 	// Get the names of all sub keys (which represent bluetooth devices)
 	deviceNames, err = key.ReadSubKeyNames(-1)
@@ -44,13 +47,13 @@ func Bluetooth(registryKey mocking.RegistryKey) checks.Check {
 	result := checks.NewCheckResult(checks.BluetoothID, 1)
 	// Open each device sub key within the registry
 	for _, deviceName := range deviceNames {
-		deviceKey, err = checks.OpenRegistryKey(key, deviceName)
+		deviceKey, err = mocking.OpenRegistryKey(key, deviceName)
 		if err != nil {
 			logger.Log.Error("Error opening device subkey " + deviceName)
 			continue
 		}
 
-		defer checks.CloseRegistryKey(deviceKey)
+		defer mocking.CloseRegistryKey(deviceKey)
 
 		// Get the device name
 		deviceNameValue, _, err = deviceKey.GetBinaryValue("Name")

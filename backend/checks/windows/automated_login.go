@@ -15,12 +15,16 @@ import (
 //
 // Returns:
 //   - Check: A struct containing the result of the check. The result indicates whether automatic log-in is enabled on the system.
+//
+// The function works by opening and reading the value of the Winlogon registry key.
+// Based on this value, it determines if automatic log-in is enabled on the system.
+// The function returns a Check instance containing a string that describes the status of automatic log-in.
 func AutomaticLogin(registryKey mocking.RegistryKey) checks.Check {
-	key, err := checks.OpenRegistryKey(registryKey, `SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon`)
+	key, err := mocking.OpenRegistryKey(registryKey, `SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon`)
 	if err != nil {
 		return checks.NewCheckError(checks.AutoLoginID, err)
 	}
-	defer checks.CloseRegistryKey(key)
+	defer mocking.CloseRegistryKey(key)
 
 	// Read the value of AutoAdminLogon, which contains the information if automatic log-in is enabled on the system.
 	// If the registry key does not exist or its value is 0, then automatic log-in is not enabled.

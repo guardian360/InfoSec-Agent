@@ -1,4 +1,3 @@
-// Package network provides functions related to security/privacy checks of network settings
 package network
 
 import (
@@ -21,7 +20,9 @@ import (
 // Returns:
 //   - Check: A struct containing the result of the check. The result is a list of open ports along with the names of the processes that are using them.
 //
-// The function works by first running the 'tasklist' command to get a list of all running tasks. It then maps each process ID to its corresponding process name. Next, it runs the 'netstat' command to get a list of all open ports. For each open port, it identifies the process ID and maps it back to the process name using the previously created map. The function then returns a list of open ports along with the names of the processes that are using them.
+// The function works by first running the 'tasklist' command to get a list of all running tasks. It then maps each process ID to its corresponding process name.
+// Next, it runs the 'netstat' command to get a list of all open ports. For each open port, it identifies the process ID and maps it back to the process name using the previously created map.
+// The function then returns a list of open ports along with the names of the processes that are using them.
 func OpenPorts(tasklistexecutor, netstatexecutor mocking.CommandExecutor) checks.Check {
 	// Regular expression to clean up multiple spaces in the output
 	re := regexp.MustCompile("  +")
@@ -94,7 +95,7 @@ func OpenPorts(tasklistexecutor, netstatexecutor mocking.CommandExecutor) checks
 	// Sort the keys
 	sort.Strings(keys)
 
-	// Iterate over the sorted keys and construct the ouput strings
+	// Iterate over the sorted keys and construct the output strings
 	for _, name := range keys {
 		ports := processPorts[name]
 		result.Result = append(result.Result, fmt.Sprintf("process: %s, port: %s", name, strings.Join(ports, ", ")))

@@ -8,10 +8,9 @@ import "github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 // The function returns a slice of boolean values, where each boolean represents whether a particular registry setting adheres to the CIS Benchmark standards.
 //
 // Parameters:
-//
 //   - registryKey (mocking.RegistryKey): The root key from which the registry settings will be checked. Should be HKEY_LOCAL_MACHINE for this function.
 //
-// Returns: None
+// Returns: None.
 func CheckPoliciesHKLM(registryKey mocking.RegistryKey) {
 	for _, check := range policyChecksHKLM {
 		check(registryKey)
@@ -765,7 +764,6 @@ func policiesNetworkConnections(registryKey mocking.RegistryKey) {
 // policiesNetworkProvider is a helper function that checks the registry to determine if the system is configured with the correct settings for the network provider.
 //
 // CIS Benchmark Audit list index: 18.5.14.1
-// TODO: NEEDS CHECKING, IF THIS WORKS AS INTENDED, COULD NOT TEST DUE TO NON-EXISTENT REGISTRY KEY
 func policiesNetworkProvider(registryKey mocking.RegistryKey) {
 	registryPath := `SOFTWARE\Policies\Microsoft\Windows\NetworkProvider\HardenedPaths`
 

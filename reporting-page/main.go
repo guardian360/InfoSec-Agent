@@ -1,8 +1,9 @@
-// Package (reporting page) main contains the entry point of the reporting page application
+// The InfoSec Agent Reporting Page is a Wails application that presents the results of the InfoSec Agent scans in a user-friendly format.
+// It serves as a frontend for the [InfoSec-Agent] package.
 //
-// Exported function(s): NewApp, NewTray
+// This package is responsible for initializing the application and creating the link between the Go backend and JavaScript frontend.
 //
-// Exported struct(s): App
+// [InfoSec-Agent]: https://github.com/InfoSec-Agent/InfoSec-Agent/
 package main
 
 import (
@@ -29,6 +30,9 @@ import (
 var assets embed.FS
 
 // FileLoader is a struct that implements the http.Handler interface to serve files from the frontend/src/assets/images directory.
+//
+// Fields
+//   - Handler (http.Handler): The handler that serves the requested file.
 type FileLoader struct {
 	http.Handler
 }
@@ -44,7 +48,9 @@ func NewFileLoader() *FileLoader {
 // This function reads the file data and writes it to the response writer.
 // If an error occurs during the file reading or writing process, it logs the error and returns an appropriate HTTP error response.
 //
-// Parameters: The response writer and the HTTP request.
+// Parameters:
+//   - res (http.ResponseWriter): The response writer to write the file data to.
+//   - req (*http.Request): The request object containing information about the requested file.
 //
 // Returns: None. This function does not return a value as it serves the requested file.
 func (h *FileLoader) ServeHTTP(res http.ResponseWriter, req *http.Request) {
@@ -71,13 +77,13 @@ func (h *FileLoader) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 
 	fileData, err := os.ReadFile(newPath)
 	if err != nil {
-		logger.Log.ErrorWithErr("Could not load file:"+newPath, err)
+		logger.Log.ErrorWithErr("Could not load file: "+newPath, err)
 		http.Error(res, "File not found", http.StatusNotFound)
 		return
 	}
 
 	if _, err = res.Write(fileData); err != nil {
-		logger.Log.ErrorWithErr("Could not write file:"+newPath, err)
+		logger.Log.ErrorWithErr("Could not write file: "+newPath, err)
 		http.Error(res, "Failed to serve file", http.StatusInternalServerError)
 	}
 }
@@ -113,20 +119,20 @@ func main() {
 		registry.QUERY_VALUE,
 	)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error opening registry key: ", err)
+		logger.Log.ErrorWithErr("Error opening registry key", err)
 	} else {
 		logger.Log.Debug("Found registry key")
 		defer func(k registry.Key) {
 			err = k.Close()
 			if err != nil {
-				logger.Log.ErrorWithErr("Error closing registry key: ", err)
+				logger.Log.ErrorWithErr("Error closing registry key", err)
 			}
 		}(k)
 
 		// Get reporting page executable path
 		path, _, err = k.GetStringValue("Path")
 		if err != nil {
-			logger.Log.ErrorWithErr("Error getting path string: ", err)
+			logger.Log.ErrorWithErr("Error getting path string", err)
 		}
 	}
 	changeDirectory(path)
@@ -134,7 +140,6 @@ func main() {
 	// Create a new instance of the app and tray struct
 	app := NewApp()
 	systemTray := NewTray(logger.Log)
-	database := NewDatabase()
 	customLogger := logger.Log
 	localization.Init("../")
 	lang := usersettings.LoadUserSettings().Language
@@ -157,7 +162,6 @@ func main() {
 		Bind: []interface{}{
 			app,
 			systemTray,
-			database,
 		},
 		Logger: customLogger,
 		Windows: &windows.Options{
@@ -173,7 +177,7 @@ func main() {
 		},
 	})
 	if err != nil {
-		logger.Log.ErrorWithErr("Error creating Wails application:", err)
+		logger.Log.ErrorWithErr("Error creating Wails application", err)
 	}
 }
 
@@ -182,7 +186,8 @@ func main() {
 // If changing the directory is successful, a debug message is logged indicating the new directory.
 // If an error occurs during the directory change, the error is logged with an error level.
 //
-// Parameters: path: A string representing the target directory path.
+// Parameters:
+//   - path (string): The path to change the current working directory to.
 //
 // Returns: None.
 func changeDirectory(path string) {
@@ -193,7 +198,8 @@ func changeDirectory(path string) {
 
 	err := os.Chdir(path)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error changing directory: ", err)
+		logger.Log.ErrorWithErr("Error changing directory", err)
+	} else {
+		logger.Log.Debug("Changed directory to " + path)
 	}
-	logger.Log.Debug("Changed directory to " + path)
 }

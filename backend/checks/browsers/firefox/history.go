@@ -17,8 +17,12 @@ import (
 )
 
 // HistoryFirefox inspects the user's browsing history in the Firefox browser for any visits to known phishing domains within the last week.
+// It does so by querying the Firefox history database to retrieve the URLs visited by the user in the past week.
+// It then checks each URL against a list of known phishing domains to identify any matches.
+// If a match is found, the function generates a string that includes the domain name and the time of the visit.
 //
-// Parameters:   - profileFinder: An object that implements the FirefoxProfileFinder interface. It is used to find the Firefox profile directory.
+// Parameters:
+//   - profileFinder: An object that implements the FirefoxProfileFinder interface. It is used to find the Firefox profile directory.
 //   - getter: An object that implements the PhishingDomainGetter interface. It is used to retrieve the list of known phishing domains.
 //   - queryGetter: An object that implements the QueryDatabaseGetter interface. It is used to query the Firefox history database.
 //   - processGetter: An object that implements the ProcessQueryResultsGetter interface. It is used to process the results of the database query.
@@ -29,7 +33,7 @@ func HistoryFirefox(profileFinder browsers.FirefoxProfileFinder, getter browsers
 	var output []string
 	ffDirectory, err := profileFinder.FirefoxFolder()
 	if err != nil {
-		logger.Log.ErrorWithErr("No firefox directory found: ", err)
+		logger.Log.ErrorWithErr("No firefox directory found", err)
 		return checks.NewCheckErrorf(checks.HistoryFirefoxID, "No firefox directory found", err)
 	}
 
@@ -39,7 +43,7 @@ func HistoryFirefox(profileFinder browsers.FirefoxProfileFinder, getter browsers
 	defer func(name string) {
 		err = os.Remove(name)
 		if err != nil {
-			logger.Log.ErrorWithErr("Error removing file: ", err)
+			logger.Log.ErrorWithErr("Error removing file", err)
 		}
 	}(tempHistoryDbff)
 
@@ -91,14 +95,21 @@ type RealCopyDBGetter struct{}
 // The CopyFileGetter interface is used to copy the file.
 // The Firefox directory string represents the directory where the Firefox history database is located.
 // The temporary history database string represents the location where the database will be copied to.
-//
 // If an error occurs during the copy operation, it is logged and returned.
 // If the copy operation is successful, nil is returned.
+//
+// Parameters:
+//   - copyGetter (browsers.CopyFileGetter): An object that implements the CopyFileGetter interface. It is used to copy the database file to a temporary location.
+//   - ffDirectory (string): A string representing the directory where the Firefox history database is located.
+//   - tempHistoryDbff (string): A string representing the location where the database will be copied to.
+//
+// Returns:
+//   - An error if any occurs during the copy operation.
 func (r RealCopyDBGetter) CopyDatabase(copyGetter browsers.CopyFileGetter, ffDirectory string, tempHistoryDbff string) error {
 	// Copy the database to a temporary location
 	copyError := copyGetter.CopyFile(ffDirectory+"\\places.sqlite", tempHistoryDbff, nil, nil)
 	if copyError != nil {
-		logger.Log.ErrorWithErr("Unable to make a copy of the file: ", copyError)
+		logger.Log.ErrorWithErr("Unable to make a copy of the file", copyError)
 		return copyError
 	}
 	return nil
@@ -110,10 +121,10 @@ func (r RealCopyDBGetter) CopyDatabase(copyGetter browsers.CopyFileGetter, ffDir
 // Parameters:
 //   - db (*sql.DB): Represents the active database connection that needs to be closed.
 //
-// Returns: _
+// Returns: None.
 func CloseDatabase(db *sql.DB) {
 	if err := db.Close(); err != nil {
-		logger.Log.ErrorWithErr("Error closing database: ", err)
+		logger.Log.ErrorWithErr("Error closing database", err)
 	}
 }
 
@@ -151,7 +162,7 @@ func (r RealQueryDatabaseGetter) QueryDatabase(db *sql.DB) ([]QueryResult, error
 		"SELECT url, last_visit_date FROM moz_places WHERE last_visit_date >= ? ORDER BY last_visit_date DESC",
 		lastWeek)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error querying database: ", err)
+		logger.Log.ErrorWithErr("Error querying database", err)
 		return nil, err
 	}
 
@@ -161,14 +172,14 @@ func (r RealQueryDatabaseGetter) QueryDatabase(db *sql.DB) ([]QueryResult, error
 	for rows.Next() {
 		var result QueryResult
 		if err = rows.Scan(&result.URL, &result.LastVisitDate); err != nil {
-			logger.Log.ErrorWithErr("Error scanning row: ", err)
+			logger.Log.ErrorWithErr("Error scanning row", err)
 			return nil, err
 		}
 		results = append(results, result)
 	}
 
 	if err = rows.Err(); err != nil {
-		logger.Log.ErrorWithErr("Error iterating over rows: ", err)
+		logger.Log.ErrorWithErr("Error iterating over rows", err)
 		return nil, err
 	}
 
@@ -181,15 +192,21 @@ func (r RealQueryDatabaseGetter) QueryDatabase(db *sql.DB) ([]QueryResult, error
 // Parameters:
 //   - rows (*sql.Rows): Represents the result set of a database query that needs to be closed.
 //
+// Returns: None.
+//
 // This function does not return any value. However, if an error occurs during the closure of the result set,
 // it will be logged for debugging purposes.
 func CloseRows(rows *sql.Rows) {
 	if err := rows.Close(); err != nil {
-		logger.Log.ErrorWithErr("Error closing rows: ", err)
+		logger.Log.ErrorWithErr("Error closing rows", err)
 	}
 }
 
 // QueryResult is a struct used by the HistoryFirefox function to store the results of the query.
+//
+// Fields:
+//   - URL (string): The URL visited by the user.
+//   - LastVisitDate (sql.NullInt64): The Unix timestamp of the last visit date of the URL. This value can be null.
 type QueryResult struct {
 	URL           string
 	LastVisitDate sql.NullInt64
@@ -230,7 +247,7 @@ func (r RealProcessQueryResultsGetter) ProcessQueryResults(results []QueryResult
 	creator := browsers.RealRequestCreator{}
 	phishingDomainList, err := getter.GetPhishingDomains(creator)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error getting phishing domains: ", err)
+		logger.Log.ErrorWithErr("Error getting phishing domains", err)
 		return nil, err
 	}
 
@@ -261,7 +278,8 @@ type RealTimeFormatter struct{}
 // Parameters:
 //   - lastVisitDate (sql.NullInt64): Represents the Unix timestamp of the last visit date of a website. This value can be null.
 //
-// Returns: The last visit date of a website as a human-readable string
+// Returns:
+//   - string: A human-readable string representing the last visit date of the website. If the last visit date is not valid or is zero, the string will represent the epoch time.
 func (RealTimeFormatter) FormatTime(lastVisitDate sql.NullInt64) string {
 	if lastVisitDate.Valid && lastVisitDate.Int64 > 0 {
 		return time.UnixMicro(lastVisitDate.Int64).String()

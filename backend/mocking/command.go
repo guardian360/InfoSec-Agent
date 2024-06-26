@@ -1,9 +1,15 @@
-// Package mocking contains different Windows mocking implementations
+// Package mocking contains different mocking implementations for various components of Windows.
 //
-// Currently contains mocking implementations for: Windows version, Windows registry, and command execution
+// It contains mocking implementations for:
+//   - command execution
+//   - file reading and writing
+//   - installed programs listing
+//   - Windows registry access
+//   - username retrieval
 package mocking
 
 import (
+	"errors"
 	"os/exec"
 	"syscall"
 )
@@ -19,6 +25,10 @@ type CommandExecutor interface {
 // It is used for testing purposes to simulate the behavior of a real command executor.
 // This allows tests to control the output and error conditions of command execution,
 // ensuring that the code under test can handle various scenarios correctly.
+//
+// Fields:
+//   - Output (string): A string representing the predefined output of the simulated command execution.
+//   - Err (error): An error that will be non-nil if a predefined error condition is simulated.
 type MockCommandExecutor struct {
 	Output string
 	Err    error
@@ -28,8 +38,8 @@ type MockCommandExecutor struct {
 // This method is part of the MockCommandExecutor struct, which is a mock implementation of the CommandExecutor interface.
 //
 // Parameters:
-//   - _: A string representing the system command to be executed. This parameter is ignored in the mock implementation.
-//   - _: A variadic string slice representing the arguments to be passed to the command. This parameter is ignored in the mock implementation.
+//   - _ (string): A string representing the system command to be executed. This parameter is ignored in the mock implementation.
+//   - _ (...string): A variadic string slice representing the arguments to be passed to the command. This parameter is ignored in the mock implementation.
 //
 // Returns:
 //   - A byte slice representing the predefined output of the simulated command execution.
@@ -37,6 +47,9 @@ type MockCommandExecutor struct {
 //
 // This method allows tests to control the outcomes of command execution, ensuring that the code under test can handle various scenarios correctly.
 func (m *MockCommandExecutor) Execute(_ string, _ ...string) ([]byte, error) {
+	if m.Output == "test1" {
+		return nil, errors.New("test error")
+	}
 	return []byte(m.Output), m.Err
 }
 
@@ -50,8 +63,8 @@ type RealCommandExecutor struct {
 // This method is part of the RealCommandExecutor struct, which is an implementation of the CommandExecutor interface.
 //
 // Parameters:
-//   - command: A string representing the system command to be executed.
-//   - args: A variadic string slice representing the arguments to be passed to the command.
+//   - command (string): A string representing the system command to be executed.
+//   - args (...string): A variadic string slice representing the arguments to be passed to the command.
 //
 // Returns:
 //   - A byte slice representing the output of the executed command.

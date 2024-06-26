@@ -2,6 +2,7 @@ import * as htmlToImage from 'html-to-image';
 import imageCompression from 'browser-image-compression';
 import {LogError as logError} from '../../wailsjs/go/main/Tray';
 import {getUserSettings} from './issues';
+import {GetImagePath as getImagePath, GetLighthouseState as getLighthouseState} from '../../wailsjs/go/main/App.js';
 
 /**
  * Create image as an url from an html node
@@ -28,14 +29,66 @@ export async function getImage(node, width, height) {
  * Set the correct image in the share-node
  * @param {string} social social media to set the image for
  */
-function setImage(social) {
+export async function setImage(social) {
+  let lighthousePath;
+  const lighthouseState = await getLighthouseState();
+  switch (lighthouseState) {
+  case 0:
+    lighthousePath = 'first-state.png';
+    break;
+  case 1:
+    lighthousePath = 'second-state.png';
+    break;
+  case 2:
+    lighthousePath = 'third-state.png';
+    break;
+  case 3:
+    lighthousePath = 'fourth-state.png';
+    break;
+  case 4:
+    lighthousePath = 'fifth-state.png';
+    break;
+  default:
+    lighthousePath = 'first-state.png';
+  }
+  const lighthouseFullPath = await getImagePath('sharing/' + lighthousePath);
   const node = document.getElementById('share-node');
+  const socialStyle = JSON.parse(sessionStorage.getItem('ShareSocial'));
+  // Set the background to the current state
+  node.style.width = socialStyle.width + 'px';
+  node.style.height = socialStyle.height + 'px';
+  node.style.backgroundImage = 'url(' + lighthouseFullPath + ')';
+  node.style.backgroundSize = 'cover';
+  node.style.backgroundPosition = 'center';
+  // Create the progress bar element for the image
+  const progress = document.createElement('div');
+  const progressText = document.getElementById('lighthouse-progress-header');
+  const progressBar = document.getElementById('progress-bar-container');
+  progress.innerHTML = `
+  <div class="data-segment-header">
+    <p class="lang-lighthouse-progress">${progressText.innerHTML}</p>
+  </div>
+  <div class="progress-container">
+    ${progressBar.innerHTML}
+  </div>
+  `;
+
   node.innerHTML = `
-  <img class="api-key-image" src="https://placehold.co/600x315" alt="Step 1 Image">
+  <div class="image-header">
+    <p class="image-link">github.com/InfoSec-Agent/InfoSec-Agent</p>
+  </div>
+  <div class="image-footer">
+    <div class="image-left" id="image-left">
+      ${progress.innerHTML}
+    </div>
+    <div class="image-right">
+      <p id="image-logo-text"></p>
+      <img id="logo" alt="logo" src="./src/assets/images/InfoSec-Agent-logo.png" style="width: 75px; height: 75px;">
+    </div>
+  </div>
   `;
   if (social == 'instagram') {
-    node.innerHTML = `
-    <img class="api-key-image" src="https://placehold.co/300x300" alt="Step 1 Image">   `;
+    document.getElementById('image-left').style.marginTop = '50px';
   }
 }
 
@@ -46,7 +99,7 @@ function setImage(social) {
 export async function saveProgress(node) {
   try {
     const social = JSON.parse(sessionStorage.getItem('ShareSocial'));
-    const imageUrl = await getImage(node, social.height, social.width);
+    const imageUrl = await getImage(node, social.width, social.height);
 
     const nowDate = new Date();
     let date = nowDate.getDate()+'-'+(nowDate.getMonth()+1)+'-'+nowDate.getFullYear();
@@ -65,10 +118,10 @@ export async function saveProgress(node) {
 }
 
 /** Open the selected social media page */
-export function shareProgress() {
+export async function shareProgress() {
   const social = JSON.parse(sessionStorage.getItem('ShareSocial'));
 
-  // choose which
+  // choose which social media page to open
   switch (social.name) {
   case 'facebook':
     window.open('https://www.facebook.com/', 'Facebook');
@@ -92,18 +145,18 @@ export function shareProgress() {
 export const socialMediaSizes = {
   facebook: {
     name: 'facebook',
-    height: 600,
-    width: 315,
+    height: 315,
+    width: 600,
   },
   x: {
     name: 'x',
-    height: 600,
-    width: 315,
+    height: 315,
+    width: 600,
   },
   linkedin: {
     name: 'linkedin',
-    height: 600,
-    width: 315,
+    height: 315,
+    width: 600,
   },
   instagram: {
     name: 'instagram',
@@ -111,9 +164,6 @@ export const socialMediaSizes = {
     width: 300,
   },
 };
-
-// on startup set the social media to share to to facebook
-sessionStorage.setItem('ShareSocial', JSON.stringify(socialMediaSizes['facebook']));
 
 /**
  * Select the social media and set it in sessionstorage

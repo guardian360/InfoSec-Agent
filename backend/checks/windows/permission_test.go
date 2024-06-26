@@ -1,6 +1,7 @@
 package windows_test
 
 import (
+	"errors"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/windows"
 	"testing"
 
@@ -26,6 +27,7 @@ func TestPermission(t *testing.T) {
 		permission string
 		key        mocking.RegistryKey
 		want       checks.Check
+		error      bool
 	}{
 		{
 			name:       "NonPackagedWebcamPermissionExists",
@@ -52,6 +54,7 @@ func TestPermission(t *testing.T) {
 			key: &mocking.MockRegistryKey{
 				SubKeys: []mocking.MockRegistryKey{
 					{KeyName: "Software\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\webcam",
+						StringValues: map[string]string{"Value": "Allow"},
 						SubKeys: []mocking.MockRegistryKey{
 							{KeyName: "microsoft.webcam", StringValues: map[string]string{"Value": "Allow"}},
 						},
@@ -60,12 +63,136 @@ func TestPermission(t *testing.T) {
 			},
 			want: checks.NewCheckResult(checks.WebcamID, 0, "microsoft webcam"),
 		},
+		{
+			name:       "No apps with webcam permission",
+			permission: "webcam",
+			key: &mocking.MockRegistryKey{
+				SubKeys: []mocking.MockRegistryKey{
+					{KeyName: "Software\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\webcam",
+						StringValues: map[string]string{"Value": "Deny"},
+						SubKeys:      []mocking.MockRegistryKey{},
+					},
+				},
+			},
+			want: checks.NewCheckResult(checks.WebcamID, 1),
+		},
+		{
+			name:       "Error reading string value",
+			permission: "webcam",
+			key: &mocking.MockRegistryKey{
+				SubKeys: []mocking.MockRegistryKey{
+					{KeyName: "Software\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\webcam",
+						StringValues: map[string]string{"Value": ""},
+						SubKeys: []mocking.MockRegistryKey{
+							{KeyName: "microsoft.webcam", StringValues: map[string]string{"Value": "Allow"}},
+						},
+					},
+				},
+			},
+			want:  checks.NewCheckError(checks.WebcamID, errors.New("error")),
+			error: true,
+		},
+		{
+			name:       "Error reading sub key",
+			permission: "webcam",
+			key: &mocking.MockRegistryKey{
+				SubKeys: []mocking.MockRegistryKey{
+					{KeyName: "Software\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\webcam",
+						StringValues: map[string]string{"Value": "Allow"},
+						SubKeys: []mocking.MockRegistryKey{
+							{KeyName: "microsoft.webcam", StringValues: map[string]string{"test": "test"}},
+						},
+					},
+				},
+			},
+			want:  checks.NewCheckError(checks.WebcamID, errors.New("error")),
+			error: true,
+		},
+		{
+			name:       "Error opening sub key",
+			permission: "webcam",
+			key: &mocking.MockRegistryKey{
+				SubKeys: []mocking.MockRegistryKey{
+					{KeyName: "Software\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\webcam",
+						StringValues: map[string]string{"Value": "Allow"},
+						SubKeys: []mocking.MockRegistryKey{
+							{KeyName: "microsoft.webcam", StringValues: map[string]string{"Value": "Allow"},
+								IntegerValues: map[string]uint64{"test": 1}},
+						},
+					},
+				},
+			},
+			want:  checks.NewCheckError(checks.WebcamID, errors.New("error")),
+			error: true,
+		},
+		{
+			name:       "Error reading sub key sub key names",
+			permission: "webcam",
+			key: &mocking.MockRegistryKey{
+				SubKeys: []mocking.MockRegistryKey{
+					{KeyName: "Software\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\webcam",
+						StringValues: map[string]string{"Value": "Allow"},
+						SubKeys: []mocking.MockRegistryKey{
+							{KeyName: "NonPackaged", StringValues: map[string]string{"Value": "Allow"},
+								SubKeys: []mocking.MockRegistryKey{
+									{KeyName: "microsoft.webcam", StringValues: map[string]string{"Value": "", "test": "test"}},
+								},
+							},
+						},
+					},
+				},
+			},
+			want:  checks.NewCheckError(checks.WebcamID, errors.New("error")),
+			error: true,
+		},
+		{
+			name:       "Error reading sub key string value",
+			permission: "webcam",
+			key: &mocking.MockRegistryKey{
+				SubKeys: []mocking.MockRegistryKey{
+					{KeyName: "Software\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\webcam",
+						StringValues: map[string]string{"Value": "Allow"},
+						SubKeys: []mocking.MockRegistryKey{
+							{KeyName: "Packaged", StringValues: map[string]string{"Value": ""},
+								SubKeys: []mocking.MockRegistryKey{
+									{KeyName: "microsoft.webcam", StringValues: map[string]string{"Value": "", "test": "test"}},
+								},
+							},
+						},
+					},
+				},
+			},
+			want: checks.NewCheckResult(checks.WebcamID, 1),
+		},
+		{
+			name:       "Error reading sub key string value",
+			permission: "webcam",
+			key: &mocking.MockRegistryKey{
+				SubKeys: []mocking.MockRegistryKey{
+					{KeyName: "Software\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\webcam",
+						StringValues: map[string]string{"Value": "Allow"},
+						SubKeys: []mocking.MockRegistryKey{
+							{KeyName: "Packaged", StringValues: map[string]string{"Value": "test"},
+								SubKeys: []mocking.MockRegistryKey{
+									{KeyName: "microsoft.webcam", StringValues: map[string]string{"Value": "", "test": "test"}},
+								},
+							},
+						},
+					},
+				},
+			},
+			want: checks.NewCheckResult(checks.WebcamID, 1),
+		},
 	}
 
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
 			result := windows.Permission(checks.WebcamID, tc.permission, tc.key)
-			require.Equal(t, tc.want, result)
+			if tc.error {
+				require.Equal(t, -1, result.ResultID)
+			} else {
+				require.Equal(t, tc.want, result)
+			}
 		})
 	}
 }

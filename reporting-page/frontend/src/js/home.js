@@ -4,9 +4,10 @@ import {closeNavigation, markSelectedNavigationItem} from './navigation-menu.js'
 import {retrieveTheme} from './personalize.js';
 import {scanTest} from './database.js';
 import {LogError as logError, LogDebug as logDebug} from '../../wailsjs/go/main/Tray.js';
-import {GetImagePath as getImagePath} from '../../wailsjs/go/main/App.js';
+import {GetImagePath as getImagePath, GetLighthouseState as getLighthouseState,
+  LoadUserSettings as getUserSettings} from '../../wailsjs/go/main/App.js';
 import {openIssuePage} from './issue.js';
-import {saveProgress, shareProgress, selectSocialMedia} from './share.js';
+import {saveProgress, shareProgress, selectSocialMedia, setImage, socialMediaSizes} from './share.js';
 import data from '../databases/database.en-GB.json' assert { type: 'json' };
 import {showModal} from './settings.js';
 
@@ -14,22 +15,29 @@ let lighthousePath;
 /** Load the content of the Home page */
 export async function openHomePage() {
   // Load the video background path
-  switch (sessionStorage.getItem('state')) {
-  case '0':
-    lighthousePath = 'first-state.mkv';
+  const lighthouseState = await getLighthouseState();
+  switch (lighthouseState) {
+  case 0:
+    lighthousePath = 'state0.mkv';
     break;
-  case '1':
-    lighthousePath = 'almost-state.mkv';
+  case 1:
+    lighthousePath = 'state1.mkv';
     break;
-  case '2':
-    lighthousePath = 'final-state.mkv';
+  case 2:
+    lighthousePath = 'state2.mkv';
+    break;
+  case 3:
+    lighthousePath = 'state3.mkv';
+    break;
+  case 4:
+    lighthousePath = 'state4.mkv';
     break;
   default:
-    lighthousePath = 'first-state.mkv';
+    lighthousePath = 'state0.mkv';
   }
 
-  const lighthouseState = await getImagePath(lighthousePath);
-  logDebug('lighthouseState: ' + lighthouseState);
+  const lighthouseFullPath = await getImagePath('gamification/' + lighthousePath);
+  logDebug('lighthouseState: ' + lighthouseFullPath);
 
   retrieveTheme();
   closeNavigation(document.body.offsetWidth);
@@ -59,16 +67,23 @@ export async function openHomePage() {
         <a id="scan-now" class="issue-button lang-scan-now"></a>
         <a id="share-progress" class="issue-button lang-share-button"></a>
       </div>
-      <div class="data-segment">
+      <div id="progress-segment" class="data-segment">
         <div class="data-segment-header">
-          <p class="lang-lighthouse-progress"></p>
+          <p id="lighthouse-progress-header" class="lang-lighthouse-progress"></p>
+          <div id="lighthouse-progress-hoverbox">
+            <img id="lighthouse-progress-tooltip">
+            <p class="lighthouse-progress-tooltip-text lang-tooltip-text"></p>
+          </div>
         </div>
-        <div class="progress-container">
-        <div class="progress-bar" id="progress-bar"></div>
+        <div id="progress-bar-container" class="progress-container">
+          <div class="progress-bar" id="progress-bar"></div>
         </div>
-        <p id="progress-text"></p>
+        <p id="progress-percentage-text" class="gamification-text"></p>
+        <p id="progress-text" class="lang-progress-text gamification-text"></p>
+        <p id="progress-almost-text" class="lang-progress-almost-text gamification-text"></p></p>
+        <p id="progress-done-text" class="lang-progress-done-text gamification-text"</p>
       </div>
-    </div>
+    </div> 
   </div>
   <div id="share-modal" class="modal">
     <div class="modal-content">
@@ -76,8 +91,7 @@ export async function openHomePage() {
         <span id="close-share-modal" class="close">&times;</span>
         <p class="lang-share-text"></p>
       </div>
-      <div id="share-node" class="modal-body">
-        <img class="api-key-image" src="https://placehold.co/600x315" alt="Step 1 Image">
+      <div id="share-node" class="modal-body share-image">
       </div>
       <div id="share-buttons" class="modal-body">
         <a id="share-save-button" class="modal-button share-button lang-save-text"></a>
@@ -93,7 +107,10 @@ export async function openHomePage() {
   </div>
   `;
 
-  document.getElementById('lighthouse-background').src = lighthouseState;
+  document.getElementById('lighthouse-background').src = lighthouseFullPath;
+
+  const tooltip = await getImagePath('tooltip.png');
+  document.getElementById('lighthouse-progress-tooltip').src = tooltip;
 
   const rc = JSON.parse(sessionStorage.getItem('RiskCounters'));
   new PieChart('pie-chart-home', rc, 'Total');
@@ -103,25 +120,31 @@ export async function openHomePage() {
     'lang-piechart-header',
     'lang-suggested-issue',
     'lang-scan-now',
-    'lang-title-medals',
     'lang-choose-issue-description',
     'lang-share-button',
     'lang-share-text',
     'lang-save-text',
     'lang-share',
     'lang-lighthouse-progress',
+    'lang-tooltip-text',
+    'lang-progress-text',
+    'lang-progress-almost-text',
+    'lang-progress-done-text',
   ];
   const localizationIds = [
     'Dashboard.RiskLevelDistribution',
     'Dashboard.SuggestedIssue',
     'Dashboard.ScanNow',
-    'Dashboard.Medals',
     'Dashboard.ChooseIssueDescription',
     'Dashboard.ShareButton',
     'Dashboard.ShareText',
     'Dashboard.SaveText',
     'Dashboard.Share',
     'Dashboard.LighthouseProgress',
+    'Dashboard.TooltipText',
+    'Dashboard.ProgressText',
+    'Dashboard.ProgressTextAlmost',
+    'Dashboard.ProgressTextDone',
   ];
   for (let i = 0; i < staticHomePageContent.length; i++) {
     getLocalization(localizationIds[i], staticHomePageContent[i]);
@@ -140,21 +163,45 @@ export async function openHomePage() {
   document.getElementById('select-instagram').addEventListener('click', () => selectSocialMedia('instagram'));
 
   // Progress bar
-  document.addEventListener('DOMContentLoaded', () => {
-    const progressBar = document.getElementById('progress-bar');
-    const progressText = document.getElementById('progress-text');
+  const progressBar = document.getElementById('progress-bar');
+  const progressPercentageText = document.getElementById('progress-percentage-text');
+  const progressText = document.getElementById('progress-text');
+  const progressAlmostText = document.getElementById('progress-almost-text');
+  const progressDoneText = document.getElementById('progress-done-text');
 
-    // Assuming the points are stored in local storage under the key 'userPoints'
-    const userPoints = parseInt(localStorage.getItem('userPoints')) || 0;
-    const pointsToNextState = 100; // The points required to reach the next state
+  // Assuming the points are stored in local storage under the key 'userPoints'
+  const usersettings = await getUserSettings();
+  const userPoints = parseInt(usersettings.Points) || 50;
+  const pointsToNextState = 10; // The points required to reach the next state
+  let modResult = userPoints % pointsToNextState;
 
-    // Calculate the progress percentage
-    const progressPercentage = Math.min((userPoints / pointsToNextState) * 100, 100);
+  if (modResult === 0 && lighthouseState < 4) {
+    modResult = 0.1;
+  }
+  const progressPercentage = 100 - (modResult / 10 * 100);
 
-    // Update the progress bar width and text
-    progressBar.style.width = progressPercentage + '%';
-    progressText.textContent = `${userPoints} / ${pointsToNextState} (${progressPercentage.toFixed(2)}%)`;
-  });
+  // Update the progress bar width and text
+  if (lighthouseState === 4) {
+    progressBar.style.width = '100%';
+    progressText.style.visibility = 'hidden';
+    progressAlmostText.style.visibility= 'hidden';
+    progressDoneText.style.visibility = 'visible';
+  } else if (progressPercentage === 99) {
+    progressBar.style.width = '99%';
+    progressText.style.visibility = 'hidden';
+    progressAlmostText.style.visibility = 'vissible';
+    progressDoneText.style.visibility = 'hidden';
+  } else {
+    progressPercentageText.textContent = `${progressPercentage.toFixed(2)} %`;
+    progressBar.style.width = `${progressPercentage}%`;
+    progressText.style.visibility = 'visible';
+    progressAlmostText.style.visibility = 'hidden';
+    progressDoneText.style.visibility = 'hidden';
+  }
+
+  // on startup set the social media to share to facebook
+  sessionStorage.setItem('ShareSocial', JSON.stringify(socialMediaSizes['facebook']));
+  setImage(document.getElementById('share-node'), document.getElementById('progress-segment'));
 }
 
 /** Opens the issue page of the issue with the highest risk level
@@ -163,37 +210,57 @@ export async function openHomePage() {
 */
 export function suggestedIssue(type) {
   // Get the issues from the database
-  const issues = JSON.parse(sessionStorage.getItem('DataBaseData'));
+  const issues = JSON.parse(sessionStorage.getItem('ScanResult'));
 
   // Skip informative issues
   let issueIndex = 0;
-  let maxSeverityIssue = issues[issueIndex];
-  while (maxSeverityIssue.severity === 4) {
+  let maxSeverityIssue = issues[issueIndex].issue_id;
+  let maxSeverityResult = issues[issueIndex].result_id;
+  while (getSeverity(maxSeverityIssue, maxSeverityResult) === 4 ||
+        getSeverity(maxSeverityIssue, maxSeverityResult) === undefined) {
     issueIndex++;
-    maxSeverityIssue = issues[issueIndex];
+    maxSeverityIssue = issues[issueIndex].issue_id;
+    maxSeverityResult = issues[issueIndex].result_id;
   }
 
   // Find the issue with the highest severity
   for (let i = 0; i < issues.length; i++) {
-    if (maxSeverityIssue.severity < issues[i].severity && issues[i].severity !== 4) {
-      if (type == '' || data[issues[i].jsonkey].Type === type) {
-        maxSeverityIssue = issues[i];
+    const severity = getSeverity(issues[i].issue_id, issues[i].result_id);
+    if (getSeverity(maxSeverityIssue, maxSeverityResult) < severity &&
+      severity !== 4) {
+      if (type == '' || data[issues[i].issue_id].Type === type) {
+        maxSeverityIssue = issues[i].issue_id;
+        maxSeverityResult = issues[i].result_id;
       }
     }
   }
 
   // Open the issue page of the issue with the highest severity
-  openIssuePage(maxSeverityIssue.jsonkey, maxSeverityIssue.severity);
+  openIssuePage(maxSeverityIssue, maxSeverityResult, 'home');
   document.getElementById('scan-now').addEventListener('click', () => scanTest(true));
 }
 
+/**
+ * Gets the severity of an issue
+ * @param {string} issueId id of the issue
+ * @param {string} resultId result id of the issue
+ *
+ * @return {string} severity
+ */
+export function getSeverity(issueId, resultId) {
+  const issue = data[issueId];
+  if (issue == undefined) return undefined;
+  const issueData = issue[resultId];
+  if (issueData == undefined) return undefined;
+  return issueData.Severity;
+}
 
+/* istanbul ignore next */
 if (typeof document !== 'undefined') {
   try {
     document.getElementById('logo-button').addEventListener('click', () => openHomePage());
     document.getElementById('home-button').addEventListener('click', () => openHomePage());
   } catch (error) {
-    /* istanbul ignore next */
     logError('Error in security-dashboard.js: ' + error);
   }
 }
@@ -202,7 +269,6 @@ if (typeof document !== 'undefined') {
 window.onload = function() {
   const savedImage = localStorage.getItem('picture');
   const savedText = localStorage.getItem('title');
-  const savedIcon = localStorage.getItem('favicon');
   if (savedImage) {
     const logo = document.getElementById('logo');
     logo.src = savedImage;
@@ -210,10 +276,6 @@ window.onload = function() {
   if (savedText) {
     const title = document.getElementById('title');
     title.textContent = savedText;
-  }
-  if (savedIcon) {
-    const favicon = document.getElementById('favicon');
-    favicon.href = savedIcon;
   }
 };
 

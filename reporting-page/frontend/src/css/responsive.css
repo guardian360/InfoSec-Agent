@@ -5,24 +5,10 @@
   .container-home {
     flex: 1 1 100%; /* Full width on smaller screens */
   }
-  
-  .medals {
-    justify-content: center; /* Center medals on smaller screens */
-  }
-
-  .medal-layout {
-    flex: 0 0 50%; /* Two medals per row on smaller screens, no growth */
-  }
 
   .issue-button {
     padding: 8px 16px; /* Smaller padding on smaller screens */
     max-width: 90%;
-  }
-}
-
-@media (width <= 480px) {
-  .medal-layout {
-    flex: 0 0 100%; /* One medal per row on very small screens, no growth */
   }
 }
 

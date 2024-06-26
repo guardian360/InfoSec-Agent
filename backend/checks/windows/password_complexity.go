@@ -22,7 +22,7 @@ func PasswordLength(executor mocking.CommandExecutor) checks.Check {
 	passwordCommand := "net accounts"
 	output, err := executor.Execute("cmd", "/c", passwordCommand)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error executing password complexity command: ", err)
+		logger.Log.ErrorWithErr("Error executing password complexity command", err)
 		return checks.NewCheckError(checks.PasswordComplexityID, err)
 	}
 
@@ -37,7 +37,7 @@ func PasswordLength(executor mocking.CommandExecutor) checks.Check {
 	passwordLengthStr = strings.TrimSpace(passwordLengthStr)
 	passwordLength, err := strconv.Atoi(passwordLengthStr)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error parsing password length: ", err)
+		logger.Log.ErrorWithErr("Error parsing password length", err)
 		return checks.NewCheckError(checks.PasswordComplexityID, err)
 	}
 	if passwordLength < 15 {

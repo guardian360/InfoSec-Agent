@@ -9,7 +9,7 @@ import dataEs from '../src/databases/database.es.json' assert { type: 'json' };
 import dataFr from '../src/databases/database.fr.json' assert { type: 'json' };
 import dataNl from '../src/databases/database.nl.json' assert { type: 'json' };
 import dataPt from '../src/databases/database.pt.json' assert { type: 'json' };
-import {mockPageFunctions, clickEvent, storageMock} from './mock.js';
+import {mockPageFunctions, clickEvent, storageMock, scanResultMock} from './mock.js';
 
 global.TESTING = true;
 
@@ -25,8 +25,8 @@ global.window = dom.window;
  * @param {HTMLTableElement} table table to delete all rows from
  */
 function emptyTable(table) {
-  for (let i = 0; i < table.rows.length; i++) {
-    table.deleteRow(i);
+  while (table.rows.length > 0) {
+    table.deleteRow(0);
   }
 }
 
@@ -57,6 +57,8 @@ function mockGetLocalizationString(messageID) {
       myResolve('MediumRisk');
     case 'Dashboard.LowRisk':
       myResolve('LowRisk');
+    case 'Dashboard.Acceptable':
+      myResolve('Acceptable');
     case 'Dashboard.InfoRisk':
       myResolve('InfoRisk');
     case 'Dashboard.SelectRisks':
@@ -71,6 +73,8 @@ function mockGetLocalizationString(messageID) {
       myResolve('High');
     case 'Issues.Info':
       myResolve('Info');
+    case 'Issues.Failed':
+      myResolve('Failed');
     default:
       myReject(new Error('Wrong message ID'));
     }
@@ -98,13 +102,12 @@ describe('Issues table', function() {
     // Arrange
     const issue = await import('../src/js/issues.js');
     // Arrange input issues
-    let issues = [];
-    issues = [
-      {id: 5, severity: 1, jsonkey: 51},
-      {id: 15, severity: 0, jsonkey: 150},
-    ];
+    const issues = scanResultMock;
 
-    sessionStorage.setItem('DataBaseData', JSON.stringify(issues));
+    sessionStorage.setItem('ScanResult', JSON.stringify(issues));
+    sessionStorage.setItem('IssuesFilter', JSON.stringify(
+      {'high': 1, 'medium': 1, 'low': 1, 'acceptable': 1, 'info': 1},
+    ));
 
     // Act
     await issue.openIssuesPage();
@@ -113,24 +116,31 @@ describe('Issues table', function() {
     const type = document.getElementsByClassName('lang-type')[0].innerHTML;
     const risk = document.getElementsByClassName('lang-risk')[0].innerHTML;
 
+    const sorting = JSON.parse(sessionStorage.getItem('IssuesSorting'));
+
     // Assert
     test.value(name).isEqualTo('Name');
     test.value(type).isEqualTo('Type');
     test.value(risk).isEqualTo('Risk');
+    test.value(sorting.column).isEqualTo(2);
+    test.value(sorting.direction).isEqualTo('descending');
 
     // Make issues table empty
     const issueTable = document.getElementById('issues-table').querySelector('tbody');
     emptyTable(issueTable);
-    const nonIssueTable = document.getElementById('non-issues-table').querySelector('tbody');
-    emptyTable(nonIssueTable);
   });
   it('toRiskLevel should return the right risk level', async function() {
     // Arrange
     const issue = await import('../src/js/issues.js');
 
     // act
-    const risks = ['<td class="lang-acceptable"></td>', '<td class="lang-low"></td>',
-      '<td class="lang-medium"></td>', '<td class="lang-high"></td>', '<td class="lang-info"></td>'];
+    const risks = [
+      '<td><span class="table-risk-level lang-acceptable"></span></td>',
+      '<td><span class="table-risk-level lang-low"></span></td>',
+      '<td><span class="table-risk-level lang-medium"></span></td>',
+      '<td><span class="table-risk-level lang-high"></span></td>',
+      '<td><span class="table-risk-level lang-info"></span></td>',
+    ];
 
     // Assert
     risks.forEach((value, index) => {
@@ -139,71 +149,29 @@ describe('Issues table', function() {
   });
   it('fillTable should fill the issues table with information from the provided JSON array', async function() {
     // Arrange input issues
-    let issues = [];
-    issues = [
-      {id: 5, severity: 1, jsonkey: 51},
-      {id: 15, severity: 0, jsonkey: 150},
-    ];
-    // Arrange expected table data
-    const expectedData = [];
-    expectedData.push(data[issues[0].jsonkey]);
-    expectedData.push(data[issues[1].jsonkey]);
+    const result = scanResultMock;
+    sessionStorage.setItem('ScanResult', JSON.stringify(result));
+
+    const defaultSorting = {'column': 2, 'direction': 'ascending'};
+    sessionStorage.setItem('IssuesSorting', JSON.stringify(defaultSorting));
 
     const issue = await import('../src/js/issues.js');
+    const issues = await issue.getIssues();
 
     // Act
     const issueTable = document.getElementById('issues-table').querySelector('tbody');
-    issue.fillTable(issueTable, issues, true);
+    issue.fillTable(issueTable, issues);
 
-    const nonIssueTable = document.getElementById('non-issues-table').querySelector('tbody');
-    issue.fillTable(nonIssueTable, issues, false);
     // Assert
-    let row = issueTable.rows[0];
-    test.value(row.cells[0].textContent).isEqualTo(expectedData[0].Name);
-    test.value(row.cells[1].textContent).isEqualTo(expectedData[0].Type);
-    let temp;
-    if (issues[0].severity === 1) {
-      temp = 'Low';
-    }
-    test.value(row.cells[2].textContent).isEqualTo(temp);
-
-    row = nonIssueTable.rows[0];
-    test.value(row.cells[0].textContent).isEqualTo(expectedData[1].Name);
-    test.value(row.cells[1].textContent).isEqualTo(expectedData[1].Type);
+    const row = issueTable.rows[0];
+    test.value(row.cells[0].textContent).isEqualTo(issues[0].name);
+    test.value(row.cells[1].textContent).isEqualTo(issues[0].type);
+    test.value(row.cells[2].childNodes[0].classList.contains('lang-acceptable')).isTrue();
 
     // Make issues table empty
     emptyTable(issueTable);
-    emptyTable(nonIssueTable);
   });
-  it('fillTable should not fill the issues table if the data from the JSON array is incorrect', async function() {
-    // Arrange input issues
-    let issues = [];
-    issues = [
-      {id: 0, severity: 1, jsonkey: 55},
-      {id: 123, severity: 0, jsonkey: 1234},
-    ];
-
-    // Arrange expected table data
-    const expectedData = [];
-    expectedData.push(data[issues[0].jsonkey]);
-    expectedData.push(data[issues[1].jsonkey]);
-    const issue = await import('../src/js/issues.js');
-
-    // Act
-    const issueTable = document.getElementById('issues-table').querySelector('tbody');
-    emptyTable(issueTable);
-    issue.fillTable(issueTable, issues, true);
-    const nonIssueTable = document.getElementById('non-issues-table').querySelector('tbody');
-    emptyTable(nonIssueTable);
-    issue.fillTable(nonIssueTable, issues, false);
-
-    // Assert
-    let row = issueTable.rows[0];
-    test.value(row).isEqualTo(undefined);
-
-    row = nonIssueTable.rows[0];
-    test.value(row).isEqualTo(undefined);
-  }); it('sortTable should sort the issues table', async function() {
+  it('sortTable should sort the issues table', async function() {
     // Arrange table rows
     const table = dom.window.document.getElementById('issues-table');
     const tbody = table.querySelector('tbody');
@@ -233,7 +201,7 @@ describe('Issues table', function() {
     // Assert
     let sortedRows = Array.from(tbody.rows);
     const sortedNames = sortedRows.map((row) => row.cells[0].textContent);
-    test.array(sortedNames).is(['Camera and microphone access', 'Firewall settings', 'Windows defender']);
+    test.array(sortedNames).is(['Windows defender', 'Firewall settings', 'Camera and microphone access']);
 
     // Act - sort by issue name (first column) again to sort descending
     document.getElementById('sort-on-issue').dispatchEvent(clickEvent);
@@ -241,7 +209,7 @@ describe('Issues table', function() {
     // Assert
     let sortedRowsDescending = Array.from(tbody.rows);
     const sortedNamesDescending = sortedRowsDescending.map((row) => row.cells[0].textContent);
-    test.array(sortedNamesDescending).is(['Windows defender', 'Firewall settings', 'Camera and microphone access']);
+    test.array(sortedNamesDescending).is(['Camera and microphone access', 'Firewall settings', 'Windows defender']);
 
     // Act - sort by type (second column)
     document.getElementById('sort-on-type').dispatchEvent(clickEvent);
@@ -249,7 +217,7 @@ describe('Issues table', function() {
     // Assert
     sortedRows = Array.from(tbody.rows);
     const sortedTypes = sortedRows.map((row) => row.cells[1].textContent);
-    test.array(sortedTypes).is(['Privacy', 'Security', 'Security']);
+    test.array(sortedTypes).is(['Security', 'Security', 'Privacy']);
 
     // Act - sort by type (second column) again to sort descending
     document.getElementById('sort-on-type').dispatchEvent(clickEvent);
@@ -257,7 +225,7 @@ describe('Issues table', function() {
     // Assert
     sortedRowsDescending = Array.from(tbody.rows);
     const sortedTypesDescending = sortedRowsDescending.map((row) => row.cells[1].textContent);
-    test.array(sortedTypesDescending).is(['Security', 'Security', 'Privacy']);
+    test.array(sortedTypesDescending).is(['Privacy', 'Security', 'Security']);
 
     // Act - sort by severity (third column)
     document.getElementById('sort-on-risk').dispatchEvent(clickEvent);
@@ -275,81 +243,18 @@ describe('Issues table', function() {
     const sortedRisksDescending = sortedRowsDescending.map((row) => row.cells[2].textContent);
     test.array(sortedRisksDescending).is(['Low', 'Medium', 'High']);
   });
-
-  it('sortTable should sort the non-issues table', async function() {
-    // Arrange table rows
-    const table = dom.window.document.getElementById('non-issues-table');
-    const tbody = table.querySelector('tbody');
-    tbody.innerHTML = `
-      <tr>
-        <td>Windows defender</td>
-        <td>Security</td>
-        <td>High</td>
-      </tr>
-      <tr>
-        <td>Camera and microphone access</td>
-        <td>Privacy</td>
-        <td>Low</td>
-      </tr>
-      <tr>
-        <td>Firewall settings</td>
-        <td>Security</td>
-        <td>Medium</td>
-      </tr>
-    `;
-
-    await import('../src/js/issues.js');
-
-    // Act
-    document.getElementById('sort-on-issue2').dispatchEvent(clickEvent);
-
-    // Assert
-    let sortedRows = Array.from(tbody.rows);
-    const sortedNames = sortedRows.map((row) => row.cells[0].textContent);
-    test.array(sortedNames).is(['Camera and microphone access', 'Firewall settings', 'Windows defender']);
-
-    // Act
-    document.getElementById('sort-on-issue2').dispatchEvent(clickEvent);
-
-    // Assert
-    let sortedRowsDescending = Array.from(tbody.rows);
-    const sortedNamesDescending = sortedRowsDescending.map((row) => row.cells[0].textContent);
-    test.array(sortedNamesDescending).is(['Windows defender', 'Firewall settings', 'Camera and microphone access']);
-
-    // Act
-    document.getElementById('sort-on-type2').dispatchEvent(clickEvent);
-
-    // Assert
-    sortedRows = Array.from(tbody.rows);
-    const sortedTypes = sortedRows.map((row) => row.cells[1].textContent);
-    test.array(sortedTypes).is(['Privacy', 'Security', 'Security']);
-
-    // Act
-    document.getElementById('sort-on-type2').dispatchEvent(clickEvent);
-
-    // Assert
-    sortedRowsDescending = Array.from(tbody.rows);
-    const sortedTypesDescending = sortedRowsDescending.map((row) => row.cells[1].textContent);
-    test.array(sortedTypesDescending).is(['Security', 'Security', 'Privacy']);
-  });
   it('changeTable should update the table with selected risks', async function() {
     // Arrange
     const issue = await import('../src/js/issues.js');
 
     // Arrange input issues
-    let issues = [];
-    issues = [
-      {id: 5, severity: 1, jsonkey: 51},
-      {id: 16, severity: 2, jsonkey: 160},
-      {id: 18, severity: 3, jsonkey: 182},
-      {id: 6, severity: 4, jsonkey: 60},
-    ];
+    const issues = scanResultMock;
     // Arrange expected table data
     const expectedData = [];
     issues.forEach((issue) => {
       expectedData.push(data[issue.jsonkey]);
     });
-    sessionStorage.setItem('DataBaseData', JSON.stringify(issues));
+    sessionStorage.setItem('ScanResult', JSON.stringify(issues));
 
     const ids = [
       'select-low-risk-table',
@@ -386,7 +291,7 @@ describe('Issues table', function() {
 
     // Assert
     issueLinks.forEach((link) => {
-      link.dispatchEvent(clickEvent);
+      link.parentElement.dispatchEvent(clickEvent);
       expect(openIssuePageMock).toHaveBeenCalled();
     });
   });
@@ -408,7 +313,33 @@ describe('Issues table', function() {
     // Arrange
     expect(myDropdownTable.classList.contains('show')).toBe(false);
   });
+  it('should show when a check has failed', async function() {
+    // make sure filters are on
+    const filters = {high: 1, medium: 1, low: 1, acceptable: 1, info: 1};
+    sessionStorage.setItem('IssuesFilter', JSON.stringify(filters));
+
+    // Arrange input issues
+    const result = [{issue_id: 1, result_id: -1, result: []}];
+    sessionStorage.setItem('ScanResult', JSON.stringify(result));
+
+    const issue = await import('../src/js/issues.js');
+    const issues = await issue.getIssues();
+
+    // Act
+    const issueTable = document.getElementById('issues-table').querySelector('tbody');
+    issue.fillTable(issueTable, issues);
+
+    // Assert
+    const row = issueTable.rows[0];
+    test.value(row.cells[0].textContent).isEqualTo(issues[0].name);
+    test.value(row.cells[1].textContent).isEqualTo(issues[0].type);
+    test.value(row.cells[0].classList.contains('issue-check-failed')).isTrue();
+  });
   it('should use the correct data object based on user language settings', async () => {
+    // make sure filters are on
+    const filters = {high: 1, medium: 1, low: 1, acceptable: 1, info: 1};
+    sessionStorage.setItem('IssuesFilter', JSON.stringify(filters));
+
     // Define the language settings and the corresponding expected data
     const languageSettings = [
       {language: 0, expectedData: dataDe},
@@ -425,19 +356,23 @@ describe('Issues table', function() {
     for (const {language, expectedData} of languageSettings) {
       loadUserSettingsMock.mockResolvedValueOnce({Language: language});
       // Prepare the issues array
-      const issues = [
-        {id: 1, severity: 1, jsonkey: 51}, // assuming 51 exists in all datasets
+      const data = [
+        {issue_id: 5, result_id: 1, result: []}, // assuming 51 exists in all datasets
       ];
+
+      sessionStorage.setItem('ScanResult', JSON.stringify(data));
+      const {getIssues} = await import('../src/js/issues.js');
+      const issues = await getIssues();
 
       // Act
       const {fillTable} = await import('../src/js/issues.js');
       const issueTable = document.createElement('tbody');
-      await fillTable(issueTable, issues, true);
+      fillTable(issueTable, issues);
 
       // Assert
       const row = issueTable.rows[0];
-      const currentIssue = expectedData[issues[0].jsonkey];
-      test.value(row.cells[0].textContent).isEqualTo(currentIssue.Name);
+      const currentIssue = expectedData[issues[0].issue_id];
+      test.value(row.cells[0].textContent).isEqualTo(currentIssue[issues[0].result_id].Name);
       test.value(row.cells[1].textContent).isEqualTo(currentIssue.Type);
     }
   });

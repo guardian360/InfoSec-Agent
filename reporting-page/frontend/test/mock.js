@@ -36,6 +36,19 @@ export function mockGetLocalization(messageID) {
   return myPromise;
 }
 
+/** Mock of getImagePath function with no functionality
+ *
+ * @param {string} path - The path of the image to be loaded.
+ * @return {string} The full path of the image.
+ */
+export function mockGetImagePath(path) {
+  const myPromise = new Promise(function(myResolve, myReject) {
+    if (path !== '') myResolve('frontend/src/assets/images/' + path);
+    else myReject(new Error('error'));
+  });
+  return myPromise;
+}
+
 /** Mock of changeLanguage function with no functionality
  *
  * @param {bool} bool if set to false will result in error from promise
@@ -75,24 +88,6 @@ export function mockScanNowGo(bool) {
   return myPromise;
 }
 
-/** Mock of getDataBaseData function
- *
- * @param {Issue[]} input if set to false will result in error from promise
- * @return {DataBaseData[]} a promise with mocked database results as a value
- */
-export function mockGetDataBaseData(input) {
-  const databaseList = [];
-  for (let i = 0; i < input.length; i++) {
-    databaseList.push({
-      id: input[i].issue_id,
-      severity: i,
-      jsonkey: parseInt(input[i].issue_id.toString()+input[i].result_id.toString()),
-    });
-  }
-
-  return databaseList;
-}
-
 // Scan result mock
 export const scanResultMock = [
   { // Privacy, level 0
@@ -101,13 +96,13 @@ export const scanResultMock = [
     result: [],
   },
   { // Security, level 1
-    issue_id: 3,
-    result_id: 0,
+    issue_id: 5,
+    result_id: 1,
     result: [],
   },
   { // Security, level 2
     issue_id: 4,
-    result_id: 0,
+    result_id: 1,
     result: [],
   },
   { // Security, level 3
@@ -241,17 +236,22 @@ export function mockOpenPageFunctions() {
   // Mock openIssuePage
   jest.unstable_mockModule('../src/js/issue.js', () => ({
     openIssuePage: jest.fn(),
-  }));
-
-  // Mock openIssuesPage
-  jest.unstable_mockModule('../src/js/issue.js', () => ({
-    openIssuePage: jest.fn(),
     scrollToElement: jest.fn(),
   }));
 
   // Mock openIssuesPage
   jest.unstable_mockModule('../src/js/issues.js', () => ({
     openIssuesPage: jest.fn(),
+  }));
+
+  // Mock openProgramsPage
+  jest.unstable_mockModule('../src/js/programs.js', () => ({
+    openProgramsPage: jest.fn(),
+  }));
+
+  // Mock openAllChecks
+  jest.unstable_mockModule('../src/js/all-checks.js', () => ({
+    openAllChecksPage: jest.fn(),
   }));
 
   // Mock openIntegrationPage
@@ -268,6 +268,11 @@ export function mockOpenPageFunctions() {
   jest.unstable_mockModule('../src/js/personalize.js', () => ({
     openPersonalizePage: jest.fn(),
     retrieveTheme: jest.fn(),
+  }));
+
+  // Mock openAllChecksPage
+  jest.unstable_mockModule('../src/js/all-checks.js', () => ({
+    openAllChecksPage: jest.fn(),
   }));
 }
 

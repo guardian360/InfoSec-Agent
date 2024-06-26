@@ -2,36 +2,13 @@ package programs_test
 
 import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks/programs"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/mocking"
 	"github.com/stretchr/testify/require"
 	"testing"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 	"github.com/stretchr/testify/mock"
 )
-
-// MockProgramLister is a mock implementation of the ProgramLister interface used for testing.
-// It provides a controlled environment to simulate the behavior of the real ProgramLister,
-// allowing us to test how our code interacts with the ProgramLister interface.
-// This is particularly useful for testing the PasswordManager function, as it allows us to
-// simulate different scenarios of installed programs on a system.
-type MockProgramLister struct {
-	mock.Mock
-}
-
-// ListInstalledPrograms is a method of the MockProgramLister struct that simulates the behavior of the real ProgramLister's ListInstalledPrograms method.
-//
-// Parameters:
-//   - directory (string): The path of the directory to list the installed programs from.
-//
-// Returns:
-//   - []string: A slice of strings representing the names of installed programs.
-//   - error: An error object that describes the error, if any occurred.
-//
-// This method is used in tests to control the output of the ListInstalledPrograms method, allowing us to simulate different scenarios of installed programs on a system. It returns the values provided when the method is mocked in the test.
-func (m *MockProgramLister) ListInstalledPrograms(directory string) ([]string, error) {
-	args := m.Called(directory)
-	return args.Get(0).([]string), args.Error(1)
-}
 
 // TestPasswordManager is a test function for the PasswordManager function.
 //
@@ -61,7 +38,7 @@ func TestPasswordManager(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			mockLister := new(MockProgramLister)
+			mockLister := new(mocking.MockProgramLister)
 			mockLister.On("ListInstalledPrograms", mock.Anything).Return(tt.mockPrograms, nil)
 
 			result := programs.PasswordManager(mockLister)
@@ -94,11 +71,21 @@ func TestListInstalledPrograms(t *testing.T) {
 			directory: "C:\\Program Files",
 			want:      []string{},
 		},
+		{
+			name:      "With Programs86",
+			directory: "C:\\Program Files (x86)",
+			want:      []string{"Program1", "Program2"},
+		},
+		{
+			name:      "No Programs86",
+			directory: "C:\\Program Files (x86)",
+			want:      []string{},
+		},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			mockLister := new(MockProgramLister)
+			mockLister := new(mocking.MockProgramLister)
 			mockLister.On("ListInstalledPrograms", mock.Anything).Return(tt.want, nil)
 
 			result, err := mockLister.ListInstalledPrograms(tt.directory)

@@ -1,15 +1,14 @@
 package database_test
 
 import (
-	"database/sql"
+	"errors"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/database"
+	"github.com/stretchr/testify/require"
 	"os"
 	"testing"
 
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/database"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/scan"
-	"github.com/stretchr/testify/require"
 )
 
 // TestMain sets up the necessary environment for the system scan package tests and executes them.
@@ -28,172 +27,137 @@ func TestMain(m *testing.M) {
 	os.Exit(exitCode)
 }
 
-// TestGetSeverity tests the GetSeverity function to ensure it returns the correct severity level for a given issue ID and result ID pair.
-//
-// This test function creates a new SQLite database connection and calls the GetSeverity function with known issue IDs and result IDs.
-// It then asserts that the returned severity level matches the expected value for each issue ID and result ID pair.
-//
-// Parameters:
-//   - t *testing.T: The testing framework used for assertions.
-//
-// No return values.
-func TestGetSeverity(t *testing.T) {
-	// Arrange database connection
-	db, err := sql.Open("sqlite", "../../reporting-page/database.db")
-	if err != nil {
-		t.Errorf("Error occurred: %v", err)
-	}
-
-	// Test for valid issue ID and result ID
-	severity, err := database.GetSeverity(db, 1, 1)
-	require.NoError(t, err)
-	require.Equal(t, 4, severity)
-
-	// Test for invalid issue ID and result ID
-	_, err = database.GetSeverity(db, 0, 0)
-	require.Error(t, err)
-	require.Equal(t, sql.ErrNoRows.Error(), err.Error())
-}
-
-// TestGetJSONKey tests the GetJSONKey function to ensure it returns the correct JSON key for a given issue ID and result ID pair.
-//
-// This test function creates a new SQLite database connection and calls the GetJSONKey function with known issue IDs and result IDs.
-// It then asserts that the returned JSON key matches the expected value for each issue ID and result ID pair.
-//
-// Parameters:
-//   - t *testing.T: The testing framework used for assertions.
-//
-// No return values.
-func TestGetJSONKey(t *testing.T) {
-	// Arrange database connection
-	db, err := sql.Open("sqlite", "../../reporting-page/database.db")
-	if err != nil {
-		t.Errorf("Error occurred: %v", err)
-	}
-
-	// Test for valid issue ID and result ID
-	jsonKey, err := database.GetJSONKey(db, 1, 1)
-	require.NoError(t, err)
-	require.Equal(t, 11, jsonKey)
-
-	// Test for invalid issue ID and result ID
-	_, err = database.GetSeverity(db, 0, 0)
-	require.Error(t, err)
-	require.Equal(t, sql.ErrNoRows.Error(), err.Error())
-}
-
-// TestGetData tests the GetData function to ensure it returns the correct database data for a given list of checks.
-//
-// This test function creates a list of check results and calls the GetData function.
-// It then asserts that the returned database data matches the expected data for the given checks.
-//
-// Parameters:
-//   - t *testing.T: The testing framework used for assertions.
-//
-// No return values.
 func TestGetData(t *testing.T) {
-	scanResult := []checks.Check{
+	// Create a slice of checks.Check with IssueID and ResultID that exist in your JSON data
+	scanResults := []checks.Check{
 		{
-			IssueID:  1,
+			IssueID:  29,
+			ResultID: 1, // severity 2
+		},
+		{
+			IssueID:  5,
+			ResultID: 1, // severity 1
+		},
+	}
+
+	// Provide a valid JSON file path
+	validJSONFilePath := "../../reporting-page/frontend/src/databases/database.en-GB.json"
+
+	// Call PointCalculation method
+	got, _ := database.GetData(validJSONFilePath, scanResults)
+
+	// Create a slice of Data with the expected values
+	expected := []database.Data{
+		{IssueID: 29, Severity: 2},
+		{IssueID: 5, Severity: 1},
+	}
+
+	// Assert that the points are calculated correctly
+	require.Equal(t, expected, got)
+}
+
+func TestGetData_ReadFileError(t *testing.T) {
+	scanResults := []checks.Check{}
+	invalidJSONFilePath := "../../invalid.json"
+
+	_, err := database.GetData(invalidJSONFilePath, scanResults)
+
+	require.Error(t, err)
+}
+
+func TestGetData_ResultError(t *testing.T) {
+	// Create a slice of checks.Check with an error
+	scanResults := []checks.Check{
+		{
+			IssueID:  29,
+			ResultID: -1, // severity 2
+			Error:    errors.New("mock error"),
+		},
+	}
+
+	// Provide a valid JSON file path
+	validJSONFilePath := "../../reporting-page/frontend/src/databases/database.en-GB.json"
+
+	// Call PointCalculation method
+	got, _ := database.GetData(validJSONFilePath, scanResults)
+
+	var dataList []database.Data
+	// Assert that the points remain the same as the initial GameState
+	require.Equal(t, dataList, got)
+}
+
+func TestGetData_IssueIDNotFound(t *testing.T) {
+	// Create a slice of checks.Check with an IssueID that does not exist in your JSON data
+	scanResults := []checks.Check{
+		{
+			IssueID:  9999, // This IssueID does not exist in the JSON data
 			ResultID: 1,
-			Result:   []string{"Issue 1"},
-			Error:    nil,
-			ErrorMSG: "",
 		},
-	}
-	expectedData := []database.Data{
 		{
-			CheckID:  1,
-			Severity: 4,
-			JSONKey:  11,
+			IssueID:  5,
+			ResultID: 22,
 		},
-	}
-	emptyScanResult := []checks.Check{}
-	emptyExpectedData := []database.Data{}
-	invalidScanResult := []checks.Check{
-		{
-			IssueID:  0,
-			ResultID: 0,
-			Result:   []string{"Issue 0"},
-			Error:    nil,
-			ErrorMSG: "",
-		},
-	}
-	invalidExpectedData := []database.Data{
-		{
-			CheckID:  0,
-			Severity: 0,
-			JSONKey:  0,
-		},
-	}
-	wrongPathExpectedData := []database.Data{
-		{
-			CheckID:  1,
-			Severity: 0,
-			JSONKey:  0,
-		},
-	}
-	testCases := []struct {
-		scanResult   []checks.Check
-		expectedData []database.Data
-	}{
-		{scanResult, expectedData},
-		{emptyScanResult, emptyExpectedData},
-		{invalidScanResult, invalidExpectedData},
 	}
 
-	for _, tc := range testCases {
-		data, err := database.GetData(tc.scanResult, "../../reporting-page/database.db")
-		if err != nil {
-			t.Errorf("Error occurred: %v", err)
-		}
-		require.Equal(t, tc.expectedData, data)
-		require.Equal(t, tc.expectedData, data)
-	}
+	// Provide a valid JSON file path
+	validJSONFilePath := "../../reporting-page/frontend/src/databases/database.en-GB.json"
 
-	// Test for invalid database path
-	result, _ := database.GetData(scanResult, "")
-	require.Equal(t, wrongPathExpectedData, result)
+	// Call PointCalculation method
+	got, _ := database.GetData(validJSONFilePath, scanResults)
+	var dataList []database.Data
+	// Assert that the points remain the same as the initial GameState
+	require.Equal(t, dataList, got)
 }
 
-// TestDirectoryExists tests the DirectoryExists function to ensure it correctly identifies whether a directory exists.
-//
-// This test function calls the DirectoryExists function with a path to an existing directory and asserts that the function returns true.
-// It also tests the function with a path to a non-existing directory and asserts that the function returns false.
-//
-// Parameters:
-//   - t *testing.T: The testing framework used for assertions.
-//
-// No return values.
-func TestDirectoryExists(t *testing.T) {
-	// Test for existing directory
-	exists := scan.DirectoryExists("../../reporting-page")
-	require.True(t, exists)
+func TestGetData_SeverityNotFound(t *testing.T) {
+	// Create a slice of checks.Check with an IssueID and ResultID that do not exist in your JSON data
+	scanResults := []checks.Check{
+		{
+			IssueID:  9999, // This IssueID does not exist in the JSON data
+			ResultID: 9999, // This ResultID does not exist in the JSON data
+		},
+	}
 
-	// Test for non-existing directory
-	exists = scan.DirectoryExists("non-existing-directory")
-	require.False(t, exists)
-}
-
-// TestGeneratePath tests the GeneratePath function to ensure it correctly generates the path.
-//
-// This test function calls the GeneratePath function with a given path and asserts that the returned path matches the expected value.
-// It also tests the function with an empty string and asserts that the returned path is the current user's home directory.
-//
-// Parameters:
-//   - t *testing.T: The testing framework used for assertions.
-//
-// No return values.
-func TestGeneratePath(t *testing.T) {
-	// Test for valid generated path
-	path := scan.GeneratePath("\\test")
-	currHomeDir, err := os.UserHomeDir()
+	// Create a temporary file
+	tmpfile, err := os.CreateTemp("", "example.*.json")
 	if err != nil {
-		t.Errorf("Test failed: error getting user home directory: %v", err)
+		t.Fatal(err)
 	}
-	require.Equal(t, currHomeDir+"\\test", path)
+	defer os.Remove(tmpfile.Name()) // clean up
 
-	// Test that given no path, it returns the path to the current user's home directory
-	path = scan.GeneratePath("")
-	require.Equal(t, currHomeDir, path)
+	// Write some JSON data to the file
+	text := `{"9999": {"9999": {}}}`
+	if _, fileErr := tmpfile.WriteString(text); fileErr != nil {
+		tmpfile.Close()
+		t.Fatal(fileErr)
+	}
+	if closeErr := tmpfile.Close(); closeErr != nil {
+		t.Fatal(closeErr)
+	}
+
+	// Call PointCalculation method
+	got, _ := database.GetData(tmpfile.Name(), scanResults)
+
+	var dataList []database.Data
+	// Assert that the points remain the same as the initial GameState
+	require.Equal(t, dataList, got)
+}
+
+func TestGetData_UnMarshall(t *testing.T) {
+	// Create a temporary file
+	tempFile, err := os.CreateTemp("", "test.json")
+	require.NoError(t, err)
+	defer os.Remove(tempFile.Name())
+
+	// Write invalid JSON content to the file
+	_, err = tempFile.WriteString("invalid json content")
+	require.NoError(t, err)
+	err = tempFile.Close()
+	require.NoError(t, err)
+
+	// Call the GetData function with the temporary file
+	_, err = database.GetData(tempFile.Name(), []checks.Check{})
+
+	// Assert that an error was returned
+	require.Error(t, err)
 }

@@ -40,6 +40,8 @@ type MockWindowsVersion struct {
 //   - MinorVersion: Simulates the minor version of the Windows OS.
 //   - BuildNumber: Simulates the build number of the Windows OS.
 //
+// Parameters: None.
+//
 // Returns:
 //   - *windows.OsVersionInfoEx: A pointer to an OsVersionInfoEx object that contains the custom Windows version information.
 func (m *MockWindowsVersion) RtlGetVersion() *windows.OsVersionInfoEx {
@@ -62,6 +64,8 @@ type RealWindowsVersion struct {
 //   - MajorVersion: The major version of the Windows OS.
 //   - MinorVersion: The minor version of the Windows OS.
 //   - BuildNumber: The build number of the Windows OS.
+//
+// Parameters: None.
 //
 // Returns:
 //   - *windows.OsVersionInfoEx: A pointer to an OsVersionInfoEx object that contains the actual Windows version information.

@@ -11,29 +11,30 @@ import (
 	"time"
 
 	apiconnection "github.com/InfoSec-Agent/InfoSec-Agent/backend/api_connection"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/localization"
-
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/usersettings"
 
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/ncruces/zenity"
 )
 
 // Scan executes all security/privacy checks, serializes the results to JSON, and returns a list of all found issues.
-//
-// Parameters:
-//   - dialog (zenity.ProgressDialog): A dialog window that displays the progress of the scan as it runs.
 //
 // This function performs the following operations:
 //  1. Iterates over each check, displaying the currently running check in the progress dialog and executing the check.
 //  2. Appends the result of each check to the checkResults slice.
 //  3. Serializes the checkResults slice to JSON and logs the JSON data.
 //
+// Parameters:
+//   - dialog (zenity.ProgressDialog): A dialog window that displays the progress of the scan as it runs.
+//
 // Returns:
 //   - []checks.Check: A slice of Check objects representing all found issues.
 //   - error: An error object that describes the error (if any) that occurred while running the checks or serializing the results to JSON. If no error occurred, this value is nil.
 func Scan(dialog zenity.ProgressDialog, language int) ([]checks.Check, error) {
+	logger.Log.Trace("Running scan")
+
 	dialogPresent := false
 	if dialog != nil {
 		dialogPresent = true
@@ -48,8 +49,15 @@ func Scan(dialog zenity.ProgressDialog, language int) ([]checks.Check, error) {
 
 	// Define a channel which serves as a queue for the checks to be executed
 	checksChan := make(chan func() checks.Check, totalChecks)
+
+	// Iterate over all checks and add them to the channel
+	for _, check := range ChecksList {
+		checksChan <- check
+	}
+
 	// Determine the amount of workers to use for concurrent execution of the checks based on the amount of available logical cores
 	workerAmount := runtime.NumCPU()
+
 	// Define a WaitGroup and a Mutex to synchronize the concurrent execution of the checks
 	// The WaitGroup is used to wait for all checks to complete before returning the results
 	// The Mutex is used to synchronize access to the checkResults slice and the progress dialog
@@ -59,13 +67,9 @@ func Scan(dialog zenity.ProgressDialog, language int) ([]checks.Check, error) {
 
 	var checkResults []checks.Check
 
-	// Iterate over all checks and add them to the channel
-	for _, check := range ChecksList {
-		checksChan <- check
-	}
-
 	// Start the workers to execute the checks concurrently
 	// Each worker can access the channel and take work from it while it is not closed / there are still checks to execute
+	logger.Log.Trace("Starting workers")
 	startWorkers(workerAmount, &wg, checksChan, &mu, &checkResults, dialogPresent, &counter, totalChecks, dialog, language)
 
 	close(checksChan)
@@ -74,16 +78,16 @@ func Scan(dialog zenity.ProgressDialog, language int) ([]checks.Check, error) {
 	wg.Wait()
 
 	// Serialize check results to JSON
+	logger.Log.Trace("Serializing scan results to JSON")
 	jsonData, err := json.MarshalIndent(checkResults, "", "  ")
 	if err != nil {
-		logger.Log.ErrorWithErr("Error marshalling JSON:", err)
+		logger.Log.ErrorWithErr("Error marshalling JSON", err)
 		return checkResults, err
 	}
-	logger.Log.Info(string(jsonData))
+	logger.Log.Debug(string(jsonData))
 
-	// TODO: Set usersettings.Integration to true depending on whether user has connected with the API
-	if usersettings.LoadUserSettings().Integration {
-		apiconnection.ParseScanResults(apiconnection.Metadata{WorkStationID: workStationID, User: user, Date: date}, checkResults)
+	if usersettings.LoadUserSettings().IntegrationKey != "" {
+		apiconnection.SendResultsToAPI(apiconnection.ParseScanResults(apiconnection.Metadata{WorkStationID: workStationID, User: user, Date: date}, checkResults))
 	}
 	return checkResults, nil
 }
@@ -116,7 +120,7 @@ func startWorkers(workerAmount int, wg *sync.WaitGroup, checksChan chan func() c
 				if dialogPresent {
 					err := dialog.Text(fmt.Sprintf(localization.Localize(language, "Dialogs.Scan.Content"), *counter, totalChecks))
 					if err != nil {
-						logger.Log.ErrorWithErr("Error setting progress text:", err)
+						logger.Log.ErrorWithErr("Error setting progress text", err)
 						mu.Unlock()
 						return
 					}
@@ -124,7 +128,7 @@ func startWorkers(workerAmount int, wg *sync.WaitGroup, checksChan chan func() c
 					*counter++
 					err = dialog.Value(int(progress))
 					if err != nil {
-						logger.Log.ErrorWithErr("Error setting progress value:", err)
+						logger.Log.ErrorWithErr("Error setting progress value", err)
 						mu.Unlock()
 						return
 					}

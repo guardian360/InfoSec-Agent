@@ -15,6 +15,7 @@ import (
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
 )
 
+// OpenFileFunc is a variable that holds the function used to open a file.
 var OpenFileFunc = os.Open
 
 // SearchEngineChromium inspects the default search engine setting in Chromium-based browsers.
@@ -36,7 +37,7 @@ func SearchEngineChromium(browser string, mockBool bool, mockFile mocking.File, 
 
 	preferencesDir, err := getter.GetDefaultDir(browserPath)
 	if err != nil {
-		return checks.NewCheckErrorf(returnID, "Error: ", err)
+		return checks.NewCheckErrorf(returnID, "error getting preferences directory", err)
 	}
 	var dev map[string]interface{}
 	var file mocking.File
@@ -44,7 +45,7 @@ func SearchEngineChromium(browser string, mockBool bool, mockFile mocking.File, 
 	if !mockBool {
 		tmpfile, openErr := os.Open(preferencesDir + "/Preferences")
 		if openErr != nil {
-			return checks.NewCheckErrorf(returnID, "Error: ", err)
+			return checks.NewCheckErrorf(returnID, "error opening preferences directory", err)
 		}
 		file = mocking.Wrap(tmpfile)
 		defer func(file mocking.File) {
@@ -59,7 +60,7 @@ func SearchEngineChromium(browser string, mockBool bool, mockFile mocking.File, 
 
 	dev, err = ParsePreferencesFile(file)
 	if err != nil {
-		return checks.NewCheckErrorf(returnID, "Error: ", err)
+		return checks.NewCheckErrorf(returnID, "error parsing preferences directory", err)
 	}
 
 	defaultSE = GetDefaultSearchEngine(dev, defaultSE)

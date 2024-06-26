@@ -1,7 +1,5 @@
 // Package browsers provides utility functions for handling browser-related operations.
 // These functions are used in the context of performing security checks on a system.
-//
-// Exported function(s): CloseFile, FirefoxFolder, GetPhishingDomains, CopyFile
 package browsers
 
 import (
@@ -14,6 +12,7 @@ import (
 	"os"
 	"os/user"
 	"path/filepath"
+	"strconv"
 	"strings"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
@@ -44,18 +43,18 @@ var UserHomeDirFunc = os.UserHomeDir
 func CloseFile(file mocking.File) error {
 	err := file.Close()
 	if err != nil {
-		logger.Log.ErrorWithErr("Error closing file: %s", err)
+		logger.Log.ErrorWithErr("Error closing file", err)
 		return err
 	}
 	return nil
 }
 
-// FirefoxProfileFinder is an interface that wraps the FirefoxFolder method
+// FirefoxProfileFinder is an interface that wraps the FirefoxFolder method for finding Firefox profile folders.
 type FirefoxProfileFinder interface {
 	FirefoxFolder() ([]string, error)
 }
 
-// RealProfileFinder is a struct that implements the FirefoxProfileFinder interface
+// RealProfileFinder is a struct that implements the FirefoxProfileFinder interface.
 type RealProfileFinder struct{}
 
 // FirefoxFolder retrieves the paths to all Firefox profile folders for the currently logged-in user.
@@ -64,6 +63,8 @@ type RealProfileFinder struct{}
 // It then reads the directory and filters out all non-directory files. For each directory, it checks if a 'logins.json' file exists.
 // If such a file exists, the directory is considered a Firefox profile folder and its path is added to the returned list.
 //
+// Parameters: None.
+//
 // Returns:
 //   - []string: A slice containing the paths to all Firefox profile folders. If no profile folders are found or an error occurs, an empty slice is returned.
 //   - error: An error object that wraps any error that occurs during the retrieval of the Firefox profile folders. If the folders are retrieved successfully, it returns nil.
@@ -71,7 +72,7 @@ func (r RealProfileFinder) FirefoxFolder() ([]string, error) {
 	// Get the current user
 	currentUser, err := user.Current()
 	if err != nil {
-		logger.Log.ErrorWithErr("Error getting current user:", err)
+		logger.Log.ErrorWithErr("Error getting current user", err)
 		return nil, err
 	}
 	// Specify the path to the firefox profile directory
@@ -79,20 +80,20 @@ func (r RealProfileFinder) FirefoxFolder() ([]string, error) {
 
 	dir, err := os.Open(filepath.Clean(profilesDir))
 	if err != nil {
-		logger.Log.ErrorWithErr("Error getting profiles directory:", err)
+		logger.Log.ErrorWithErr("Error getting profiles directory", err)
 		return nil, err
 	}
 	defer func(dir *os.File) {
 		err = dir.Close()
 		if err != nil {
-			logger.Log.ErrorWithErr("Error closing directory: %v", err)
+			logger.Log.ErrorWithErr("Error closing directory", err)
 		}
 	}(dir)
 
 	// Read the contents of the directory
 	files, err := dir.Readdir(0)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error reading contents:", err)
+		logger.Log.ErrorWithErr("Error reading contents", err)
 		return nil, err
 	}
 
@@ -118,20 +119,29 @@ func (r RealProfileFinder) FirefoxFolder() ([]string, error) {
 	return profileList, nil
 }
 
-// MockProfileFinder is a struct that implements the FirefoxProfileFinder interface for testing
+// MockProfileFinder is a struct that implements the FirefoxProfileFinder interface for testing.
 type MockProfileFinder struct {
 	MockFirefoxFolder func() ([]string, error)
 }
 
-// FirefoxFolder is a mock function
+// FirefoxFolder is a mock function that returns the result of the MockFirefoxFolder function.
+// It is used to mock the behavior of the FirefoxFolder method in the RealProfileFinder struct.
+//
+// Parameters: None.
+//
+// Returns:
+//   - []string: A slice containing the paths to all Firefox profile folders. If no profile folders are found or an error occurs, an empty slice is returned.
+//   - error: An error object that wraps any error that occurs during the retrieval of the Firefox profile folders. If the folders are retrieved successfully, it returns nil.
 func (m MockProfileFinder) FirefoxFolder() ([]string, error) {
 	return m.MockFirefoxFolder()
 }
 
+// Doer is an interface that wraps the Do method for making HTTP requests.
 type Doer interface {
 	Do(req *http.Request) (*http.Response, error)
 }
 
+// RequestCreator is an interface that wraps the NewRequestWithContext method for creating HTTP requests.
 type RequestCreator interface {
 	NewRequestWithContext(ctx context.Context, method, url string, body io.Reader) (*http.Request, error)
 }
@@ -159,8 +169,8 @@ func (r RealRequestCreator) NewRequestWithContext(ctx context.Context, method, u
 }
 
 // PhishingDomainGetter is an interface that wraps the GetPhishingDomains method.
+// It provides a way to retrieve a list of active phishing domains from a remote database.
 type PhishingDomainGetter interface {
-	// GetPhishingDomains retrieves a list of active phishing domains from a remote database.
 	GetPhishingDomains(creator RequestCreator) ([]string, error)
 }
 
@@ -187,6 +197,7 @@ func NewRealPhishingDomainGetter(client Doer) RealPhishingDomainGetter {
 // This function sends a GET request to the URL of the phishing database hosted on GitHub. It reads the response body,
 // which contains a list of active phishing domains, each on a new line. The function then splits this response into a slice
 // of strings, where each string represents a single phishing domain.
+//
 // Parameters:
 //   - creator RequestCreator: An object that implements the RequestCreator interface. It is used to create an HTTP request to fetch the phishing domains.
 //
@@ -201,14 +212,14 @@ func (r RealPhishingDomainGetter) GetPhishingDomains(creator RequestCreator) ([]
 	url := "https://raw.githubusercontent.com/mitchellkrogza/Phishing.Database/master/phishing-links-ACTIVE-today.txt"
 	req, err := creator.NewRequestWithContext(context.Background(), http.MethodGet, url, nil)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error creating HTTP request:", err)
+		logger.Log.ErrorWithErr("Error creating HTTP request", err)
 		return nil, err
 	}
 	req.Header.Add("User-Agent", "Mozilla/5.0")
 
 	resp, err := r.Client.Do(req)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error sending HTTP request:", err)
+		logger.Log.ErrorWithErr("Error sending HTTP request", err)
 		return nil, err
 	}
 	// Ensure the response body is closed properly
@@ -216,25 +227,25 @@ func (r RealPhishingDomainGetter) GetPhishingDomains(creator RequestCreator) ([]
 		if resp != nil && resp.Body != nil {
 			resErr := resp.Body.Close()
 			if resErr != nil {
-				logger.Log.ErrorWithErr("Error closing response body:", err)
+				logger.Log.ErrorWithErr("Error closing response body", err)
 			}
 		}
 	}()
 
 	if resp.StatusCode != http.StatusOK {
-		logger.Log.Printf("HTTP request failed with status code: %d", resp.StatusCode)
+		logger.Log.Error("HTTP request failed with status code: " + strconv.Itoa(resp.StatusCode))
 		return nil, errors.New("HTTP request failed")
 	}
 
 	// Parse the response of potential scam domains and split it into a list of domains
 	scamDomainsResponse, err := io.ReadAll(resp.Body)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error reading response body:", err)
+		logger.Log.ErrorWithErr("Error reading response body", err)
 		return nil, err
 	}
 
 	if len(scamDomainsResponse) == 0 {
-		logger.Log.ErrorWithErr("Error: Response body is empty", errors.New("no phishing domains list found online"))
+		logger.Log.Error("Response body is empty, no phishing domains list found online")
 		return nil, errors.New("no phishing domains list found online")
 	}
 
@@ -275,6 +286,7 @@ type CopyFileGetter interface {
 type RealCopyFileGetter struct{}
 
 // CopyFile is a utility function that copies a file from a source path to a destination path.
+// This function is used to copy files when performing security checks that require the creation of temporary copies of files.
 //
 // Parameters:
 //   - src string: The path to the source file that needs to be copied.
@@ -300,7 +312,7 @@ func (r RealCopyFileGetter) CopyFile(src, dst string, mockSource mocking.File, m
 	defer func(sourceFile mocking.File) {
 		err = sourceFile.Close()
 		if err != nil {
-			logger.Log.ErrorWithErr("Error closing source file:", err)
+			logger.Log.ErrorWithErr("Error closing source file", err)
 		}
 	}(sourceFile)
 	var destinationFile mocking.File
@@ -317,13 +329,13 @@ func (r RealCopyFileGetter) CopyFile(src, dst string, mockSource mocking.File, m
 	defer func(destinationFile mocking.File) {
 		err = destinationFile.Close()
 		if err != nil {
-			logger.Log.ErrorWithErr("Error closing destination file:", err)
+			logger.Log.ErrorWithErr("Error closing destination file", err)
 		}
 	}(destinationFile)
 
 	_, err = sourceFile.Copy(sourceFile, destinationFile)
 	if err != nil {
-		logger.Log.Println("Error copying file:", err)
+		logger.Log.ErrorWithErr("Error copying file", err)
 		return err
 	}
 	return nil
@@ -334,6 +346,13 @@ func (r RealCopyFileGetter) CopyFile(src, dst string, mockSource mocking.File, m
 type DefaultDirGetter interface {
 	// GetDefaultDir takes a browser name as input and returns the path to the preferences directory of the browser.
 	// It returns an error if there is any issue in getting the default directory.
+	//
+	// Parameters:
+	//   - browser string: The name of the browser for which the default directory is being retrieved.
+	//
+	// Returns:
+	//   - string: The path to the default directory of the specified browser.
+	//   - error: An error object that wraps any error that occurs during the retrieval of the default directory. If the directory is retrieved successfully, it returns nil.
 	GetDefaultDir(browser string) (string, error)
 }
 
@@ -342,8 +361,14 @@ type DefaultDirGetter interface {
 type RealDefaultDirGetter struct{}
 
 // GetDefaultDir is a method of RealDefaultDirGetter that gets the default directory of a specific browser.
-// It takes a browser name as input and returns the path to the default directory of the browser.
-// It returns an error if there is any issue in getting the default directory.
+// It constructs the path to the default directory based on the current user's home directory and the browser name.
+//
+// Parameters:
+//   - browser string: The name of the browser for which the default directory is being retrieved.
+//
+// Returns:
+//   - string: The path to the default directory of the specified browser.
+//   - error: An error object that wraps any error that occurs during the retrieval of the default directory. If the directory is retrieved successfully, it returns nil.
 func (r RealDefaultDirGetter) GetDefaultDir(browserPath string) (string, error) {
 	userDir, err := UserHomeDirFunc()
 	if err != nil {
@@ -355,17 +380,20 @@ func (r RealDefaultDirGetter) GetDefaultDir(browserPath string) (string, error) 
 // QueryCookieDatabaseGetter is an interface that defines a method for querying a cookie database.
 // This interface is used as a contract that must be fulfilled by any type that wishes to provide functionality
 // for querying a cookie database.
-//
-// The QueryCookieDatabase method takes several parameters:
-// - checkID: The ID of the check that is being performed.
-// - browser: The name of the browser for which the check is being performed.
-// - databasePath: The path to the cookie database file.
-// - queryParams: A list of parameters to use in the SQL query for the database.
-// - tableName: The name of the table in the database to query.
-// - getter: An object that implements the CopyFileGetter interface. It is used to copy the database file to a temporary location.
-//
-// The method returns a Check object representing the result of the check. If tracking cookies are found, the result contains a list of cookies along with their host stored in the database.
 type QueryCookieDatabaseGetter interface {
+	// QueryCookieDatabase is a method that queries a cookie database for specific parameters.
+	// It is used by the browser-specific (Firefox, Chrome, and Edge) cookie checks to query the cookie database and check for tracking cookies.
+	//
+	// Parameters:
+	//   - checkID int: The ID of the check that is being performed.
+	//   - browser string: The name of the browser for which the check is being performed.
+	//   - databasePath string: The path to the cookie database file.
+	//   - queryParams []string: A list of parameters to use in the SQL query for the database.
+	//   - tableName string: The name of the table in the database to query.
+	//   - getter CopyFileGetter: An object that implements the CopyFileGetter interface. It is used to copy the database file to a temporary location.
+	//
+	// Returns:
+	//   - checks.Check: A Check object representing the result of the check. If tracking cookies are found, the result contains a list of cookies along with their host stored in the database.
 	QueryCookieDatabase(checkID int, browser string, databasePath string, queryParams []string, tableName string, getter CopyFileGetter) checks.Check
 }
 
@@ -394,21 +422,21 @@ func (r RealQueryCookieDatabaseGetter) QueryCookieDatabase(checkID int, browser 
 	defer func(name string) {
 		err := os.Remove(name)
 		if err != nil {
-			logger.Log.ErrorWithErr("Error removing temporary "+browser+" cookie database: ", err)
+			logger.Log.ErrorWithErr("Error removing temporary "+browser+" cookie database", err)
 		}
 	}(tempCookieDB)
 
 	// Copy the database to a temporary location
 	copyError := getter.CopyFile(databasePath, tempCookieDB, nil, nil)
 	if copyError != nil {
-		return checks.NewCheckErrorf(checkID, "Unable to make a copy of "+browser+" database: ", copyError)
+		return checks.NewCheckErrorf(checkID, "Unable to make a copy of "+browser+" database", copyError)
 	}
 
 	db, err := sql.Open("sqlite", tempCookieDB)
 	defer func(db *sql.DB) {
 		err = db.Close()
 		if err != nil {
-			logger.Log.ErrorWithErr("Error closing "+browser+" database: ", err)
+			logger.Log.ErrorWithErr("Error closing "+browser+" database", err)
 		}
 	}(db)
 
@@ -425,7 +453,7 @@ func (r RealQueryCookieDatabaseGetter) QueryCookieDatabase(checkID int, browser 
 	defer func(rows *sql.Rows) {
 		err = rows.Close()
 		if err != nil {
-			logger.Log.ErrorWithErr("Error closing "+browser+" rows: ", err)
+			logger.Log.ErrorWithErr("Error closing "+browser+" rows", err)
 		}
 	}(rows)
 

@@ -12,6 +12,22 @@ const dom = new JSDOM(`
 <html>
 <body>
     <div id="page-contents">
+      <div id="progress-segment" class="data-segment">
+        <div class="data-segment-header">
+          <p id="lighthouse-progress-header" class="lang-lighthouse-progress"></p>
+          <div id="lighthouse-progress-hoverbox">
+            <img id="lighthouse-progress-tooltip">
+            <p class="lighthouse-progress-tooltip-text lang-tooltip-text"></p>
+          </div>
+        </div>
+        <div id="progress-bar-container" class="progress-container">
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <p id="progress-percentage-text" class="gamification-text"></p>
+        <p id="progress-text" class="lang-progress-text gamification-text"></p>
+        <p id="progress-almost-text" class="lang-progress-almost-text gamification-text"></p></p>
+        <p id="progress-done-text" class="lang-progress-done-text gamification-text"</p>
+      </div>
         <div id="share-modal" class="modal">
             <div class="modal-content">
               <div class="modal-header">
@@ -70,6 +86,17 @@ jest.unstable_mockModule('../src/js/issues.js', () => ({
   getUserSettings: jest.fn().mockImplementationOnce(() => 2),
 }));
 
+// Mock Localize function
+jest.unstable_mockModule('../wailsjs/go/main/App.js', () => ({
+  GetImagePath: jest.fn().mockImplementation((input) => input),
+  GetLighthouseState: jest.fn().mockImplementationOnce(() => 0)
+    .mockImplementationOnce(() => 1)
+    .mockImplementationOnce(() => 2)
+    .mockImplementationOnce(() => 3)
+    .mockImplementationOnce(() => 4)
+    .mockImplementationOnce(() => 5)
+    .mockImplementation(() => 0),
+}));
 
 describe('share functions', function() {
   beforeAll(() => {
@@ -81,7 +108,47 @@ describe('share functions', function() {
     jest.useRealTimers();
   });
 
+  it('setImage should set the right image as the background of the share image', async function() {
+    // Arrange
+    const share = await import('../src/js/share.js');
 
+    // Act
+    sessionStorage.setItem('ShareSocial', JSON.stringify(share.socialMediaSizes['facebook']));
+    await share.setImage('facebook');
+
+    // Assert
+    test.value(document.getElementById('share-node').style.backgroundImage).isEqualTo('url(sharing/first-state.png)');
+
+    // Act
+    await share.setImage('facebook');
+
+    // Assert
+    test.value(document.getElementById('share-node').style.backgroundImage).isEqualTo('url(sharing/second-state.png)');
+
+    // Act
+    await share.setImage('facebook');
+
+    // Assert
+    test.value(document.getElementById('share-node').style.backgroundImage).isEqualTo('url(sharing/third-state.png)');
+
+    // Act
+    await share.setImage('facebook');
+
+    // Assert
+    test.value(document.getElementById('share-node').style.backgroundImage).isEqualTo('url(sharing/fourth-state.png)');
+
+    // Act
+    await share.setImage('facebook');
+
+    // Assert
+    test.value(document.getElementById('share-node').style.backgroundImage).isEqualTo('url(sharing/fifth-state.png)');
+
+    // Act
+    await share.setImage('facebook');
+
+    // Assert
+    test.value(document.getElementById('share-node').style.backgroundImage).isEqualTo('url(sharing/first-state.png)');
+  });
   it('getImage should return a url of the passed node converted to an image', async function() {
     // Arrange
     const share = await import('../src/js/share.js');
@@ -105,6 +172,7 @@ describe('share functions', function() {
     jest.spyOn(document, 'createElement').mockImplementation(() => linkElement);
 
     // Act
+    sessionStorage.setItem('ShareSocial', JSON.stringify(share.socialMediaSizes['facebook']));
     const node = document.getElementById('share-node');
     await share.saveProgress(node);
 
@@ -119,7 +187,7 @@ describe('share functions', function() {
     jest.spyOn(window, 'open');
 
     // Act
-    share.shareProgress();
+    await share.shareProgress();
 
     // Assert
     expect(window.open).toHaveBeenCalledTimes(1);
@@ -174,9 +242,5 @@ describe('share functions', function() {
       test.value(inStorage.height).isEqualTo(share.socialMediaSizes[social].height);
       test.value(inStorage.width).isEqualTo(share.socialMediaSizes[social].width);
     });
-
-    // Act
-
-    // Assert
   });
 });

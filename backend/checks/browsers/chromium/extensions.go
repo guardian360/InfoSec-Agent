@@ -1,6 +1,3 @@
-// Package chromium is responsible for running checks on Chromium based browsers.
-//
-// Exported function(s): ExtensionsChromium, HistoryChromium
 package chromium
 
 import (
@@ -21,7 +18,8 @@ import (
 
 // Response is a struct that represents the JSON response from the Microsoft Edge Addons Store
 //
-// Fields: Name (string) - The name of the extension
+// Fields:
+//   - Name (string): The name of the extension
 type Response struct {
 	Name string `json:"name"`
 }
@@ -49,12 +47,12 @@ func ExtensionsChromium(browser string, getter browsers.DefaultDirGetter, getter
 	browserPath, returnID := GetBrowserPathAndIDExtension(browser)
 	extensionsDir, err := getter.GetDefaultDir(browserPath)
 	if err != nil {
-		return checks.NewCheckErrorf(returnID, "Error: ", err)
+		return checks.NewCheckErrorf(returnID, "error getting preferences directory", err)
 	}
 
 	extensionIDs, err := getterExtID.GetExtensionIDs(extensionsDir + "/Extensions")
 	if err != nil {
-		return checks.NewCheckErrorf(returnID, "Error: ", err)
+		return checks.NewCheckErrorf(returnID, "error getting extension ids", err)
 	}
 
 	extensionNames := GetExtensionNames(nameGetter, extensionIDs, browser)
@@ -86,10 +84,22 @@ func GetBrowserPathAndIDExtension(browser string) (string, int) {
 	return "", 0
 }
 
+// ExtensionIDGetter is an interface that defines the GetExtensionIDs method.
+// This method is used to retrieve the IDs of the installed extensions in the specified browser.
 type ExtensionIDGetter interface {
+	// GetExtensionIDs is a function that takes the path to the extensions directory as input,
+	// and returns a list of extension IDs.
+	//
+	// Parameters:
+	//   - extensionsDir: A string representing the path to the extensions directory.
+	//
+	// Returns:
+	//   - A slice of strings representing the IDs of the extensions.
+	//   - An error, which will be nil if the operation was successful.
 	GetExtensionIDs(extensionsDir string) ([]string, error)
 }
 
+// RealExtensionIDGetter is a struct that implements the ExtensionIDGetter interface.
 type RealExtensionIDGetter struct{}
 
 // GetExtensionIDs is a function that takes the path to the extensions directory as input,
@@ -145,7 +155,7 @@ func GetExtensionNames(getter ExtensionNameGetter, extensionIDs []string, browse
 			extensionName, err := getter.GetExtensionNameChromium(id,
 				"https://chromewebstore.google.com/detail/%s", browser)
 			if err != nil {
-				logger.Log.ErrorWithErr("Error getting extension name: ", err)
+				logger.Log.ErrorWithErr("Error getting extension name", err)
 				continue
 			}
 			if strings.Count(extensionName, "/") > 4 {
@@ -157,7 +167,7 @@ func GetExtensionNames(getter ExtensionNameGetter, extensionIDs []string, browse
 			extensionName, err := getter.GetExtensionNameChromium(id,
 				"https://microsoftedge.microsoft.com/addons/getproductdetailsbycrxid/%s", browser)
 			if err != nil {
-				logger.Log.ErrorWithErr("Error getting extension name: ", err)
+				logger.Log.ErrorWithErr("Error getting extension name", err)
 				continue
 			}
 			extensionNames = append(extensionNames, extensionName)
@@ -166,10 +176,24 @@ func GetExtensionNames(getter ExtensionNameGetter, extensionIDs []string, browse
 	return extensionNames
 }
 
+// ExtensionNameGetter is an interface that defines the GetExtensionNameChromium method.
+// This method is used to retrieve the name of an extension from the Chrome Web Store or the Microsoft Edge Addons Store.
 type ExtensionNameGetter interface {
+	// GetExtensionNameChromium is a function that takes the extension ID, the URL template of the store to visit,
+	// and the browser name as input, and returns the name of the extension.
+	//
+	// Parameters:
+	//   - extensionID: A string representing the unique identifier of the extension.
+	//   - url: A string representing the URL template of the store to visit, where the extension ID will be inserted.
+	//   - browser: A string representing the name of the browser to check (either "Chrome" or "Edge").
+	//
+	// Returns:
+	//   - A string representing the name of the extension.
+	//   - An error, which will be nil if the operation was successful.
 	GetExtensionNameChromium(extensionID string, url string, browser string) (string, error)
 }
 
+// ChromeExtensionNameGetter is a struct that implements the ExtensionNameGetter interface.
 type ChromeExtensionNameGetter struct{}
 
 // GetExtensionNameChromium fetches the name of an extension from the Chrome Web Store or the Microsoft Edge Addons Store.
@@ -192,20 +216,20 @@ func (c ChromeExtensionNameGetter) GetExtensionNameChromium(extensionID string, 
 	// Generate a new request to visit the extension/addon store
 	req, err := http.NewRequestWithContext(context.Background(), http.MethodGet, urlToVisit, nil)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error creating request: ", err)
+		logger.Log.ErrorWithErr("Error creating request", err)
 		return "", err
 	}
 	req.Header.Add("User-Agent", "Mozilla/5.0")
 	resp, err := client.Do(req)
 	if err != nil {
-		logger.Log.ErrorWithErr("Error sending request: ", err)
+		logger.Log.ErrorWithErr("Error sending request", err)
 		return "", err
 	}
 	// Close the response body after the necessary data is retrieved
 	defer func(Body io.ReadCloser) {
 		err = Body.Close()
 		if err != nil {
-			logger.Log.ErrorWithErr("Error closing body: ", err)
+			logger.Log.ErrorWithErr("Error closing body", err)
 		}
 	}(resp.Body)
 

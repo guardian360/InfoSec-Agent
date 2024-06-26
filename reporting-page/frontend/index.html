@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="./src/css/responsive.css">
     <link rel="stylesheet" href="./src/css/share.css">
 
-    <link rel="icon" id="favicon" href="./src/assets/images/logoTeamA-transformed.png" >
+    <link rel="icon" id="favicon" href="./src/assets/images/InfoSec-Agent-logo.png" >
     
     <script src="./src/js/about.js" type="module" defer></script>
     <script src="./src/js/all-checks.js" type="module" defer></script>
@@ -30,36 +30,25 @@
     <script src="./src/js/security-dashboard.js" type="module" defer></script>
     <script src="./src/js/settings.js" type="module" defer></script>
     <script src="./src/js/share.js" type="module" defer></script>
+    <script src="./src/js/programs.js" type="module" defer></script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        
     <title>InfoSec-Agent Reporting Page</title>
   </head>
   <body>
-    <input type="file" class="personalize-input-invisible" id="faviconInput" accept=".png,.ico"> <!--Use id to dynamically change favicon -->
     <div class="header">
       <div class="header-hamburger container">
         <span id="header-hamburger" class="header-hamburger material-symbols-outlined">menu</span>
       </div>
       <div class="header-logo">
         <div id="logo-button" class="logo-name">
-          <img id="logo" alt="logo" src="./src/assets/images/logoTeamA-transformed.png">  <!-- Use id to dynamically change logo -->
+          <img id="logo" alt="logo" src="./src/assets/images/InfoSec-Agent-logo.png">  <!-- Use id to dynamically change logo -->
           <div class="header-name">
-            <h1 id="title">Little Brother</h1><!-- Use id to dynamically change title -->
+            <h1 id="title">InfoSec Agent</h1><!-- Use id to dynamically change title -->
           </div>
         </div>
       </div>
       <div class="header-settings">
-        <div class="nav-link settings-button">
-          <span><span class="material-symbols-outlined">settings</span></span>
-          <div class="dropdown-content">
-            <a id="personalize-button" class="lang-personalize-page"></a>
-            <a id="language-button" class="lang-change-language"></a>
-            <a id="windows-version-button" class="lang-windows-version"></a>
-            <a id="scan-interval-button" class="lang-scan-interval"></a>
-            <a id="state-button-0">Change state to 0</a>
-            <a id="state-button-1">Change state to 1</a>
-            <a id="state-button-2">Change state to 2</a>
-          </div>
-        </div>
       </div>
     </div> 
     <div class="left-nav">
@@ -75,6 +64,9 @@
       <div id="issues-button" class="nav-link">
         <p><span class="material-symbols-outlined">checklist</span><span class="nav-item lang-issues">Issues</span></p>
       </div>
+      <div id="programs-button" class="nav-link">
+        <p><span class="material-symbols-outlined">Wysiwyg</span><span class="nav-item lang-programs">Programs</span></p>
+      </div>
       <div id="all-checks-button" class="nav-link">
         <p><span class="material-symbols-outlined">list_alt</span><span class="nav-item lang-checks">Checks</span></p>
       </div>
@@ -83,6 +75,15 @@
       </div>
       <div id="about-button" class="nav-link">
         <p><span class="material-symbols-outlined">info</span><span class="nav-item lang-about" >About</span></p>
+      </div>
+      <div id="settings-button" class="nav-link">
+        <p><span class="material-symbols-outlined">settings</span><span class="nav-item lang-settings">Settings</span><span id="arrow" class="material-symbols-outlined">keyboard_arrow_right</span></p>
+        <div class="dropdown-content">
+            <a id="personalize-button" class="lang-personalize-page"></a>
+            <a id="language-button" class="lang-change-language"></a>
+            <a id="windows-version-button" class="lang-windows-version"></a>
+            <a id="scan-interval-button" class="lang-scan-interval"></a>
+        </div>
       </div>
     </div>
     <div id="window-version-modal" class="modal">

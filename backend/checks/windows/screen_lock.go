@@ -16,13 +16,13 @@ import (
 // Returns:
 //   - Check: A struct containing the result of the check. The result indicates whether the screen lock is enabled and set to secure settings or an error, if one occurred.
 func ScreenLockEnabled(registryKey mocking.RegistryKey) checks.Check {
-	key, err := checks.OpenRegistryKey(registryKey, `Control Panel\Desktop`)
+	key, err := mocking.OpenRegistryKey(registryKey, `Control Panel\Desktop`)
 
 	if err != nil {
 		return checks.NewCheckErrorf(checks.ScreenLockID, "error opening screen lock registry key", err)
 	}
 	// Close the key after we have received all relevant information
-	defer checks.CloseRegistryKey(key)
+	defer mocking.CloseRegistryKey(key)
 
 	// Read the values of ScreenSaveActive, ScreenSaverIsSecure, and ScreenSaveTimeOut
 	// ScreenSaveActive indicates if the screen saver is enabled (1) or disabled (0)

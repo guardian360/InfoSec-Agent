@@ -11,37 +11,45 @@ import (
 
 func TestWPADEnabled(t *testing.T) {
 	tests := []struct {
-		name     string
-		executor mocking.CommandExecutor
-		want     checks.Check
+		name string
+		key  mocking.MockRegistryKey
+		want checks.Check
+		err  bool
 	}{
 		{
 			name: "WPAD enabled",
-			executor: &mocking.MockCommandExecutor{
-				Output: "STATE RUNNING",
-			},
+			key: mocking.MockRegistryKey{
+				SubKeys: []mocking.MockRegistryKey{
+					{KeyName: "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\Wpad"},
+				}, Err: nil},
 			want: checks.NewCheckResult(checks.WPADID, 1),
 		},
 		{
 			name: "WPAD disabled",
-			executor: &mocking.MockCommandExecutor{
-				Output: "STATE STOPPED",
-			},
+			key: mocking.MockRegistryKey{
+				SubKeys: []mocking.MockRegistryKey{
+					{KeyName: "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\Wpad",
+						IntegerValues: map[string]uint64{"WpadOverride": 1},
+					},
+				}, Err: nil},
 			want: checks.NewCheckResult(checks.WPADID, 0),
 		},
 		{
-			name: "Error executing command",
-			executor: &mocking.MockCommandExecutor{
-				Err: errors.New("error"),
-			},
+			name: "Error opening key",
+			key:  mocking.MockRegistryKey{},
 			want: checks.NewCheckError(checks.WPADID, errors.New("error")),
+			err:  true,
 		},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := network.WPADEnabled(tt.executor)
-			require.Equal(t, tt.want, got)
+			got := network.WPADEnabled(&tt.key)
+			if tt.err {
+				require.Equal(t, -1, got.ResultID)
+			} else {
+				require.Equal(t, tt.want, got)
+			}
 		})
 	}
 }

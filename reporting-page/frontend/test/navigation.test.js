@@ -8,25 +8,15 @@ global.TESTING = true;
 
 // Mock page
 const dom = new JSDOM(`
-  <input type="file" class="personalize-input-invisible" id="faviconInput" accept=".png,.ico"> 
   <div class="header">
     <div class="header-hamburger container">
       <span id="header-hamburger" class="header-hamburger material-symbols-outlined">menu</span>
     </div>
     <div class="header-logo">
       <div id="logo-button" class="logo-name">
-        <img id="logo" alt="logo" src="./src/assets/images/logoTeamA-transformed.png"> 
+        <img id="logo" alt="logo" src="../src/assets/images/InfoSec-Agent-logo.png"> 
         <div class="header-name">
           <h1 id="title">Little Brother</h1><!-- Use id to dynamically change title -->
-        </div>
-      </div>
-    </div>
-    <div class="header-settings">
-      <div class="nav-link settings-button">
-        <span><span class="material-symbols-outlined">settings</span></span>
-        <div class="dropdown-content">
-          <a id="personalize-button" class="lang-personalize-page">Personalize page</a>
-          <a id="language-button" class="lang-change-language">Change Language</a>
         </div>
       </div>
     </div>
@@ -52,6 +42,19 @@ const dom = new JSDOM(`
     </div>
     <div id="about-button" class="nav-link">
       <p><span class="material-symbols-outlined">info</span><span class="nav-item lang-about" >About</span></p>
+    </div>
+    <div id="settings-button" class="nav-link">
+      <p>
+        <span class="material-symbols-outlined">settings</span>
+        <span class="nav-item lang-settings">Settings</span>
+        <span id="arrow" class="material-symbols-outlined">keyboard_arrow_right</span>
+      </p>
+      <div class="dropdown-content">
+        <a id="personalize-button" class="lang-personalize-page"></a>
+        <a id="language-button" class="lang-change-language"></a>
+        <a id="windows-version-button" class="lang-windows-version"></a>
+        <a id="scan-interval-button" class="lang-scan-interval"></a>
+      </div>
     </div>
   </div>
   <div id="page-contents"></div>

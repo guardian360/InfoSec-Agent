@@ -1,1480 +1,1592 @@
 {
-    "10": {
-        "Name": "Aucun appareil connecté via Bluetooth",
-        "Type": "Sécurité",
-        "Information": "La technologie Bluetooth permet la transmission et la réception de données sans fil. Bien que cette fonctionnalité soit généralement inoffensive lorsqu'elle est utilisée comme prévu, elle peut devenir un risque de sécurité si elle est exploitée par des acteurs malveillants. Si une personne malveillante parvient à accéder à votre appareil via une connexion Bluetooth, elle peut potentiellement voler vos données, espionner vos activités ou même envoyer des logiciels malveillants à votre appareil. Pour atténuer ces risques, il est crucial de ne connecter votre appareil qu'à des appareils connus et de confiance.",
-        "Solution": 
-        [   
-            "Aucun appareil n'est connecté via Bluetooth, aucune action n'est donc nécessaire."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "11": {
-        "Name": "Appareils connectés via Bluetooth",
-        "Type": "Sécurité",
-        "Information": "La technologie Bluetooth permet la transmission et la réception de données sans fil. Bien que cette fonctionnalité soit généralement inoffensive lorsqu'elle est utilisée comme prévu, elle peut devenir un risque de sécurité si elle est exploitée par des acteurs malveillants. Si une personne malveillante parvient à accéder à votre appareil via une connexion Bluetooth, elle peut potentiellement voler vos données, espionner vos activités ou même envoyer des logiciels malveillants à votre appareil. Pour atténuer ces risques, il est crucial de ne connecter votre appareil qu'à des appareils connus et de confiance.",
-        "Solution": 
-        [   
-            "Accédez à Démarrer > Paramètres > Bluetooth et appareils.", 
-            "Ici, vous pouvez voir quels appareils sont connectés via Bluetooth et les supprimer si nécessaire."
-        ],
-        "SolutionWindows10": 
-        [   
-            "Allez dans Démarrer > Paramètres > Périphériques > Bluetooth et autres appareils.", 
-            "Ici, vous pouvez voir quels appareils sont connectés via Bluetooth et vous pouvez les supprimer si nécessaire."
-        ],        
-        "Screenshots":
-        [
-            "devices-connected-via-bluetooth/bluetooth-devices-1.png",
-            "devices-connected-via-bluetooth/bluetooth-devices-2.png"
-        ] 
-    },
-    "20": {
-        "Name": "Aucun appareil externe connecté",
-        "Type": "Sécurité",
-        "Information": "Les appareils externes tels que les clés USB, les disques durs externes et autres périphériques peuvent introduire des risques de sécurité pour votre ordinateur. Les logiciels malveillants peuvent se propager via des appareils externes infectés, compromettant potentiellement la sécurité et l'intégrité de votre système. En veillant à ce qu'aucun appareil externe ne soit connecté à votre ordinateur lorsqu'il n'est pas utilisé, vous réduisez le risque d'infection par des logiciels malveillants et d'accès non autorisé à votre système.",
-        "Solution": 
-        [   
-            "Aucun appareil externe n'est connecté, aucune action n'est donc nécessaire."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "21": {
-        "Name": "Appareils externes connectés",
-        "Type": "Sécurité",
-        "Information": "Les appareils externes tels que les clés USB, les disques durs externes et autres périphériques peuvent introduire des risques de sécurité pour votre ordinateur. Les logiciels malveillants peuvent se propager via des appareils externes infectés, compromettant potentiellement la sécurité et l'intégrité de votre système. En veillant à ce qu'aucun appareil externe ne soit connecté à votre ordinateur lorsqu'il n'est pas utilisé, vous réduisez le risque d'infection par des logiciels malveillants et d'accès non autorisé à votre système.",
-        "Solution": 
-        [   
-            "Vérifiez si des appareils externes sont connectés à votre ordinateur et déconnectez-les s'ils ne sont pas utilisés. Les exemples d'appareils externes incluent les clés USB, les disques durs externes, les microphones externes, les caméras externes et autres périphériques."
-        ],
-        "Screenshots":
-        [
-            "TOBEFILLED"
-        ]
-    },
-    "30": {
-        "Name": "Statut du compte invité inconnu",
-        "Type": "Sécurité",
-        "Information": "Le compte invité est un compte par défaut conçu pour offrir un accès temporaire et restreint au système pour les personnes ne possédant pas de compte utilisateur régulier. Si vous êtes l'unique utilisateur de l'ordinateur et n'avez pas besoin d'un compte invité, il est conseillé de le désactiver. Cela garantit qu'aucun utilisateur non autorisé ne peut accéder aux données de l'ordinateur, améliorant ainsi la sécurité et la confidentialité globales.",
-        "Solution": 
-        [   
-            "Un statut de compte invité inconnu peut constituer un risque de sécurité. Pour vérifier le statut et potentiellement résoudre le problème du compte invité, suivez ces étapes.",
-            "Accédez à Démarrer > Autres comptes.", 
-            "Ici, vous verrez les autres comptes, si vous voyez un compte que vous ne connaissez pas ou un compte appelé 'invité', cliquez dessus.",
-            "Sélectionnez maintenant 'supprimer' et confirmez la suppression du compte.",
-            "Pour terminer, redémarrez votre ordinateur."
-        ],
-        "Screenshots":
-        [
-            "guest-account/guest-account-1.png",
-            "guest-account/guest-account-1.png",
-            "guest-account/guest-account-1.png",
-            "guest-account/guest-account-3.png",        
-            "guest-account/guest-account-3.png"
-        ]
-    },
-    "31": {
-        "Name": "Compte invité activé",
-        "Type": "Sécurité",
-        "Information": "Le compte invité est un compte par défaut conçu pour offrir un accès temporaire et restreint au système pour les personnes ne possédant pas de compte utilisateur régulier. Si vous êtes l'unique utilisateur de l'ordinateur et n'avez pas besoin d'un compte invité, il est conseillé de le désactiver. Cela garantit qu'aucun utilisateur non autorisé ne peut accéder aux données de l'ordinateur, améliorant ainsi la sécurité et la confidentialité globales.",
-        "Solution": 
-        [   
-            "Accédez à Démarrer > Autres comptes.", 
-            "Ici, vous verrez les autres comptes, si vous voyez un compte que vous ne connaissez pas ou un compte appelé 'invité', cliquez dessus.",
-            "Sélectionnez maintenant 'supprimer' et confirmez la suppression du compte.",
-            "Pour terminer, redémarrez votre ordinateur."
-        ],
-        "SolutionWindows10": 
-        [   
-            "Allez dans Démarrer > Paramètres > Comptes > Famille et autres utilisateurs.", 
-            "Ici, vous verrez les autres comptes. S'il y a un compte que vous ne connaissez pas ou quelque chose appelé 'invité', cliquez dessus.",
-            "Sélectionnez maintenant 'supprimer' et confirmez la suppression du compte.",
-            "Pour finir, redémarrez votre ordinateur."
-        ],        
-        "Screenshots":
-        [
-            "guest-account/guest-account-1.png",
-            "guest-account/guest-account-1.png",
-            "guest-account/guest-account-3.png",        
-            "guest-account/guest-account-3.png"
-        ]
-    },
-    "32": {
-        "Name": "Compte invité désactivé",
-        "Type": "Sécurité",
-        "Information": "Le compte invité est un compte par défaut conçu pour offrir un accès temporaire et restreint au système pour les personnes ne possédant pas de compte utilisateur régulier. Si vous êtes l'unique utilisateur de l'ordinateur et n'avez pas besoin d'un compte invité, il est conseillé de le désactiver. Cela garantit qu'aucun utilisateur non autorisé ne peut accéder aux données de l'ordinateur, améliorant ainsi la sécurité et la confidentialité globales.",
-        "Solution": 
-        [   
-            "Il n'y a pas de compte invité sur votre ordinateur, aucune action n'est donc nécessaire."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "40": {
-        "Name": "Partage de l'ID de publicité désactivé",
-        "Type": "Confidentialité",
-        "Information": "Le paramètre d'ID de publicité permet à Windows de vous envoyer des publicités personnalisées. Il est important de limiter le nombre d'entités ayant accès à vos données personnelles, il est donc plus sûr de désactiver ce paramètre.",
-        "Solution": 
-        [
-            "Le partage de l'ID de publicité est désactivé, aucune action n'est donc nécessaire."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "41": {
-        "Name": "Partage de l'ID de publicité activé",
-        "Type": "Sécurité",
-        "Information": "Le paramètre d'ID de publicité permet à Windows de vous envoyer des publicités personnalisées. Il est important de limiter le nombre d'entités ayant accès à vos données personnelles, il est donc plus sûr de désactiver ce paramètre.",
-        "Solution": 
-        [
-            "Accédez à Démarrer > Paramètres > Confidentialité et sécurité > Général.",
-            "Ici, vous pouvez contrôler les paramètres de l'ID de publicité et désactiver la fonctionnalité."
-        ],
-        "SolutionWindows10": 
-        [
-            "Allez dans Démarrer > Paramètres > Confidentialité > Général.",
-            "Ici, vous pouvez contrôler les paramètres de l'identifiant publicitaire et activer/désactiver la fonctionnalité."
-        ],        
-        "Screenshots":
-        [
-            "network-sharing/nearby-sharing-1.png",
-            "network-sharing/nearby-sharing-2.png"
-        ] 
-    },
-    "42": {
-        "Name": "Partage réseau désactivé",
-        "Type": "Sécurité",
-        "Information": "Le partage réseau fait référence à la capacité de partager des ressources, telles que des fichiers, des dossiers, des imprimantes et des connexions Internet, entre plusieurs appareils connectés à un réseau. Il permet aux utilisateurs d'accéder et de collaborer sur des ressources partagées sur le réseau, facilitant ainsi l'échange de données et la collaboration entre utilisateurs et appareils. Les autorisations peuvent être configurées pour autoriser ou refuser l'accès à des utilisateurs ou groupes spécifiques, garantissant ainsi la sécurité des données sensibles. Si vous n'avez pas besoin du partage réseau, il est plus sûr de le désactiver.",
-        "Solution": 
-        [   
-            "Le partage réseau est désactivé, aucune action n'est donc nécessaire."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "43": {
-        "Name": "Statut du partage réseau inconnu",
-        "Type": "Sécurité",
-        "Information": "Le partage réseau fait référence à la capacité de partager des ressources, telles que des fichiers, des dossiers, des imprimantes et des connexions Internet, entre plusieurs appareils connectés à un réseau. Il permet aux utilisateurs d'accéder et de collaborer sur des ressources partagées sur le réseau, facilitant ainsi l'échange de données et la collaboration entre utilisateurs et appareils. Les autorisations peuvent être configurées pour autoriser ou refuser l'accès à des utilisateurs ou groupes spécifiques, garantissant ainsi la sécurité des données sensibles. Si vous n'avez pas besoin du partage réseau, il est plus sûr de le désactiver.",
-        "Solution": 
-        [   
-            "Il n'a pas été possible de récupérer le statut des paramètres de partage réseau. Pour vérifier le statut et potentiellement résoudre le problème du partage réseau, suivez ces étapes.",
-            "Accédez à Démarrer > Paramètres > Système > Paramètres de partage à proximité.", 
-            "Ici, vous pouvez contrôler les paramètres de partage réseau et désactiver la fonctionnalité."
-        ],
-        "SolutionWindows10": 
-        [   
-            "Il n'a pas été possible de récupérer le statut des paramètres de partage réseau. Pour vérifier le statut et potentiellement résoudre le problème du partage réseau, suivez ces étapes.",
-            "Allez dans Démarrer > Paramètres > Système > Expériences partagées.", 
-            "Ici, vous pouvez contrôler les paramètres de partage réseau et désactiver la fonctionnalité."
-        ],        
-        "Screenshots":
-        [
-            "network-sharing/nearby-sharing-1.png",
-            "network-sharing/nearby-sharing-1.png",
-            "network-sharing/nearby-sharing-2.png"
-        ] 
-    },
-    "50": {
-        "Name": "Gestionnaire de mots de passe utilisé",
-        "Type": "Sécurité",
-        "Information": "Utiliser un gestionnaire de mots de passe offre plusieurs avantages pour les individus et les organisations, principalement en matière d'amélioration de la sécurité, de commodité et des pratiques de gestion des mots de passe. Voici quelques raisons clés pour lesquelles vous devriez envisager d'utiliser un gestionnaire de mots de passe. Mots de passe plus forts : Les gestionnaires de mots de passe peuvent générer des mots de passe complexes et uniques pour chacun de vos comptes. Ces mots de passe sont généralement longs, aléatoires et difficiles à craquer, améliorant ainsi considérablement la sécurité de vos comptes en ligne par rapport à l'utilisation de mots de passe faibles ou réutilisés. Élimination de la réutilisation des mots de passe : L'un des pièges de sécurité les plus courants est la réutilisation des mots de passe sur plusieurs comptes. Les gestionnaires de mots de passe vous permettent de générer et de stocker des mots de passe uniques pour chaque compte, réduisant ainsi le risque d'accès non autorisé si un compte est compromis. Commodité : Les gestionnaires de mots de passe simplifient le processus de connexion aux sites Web et aux services en ligne en remplissant automatiquement vos identifiants de connexion. Cela permet de gagner du temps et des efforts, en particulier lors de la gestion de nombreux comptes sur diverses plateformes. Stockage sécurisé : Les gestionnaires de mots de passe cryptent et stockent vos mots de passe dans un coffre-fort sécurisé, les protégeant contre tout accès non autorisé. De nombreux gestionnaires de mots de passe offrent également des fonctionnalités de sécurité supplémentaires telles que l'authentification à deux facteurs (2FA) et l'authentification biométrique pour renforcer encore la protection.",
-        "Solution": 
-        [   
-            "Vous utilisez un gestionnaire de mots de passe, aucune action n'est donc nécessaire."   
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "51": {
-        "Name": "Aucun gestionnaire de mots de passe utilisé",
-        "Type": "Sécurité",
-        "Information": "Utiliser un gestionnaire de mots de passe offre plusieurs avantages pour les individus et les organisations, principalement en matière d'amélioration de la sécurité, de commodité et des pratiques de gestion des mots de passe. Voici quelques raisons clés pour lesquelles vous devriez envisager d'utiliser un gestionnaire de mots de passe. Mots de passe plus forts : Les gestionnaires de mots de passe peuvent générer des mots de passe complexes et uniques pour chacun de vos comptes. Ces mots de passe sont généralement longs, aléatoires et difficiles à craquer, améliorant ainsi considérablement la sécurité de vos comptes en ligne par rapport à l'utilisation de mots de passe faibles ou réutilisés. Élimination de la réutilisation des mots de passe : L'un des pièges de sécurité les plus courants est la réutilisation des mots de passe sur plusieurs comptes. Les gestionnaires de mots de passe vous permettent de générer et de stocker des mots de passe uniques pour chaque compte, réduisant ainsi le risque d'accès non autorisé si un compte est compromis. Commodité : Les gestionnaires de mots de passe simplifient le processus de connexion aux sites Web et aux services en ligne en remplissant automatiquement vos identifiants de connexion. Cela permet de gagner du temps et des efforts, en particulier lors de la gestion de nombreux comptes sur diverses plateformes. Stockage sécurisé : Les gestionnaires de mots de passe cryptent et stockent vos mots de passe dans un coffre-fort sécurisé, les protégeant contre tout accès non autorisé. De nombreux gestionnaires de mots de passe offrent également des fonctionnalités de sécurité supplémentaires telles que l'authentification à deux facteurs (2FA) et l'authentification biométrique pour renforcer encore la protection.",
-        "Solution": 
-        [   
-            "Ouvrez votre navigateur et recherchez un gestionnaire de mots de passe tel que : LastPass, Dashlane, Bitwarden ou un autre gestionnaire de mots de passe de votre choix.", 
-            "Suivez les étapes d'installation fournies par le site Web du gestionnaire de mots de passe."
-        ],
-        "Screenshots":
-        [
-            "password-manager/password-manager-1.png",
-            "password-manager/password-manager-1.png"
-        ] 
-    },
-    "60": {
-        "Name": "Applications avec autorisation de localisation",
-        "Type": "Confidentialité",
-        "Information": "Savoir quelles applications ont accès à votre localisation est important pour protéger votre vie privée. Cela vous aide à contrôler qui peut suivre votre localisation, à prévenir les risques de sécurité, à économiser la batterie, à gérer l'utilisation des données, à personnaliser votre expérience d'application et à assurer la conformité avec les réglementations.",
-        "Solution": 
-        [   
-            "Sélectionnez Démarrer > Paramètres > Confidentialité et sécurité.", 
-            "Ici, vous pouvez sélectionner la localisation pour voir quelles applications ont accès et révoquer l'accès pour certaines applications."
-        ],
-        "SolutionWindows10": 
-        [   
-            "Allez dans Démarrer > Paramètres > Confidentialité > Emplacement.", 
-            "Ici, vous pouvez sélectionner l'emplacement pour voir quelles applications y ont accès, et vous pouvez révoquer l'accès pour certaines applications."
-        ],        
-        "Screenshots":
-        [
-            "applications-with-location-permission/location-permissions-1.png",
-            "applications-with-location-permission/location-permissions-2.png"
-        ] 
-    },
-    "61": {
-        "Name": "Applications avec autorisation de localisation",
-        "Type": "Confidentialité",
-        "Information": "Savoir quelles applications ont accès à votre localisation est important pour protéger votre vie privée. Cela vous aide à contrôler qui peut suivre votre localisation, à prévenir les risques de sécurité, à économiser la batterie, à gérer l'utilisation des données, à personnaliser votre expérience d'application et à assurer la conformité avec les réglementations.",
-        "Solution": 
-        [   
-            "Aucune application n'a l'autorisation de localisation, aucune action n'est donc nécessaire."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "70": {
-        "Name": "Applications avec autorisation de microphone",
-        "Type": "Confidentialité",
-        "Information": "Comprendre quelles applications ont accès à votre microphone sur votre ordinateur Windows est important pour protéger votre vie privée et la confidentialité de vos conversations. Cela vous aide à contrôler qui peut écouter vos conversations, à prévenir les enregistrements non autorisés, à protéger les informations sensibles et à assurer la conformité avec les réglementations.",
-        "Solution": 
-        [   
-            "Sélectionnez Démarrer > Paramètres > Confidentialité et sécurité.", 
-            "Ici, vous pouvez sélectionner le microphone pour voir quelles applications ont accès et révoquer l'accès pour certaines applications."
-        ],
-        "SolutionWindows10": 
-        [   
-            "Allez dans Démarrer > Paramètres > Confidentialité > Microphone.", 
-            "Ici, vous pouvez sélectionner le microphone pour voir quelles applications y ont accès, et vous pouvez révoquer l'accès pour certaines applications."
-        ],
-        "Screenshots":
-        [
-            "applications-with-microphone-permission/microphone-permissions-1.png",
-            "applications-with-microphone-permission/microphone-permissions-2.png"
-        ] 
-    },
-    "71": {
-        "Name": "Applications avec autorisation de microphone",
-        "Type": "Confidentialité",
-        "Information": "Comprendre quelles applications ont accès à votre microphone sur votre ordinateur Windows est important pour protéger votre vie privée et la confidentialité de vos conversations. Cela vous aide à contrôler qui peut écouter vos conversations, à prévenir les enregistrements non autorisés, à protéger les informations sensibles et à assurer la conformité avec les réglementations.",
-        "Solution": 
-        [   
-            "Aucune application n'a l'autorisation de microphone, aucune action n'est donc nécessaire."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "80": {
-        "Name": "Applications avec autorisation de webcam",
-        "Type": "Confidentialité",
-        "Information": "Être conscient des applications qui ont accès à votre caméra permet de prévenir les accès non autorisés. Les logiciels malveillants ou même les applications légitimes avec des fonctionnalités de sécurité mal implémentées pourraient potentiellement accéder à votre caméra sans votre connaissance ou consentement. En sachant quelles applications ont accès, vous pouvez identifier et bloquer toute tentative non autorisée.",
-        "Solution": 
-        [   
-            "Sélectionnez Démarrer > Paramètres > Confidentialité et sécurité.", 
-            "Ici, vous pouvez sélectionner la webcam pour voir quelles applications ont accès et révoquer l'accès pour certaines applications."
-        ],
-        "SolutionWindows10": 
-        [   
-            "Allez dans Démarrer > Paramètres > Confidentialité > Caméra.", 
-            "Ici, vous pouvez sélectionner la caméra pour voir quelles applications y ont accès, et vous pouvez révoquer l'accès pour certaines applications."
-        ],
-        "Screenshots":
-        [
-            "applications-with-webcam-permission/webcam-permissions-1.png",
-            "applications-with-webcam-permission/webcam-permissions-2.png"
-        ] 
-    },
-    "81": {
-        "Name": "Applications avec autorisation de webcam",
-        "Type": "Confidentialité",
-        "Information": "Être conscient des applications qui ont accès à votre caméra permet de prévenir les accès non autorisés. Les logiciels malveillants ou même les applications légitimes avec des fonctionnalités de sécurité mal implémentées pourraient potentiellement accéder à votre caméra sans votre connaissance ou consentement. En sachant quelles applications ont accès, vous pouvez identifier et bloquer toute tentative non autorisée.",
-        "Solution": 
-        [   
-            "Aucune application n'a l'autorisation de webcam, aucune action n'est donc nécessaire."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "90": {
-        "Name": "Applications avec autorisation de rendez-vous",
-        "Type": "Confidentialité",
-        "Information": "Comprendre quelles applications ont accès à votre calendrier ou à vos rendez-vous est crucial pour protéger votre vie privée et votre emploi du temps. Cela vous aide à contrôler qui peut voir et potentiellement abuser de vos informations sensibles sur les rendez-vous, à prévenir les accès non autorisés et à gérer l'utilisation des données.",
-        "Solution": 
-        [   
-            "Sélectionnez Démarrer > Paramètres > Confidentialité et sécurité.", 
-            "Ici, vous pouvez sélectionner les rendez-vous pour voir quelles applications ont accès et révoquer l'accès pour certaines applications."
-        ],
-        "SolutionWindows10": 
-        [   
-            "Allez dans Démarrer > Paramètres > Confidentialité > Calendrier.", 
-            "Ici, vous pouvez sélectionner le calendrier pour voir quelles applications y ont accès, et vous pouvez révoquer l'accès pour certaines applications."
-        ],
-        "Screenshots":
-        [
-            "applications-with-calendar-permission/calendar-permissions-1.png",
-            "applications-with-calendar-permission/calendar-permissions-2.png"
-        ] 
-    },
-    "91": {
-        "Name": "Applications avec autorisation de rendez-vous",
-        "Type": "Confidentialité",
-        "Information": "Comprendre quelles applications ont accès à votre calendrier ou à vos rendez-vous est crucial pour protéger votre vie privée et votre emploi du temps. Cela vous aide à contrôler qui peut voir et potentiellement abuser de vos informations sensibles sur les rendez-vous, à prévenir les accès non autorisés et à gérer l'utilisation des données.",
-        "Solution": 
-        [   
-            "Aucune application n'a l'autorisation de rendez-vous, aucune action n'est donc nécessaire."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "100": {
-        "Name": "Applications avec autorisation de contacts",
-        "Type": "Confidentialité",
-        "Information": "Comprendre quelles applications ont accès à vos contacts sur votre ordinateur Windows est bon pour protéger votre vie privée. Cela vous permet de contrôler qui peut voir et potentiellement abuser de vos informations de contact, de prévenir les accès non autorisés et de gérer l'utilisation des données.",
-        "Solution": 
-        [   
-            "Sélectionnez Démarrer > Paramètres > Confidentialité et sécurité.", 
-            "Ici, vous pouvez sélectionner les contacts pour voir quelles applications ont accès et révoquer l'accès pour certaines applications."
-        ],
-        "SolutionWindows10": 
-        [   
-            "Allez dans Démarrer > Paramètres > Confidentialité > Contacts.", 
-            "Ici, vous pouvez sélectionner les contacts pour voir quelles applications y ont accès, et vous pouvez révoquer l'accès pour certaines applications."
-        ],
-        "Screenshots":
-        [
-            "applications-with-contacts-permission/contacts-permissions-1.png",
-            "applications-with-contacts-permission/contacts-permissions-2.png"
-        ] 
-    },
-    "101": {
-        "Name": "Applications avec autorisation de contacts",
-        "Type": "Confidentialité",
-        "Information": "Comprendre quelles applications ont accès à vos contacts sur votre ordinateur Windows est bon pour protéger votre vie privée. Cela vous permet de contrôler qui peut voir et potentiellement abuser de vos informations de contact, de prévenir les accès non autorisés et de gérer l'utilisation des données.",
-        "Solution": 
-        [   
-            "Aucune application n'a l'autorisation de contacts, aucune action n'est donc nécessaire."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "110": {
-        "Name": "Ports ouverts",
-        "Type": "Sécurité",
-        "Information": "Un port ouvert est un port qui permet la réception de paquets de données. Certaines applications nécessitent des ports spécifiques pour recevoir des données, de sorte que la présence de ports ouverts ne présente pas de risques en soi. Cependant, certains ports peuvent manquer de protection adéquate, permettant potentiellement des communications non autorisées et introduisant des vulnérabilités de sécurité. Il est essentiel de ne laisser les ports ouverts que lorsqu'ils sont activement utilisés et de les fermer lorsqu'ils ne sont pas nécessaires. Étant donné que de nombreux ports ouverts peuvent élargir la surface d'attaque de votre ordinateur, il est conseillé de surveiller régulièrement et de sécuriser les ports réseau de votre système pour atténuer ces risques et maintenir une posture de sécurité robuste.",
-        "Solution": 
-        [   
-            "Pour réduire les risques, assurez-vous que Windows Defender est activé. Cela bloquera certains trafics entrants ou sortants via des ports ouverts. Pour obtenir plus d'informations sur vos ports ouverts, suivez les instructions suivantes.",
-            "Ouvrez une invite de commande en cliquant sur 'Démarrer', en tapant 'cmd' et en appuyant sur 'Entrée'.",
-            "Tapez maintenant 'netstat -ab' et vous verrez une liste des ports ouverts et de leurs programmes correspondants.",
-            "Si vous voyez des programmes ou des ports suspects, vous pouvez les fermer en fermant le programme correspondant."
-        ],
-        "Screenshots":
-        [
-            "devices-connected-via-bluetooth/bluetooth-devices-1.png"
-        ] 
-    },
-    "120": {
-        "Name": "Bureau à distance activé",
-        "Type": "Sécurité",
-        "Information": "Le Bureau à distance est une fonctionnalité intégrée au système d'exploitation Windows qui permet aux utilisateurs d'accéder et de contrôler un autre ordinateur Windows à distance via un réseau ou Internet. Il permet aux utilisateurs de se connecter à un ordinateur distant comme s'ils étaient assis devant, offrant un accès complet au bureau distant, aux applications, aux fichiers et aux ressources. Si vous n'utilisez pas cette fonctionnalité, il est plus sûr de la désactiver.",
-        "Solution": 
-        [   
-            "Accédez à Démarrer > Paramètres > Système > Bureau à distance.", 
-            "Ici, vous pouvez contrôler les paramètres du bureau à distance et désactiver la fonctionnalité."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "121": {
-        "Name": "Bureau à distance désactivé",
-        "Type": "Sécurité",
-        "Information": "Le Bureau à distance est une fonctionnalité intégrée au système d'exploitation Windows qui permet aux utilisateurs d'accéder et de contrôler un autre ordinateur Windows à distance via un réseau ou Internet. Il permet aux utilisateurs de se connecter à un ordinateur distant comme s'ils étaient assis devant, offrant un accès complet au bureau distant, aux applications, aux fichiers et aux ressources. Si vous n'utilisez pas cette fonctionnalité, il est plus sûr de la désactiver.",
-        "Solution": 
-        [   
-            "Le bureau à distance est désactivé, aucune action n'est donc nécessaire."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "130": {
-        "Name": "Toutes les versions de SMB désactivées",
-        "Type": "Sécurité",
-        "Information": "Le protocole SMB (Server Message Block) est utilisé pour partager des fichiers, des imprimantes et d'autres ressources entre des appareils sur un réseau dans des environnements Windows. Assurer que les paramètres SMB de votre ordinateur Windows sont correctement configurés est crucial. Le SMBv1 a de nombreuses vulnérabilités connues et ne devrait donc jamais être utilisé. L'utilisation de SMBv2/v3 est une option plus sûre.",
-        "Solution": 
-        [   
-            "Toutes les versions de SMB sont désactivées, aucune action n'est donc nécessaire."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "131": {
-        "Name": "Version 1 de SMB activée",
-        "Type": "Sécurité",
-        "Information": "Le protocole SMB (Server Message Block) est utilisé pour partager des fichiers, des imprimantes et d'autres ressources entre des appareils sur un réseau dans des environnements Windows. Assurer que les paramètres SMB de votre ordinateur Windows sont correctement configurés est crucial. Le SMBv1 a de nombreuses vulnérabilités connues et ne devrait donc jamais être utilisé. L'utilisation de SMBv2/v3 est une option plus sûre.",
-        "Solution": 
-        [   
-            "Sur votre clavier, appuyez sur 'Windows+R' pour ouvrir la fenêtre Exécuter.", 
-            "Tapez 'Powershell', puis sélectionnez OK.", 
-            "Dans PowerShell, tapez 'Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol' et appuyez sur Entrée.",
-            "Pour terminer, redémarrez votre ordinateur."
-        ],
-        "Screenshots":
-        [
-            "smb-status/smb-1.png",
-            "smb-status/smb-1.png",
-            "smb-status/smb-2.png",
-            "smb-status/smb-2.png"
-        ] 
-    },
-    "132": {
-        "Name": "Version 2 de SMB activée",
-        "Type": "Sécurité",
-        "Information": "Le protocole SMB (Server Message Block) est utilisé pour partager des fichiers, des imprimantes et d'autres ressources entre des appareils sur un réseau dans des environnements Windows. Assurer que les paramètres SMB de votre ordinateur Windows sont correctement configurés est crucial. Le SMBv1 a de nombreuses vulnérabilités connues et ne devrait donc jamais être utilisé. L'utilisation de SMBv2/v3 est une option plus sûre.",
-        "Solution": 
-        [   
-            "La version 2 de SMB est activée, ce qui est une version sécurisée et largement utilisée, aucune action n'est donc nécessaire."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "133": {
-        "Name": "Versions 1 et 2 de SMB activées",
-        "Type": "Sécurité",
-        "Information": "Le protocole SMB (Server Message Block) est utilisé pour partager des fichiers, des imprimantes et d'autres ressources entre des appareils sur un réseau dans des environnements Windows. Assurer que les paramètres SMB de votre ordinateur Windows sont correctement configurés est crucial. Le SMBv1 a de nombreuses vulnérabilités connues et ne devrait donc jamais être utilisé. L'utilisation de SMBv2/v3 est une option plus sûre.",
-        "Solution": 
-        [   
-            "Sur votre clavier, appuyez sur 'Windows+R' pour ouvrir la fenêtre Exécuter.", 
-            "Tapez 'Powershell', puis sélectionnez OK.", 
-            "Dans PowerShell, tapez 'Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol' et appuyez sur Entrée.",
-            "Pour terminer, redémarrez votre ordinateur."
-        ],
-        "Screenshots":
-        [
-            "smb-status/smb-1.png",
-            "smb-status/smb-1.png",
-            "smb-status/smb-2.png",
-            "smb-status/smb-2.png"
-        ] 
-    },
-    "140": {
-        "Name": "Contrôle de compte utilisateur",
-        "Type": "Sécurité",
-        "Information": "Le contrôle de compte utilisateur (UAC) est une fonctionnalité de sécurité introduite dans Windows Vista et présente dans les versions ultérieures du système d'exploitation Windows. Son objectif principal est d'améliorer la sécurité du système d'exploitation en limitant les privilèges des applications et des processus exécutés avec des droits d'utilisateur standard et en nécessitant l'approbation de l'administrateur pour les tâches nécessitant des autorisations élevées.",
-        "Solution": 
-        [   
-            "Sur votre clavier, appuyez sur 'Windows+R' pour ouvrir la fenêtre Exécuter.", 
-            "Tapez 'Panneau de configuration', puis sélectionnez OK.", 
-            "Sélectionnez 'Comptes d'utilisateurs' ou 'Comptes d'utilisateurs et protection des utilisateurs'.",
-            "Sélectionnez 'Modifier les paramètres de contrôle de compte d'utilisateur'. Si vous êtes invité par l'UAC, sélectionnez 'Oui' pour continuer.",
-            "Ici, vous pouvez déplacer le curseur sur 'Toujours m'avertir' pour activer l'UAC. Si vous êtes invité par l'UAC, sélectionnez 'Oui' pour continuer.",
-            "Pour terminer, redémarrez votre ordinateur."
-        ],
-        "SolutionWindows10": 
-        [   
-            "Les paramètres du contrôle de compte utilisateur sont activés pour les applications, le régler sur toujours notifier est une option plus sûre. Pour activer UAC, suivez ces étapes",
-            "Sur votre clavier, appuyez sur 'Windows+R' pour ouvrir la fenêtre Exécuter.", 
-            "Tapez 'Panneau de configuration', puis sélectionnez OK.",
-            "Sélectionnez 'Comptes d'utilisateurs'.",
-            "Sélectionnez à nouveau 'Comptes d'utilisateurs'.",
-            "Sélectionnez 'Modifier les paramètres de contrôle de compte utilisateur'. Si UAC vous y invite, sélectionnez 'Oui' pour continuer.",
-            "Ici, vous pouvez déplacer le curseur sur 'Toujours notifier' pour activer UAC. Si UAC vous y invite, sélectionnez 'Oui' pour continuer.",
-            "Pour finir, redémarrez votre ordinateur."
-        ],
-        "Screenshots":
-        [
-            "user-account-control/user-account-control-1.png",
-            "user-account-control/user-account-control-2.png",
-            "user-account-control/user-account-control-2.png",
-            "user-account-control/user-account-control-3.png",
-            "user-account-control/user-account-control-5.png",
-            "user-account-control/user-account-control-5.png"
-        ] 
-    },
-    "141": {
-        "Name": "Contrôle de compte utilisateur",
-        "Type": "Sécurité",
-        "Information": "Le contrôle de compte utilisateur (UAC) est une fonctionnalité de sécurité introduite dans Windows Vista et présente dans les versions ultérieures du système d'exploitation Windows. Son objectif principal est d'améliorer la sécurité du système d'exploitation en limitant les privilèges des applications et des processus exécutés avec des droits d'utilisateur standard et en nécessitant l'approbation de l'administrateur pour les tâches nécessitant des autorisations élevées.",
-        "Solution": 
-        [   
-           "Les paramètres de contrôle de compte utilisateur sont réglés sur 'Toujours m'avertir', aucune action n'est donc nécessaire."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "142": {
-        "Name": "Contrôle de compte utilisateur",
-        "Type": "Sécurité",
-        "Information": "Le contrôle de compte utilisateur (UAC) est une fonctionnalité de sécurité introduite dans Windows Vista et présente dans les versions ultérieures du système d'exploitation Windows. Son objectif principal est d'améliorer la sécurité du système d'exploitation en limitant les privilèges des applications et des processus exécutés avec des droits d'utilisateur standard et en nécessitant l'approbation de l'administrateur pour les tâches nécessitant des autorisations élevées.",
-        "Solution": 
-        [   "Les paramètres de contrôle de compte utilisateur sont activés pour les applications, le réglage sur toujours m'avertir est une option plus sûre. Pour activer l'UAC, suivez ces étapes.",
-            "Sur votre clavier, appuyez sur 'Windows+R' pour ouvrir la fenêtre Exécuter.", 
-            "Tapez 'Panneau de configuration', puis sélectionnez OK.",
-            "Sélectionnez 'Comptes d'utilisateurs' ou 'Comptes d'utilisateurs et protection des utilisateurs'.",
-            "Sélectionnez 'Modifier les paramètres de contrôle de compte d'utilisateur'. Si vous êtes invité par l'UAC, sélectionnez 'Oui' pour continuer.",
-            "Ici, vous pouvez déplacer le curseur sur 'Toujours m'avertir' pour activer l'UAC. Si vous êtes invité par l'UAC, sélectionnez 'Oui' pour continuer.",
-            "Pour terminer, redémarrez votre ordinateur."
-        ],
-        "SolutionWindows10": 
-        [   
-            "Les paramètres du contrôle de compte utilisateur sont activés pour les applications, le régler sur toujours notifier est une option plus sûre. Pour activer UAC, suivez ces étapes",
-            "Sur votre clavier, appuyez sur 'Windows+R' pour ouvrir la fenêtre Exécuter.", 
-            "Tapez 'Panneau de configuration', puis sélectionnez OK.",
-            "Sélectionnez 'Comptes d'utilisateurs'.",
-            "Sélectionnez à nouveau 'Comptes d'utilisateurs'.",
-            "Sélectionnez 'Modifier les paramètres de contrôle de compte utilisateur'. Si UAC vous y invite, sélectionnez 'Oui' pour continuer.",
-            "Ici, vous pouvez déplacer le curseur sur 'Toujours notifier' pour activer UAC. Si UAC vous y invite, sélectionnez 'Oui' pour continuer.",
-            "Pour finir, redémarrez votre ordinateur."
-        ],
-        "Screenshots":
-        [
-            "user-account-control/user-account-control-1.png",
-            "user-account-control/user-account-control-1.png",
-            "user-account-control/user-account-control-2.png",
-            "user-account-control/user-account-control-2.png",
-            "user-account-control/user-account-control-3.png",
-            "user-account-control/user-account-control-5.png",
-            "user-account-control/user-account-control-5.png"
-        ] 
-    },
-    "143": {
-        "Name": "Contrôle de compte utilisateur",
-        "Type": "Sécurité",
-        "Information": "Le contrôle de compte utilisateur (UAC) est une fonctionnalité de sécurité introduite dans Windows Vista et présente dans les versions ultérieures du système d'exploitation Windows. Son objectif principal est d'améliorer la sécurité du système d'exploitation en limitant les privilèges des applications et des processus exécutés avec des droits d'utilisateur standard et en nécessitant l'approbation de l'administrateur pour les tâches nécessitant des autorisations élevées.",
-        "Solution": 
-        [   "Le statut des paramètres de contrôle de compte utilisateur est inconnu, pour vérifier le statut et potentiellement résoudre le problème du contrôle de compte utilisateur, suivez ces étapes.",
-            "Sur votre clavier, appuyez sur 'Windows+R' pour ouvrir la fenêtre Exécuter.", 
-            "Tapez 'Panneau de configuration', puis sélectionnez OK.",
-            "Sélectionnez 'Comptes d'utilisateurs' ou 'Comptes d'utilisateurs et protection des utilisateurs'.",
-            "Sélectionnez 'Modifier les paramètres de contrôle de compte d'utilisateur'. Si vous êtes invité par l'UAC, sélectionnez 'Oui' pour continuer.",
-            "Ici, vous pouvez déplacer le curseur sur 'Toujours m'avertir' pour activer l'UAC. Si vous êtes invité par l'UAC, sélectionnez 'Oui' pour continuer.",
-            "Pour terminer, redémarrez votre ordinateur."
-        ],
-        "SolutionWindows10": 
-        [   
-            "Les paramètres du contrôle de compte utilisateur sont activés pour les applications, le régler sur toujours notifier est une option plus sûre. Pour activer UAC, suivez ces étapes",
-            "Sur votre clavier, appuyez sur 'Windows+R' pour ouvrir la fenêtre Exécuter.", 
-            "Tapez 'Panneau de configuration', puis sélectionnez OK.",
-            "Sélectionnez 'Comptes d'utilisateurs'.",
-            "Sélectionnez à nouveau 'Comptes d'utilisateurs'.",
-            "Sélectionnez 'Modifier les paramètres de contrôle de compte utilisateur'. Si UAC vous y invite, sélectionnez 'Oui' pour continuer.",
-            "Ici, vous pouvez déplacer le curseur sur 'Toujours notifier' pour activer UAC. Si UAC vous y invite, sélectionnez 'Oui' pour continuer.",
-            "Pour finir, redémarrez votre ordinateur."
-        ],
-        "Screenshots":
-        [
-            "user-account-control/user-account-control-1.png",
-            "user-account-control/user-account-control-1.png",
-            "user-account-control/user-account-control-2.png",
-            "user-account-control/user-account-control-2.png",
-            "user-account-control/user-account-control-3.png",
-            "user-account-control/user-account-control-5.png",
-            "user-account-control/user-account-control-5.png"
-        ] 
-    },
-    "150": {
-        "Name": "Windows Defender et analyse activés",
-        "Type": "Sécurité",
-        "Information": "Windows Defender surveille en permanence votre système pour toute activité suspecte, y compris les logiciels malveillants, les virus et autres formes de logiciels malveillants. En l'ayant activé, vous bénéficiez d'une défense active contre les menaces potentielles qui pourraient compromettre votre vie privée ou votre sécurité. Il reçoit également des mises à jour régulières de Microsoft pour rester à jour avec les dernières menaces de sécurité et vulnérabilités. En le gardant activé, vous assurez que votre ordinateur est protégé contre les nouvelles menaces qui pourraient exploiter des faiblesses de sécurité connues.",
-        "Solution": 
-        [
-            "Windows Defender et l'analyse périodique sont activés, aucune action n'est donc nécessaire."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "151": {
-        "Name": "Analyse de Windows Defender désactivée",
-        "Type": "Sécurité",
-        "Information": "Windows Defender surveille en permanence votre système pour toute activité suspecte, y compris les logiciels malveillants, les virus et autres formes de logiciels malveillants. En l'ayant activé, vous bénéficiez d'une défense active contre les menaces potentielles qui pourraient compromettre votre vie privée ou votre sécurité. Il reçoit également des mises à jour régulières de Microsoft pour rester à jour avec les dernières menaces de sécurité et vulnérabilités. En le gardant activé, vous assurez que votre ordinateur est protégé contre les nouvelles menaces qui pourraient exploiter des faiblesses de sécurité connues.",
-        "Solution": 
-        [
-            "Ouvrez l'application de sécurité Windows.", 
-            "Sélectionnez Protection contre les virus et menaces.", 
-            "Sous Paramètres de protection contre les virus et menaces, sélectionnez Gérer les paramètres.", 
-            "Activez le commutateur sous Protection en temps réel."
-        ],
-        "Screenshots":
-        [
-            "windows-defender/windows-defender-1.png",
-            "windows-defender/windows-defender-1.png",
-            "windows-defender/windows-defender-1.png",
-            "windows-defender/windows-defender-1.png"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "windows-defender/windows-defender-1.png",
-            "windows-defender/windows-defender-2.png",
-            "windows-defender/windows-defender-3.png",
-            "windows-defender/windows-defender-4.png"
-        ]
-    },
-    "152": {
-        "Name": "Windows Defender win désactivé",
-        "Type": "Sécurité",
-        "Information": "Windows Defender surveille en permanence votre système pour toute activité suspecte, y compris les logiciels malveillants, les virus et autres formes de logiciels malveillants. En l'ayant activé, vous bénéficiez d'une défense active contre les menaces potentielles qui pourraient compromettre votre vie privée ou votre sécurité. Il reçoit également des mises à jour régulières de Microsoft pour rester à jour avec les dernières menaces de sécurité et vulnérabilités. En le gardant activé, vous assurez que votre ordinateur est protégé contre les nouvelles menaces qui pourraient exploiter des faiblesses de sécurité connues.",
-        "Solution": 
-        [
-            "Ouvrez l'application de sécurité Windows.", 
-            "Sélectionnez Protection contre les virus et menaces.", 
-            "Sous Paramètres de protection contre les virus et menaces, sélectionnez Gérer les paramètres.", 
-            "Activez le commutateur sous Protection en temps réel."
-        ],
-        "Screenshots":
-        [
-            "windows-defender/windows-defender-1.png",
-            "windows-defender/windows-defender-1.png",
-            "windows-defender/windows-defender-1.png",
-            "windows-defender/windows-defender-1.png"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "windows-defender/windows-defender-1.png",
-            "windows-defender/windows-defender-2.png",
-            "windows-defender/windows-defender-3.png",
-            "windows-defender/windows-defender-4.png"
-        ]
-    },
-    "153": {
-        "Name": "Windows Defender désactivé",
-        "Type": "Sécurité",
-        "Information": "Windows Defender surveille en permanence votre système pour toute activité suspecte, y compris les logiciels malveillants, les virus et autres formes de logiciels malveillants. En l'ayant activé, vous bénéficiez d'une défense active contre les menaces potentielles qui pourraient compromettre votre vie privée ou votre sécurité. Il reçoit également des mises à jour régulières de Microsoft pour rester à jour avec les dernières menaces de sécurité et vulnérabilités. En le gardant activé, vous assurez que votre ordinateur est protégé contre les nouvelles menaces qui pourraient exploiter des faiblesses de sécurité connues.",
-        "Solution": 
-        [
-            "Ouvrez l'application de sécurité Windows.", 
-            "Sélectionnez Protection contre les virus et menaces.", 
-            "Sous Paramètres de protection contre les virus et menaces, sélectionnez Gérer les paramètres.", 
-            "Activez le commutateur sous Protection en temps réel."
-        ],
-        "Screenshots":
-        [
-            "windows-defender/windows-defender-1.png",
-            "windows-defender/windows-defender-1.png",
-            "windows-defender/windows-defender-1.png",
-            "windows-defender/windows-defender-1.png"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "windows-defender/windows-defender-1.png",
-            "windows-defender/windows-defender-2.png",
-            "windows-defender/windows-defender-3.png",
-            "windows-defender/windows-defender-4.png"
-        ]
-    },
-    "154": {
-        "Name": "Statut de Windows Defender inconnu",
-        "Type": "Sécurité",
-        "Information": "Windows Defender surveille en permanence votre système pour toute activité suspecte, y compris les logiciels malveillants, les virus et autres formes de logiciels malveillants. En l'ayant activé, vous bénéficiez d'une défense active contre les menaces potentielles qui pourraient compromettre votre vie privée ou votre sécurité. Il reçoit également des mises à jour régulières de Microsoft pour rester à jour avec les dernières menaces de sécurité et vulnérabilités. En le gardant activé, vous assurez que votre ordinateur est protégé contre les nouvelles menaces qui pourraient exploiter des faiblesses de sécurité connues.",
-        "Solution": 
-        [
-            "Le statut de Windows Defender est inconnu, pour vérifier le statut et potentiellement résoudre le problème de Windows Defender, suivez ces étapes.",
-            "Ouvrez l'application de sécurité Windows.", 
-            "Sélectionnez Protection contre les virus et menaces.", 
-            "Sous Paramètres de protection contre les virus et menaces, sélectionnez Gérer les paramètres.", 
-            "Activez le commutateur sous Protection en temps réel."
-        ],
-        "Screenshots":
-        [
-            "windows-defender/windows-defender-1.png",
-            "windows-defender/windows-defender-1.png",
-            "windows-defender/windows-defender-1.png",
-            "windows-defender/windows-defender-1.png",
-            "windows-defender/windows-defender-1.png"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "windows-defender/windows-defender-1.png",
-            "windows-defender/windows-defender-1.png",
-            "windows-defender/windows-defender-2.png",
-            "windows-defender/windows-defender-3.png",
-            "windows-defender/windows-defender-4.png"
-        ]
-    },
-    "160": {
-        "Name": "Dernier changement de mot de passe il y a plus de 6 mois",
-        "Type": "Sécurité",
-        "Information": "Changer régulièrement votre mot de passe réduit la probabilité d'accès non autorisé à votre ordinateur ou à des informations sensibles. Si quelqu'un parvient à obtenir votre mot de passe, le changer régulièrement limite le temps dont il dispose pour l'exploiter. Il est donc bon de prendre l'habitude de changer votre mot de passe au moins deux fois par an.",
-        "Solution": 
-        [   
-            "Accédez à Démarrer > Modifier votre mot de passe.", 
-            "Ouvrez la section 'Mot de passe' et cliquez sur le bouton 'modifier'.",
-            "Vous pouvez maintenant changer votre mot de passe pour un nouveau et unique."
-        ],
-        "Screenshots":
-        [
-            "last-password-change/change-password-1.png",
-            "last-password-change/change-password-2.png",
-            "last-password-change/change-password-2.png"
-        ] 
-    },
-    "161": {
-        "Name": "Dernier changement de mot de passe récent",
-        "Type": "Sécurité",
-        "Information": "Changer régulièrement votre mot de passe réduit la probabilité d'accès non autorisé à votre ordinateur ou à des informations sensibles. Si quelqu'un parvient à obtenir votre mot de passe, le changer régulièrement limite le temps dont il dispose pour l'exploiter. Il est donc bon de prendre l'habitude de changer votre mot de passe au moins deux fois par an.",
-        "Solution": 
-        [   
-            "Vous avez récemment changé votre mot de passe, aucune action n'est donc nécessaire."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "170": {
-        "Name": "Aucune méthode de connexion Windows configurée",
-        "Type": "Sécurité",
-        "Information": "Utiliser une méthode de connexion Windows sécurisée est important. Windows prend en charge diverses méthodes de connexion telles qu'un mot de passe, un code PIN, une clé de sécurité ou une empreinte digitale. Utiliser l'une de ces méthodes de connexion est important pour protéger vos données. Sans l'une de ces méthodes de connexion, n'importe qui peut déverrouiller votre appareil et accéder à vos données. Vous n'utilisez pas de méthode de connexion / une méthode de connexion moins sécurisée / une combinaison de méthodes de connexion, il est recommandé de passer à une méthode de connexion plus sécurisée comme un mot de passe ou une empreinte digitale.",
-        "Solution": 
-        [   
-            "Accédez à Démarrer > Paramètres > Comptes > Options de connexion.", 
-            "Vous pouvez maintenant configurer l'une des méthodes de connexion disponibles en suivant les étapes décrites."
-        ],
-        "Screenshots":
-        [
-            "windows-login-method/login-method-1.png",
-            "windows-login-method/login-method-2.png"
-        ] 
-    },
-    "171": {
-        "Name": "Connexion Windows avec méthode de connexion sécurisée",
-        "Type": "Sécurité",
-        "Information": "Utiliser une méthode de connexion Windows sécurisée est important. Windows prend en charge diverses méthodes de connexion telles qu'un mot de passe, un code PIN, une clé de sécurité ou une empreinte digitale. Utiliser l'une de ces méthodes de connexion est important pour protéger vos données. Sans l'une de ces méthodes de connexion, n'importe qui peut déverrouiller votre appareil et accéder à vos données.",
-        "Solution": 
-        [   
-            "Vous utilisez une méthode de connexion sécurisée, aucune action n'est nécessaire."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "173": {
-        "Name": "Connexion Windows avec méthode de connexion moins sécurisée",
-        "Type": "Sécurité",
-        "Information": "Utiliser une méthode de connexion Windows sécurisée est important. Windows prend en charge diverses méthodes de connexion telles qu'un mot de passe, un code PIN, une clé de sécurité ou une empreinte digitale. Utiliser l'une de ces méthodes de connexion est important pour protéger vos données. Sans l'une de ces méthodes de connexion, n'importe qui peut déverrouiller votre appareil et accéder à vos données. Vous utilisez une méthode de connexion moins sécurisée / une combinaison de méthodes de connexion comme indiqué ci-dessous, il est recommandé de passer à une méthode de connexion plus sécurisée comme un mot de passe ou une empreinte digitale.",
-        "Solution": 
-        [   
-            "Accédez à Démarrer > Paramètres > Comptes > Options de connexion.", 
-            "Vous pouvez maintenant configurer l'une des méthodes de connexion disponibles en suivant les étapes décrites."
-        ],
-        "Screenshots":
-        [
-            "windows-login-method/login-method-1.png",
-            "windows-login-method/login-method-2.png"
-        ] 
-    },
-    "180": {
-        "Name": "Version de Windows à jour",
-        "Type": "Sécurité",
-        "Information": "Les versions obsolètes de Windows peuvent contenir des vulnérabilités de sécurité non corrigées qui pourraient être exploitées par des attaquants pour compromettre le système. Les hackers recherchent activement et exploitent les vulnérabilités des systèmes d'exploitation obsolètes, ce qui peut entraîner un accès non autorisé, des violations de données et des infections par des logiciels malveillants.",
-        "Solution": 
-        [
-            "Votre version de Windows est à jour, aucune action n'est donc nécessaire."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "181": {
-        "Name": "Version de Windows légèrement obsolète",
-        "Type": "Sécurité",
-        "Information": "Les versions obsolètes de Windows peuvent contenir des vulnérabilités de sécurité non corrigées qui pourraient être exploitées par des attaquants pour compromettre le système. Les hackers recherchent activement et exploitent les vulnérabilités des systèmes d'exploitation obsolètes, ce qui peut entraîner un accès non autorisé, des violations de données et des infections par des logiciels malveillants.",
-        "Solution": 
-        [
-            "Accédez à Démarrer > Paramètres > Windows Update.",
-            "Ici, vous pouvez vérifier et installer les mises à jour."
-        ],
-        "Screenshots":
-        [
-            "outdated-windows-version/windows-update-1.png",
-            "outdated-windows-version/windows-update-2.png"
-        ] 
-    },
-    "182": {
-        "Name": "Version de Windows obsolète",
-        "Type": "Sécurité",
-        "Information": "Les versions obsolètes de Windows peuvent contenir des vulnérabilités de sécurité non corrigées qui pourraient être exploitées par des attaquants pour compromettre le système. Les hackers recherchent activement et exploitent les vulnérabilités des systèmes d'exploitation obsolètes, ce qui peut entraîner un accès non autorisé, des violations de données et des infections par des logiciels malveillants.",
-        "Solution": 
-        [
-            "Accédez à Démarrer > Paramètres > Windows Update.",
-            "Ici, vous pouvez vérifier et installer les mises à jour."
-        ],
-        "Screenshots":
-        [
-            "outdated-windows-version/windows-update-1.png",
-            "outdated-windows-version/windows-update-2.png"
-        ] 
-    },
-    "190": {
-        "Name": "Démarrage sécurisé désactivé",
-        "Type": "Sécurité",
-        "Information": "Le démarrage sécurisé garantit que seuls les composants logiciels de confiance, signés avec des signatures numériques reconnues, sont chargés lors du processus de démarrage. Cela empêche les logiciels malveillants et autres logiciels non autorisés de modifier le processus de démarrage et de prendre le contrôle du système à un stade précoce.",
-        "Solution": 
-        [   
-            "Redémarrez votre ordinateur et accédez aux paramètres BIOS/UEFI. Cela se fait généralement en appuyant sur une touche spécifique lors du processus de démarrage. Les touches courantes pour accéder aux paramètres BIOS/UEFI incluent F2, Suppr, Échap ou F10. La touche spécifique varie en fonction du fabricant de votre ordinateur.", 
-            "Une fois que vous êtes dans les paramètres BIOS/UEFI, naviguez vers la section relative au démarrage sécurisé. Cette section peut porter un nom différent selon le fabricant de votre système et la version du BIOS/UEFI.",
-            "Dans la section Démarrage sécurisé, vous devriez trouver une option pour activer le démarrage sécurisé. Sélectionnez cette option et définissez-la sur 'Activé'. Certains systèmes peuvent nécessiter de définir un mode de démarrage sécurisé ou de choisir l'option de gestion des clés de démarrage sécurisé. Suivez les instructions à l'écran pour activer le démarrage sécurisé.",
-            "Après avoir activé le démarrage sécurisé, enregistrez les modifications dans les paramètres BIOS/UEFI et quittez. En général, vous pouvez le faire en sélectionnant l'option 'Enregistrer et quitter' ou 'Quitter'. Confirmez les invites pour enregistrer les modifications et redémarrez votre ordinateur."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "191": {
-        "Name": "Démarrage sécurisé activé",
-        "Type": "Sécurité",
-        "Information": "Le démarrage sécurisé garantit que seuls les composants logiciels de confiance, signés avec des signatures numériques reconnues, sont chargés lors du processus de démarrage. Cela empêche les logiciels malveillants et autres logiciels non autorisés de modifier le processus de démarrage et de prendre le contrôle du système à un stade précoce.",
-        "Solution": 
-        [   
-            "Le démarrage sécurisé est activé, aucune action n'est donc nécessaire."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "192": {
-        "Name": "Statut du démarrage sécurisé inconnu",
-        "Type": "Sécurité",
-        "Information": "Le démarrage sécurisé garantit que seuls les composants logiciels de confiance, signés avec des signatures numériques reconnues, sont chargés lors du processus de démarrage. Cela empêche les logiciels malveillants et autres logiciels non autorisés de modifier le processus de démarrage et de prendre le contrôle du système à un stade précoce.",
-        "Solution": 
-        [   
-            "Le statut du démarrage sécurisé est inconnu, pour vérifier le statut et potentiellement résoudre le problème du démarrage sécurisé, suivez ces étapes.",
-            "Redémarrez votre ordinateur et accédez aux paramètres BIOS/UEFI. Cela se fait généralement en appuyant sur une touche spécifique lors du processus de démarrage. Les touches courantes pour accéder aux paramètres BIOS/UEFI incluent F2, Suppr, Échap ou F10. La touche spécifique varie en fonction du fabricant de votre ordinateur.", 
-            "Une fois que vous êtes dans les paramètres BIOS/UEFI, naviguez vers la section relative au démarrage sécurisé. Cette section peut porter un nom différent selon le fabricant de votre système et la version du BIOS/UEFI.",
-            "Dans la section Démarrage sécurisé, vous devriez trouver une option pour activer le démarrage sécurisé. Sélectionnez cette option et définissez-la sur 'Activé'. Certains systèmes peuvent nécessiter de définir un mode de démarrage sécurisé ou de choisir l'option de gestion des clés de démarrage sécurisé. Suivez les instructions à l'écran pour activer le démarrage sécurisé.",
-            "Après avoir activé le démarrage sécurisé, enregistrez les modifications dans les paramètres BIOS/UEFI et quittez. En général, vous pouvez le faire en sélectionnant l'option 'Enregistrer et quitter' ou 'Quitter'. Confirmez les invites pour enregistrer les modifications et redémarrez votre ordinateur."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "200": {
-        "Name": "Aucune application qui démarre au démarrage",
-        "Type": "Sécurité",
-        "Information": "Lorsque vous démarrez votre ordinateur, plusieurs applications se lancent automatiquement. Certaines de ces applications sont des processus essentiels au bon fonctionnement du système, tandis que d'autres sont pratiques à avoir au démarrage. Cependant, il peut également y avoir des applications qui démarrent lors du démarrage sans votre connaissance. Il est sage de désactiver ces applications pour éviter toute action non autorisée et améliorer la vitesse du processus de démarrage de votre ordinateur.",
-        "Solution": 
-        [   
-            "Aucune application ne démarre au démarrage, aucune action n'est donc nécessaire."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "201": {
-        "Name": "Applications qui démarrent au démarrage",
-        "Type": "Sécurité",
-        "Information": "Lorsque vous démarrez votre ordinateur, plusieurs applications se lancent automatiquement. Certaines de ces applications sont des processus essentiels au bon fonctionnement du système, tandis que d'autres sont pratiques à avoir au démarrage. Cependant, il peut également y avoir des applications qui démarrent lors du démarrage sans votre connaissance. Il est sage de désactiver ces applications pour éviter toute action non autorisée et améliorer la vitesse du processus de démarrage de votre ordinateur.",
-        "Solution": 
-        [   
-            "Accédez à Démarrer > Paramètres > Applications > Démarrage.", 
-            "Ici, vous pouvez choisir quelles applications démarrent automatiquement lors du démarrage."
-        ],
-        "Screenshots":
-        [
-            "applications-which-start-at-boot/boot-apps-1.png",
-            "applications-which-start-at-boot/boot-apps-2.png"
-        ] 
-    },
-    "210": {
-        "Name": "Google Chrome avec un bloqueur de publicités installé",
-        "Type": "Confidentialité",
-        "Information": "Les bloqueurs de publicités protègent les utilisateurs contre les publicités en ligne. Grâce à leurs filtres et algorithmes, ils offrent une navigation sans interruption, épargnant aux utilisateurs l'encombrement visuel et les risques de sécurité potentiels posés par les publicités.",
-        "Solution": 
-        [   		
-            "Ouvrez Google Chrome et accédez au Chrome Store.", 
-			"Recherchez un bloqueur de publicités dans la barre de recherche (par exemple : AdBlock Plus ou uBlock Origin).",
-			"Cliquez sur le bouton 'Ajouter à Chrome' et redémarrez le navigateur."
-        ],
-        "Screenshots":
-        [
-            "chrome-adblocker/chrome-adblocker-1.png",
-            "chrome-adblocker/chrome-adblocker-2.png",
-            "chrome-adblocker/chrome-adblocker-3.png"
-        ]
-    },
-    "211": {
-        "Name": "Google Chrome sans bloqueur de publicités installé",
-        "Type": "Confidentialité",
-        "Information": "Les bloqueurs de publicités protègent les utilisateurs contre les publicités en ligne. Grâce à leurs filtres et algorithmes, ils offrent une navigation sans interruption, épargnant aux utilisateurs l'encombrement visuel et les risques de sécurité potentiels posés par les publicités.",
-        "Solution": 
-        [   		
-            "Ouvrez Google Chrome et accédez au Chrome Store.", 
-			"Recherchez un bloqueur de publicités dans la barre de recherche (par exemple : AdBlock Plus ou uBlock Origin).",
-			"Cliquez sur le bouton 'Ajouter à Chrome' et redémarrez le navigateur."
-        ],
-        "Screenshots":
-        [
-            "chrome-adblocker/chrome-adblocker-1.png",
-            "chrome-adblocker/chrome-adblocker-2.png",
-            "chrome-adblocker/chrome-adblocker-3.png"
-        ]
-    },
-    "220": {
-        "Name": "Microsoft Edge avec un bloqueur de publicités installé",
-        "Type": "Confidentialité",
-        "Information": "Les bloqueurs de publicités protègent les utilisateurs contre les publicités en ligne. Grâce à leurs filtres et algorithmes, ils offrent une navigation sans interruption, épargnant aux utilisateurs l'encombrement visuel et les risques de sécurité potentiels posés par les publicités.",
-        "Solution": 
-        [   		
-            "Ouvrez Microsoft Edge et accédez aux Extensions Microsoft Edge.", 
-			"Recherchez un bloqueur de publicités dans la barre de recherche (par exemple : AdBlock Plus ou uBlock Origin).",
-			"Cliquez sur le bouton 'Télécharger' et redémarrez le navigateur."
-        ],
-        "Screenshots":
-        [
-            "edge-adblocker/edge-adblocker-1.png",
-            "edge-adblocker/edge-adblocker-2.png",
-            "edge-adblocker/edge-adblocker-3.png"
-        ]
-    },
-    "221": {
-        "Name": "Microsoft Edge sans bloqueur de publicités installé",
-        "Type": "Confidentialité",
-        "Information": "Les bloqueurs de publicités protègent les utilisateurs contre les publicités en ligne. Grâce à leurs filtres et algorithmes, ils offrent une navigation sans interruption, épargnant aux utilisateurs l'encombrement visuel et les risques de sécurité potentiels posés par les publicités.",
-        "Solution": 
-        [   		
-            "Ouvrez Microsoft Edge et accédez aux Extensions Microsoft Edge.", 
-			"Recherchez un bloqueur de publicités dans la barre de recherche (par exemple : AdBlock Plus ou uBlock Origin).",
-			"Cliquez sur le bouton 'Télécharger' et redémarrez le navigateur."
-        ],
-        "Screenshots":
-        [
-            "edge-adblocker/edge-adblocker-1.png",
-            "edge-adblocker/edge-adblocker-2.png",
-            "edge-adblocker/edge-adblocker-3.png"
-        ]
-    },
-    "230": {
-        "Name": "Domaines de phishing potentiels trouvés sur Google Chrome",
-        "Type": "Confidentialité",
-        "Information": "Les domaines de phishing sont de faux sites Web conçus pour tromper les gens afin qu'ils partagent des informations sensibles comme des mots de passe ou des détails de carte de crédit. Ils ressemblent à des sites réels, imitant des marques ou des organisations de confiance. Ces escroqueries exploitent la confiance et la curiosité pour voler des données personnelles.",
-        "Solution": 
-        [   		
-            "Soyez prudent en naviguant sur Internet car des sites Web de confiance peuvent être facilement imités. De plus, il existe de nombreux sites Web aux intentions malveillantes. En cas de doute ou de navigation active sur un site Web potentiellement de phishing, il est conseillé de changer votre mot de passe."
-        ],
-        "Screenshots":
-        [
-            "TOBEFILLED"
-        ]
-    },	
-    "231": {
-        "Name": "Aucun domaine de phishing potentiel trouvé sur Google Chrome",
-        "Type": "Confidentialité",
-        "Information": "Les domaines de phishing sont de faux sites Web conçus pour tromper les gens afin qu'ils partagent des informations sensibles comme des mots de passe ou des détails de carte de crédit. Ils ressemblent à des sites réels, imitant des marques ou des organisations de confiance. Ces escroqueries exploitent la confiance et la curiosité pour voler des données personnelles.",
-        "Solution": 
-        [   		
-            "Soyez prudent en naviguant sur Internet car des sites Web de confiance peuvent être facilement imités. De plus, il existe de nombreux sites Web aux intentions malveillantes. En cas de doute ou de navigation active sur un site Web potentiellement de phishing, il est conseillé de changer votre mot de passe."
-        ],
-        "Screenshots":
-        [
-        ]
-    },	
-    "240": {
-        "Name": "Domaines de phishing potentiels trouvés sur Microsoft Edge",
-        "Type": "Confidentialité",
-        "Information": "Les domaines de phishing sont de faux sites Web conçus pour tromper les gens afin qu'ils partagent des informations sensibles comme des mots de passe ou des détails de carte de crédit. Ils ressemblent à des sites réels, imitant des marques ou des organisations de confiance. Ces escroqueries exploitent la confiance et la curiosité pour voler des données personnelles.",
-        "Solution": 
-        [   		
-            "Soyez prudent en naviguant sur Internet car des sites Web de confiance peuvent être facilement imités. De plus, il existe de nombreux sites Web aux intentions malveillantes. En cas de doute ou de navigation active sur un site Web potentiellement de phishing, il est conseillé de changer votre mot de passe."
-        ],
-        "Screenshots":
-        [
-        ]
-    },	
-    "241": {
-        "Name": "Aucun domaine de phishing potentiel trouvé sur Microsoft Edge",
-        "Type": "Confidentialité",
-        "Information": "Les domaines de phishing sont de faux sites Web conçus pour tromper les gens afin qu'ils partagent des informations sensibles comme des mots de passe ou des détails de carte de crédit. Ils ressemblent à des sites réels, imitant des marques ou des organisations de confiance. Ces escroqueries exploitent la confiance et la curiosité pour voler des données personnelles.",
-        "Solution": 
-        [   		
-            "Soyez prudent en naviguant sur Internet car des sites Web de confiance peuvent être facilement imités. De plus, il existe de nombreux sites Web aux intentions malveillantes. En cas de doute ou de navigation active sur un site Web potentiellement de phishing, il est conseillé de changer votre mot de passe."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "250": {
-        "Name": "Moteur de recherche standard dans Google Chrome",
-        "Type": "Confidentialité",
-        "Information": "Un moteur de recherche standard aide les utilisateurs à trouver des informations sur Internet en entrant des mots-clés ou des phrases. Des exemples incluent Google, Bing et Yahoo. Ils sont souvent critiqués pour leur approche de la confidentialité.",
-        "Solution": 
-        [   		
-            "Envisagez d'utiliser un moteur de recherche axé sur la confidentialité des utilisateurs (par exemple DuckDuckGo)."
-        ],
-        "Screenshots":
-        [
-        ]
-    },	
-    "260": {
-        "Name": "Moteur de recherche standard dans Microsoft Edge",
-        "Type": "Confidentialité",
-        "Information": "Un moteur de recherche standard aide les utilisateurs à trouver des informations sur Internet en entrant des mots-clés ou des phrases. Des exemples incluent Google, Bing et Yahoo. Ils sont souvent critiqués pour leur approche de la confidentialité.",
-        "Solution": 
-        [   		
-            "Envisagez d'utiliser un moteur de recherche axé sur la confidentialité des utilisateurs (par exemple DuckDuckGo)."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "270": {
-        "Name": "Cookies stockés par Mozilla Firefox",
-        "Type": "Confidentialité",
-        "Information": "Les cookies sont de petits fichiers texte stockés sur votre ordinateur par les sites Web que vous visitez. Ils sont utilisés pour mémoriser vos préférences, vos informations de connexion et d'autres données pour améliorer votre expérience de navigation. Cependant, les cookies peuvent également être utilisés pour suivre vos activités en ligne et collecter des informations personnelles sans votre consentement, ce qui soulève des préoccupations en matière de confidentialité. Gérer et supprimer régulièrement les cookies permet de protéger votre vie privée et de contrôler les données que les sites Web collectent à votre sujet.",
-        "Solution": 
-        [   		
-            "Ouvrez Mozilla Firefox et cliquez sur le bouton de menu (trois lignes horizontales) dans le coin supérieur droit.",
-            "Sélectionnez 'Options' et accédez à l'onglet 'Vie privée et sécurité'.",
-            "Sous 'Cookies et données de sites', cliquez sur 'Gérer les données'.",
-            "Ici, vous pouvez afficher et supprimer les cookies stockés par les sites Web. Vous pouvez également effacer tous les cookies en cliquant sur 'Tout supprimer'."
-        ],
-        "Screenshots":
-        [
-            "firefox-cookies/cookies-firefox-1.png",
-            "firefox-cookies/cookies-firefox-2.png",
-            "firefox-cookies/cookies-firefox-3.png",
-            "firefox-cookies/cookies-firefox-4.png"
-        ]
-    },
-    "271": {
-        "Name": "Cookies de suivi possibles trouvés dans Mozilla Firefox",
-        "Type": "Confidentialité",
-        "Information": "Les cookies sont de petits fichiers texte stockés sur votre ordinateur par les sites Web que vous visitez. Ils sont utilisés pour mémoriser vos préférences, informations de connexion et autres données afin d'améliorer votre expérience de navigation. Cependant, les cookies peuvent également être utilisés pour suivre vos activités en ligne et collecter des informations personnelles sans votre consentement, ce qui soulève des préoccupations en matière de confidentialité. Gérer et supprimer régulièrement les cookies aide à protéger votre vie privée et à contrôler les données collectées par les sites Web à votre sujet.",
-        "Solution": 
-        [   		
-            "Ouvrez Mozilla Firefox et cliquez sur le bouton de menu (trois lignes horizontales) dans le coin supérieur droit.",
-            "Sélectionnez 'Paramètres' et allez à l'onglet 'Vie privée et sécurité'.",
-            "L'option 'Protection renforcée contre le pistage' doit être réglée sur 'Standard' ou 'Personnalisé'. Le mode personnalisé vous donne plus de contrôle sur ce que vous autorisez ou bloquez. Sous 'Cookies et données de sites', vous pouvez supprimer vos cookies existants et gérer les exceptions. Il est recommandé de supprimer souvent vos cookies pour protéger votre vie privée."
-        ],
-        "Screenshots":
-        [
-        ]
-    },    
-    "280": {
-        "Name": "Extensions installées dans Mozilla Firefox",
-        "Type": "Confidentialité",
-        "Information": "Les extensions de navigateur améliorent la fonctionnalité de votre navigateur Web en ajoutant des fonctionnalités, des outils et des options de personnalisation. Bien que les extensions puissent être utiles, elles peuvent également poser des risques pour la confidentialité et la sécurité si elles ont accès à des données sensibles ou suivent vos activités en ligne sans votre consentement. Examiner et gérer régulièrement vos extensions de navigateur permet de protéger votre vie privée et votre sécurité en ligne. Supprimez les extensions que vous n'utilisez plus ou en lesquelles vous n'avez plus confiance pour minimiser les risques potentiels.",
-        "Solution": 
-        [   		
-            "Ouvrez Mozilla Firefox et cliquez sur le bouton de menu (trois lignes horizontales) dans le coin supérieur droit.",
-            "Sélectionnez 'Modules complémentaires' et accédez à l'onglet 'Extensions'.",
-            "Ici, vous pouvez afficher et gérer les extensions installées dans votre navigateur. Désactivez ou supprimez les extensions que vous n'utilisez plus ou en lesquelles vous n'avez plus confiance."
-        ],
-        "Screenshots":
-        [
-            "firefox-extensions/extensions-firefox-1.png",
-            "firefox-extensions/extensions-firefox-2.png",
-            "firefox-extensions/extensions-firefox-3.png"
-        ]
-    },
-    "290": {
-        "Name": "Mozilla Firefox avec un bloqueur de publicités installé",
-        "Type": "Confidentialité",
-        "Information": "Les bloqueurs de publicités protègent les utilisateurs contre les publicités en ligne. Grâce à leurs filtres et algorithmes, ils offrent une navigation sans interruption, épargnant aux utilisateurs l'encombrement visuel et les risques de sécurité potentiels posés par les publicités.",
-        "Solution": 
-        [   		
-            "Ouvrez Mozilla Firefox et accédez aux Extensions Firefox.", 
-			"Recherchez un bloqueur de publicités dans la barre de recherche (par exemple : AdBlock Plus ou uBlock Origin).",
-			"Cliquez sur le bouton 'Télécharger' et redémarrez le navigateur."
-        ],
-        "Screenshots":
-        [
-        ]
-    },	
-    "291": {
-        "Name": "Mozilla Firefox sans bloqueur de publicités installé",
-        "Type": "Confidentialité",
-        "Information": "Les bloqueurs de publicités protègent les utilisateurs contre les publicités en ligne. Grâce à leurs filtres et algorithmes, ils offrent une navigation sans interruption, épargnant aux utilisateurs l'encombrement visuel et les risques de sécurité potentiels posés par les publicités.",
-        "Solution": 
-        [   		
-            "Ouvrez Mozilla Firefox et accédez aux Extensions Firefox.", 
-			"Recherchez un bloqueur de publicités dans la barre de recherche (par exemple : AdBlock Plus ou uBlock Origin).",
-			"Cliquez sur le bouton 'Télécharger' et redémarrez le navigateur."
-        ],
-        "Screenshots":
-        [
-            "firefox-adblocker/firefox-adblocker-1.png",
-            "firefox-adblocker/firefox-adblocker-2.png",
-            "firefox-adblocker/firefox-adblocker-3.png",
-            "firefox-adblocker/firefox-adblocker-4.png",
-            "firefox-adblocker/firefox-adblocker-5.png"
-        ]
-    },		
-    "300": {
-        "Name": "Moteur de recherche standard dans Mozilla Firefox",
-        "Type": "Confidentialité",
-        "Information": "Un moteur de recherche standard aide les utilisateurs à trouver des informations sur Internet en entrant des mots-clés ou des phrases. Des exemples incluent Google, Bing et Yahoo. Ils sont souvent critiqués pour leur approche de la confidentialité.",
-        "Solution": 
-        [   		
-          "Envisagez d'utiliser un navigateur axé sur la confidentialité des utilisateurs (par exemple DuckDuckGo)."
-        ],
-        "Screenshots":
-        [
-        ]
-    },	
-    "310": {
-        "Name": "Aucun domaine de phishing potentiel trouvé sur Mozilla Firefox",
-        "Type": "Confidentialité",
-        "Information": "Les domaines de phishing sont de faux sites Web conçus pour tromper les gens afin qu'ils partagent des informations sensibles comme des mots de passe ou des détails de carte de crédit. Ils ressemblent à des sites réels, imitant des marques ou des organisations de confiance. Ces escroqueries exploitent la confiance et la curiosité pour voler des données personnelles.",
-        "Solution":
-        [
-        ],
-        "Screenshots":
-        [
-        ]
-    },		
-    "311": {
-        "Name": "Domaines de phishing potentiels trouvés sur Mozilla Firefox",
-        "Type": "Confidentialité",
-        "Information": "Soyez prudent en naviguant sur Internet car des sites Web de confiance peuvent être facilement imités. De plus, il existe de nombreux sites Web aux intentions malveillantes. En cas de doute ou de navigation active sur un site Web potentiellement de phishing, il est conseillé de changer votre mot de passe.",
-        "Solution":
-        [
-            "Soyez prudent en naviguant sur Internet car des sites Web de confiance peuvent être facilement imités. De plus, il existe de nombreux sites Web aux intentions malveillantes. En cas de doute ou de navigation active sur un site Web potentiellement de phishing, il est conseillé de changer votre mot de passe."
-        ],
-        "Screenshots":
-        [
-            "TOBEFILLED"
-        ]
-    },
-    "320": {
-        "Name": "Paramètres de la liste d'audit CIS incorrects",
-        "Type": "Sécurité",
-        "Information": "Le Center for Internet Security (CIS) fournit un ensemble de directives et de meilleures pratiques pour sécuriser les systèmes informatiques. Les paramètres de registre de la liste d'audit CIS aident à garantir que votre système est configuré conformément à ces normes de sécurité. Des paramètres de registre incorrects ou obsolètes peuvent laisser votre système vulnérable aux menaces de sécurité et compromettre votre vie privée.",
-        "Solution":
-        [
-            "Téléchargez le CIS Benchmark pour votre système d'exploitation à partir du site officiel du CIS. Suivez les instructions dans le document de référence pour examiner et mettre à jour les paramètres du registre de votre système afin de les aligner sur les normes de sécurité du CIS. Vérifiez régulièrement les mises à jour du CIS Benchmark et appliquez les modifications ou recommandations pour maintenir une configuration sécurisée."
-        ],
-        "Screenshots":
-        [
-            "TOBEFILLED"
-        ]
-    },
-    "321": {
-        "Name": "Paramètres de la liste d'audit CIS corrects",
-        "Type": "Sécurité",
-        "Information": "Le Center for Internet Security (CIS) fournit un ensemble de directives et de meilleures pratiques pour sécuriser les systèmes informatiques. Les paramètres de registre de la liste d'audit CIS aident à garantir que votre système est configuré conformément à ces normes de sécurité. Des paramètres de registre incorrects ou obsolètes peuvent laisser votre système vulnérable aux menaces de sécurité et compromettre votre vie privée.",
-        "Solution":
-        [
-            "Tous les paramètres adhèrent aux directives de la liste d'audit CIS, aucune action n'est nécessaire."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "330": {
-        "Name": "Connexion automatique désactivée",
-        "Type": "Sécurité",
-        "Information": "La connexion automatique permet aux utilisateurs d'accéder à leurs comptes sans saisir de mot de passe à chaque fois qu'ils démarrent leur ordinateur ou ouvrent une application spécifique. Bien que pratique, la connexion automatique pose des risques de sécurité, car toute personne ayant accès physique à l'appareil peut accéder au compte sans authentification. Désactiver la connexion automatique améliore la sécurité de vos comptes et empêche les accès non autorisés.",
-        "Solution":
-        [
-            "La connexion automatique est désactivée, aucune action n'est donc nécessaire."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "331": {
-        "Name": "Connexion automatique activée",
-        "Type": "Sécurité",
-        "Information": "La connexion automatique permet aux utilisateurs d'accéder à leurs comptes sans saisir de mot de passe à chaque fois qu'ils démarrent leur ordinateur ou ouvrent une application spécifique. Bien que pratique, la connexion automatique pose des risques de sécurité, car toute personne ayant accès physique à l'appareil peut accéder au compte sans authentification. Désactiver la connexion automatique améliore la sécurité de vos comptes et empêche les accès non autorisés.",
-        "Solution":
-        [
-            "Accédez à Démarrer > Paramètres > Comptes > Options de connexion.",
-            "Sous 'Exiger une connexion', sélectionnez 'Lorsque le PC sort du mode veille'."
-        ],
-        "Screenshots":
-        [
-            "TOBEFILLED"
-        ]
-    },
-    "340": {
-        "Name": "RPC distant désactivé",
-        "Type": "Sécurité",
-        "Information": "Remote Procedure Call (RPC) est un protocole qui permet aux programmes et processus de communiquer entre eux sur un réseau. Désactiver le RPC distant aide à prévenir l'accès non autorisé à votre ordinateur et le protège contre les menaces et vulnérabilités potentielles en matière de sécurité.",
-        "Solution": [
-            "Le RPC distant est désactivé, donc aucune action n'est nécessaire."
-        ],
-        "Screenshots": []
-    },
-    "341": {
-        "Name": "RPC distant activé",
-        "Type": "Sécurité",
-        "Information": "Remote Procedure Call (RPC) est un protocole qui permet aux programmes et processus de communiquer entre eux sur un réseau. Désactiver le RPC distant aide à prévenir l'accès non autorisé à votre ordinateur et le protège contre les menaces et vulnérabilités potentielles en matière de sécurité.",
-        "Solution": [
-            "Le paramètre RPC distant ne peut pas être modifié de manière conventionnelle. Cela nécessite de modifier directement le registre.",
-            "Dans la recherche Windows, tapez Éditeur du Registre et ouvrez le programme.",
-            "Naviguez jusqu'à \"Ordinateur\\HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\".",
-            "Double-cliquez sur la clé \"AllowRemoteRPC\" et définissez sa valeur sur 0."
-        ],
-        "Screenshots": [
-            "TOBEFILLED"
-        ]
-    },
-    "350": {
-        "Name": "Aucun cookie de suivi possible trouvé dans le navigateur Google Chrome",
-        "Type": "Confidentialité",
-        "Information": "Les cookies sont de petits fichiers texte stockés sur votre ordinateur par les sites web que vous visitez. Ils sont utilisés pour se souvenir de vos préférences, informations de connexion et autres données afin d'améliorer votre expérience de navigation. Cependant, les cookies peuvent également être utilisés pour suivre vos activités en ligne et recueillir des informations personnelles sans votre consentement, ce qui soulève des préoccupations en matière de confidentialité. Gérer et supprimer régulièrement les cookies aide à protéger votre confidentialité et à contrôler les données que les sites web collectent sur vous.",
-        "Solution": [
-            "Aucun cookie de suivi possible trouvé dans Google Chrome, donc aucune action n'est nécessaire."
-        ],
-        "Screenshots": []
-    },
-    "351": {
-        "Name": "Cookies de suivi possibles trouvés dans le navigateur Google Chrome",
-        "Type": "Confidentialité",
-        "Information": "Les cookies sont de petits fichiers texte stockés sur votre ordinateur par les sites web que vous visitez. Ils sont utilisés pour se souvenir de vos préférences, informations de connexion et autres données afin d'améliorer votre expérience de navigation. Cependant, les cookies peuvent également être utilisés pour suivre vos activités en ligne et recueillir des informations personnelles sans votre consentement, ce qui soulève des préoccupations en matière de confidentialité. Gérer et supprimer régulièrement les cookies aide à protéger votre confidentialité et à contrôler les données que les sites web collectent sur vous.",
-        "Solution": [
-            "Ouvrez Google Chrome et cliquez sur les trois points en haut à droite.",
-            "Sélectionnez 'Paramètres' et allez dans la section 'Confidentialité et sécurité'.",
-            "Sous 'Cookies tiers', cliquez sur 'Voir toutes les données et autorisations du site'.",
-            "Ici, vous pouvez voir et gérer les cookies stockés par les sites web. Vous pouvez supprimer des cookies individuels ou effacer toutes les données du site pour protéger votre confidentialité."
-        ],
-        "Screenshots": [
-            "TOBEFILLED"
-        ]
-    },
-    "360": {
-        "Name": "Aucun cookie de suivi possible trouvé dans le navigateur Microsoft Edge",
-        "Type": "Confidentialité",
-        "Information": "Les cookies sont de petits fichiers texte stockés sur votre ordinateur par les sites web que vous visitez. Ils sont utilisés pour se souvenir de vos préférences, informations de connexion et autres données afin d'améliorer votre expérience de navigation. Cependant, les cookies peuvent également être utilisés pour suivre vos activités en ligne et recueillir des informations personnelles sans votre consentement, ce qui soulève des préoccupations en matière de confidentialité. Gérer et supprimer régulièrement les cookies aide à protéger votre confidentialité et à contrôler les données que les sites web collectent sur vous.",
-        "Solution": [
-            "Aucun cookie de suivi possible trouvé dans Microsoft Edge, donc aucune action n'est nécessaire."
-        ],
-        "Screenshots": []
-    },
-    "361": {
-        "Name": "Cookies de suivi possibles trouvés dans le navigateur Microsoft Edge",
-        "Type": "Confidentialité",
-        "Information": "Les cookies sont de petits fichiers texte stockés sur votre ordinateur par les sites web que vous visitez. Ils sont utilisés pour se souvenir de vos préférences, informations de connexion et autres données afin d'améliorer votre expérience de navigation. Cependant, les cookies peuvent également être utilisés pour suivre vos activités en ligne et recueillir des informations personnelles sans votre consentement, ce qui soulève des préoccupations en matière de confidentialité. Gérer et supprimer régulièrement les cookies aide à protéger votre confidentialité et à contrôler les données que les sites web collectent sur vous.",
-        "Solution": [
-            "Ouvrez Microsoft Edge et cliquez sur les trois points en haut à droite.",
-            "Sélectionnez 'Paramètres' et allez dans la section 'Cookies et autorisations de site'.",
-            "Sous 'Cookies et données stockées', cliquez sur 'Gérer et supprimer les cookies et les données de site'.",
-            "Ici, vous pouvez gérer les paramètres généraux des cookies. Vous pouvez supprimer des cookies individuels ou effacer toutes les données de site en cliquant sur 'Voir tous les cookies et données de site'."
-        ],
-        "Screenshots": [
-            "TOBEFILLED"
-        ]
-    },
-    "370": {
-        "Name": "Pare-feu Windows activé pour tous les profils",
-        "Type": "Sécurité",
-        "Information": "Le pare-feu Windows est une fonctionnalité de sécurité intégrée qui aide à protéger votre ordinateur contre les accès non autorisés et les logiciels malveillants en surveillant et en contrôlant le trafic réseau entrant et sortant. Activer le pare-feu Windows pour tous les profils réseau (public, privé et domaine) contribue à renforcer la sécurité de votre système et à prévenir les menaces potentielles.",
-        "Solution": [
-            "Le pare-feu Windows est activé pour tous les profils, aucune action n'est donc nécessaire."
-        ],
-        "Screenshots": []
-    },
-    "371": {
-        "Name": "Pare-feu Windows non activé pour tous les profils",
-        "Type": "Sécurité",
-        "Information": "Le pare-feu Windows est une fonctionnalité de sécurité intégrée qui aide à protéger votre ordinateur contre les accès non autorisés et les logiciels malveillants en surveillant et en contrôlant le trafic réseau entrant et sortant. Activer le pare-feu Windows pour tous les profils réseau (public, privé et domaine) contribue à renforcer la sécurité de votre système et à prévenir les menaces potentielles.",
-        "Solution": [
-            "Allez à Démarrer > Paramètres > Mise à jour et sécurité > Sécurité Windows > Protection contre les menaces et réseau.",
-            "Sous 'Protection contre les menaces et réseau', assurez-vous que le pare-feu Windows est activé pour tous les profils réseau (public, privé et domaine). S'il est désactivé, cliquez sur 'Activer' pour activer le pare-feu pour le profil sélectionné."
-        ],
-        "Screenshots": [
-            "TOBEFILLED"
-        ]
-    },
-    "380": {
-        "Name": "Longueur minimale du mot de passe définie à au moins 15 caractères",
-        "Type": "Sécurité",
-        "Information": "Le fait de définir une longueur minimale de mot de passe d'au moins 15 caractères contribue à renforcer la sécurité des comptes utilisateur en augmentant la complexité et la force des mots de passe. Les mots de passe plus longs sont plus résistants aux attaques par force brute et offrent une meilleure protection contre les accès non autorisés et les violations de données.",
-        "Solution": [
-            "La longueur minimale du mot de passe est définie à au moins 15 caractères, donc aucune action n'est nécessaire."
-        ],
-        "Screenshots": []
-    },
-    "381": {
-        "Name": "Longueur minimale du mot de passe non définie à au moins 15 caractères",
-        "Type": "Sécurité",
-        "Information": "Le fait de définir une longueur minimale de mot de passe d'au moins 15 caractères contribue à renforcer la sécurité des comptes utilisateur en augmentant la complexité et la force des mots de passe. Les mots de passe plus longs sont plus résistants aux attaques par force brute et offrent une meilleure protection contre les accès non autorisés et les violations de données.",
-        "Solution": [
-            "Ouvrez une invite de commandes avec élévation de privilèges en cliquant avec le bouton droit sur le bouton Démarrer et en sélectionnant 'Terminal (Admin)'.",
-            "Exécutez la commande 'net accounts' pour afficher les paramètres de politique de mot de passe actuels, y compris la longueur minimale du mot de passe.",
-            "Exécutez la commande 'net accounts /minpwlen:15' pour définir la longueur minimale du mot de passe à 15 caractères.",
-            "Redémarrez votre ordinateur pour appliquer les modifications."
-        ],
-        "Screenshots": [
-            "TOBEFILLED"
-        ]
-    },
-    "390": {
-        "Name": "Credential Guard activé",
-        "Type": "Sécurité",
-        "Information": "Credential Guard est une fonctionnalité de sécurité dans Windows qui aide à protéger les informations d'identification des utilisateurs et les informations sensibles contre l'accès non autorisé et le vol. Il utilise la sécurité basée sur la virtualisation pour isoler et protéger les informations d'identification, rendant plus difficile pour les attaquants de voler des mots de passe et d'autres données sensibles.",
-        "Solution": [
-            "Credential Guard est activé, donc aucune action n'est nécessaire."
-        ],
-        "Screenshots": []
-    },
-    "391": {
-        "Name": "Credential Guard désactivé",
-        "Type": "Sécurité",
-        "Information": "Credential Guard est une fonctionnalité de sécurité dans Windows qui aide à protéger les informations d'identification des utilisateurs et les informations sensibles contre l'accès non autorisé et le vol. Il utilise la sécurité basée sur la virtualisation pour isoler et protéger les informations d'identification, rendant plus difficile pour les attaquants de voler des mots de passe et d'autres données sensibles.",
-        "Solution": [
-            "La configuration de Credential Guard est gérée dans votre stratégie de groupe locale. Demandez à votre administrateur réseau d'activer Credential Guard."
-        ],
-        "Screenshots": [
-            "TOBEFILLED"
-        ]
-    },
-    "400": {
-        "Name": "NetBIOS sur TCP/IP désactivé",
-        "Type": "Sécurité",
-        "Information": "NetBIOS sur TCP/IP est un protocole réseau hérité qui permet aux ordinateurs de communiquer sur un réseau local. Désactiver NetBIOS sur TCP/IP aide à réduire la surface d'attaque de votre système et à prévenir les vulnérabilités de sécurité potentielles associées à ce protocole.",
-        "Solution": [
-            "NetBIOS sur TCP/IP est désactivé, il n'y a donc aucune action à entreprendre."
-        ],
-        "Screenshots": []
-    },
-    "401": {
-        "Name": "NetBIOS sur TCP/IP activé",
-        "Type": "Sécurité",
-        "Information": "NetBIOS sur TCP/IP est un protocole réseau hérité qui permet aux ordinateurs de communiquer sur un réseau local. Désactiver NetBIOS sur TCP/IP aide à réduire la surface d'attaque de votre système et à prévenir les vulnérabilités de sécurité potentielles associées à ce protocole.",
-        "Solution": [
-            "Ouvrez le Panneau de configuration et allez dans 'Réseau et Internet' -> 'Centre Réseau et partage'.",
-            "Cliquez sur 'Modifier les paramètres de l'adaptateur' dans le volet de gauche.",
-            "Cliquez avec le bouton droit sur votre connexion réseau et sélectionnez 'Propriétés'.",
-            "Dans l'onglet 'Réseau', faites défiler jusqu'à 'Protocole Internet version 4 (TCP/IPv4)' et cliquez sur 'Propriétés'.",
-            "Cliquez sur 'Avancé' et allez dans l'onglet 'WINS'.",
-            "Sous 'Paramètre NetBIOS', sélectionnez 'Désactiver NetBIOS sur TCP/IP'.",
-            "Cliquez sur 'OK' pour enregistrer les modifications."
-        ],
-        "Screenshots": [
-            "TOBEFILLED"
-        ]
-    },
-    "410": {
-        "Name": "Service WPAD désactivé",
-        "Type": "Sécurité",
-        "Information": "Web Proxy Auto-Discovery (WPAD) est un protocole qui permet aux navigateurs web de découvrir automatiquement des serveurs proxy sur un réseau. Désactiver le service WPAD aide à prévenir les risques de sécurité potentiels associés à la configuration automatique des proxys et protège votre système contre la découverte et la configuration non autorisées de serveurs proxy.",
-        "Solution": [
-            "Le service WPAD est désactivé, donc aucune action n'est nécessaire."
-        ],
-        "Screenshots": []
-    },
-    "411": {
-        "Name": "Service WPAD activé",
-        "Type": "Sécurité",
-        "Information": "Web Proxy Auto-Discovery (WPAD) est un protocole qui permet aux navigateurs web de découvrir automatiquement des serveurs proxy sur un réseau. Désactiver le service WPAD aide à prévenir les risques de sécurité potentiels associés à la configuration automatique des proxys et protège votre système contre la découverte et la configuration non autorisées de serveurs proxy.",
-        "Solution": [
-            "Ouvrez une invite de commandes avec élévation de privilèges en cliquant avec le bouton droit sur le bouton Démarrer et en sélectionnant 'Terminal (Admin)'.",
-            "Exécutez la commande 'netsh winhttp show proxy' pour vérifier les paramètres proxy actuels.",
-            "Si WPAD est activé, exécutez la commande 'netsh winhttp reset proxy' pour désactiver WPAD et réinitialiser les paramètres proxy.",
-            "Redémarrez votre ordinateur pour appliquer les modifications."
-        ],
-        "Screenshots": [
-            "TOBEFILLED"
-        ]
-    },
-    "420": {
-        "Name": "Verrouillage automatique de l'écran de Windows activé",
-        "Type": "Sécurité",
-        "Information": "Le verrouillage de l'écran est une fonction de sécurité qui nécessite que les utilisateurs saisissent un mot de passe, un code PIN ou une authentification biométrique pour déverrouiller leur appareil et accéder au bureau. Activer le verrouillage de l'écran aide à protéger vos données et votre vie privée en cas de laissé sans surveillance ou de vol de votre ordinateur.",
-        "Solution": [
-            "Le verrouillage automatique de l'écran de Windows est activé, donc aucune action n'est nécessaire."
-        ],
-        "Screenshots": []
-    },
-    "421": {
-        "Name": "Verrouillage automatique de l'écran de Windows désactivé",
-        "Type": "Sécurité",
-        "Information": "Le verrouillage de l'écran est une fonction de sécurité qui nécessite que les utilisateurs saisissent un mot de passe, un code PIN ou une authentification biométrique pour déverrouiller leur appareil et accéder au bureau. Activer le verrouillage de l'écran aide à protéger vos données et votre vie privée en cas de laissé sans surveillance ou de vol de votre ordinateur.",
-        "Solution": [
-            "Allez à Démarrer > Paramètres > Personnalisation > Écran de verrouillage.",
-            "Ouvrez la fenêtre 'Économiseur d'écran'.",
-            "Cochez la case 'À la reprise, afficher l'écran de connexion' et réglez le 'Délai' sur un intervalle court (2 minutes ou moins)."
-        ],
-        "Screenshots": [
-            "TOBEFILLED"
-        ]
-    },
-    "997": {
-        "Name": "Extensions installées dans Google Chrome",
-        "Type": "Confidentialité",
-        "Information": "Les extensions de navigateur améliorent la fonctionnalité de votre navigateur Web en ajoutant des fonctionnalités, des outils et des options de personnalisation. Bien que les extensions puissent être utiles, elles peuvent également poser des risques pour la confidentialité et la sécurité si elles ont accès à des données sensibles ou suivent vos activités en ligne sans votre consentement. Examiner et gérer régulièrement vos extensions de navigateur permet de protéger votre vie privée et votre sécurité en ligne. Supprimez les extensions que vous n'utilisez plus ou en lesquelles vous n'avez plus confiance pour minimiser les risques potentiels.",
-        "Solution": 
-        [   		
-            "Ouvrez Google Chrome et cliquez sur les trois points dans le coin supérieur droit.",
-            "Sélectionnez 'Extensions' puis 'Gérer les extensions'.",
-            "Ici, vous pouvez afficher et gérer les extensions installées dans votre navigateur. Désactivez ou supprimez les extensions que vous n'utilisez plus ou en lesquelles vous n'avez plus confiance."
-        ],
-        "Screenshots":
-        [
-        ]
-    },
-    "998": {
-        "Name": "Applications avec privilèges administratifs",
-        "Type": "Sécurité",
-        "Information": "Les applications avec des privilèges administratifs ont des privilèges élevés, leur permettant de modifier les paramètres système, d'installer ou de désinstaller des logiciels, de modifier des fichiers système et d'effectuer d'autres actions pouvant affecter la sécurité et la stabilité de votre ordinateur. Savoir quelles applications ont des privilèges administratifs vous aide à identifier les risques et vulnérabilités potentiels de sécurité, tels que les logiciels malveillants ou les applications non autorisées qui pourraient avoir obtenu un accès élevé.",
-        "Solution":
-        [
-            "Cliquez avec le bouton droit sur la barre des tâches et sélectionnez 'Gestionnaire des tâches', ou appuyez sur Ctrl + Maj + Échap sur votre clavier pour ouvrir le Gestionnaire des tâches.",
-            "Dans le Gestionnaire des tâches, cliquez sur l'onglet 'Détails' pour voir une liste des processus et applications en cours d'exécution.",
-            "Cliquez avec le bouton droit sur l'en-tête de colonne, cliquez sur 'Sélectionner les colonnes', et assurez-vous que 'Élevé' est coché. Cette colonne indique si un processus ou une application s'exécute avec des privilèges administratifs.",
-            "Faites défiler la liste des processus et recherchez les entrées avec 'Oui' dans la colonne 'Élevé'. Ces processus ont des privilèges administratifs.",
-            "Si vous voyez des programmes qui n'ont pas besoin de s'exécuter avec des privilèges administratifs, vous pouvez cliquer avec le bouton droit sur eux et terminer la tâche."
-        ],
-        "Screenshots":
-        [
-            "applications-with-administrative-privileges/admin-privileges-1.png",
-            "applications-with-administrative-privileges/admin-privileges-2.png",
-            "applications-with-administrative-privileges/admin-privileges-3.png",
-            "applications-with-administrative-privileges/admin-privileges-4.png",
-            "applications-with-administrative-privileges/admin-privileges-4.png"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "applications-with-administrative-privileges/admin-privileges-1.png",
-            "applications-with-administrative-privileges/admin-privileges-2.png",
-            "applications-with-administrative-privileges/admin-privileges-3.png",
-            "applications-with-administrative-privileges/admin-privileges-4.png",
-            "applications-with-administrative-privileges/admin-privileges-5.png"
-        ]
-    },
-    "999": {
-        "Name": "Applications avec privilèges administratifs",
-        "Type": "Sécurité",
-        "Information": "Les applications avec des privilèges administratifs ont des privilèges élevés, leur permettant de modifier les paramètres système, d'installer ou de désinstaller des logiciels, de modifier des fichiers système et d'effectuer d'autres actions pouvant affecter la sécurité et la stabilité de votre ordinateur. Savoir quelles applications ont des privilèges administratifs vous aide à identifier les risques et vulnérabilités potentiels de sécurité, tels que les logiciels malveillants ou les applications non autorisées qui pourraient avoir obtenu un accès élevé.",
-        "Solution":
-        [
-            "Cliquez avec le bouton droit sur la barre des tâches et sélectionnez 'Gestionnaire des tâches', ou appuyez sur Ctrl + Maj + Échap sur votre clavier pour ouvrir le Gestionnaire des tâches.",
-            "Dans le Gestionnaire des tâches, cliquez sur l'onglet 'Détails' pour voir une liste des processus et applications en cours d'exécution.",
-            "Cliquez avec le bouton droit sur l'en-tête de colonne, cliquez sur 'Sélectionner les colonnes', et assurez-vous que 'Élevé' est coché. Cette colonne indique si un processus ou une application s'exécute avec des privilèges administratifs.",
-            "Faites défiler la liste des processus et recherchez les entrées avec 'Oui' dans la colonne 'Élevé'. Ces processus ont des privilèges administratifs.",
-            "Si vous voyez des programmes qui n'ont pas besoin de s'exécuter avec des privilèges administratifs, vous pouvez cliquer avec le bouton droit sur eux et terminer la tâche."
-        ],
-        "Screenshots":
-        [
-            "applications-with-administrative-privileges/admin-privileges-1.png",
-            "applications-with-administrative-privileges/admin-privileges-2.png",
-            "applications-with-administrative-privileges/admin-privileges-3.png",
-            "applications-with-administrative-privileges/admin-privileges-4.png",
-            "applications-with-administrative-privileges/admin-privileges-4.png"
-        ],
-        "ScreenshotsWindows10":
-        [
-            "applications-with-administrative-privileges/admin-privileges-1.png",
-            "applications-with-administrative-privileges/admin-privileges-2.png",
-            "applications-with-administrative-privileges/admin-privileges-3.png",
-            "applications-with-administrative-privileges/admin-privileges-4.png",
-            "applications-with-administrative-privileges/admin-privileges-5.png"
-        ]
-    }
+  "1": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Appareils connectés via Bluetooth",
+      "Failed": "Nous n'avons pas pu vérifier s'il y a des appareils connectés via Bluetooth.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
+    "0": {
+      "Severity": 4,
+      "Name": "Aucun appareil connecté via Bluetooth",
+      "Solution": [
+        "Aucun appareil n'est connecté via Bluetooth, aucune action n'est donc nécessaire."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 4,
+      "Name": "Appareils connectés via Bluetooth",
+      "Solution": [
+        "Accédez à Démarrer > Paramètres > Bluetooth et appareils.",
+        "Ici, vous pouvez voir quels appareils sont connectés via Bluetooth et vous pouvez les supprimer si nécessaire."
+      ],
+      "Screenshots": [
+        "devices-connected-via-bluetooth/bluetooth-devices-1.png",
+        "devices-connected-via-bluetooth/bluetooth-devices-2.png"
+      ]
+    },
+    "Type": "Sécurité",
+    "Information": "La technologie Bluetooth permet la transmission et la réception de données sans fil. Bien que cette fonctionnalité soit généralement inoffensive lorsqu'elle est utilisée comme prévu, elle peut devenir un risque pour la sécurité si elle est exploitée par des acteurs malveillants. Si une personne malveillante obtient un accès non autorisé à votre appareil via une connexion Bluetooth, elle peut potentiellement voler vos données, écouter vos activités ou même envoyer des logiciels malveillants à votre appareil. Pour atténuer ces risques, il est crucial de ne connecter votre appareil qu'à des dispositifs connus et de confiance."
+  },
+  "2": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Appareils connectés via ports USB",
+      "Failed": "Nous n'avons pas pu vérifier s'il y a des appareils connectés via ports USB.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
+    "0": {
+      "Severity": 4,
+      "Name": "Aucun périphérique externe connecté",
+      "Solution": [
+        "Aucun périphérique externe n'est connecté, aucune action n'est donc nécessaire."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 4,
+      "Name": "Appareils externes connectés",
+      "Solution": [
+        "Vérifiez si des périphériques externes sont connectés à votre ordinateur et déconnectez-les s'ils ne sont pas utilisés. "
+      ],
+      "Screenshots": []
+    },
+    "Type": "Sécurité",
+    "Information": "Les périphériques externes tels que les clés USB, les disques durs externes et autres périphériques peuvent introduire des risques de sécurité pour votre ordinateur. Les logiciels malveillants peuvent se propager via des périphériques externes infectés, compromettant potentiellement la sécurité et l'intégrité de votre système. En veillant à ce qu'aucun périphérique externe ne soit connecté à votre ordinateur lorsqu'il n'est pas utilisé, vous réduisez le risque d'infection par des logiciels malveillants et d'accès non autorisé à votre système."
+  },
+  "3": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Compte invité activé/désactivé",
+      "Failed": "Nous n'avons pas pu vérifier si un compte invité est activé.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
+    "0": {
+      "Severity": -1,
+      "Name": "Statut du compte invité inconnu",
+      "Solution": [
+        "Un statut de compte invité inconnu peut constituer un risque pour la sécurité. ",
+        "Allez dans Démarrer > Autres comptes.",
+        "Ici vous verrez les autres comptes, s'il y a un compte que vous ne connaissez pas ou un compte appelé « invité », cliquez dessus.",
+        "Sélectionnez maintenant « supprimer » et confirmez la suppression du compte.",
+        "Pour terminer, redémarrez votre ordinateur."
+      ],
+      "Screenshots": [
+        "guest-account/guest-account-1.png",
+        "guest-account/guest-account-1.png",
+        "guest-account/guest-account-1.png",
+        "guest-account/guest-account-3.png",
+        "guest-account/guest-account-3.png"
+      ]
+    },
+    "1": {
+      "Severity": 2,
+      "Name": "Compte invité activé",
+      "Solution": [
+        "Allez dans Démarrer > Autres comptes.",
+        "Ici, vous verrez les autres comptes, s'il y a un compte que vous ne connaissez pas ou quelque chose appelé « invité », cliquez dessus.",
+        "Sélectionnez maintenant « supprimer » et confirmez la suppression du compte.",
+        "Pour terminer, redémarrez votre ordinateur."
+      ],
+      "SolutionWindows10": [
+        "Accédez à Démarrer > Paramètres > Comptes > Famille et autres utilisateurs.",
+        "Ici, vous verrez les autres comptes, s'il y a un compte que vous ne connaissez pas ou quelque chose appelé « invité », cliquez dessus.",
+        "Sélectionnez maintenant « supprimer » et confirmez la suppression du compte.",
+        "Pour terminer, redémarrez votre ordinateur."
+      ],
+      "Screenshots": [
+        "guest-account/guest-account-1.png",
+        "guest-account/guest-account-1.png",
+        "guest-account/guest-account-3.png",
+        "guest-account/guest-account-3.png"
+      ]
+    },
+    "2": {
+      "Severity": 0,
+      "Name": "Compte invité désactivé",
+      "Solution": [
+        "Il n'y a pas de compte invité sur votre ordinateur, aucune action n'est donc nécessaire."
+      ],
+      "Screenshots": []
+    },
+    "Type": "Sécurité",
+    "Information": "Le compte invité est un compte par défaut conçu pour offrir un accès temporaire et restreint au système pour les personnes sans comptes utilisateurs réguliers. Si vous êtes le seul utilisateur de l'ordinateur et n'avez pas besoin d'un compte invité, il est conseillé de le désactiver. Cela garantit qu'aucun utilisateur non autorisé ne puisse accéder aux données de l'ordinateur, améliorant ainsi la sécurité et la confidentialité globales."
+  },
+  "4": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : ID de publicité activée/désactivée",
+      "Failed": "Nous n'avons pas pu vérifier si l'ID de publicité est partagée avec des applications.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
+    "0": {
+      "Severity": 0,
+      "Name": "Partage d'identifiant d'annonce désactivé",
+      "Solution": [
+        "Le partage des identifiants de publicité est désactivé. Aucune action n'est donc nécessaire."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 2,
+      "Name": "Partage d'identifiant de publicité activé",
+      "Solution": [
+        "Allez dans Démarrer > Paramètres > Confidentialité et sécurité > Général ",
+        "Ici, vous pouvez contrôler les paramètres d'identification de la publicité et activer/désactiver la fonctionnalité."
+      ],
+      "SolutionWindows10": [
+        "Accédez à Démarrer > Paramètres > Confidentialité > Général.",
+        "Ici, vous pouvez contrôler les paramètres d'identification de la publicité et activer/désactiver la fonctionnalité."
+      ],
+      "Screenshots": [
+        "advertisement-id/advertisement-id-1.png",
+        "advertisement-id/advertisement-id-2.png"
+      ]
+    },
+    "Type": "Confidentialité",
+    "Information": "Le paramètre d'ID publicitaire permet à Windows de vous envoyer des annonces personnalisées. Il est important de limiter le nombre d'entités qui ont accès à vos données personnelles, il est donc plus sûr de désactiver ce paramètre."
+  },
+  "5": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Gestionnaire de mots de passe installé",
+      "Failed": "Nous n'avons pas pu vérifier si un gestionnaire de mots de passe est installé.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
+    "0": {
+      "Severity": 0,
+      "Name": "Gestionnaire de mots de passe utilisé",
+      "Solution": [
+        "Vous utilisez un gestionnaire de mots de passe, aucune action n'est requise."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 1,
+      "Name": "Aucun gestionnaire de mots de passe utilisé",
+      "Solution": [
+        "Ouvrez votre navigateur et recherchez un gestionnaire de mots de passe tel que : LastPass, Dashlane, Bitwarden ou un autre gestionnaire de mots de passe que vous préférez.",
+        "Suivez les étapes d'installation fournies par le site Web du gestionnaire de mots de passe."
+      ],
+      "Screenshots": [
+        "password-manager/password-manager-1.png",
+        "password-manager/password-manager-1.png"
+      ]
+    },
+    "Type": "Sécurité",
+    "Information": "L'utilisation d'un gestionnaire de mots de passe offre plusieurs avantages pour les individus et les organisations, principalement autour de l'amélioration de la sécurité, de la commodité et des pratiques générales de gestion des mots de passe. Voici quelques raisons clés pour lesquelles vous devriez envisager d'utiliser un gestionnaire de mots de passe. Mots de passe plus forts: Les gestionnaires de mots de passe peuvent générer des mots de passe complexes et uniques pour chacun de vos comptes. Ces mots de passe sont généralement longs, aléatoires et difficiles à craquer, améliorant considérablement la sécurité de vos comptes en ligne par rapport à l'utilisation de mots de passe faibles ou réutilisés. Élimination de la réutilisation des mots de passe: L'un des pièges de sécurité les plus courants est la réutilisation des mots de passe sur plusieurs comptes. Les gestionnaires de mots de passe vous permettent de générer et de stocker des mots de passe uniques pour chaque compte, réduisant ainsi le risque d'accès non autorisé si un compte est compromis. Commodité: Les gestionnaires de mots de passe simplifient le processus de connexion aux sites Web et aux services en ligne en remplissant automatiquement les informations de connexion pour vous. Cela permet de gagner du temps et des efforts, en particulier lors de la gestion de nombreux comptes sur diverses plateformes. Stockage sécurisé: Les gestionnaires de mots de passe cryptent et stockent vos mots de passe dans un coffre-fort sécurisé, les protégeant contre les accès non autorisés. De nombreux gestionnaires de mots de passe offrent également des fonctionnalités de sécurité supplémentaires telles que l'authentification à deux facteurs (2FA) et l'authentification biométrique pour renforcer davantage la protection."
+  },
+  "6": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Applications avec autorisations de localisation",
+      "Failed": "Nous n'avons pas pu vérifier quelles applications ont des autorisations de localisation.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
+    "0": {
+      "Severity": 4,
+      "Name": "Applications avec autorisation de localisation",
+      "Solution": [
+        "Sélectionnez Démarrer > Paramètres > Confidentialité et sécurité.",
+        "Ici, vous pouvez sélectionner l'emplacement pour voir quelles applications ont accès et vous pouvez révoquer l'accès à certaines applications."
+      ],
+      "SolutionWindows10": [
+        "Accédez à Démarrer > Paramètres > Confidentialité > Localisation.",
+        "Ici, vous pouvez sélectionner l'emplacement pour voir quelles applications ont accès et vous pouvez révoquer l'accès à certaines applications."
+      ],
+      "Screenshots": [
+        "applications-with-location-permission/location-permissions-1.png",
+        "applications-with-location-permission/location-permissions-2.png"
+      ]
+    },
+    "1": {
+      "Severity": 0,
+      "Name": "Aucune application avec autorisation de localisation",
+      "Solution": [
+        "Aucune application ne dispose d'une autorisation de localisation, aucune action n'est donc nécessaire."
+      ],
+      "Screenshots": []
+    },
+    "Type": "Confidentialité",
+    "Information": "Savoir quelles applications ont accès à votre emplacement est important pour protéger votre vie privée. Cela vous aide à contrôler qui peut suivre votre emplacement, à prévenir les risques de sécurité, à économiser la batterie, à gérer l'utilisation des données, à personnaliser votre expérience des applications et à assurer la conformité avec les réglementations."
+  },
+  "7": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Applications avec autorisations de microphone",
+      "Failed": "Nous n'avons pas pu vérifier quelles applications ont des autorisations de microphone.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
+    "0": {
+      "Severity": 4,
+      "Name": "Applications avec autorisation de microphone",
+      "Solution": [
+        "Sélectionnez Démarrer > Paramètres > Confidentialité et sécurité.",
+        "Ici, vous pouvez sélectionner le microphone pour voir quelles applications ont accès et vous pouvez révoquer l'accès à certaines applications."
+      ],
+      "SolutionWindows10": [
+        "Accédez à Démarrer > Paramètres > Confidentialité > Microphone.",
+        "Ici, vous pouvez sélectionner le microphone pour voir quelles applications ont accès et vous pouvez révoquer l'accès à certaines applications."
+      ],
+      "Screenshots": [
+        "applications-with-microphone-permission/microphone-permissions-1.png",
+        "applications-with-microphone-permission/microphone-permissions-2.png"
+      ]
+    },
+    "1": {
+      "Severity": 0,
+      "Name": "Aucune application avec autorisation de microphone",
+      "Solution": [
+        "Aucune application ne dispose d'une autorisation de microphone, aucune action n'est donc nécessaire."
+      ],
+      "Screenshots": []
+    },
+    "Type": "Confidentialité",
+    "Information": "Comprendre quelles applications ont accès à votre microphone sur votre ordinateur Windows est important pour protéger votre vie privée et la confidentialité. Cela vous aide à contrôler qui peut écouter vos conversations, à prévenir les enregistrements non autorisés, à protéger les informations sensibles et à assurer la conformité avec les réglementations."
+  },
+  "8": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Applications avec autorisations de webcam",
+      "Failed": "Nous n'avons pas pu vérifier quelles applications ont des autorisations de webcam.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
+    "0": {
+      "Severity": 4,
+      "Name": "Applications avec autorisation webcam",
+      "Solution": [
+        "Sélectionnez Démarrer > Paramètres > Confidentialité et sécurité.",
+        "Ici, vous pouvez sélectionner la webcam pour voir quelles applications ont accès et vous pouvez révoquer l'accès à certaines applications."
+      ],
+      "SolutionWindows10": [
+        "Accédez à Démarrer > Paramètres > Confidentialité > Appareil photo.",
+        "Ici, vous pouvez sélectionner la webcam pour voir quelles applications ont accès et vous pouvez révoquer l'accès à certaines applications."
+      ],
+      "Screenshots": [
+        "applications-with-webcam-permission/webcam-permissions-1.png",
+        "applications-with-webcam-permission/webcam-permissions-2.png"
+      ]
+    },
+    "1": {
+      "Severity": 0,
+      "Name": "Aucune application avec autorisation webcam",
+      "Solution": [
+        "Aucune application ne dispose d'une autorisation de webcam, aucune action n'est donc nécessaire."
+      ],
+      "Screenshots": []
+    },
+    "Type": "Confidentialité",
+    "Information": "Savoir quelles applications ont accès à votre caméra aide à prévenir les accès non autorisés. Les logiciels malveillants ou même les applications légitimes avec des fonctionnalités de sécurité mal implémentées pourraient potentiellement accéder à votre caméra sans votre connaissance ni votre consentement. En sachant quelles applications ont accès, vous pouvez identifier et bloquer toute tentative non autorisée."
+  },
+  "9": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Applications avec autorisations de rendez-vous",
+      "Failed": "Nous n'avons pas pu vérifier quelles applications ont des autorisations de rendez-vous.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
+    "0": {
+      "Severity": 4,
+      "Name": "Applications avec autorisation de rendez-vous",
+      "Solution": [
+        "Sélectionnez Démarrer > Paramètres > Confidentialité et sécurité.",
+        "Ici, vous pouvez sélectionner des rendez-vous pour voir quelles applications ont accès et vous pouvez révoquer l'accès pour certaines applications."
+      ],
+      "SolutionWindows10": [
+        "Accédez à Démarrer > Paramètres > Confidentialité > Calendrier.",
+        "Ici, vous pouvez sélectionner des rendez-vous pour voir quelles applications ont accès et vous pouvez révoquer l'accès pour certaines applications."
+      ],
+      "Screenshots": [
+        "applications-with-calendar-permission/calendar-permissions-1.png",
+        "applications-with-calendar-permission/calendar-permissions-2.png"
+      ]
+    },
+    "1": {
+      "Severity": 0,
+      "Name": "Aucune candidature avec autorisation de rendez-vous",
+      "Solution": [
+        "Aucune application ne dispose d'une autorisation de rendez-vous, aucune action n'est donc nécessaire."
+      ],
+      "Screenshots": []
+    },
+    "Type": "Confidentialité",
+    "Information": "Comprendre quelles applications ont accès à votre calendrier ou à vos rendez-vous est crucial pour protéger votre vie privée et votre emploi du temps. Cela vous aide à contrôler qui peut voir et potentiellement abuser de vos informations sensibles de rendez-vous, à prévenir les accès non autorisés et à gérer l'utilisation des données."
+  },
+  "10": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Applications avec autorisations de contacts",
+      "Failed": "Nous n'avons pas pu vérifier quelles applications ont des autorisations de contacts.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
+    "0": {
+      "Severity": 4,
+      "Name": "Applications avec autorisation de contacts",
+      "Solution": [
+        "Sélectionnez Démarrer > Paramètres > Confidentialité et sécurité.",
+        "Ici, vous pouvez sélectionner des contacts pour voir quelles applications ont accès et vous pouvez révoquer l'accès à certaines applications."
+      ],
+      "SolutionWindows10": [
+        "Accédez à Démarrer > Paramètres > Confidentialité > Contacts.",
+        "Ici, vous pouvez sélectionner des contacts pour voir quelles applications ont accès et vous pouvez révoquer l'accès à certaines applications."
+      ],
+      "Screenshots": [
+        "applications-with-contacts-permission/contacts-permissions-1.png",
+        "applications-with-contacts-permission/contacts-permissions-2.png"
+      ]
+    },
+    "1": {
+      "Severity": 0,
+      "Name": "Aucune application avec autorisation de contacts",
+      "Solution": [
+        "Aucune application ne dispose d'une autorisation de contact, aucune action n'est donc nécessaire."
+      ],
+      "Screenshots": []
+    },
+    "Type": "Confidentialité",
+    "Information": "Comprendre quelles applications ont accès à vos contacts sur votre ordinateur Windows est bon pour protéger votre vie privée. Cela vous permet de contrôler qui peut voir et potentiellement abuser de vos informations de contact, de prévenir les accès non autorisés et de gérer l'utilisation des données."
+  },
+  "11": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Ports ouverts utilisés par les applications",
+      "Failed": "Nous n'avons pas pu vérifier quels ports sont ouverts.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
+    "0": {
+      "Severity": 4,
+      "Name": "Ports ouverts",
+      "Solution": [
+        "Pour réduire les risques, assurez-vous que Windows Defender est activé. ",
+        "Ouvrez une invite de commande en cliquant sur « Démarrer », en tapant « cmd » et en appuyant sur « Entrée ».",
+        "Tapez maintenant « netstat -ab » et vous verrez une liste des ports ouverts et de leurs programmes correspondants.",
+        "Si vous voyez des programmes ou des ports suspects, vous pouvez les fermer en arrêtant le programme correspondant."
+      ],
+      "Screenshots": []
+    },
+    "Type": "Sécurité",
+    "Information": "Un port ouvert est celui qui permet la réception de paquets de données. Certaines applications nécessitent des ports spécifiques pour recevoir des données, de sorte que la présence de ports ouverts ne pose pas intrinsèquement de risques. Cependant, certains ports peuvent manquer de protection adéquate, ce qui pourrait permettre des communications non autorisées et introduire des vulnérabilités de sécurité. Il est essentiel de maintenir les ports ouverts uniquement lorsqu'ils sont activement utilisés et de les fermer lorsqu'ils ne sont pas nécessaires. Étant donné que de nombreux ports ouverts peuvent étendre la surface d'attaque de votre ordinateur, il est conseillé de surveiller régulièrement et de sécuriser les ports réseau de votre système pour atténuer ces risques et maintenir une posture de sécurité solide."
+  },
+  "12": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Bureau à distance activé/désactivé",
+      "Failed": "Nous n'avons pas pu vérifier si la fonctionnalité Bureau à distance est activée.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
+    "0": {
+      "Severity": 3,
+      "Name": "Bureau à distance activé",
+      "Solution": [
+        "Accédez à Démarrer > Paramètres > Système > Bureau à distance.",
+        "Ici, vous pouvez contrôler les paramètres du bureau à distance et désactiver la fonctionnalité."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 0,
+      "Name": "Bureau à distance désactivé",
+      "Solution": [
+        "Le bureau à distance a été désactivé, aucune action n'est donc nécessaire."
+      ],
+      "Screenshots": []
+    },
+    "Type": "Sécurité",
+    "Information": "Le Bureau à distance est une fonction intégrée dans le système d'exploitation Windows qui permet aux utilisateurs d'accéder et de contrôler à distance un autre ordinateur Windows via un réseau ou Internet. Il permet aux utilisateurs de se connecter à un ordinateur distant comme s'ils étaient devant lui, offrant un accès complet au bureau à distance, aux applications, fichiers et ressources. Si vous n'utilisez pas cette fonction, il est conseillé de la désactiver."
+  },
+  "13": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Bloc de messages serveur activé/désactivé",
+      "Failed": "Nous n'avons pas pu vérifier les statuts du protocole SMB.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
+    "0": {
+      "Severity": 2,
+      "Name": "SMB toutes les versions désactivées",
+      "Solution": [
+        "Les deux versions de SMB sont désactivées, donc aucune action n'est nécessaire."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 3,
+      "Name": "PME version 1 activée",
+      "Solution": [
+        "Sur votre clavier, appuyez sur « Windows+R » pour ouvrir la fenêtre Exécuter.",
+        "Tapez « Powershell », puis sélectionnez OK.",
+        "Dans Powershell, tapez « Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol » et appuyez sur Entrée.",
+        "Pour terminer, redémarrez votre ordinateur."
+      ],
+      "Screenshots": [
+        "smb-status/smb-1.png",
+        "smb-status/smb-1.png",
+        "smb-status/smb-2.png",
+        "smb-status/smb-2.png"
+      ]
+    },
+    "2": {
+      "Severity": 0,
+      "Name": "PME version 2 activée",
+      "Solution": [
+        "La version 2 de SMB est activée, il s'agit d'une version sécurisée et largement utilisée, aucune action n'est donc nécessaire."
+      ],
+      "Screenshots": []
+    },
+    "3": {
+      "Severity": 3,
+      "Name": "SMB versions 1 et 2 activées",
+      "Solution": [
+        "Sur votre clavier, appuyez sur « Windows+R » pour ouvrir la fenêtre Exécuter.",
+        "Tapez « Powershell », puis sélectionnez OK.",
+        "Dans Powershell, tapez « Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol » et appuyez sur Entrée.",
+        "Pour terminer, redémarrez votre ordinateur."
+      ],
+      "Screenshots": [
+        "smb-status/smb-1.png",
+        "smb-status/smb-1.png",
+        "smb-status/smb-2.png",
+        "smb-status/smb-2.png"
+      ]
+    },
+    "Type": "Sécurité",
+    "Information": "Le protocole SMB (Server Message Block) est utilisé dans les environnements Windows pour le partage de fichiers, d'imprimantes et d'autres ressources entre appareils sur un réseau. Il est crucial de s'assurer que les paramètres SMB sur votre ordinateur Windows sont correctement configurés. Le protocole SMBv1 présente de nombreuses vulnérabilités connues et ne devrait donc jamais être utilisé. Utiliser SMBv2/v3 est une option plus sûre."
+  },
+  "14": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Contrôle des comptes d'utilisateur activé/désactivé",
+      "Failed": "Nous n'avons pas pu vérifier le niveau de contrôle de compte utilisateur sur votre système.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
+    "0": {
+      "Severity": 3,
+      "Name": "Contrôle du compte utilisateur désactivé",
+      "Solution": [
+        "Sur votre clavier, appuyez sur « Windows+R » pour ouvrir la fenêtre Exécuter.",
+        "Tapez « Panneau de configuration », puis sélectionnez OK.",
+        "Sélectionnez « Comptes d'utilisateurs » ou « Comptes d'utilisateurs et sécurité familiale ».",
+        "Sélectionnez « Modifier les paramètres de contrôle de compte d'utilisateur ». ",
+        "Ici, vous pouvez déplacer le curseur sur « Toujours notifier » pour activer l'UAC. ",
+        "Pour terminer, redémarrez votre ordinateur."
+      ],
+      "SolutionWindows10": [
+        "Sur votre clavier, appuyez sur « Windows+R » pour ouvrir la fenêtre Exécuter.",
+        "Tapez « Panneau de configuration », puis sélectionnez OK.",
+        "Sélectionnez « Comptes d'utilisateurs ».",
+        "Sélectionnez à nouveau « Comptes d'utilisateurs ».",
+        "Sélectionnez « Modifier les paramètres de contrôle de compte d'utilisateur ». ",
+        "Ici, vous pouvez déplacer le curseur sur « Toujours notifier » pour activer l'UAC. ",
+        "Pour terminer, redémarrez votre ordinateur."
+      ],
+      "Screenshots": [
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-4.png",
+        "user-account-control/user-account-control-5.png",
+        "user-account-control/user-account-control-5.png"
+      ],
+      "ScreenshotsWindows10": [
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-3.png",
+        "user-account-control/user-account-control-4.png",
+        "user-account-control/user-account-control-5.png",
+        "user-account-control/user-account-control-5.png"
+      ]
+    },
+    "1": {
+      "Severity": 0,
+      "Name": "Contrôle du compte utilisateur activé pour tout",
+      "Solution": [
+        "Les paramètres de contrôle du compte utilisateur sont définis sur « Toujours notifier », aucune action n'est donc nécessaire."
+      ],
+      "Screenshots": []
+    },
+    "2": {
+      "Severity": 0,
+      "Name": "Contrôle des comptes d'utilisateurs activé pour les applications",
+      "Solution": [
+        "Les paramètres de contrôle des comptes d'utilisateurs sont activés pour les applications, le configurer pour qu'il soit toujours notifié est une option plus sûre. ",
+        "Sur votre clavier, appuyez sur « Windows+R » pour ouvrir la fenêtre Exécuter.",
+        "Tapez « Panneau de configuration », puis sélectionnez OK.",
+        "Sélectionnez « Comptes d'utilisateurs » ou « Comptes d'utilisateurs et sécurité familiale ».",
+        "Sélectionnez « Modifier les paramètres de contrôle de compte d'utilisateur ». ",
+        "Ici, vous pouvez déplacer le curseur sur « Toujours notifier » pour activer l'UAC. ",
+        "Pour terminer, redémarrez votre ordinateur."
+      ],
+      "SolutionWindows10": [
+        "Les paramètres de contrôle des comptes d'utilisateurs sont activés pour les applications, le configurer pour qu'il soit toujours notifié est une option plus sûre. ",
+        "Sur votre clavier, appuyez sur « Windows+R » pour ouvrir la fenêtre Exécuter.",
+        "Tapez « Panneau de configuration », puis sélectionnez OK.",
+        "Sélectionnez « Comptes d'utilisateurs ».",
+        "Sélectionnez à nouveau « Comptes d'utilisateurs ».",
+        "Sélectionnez « Modifier les paramètres de contrôle de compte d'utilisateur ». ",
+        "Ici, vous pouvez déplacer le curseur sur « Toujours notifier » pour activer l'UAC. ",
+        "Pour terminer, redémarrez votre ordinateur."
+      ],
+      "Screenshots": [
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-4.png",
+        "user-account-control/user-account-control-5.png",
+        "user-account-control/user-account-control-5.png"
+      ],
+      "ScreenshotsWindows10": [
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-3.png",
+        "user-account-control/user-account-control-4.png",
+        "user-account-control/user-account-control-5.png",
+        "user-account-control/user-account-control-5.png"
+      ]
+    },
+    "3": {
+      "Severity": -1,
+      "Name": "Contrôle de compte d'utilisateur inconnu",
+      "Solution": [
+        "L'état des paramètres de contrôle du compte utilisateur est inconnu. Pour vérifier l'état et potentiellement résoudre le problème du contrôle du compte utilisateur, suivez ces étapes.",
+        "Sur votre clavier, appuyez sur « Windows+R » pour ouvrir la fenêtre Exécuter.",
+        "Tapez « Panneau de configuration », puis sélectionnez OK.",
+        "Sélectionnez « Comptes d'utilisateurs » ou « Comptes d'utilisateurs et sécurité familiale ».",
+        "Sélectionnez « Modifier les paramètres de contrôle de compte d'utilisateur ». ",
+        "Ici, vous pouvez déplacer le curseur sur « Toujours notifier » pour activer l'UAC. ",
+        "Pour terminer, redémarrez votre ordinateur."
+      ],
+      "SolutionWindows10": [
+        "Les paramètres de contrôle des comptes d'utilisateurs sont activés pour les applications, le configurer pour qu'il soit toujours notifié est une option plus sûre. ",
+        "Sur votre clavier, appuyez sur « Windows+R » pour ouvrir la fenêtre Exécuter.",
+        "Tapez « Panneau de configuration », puis sélectionnez OK.",
+        "Sélectionnez « Comptes d'utilisateurs ».",
+        "Sélectionnez à nouveau « Comptes d'utilisateurs ».",
+        "Sélectionnez « Modifier les paramètres de contrôle de compte d'utilisateur ». ",
+        "Ici, vous pouvez déplacer le curseur sur « Toujours notifier » pour activer l'UAC. ",
+        "Pour terminer, redémarrez votre ordinateur."
+      ],
+      "Screenshots": [
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-4.png",
+        "user-account-control/user-account-control-5.png",
+        "user-account-control/user-account-control-5.png"
+      ],
+      "ScreenshotsWindows10": [
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-1.png",
+        "user-account-control/user-account-control-2.png",
+        "user-account-control/user-account-control-3.png",
+        "user-account-control/user-account-control-4.png",
+        "user-account-control/user-account-control-5.png",
+        "user-account-control/user-account-control-5.png"
+      ]
+    },
+    "Type": "Sécurité",
+    "Information": "Le Contrôle de compte utilisateur (User Account Control, UAC) est une fonctionnalité de sécurité introduite dans Windows Vista et présente dans les versions ultérieures du système d'exploitation Windows. Son objectif principal est d'améliorer la sécurité du système d'exploitation en limitant les privilèges des applications et des processus fonctionnant avec des droits d'utilisateur standard, et en exigeant l'approbation de l'administrateur pour les tâches nécessitant des permissions élevées."
+  },
+  "15": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Windows Defender activé/désactivé",
+      "Failed": "Nous n'avons pas pu vérifier le statut de Windows Defender.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
+    "0": {
+      "Severity": 0,
+      "Name": "Windows Defender est activé",
+      "Solution": [
+        "Windows Defender est correctement configuré, aucune action n'est donc nécessaire"
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 3,
+      "Name": "Windows Defender est désactivé",
+      "Solution": [
+        "Ouvrez l'application de sécurité Windows.",
+        "Sélectionnez Protection contre les virus et les menaces.",
+        "Sous Paramètres de protection contre les virus et les menaces, sélectionnez Gérer les paramètres.",
+        "Basculez le commutateur sous Protection en temps réel pour l'activer."
+      ],
+      "Screenshots": [
+        "windows-defender/windows-defender-1.png",
+        "windows-defender/windows-defender-1.png",
+        "windows-defender/windows-defender-1.png",
+        "windows-defender/windows-defender-1.png"
+      ],
+      "ScreenshotsWindows10": [
+        "windows-defender/windows-defender-1.png",
+        "windows-defender/windows-defender-2.png",
+        "windows-defender/windows-defender-3.png",
+        "windows-defender/windows-defender-4.png"
+      ]
+    },
+    "2": {
+      "Severity": -1,
+      "Name": "L'état de Windows Defender est inconnu",
+      "Solution": [
+        "Nous n'avons pas pu trouver l'état de Windows Defender sur cet appareil."
+      ],
+      "Screenshots": []
+    },
+    "Type": "Sécurité",
+    "Information": "Windows Defender surveille en continu votre système à la recherche d'activités suspectes, notamment les logiciels malveillants, les virus et autres formes de logiciels malveillants. En l'activant, vous bénéficiez d'une défense active contre les menaces potentielles susceptibles de compromettre votre vie privée ou votre sécurité. Il reçoit également des mises à jour régulières de Microsoft pour rester à jour concernant les dernières menaces de sécurité et vulnérabilités. En le laissant activé, vous vous assurez que votre ordinateur est protégé contre les nouvelles menaces émergentes qui pourraient exploiter des failles de sécurité connues."
+  },
+  "16": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Dernière modification du mot de passe Windows",
+      "Failed": "Nous n'avons pas pu vérifier quand la dernière modification de mot de passe a été effectuée.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
+    "0": {
+      "Severity": 2,
+      "Name": "Le dernier changement de mot de passe remonte à plus de 6 mois",
+      "Solution": [
+        "Allez dans Démarrer > Changez votre mot de passe",
+        "Ouvrez la section « Mot de passe » et cliquez sur le bouton « Modifier ».",
+        "Vous pouvez maintenant remplacer votre mot de passe par un nouveau mot de passe unique."
+      ],
+      "Screenshots": [
+        "last-password-change/change-password-1.png",
+        "last-password-change/change-password-2.png",
+        "last-password-change/change-password-2.png"
+      ]
+    },
+    "1": {
+      "Severity": 0,
+      "Name": "Le dernier changement de mot de passe était récent",
+      "Solution": [
+        "Vous avez récemment modifié votre mot de passe, aucune action n'est donc nécessaire."
+      ],
+      "Screenshots": []
+    },
+    "Type": "Sécurité",
+    "Information": "Changer régulièrement votre mot de passe réduit la probabilité d'accès non autorisé à votre ordinateur ou à des informations sensibles. Si quelqu'un parvient à obtenir votre mot de passe, le changer régulièrement limite le temps qu'il a pour l'exploiter. Il est donc conseillé de changer votre mot de passe au moins deux fois par an."
+  },
+  "17": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Méthode de connexion Windows",
+      "Failed": "Nous n'avons pas pu vérifier les méthodes de connexion utilisées.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
+    "0": {
+      "Severity": 3,
+      "Name": "Aucune méthode de connexion Windows configurée",
+      "Solution": [
+        "Accédez à Démarrer > Paramètres > Comptes > Options de connexion.",
+        "Vous pouvez maintenant configurer l'une des méthodes de connexion disponibles en suivant les étapes décrites."
+      ],
+      "Screenshots": [
+        "windows-login-method/login-method-1.png",
+        "windows-login-method/login-method-2.png"
+      ]
+    },
+    "1": {
+      "Severity": 0,
+      "Name": "Connexion Windows avec une méthode de connexion sécurisée",
+      "Solution": [
+        "Vous utilisez une méthode de connexion sécurisée, aucune action n'est requise."
+      ],
+      "Screenshots": []
+    },
+    "2": {
+      "Severity": 1,
+      "Name": "Connexion Windows avec une méthode de connexion moins sécurisée",
+      "Solution": [
+        "Accédez à Démarrer > Paramètres > Comptes > Options de connexion.",
+        "Vous pouvez désormais configurer une méthode de connexion sécurisée en utilisant le mot de passe ou l'empreinte digitale comme méthode de connexion."
+      ],
+      "Screenshots": [
+        "windows-login-method/login-method-1.png",
+        "windows-login-method/login-method-2.png"
+      ]
+    },
+    "3": {
+      "Severity": 3,
+      "Name": "Connexion Windows en utilisant la méthode de connexion la moins sécurisée",
+      "Solution": [
+        "Accédez à Démarrer > Paramètres > Comptes > Options de connexion.",
+        "Vous pouvez désormais configurer une méthode de connexion sécurisée en utilisant le mot de passe ou l'empreinte digitale comme méthode de connexion."
+      ],
+      "Screenshots": [
+        "windows-login-method/login-method-1.png",
+        "windows-login-method/login-method-2.png"
+      ]
+    },
+    "Type": "Sécurité",
+    "Information": "Utiliser une méthode de connexion sécurisée sur Windows est important. Windows supporte diverses méthodes de connexion telles que le mot de passe, le code PIN, la clé de sécurité ou l'empreinte digitale. Utiliser l'une de ces méthodes de connexion est essentiel pour sécuriser vos données. Sans l'une de ces méthodes de connexion, n'importe qui peut déverrouiller votre appareil et accéder à vos données. Si vous n'utilisez pas de méthode de connexion / utilisez une méthode de connexion moins sécurisée / une combinaison de méthodes de connexion, il est recommandé de passer à une méthode de connexion plus sécurisée comme le mot de passe ou l'empreinte digitale."
+  },
+  "18": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Version de Windows à jour",
+      "Failed": "Nous n'avons pas pu vérifier quand la dernière modification de mot de passe a été effectuée.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },  
+    "0": {
+      "Severity": 0,
+      "Name": "La version Windows est à jour",
+      "Solution": [
+        "Votre version de Windows est à jour, aucune action n'est requise."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 2,
+      "Name": "Version Windows légèrement obsolète",
+      "Solution": [
+        "Accédez à Démarrer > Paramètres > Windows Update.",
+        "Ici, vous pouvez rechercher des mises à jour et installer des mises à jour."
+      ],
+      "Screenshots": [
+        "outdated-windows-version/windows-update-1.png",
+        "outdated-windows-version/windows-update-2.png"
+      ]
+    },
+    "2": {
+      "Severity": 3,
+      "Name": "Utilisation d'une version Windows non prise en charge. ",
+      "Solution": [
+        "Accédez à Démarrer > Paramètres > Windows Update.",
+        "Ici, vous pouvez rechercher des mises à jour et installer des mises à jour."
+      ],
+      "Screenshots": [
+        "outdated-windows-version/windows-update-1.png",
+        "outdated-windows-version/windows-update-2.png"
+      ]
+    },
+    "Type": "Sécurité",
+    "Information": "Les versions obsolètes de Windows peuvent contenir des vulnérabilités de sécurité non corrigées qui pourraient être exploitées par des attaquants pour compromettre le système. Les hackers recherchent activement et exploitent les vulnérabilités dans les systèmes d'exploitation obsolètes, ce qui pourrait conduire à un accès non autorisé, des violations de données et des infections par des logiciels malveillants."
+  },
+  "19": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Sécurité de démarrage activée/désactivée",
+      "Failed": "Nous n'avons pas pu vérifier si la Sécurité de démarrage est activée.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
+    "0": {
+      "Severity": 1,
+      "Name": "Le démarrage sécurisé est désactivé",
+      "Solution": [
+        "Redémarrez votre ordinateur et accédez aux paramètres BIOS/UEFI. ",
+        "Une fois que vous êtes dans les paramètres BIOS/UEFI, accédez à la section relative au démarrage sécurisé. ",
+        "Dans la section Secure Boot, vous devriez trouver une option pour activer le démarrage sécurisé. ",
+        "Après avoir activé le démarrage sécurisé, enregistrez les modifications apportées aux paramètres BIOS/UEFI et quittez. "
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 0,
+      "Name": "Le démarrage sécurisé est activé",
+      "Solution": [
+        "Le démarrage sécurisé est activé, aucune action n'est donc nécessaire."
+      ],
+      "Screenshots": []
+    },
+    "2": {
+      "Severity": -1,
+      "Name": "L'état du démarrage sécurisé est inconnu",
+      "Solution": [
+        "Nous n'avons pas pu trouver l'état du démarrage sécurisé sur cet appareil."
+      ],
+      "Screenshots": []
+    },
+    "Type": "Sécurité",
+    "Information": "Le démarrage sécurisé garantit que seuls les composants logiciels de confiance, signés avec des signatures numériques reconnues, sont chargés lors du processus de démarrage. Cela empêche les logiciels malveillants et autres logiciels non autorisés de manipuler le processus de démarrage et de prendre le contrôle du système dès les premières étapes."
+  },
+  "20": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Applications démarrées au démarrage du système",
+      "Failed": "Nous n'avons pas pu vérifier quelles applications démarrent au démarrage du système.",
+      "Solution": [
+        "Veuillez vérifier si le registre Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas terminer la vérification."
+      ]
+    },
+    "0": {
+      "Severity": 0,
+      "Name": "Aucune application qui démarre au démarrage",
+      "Solution": [
+        "Aucune application ne démarre au démarrage, aucune action n'est donc nécessaire."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 4,
+      "Name": "Applications qui démarrent au démarrage",
+      "Solution": [
+        "Accédez à Démarrer > Paramètres > Applications > Démarrage.",
+        "Ici, vous pouvez choisir quelles applications démarreront automatiquement au démarrage."
+      ],
+      "Screenshots": [
+        "applications-which-start-at-boot/boot-apps-1.png",
+        "applications-which-start-at-boot/boot-apps-2.png"
+      ]
+    },
+    "Type": "Sécurité",
+    "Information": "Lorsque vous démarrez votre ordinateur, plusieurs applications se lancent automatiquement. Certaines sont des processus essentiels au bon fonctionnement du système, tandis que d'autres sont pratiques à avoir au démarrage. Cependant, il peut également y avoir des applications qui se lancent au démarrage sans que vous le sachiez. Il est prudent de les désactiver pour éviter toute action non autorisée et pour améliorer la vitesse du démarrage de votre ordinateur."
+  },
+  "21": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Google Chrome a un bloqueur de publicités installé",
+      "Failed": "Nous n'avons pas pu vérifier si votre navigateur dispose d'un bloqueur de publicités installé.",
+      "Solution": [
+        "Veuillez vous assurer que votre navigateur est fermé. Cette vérification peut être impossible à effectuer si le navigateur est ouvert."
+      ]
+    },
+    "0": {
+      "Severity": 0,
+      "Name": "Google Chrome avec un bloqueur de publicité installé",
+      "Solution": [
+        "Vous utilisez un bloqueur de publicités, aucune action n'est donc nécessaire."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 2,
+      "Name": "Google Chrome sans bloqueur de publicité installé",
+      "Solution": [
+        "Ouvrez Google Chrome et accédez au Chrome Store.",
+        "Recherchez un bloqueur de publicité dans la barre de recherche (par exemple : AdBlock Plus ou uBlock Origin",
+        "Cliquez sur le bouton « Ajouter à Chrome » et redémarrez le navigateur."
+      ],
+      "Screenshots": [
+        "chrome-adblocker/chrome-adblocker-1.png",
+        "chrome-adblocker/chrome-adblocker-2.png",
+        "chrome-adblocker/chrome-adblocker-3.png"
+      ]
+    },
+    "Type": "Confidentialité",
+    "Information": "Les bloqueurs de publicités protègent les utilisateurs contre les annonces en ligne. Avec leurs filtres et algorithmes, ils offrent un sanctuaire de navigation sans interruption, épargnant aux utilisateurs le désordre visuel et les risques potentiels pour la sécurité posés par les publicités."
+  },
+  "22": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Microsoft Edge a un bloqueur de publicités installé",
+      "Failed": "Nous n'avons pas pu vérifier si votre navigateur dispose d'un bloqueur de publicités installé.",
+      "Solution": [
+        "Veuillez vous assurer que votre navigateur est fermé. Cette vérification peut être impossible à effectuer si le navigateur est ouvert."
+      ]
+    },
+    "0": {
+      "Severity": 0,
+      "Name": "Microsoft Edge avec un bloqueur de publicité installé",
+      "Solution": [
+        "Vous utilisez un bloqueur de publicités, aucune action n'est donc nécessaire."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 2,
+      "Name": "Microsoft Edge sans bloqueur de publicité installé",
+      "Solution": [
+        "Ouvrez Microsoft Edge et accédez aux extensions Microsoft Edge",
+        "Recherchez un bloqueur de publicité dans la barre de recherche (par exemple : AdBlock Plus ou uBlock Origin)",
+        "Cliquez sur le bouton « Télécharger » et redémarrez le navigateur."
+      ],
+      "Screenshots": [
+        "edge-adblocker/edge-adblocker-1.png",
+        "edge-adblocker/edge-adblocker-2.png",
+        "edge-adblocker/edge-adblocker-3.png"
+      ]
+    },
+    "Type": "Confidentialité",
+    "Information": "Les bloqueurs de publicités protègent les utilisateurs contre les annonces en ligne. Avec leurs filtres et algorithmes, ils offrent un sanctuaire de navigation sans interruption, épargnant aux utilisateurs le désordre visuel et les risques potentiels pour la sécurité posés par les publicités."
+  },
+  "23": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Domaines de phishing trouvés dans l'historique de Google Chrome",
+      "Failed": "Nous n'avons pas pu vérifier l'historique de votre navigateur.",
+      "Solution": [
+        "Veuillez vous assurer que votre navigateur est fermé. Cette vérification peut être impossible à effectuer si le navigateur est ouvert."
+      ]
+    },
+    "0": {
+      "Severity": 2,
+      "Name": "Domaines de phishing potentiels trouvés sur Google Chrome",
+      "Solution": [
+        "Soyez prudent en naviguant sur Internet, car les sites Web de confiance pourraient facilement être usurpés. "
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 0,
+      "Name": "Aucun domaine de phishing potentiel trouvé sur Google Chrome",
+      "Solution": [
+        "Vous n'avez visité aucun domaine de phishing récemment, aucune action n'est donc requise."
+      ],
+      "Screenshots": []
+    },
+    "Type": "Confidentialité",
+    "Information": "Les domaines de phishing sont des sites web frauduleux conçus pour tromper les gens afin qu'ils partagent des informations sensibles telles que des mots de passe ou des détails de carte de crédit. Ils ont l'air réels, imitant des marques ou des organisations de confiance. Ces arnaques exploitent la confiance et la curiosité pour voler des données personnelles."
+  },
+  "24": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Domaines de phishing trouvés dans l'historique de Microsoft Edge",
+      "Failed": "Nous n'avons pas pu vérifier l'historique de votre navigateur.",
+      "Solution": [
+        "Veuillez vous assurer que votre navigateur est fermé. Cette vérification peut être impossible à effectuer si le navigateur est ouvert."
+      ]
+    },
+    "0": {
+      "Severity": 2,
+      "Name": "Domaines de phishing potentiels trouvés sur Microsoft Edge",
+      "Solution": [
+        "Soyez prudent en naviguant sur Internet, car les sites Web de confiance pourraient facilement être usurpés. "
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 0,
+      "Name": "Aucun domaine de phishing potentiel trouvé sur Microsoft Edge",
+      "Solution": [
+        "Vous n'avez visité aucun domaine de phishing récemment, aucune action n'est donc requise."
+      ],
+      "Screenshots": []
+    },
+    "Type": "Confidentialité",
+    "Information": "Les domaines de phishing sont des sites web frauduleux conçus pour tromper les gens afin qu'ils partagent des informations sensibles telles que des mots de passe ou des détails de carte de crédit. Ils ont l'air réels, imitant des marques ou des organisations de confiance. Ces arnaques exploitent la confiance et la curiosité pour voler des données personnelles."
+  },
+  "25": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Moteur de recherche de Google Chrome en cours d'utilisation",
+      "Failed": "Nous n'avons pas pu vérifier le moteur de recherche de votre navigateur.",
+      "Solution": [
+        "Veuillez vous assurer que votre navigateur est fermé. Cette vérification peut être impossible à effectuer si le navigateur est ouvert."
+      ]
+    },
+    "0": {
+      "Severity": 4,
+      "Name": "Moteur de recherche standard utilisé dans Google Chrome",
+      "Solution": [
+        "Pensez à utiliser un moteur de recherche axé sur la confidentialité des utilisateurs (par exemple DuckDuckGo)."
+      ],
+      "Screenshots": []
+    },
+    "Type": "Confidentialité",
+    "Information": "Un moteur de recherche standard aide les utilisateurs à trouver des informations sur Internet en entrant des mots-clés ou des phrases. Les exemples incluent Google, Bing et Yahoo. Ils sont souvent critiqués pour leur approche en matière de vie privée."
+  },
+  "26": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Moteur de recherche de Microsoft Edge en cours d'utilisation",
+      "Failed": "Nous n'avons pas pu vérifier le moteur de recherche de votre navigateur.",
+      "Solution": [
+        "Veuillez vous assurer que votre navigateur est fermé. Cette vérification peut être impossible à effectuer si le navigateur est ouvert."
+      ]
+    },
+    "0": {
+      "Severity": 4,
+      "Name": "Moteur de recherche standard utilisé dans Microsoft Edge",
+      "Solution": [
+        "Pensez à utiliser un moteur de recherche axé sur la confidentialité des utilisateurs (par exemple DuckDuckGo)."
+      ],
+      "Screenshots": []
+    },
+    "Type": "Confidentialité",
+    "Information": "Un moteur de recherche standard aide les utilisateurs à trouver des informations sur Internet en entrant des mots-clés ou des phrases. Les exemples incluent Google, Bing et Yahoo. Ils sont souvent critiqués pour leur approche en matière de vie privée."
+  },
+  "27": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Cookies stockés dans Mozilla Firefox",
+      "Failed": "Nous n'avons pas pu vérifier les cookies de votre navigateur.",
+      "Solution": [
+        "Veuillez vous assurer que votre navigateur est fermé. Cette vérification peut être impossible à effectuer si le navigateur est ouvert."
+      ]
+    },
+    "0": {
+      "Severity": 0,
+      "Name": "Aucun cookie de suivi trouvé dans Mozilla Firefox",
+      "Solution": [
+        "Aucun cookie de suivi n'a été trouvé dans Mozilla Firefox, aucune action n'est donc nécessaire."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 2,
+      "Name": "Cookies de suivi possibles trouvés dans Mozilla Firefox",
+      "Solution": [
+        "Ouvrez Mozilla Firefox et cliquez sur le bouton de menu (trois lignes horizontales) dans le coin supérieur droit.",
+        "Sélectionnez « Paramètres » et accédez à l'onglet « Confidentialité et sécurité ».",
+        "L'option « Protection améliorée contre le pistage » doit être définie sur « Standard » ou « Personnalisé ». "
+      ],
+      "Screenshots": [
+        "cookies-firefox/cookies-firefox-1.png",
+        "cookies-firefox/cookies-firefox-2.png",
+        "cookies-firefox/cookies-firefox-3.png",
+        "cookies-firefox/cookies-firefox-4.png"
+      ]
+    },
+    "Type": "Confidentialité",
+    "Information": "Les cookies sont de petits fichiers texte stockés sur votre ordinateur par les sites web que vous visitez. Ils servent à mémoriser vos préférences, informations de connexion et autres données pour améliorer votre expérience de navigation. Cependant, les cookies peuvent également être utilisés pour suivre vos activités en ligne et recueillir des informations personnelles sans votre consentement, soulevant des préoccupations en matière de confidentialité. Gérer et effacer régulièrement les cookies permet de protéger votre vie privée et de contrôler les données collectées par les sites web à votre sujet."
+  },
+  "28": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Extensions installées dans Mozilla Firefox",
+      "Failed": "Nous n'avons pas pu vérifier les extensions de votre navigateur.",
+      "Solution": [
+        "Veuillez vous assurer que votre navigateur est fermé. Cette vérification peut être impossible à effectuer si le navigateur est ouvert."
+      ]
+    },
+    "0": {
+      "Severity": 4,
+      "Name": "Extensions installées dans Mozilla Firefox",
+      "Solution": [
+        "Ouvrez Mozilla Firefox et cliquez sur le bouton de menu (trois lignes horizontales) dans le coin supérieur droit.",
+        "Sélectionnez « Modules complémentaires » et accédez à l'onglet « Extensions ».",
+        "Ici, vous pouvez afficher et gérer les extensions installées dans votre navigateur. "
+      ],
+      "Screenshots": [
+        "extensions-firefox/extensions-firefox-1.png",
+        "extensions-firefox/extensions-firefox-2.png",
+        "extensions-firefox/extensions-firefox-3.png"
+      ]
+    },
+    "Type": "Confidentialité",
+    "Information": "Les extensions de navigateur améliorent les fonctionnalités de votre navigateur web en ajoutant des fonctionnalités, des outils et des options de personnalisation. Bien que les extensions puissent être utiles, elles peuvent également poser des risques en termes de confidentialité et de sécurité si elles ont accès à des données sensibles ou suivent vos activités en ligne sans votre consentement. Examiner régulièrement et gérer vos extensions de navigateur contribue à protéger votre vie privée et votre sécurité en ligne. Supprimez toutes les extensions que vous n'utilisez plus ou en lesquelles vous n'avez plus confiance pour minimiser les risques potentiels."
+  },
+  "29": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Mozilla Firefox a un bloqueur de publicités installé",
+      "Failed": "Nous n'avons pas pu vérifier si votre navigateur a un bloqueur de publicités installé.",
+      "Solution": [
+        "Veuillez vous assurer que votre navigateur est fermé. Cette vérification peut être impossible à effectuer si le navigateur est ouvert."
+      ]
+    },
+    "0": {
+      "Severity": 0,
+      "Name": "Mozilla Firefox avec un bloqueur de publicité installé",
+      "Solution": [
+        "Vous utilisez un bloqueur de publicités, aucune action n'est donc nécessaire."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 2,
+      "Name": "Mozilla Firefox sans bloqueur de publicité installé",
+      "Solution": [
+        "Ouvrez Mozilla Firefox et cliquez sur le bouton de menu (trois lignes horizontales) dans le coin supérieur droit, puis sélectionnez « Modules complémentaires et thèmes ».",
+        "Allez dans l'onglet \"Extensions\".",
+        "Faites défiler vers le bas et cliquez sur le bouton « Trouver plus de modules complémentaires ».",
+        "Recherchez un bloqueur de publicité dans la barre de recherche (par exemple : AdBlock Plus ou uBlock Origin)",
+        "Cliquez sur le bouton « Ajouter à Firefox » et redémarrez le navigateur."
+      ],
+      "Screenshots": [
+        "firefox-adblocker/firefox-adblocker-1.png",
+        "firefox-adblocker/firefox-adblocker-2.png",
+        "firefox-adblocker/firefox-adblocker-3.png",
+        "firefox-adblocker/firefox-adblocker-4.png",
+        "firefox-adblocker/firefox-adblocker-5.png"
+      ]
+    },
+    "Type": "Confidentialité",
+    "Information": "Les bloqueurs de publicités protègent les utilisateurs contre les annonces en ligne. Avec leurs filtres et algorithmes, ils offrent un sanctuaire de navigation sans interruption, épargnant aux utilisateurs le désordre visuel et les risques potentiels pour la sécurité posés par les publicités."
+  },
+  "30": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Moteur de recherche de Mozilla Firefox en cours d'utilisation",
+      "Failed": "Nous n'avons pas pu vérifier le moteur de recherche de votre navigateur.",
+      "Solution": [
+        "Veuillez vous assurer que votre navigateur est fermé. Cette vérification peut être impossible à effectuer si le navigateur est ouvert."
+      ]
+    },
+    "0": {
+      "Severity": 4,
+      "Name": "Moteur de recherche standard dans Mozilla Firefox",
+      "Solution": [
+        "Pensez à utiliser un navigateur axé sur la confidentialité des utilisateurs (par exemple DuckDuckGo)"
+      ],
+      "Screenshots": []
+    },
+    "Type": "Confidentialité",
+    "Information": "Un moteur de recherche standard aide les utilisateurs à trouver des informations sur Internet en entrant des mots-clés ou des phrases. Les exemples incluent Google, Bing et Yahoo. Ils sont souvent critiqués pour leur approche en matière de vie privée."
+  },
+  "31": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Domaines de phishing trouvés dans l'historique de Mozilla Firefox",
+      "Failed": "Nous n'avons pas pu vérifier l'historique de votre navigateur.",
+      "Solution": [
+        "Veuillez vous assurer que votre navigateur est fermé. Cette vérification peut être impossible à effectuer si le navigateur est ouvert."
+      ]
+    },
+    "0": {
+      "Severity": 0,
+      "Name": "Aucun domaine de phishing potentiel trouvé sur Mozilla Firefox",
+      "Solution": [
+        "Vous n'avez visité aucun domaine de phishing récemment, aucune action n'est donc requise."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 2,
+      "Name": "Domaines de phishing potentiels trouvés sur Mozilla Firefox",
+      "Solution": [
+        "Soyez prudent en naviguant sur Internet, car les sites Web de confiance pourraient facilement être usurpés. "
+      ],
+      "Screenshots": []
+    },
+    "Type": "Confidentialité",
+    "Information": "Les domaines de phishing sont des sites web frauduleux conçus pour tromper les gens afin qu'ils partagent des informations sensibles telles que des mots de passe ou des détails de carte de crédit. Ils ont l'air réels, imitant des marques ou des organisations de confiance. Ces arnaques exploitent la confiance et la curiosité pour voler des données personnelles."
+  },
+  "32": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Paramètres du registre de la liste de vérification CIS",
+      "Failed": "Nous n'avons pas pu vérifier les paramètres du registre de la liste de vérification CIS.",
+      "Solution": [
+        "Veuillez vérifier si le registre de Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas compléter la vérification."
+      ]
+    },
+    "0": {
+      "Severity": 1,
+      "Name": "Paramètres de registre de la liste d'audit CIS incorrects",
+      "Solution": [
+        "Téléchargez le CIS Benchmark pour votre système d'exploitation sur le site officiel de CIS. "
+      ],
+      "Screenshots": [
+        "cis-benchmark/cis-benchmark-1.png"
+      ]
+    },
+    "1": {
+      "Severity": 0,
+      "Name": "Corriger les paramètres du registre de la liste d'audit CIS",
+      "Solution": [
+        "Tous les paramètres respectent les directives de la liste d'audit CIS, aucune action n'est nécessaire."
+      ],
+      "Screenshots": []
+    },
+    "Type": "Sécurité",
+    "Information": "Le Center for Internet Security (CIS) propose des lignes directrices et des meilleures pratiques pour sécuriser les systèmes informatiques. La liste d'audit CIS des paramètres du registre aide à garantir que votre système est configuré selon ces normes de sécurité. Des paramètres de registre incorrects ou obsolètes peuvent rendre votre système vulnérable aux menaces de sécurité et compromettre votre vie privée."
+  },
+  "33": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Connexion automatique activée/désactivée",
+      "Failed": "Nous n'avons pas pu vérifier si la connexion automatique est activée.",
+      "Solution": [
+        "Veuillez vérifier si le registre de Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas compléter la vérification."
+      ]
+    },
+    "0": {
+      "Severity": 0,
+      "Name": "Connexion automatique désactivée",
+      "Solution": [
+        "La connexion automatique est désactivée, aucune action n'est donc nécessaire."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 3,
+      "Name": "Connexion automatique activée",
+      "Solution": [
+        "Accédez à Démarrer > Paramètres > Comptes > Options de connexion.",
+        "Sous « Exiger une connexion », sélectionnez « Lorsque le PC sort du mode veille »."
+      ],
+      "Screenshots": [
+        "automatic-login/automatic-login-1.png",
+        "automatic-login/automatic-login-2.png"
+      ]
+    },
+    "Type": "Sécurité",
+    "Information": "La connexion automatique permet aux utilisateurs d'accéder à leurs comptes sans avoir à saisir un mot de passe à chaque fois qu'ils démarrent leur ordinateur ou ouvrent une application spécifique. Bien que pratique, la connexion automatique présente des risques de sécurité, car toute personne ayant un accès physique à l'appareil peut accéder au compte sans authentification. Désactiver la connexion automatique renforce la sécurité de vos comptes et empêche l'accès non autorisé."
+  },
+  "34": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Appel de procédure distant activé/désactivé",
+      "Failed": "Nous n'avons pas pu vérifier si RPC est activé sur votre appareil.",
+      "Solution": [
+        "Veuillez vérifier si le registre de Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas compléter la vérification."
+      ]
+    },
+    "0": {
+      "Severity": 0,
+      "Name": "RPC distant désactivé",
+      "Solution": [
+        "Le RPC distant est désactivé, aucune action n'est donc nécessaire."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 3,
+      "Name": "RPC distant activé",
+      "Solution": [
+        "Le paramètre RPC distant ne peut pas être modifié de manière conventionnelle. ",
+        "Dans Windows Search, saisissez l'Éditeur du Registre et ouvrez le programme.",
+        "Accédez à « Ordinateur\\HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server.",
+        "Double-cliquez sur la clé \"AllowRemoteRPC\" et définissez sa valeur sur 0."
+      ],
+      "Screenshots": [
+        "remote-rpc/remote-rpc-1.png",
+        "remote-rpc/remote-rpc-2.png",
+        "remote-rpc/remote-rpc-3.png",
+        "remote-rpc/remote-rpc-4.png"
+      ]
+    },
+    "Type": "Sécurité",
+    "Information": "Remote Procedure Call (RPC) est un protocole qui permet à des programmes et des processus de communiquer entre eux sur un réseau. Désactiver le RPC à distance aide à prévenir l'accès non autorisé à votre ordinateur et le protège contre les menaces potentielles et les vulnérabilités de sécurité."
+  },
+  "35": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Cookies stockés dans Google Chrome",
+      "Failed": "Nous n'avons pas pu vérifier les cookies de votre navigateur.",
+      "Solution": [
+        "Veuillez vous assurer que votre navigateur est fermé. Cette vérification peut être impossible à effectuer si le navigateur est ouvert."
+      ]
+    },
+    "0": {
+      "Severity": 0,
+      "Name": "Aucun cookie de suivi possible trouvé dans le navigateur Google Chrome",
+      "Solution": [
+        "Aucun cookie de suivi possible n'a été trouvé dans Google Chrome, aucune action n'est donc nécessaire."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 2,
+      "Name": "Cookies de suivi possibles trouvés dans le navigateur Google Chrome",
+      "Solution": [
+        "Ouvrez Google Chrome et cliquez sur les trois points dans le coin supérieur droit.",
+        "Sélectionnez « Paramètres » et accédez à la section « Confidentialité et sécurité ».",
+        "Sous « Cookies tiers », cliquez sur « Voir toutes les données et autorisations du site ».",
+        "Ici, vous pouvez visualiser et gérer les cookies stockés par les sites Web.  "
+      ],
+      "Screenshots": [
+        "chrome-cookies/cookies-chrome-1.png",
+        "chrome-cookies/cookies-chrome-2.png",
+        "chrome-cookies/cookies-chrome-3.png",
+        "chrome-cookies/cookies-chrome-4.png"
+      ]
+    },
+    "Type": "Confidentialité",
+    "Information": "Les cookies sont de petits fichiers texte stockés sur votre ordinateur par les sites web que vous visitez. Ils servent à mémoriser vos préférences, vos informations de connexion et d'autres données pour améliorer votre expérience de navigation. Cependant, les cookies peuvent également être utilisés pour suivre vos activités en ligne et recueillir des informations personnelles sans votre consentement, ce qui soulève des préoccupations en matière de confidentialité. Gérer et effacer régulièrement les cookies contribue à protéger votre vie privée et à contrôler les données collectées par les sites web à votre sujet."
+  },
+  "36": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Cookies stockés dans Microsoft Edge",
+      "Failed": "Nous n'avons pas pu vérifier les cookies de votre navigateur.",
+      "Solution": [
+        "Veuillez vous assurer que votre navigateur est fermé. Cette vérification peut être impossible à effectuer si le navigateur est ouvert."
+      ]
+    },
+    "0": {
+      "Severity": 0,
+      "Name": "Aucun cookie de suivi possible trouvé dans le navigateur Microsoft Edge",
+      "Solution": [
+        "Aucun cookie de suivi possible n'a été trouvé dans Microsoft Edge, aucune action n'est donc nécessaire."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 2,
+      "Name": "Cookies de suivi possibles trouvés dans le navigateur Microsoft Edge",
+      "Solution": [
+        "Ouvrez Microsoft Edge et cliquez sur les trois points dans le coin supérieur droit.",
+        "Sélectionnez « Paramètres » et accédez à la section « Cookies et autorisations du site ».",
+        "Sous « Cookies et données stockées », cliquez sur « Gérer et supprimer les cookies et données du site ».",
+        "Ici, vous pouvez gérer les paramètres généraux des cookies.  "
+      ],
+      "Screenshots": [
+        "edge-cookies/cookies-edge-1.png",
+        "edge-cookies/cookies-edge-2.png",
+        "edge-cookies/cookies-edge-2.png",
+        "edge-cookies/cookies-edge-2.png"
+      ]
+    },
+    "Type": "Confidentialité",
+    "Information": "Les cookies sont de petits fichiers texte stockés sur votre ordinateur par les sites web que vous visitez. Ils servent à mémoriser vos préférences, vos informations de connexion et d'autres données pour améliorer votre expérience de navigation. Cependant, les cookies peuvent également être utilisés pour suivre vos activités en ligne et recueillir des informations personnelles sans votre consentement, ce qui soulève des préoccupations en matière de confidentialité. Gérer et effacer régulièrement les cookies contribue à protéger votre vie privée et à contrôler les données collectées par les sites web à votre sujet."
+  },
+  "37": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Pare-feu Windows activé/désactivé",
+      "Failed": "Nous n'avons pas pu vérifier l'état du pare-feu Windows.",
+      "Solution": [
+        "Veuillez vérifier si le registre de Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas compléter la vérification."
+      ]
+    },
+    "0": {
+      "Severity": 0,
+      "Name": "Le pare-feu Windows est activé pour tous les profils",
+      "Solution": [
+        "Le pare-feu Windows est activé pour tous les profils, aucune action n'est donc nécessaire."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 2,
+      "Name": "Le pare-feu Windows n'est pas activé pour tous les profils",
+      "Solution": [
+        "Accédez à Démarrer > Paramètres > Mise à jour et sécurité > Sécurité Windows > Pare-feu et protection réseau.",
+        "Sous « Pare-feu et protection du réseau », assurez-vous que le pare-feu Windows est activé pour tous les profils réseau (public, privé et domaine). "
+      ],
+      "Screenshots": [
+        "firewall/firewall-1.png",
+        "firewall/firewall-2.png"
+      ]
+    },
+    "Type": "Sécurité",
+    "Information": "Le pare-feu Windows est une fonctionnalité de sécurité intégrée qui aide à protéger votre ordinateur contre les accès non autorisés et les logiciels malveillants en surveillant et contrôlant le trafic réseau entrant et sortant. Activer le pare-feu Windows pour tous les profils réseau (public, privé et domaine) contribue à renforcer la sécurité de votre système et à prévenir les menaces potentielles."
+  },
+  "38": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Longueur du mot de passe Windows",
+      "Failed": "Nous n'avons pas pu vérifier la complexité de votre mot de passe.",
+      "Solution": [
+        "Veuillez vérifier si le registre de Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas compléter la vérification."
+      ]
+    },
+    "0": {
+      "Severity": 0,
+      "Name": "La longueur minimale du mot de passe est définie sur au moins 15 caractères",
+      "Solution": [
+        "La longueur minimale du mot de passe est définie sur au moins 15 caractères, aucune action n'est donc nécessaire."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 3,
+      "Name": "La longueur minimale du mot de passe n'est pas définie sur au moins 15 caractères",
+      "Solution": [
+        "Ouvrez une invite de commande élevée en cliquant avec le bouton droit sur le bouton Démarrer et en sélectionnant « Terminal (Admin) ».",
+        "Exécutez la commande « comptes nets » pour afficher les paramètres actuels de la politique de mot de passe, y compris la longueur minimale du mot de passe.",
+        "Exécutez la commande « comptes nets /minpwlen:15 » pour définir la longueur minimale du mot de passe à 15 caractères.",
+        "Redémarrez votre ordinateur pour appliquer les modifications."
+      ],
+      "Screenshots": [
+        "minimum-password-length/minimum-password-length-1.png",
+        "minimum-password-length/minimum-password-length-2.png",
+        "minimum-password-length/minimum-password-length-3.png",
+        "minimum-password-length/minimum-password-length-3.png"
+      ],
+      "ScreenshotsWindows10": [
+        "minimum-password-length/minimum-password-length-1.png",
+        "minimum-password-length/minimum-password-length-2.png",
+        "minimum-password-length/minimum-password-length-3.png",
+        "minimum-password-length/minimum-password-length-4.png"
+      ]
+    },
+    "Type": "Sécurité",
+    "Information": "Définir une longueur minimale de mot de passe d'au moins 15 caractères contribue à renforcer la sécurité des comptes utilisateurs en augmentant la complexité et la robustesse des mots de passe. Les mots de passe plus longs sont plus résistants aux attaques par force brute et offrent une meilleure protection contre les accès non autorisés et les violations de données."
+  },
+  "39": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Garde des informations d'identification activée/désactivée",
+      "Failed": "Nous n'avons pas pu vérifier si la Garde des informations d'identification est activée.",
+      "Solution": [
+        "Veuillez vérifier si le registre de Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas compléter la vérification."
+      ]
+    },
+    "0": {
+      "Severity": 0,
+      "Name": "Credential Guard est activé",
+      "Solution": [
+        "Credential Guard est activé, aucune action n'est donc nécessaire."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 2,
+      "Name": "Credential Guard est désactivé",
+      "Solution": [
+        "Le paramètre Credential Guard est géré dans votre stratégie de groupe locale. "
+      ],
+      "Screenshots": []
+    },
+    "Type": "Sécurité",
+    "Information": "Credential Guard est une fonctionnalité de sécurité de Windows qui aide à protéger les informations d'identification des utilisateurs et les informations sensibles contre l'accès non autorisé et le vol. Elle utilise la sécurité basée sur la virtualisation pour isoler et protéger les informations d'identification, rendant ainsi plus difficile aux attaquants de voler des mots de passe et d'autres données sensibles."
+  },
+  "40": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : NetBIOS sur TCP/IP activé/désactivé",
+      "Failed": "Nous n'avons pas pu vérifier l'état du NetBIOS.",
+      "Solution": [
+        "Veuillez vérifier si le registre de Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas compléter la vérification."
+      ]
+    },
+    "0": {
+      "Severity": 0,
+      "Name": "NetBIOS sur TCP/IP est désactivé",
+      "Solution": [
+        "NetBIOS sur TCP/IP est désactivé, aucune action n'est donc nécessaire."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 2,
+      "Name": "NetBIOS sur TCP/IP est activé",
+      "Solution": [
+        "Ouvrez le Panneau de configuration et accédez à « Réseau et Internet » -> « Centre Réseau et partage ».",
+        "Cliquez sur « Modifier les paramètres de l'adaptateur » dans le volet de gauche.",
+        "Faites un clic droit sur votre connexion réseau et sélectionnez « Propriétés ».",
+        "Dans l'onglet « Réseau », faites défiler jusqu'à « Internet Protocol Version 4 (TCP/IPv4) » et cliquez sur « Propriétés ».",
+        "Cliquez sur \"Avancé\" et allez dans l'onglet \"WINS\".",
+        "Sous « Paramètres NetBIOS », sélectionnez « Désactiver NetBIOS sur TCP/IP ».",
+        "Cliquez sur « OK » pour enregistrer les modifications."
+      ],
+      "SolutionWindows10": [
+        "Ouvrez le Panneau de configuration et accédez à « Réseau et Internet ».",
+        "Allez dans « Centre Réseau et partage ».",
+        "Cliquez sur « Modifier les paramètres de l'adaptateur » dans le volet de gauche.",
+        "Faites un clic droit sur votre connexion réseau et sélectionnez « Propriétés ».",
+        "Dans l'onglet « Réseau », faites défiler jusqu'à « Internet Protocol Version 4 (TCP/IPv4) » et cliquez sur « Propriétés ».",
+        "Cliquez sur \"Avancé\" et allez dans l'onglet \"WINS\".",
+        "Sous « Paramètres NetBIOS », sélectionnez « Désactiver NetBIOS sur TCP/IP ».",
+        "Cliquez sur « OK » pour enregistrer les modifications."
+      ],
+      "Screenshots": [
+        "netbios/netbios-1.png",
+        "netbios/netbios-2.png",
+        "netbios/netbios-3.png",
+        "netbios/netbios-4.png",
+        "netbios/netbios-5.png",
+        "netbios/netbios-6.png",
+        "netbios/netbios-7.png"
+      ],
+      "ScreenshotsWindows10": [
+        "netbios/netbios-1.png",
+        "netbios/netbios-2.png",
+        "netbios/netbios-3.png",
+        "netbios/netbios-4.png",
+        "netbios/netbios-5.png",
+        "netbios/netbios-6.png",
+        "netbios/netbios-7.png",
+        "netbios/netbios-8.png"
+      ]
+    },
+    "Type": "Sécurité",
+    "Information": "NetBIOS sur TCP/IP est un protocole de réseau hérité qui permet aux ordinateurs de communiquer sur un réseau local. Désactiver NetBIOS sur TCP/IP contribue à réduire la surface d'attaque de votre système et à prévenir les vulnérabilités potentielles de sécurité associées à ce protocole."
+  },
+  "41": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Service WPAD activé/désactivé",
+      "Failed": "Nous n'avons pas pu vérifier l'état de WPAD.",
+      "Solution": [
+        "Veuillez vérifier si le registre de Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas compléter la vérification."
+      ]
+    },
+    "0": {
+      "Severity": 0,
+      "Name": "Le service WPAD est désactivé",
+      "Solution": [
+        "Le service WPAD est désactivé, aucune action n'est donc nécessaire."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 2,
+      "Name": "Le service WPAD est activé",
+      "Solution": [
+        "Ouvrez l'éditeur de registre en recherchant register",
+        "Computer\\HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\Wpad",
+        "Si la clé WpadOverride n'existe pas, créez une clé en faisant un clic droit -> nouveau -> DWORD et donnez-lui le nom : WpadOverride",
+        "Changez la valeur de ce nouveau DWORD en 1."
+      ],
+      "Screenshots": [
+      ],
+      "ScreenshotsWindows10": [
+      ]
+    },
+    "Type": "Sécurité",
+    "Information": "Web Proxy Auto-Discovery (WPAD) est un protocole qui permet aux navigateurs web de découvrir automatiquement les serveurs proxy sur un réseau. Désactiver le service WPAD aide à prévenir les risques potentiels de sécurité associés à la configuration automatique de proxy et protège votre système contre la découverte et la configuration non autorisées de serveurs proxy."
+  },
+  "42": {
+    "-1": {
+      "Severity": 4,
+      "Name": "Échec de la vérification : Verrouillage automatique de l'écran de Windows activé/désactivé",
+      "Failed": "Nous n'avons pas pu vérifier si le verrouillage de l'écran est activé.",
+      "Solution": [
+        "Veuillez vérifier si le registre de Windows est utilisé directement. Lorsque la clé de cette vérification est utilisée, nous ne pouvons pas compléter la vérification."
+      ]
+    },
+    "0": {
+      "Severity": 0,
+      "Name": "Le verrouillage automatique de l'écran de Windows est activé",
+      "Solution": [
+        "Le verrouillage automatique de l'écran de Windows est activé, aucune action n'est donc nécessaire."
+      ],
+      "Screenshots": []
+    },
+    "1": {
+      "Severity": 3,
+      "Name": "Le verrouillage automatique de l'écran de Windows est désactivé",
+      "Solution": [
+        "Accédez à Démarrer > Paramètres > Personnalisation > Écran de verrouillage.",
+        "Ouvrez la fenêtre « Économiseur d'écran ».",
+        "Cochez la case « À la reprise, afficher l'écran de connexion » et réglez le temps « d'attente » sur un intervalle court (2 minutes ou moins)."
+      ],
+      "Screenshots": [
+        "automatic-screen-lock/automatic-screen-lock-1.png",
+        "automatic-screen-lock/automatic-screen-lock-2.png",
+        "automatic-screen-lock/automatic-screen-lock-3.png"
+      ]
+    },
+    "Type": "Sécurité",
+    "Information": "Le verrouillage de l'écran est une fonctionnalité de sécurité qui demande aux utilisateurs de saisir un mot de passe, un code PIN ou une authentification biométrique pour déverrouiller leur appareil et accéder au bureau. Activer le verrouillage de l'écran contribue à protéger vos données et votre vie privée en cas d'abandon ou de vol de votre ordinateur."
+  }
 }

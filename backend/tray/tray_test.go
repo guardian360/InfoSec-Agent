@@ -8,14 +8,14 @@ import (
 	"time"
 
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/checks"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/config"
+	"github.com/InfoSec-Agent/InfoSec-Agent/backend/localization"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/logger"
 	"github.com/InfoSec-Agent/InfoSec-Agent/backend/tray"
 
-	"github.com/InfoSec-Agent/InfoSec-Agent/backend/localization"
+	"github.com/getlantern/systray"
 	"github.com/nicksnyder/go-i18n/v2/i18n"
 	"github.com/stretchr/testify/require"
-
-	"github.com/getlantern/systray"
 )
 
 // TestMain sets up the necessary environment for the system tray application tests and executes them.
@@ -59,21 +59,22 @@ func TestMain(m *testing.M) {
 //
 // No return values.
 func TestChangeScanInterval(t *testing.T) {
+	logger.Log.LogLevelSpecific = -1
 	// Define test cases with input values and expected results
 	testCases := []struct {
 		input           string
 		expectedMessage string
 	}{
 		// Valid input
-		{"24", "Scan interval changed to 24 hours"},
+		{"24", "Changing scan interval to 24 day(s)"},
 		// Invalid input (non-numeric)
-		{"abc", "24"},
+		{"abc", "Invalid scan interval input"},
 		// Invalid input (negative)
-		{"-1", "24"},
+		{"-1", "Invalid scan interval input"},
 		// Invalid input (zero)
-		{"0", "24"},
+		{"0", "Invalid scan interval input"},
 		// Valid large input
-		{"1000", "Scan interval changed to 1000 hours"},
+		{"1000", "Changing scan interval to 1000 day(s)"},
 	}
 
 	// Iterate over test cases
@@ -81,24 +82,17 @@ func TestChangeScanInterval(t *testing.T) {
 		var buf bytes.Buffer
 		logger.Log.SetOutput(&buf)
 
-		wg := sync.WaitGroup{}
-		wg.Add(1)
 		// Run the function with mocked user input
-		go func() {
-			defer wg.Done()
-			tray.ChangeScanInterval(tc.input)
-		}()
-
-		// Wait for the function to complete
-		wg.Wait()
+		tray.ChangeScanInterval(tc.input)
 
 		capturedOutput := buf.String()
 
 		// Assert that the printed message matches the expected message
 		require.Contains(t, capturedOutput, tc.expectedMessage)
 	}
-	// Reset log output to standard output
+	// Reset logger
 	logger.Log.SetOutput(os.Stdout)
+	logger.Log.LogLevelSpecific = 0
 }
 
 // TestScanNow validates the behavior of the ScanNow function.
@@ -112,19 +106,21 @@ func TestChangeScanInterval(t *testing.T) {
 // No return values.
 func TestScanNow(t *testing.T) {
 	wg := sync.WaitGroup{}
-	wg.Add(2)
+	wg.Add(1)
 	errSlice := make([]error, 2)
 	// Run the function without dialog
 	go func() {
 		defer wg.Done()
-		_, err := tray.ScanNow(false)
+		_, err := tray.ScanNow(false, config.DatabasePath)
 		errSlice[0] = err
 	}()
 
+	wg.Wait()
+	wg.Add(1)
 	// Run the function with dialog
 	go func() {
 		defer wg.Done()
-		_, err := tray.ScanNow(true)
+		_, err := tray.ScanNow(true, config.DatabasePath)
 		errSlice[1] = err
 	}()
 
@@ -385,7 +381,7 @@ func TestPopupMessage(t *testing.T) {
 	// Iterate over test cases
 	for _, tc := range testCases {
 		// Run the function with mocked scan
-		result := tray.PopupMessage(tc.input, "../../reporting-page/database.db")
+		result := tray.PopupMessage(tc.input, "../../"+config.DatabasePath)
 
 		// Assert that the message matches the expected message
 		require.Equal(t, tc.expectedMessage, result)

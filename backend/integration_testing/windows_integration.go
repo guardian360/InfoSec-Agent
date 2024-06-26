@@ -33,22 +33,35 @@ func TestIntegrationAutomatedLoginNotActive(t *testing.T) {
 	require.Equal(t, 0, result.ResultID)
 }
 
+func TestIntegrationCredentialGuardDisabled(t *testing.T) {
+	result := windows.CredentialGuardRunning(&mocking.RealCommandExecutor{})
+	require.NotEmpty(t, result)
+	require.Equal(t, 1, result.ResultID)
+}
+
 func TestIntegrationDefenderAllActive(t *testing.T) {
-	result := windows.Defender(mocking.LocalMachine, mocking.LocalMachine)
+	result := windows.Defender(mocking.LocalMachine)
 	require.NotEmpty(t, result)
 	require.Equal(t, 0, result.ResultID)
 }
 
-func TestIntegrationDefenderAllNotActive(t *testing.T) {
-	result := windows.Defender(mocking.LocalMachine, mocking.LocalMachine)
+func TestIntegrationFirewallEnabled(t *testing.T) {
+	result := windows.FirewallEnabled(&mocking.RealCommandExecutor{})
 	require.NotEmpty(t, result)
-	require.Equal(t, 2, result.ResultID)
+	require.Equal(t, 0, result.ResultID)
+}
+
+func TestIntegrationFirewallDisabled(t *testing.T) {
+	result := windows.FirewallEnabled(&mocking.RealCommandExecutor{})
+	require.NotEmpty(t, result)
+	require.Equal(t, 1, result.ResultID)
 }
 
 func TestIntegrationGuestAccountActive(t *testing.T) {
 	result := windows.GuestAccount(
 		&mocking.RealCommandExecutor{}, &mocking.RealCommandExecutor{},
-		&mocking.RealCommandExecutor{}, &mocking.RealCommandExecutor{})
+		&mocking.RealCommandExecutor{}, &mocking.RealCommandExecutor{},
+		&mocking.RealUsernameRetriever{})
 	require.NotEmpty(t, result)
 	require.Equal(t, 1, result.ResultID)
 }
@@ -56,13 +69,14 @@ func TestIntegrationGuestAccountActive(t *testing.T) {
 func TestIntegrationGuestAccountNotActive(t *testing.T) {
 	result := windows.GuestAccount(
 		&mocking.RealCommandExecutor{}, &mocking.RealCommandExecutor{},
-		&mocking.RealCommandExecutor{}, &mocking.RealCommandExecutor{})
+		&mocking.RealCommandExecutor{}, &mocking.RealCommandExecutor{},
+		&mocking.RealUsernameRetriever{})
 	require.NotEmpty(t, result)
 	require.Equal(t, 2, result.ResultID)
 }
 
 func TestIntegrationLastPasswordChangeValid(t *testing.T) {
-	result := windows.LastPasswordChange(&mocking.RealCommandExecutor{})
+	result := windows.LastPasswordChange(&mocking.RealCommandExecutor{}, &mocking.RealUsernameRetriever{})
 	require.NotEmpty(t, result)
 	require.NotEmpty(t, result.Result)
 	require.Equal(t, 1, result.ResultID)
@@ -80,28 +94,21 @@ func TestIntegrationLoginMethodPINOnly(t *testing.T) {
 	require.Equal(t, 1, result.ResultID)
 }
 
-func TestIntegrationLoginMethodPasswordAndPIN(t *testing.T) {
-	result := windows.LoginMethod(mocking.LocalMachine)
-	require.NotEmpty(t, result)
-	require.Equal(t, 5, result.ResultID)
-}
-
-func TestIntegrationOutdatedWin11UpToDate(t *testing.T) {
+func TestIntegrationOutdatedWinUpToDate(t *testing.T) {
 	result := windows.Outdated(&mocking.RealCommandExecutor{})
 	require.NotEmpty(t, result)
 	require.Equal(t, 0, result.ResultID)
 }
 
-func TestIntegrationOutdatedWin10UpToDate(t *testing.T) {
-	result := windows.Outdated(&mocking.RealCommandExecutor{})
+func TestIntegrationPasswordComplexityValid(t *testing.T) {
+	result := windows.PasswordLength(&mocking.RealCommandExecutor{})
 	require.NotEmpty(t, result)
 	require.Equal(t, 0, result.ResultID)
 }
 
-func TestIntegrationOutdatedWin11NotUpToDate(t *testing.T) {
-	result := windows.Outdated(&mocking.RealCommandExecutor{})
+func TestIntegrationPasswordComplexityInvalid(t *testing.T) {
+	result := windows.PasswordLength(&mocking.RealCommandExecutor{})
 	require.NotEmpty(t, result)
-	require.NotEmpty(t, result.Result)
 	require.Equal(t, 1, result.ResultID)
 }
 
@@ -143,6 +150,12 @@ func TestIntegrationRemoteRPCDisabled(t *testing.T) {
 	require.Equal(t, 0, result.ResultID)
 }
 
+func TestIntegrationScreenLockDisabled(t *testing.T) {
+	result := windows.ScreenLockEnabled(mocking.CurrentUser)
+	require.NotEmpty(t, result)
+	require.Equal(t, 1, result.ResultID)
+}
+
 func TestIntegrationSecureBootEnabled(t *testing.T) {
 	result := windows.SecureBoot(mocking.LocalMachine)
 	require.NotEmpty(t, result)
@@ -173,12 +186,6 @@ func TestIntegrationUACFullEnabled(t *testing.T) {
 	result := windows.UACCheck(&mocking.RealCommandExecutor{})
 	require.NotEmpty(t, result)
 	require.Equal(t, 1, result.ResultID)
-}
-
-func TestIntegrationUACPartialEnabled(t *testing.T) {
-	result := windows.UACCheck(&mocking.RealCommandExecutor{})
-	require.NotEmpty(t, result)
-	require.Equal(t, 2, result.ResultID)
 }
 
 func TestIntegrationUACDisabled(t *testing.T) {

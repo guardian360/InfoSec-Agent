@@ -112,7 +112,7 @@ func TestSearchEngineChromium_GetPreferencesDirError(t *testing.T) {
 		Bytes:    3,
 		FileInfo: &mocking.FileInfoMock{},
 	}
-	want := checks.NewCheckErrorf(checks.SearchChromiumID, "Error: ", errors.New("mock error"))
+	want := checks.NewCheckErrorf(checks.SearchChromiumID, "error getting preferences directory", errors.New("mock error"))
 
 	// Call SearchEngineChromium with the mock implementation
 	result := chromium.SearchEngineChromium("Chrome", true, mockFile, getter)
@@ -132,7 +132,7 @@ func TestSearchEngineChromium_ParsePreferencesFileError(t *testing.T) {
 		Bytes:    11,
 		FileInfo: &mocking.FileInfoMock{},
 	}
-	want := checks.NewCheckErrorf(checks.SearchChromiumID, "Error: ", errors.New("invalid character 'i' looking for beginning of value"))
+	want := checks.NewCheckErrorf(checks.SearchChromiumID, "error parsing preferences directory", errors.New("invalid character 'i' looking for beginning of value"))
 
 	// Call SearchEngineChromium with the mock implementation
 	result := chromium.SearchEngineChromium("Chrome", true, mockFile, getter)

@@ -28,10 +28,8 @@ var testsValid = []func(t *testing.T){
 	i.TestIntegrationGuestAccountNotActive,
 	i.TestIntegrationLastPasswordChangeValid,
 	i.TestIntegrationLoginMethodPasswordOnly,
-	// TODO: turn back on when the test is fixed
-	// i.TestIntegrationOutdatedWin11UpToDate,
-	// TODO: turn back on when the test is fixed
-	// i.TestIntegrationPermissionWithoutApps,
+	i.TestIntegrationOutdatedWinUpToDate,
+	i.TestIntegrationPermissionWithoutApps,
 	i.TestIntegrationRemoteDesktopDisabled,
 	i.TestIntegrationSecureBootEnabled,
 	i.TestIntegrationStartupWithoutApps,
@@ -41,6 +39,14 @@ var testsValid = []func(t *testing.T){
 	i.TestIntegrationCookiesFirefoxWithoutCookies,
 	i.TestIntegrationCookiesChromiumWithoutCookies,
 	i.TestIntegrationRemoteRPCDisabled,
+	i.TestIntegrationNetBIOSDisabled,
+	// TODO: turn this back on once fixed?
+	// i.TestIntegrationWPADDisabled,
+	i.TestIntegrationFirewallEnabled,
+	i.TestIntegrationPasswordComplexityValid,
+	i.TestIntegrationUpdateGameState,
+	i.TestIntegrationPointCalculation,
+	i.TestIntegrationLighthouseStateTransition,
 }
 
 func TestMain(m *testing.M) {

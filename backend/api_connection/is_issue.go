@@ -7,7 +7,7 @@ type IssueResPair struct {
 }
 
 // IssueMap is a map that maps an issue ID and result ID pair to a boolean value.
-// This map is used to determine whether a given issue is considered a problem based on the result of a security or privacy check.
+// The boolean value indicates whether the issue is considered a problem based on the result of a security or privacy check.
 var IssueMap = map[IssueResPair]bool{
 	// Bluetooth: No devices found
 	{1, 0}: false,
@@ -73,16 +73,10 @@ var IssueMap = map[IssueResPair]bool{
 	{14, 2}: false,
 	// UAC: Unknown UAC level
 	{14, 3}: false,
-	// Defender: Real-time and scan enabled
+	// Defender: Real-time enabled
 	{15, 0}: false,
-	// Defender: Real-time enabled, scan disabled
+	// Defender: Real-time disabled
 	{15, 1}: true,
-	// Defender: Real-time disabled, scan enabled
-	{15, 2}: true,
-	// Defender: Real-time and scan disabled
-	{15, 3}: true,
-	// Defender: No data found
-	{15, 4}: false,
 	// Last Password Change: Password changed more than half a year ago
 	{16, 0}: true,
 	// Last Password Change: Password changed recently

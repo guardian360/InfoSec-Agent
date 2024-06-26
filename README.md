@@ -1,4 +1,4 @@
-<img src="https://github.com/InfoSec-Agent/InfoSec-Agent/raw/main/reporting-page/frontend/src/assets/images/logoTeamA-transformed.png" alt="InfoSec-Agent" height="192" />
+<img src="https://github.com/InfoSec-Agent/InfoSec-Agent/raw/main/reporting-page/frontend/src/assets/images/InfoSec-Agent-logo.png" alt="InfoSec-Agent logo" height="192" />
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/InfoSec-Agent/InfoSec-Agent.svg)](https://pkg.go.dev/github.com/InfoSec-Agent/InfoSec-Agent)
 [![Go Report Card](https://goreportcard.com/badge/github.com/InfoSec-Agent/InfoSec-Agent)](https://goreportcard.com/report/github.com/InfoSec-Agent/InfoSec-Agent)
@@ -18,7 +18,7 @@ This project is a collaborative effort involving nine students from Utrecht Univ
 This project is also supported by funding from the [SIDN Fund](https://www.sidnfonds.nl/projecten/infosec-agent) (Stichting Internet Domeinregistratie Nederland), the Dutch domain name registrar.
 
 ## Contributing
-InfoSec-Agent is an Open-Source project licensed under the AGPL-3.0 License. However, due to its origins as a Utrecht University assignment, public contributions to this repository will only be merged after the completion of this assignment, which is scheduled for June 24, 2024.
+InfoSec-Agent is an Open-Source project licensed under the AGPL-3.0 License.
 
 Feel free to report any bugs or issues you encounter. Your feedback is valuable and helps improve the InfoSec-Agent project.
 

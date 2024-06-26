@@ -21,27 +21,6 @@ export namespace checks {
 
 }
 
-export namespace database {
-	
-	export class Data {
-	    id: number;
-	    severity: number;
-	    jsonkey: number;
-	
-	    static createFrom(source: any = {}) {
-	        return new Data(source);
-	    }
-	
-	    constructor(source: any = {}) {
-	        if ('string' === typeof source) source = JSON.parse(source);
-	        this.id = source["id"];
-	        this.severity = source["severity"];
-	        this.jsonkey = source["jsonkey"];
-	    }
-	}
-
-}
-
 export namespace usersettings {
 	
 	export class UserSettings {
@@ -54,6 +33,7 @@ export namespace usersettings {
 	    PointsHistory: number[];
 	    TimeStamps: time.Time[];
 	    LighthouseState: number;
+	    IntegrationKey: string;
 	
 	    static createFrom(source: any = {}) {
 	        return new UserSettings(source);
@@ -69,6 +49,7 @@ export namespace usersettings {
 	        this.PointsHistory = source["PointsHistory"];
 	        this.TimeStamps = this.convertValues(source["TimeStamps"], time.Time);
 	        this.LighthouseState = source["LighthouseState"];
+	        this.IntegrationKey = source["IntegrationKey"];
 	    }
 	
 		convertValues(a: any, classs: any, asMap: boolean = false): any {

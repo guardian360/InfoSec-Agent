@@ -1,6 +1,6 @@
 /* all pages */
 body {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Segoe UI", Arial, sans-serif;
   margin: 0;
   background: var(--background-color);
   color: var(--text-body);
@@ -35,9 +35,17 @@ body {
   margin: 5px;
   margin-bottom: 10px;
   background: var(--transparant-background); /* More transparent background */
+  color: var(--text-body);
+}
+
+.data-segment p {
+  margin: 10px;
+  
 }
 
 .data-segment-header {
+  display:flex;
+  align-items:center;
   width: 100%;
   font-size: 18px;
   font-weight: bold;
@@ -46,21 +54,6 @@ body {
 .data-segment-header p {
   margin: 10px;
 }
-
-/* Pie Chart 
-.pie-chart-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
-
-.pie-chart {
-  width: 100%;
-  max-width: 300px;
-  height: auto;
-}
-*/
 
 /* Issue Buttons */
 .issue-button {
@@ -100,11 +93,40 @@ body {
 
 .progress-bar {
   height: 30px;
-  background-color: #76c7c0;
+  background-color: #64a9ee;
   width: 0;
 }
 
-#progress-text {
+.gamification-text {
   font-size: 1.2em;
-  color: #333;
+  display: inline-block;
+  margin-left: 10px;
+  color: var(--text-body);
+}
+
+/* Tooltip */
+#lighthouse-progress-tooltip {
+  width: 20%;
+  height:20%;
+
+}
+
+.lighthouse-progress-tooltip-text {
+    visibility: hidden;
+    font-size: 16px;
+    width: 50%;
+    background: var(--background-hover);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */    
+    position: absolute;
+    z-index: 1;
+    bottom: 12%;
+}
+
+#lighthouse-progress-tooltip:hover + .lighthouse-progress-tooltip-text {
+  visibility:visible;
 }

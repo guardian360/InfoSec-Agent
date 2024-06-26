@@ -14,10 +14,11 @@ import {GetImagePath as getImagePath} from '../../wailsjs/go/main/App.js';
 import {LogError as logError, LogDebug as logDebug} from '../../wailsjs/go/main/Tray.js';
 import {scanTest} from './database.js';
 import {openAllChecksPage} from './all-checks.js';
+import {openHomePage} from './home.js';
 
 let stepCounter = 0;
 const issuesWithResultsShow =
-    ['11', '21', '60', '70', '80', '90', '100', '110', '160', '173',
+    ['11', '21', '60', '70', '80', '90', '100', '110', '160', '172', '173',
       '201', '230', '250', '260', '271', '300', '311', '320', '351', '361'];
 
 /** Update contents of solution guide
@@ -82,16 +83,17 @@ export function previousSolutionStep(solutionText, solutionScreenshot, issue) {
 /** Load the content of the issue page
  *
  * @param {string} issueId Id of the issue to open
- * @param {string} severity severity of the issue to open
+ * @param {string} resultId result of the issue to open
  * @param {string} back if not undefined, back navigation to allChecksPage enabled
  */
-export async function openIssuePage(issueId, severity, back = undefined) {
+export async function openIssuePage(issueId, resultId, back = undefined) {
   retrieveTheme();
   closeNavigation(document.body.offsetWidth);
   markSelectedNavigationItem('issue-button');
   stepCounter = 0;
-  sessionStorage.setItem('savedPage', JSON.stringify([issueId, severity]));
+  sessionStorage.setItem('savedPage', JSON.stringify([issueId, resultId]));
   const language = await getUserSettings();
+
   let currentIssue;
   switch (language) {
   case 0:
@@ -119,17 +121,27 @@ export async function openIssuePage(issueId, severity, back = undefined) {
     currentIssue = dataEnGB[issueId];
     break;
   }
-  // Check if the issue has no screenshots, if so, display that there is no issue (acceptable)
-  if (severity == 0) {
+  const issueData = currentIssue[resultId];
+  let riskLevel = '';
+  if (issueData.Severity == 0) {
+    riskLevel = '<span class="risk-indicator lang-acceptable-risk" data-severity="0"></span>';
+  } else if (issueData.Severity == 1) riskLevel = '<span class="risk-indicator lang-low" data-severity="1"></span>';
+  else if (issueData.Severity == 2) riskLevel = '<span class="risk-indicator lang-medium" data-severity="2"></span>';
+  else if (issueData.Severity == 3) riskLevel = '<span class="risk-indicator lang-high" data-severity="3"></span>';
+  else riskLevel = '<span class="risk-indicator lang-info" data-severity="4"></span>';
+  if (resultId < 0) {
     const pageContents = document.getElementById('page-contents');
     pageContents.innerHTML = `
-      <h1 class="issue-name">${currentIssue.Name}</h1>
+    <div class="issue-data">
+      <div class="issue-page-header" data-severity="${issueData.Severity}">
+        <h2 class="issue-name">${issueData.Name}</h2>
+        ${riskLevel}
+      </div>
       <div class="issue-information">
-        <h2 id="information" class="lang-information"></h2>
         <p id="description">${currentIssue.Information}</p>
-        <h2 id="solution" class="lang-acceptable"></h2>
+        <h2 id="solution">${issueData.Failed}</h2>
         <div class="issue-solution">
-          <p id="solution-text">${getVersionSolution(currentIssue, stepCounter)}</p>
+          <p id="solution-text">${getVersionSolution(issueData, stepCounter)}</p>
         </div>
         <div class="solution-buttons">
           <div class="button-box">
@@ -138,21 +150,52 @@ export async function openIssuePage(issueId, severity, back = undefined) {
         </div>
         <div class="button" id="back-button"></div>
       </div>
+    </div>
+    `;
+  } else if (issueData.Severity == 0 && issueData.Screenshots.length == 0) {
+    // Check issue severity and if the issue has no screenshots, if so, display that there is no issue (acceptable)
+    const pageContents = document.getElementById('page-contents');
+    pageContents.innerHTML = `
+    <div class="issue-data">
+      <div class="issue-page-header" data-severity="${issueData.Severity}">
+        <h2 class="issue-name">${issueData.Name}</h2>
+        ${riskLevel}
+      </div>
+      <div class="issue-information">
+        <p id="description">${currentIssue.Information}</p>
+        <h2 id="solution" class="lang-acceptable"></h2>
+        <div class="issue-solution">
+          <p id="solution-text">${getVersionSolution(issueData, stepCounter)}</p>
+          <div class="solution-buttons">
+            <div class="button-box">
+              <div class="lang-scan-again button" id="scan-button"></div>
+            </div>
+          </div>
+        </div>
+        <div class="button" id="back-button"></div>
+      </div>
+    </div>
     `;
   } else { // Issue has screenshots, display the solution guide
     const pageContents = document.getElementById('page-contents');
-    if (issuesWithResultsShow.includes(issueId)) {
-      pageContents.innerHTML = parseShowResult(issueId, currentIssue);
+    if (issuesWithResultsShow.includes(issueId.toString() + resultId.toString())) {
+      pageContents.innerHTML = parseShowResult(issueId, resultId, currentIssue);
     } else {
       pageContents.innerHTML = `
-        <h1 class="issue-name">${currentIssue.Name}</h1>
+      <div class="issue-data">
+        <div class="issue-page-header" data-severity="${issueData.Severity}">
+          <h2 class="issue-name">${issueData.Name}</h2>
+          ${riskLevel}
+        </div>
         <div class="issue-information">
-          <h2 id="information" class="lang-information"></h2>
-          <p>${currentIssue.Information}</p>
+          <p id="description">${currentIssue.Information}</p>
           <h2 id="solution" class="lang-solution"></h2>
           <div class="issue-solution">
-            <p id="solution-text">${stepCounter +1}. ${getVersionSolution(currentIssue, stepCounter)}</p>
-            <img style='display:block; width:750px;height:auto' id="step-screenshot"></img>
+            <p id="solution-text">${stepCounter +1}. ${getVersionSolution(issueData, stepCounter)}</p>
+            <input type="checkbox" id="zoom-check">
+            <label for="zoom-check">
+              <img class="zoom-img" style='display:block; width:65%;height:auto' id="step-screenshot"></img>
+            </label>
             <div class="solution-buttons">
               <div class="button-box">
                 <div id="previous-button" class="lang-previous-button button"></div>
@@ -163,6 +206,7 @@ export async function openIssuePage(issueId, severity, back = undefined) {
           </div>
           <div class="button" id="back-button"></div>
         </div>
+      </div>
       `;
     }
 
@@ -170,13 +214,13 @@ export async function openIssuePage(issueId, severity, back = undefined) {
     const solutionText = document.getElementById('solution-text');
     const solutionScreenshot = document.getElementById('step-screenshot');
     document.getElementById('next-button').addEventListener('click', () =>
-      nextSolutionStep(solutionText, solutionScreenshot, currentIssue));
+      nextSolutionStep(solutionText, solutionScreenshot, issueData));
     document.getElementById('previous-button').addEventListener('click', () =>
-      previousSolutionStep(solutionText, solutionScreenshot, currentIssue));
+      previousSolutionStep(solutionText, solutionScreenshot, issueData));
 
     // Initial check to hide/show buttons
     try {
-      await updateSolutionStep(solutionText, solutionScreenshot, currentIssue, stepCounter);
+      await updateSolutionStep(solutionText, solutionScreenshot, issueData, stepCounter);
     } catch (error) {
       logError('Error in updateSolutionStep: ' + error);
     }
@@ -185,17 +229,23 @@ export async function openIssuePage(issueId, severity, back = undefined) {
   if (back == undefined) {
     document.getElementById('back-button').addEventListener('click', () => openIssuesPage());
     document.getElementById('back-button').classList.add('lang-back-button-issues');
+  } else if (back == 'home') {
+    document.getElementById('back-button').addEventListener('click', () => openHomePage());
+    document.getElementById('back-button').classList.add('lang-back-button-home');
   } else {
     document.getElementById('back-button').addEventListener('click', () => openAllChecksPage(back));
     document.getElementById('back-button').classList.add('lang-back-button-checks');
   }
 
-  const texts = ['lang-information', 'lang-findings', 'lang-solution', 'lang-previous-button',
-    'lang-next-button', 'lang-back-button-issues', 'lang-back-button-checks', 'lang-port', 'lang-password',
-    'lang-acceptable', 'lang-cookies', 'lang-permissions', 'lang-scan-again'];
-  const localizationIds = ['Issues.Information', 'Issues.Findings', 'Issues.Solution', 'Issues.Previous',
-    'Issues.Next', 'Issues.BackIssues', 'Issues.BackChecks', 'Issues.Port', 'Issues.Password',
+  const texts = ['lang-findings', 'lang-solution', 'lang-previous-button',
+    'lang-next-button', 'lang-back-button-issues', 'lang-back-button-home', 'lang-back-button-checks', 'lang-port',
+    'lang-password', 'lang-acceptable', 'lang-cookies', 'lang-permissions', 'lang-scan-again',
+    'lang-info', 'lang-medium', 'lang-high', 'lang-low', 'lang-acceptable-risk',
+  ];
+  const localizationIds = ['Issues.Findings', 'Issues.Solution', 'Issues.Previous',
+    'Issues.Next', 'Issues.BackIssues', 'Issues.BackHome', 'Issues.BackChecks', 'Issues.Port', 'Issues.Password',
     'Issues.Acceptable', 'Issues.Cookies', 'Issues.Permissions', 'Issues.ScanAgain',
+    'Dashboard.InfoRisk', 'Dashboard.MediumRisk', 'Dashboard.HighRisk', 'Dashboard.LowRisk', 'Dashboard.Acceptable',
   ];
   for (let i = 0; i < texts.length; i++) {
     getLocalization(localizationIds[i], texts[i]);
@@ -203,8 +253,38 @@ export async function openIssuePage(issueId, severity, back = undefined) {
 
   document.getElementById('scan-button').addEventListener('click', async () => {
     await scanTest(true);
-    openIssuePage(issueId, severity);
+    const issueData = JSON.parse(sessionStorage.getItem('ScanResult'));
+    const resultId = findResultId(issueData, issueId);
+    sessionStorage.setItem('savedPage', JSON.stringify([issueId, resultId]));
+    openIssuePage(issueId, resultId);
   });
+
+  const image = document.getElementsByClassName('zoom-img');
+  if (image.length > 0) {
+    image[0].addEventListener('click', function() {
+      if (image[0].classList.contains('zoomed')) {
+        image[0].classList.remove('zoomed');
+      } else {
+        image[0].classList.add('zoomed');
+      }
+    });
+  }
+}
+
+/**
+ * Finds the result_id corresponding to the given issueId in the provided data array.
+ *
+ * @param {Array} data - An array of objects where each object contains an issue_id and a result_id.
+ * @param {number|string} issueId - The issue ID to search for in the data array. This can be a number or a string.
+ * @return {number|null} The result_id corresponding to the provided issueId, or null if not found.
+ */
+function findResultId(data, issueId) {
+  for (const item of data) {
+    if (parseInt(item.issue_id) === parseInt(issueId)) {
+      return item.result_id;
+    }
+  }
+  return null;
 }
 
 /** Check if the issue is a show result issue
@@ -219,15 +299,16 @@ export function checkShowResult(issue) {
 /** Parse the show result of an issue
  *
  * @param {string} issueId of the issue
- * @param {string} currentIssue of the issue we are looking at
+ * @param {string} resultId of the issue we are looking at
+ * @param {string} currentIssue current issue we are looking at
  * @return {string} result of the show result
  */
-export function parseShowResult(issueId, currentIssue) {
+export function parseShowResult(issueId, resultId, currentIssue) {
   let issues = [];
   issues = JSON.parse(sessionStorage.getItem('ScanResult'));
   let resultLine = '';
 
-  switch (issueId) {
+  switch (issueId.toString() + resultId.toString()) {
   case '11':
     generateBulletList(issues, 1);
     break;
@@ -252,7 +333,7 @@ export function parseShowResult(issueId, currentIssue) {
   case '110':
     resultLine += `<p class="lang-port"></p>`;
     const portTable = processPortsTable(issues.find((issue) => issue.issue_id === 11).result);
-    resultLine += `<table class = "issues-table">`;
+    resultLine += `<table class="issues-table ports-table">`;
     resultLine += `<thead><tr><th>Process</th><th>Port(s)</th></tr></thead>`;
     portTable.forEach((entry) => {
       resultLine += `<tr><td style="width: 30%">${entry.portProcess}</td>
@@ -265,6 +346,9 @@ export function parseShowResult(issueId, currentIssue) {
       resultLine += `<p class="lang-password"></p>`;
       resultLine += `<p class="information">${issue}</p>`;
     });
+    break;
+  case '172':
+    generateBulletList(issues, 17);
     break;
   case '173':
     generateBulletList(issues, 17);
@@ -320,7 +404,7 @@ export function parseShowResult(issueId, currentIssue) {
    */
   function generateBulletList(issues, issueId) {
     resultLine += `<ul>`;
-    issues.find((issue) => issue.issue_id === issueId).result.forEach((issue) => {
+    issues.find((issue) => issue.issue_id == issueId).result.forEach((issue) => {
       resultLine += `<li>${issue}</li>`;
     });
     resultLine += `</ul>`;
@@ -335,7 +419,7 @@ export function parseShowResult(issueId, currentIssue) {
   function permissionShowResults(issues) {
     let applications = '<ul>';
     issues.forEach((issue) => {
-      if (issue.issue_id.toString() + issue.result_id.toString() === issueId.toString()) {
+      if (issue.issue_id.toString() === issueId.toString()) {
         const issueResult = issue.result;
         issueResult.forEach((application) => {
           applications += `<li>${application}</li>`;
@@ -426,28 +510,43 @@ export function parseShowResult(issueId, currentIssue) {
     return tableHTML;
   }
 
+  const issueData = currentIssue[resultId];
+  let riskLevel = '';
+  if (issueData.Severity == 0) {
+    riskLevel = '<span class="risk-indicator lang-acceptable-risk" data-severity="0"></span>';
+  } else if (issueData.Severity == 1) riskLevel = '<span class="risk-indicator lang-low" data-severity="1"></span>';
+  else if (issueData.Severity == 2) riskLevel = '<span class="risk-indicator lang-medium" data-severity="2"></span>';
+  else if (issueData.Severity == 3) riskLevel = '<span class="risk-indicator lang-high" data-severity="3"></span>';
+  else riskLevel = '<span class="risk-indicator lang-info" data-severity="4"></span>';
   const result = `
-  <h1 class="issue-name">${currentIssue.Name}</h1>
-  <div class="issue-information">
-    <h2 id="information" class="lang-information"></h2>
-    <p>${currentIssue.Information}</p>
-    <h2 id="information" class="lang-findings"></h2>
-    <p id="description">${resultLine}</p>
-    <h2 id="solution" class="lang-solution"></h2>
-    <div class="issue-solution">
-      <p id="solution-text">${stepCounter +1}. ${getVersionSolution(currentIssue, stepCounter)}</p>
-      <img style='display:block; width:750px;height:auto' id="step-screenshot"></img>
-      <div class="solution-buttons">
-        <div class="button-box">
-          <div id="previous-button" class="button lang-previous-button"></div>
-          <div id="next-button" class="button lang-next-button"></div>
-          <div class="lang-scan-again button" id="scan-button"></div>
+  <div class="issue-data">
+    <div class="issue-page-header" data-severity="${issueData.Severity}">
+      <h2 class="issue-name">${issueData.Name}</h2>
+      ${riskLevel}
+    </div>
+    <div class="issue-information">
+      <p id="description">${currentIssue.Information}</p>
+      <h2 id="information" class="lang-findings"></h2>
+      <p id="findings">${resultLine}</p>
+      <h2 id="solution" class="lang-solution"></h2>
+      <div class="issue-solution">
+        <p id="solution-text">${stepCounter +1}. ${getVersionSolution(issueData, stepCounter)}</p>
+        <input type="checkbox" id="zoom-check">
+        <label for="zoom-check">
+          <img class="zoom-img" style='display:block; width:65%;height:auto' id="step-screenshot"></img>
+        </label>
+        <div class="solution-buttons">
+          <div class="button-box">
+            <div id="previous-button" class="button lang-previous-button"></div>
+            <div id="next-button" class="button lang-next-button"></div>
+            <div class="lang-scan-again button" id="scan-button"></div>
+          </div>
         </div>
       </div>
+      <div class="lang-back-button button" id="back-button"></div>
     </div>
-    <div class="lang-back-button button" id="back-button"></div>
   </div>
-`;
+  `;
 
   return result;
 }
