@@ -171,7 +171,7 @@ export async function openHomePage() {
 
   // Assuming the points are stored in local storage under the key 'userPoints'
   const usersettings = await getUserSettings();
- const progressPercentage = usersettings.ProgressBarState;
+  const progressPercentage = usersettings.ProgressBarState;
 
   // Update the progress bar width and text
   if (progressPercentage === 100) {
@@ -186,7 +186,7 @@ export async function openHomePage() {
     progressAlmostText.style.visibility = 'vissible';
     progressDoneText.style.visibility = 'hidden';
   } else {
-    progressPercentageText.textContent = `${progressPercentage.toFixed(2)} %`;
+    progressPercentageText.textContent = `${progressPercentage} %`;
     progressBar.style.width = `${progressPercentage}%`;
     progressText.style.visibility = 'visible';
     progressAlmostText.style.visibility = 'hidden';
